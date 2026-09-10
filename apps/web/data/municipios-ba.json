@@ -1,0 +1,3338 @@
+[
+  {
+    "id": 2900108,
+    "nome": "Abaíra",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2900207,
+    "nome": "Abaré",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2900306,
+    "nome": "Acajutiba",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2900355,
+    "nome": "Adustina",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2900405,
+    "nome": "Água Fria",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2900504,
+    "nome": "Érico Cardoso",
+    "microrregiao": "Livramento do Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2900603,
+    "nome": "Aiquara",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2900702,
+    "nome": "Alagoinhas",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2900801,
+    "nome": "Alcobaça",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2900900,
+    "nome": "Almadina",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2901007,
+    "nome": "Amargosa",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2901106,
+    "nome": "Amélia Rodrigues",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2901155,
+    "nome": "América Dourada",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2901205,
+    "nome": "Anagé",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2901304,
+    "nome": "Andaraí",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2901353,
+    "nome": "Andorinha",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2901403,
+    "nome": "Angical",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2901502,
+    "nome": "Anguera",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2901601,
+    "nome": "Antas",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2901700,
+    "nome": "Antônio Cardoso",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2901809,
+    "nome": "Antônio Gonçalves",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2901908,
+    "nome": "Aporá",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2901957,
+    "nome": "Apuarema",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2902005,
+    "nome": "Aracatu",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2902054,
+    "nome": "Araçás",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2902104,
+    "nome": "Araci",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Serrinha",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2902203,
+    "nome": "Aramari",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2902252,
+    "nome": "Arataca",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2902302,
+    "nome": "Aratuípe",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2902401,
+    "nome": "Aurelino Leal",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2902500,
+    "nome": "Baianópolis",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2902609,
+    "nome": "Baixa Grande",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2902658,
+    "nome": "Banzaê",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2902708,
+    "nome": "Barra",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2902807,
+    "nome": "Barra da Estiva",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2902906,
+    "nome": "Barra do Choça",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2903003,
+    "nome": "Barra do Mendes",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2903102,
+    "nome": "Barra do Rocha",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2903201,
+    "nome": "Barreiras",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2903235,
+    "nome": "Barro Alto",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2903276,
+    "nome": "Barrocas",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Serrinha",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2903300,
+    "nome": "Barro Preto",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2903409,
+    "nome": "Belmonte",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2903508,
+    "nome": "Belo Campo",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2903607,
+    "nome": "Biritinga",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Serrinha",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2903706,
+    "nome": "Boa Nova",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2903805,
+    "nome": "Boa Vista do Tupim",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2903904,
+    "nome": "Bom Jesus da Lapa",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2903953,
+    "nome": "Bom Jesus da Serra",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2904001,
+    "nome": "Boninal",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2904050,
+    "nome": "Bonito",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2904100,
+    "nome": "Boquira",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2904209,
+    "nome": "Botuporã",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2904308,
+    "nome": "Brejões",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2904407,
+    "nome": "Brejolândia",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2904506,
+    "nome": "Brotas de Macaúbas",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2904605,
+    "nome": "Brumado",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2904704,
+    "nome": "Buerarema",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2904753,
+    "nome": "Buritirama",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2904803,
+    "nome": "Caatiba",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2904852,
+    "nome": "Cabaceiras do Paraguaçu",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2904902,
+    "nome": "Cachoeira",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2905008,
+    "nome": "Caculé",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2905107,
+    "nome": "Caém",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2905156,
+    "nome": "Caetanos",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2905206,
+    "nome": "Caetité",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2905305,
+    "nome": "Cafarnaum",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2905404,
+    "nome": "Cairu",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2905503,
+    "nome": "Caldeirão Grande",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2905602,
+    "nome": "Camacan",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2905701,
+    "nome": "Camaçari",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2905800,
+    "nome": "Camamu",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2905909,
+    "nome": "Campo Alegre de Lourdes",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2906006,
+    "nome": "Campo Formoso",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2906105,
+    "nome": "Canápolis",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2906204,
+    "nome": "Canarana",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2906303,
+    "nome": "Canavieiras",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2906402,
+    "nome": "Candeal",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2906501,
+    "nome": "Candeias",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2906600,
+    "nome": "Candiba",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2906709,
+    "nome": "Cândido Sales",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2906808,
+    "nome": "Cansanção",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Euclides da Cunha",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2906824,
+    "nome": "Canudos",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Euclides da Cunha",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2906857,
+    "nome": "Capela do Alto Alegre",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2906873,
+    "nome": "Capim Grosso",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2906899,
+    "nome": "Caraíbas",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2906907,
+    "nome": "Caravelas",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2907004,
+    "nome": "Cardeal da Silva",
+    "microrregiao": "Entre Rios",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2907103,
+    "nome": "Carinhanha",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2907202,
+    "nome": "Casa Nova",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2907301,
+    "nome": "Castro Alves",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2907400,
+    "nome": "Catolândia",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2907509,
+    "nome": "Catu",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2907558,
+    "nome": "Caturama",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2907608,
+    "nome": "Central",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2907707,
+    "nome": "Chorrochó",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2907806,
+    "nome": "Cícero Dantas",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2907905,
+    "nome": "Cipó",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2908002,
+    "nome": "Coaraci",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2908101,
+    "nome": "Cocos",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2908200,
+    "nome": "Conceição da Feira",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2908309,
+    "nome": "Conceição do Almeida",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2908408,
+    "nome": "Conceição do Coité",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2908507,
+    "nome": "Conceição do Jacuípe",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2908606,
+    "nome": "Conde",
+    "microrregiao": "Entre Rios",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2908705,
+    "nome": "Condeúba",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2908804,
+    "nome": "Contendas do Sincorá",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2908903,
+    "nome": "Coração de Maria",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2909000,
+    "nome": "Cordeiros",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2909109,
+    "nome": "Coribe",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2909208,
+    "nome": "Coronel João Sá",
+    "microrregiao": "Jeremoabo",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Jeremoabo",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2909307,
+    "nome": "Correntina",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2909406,
+    "nome": "Cotegipe",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2909505,
+    "nome": "Cravolândia",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2909604,
+    "nome": "Crisópolis",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2909703,
+    "nome": "Cristópolis",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2909802,
+    "nome": "Cruz das Almas",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2909901,
+    "nome": "Curaçá",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2910008,
+    "nome": "Dário Meira",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2910057,
+    "nome": "Dias d'Ávila",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2910107,
+    "nome": "Dom Basílio",
+    "microrregiao": "Livramento do Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2910206,
+    "nome": "Dom Macedo Costa",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2910305,
+    "nome": "Elísio Medrado",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2910404,
+    "nome": "Encruzilhada",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2910503,
+    "nome": "Entre Rios",
+    "microrregiao": "Entre Rios",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2910602,
+    "nome": "Esplanada",
+    "microrregiao": "Entre Rios",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2910701,
+    "nome": "Euclides da Cunha",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Euclides da Cunha",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2910727,
+    "nome": "Eunápolis",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2910750,
+    "nome": "Fátima",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2910776,
+    "nome": "Feira da Mata",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2910800,
+    "nome": "Feira de Santana",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2910859,
+    "nome": "Filadélfia",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2910909,
+    "nome": "Firmino Alves",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2911006,
+    "nome": "Floresta Azul",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2911105,
+    "nome": "Formosa do Rio Preto",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2911204,
+    "nome": "Gandu",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2911253,
+    "nome": "Gavião",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2911303,
+    "nome": "Gentio do Ouro",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2911402,
+    "nome": "Glória",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2911501,
+    "nome": "Gongogi",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2911600,
+    "nome": "Governador Mangabeira",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2911659,
+    "nome": "Guajeru",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2911709,
+    "nome": "Guanambi",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2911808,
+    "nome": "Guaratinga",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2911857,
+    "nome": "Heliópolis",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2911907,
+    "nome": "Iaçu",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2912004,
+    "nome": "Ibiassucê",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2912103,
+    "nome": "Ibicaraí",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2912202,
+    "nome": "Ibicoara",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2912301,
+    "nome": "Ibicuí",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2912400,
+    "nome": "Ibipeba",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2912509,
+    "nome": "Ibipitanga",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2912608,
+    "nome": "Ibiquera",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2912707,
+    "nome": "Ibirapitanga",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2912806,
+    "nome": "Ibirapuã",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2912905,
+    "nome": "Ibirataia",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2913002,
+    "nome": "Ibitiara",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2913101,
+    "nome": "Ibititá",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2913200,
+    "nome": "Ibotirama",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2913309,
+    "nome": "Ichu",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2913408,
+    "nome": "Igaporã",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2913457,
+    "nome": "Igrapiúna",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2913507,
+    "nome": "Iguaí",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2913606,
+    "nome": "Ilhéus",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2913705,
+    "nome": "Inhambupe",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2913804,
+    "nome": "Ipecaetá",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2913903,
+    "nome": "Ipiaú",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2914000,
+    "nome": "Ipirá",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2914109,
+    "nome": "Ipupiara",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2914208,
+    "nome": "Irajuba",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2914307,
+    "nome": "Iramaia",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2914406,
+    "nome": "Iraquara",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2914505,
+    "nome": "Irará",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2914604,
+    "nome": "Irecê",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2914653,
+    "nome": "Itabela",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2914703,
+    "nome": "Itaberaba",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2914802,
+    "nome": "Itabuna",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2914901,
+    "nome": "Itacaré",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2915007,
+    "nome": "Itaeté",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2915106,
+    "nome": "Itagi",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2915205,
+    "nome": "Itagibá",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2915304,
+    "nome": "Itagimirim",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2915353,
+    "nome": "Itaguaçu da Bahia",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2915403,
+    "nome": "Itaju do Colônia",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2915502,
+    "nome": "Itajuípe",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2915601,
+    "nome": "Itamaraju",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2915700,
+    "nome": "Itamari",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2915809,
+    "nome": "Itambé",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2915908,
+    "nome": "Itanagra",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2916005,
+    "nome": "Itanhém",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2916104,
+    "nome": "Itaparica",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2916203,
+    "nome": "Itapé",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2916302,
+    "nome": "Itapebi",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2916401,
+    "nome": "Itapetinga",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2916500,
+    "nome": "Itapicuru",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2916609,
+    "nome": "Itapitanga",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2916708,
+    "nome": "Itaquara",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2916807,
+    "nome": "Itarantim",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2916856,
+    "nome": "Itatim",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2916906,
+    "nome": "Itiruçu",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2917003,
+    "nome": "Itiúba",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2917102,
+    "nome": "Itororó",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2917201,
+    "nome": "Ituaçu",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2917300,
+    "nome": "Ituberá",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2917334,
+    "nome": "Iuiu",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2917359,
+    "nome": "Jaborandi",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2917409,
+    "nome": "Jacaraci",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2917508,
+    "nome": "Jacobina",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2917607,
+    "nome": "Jaguaquara",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2917706,
+    "nome": "Jaguarari",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2917805,
+    "nome": "Jaguaripe",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2917904,
+    "nome": "Jandaíra",
+    "microrregiao": "Entre Rios",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2918001,
+    "nome": "Jequié",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2918100,
+    "nome": "Jeremoabo",
+    "microrregiao": "Jeremoabo",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Jeremoabo",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2918209,
+    "nome": "Jiquiriçá",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2918308,
+    "nome": "Jitaúna",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2918357,
+    "nome": "João Dourado",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2918407,
+    "nome": "Juazeiro",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2918456,
+    "nome": "Jucuruçu",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2918506,
+    "nome": "Jussara",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2918555,
+    "nome": "Jussari",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2918605,
+    "nome": "Jussiape",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2918704,
+    "nome": "Lafaiete Coutinho",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2918753,
+    "nome": "Lagoa Real",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2918803,
+    "nome": "Laje",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2918902,
+    "nome": "Lajedão",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2919009,
+    "nome": "Lajedinho",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2919058,
+    "nome": "Lajedo do Tabocal",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2919108,
+    "nome": "Lamarão",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2919157,
+    "nome": "Lapão",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2919207,
+    "nome": "Lauro de Freitas",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2919306,
+    "nome": "Lençóis",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2919405,
+    "nome": "Licínio de Almeida",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2919504,
+    "nome": "Livramento de Nossa Senhora",
+    "microrregiao": "Livramento do Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2919553,
+    "nome": "Luís Eduardo Magalhães",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2919603,
+    "nome": "Macajuba",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2919702,
+    "nome": "Macarani",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2919801,
+    "nome": "Macaúbas",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2919900,
+    "nome": "Macururé",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2919926,
+    "nome": "Madre de Deus",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2919959,
+    "nome": "Maetinga",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2920007,
+    "nome": "Maiquinique",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2920106,
+    "nome": "Mairi",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2920205,
+    "nome": "Malhada",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2920304,
+    "nome": "Malhada de Pedras",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2920403,
+    "nome": "Manoel Vitorino",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2920452,
+    "nome": "Mansidão",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2920502,
+    "nome": "Maracás",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2920601,
+    "nome": "Maragogipe",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2920700,
+    "nome": "Maraú",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2920809,
+    "nome": "Marcionílio Souza",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2920908,
+    "nome": "Mascote",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2921005,
+    "nome": "Mata de São João",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2921054,
+    "nome": "Matina",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2921104,
+    "nome": "Medeiros Neto",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2921203,
+    "nome": "Miguel Calmon",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2921302,
+    "nome": "Milagres",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2921401,
+    "nome": "Mirangaba",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2921450,
+    "nome": "Mirante",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2921500,
+    "nome": "Monte Santo",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Euclides da Cunha",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2921609,
+    "nome": "Morpará",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2921708,
+    "nome": "Morro do Chapéu",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2921807,
+    "nome": "Mortugaba",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2921906,
+    "nome": "Mucugê",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2922003,
+    "nome": "Mucuri",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2922052,
+    "nome": "Mulungu do Morro",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2922102,
+    "nome": "Mundo Novo",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2922201,
+    "nome": "Muniz Ferreira",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922250,
+    "nome": "Muquém do São Francisco",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2922300,
+    "nome": "Muritiba",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922409,
+    "nome": "Mutuípe",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922508,
+    "nome": "Nazaré",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922607,
+    "nome": "Nilo Peçanha",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922656,
+    "nome": "Nordestina",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2922706,
+    "nome": "Nova Canaã",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2922730,
+    "nome": "Nova Fátima",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2922755,
+    "nome": "Nova Ibiá",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2922805,
+    "nome": "Nova Itarana",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2922854,
+    "nome": "Nova Redenção",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2922904,
+    "nome": "Nova Soure",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2923001,
+    "nome": "Nova Viçosa",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2923035,
+    "nome": "Novo Horizonte",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2923050,
+    "nome": "Novo Triunfo",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Jeremoabo",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2923100,
+    "nome": "Olindina",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2923209,
+    "nome": "Oliveira dos Brejinhos",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2923308,
+    "nome": "Ouriçangas",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2923357,
+    "nome": "Ourolândia",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2923407,
+    "nome": "Palmas de Monte Alto",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2923506,
+    "nome": "Palmeiras",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2923605,
+    "nome": "Paramirim",
+    "microrregiao": "Livramento do Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2923704,
+    "nome": "Paratinga",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2923803,
+    "nome": "Paripiranga",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Cícero Dantas",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2923902,
+    "nome": "Pau Brasil",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2924009,
+    "nome": "Paulo Afonso",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2924058,
+    "nome": "Pé de Serra",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2924108,
+    "nome": "Pedrão",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2924207,
+    "nome": "Pedro Alexandre",
+    "microrregiao": "Jeremoabo",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Jeremoabo",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2924306,
+    "nome": "Piatã",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2924405,
+    "nome": "Pilão Arcado",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2924504,
+    "nome": "Pindaí",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2924603,
+    "nome": "Pindobaçu",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2924652,
+    "nome": "Pintadas",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2924678,
+    "nome": "Piraí do Norte",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2924702,
+    "nome": "Piripá",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2924801,
+    "nome": "Piritiba",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2924900,
+    "nome": "Planaltino",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2925006,
+    "nome": "Planalto",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2925105,
+    "nome": "Poções",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2925204,
+    "nome": "Pojuca",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2925253,
+    "nome": "Ponto Novo",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2925303,
+    "nome": "Porto Seguro",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2925402,
+    "nome": "Potiraguá",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itapetinga",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2925501,
+    "nome": "Prado",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2925600,
+    "nome": "Presidente Dutra",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2925709,
+    "nome": "Presidente Jânio Quadros",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2925758,
+    "nome": "Presidente Tancredo Neves",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2925808,
+    "nome": "Queimadas",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2925907,
+    "nome": "Quijingue",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Euclides da Cunha",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2925931,
+    "nome": "Quixabeira",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2925956,
+    "nome": "Rafael Jambeiro",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2926004,
+    "nome": "Remanso",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2926103,
+    "nome": "Retirolândia",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2926202,
+    "nome": "Riachão das Neves",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2926301,
+    "nome": "Riachão do Jacuípe",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2926400,
+    "nome": "Riacho de Santana",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2926509,
+    "nome": "Ribeira do Amparo",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2926608,
+    "nome": "Ribeira do Pombal",
+    "microrregiao": "Ribeira do Pombal",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2926657,
+    "nome": "Ribeirão do Largo",
+    "microrregiao": "Itapetinga",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2926707,
+    "nome": "Rio de Contas",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2926806,
+    "nome": "Rio do Antônio",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2926905,
+    "nome": "Rio do Pires",
+    "microrregiao": "Livramento do Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Brumado",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2927002,
+    "nome": "Rio Real",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2927101,
+    "nome": "Rodelas",
+    "microrregiao": "Paulo Afonso",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2927200,
+    "nome": "Ruy Barbosa",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2927309,
+    "nome": "Salinas da Margarida",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2927408,
+    "nome": "Salvador",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2927507,
+    "nome": "Santa Bárbara",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2927606,
+    "nome": "Santa Brígida",
+    "microrregiao": "Jeremoabo",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Paulo Afonso",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2927705,
+    "nome": "Santa Cruz Cabrália",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Eunápolis - Porto Seguro",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2927804,
+    "nome": "Santa Cruz da Vitória",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2927903,
+    "nome": "Santa Inês",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Jequié",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2928000,
+    "nome": "Santaluz",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2928059,
+    "nome": "Santa Luzia",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2928109,
+    "nome": "Santa Maria da Vitória",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2928208,
+    "nome": "Santana",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2928307,
+    "nome": "Santanópolis",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2928406,
+    "nome": "Santa Rita de Cássia",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2928505,
+    "nome": "Santa Terezinha",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2928604,
+    "nome": "Santo Amaro",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2928703,
+    "nome": "Santo Antônio de Jesus",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2928802,
+    "nome": "Santo Estêvão",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2928901,
+    "nome": "São Desidério",
+    "microrregiao": "Barreiras",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2928950,
+    "nome": "São Domingos",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2929008,
+    "nome": "São Félix",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2929057,
+    "nome": "São Félix do Coribe",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Santa Maria da Vitoria",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2929107,
+    "nome": "São Felipe",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2929206,
+    "nome": "São Francisco do Conde",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2929255,
+    "nome": "São Gabriel",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2929305,
+    "nome": "São Gonçalo dos Campos",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2929354,
+    "nome": "São José da Vitória",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2929370,
+    "nome": "São José do Jacuípe",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2929404,
+    "nome": "São Miguel das Matas",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2929503,
+    "nome": "São Sebastião do Passé",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2929602,
+    "nome": "Sapeaçu",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Cruz das Almas",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2929701,
+    "nome": "Sátiro Dias",
+    "microrregiao": "Alagoinhas",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2929750,
+    "nome": "Saubara",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2929800,
+    "nome": "Saúde",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2929909,
+    "nome": "Seabra",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2930006,
+    "nome": "Sebastião Laranjeiras",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2930105,
+    "nome": "Senhor do Bonfim",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Senhor do Bonfim",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2930154,
+    "nome": "Serra do Ramalho",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2930204,
+    "nome": "Sento Sé",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2930303,
+    "nome": "Serra Dourada",
+    "microrregiao": "Santa Maria da Vitória",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2930402,
+    "nome": "Serra Preta",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2930501,
+    "nome": "Serrinha",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Serrinha",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2930600,
+    "nome": "Serrolândia",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2930709,
+    "nome": "Simões Filho",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2930758,
+    "nome": "Sítio do Mato",
+    "microrregiao": "Bom Jesus da Lapa",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Bom Jesus da Lapa",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2930766,
+    "nome": "Sítio do Quinto",
+    "microrregiao": "Jeremoabo",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Jeremoabo",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2930774,
+    "nome": "Sobradinho",
+    "microrregiao": "Juazeiro",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2930808,
+    "nome": "Souto Soares",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Seabra",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2930907,
+    "nome": "Tabocas do Brejo Velho",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2931004,
+    "nome": "Tanhaçu",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2931053,
+    "nome": "Tanque Novo",
+    "microrregiao": "Boquira",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2931103,
+    "nome": "Tanquinho",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2931202,
+    "nome": "Taperoá",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2931301,
+    "nome": "Tapiramutá",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2931350,
+    "nome": "Teixeira de Freitas",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2931400,
+    "nome": "Teodoro Sampaio",
+    "microrregiao": "Feira de Santana",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Alagoinhas",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2931509,
+    "nome": "Teofilândia",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Serrinha",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2931608,
+    "nome": "Teolândia",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2931707,
+    "nome": "Terra Nova",
+    "microrregiao": "Catu",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Salvador",
+    "regiao_intermediaria": "Salvador"
+  },
+  {
+    "id": 2931806,
+    "nome": "Tremedal",
+    "microrregiao": "Brumado",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2931905,
+    "nome": "Tucano",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Ribeira do Pombal",
+    "regiao_intermediaria": "Paulo Afonso"
+  },
+  {
+    "id": 2932002,
+    "nome": "Uauá",
+    "microrregiao": "Euclides da Cunha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Juazeiro",
+    "regiao_intermediaria": "Juazeiro"
+  },
+  {
+    "id": 2932101,
+    "nome": "Ubaíra",
+    "microrregiao": "Jequié",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2932200,
+    "nome": "Ubaitaba",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2932309,
+    "nome": "Ubatã",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2932408,
+    "nome": "Uibaí",
+    "microrregiao": "Irecê",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Irecê",
+    "regiao_intermediaria": "Irecê"
+  },
+  {
+    "id": 2932457,
+    "nome": "Umburanas",
+    "microrregiao": "Senhor do Bonfim",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2932507,
+    "nome": "Una",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Camacan",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2932606,
+    "nome": "Urandi",
+    "microrregiao": "Guanambi",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Guanambi",
+    "regiao_intermediaria": "Guanambi"
+  },
+  {
+    "id": 2932705,
+    "nome": "Uruçuca",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ilhéus ¿ Itabuna",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2932804,
+    "nome": "Utinga",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2932903,
+    "nome": "Valença",
+    "microrregiao": "Valença",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Valença",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2933000,
+    "nome": "Valente",
+    "microrregiao": "Serrinha",
+    "mesorregiao": "Nordeste Baiano",
+    "regiao_imediata": "Conceição do Coité",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2933059,
+    "nome": "Várzea da Roça",
+    "microrregiao": "Itaberaba",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Feira de Santana",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2933109,
+    "nome": "Várzea do Poço",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2933158,
+    "nome": "Várzea Nova",
+    "microrregiao": "Jacobina",
+    "mesorregiao": "Centro Norte Baiano",
+    "regiao_imediata": "Jacobina",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2933174,
+    "nome": "Varzedo",
+    "microrregiao": "Santo Antônio de Jesus",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Santo Antônio de Jesus",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2933208,
+    "nome": "Vera Cruz",
+    "microrregiao": "Salvador",
+    "mesorregiao": "Metropolitana de Salvador",
+    "regiao_imediata": "Nazaré ¿ Maragogipe",
+    "regiao_intermediaria": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2933257,
+    "nome": "Vereda",
+    "microrregiao": "Porto Seguro",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Teixeira de Freitas",
+    "regiao_intermediaria": "Ilhéus ¿ Itabuna"
+  },
+  {
+    "id": 2933307,
+    "nome": "Vitória da Conquista",
+    "microrregiao": "Vitória da Conquista",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Vitória da Conquista",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2933406,
+    "nome": "Wagner",
+    "microrregiao": "Seabra",
+    "mesorregiao": "Centro Sul Baiano",
+    "regiao_imediata": "Itaberaba",
+    "regiao_intermediaria": "Feira de Santana"
+  },
+  {
+    "id": 2933455,
+    "nome": "Wanderley",
+    "microrregiao": "Cotegipe",
+    "mesorregiao": "Extremo Oeste Baiano",
+    "regiao_imediata": "Barreiras",
+    "regiao_intermediaria": "Barreiras"
+  },
+  {
+    "id": 2933505,
+    "nome": "Wenceslau Guimarães",
+    "microrregiao": "Ilhéus-Itabuna",
+    "mesorregiao": "Sul Baiano",
+    "regiao_imediata": "Ipiaú",
+    "regiao_intermediaria": "Vitória da Conquista"
+  },
+  {
+    "id": 2933604,
+    "nome": "Xique-Xique",
+    "microrregiao": "Barra",
+    "mesorregiao": "Vale São-Franciscano da Bahia",
+    "regiao_imediata": "Xique-Xique ¿ Barra",
+    "regiao_intermediaria": "Irecê"
+  }
+]

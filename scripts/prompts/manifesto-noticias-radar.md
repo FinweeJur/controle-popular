@@ -2,7 +2,7 @@
 
 **Título:** Radar Diario de Noticias
 **Tipo de Modelo:** acervo
-**Total de Registros:** 24
+**Total de Registros:** 25
 **Caminho dos Dados:** `@/data/noticias-radar/dados.compact.json`
 
 ## Esqueleto de Campos (6 colunas)
@@ -14,7 +14,7 @@
 - `ato_de_autoridade`
 
 ## Dicionários / Colunas de Atributos
-- **`veiculo`** (6 valores distintos): ex: "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social", "Guaicuy — Assessoria dos Atingidos pela Vale", "Blog do Pedlowski", "Diário do Comércio", "JOTA Info"
+- **`veiculo`** (7 valores distintos): ex: "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social", "Guaicuy — Assessoria dos Atingidos pela Vale", "Diário do Comércio", "JOTA Info", "blogdopedlowski.com"
 - **`fonte_id`** (3 valores distintos): ex: "adai", "guaicuy", "google-noticias"
 
 ---
