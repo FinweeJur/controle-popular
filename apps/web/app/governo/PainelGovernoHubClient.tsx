@@ -413,7 +413,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
                     <h3 className="mt-3 text-lg font-bold text-text group-hover:text-primary transition-colors">
                       {m.nome_ente}
                     </h3>
-                    <p className="text-xs text-text-soft line-clamp-1">
+                    <p className="text-sm text-text-soft line-clamp-1">
                       {m.cargo}: <strong>{m.gestor}</strong> {m.partido ? `(${m.partido})` : ""}
                     </p>
 

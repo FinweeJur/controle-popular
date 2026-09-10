@@ -506,7 +506,7 @@ export default function TabelaInstituicaoClient({
                     </div>
 
                     {/* Micro-resumo factual */}
-                    <p className="text-[0.85em] text-text-soft leading-relaxed">
+                    <p className="text-sm text-text-soft leading-relaxed">
                       {item.microResumo}
                     </p>
 
