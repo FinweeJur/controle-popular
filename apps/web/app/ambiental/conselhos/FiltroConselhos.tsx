@@ -38,6 +38,46 @@ const ROTULO_ESFERA: Record<string, string> = {
 
 type Ordem = "nome-az" | "nome-za" | "categoria";
 
+function BotaoCopiar({ texto, rotulo }: { texto: string; rotulo: string }) {
+  const [copiado, setCopiado] = useState(false);
+  async function copiar() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(texto);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = texto;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+      setCopiado(true);
+      setTimeout(() => setCopiado(false), 2000);
+    } catch {
+      // clipboard indisponivel: nao interrompe a leitura
+    }
+  }
+  return (
+    <button
+      type="button"
+      onClick={copiar}
+      aria-label={`Copiar ${rotulo}`}
+      title={`Copiar ${rotulo}`}
+      className={
+        "inline-flex shrink-0 items-center rounded px-1 text-[.82em] font-medium transition-colors " +
+        (copiado
+          ? "text-emerald-600"
+          : "text-muted hover:text-text hover:bg-surface-3")
+      }
+    >
+      {copiado ? "Copiado!" : "copiar"}
+    </button>
+  );
+}
+
 export default function FiltroConselhos({
   conselhos,
 }: {
@@ -278,7 +318,8 @@ export default function FiltroConselhos({
                     📞{" "}
                     <span className="font-medium text-foreground">
                       {c.contatos.telefone}
-                    </span>
+                    </span>{" "}
+                    <BotaoCopiar texto={c.contatos.telefone} rotulo="o telefone" />
                   </div>
                 ) : null}
                 {c.contatos.email ? (
@@ -289,7 +330,8 @@ export default function FiltroConselhos({
                       className="text-primary hover:underline"
                     >
                       {c.contatos.email}
-                    </a>
+                    </a>{" "}
+                    <BotaoCopiar texto={c.contatos.email} rotulo="o e-mail" />
                   </div>
                 ) : null}
                 {c.contatos.siteOficial ? (
@@ -302,7 +344,17 @@ export default function FiltroConselhos({
                       className="text-primary hover:underline"
                     >
                       Portal oficial ↗
-                    </a>
+                    </a>{" "}
+                    <BotaoCopiar texto={c.contatos.siteOficial} rotulo="o site oficial" />
+                  </div>
+                ) : null}
+                {c.contatos.enderecoFisico ? (
+                  <div className="text-muted">
+                    📍{" "}
+                    <span className="font-medium text-foreground">
+                      {c.contatos.enderecoFisico}
+                    </span>{" "}
+                    <BotaoCopiar texto={c.contatos.enderecoFisico} rotulo="o endereço" />
                   </div>
                 ) : null}
                 {c.contatos.canalDenuncia ? (
