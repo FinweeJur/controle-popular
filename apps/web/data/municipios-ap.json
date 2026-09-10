@@ -5,7 +5,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Porto Grande",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600105,
@@ -13,7 +14,8 @@
     "microrregiao": "Amapá",
     "mesorregiao": "Norte do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600154,
@@ -21,7 +23,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Porto Grande",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600204,
@@ -29,7 +32,8 @@
     "microrregiao": "Oiapoque",
     "mesorregiao": "Norte do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600212,
@@ -37,7 +41,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600238,
@@ -45,7 +50,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Porto Grande",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600253,
@@ -53,7 +59,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Macapá",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   },
   {
     "id": 1600279,
@@ -61,7 +68,8 @@
     "microrregiao": "Mazagão",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Laranjal do Jari",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   },
   {
     "id": 1600303,
@@ -69,7 +77,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Macapá",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   },
   {
     "id": 1600402,
@@ -77,7 +86,8 @@
     "microrregiao": "Mazagão",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Macapá",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   },
   {
     "id": 1600501,
@@ -85,7 +95,8 @@
     "microrregiao": "Oiapoque",
     "mesorregiao": "Norte do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600535,
@@ -93,7 +104,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Porto Grande",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600550,
@@ -101,7 +113,8 @@
     "microrregiao": "Amapá",
     "mesorregiao": "Norte do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600600,
@@ -109,7 +122,8 @@
     "microrregiao": "Macapá",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Macapá",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   },
   {
     "id": 1600709,
@@ -117,7 +131,8 @@
     "microrregiao": "Amapá",
     "mesorregiao": "Norte do Amapá",
     "regiao_imediata": "Oiapoque",
-    "regiao_intermediaria": "Oiapoque - Porto Grande"
+    "regiao_intermediaria": "Oiapoque - Porto Grande",
+    "uf": "AP"
   },
   {
     "id": 1600808,
@@ -125,6 +140,7 @@
     "microrregiao": "Mazagão",
     "mesorregiao": "Sul do Amapá",
     "regiao_imediata": "Laranjal do Jari",
-    "regiao_intermediaria": "Macapá"
+    "regiao_intermediaria": "Macapá",
+    "uf": "AP"
   }
 ]

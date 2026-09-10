@@ -5,7 +5,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200101,
@@ -13,7 +14,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200200,
@@ -21,7 +23,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4200309,
@@ -29,7 +32,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4200408,
@@ -37,7 +41,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200507,
@@ -45,7 +50,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200556,
@@ -53,7 +59,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200606,
@@ -61,7 +68,8 @@
     "microrregiao": "Tabuleiro",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4200705,
@@ -69,7 +77,8 @@
     "microrregiao": "Tabuleiro",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4200754,
@@ -77,7 +86,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200804,
@@ -85,7 +95,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4200903,
@@ -93,7 +104,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4201000,
@@ -101,7 +113,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4201109,
@@ -109,7 +122,8 @@
     "microrregiao": "Tabuleiro",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4201208,
@@ -117,7 +131,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4201257,
@@ -125,7 +140,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4201273,
@@ -133,7 +149,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4201307,
@@ -141,7 +158,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4201406,
@@ -149,7 +167,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4201505,
@@ -157,7 +176,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4201604,
@@ -165,7 +185,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4201653,
@@ -173,7 +194,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4201703,
@@ -181,7 +203,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4201802,
@@ -189,7 +212,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4201901,
@@ -197,7 +221,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4201950,
@@ -205,7 +230,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4202008,
@@ -213,7 +239,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202057,
@@ -221,7 +248,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4202073,
@@ -229,7 +257,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4202081,
@@ -237,7 +266,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4202099,
@@ -245,7 +275,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4202107,
@@ -253,7 +284,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202131,
@@ -261,7 +293,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4202156,
@@ -269,7 +302,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4202206,
@@ -277,7 +311,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202305,
@@ -285,7 +320,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4202404,
@@ -293,7 +329,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202438,
@@ -301,7 +338,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4202453,
@@ -309,7 +347,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202503,
@@ -317,7 +356,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4202537,
@@ -325,7 +365,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4202578,
@@ -333,7 +374,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4202602,
@@ -341,7 +383,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4202701,
@@ -349,7 +392,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202800,
@@ -357,7 +401,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4202859,
@@ -365,7 +410,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4202875,
@@ -373,7 +419,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4202909,
@@ -381,7 +428,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4203006,
@@ -389,7 +437,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4203105,
@@ -397,7 +446,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4203154,
@@ -405,7 +455,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4203204,
@@ -413,7 +464,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4203253,
@@ -421,7 +473,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4203303,
@@ -429,7 +482,8 @@
     "microrregiao": "São Bento do Sul",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "São Bento do Sul - Rio Negrinho",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4203402,
@@ -437,7 +491,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4203501,
@@ -445,7 +500,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4203600,
@@ -453,7 +509,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4203709,
@@ -461,7 +518,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4203808,
@@ -469,7 +527,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4203907,
@@ -477,7 +536,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4203956,
@@ -485,7 +545,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4204004,
@@ -493,7 +554,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204103,
@@ -501,7 +563,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204152,
@@ -509,7 +572,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204178,
@@ -517,7 +581,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4204194,
@@ -525,7 +590,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4204202,
@@ -533,7 +599,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204251,
@@ -541,7 +608,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4204301,
@@ -549,7 +617,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204350,
@@ -557,7 +626,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204400,
@@ -565,7 +635,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204459,
@@ -573,7 +644,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204509,
@@ -581,7 +653,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4204558,
@@ -589,7 +662,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4204608,
@@ -597,7 +671,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4204707,
@@ -605,7 +680,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204756,
@@ -613,7 +689,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4204806,
@@ -621,7 +698,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4204905,
@@ -629,7 +707,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205001,
@@ -637,7 +716,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205100,
@@ -645,7 +725,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4205159,
@@ -653,7 +734,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4205175,
@@ -661,7 +743,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205191,
@@ -669,7 +752,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4205209,
@@ -677,7 +761,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205308,
@@ -685,7 +770,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205357,
@@ -693,7 +779,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205407,
@@ -701,7 +788,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4205431,
@@ -709,7 +797,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205456,
@@ -717,7 +806,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4205506,
@@ -725,7 +815,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4205555,
@@ -733,7 +824,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4205605,
@@ -741,7 +833,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4205704,
@@ -749,7 +842,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4205803,
@@ -757,7 +851,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4205902,
@@ -765,7 +860,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4206009,
@@ -773,7 +869,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4206108,
@@ -781,7 +878,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4206207,
@@ -789,7 +887,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4206306,
@@ -797,7 +896,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4206405,
@@ -805,7 +905,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4206504,
@@ -813,7 +914,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4206603,
@@ -821,7 +923,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4206652,
@@ -829,7 +932,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4206702,
@@ -837,7 +941,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4206751,
@@ -845,7 +950,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4206801,
@@ -853,7 +959,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4206900,
@@ -861,7 +968,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4207007,
@@ -869,7 +977,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4207106,
@@ -877,7 +986,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4207205,
@@ -885,7 +995,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4207304,
@@ -893,7 +1004,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4207403,
@@ -901,7 +1013,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4207502,
@@ -909,7 +1022,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4207577,
@@ -917,7 +1031,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4207601,
@@ -925,7 +1040,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207650,
@@ -933,7 +1049,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207684,
@@ -941,7 +1058,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207700,
@@ -949,7 +1067,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207759,
@@ -957,7 +1076,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207809,
@@ -965,7 +1085,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207858,
@@ -973,7 +1094,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4207908,
@@ -981,7 +1103,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4208005,
@@ -989,7 +1112,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4208104,
@@ -997,7 +1121,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4208203,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4208302,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4208401,
@@ -1021,7 +1148,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4208450,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4208500,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4208609,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4208708,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4208807,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4208906,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4208955,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209003,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209102,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4209151,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4209177,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209201,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209300,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4209409,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4209458,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209508,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4209607,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4209706,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4209805,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4209854,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4209904,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4210001,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4210035,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4210050,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4210100,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4210209,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4210308,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4210407,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4210506,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4210555,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4210605,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4210704,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4210803,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4210852,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4210902,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211009,
@@ -1309,7 +1472,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211058,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4211108,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4211207,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4211256,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4211306,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4211405,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211454,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211504,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4211603,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4211652,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211702,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4211751,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4211801,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211850,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211876,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4211892,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4211900,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4212007,
@@ -1453,7 +1634,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4212056,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4212106,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4212205,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4212239,
@@ -1485,7 +1670,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4212254,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4212270,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4212304,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4212403,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4212502,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4212601,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4212650,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4212700,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4212809,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4212908,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4213005,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4213104,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4213153,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4213203,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4213302,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4213351,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4213401,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4213500,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4213609,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4213708,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4213807,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4213906,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4214003,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214102,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214151,
@@ -1685,7 +1895,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4214201,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4214300,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Tabuleiro",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4214409,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4214508,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214607,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214706,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214805,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4214904,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4215000,
@@ -1757,7 +1976,8 @@
     "microrregiao": "São Bento do Sul",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "São Bento do Sul - Rio Negrinho",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4215059,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4215075,
@@ -1773,7 +1994,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215109,
@@ -1781,7 +2003,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4215208,
@@ -1789,7 +2012,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215307,
@@ -1797,7 +2021,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4215356,
@@ -1805,7 +2030,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215406,
@@ -1813,7 +2039,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4215455,
@@ -1821,7 +2048,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4215505,
@@ -1829,7 +2057,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4215554,
@@ -1837,7 +2066,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215604,
@@ -1845,7 +2075,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4215653,
@@ -1853,7 +2084,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4215679,
@@ -1861,7 +2093,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4215687,
@@ -1869,7 +2102,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215695,
@@ -1877,7 +2111,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215703,
@@ -1885,7 +2120,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4215752,
@@ -1893,7 +2129,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4215802,
@@ -1901,7 +2138,8 @@
     "microrregiao": "São Bento do Sul",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "São Bento do Sul - Rio Negrinho",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4215901,
@@ -1909,7 +2147,8 @@
     "microrregiao": "Tabuleiro",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4216008,
@@ -1917,7 +2156,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4216057,
@@ -1925,7 +2165,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Curitibanos",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4216107,
@@ -1933,7 +2174,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4216206,
@@ -1941,7 +2183,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4216255,
@@ -1949,7 +2192,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4216305,
@@ -1957,7 +2201,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Brusque",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4216354,
@@ -1965,7 +2210,8 @@
     "microrregiao": "Itajaí",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4216404,
@@ -1973,7 +2219,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4216503,
@@ -1981,7 +2228,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4216602,
@@ -1989,7 +2237,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4216701,
@@ -1997,7 +2246,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4216800,
@@ -2005,7 +2255,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4216909,
@@ -2013,7 +2264,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Lourenço do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217006,
@@ -2021,7 +2273,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4217105,
@@ -2029,7 +2282,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4217154,
@@ -2037,7 +2291,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217204,
@@ -2045,7 +2300,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217253,
@@ -2053,7 +2309,8 @@
     "microrregiao": "Florianópolis",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Florianópolis",
-    "regiao_intermediaria": "Florianópolis"
+    "regiao_intermediaria": "Florianópolis",
+    "uf": "SC"
   },
   {
     "id": 4217303,
@@ -2061,7 +2318,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217402,
@@ -2069,7 +2327,8 @@
     "microrregiao": "Joinville",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Joinville",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4217501,
@@ -2077,7 +2336,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Concórdia",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217550,
@@ -2085,7 +2345,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217600,
@@ -2093,7 +2354,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4217709,
@@ -2101,7 +2363,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4217758,
@@ -2109,7 +2372,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4217808,
@@ -2117,7 +2381,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4217907,
@@ -2125,7 +2390,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4217956,
@@ -2133,7 +2399,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Maravilha",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4218004,
@@ -2141,7 +2408,8 @@
     "microrregiao": "Tijucas",
     "mesorregiao": "Grande Florianópolis",
     "regiao_imediata": "Itajaí",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4218103,
@@ -2149,7 +2417,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4218202,
@@ -2157,7 +2426,8 @@
     "microrregiao": "Blumenau",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Blumenau",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4218251,
@@ -2165,7 +2435,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Caçador",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4218301,
@@ -2173,7 +2444,8 @@
     "microrregiao": "Canoinhas",
     "mesorregiao": "Norte Catarinense",
     "regiao_imediata": "Mafra",
-    "regiao_intermediaria": "Joinville"
+    "regiao_intermediaria": "Joinville",
+    "uf": "SC"
   },
   {
     "id": 4218350,
@@ -2181,7 +2453,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4218400,
@@ -2189,7 +2462,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4218509,
@@ -2197,7 +2471,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4218608,
@@ -2205,7 +2480,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Rio do Sul",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4218707,
@@ -2213,7 +2489,8 @@
     "microrregiao": "Tubarão",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Tubarão",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4218756,
@@ -2221,7 +2498,8 @@
     "microrregiao": "São Miguel do Oeste",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "São Miguel do Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4218806,
@@ -2229,7 +2507,8 @@
     "microrregiao": "Araranguá",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Araranguá",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4218855,
@@ -2237,7 +2516,8 @@
     "microrregiao": "Chapecó",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4218905,
@@ -2245,7 +2525,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4218954,
@@ -2253,7 +2534,8 @@
     "microrregiao": "Campos de Lages",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Lages",
-    "regiao_intermediaria": "Lages"
+    "regiao_intermediaria": "Lages",
+    "uf": "SC"
   },
   {
     "id": 4219002,
@@ -2261,7 +2543,8 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   },
   {
     "id": 4219101,
@@ -2269,7 +2552,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219150,
@@ -2277,7 +2561,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219176,
@@ -2285,7 +2570,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219200,
@@ -2293,7 +2579,8 @@
     "microrregiao": "Ituporanga",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ituporanga",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4219309,
@@ -2301,7 +2588,8 @@
     "microrregiao": "Joaçaba",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Videira",
-    "regiao_intermediaria": "Caçador"
+    "regiao_intermediaria": "Caçador",
+    "uf": "SC"
   },
   {
     "id": 4219358,
@@ -2309,7 +2597,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4219408,
@@ -2317,7 +2606,8 @@
     "microrregiao": "Rio do Sul",
     "mesorregiao": "Vale do Itajaí",
     "regiao_imediata": "Ibirama - Presidente Getúlio",
-    "regiao_intermediaria": "Blumenau"
+    "regiao_intermediaria": "Blumenau",
+    "uf": "SC"
   },
   {
     "id": 4219507,
@@ -2325,7 +2615,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219606,
@@ -2333,7 +2624,8 @@
     "microrregiao": "Concórdia",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Xanxerê",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219705,
@@ -2341,7 +2633,8 @@
     "microrregiao": "Xanxerê",
     "mesorregiao": "Oeste Catarinense",
     "regiao_imediata": "Chapecó",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4219853,
@@ -2349,7 +2642,8 @@
     "microrregiao": "Curitibanos",
     "mesorregiao": "Serrana",
     "regiao_imediata": "Joaçaba - Herval d'Oeste",
-    "regiao_intermediaria": "Chapecó"
+    "regiao_intermediaria": "Chapecó",
+    "uf": "SC"
   },
   {
     "id": 4220000,
@@ -2357,6 +2651,7 @@
     "microrregiao": "Criciúma",
     "mesorregiao": "Sul Catarinense",
     "regiao_imediata": "Criciúma",
-    "regiao_intermediaria": "Criciúma"
+    "regiao_intermediaria": "Criciúma",
+    "uf": "SC"
   }
 ]

@@ -5,7 +5,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4100202,
@@ -13,7 +14,8 @@
     "microrregiao": "Cerro Azul",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4100301,
@@ -21,7 +23,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4100400,
@@ -29,7 +32,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4100459,
@@ -37,7 +41,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4100509,
@@ -45,7 +50,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4100608,
@@ -53,7 +59,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4100707,
@@ -61,7 +68,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4100806,
@@ -69,7 +77,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4100905,
@@ -77,7 +86,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4101002,
@@ -85,7 +95,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4101051,
@@ -93,7 +104,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4101101,
@@ -101,7 +113,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4101150,
@@ -109,7 +122,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4101200,
@@ -117,7 +131,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4101309,
@@ -125,7 +140,8 @@
     "microrregiao": "São Mateus do Sul",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4101408,
@@ -133,7 +149,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4101507,
@@ -141,7 +158,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4101606,
@@ -149,7 +167,8 @@
     "microrregiao": "Jaguariaíva",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4101655,
@@ -157,7 +176,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4101705,
@@ -165,7 +185,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4101804,
@@ -173,7 +194,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4101853,
@@ -181,7 +203,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4101903,
@@ -189,7 +212,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4102000,
@@ -197,7 +221,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4102109,
@@ -205,7 +230,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4102208,
@@ -213,7 +239,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4102307,
@@ -221,7 +248,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4102406,
@@ -229,7 +257,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4102505,
@@ -237,7 +266,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4102604,
@@ -245,7 +275,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4102703,
@@ -253,7 +284,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4102752,
@@ -261,7 +293,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4102802,
@@ -269,7 +302,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4102901,
@@ -277,7 +311,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4103008,
@@ -285,7 +320,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4103024,
@@ -293,7 +329,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103040,
@@ -301,7 +338,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4103057,
@@ -309,7 +347,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103107,
@@ -317,7 +356,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4103156,
@@ -325,7 +365,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103206,
@@ -333,7 +374,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103222,
@@ -341,7 +383,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103305,
@@ -349,7 +392,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103354,
@@ -357,7 +401,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103370,
@@ -365,7 +410,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4103404,
@@ -373,7 +419,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103453,
@@ -381,7 +428,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4103479,
@@ -389,7 +437,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4103503,
@@ -397,7 +446,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103602,
@@ -405,7 +455,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103701,
@@ -413,7 +464,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103800,
@@ -421,7 +473,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4103909,
@@ -429,7 +482,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4103958,
@@ -437,7 +491,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4104006,
@@ -445,7 +500,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4104055,
@@ -453,7 +509,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4104105,
@@ -461,7 +518,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4104204,
@@ -469,7 +527,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4104253,
@@ -477,7 +536,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4104303,
@@ -485,7 +545,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4104402,
@@ -493,7 +554,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4104428,
@@ -501,7 +563,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4104451,
@@ -509,7 +572,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4104501,
@@ -517,7 +581,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4104600,
@@ -525,7 +590,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4104659,
@@ -533,7 +599,8 @@
     "microrregiao": "Ponta Grossa",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4104709,
@@ -541,7 +608,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4104808,
@@ -549,7 +617,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4104907,
@@ -557,7 +626,8 @@
     "microrregiao": "Ponta Grossa",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4105003,
@@ -565,7 +635,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4105102,
@@ -573,7 +644,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4105201,
@@ -581,7 +653,8 @@
     "microrregiao": "Cerro Azul",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4105300,
@@ -589,7 +662,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4105409,
@@ -597,7 +671,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4105508,
@@ -605,7 +680,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4105607,
@@ -613,7 +689,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4105706,
@@ -621,7 +698,8 @@
     "microrregiao": "Palmas",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4105805,
@@ -629,7 +707,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4105904,
@@ -637,7 +716,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4106001,
@@ -645,7 +725,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4106100,
@@ -653,7 +734,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4106209,
@@ -661,7 +743,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4106308,
@@ -669,7 +752,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4106407,
@@ -677,7 +761,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4106456,
@@ -685,7 +770,8 @@
     "microrregiao": "Palmas",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4106506,
@@ -693,7 +779,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4106555,
@@ -701,7 +788,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4106571,
@@ -709,7 +797,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4106605,
@@ -717,7 +806,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4106704,
@@ -725,7 +815,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4106803,
@@ -733,7 +824,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4106852,
@@ -741,7 +833,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4106902,
@@ -749,7 +842,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4107009,
@@ -757,7 +851,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4107108,
@@ -765,7 +860,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107124,
@@ -773,7 +869,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107157,
@@ -781,7 +878,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107207,
@@ -789,7 +887,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107256,
@@ -797,7 +896,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107306,
@@ -805,7 +905,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107405,
@@ -813,7 +914,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107504,
@@ -821,7 +923,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107520,
@@ -829,7 +932,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107538,
@@ -837,7 +941,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107546,
@@ -845,7 +950,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107553,
@@ -853,7 +959,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107603,
@@ -861,7 +968,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4107652,
@@ -869,7 +977,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4107702,
@@ -877,7 +986,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107736,
@@ -885,7 +995,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4107751,
@@ -893,7 +1004,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4107801,
@@ -901,7 +1013,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4107850,
@@ -909,7 +1022,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4107900,
@@ -917,7 +1031,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4108007,
@@ -925,7 +1040,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4108106,
@@ -933,7 +1049,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4108205,
@@ -941,7 +1058,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4108304,
@@ -949,7 +1067,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4108320,
@@ -957,7 +1076,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4108403,
@@ -965,7 +1085,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4108452,
@@ -973,7 +1094,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4108502,
@@ -981,7 +1103,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4108551,
@@ -989,7 +1112,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4108601,
@@ -997,7 +1121,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4108650,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4108700,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4108809,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4108908,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4108957,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4109005,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4109104,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4109203,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4109302,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4109401,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4109500,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4109609,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4109658,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Palmas",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4109708,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4109757,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4109807,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4109906,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110003,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110052,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4110078,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4110102,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4110201,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4110300,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110409,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110508,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4110607,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110656,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4110706,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Irati",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4110805,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110904,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4110953,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4111001,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4111100,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4111209,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4111258,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4111308,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4111407,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4111506,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4111555,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4111605,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4111704,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4111803,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4111902,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112009,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Jaguariaíva",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4112108,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112207,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4112306,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112405,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4112504,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112603,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4112702,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112751,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4112801,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112900,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4112959,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4113007,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4113106,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113205,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Lapa",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4113254,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4113304,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4113403,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113429,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113452,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4113502,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4113601,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4113700,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113734,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4113759,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113809,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4113908,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Irati",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4114005,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4114104,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4114203,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Maringá",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4114302,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4114351,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4114401,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Palmas",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4114500,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4114609,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4114708,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4114807,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Maringá",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4114906,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4115002,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4115101,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4115200,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Maringá",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4115309,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115358,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115408,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115457,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115507,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4115606,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115705,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4115739,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4115754,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4115804,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115853,
@@ -1757,7 +1976,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4115903,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116000,
@@ -1773,7 +1994,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4116059,
@@ -1781,7 +2003,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4116109,
@@ -1789,7 +2012,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116208,
@@ -1797,7 +2021,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4116307,
@@ -1805,7 +2030,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116406,
@@ -1813,7 +2039,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116505,
@@ -1821,7 +2048,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116604,
@@ -1829,7 +2057,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4116703,
@@ -1837,7 +2066,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4116802,
@@ -1845,7 +2075,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116901,
@@ -1853,7 +2084,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4116950,
@@ -1861,7 +2093,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117008,
@@ -1869,7 +2102,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4117057,
@@ -1877,7 +2111,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117107,
@@ -1885,7 +2120,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4117206,
@@ -1893,7 +2129,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4117214,
@@ -1901,7 +2138,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4117222,
@@ -1909,7 +2147,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117255,
@@ -1917,7 +2156,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117271,
@@ -1925,7 +2165,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4117297,
@@ -1933,7 +2174,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4117305,
@@ -1941,7 +2183,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4117404,
@@ -1949,7 +2192,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4117453,
@@ -1957,7 +2201,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117503,
@@ -1965,7 +2210,8 @@
     "microrregiao": "Maringá",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4117602,
@@ -1973,7 +2219,8 @@
     "microrregiao": "Palmas",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4117701,
@@ -1981,7 +2228,8 @@
     "microrregiao": "Ponta Grossa",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4117800,
@@ -1989,7 +2237,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4117909,
@@ -1997,7 +2246,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4118006,
@@ -2005,7 +2255,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118105,
@@ -2013,7 +2264,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118204,
@@ -2021,7 +2273,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4118303,
@@ -2029,7 +2282,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118402,
@@ -2037,7 +2291,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118451,
@@ -2045,7 +2300,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4118501,
@@ -2053,7 +2309,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4118600,
@@ -2061,7 +2318,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4118709,
@@ -2069,7 +2327,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4118808,
@@ -2077,7 +2336,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118857,
@@ -2085,7 +2345,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4118907,
@@ -2093,7 +2354,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4119004,
@@ -2101,7 +2363,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4119103,
@@ -2109,7 +2372,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4119152,
@@ -2117,7 +2381,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4119202,
@@ -2125,7 +2390,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Ibaiti",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4119251,
@@ -2133,7 +2399,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4119301,
@@ -2141,7 +2408,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4119400,
@@ -2149,7 +2417,8 @@
     "microrregiao": "Jaguariaíva",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4119509,
@@ -2157,7 +2426,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4119608,
@@ -2165,7 +2435,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4119657,
@@ -2173,7 +2444,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4119707,
@@ -2181,7 +2453,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4119806,
@@ -2189,7 +2462,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4119905,
@@ -2197,7 +2471,8 @@
     "microrregiao": "Ponta Grossa",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4119954,
@@ -2205,7 +2480,8 @@
     "microrregiao": "Paranaguá",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Paranaguá",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4120002,
@@ -2213,7 +2489,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4120101,
@@ -2221,7 +2498,8 @@
     "microrregiao": "Lapa",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4120150,
@@ -2229,7 +2507,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4120200,
@@ -2237,7 +2516,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4120309,
@@ -2245,7 +2525,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4120333,
@@ -2253,7 +2534,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4120358,
@@ -2261,7 +2543,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4120408,
@@ -2269,7 +2552,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4120507,
@@ -2277,7 +2561,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4120606,
@@ -2285,7 +2570,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4120655,
@@ -2293,7 +2579,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4120705,
@@ -2301,7 +2588,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4120804,
@@ -2309,7 +2597,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4120853,
@@ -2317,7 +2606,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Marechal Cândido Rondon",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4120903,
@@ -2325,7 +2615,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4121000,
@@ -2333,7 +2624,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4121109,
@@ -2341,7 +2633,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4121208,
@@ -2349,7 +2642,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4121257,
@@ -2357,7 +2651,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4121307,
@@ -2365,7 +2660,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4121356,
@@ -2373,7 +2669,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4121406,
@@ -2381,7 +2678,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4121505,
@@ -2389,7 +2687,8 @@
     "microrregiao": "Irati",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4121604,
@@ -2397,7 +2696,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4121703,
@@ -2405,7 +2705,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4121752,
@@ -2413,7 +2714,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4121802,
@@ -2421,7 +2723,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4121901,
@@ -2429,7 +2732,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122008,
@@ -2437,7 +2741,8 @@
     "microrregiao": "Irati",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4122107,
@@ -2445,7 +2750,8 @@
     "microrregiao": "Faxinal",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122156,
@@ -2453,7 +2759,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4122172,
@@ -2461,7 +2768,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122206,
@@ -2469,7 +2777,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4122305,
@@ -2477,7 +2786,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4122404,
@@ -2485,7 +2795,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122503,
@@ -2493,7 +2804,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4122602,
@@ -2501,7 +2813,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4122651,
@@ -2509,7 +2822,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122701,
@@ -2517,7 +2831,8 @@
     "microrregiao": "Apucarana",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4122800,
@@ -2525,7 +2840,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4122909,
@@ -2533,7 +2849,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4123006,
@@ -2541,7 +2858,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4123105,
@@ -2549,7 +2867,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4123204,
@@ -2557,7 +2876,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4123303,
@@ -2565,7 +2885,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4123402,
@@ -2573,7 +2894,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4123501,
@@ -2581,7 +2903,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4123600,
@@ -2589,7 +2912,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4123709,
@@ -2597,7 +2921,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4123808,
@@ -2605,7 +2930,8 @@
     "microrregiao": "Capanema",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4123824,
@@ -2613,7 +2939,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4123857,
@@ -2621,7 +2948,8 @@
     "microrregiao": "Pitanga",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Pitanga",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4123907,
@@ -2629,7 +2957,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4123956,
@@ -2637,7 +2966,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4124004,
@@ -2645,7 +2975,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4124020,
@@ -2653,7 +2984,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4124053,
@@ -2661,7 +2993,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4124103,
@@ -2669,7 +3002,8 @@
     "microrregiao": "Jacarezinho",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4124202,
@@ -2677,7 +3011,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4124301,
@@ -2685,7 +3020,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4124400,
@@ -2693,7 +3029,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4124509,
@@ -2701,7 +3038,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Paranacity - Colorado",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4124608,
@@ -2709,7 +3047,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4124707,
@@ -2717,7 +3056,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4124806,
@@ -2725,7 +3065,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4124905,
@@ -2733,7 +3074,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4125001,
@@ -2741,7 +3083,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Ivaiporã",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4125100,
@@ -2749,7 +3092,8 @@
     "microrregiao": "São Mateus do Sul",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4125209,
@@ -2757,7 +3101,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Dois Vizinhos",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4125308,
@@ -2765,7 +3110,8 @@
     "microrregiao": "Floraí",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4125357,
@@ -2773,7 +3119,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4125407,
@@ -2781,7 +3128,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4125456,
@@ -2789,7 +3137,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4125506,
@@ -2797,7 +3146,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4125555,
@@ -2805,7 +3155,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4125605,
@@ -2813,7 +3164,8 @@
     "microrregiao": "São Mateus do Sul",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4125704,
@@ -2821,7 +3173,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4125753,
@@ -2829,7 +3182,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4125803,
@@ -2837,7 +3191,8 @@
     "microrregiao": "Ivaiporã",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Apucarana",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4125902,
@@ -2845,7 +3200,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Loanda",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4126009,
@@ -2853,7 +3209,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126108,
@@ -2861,7 +3218,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4126207,
@@ -2869,7 +3227,8 @@
     "microrregiao": "Ibaiti",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126256,
@@ -2877,7 +3236,8 @@
     "microrregiao": "Maringá",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4126272,
@@ -2885,7 +3245,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4126306,
@@ -2893,7 +3254,8 @@
     "microrregiao": "Jaguariaíva",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Ponta Grossa",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4126355,
@@ -2901,7 +3263,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Foz do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4126405,
@@ -2909,7 +3272,8 @@
     "microrregiao": "Cornélio Procópio",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126504,
@@ -2917,7 +3281,8 @@
     "microrregiao": "Porecatu",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126603,
@@ -2925,7 +3290,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126652,
@@ -2933,7 +3299,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4126678,
@@ -2941,7 +3308,8 @@
     "microrregiao": "Londrina",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Londrina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4126702,
@@ -2949,7 +3317,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4126801,
@@ -2957,7 +3326,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4126900,
@@ -2965,7 +3335,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4127007,
@@ -2973,7 +3344,8 @@
     "microrregiao": "Prudentópolis",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "Irati",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4127106,
@@ -2981,7 +3353,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4127205,
@@ -2989,7 +3362,8 @@
     "microrregiao": "Campo Mourão",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4127304,
@@ -2997,7 +3371,8 @@
     "microrregiao": "Paranavaí",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Paranavaí",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4127403,
@@ -3005,7 +3380,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4127502,
@@ -3013,7 +3389,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4127601,
@@ -3021,7 +3398,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4127700,
@@ -3029,7 +3407,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4127809,
@@ -3037,7 +3416,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4127858,
@@ -3045,7 +3425,8 @@
     "microrregiao": "Cascavel",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4127882,
@@ -3053,7 +3434,8 @@
     "microrregiao": "Curitiba",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4127908,
@@ -3061,7 +3443,8 @@
     "microrregiao": "Cianorte",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Cianorte",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4127957,
@@ -3069,7 +3452,8 @@
     "microrregiao": "Toledo",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Toledo",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4127965,
@@ -3077,7 +3461,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Guarapuava",
-    "regiao_intermediaria": "Guarapuava"
+    "regiao_intermediaria": "Guarapuava",
+    "uf": "PR"
   },
   {
     "id": 4128005,
@@ -3085,7 +3470,8 @@
     "microrregiao": "Goioerê",
     "mesorregiao": "Centro Ocidental Paranaense",
     "regiao_imediata": "Campo Mourão",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4128104,
@@ -3093,7 +3479,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4128203,
@@ -3101,7 +3488,8 @@
     "microrregiao": "União da Vitória",
     "mesorregiao": "Sudeste Paranaense",
     "regiao_imediata": "União da Vitória",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4128302,
@@ -3109,7 +3497,8 @@
     "microrregiao": "Astorga",
     "mesorregiao": "Norte Central Paranaense",
     "regiao_imediata": "Maringá",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4128401,
@@ -3117,7 +3506,8 @@
     "microrregiao": "Assaí",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Cornélio Procópio ¿ Bandeirantes",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4128500,
@@ -3125,7 +3515,8 @@
     "microrregiao": "Wenceslau Braz",
     "mesorregiao": "Norte Pioneiro Paranaense",
     "regiao_imediata": "Santo Antônio da Platina",
-    "regiao_intermediaria": "Londrina"
+    "regiao_intermediaria": "Londrina",
+    "uf": "PR"
   },
   {
     "id": 4128534,
@@ -3133,7 +3524,8 @@
     "microrregiao": "Telêmaco Borba",
     "mesorregiao": "Centro Oriental Paranaense",
     "regiao_imediata": "Telêmaco Borba",
-    "regiao_intermediaria": "Ponta Grossa"
+    "regiao_intermediaria": "Ponta Grossa",
+    "uf": "PR"
   },
   {
     "id": 4128559,
@@ -3141,7 +3533,8 @@
     "microrregiao": "Foz do Iguaçu",
     "mesorregiao": "Oeste Paranaense",
     "regiao_imediata": "Cascavel",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4128609,
@@ -3149,7 +3542,8 @@
     "microrregiao": "Francisco Beltrão",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Francisco Beltrão",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4128625,
@@ -3157,7 +3551,8 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   },
   {
     "id": 4128633,
@@ -3165,7 +3560,8 @@
     "microrregiao": "Cerro Azul",
     "mesorregiao": "Metropolitana de Curitiba",
     "regiao_imediata": "Curitiba",
-    "regiao_intermediaria": "Curitiba"
+    "regiao_intermediaria": "Curitiba",
+    "uf": "PR"
   },
   {
     "id": 4128658,
@@ -3173,7 +3569,8 @@
     "microrregiao": "Guarapuava",
     "mesorregiao": "Centro-Sul Paranaense",
     "regiao_imediata": "Laranjeiras do Sul - Quedas do Iguaçu",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4128708,
@@ -3181,7 +3578,8 @@
     "microrregiao": "Pato Branco",
     "mesorregiao": "Sudoeste Paranaense",
     "regiao_imediata": "Pato Branco",
-    "regiao_intermediaria": "Cascavel"
+    "regiao_intermediaria": "Cascavel",
+    "uf": "PR"
   },
   {
     "id": 4128807,
@@ -3189,6 +3587,7 @@
     "microrregiao": "Umuarama",
     "mesorregiao": "Noroeste Paranaense",
     "regiao_imediata": "Umuarama",
-    "regiao_intermediaria": "Maringá"
+    "regiao_intermediaria": "Maringá",
+    "uf": "PR"
   }
 ]

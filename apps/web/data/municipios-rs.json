@@ -5,7 +5,8 @@
     "microrregiao": "Campanha Meridional",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4300059,
@@ -13,7 +14,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4300109,
@@ -21,7 +23,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4300208,
@@ -29,7 +32,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4300307,
@@ -37,7 +41,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4300406,
@@ -45,7 +50,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Uruguaiana",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4300455,
@@ -53,7 +59,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4300471,
@@ -61,7 +68,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4300505,
@@ -69,7 +77,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4300554,
@@ -77,7 +86,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4300570,
@@ -85,7 +95,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4300604,
@@ -93,7 +104,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4300638,
@@ -101,7 +113,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4300646,
@@ -109,7 +122,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4300661,
@@ -117,7 +131,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4300703,
@@ -125,7 +140,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4300802,
@@ -133,7 +149,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4300851,
@@ -141,7 +158,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4300877,
@@ -149,7 +167,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4300901,
@@ -157,7 +176,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301008,
@@ -165,7 +185,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4301057,
@@ -173,7 +194,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4301073,
@@ -181,7 +203,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4301107,
@@ -189,7 +212,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4301206,
@@ -197,7 +221,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4301305,
@@ -205,7 +230,8 @@
     "microrregiao": "Jaguarão",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4301404,
@@ -213,7 +239,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301503,
@@ -221,7 +248,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4301552,
@@ -229,7 +257,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301602,
@@ -237,7 +266,8 @@
     "microrregiao": "Campanha Meridional",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4301636,
@@ -245,7 +275,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4301651,
@@ -253,7 +284,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4301701,
@@ -261,7 +293,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301750,
@@ -269,7 +302,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4301800,
@@ -277,7 +311,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301859,
@@ -285,7 +320,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4301875,
@@ -293,7 +329,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Uruguaiana",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4301909,
@@ -301,7 +338,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4301925,
@@ -309,7 +347,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4301958,
@@ -317,7 +356,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302006,
@@ -325,7 +365,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302055,
@@ -333,7 +374,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302105,
@@ -341,7 +383,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4302154,
@@ -349,7 +392,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302204,
@@ -357,7 +401,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4302220,
@@ -365,7 +410,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302238,
@@ -373,7 +419,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4302253,
@@ -381,7 +428,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4302303,
@@ -389,7 +437,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4302352,
@@ -397,7 +446,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4302378,
@@ -405,7 +455,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4302402,
@@ -413,7 +464,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4302451,
@@ -421,7 +473,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4302501,
@@ -429,7 +482,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4302584,
@@ -437,7 +491,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4302600,
@@ -445,7 +500,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4302659,
@@ -453,7 +509,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4302709,
@@ -461,7 +518,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4302808,
@@ -469,7 +527,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4302907,
@@ -477,7 +536,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4303004,
@@ -485,7 +545,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Cachoeira do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4303103,
@@ -493,7 +554,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4303202,
@@ -501,7 +563,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4303301,
@@ -509,7 +572,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4303400,
@@ -517,7 +581,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4303509,
@@ -525,7 +590,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4303558,
@@ -533,7 +599,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4303608,
@@ -541,7 +608,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4303673,
@@ -549,7 +617,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4303707,
@@ -557,7 +626,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4303806,
@@ -565,7 +635,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4303905,
@@ -573,7 +644,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304002,
@@ -581,7 +653,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4304101,
@@ -589,7 +662,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4304200,
@@ -597,7 +671,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4304309,
@@ -605,7 +680,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4304358,
@@ -613,7 +689,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4304408,
@@ -621,7 +698,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4304507,
@@ -629,7 +707,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4304606,
@@ -637,7 +716,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304614,
@@ -645,7 +725,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4304622,
@@ -653,7 +734,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4304630,
@@ -661,7 +743,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304655,
@@ -669,7 +752,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santiago",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4304663,
@@ -677,7 +761,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4304671,
@@ -685,7 +770,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304689,
@@ -693,7 +779,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304697,
@@ -701,7 +788,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4304705,
@@ -709,7 +797,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4304713,
@@ -717,7 +806,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4304804,
@@ -725,7 +815,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4304853,
@@ -733,7 +824,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4304903,
@@ -741,7 +833,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4304952,
@@ -749,7 +842,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305009,
@@ -757,7 +851,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305108,
@@ -765,7 +860,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4305116,
@@ -773,7 +869,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305124,
@@ -781,7 +878,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4305132,
@@ -789,7 +887,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Cachoeira do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4305157,
@@ -797,7 +896,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305173,
@@ -805,7 +905,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4305207,
@@ -813,7 +914,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305306,
@@ -821,7 +923,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305355,
@@ -829,7 +932,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4305371,
@@ -837,7 +941,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305405,
@@ -845,7 +950,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305439,
@@ -853,7 +959,8 @@
     "microrregiao": "Litoral Lagunar",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4305447,
@@ -861,7 +968,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4305454,
@@ -869,7 +977,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4305504,
@@ -877,7 +986,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305587,
@@ -885,7 +995,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4305603,
@@ -893,7 +1004,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305702,
@@ -901,7 +1013,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305801,
@@ -909,7 +1022,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305835,
@@ -917,7 +1031,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4305850,
@@ -925,7 +1040,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4305871,
@@ -933,7 +1049,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305900,
@@ -941,7 +1058,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4305934,
@@ -949,7 +1067,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4305959,
@@ -957,7 +1076,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4305975,
@@ -965,7 +1085,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306007,
@@ -973,7 +1094,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4306056,
@@ -981,7 +1103,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4306072,
@@ -989,7 +1112,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306106,
@@ -997,7 +1121,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306130,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306205,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4306304,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306320,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4306353,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4306379,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4306403,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4306429,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306452,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4306502,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4306551,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4306601,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Campanha Meridional",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4306700,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4306734,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4306759,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4306767,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4306809,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4306908,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4306924,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306932,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4306957,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4306973,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307005,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307054,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307104,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Jaguarão",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4307203,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307302,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307401,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4307450,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4307500,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307559,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4307609,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4307708,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4307807,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4307815,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4307831,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4307864,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4307906,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4308003,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4308052,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308078,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4308102,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4308201,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4308250,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308300,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308409,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4308433,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4308458,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308508,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308607,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4308656,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4308706,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308805,
@@ -1421,7 +1598,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4308854,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4308904,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4309001,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4309050,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4309100,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4309126,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4309159,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4309209,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4309258,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4309308,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4309407,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4309506,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4309555,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4309571,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4309605,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4309654,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Campanha Meridional",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4309704,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4309753,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4309803,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4309902,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4309951,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310009,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310108,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4310207,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4310306,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4310330,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4310363,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4310405,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4310413,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4310439,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4310462,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310504,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310538,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4310553,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santiago",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4310579,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310603,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Borja",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4310652,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4310702,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310751,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4310801,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4310850,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310876,
@@ -1757,7 +1976,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4310900,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311007,
@@ -1773,7 +1994,8 @@
     "microrregiao": "Jaguarão",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4311106,
@@ -1781,7 +2003,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4311122,
@@ -1789,7 +2012,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4311130,
@@ -1797,7 +2021,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4311155,
@@ -1805,7 +2030,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4311205,
@@ -1813,7 +2039,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4311239,
@@ -1821,7 +2048,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4311254,
@@ -1829,7 +2057,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4311270,
@@ -1837,7 +2066,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311304,
@@ -1845,7 +2075,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311403,
@@ -1853,7 +2084,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4311429,
@@ -1861,7 +2093,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311502,
@@ -1869,7 +2102,8 @@
     "microrregiao": "Campanha Meridional",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4311601,
@@ -1877,7 +2111,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311627,
@@ -1885,7 +2120,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4311643,
@@ -1893,7 +2129,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4311700,
@@ -1901,7 +2138,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311718,
@@ -1909,7 +2147,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Borja",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4311734,
@@ -1917,7 +2156,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4311759,
@@ -1925,7 +2165,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Uruguaiana",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4311775,
@@ -1933,7 +2174,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4311791,
@@ -1941,7 +2183,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4311809,
@@ -1949,7 +2192,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311908,
@@ -1957,7 +2201,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4311981,
@@ -1965,7 +2210,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312005,
@@ -1973,7 +2219,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312054,
@@ -1981,7 +2228,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4312104,
@@ -1989,7 +2237,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4312138,
@@ -1997,7 +2246,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312153,
@@ -2005,7 +2255,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4312179,
@@ -2013,7 +2264,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4312203,
@@ -2021,7 +2273,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312252,
@@ -2029,7 +2282,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312302,
@@ -2037,7 +2291,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4312351,
@@ -2045,7 +2300,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312377,
@@ -2053,7 +2309,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312385,
@@ -2061,7 +2318,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312401,
@@ -2069,7 +2327,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312427,
@@ -2077,7 +2336,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312443,
@@ -2085,7 +2345,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312450,
@@ -2093,7 +2354,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4312476,
@@ -2101,7 +2363,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312500,
@@ -2109,7 +2372,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4312609,
@@ -2117,7 +2381,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4312617,
@@ -2125,7 +2390,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312625,
@@ -2133,7 +2399,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312658,
@@ -2141,7 +2408,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312674,
@@ -2149,7 +2417,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312708,
@@ -2157,7 +2426,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312757,
@@ -2165,7 +2435,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4312807,
@@ -2173,7 +2444,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312906,
@@ -2181,7 +2453,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4312955,
@@ -2189,7 +2462,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313003,
@@ -2197,7 +2471,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4313011,
@@ -2205,7 +2480,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4313037,
@@ -2213,7 +2489,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santiago",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4313060,
@@ -2221,7 +2498,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4313086,
@@ -2229,7 +2507,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4313102,
@@ -2237,7 +2516,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4313201,
@@ -2245,7 +2525,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4313300,
@@ -2253,7 +2534,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4313334,
@@ -2261,7 +2543,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4313359,
@@ -2269,7 +2552,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4313375,
@@ -2277,7 +2561,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4313391,
@@ -2285,7 +2570,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Cachoeira do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4313409,
@@ -2293,7 +2579,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4313425,
@@ -2301,7 +2588,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4313441,
@@ -2309,7 +2597,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313466,
@@ -2317,7 +2606,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313490,
@@ -2325,7 +2615,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313508,
@@ -2333,7 +2624,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4313607,
@@ -2341,7 +2633,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313656,
@@ -2349,7 +2642,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4313706,
@@ -2357,7 +2651,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313805,
@@ -2365,7 +2660,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4313904,
@@ -2373,7 +2669,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4313953,
@@ -2381,7 +2678,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4314001,
@@ -2389,7 +2687,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4314027,
@@ -2397,7 +2696,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Cachoeira do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4314035,
@@ -2405,7 +2705,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4314050,
@@ -2413,7 +2714,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4314068,
@@ -2421,7 +2723,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4314076,
@@ -2429,7 +2732,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4314100,
@@ -2437,7 +2741,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314134,
@@ -2445,7 +2750,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314159,
@@ -2453,7 +2759,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4314175,
@@ -2461,7 +2768,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4314209,
@@ -2469,7 +2777,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4314308,
@@ -2477,7 +2786,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4314407,
@@ -2485,7 +2795,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4314423,
@@ -2493,7 +2804,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4314456,
@@ -2501,7 +2813,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314464,
@@ -2509,7 +2822,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4314472,
@@ -2517,7 +2831,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4314498,
@@ -2525,7 +2840,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314506,
@@ -2533,7 +2849,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Bagé",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4314548,
@@ -2541,7 +2858,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4314555,
@@ -2549,7 +2867,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4314605,
@@ -2557,7 +2876,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4314704,
@@ -2565,7 +2885,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314753,
@@ -2573,7 +2894,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4314779,
@@ -2581,7 +2903,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314787,
@@ -2589,7 +2912,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4314803,
@@ -2597,7 +2921,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4314902,
@@ -2605,7 +2930,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4315008,
@@ -2613,7 +2939,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4315057,
@@ -2621,7 +2948,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4315073,
@@ -2629,7 +2957,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4315107,
@@ -2637,7 +2966,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4315131,
@@ -2645,7 +2975,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315149,
@@ -2653,7 +2984,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4315156,
@@ -2661,7 +2993,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315172,
@@ -2669,7 +3002,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4315206,
@@ -2677,7 +3011,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315305,
@@ -2685,7 +3020,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Santana do Livramento",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4315313,
@@ -2693,7 +3029,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4315321,
@@ -2701,7 +3038,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4315354,
@@ -2709,7 +3047,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4315404,
@@ -2717,7 +3056,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4315453,
@@ -2725,7 +3065,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315503,
@@ -2733,7 +3074,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4315552,
@@ -2741,7 +3083,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4315602,
@@ -2749,7 +3092,8 @@
     "microrregiao": "Litoral Lagunar",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4315701,
@@ -2757,7 +3101,8 @@
     "microrregiao": "Cachoeira do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315750,
@@ -2765,7 +3110,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4315800,
@@ -2773,7 +3119,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4315909,
@@ -2781,7 +3128,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4315958,
@@ -2789,7 +3137,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4316006,
@@ -2797,7 +3146,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4316105,
@@ -2805,7 +3155,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316204,
@@ -2813,7 +3164,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316303,
@@ -2821,7 +3173,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4316402,
@@ -2829,7 +3182,8 @@
     "microrregiao": "Campanha Central",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Santana do Livramento",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4316428,
@@ -2837,7 +3191,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316436,
@@ -2845,7 +3200,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316451,
@@ -2853,7 +3209,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316477,
@@ -2861,7 +3218,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4316501,
@@ -2869,7 +3227,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4316600,
@@ -2877,7 +3236,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316709,
@@ -2885,7 +3245,8 @@
     "microrregiao": "Cruz Alta",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316733,
@@ -2893,7 +3254,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4316758,
@@ -2901,7 +3263,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4316808,
@@ -2909,7 +3272,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4316907,
@@ -2917,7 +3281,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4316956,
@@ -2925,7 +3290,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4316972,
@@ -2933,7 +3299,8 @@
     "microrregiao": "Campanha Central",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4317004,
@@ -2941,7 +3308,8 @@
     "microrregiao": "Serras de Sudeste",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4317103,
@@ -2949,7 +3317,8 @@
     "microrregiao": "Campanha Central",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Santana do Livramento",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4317202,
@@ -2957,7 +3326,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4317251,
@@ -2965,7 +3335,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4317301,
@@ -2973,7 +3344,8 @@
     "microrregiao": "Litoral Lagunar",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4317400,
@@ -2981,7 +3353,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santiago",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4317509,
@@ -2989,7 +3362,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4317558,
@@ -2997,7 +3371,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4317608,
@@ -3005,7 +3380,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4317707,
@@ -3013,7 +3389,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4317756,
@@ -3021,7 +3398,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4317806,
@@ -3029,7 +3407,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4317905,
@@ -3037,7 +3416,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4317954,
@@ -3045,7 +3425,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318002,
@@ -3053,7 +3434,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Borja",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4318051,
@@ -3061,7 +3443,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318101,
@@ -3069,7 +3452,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4318200,
@@ -3077,7 +3461,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4318309,
@@ -3085,7 +3470,8 @@
     "microrregiao": "Campanha Central",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4318408,
@@ -3093,7 +3479,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4318424,
@@ -3101,7 +3488,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318432,
@@ -3109,7 +3497,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4318440,
@@ -3117,7 +3506,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4318457,
@@ -3125,7 +3515,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318465,
@@ -3133,7 +3524,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318481,
@@ -3141,7 +3533,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4318499,
@@ -3149,7 +3542,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4318507,
@@ -3157,7 +3551,8 @@
     "microrregiao": "Litoral Lagunar",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4318606,
@@ -3165,7 +3560,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4318614,
@@ -3173,7 +3569,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4318622,
@@ -3181,7 +3578,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4318705,
@@ -3189,7 +3587,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4318804,
@@ -3197,7 +3596,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4318903,
@@ -3205,7 +3605,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319000,
@@ -3213,7 +3614,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4319109,
@@ -3221,7 +3623,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319125,
@@ -3229,7 +3632,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4319158,
@@ -3237,7 +3641,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319208,
@@ -3245,7 +3650,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "São Luiz Gonzaga",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319307,
@@ -3253,7 +3659,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319356,
@@ -3261,7 +3668,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Montenegro",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4319364,
@@ -3269,7 +3677,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Palmeira das Missões",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4319372,
@@ -3277,7 +3686,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319406,
@@ -3285,7 +3695,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4319505,
@@ -3293,7 +3704,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4319604,
@@ -3301,7 +3713,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4319703,
@@ -3309,7 +3722,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4319711,
@@ -3317,7 +3731,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4319737,
@@ -3325,7 +3740,8 @@
     "microrregiao": "Ijuí",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Ijuí",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4319752,
@@ -3333,7 +3749,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4319802,
@@ -3341,7 +3758,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4319901,
@@ -3349,7 +3767,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4320008,
@@ -3357,7 +3776,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4320107,
@@ -3365,7 +3785,8 @@
     "microrregiao": "Carazinho",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Carazinho",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320206,
@@ -3373,7 +3794,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320230,
@@ -3381,7 +3803,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4320263,
@@ -3389,7 +3812,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4320305,
@@ -3397,7 +3821,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320321,
@@ -3405,7 +3830,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4320354,
@@ -3413,7 +3839,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4320404,
@@ -3421,7 +3848,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4320453,
@@ -3429,7 +3857,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4320503,
@@ -3437,7 +3866,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320552,
@@ -3445,7 +3875,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4320578,
@@ -3453,7 +3884,8 @@
     "microrregiao": "Cerro Largo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4320602,
@@ -3461,7 +3893,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320651,
@@ -3469,7 +3902,8 @@
     "microrregiao": "Restinga Seca",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4320677,
@@ -3477,7 +3911,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4320701,
@@ -3485,7 +3920,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4320800,
@@ -3493,7 +3929,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Soledade",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4320859,
@@ -3501,7 +3938,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4320909,
@@ -3509,7 +3947,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321006,
@@ -3517,7 +3956,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321105,
@@ -3525,7 +3965,8 @@
     "microrregiao": "Camaquã",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Camaquã",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321204,
@@ -3533,7 +3974,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321303,
@@ -3541,7 +3983,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4321329,
@@ -3549,7 +3992,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321352,
@@ -3557,7 +4001,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321402,
@@ -3565,7 +4010,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4321436,
@@ -3573,7 +4019,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321451,
@@ -3581,7 +4028,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4321469,
@@ -3589,7 +4037,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321477,
@@ -3597,7 +4046,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4321493,
@@ -3605,7 +4055,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santa Maria",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4321501,
@@ -3613,7 +4064,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321600,
@@ -3621,7 +4073,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321626,
@@ -3629,7 +4082,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4321634,
@@ -3637,7 +4091,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321667,
@@ -3645,7 +4100,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321709,
@@ -3653,7 +4109,8 @@
     "microrregiao": "Gramado-Canela",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Taquara - Parobé - Igrejinha",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321808,
@@ -3661,7 +4118,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três de Maio",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4321832,
@@ -3669,7 +4127,8 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Torres",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4321857,
@@ -3677,7 +4136,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4321907,
@@ -3685,7 +4145,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4321956,
@@ -3693,7 +4154,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Nonoai",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4322004,
@@ -3701,7 +4163,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Charqueadas - Triunfo - São Jerônimo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4322103,
@@ -3709,7 +4172,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4322152,
@@ -3717,7 +4181,8 @@
     "microrregiao": "Soledade",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Sobradinho",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322186,
@@ -3725,7 +4190,8 @@
     "microrregiao": "Sananduva",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Lagoa Vermelha",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4322202,
@@ -3733,7 +4199,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Cruz Alta",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4322251,
@@ -3741,7 +4208,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Novo Hamburgo - São Leopoldo",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4322301,
@@ -3749,7 +4217,8 @@
     "microrregiao": "Santa Rosa",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santa Rosa",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4322327,
@@ -3757,7 +4226,8 @@
     "microrregiao": "Pelotas",
     "mesorregiao": "Sudeste Rio-grandense",
     "regiao_imediata": "Pelotas",
-    "regiao_intermediaria": "Pelotas"
+    "regiao_intermediaria": "Pelotas",
+    "uf": "RS"
   },
   {
     "id": 4322343,
@@ -3765,7 +4235,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Cerro Largo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4322350,
@@ -3773,7 +4244,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4322376,
@@ -3781,7 +4253,8 @@
     "microrregiao": "Santiago",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "Santiago",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4322400,
@@ -3789,7 +4262,8 @@
     "microrregiao": "Campanha Ocidental",
     "mesorregiao": "Sudoeste Rio-grandense",
     "regiao_imediata": "Uruguaiana",
-    "regiao_intermediaria": "Uruguaiana"
+    "regiao_intermediaria": "Uruguaiana",
+    "uf": "RS"
   },
   {
     "id": 4322509,
@@ -3797,7 +4271,8 @@
     "microrregiao": "Vacaria",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Vacaria",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4322525,
@@ -3805,7 +4280,8 @@
     "microrregiao": "São Jerônimo",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322533,
@@ -3813,7 +4289,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322541,
@@ -3821,7 +4298,8 @@
     "microrregiao": "Montenegro",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Caxias do Sul",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4322558,
@@ -3829,7 +4307,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4322608,
@@ -3837,7 +4316,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322707,
@@ -3845,7 +4325,8 @@
     "microrregiao": "Santa Cruz do Sul",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Santa Cruz do Sul",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322806,
@@ -3853,7 +4334,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4322855,
@@ -3861,7 +4343,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Encantado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4322905,
@@ -3869,7 +4352,8 @@
     "microrregiao": "Erechim",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Erechim",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323002,
@@ -3877,7 +4361,8 @@
     "microrregiao": "Porto Alegre",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Porto Alegre",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   },
   {
     "id": 4323101,
@@ -3885,7 +4370,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323200,
@@ -3893,7 +4379,8 @@
     "microrregiao": "Não-Me-Toque",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Passo Fundo",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323309,
@@ -3901,7 +4388,8 @@
     "microrregiao": "Caxias do Sul",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Bento Gonçalves",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4323358,
@@ -3909,7 +4397,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Tapejara - Sananduva",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323408,
@@ -3917,7 +4406,8 @@
     "microrregiao": "Passo Fundo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Marau",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323457,
@@ -3925,7 +4415,8 @@
     "microrregiao": "Santa Maria",
     "mesorregiao": "Centro Ocidental Rio-grandense",
     "regiao_imediata": "São Gabriel - Caçapava do Sul",
-    "regiao_intermediaria": "Santa Maria"
+    "regiao_intermediaria": "Santa Maria",
+    "uf": "RS"
   },
   {
     "id": 4323507,
@@ -3933,7 +4424,8 @@
     "microrregiao": "Frederico Westphalen",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Frederico Westphalen",
-    "regiao_intermediaria": "Passo Fundo"
+    "regiao_intermediaria": "Passo Fundo",
+    "uf": "RS"
   },
   {
     "id": 4323606,
@@ -3941,7 +4433,8 @@
     "microrregiao": "Guaporé",
     "mesorregiao": "Nordeste Rio-grandense",
     "regiao_imediata": "Nova Prata - Guaporé",
-    "regiao_intermediaria": "Caxias do Sul"
+    "regiao_intermediaria": "Caxias do Sul",
+    "uf": "RS"
   },
   {
     "id": 4323705,
@@ -3949,7 +4442,8 @@
     "microrregiao": "Três Passos",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Três Passos",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4323754,
@@ -3957,7 +4451,8 @@
     "microrregiao": "Santo Ângelo",
     "mesorregiao": "Noroeste Rio-grandense",
     "regiao_imediata": "Santo Ângelo",
-    "regiao_intermediaria": "Ijuí"
+    "regiao_intermediaria": "Ijuí",
+    "uf": "RS"
   },
   {
     "id": 4323770,
@@ -3965,7 +4460,8 @@
     "microrregiao": "Lajeado-Estrela",
     "mesorregiao": "Centro Oriental Rio-grandense",
     "regiao_imediata": "Lajeado",
-    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado"
+    "regiao_intermediaria": "Santa Cruz do Sul - Lajeado",
+    "uf": "RS"
   },
   {
     "id": 4323804,
@@ -3973,6 +4469,7 @@
     "microrregiao": "Osório",
     "mesorregiao": "Metropolitana de Porto Alegre",
     "regiao_imediata": "Tramandaí - Osório",
-    "regiao_intermediaria": "Porto Alegre"
+    "regiao_intermediaria": "Porto Alegre",
+    "uf": "RS"
   }
 ]

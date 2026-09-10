@@ -5,7 +5,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5200100,
@@ -13,7 +14,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5200134,
@@ -21,7 +23,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5200159,
@@ -29,7 +32,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5200175,
@@ -37,7 +41,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5200209,
@@ -45,7 +50,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5200258,
@@ -53,7 +59,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5200308,
@@ -61,7 +68,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5200506,
@@ -69,7 +77,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5200555,
@@ -77,7 +86,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5200605,
@@ -85,7 +95,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5200803,
@@ -93,7 +104,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5200829,
@@ -101,7 +113,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5200852,
@@ -109,7 +122,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5200902,
@@ -117,7 +131,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5201108,
@@ -125,7 +140,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5201207,
@@ -133,7 +149,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5201306,
@@ -141,7 +158,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5201405,
@@ -149,7 +167,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5201454,
@@ -157,7 +176,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5201504,
@@ -165,7 +185,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5201603,
@@ -173,7 +194,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5201702,
@@ -181,7 +203,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5201801,
@@ -189,7 +212,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5202155,
@@ -197,7 +221,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5202353,
@@ -205,7 +230,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5202502,
@@ -213,7 +239,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5202601,
@@ -221,7 +248,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5202809,
@@ -229,7 +257,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5203104,
@@ -237,7 +266,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5203203,
@@ -245,7 +275,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5203302,
@@ -253,7 +284,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5203401,
@@ -261,7 +293,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5203500,
@@ -269,7 +302,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5203559,
@@ -277,7 +311,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5203575,
@@ -285,7 +320,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5203609,
@@ -293,7 +329,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5203807,
@@ -301,7 +338,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5203906,
@@ -309,7 +347,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5203939,
@@ -317,7 +356,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5203962,
@@ -325,7 +365,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5204003,
@@ -333,7 +374,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5204102,
@@ -341,7 +383,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5204201,
@@ -349,7 +392,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5204250,
@@ -357,7 +401,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5204300,
@@ -365,7 +410,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5204409,
@@ -373,7 +419,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5204508,
@@ -381,7 +428,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5204557,
@@ -389,7 +437,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5204607,
@@ -397,7 +446,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5204656,
@@ -405,7 +455,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5204706,
@@ -413,7 +464,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5204805,
@@ -421,7 +473,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5204854,
@@ -429,7 +482,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5204904,
@@ -437,7 +491,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5204953,
@@ -445,7 +500,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5205000,
@@ -453,7 +509,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5205059,
@@ -461,7 +518,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5205109,
@@ -469,7 +527,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5205208,
@@ -477,7 +536,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5205307,
@@ -485,7 +545,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5205406,
@@ -493,7 +554,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5205455,
@@ -501,7 +563,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5205471,
@@ -509,7 +572,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5205497,
@@ -517,7 +581,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5205513,
@@ -525,7 +590,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5205521,
@@ -533,7 +599,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5205703,
@@ -541,7 +608,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5205802,
@@ -549,7 +617,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5205901,
@@ -557,7 +626,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5206206,
@@ -565,7 +635,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5206305,
@@ -573,7 +644,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5206404,
@@ -581,7 +653,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5206503,
@@ -589,7 +662,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5206602,
@@ -597,7 +671,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5206701,
@@ -605,7 +680,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5206800,
@@ -613,7 +689,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5206909,
@@ -621,7 +698,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5207105,
@@ -629,7 +707,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5207253,
@@ -637,7 +716,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5207352,
@@ -645,7 +725,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5207402,
@@ -653,7 +734,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5207501,
@@ -661,7 +743,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5207535,
@@ -669,7 +752,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5207600,
@@ -677,7 +761,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5207808,
@@ -685,7 +770,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5207907,
@@ -693,7 +779,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5208004,
@@ -701,7 +788,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5208103,
@@ -709,7 +797,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5208152,
@@ -717,7 +806,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5208301,
@@ -725,7 +815,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5208400,
@@ -733,7 +824,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5208509,
@@ -741,7 +833,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5208608,
@@ -749,7 +842,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5208707,
@@ -757,7 +851,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5208806,
@@ -765,7 +860,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5208905,
@@ -773,7 +869,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5209101,
@@ -781,7 +878,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5209150,
@@ -789,7 +887,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Quirinópolis",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5209200,
@@ -797,7 +896,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5209291,
@@ -805,7 +905,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5209408,
@@ -813,7 +914,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5209457,
@@ -821,7 +923,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5209606,
@@ -829,7 +932,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5209705,
@@ -837,7 +941,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5209804,
@@ -845,7 +950,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5209903,
@@ -853,7 +959,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5209937,
@@ -861,7 +968,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Quirinópolis",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5209952,
@@ -869,7 +977,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5210000,
@@ -877,7 +986,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5210109,
@@ -885,7 +995,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5210158,
@@ -893,7 +1004,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5210208,
@@ -901,7 +1013,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5210307,
@@ -909,7 +1022,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5210406,
@@ -917,7 +1031,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5210562,
@@ -925,7 +1040,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5210604,
@@ -933,7 +1049,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5210802,
@@ -941,7 +1058,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5210901,
@@ -949,7 +1067,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5211008,
@@ -957,7 +1076,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5211206,
@@ -965,7 +1085,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5211305,
@@ -973,7 +1094,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5211404,
@@ -981,7 +1103,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5211503,
@@ -989,7 +1112,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5211602,
@@ -997,7 +1121,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5211701,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5211800,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5211909,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5212006,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5212055,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5212105,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5212204,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5212253,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5212303,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5212501,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5212600,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5212709,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5212808,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5212907,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5212956,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5213004,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5213053,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5213087,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5213103,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5213400,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5213509,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5213707,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5213756,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5213772,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5213806,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5213855,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5213905,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5214002,
@@ -1221,7 +1373,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5214051,
@@ -1229,7 +1382,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214101,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214408,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5214507,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5214606,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214705,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214804,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5214838,
@@ -1285,7 +1445,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5214861,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214879,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5214903,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5215009,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215207,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Iporá",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215231,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5215256,
@@ -1341,7 +1508,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5215306,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Pires do Rio",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215405,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215504,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215603,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5215652,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5215702,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5215801,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Pires do Rio",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5215900,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5216007,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Itumbiara",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5216304,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Quirinópolis",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5216403,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5216452,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5216809,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5216908,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5217104,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5217203,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Aragarças",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Iporá",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5217302,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5217401,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Pires do Rio",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5217609,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Águas Lindas de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5217708,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5218003,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5218052,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5218102,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5218300,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5218391,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5218508,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Quirinópolis",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5218607,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5218706,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5218789,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Caldas Novas-Morrinhos",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5218805,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5218904,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5219001,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5219100,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5219209,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Pires do Rio",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5219258,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Rio Vermelho",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Goiás - Itapuranga",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5219308,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5219357,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5219407,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5219456,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5219506,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5219605,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5219704,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5219712,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5219738,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5219753,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5219803,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5219902,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5220009,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5220058,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5220108,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "São Luís de Montes Belos",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5220157,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5220207,
@@ -1757,7 +1976,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5220264,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5220280,
@@ -1773,7 +1994,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5220405,
@@ -1781,7 +2003,8 @@
     "microrregiao": "Quirinópolis",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Quirinópolis",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5220454,
@@ -1789,7 +2012,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5220504,
@@ -1797,7 +2021,8 @@
     "microrregiao": "Sudoeste de Goiás",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Jataí-Mineiros",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5220603,
@@ -1805,7 +2030,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5220686,
@@ -1813,7 +2039,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5220702,
@@ -1821,7 +2048,8 @@
     "microrregiao": "Vão do Paranã",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Posse-Campos Belos",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5221007,
@@ -1829,7 +2057,8 @@
     "microrregiao": "Anápolis",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Inhumas - Itaberaí - Anicuns",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5221080,
@@ -1837,7 +2066,8 @@
     "microrregiao": "Chapada dos Veadeiros",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5221197,
@@ -1845,7 +2075,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5221304,
@@ -1853,7 +2084,8 @@
     "microrregiao": "Catalão",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Catalão",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5221403,
@@ -1861,7 +2093,8 @@
     "microrregiao": "Goiânia",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5221452,
@@ -1869,7 +2102,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Porangatu",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5221502,
@@ -1877,7 +2111,8 @@
     "microrregiao": "Anicuns",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Palmeiras de Goiás",
-    "regiao_intermediaria": "São Luís de Montes Belos - Iporá"
+    "regiao_intermediaria": "São Luís de Montes Belos - Iporá",
+    "uf": "GO"
   },
   {
     "id": 5221551,
@@ -1885,7 +2120,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Rio Verde",
-    "regiao_intermediaria": "Rio Verde"
+    "regiao_intermediaria": "Rio Verde",
+    "uf": "GO"
   },
   {
     "id": 5221577,
@@ -1893,7 +2129,8 @@
     "microrregiao": "São Miguel do Araguaia",
     "mesorregiao": "Noroeste Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5221601,
@@ -1901,7 +2138,8 @@
     "microrregiao": "Porangatu",
     "mesorregiao": "Norte Goiano",
     "regiao_imediata": "Uruaçu - Niquelândia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5221700,
@@ -1909,7 +2147,8 @@
     "microrregiao": "Ceres",
     "mesorregiao": "Centro Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   },
   {
     "id": 5221809,
@@ -1917,7 +2156,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Pires do Rio",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5221858,
@@ -1925,7 +2165,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Luziânia",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5221908,
@@ -1933,7 +2174,8 @@
     "microrregiao": "Vale do Rio dos Bois",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Goiânia",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5222005,
@@ -1941,7 +2183,8 @@
     "microrregiao": "Pires do Rio",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Anápolis",
-    "regiao_intermediaria": "Goiânia"
+    "regiao_intermediaria": "Goiânia",
+    "uf": "GO"
   },
   {
     "id": 5222054,
@@ -1949,7 +2192,8 @@
     "microrregiao": "Meia Ponte",
     "mesorregiao": "Sul Goiano",
     "regiao_imediata": "Piracanjuba",
-    "regiao_intermediaria": "Itumbiara"
+    "regiao_intermediaria": "Itumbiara",
+    "uf": "GO"
   },
   {
     "id": 5222203,
@@ -1957,7 +2201,8 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Flores de Goiás",
-    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás"
+    "regiao_intermediaria": "Luziânia - Águas Lindas de Goiás",
+    "uf": "GO"
   },
   {
     "id": 5222302,
@@ -1965,6 +2210,7 @@
     "microrregiao": "Entorno de Brasília",
     "mesorregiao": "Leste Goiano",
     "regiao_imediata": "Ceres - Rialma - Goianésia",
-    "regiao_intermediaria": "Porangatu - Uruaçu"
+    "regiao_intermediaria": "Porangatu - Uruaçu",
+    "uf": "GO"
   }
 ]

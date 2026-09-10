@@ -5,7 +5,8 @@
     "microrregiao": "Tefé",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1300060,
@@ -13,7 +14,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1300086,
@@ -21,7 +23,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manacapuru",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300102,
@@ -29,7 +32,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Coari",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300144,
@@ -37,7 +41,8 @@
     "microrregiao": "Madeira",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Manicoré",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1300201,
@@ -45,7 +50,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1300300,
@@ -53,7 +59,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300409,
@@ -61,7 +68,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "São Gabriel da Cachoeira",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300508,
@@ -69,7 +77,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Parintins",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1300607,
@@ -77,7 +86,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1300631,
@@ -85,7 +95,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Coari",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300680,
@@ -93,7 +104,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Parintins",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1300706,
@@ -101,7 +113,8 @@
     "microrregiao": "Boca do Acre",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Lábrea",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1300805,
@@ -109,7 +122,8 @@
     "microrregiao": "Madeira",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300839,
@@ -117,7 +131,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manacapuru",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1300904,
@@ -125,7 +140,8 @@
     "microrregiao": "Purus",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Lábrea",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1301001,
@@ -133,7 +149,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301100,
@@ -141,7 +158,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1301159,
@@ -149,7 +167,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1301209,
@@ -157,7 +176,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Coari",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1301308,
@@ -165,7 +185,8 @@
     "microrregiao": "Coari",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Coari",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1301407,
@@ -173,7 +194,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Eirunepé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301506,
@@ -181,7 +203,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Eirunepé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301605,
@@ -189,7 +212,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301654,
@@ -197,7 +221,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Eirunepé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301704,
@@ -205,7 +230,8 @@
     "microrregiao": "Madeira",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Manicoré",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1301803,
@@ -213,7 +239,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Eirunepé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1301852,
@@ -221,7 +248,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1301902,
@@ -229,7 +257,8 @@
     "microrregiao": "Itacoatiara",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1301951,
@@ -237,7 +266,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Eirunepé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1302009,
@@ -245,7 +275,8 @@
     "microrregiao": "Itacoatiara",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1302108,
@@ -253,7 +284,8 @@
     "microrregiao": "Japurá",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1302207,
@@ -261,7 +293,8 @@
     "microrregiao": "Juruá",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1302306,
@@ -269,7 +302,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1302405,
@@ -277,7 +311,8 @@
     "microrregiao": "Purus",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Lábrea",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1302504,
@@ -285,7 +320,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manacapuru",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1302553,
@@ -293,7 +329,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1302603,
@@ -301,7 +338,8 @@
     "microrregiao": "Manaus",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1302702,
@@ -309,7 +347,8 @@
     "microrregiao": "Madeira",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Manicoré",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1302801,
@@ -317,7 +356,8 @@
     "microrregiao": "Japurá",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1302900,
@@ -325,7 +365,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Parintins",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1303007,
@@ -333,7 +374,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Parintins",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1303106,
@@ -341,7 +383,8 @@
     "microrregiao": "Itacoatiara",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303205,
@@ -349,7 +392,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "Manacapuru",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303304,
@@ -357,7 +401,8 @@
     "microrregiao": "Madeira",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Manicoré",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1303403,
@@ -365,7 +410,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Parintins",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1303502,
@@ -373,7 +419,8 @@
     "microrregiao": "Boca do Acre",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Lábrea",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1303536,
@@ -381,7 +428,8 @@
     "microrregiao": "Rio Preto da Eva",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303569,
@@ -389,7 +437,8 @@
     "microrregiao": "Rio Preto da Eva",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Manaus",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303601,
@@ -397,7 +446,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "São Gabriel da Cachoeira",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303700,
@@ -405,7 +455,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1303809,
@@ -413,7 +464,8 @@
     "microrregiao": "Rio Negro",
     "mesorregiao": "Norte Amazonense",
     "regiao_imediata": "São Gabriel da Cachoeira",
-    "regiao_intermediaria": "Manaus"
+    "regiao_intermediaria": "Manaus",
+    "uf": "AM"
   },
   {
     "id": 1303908,
@@ -421,7 +473,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1303957,
@@ -429,7 +482,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1304005,
@@ -437,7 +491,8 @@
     "microrregiao": "Itacoatiara",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1304062,
@@ -445,7 +500,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1304104,
@@ -453,7 +509,8 @@
     "microrregiao": "Purus",
     "mesorregiao": "Sul Amazonense",
     "regiao_imediata": "Lábrea",
-    "regiao_intermediaria": "Lábrea"
+    "regiao_intermediaria": "Lábrea",
+    "uf": "AM"
   },
   {
     "id": 1304203,
@@ -461,7 +518,8 @@
     "microrregiao": "Tefé",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1304237,
@@ -469,7 +527,8 @@
     "microrregiao": "Alto Solimões",
     "mesorregiao": "Sudoeste Amazonense",
     "regiao_imediata": "Tabatinga",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1304260,
@@ -477,7 +536,8 @@
     "microrregiao": "Tefé",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Tefé",
-    "regiao_intermediaria": "Tefé"
+    "regiao_intermediaria": "Tefé",
+    "uf": "AM"
   },
   {
     "id": 1304302,
@@ -485,7 +545,8 @@
     "microrregiao": "Parintins",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   },
   {
     "id": 1304401,
@@ -493,6 +554,7 @@
     "microrregiao": "Itacoatiara",
     "mesorregiao": "Centro Amazonense",
     "regiao_imediata": "Itacoatiara",
-    "regiao_intermediaria": "Parintins"
+    "regiao_intermediaria": "Parintins",
+    "uf": "AM"
   }
 ]

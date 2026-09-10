@@ -5,7 +5,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200054,
@@ -13,7 +14,8 @@
     "microrregiao": "Brasiléia",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Brasiléia",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200104,
@@ -21,7 +23,8 @@
     "microrregiao": "Brasiléia",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Brasiléia",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200138,
@@ -29,7 +32,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200179,
@@ -37,7 +41,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200203,
@@ -45,7 +50,8 @@
     "microrregiao": "Cruzeiro do Sul",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Cruzeiro do Sul",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200252,
@@ -53,7 +59,8 @@
     "microrregiao": "Brasiléia",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Brasiléia",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200302,
@@ -61,7 +68,8 @@
     "microrregiao": "Tarauacá",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Tarauacá",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200328,
@@ -69,7 +77,8 @@
     "microrregiao": "Tarauacá",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Tarauacá",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200336,
@@ -77,7 +86,8 @@
     "microrregiao": "Cruzeiro do Sul",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Cruzeiro do Sul",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200344,
@@ -85,7 +95,8 @@
     "microrregiao": "Sena Madureira",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Sena Madureira",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200351,
@@ -93,7 +104,8 @@
     "microrregiao": "Cruzeiro do Sul",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Cruzeiro do Sul",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200385,
@@ -101,7 +113,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200393,
@@ -109,7 +122,8 @@
     "microrregiao": "Cruzeiro do Sul",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Cruzeiro do Sul",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200401,
@@ -117,7 +131,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200427,
@@ -125,7 +140,8 @@
     "microrregiao": "Cruzeiro do Sul",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Cruzeiro do Sul",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200435,
@@ -133,7 +149,8 @@
     "microrregiao": "Sena Madureira",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Sena Madureira",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200450,
@@ -141,7 +158,8 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200500,
@@ -149,7 +167,8 @@
     "microrregiao": "Sena Madureira",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Sena Madureira",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200609,
@@ -157,7 +176,8 @@
     "microrregiao": "Tarauacá",
     "mesorregiao": "Vale do Juruá",
     "regiao_imediata": "Tarauacá",
-    "regiao_intermediaria": "Cruzeiro do Sul"
+    "regiao_intermediaria": "Cruzeiro do Sul",
+    "uf": "AC"
   },
   {
     "id": 1200708,
@@ -165,7 +185,8 @@
     "microrregiao": "Brasiléia",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Brasiléia",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   },
   {
     "id": 1200807,
@@ -173,6 +194,7 @@
     "microrregiao": "Rio Branco",
     "mesorregiao": "Vale do Acre",
     "regiao_imediata": "Rio Branco",
-    "regiao_intermediaria": "Rio Branco"
+    "regiao_intermediaria": "Rio Branco",
+    "uf": "AC"
   }
 ]

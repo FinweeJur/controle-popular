@@ -5,7 +5,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Açailândia",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2100105,
@@ -13,7 +14,8 @@
     "microrregiao": "Coelho Neto",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2100154,
@@ -21,7 +23,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100204,
@@ -29,7 +32,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100303,
@@ -37,7 +41,8 @@
     "microrregiao": "Coelho Neto",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2100402,
@@ -45,7 +50,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2100436,
@@ -53,7 +59,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2100477,
@@ -61,7 +68,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2100501,
@@ -69,7 +77,8 @@
     "microrregiao": "Gerais de Balsas",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2100550,
@@ -77,7 +86,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2100600,
@@ -85,7 +95,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2100709,
@@ -93,7 +104,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100808,
@@ -101,7 +113,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100832,
@@ -109,7 +122,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100873,
@@ -117,7 +131,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2100907,
@@ -125,7 +140,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2100956,
@@ -133,7 +149,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2101004,
@@ -141,7 +158,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101103,
@@ -149,7 +167,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101202,
@@ -157,7 +176,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2101251,
@@ -165,7 +185,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101301,
@@ -173,7 +194,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101350,
@@ -181,7 +203,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101400,
@@ -189,7 +212,8 @@
     "microrregiao": "Gerais de Balsas",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2101509,
@@ -197,7 +221,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2101608,
@@ -205,7 +230,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2101707,
@@ -213,7 +239,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Barreirinhas",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101731,
@@ -221,7 +248,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101772,
@@ -229,7 +257,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2101806,
@@ -237,7 +266,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2101905,
@@ -245,7 +275,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2101939,
@@ -253,7 +284,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2101970,
@@ -261,7 +293,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102002,
@@ -269,7 +302,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102036,
@@ -277,7 +311,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Açailândia",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2102077,
@@ -285,7 +320,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102101,
@@ -293,7 +329,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102150,
@@ -301,7 +338,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102200,
@@ -309,7 +347,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102309,
@@ -317,7 +356,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Timon",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2102325,
@@ -325,7 +365,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Açailândia",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2102358,
@@ -333,7 +374,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2102374,
@@ -341,7 +383,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102408,
@@ -349,7 +392,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102507,
@@ -357,7 +401,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102556,
@@ -365,7 +410,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2102606,
@@ -373,7 +419,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102705,
@@ -381,7 +428,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2102754,
@@ -389,7 +437,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2102804,
@@ -397,7 +446,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2102903,
@@ -405,7 +455,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2103000,
@@ -413,7 +464,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2103109,
@@ -421,7 +473,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2103125,
@@ -429,7 +482,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2103158,
@@ -437,7 +491,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2103174,
@@ -445,7 +500,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2103208,
@@ -453,7 +509,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2103257,
@@ -461,7 +518,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2103307,
@@ -469,7 +527,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Codó",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2103406,
@@ -477,7 +536,8 @@
     "microrregiao": "Coelho Neto",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2103505,
@@ -485,7 +545,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Colinas",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2103554,
@@ -493,7 +554,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2103604,
@@ -501,7 +563,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Codó",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2103703,
@@ -509,7 +572,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2103752,
@@ -517,7 +581,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2103802,
@@ -525,7 +590,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2103901,
@@ -533,7 +599,8 @@
     "microrregiao": "Coelho Neto",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2104008,
@@ -541,7 +608,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2104057,
@@ -549,7 +617,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104073,
@@ -557,7 +626,8 @@
     "microrregiao": "Gerais de Balsas",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104081,
@@ -565,7 +635,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104099,
@@ -573,7 +644,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104107,
@@ -581,7 +653,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104206,
@@ -589,7 +662,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104305,
@@ -597,7 +671,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2104404,
@@ -605,7 +680,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104503,
@@ -613,7 +689,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104552,
@@ -621,7 +698,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104602,
@@ -629,7 +707,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104628,
@@ -637,7 +716,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104651,
@@ -645,7 +725,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2104677,
@@ -653,7 +734,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2104701,
@@ -661,7 +743,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2104800,
@@ -669,7 +752,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2104909,
@@ -677,7 +761,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2105005,
@@ -685,7 +770,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Barreirinhas",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2105104,
@@ -693,7 +779,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2105153,
@@ -701,7 +788,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105203,
@@ -709,7 +797,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105302,
@@ -717,7 +806,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2105351,
@@ -725,7 +815,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2105401,
@@ -733,7 +824,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2105427,
@@ -741,7 +833,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Açailândia",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2105450,
@@ -749,7 +842,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Colinas",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2105476,
@@ -757,7 +851,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2105500,
@@ -765,7 +860,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2105609,
@@ -773,7 +869,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105658,
@@ -781,7 +878,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105708,
@@ -789,7 +887,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105807,
@@ -797,7 +896,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105906,
@@ -805,7 +905,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105922,
@@ -813,7 +914,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2105948,
@@ -821,7 +923,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105963,
@@ -829,7 +932,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2105989,
@@ -837,7 +941,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2106003,
@@ -845,7 +950,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2106102,
@@ -853,7 +959,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2106201,
@@ -861,7 +968,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2106300,
@@ -869,7 +977,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106326,
@@ -877,7 +986,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2106359,
@@ -885,7 +995,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2106375,
@@ -893,7 +1004,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2106409,
@@ -901,7 +1013,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106508,
@@ -909,7 +1022,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106607,
@@ -917,7 +1031,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Timon",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2106631,
@@ -925,7 +1040,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106672,
@@ -933,7 +1049,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106706,
@@ -941,7 +1058,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Colinas",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2106755,
@@ -949,7 +1067,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106805,
@@ -957,7 +1076,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2106904,
@@ -965,7 +1085,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2107001,
@@ -973,7 +1094,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2107100,
@@ -981,7 +1103,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2107209,
@@ -989,7 +1112,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2107258,
@@ -997,7 +1121,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2107308,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2107357,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2107407,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2107456,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2107506,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Aglomeração Urbana de São Luís",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2107605,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2107704,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2107803,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Timon",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2107902,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2108009,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2108058,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108108,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2108207,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2108256,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108306,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108405,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108454,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Codó",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2108504,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2108603,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108702,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2108801,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2108900,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2109007,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2109056,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109106,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2109205,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109239,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2109270,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109304,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109403,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Barreirinhas",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109452,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Aglomeração Urbana de São Luís",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109502,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Gerais de Balsas",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2109551,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2109601,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109700,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2109759,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2109809,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2109908,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2110005,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2110039,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Governador Nunes Freire",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2110104,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110203,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Rosário",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110237,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110278,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Barreirinhas",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110302,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2110401,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110500,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110609,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Baixo Parnaíba Maranhense",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2110658,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2110708,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2110807,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2110856,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Açailândia",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2110906,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2111003,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2111029,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111052,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111078,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Caxias",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2111102,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2111201,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Aglomeração Urbana de São Luís",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2111250,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2111300,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Aglomeração Urbana de São Luís",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "São Luís",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2111409,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111508,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111532,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111573,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Porto Franco",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111607,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Chapadas das Mangabeiras",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111631,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111672,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111706,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2111722,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2111748,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Presidente Dutra",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2111763,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111789,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Litoral Ocidental Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Cururupu",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2111805,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Barra do Corda",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2111904,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Colinas",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2111953,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Chapadas do Alto Itapecuru",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "São João dos Patos",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2112001,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Gerais de Balsas",
     "mesorregiao": "Sul Maranhense",
     "regiao_imediata": "Balsas",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2112100,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Codó",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Codó",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2112209,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Caxias",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Timon",
-    "regiao_intermediaria": "Caxias"
+    "regiao_intermediaria": "Caxias",
+    "uf": "MA"
   },
   {
     "id": 2112233,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Médio Mearim",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Pedreiras",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2112274,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2112308,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Alto Mearim e Grajaú",
     "mesorregiao": "Centro Maranhense",
     "regiao_imediata": "Presidente Dutra",
-    "regiao_intermediaria": "Presidente Dutra"
+    "regiao_intermediaria": "Presidente Dutra",
+    "uf": "MA"
   },
   {
     "id": 2112407,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112456,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Gurupi",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Pinheiro",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112506,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Lençóis Maranhenses",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Tutóia - Araioses",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112605,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Chapadinha",
     "mesorregiao": "Leste Maranhense",
     "regiao_imediata": "Chapadinha",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112704,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Itapecuru Mirim",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Itapecuru Mirim",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112803,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2112852,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Imperatriz",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Imperatriz",
-    "regiao_intermediaria": "Imperatriz"
+    "regiao_intermediaria": "Imperatriz",
+    "uf": "MA"
   },
   {
     "id": 2112902,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Baixada Maranhense",
     "mesorregiao": "Norte Maranhense",
     "regiao_imediata": "Viana",
-    "regiao_intermediaria": "São Luís"
+    "regiao_intermediaria": "São Luís",
+    "uf": "MA"
   },
   {
     "id": 2113009,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Bacabal",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   },
   {
     "id": 2114007,
@@ -1733,6 +1949,7 @@
     "microrregiao": "Pindaré",
     "mesorregiao": "Oeste Maranhense",
     "regiao_imediata": "Santa Inês",
-    "regiao_intermediaria": "Santa Inês - Bacabal"
+    "regiao_intermediaria": "Santa Inês - Bacabal",
+    "uf": "MA"
   }
 ]

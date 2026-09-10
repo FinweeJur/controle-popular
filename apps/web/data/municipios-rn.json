@@ -5,7 +5,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2400208,
@@ -13,7 +14,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400307,
@@ -21,7 +23,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400406,
@@ -29,7 +32,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400505,
@@ -37,7 +41,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400604,
@@ -45,7 +50,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400703,
@@ -53,7 +59,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400802,
@@ -61,7 +68,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2400901,
@@ -69,7 +77,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2401008,
@@ -77,7 +86,8 @@
     "microrregiao": "Chapada do Apodi",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2401107,
@@ -85,7 +95,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2401206,
@@ -93,7 +104,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401305,
@@ -101,7 +113,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2401404,
@@ -109,7 +122,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401453,
@@ -117,7 +131,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2401503,
@@ -125,7 +140,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401602,
@@ -133,7 +149,8 @@
     "microrregiao": "Baixa Verde",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401651,
@@ -141,7 +158,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2401701,
@@ -149,7 +167,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401800,
@@ -157,7 +176,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401859,
@@ -165,7 +185,8 @@
     "microrregiao": "Macau",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2401909,
@@ -173,7 +194,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2402006,
@@ -181,7 +203,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2402105,
@@ -189,7 +212,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2402204,
@@ -197,7 +221,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2402303,
@@ -205,7 +230,8 @@
     "microrregiao": "Chapada do Apodi",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2402402,
@@ -213,7 +239,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2402501,
@@ -221,7 +248,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2402600,
@@ -229,7 +257,8 @@
     "microrregiao": "Macaíba",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2402709,
@@ -237,7 +266,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2402808,
@@ -245,7 +275,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2402907,
@@ -253,7 +284,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2403004,
@@ -261,7 +293,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2403103,
@@ -269,7 +302,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2403202,
@@ -277,7 +311,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2403251,
@@ -285,7 +320,8 @@
     "microrregiao": "Natal",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2403301,
@@ -293,7 +329,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2403400,
@@ -301,7 +338,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2403509,
@@ -309,7 +347,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2403608,
@@ -317,7 +356,8 @@
     "microrregiao": "Natal",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2403707,
@@ -325,7 +365,8 @@
     "microrregiao": "Chapada do Apodi",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2403756,
@@ -333,7 +374,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2403806,
@@ -341,7 +383,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2403905,
@@ -349,7 +392,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404002,
@@ -357,7 +401,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404101,
@@ -365,7 +410,8 @@
     "microrregiao": "Macau",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2404200,
@@ -373,7 +419,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2404309,
@@ -381,7 +428,8 @@
     "microrregiao": "Chapada do Apodi",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404408,
@@ -389,7 +437,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404507,
@@ -397,7 +446,8 @@
     "microrregiao": "Macau",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404606,
@@ -405,7 +455,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2404705,
@@ -413,7 +464,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404804,
@@ -421,7 +473,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2404853,
@@ -429,7 +482,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2404903,
@@ -437,7 +491,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2405009,
@@ -445,7 +500,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405108,
@@ -453,7 +509,8 @@
     "microrregiao": "Baixa Verde",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405207,
@@ -461,7 +518,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2405306,
@@ -469,7 +527,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405405,
@@ -477,7 +536,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405504,
@@ -485,7 +545,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405603,
@@ -493,7 +554,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2405702,
@@ -501,7 +563,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2405801,
@@ -509,7 +572,8 @@
     "microrregiao": "Baixa Verde",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2405900,
@@ -517,7 +581,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2406007,
@@ -525,7 +590,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2406106,
@@ -533,7 +599,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2406155,
@@ -541,7 +608,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406205,
@@ -549,7 +617,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406304,
@@ -557,7 +626,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406403,
@@ -565,7 +635,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406502,
@@ -573,7 +644,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2406601,
@@ -581,7 +653,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406700,
@@ -589,7 +662,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2406809,
@@ -597,7 +671,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2406908,
@@ -605,7 +680,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407005,
@@ -613,7 +689,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407104,
@@ -621,7 +698,8 @@
     "microrregiao": "Macaíba",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2407203,
@@ -629,7 +707,8 @@
     "microrregiao": "Macau",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407252,
@@ -637,7 +716,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407302,
@@ -645,7 +725,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407401,
@@ -653,7 +734,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407500,
@@ -661,7 +743,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2407609,
@@ -669,7 +752,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2407708,
@@ -677,7 +761,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2407807,
@@ -685,7 +770,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2407906,
@@ -693,7 +779,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2408003,
@@ -701,7 +788,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2408102,
@@ -709,7 +797,8 @@
     "microrregiao": "Natal",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2408201,
@@ -717,7 +806,8 @@
     "microrregiao": "Macaíba",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2408300,
@@ -725,7 +815,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2408409,
@@ -733,7 +824,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2408508,
@@ -741,7 +833,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2408607,
@@ -749,7 +842,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2408706,
@@ -757,7 +851,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2408805,
@@ -765,7 +860,8 @@
     "microrregiao": "Baixa Verde",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2408904,
@@ -773,7 +869,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2408953,
@@ -781,7 +878,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409100,
@@ -789,7 +887,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409209,
@@ -797,7 +896,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409308,
@@ -805,7 +905,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2409332,
@@ -813,7 +914,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409407,
@@ -821,7 +923,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2409506,
@@ -829,7 +932,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409605,
@@ -837,7 +941,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409704,
@@ -845,7 +950,8 @@
     "microrregiao": "Angicos",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409803,
@@ -853,7 +959,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2409902,
@@ -861,7 +968,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410009,
@@ -869,7 +977,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410108,
@@ -877,7 +986,8 @@
     "microrregiao": "Baixa Verde",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2410207,
@@ -885,7 +995,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410256,
@@ -893,7 +1004,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410306,
@@ -901,7 +1013,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2410405,
@@ -909,7 +1022,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2410504,
@@ -917,7 +1031,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410603,
@@ -925,7 +1040,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410702,
@@ -933,7 +1049,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410801,
@@ -941,7 +1058,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2410900,
@@ -949,7 +1067,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411007,
@@ -957,7 +1076,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2411056,
@@ -965,7 +1085,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2411106,
@@ -973,7 +1094,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411205,
@@ -981,7 +1103,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411403,
@@ -989,7 +1112,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2411429,
@@ -997,7 +1121,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2411502,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411601,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Macau",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "João Câmara",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411700,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2411809,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2411908,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2412005,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Macaíba",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412104,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2412203,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Macaíba",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412302,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412401,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Seridó Oriental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2412500,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2412559,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412609,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412708,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2412807,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Vale do Açu",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2412906,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413003,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2413102,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "São Paulo do Potengi",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413201,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413300,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413359,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Mossoró",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2413409,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2413508,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413557,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2413607,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2413706,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2413805,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2413904,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414001,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Borborema Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santa Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414100,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2414159,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Serra de Santana",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Currais Novos",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2414209,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414308,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Seridó Ocidental",
     "mesorregiao": "Central Potiguar",
     "regiao_imediata": "Caicó",
-    "regiao_intermediaria": "Caicó"
+    "regiao_intermediaria": "Caicó",
+    "uf": "RN"
   },
   {
     "id": 2414407,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Litoral Nordeste",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414456,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Açu",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2414506,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Umarizal",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2414605,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Médio Oeste",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Mossoró",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2414704,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Santo Antônio - Passa e Fica - Nova Cruz",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414753,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Serra de São Miguel",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2414803,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Agreste Potiguar",
     "mesorregiao": "Agreste Potiguar",
     "regiao_imediata": "Natal",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   },
   {
     "id": 2414902,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Pau dos Ferros",
     "mesorregiao": "Oeste Potiguar",
     "regiao_imediata": "Pau dos Ferros",
-    "regiao_intermediaria": "Mossoró"
+    "regiao_intermediaria": "Mossoró",
+    "uf": "RN"
   },
   {
     "id": 2415008,
@@ -1333,6 +1499,7 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Leste Potiguar",
     "regiao_imediata": "Canguaretama",
-    "regiao_intermediaria": "Natal"
+    "regiao_intermediaria": "Natal",
+    "uf": "RN"
   }
 ]

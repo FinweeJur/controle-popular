@@ -5,7 +5,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2200103,
@@ -13,7 +14,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200202,
@@ -21,7 +23,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200251,
@@ -29,7 +32,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2200277,
@@ -37,7 +41,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2200301,
@@ -45,7 +50,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200400,
@@ -53,7 +59,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200459,
@@ -61,7 +68,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2200509,
@@ -69,7 +77,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200608,
@@ -77,7 +86,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200707,
@@ -85,7 +95,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2200806,
@@ -93,7 +104,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2200905,
@@ -101,7 +113,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2200954,
@@ -109,7 +122,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2201002,
@@ -117,7 +131,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2201051,
@@ -125,7 +140,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201101,
@@ -133,7 +149,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2201150,
@@ -141,7 +158,8 @@
     "microrregiao": "Alto Parnaíba Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2201176,
@@ -149,7 +167,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201200,
@@ -157,7 +176,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201309,
@@ -165,7 +185,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2201408,
@@ -173,7 +194,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201507,
@@ -181,7 +203,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2201556,
@@ -189,7 +212,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2201572,
@@ -197,7 +221,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2201606,
@@ -205,7 +230,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201705,
@@ -213,7 +239,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2201739,
@@ -221,7 +248,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2201770,
@@ -229,7 +257,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201804,
@@ -237,7 +266,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2201903,
@@ -245,7 +275,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2201919,
@@ -253,7 +284,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2201929,
@@ -261,7 +293,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2201945,
@@ -269,7 +302,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2201960,
@@ -277,7 +311,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2201988,
@@ -285,7 +320,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2202000,
@@ -293,7 +329,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202026,
@@ -301,7 +338,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202059,
@@ -309,7 +347,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202075,
@@ -317,7 +356,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202083,
@@ -325,7 +365,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202091,
@@ -333,7 +374,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202109,
@@ -341,7 +383,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202117,
@@ -349,7 +392,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2202133,
@@ -357,7 +401,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202174,
@@ -365,7 +410,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202208,
@@ -373,7 +419,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202251,
@@ -381,7 +428,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2202307,
@@ -389,7 +437,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2202406,
@@ -397,7 +446,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202455,
@@ -405,7 +455,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2202505,
@@ -413,7 +464,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2202539,
@@ -421,7 +473,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202554,
@@ -429,7 +482,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202604,
@@ -437,7 +491,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202653,
@@ -445,7 +500,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202703,
@@ -453,7 +509,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202711,
@@ -461,7 +518,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202729,
@@ -469,7 +527,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2202737,
@@ -477,7 +536,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2202752,
@@ -485,7 +545,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2202778,
@@ -493,7 +554,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202802,
@@ -501,7 +563,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2202851,
@@ -509,7 +572,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2202901,
@@ -517,7 +581,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2203008,
@@ -525,7 +590,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2203107,
@@ -533,7 +599,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2203206,
@@ -541,7 +608,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2203230,
@@ -549,7 +617,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2203255,
@@ -557,7 +626,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2203271,
@@ -565,7 +635,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2203305,
@@ -573,7 +644,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2203354,
@@ -581,7 +653,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2203404,
@@ -589,7 +662,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2203420,
@@ -597,7 +671,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2203453,
@@ -605,7 +680,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2203503,
@@ -613,7 +689,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2203602,
@@ -621,7 +698,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2203701,
@@ -629,7 +707,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2203750,
@@ -637,7 +716,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2203800,
@@ -645,7 +725,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2203859,
@@ -653,7 +734,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2203909,
@@ -661,7 +743,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2204006,
@@ -669,7 +752,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2204105,
@@ -677,7 +761,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2204154,
@@ -685,7 +770,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2204204,
@@ -693,7 +779,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2204303,
@@ -701,7 +788,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2204352,
@@ -709,7 +797,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2204402,
@@ -717,7 +806,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2204501,
@@ -725,7 +815,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2204550,
@@ -733,7 +824,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2204600,
@@ -741,7 +833,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2204659,
@@ -749,7 +842,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2204709,
@@ -757,7 +851,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2204808,
@@ -765,7 +860,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2204907,
@@ -773,7 +869,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2205003,
@@ -781,7 +878,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2205102,
@@ -789,7 +887,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2205151,
@@ -797,7 +896,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2205201,
@@ -805,7 +905,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2205250,
@@ -813,7 +914,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205276,
@@ -821,7 +923,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205300,
@@ -829,7 +932,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2205359,
@@ -837,7 +941,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2205409,
@@ -845,7 +950,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205458,
@@ -853,7 +959,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205508,
@@ -861,7 +968,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205516,
@@ -869,7 +977,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205524,
@@ -877,7 +986,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2205532,
@@ -885,7 +995,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2205540,
@@ -893,7 +1004,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205557,
@@ -901,7 +1013,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205565,
@@ -909,7 +1022,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2205573,
@@ -917,7 +1031,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205581,
@@ -925,7 +1040,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205599,
@@ -933,7 +1049,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2205607,
@@ -941,7 +1058,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2205706,
@@ -949,7 +1067,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205805,
@@ -957,7 +1076,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205854,
@@ -965,7 +1085,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2205904,
@@ -973,7 +1094,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2205953,
@@ -981,7 +1103,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2206001,
@@ -989,7 +1112,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2206050,
@@ -997,7 +1121,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2206100,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2206209,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206308,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206357,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2206407,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206506,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2206605,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2206654,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2206670,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2206696,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2206704,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2206720,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206753,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206803,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206902,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2206951,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2207009,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207108,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2207207,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207306,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207355,
@@ -1165,7 +1310,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2207405,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2207504,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2207553,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207603,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2207702,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Parnaíba",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2207751,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2207777,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207793,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2207801,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2207850,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2207900,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2207934,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2207959,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2208007,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2208106,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2208205,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2208304,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2208403,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2208502,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Barras",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2208551,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2208601,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2208650,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2208700,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2208809,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2208858,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2208874,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2208908,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Alto Parnaíba Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2209005,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2209104,
@@ -1397,7 +1571,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209153,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2209203,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Alto Parnaíba Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2209302,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Bom Jesus",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2209351,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209377,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209401,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209450,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2209500,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209559,
@@ -1469,7 +1652,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2209609,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2209658,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209708,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2209757,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Alto Médio Gurguéia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2209807,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2209856,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209872,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2209906,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2209955,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2209971,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Baixo Parnaíba Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Esperantina",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2210003,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "São João do Piauí",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2210052,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Litoral Piauiense",
     "mesorregiao": "Norte Piauiense",
     "regiao_imediata": "Piripiri",
-    "regiao_intermediaria": "Parnaíba"
+    "regiao_intermediaria": "Parnaíba",
+    "uf": "PI"
   },
   {
     "id": 2210102,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Floriano",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2210201,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210300,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Pio IX",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210359,
@@ -1597,7 +1796,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2210375,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210383,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2210391,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Floriano",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210409,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2210508,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Médio Parnaíba Piauiense",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2210607,
@@ -1645,7 +1850,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2210623,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Chapadas do Extremo Sul Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Corrente",
-    "regiao_intermediaria": "Corrente - Bom Jesus"
+    "regiao_intermediaria": "Corrente - Bom Jesus",
+    "uf": "PI"
   },
   {
     "id": 2210631,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Bertolínia",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2210656,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Campo Maior",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Campo Maior",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2210706,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Paulistana",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210805,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210904,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Simplício Mendes",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210938,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2210953,
@@ -1709,7 +1922,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Canto do Buriti",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2210979,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Oeiras",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2211001,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2211100,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Teresina",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Teresina",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2211209,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Alto Parnaíba Piauiense",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "Uruçuí",
-    "regiao_intermediaria": "Floriano"
+    "regiao_intermediaria": "Floriano",
+    "uf": "PI"
   },
   {
     "id": 2211308,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Valença do Piauí",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2211357,
@@ -1757,7 +1976,8 @@
     "microrregiao": "São Raimundo Nonato",
     "mesorregiao": "Sudoeste Piauiense",
     "regiao_imediata": "São Raimundo Nonato",
-    "regiao_intermediaria": "São Raimundo Nonato"
+    "regiao_intermediaria": "São Raimundo Nonato",
+    "uf": "PI"
   },
   {
     "id": 2211407,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Valença do Piauí",
     "mesorregiao": "Centro-Norte Piauiense",
     "regiao_imediata": "Amarante - Água Branca - Regeneração",
-    "regiao_intermediaria": "Teresina"
+    "regiao_intermediaria": "Teresina",
+    "uf": "PI"
   },
   {
     "id": 2211506,
@@ -1773,7 +1994,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2211605,
@@ -1781,7 +2003,8 @@
     "microrregiao": "Alto Médio Canindé",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   },
   {
     "id": 2211704,
@@ -1789,6 +2012,7 @@
     "microrregiao": "Picos",
     "mesorregiao": "Sudeste Piauiense",
     "regiao_imediata": "Picos",
-    "regiao_intermediaria": "Picos"
+    "regiao_intermediaria": "Picos",
+    "uf": "PI"
   }
 ]

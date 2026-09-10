@@ -5,7 +5,8 @@
     "microrregiao": "Rosário Oeste",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5100201,
@@ -13,7 +14,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5100250,
@@ -21,7 +23,8 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5100300,
@@ -29,7 +32,8 @@
     "microrregiao": "Alto Araguaia",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5100359,
@@ -37,7 +41,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5100409,
@@ -45,7 +50,8 @@
     "microrregiao": "Alto Araguaia",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5100508,
@@ -53,7 +59,8 @@
     "microrregiao": "Alto Paraguai",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5100607,
@@ -61,7 +68,8 @@
     "microrregiao": "Alto Araguaia",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5100805,
@@ -69,7 +77,8 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5101001,
@@ -77,7 +86,8 @@
     "microrregiao": "Médio Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5101209,
@@ -85,7 +95,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5101258,
@@ -93,7 +104,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5101308,
@@ -101,7 +113,8 @@
     "microrregiao": "Alto Paraguai",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5101407,
@@ -109,7 +122,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5101605,
@@ -117,7 +131,8 @@
     "microrregiao": "Alto Pantanal",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5101704,
@@ -125,7 +140,8 @@
     "microrregiao": "Tangará da Serra",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5101803,
@@ -133,7 +149,8 @@
     "microrregiao": "Médio Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5101837,
@@ -141,7 +158,8 @@
     "microrregiao": "",
     "mesorregiao": "",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5101852,
@@ -149,7 +167,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5101902,
@@ -157,7 +176,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5102504,
@@ -165,7 +185,8 @@
     "microrregiao": "Alto Pantanal",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cáceres",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5102603,
@@ -173,7 +194,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5102637,
@@ -181,7 +203,8 @@
     "microrregiao": "Parecis",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5102678,
@@ -189,7 +212,8 @@
     "microrregiao": "Primavera do Leste",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5102686,
@@ -197,7 +221,8 @@
     "microrregiao": "Parecis",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5102694,
@@ -205,7 +230,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5102702,
@@ -213,7 +239,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5102793,
@@ -221,7 +248,8 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5102850,
@@ -229,7 +257,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103007,
@@ -237,7 +266,8 @@
     "microrregiao": "Cuiabá",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5103056,
@@ -245,7 +275,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103106,
@@ -253,7 +284,8 @@
     "microrregiao": "Médio Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5103205,
@@ -261,7 +293,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103254,
@@ -269,7 +302,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103304,
@@ -277,7 +311,8 @@
     "microrregiao": "Parecis",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5103353,
@@ -285,7 +320,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5103361,
@@ -293,7 +329,8 @@
     "microrregiao": "Alto Guaporé",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5103379,
@@ -301,7 +338,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103403,
@@ -309,7 +347,8 @@
     "microrregiao": "Cuiabá",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5103437,
@@ -317,7 +356,8 @@
     "microrregiao": "Alto Pantanal",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cáceres",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5103452,
@@ -325,7 +365,8 @@
     "microrregiao": "Tangará da Serra",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5103502,
@@ -333,7 +374,8 @@
     "microrregiao": "Parecis",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5103601,
@@ -341,7 +383,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Jaciara",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5103700,
@@ -349,7 +392,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5103809,
@@ -357,7 +401,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5103858,
@@ -365,7 +410,8 @@
     "microrregiao": "Paranatinga",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5103908,
@@ -373,7 +419,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5103957,
@@ -381,7 +428,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5104104,
@@ -389,7 +437,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Peixoto de Azevedo - Guarantã do Norte",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5104203,
@@ -397,7 +446,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5104500,
@@ -405,7 +455,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5104526,
@@ -413,7 +464,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5104542,
@@ -421,7 +473,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5104559,
@@ -429,7 +482,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5104609,
@@ -437,7 +491,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5104807,
@@ -445,7 +500,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Jaciara",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5104906,
@@ -453,7 +509,8 @@
     "microrregiao": "Rosário Oeste",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5105002,
@@ -461,7 +518,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5105101,
@@ -469,7 +527,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juara",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105150,
@@ -477,7 +536,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105176,
@@ -485,7 +545,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105200,
@@ -493,7 +554,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Jaciara",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5105234,
@@ -501,7 +563,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Cáceres",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5105259,
@@ -509,7 +572,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105309,
@@ -517,7 +581,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5105507,
@@ -525,7 +590,8 @@
     "microrregiao": "Alto Guaporé",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5105580,
@@ -533,7 +599,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105606,
@@ -541,7 +608,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Peixoto de Azevedo - Guarantã do Norte",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5105622,
@@ -549,7 +617,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5105903,
@@ -557,7 +626,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106000,
@@ -565,7 +635,8 @@
     "microrregiao": "Alto Paraguai",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106109,
@@ -573,7 +644,8 @@
     "microrregiao": "Cuiabá",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106158,
@@ -581,7 +653,8 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106174,
@@ -589,7 +662,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106182,
@@ -597,7 +671,8 @@
     "microrregiao": "Alto Guaporé",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5106190,
@@ -605,7 +680,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106208,
@@ -613,7 +689,8 @@
     "microrregiao": "Paranatinga",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106216,
@@ -621,7 +698,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106224,
@@ -629,7 +707,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106232,
@@ -637,7 +716,8 @@
     "microrregiao": "Tangará da Serra",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106240,
@@ -645,7 +725,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106257,
@@ -653,7 +734,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106265,
@@ -661,7 +743,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Peixoto de Azevedo - Guarantã do Norte",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106273,
@@ -669,7 +752,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juara",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106281,
@@ -677,7 +761,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106299,
@@ -685,7 +770,8 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106307,
@@ -693,7 +779,8 @@
     "microrregiao": "Paranatinga",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Primavera do Leste",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5106315,
@@ -701,7 +788,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106372,
@@ -709,7 +797,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5106422,
@@ -717,7 +806,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Peixoto de Azevedo - Guarantã do Norte",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106455,
@@ -725,7 +815,8 @@
     "microrregiao": "Paranatinga",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106505,
@@ -733,7 +824,8 @@
     "microrregiao": "Alto Pantanal",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5106653,
@@ -741,7 +833,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106703,
@@ -749,7 +842,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106752,
@@ -757,7 +851,8 @@
     "microrregiao": "Alto Guaporé",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5106778,
@@ -765,7 +860,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5106802,
@@ -773,7 +869,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juara",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5106828,
@@ -781,7 +878,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5106851,
@@ -789,7 +887,8 @@
     "microrregiao": "Tangará da Serra",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107008,
@@ -797,7 +896,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Primavera do Leste",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107040,
@@ -805,7 +905,8 @@
     "microrregiao": "Primavera do Leste",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Primavera do Leste",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107065,
@@ -813,7 +914,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107107,
@@ -821,7 +923,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5107156,
@@ -829,7 +932,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Mirassol D'oeste",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5107180,
@@ -837,7 +941,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Água Boa",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107198,
@@ -845,7 +950,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107206,
@@ -853,7 +959,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Cáceres",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5107248,
@@ -861,7 +968,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107263,
@@ -869,7 +977,8 @@
     "microrregiao": "Alto Paraguai",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107297,
@@ -877,7 +986,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107305,
@@ -885,7 +995,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107354,
@@ -893,7 +1004,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107404,
@@ -901,7 +1013,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Jaciara",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107578,
@@ -909,7 +1022,8 @@
     "microrregiao": "Aripuanã",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juína",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107602,
@@ -917,7 +1031,8 @@
     "microrregiao": "Rondonópolis",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107701,
@@ -925,7 +1040,8 @@
     "microrregiao": "Rosário Oeste",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107743,
@@ -933,7 +1049,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107750,
@@ -941,7 +1058,8 @@
     "microrregiao": "Jauru",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Cáceres",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5107768,
@@ -949,7 +1067,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107776,
@@ -957,7 +1076,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107792,
@@ -965,7 +1085,8 @@
     "microrregiao": "Canarana",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Primavera do Leste",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5107800,
@@ -973,7 +1094,8 @@
     "microrregiao": "Cuiabá",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107859,
@@ -981,7 +1103,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107875,
@@ -989,7 +1112,8 @@
     "microrregiao": "Parecis",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5107883,
@@ -997,7 +1121,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5107909,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107925,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107941,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Juara",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5107958,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Tangará da Serra",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Tangará da Serra",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5108006,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Alto Teles Pires",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5108055,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5108105,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Rondonópolis",
-    "regiao_intermediaria": "Rondonópolis"
+    "regiao_intermediaria": "Rondonópolis",
+    "uf": "MT"
   },
   {
     "id": 5108204,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Tesouro",
     "mesorregiao": "Sudeste Mato-grossense",
     "regiao_imediata": "Barra do Garças",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5108303,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5108352,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Alto Guaporé",
     "mesorregiao": "Sudoeste Mato-grossense",
     "regiao_imediata": "Pontes e Lacerda - Comodoro",
-    "regiao_intermediaria": "Cáceres"
+    "regiao_intermediaria": "Cáceres",
+    "uf": "MT"
   },
   {
     "id": 5108402,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Cuiabá",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Cuiabá",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5108501,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Sinop",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sorriso",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5108600,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Norte Araguaia",
     "mesorregiao": "Nordeste Mato-grossense",
     "regiao_imediata": "Confresa - Vila Rica",
-    "regiao_intermediaria": "Barra do Garças"
+    "regiao_intermediaria": "Barra do Garças",
+    "uf": "MT"
   },
   {
     "id": 5108808,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Colíder",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Sinop",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   },
   {
     "id": 5108857,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Alto Paraguai",
     "mesorregiao": "Centro-Sul Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5108907,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Arinos",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Diamantino",
-    "regiao_intermediaria": "Cuiabá"
+    "regiao_intermediaria": "Cuiabá",
+    "uf": "MT"
   },
   {
     "id": 5108956,
@@ -1133,6 +1274,7 @@
     "microrregiao": "Alta Floresta",
     "mesorregiao": "Norte Mato-grossense",
     "regiao_imediata": "Alta Floresta",
-    "regiao_intermediaria": "Sinop"
+    "regiao_intermediaria": "Sinop",
+    "uf": "MT"
   }
 ]

@@ -5,7 +5,8 @@
     "microrregiao": "Baía da Ilha Grande",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Angra dos Reis",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3300159,
@@ -13,7 +14,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Santo Antônio de Pádua",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3300209,
@@ -21,7 +23,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3300225,
@@ -29,7 +32,8 @@
     "microrregiao": "Três Rios",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Petrópolis",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3300233,
@@ -37,7 +41,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3300258,
@@ -45,7 +50,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3300308,
@@ -53,7 +59,8 @@
     "microrregiao": "Barra do Piraí",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3300407,
@@ -61,7 +68,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3300456,
@@ -69,7 +77,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3300506,
@@ -77,7 +86,8 @@
     "microrregiao": "Nova Friburgo",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3300605,
@@ -85,7 +95,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3300704,
@@ -93,7 +104,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3300803,
@@ -101,7 +113,8 @@
     "microrregiao": "Macacu-Caceribu",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio Bonito",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3300902,
@@ -109,7 +122,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Santo Antônio de Pádua",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3300936,
@@ -117,7 +131,8 @@
     "microrregiao": "Macaé",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3300951,
@@ -125,7 +140,8 @@
     "microrregiao": "Três Rios",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Três Rios - Paraíba do Sul",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3301009,
@@ -133,7 +149,8 @@
     "microrregiao": "Campos dos Goytacazes",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3301108,
@@ -141,7 +158,8 @@
     "microrregiao": "Cantagalo-Cordeiro",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3301157,
@@ -149,7 +167,8 @@
     "microrregiao": "Campos dos Goytacazes",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3301207,
@@ -157,7 +176,8 @@
     "microrregiao": "Cantagalo-Cordeiro",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3301306,
@@ -165,7 +185,8 @@
     "microrregiao": "Bacia de São João",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3301405,
@@ -173,7 +194,8 @@
     "microrregiao": "Macaé",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3301504,
@@ -181,7 +203,8 @@
     "microrregiao": "Cantagalo-Cordeiro",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3301603,
@@ -189,7 +212,8 @@
     "microrregiao": "Nova Friburgo",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3301702,
@@ -197,7 +221,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3301801,
@@ -205,7 +230,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3301850,
@@ -213,7 +239,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3301876,
@@ -221,7 +248,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3301900,
@@ -229,7 +257,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302007,
@@ -237,7 +266,8 @@
     "microrregiao": "Itaguaí",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302056,
@@ -245,7 +275,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3302106,
@@ -253,7 +284,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Santo Antônio de Pádua",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3302205,
@@ -261,7 +293,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3302254,
@@ -269,7 +302,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Resende",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3302270,
@@ -277,7 +311,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302304,
@@ -285,7 +320,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3302403,
@@ -293,7 +329,8 @@
     "microrregiao": "Macaé",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3302452,
@@ -301,7 +338,8 @@
     "microrregiao": "Cantagalo-Cordeiro",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3302502,
@@ -309,7 +347,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302601,
@@ -317,7 +356,8 @@
     "microrregiao": "Itaguaí",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302700,
@@ -325,7 +365,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302809,
@@ -333,7 +374,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3302858,
@@ -341,7 +383,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3302908,
@@ -349,7 +392,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Valença",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3303005,
@@ -357,7 +401,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Santo Antônio de Pádua",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3303104,
@@ -365,7 +410,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3303203,
@@ -373,7 +419,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3303302,
@@ -381,7 +428,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3303401,
@@ -389,7 +437,8 @@
     "microrregiao": "Nova Friburgo",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3303500,
@@ -397,7 +446,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3303609,
@@ -405,7 +455,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3303708,
@@ -413,7 +464,8 @@
     "microrregiao": "Três Rios",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Três Rios - Paraíba do Sul",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3303807,
@@ -421,7 +473,8 @@
     "microrregiao": "Baía da Ilha Grande",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Angra dos Reis",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3303856,
@@ -429,7 +482,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Valença",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3303906,
@@ -437,7 +491,8 @@
     "microrregiao": "Serrana",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Petrópolis",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3303955,
@@ -445,7 +500,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304003,
@@ -453,7 +509,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304102,
@@ -461,7 +518,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3304110,
@@ -469,7 +527,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Resende",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304128,
@@ -477,7 +536,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Resende",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304144,
@@ -485,7 +545,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3304151,
@@ -493,7 +554,8 @@
     "microrregiao": "Macaé",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3304201,
@@ -501,7 +563,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Resende",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304300,
@@ -509,7 +572,8 @@
     "microrregiao": "Macacu-Caceribu",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio Bonito",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3304409,
@@ -517,7 +581,8 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304508,
@@ -525,7 +590,8 @@
     "microrregiao": "Barra do Piraí",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Valença",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3304524,
@@ -533,7 +599,8 @@
     "microrregiao": "Bacia de São João",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Macaé - Rio das Ostras",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3304557,
@@ -541,7 +608,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3304607,
@@ -549,7 +617,8 @@
     "microrregiao": "Santa Maria Madalena",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3304706,
@@ -557,7 +626,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Santo Antônio de Pádua",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3304755,
@@ -565,7 +635,8 @@
     "microrregiao": "Campos dos Goytacazes",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3304805,
@@ -573,7 +644,8 @@
     "microrregiao": "Campos dos Goytacazes",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3304904,
@@ -581,7 +653,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305000,
@@ -589,7 +662,8 @@
     "microrregiao": "Campos dos Goytacazes",
     "mesorregiao": "Norte Fluminense",
     "regiao_imediata": "Campos dos Goytacazes",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3305109,
@@ -597,7 +671,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305133,
@@ -605,7 +680,8 @@
     "microrregiao": "Santo Antônio de Pádua",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3305158,
@@ -613,7 +689,8 @@
     "microrregiao": "Serrana",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Petrópolis",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3305208,
@@ -621,7 +698,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Cabo Frio",
-    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio"
+    "regiao_intermediaria": "Macaé - Rio das Ostras - Cabo Frio",
+    "uf": "RJ"
   },
   {
     "id": 3305307,
@@ -629,7 +707,8 @@
     "microrregiao": "Santa Maria Madalena",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3305406,
@@ -637,7 +716,8 @@
     "microrregiao": "Três Rios",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Três Rios - Paraíba do Sul",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3305505,
@@ -645,7 +725,8 @@
     "microrregiao": "Lagos",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305554,
@@ -653,7 +734,8 @@
     "microrregiao": "Itaguaí",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305604,
@@ -661,7 +743,8 @@
     "microrregiao": "Bacia de São João",
     "mesorregiao": "Baixadas",
     "regiao_imediata": "Rio Bonito",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305703,
@@ -669,7 +752,8 @@
     "microrregiao": "Nova Friburgo",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3305752,
@@ -677,7 +761,8 @@
     "microrregiao": "Rio de Janeiro",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Rio de Janeiro",
-    "regiao_intermediaria": "Rio de Janeiro"
+    "regiao_intermediaria": "Rio de Janeiro",
+    "uf": "RJ"
   },
   {
     "id": 3305802,
@@ -685,7 +770,8 @@
     "microrregiao": "Serrana",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Petrópolis",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3305901,
@@ -693,7 +779,8 @@
     "microrregiao": "Santa Maria Madalena",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Nova Friburgo",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3306008,
@@ -701,7 +788,8 @@
     "microrregiao": "Três Rios",
     "mesorregiao": "Centro Fluminense",
     "regiao_imediata": "Três Rios - Paraíba do Sul",
-    "regiao_intermediaria": "Petrópolis"
+    "regiao_intermediaria": "Petrópolis",
+    "uf": "RJ"
   },
   {
     "id": 3306107,
@@ -709,7 +797,8 @@
     "microrregiao": "Barra do Piraí",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Valença",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3306156,
@@ -717,7 +806,8 @@
     "microrregiao": "Itaperuna",
     "mesorregiao": "Noroeste Fluminense",
     "regiao_imediata": "Itaperuna",
-    "regiao_intermediaria": "Campos dos Goytacazes"
+    "regiao_intermediaria": "Campos dos Goytacazes",
+    "uf": "RJ"
   },
   {
     "id": 3306206,
@@ -725,7 +815,8 @@
     "microrregiao": "Vassouras",
     "mesorregiao": "Metropolitana do Rio de Janeiro",
     "regiao_imediata": "Valença",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   },
   {
     "id": 3306305,
@@ -733,6 +824,7 @@
     "microrregiao": "Vale do Paraíba Fluminense",
     "mesorregiao": "Sul Fluminense",
     "regiao_imediata": "Volta Redonda - Barra Mansa",
-    "regiao_intermediaria": "Volta Redonda - Barra Mansa"
+    "regiao_intermediaria": "Volta Redonda - Barra Mansa",
+    "uf": "RJ"
   }
 ]

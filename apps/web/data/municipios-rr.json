@@ -5,7 +5,8 @@
     "microrregiao": "Boa Vista",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Pacaraima",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400050,
@@ -13,7 +14,8 @@
     "microrregiao": "Boa Vista",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Boa Vista",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400100,
@@ -21,7 +23,8 @@
     "microrregiao": "Boa Vista",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Boa Vista",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400159,
@@ -29,7 +32,8 @@
     "microrregiao": "Nordeste de Roraima",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Boa Vista",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400175,
@@ -37,7 +41,8 @@
     "microrregiao": "Nordeste de Roraima",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Boa Vista",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400209,
@@ -45,7 +50,8 @@
     "microrregiao": "Caracaraí",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Caracaraí",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400233,
@@ -53,7 +59,8 @@
     "microrregiao": "Sudeste de Roraima",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Rorainópolis",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400282,
@@ -61,7 +68,8 @@
     "microrregiao": "Caracaraí",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Caracaraí",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400308,
@@ -69,7 +77,8 @@
     "microrregiao": "Caracaraí",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Boa Vista",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400407,
@@ -77,7 +86,8 @@
     "microrregiao": "Nordeste de Roraima",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Pacaraima",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400456,
@@ -85,7 +95,8 @@
     "microrregiao": "Boa Vista",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Pacaraima",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   },
   {
     "id": 1400472,
@@ -93,7 +104,8 @@
     "microrregiao": "Sudeste de Roraima",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Rorainópolis",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400506,
@@ -101,7 +113,8 @@
     "microrregiao": "Sudeste de Roraima",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Rorainópolis",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400605,
@@ -109,7 +122,8 @@
     "microrregiao": "Sudeste de Roraima",
     "mesorregiao": "Sul de Roraima",
     "regiao_imediata": "Rorainópolis",
-    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+    "regiao_intermediaria": "Rorainópolis - Caracaraí",
+    "uf": "RR"
   },
   {
     "id": 1400704,
@@ -117,6 +131,7 @@
     "microrregiao": "Nordeste de Roraima",
     "mesorregiao": "Norte de Roraima",
     "regiao_imediata": "Pacaraima",
-    "regiao_intermediaria": "Boa Vista"
+    "regiao_intermediaria": "Boa Vista",
+    "uf": "RR"
   }
 ]

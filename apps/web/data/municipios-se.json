@@ -5,7 +5,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800209,
@@ -13,7 +14,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800308,
@@ -21,7 +23,8 @@
     "microrregiao": "Aracaju",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800407,
@@ -29,7 +32,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800506,
@@ -37,7 +41,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2800605,
@@ -45,7 +50,8 @@
     "microrregiao": "Aracaju",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800670,
@@ -53,7 +59,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2800704,
@@ -61,7 +68,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801009,
@@ -69,7 +77,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2801108,
@@ -77,7 +86,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801207,
@@ -85,7 +95,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2801306,
@@ -93,7 +104,8 @@
     "microrregiao": "Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801405,
@@ -101,7 +113,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2801504,
@@ -109,7 +122,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801603,
@@ -117,7 +131,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801702,
@@ -125,7 +140,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2801900,
@@ -133,7 +149,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802007,
@@ -141,7 +158,8 @@
     "microrregiao": "Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802106,
@@ -149,7 +167,8 @@
     "microrregiao": "Estância",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802205,
@@ -157,7 +176,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2802304,
@@ -165,7 +185,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2802403,
@@ -173,7 +194,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2802502,
@@ -181,7 +203,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802601,
@@ -189,7 +212,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2802700,
@@ -197,7 +221,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802809,
@@ -205,7 +230,8 @@
     "microrregiao": "Estância",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2802908,
@@ -213,7 +239,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2803005,
@@ -221,7 +248,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803104,
@@ -229,7 +257,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2803203,
@@ -237,7 +266,8 @@
     "microrregiao": "Estância",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803302,
@@ -245,7 +275,8 @@
     "microrregiao": "Japaratuba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803401,
@@ -253,7 +284,8 @@
     "microrregiao": "Japaratuba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803500,
@@ -261,7 +293,8 @@
     "microrregiao": "Agreste de Lagarto",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2803609,
@@ -269,7 +302,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803708,
@@ -277,7 +311,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2803807,
@@ -285,7 +320,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2803906,
@@ -293,7 +329,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2804003,
@@ -301,7 +338,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804102,
@@ -309,7 +347,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2804201,
@@ -317,7 +356,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2804300,
@@ -325,7 +365,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804409,
@@ -333,7 +374,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804458,
@@ -341,7 +383,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2804508,
@@ -349,7 +392,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2804607,
@@ -357,7 +401,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804706,
@@ -365,7 +410,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804805,
@@ -373,7 +419,8 @@
     "microrregiao": "Aracaju",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2804904,
@@ -381,7 +428,8 @@
     "microrregiao": "Japaratuba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2805000,
@@ -389,7 +437,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805109,
@@ -397,7 +446,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2805208,
@@ -405,7 +455,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805307,
@@ -413,7 +464,8 @@
     "microrregiao": "Japaratuba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2805406,
@@ -421,7 +473,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805505,
@@ -429,7 +482,8 @@
     "microrregiao": "Tobias Barreto",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805604,
@@ -437,7 +491,8 @@
     "microrregiao": "Sergipana do Sertão do São Francisco",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Nossa Senhora da Glória",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805703,
@@ -445,7 +500,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2805802,
@@ -453,7 +509,8 @@
     "microrregiao": "Agreste de Lagarto",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2805901,
@@ -461,7 +518,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806008,
@@ -469,7 +527,8 @@
     "microrregiao": "Carira",
     "mesorregiao": "Sertão Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2806107,
@@ -477,7 +536,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806206,
@@ -485,7 +545,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2806305,
@@ -493,7 +554,8 @@
     "microrregiao": "Estância",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806404,
@@ -501,7 +563,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806503,
@@ -509,7 +572,8 @@
     "microrregiao": "Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806602,
@@ -517,7 +581,8 @@
     "microrregiao": "Baixo Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806701,
@@ -525,7 +590,8 @@
     "microrregiao": "Aracaju",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2806800,
@@ -533,7 +599,8 @@
     "microrregiao": "Agreste de Itabaiana",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2806909,
@@ -541,7 +608,8 @@
     "microrregiao": "Japaratuba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2807006,
@@ -549,7 +617,8 @@
     "microrregiao": "Nossa Senhora das Dores",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2807105,
@@ -557,7 +626,8 @@
     "microrregiao": "Tobias Barreto",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2807204,
@@ -565,7 +635,8 @@
     "microrregiao": "Cotinguiba",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Aracaju",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2807303,
@@ -573,7 +644,8 @@
     "microrregiao": "Propriá",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Propriá",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2807402,
@@ -581,7 +653,8 @@
     "microrregiao": "Tobias Barreto",
     "mesorregiao": "Agreste Sergipano",
     "regiao_imediata": "Lagarto",
-    "regiao_intermediaria": "Itabaiana"
+    "regiao_intermediaria": "Itabaiana",
+    "uf": "SE"
   },
   {
     "id": 2807501,
@@ -589,7 +662,8 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   },
   {
     "id": 2807600,
@@ -597,6 +671,7 @@
     "microrregiao": "Boquim",
     "mesorregiao": "Leste Sergipano",
     "regiao_imediata": "Estância",
-    "regiao_intermediaria": "Aracaju"
+    "regiao_intermediaria": "Aracaju",
+    "uf": "SE"
   }
 ]

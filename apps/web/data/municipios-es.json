@@ -5,7 +5,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3200136,
@@ -13,7 +14,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3200169,
@@ -21,7 +23,8 @@
     "microrregiao": "Barra de São Francisco",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Nova Venécia",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3200201,
@@ -29,7 +32,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3200300,
@@ -37,7 +41,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3200359,
@@ -45,7 +50,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3200409,
@@ -53,7 +59,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3200508,
@@ -61,7 +68,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3200607,
@@ -69,7 +77,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3200706,
@@ -77,7 +86,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3200805,
@@ -85,7 +95,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3200904,
@@ -93,7 +104,8 @@
     "microrregiao": "Barra de São Francisco",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Nova Venécia",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3201001,
@@ -101,7 +113,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3201100,
@@ -109,7 +122,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3201159,
@@ -117,7 +131,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3201209,
@@ -125,7 +140,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3201308,
@@ -133,7 +149,8 @@
     "microrregiao": "Vitória",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3201407,
@@ -141,7 +158,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3201506,
@@ -149,7 +167,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3201605,
@@ -157,7 +176,8 @@
     "microrregiao": "São Mateus",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3201704,
@@ -165,7 +185,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3201803,
@@ -173,7 +194,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3201902,
@@ -181,7 +203,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3202009,
@@ -189,7 +212,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202108,
@@ -197,7 +221,8 @@
     "microrregiao": "Barra de São Francisco",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Nova Venécia",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3202207,
@@ -205,7 +230,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3202256,
@@ -213,7 +239,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3202306,
@@ -221,7 +248,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202405,
@@ -229,7 +257,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3202454,
@@ -237,7 +266,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202504,
@@ -245,7 +275,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3202553,
@@ -253,7 +284,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202603,
@@ -261,7 +293,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202652,
@@ -269,7 +302,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202702,
@@ -277,7 +311,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3202801,
@@ -285,7 +320,8 @@
     "microrregiao": "Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3202900,
@@ -293,7 +329,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3203007,
@@ -301,7 +338,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203056,
@@ -309,7 +347,8 @@
     "microrregiao": "São Mateus",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3203106,
@@ -317,7 +356,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203130,
@@ -325,7 +365,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3203163,
@@ -333,7 +374,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3203205,
@@ -341,7 +383,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3203304,
@@ -349,7 +392,8 @@
     "microrregiao": "Barra de São Francisco",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3203320,
@@ -357,7 +401,8 @@
     "microrregiao": "Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203346,
@@ -365,7 +410,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3203353,
@@ -373,7 +419,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3203403,
@@ -381,7 +428,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203502,
@@ -389,7 +437,8 @@
     "microrregiao": "Montanha",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3203601,
@@ -397,7 +446,8 @@
     "microrregiao": "Montanha",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3203700,
@@ -405,7 +455,8 @@
     "microrregiao": "Alegre",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203809,
@@ -413,7 +464,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3203908,
@@ -421,7 +473,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Nova Venécia",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3204005,
@@ -429,7 +482,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3204054,
@@ -437,7 +491,8 @@
     "microrregiao": "São Mateus",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3204104,
@@ -445,7 +500,8 @@
     "microrregiao": "Montanha",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3204203,
@@ -453,7 +509,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3204252,
@@ -461,7 +518,8 @@
     "microrregiao": "Montanha",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3204302,
@@ -469,7 +527,8 @@
     "microrregiao": "Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3204351,
@@ -477,7 +536,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3204401,
@@ -485,7 +545,8 @@
     "microrregiao": "Guarapari",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3204500,
@@ -493,7 +554,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3204559,
@@ -501,7 +563,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3204609,
@@ -509,7 +572,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3204658,
@@ -517,7 +581,8 @@
     "microrregiao": "Colatina",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3204708,
@@ -525,7 +590,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3204807,
@@ -533,7 +599,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Alegre",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3204906,
@@ -541,7 +608,8 @@
     "microrregiao": "São Mateus",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "São Mateus",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3204955,
@@ -549,7 +617,8 @@
     "microrregiao": "Santa Teresa",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3205002,
@@ -557,7 +626,8 @@
     "microrregiao": "Vitória",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3205010,
@@ -565,7 +635,8 @@
     "microrregiao": "Linhares",
     "mesorregiao": "Litoral Norte Espírito-santense",
     "regiao_imediata": "Linhares",
-    "regiao_intermediaria": "São Mateus"
+    "regiao_intermediaria": "São Mateus",
+    "uf": "ES"
   },
   {
     "id": 3205036,
@@ -573,7 +644,8 @@
     "microrregiao": "Cachoeiro de Itapemirim",
     "mesorregiao": "Sul Espírito-santense",
     "regiao_imediata": "Cachoeiro de Itapemirim",
-    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+    "regiao_intermediaria": "Cachoeiro do Itapemirim",
+    "uf": "ES"
   },
   {
     "id": 3205069,
@@ -581,7 +653,8 @@
     "microrregiao": "Afonso Cláudio",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3205101,
@@ -589,7 +662,8 @@
     "microrregiao": "Vitória",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3205150,
@@ -597,7 +671,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Nova Venécia",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3205176,
@@ -605,7 +680,8 @@
     "microrregiao": "Nova Venécia",
     "mesorregiao": "Noroeste Espírito-santense",
     "regiao_imediata": "Colatina",
-    "regiao_intermediaria": "Colatina"
+    "regiao_intermediaria": "Colatina",
+    "uf": "ES"
   },
   {
     "id": 3205200,
@@ -613,7 +689,8 @@
     "microrregiao": "Vitória",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   },
   {
     "id": 3205309,
@@ -621,6 +698,7 @@
     "microrregiao": "Vitória",
     "mesorregiao": "Central Espírito-santense",
     "regiao_imediata": "Vitória",
-    "regiao_intermediaria": "Vitória"
+    "regiao_intermediaria": "Vitória",
+    "uf": "ES"
   }
 ]

@@ -5,7 +5,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2500205,
@@ -13,7 +14,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2500304,
@@ -21,7 +23,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2500403,
@@ -29,7 +32,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2500502,
@@ -37,7 +41,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2500536,
@@ -45,7 +50,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2500577,
@@ -53,7 +59,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2500601,
@@ -61,7 +68,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2500700,
@@ -69,7 +77,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2500734,
@@ -77,7 +86,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2500775,
@@ -85,7 +95,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2500809,
@@ -93,7 +104,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2500908,
@@ -101,7 +113,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2501005,
@@ -109,7 +122,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2501104,
@@ -117,7 +131,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501153,
@@ -125,7 +140,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2501203,
@@ -133,7 +149,8 @@
     "microrregiao": "Esperança",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501302,
@@ -141,7 +158,8 @@
     "microrregiao": "Umbuzeiro",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501351,
@@ -149,7 +167,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501401,
@@ -157,7 +176,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2501500,
@@ -165,7 +185,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2501534,
@@ -173,7 +194,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501575,
@@ -181,7 +203,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501609,
@@ -189,7 +212,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501708,
@@ -197,7 +221,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2501807,
@@ -205,7 +230,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2501906,
@@ -213,7 +239,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2502003,
@@ -221,7 +248,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2502052,
@@ -229,7 +257,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2502102,
@@ -237,7 +266,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2502151,
@@ -245,7 +275,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2502201,
@@ -253,7 +284,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2502300,
@@ -261,7 +293,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2502409,
@@ -269,7 +302,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2502508,
@@ -277,7 +311,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2502607,
@@ -285,7 +320,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2502706,
@@ -293,7 +329,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2502805,
@@ -301,7 +338,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2502904,
@@ -309,7 +347,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2503001,
@@ -317,7 +356,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2503100,
@@ -325,7 +365,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2503209,
@@ -333,7 +374,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2503308,
@@ -341,7 +383,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2503407,
@@ -349,7 +392,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2503506,
@@ -357,7 +401,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2503555,
@@ -365,7 +410,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2503605,
@@ -373,7 +419,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2503704,
@@ -381,7 +428,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2503753,
@@ -389,7 +437,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2503803,
@@ -397,7 +446,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2503902,
@@ -405,7 +455,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504009,
@@ -413,7 +464,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504033,
@@ -421,7 +473,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2504074,
@@ -429,7 +482,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504108,
@@ -437,7 +491,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2504157,
@@ -445,7 +500,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2504207,
@@ -453,7 +509,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2504306,
@@ -461,7 +518,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2504355,
@@ -469,7 +527,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504405,
@@ -477,7 +536,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2504504,
@@ -485,7 +545,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2504603,
@@ -493,7 +554,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2504702,
@@ -501,7 +563,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504801,
@@ -509,7 +572,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2504850,
@@ -517,7 +581,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2504900,
@@ -525,7 +590,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505006,
@@ -533,7 +599,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2505105,
@@ -541,7 +608,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2505204,
@@ -549,7 +617,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505238,
@@ -557,7 +626,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505279,
@@ -565,7 +635,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505303,
@@ -573,7 +644,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2505352,
@@ -581,7 +653,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2505402,
@@ -589,7 +662,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2505501,
@@ -597,7 +671,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2505600,
@@ -605,7 +680,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2505709,
@@ -613,7 +689,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505808,
@@ -621,7 +698,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2505907,
@@ -629,7 +707,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2506004,
@@ -637,7 +716,8 @@
     "microrregiao": "Esperança",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506103,
@@ -645,7 +725,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506202,
@@ -653,7 +734,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506251,
@@ -661,7 +743,8 @@
     "microrregiao": "Umbuzeiro",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506301,
@@ -669,7 +752,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2506400,
@@ -677,7 +761,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2506509,
@@ -685,7 +770,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506608,
@@ -693,7 +779,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2506707,
@@ -701,7 +788,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2506806,
@@ -709,7 +797,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2506905,
@@ -717,7 +806,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2507002,
@@ -725,7 +815,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2507101,
@@ -733,7 +824,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2507200,
@@ -741,7 +833,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2507309,
@@ -749,7 +842,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2507408,
@@ -757,7 +851,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2507507,
@@ -765,7 +860,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2507606,
@@ -773,7 +869,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2507705,
@@ -781,7 +878,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2507804,
@@ -789,7 +887,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2507903,
@@ -797,7 +896,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2508000,
@@ -805,7 +905,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Princesa Isabel",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2508109,
@@ -813,7 +914,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2508208,
@@ -821,7 +923,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2508307,
@@ -829,7 +932,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2508406,
@@ -837,7 +941,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2508505,
@@ -845,7 +950,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2508554,
@@ -853,7 +959,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2508604,
@@ -861,7 +968,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2508703,
@@ -869,7 +977,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2508802,
@@ -877,7 +986,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2508901,
@@ -885,7 +995,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509008,
@@ -893,7 +1004,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Princesa Isabel",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2509057,
@@ -901,7 +1013,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509107,
@@ -909,7 +1022,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509156,
@@ -917,7 +1031,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2509206,
@@ -925,7 +1040,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2509305,
@@ -933,7 +1049,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509339,
@@ -941,7 +1058,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2509370,
@@ -949,7 +1067,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2509396,
@@ -957,7 +1076,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2509404,
@@ -965,7 +1085,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509503,
@@ -973,7 +1094,8 @@
     "microrregiao": "Esperança",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2509602,
@@ -981,7 +1103,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2509701,
@@ -989,7 +1112,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2509800,
@@ -997,7 +1121,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2509909,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Umbuzeiro",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2510006,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2510105,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2510204,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2510303,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2510402,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2510501,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2510600,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2510659,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2510709,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2510808,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2510907,
@@ -1093,7 +1229,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2511004,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2511103,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2511202,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2511301,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2511400,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2511509,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2511608,
@@ -1149,7 +1292,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2511707,
@@ -1157,7 +1301,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2511806,
@@ -1165,7 +1310,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2511905,
@@ -1173,7 +1319,8 @@
     "microrregiao": "Litoral Sul",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2512002,
@@ -1181,7 +1328,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512036,
@@ -1189,7 +1337,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2512077,
@@ -1197,7 +1346,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2512101,
@@ -1205,7 +1355,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2512200,
@@ -1213,7 +1364,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512309,
@@ -1221,7 +1373,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Princesa Isabel",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2512408,
@@ -1229,7 +1382,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512507,
@@ -1237,7 +1391,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512606,
@@ -1245,7 +1400,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2512705,
@@ -1253,7 +1409,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512721,
@@ -1261,7 +1418,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2512747,
@@ -1269,7 +1427,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2512754,
@@ -1277,7 +1436,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512762,
@@ -1285,7 +1445,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2512788,
@@ -1293,7 +1454,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2512804,
@@ -1301,7 +1463,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2512903,
@@ -1309,7 +1472,8 @@
     "microrregiao": "Litoral Norte",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Mamanguape - Rio Tinto",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2513000,
@@ -1317,7 +1481,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513109,
@@ -1325,7 +1490,8 @@
     "microrregiao": "Itabaiana",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2513158,
@@ -1333,7 +1499,8 @@
     "microrregiao": "Umbuzeiro",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2513208,
@@ -1341,7 +1508,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2513307,
@@ -1349,7 +1517,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2513356,
@@ -1357,7 +1526,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513406,
@@ -1365,7 +1535,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513505,
@@ -1373,7 +1544,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513604,
@@ -1381,7 +1553,8 @@
     "microrregiao": "Piancó",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513653,
@@ -1389,7 +1562,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2513703,
@@ -1397,7 +1571,8 @@
     "microrregiao": "João Pessoa",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2513802,
@@ -1405,7 +1580,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513851,
@@ -1413,7 +1589,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2513901,
@@ -1421,7 +1598,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513927,
@@ -1429,7 +1607,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513943,
@@ -1437,7 +1616,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2513968,
@@ -1445,7 +1625,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Pombal",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2513984,
@@ -1453,7 +1634,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2514008,
@@ -1461,7 +1643,8 @@
     "microrregiao": "Cariri Oriental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2514107,
@@ -1469,7 +1652,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2514206,
@@ -1477,7 +1661,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2514305,
@@ -1485,7 +1670,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Itaporanga",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514404,
@@ -1493,7 +1679,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514453,
@@ -1501,7 +1688,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "Itabaiana",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2514503,
@@ -1509,7 +1697,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2514552,
@@ -1517,7 +1706,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Princesa Isabel",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514602,
@@ -1525,7 +1715,8 @@
     "microrregiao": "Patos",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514651,
@@ -1533,7 +1724,8 @@
     "microrregiao": "Catolé do Rocha",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Catolé do Rocha - São Bento",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514701,
@@ -1541,7 +1733,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2514800,
@@ -1549,7 +1742,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2514909,
@@ -1557,7 +1751,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2515005,
@@ -1565,7 +1760,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2515104,
@@ -1573,7 +1769,8 @@
     "microrregiao": "Esperança",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2515203,
@@ -1581,7 +1778,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2515302,
@@ -1589,7 +1787,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2515401,
@@ -1597,7 +1796,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2515500,
@@ -1605,7 +1805,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2515609,
@@ -1613,7 +1814,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2515708,
@@ -1621,7 +1823,8 @@
     "microrregiao": "Itaporanga",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2515807,
@@ -1629,7 +1832,8 @@
     "microrregiao": "Campina Grande",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2515906,
@@ -1637,7 +1841,8 @@
     "microrregiao": "Brejo Paraibano",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2515930,
@@ -1645,7 +1850,8 @@
     "microrregiao": "Guarabira",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2515971,
@@ -1653,7 +1859,8 @@
     "microrregiao": "Sapé",
     "mesorregiao": "Mata Paraibana",
     "regiao_imediata": "João Pessoa",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2516003,
@@ -1661,7 +1868,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2516102,
@@ -1669,7 +1877,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2516151,
@@ -1677,7 +1886,8 @@
     "microrregiao": "Curimataú Ocidental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Cuité - Nova Floresta",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2516201,
@@ -1685,7 +1895,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2516300,
@@ -1693,7 +1904,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Sumé",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2516409,
@@ -1701,7 +1913,8 @@
     "microrregiao": "Curimataú Oriental",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Guarabira",
-    "regiao_intermediaria": "João Pessoa"
+    "regiao_intermediaria": "João Pessoa",
+    "uf": "PB"
   },
   {
     "id": 2516508,
@@ -1709,7 +1922,8 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2516607,
@@ -1717,7 +1931,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Princesa Isabel",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2516706,
@@ -1725,7 +1940,8 @@
     "microrregiao": "Serra do Teixeira",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2516755,
@@ -1733,7 +1949,8 @@
     "microrregiao": "Seridó Oriental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2516805,
@@ -1741,7 +1958,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Cajazeiras",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2516904,
@@ -1749,7 +1967,8 @@
     "microrregiao": "Cajazeiras",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2517001,
@@ -1757,7 +1976,8 @@
     "microrregiao": "Umbuzeiro",
     "mesorregiao": "Agreste Paraibano",
     "regiao_imediata": "Campina Grande",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   },
   {
     "id": 2517100,
@@ -1765,7 +1985,8 @@
     "microrregiao": "Seridó Ocidental Paraibano",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Patos",
-    "regiao_intermediaria": "Patos"
+    "regiao_intermediaria": "Patos",
+    "uf": "PB"
   },
   {
     "id": 2517209,
@@ -1773,7 +1994,8 @@
     "microrregiao": "Sousa",
     "mesorregiao": "Sertão Paraibano",
     "regiao_imediata": "Sousa",
-    "regiao_intermediaria": "Sousa - Cajazeiras"
+    "regiao_intermediaria": "Sousa - Cajazeiras",
+    "uf": "PB"
   },
   {
     "id": 2517407,
@@ -1781,6 +2003,7 @@
     "microrregiao": "Cariri Ocidental",
     "mesorregiao": "Borborema",
     "regiao_imediata": "Monteiro",
-    "regiao_intermediaria": "Campina Grande"
+    "regiao_intermediaria": "Campina Grande",
+    "uf": "PB"
   }
 ]

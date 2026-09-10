@@ -5,7 +5,8 @@
     "microrregiao": "Três Lagoas",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5000252,
@@ -13,7 +14,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5000609,
@@ -21,7 +23,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Amambai",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5000708,
@@ -29,7 +32,8 @@
     "microrregiao": "Aquidauana",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Aquidauana - Anastácio",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5000807,
@@ -37,7 +41,8 @@
     "microrregiao": "Nova Andradina",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5000856,
@@ -45,7 +50,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5000906,
@@ -53,7 +59,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Ponta Porã",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5001003,
@@ -61,7 +68,8 @@
     "microrregiao": "Paranaíba",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5001102,
@@ -69,7 +77,8 @@
     "microrregiao": "Aquidauana",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Aquidauana - Anastácio",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5001243,
@@ -77,7 +86,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Ponta Porã",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5001508,
@@ -85,7 +95,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5001904,
@@ -93,7 +104,8 @@
     "microrregiao": "Nova Andradina",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5002001,
@@ -101,7 +113,8 @@
     "microrregiao": "Nova Andradina",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5002100,
@@ -109,7 +122,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5002159,
@@ -117,7 +131,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Aquidauana - Anastácio",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5002209,
@@ -125,7 +140,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5002308,
@@ -133,7 +149,8 @@
     "microrregiao": "Três Lagoas",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5002407,
@@ -141,7 +158,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5002605,
@@ -149,7 +167,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5002704,
@@ -157,7 +176,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5002803,
@@ -165,7 +185,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5002902,
@@ -173,7 +194,8 @@
     "microrregiao": "Cassilândia",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5002951,
@@ -181,7 +203,8 @@
     "microrregiao": "Cassilândia",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5003108,
@@ -189,7 +212,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5003157,
@@ -197,7 +221,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Amambai",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003207,
@@ -205,7 +230,8 @@
     "microrregiao": "Baixo Pantanal",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Corumbá",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5003256,
@@ -213,7 +239,8 @@
     "microrregiao": "Cassilândia",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5003306,
@@ -221,7 +248,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5003454,
@@ -229,7 +257,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003488,
@@ -237,7 +266,8 @@
     "microrregiao": "Aquidauana",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5003504,
@@ -245,7 +275,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003702,
@@ -253,7 +284,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003751,
@@ -261,7 +293,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003801,
@@ -269,7 +302,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5003900,
@@ -277,7 +311,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5004007,
@@ -285,7 +320,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004106,
@@ -293,7 +329,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5004304,
@@ -301,7 +338,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004403,
@@ -309,7 +347,8 @@
     "microrregiao": "Paranaíba",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5004502,
@@ -317,7 +356,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004601,
@@ -325,7 +365,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004700,
@@ -333,7 +374,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004809,
@@ -341,7 +383,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5004908,
@@ -349,7 +392,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5005004,
@@ -357,7 +401,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5005103,
@@ -365,7 +410,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005152,
@@ -373,7 +419,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005202,
@@ -381,7 +428,8 @@
     "microrregiao": "Baixo Pantanal",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Corumbá",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5005251,
@@ -389,7 +437,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005400,
@@ -397,7 +446,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005608,
@@ -405,7 +455,8 @@
     "microrregiao": "Aquidauana",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Aquidauana - Anastácio",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5005681,
@@ -413,7 +464,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005707,
@@ -421,7 +473,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Naviraí - Mundo Novo",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5005806,
@@ -429,7 +482,8 @@
     "microrregiao": "Bodoquena",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5006002,
@@ -437,7 +491,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5006200,
@@ -445,7 +500,8 @@
     "microrregiao": "Nova Andradina",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5006259,
@@ -453,7 +509,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5006275,
@@ -461,7 +518,8 @@
     "microrregiao": "Cassilândia",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5006309,
@@ -469,7 +527,8 @@
     "microrregiao": "Paranaíba",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Paranaíba - Chapadão do Sul - Cassilândia",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5006358,
@@ -477,7 +536,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Amambai",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5006408,
@@ -485,7 +545,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5006606,
@@ -493,7 +554,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Ponta Porã",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5006903,
@@ -501,7 +563,8 @@
     "microrregiao": "Baixo Pantanal",
     "mesorregiao": "Pantanais Sul Mato-grossense",
     "regiao_imediata": "Jardim",
-    "regiao_intermediaria": "Corumbá"
+    "regiao_intermediaria": "Corumbá",
+    "uf": "MS"
   },
   {
     "id": 5007109,
@@ -509,7 +572,8 @@
     "microrregiao": "Três Lagoas",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007208,
@@ -517,7 +581,8 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5007307,
@@ -525,7 +590,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007406,
@@ -533,7 +599,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007505,
@@ -541,7 +608,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007554,
@@ -549,7 +617,8 @@
     "microrregiao": "Três Lagoas",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007695,
@@ -557,7 +626,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007703,
@@ -565,7 +635,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Amambai",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5007802,
@@ -573,7 +644,8 @@
     "microrregiao": "Paranaíba",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007901,
@@ -581,7 +653,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007935,
@@ -589,7 +662,8 @@
     "microrregiao": "Alto Taquari",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Coxim",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5007950,
@@ -597,7 +671,8 @@
     "microrregiao": "Iguatemi",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Amambai",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5007976,
@@ -605,7 +680,8 @@
     "microrregiao": "Nova Andradina",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Nova Andradina",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   },
   {
     "id": 5008008,
@@ -613,7 +689,8 @@
     "microrregiao": "Campo Grande",
     "mesorregiao": "Centro Norte de Mato Grosso do Sul",
     "regiao_imediata": "Campo Grande",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5008305,
@@ -621,7 +698,8 @@
     "microrregiao": "Três Lagoas",
     "mesorregiao": "Leste de Mato Grosso do Sul",
     "regiao_imediata": "Três Lagoas",
-    "regiao_intermediaria": "Campo Grande"
+    "regiao_intermediaria": "Campo Grande",
+    "uf": "MS"
   },
   {
     "id": 5008404,
@@ -629,6 +707,7 @@
     "microrregiao": "Dourados",
     "mesorregiao": "Sudoeste de Mato Grosso do Sul",
     "regiao_imediata": "Dourados",
-    "regiao_intermediaria": "Dourados"
+    "regiao_intermediaria": "Dourados",
+    "uf": "MS"
   }
 ]

@@ -5,7 +5,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Abaetetuba",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1500131,
@@ -13,7 +14,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1500206,
@@ -21,7 +23,8 @@
     "microrregiao": "Tomé-Açu",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1500305,
@@ -29,7 +32,8 @@
     "microrregiao": "Furos de Breves",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1500347,
@@ -37,7 +41,8 @@
     "microrregiao": "Parauapebas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Xinguara",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1500404,
@@ -45,7 +50,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1500503,
@@ -53,7 +59,8 @@
     "microrregiao": "Almeirim",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Almeirim - Porto de Moz",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1500602,
@@ -61,7 +68,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1500701,
@@ -69,7 +77,8 @@
     "microrregiao": "Furos de Breves",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1500800,
@@ -77,7 +86,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1500859,
@@ -85,7 +95,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1500909,
@@ -93,7 +104,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1500958,
@@ -101,7 +113,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1501006,
@@ -109,7 +122,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1501105,
@@ -117,7 +131,8 @@
     "microrregiao": "Portel",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1501204,
@@ -125,7 +140,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1501253,
@@ -133,7 +149,8 @@
     "microrregiao": "São Félix do Xingu",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1501303,
@@ -141,7 +158,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1501402,
@@ -149,7 +167,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1501451,
@@ -157,7 +176,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1501501,
@@ -165,7 +185,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1501576,
@@ -173,7 +194,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1501600,
@@ -181,7 +203,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1501709,
@@ -189,7 +212,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1501725,
@@ -197,7 +221,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1501758,
@@ -205,7 +230,8 @@
     "microrregiao": "Marabá",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1501782,
@@ -213,7 +239,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1501808,
@@ -221,7 +248,8 @@
     "microrregiao": "Furos de Breves",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1501907,
@@ -229,7 +257,8 @@
     "microrregiao": "Castanhal",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1501956,
@@ -237,7 +266,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502004,
@@ -245,7 +275,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1502103,
@@ -253,7 +284,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Cametá",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1502152,
@@ -261,7 +293,8 @@
     "microrregiao": "Parauapebas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Parauapebas",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1502202,
@@ -269,7 +302,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502301,
@@ -277,7 +311,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capitão Poço",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502400,
@@ -285,7 +320,8 @@
     "microrregiao": "Castanhal",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502509,
@@ -293,7 +329,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1502608,
@@ -301,7 +338,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1502707,
@@ -309,7 +347,8 @@
     "microrregiao": "Conceição do Araguaia",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1502756,
@@ -317,7 +356,8 @@
     "microrregiao": "Tomé-Açu",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1502764,
@@ -325,7 +365,8 @@
     "microrregiao": "São Félix do Xingu",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1502772,
@@ -333,7 +374,8 @@
     "microrregiao": "Parauapebas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Parauapebas",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1502806,
@@ -341,7 +383,8 @@
     "microrregiao": "Furos de Breves",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1502855,
@@ -349,7 +392,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1502905,
@@ -357,7 +401,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502939,
@@ -365,7 +410,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1502954,
@@ -373,7 +419,8 @@
     "microrregiao": "Parauapebas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Parauapebas",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1503002,
@@ -381,7 +428,8 @@
     "microrregiao": "Óbidos",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1503044,
@@ -389,7 +437,8 @@
     "microrregiao": "Conceição do Araguaia",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1503077,
@@ -397,7 +446,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capitão Poço",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1503093,
@@ -405,7 +455,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1503101,
@@ -413,7 +464,8 @@
     "microrregiao": "Portel",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1503200,
@@ -421,7 +473,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1503309,
@@ -429,7 +482,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Abaetetuba",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1503408,
@@ -437,7 +491,8 @@
     "microrregiao": "Castanhal",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1503457,
@@ -445,7 +500,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1503507,
@@ -453,7 +509,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1503606,
@@ -461,7 +518,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1503705,
@@ -469,7 +527,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1503754,
@@ -477,7 +536,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1503804,
@@ -485,7 +545,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1503903,
@@ -493,7 +554,8 @@
     "microrregiao": "Óbidos",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1504000,
@@ -501,7 +563,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Cametá",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1504059,
@@ -509,7 +572,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1504109,
@@ -517,7 +581,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1504208,
@@ -525,7 +590,8 @@
     "microrregiao": "Marabá",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1504307,
@@ -533,7 +599,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1504406,
@@ -541,7 +608,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1504422,
@@ -549,7 +617,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1504455,
@@ -557,7 +626,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1504505,
@@ -565,7 +635,8 @@
     "microrregiao": "Portel",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1504604,
@@ -573,7 +644,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Cametá",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1504703,
@@ -581,7 +653,8 @@
     "microrregiao": "Tomé-Açu",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Abaetetuba",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1504752,
@@ -589,7 +662,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1504802,
@@ -597,7 +671,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1504901,
@@ -605,7 +680,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1504950,
@@ -613,7 +689,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capitão Poço",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1504976,
@@ -621,7 +698,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505007,
@@ -629,7 +707,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1505031,
@@ -637,7 +716,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1505064,
@@ -645,7 +725,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505106,
@@ -653,7 +734,8 @@
     "microrregiao": "Óbidos",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1505205,
@@ -661,7 +743,8 @@
     "microrregiao": "Cametá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Cametá",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1505304,
@@ -669,7 +752,8 @@
     "microrregiao": "Óbidos",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1505403,
@@ -677,7 +761,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capitão Poço",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1505437,
@@ -685,7 +770,8 @@
     "microrregiao": "São Félix do Xingu",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucumã - São Félix do Xingu",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1505486,
@@ -693,7 +779,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505494,
@@ -701,7 +788,8 @@
     "microrregiao": "Marabá",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505502,
@@ -709,7 +797,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1505536,
@@ -717,7 +806,8 @@
     "microrregiao": "Parauapebas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Parauapebas",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505551,
@@ -725,7 +815,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1505601,
@@ -733,7 +824,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1505635,
@@ -741,7 +833,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1505650,
@@ -749,7 +842,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1505700,
@@ -757,7 +851,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1505809,
@@ -765,7 +860,8 @@
     "microrregiao": "Portel",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1505908,
@@ -773,7 +869,8 @@
     "microrregiao": "Almeirim",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Almeirim - Porto de Moz",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1506005,
@@ -781,7 +878,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1506104,
@@ -789,7 +887,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1506112,
@@ -797,7 +896,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1506138,
@@ -805,7 +905,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1506161,
@@ -813,7 +914,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Xinguara",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1506187,
@@ -821,7 +923,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1506195,
@@ -829,7 +932,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1506203,
@@ -837,7 +941,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1506302,
@@ -845,7 +950,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1506351,
@@ -853,7 +959,8 @@
     "microrregiao": "Belém",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1506401,
@@ -861,7 +968,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1506500,
@@ -869,7 +977,8 @@
     "microrregiao": "Castanhal",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1506559,
@@ -877,7 +986,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1506583,
@@ -885,7 +995,8 @@
     "microrregiao": "Conceição do Araguaia",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1506609,
@@ -893,7 +1004,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1506708,
@@ -901,7 +1013,8 @@
     "microrregiao": "Conceição do Araguaia",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Redenção",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1506807,
@@ -909,7 +1022,8 @@
     "microrregiao": "Santarém",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Santarém",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1506906,
@@ -917,7 +1031,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507003,
@@ -925,7 +1040,8 @@
     "microrregiao": "Castanhal",
     "mesorregiao": "Metropolitana de Belém",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1507102,
@@ -933,7 +1049,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1507151,
@@ -941,7 +1058,8 @@
     "microrregiao": "Marabá",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1507201,
@@ -949,7 +1067,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507300,
@@ -957,7 +1076,8 @@
     "microrregiao": "São Félix do Xingu",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucumã - São Félix do Xingu",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1507409,
@@ -965,7 +1085,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507458,
@@ -973,7 +1094,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1507466,
@@ -981,7 +1103,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507474,
@@ -989,7 +1112,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Capanema",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507508,
@@ -997,7 +1121,8 @@
     "microrregiao": "Marabá",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Marabá",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1507607,
@@ -1005,7 +1130,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507706,
@@ -1013,7 +1139,8 @@
     "microrregiao": "Furos de Breves",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Breves",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1507755,
@@ -1021,7 +1148,8 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Xinguara",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1507805,
@@ -1029,7 +1157,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1507904,
@@ -1037,7 +1166,8 @@
     "microrregiao": "Arari",
     "mesorregiao": "Marajó",
     "regiao_imediata": "Soure-Salvaterra",
-    "regiao_intermediaria": "Breves"
+    "regiao_intermediaria": "Breves",
+    "uf": "PA"
   },
   {
     "id": 1507953,
@@ -1045,7 +1175,8 @@
     "microrregiao": "Tomé-Açu",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Abaetetuba",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1507961,
@@ -1053,7 +1184,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Castanhal",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1507979,
@@ -1061,7 +1193,8 @@
     "microrregiao": "Óbidos",
     "mesorregiao": "Baixo Amazonas",
     "regiao_imediata": "Oriximiná",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1508001,
@@ -1069,7 +1202,8 @@
     "microrregiao": "Tomé-Açu",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1508035,
@@ -1077,7 +1211,8 @@
     "microrregiao": "Bragantina",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1508050,
@@ -1085,7 +1220,8 @@
     "microrregiao": "Itaituba",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Itaituba",
-    "regiao_intermediaria": "Santarém"
+    "regiao_intermediaria": "Santarém",
+    "uf": "PA"
   },
   {
     "id": 1508084,
@@ -1093,7 +1229,8 @@
     "microrregiao": "São Félix do Xingu",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucumã - São Félix do Xingu",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   },
   {
     "id": 1508100,
@@ -1101,7 +1238,8 @@
     "microrregiao": "Tucuruí",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Tucuruí",
-    "regiao_intermediaria": "Marabá"
+    "regiao_intermediaria": "Marabá",
+    "uf": "PA"
   },
   {
     "id": 1508126,
@@ -1109,7 +1247,8 @@
     "microrregiao": "Paragominas",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Paragominas",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1508159,
@@ -1117,7 +1256,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1508209,
@@ -1125,7 +1265,8 @@
     "microrregiao": "Salgado",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Belém",
-    "regiao_intermediaria": "Belém"
+    "regiao_intermediaria": "Belém",
+    "uf": "PA"
   },
   {
     "id": 1508308,
@@ -1133,7 +1274,8 @@
     "microrregiao": "Guamá",
     "mesorregiao": "Nordeste Paraense",
     "regiao_imediata": "Bragança",
-    "regiao_intermediaria": "Castanhal"
+    "regiao_intermediaria": "Castanhal",
+    "uf": "PA"
   },
   {
     "id": 1508357,
@@ -1141,7 +1283,8 @@
     "microrregiao": "Altamira",
     "mesorregiao": "Sudoeste Paraense",
     "regiao_imediata": "Altamira",
-    "regiao_intermediaria": "Altamira"
+    "regiao_intermediaria": "Altamira",
+    "uf": "PA"
   },
   {
     "id": 1508407,
@@ -1149,6 +1292,7 @@
     "microrregiao": "Redenção",
     "mesorregiao": "Sudeste Paraense",
     "regiao_imediata": "Xinguara",
-    "regiao_intermediaria": "Redenção"
+    "regiao_intermediaria": "Redenção",
+    "uf": "PA"
   }
 ]
