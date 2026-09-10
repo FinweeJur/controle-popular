@@ -60,7 +60,7 @@ export default function CvdToggle() {
       onClick={() => setCvd(!on)}
       aria-pressed={on}
       title="Troca o vermelho/verde de alerta por azul/laranja"
-      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[.8em] font-medium ${
+      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[11px] font-medium ${
         on
           ? "border-text bg-text text-bg"
           : "border-border bg-transparent text-text-soft hover:bg-surface-2"

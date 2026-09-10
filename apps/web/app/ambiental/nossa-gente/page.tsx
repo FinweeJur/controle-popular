@@ -215,7 +215,7 @@ export default function PaginaNossaGente() {
                   <td className="px-4 py-3 text-xs text-muted">{c.identidade}</td>
                   <td className="px-4 py-3 text-xs">
                     <span className="font-medium text-foreground">{c.regiao}</span>
-                    <span className="block text-[11px] text-muted">{c.municipios}</span>
+                    <span className="block text-xs text-muted">{c.municipios}</span>
                   </td>
                   <td className="px-4 py-3 text-xs text-muted">{c.pautaCentral}</td>
                   <td className="px-4 py-3 text-xs text-muted">{c.fonteOficial}</td>

@@ -88,7 +88,7 @@ export default function PainelCeapParlamentar({ nomeParlamentar, uf }: PainelCea
         </div>
       </div>
 
-      <div className="border-t border-[var(--cp-border)] pt-3 text-[.75em] leading-relaxed opacity-70">
+      <div className="border-t border-[var(--cp-border)] pt-3 text-[11px] leading-relaxed opacity-70">
         <span className="font-semibold">ℹ️ Ressalva Editorial: </span>
         Os gastos da Cota Parlamentar (CEAP) são reembolsos legais fiscalizados pela Câmara dos Deputados. O uso do valor não presume irregularidade nem ilicitude.
       </div>

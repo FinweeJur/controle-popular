@@ -98,7 +98,7 @@ export default function ListaNoticiasVale({ noticias }: { noticias: NoticiaVale[
         <div className="mt-3 flex h-28 items-end gap-1.5" role="img" aria-label="Distribuição das notícias por mês">
           {porMes.map(([chave, count]) => (
             <div key={chave} className="flex flex-1 flex-col items-center gap-1">
-              <span className="font-tabular text-[.68em] text-text-soft">{count}</span>
+              <span className="font-tabular text-[11px] text-text-soft">{count}</span>
               <span
                 className="w-full rounded-t bg-accent/70"
                 style={{ height: `${Math.round((count / maxMes) * 100)}%` }}
@@ -121,7 +121,7 @@ export default function ListaNoticiasVale({ noticias }: { noticias: NoticiaVale[
           </h2>
           <div className="flex flex-wrap gap-3 text-[.9em]">
             <label className="flex flex-col gap-1">
-              <span className="text-[.78em] text-text-soft">Fonte</span>
+              <span className="text-[11px] text-text-soft">Fonte</span>
               <select
                 value={fonte}
                 onChange={(e) => setFonte(e.target.value)}
@@ -136,7 +136,7 @@ export default function ListaNoticiasVale({ noticias }: { noticias: NoticiaVale[
               </select>
             </label>
             <label className="flex flex-col gap-1">
-              <span className="text-[.78em] text-text-soft">Ordem</span>
+              <span className="text-[11px] text-text-soft">Ordem</span>
               <select
                 value={ordem}
                 onChange={(e) => setOrdem(e.target.value as Ordem)}
@@ -173,7 +173,7 @@ export default function ListaNoticiasVale({ noticias }: { noticias: NoticiaVale[
                 className="block rounded-lg border border-border bg-surface px-4 py-3 transition-colors hover:border-current"
               >
                 <span className="text-text">{n.titulo}</span>
-                <span className="mt-1 block text-[.78em] text-text-soft">
+                <span className="mt-1 block text-[11px] text-text-soft">
                   {n.fonte}
                   {n.data ? ` · ${formatDateBR(n.data.slice(0, 10))}` : ""}
                 </span>

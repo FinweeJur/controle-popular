@@ -46,7 +46,7 @@ export default function CartoesResumo({ itens, colunas = 4 }: CartoesResumoProps
                 : item.valor}
             </p>
             {item.detalhe && (
-              <p className="mt-1 text-[0.78em] text-text-soft opacity-85">{item.detalhe}</p>
+              <p className="mt-1 text-[0.9em] text-text-soft opacity-85">{item.detalhe}</p>
             )}
           </div>
         ))}

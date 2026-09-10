@@ -301,7 +301,7 @@ export default function DecisoesLicenciamentoPage() {
               <li key={d.decisao} className="rounded-xl border border-border bg-surface px-4 py-3">
                 <p className="text-[.82em] text-text-soft">{d.decisao}</p>
                 <p className="mt-1 font-display text-xl font-bold text-text">{formatNumberBR(d.total)}</p>
-                <p className="mt-0.5 text-[.8em] text-text-soft">
+                <p className="mt-0.5 text-[11px] text-text-soft">
                   {((d.total / C.totalNegativas) * 100).toFixed(0)}% das negativas
                 </p>
               </li>

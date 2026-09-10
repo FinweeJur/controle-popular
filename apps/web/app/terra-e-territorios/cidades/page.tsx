@@ -36,7 +36,7 @@ export default function CidadesEstrategicasEixoPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {stats.totalCidades}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               100% com código IBGE 7 dígitos
             </span>
           </div>
@@ -48,7 +48,7 @@ export default function CidadesEstrategicasEixoPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {stats.totalCapitais}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               26 Estados + Distrito Federal
             </span>
           </div>
@@ -60,7 +60,7 @@ export default function CidadesEstrategicasEixoPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {stats.totalPolosInterior}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               Cidades polo e sedes regionais
             </span>
           </div>
@@ -72,7 +72,7 @@ export default function CidadesEstrategicasEixoPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               112+ mi
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               Mais de 55% da população do país
             </span>
           </div>

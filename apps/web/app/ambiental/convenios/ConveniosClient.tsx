@@ -321,7 +321,7 @@ export default function ConveniosClient() {
             <div aria-hidden className="space-y-2">
               {porAno.map((a) => (
                 <div key={a.ano} className="flex items-center gap-2.5">
-                  <span className="w-11 shrink-0 text-right font-tabular text-[.8em] font-semibold text-text">
+                  <span className="w-11 shrink-0 text-right font-tabular text-[11px] font-semibold text-text">
                     {a.ano}
                   </span>
                   <div className="cp-ord-track h-3.5 flex-1 overflow-hidden">
@@ -348,14 +348,14 @@ export default function ConveniosClient() {
                       )}
                     </div>
                   </div>
-                  <span className="w-9 shrink-0 font-tabular text-[.8em] text-text-soft">
+                  <span className="w-9 shrink-0 font-tabular text-[11px] text-text-soft">
                     {formatNumberBR(a.total)}
                   </span>
                 </div>
               ))}
             </div>
 
-            <figcaption className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[.8em] text-text-soft">
+            <figcaption className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-text-soft">
               <span className="flex items-center gap-1.5">
                 <span
                   aria-hidden
@@ -379,7 +379,7 @@ export default function ConveniosClient() {
               não só para leitor de tela. */}
           <div className="mt-3 overflow-x-auto">
             <table className="w-full min-w-[360px] border-collapse text-[.85em]">
-              <caption className="mb-1.5 text-left text-[.8em] text-text-soft">
+              <caption className="mb-1.5 text-left text-[11px] text-text-soft">
                 Mesmos números do gráfico, em tabela.
               </caption>
               <thead>

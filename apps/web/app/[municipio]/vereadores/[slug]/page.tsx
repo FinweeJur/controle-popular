@@ -287,14 +287,14 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                   >
                     Perguntar sobre a atuação ✉
                   </a>
-                  <p className="mt-2 text-[.8em] text-text-soft">
+                  <p className="mt-2 text-[11px] text-text-soft">
                     Abre um e-mail já endereçado ao vereador, com um rascunho que
                     cita a área de atuação dele — é só escrever sua pergunta.
                   </p>
                 </>
               ) : (
                 fonteCamara.url && (
-                  <p className="mt-2 text-[.8em] text-text-soft">
+                  <p className="mt-2 text-[11px] text-text-soft">
                     Sem e-mail individual cadastrado nesta fonte — fale com a{" "}
                     <a href={fonteCamara.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
                       {fonteCamara.label} ↗
@@ -340,7 +340,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                         </p>
                       )}
                       {custo.competencia && (
-                        <p className="mt-1.5 text-[.75em] text-text-soft">
+                        <p className="mt-1.5 text-[11px] text-text-soft">
                           Valor vigente em {formatDateBR(custo.competencia).slice(3)}. É
                           o mesmo para todos os {vereadoresDaCasa} vereadores — fixado
                           por lei, não por desempenho.
@@ -362,13 +362,13 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                             <span className="font-tabular text-base font-semibold text-text">
                               <Moeda value={a.total} />
                             </span>
-                            <span className="text-[.75em] text-text-soft">
+                            <span className="text-[11px] text-text-soft">
                               {formatNumberBR(a.qtd)} desp.
                             </span>
                           </li>
                         ))}
                       </ul>
-                      <p className="mt-2 text-[.75em] text-text-soft">
+                      <p className="mt-2 text-[11px] text-text-soft">
                         Custeio do gabinete: material de escritório, serviços
                         postais, gráfica e afins.{" "}
                         {anoParcial != null && (
@@ -441,7 +441,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                       <span className="text-text-soft">
                         {d.doador_nome ?? "—"}
                         {d.doador_tipo && (
-                          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[.7em] font-semibold uppercase tracking-wide">
+                          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
                             {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
                           </span>
                         )}
@@ -463,7 +463,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                           <span className="text-text-soft">
                             {d.doador_nome ?? "—"}
                             {d.doador_tipo && (
-                              <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[.7em] font-semibold uppercase tracking-wide">
+                              <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
                                 {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
                               </span>
                             )}

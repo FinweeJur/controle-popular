@@ -124,7 +124,7 @@ export default async function EmpresaPage({ params }: Props) {
               </span>
             )}
             {entidade?.tipo && (
-              <span className="rounded-full bg-surface-2 px-2.5 py-1 text-[11px] font-medium text-muted uppercase">
+              <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-muted uppercase">
                 {entidade.tipo.replace("_", " ")}
               </span>
             )}
@@ -184,13 +184,13 @@ export default async function EmpresaPage({ params }: Props) {
           <div className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-1">
             <span className="text-muted">Ticker Principal</span>
             <div className="font-mono text-base font-bold text-foreground">{ticker || "Sem cotação aberta"}</div>
-            <p className="text-[11px] text-muted">Negociado na {bolsa}</p>
+            <p className="text-xs text-muted">Negociado na {bolsa}</p>
           </div>
 
           <div className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-1">
             <span className="text-muted">Valor de Mercado / Ativos</span>
             <div className="font-semibold text-foreground">{entidade?.valorMercadoEstimado || "Relatórios anuais DFP / CVM"}</div>
-            <p className="text-[11px] text-muted">Demonstrações Financeiras Padronizadas</p>
+            <p className="text-xs text-muted">Demonstrações Financeiras Padronizadas</p>
           </div>
 
           <div className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-1">
@@ -206,7 +206,7 @@ export default async function EmpresaPage({ params }: Props) {
                 <ExternalLink size={12} />
               </a>
             </div>
-            <p className="text-[11px] text-muted">Fatos relevantes e comunicados</p>
+            <p className="text-xs text-muted">Fatos relevantes e comunicados</p>
           </div>
         </div>
       </section>
@@ -230,7 +230,7 @@ export default async function EmpresaPage({ params }: Props) {
               entidade.diretoresESocios.map((dir, idx) => (
                 <div key={idx} className="flex items-center justify-between rounded-xl border border-border/60 bg-surface-2 px-3 py-2.5">
                   <span className="font-medium text-foreground">{dir.nome}</span>
-                  <span className="rounded bg-surface px-2 py-0.5 font-mono text-[11px] text-muted">{dir.cargo}</span>
+                  <span className="rounded bg-surface px-2 py-0.5 font-mono text-xs text-muted">{dir.cargo}</span>
                 </div>
               ))
             ) : (
@@ -314,16 +314,16 @@ export default async function EmpresaPage({ params }: Props) {
               <div key={doc.id} className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-2 flex flex-col justify-between">
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold">
+                    <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-xs font-bold">
                       {doc.tipoDocumentoRotulo}
                     </span>
-                    <span className="font-mono text-[11px] text-muted font-bold">{doc.ano}</span>
+                    <span className="font-mono text-xs text-muted font-bold">{doc.ano}</span>
                   </div>
                   <h3 className="font-bold text-foreground text-xs">{doc.titulo}</h3>
                   <p className="text-muted text-sm leading-relaxed line-clamp-3">{doc.microResumo}</p>
                 </div>
 
-                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs">
                   <span className="font-mono text-muted">{doc.tamanhoFormatado}</span>
                   <div className="flex items-center gap-3">
                     <a
@@ -381,20 +381,20 @@ export default async function EmpresaPage({ params }: Props) {
               <div key={doc.id} className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-2 flex flex-col justify-between">
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-300 px-2 py-0.5 text-[10px] font-bold">
+                    <span className="rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-300 px-2 py-0.5 text-xs font-bold">
                       {doc.tipoRotulo}
                     </span>
-                    <span className="font-mono text-[11px] text-muted font-bold">{doc.ano}</span>
+                    <span className="font-mono text-xs text-muted font-bold">{doc.ano}</span>
                   </div>
                   <h3 className="font-bold text-foreground text-xs leading-snug">{doc.titulo}</h3>
-                  <p className="text-muted text-[11px]">
+                  <p className="text-muted text-xs">
                     <span className="font-semibold text-foreground">{doc.entidade}</span> — {doc.autor}
                   </p>
                   <p className="text-muted text-sm leading-relaxed line-clamp-3">{doc.microResumo}</p>
                 </div>
 
-                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">
-                  <span className="rounded bg-surface px-1.5 py-0.5 text-[10px] text-muted font-medium">{doc.tema}</span>
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs">
+                  <span className="rounded bg-surface px-1.5 py-0.5 text-xs text-muted font-medium">{doc.tema}</span>
                   <div className="flex items-center gap-3">
                     {doc.urlPdf && (
                       <a
@@ -439,7 +439,7 @@ export default async function EmpresaPage({ params }: Props) {
             <h3 className="font-bold text-foreground mb-2">Processos de Licenciamento & Outorgas</h3>
             <div className="overflow-x-auto rounded-xl border border-border/60">
               <table className="w-full text-left">
-                <thead className="bg-surface-2 text-[11px] text-muted uppercase font-semibold">
+                <thead className="bg-surface-2 text-xs text-muted uppercase font-semibold">
                   <tr>
                     <th className="py-2.5 px-3">Órgão</th>
                     <th className="py-2.5 px-3">Processo</th>
@@ -506,7 +506,7 @@ export default async function EmpresaPage({ params }: Props) {
               <div key={idx} className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-foreground">{tac.orgao} ({tac.ano})</span>
-                  <span className="rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 px-2 py-0.5 text-[10px] font-bold">
+                  <span className="rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 px-2 py-0.5 text-xs font-bold">
                     {tac.status}
                   </span>
                 </div>
@@ -537,7 +537,7 @@ export default async function EmpresaPage({ params }: Props) {
                   <h3 className="font-bold text-xs sm:text-sm text-foreground">{evento.titulo}</h3>
                 </div>
                 <p className="text-xs text-muted leading-relaxed">{evento.descricao}</p>
-                {evento.fonte && <span className="text-[10px] text-muted">Fonte: {evento.fonte}</span>}
+                {evento.fonte && <span className="text-xs text-muted">Fonte: {evento.fonte}</span>}
               </div>
             ))}
           </div>
@@ -557,7 +557,7 @@ export default async function EmpresaPage({ params }: Props) {
           <div className="space-y-3">
             {noticias.map((n, i) => (
               <article key={i} className="rounded-xl border border-border/60 bg-surface-2 p-3.5 space-y-1">
-                <div className="flex items-center justify-between text-[11px] text-muted">
+                <div className="flex items-center justify-between text-xs text-muted">
                   <span>{n.data}</span>
                   <span className="font-semibold">{n.veiculo}</span>
                 </div>

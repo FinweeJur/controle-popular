@@ -200,7 +200,7 @@ export default async function IndiceGlobal() {
         <h2 className="flex items-center gap-2 font-display text-xl font-semibold">
           <Sparkles size={20} className="text-primary" aria-hidden="true" />
           Novidades
-          <a href="/novidades" className="ml-auto text-[.72em] font-medium text-text-soft hover:text-primary">
+          <a href="/novidades" className="ml-auto text-[11px] font-medium text-text-soft hover:text-primary">
             ver tudo
           </a>
         </h2>

@@ -103,7 +103,7 @@ export default function ListaFornecedores({ base, municipioSlug }: ListaForneced
               com números recalculados que poderiam divergir. */}
           <Link
             href={`/prefeitura/contratos?q=${encodeURIComponent(f.razao_social ?? "")}`}
-            className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
+            className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
           >
             Ver contratos deste fornecedor →
           </Link>

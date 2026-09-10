@@ -390,7 +390,7 @@ E-mail: `);
                           <Icon className="h-3.5 w-3.5 text-primary" />
                           {t.label}
                         </span>
-                        <p className="mt-1 text-[11px] text-muted leading-tight">
+                        <p className="mt-1 text-xs text-muted leading-tight">
                           {t.desc}
                         </p>
                       </div>
@@ -424,7 +424,7 @@ E-mail: `);
                 </a>
               )}
             </div>
-            <p className="mt-3 text-[11px] text-muted">
+            <p className="mt-3 text-xs text-muted">
               🔒 <strong>Garantia de Privacidade:</strong> Não enviamos spam. Seus dados nunca são vendidos nem compartilhados. Saia a qualquer momento com o comando /parar no Telegram ou respondendo &quot;cancelar&quot; no e-mail.
             </p>
           </div>
@@ -764,7 +764,7 @@ E-mail: `);
               key={item.titulo}
               className="rounded-xl border border-border bg-surface p-5 text-left shadow-sm"
             >
-              <span className="rounded bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+              <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
                 {item.orgaos}
               </span>
               <h4 className="mt-2 font-display text-base font-bold text-foreground">
@@ -773,7 +773,7 @@ E-mail: `);
               <p className="mt-1 text-xs text-muted leading-relaxed">
                 {item.descricao}
               </p>
-              <div className="mt-4 border-t border-border pt-2 text-[11px] text-muted">
+              <div className="mt-4 border-t border-border pt-2 text-xs text-muted">
                 <strong>Frequência:</strong> {item.frequencia}
               </div>
             </div>

@@ -65,7 +65,7 @@ export default function GraficoInternacoesSvg({
               x={MARGEM_ESQ - 8}
               y={y + 4}
               textAnchor="end"
-              className="fill-text-soft text-[10px] font-tabular"
+              className="fill-text-soft text-[11px] font-tabular"
             >
               {formatNumberBR(Math.round(maxIntern * fracao))}
             </text>
@@ -95,7 +95,7 @@ export default function GraficoInternacoesSvg({
               x={x + barraW / 2}
               y={y - 5}
               textAnchor="middle"
-              className="fill-text-soft text-[9px] font-tabular"
+              className="fill-text-soft text-[11px] font-tabular"
             >
               {formatNumberBR(p.internacoes)}
             </text>
@@ -104,7 +104,7 @@ export default function GraficoInternacoesSvg({
               x={x + barraW / 2}
               y={ALTURA - MARGEM_BAIXO + 16}
               textAnchor="middle"
-              className="fill-text text-[10px] font-medium"
+              className="fill-text text-[11px] font-medium"
             >
               {p.ano}
             </text>

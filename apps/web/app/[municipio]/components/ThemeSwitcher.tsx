@@ -73,7 +73,7 @@ export default function ThemeSwitcher() {
         aria-expanded={aberto}
         aria-haspopup="listbox"
         aria-label={`Tema visual atual: ${temaAtual.label}. Clique para alternar temas e biomas.`}
-        className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 py-1 text-[.8em] font-medium text-text transition-colors duration-150 hover:border-primary hover:text-primary"
+        className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 py-1 text-[11px] font-medium text-text transition-colors duration-150 hover:border-primary hover:text-primary"
       >
         <span
           className="inline-block h-2.5 w-2.5 rounded-full border border-black/20 shrink-0"
@@ -95,7 +95,7 @@ export default function ThemeSwitcher() {
           aria-label="Opções de temas e biomas do portal"
           className="absolute right-0 z-50 mt-1.5 w-60 rounded-xl border border-border bg-surface p-1.5 shadow-xl backdrop-blur-md"
         >
-          <div className="px-2 py-1 text-[0.68em] font-bold uppercase tracking-wider text-text-soft border-b border-border/60 mb-1">
+          <div className="px-2 py-1 text-[0.9em] font-bold uppercase tracking-wider text-text-soft border-b border-border/60 mb-1">
             Biomas & Temas Visuais
           </div>
           <div className="max-h-72 space-y-0.5 overflow-y-auto">
@@ -126,7 +126,7 @@ export default function ThemeSwitcher() {
                     <span>{t.emoji}</span>
                     <span>{t.label}</span>
                   </div>
-                  <span className="text-[0.68em] text-text-soft truncate max-w-[85px]">
+                  <span className="text-[0.9em] text-text-soft truncate max-w-[85px]">
                     {t.desc}
                   </span>
                 </button>

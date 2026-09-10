@@ -243,7 +243,7 @@ function PortaCard({
         {titulo}
       </h2>
       <p className="mt-2 text-[.95em] text-text-soft">{descricao}</p>
-      <p className="mt-3 text-[.8em] font-medium text-text-soft">{numero}</p>
+      <p className="mt-3 text-[11px] font-medium text-text-soft">{numero}</p>
       <span className="mt-5 font-medium text-primary">{cta}</span>
     </a>
   );

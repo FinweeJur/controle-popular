@@ -181,7 +181,7 @@ export default function PainelVarasContatosClient({
           <p className="mt-2 font-mono text-2xl sm:text-3xl font-black text-text">
             {estatisticas.totalUnidades}
           </p>
-          <p className="text-[11px] text-text-soft">Unidades e varas catalogadas</p>
+          <p className="text-xs text-text-soft">Unidades e varas catalogadas</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -192,7 +192,7 @@ export default function PainelVarasContatosClient({
           <p className="mt-2 font-mono text-2xl sm:text-3xl font-black text-text">
             {estatisticas.totalVaras}
           </p>
-          <p className="text-[11px] text-text-soft">Cíveis, criminais e juizados</p>
+          <p className="text-xs text-text-soft">Cíveis, criminais e juizados</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -203,7 +203,7 @@ export default function PainelVarasContatosClient({
           <p className="mt-2 font-mono text-2xl sm:text-3xl font-black text-text">
             {estatisticas.totalGabinetes + estatisticas.totalSecretarias}
           </p>
-          <p className="text-[11px] text-text-soft">2º Grau e coordenações</p>
+          <p className="text-xs text-text-soft">2º Grau e coordenações</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -214,7 +214,7 @@ export default function PainelVarasContatosClient({
           <p className="mt-2 font-mono text-2xl sm:text-3xl font-black text-text">
             {estatisticas.totalBalcoesVirtuais}
           </p>
-          <p className="text-[11px] text-text-soft">Atendimento remoto ativo</p>
+          <p className="text-xs text-text-soft">Atendimento remoto ativo</p>
         </div>
       </div>
 
@@ -418,7 +418,7 @@ export default function PainelVarasContatosClient({
             {ufFiltro !== "todos" ? ` em ${ufFiltro}` : " em todo o Brasil"}
           </span>
           <div className="flex items-center gap-2">
-            <span className="text-[11px]">Ordenar por:</span>
+            <span className="text-xs">Ordenar por:</span>
             <button
               onClick={() => {
                 if (ordenarPor === "comarca") setOrdemDirecao(ordemDirecao === "asc" ? "desc" : "asc");
@@ -469,7 +469,7 @@ export default function PainelVarasContatosClient({
                 {/* Cabeçalho do Card */}
                 <div className="flex items-start justify-between gap-2">
                   <span
-                    className={`inline-block rounded-md px-2 py-0.5 text-[0.68em] font-bold uppercase tracking-wider ${
+                    className={`inline-block rounded-md px-2 py-0.5 text-[0.9em] font-bold uppercase tracking-wider ${
                       u.ramo === "Estadual"
                         ? "border border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-400"
                         : u.ramo === "Federal"
@@ -493,7 +493,7 @@ export default function PainelVarasContatosClient({
                   <User size={14} className="text-primary shrink-0" aria-hidden="true" />
                   <div className="overflow-hidden">
                     <p className="truncate font-bold text-text">{u.coordenador.nome}</p>
-                    <p className="text-[10px] text-text-soft truncate">{u.coordenador.cargo}</p>
+                    <p className="text-xs text-text-soft truncate">{u.coordenador.cargo}</p>
                   </div>
                 </div>
 
@@ -508,7 +508,7 @@ export default function PainelVarasContatosClient({
                       {u.telefone}
                     </a>
                     {u.whatsappBalcao && (
-                      <span className="rounded bg-emerald-500/10 px-1 py-0.2 text-[9px] font-bold text-emerald-600">
+                      <span className="rounded bg-emerald-500/10 px-1 py-0.5 text-xs font-bold text-emerald-600">
                         WhatsApp
                       </span>
                     )}
@@ -525,7 +525,7 @@ export default function PainelVarasContatosClient({
                     </a>
                   </div>
 
-                  <div className="flex items-start gap-2 pt-1 text-[11px] leading-relaxed">
+                  <div className="flex items-start gap-2 pt-1 text-xs leading-relaxed">
                     <MapPin size={13} className="text-primary shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="line-clamp-2" title={u.endereco}>
                       {u.endereco}
@@ -536,7 +536,7 @@ export default function PainelVarasContatosClient({
 
               {/* Botão de Ação: Balcão Virtual */}
               <div className="mt-4 border-t border-border/50 pt-3 flex items-center justify-between text-xs">
-                <span className="text-[10px] text-text-soft flex items-center gap-1">
+                <span className="text-xs text-text-soft flex items-center gap-1">
                   <Clock size={11} aria-hidden="true" />
                   {u.horarioAtendimento || "12h às 18h"}
                 </span>
@@ -558,7 +558,7 @@ export default function PainelVarasContatosClient({
         <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="border-b border-border bg-surface-2/60 text-[0.72em] font-bold uppercase tracking-wider text-text-soft">
+              <tr className="border-b border-border bg-surface-2/60 text-[0.9em] font-bold uppercase tracking-wider text-text-soft">
                 <th className="px-4 py-3">Comarca/UF</th>
                 <th className="px-4 py-3">Unidade / Vara</th>
                 <th className="px-4 py-3">Ramo</th>
@@ -576,11 +576,11 @@ export default function PainelVarasContatosClient({
                   </td>
                   <td className="px-4 py-2.5 font-bold text-text">
                     <p className="line-clamp-1">{u.nome}</p>
-                    <span className="text-[10px] font-normal text-text-soft">{u.tipo} · {u.tribunalSigla.toUpperCase()}</span>
+                    <span className="text-xs font-normal text-text-soft">{u.tipo} · {u.tribunalSigla.toUpperCase()}</span>
                   </td>
                   <td className="px-4 py-2.5 whitespace-nowrap">
                     <span
-                      className={`inline-block rounded px-1.5 py-0.5 text-[0.68em] font-bold uppercase ${
+                      className={`inline-block rounded px-1.5 py-0.5 text-[0.9em] font-bold uppercase ${
                         u.ramo === "Estadual"
                           ? "bg-sky-500/10 text-sky-700 dark:text-sky-400"
                           : u.ramo === "Federal"
@@ -593,7 +593,7 @@ export default function PainelVarasContatosClient({
                   </td>
                   <td className="px-4 py-2.5 text-text">
                     <p className="font-medium line-clamp-1">{u.coordenador.nome}</p>
-                    <p className="text-[10px] text-text-soft">{u.coordenador.cargo}</p>
+                    <p className="text-xs text-text-soft">{u.coordenador.cargo}</p>
                   </td>
                   <td className="px-4 py-2.5 font-mono text-text whitespace-nowrap">
                     <a href={`tel:${u.telefone.replace(/[^\d+]/g, "")}`} className="hover:text-primary">

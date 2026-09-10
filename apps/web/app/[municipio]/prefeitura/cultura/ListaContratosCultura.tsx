@@ -158,7 +158,7 @@ export default function ListaContratosCultura({ base, municipioSlug, motivoAlert
               href={c.link_fonte}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
+              className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
             >
               Conferir no PNCP
               {typeof c.numero_contrato === "string" && c.numero_contrato

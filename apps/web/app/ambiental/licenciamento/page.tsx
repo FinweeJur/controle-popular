@@ -127,7 +127,7 @@ export default async function LicenciamentoIndex() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
-                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                <p className="text-[11px] font-medium uppercase tracking-wide opacity-70">
                   Licenças deferidas
                 </p>
                 <p className="mt-1 font-display text-2xl font-bold">
@@ -135,35 +135,35 @@ export default async function LicenciamentoIndex() {
                 </p>
               </div>
               <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
-                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                <p className="text-[11px] font-medium uppercase tracking-wide opacity-70">
                   Municípios alcançados
                 </p>
                 <p className="mt-1 font-display text-2xl font-bold">
                   {formatNumberBR(municipios.length)}
                 </p>
-                <p className="mt-1 text-[.8em] opacity-70">de 853 em Minas Gerais</p>
+                <p className="mt-1 text-[11px] opacity-70">de 853 em Minas Gerais</p>
               </div>
               {setorTop ? (
                 <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
-                  <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                  <p className="text-[11px] font-medium uppercase tracking-wide opacity-70">
                     Setor com mais licenças
                   </p>
                   <p className="mt-1 font-display text-2xl font-bold">
                     {formatNumberBR(setorTop.total)}
                   </p>
-                  <p className="mt-1 text-[.8em] opacity-70">
+                  <p className="mt-1 text-[11px] opacity-70">
                     {setorTop.letra} — {setorTop.rotulo}
                   </p>
                 </div>
               ) : null}
               <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
-                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                <p className="text-[11px] font-medium uppercase tracking-wide opacity-70">
                   Sem data de emissão na fonte
                 </p>
                 <p className="mt-1 font-display text-2xl font-bold">
                   {formatNumberBR(porAnoData.semDataEmissao)}
                 </p>
-                <p className="mt-1 text-[.8em] opacity-70">
+                <p className="mt-1 text-[11px] opacity-70">
                   {((porAnoData.semDataEmissao / contagem.total) * 100).toFixed(1).replace(".", ",")}%
                   do total — ficam fora do gráfico por ano
                 </p>

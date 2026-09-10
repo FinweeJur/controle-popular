@@ -140,7 +140,7 @@ export default function EmpresasClient({ entidades }: Props) {
           <div className="mt-2 font-display text-2xl sm:text-3xl font-bold text-foreground">
             {entidades.length}
           </div>
-          <p className="mt-1 text-[11px] text-muted">60 nacionais · 60 EUA · 10 fundos globais</p>
+          <p className="mt-1 text-xs text-muted">60 nacionais · 60 EUA · 10 fundos globais</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -151,7 +151,7 @@ export default function EmpresasClient({ entidades }: Props) {
           <div className="mt-2 font-display text-2xl sm:text-3xl font-bold text-foreground">
             {setores.length}
           </div>
-          <p className="mt-1 text-[11px] text-muted">Mineração, Energia, Água, Defesa, etc.</p>
+          <p className="mt-1 text-xs text-muted">Mineração, Energia, Água, Defesa, etc.</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -162,7 +162,7 @@ export default function EmpresasClient({ entidades }: Props) {
           <div className="mt-2 font-display text-2xl sm:text-3xl font-bold text-foreground">
             B3 / NYSE
           </div>
-          <p className="mt-1 text-[11px] text-muted">Tickers e relatórios CVM / SEC</p>
+          <p className="mt-1 text-xs text-muted">Tickers e relatórios CVM / SEC</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -173,7 +173,7 @@ export default function EmpresasClient({ entidades }: Props) {
           <div className="mt-2 font-display text-2xl sm:text-3xl font-bold text-foreground">
             {entidades.filter((e) => e.esg.riscoAmbiental === "Crítico").length}
           </div>
-          <p className="mt-1 text-[11px] text-muted">Mineração e grandes bacias monitoradas</p>
+          <p className="mt-1 text-xs text-muted">Mineração e grandes bacias monitoradas</p>
         </div>
       </section>
 
@@ -312,7 +312,7 @@ export default function EmpresasClient({ entidades }: Props) {
       {/* ═══ 4. TABELA COMPACTA COM ORDENAÇÃO E PERFIS ═══ */}
       <section aria-label="Tabela de empresas monitoradas" className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
         <table className="w-full text-left text-xs sm:text-sm">
-          <thead className="border-b border-border bg-surface-2 text-[11px] font-semibold text-muted uppercase tracking-wider">
+          <thead className="border-b border-border bg-surface-2 text-xs font-semibold text-muted uppercase tracking-wider">
             <tr>
               <th scope="col" className="py-3 px-4">
                 <button
@@ -375,7 +375,7 @@ export default function EmpresasClient({ entidades }: Props) {
                     >
                       {e.nome}
                     </Link>
-                    <div className="text-[11px] text-muted">{e.investimentoBrasil}</div>
+                    <div className="text-xs text-muted">{e.investimentoBrasil}</div>
                   </td>
                   <td className="py-3 px-3 font-mono text-xs">
                     {e.ticker ? (
@@ -384,20 +384,20 @@ export default function EmpresasClient({ entidades }: Props) {
                         {e.ticker}
                       </span>
                     ) : (
-                      <span className="text-muted text-[11px]">Capital fechado</span>
+                      <span className="text-muted text-xs">Capital fechado</span>
                     )}
                   </td>
                   <td className="py-3 px-3 text-xs text-muted">
-                    <span className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-foreground">
+                    <span className="rounded-md bg-surface-2 px-2 py-0.5 text-xs font-medium text-foreground">
                       {e.setorRotulo}
                     </span>
                   </td>
-                  <td className="py-3 px-3 font-mono text-[11px] text-muted">
+                  <td className="py-3 px-3 font-mono text-xs text-muted">
                     {e.cnpj || e.cik || "—"}
                   </td>
                   <td className="py-3 px-3 text-xs">
                     <span
-                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-bold ${
                         e.esg.riscoAmbiental === "Crítico"
                           ? "bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300"
                           : e.esg.riscoAmbiental === "Alto"

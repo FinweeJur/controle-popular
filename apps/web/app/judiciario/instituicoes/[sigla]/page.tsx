@@ -99,7 +99,7 @@ export default async function InstituicaoPage({ params }: Props) {
               <IconePrincipal size={24} aria-hidden="true" />
             </div>
             <div>
-              <span className="inline-block rounded border border-border px-2 py-0.5 text-[0.68em] font-bold uppercase tracking-wider text-text-soft">
+              <span className="inline-block rounded border border-border px-2 py-0.5 text-[0.9em] font-bold uppercase tracking-wider text-text-soft">
                 {inst.esfera} · {inst.tipo}
               </span>
               <h1 className="mt-1 font-display text-2xl sm:text-3xl font-bold tracking-tight text-text">
@@ -242,7 +242,7 @@ export default async function InstituicaoPage({ params }: Props) {
                     href={item.site}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface px-2.5 py-1 text-[0.72em] font-semibold text-primary transition-colors hover:bg-surface-2"
+                    className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface px-2.5 py-1 text-[0.9em] font-semibold text-primary transition-colors hover:bg-surface-2"
                     title={`Acessar portal de ${item.area}`}
                   >
                     <span>Portal da Área</span>
@@ -252,7 +252,7 @@ export default async function InstituicaoPage({ params }: Props) {
               </div>
 
               {(item.telefone || item.email || item.endereco) && (
-                <div className="mt-3 grid grid-cols-1 gap-2 border-t border-border/40 pt-3 text-[0.75em] text-text-soft sm:grid-cols-3">
+                <div className="mt-3 grid grid-cols-1 gap-2 border-t border-border/40 pt-3 text-[0.9em] text-text-soft sm:grid-cols-3">
                   {item.telefone && (
                     <div className="flex items-center gap-1.5 overflow-hidden">
                       <Phone size={12} className="text-primary shrink-0" aria-hidden="true" />

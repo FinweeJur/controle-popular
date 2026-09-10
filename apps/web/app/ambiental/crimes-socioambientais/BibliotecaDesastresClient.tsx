@@ -551,7 +551,7 @@ function ItemDaBiblioteca({ item, onTermo }: { item: ItemDesastre; onTermo: (t: 
               type="button"
               onClick={() => onTermo(t)}
               aria-label={`Filtrar por tag: ${t}`}
-              className="cp-btn-anim rounded-full border border-border bg-surface px-2 py-0.5 text-[.72em] text-text-soft transition-colors hover:border-primary hover:text-primary"
+              className="cp-btn-anim rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] text-text-soft transition-colors hover:border-primary hover:text-primary"
             >
               {t}
             </button>

@@ -115,7 +115,7 @@ export default function AcervoPericia({
             >
               {nomeLegivel(d.nomeArquivo)}
             </a>
-            <div className="mt-1 text-[.8em] text-text-soft">
+            <div className="mt-1 text-[11px] text-text-soft">
               {rotulos[d.secao]}
               {d.anoMes ? ` · ${d.anoMes}` : ""}
             </div>

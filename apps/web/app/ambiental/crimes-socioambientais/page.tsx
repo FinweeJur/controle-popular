@@ -50,22 +50,22 @@ export default function PaginaCrimesSocioambientais() {
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted">Total Acervo</p>
           <p className="mt-1 font-display text-2xl font-bold text-foreground">{total_documentos}</p>
-          <p className="mt-1 text-[11px] text-muted">Laudos, TACs e estudos</p>
+          <p className="mt-1 text-xs text-muted">Laudos, TACs e estudos</p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted">Brumadinho (MG)</p>
           <p className="mt-1 font-display text-2xl font-bold text-amber-600">{totais.brumadinho_paraopeba}</p>
-          <p className="mt-1 text-[11px] text-muted">Bacia do Paraopeba</p>
+          <p className="mt-1 text-xs text-muted">Bacia do Paraopeba</p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted">Mariana (MG/ES/BA)</p>
           <p className="mt-1 font-display text-2xl font-bold text-cyan-700 dark:text-cyan-400">{totais.mariana_rio_doce}</p>
-          <p className="mt-1 text-[11px] text-muted">Bacia do Rio Doce</p>
+          <p className="mt-1 text-xs text-muted">Bacia do Rio Doce</p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted">Nacional + Ações Coletivas</p>
           <p className="mt-1 font-display text-2xl font-bold text-indigo-600">{totais.nacional} casos</p>
-          <p className="mt-1 text-[11px] text-muted">{totais.acoes_coletivas} ações coletivas</p>
+          <p className="mt-1 text-xs text-muted">{totais.acoes_coletivas} ações coletivas</p>
         </div>
       </section>
 

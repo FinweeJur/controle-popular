@@ -280,7 +280,7 @@ export default async function AmbientalHome() {
             <>
               <div className="flex items-baseline justify-between gap-3">
                 <h2 className="font-display text-lg font-semibold">{b.titulo}</h2>
-                <span className="shrink-0 text-[.75em] font-medium text-text-soft">
+                <span className="shrink-0 text-[11px] font-medium text-text-soft">
                   {b.fase}
                 </span>
               </div>

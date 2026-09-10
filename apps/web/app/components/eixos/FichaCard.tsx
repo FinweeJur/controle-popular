@@ -67,7 +67,7 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
           {showEixoTag && eixo && (
             <Link
               href={rotaEixo}
-              className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
+              className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
               style={{ backgroundColor: `var(${corVar})`, color: `var(${corInkVar})` }}
             >
               {eixo.titulo}
@@ -76,7 +76,7 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
           {subfrente && (
             <Link
               href={rotaSubfrente}
-              className="text-[11px] font-medium text-muted hover:text-primary transition-colors"
+              className="text-xs font-medium text-muted hover:text-primary transition-colors"
             >
               {subfrente.titulo}
             </Link>
@@ -170,7 +170,7 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
                   title={`Abrir fonte oficial: ${f.nome}`}
                 >
                   {f.nome}
-                  <span className="text-[10px]" aria-hidden="true">↗</span>
+                  <span className="text-xs" aria-hidden="true">↗</span>
                 </a>
               ) : (
                 <span>{f.nome}</span>
@@ -183,7 +183,7 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
             <Link
               key={t}
               href={`/busca?q=${encodeURIComponent(t)}`}
-              className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-text-soft hover:bg-primary/15 hover:text-primary transition-colors duration-150"
+              className="rounded-md bg-surface-2 px-2 py-0.5 text-xs font-medium text-text-soft hover:bg-primary/15 hover:text-primary transition-colors duration-150"
               title={`Ver mais itens com o tema #${t}`}
             >
               #{t}

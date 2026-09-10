@@ -44,7 +44,7 @@ export default function NossosRiosPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {item.valor}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               {item.obs}
             </span>
           </div>
@@ -119,7 +119,7 @@ export default function NossosRiosPage() {
               <div>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl">🌊</span>
-                  <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                     {rio.numeroProtagonista.valor}
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export default function NossosRiosPage() {
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border/60 text-[11px] text-muted space-y-1">
+              <div className="mt-4 pt-3 border-t border-border/60 text-xs text-muted space-y-1">
                 <div className="flex justify-between">
                   <span>População na bacia:</span>
                   <span className="font-semibold text-foreground">{rio.populacaoBacia.split(' ')[0]} {rio.populacaoBacia.split(' ')[1]}</span>

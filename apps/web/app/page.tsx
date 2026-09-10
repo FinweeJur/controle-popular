@@ -150,7 +150,7 @@ export default async function Hub() {
             <span className="text-xs font-bold uppercase tracking-wider text-muted">
               Navegação por Eixos Temáticos
             </span>
-            <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-[10px] font-semibold text-muted border border-border">
+            <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-semibold text-muted border border-border">
               3 Eixos • 18 Subfrentes
             </span>
           </div>
@@ -162,7 +162,7 @@ export default async function Hub() {
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-direitos, #c0392b)' }} />
               <div>
                 <div className="font-bold text-foreground">1. Direitos em Movimento</div>
-                <div className="text-[10px] font-normal text-muted">Trabalho, Saúde, Educação, Moradia</div>
+                <div className="text-xs font-normal text-muted">Trabalho, Saúde, Educação, Moradia</div>
               </div>
             </a>
             <a
@@ -172,7 +172,7 @@ export default async function Hub() {
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-terra, #1b6348)' }} />
               <div>
                 <div className="font-bold text-foreground">2. Terra e Territórios</div>
-                <div className="text-[10px] font-normal text-muted">199 Cidades, Rios, Serras, Biomas</div>
+                <div className="text-xs font-normal text-muted">199 Cidades, Rios, Serras, Biomas</div>
               </div>
             </a>
             <a
@@ -182,7 +182,7 @@ export default async function Hub() {
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-estado, #1e3a8a)' }} />
               <div>
                 <div className="font-bold text-foreground">3. Estado e Economia</div>
-                <div className="text-[10px] font-normal text-muted">Orçamento, Judiciário, Empresas</div>
+                <div className="text-xs font-normal text-muted">Orçamento, Judiciário, Empresas</div>
               </div>
             </a>
           </div>

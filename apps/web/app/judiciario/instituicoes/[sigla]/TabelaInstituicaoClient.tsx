@@ -235,7 +235,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-lg sm:text-xl font-bold tracking-tight text-text">
             {instituicao.orcamento.total}
           </div>
-          <p className="mt-0.5 text-[0.7em] text-text-soft">
+          <p className="mt-0.5 text-[11px] text-text-soft">
             LOA {instituicao.orcamento.ano}
           </p>
         </div>
@@ -248,7 +248,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-sm sm:text-base font-bold tracking-tight text-text truncate">
             {membros}
           </div>
-          <p className="mt-0.5 text-[0.7em] text-text-soft">
+          <p className="mt-0.5 text-[11px] text-text-soft">
             {instituicao.estruturaPessoal?.servidoresEfetivos || "Servidores ativos"}
           </p>
         </div>
@@ -261,7 +261,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-lg sm:text-xl font-bold tracking-tight text-text">
             {totalAtos}
           </div>
-          <p className="mt-0.5 text-[0.7em] text-text-soft">
+          <p className="mt-0.5 text-[11px] text-text-soft">
             Documentos auditados
           </p>
         </div>
@@ -276,7 +276,7 @@ export default function TabelaInstituicaoClient({
               instituicao.estruturaPessoal?.nucleosAtendimento ||
               instituicao.esfera}
           </div>
-          <p className="mt-0.5 text-[0.7em] text-text-soft">
+          <p className="mt-0.5 text-[11px] text-text-soft">
             {instituicao.uf ? `Estado: ${instituicao.uf}` : "Âmbito Nacional"}
           </p>
         </div>
@@ -424,7 +424,7 @@ export default function TabelaInstituicaoClient({
               setAnoAtivo("todos");
               setBusca("");
             }}
-            className="text-[0.75em] text-primary hover:underline ml-1 cursor-pointer"
+            className="text-[0.9em] text-primary hover:underline ml-1 cursor-pointer"
           >
             Limpar filtros
           </button>
@@ -495,7 +495,7 @@ export default function TabelaInstituicaoClient({
                   className="hover:bg-surface-2/60 transition-colors"
                 >
                   {/* Data */}
-                  <td className="px-4 py-3 font-mono text-[0.82em] text-text-soft align-top">
+                  <td className="px-4 py-3 font-mono text-[0.9em] text-text-soft align-top">
                     {item.data}
                   </td>
 
@@ -516,7 +516,7 @@ export default function TabelaInstituicaoClient({
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[0.68em] font-medium text-text-soft"
+                            className="inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[0.9em] font-medium text-text-soft"
                           >
                             #{tag}
                           </span>
@@ -527,7 +527,7 @@ export default function TabelaInstituicaoClient({
 
                   {/* Tipo */}
                   <td className="px-4 py-3 align-top">
-                    <span className="inline-block rounded border border-border px-2 py-0.5 text-[0.72em] font-semibold text-text">
+                    <span className="inline-block rounded border border-border px-2 py-0.5 text-[0.9em] font-semibold text-text">
                       {TIPOS_ROTULOS[item.tipo] || item.tipo}
                     </span>
                   </td>
@@ -535,7 +535,7 @@ export default function TabelaInstituicaoClient({
                   {/* Tema */}
                   <td className="px-4 py-3 align-top">
                     <span
-                      className="inline-block rounded-full px-2.5 py-0.5 text-[0.72em] font-semibold"
+                      className="inline-block rounded-full px-2.5 py-0.5 text-[0.9em] font-semibold"
                       style={{
                         backgroundColor: `color-mix(in srgb, ${instituicao.cor || "#0284c7"} 15%, transparent)`,
                         color: instituicao.cor || "#0284c7",
@@ -552,7 +552,7 @@ export default function TabelaInstituicaoClient({
                         href={item.urlOficial}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded border border-border bg-surface px-2 py-1 text-[0.72em] font-semibold text-primary transition-colors hover:bg-surface-2"
+                        className="inline-flex items-center gap-1 rounded border border-border bg-surface px-2 py-1 text-[0.9em] font-semibold text-primary transition-colors hover:bg-surface-2"
                         title="Acessar ato no portal oficial de origem"
                       >
                         <span>Acessar Ato</span>
@@ -565,7 +565,7 @@ export default function TabelaInstituicaoClient({
                           href={item.urlR2}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[0.68em] text-text-soft hover:text-text hover:underline"
+                          className="inline-flex items-center gap-1 text-[0.9em] text-text-soft hover:text-text hover:underline"
                           title="Espelho perpétuo no Cloudflare R2"
                         >
                           <HardDrive size={10} aria-hidden="true" />
@@ -580,7 +580,7 @@ export default function TabelaInstituicaoClient({
           </tbody>
         </table>
       </div>
-      <div className="flex justify-between items-center text-[0.75em] text-text-soft px-1">
+      <div className="flex justify-between items-center text-[0.9em] text-text-soft px-1">
         <span>Exibindo {ordenados.length} de {atos.length} atos monitorados</span>
         <span>Atualizado em setembro de 2026 · Fontes oficiais e CNJ/CNMP</span>
       </div>

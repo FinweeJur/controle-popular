@@ -331,7 +331,7 @@ export default function ListaContratos({
           {c.temas && c.temas.length > 0 && (
             <div className="flex flex-wrap gap-1">
               {c.temas.map((t) => (
-                <span key={t} className="rounded-full bg-primary/10 px-2 py-0.5 text-[.8em] font-medium text-primary">
+                <span key={t} className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
                   {temaLabels[t] ?? t}
                 </span>
               ))}
@@ -342,7 +342,7 @@ export default function ListaContratos({
               href={c.link_fonte}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
+              className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
             >
               Conferir no PNCP
               {typeof c.numero_contrato === "string" && c.numero_contrato

@@ -44,7 +44,7 @@ export default function CotaParlamentarPage() {
           <span className="mt-1 block font-mono text-xl font-bold text-accent">
             R$ {(dados.totalGastoNacional / 1e9).toFixed(2).replace(".", ",")} bi
           </span>
-          <span className="text-[.75em] text-text-soft">Desde o início da série</span>
+          <span className="text-[11px] text-text-soft">Desde o início da série</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
@@ -52,7 +52,7 @@ export default function CotaParlamentarPage() {
           <span className="mt-1 block font-mono text-xl font-bold text-text">
             {dados.totalParlamentares.toLocaleString("pt-BR")}
           </span>
-          <span className="text-[.75em] text-text-soft">27 Unidades da Federação</span>
+          <span className="text-[11px] text-text-soft">27 Unidades da Federação</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
@@ -60,7 +60,7 @@ export default function CotaParlamentarPage() {
           <span className="mt-1 block font-mono text-xl font-bold text-text">
             {(dados.totalLancamentosAnalisados / 1e6).toFixed(1).replace(".", ",")} mi
           </span>
-          <span className="text-[.75em] text-text-soft">Comprovantes fiscais</span>
+          <span className="text-[11px] text-text-soft">Comprovantes fiscais</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
@@ -68,7 +68,7 @@ export default function CotaParlamentarPage() {
           <span className="mt-1 block font-mono text-xl font-bold text-primary">
             {topUfs[0]?.[0]} (R$ {((topUfs[0]?.[1] || 0) / 1e6).toFixed(0)} mi)
           </span>
-          <span className="text-[.75em] text-text-soft">Bancada mais volumosa</span>
+          <span className="text-[11px] text-text-soft">Bancada mais volumosa</span>
         </div>
       </div>
 

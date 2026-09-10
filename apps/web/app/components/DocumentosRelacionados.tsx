@@ -53,11 +53,11 @@ export default function DocumentosRelacionados({
             >
               <div>
                 <div className="flex items-center justify-between gap-2">
-                  <span className="rounded border border-border px-1.5 py-0.5 text-[0.68em] font-semibold uppercase tracking-wider text-text-soft">
+                  <span className="rounded border border-border px-1.5 py-0.5 text-[0.9em] font-semibold uppercase tracking-wider text-text-soft">
                     {doc.orgao ?? doc.tipo ?? "Fonte Oficial"}
                   </span>
                   {doc.formato && (
-                    <span className="font-mono text-[0.65em] font-bold text-text-soft">
+                    <span className="font-mono text-[0.9em] font-bold text-text-soft">
                       {doc.formato}
                     </span>
                   )}

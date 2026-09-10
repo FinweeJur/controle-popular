@@ -283,7 +283,7 @@ export default function NoticiasClient({ noticias }: Props) {
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 border-y border-border/60 py-4">
               {destaque.metricas.map((m) => (
                 <div key={m.rotulo}>
-                  <p className="text-[11px] font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
+                  <p className="text-xs font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
                   <p className="mt-0.5 font-display text-lg font-bold text-foreground">{m.valor}</p>
                 </div>
               ))}
@@ -328,7 +328,7 @@ export default function NoticiasClient({ noticias }: Props) {
                 className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 shadow-xs transition-all hover:border-primary/50 hover:shadow-md"
               >
                 <div>
-                  <div className="flex flex-wrap items-center gap-2 text-[11px]">
+                  <div className="flex flex-wrap items-center gap-2 text-xs">
                     <span className="rounded-full bg-surface-2 px-2.5 py-0.5 font-semibold text-foreground border border-border/60">
                       {n.categoria}
                     </span>
@@ -356,7 +356,7 @@ export default function NoticiasClient({ noticias }: Props) {
                     {n.metricas.slice(0, 2).map((m) => (
                       <span
                         key={m.rotulo}
-                        className="rounded-md border border-border/60 bg-surface-2 px-2 py-0.5 text-[10px] text-foreground font-medium"
+                        className="rounded-md border border-border/60 bg-surface-2 px-2 py-0.5 text-xs text-foreground font-medium"
                       >
                         <strong className="text-primary">{m.valor}</strong> — {m.rotulo}
                       </span>

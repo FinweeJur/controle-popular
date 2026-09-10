@@ -369,7 +369,7 @@ export default function BuscaUniversal({
                   onMouseEnter={() => setIndice(i)}
                   className="flex items-baseline gap-2 px-3 py-2 text-sm no-underline"
                 >
-                  <span className="shrink-0 rounded border border-[var(--cp-border)] px-1.5 py-0.5 text-[10px] uppercase tracking-wide opacity-70">
+                  <span className="shrink-0 rounded border border-[var(--cp-border)] px-1.5 py-0.5 text-xs uppercase tracking-wide opacity-70">
                     {s.tipo}
                   </span>
                   <span className="min-w-0">
@@ -398,7 +398,7 @@ export default function BuscaUniversal({
                     onClick={() => perguntar(p)}
                     className="flex w-full cursor-pointer items-baseline gap-2 px-3 py-2 text-left text-sm"
                   >
-                    <span className="shrink-0 rounded border border-[var(--cp-border)] px-1.5 py-0.5 text-[10px] uppercase tracking-wide opacity-70">
+                    <span className="shrink-0 rounded border border-[var(--cp-border)] px-1.5 py-0.5 text-xs uppercase tracking-wide opacity-70">
                       perguntar
                     </span>
                     <span>{p}</span>

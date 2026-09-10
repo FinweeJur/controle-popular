@@ -75,20 +75,20 @@ export default function JudiciarioSirenejudPage() {
       {/* Cards resumo */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-lg border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Total de processos</p>
+          <p className="text-[11px] text-text-soft">Total de processos</p>
           <p className="font-display text-2xl font-bold">{formatNumberBR(d.total_processos_br)}</p>
         </div>
         <div className="rounded-lg border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Comarca com mais processos</p>
+          <p className="text-[11px] text-text-soft">Comarca com mais processos</p>
           <p className="font-display text-2xl font-bold">{maiorUf?.uf}</p>
-          <p className="text-[.75em] text-text-soft">{formatNumberBR(maiorUf?.total ?? 0)} processos</p>
+          <p className="text-[11px] text-text-soft">{formatNumberBR(maiorUf?.total ?? 0)} processos</p>
         </div>
         <div className="rounded-lg border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Anos com dados anômalos</p>
+          <p className="text-[11px] text-text-soft">Anos com dados anômalos</p>
           <p className="font-display text-2xl font-bold">{formatNumberBR(d.anos_anomalos)}</p>
         </div>
         <div className="rounded-lg border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">UFs com processos</p>
+          <p className="text-[11px] text-text-soft">UFs com processos</p>
           <p className="font-display text-2xl font-bold">{d.por_uf.length}</p>
         </div>
       </div>

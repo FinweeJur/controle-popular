@@ -155,7 +155,7 @@ export default function DiretorioInstituicoesClient({
             {reg}
           </button>
         ))}
-        <span className="ml-auto text-text-soft font-mono text-[0.8em]">
+        <span className="ml-auto text-text-soft font-mono text-[11px]">
           {filtradas.length} órgãos encontrados
         </span>
       </div>
@@ -191,13 +191,13 @@ export default function DiretorioInstituicoesClient({
                         {inst.sigla.toUpperCase()}
                       </span>
                       {inst.uf && (
-                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[0.68em] font-bold text-text-soft">
+                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[0.9em] font-bold text-text-soft">
                           {inst.uf}
                         </span>
                       )}
                     </div>
                     <span
-                      className="rounded-full px-2 py-0.5 font-mono text-[0.7em] font-bold"
+                      className="rounded-full px-2 py-0.5 font-mono text-[11px] font-bold"
                       style={{
                         backgroundColor: `color-mix(in srgb, ${inst.cor || "#0284c7"} 15%, transparent)`,
                         color: inst.cor || "#0284c7",

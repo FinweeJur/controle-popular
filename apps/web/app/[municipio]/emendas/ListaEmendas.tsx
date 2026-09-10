@@ -25,7 +25,7 @@ const COLUNAS: ColunaTabela<LinhaConvenio>[] = [
       <div className="flex flex-col gap-1">
         <ObjetoExpansivel texto={c.objeto} />
         {c.numeroConvenio && (
-          <span className="text-[.8em] text-text-soft">
+          <span className="text-[11px] text-text-soft">
             Nº{" "}
             {c.codigo ? (
               <a

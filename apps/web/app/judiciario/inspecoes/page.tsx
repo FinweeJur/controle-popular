@@ -90,7 +90,7 @@ export default function PaginaInspecoesJudiciario() {
           <p className="mt-1 font-display text-2xl font-bold text-foreground">
             {totais.total_relatorios_cnj}
           </p>
-          <p className="mt-1 text-[11px] text-muted">2008 a 2026</p>
+          <p className="mt-1 text-xs text-muted">2008 a 2026</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -98,7 +98,7 @@ export default function PaginaInspecoesJudiciario() {
           <p className="mt-1 font-display text-2xl font-bold text-foreground">
             {totais.orgaos_correcionados}
           </p>
-          <p className="mt-1 text-[11px] text-muted">27 TJs + TRFs + TRTs</p>
+          <p className="mt-1 text-xs text-muted">27 TJs + TRFs + TRTs</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -106,7 +106,7 @@ export default function PaginaInspecoesJudiciario() {
           <p className="mt-1 font-display text-2xl font-bold text-rose-600 dark:text-rose-400">
             {totais.deficit_comarcas_mg_percentual}%
           </p>
-          <p className="mt-1 text-[11px] text-muted">178 de 298 comarcas</p>
+          <p className="mt-1 text-xs text-muted">178 de 298 comarcas</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -114,7 +114,7 @@ export default function PaginaInspecoesJudiciario() {
           <p className="mt-1 font-display text-2xl font-bold text-foreground">
             {totais.achados_substantivos_tjmg_2026}
           </p>
-          <p className="mt-1 text-[11px] text-muted">100 unidades analisadas</p>
+          <p className="mt-1 text-xs text-muted">100 unidades analisadas</p>
         </div>
       </section>
 

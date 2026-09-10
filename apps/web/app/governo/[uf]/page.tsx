@@ -98,7 +98,7 @@ export default async function DetalheGovernoPage({
               )}
               {mandato.plano_pdf_hash_sha256 && (
                 <span
-                  className="font-mono text-[10px] text-text-soft"
+                  className="font-mono text-xs text-text-soft"
                   title={`Hash SHA-256: ${mandato.plano_pdf_hash_sha256}`}
                 >
                   (SHA-256: {mandato.plano_pdf_hash_sha256.slice(0, 8)}...)

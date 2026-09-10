@@ -26,7 +26,7 @@ export default function CartaoTopico({ topico }: { topico: Topico }) {
       style={{ "--hover-clr": topico.cor } as React.CSSProperties}
     >
       {topico.novo && (
-        <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[.65em] font-bold uppercase tracking-wider text-primary-ink">
+        <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-primary-ink">
           Novo
         </span>
       )}

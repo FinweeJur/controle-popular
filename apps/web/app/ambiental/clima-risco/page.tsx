@@ -118,7 +118,7 @@ export default function PaginaBasesClimaRisco() {
             <p className="mt-1 font-display text-2xl font-bold text-red-600 sm:text-3xl">
               {macro.populacao_risco_mg.toLocaleString("pt-BR")}
             </p>
-            <p className="mt-1 text-[11px] text-muted">14,8% da população monitorada</p>
+            <p className="mt-1 text-xs text-muted">14,8% da população monitorada</p>
           </div>
 
           <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -126,7 +126,7 @@ export default function PaginaBasesClimaRisco() {
             <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
               {macro.total_poligonos_bater_mg}
             </p>
-            <p className="mt-1 text-[11px] text-muted">19,6% de todo o Brasil</p>
+            <p className="mt-1 text-xs text-muted">19,6% de todo o Brasil</p>
           </div>
 
           <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -134,7 +134,7 @@ export default function PaginaBasesClimaRisco() {
             <p className="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl">
               {macro.estacoes_pluvio_mg}+
             </p>
-            <p className="mt-1 text-[11px] text-muted">Estações automáticas em MG</p>
+            <p className="mt-1 text-xs text-muted">Estações automáticas em MG</p>
           </div>
 
           <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -142,7 +142,7 @@ export default function PaginaBasesClimaRisco() {
             <p className="mt-1 font-display text-2xl font-bold text-emerald-600 sm:text-3xl">
               {fontes.length}
             </p>
-            <p className="mt-1 text-[11px] text-muted">Órgãos oficiais federais</p>
+            <p className="mt-1 text-xs text-muted">Órgãos oficiais federais</p>
           </div>
         </div>
       </section>
@@ -203,10 +203,10 @@ export default function PaginaBasesClimaRisco() {
           {fontes.map((f) => (
             <div key={f.id} className="rounded-xl border border-border bg-surface p-4 text-left">
               <div className="flex items-center justify-between">
-                <span className="rounded bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+                <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
                   {f.orgao}
                 </span>
-                <span className="text-[11px] text-muted">{f.tipo_dado}</span>
+                <span className="text-xs text-muted">{f.tipo_dado}</span>
               </div>
               <h3 className="mt-2 font-display text-base font-semibold text-foreground">
                 {f.nome}
@@ -214,7 +214,7 @@ export default function PaginaBasesClimaRisco() {
               <p className="mt-1 text-xs text-muted leading-relaxed">
                 {f.metodologia}
               </p>
-              <div className="mt-3 border-t border-border pt-2 text-[11px] text-amber-700 dark:text-amber-300">
+              <div className="mt-3 border-t border-border pt-2 text-xs text-amber-700 dark:text-amber-300">
                 <strong>Ressalva:</strong> {f.ressalva}
               </div>
               <div className="mt-2 text-right">

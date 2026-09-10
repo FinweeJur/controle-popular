@@ -147,13 +147,13 @@ export default function AmbientalJudiciarioPage() {
       {/* Cartões de topo — os agregados que respondem "quanto é isso?" */}
       <section aria-label="Totais" className="mt-8 grid gap-4 sm:grid-cols-4">
         <div className="rounded-xl border border-border bg-surface p-4">
-          <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
             Processos em MG
           </p>
           <p className="mt-1 text-2xl font-bold">{formatNumberBR(d.total_processos_mg)}</p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4">
-          <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
             Municípios com processos
           </p>
           <p className="mt-1 text-2xl font-bold">
@@ -162,7 +162,7 @@ export default function AmbientalJudiciarioPage() {
           </p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4">
-          <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
             Tempo médio de tramitação
           </p>
           <p className="mt-1 text-2xl font-bold">
@@ -172,7 +172,7 @@ export default function AmbientalJudiciarioPage() {
           </p>
         </div>
         <div className="rounded-xl border border-border bg-surface p-4">
-          <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
             No Brasil inteiro
           </p>
           <p className="mt-1 text-2xl font-bold">{formatNumberBR(d.total_processos_br)}</p>

@@ -76,7 +76,7 @@ export default function CartaoChatbotHome() {
               <h2 className="font-display text-lg font-bold text-foreground">
                 Pergunte ao Seu Nonô
               </h2>
-              <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
+              <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
                 <Sparkles className="h-2.5 w-2.5" />
                 IA Cidadã Livre (Sabiá 7B)
               </span>
@@ -119,7 +119,7 @@ export default function CartaoChatbotHome() {
 
       {/* Chips de perguntas sugeridas */}
       <div className="mt-3">
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">
+        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted mb-2">
           <MessageSquare className="h-3 w-3 text-amber-600 dark:text-amber-400" />
           <span>Consultas populares prontas para disparar:</span>
         </div>

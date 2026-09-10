@@ -139,7 +139,7 @@ export default function TabelaCeap({ parlamentares, totaisPorUf, ressalvaEditori
       {/* Tabela de Resultados */}
       <div className="overflow-x-auto rounded-xl border border-border bg-surface shadow-sm">
         <table className="w-full text-left text-xs text-text">
-          <thead className="border-b border-border bg-surface-2 text-[.75em] uppercase text-text-soft">
+          <thead className="border-b border-border bg-surface-2 text-[11px] uppercase text-text-soft">
             <tr>
               <th className="p-3">Parlamentar</th>
               <th className="p-3">Partido/UF</th>

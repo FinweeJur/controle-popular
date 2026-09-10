@@ -155,7 +155,7 @@ export default function PainelLugar({
                       x={x + barWidth / 2}
                       y="68"
                       textAnchor="middle"
-                      className="fill-current text-[9px] text-text-soft font-tabular"
+                      className="fill-current text-[11px] text-text-soft font-tabular"
                     >
                       {d.rotulo}
                     </text>

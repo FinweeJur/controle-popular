@@ -59,7 +59,7 @@ export default function PaginaCentralAlertas() {
           <p className="mt-1 font-display text-base font-bold text-foreground">
             Tempo Real
           </p>
-          <p className="mt-1 text-[11px] text-muted">Bot oficial 24h</p>
+          <p className="mt-1 text-xs text-muted">Bot oficial 24h</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -70,7 +70,7 @@ export default function PaginaCentralAlertas() {
           <p className="mt-1 font-display text-base font-bold text-foreground">
             Disparo Rápido
           </p>
-          <p className="mt-1 text-[11px] text-muted">Grupos e transmissões</p>
+          <p className="mt-1 text-xs text-muted">Grupos e transmissões</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -81,7 +81,7 @@ export default function PaginaCentralAlertas() {
           <p className="mt-1 font-display text-base font-bold text-foreground">
             Mailing & CSV
           </p>
-          <p className="mt-1 text-[11px] text-muted">Boletins estruturados</p>
+          <p className="mt-1 text-xs text-muted">Boletins estruturados</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -92,7 +92,7 @@ export default function PaginaCentralAlertas() {
           <p className="mt-1 font-display text-base font-bold text-foreground">
             Foco Total
           </p>
-          <p className="mt-1 text-[11px] text-muted">Você escolhe o que recebe</p>
+          <p className="mt-1 text-xs text-muted">Você escolhe o que recebe</p>
         </div>
       </section>
 

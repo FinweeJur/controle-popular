@@ -72,7 +72,7 @@ export default function PopularesClient({ cidades }: { cidades: CidadeRotulo[] }
             <div className="font-display font-semibold text-text">
               {linha.contagem.toLocaleString("pt-BR")}
             </div>
-            <div className="text-[.75em] text-text-soft">
+            <div className="text-[11px] text-text-soft">
               atualizado {formatDateBR(linha.atualizado_em)}
             </div>
           </div>

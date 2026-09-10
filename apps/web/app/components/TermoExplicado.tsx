@@ -107,7 +107,7 @@ export function TermoExplicado({
         className="inline-flex items-center border-b border-dotted border-primary font-medium text-inherit underline-offset-2 transition-colors hover:text-primary focus:outline-none focus:ring-1 focus:ring-primary"
       >
         {children ?? termo}
-        <span aria-hidden="true" className="ml-0.5 text-[0.65em] opacity-70">
+        <span aria-hidden="true" className="ml-0.5 text-[0.9em] opacity-70">
           ⓘ
         </span>
       </button>

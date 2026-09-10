@@ -291,7 +291,7 @@ export default function PainelTac() {
 
               <div className="mt-3 grid gap-3 sm:grid-cols-3">
                 <div>
-                  <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
                     Previsto
                   </p>
                   <p className="mt-0.5 font-medium text-text">
@@ -299,7 +299,7 @@ export default function PainelTac() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
                     Executado
                   </p>
                   <p className="mt-0.5 font-medium text-text">
@@ -307,7 +307,7 @@ export default function PainelTac() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[.78em] font-medium uppercase tracking-wide text-text-soft">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
                     Transferido
                   </p>
                   <p className="mt-0.5 font-medium text-text">

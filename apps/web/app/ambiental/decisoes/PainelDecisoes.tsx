@@ -434,7 +434,7 @@ export default function PainelDecisoes({ base }: PainelDecisoesProps) {
                         }`}
                       >
                         {c.rotulo}
-                        <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                        <span aria-hidden="true" className="font-tabular text-[11px]">
                           {ativa ? (ordem!.direcao === "asc" ? "▲" : "▼") : "⇅"}
                         </span>
                       </button>

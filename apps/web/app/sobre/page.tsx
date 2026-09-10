@@ -197,7 +197,7 @@ export default async function SobrePage() {
               className="group block rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
             >
               <span
-                className="text-[.8em] font-semibold uppercase tracking-wide"
+                className="text-[11px] font-semibold uppercase tracking-wide"
                 style={{ color: z.cor }}
               >
                 {z.etiqueta}

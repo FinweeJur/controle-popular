@@ -231,7 +231,7 @@ export default function CvmValeClient({
                       }`}
                     >
                       {c.rotulo}
-                      <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                      <span aria-hidden="true" className="font-tabular text-[11px]">
                         {ativa
                           ? ordem.direcao === "asc"
                             ? "▲"
@@ -299,7 +299,7 @@ export default function CvmValeClient({
         </p>
       )}
 
-      <p className="mt-3 text-[.8em] text-text-soft">
+      <p className="mt-3 text-[11px] text-text-soft">
         A coluna &ldquo;Versão&rdquo; mostra a versão mais recente do período: a
         CVM recebe republicações (a Vale protocolou o FRE de 2025 dezessete
         vezes), e cada período aparece aqui uma única vez, na versão que está

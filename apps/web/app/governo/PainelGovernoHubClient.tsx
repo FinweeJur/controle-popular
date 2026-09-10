@@ -396,16 +396,16 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
                   <div>
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-text-soft">
+                        <span className="rounded-full bg-surface-2 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-text-soft">
                           {m.esfera === "federal" ? "Federal" : m.esfera === "estadual" ? "Estado" : m.isCapital ? "Capital" : "Cidade"}
                         </span>
                         {m.regiao && (
-                          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
+                          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
                             {m.regiao}
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-text-soft">
+                      <span className="text-xs text-text-soft">
                         {m.periodo.inicio}–{m.periodo.fim}
                       </span>
                     </div>
@@ -419,7 +419,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
 
                     {/* Barra de progresso visual */}
                     <div className="mt-3">
-                      <div className="flex justify-between text-[11px] text-text-soft mb-1">
+                      <div className="flex justify-between text-xs text-text-soft mb-1">
                         <span>Progresso do Plano:</span>
                         <strong className="text-text">{pctConcluida}% entregue</strong>
                       </div>
@@ -449,19 +449,19 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
                     <div className="mt-4 grid grid-cols-3 gap-1 border-t border-border pt-3 text-center">
                       <div>
                         <div className="text-lg font-bold text-text">{m.resumo.totalPropostas}</div>
-                        <div className="text-[10px] text-text-soft">Metas</div>
+                        <div className="text-xs text-text-soft">Metas</div>
                       </div>
                       <div>
                         <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                           {m.resumo.porStatus.concluida}
                         </div>
-                        <div className="text-[10px] text-text-soft">Entregues</div>
+                        <div className="text-xs text-text-soft">Entregues</div>
                       </div>
                       <div>
                         <div className="text-lg font-bold text-neutral-500 dark:text-neutral-400">
                           {m.resumo.porStatus.sem_sinal}
                         </div>
-                        <div className="text-[10px] text-text-soft">Sem sinal</div>
+                        <div className="text-xs text-text-soft">Sem sinal</div>
                       </div>
                     </div>
                   </div>

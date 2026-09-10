@@ -86,21 +86,21 @@ export default function ValeDocumentosPage() {
         <>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-2xl border border-border bg-surface p-4">
-              <p className="text-[.8em] text-text-soft">Documentos no acervo</p>
+              <p className="text-[11px] text-text-soft">Documentos no acervo</p>
               <p className="mt-1 font-tabular text-xl font-bold text-text">
                 {formatNumberBR(cvm.total_documentos)}
               </p>
-              <p className="mt-1 text-[.78em] text-text-soft">
+              <p className="mt-1 text-[11px] text-text-soft">
                 períodos cobertos: {cvm.anos_cobertos ?? "—"}
               </p>
             </div>
             {(["ITR", "DFP", "FRE"] as const).map((tipo) => (
               <div key={tipo} className="rounded-2xl border border-border bg-surface p-4">
-                <p className="text-[.8em] text-text-soft">{TIPO_ROTULO[tipo]}</p>
+                <p className="text-[11px] text-text-soft">{TIPO_ROTULO[tipo]}</p>
                 <p className="mt-1 font-tabular text-xl font-bold text-text">
                   {formatNumberBR(cvm.por_tipo[tipo] ?? 0)}
                 </p>
-                <p className="mt-1 text-[.78em] text-text-soft">
+                <p className="mt-1 text-[11px] text-text-soft">
                   {tipo === "ITR"
                     ? "um por trimestre civil"
                     : "um por exercício"}

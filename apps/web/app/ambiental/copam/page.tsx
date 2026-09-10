@@ -301,7 +301,7 @@ export default async function CopamIndex() {
 
                   <div className="mt-4 overflow-x-auto">
                     <table className="w-full border-collapse text-[.82em]">
-                      <caption className="mb-1 text-left text-[.8em] text-text-soft">
+                      <caption className="mb-1 text-left text-[11px] text-text-soft">
                         Tabela — alternativa em texto ao gráfico acima.
                       </caption>
                       <thead>
@@ -368,7 +368,7 @@ export default async function CopamIndex() {
 
                   <div className="mt-4 overflow-x-auto">
                     <table className="w-full border-collapse text-[.82em]">
-                      <caption className="mb-1 text-left text-[.8em] text-text-soft">
+                      <caption className="mb-1 text-left text-[11px] text-text-soft">
                         Tabela — alternativa em texto ao gráfico acima, os 6 baldes sem esconder
                         nenhum (inclusive os com 0 item).
                       </caption>

@@ -1067,7 +1067,7 @@ export function SeuNono() {
 
                   {dadosResumidos && !dadosResumidos.erro && (
                     <div className="mt-3 rounded-lg border border-border bg-surface px-3 py-2">
-                      <p className="text-[.75em] font-medium uppercase tracking-wide text-text-soft">
+                      <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
                         Dados atuais
                       </p>
                       {dadosResumidos.total !== undefined && (
@@ -1088,7 +1088,7 @@ export function SeuNono() {
                       )}
                       {dadosResumidos.top && dadosResumidos.top.length > 0 && (
                         <div className="mt-2">
-                          <p className="text-[.7em] text-text-soft">Top 3:</p>
+                          <p className="text-[11px] text-text-soft">Top 3:</p>
                           <ul className="mt-1 space-y-1">
                             {dadosResumidos.top.map((t, i) => (
                               <li key={i} className="flex justify-between text-xs">

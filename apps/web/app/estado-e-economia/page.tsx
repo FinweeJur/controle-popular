@@ -40,7 +40,7 @@ export default function EstadoEEconomiaHub() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {item.valor}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               {item.obs}
             </span>
           </div>
@@ -96,7 +96,7 @@ export default function EstadoEEconomiaHub() {
                 </div>
                 <div className="mt-4 flex flex-wrap gap-1 pt-3 border-t border-border/50">
                   {sub.tagsRelacionadas.slice(0, 3).map((t) => (
-                    <span key={t} className="rounded bg-surface-2 px-2 py-0.5 text-[10px] text-muted">
+                    <span key={t} className="rounded bg-surface-2 px-2 py-0.5 text-xs text-muted">
                       #{t}
                     </span>
                   ))}

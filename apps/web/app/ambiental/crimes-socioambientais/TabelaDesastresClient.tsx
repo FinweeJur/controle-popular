@@ -136,9 +136,9 @@ export default function TabelaDesastresClient({ documentos, total_documentos, to
           <div>
             <span className="text-xs font-semibold text-muted">Distribuição por Desastre / Caso:</span>
             <div className="mt-2 flex h-8 w-full overflow-hidden rounded-xl bg-surface-2">
-              <div style={{ width: `${total_documentos > 0 ? (totais.brumadinho_paraopeba / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-amber-600 text-[11px] font-bold text-white">Brumadinho ({totais.brumadinho_paraopeba})</div>
-              <div style={{ width: `${total_documentos > 0 ? (totais.mariana_rio_doce / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-cyan-700 text-[11px] font-bold text-white">Mariana ({totais.mariana_rio_doce})</div>
-              <div style={{ width: `${total_documentos > 0 ? (totais.nacional / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-indigo-600 text-[11px] font-bold text-white">Nacional ({totais.nacional})</div>
+              <div style={{ width: `${total_documentos > 0 ? (totais.brumadinho_paraopeba / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-amber-600 text-xs font-bold text-white">Brumadinho ({totais.brumadinho_paraopeba})</div>
+              <div style={{ width: `${total_documentos > 0 ? (totais.mariana_rio_doce / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-cyan-700 text-xs font-bold text-white">Mariana ({totais.mariana_rio_doce})</div>
+              <div style={{ width: `${total_documentos > 0 ? (totais.nacional / total_documentos) * 100 : 0}%` }} className="flex items-center justify-center bg-indigo-600 text-xs font-bold text-white">Nacional ({totais.nacional})</div>
             </div>
           </div>
           <div>
@@ -201,7 +201,7 @@ export default function TabelaDesastresClient({ documentos, total_documentos, to
         {/* TAGS CLICÁVEIS PARA FILTRAR */}
         <div className="flex flex-wrap gap-1.5">
           {tagsUnicas.slice(0, 20).map((tag) => (
-            <button key={tag} onClick={() => setTagSelecionada(tagSelecionada === tag ? null : tag)} className={`rounded-md px-2 py-0.5 text-[11px] font-semibold transition-colors ${tagSelecionada === tag ? "bg-primary text-primary-foreground" : "bg-surface-2 border border-border text-muted hover:text-foreground"}`}>#{tag}</button>
+            <button key={tag} onClick={() => setTagSelecionada(tagSelecionada === tag ? null : tag)} className={`rounded-md px-2 py-0.5 text-xs font-semibold transition-colors ${tagSelecionada === tag ? "bg-primary text-primary-foreground" : "bg-surface-2 border border-border text-muted hover:text-foreground"}`}>#{tag}</button>
           ))}
         </div>
       </div>
@@ -228,13 +228,13 @@ export default function TabelaDesastresClient({ documentos, total_documentos, to
                 </span>
                 <span className="rounded bg-surface-2 px-2 py-0.5 text-xs font-medium text-muted">{doc.tipo}</span>
                 <span className="text-xs text-muted">UF: <strong>{doc.uf}</strong> {doc.data ? `• ${doc.data}` : ""}</span>
-                {doc.regiao_mg && <span className="rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">{doc.regiao_mg}</span>}
-                {doc.acao_coletiva && <span className="rounded bg-purple-100 px-2 py-0.5 text-[11px] font-bold text-purple-800 dark:bg-purple-950/60 dark:text-purple-300">⚖ Ação Coletiva</span>}
-                {doc.instituicao_justica && <span className="rounded bg-rose-100 px-2 py-0.5 text-[11px] font-semibold text-rose-800 dark:bg-rose-950/40 dark:text-rose-300">{doc.instituicao_justica}</span>}
+                {doc.regiao_mg && <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">{doc.regiao_mg}</span>}
+                {doc.acao_coletiva && <span className="rounded bg-purple-100 px-2 py-0.5 text-xs font-bold text-purple-800 dark:bg-purple-950/60 dark:text-purple-300">⚖ Ação Coletiva</span>}
+                {doc.instituicao_justica && <span className="rounded bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-800 dark:bg-rose-950/40 dark:text-rose-300">{doc.instituicao_justica}</span>}
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold text-primary">{doc.orgao}</span>
-                {doc.classificavel && <span className="text-[10px] text-muted bg-surface-2 px-1.5 py-0.5 rounded">classificável</span>}
+                {doc.classificavel && <span className="text-xs text-muted bg-surface-2 px-1.5 py-0.5 rounded">classificável</span>}
                 <BotaoAlertaContextual tipo="resumo_pagina" titulo={`${doc.orgao}: ${doc.titulo}`} orgaoTerritorio={`${doc.desastre === "brumadinho" ? "Bacia do Paraopeba" : doc.desastre === "mariana" ? "Bacia do Rio Doce" : "Nacional"} (${doc.uf})`} identificador={`${doc.tipo} — ${doc.orgao}`} link={doc.url} resumo={doc.resumo || undefined} variante="icone" />
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function TabelaDesastresClient({ documentos, total_documentos, to
             {doc.resumo ? <p className="mt-2 text-xs text-muted leading-relaxed">{doc.resumo}</p> : null}
             <div className="mt-3 flex flex-wrap gap-1.5">
               {doc.tags.map((tag) => (
-                <button key={tag} onClick={() => setTagSelecionada(tagSelecionada === tag ? null : tag)} className={`rounded-md px-2 py-0.5 text-[11px] transition-colors ${tagSelecionada === tag ? "bg-primary text-primary-foreground" : "bg-surface-2 border border-border text-muted hover:text-foreground"}`}>#{tag}</button>
+                <button key={tag} onClick={() => setTagSelecionada(tagSelecionada === tag ? null : tag)} className={`rounded-md px-2 py-0.5 text-xs transition-colors ${tagSelecionada === tag ? "bg-primary text-primary-foreground" : "bg-surface-2 border border-border text-muted hover:text-foreground"}`}>#{tag}</button>
               ))}
             </div>
           </article>

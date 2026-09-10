@@ -524,7 +524,7 @@ export default async function HomePage({
                         * "IDEB (anos finais) — 3,8 pontos" não informa quem
                         * não sabe o que é IDEB nem qual é a escala. */}
                       {EXPLICACAO_INDICADOR[nome] ? (
-                        <p className="mt-2 text-[.78em] leading-snug text-text-soft">
+                        <p className="mt-2 text-[11px] leading-snug text-text-soft">
                           {EXPLICACAO_INDICADOR[nome]}
                         </p>
                       ) : null}
@@ -533,7 +533,7 @@ export default async function HomePage({
                         * pobreza são do Censo de 2010 e ficavam lado a lado
                         * com números de 2025, sem distinção. */}
                       {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL) ? (
-                        <p className="mt-1 text-[.72em] leading-snug text-text-soft opacity-80">
+                        <p className="mt-1 text-[11px] leading-snug text-text-soft opacity-80">
                           {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL)}
                         </p>
                       ) : null}
@@ -547,7 +547,7 @@ export default async function HomePage({
                           href={FONTE_OFICIAL[row.fonte].url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-2 inline-block text-[.75em] font-medium text-primary underline underline-offset-2"
+                          className="mt-2 inline-block text-[11px] font-medium text-primary underline underline-offset-2"
                         >
                           {FONTE_OFICIAL[row.fonte].rotulo} ↗
                         </a>
@@ -713,7 +713,7 @@ export default async function HomePage({
                     <p>
                       <strong>{dadosRiscoLocal.populacao_area_risco.toLocaleString("pt-BR")}</strong> pessoas ({dadosRiscoLocal.percentual_populacao_risco}% da cidade) expostas pelo BATER/IBGE.
                     </p>
-                    <p className="mt-1 text-[11px] text-muted">
+                    <p className="mt-1 text-xs text-muted">
                       {dadosRiscoLocal.estacoes_cemaden} pluviômetros do CEMADEN monitorando chuvas.
                     </p>
                   </div>
@@ -949,7 +949,7 @@ export default async function HomePage({
                           />
                         </div>
                         {o.areaTematica && (
-                          <p className="mt-2 text-[.75em] text-text-soft">{o.areaTematica}</p>
+                          <p className="mt-2 text-[11px] text-text-soft">{o.areaTematica}</p>
                         )}
                       </div>
                     </Link>

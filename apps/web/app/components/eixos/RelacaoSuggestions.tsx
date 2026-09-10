@@ -52,10 +52,10 @@ export default function RelacaoSuggestions({
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${badgeCor}`}>
+                  <span className={`rounded-full border px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${badgeCor}`}>
                     {badgeTexto}
                   </span>
-                  <span className="text-[10px] text-muted font-mono">
+                  <span className="text-xs text-muted font-mono">
                     Score: {rel.score}
                   </span>
                 </div>

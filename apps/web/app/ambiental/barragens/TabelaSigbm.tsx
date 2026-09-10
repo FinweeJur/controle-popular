@@ -408,7 +408,7 @@ export default function TabelaSigbm() {
                       }`}
                     >
                       {c.rotulo}
-                      <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                      <span aria-hidden="true" className="font-tabular text-[11px]">
                         {ativa ? (ordem![1] === "asc" ? "▲" : "▼") : "⇅"}
                       </span>
                     </button>

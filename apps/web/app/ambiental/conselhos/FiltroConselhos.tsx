@@ -368,7 +368,7 @@ export default function FiltroConselhos({
               </div>
 
               {c.contatos.reunioesPublicas ? (
-                <p className="mt-3 text-[11px] text-muted italic border-t border-border pt-2">
+                <p className="mt-3 text-xs text-muted italic border-t border-border pt-2">
                   🗓️ Reuniões: {c.contatos.reunioesPublicas}
                 </p>
               ) : null}

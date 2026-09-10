@@ -146,7 +146,7 @@ export default function CapaFrente({
                   >
                     &ldquo;{ep.texto}&rdquo;
                     {ep.atribuicao && (
-                      <span className="ml-1.5 not-italic text-white/90 text-[11px] sm:text-xs">
+                      <span className="ml-1.5 not-italic text-white/90 text-xs sm:text-xs">
                         — {ep.atribuicao}
                       </span>
                     )}

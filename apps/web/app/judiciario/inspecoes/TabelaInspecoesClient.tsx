@@ -88,14 +88,14 @@ export default function TabelaInspecoesClient({
             <div className="mt-2 flex h-7 w-full overflow-hidden rounded-xl bg-surface-2">
               <div
                 style={{ width: "40.3%" }}
-                className="flex items-center justify-center bg-emerald-600 text-[11px] font-bold text-white"
+                className="flex items-center justify-center bg-emerald-600 text-xs font-bold text-white"
                 title="120 comarcas atendidas (40,3%)"
               >
                 120 Atendidas (40%)
               </div>
               <div
                 style={{ width: "59.7%" }}
-                className="flex items-center justify-center bg-rose-600 text-[11px] font-bold text-white"
+                className="flex items-center justify-center bg-rose-600 text-xs font-bold text-white"
                 title="178 comarcas sem defensoria (59,7%)"
               >
                 178 Desassistidas (60%)
@@ -139,7 +139,7 @@ export default function TabelaInspecoesClient({
                 <text x="250" y="20" fontSize="9" textAnchor="middle" fill="#10b981" fontWeight="bold">40,3%</text>
               </svg>
             </div>
-            <p className="mt-1 text-[11px] text-muted italic">
+            <p className="mt-1 text-xs text-muted italic">
               Fonte: Diagnóstico IPEA (2013), DPU/MJ (2018) e Pesquisa Nacional da Defensoria Pública (2025).
             </p>
           </div>

@@ -92,9 +92,9 @@ export default function NoticiasValePage() {
           },
         ].map((c) => (
           <div key={c.rotulo} className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[.8em] text-text-soft">{c.rotulo}</p>
+            <p className="text-[11px] text-text-soft">{c.rotulo}</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">{c.valor}</p>
-            <p className="mt-1 text-[.78em] text-text-soft">{c.nota}</p>
+            <p className="mt-1 text-[11px] text-text-soft">{c.nota}</p>
           </div>
         ))}
       </div>

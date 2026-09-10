@@ -232,7 +232,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
           <div className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-mono">
             {documentos.length}
           </div>
-          <p className="mt-1 text-[11px] text-muted">Documentos catalogados</p>
+          <p className="mt-1 text-xs text-muted">Documentos catalogados</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -243,7 +243,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
           <div className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-mono">
             {new Set(documentos.map((d) => d.empresaSlug)).size}
           </div>
-          <p className="mt-1 text-[11px] text-muted">Brasil e Estados Unidos</p>
+          <p className="mt-1 text-xs text-muted">Brasil e Estados Unidos</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -254,7 +254,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
           <div className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-mono">
             {distribuicaoPorTipo.sustentabilidade + distribuicaoPorTipo.clima}
           </div>
-          <p className="mt-1 text-[11px] text-muted">GRI, SASB e metas net zero</p>
+          <p className="mt-1 text-xs text-muted">GRI, SASB e metas net zero</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs">
@@ -265,7 +265,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
           <div className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400 font-mono">
             100%
           </div>
-          <p className="mt-1 text-[11px] text-muted">Redundancia e preservacao</p>
+          <p className="mt-1 text-xs text-muted">Redundancia e preservacao</p>
         </div>
       </section>
 
@@ -444,7 +444,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
         ) : (
           <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
             <table className="w-full text-left text-xs">
-              <thead className="bg-surface-2 text-[11px] uppercase font-semibold text-muted border-b border-border">
+              <thead className="bg-surface-2 text-xs uppercase font-semibold text-muted border-b border-border">
                 <tr>
                   <th className="py-3 px-4">
                     <button
@@ -509,7 +509,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                         >
                           {doc.empresaNome}
                         </Link>
-                        <div className="flex items-center gap-1.5 text-[11px] text-muted mt-0.5">
+                        <div className="flex items-center gap-1.5 text-xs text-muted mt-0.5">
                           <span>{doc.pais}</span>
                           <span>•</span>
                           <span className="truncate max-w-[140px]">{doc.setorRotulo}</span>
@@ -519,7 +519,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                       {/* Tipo */}
                       <td className="py-3 px-4 align-top">
                         <span
-                          className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold ${badge.bg}`}
+                          className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold ${badge.bg}`}
                         >
                           <IconeTipo size={12} />
                           <span>{doc.tipoDocumentoRotulo}</span>
@@ -540,7 +540,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                             <button
                               key={tag}
                               onClick={() => setBusca(tag)}
-                              className="rounded bg-surface-2 hover:bg-surface-3 px-1.5 py-0.5 text-[10px] font-mono text-muted hover:text-foreground transition"
+                              className="rounded bg-surface-2 hover:bg-surface-3 px-1.5 py-0.5 text-xs font-mono text-muted hover:text-foreground transition"
                             >
                               #{tag}
                             </button>
@@ -554,7 +554,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                       </td>
 
                       {/* Tamanho */}
-                      <td className="py-3 px-4 align-top text-center font-mono text-[11px] text-muted">
+                      <td className="py-3 px-4 align-top text-center font-mono text-xs text-muted">
                         {doc.tamanhoFormatado}
                       </td>
 
@@ -578,7 +578,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                               href={doc.urlR2}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center justify-end gap-1 text-[11px] text-muted hover:text-foreground hover:underline"
+                              className="inline-flex items-center justify-end gap-1 text-xs text-muted hover:text-foreground hover:underline"
                               title="Espelho preservado no Cloudflare R2"
                             >
                               <span>Espelho R2</span>

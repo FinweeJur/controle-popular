@@ -36,7 +36,7 @@ export default function ObjetoExpansivel({ texto }: { texto: string | null | und
     <details className="group">
       <summary className="cursor-pointer list-none">
         <span className="line-clamp-3 text-text-soft group-open:line-clamp-none">{texto}</span>
-        <span className="mt-0.5 block text-[.8em] font-medium text-primary">
+        <span className="mt-0.5 block text-[11px] font-medium text-primary">
           <span className="group-open:hidden">mostrar o texto inteiro</span>
           <span className="hidden group-open:inline">mostrar menos</span>
         </span>

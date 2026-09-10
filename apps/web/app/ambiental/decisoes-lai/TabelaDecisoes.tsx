@@ -257,7 +257,7 @@ export default function TabelaDecisoes() {
                   {d.ano} · {d.orgaoSigla ?? "órgão não registrado neste link"}
                 </p>
                 {d.linkProvavelmenteQuebrado && (
-                  <span className="rounded-md border border-border px-2 py-0.5 text-[.78em] text-text-soft">
+                  <span className="rounded-md border border-border px-2 py-0.5 text-[11px] text-text-soft">
                     link provavelmente quebrado
                   </span>
                 )}

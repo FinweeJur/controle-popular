@@ -207,7 +207,7 @@ export default function PainelEstudosRurais({
       </p>
 
       <div className="mt-3 overflow-x-auto rounded-lg border border-border">
-        <p className="mb-1 px-1 pt-1 text-[10px] text-text-soft sm:hidden">
+        <p className="mb-1 px-1 pt-1 text-xs text-text-soft sm:hidden">
           ← deslize para ver mais colunas →
         </p>
         <table className="w-full min-w-[760px] text-sm">
@@ -232,7 +232,7 @@ export default function PainelEstudosRurais({
                       }`}
                     >
                       {c.rotulo}
-                      <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                      <span aria-hidden="true" className="font-tabular text-[11px]">
                         {ativa ? (ordem.direcao === "asc" ? "▲" : "▼") : "⇅"}
                       </span>
                     </button>
@@ -257,7 +257,7 @@ export default function PainelEstudosRurais({
                   )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-2">
-                  <span className="rounded-full border border-border px-2 py-0.5 text-[.8em] text-text-soft">
+                  <span className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
                     {ROTULO_TIPO[i.tipo] ?? i.tipo}
                   </span>
                 </td>

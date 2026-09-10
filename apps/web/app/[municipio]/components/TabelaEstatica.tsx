@@ -296,7 +296,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
       )}
 
       <div className="mt-4 overflow-x-auto rounded-lg border border-border">
-        <p className="mb-1 px-1 text-[10px] text-text-soft sm:hidden">
+        <p className="mb-1 px-1 text-xs text-text-soft sm:hidden">
           ← deslize para ver mais colunas →
         </p>
         <table className="w-full min-w-[1400px] text-sm">
@@ -328,7 +328,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
                         }`}
                       >
                         {c.rotulo}
-                        <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                        <span aria-hidden="true" className="font-tabular text-[11px]">
                           {ativa ? (ordemAtiva.direcao === "asc" ? "▲" : "▼") : "⇅"}
                         </span>
                       </button>

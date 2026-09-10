@@ -120,7 +120,7 @@ export default function ListaCruzamentos({ base, municipioSlug }: ListaCruzament
               href={l.documentoReferencia}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
+              className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
             >
               Conferir na fonte ↗
             </a>
@@ -132,7 +132,7 @@ export default function ListaCruzamentos({ base, municipioSlug }: ListaCruzament
               href={`/funcaosocialterra/mapa?camada=${encodeURIComponent(l.mapaCamada)}&idx=${l.mapaIdx}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-[.8em] font-medium text-accent hover:underline"
+              className="w-fit text-[11px] font-medium text-accent hover:underline"
             >
               Ver os dois polígonos no mapa 3D ↗
             </a>

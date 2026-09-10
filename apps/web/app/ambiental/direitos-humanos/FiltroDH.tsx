@@ -215,7 +215,7 @@ export default function FiltroDH({
                     {r.orgao}
                   </span>
                   <span className="text-xs text-muted font-medium">{r.ano}</span>
-                  <span className="rounded bg-surface-3 px-2 py-0.5 text-[11px] text-muted">
+                  <span className="rounded bg-surface-3 px-2 py-0.5 text-xs text-muted">
                     {r.tema}
                   </span>
                 </div>

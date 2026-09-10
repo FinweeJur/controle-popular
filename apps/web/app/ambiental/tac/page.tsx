@@ -310,7 +310,7 @@ export default function TacAmbientalPage() {
                             );
                           })}
                         </div>
-                        <span className="font-tabular text-[.78em] font-medium text-text-soft">{a.ano}</span>
+                        <span className="font-tabular text-[11px] font-medium text-text-soft">{a.ano}</span>
                       </div>
                     );
                   })}

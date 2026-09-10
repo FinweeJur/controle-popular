@@ -72,7 +72,7 @@ export default async function RiscoClimatico({ idIbge }: { idIbge: string }) {
               <p className="mt-2 text-2xl font-semibold" style={{ fontVariantNumeric: "tabular-nums" }}>
                 {d.indice === null ? "—" : d.indice.toFixed(2)}
                 {d.faixa ? (
-                  <span className="ml-2 align-middle text-[.5em] font-normal text-text-soft">
+                  <span className="ml-2 align-middle text-[11px] font-normal text-text-soft">
                     {d.faixa}
                   </span>
                 ) : null}

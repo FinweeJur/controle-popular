@@ -169,7 +169,7 @@ export default function AlertasPage() {
     <>
       <Cabecalho />
       <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
-        <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
+        <p className="text-[11px] font-semibold tracking-wide text-text-soft uppercase">
           Terra e território · Alertas
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
@@ -403,7 +403,7 @@ export default function AlertasPage() {
                         <p className="font-medium text-text">
                           {n.tipo} nº {n.numero}
                         </p>
-                        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[.75em] font-semibold text-primary">
+                        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
                           {n.categoriaLabel}
                         </span>
                       </div>

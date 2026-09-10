@@ -174,7 +174,7 @@ export default function PaginaNossosAnimais() {
             </div>
           ))}
         </div>
-        <span className="mt-4 block text-[11px] text-muted">
+        <span className="mt-4 block text-xs text-muted">
           * A perda e fragmentação de florestas nativas e a poluição de cursos d’água são os principais fatores de pressão.
         </span>
       </section>

@@ -121,7 +121,7 @@ export default function TeiaInteressesGrafo({ teia }: Props) {
                   x={no.x}
                   y={no.y + 24}
                   textAnchor="middle"
-                  className="fill-text text-[10px] font-medium"
+                  className="fill-text text-[11px] font-medium"
                   style={{
                     fontWeight: selecionado ? 700 : 500,
                   }}

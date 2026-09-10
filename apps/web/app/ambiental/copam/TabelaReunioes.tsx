@@ -203,7 +203,7 @@ export default function TabelaReunioes({
           className="inline-flex items-center gap-1 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           {rotulo}
-          <span aria-hidden className="text-[.75em] opacity-70">
+          <span aria-hidden className="text-[11px] opacity-70">
             {ativo ? (direcao === "asc" ? "▲" : "▼") : "↕"}
           </span>
         </button>

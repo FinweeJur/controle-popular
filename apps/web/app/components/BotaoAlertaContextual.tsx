@@ -180,7 +180,7 @@ _Fonte: Dados públicos oficiais organizados pelo portal independente Controle P
 
       {aberto && (
         <div className="absolute right-0 z-50 mt-1.5 w-64 rounded-xl border border-border bg-surface p-2.5 shadow-2xl">
-          <p className="mb-2 px-2 text-[11px] font-bold uppercase tracking-wider text-muted">
+          <p className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-muted">
             Divulgar & Alertar
           </p>
 

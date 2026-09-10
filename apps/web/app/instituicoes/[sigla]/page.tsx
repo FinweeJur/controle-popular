@@ -113,7 +113,7 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
             Voltar ao Catálogo de Instituições
           </Link>
 
-          <span className="text-[11px] text-text-soft">
+          <span className="text-xs text-text-soft">
             Esfera {inst.esfera} · {inst.poder}
           </span>
         </nav>
@@ -133,7 +133,7 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
                 {renderIcone()}
               </div>
               <div>
-                <span className="inline-block rounded border border-border bg-surface-2 px-2 py-0.5 text-[0.68em] font-bold uppercase tracking-wider text-text-soft">
+                <span className="inline-block rounded border border-border bg-surface-2 px-2 py-0.5 text-[0.9em] font-bold uppercase tracking-wider text-text-soft">
                   {inst.esfera} · {inst.poder} · {inst.tipo}
                 </span>
                 <h1 className="mt-1 font-display text-2xl sm:text-3xl font-bold tracking-tight text-text">
@@ -310,7 +310,7 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
                       href={item.site}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface-1 px-2.5 py-1 text-[0.72em] font-semibold text-primary transition-colors hover:bg-surface-2"
+                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface-1 px-2.5 py-1 text-[0.9em] font-semibold text-primary transition-colors hover:bg-surface-2"
                       title={`Acessar portal de ${item.area}`}
                     >
                       <span>Portal da Área</span>
@@ -320,7 +320,7 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
                 </div>
 
                 {(item.telefone || item.email || item.endereco) && (
-                  <div className="mt-3 grid grid-cols-1 gap-2 border-t border-border/40 pt-3 text-[0.75em] text-text-soft sm:grid-cols-3">
+                  <div className="mt-3 grid grid-cols-1 gap-2 border-t border-border/40 pt-3 text-[0.9em] text-text-soft sm:grid-cols-3">
                     {item.telefone && (
                       <div className="flex items-center gap-1.5 overflow-hidden">
                         <Phone size={12} className="text-primary shrink-0" aria-hidden="true" />
@@ -473,7 +473,7 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
                   key={idx}
                   className="rounded-xl border border-border/60 bg-surface-2/30 p-4 transition-colors hover:border-border"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-text-soft">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-text-soft">
                     <span className="font-semibold text-primary">{noticia.fonte}</span>
                     <span className="inline-flex items-center gap-1 font-mono">
                       <Calendar size={12} aria-hidden="true" />

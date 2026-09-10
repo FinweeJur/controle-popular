@@ -258,7 +258,7 @@ export default function FiltroConvenios() {
                   key={tag}
                   type="button"
                   onClick={() => toggleTag(tag)}
-                  className={`rounded-full border px-2.5 py-0.5 text-[.8em] font-medium transition-colors ${
+                  className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors ${
                     ativa
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border text-text-soft hover:border-primary/50"
@@ -311,19 +311,19 @@ export default function FiltroConvenios() {
                     {c.nome || "(sem nome na fonte)"}
                   </p>
                   <div className="flex shrink-0 flex-wrap gap-1.5">
-                    <span className="rounded-full border border-border px-2 py-0.5 text-[.75em] font-medium text-text-soft">
+                    <span className="rounded-full border border-border px-2 py-0.5 text-[11px] font-medium text-text-soft">
                       {esf}
                     </span>
                     {tags.slice(0, 3).map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[.75em] font-medium text-primary"
+                        className="rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[11px] font-medium text-primary"
                       >
                         {t}
                       </span>
                     ))}
                     {tags.length > 3 && (
-                      <span className="rounded-full border border-border px-2 py-0.5 text-[.75em] text-text-soft">
+                      <span className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
                         +{tags.length - 3}
                       </span>
                     )}

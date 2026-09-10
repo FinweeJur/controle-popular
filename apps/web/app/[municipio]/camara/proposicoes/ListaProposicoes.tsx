@@ -128,7 +128,7 @@ export default function ListaProposicoes({
       formatar: (p) => (
         <div className="flex flex-wrap gap-1">
           {(p.temas ?? []).map((t) => (
-            <span key={t} className="rounded-full bg-primary/10 px-2 py-0.5 text-[.8em] font-medium text-primary">
+            <span key={t} className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
               {temaLabels[t] ?? t}
             </span>
           ))}

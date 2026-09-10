@@ -282,7 +282,7 @@ export default function LinhaDoTempo() {
                       </span>
                     )}
                   </div>
-                  <p className="text-[.7em] font-semibold uppercase tracking-wide" style={{ color: COR_TIPO[tipo] }}>
+                  <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: COR_TIPO[tipo] }}>
                     {ROTULO_TIPO_MARCO[tipo]}
                   </p>
                 </div>

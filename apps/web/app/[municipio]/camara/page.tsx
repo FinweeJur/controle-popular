@@ -210,7 +210,7 @@ export default async function CamaraPage({
                         {l.nome}
                       </Link>
                       {l.partido && (
-                        <span className="ml-1.5 text-[.8em] text-text-soft">{l.partido}</span>
+                        <span className="ml-1.5 text-[11px] text-text-soft">{l.partido}</span>
                       )}
                     </td>
                     {gabinetes.anos.map((a) => (

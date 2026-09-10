@@ -316,7 +316,7 @@ function CardItem({ item }: { item: ItemPainel }) {
       {item.necessidades.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {item.necessidades.map((n) => (
-            <span key={n} className="rounded-full border border-border px-2 py-0.5 text-[.72em] text-text-soft">
+            <span key={n} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
               {NECESSIDADE_LABEL[n]}
             </span>
           ))}
@@ -336,7 +336,7 @@ function CardItem({ item }: { item: ItemPainel }) {
         </div>
       )}
 
-      <p className="mt-2 text-[.7em] text-text-soft">Verificado em {item.verificadoEm}</p>
+      <p className="mt-2 text-[11px] text-text-soft">Verificado em {item.verificadoEm}</p>
     </li>
   );
 }

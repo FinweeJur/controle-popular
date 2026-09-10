@@ -312,7 +312,7 @@ export default function TabelaPresidios() {
                 <td className="px-3 py-3">
                   <span className="font-medium text-text">{e.nome}</span>
                   {e.inspecoes === 0 && (
-                    <span className="ml-2 rounded-full border border-border px-2 py-0.5 text-[.78em] text-text-soft">
+                    <span className="ml-2 rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
                       sem inspeção no período
                     </span>
                   )}

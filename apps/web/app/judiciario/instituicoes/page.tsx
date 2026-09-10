@@ -281,7 +281,7 @@ export default function InstituicoesPage() {
                   <p className="text-[.85em] text-text-soft">{d.oQueJulga}</p>
                 </div>
                 <span
-                  className={`shrink-0 rounded-full border px-3 py-1 text-[.78em] font-semibold ${CORES[d.situacao].classe}`}
+                  className={`shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold ${CORES[d.situacao].classe}`}
                 >
                   {CORES[d.situacao].rotulo}
                 </span>

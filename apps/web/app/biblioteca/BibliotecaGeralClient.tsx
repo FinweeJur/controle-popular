@@ -175,53 +175,53 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs space-y-1">
           <div className="flex items-center gap-1.5 text-muted">
             <BookOpen size={14} className="text-primary" />
-            <span className="font-semibold uppercase tracking-wider text-[11px]">
+            <span className="font-semibold uppercase tracking-wider text-xs">
               Acervo Completo
             </span>
           </div>
           <div className="text-2xl font-bold font-mono text-foreground">
             {metricas.totalDocumentos.toLocaleString("pt-BR")}
           </div>
-          <p className="text-[11px] text-muted">Documentos oficiais & laudos</p>
+          <p className="text-xs text-muted">Documentos oficiais & laudos</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs space-y-1">
           <div className="flex items-center gap-1.5 text-muted">
             <GraduationCap size={14} className="text-blue-600 dark:text-blue-400" />
-            <span className="font-semibold uppercase tracking-wider text-[11px]">
+            <span className="font-semibold uppercase tracking-wider text-xs">
               Pesquisa & Teses
             </span>
           </div>
           <div className="text-2xl font-bold font-mono text-foreground">
             {metricas.totalAcademico}
           </div>
-          <p className="text-[11px] text-muted">Artigos SciELO, teses & notas</p>
+          <p className="text-xs text-muted">Artigos SciELO, teses & notas</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs space-y-1">
           <div className="flex items-center gap-1.5 text-muted">
             <Building2 size={14} className="text-emerald-600 dark:text-emerald-400" />
-            <span className="font-semibold uppercase tracking-wider text-[11px]">
+            <span className="font-semibold uppercase tracking-wider text-xs">
               Entidades & Empresas
             </span>
           </div>
           <div className="text-2xl font-bold font-mono text-foreground">
             {metricas.totalEmpresas + metricas.totalInstituicoesJustica}
           </div>
-          <p className="text-[11px] text-muted">130 empresas + 91 órgãos de justiça</p>
+          <p className="text-xs text-muted">130 empresas + 91 órgãos de justiça</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 shadow-xs space-y-1">
           <div className="flex items-center gap-1.5 text-muted">
             <Layers size={14} className="text-amber-600 dark:text-amber-400" />
-            <span className="font-semibold uppercase tracking-wider text-[11px]">
+            <span className="font-semibold uppercase tracking-wider text-xs">
               Temas Críticos
             </span>
           </div>
           <div className="text-2xl font-bold font-mono text-foreground">
             {metricas.totalTemas}
           </div>
-          <p className="text-[11px] text-muted">Vale, Sigma, Consulta OIT, LAI</p>
+          <p className="text-xs text-muted">Vale, Sigma, Consulta OIT, LAI</p>
         </div>
       </section>
 
@@ -334,7 +334,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 pt-2 border-t border-border/70 text-xs">
           {/* Categoria */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted mb-1">
+            <label className="block text-xs font-semibold text-muted mb-1">
               Categoria:
             </label>
             <select
@@ -356,7 +356,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
 
           {/* Tema */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted mb-1">
+            <label className="block text-xs font-semibold text-muted mb-1">
               Tema Crítico:
             </label>
             <select
@@ -378,7 +378,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
 
           {/* Estado / Âmbito */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted mb-1">
+            <label className="block text-xs font-semibold text-muted mb-1">
               Estado / Âmbito:
             </label>
             <select
@@ -400,7 +400,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
 
           {/* Ordenação */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted mb-1">
+            <label className="block text-xs font-semibold text-muted mb-1">
               Ordenar por:
             </label>
             <div className="flex items-center gap-1">
@@ -450,7 +450,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
           /* ── MODO COMPACTO (VISÃO COMPRIMIDA) ── */
           <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
             <table className="w-full text-left text-xs border-collapse">
-              <thead className="bg-surface-2 text-[11px] font-semibold text-muted uppercase border-b border-border">
+              <thead className="bg-surface-2 text-xs font-semibold text-muted uppercase border-b border-border">
                 <tr>
                   <th className="py-2.5 px-3">Ano</th>
                   <th className="py-2.5 px-3">Tipo / Categoria</th>
@@ -467,7 +467,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                       {doc.ano}
                     </td>
                     <td className="py-2.5 px-3 whitespace-nowrap">
-                      <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold">
+                      <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-xs font-bold">
                         {doc.tipoRotulo}
                       </span>
                     </td>
@@ -483,11 +483,11 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                       <span className="font-semibold text-foreground block">
                         {doc.entidade}
                       </span>
-                      <span className="text-[10px]">{doc.estado}</span>
+                      <span className="text-xs">{doc.estado}</span>
                     </td>
                     <td className="py-2.5 px-3">
                       <div className="flex flex-wrap items-center gap-1">
-                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-foreground">
+                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-xs font-medium text-foreground">
                           {doc.tema}
                         </span>
                         <TagsDocumento
@@ -506,7 +506,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                           href={doc.urlPdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 font-semibold text-primary hover:underline text-[11px]"
+                          className="inline-flex items-center gap-1 font-semibold text-primary hover:underline text-xs"
                           title="Baixar PDF / Espelho R2"
                         >
                           <span>PDF</span>
@@ -517,7 +517,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                         href={doc.urlOficial}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline text-[11px]"
+                        className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline text-xs"
                         title="Acessar página oficial da fonte"
                       >
                         <span>Fonte</span>
@@ -539,7 +539,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="rounded-full bg-primary/10 text-primary px-2.5 py-0.5 text-[10px] font-bold">
+                    <span className="rounded-full bg-primary/10 text-primary px-2.5 py-0.5 text-xs font-bold">
                       {doc.tipoRotulo}
                     </span>
                     <div className="flex items-center gap-1.5 text-muted font-mono font-bold">
@@ -553,7 +553,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                     {doc.titulo}
                   </h3>
 
-                  <div className="text-[11px] text-muted">
+                  <div className="text-xs text-muted">
                     <span className="font-semibold text-foreground">
                       {doc.entidade}
                     </span>
@@ -578,7 +578,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                 </div>
 
                 <div className="pt-3 border-t border-border/70 flex items-center justify-between text-xs">
-                  <span className="rounded bg-amber-500/10 text-amber-800 dark:text-amber-300 px-2 py-0.5 text-[10px] font-bold">
+                  <span className="rounded bg-amber-500/10 text-amber-800 dark:text-amber-300 px-2 py-0.5 text-xs font-bold">
                     {doc.tema}
                   </span>
 

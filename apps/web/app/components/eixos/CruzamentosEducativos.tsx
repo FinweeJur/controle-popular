@@ -65,7 +65,7 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
                 <h3 className="font-display text-base font-bold text-foreground mb-1">
                   {item.titulo}
                 </h3>
-                <div className="inline-block font-mono text-[11px] text-muted mb-3 rounded bg-surface px-2 py-0.5 border border-border/50">
+                <div className="inline-block font-mono text-xs text-muted mb-3 rounded bg-surface px-2 py-0.5 border border-border/50">
                   {item.formula}
                 </div>
 
@@ -74,7 +74,7 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border/40 text-[11px] text-muted">
+              <div className="mt-4 pt-3 border-t border-border/40 text-xs text-muted">
                 <span className="font-semibold text-foreground">Bases: </span>
                 {item.indicadoresEnvolvidos.join(' + ')}
               </div>

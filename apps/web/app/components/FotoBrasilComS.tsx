@@ -89,7 +89,7 @@ export default function FotoBrasilComS({
         className="h-auto w-full"
       />
       {creditar ? (
-        <figcaption className="mt-1.5 text-[.78em] text-text-soft">
+        <figcaption className="mt-1.5 text-[11px] text-text-soft">
           Créditos:{" "}
           <a
             href={paginaDaFoto(id)}

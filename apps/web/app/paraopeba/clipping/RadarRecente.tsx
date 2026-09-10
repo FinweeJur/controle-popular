@@ -108,14 +108,14 @@ export default function RadarRecente() {
                   contraste, onde `--cp-alert` é medido em 8,11:1. */}
               {item.ato_de_autoridade ? (
                 <span
-                  className="mr-2 rounded border border-alert px-1 text-[.7em] font-mono uppercase tracking-wide text-alert"
+                  className="mr-2 rounded border border-alert px-1 text-[11px] font-mono uppercase tracking-wide text-alert"
                   title="O título indica decisão de autoridade — o tipo de notícia que muda a situação de alguém."
                 >
                   ato
                 </span>
               ) : null}
               <span className="text-text">{item.titulo}</span>
-              <span className="mt-1 block font-mono text-[.78em] text-text-soft">
+              <span className="mt-1 block font-mono text-[11px] text-text-soft">
                 {item.veiculo}
                 {item.data ? ` · ${formatDateBR(item.data.slice(0, 10))}` : ""}
               </span>

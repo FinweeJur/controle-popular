@@ -223,7 +223,7 @@ export default function PainelBarragens() {
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-semibold text-text">{b.nome}</p>
                   <span
-                    className="rounded-md border border-border px-2 py-0.5 text-[.78em]"
+                    className="rounded-md border border-border px-2 py-0.5 text-[11px]"
                     style={concluida ? { color: "var(--color-ord-3)", borderColor: "var(--color-ord-3)" } : undefined}
                   >
                     {concluida ? "100% concluída" : decodificarEntidades(b.previsaoDescaracterizacao)}

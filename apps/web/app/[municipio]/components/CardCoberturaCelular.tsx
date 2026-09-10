@@ -29,12 +29,12 @@ export default function CardCoberturaCelular({
           <span>Sinal & Cobertura Celular</span>
         </div>
         {tem_5g ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[.72em] font-bold text-emerald-600 dark:text-emerald-400">
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
             5G ativo
           </span>
         ) : (
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[.72em] font-medium text-primary">
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
             4G disponível
           </span>
         )}
@@ -53,14 +53,14 @@ export default function CardCoberturaCelular({
             {lider.pct}% das torres
           </span>
         </div>
-        <div className="text-[.78em] text-text-soft">
+        <div className="text-[11px] text-text-soft">
           {lider.torres} de {total_torres} torres instaladas ({lider.geracao_max})
         </div>
       </div>
 
       {/* Mini ranking de operadoras */}
       <div className="mt-3.5 border-t border-border pt-3">
-        <div className="mb-2 text-[.75em] font-semibold tracking-wider uppercase text-text-soft">
+        <div className="mb-2 text-[11px] font-semibold tracking-wider uppercase text-text-soft">
           Presença por operadora
         </div>
         <div className="space-y-1.5">
@@ -68,7 +68,7 @@ export default function CardCoberturaCelular({
             <div key={op.operadora} className="flex items-center justify-between text-[.82em]">
               <div className="flex items-center gap-2">
                 <span className="font-medium text-text">{op.operadora}</span>
-                <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[.7em] text-text-soft font-mono">
+                <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[11px] text-text-soft font-mono">
                   {op.geracao_max}
                 </span>
               </div>
@@ -82,7 +82,7 @@ export default function CardCoberturaCelular({
       </div>
 
       {/* Rodapé com links */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-[.75em]">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-[11px]">
         <Link
           href="/funcaosocialterra/mapa?camada=torres-celular-mg"
           className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"

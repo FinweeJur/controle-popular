@@ -248,7 +248,7 @@ export default function TopNav() {
         >
           <Link
             href="/"
-            className="flex items-center gap-2 font-display text-[0.88em] sm:text-[0.96em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
+            className="flex items-center gap-2 font-display text-[0.9em] sm:text-[0.96em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
           >
             <Image
               src="/marca/emblema.webp"
@@ -297,7 +297,7 @@ export default function TopNav() {
                   Índice Geral do Portal
                 </a>
               </div>
-              <span className="text-[0.72em] font-medium text-text-soft">
+              <span className="text-[0.9em] font-medium text-text-soft">
                 Navegação por Eixos Temáticos e Central
               </span>
             </div>
@@ -312,14 +312,14 @@ export default function TopNav() {
                 >
                   <div className="mb-1.5 flex items-center justify-between">
                     <span
-                      className={`inline-block rounded px-1.5 py-0.5 text-[0.62em] font-bold uppercase tracking-wider border ${secao.badgeClasse}`}
+                      className={`inline-block rounded px-1.5 py-0.5 text-[0.9em] font-bold uppercase tracking-wider border ${secao.badgeClasse}`}
                     >
                       {secao.badge}
                     </span>
                   </div>
                   <h2
                     id={`menu-${secao.id}`}
-                    className="mb-2 text-[0.84em] font-bold tracking-tight"
+                    className="mb-2 text-[0.9em] font-bold tracking-tight"
                   >
                     <a
                       href={secao.href}
@@ -339,7 +339,7 @@ export default function TopNav() {
                           <a
                             href={link.href}
                             onClick={fechar}
-                            className="flex items-center gap-1.5 rounded-md px-1.5 py-1 text-[0.78em] leading-snug text-text transition-colors duration-150 hover:bg-surface hover:text-primary"
+                            className="flex items-center gap-1.5 rounded-md px-1.5 py-1 text-[0.9em] leading-snug text-text transition-colors duration-150 hover:bg-surface hover:text-primary"
                           >
                             {IconeLink && (
                               <IconeLink size={12} className="shrink-0 text-text-soft opacity-80" aria-hidden="true" />
@@ -360,7 +360,7 @@ export default function TopNav() {
         <div className="ml-auto flex flex-wrap items-center gap-2">
           <Link
             href="/noticias"
-            className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[.8em] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
+            className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
             aria-label="Blog e Relatórios de Dados Públicos"
           >
             <Newspaper size={13} aria-hidden="true" />
@@ -376,7 +376,7 @@ export default function TopNav() {
           <OuvirNavbar />
           <Link
             href="/busca"
-            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
           >
             Busca →
           </Link>

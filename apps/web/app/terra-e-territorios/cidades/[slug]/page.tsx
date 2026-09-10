@@ -141,7 +141,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
                 R$ {dadosCompletos.pib_mais_recente_bi.toFixed(1)} bi
               </div>
-              <p className="text-[10px] text-muted">
+              <p className="text-xs text-muted">
                 R$ {dadosCompletos.pib_per_capita_reais.toLocaleString('pt-BR')} / hab
               </p>
             </div>
@@ -154,7 +154,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
                 {dadosCompletos.populacao.toLocaleString('pt-BR')}
               </div>
-              <p className="text-[10px] text-muted">Censo 2022 oficial</p>
+              <p className="text-xs text-muted">Censo 2022 oficial</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
@@ -165,7 +165,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
                 {dadosCompletos.saude_estabelecimentos}
               </div>
-              <p className="text-[10px] text-muted">Unidades CNES/SUS</p>
+              <p className="text-xs text-muted">Unidades CNES/SUS</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
@@ -176,7 +176,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
                 {dadosCompletos.escolas_total}
               </div>
-              <p className="text-[10px] text-muted">Escolas registradas</p>
+              <p className="text-xs text-muted">Escolas registradas</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1 col-span-2 sm:col-span-1">
@@ -187,7 +187,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-lg sm:text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
                 R$ {dadosCompletos.repasses_federais_anuais_mi.toFixed(1)} mi
               </div>
-              <p className="text-[10px] text-muted">ComunicaBR / anual</p>
+              <p className="text-xs text-muted">ComunicaBR / anual</p>
             </div>
           </div>
         )}
@@ -288,7 +288,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <div className="text-xl font-bold font-mono text-foreground">
                 R$ {(pibData.pib[pibData.pib.length - 1].pib_total / 1000000).toFixed(2)} bi
               </div>
-              <span className="text-[11px] text-muted">A preços correntes</span>
+              <span className="text-xs text-muted">A preços correntes</span>
             </div>
             <div className="rounded-xl bg-surface-2 p-3.5 space-y-1">
               <span className="text-muted block">Crescimento na Década</span>
@@ -299,14 +299,14 @@ export default async function PaginaIndividualCidade({ params }: Props) {
                   100
                 ).toFixed(1)}%
               </div>
-              <span className="text-[11px] text-muted">Variação nominal ({pibData.pib[0].ano} a {pibData.pib[pibData.pib.length - 1].ano})</span>
+              <span className="text-xs text-muted">Variação nominal ({pibData.pib[0].ano} a {pibData.pib[pibData.pib.length - 1].ano})</span>
             </div>
             <div className="rounded-xl bg-surface-2 p-3.5 space-y-1">
               <span className="text-muted block">Série Histórica Coletada</span>
               <div className="text-xl font-bold font-mono text-foreground">
                 {pibData.pib.length} anos
               </div>
-              <span className="text-[11px] text-muted">Auditoria SIDRA completa</span>
+              <span className="text-xs text-muted">Auditoria SIDRA completa</span>
             </div>
           </div>
 
@@ -319,7 +319,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
                   const alturaPct = (p.pib_total / maxPib) * 100;
                   return (
                     <div key={p.ano} className="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
-                      <span className="text-[10px] font-mono text-muted group-hover:text-foreground transition opacity-0 group-hover:opacity-100">
+                      <span className="text-xs font-mono text-muted group-hover:text-foreground transition opacity-0 group-hover:opacity-100">
                         R${(p.pib_total / 1000000).toFixed(1)}b
                       </span>
                       <div
@@ -327,7 +327,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
                         className="w-full max-w-[36px] bg-primary/80 hover:bg-primary rounded-t transition-all"
                         title={`${p.ano}: R$ ${(p.pib_total / 1000).toFixed(0)} milhões`}
                       />
-                      <span className="text-[10px] font-mono text-muted mt-1">{p.ano}</span>
+                      <span className="text-xs font-mono text-muted mt-1">{p.ano}</span>
                     </div>
                   );
                 });
@@ -362,14 +362,14 @@ export default async function PaginaIndividualCidade({ params }: Props) {
                   <FileSpreadsheet size={16} className="text-primary" />
                   <span>Contratações da Prefeitura (PNCP)</span>
                 </div>
-                <span className="rounded bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold font-mono">
+                <span className="rounded bg-primary/10 text-primary px-2 py-0.5 text-xs font-bold font-mono">
                   Lei 14.133/2021
                 </span>
               </div>
               <p className="text-muted leading-relaxed">
                 Acompanhe editais, atas de registro de preços, dispensas, inexigibilidades e contratos administrativos celebrados pela Prefeitura Municipal.
               </p>
-              <div className="text-[11px] font-mono text-muted">
+              <div className="text-xs font-mono text-muted">
                 CNPJ Prefeitura: <strong className="text-foreground">{dadosCompletos?.cnpj_prefeitura || cidade.cnpj_prefeitura || 'Em consulta'}</strong>
               </div>
             </div>
@@ -404,14 +404,14 @@ export default async function PaginaIndividualCidade({ params }: Props) {
                   <Landmark size={16} className="text-emerald-600 dark:text-emerald-400" />
                   <span>Convênios & Repasses da União</span>
                 </div>
-                <span className="rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 text-[10px] font-bold font-mono">
+                <span className="rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 text-xs font-bold font-mono">
                   Transferegov
                 </span>
               </div>
               <p className="text-muted leading-relaxed">
                 Instrumentos de repasse voluntário, emendas parlamentares e transferências constitucionais destinadas a obras, saúde, saneamento e infraestrutura.
               </p>
-              <div className="text-[11px] font-mono text-muted">
+              <div className="text-xs font-mono text-muted">
                 Repasses Estimados: <strong className="text-emerald-600 dark:text-emerald-400">R$ {dadosCompletos?.repasses_federais_anuais_mi.toFixed(1)} mi / ano</strong>
               </div>
             </div>

@@ -111,7 +111,7 @@ export default function EixoLayout({
                       />
                     </div>
                     {heroCaption && (
-                      <div className="p-2.5 bg-surface/90 border-t border-border/50 text-[11px] text-muted italic text-center">
+                      <div className="p-2.5 bg-surface/90 border-t border-border/50 text-xs text-muted italic text-center">
                         {heroCaption}
                       </div>
                     )}

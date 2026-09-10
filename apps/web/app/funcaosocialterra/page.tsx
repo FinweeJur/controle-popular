@@ -85,7 +85,7 @@ export default async function FuncaoSocialTerraPage() {
     <>
       <Cabecalho />
       <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
-        <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
+        <p className="text-[11px] font-semibold tracking-wide text-text-soft uppercase">
           {ZONA.etiqueta}
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
@@ -254,7 +254,7 @@ export default async function FuncaoSocialTerraPage() {
                         {formatNumberBR(Math.round(l.areaUniversoHa))} ha ·{" "}
                         {l.qtdPoligonos} polígonos
                       </p>
-                      <p className="mt-3 text-[.8em] font-medium text-primary">
+                      <p className="mt-3 text-[11px] font-medium text-primary">
                         Ver em {cidade.nome} →
                       </p>
                     </a>

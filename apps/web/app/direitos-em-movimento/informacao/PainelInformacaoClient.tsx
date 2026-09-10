@@ -698,13 +698,13 @@ export default function PainelInformacaoClient({
                     {/* Header do Card: Badges e Cidade */}
                     <div className="flex items-start justify-between gap-2">
                       <span
-                        className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${badge.bg}`}
+                        className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-semibold ${badge.bg}`}
                       >
                         {badge.icone}
                         <span>{c.categoria}</span>
                       </span>
 
-                      <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-bold text-text-soft">
+                      <span className="rounded bg-surface-2 px-1.5 py-0.5 text-xs font-bold text-text-soft">
                         {c.uf}
                       </span>
                     </div>
@@ -713,7 +713,7 @@ export default function PainelInformacaoClient({
                     <h4 className="mt-2.5 font-display text-sm font-bold leading-snug text-text">
                       {c.nome}
                     </h4>
-                    <p className="text-[11px] font-medium text-text-soft">
+                    <p className="text-xs font-medium text-text-soft">
                       {c.cidade} · {c.regiao}
                     </p>
 
@@ -721,10 +721,10 @@ export default function PainelInformacaoClient({
                     <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-surface-2 p-2 text-xs">
                       <User className="mt-0.5 h-3.5 w-3.5 shrink-0 text-text-soft" />
                       <div>
-                        <span className="block text-[10px] font-medium text-text-soft">
+                        <span className="block text-xs font-medium text-text-soft">
                           {c.responsavel.cargo}
                         </span>
-                        <span className="font-semibold text-text text-[11px]">
+                        <span className="font-semibold text-text text-xs">
                           {c.responsavel.nome}
                         </span>
                       </div>
@@ -736,7 +736,7 @@ export default function PainelInformacaoClient({
                         <Phone className="h-3.5 w-3.5 shrink-0 text-primary" />
                         <a
                           href={`tel:${c.telefone.replace(/[^\d]/g, "")}`}
-                          className="font-mono text-[11px] text-text hover:underline"
+                          className="font-mono text-xs text-text hover:underline"
                           title="Ligar para o canal"
                         >
                           {c.telefone}
@@ -747,7 +747,7 @@ export default function PainelInformacaoClient({
                         <Mail className="h-3.5 w-3.5 shrink-0 text-primary" />
                         <a
                           href={`mailto:${c.email}`}
-                          className="truncate text-[11px] text-text hover:underline"
+                          className="truncate text-xs text-text hover:underline"
                           title="Enviar e-mail para a ouvidoria"
                         >
                           {c.email}
@@ -756,14 +756,14 @@ export default function PainelInformacaoClient({
 
                       <div className="flex items-start gap-2">
                         <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-text-soft" />
-                        <span className="text-[11px] leading-tight text-text-soft">
+                        <span className="text-xs leading-tight text-text-soft">
                           {c.endereco}
                         </span>
                       </div>
                     </div>
 
                     {/* Descrição resumida */}
-                    <p className="mt-3 text-[11px] leading-relaxed text-text-soft border-t border-border/50 pt-2 line-clamp-3">
+                    <p className="mt-3 text-xs leading-relaxed text-text-soft border-t border-border/50 pt-2 line-clamp-3">
                       {c.descricao}
                     </p>
                   </div>
@@ -803,33 +803,33 @@ export default function PainelInformacaoClient({
                   <tr key={c.id} className="transition-colors hover:bg-surface-2/60">
                     <td className="py-2.5 px-3">
                       <div className="font-semibold text-text">{c.nome}</div>
-                      <div className="text-[10px] text-text-soft">{c.cidade} - {c.uf}</div>
+                      <div className="text-xs text-text-soft">{c.cidade} - {c.uf}</div>
                     </td>
                     <td className="py-2.5 px-3">
-                      <span className="inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-text">
+                      <span className="inline-block rounded bg-surface-2 px-1.5 py-0.5 text-xs font-medium text-text">
                         {c.categoria}
                       </span>
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-[11px] text-text">
+                    <td className="py-2.5 px-3 font-mono text-xs text-text">
                       <a href={`tel:${c.telefone.replace(/[^\d]/g, "")}`} className="hover:underline">
                         {c.telefone}
                       </a>
                     </td>
-                    <td className="py-2.5 px-3 text-[11px] text-text">
+                    <td className="py-2.5 px-3 text-xs text-text">
                       <a href={`mailto:${c.email}`} className="hover:underline">
                         {c.email}
                       </a>
                     </td>
-                    <td className="py-2.5 px-3 text-[11px] text-text">
+                    <td className="py-2.5 px-3 text-xs text-text">
                       <div className="font-medium text-text">{c.responsavel.nome}</div>
-                      <div className="text-[10px] text-text-soft">{c.responsavel.cargo}</div>
+                      <div className="text-xs text-text-soft">{c.responsavel.cargo}</div>
                     </td>
                     <td className="py-2.5 px-3 text-right">
                       <a
                         href={c.linkPortal}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-semibold text-primary hover:underline text-[11px]"
+                        className="inline-flex items-center gap-1 font-semibold text-primary hover:underline text-xs"
                       >
                         <span>Abrir</span>
                         <ExternalLink className="h-3 w-3" />

@@ -124,7 +124,7 @@ const ESTILO_DA_PAGINA = [
   "[&_li[data-vazio]]:text-text-soft",
   "[&_b]:ml-auto [&_b]:font-tabular [&_b]:font-semibold [&_b]:text-text",
   "[&_li[data-vazio]_b]:font-normal [&_li[data-vazio]_b]:text-text-soft",
-  "[&_small]:text-[.8em] [&_small]:font-medium [&_small]:text-text-soft",
+  "[&_small]:text-[11px] [&_small]:font-medium [&_small]:text-text-soft",
   "[&_h4]:font-medium [&_h4]:text-text",
   "[&_p[data-serie]]:mt-1.5 [&_p[data-serie]]:font-tabular [&_p[data-serie]]:text-[.85em] [&_p[data-serie]]:text-text-soft",
 ].join(" ");

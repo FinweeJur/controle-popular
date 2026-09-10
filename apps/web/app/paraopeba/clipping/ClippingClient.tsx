@@ -851,7 +851,7 @@ function ListaTags({ tags, onTag }: { tags: string[]; onTag: (t: string) => void
           type="button"
           onClick={() => onTag(t)}
           aria-label={`Filtrar por: ${t}`}
-          className="cp-btn-anim rounded-full bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft transition-colors hover:bg-primary hover:text-primary-ink"
+          className="cp-btn-anim rounded-full bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft transition-colors hover:bg-primary hover:text-primary-ink"
         >
           {t}
         </button>

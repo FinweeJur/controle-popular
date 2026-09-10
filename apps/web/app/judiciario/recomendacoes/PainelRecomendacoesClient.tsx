@@ -336,7 +336,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
                   <div className="flex items-start gap-2.5">
                     <span className="text-lg">💡</span>
                     <div>
-                      <span className="block text-[11px] font-bold uppercase tracking-wider text-primary">
+                      <span className="block text-xs font-bold uppercase tracking-wider text-primary">
                         O que isso significa para o cidadão:
                       </span>
                       <p className="mt-0.5 text-sm font-semibold leading-snug text-text">
@@ -351,7 +351,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
                   <p className="text-xs italic text-text-soft leading-relaxed">
                     &ldquo;{item.texto_oficial}&rdquo;
                   </p>
-                  <p className="mt-1 text-[11px] text-text-soft">
+                  <p className="mt-1 text-xs text-text-soft">
                     Unidade fiscalizada: <strong>{item.unidade_alvo}</strong>
                   </p>
                 </div>
@@ -364,7 +364,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
                         type="button"
                         key={tag}
                         onClick={() => setBusca(tag)}
-                        className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft hover:bg-surface-3"
+                        className="rounded-md bg-surface-2 px-2 py-0.5 text-xs text-text-soft hover:bg-surface-3"
                       >
                         #{tag}
                       </button>

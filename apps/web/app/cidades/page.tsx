@@ -140,7 +140,7 @@ export default function PaginaCidadesEstrategicas() {
               <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
                 {stats.totalCidades}
               </p>
-              <p className="mt-1 text-[11px] text-muted">Auditadas no IBGE</p>
+              <p className="mt-1 text-xs text-muted">Auditadas no IBGE</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -148,7 +148,7 @@ export default function PaginaCidadesEstrategicas() {
               <p className="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl">
                 {stats.totalCapitais}
               </p>
-              <p className="mt-1 text-[11px] text-muted">100% das Capitais</p>
+              <p className="mt-1 text-xs text-muted">100% das Capitais</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -156,7 +156,7 @@ export default function PaginaCidadesEstrategicas() {
               <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
                 {stats.totalPolosInterior}
               </p>
-              <p className="mt-1 text-[11px] text-muted">Centros Regionais</p>
+              <p className="mt-1 text-xs text-muted">Centros Regionais</p>
             </div>
 
             <div className="rounded-xl border border-border bg-surface p-4 text-center">
@@ -164,7 +164,7 @@ export default function PaginaCidadesEstrategicas() {
               <p className="mt-1 font-display text-2xl font-bold text-emerald-600 sm:text-3xl">
                 {stats.totalEstados}
               </p>
-              <p className="mt-1 text-[11px] text-muted">26 Estados + DF</p>
+              <p className="mt-1 text-xs text-muted">26 Estados + DF</p>
             </div>
           </div>
         </section>

@@ -565,7 +565,7 @@ function ItemDaBiblioteca({
         <p className="mt-2 text-sm text-text-soft">
           {item.resumo}
           {item.resumo_origem === "modelo" && (
-            <span className="ml-2 inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[.65em] font-medium text-text-soft">
+            <span className="ml-2 inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[11px] font-medium text-text-soft">
               resumo gerado por IA
             </span>
           )}
@@ -579,7 +579,7 @@ function ItemDaBiblioteca({
               type="button"
               onClick={() => onTermo(t)}
               aria-label={`Filtrar por tag: ${t}`}
-              className="cp-btn-anim rounded-full border border-border bg-surface px-2 py-0.5 text-[.72em] text-text-soft transition-colors hover:border-primary hover:text-primary"
+              className="cp-btn-anim rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] text-text-soft transition-colors hover:border-primary hover:text-primary"
             >
               {t}
             </button>
@@ -590,7 +590,7 @@ function ItemDaBiblioteca({
               type="button"
               onClick={() => onTermo(t)}
               aria-label={`Filtrar por: ${t}`}
-              className="cp-btn-anim rounded-full bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft transition-colors hover:bg-primary hover:text-primary-ink"
+              className="cp-btn-anim rounded-full bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft transition-colors hover:bg-primary hover:text-primary-ink"
             >
               {t}
             </button>

@@ -48,7 +48,7 @@ function BotaoCopiar({ texto, rotulo }: { texto: string; rotulo: string }) {
       onClick={copiar}
       aria-label={`Copiar ${rotulo}`}
       className={
-        "inline-flex items-center gap-1 rounded px-1 py-0.5 text-[0.7em] font-medium transition-colors " +
+        "inline-flex items-center gap-1 rounded px-1 py-0.5 text-[11px] font-medium transition-colors " +
         (copiado
           ? "text-emerald-600"
           : "text-text-soft hover:text-primary hover:bg-surface-2")
@@ -258,7 +258,7 @@ export default function PainelConselhosClient({
                       aria-valuemax={conselhosIniciais.length}
                     />
                   </div>
-                  <span className="text-[0.7em] text-text-soft">{pct}% do acervo</span>
+                  <span className="text-[11px] text-text-soft">{pct}% do acervo</span>
                 </div>
               );
             })}
@@ -410,10 +410,10 @@ export default function PainelConselhosClient({
                         {c.sigla}
                       </span>
                       <div className="flex items-center gap-1">
-                        <span className={"inline-block rounded px-2 py-0.5 text-[0.68em] font-bold uppercase tracking-wider border " + catInfo.bg + " " + catInfo.cor}>
+                        <span className={"inline-block rounded px-2 py-0.5 text-[0.9em] font-bold uppercase tracking-wider border " + catInfo.bg + " " + catInfo.cor}>
                           {catInfo.label}
                         </span>
-                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[0.68em] font-mono font-semibold text-text-soft border border-border">
+                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[0.9em] font-mono font-semibold text-text-soft border border-border">
                           {c.uf || "BR"}
                         </span>
                       </div>
@@ -434,7 +434,7 @@ export default function PainelConselhosClient({
                       <ObjetoExpansivel texto={c.descricaoPapel} />
                     </div>
 
-                    <div className="rounded-lg bg-surface-2/60 p-2 text-[0.75em] text-text-soft">
+                    <div className="rounded-lg bg-surface-2/60 p-2 text-[0.9em] text-text-soft">
                       <span className="font-semibold text-foreground">Composição: </span>
                       <ObjetoExpansivel texto={c.quemParticipa} />
                     </div>
@@ -443,7 +443,7 @@ export default function PainelConselhosClient({
                   <div className="mt-4 pt-3 border-t border-border/60 space-y-2 text-xs">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       {c.contatos.telefone && (
-                        <span className="text-[0.75em] text-text-soft flex items-center gap-1">
+                        <span className="text-[0.9em] text-text-soft flex items-center gap-1">
                           <Phone size={11} aria-hidden="true" />
                           <span className="truncate max-w-[140px]">{c.contatos.telefone}</span>
                           <BotaoCopiar texto={c.contatos.telefone} rotulo="o telefone" />
@@ -451,7 +451,7 @@ export default function PainelConselhosClient({
                       )}
 
                       {c.contatos.email && (
-                        <span className="text-[0.75em] text-text-soft flex items-center gap-1">
+                        <span className="text-[0.9em] text-text-soft flex items-center gap-1">
                           <span className="truncate max-w-[140px]">{c.contatos.email}</span>
                           <BotaoCopiar texto={c.contatos.email} rotulo="o e-mail" />
                         </span>
@@ -462,7 +462,7 @@ export default function PainelConselhosClient({
                           href={c.contatos.siteOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="ml-auto flex items-center gap-1 text-[0.75em] font-semibold text-primary hover:underline"
+                          className="ml-auto flex items-center gap-1 text-[0.9em] font-semibold text-primary hover:underline"
                         >
                           <span>Acessar portal</span>
                           <ExternalLink size={10} aria-hidden="true" />
@@ -471,7 +471,7 @@ export default function PainelConselhosClient({
                     </div>
 
                     {c.contatos.enderecoFisico && (
-                      <div className="flex flex-wrap items-center gap-1 text-[0.75em] text-text-soft">
+                      <div className="flex flex-wrap items-center gap-1 text-[0.9em] text-text-soft">
                         <span className="truncate max-w-[220px]">{c.contatos.enderecoFisico}</span>
                         <BotaoCopiar texto={c.contatos.enderecoFisico} rotulo="o endereço" />
                       </div>
@@ -498,14 +498,14 @@ export default function PainelConselhosClient({
                   <tr key={c.id} className="hover:bg-surface-2/40">
                     <td className="p-3">
                       <span className="font-mono font-bold text-foreground block">{c.sigla}</span>
-                      <span className="text-[0.8em] text-text-soft">{c.nome}</span>
+                      <span className="text-[11px] text-text-soft">{c.nome}</span>
                     </td>
                     <td className="p-3 whitespace-nowrap">
-                      <span className="rounded px-1.5 py-0.5 text-[0.72em] font-medium border border-border">
+                      <span className="rounded px-1.5 py-0.5 text-[0.9em] font-medium border border-border">
                         {ROTULOS_CATEGORIA[c.categoria]?.label || c.categoria}
                       </span>
                     </td>
-                    <td className="p-3 whitespace-nowrap font-mono text-[0.8em]">
+                    <td className="p-3 whitespace-nowrap font-mono text-[11px]">
                       {c.esfera.toUpperCase()} • {c.uf || "BR"}
                     </td>
                     <td className="p-3 max-w-xs text-text-soft">

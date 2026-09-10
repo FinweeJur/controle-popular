@@ -41,7 +41,7 @@ export default function NossasSerrasPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {item.valor}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               {item.obs}
             </span>
           </div>
@@ -78,7 +78,7 @@ export default function NossasSerrasPage() {
           </div>
 
           <div className="lg:col-span-4 rounded-xl border border-border bg-surface-2/60 p-4 text-xs space-y-2">
-            <h3 className="font-bold text-foreground uppercase tracking-wide text-[11px]">
+            <h3 className="font-bold text-foreground uppercase tracking-wide text-xs">
               Camadas Integradas:
             </h3>
             <ul className="space-y-1.5 text-muted">

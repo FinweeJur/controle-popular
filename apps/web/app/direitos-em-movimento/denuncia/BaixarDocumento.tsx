@@ -77,7 +77,7 @@ export default function BaixarDocumento({ documento }: { documento: DocumentoDen
           {erro}
         </p>
       )}
-      <p className="mt-2 text-[.8em] text-text-soft">
+      <p className="mt-2 text-[11px] text-text-soft">
         O .docx precisa de um editor de texto para abrir; o .pdf abre em qualquer celular e é
         mais fácil de mostrar na tela para alguém. Os dois são montados agora, no seu navegador —
         nada foi enviado a nenhum servidor até aqui, e nada será enviado quando você clicar.

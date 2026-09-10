@@ -663,7 +663,7 @@ function TemasDoItem({ temas }: { temas: string[] }) {
   return (
     <div className="mt-2 flex flex-wrap gap-1.5">
       {temas.map((t) => (
-        <span key={t} className="rounded-full border border-border px-2 py-0.5 text-[.72em] text-text-soft">
+        <span key={t} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
           {TEMA_LABEL_UNIFICADO[t] ?? t}
         </span>
       ))}
@@ -772,7 +772,7 @@ function CardEstadual({
       {l.tags.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {l.tags.map((t) => (
-            <span key={t} className="rounded-full bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft">
+            <span key={t} className="rounded-full bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft">
               {TAG_LABEL[t] ?? t}
             </span>
           ))}
@@ -901,12 +901,12 @@ function CardPrecedente({ precedente: p }: { precedente: PrecedenteDireitoCritic
       {(p.temas.length > 0 || p.tags.length > 0) && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {p.temas.map((t) => (
-            <span key={`tema-${t}`} className="rounded-full border border-border px-2 py-0.5 text-[.72em] text-text-soft">
+            <span key={`tema-${t}`} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft">
               {TEMA_LABEL_UNIFICADO[t] ?? t}
             </span>
           ))}
           {p.tags.map((t) => (
-            <span key={`tag-${t}`} className="rounded-full bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft">
+            <span key={`tag-${t}`} className="rounded-full bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft">
               {t}
             </span>
           ))}

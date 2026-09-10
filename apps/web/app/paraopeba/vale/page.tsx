@@ -427,33 +427,33 @@ export default function ValePage() {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Último fechamento</p>
+          <p className="text-[11px] text-text-soft">Último fechamento</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">{precoBR(ultimo.fechamento)}</p>
-          <p className="mt-1 text-[.78em] text-text-soft">em {formatDateBR(ultimo.data)}</p>
+          <p className="mt-1 text-[11px] text-text-soft">em {formatDateBR(ultimo.data)}</p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Variação no último dia</p>
+          <p className="text-[11px] text-text-soft">Variação no último dia</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">{varBR(variacaoUltimoDia)}</p>
-          <p className="mt-1 text-[.78em] text-text-soft">
+          <p className="mt-1 text-[11px] text-text-soft">
             {formatDateBR(ultimo.data)} contra {formatDateBR(penultimo.data)}
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Maior fechamento do período</p>
+          <p className="text-[11px] text-text-soft">Maior fechamento do período</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">{precoBR(maiorFechamento)}</p>
-          <p className="mt-1 text-[.78em] text-text-soft">em {formatDateBR(diaMaior.data)}</p>
+          <p className="mt-1 text-[11px] text-text-soft">em {formatDateBR(diaMaior.data)}</p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Menor fechamento do período</p>
+          <p className="text-[11px] text-text-soft">Menor fechamento do período</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">{precoBR(menorFechamento)}</p>
-          <p className="mt-1 text-[.78em] text-text-soft">em {formatDateBR(diaMenor.data)}</p>
+          <p className="mt-1 text-[11px] text-text-soft">em {formatDateBR(diaMenor.data)}</p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="text-[.8em] text-text-soft">Volume do último dia</p>
+          <p className="text-[11px] text-text-soft">Volume do último dia</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">
             <Moeda value={ultimo.volume} />
           </p>
-          <p className="mt-1 text-[.78em] text-text-soft">em {formatDateBR(ultimo.data)}</p>
+          <p className="mt-1 text-[11px] text-text-soft">em {formatDateBR(ultimo.data)}</p>
         </div>
       </div>
 

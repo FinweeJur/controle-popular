@@ -104,7 +104,7 @@ export default function Footer({ cidade }: { cidade: Cidade }) {
         <FooterGlobal />
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-[.8em] text-text-soft">
+      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-[11px] text-text-soft">
         <span>© {new Date().getFullYear()} controlepopular.br · iniciativa cidadã independente</span>
         <div className="flex flex-wrap gap-4">
           <Link href="/privacidade" className="hover:text-primary">

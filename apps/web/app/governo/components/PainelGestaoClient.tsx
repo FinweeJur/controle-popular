@@ -468,7 +468,7 @@ export default function PainelGestaoClient({ mandato }: PainelGestaoClientProps)
                               className="flex flex-col justify-between gap-1 rounded-lg bg-surface-2 p-2.5 text-xs sm:flex-row sm:items-center"
                             >
                               <div>
-                                <span className="mr-2 inline-block rounded bg-surface-3 px-1.5 py-0.5 font-mono text-[10px] uppercase text-text-soft">
+                                <span className="mr-2 inline-block rounded bg-surface-3 px-1.5 py-0.5 font-mono text-xs uppercase text-text-soft">
                                   {ev.tipo}
                                 </span>
                                 <a

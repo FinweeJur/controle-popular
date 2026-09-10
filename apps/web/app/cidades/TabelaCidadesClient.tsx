@@ -195,11 +195,11 @@ export default function TabelaCidadesClient({ cidades }: Props) {
                   </td>
                   <td className="px-4 py-3 text-xs">
                     {c.tipo === "capital" ? (
-                      <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
+                      <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                         Capital
                       </span>
                     ) : (
-                      <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] text-muted">
+                      <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-xs text-muted">
                         Polo Interior
                       </span>
                     )}

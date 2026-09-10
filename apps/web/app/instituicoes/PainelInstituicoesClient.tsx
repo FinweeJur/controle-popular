@@ -298,7 +298,7 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <span className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-text-soft">
+                          <span className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-text-soft">
                             {inst.esfera} · {inst.poder}
                           </span>
                         </div>
@@ -314,7 +314,7 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
                     </div>
 
                     <span
-                      className="shrink-0 rounded-full px-2.5 py-0.5 font-mono text-[11px] font-bold"
+                      className="shrink-0 rounded-full px-2.5 py-0.5 font-mono text-xs font-bold"
                       style={{
                         backgroundColor: `color-mix(in srgb, ${inst.cor} 10%, transparent)`,
                         color: inst.cor,
@@ -337,20 +337,20 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
 
                     {/* Resumo do Organograma */}
                     <div className="pt-2 border-t border-border/50">
-                      <p className="font-semibold uppercase tracking-wider text-[10px] text-text-soft">
+                      <p className="font-semibold uppercase tracking-wider text-xs text-text-soft">
                         Áreas do Organograma ({inst.organograma.length})
                       </p>
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {inst.organograma.slice(0, 3).map((org, idx) => (
                           <span
                             key={idx}
-                            className="rounded bg-surface-2 px-2 py-0.5 text-[11px] text-text-soft"
+                            className="rounded bg-surface-2 px-2 py-0.5 text-xs text-text-soft"
                           >
                             {org.area.split(" (")[0]}
                           </span>
                         ))}
                         {inst.organograma.length > 3 && (
-                          <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] text-text-soft">
+                          <span className="rounded bg-surface-2 px-1.5 py-0.5 text-xs text-text-soft">
                             +{inst.organograma.length - 3}
                           </span>
                         )}

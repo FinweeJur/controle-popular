@@ -341,7 +341,7 @@ export default function TecnologiaClient() {
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <Search size={20} />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-primary">Uso Simples 1</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-primary">Uso Simples 1</span>
               <h3 className="mt-1 font-display text-lg font-bold text-foreground">
                 Fiscalização de Contratos e Compras Públicas
               </h3>
@@ -353,30 +353,30 @@ export default function TecnologiaClient() {
             <div className="space-y-3 pt-2">
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-[11px] font-bold text-primary">1</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">1</span>
                   <h4 className="text-xs font-bold text-foreground">IA 1: Leitura de Diários Escaneados (OCR)</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Baixe o PDF do Diário Oficial. Use OCR aberto no PC (Tesseract ou Cutiazinha) para transformar páginas em foto em texto pesquisável. Procure por termos como &ldquo;dispensa&rdquo;, &ldquo;inexigibilidade&rdquo; e &ldquo;aditivo&rdquo;.
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-[11px] font-bold text-primary">2</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">2</span>
                   <h4 className="text-xs font-bold text-foreground">IA 2: Comparação Automática de Preços</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Cole a lista de itens da licitação no modelo com o prompt: <em>&ldquo;Cruze os valores unitários com a média de mercado do PNCP e aponte itens com variação acima de 25% com a fonte.&rdquo;</em>
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-[11px] font-bold text-primary">3</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">3</span>
                   <h4 className="text-xs font-bold text-foreground">IA 3: Microresumo de Aditivo com Seu Nonô</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Abra o assistente Seu Nonô e pergunte: <em>&ldquo;O que aumentou neste aditivo de obra e qual foi o motivo alegado pela prefeitura?&rdquo;</em> Receba a síntese em 2 parágrafos simples para ler no bairro.
                 </p>
               </div>
@@ -389,7 +389,7 @@ export default function TecnologiaClient() {
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck size={20} />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Uso Simples 2</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Uso Simples 2</span>
               <h3 className="mt-1 font-display text-lg font-bold text-foreground">
                 Defesa Comunitária e Denúncia Ambiental
               </h3>
@@ -401,30 +401,30 @@ export default function TecnologiaClient() {
             <div className="space-y-3 pt-2">
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">1</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">1</span>
                   <h4 className="text-xs font-bold text-foreground">IA 1: Transcrição de Audiências (Whisper)</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Grave os depoimentos da assembleia em áudio. Execute o modelo Whisper localmente pelo terminal ou app livre. Gere ata transcrita palavra por palavra com privacidade total para as famílias.
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">2</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">2</span>
                   <h4 className="text-xs font-bold text-foreground">IA 2: Minuta de LAI e Notícia de Fato ao MP</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Relate o dano ao modelo de IA pedindo: <em>&ldquo;Redija uma notícia de fato ao MPMG fundamentando na Lei 6.938/81 e na Resolução CONAMA, com espaço para anexar fotos e testemunhos.&rdquo;</em>
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">3</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">3</span>
                   <h4 className="text-xs font-bold text-foreground">IA 3: Checagem de Licenças de Barragens</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> No painel de Barragens do portal, pegue o código SIGBM da estrutura. Peça à IA para comparar a data de descaracterização declarada pela mineradora com os prazos legais da Lei Mar de Lama Nunca Mais.
                 </p>
               </div>
@@ -437,7 +437,7 @@ export default function TecnologiaClient() {
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
                 <BookOpen size={20} />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Uso Simples 3</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Uso Simples 3</span>
               <h3 className="mt-1 font-display text-lg font-bold text-foreground">
                 Comunicação e Mobilização Popular
               </h3>
@@ -449,30 +449,30 @@ export default function TecnologiaClient() {
             <div className="space-y-3 pt-2">
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-[11px] font-bold text-blue-600 dark:text-blue-400">1</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">1</span>
                   <h4 className="text-xs font-bold text-foreground">IA 1: Tradução de Projetos de Lei em Panfletos</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Cole a ementa de um projeto do Congresso ou da Câmara no modelo: <em>&ldquo;Explique em 3 tópicos curtos: O que muda na prática, quem ganha e quem perde com este projeto para um panfleto impresso.&rdquo;</em>
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-[11px] font-bold text-blue-600 dark:text-blue-400">2</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">2</span>
                   <h4 className="text-xs font-bold text-foreground">IA 2: Roteiro de Vídeo Curto (Reels / Status)</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Solicite: <em>&ldquo;Crie um roteiro de 60 segundos com fala natural em primeira pessoa: gancho inicial de 3 segundos, 3 números comprovados e chamada para a audiência pública do bairro.&rdquo;</em>
                 </p>
               </div>
 
               <div className="rounded-xl border border-border/70 bg-surface-2/60 p-3.5 space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-[11px] font-bold text-blue-600 dark:text-blue-400">3</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">3</span>
                   <h4 className="text-xs font-bold text-foreground">IA 3: Assistente Offline Comunitário</h4>
                 </div>
-                <p className="text-[11px] text-muted leading-normal">
+                <p className="text-xs text-muted leading-normal">
                   <strong>Passo a passo:</strong> Configure um computador na sede comunitária usando Ollama + modelo Sabiá 7B ou Qwen. Carregue o estatuto do bairro e leis municipais para criar um tira-dúvidas que roda mesmo sem internet.
                 </p>
               </div>
@@ -538,7 +538,7 @@ export default function TecnologiaClient() {
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
                       p.status === "No ar"
                         ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
                         : p.status === "Código aberto"
@@ -548,7 +548,7 @@ export default function TecnologiaClient() {
                   >
                     ● {p.status}
                   </span>
-                  <span className="text-[10px] font-mono text-muted uppercase tracking-wider">
+                  <span className="text-xs font-mono text-muted uppercase tracking-wider">
                     {p.categoria}
                   </span>
                 </div>
@@ -583,7 +583,7 @@ export default function TecnologiaClient() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-border/60 bg-surface-2 px-2 py-0.5 text-[10px] font-medium text-muted"
+                      className="rounded-md border border-border/60 bg-surface-2 px-2 py-0.5 text-xs font-medium text-muted"
                     >
                       #{t}
                     </span>

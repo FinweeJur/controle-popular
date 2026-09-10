@@ -92,14 +92,14 @@ export default function TransparenciaInternacionalPage() {
             const altura = Math.min(100, Math.max(20, (d.valor_mensal_usd / 4000000000) * 100));
             return (
               <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                <span className="text-[10px] font-mono text-text font-bold">
+                <span className="text-xs font-mono text-text font-bold">
                   ${(d.valor_mensal_usd / 1000000000).toFixed(1)}B
                 </span>
                 <div
                   className="w-full max-w-[40px] bg-primary rounded-t-md transition-all hover:bg-accent"
                   style={{ height: `${altura}%` }}
                 />
-                <span className="text-[10px] text-text-soft">Mês {d.mes}/{d.ano}</span>
+                <span className="text-xs text-text-soft">Mês {d.mes}/{d.ano}</span>
               </div>
             );
           })}

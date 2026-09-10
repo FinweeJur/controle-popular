@@ -42,7 +42,7 @@ export function TagChip({
         <span>{label}</span>
         {contador !== undefined && (
           <span
-            className={`rounded-full px-1.5 py-0.2 text-[0.7em] tabular-nums ${
+            className={`rounded-full px-1.5 py-0.2 text-[11px] tabular-nums ${
               ativo ? "bg-primary text-primary-ink" : "bg-surface-2 text-text-soft"
             }`}
           >
@@ -60,7 +60,7 @@ export function TagChip({
     >
       <span>{label}</span>
       {contador !== undefined && (
-        <span className="rounded-full bg-surface-2 px-1.5 py-0.2 text-[0.7em] text-text-soft tabular-nums">
+        <span className="rounded-full bg-surface-2 px-1.5 py-0.2 text-[11px] text-text-soft tabular-nums">
           {contador}
         </span>
       )}

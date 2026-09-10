@@ -53,7 +53,7 @@ export default function OrcamentoPage() {
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
               {item.valor}
             </span>
-            <span className="text-[11px] text-muted block mt-1">
+            <span className="text-xs text-muted block mt-1">
               {item.obs}
             </span>
           </div>

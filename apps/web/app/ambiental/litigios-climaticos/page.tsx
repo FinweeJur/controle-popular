@@ -173,7 +173,7 @@ export default function PaginaLitigiosClimaticos() {
                 {a.resumo}
               </p>
 
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-2 text-[11px] text-muted border-t border-border">
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-2 text-xs text-muted border-t border-border">
                 <span>📍 Cidades: {a.municipios.join(", ")} ({a.uf})</span>
                 <span className="rounded bg-surface-3 px-2 py-0.5">Status: {a.status}</span>
               </div>
@@ -209,7 +209,7 @@ export default function PaginaLitigiosClimaticos() {
                 </p>
               </div>
 
-              <div className="mt-4 rounded-xl bg-surface-1 p-3 text-[11px] text-muted">
+              <div className="mt-4 rounded-xl bg-surface-1 p-3 text-xs text-muted">
                 <span className="font-semibold text-foreground">Impacto direto no bolso e vida do atingido: </span>
                 {t.impactoParaAtingidos}
               </div>

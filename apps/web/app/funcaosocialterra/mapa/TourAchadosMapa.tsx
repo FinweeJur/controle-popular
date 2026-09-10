@@ -289,7 +289,7 @@ export default function TourAchadosMapa({ onSelecionarPonto }: TourAchadosMapaPr
         <div className="mt-3 space-y-3">
           <div>
             <div className="flex items-baseline justify-between gap-2">
-              <span className="text-[.75em] font-bold uppercase tracking-wider text-accent">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
                 Ponto {indice + 1} de {PONTOS_ACHADOS.length} · {pontoAtual.municipio}
               </span>
             </div>

@@ -568,7 +568,7 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
             <ul className="mt-3 flex flex-col gap-3">
               {FERRAMENTAS_PROVA.map((f) => (
                 <li key={f.ferramenta} className="rounded-xl border border-border bg-surface p-4">
-                  <p className="text-[.8em] font-semibold uppercase tracking-wide text-text-soft">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-text-soft">
                     {f.situacao}
                   </p>
                   <p className="mt-1 font-medium text-text">
@@ -662,7 +662,7 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
                       {it.nota}
                     </p>
                   )}
-                  <p className="mt-2 text-[.7em] text-text-soft">Verificado em {it.verificadoEm}</p>
+                  <p className="mt-2 text-[11px] text-text-soft">Verificado em {it.verificadoEm}</p>
                 </li>
               ))}
             </ul>

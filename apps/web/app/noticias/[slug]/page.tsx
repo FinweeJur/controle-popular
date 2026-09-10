@@ -107,7 +107,7 @@ function renderTextoComLinks(texto: string) {
         className="font-medium text-primary hover:underline underline-offset-2"
       >
         {rotulo}
-        {isExterno && <span className="text-[10px] ml-0.5">↗</span>}
+        {isExterno && <span className="text-xs ml-0.5">↗</span>}
       </a>
     );
     lastIndex = regex.lastIndex;
@@ -229,7 +229,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {noticia.metricas.map((m) => (
             <div key={m.rotulo} className="rounded-xl bg-surface-2 p-3.5 border border-border/50">
-              <p className="text-[11px] font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
+              <p className="text-xs font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
               <p className="mt-1 font-display text-xl sm:text-2xl font-bold text-foreground">{m.valor}</p>
             </div>
           ))}
@@ -317,7 +317,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
               href={`/noticias/${outra.slug}`}
               className="group rounded-xl border border-border bg-surface p-4 transition-all hover:border-primary/50"
             >
-              <span className="text-[10px] font-semibold text-primary block mb-1">
+              <span className="text-xs font-semibold text-primary block mb-1">
                 {outra.categoria}
               </span>
               <h4 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
