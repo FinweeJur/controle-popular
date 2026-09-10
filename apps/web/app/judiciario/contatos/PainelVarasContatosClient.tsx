@@ -30,6 +30,14 @@ import type {
   TipoUnidade,
 } from "@/lib/judiciario/contatos-tipos";
 
+/** Data ISO (yyyy-mm-dd) → pt-BR (dd/mm/aaaa). NaN vira "—" sem quebrar. */
+function formatDataBR(iso?: string): string {
+  if (!iso) return "—";
+  const d = new Date(iso.length === 10 ? `${iso}T12:00:00Z` : iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
+}
+
 interface Props {
   unidadesIniciais: UnidadeJudiciaria[];
   estatisticas: ResumoEstatisticasContatos;
@@ -128,6 +136,8 @@ export default function PainelVarasContatosClient({
       "Endereço Completo",
       "Link Balcão Virtual",
       "Horário de Atendimento",
+      "Designação (ato)",
+      "Data da designação",
     ];
 
     const linhas = unidadesOrdenadas.map((u) => [
@@ -146,6 +156,8 @@ export default function PainelVarasContatosClient({
       `"${u.endereco}"`,
       `"${u.linkBalcaoVirtual}"`,
       `"${u.horarioAtendimento || "12:00 às 18:00"}"`,
+      `"${u.designacao?.ato || ""}"`,
+      `"${u.designacao?.data || ""}"`,
     ]);
 
     const csvConteudo = "\uFEFF" + [cabecalho.join(";"), ...linhas.map((l) => l.join(";"))].join("\n");
@@ -494,6 +506,12 @@ export default function PainelVarasContatosClient({
                   <div className="overflow-hidden">
                     <p className="truncate font-bold text-text">{u.coordenador.nome}</p>
                     <p className="text-xs text-text-soft truncate">{u.coordenador.cargo}</p>
+                    {u.designacao?.data && (
+                      <p className="mt-0.5 text-[11px] text-primary truncate">
+                        Em exercício desde {formatDataBR(u.designacao.data)}
+                        {u.designacao.ato ? ` (${u.designacao.ato})` : ""}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -594,6 +612,12 @@ export default function PainelVarasContatosClient({
                   <td className="px-4 py-2.5 text-text">
                     <p className="font-medium line-clamp-1">{u.coordenador.nome}</p>
                     <p className="text-xs text-text-soft">{u.coordenador.cargo}</p>
+                    {u.designacao?.data && (
+                      <p className="mt-0.5 text-[11px] text-primary">
+                        desde {formatDataBR(u.designacao.data)}
+                        {u.designacao.ato ? ` · ${u.designacao.ato}` : ""}
+                      </p>
+                    )}
                   </td>
                   <td className="px-4 py-2.5 font-mono text-text whitespace-nowrap">
                     <a href={`tel:${u.telefone.replace(/[^\d+]/g, "")}`} className="hover:text-primary">
