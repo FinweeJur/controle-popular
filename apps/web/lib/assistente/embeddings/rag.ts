@@ -140,7 +140,11 @@ export async function buscarNoAcervo(
         ? 0
         : similaridadeCosseno(vetorPergunta, indice.vetores[i]);
       const lexical = similaridadeLexical(pergunta, fonte.texto);
-      return { fonte, cosseno, lexical, score: scoreHibrido(cosseno, lexical) };
+      // Só-lexical: score na MESMA escala do híbrido (0–1) para que o limiar
+      // de abstenção continue significa o que sempre significou — Jaccard
+      // puro dividido pelo peso lexical daria nota artificial baixa.
+      const score = soLexical ? lexical : scoreHibrido(cosseno, lexical);
+      return { fonte, cosseno, lexical, score };
     })
     .sort((a, b) => b.score - a.score);
 
