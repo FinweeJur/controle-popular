@@ -6,12 +6,12 @@
  * ═══ POSIÇÃO NO FLUXO ═══
  *
  *   radar-editais-diarios.mts (04:20)  →  pendentes/   (rascunho, só o radar)
- *   publicar-radar-editais.mts (MANUAL) → noticias-portal.json + Telegram
+ *   publicar-radar-editais.mts (04:50)  → noticias-portal.json + commit + push
  *
- * Este script NÃO roda sozinho na esteira: publicar no blog é decisão do dono
- * ou da rotina dele. O script é o executante da decisão — a chamada é manual
- * (`npx tsx scripts/publicar-radar-editais.mts`) ou entra na agenda quando o
- * dono mandar.
+ * A publicação é AUTOMÁTICA por decisão do dono (10/09/2026): a tarefa
+ * agendada das 04:50 roda este script depois do radar. Guardas de dado
+ * pessoal rodam antes E depois da escrita; commit e push são feitos aqui
+ * (árvore suja travaria o autodeploy das 05:50, que é quem leva ao ar).
  *
  * ═══ GUARDAS ANTES DE QUALQUER ESCRITA (regra 2 do AGENTS.md) ═══
  *
@@ -33,8 +33,9 @@
  *   Oficial, revisado pela equipe" — declaração honesta de máquina (regra
  *   editorial do AGENTS.md: rótulo de geração + revisão).
  * Depois de gravar, o pendente é MOVIDO para `processados/` com status
- * "publicado". Este script NÃO commita — o dono/rotina decide o commit
- * (regra 7 do AGENTS.md: cada um publica o próprio trabalho).
+ * "publicado". O commit é feito aqui, por pathspec explícito (regra 5 do
+ * AGENTS.md), com mensagem em arquivo (regra 6), e push logo em seguida
+ * (regra 7) — quem publica o próprio trabalho é a própria rotina.
  *
  * ═══ TELEGRAM ═══
  *
@@ -51,7 +52,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
+import { spawnSync, execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -248,6 +249,50 @@ function listarPendentes(): Pendente[] {
     .map((f) => JSON.parse(fs.readFileSync(path.join(PENDENTES_DIR, f), "utf-8")) as Pendente);
 }
 
+// ──────────────────────────────────────────────────────────────────────────
+// Registro anti-duplicado: o slug nasce do hash do pendente, que MUDARIA a
+// cada re-detecção do mesmo edital em dias seguidos. A chave real é
+// fonte+data+titulo normalizado — persistida em processados/registro.json.
+// ──────────────────────────────────────────────────────────────────────────
+
+const REGISTRO_PATH = path.join(PROCESSADOS_DIR, "registro.json");
+
+/** Só vira post o edital com potencial de interesse social (regra editorial
+ *  do AGENTS.md): participação em conselhos, chamamentos, seleção pública,
+ *  credenciamento, audiência. Pregão/leilão comum é ruído — a menos que o
+ *  score do detector seja alto (>= 25), caso em que o trecho merece leitura. */
+const FILTRO_PUBLICACAO =
+  /chamamento|chamada p[úu]blica|sociedade civil|conselho|condel|ppddh|sele[çc][ãa]o p[úu]blica|credenciamento|audi[êe]ncia p[úu]blica|organiza[çc][õo]es? da sociedade civil|entidades civis/i;
+const SCORE_EXCECAO = 25;
+
+function normalizar(s: string): string {
+  return s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function chaveDoPendente(p: Pendente): string {
+  return [p.fonte, p.data_publicacao, normalizar(p.titulo_sugerido)].join("|");
+}
+
+function lerRegistro(): Set<string> {
+  try {
+    const cru = fs.readFileSync(REGISTRO_PATH, "utf-8");
+    const arr = JSON.parse(cru) as string[];
+    return new Set(arr);
+  } catch {
+    return new Set();
+  }
+}
+
+function salvarRegistro(registro: Set<string>): void {
+  fs.mkdirSync(PROCESSADOS_DIR, { recursive: true });
+  fs.writeFileSync(REGISTRO_PATH, JSON.stringify([...registro].sort(), null, 1) + "\n", "utf-8");
+}
+
 async function main(): Promise<void> {
   carregarEnv();
   const pendentes = listarPendentes();
@@ -265,7 +310,13 @@ async function main(): Promise<void> {
   if (SO_MEDIR) {
     for (const p of pendentes) {
       const n = converterEmNoticia(p, new Date().toISOString());
-      console.log(`🧪 [seco] publicaria: slug=${n.slug} | "${n.titulo.slice(0, 80)}"`);
+      const textoParaFiltro = `${p.titulo_sugerido} ${p.trechos.map((t) => t.contexto).join(" ")}`;
+      const noEscopo = FILTRO_PUBLICACAO.test(textoParaFiltro) || p.score >= SCORE_EXCECAO;
+      console.log(
+        noEscopo
+          ? `🧪 [seco] publicaria: slug=${n.slug} | "${n.titulo.slice(0, 80)}"`
+          : `🚫 [seco] fora de escopo (score ${p.score}): "${n.titulo.slice(0, 80)}"`
+      );
     }
     console.log("[publicar-radar] --seco: nada gravado, nada movido, nada enviado.");
     return;
@@ -277,32 +328,93 @@ async function main(): Promise<void> {
   const slugsExistentes = new Set(lista.map((n) => n.slug));
   const agoraIso = new Date().toISOString();
 
-  const publicadas: string[] = [];
+  const registro = lerRegistro();
+  const publicadas: { id: string; titulo: string; slug: string }[] = [];
   const puladas: string[] = [];
   for (const p of pendentes) {
+    const chave = chaveDoPendente(p);
     const n = converterEmNoticia(p, agoraIso);
-    if (slugsExistentes.has(n.slug)) {
-      puladas.push(`${n.slug} (slug já existe — pendente mantido)`);
-      console.log(`⏭️  [publicar-radar] slug ${n.slug} já existe; pendente ${p.id} NÃO publicado`);
+    // Filtro editorial: leilão/pregão genérico não é notícia de interesse
+    // social; arquiva como fora-de-escopo para não poluir a fila.
+    const textoParaFiltro = `${p.titulo_sugerido} ${p.trechos.map((t) => t.contexto).join(" ")}`;
+    if (!FILTRO_PUBLICACAO.test(textoParaFiltro) && p.score < SCORE_EXCECAO) {
+      fs.mkdirSync(PROCESSADOS_DIR, { recursive: true });
+      const fora = { ...p, status: "fora-de-escopo", slug: n.slug, publicado_em: agoraIso };
+      fs.writeFileSync(path.join(PROCESSADOS_DIR, `${p.id}.json`), JSON.stringify(fora, null, 1) + "\n", "utf-8");
+      fs.unlinkSync(path.join(PENDENTES_DIR, `${p.id}.json`));
+      puladas.push(`${n.titulo.slice(0, 60)} (fora do escopo social)`);
+      console.log(`🚫 [publicar-radar] fora de escopo (score ${p.score}): ${p.id}`);
+      continue;
+    }
+    if (slugsExistentes.has(n.slug) || registro.has(chave)) {
+      // Já publicado (hoje ou em rodada anterior): arquiva o pendente como
+      // duplicado para ele não voltar amanhã, sem tocar no acervo.
+      const motivo = slugsExistentes.has(n.slug) ? "slug já existe" : "edital já publicado em rodada anterior";
+      puladas.push(`${n.titulo.slice(0, 60)} (${motivo})`);
+      fs.mkdirSync(PROCESSADOS_DIR, { recursive: true });
+      const dup = { ...p, status: "duplicado", slug: n.slug, publicado_em: agoraIso };
+      fs.writeFileSync(path.join(PROCESSADOS_DIR, `${p.id}.json`), JSON.stringify(dup, null, 1) + "\n", "utf-8");
+      fs.unlinkSync(path.join(PENDENTES_DIR, `${p.id}.json`));
+      console.log(`⏭️  [publicar-radar] ${motivo}: ${p.id}`);
       continue;
     }
     lista.push(n);
     slugsExistentes.add(n.slug);
-    fs.mkdirSync(PROCESSADOS_DIR, { recursive: true });
-    const processado = { ...p, status: "publicado", slug: n.slug, publicado_em: agoraIso };
-    fs.writeFileSync(path.join(PROCESSADOS_DIR, `${p.id}.json`), JSON.stringify(processado, null, 1) + "\n", "utf-8");
-    fs.unlinkSync(path.join(PENDENTES_DIR, `${p.id}.json`));
-    publicadas.push(n.titulo);
+    registro.add(chave);
+    publicadas.push({ id: p.id, titulo: n.titulo, slug: n.slug });
     console.log(`📰 [publicar-radar] ${n.slug} — "${n.titulo.slice(0, 80)}"`);
   }
 
   fs.writeFileSync(PORTAL_JSON, JSON.stringify(lista, null, 1) + "\n", "utf-8");
-  console.log(`[publicar-radar] ${publicadas.length} notícia(s) gravada(s) em noticias-portal.json; ${puladas.length} pulada(s). Nenhum commit — decisão do dono.`);
+  console.log(`[publicar-radar] ${publicadas.length} notícia(s) gravada(s) em noticias-portal.json; ${puladas.length} pulada(s).`);
+
+  // Automação completa (pedido do dono): guarda -> grava -> commit -> push.
+  // Sem commit a rotina das 05:50 abortaria por árvore suja e a notícia
+  // nunca iria ao ar. Se o push falhar, o JSON volta ao estado original e
+  // os pendentes permanecem para a próxima rodada.
+  const rel = path.relative(RAIZ, PORTAL_JSON);
+  if (publicadas.length > 0) {
+    try {
+      rodarGuarda(["scripts/checar-dado-pessoal-em-dado.py"], "checar-dado-pessoal-em-dado.py (pós-escrita)");
+      // Porta de ortografia: violação de acento obrigatório bloqueia a
+      // publicação. Avisos de estilo (frase longa) não bloqueiam.
+      execFileSync("npx", ["tsx", "scripts/checar-ortografia-noticias.mts"], {
+        cwd: RAIZ,
+        stdio: "inherit",
+      });
+      const msg = `radar: ${publicadas.length} edital(is) do Diario Oficial vira(m) post do blog\n\nPublicacao automatica do radar de editais. Guardas de dado pessoal e checagem de ortografia rodadas antes do commit.\n\nCo-Authored-By: opencode\n`;
+      const msgFile = path.join(RAIZ, "logs", `radar-msg-${Date.now()}.txt`);
+      fs.writeFileSync(msgFile, msg, "utf-8");
+      execFileSync("git", ["add", rel], { cwd: RAIZ });
+      execFileSync("git", ["commit", "--only", rel, "-F", msgFile], { cwd: RAIZ });
+      execFileSync("git", ["fetch", "origin", "--quiet"], { cwd: RAIZ });
+      execFileSync("git", ["rebase", "origin/main"], { cwd: RAIZ });
+      execFileSync("git", ["push", "origin", "HEAD:main"], { cwd: RAIZ });
+      fs.unlinkSync(msgFile);
+      // Só agora o pendente sai da fila e o registro persiste — se o push
+      // tivesse falhado, ele tentaria de novo amanhã.
+      for (const pub of publicadas) {
+        const p = pendentes.find((x) => x.id === pub.id);
+        if (!p) continue;
+        fs.mkdirSync(PROCESSADOS_DIR, { recursive: true });
+        const processado = { ...p, status: "publicado", slug: pub.slug, publicado_em: agoraIso };
+        fs.writeFileSync(path.join(PROCESSADOS_DIR, `${pub.id}.json`), JSON.stringify(processado, null, 1) + "\n", "utf-8");
+        fs.unlinkSync(path.join(PENDENTES_DIR, `${pub.id}.json`));
+      }
+      salvarRegistro(registro);
+      console.log("[publicar-radar] commit + push feitos; a rotina das 05:50 publica no ar.");
+    } catch (err) {
+      console.error("⚠️ [publicar-radar] commit/push falhou:", err instanceof Error ? err.message : err);
+      execFileSync("git", ["rebase", "--abort"], { cwd: RAIZ, stdio: "ignore" });
+      execFileSync("git", ["checkout", "--", rel], { cwd: RAIZ });
+      console.error("[publicar-radar] JSON do portal revertido; pendentes continuam aguardando.");
+    }
+  }
 
   if (publicadas.length > 0) {
-    const linhas = publicadas.map((t) => `- <b>${t.slice(0, 120)}</b>`).join("\n");
+    const linhas = publicadas.map((t) => `- <b>${t.titulo.slice(0, 120)}</b>`).join("\n");
     await enviarTelegram(
-      `📢 <b>Radar de editais</b>\n${publicadas.length} notícia(s) publicada(s) no blog (categoria Explicador, frente estado):\n\n${linhas}\n\nNenhum commit foi feito — a publicação no repositório fica a cargo da rotina do dono.`,
+      `📢 <b>Radar de editais</b>\n${publicadas.length} notícia(s) publicada(s) no blog (categoria Explicador, frente estado):\n\n${linhas}\n\nCommit e push feitos — o autodeploy das 05:50 leva ao ar.`,
     );
   }
   if (puladas.length > 0) {

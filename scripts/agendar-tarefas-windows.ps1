@@ -50,12 +50,21 @@ if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Wri
 # ─── Radar de editais do DOMG-e (docs/planos/RADAR-EDITAIS-DIARIOS.md) ─────
 # Diario, 04:20. Varre a edicao do dia do Jornal Minas Gerais atras de editais
 # de interesse social e grava rascunhos em apps/web/data/radar-editais/pendentes/.
-# NAO publica no blog — a publicacao e papel do publicar-radar-editais.mts,
-# manual (decisao do dono). Log: docs/relatorios-automacao/logs/rotina-radar-editais.log.
+# Log: docs/relatorios-automacao/logs/rotina-radar-editais.log.
 # Registrado pela primeira vez em 10/09/2026 (a task ja existe na maquina).
 Write-Host "Registrando RADAR DE EDITAIS (diario, 04:20)..." -ForegroundColor Cyan
 $RadarCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/radar-editais-diarios.mts >> docs\relatorios-automacao\logs\rotina-radar-editais.log 2>&1"
 & schtasks.exe /Create /TN "ControlePopular_RadarEditais" /TR $RadarCmd /SC DAILY /ST 04:20 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
+# ─── Publicacao do radar (docs/planos/RADAR-EDITAIS-DIARIOS.md) ─────────────
+# Diario, 04:50. Converte os pendentes do radar em posts do blog, roda os
+# guardas de dado pessoal, COMMITA e faz push (arvore suja travaria o
+# autodeploy das 05:50). Publicacao automatica por decisao do dono (10/09/2026).
+# Log: docs/relatorios-automacao/logs/rotina-radar-publicacao.log.
+Write-Host "Registrando PUBLICACAO DO RADAR (diario, 04:50)..." -ForegroundColor Cyan
+$PublicaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/publicar-radar-editais.mts >> docs\relatorios-automacao\logs\rotina-radar-publicacao.log 2>&1"
+& schtasks.exe /Create /TN "ControlePopular_RadarPublicacao" /TR $PublicaCmd /SC DAILY /ST 04:50 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
 # ─── Drill mensal (item 6): derruba o next start no dia 01 para o vigia ───
