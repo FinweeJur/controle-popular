@@ -92,6 +92,10 @@ describe("PNCP — 4 órgãos ambientais de MG (SEMAD, FEAM, IEF, IGAM)", () => 
   test("nenhum CPF/CNPJ de fornecedor com menos de 11 dígitos (zero à esquerda perdido)", () => {
     for (const c of PNCP_MG_CONTRATOS) {
       if (c.fornecedorCnpjCpf) {
+        // O coletor mascara o documento do fornecedor pessoa física (a fonte
+        // pública traz CPF real; o dado versionado publica o rótulo). Placeholder
+        // não é número perdido de zero — o invariante cobre só valores numéricos.
+        if (/MASCARADO/i.test(c.fornecedorCnpjCpf)) continue;
         expect([11, 14], `${c.numeroControlePncp}: ${c.fornecedorCnpjCpf}`).toContain(c.fornecedorCnpjCpf.length);
       }
     }
