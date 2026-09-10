@@ -1,5 +1,19 @@
 [
   {
+    "data": "2026-09-10",
+    "titulo": "Municípios de todos os 27 estados no ar",
+    "descricao": "Todas as UFs brasileiras com tabelas de municípios: 5.570 cidades.",
+    "frente": "Cidades",
+    "link": "/cidades"
+  },
+  {
+    "data": "2026-09-10",
+    "titulo": "Pedido de dados por e-mail",
+    "descricao": "Solicite CSV de qualquer acervo e receba em casa.",
+    "frente": "Central",
+    "link": "/direitos-em-movimento/informacao"
+  },
+  {
     "data": "2026-08-31",
     "titulo": "Diários Oficiais municipais com classificação determinística",
     "descricao": "Atos, contratos, editais e decretos categorizados em SP, BH, Betim, Diamantina, Araçuaí e Itinga com anonimização Mod-11 de CPFs.",
