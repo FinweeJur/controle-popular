@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-09T05:30:10.472393+00:00",
+ "gerado_em": "2026-09-10T05:30:10.296155+00:00",
  "janela_dias": 45,
  "fontes": [
   {
@@ -36,9 +36,17 @@
  "lacuna_conhecida": "TJMG e MPMG não entram: os endereços de RSS dos dois respondiam HTTP 404 em 14/08/2026. Decisão judicial chega aqui pela imprensa ou pelas ATIs, com o atraso delas.",
  "itens": [
   {
-   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - blogdopedlowski.com",
+   "titulo": "Brumadinho contesta pedido do IBRAM ao STF para suspender Novo Auxílio Emergencial",
+   "link": "https://guaicuy.org.br/brumadinho-contesta-pedido-do-ibram-ao-stf-para-suspender-novo-auxilio/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-09-09T19:58:15+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5",
-   "veiculo": "blogdopedlowski.com",
+   "veiculo": "Blog do Pedlowski",
    "fonte_id": "google-noticias",
    "data": "2026-09-06T14:29:18+00:00",
    "ato_de_autoridade": false
@@ -108,14 +116,6 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - migalhas.com.br",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
-   "veiculo": "migalhas.com.br",
-   "fonte_id": "google-noticias",
-   "data": "2026-09-01T15:01:41+00:00",
-   "ato_de_autoridade": false
-  },
-  {
    "titulo": "IBRAM pede ao STF suspensão de pagamentos do Novo Auxílio Emergencial",
    "link": "https://guaicuy.org.br/ibram-pede-ao-stf-suspensao-de-pagamentos-do-novo-auxilio/",
    "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
@@ -130,6 +130,14 @@
    "fonte_id": "guaicuy",
    "data": "2026-09-01T13:06:22+00:00",
    "ato_de_autoridade": true
+  },
+  {
+   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
+   "veiculo": "Migalhas",
+   "fonte_id": "google-noticias",
+   "data": "2026-09-01T07:00:00+00:00",
+   "ato_de_autoridade": false
   },
   {
    "titulo": "Vale informa depósito judicial de recursos para o pagamento do Novo Auxílio Emergencial de setembro às pessoas atingidas",
@@ -196,6 +204,14 @@
    "ato_de_autoridade": false
   },
   {
+   "titulo": "Ibram usa alta do PIB e da receita de Brumadinho para defender fim do auxílio da Vale aos atingidos - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMkN6Njl3VVRjRjVOZ3dqVXFtcDhmbzdEd25CWTZJVW5SZU96cXA2czJaSy1mdU8xbkJZbGZFZlFrcUdMWENTOTRzT0JZU1QwN3U2M01Uakt5LTNLUU5mYVRWb0NjcGlsTUhvU3BldF9DV1hxZnM2YkJiclNTVFNiVjJUSl8zYmpCMVRMcnJQdkdUTWtXazFZQ25CVDl2SGViRWd0ZHJWX3pkSjYwcF81akZPMlZxdWtyZVFHem1TSi15TjlWSTdXcmZKX3ZiZw?oc=5",
+   "veiculo": "O Fator",
+   "fonte_id": "google-noticias",
+   "data": "2026-08-26T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
    "titulo": "Anexo I.1: Adai realiza roda de diálogo sobre priorização de projetos com Povos e Comunidades Tradicionais",
    "link": "https://adaibrasil.org.br/roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1",
    "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
@@ -212,14 +228,6 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Entidade Gestora lança edital para execução de projetos locais na Região 4",
-   "link": "https://guaicuy.org.br/entidade-gestora-lanca-edital-execucao-projetos-locais-regiao-4/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-08-20T19:38:55+00:00",
-   "ato_de_autoridade": false
-  },
-  {
    "titulo": "STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - JOTA Info",
    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",
    "veiculo": "JOTA Info",
@@ -228,9 +236,9 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - neomondo.org.br",
+   "titulo": "Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - Neo Mondo",
    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbDFCOFh4Ym9aWUwyZG05V3N1TC1YaVh2X2RJWlRHOEhMTHhfMzUyLThIbUV4eFgydThzcXhINllnbmVUX1pjNmlKYkoydXhWU29GdmdoVmQ5SEV4azBkbF9UcVFJMlBEanFsVEtnRkhvSVVBR2Q3UnJXUGRqMkVyVFhmS2NJRnlpYjNtZms5azhqaXpvbmpGOTZIdEw3VEpqTnRXak92WEgxR195eGpxMkl1MmY5VHFySFY3bGVxaVk2NTZEN3gwT29wMGJ1aTZtQlE?oc=5",
-   "veiculo": "neomondo.org.br",
+   "veiculo": "Neo Mondo",
    "fonte_id": "google-noticias",
    "data": "2026-08-10T07:00:00+00:00",
    "ato_de_autoridade": false

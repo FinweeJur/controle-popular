@@ -1,16 +1,16 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-09T06:35:33.072Z
-- Duracao total: 3.5 min
+- Gerado em: 2026-09-10T06:35:27.840Z
+- Duracao total: 4.0 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 127
-- OK: 99
+- OK: 98
 - QUEBRADOS: 5
 - REDIRECTS: 7
-- INCONSISTENTES: 16
+- INCONSISTENTES: 17
 - Propostas geradas: 2
 - Links sem proposta: 10
 
@@ -70,12 +70,13 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 
 ## Inconsistentes (nao verificados, sem proposta)
 
-- https://cnes.datasus.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.presidencia.gov.br (rede) — erro de rede: fetch failed
 - https://controlepopular.com.br/ambiental/crimes-socioambientais (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
+- https://dados.mg.gov.br/dataset/crimes-violentos (rede) — erro de rede: This operation was aborted
 - https://datajud-wiki.cnj.jus.br (rede) — erro de rede: This operation was aborted
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
+- https://feam.br/documents/d/feam/lista-de-barragens-2024-xlsx (rede) — erro de rede: This operation was aborted
 - https://geoserver.funai.gov.br (rede) — erro de rede: fetch failed
 - https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed

@@ -1,0 +1,1114 @@
+[
+  {
+    "id": 1700251,
+    "nome": "Abreulândia",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1700301,
+    "nome": "Aguiarnópolis",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1700350,
+    "nome": "Aliança do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1700400,
+    "nome": "Almas",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1700707,
+    "nome": "Alvorada",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1701002,
+    "nome": "Ananás",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1701051,
+    "nome": "Angico",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1701101,
+    "nome": "Aparecida do Rio Negro",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1701309,
+    "nome": "Aragominas",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1701903,
+    "nome": "Araguacema",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1702000,
+    "nome": "Araguaçu",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1702109,
+    "nome": "Araguaína",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1702158,
+    "nome": "Araguanã",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1702208,
+    "nome": "Araguatins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1702307,
+    "nome": "Arapoema",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1702406,
+    "nome": "Arraias",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1702554,
+    "nome": "Augustinópolis",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1702703,
+    "nome": "Aurora do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1702901,
+    "nome": "Axixá do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703008,
+    "nome": "Babaçulândia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703057,
+    "nome": "Bandeirantes do Tocantins",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703073,
+    "nome": "Barra do Ouro",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703107,
+    "nome": "Barrolândia",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1703206,
+    "nome": "Bernardo Sayão",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703305,
+    "nome": "Bom Jesus do Tocantins",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703602,
+    "nome": "Brasilândia do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703701,
+    "nome": "Brejinho de Nazaré",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1703800,
+    "nome": "Buriti do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703826,
+    "nome": "Cachoeirinha",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703842,
+    "nome": "Campos Lindos",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703867,
+    "nome": "Cariri do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1703883,
+    "nome": "Carmolândia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703891,
+    "nome": "Carrasco Bonito",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1703909,
+    "nome": "Caseara",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1704105,
+    "nome": "Centenário",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1704600,
+    "nome": "Chapada de Areia",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1705102,
+    "nome": "Chapada da Natividade",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1705508,
+    "nome": "Colinas do Tocantins",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1705557,
+    "nome": "Combinado",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1705607,
+    "nome": "Conceição do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1706001,
+    "nome": "Couto Magalhães",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1706100,
+    "nome": "Cristalândia",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1706258,
+    "nome": "Crixás do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1706506,
+    "nome": "Darcinópolis",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1707009,
+    "nome": "Dianópolis",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1707108,
+    "nome": "Divinópolis do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1707207,
+    "nome": "Dois Irmãos do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Miracema do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1707306,
+    "nome": "Dueré",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1707405,
+    "nome": "Esperantina",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1707553,
+    "nome": "Fátima",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1707652,
+    "nome": "Figueirópolis",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1707702,
+    "nome": "Filadélfia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1708205,
+    "nome": "Formoso do Araguaia",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1708254,
+    "nome": "Tabocão",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1708304,
+    "nome": "Goianorte",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1709005,
+    "nome": "Goiatins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1709302,
+    "nome": "Guaraí",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1709500,
+    "nome": "Gurupi",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1709807,
+    "nome": "Ipueiras",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1710508,
+    "nome": "Itacajá",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1710706,
+    "nome": "Itaguatins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1710904,
+    "nome": "Itapiratins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1711100,
+    "nome": "Itaporã do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1711506,
+    "nome": "Jaú do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1711803,
+    "nome": "Juarina",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1711902,
+    "nome": "Lagoa da Confusão",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1711951,
+    "nome": "Lagoa do Tocantins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1712009,
+    "nome": "Lajeado",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1712157,
+    "nome": "Lavandeira",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1712405,
+    "nome": "Lizarda",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1712454,
+    "nome": "Luzinópolis",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1712504,
+    "nome": "Marianópolis do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1712702,
+    "nome": "Mateiros",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1712801,
+    "nome": "Maurilândia do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1713205,
+    "nome": "Miracema do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Miracema do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1713304,
+    "nome": "Miranorte",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Miracema do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1713601,
+    "nome": "Monte do Carmo",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1713700,
+    "nome": "Monte Santo do Tocantins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1713809,
+    "nome": "Palmeiras do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1713957,
+    "nome": "Muricilândia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1714203,
+    "nome": "Natividade",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1714302,
+    "nome": "Nazaré",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1714880,
+    "nome": "Nova Olinda",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1715002,
+    "nome": "Nova Rosalândia",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1715101,
+    "nome": "Novo Acordo",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1715150,
+    "nome": "Novo Alegre",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1715259,
+    "nome": "Novo Jardim",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1715507,
+    "nome": "Oliveira de Fátima",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1715705,
+    "nome": "Palmeirante",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1715754,
+    "nome": "Palmeirópolis",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1716109,
+    "nome": "Paraíso do Tocantins",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1716208,
+    "nome": "Paranã",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1716307,
+    "nome": "Pau D'Arco",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1716505,
+    "nome": "Pedro Afonso",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1716604,
+    "nome": "Peixe",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1716653,
+    "nome": "Pequizeiro",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1716703,
+    "nome": "Colméia",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1717008,
+    "nome": "Pindorama do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1717206,
+    "nome": "Piraquê",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1717503,
+    "nome": "Pium",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1717800,
+    "nome": "Ponte Alta do Bom Jesus",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1717909,
+    "nome": "Ponte Alta do Tocantins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718006,
+    "nome": "Porto Alegre do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1718204,
+    "nome": "Porto Nacional",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718303,
+    "nome": "Praia Norte",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718402,
+    "nome": "Presidente Kennedy",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718451,
+    "nome": "Pugmil",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Paraíso do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718501,
+    "nome": "Recursolândia",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718550,
+    "nome": "Riachinho",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718659,
+    "nome": "Rio da Conceição",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1718709,
+    "nome": "Rio dos Bois",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Miracema do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718758,
+    "nome": "Rio Sono",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718808,
+    "nome": "Sampaio",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718840,
+    "nome": "Sandolândia",
+    "microrregiao": "Rio Formoso",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1718865,
+    "nome": "Santa Fé do Araguaia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718881,
+    "nome": "Santa Maria do Tocantins",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1718899,
+    "nome": "Santa Rita do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1718907,
+    "nome": "Santa Rosa do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1719004,
+    "nome": "Santa Tereza do Tocantins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1720002,
+    "nome": "Santa Terezinha do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1720101,
+    "nome": "São Bento do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1720150,
+    "nome": "São Félix do Tocantins",
+    "microrregiao": "Jalapão",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1720200,
+    "nome": "São Miguel do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1720259,
+    "nome": "São Salvador do Tocantins",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1720309,
+    "nome": "São Sebastião do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1720499,
+    "nome": "São Valério",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1720655,
+    "nome": "Silvanópolis",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Porto Nacional",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1720804,
+    "nome": "Sítio Novo do Tocantins",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguatins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1720853,
+    "nome": "Sucupira",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1720903,
+    "nome": "Taguatinga",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1720937,
+    "nome": "Taipas do Tocantins",
+    "microrregiao": "Dianópolis",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Dianópolis",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1720978,
+    "nome": "Talismã",
+    "microrregiao": "Gurupi",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Gurupi",
+    "regiao_intermediaria": "Gurupi"
+  },
+  {
+    "id": 1721000,
+    "nome": "Palmas",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Palmas",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1721109,
+    "nome": "Tocantínia",
+    "microrregiao": "Porto Nacional",
+    "mesorregiao": "Oriental do Tocantins",
+    "regiao_imediata": "Miracema do Tocantins",
+    "regiao_intermediaria": "Palmas"
+  },
+  {
+    "id": 1721208,
+    "nome": "Tocantinópolis",
+    "microrregiao": "Bico do Papagaio",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Tocantinópolis",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1721257,
+    "nome": "Tupirama",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Guaraí",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1721307,
+    "nome": "Tupiratins",
+    "microrregiao": "Miracema do Tocantins",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Colinas do Tocantins",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1722081,
+    "nome": "Wanderlândia",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  },
+  {
+    "id": 1722107,
+    "nome": "Xambioá",
+    "microrregiao": "Araguaína",
+    "mesorregiao": "Ocidental do Tocantins",
+    "regiao_imediata": "Araguaína",
+    "regiao_intermediaria": "Araguaína"
+  }
+]

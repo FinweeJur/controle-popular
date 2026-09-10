@@ -1,0 +1,626 @@
+[
+  {
+    "id": 3200102,
+    "nome": "Afonso Cláudio",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3200136,
+    "nome": "Águia Branca",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3200169,
+    "nome": "Água Doce do Norte",
+    "microrregiao": "Barra de São Francisco",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Nova Venécia",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3200201,
+    "nome": "Alegre",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3200300,
+    "nome": "Alfredo Chaves",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3200359,
+    "nome": "Alto Rio Novo",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3200409,
+    "nome": "Anchieta",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3200508,
+    "nome": "Apiacá",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3200607,
+    "nome": "Aracruz",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3200706,
+    "nome": "Atílio Vivácqua",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3200805,
+    "nome": "Baixo Guandu",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3200904,
+    "nome": "Barra de São Francisco",
+    "microrregiao": "Barra de São Francisco",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Nova Venécia",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3201001,
+    "nome": "Boa Esperança",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3201100,
+    "nome": "Bom Jesus do Norte",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3201159,
+    "nome": "Brejetuba",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3201209,
+    "nome": "Cachoeiro de Itapemirim",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3201308,
+    "nome": "Cariacica",
+    "microrregiao": "Vitória",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3201407,
+    "nome": "Castelo",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3201506,
+    "nome": "Colatina",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3201605,
+    "nome": "Conceição da Barra",
+    "microrregiao": "São Mateus",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3201704,
+    "nome": "Conceição do Castelo",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3201803,
+    "nome": "Divino de São Lourenço",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3201902,
+    "nome": "Domingos Martins",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3202009,
+    "nome": "Dores do Rio Preto",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202108,
+    "nome": "Ecoporanga",
+    "microrregiao": "Barra de São Francisco",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Nova Venécia",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3202207,
+    "nome": "Fundão",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3202256,
+    "nome": "Governador Lindenberg",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3202306,
+    "nome": "Guaçuí",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202405,
+    "nome": "Guarapari",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3202454,
+    "nome": "Ibatiba",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202504,
+    "nome": "Ibiraçu",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3202553,
+    "nome": "Ibitirama",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202603,
+    "nome": "Iconha",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202652,
+    "nome": "Irupi",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202702,
+    "nome": "Itaguaçu",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3202801,
+    "nome": "Itapemirim",
+    "microrregiao": "Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3202900,
+    "nome": "Itarana",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3203007,
+    "nome": "Iúna",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203056,
+    "nome": "Jaguaré",
+    "microrregiao": "São Mateus",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3203106,
+    "nome": "Jerônimo Monteiro",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203130,
+    "nome": "João Neiva",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3203163,
+    "nome": "Laranja da Terra",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3203205,
+    "nome": "Linhares",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3203304,
+    "nome": "Mantenópolis",
+    "microrregiao": "Barra de São Francisco",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3203320,
+    "nome": "Marataízes",
+    "microrregiao": "Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203346,
+    "nome": "Marechal Floriano",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3203353,
+    "nome": "Marilândia",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3203403,
+    "nome": "Mimoso do Sul",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203502,
+    "nome": "Montanha",
+    "microrregiao": "Montanha",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3203601,
+    "nome": "Mucurici",
+    "microrregiao": "Montanha",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3203700,
+    "nome": "Muniz Freire",
+    "microrregiao": "Alegre",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203809,
+    "nome": "Muqui",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3203908,
+    "nome": "Nova Venécia",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Nova Venécia",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3204005,
+    "nome": "Pancas",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3204054,
+    "nome": "Pedro Canário",
+    "microrregiao": "São Mateus",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3204104,
+    "nome": "Pinheiros",
+    "microrregiao": "Montanha",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3204203,
+    "nome": "Piúma",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3204252,
+    "nome": "Ponto Belo",
+    "microrregiao": "Montanha",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3204302,
+    "nome": "Presidente Kennedy",
+    "microrregiao": "Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3204351,
+    "nome": "Rio Bananal",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3204401,
+    "nome": "Rio Novo do Sul",
+    "microrregiao": "Guarapari",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3204500,
+    "nome": "Santa Leopoldina",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3204559,
+    "nome": "Santa Maria de Jetibá",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3204609,
+    "nome": "Santa Teresa",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3204658,
+    "nome": "São Domingos do Norte",
+    "microrregiao": "Colatina",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3204708,
+    "nome": "São Gabriel da Palha",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3204807,
+    "nome": "São José do Calçado",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Alegre",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3204906,
+    "nome": "São Mateus",
+    "microrregiao": "São Mateus",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "São Mateus",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3204955,
+    "nome": "São Roque do Canaã",
+    "microrregiao": "Santa Teresa",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3205002,
+    "nome": "Serra",
+    "microrregiao": "Vitória",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3205010,
+    "nome": "Sooretama",
+    "microrregiao": "Linhares",
+    "mesorregiao": "Litoral Norte Espírito-santense",
+    "regiao_imediata": "Linhares",
+    "regiao_intermediaria": "São Mateus"
+  },
+  {
+    "id": 3205036,
+    "nome": "Vargem Alta",
+    "microrregiao": "Cachoeiro de Itapemirim",
+    "mesorregiao": "Sul Espírito-santense",
+    "regiao_imediata": "Cachoeiro de Itapemirim",
+    "regiao_intermediaria": "Cachoeiro do Itapemirim"
+  },
+  {
+    "id": 3205069,
+    "nome": "Venda Nova do Imigrante",
+    "microrregiao": "Afonso Cláudio",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Afonso Cláudio - Venda Nova do Imigrante - Santa Maria de Jetibá",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3205101,
+    "nome": "Viana",
+    "microrregiao": "Vitória",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3205150,
+    "nome": "Vila Pavão",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Nova Venécia",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3205176,
+    "nome": "Vila Valério",
+    "microrregiao": "Nova Venécia",
+    "mesorregiao": "Noroeste Espírito-santense",
+    "regiao_imediata": "Colatina",
+    "regiao_intermediaria": "Colatina"
+  },
+  {
+    "id": 3205200,
+    "nome": "Vila Velha",
+    "microrregiao": "Vitória",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  },
+  {
+    "id": 3205309,
+    "nome": "Vitória",
+    "microrregiao": "Vitória",
+    "mesorregiao": "Central Espírito-santense",
+    "regiao_imediata": "Vitória",
+    "regiao_intermediaria": "Vitória"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1400027,
+    "nome": "Amajari",
+    "microrregiao": "Boa Vista",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Pacaraima",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400050,
+    "nome": "Alto Alegre",
+    "microrregiao": "Boa Vista",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Boa Vista",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400100,
+    "nome": "Boa Vista",
+    "microrregiao": "Boa Vista",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Boa Vista",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400159,
+    "nome": "Bonfim",
+    "microrregiao": "Nordeste de Roraima",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Boa Vista",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400175,
+    "nome": "Cantá",
+    "microrregiao": "Nordeste de Roraima",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Boa Vista",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400209,
+    "nome": "Caracaraí",
+    "microrregiao": "Caracaraí",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Caracaraí",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400233,
+    "nome": "Caroebe",
+    "microrregiao": "Sudeste de Roraima",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Rorainópolis",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400282,
+    "nome": "Iracema",
+    "microrregiao": "Caracaraí",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Caracaraí",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400308,
+    "nome": "Mucajaí",
+    "microrregiao": "Caracaraí",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Boa Vista",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400407,
+    "nome": "Normandia",
+    "microrregiao": "Nordeste de Roraima",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Pacaraima",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400456,
+    "nome": "Pacaraima",
+    "microrregiao": "Boa Vista",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Pacaraima",
+    "regiao_intermediaria": "Boa Vista"
+  },
+  {
+    "id": 1400472,
+    "nome": "Rorainópolis",
+    "microrregiao": "Sudeste de Roraima",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Rorainópolis",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400506,
+    "nome": "São João da Baliza",
+    "microrregiao": "Sudeste de Roraima",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Rorainópolis",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400605,
+    "nome": "São Luiz do Anauá",
+    "microrregiao": "Sudeste de Roraima",
+    "mesorregiao": "Sul de Roraima",
+    "regiao_imediata": "Rorainópolis",
+    "regiao_intermediaria": "Rorainópolis - Caracaraí"
+  },
+  {
+    "id": 1400704,
+    "nome": "Uiramutã",
+    "microrregiao": "Nordeste de Roraima",
+    "mesorregiao": "Norte de Roraima",
+    "regiao_imediata": "Pacaraima",
+    "regiao_intermediaria": "Boa Vista"
+  }
+]

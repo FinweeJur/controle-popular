@@ -1,0 +1,818 @@
+[
+  {
+    "id": 2700102,
+    "nome": "Água Branca",
+    "microrregiao": "Serrana do Sertão Alagoano",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2700201,
+    "nome": "Anadia",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2700300,
+    "nome": "Arapiraca",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2700409,
+    "nome": "Atalaia",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2700508,
+    "nome": "Barra de Santo Antônio",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2700607,
+    "nome": "Barra de São Miguel",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2700706,
+    "nome": "Batalha",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2700805,
+    "nome": "Belém",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2700904,
+    "nome": "Belo Monte",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2701001,
+    "nome": "Boca da Mata",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701100,
+    "nome": "Branquinha",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701209,
+    "nome": "Cacimbinhas",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2701308,
+    "nome": "Cajueiro",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701357,
+    "nome": "Campestre",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701407,
+    "nome": "Campo Alegre",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701506,
+    "nome": "Campo Grande",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2701605,
+    "nome": "Canapi",
+    "microrregiao": "Serrana do Sertão Alagoano",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2701704,
+    "nome": "Capela",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2701803,
+    "nome": "Carneiros",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2701902,
+    "nome": "Chã Preta",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702009,
+    "nome": "Coité do Nóia",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702108,
+    "nome": "Colônia Leopoldina",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702207,
+    "nome": "Coqueiro Seco",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702306,
+    "nome": "Coruripe",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702355,
+    "nome": "Craíbas",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702405,
+    "nome": "Delmiro Gouveia",
+    "microrregiao": "Alagoana do Sertão do São Francisco",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702504,
+    "nome": "Dois Riachos",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702553,
+    "nome": "Estrela de Alagoas",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702603,
+    "nome": "Feira Grande",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2702702,
+    "nome": "Feliz Deserto",
+    "microrregiao": "Penedo",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702801,
+    "nome": "Flexeiras",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2702900,
+    "nome": "Girau do Ponciano",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2703007,
+    "nome": "Ibateguara",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703106,
+    "nome": "Igaci",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2703205,
+    "nome": "Igreja Nova",
+    "microrregiao": "Penedo",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703304,
+    "nome": "Inhapi",
+    "microrregiao": "Serrana do Sertão Alagoano",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2703403,
+    "nome": "Jacaré dos Homens",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2703502,
+    "nome": "Jacuípe",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703601,
+    "nome": "Japaratinga",
+    "microrregiao": "Litoral Norte Alagoano",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703700,
+    "nome": "Jaramataia",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2703759,
+    "nome": "Jequiá da Praia",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703809,
+    "nome": "Joaquim Gomes",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2703908,
+    "nome": "Jundiá",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2704005,
+    "nome": "Junqueiro",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704104,
+    "nome": "Lagoa da Canoa",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704203,
+    "nome": "Limoeiro de Anadia",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704302,
+    "nome": "Maceió",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2704401,
+    "nome": "Major Isidoro",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704500,
+    "nome": "Maragogi",
+    "microrregiao": "Litoral Norte Alagoano",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2704609,
+    "nome": "Maravilha",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704708,
+    "nome": "Marechal Deodoro",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2704807,
+    "nome": "Maribondo",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2704906,
+    "nome": "Mar Vermelho",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2705002,
+    "nome": "Mata Grande",
+    "microrregiao": "Serrana do Sertão Alagoano",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2705101,
+    "nome": "Matriz de Camaragibe",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2705200,
+    "nome": "Messias",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2705309,
+    "nome": "Minador do Negrão",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2705408,
+    "nome": "Monteirópolis",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2705507,
+    "nome": "Murici",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2705606,
+    "nome": "Novo Lino",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2705705,
+    "nome": "Olho d'Água das Flores",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2705804,
+    "nome": "Olho d'Água do Casado",
+    "microrregiao": "Alagoana do Sertão do São Francisco",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2705903,
+    "nome": "Olho d'Água Grande",
+    "microrregiao": "Traipu",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706000,
+    "nome": "Olivença",
+    "microrregiao": "Batalha",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706109,
+    "nome": "Ouro Branco",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706208,
+    "nome": "Palestina",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706307,
+    "nome": "Palmeira dos Índios",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706406,
+    "nome": "Pão de Açúcar",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706422,
+    "nome": "Pariconha",
+    "microrregiao": "Serrana do Sertão Alagoano",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706448,
+    "nome": "Paripueira",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2706505,
+    "nome": "Passo de Camaragibe",
+    "microrregiao": "Litoral Norte Alagoano",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2706604,
+    "nome": "Paulo Jacinto",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2706703,
+    "nome": "Penedo",
+    "microrregiao": "Penedo",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2706802,
+    "nome": "Piaçabuçu",
+    "microrregiao": "Penedo",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2706901,
+    "nome": "Pilar",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707008,
+    "nome": "Pindoba",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707107,
+    "nome": "Piranhas",
+    "microrregiao": "Alagoana do Sertão do São Francisco",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Delmiro Gouveia",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2707206,
+    "nome": "Poço das Trincheiras",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2707305,
+    "nome": "Porto Calvo",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707404,
+    "nome": "Porto de Pedras",
+    "microrregiao": "Litoral Norte Alagoano",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707503,
+    "nome": "Porto Real do Colégio",
+    "microrregiao": "Penedo",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707602,
+    "nome": "Quebrangulo",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Palmeira dos Índios",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2707701,
+    "nome": "Rio Largo",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707800,
+    "nome": "Roteiro",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2707909,
+    "nome": "Santa Luzia do Norte",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708006,
+    "nome": "Santana do Ipanema",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2708105,
+    "nome": "Santana do Mundaú",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708204,
+    "nome": "São Brás",
+    "microrregiao": "Traipu",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Penedo",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708303,
+    "nome": "São José da Laje",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708402,
+    "nome": "São José da Tapera",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Pão de Açúcar - Olho d'Água das Flores ¿ Batalha",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2708501,
+    "nome": "São Luís do Quitunde",
+    "microrregiao": "Mata Alagoana",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708600,
+    "nome": "São Miguel dos Campos",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "São Miguel dos Campos",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708709,
+    "nome": "São Miguel dos Milagres",
+    "microrregiao": "Litoral Norte Alagoano",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Porto Calvo - São Luís do Quitunde",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708808,
+    "nome": "São Sebastião",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2708907,
+    "nome": "Satuba",
+    "microrregiao": "Maceió",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Maceió",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2708956,
+    "nome": "Senador Rui Palmeira",
+    "microrregiao": "Santana do Ipanema",
+    "mesorregiao": "Sertão Alagoano",
+    "regiao_imediata": "Santana do Ipanema",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2709004,
+    "nome": "Tanque d'Arca",
+    "microrregiao": "Palmeira dos Índios",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2709103,
+    "nome": "Taquarana",
+    "microrregiao": "Arapiraca",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2709152,
+    "nome": "Teotônio Vilela",
+    "microrregiao": "São Miguel dos Campos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2709202,
+    "nome": "Traipu",
+    "microrregiao": "Traipu",
+    "mesorregiao": "Agreste Alagoano",
+    "regiao_imediata": "Arapiraca",
+    "regiao_intermediaria": "Arapiraca"
+  },
+  {
+    "id": 2709301,
+    "nome": "União dos Palmares",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "União dos Palmares",
+    "regiao_intermediaria": "Maceió"
+  },
+  {
+    "id": 2709400,
+    "nome": "Viçosa",
+    "microrregiao": "Serrana dos Quilombos",
+    "mesorregiao": "Leste Alagoano",
+    "regiao_imediata": "Atalaia",
+    "regiao_intermediaria": "Maceió"
+  }
+]

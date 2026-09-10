@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1600055,
+    "nome": "Serra do Navio",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Porto Grande",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600105,
+    "nome": "Amapá",
+    "microrregiao": "Amapá",
+    "mesorregiao": "Norte do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600154,
+    "nome": "Pedra Branca do Amapari",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Porto Grande",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600204,
+    "nome": "Calçoene",
+    "microrregiao": "Oiapoque",
+    "mesorregiao": "Norte do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600212,
+    "nome": "Cutias",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600238,
+    "nome": "Ferreira Gomes",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Porto Grande",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600253,
+    "nome": "Itaubal",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Macapá",
+    "regiao_intermediaria": "Macapá"
+  },
+  {
+    "id": 1600279,
+    "nome": "Laranjal do Jari",
+    "microrregiao": "Mazagão",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Laranjal do Jari",
+    "regiao_intermediaria": "Macapá"
+  },
+  {
+    "id": 1600303,
+    "nome": "Macapá",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Macapá",
+    "regiao_intermediaria": "Macapá"
+  },
+  {
+    "id": 1600402,
+    "nome": "Mazagão",
+    "microrregiao": "Mazagão",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Macapá",
+    "regiao_intermediaria": "Macapá"
+  },
+  {
+    "id": 1600501,
+    "nome": "Oiapoque",
+    "microrregiao": "Oiapoque",
+    "mesorregiao": "Norte do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600535,
+    "nome": "Porto Grande",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Porto Grande",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600550,
+    "nome": "Pracuúba",
+    "microrregiao": "Amapá",
+    "mesorregiao": "Norte do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600600,
+    "nome": "Santana",
+    "microrregiao": "Macapá",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Macapá",
+    "regiao_intermediaria": "Macapá"
+  },
+  {
+    "id": 1600709,
+    "nome": "Tartarugalzinho",
+    "microrregiao": "Amapá",
+    "mesorregiao": "Norte do Amapá",
+    "regiao_imediata": "Oiapoque",
+    "regiao_intermediaria": "Oiapoque - Porto Grande"
+  },
+  {
+    "id": 1600808,
+    "nome": "Vitória do Jari",
+    "microrregiao": "Mazagão",
+    "mesorregiao": "Sul do Amapá",
+    "regiao_imediata": "Laranjal do Jari",
+    "regiao_intermediaria": "Macapá"
+  }
+]

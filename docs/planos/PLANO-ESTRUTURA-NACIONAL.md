@@ -1,7 +1,7 @@
 # 📋 PLANO-ESTRUTURA-NACIONAL — EXPANSÃO DO CONTROLE POPULAR
 
 > **Data:** 10 de setembro de 2026
-> **Status:** ✅ FASE 1 CONCLUÍDA (4 estados) | FASE 2 em andamento
+> **Status:** ✅ FASE 1 ✅ FASE 2 CONCLUÍDA | FASE 3 Pendente (Neon)
 > **Prioridade:** ⭐⭐ (crítico para escalar além de MG)
 
 ---
@@ -257,15 +257,14 @@ gantt
 
 ## 📌 PRÓXIMOS PASSOS
 
-1. [ ] **Fase 2:** Gerar municípios DF, PA, CE, GO, PE, PR, SC
-2. [ ] **Schema:** Criar `cidades_nacionais` quando Neon voltar
-3. [ ] **Route:** `/cidades/sp` com TabelaEstatica (8 cols)
-4. [ ] **Telegram:** Avisar conclusão Fase 2
-5. [ ] **Notificar:** Bot @ControlePopularBOT
+1. [ ] **Fase 3:** Schema `cidades_nacionais` (quando Neon voltar)
+2. [ ] **Route:** `/cidades/sp` — página com TabelaEstatica
+3. [ ] **Coleta PNCP:** escalar para SP/RJ/BA/RS usando --uf
+4. [ ] **Notificar:** Bot @ControlePopularBOT a cada fase
 
 ---
 
 **Fonte do limite Neon:** https://neon.tech/pricing  
 **Fonte de dados:** https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf}/municipios
 
-> **Commit:** `48bd5229` — 4 estados baixados, 59 KB compactado.
+> **Commit:** `7ec50d9` — Fase 1+2 concluídas, 3.105 municípios, ~106 KB compactado.
