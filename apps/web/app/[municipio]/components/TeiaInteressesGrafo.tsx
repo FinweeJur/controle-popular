@@ -136,7 +136,7 @@ export default function TeiaInteressesGrafo({ teia }: Props) {
         </svg>
 
         {/* Legenda de Tipos */}
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3 border-t border-border/40 pt-3 text-[11px] text-text-soft">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3 border-t border-border/40 pt-3 text-xs text-text-soft">
           <div className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-[#3b82f6]" /> Político / Mandato
           </div>
@@ -208,7 +208,7 @@ export default function TeiaInteressesGrafo({ teia }: Props) {
           </div>
         )}
 
-        <div className="mt-6 rounded-lg bg-surface-raised p-3 text-[11px] text-text-soft border border-border/40">
+        <div className="mt-6 rounded-lg bg-surface-raised p-3 text-xs text-text-soft border border-border/40">
           ⚖️ <strong>Garantia Editorial:</strong> Vínculos documentados a partir de bases oficiais (TSE, PNCP, SICAR e ANM). A exibição não constitui acusação prévia.
         </div>
       </div>

@@ -171,14 +171,14 @@ function DimensaoCard({
           <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-border/40">
             <div className={`h-full ${cor}`} style={{ width: `${score}%` }} />
           </div>
-          <p className="mt-2 text-[11px] text-text-soft">
+          <p className="mt-2 text-xs text-text-soft">
             {qtdFatores > 0
               ? `${qtdFatores} ${textoComDado}`
               : "Sem alerta disparado com o dado disponível"}
           </p>
         </>
       ) : (
-        <p className="mt-2 text-[11px] text-text-soft">{textoSemDado}</p>
+        <p className="mt-2 text-xs text-text-soft">{textoSemDado}</p>
       )}
     </div>
   );

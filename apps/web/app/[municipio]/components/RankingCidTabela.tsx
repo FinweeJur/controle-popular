@@ -8,6 +8,19 @@ interface Props {
   municipioNome: string;
 }
 
+/** Nome principal da célula: o nome popular quando houver, senão o que veio da fonte. */
+function nomePrincipal(cid: CidRegistro): string {
+  return cid.nomePopular ?? cid.descricao;
+}
+
+/** Linha secundária: nome técnico (quando difere) + a sigla CID-10 em tamanho menor. */
+function detalheSecundario(cid: CidRegistro): string {
+  if (cid.nomePopular && cid.nomeTecnico && cid.nomeTecnico !== cid.nomePopular) {
+    return `${cid.nomeTecnico} (CID-10 ${cid.codigo})`;
+  }
+  return `(CID-10 ${cid.codigo})`;
+}
+
 export default function RankingCidTabela({ cids, municipioNome }: Props) {
   function baixarCsv() {
     const cabecalho = "Código CID;Capítulo;Diagnóstico;Nome popular;Nome técnico;Internações;Óbitos;Taxa Mortalidade (%);Permanência Média (dias);Custo Total (R$);Fator de Correlação Ambiental\n";
@@ -64,12 +77,20 @@ export default function RankingCidTabela({ cids, municipioNome }: Props) {
               <th className="pb-2 font-medium pl-4">Vigilância Ambiental</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-border/40 font-tabular">
+          <tbody className="divide-y divide-border/40 font-tabular text-sm">
             {cids.map((cid) => (
               <tr key={cid.codigo} className="hover:bg-surface-raised/50">
                 <td className="py-2.5 font-bold text-primary">{cid.codigo}</td>
-                <td className="py-2.5 font-sans text-text max-w-[260px] truncate" title={cid.descricao}>
-                  {cid.descricao}
+                <td className="py-2.5 align-top">
+                  <p
+                    className="max-w-[420px] break-words font-sans font-medium text-text"
+                    title={cid.descricao}
+                  >
+                    {nomePrincipal(cid)}
+                  </p>
+                  <p className="mt-0.5 max-w-[420px] break-words font-sans text-xs text-text-soft">
+                    {detalheSecundario(cid)}
+                  </p>
                 </td>
                 <td className="py-2.5 text-right font-semibold text-text">
                   {formatNumberBR(cid.internacoes)}
@@ -88,13 +109,18 @@ export default function RankingCidTabela({ cids, municipioNome }: Props) {
                     {cid.taxaMortalidade.toFixed(1)}%
                   </span>
                 </td>
-                <td className="py-2.5 pl-4 font-sans">
+                <td className="py-2.5 pl-4 font-sans align-top">
                   {cid.correlacaoAmbiental ? (
-                    <span className="inline-flex items-center gap-1 rounded bg-amber-500/10 px-2 py-0.5 text-[10px] font-medium text-amber-500 border border-amber-500/20" title={cid.correlacaoAmbiental.explicacao}>
-                      ⚠️ {cid.correlacaoAmbiental.rotulo}
-                    </span>
+                    <div className="max-w-[320px]">
+                      <span className="inline-flex items-center gap-1 rounded bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-500 border border-amber-500/20">
+                        ⚠️ {cid.correlacaoAmbiental.rotulo}
+                      </span>
+                      <p className="mt-1 text-xs text-text-soft">
+                        {cid.correlacaoAmbiental.explicacao}
+                      </p>
+                    </div>
                   ) : (
-                    <span className="text-[11px] text-text-soft">Padrão SUS</span>
+                    <span className="text-xs text-text-soft">Padrão SUS</span>
                   )}
                 </td>
               </tr>
