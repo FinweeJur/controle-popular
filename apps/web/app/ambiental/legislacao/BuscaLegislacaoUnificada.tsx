@@ -673,23 +673,36 @@ function TemasDoItem({ temas }: { temas: string[] }) {
 
 /** "REVOGADO" e "ATO EXAURIDO" precisam saltar aos olhos — uma portaria
  *  revogada com a mesma cara de norma em vigor é desinformação, não
- *  detalhe. O texto é o da FONTE, sem tradução; quando a fonte não informa
- *  (as três estaduais, e o CNDH), o selo simplesmente não aparece — a
- *  ausência não vira "vigente". */
+ *  detalhe. Casos de ALERTA (REVOGA|SEM EFEITO|EXAURIDO|SUSPENS|ENCERRAD)
+ *  mantêm o selo com fundo --cp-secondary e o texto CRU da fonte. Casos
+ *  NÃO-revogativos — ex. "AINDA NÃO FOI REVOGADA" — ganham o rótulo fixo
+ *  "Vigente", discreto de propósito: sem fundo, borda transparente e
+ *  font-medium, para não disputar atenção com o selo de alerta e não
+ *  ecoar a redação não-normativa da fonte na pílula. O texto original
+ *  da fonte não se perde: vai no tooltip ("Situação declarada pela fonte
+ *  oficial: <original>"). Quando a fonte não informa nada (as três
+ *  estaduais, e o CNDH), o selo simplesmente não aparece — a ausência
+ *  não vira "vigente". */
 function SituacaoBadge({ situacao }: { situacao: string | null }) {
   if (!situacao) return null;
   const alerta = /REVOGA|SEM EFEITO|EXAURIDO|SUSPENS|ENCERRAD/i.test(situacao);
+  if (alerta) {
+    return (
+      <span
+        title="Situação declarada pela fonte oficial"
+        className="rounded-full px-2.5 py-1 text-xs font-semibold"
+        style={{ background: "var(--cp-secondary)", color: "var(--cp-secondary-ink)" }}
+      >
+        {situacao}
+      </span>
+    );
+  }
   return (
     <span
-      title="Situação declarada pela fonte oficial"
-      className="rounded-full px-2.5 py-1 text-xs font-semibold"
-      style={
-        alerta
-          ? { background: "var(--cp-secondary)", color: "var(--cp-secondary-ink)" }
-          : { background: "var(--surface-2, transparent)", color: "var(--color-text-soft, inherit)" }
-      }
+      title={`Situação declarada pela fonte oficial: ${situacao}`}
+      className="rounded-full border border-transparent px-2.5 py-1 text-xs font-medium text-text-soft"
     >
-      {situacao}
+      Vigente
     </span>
   );
 }
@@ -721,20 +734,27 @@ function CardEstadual({
           >
             {FONTE_LABEL[l.fonte]}
           </span>
-          <EsferaBadge esfera={esfera} />
           {/* Classe hierárquica da norma ("Lei", "Decreto", "Portaria"…),
               derivada de `l.tipo` por `rotuloHierarquia` — o tipo cru segue
               no título da linha abaixo e no tooltip da pílula. Span simples
               de propósito, não TagChip: TagChip é chip de FILTRO (hover,
               "Filtrar por", aria-pressed); esta pílula é classificação
               estática, igual aos selos ao lado. Tipo que não casa com classe
-              nenhuma aparece cru — nunca se inventa classe. */}
+              nenhuma aparece cru — nunca se inventa classe. A ordem é selo da
+              fonte → tipo → esfera → situação: o âmbito vem DEPOIS do tipo. */}
           <span
             title={l.tipo}
             className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft"
           >
             {rotuloHierarquia(l.tipo) ?? l.tipo}
           </span>
+          <span
+            title={l.tipo}
+            className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft"
+          >
+            {rotuloHierarquia(l.tipo) ?? l.tipo}
+          </span>
+          <EsferaBadge esfera={esfera} />
           <SituacaoBadge situacao={l.situacao} />
         </div>
         {l.data && <span className="font-tabular text-xs text-text-soft">{formatDateBR(l.data)}</span>}
