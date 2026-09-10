@@ -320,7 +320,7 @@ export default async function EmpresaPage({ params }: Props) {
                     <span className="font-mono text-[11px] text-muted font-bold">{doc.ano}</span>
                   </div>
                   <h3 className="font-bold text-foreground text-xs">{doc.titulo}</h3>
-                  <p className="text-muted text-[11px] leading-relaxed line-clamp-3">{doc.microResumo}</p>
+                  <p className="text-muted text-sm leading-relaxed line-clamp-3">{doc.microResumo}</p>
                 </div>
 
                 <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">
@@ -390,7 +390,7 @@ export default async function EmpresaPage({ params }: Props) {
                   <p className="text-muted text-[11px]">
                     <span className="font-semibold text-foreground">{doc.entidade}</span> — {doc.autor}
                   </p>
-                  <p className="text-muted text-[11px] leading-relaxed line-clamp-3">{doc.microResumo}</p>
+                  <p className="text-muted text-sm leading-relaxed line-clamp-3">{doc.microResumo}</p>
                 </div>
 
                 <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">

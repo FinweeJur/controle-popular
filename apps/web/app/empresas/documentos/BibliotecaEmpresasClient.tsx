@@ -531,7 +531,7 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                         <h4 className="font-semibold text-foreground text-xs leading-snug">
                           {doc.titulo}
                         </h4>
-                        <p className="mt-1 text-muted text-[11px] leading-relaxed">
+                        <p className="mt-1 text-sm text-muted leading-relaxed">
                           {doc.microResumo}
                         </p>
                         {/* Tags */}

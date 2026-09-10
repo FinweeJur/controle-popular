@@ -32,6 +32,32 @@ interface Props {
   metricas: MetricasBiblioteca;
 }
 
+function TagsDocumento({
+  tags,
+  limite,
+  onClicar,
+}: {
+  tags: string[];
+  limite: number;
+  onClicar?: (tag: string) => void;
+}) {
+  if (!tags || tags.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-1">
+      {tags.slice(0, limite).map((tag) => (
+        <button
+          key={tag}
+          type="button"
+          onClick={onClicar ? () => onClicar(tag) : undefined}
+          className="rounded bg-surface-2 px-1.5 py-0.5 text-xs text-muted hover:text-foreground transition"
+        >
+          #{tag}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
   const [busca, setBusca] = useState("");
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>("todos");
@@ -430,7 +456,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                   <th className="py-2.5 px-3">Tipo / Categoria</th>
                   <th className="py-2.5 px-3">Título & Microresumo</th>
                   <th className="py-2.5 px-3">Entidade / Autor</th>
-                  <th className="py-2.5 px-3">Tema</th>
+                  <th className="py-2.5 px-3">Tema & Tags</th>
                   <th className="py-2.5 px-3 text-right">Links</th>
                 </tr>
               </thead>
@@ -449,7 +475,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                       <div className="font-bold text-foreground leading-snug">
                         {doc.titulo}
                       </div>
-                      <p className="text-[11px] text-muted line-clamp-1 mt-0.5">
+                      <p className="text-sm text-muted line-clamp-2 mt-0.5">
                         {doc.microResumo}
                       </p>
                     </td>
@@ -459,10 +485,20 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                       </span>
                       <span className="text-[10px]">{doc.estado}</span>
                     </td>
-                    <td className="py-2.5 px-3 whitespace-nowrap">
-                      <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-foreground">
-                        {doc.tema}
-                      </span>
+                    <td className="py-2.5 px-3">
+                      <div className="flex flex-wrap items-center gap-1">
+                        <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-foreground">
+                          {doc.tema}
+                        </span>
+                        <TagsDocumento
+                          tags={doc.palavrasChave}
+                          limite={3}
+                          onClicar={(t) => {
+                            setBusca(t);
+                            setPagina(1);
+                          }}
+                        />
+                      </div>
                     </td>
                     <td className="py-2.5 px-3 text-right whitespace-nowrap space-x-2">
                       {doc.urlPdf && (
@@ -531,18 +567,14 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                   </p>
 
                   {/* Tags */}
-                  {doc.palavrasChave && doc.palavrasChave.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
-                      {doc.palavrasChave.slice(0, 5).map((tag, i) => (
-                        <span
-                          key={i}
-                          className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] text-muted font-mono"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <TagsDocumento
+                    tags={doc.palavrasChave}
+                    limite={5}
+                    onClicar={(t) => {
+                      setBusca(t);
+                      setPagina(1);
+                    }}
+                  />
                 </div>
 
                 <div className="pt-3 border-t border-border/70 flex items-center justify-between text-xs">
