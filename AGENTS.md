@@ -50,9 +50,7 @@ roda o mesmo script em `.github/workflows/docs.yml`.
 ## Os dois tetos que mandam na arquitetura
 
 1. **Cloudflare Workers: 25 MiB por asset**, 3 MiB gzip de bundle, 20.000 arquivos.
-2. **Neon (Postgres) em HTTP 402 até 2026-09-01.** Sem banco não há `next build`.
-   Quem publica é a máquina `home-pc`, que tem Postgres local. Esta máquina
-   **não** consegue buildar nem medir `.cache`.
+2. **Neon (Postgres) está ATIVO.** Limite Free renovado 01/09/2026 — 100 CU-hours/mês, 0.5 GB storage/project, 10 branches. **Storage em ~94% (470/500 MB)** — nova coletas devem usar D1. Quem publica é a máquina `home-pc`, que tem Postgres local. Esta máquina **não** consegue buildar nem medir `.cache`.
 
 Consequência prática: se sua tarefa depende de medir tamanho de rota ou de ler
 o banco, **você não vai conseguir hoje**. Diga isso em vez de estimar.
@@ -262,6 +260,11 @@ perderia o ganho de ordem de grandeza (99 MiB → 2,16 MB). Remeça antes de rea
 **Scripts de coleta**: `scripts/etl/municipios/seed-municipios-mg.mts` baixa
 853 municípios de MG da API do IBGE → `apps/web/data/municipios-mg.json` (fonte
 única de verdade para códigos IBGE).
+
+**Scripts de monitoramento**: `scripts/vigia-servidor.mts` (health check HTTP
+5min via cronjob, silent watchdog, notifica Telegram sem abrir janela).
+`scripts/download-documentos.mts` baixa PDFs/documentos citados no site e
+organiza em `documentos-site/{tema}/{data}/`.
 
 ## Coleta de dado de fonte pública
 
