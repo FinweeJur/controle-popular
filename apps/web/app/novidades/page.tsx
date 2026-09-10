@@ -43,13 +43,13 @@ interface ItemNovidade {
 }
 
 /**
- * Mescla novidades.json com as publicacoes mais recentes do blog
- * (noticias-portal.json), ordenado por data desc.
+ * Mescla novidades.json com TODAS as publicacoes do blog
+ * (noticias-portal.json), ordenado por data desc. Automatizado por
+ * construcao: todo post novo entra aqui sem edicao manual.
  */
 function montarNovidades(): ItemNovidade[] {
   const dasPublicacoes: ItemNovidade[] = [...listarNoticiasPortal()]
     .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
-    .slice(0, 6)
     .map((n) => ({
       data: n.publicadoEm.slice(0, 10),
       titulo: n.titulo,
@@ -99,7 +99,7 @@ export default function NovidadesPage() {
               className="relative rounded-xl border border-border bg-surface p-5 transition-colors hover:border-primary"
             >
               {novo && (
-                <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[.65em] font-bold uppercase tracking-wider text-primary-ink">
+                <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-primary-ink">
                   Novo
                 </span>
               )}
@@ -113,7 +113,7 @@ export default function NovidadesPage() {
                   }).format(new Date(item.data + "T12:00:00Z"))}
                 </time>
                 <span
-                  className="rounded-md px-1.5 py-0.5 text-[.8em] font-medium"
+                  className="rounded-md px-1.5 py-0.5 text-[11px] font-medium"
                   style={{
                     color: COR_FRENTE[item.frente] || "var(--cp-primary)",
                     backgroundColor: `color-mix(in srgb, ${COR_FRENTE[item.frente] || "var(--cp-primary)"} 10%, transparent)`,

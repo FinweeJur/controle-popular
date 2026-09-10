@@ -38,6 +38,7 @@
 
 import { FRENTES, PAGINAS_DADOS } from "@/app/components/SeuNonoData";
 import { CONTEXTOS } from "@/lib/seo/contexto-pagina";
+import { listarNoticiasPortal } from "@/lib/noticias/portal";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -157,6 +158,27 @@ function dePaginasDados(): AcervoFonte[] {
   return fontes;
 }
 
+/** Postagens do blog entram no acervo: o assistente precisa conhecer as
+ *  publicações para citar o que o portal afirma (regra "todo contexto no
+ *  chatbot", pedido do dono em 10/09/2026). Cada post vira um pedaço com
+ *  o lead (resumo) + primeiro parágrafo — o texto inteiro pesaria demais
+ *  na janela de contexto e não melhora a citação. */
+function dePostsDoBlog(): AcervoFonte[] {
+  const fontes: AcervoFonte[] = [];
+  for (const post of listarNoticiasPortal()) {
+    const rota = `/noticias/${post.slug}`;
+    fontes.push({
+      id: `blog:${post.slug}`,
+      frente: frenteDaRota(rota),
+      rota,
+      titulo: post.titulo,
+      fonteUrl: rota,
+      texto: [post.resumo, ...post.paragrafos.slice(0, 2)].join("\n"),
+    });
+  }
+  return fontes;
+}
+
 /** Contagem de cobertura do acervo, para relatório e teste. */
 export interface CoberturaAcervo {
   total: number;
@@ -177,7 +199,7 @@ export interface AcervoMontado {
  */
 export function montarAcervoDetalhado(): AcervoMontado {
   const { fontes: deFrentesFontes, puladas } = deFrentes();
-  const acervo = [...deFrentesFontes, ...deContextos(), ...dePaginasDados()];
+  const acervo = [...deFrentesFontes, ...deContextos(), ...dePaginasDados(), ...dePostsDoBlog()];
 
   // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo
   // (regra "ou o número não vai" do AGENTS.md, aplicada em código).
