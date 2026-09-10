@@ -56,6 +56,8 @@ const NAV = [
   { href: "/auxilio", label: "Auxílio" },
   { href: "/execucao", label: "Execução" },
   { href: "/documentos", label: "Documentos" },
+  { href: "/correlacao", label: "Correlação" },
+  { href: "/indice", label: "Índice" },
   { href: "/vale", label: "Ações da Vale" },
   { href: "/vale/documentos", label: "Documentos CVM" },
   { href: "/biblioteca", label: "Biblioteca" },

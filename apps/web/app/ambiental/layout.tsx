@@ -45,6 +45,12 @@ export default function AmbientalLayout({
           </a>
           <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
             <Link
+              href="/indice"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Índice →
+            </Link>
+            <Link
               href="/copam"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
             >
@@ -85,6 +91,24 @@ export default function AmbientalLayout({
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
             >
               Rio Doce (Mariana) →
+            </Link>
+            <Link
+              href="/legislacao"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Legislação →
+            </Link>
+            <Link
+              href="/decisoes-lai"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Decisões LAI →
+            </Link>
+            <Link
+              href="/conselhos"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Conselhos →
             </Link>
           </div>
         </div>
