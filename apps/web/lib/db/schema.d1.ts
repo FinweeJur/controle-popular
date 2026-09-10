@@ -133,3 +133,31 @@ export const anuncios = sqliteTable(
   },
   (table) => [index("anuncios_municipio_idx").on(table.id_municipio)]
 );
+
+/**
+ * Cidades brasileiras — dados estáticos no D1 (não no Neon).
+ *
+ * POR QUE NO D1: o Neon tá com 94% storage (470/500 MB). A lista de 5.570 municípios
+ * com indicadores (~1,9 MB) cabe no D1 gratuito (0,5 GB por DB).
+ *
+ * Fonte: apps/web/data/municipios-brasil.json (API IBGE).
+ * Usado por: rotas /cidades/{uf} para exibir dados complementares sem query ao Neon.
+ */
+export const cidadesNacionais = sqliteTable(
+  "cidades_nacionais",
+  {
+    id_ibge: integer().primaryKey().notNull(),
+    nome: text().notNull(),
+    uf: text({ length: 2 }).notNull(),
+    microrregiao: text(),
+    mesorregiao: text(),
+    regiao_imediata: text(),
+    regiao_intermediaria: text(),
+    populacao_estimada: integer(),
+    area_km2: real(),
+  },
+  (table) => [
+    index("cidades_uf_idx").on(table.uf),
+    index("cidades_nome_idx").on(table.nome),
+  ]
+);
