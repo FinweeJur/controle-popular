@@ -19,7 +19,7 @@ export interface PaginaPortalIndexada {
   titulo: string;
   descricao: string;
   href: string;
-  frente: "cidades" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "terras" | "geral";
+  frente: "cidades" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "terras" | "estudos-rurais" | "geral";
   rotulo: string;
   badgeCor: string;
   palavrasChave: string[];
@@ -330,6 +330,17 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     rotulo: "ComunicaBR · R$ 139 Bi",
     badgeCor: "var(--cp-accent)",
     palavrasChave: ["comunicabr", "governo federal", "bolsa familia", "fundeb", "sus", "bpc", "repasses uniao"],
+  },
+
+  {
+    id: "estudos-rurais-hub",
+    titulo: "Estudos Rurais — Acervo dos Vales do Jequitinhonha e Mucuri",
+    descricao: "Notícias, artigos, eventos e publicações coletadas sobre o rural: agroecologia, produção familiar, ICA/UFVJM e PPGER.",
+    href: "/estudos-rurais",
+    frente: "estudos-rurais",
+    rotulo: "Estudos · Rural",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: ["estudos rurais", "car", "territorio", "agroecologia", "campo", "ufvjm", "jequitinhonha", "mucuri"],
   },
 
   // ═══ CIDADES PRINCIPAIS ═══

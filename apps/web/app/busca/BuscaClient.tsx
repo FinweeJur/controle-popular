@@ -27,9 +27,7 @@ import { carregarIndiceBusca, type ProgressoCarregamento } from "@/lib/busca/car
  */
 
 const BASE_INDICE = "/busca-indice";
-const LIMITE_CIDADES = 20;
-const LIMITE_CONGRESSO = 10;
-const LIMITE_JUDICIARIO = 10;
+const LIMITE_RESULTADOS = 40;
 
 type EstadoCarregamento = "carregando" | "pronto" | "erro";
 
@@ -39,11 +37,14 @@ function rotuloContagem(n: number, limite: number, singular: string, plural: str
   return `${n}+ ${plural} — mostrando os mais relevantes`;
 }
 
-/** Zona -> rótulo do badge do card. */
+/** Zona -> rótulo do chip do resultado. O TEXTO do chip é o canal de
+ *  informação (regra de acessibilidade: cor nunca é a única via) — todos os
+ *  chips compartilham o mesmo estilo neutro e a fonte fica dita por escrito. */
 const RÓTULO_ZONA: Record<Resultado["doc"]["f"], string> = {
   cidades: "Cidades",
   congresso: "Congresso",
   judiciario: "Judiciário",
+  estudos: "Estudos Rurais",
 };
 
 interface BuscaClientProps {
@@ -108,40 +109,33 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
   const municipioInvalido = Boolean(municipio) && !cidadeSelecionada;
   const temFiltro = Boolean(q.trim() || tema || municipio);
 
-  const { cidadesRes, congressoRes, judiciarioRes } = useMemo(() => {
-    const vazio = { cidadesRes: [] as Resultado[], congressoRes: [] as Resultado[], judiciarioRes: [] as Resultado[] };
-    if (!completo || !indice || !temFiltro) return vazio;
+  const resultados = useMemo(() => {
+    if (!completo || !indice || !temFiltro) return [] as Resultado[];
 
-    // `limite` grande de propósito: preciso do conjunto INTEIRO batido antes
-    // de recortar por zona, senão uma zona populosa rouba vaga do top global
-    // de outra (ver `lib/busca/gerador.ts`/plano — não é limitação de
-    // `buscar()`, é escolha de como bucketizar o resultado por zona aqui).
+    // `limite` grande de propósito: recorto a lista EXIBIDA só depois de
+    // ordenar o conjunto inteiro, senão o recorte cedo derruba resultado
+    // relevante que ficou para trás na pontuação.
     const limiteAmplo = indice.docs.length || 1;
+    const todos = buscar(q, indice, { limite: limiteAmplo });
 
-    // Tema/município só valem para Cidades — Congresso e Judiciário nunca
-    // recebem esses dois filtros em produção (vocabulário de tema
-    // incompatível, e Judiciário não tem território). Por isso são DUAS
-    // chamadas a `buscar()`, não uma: passar tema/município na MESMA
-    // chamada excluiria Congresso/Judiciário inteiros (não têm `.a`/`.m`).
-    const doCidades = buscar(q, indice, {
-      tema: tema || undefined,
-      municipio: municipio || undefined,
-      limite: limiteAmplo,
-    }).filter((r) => r.doc.f === "cidades");
+    // Tema/município só valem para Cidades (vocabulário de tema municipal e
+    // território não existem no Congresso, no Judiciário nem no acervo de
+    // estudos) — então o filtro é aplicado por zona APÓS a busca, em vez de
+    // ir para `buscar()` (que excluiria as demais zonas inteiras, pois não
+    // têm `.a`/`.m`).
+    const cidadePassa = (r: Resultado): boolean =>
+      (!tema || (r.doc.a ?? []).includes(tema)) && (!municipio || r.doc.m === municipio);
 
-    if (!q.trim()) return { ...vazio, cidadesRes: doCidades };
-
-    const doResto = buscar(q, indice, { limite: limiteAmplo });
-    return {
-      cidadesRes: doCidades,
-      congressoRes: doResto.filter((r) => r.doc.f === "congresso"),
-      judiciarioRes: doResto.filter((r) => r.doc.f === "judiciario"),
-    };
+    // Sem palavra-chave, só Cidades responde aos filtros (comportamento
+    // anterior das seções: as demais zonas exibiam aviso "digite uma
+    // palavra-chave" — numa lista única, a mensagem é a de vazio).
+    if (!q.trim()) {
+      return todos.filter((r) => r.doc.f === "cidades" && cidadePassa(r));
+    }
+    return todos.filter((r) => (r.doc.f === "cidades" ? cidadePassa(r) : true));
   }, [completo, indice, temFiltro, q, tema, municipio]);
 
-  const cidadesExibidas = cidadesRes.slice(0, LIMITE_CIDADES);
-  const congressoExibidos = congressoRes.slice(0, LIMITE_CONGRESSO);
-  const judiciarioExibidos = judiciarioRes.slice(0, LIMITE_JUDICIARIO);
+  const resultadosExibidos = resultados.slice(0, LIMITE_RESULTADOS);
 
   const progressoPct =
     progresso.bytesTotais > 0 ? Math.min(100, Math.round((progresso.bytesCarregados / progresso.bytesTotais) * 100)) : 0;
@@ -249,88 +243,36 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
       ) : null}
 
       {completo && temFiltro ? (
-        <div className="mt-10 space-y-10">
-          <SecaoResultados
-            titulo="Cidades"
-            contagem={rotuloContagem(cidadesRes.length, LIMITE_CIDADES, "resultado", "resultados")}
-            complemento={cidadeSelecionada ? `${cidadeSelecionada.nome} (${cidadeSelecionada.uf})` : `todas as ${cidades.length} cidades`}
-            resultados={cidadesExibidas}
-            cidadesPorSlug={cidadesPorSlug}
-            vazio="Nenhuma lei, decreto, resolução ou projeto de lei municipal encontrado com esse filtro."
-          />
+        <section className="mt-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="font-display text-xl font-semibold">Resultados</h2>
+            <span className="text-sm text-text-soft">
+              {rotuloContagem(resultados.length, LIMITE_RESULTADOS, "resultado", "resultados")}
+              {cidadeSelecionada ? ` · ${cidadeSelecionada.nome} (${cidadeSelecionada.uf})` : ""}
+            </span>
+          </div>
+          <p className="mt-1 text-xs text-text-soft">
+            Lista única de todas as frentes — o chip à esquerda de cada título diz a fonte.
+            Tema e território filtram só Cidades; Congresso, Judiciário e Estudos Rurais
+            respondem apenas à palavra-chave.
+          </p>
 
-          <SecaoResultados
-            titulo="Congresso"
-            contagem={q.trim() ? rotuloContagem(congressoRes.length, LIMITE_CONGRESSO, "resultado", "resultados") : null}
-            resultados={congressoExibidos}
-            cidadesPorSlug={cidadesPorSlug}
-            semQuery={!q.trim() ? "Digite uma palavra-chave para buscar entre as proposições do Congresso — tema e território não filtram este eixo." : undefined}
-            vazio="Nenhuma proposição do Congresso com esse termo."
-          />
-
-          <SecaoResultados
-            titulo="Judiciário"
-            contagem={q.trim() ? rotuloContagem(judiciarioRes.length, LIMITE_JUDICIARIO, "resultado", "resultados") : null}
-            descricao="Composição de tribunais e magistrados — o Judiciário não produz legislação, então tema e território também não se aplicam aqui."
-            resultados={judiciarioExibidos}
-            cidadesPorSlug={cidadesPorSlug}
-            semQuery={!q.trim() ? "Digite uma palavra-chave para buscar no Judiciário." : undefined}
-            vazio="Nenhum resultado no Judiciário para esse termo."
-          />
-        </div>
+          {resultadosExibidos.length === 0 ? (
+            <p className="mt-3 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
+              {q.trim()
+                ? "Nenhum resultado encontrado com esse filtro — leis municipais, proposições, tribunais e estudos rurais."
+                : "Nenhuma lei, decreto, resolução ou projeto de lei municipal encontrado com esse filtro — com palavra-chave a busca cobre também Congresso, Judiciário e Estudos Rurais."}
+            </p>
+          ) : (
+            <ul className="mt-3 flex flex-col gap-3">
+              {resultadosExibidos.map((r) => (
+                <CardResultado key={`${r.doc.f}:${r.doc.h}:${r.doc.i}`} resultado={r} cidadesPorSlug={cidadesPorSlug} />
+              ))}
+            </ul>
+          )}
+        </section>
       ) : null}
     </>
-  );
-}
-
-function SecaoResultados({
-  titulo,
-  contagem,
-  complemento,
-  descricao,
-  resultados,
-  cidadesPorSlug,
-  semQuery,
-  vazio,
-}: {
-  titulo: string;
-  contagem: string | null;
-  complemento?: string;
-  descricao?: string;
-  resultados: Resultado[];
-  cidadesPorSlug: Map<string, Cidade>;
-  semQuery?: string;
-  vazio: string;
-}) {
-  return (
-    <section>
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-display text-xl font-semibold">{titulo}</h2>
-        {contagem ? (
-          <span className="text-sm text-text-soft">
-            {contagem}
-            {complemento ? ` · ${complemento}` : ""}
-          </span>
-        ) : null}
-      </div>
-      {descricao ? <p className="mt-1 text-xs text-text-soft">{descricao}</p> : null}
-
-      {semQuery ? (
-        <p className="mt-3 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
-          {semQuery}
-        </p>
-      ) : resultados.length === 0 ? (
-        <p className="mt-3 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
-          {vazio}
-        </p>
-      ) : (
-        <ul className="mt-3 flex flex-col gap-3">
-          {resultados.map((r) => (
-            <CardResultado key={`${r.doc.f}:${r.doc.h}:${r.doc.i}`} resultado={r} cidadesPorSlug={cidadesPorSlug} />
-          ))}
-        </ul>
-      )}
-    </section>
   );
 }
 
@@ -340,15 +282,20 @@ function CardResultado({ resultado, cidadesPorSlug }: { resultado: Resultado; ci
 
   return (
     <li className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        {/* O chip fica à ESQUERDA do título e se identifica pelo TEXTO — cor
+            é decoração, nunca o único canal (cada zona tem o mesmo estilo
+            neutro, a fonte é dita por escrito). */}
         <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
           {RÓTULO_ZONA[doc.f]}
         </span>
-        <span className="text-xs text-text-soft">
-          {cidade ? `${cidade.nome} · ${cidade.uf}` : null}
-          {cidade && doc.d ? " · " : null}
-          {doc.d ? formatDateBR(doc.d) : null}
-        </span>
+        {cidade || doc.d ? (
+          <span className="text-xs text-text-soft">
+            {cidade ? `${cidade.nome} · ${cidade.uf}` : null}
+            {cidade && doc.d ? " · " : null}
+            {doc.d ? formatDateBR(doc.d) : null}
+          </span>
+        ) : null}
       </div>
 
       <a href={doc.h} className="mt-2 block font-medium text-text underline-offset-2 hover:text-primary hover:underline">

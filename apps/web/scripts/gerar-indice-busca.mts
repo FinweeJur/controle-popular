@@ -429,6 +429,60 @@ async function main() {
     console.warn("[gerar-indice-busca] ComunicaBR nao indexado:", (e as Error).message);
   }
 
+  // ─────────────────────────── estudos-rurais (acervo JSON) ───────────────────────────
+  // Um doc por item do acervo de /estudos-rurais (`lib/estudos-rurais/dados.ts`,
+  // que lê este mesmo JSON). Não passa pelo banco de tabelas: é arquivo de dado
+  // versionado, lido direto aqui — mesma técnica do bloco ComunicaBR acima.
+  // O tsvector vem do MESMO pipeline do resto do índice (unaccent -> to_tsvector
+  // 'portuguese' no Postgres), calculado em UMA consulta em lote via `unnest`
+  // com `ordinality` para remapear cada tsv ao item de origem — `sql\`${array}\``
+  // do drizzle interpola lista entre parênteses (ver comentário das formas
+  // mais abaixo), então o literal `ARRAY[...]` é montado à mão com escape de
+  // aspa simples; os textos vêm de fonte pública coletada e o escape cobre o
+  // caso de virem com aspa.
+  const estudosPath = path.resolve(AQUI, "../data/estudos-rurais/estudos-rurais.json");
+  let estudosDocs = 0;
+  try {
+    const acervo = JSON.parse(readFileSync(estudosPath, "utf8")) as {
+      itens: { titulo: string; tipo: string; fonte: string; data: string | null; resumo: string; url: string }[];
+    };
+    const itensEstudos = acervo.itens ?? [];
+    // Parametro por consulta: o texto do resumo carrega aspas, acentos e
+    // entidades (&nbsp;) — um literal ARRAY gigante montado com sql.raw que
+    // quebra fácil. 60 consultas parametrizadas não pesam e nunca derretem.
+    if (itensEstudos.length > 0) {
+      const tsvPorOrdem = new Map<number, string>();
+      for (let idx = 0; idx < itensEstudos.length; idx++) {
+        const item = itensEstudos[idx];
+        const textoTsvector = `${item.titulo} ${item.tipo} ${item.fonte} ${item.resumo}`;
+        const tsvsEstudos = (
+          await db.execute<{ tsv: string }>(sql`
+            select to_tsvector('portuguese', public.unaccent_immutable(${textoTsvector}))::text as tsv
+          `)
+        ).rows ?? [];
+        tsvPorOrdem.set(idx, tsvsEstudos[0]?.tsv ?? "");
+      }
+      for (let idx = 0; idx < itensEstudos.length; idx++) {
+        const item = itensEstudos[idx];
+        registrar(
+          {
+            t: item.titulo,
+            e: truncarEmenta(item.resumo, LIMITE_EMENTA),
+            h: "/estudos-rurais",
+            f: "estudos",
+            d: item.data ?? undefined,
+            u: item.url ?? undefined,
+          },
+          `${item.titulo} ${item.tipo} ${item.fonte} ${item.resumo}`,
+          tsvPorOrdem.get(idx) ?? ""
+        );
+        estudosDocs++;
+      }
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Estudos Rurais nao indexado:", (e as Error).message);
+  }
+
   // ─────────────────────────── formas (lote único) ───────────────────────────
   const listaSuperficies = [...superficies];
   type ParFormaRadical = { forma: string; radical: string | null };
@@ -470,12 +524,12 @@ async function main() {
   const rDocs = resumoDoGrupo(arquivosDocs);
   const rVocab = resumoDoGrupo(arquivosVocab);
   const rFormas = resumoDoGrupo(arquivosFormas);
-  const porZona = { cidades: 0, congresso: 0, judiciario: 0 };
+  const porZona = { cidades: 0, congresso: 0, judiciario: 0, estudos: 0 };
   for (const d of docsComId) porZona[d.f]++;
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(

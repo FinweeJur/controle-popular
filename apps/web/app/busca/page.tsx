@@ -38,15 +38,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metadataEditavel("/busca", {
   title: "Busca — Controle Popular",
   // ⟲ 13/08: dizia "nas TRÊS frentes do Controle Popular", o que virou falso
-  // quando o portal passou a ter cinco. A COBERTURA, porém, continua sendo
-  // três e isso é medido, não descuido — o índice de `/busca` é gerado sobre
-  // atos oficiais, proposições municipais, proposições do Congresso e
-  // tribunais/magistrados (ver `scripts/gerar-indice-busca.mts`). Meio
-  // ambiente e terra não entram nele. Então o conserto não é trocar "três"
-  // por "cinco": é parar de apresentar a cobertura da busca como se fosse o
-  // tamanho do portal, e declarar as duas coisas separadamente.
+  // quando o portal passou a ter cinco. ⟲ 10/09: a cobertura do índice também
+  // cresceu — agora inclui o acervo de Estudos Rurais (/estudos-rurais) ao
+  // lado de atos oficiais, proposições municipais e do Congresso e
+  // tribunais/magistrados (ver `scripts/gerar-indice-busca.mts`). A cobertura
+  // continua MENOR que o tamanho do portal — meio ambiente e terra não entram
+  // nele — e a descrição declara exatamente o que entra.
   description:
-    "Busque legislação por tema, palavra-chave e território em três frentes do Controle Popular: Cidades, Congresso e Judiciário.",
+    "Busque por tema, palavra-chave e território em quatro frentes do Controle Popular: Cidades, Congresso, Judiciário e Estudos Rurais.",
 });
 
 export default async function BuscaPage() {
@@ -74,8 +73,8 @@ export default async function BuscaPage() {
         <h1 className="font-display text-3xl font-bold sm:text-4xl">Busca</h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Leis, decretos, resoluções e projetos das câmaras municipais, proposições do
-          Congresso Nacional e a composição dos tribunais — num lugar só, por tema,
-          palavra-chave e cidade.
+          Congresso Nacional, a composição dos tribunais e o acervo de estudos rurais —
+          num lugar só, por tema, palavra-chave e cidade.
         </p>
       </header>
 
