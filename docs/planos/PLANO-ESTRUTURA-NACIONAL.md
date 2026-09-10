@@ -50,8 +50,15 @@ Total: 5.570 municípios
 | **RJ** | 92 | 16,7M | ✅ (`municipios-rj.json`) |
 | **BA** | 417 | 15,1M | ✅ (`municipios-ba.json`) |
 | **RS** | 497 | 10,8M | ✅ (`municipios-rs.json`) |
+| **DF** | 1 | 3,1M | ✅ (`municipios-df.json`) |
+| **PA** | 144 | 8,7M | ✅ (`municipios-pa.json`) |
+| **CE** | 184 | 9,6M | ✅ (`municipios-ce.json`) |
+| **GO** | 246 | 7,2M | ✅ (`municipios-go.json`) |
+| **PE** | 185 | 9,9M | ✅ (`municipios-pe.json`) |
+| **PR** | 399 | 11,4M | ✅ (`municipios-pr.json`) |
+| **SC** | 295 | 7,6M | ✅ (`municipios-sc.json`) |
 
-**Total Fase 1:** 1.651 municípios (~65,3M pessoas) em **59 KB compactado**
+**Total:** 3.105 municípios (~112,4M pessoas) em **~106 KB compactado**
 
 ### FASE 2 — Capitais Políticas/Administrativas ⭐⭐⭐ (7 estados)
 | Estado | Município | Motivo |
@@ -147,11 +154,22 @@ Total: 5.570 municípios
 - **Arquivo:** `scripts/etl/municipios/seed-municipios-estado.mts`
 - **Status:** ✅ Concluído (suporta todos os 27 estados)
 
-#### F1-E6: Schema `cidades_nacionais` ⭐⭐⭐
+| F1-E6: Schema `cidades_nacionais` ⭐⭐⭐
 - **Custo:** 3h
 - **Benefício:** Tabela unificada para todas as cidades brasileiras
 - **Arquivo:** `apps/web/lib/db/schema-cidades-nacionais.ts`
-- **Status:** Pendente (bloqueado Neon)
+- **Status:** ⏳ Pendente (bloqueado Neon)
+
+#### F2-E1: Seed Fase 2 (7 estados) ⭐⭐⭐
+- **Custo:** 5h
+- **Benefício:** 1.454 cidades adicionais (DF, PA, CE, GO, PE, PR, SC)
+- **Status:** ✅ Concluído (106 KB compactado total)
+
+#### F2-E2: Script Brasil completo ⭐⭐
+- **Custo:** 4h
+- **Benefício:** `seed-municipios-brasil.mts` gera todos os 27 estados
+- **Arquivo:** `scripts/etl/municipios/seed-municipios-brasil.mts`
+- **Status:** ✅ Concluído
 
 ---
 
@@ -229,7 +247,7 @@ gantt
 
 | Métrica | Meta | Baseline |
 |---------|------|----------|
-| Total cidades cobertidas | ≥ 2.500 | 853 (MG) → 2.504 (Fase 1+2) |
+| Total cidades cobertidas | 5.570 | 3.105 (Fase 1+2) |
 | Total conselhos mapeados | ≥ 1.500 | 4 (Betim) |
 | Total contratos PNCP | ≥ 5.000 | 1.283 |
 | Testes passando | ≥ 95% | 93% |

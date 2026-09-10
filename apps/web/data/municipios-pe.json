@@ -1,0 +1,1482 @@
+[
+  {
+    "id": 2600054,
+    "nome": "Abreu e Lima",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2600104,
+    "nome": "Afogados da Ingazeira",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2600203,
+    "nome": "Afrânio",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2600302,
+    "nome": "Agrestina",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2600401,
+    "nome": "Água Preta",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2600500,
+    "nome": "Águas Belas",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2600609,
+    "nome": "Alagoinha",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2600708,
+    "nome": "Aliança",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2600807,
+    "nome": "Altinho",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2600906,
+    "nome": "Amaraji",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Escada - Ribeirão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2601003,
+    "nome": "Angelim",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2601052,
+    "nome": "Araçoiaba",
+    "microrregiao": "Itamaracá",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2601102,
+    "nome": "Araripina",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2601201,
+    "nome": "Arcoverde",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2601300,
+    "nome": "Barra de Guabiraba",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2601409,
+    "nome": "Barreiros",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Barreiros - Sirinhaém",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2601508,
+    "nome": "Belém de Maria",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2601607,
+    "nome": "Belém do São Francisco",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2601706,
+    "nome": "Belo Jardim",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2601805,
+    "nome": "Betânia",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2601904,
+    "nome": "Bezerros",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602001,
+    "nome": "Bodocó",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2602100,
+    "nome": "Bom Conselho",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602209,
+    "nome": "Bom Jardim",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2602308,
+    "nome": "Bonito",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602407,
+    "nome": "Brejão",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602506,
+    "nome": "Brejinho",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2602605,
+    "nome": "Brejo da Madre de Deus",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602704,
+    "nome": "Buenos Aires",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2602803,
+    "nome": "Buíque",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2602902,
+    "nome": "Cabo de Santo Agostinho",
+    "microrregiao": "Suape",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2603009,
+    "nome": "Cabrobó",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2603108,
+    "nome": "Cachoeirinha",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603207,
+    "nome": "Caetés",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603306,
+    "nome": "Calçado",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603405,
+    "nome": "Calumbi",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2603454,
+    "nome": "Camaragibe",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2603504,
+    "nome": "Camocim de São Félix",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603603,
+    "nome": "Camutanga",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2603702,
+    "nome": "Canhotinho",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603801,
+    "nome": "Capoeiras",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2603900,
+    "nome": "Carnaíba",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2603926,
+    "nome": "Carnaubeira da Penha",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2604007,
+    "nome": "Carpina",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604106,
+    "nome": "Caruaru",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2604155,
+    "nome": "Casinhas",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604205,
+    "nome": "Catende",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604304,
+    "nome": "Cedro",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2604403,
+    "nome": "Chã de Alegria",
+    "microrregiao": "Vitória de Santo Antão",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Vitória de Santo Antão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604502,
+    "nome": "Chã Grande",
+    "microrregiao": "Vitória de Santo Antão",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2604601,
+    "nome": "Condado",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604700,
+    "nome": "Correntes",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2604809,
+    "nome": "Cortês",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Escada - Ribeirão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2604908,
+    "nome": "Cumaru",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2605004,
+    "nome": "Cupira",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2605103,
+    "nome": "Custódia",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2605152,
+    "nome": "Dormentes",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2605202,
+    "nome": "Escada",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Escada - Ribeirão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2605301,
+    "nome": "Exu",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2605400,
+    "nome": "Feira Nova",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2605459,
+    "nome": "Fernando de Noronha",
+    "microrregiao": "Fernando de Noronha",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2605509,
+    "nome": "Ferreiros",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2605608,
+    "nome": "Flores",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2605707,
+    "nome": "Floresta",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2605806,
+    "nome": "Frei Miguelinho",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2605905,
+    "nome": "Gameleira",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2606002,
+    "nome": "Garanhuns",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2606101,
+    "nome": "Glória do Goitá",
+    "microrregiao": "Vitória de Santo Antão",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Vitória de Santo Antão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2606200,
+    "nome": "Goiana",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2606309,
+    "nome": "Granito",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2606408,
+    "nome": "Gravatá",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2606507,
+    "nome": "Iati",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2606606,
+    "nome": "Ibimirim",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2606705,
+    "nome": "Ibirajuba",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2606804,
+    "nome": "Igarassu",
+    "microrregiao": "Itamaracá",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2606903,
+    "nome": "Iguaracy",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2607000,
+    "nome": "Inajá",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2607109,
+    "nome": "Ingazeira",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2607208,
+    "nome": "Ipojuca",
+    "microrregiao": "Suape",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607307,
+    "nome": "Ipubi",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2607406,
+    "nome": "Itacuruba",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2607505,
+    "nome": "Itaíba",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2607604,
+    "nome": "Ilha de Itamaracá",
+    "microrregiao": "Itamaracá",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607653,
+    "nome": "Itambé",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607703,
+    "nome": "Itapetim",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2607752,
+    "nome": "Itapissuma",
+    "microrregiao": "Itamaracá",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607802,
+    "nome": "Itaquitinga",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607901,
+    "nome": "Jaboatão dos Guararapes",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2607950,
+    "nome": "Jaqueira",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2608008,
+    "nome": "Jataúba",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608057,
+    "nome": "Jatobá",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2608107,
+    "nome": "João Alfredo",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2608206,
+    "nome": "Joaquim Nabuco",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2608255,
+    "nome": "Jucati",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608305,
+    "nome": "Jupi",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608404,
+    "nome": "Jurema",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608453,
+    "nome": "Lagoa do Carro",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2608503,
+    "nome": "Lagoa de Itaenga",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2608602,
+    "nome": "Lagoa do Ouro",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608701,
+    "nome": "Lagoa dos Gatos",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608750,
+    "nome": "Lagoa Grande",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2608800,
+    "nome": "Lajedo",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2608909,
+    "nome": "Limoeiro",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609006,
+    "nome": "Macaparana",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609105,
+    "nome": "Machados",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609154,
+    "nome": "Manari",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2609204,
+    "nome": "Maraial",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609303,
+    "nome": "Mirandiba",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2609402,
+    "nome": "Moreno",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609501,
+    "nome": "Nazaré da Mata",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609600,
+    "nome": "Olinda",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609709,
+    "nome": "Orobó",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2609808,
+    "nome": "Orocó",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2609907,
+    "nome": "Ouricuri",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2610004,
+    "nome": "Palmares",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2610103,
+    "nome": "Palmeirina",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2610202,
+    "nome": "Panelas",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2610301,
+    "nome": "Paranatama",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2610400,
+    "nome": "Parnamirim",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2610509,
+    "nome": "Passira",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2610608,
+    "nome": "Paudalho",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2610707,
+    "nome": "Paulista",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2610806,
+    "nome": "Pedra",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2610905,
+    "nome": "Pesqueira",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2611002,
+    "nome": "Petrolândia",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2611101,
+    "nome": "Petrolina",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2611200,
+    "nome": "Poção",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2611309,
+    "nome": "Pombos",
+    "microrregiao": "Vitória de Santo Antão",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Vitória de Santo Antão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2611408,
+    "nome": "Primavera",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Escada - Ribeirão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2611507,
+    "nome": "Quipapá",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2611533,
+    "nome": "Quixaba",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2611606,
+    "nome": "Recife",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2611705,
+    "nome": "Riacho das Almas",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2611804,
+    "nome": "Ribeirão",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Escada - Ribeirão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2611903,
+    "nome": "Rio Formoso",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Barreiros - Sirinhaém",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2612000,
+    "nome": "Sairé",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2612109,
+    "nome": "Salgadinho",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Limoeiro",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2612208,
+    "nome": "Salgueiro",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2612307,
+    "nome": "Saloá",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2612406,
+    "nome": "Sanharó",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2612455,
+    "nome": "Santa Cruz",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2612471,
+    "nome": "Santa Cruz da Baixa Verde",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2612505,
+    "nome": "Santa Cruz do Capibaribe",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2612554,
+    "nome": "Santa Filomena",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2612604,
+    "nome": "Santa Maria da Boa Vista",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Petrolina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2612703,
+    "nome": "Santa Maria do Cambucá",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2612802,
+    "nome": "Santa Terezinha",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2612901,
+    "nome": "São Benedito do Sul",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2613008,
+    "nome": "São Bento do Una",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2613107,
+    "nome": "São Caitano",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2613206,
+    "nome": "São João",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2613305,
+    "nome": "São Joaquim do Monte",
+    "microrregiao": "Brejo Pernambucano",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2613404,
+    "nome": "São José da Coroa Grande",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Barreiros - Sirinhaém",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2613503,
+    "nome": "São José do Belmonte",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2613602,
+    "nome": "São José do Egito",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2613701,
+    "nome": "São Lourenço da Mata",
+    "microrregiao": "Recife",
+    "mesorregiao": "Metropolitana de Recife",
+    "regiao_imediata": "Recife",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2613800,
+    "nome": "São Vicente Férrer",
+    "microrregiao": "Médio Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2613909,
+    "nome": "Serra Talhada",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2614006,
+    "nome": "Serrita",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2614105,
+    "nome": "Sertânia",
+    "microrregiao": "Sertão do Moxotó",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2614204,
+    "nome": "Sirinhaém",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Barreiros - Sirinhaém",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2614303,
+    "nome": "Moreilândia",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2614402,
+    "nome": "Solidão",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2614501,
+    "nome": "Surubim",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2614600,
+    "nome": "Tabira",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2614709,
+    "nome": "Tacaimbó",
+    "microrregiao": "Vale do Ipojuca",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Belo Jardim ¿ Pesqueira",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2614808,
+    "nome": "Tacaratu",
+    "microrregiao": "Itaparica",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2614857,
+    "nome": "Tamandaré",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Barreiros - Sirinhaém",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2615003,
+    "nome": "Taquaritinga do Norte",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2615102,
+    "nome": "Terezinha",
+    "microrregiao": "Garanhuns",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Garanhuns",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2615201,
+    "nome": "Terra Nova",
+    "microrregiao": "Petrolina",
+    "mesorregiao": "São Francisco Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2615300,
+    "nome": "Timbaúba",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2615409,
+    "nome": "Toritama",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Caruaru",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2615508,
+    "nome": "Tracunhaém",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Carpina",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2615607,
+    "nome": "Trindade",
+    "microrregiao": "Araripina",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Araripina",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2615706,
+    "nome": "Triunfo",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Serra Talhada",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2615805,
+    "nome": "Tupanatinga",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2615904,
+    "nome": "Tuparetama",
+    "microrregiao": "Pajeú",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Afogados da Ingazeira",
+    "regiao_intermediaria": "Serra Talhada"
+  },
+  {
+    "id": 2616001,
+    "nome": "Venturosa",
+    "microrregiao": "Vale do Ipanema",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Arcoverde",
+    "regiao_intermediaria": "Caruaru"
+  },
+  {
+    "id": 2616100,
+    "nome": "Verdejante",
+    "microrregiao": "Salgueiro",
+    "mesorregiao": "Sertão Pernambucano",
+    "regiao_imediata": "Salgueiro",
+    "regiao_intermediaria": "Petrolina"
+  },
+  {
+    "id": 2616183,
+    "nome": "Vertente do Lério",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2616209,
+    "nome": "Vertentes",
+    "microrregiao": "Alto Capibaribe",
+    "mesorregiao": "Agreste Pernambucano",
+    "regiao_imediata": "Surubim",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2616308,
+    "nome": "Vicência",
+    "microrregiao": "Mata Setentrional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Goiana ¿ Timbaúba",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2616407,
+    "nome": "Vitória de Santo Antão",
+    "microrregiao": "Vitória de Santo Antão",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Vitória de Santo Antão",
+    "regiao_intermediaria": "Recife"
+  },
+  {
+    "id": 2616506,
+    "nome": "Xexéu",
+    "microrregiao": "Mata Meridional Pernambucana",
+    "mesorregiao": "Mata Pernambucana",
+    "regiao_imediata": "Palmares",
+    "regiao_intermediaria": "Recife"
+  }
+]

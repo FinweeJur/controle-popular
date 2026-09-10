@@ -1,0 +1,1154 @@
+[
+  {
+    "id": 1500107,
+    "nome": "Abaetetuba",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Abaetetuba",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1500131,
+    "nome": "Abel Figueiredo",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1500206,
+    "nome": "Acará",
+    "microrregiao": "Tomé-Açu",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1500305,
+    "nome": "Afuá",
+    "microrregiao": "Furos de Breves",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1500347,
+    "nome": "Água Azul do Norte",
+    "microrregiao": "Parauapebas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Xinguara",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1500404,
+    "nome": "Alenquer",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1500503,
+    "nome": "Almeirim",
+    "microrregiao": "Almeirim",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Almeirim - Porto de Moz",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1500602,
+    "nome": "Altamira",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1500701,
+    "nome": "Anajás",
+    "microrregiao": "Furos de Breves",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1500800,
+    "nome": "Ananindeua",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1500859,
+    "nome": "Anapu",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1500909,
+    "nome": "Augusto Corrêa",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1500958,
+    "nome": "Aurora do Pará",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1501006,
+    "nome": "Aveiro",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1501105,
+    "nome": "Bagre",
+    "microrregiao": "Portel",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1501204,
+    "nome": "Baião",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1501253,
+    "nome": "Bannach",
+    "microrregiao": "São Félix do Xingu",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1501303,
+    "nome": "Barcarena",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1501402,
+    "nome": "Belém",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1501451,
+    "nome": "Belterra",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1501501,
+    "nome": "Benevides",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1501576,
+    "nome": "Bom Jesus do Tocantins",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1501600,
+    "nome": "Bonito",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1501709,
+    "nome": "Bragança",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1501725,
+    "nome": "Brasil Novo",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1501758,
+    "nome": "Brejo Grande do Araguaia",
+    "microrregiao": "Marabá",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1501782,
+    "nome": "Breu Branco",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1501808,
+    "nome": "Breves",
+    "microrregiao": "Furos de Breves",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1501907,
+    "nome": "Bujaru",
+    "microrregiao": "Castanhal",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1501956,
+    "nome": "Cachoeira do Piriá",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502004,
+    "nome": "Cachoeira do Arari",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1502103,
+    "nome": "Cametá",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Cametá",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1502152,
+    "nome": "Canaã dos Carajás",
+    "microrregiao": "Parauapebas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Parauapebas",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1502202,
+    "nome": "Capanema",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502301,
+    "nome": "Capitão Poço",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capitão Poço",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502400,
+    "nome": "Castanhal",
+    "microrregiao": "Castanhal",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502509,
+    "nome": "Chaves",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1502608,
+    "nome": "Colares",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1502707,
+    "nome": "Conceição do Araguaia",
+    "microrregiao": "Conceição do Araguaia",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1502756,
+    "nome": "Concórdia do Pará",
+    "microrregiao": "Tomé-Açu",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1502764,
+    "nome": "Cumaru do Norte",
+    "microrregiao": "São Félix do Xingu",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1502772,
+    "nome": "Curionópolis",
+    "microrregiao": "Parauapebas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Parauapebas",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1502806,
+    "nome": "Curralinho",
+    "microrregiao": "Furos de Breves",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1502855,
+    "nome": "Curuá",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1502905,
+    "nome": "Curuçá",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502939,
+    "nome": "Dom Eliseu",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1502954,
+    "nome": "Eldorado do Carajás",
+    "microrregiao": "Parauapebas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Parauapebas",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1503002,
+    "nome": "Faro",
+    "microrregiao": "Óbidos",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1503044,
+    "nome": "Floresta do Araguaia",
+    "microrregiao": "Conceição do Araguaia",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1503077,
+    "nome": "Garrafão do Norte",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capitão Poço",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1503093,
+    "nome": "Goianésia do Pará",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1503101,
+    "nome": "Gurupá",
+    "microrregiao": "Portel",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1503200,
+    "nome": "Igarapé-Açu",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1503309,
+    "nome": "Igarapé-Miri",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Abaetetuba",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1503408,
+    "nome": "Inhangapi",
+    "microrregiao": "Castanhal",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1503457,
+    "nome": "Ipixuna do Pará",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1503507,
+    "nome": "Irituia",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1503606,
+    "nome": "Itaituba",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1503705,
+    "nome": "Itupiranga",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1503754,
+    "nome": "Jacareacanga",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1503804,
+    "nome": "Jacundá",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1503903,
+    "nome": "Juruti",
+    "microrregiao": "Óbidos",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1504000,
+    "nome": "Limoeiro do Ajuru",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Cametá",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1504059,
+    "nome": "Mãe do Rio",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1504109,
+    "nome": "Magalhães Barata",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1504208,
+    "nome": "Marabá",
+    "microrregiao": "Marabá",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1504307,
+    "nome": "Maracanã",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1504406,
+    "nome": "Marapanim",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1504422,
+    "nome": "Marituba",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1504455,
+    "nome": "Medicilândia",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1504505,
+    "nome": "Melgaço",
+    "microrregiao": "Portel",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1504604,
+    "nome": "Mocajuba",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Cametá",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1504703,
+    "nome": "Moju",
+    "microrregiao": "Tomé-Açu",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Abaetetuba",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1504752,
+    "nome": "Mojuí dos Campos",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1504802,
+    "nome": "Monte Alegre",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1504901,
+    "nome": "Muaná",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1504950,
+    "nome": "Nova Esperança do Piriá",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capitão Poço",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1504976,
+    "nome": "Nova Ipixuna",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505007,
+    "nome": "Nova Timboteua",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1505031,
+    "nome": "Novo Progresso",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1505064,
+    "nome": "Novo Repartimento",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505106,
+    "nome": "Óbidos",
+    "microrregiao": "Óbidos",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1505205,
+    "nome": "Oeiras do Pará",
+    "microrregiao": "Cametá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Cametá",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1505304,
+    "nome": "Oriximiná",
+    "microrregiao": "Óbidos",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1505403,
+    "nome": "Ourém",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capitão Poço",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1505437,
+    "nome": "Ourilândia do Norte",
+    "microrregiao": "São Félix do Xingu",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucumã - São Félix do Xingu",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1505486,
+    "nome": "Pacajá",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505494,
+    "nome": "Palestina do Pará",
+    "microrregiao": "Marabá",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505502,
+    "nome": "Paragominas",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1505536,
+    "nome": "Parauapebas",
+    "microrregiao": "Parauapebas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Parauapebas",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505551,
+    "nome": "Pau D'Arco",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1505601,
+    "nome": "Peixe-Boi",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1505635,
+    "nome": "Piçarra",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1505650,
+    "nome": "Placas",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1505700,
+    "nome": "Ponta de Pedras",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1505809,
+    "nome": "Portel",
+    "microrregiao": "Portel",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1505908,
+    "nome": "Porto de Moz",
+    "microrregiao": "Almeirim",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Almeirim - Porto de Moz",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1506005,
+    "nome": "Prainha",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1506104,
+    "nome": "Primavera",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1506112,
+    "nome": "Quatipuru",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1506138,
+    "nome": "Redenção",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1506161,
+    "nome": "Rio Maria",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Xinguara",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1506187,
+    "nome": "Rondon do Pará",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1506195,
+    "nome": "Rurópolis",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1506203,
+    "nome": "Salinópolis",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1506302,
+    "nome": "Salvaterra",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1506351,
+    "nome": "Santa Bárbara do Pará",
+    "microrregiao": "Belém",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1506401,
+    "nome": "Santa Cruz do Arari",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1506500,
+    "nome": "Santa Izabel do Pará",
+    "microrregiao": "Castanhal",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1506559,
+    "nome": "Santa Luzia do Pará",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1506583,
+    "nome": "Santa Maria das Barreiras",
+    "microrregiao": "Conceição do Araguaia",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1506609,
+    "nome": "Santa Maria do Pará",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1506708,
+    "nome": "Santana do Araguaia",
+    "microrregiao": "Conceição do Araguaia",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Redenção",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1506807,
+    "nome": "Santarém",
+    "microrregiao": "Santarém",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Santarém",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1506906,
+    "nome": "Santarém Novo",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507003,
+    "nome": "Santo Antônio do Tauá",
+    "microrregiao": "Castanhal",
+    "mesorregiao": "Metropolitana de Belém",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1507102,
+    "nome": "São Caetano de Odivelas",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1507151,
+    "nome": "São Domingos do Araguaia",
+    "microrregiao": "Marabá",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1507201,
+    "nome": "São Domingos do Capim",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507300,
+    "nome": "São Félix do Xingu",
+    "microrregiao": "São Félix do Xingu",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucumã - São Félix do Xingu",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1507409,
+    "nome": "São Francisco do Pará",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507458,
+    "nome": "São Geraldo do Araguaia",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1507466,
+    "nome": "São João da Ponta",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507474,
+    "nome": "São João de Pirabas",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Capanema",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507508,
+    "nome": "São João do Araguaia",
+    "microrregiao": "Marabá",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Marabá",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1507607,
+    "nome": "São Miguel do Guamá",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507706,
+    "nome": "São Sebastião da Boa Vista",
+    "microrregiao": "Furos de Breves",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Breves",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1507755,
+    "nome": "Sapucaia",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Xinguara",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1507805,
+    "nome": "Senador José Porfírio",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1507904,
+    "nome": "Soure",
+    "microrregiao": "Arari",
+    "mesorregiao": "Marajó",
+    "regiao_imediata": "Soure-Salvaterra",
+    "regiao_intermediaria": "Breves"
+  },
+  {
+    "id": 1507953,
+    "nome": "Tailândia",
+    "microrregiao": "Tomé-Açu",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Abaetetuba",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1507961,
+    "nome": "Terra Alta",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Castanhal",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1507979,
+    "nome": "Terra Santa",
+    "microrregiao": "Óbidos",
+    "mesorregiao": "Baixo Amazonas",
+    "regiao_imediata": "Oriximiná",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1508001,
+    "nome": "Tomé-Açu",
+    "microrregiao": "Tomé-Açu",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1508035,
+    "nome": "Tracuateua",
+    "microrregiao": "Bragantina",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1508050,
+    "nome": "Trairão",
+    "microrregiao": "Itaituba",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Itaituba",
+    "regiao_intermediaria": "Santarém"
+  },
+  {
+    "id": 1508084,
+    "nome": "Tucumã",
+    "microrregiao": "São Félix do Xingu",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucumã - São Félix do Xingu",
+    "regiao_intermediaria": "Redenção"
+  },
+  {
+    "id": 1508100,
+    "nome": "Tucuruí",
+    "microrregiao": "Tucuruí",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Tucuruí",
+    "regiao_intermediaria": "Marabá"
+  },
+  {
+    "id": 1508126,
+    "nome": "Ulianópolis",
+    "microrregiao": "Paragominas",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Paragominas",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1508159,
+    "nome": "Uruará",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1508209,
+    "nome": "Vigia",
+    "microrregiao": "Salgado",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Belém",
+    "regiao_intermediaria": "Belém"
+  },
+  {
+    "id": 1508308,
+    "nome": "Viseu",
+    "microrregiao": "Guamá",
+    "mesorregiao": "Nordeste Paraense",
+    "regiao_imediata": "Bragança",
+    "regiao_intermediaria": "Castanhal"
+  },
+  {
+    "id": 1508357,
+    "nome": "Vitória do Xingu",
+    "microrregiao": "Altamira",
+    "mesorregiao": "Sudoeste Paraense",
+    "regiao_imediata": "Altamira",
+    "regiao_intermediaria": "Altamira"
+  },
+  {
+    "id": 1508407,
+    "nome": "Xinguara",
+    "microrregiao": "Redenção",
+    "mesorregiao": "Sudeste Paraense",
+    "regiao_imediata": "Xinguara",
+    "regiao_intermediaria": "Redenção"
+  }
+]

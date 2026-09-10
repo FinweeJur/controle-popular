@@ -1,0 +1,1474 @@
+[
+  {
+    "id": 2300101,
+    "nome": "Abaiara",
+    "microrregiao": "Brejo Santo",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2300150,
+    "nome": "Acarape",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2300200,
+    "nome": "Acaraú",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2300309,
+    "nome": "Acopiara",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2300408,
+    "nome": "Aiuaba",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2300507,
+    "nome": "Alcântaras",
+    "microrregiao": "Meruoca",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2300606,
+    "nome": "Altaneira",
+    "microrregiao": "Caririaçu",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2300705,
+    "nome": "Alto Santo",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2300754,
+    "nome": "Amontada",
+    "microrregiao": "Itapipoca",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2300804,
+    "nome": "Antonina do Norte",
+    "microrregiao": "Várzea Alegre",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2300903,
+    "nome": "Apuiarés",
+    "microrregiao": "Médio Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2301000,
+    "nome": "Aquiraz",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2301109,
+    "nome": "Aracati",
+    "microrregiao": "Litoral de Aracati",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Aracati",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2301208,
+    "nome": "Aracoiaba",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2301257,
+    "nome": "Ararendá",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2301307,
+    "nome": "Araripe",
+    "microrregiao": "Chapada do Araripe",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2301406,
+    "nome": "Aratuba",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2301505,
+    "nome": "Arneiroz",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Tauá",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2301604,
+    "nome": "Assaré",
+    "microrregiao": "Chapada do Araripe",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2301703,
+    "nome": "Aurora",
+    "microrregiao": "Barro",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2301802,
+    "nome": "Baixio",
+    "microrregiao": "Lavras da Mangabeira",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Icó",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2301851,
+    "nome": "Banabuiú",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2301901,
+    "nome": "Barbalha",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2301950,
+    "nome": "Barreira",
+    "microrregiao": "Chorozinho",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2302008,
+    "nome": "Barro",
+    "microrregiao": "Barro",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2302057,
+    "nome": "Barroquinha",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Camocim",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2302107,
+    "nome": "Baturité",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2302206,
+    "nome": "Beberibe",
+    "microrregiao": "Cascavel",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2302305,
+    "nome": "Bela Cruz",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2302404,
+    "nome": "Boa Viagem",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2302503,
+    "nome": "Brejo Santo",
+    "microrregiao": "Brejo Santo",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2302602,
+    "nome": "Camocim",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Camocim",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2302701,
+    "nome": "Campos Sales",
+    "microrregiao": "Chapada do Araripe",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2302800,
+    "nome": "Canindé",
+    "microrregiao": "Canindé",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2302909,
+    "nome": "Capistrano",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2303006,
+    "nome": "Caridade",
+    "microrregiao": "Canindé",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2303105,
+    "nome": "Cariré",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2303204,
+    "nome": "Caririaçu",
+    "microrregiao": "Caririaçu",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2303303,
+    "nome": "Cariús",
+    "microrregiao": "Várzea Alegre",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2303402,
+    "nome": "Carnaubal",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2303501,
+    "nome": "Cascavel",
+    "microrregiao": "Cascavel",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2303600,
+    "nome": "Catarina",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2303659,
+    "nome": "Catunda",
+    "microrregiao": "Santa Quitéria",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2303709,
+    "nome": "Caucaia",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2303808,
+    "nome": "Cedro",
+    "microrregiao": "Iguatu",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2303907,
+    "nome": "Chaval",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Camocim",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2303931,
+    "nome": "Choró",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2303956,
+    "nome": "Chorozinho",
+    "microrregiao": "Chorozinho",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2304004,
+    "nome": "Coreaú",
+    "microrregiao": "Coreaú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304103,
+    "nome": "Crateús",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2304202,
+    "nome": "Crato",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2304236,
+    "nome": "Croatá",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304251,
+    "nome": "Cruz",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304269,
+    "nome": "Deputado Irapuan Pinheiro",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2304277,
+    "nome": "Ereré",
+    "microrregiao": "Serra do Pereiro",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2304285,
+    "nome": "Eusébio",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2304301,
+    "nome": "Farias Brito",
+    "microrregiao": "Caririaçu",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2304350,
+    "nome": "Forquilha",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304400,
+    "nome": "Fortaleza",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2304459,
+    "nome": "Fortim",
+    "microrregiao": "Litoral de Aracati",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Aracati",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2304509,
+    "nome": "Frecheirinha",
+    "microrregiao": "Coreaú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304608,
+    "nome": "General Sampaio",
+    "microrregiao": "Médio Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2304657,
+    "nome": "Graça",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304707,
+    "nome": "Granja",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Camocim",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304806,
+    "nome": "Granjeiro",
+    "microrregiao": "Caririaçu",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2304905,
+    "nome": "Groaíras",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2304954,
+    "nome": "Guaiúba",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2305001,
+    "nome": "Guaraciaba do Norte",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2305100,
+    "nome": "Guaramiranga",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2305209,
+    "nome": "Hidrolândia",
+    "microrregiao": "Santa Quitéria",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2305233,
+    "nome": "Horizonte",
+    "microrregiao": "Pacajus",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2305266,
+    "nome": "Ibaretama",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2305308,
+    "nome": "Ibiapina",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2305332,
+    "nome": "Ibicuitinga",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2305357,
+    "nome": "Icapuí",
+    "microrregiao": "Litoral de Aracati",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Aracati",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2305407,
+    "nome": "Icó",
+    "microrregiao": "Iguatu",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Icó",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2305506,
+    "nome": "Iguatu",
+    "microrregiao": "Iguatu",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2305605,
+    "nome": "Independência",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2305654,
+    "nome": "Ipaporanga",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2305704,
+    "nome": "Ipaumirim",
+    "microrregiao": "Lavras da Mangabeira",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Icó",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2305803,
+    "nome": "Ipu",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2305902,
+    "nome": "Ipueiras",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2306009,
+    "nome": "Iracema",
+    "microrregiao": "Serra do Pereiro",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2306108,
+    "nome": "Irauçuba",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306207,
+    "nome": "Itaiçaba",
+    "microrregiao": "Litoral de Aracati",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Aracati",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2306256,
+    "nome": "Itaitinga",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306306,
+    "nome": "Itapajé",
+    "microrregiao": "Uruburetama",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306405,
+    "nome": "Itapipoca",
+    "microrregiao": "Itapipoca",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306504,
+    "nome": "Itapiúna",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306553,
+    "nome": "Itarema",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2306603,
+    "nome": "Itatira",
+    "microrregiao": "Canindé",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2306702,
+    "nome": "Jaguaretama",
+    "microrregiao": "Médio Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2306801,
+    "nome": "Jaguaribara",
+    "microrregiao": "Médio Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2306900,
+    "nome": "Jaguaribe",
+    "microrregiao": "Médio Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2307007,
+    "nome": "Jaguaruana",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Aracati",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2307106,
+    "nome": "Jardim",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2307205,
+    "nome": "Jati",
+    "microrregiao": "Brejo Santo",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2307254,
+    "nome": "Jijoca de Jericoacoara",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2307304,
+    "nome": "Juazeiro do Norte",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2307403,
+    "nome": "Jucás",
+    "microrregiao": "Várzea Alegre",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2307502,
+    "nome": "Lavras da Mangabeira",
+    "microrregiao": "Lavras da Mangabeira",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2307601,
+    "nome": "Limoeiro do Norte",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2307635,
+    "nome": "Madalena",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2307650,
+    "nome": "Maracanaú",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2307700,
+    "nome": "Maranguape",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2307809,
+    "nome": "Marco",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Acaraú",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2307908,
+    "nome": "Martinópole",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2308005,
+    "nome": "Massapê",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2308104,
+    "nome": "Mauriti",
+    "microrregiao": "Barro",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2308203,
+    "nome": "Meruoca",
+    "microrregiao": "Meruoca",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2308302,
+    "nome": "Milagres",
+    "microrregiao": "Brejo Santo",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2308351,
+    "nome": "Milhã",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2308377,
+    "nome": "Miraíma",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2308401,
+    "nome": "Missão Velha",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2308500,
+    "nome": "Mombaça",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2308609,
+    "nome": "Monsenhor Tabosa",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2308708,
+    "nome": "Morada Nova",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2308807,
+    "nome": "Moraújo",
+    "microrregiao": "Coreaú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2308906,
+    "nome": "Morrinhos",
+    "microrregiao": "Litoral de Camocim e Acaraú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2309003,
+    "nome": "Mucambo",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2309102,
+    "nome": "Mulungu",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2309201,
+    "nome": "Nova Olinda",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2309300,
+    "nome": "Nova Russas",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2309409,
+    "nome": "Novo Oriente",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2309458,
+    "nome": "Ocara",
+    "microrregiao": "Chorozinho",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2309508,
+    "nome": "Orós",
+    "microrregiao": "Iguatu",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Icó",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2309607,
+    "nome": "Pacajus",
+    "microrregiao": "Pacajus",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2309706,
+    "nome": "Pacatuba",
+    "microrregiao": "Fortaleza",
+    "mesorregiao": "Metropolitana de Fortaleza",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2309805,
+    "nome": "Pacoti",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2309904,
+    "nome": "Pacujá",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2310001,
+    "nome": "Palhano",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2310100,
+    "nome": "Palmácia",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310209,
+    "nome": "Paracuru",
+    "microrregiao": "Baixo Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310258,
+    "nome": "Paraipaba",
+    "microrregiao": "Baixo Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310308,
+    "nome": "Parambu",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Tauá",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2310407,
+    "nome": "Paramoti",
+    "microrregiao": "Canindé",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Canindé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310506,
+    "nome": "Pedra Branca",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2310605,
+    "nome": "Penaforte",
+    "microrregiao": "Brejo Santo",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2310704,
+    "nome": "Pentecoste",
+    "microrregiao": "Médio Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310803,
+    "nome": "Pereiro",
+    "microrregiao": "Serra do Pereiro",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2310852,
+    "nome": "Pindoretama",
+    "microrregiao": "Cascavel",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2310902,
+    "nome": "Piquet Carneiro",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2310951,
+    "nome": "Pires Ferreira",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2311009,
+    "nome": "Poranga",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2311108,
+    "nome": "Porteiras",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Brejo Santo",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2311207,
+    "nome": "Potengi",
+    "microrregiao": "Chapada do Araripe",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2311231,
+    "nome": "Potiretama",
+    "microrregiao": "Serra do Pereiro",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2311264,
+    "nome": "Quiterianópolis",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2311306,
+    "nome": "Quixadá",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2311355,
+    "nome": "Quixelô",
+    "microrregiao": "Iguatu",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2311405,
+    "nome": "Quixeramobim",
+    "microrregiao": "Sertão de Quixeramobim",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2311504,
+    "nome": "Quixeré",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2311603,
+    "nome": "Redenção",
+    "microrregiao": "Baturité",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Redenção-Acarape",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2311702,
+    "nome": "Reriutaba",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2311801,
+    "nome": "Russas",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2311900,
+    "nome": "Saboeiro",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Iguatu",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2311959,
+    "nome": "Salitre",
+    "microrregiao": "Chapada do Araripe",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2312007,
+    "nome": "Santana do Acaraú",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2312106,
+    "nome": "Santana do Cariri",
+    "microrregiao": "Cariri",
+    "mesorregiao": "Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2312205,
+    "nome": "Santa Quitéria",
+    "microrregiao": "Santa Quitéria",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2312304,
+    "nome": "São Benedito",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2312403,
+    "nome": "São Gonçalo do Amarante",
+    "microrregiao": "Baixo Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2312502,
+    "nome": "São João do Jaguaribe",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2312601,
+    "nome": "São Luís do Curu",
+    "microrregiao": "Médio Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Fortaleza",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2312700,
+    "nome": "Senador Pompeu",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2312809,
+    "nome": "Senador Sá",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2312908,
+    "nome": "Sobral",
+    "microrregiao": "Sobral",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2313005,
+    "nome": "Solonópole",
+    "microrregiao": "Sertão de Senador Pompeu",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Quixadá",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2313104,
+    "nome": "Tabuleiro do Norte",
+    "microrregiao": "Baixo Jaguaribe",
+    "mesorregiao": "Jaguaribe",
+    "regiao_imediata": "Russas - Limoeiro do Norte",
+    "regiao_intermediaria": "Quixadá"
+  },
+  {
+    "id": 2313203,
+    "nome": "Tamboril",
+    "microrregiao": "Sertão de Cratéus",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Crateús",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2313252,
+    "nome": "Tarrafas",
+    "microrregiao": "Várzea Alegre",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2313302,
+    "nome": "Tauá",
+    "microrregiao": "Sertão de Inhamuns",
+    "mesorregiao": "Sertões Cearenses",
+    "regiao_imediata": "Tauá",
+    "regiao_intermediaria": "Crateús"
+  },
+  {
+    "id": 2313351,
+    "nome": "Tejuçuoca",
+    "microrregiao": "Médio Curu",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapagé",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2313401,
+    "nome": "Tianguá",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2313500,
+    "nome": "Trairi",
+    "microrregiao": "Itapipoca",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2313559,
+    "nome": "Tururu",
+    "microrregiao": "Uruburetama",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2313609,
+    "nome": "Ubajara",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2313708,
+    "nome": "Umari",
+    "microrregiao": "Lavras da Mangabeira",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Icó",
+    "regiao_intermediaria": "Iguatu"
+  },
+  {
+    "id": 2313757,
+    "nome": "Umirim",
+    "microrregiao": "Uruburetama",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2313807,
+    "nome": "Uruburetama",
+    "microrregiao": "Uruburetama",
+    "mesorregiao": "Norte Cearense",
+    "regiao_imediata": "Itapipoca",
+    "regiao_intermediaria": "Fortaleza"
+  },
+  {
+    "id": 2313906,
+    "nome": "Uruoca",
+    "microrregiao": "Coreaú",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2313955,
+    "nome": "Varjota",
+    "microrregiao": "Ipu",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "Sobral",
+    "regiao_intermediaria": "Sobral"
+  },
+  {
+    "id": 2314003,
+    "nome": "Várzea Alegre",
+    "microrregiao": "Várzea Alegre",
+    "mesorregiao": "Centro-Sul Cearense",
+    "regiao_imediata": "Juazeiro do Norte",
+    "regiao_intermediaria": "Juazeiro do Norte"
+  },
+  {
+    "id": 2314102,
+    "nome": "Viçosa do Ceará",
+    "microrregiao": "Ibiapaba",
+    "mesorregiao": "Noroeste Cearense",
+    "regiao_imediata": "São Benedito - Ipu - Guaraciaba do Norte - Tianguá",
+    "regiao_intermediaria": "Sobral"
+  }
+]

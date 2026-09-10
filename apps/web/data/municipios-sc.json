@@ -1,0 +1,2362 @@
+[
+  {
+    "id": 4200051,
+    "nome": "Abdon Batista",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200101,
+    "nome": "Abelardo Luz",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200200,
+    "nome": "Agrolândia",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4200309,
+    "nome": "Agronômica",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4200408,
+    "nome": "Água Doce",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200507,
+    "nome": "Águas de Chapecó",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200556,
+    "nome": "Águas Frias",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200606,
+    "nome": "Águas Mornas",
+    "microrregiao": "Tabuleiro",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4200705,
+    "nome": "Alfredo Wagner",
+    "microrregiao": "Tabuleiro",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4200754,
+    "nome": "Alto Bela Vista",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200804,
+    "nome": "Anchieta",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4200903,
+    "nome": "Angelina",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4201000,
+    "nome": "Anita Garibaldi",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4201109,
+    "nome": "Anitápolis",
+    "microrregiao": "Tabuleiro",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4201208,
+    "nome": "Antônio Carlos",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4201257,
+    "nome": "Apiúna",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4201273,
+    "nome": "Arabutã",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4201307,
+    "nome": "Araquari",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4201406,
+    "nome": "Araranguá",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4201505,
+    "nome": "Armazém",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4201604,
+    "nome": "Arroio Trinta",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4201653,
+    "nome": "Arvoredo",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4201703,
+    "nome": "Ascurra",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4201802,
+    "nome": "Atalanta",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4201901,
+    "nome": "Aurora",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4201950,
+    "nome": "Balneário Arroio do Silva",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4202008,
+    "nome": "Balneário Camboriú",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202057,
+    "nome": "Balneário Barra do Sul",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4202073,
+    "nome": "Balneário Gaivota",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4202081,
+    "nome": "Bandeirante",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4202099,
+    "nome": "Barra Bonita",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4202107,
+    "nome": "Barra Velha",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202131,
+    "nome": "Bela Vista do Toldo",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4202156,
+    "nome": "Belmonte",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4202206,
+    "nome": "Benedito Novo",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202305,
+    "nome": "Biguaçu",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4202404,
+    "nome": "Blumenau",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202438,
+    "nome": "Bocaina do Sul",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4202453,
+    "nome": "Bombinhas",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202503,
+    "nome": "Bom Jardim da Serra",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4202537,
+    "nome": "Bom Jesus",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4202578,
+    "nome": "Bom Jesus do Oeste",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4202602,
+    "nome": "Bom Retiro",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4202701,
+    "nome": "Botuverá",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202800,
+    "nome": "Braço do Norte",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4202859,
+    "nome": "Braço do Trombudo",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4202875,
+    "nome": "Brunópolis",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4202909,
+    "nome": "Brusque",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4203006,
+    "nome": "Caçador",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4203105,
+    "nome": "Caibi",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4203154,
+    "nome": "Calmon",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4203204,
+    "nome": "Camboriú",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4203253,
+    "nome": "Capão Alto",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4203303,
+    "nome": "Campo Alegre",
+    "microrregiao": "São Bento do Sul",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "São Bento do Sul - Rio Negrinho",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4203402,
+    "nome": "Campo Belo do Sul",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4203501,
+    "nome": "Campo Erê",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4203600,
+    "nome": "Campos Novos",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4203709,
+    "nome": "Canelinha",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4203808,
+    "nome": "Canoinhas",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4203907,
+    "nome": "Capinzal",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4203956,
+    "nome": "Capivari de Baixo",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4204004,
+    "nome": "Catanduvas",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204103,
+    "nome": "Caxambu do Sul",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204152,
+    "nome": "Celso Ramos",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204178,
+    "nome": "Cerro Negro",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4204194,
+    "nome": "Chapadão do Lageado",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4204202,
+    "nome": "Chapecó",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204251,
+    "nome": "Cocal do Sul",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4204301,
+    "nome": "Concórdia",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204350,
+    "nome": "Cordilheira Alta",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204400,
+    "nome": "Coronel Freitas",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204459,
+    "nome": "Coronel Martins",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204509,
+    "nome": "Corupá",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4204558,
+    "nome": "Correia Pinto",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4204608,
+    "nome": "Criciúma",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4204707,
+    "nome": "Cunha Porã",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204756,
+    "nome": "Cunhataí",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4204806,
+    "nome": "Curitibanos",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4204905,
+    "nome": "Descanso",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205001,
+    "nome": "Dionísio Cerqueira",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205100,
+    "nome": "Dona Emma",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4205159,
+    "nome": "Doutor Pedrinho",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4205175,
+    "nome": "Entre Rios",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205191,
+    "nome": "Ermo",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4205209,
+    "nome": "Erval Velho",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205308,
+    "nome": "Faxinal dos Guedes",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205357,
+    "nome": "Flor do Sertão",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205407,
+    "nome": "Florianópolis",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4205431,
+    "nome": "Formosa do Sul",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205456,
+    "nome": "Forquilhinha",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4205506,
+    "nome": "Fraiburgo",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4205555,
+    "nome": "Frei Rogério",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4205605,
+    "nome": "Galvão",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4205704,
+    "nome": "Garopaba",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4205803,
+    "nome": "Garuva",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4205902,
+    "nome": "Gaspar",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4206009,
+    "nome": "Governador Celso Ramos",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4206108,
+    "nome": "Grão-Pará",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4206207,
+    "nome": "Gravatal",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4206306,
+    "nome": "Guabiruba",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4206405,
+    "nome": "Guaraciaba",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4206504,
+    "nome": "Guaramirim",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4206603,
+    "nome": "Guarujá do Sul",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4206652,
+    "nome": "Guatambú",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4206702,
+    "nome": "Herval d'Oeste",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4206751,
+    "nome": "Ibiam",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4206801,
+    "nome": "Ibicaré",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4206900,
+    "nome": "Ibirama",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4207007,
+    "nome": "Içara",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4207106,
+    "nome": "Ilhota",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4207205,
+    "nome": "Imaruí",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4207304,
+    "nome": "Imbituba",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4207403,
+    "nome": "Imbuia",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4207502,
+    "nome": "Indaial",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4207577,
+    "nome": "Iomerê",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4207601,
+    "nome": "Ipira",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207650,
+    "nome": "Iporã do Oeste",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207684,
+    "nome": "Ipuaçu",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207700,
+    "nome": "Ipumirim",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207759,
+    "nome": "Iraceminha",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207809,
+    "nome": "Irani",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207858,
+    "nome": "Irati",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4207908,
+    "nome": "Irineópolis",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4208005,
+    "nome": "Itá",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4208104,
+    "nome": "Itaiópolis",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4208203,
+    "nome": "Itajaí",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4208302,
+    "nome": "Itapema",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4208401,
+    "nome": "Itapiranga",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4208450,
+    "nome": "Itapoá",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4208500,
+    "nome": "Ituporanga",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4208609,
+    "nome": "Jaborá",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4208708,
+    "nome": "Jacinto Machado",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4208807,
+    "nome": "Jaguaruna",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4208906,
+    "nome": "Jaraguá do Sul",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4208955,
+    "nome": "Jardinópolis",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209003,
+    "nome": "Joaçaba",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209102,
+    "nome": "Joinville",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4209151,
+    "nome": "José Boiteux",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4209177,
+    "nome": "Jupiá",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209201,
+    "nome": "Lacerdópolis",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209300,
+    "nome": "Lages",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4209409,
+    "nome": "Laguna",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4209458,
+    "nome": "Lajeado Grande",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209508,
+    "nome": "Laurentino",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4209607,
+    "nome": "Lauro Müller",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4209706,
+    "nome": "Lebon Régis",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4209805,
+    "nome": "Leoberto Leal",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4209854,
+    "nome": "Lindóia do Sul",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4209904,
+    "nome": "Lontras",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4210001,
+    "nome": "Luiz Alves",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4210035,
+    "nome": "Luzerna",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4210050,
+    "nome": "Macieira",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4210100,
+    "nome": "Mafra",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4210209,
+    "nome": "Major Gercino",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4210308,
+    "nome": "Major Vieira",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4210407,
+    "nome": "Maracajá",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4210506,
+    "nome": "Maravilha",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4210555,
+    "nome": "Marema",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4210605,
+    "nome": "Massaranduba",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4210704,
+    "nome": "Matos Costa",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4210803,
+    "nome": "Meleiro",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4210852,
+    "nome": "Mirim Doce",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4210902,
+    "nome": "Modelo",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211009,
+    "nome": "Mondaí",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211058,
+    "nome": "Monte Carlo",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4211108,
+    "nome": "Monte Castelo",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4211207,
+    "nome": "Morro da Fumaça",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4211256,
+    "nome": "Morro Grande",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4211306,
+    "nome": "Navegantes",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4211405,
+    "nome": "Nova Erechim",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211454,
+    "nome": "Nova Itaberaba",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211504,
+    "nome": "Nova Trento",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4211603,
+    "nome": "Nova Veneza",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4211652,
+    "nome": "Novo Horizonte",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211702,
+    "nome": "Orleans",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4211751,
+    "nome": "Otacílio Costa",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4211801,
+    "nome": "Ouro",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211850,
+    "nome": "Ouro Verde",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211876,
+    "nome": "Paial",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4211892,
+    "nome": "Painel",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4211900,
+    "nome": "Palhoça",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4212007,
+    "nome": "Palma Sola",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4212056,
+    "nome": "Palmeira",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4212106,
+    "nome": "Palmitos",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4212205,
+    "nome": "Papanduva",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4212239,
+    "nome": "Paraíso",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4212254,
+    "nome": "Passo de Torres",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4212270,
+    "nome": "Passos Maia",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4212304,
+    "nome": "Paulo Lopes",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4212403,
+    "nome": "Pedras Grandes",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4212502,
+    "nome": "Penha",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4212601,
+    "nome": "Peritiba",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4212650,
+    "nome": "Pescaria Brava",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4212700,
+    "nome": "Petrolândia",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4212809,
+    "nome": "Balneário Piçarras",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4212908,
+    "nome": "Pinhalzinho",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4213005,
+    "nome": "Pinheiro Preto",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4213104,
+    "nome": "Piratuba",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4213153,
+    "nome": "Planalto Alegre",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4213203,
+    "nome": "Pomerode",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4213302,
+    "nome": "Ponte Alta",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4213351,
+    "nome": "Ponte Alta do Norte",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4213401,
+    "nome": "Ponte Serrada",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4213500,
+    "nome": "Porto Belo",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4213609,
+    "nome": "Porto União",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4213708,
+    "nome": "Pouso Redondo",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4213807,
+    "nome": "Praia Grande",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4213906,
+    "nome": "Presidente Castello Branco",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4214003,
+    "nome": "Presidente Getúlio",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214102,
+    "nome": "Presidente Nereu",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214151,
+    "nome": "Princesa",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4214201,
+    "nome": "Quilombo",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4214300,
+    "nome": "Rancho Queimado",
+    "microrregiao": "Tabuleiro",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4214409,
+    "nome": "Rio das Antas",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4214508,
+    "nome": "Rio do Campo",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214607,
+    "nome": "Rio do Oeste",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214706,
+    "nome": "Rio dos Cedros",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214805,
+    "nome": "Rio do Sul",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4214904,
+    "nome": "Rio Fortuna",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4215000,
+    "nome": "Rio Negrinho",
+    "microrregiao": "São Bento do Sul",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "São Bento do Sul - Rio Negrinho",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4215059,
+    "nome": "Rio Rufino",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4215075,
+    "nome": "Riqueza",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215109,
+    "nome": "Rodeio",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4215208,
+    "nome": "Romelândia",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215307,
+    "nome": "Salete",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4215356,
+    "nome": "Saltinho",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215406,
+    "nome": "Salto Veloso",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4215455,
+    "nome": "Sangão",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4215505,
+    "nome": "Santa Cecília",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4215554,
+    "nome": "Santa Helena",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215604,
+    "nome": "Santa Rosa de Lima",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4215653,
+    "nome": "Santa Rosa do Sul",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4215679,
+    "nome": "Santa Terezinha",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4215687,
+    "nome": "Santa Terezinha do Progresso",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215695,
+    "nome": "Santiago do Sul",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215703,
+    "nome": "Santo Amaro da Imperatriz",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4215752,
+    "nome": "São Bernardino",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4215802,
+    "nome": "São Bento do Sul",
+    "microrregiao": "São Bento do Sul",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "São Bento do Sul - Rio Negrinho",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4215901,
+    "nome": "São Bonifácio",
+    "microrregiao": "Tabuleiro",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4216008,
+    "nome": "São Carlos",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4216057,
+    "nome": "São Cristóvão do Sul",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Curitibanos",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4216107,
+    "nome": "São Domingos",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4216206,
+    "nome": "São Francisco do Sul",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4216255,
+    "nome": "São João do Oeste",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4216305,
+    "nome": "São João Batista",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Brusque",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4216354,
+    "nome": "São João do Itaperiú",
+    "microrregiao": "Itajaí",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4216404,
+    "nome": "São João do Sul",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4216503,
+    "nome": "São Joaquim",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4216602,
+    "nome": "São José",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4216701,
+    "nome": "São José do Cedro",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4216800,
+    "nome": "São José do Cerrito",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4216909,
+    "nome": "São Lourenço do Oeste",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Lourenço do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217006,
+    "nome": "São Ludgero",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4217105,
+    "nome": "São Martinho",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4217154,
+    "nome": "São Miguel da Boa Vista",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217204,
+    "nome": "São Miguel do Oeste",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217253,
+    "nome": "São Pedro de Alcântara",
+    "microrregiao": "Florianópolis",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Florianópolis",
+    "regiao_intermediaria": "Florianópolis"
+  },
+  {
+    "id": 4217303,
+    "nome": "Saudades",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217402,
+    "nome": "Schroeder",
+    "microrregiao": "Joinville",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Joinville",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4217501,
+    "nome": "Seara",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Concórdia",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217550,
+    "nome": "Serra Alta",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217600,
+    "nome": "Siderópolis",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4217709,
+    "nome": "Sombrio",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4217758,
+    "nome": "Sul Brasil",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4217808,
+    "nome": "Taió",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4217907,
+    "nome": "Tangará",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4217956,
+    "nome": "Tigrinhos",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Maravilha",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4218004,
+    "nome": "Tijucas",
+    "microrregiao": "Tijucas",
+    "mesorregiao": "Grande Florianópolis",
+    "regiao_imediata": "Itajaí",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4218103,
+    "nome": "Timbé do Sul",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4218202,
+    "nome": "Timbó",
+    "microrregiao": "Blumenau",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Blumenau",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4218251,
+    "nome": "Timbó Grande",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Caçador",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4218301,
+    "nome": "Três Barras",
+    "microrregiao": "Canoinhas",
+    "mesorregiao": "Norte Catarinense",
+    "regiao_imediata": "Mafra",
+    "regiao_intermediaria": "Joinville"
+  },
+  {
+    "id": 4218350,
+    "nome": "Treviso",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4218400,
+    "nome": "Treze de Maio",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4218509,
+    "nome": "Treze Tílias",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4218608,
+    "nome": "Trombudo Central",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Rio do Sul",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4218707,
+    "nome": "Tubarão",
+    "microrregiao": "Tubarão",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Tubarão",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4218756,
+    "nome": "Tunápolis",
+    "microrregiao": "São Miguel do Oeste",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "São Miguel do Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4218806,
+    "nome": "Turvo",
+    "microrregiao": "Araranguá",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Araranguá",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4218855,
+    "nome": "União do Oeste",
+    "microrregiao": "Chapecó",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4218905,
+    "nome": "Urubici",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4218954,
+    "nome": "Urupema",
+    "microrregiao": "Campos de Lages",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Lages",
+    "regiao_intermediaria": "Lages"
+  },
+  {
+    "id": 4219002,
+    "nome": "Urussanga",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  },
+  {
+    "id": 4219101,
+    "nome": "Vargeão",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219150,
+    "nome": "Vargem",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219176,
+    "nome": "Vargem Bonita",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219200,
+    "nome": "Vidal Ramos",
+    "microrregiao": "Ituporanga",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ituporanga",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4219309,
+    "nome": "Videira",
+    "microrregiao": "Joaçaba",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Videira",
+    "regiao_intermediaria": "Caçador"
+  },
+  {
+    "id": 4219358,
+    "nome": "Vitor Meireles",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4219408,
+    "nome": "Witmarsum",
+    "microrregiao": "Rio do Sul",
+    "mesorregiao": "Vale do Itajaí",
+    "regiao_imediata": "Ibirama - Presidente Getúlio",
+    "regiao_intermediaria": "Blumenau"
+  },
+  {
+    "id": 4219507,
+    "nome": "Xanxerê",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219606,
+    "nome": "Xavantina",
+    "microrregiao": "Concórdia",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Xanxerê",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219705,
+    "nome": "Xaxim",
+    "microrregiao": "Xanxerê",
+    "mesorregiao": "Oeste Catarinense",
+    "regiao_imediata": "Chapecó",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4219853,
+    "nome": "Zortéa",
+    "microrregiao": "Curitibanos",
+    "mesorregiao": "Serrana",
+    "regiao_imediata": "Joaçaba - Herval d'Oeste",
+    "regiao_intermediaria": "Chapecó"
+  },
+  {
+    "id": 4220000,
+    "nome": "Balneário Rincão",
+    "microrregiao": "Criciúma",
+    "mesorregiao": "Sul Catarinense",
+    "regiao_imediata": "Criciúma",
+    "regiao_intermediaria": "Criciúma"
+  }
+]
