@@ -203,3 +203,7 @@ scripts/.vigia-reinicios.json
 
 # Estado da quarentena de fontes (runtime)
 scripts/.quarentena-fontes.json
+
+# Radar de editais: rascunhos locais e processados (estado de maquina, nao dado versionado)
+apps/web/data/radar-editais/pendentes/
+apps/web/data/radar-editais/processados/

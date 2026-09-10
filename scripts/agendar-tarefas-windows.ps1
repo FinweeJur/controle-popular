@@ -16,6 +16,15 @@ $Tarefas = @(
     @{ Nome = "ControlePopular_AutoDeploy_0550";          Hora = "05:50"; Script = "executar-rotina-meianoite.ps1";  Desc = "Build + deploy (era meia-noite; movida a pedido do dono 04/09)" },
     @{ Nome = "ControlePopular_TelegramReport_0630";      Hora = "06:30"; Script = "executar-rotina-telegram.ps1";   Desc = "Relatorio ao dono (com retry no .mts)" },
     @{ Nome = "ControlePopular_ColetaMensal_Dia01";       Hora = "04:00"; Script = "executar-rotina-mensal.ps1";     Desc = "Coleta mensal, dia 01" }
+    # Radar de editais (DOMG-e): roda o .mts direto (sem wrapper .ps1), porque
+    # o log dele e simples (uma rodada, um resumo no fim) — registrado no bloco
+    # proprio abaixo, no padrao do VigiaServidor. 04:20 fica no buraco entre a
+    # coleta da madrugada (03:30) e a sondagem da manha (05:30); a coleta mensal
+    # das 04:00 so age no dia 01, entao nao colide de verdade. O radar faz UMA
+    # edicao por rodada com pausa de 1,5 s entre requests — carga desprezivel.
+    # Se o dono quiser calibrar o limiar de score, acrescente --limiar N na
+    # linha de comando do bloco abaixo.
+    # @{ Nome = "ControlePopular_RadarEditais";             Hora = "04:20"; Script = "radar-editais-diarios.mts";      Desc = "Radar de editais do DOMG-e" }
 )
 
 foreach ($T in $Tarefas) {
@@ -36,6 +45,17 @@ foreach ($T in $Tarefas) {
 Write-Host "`nRegistrando VIGIA do servidor (cada 5 min)..." -ForegroundColor Cyan
 $VigiaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/vigia-servidor.mts"
 & schtasks.exe /Create /TN "ControlePopular_VigiaServidor_5min" /TR $VigiaCmd /SC MINUTE /MO 5 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
+# ─── Radar de editais do DOMG-e (docs/planos/RADAR-EDITAIS-DIARIOS.md) ─────
+# Diario, 04:20. Varre a edicao do dia do Jornal Minas Gerais atras de editais
+# de interesse social e grava rascunhos em apps/web/data/radar-editais/pendentes/.
+# NAO publica no blog — a publicacao e papel do publicar-radar-editais.mts,
+# manual (decisao do dono). Log: docs/relatorios-automacao/logs/rotina-radar-editais.log.
+# Registrado pela primeira vez em 10/09/2026 (a task ja existe na maquina).
+Write-Host "Registrando RADAR DE EDITAIS (diario, 04:20)..." -ForegroundColor Cyan
+$RadarCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/radar-editais-diarios.mts >> docs\relatorios-automacao\logs\rotina-radar-editais.log 2>&1"
+& schtasks.exe /Create /TN "ControlePopular_RadarEditais" /TR $RadarCmd /SC DAILY /ST 04:20 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
 # ─── Drill mensal (item 6): derruba o next start no dia 01 para o vigia ───
