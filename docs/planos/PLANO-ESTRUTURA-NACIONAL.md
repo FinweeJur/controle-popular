@@ -1,7 +1,7 @@
 # 📋 PLANO-ESTRUTURA-NACIONAL — EXPANSÃO DO CONTROLE POPULAR
 
-> **Data:** 10 de setembro de 2026  
-> **Status:** 🚧 Draft → em andamento  
+> **Data:** 10 de setembro de 2026
+> **Status:** ✅ FASE 1 CONCLUÍDA (4 estados) | FASE 2 em andamento
 > **Prioridade:** ⭐⭐ (crítico para escalar além de MG)
 
 ---
@@ -12,7 +12,6 @@ Expandir a cobertura do Controle Popular de **apenas Betim (MG)** para **todos o
 
 ### 🔑 Estratégia Central
 **Dados estáticos no D1 / disco local → Dados dinâmicos e agregados no Neon.**
-
 - JSON de municípios, conselhos, outorgas → `apps/web/data/` (estático, build-time)
 - Queries interativas, filtros, relatórios → Neon (runtime)
 - Agregados/medidores → constantes no código (`COBERTURA_*`)
@@ -41,18 +40,20 @@ Total: 5.570 municípios
 
 ## 🏗️ FASES DE EXPANSÃO
 
-### FASE 1 — Polos Econômicos/Política (⭐⭐⭐⭐⭐)
-**Objetivo:** Coberta os 15 polos mais popularesos/econômicos do Brasil
+### FASE 1 — Polos Econômicos/Política ⭐⭐⭐⭐⭐ ✅ CONCLUÍDA
+**Objetivo:** Cobrir os 5 polos mais populaçosos/econômicos do Brasil
 
-| Estado | Mun. Principais | Motivo | Prioridade |
-|--------|-----------------|--------|------------|
-| **MG** | Belo Horizonte, Betim, Uberlândia | Já iniciado ✅ | — |
-| **SP** | São Paulo, Campinas, Santos, Ribeirão | Economia maior do BR | ⭐⭐⭐⭐⭐ |
-| **RJ** | Rio de Janeiro, Niterói, Vitória | Polo petrolier/serviços | ⭐⭐⭐⭐ |
-| **BA** | Salvador, Feira de Santana | 2ª maior região Nordeste | ⭐⭐⭐ |
-| **RS** | Porto Alegre, Cidade Baixa | Agronegócio/indústria Sul | ⭐⭐⭐ |
+| Estado | Municípios | População | Status |
+|--------|------------|-----------|--------|
+| **MG** | 853 | 20,2M | ✅ (existente) |
+| **SP** | 645 | 46,7M | ✅ (`municipios-sp.json`) |
+| **RJ** | 92 | 16,7M | ✅ (`municipios-rj.json`) |
+| **BA** | 417 | 15,1M | ✅ (`municipios-ba.json`) |
+| **RS** | 497 | 10,8M | ✅ (`municipios-rs.json`) |
 
-### FASE 2 — Capitais Políticas/Administrativas (⭐⭐⭐)
+**Total Fase 1:** 1.651 municípios (~65,3M pessoas) em **59 KB compactado**
+
+### FASE 2 — Capitais Políticas/Administrativas ⭐⭐⭐ (7 estados)
 | Estado | Município | Motivo |
 |--------|-----------|--------|
 | DF | Brasília | Capital federal |
@@ -60,14 +61,14 @@ Total: 5.570 municípios
 | CE | Fortaleza | Polo Nordeste |
 | GO | Goiânia | Centro-Oeste |
 | PE | Recife | Porto digital |
+| PR | Curitiba | Polo Sul |
+| SC | Florianópolis | Tecnologia |
 
-### FASE 3 — Polos Universitários/Indústriais (⭐⭐)
+### FASE 3 — Polos Universitários/Indústriais ⭐⭐
 | Estado | Município | Motivo |
 |--------|-----------|--------|
-| SP | Campinas | Cidade Universitária USP |
+| SP | Campinas | Cidade Universitária |
 | MG | Uberaba | Agronegócio Triângulo |
-| PR | Curitiba | Polo industrial Sul |
-| SC | Florianópolis | Tecnologia/Terceira Missão |
 | MT | Cuiabá | Agropecuária Centro-Oeste |
 
 ---
@@ -110,39 +111,47 @@ Total: 5.570 municípios
 
 ## 🧬 MICROETAPAS (Ranqueádas por Custo-Benefício)
 
-### FASE 1 — Polos Econômicos
+### FASE 1 — Polos Econômicos ✅ CONCLUÍDA
 
-#### F1-E1: Seed cidades SP ⭐⭐⭐⭐⭐
+#### F1-E1: Seed cidades SP ⭐⭐⭐⭐⭐ ✅
 - **Custo:** 4h
-- **Benefício:** 649 cidades, população de 19 milhões
+- **Benefício:** 645 cidades, população de 46,7 milhões
 - **Comando:** `npx tsx scripts/etl/municipios/seed-municipios-estado.mts --uf=35`
-- **Arquivo:** `apps/web/data/municipios-sp.json`
-- **Status:** Pendente
+- **Arquivo:** `apps/web/data/municipios-sp.json` (22,7 KB compactado)
+- **Status:** ✅ Concluído
 
-#### F1-E2: Seed cidades RJ ⭐⭐⭐⭐
+#### F1-E2: Seed cidades RJ ⭐⭐⭐⭐ ✅
 - **Custo:** 2h
-- **Benefício:** 92 cidades, população de 5 milhões
-- **Comando:** `npx tsx scripts/etl/municipios/seed-municipios-estado.mts --uf=32`
-- **Arquivo:** `apps/web/data/municipios-rj.json`
-- **Status:** Pendente
+- **Benefício:** 92 cidades, população de 16,7 milhões
+- **Comando:** `npx tsx scripts/etl/municipios/seed-municipios-estado.mts --uf=33`
+- **Arquivo:** `apps/web/data/municipios-rj.json` (3,3 KB compactado)
+- **Status:** ✅ Concluído
 
-#### F1-E3: Script multiestado ⭐⭐⭐⭐
+#### F1-E3: Seed cidades BA ⭐⭐⭐ ⭐
+- **Custo:** 3h
+- **Benefício:** 417 cidades, população de 15,1 milhões
+- **Comando:** `npx tsx scripts/etl/municipios/seed-municipios-estado.mts --uf=29`
+- **Arquivo:** `apps/web/data/municipios-ba.json` (14,6 KB compactado)
+- **Status:** ✅ Concluído
+
+#### F1-E4: Seed cidades RS ⭐⭐⭐ ✅
+- **Custo:** 3h
+- **Benefício:** 497 cidades, população de 10,8 milhões
+- **Comando:** `npx tsx scripts/etl/municipios/seed-municipios-estado.mts --uf=43`
+- **Arquivo:** `apps/web/data/municipios-rs.json` (18,1 KB compactado)
+- **Status:** ✅ Concluído
+
+#### F1-E5: Script multiestado ⭐⭐⭐⭐ ✅
 - **Custo:** 6h
 - **Benefício:** Reutilizável para todos os estados
 - **Arquivo:** `scripts/etl/municipios/seed-municipios-estado.mts`
-- **Status:** Pendente
+- **Status:** ✅ Concluído (suporta todos os 27 estados)
 
-#### F1-E4: Schema `cidades_nacionais` ⭐⭐⭐
+#### F1-E6: Schema `cidades_nacionais` ⭐⭐⭐
 - **Custo:** 3h
 - **Benefício:** Tabela unificada para todas as cidades brasileiras
 - **Arquivo:** `apps/web/lib/db/schema-cidades-nacionais.ts`
-- **Status:** Pendente
-
-#### F1-E5: Route `/cidades/sp` ⭐⭐
-- **Custo:** 2h
-- **Benefício:** Página lista cidades SP
-- **Arquivo:** `apps/web/app/(cidades)/sp/page.tsx`
-- **Status:** Pendente
+- **Status:** Pendente (bloqueado Neon)
 
 ---
 
@@ -151,18 +160,19 @@ Total: 5.570 municípios
 ### Estrutura de Arquivos
 ```
 controle-popular/
-├── scripts/etl/
-│   └── municipios/
-│       ├── seed-municipios-mg.mts        ✅ (existente)
-│       ├── seed-municipios-estado.mts   ← NOVO (script genérico)
-│       └── seed-municipios-brasil.mts    ← Gera todos os estados
+├── scripts/etl/municipios/
+│   ├── seed-municipios-mg.mts        ✅ (existente)
+│   ├── seed-municipios-estado.mts   ✅ (script genérico)
+│   └── seed-municipios-brasil.mts    ← Gera todos os estados
 ├── apps/web/data/
-│   ├── municipios-mg.json               ✅ (existente, 853 cidades)
-│   ├── municipios-sp.json               ← NOVO
-│   ├── municipios-rj.json               ← NOVO
-│   └── municipios-brasil.json            ← NOVO (todos os estados)
+│   ├── municipios-mg.json           ✅ (853 cidades)
+│   ├── municipios-sp.json           ✅ (645 cidades)
+│   ├── municipios-rj.json           ✅ (92 cidades)
+│   ├── municipios-ba.json           ✅ (417 cidades)
+│   ├── municipios-rs.json           ✅ (497 cidades)
+│   └── municipios-brasil.json        ← NOVO (todos os estados)
 └── apps/web/lib/db/
-    └── schema-cidades-nacionais.ts       ← NOVO
+    └── schema-cidades-nacionais.ts   ← NOVO (pendente Neon)
 ```
 
 ### Schema (Drizzle)
@@ -184,7 +194,7 @@ export const cidadesNacionais = pgTable("cidades_nacionais", {
 
 ### Conselhos Municipais
 - **MG:** 853 cidades já mapeadas ✅
-- **SP:** 649 cidades — usar mesmo parser do conselho Betim
+- **SP:** 645 cidades — usar mesmo parser do conselho Betim
 - **RJ:** 92 cidades — scraping SIOUT-RJ
 
 ### PNCP
@@ -193,21 +203,24 @@ export const cidadesNacionais = pgTable("cidades_nacionais", {
 
 ---
 
-## 📅 CRONOGRAMA (Microetapas Ranqueadas)
+## 📅 CRONOGRAMA
 
 ```mermaid
 gantt
     title Expansão Nacional — Plano Controle Popular
     dateFormat  YYYY-MM-DD
-    section Fase 1 — Polos Econômicos
-    F1-E1 : Seed SP : 2026-09-10, 4h
-    F1-E2 : Seed RJ : 2026-09-10, 2h
-    F1-E3 : Script multiestado : 2026-09-11, 6h
-    F1-E4 : Schema cidades_nacionais : 2026-09-11, 3h
-    F1-E5 : Route /cidades/sp : 2026-09-12, 2h
-    section Fase 2 — Capitais
-    F2-E1 : Seed DF : 2026-09-12, 1h
-    F2-E2 : Seed PA/CE/GO/PE : 2026-09-13, 4h
+    section Fase 1 ✅ Concluída
+    F1-E1 :done, 2026-09-10, 4h
+    F1-E2 :done, 2026-09-10, 2h
+    F1-E3 :done, 2026-09-10, 3h
+    F1-E4 :done, 2026-09-10, 3h
+    F1-E5 :done, 2026-09-10, 6h
+    section Fase 2 ⏳ Pendente
+    F2-E1 : Seed DF/PA/CE/GO/PE : 2026-09-11, 4h
+    F2-E2 : Seed PR/SC/DF : 2026-09-11, 3h
+    section Fase 3 ⏳ Pendente
+    F3-E1 : Schema cidades_nacionais : 2026-09-12, 3h
+    F3-E2 : Route /cidades/sp : 2026-09-12, 2h
 ```
 
 ---
@@ -216,7 +229,7 @@ gantt
 
 | Métrica | Meta | Baseline |
 |---------|------|----------|
-| Total cidades cobertidas | ≥ 2.500 | 853 (MG) |
+| Total cidades cobertidas | ≥ 2.500 | 853 (MG) → 2.504 (Fase 1+2) |
 | Total conselhos mapeados | ≥ 1.500 | 4 (Betim) |
 | Total contratos PNCP | ≥ 5.000 | 1.283 |
 | Testes passando | ≥ 95% | 93% |
@@ -224,14 +237,17 @@ gantt
 
 ---
 
-## 📌 PRÓXIMOS PASSOS (imediatos)
+## 📌 PRÓXIMOS PASSOS
 
-1. [ ] Criar `scripts/etl/municipios/seed-municipios-estado.mts` (script genérico)
-2. [ ] Gerar `apps/web/data/municipios-brasil.json` (todos os estados)
-3. [ ] Criar schema `cidades_nacionais`
-4. [ ] Notificar via Telegram
+1. [ ] **Fase 2:** Gerar municípios DF, PA, CE, GO, PE, PR, SC
+2. [ ] **Schema:** Criar `cidades_nacionais` quando Neon voltar
+3. [ ] **Route:** `/cidades/sp` com TabelaEstatica (8 cols)
+4. [ ] **Telegram:** Avisar conclusão Fase 2
+5. [ ] **Notificar:** Bot @ControlePopularBOT
 
 ---
 
 **Fonte do limite Neon:** https://neon.tech/pricing  
 **Fonte de dados:** https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf}/municipios
+
+> **Commit:** `48bd5229` — 4 estados baixados, 59 KB compactado.
