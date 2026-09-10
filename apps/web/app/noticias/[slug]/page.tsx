@@ -25,6 +25,14 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function dataCurta(iso: string): string {
+  return new Date(iso).toLocaleDateString("pt-BR");
+}
+
+function editadaDepois(n: { publicadoEm: string; atualizadoEm: string }): boolean {
+  return new Date(n.atualizadoEm).getTime() > new Date(n.publicadoEm).getTime();
+}
+
 export async function generateStaticParams() {
   const noticias = listarNoticiasPortal();
   return noticias.map((n) => ({
@@ -144,7 +152,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
         </Link>
         <span aria-hidden="true">/</span>
         <Link href="/noticias" className="hover:text-foreground transition-colors">
-          Notícias
+          Blog
         </Link>
         <span aria-hidden="true">/</span>
         <span className="font-semibold text-foreground truncate max-w-xs sm:max-w-sm">
@@ -183,11 +191,10 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
             <span className="flex items-center gap-1">
               <Calendar size={13} />
               <span>
-                {new Date(noticia.publicadoEm).toLocaleDateString("pt-BR", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
+                Publicado em {dataCurta(noticia.publicadoEm)}
+                {editadaDepois(noticia) && (
+                  <span> · editado em {dataCurta(noticia.atualizadoEm)}</span>
+                )}
               </span>
             </span>
           </div>

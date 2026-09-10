@@ -74,6 +74,15 @@ function temaDoValor(rotulo: string): string {
   return rotulo.replace(/ \(\d+\)$/, "");
 }
 
+/** Editada depois da publicação, com diferença maior que 1 dia. */
+function editadaDepois(n: NoticiaPortal): boolean {
+  return new Date(n.atualizadoEm).getTime() - new Date(n.publicadoEm).getTime() > 86400000;
+}
+
+function dataCurta(iso: string): string {
+  return new Date(iso).toLocaleDateString("pt-BR");
+}
+
 export default function NoticiasClient({ noticias }: Props) {
   const [busca, setBusca] = useState("");
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>("Todas");
@@ -284,11 +293,10 @@ export default function NoticiasClient({ noticias }: Props) {
               <div className="flex items-center gap-2 text-xs text-muted">
                 <Calendar size={13} />
                 <span>
-                  {new Date(destaque.publicadoEm).toLocaleDateString("pt-BR", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                  Publicado em {dataCurta(destaque.publicadoEm)}
+                  {editadaDepois(destaque) && (
+                    <span> · editado em {dataCurta(destaque.atualizadoEm)}</span>
+                  )}
                 </span>
                 <span>•</span>
                 <span>{destaque.autor}</span>
@@ -358,11 +366,10 @@ export default function NoticiasClient({ noticias }: Props) {
 
                 <div className="mt-5 flex items-center justify-between border-t border-border/50 pt-3 text-xs text-muted">
                   <span>
-                    {new Date(n.publicadoEm).toLocaleDateString("pt-BR", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                    Publicado em {dataCurta(n.publicadoEm)}
+                    {editadaDepois(n) && (
+                      <span> · editado em {dataCurta(n.atualizadoEm)}</span>
+                    )}
                   </span>
                   <Link
                     href={`/noticias/${n.slug}`}

@@ -6,7 +6,7 @@ import NoticiasClient from "./NoticiasClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = metadataEditavel("/noticias", {
-  title: "Notícias & Relatórios Técnicos — Controle Popular",
+  title: "Blog & Relatórios Técnicos — Controle Popular",
   description:
     "Acompanhamento analítico e descritivo de compras governamentais, orçamentos municipais, processos legislativos e dados socioambientais com fontes oficiais.",
   keywords: [
@@ -36,7 +36,7 @@ export default function NoticiasPage() {
           Início
         </Link>
         <span aria-hidden="true">/</span>
-        <span className="font-semibold text-foreground">Notícias & Relatórios</span>
+        <span className="font-semibold text-foreground">Blog & Relatórios</span>
       </nav>
 
       {/* CABEÇALHO */}
@@ -46,7 +46,7 @@ export default function NoticiasPage() {
         </div>
 
         <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-          Notícias & Estudos de Dados Públicos
+          Blog & Estudos de Dados Públicos
         </h1>
 
         <p className="text-base text-muted leading-relaxed">

@@ -54,7 +54,7 @@ const LINKS_PORTAL = [
   // frentes" acima porque NÃO é zona — ver a nota de arquitetura em
   // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
   { label: "Índice do portal", href: "/indice" },
-  { label: "Notícias & Relatórios", href: "/noticias" },
+  { label: "Blog & Relatórios", href: "/noticias" },
   { label: "Governos & Promessas", href: "/governo" },
   { label: "Instituições & Secretarias", href: "/instituicoes" },
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },

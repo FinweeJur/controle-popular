@@ -541,19 +541,19 @@ export const FRENTES: SeuNonoFrente[] = [
   },
   {
     id: "central",
-    titulo: "Central ONSA & Notícias",
+    titulo: "Central ONSA & Blog",
     descricao: "Investigações jornalísticas com dados abertos, Biblioteca de Crimes Socioambientais e acessibilidade.",
     categorias: [
       {
         id: "noticias-relatorios",
-        titulo: "Notícias & Relatórios Cívicos",
+        titulo: "Blog & Relatórios Cívicos",
         perguntas: [
           {
             id: "reportagens-onsa",
             pergunta: "Onde ver as reportagens investigativas do portal?",
             resposta:
               "O portal publica matérias aprofundadas com auditoria de compras públicas, royalties de mineração e acordos de barragens.",
-            link: { href: "/noticias", texto: "Ver notícias e relatórios" },
+            link: { href: "/noticias", texto: "Ver blog e relatórios" },
           },
           {
             id: "verificar-fontes",
@@ -836,7 +836,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
   },
   {
     id: "noticias",
-    titulo: "Notícias & Relatórios",
+    titulo: "Blog & Relatórios",
     resumo: "Investigações cívicas, auditoria de compras públicas e monitoramento socioambiental do ONSA.",
     dados: [
       "13 reportagens investigativas cobrindo todas as frentes do portal",
@@ -847,7 +847,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       "Seção 'Recomendação para verificar' com links de fontes oficiais",
     ],
     links: [
-      { href: "/noticias", texto: "Ver notícias e relatórios" },
+      { href: "/noticias", texto: "Ver blog e relatórios" },
     ],
   },
   {

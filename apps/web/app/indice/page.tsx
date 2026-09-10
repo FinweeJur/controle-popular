@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import novidades from "@/data/novidades.json";
+import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import CapaFrente from "@/app/components/CapaFrente";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
@@ -56,8 +57,41 @@ export const metadata: Metadata = {
     "Todas as frentes, cidades e temas do Controle Popular num mapa só — dado público com fonte, organizado do seu jeito de procurar.",
 };
 
+interface ItemNovidade {
+  data: string;
+  titulo: string;
+  descricao: string;
+  frente: string;
+  link: string | null;
+}
+
+/**
+ * Monta a lista de novidades: as 6 publicações mais recentes do blog
+ * (noticias-portal.json) + os itens de novidades.json cujo link não é
+ * /noticias/*. Ordenado por data desc, cortado nos 8 primeiros.
+ */
+function montarNovidades(): ItemNovidade[] {
+  const dasPublicacoes: ItemNovidade[] = [...listarNoticiasPortal()]
+    .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
+    .slice(0, 6)
+    .map((n) => ({
+      data: n.publicadoEm.slice(0, 10),
+      titulo: n.titulo,
+      descricao: n.resumo,
+      frente: n.frente,
+      link: `/noticias/${n.slug}`,
+    }));
+  const outras: ItemNovidade[] = (novidades as ItemNovidade[]).filter(
+    (item) => !item.link?.startsWith("/noticias/")
+  );
+  return [...dasPublicacoes, ...outras]
+    .sort((a, b) => b.data.localeCompare(a.data))
+    .slice(0, 8);
+}
+
 export default async function IndiceGlobal() {
   const cidades = await listarCidades();
+  const novidadesMescladas = montarNovidades();
 
   const secoes = [
     {
@@ -100,7 +134,7 @@ export default async function IndiceGlobal() {
         { href: "/direitos-em-movimento/informacao", titulo: "Canais de Informação (LAI)", descricao: "445 canais oficiais de prefeituras, câmaras, órgãos federais e concessionárias de luz e água.", cor: "var(--cp-alert)", badge: "Cidadania", icon: <FileText size={14} /> },
         { href: "/direitos-em-movimento/conselhos", titulo: "Conselhos de Direitos & Colegiados", descricao: "710 conselhos de saúde (CMS/CES), meio ambiente (CODEMA), direitos humanos, tutelares e mulheres.", cor: "var(--cp-alert)", badge: "Controle Social", icon: <Users size={14} /> },
         { href: "/tecnologia", titulo: "Tecnologia & IA Livre", descricao: "Oficinas práticas de IA, catálogo open source e ferramentas livres.", cor: "var(--cp-primary)", badge: "Educação", icon: <Cpu size={14} /> },
-        { href: "/noticias", titulo: "Notícias & Relatórios", descricao: "Estudos técnicos, dados públicos e investigações cívicas do ONSA.", cor: "var(--cp-primary)", badge: "Jornalismo", icon: <Newspaper size={14} /> },
+        { href: "/noticias", titulo: "Blog & Relatórios", descricao: "Estudos técnicos, dados públicos e investigações cívicas do ONSA, em publicações com fonte ao lado.", cor: "var(--cp-primary)", badge: "Jornalismo", icon: <Newspaper size={14} /> },
         { href: "/governo", titulo: "Governo: Prometeu? Cumpriu?", descricao: "Acompanhamento das promessas e metas dos 27 governos estaduais, capitais e polos.", cor: "var(--cp-secondary)", badge: "Gestão", icon: <Landmark size={14} /> },
         { href: "/instituicoes", titulo: "Organogramas & Lideranças", descricao: "Quem comanda, estrutura funcional e canais oficiais de órgãos públicos.", cor: "var(--cp-secondary)", badge: "Institucional", icon: <Building2 size={14} /> },
         { href: "/cidades", titulo: "199 Cidades Estratégicas", descricao: "Expansão para as 27 capitais e 172 polos do interior com dados do IBGE e DATASUS.", cor: "var(--cp-tertiary)", badge: "Nacional", icon: <MapPin size={14} /> },
@@ -171,7 +205,7 @@ export default async function IndiceGlobal() {
           </a>
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {novidades.slice(0, 6).map((item, i) => (
+          {novidadesMescladas.map((item, i) => (
             <CartaoTopico
               key={`${item.data}-${i}`}
               topico={{
@@ -182,7 +216,7 @@ export default async function IndiceGlobal() {
                 badge: new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "short" }).format(
                   new Date(item.data + "T12:00:00Z")
                 ),
-                novo: item.data >= "2026-08-24",
+                novo: item.data >= "2026-09-09",
               }}
             />
           ))}

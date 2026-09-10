@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sparkles } from "lucide-react";
 import novidades from "@/data/novidades.json";
+import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const dynamic = "force-static";
@@ -29,10 +30,41 @@ const LABEL_FRENTE: Record<string, string> = {
   paraopeba: "Paraopeba",
   terras: "Terras",
   operacao: "Operacao",
+  terra: "Terra e Territorios",
+  estado: "Estado e Economia",
 };
 
+interface ItemNovidade {
+  data: string;
+  titulo: string;
+  descricao: string;
+  frente: string;
+  link: string | null;
+}
+
+/**
+ * Mescla novidades.json com as publicacoes mais recentes do blog
+ * (noticias-portal.json), ordenado por data desc.
+ */
+function montarNovidades(): ItemNovidade[] {
+  const dasPublicacoes: ItemNovidade[] = [...listarNoticiasPortal()]
+    .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
+    .slice(0, 6)
+    .map((n) => ({
+      data: n.publicadoEm.slice(0, 10),
+      titulo: n.titulo,
+      descricao: n.resumo,
+      frente: n.frente,
+      link: `/noticias/${n.slug}`,
+    }));
+  const outras: ItemNovidade[] = (novidades as ItemNovidade[]).filter(
+    (item) => !item.link?.startsWith("/noticias/")
+  );
+  return [...dasPublicacoes, ...outras].sort((a, b) => b.data.localeCompare(a.data));
+}
+
 export default function NovidadesPage() {
-  const itens = [...novidades].sort((a, b) => b.data.localeCompare(a.data));
+  const itens = montarNovidades();
   const hoje = new Date().toISOString().slice(0, 10);
 
   return (

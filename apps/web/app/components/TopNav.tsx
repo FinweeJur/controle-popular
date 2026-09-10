@@ -139,7 +139,7 @@ const SECOES_MENU = [
     badgeClasse: "bg-primary/10 text-primary border-primary/30",
     links: [
       { label: "Biblioteca Geral & Pesquisa", href: "/biblioteca", icone: BookOpen },
-      { label: "Central de Notícias", href: "/noticias", icone: Newspaper },
+      { label: "Blog", href: "/noticias", icone: Newspaper },
       { label: "Tecnologia & IA Livre", href: "/tecnologia", icone: Cpu },
       { label: "Alertas & Notificações", href: "/alertas", icone: Bell },
       { label: "Índice Geral do Portal", href: "/indice", icone: List },
@@ -361,10 +361,10 @@ export default function TopNav() {
           <Link
             href="/noticias"
             className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[.8em] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
-            aria-label="Notícias e Relatórios de Dados Públicos"
+            aria-label="Blog e Relatórios de Dados Públicos"
           >
             <Newspaper size={13} aria-hidden="true" />
-            <span>Notícias</span>
+            <span>Blog</span>
           </Link>
           <Link
             href="/alertas"
