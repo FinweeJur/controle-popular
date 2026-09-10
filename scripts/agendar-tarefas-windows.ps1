@@ -67,6 +67,16 @@ $PublicaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/publicar-radar-
 & schtasks.exe /Create /TN "ControlePopular_RadarPublicacao" /TR $PublicaCmd /SC DAILY /ST 04:50 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
+# ─── Atos de pessoal do Judiciario (diario, 05:05) ───────────────────────────
+# Baixa o Diario Oficial de MG e guarda nomeacoes/designacoes com pessoa
+# nomeada em apps/web/data/judiciario-designacoes.json; commit+push para o
+# autodeploy das 05:50 levar ao ar. Fonte B (DJE/TJMG e MPMG) pendente de
+# engenharia reversa — ver cabecalho do coletor. Registrado em 10/09/2026.
+Write-Host "Registrando ATOS DE PESSOAL (diario, 05:05)..." -ForegroundColor Cyan
+$AtosCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/coletar-atos-pessoal-judiciario.mts >> docs\relatorios-automacao\logs\rotina-atos-pessoal.log 2>&1"
+& schtasks.exe /Create /TN "ControlePopular_AtosPessoal" /TR $AtosCmd /SC DAILY /ST 05:05 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
 # ─── Drill mensal (item 6): derruba o next start no dia 01 para o vigia ───
 # Provar em treino o que o vigia promete em guerra (SRE Workbook, Failure
 # Friday). O script se guarda: so age no dia 01; schtasks nao tem /SC MONTHLY
