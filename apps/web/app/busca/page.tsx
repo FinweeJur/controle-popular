@@ -38,14 +38,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metadataEditavel("/busca", {
   title: "Busca — Controle Popular",
   // ⟲ 13/08: dizia "nas TRÊS frentes do Controle Popular", o que virou falso
-  // quando o portal passou a ter cinco. ⟲ 10/09: a cobertura do índice também
-  // cresceu — agora inclui o acervo de Estudos Rurais (/estudos-rurais) ao
-  // lado de atos oficiais, proposições municipais e do Congresso e
-  // tribunais/magistrados (ver `scripts/gerar-indice-busca.mts`). A cobertura
-  // continua MENOR que o tamanho do portal — meio ambiente e terra não entram
-  // nele — e a descrição declara exatamente o que entra.
+  // quando o portal passou a ter cinco. ⟲ 10/09 a duas mãos: o acervo de
+  // Estudos Rurais (/estudos-rurais) e as postagens do Blog (/noticias/*)
+  // entraram no índice, ao lado de atos oficiais, proposições municipais e do
+  // Congresso e tribunais/magistrados (ver `scripts/gerar-indice-busca.mts`). A
+  // cobertura continua MENOR que o tamanho do portal — meio ambiente e terra
+  // não entram nele — e a descrição declara exatamente o que entra.
   description:
-    "Busque por tema, palavra-chave e território em quatro frentes do Controle Popular: Cidades, Congresso, Judiciário e Estudos Rurais.",
+    "Busque por tema, palavra-chave e território em cinco frentes do Controle Popular: Cidades, Congresso, Judiciário, Estudos Rurais e Blog.",
 });
 
 export default async function BuscaPage() {

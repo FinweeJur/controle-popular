@@ -90,6 +90,28 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
   return indiceEmMemoria;
 }
 
+/** Índice só-lexical: quando o Ollama (embeddings) está fora e há chave
+ *  remota de geração, o RAG degrada em vez de faltar — ranqueia por
+ *  similaridade lexical (Jaccard) e deixa o provedor remoto gerar. O
+ *  cosseno entra valendo zero; o score híbrido despenca para o lexical.
+ *  Pior que a busca vetorial, mas melhor do que devolver 503 com as
+ *  chaves de geração vivas — e é transparente ao leitor (nenhum dado
+ *  inventado: a abstenção continua valendo pelo mesmo limiar). */
+const INDICE_LEXICAL: IndiceAcervo = { fontes: [], vetores: [] };
+
+async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boolean }> {
+  try {
+    return { indice: await indexarAcervo(), soLexical: false };
+  } catch (e) {
+    if (!temChaveRemota()) throw e;
+    const fontes = montarAcervo();
+    return {
+      indice: { fontes, vetores: fontes.map(() => []) },
+      soLexical: true,
+    };
+  }
+}
+
 function scoreHibrido(cosseno: number, lexical: number): number {
   return PESO_COSSENO * cosseno + PESO_LEXICAL * lexical;
 }
@@ -101,17 +123,22 @@ interface ResultadoBusca {
   score: number;
 }
 
-/** Rankeia o acervo por cosseno ⊕ lexical, do mais para o menos parecido. */
+/** Rankeia o acervo por cosseno ⊕ lexical (ou só lexical, sem embeddings),
+ *  do mais para o menos parecido. */
 export async function buscarNoAcervo(
   pergunta: string,
   topK?: number,
   limiar?: number
 ): Promise<{ melhores: ResultadoBusca[]; abstem: boolean }> {
-  const indice = await indexarAcervo();
-  const vetorPergunta = await vetorizar(pergunta);
+  const { indice, soLexical } = await indiceOuLexical();
+  // Só-lexical não chama `vetorizar`: sem Ollama não há embedding da pergunta,
+  // e `similaridadeCosseno` com vetores vazios seria ruído.
+  const vetorPergunta = soLexical ? [] : await vetorizar(pergunta);
   const ranqueados: ResultadoBusca[] = indice.fontes
     .map((fonte, i) => {
-      const cosseno = similaridadeCosseno(vetorPergunta, indice.vetores[i]);
+      const cosseno = soLexical
+        ? 0
+        : similaridadeCosseno(vetorPergunta, indice.vetores[i]);
       const lexical = similaridadeLexical(pergunta, fonte.texto);
       return { fonte, cosseno, lexical, score: scoreHibrido(cosseno, lexical) };
     })

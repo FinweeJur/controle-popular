@@ -1,0 +1,260 @@
+{
+  "gerado_em": "2026-09-10T16:05:17.854Z",
+  "fonte": "IBGE API + PNCP + Conselhos Direitos",
+  "total_municipios_brasil": 5571,
+  "regioes": {
+    "Norte": {
+      "ufs": [
+        "AC",
+        "AP",
+        "AM",
+        "PA",
+        "RR",
+        "RO",
+        "TO"
+      ],
+      "total_municipios": 296,
+      "total_conselhos": 3117,
+      "total_contratos": 0
+    },
+    "Nordeste": {
+      "ufs": [
+        "AL",
+        "BA",
+        "CE",
+        "MA",
+        "PB",
+        "PE",
+        "PI",
+        "RN",
+        "SE"
+      ],
+      "total_municipios": 894,
+      "total_conselhos": 4664,
+      "total_contratos": 0
+    },
+    "Sudeste": {
+      "ufs": [
+        "ES",
+        "MG",
+        "RJ",
+        "SP"
+      ],
+      "total_municipios": 8,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "Sul": {
+      "ufs": [
+        "PR",
+        "RS",
+        "SC"
+      ],
+      "total_municipios": 60,
+      "total_conselhos": 684,
+      "total_contratos": 0
+    },
+    "Centro_Oeste": {
+      "ufs": [
+        "DF",
+        "GO",
+        "MS",
+        "MT"
+      ],
+      "total_municipios": 53,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    }
+  },
+  "por_uf": {
+    "AC": {
+      "nome": "AC",
+      "nome_completo": "Acre",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "AP": {
+      "nome": "AP",
+      "nome_completo": "Amapá",
+      "total_municipios": 9,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "AM": {
+      "nome": "AM",
+      "nome_completo": "Amazonas",
+      "total_municipios": 11,
+      "total_conselhos": 322,
+      "total_contratos": 0
+    },
+    "PA": {
+      "nome": "PA",
+      "nome_completo": "Pará",
+      "total_municipios": 228,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "RR": {
+      "nome": "RR",
+      "nome_completo": "Roraima",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "RO": {
+      "nome": "RO",
+      "nome_completo": "Rondônia",
+      "total_municipios": 19,
+      "total_conselhos": 665,
+      "total_contratos": 0
+    },
+    "TO": {
+      "nome": "TO",
+      "nome_completo": "Tocantins",
+      "total_municipios": 29,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "AL": {
+      "nome": "AL",
+      "nome_completo": "Alagoas",
+      "total_municipios": 186,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "BA": {
+      "nome": "BA",
+      "nome_completo": "Bahia",
+      "total_municipios": 168,
+      "total_conselhos": 489,
+      "total_contratos": 0
+    },
+    "CE": {
+      "nome": "CE",
+      "nome_completo": "Ceará",
+      "total_municipios": 36,
+      "total_conselhos": 708,
+      "total_contratos": 0
+    },
+    "MA": {
+      "nome": "MA",
+      "nome_completo": "Maranhão",
+      "total_municipios": 153,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "PB": {
+      "nome": "PB",
+      "nome_completo": "Paraíba",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "PE": {
+      "nome": "PE",
+      "nome_completo": "Pernambuco",
+      "total_municipios": 37,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "PI": {
+      "nome": "PI",
+      "nome_completo": "Piauí",
+      "total_municipios": 114,
+      "total_conselhos": 627,
+      "total_contratos": 0
+    },
+    "RN": {
+      "nome": "RN",
+      "nome_completo": "Rio Grande do Norte",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "SE": {
+      "nome": "SE",
+      "nome_completo": "Sergipe",
+      "total_municipios": 200,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "ES": {
+      "nome": "ES",
+      "nome_completo": "Espírito Santo",
+      "total_municipios": 8,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "MG": {
+      "nome": "MG",
+      "nome_completo": "Minas Gerais",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "RJ": {
+      "nome": "RJ",
+      "nome_completo": "Rio de Janeiro",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "SP": {
+      "nome": "SP",
+      "nome_completo": "São Paulo",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "PR": {
+      "nome": "PR",
+      "nome_completo": "Paraná",
+      "total_municipios": 60,
+      "total_conselhos": 684,
+      "total_contratos": 0
+    },
+    "RS": {
+      "nome": "RS",
+      "nome_completo": "Rio Grande do Sul",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "SC": {
+      "nome": "SC",
+      "nome_completo": "Santa Catarina",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "DF": {
+      "nome": "DF",
+      "nome_completo": "Distrito Federal",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "GO": {
+      "nome": "GO",
+      "nome_completo": "Goiás",
+      "total_municipios": 53,
+      "total_conselhos": 710,
+      "total_contratos": 0
+    },
+    "MS": {
+      "nome": "MS",
+      "nome_completo": "Mato Grosso do Sul",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    },
+    "MT": {
+      "nome": "MT",
+      "nome_completo": "Mato Grosso",
+      "total_municipios": 0,
+      "total_conselhos": 0,
+      "total_contratos": 0
+    }
+  }
+}

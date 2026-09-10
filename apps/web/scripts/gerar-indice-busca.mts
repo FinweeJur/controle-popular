@@ -483,6 +483,43 @@ async function main() {
     console.warn("[gerar-indice-busca] Estudos Rurais nao indexado:", (e as Error).message);
   }
 
+  // ───────────────────── blog do portal (noticias-portal.json) ─────────────────────
+  // Mesmo esquema dos estudos: parametro por consulta para sobreviver acento,
+  // aspas e travessao. Cada postagem vira um doc com f="blog" e link direto.
+  const blogPath = path.resolve(AQUI, "../data/noticias-portal.json");
+  let blogDocs = 0;
+  try {
+    const posts = JSON.parse(readFileSync(blogPath, "utf8")) as {
+      slug: string;
+      titulo: string;
+      subtitulo: string;
+      resumo: string;
+      publicadoEm: string;
+    }[];
+    for (const post of posts) {
+      const textoTsvector = `${post.titulo} ${post.subtitulo} ${post.resumo}`;
+      const tsvPost = (
+        await db.execute<{ tsv: string }>(sql`
+          select to_tsvector('portuguese', public.unaccent_immutable(${textoTsvector}))::text as tsv
+        `)
+      ).rows ?? [];
+      registrar(
+        {
+          t: post.titulo,
+          e: truncarEmenta(post.resumo, LIMITE_EMENTA),
+          h: `/noticias/${post.slug}`,
+          f: "blog",
+          d: post.publicadoEm?.slice(0, 10) ?? undefined,
+        },
+        textoTsvector,
+        tsvPost[0]?.tsv ?? ""
+      );
+      blogDocs++;
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Blog nao indexado:", (e as Error).message);
+  }
+
   // ─────────────────────────── formas (lote único) ───────────────────────────
   const listaSuperficies = [...superficies];
   type ParFormaRadical = { forma: string; radical: string | null };
@@ -524,12 +561,12 @@ async function main() {
   const rDocs = resumoDoGrupo(arquivosDocs);
   const rVocab = resumoDoGrupo(arquivosVocab);
   const rFormas = resumoDoGrupo(arquivosFormas);
-  const porZona = { cidades: 0, congresso: 0, judiciario: 0, estudos: 0 };
+  const porZona = { cidades: 0, congresso: 0, judiciario: 0, estudos: 0, blog: 0 };
   for (const d of docsComId) porZona[d.f]++;
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(

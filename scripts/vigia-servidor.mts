@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 /**
  * 🛡️ Vigia Servidor — verifica health do Controle Popular
- * 
+ *
  * Cuida do protocolo:
- * - curl HTTP health check (5s timeout)
- * - se erro, envia notificação Telegram
- * - output vazio = tudo OK (silent watchdog)
+ * - HTTP health check (5s timeout)
+ * - se erro, envia notificação Telegram via curl DETACHED (sem janela)
+ * - stdout vazio = tudo OK (silent watchdog)
  */
 import https from "node:https";
+import http from "node:http";
+import { spawn } from "node:child_process";
 
-const HEALTH_URL = "https://controlepopular.com.br/api/health";
+// 🔧 Config: carregado do scripts/.env ou process.env
+const HEALTH_URL = process.env.HEALTH_URL || "https://controlepopular.com.br/api/health";
+const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || "-10017250703518";
 const TIMEOUT_MS = 5000;
-const LOCAL_CHECK = true; // também verifica localhost:3000
+const LOCAL_CHECK = true;
 
 async function checkHealth(url: string): Promise<{ ok: boolean; status: number; error?: string }> {
   return new Promise((resolve) => {
@@ -24,40 +29,61 @@ async function checkHealth(url: string): Promise<{ ok: boolean; status: number; 
 }
 
 async function checkLocal(): Promise<{ ok: boolean; error?: string }> {
-  try {
-    const res = await import("node:http").then(http => new Promise((resolve, reject) => {
-      const req = http.get("http://127.0.0.1:3000", { timeout: 3000 }, (r) => resolve({ ok: r.statusCode === 200, status: r.statusCode }));
-      req.on("error", reject);
-      req.on("timeout", () => { req.destroy(); reject(new Error("timeout")); });
-    }));
-    return res;
-  } catch { return { ok: false, error: "next start offline" }; }
+  return new Promise((resolve) => {
+    const req = http.get("http://127.0.0.1:3000", { timeout: 3000 }, (res) => {
+      resolve({ ok: res.statusCode === 200, status: res.statusCode });
+    });
+    req.on("error", (err) => resolve({ ok: false, error: err.message }));
+    req.on("timeout", () => { req.destroy(); resolve({ ok: false, error: "timeout" }); });
+  });
+}
+
+/**
+ * Envia mensagem via Telegram sem abrir janela no Windows.
+ * Usa spawn com windowsHide + stdio:ignore + detached.
+ */
+function notifyTelegram(msg: string): void {
+  if (!TELEGRAM_TOKEN || !TELEGRAM_CHAT_ID) {
+    console.error("⚠️  Credenciais Telegram ausentes (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID)");
+    return;
+  }
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+  spawn("curl", [
+    "-s",
+    "--max-time", "10",
+    url,
+    "-d", `chat_id=${TELEGRAM_CHAT_ID}`,
+    "-d", `text=${encodeURIComponent(msg)}`,
+  ], {
+    stdio: "ignore",        // não herda stdin/stdout/stderr
+    detached: true,         // separa do processo pai
+    windowsHide: true,      // ← chave: não abre janela no Windows
+  });
 }
 
 async function main() {
   const result = await checkHealth(HEALTH_URL);
-  
+
   if (!result.ok) {
-    if (LOCAL_CHECK) {
-      const local = await checkLocal();
-      if (local.ok) {
-        console.log(`[${new Date().toISOString()}] ⚠️ site offline (localhost 3000 UP)`);
-        // Telegram alert
-        try {
-          await import("child_process").then(cp => {
-            const env = process.env.TELEGRAM_BOT_TOKEN;
-            const chat = process.env.TELEGRAM_CHAT_ID;
-            if (env && chat) {
-              const msg = `⚠️ Controle Popular OFFLINE em ${new Date().toLocaleString('pt-BR')} -- localhost:3000 está UP, mas HTTPS falhou`;
-              cp.execSync(`curl -s "https://api.telegram.org/bot${env}/sendMessage" -d chat_id="${chat}" -d text="${encodeURIComponent(msg)}"`);
-            }
-          });
-        } catch {}
-      }
+    const local = LOCAL_CHECK ? await checkLocal() : { ok: false };
+
+    if (local.ok) {
+      // Site offline no ar (HTTPS falhou) mas localhost está UP → Cloudflare Tunnel caiu
+      notifyTelegram(
+        `⚠️ Controle Popular OFFLINE (HTTPS) — localhost:3000 UP. Cloudflare Tunnel/caiu. ` +
+        `⏰ ${new Date().toLocaleString("pt-BR")}`
+      );
+    } else {
+      // Tanto HTTPS quanto localhost falhando → next start caiu
+      notifyTelegram(
+        `🔴 Controle Popular OFFLINE COMPLETO — HTTPS e localhost:3000 caíram. ` +
+        `Verificar home-pc (next start :3000). ⏰ ${new Date().toLocaleString("pt-BR")}`
+      );
     }
-    console.log(`[${new Date().toISOString()}] 🔴 site OFFLINE (${result.status} ${result.error ?? ''})`);
+    // stderr visível pra debugging do cron
+    console.error(`[${new Date().toISOString()}] OFFLINE — status=${result.status} erro=${result.error ?? "n/a"}`);
   }
-  // silent (empty stdout) = all good — watchdog pattern
+  // stdout vazio = tudo OK → watchdog silencioso
 }
 
 main();

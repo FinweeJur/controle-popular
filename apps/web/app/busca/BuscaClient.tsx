@@ -45,6 +45,7 @@ const RÓTULO_ZONA: Record<Resultado["doc"]["f"], string> = {
   congresso: "Congresso",
   judiciario: "Judiciário",
   estudos: "Estudos Rurais",
+  blog: "Blog",
 };
 
 interface BuscaClientProps {
@@ -253,7 +254,7 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
           </div>
           <p className="mt-1 text-xs text-text-soft">
             Lista única de todas as frentes — o chip à esquerda de cada título diz a fonte.
-            Tema e território filtram só Cidades; Congresso, Judiciário e Estudos Rurais
+            Tema e território filtram só Cidades; Congresso, Judiciário, Estudos Rurais e Blog
             respondem apenas à palavra-chave.
           </p>
 
