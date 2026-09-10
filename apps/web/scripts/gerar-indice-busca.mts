@@ -205,6 +205,7 @@ async function main() {
         e: truncarEmenta(r.ementa, LIMITE_EMENTA),
         h: href,
         f: "cidades",
+        k: "ato-oficial",
         m: slug,
         d: r.data ?? undefined,
         a: r.temas?.length ? r.temas : undefined,
@@ -263,6 +264,7 @@ async function main() {
         e: truncarEmenta(r.ementa, LIMITE_EMENTA),
         h: href,
         f: "cidades",
+        k: "proposicao-municipal",
         m: slug,
         d: r.data ?? undefined,
         a: r.temas?.length ? r.temas : undefined,
@@ -307,6 +309,7 @@ async function main() {
         e: truncarEmenta(r.ementa, LIMITE_EMENTA),
         h: `/congresso/proposicoes/${r.id}`,
         f: "congresso",
+        k: "proposicao-federal",
         d: r.data ?? undefined,
         u: r.url ?? undefined,
       },
@@ -342,6 +345,7 @@ async function main() {
         e: truncarEmenta(r.nome, LIMITE_EMENTA),
         h: `/judiciario/tribunais/${r.id.toLowerCase()}`,
         f: "judiciario",
+        k: "tribunal",
         u: r.url ?? undefined,
       },
       `${r.sigla ?? ""} ${r.nome ?? ""}`,
@@ -376,6 +380,7 @@ async function main() {
         e: truncarEmenta(r.subtitulo, LIMITE_EMENTA),
         h: `/judiciario/tribunais/${r.tribunal_slug}`,
         f: "judiciario",
+        k: "magistrado",
         u: r.url ?? undefined,
       },
       r.nome,
@@ -470,6 +475,7 @@ async function main() {
             e: truncarEmenta(item.resumo, LIMITE_EMENTA),
             h: "/estudos-rurais",
             f: "estudos",
+            k: "estudo",
             d: item.data ?? undefined,
             u: item.url ?? undefined,
           },
@@ -509,6 +515,7 @@ async function main() {
           e: truncarEmenta(post.resumo, LIMITE_EMENTA),
           h: `/noticias/${post.slug}`,
           f: "blog",
+          k: "post",
           d: post.publicadoEm?.slice(0, 10) ?? undefined,
         },
         textoTsvector,
@@ -518,6 +525,44 @@ async function main() {
     }
   } catch (e) {
     console.warn("[gerar-indice-busca] Blog nao indexado:", (e as Error).message);
+  }
+
+  // ───────────────────── novidades (data/novidades.json) ─────────────────────
+  // Uma doc por item, f="blog" e k="atualizacao" — o link e o proprio destino
+  // da novidade; item sem link e pulado (nao ha onde levar o leitor).
+  const novidadesPath = path.resolve(AQUI, "../data/novidades.json");
+  let novidadesDocs = 0;
+  try {
+    const novidades = JSON.parse(readFileSync(novidadesPath, "utf8")) as {
+      data: string;
+      titulo: string;
+      descricao: string;
+      link: string | null;
+    }[];
+    for (const item of novidades) {
+      if (!item.link) continue;
+      const textoTsvector = `${item.titulo} ${item.descricao}`;
+      const tsvNovidade = (
+        await db.execute<{ tsv: string }>(sql`
+          select to_tsvector('portuguese', public.unaccent_immutable(${textoTsvector}))::text as tsv
+        `)
+      ).rows ?? [];
+      registrar(
+        {
+          t: item.titulo,
+          e: truncarEmenta(item.descricao, LIMITE_EMENTA),
+          h: item.link,
+          f: "blog",
+          k: "atualizacao",
+          d: item.data ?? undefined,
+        },
+        textoTsvector,
+        tsvNovidade[0]?.tsv ?? ""
+      );
+      novidadesDocs++;
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Novidades nao indexadas:", (e as Error).message);
   }
 
   // ─────────────────────────── formas (lote único) ───────────────────────────
@@ -566,7 +611,7 @@ async function main() {
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}${novidadesDocs ? ` incl. ${novidadesDocs} novidades` : ""}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(

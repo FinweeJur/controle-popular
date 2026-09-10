@@ -32,6 +32,21 @@ import { separarPalavras, semAcento, distancia, tolerancia } from "./normalizar"
  * EDIÇÃO. As três formas somam confiança diferente na ordenação (ver `PESO`).
  */
 
+/** Valores de `k` (tipo do documento) — vocabulario fechado, emitido pelo
+ *  gerador do indice. "justica" e o valor de folga para doc do Judiciario
+ *  cuja fonte nao distingue tribunal de magistrado; o leitor aceita os dois
+ *  especificos e o generico. */
+export type TipoDocumento =
+  | "ato-oficial"
+  | "proposicao-municipal"
+  | "proposicao-federal"
+  | "tribunal"
+  | "magistrado"
+  | "justica"
+  | "estudo"
+  | "post"
+  | "atualizacao";
+
 /** Documento como ele viaja no índice — chaves curtas porque são ~10 mil. */
 export interface DocumentoIndexado {
   /** id posicional; é o que aparece nas listas de ocorrência */
@@ -53,6 +68,11 @@ export interface DocumentoIndexado {
   /** URL da fonte oficial (Diário Oficial, PNCP, site do tribunal...), quando
    *  a fonte foi coletada. Ausente não é erro — nem toda linha tem link. */
   u?: string;
+  /** tipo, do vocabulario fechado em `TipoDocumento`. Ausente nao e erro:
+   *  indice gerado por versao antiga do gerador nao tem `k`, e nem toda
+   *  linha tem tipo distinto (ex.: ComunicaBR). Filtro de tipo simplesmente
+   *  nao casa doc sem `k`. */
+  k?: TipoDocumento;
 }
 
 export interface IndiceBusca {
@@ -75,7 +95,78 @@ export interface Resultado {
 export interface OpcoesBusca {
   tema?: string;
   municipio?: string;
+  /** zonas exigidas — vazio/ausente = todas. A tela monta com os chips. */
+  frente?: string[];
+  /** valor de `TIPOS_FILTRO` exigido (confere com `docTemTipo`) */
+  tipo?: string;
+  /** periodo exigido sobre `d` (confere com `docPassaPeriodo`) */
+  periodo?: Periodo;
+  /** data de referencia do periodo — so os testes passam; padrao: hoje */
+  hoje?: string;
   limite?: number;
+}
+
+/** Tipos selecionaveis no filtro da tela. "tribunal-magistrado" agrupa os
+ *  dois tipos do Judiciario — e tambem aceita "justica" (indice antigo que
+ *  nao distinguia). Os rotulos sao os que a tela mostra no select. */
+export const TIPOS_FILTRO: { valor: string; rotulo: string }[] = [
+  { valor: "ato-oficial", rotulo: "Ato oficial" },
+  { valor: "proposicao-municipal", rotulo: "Proposição municipal" },
+  { valor: "proposicao-federal", rotulo: "Proposição federal" },
+  { valor: "tribunal-magistrado", rotulo: "Tribunal/Magistrado" },
+  { valor: "estudo", rotulo: "Estudo" },
+  { valor: "post", rotulo: "Post" },
+  { valor: "atualizacao", rotulo: "Atualização" },
+];
+
+/** `k` de um doc casa com o valor do filtro de tipo? Doc sem `k` nunca casa
+ *  com tipo especifico — fica de fora e a tela reporta vazio honesto. */
+export function docTemTipo(k: string | undefined, filtro: string): boolean {
+  if (filtro === "tribunal-magistrado") {
+    return k === "tribunal" || k === "magistrado" || k === "justica";
+  }
+  return k === filtro;
+}
+
+export type Periodo = "7" | "30" | "90" | "ano-corrente" | "ano-anterior";
+
+export const PERIODOS: { valor: Periodo; rotulo: string }[] = [
+  { valor: "7", rotulo: "Últimos 7 dias" },
+  { valor: "30", rotulo: "Últimos 30 dias" },
+  { valor: "90", rotulo: "Últimos 90 dias" },
+  { valor: "ano-corrente", rotulo: "Ano corrente" },
+  { valor: "ano-anterior", rotulo: "Ano anterior" },
+];
+
+/** Hoje no fuso local, em ISO (AAAA-MM-DD) — referencia padrao do periodo. */
+export function dataDeHoje(): string {
+  const agora = new Date();
+  const mes = String(agora.getMonth() + 1).padStart(2, "0");
+  const dia = String(agora.getDate()).padStart(2, "0");
+  return `${agora.getFullYear()}-${mes}-${dia}`;
+}
+
+function dataDeslocada(data: string, dias: number): string {
+  const [ano, mes, diaNum] = data.slice(0, 10).split("-").map(Number);
+  return new Date(Date.UTC(ano, mes - 1, diaNum + dias)).toISOString().slice(0, 10);
+}
+
+/** Doc passa no filtro de periodo? Doc sem `d` (ou com data ilegivel) fica
+ *  FORA de proposito — a tela avisa por escrito quando o periodo esta ativo.
+ *  `hoje` existe para os testes fixarem o dia; a tela usa `dataDeHoje()`. */
+export function docPassaPeriodo(d: string | undefined, periodo: Periodo, hoje = dataDeHoje()): boolean {
+  if (!d) return false;
+  const dia = d.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dia)) return false;
+  if (periodo === "ano-corrente") {
+    return dia >= `${hoje.slice(0, 4)}-01-01`;
+  }
+  if (periodo === "ano-anterior") {
+    const inicio = `${Number(hoje.slice(0, 4)) - 1}-01-01`;
+    const fim = `${hoje.slice(0, 4)}-01-01`;
+    return dia >= inicio && dia < fim;
+  }
+  return dia >= dataDeslocada(hoje, -Number(periodo));
 }
 
 /**
@@ -209,7 +300,7 @@ function candidatos(
 export function buscar(
   consulta: string,
   indice: IndiceBusca,
-  { tema, municipio, limite = 40 }: OpcoesBusca = {}
+  { tema, municipio, frente, tipo, periodo, hoje, limite = 40 }: OpcoesBusca = {}
 ): Resultado[] {
   const { termos, frases } = interpretarConsulta(consulta);
   const positivos = termos.filter((t) => !t.negado);
@@ -264,6 +355,9 @@ export function buscar(
 
     if (tema && !(doc.a ?? []).includes(tema)) continue;
     if (municipio && doc.m !== municipio) continue;
+    if (frente && frente.length > 0 && !frente.includes(doc.f)) continue;
+    if (tipo && !docTemTipo(doc.k, tipo)) continue;
+    if (periodo && !docPassaPeriodo(doc.d, periodo, hoje)) continue;
 
     const textoNormalizado = semAcento(`${doc.t} ${doc.e}`);
 

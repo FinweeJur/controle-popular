@@ -45,7 +45,7 @@ export const metadata: Metadata = metadataEditavel("/busca", {
   // cobertura continua MENOR que o tamanho do portal — meio ambiente e terra
   // não entram nele — e a descrição declara exatamente o que entra.
   description:
-    "Busque por tema, palavra-chave e território em cinco frentes do Controle Popular: Cidades, Congresso, Judiciário, Estudos Rurais e Blog.",
+    "Busque por tema, palavra-chave, território, tipo e período em cinco frentes do Controle Popular: Cidades, Congresso, Judiciário, Estudos Rurais e Blog.",
 });
 
 export default async function BuscaPage() {
@@ -74,7 +74,7 @@ export default async function BuscaPage() {
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Leis, decretos, resoluções e projetos das câmaras municipais, proposições do
           Congresso Nacional, a composição dos tribunais e o acervo de estudos rurais —
-          num lugar só, por tema, palavra-chave e cidade.
+          num lugar só, por tema, palavra-chave, cidade, tipo e período.
         </p>
       </header>
 

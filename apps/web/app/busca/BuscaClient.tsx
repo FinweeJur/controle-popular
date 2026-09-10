@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Cidade } from "@/lib/db/queries/municipios";
 import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
-import { buscar, type IndiceBusca, type Resultado } from "@/lib/busca/indice";
+import { buscar, TIPOS_FILTRO, PERIODOS, type IndiceBusca, type Periodo, type Resultado } from "@/lib/busca/indice";
 import { carregarIndiceBusca, type ProgressoCarregamento } from "@/lib/busca/carregarIndice";
 
 /**
@@ -13,7 +13,7 @@ import { carregarIndiceBusca, type ProgressoCarregamento } from "@/lib/busca/car
  * NÃO usa `useSearchParams()`: é o hook que faz `output: 'export'` falhar
  * com "missing generateStaticParams()" (ver `docs/deploy-github-pages.md`
  * §8 e o comentário equivalente em `TabelaEstatica.tsx`). O estado inicial
- * de q/tema/município vem de `window.location.search`, lido num efeito
+ * de q/tema/município/frente/tipo/período vem de `window.location.search`, lido num efeito
  * (depois da hidratação, sem divergir servidor/cliente), e é espelhado de
  * volta com `history.replaceState` — mesmo padrão de `TabelaEstatica.tsx`.
  *
@@ -37,6 +37,14 @@ function rotuloContagem(n: number, limite: number, singular: string, plural: str
   return `${n}+ ${plural} — mostrando os mais relevantes`;
 }
 
+/** Estilo do chip de frente — texto e cor mudam juntos, e o estado tambem
+ *  fica dito em aria-pressed (cor nunca e o unico canal). */
+function chipClasse(ativo: boolean): string {
+  return `cursor-pointer rounded-full border px-2.5 py-1 text-xs transition-colors ${
+    ativo ? "border-primary bg-primary/10 font-semibold text-primary" : "border-border text-text-soft hover:border-primary/50"
+  }`;
+}
+
 /** Zona -> rótulo do chip do resultado. O TEXTO do chip é o canal de
  *  informação (regra de acessibilidade: cor nunca é a única via) — todos os
  *  chips compartilham o mesmo estilo neutro e a fonte fica dita por escrito. */
@@ -47,6 +55,9 @@ const RÓTULO_ZONA: Record<Resultado["doc"]["f"], string> = {
   estudos: "Estudos Rurais",
   blog: "Blog",
 };
+
+/** Zonas na ordem dos chips de filtro — mesmo vocabulario de `f`. */
+const ZONAS: (keyof typeof RÓTULO_ZONA)[] = ["cidades", "congresso", "judiciario", "estudos", "blog"];
 
 interface BuscaClientProps {
   cidades: Cidade[];
@@ -60,6 +71,9 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
   const [q, setQ] = useState("");
   const [tema, setTema] = useState("");
   const [municipio, setMunicipio] = useState("");
+  const [frentes, setFrentes] = useState<string[]>([]);
+  const [tipo, setTipo] = useState("");
+  const [periodo, setPeriodo] = useState<Periodo | "">("");
   const primeiraRenderizacao = useRef(true);
 
   // Estado inicial vindo da URL, uma vez, depois da hidratação.
@@ -69,6 +83,11 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
     setQ(sp.get("q") ?? "");
     setTema(sp.get("tema") ?? "");
     setMunicipio(sp.get("municipio") ?? "");
+    setFrentes((sp.get("frente") ?? "").split(",").filter((z) => (ZONAS as readonly string[]).includes(z)));
+    const tipoUrl = sp.get("tipo") ?? "";
+    setTipo(TIPOS_FILTRO.some((t) => t.valor === tipoUrl) ? tipoUrl : "");
+    const periodoUrl = sp.get("periodo") ?? "";
+    setPeriodo(PERIODOS.some((p) => p.valor === periodoUrl) ? (periodoUrl as Periodo) : "");
   }, []);
 
   // Espelha de volta na URL, sem entrar no histórico.
@@ -81,9 +100,12 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
     if (q.trim()) sp.set("q", q.trim());
     if (tema) sp.set("tema", tema);
     if (municipio) sp.set("municipio", municipio);
+    if (frentes.length) sp.set("frente", frentes.join(","));
+    if (tipo) sp.set("tipo", tipo);
+    if (periodo) sp.set("periodo", periodo);
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [q, tema, municipio]);
+  }, [q, tema, municipio, frentes, tipo, periodo]);
 
   useEffect(() => {
     let cancelado = false;
@@ -108,7 +130,15 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
   const cidadesPorSlug = useMemo(() => new Map(cidades.map((c) => [c.slug, c])), [cidades]);
   const cidadeSelecionada = municipio ? (cidadesPorSlug.get(municipio) ?? null) : null;
   const municipioInvalido = Boolean(municipio) && !cidadeSelecionada;
-  const temFiltro = Boolean(q.trim() || tema || municipio);
+  const filtrosPorZona = Boolean(frentes.length || tipo || periodo);
+  function alternarFrente(zona: string) {
+    setFrentes((atual) => {
+      if (atual.includes(zona)) return atual.filter((z) => z !== zona);
+      const nova = [...atual, zona];
+      return nova.length === ZONAS.length ? [] : nova;
+    });
+  }
+  const temFiltro = Boolean(q.trim() || tema || municipio || frentes.length || tipo || periodo);
 
   const resultados = useMemo(() => {
     if (!completo || !indice || !temFiltro) return [] as Resultado[];
@@ -117,7 +147,12 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
     // ordenar o conjunto inteiro, senão o recorte cedo derruba resultado
     // relevante que ficou para trás na pontuação.
     const limiteAmplo = indice.docs.length || 1;
-    const todos = buscar(q, indice, { limite: limiteAmplo });
+    const todos = buscar(q, indice, {
+      limite: limiteAmplo,
+      frente: frentes.length ? frentes : undefined,
+      tipo: tipo || undefined,
+      periodo: periodo || undefined,
+    });
 
     // Tema/município só valem para Cidades (vocabulário de tema municipal e
     // território não existem no Congresso, no Judiciário nem no acervo de
@@ -126,15 +161,13 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
     // têm `.a`/`.m`).
     const cidadePassa = (r: Resultado): boolean =>
       (!tema || (r.doc.a ?? []).includes(tema)) && (!municipio || r.doc.m === municipio);
-
-    // Sem palavra-chave, só Cidades responde aos filtros (comportamento
-    // anterior das seções: as demais zonas exibiam aviso "digite uma
-    // palavra-chave" — numa lista única, a mensagem é a de vazio).
     if (!q.trim()) {
-      return todos.filter((r) => r.doc.f === "cidades" && cidadePassa(r));
+      // Sem palavra-chave, zona fora de Cidades so aparece quando o filtro de
+      // frente/tipo/periodo a pede — tema/territorio sao vocabulario de Cidades.
+      return todos.filter((r) => (r.doc.f === "cidades" ? cidadePassa(r) : filtrosPorZona));
     }
     return todos.filter((r) => (r.doc.f === "cidades" ? cidadePassa(r) : true));
-  }, [completo, indice, temFiltro, q, tema, municipio]);
+  }, [completo, indice, temFiltro, q, tema, municipio, frentes, tipo, periodo, filtrosPorZona]);
 
   const resultadosExibidos = resultados.slice(0, LIMITE_RESULTADOS);
 
@@ -154,7 +187,7 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder={completo ? "ex.: saúde, iluminação pública, PL 3611" : "Carregando índice de busca…"}
+              placeholder={completo ? 'Ex.: saúde, iluminação pública, PL 3611 — "frase exata" entre aspas' : "Carregando índice de busca…"}
               className="mt-1 w-full rounded-md border border-border bg-bg px-3 py-2 text-text disabled:cursor-not-allowed"
             />
           </label>
@@ -190,6 +223,52 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
               ))}
             </select>
           </label>
+
+          <fieldset className="sm:col-span-2">
+            <legend className="text-sm text-text-soft">Frentes</legend>
+            <div className="mt-1 flex flex-wrap gap-1.5">
+              <button type="button" aria-pressed={frentes.length === 0} onClick={() => setFrentes([])} className={chipClasse(frentes.length === 0)}>
+                Todas
+              </button>
+              {ZONAS.map((z) => (
+                <button key={z} type="button" aria-pressed={frentes.includes(z)} onClick={() => alternarFrente(z)} className={chipClasse(frentes.includes(z))}>
+                  {RÓTULO_ZONA[z]}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <label>
+            <span className="text-sm text-text-soft">Tipo</span>
+            <select
+              value={tipo}
+              onChange={(e) => setTipo(e.target.value)}
+              className="mt-1 w-full rounded-md border border-border bg-bg px-3 py-2 text-text disabled:cursor-not-allowed"
+            >
+              <option value="">Todos</option>
+              {TIPOS_FILTRO.map((t) => (
+                <option key={t.valor} value={t.valor}>
+                  {t.rotulo}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            <span className="text-sm text-text-soft">Período</span>
+            <select
+              value={periodo}
+              onChange={(e) => setPeriodo(e.target.value as Periodo | "")}
+              className="mt-1 w-full rounded-md border border-border bg-bg px-3 py-2 text-text disabled:cursor-not-allowed"
+            >
+              <option value="">Tudo</option>
+              {PERIODOS.map((p) => (
+                <option key={p.valor} value={p.valor}>
+                  {p.rotulo}
+                </option>
+              ))}
+            </select>
+          </label>
         </fieldset>
 
         <div className="sm:col-span-4 flex flex-wrap items-center gap-3">
@@ -200,6 +279,9 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
                 setQ("");
                 setTema("");
                 setMunicipio("");
+                setFrentes([]);
+                setTipo("");
+                setPeriodo("");
               }}
               className="cursor-pointer text-sm text-text-soft hover:underline"
             >
@@ -207,11 +289,17 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
             </button>
           ) : null}
           <span className="text-xs text-text-soft sm:ml-auto">
-            Tema e território filtram só Cidades — Congresso e Judiciário respondem apenas à
-            palavra-chave, porque não compartilham essa classificação.
+            Frente, tipo e período valem para todas as frentes — tema e território só para Cidades.
+            Use &quot;aspas&quot; para frase exata.
           </span>
         </div>
       </form>
+
+      {periodo ? (
+        <p className="mt-1 text-xs text-text-soft" aria-live="polite">
+          Resultados sem data ficam de fora deste filtro.
+        </p>
+      ) : null}
 
       {!completo && estado !== "erro" ? (
         <p className="mt-3 text-xs text-text-soft" aria-live="polite">
@@ -235,7 +323,9 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
 
       {completo && !temFiltro ? (
         <div className="mt-10 rounded-2xl border border-dashed border-border bg-surface-2 p-8 text-sm text-text-soft">
-          <p className="font-medium text-text">Escolha um tema, uma cidade, ou digite uma palavra-chave para começar.</p>
+          <p className="font-medium text-text">
+            Escolha um tema, uma cidade, uma frente, um tipo, um período, ou digite uma palavra-chave para começar.
+          </p>
           <p className="mt-2">
             Sem nenhum critério, não há o que listar — filtro nenhum aqui não é o mesmo que
             &quot;mostrar tudo&quot;.
@@ -254,15 +344,15 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
           </div>
           <p className="mt-1 text-xs text-text-soft">
             Lista única de todas as frentes — o chip à esquerda de cada título diz a fonte.
-            Tema e território filtram só Cidades; Congresso, Judiciário, Estudos Rurais e Blog
-            respondem apenas à palavra-chave.
           </p>
 
           {resultadosExibidos.length === 0 ? (
             <p className="mt-3 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
               {q.trim()
-                ? "Nenhum resultado encontrado com esse filtro — leis municipais, proposições, tribunais e estudos rurais."
-                : "Nenhuma lei, decreto, resolução ou projeto de lei municipal encontrado com esse filtro — com palavra-chave a busca cobre também Congresso, Judiciário e Estudos Rurais."}
+                ? "Nenhum resultado encontrado com esse filtro — leis municipais, proposições, tribunais, estudos rurais, posts e atualizações do blog."
+                : filtrosPorZona
+                  ? "Nenhum resultado com essa combinação de frente, tipo e período — ajuste ou limpe os filtros."
+                  : "Nenhuma lei, decreto, resolução ou projeto de lei municipal encontrado com esse filtro — com palavra-chave a busca cobre também Congresso, Judiciário, Estudos Rurais e Blog."}
             </p>
           ) : (
             <ul className="mt-3 flex flex-col gap-3">
