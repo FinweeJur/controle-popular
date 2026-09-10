@@ -39,6 +39,7 @@
 import { FRENTES, PAGINAS_DADOS } from "@/app/components/SeuNonoData";
 import { CONTEXTOS } from "@/lib/seo/contexto-pagina";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
+import { listarDesignacoes } from "@/lib/judiciario/designacoes";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -179,6 +180,24 @@ function dePostsDoBlog(): AcervoFonte[] {
   return fontes;
 }
 
+/** Atos de pessoal do Diário Oficial: o assistente responde "quem é o
+ *  designado para X" com o dado coletado e o link do ato oficial. */
+function deDesignacoes(): AcervoFonte[] {
+  const fontes: AcervoFonte[] = [];
+  for (const d of listarDesignacoes()) {
+    const rota = "/judiciario/contatos";
+    fontes.push({
+      id: `designacao:${d.fonte}|${d.data_edicao}|${d.ato}|${d.pessoa}`,
+      frente: "judiciario",
+      rota,
+      titulo: `${d.cargo ? d.cargo + " — " : ""}${d.pessoa}`,
+      fonteUrl: rota,
+      texto: `${d.tipo} publicada em ${d.data_edicao}. Pessoa: ${d.pessoa}. Cargo: ${d.cargo}. Órgão/local: ${d.orgao}. Ato: ${d.ato}. Fonte: ${d.fonte}.`,
+    });
+  }
+  return fontes;
+}
+
 /** Contagem de cobertura do acervo, para relatório e teste. */
 export interface CoberturaAcervo {
   total: number;
@@ -199,7 +218,7 @@ export interface AcervoMontado {
  */
 export function montarAcervoDetalhado(): AcervoMontado {
   const { fontes: deFrentesFontes, puladas } = deFrentes();
-  const acervo = [...deFrentesFontes, ...deContextos(), ...dePaginasDados(), ...dePostsDoBlog()];
+  const acervo = [...deFrentesFontes, ...deContextos(), ...dePaginasDados(), ...dePostsDoBlog(), ...deDesignacoes()];
 
   // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo
   // (regra "ou o número não vai" do AGENTS.md, aplicada em código).

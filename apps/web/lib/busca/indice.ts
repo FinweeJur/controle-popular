@@ -45,7 +45,8 @@ export type TipoDocumento =
   | "justica"
   | "estudo"
   | "post"
-  | "atualizacao";
+  | "atualizacao"
+  | "designacao";
 
 /** Documento como ele viaja no índice — chaves curtas porque são ~10 mil. */
 export interface DocumentoIndexado {
@@ -114,6 +115,7 @@ export const TIPOS_FILTRO: { valor: string; rotulo: string }[] = [
   { valor: "proposicao-municipal", rotulo: "Proposição municipal" },
   { valor: "proposicao-federal", rotulo: "Proposição federal" },
   { valor: "tribunal-magistrado", rotulo: "Tribunal/Magistrado" },
+  { valor: "designacao", rotulo: "Designação" },
   { valor: "estudo", rotulo: "Estudo" },
   { valor: "post", rotulo: "Post" },
   { valor: "atualizacao", rotulo: "Atualização" },

@@ -494,6 +494,7 @@ async function main() {
   // aspas e travessao. Cada postagem vira um doc com f="blog" e link direto.
   const blogPath = path.resolve(AQUI, "../data/noticias-portal.json");
   let blogDocs = 0;
+let designacaoDocs = 0;
   try {
     const posts = JSON.parse(readFileSync(blogPath, "utf8")) as {
       slug: string;
@@ -525,6 +526,46 @@ async function main() {
     }
   } catch (e) {
     console.warn("[gerar-indice-busca] Blog nao indexado:", (e as Error).message);
+  }
+
+  // ─────── designações de pessoal do Diário Oficial (contatos do Judiciário) ───────
+  // Alimentada pelo coletor scripts/coletar-atos-pessoal-judiciario.mts; o
+  // arquivo pode não existir numa máquina que nunca rodou o coletor.
+  try {
+    const desigPath = path.resolve(AQUI, "../data/judiciario-designacoes.json");
+    const desigsRaw = readFileSync(desigPath, "utf8");
+    const desigs = JSON.parse(desigsRaw) as Array<{
+        pessoa: string;
+        cargo: string;
+        orgao: string;
+        ato: string;
+        data_edicao: string;
+      }>;
+      for (const d of desigs) {
+        if (!d.pessoa) continue;
+        const textoTsvector = `${d.pessoa} ${d.cargo} ${d.orgao} ${d.ato}`;
+        const tsvDesignacao = (
+          await db.execute<{ tsv: string }>(sql`
+            select to_tsvector('portuguese', public.unaccent_immutable(${textoTsvector}))::text as tsv
+          `)
+        ).rows ?? [];
+        registrar(
+          {
+            t: `${d.cargo ? d.cargo + " — " : ""}${d.pessoa}`,
+            e: [d.orgao, d.ato].filter(Boolean).join(" · ").slice(0, 120),
+            h: "/judiciario/contatos",
+            f: "judiciario",
+            k: "designacao",
+            d: d.data_edicao?.slice(0, 10) ?? undefined,
+            u: undefined,
+          },
+          textoTsvector,
+          tsvDesignacao[0]?.tsv ?? ""
+        );
+        designacaoDocs++;
+      }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Designacoes nao indexadas:", (e as Error).message);
   }
 
   // ───────────────────── novidades (data/novidades.json) ─────────────────────
@@ -611,7 +652,7 @@ async function main() {
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}${novidadesDocs ? ` incl. ${novidadesDocs} novidades` : ""}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}${designacaoDocs ? ` incl. ${designacaoDocs} designacoes` : ""}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}${novidadesDocs ? ` incl. ${novidadesDocs} novidades` : ""}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(
