@@ -152,6 +152,40 @@ export const FRENTES: SeuNonoFrente[] = [
           },
         ],
       },
+      {
+        id: "legislacao-e-direitos",
+        titulo: "Legislação, TACs & Direitos Humanos",
+        perguntas: [
+          {
+            id: "legislacao-normas-ambientais",
+            pergunta: "Qual legislação ambiental protege recursos naturais, APPs e florestas?",
+            resposta:
+              "O acervo reúne mais de 20 mil normas, leis estaduais e federais catalogadas com busca por palavra-chave, tema e órgão emissor.",
+            link: { href: "/ambiental/legislacao", texto: "Legislação Ambiental (20 mil normas)" },
+          },
+          {
+            id: "tacs-ibama-acordos",
+            pergunta: "Como saber se uma empresa da minha região assinou TAC com o IBAMA?",
+            resposta:
+              "Consulte os Termos de Ajustamento de Conduta (TACs) firmados pelo IBAMA com pessoas físicas e jurídicas para recuperação de áreas degradadas e multas.",
+            link: { href: "/ambiental/tac", texto: "Termos de Ajustamento de Conduta (TACs)" },
+          },
+          {
+            id: "decisoes-lai-precedentes",
+            pergunta: "O que fazer se a prefeitura negar pedido de LAI alegando sigilo?",
+            resposta:
+              "O banco de decisões da Lei de Acesso à Informação reúne recursos julgados e súmulas da CGU que obrigam órgãos públicos a divulgar dados públicos.",
+            link: { href: "/ambiental/decisoes-lai", texto: "Decisões e Precedentes LAI" },
+          },
+          {
+            id: "direitos-humanos-conflitos",
+            pergunta: "Onde consultar relatórios de direitos humanos e conflitos no campo?",
+            resposta:
+              "O painel monitora relatórios de violência no campo, violações de direitos de comunidades atingidas e programas de proteção a defensores.",
+            link: { href: "/ambiental/direitos-humanos", texto: "Relatórios de Direitos Humanos" },
+          },
+        ],
+      },
     ],
   },
   {
@@ -279,6 +313,54 @@ export const FRENTES: SeuNonoFrente[] = [
           },
         ],
       },
+      {
+        id: "bacias-serras-patrimonio",
+        titulo: "Rios, Serras & Patrimônio Cultural",
+        perguntas: [
+          {
+            id: "nossos-rios-qualidade",
+            pergunta: "Como verificar a qualidade da água dos rios e bacias de MG?",
+            resposta:
+              "O painel monitora as 7 bacias hidrográficas (Velhas, Doce, Paraopeba, São Francisco, Jequitinhonha, Mucuri e Paranaíba) com dados do IGAM e outorgas de captação.",
+            link: { href: "/ambiental/nossos-rios", texto: "Nossos Rios & Bacias Hidrográficas" },
+          },
+          {
+            id: "nossas-serras-recarga",
+            pergunta: "Por que as serras e áreas de recarga hídrica são protegidas?",
+            resposta:
+              "Acompanhe o monitoramento da Serra do Gandarela, Serra da Moeda e Serra do Curral frente a pressões minerárias e imobiliárias.",
+            link: { href: "/ambiental/nossas-serras", texto: "Nossas Serras & Áreas de Recarga" },
+          },
+          {
+            id: "patrimonio-cultural-tombamentos",
+            pergunta: "Como consultar bens tombados pelo IEPHA e IPHAN em risco?",
+            resposta:
+              "Consulte mais de 1.800 bens tombados, sítios arqueológicos e patrimônio histórico de Minas Gerais com cruzamento de riscos industriais.",
+            link: { href: "/ambiental/patrimonio-cultural", texto: "Patrimônio Cultural & Tombamentos" },
+          },
+          {
+            id: "litigios-climaticos-acoes",
+            pergunta: "O que são litígios climáticos e como cobrar proteção contra enchentes?",
+            resposta:
+              "Mapeamento de Ações Civis Públicas climáticas que cobram obras de contenção de cheias, drenagem urbana e adaptação às mudanças climáticas.",
+            link: { href: "/ambiental/litigios-climaticos", texto: "Painel de Litígios Climáticos" },
+          },
+          {
+            id: "estudos-rurais-agroecologia",
+            pergunta: "Onde encontrar estudos sobre agricultura familiar e agroecologia?",
+            resposta:
+              "O acervo de Estudos Rurais reúne pesquisas, notas técnicas e dados sobre assentamentos, reforma agrária e produção de alimentos saudáveis.",
+            link: { href: "/estudos-rurais", texto: "Acervo de Estudos Rurais" },
+          },
+          {
+            id: "convenios-estudos-ambientais",
+            pergunta: "Onde consultar convênios e estudos ambientais estaduais?",
+            resposta:
+              "Painel com mais de 3.000 convênios e relatórios técnicos da SEMAD, IEF, IGAM e FEAM com valores e prestação de contas.",
+            link: { href: "/ambiental/convenios", texto: "Convênios & Estudos Ambientais" },
+          },
+        ],
+      },
     ],
   },
   {
@@ -286,6 +368,26 @@ export const FRENTES: SeuNonoFrente[] = [
     titulo: "Eixo 3 — Estado e Economia",
     descricao: "Orçamento de MG, PNCP, grandes mineradoras (Vale), Judiciário (TJMG/MPMG) e Congresso Nacional.",
     categorias: [
+      {
+        id: "governo-e-instituicoes",
+        titulo: "Governo: Prometeu? Cumpriu? & Lideranças",
+        perguntas: [
+          {
+            id: "governo-prometeu-cumpriu",
+            pergunta: "Como checar se o governador cumpriu as promessas de campanha?",
+            resposta:
+              "O painel monitora metas e propostas de campanha dos 27 governadores e prefeitos de capitais nas áreas de saúde, educação, segurança e meio ambiente.",
+            link: { href: "/governo", texto: "Governo: Prometeu? Cumpriu?" },
+          },
+          {
+            id: "instituicoes-organogramas-liderancas",
+            pergunta: "Quem comanda cada ministério, secretaria estadual ou agência reguladora?",
+            resposta:
+              "Consulte organogramas, atos de nomeação, histórico e remunerações da cúpula de agências como ANM, ANA, ANTT e secretarias estaduais.",
+            link: { href: "/instituicoes", texto: "Organogramas & Lideranças Públicas" },
+          },
+        ],
+      },
       {
         id: "orcamento-e-compras",
         titulo: "Orçamento & Compras Públicas",
@@ -315,6 +417,13 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Quem são os maiores acionistas globais da Vale?",
             resposta:
               "O portal monitora fundos soberanos e gestoras globais (BlackRock, Capital Group, Previ), distribuição de dividendos e processos.",
+            link: { href: "/empresas", texto: "Painel de Grandes Empresas" },
+          },
+          {
+            id: "grandes-empresas-mineradoras",
+            pergunta: "Como fiscalizar mineradoras como Sigma Lithium, CSN, Gerdau, Samarco e BHP?",
+            resposta:
+              "O painel de empresas detalha acionistas controladores, relatórios ESG, passivos socioambientais e processos judiciais de grandes mineradoras.",
             link: { href: "/empresas", texto: "Painel de Grandes Empresas" },
           },
           {
@@ -352,6 +461,27 @@ export const FRENTES: SeuNonoFrente[] = [
             link: { href: "/judiciario/contatos", texto: "Guia de Varas, Gabinetes e Balcão Virtual" },
           },
           {
+            id: "vagas-indicacoes-quinto",
+            pergunta: "Como funciona a escolha de desembargadores pelo Quinto Constitucional?",
+            resposta:
+              "O painel de Vagas e Indicações acompanha a formação de listas tríplices e indicações de advogados e membros do MP para tribunais de 2ª instância.",
+            link: { href: "/judiciario/vagas", texto: "Vagas e Indicações nos Tribunais" },
+          },
+          {
+            id: "inspecoes-presidios-cnj",
+            pergunta: "Como consultar os relatórios de inspeções prisionais e superlotação?",
+            resposta:
+              "Painel com dados do Conselho Nacional de Justiça (CNJ) sobre capacidade, ocupação, mortes sob custódia e condições estruturais de presídios.",
+            link: { href: "/judiciario/presidios", texto: "Inspeções Prisionais & Presídios" },
+          },
+          {
+            id: "correicoes-trabalhistas-escravo",
+            pergunta: "Onde consultar fiscalizações de trabalho análogo à escravidão e correições?",
+            resposta:
+              "Relatórios de correições ordinárias dos Tribunais Regionais do Trabalho (TRTs) e operações de resgate de trabalhadores em condições análogas à escravidão.",
+            link: { href: "/judiciario/correicoes-trabalhistas", texto: "Correições Trabalhistas" },
+          },
+          {
             id: "instituicoes-27-estados",
             pergunta: "Onde consultar o orçamento e cúpula dos Tribunais e MPs dos 27 estados?",
             resposta:
@@ -371,6 +501,13 @@ export const FRENTES: SeuNonoFrente[] = [
         id: "congresso-nacional",
         titulo: "Congresso Nacional & Bancadas",
         perguntas: [
+          {
+            id: "agenda-comissoes-congresso",
+            pergunta: "Quais projetos de lei estão na pauta das comissões temáticas?",
+            resposta:
+              "Acompanhe a agenda diária de votações e reuniões das comissões da Câmara e do Senado que tratam de mineração, meio ambiente e tributação.",
+            link: { href: "/congresso/agenda", texto: "Agenda & Comissões do Congresso" },
+          },
           {
             id: "gastos-ceap",
             pergunta: "Como fiscalizar os gastos dos deputados com a CEAP?",
@@ -471,6 +608,26 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "No painel do Judiciário (/judiciario/instituicoes) e na Biblioteca Geral catalogamos os relatórios de gestão fiscal (RGF), quadro de pessoal e inspeções de todos os 27 TJs, 27 Ministérios Públicos e 27 Defensorias do Brasil.",
             link: { href: "/judiciario/instituicoes", texto: "Ver 27 Estados" },
+          },
+        ],
+      },
+      {
+        id: "tecnologia-e-metodologia",
+        titulo: "Tecnologia Livre & Metodologia Cívica",
+        perguntas: [
+          {
+            id: "tecnologia-ia-sabia",
+            pergunta: "Como funciona a inteligência artificial do Seu Nonô e a tecnologia do portal?",
+            resposta:
+              "O Seu Nonô é construído sobre modelos abertos soberanos (como o Sabiá 7B) e RAG local com busca vetorial sobre bancos de dados públicos e código 100% auditável.",
+            link: { href: "/tecnologia", texto: "Tecnologia Livre & IA Cívica" },
+          },
+          {
+            id: "transparencia-privacidade-lgpd",
+            pergunta: "Como o portal protege a privacidade e cumpre a regra de Zero Dado Pessoal?",
+            resposta:
+              "Seguimos diretrizes de Transparência Internacional com varredura contínua de CPF e segredos, validação matemática por mod-11 e anonimização de dados protegidos pela LGPD.",
+            link: { href: "/transparencia-internacional", texto: "Metodologia & Transparência Internacional" },
           },
         ],
       },
@@ -708,6 +865,97 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/biblioteca", texto: "Acessar Biblioteca Geral" },
       { href: "/judiciario/instituicoes", texto: "Painel dos 27 Estados" },
+    ],
+  },
+  {
+    id: "governo-hub",
+    titulo: "Governo: Prometeu? Cumpriu?",
+    resumo: "Fiscalização de promessas de campanha e metas dos 27 governos estaduais e capitais.",
+    dados: [
+      "Metas de governo por eixo: saúde, educação, segurança e meio ambiente",
+      "Monitoramento de cumprimento de diretrizes orçamentárias",
+      "Fichas individuais por estado (MG, SP, RJ, BA, etc.)",
+      "Download de relatórios comparativos em CSV",
+    ],
+    links: [
+      { href: "/governo", texto: "Governo: Prometeu? Cumpriu?" },
+    ],
+  },
+  {
+    id: "instituicoes-publicas",
+    titulo: "Organogramas & Lideranças Públicas",
+    resumo: "Estrutura hierárquica, cargos e remunerações de ministérios, agências reguladoras e secretarias.",
+    dados: [
+      "Organogramas da administração direta e indireta",
+      "Cúpula das agências: ANM, ANA, ANTT, IBAMA, ICMBio",
+      "Histórico de nomeações e atos oficiais",
+      "Fichas institucionais detalhadas por sigla",
+    ],
+    links: [
+      { href: "/instituicoes", texto: "Painel de Instituições" },
+    ],
+  },
+  {
+    id: "empresas-mineradoras",
+    titulo: "Grandes Empresas & Mineradoras",
+    resumo: "Monitoramento de grandes corporações, mineradoras (Vale, Sigma, CSN, Gerdau, Samarco, BHP) e fundos de investimento.",
+    dados: [
+      "Estrutura acionária (BlackRock, Capital Group, Previ)",
+      "Relatórios de sustentabilidade e balanços ESG",
+      "Passivos judiciais e crimes socioambientais",
+      "Arrecadação de royalties minerais (CFEM)",
+    ],
+    links: [
+      { href: "/empresas", texto: "Painel de Empresas" },
+    ],
+  },
+  {
+    id: "ambiental-rios-serras",
+    titulo: "Nossos Rios, Serras & Patrimônio Cultural",
+    resumo: "Qualidade da água das 7 bacias de MG, proteção de serras de recarga e acervo do patrimônio tombado.",
+    dados: [
+      "Monitoramento hídrico das bacias do Velhas, Doce, Paraopeba e São Francisco",
+      "Áreas de recarga e aquíferos (Gandarela, Moeda, Curral)",
+      "1.800+ bens tombados pelo IEPHA e IPHAN em risco",
+      "Litígios climáticos e ações de adaptação urbana",
+    ],
+    links: [
+      { href: "/ambiental/nossos-rios", texto: "Nossos Rios" },
+      { href: "/ambiental/nossas-serras", texto: "Nossas Serras" },
+      { href: "/ambiental/patrimonio-cultural", texto: "Patrimônio Cultural" },
+      { href: "/ambiental/litigios-climaticos", texto: "Litígios Climáticos" },
+    ],
+  },
+  {
+    id: "ambiental-legislacao-tacs",
+    titulo: "Legislação Ambiental, TACs & Precedentes LAI",
+    resumo: "20.000 normas ambientais, Termos de Ajustamento de Conduta do IBAMA e decisões de recursos da LAI.",
+    dados: [
+      "Catálogo completo de legislação ambiental estadual e federal",
+      "TACs do IBAMA com valores de multas e recuperação de áreas",
+      "Jurisprudência e decisões da CGU sobre negativas de acesso à informação",
+      "Relatórios de violações de direitos humanos e conflitos no campo",
+    ],
+    links: [
+      { href: "/ambiental/legislacao", texto: "Legislação Ambiental" },
+      { href: "/ambiental/tac", texto: "TACs do IBAMA" },
+      { href: "/ambiental/decisoes-lai", texto: "Decisões LAI" },
+      { href: "/ambiental/direitos-humanos", texto: "Direitos Humanos" },
+    ],
+  },
+  {
+    id: "tecnologia-e-transparencia",
+    titulo: "Tecnologia Livre & Integridade",
+    resumo: "Infraestrutura soberana de IA com modelos abertos, regras de Zero-Secret e respeito rigoroso à LGPD.",
+    dados: [
+      "Integração do modelo Sabiá 7B para assistência cívica",
+      "Varredura contínua de CPF e segredos via mod-11",
+      "Código aberto e coletores auditáveis no GitHub",
+      "Alinhamento às diretrizes de integridade da Transparência Internacional",
+    ],
+    links: [
+      { href: "/tecnologia", texto: "Tecnologia Livre" },
+      { href: "/transparencia-internacional", texto: "Transparência Internacional" },
     ],
   },
 ];

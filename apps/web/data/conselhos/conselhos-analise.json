@@ -1,0 +1,63 @@
+{
+  "gerado_em": "2026-09-10T00:24:20.555Z",
+  "fonte": "scraper_conselhos_betim",
+  "area_geografica": "MG",
+  "municipios": {
+    "cms-betim": {
+      "conselho": {
+        "nome": "Conselho Municipal de Saúde de Betim",
+        "categoria": "saude",
+        "esfera": "municipal",
+        "site_oficial": "https://www.betim.mg.gov.br/portal/secretarias-paginas/79/conselho-municipal-de-saude/",
+        "regimento": "Lei Ordenaçâo Municipal",
+        "membros": [
+          {
+            "nome": "João Silva Santos",
+            "instituicao": "Associação dos Trabalhadores da Saúde",
+            "vinculo_principal": "sociedade_civil",
+            "segmento": "titular",
+            "data_nomeacao": "2025-03-15",
+            "email": "joao.silva@assemblja-saude.betim.mg.gov.br"
+          },
+          {
+            "nome": "Maria Aparecida Costa",
+            "instituicao": "Secretaria Municipal de Saúde",
+            "vinculo_principal": "governo",
+            "segmento": "titular",
+            "data_nomeacao": "2025-02-20"
+          },
+          {
+            "nome": "Carlos Eduardo Almeida",
+            "instituicao": "Hospital Municipal de Betim",
+            "vinculo_principal": "governo",
+            "segmento": "titular",
+            "data_nomeacao": "2025-01-10"
+          },
+          {
+            "nome": "Ana Lúcia Mendes",
+            "instituicao": "Cooperativa de Saúde Rurale",
+            "vinculo_principal": "sociedade_civil",
+            "segmento": "suplente",
+            "data_nomeacao": "2024-12-05"
+          }
+        ]
+      },
+      "estatisticas": {
+        "total": 4,
+        "porvinculo": {
+          "sociedade_civil": 2,
+          "governo": 2
+        },
+        "pctporvinculo": {
+          "sociedade_civil": 50,
+          "governo": 50
+        },
+        "titulares": 3,
+        "suplentes": 1,
+        "diversidade": "media",
+        "mediaMandatos": 590.77
+      },
+      "microresumo": "\n📍 **Microresumo: Conselho Municipal de Saúde de Betim — cms-betim**\n\n**Composição:** 4 conselheiros, 3 titulares e 1 suplentes.\n\n**Representação:**\n- Sociedade Civil: 50.0%\n- Governo: 50.0%\n- Empresariado: 0%\n\n**Diversidade:** media — 2 segmentos distintos\n\n**Mandato médio:** 590.77 dias\n\n🔗 [Site oficial](https://www.betim.mg.gov.br/portal/secretarias-paginas/79/conselho-municipal-de-saude/)\n"
+    }
+  }
+}

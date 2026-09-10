@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-08T05:30:10.553948+00:00",
+ "gerado_em": "2026-09-09T05:30:10.472393+00:00",
  "janela_dias": 45,
  "fontes": [
   {
@@ -36,9 +36,9 @@
  "lacuna_conhecida": "TJMG e MPMG não entram: os endereços de RSS dos dois respondiam HTTP 404 em 14/08/2026. Decisão judicial chega aqui pela imprensa ou pelas ATIs, com o atraso delas.",
  "itens": [
   {
-   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski",
+   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - blogdopedlowski.com",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5",
-   "veiculo": "Blog do Pedlowski",
+   "veiculo": "blogdopedlowski.com",
    "fonte_id": "google-noticias",
    "data": "2026-09-06T14:29:18+00:00",
    "ato_de_autoridade": false
@@ -105,6 +105,14 @@
    "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
    "fonte_id": "adai",
    "data": "2026-09-01T20:22:24+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - migalhas.com.br",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
+   "veiculo": "migalhas.com.br",
+   "fonte_id": "google-noticias",
+   "data": "2026-09-01T15:01:41+00:00",
    "ato_de_autoridade": false
   },
   {
@@ -220,9 +228,9 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - Neo Mondo",
+   "titulo": "Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - neomondo.org.br",
    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbDFCOFh4Ym9aWUwyZG05V3N1TC1YaVh2X2RJWlRHOEhMTHhfMzUyLThIbUV4eFgydThzcXhINllnbmVUX1pjNmlKYkoydXhWU29GdmdoVmQ5SEV4azBkbF9UcVFJMlBEanFsVEtnRkhvSVVBR2Q3UnJXUGRqMkVyVFhmS2NJRnlpYjNtZms5azhqaXpvbmpGOTZIdEw3VEpqTnRXak92WEgxR195eGpxMkl1MmY5VHFySFY3bGVxaVk2NTZEN3gwT29wMGJ1aTZtQlE?oc=5",
-   "veiculo": "Neo Mondo",
+   "veiculo": "neomondo.org.br",
    "fonte_id": "google-noticias",
    "data": "2026-08-10T07:00:00+00:00",
    "ato_de_autoridade": false

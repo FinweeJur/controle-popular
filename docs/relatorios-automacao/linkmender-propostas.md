@@ -1,31 +1,31 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-08T06:41:01.043Z
-- Duracao total: 2.1 min
+- Gerado em: 2026-09-09T06:35:33.072Z
+- Duracao total: 3.5 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
-- Total de URLs unicas testadas: 118
-- OK: 94
-- QUEBRADOS: 4
-- REDIRECTS: 8
-- INCONSISTENTES: 12
-- Propostas geradas: 3
-- Links sem proposta: 9
+- Total de URLs unicas testadas: 127
+- OK: 99
+- QUEBRADOS: 5
+- REDIRECTS: 7
+- INCONSISTENTES: 16
+- Propostas geradas: 2
+- Links sem proposta: 10
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
 | https://drive.google.com/exemplo | QUEBRADO | 404 | https://drive.google.com/exemplo |
+| https://exemplo.org/a | QUEBRADO | 404 | https://exemplo.org/a |
 | https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md | QUEBRADO | 404 | https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md |
 | https://github.com/melkepinho/controle-popular/blob/main/docs/FONTE.md#painel-tacs-final | QUEBRADO | 404 | https://github.com/melkepinho/controle-popular/blob/main/docs/FONTE.md |
 | https://legis.senado.leg.br/dadosabertos | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
-| https://mpmg.mp.br/portal/menu/comunicacao/noticias/ | REDIRECT | 200 | https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/ |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
-| https://pncp.gov.br | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
 | https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
@@ -33,38 +33,27 @@
 
 ## Propostas com diff
 
-### 1. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 1. https://pncp.gov.br/
 
 ```diff
-- href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf"
-```
-
-Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
-Origem: apps/web/app/[municipio]/postos-combustivel/ListaPostos.tsx
-
-### 2. https://pncp.gov.br
-
-```diff
-- href="https://pncp.gov.br"
+- href="https://pncp.gov.br/"
 + href="https://www.gov.br/pncp/pt-br"
 ```
 
 Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: registry
+Origem: apps/web/app/[municipio]/interesses/page.tsx
 
-### 3. https://mpmg.mp.br/portal/menu/comunicacao/noticias/
+### 2. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
-- href="https://mpmg.mp.br/portal/menu/comunicacao/noticias/"
-+ href="https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/"
+- href="https://revendedoresapi.anp.gov.br/swagger/index.html"
++ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
 ```
 
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: registry
+Confianca: media
+Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
+Origem: apps/web/lib/linkmender/busca.test.ts
 
 ## Quebrados e redirecionados sem proposta
 
@@ -73,6 +62,7 @@ Origem: registry
 - https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
 - https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
+- https://exemplo.org/a (404) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
 - https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
@@ -80,11 +70,15 @@ Origem: registry
 
 ## Inconsistentes (nao verificados, sem proposta)
 
+- https://cnes.datasus.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.presidencia.gov.br (rede) — erro de rede: fetch failed
+- https://controlepopular.com.br/ambiental/crimes-socioambientais (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
+- https://datajud-wiki.cnj.jus.br (rede) — erro de rede: This operation was aborted
+- https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br (rede) — erro de rede: fetch failed
 - https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
+- https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)

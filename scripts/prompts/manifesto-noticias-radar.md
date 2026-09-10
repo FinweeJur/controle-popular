@@ -14,7 +14,7 @@
 - `ato_de_autoridade`
 
 ## Dicionários / Colunas de Atributos
-- **`veiculo`** (6 valores distintos): ex: "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social", "Guaicuy — Assessoria dos Atingidos pela Vale", "Blog do Pedlowski", "Diário do Comércio", "Neo Mondo"
+- **`veiculo`** (6 valores distintos): ex: "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social", "Guaicuy — Assessoria dos Atingidos pela Vale", "Blog do Pedlowski", "Diário do Comércio", "JOTA Info"
 - **`fonte_id`** (3 valores distintos): ex: "adai", "guaicuy", "google-noticias"
 
 ---

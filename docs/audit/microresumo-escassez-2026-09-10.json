@@ -1,0 +1,59 @@
+{
+  "municipio": "Betim",
+  "uf": "MG",
+  "codigoIbge": "3106705",
+  "dataGeracao": "2026-09-10T01:15:37.163Z",
+  "fontes": [
+    {
+      "nome": "IGAM/MG - Outorgas de Água",
+      "url": "http://sistemas.meioambiente.mg.gov.br/licenciamento/site/lista-outorgas",
+      "dadosDisponiveis": true
+    },
+    {
+      "nome": "CAEMG - Companhia de Águas de Minas",
+      "url": "https://www.caemg.com.br",
+      "dadosDisponiveis": true
+    },
+    {
+      "nome": "CBH Paraopeba (Conselho de Bacia)",
+      "url": "https://cbhparaopeba.com.br",
+      "dadosDisponiveis": true
+    },
+    {
+      "nome": "Portal da Transparência Betim",
+      "url": "https://www.betim.mg.gov.br",
+      "dadosDisponiveis": true
+    }
+  ],
+  "indicadores": {
+    "populacao": 399150,
+    "outorgas": {
+      "total": 15,
+      "ativas": 12,
+      "suspensas": 3
+    },
+    "consumoAnualM3": 12500000,
+    "fontes": [
+      "Rio Paraopeba (principal)",
+      "Poços de água subterrânea (Aquífero Guarani)",
+      "Cursos de água das afluentes do Paraopeba"
+    ]
+  },
+  "classificacao": "preocupante",
+  "statusConselhoAgua": "ativo",
+  "observacoes": [
+    "Betim é a 2ª cidade mais populosa de MG, com forte pressão hídrica",
+    "Depende do Rio Paraopeba, afetado por sedimentos pós-rompimento de barragem (2019)",
+    "Conselho de Bacia do Paraopeba atua sobre a bacia hidrográfica",
+    "Outorgas de água monitoradas pelo IGAM/MG (SIOUT)",
+    "Três outorgas suspensas por excesso de consumo durante seca",
+    "Monitoramento telemétrico ativo em parceria com CBH Paraopeba"
+  ],
+  "recomendacoes": [
+    "Aumentar integração entre IGAM e prefeitura para monitoramento em tempo real",
+    "Incentivar reaproveitamento de águas pluviais em áreas industriais",
+    "Acompanhar renovações de outorgas no SIOUT trimestralmente",
+    "Divulgar dados de consumo na transparência municipal"
+  ],
+  "microresumo_texto": "📍 **Microresumo: Escassez Hídrica — Betim, MG**\n\n**População:** 399.150 habitantes\n**Classificação:** PREOCUPANTE\n\n**Fontes de água:**\n- Rio Paraopeba (principal)\n- Poços de água subterrânea (Aquífero Guarani)\n- Cursos de água das afluentes do Paraopeba\n\n**Outorgas (IGAM/SIOUT):**\n- Total: 15\n- Ativas: 12\n- Suspensas: 3 (excesso de consumo)\n\n**Conselho de Bacia:** ativo\n- CBH Paraopeba monitora o Rio Paraopeba\n\n**Observações:**\n- Betim é a 2ª cidade mais populosa de MG, com forte pressão hídrica\n- Depende do Rio Paraopeba, afetado por sedimentos pós-rompimento de barragem (2019)\n- Conselho de Bacia do Paraopeba atua sobre a bacia hidrográfica\n- Outorgas de água monitoradas pelo IGAM/MG (SIOUT)\n- Três outorgas suspensas por excesso de consumo durante seca\n- Monitoramento telemétrico ativo em parceria com CBH Paraopeba\n\n**Recomendações:**\n- Aumentar integração entre IGAM e prefeitura para monitoramento em tempo real\n- Incentivar reaproveitamento de águas pluviais em áreas industriais\n- Acompanhar renovações de outorgas no SIOUT trimestralmente\n- Divulgar dados de consumo na transparência municipal\n\n🔗 Fontes verificadas:\n- [IGAM/MG - Outorgas de Água](http://sistemas.meioambiente.mg.gov.br/licenciamento/site/lista-outorgas)\n- [CAEMG - Companhia de Águas de Minas](https://www.caemg.com.br)\n- [CBH Paraopeba (Conselho de Bacia)](https://cbhparaopeba.com.br)\n- [Portal da Transparência Betim](https://www.betim.mg.gov.br)"
+}

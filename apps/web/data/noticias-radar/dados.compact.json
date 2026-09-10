@@ -3,10 +3,10 @@
  "rota": "noticias-radar",
  "tipo": "acervo",
  "total_registros": 24,
- "gerado_em": "2026-09-08T04:00:04.514Z",
+ "gerado_em": "2026-09-09T04:00:04.371Z",
  "esqueleto": ["titulo","link","veiculo","fonte_id","data","ato_de_autoridade"],
  "dicionarios": {
-  "veiculo": ["ADAI — Associação de Defesa Ambiental e Desenvolvimento Social","Guaicuy — Assessoria dos Atingidos pela Vale","Blog do Pedlowski","Diário do Comércio","Neo Mondo","jota.info"],
+  "veiculo": ["ADAI — Associação de Defesa Ambiental e Desenvolvimento Social","Guaicuy — Assessoria dos Atingidos pela Vale","Blog do Pedlowski","Diário do Comércio","JOTA Info","Neo Mondo"],
   "fonte_id": ["adai","guaicuy","google-noticias"]
  },
  "linhas": [
@@ -32,7 +32,7 @@
   ["Anexo I.1: Adai realiza roda de diálogo sobre priorização de projetos com Povos e Comunidades Tradicionais","https://adaibrasil.org.br/roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1",0,0,"2026-08-25T12:48:53+00:00",false],
   ["Recuperação Socioambiental do Paraopeba: remoção de rejeitos adiada para 2027","https://guaicuy.org.br/recuperacao-socioambiental-do-paraopeba-remocao-de-rejeitos-adiada-para-2027/",1,1,"2026-08-21T13:40:44+00:00",false],
   ["Entidade Gestora lança edital para execução de projetos locais na Região 4","https://guaicuy.org.br/entidade-gestora-lanca-edital-execucao-projetos-locais-regiao-4/",1,1,"2026-08-20T19:38:55+00:00",false],
-  ["STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - jota.info","https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",5,2,"2026-08-19T07:00:00+00:00",false],
-  ["Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - Neo Mondo","https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbDFCOFh4Ym9aWUwyZG05V3N1TC1YaVh2X2RJWlRHOEhMTHhfMzUyLThIbUV4eFgydThzcXhINllnbmVUX1pjNmlKYkoydXhWU29GdmdoVmQ5SEV4azBkbF9UcVFJMlBEanFsVEtnRkhvSVVBR2Q3UnJXUGRqMkVyVFhmS2NJRnlpYjNtZms5azhqaXpvbmpGOTZIdEw3VEpqTnRXak92WEgxR195eGpxMkl1MmY5VHFySFY3bGVxaVk2NTZEN3gwT29wMGJ1aTZtQlE?oc=5",4,2,"2026-08-10T07:00:00+00:00",false]
+  ["STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - JOTA Info","https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",4,2,"2026-08-19T07:00:00+00:00",false],
+  ["Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - Neo Mondo","https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbDFCOFh4Ym9aWUwyZG05V3N1TC1YaVh2X2RJWlRHOEhMTHhfMzUyLThIbUV4eFgydThzcXhINllnbmVUX1pjNmlKYkoydXhWU29GdmdoVmQ5SEV4azBkbF9UcVFJMlBEanFsVEtnRkhvSVVBR2Q3UnJXUGRqMkVyVFhmS2NJRnlpYjNtZms5azhqaXpvbmpGOTZIdEw3VEpqTnRXak92WEgxR195eGpxMkl1MmY5VHFySFY3bGVxaVk2NTZEN3gwT29wMGJ1aTZtQlE?oc=5",5,2,"2026-08-10T07:00:00+00:00",false]
  ]
 }

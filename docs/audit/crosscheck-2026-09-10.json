@@ -1,0 +1,20 @@
+{
+  "processo": "006/2026",
+  "dadosPdf": {
+    "numeroProcesso": "006/2026",
+    "objeto": "Contrata��o de empresa especializada para atualiza��o tecnol�gica da solu��o de WAF atualmente em produ��o no TCEMG, com migra��o do ambiente on-premises para plataforma WAAP em nuvem, composta por co",
+    "valorEstimado": 30380,
+    "valorHomologado": 1305,
+    "dataAbertura": "30/03/2026",
+    "orgao": "TCEMG - Tribunal de Contas do Estado de Minas Gerais"
+  },
+  "dadosApi": null,
+  "discrepanciaValor": null,
+  "discrepanciaPercentual": null,
+  "confiabilidade": 0.6,
+  "status": "alerta",
+  "observacoes": [
+    "API do PNCP não retornou dados para este processo"
+  ],
+  "recomendacao": "Verificar manualmente no site pncp.gov.br"
+}

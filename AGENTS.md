@@ -12,6 +12,14 @@ com `output: export` para Cloudflare Workers. Seis frentes: Cidades, Congresso,
 Judiciário, Função Social da Terra, Paraopeba e ONSA (Observatório Nacional
 Socioambiental).
 
+**"Busca com potencial de interesse social"** é a regra que tudo guia:
+- **Dados sociais:** análise de direitos, desigualdade, participação
+- **Dados ambientais:** recursos hídricos, licenças, esgotamento
+- **Dados econômicos:** concentração, transparência de PPP, poder de mercado
+- **Educação:** microresumos, tendências, porcentagens, estatísticas
+- **Antes de coletar: pense no impacto social do dado**
+- **Dupla verificação obrigatória:** sempre faça 2× verificação metodológica, cálculo e raciocínio lógico. Link sempre à fonte oficial (ABNT: Autor/Data) com hiperlink no texto e botão "Fonte".
+
 **Não é um site comum.** É lido por quem está sob estresse — denúncia, remoção,
 barragem. Isso muda o padrão de qualidade em três pontos concretos:
 acessibilidade não é opcional, número errado é dano, e **insinuação é dano

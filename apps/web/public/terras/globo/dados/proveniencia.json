@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-09-08T14:43:10.554Z",
+  "gerado_em_utc": "2026-09-08T17:33:12.707Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -173,6 +173,26 @@
       "origem": "Amostra sorteada e conferida a olho sobre imagem de satélite, para medir quanto o método erra"
     },
     {
+      "camada": "cobertura-telefonia-mg",
+      "feicoes": 12782,
+      "bytes": 926617,
+      "comprimido": true,
+      "sha256": "eec4d081a5630b71c471c8a04de5646870ab94acca09c7b9ef4c6aa8c61db6ed",
+      "mtime_utc": "2026-09-08T17:33:12.707Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "cobertura-telefonia-prioritarias",
+      "feicoes": 3104,
+      "bytes": 1459213,
+      "comprimido": false,
+      "sha256": "f3fc5d5accea2c79ad7e2bf40bba6d40b08f528b7489b997ce73c728bb3ff596",
+      "mtime_utc": "2026-09-08T17:33:11.251Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "cruzamento-dinheiro-ambiental-4cidades",
       "feicoes": 11,
       "bytes": 18298,
@@ -323,6 +343,26 @@
       "servico": "FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação"
     },
     {
+      "camada": "torres-celular-mg",
+      "feicoes": 12782,
+      "bytes": 3805781,
+      "comprimido": false,
+      "sha256": "1f2b7a9287c8a08a4557dc7b74269fc22275131c7d3adc60c53bb943a3592fbe",
+      "mtime_utc": "2026-09-08T17:33:10.207Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "torres-celular-prioritarias",
+      "feicoes": 3104,
+      "bytes": 926985,
+      "comprimido": false,
+      "sha256": "c5a05777e3561e096cdd8c3342dae0200cd55b2e7e568ddebee615a75355d129",
+      "mtime_utc": "2026-09-08T17:33:09.475Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "unidades-conservacao",
       "feicoes": 387,
       "bytes": 3279478,
@@ -462,8 +502,12 @@
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
   "camadas_sem_origem_declarada": [
+    "cobertura-telefonia-mg",
+    "cobertura-telefonia-prioritarias",
     "estudos-ambientais",
     "presidios-mg",
+    "torres-celular-mg",
+    "torres-celular-prioritarias",
     "unidades-conservacao",
     "vale-monitoramento-estruturas"
   ]

@@ -1,0 +1,45 @@
+{
+  "gerado_em": "2026-09-09T23:24:34.443Z",
+  "limiar_utilizado": 0.01,
+  "total_registros": 2,
+  "resumo": {
+    "consistente": 1,
+    "alerta": 0,
+    "critico": 0,
+    "crítico": null
+  },
+  "resultados": [
+    {
+      "processo_numero": "12345-67/2024",
+      "id_municipio": "3106705",
+      "valor_principal": 900000000,
+      "valor_secundario": 900000,
+      "diferenca": 899100000,
+      "diferenca_percentual": 999,
+      "confiabilidade": 0.3,
+      "status": "crítico",
+      "fonte_recomendada": "Diário Oficial PDF",
+      "observacoes": [
+        "Erro crítico: diferença de 99900.00%",
+        "Verificar fonte original"
+      ]
+    },
+    {
+      "processo_numero": "54321-89/2024",
+      "id_municipio": "3106200",
+      "valor_principal": 12500000,
+      "valor_secundario": 12500000,
+      "diferenca": 0,
+      "diferenca_percentual": 0,
+      "confiabilidade": 0.95,
+      "status": "consistente",
+      "fonte_recomendada": "Consenso entre fontes",
+      "observacoes": []
+    }
+  ],
+  "duplicatas_posiveis": [],
+  "configuracao": {
+    "fonte_principal": "PNCP API",
+    "fonte_secundaria": "Diário Oficial PDF"
+  }
+}
