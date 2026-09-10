@@ -259,6 +259,10 @@ municípios caberem em 2,16 MB, e 7,9 MB da Rouanet virarem 2,4 MB (−69%).
 **decisão documentada** (16/08) **não unificar**: aplainar o codec do ComunicaBR
 perderia o ganho de ordem de grandeza (99 MiB → 2,16 MB). Remeça antes de reabrir.
 
+**Scripts de coleta**: `scripts/etl/municipios/seed-municipios-mg.mts` baixa
+853 municípios de MG da API do IBGE → `apps/web/data/municipios-mg.json` (fonte
+única de verdade para códigos IBGE).
+
 ## Coleta de dado de fonte pública
 
 - Pausa entre requisições, **User-Agent que identifica o projeto honestamente**
