@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-09-10T08:33:00.756Z",
+  "geradoEm": "2026-09-13T08:33:20.991Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 8,
-  "alertas": 4,
+  "aprovados": 11,
+  "alertas": 1,
   "falhas": 2,
   "itens": [
     {
@@ -27,14 +27,14 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonlin..."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains"
     },
     {
       "categoria": "seguranca",
@@ -45,8 +45,8 @@
     {
       "categoria": "seguranca",
       "item": "Produção: X-Content-Type-Options",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
     },
     {
       "categoria": "seguranca",

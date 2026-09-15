@@ -1,16 +1,16 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-10T06:35:27.840Z
-- Duracao total: 4.0 min
+- Gerado em: 2026-09-13T06:47:30.140Z
+- Duracao total: 4.9 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
-- Total de URLs unicas testadas: 127
-- OK: 98
+- Total de URLs unicas testadas: 131
+- OK: 104
 - QUEBRADOS: 5
 - REDIRECTS: 7
-- INCONSISTENTES: 17
+- INCONSISTENTES: 15
 - Propostas geradas: 2
 - Links sem proposta: 10
 
@@ -71,20 +71,18 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 ## Inconsistentes (nao verificados, sem proposta)
 
 - https://comunicabr.presidencia.gov.br (rede) — erro de rede: fetch failed
-- https://controlepopular.com.br/ambiental/crimes-socioambientais (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://dados.mg.gov.br/dataset/crimes-violentos (rede) — erro de rede: This operation was aborted
 - https://datajud-wiki.cnj.jus.br (rede) — erro de rede: This operation was aborted
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
-- https://feam.br/documents/d/feam/lista-de-barragens-2024-xlsx (rede) — erro de rede: This operation was aborted
 - https://geoserver.funai.gov.br (rede) — erro de rede: fetch failed
 - https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
+- https://sirenejud.cnj.jus.br/ (rede) — erro de rede: This operation was aborted
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
-- https://www.car.gov.br/publico/imoveis/index (rede) — erro de rede: fetch failed
+- https://www.car.gov.br/publico/imoveis/index (rede) — erro de rede: This operation was aborted
 - https://www.sinesp.mg.gov.br (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 

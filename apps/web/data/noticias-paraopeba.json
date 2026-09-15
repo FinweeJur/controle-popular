@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-10T05:30:10.296155+00:00",
+ "gerado_em": "2026-09-13T05:30:13.666805+00:00",
  "janela_dias": 45,
  "fontes": [
   {
@@ -36,6 +36,30 @@
  "lacuna_conhecida": "TJMG e MPMG não entram: os endereços de RSS dos dois respondiam HTTP 404 em 14/08/2026. Decisão judicial chega aqui pela imprensa ou pelas ATIs, com o atraso delas.",
  "itens": [
   {
+   "titulo": "MPMG ouve pessoas atingidas em encontro com movimentos sociais e sociedade civil organizada",
+   "link": "https://guaicuy.org.br/mpmg-ouve-pessoas-atingidas-em-encontro-com-movimentos-sociais/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-09-11T18:04:17+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho",
+   "link": "https://guaicuy.org.br/problemas-estruturas-vale-brumadinho/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-09-11T17:04:09+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "MPMG e DPMG realizam reunião virtual sobre o andamento do Anexo I.1 na Bacia do Paraopeba, com apresentação da Entidade Gestora",
+   "link": "https://adaibrasil.org.br/live-mpmg-dpmg-anexoi-1-21desetembro/?utm_source=rss&utm_medium=rss&utm_campaign=live-mpmg-dpmg-anexoi-1-21desetembro",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-09-10T13:44:04+00:00",
+   "ato_de_autoridade": false
+  },
+  {
    "titulo": "Brumadinho contesta pedido do IBRAM ao STF para suspender Novo Auxílio Emergencial",
    "link": "https://guaicuy.org.br/brumadinho-contesta-pedido-do-ibram-ao-stf-para-suspender-novo-auxilio/",
    "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
@@ -44,9 +68,9 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski",
+   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - blogdopedlowski.com",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5",
-   "veiculo": "Blog do Pedlowski",
+   "veiculo": "blogdopedlowski.com",
    "fonte_id": "google-noticias",
    "data": "2026-09-06T14:29:18+00:00",
    "ato_de_autoridade": false
@@ -100,14 +124,6 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "ANM aguarda novos documentos para reavaliar barragem da Emicon em Brumadinho - Diário do Comércio",
-   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE13UC1mMk5DVjZIY2xZXzhxVFdlMEhTSHRVcmRWU1lLR2dwTmg1N0JGR3ZZR0RDX3FJTl9TaGtydC16ZU9yWXk0UTJwUm9LMFFJX3FEY3l6eDMzSFZSR1VBbUIyc096RHJJSEZzNTJNMWw1VVhPS1ZXZ19n?oc=5",
-   "veiculo": "Diário do Comércio",
-   "fonte_id": "google-noticias",
-   "data": "2026-09-01T22:39:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
    "titulo": "Conselhos e Setores da Região 2 definem projetos locais para primeira onda do Anexo I.1",
    "link": "https://adaibrasil.org.br/conselhos-e-setores-da-regiao-2-definem-projetos-locais-do-anexo-i-1/?utm_source=rss&utm_medium=rss&utm_campaign=conselhos-e-setores-da-regiao-2-definem-projetos-locais-do-anexo-i-1",
    "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
@@ -132,9 +148,9 @@
    "ato_de_autoridade": true
   },
   {
-   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - Migalhas",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
-   "veiculo": "Migalhas",
+   "titulo": "ANM aguarda novos documentos para reavaliar barragem da Emicon em Brumadinho - Diário do Comércio",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE13UC1mMk5DVjZIY2xZXzhxVFdlMEhTSHRVcmRWU1lLR2dwTmg1N0JGR3ZZR0RDX3FJTl9TaGtydC16ZU9yWXk0UTJwUm9LMFFJX3FEY3l6eDMzSFZSR1VBbUIyc096RHJJSEZzNTJNMWw1VVhPS1ZXZ19n?oc=5",
+   "veiculo": "Diário do Comércio",
    "fonte_id": "google-noticias",
    "data": "2026-09-01T07:00:00+00:00",
    "ato_de_autoridade": false
@@ -188,14 +204,6 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Vale informa depósito para pagamento do Novo Auxílio de setembro",
-   "link": "https://guaicuy.org.br/vale-informa-deposito-novo-auxilio-setembro/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-08-26T17:38:06+00:00",
-   "ato_de_autoridade": false
-  },
-  {
    "titulo": "Anexo I.1: Assista à Formação “Como propor um projeto?”, realizada pela Adai Paraopeba",
    "link": "https://adaibrasil.org.br/anexo-i-1-assista-a-formacao-como-propor-um-projeto-realizada-pela-adai-paraopeba/?utm_source=rss&utm_medium=rss&utm_campaign=anexo-i-1-assista-a-formacao-como-propor-um-projeto-realizada-pela-adai-paraopeba",
    "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
@@ -212,35 +220,11 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Anexo I.1: Adai realiza roda de diálogo sobre priorização de projetos com Povos e Comunidades Tradicionais",
-   "link": "https://adaibrasil.org.br/roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=roda-de-dialogo-setor2-pct-regiao2-projetos-regimento-anexoi-1",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-25T12:48:53+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Recuperação Socioambiental do Paraopeba: remoção de rejeitos adiada para 2027",
-   "link": "https://guaicuy.org.br/recuperacao-socioambiental-do-paraopeba-remocao-de-rejeitos-adiada-para-2027/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-08-21T13:40:44+00:00",
-   "ato_de_autoridade": false
-  },
-  {
    "titulo": "STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - JOTA Info",
    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",
    "veiculo": "JOTA Info",
    "fonte_id": "google-noticias",
    "data": "2026-08-19T07:00:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Brasil tem 213 barragens prioritárias — e, pela primeira vez desde Brumadinho, menos gente para fiscalizá-las - Neo Mondo",
-   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbDFCOFh4Ym9aWUwyZG05V3N1TC1YaVh2X2RJWlRHOEhMTHhfMzUyLThIbUV4eFgydThzcXhINllnbmVUX1pjNmlKYkoydXhWU29GdmdoVmQ5SEV4azBkbF9UcVFJMlBEanFsVEtnRkhvSVVBR2Q3UnJXUGRqMkVyVFhmS2NJRnlpYjNtZms5azhqaXpvbmpGOTZIdEw3VEpqTnRXak92WEgxR195eGpxMkl1MmY5VHFySFY3bGVxaVk2NTZEN3gwT29wMGJ1aTZtQlE?oc=5",
-   "veiculo": "Neo Mondo",
-   "fonte_id": "google-noticias",
-   "data": "2026-08-10T07:00:00+00:00",
    "ato_de_autoridade": false
   }
  ]
