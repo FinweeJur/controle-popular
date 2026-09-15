@@ -129,4 +129,31 @@ function main() {
   console.log(`📦 Salvo: ${OUTPUT}`);
 }
 
+// Gerar SVG inline de evolução por região (sem biblioteca externa)
+function gerarSVGRegioes(resultado: any): string {
+  const regioes = Object.entries(resultado.regioes);
+  const maxMun = Math.max(...regioes.map(([, r]: any) => r.total_municipios));
+  const barWidth = 60;
+  const barHeight = 12;
+  const gap = 8;
+  const height = regioes.length * (barHeight + gap) + 20;
+  const width = 320;
+
+  let bars = "";
+  let y = 10;
+  for (const [nome, r] of regioes) {
+    const w = (r.total_municipios / maxMun) * (width - 100);
+    bars += `<rect x="100" y="${y}" width="${w.toFixed(1)}" height="${barHeight}" fill="#3b82f6" rx="2"/>`;
+    bars += `<text x="8" y="${y + barHeight/2 + 5}" font-size="11" fill="#64748b">${nome.substring(0, 8)}</text>`;
+    bars += `<text x="${105 + w}" y="${y + barHeight/2 + 5}" font-size="11" fill="#94a3b8">${r.total_municipios}</text>`;
+    y += barHeight + gap;
+  }
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none">
+    <rect width="${width}" height="${height}" fill="transparent"/>
+    <text x="8" y="8" font-size="12" font-weight="bold" fill="#f1f5f9">Cidades por Região</text>
+    ${bars}
+  </svg>`;
+}
+
 main();
