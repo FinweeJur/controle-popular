@@ -59,6 +59,7 @@ const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PENDENTES_DIR = path.join(RAIZ, "apps", "web", "data", "radar-editais", "pendentes");
 const PROCESSADOS_DIR = path.join(RAIZ, "apps", "web", "data", "radar-editais", "processados");
 const PORTAL_JSON = path.join(RAIZ, "apps", "web", "data", "noticias-portal.json");
+import { processarTrechoEdital } from "./radar-editais-extrator.mts";
 
 const SO_MEDIR = process.argv.includes("--seco");
 
@@ -198,41 +199,43 @@ function mesAno(dataIso: string): string {
 
 function converterEmNoticia(p: Pendente, agoraIso: string): NoticiaPortal {
   const slug = `radar-editais-${p.id.replace(/-/g, "").slice(0, 16)}`;
-  const titulo = p.titulo_sugerido || "Edital publicado no Diário Oficial de Minas Gerais";
-  const trechoLimpo = (p.trechos[0]?.contexto ?? "").slice(0, 400);
-  const local = [p.secao ? `${p.secao}` : null, p.pagina ? `página ${p.pagina}` : null].filter(Boolean).join(", ");
-  const data = p.data_publicacao;
+  const trechoCompleto = p.trechos.map((t) => t.contexto).join(" ");
+  const meta = processarTrechoEdital(
+    trechoCompleto || p.titulo_sugerido,
+    p.secao,
+    p.data_publicacao,
+    p.fonte_nome,
+    p.url
+  );
 
-  const paragrafos = [
-    `O radar de editais do Controle Popular registrou a publicação de "${titulo}" no ${p.fonte_nome} de ${data}${local ? ` (${local})` : ""}. O trecho abaixo transcreve o ato conforme consta no diário:`,
-    `"${trechoLimpo}${p.trechos[0]?.contexto && p.trechos[0].contexto.length > 400 ? "…" : ""}"`,
-    `Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.`,
-    `Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score ${p.score} — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar.`,
-  ];
+  const titulo = meta.tituloJornalistico || p.titulo_sugerido || "Edital no Diário Oficial de Minas Gerais";
+  const data = p.data_publicacao;
 
   return {
     slug,
     titulo,
-    subtitulo: `Radar de editais: ${p.fonte_nome} — ${data}.`,
-    resumo: `Detecção automática de edital de interesse social publicada no ${p.fonte_nome} de ${data}.${local ? ` Local: ${local}.` : ""}`,
+    subtitulo: meta.subtitulo,
+    resumo: meta.resumo,
     categoria: "Explicador",
     frente: "estado",
     subfrente: "Participação & Editais Públicos",
     autor: "ONSA — Observatório Nacional Socioambiental",
-    declaracaoIa: "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+    declaracaoIa: "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
     publicadoEm: agoraIso,
     atualizadoEm: agoraIso,
-    tempoLeituraMin: 2,
-    palavrasChave: ["radar-editais", "diario-oficial", "editais", "participacao-social", p.fonte],
+    tempoLeituraMin: 3,
+    palavrasChave: ["radar-editais", "diario-oficial", "editais", "participacao-social", meta.orgao.toLowerCase(), p.fonte],
     citacaoAbnt: `ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. ${titulo}. Controle Popular, Brasília, ${mesAno(data)}. Disponível em: <https://controlepopular.com.br/noticias/${slug}>.`,
     citacaoBibtex: `@article{onsa${new Date().getFullYear()}${slug.replace(/-/g, "")},\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {${titulo}},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {${new Date().getFullYear()}},\n  url = {https://controlepopular.com.br/noticias/${slug}}\n}`,
     fontesOficiais: [{ nome: p.fonte_nome, url: p.url }],
     metricas: [
+      { rotulo: "Órgão emissor", valor: meta.orgao },
+      { rotulo: "Modalidade", valor: meta.modalidade },
       { rotulo: "Score do detector", valor: String(p.score) },
       { rotulo: "Termos casados", valor: p.termos.length ? p.termos.slice(0, 5).join(", ") : "nenhum registrado" },
     ],
-    recomendacaoVerificar: `Abra a [edição do dia](${p.url}) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.`,
-    paragrafos,
+    recomendacaoVerificar: `Abra a [edição do dia no Diário Oficial](${p.url}) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.`,
+    paragrafos: meta.paragrafos,
   };
 }
 

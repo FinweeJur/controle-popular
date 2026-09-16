@@ -8,9 +8,10 @@
 ## O que é este projeto
 
 Portal cívico de transparência (**controlepopular.com.br**), monorepo Next.js 16
-com `output: export` para Cloudflare Workers. Seis frentes: Cidades, Congresso,
-Judiciário, Função Social da Terra, Paraopeba e ONSA (Observatório Nacional
-Socioambiental).
+com arquitetura de **duplo deploy**: **Cloudflare Workers** (OpenNext) e
+**Guara Cloud** (PaaS brasileira em `br-gru`, container Docker standalone).
+Seis frentes: Cidades, Congresso, Judiciário, Função Social da Terra, Paraopeba
+e ONSA (Observatório Nacional Socioambiental).
 
 **"Busca com potencial de interesse social"** é a regra que tudo guia:
 - **Dados sociais:** análise de direitos, desigualdade, participação

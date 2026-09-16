@@ -6,6 +6,7 @@ import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
 import { buscar, TIPOS_FILTRO, PERIODOS, type IndiceBusca, type Periodo, type Resultado } from "@/lib/busca/indice";
 import { carregarIndiceBusca, type ProgressoCarregamento } from "@/lib/busca/carregarIndice";
+import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
 
 /**
  * Motor de busca no navegador — a versão estática de `/busca`.
@@ -168,6 +169,11 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
     }
     return todos.filter((r) => (r.doc.f === "cidades" ? cidadePassa(r) : true));
   }, [completo, indice, temFiltro, q, tema, municipio, frentes, tipo, periodo, filtrosPorZona]);
+
+  const paginasPortal = useMemo(
+    () => (!q.trim() || q.trim().length < 2 ? [] : buscarPaginasPortal(q, 3)),
+    [q],
+  );
 
   const resultadosExibidos = resultados.slice(0, LIMITE_RESULTADOS);
 
@@ -345,6 +351,40 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
           <p className="mt-1 text-xs text-text-soft">
             Lista única de todas as frentes — o chip à esquerda de cada título diz a fonte.
           </p>
+
+          {paginasPortal.length > 0 ? (
+            <div className="mt-4 mb-6 rounded-2xl border border-primary/30 bg-primary/5 p-4 shadow-sm">
+              <span className="inline-block rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                Páginas e Hubs do Portal
+              </span>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {paginasPortal.map((p) => (
+                  <a
+                    key={p.href}
+                    href={p.href}
+                    className="group flex flex-col justify-between rounded-xl border border-border bg-surface p-4 transition-all hover:border-primary/60 hover:shadow-md"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-semibold text-text group-hover:text-primary">
+                          {p.titulo}
+                        </span>
+                        <span className="text-xs text-primary transition-transform group-hover:translate-x-0.5">
+                          →
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs font-medium text-primary/80">
+                        {p.rotulo}
+                      </p>
+                      <p className="mt-2 text-xs text-text-soft line-clamp-2">
+                        {p.descricao}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
           {resultadosExibidos.length === 0 ? (
             <p className="mt-3 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">

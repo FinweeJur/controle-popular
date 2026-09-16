@@ -2,15 +2,16 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-09-01 (incidente de DNS do deploy registrado; site restaurado)
+> **Última medição:** 2026-09-16 (duplo deploy configurado com Guara Cloud e Cloudflare Workers)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc
+> **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc, guara, docker, duplo deploy
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Quem publica, e de onde](#quem-publica-e-de-onde)
+- [Deploy na Guara Cloud (PaaS Brasil)](#deploy-na-guara-cloud-paas-brasil)
 - [Ciclo de coleta](#ciclo-de-coleta)
 - [Coleta ambiental agendada](#coleta-ambiental-agendada)
 - [Publicar — passo a passo](#publicar-passo-a-passo)
@@ -27,17 +28,45 @@ Este arquivo é o procedimento de operação do portal: quem publica, como colet
 
 | | |
 |---|---|
-| Publica | **somente o home-pc** — é a única máquina com Postgres local |
-| Servidor de produção | `next start -p 3000` no home-pc, exposto por **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`) |
-| Domínio | `controlepopular.com.br` e `www.controlepopular.com.br` apontam para o túnel (CNAME para `e0d8ef85-e1c2-4958-b503-d7cc71556876.cfargotunnel.com`) |
-| Worker Cloudflare | continua deployado como **fallback técnico**, mas sem custom domains ativas |
-| Banco | Postgres local em `127.0.0.1:5432` (dump restaurado); Neon em HTTP 402 até 01/09 |
-| D1 (escritas) | binding Worker OU fallback REST via `CLOUDFLARE_D1_API_TOKEN` (necessário no modo túnel) |
+| Publica | **home-pc** (Postgres local/rotina) e **Guara Cloud** (PaaS Brasil / container Docker) |
+| Servidor de produção | `next start -p 3000` no home-pc via **Cloudflare Tunnel** ou container na **Guara Cloud** (`controle-popular-web-0b4895`, região `br-gru`) |
+| Domínio | `controlepopular.com.br` e `www.controlepopular.com.br` |
+| Worker Cloudflare | continua deployado como **fallback técnico** internacional |
+| Guara Cloud | Alvo de soberania nacional em Reais (São Paulo, `br-gru`) com deploy via GitHub Actions e Guara CLI |
+| Banco | Postgres local em `127.0.0.1:5432` / Neon Postgres / Guara Managed Postgres |
+| D1 / Escritas | binding Worker nativo ou PostgreSQL direto via `lib/db/d1-compat.ts` |
 | Tarefa do Windows | `Controle Popular - rotina diaria`, 06:00, `StartWhenAvailable`, teto 4 h |
 | Log | `logs/rotina-<carimbo>-<pid>.log` — a última linha diz `publicado.` ou `ABORTADO:` |
 | Conferir | `Get-ScheduledTaskInfo -TaskName 'Controle Popular - rotina diaria'` (resultado 0 = publicou) |
 
 Nesta máquina de desenvolvimento **não dá para buildar nem medir `.cache`**: não há banco, e a medida de tamanho de rota acontece no build. Se a tarefa depender disso, diga em vez de estimar.
+
+## Deploy na Guara Cloud (PaaS Brasil)
+
+A Guara Cloud é a PaaS soberana brasileira que hospeda o container Next.js em modo standalone, com cobrança em Reais e latência reduzida (datacenter em São Paulo, `br-gru`).
+
+### 1. Estrutura do Deploy
+- **Dockerfile**: build multi-etapa em Node 22 Alpine, configurado para monorepo.
+- **Standalone**: `apps/web/next.config.ts` ativa `output: 'standalone'` em builds Docker/Node.
+- **Serviço Guara**: `controle-popular-web-0b4895` na região `br-gru`.
+
+### 2. Automação e CI/CD
+- O workflow `.github/workflows/guara-deploy.yml` roda em todo push na branch `main`.
+- Executa testes de unidade (`vitest`), auditoria de dados pessoais/CPF (`checar-dado-pessoal-em-dado.py`) e notifica o webhook da Guara Cloud (`GUARA_DEPLOY_HOOK`).
+- Em conexões diretas via Git Integration da Guara Cloud, o deploy inicia de forma autônoma assim que o commit entra na `main`.
+
+### 3. Deploy manual via Guara CLI
+```bash
+# Login na Guara CLI
+guara login
+
+# Status e logs do serviço
+guara service status controle-popular-web-0b4895
+guara logs controle-popular-web-0b4895 --tail 100
+
+# Deploy manual a partir da branch atual
+guara deploy --service controle-popular-web-0b4895
+```
 
 ### Manter o site no ar (modo túnel)
 

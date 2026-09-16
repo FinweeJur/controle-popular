@@ -261,15 +261,21 @@ function detectarNaPagina(textoPagina: string, nPagina: number): Candidato[] {
   return achados;
 }
 
-/** Primeira linha (ou até 140 chars) que contém a âncora, limpa. */
-function sugerirTitulo(trecho: string, trechoNorm: string, _ini: number, _fim: number): string {
-  const linhas = trecho.split("\n");
-  const achou = linhas.find((l) =>
-    /\bedital\b|\bchamada\s+publica\b|\bchamamento\s+publico\b|\bselecao\s+publica\b/.test(normalizar(l)),
-  );
-  const cru = (achou ?? linhas.find((l) => l.trim()) ?? "Edital no Diário Oficial de Minas Gerais").trim();
-  const umaLinha = cru.replace(/\s+/g, " ");
-  return umaLinha.length > 140 ? `${umaLinha.slice(0, 137)}…` : umaLinha;
+import {
+  identificarOrgao,
+  identificarModalidade,
+  extrairNumero,
+  sintetizarObjeto,
+  gerarTituloJornalistico,
+} from "./radar-editais-extrator.mts";
+
+/** Gera título acessível e jornalístico a partir da análise estruturada do trecho. */
+function sugerirTitulo(trecho: string, _trechoNorm: string, _ini: number, _fim: number): string {
+  const orgao = identificarOrgao(trecho, null);
+  const modalidade = identificarModalidade(trecho);
+  const numero = extrairNumero(trecho);
+  const objeto = sintetizarObjeto(trecho, modalidade, orgao);
+  return gerarTituloJornalistico(orgao, modalidade, numero, objeto);
 }
 
 // ──────────────────────────────────────────────────────────────────────────

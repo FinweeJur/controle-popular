@@ -1,0 +1,65 @@
+name: Guara Cloud CI & Deploy
+
+# Esteira de testes automatizados e deploy contínuo na Guara Cloud (PaaS brasileira).
+#
+# Executa em cada push na branch `main`:
+# 1. Testes unitários (vitest na pasta apps/web)
+# 2. Varredura estrita de privacidade (scripts/checar-dado-pessoal-em-dado.py)
+# 3. Disparo de build/deploy da Guara Cloud via Deploy Webhook (quando GUARA_DEPLOY_HOOK configurado)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: guara-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  testar:
+    name: Testes e Validação de Privacidade
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes unitários (apps/web)
+        run: npm run test:lib -w @cp/web
+
+      - name: Validar privacidade e ausência de CPF em dados ingeridos
+        run: python scripts/checar-dado-pessoal-em-dado.py
+
+  deploy:
+    name: Notificar / Disparar Deploy Guara Cloud
+    needs: testar
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar Deploy Webhook da Guara Cloud
+        env:
+          GUARA_DEPLOY_HOOK: ${{ secrets.GUARA_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$GUARA_DEPLOY_HOOK" ]; then
+            echo "Disparando webhook de deploy na Guara Cloud..."
+            curl -f -X POST "$GUARA_DEPLOY_HOOK"
+            echo "Webhook disparado com sucesso."
+          else
+            echo "GUARA_DEPLOY_HOOK não configurado nos secrets do repositório."
+            echo "Se a Guara Cloud estiver conectada diretamente ao repositório GitHub via App/Git Integration, o build iniciará automaticamente pelo commit na main."
+          fi
