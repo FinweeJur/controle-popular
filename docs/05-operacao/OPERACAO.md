@@ -12,6 +12,7 @@
 - [Propósito](#propósito)
 - [Quem publica, e de onde](#quem-publica-e-de-onde)
 - [Ciclo de coleta](#ciclo-de-coleta)
+- [Coleta ambiental agendada](#coleta-ambiental-agendada)
 - [Publicar — passo a passo](#publicar-passo-a-passo)
 - [Credenciais](#credenciais)
 - [Payload de legislação](#payload-de-legislação)
@@ -99,6 +100,23 @@ Coletores moram em `scripts/` e os ETL em `etl/`; a rotina os executa lendo os w
 3. Varra dado pessoal **antes de commitar** dado coletado: `apps/web/lib/sem-cpf-no-repo.test.ts` valida por mod-11 todo campo de texto em código/doc, e `scripts/checar-dado-pessoal-em-dado.py` varre o DADO ingerido — os diretórios em `DIRETORIOS_DADO`, no topo do script; ambos rodam no pre-push e na CI. Coletor novo que grava JSON a cada rodada entra em `DIRETORIOS_DADO` (nem o hook nem a CI passam `--extra` — essa flag só cobre um dump avulso de UMA rodada, rodado à mão). CPF em ementa oficial é redigido na própria ingestão.
 
 O radar de notícias do Paraopeba roda **dentro** da rotina, antes do build — nunca existe coleta que não foi publicada. Regras medidas: guarda só título, veículo, data e link (nunca o corpo da matéria); coleta vazia não sobrescreve o arquivo bom; a data `gerado_em` aparece na tela; TJMG e MPMG ficaram de fora (RSS respondem 404 — medição em 16/08, remeça antes de decidir com ele).
+
+## Coleta ambiental agendada
+
+Instalada em 16/09/2026 na home-pc. O orquestrador é `scripts/rotina-ambiental.mts`; as fontes ficam registradas nele (não no schtasks). Pipeline por fonte: coletor python → piso de sanidade (contagem nova < 70% da rodada anterior descarta a rodada) → varredura de dado pessoal (hit descarta a rodada e alerta) → registro em `scripts/.cache/ambiental/rodada-<fonte>-latest.json`.
+
+Cadências registradas por `scripts/instalar-agendamento-ambiental.ps1` (rodar uma vez como Administrador; tarefas `CP-ambiental-*`):
+
+| Tarefa | Fonte (`--fonte`) | Cadência |
+|---|---|---|
+| `CP-ambiental-sigmine` | `sigmine` | semanal, dom 03h |
+| `CP-ambiental-ibama-licen` | `ibama-licen` | semanal, qui 04h |
+| `CP-ambiental-ibama-autos` | `ibama-autos` | mensal, dia 5 04h |
+| `CP-ambiental-ana` | `ana` | mensal, dia 10 04h |
+
+Coleta separada por `--fonte todas`; lock em `scripts/.cache/ambiental/.lock` (mais de 2 h é tratado como rodada morta). Falha isolada: uma fonte que falha não derruba as outras, e o Telegram (`scripts/.env`) recebe o alerta das falhas.
+
+Coleta agendada **não publica**: o dado entra no site na próxima `rotina-local.mts --so-build` normal, com travas de piso e queda de páginas (ver "Publicar"). Não encadeie build no fim da coleta — publicar dado sem medir payload é a rota do incidente de 35,5 MiB.
 
 ## Publicar — passo a passo
 
