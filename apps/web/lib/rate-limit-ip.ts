@@ -15,5 +15,14 @@
  * `responderAssistente`, inline).
  */
 export function ipDoCliente(request: Request): string {
-  return request.headers.get("cf-connecting-ip") || "desconhecido";
+  const cfIp = request.headers.get("cf-connecting-ip");
+  if (cfIp) return cfIp;
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    const primeiro = forwarded.split(",")[0]?.trim();
+    if (primeiro) return primeiro;
+  }
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
+  return "desconhecido";
 }
