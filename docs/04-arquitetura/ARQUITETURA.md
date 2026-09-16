@@ -2,15 +2,16 @@
 
 > **Tipo:** ARQUITETURA
 > **Domínio:** global
-> **Última medição:** 2026-09-01
+> **Última medição:** 2026-09-16
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [FONTES.md](../06-fontes/FONTES.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** payload, bundle, Cloudflare Workers, OpenNext, Neon, Drizzle, D1, compactacao, indice estatico, assistente, teto de asset
+> **Palavras-chave:** payload, bundle, Cloudflare Workers, OpenNext, Guara Cloud, Docker standalone, duplo deploy, Neon, Drizzle, D1, compactacao, indice estatico, assistente, teto de asset
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Visão geral](#visão-geral)
+- [Duplo Deploy: Cloudflare Workers × Guara Cloud](#duplo-deploy-cloudflare-workers--guara-cloud)
 - [Os dois tetos](#os-dois-tetos)
 - [Regra de payload](#regra-de-payload)
 - [Compactação de dado](#compactação-de-dado)
@@ -52,6 +53,25 @@ restrição errada.
 - **As páginas são pré-renderizadas no build nos dois alvos** — nenhuma consulta banco em tempo de execução, e a tela abre com a Neon fora do ar. O que muda é o que sobra ao lado delas: no alvo Workers as 16 rotas `*.din.ts` existem e rodam em runtime; no export estático elas não entram.
 
 **Stack medida em 2026-08-17:** Next.js 14 (App Router) + TypeScript + Tailwind + lucide-react, em `apps/web/`. Build roda na máquina `home-pc` e publica via `npx tsx scripts/sincronizar-e-publicar.mts`. Banco principal: Postgres serverless Neon (`@neondatabase/serverless` via HTTP, sem pool persistente — o autosuspend é o que mantém a cota Free). Drizzle ORM, 124 tabelas em 4 schemas (`public`, `congresso`, `judiciario`, `terras`) + 4 tabelas Better Auth. Banco de escritas ao vivo: Cloudflare D1 (SQLite) em `lib/db/schema.d1.ts` — `page_views`, `zap_estabelecimentos`, `classificados`, `anúncios`.
+
+## Duplo Deploy: Cloudflare Workers × Guara Cloud
+
+A partir de 16/09/2026, o portal opera com arquitetura de **duplo alvo de deploy**, mantendo paridade funcional entre a infraestrutura de borda internacional e a nuvem soberana brasileira:
+
+| Componente | Alvo A: Cloudflare Workers | Alvo B: Guara Cloud (PaaS Brasil) |
+|---|---|---|
+| **Runtime** | Edge Runtime (OpenNext adapter) | Node.js 22 (Container Docker standalone) |
+| **Escritas ao vivo** | Cloudflare D1 (SQLite binding) | PostgreSQL direto (tabelas de escritas via `lib/db/d1-compat.ts`) |
+| **Rate limiting** | Cloudflare binding / KV | Em memória com janela deslizante (`lib/rate-limit.ts`) |
+| **Cache & Assets** | Cloudflare CDN & Workers KV | Cache Node.js local + CDN Guara Cloud em São Paulo (`br-gru`) |
+| **Comando de deploy** | `npm run cf:deploy` | `guara deploy` / Docker build / Webhook GitHub Actions |
+| **Moeda & Infra** | Dólar (EUA/Global) | Reais (Infraestrutura soberana no Brasil) |
+
+### Camada de compatibilidade de escrita (`lib/db/d1-compat.ts`)
+
+Para evitar divergência de banco e código duplicado entre os dois ambientes:
+- No Cloudflare Workers, a rota usa o binding `env.DB` do D1 nativo.
+- Na Guara Cloud (e no túnel local), o adapter chaveia automaticamente para queries equivalentes no PostgreSQL (`lib/db/schema.ts`), garantindo persistência sem depender de bindings proprietários do Cloudflare.
 
 ## Os dois tetos
 

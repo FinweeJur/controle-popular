@@ -1505,26 +1505,27 @@
  },
  {
   "slug": "radar-editais-20260910053ce5e6",
-  "titulo": "EDITAL DE LEILÃO Nº 1862/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 46.",
+  "titulo": "Leilão DETRAN-MG nº 1862/2026: Venda de veículos conservados e sucatas",
+  "subtitulo": "Leilão Público publicada por DETRAN-MG em 2026-09-10. Objeto: Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais.",
+  "resumo": "DETRAN-MG publicou Leilão Público nº 1862/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "detran-mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EDITAL DE LEILÃO Nº 1862/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910053ce5e6>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260910053ce5e6,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EDITAL DE LEILÃO Nº 1862/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910053ce5e6}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Leilão DETRAN-MG nº 1862/2026: Venda de veículos conservados e sucatas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910053ce5e6>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260910053ce5e6,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Leilão DETRAN-MG nº 1862/2026: Venda de veículos conservados e sucatas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910053ce5e6}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1532,6 +1533,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "DETRAN-MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Leilão Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "13"
@@ -1541,36 +1550,38 @@
     "valor": "conselho, prazo, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EDITAL DE LEILÃO Nº 1862/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 46). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"b002302 Preta 2011 R$ 1. 000,00 44 25702 Recuperável 9C2HB02108R037914 HHL3169 Honda/Pop100 Hb02e18037914 Preta 2008 R$ 500,00 188 cm -09 2257367 - 1 EDITAL DE LEILÃO Nº 1862/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS O ESTADO DE MINAS GERAIS, pelo Departamento Estadual de Trânsito de Minas Gerais - DETRAN/MG, em conformidade com o disposto no art. 22, inciso I; art. 328, da Lei Federal nº 9. 503,…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 13 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Leilão Público** promovida por **DETRAN-MG** sob o registro oficial nº 1862/2026. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Arrematação pela melhor oferta individual por lote no estado de conservação em que se encontram, permitida a vistoria prévia dos bens nos pátios credenciados.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091011ca6591",
-  "titulo": "Os candidatos nomeados deverão apresentar, obrigatoriamente, no ato da posse toda a documentação especificada no item 16.3 do Edital do C…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 48.",
+  "titulo": "Credenciamento SEE/MG nº 10: Credenciamento e homologação de cursos técnicos para…",
+  "subtitulo": "Credenciamento publicada por SEE/MG em 2026-09-10. Objeto: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
+  "resumo": "SEE/MG publicou Credenciamento nº 10 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "see/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Os candidatos nomeados deverão apresentar, obrigatoriamente, no ato da posse toda a documentação especificada no item 16.3 do Edital do C…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091011ca6591>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091011ca6591,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Os candidatos nomeados deverão apresentar, obrigatoriamente, no ato da posse toda a documentação especificada no item 16.3 do Edital do C…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091011ca6591}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento SEE/MG nº 10: Credenciamento e homologação de cursos técnicos para…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091011ca6591>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091011ca6591,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento SEE/MG nº 10: Credenciamento e homologação de cursos técnicos para…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091011ca6591}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1578,6 +1589,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEE/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "19"
@@ -1587,36 +1606,38 @@
     "valor": "credenciamento, homologacao, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"Os candidatos nomeados deverão apresentar, obrigatoriamente, no ato da posse toda a documentação especificada no item 16.3 do Edital do C…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 48). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"o 20º SRE Pará de Minas Os candidatos nomeados deverão apresentar, obrigatoriamente, no ato da posse toda a documentação especificada no item 16.3 do Edital do Concurso SEPLAG/SEE 01/2025 disponíveis no site www. planejamento. mg. gov. br. Tânia de Moura Morato Resende Superintendente Regional de Ensino 10 cm -09 2257064 - 1 TERMO DE HOMOLOGAÇÃO DE CREDENCIAMENTO Conforme previsto na RESOLUÇÃO SEE…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 19 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **SEE/MG** sob o registro oficial nº 10. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091015c93c22",
-  "titulo": "EDITAL DE CHAMAMENTO",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 38.",
+  "titulo": "Chamamento Público SEGOV/MG nº 001: Notificação formal sobre prestação de contas de conv…",
+  "subtitulo": "Chamamento Público publicada por SEGOV/MG em 2026-09-10. Objeto: Notificação formal sobre prestação de contas de convênios com entidades do terceiro setor.",
+  "resumo": "SEGOV/MG publicou Chamamento Público nº 001 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Notificação formal sobre prestação de contas de convênios com entidades do terceiro setor.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "segov/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EDITAL DE CHAMAMENTO. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091015c93c22>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091015c93c22,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EDITAL DE CHAMAMENTO},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091015c93c22}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamamento Público SEGOV/MG nº 001: Notificação formal sobre prestação de contas de conv…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091015c93c22>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091015c93c22,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamamento Público SEGOV/MG nº 001: Notificação formal sobre prestação de contas de conv…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091015c93c22}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1624,6 +1645,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEGOV/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamamento Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "7"
@@ -1633,36 +1662,38 @@
     "valor": "prazo, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EDITAL DE CHAMAMENTO\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 38). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"6 2 FERNANDO ETIENE PINHEIRO TEIXEIRA JUNIOR PES VI B C 01/09/2026 10460400 1 FRANCISCA CARDOSO AUS VI D E 17/07/2026 Secretaria de Estado de Governo EDITAL DE CHAMAMENTO EDITAL DE NOTIFICAÇÃO INTIMAÇÃO SOBRE DESPACHO Ao Senhor: Luiz Gustavo Ferreira De Carvalho, ocupante do cargo de representante do Centro de Tratamento Laura Saia Palombo - C. T. L. S. P, inscrita no CNPJ CNPJ 10. 635. 949/0001-1…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 7 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamamento Público** promovida por **SEGOV/MG** sob o registro oficial nº 001. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Notificação formal sobre prestação de contas de convênios com entidades do terceiro setor. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609101bdd1b81",
-  "titulo": "TERMO ADITIVO Nº 02/2026 AO EDITAL CHAMAMENTO DE ENTIDADES CIVIS - CONDEL PPDDH/MG 01/2026",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 42.",
+  "titulo": "Edital Convocatório CONDEL/PPDDH-MG nº 02/2026: Prorrogação de prazos para seleção de entidades civi…",
+  "subtitulo": "Edital Convocatório publicada por CONDEL/PPDDH-MG em 2026-09-10. Objeto: Prorrogação de prazos para seleção de entidades civis no Conselho Deliberativo do PPDDH-MG.",
+  "resumo": "CONDEL/PPDDH-MG publicou Edital Convocatório nº 02/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Prorrogação de prazos para seleção de entidades civis no Conselho Deliberativo do PPDDH-MG.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "condel/ppddh-mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. TERMO ADITIVO Nº 02/2026 AO EDITAL CHAMAMENTO DE ENTIDADES CIVIS - CONDEL PPDDH/MG 01/2026. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609101bdd1b81>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609101bdd1b81,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {TERMO ADITIVO Nº 02/2026 AO EDITAL CHAMAMENTO DE ENTIDADES CIVIS - CONDEL PPDDH/MG 01/2026},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609101bdd1b81}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Edital Convocatório CONDEL/PPDDH-MG nº 02/2026: Prorrogação de prazos para seleção de entidades civi…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609101bdd1b81>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609101bdd1b81,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Edital Convocatório CONDEL/PPDDH-MG nº 02/2026: Prorrogação de prazos para seleção de entidades civi…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609101bdd1b81}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1670,6 +1701,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "CONDEL/PPDDH-MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Edital Convocatório"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "40"
@@ -1679,36 +1718,38 @@
     "valor": "sociedade civil, conselho, condel, ppddh, inscricao"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"TERMO ADITIVO Nº 02/2026 AO EDITAL CHAMAMENTO DE ENTIDADES CIVIS - CONDEL PPDDH/MG 01/2026\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 42). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"Gorutuba - CEGR . Abertura das propostas e sessão de lances ocorrerão Secretaria de Estado de Desenvolvimento Social TERMO ADITIVO Nº 02/2026 AO EDITAL CHAMAMENTO DE ENTIDADES CIVIS - CONDEL PPDDH/MG 01/2026 O Conselho Deliberativo do Programa de Proteção aos Defensores dos Direitos Humanos de Minas Gerais, foi instituído pelo art . 7º da Lei nº 21 .164, de 17 de janeiro de 2014, e regulamentado p…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 40 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Edital Convocatório** promovida por **CONDEL/PPDDH-MG** sob o registro oficial nº 02/2026. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Prorrogação de prazos para seleção de entidades civis no Conselho Deliberativo do PPDDH-MG. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609106dd38991",
-  "titulo": "Ficam ratificadas e inalteradas as demais cláusulas, cronogramas e condições estabelecidas no Edital original que não foram objeto de mod…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 48.",
+  "titulo": "Credenciamento IPSEMG nº 327/2022: Retificação e termo aditivo para credenciamento de s…",
+  "subtitulo": "Credenciamento publicada por IPSEMG em 2026-09-10. Objeto: Retificação e termo aditivo para credenciamento de serviços médicos de Urologia.",
+  "resumo": "IPSEMG publicou Credenciamento nº 327/2022 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Retificação e termo aditivo para credenciamento de serviços médicos de Urologia.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsemg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Ficam ratificadas e inalteradas as demais cláusulas, cronogramas e condições estabelecidas no Edital original que não foram objeto de mod…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609106dd38991>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609106dd38991,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Ficam ratificadas e inalteradas as demais cláusulas, cronogramas e condições estabelecidas no Edital original que não foram objeto de mod…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609106dd38991}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSEMG nº 327/2022: Retificação e termo aditivo para credenciamento de s…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609106dd38991>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609106dd38991,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSEMG nº 327/2022: Retificação e termo aditivo para credenciamento de s…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609106dd38991}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1716,6 +1757,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSEMG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "9"
@@ -1725,36 +1774,38 @@
     "valor": "credenciamento, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"Ficam ratificadas e inalteradas as demais cláusulas, cronogramas e condições estabelecidas no Edital original que não foram objeto de mod…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 48). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"o Urologia 02 03 credenciado 2. Das demais disposições: Ficam ratificadas e inalteradas as demais cláusulas, cronogramas e condições estabelecidas no Edital original que não foram objeto de modificação por esta errata. Belo Horizonte, de 09 setembro de 2026 Sérgio Schusterschitz da Silva Araújo 32 cm -09 2257245 - 1 Fundação Hospitalar do Estado de Minas Gerais - Fhemig TERMO ADITIVO Extrato: Prim…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 9 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **IPSEMG** sob o registro oficial nº 327/2022. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Retificação e termo aditivo para credenciamento de serviços médicos de Urologia. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091083d6f44f",
-  "titulo": "EXTRATO DE EDITAL PARA CHAMADA PÚBLICA",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 48.",
+  "titulo": "Chamada Pública SRE Araçuaí / SEE-MG nº 11 947/2009: Aquisição de alimentos da agricultura familiar pa…",
+  "subtitulo": "Chamada Pública publicada por SRE Araçuaí / SEE-MG em 2026-09-10. Objeto: Aquisição de alimentos da agricultura familiar para a merenda de caixas escolares.",
+  "resumo": "SRE Araçuaí / SEE-MG publicou Chamada Pública nº 11 947/2009 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Aquisição de alimentos da agricultura familiar para a merenda de caixas escolares.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "sre araçuaí / see-mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EXTRATO DE EDITAL PARA CHAMADA PÚBLICA. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091083d6f44f>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091083d6f44f,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EXTRATO DE EDITAL PARA CHAMADA PÚBLICA},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091083d6f44f}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamada Pública SRE Araçuaí / SEE-MG nº 11 947/2009: Aquisição de alimentos da agricultura familiar pa…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091083d6f44f>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091083d6f44f,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamada Pública SRE Araçuaí / SEE-MG nº 11 947/2009: Aquisição de alimentos da agricultura familiar pa…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091083d6f44f}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1762,6 +1813,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SRE Araçuaí / SEE-MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamada Pública"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "13"
@@ -1771,36 +1830,38 @@
     "valor": "chamada publica, data dd/mm/aaaa, organizacao"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EXTRATO DE EDITAL PARA CHAMADA PÚBLICA\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 48). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"s: pela contratada Michelle Cristina Alves de Paiva Silva, pela contratante Letícia Borges Marra Soares. 3 cm -09 2257386 - 1 SRE ARAÇUAÍ EXTRATO DE EDITAL PARA CHAMADA PÚBLICA UNIFICADA - AGRICULTURA FAMILIAR As caixas escolares Alphonsus de Guimaraens e Fernando da Costa Amaral, no uso de suas atribuições em cumprimento a Lei Federal nº 11 947/2009, Resolução CD/FNDE nº 04/2026 e Instrução Norma…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 13 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamada Pública** promovida por **SRE Araçuaí / SEE-MG** sob o registro oficial nº 11 947/2009. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Aquisição de alimentos da agricultura familiar para a merenda de caixas escolares. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260910c392a59e",
-  "titulo": "de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 3 e 7. 5. 11 do Edital de Credenciam…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 39.",
+  "titulo": "Credenciamento IPSM: Publicada inabilitação de prestadores de serviços",
+  "subtitulo": "Inabilitação de Credenciamento publicada por IPSM em 2026-09-10. Objeto: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
+  "resumo": "IPSM publicou Inabilitação de Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsm",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 3 e 7. 5. 11 do Edital de Credenciam…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910c392a59e>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260910c392a59e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 3 e 7. 5. 11 do Edital de Credenciam…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910c392a59e}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSM: Publicada inabilitação de prestadores de serviços. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910c392a59e>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260910c392a59e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSM: Publicada inabilitação de prestadores de serviços},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910c392a59e}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1808,6 +1869,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSM"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Inabilitação de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "22"
@@ -1817,36 +1886,38 @@
     "valor": "inscricao, prazo, credenciamento, recurso, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 3 e 7. 5. 11 do Edital de Credenciam…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 39). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"do Decreto Estadual nº 48.064, de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 3 e 7. 5. 11 do Edital de Credenciamento nº 01/2025, divulga os interessados HABILITADOS e CONVOCADOS em credenciar-se no Sistema de Saúde da PMM-CBMMG-IPSM no âmbito da região da Polícia Militar/MG. Data: 09/09/2026 10ª RPM – Patos de Minas Município Interessado Cate…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 22 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Inabilitação de Credenciamento** promovida por **IPSM**. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Fica concedido o prazo de 03(três) dias úteis úteis para a interposição de recursos administrativos a contar da publicação oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260910dda5a7a2",
-  "titulo": "EDITAL DE LEILÃO Nº 1857/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-10.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Local: Editais e Avisos, página 45.",
+  "titulo": "Leilão DETRAN-MG nº 1857/2026: Venda de veículos conservados e sucatas",
+  "subtitulo": "Leilão Público publicada por DETRAN-MG em 2026-09-10. Objeto: Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais.",
+  "resumo": "DETRAN-MG publicou Leilão Público nº 1857/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10. Foco: Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-11T07:50:44.217Z",
   "atualizadoEm": "2026-09-11T07:50:44.217Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "detran-mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EDITAL DE LEILÃO Nº 1857/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910dda5a7a2>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260910dda5a7a2,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EDITAL DE LEILÃO Nº 1857/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910dda5a7a2}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Leilão DETRAN-MG nº 1857/2026: Venda de veículos conservados e sucatas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260910dda5a7a2>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260910dda5a7a2,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Leilão DETRAN-MG nº 1857/2026: Venda de veículos conservados e sucatas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260910dda5a7a2}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1854,6 +1925,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "DETRAN-MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Leilão Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "13"
@@ -1863,36 +1942,38 @@
     "valor": "conselho, prazo, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EDITAL DE LEILÃO Nº 1857/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-10 (Editais e Avisos, página 45). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"line Listgarten Dias pela SEPLAG e Fábio Baccheretti Vitor pela SES. 3 cm -09 2257269 - 1 Departamento Estadual de Trânsito de Minas Gerais - DETRAN EDITAL DE LEILÃO Nº 1857/2026 - CONSERVADOS / SUCATAS APROVEITÁVEIS O ESTADO DE MINAS GERAIS, pelo Departamento Estadual de Trânsito de Minas Gerais - DETRAN/MG, em conformidade com o disposto no art. 22, inciso I; art. 328, da Lei Federal nº 9. 503, …\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 13 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Leilão Público** promovida por **DETRAN-MG** sob o registro oficial nº 1857/2026. O ato foi formalizado na edição de 2026-09-10 (Editais e Avisos).",
+   "**Objeto do certame:** Alienação de veículos conservados e sucatas aproveitáveis recolhidos em pátios oficiais. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Arrematação pela melhor oferta individual por lote no estado de conservação em que se encontram, permitida a vistoria prévia dos bens nos pátios credenciados.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-10) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091211e0aa01",
-  "titulo": "DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de,",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 57.",
+  "titulo": "Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços",
+  "subtitulo": "Inabilitação de Credenciamento publicada por SEE/MG em 2026-09-12. Objeto: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
+  "resumo": "SEE/MG publicou Inabilitação de Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "see/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de,. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091211e0aa01>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091211e0aa01,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de,},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091211e0aa01}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091211e0aa01>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091211e0aa01,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091211e0aa01}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1900,6 +1981,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEE/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Inabilitação de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "13"
@@ -1909,36 +1998,38 @@
     "valor": "credenciamento, homologacao, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de,\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 57). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"ado, 12 DE Setembro DE 2026 – 57 TERMO DE INABILITAÇÃO DE CREDENCIAMENTO Conforme previsto na RESOLUÇÃO SEE Nº 5. 290, DE 29 DE JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de, 28 de Maio de 2025, a instituição Escola Tecnica Bocaiuva Ltda - CNPJ: 66. 269. 068/0001-89 , foi inabilitada no processo de credenciamento nos termos do Artigo 5º da referida Resolução. Justificativa: Após an…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 13 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Inabilitação de Credenciamento** promovida por **SEE/MG**. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Candidatos ou entidades inabilitadas podem interpor recurso administrativo no prazo regulamentar do certame, indicando as razões de discordância conforme instrução do diário.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609122f9bb29e",
-  "titulo": "JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 55.",
+  "titulo": "Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços",
+  "subtitulo": "Inabilitação de Credenciamento publicada por SEE/MG em 2026-09-12. Objeto: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
+  "resumo": "SEE/MG publicou Inabilitação de Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "see/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609122f9bb29e>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609122f9bb29e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609122f9bb29e}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609122f9bb29e>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609122f9bb29e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609122f9bb29e}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1946,6 +2037,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEE/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Inabilitação de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "17"
@@ -1955,36 +2054,38 @@
     "valor": "inscricao, credenciamento, homologacao, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 55). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"ação Básica 11 cm -11 2258456 - 1 TERMO DE INABILITAÇÃO DE CREDENCIAMENTO Conforme previsto na RESOLUÇÃO SEE Nº 5. 290, DE 29 DE JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de, 28 de Maio de 2025, a instituição Instituto Mineiro de Ensino Superior Ltda - CNPJ: 19. 687. 002/0001-29 e 19. 687. 002/0002- 00 , foi inabilitada no processo de credenciamento nos termos do Artigo 5º da refe…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 17 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Inabilitação de Credenciamento** promovida por **SEE/MG**. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Candidatos ou entidades inabilitadas podem interpor recurso administrativo no prazo regulamentar do certame, indicando as razões de discordância conforme instrução do diário.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609123a0574b2",
-  "titulo": "RETIFICA o edital do Pregão Eletrônico nº 2261032 338/2026 para",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 53.",
+  "titulo": "Credenciamento FHEMIG nº 2261032 338/2026: Retificação e termo aditivo para credenciamento de s…",
+  "subtitulo": "Credenciamento publicada por FHEMIG em 2026-09-12. Objeto: Retificação e termo aditivo para credenciamento de serviços médicos de Urologia.",
+  "resumo": "FHEMIG publicou Credenciamento nº 2261032 338/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Retificação e termo aditivo para credenciamento de serviços médicos de Urologia.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "fhemig",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. RETIFICA o edital do Pregão Eletrônico nº 2261032 338/2026 para. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609123a0574b2>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609123a0574b2,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {RETIFICA o edital do Pregão Eletrônico nº 2261032 338/2026 para},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609123a0574b2}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento FHEMIG nº 2261032 338/2026: Retificação e termo aditivo para credenciamento de s…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609123a0574b2>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609123a0574b2,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento FHEMIG nº 2261032 338/2026: Retificação e termo aditivo para credenciamento de s…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609123a0574b2}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -1992,6 +2093,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "FHEMIG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "12"
@@ -2001,36 +2110,38 @@
     "valor": "credenciamento, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"RETIFICA o edital do Pregão Eletrônico nº 2261032 338/2026 para\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 53). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"iretor do Instituto Octávio Magalhães/Funed. 3 cm -11 2257952 - 1 COMUNICADO DE RETIFICAÇÃO A FUNDAÇÃO EZEQUIEL DIAS – FUNED comunica que RETIFICA o edital do Pregão Eletrônico nº 2261032 338/2026 para alterar a data da abertura da sessão para 28/09/2026 e alterar o arquivo do instrumento convocatório anexado ao sistema, incluindo o anexo I. Informa-se que a publicação do aviso de licitação foi ve…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 12 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **FHEMIG** sob o registro oficial nº 2261032 338/2026. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Retificação e termo aditivo para credenciamento de serviços médicos de Urologia. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609124c29ca20",
-  "titulo": "EXTRATO DA CHAMADA PÚBLICA FAPEMIG/CNPQ/",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 50.",
+  "titulo": "Chamada Pública FAPEMIG/CNPq: Fomento à pesquisa científica e bolsas de inovação",
+  "subtitulo": "Chamada Pública publicada por FAPEMIG/CNPq em 2026-09-12. Objeto: Fomento a projetos de pesquisa científica, extensão tecnológica e concessão de bolsas de inovação.",
+  "resumo": "FAPEMIG/CNPq publicou Chamada Pública nº 17/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Fomento a projetos de pesquisa científica, extensão tecnológica e concessão de bolsas de inovação.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "fapemig/cnpq",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EXTRATO DA CHAMADA PÚBLICA FAPEMIG/CNPQ/. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609124c29ca20>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609124c29ca20,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EXTRATO DA CHAMADA PÚBLICA FAPEMIG/CNPQ/},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609124c29ca20}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamada Pública FAPEMIG/CNPq: Fomento à pesquisa científica e bolsas de inovação. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609124c29ca20>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609124c29ca20,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamada Pública FAPEMIG/CNPq: Fomento à pesquisa científica e bolsas de inovação},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609124c29ca20}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2038,6 +2149,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "FAPEMIG/CNPq"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamada Pública"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "17"
@@ -2047,36 +2166,38 @@
     "valor": "chamamento publico, chamada publica, conselho, credenciamento, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EXTRATO DA CHAMADA PÚBLICA FAPEMIG/CNPQ/\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 50). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"2026 ; 12/11/2026 ; sociedade mineira de cultura/ pontifícia universidade católica de minas gerais ; R$ 24. 000,00 ; 56 cm -11 2258384 - 1 EXTRATO DA CHAMADA PÚBLICA FAPEMIG/CNPQ/ CAPES N. 17/2026 - PROGRAMA DE APOIO À FIXAÇÃO DE DOUTORES NO BRASIL – PROFIX-CB A Fundação de Amparo à Pesquisa do Estado de Minas Gerais – FAPEMIG, em parceria com o Conselho Nacional de Desenvolvimento Científico e Te…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 17 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamada Pública** promovida por **FAPEMIG/CNPq** sob o registro oficial nº 17/2026. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Fomento a projetos de pesquisa científica, extensão tecnológica e concessão de bolsas de inovação. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609125e2aca9f",
-  "titulo": "EDITAL DE CHAMAMENTO",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Secretaria de Estado de Justiça e Segurança Pública, página 18.",
+  "titulo": "Chamamento Público SEJUSP/MG: Abertas inscrições para projetos de segurança cidadã",
+  "subtitulo": "Chamamento Público publicada por SEJUSP/MG em 2026-09-12. Objeto: Seleção de projetos sociais e fortalecimento de iniciativas comunitárias voltadas à segurança cidadã.",
+  "resumo": "SEJUSP/MG publicou Chamamento Público nº 381/2025 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Seleção de projetos sociais e fortalecimento de iniciativas comunitárias voltadas à segurança cidadã.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "sejusp/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EDITAL DE CHAMAMENTO. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609125e2aca9f>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609125e2aca9f,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EDITAL DE CHAMAMENTO},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609125e2aca9f}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamamento Público SEJUSP/MG: Abertas inscrições para projetos de segurança cidadã. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609125e2aca9f>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609125e2aca9f,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamamento Público SEJUSP/MG: Abertas inscrições para projetos de segurança cidadã},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609125e2aca9f}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2084,6 +2205,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEJUSP/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamamento Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "8"
@@ -2093,36 +2222,38 @@
     "valor": "recurso, data dd/mm/aaaa, defensores"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EDITAL DE CHAMAMENTO\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Secretaria de Estado de Justiça e Segurança Pública, página 18). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"rau J, por não cumprimento dos requisitos , a partir de 01/09/2026. Ana Louise de Freitas Pereira Superintendente de Recursos Humanos 11 2258203 - 1 EDITAL DE CHAMAMENTO O Presidente da Comissão do Processo Administrativo Disciplinar nº 381/2025, Joelson Fontes Dias, conforme PORTARIA/NUCAD/ CSet - SEJUSP/PAD nº 381/2025, publicado no Diário Oficial de Minas Gerais, em 13 de junho de 2025, tendo e…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 8 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamamento Público** promovida por **SEJUSP/MG** sob o registro oficial nº 381/2025. O ato foi formalizado na edição de 2026-09-12 (Secretaria de Estado de Justiça e Segurança Pública).",
+   "**Objeto do certame:** Seleção de projetos sociais e fortalecimento de iniciativas comunitárias voltadas à segurança cidadã. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609127014e6ea",
-  "titulo": "de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 7 e 7. 5. 11 do Edital de Credenciam…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 48.",
+  "titulo": "Credenciamento IPSM nº 48: Credenciamento de instituições hospitalares privadas…",
+  "subtitulo": "Credenciamento publicada por IPSM em 2026-09-12. Objeto: Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG.",
+  "resumo": "IPSM publicou Credenciamento nº 48 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsm",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 7 e 7. 5. 11 do Edital de Credenciam…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609127014e6ea>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609127014e6ea,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 7 e 7. 5. 11 do Edital de Credenciam…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609127014e6ea}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSM nº 48: Credenciamento de instituições hospitalares privadas…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609127014e6ea>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609127014e6ea,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSM nº 48: Credenciamento de instituições hospitalares privadas…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609127014e6ea}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2130,6 +2261,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSM"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "19"
@@ -2139,36 +2278,38 @@
     "valor": "credenciamento, recurso, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 7 e 7. 5. 11 do Edital de Credenciam…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 48). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"do Decreto Estadual nº 48. 064, de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 7 e 7. 5. 11 do Edital de Credenciamento nº 01/2025, divulga o interessado HABILITADO e CONVOCADO em credenciar-se no Sistema de Saúde da PMM-CBMMG-IPSM no âmbito da região da Polícia Militar/MG. Data: 04/09/2026 RMBH Município Interessado Categoria Belo Horizonte Ne…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 19 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **IPSM** sob o registro oficial nº 48. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609127c96cb32",
-  "titulo": "JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 56.",
+  "titulo": "Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços",
+  "subtitulo": "Inabilitação de Credenciamento publicada por SEE/MG em 2026-09-12. Objeto: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
+  "resumo": "SEE/MG publicou Inabilitação de Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "see/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609127c96cb32>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609127c96cb32,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609127c96cb32}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609127c96cb32>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609127c96cb32,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609127c96cb32}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2176,6 +2317,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEE/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Inabilitação de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "15"
@@ -2185,36 +2334,38 @@
     "valor": "inscricao, credenciamento, homologacao, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 56). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"ação Básica 10 cm -11 2258462 - 1 TERMO DE INABILITAÇÃO DE CREDENCIAMENTO Conforme previsto na RESOLUÇÃO SEE Nº 5. 290, DE 29 DE JULHO DE 2026 e no EDITAL DE CREDENCIAMENTO SEE nº 02/2025 de, 28 de Maio de 2025, a Instituição FUNDAÇÃO DE ENSINO DE CONTAGEM - CNPJ: 16. 694. 465/0001-20, foi inabilitada no processo de credenciamento nos termos do Artigo 5º da referida Resolução. Justificativa: Após …\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 15 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Inabilitação de Credenciamento** promovida por **SEE/MG**. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Candidatos ou entidades inabilitadas podem interpor recurso administrativo no prazo regulamentar do certame, indicando as razões de discordância conforme instrução do diário.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260912e8545d77",
-  "titulo": "estabelecidas no edital e seus anexos. As propostas comerciais",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-12.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Local: Editais e Avisos, página 56.",
+  "titulo": "Credenciamento SEE/MG: Credenciamento e homologação de cursos técnicos para…",
+  "subtitulo": "Credenciamento publicada por SEE/MG em 2026-09-12. Objeto: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
+  "resumo": "SEE/MG publicou Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12. Foco: Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-13T07:50:46.029Z",
   "atualizadoEm": "2026-09-13T07:50:46.029Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "see/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. estabelecidas no edital e seus anexos. As propostas comerciais. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260912e8545d77>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260912e8545d77,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {estabelecidas no edital e seus anexos. As propostas comerciais},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260912e8545d77}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento SEE/MG: Credenciamento e homologação de cursos técnicos para…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260912e8545d77>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260912e8545d77,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento SEE/MG: Credenciamento e homologação de cursos técnicos para…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260912e8545d77}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2222,6 +2373,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEE/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "16"
@@ -2231,36 +2390,38 @@
     "valor": "credenciamento, homologacao, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"estabelecidas no edital e seus anexos. As propostas comerciais\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-12 (Editais e Avisos, página 56). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"locação de caçambas, para recolhimento de resíduos de construção civil e afins, conforme especificações, exigências e quantidades estabelecidas no edital e seus anexos. As propostas comerciais deverão ser enviadas através do site: www. compras. mg. gov. br na opção “PREGÃO”, até a data e horário estabelecidos para abertura da sessão pública deste Pregão Eletrônico. A sessão pública terá início no …\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 16 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **SEE/MG**. O ato foi formalizado na edição de 2026-09-12 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento e homologação de cursos técnicos para o Projeto Trilhas de Futuro. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Sessão pública agendada para dia 28/09/2026, às 09h30min em plataforma oficial de compras públicas.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-12) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091524833bce",
-  "titulo": "16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 4; 7. 5. 8 e 7. 5. 11 do Edital de Cred…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 44.",
+  "titulo": "Credenciamento IPSM nº 48: Divulgado resultado de entidades habilitadas",
+  "subtitulo": "Resultado de Credenciamento publicada por IPSM em 2026-09-15. Objeto: Credenciamento de clínicas e profissionais especializados em assistência e diagnóstico odontológico.",
+  "resumo": "IPSM publicou Resultado de Credenciamento nº 48 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Credenciamento de clínicas e profissionais especializados em assistência e diagnóstico odontológico.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsm",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 4; 7. 5. 8 e 7. 5. 11 do Edital de Cred…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091524833bce>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091524833bce,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 4; 7. 5. 8 e 7. 5. 11 do Edital de Cred…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091524833bce}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSM nº 48: Divulgado resultado de entidades habilitadas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091524833bce>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091524833bce,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSM nº 48: Divulgado resultado de entidades habilitadas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091524833bce}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2268,6 +2429,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSM"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Resultado de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "18"
@@ -2277,36 +2446,38 @@
     "valor": "credenciamento, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 4; 7. 5. 8 e 7. 5. 11 do Edital de Cred…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 44). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"o Estadual nº 48. 064, de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 5. 4; 7. 5. 8 e 7. 5. 11 do Edital de Credenciamento nº 01/2025, divulga os interessados HABILITADOS para formação do CADASTRO RESERVA no Sistema de Saúde da PMM-CBMMG-IPSM. Data: 14/09/2026 RMBH Município Interessado Categoria Betim Odontodoc Serviços Odontologicos de Documenta…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 18 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Resultado de Credenciamento** promovida por **IPSM** sob o registro oficial nº 48. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento de clínicas e profissionais especializados em assistência e diagnóstico odontológico. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915648b660e",
-  "titulo": "ILIDADE DE LICITAÇÃO",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 55.",
+  "titulo": "Chamamento Público EPAMIG nº 7803: Serviços de manutenção mecânica preventiva e correti…",
+  "subtitulo": "Chamamento Público publicada por EPAMIG em 2026-09-15. Objeto: Serviços de manutenção mecânica preventiva e corretiva, fornecimento de peças e guincho para a frota oficial.",
+  "resumo": "EPAMIG publicou Chamamento Público nº 7803 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Serviços de manutenção mecânica preventiva e corretiva, fornecimento de peças e guincho para a frota oficial.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "epamig",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. ILIDADE DE LICITAÇÃO. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915648b660e>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915648b660e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {ILIDADE DE LICITAÇÃO},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915648b660e}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamamento Público EPAMIG nº 7803: Serviços de manutenção mecânica preventiva e correti…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915648b660e>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915648b660e,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamamento Público EPAMIG nº 7803: Serviços de manutenção mecânica preventiva e correti…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915648b660e}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2314,6 +2485,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "EPAMIG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamamento Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "18"
@@ -2323,36 +2502,38 @@
     "valor": "chamamento publico, credenciamento, homologacao, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"ILIDADE DE LICITAÇÃO\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 55). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"ILIDADE DE LICITAÇÃO O Diretor de Administração e Finanças da EPAMIG, Leonardo Brumano Kalil no uso de suas atribuições e com base no resultado de Chamamento Público para credenciamento de empresas especializadas na prestação de serviços de manutenção preventiva e corretiva, fornecimento de peças e acessórios, serviços de guincho e lavagem para a frota da EPAMIG, ratifica a Inexigibilidade de Lici…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 18 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamamento Público** promovida por **EPAMIG** sob o registro oficial nº 7803. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Serviços de manutenção mecânica preventiva e corretiva, fornecimento de peças e guincho para a frota oficial. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-2026091567de1da0",
-  "titulo": "EDITAL DE CREDENCIAMENTO 01/2026",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 57.",
+  "titulo": "Credenciamento IEF: Prestação de serviços operacionais de transporte aqu…",
+  "subtitulo": "Credenciamento publicada por IEF em 2026-09-15. Objeto: Prestação de serviços operacionais de transporte aquaviário em unidades de conservação.",
+  "resumo": "IEF publicou Credenciamento no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Prestação de serviços operacionais de transporte aquaviário em unidades de conservação.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ief",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. EDITAL DE CREDENCIAMENTO 01/2026. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091567de1da0>.",
-  "citacaoBibtex": "@article{onsa2026radareditais2026091567de1da0,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {EDITAL DE CREDENCIAMENTO 01/2026},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091567de1da0}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IEF: Prestação de serviços operacionais de transporte aqu…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-2026091567de1da0>.",
+  "citacaoBibtex": "@article{onsa2026radareditais2026091567de1da0,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IEF: Prestação de serviços operacionais de transporte aqu…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-2026091567de1da0}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2360,6 +2541,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IEF"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "11"
@@ -2369,36 +2558,38 @@
     "valor": "credenciamento, recurso, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"EDITAL DE CREDENCIAMENTO 01/2026\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 57). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"mento com Clientes (c)André Alves Ferreira Gerente de Soluções Digitais de Governo 4 cm -14 2258839 - 1 Instituto Estadual de Florestas - IEF DECISÃO EDITAL DE CREDENCIAMENTO 01/2026 Processo 2100. 01. 0001322/2026-96 Objeto Recurso referente ao Edital de Transporte Aquaviário Interessados João Eudis Martins Ribeiro José Raimundo Barbosa Martins O Supervisor Regional da URFBio Alto Médio São Franc…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 11 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **IEF**. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Prestação de serviços operacionais de transporte aquaviário em unidades de conservação. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915681e32c0",
-  "titulo": "06/10/2026 às 14h30min. O Edital e anexos estão disponíveis no sítio",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 55.",
+  "titulo": "Chamamento Público Governo de Minas Gerais nº 4570019326: Contratação de bens e serviços comuns por pr…",
+  "subtitulo": "Chamamento Público publicada por Governo de Minas Gerais em 2026-09-15. Objeto: Contratação de bens e serviços comuns por pregão eletrônico no sistema oficial de compras.",
+  "resumo": "Governo de Minas Gerais publicou Chamamento Público nº 4570019326 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Contratação de bens e serviços comuns por pregão eletrônico no sistema oficial de compras.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "governo de minas gerais",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. 06/10/2026 às 14h30min. O Edital e anexos estão disponíveis no sítio. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915681e32c0>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915681e32c0,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {06/10/2026 às 14h30min. O Edital e anexos estão disponíveis no sítio},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915681e32c0}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Chamamento Público Governo de Minas Gerais nº 4570019326: Contratação de bens e serviços comuns por pr…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915681e32c0>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915681e32c0,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Chamamento Público Governo de Minas Gerais nº 4570019326: Contratação de bens e serviços comuns por pr…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915681e32c0}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2406,6 +2597,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "Governo de Minas Gerais"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Chamamento Público"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "19"
@@ -2415,36 +2614,38 @@
     "valor": "chamamento publico, prazo, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"06/10/2026 às 14h30min. O Edital e anexos estão disponíveis no sítio\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 55). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"r), conforme o seguinte: Recebimento das propostas a partir de 08h00 min do dia 15/09/2026 até às 14h do dia 06/10/2026. Data e horário da abertura da sessão pública e da etapa de lances: dia 06/10/2026 às 14h30min. O Edital e anexos estão disponíveis no sítio http://www. licitar. digital. com. br O certame será realizado pela Agente de Contratação Aline Marla Hummel de Souza n. º Pessoal 0138. Da…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 19 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Chamamento Público** promovida por **Governo de Minas Gerais** sob o registro oficial nº 4570019326. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Contratação de bens e serviços comuns por pregão eletrônico no sistema oficial de compras. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Recebimento de propostas comerciais de 08h00 min do dia 15/09/2026 até às 14h do dia 06/10/2026, com abertura da sessão pública eletrônica em seguida.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-202609157d9995b7",
-  "titulo": "16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 2. 5, 7. 2. 10 e 7. 5. 11 do Edital nº 01/…",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 45.",
+  "titulo": "Credenciamento IPSM: Publicada inabilitação de prestadores de serviços",
+  "subtitulo": "Inabilitação de Credenciamento publicada por IPSM em 2026-09-15. Objeto: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
+  "resumo": "IPSM publicou Inabilitação de Credenciamento nº 48 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsm",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 2. 5, 7. 2. 10 e 7. 5. 11 do Edital nº 01/…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609157d9995b7>.",
-  "citacaoBibtex": "@article{onsa2026radareditais202609157d9995b7,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 2. 5, 7. 2. 10 e 7. 5. 11 do Edital nº 01/…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609157d9995b7}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSM: Publicada inabilitação de prestadores de serviços. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-202609157d9995b7>.",
+  "citacaoBibtex": "@article{onsa2026radareditais202609157d9995b7,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSM: Publicada inabilitação de prestadores de serviços},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-202609157d9995b7}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2452,6 +2653,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSM"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Inabilitação de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "26"
@@ -2461,36 +2670,38 @@
     "valor": "inscricao, prazo, credenciamento, recurso, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 2. 5, 7. 2. 10 e 7. 5. 11 do Edital nº 01/…\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 45). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"Estadual nº 48. 064, de 16/10/2020 e Portaria 941/2021- DG/IPSM de 04/02/2021), cumprindo os dispostos nos subitens 7. 2. 5, 7. 2. 10 e 7. 5. 11 do Edital nº 01/2025, divulga os interessados NÃO HABILITADOS em credenciar-se no Sistema de Saúde da PMMG-CBMMG-IPSM. Data: 14/09/2026 10ª RPM – Patos de Minas Município Interessado Itens do Anexo II Patos de Minas Reinventar Instituto de Tratamento Espe…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 26 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Inabilitação de Credenciamento** promovida por **IPSM** sob o registro oficial nº 48. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Fica concedido o prazo de 03(três) dias úteis úteis para a interposição de recursos administrativos a contar da publicação oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915d26b8687",
-  "titulo": "Nos termos estabelecidos no subitem 7.6.1 do Edital de Credenciamento nº 01/2025, fica concedido o prazo de 03(três) dias úteis, contados do",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 45.",
+  "titulo": "Credenciamento IPSM nº 01/2025: Abertura de prazo de 3 dias úteis para recursos de c…",
+  "subtitulo": "Credenciamento publicada por IPSM em 2026-09-15. Objeto: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
+  "resumo": "IPSM publicou Credenciamento nº 01/2025 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsm",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Nos termos estabelecidos no subitem 7.6.1 do Edital de Credenciamento nº 01/2025, fica concedido o prazo de 03(três) dias úteis, contados do. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915d26b8687>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915d26b8687,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Nos termos estabelecidos no subitem 7.6.1 do Edital de Credenciamento nº 01/2025, fica concedido o prazo de 03(três) dias úteis, contados do},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915d26b8687}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSM nº 01/2025: Abertura de prazo de 3 dias úteis para recursos de c…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915d26b8687>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915d26b8687,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSM nº 01/2025: Abertura de prazo de 3 dias úteis para recursos de c…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915d26b8687}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2498,6 +2709,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSM"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "13"
@@ -2507,36 +2726,38 @@
     "valor": "inscricao, prazo, credenciamento, recurso, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"Nos termos estabelecidos no subitem 7.6.1 do Edital de Credenciamento nº 01/2025, fica concedido o prazo de 03(três) dias úteis, contados do\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 45). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"Itens do Anexo II Timótio Clinica Mais Viver Ltda I, III, V, VI, VII, VIII, IX, X, XI, XII,XIII, XVIII Nos termos estabelecidos no subitem 7.6.1 do Edital de Credenciamento nº 01/2025, fica concedido o prazo de 03(três) dias úteis, contados do primeiro dia útil subsequente à data da publicação do resultado no Diário Oficial do Estado de Minas Gerais, para a apresentação de recurso pelos interessad…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 13 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Credenciamento** promovida por **IPSM** sob o registro oficial nº 01/2025. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Abertura de prazo de 3 dias úteis para recursos de clínicas e estabelecimentos de saúde. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Fica concedido o prazo de 03(três) dias úteis úteis para a interposição de recursos administrativos a contar da publicação oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915e3b5b8ed",
-  "titulo": "de mão de obra. O Edital está disponível no site www. compras. mg. gov.",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 56.",
+  "titulo": "Eliminação de Documentos SEF/MG nº 009/2026: Substituição e modernização do sistema de climatizaç…",
+  "subtitulo": "Eliminação de Documentos publicada por SEF/MG em 2026-09-15. Objeto: Substituição e modernização do sistema de climatização de precisão do Data Center da Secretaria de Fazenda.",
+  "resumo": "SEF/MG publicou Eliminação de Documentos nº 009/2026 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Substituição e modernização do sistema de climatização de precisão do Data Center da Secretaria de Fazenda.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "sef/mg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. de mão de obra. O Edital está disponível no site www. compras. mg. gov.. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915e3b5b8ed>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915e3b5b8ed,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {de mão de obra. O Edital está disponível no site www. compras. mg. gov.},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915e3b5b8ed}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Eliminação de Documentos SEF/MG nº 009/2026: Substituição e modernização do sistema de climatizaç…. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915e3b5b8ed>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915e3b5b8ed,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Eliminação de Documentos SEF/MG nº 009/2026: Substituição e modernização do sistema de climatizaç…},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915e3b5b8ed}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2544,6 +2765,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "SEF/MG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Eliminação de Documentos"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "8"
@@ -2553,36 +2782,38 @@
     "valor": "conselho, prazo, data dd/mm/aaaa"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"de mão de obra. O Edital está disponível no site www. compras. mg. gov.\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 56). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"ssários à substituição do sistema de climatização de precisão do Data Center da SEF-MG em Belo Horizonte, sem dedicação exclusiva de mão de obra. O Edital está disponível no site www. compras. mg. gov. br. Pierre Julião Pimentel Superintendente de Planejamento, Gestão e Finanças. EDITAL DE CIÊNCIA DE ELIMINAÇÃO DE DOCUMENTOS DE ARQUIVO Nº 009/2026 (Conforme art. 6° da Deliberação n° 04, de 17 de d…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 8 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Eliminação de Documentos** promovida por **SEF/MG** sob o registro oficial nº 009/2026. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Substituição e modernização do sistema de climatização de precisão do Data Center da Secretaria de Fazenda. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Condições de habilitação jurídica, regularidade fiscal e prazos estipulados na íntegra do edital oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915e5be480a",
-  "titulo": "RESULTADO FINAL REFERENTE AO EDITAL DE CREDENCIAMENTO Nº 1/2025 DE",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 59.",
+  "titulo": "Credenciamento IPSEMG nº 1/2025: Divulgado resultado de entidades habilitadas",
+  "subtitulo": "Resultado de Credenciamento publicada por IPSEMG em 2026-09-15. Objeto: Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG.",
+  "resumo": "IPSEMG publicou Resultado de Credenciamento nº 1/2025 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsemg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. RESULTADO FINAL REFERENTE AO EDITAL DE CREDENCIAMENTO Nº 1/2025 DE. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915e5be480a>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915e5be480a,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {RESULTADO FINAL REFERENTE AO EDITAL DE CREDENCIAMENTO Nº 1/2025 DE},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915e5be480a}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSEMG nº 1/2025: Divulgado resultado de entidades habilitadas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915e5be480a>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915e5be480a,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSEMG nº 1/2025: Divulgado resultado de entidades habilitadas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915e5be480a}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2590,6 +2821,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSEMG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Resultado de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "18"
@@ -2599,36 +2838,38 @@
     "valor": "prazo, credenciamento, recurso, data dd/mm/aaaa, entidade"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"RESULTADO FINAL REFERENTE AO EDITAL DE CREDENCIAMENTO Nº 1/2025 DE\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 59). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\": Pelo IPSEMG: Felippe Gonçalves Declie Fagioli - Diretor de Saúde. 16 cm -14 2258789 - 1 Secretaria de Estado de Saúde RESULTADO FINAL REFERENTE AO EDITAL DE CREDENCIAMENTO Nº 1/2025 DE PRESTADORES DE SERVIÇOS DE SAÚDE AO SUS-MG – AGOSTO DE 2026. Em conformidade com o item 11 do EDITAL nº 1/2025 para credenciamento de instituições hospitalares – pessoas jurídicas de direito privado – interessadas…\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 18 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Resultado de Credenciamento** promovida por **IPSEMG** sob o registro oficial nº 1/2025. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Credenciamento de instituições hospitalares privadas para prestação de serviços de saúde ao SUS-MG. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Fica concedido o prazo de 5 (cinco) dias úteis úteis para a interposição de recursos administrativos a contar da publicação oficial.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  },
  {
   "slug": "radar-editais-20260915ea389ca8",
-  "titulo": "HABILITAÇÕES NO EDITAL DE CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS DE",
-  "subtitulo": "Radar de editais: Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) — 2026-09-15.",
-  "resumo": "Detecção automática de edital de interesse social publicada no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Local: Editais e Avisos, página 59.",
+  "titulo": "Credenciamento IPSEMG nº 31/2025: Divulgado resultado de entidades habilitadas",
+  "subtitulo": "Resultado de Credenciamento publicada por IPSEMG em 2026-09-15. Objeto: Prestação de serviços de assistência médica, ambulatorial e hospitalar para servidores e dependentes.",
+  "resumo": "IPSEMG publicou Resultado de Credenciamento nº 31/2025 no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15. Foco: Prestação de serviços de assistência médica, ambulatorial e hospitalar para servidores e dependentes.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Participação & Editais Públicos",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto gerado automaticamente pelo radar de editais a partir do Diário Oficial, revisado pela equipe.",
+  "declaracaoIa": "Texto elaborado e estruturado pelo radar de editais do Controle Popular a partir de dados públicos do Diário Oficial, com dupla verificação metodológica.",
   "publicadoEm": "2026-09-16T07:50:44.387Z",
   "atualizadoEm": "2026-09-16T07:50:44.387Z",
-  "tempoLeituraMin": 2,
+  "tempoLeituraMin": 3,
   "palavrasChave": [
    "radar-editais",
    "diario-oficial",
    "editais",
    "participacao-social",
+   "ipsemg",
    "dom-mg"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. HABILITAÇÕES NO EDITAL DE CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS DE. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915ea389ca8>.",
-  "citacaoBibtex": "@article{onsa2026radareditais20260915ea389ca8,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {HABILITAÇÕES NO EDITAL DE CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS DE},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915ea389ca8}\n}",
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Credenciamento IPSEMG nº 31/2025: Divulgado resultado de entidades habilitadas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/radar-editais-20260915ea389ca8>.",
+  "citacaoBibtex": "@article{onsa2026radareditais20260915ea389ca8,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Credenciamento IPSEMG nº 31/2025: Divulgado resultado de entidades habilitadas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-20260915ea389ca8}\n}",
   "fontesOficiais": [
    {
     "nome": "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)",
@@ -2636,6 +2877,14 @@
    }
   ],
   "metricas": [
+   {
+    "rotulo": "Órgão emissor",
+    "valor": "IPSEMG"
+   },
+   {
+    "rotulo": "Modalidade",
+    "valor": "Resultado de Credenciamento"
+   },
    {
     "rotulo": "Score do detector",
     "valor": "16"
@@ -2645,12 +2894,13 @@
     "valor": "credenciamento, data dd/mm/aaaa, cabecalho edital forte"
    }
   ],
-  "recomendacaoVerificar": "Abra a [edição do dia](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) no Jornal Minas Gerais e confira o edital na íntegra antes de qualquer inscrição.",
+  "recomendacaoVerificar": "Abra a [edição do dia no Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) e confira o instrumento convocatório e seus anexos na íntegra antes de qualquer inscrição.",
   "paragrafos": [
-   "O radar de editais do Controle Popular registrou a publicação de \"HABILITAÇÕES NO EDITAL DE CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS DE\" no Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais) de 2026-09-15 (Editais e Avisos, página 59). O trecho abaixo transcreve o ato conforme consta no diário:",
-   "\"336-** 3515745 52635. 002764/2025-33 24 cm -14 2258923 - 1 Instituto de Previdência dos Servidores do Estado de Minas Gerais - Ipsemg HABILITAÇÕES NO EDITAL DE CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS DE ASSISTÊNCIA À SAÚDE NA REGIÃO ASSISTENCIAL TRIANGULO DO SUL Nº 31/2025 Relação de Habilitados no Edital de Credenciamento 31/2025 Município Razão Social CNPJ SEI Uberaba IVANA SOUZA RODRIGUES DA …\"",
-   "Editais desse tipo definem prazos de inscrição e regras de participação — inclusive para entidades da sociedade civil, conselhos e organizações. Confira o texto integral no diário oficial antes de qualquer ação: datas e requisitos podem mudar por retificação ou aditivo.",
-   "Este texto foi gerado automaticamente pelo radar de editais, que varre cada edição do diário em busca de atos de interesse social (chamamentos públicos, seleções, conselhos). O detector é determinístico — regras de texto com score 16 — e não usa modelo de linguagem. A publicação automática não dispensa a revisão humana: ela é exatamente o que este radar quer provocar."
+   "O Diário Oficial Eletrônico de Minas Gerais veiculou publicação referente a **Resultado de Credenciamento** promovida por **IPSEMG** sob o registro oficial nº 31/2025. O ato foi formalizado na edição de 2026-09-15 (Editais e Avisos).",
+   "**Objeto do certame:** Prestação de serviços de assistência médica, ambulatorial e hospitalar para servidores e dependentes. A publicação visa assegurar publicidade, transparência e oportunidade de participação em contratos, parcerias e credenciamentos de interesse do Estado.",
+   "**Prazos, requisitos e condições:** Inscrição condicionada ao cumprimento integral das exigências de habilitação jurídica, regularidade fiscal e qualificação técnica exigidas no edital de credenciamento.",
+   "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-09-15) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
+   "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
  }
 ]

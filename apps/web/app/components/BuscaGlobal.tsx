@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buscar, type IndiceBusca } from "@/lib/busca/indice";
 import { carregarIndiceBusca } from "@/lib/busca/carregarIndice";
+import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
 
 /**
  * Barra de busca GLOBAL da navbar — pedido do dono (01/09/2026):
@@ -67,6 +68,11 @@ export default function BuscaGlobal() {
     };
   }, []);
 
+  const paginasPortal = useMemo(() => {
+    if (!consulta.trim() || consulta.trim().length < 2) return [];
+    return buscarPaginasPortal(consulta, 3);
+  }, [consulta]);
+
   const resultados = useMemo(() => {
     if (!indice || !consulta.trim()) return [];
     return buscar(consulta, indice, { limite: 8 });
@@ -97,7 +103,33 @@ export default function BuscaGlobal() {
       />
       {mostrar && (
         <ul className="absolute top-full right-0 left-0 z-50 mt-1 max-h-[70vh] overflow-y-auto rounded-2xl border border-border bg-surface p-2 shadow-lg">
-          {resultados.length === 0 ? (
+          {/* Páginas e Hubs do Portal em destaque */}
+          {paginasPortal.length > 0 && (
+            <li className="mb-2 space-y-1">
+              <span className="px-3 text-[11px] font-semibold uppercase tracking-wider text-text-soft">
+                Páginas do Portal
+              </span>
+              {paginasPortal.map((p) => (
+                <a
+                  key={p.id}
+                  href={p.href}
+                  onClick={() => setAberto(false)}
+                  className="block rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 transition-colors hover:bg-primary/10"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-semibold text-text">{p.titulo}</span>
+                    <span className="rounded bg-primary/20 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                      {p.rotulo}
+                    </span>
+                  </div>
+                  <span className="mt-0.5 block truncate text-xs text-text-soft">{p.descricao}</span>
+                </a>
+              ))}
+            </li>
+          )}
+
+          {/* Atos e documentos catalogados */}
+          {resultados.length === 0 && paginasPortal.length === 0 ? (
             <li className="px-3 py-2 text-sm text-text-soft">
               Nada encontrado para “{consulta}”.
             </li>

@@ -164,6 +164,50 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     linkPrincipal: { href: "/paraopeba/vale", texto: "Ver Observatório Vale" },
   },
 
+  // ─── ESTUDOS RURAIS ─────────────────────────────────────────
+  {
+    padroes: [
+      "estudos rurais",
+      "estudo rural",
+      "ppger",
+      "ufvjm",
+      "agricultura familiar",
+      "agroecologia",
+      "jequitinhonha rural",
+      "mucuri rural",
+      "campo e floresta",
+    ],
+    resposta:
+      "O acervo de Estudos Rurais reúne o que se publica sobre o campo nos Vales do Jequitinhonha e Mucuri: notícias, artigos, pesquisas e eventos, com destaque para o PPGER/UFVJM, agricultura familiar, agroecologia e comunidades tradicionais.",
+    linkPrincipal: { href: "/estudos-rurais", texto: "Acessar acervo de Estudos Rurais" },
+    linksAdicionais: [
+      { href: "/aracuai", texto: "Ver Araçuaí no Vale do Jequitinhonha" },
+      { href: "/diamantina", texto: "Ver Diamantina no Vale do Jequitinhonha" },
+      { href: "/funcaosocialterra", texto: "Ver Função Social da Terra" },
+    ],
+  },
+
+  // ─── EDITAIS E DIÁRIO OFICIAL ──────────────────────────────
+  {
+    padroes: [
+      "editais",
+      "edital",
+      "chamamento publico",
+      "chamamentos",
+      "credenciamento",
+      "leilao de veiculos",
+      "diario oficial editais",
+      "compras mg",
+    ],
+    resposta:
+      "O radar de editais do Diário Oficial de Minas Gerais monitora certames públicos de interesse social: chamamentos públicos, credenciamentos em saúde e educação, editais de conselhos e leilões oficiais.",
+    linkPrincipal: { href: "/editais", texto: "Ver Painel de Editais de Minas Gerais" },
+    linksAdicionais: [
+      { href: "/noticias", texto: "Ver notícias do Blog" },
+      { href: "/betim", texto: "Ver compras públicas municipais" },
+    ],
+  },
+
   // ─── CIDADES (Genéricos com suporte a prefixo de município) ──
   {
     padroes: ["gasta em saude", "gasto com saude", "orcamento de saude", "saude da cidade"],
