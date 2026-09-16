@@ -17,6 +17,7 @@ const NAV = [
   { href: "/alertas", label: "Alertas" },
   { href: "/bons-exemplos", label: "Bons exemplos" },
   { href: "/proposicoes", label: "Proposições" },
+  { href: "/almg", label: "ALMG (MG)" },
   { href: "/cota-parlamentar", label: "Cota CEAP" },
   { href: "/votacoes", label: "Votações" },
   { href: "/parlamentares", label: "Parlamentares" },
