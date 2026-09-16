@@ -92,6 +92,11 @@ const SINTETICOS = new Set([
   // pessoa real.
   "84351260645", "843.512.606-45",
   "05982413615", "059.824.136-15",
+  // Falso positivo estrutural: números de PROCESSO de outorga de água da ANA
+  // (coletor scripts/coletar-ana-outorgas.py, campo out_nu_processo, formato
+  // <sequencial>/<ano>, ex. '23010000448/2008'). O 1º trecho tem 11 dígitos
+  // que passam no mod-11 por coincidência. Medido na coleta de 2026-09-16.
+  "23010000448", "23010004001", "23010000286", "23010000871", "23010001509",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {

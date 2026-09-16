@@ -211,7 +211,15 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
               # fixtures do teste adversarial de extração do diário
               # (lib/diario/extrairEntidades.adversarial.test.ts): CPFs sintéticos
               # válidos por mod-11, constantes de teste, não pessoa real.
-              "84351260645", "843.512.606-45", "05982413615", "059.824.136-15"}
+              "84351260645", "843.512.606-45", "05982413615", "059.824.136-15",
+              # falso positivo estrutural: NÚMEROS DE PROCESSO de outorga de água
+              # da ANA (dadosabertos.ana.gov.br, coletor coletar-ana-outorgas.py:
+              # 2026-09-16, campo out_nu_processo = nº sequencial/ano, ex.
+              # '23010000448/2008'). O 1º trecho tem 11 dígitos que passam no
+              # mod-11 por coincidência. Não é CPF — é por nº de processo ANA,
+              # sempre com contexto ano. (Gerado com a coleta de 2026-09-16.)
+              "23010000448", "23010004001", "23010000286", "23010000871",
+              "23010001509",}
 
 
 def cpf_valido(digitos: str) -> bool:
