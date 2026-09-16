@@ -54,22 +54,96 @@ export interface ResultadoLimite {
   retryAfter: number;
 }
 
+// Limitador em memória para runtime Node.js (Guara Cloud / Docker / dev local)
+// Usado como fallback quando o binding Cloudflare não existe ou falha.
+interface EntradaMemoria {
+  timestamps: number[];
+}
+const memoriaLimites = new Map<string, EntradaMemoria>();
+
+function checarMemoria(
+  chave: string,
+  maxReq: number,
+  janelaMs: number,
+  retryAfter: number
+): ResultadoLimite {
+  const agora = Date.now();
+  const limitePassado = agora - janelaMs;
+  let entrada = memoriaLimites.get(chave);
+  if (!entrada) {
+    entrada = { timestamps: [] };
+    memoriaLimites.set(chave, entrada);
+  }
+  entrada.timestamps = entrada.timestamps.filter((ts) => ts > limitePassado);
+  if (entrada.timestamps.length >= maxReq) {
+    return { permitido: false, retryAfter };
+  }
+  entrada.timestamps.push(agora);
+  if (memoriaLimites.size > 5000) {
+    for (const [k, v] of memoriaLimites.entries()) {
+      v.timestamps = v.timestamps.filter((ts) => ts > limitePassado);
+      if (v.timestamps.length === 0) memoriaLimites.delete(k);
+    }
+  }
+  return { permitido: true, retryAfter };
+}
+
+async function checarUpstash(
+  chave: string,
+  maxReq: number,
+  janelaSegundos: number,
+  retryAfter: number
+): Promise<ResultadoLimite> {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) {
+    return checarMemoria(chave, maxReq, janelaSegundos * 1000, retryAfter);
+  }
+  try {
+    const res = await fetch(`${url}/pipeline`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([
+        ["INCR", chave],
+        ["EXPIRE", chave, janelaSegundos],
+      ]),
+      signal: AbortSignal.timeout(1500),
+    });
+    if (!res.ok) {
+      return checarMemoria(chave, maxReq, janelaSegundos * 1000, retryAfter);
+    }
+    const dados = (await res.json()) as Array<{ result?: number }>;
+    const contagem = dados[0]?.result ?? 1;
+    if (contagem > maxReq) {
+      return { permitido: false, retryAfter };
+    }
+    return { permitido: true, retryAfter };
+  } catch {
+    return checarMemoria(chave, maxReq, janelaSegundos * 1000, retryAfter);
+  }
+}
+
 async function checar(
   bindingName: keyof EnvComLimitadores,
   chave: string,
+  maxReq: number,
+  janelaSegundos: number,
   retryAfter: number
 ): Promise<ResultadoLimite> {
   try {
     const { env } = await getCloudflareContext({ async: true });
     const limitador = (env as EnvComLimitadores)[bindingName];
-    // Sem binding (dev local sem wrangler, ou downgrade de config):
-    // libera. Ver FAIL-OPEN acima.
-    if (!limitador) return { permitido: true, retryAfter };
-    const { success } = await limitador.limit({ key: chave });
-    return { permitido: success, retryAfter };
+    if (limitador) {
+      const { success } = await limitador.limit({ key: chave });
+      return { permitido: success, retryAfter };
+    }
   } catch {
-    return { permitido: true, retryAfter };
+    // Fora do runtime Cloudflare (Node.js/Guara Cloud/Docker/dev)
   }
+  return checarUpstash(`${bindingName}:${chave}`, maxReq, janelaSegundos, retryAfter);
 }
 
 /**
@@ -80,7 +154,7 @@ async function checar(
  * bastante pra travar um script em loop.
  */
 export function limitarAltaFrequencia(ip: string): Promise<ResultadoLimite> {
-  return checar("RL_ALTA_FREQUENCIA", ip, 15);
+  return checar("RL_ALTA_FREQUENCIA", ip, 300, 60, 15);
 }
 
 /**
@@ -90,7 +164,7 @@ export function limitarAltaFrequencia(ip: string): Promise<ResultadoLimite> {
  * tempo — sem abrir espaço pra um bot inundando a fila de moderação.
  */
 export function limitarBaixaFrequencia(ip: string): Promise<ResultadoLimite> {
-  return checar("RL_BAIXA_FREQUENCIA", ip, 60);
+  return checar("RL_BAIXA_FREQUENCIA", ip, 5, 60, 60);
 }
 
 /**

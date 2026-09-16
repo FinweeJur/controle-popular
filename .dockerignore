@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.open-next
+.claude
+*.log
+*.sql
+*.docx
+*.pyc
+__pycache__
+d1-backup*
+out
+dist
+build-status.txt
+.env*.local

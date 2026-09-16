@@ -40,6 +40,7 @@ import type { NextConfig } from "next";
  */
 const PAGES_BASE_PATH = process.env.PAGES_BASE_PATH;
 const exportandoEstatico = PAGES_BASE_PATH !== undefined;
+const standaloneBuild = process.env.BUILD_TARGET === "standalone" || process.env.DOCKER_BUILD === "1";
 
 /**
  * ═══ O PAINEL DE EDIÇÃO SÓ EXISTE EM `next dev`. NUNCA EM BUILD. ═══
@@ -215,6 +216,7 @@ const nextConfig: NextConfig = {
         pageExtensions: ["tsx", "ts"],
       }
     : {
+        ...(standaloneBuild ? { output: "standalone" as const } : {}),
         pageExtensions: ["tsx", "ts", "din.tsx", "din.ts", ...extensoesDoPainel],
       }),
   /**

@@ -3133,3 +3133,24 @@ export const saude_internacoes_cid = pgTable("saude_internacoes_cid", {
 	unique("saude_internacoes_cid_id_municipio_ano_cid_codigo_key").on(table.id_municipio, table.ano, table.cid_codigo),
 ]);
 
+export const page_views = pgTable(
+	"page_views",
+	{
+		path: text().primaryKey().notNull(),
+		contagem: integer().notNull().default(0),
+		atualizado_em: text().notNull(),
+	},
+	(table) => [
+		index("page_views_contagem_idx").on(table.contagem),
+	]
+);
+
+export const contadores = pgTable(
+	"contadores",
+	{
+		tipo: text().primaryKey().notNull(),
+		contagem: integer().notNull().default(0),
+		atualizado_em: text().notNull(),
+	}
+);
+

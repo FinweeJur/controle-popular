@@ -76,6 +76,12 @@ try {
 // rota de cidade responde 404 — sem erro nenhum, que é o modo de falha pior.
 // Falhar aqui é o que faz o problema aparecer na hora certa.
 if (cidades.length === 0) {
+  if (process.env.BUILD_TARGET === "standalone" || process.env.DOCKER_BUILD === "1") {
+    console.warn(
+      `${LOG} AVISO: DATABASE_URL ausente no build standalone; preservando ${path.basename(DESTINO)} versionado.`
+    );
+    process.exit(0);
+  }
   console.error(
     `${LOG} ERRO: nenhuma cidade ativa lida do Postgres. Confira DATABASE_URL ` +
       `(ver .env.local) — não vou sobrescrever ${path.basename(DESTINO)} com lista vazia.`
