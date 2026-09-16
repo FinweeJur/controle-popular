@@ -161,3 +161,59 @@ export const cidadesNacionais = sqliteTable(
     index("cidades_nome_idx").on(table.nome),
   ]
 );
+
+/**
+ * Licenças ambientais emitidas pelo IBAMA (SISLIC) — dado estático no D1.
+ *
+ * Fonte: apps/web/data/ibama-licencas.json (coletor scripts/coletar-ibama-licencas.py).
+ * CSV da fonte NÃO traz município/UF nem CPF/CNPJ — as colunas abaixo nasceram
+ * nulas e continuam no schema para casar com o formato esperado e com a
+ * possibilidade de a fonte vir a expor esses campos.
+ */
+export const ibamaLicencas = sqliteTable(
+  "ibama_licencas",
+  {
+    id_externo: text().notNull(), // numero_processo + numero_licenca
+    tipo_licenca: text(),
+    empreendimento: text(), // sanitizado (sem CPF colado no texto)
+    cnpj: text(),
+    municipio: text(),
+    uf: text({ length: 2 }),
+    data_emissao: text(), // ISO yyyy-mm-dd
+    atualizado_em: text(),
+  },
+  (table) => [
+    index("ibama_licencas_uf_idx").on(table.uf),
+    index("ibama_licencas_municipio_idx").on(table.municipio),
+  ]
+);
+
+/**
+ * Autos de infração ambiental lavrados pelo IBAMA (SIFISC) — dado estático no D1.
+ *
+ * Fonte: apps/web/data/ibama-autos-infracao.json (coletor scripts/coletar-ibama-autos.py).
+ *
+ * PRIVACIDADE: CPF de pessoa física NUNCA é gravado. O coletor já redige
+ * (CPF → null + doc_redigido); aqui `cpf_cnpj_autuado` recebe CNPJ completo
+ * de pessoa jurídica, ou null quando PF/indeterminado, e `doc_redigido`
+ * marca a redação (integer 0/1 — SQLite não tem boolean nativo).
+ * Cadastro oficial não é culpa fixada — ressalva editorial viaja no JSON.
+ */
+export const ibamaAutosInfracao = sqliteTable(
+  "ibama_autos_infracao",
+  {
+    id_externo: text().notNull(), // numero do auto (+"-"+serie na fonte)
+    cpf_cnpj_autuado: text(), // CNPJ completo ou null (CPF de PF é redigido)
+    doc_redigido: integer().notNull().default(0),
+    tipo_infracao: text(),
+    municipio: text(),
+    uf: text({ length: 2 }),
+    valor_multa: real(),
+    data_auto: text(), // ISO yyyy-mm-dd
+    atualizado_em: text(),
+  },
+  (table) => [
+    index("ibama_autos_uf_idx").on(table.uf),
+    index("ibama_autos_municipio_idx").on(table.municipio),
+  ]
+);
