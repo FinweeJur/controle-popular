@@ -13,20 +13,21 @@ RUN npm ci
 
 # ---- Estágio 2: Build ----
 FROM node:20-alpine AS builder
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV BUILD_TARGET=standalone
 ENV NEXT_TELEMETRY_DISABLED=1
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
 
 RUN npm run build -w @cp/web
 
 # ---- Estágio 3: Runner ----
 FROM node:20-alpine AS runner
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 ENV NODE_ENV=production
