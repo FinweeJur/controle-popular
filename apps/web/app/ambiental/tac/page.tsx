@@ -647,6 +647,7 @@ export default function TacAmbientalPage() {
           Ver também: <Link href="/licenciamento">licenciamento ambiental</Link> ·{" "}
           <Link href="/barragens">barragens</Link>
         </p>
+      <MeioAmbienteRelacionado />
       </section>
     </div>
   );

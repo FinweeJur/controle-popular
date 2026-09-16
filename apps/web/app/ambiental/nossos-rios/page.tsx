@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { LUGARES_CATALOGO } from "@/lib/lugares";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
-  title: "Nossos Rios — ONSA · Meio Ambiente & Terras",
+  title: "Nossos Rios — Meio Ambiente (ONSA) · Meio Ambiente & Terras",
   description:
     "Acompanhamento cívico das bacias hidrográficas, monitoramento de qualidade da água, barragens e pescadores de Minas Gerais e do Brasil.",
 };
@@ -77,6 +78,7 @@ export default function NossosRiosIndexPage() {
           </article>
         ))}
       </div>
+      <MeioAmbienteRelacionado />
     </main>
   );
 }

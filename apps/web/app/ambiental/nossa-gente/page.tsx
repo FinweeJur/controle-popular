@@ -73,7 +73,7 @@ const COMUNIDADES_CATALOGO: ComunidadeGrupo[] = [
 ];
 
 export const metadata = {
-  title: "Nossa Gente — Povos Tradicionais, Pescadores e Atingidos | ONSA",
+  title: "Nossa Gente — Povos Tradicionais, Pescadores e Atingidos | Meio Ambiente (ONSA)",
   description:
     "Espaço de visibilidade para comunidades quilombolas, pescadores artesanais, geraizeiros e atingidos por barragens no Observatório Nacional Socioambiental.",
 };

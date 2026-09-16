@@ -410,11 +410,8 @@ export default function DecisoesLaiPage() {
             respondidos em primeira instância, nem o teor da resposta original.
           </li>
         </ul>
-        <p className="mt-4 text-[.88em] text-text-soft">
-          Ver 또한:{" "}
-          <Link href="/barragens/descaracterizacao">barragens em descaracterização (MPMG)</Link>
-        </p>
       <MeioAmbienteRelacionado />
+      </section>
     </div>
   );
 }

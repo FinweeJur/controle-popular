@@ -10,6 +10,7 @@ import {
 } from "@/lib/ambiental/ibama";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import TabelaIbamaClient from "./TabelaIbamaClient";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
   title: "Licenciamento e Fiscalização Federal (IBAMA em MG) — Controle Popular",
@@ -138,6 +139,7 @@ export default function IbamaIndexPage() {
           Dados abertos consolidados em conformidade com a Lei de Acesso à Informação (Lei 12.527/2011).
         </p>
         <div className="mt-6">
+      <MeioAmbienteRelacionado />
           <FooterGlobal />
         </div>
       </footer>

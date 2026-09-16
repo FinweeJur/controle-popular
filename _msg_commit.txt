@@ -1,0 +1,16 @@
+renomear: ONSA → "Meio Ambiente" (mantém ONSA como referência histórica no título)
+
+- zonas.ts: etiqueta, nomeCurto, titulo da frente ambiental atualizados para
+  "Meio Ambiente"; mantém "ONSA" no título para referência histórica/acervo.
+- indice/page.tsx: ícone TreePine → Leaf (lucide-react) para a frente ambiental.
+- terra-e-territorios/page.tsx: botão atração "Ver o Observatório Meio Ambiente"
+  com Link href="/ambiental".
+- estado-e-economia/page.tsx: botão atração "Ver o Observatório Meio Ambiente"
+  com Link href="/ambiental".
+- MeioAmbienteRelacionado.tsx: novo componente reutilizável com botões de todas
+  as subfrentes do Observatório Meio Ambiente.
+- apps/web/app/ambiental/*/page.tsx: injeção do <MeioAmbienteRelacionado />
+  logo antes do FooterGlobal em todas as páginas de rota da zona ambiental.
+- betim/taxa-erro-g0.ts: correção de sintaxe em comentário.
+
+Co-Authored-By: Solar Pro4 <noreply@hermes-agent.nousresearch.com>

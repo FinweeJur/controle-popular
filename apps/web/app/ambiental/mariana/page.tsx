@@ -12,6 +12,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import { IndiceWiki, MiniSumarioLateral } from "@/app/components/wiki";
 import PainelMariana from "./PainelMariana";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/mariana", {
   title: "Acordo do Rio Doce (Mariana) — Execução em MG | Controle Popular",
@@ -163,6 +164,7 @@ export default function AcordoMarianaPage() {
       </section>
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
+        <MeioAmbienteRelacionado />
         <FooterGlobal />
       </footer>
     </main>

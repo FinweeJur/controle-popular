@@ -9,7 +9,7 @@ import FiltroDH from "./FiltroDH";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
 export const metadata = {
-  title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | ONSA",
+  title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | Meio Ambiente (ONSA)",
   description:
     "Monitoramento de relatórios temáticos e de país da Comissão Interamericana (CIDH/OEA), Nações Unidas (ONU) e Conselho Nacional dos Direitos Humanos (CNDH) cruzados por território.",
 };

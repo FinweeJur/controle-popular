@@ -4,6 +4,7 @@ import { obterLugar, LUGARES_CATALOGO } from "@/lib/lugares";
 import PainelLugar from "@/app/ambiental/components/PainelLugar";
 import { obterDadosRio } from "@/lib/ambiental/nossos-rios-dados";
 import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export function generateStaticParams() {
   return LUGARES_CATALOGO.filter((l) => l.tipo === "rio").map((r) => ({
@@ -20,7 +21,7 @@ export async function generateMetadata({
   const lugar = obterLugar(slug);
   if (!lugar) return { title: "Rio não encontrado" };
   return {
-    title: `${lugar.nome} — Nossos Rios · ONSA`,
+    title: `${lugar.nome} — Nossos Rios · Meio Ambiente (ONSA)`,
     description: lugar.resumoVozCidada,
   };
 }
@@ -71,13 +72,16 @@ export default async function RioPage({
   };
 
   return (
-    <PainelLugar
-      lugar={lugar}
-      numeroProtagonista={numeroProtagonista}
-      dadosGrafico={dadosRio?.dadosGrafico}
-      impactoPovoGente={dadosRio?.impactoPovoGente ?? fallbackImpacto}
-      itensTabela={dadosRio?.itensTabela}
-      variacaoPovoGente="povo"
-    />
+    <>
+      <PainelLugar
+        lugar={lugar}
+        numeroProtagonista={numeroProtagonista}
+        dadosGrafico={dadosRio?.dadosGrafico}
+        impactoPovoGente={dadosRio?.impactoPovoGente ?? fallbackImpacto}
+        itensTabela={dadosRio?.itensTabela}
+        variacaoPovoGente="povo"
+      />
+      <MeioAmbienteRelacionado />
+    </>
   );
 }

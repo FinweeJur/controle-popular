@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { obterLugar, LUGARES_CATALOGO } from "@/lib/lugares";
 import PainelLugar from "@/app/ambiental/components/PainelLugar";
 import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export function generateStaticParams() {
   return LUGARES_CATALOGO.filter((l) => l.tipo === "serra").map((s) => ({
@@ -19,7 +20,7 @@ export async function generateMetadata({
   const lugar = obterLugar(slug);
   if (!lugar) return { title: "Serra não encontrada" };
   return {
-    title: `${lugar.nome} — Nossas Serras · ONSA`,
+    title: `${lugar.nome} — Nossas Serras · Meio Ambiente (ONSA)`,
     description: lugar.resumoVozCidada,
   };
 }
@@ -72,11 +73,14 @@ export default async function SerraPage({
   };
 
   return (
-    <PainelLugar
-      lugar={lugar}
-      numeroProtagonista={numeroProtagonista}
-      impactoPovoGente={impactoPovoGente}
-      variacaoPovoGente="gente"
-    />
+    <>
+      <PainelLugar
+        lugar={lugar}
+        numeroProtagonista={numeroProtagonista}
+        impactoPovoGente={impactoPovoGente}
+        variacaoPovoGente="gente"
+      />
+      <MeioAmbienteRelacionado />
+    </>
   );
 }

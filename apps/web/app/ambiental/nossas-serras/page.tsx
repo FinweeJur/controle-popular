@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { LUGARES_CATALOGO } from "@/lib/lugares";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
-  title: "Nossas Serras — ONSA · Meio Ambiente & Terras",
+  title: "Nossas Serras — Meio Ambiente (ONSA) · Meio Ambiente & Terras",
   description:
     "Acompanhamento cívico das cordilheiras, unidades de conservação, relevo e conflitos de mineração e preservação em Minas Gerais.",
 };
@@ -77,6 +78,7 @@ export default function NossasSerrasIndexPage() {
           </article>
         ))}
       </div>
+      <MeioAmbienteRelacionado />
     </main>
   );
 }

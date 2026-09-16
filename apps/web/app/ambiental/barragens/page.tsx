@@ -12,6 +12,7 @@ import BuscaMunicipio from "./BuscaMunicipio";
 import TabelaFeam from "./TabelaFeam";
 import TabelaSigbm from "./TabelaSigbm";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/barragens", {
   title: "Barragens em Minas Gerais — Controle Popular · Ambiental",
@@ -251,6 +252,7 @@ export default async function BarragensIndex() {
           <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
         </p>
       </details>
+      <MeioAmbienteRelacionado />
       <FooterGlobal />
     </div>
   );

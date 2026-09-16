@@ -24,7 +24,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * cidade nascer com slug "ambiental", o teste falha antes do build.
  */
 export const metadata: Metadata = {
-  title: "Controle Popular — ONSA · Observatório Nacional Socioambiental",
+  title: "Controle Popular — Meio Ambiente (ONSA) · Observatório Nacional Socioambiental",
   description:
     "Pauta das reuniões do COPAM, licenciamento ambiental de Minas Gerais por município, situação das barragens do país, legislação ambiental federal e estadual, o Acordo do Rio Doce e a Vale. Portal independente.",
 };

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { LUGARES_CATALOGO } from "@/lib/lugares";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
-  title: "Nossos Territórios — ONSA · Meio Ambiente & Terras",
+  title: "Nossos Territórios — Meio Ambiente (ONSA) · Meio Ambiente & Terras",
   description:
     "Territórios tradicionais, vales, cerrados, quilombos e a função social da terra integrados à fiscalização ambiental do Controle Popular.",
 };
@@ -77,6 +78,7 @@ export default function NossosTerritoriosIndexPage() {
           </article>
         ))}
       </div>
+      <MeioAmbienteRelacionado />
     </main>
   );
 }

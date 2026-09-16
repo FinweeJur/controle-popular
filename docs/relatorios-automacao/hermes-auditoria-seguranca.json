@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-09-13T08:33:20.991Z",
+  "geradoEm": "2026-09-16T08:33:22.364Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 11,
-  "alertas": 1,
+  "aprovados": 7,
+  "alertas": 5,
   "falhas": 2,
   "itens": [
     {
@@ -27,26 +27,26 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonlin..."
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: X-Frame-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: SAMEORIGIN"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: X-Content-Type-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",

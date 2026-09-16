@@ -1,0 +1,22 @@
+Onde deve ser colocado o bloco "página relacionada" antes do footer:
+
+Para cada página com temática ambiental, injetar o componente
+`<MeioAmbienteRelacionado />` logo antes do `FooterGlobal`:
+
+-- Bloque de "página relacionada" --
+<MeioAmbienteRelacionado />
+<FooterGlobal />
+-- fim do bloco --
+
+Esse componente renderiza cards/botões de todas as subfrentes do
+Observatório Meio Ambiente (licenciamento, COPAM, barragens, legislação,
+Mariana, crimes socioambientais, decisões, estudos, patrimônio cultural,
+Nossos, Nossas Serras, Nossos Rios, Nossos Animais, Nossos Territórios,
+clima-risco, direitos-humanos, TAC, convenios, IBAMA, conselhos,
+judiciário, litigios-climaticos, direito-critico).
+
+A injeção é feita em todas as páginas do diretório /ambiental/ que tiverem
+temática relacionada, e tambem no índice global (app/indice/page.tsx) como
+botão de atração.
+
+Tarefa ainda pendente: injeção em ~27 páginas do /ambiental/ (em andamento).

@@ -71,7 +71,7 @@ const ESPECIES_CATALOGO: EspecieFauna[] = [
 ];
 
 export const metadata = {
-  title: "Nossos Animais — Fauna, Corredores Ecológicos e Proteção da Vida Silvestre | ONSA",
+  title: "Nossos Animais — Fauna, Corredores Ecológicos e Proteção da Vida Silvestre | Meio Ambiente (ONSA)",
   description:
     "Monitoramento cívico de espécies ameaçadas, corredores de fauna, atropelamentos e fiscalização no Observatório Nacional Socioambiental.",
 };

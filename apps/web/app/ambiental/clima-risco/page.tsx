@@ -12,7 +12,7 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
 export const metadata = {
-  title: "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | ONSA",
+  title: "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | Meio Ambiente (ONSA)",
   description:
     "Painel de vulnerabilidade climática, população exposta em áreas de risco (BATER), monitoramento pluviométrico, queimadas e saneamento básico.",
 };

@@ -11,7 +11,7 @@ import { citacaoPorId } from "@/lib/citacoes";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
 export const metadata = {
-  title: "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | ONSA",
+  title: "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | Meio Ambiente (ONSA)",
   description:
     "Ações climáticas da base JUMA (PUC-Rio/LACLIMA), 322 mil processos ambientais do SIRENEJud (CNJ) e teses de jurisprudência do TJMG sobre barragens e direitos dos atingidos.",
 };

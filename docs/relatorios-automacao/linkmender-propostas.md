@@ -1,18 +1,18 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-13T06:47:30.140Z
-- Duracao total: 4.9 min
+- Gerado em: 2026-09-16T06:33:52.204Z
+- Duracao total: 2.1 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 131
-- OK: 104
+- OK: 105
 - QUEBRADOS: 5
 - REDIRECTS: 7
-- INCONSISTENTES: 15
-- Propostas geradas: 2
-- Links sem proposta: 10
+- INCONSISTENTES: 14
+- Propostas geradas: 1
+- Links sem proposta: 11
 
 ## Links quebrados e redirecionados
 
@@ -44,17 +44,6 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/[municipio]/interesses/page.tsx
 
-### 2. https://revendedoresapi.anp.gov.br/swagger/index.html
-
-```diff
-- href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
-```
-
-Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
-Origem: apps/web/lib/linkmender/busca.test.ts
-
 ## Quebrados e redirecionados sem proposta
 
 - https://github.com/melkepinho/controle-popular/blob/main/docs/FONTE.md#painel-tacs-final (404) — dominio nao governamental — correcao manual
@@ -63,6 +52,7 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
 - https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
 - https://exemplo.org/a (404) — dominio nao governamental — correcao manual
+- https://revendedoresapi.anp.gov.br/swagger/index.html (404) — busca falhou: fetch failed
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
 - https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
@@ -71,7 +61,7 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 ## Inconsistentes (nao verificados, sem proposta)
 
 - https://comunicabr.presidencia.gov.br (rede) — erro de rede: fetch failed
-- https://datajud-wiki.cnj.jus.br (rede) — erro de rede: This operation was aborted
+- https://controlepopular.com.br/ambiental/crimes-socioambientais (400) — status HTTP 400 (nem ok, nem quebrado, nem redirect)
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br (rede) — erro de rede: fetch failed
@@ -80,9 +70,8 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
-- https://sirenejud.cnj.jus.br/ (rede) — erro de rede: This operation was aborted
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
-- https://www.car.gov.br/publico/imoveis/index (rede) — erro de rede: This operation was aborted
+- https://www.car.gov.br/publico/imoveis/index (rede) — erro de rede: fetch failed
 - https://www.sinesp.mg.gov.br (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 

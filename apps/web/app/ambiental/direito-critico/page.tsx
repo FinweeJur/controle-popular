@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 /**
  * `/ambiental/direito-critico` — página-PONTE. O painel próprio (30 normas
@@ -55,6 +56,7 @@ export default function DireitoCriticoPonte() {
           Ir para a página nova →
         </Link>
       </div>
+      <MeioAmbienteRelacionado />
     </>
   );
 }

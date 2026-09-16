@@ -9,7 +9,7 @@ import FiltroConselhos from "./FiltroConselhos";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
 export const metadata = {
-  title: "Conselhos Sociais, Bacias e Meio Ambiente | ONSA",
+  title: "Conselhos Sociais, Bacias e Meio Ambiente | Meio Ambiente (ONSA)",
   description:
     "Mapeamento de comitês de bacia hidrográfica, CODEMAs, conselhos de direitos humanos, saúde e conselhos tutelares com contatos, atas e canais de fiscalização cidadã.",
 };

@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-13T05:30:13.666805+00:00",
+ "gerado_em": "2026-09-16T05:30:11.852315+00:00",
  "janela_dias": 45,
  "fontes": [
   {
@@ -68,9 +68,9 @@
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - blogdopedlowski.com",
+   "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5",
-   "veiculo": "blogdopedlowski.com",
+   "veiculo": "Blog do Pedlowski",
    "fonte_id": "google-noticias",
    "data": "2026-09-06T14:29:18+00:00",
    "ato_de_autoridade": false
@@ -146,6 +146,14 @@
    "fonte_id": "guaicuy",
    "data": "2026-09-01T13:06:22+00:00",
    "ato_de_autoridade": true
+  },
+  {
+   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
+   "veiculo": "Migalhas",
+   "fonte_id": "google-noticias",
+   "data": "2026-09-01T07:00:00+00:00",
+   "ato_de_autoridade": false
   },
   {
    "titulo": "ANM aguarda novos documentos para reavaliar barragem da Emicon em Brumadinho - Diário do Comércio",
@@ -225,6 +233,14 @@
    "veiculo": "JOTA Info",
    "fonte_id": "google-noticias",
    "data": "2026-08-19T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Histórico do rompimento das barragens da Vale na Mina Córrego do Feijão | Pró-Brumadinho - - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPRFlnQjZ2Ml9fSUlmcC0tOG9hanZ1ZXlHUFpNcl96ZE9GTk5DcVlkcWJHWlJCSmd0VlhidC1CVE9iZFowNjJlbW1YSHNibFJtU2cwSTRoemlfT2RheHlwVkN4S0RmaS1JYlBVdTBaMkRfOWJHUnRDdWFyeFp4S2Fnc1V2TEc4cWp0ZGxFR2ZaNVZ0N3pwRTVtRkVCNEE5eHVzejZzVmVyNEx0Z0hMRE9PcVdXc3g0UQ?oc=5",
+   "veiculo": "Portal MG",
+   "fonte_id": "google-noticias",
+   "data": "2026-08-07T07:00:00+00:00",
    "ato_de_autoridade": false
   }
  ]

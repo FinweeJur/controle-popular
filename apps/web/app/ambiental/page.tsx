@@ -38,7 +38,7 @@ import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export const metadata: Metadata = {
-  title: "ONSA — Observatório Nacional Socioambiental — Controle Popular",
+  title: "Meio Ambiente — Observatório Nacional Socioambiental (ONSA) — Controle Popular",
   description:
     "O Observatório Nacional Socioambiental: COPAM e licenciamento de Minas, barragens do país inteiro, normas federais, processos ambientais na Justiça, o Acordo do Rio Doce e a Vale.",
 };

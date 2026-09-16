@@ -6,6 +6,7 @@ import GraficoBarrasSvg from "@/app/components/GraficoBarrasSvg";
 import { COBERTURA_SIGBM, BARRAGENS_SIGBM } from "@/lib/ambiental/barragens-sigbm";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import TabelaSigbm from "../TabelaSigbm";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
   title: "Monitor Nacional de Barragens (SIGBM / ANM) — Controle Popular",
@@ -154,6 +155,7 @@ export default function BarragensSigbmPage() {
           com a Lei de Acesso à Informação.
         </p>
         <div className="mt-6">
+      <MeioAmbienteRelacionado />
           <FooterGlobal />
         </div>
       </footer>

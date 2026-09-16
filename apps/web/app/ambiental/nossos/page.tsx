@@ -8,7 +8,7 @@ import { citacaoPorId } from "@/lib/citacoes";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
 export const metadata: Metadata = {
-  title: "Nossos Rios, Serras, Territórios e Gente — ONSA · Controle Popular",
+  title: "Nossos Rios, Serras, Territórios e Gente — Meio Ambiente (ONSA) · Controle Popular",
   description:
     "Coleção de lugares e territórios brasileiros sob a ótica do Observatório Nacional Socioambiental. Águas, relevo, cerrado e a nossa gente no centro da fiscalização cívica.",
 };

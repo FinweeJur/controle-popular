@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { obterLugar, LUGARES_CATALOGO } from "@/lib/lugares";
 import PainelLugar from "@/app/ambiental/components/PainelLugar";
 import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export function generateStaticParams() {
   return LUGARES_CATALOGO.filter((l) => l.tipo === "vale" || l.tipo === "cerrado").map((t) => ({
@@ -19,7 +20,7 @@ export async function generateMetadata({
   const lugar = obterLugar(slug);
   if (!lugar) return { title: "Território não encontrado" };
   return {
-    title: `${lugar.nome} — Nossos Territórios · ONSA`,
+    title: `${lugar.nome} — Nossos Territórios · Meio Ambiente (ONSA)`,
     description: lugar.resumoVozCidada,
   };
 }
@@ -76,11 +77,14 @@ export default async function TerritorioPage({
   };
 
   return (
-    <PainelLugar
-      lugar={lugar}
-      numeroProtagonista={numeroProtagonista}
-      impactoPovoGente={impactoPovoGente}
-      variacaoPovoGente="povo"
-    />
+    <>
+      <PainelLugar
+        lugar={lugar}
+        numeroProtagonista={numeroProtagonista}
+        impactoPovoGente={impactoPovoGente}
+        variacaoPovoGente="povo"
+      />
+      <MeioAmbienteRelacionado />
+    </>
   );
 }

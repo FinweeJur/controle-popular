@@ -1,0 +1,367 @@
+app/ambiental/barragens/page.tsx(1,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(2,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(3,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(4,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(5,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(6,3): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(7,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(10,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(10,6): error TS1434: Unexpected keyword or identifier.
+app/ambiental/barragens/page.tsx(11,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(12,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(13,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(14,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(16,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(17,3): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(17,11): error TS1005: ',' expected.
+app/ambiental/barragens/page.tsx(17,71): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(18,3): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(18,17): error TS1005: ',' expected.
+app/ambiental/barragens/page.tsx(19,3): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(20,3): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(20,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(36,4): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(37,6): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(41,6): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(43,6): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(47,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(49,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/barragens/page.tsx(51,14): error TS17002: Expected corresponding JSX closing tag for 'header'.
+app/ambiental/barragens/page.tsx(96,12): error TS17002: Expected corresponding JSX closing tag for 'div'.
+app/ambiental/barragens/page.tsx(97,1): error TS1005: ')' expected.
+app/ambiental/barragens/page.tsx(117,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(117,22): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(118,28): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(119,11): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(125,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(127,15): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/barragens/page.tsx(129,17): error TS17002: Expected corresponding JSX closing tag for 'div'.
+app/ambiental/barragens/page.tsx(130,13): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(143,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(145,15): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/barragens/page.tsx(156,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(156,26): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(157,22): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(158,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(168,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(170,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(170,26): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(171,22): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(172,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(181,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(183,1): error TS1003: Identifier expected.
+app/ambiental/barragens/page.tsx(183,26): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(184,22): error TS1005: ';' expected.
+app/ambiental/barragens/page.tsx(185,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(193,15): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(194,13): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(207,11): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(209,22): error TS1005: ',' expected.
+app/ambiental/barragens/page.tsx(221,1): error TS1005: ')' expected.
+app/ambiental/barragens/page.tsx(221,4): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(221,11): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(221,13): error TS1136: Property assignment expected.
+app/ambiental/barragens/page.tsx(221,19): error TS1005: ':' expected.
+app/ambiental/barragens/page.tsx(243,11): error TS2657: JSX expressions must have one parent element.
+app/ambiental/barragens/page.tsx(256,9): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(257,7): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(258,5): error TS1109: Expression expected.
+app/ambiental/barragens/page.tsx(259,5): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(1,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(2,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(3,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(4,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(5,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(6,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(7,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(8,3): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(10,4): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(11,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(11,11): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(11,77): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(12,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(12,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(13,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(14,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(14,4): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(16,4): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(17,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(19,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(19,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(19,44): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(20,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(20,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(20,32): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(21,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(21,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(21,19): error TS1136: Property assignment expected.
+app/ambiental/barragens/sigbm/page.tsx(22,18): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(23,8): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(23,9): error TS1128: Declaration or statement expected.
+app/ambiental/barragens/sigbm/page.tsx(25,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(25,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(25,50): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(26,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(26,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(26,32): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(27,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(27,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(27,19): error TS1136: Property assignment expected.
+app/ambiental/barragens/sigbm/page.tsx(28,16): error TS1005: ';' expected.
+app/ambiental/barragens/sigbm/page.tsx(29,8): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(29,9): error TS1128: Declaration or statement expected.
+app/ambiental/barragens/sigbm/page.tsx(31,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(31,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(31,38): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(32,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(32,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(32,32): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(33,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(33,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(33,61): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(34,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(34,8): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(36,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(36,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(36,40): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(37,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(37,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(37,32): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(38,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(38,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(38,19): error TS1136: Property assignment expected.
+app/ambiental/barragens/sigbm/page.tsx(39,8): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(39,9): error TS1128: Declaration or statement expected.
+app/ambiental/barragens/sigbm/page.tsx(41,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(41,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(41,49): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(42,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(42,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(42,32): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(43,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(43,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(43,58): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(44,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(44,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(44,22): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(45,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(45,8): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(46,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(48,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(49,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(49,14): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(49,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(50,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(50,13): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(50,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(51,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(51,11): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(52,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(53,1): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(53,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(53,12): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(54,1): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(54,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(54,12): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(54,15): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(55,1): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(55,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(55,14): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(56,1): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(56,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(56,14): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(56,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(57,1): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(57,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(57,16): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(58,1): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(58,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(58,16): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(58,49): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(59,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(59,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(61,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(62,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(62,14): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(62,17): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(63,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(63,13): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(63,16): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(64,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(64,11): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(64,14): error TS1005: ',' expected.
+app/ambiental/barragens/sigbm/page.tsx(65,3): error TS1005: ':' expected.
+app/ambiental/barragens/sigbm/page.tsx(65,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(67,6): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(107,1): error TS1003: Identifier expected.
+app/ambiental/barragens/sigbm/page.tsx(112,16): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/barragens/sigbm/page.tsx(116,1): error TS1003: Identifier expected.
+app/ambiental/barragens/sigbm/page.tsx(121,16): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/barragens/sigbm/page.tsx(162,1): error TS1005: ')' expected.
+app/ambiental/barragens/sigbm/page.tsx(162,7): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(163,5): error TS1109: Expression expected.
+app/ambiental/barragens/sigbm/page.tsx(164,5): error TS1109: Expression expected.
+app/ambiental/clima-risco/page.tsx(240,8): error TS17008: JSX element 'section' has no corresponding closing tag.
+app/ambiental/clima-risco/page.tsx(265,9): error TS1005: ')' expected.
+app/ambiental/clima-risco/page.tsx(265,11): error TS1109: Expression expected.
+app/ambiental/clima-risco/page.tsx(266,9): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(1,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(2,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(3,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(4,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(5,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(6,3): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(7,1): error TS1003: Identifier expected.
+app/ambiental/ibama/page.tsx(10,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(10,6): error TS1434: Unexpected keyword or identifier.
+app/ambiental/ibama/page.tsx(11,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(12,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(14,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(15,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(15,11): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(15,84): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(16,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(16,17): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(17,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(18,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(18,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(20,4): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(21,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(23,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(23,16): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(23,49): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(24,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(24,15): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(24,35): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(25,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(25,17): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(25,19): error TS1136: Property assignment expected.
+app/ambiental/ibama/page.tsx(26,8): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(26,9): error TS1128: Declaration or statement expected.
+app/ambiental/ibama/page.tsx(28,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(28,16): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(28,46): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(29,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(29,15): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(29,35): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(30,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(30,17): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(30,50): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(31,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(31,16): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(31,22): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(32,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(32,8): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(34,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(34,16): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(34,48): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(35,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(35,15): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(35,53): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(35,68): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(35,69): error TS1136: Property assignment expected.
+app/ambiental/ibama/page.tsx(36,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(36,17): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(36,53): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(37,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(37,8): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(39,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(39,16): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(39,50): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(40,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(40,15): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(40,35): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(41,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(41,17): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(41,73): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(42,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(42,8): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(43,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(45,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(46,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(46,14): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(46,20): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(47,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(47,13): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(47,26): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(47,32): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(48,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(48,7): error TS1128: Declaration or statement expected.
+app/ambiental/ibama/page.tsx(48,8): error TS1128: Declaration or statement expected.
+app/ambiental/ibama/page.tsx(50,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(51,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(51,14): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(51,20): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(52,3): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(52,13): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(52,26): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(52,32): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(53,11): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(55,1): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(55,12): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(56,1): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(56,12): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(57,1): error TS1005: ',' expected.
+app/ambiental/ibama/page.tsx(57,14): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(58,1): error TS1005: ':' expected.
+app/ambiental/ibama/page.tsx(58,14): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(59,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(59,7): error TS1128: Declaration or statement expected.
+app/ambiental/ibama/page.tsx(59,8): error TS1128: Declaration or statement expected.
+app/ambiental/ibama/page.tsx(61,6): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(96,1): error TS1003: Identifier expected.
+app/ambiental/ibama/page.tsx(101,16): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/ibama/page.tsx(105,1): error TS1003: Identifier expected.
+app/ambiental/ibama/page.tsx(110,16): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/ibama/page.tsx(130,1): error TS1003: Identifier expected.
+app/ambiental/ibama/page.tsx(132,14): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/ibama/page.tsx(146,1): error TS1005: ')' expected.
+app/ambiental/ibama/page.tsx(146,7): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(147,5): error TS1109: Expression expected.
+app/ambiental/ibama/page.tsx(148,5): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(1,3): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(2,3): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(3,3): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(4,3): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(5,3): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(6,1): error TS1003: Identifier expected.
+app/ambiental/mariana/page.tsx(10,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(10,6): error TS1434: Unexpected keyword or identifier.
+app/ambiental/mariana/page.tsx(11,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(12,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(13,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(14,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(16,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(17,3): error TS1005: ':' expected.
+app/ambiental/mariana/page.tsx(17,11): error TS1005: ',' expected.
+app/ambiental/mariana/page.tsx(17,79): error TS1005: ':' expected.
+app/ambiental/mariana/page.tsx(18,3): error TS1005: ':' expected.
+app/ambiental/mariana/page.tsx(18,17): error TS1005: ',' expected.
+app/ambiental/mariana/page.tsx(18,19): error TS1136: Property assignment expected.
+app/ambiental/mariana/page.tsx(19,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(19,5): error TS1128: Declaration or statement expected.
+app/ambiental/mariana/page.tsx(21,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(26,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(28,4): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(29,6): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(30,6): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(32,6): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(109,19): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(110,19): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(120,1): error TS1003: Identifier expected.
+app/ambiental/mariana/page.tsx(122,26): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/mariana/page.tsx(125,1): error TS1005: ')' expected.
+app/ambiental/mariana/page.tsx(125,19): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(125,20): error TS1005: '}' expected.
+app/ambiental/mariana/page.tsx(126,17): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/ambiental/mariana/page.tsx(126,19): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/ambiental/mariana/page.tsx(149,1): error TS1003: Identifier expected.
+app/ambiental/mariana/page.tsx(153,15): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/ambiental/mariana/page.tsx(155,17): error TS17002: Expected corresponding JSX closing tag for 'p'.
+app/ambiental/mariana/page.tsx(158,15): error TS17002: Expected corresponding JSX closing tag for 'section'.
+app/ambiental/mariana/page.tsx(163,13): error TS17002: Expected corresponding JSX closing tag for 'main'.
+app/ambiental/mariana/page.tsx(164,1): error TS1005: ')' expected.
+app/ambiental/mariana/page.tsx(169,9): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(170,7): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(171,5): error TS1109: Expression expected.
+app/ambiental/mariana/page.tsx(172,5): error TS1109: Expression expected.

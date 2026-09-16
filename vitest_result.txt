@@ -1,0 +1,26 @@
+
+ RUN  v4.1.11 C:/DevCoder/controle-popular
+
+ ❯ apps/web/lib/zonas.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/lib/zonas.test.ts [ apps/web/lib/zonas.test.ts ]
+Error: Cannot find package '@/lib/betim/taxa-erro-g0' imported from C:/DevCoder/controle-popular/apps/web/lib/zonas.ts
+ ❯ apps/web/lib/zonas.ts:33:1
+     31| // arrastaria a camada de banco para dentro de tudo — foi esse acoplam…
+     32| // fez alguém copiar o número à mão em vez de importá-lo.
+     33| import { TAXA_ERRO_G0 } from "@/lib/betim/taxa-erro-g0";
+       | ^
+     34|
+     35| export type ZonaId =
+ ❯ apps/web/lib/zonas.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  18:32:56
+   Duration  527ms (transform 76ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)
+
