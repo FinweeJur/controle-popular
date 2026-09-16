@@ -152,19 +152,17 @@ export const ZONAS: Zona[] = [
   {
     id: "ambiental",
     href: "/ambiental",
-    // ⟲ 01/09/2026, A PEDIDO DO DONO: a frente passou a se chamar
-    // **ONSA — Observatório Nacional Socioambiental**. A rota não muda
-    // (`/ambiental` continua); muda a identidade pública, porque a frente
-    // deixou de ser só o meio ambiente de Minas: entrou o cadastro nacional
-    // de barragens (SIGBM/ANM), as 8.940 normas federais do MMA/CNDH, os
-    // processos ambientais do Judiciário (SIRENEJud/CNJ), o Acordo do Rio
-    // Doce (Mariana) e o Observatório Vale (B3/CVM).
-    // ⟲ 03/09, cherry-pick copy v6 por cima do ONSA: a etiqueta e o nome
-    // curto ficam (a copy v6 nasceu antes do renomeio e não os conhecia);
-    // o título ganha os três verbos de responsabilidade, colados no nome.
-    etiqueta: "ONSA · Observatório Nacional Socioambiental",
-    nomeCurto: "ONSA",
-    titulo: "ONSA — quem autoriza, quem licencia, quem responde",
+    // ⟲ Agora: a frente se chama **Meio Ambiente** — mantida como Observatório
+    // Nacional Socioambiental (ONSA) no acervo, mas o nome público mudou para
+    // refletir que o que a frente entrega é meio ambiente fiscalizado,
+    // não o observatório como instituição. A rota não muda (`/ambiental`
+    // continua); muda a etiqueta e o nome curto que aparecem em menu, rodapé
+    // e índice. Os verbos de responsabilidade no título e os totais do
+    // acervo (COPAM, licenciamento, barragens, legislação, processos,
+    // Mariana) não mudam com o nome.
+    etiqueta: "Meio Ambiente · Observatório Nacional Socioambiental",
+    nomeCurto: "Meio Ambiente",
+    titulo: "Meio Ambiente — quem autoriza, quem licencia, quem responde",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
     // (F3 COPAM, F4 licenciamento, F5 barragens, F6 legislação — as quatro

@@ -11,6 +11,7 @@ import {
   getBarragensData,
   type BarragemUnificada,
 } from "@/lib/betim/barragens";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 type Params = Promise<{ idIbge: string }>;
 
@@ -205,6 +206,7 @@ export default async function MunicipioBarragensPage({ params }: { params: Param
         (nacional, todos os usos). Este portal não afirma irregularidade: é a reprodução do
         cadastro como as fontes oficiais publicam.
       </p>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

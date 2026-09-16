@@ -6,6 +6,8 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 import FiltroDH from "./FiltroDH";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata = {
   title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | ONSA",
   description:
@@ -172,7 +174,8 @@ export default function PaginaDireitosHumanos() {
       </section>
 
       {/* BALÃO — citação autorizada */}
-      <Epigrafe citacao={citacaoPorId("carolina-escrevo-miseria")!} variante="balao" className="mx-auto mt-8 max-w-xl" />
+            <MeioAmbienteRelacionado />
+<Epigrafe citacao={citacaoPorId("carolina-escrevo-miseria")!} variante="balao" className="mx-auto mt-8 max-w-xl" />
     </div>
   );
 }

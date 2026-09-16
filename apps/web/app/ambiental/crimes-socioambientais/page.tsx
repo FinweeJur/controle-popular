@@ -6,6 +6,8 @@ import TabelaDesastresClient from "./TabelaDesastresClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata = {
   title: "Biblioteca Unificada de Crimes Socioambientais — Mariana & Brumadinho | ONSA",
   description:
@@ -80,6 +82,7 @@ export default function PaginaCrimesSocioambientais() {
         <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">E nosso povo?</h2>
         <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">As comunidades atingidas pelas barragens do Rio Doce e do Paraopeba vivem os impactos diretos dos desastres ambientais sobre a saúde, a renda, a moradia e a cultura.</p>
       </section>
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

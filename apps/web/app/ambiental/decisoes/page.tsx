@@ -9,6 +9,8 @@ import {
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelDecisoes from "./PainelDecisoes";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/decisoes` — as 43.444 decisões de licenciamento ambiental de
  * MG, com foco no que o acervo de licenças concedidas não mostra: as 9.554
@@ -384,6 +386,7 @@ export default function DecisoesLicenciamentoPage() {
           </li>
         </ul>
       </section>
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

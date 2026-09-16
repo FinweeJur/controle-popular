@@ -11,6 +11,7 @@ import {
 import BuscaMunicipioLicenciamento from "./BuscaMunicipioLicenciamento";
 import RankingComOrdenacao from "./RankingComOrdenacao";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
   title: "Licenciamento ambiental — Controle Popular · Ambiental",
@@ -312,6 +313,7 @@ export default async function LicenciamentoIndex() {
           <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
         </p>
       </details>
+      <MeioAmbienteRelacionado />
       <FooterGlobal />
     </div>
   );

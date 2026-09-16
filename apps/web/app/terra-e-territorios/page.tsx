@@ -132,6 +132,13 @@ export default function TerraETerritoriosHub() {
             <span>Acessar Painel do Paraopeba</span>
             <span aria-hidden="true">→</span>
           </Link>
+          <Link
+            href="/ambiental"
+            className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Ver o Observatório Meio Ambiente</span>
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

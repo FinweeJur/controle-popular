@@ -1,6 +1,8 @@
 import Link from "next/link";
 import PainelDialogo from "@/app/components/PainelDialogo";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 interface EspecieFauna {
   id: string;
   nomePopular: string;
@@ -252,6 +254,7 @@ export default function PaginaNossosAnimais() {
           comunidades locais.
         </p>
       </section>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

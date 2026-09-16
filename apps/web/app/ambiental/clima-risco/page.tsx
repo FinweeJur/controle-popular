@@ -9,6 +9,8 @@ import PainelDialogo from "@/app/components/PainelDialogo";
 import BlocoPovoGente, { type DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata = {
   title: "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | ONSA",
   description:
@@ -180,7 +182,8 @@ export default function PaginaBasesClimaRisco() {
                     aria-label={`${m.nome}: ${m.populacao_area_risco} pessoas em risco`}
                   />
                 </div>
-              </div>
+                    <MeioAmbienteRelacionado />
+</div>
             );
           })}
         </div>

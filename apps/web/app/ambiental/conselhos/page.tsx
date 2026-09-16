@@ -6,6 +6,8 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 import FiltroConselhos from "./FiltroConselhos";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata = {
   title: "Conselhos Sociais, Bacias e Meio Ambiente | ONSA",
   description:
@@ -175,6 +177,7 @@ export default function PaginaConselhosSociais() {
 
       {/* FECHO — citação autorizada */}
       <Epigrafe citacao={citacaoPorId("evaristo-risco-viver")!} variante="fecho" />
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

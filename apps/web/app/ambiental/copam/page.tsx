@@ -11,6 +11,7 @@ import {
 import BuscaMunicipio from "./BuscaMunicipio";
 import TabelaReunioes from "./TabelaReunioes";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/copam", {
   title: "Reuniões do COPAM — Controle Popular · Ambiental",
@@ -465,6 +466,7 @@ export default async function CopamIndex() {
           <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
         </p>
       </details>
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

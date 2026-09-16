@@ -6,6 +6,7 @@ import {
   listarItensCopamPorMunicipio,
   listarMunicipiosComItensCopam,
 } from "@/lib/db/queries/copam";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 type Params = Promise<{ idIbge: string }>;
 
@@ -109,6 +110,7 @@ export default async function MunicipioCopamPage({ params }: { params: Params })
         Minas Gerais. Este portal não afirma irregularidade: é a reprodução da pauta como o
         Copam publica.
       </p>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

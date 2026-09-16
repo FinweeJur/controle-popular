@@ -139,6 +139,13 @@ export default function EstadoEEconomiaHub() {
               >
                 Varas e Balcão Virtual ⚖️
               </Link>
+              <Link
+                href="/ambiental"
+                className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Ver o Observatório Meio Ambiente</span>
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
 

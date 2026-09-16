@@ -11,6 +11,8 @@ import { COBERTURA_CONVENIOS_FEDERAIS_MG } from "@/lib/ambiental/convenios-feder
 import { metadataEditavel } from "@/lib/edicoes";
 import FiltroConvenios from "./FiltroConvenios";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/convenios` — os convênios de saída dos quatro órgãos ambientais
  * de Minas Gerais, e quanto tempo a mais cada um levou.
@@ -315,6 +317,7 @@ export default function ConveniosAmbientaisPage() {
           <Link href="/licenciamento">licenciamento</Link>
         </p>
       </section>
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

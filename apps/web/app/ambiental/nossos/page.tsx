@@ -5,6 +5,8 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata: Metadata = {
   title: "Nossos Rios, Serras, Territórios e Gente — ONSA · Controle Popular",
   description:
@@ -226,7 +228,8 @@ export default function HubNossosPage() {
       {/* FECHO — citação autorizada */}
       <Epigrafe citacao={citacaoPorId("carolina-mundo-modificar")!} variante="fecho" />
 
-      <OutrasFrentes atual="ambiental" />
+            <MeioAmbienteRelacionado />
+<OutrasFrentes atual="ambiental" />
     </main>
   );
 }

@@ -3,6 +3,8 @@ import PainelDialogo from "@/app/components/PainelDialogo";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 interface ComunidadeGrupo {
   id: string;
   nomeGrupo: string;
@@ -247,7 +249,8 @@ export default function PaginaNossaGente() {
       </section>
 
       {/* BALÃO — citação autorizada (versos selecionados de "Eu-mulher", regra do PLANO-COPY-VOZ: poema por versos escolhidos) */}
-      <Epigrafe citacao={citacaoPorId("evaristo-eu-mulher")!} variante="balao" className="mx-auto mt-8 max-w-md" />
+            <MeioAmbienteRelacionado />
+<Epigrafe citacao={citacaoPorId("evaristo-eu-mulher")!} variante="balao" className="mx-auto mt-8 max-w-md" />
     </div>
   );
 }

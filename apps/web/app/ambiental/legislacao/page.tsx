@@ -13,6 +13,7 @@ import BuscaLegislacaoUnificada from "./BuscaLegislacaoUnificada";
 import { compactar } from "@/lib/ambiental/payload-compacto";
 import Link from "@/lib/ambiental/link";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
@@ -570,6 +571,7 @@ export default async function LegislacaoAmbientalIndex() {
           esta revisão procura.
         </p>
       </section>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

@@ -6,6 +6,8 @@ import { REPOSITORIO_LABEL, CLASSE_ESTUDO_LABEL } from "@/lib/ambiental/estudos"
 import { metadataEditavel } from "@/lib/edicoes";
 import BuscaEstudos from "./BuscaEstudos";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata: Metadata = metadataEditavel("/ambiental/estudos", {
   title: "Estudos de impacto ambiental — Controle Popular · Ambiental",
   description:
@@ -181,7 +183,8 @@ export default function EstudosIndex() {
           <Link href="/ambiental/nossos" className="underline">Coleção Nossos</Link> e no bloco{" "}
           <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
         </p>
-      </details>
+            <MeioAmbienteRelacionado />
+</details>
     </div>
   );
 }

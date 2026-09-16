@@ -6,6 +6,7 @@ import BuscaPatrimonioTombado from "./BuscaPatrimonioTombado";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import Link from "@/lib/ambiental/link";
 import { metadataEditavel } from "@/lib/edicoes";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/patrimonio-cultural", {
   title: "Patrimônio cultural tombado — Controle Popular · Ambiental",
@@ -344,6 +345,7 @@ export default async function PatrimonioCulturalIndex() {
           deste ingestor.
         </p>
       </section>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

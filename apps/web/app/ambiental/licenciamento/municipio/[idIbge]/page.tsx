@@ -8,6 +8,7 @@ import {
   nomeMunicipioMg,
 } from "@/lib/db/queries/ambiental-licenciamento";
 import FiltroLicencas from "./FiltroLicencas";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 type Params = Promise<{ idIbge: string }>;
 
@@ -71,6 +72,7 @@ export default async function MunicipioLicenciamentoPage({ params }: { params: P
         coordenada — só que a licença existe, com o setor e o município. Este portal não afirma
         irregularidade: é a reprodução da licença como a Semad publica.
       </p>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

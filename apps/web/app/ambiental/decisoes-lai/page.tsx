@@ -5,6 +5,8 @@ import { COBERTURA_DECISOES_CGE, DECISOES_CGE_POR_TIPO_ANO } from "@/lib/ambient
 import { metadataEditavel } from "@/lib/edicoes";
 import TabelaDecisoes from "./TabelaDecisoes";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/decisoes-lai` — as decisões de recurso de pedidos de LAI (Lei
  * de Acesso à Informação) negados a órgãos do Governo de Minas Gerais,
@@ -409,10 +411,10 @@ export default function DecisoesLaiPage() {
           </li>
         </ul>
         <p className="mt-4 text-[.88em] text-text-soft">
-          Ver também:{" "}
+          Ver 또한:{" "}
           <Link href="/barragens/descaracterizacao">barragens em descaracterização (MPMG)</Link>
         </p>
-      </section>
+      <MeioAmbienteRelacionado />
     </div>
   );
 }

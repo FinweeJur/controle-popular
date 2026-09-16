@@ -40,8 +40,7 @@ export const TAXA_ERRO_G0 = {
   /**
    * Recorte DIRIGIDO (compactas ≥ 100 ha), julgado em 2026-08-12.
    *
-   * Campo separado e nunca somado ao de cima: descreve o melhor caso do
-   * método, não a taxa. Ver o bloco de comentário acima.
+   * Campo separado e nunca somado ao de cima: descreve o melhor caso do método; não a taxa. Ver o bloco de comentário acima.
    */
   dirigido: {
     falsoPositivos: 6,

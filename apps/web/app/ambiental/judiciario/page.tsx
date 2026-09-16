@@ -4,6 +4,8 @@ import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelSirenejudMg from "./PainelSirenejudMg";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/judiciario` — o que o Judiciário faz com o tema ambiental em
  * Minas: quantos processos ambientais correm em cada município, em qual
@@ -258,7 +260,8 @@ export default function AmbientalJudiciarioPage() {
         </div>
       </section>
 
-      <footer className="mt-12 rounded-xl border border-border bg-surface-2 p-5 text-[.9em] text-text-soft">
+            <MeioAmbienteRelacionado />
+<footer className="mt-12 rounded-xl border border-border bg-surface-2 p-5 text-[.9em] text-text-soft">
         <p className="font-medium text-text">Fonte e ressalvas</p>
         <ul className="mt-2 list-disc space-y-1 pl-5">
           <li>

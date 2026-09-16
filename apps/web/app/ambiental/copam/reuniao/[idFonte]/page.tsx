@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "@/lib/ambiental/link";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { idsFonteReunioesCopam, obterReuniaoCopamPorIdFonte } from "@/lib/db/queries/copam";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 type Params = Promise<{ idFonte: string }>;
 
@@ -184,6 +185,7 @@ export default async function ReuniaoCopamPage({ params }: { params: Params }) {
           </ul>
         )}
       </section>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }

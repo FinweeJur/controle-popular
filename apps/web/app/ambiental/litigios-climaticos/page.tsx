@@ -8,6 +8,8 @@ import PainelDialogo from "@/app/components/PainelDialogo";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 export const metadata = {
   title: "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | ONSA",
   description:
@@ -239,7 +241,8 @@ export default function PaginaLitigiosClimaticos() {
       </section>
 
       {/* FECHO — citação autorizada */}
-      <Epigrafe citacao={citacaoPorId("evaristo-medo-coragem")!} variante="fecho" />
+            <MeioAmbienteRelacionado />
+<Epigrafe citacao={citacaoPorId("evaristo-medo-coragem")!} variante="fecho" />
     </div>
   );
 }

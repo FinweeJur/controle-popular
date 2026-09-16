@@ -17,6 +17,8 @@ import { STATUS_ORDEM } from "@/lib/ambiental/tac-agregados";
 import { metadataEditavel } from "@/lib/edicoes";
 import FiltroTAC from "./FiltroTAC";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/tac` — o dinheiro dos Termos de Ajustamento de Conduta
  * ambientais de Minas Gerais: quem prometeu quanto, para qual órgão, e o que
@@ -311,7 +313,8 @@ export default function TacAmbientalPage() {
                           })}
                         </div>
                         <span className="font-tabular text-[11px] font-medium text-text-soft">{a.ano}</span>
-                      </div>
+                            <MeioAmbienteRelacionado />
+</div>
                     );
                   })}
                 </div>

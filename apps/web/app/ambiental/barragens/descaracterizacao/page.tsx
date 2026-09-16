@@ -5,6 +5,8 @@ import { COBERTURA_BARRAGENS_MPMG, agruparPorEmpreendedor } from "@/lib/ambienta
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelBarragens from "./PainelBarragens";
 
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+
 /**
  * `/ambiental/barragens/descaracterizacao` — as 45 barragens a montante que
  * o MPMG acompanha em processo de DESCARACTERIZAÇÃO (projeto "Desativando
@@ -370,6 +372,7 @@ export default function BarragensDescaracterizacaoPage() {
           Ver também: <Link href="/decisoes-lai">decisões de recurso de LAI (CGE-MG)</Link>
         </p>
       </section>
-    </div>
+          <MeioAmbienteRelacionado />
+</div>
   );
 }
