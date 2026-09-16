@@ -10,15 +10,15 @@ import TabelaCidadesClient from "./TabelaCidadesClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 
 export const metadata = {
-  title: "Plano de Expansão Nacional — 199 Cidades Estratégicas | Controle Popular",
+  title: "Plano de Expansão Nacional — 203 Cidades Estratégicas | Controle Popular",
   description:
-    "Mapa mestre das 27 capitais de estado e 172 polos regionais do interior atendidos pelo Controle Popular com códigos IBGE e DATASUS.",
+    "Mapa mestre das 27 capitais de estado e 176 polos regionais do interior atendidos pelo Controle Popular com códigos IBGE e DATASUS.",
 };
 
 const SECOES_CIDADES = [
   { id: "status-totais", titulo: "1. Totais da Expansão" },
   { id: "grafico-distribuicao", titulo: "2. Distribuição por Região" },
-  { id: "catalogo-cidades", titulo: "3. Catálogo das 199 Cidades" },
+  { id: "catalogo-cidades", titulo: "3. Catálogo das 203 Cidades" },
   { id: "perguntas-frequentes", titulo: "4. Dúvidas Frequentes" },
 ];
 
@@ -88,23 +88,14 @@ export default function PaginaCidadesEstrategicas() {
             </span>
           </div>
           <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            199 Cidades Estratégicas do Brasil
+            203 Cidades Estratégicas do Brasil
           </h1>
           <p className="mt-3 text-base text-muted sm:text-lg">
             O portal Controle Popular expande sua fiscalização cidadã para as 27 Capitais
-            e 172 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de
+            e 176 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de
             contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
           </p>
 
-          {/* EPÍGRAFE EDITORIAL */}
-          <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-            <p>
-              &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
-            </p>
-            <p className="mt-1 text-xs not-italic font-medium text-foreground">
-              — Diretriz Arquitetural de Expansão Nacional (PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md)
-            </p>
-          </div>
         </header>
 
         {/* Banner de atalho para Varas e Fóruns das Cidades */}
@@ -222,9 +213,9 @@ export default function PaginaCidadesEstrategicas() {
             perguntas={[
               {
                 id: "por-que-199",
-                pergunta: "Por que começar com 199 cidades estratégicas?",
+                pergunta: "Por que começar com 203 cidades estratégicas?",
                 resposta:
-                  "As 27 capitais e os 172 polos do interior concentram mais de 65% do PIB, dos leitos hospitalares SUS e dos principais nós de infraestrutura e pressão socioambiental do Brasil. Isso viabiliza auditoria de alto impacto sem dispersar o foco antes de consolidar os coletores automáticos.",
+                  "As 27 capitais e os 176 polos do interior concentram mais de 65% do PIB, dos leitos hospitalares SUS e dos principais nós de infraestrutura e pressão socioambiental do Brasil. Isso viabiliza auditoria de alto impacto sem dispersar o foco antes de consolidar os coletores automáticos.",
               },
               {
                 id: "diferenca-codigos",
@@ -246,7 +237,9 @@ export default function PaginaCidadesEstrategicas() {
         <LinksRelacionados links={LINKS_RELACIONADOS} />
       </main>
 
-      <FooterGlobal />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <FooterGlobal />
+      </div>
     </div>
   );
 }

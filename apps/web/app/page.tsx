@@ -101,10 +101,10 @@ export default async function Hub() {
               CIDADES NO RADAR
             </p>
             <p className="mt-2 font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-              199
+              203
             </p>
             <p className="mt-1 text-xs text-muted">
-              27 capitais e 172 polos estratégicos mapeados em todo o Brasil
+              27 capitais e 176 polos estratégicos mapeados em todo o Brasil
             </p>
           </div>
 
@@ -172,7 +172,7 @@ export default async function Hub() {
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-terra, #1b6348)' }} />
               <div>
                 <div className="font-bold text-foreground">2. Terra e Territórios</div>
-                <div className="text-xs font-normal text-muted">199 Cidades, Rios, Serras, Biomas</div>
+                <div className="text-xs font-normal text-muted">203 Cidades, Rios, Serras, Biomas</div>
               </div>
             </a>
             <a
@@ -251,7 +251,7 @@ export default async function Hub() {
                     href="/cidades"
                     className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
                   >
-                    <span>Ver todas as 199 Cidades Estratégicas (Capitais & Polos)</span>
+                    <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
                     <span aria-hidden="true">→</span>
                   </a>
                 </li>

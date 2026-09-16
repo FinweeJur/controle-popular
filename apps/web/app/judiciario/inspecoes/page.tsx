@@ -71,16 +71,6 @@ export default function PaginaInspecoesJudiciario() {
             rotulo="Disparar Dados da Justiça no WhatsApp"
           />
         </div>
-
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          <p>
-            &ldquo;Saber quem ocupa a cadeira do tribunal é importante; saber se o tribunal funciona para quem não tem dinheiro para pagar advogado particular é o que decide a justiça real.&rdquo;
-          </p>
-          <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz de Transparência Institucional (PLANO-TRANSPARENCIA-JUSTICA.md)
-          </p>
-        </div>
       </header>
 
       {/* CARTÕES DE TOPO */}

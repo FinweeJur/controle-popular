@@ -391,7 +391,9 @@ export default function InstituicoesPage() {
       <LinksRelacionados links={LINKS_RELACIONADOS} />
     </main>
 
-    <FooterGlobal />
+    <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <FooterGlobal />
+    </div>
   </div>
   );
 }

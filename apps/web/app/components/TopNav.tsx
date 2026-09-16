@@ -96,7 +96,7 @@ const SECOES_MENU = [
     badgeClasse: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
     links: [
       { label: "Visão Geral do Eixo", href: "/terra-e-territorios", icone: Globe },
-      { label: "199 Cidades Estratégicas", href: "/cidades", icone: MapPin },
+      { label: "203 Cidades Estratégicas", href: "/cidades", icone: MapPin },
       { label: "Nossos Rios (Doce/Paraopeba)", href: "/terra-e-territorios/nossos-rios", icone: Waves },
       { label: "Nossas Serras & Mineração", href: "/terra-e-territorios/nossas-serras", icone: Mountain },
       { label: "Descaracterização Barragens", href: "/ambiental/barragens/descaracterizacao", icone: AlertTriangle },
@@ -360,7 +360,7 @@ export default function TopNav() {
         <div className="ml-auto flex flex-wrap items-center gap-2">
           <Link
             href="/noticias"
-            className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
+            className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[.8em] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
             aria-label="Blog e Relatórios de Dados Públicos"
           >
             <Newspaper size={13} aria-hidden="true" />
@@ -376,7 +376,7 @@ export default function TopNav() {
           <OuvirNavbar />
           <Link
             href="/busca"
-            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
           >
             Busca →
           </Link>
