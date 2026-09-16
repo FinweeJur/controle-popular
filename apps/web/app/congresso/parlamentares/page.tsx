@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { listarParlamentares } from "@/lib/congresso/parlamentares";
+import { listarNotasPorParlamentar } from "@/lib/congresso/parlamentares";
 import ListaParlamentares, { ListaParlamentaresCompleta } from "./ListaParlamentares";
 import { metadataEditavel } from "@/lib/edicoes";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = metadataEditavel("/congresso/parlamentares", {
 export default async function Parlamentares() {
   // SEM filtro no SQL: o mesmo motivo de `bancadas` — o recorte é do
   // cliente (ver `ListaParlamentares`), e a consulta nunca teve LIMIT.
-  const parlamentares = await listarParlamentares();
+  const parlamentares = await listarNotasPorParlamentar();
 
   return (
     <div className="mx-auto max-w-5xl space-y-8 px-4 py-10">

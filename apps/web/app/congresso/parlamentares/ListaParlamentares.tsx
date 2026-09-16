@@ -4,10 +4,10 @@ import { useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "@/lib/congresso/link";
 import { withBasePath } from "@/lib/congresso/basePath";
-import { ROTULO_CASA, type ParlamentarResumo } from "@/lib/congresso/parlamentares";
+import { ROTULO_CASA, type ParlamentarNota } from "@/lib/congresso/parlamentares";
 
 /**
- * O filtro (`?casa=&partido=&uf=`) saiu do servidor e veio para cá, junto
+ * O filtro (`?casa=&partido=&uf=&ordem=`) saiu do servidor e veio para cá, junto
  * com a navegação — mesmo motivo de `ListaBancadas`.
  *
  * POR QUE: em `output: 'export'` não existe request no momento da geração,
@@ -29,16 +29,49 @@ import { ROTULO_CASA, type ParlamentarResumo } from "@/lib/congresso/parlamentar
  */
 
 interface ListaProps {
-  parlamentares: ParlamentarResumo[] | null;
+  parlamentares: ParlamentarNota[] | null;
 }
 
 interface Filtro {
   casa: string;
   partido: string;
   uf: string;
+  ordem: string;
 }
 
-const FILTRO_VAZIO: Filtro = { casa: "", partido: "", uf: "" };
+const FILTRO_VAZIO: Filtro = { casa: "", partido: "", uf: "", ordem: "nota" };
+
+function csvCelula(valor: string | number | null): string {
+  const v = String(valor ?? "");
+  // });` dentro do texto de célula quebra o CSV — cercar com aspas.
+  return `"${v.replace(/"/g, '""')}"`;
+}
+
+function baixarCsv(parlamentares: ParlamentarNota[]) {
+  const linhas = [
+    ["casa", "nome", "partido", "uf", "nota_ranking_v1", "eixo_parcial"].join(";"),
+    ...parlamentares.map((p) =>
+      [
+        ROTULO_CASA[p.casa_id] ?? p.casa_id,
+        p.nome_eleitoral ?? p.nome,
+        p.partido ?? "",
+        p.uf ?? "",
+        p.nota.nota ?? "",
+        p.nota.eixoParcial ? "sim" : "nao",
+      ]
+        .map(csvCelula)
+        .join(";")
+    ),
+  ];
+  // BOM UTF-8 + separador `;` — o Excel brasileiro abre acento e coluna certos.
+  const blob = new Blob(["\uFEFF" + linhas.join("\n")], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "parlamentares-ranking.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro: Filtro }) {
   const router = useRouter();
@@ -66,17 +99,33 @@ function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro:
       (!filtro.uf || p.uf === filtro.uf)
   );
 
+  const ordenados =
+    filtro.ordem === "nome"
+      ? [...filtrados].sort((a, b) =>
+          (a.nome_eleitoral ?? a.nome).localeCompare(b.nome_eleitoral ?? b.nome, "pt-BR")
+        )
+      : // padrão = nota desc; sem nota (dado insuficiente) cai para o fim
+        // em ordem de nome — lacunha visível, não silenciosa.
+        [...filtrados].sort((a, b) => {
+          if (a.nota.nota === null && b.nota.nota === null)
+            return (a.nome_eleitoral ?? a.nome).localeCompare(b.nome_eleitoral ?? b.nome, "pt-BR");
+          if (a.nota.nota === null) return 1;
+          if (b.nota.nota === null) return -1;
+          return b.nota.nota - a.nota.nota;
+        });
+
   function atualizarFiltro(mudanca: Partial<Filtro>) {
     const proximo = { ...filtro, ...mudanca };
     const params = new URLSearchParams();
     if (proximo.casa) params.set("casa", proximo.casa);
     if (proximo.partido) params.set("partido", proximo.partido);
     if (proximo.uf) params.set("uf", proximo.uf);
+    if (proximo.ordem && proximo.ordem !== "nota") params.set("ordem", proximo.ordem);
     const qs = params.toString();
     router.push(withBasePath(`/parlamentares${qs ? `?${qs}` : ""}`));
   }
 
-  const temFiltro = Boolean(filtro.casa || filtro.partido || filtro.uf);
+  const temFiltro = Boolean(filtro.casa || filtro.partido || filtro.uf || filtro.ordem !== "nota");
 
   return (
     <>
@@ -129,6 +178,28 @@ function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro:
           </select>
         </label>
 
+        <label>
+          <span className="block opacity-75">Ordenar por</span>
+          <select
+            value={filtro.ordem}
+            onChange={(e) => atualizarFiltro({ ordem: e.target.value })}
+            className="mt-1 rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-2"
+          >
+            <option value="nota">Nota (maior primeiro)</option>
+            <option value="nome">Nome (A–Z)</option>
+          </select>
+        </label>
+
+        {temFiltro || ordenados.length > 0 ? (
+          <button
+            type="button"
+            onClick={() => baixarCsv(ordenados)}
+            className="mb-1 rounded-md border border-[var(--cp-border)] px-3 py-2 underline hover:border-[var(--cp-primary)]"
+          >
+            Baixar CSV do que está na tela
+          </button>
+        ) : null}
+
         {temFiltro ? (
           <Link href="/parlamentares" className="pb-2 underline">
             limpar
@@ -154,9 +225,12 @@ function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro:
           <p className="text-sm opacity-70">
             <span className="font-tabular">{filtrados.length}</span>{" "}
             {filtrados.length === 1 ? "parlamentar" : "parlamentares"}
+            {ordenados.filter((p) => p.nota.nota === null).length > 0
+              ? ` · ${ordenados.filter((p) => p.nota.nota === null).length} sem nota (dados insuficientes — contam no fim da fila)`
+              : ""}
           </p>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filtrados.map((p) => (
+            {ordenados.map((p) => (
               <li key={p.id}>
                 <Link
                   href={`/parlamentares/${p.id}`}
@@ -171,13 +245,25 @@ function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro:
                       className="h-12 w-9 shrink-0 rounded object-cover"
                     />
                   ) : null}
-                  <span className="min-w-0">
+                  <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold">
                       {p.nome_eleitoral ?? p.nome}
                     </span>
                     <span className="block text-sm opacity-70">
                       {p.partido ?? "—"}
                       {p.uf ? `/${p.uf}` : ""}
+                    </span>
+                  </span>
+                  <span className="shrink-0 text-right">
+                    <span className="block font-tabular text-lg font-semibold">
+                      {p.nota.nota ?? "—"}
+                    </span>
+                    <span className="block text-xs opacity-60">
+                      {p.nota.nota === null
+                        ? "sem dados"
+                        : p.nota.eixoParcial
+                          ? "eixo parcial"
+                          : "nota v1"}
                     </span>
                   </span>
                 </Link>
@@ -204,6 +290,7 @@ export default function ListaParlamentares(props: ListaProps) {
         casa: sp.get("casa") ?? "",
         partido: sp.get("partido") ?? "",
         uf: sp.get("uf") ?? "",
+        ordem: sp.get("ordem") || "nota",
       }}
     />
   );

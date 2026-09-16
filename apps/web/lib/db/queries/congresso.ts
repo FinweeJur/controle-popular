@@ -1156,6 +1156,67 @@ export async function votosPorRotuloDoParlamentar(parlamentarId: string) {
     .groupBy(analisesInCongresso.rotulo, votosInCongresso.voto);
 }
 
+/**
+ * Versão EM GRUPO de `presencaDiasDoParlamentar` — as mesmas linhas de
+ * TODOS os parlamentares de uma vez. A nota de ranking
+ * (`lib/congresso/rank.ts`) precisa dos três eixos de ~600 pessoas; uma
+ * consulta por pessoa seriam ~1.800 idas ao banco no pré-render.
+ * Cada linha volta com `parlamentar_id` — agrupar no lado JS e alimentar
+ * `calcularPresencaDias` por pessoa, régua idêntica ao perfil individual.
+ */
+export async function presencaDiasDeTodos() {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({
+      parlamentar_id: presencas_plenarioInCongresso.parlamentar_id,
+      situacao_dia: presencas_plenarioInCongresso.situacao_dia,
+      sessoes_total: presencas_plenarioInCongresso.sessoes_total,
+      sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
+    })
+    .from(presencas_plenarioInCongresso);
+}
+
+/**
+ * Versão EM GRUPO de `votosPorRotuloDoParlamentar` — mesmo join + agrupado
+ * também por `parlamentar_id`. Mesmo critério do filtro (só votação ligada
+ * a proposição com análise `status='ok'`) e mesma ressalva: tamanho de
+ * amostra é o que sustenta coerência — quem não aparece aqui tem eixo
+ * removido da nota, não coerência zero.
+ */
+export async function votosRotuloDeTodos() {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({
+      parlamentar_id: votosInCongresso.parlamentar_id,
+      rotulo: analisesInCongresso.rotulo,
+      voto: votosInCongresso.voto,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(votosInCongresso)
+    .innerJoin(
+      votacoesInCongresso,
+      eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
+    )
+    .innerJoin(
+      proposicoesInCongresso,
+      eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
+    )
+    .innerJoin(
+      analisesInCongresso,
+      and(
+        eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
+        eq(analisesInCongresso.status, "ok")
+      )
+    )
+    .groupBy(
+      votosInCongresso.parlamentar_id,
+      analisesInCongresso.rotulo,
+      votosInCongresso.voto
+    );
+}
+
 function condicoesDeVotacoes(f: { ano?: number; q?: string }) {
   const cond = [];
   if (f.ano) cond.push(sql`extract(year from ${votacoesInCongresso.data}) = ${f.ano}`);
