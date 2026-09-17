@@ -1,12 +1,12 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = metadataEditavel("/documentacao/arquitetura", {
-  title: "Arquitetura — Documentacao Controle Popular",
+  title: "Arquitetura — Documentação — Controle Popular",
   description:
-    "Next.js 16, duplo deploy Cloudflare Workers + Guara Cloud, banco Neon, tetos de bundle e regras de payload.",
+    "Next.js 16, duplo deploy Cloudflare Workers + Guará Cloud, banco Neon, tetos de bundle e regras de payload.",
 });
 
 export default function ArquiteturaPage() {
@@ -18,8 +18,8 @@ export default function ArquiteturaPage() {
         className="mx-auto max-w-3xl space-y-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
       >
         <nav className="text-sm text-text-soft">
-          <Link href="/" className="hover:text-primary">Inicio</Link>{" "}·{" "}
-          <Link href="/documentacao" className="hover:text-primary">Documentacao</Link>{" "}·{" "}
+          <Link href="/" className="hover:text-primary">Início</Link>{" "}·{" "}
+          <Link href="/documentacao" className="hover:text-primary">Documentação</Link>{" "}·{" "}
           <span className="text-text">Arquitetura</span>
         </nav>
 
@@ -30,9 +30,9 @@ export default function ArquiteturaPage() {
           </h1>
           <p className="text-text-soft">
             Monorepo Next.js 16 com duplo deploy: Cloudflare Workers para
-            conteudo estatico e Guara Cloud (Docker standalone) para rotas
-            dinamicas. Teto de 25 MiB por asset no Workers e 3 MiB gzip de
-            bundle ditam todas as decisoes de payload.
+            conteúdo estático e Guará Cloud (Docker standalone) para rotas
+            dinâmicas. Teto de 25 MiB por asset no Workers e 3 MiB gzip de
+            bundle ditam todas as decisões de payload.
           </p>
         </header>
 
@@ -43,8 +43,8 @@ export default function ArquiteturaPage() {
             <li><strong>Monorepo:</strong> <code className="text-xs">apps/web/</code> — rotas, componentes, lib, dados</li>
             <li><strong>Banco (leitura/escrita):</strong> Neon Postgres via Drizzle ORM</li>
             <li><strong>Banco (escrita ao vivo em Workers):</strong> Cloudflare D1</li>
-            <li><strong>Deploy A:</strong> Cloudflare Workers via OpenNext — estatico + ISR</li>
-            <li><strong>Deploy B:</strong> Guara Cloud (Docker, regiao br-gru) via <code className="text-xs">output: standalone</code></li>
+            <li><strong>Deploy A:</strong> Cloudflare Workers via OpenNext — estático + ISR</li>
+            <li><strong>Deploy B:</strong> Guará Cloud (Docker, região br-gru) via <code className="text-xs">output: standalone</code></li>
           </ul>
         </section>
 
@@ -56,15 +56,15 @@ export default function ArquiteturaPage() {
                 <tr>
                   <th className="px-4 py-3">Teto</th>
                   <th className="px-4 py-3">Valor</th>
-                  <th className="px-4 py-3">Consequencia pratica</th>
+                  <th className="px-4 py-3">Consequência prática</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {[
-                  ["Asset por rota (Workers)", "25 MiB", "Colecao grande usa indice fatiado, nao props"],
-                  ["Bundle gzip por rota", "3 MiB", "Sem bibliotecas de grafico — SVG inline ou CSS"],
+                  ["Asset por rota (Workers)", "25 MiB", "Coleção grande usa índice fatiado, não props"],
+                  ["Bundle gzip por rota", "3 MiB", "Sem bibliotecas de gráfico — SVG inline ou CSS"],
                   ["Arquivos no Workers", "20.000", "Dado versionado em data/, compactado antes de commitar"],
-                  ["Neon storage (Free)", "0,5 GB", "Novas coletas vao para D1 ate renovacao"],
+                  ["Neon storage (Free)", "0,5 GB", "Novas coletas vão para D1 até renovação"],
                 ].map(([t, v, c]) => (
                   <tr key={t} className="odd:bg-surface-2/20">
                     <td className="px-4 py-3 font-medium">{t}</td>
@@ -80,23 +80,26 @@ export default function ArquiteturaPage() {
         <section className="space-y-3">
           <h2 className="font-display text-xl font-semibold">Duplo deploy</h2>
           <p className="text-sm text-text-soft">
-            O mesmo codigo gera dois artefatos independentes: o Workers (OpenNext, <code className="text-xs">output: export</code>) e o container Docker (Guara Cloud, <code className="text-xs">output: standalone</code>). O DNS aponta para o Workers por padrao. O container e a saida de contingencia e o ambiente de homologacao de rotas dinamicas.
+            O mesmo código gera dois artefatos independentes: o Workers (OpenNext, <code className="text-xs">output: export</code>) e o container Docker (Guará Cloud, <code className="text-xs">output: standalone</code>). O DNS aponta para o Workers por padrão. O container é a saída de contingência e o ambiente de homologação de rotas dinâmicas.
           </p>
           <p className="text-sm text-text-soft">
-            Detalhes operacionais: <Link href="/documentacao/arquitetura" className="underline hover:text-primary">esta pagina</Link>. Deploy passo a passo: <Link href="/documentacao/fontes-e-coletas" className="underline hover:text-primary">Fontes e coleta</Link>.
+            Detalhes operacionais: <Link href="/documentacao/arquitetura" className="underline hover:text-primary">esta página</Link>. Deploy passo a passo: <Link href="/documentacao/fontes-e-coletas" className="underline hover:text-primary">Fontes e coleta</Link>.
           </p>
         </section>
 
         <nav className="flex justify-between text-sm">
           <Link href="/documentacao" className="text-text-soft hover:text-primary">
-            ← Documentacao
+            ← Documentação
           </Link>
           <Link href="/documentacao/fontes-e-coletas" className="text-text-soft hover:text-primary">
             Fontes e coletas →
           </Link>
         </nav>
       </main>
-      <FooterGlobal />
+
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-12">
+        <FooterGlobal />
+      </div>
     </>
   );
 }

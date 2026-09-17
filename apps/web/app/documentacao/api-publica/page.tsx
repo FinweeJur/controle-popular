@@ -102,11 +102,11 @@ export default function ApiPublicaPage() {
         </section>
 
         <section className="rounded-xl border border-border bg-surface-2/40 p-5 space-y-2">
-          <h2 className="font-display text-base font-semibold">Uso etico</h2>
+          <h2 className="font-display text-base font-semibold">Uso ético</h2>
           <p className="text-sm text-text-soft">
-            Esta API existe para transparencia civica. Veda-se o uso para
-            vigilancia, perfilamento de pessoas ou revenda de dado. Veja a
-            politica completa em <Link href="/termos" className="underline hover:text-primary">/termos</Link>.
+            Esta API existe para transparência cívica. Veda-se o uso para
+            vigilância, perfilamento de pessoas ou revenda de dado. Veja a
+            política completa em <Link href="/termos" className="underline hover:text-primary">/termos</Link>.
           </p>
         </section>
 
@@ -115,11 +115,13 @@ export default function ApiPublicaPage() {
             ← Fontes e coletas
           </Link>
           <Link href="/documentacao/editorial" className="text-text-soft hover:text-primary">
-            Principios editoriais →
+            Princípios editoriais →
           </Link>
         </nav>
       </main>
-      <FooterGlobal />
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-12">
+        <FooterGlobal />
+      </div>
     </>
   );
 }

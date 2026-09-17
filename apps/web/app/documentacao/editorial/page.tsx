@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -79,14 +79,16 @@ export default function EditorialPage() {
 
         <nav className="flex justify-between text-sm">
           <Link href="/documentacao/api-publica" className="text-text-soft hover:text-primary">
-            ← API publica
+            ← API pública
           </Link>
           <Link href="/documentacao" className="text-text-soft hover:text-primary">
-            Indice da documentacao →
+            Índice da documentação →
           </Link>
         </nav>
       </main>
-      <FooterGlobal />
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-12">
+        <FooterGlobal />
+      </div>
     </>
   );
 }

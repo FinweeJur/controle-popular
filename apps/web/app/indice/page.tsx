@@ -22,13 +22,16 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
+import Link from "next/link";
 import novidades from "@/data/novidades.json";
+import paginas100 from "@/data/top-100-paginas.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import CapaFrente from "@/app/components/CapaFrente";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100PaginasClient";
 
 /**
  * Hub global de indice do portal: `/indice`.
@@ -170,7 +173,12 @@ export default async function IndiceGlobal() {
     },
   ];
 
-  const itensIndice = secoes.map((s) => ({ id: s.id, titulo: s.titulo }));
+  const itensIndice = [
+    { id: "eixos-tematicos", titulo: "Os 3 Eixos Temáticos" },
+    { id: "catalogo-100-paginas", titulo: "As 100 Principais Páginas" },
+    { id: "novidades", titulo: "Novidades Recentes" },
+    ...secoes.map((s) => ({ id: s.id, titulo: s.titulo })),
+  ];
 
   return (
     <main
@@ -190,16 +198,133 @@ export default async function IndiceGlobal() {
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
         <p className="max-w-2xl text-text-soft">
-          Tudo o que o portal vigia, organizado do seu jeito: por frente, por cidade, por
-          tema ou pelo momento em que você está. Escolha uma porta — todas levam ao número
-          com a fonte ao lado.
+          Tudo o que o portal vigia, organizado do seu jeito: por eixos temáticos, pelas 100 principais páginas, por frente, por cidade, por
+          tema ou pela sua situação prática.
         </p>
       </header>
 
       <IndiceWiki itens={itensIndice} />
 
+      {/* ═══ OS 3 GRANDES EIXOS TEMÁTICOS DO PORTAL ═══ */}
+      <section id="eixos-tematicos" className="mt-12 scroll-mt-20">
+        <div className="mb-5">
+          <span className="text-xs font-bold uppercase tracking-wider text-primary">Arquitetura Cívica</span>
+          <h2 className="font-display text-2xl font-bold text-text">Os Três Grandes Eixos Temáticos</h2>
+          <p className="mt-1 text-sm text-text-soft">
+            Toda a fiscalização do portal é organizada em três eixos de interesse social e uma central técnica de transparência.
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Eixo 1 */}
+          <Link
+            href="/direitos-em-movimento"
+            className="group flex flex-col justify-between rounded-2xl border border-alert/30 bg-alert/5 p-5 transition hover:border-alert hover:bg-alert/10 shadow-xs"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded border border-alert/30 bg-alert/20 px-2 py-0.5 text-xs font-bold uppercase text-alert">
+                  EIXO 1
+                </span>
+                <HeartHandshake className="h-5 w-5 text-alert" />
+              </div>
+              <h3 className="font-display text-lg font-bold text-text group-hover:text-alert transition-colors">
+                Direitos em Movimento
+              </h3>
+              <p className="mt-2 text-xs text-text-soft leading-relaxed">
+                Saúde (SUS), Educação (IDEB), Trabalho (CAGED), Conselhos de Direitos, LAI, canal de denúncia e assistência jurídica.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-alert/20 flex items-center justify-between text-xs font-semibold text-alert">
+              <span>Explorar Eixo</span>
+              <span>→</span>
+            </div>
+          </Link>
+
+          {/* Eixo 2 */}
+          <Link
+            href="/terra-e-territorios"
+            className="group flex flex-col justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5 transition hover:border-emerald-500 hover:bg-emerald-500/10 shadow-xs"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-xs font-bold uppercase text-emerald-500">
+                  EIXO 2
+                </span>
+                <Globe className="h-5 w-5 text-emerald-500" />
+              </div>
+              <h3 className="font-display text-lg font-bold text-text group-hover:text-emerald-500 transition-colors">
+                Terra e Territórios
+              </h3>
+              <p className="mt-2 text-xs text-text-soft leading-relaxed">
+                203 Cidades Estratégicas, Bacias Paraopeba e Rio Doce (Brumadinho e Mariana), barragens, clima, licenciamento e Globo 3D.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500">
+              <span>Explorar Eixo</span>
+              <span>→</span>
+            </div>
+          </Link>
+
+          {/* Eixo 3 */}
+          <Link
+            href="/estado-e-economia"
+            className="group flex flex-col justify-between rounded-2xl border border-sky-500/30 bg-sky-500/5 p-5 transition hover:border-sky-500 hover:bg-sky-500/10 shadow-xs"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded border border-sky-500/30 bg-sky-500/20 px-2 py-0.5 text-xs font-bold uppercase text-sky-500">
+                  EIXO 3
+                </span>
+                <Landmark className="h-5 w-5 text-sky-500" />
+              </div>
+              <h3 className="font-display text-lg font-bold text-text group-hover:text-sky-500 transition-colors">
+                Estado e Economia
+              </h3>
+              <p className="mt-2 text-xs text-text-soft leading-relaxed">
+                Orçamento de MG, Compras Públicas (PNCP), Congresso Nacional (CEAP e emendas), Quem fiscaliza a Justiça, Varas e Empresas ESG.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-sky-500/20 flex items-center justify-between text-xs font-semibold text-sky-500">
+              <span>Explorar Eixo</span>
+              <span>→</span>
+            </div>
+          </Link>
+
+          {/* Central ONSA */}
+          <Link
+            href="/sobre"
+            className="group flex flex-col justify-between rounded-2xl border border-primary/30 bg-primary/5 p-5 transition hover:border-primary hover:bg-primary/10 shadow-xs"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded border border-primary/30 bg-primary/20 px-2 py-0.5 text-xs font-bold uppercase text-primary">
+                  ONSA
+                </span>
+                <Sparkles className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-display text-lg font-bold text-text group-hover:text-primary transition-colors">
+                Central & Ferramentas
+              </h3>
+              <p className="mt-2 text-xs text-text-soft leading-relaxed">
+                Radar de Editais (DO-MG), Estudos Rurais, Documentação Técnica, API Pública, Biblioteca Digital, Blog e IA Livre.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-primary/20 flex items-center justify-between text-xs font-semibold text-primary">
+              <span>Conhecer Método</span>
+              <span>→</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* ═══ O CATÁLOGO DAS 100 PRINCIPAIS PÁGINAS ═══ */}
+      <div className="mt-14">
+        <Catalogo100PaginasClient paginas={paginas100 as PaginaCatalogo[]} />
+      </div>
+
       {/* Novidades */}
-      <section className="mt-10 scroll-mt-20" id="novidades">
+      <section className="mt-14 scroll-mt-20" id="novidades">
         <h2 className="flex items-center gap-2 font-display text-xl font-semibold">
           <Sparkles size={20} className="text-primary" aria-hidden="true" />
           Novidades
@@ -236,7 +361,10 @@ export default async function IndiceGlobal() {
           </div>
         </section>
       ))}
-      <FooterGlobal />
+
+      <div className="mt-12 border-t border-border pt-6">
+        <FooterGlobal />
+      </div>
     </main>
   );
 }

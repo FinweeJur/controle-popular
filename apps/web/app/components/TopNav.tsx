@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Briefcase,
   ShieldCheck,
+  Shield,
   HelpCircle,
   FileQuestion,
   Send,
@@ -32,6 +33,10 @@ import {
   BookOpen,
   PhoneCall,
   Users,
+  FileText,
+  Sparkles,
+  Leaf,
+  FileSpreadsheet,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -83,6 +88,10 @@ const SECOES_MENU = [
       { label: "Onde Buscar Ajuda", href: "/direitos-em-movimento/ajuda", icone: HelpCircle },
       { label: "Pedir Informação (LAI)", href: "/direitos-em-movimento/informacao", icone: FileQuestion },
       { label: "Canal de Denúncia Local", href: "/direitos-em-movimento/denuncia", icone: Send },
+      { label: "Decisões de Acesso (LAI)", href: "/decisoes-lai", icone: FileText },
+      { label: "Guia Cívico de Direitos", href: "/noticias/direitos-em-movimento-guia", icone: BookOpen },
+      { label: "UPAs & Saúde em Betim", href: "/noticias/saude-betim-upa-recursos", icone: Activity },
+      { label: "Passo a Passo Pedido LAI", href: "/noticias/lai-como-pedir-informacao", icone: FileQuestion },
     ],
   },
   {
@@ -97,12 +106,19 @@ const SECOES_MENU = [
     links: [
       { label: "Visão Geral do Eixo", href: "/terra-e-territorios", icone: Globe },
       { label: "203 Cidades Estratégicas", href: "/cidades", icone: MapPin },
-      { label: "Nossos Rios (Doce/Paraopeba)", href: "/terra-e-territorios/nossos-rios", icone: Waves },
+      { label: "Betim (Painel Completo)", href: "/betim", icone: MapPin },
+      { label: "Brumadinho (Reparação)", href: "/brumadinho", icone: MapPin },
+      { label: "Nossos Rios (Doce & Paraopeba)", href: "/terra-e-territorios/nossos-rios", icone: Waves },
       { label: "Nossas Serras & Mineração", href: "/terra-e-territorios/nossas-serras", icone: Mountain },
       { label: "Descaracterização Barragens", href: "/ambiental/barragens/descaracterizacao", icone: AlertTriangle },
       { label: "Repactuação Rio Doce", href: "/ambiental/mariana", icone: Waves },
       { label: "Reparação Paraopeba", href: "/paraopeba", icone: ShieldCheck },
       { label: "Função Social & Globo 3D", href: "/funcaosocialterra", icone: Globe },
+      { label: "Estudos Rurais & Conflitos", href: "/estudos-rurais", icone: Leaf },
+      { label: "Licenciamento Ambiental", href: "/ambiental/licenciamento", icone: FileSpreadsheet },
+      { label: "Termos de Ajustamento (TAC)", href: "/ambiental/tac", icone: Shield },
+      { label: "Decisões do COPAM", href: "/ambiental/copam", icone: Scale },
+      { label: "Patrimônio Cultural & Tomb.", href: "/patrimonio-cultural", icone: Building2 },
     ],
   },
   {
@@ -118,14 +134,17 @@ const SECOES_MENU = [
       { label: "Visão Geral do Eixo", href: "/estado-e-economia", icone: Landmark },
       { label: "Governos: Prometeu? Cumpriu?", href: "/governo", icone: Landmark },
       { label: "Recomendações CNJ & CNMP", href: "/judiciario/recomendacoes", icone: Scale },
-      { label: "Orçamento & Receitas de MG", href: "/estado-e-economia/orcamento", icone: BarChart3 },
-      { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
-      { label: "Congresso Nacional & CEAP", href: "/congresso", icone: Landmark },
       { label: "Quem fiscaliza a Justiça", href: "/judiciario/instituicoes", icone: Scale },
       { label: "Varas, Gabinetes e Balcão", href: "/judiciario/contatos", icone: PhoneCall },
-      { label: "Fichas TJMG, MPMG e DPMG", href: "/judiciario/instituicoes#fichas-instituicoes", icone: Building2 },
+      { label: "Congresso Nacional & Gastos", href: "/congresso", icone: Landmark },
+      { label: "Bancada Federal de MG", href: "/congresso/mg", icone: Users },
+      { label: "Radar Cívico de Editais", href: "/editais", icone: ShoppingBag },
       { label: "Grandes Empresas & Fundos", href: "/empresas", icone: Building2 },
       { label: "Repasses Federais ComunicaBR", href: "/dados/comunicabr", icone: MapPin },
+      { label: "Convênios & Transferências", href: "/convenios", icone: FileSpreadsheet },
+      { label: "Orçamento & Receitas de MG", href: "/estado-e-economia/orcamento", icone: BarChart3 },
+      { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
+      { label: "Gastos Parlamentares (CEAP)", href: "/noticias/congresso-ceap-gastos-parlamentares", icone: BarChart3 },
     ],
   },
   {
@@ -138,14 +157,20 @@ const SECOES_MENU = [
     corClasse: "text-primary hover:text-primary",
     badgeClasse: "bg-primary/10 text-primary border-primary/30",
     links: [
-      { label: "Biblioteca Geral & Pesquisa", href: "/biblioteca", icone: BookOpen },
-      { label: "Blog", href: "/noticias", icone: Newspaper },
-      { label: "Tecnologia & IA Livre", href: "/tecnologia", icone: Cpu },
-      { label: "Alertas & Notificações", href: "/alertas", icone: Bell },
-      { label: "Índice Geral do Portal", href: "/indice", icone: List },
+      { label: "Índice Geral & 100 Páginas", href: "/indice", icone: List },
       { label: "Busca Global no Acervo", href: "/busca", icone: Search },
+      { label: "Blog & Notícias Analíticas", href: "/noticias", icone: Newspaper },
+      { label: "Alertas & Notificações", href: "/alertas", icone: Bell },
+      { label: "Biblioteca Geral & Pesquisa", href: "/biblioteca", icone: BookOpen },
+      { label: "Tecnologia & IA Livre", href: "/tecnologia", icone: Cpu },
+      { label: "Documentação Geral", href: "/documentacao", icone: FileText },
+      { label: "Arquitetura do Sistema", href: "/documentacao/arquitetura", icone: Code2 },
+      { label: "Diretrizes Editoriais", href: "/documentacao/editorial", icone: ShieldCheck },
+      { label: "Fontes Oficiais & Coletas", href: "/documentacao/fontes-e-coletas", icone: Sparkles },
+      { label: "Guia da API Pública (v1)", href: "/documentacao/api-publica", icone: Code2 },
       { label: "Sobre o ONSA & Método", href: "/sobre", icone: Info },
-      { label: "API Pública Aberta (v1)", href: "/api", icone: Code2 },
+      { label: "Sala de Imprensa & Dados", href: "/imprensa", icone: Building2 },
+      { label: "Termos de Uso & LGPD", href: "/termos", icone: ShieldCheck },
     ],
   },
 ] as const;
@@ -275,7 +300,7 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
-            className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(58rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-xl ${
+            className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(72rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-xl ${
               aberto ? "block" : "hidden"
             } sm:p-5`}
           >
@@ -295,6 +320,14 @@ export default function TopNav() {
                   className="rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
                 >
                   Índice Geral do Portal
+                </a>
+                <a
+                  href="/indice#catalogo-100-paginas"
+                  onClick={fechar}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 transition-colors duration-150 hover:bg-emerald-500/20"
+                >
+                  <Sparkles size={13} aria-hidden="true" />
+                  <span>Top 100 Páginas</span>
                 </a>
               </div>
               <span className="text-[0.9em] font-medium text-text-soft">
@@ -352,6 +385,22 @@ export default function TopNav() {
                   </ul>
                 </section>
               ))}
+            </div>
+
+            {/* Rodapé do menu com destaque para o catálogo das 100 páginas */}
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/70 pt-3 sm:mt-4 sm:pt-4">
+              <div className="flex items-center gap-2 text-xs text-text-soft">
+                <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
+                <span>Base unificada com 100 páginas catalogadas, microresumos e busca em tempo real.</span>
+              </div>
+              <a
+                href="/indice#catalogo-100-paginas"
+                onClick={fechar}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
+              >
+                <span>Ver Catálogo Completo das 100 Páginas</span>
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
           </nav>
         </div>

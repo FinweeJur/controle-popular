@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -125,11 +125,13 @@ export default function FontesEColetasPage() {
             ← Arquitetura
           </Link>
           <Link href="/documentacao/api-publica" className="text-text-soft hover:text-primary">
-            API publica →
+            API pública →
           </Link>
         </nav>
       </main>
-      <FooterGlobal />
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-12">
+        <FooterGlobal />
+      </div>
     </>
   );
 }
