@@ -130,7 +130,9 @@ const linhasAna: LinhaLicencaUnificada[] = unificar("ANA", "outorga", (linha) =>
     tipo: `${tipoOutorga} — ${uso}`,
     empresa: texto(linha.titular) ?? texto(linha.emp),
     municipio: texto(linha.mun),
-    bacia: texto(linha.bacia),
+    // ANA usa "Região Hidrográfica do X"; o prefixo nacional não ajuda
+    // no filtro — deixo só o nome. IGAM usa URGA (vocabulário próprio).
+    bacia: texto(linha.bacia)?.replace(/^Região hidrográfica do\s+/i, "") ?? null,
     situacao: texto(linha.valida) === "1" ? "Vigente" : null,
     processo: texto(linha.proc) ?? "s/n",
   };
@@ -270,8 +272,7 @@ export const REGISTROS_LICENCAS: LinhaLicencaUnificada[] = [
   ...linhasGo,
 ];
 
-function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, number> {
-  const contagem: Record<string, number> = {};
+function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, number> {  const contagem: Record<string, number> = {};
   for (const linha of REGISTROS_LICENCAS) {
     const chave = linha[forma];
     const k = chave === null || chave === undefined ? "—" : String(chave);
