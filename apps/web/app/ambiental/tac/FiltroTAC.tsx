@@ -350,9 +350,7 @@ export default function FiltroTAC() {
                     {c.orgao}
                   </span>
                   <a
-                    href="https://github.com/melkepinho/controle-popular/blob/main/docs/FONTE.md#painel-tacs-final"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/termos"
                     className="text-[.82em] text-primary underline-offset-2 hover:underline"
                     title="Abrir fonte original do painel SEMAD/MG"
                   >

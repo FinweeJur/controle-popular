@@ -102,7 +102,7 @@ export default function PaginaCidadesEstrategicas() {
               &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
             </p>
             <p className="mt-1 text-xs not-italic font-medium text-foreground">
-              — Diretriz Arquitetural de Expansão Nacional (PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md)
+              — Diretriz de Expansão Nacional e Tipagem Territorial do Controle Popular
             </p>
           </div>
         </header>

@@ -44,7 +44,7 @@ export default function PaginaCentralAlertas() {
             &ldquo;Dado público na gaveta não muda a realidade. Notificação rápida e compartilhamento com fontes oficiais colocam a informação na mão de quem defende a comunidade, sem intermediários.&rdquo;
           </p>
           <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz de Ação e Comunicação Cidadã (PLANO-NAVEGACAO-E-NOTIFICACOES.md)
+            — Diretriz de Ação e Comunicação Cidadã do Controle Popular
           </p>
         </div>
       </header>

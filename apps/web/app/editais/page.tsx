@@ -10,6 +10,7 @@ import {
 } from "@/lib/editais/dados";
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelEditais from "./PainelEditais";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = metadataEditavel("/editais", {
   title: "Editais e Chamamentos Públicos de Minas Gerais — Controle Popular",
@@ -100,6 +101,31 @@ export default function EditaisPage() {
         anos={anos}
         distribuicaoOrgaos={POR_ORGAO}
       />
+
+      {/* ─── PÁGINAS RELACIONADAS ────────────────────────────────────── */}
+      <nav aria-label="Páginas relacionadas" className="mt-8 border-t border-border pt-6">
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-soft">
+          Páginas relacionadas
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {[
+            { href: "/ambiental", titulo: "Meio Ambiente", desc: "TACs, COPAM, licenciamentos e legislação ambiental de MG." },
+            { href: "/estudos-rurais", titulo: "Estudos Rurais", desc: "Reforma agrária, assentamentos e territórios em MG." },
+            { href: "/documentacao", titulo: "Documentação Técnica", desc: "Como o radar de editais funciona: fontes, coleta e API." },
+          ].map((p) => (
+            <a
+              key={p.href}
+              href={p.href}
+              className="group rounded-lg border border-border bg-surface-2/50 p-3 text-sm transition hover:border-primary hover:bg-surface-2"
+            >
+              <p className="font-medium text-text group-hover:text-primary">{p.titulo}</p>
+              <p className="mt-0.5 text-xs text-text-soft">{p.desc}</p>
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <FooterGlobal />
     </div>
   );
 }

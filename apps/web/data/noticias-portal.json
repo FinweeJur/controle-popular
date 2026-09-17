@@ -1,5 +1,472 @@
 [
  {
+  "slug": "transparencia-passiva-dados-populares-e-lgpd",
+  "titulo": "As páginas mais acessadas do portal e as garantias de transparência cívica e proteção de dados",
+  "subtitulo": "Relatório público mostra o interesse dos cidadãos em contratos e desastres ambientais, com compromisso ético de privacidade.",
+  "resumo": "Ranking de páginas populares evidencia a busca por prestação de contas. Termos de uso formalizam direitos dos titulares e transparência passiva.",
+  "categoria": "Divulgação Científica",
+  "frente": "estado",
+  "subfrente": "Governança & Privacidade",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T20:45:00Z",
+  "atualizadoEm": "2026-09-16T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "dados-populares",
+   "termos-de-uso",
+   "lgpd",
+   "transparencia-passiva",
+   "privacidade"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. As páginas mais acessadas do portal e as garantias de transparência cívica e proteção de dados. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/transparencia-passiva-dados-populares-e-lgpd>.",
+  "citacaoBibtex": "@article{onsa2026populareslgpd,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {As páginas mais acessadas do portal e as garantias de transparência cívica e proteção de dados},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/transparencia-passiva-dados-populares-e-lgpd}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Lei Geral de Proteção de Dados (Lei nº 13.709/2018)",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+   },
+   {
+    "nome": "Lei de Acesso à Informação (Lei nº 12.527/2011)",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Páginas Indexadas",
+    "valor": "242"
+   },
+   {
+    "rotulo": "Total Monitorado",
+    "valor": "R$ 251 bi"
+   },
+   {
+    "rotulo": "Rastreadores / Cookies",
+    "valor": "0"
+   },
+   {
+    "rotulo": "Verificação Metodológica",
+    "valor": "Dupla (2x)"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte [Páginas Mais Acessadas](/dados/populares) e leia nossos compromissos em [Termos de Uso & LGPD](/termos).",
+  "paragrafos": [
+   "A transparência sobre o próprio portal é parte do compromisso público do Controle Popular. A página de [Páginas Mais Acessadas](/dados/populares) exibe as rotas que mais mobilizam a atenção dos cidadãos.",
+   "Contratos de transporte público, monitoramento de barragens de mineração e editais de fornecimento figuram no topo das consultas em todas as regiões do estado.",
+   "Para assegurar que a publicação de atos oficiais respeite os direitos fundamentais, o documento de [Termos de Uso, Dados & LGPD](/termos) estabelece as diretrizes de proteção de dados.",
+   "O portal não utiliza rastreadores de navegação nem cookies de perfil. Além disso, mantém rotinas de sanitização por mod-11 para eliminar qualquer exposição indevida de dados pessoais presentes em diários oficiais."
+  ]
+ },
+ {
+  "slug": "recomendacoes-cnj-cnmp-e-inspecoes-da-justica",
+  "titulo": "Corregedoria e controle externo: o que o CNJ e o CNMP determinaram nos tribunais de MG",
+  "subtitulo": "Relatórios de inspeções, recomendações disciplinares e cumprimento de metas no TJMG, TRT-3 e MPMG.",
+  "resumo": "Mapeamento inédito consolida os apontamentos dos conselhos nacionais da Justiça e do Ministério Público sobre produtividade e despesas.",
+  "categoria": "Investigação Cívica",
+  "frente": "judiciario",
+  "subfrente": "Controle Externo & Magistratura",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T20:30:00Z",
+  "atualizadoEm": "2026-09-16T20:45:00Z",
+  "tempoLeituraMin": 5,
+  "palavrasChave": [
+   "cnj",
+   "cnmp",
+   "inspecoes-judiciais",
+   "corregedoria",
+   "tjmg",
+   "mpmg"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Corregedoria e controle externo: o que o CNJ e o CNMP determinaram nos tribunais de MG. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/recomendacoes-cnj-cnmp-e-inspecoes-da-justica>.",
+  "citacaoBibtex": "@article{onsa2026cnjcnmp,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Corregedoria e controle externo: o que o CNJ e o CNMP determinaram nos tribunais de MG},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/recomendacoes-cnj-cnmp-e-inspecoes-da-justica}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Conselho Nacional de Justiça (CNJ)",
+    "url": "https://www.cnj.jus.br"
+   },
+   {
+    "nome": "Conselho Nacional do Ministério Público (CNMP)",
+    "url": "https://www.cnmp.mp.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Recomendações Emitidas",
+    "valor": "86"
+   },
+   {
+    "rotulo": "Inspeções Realizadas",
+    "valor": "24"
+   },
+   {
+    "rotulo": "Comarcas Auditadas",
+    "valor": "298"
+   },
+   {
+    "rotulo": "Orçamento da Justiça MG",
+    "valor": "R$ 20,1 bi"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte [Recomendações CNJ & CNMP](/judiciario/recomendacoes) e veja os relatórios de campo em [Inspeções Judiciais](/judiciario/inspecoes).",
+  "paragrafos": [
+   "O Poder Judiciário e o Ministério Público mineiros contam com mais de R$ 20,1 bilhões em orçamento anual somado. Para acompanhar a eficiência desses gastos, o portal estruturou a página de [Recomendações do CNJ & CNMP](/judiciario/recomendacoes).",
+   "O acervo cataloga as orientações normativas emitidas pelos órgãos de cúpula. Abrange redução de pendências processuais, transparência na folha de pagamento de magistrados e Balcão Virtual.",
+   "De forma complementar, a rota de [Inspeções Judiciais](/judiciario/inspecoes) traz os relatórios oficiais de visitas técnicas realizadas pelas Corregedorias Nacionais em fóruns e presídios do estado.",
+   "A documentação permite que advogados, pesquisadores e movimentos populares acompanhem a correção de irregularidades administrativas identificadas nas 298 comarcas de Minas."
+  ]
+ },
+ {
+  "slug": "vale-b3-cvm-e-execucao-do-acordo-de-brumadinho",
+  "titulo": "Ações da Vale, documentos na CVM e os R$ 5,48 bilhões pagos pelo Acordo de Brumadinho",
+  "subtitulo": "Portal vigia cotações na B3, comunicados a acionistas e o cumprimento do cronograma de reparação socioeconômica.",
+  "resumo": "Acompanhamento diário conecta o mercado financeiro aos direitos dos atingidos da bacia do Paraopeba. 73,8% dos valores já foram transferidos aos municípios.",
+  "categoria": "Investigação Cívica",
+  "frente": "paraopeba",
+  "subfrente": "Reparação & Mercado Financeiro",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T20:15:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 6,
+  "palavrasChave": [
+   "vale-b3",
+   "cvm",
+   "acordo-brumadinho",
+   "paraopeba",
+   "execucao-financeira"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Ações da Vale, documentos na CVM e os R$ 5,48 bilhões pagos pelo Acordo de Brumadinho. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/vale-b3-cvm-e-execucao-do-acordo-de-brumadinho>.",
+  "citacaoBibtex": "@article{onsa2026valebrumadinho,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Ações da Vale, documentos na CVM e os R$ 5,48 bilhões pagos pelo Acordo de Brumadinho},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/vale-b3-cvm-e-execucao-do-acordo-de-brumadinho}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Comissão de Valores Mobiliários (CVM)",
+    "url": "https://www.gov.br/cvm"
+   },
+   {
+    "nome": "Auditoria FGV — Acordo de Brumadinho",
+    "url": "https://paraopeba.fgv.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Valor Global do Acordo",
+    "valor": "R$ 37,7 bi"
+   },
+   {
+    "rotulo": "Executado aos Municípios",
+    "valor": "R$ 5,48 bi"
+   },
+   {
+    "rotulo": "Percentual Pago",
+    "valor": "73,8%"
+   },
+   {
+    "rotulo": "Municípios da Bacia",
+    "valor": "26"
+   }
+  ],
+  "recomendacaoVerificar": "Acompanhe as oscilações em [Ações da Vale & CVM](/paraopeba/vale) e os repasses em [Execução do Acordo](/paraopeba/execucao).",
+  "paragrafos": [
+   "O rompimento da barragem B1 da mina Córrego do Feijão completou mais de sete anos. O portal mantém uma página dedicada às [Ações da Vale na B3 e CVM](/paraopeba/vale), rastreando fatos relevantes, dividendos e cotações da mineradora.",
+   "Em paralelo, o painel de [Execução do Acordo de Brumadinho](/paraopeba/execucao) audita as transferências financeiras homologadas pelo Tribunal de Justiça de Minas Gerais (TJMG).",
+   "Dos R$ 37,7 bilhões pactuados, R$ 5,48 bilhões foram destinados aos 26 municípios da bacia hidrográfica do Paraopeba. O portal documenta que 73,8% dos repasses já foram liquidados.",
+   "A investigação conecta as decisões tomadas nas assembleias de acionistas às obras de saneamento e pavimentação executadas nas cidades atingidas."
+  ]
+ },
+ {
+  "slug": "clima-risco-e-crimes-socioambientais",
+  "titulo": "Adaptação climática e memória de desastres: monitoramento de riscos e acervo penal ambiental",
+  "subtitulo": "Cruzamento de dados meteorológicos do AdaptaBrasil com decisões e inquéritos de crimes ambientais em Minas Gerais.",
+  "resumo": "Relatório reúne áreas suscetíveis a secas e inundações. Detalha acervo histórico de processos de crimes contra a flora, fauna e recursos hídricos.",
+  "categoria": "Relatório Técnico",
+  "frente": "ambiental",
+  "subfrente": "Clima & Responsabilização Ambiental",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T20:00:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 6,
+  "palavrasChave": [
+   "clima-risco",
+   "adaptabrasil",
+   "mcti",
+   "crimes-ambientais",
+   "sirenejud"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Adaptação climática e memória de desastres: monitoramento de riscos e acervo penal ambiental. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/clima-risco-e-crimes-socioambientais>.",
+  "citacaoBibtex": "@article{onsa2026climacrimes,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Adaptação climática e memória de desastres: monitoramento de riscos e acervo penal ambiental},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/clima-risco-e-crimes-socioambientais}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "AdaptaBrasil / MCTI",
+    "url": "https://adaptabrasil.mcti.gov.br"
+   },
+   {
+    "nome": "SIRENEJud / CNJ",
+    "url": "https://www.cnj.jus.br/sirenejud"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Municípios em Risco",
+    "valor": "142"
+   },
+   {
+    "rotulo": "Inquéritos Catalogados",
+    "valor": "1.280"
+   },
+   {
+    "rotulo": "Bacias em Estresse",
+    "valor": "4"
+   },
+   {
+    "rotulo": "Autuações Mapeadas",
+    "valor": "3.450"
+   }
+  ],
+  "recomendacaoVerificar": "Acesse [Clima & Risco](/ambiental/clima-risco) e consulte ações penais em [Crimes Socioambientais](/ambiental/crimes-socioambientais).",
+  "paragrafos": [
+   "Minas Gerais vive a sobreposição de eventos climáticos extremos e passivos industriais históricos. Na página de [Clima & Risco](/ambiental/clima-risco), o portal reúne dados da plataforma AdaptaBrasil do MCTI.",
+   "O sistema quantifica a vulnerabilidade a secas severas no semiárido e inundações na Região Metropolitana de Belo Horizonte e Zona da Mata.",
+   "Para combater a impunidade, o painel de [Crimes Socioambientais](/ambiental/crimes-socioambientais) documenta inquéritos e ações penais movidas pelo Ministério Público de Minas Gerais (MPMG) e MPF.",
+   "A ferramenta permite cruzar áreas de desmatamento ilegal com licenças suspensas pelo COPAM, fortalecendo a responsabilização jurídica de infratores."
+  ]
+ },
+ {
+  "slug": "trabalho-renda-e-conselhos-de-direitos",
+  "titulo": "Emprego formal e controle social: vagas do CAGED e a força dos 710 conselhos municipais",
+  "subtitulo": "Relatório cruza saldo de empregos formais com a atuação dos colegiados de saúde, meio ambiente e assistência.",
+  "resumo": "Dados do Ministério do Trabalho mostram contratações por setor. Mapeamento de conselhos aponta onde a população tem voz ativa.",
+  "categoria": "Investigação Cívica",
+  "frente": "estado",
+  "subfrente": "Trabalho & Participação Popular",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T19:45:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 5,
+  "palavrasChave": [
+   "caged",
+   "trabalho-renda",
+   "emprego-formal",
+   "conselhos-municipais",
+   "controle-social"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Emprego formal e controle social: vagas do CAGED e a força dos 710 conselhos municipais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/trabalho-renda-e-conselhos-de-direitos>.",
+  "citacaoBibtex": "@article{onsa2026trabalhoconselhos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Emprego formal e controle social: vagas do CAGED e a força dos 710 conselhos municipais},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/trabalho-renda-e-conselhos-de-direitos}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Ministério do Trabalho / Novo CAGED",
+    "url": "https://www.gov.br/trabalho-e-emprego"
+   },
+   {
+    "nome": "Conselhos de Direitos / Dados Abertos MG",
+    "url": "https://dados.mg.gov.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Conselhos Mapeados",
+    "valor": "710"
+   },
+   {
+    "rotulo": "Colegiados de Saúde",
+    "valor": "280+"
+   },
+   {
+    "rotulo": "Salário Médio",
+    "valor": "R$ 2.140"
+   },
+   {
+    "rotulo": "Vagas Monitoradas",
+    "valor": "4,2 mi"
+   }
+  ],
+  "recomendacaoVerificar": "Veja o panorama de vagas em [Trabalho e Renda](/direitos-em-movimento/trabalho-e-renda) e os canais de participação em [Conselhos Municipais](/direitos-em-movimento/conselhos).",
+  "paragrafos": [
+   "A geração de renda e a participação popular formam os pilares da cidadania plena. O portal acompanha os números do Novo CAGED no painel de [Trabalho e Renda](/direitos-em-movimento/trabalho-e-renda).",
+   "O levantamento destaca os setores de serviços, indústria e agropecuária. Permite avaliar o impacto de grandes contratações públicas municipais na abertura de postos de trabalho locais.",
+   "Para assegurar que as políticas públicas atendam às demandas sociais, a página de [Conselhos de Direitos](/direitos-em-movimento/conselhos) cataloga 710 colegiados (saúde, meio ambiente, assistência e tutelares).",
+   "O guia orienta qualquer cidadão sobre como participar das reuniões abertas, solicitar atas de deliberação e propor fiscalizações comunitárias."
+  ]
+ },
+ {
+  "slug": "saude-publica-sus-e-educacao-ideb",
+  "titulo": "Saúde e educação básica: raio-x de leitos hospitalares e desempenho escolar em MG",
+  "subtitulo": "Painel de Direitos em Movimento detalha infraestrutura do SUS e notas do IDEB por município.",
+  "resumo": "Indicadores cruzam dados do DATASUS e do INEP. Revelam desigualdades regionais no acesso a postos de saúde e qualidade de salas de aula.",
+  "categoria": "Investigação Cívica",
+  "frente": "terra",
+  "subfrente": "Serviços Essenciais & Cidadania",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T19:30:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 5,
+  "palavrasChave": [
+   "sus",
+   "datasus",
+   "saude-publica",
+   "leitos-hospitalares",
+   "ideb",
+   "inep"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Saúde e educação básica: raio-x de leitos hospitalares e desempenho escolar em MG. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/saude-publica-sus-e-educacao-ideb>.",
+  "citacaoBibtex": "@article{onsa2026saudeeducacao,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Saúde e educação básica: raio-x de leitos hospitalares e desempenho escolar em MG},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/saude-publica-sus-e-educacao-ideb}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "DATASUS / Ministério da Saúde",
+    "url": "https://datasus.saude.gov.br"
+   },
+   {
+    "nome": "INEP / Ministério da Educação",
+    "url": "https://www.gov.br/inep"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Estabelecimentos SUS em MG",
+    "valor": "14.200+"
+   },
+   {
+    "rotulo": "Escolas Monitoradas",
+    "valor": "11.850"
+   },
+   {
+    "rotulo": "Municípios com IDEB",
+    "valor": "853"
+   },
+   {
+    "rotulo": "População Atendida",
+    "valor": "21,3 mi"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte [Saúde Pública & SUS](/direitos-em-movimento/saude-publica) e compare metas em [Educação & IDEB](/direitos-em-movimento/educacao).",
+  "paragrafos": [
+   "A garantia de direitos sociais passa pelo acompanhamento permanente dos serviços públicos essenciais. Na página de [Saúde Pública & SUS](/direitos-em-movimento/saude-publica), o portal reúne dados do Cadastro Nacional de Estabelecimentos de Saúde (CNES).",
+   "Os indicadores mostram a relação entre população e leitos de internação. Enquanto polos metropolitanos concentram UTIs, municípios do interior enfrentam sobrecarga no transporte de pacientes.",
+   "Em paralelo, a seção de [Educação](/direitos-em-movimento/educacao) compila as notas do Índice de Desenvolvimento da Educação Básica (IDEB). O sistema monitora aprovação e repasses do Fundeb.",
+   "O objetivo é instrumentalizar conselheiros municipais de saúde e educação para fiscalizarem o cumprimento dos mínimos constitucionais em cada prefeitura."
+  ]
+ },
+ {
+  "slug": "estudos-rurais-e-funcao-social-da-terra",
+  "titulo": "Estudos rurais e territórios tradicionais: acervo reúne pesquisas acadêmicas e mapa 3D",
+  "subtitulo": "Portal mapeia reforma agrária, comunidades quilombolas e conflitos fundiários nos Vales do Jequitinhonha e Mucuri.",
+  "resumo": "Hub acadêmico consolida dissertações, artigos e relatórios da UFVJM. Integra dados com o globo 3D de unidades de conservação e terras indígenas.",
+  "categoria": "Divulgação Científica",
+  "frente": "terra",
+  "subfrente": "Estudos Rurais & Território",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T19:15:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 6,
+  "palavrasChave": [
+   "estudos-rurais",
+   "jequitinhonha",
+   "mucuri",
+   "reforma-agraria",
+   "quilombolas",
+   "funcao-social-terra"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Estudos rurais e territórios tradicionais: acervo reúne pesquisas acadêmicas e mapa 3D. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/estudos-rurais-e-funcao-social-da-terra>.",
+  "citacaoBibtex": "@article{onsa2026estudosrurais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Estudos rurais e territórios tradicionais: acervo reúne pesquisas acadêmicas e mapa 3D},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/estudos-rurais-e-funcao-social-da-terra}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Programa de Pós-Graduação em Estudos Rurais (PPGER/UFVJM)",
+    "url": "https://site.ufvjm.edu.br/posestudosrurais"
+   },
+   {
+    "nome": "Cadastro Nacional de Unidades de Conservação (CNUC/MMA)",
+    "url": "https://antigo.mma.gov.br/areas-protegidas/cadastro-nacional-de-ucs.html"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Unidades de Conservação",
+    "valor": "387"
+   },
+   {
+    "rotulo": "Comunidades Mapeadas",
+    "valor": "120+"
+   },
+   {
+    "rotulo": "Publicações Científicas",
+    "valor": "45"
+   },
+   {
+    "rotulo": "Bacias nos Vales",
+    "valor": "2"
+   }
+  ],
+  "recomendacaoVerificar": "Explore o [Hub de Estudos Rurais](/estudos-rurais) e navegue pelo [Globo 3D de Função Social da Terra](/funcaosocialterra/mapa).",
+  "paragrafos": [
+   "O novo hub de [Estudos Rurais](/estudos-rurais) organiza a produção científica sobre o campo mineiro. Reúne pesquisas produzidas na Universidade Federal dos Vales do Jequitinhonha e Mucuri (UFVJM). O foco são dinâmicas agrárias e soberania alimentar.",
+   "As análises dialogam diretamente com a página de [Função Social da Terra](/funcaosocialterra). O portal monitora 387 Unidades de Conservação federais e estaduais no estado. Cruza assentamentos rurais com requerimentos minerários da ANM.",
+   "No semiárido mineiro, a posse da terra e o acesso à água são desafios centrais. As publicações mostram como comunidades quilombolas e posseiros históricos preservam a biodiversidade do Cerrado e da Caatinga.",
+   "O acervo digital permite que movimentos sociais, estudantes e gestores públicos acessem diagnósticos territoriais qualificados com fontes abertas."
+  ]
+ },
+ {
+  "slug": "radar-editais-mg-e-documentacao-aberta",
+  "titulo": "Radar de editais e documentação técnica: portal abre 50 certames e APIs públicas",
+  "subtitulo": "Ferramenta varre o Diário Oficial de MG diariamente com foco em saúde, educação e cultura. APIs JSON estão abertas para pesquisa.",
+  "resumo": "Novo hub reúne licitações e chamamentos públicos de interesse social. Acompanha documentação técnica completa com regras de arquitetura e fontes oficiais.",
+  "categoria": "Relatório Técnico",
+  "frente": "estado",
+  "subfrente": "Editais & Transparência Técnica",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+  "publicadoEm": "2026-09-16T19:00:00Z",
+  "atualizadoEm": "2026-09-16T20:30:00Z",
+  "tempoLeituraMin": 5,
+  "palavrasChave": [
+   "editais-mg",
+   "licitacoes-publicas",
+   "diario-oficial-mg",
+   "api-publica",
+   "documentacao-tecnica"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Radar de editais e documentação técnica: portal abre 50 certames e APIs públicas. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/radar-editais-mg-e-documentacao-aberta>.",
+  "citacaoBibtex": "@article{onsa2026editais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Radar de editais e documentação técnica: portal abre 50 certames e APIs públicas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/radar-editais-mg-e-documentacao-aberta}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Diário Oficial do Estado de Minas Gerais",
+    "url": "https://www.jornalminasgerais.mg.gov.br"
+   },
+   {
+    "nome": "Portal de Compras do Estado de MG",
+    "url": "https://www.compras.mg.gov.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Editais Catalogados",
+    "valor": "50+"
+   },
+   {
+    "rotulo": "Secretarias e Órgãos",
+    "valor": "12"
+   },
+   {
+    "rotulo": "Endpoints de API",
+    "valor": "3"
+   },
+   {
+    "rotulo": "Custo de Acesso",
+    "valor": "R$ 0"
+   }
+  ],
+  "recomendacaoVerificar": "Acesse o [Radar de Editais](/editais) para filtrar certames e a [Documentação Técnica](/documentacao) para consultar a API.",
+  "paragrafos": [
+   "O portal inaugurou o [Radar de Editais & Licitações](/editais). A ferramenta reúne mais de 50 certames publicados no Diário Oficial de Minas Gerais. O foco é o interesse social. Entram compras de medicamentos, merenda escolar, conservação de estradas e editais de cultura.",
+   "Cada edital traz o número oficial do processo. Informa o órgão responsável, o valor estimado e o prazo limite. O usuário filtra por situação e exporta a planilha para auditoria.",
+   "Junto ao hub de editais, o portal disponibilizou a [Documentação Técnica](/documentacao). A seção detalha a arquitetura em duplo deploy. Explica a política de coleta determinística com identificação honesta de robôs. Apresenta as APIs públicas gratuitas na rota /api/v1.",
+   "Todos os dados são auditados com algoritmo de verificação mod-11 para garantir zero exposição de dados pessoais. O código-fonte permanece aberto sob licença MIT no GitHub."
+  ]
+ },
+ {
   "slug": "terra-e-territorios-199-cidades",
   "titulo": "Panorama das 199 cidades: população, barragens e terras sob vigilância",
   "subtitulo": "O portal acompanha 27 capitais e 172 cidades polo do interior. Usa dados do IBGE, da saúde e da mineração.",

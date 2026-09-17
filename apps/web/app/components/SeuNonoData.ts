@@ -100,7 +100,7 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Como é medido o déficit habitacional urbano?",
             resposta:
               "O cálculo envolve coabitação familiar, ônus excessivo com aluguel e habitações precárias mapeadas pelo IBGE e Fundação João Pinheiro.",
-            link: { href: "/direitos-em-movimento/moradia", texto: "Painel de Moradia" },
+            link: { href: "/funcaosocialterra", texto: "Função Social da Terra & Moradia" },
           },
           {
             id: "prevencao-remocoes",
@@ -694,7 +694,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       "Proposições em tramitação",
     ],
     links: [
-      { href: "/betim/vereadores", texto: "Vereadores" },
+      { href: "/betim/camara", texto: "Câmara & Vereadores" },
       { href: "/betim/camara/votacoes", texto: "Votações" },
       { href: "/betim/camara/legislacao", texto: "Legislação" },
     ],
@@ -711,7 +711,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     ],
     links: [
       { href: "/diamantina/indice", texto: "Índice de Diamantina" },
-      { href: "/diamantina/diario-oficial", texto: "Diário Oficial" },
+      { href: "/diamantina/prefeitura/diario", texto: "Diário Oficial" },
     ],
   },
   {

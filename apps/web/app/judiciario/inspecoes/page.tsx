@@ -78,7 +78,7 @@ export default function PaginaInspecoesJudiciario() {
             &ldquo;Saber quem ocupa a cadeira do tribunal é importante; saber se o tribunal funciona para quem não tem dinheiro para pagar advogado particular é o que decide a justiça real.&rdquo;
           </p>
           <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz de Transparência Institucional (PLANO-TRANSPARENCIA-JUSTICA.md)
+            — Diretriz de Transparência Institucional do Controle Popular
           </p>
         </div>
       </header>

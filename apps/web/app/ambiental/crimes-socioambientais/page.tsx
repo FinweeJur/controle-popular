@@ -44,7 +44,7 @@ export default function PaginaCrimesSocioambientais() {
 
         <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
           <p>&ldquo;Memória não prescreve. Documentar o que a perícia mediu e o que a justiça homologou é a única garantia de que o dano não seja apagado pelo tempo.&rdquo;</p>
-          <p className="mt-1 text-xs not-italic font-medium text-foreground">— Diretriz Editorial ONSA (PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md)</p>
+          <p className="mt-1 text-xs not-italic font-medium text-foreground">— Diretriz Editorial ONSA — Observatório Nacional Socioambiental</p>
         </div>
       </header>
 

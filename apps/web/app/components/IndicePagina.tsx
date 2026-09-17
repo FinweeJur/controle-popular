@@ -82,51 +82,53 @@ export default function IndicePagina({
   if (secoes.length < 2) return null;
 
   return (
-    <nav
-      aria-label={titulo}
-      className="my-6 rounded-xl border border-border bg-surface-2/60 p-4 transition-all"
-    >
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => setAberto(!aberto)}
-          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground focus:outline-none"
-          aria-expanded={aberto}
-        >
-          <List className="h-4 w-4 text-primary" />
-          <span>{titulo} ({secoes.length})</span>
-          <ChevronDown
-            className={`h-3.5 w-3.5 transition-transform ${
-              aberto ? "rotate-180" : ""
-            }`}
-          />
-        </button>
-      </div>
+    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 my-8">
+      <nav
+        aria-label={titulo}
+        className="rounded-2xl border border-border bg-surface-2/80 p-5 sm:p-6 shadow-sm backdrop-blur transition-all"
+      >
+        <div className="flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => setAberto(!aberto)}
+            className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground focus:outline-none cursor-pointer"
+            aria-expanded={aberto}
+          >
+            <List className="h-4 w-4 text-primary" />
+            <span>{titulo} ({secoes.length})</span>
+            <ChevronDown
+              className={`h-3.5 w-3.5 transition-transform ${
+                aberto ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
 
-      {aberto && (
-        <ol className="mt-3 space-y-1.5 border-t border-border pt-3 text-sm">
-          {secoes.map((s) => {
-            const isAtivo = secaoAtiva === s.id;
-            return (
-              <li
-                key={s.id}
-                className={`${s.nivel === 3 ? "pl-4 text-xs" : "text-sm"}`}
-              >
-                <a
-                  href={`#${s.id}`}
-                  className={`inline-block transition-colors hover:text-primary ${
-                    isAtivo
-                      ? "font-semibold text-primary underline underline-offset-4"
-                      : "text-muted"
-                  }`}
+        {aberto && (
+          <ol className="mt-4 space-y-2 border-t border-border pt-4 text-sm">
+            {secoes.map((s) => {
+              const isAtivo = secaoAtiva === s.id;
+              return (
+                <li
+                  key={s.id}
+                  className={`${s.nivel === 3 ? "pl-5 text-xs" : "text-sm"}`}
                 >
-                  {s.titulo}
-                </a>
-              </li>
-            );
-          })}
-        </ol>
-      )}
-    </nav>
+                  <a
+                    href={`#${s.id}`}
+                    className={`inline-block transition-colors hover:text-primary ${
+                      isAtivo
+                        ? "font-semibold text-primary underline underline-offset-4"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {s.titulo}
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        )}
+      </nav>
+    </div>
   );
 }

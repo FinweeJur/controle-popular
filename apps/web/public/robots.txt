@@ -1,0 +1,105 @@
+﻿# Controle Popular -- Politica de Crawling
+# controlepopular.com.br
+# Atualizado em: 2026-09-16
+#
+# Este portal republica dado publico oficial para fins de transparencia civica.
+# A coleta automatizada e bem-vinda para pesquisa sem fins comerciais, desde
+# que respeite os direitos humanos, a privacidade das pessoas e as restricoes
+# abaixo.
+#
+# AUTORIZADOS: buscadores de pesquisa publica, arquivadores de acesso aberto
+#              (Internet Archive/Wayback Machine), pesquisadores academicos
+#              sem fins comerciais.
+#
+# VEDADOS: coleta para treinamento de modelos comerciais de IA; raspagem para
+#          vigilancia, perfilamento ou identificacao de pessoas; revenda de dado.
+#
+# Crawl-delay recomendado: 2 segundos entre requisicoes.
+# API publica JSON (sem autenticacao): https://controlepopular.com.br/api/v1/
+# Sitemap: https://controlepopular.com.br/sitemap.xml
+#
+# PRINCIPAIS PAGINAS
+# ------------------
+# /                    - Pagina inicial: 199 cidades estrategicas de MG
+# /betim               - Betim: diario oficial, contratos, licencas
+# /brumadinho          - Brumadinho: Acordo Samarco, execucao, reparacao
+# /congresso           - Congresso Nacional: votacoes, gastos, projetos
+# /judiciario          - Judiciario: decisoes, inspecoes, LAI
+# /ambiental           - Ambiental: TACs, licenciamento, legislacao, COPAM
+# /paraopeba           - Paraopeba: repasses, acordo, qualidade da agua
+# /funcaosocialterra   - Funcao Social da Terra: UCs, assentamentos, mapa 3D
+# /editais             - Radar de Editais do Diario Oficial de MG
+# /estudos-rurais      - Estudos rurais e territoriais
+# /busca               - Busca global no portal
+# /imprensa            - Material para jornalistas com numeros-chave
+# /blog                - Blog editorial do portal
+# /documentacao        - Documentacao tecnica publica do portal
+# /termos              - Termos de uso e politica de privacidade
+# /api/v1/             - API publica (JSON, sem autenticacao)
+#
+# FORMATO TECNICO
+# ---------------
+# Framework: Next.js 16, output export + standalone (duplo deploy)
+# Deploy: Cloudflare Workers (OpenNext) + Guara Cloud (Docker, br-gru)
+# Sitemap automatico: /sitemap.xml  |  Feed RSS: /blog/feed.xml
+
+# -- Bots de IA (treinamento comercial) -- BLOQUEADOS
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# -- Buscadores de pesquisa publica -- BEM-VINDOS
+User-agent: Googlebot
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+# -- Internet Archive (Wayback Machine) -- BEM-VINDO
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 5
+
+# -- Regra geral
+User-agent: *
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+Sitemap: https://controlepopular.com.br/sitemap.xml
+Host: https://controlepopular.com.br

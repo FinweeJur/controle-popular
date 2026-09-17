@@ -106,7 +106,7 @@ export default function PaginaBasesClimaRisco() {
             &ldquo;Não é só onde o risco está, é quantas pessoas vivem lá. Índice composto não é medida: contagem bruta (gente exposta, domicílios, milímetros de chuva) é fato mensurável, enquanto o modelo apenas contextualiza.&rdquo;
           </p>
           <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz Editorial de Vulnerabilidade e Risco (PLANO-BASES-CLIMA-E-RISCO.md)
+            — Diretriz Editorial de Vulnerabilidade e Risco Socioambiental
           </p>
         </div>
       </header>

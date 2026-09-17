@@ -61,7 +61,7 @@ export default async function Home() {
           <h2 className="font-display text-xl font-semibold">Fonte de dados não configurada</h2>
           <p className="mt-2 opacity-80">
             O banco ainda não está acessível — falta a variável{" "}
-            <code>DATABASE_URL</code>. Veja <code>README.md</code> na raiz do repositório.
+            <code>DATABASE_URL</code>. Consulte as instruções de configuração técnica.
           </p>
         </section>
       ) : (
