@@ -71,7 +71,7 @@ def telegram(msg: str) -> None:
 
 
 def tamanho_kb(arquivo: Path) -> int:
-    return arquivo.stat().st_bytes // 1024 if arquivo.exists() else 0
+    return arquivo.stat().st_size // 1024 if arquivo.exists() else 0
 
 
 def contar_linhas(arquivo: Path) -> int:
