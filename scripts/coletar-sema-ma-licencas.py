@@ -153,6 +153,13 @@ def _get(url: str, timeout: int = 180) -> str:
                     sys.exit(2)
             else:
                 raise
+        except (urllib.error.URLError, ConnectionResetError, TimeoutError) as e:
+            tent += 1
+            if tent <= 3:
+                print(f"  [!] Erro de conexão ({e}) — tentando novamente em 5s ({tent}/3)...")
+                time.sleep(5)
+            else:
+                raise
 
 
 # ---------------------------------------------------------------------------
@@ -409,6 +416,8 @@ def _paginar(termo: str, grupo: str, total: int, ckpt: dict, limite: int) -> "li
                 ckpt["chunks"].discard(chave)
         b = _buscar(termo, sid)
         nr = _chunk_para_registros(b.get("es_html") or "")
+        if not nr:
+            break
         arq.parent.mkdir(parents=True, exist_ok=True)
         arq.write_text(json.dumps(nr, ensure_ascii=False), encoding="utf-8")
         ckpt["chunks"].append(chave)
