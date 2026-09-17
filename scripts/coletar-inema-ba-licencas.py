@@ -372,7 +372,7 @@ def _paginar(q: str, grupo: str, total: int, ckpt: dict, limite: int) -> list[di
     """Baixa páginas ES (10 docs/página, 1 doc = 1 página do DOE), extraindo registros.
 
     --limit conta DOCS ES baixados (aprox. registros ~2-6x maior)."""
-    alvo = total if limite == 0 else min(total, limite)
+    alvo = total if not limite else min(total, limite)
     regs: list[dict] = []
     n_pags = (alvo + POR_PAGINA - 1) // POR_PAGINA
     base = re.sub(r"[^A-Za-z0-9]", "_", q)

@@ -208,6 +208,10 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
               # validate-docbr citado no docstring de _cpf_confirmado) — passa no
               # mod-11 por coincidência, é município, não CPF.
               "00003106705",
+              # números de processo ANA (outorgas) — passam mod-11 por coincidência,
+              # são protocolo, não CPF de pessoa real.
+              "05042570640", "23010001762", "16201000968", "23010000103",
+              "93015091999", "99059511999", "16201001425", "16153332668",
               # fixtures do teste adversarial de extração do diário
               # (lib/diario/extrairEntidades.adversarial.test.ts): CPFs sintéticos
               # válidos por mod-11, constantes de teste, não pessoa real.

@@ -176,7 +176,7 @@ def _salvar_checkpoint(ckpt: dict) -> None:
 
 def _paginar(limite: int, ckpt: dict, total: int) -> list[list]:
     """Baixa página a página (50/página, pausa 2s), retomando do checkpoint."""
-    alvo = total if limite == 0 else min(total, limite)
+    alvo = total if not limite else min(total, limite)
     n_pags = (alvo + POR_PAGINA - 1) // POR_PAGINA
     registros: list[list] = []
     for pag in range(1, n_pags + 1):

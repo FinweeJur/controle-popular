@@ -10,9 +10,9 @@ import {
 import TabelaLicencas from "./TabelaLicencas";
 
 export const metadata: Metadata = {
-  title: "Licenças e outorgas ambientais — Brasil e estados | Controle Popular",
+  title: "Licenças, outorgas e infrações ambientais — Brasil e 15 estados | Controle Popular",
   description:
-    "Licenças do IBAMA, outorgas de água da ANA e de MG (IGAM), licenças e autos de infração da SEMA-MT. Filtro por estado, ano, órgão, empresa e período, com CSV.",
+    "Feed unificado: IBAMA, ANA, IGAM (MG), SEMA-MT, INEMA-BA, SEMAS-PA, SEMA-MA, SEMAD-GO, FEPAM-RS, SEMARH-PI, IMASUL-MS, IEMA/AGERH-ES, SEDAM-RO, IBRAM-DF, CETESB-SP, IAT-PR e IMA-SC. Filtros por estado, ano, órgão, bacia, tags, microresumos e CSV.",
 };
 
 const LABEL_CATEGORIA: Record<string, string> = {
@@ -42,7 +42,7 @@ function GraficoAno({ porAno }: { porAno: Record<string, number> }): ReactElemen
   return (
     <figure className="rounded-xl border border-[var(--cp-border)] p-4">
       <figcaption className="mb-2 text-sm font-semibold">
-        Licenças e outorgas por ano de início
+        Licenças, outorgas e autos por ano
         <span className="ml-2 text-xs font-normal opacity-70">
           cadastro por origem — órgãos não se somam
         </span>
@@ -80,15 +80,15 @@ export default function PaginaLicencas(): ReactElement {
   return (
     <div className="mx-auto max-w-5xl space-y-6 px-4 py-10">
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Licenças e outorgas ambientais</h1>
+        <h1 className="font-display text-3xl font-bold">Licenças, outorgas e infrações ambientais</h1>
         <p className="max-w-3xl opacity-80">
-          Feed unificado: IBAMA (licenças DILIC), ANA (outorgas de água), IGAM
-          (outorga de MG) e SEMA-MT (licenças, autos de infração e embargos).
+          Feed unificado nacional e estadual: IBAMA, ANA, IGAM (MG), SEMA-MT, INEMA-BA, SEMAS-PA, SEMA-MA, SEMAD-GO, FEPAM-RS, SEMARH-PI, IMASUL-MS, IEMA/AGERH-ES, SEDAM-RO, IBRAM-DF, CETESB-SP, IAT-PR e IMA-SC.
           <Link href="/ambiental" className="ml-2 underline">
             volta ao Meio Ambiente
           </Link>
         </p>
       </header>
+
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Cartao

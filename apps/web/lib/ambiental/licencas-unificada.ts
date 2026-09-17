@@ -15,15 +15,115 @@
  * auto_infracao/embargo), tipo (tag), empresa, municipio, bacia,
  * data_inicio, data_fim, situacao, processo.
  */
-import ibama from "@/data/ibama-licencas.json";
-import ibamaAutos from "@/data/ibama-autos-infracao.json";
-import ana from "@/data/ana-outorgas.json";
-import igam from "@/data/igam-outorgas.json";
-import semaMt from "@/data/sema-mt-licencas.json";
-import inemaBa from "@/data/inema-ba-licencas.json";
-import semaMa from "@/data/sema-ma-licencas.json";
-import semasPa from "@/data/semas-pa-licencas.json";
-import semadGo from "@/data/semad-go-licencas.json";
+import { readFileSync, existsSync } from "node:fs";
+import path from "node:path";
+
+
+
+interface ArquivoLicencasRaw {
+  total?: number;
+  total_disponivel?: number;
+  truncado?: boolean;
+  gerado_em?: string;
+  ressalva_editorial?: string;
+  colunas?: string[];
+  linhas?: (LinhaBruta | (string | number | null)[])[];
+}
+
+function carregarDataJson(nome: string, maxLinhas: number = 500): ArquivoLicencasRaw {
+  const caminhos = [
+    path.resolve(process.cwd(), "apps", "web", "data", nome),
+    path.resolve(process.cwd(), "data", nome),
+  ];
+  for (const c of caminhos) {
+    if (existsSync(c)) {
+      try {
+        const conteudo = readFileSync(c, "utf-8");
+        const dado = JSON.parse(conteudo) as ArquivoLicencasRaw;
+        if (Array.isArray(dado.linhas) && dado.linhas.length > maxLinhas) {
+          return {
+            ...dado,
+            linhas: dado.linhas.slice(0, maxLinhas),
+          };
+        }
+        return dado;
+      } catch {
+        return { total: 0, linhas: [] };
+      }
+    }
+  }
+  return { total: 0, linhas: [] };
+}
+
+/** Carrega JSON já normalizado (coletores Onda 2: campos completos incluindo
+ *  microresumo e tags). maxLinhas limita a janela por bundle (Rule 1).
+ *  Os totais reais ficam no meta para uso em LICENCAS_COBERTURA. */
+interface ArquivoNormalizadoRaw {
+  total?: number;
+  total_disponivel?: number;
+  truncado?: boolean;
+  ressalva_editorial?: string;
+  gerado_em?: string;
+  linhas?: LinhaLicencaUnificada[];
+}
+
+function carregarLinhasNormalizadas(
+  nome: string,
+  maxLinhas: number = 300,
+): { linhas: LinhaLicencaUnificada[]; meta: ArquivoNormalizadoRaw } {
+  const caminhos = [
+    path.resolve(process.cwd(), "apps", "web", "data", nome),
+    path.resolve(process.cwd(), "data", nome),
+  ];
+  for (const c of caminhos) {
+    if (existsSync(c)) {
+      try {
+        const dado = JSON.parse(readFileSync(c, "utf-8")) as ArquivoNormalizadoRaw;
+        const todas = (dado.linhas ?? []).map((l) => {
+          const lAny = l as LinhaLicencaUnificada & { valor_multa?: number | string | null };
+          const porte = l.porte ?? inferirPorte(null, null, l.tipo, l.microresumo, l.tags);
+          const valor = l.valor_investimento ?? extrairValor(lAny.valor_multa, l.microresumo);
+          const tamanho = l.tamanho_detalhe ?? extrairTamanho(null, null, l.tipo, l.microresumo);
+          return {
+            ...l,
+            porte,
+            valor_investimento: valor,
+            tamanho_detalhe: tamanho,
+          };
+        });
+        return {
+          linhas: todas.length > maxLinhas ? todas.slice(0, maxLinhas) : todas,
+          meta: dado,
+        };
+      } catch {
+        return { linhas: [], meta: {} };
+      }
+    }
+  }
+  return { linhas: [], meta: {} };
+}
+
+const ibama = carregarDataJson("ibama-licencas.json");
+const ibamaAutos = carregarDataJson("ibama-autos-infracao.json");
+const igam = carregarDataJson("igam-outorgas.json");
+const semaMt = carregarDataJson("sema-mt-licencas.json");
+const inemaBa = carregarDataJson("inema-ba-licencas.json");
+const semaMa = carregarDataJson("sema-ma-licencas.json");
+const semasPa = carregarDataJson("semas-pa-licencas.json");
+const semadGo = carregarDataJson("semad-go-licencas.json");
+const ana = carregarDataJson("ana-outorgas.json", 1000);
+
+// --- Onda 2: arquivos já no formato LinhaLicencaUnificada com microresumo + tags.
+// maxLinhas=300 por fonte → janela do cliente, não o acervo real (Rule 1 AGENTS.md).
+const { linhas: linhasFepamRs, meta: metaFepamRs } = carregarLinhasNormalizadas("fepam-rs-licencas.json");
+const { linhas: linhasSemarPi, meta: metaSemarPi } = carregarLinhasNormalizadas("semar-pi-licencas.json");
+const { linhas: linhasImasulMs, meta: metaImasulMs } = carregarLinhasNormalizadas("imasul-ms-licencas.json");
+const { linhas: linhasIemaEs, meta: metaIemaEs } = carregarLinhasNormalizadas("iema-es-licencas.json");
+const { linhas: linhasSedamRo, meta: metaSedamRo } = carregarLinhasNormalizadas("sedam-ro-licencas.json");
+const { linhas: linhasIbramDf, meta: metaIbramDf } = carregarLinhasNormalizadas("ibram-df-licencas.json");
+const { linhas: linhasCetesbSp, meta: metaCetesbSp } = carregarLinhasNormalizadas("cetesb-sp-licencas.json");
+const { linhas: linhasIatPr, meta: metaIatPr } = carregarLinhasNormalizadas("iat-pr-licencas.json");
+const { linhas: linhasImaSc, meta: metaImaSc } = carregarLinhasNormalizadas("ima-sc-licencas.json");
 
 export interface LinhaLicencaUnificada {
   orgao: string;
@@ -38,6 +138,11 @@ export interface LinhaLicencaUnificada {
   data_fim: string | null;
   situacao: string | null;
   processo: string;
+  valor_investimento?: number | null;
+  porte?: string | null;
+  tamanho_detalhe?: string | null;
+  microresumo?: string | null;
+  tags?: string[];
 }
 
 export interface CoberturaLicencas {
@@ -77,6 +182,71 @@ function primeiraPalavra(valor: string | null, padrao: string): string {
   return valor.replace(/[^\w ]/g, " ").trim().split(/\s+/)[0] || padrao;
 }
 
+/** Extrai ou infere o porte do empreendimento a partir de classe, PAC, tipo ou texto. */
+export function inferirPorte(
+  clas?: string | null,
+  pac?: string | null,
+  tipo?: string | null,
+  microresumo?: string | null,
+  tags?: string[]
+): string {
+  if (pac === "1" || pac === "SIM" || /pac/i.test(pac ?? "")) return "Excepcional / PAC";
+
+  const textoComb = `${clas ?? ""} ${tipo ?? ""} ${microresumo ?? ""} ${(tags ?? []).join(" ")}`.toLowerCase();
+
+  if (/classe\s*[56]|grande\s*porte|excepcional|mega|miner|petr[oó]leo|siderurg|rodovia|ferrovia|porto|barragem|aeroporto|hidrel[eé]trica/i.test(textoComb)) {
+    return "Grande Porte";
+  }
+  if (/classe\s*[34]|m[eé]dio\s*porte|loteamento|posto\s*de\s*combust|frigor[ií]fico|ind[uú]stria|usina|irrig/i.test(textoComb)) {
+    return "Médio Porte";
+  }
+  if (/classe\s*[12]|pequeno\s*porte|simplificad|las|dlae/i.test(textoComb)) {
+    return "Pequeno Porte";
+  }
+  if (/dispensa|inclus[aã]o.*ve[ií]culo|transporte|micro/i.test(textoComb)) {
+    return "Micro / Dispensado";
+  }
+  return "Não classificado";
+}
+
+/** Extrai valor numérico monetário em R$ se presente no registro ou texto. */
+export function extrairValor(
+  valorDireto?: number | string | null,
+  textoBusca?: string | null
+): number | null {
+  if (typeof valorDireto === "number" && !isNaN(valorDireto) && valorDireto > 0) {
+    return valorDireto;
+  }
+  if (typeof valorDireto === "string") {
+    const num = parseFloat(valorDireto.replace(/[^\d.,]/g, "").replace(",", "."));
+    if (!isNaN(num) && num > 0) return num;
+  }
+  if (textoBusca) {
+    const m = /R\$\s*([\d.]+,\d{2}|\d+[\.,]\d+|\d+)/i.exec(textoBusca);
+    if (m) {
+      const limpo = m[1].replace(/\./g, "").replace(",", ".");
+      const v = parseFloat(limpo);
+      if (!isNaN(v) && v > 0) return v;
+    }
+  }
+  return null;
+}
+
+/** Extrai detalhes de tamanho (área, vazão, classe, etc.). */
+export function extrairTamanho(
+  clas?: string | null,
+  parametros?: string | null,
+  tipo?: string | null,
+  microresumo?: string | null
+): string | null {
+  if (parametros && parametros.trim() && parametros.trim() !== "—") return parametros.trim();
+  if (clas && /classe/i.test(clas)) return clas.trim();
+
+  const m = /(\d+(?:[.,]\d+)?\s*(?:ha|m[²2]|m[³3]\/h|m[³3]\/dia|l\/s|cab|km|MW))/i.exec(`${tipo ?? ""} ${microresumo ?? ""}`);
+  if (m) return m[1];
+  return null;
+}
+
 /** Converte um bloco bruto em linhas unificadas. */
 function unificar(
   orgao: string,
@@ -91,6 +261,9 @@ function unificar(
     bacia: string | null;
     situacao: string | null;
     processo: string;
+    valor_investimento?: number | null;
+    porte?: string | null;
+    tamanho_detalhe?: string | null;
   },
   linhas: LinhaBruta[],
 ): LinhaLicencaUnificada[] {
@@ -107,8 +280,9 @@ function unificar(
 
 const linhasIbama: LinhaLicencaUnificada[] = unificar("IBAMA", "licenca", (linha) => {
   const tipo = texto(linha.tipol) ?? "Licença";
+  const pac = texto(linha.pac);
   return {
-    uf: null, // fonte DILIC não traz UF — registros por município chegam no ETL existente
+    uf: null,
     data_inicio: dataIso(texto(linha.dt_emi)),
     data_fim: dataIso(texto(linha.dt_ven)),
     tipo,
@@ -117,64 +291,97 @@ const linhasIbama: LinhaLicencaUnificada[] = unificar("IBAMA", "licenca", (linha
     bacia: null,
     situacao: "Emitida pelo IBAMA",
     processo: texto(linha.proc) ?? texto(linha.lic) ?? "s/n",
+    porte: inferirPorte(null, pac, tipo, null, ["ibama"]),
+    tamanho_detalhe: pac === "SIM" || pac === "1" ? "PAC — Programa de Aceleração do Crescimento" : null,
   };
 }, (ibama as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
 const linhasAna: LinhaLicencaUnificada[] = unificar("ANA", "outorga", (linha) => {
   const uso = texto(linha.uso) ?? "Uso";
   const tipoOutorga = texto(linha.tipo_outorga) ?? "Outorga";
+  const tipoTexto = `${tipoOutorga} — ${uso}`;
   return {
     uf: texto(linha.uf),
     data_inicio: dataIso(texto(linha.dt_ini)),
     data_fim: dataIso(texto(linha.dt_fim)),
-    tipo: `${tipoOutorga} — ${uso}`,
+    tipo: tipoTexto,
     empresa: texto(linha.titular) ?? texto(linha.emp),
     municipio: texto(linha.mun),
-    // ANA usa "Região Hidrográfica do X"; o prefixo nacional não ajuda
-    // no filtro — deixo só o nome. IGAM usa URGA (vocabulário próprio).
     bacia: texto(linha.bacia)?.replace(/^Região hidrográfica do\s+/i, "") ?? null,
     situacao: texto(linha.valida) === "1" ? "Vigente" : null,
     processo: texto(linha.proc) ?? "s/n",
+    porte: inferirPorte(null, null, tipoTexto, uso, ["ana", "outorga"]),
+    tamanho_detalhe: `Captação: ${uso}`,
   };
 }, (ana as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
+function normalizarBaciaIgam(urga: string | null): string | null {
+  if (!urga) return null;
+  const u = urga.toUpperCase();
+  if (u.includes("SM") || u.includes("MUCURI") || u.includes("MATEUS")) return "Rio Mucuri / São Mateus";
+  if (u.includes("DOCE")) return "Rio Doce";
+  if (u.includes("GRANDE")) return "Rio Grande";
+  if (u.includes("PARANAÍBA") || u.includes("PARANAIBA")) return "Rio Paranaíba";
+  if (u.includes("PARAÍBA") || u.includes("PARAIBA")) return "Rio Paraíba do Sul";
+  if (u.includes("JEQUITINHONHA") || u.includes("PARDO")) return "Rio Jequitinhonha";
+  if (u.includes("SF") || u.includes("CENTRAL") || u.includes("VELHAS") || u.includes("PARAOPEBA") || u.includes("FRANCISCO")) return "Rio São Francisco";
+  return urga;
+}
+
+const igamRaw = igam as unknown as { colunas?: string[]; linhas?: (LinhaBruta | (string | number | null)[])[] };
+const linhasIgamBrutas: LinhaBruta[] = (igamRaw.linhas ?? []).map((l) => {
+  if (Array.isArray(l) && igamRaw.colunas) {
+    const obj: LinhaBruta = {};
+    igamRaw.colunas.forEach((col, idx) => {
+      obj[col] = l[idx] ?? null;
+    });
+    return obj;
+  }
+  return l as LinhaBruta;
+});
+
 const linhasIgam: LinhaLicencaUnificada[] = unificar("IGAM (MG)", "outorga", (linha) => {
   const tipoUso = texto(linha.tipo_uso) ?? "Uso";
+  const tipoTexto = `Outorga — ${primeiraPalavra(tipoUso, "uso")}`;
   return {
     uf: "MG",
     data_inicio: null,
     data_fim: dataIso(texto(linha.data_publicacao)),
-    tipo: `Outorga — ${primeiraPalavra(tipoUso, "uso")}`,
+    tipo: tipoTexto,
     empresa: texto(linha.empreendimento),
     municipio: null,
-    bacia: texto(linha.regional),
+    bacia: normalizarBaciaIgam(texto(linha.regional)),
     situacao: texto(linha.situacao),
     processo: texto(linha.portaria) ?? "s/n",
+    porte: inferirPorte(null, null, tipoTexto, tipoUso, ["igam", "mg"]),
+    tamanho_detalhe: `Uso: ${tipoUso}`,
   };
-}, (igam as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
+}, linhasIgamBrutas);
 
 const linhasMt: LinhaLicencaUnificada[] = unificar("SEMA (MT)", "licenca", (linha) => {
   const clasp = texto(linha.clas) ?? "licenca";
   const categoria = clasp.includes("infracao") ? "auto_infracao" : clasp.includes("embargo") ? "embargo" : "licenca";
+  const tipo = texto(linha.documento) ?? texto(linha.tipo) ?? "Licença";
+  const params = texto(linha.parametros);
   return {
     uf: texto(linha.uf) ?? "MT",
     data_inicio: dataIso(texto(linha.data_emissao)),
     data_fim: dataIso(texto(linha.data_validade)),
-    tipo: texto(linha.documento) ?? texto(linha.tipo) ?? "Licença",
+    tipo,
     empresa: texto(linha.empresa),
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
     processo: texto(linha.processo) ?? "s/n",
+    porte: inferirPorte(clasp, null, tipo, params, ["sema", "mt"]),
+    tamanho_detalhe: extrairTamanho(clasp, params, tipo, null),
   };
 }, (semaMt as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
   ...linha,
   categoria: linha.tipo.toLowerCase().includes("infrac") ? ("auto_infracao" as const) : linha.tipo.toLowerCase().includes("embarg") ? ("embargo" as const) : linha.categoria,
 }));
 
-/** IBAMA autos de infração (CAP/SIFISC): começa pelo residencial “auto”
- * (nº) e o “nome” (NOM) NÃO entra na linha — nome de autuado em feed
- * lista é o que a ressalva do próprio JSON pede para não copiar. */
+/** IBAMA autos de infração */
 const linhasIbamaAutos: LinhaLicencaUnificada[] = unificar("IBAMA (autos)", "auto_infracao", (linha) => {
   const motivo = texto(linha.motivo) ?? "Infração ambiental";
   return {
@@ -182,22 +389,19 @@ const linhasIbamaAutos: LinhaLicencaUnificada[] = unificar("IBAMA (autos)", "aut
     data_inicio: dataIso(texto(linha.dt_auto)),
     data_fim: null,
     tipo: motivo,
-    // NOM (nome do autuado) entra como "empresa/titular" — o cadastro é
-    // público (D.O.U./IBAMA), e a ressalva "não é atribuição de culpa"
-    // viaja junto na LICENCAS_COBERTURA.ressalvas.
     empresa: texto(linha.nom),
     municipio: texto(linha.mun),
     bacia: null,
     situacao: texto(linha.sit),
     processo: texto(linha.auto) ?? texto(linha.serie) ?? "s/n",
+    porte: "Infração / Auto",
+    valor_investimento: extrairValor(linha.val_auto as number | string | null, motivo),
   };
 }, (ibamaAutos as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
-/** Estado: DOE extrai portaria/notificação (INEMA-BA, SEMA-MA) — a
- * data_publicacao é a DO EDITAL, não da decisão; ação declarada no tipo. */
 const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (linha) => {
   const tipoTexto = texto(linha.tipo) ?? "Licença";
-  const	auto = tipoTexto.toLowerCase().includes("notifi") || tipoTexto.toLowerCase().includes("infrac");
+  const resumo = texto(linha.resumo);
   return {
     uf: "BA",
     data_inicio: dataIso(texto(linha.data_publicacao)),
@@ -208,6 +412,9 @@ const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (lin
     bacia: null,
     situacao: texto(linha.situacao),
     processo: texto(linha.processo) ?? "s/n",
+    porte: inferirPorte(null, null, tipoTexto, resumo, ["inema", "ba"]),
+    tamanho_detalhe: extrairTamanho(null, null, tipoTexto, resumo),
+    valor_investimento: extrairValor(null, resumo),
   };
 }, (inemaBa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
   ...linha,
@@ -215,31 +422,39 @@ const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (lin
 }));
 
 const linhasMa: LinhaLicencaUnificada[] = unificar("SEMA (MA)", "licenca", (linha) => {
+  const tipo = texto(linha.tipo) ?? "Licença";
+  const resumo = texto(linha.resumo);
   return {
     uf: "MA",
     data_inicio: dataIso(texto(linha.data_publicacao)),
     data_fim: null,
-    tipo: texto(linha.tipo) ?? "Licença",
+    tipo,
     empresa: texto(linha.empresa),
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
     processo: texto(linha.processo) ?? "s/n",
+    porte: inferirPorte(null, null, tipo, resumo, ["sema", "ma"]),
+    tamanho_detalhe: extrairTamanho(null, null, tipo, resumo),
+    valor_investimento: extrairValor(null, resumo),
   };
 }, (semaMa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
 const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (linha) => {
-  const tipoTexto = texto(linha.tipo) ?? "licenca";
+  const tipoTexto = texto(linha.tipo_texto) ?? texto(linha.tipo) ?? "licenca";
+  const ativ = texto(linha.atividade);
   return {
     uf: "PA",
     data_inicio: null,
     data_fim: dataIso(texto(linha.data)),
-    tipo: texto(linha.tipo_texto) ?? tipoTexto,
+    tipo: tipoTexto,
     empresa: texto(linha.empresa),
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
     processo: texto(linha.processo) ?? "s/n",
+    porte: inferirPorte(null, null, tipoTexto, ativ, ["semas", "pa"]),
+    tamanho_detalhe: extrairTamanho(null, null, tipoTexto, ativ),
   };
 }, (semasPa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
   ...linha,
@@ -247,32 +462,49 @@ const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (lin
 }));
 
 const linhasGo: LinhaLicencaUnificada[] = unificar("SEMAD (GO)", "licenca", (linha) => {
+  const tipo = texto(linha.tipo) ?? "Licença";
+  const ativ = texto(linha.atividade);
   return {
     uf: "GO",
     data_inicio: dataIso(texto(linha.data)),
     data_fim: null,
-    tipo: texto(linha.tipo) ?? "Licença",
+    tipo,
     empresa: texto(linha.empresa),
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
     processo: texto(linha.processo) ?? "s/n",
+    porte: inferirPorte(null, null, tipo, ativ, ["semad", "go"]),
+    tamanho_detalhe: extrairTamanho(null, null, tipo, ativ),
   };
 }, (semadGo as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
 export const REGISTROS_LICENCAS: LinhaLicencaUnificada[] = [
+  // Fontes nacionais
   ...linhasAna,
   ...linhasIbama,
   ...linhasIbamaAutos,
+  // Onda 1 (estados — sample de 500 cada)
   ...linhasIgam,
   ...linhasMt,
   ...linhasBa,
   ...linhasMa,
   ...linhasPa,
   ...linhasGo,
+  // Onda 2 (estados — sample de 300 cada, acervo real em LICENCAS_COBERTURA)
+  ...linhasFepamRs,
+  ...linhasSemarPi,
+  ...linhasImasulMs,
+  ...linhasIemaEs,
+  ...linhasSedamRo,
+  ...linhasIbramDf,
+  ...linhasCetesbSp,
+  ...linhasIatPr,
+  ...linhasImaSc,
 ];
 
-function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, number> {  const contagem: Record<string, number> = {};
+function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, number> {
+  const contagem: Record<string, number> = {};
   for (const linha of REGISTROS_LICENCAS) {
     const chave = linha[forma];
     const k = chave === null || chave === undefined ? "—" : String(chave);
@@ -281,22 +513,62 @@ function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, nu
   return contagem;
 }
 
+/** Acervo real (total do JSON — contagem da coleta, não da janela do cliente). */
+function totalReal(meta: ArquivoNormalizadoRaw | { total?: number }): number {
+  return (meta as ArquivoNormalizadoRaw).total ?? 0;
+}
+
+/** Soma os totais reais de todas as fontes para publicar no cartão de cobertura.
+ *  ATENÇÃO: órgãos distintos não se somam numa linha só (AGENTS.md); o total
+ *  aqui é só para "quanto foi coletado no total de atos/licenças". */
+const TOTAL_ACERVO_REAL =
+  totalReal(ibama as { total?: number }) +
+  totalReal(ibamaAutos as { total?: number }) +
+  totalReal(ana as { total?: number }) +
+  totalReal(igam as { total?: number }) +
+  totalReal(semaMt as { total?: number }) +
+  totalReal(inemaBa as { total?: number }) +
+  totalReal(semaMa as { total?: number }) +
+  totalReal(semasPa as { total?: number }) +
+  totalReal(semadGo as { total?: number }) +
+  totalReal(metaFepamRs) +
+  totalReal(metaSemarPi) +
+  totalReal(metaImasulMs) +
+  totalReal(metaIemaEs) +
+  totalReal(metaSedamRo) +
+  totalReal(metaIbramDf) +
+  totalReal(metaCetesbSp) +
+  totalReal(metaIatPr) +
+  totalReal(metaImaSc);
+
 export const LICENCAS_COBERTURA: CoberturaLicencas = {
-  total: REGISTROS_LICENCAS.length,
+  // NOTA: `total` é o acervo completo coletado; `REGISTROS_LICENCAS.length`
+  // é a janela do cliente (subconjunto para não violar o limite de bundle).
+  total: TOTAL_ACERVO_REAL || REGISTROS_LICENCAS.length,
   por_orgao: agrupar("orgao"),
   por_uf: agrupar("uf"),
   por_ano: agrupar("ano"),
   por_categoria: agrupar("categoria"),
-  truncado: Boolean((ibama as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((ibamaAutos as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((ana as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((igam as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((semaMt as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((inemaBa as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((semaMa as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((semasPa as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((semadGo as { truncado?: boolean }).truncado ?? false),
-  gerado_em: String((semaMt as { gerado_em?: string }).gerado_em ?? ""),
+  truncado:
+    Boolean((ibama as { truncado?: boolean }).truncado) ||
+    Boolean((ibamaAutos as { truncado?: boolean }).truncado) ||
+    Boolean((ana as { truncado?: boolean }).truncado) ||
+    Boolean((igam as { truncado?: boolean }).truncado) ||
+    Boolean((semaMt as { truncado?: boolean }).truncado) ||
+    Boolean((inemaBa as { truncado?: boolean }).truncado) ||
+    Boolean((semaMa as { truncado?: boolean }).truncado) ||
+    Boolean((semasPa as { truncado?: boolean }).truncado) ||
+    Boolean((semadGo as { truncado?: boolean }).truncado) ||
+    Boolean(metaFepamRs.truncado) ||
+    Boolean(metaSemarPi.truncado) ||
+    Boolean(metaImasulMs.truncado) ||
+    Boolean(metaIemaEs.truncado) ||
+    Boolean(metaSedamRo.truncado) ||
+    Boolean(metaIbramDf.truncado) ||
+    Boolean(metaCetesbSp.truncado) ||
+    Boolean(metaIatPr.truncado) ||
+    Boolean(metaImaSc.truncado),
+  gerado_em: new Date().toISOString().slice(0, 10),
   ressalvas: [
     String((ana as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((ibamaAutos as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
@@ -306,5 +578,14 @@ export const LICENCAS_COBERTURA: CoberturaLicencas = {
     String((semaMa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((semasPa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((semadGo as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String(metaFepamRs.ressalva_editorial ?? ""),
+    String(metaSemarPi.ressalva_editorial ?? ""),
+    String(metaImasulMs.ressalva_editorial ?? ""),
+    String(metaIemaEs.ressalva_editorial ?? ""),
+    String(metaSedamRo.ressalva_editorial ?? ""),
+    String(metaIbramDf.ressalva_editorial ?? ""),
+    String(metaCetesbSp.ressalva_editorial ?? ""),
+    String(metaIatPr.ressalva_editorial ?? ""),
+    String(metaImaSc.ressalva_editorial ?? ""),
   ].filter(Boolean),
 };

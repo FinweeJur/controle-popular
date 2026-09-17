@@ -242,7 +242,7 @@ def _registro(row: dict, tipo: str, clas: str) -> dict | None:
 def _paginar(cam: str, tipo: str, clas: str, total: int, ckpt: dict,
              limite: int) -> list[dict]:
     """Baixa CSV em janelas de POR_PAGINA (startIndex), retomando do checkpoint."""
-    alvo = total if limite == 0 else min(total, limite)
+    alvo = total if not limite else min(total, limite)
     regs: list[dict] = []
     n_pags = (alvo + POR_PAGINA - 1) // POR_PAGINA
     slug = tipo or clas or cam

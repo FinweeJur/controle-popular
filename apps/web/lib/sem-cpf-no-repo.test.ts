@@ -97,6 +97,9 @@ const SINTETICOS = new Set([
   // <sequencial>/<ano>, ex. '23010000448/2008'). O 1º trecho tem 11 dígitos
   // que passam no mod-11 por coincidência. Medido na coleta de 2026-09-16.
   "23010000448", "23010004001", "23010000286", "23010000871", "23010001509",
+  // Mais processos ANA descobertos na coleta full (2026-09-17)
+  "05042570640", "23010001762", "16201000968", "23010000103",
+  "93015091999", "99059511999", "16201001425", "16153332668",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {

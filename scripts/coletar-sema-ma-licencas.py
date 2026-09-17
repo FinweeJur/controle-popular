@@ -395,7 +395,7 @@ def _paginar(termo: str, grupo: str, total: int, ckpt: dict, limite: int) -> "li
     regs: "list[dict]" = []
     sid = ""
     chunk = 1
-    alvo = total if limite == 0 else min(total, limite)
+    alvo = total if not limite else min(total, limite)
     while sid is not None and chunk <= 4000:
         chave = f"{base}#{chunk:04d}"
         arq = CACHE / f"{re.sub(r'[^A-Za-z0-9]', '_', chave)}.json"
