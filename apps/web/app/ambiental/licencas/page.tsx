@@ -81,8 +81,8 @@ export default function PaginaLicencas(): ReactElement {
     <div className="mx-auto max-w-5xl space-y-6 px-4 py-10">
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Licenças, outorgas e infrações ambientais</h1>
-        <p className="max-w-3xl opacity-80">
-          Feed unificado nacional e estadual: IBAMA, ANA, IGAM (MG), SEMA-MT, INEMA-BA, SEMAS-PA, SEMA-MA, SEMAD-GO, FEPAM-RS, SEMARH-PI, IMASUL-MS, IEMA/AGERH-ES, SEDAM-RO, IBRAM-DF, CETESB-SP, IAT-PR e IMA-SC.
+        <p className="max-w-3xl opacity-80 text-sm">
+          Feed unificado nacional e estadual: IBAMA, ANA, IGAM (MG), SEMA-MT, INEMA-BA, SEMAS-PA, SEMA-MA, SEMAD-GO, FEPAM-RS, SEMARH-PI, IMASUL-MS, IEMA/AGERH-ES, SEDAM-RO, IBRAM-DF, CETESB-SP, IAT-PR e IMA-SC. Cada ato/licença possui hiperlink direto e botão <strong>Fonte ↗</strong> para o processo oficial no respectivo órgão ambiental.
           <Link href="/ambiental" className="ml-2 underline">
             volta ao Meio Ambiente
           </Link>

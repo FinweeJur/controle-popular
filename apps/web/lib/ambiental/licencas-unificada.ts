@@ -80,15 +80,17 @@ function carregarLinhasNormalizadas(
       try {
         const dado = JSON.parse(readFileSync(c, "utf-8")) as ArquivoNormalizadoRaw;
         const todas = (dado.linhas ?? []).map((l) => {
-          const lAny = l as LinhaLicencaUnificada & { valor_multa?: number | string | null };
+          const lAny = l as LinhaLicencaUnificada & { valor_multa?: number | string | null; fonte_url?: string | null };
           const porte = l.porte ?? inferirPorte(null, null, l.tipo, l.microresumo, l.tags);
           const valor = l.valor_investimento ?? extrairValor(lAny.valor_multa, l.microresumo);
           const tamanho = l.tamanho_detalhe ?? extrairTamanho(null, null, l.tipo, l.microresumo);
+          const link = l.link_oficial ?? construirLinkOficial(l.orgao, l.processo, l.categoria, lAny.fonte_url);
           return {
             ...l,
             porte,
             valor_investimento: valor,
             tamanho_detalhe: tamanho,
+            link_oficial: link,
           };
         });
         return {
@@ -143,6 +145,7 @@ export interface LinhaLicencaUnificada {
   tamanho_detalhe?: string | null;
   microresumo?: string | null;
   tags?: string[];
+  link_oficial?: string | null;
 }
 
 export interface CoberturaLicencas {
@@ -218,7 +221,13 @@ export function extrairValor(
     return valorDireto;
   }
   if (typeof valorDireto === "string") {
-    const num = parseFloat(valorDireto.replace(/[^\d.,]/g, "").replace(",", "."));
+    let limpo = valorDireto.replace(/[^\d.,]/g, "").trim();
+    if (limpo.includes(",") && limpo.includes(".")) {
+      limpo = limpo.replace(/\./g, "").replace(",", ".");
+    } else if (limpo.includes(",")) {
+      limpo = limpo.replace(",", ".");
+    }
+    const num = parseFloat(limpo);
     if (!isNaN(num) && num > 0) return num;
   }
   if (textoBusca) {
@@ -247,6 +256,125 @@ export function extrairTamanho(
   return null;
 }
 
+/**
+ * Gera link oficial específico para consulta do processo, licença, outorga ou auto de infração
+ * no respectivo órgão ambiental (federal ou estadual).
+ * Evita homepages genéricas; aponta diretamente para a consulta processual pública.
+ */
+export function construirLinkOficial(
+  orgao: string,
+  processo?: string | null,
+  categoria?: string | null,
+  urlDireta?: string | null,
+): string | null {
+  if (urlDireta && /^https?:\/\//i.test(urlDireta.trim())) {
+    return urlDireta.trim();
+  }
+  const proc = (processo ?? "").trim();
+  if (!proc || proc === "s/n" || proc === "—") return null;
+
+  const orgUpper = orgao.toUpperCase();
+
+  // 1. IBAMA (Licenças federais)
+  if (orgUpper === "IBAMA") {
+    return `https://sei.ibama.gov.br/sei/controlador_externo.php?acao=usuario_externo_pesquisa_processo&txtPesquisa=${encodeURIComponent(proc)}`;
+  }
+
+  // 2. IBAMA (Autos de infração e embargos)
+  if (orgUpper.includes("IBAMA (AUTOS)") || (orgUpper.includes("IBAMA") && categoria === "auto_infracao")) {
+    return `https://servicos.ibama.gov.br/ctf/publico/areasembargadas/ConsultaInfracoes.php?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 3. ANA (Outorgas federais)
+  if (orgUpper === "ANA") {
+    return `https://www.snirh.gov.br/cnarh/consulta/processo?numero=${encodeURIComponent(proc)}`;
+  }
+
+  // 4. IGAM (MG - Outorgas)
+  if (orgUpper.includes("IGAM")) {
+    const limpo = proc.replace(/[^\d/]/g, "");
+    return `http://www.siam.mg.gov.br/siam/legislacao/consulta_portarias.jsp?num=${encodeURIComponent(limpo || proc)}`;
+  }
+
+  // 5. SEMA (MT)
+  if (orgUpper.includes("SEMA (MT)") || orgUpper.includes("SEMA-MT")) {
+    return `https://simlam.sema.mt.gov.br/portal/processo/consulta?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 6. INEMA (BA)
+  if (orgUpper.includes("INEMA")) {
+    return `http://www.seia.ba.gov.br/consulta-processo?num_processo=${encodeURIComponent(proc)}`;
+  }
+
+  // 7. SEMA (MA)
+  if (orgUpper.includes("SEMA (MA)") || orgUpper.includes("SEMA-MA")) {
+    return `https://sigla.sema.ma.gov.br/consulta/processo?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 8. SEMAS (PA)
+  if (orgUpper.includes("SEMAS (PA)") || orgUpper.includes("SEMAS-PA")) {
+    return `http://monitoramento.semas.pa.gov.br/simlam/painel_processo.aspx?processo=${encodeURIComponent(proc)}`;
+  }
+
+  // 9. SEMAD (GO)
+  if (orgUpper.includes("SEMAD (GO)") || orgUpper.includes("SEMAD-GO")) {
+    return `https://sga.meioambiente.go.gov.br/consulta/processo?numero=${encodeURIComponent(proc)}`;
+  }
+
+  // 10. FEPAM (RS)
+  if (orgUpper.includes("FEPAM")) {
+    const m = /\((?:Proc\.?\s*)?([^)]+)\)/i.exec(proc);
+    const termo = m ? m[1].trim() : proc;
+    return `https://sol.fepam.rs.gov.br/consulta/processo?termo=${encodeURIComponent(termo)}`;
+  }
+
+  // 11. SEMAR / SEMARH (PI)
+  if (orgUpper.includes("SEMAR")) {
+    return `https://siga.semarh.pi.gov.br/consulta/processo/${encodeURIComponent(proc)}`;
+  }
+
+  // 12. IMASUL (MS)
+  if (orgUpper.includes("IMASUL")) {
+    return `https://www.imasul.ms.gov.br/consulta-processo?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 13. IEMA / AGERH (ES)
+  if (orgUpper.includes("IEMA") || orgUpper.includes("AGERH")) {
+    return `https://siga.es.gov.br/consulta/processo?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 14. SEDAM (RO)
+  if (orgUpper.includes("SEDAM")) {
+    return `https://sigam.sedam.ro.gov.br/consulta/processo?termo=${encodeURIComponent(proc)}`;
+  }
+
+  // 15. IBRAM (DF)
+  if (orgUpper.includes("IBRAM")) {
+    return `https://sei.df.gov.br/sei/controlador_externo.php?acao=usuario_externo_pesquisa_processo&txtPesquisa=${encodeURIComponent(proc)}`;
+  }
+
+  // 16. CETESB (SP)
+  if (orgUpper.includes("CETESB")) {
+    return `https://e.ambiente.sp.gov.br/atendimento/consulta/processo?numero=${encodeURIComponent(proc)}`;
+  }
+
+  // 17. IAT (PR)
+  if (orgUpper.includes("IAT")) {
+    const m = /Protocolo\s*([\d.]+)/i.exec(proc);
+    const termo = m ? m[1].trim() : proc;
+    return `https://www.eprotocolo.pr.gov.br/consulta/processo?numero=${encodeURIComponent(termo)}`;
+  }
+
+  // 18. IMA (SC)
+  if (orgUpper.includes("IMA (SC)") || orgUpper.includes("IMA-SC")) {
+    const m = /\((?:Proc\.?\s*)?([^)]+)\)/i.exec(proc);
+    const termo = m ? m[1].trim() : proc;
+    return `https://sinfat.ima.sc.gov.br/consulta/processo?codigo=${encodeURIComponent(termo)}`;
+  }
+
+  return null;
+}
+
 /** Converte um bloco bruto em linhas unificadas. */
 function unificar(
   orgao: string,
@@ -264,6 +392,7 @@ function unificar(
     valor_investimento?: number | null;
     porte?: string | null;
     tamanho_detalhe?: string | null;
+    link_oficial?: string | null;
   },
   linhas: LinhaBruta[],
 ): LinhaLicencaUnificada[] {
@@ -274,6 +403,7 @@ function unificar(
       categoria,
       ...extra,
       ano: anoDe(extra.data_inicio ?? extra.data_fim),
+      link_oficial: extra.link_oficial ?? construirLinkOficial(orgao, extra.processo, categoria),
     };
   });
 }
@@ -402,6 +532,8 @@ const linhasIbamaAutos: LinhaLicencaUnificada[] = unificar("IBAMA (autos)", "aut
 const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (linha) => {
   const tipoTexto = texto(linha.tipo) ?? "Licença";
   const resumo = texto(linha.resumo);
+  const proc = texto(linha.processo) ?? "s/n";
+  const urlDireta = texto(linha.fonte_pagina);
   return {
     uf: "BA",
     data_inicio: dataIso(texto(linha.data_publicacao)),
@@ -411,10 +543,11 @@ const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (lin
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
-    processo: texto(linha.processo) ?? "s/n",
+    processo: proc,
     porte: inferirPorte(null, null, tipoTexto, resumo, ["inema", "ba"]),
     tamanho_detalhe: extrairTamanho(null, null, tipoTexto, resumo),
     valor_investimento: extrairValor(null, resumo),
+    link_oficial: construirLinkOficial("INEMA (BA)", proc, "licenca", urlDireta),
   };
 }, (inemaBa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
   ...linha,
@@ -424,6 +557,8 @@ const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (lin
 const linhasMa: LinhaLicencaUnificada[] = unificar("SEMA (MA)", "licenca", (linha) => {
   const tipo = texto(linha.tipo) ?? "Licença";
   const resumo = texto(linha.resumo);
+  const proc = texto(linha.processo) ?? "s/n";
+  const urlDireta = texto(linha.fonte_url);
   return {
     uf: "MA",
     data_inicio: dataIso(texto(linha.data_publicacao)),
@@ -433,16 +568,19 @@ const linhasMa: LinhaLicencaUnificada[] = unificar("SEMA (MA)", "licenca", (linh
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
-    processo: texto(linha.processo) ?? "s/n",
+    processo: proc,
     porte: inferirPorte(null, null, tipo, resumo, ["sema", "ma"]),
     tamanho_detalhe: extrairTamanho(null, null, tipo, resumo),
     valor_investimento: extrairValor(null, resumo),
+    link_oficial: construirLinkOficial("SEMA (MA)", proc, "licenca", urlDireta),
   };
 }, (semaMa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 
 const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (linha) => {
   const tipoTexto = texto(linha.tipo_texto) ?? texto(linha.tipo) ?? "licenca";
   const ativ = texto(linha.atividade);
+  const proc = texto(linha.processo) ?? "s/n";
+  const urlDireta = texto(linha.fonte_url);
   return {
     uf: "PA",
     data_inicio: null,
@@ -452,9 +590,10 @@ const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (lin
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
-    processo: texto(linha.processo) ?? "s/n",
+    processo: proc,
     porte: inferirPorte(null, null, tipoTexto, ativ, ["semas", "pa"]),
     tamanho_detalhe: extrairTamanho(null, null, tipoTexto, ativ),
+    link_oficial: construirLinkOficial("SEMAS (PA)", proc, "licenca", urlDireta),
   };
 }, (semasPa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
   ...linha,
@@ -464,6 +603,8 @@ const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (lin
 const linhasGo: LinhaLicencaUnificada[] = unificar("SEMAD (GO)", "licenca", (linha) => {
   const tipo = texto(linha.tipo) ?? "Licença";
   const ativ = texto(linha.atividade);
+  const proc = texto(linha.processo) ?? "s/n";
+  const urlDireta = texto(linha.fonte_url);
   return {
     uf: "GO",
     data_inicio: dataIso(texto(linha.data)),
@@ -473,9 +614,10 @@ const linhasGo: LinhaLicencaUnificada[] = unificar("SEMAD (GO)", "licenca", (lin
     municipio: texto(linha.municipio),
     bacia: null,
     situacao: texto(linha.situacao),
-    processo: texto(linha.processo) ?? "s/n",
+    processo: proc,
     porte: inferirPorte(null, null, tipo, ativ, ["semad", "go"]),
     tamanho_detalhe: extrairTamanho(null, null, tipo, ativ),
+    link_oficial: construirLinkOficial("SEMAD (GO)", proc, "licenca", urlDireta),
   };
 }, (semadGo as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
 

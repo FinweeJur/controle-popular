@@ -31,6 +31,7 @@ const COLUNAS = [
   { chave: "data_fim", titulo: "Decisão / Validade" },
   { chave: "situacao", titulo: "Situação" },
   { chave: "processo", titulo: "Processo" },
+  { chave: "link_oficial", titulo: "Fonte Oficial" },
 ] as const;
 
 type ChaveColuna = (typeof COLUNAS)[number]["chave"];
@@ -232,6 +233,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
       "data_fim",
       "situacao",
       "processo",
+      "link_oficial",
       "microresumo",
       "tags",
     ];
@@ -254,6 +256,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
           l.data_fim,
           l.situacao,
           l.processo,
+          l.link_oficial ?? "",
           l.microresumo ?? "",
           (l.tags ?? []).join("|"),
         ]
@@ -744,8 +747,36 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                           {l.situacao ?? "—"}
                         </span>
                       </td>
-                      <td className="px-3 py-2 font-tabular font-mono text-[11px] max-w-[130px] truncate" title={l.processo}>
-                        {l.processo}
+                      <td className="px-3 py-2 font-tabular font-mono text-[11px] max-w-[140px] truncate" title={l.processo}>
+                        {l.link_oficial ? (
+                          <a
+                            href={l.link_oficial}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[var(--cp-primary)] hover:underline inline-flex items-center gap-1"
+                            title={`Consultar processo ${l.processo} no sistema oficial do órgão`}
+                          >
+                            <span className="truncate">{l.processo}</span>
+                            <span className="text-[10px] opacity-70">↗</span>
+                          </a>
+                        ) : (
+                          l.processo
+                        )}
+                      </td>
+                      <td className="px-3 py-2 whitespace-nowrap">
+                        {l.link_oficial ? (
+                          <a
+                            href={l.link_oficial}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 rounded px-2 py-0.5 text-[11px] font-medium bg-[var(--cp-primary)]/10 text-[var(--cp-primary)] hover:bg-[var(--cp-primary)]/20 transition border border-[var(--cp-primary)]/20"
+                            title={`Página oficial do ato no sistema do ${l.orgao}`}
+                          >
+                            Fonte ↗
+                          </a>
+                        ) : (
+                          <span className="opacity-30 text-[10px]">—</span>
+                        )}
                       </td>
                     </tr>
                   );
