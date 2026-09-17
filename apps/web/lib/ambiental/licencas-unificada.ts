@@ -16,6 +16,7 @@
  * data_inicio, data_fim, situacao, processo.
  */
 import ibama from "@/data/ibama-licencas.json";
+import ibamaAutos from "@/data/ibama-autos-infracao.json";
 import ana from "@/data/ana-outorgas.json";
 import igam from "@/data/igam-outorgas.json";
 import semaMt from "@/data/sema-mt-licencas.json";
@@ -169,6 +170,27 @@ const linhasMt: LinhaLicencaUnificada[] = unificar("SEMA (MT)", "licenca", (linh
   categoria: linha.tipo.toLowerCase().includes("infrac") ? ("auto_infracao" as const) : linha.tipo.toLowerCase().includes("embarg") ? ("embargo" as const) : linha.categoria,
 }));
 
+/** IBAMA autos de infração (CAP/SIFISC): começa pelo residencial “auto”
+ * (nº) e o “nome” (NOM) NÃO entra na linha — nome de autuado em feed
+ * lista é o que a ressalva do próprio JSON pede para não copiar. */
+const linhasIbamaAutos: LinhaLicencaUnificada[] = unificar("IBAMA (autos)", "auto_infracao", (linha) => {
+  const motivo = texto(linha.motivo) ?? "Infração ambiental";
+  return {
+    uf: texto(linha.uf),
+    data_inicio: dataIso(texto(linha.dt_auto)),
+    data_fim: null,
+    tipo: motivo,
+    // NOM (nome do autuado) entra como "empresa/titular" — o cadastro é
+    // público (D.O.U./IBAMA), e a ressalva "não é atribuição de culpa"
+    // viaja junto na LICENCAS_COBERTURA.ressalvas.
+    empresa: texto(linha.nom),
+    municipio: texto(linha.mun),
+    bacia: null,
+    situacao: texto(linha.sit),
+    processo: texto(linha.auto) ?? texto(linha.serie) ?? "s/n",
+  };
+}, (ibamaAutos as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
+
 /** Estado: DOE extrai portaria/notificação (INEMA-BA, SEMA-MA) — a
  * data_publicacao é a DO EDITAL, não da decisão; ação declarada no tipo. */
 const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (linha) => {
@@ -239,6 +261,7 @@ const linhasGo: LinhaLicencaUnificada[] = unificar("SEMAD (GO)", "licenca", (lin
 export const REGISTROS_LICENCAS: LinhaLicencaUnificada[] = [
   ...linhasAna,
   ...linhasIbama,
+  ...linhasIbamaAutos,
   ...linhasIgam,
   ...linhasMt,
   ...linhasBa,
@@ -264,6 +287,7 @@ export const LICENCAS_COBERTURA: CoberturaLicencas = {
   por_ano: agrupar("ano"),
   por_categoria: agrupar("categoria"),
   truncado: Boolean((ibama as { truncado?: boolean }).truncado ?? false) ||
+    Boolean((ibamaAutos as { truncado?: boolean }).truncado ?? false) ||
     Boolean((ana as { truncado?: boolean }).truncado ?? false) ||
     Boolean((igam as { truncado?: boolean }).truncado ?? false) ||
     Boolean((semaMt as { truncado?: boolean }).truncado ?? false) ||
@@ -274,6 +298,7 @@ export const LICENCAS_COBERTURA: CoberturaLicencas = {
   gerado_em: String((semaMt as { gerado_em?: string }).gerado_em ?? ""),
   ressalvas: [
     String((ana as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String((ibamaAutos as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((igam as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((semaMt as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((inemaBa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
