@@ -176,8 +176,8 @@ def _cpf_valido(dig: str) -> bool:
 
 def _apagar_cpf_em_texto(texto: str) -> str:
     """Apaga do texto livre qualquer run com 11 dígitos (CPF); preserva CNPJ 14.
-    DOEMA às vezes injeta um dígito a mais na frente do CPF ('0 010.736.493-00'):
-    runs com 12-13 dígitos redigidos se houver janela de 11 com mod-11 válido."""
+    DOEMA às vezes injeta um dígito a mais na frente do CPF (run de 12-13
+    dígitos com janela de 11 mod-11 válida) — também redige."""
     def _apagar(m):
         s = m.group(0)
         dig = re.sub(r"\D", "", s)
