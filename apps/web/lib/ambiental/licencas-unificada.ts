@@ -19,6 +19,10 @@ import ibama from "@/data/ibama-licencas.json";
 import ana from "@/data/ana-outorgas.json";
 import igam from "@/data/igam-outorgas.json";
 import semaMt from "@/data/sema-mt-licencas.json";
+import inemaBa from "@/data/inema-ba-licencas.json";
+import semaMa from "@/data/sema-ma-licencas.json";
+import semasPa from "@/data/semas-pa-licencas.json";
+import semadGo from "@/data/semad-go-licencas.json";
 
 export interface LinhaLicencaUnificada {
   orgao: string;
@@ -165,11 +169,82 @@ const linhasMt: LinhaLicencaUnificada[] = unificar("SEMA (MT)", "licenca", (linh
   categoria: linha.tipo.toLowerCase().includes("infrac") ? ("auto_infracao" as const) : linha.tipo.toLowerCase().includes("embarg") ? ("embargo" as const) : linha.categoria,
 }));
 
+/** Estado: DOE extrai portaria/notificação (INEMA-BA, SEMA-MA) — a
+ * data_publicacao é a DO EDITAL, não da decisão; ação declarada no tipo. */
+const linhasBa: LinhaLicencaUnificada[] = unificar("INEMA (BA)", "licenca", (linha) => {
+  const tipoTexto = texto(linha.tipo) ?? "Licença";
+  const	auto = tipoTexto.toLowerCase().includes("notifi") || tipoTexto.toLowerCase().includes("infrac");
+  return {
+    uf: "BA",
+    data_inicio: dataIso(texto(linha.data_publicacao)),
+    data_fim: null,
+    tipo: tipoTexto,
+    empresa: texto(linha.empresa),
+    municipio: texto(linha.municipio),
+    bacia: null,
+    situacao: texto(linha.situacao),
+    processo: texto(linha.processo) ?? "s/n",
+  };
+}, (inemaBa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
+  ...linha,
+  categoria: /notific|infrac|auto/i.test(linha.tipo) ? ("auto_infracao" as const) : linha.categoria,
+}));
+
+const linhasMa: LinhaLicencaUnificada[] = unificar("SEMA (MA)", "licenca", (linha) => {
+  return {
+    uf: "MA",
+    data_inicio: dataIso(texto(linha.data_publicacao)),
+    data_fim: null,
+    tipo: texto(linha.tipo) ?? "Licença",
+    empresa: texto(linha.empresa),
+    municipio: texto(linha.municipio),
+    bacia: null,
+    situacao: texto(linha.situacao),
+    processo: texto(linha.processo) ?? "s/n",
+  };
+}, (semaMa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
+
+const linhasPa: LinhaLicencaUnificada[] = unificar("SEMAS (PA)", "licenca", (linha) => {
+  const tipoTexto = texto(linha.tipo) ?? "licenca";
+  return {
+    uf: "PA",
+    data_inicio: null,
+    data_fim: dataIso(texto(linha.data)),
+    tipo: texto(linha.tipo_texto) ?? tipoTexto,
+    empresa: texto(linha.empresa),
+    municipio: texto(linha.municipio),
+    bacia: null,
+    situacao: texto(linha.situacao),
+    processo: texto(linha.processo) ?? "s/n",
+  };
+}, (semasPa as unknown as { linhas?: LinhaBruta[] }).linhas ?? []).map((linha) => ({
+  ...linha,
+  categoria: /infrac|auto/i.test(linha.tipo) ? ("auto_infracao" as const) : /outorga/i.test(linha.tipo) ? ("outorga" as const) : linha.categoria,
+}));
+
+const linhasGo: LinhaLicencaUnificada[] = unificar("SEMAD (GO)", "licenca", (linha) => {
+  return {
+    uf: "GO",
+    data_inicio: dataIso(texto(linha.data)),
+    data_fim: null,
+    tipo: texto(linha.tipo) ?? "Licença",
+    empresa: texto(linha.empresa),
+    municipio: texto(linha.municipio),
+    bacia: null,
+    situacao: texto(linha.situacao),
+    processo: texto(linha.processo) ?? "s/n",
+  };
+}, (semadGo as unknown as { linhas?: LinhaBruta[] }).linhas ?? []);
+
 export const REGISTROS_LICENCAS: LinhaLicencaUnificada[] = [
   ...linhasAna,
   ...linhasIbama,
   ...linhasIgam,
   ...linhasMt,
+  ...linhasBa,
+  ...linhasMa,
+  ...linhasPa,
+  ...linhasGo,
 ];
 
 function agrupar(forma: "orgao" | "uf" | "ano" | "categoria"): Record<string, number> {
@@ -191,11 +266,19 @@ export const LICENCAS_COBERTURA: CoberturaLicencas = {
   truncado: Boolean((ibama as { truncado?: boolean }).truncado ?? false) ||
     Boolean((ana as { truncado?: boolean }).truncado ?? false) ||
     Boolean((igam as { truncado?: boolean }).truncado ?? false) ||
-    Boolean((semaMt as { truncado?: boolean }).truncado ?? false),
+    Boolean((semaMt as { truncado?: boolean }).truncado ?? false) ||
+    Boolean((inemaBa as { truncado?: boolean }).truncado ?? false) ||
+    Boolean((semaMa as { truncado?: boolean }).truncado ?? false) ||
+    Boolean((semasPa as { truncado?: boolean }).truncado ?? false) ||
+    Boolean((semadGo as { truncado?: boolean }).truncado ?? false),
   gerado_em: String((semaMt as { gerado_em?: string }).gerado_em ?? ""),
   ressalvas: [
     String((ana as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((igam as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
     String((semaMt as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String((inemaBa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String((semaMa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String((semasPa as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
+    String((semadGo as { ressalva_editorial?: string }).ressalva_editorial ?? ""),
   ].filter(Boolean),
 };
