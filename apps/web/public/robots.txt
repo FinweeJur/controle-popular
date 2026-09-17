@@ -1,49 +1,76 @@
-﻿# Controle Popular -- Politica de Crawling
+# ==============================================================================
+# Controle Popular -- Politica de Rastreamento e Coleta Civica (PT-BR)
 # controlepopular.com.br
 # Atualizado em: 2026-09-16
 #
-# Este portal republica dado publico oficial para fins de transparencia civica.
-# A coleta automatizada e bem-vinda para pesquisa sem fins comerciais, desde
-# que respeite os direitos humanos, a privacidade das pessoas e as restricoes
-# abaixo.
+# Este portal republica dados publicos oficiais para fins de transparencia civica.
+# A coleta automatizada e bem-vinda para pesquisa sem fins comerciais e academica,
+# desde que respeite os direitos humanos, a privacidade e as restricoes abaixo.
 #
-# AUTORIZADOS: buscadores de pesquisa publica, arquivadores de acesso aberto
-#              (Internet Archive/Wayback Machine), pesquisadores academicos
-#              sem fins comerciais.
-#
-# VEDADOS: coleta para treinamento de modelos comerciais de IA; raspagem para
-#          vigilancia, perfilamento ou identificacao de pessoas; revenda de dado.
+# AUTORIZADOS: Buscadores publicos, arquivadores abertos (Wayback Machine),
+#              pesquisadores academicos e organizacoes sociais sem fins comerciais.
+# VEDADOS:     Treinamento de modelos comerciais de IA, vigilancia, perfilamento
+#              de cidadaos e comercializacao de dados publicos.
 #
 # Crawl-delay recomendado: 2 segundos entre requisicoes.
-# API publica JSON (sem autenticacao): https://controlepopular.com.br/api/v1/
+# API publica JSON (gratuita, sem chave): https://controlepopular.com.br/api/v1/
 # Sitemap: https://controlepopular.com.br/sitemap.xml
+# ==============================================================================
 #
-# PRINCIPAIS PAGINAS
-# ------------------
-# /                    - Pagina inicial: 199 cidades estrategicas de MG
-# /betim               - Betim: diario oficial, contratos, licencas
-# /brumadinho          - Brumadinho: Acordo Samarco, execucao, reparacao
-# /congresso           - Congresso Nacional: votacoes, gastos, projetos
-# /judiciario          - Judiciario: decisoes, inspecoes, LAI
-# /ambiental           - Ambiental: TACs, licenciamento, legislacao, COPAM
-# /paraopeba           - Paraopeba: repasses, acordo, qualidade da agua
-# /funcaosocialterra   - Funcao Social da Terra: UCs, assentamentos, mapa 3D
-# /editais             - Radar de Editais do Diario Oficial de MG
-# /estudos-rurais      - Estudos rurais e territoriais
-# /busca               - Busca global no portal
-# /imprensa            - Material para jornalistas com numeros-chave
-# /blog                - Blog editorial do portal
-# /documentacao        - Documentacao tecnica publica do portal
-# /termos              - Termos de uso e politica de privacidade
-# /api/v1/             - API publica (JSON, sem autenticacao)
+# ==============================================================================
+# ENGLISH (EN) -- Civic Crawling & Public Data Access Policy
 #
-# FORMATO TECNICO
-# ---------------
-# Framework: Next.js 16, output export + standalone (duplo deploy)
-# Deploy: Cloudflare Workers (OpenNext) + Guara Cloud (Docker, br-gru)
-# Sitemap automatico: /sitemap.xml  |  Feed RSS: /blog/feed.xml
+# Controle Popular is an open civic transparency portal monitoring public spending,
+# socio-environmental licensing, mining dams, and human rights in Brazil.
+# Automated crawling is permitted for non-commercial, academic, and journalistic
+# purposes under the following ethical principles:
+#
+# PERMITTED:  Public search engines, open archive crawlers (Wayback Machine/IA),
+#             academic researchers, and civil society oversight tools.
+# PROHIBITED: Commercial AI training without consent, citizen profiling,
+#             surveillance, deanonymization, and resale of public records.
+#
+# Recommended crawl-delay: 2 seconds between requests.
+# Public JSON API (No auth required): https://controlepopular.com.br/api/v1/
+# ==============================================================================
+#
+# ==============================================================================
+# 中文 (ZH-CN) -- 民众监督网 (Controle Popular) 公民抓取与数据访问政策
+#
+# “民众监督网” (controlepopular.com.br) 是巴西独立的公民透明度与公共监督平台，
+# 汇集官方公开数据，监督公共财政、采矿大坝安全、环境许可及人权保障。
+# 本站欢迎非商业性、学术研究与公共利益目的的自动化采集，但须遵守以下规范：
+#
+# 允许用途：公共搜索引擎、开放档案馆 (如 Wayback Machine)、学术研究与社会监督。
+# 禁止用途：商业人工智能大模型训练、公民画像追踪、监视、去匿名化及转售公共数据。
+#
+# 建议抓取延迟：每次请求间隔 2 秒 (Crawl-delay: 2)。
+# 开放公共 JSON API (无需认证/无密钥)：https://controlepopular.com.br/api/v1/
+# 站点地图 (Sitemap)：https://controlepopular.com.br/sitemap.xml
+# ==============================================================================
 
-# -- Bots de IA (treinamento comercial) -- BLOQUEADOS
+# ------------------------------------------------------------------------------
+# PRINCIPAIS ROTAS / MAIN DIRECTORIES / 主要索引页面
+# ------------------------------------------------------------------------------
+# /                    - Home / 199 Cidades Estrategicas de Minas Gerais
+# /cidades             - Catalogo Nacional de Municipios Monitorados
+# /editais             - Radar de Editais do Diario Oficial de MG
+# /estudos-rurais      - Hub de Estudos Rurais e Territoriais
+# /ambiental           - Licenciamentos, TACs, COPAM e Barragens (ONSA)
+# /paraopeba           - Repasses e Execucao do Acordo de Brumadinho
+# /funcaosocialterra   - Funcao Social da Terra (Globo 3D, UCs, CAR)
+# /judiciario          - Tribunais, Inspecoes CNJ e Varas Judiciais
+# /congresso           - Votacoes e Despesas do Congresso Nacional
+# /busca               - Buscador Textual Global em Memoria
+# /imprensa            - Sala de Imprensa com Metricas Oficiais
+# /noticias            - Blog Editorial e Relatorios Tecnicos
+# /documentacao        - Documentacao Tecnica e Guias de API
+# /termos              - Termos de Uso, Dados Abertos e LGPD
+# /api/v1/             - Endpoints da API Publica REST
+
+# ------------------------------------------------------------------------------
+# 1. BOTS DE TREINAMENTO DE IA COMERCIAL (BLOQUEADOS) / AI TRAINING BOTS (BLOCKED)
+# ------------------------------------------------------------------------------
 User-agent: GPTBot
 Disallow: /
 
@@ -62,7 +89,12 @@ Disallow: /
 User-agent: FacebookBot
 Disallow: /
 
-# -- Buscadores de pesquisa publica -- BEM-VINDOS
+User-agent: Bytespider
+Disallow: /
+
+# ------------------------------------------------------------------------------
+# 2. BUSCADORES PUBLICOS (BEM-VINDOS) / PUBLIC SEARCH ENGINES (ALLOWED)
+# ------------------------------------------------------------------------------
 User-agent: Googlebot
 Allow: /
 Disallow: /*/admin
@@ -87,12 +119,37 @@ Disallow: /painel/
 Disallow: /api/painel/
 Crawl-delay: 2
 
-# -- Internet Archive (Wayback Machine) -- BEM-VINDO
+User-agent: Baiduspider
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+User-agent: Sogou web spider
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
+User-agent: YisouSpider
+Allow: /
+Disallow: /*/admin
+Disallow: /*/api/
+Disallow: /painel/
+Disallow: /api/painel/
+Crawl-delay: 2
+
 User-agent: ia_archiver
 Allow: /
 Crawl-delay: 5
 
-# -- Regra geral
+# ------------------------------------------------------------------------------
+# 3. REGRA GERAL PADRAO / DEFAULT RULE / 通用默认规则
+# ------------------------------------------------------------------------------
 User-agent: *
 Allow: /
 Disallow: /*/admin
