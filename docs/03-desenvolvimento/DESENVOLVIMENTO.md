@@ -150,10 +150,13 @@ PY
 
 ```bash
 npm test                       # da raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
-npx tsc --noEmit
+npx tsc --noEmit               # checagem estrita de tipos
+npm run lint:textos            # auditoria de acentuação e grandezas numéricas
+npm run fix:textos             # normalização e correção determinística de textos
+python scripts/checar-dado-pessoal-em-dado.py  # varredura obrigatória de CPF por mod-11
 ```
 
-Medido em 21/08/2026: **57 arquivos, 776 testes no vitest + 137 no globo**. Serve como referência de regressão, não como verdade eterna — se o seu número divergir, **remeça** e explique a diferença antes de concluir.
+Medido em 17/09/2026: **151 arquivos de teste, 1.572 testes no Vitest + 141 no Globo 3D = 1.713 testes aprovados (100%)**. Serve como referência de regressão, não como verdade eterna — se o seu número divergir, **remeça** e explique a diferença antes de concluir.
 
 ⚠️ **Contagem de teste envelhece rápido e já circulou em seis versões diferentes** neste repo (247, 401, 601, 681, 699, 741), cada documento citando a sua. Antes de repetir um número daqui, meça:
 

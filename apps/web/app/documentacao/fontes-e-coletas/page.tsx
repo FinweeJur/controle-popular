@@ -52,6 +52,27 @@ const FONTES = [
     dado: "387 UCs para o mapa 3D de funcao social da terra",
     arquivo: "apps/web/data/unidades-conservacao.json",
   },
+  {
+    nome: "TSE — DivulgaCandContas",
+    url: "https://divulgacandcontas.tse.jus.br",
+    freq: "A cada pleito eleitoral",
+    dado: "Planos de governo oficiais dos candidatos eleitos",
+    arquivo: "apps/web/data/gestao/planos-governo-eleitos.json",
+  },
+  {
+    nome: "Cloudflare R2 — Arquivamento Perene",
+    url: "https://controlepopular.com.br",
+    freq: "Continuo (espelho)",
+    dado: "Guarda perene de PDFs governamentais, TACs e estudos",
+    arquivo: "apps/web/data/documentos-espelho-r2.json",
+  },
+  {
+    nome: "Anatel — Sistema Mosaico",
+    url: "https://sistemas.anatel.gov.br",
+    freq: "Trimestral",
+    dado: "Estacoes Radio-Base (ERBs) e cobertura celular",
+    arquivo: "apps/web/data/dados-telefonia.json",
+  },
 ];
 
 export default function FontesEColetasPage() {

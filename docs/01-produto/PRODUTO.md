@@ -73,6 +73,8 @@ A régua que organiza o projeto inteiro, em resumo:
 - **A ressalva viaja colada ao número, ou o número não vai.** O caso que gerou a regra: o total doado do acervo da Rouanet é do Brasil inteiro, e exibi-lo ao lado de um contrato municipal sugeriria que o dinheiro foi para ali.
 - **Nunca dois dados verdadeiros lado a lado levando a conclusão falsa.** Exemplo real: 827 das 853 cidades de Minas não têm relação com a bacia do Paraopeba, e a tela diz com todas as letras que receber o valor do repasse não significa ter sido atingida.
 - **Estimativa publica a taxa de erro ao lado do número.** O vazio cadastral medido tem taxa de erro de 30,0% (amostra conferida a olho sobre satélite), com o teto de 33% declarado como decisão, não como medição.
+- **Normalização numérica: unidades inteiras mais representativas.** Nunca expressar grandezas com decimais inferiores a 1 quando existir unidade de grandeza inteira correspondente ("0,4 bilhões" é erro editorial; a forma correta é "400 milhões"; "0,2 milhões" vira "200 mil"; "0,5 mil" vira "500").
+- **Governança de editais:** Certames, licitações e pregões de diários oficiais não poluem o feed do Blog (`/noticias`) nem a página de Novidades (`/novidades`). Pertencem à rota especializada `/editais` e são indexados no Buscador (`/busca`).
 
 ## Números que importam
 

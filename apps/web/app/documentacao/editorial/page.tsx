@@ -40,6 +40,16 @@ const PRINCIPIOS = [
     corpo:
       "Grafico (SVG inline ou CSS, sem biblioteca), cartoes de status no topo, botao de CSV filtrado (separador ; e BOM UTF-8), filtros pelos campos que o acervo tem, e ordenacao por coluna.",
   },
+  {
+    titulo: "Normalizacao numerica: grandezas inteiras mais representativas",
+    corpo:
+      "Nunca expressar grandezas com decimais inferiores a 1 quando existir unidade de grandeza inteira correspondente ('0,4 bilhoes' e erro editorial; a forma correta e '400 milhoes'; '0,2 milhoes' vira '200 mil'; '0,5 mil' vira '500'). O portal mantem script deterministico de verificacao.",
+  },
+  {
+    titulo: "Governanca e segregacao de editais",
+    corpo:
+      "Editais, certames, licitacoes e pregoes pertencem a rota especializada /editais e sao indexados no buscador global. Nao poluem a linha editorial de artigos do blog (/noticias) nem a pagina de novidades (/novidades).",
+  },
 ];
 
 export default function EditorialPage() {

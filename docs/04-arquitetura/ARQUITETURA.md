@@ -24,6 +24,8 @@
 - [Radar Paraopeba](#radar-paraopeba)
 - [Painel de edição](#painel-de-edição)
 - [Código IBGE](#código-ibge)
+- [Arquivamento Perene e Espelho no Cloudflare R2](#arquivamento-perene-e-espelho-no-cloudflare-r2)
+- [Governança dos 3 Grandes Eixos e Top 100 Páginas](#governança-dos-3-grandes-eixos-e-top-100-páginas)
 - [Decisões registradas](#decisões-registradas)
 - [Origem](#origem)
 
@@ -250,6 +252,20 @@ Templates de prompt para agendamento dos agentes offline:
 
 - O de 6 dígitos é o de 7 **sem o dígito verificador**: Betim é `3106705` (7) / `310670` (6); `3106200` é **Belo Horizonte**.
 - **Casamento por código, nunca por nome** — a grafia diverge entre tabelas oficiais.
+
+## Arquivamento Perene e Espelho no Cloudflare R2
+
+- **Pipeline de Documentos:** Coleta PDFs e atos oficiais das fontes governamentais através de `scripts/sincronizar-documentos-r2.mts`.
+- **Varredura Fail-Closed:** Todo arquivo passa por varredura de segurança contra vazamento de CPFs (mod-11) antes de qualquer upload.
+- **Bucket R2 (`controlepopular-fontes`):** Armazena cópias imutáveis sem onerar o bundle ou o repositório Git.
+- **Mapeamento e Fallback:** O mapa `apps/web/data/documentos-espelho-r2.json` e o resolvedor `apps/web/lib/documentos/espelho.ts` preferem o espelho R2 com fallback transparente para a URL original caso ainda não tenha subido.
+
+## Governança dos 3 Grandes Eixos e Top 100 Páginas
+
+- **3 Grandes Eixos:** O portal é estruturado em Direitos em Movimento (`/direitos-em-movimento`), Terra e Territórios (`/terra-e-territorios`) e Estado e Economia (`/estado-e-economia`), complementados pela Central ONSA.
+- **Catálogo Unificado:** As 100 páginas mais nobres do portal vivem em `apps/web/data/top-100-paginas.json` e são renderizadas com busca instantânea e filtros por eixo em `apps/web/app/indice/Catalogo100PaginasClient.tsx` na rota `/indice`.
+- **Navegação Global:** O menu dropdown da navbar (`TopNav.tsx`) cobre as principais subfrentes dos 3 eixos e oferece atalho direto para o catálogo completo.
+- **Segregação de Editais:** Licitações e certames diários não entram no Blog nem em Novidades; são exclusivos da rota `/editais` e indexados no `/busca`.
 
 ## Decisões registradas
 

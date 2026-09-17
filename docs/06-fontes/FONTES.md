@@ -44,6 +44,8 @@
 - [Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)](#atas-de-correição-do-trt-3-corregedoria-geral-da-justiça-do-trabalho-tst)
 - [Google Drive como repositório de documento público — as quatro armadilhas](#google-drive-como-repositório-de-documento-público-as-quatro-armadilhas)
 - [Anatel — Sistema Mosaico / Telefonia Móvel (SMP)](#anatel--sistema-mosaico--telefonia-móvel-smp)
+- [TSE DivulgaCandContas — Planos de Governo dos Eleitos](#tse-divulgacandcontas--planos-de-governo-dos-eleitos)
+- [Cloudflare R2 — Espelhamento Perene de Documentos Oficiais](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais)
 - [Decisões registradas](#decisões-registradas)
 
 ## Propósito
@@ -574,6 +576,38 @@ Medido em 2026-09-08. Acervo oficial de licenciamento de estações transmissora
 - **Varredura de CPF:** Passou por `scripts/checar-dado-pessoal-em-dado.py --extra` com 0 ocorrências de dados sensíveis ou pessoais.
 - **Ressalva editorial:** As manchas de cobertura representam raios teóricos de alcance de sinal a partir da posição e tecnologia das estações rádio-base licenciadas na Anatel; topografia acidentada e áreas de sombra locais podem atenuar o sinal real em campo.
 
+## TSE DivulgaCandContas — Planos de Governo dos Eleitos
+
+Medido em 2026-09-17. Acervo oficial de propostas e programas de governo submetidos à Justiça Eleitoral por candidatos eleitos no pleito municipal de 2024.
+
+### Origem e extração dos dados
+
+- **Fonte primária:** Tribunal Superior Eleitoral (TSE) — DivulgaCandContas (`https://divulgacandcontas.tse.jus.br/divulga/rest/v1/`).
+- **Coletor determinístico:** `scripts/baixar-planos-governo.mts`.
+- **Escopo prioritário:** Prefeitos eleitos nos 853 municípios de Minas Gerais, cidades polo e municípios da Bacia do Rio Paraopeba.
+- **Catálogo de metadados:** `apps/web/data/gestao/planos-governo-eleitos.json` (armazena código TSE, município, código IBGE, partido, coligação, URL oficial, hash SHA-256 e status do espelho).
+- **Armazenamento físico:** `documentos-site/planos-governo/{ano}/{ibge}-{slug}.pdf`.
+
+### Auditoria de privacidade e perenidade
+
+- **Varredura fail-closed:** Documentos são auditados por `scripts/checar-dado-pessoal-em-dado.py` contra CPFs e dados pessoais sensíveis antes do arquivamento.
+- **Espelho perene:** Os PDFs catalogados integram o pipeline de espelhamento imutável no Cloudflare R2 para prevenir links quebrados da Justiça Eleitoral em anos futuros.
+
+## Cloudflare R2 — Espelhamento Perene de Documentos Oficiais
+
+Medido em 2026-09-17. Mecanismo de arquivamento perene de atos oficiais, relatórios e documentos probatórios de interesse público citados pelo portal.
+
+### Motivação e desenho técnico
+
+- **Combate ao "Link Rot":** 27% dos links de estudos ambientais (EIA/RIMA) e atos municipais auditados anteriormente quebravam em 404 ao longo do tempo. O espelho garante preservação histórica para a sociedade civil e pesquisadores.
+- **Bucket R2:** Bucket S3-compatível da Cloudflare (`controlepopular-fontes`), permitindo tráfego de saída gratuito e custos previsíveis sem onerar o limite de tamanho do repositório Git ou os Workers.
+- **Pipeline de sincronização:** `scripts/sincronizar-documentos-r2.mts` lê todos os links de PDFs do portal, baixa o arquivo, calcula checksum SHA-256 e envia ao bucket com cabeçalho imutável.
+- **Mapeamento de espelho:** `apps/web/data/documentos-espelho-r2.json` indexa o par `url_original` → `url_r2` com tamanho e hash.
+- **Resolução dinâmica:** O helper `apps/web/lib/documentos/espelho.ts` resolve URLs em runtime (`resolverLinkDocumento`), usando o espelho R2 quando disponível e realizando fallback gracioso para a fonte original.
+- **Guarda de segurança:** Extração textual e varredura fail-closed por mod-11 CPF obrigatória antes de qualquer envio ao bucket.
+
 ## Decisões registradas
 
+- **2026-09-17:** Implementado espelhamento perene de PDFs e atos oficiais no Cloudflare R2 com hash SHA-256 e checagem prévia fail-closed contra CPFs. Baixados e arquivados planos de governo de prefeitos eleitos de MG via API DivulgaCandContas do TSE.
 - **2026-09-08:** Cobertura de telefonia móvel publicada em duas opções complementares (torres pontuais e manchas poligonais), priorizando Vales do Jequitinhonha/Mucuri e Bacia do Paraopeba antes do estado completo de Minas Gerais. Polígono estadual comprimido em gzip (`.geojson.gz`) para manter o asset bem abaixo do teto de 25 MiB da Cloudflare.
+

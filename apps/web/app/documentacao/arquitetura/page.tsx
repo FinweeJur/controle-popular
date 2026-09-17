@@ -43,8 +43,10 @@ export default function ArquiteturaPage() {
             <li><strong>Monorepo:</strong> <code className="text-xs">apps/web/</code> — rotas, componentes, lib, dados</li>
             <li><strong>Banco (leitura/escrita):</strong> Neon Postgres via Drizzle ORM</li>
             <li><strong>Banco (escrita ao vivo em Workers):</strong> Cloudflare D1</li>
+            <li><strong>Espelho de Documentos:</strong> Cloudflare R2 (S3-compatible) para guarda perene de PDFs</li>
             <li><strong>Deploy A:</strong> Cloudflare Workers via OpenNext — estático + ISR</li>
             <li><strong>Deploy B:</strong> Guará Cloud (Docker, região br-gru) via <code className="text-xs">output: standalone</code></li>
+            <li><strong>Guarda pré-build:</strong> Linter textual e normalizador de grandezas (<code className="text-xs">npm run lint:textos</code>) e varredura de CPF</li>
           </ul>
         </section>
 
@@ -65,6 +67,7 @@ export default function ArquiteturaPage() {
                   ["Bundle gzip por rota", "3 MiB", "Sem bibliotecas de gráfico — SVG inline ou CSS"],
                   ["Arquivos no Workers", "20.000", "Dado versionado em data/, compactado antes de commitar"],
                   ["Neon storage (Free)", "0,5 GB", "Novas coletas vão para D1 até renovação"],
+                  ["Documentos e PDFs", "Cloudflare R2", "Espelho perene sem inchar o repositório Git"],
                 ].map(([t, v, c]) => (
                   <tr key={t} className="odd:bg-surface-2/20">
                     <td className="px-4 py-3 font-medium">{t}</td>
@@ -75,6 +78,13 @@ export default function ArquiteturaPage() {
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-xl font-semibold">3 Grandes Eixos e Top 100 Páginas</h2>
+          <p className="text-sm text-text-soft">
+            O portal organiza o conhecimento cívico em três eixos mestres: Direitos em Movimento, Terra e Territórios, e Estado e Economia. As 100 páginas de maior relevância cívica compõem o catálogo central na rota <Link href="/indice" className="underline hover:text-primary">/indice</Link>, com busca instantânea e navegação no topo de todas as páginas.
+          </p>
         </section>
 
         <section className="space-y-3">
