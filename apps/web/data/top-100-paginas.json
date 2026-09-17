@@ -865,12 +865,12 @@
   },
   {
     "numero": 97,
-    "id": "noticias-radar-editais-20260916e788",
-    "titulo": "Exemplo do Blog — Radar de Editais Diários",
-    "href": "/noticias/radar-editais-20260916e788",
-    "eixo": "Central ONSA & Ferramentas",
-    "badge": "Jornalismo",
-    "resumo": "Cobertura detalhada de certames do Diário Oficial de MG com títulos acessíveis e objeto decomposto."
+    "id": "ambiental-barragens-descaracterizacao",
+    "titulo": "Descaracterização de Barragens a Montante em MG",
+    "href": "/ambiental/barragens/descaracterizacao",
+    "eixo": "Eixo 2: Terra e Territórios",
+    "badge": "Mineração",
+    "resumo": "Acompanhamento do cronograma e execução da descaracterização das 30 barragens a montante em Minas Gerais após Mariana e Brumadinho."
   },
   {
     "numero": 98,

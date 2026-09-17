@@ -32,7 +32,17 @@ export interface NoticiaPortal {
   paragrafos: string[];
 }
 
-const NOTICIAS: NoticiaPortal[] = noticiasRaw as NoticiaPortal[];
+/**
+ * As notícias do blog excluem certames do Diário Oficial (editais, pregões e leilões),
+ * que possuem rota própria em `/editais` e busca unificada em `/busca`.
+ * O blog fica restrito a artigos analíticos, relatórios técnicos e investigações cívicas.
+ */
+const NOTICIAS: NoticiaPortal[] = (noticiasRaw as NoticiaPortal[]).filter(
+  (n) =>
+    !n.slug.startsWith("radar-editais") &&
+    n.categoria !== ("Edital" as any) &&
+    !(n.palavrasChave || []).some((k) => k.toLowerCase().includes("radar-editais"))
+);
 
 export function listarNoticiasPortal(): NoticiaPortal[] {
   return NOTICIAS;

@@ -17,6 +17,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "lint:textos": "tsx ../../scripts/verificar-e-corrigir-textos.mts --check",
+    "fix:textos": "tsx ../../scripts/verificar-e-corrigir-textos.mts --fix",
     "//test": "Duas suites, dois executores, e nao e por gosto: `lib/` e TypeScript e roda no vitest; o globo 3D e ES modules puros servidos como estatico de `public/`, sem build, e seus testes usam `node:test`. O `include` do vitest.config.ts e `lib/**/*.test.ts`, entao os testes do globo NAO eram executados por ninguem — 300+ linhas passando por nunca terem rodado, entre elas as que garantem que a exportacao nao vaza dado pessoal e nao solta camada ficticia num arquivo. `npm test` agora roda as duas.",
     "test": "npm run test:lib && npm run test:globo",
     "test:lib": "node scripts/testar-lib.mjs",

@@ -85,7 +85,11 @@ function montarNovidades(): ItemNovidade[] {
       link: `/noticias/${n.slug}`,
     }));
   const outras: ItemNovidade[] = (novidades as ItemNovidade[]).filter(
-    (item) => !item.link?.startsWith("/noticias/")
+    (item) =>
+      !item.link?.startsWith("/noticias/") &&
+      !item.link?.startsWith("/editais") &&
+      !item.titulo.toLowerCase().includes("edital") &&
+      item.frente?.toLowerCase() !== "editais"
   );
   return [...dasPublicacoes, ...outras]
     .sort((a, b) => b.data.localeCompare(a.data))
