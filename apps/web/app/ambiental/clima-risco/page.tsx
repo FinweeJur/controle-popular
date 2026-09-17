@@ -99,6 +99,15 @@ export default function PaginaBasesClimaRisco() {
             rotulo="Disparar Alerta de Risco Climático"
           />
         </div>
+        {/* EPÍGRAFE EDITORIAL */}
+        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
+          <p>
+            &ldquo;Não é só onde o risco está, é quantas pessoas vivem lá. Índice composto não é medida: contagem bruta (gente exposta, domicílios, milímetros de chuva) é fato mensurável, enquanto o modelo apenas contextualiza.&rdquo;
+          </p>
+          <p className="mt-1 text-xs not-italic font-medium text-foreground">
+            — Diretriz Editorial de Vulnerabilidade e Risco Socioambiental
+          </p>
+        </div>
       </header>
 
       {/* 1. CARTÕES DE STATUS DE TOPO */}

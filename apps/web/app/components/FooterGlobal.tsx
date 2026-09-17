@@ -55,6 +55,9 @@ const LINKS_PORTAL = [
   // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
   { label: "Índice do portal", href: "/indice" },
   { label: "Blog & Relatórios", href: "/noticias" },
+  { label: "Editais & Licitações", href: "/editais" },
+  { label: "Estudos Rurais", href: "/estudos-rurais" },
+  { label: "Documentação Técnica", href: "/documentacao" },
   { label: "Governos & Promessas", href: "/governo" },
   { label: "Instituições & Secretarias", href: "/instituicoes" },
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
@@ -67,20 +70,8 @@ const LINKS_PORTAL = [
   // decide se clica. Mesmo raciocínio de `nomeCurto` em `lib/zonas.ts`.
   { label: "Governo federal nas cidades de MG", href: "/dados/comunicabr" },
   { label: "Metodologia", href: "/sobre#metodologia" },
-  // "Termos" existiu no rodapé do eixo Cidades apontando para `/termos`, rota
-  // que nunca existiu — 404 em toda página daquele eixo, achado na auditoria
-  // de hiperlinks de 13/08 e resolvido lá REMOVENDO o link, porque não havia
-  // destino. Agora há (`app/termos/page.tsx`), e ele volta AQUI, não no
-  // `[municipio]/components/Footer.tsx`: a página fala do portal inteiro, e
-  // este é o único rodapé que aparece nas cinco frentes. Voltar no rodapé de
-  // cidade cobriria uma zona só e ainda exigiria `<a>` cru no meio de um bloco
-  // de `<Link>` de zona — o wrapper prefixaria `/betim/termos`, a mesma classe
-  // de 404 mudo que o arquivo de lá documenta ter acontecido três vezes.
   { label: "Termos e origem dos dados", href: "/termos" },
   { label: "Sobre o projeto", href: "/sobre" },
-  // Para jornalista que chega pelo rodapé: o portal fala de imprensa na raiz
-  // (`app/imprensa/page.tsx`), mesma regra de `/sobre` e `/termos` — assunto
-  // do portal inteiro não mora dentro de uma zona.
   { label: "Imprensa", href: "/imprensa" },
 ];
 

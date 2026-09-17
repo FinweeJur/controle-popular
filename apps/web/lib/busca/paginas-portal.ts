@@ -485,6 +485,36 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     badgeCor: "var(--cp-primary)",
     palavrasChave: ["indice", "mapa", "todas as paginas", "sumario", "navegacao"],
   },
+  {
+    id: "editais-hub",
+    titulo: "Radar de Editais e Licitações — Diário Oficial MG",
+    descricao: "50+ editais e chamamentos públicos de interesse social coletados do Diário Oficial de MG, filtráveis por órgão, área e situação.",
+    href: "/editais",
+    frente: "geral",
+    rotulo: "Editais · DO-MG",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: ["editais", "licitacoes", "chamamento", "diario oficial", "mg", "contratacao", "concurso", "pregao"],
+  },
+  {
+    id: "estudos-rurais-hub",
+    titulo: "Estudos Rurais e Territoriais",
+    descricao: "Análises sobre reforma agrária, assentamentos, função social da terra e territórios quilombolas em Minas Gerais.",
+    href: "/estudos-rurais",
+    frente: "estudos-rurais",
+    rotulo: "Estudos Rurais",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: ["estudos rurais", "reforma agraria", "assentamentos", "quilombolas", "territorio", "fundiario", "rural"],
+  },
+  {
+    id: "documentacao-hub",
+    titulo: "Documentação Técnica do Portal",
+    descricao: "Como o portal funciona: arquitetura, fontes, API pública e princípios editoriais. Para jornalistas, pesquisadores e desenvolvedores.",
+    href: "/documentacao",
+    frente: "geral",
+    rotulo: "Documentação",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: ["documentacao", "api", "fontes", "arquitetura", "codigo aberto", "como funciona", "metodologia"],
+  },
 ];
 
 /**

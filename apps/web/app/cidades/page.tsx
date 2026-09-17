@@ -96,6 +96,15 @@ export default function PaginaCidadesEstrategicas() {
             contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
           </p>
 
+          {/* EPÍGRAFE EDITORIAL */}
+          <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
+            <p>
+              &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
+            </p>
+            <p className="mt-1 text-xs not-italic font-medium text-foreground">
+              — Diretriz de Expansão Nacional e Tipagem Territorial do Controle Popular
+            </p>
+          </div>
         </header>
 
         {/* Banner de atalho para Varas e Fóruns das Cidades */}

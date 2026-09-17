@@ -37,6 +37,15 @@ export default function PaginaCentralAlertas() {
           para receber avisos automáticos no Telegram e por e-mail, ou use nosso planejador
           para disparar resumos verificados com provas diretamente no WhatsApp.
         </p>
+        {/* EPÍGRAFE EDITORIAL */}
+        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
+          <p>
+            &ldquo;Dado público na gaveta não muda a realidade. Notificação rápida e compartilhamento com fontes oficiais colocam a informação na mão de quem defende a comunidade, sem intermediários.&rdquo;
+          </p>
+          <p className="mt-1 text-xs not-italic font-medium text-foreground">
+            — Diretriz de Ação e Comunicação Cidadã do Controle Popular
+          </p>
+        </div>
       </header>
 
       {/* CARTOES DE STATUS DE CANAIS */}

@@ -35,8 +35,8 @@ const NUMEROS_CHAVE: Array<{
     href: "/betim/prefeitura/diario",
   },
   {
-    numero: "6 cidades",
-    oQue: "com contratos, licitações, diários oficiais, repasses federais e finanças publicados",
+    numero: "199 cidades",
+    oQue: "estratégicas de Minas Gerais monitoradas: contratos, licitações, diários oficiais, repasses e finanças",
     pagina: "Home do portal",
     href: "/",
   },
@@ -53,10 +53,16 @@ const NUMEROS_CHAVE: Array<{
     href: "/paraopeba",
   },
   {
-    numero: "R$ 677 mi",
-    oQue: "destinados a Minas Gerais pelo Acordo de Mariana",
+    numero: "R$ 171 bi",
+    oQue: "Acordo de Mariana — repactuação histórica de reparação socioambiental de Minas Gerais",
     pagina: "Ambiental",
     href: "/ambiental",
+  },
+  {
+    numero: "50+",
+    oQue: "editais e chamamentos de interesse social do Diário Oficial de MG, com radar diário",
+    pagina: "Editais & Licitações",
+    href: "/editais",
   },
   {
     numero: "387",

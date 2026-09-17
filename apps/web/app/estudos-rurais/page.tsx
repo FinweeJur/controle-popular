@@ -12,6 +12,7 @@ import {
 } from "@/lib/estudos-rurais/dados";
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelEstudosRurais from "./PainelEstudosRurais";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * `/estudos-rurais` — o que se publica sobre o rural dos vales do
@@ -255,6 +256,31 @@ export default function EstudosRuraisPage() {
           checkpoint para retomar — ver <code className="text-[.9em]">scripts/coletar-estudos-rurais.mts</code>.
         </p>
       </section>
+
+      {/* ─── PÁGINAS RELACIONADAS ────────────────────────────────────── */}
+      <nav aria-label="Páginas relacionadas" className="mt-8 border-t border-border pt-6">
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-soft">
+          Páginas relacionadas
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {[
+            { href: "/funcaosocialterra", titulo: "Função Social da Terra", desc: "Mapa 3D, unidades de conservação, assentamentos e CAR em MG." },
+            { href: "/editais", titulo: "Radar de Editais", desc: "Editais e chamamentos de interesse social do Diário Oficial de MG." },
+            { href: "/documentacao", titulo: "Documentação Técnica", desc: "Metodologia científica, fontes oficiais e APIs abertas." },
+          ].map((p) => (
+            <a
+              key={p.href}
+              href={p.href}
+              className="group rounded-lg border border-border bg-surface-2/50 p-3 text-sm transition hover:border-primary hover:bg-surface-2"
+            >
+              <p className="font-medium text-text group-hover:text-primary">{p.titulo}</p>
+              <p className="mt-0.5 text-xs text-text-soft">{p.desc}</p>
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <FooterGlobal />
     </div>
   );
 }

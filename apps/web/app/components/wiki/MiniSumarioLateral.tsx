@@ -79,7 +79,7 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
   return (
     <nav
       aria-label="Navegação rápida por seções"
-      className="fixed right-4 top-24 z-30 hidden flex-col items-end gap-1.5 transition-all xl:flex"
+      className="fixed right-6 2xl:right-8 top-24 z-30 hidden flex-col items-end gap-1.5 transition-all xl:flex"
       onMouseEnter={() => setExpandido(true)}
       onMouseLeave={() => setExpandido(false)}
     >

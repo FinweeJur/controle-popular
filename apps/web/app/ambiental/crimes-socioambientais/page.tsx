@@ -41,6 +41,10 @@ export default function PaginaCrimesSocioambientais() {
         <div className="mt-4 flex flex-wrap gap-2">
           <BotaoAlertaContextual tipo="resumo_pagina" titulo="Biblioteca Unificada dos Desastres de Barragens" orgaoTerritorio="Minas Gerais, Espírito Santo e Bahia" identificador="ONSA / Controle Popular" link="https://controlepopular.com.br/ambiental/crimes-socioambientais" resumo={`${total_documentos} laudos periciais, termos de ajustamento e estudos de saúde das bacias do Paraopeba e Rio Doce.`} rotulo="Disparar Acervo Documental no WhatsApp" />
         </div>
+        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
+          <p>&ldquo;Memória não prescreve. Documentar o que a perícia mediu e o que a justiça homologou é a única garantia de que o dano não seja apagado pelo tempo.&rdquo;</p>
+          <p className="mt-1 text-xs not-italic font-medium text-foreground">— Diretriz Editorial ONSA — Observatório Nacional Socioambiental</p>
+        </div>
       </header>
 
       <section aria-label="Indicadores da biblioteca" className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">

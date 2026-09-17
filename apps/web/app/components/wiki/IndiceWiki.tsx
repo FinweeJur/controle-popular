@@ -19,16 +19,19 @@ export default function IndiceWiki({ itens }: { itens: ItemIndice[] }) {
   if (itens.length < 2) return null;
 
   return (
-    <nav aria-label="Sumario desta pagina" className="my-6 rounded-lg border border-border bg-surface p-4">
-      <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-text-soft">
-        Nesta pagina
+    <nav
+      aria-label="Sumário desta página"
+      className="my-8 rounded-2xl border border-border bg-surface-2/70 p-5 sm:p-6 shadow-sm backdrop-blur"
+    >
+      <h2 className="font-display text-xs font-semibold uppercase tracking-wider text-text-soft">
+        Nesta página ({itens.length} seções)
       </h2>
-      <ol className="mt-2 space-y-1">
+      <ol className="mt-3 space-y-1.5 border-t border-border/80 pt-3">
         {itens.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="text-[.95em] text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+              className="inline-block text-[.95em] text-primary hover:underline hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-focus transition-colors"
             >
               {item.titulo}
             </a>
