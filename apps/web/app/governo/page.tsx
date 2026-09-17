@@ -28,7 +28,7 @@ const LINKS_RELACIONADOS = [
   },
   {
     href: "/cidades",
-    titulo: "199 Cidades Estratégicas do Brasil",
+    titulo: "203 Cidades Estratégicas do Brasil",
     descricao: "Acompanhamento das capitais e principais polos do interior com dados orçamentários e contratos.",
   },
   {

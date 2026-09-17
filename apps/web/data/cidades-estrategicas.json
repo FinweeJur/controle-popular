@@ -2,16 +2,16 @@
   "gerado_em": "2026-09-01",
   "fonte": "seeds 0027/0082 (capitais conferidas) + polos-interior-ibge.json (172 polos conferidos no IBGE)",
   "conferencia": "capitais parseadas das migrations de seed verificadas; polos do inventario IBGE por nome normalizado + UF",
-  "total": 199,
+  "total": 203,
   "por_regiao": {
     "Norte": 29,
     "Nordeste": 54,
-    "Sudeste": 54,
+    "Sudeste": 58,
     "Sul": 38,
     "Centro-Oeste": 24
   },
   "por_tipo": {
-    "polo-interior": 172,
+    "polo-interior": 176,
     "capital": 27
   },
   "cidades": [

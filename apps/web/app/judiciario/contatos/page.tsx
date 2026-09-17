@@ -41,8 +41,8 @@ const LINKS_RELACIONADOS = [
   },
   {
     href: "/cidades",
-    titulo: "199 Cidades Estratégicas do Brasil",
-    descricao: "Painel com todas as 27 capitais e 172 polos do interior com dados municipais integrados.",
+    titulo: "203 Cidades Estratégicas do Brasil",
+    descricao: "Painel com todas as 27 capitais e 176 polos do interior com dados municipais integrados.",
   },
 ];
 

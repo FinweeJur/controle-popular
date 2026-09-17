@@ -233,7 +233,7 @@ export default function PainelInformacaoClient({
               <span className="text-xs text-text-soft">canais</span>
             </div>
             <p className="mt-1 text-xs text-text-soft">
-              199 Prefeituras e 199 Câmaras Legislativas municipais
+              203 Prefeituras e 203 Câmaras Legislativas municipais
             </p>
           </div>
 
@@ -315,7 +315,7 @@ export default function PainelInformacaoClient({
                 <span className="font-medium text-text flex items-center gap-1.5">
                   <Landmark className="h-3.5 w-3.5 text-blue-500" /> Prefeituras Municipais (Executivo)
                 </span>
-                <span className="font-mono text-text-soft">199 canais (44,7%)</span>
+                <span className="font-mono text-text-soft">203 canais (44,7%)</span>
               </div>
               <div className="mt-1 h-2.5 w-full rounded-full bg-surface-2 overflow-hidden">
                 <div className="h-full rounded-full bg-blue-500 transition-all" style={{ width: "44.7%" }} />
@@ -327,7 +327,7 @@ export default function PainelInformacaoClient({
                 <span className="font-medium text-text flex items-center gap-1.5">
                   <Building2 className="h-3.5 w-3.5 text-amber-500" /> Câmaras Legislativas Municipais
                 </span>
-                <span className="font-mono text-text-soft">199 canais (44,7%)</span>
+                <span className="font-mono text-text-soft">203 canais (44,7%)</span>
               </div>
               <div className="mt-1 h-2.5 w-full rounded-full bg-surface-2 overflow-hidden">
                 <div className="h-full rounded-full bg-amber-500 transition-all" style={{ width: "44.7%" }} />
@@ -493,7 +493,7 @@ export default function PainelInformacaoClient({
                   : "bg-surface-2 text-text-soft hover:bg-surface-3 hover:text-text"
               }`}
             >
-              🏛️ Prefeituras (199)
+              🏛️ Prefeituras (203)
             </button>
 
             <button
@@ -508,7 +508,7 @@ export default function PainelInformacaoClient({
                   : "bg-surface-2 text-text-soft hover:bg-surface-3 hover:text-text"
               }`}
             >
-              ⚖️ Câmaras (199)
+              ⚖️ Câmaras (203)
             </button>
 
             <button

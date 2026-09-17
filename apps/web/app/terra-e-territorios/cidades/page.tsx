@@ -9,9 +9,9 @@ import {
 import TabelaCidadesClient from '@/app/cidades/TabelaCidadesClient';
 
 export const metadata: Metadata = {
-  title: '199 Cidades Estratégicas — Eixo Terra e Territórios | Controle Popular',
+  title: '203 Cidades Estratégicas — Eixo Terra e Territórios | Controle Popular',
   description:
-    'Rede nacional de fiscalização municipal em 27 capitais e 172 polos regionais do interior do Brasil.',
+    'Rede nacional de fiscalização municipal em 27 capitais e 176 polos regionais do interior do Brasil.',
 };
 
 export default function CidadesEstrategicasEixoPage() {
@@ -24,7 +24,7 @@ export default function CidadesEstrategicasEixoPage() {
       subfrenteId="cidades"
       heroImageSrc="/images/eixos/terra-e-territorios-ipe-lobo.jpg"
       heroImageAlt="Lobo-guará e ipê amarelo no topo da serra"
-      heroCaption="Rede de fiscalização municipal: 199 polos regionais e capitais acompanhados com dados oficiais e cruzamentos leigos."
+      heroCaption="Rede de fiscalização municipal: 203 polos regionais e capitais acompanhados com dados oficiais e cruzamentos leigos."
     >
       {/* CABEÇALHO COM CONTADORES E FILTROS */}
       <section className="mb-8">
@@ -83,7 +83,7 @@ export default function CidadesEstrategicasEixoPage() {
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="font-display text-xl font-bold text-foreground">
-                Catálogo das 199 Cidades Estratégicas
+                Catálogo das 203 Cidades Estratégicas
               </h2>
               <p className="text-xs text-muted mt-1">
                 Filtre por nome, UF ou região geográfica para acessar o perfil individual de cada município

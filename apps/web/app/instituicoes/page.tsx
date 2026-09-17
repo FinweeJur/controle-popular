@@ -37,8 +37,8 @@ const LINKS_RELACIONADOS = [
   },
   {
     href: "/cidades",
-    titulo: "199 Cidades Estratégicas do Brasil",
-    descricao: "Plano mestre de fiscalização municipal cobrindo as 27 capitais e 172 polos regionais do interior.",
+    titulo: "203 Cidades Estratégicas do Brasil",
+    descricao: "Plano mestre de fiscalização municipal cobrindo as 27 capitais e 176 polos regionais do interior.",
   },
 ];
 

@@ -13,6 +13,7 @@ import {
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelEstudosRurais from "./PainelEstudosRurais";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
 
 /**
  * `/estudos-rurais` — o que se publica sobre o rural dos vales do
@@ -44,10 +45,19 @@ export const metadata: Metadata = metadataEditavel("/estudos-rurais", {
 });
 
 export default function EstudosRuraisPage() {
+  const anos = listarAnos();
+  const fontes = listarFontes();
+  const tipos = listarTipos();
   const maxAno = Math.max(1, ...SERIE_GRAFICO.map((a) => a.total));
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <DatasetJsonLd
+        name="Acervo de Estudos Rurais e Territoriais dos Vales do Jequitinhonha e Mucuri"
+        description="Dataset público de pesquisas acadêmicas, dissertações e relatórios sobre o meio rural, assentamentos e soberania alimentar em MG."
+        url="/estudos-rurais"
+        keywords={["estudos rurais", "jequitinhonha", "mucuri", "ufvjm", "reforma agrária", "agroecologia", "minas gerais"]}
+      />
       <header className="space-y-4">
         <p className="text-[.82em] font-semibold uppercase tracking-wide text-text-soft">
           Estudos Rurais

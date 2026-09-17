@@ -124,9 +124,9 @@ export default function TabelaCidadesClient({ cidades }: Props) {
               className="rounded-lg border border-border bg-surface px-3 py-2 text-xs text-foreground focus:border-primary focus:outline-none"
               aria-label="Filtrar por tipo"
             >
-              <option value="todos">Todos os Tipos (199)</option>
+              <option value="todos">Todos os Tipos (203)</option>
               <option value="capital">Apenas Capitais (27)</option>
-              <option value="polo-interior">Polos do Interior (172)</option>
+              <option value="polo-interior">Polos do Interior (176)</option>
             </select>
           </div>
         </div>

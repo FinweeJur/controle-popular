@@ -390,8 +390,15 @@ export const FRENTES: SeuNonoFrente[] = [
       },
       {
         id: "orcamento-e-compras",
-        titulo: "Orçamento & Compras Públicas",
+        titulo: "Orçamento, Editais & Compras Públicas",
         perguntas: [
+          {
+            id: "radar-editais-mg",
+            pergunta: "Como funciona o Radar de Editais e Chamamentos do Diário Oficial de MG?",
+            resposta:
+              "O Radar varre diariamente o Diário Oficial de MG e reúne mais de 50 certames de interesse social (medicamentos, merenda, obras e cultura) com filtros por órgão, situação e exportação em CSV.",
+            link: { href: "/editais", texto: "Acessar Radar de Editais" },
+          },
           {
             id: "orcamento-mg",
             pergunta: "Onde consultar a arrecadação de ICMS e o orçamento de Minas Gerais?",
@@ -405,6 +412,31 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "Reportagens investigativas analisam editais, dispensas de licitação e contratos de cidades de médio e pequeno porte.",
             link: { href: "/noticias/estado-e-economia-pncp-compras", texto: "Auditoria do PNCP" },
+          },
+        ],
+      },
+      {
+        id: "documentacao-e-transparencia",
+        titulo: "Documentação Técnica, APIs & Transparência",
+        perguntas: [
+          {
+            id: "documentacao-tecnica-portal",
+            pergunta: "Onde consultar a documentação técnica, regras de arquitetura e APIs abertas?",
+            resposta:
+              "A seção de Documentação estilo GitBook reúne guias de arquitetura (duplo deploy), fontes de dados oficiais, princípios editoriais e 3 endpoints de API JSON abertos e gratuitos.",
+            link: { href: "/documentacao", texto: "Ver Documentação Técnica" },
+            links: [
+              { href: "/documentacao/api-publica", texto: "API Pública" },
+              { href: "/documentacao/arquitetura", texto: "Arquitetura" },
+              { href: "/termos", texto: "Termos & LGPD" },
+            ],
+          },
+          {
+            id: "paginas-mais-acessadas",
+            pergunta: "Quais são as páginas e dados mais consultados pelos cidadãos?",
+            resposta:
+              "O painel de Páginas Populares ranqueia em tempo real as consultas sobre contratos municipais, barragens de mineração e repasses de convênios em todo o estado.",
+            link: { href: "/dados/populares", texto: "Ver Páginas Populares" },
           },
         ],
       },

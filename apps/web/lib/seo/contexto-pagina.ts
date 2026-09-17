@@ -743,30 +743,114 @@ export const CONTEXTOS: ContextoPagina[] = [
     ],
   },
 
-  // ─── ESTADO E ECONOMIA ───
+  // ─── RADAR DE EDITAIS ───
   {
-    padrao: "^/estado-e-economia",
+    padrao: "^/editais",
     sugestoes: [
       {
-        pergunta: "Como fiscalizar as grandes mineradoras e seus acionistas?",
+        pergunta: "Como consultar a documentação técnica e as APIs de dados abertos?",
         resposta:
-          "O portal mapeia os maiores fundos de investimento globais da Vale (BlackRock, Capital Group, Previ) e processos.",
-        link: "/empresas",
-        linkTexto: "Painel de Grandes Empresas",
+          "Consulte os endpoints JSON abertos e a arquitetura do portal na Documentação Técnica.",
+        link: "/documentacao",
+        linkTexto: "Ver Documentação Técnica",
       },
       {
-        pergunta: "Quanto a União transfere aos 853 municípios de Minas Gerais?",
+        pergunta: "Onde consultar termos de ajuste de conduta (TACs) ambientais em MG?",
         resposta:
-          "Consulte R$ 139 bilhões em transferências federais do ComunicaBR por município mineiro.",
+          "O acervo de TACs reúne mais de 8.900 termos do MPMG e IBAMA com valores e obrigações.",
+        link: "/ambiental/tac",
+        linkTexto: "Ver TACs Ambientais",
+      },
+      {
+        pergunta: "Quanto a União transfere aos municípios de MG pelo ComunicaBR?",
+        resposta:
+          "Consulte transferências federais para saúde, educação e programas sociais nos 853 municípios.",
         link: "/dados/comunicabr",
-        linkTexto: "ComunicaBR — Repasses Federais",
+        linkTexto: "Transferências ComunicaBR",
+      },
+    ],
+  },
+
+  // ─── ESTUDOS RURAIS ───
+  {
+    padrao: "^/estudos-rurais",
+    sugestoes: [
+      {
+        pergunta: "Como visualizar assentamentos e terras tradicionais no mapa 3D?",
+        resposta:
+          "Abra o Globo 3D de Terras com camadas de Unidades de Conservação, CAR e requerimentos minerários.",
+        link: "/funcaosocialterra/mapa",
+        linkTexto: "Abrir Globo 3D de Terras",
       },
       {
-        pergunta: "Quem fiscaliza os tribunais e o orçamento da Justiça em MG?",
+        pergunta: "Onde ver a qualidade da água dos rios e bacias dos Vales?",
         resposta:
-          "Fichas completas do TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi) e Defensoria Pública (R$ 1,10 bi).",
-        link: "/judiciario/instituicoes",
-        linkTexto: "Orçamento da Justiça MG",
+          "Acompanhe as bacias do Jequitinhonha, Mucuri, Doce e São Francisco no painel hidrográfico.",
+        link: "/ambiental/nossos-rios",
+        linkTexto: "Ver Nossos Rios & Bacias",
+      },
+      {
+        pergunta: "Como consultar os editais e chamamentos públicos de MG?",
+        resposta:
+          "O Radar de Editais do Diário Oficial de MG reúne certames de saúde, educação e agricultura familiar.",
+        link: "/editais",
+        linkTexto: "Ver Radar de Editais",
+      },
+    ],
+  },
+
+  // ─── DOCUMENTAÇÃO TÉCNICA ───
+  {
+    padrao: "^/documentacao",
+    sugestoes: [
+      {
+        pergunta: "Onde ver a lista completa de certames no Radar de Editais?",
+        resposta:
+          "Consulte certames públicos ativos do Diário Oficial de MG com filtros e download em CSV.",
+        link: "/editais",
+        linkTexto: "Acessar Radar de Editais",
+      },
+      {
+        pergunta: "Onde encontrar pesquisas e estudos territoriais do campo?",
+        resposta:
+          "Hub com artigos, teses e dissertações do PPGER/UFVJM sobre dinâmicas agrárias.",
+        link: "/estudos-rurais",
+        linkTexto: "Ver Estudos Rurais",
+      },
+      {
+        pergunta: "Quais são as diretrizes de privacidade e LGPD do portal?",
+        resposta:
+          "Conheça os termos de uso, a política de zero cookies/rastreadores e proteção de dados pessoais.",
+        link: "/termos",
+        linkTexto: "Termos & Privacidade",
+      },
+    ],
+  },
+
+  // ─── PÁGINAS POPULARES ───
+  {
+    padrao: "^/dados/populares",
+    sugestoes: [
+      {
+        pergunta: "Onde fiscalizar contratos e compras de cidades do interior?",
+        resposta:
+          "Consulte o painel de 199 Cidades Estratégicas com orçamentos, leitos SUS e compras públicas.",
+        link: "/cidades",
+        linkTexto: "199 Cidades Estratégicas",
+      },
+      {
+        pergunta: "Como checar a estabilidade das barragens de mineração?",
+        resposta:
+          "O painel do SIGBM/ANM monitora 942 estruturas com alertas de emergência e descaracterização.",
+        link: "/ambiental/barragens",
+        linkTexto: "Barragens de Mineração",
+      },
+      {
+        pergunta: "Onde consultar chamamentos e licitações públicas de MG?",
+        resposta:
+          "O Radar de Editais varre diariamente o Diário Oficial com foco em saúde, merenda e cultura.",
+        link: "/editais",
+        linkTexto: "Radar de Editais",
       },
     ],
   },

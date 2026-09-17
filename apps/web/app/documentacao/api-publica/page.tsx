@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -27,6 +27,12 @@ const ENDPOINTS = [
     path: "/api/v1/paraopeba",
     descricao: "Repasses financeiros do Acordo de Brumadinho por municipio da bacia",
     exemplo: '{"municipio":"Brumadinho","codigo":"3109006","repasse_total":120000000}',
+  },
+  {
+    metodo: "GET",
+    path: "/api/v1/bases",
+    descricao: "Catalogo unificado das 18 bases de dados oficiais do portal com volumetria e fontes",
+    exemplo: '{"totalBases":18,"bases":[{"id":"editais-mg","nome":"Radar de Editais"}]}',
   },
 ];
 

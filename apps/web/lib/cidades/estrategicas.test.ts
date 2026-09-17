@@ -9,10 +9,10 @@ import {
   obterEstatisticasExpansao,
 } from "./estrategicas";
 
-describe("lib/cidades/estrategicas — 199 Cidades Estratégicas", () => {
-  it("deve carregar exatamente as 199 cidades estratégicas do catálogo nacional", () => {
+describe("lib/cidades/estrategicas — 203 Cidades Estratégicas", () => {
+  it("deve carregar exatamente as 203 cidades estratégicas do catálogo nacional", () => {
     const cidades = listarCidadesEstrategicas();
-    expect(cidades.length).toBe(199);
+    expect(cidades.length).toBe(203);
   });
 
   it("deve conter exatamente as 27 capitais de estado e DF", () => {
@@ -57,9 +57,9 @@ describe("lib/cidades/estrategicas — 199 Cidades Estratégicas", () => {
 
   it("deve retornar estatísticas de expansão válidas", () => {
     const stats = obterEstatisticasExpansao();
-    expect(stats.totalCidades).toBe(199);
+    expect(stats.totalCidades).toBe(203);
     expect(stats.totalCapitais).toBe(27);
-    expect(stats.totalPolosInterior).toBe(172);
+    expect(stats.totalPolosInterior).toBe(176);
     expect(stats.totalEstados).toBe(27);
   });
 });

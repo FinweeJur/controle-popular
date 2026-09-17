@@ -303,25 +303,68 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
-    item("/busca", { changeFrequency: "weekly", priority: 0.6 }),
-    item("/cidades", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/busca", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/cidades", { changeFrequency: "daily", priority: 0.9 }),
+    item("/editais", { changeFrequency: "daily", priority: 0.9 }),
+    item("/estudos-rurais", { changeFrequency: "weekly", priority: 0.8 }),
     item("/tecnologia", { changeFrequency: "weekly", priority: 0.7 }),
     item("/sobre", { changeFrequency: "yearly", priority: 0.4 }),
-    item("/imprensa", { changeFrequency: "monthly", priority: 0.5 }),
-    item("/indice", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/imprensa", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/termos", { changeFrequency: "yearly", priority: 0.4 }),
+    item("/indice", { changeFrequency: "daily", priority: 0.8 }),
+    item("/alertas", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/dados/populares", { changeFrequency: "daily", priority: 0.8 }),
+    item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.7 }),
+    item("/governo", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/instituicoes", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/empresas", { changeFrequency: "weekly", priority: 0.8 }),
+
+    // Documentação técnica (GitBook público)
+    item("/documentacao", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/documentacao/arquitetura", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/documentacao/fontes-e-coletas", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/documentacao/api-publica", { changeFrequency: "monthly", priority: 0.7 }),
+    item("/documentacao/editorial", { changeFrequency: "monthly", priority: 0.6 }),
+
+    // Eixo 1: Direitos em Movimento
     item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/estado-e-economia", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/educacao", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/ajuda", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/direitos-em-movimento/denuncia", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/direitos-em-movimento/informacao", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/direitos-em-movimento/conselhos", { changeFrequency: "weekly", priority: 0.7 }),
+
+    // Eixo 2 & 3: Territórios e Ambiente (ONSA)
     item("/terra-e-territorios", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/ambiental", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/estado-e-economia", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental", { changeFrequency: "daily", priority: 0.9 }),
     item("/ambiental/mariana", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental/barragens", { changeFrequency: "daily", priority: 0.9 }),
+    item("/ambiental/barragens/descaracterizacao", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/ambiental/clima-risco", { changeFrequency: "daily", priority: 0.8 }),
+    item("/ambiental/crimes-socioambientais", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental/copam", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental/licenciamento", { changeFrequency: "weekly", priority: 0.8 }),
     item("/ambiental/tac", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/paraopeba", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental/legislacao", { changeFrequency: "monthly", priority: 0.6 }),
+
+    // Paraopeba & Bacia
+    item("/paraopeba", { changeFrequency: "daily", priority: 0.9 }),
     item("/paraopeba/execucao", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/funcaosocialterra", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/funcaosocialterra/mapa", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/empresas", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/paraopeba/vale", { changeFrequency: "daily", priority: 0.8 }),
+    item("/paraopeba/entenda", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/paraopeba/biblioteca", { changeFrequency: "monthly", priority: 0.6 }),
+
+    // Função Social da Terra
+    item("/funcaosocialterra", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/funcaosocialterra/mapa", { changeFrequency: "weekly", priority: 0.8 }),
+
+    // Judiciário
+    item("/judiciario/inspecoes", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/judiciario/recomendacoes", { changeFrequency: "weekly", priority: 0.8 }),
   ];
 
   const cidades = await listarCidades();

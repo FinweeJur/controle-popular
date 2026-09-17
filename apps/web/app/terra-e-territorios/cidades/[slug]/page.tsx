@@ -127,7 +127,7 @@ export default async function PaginaIndividualCidade({ params }: Props) {
           {cidade.nome}
         </h1>
         <p className="mt-2 text-sm text-muted">
-          Polo municipal integrante da rede de 199 cidades estratégicas com fiscalização de saúde, educação e gastos públicos.
+          Polo municipal integrante da rede de 203 cidades estratégicas com fiscalização de saúde, educação e gastos públicos.
         </p>
 
         {/* ═══ 5 CARTÕES DE INDICADORES PRINCIPAIS ═══ */}

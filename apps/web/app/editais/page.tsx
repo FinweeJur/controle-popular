@@ -11,6 +11,7 @@ import {
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelEditais from "./PainelEditais";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
 
 export const metadata: Metadata = metadataEditavel("/editais", {
   title: "Editais e Chamamentos Públicos de Minas Gerais — Controle Popular",
@@ -32,6 +33,12 @@ export default function EditaisPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <DatasetJsonLd
+        name="Radar de Editais e Chamamentos Públicos de Minas Gerais"
+        description="Dataset público e aberto com 50+ editais, licitações e chamamentos de interesse social coletados do Diário Oficial de Minas Gerais."
+        url="/editais"
+        keywords={["editais", "licitações", "compras públicas", "diário oficial", "minas gerais", "transparência"]}
+      />
       {/* ─── CABEÇALHO DA PÁGINA ───────────────────────────────────────── */}
       <header className="space-y-4">
         <p className="text-[.82em] font-semibold tracking-wide text-text-soft uppercase">

@@ -191,7 +191,7 @@ export default function PainelConselhosClient({
           <p className="mt-2 font-mono text-2xl sm:text-3xl font-bold text-foreground">
             27 UFs
           </p>
-          <p className="mt-0.5 text-xs text-text-soft">199 cidades estratégicas</p>
+          <p className="mt-0.5 text-xs text-text-soft">203 cidades estratégicas</p>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-4 shadow-2xs">

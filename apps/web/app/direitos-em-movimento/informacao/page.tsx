@@ -13,7 +13,7 @@ import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/compone
 export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/informacao", {
   title: "Canais de Acesso à Informação Pública — Prefeituras, Câmaras, Órgãos e Concessionárias",
   description:
-    "Catálogo nacional de transparência pública (LAI): e-mail, telefone, endereço com CEP, responsável e link direto de e-SIC/Ouvidoria para 199 Prefeituras e Câmaras, órgãos federais e concessionárias de água, luz e internet.",
+    "Catálogo nacional de transparência pública (LAI): e-mail, telefone, endereço com CEP, responsável e link direto de e-SIC/Ouvidoria para 203 Prefeituras e Câmaras, órgãos federais e concessionárias de água, luz e internet.",
 });
 
 const SECOES_PAGINA = [
@@ -42,8 +42,8 @@ const LINKS_RELACIONADOS = [
   },
   {
     href: "/cidades",
-    titulo: "199 Cidades Estratégicas do Brasil",
-    descricao: "Painel com todas as 27 capitais e 172 polos do interior com dados municipais integrados.",
+    titulo: "203 Cidades Estratégicas do Brasil",
+    descricao: "Painel com todas as 27 capitais e 176 polos do interior com dados municipais integrados.",
   },
 ];
 

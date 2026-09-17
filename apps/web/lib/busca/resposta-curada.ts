@@ -239,12 +239,174 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       "O Diário Oficial municipal reúne extratos de contratos, editais de licitação, decretos e portarias, categorizados com filtros por tipo, ano e exportação de planilha.",
     linkPrincipal: { href: "/prefeitura/diario", texto: "Ver Diário Oficial" },
   },
+  // ─── ESTUDOS RURAIS & TERRITÓRIOS ──────────────────────────
   {
-    padroes: ["denunciar", "como denunciar", "canais de denuncia", "fazer denuncia"],
+    padroes: [
+      "estudos rurais",
+      "pesquisas rurais",
+      "jequitinhonha",
+      "mucuri",
+      "reforma agraria",
+      "assentamentos rurais",
+      "ufvjm",
+      "agricultura familiar",
+    ],
     resposta:
-      "A seção de Denúncia reúne orientações e canais diretos (Ouvidorias, Ministério Público, Tribunais de Contas e Defensoria), com gerador de documento no navegador.",
-    linkPrincipal: { href: "/direitos-em-movimento/denuncia", texto: "Como denunciar irregularidades" },
-    linksAdicionais: [{ href: "/direitos-em-movimento/ajuda", texto: "Onde buscar ajuda" }],
+      "O Hub de Estudos Rurais agrega a produção científica da UFVJM sobre o campo mineiro, agricultura familiar, povos tradicionais e reforma agrária nos Vales do Jequitinhonha e Mucuri.",
+    linkPrincipal: { href: "/estudos-rurais", texto: "Ver Hub de Estudos Rurais" },
+    linksAdicionais: [
+      { href: "/funcaosocialterra/mapa", texto: "Ver Globo 3D de Terras" },
+      { href: "/funcaosocialterra", texto: "Ver Função Social da Terra" },
+    ],
+  },
+
+  // ─── DOCUMENTAÇÃO TÉCNICA & API ────────────────────────────
+  {
+    padroes: [
+      "documentacao",
+      "documentacao tecnica",
+      "api publica",
+      "endpoints",
+      "duplo deploy",
+      "guara cloud",
+      "como funciona o portal",
+      "politica de coleta",
+      "robots",
+    ],
+    resposta:
+      "A documentação técnica pública do portal detalha a arquitetura em duplo deploy (Guara Cloud e Cloudflare), fontes de dados abertos, regras de coleta com robô honesto e APIs JSON gratuitas sem necessidade de autenticação.",
+    linkPrincipal: { href: "/documentacao", texto: "Acessar Documentação Técnica" },
+    linksAdicionais: [
+      { href: "/documentacao/api-publica", texto: "Ver Endpoints da API" },
+      { href: "/documentacao/arquitetura", texto: "Ver Arquitetura & Deploys" },
+      { href: "/termos", texto: "Ver Termos de Uso e LGPD" },
+    ],
+  },
+
+  // ─── SAÚDE PÚBLICA (SUS) ───────────────────────────────────
+  {
+    padroes: [
+      "leitos de uti",
+      "leitos hospitalares",
+      "postos de saude",
+      "cnes",
+      "datasus",
+      "hospitais de mg",
+      "saude publica",
+    ],
+    resposta:
+      "O painel de Saúde Pública monitora a capacidade instalada do SUS em Minas Gerais com dados do CNES/DATASUS: leitos clínicos, UTIs, postos de atendimento e taxa de internações por município.",
+    linkPrincipal: { href: "/direitos-em-movimento/saude-publica", texto: "Ver Painel de Saúde Pública (SUS)" },
+    linksAdicionais: [
+      { href: "/direitos-em-movimento/ajuda", texto: "Onde Buscar Ajuda" },
+      { href: "/cidades", texto: "Ver 199 Cidades Estratégicas" },
+    ],
+  },
+
+  // ─── EDUCAÇÃO BÁSICA (IDEB & CENSO) ────────────────────────
+  {
+    padroes: [
+      "ideb",
+      "nota do ideb",
+      "censo escolar",
+      "escolas publicas",
+      "educacao basica",
+      "fundeb",
+      "qualidade da educacao",
+    ],
+    resposta:
+      "A seção de Educação Básica compila dados do INEP/MEC sobre infraestrutura escolar, notas do IDEB, distorção idade-série e repasses do Fundeb para cada comarca de Minas Gerais.",
+    linkPrincipal: { href: "/direitos-em-movimento/educacao", texto: "Ver Indicadores de Educação (IDEB)" },
+    linksAdicionais: [{ href: "/direitos-em-movimento/conselhos", texto: "Ver Conselhos Municipais" }],
+  },
+
+  // ─── TRABALHO, RENDA & CAGED ───────────────────────────────
+  {
+    padroes: [
+      "caged",
+      "vagas de emprego",
+      "emprego formal",
+      "mercado de trabalho",
+      "salario medio",
+      "trabalho e renda",
+    ],
+    resposta:
+      "O painel de Trabalho e Renda monitora o saldo de empregos formais do Novo CAGED e dados da RAIS por setor econômico em Minas Gerais.",
+    linkPrincipal: { href: "/direitos-em-movimento/trabalho-e-renda", texto: "Ver Painel de Trabalho e Renda" },
+    linksAdicionais: [{ href: "/empresas", texto: "Ver Grandes Empresas & Fornecedores" }],
+  },
+
+  // ─── CONSELHOS DE DIREITOS ─────────────────────────────────
+  {
+    padroes: [
+      "conselho de saude",
+      "conselho de meio ambiente",
+      "codema",
+      "conselho tutelar",
+      "conselhos municipais",
+      "controle social",
+    ],
+    resposta:
+      "Mapeamento de 710 conselhos municipais de direitos em Minas Gerais (CMS, CODEMA, Tutelares e Assistência Social), com contatos oficiais, locais e orientações para participação popular.",
+    linkPrincipal: { href: "/direitos-em-movimento/conselhos", texto: "Ver 710 Conselhos de Direitos" },
+    linksAdicionais: [{ href: "/direitos-em-movimento/informacao", texto: "Ver Canais Oficiais LAI" }],
+  },
+
+  // ─── CLIMA, RISCO & CRIMES AMBIENTAIS ──────────────────────
+  {
+    padroes: [
+      "adaptabrasil",
+      "risco climatico",
+      "encostas e deslizamentos",
+      "inundacao",
+      "seca severa",
+      "crimes ambientais",
+      "sirenejud",
+    ],
+    resposta:
+      "O portal cruza dados do AdaptaBrasil/MCTI (vulnerabilidade a secas e inundações) com inquéritos e ações penais por crimes ambientais no painel do SIRENEJud/CNJ.",
+    linkPrincipal: { href: "/ambiental/clima-risco", texto: "Ver Mapa de Risco Climático" },
+    linksAdicionais: [
+      { href: "/ambiental/crimes-socioambientais", texto: "Ver Crimes Socioambientais" },
+      { href: "/ambiental/barragens", texto: "Ver Barragens de Mineração" },
+    ],
+  },
+
+  // ─── AÇÕES DA VALE & ACORDO DE BRUMADINHO ──────────────────
+  {
+    padroes: [
+      "acoes da vale",
+      "vale3",
+      "cotacoes vale",
+      "cvm vale",
+      "acordo de brumadinho",
+      "reparacao brumadinho",
+    ],
+    resposta:
+      "Acompanhamento em tempo real das cotações da Vale (VALE3) na B3, comunicados de acionistas na CVM e auditoria dos R$ 5,48 bilhões já repassados aos 26 municípios da bacia do Paraopeba.",
+    linkPrincipal: { href: "/paraopeba/vale", texto: "Ver Cotações e Documentos CVM da Vale" },
+    linksAdicionais: [
+      { href: "/paraopeba/execucao", texto: "Ver Execução do Acordo de Brumadinho" },
+      { href: "/paraopeba", texto: "Ver Hub Paraopeba" },
+    ],
+  },
+
+  // ─── INSPEÇÕES JUDICIAIS & CNJ ─────────────────────────────
+  {
+    padroes: [
+      "inspecoes cnj",
+      "corregedoria cnj",
+      "recomendacoes cnj",
+      "deficit defensoria",
+      "fiscalizacao tribunais",
+    ],
+    resposta:
+      "Acervo de 343 relatórios de inspeção do Conselho Nacional de Justiça (CNJ) sobre tribunais estaduais e federais, além do mapa de comarcas com déficit de Defensores Públicos em MG.",
+    linkPrincipal: { href: "/judiciario/inspecoes", texto: "Ver Inspeções Judiciais do CNJ" },
+    linksAdicionais: [
+      { href: "/judiciario/recomendacoes", texto: "Ver Recomendações CNJ & CNMP" },
+      { href: "/judiciario/contatos", texto: "Ver Varas e Balcão Virtual" },
+    ],
   },
 ];
 
