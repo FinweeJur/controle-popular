@@ -43,6 +43,14 @@ export const ROTULOS = {
   // identificador oficial, e o que permite conferir o caso na fonte.
   rip: 'Código do imóvel na União (RIP)',
   tipo: 'Tipo',
+  orgao: 'Órgão emissor',
+  categoria: 'Categoria',
+  empresa: 'Empresa / Titular',
+  porte: 'Porte do empreendimento',
+  valor: 'Valor (R$)',
+  resumo: 'Microresumo / Objeto',
+  link_oficial: 'Consulta oficial do processo',
+  aprox: 'Precisão da localização',
   conceituacao: 'Situação do terreno',
   regime: 'Como está sendo usado',
   // Um imóvel pode ter várias utilizações, com regimes diferentes. Quando tem,
@@ -464,6 +472,20 @@ export function formatarValor(chave, valor) {
       ? `<a href="${escapar(href)}" target="_blank" rel="noopener">Ver norma original ↗</a>`
       : escapar(valor);
   }
+  if (chave === 'link_oficial' && valor) {
+    const destino = urlSegura(valor);
+    if (!destino) return escapar(valor);
+    return `<a href="${escapar(destino)}" target="_blank" rel="noopener" class="btn-fonte-oficial" style="color:var(--cp-primary,#38bdf8);font-weight:600;text-decoration:underline;">Abrir processo na fonte oficial ↗</a>`;
+  }
+  if (chave === 'valor' && valor !== null && valor !== undefined) {
+    const num = Number(valor);
+    if (Number.isFinite(num) && num > 0) {
+      return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+  }
+  if (chave === 'aprox') {
+    return valor ? 'Aproximada (centroide municipal)' : 'Coordenada nativa oficial';
+  }
   if (chave === 'confianca') {
     if (valor === 'alta') return 'Alta — rua, avenida ou praça citada por nome';
     if (valor === 'media') return 'Média — só bairro ou distrito (ponto aproximado)';
@@ -487,7 +509,7 @@ export function formatarValor(chave, valor) {
  * própria `formatarValor` escapou o que interpolou — é o que o ramo de
  * `link_fonte` faz.
  */
-const CHAVES_COM_HTML = new Set(['link_fonte', 'link_estudos', 'link_fonte_oficial']);
+const CHAVES_COM_HTML = new Set(['link_fonte', 'link_estudos', 'link_fonte_oficial', 'link_oficial']);
 
 /** Monta as linhas <tr> da ficha de uma área, já traduzidas. */
 export function linhasDaFicha(props) {

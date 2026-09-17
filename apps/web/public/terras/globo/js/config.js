@@ -273,6 +273,7 @@ export const ASSUNTOS = [
   // assentamento ou terra certificada), e mineração/barragem são risco, não
   // destinação.
   { id: 'territorio-mineracao', titulo: 'Território indígena, mineração e barragens' },
+  { id: 'ambiental', titulo: 'Meio ambiente e licenciamento' },
   // Novo em 13/08/2026 (docs/HANDOFF-CAMADA-DINHEIRO.md). Logo depois de
   // 'territorio-mineracao' porque a CFEM é royalty de mineração — a mesma
   // atividade que a seção acima trata como risco, aqui vira dinheiro público.
@@ -327,6 +328,22 @@ export const LAYER_REGISTRY = [
     id: 'municipios-mg', label: 'Divisas dos municípios',
     hint: 'Os 853 municípios de Minas Gerais, pelo mapa oficial do IBGE.',
     color: 0x6f7f93,   /* --layer-moldura (= --text-3) */ on: true, render: 'line',
+  },
+  // --- Atos ambientais unificados (Nacional, MG, Onda 1 e Onda 2) -----------
+  {
+    id: 'licencas-ambientais', label: 'Licenciamento ambiental',
+    hint: 'Licenças prévias, de instalação e de operação emitidas pelo IBAMA e órgãos estaduais.',
+    color: 0x10b981, on: false, render: 'point', pointSize: 6, listavel: true,
+  },
+  {
+    id: 'outorgas-agua', label: 'Outorgas de água',
+    hint: 'Captações e usos outorgados de recursos hídricos pela ANA e pelo IGAM (MG).',
+    color: 0x38bdf8, on: false, render: 'point', pointSize: 6, listavel: true,
+  },
+  {
+    id: 'infracoes-embargos', label: 'Infrações e embargos ambientais',
+    hint: 'Autos de infração, multas e termos de embargo ambiental aplicados.',
+    color: 0xef4444, on: false, render: 'point', pointSize: 7, listavel: true,
   },
   // Duas escalas do mesmo cálculo: a da bacia é a visão geral (só polígonos
   // ≥ 500 ha, 14 municípios); a de Curvelo tem o detalhe fino do piloto.
@@ -1508,6 +1525,25 @@ export const CAMADAS = [
     label: 'Satélites em órbita',
     hint: 'Onde estão agora os satélites que fotografam essas áreas. Posição calculada em tempo real, pelo SGP4 sobre os TLE do CelesTrak.',
     fontes: ['satelites-orbita'],
+  },
+  // --- Camadas ambientais --------------------------------------------------
+  {
+    id: 'licencas-ambientais', assunto: 'ambiental',
+    label: 'Licenciamento ambiental',
+    hint: 'Licenças prévias, de instalação e operação emitidas pelo IBAMA e órgãos ambientais estaduais.',
+    fontes: ['licencas-ambientais'],
+  },
+  {
+    id: 'outorgas-agua', assunto: 'ambiental',
+    label: 'Outorgas de água',
+    hint: 'Captações e autorizações de uso de recursos hídricos pela ANA e pelo IGAM.',
+    fontes: ['outorgas-agua'],
+  },
+  {
+    id: 'infracoes-embargos', assunto: 'ambiental',
+    label: 'Infrações e embargos ambientais',
+    hint: 'Autos de infração, penalidades e termos de embargo emitidos por órgãos fiscalizadores.',
+    fontes: ['infracoes-embargos'],
   },
 ];
 
