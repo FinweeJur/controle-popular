@@ -10,6 +10,7 @@ import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 import { COBERTURA_DECISOES_LICENCIAMENTO } from "@/lib/ambiental/decisoes-licenciamento";
+import { LICENCAS_COBERTURA } from "@/lib/ambiental/licencas-unificada";
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
@@ -119,6 +120,16 @@ export default async function AmbientalHome() {
       href: "/judiciario",
       pronta: sirenejud !== null,
       linkTexto: "Ver município a município →",
+    },
+    {
+      titulo: "Licenças e outorgas — Brasil e estados",
+      linha: `${formatNumberBR(LICENCAS_COBERTURA.total)} registros em amostra: IBAMA, ANA, IGAM-MG e SEMA-MT`,
+      texto:
+        "Feed unificado de licenças federais, outorgas de água (ANA e MG) e licenciamento/autos de infração de MT. Filtro por estado, categoria/tag, ano, bacia e datas; CSV do que está na tela. Cadastros de órgãos diferentes nunca se somam como um total geral.",
+      fase: "N",
+      href: "/ambiental/licencas",
+      pronta: LICENCAS_COBERTURA.total > 0,
+      linkTexto: "Ver o feed unificado →",
     },
     {
       titulo: "Reuniões do COPAM",
