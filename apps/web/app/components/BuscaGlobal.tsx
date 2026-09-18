@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Search, X } from "lucide-react";
 import { buscar, type IndiceBusca } from "@/lib/busca/indice";
 import { carregarIndiceBusca } from "@/lib/busca/carregarIndice";
 import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
+import { CircularBars } from "@/app/components/loaders";
 
 /**
  * Barra de busca GLOBAL da navbar — pedido do dono (01/09/2026):
@@ -82,25 +84,63 @@ export default function BuscaGlobal() {
 
   return (
     <div ref={caixaRef} role="search" className="relative min-w-0 flex-1">
-      <input
-        type="search"
-        value={consulta}
-        onChange={(e) => {
-          setConsulta(e.target.value);
-          setAberto(true);
-        }}
-        onFocus={() => setAberto(true)}
-        disabled={falha}
-        placeholder={
-          falha
-            ? "Índice de busca indisponível"
-            : indice
-              ? "Buscar no portal…"
-              : "Carregando índice de busca…"
-        }
-        aria-label="Buscar no portal"
-        className="w-full rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-sm text-text outline-none transition-colors placeholder:text-text-soft focus:border-primary"
-      />
+      <div className="relative flex items-center">
+        {/* Ícone fixo de lupa na esquerda — sempre visível */}
+        <Search
+          size={15}
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-soft shrink-0"
+          aria-hidden="true"
+        />
+
+        <input
+          type="search"
+          value={consulta}
+          onChange={(e) => {
+            setConsulta(e.target.value);
+            setAberto(true);
+          }}
+          onFocus={() => setAberto(true)}
+          disabled={falha}
+          placeholder={
+            falha
+              ? "Índice de busca indisponível"
+              : indice
+                ? "Buscar no portal…"
+                : "Carregando índice de busca…"
+          }
+          aria-label="Buscar no portal"
+          className="w-full rounded-lg border border-border bg-surface-2 pr-9 pl-8.5 py-1.5 text-sm text-text outline-none transition-colors placeholder:text-text-soft focus:border-primary"
+        />
+
+        {/* Lado direito: spinner se carregando, botão limpar se tiver busca, ou atalho Enter */}
+        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center justify-center">
+          {!indice && !falha ? (
+            <div title="Carregando índice...">
+              <CircularBars size={16} />
+            </div>
+          ) : consulta.length > 0 ? (
+            <button
+              type="button"
+              onClick={() => {
+                setConsulta("");
+                setAberto(false);
+              }}
+              className="p-0.5 rounded-full hover:bg-surface text-text-soft hover:text-foreground transition-colors border-0 bg-transparent cursor-pointer"
+              aria-label="Limpar busca"
+              title="Limpar busca"
+            >
+              <X size={14} />
+            </button>
+          ) : (
+            <kbd
+              className="hidden sm:inline-block text-[10px] font-mono text-text-soft opacity-60 bg-surface border border-border/80 px-1 py-0.2 rounded"
+              title="Pressione Enter para pesquisar"
+            >
+              ↵
+            </kbd>
+          )}
+        </div>
+      </div>
       {mostrar && (
         <ul className="absolute top-full right-0 left-0 z-50 mt-1 max-h-[70vh] overflow-y-auto rounded-2xl border border-border bg-surface p-2 shadow-lg">
           {/* Páginas e Hubs do Portal em destaque */}

@@ -102,7 +102,7 @@ export function CardCarousel({
   return (
     <section
       aria-label="Apresentação dos três eixos temáticos do portal"
-      className={`my-8 sm:my-10 rounded-2xl border border-border bg-surface p-4 sm:p-7 shadow-xs overflow-hidden ${className}`}
+      className={`my-6 sm:my-8 rounded-2xl border border-border bg-surface p-4 sm:p-6 shadow-xs overflow-hidden ${className}`}
     >
       {/* Cabeçalho da seção com seletor de abas */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-border">
@@ -144,10 +144,10 @@ export function CardCarousel({
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="w-full flex flex-col items-center justify-center relative select-none py-4"
+        className="w-full flex flex-col items-center justify-center relative select-none py-2"
       >
         {/* Contêiner de altura fixa para o palco 3D */}
-        <div className="relative w-full max-w-2xl h-[380px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full max-w-2xl h-[300px] sm:h-[320px] flex items-center justify-center overflow-visible">
           {eixos.map((item, i) => {
             // Posição relativa em anel: 0 = centro, 1 = direita, 2 = esquerda
             const diff = (i - activeIndex + eixos.length) % eixos.length;
@@ -165,32 +165,32 @@ export function CardCarousel({
             if (isCenter) {
               xOffset = 0;
               rotateVal = 0;
-              scaleVal = 1.1;
+              scaleVal = 1.08;
               zIndexVal = 30;
               opacityVal = 1;
             } else if (isRight) {
-              xOffset = 300;
-              rotateVal = 6;
+              xOffset = 240;
+              rotateVal = 5;
               scaleVal = 0.82;
               zIndexVal = 10;
-              opacityVal = 0.65;
+              opacityVal = 0.7;
             } else if (isLeft) {
-              xOffset = -300;
-              rotateVal = -6;
+              xOffset = -240;
+              rotateVal = -5;
               scaleVal = 0.82;
               zIndexVal = 10;
-              opacityVal = 0.65;
+              opacityVal = 0.7;
             }
 
             return (
               <motion.div
                 key={item.href}
-                className="absolute top-1/2 left-1/2 flex flex-col items-center gap-2 will-change-transform cursor-pointer"
-                style={{ width: '320px', transformOrigin: 'center center' }}
+                className="absolute flex flex-col items-center gap-2 will-change-transform cursor-pointer"
+                style={{ width: '280px', transformOrigin: 'center center' }}
                 initial={false}
                 animate={{
-                  x: `calc(-50% + ${xOffset}px)`,
-                  y: '-50%',
+                  x: xOffset,
+                  y: 0,
                   scale: scaleVal,
                   rotate: rotateVal,
                   zIndex: zIndexVal,
@@ -198,8 +198,9 @@ export function CardCarousel({
                 }}
                 transition={{
                   type: 'spring',
-                  stiffness: 240,
+                  stiffness: 260,
                   damping: 24,
+                  mass: 0.8,
                 }}
                 onClick={() => toSlide(i)}
               >
