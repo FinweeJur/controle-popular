@@ -34,12 +34,25 @@ def normalizar_str(s: str) -> str:
     s = unicodedata.normalize("NFKD", str(s)).encode("ASCII", "ignore").decode("ASCII").lower()
     return re.sub(r"[^a-z0-9]", "", s)
 
-# Carrega centróides municipais
+# Carrega e indexa centróides municipais
 CENTROIDES_FILE = DATA_DIR / "municipios-centroides.json"
 CENTROIDES = {}
+CENTROIDES_BY_UF = {}
+CENTROIDES_BY_MUN = {}
+COORD_LOOKUP_CACHE = {}
+
 if CENTROIDES_FILE.exists():
     with open(CENTROIDES_FILE, encoding="utf-8") as f:
         CENTROIDES = json.load(f)
+    for k, v in CENTROIDES.items():
+        parts = k.rsplit("_", 1)
+        if len(parts) == 2:
+            m_norm, uf_val = parts[0], parts[1].lower()
+            if uf_val not in CENTROIDES_BY_UF:
+                CENTROIDES_BY_UF[uf_val] = {}
+            CENTROIDES_BY_UF[uf_val][m_norm] = v
+            if m_norm not in CENTROIDES_BY_MUN:
+                CENTROIDES_BY_MUN[m_norm] = v
 
 def sanitizar_cpf(texto: str) -> str:
     if not texto:
@@ -79,6 +92,45 @@ def extrair_coord_texto(texto: str):
             pass
     return None, None
 
+def buscar_centroide(municipio: str, uf: str):
+    if not municipio:
+        return None
+    cache_key = (municipio, uf)
+    if cache_key in COORD_LOOKUP_CACHE:
+        return COORD_LOOKUP_CACHE[cache_key]
+
+    m_norm = normalizar_str(municipio)
+    uf_clean = uf.lower() if uf else ""
+
+    # 1. Busca exata por chave "mun_uf"
+    if uf_clean:
+        coords = CENTROIDES.get(f"{m_norm}_{uf_clean}")
+        if coords:
+            COORD_LOOKUP_CACHE[cache_key] = coords
+            return coords
+
+    # 2. Busca dentro da UF
+    if uf_clean and uf_clean in CENTROIDES_BY_UF:
+        uf_dict = CENTROIDES_BY_UF[uf_clean]
+        if m_norm in uf_dict:
+            coords = uf_dict[m_norm]
+            COORD_LOOKUP_CACHE[cache_key] = coords
+            return coords
+        # Substring dentro da mesma UF
+        for k_mun, v_coords in uf_dict.items():
+            if m_norm in k_mun or k_mun in m_norm:
+                COORD_LOOKUP_CACHE[cache_key] = v_coords
+                return v_coords
+
+    # 3. Busca por nome do município global
+    if m_norm in CENTROIDES_BY_MUN:
+        coords = CENTROIDES_BY_MUN[m_norm]
+        COORD_LOOKUP_CACHE[cache_key] = coords
+        return coords
+
+    COORD_LOOKUP_CACHE[cache_key] = None
+    return None
+
 def obter_coordenadas(municipio: str, uf: str, processo: str, texto_busca: str = ""):
     lat, lon = extrair_coord_texto(texto_busca)
     if lat is not None and lon is not None:
@@ -98,19 +150,7 @@ def obter_coordenadas(municipio: str, uf: str, processo: str, texto_busca: str =
             return cap[0], cap[1], True
         return None, None, False
 
-    chave = f"{normalizar_str(municipio)}_{uf.lower() if uf else ''}"
-    coords = CENTROIDES.get(chave)
-    if not coords and uf:
-        for k, v in CENTROIDES.items():
-            if k.endswith(f"_{uf.lower()}") and normalizar_str(municipio) in k:
-                coords = v
-                break
-    if not coords:
-        for k, v in CENTROIDES.items():
-            if k.startswith(f"{normalizar_str(municipio)}_"):
-                coords = v
-                break
-
+    coords = buscar_centroide(municipio, uf)
     if coords:
         lat, lon = coords[0], coords[1]
         # Jitter determinístico com base no hash do processo (raio de até ~2.5 km)
