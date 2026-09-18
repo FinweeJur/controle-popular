@@ -204,7 +204,7 @@ export default function TopNav() {
     hoverTimer.current = setTimeout(() => {
       setHoverAberto(false);
       hoverTimer.current = null;
-    }, 450);
+    }, 600);
   }
 
   return (
@@ -259,7 +259,7 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
-            className={`absolute top-full left-0 z-50 pt-2 w-[min(72rem,calc(100vw-1.5rem))] max-h-[calc(100vh-4.5rem)] overflow-y-auto ${
+            className={`absolute top-full left-0 z-50 w-[min(72rem,calc(100vw-1.5rem))] max-h-[calc(100vh-4.5rem)] overflow-y-auto ${
               aberto ? 'block' : 'hidden'
             }`}
           >
@@ -396,8 +396,8 @@ export default function TopNav() {
           >
             Busca →
           </Link>
-          <ThemeSwitcher />
-          <CvdToggle />
+          <span className="hidden md:inline-flex"><ThemeSwitcher /></span>
+          <span className="hidden lg:inline-flex"><CvdToggle /></span>
           <FontSizeControl />
         </div>
       </div>

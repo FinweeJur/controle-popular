@@ -21,7 +21,7 @@ interface Props {
 const EIXOS = [
   "Todos",
   "Eixo 1: Direitos em Movimento",
-  "Eixo 2: Terra e Territ?rios",
+  "Eixo 2: Terra e Territórios",
   "Eixo 3: Estado e Economia",
   "Central ONSA & Ferramentas",
 ] as const;
@@ -67,10 +67,10 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
         <div>
           <h2 className="flex items-center gap-2 font-display text-2xl font-bold">
             <Sparkles className="h-6 w-6 text-primary" aria-hidden="true" />
-            As 100 Principais P?ginas do Portal
+            As 100 Principais Páginas do Portal
           </h2>
           <p className="mt-1 text-sm text-text-soft">
-            Cat?logo completo e auditado de rotas com potencial de interesse social, microresumos e fontes oficiais.
+            Catálogo completo e auditado de rotas com potencial de interesse social, microresumos e fontes oficiais.
           </p>
         </div>
         <div className="text-xs font-mono text-text-soft bg-surface-2 px-3 py-1.5 rounded-lg self-start sm:self-auto border border-border">
@@ -86,8 +86,8 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
             type="search"
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
-            placeholder="Filtrar por t?tulo, assunto, rota ou munic?pio (ex: SUS, Mariana, Betim, Editais)..."
-            aria-label="Filtrar cat?logo das 100 p?ginas"
+            placeholder="Filtrar por título, assunto, rota ou município (ex: SUS, Mariana, Betim, Editais)..."
+            aria-label="Filtrar catálogo das 100 páginas"
             className="w-full rounded-xl border border-border bg-surface-2 py-2.5 pl-10 pr-4 text-sm text-text outline-none transition placeholder:text-text-soft focus:border-primary focus:ring-1 focus:ring-primary"
           />
         </div>
@@ -119,11 +119,11 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
         </div>
       </div>
 
-      {/* Grid de P?ginas */}
+      {/* Grid de Páginas */}
       {paginasFiltradas.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border p-12 text-center text-text-soft">
-          <p className="text-base font-medium text-text">Nenhuma p?gina encontrada para esta busca.</p>
-          <p className="mt-1 text-xs">Tente buscar por termos mais gen?ricos ou selecionar &quot;Todos&quot; os eixos.</p>
+          <p className="text-base font-medium text-text">Nenhuma página encontrada para esta busca.</p>
+          <p className="mt-1 text-xs">Tente buscar por termos mais genéricos ou selecionar &quot;Todos&quot; os eixos.</p>
           <button
             type="button"
             onClick={() => { setBusca(""); setEixoAtivo("Todos"); }}
@@ -193,7 +193,7 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
                     </a>
                   ) : (
                     <Link href={p.href} className="font-medium text-primary hover:underline flex items-center gap-1">
-                      Acessar ?
+                      Acessar →
                     </Link>
                   )}
                 </div>

@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 
-const topicos: Topico[] = [
+const tópicos: Topico[] = [
   {
     href: "/congresso",
-    titulo: "Visao geral",
-    descricao: "Panorama do Congresso Nacional: deputados, senadores e proposicoes.",
+    titulo: "Visão geral",
+    descricao: "Panorama do Congresso Nacional: deputados, senadores e proposições.",
   },
   {
     href: "/congresso/agenda",
     titulo: "Agenda",
-    descricao: "Pauta dos proximos dias no Congresso.",
+    descricao: "Pauta dos próximos dias no Congresso.",
   },
   {
     href: "/congresso/alertas",
     titulo: "Alertas",
-    descricao: "Mudancas e movimentacoes relevantes em proposicoes e votacoes.",
+    descricao: "Mudanças e movimentações relevantes em proposições e votações.",
   },
   {
     href: "/congresso/bancadas",
@@ -26,17 +26,17 @@ const topicos: Topico[] = [
   {
     href: "/congresso/bons-exemplos",
     titulo: "Bons exemplos",
-    descricao: "Praticas de transparencia e boas acoes parlamentares.",
+    descricao: "Práticas de transparência e boas ações parlamentares.",
   },
   {
-    href: "/congresso/comissoes",
-    titulo: "Comissoes",
-    descricao: "Comissoes permanentes e suas composicoes.",
+    href: "/congresso/comissões",
+    titulo: "Comissões",
+    descricao: "Comissões permanentes e suas composições.",
   },
   {
     href: "/congresso/metodologia",
     titulo: "Metodologia",
-    descricao: "Como os dados do Congresso sao coletados e verificados.",
+    descricao: "Como os dados do Congresso são coletados e verificados.",
   },
   {
     href: "/congresso/parlamentares",
@@ -44,24 +44,24 @@ const topicos: Topico[] = [
     descricao: "Deputados e senadores com perfil e atividade.",
   },
   {
-    href: "/congresso/proposicoes",
-    titulo: "Proposicoes",
-    descricao: "Projetos de lei e outras proposicoes em tramitacao.",
+    href: "/congresso/proposições",
+    titulo: "Proposições",
+    descricao: "Projetos de lei e outras proposições em tramitação.",
   },
   {
-    href: "/congresso/votacoes",
-    titulo: "Votacoes",
-    descricao: "Resultados de votacoes no plenario e nas comissoes.",
+    href: "/congresso/votações",
+    titulo: "Votações",
+    descricao: "Resultados de votações no plenário e nas comissões.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "Indice — Congresso Nacional — Controle Popular",
+  title: "Índice — Congresso Nacional — Controle Popular",
   description:
-    "Navegue pelos dados do Congresso Nacional: parlamentares, comissoes, proposicoes, votacoes e agenda.",
+    "Navegue pelos dados do Congresso Nacional: parlamentares, comissões, proposições, votações e agenda.",
 };
 
-export default function IndiceCongresso() {
+export default function ÍndiceCongresso() {
   return (
     <main
       id="conteudo-principal"
@@ -69,19 +69,19 @@ export default function IndiceCongresso() {
       className="mx-auto max-w-5xl px-4 py-8"
     >
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice — Congresso Nacional</h1>
+        <h1 className="font-display text-3xl font-bold">Índice — Congresso Nacional</h1>
         <p className="max-w-2xl text-text-soft">
-          Dados do Congresso Nacional: parlamentares, bancadas, comissoes,
-          proposicoes, votacoes e agenda.
+          Dados do Congresso Nacional: parlamentares, bancadas, comissões,
+          proposições, votações e agenda.
         </p>
       </header>
 
-      <IndiceWiki itens={[{ id: "topicos", titulo: "Topicos" }]} />
+      <IndiceWiki itens={[{ id: "tópicos", titulo: "Tópicos" }]} />
 
-      <section className="mt-10" id="topicos">
-        <h2 className="font-display text-xl font-semibold">Topicos</h2>
+      <section className="mt-10" id="tópicos">
+        <h2 className="font-display text-xl font-semibold">Tópicos</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topicos.map((topico) => (
+          {tópicos.map((topico) => (
             <CartaoTopico key={topico.href} topico={topico} />
           ))}
         </div>

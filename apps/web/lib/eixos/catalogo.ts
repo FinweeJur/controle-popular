@@ -79,7 +79,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
     titulo: 'Terra e Territórios',
     subtitulo: 'Soberania socioambiental, cidades e defesa dos biomas',
     descricao:
-      'Fiscalização de 199 cidades estratégicas, bacias hidrográficas, licenciamento ONSA, terras indígenas e unidades de conservação.',
+      'Fiscalização de 199 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e unidades de conservação.',
     corVar: '--cp-eixo-terra',
     corInkVar: '--cp-eixo-terra-ink',
     subfrentes: [

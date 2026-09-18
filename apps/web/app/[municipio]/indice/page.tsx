@@ -5,9 +5,9 @@ import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 
 /**
- * Hub de indice de uma cidade: `/betim/indice`, `/bh/indice`, etc.
+ * Hub de índice de uma cidade: `/betim/índice`, `/bh/índice`, etc.
  *
- * Padrao wiki para o eixo Cidades. Lista os topicos disponiveis na cidade,
+ * Padrao wiki para o eixo Cidades. Lista os tópicos disponiveis na cidade,
  * filtrando por `temFonte` para nao linkar paginas que nao existem. Cada
  * card leva a uma pagina interna e sugere, pela descricao, o que se encontra
  * la.
@@ -16,22 +16,22 @@ import { IndiceWiki } from "@/app/components/wiki";
 interface Grupo {
   id: string;
   titulo: string;
-  topicos: Topico[];
+  tópicos: Topico[];
 }
 
 function incluir(condicao: boolean, topico: Topico): Topico | null {
   return condicao ? topico : null;
 }
 
-function topicosDaCidade(cidade: Cidade): Grupo[] {
+function tópicosDaCidade(cidade: Cidade): Grupo[] {
   const grupos: Grupo[] = [
     {
       id: "prefeitura",
       titulo: "Prefeitura",
-      topicos: [
+      tópicos: [
         {
           href: "/prefeitura",
-          titulo: "Visao geral",
+          titulo: "Visão geral",
           descricao: "Contratos, despesas e panorama financeiro da Prefeitura.",
         },
         {
@@ -42,27 +42,27 @@ function topicosDaCidade(cidade: Cidade): Grupo[] {
         {
           href: "/prefeitura/fornecedores",
           titulo: "Fornecedores",
-          descricao: "Quem vende para a Prefeitura e em quais licitacoes.",
+          descricao: "Quem vende para a Prefeitura e em quais licitações.",
         },
         {
-          href: "/prefeitura/licitacoes",
+          href: "/prefeitura/licitações",
           titulo: "Licitacoes",
           descricao: "Processos de compra da Prefeitura por modalidade.",
         },
         {
           href: "/prefeitura/despesas",
           titulo: "Despesas",
-          descricao: "Empenhos, liquidacoes e pagamentos.",
+          descricao: "Empenhos, liquidações e pagamentos.",
         },
         {
           href: "/prefeitura/servidores",
           titulo: "Servidores",
-          descricao: "Folha de pessoal, cargos e remuneracao.",
+          descricao: "Folha de pessoal, cargos e remuneração.",
         },
         {
           href: "/prefeitura/obras",
           titulo: "Obras",
-          descricao: "Obras publicas em andamento e concluidas.",
+          descricao: "Obras públicas em andamento e concluídas.",
         },
         incluir(temFonte(cidade, "cultura"), {
           href: "/prefeitura/cultura",
@@ -73,98 +73,98 @@ function topicosDaCidade(cidade: Cidade): Grupo[] {
     },
     {
       id: "camara",
-      titulo: "Camara Municipal",
-      topicos: [
+      titulo: "Câmara Municipal",
+      tópicos: [
         {
           href: "/camara",
           titulo: "Vereadores",
-          descricao: "Lista de vereadores, presencas e atuacao.",
+          descricao: "Lista de vereadores, presencas e atuação.",
         },
-        incluir(temFonte(cidade, "camara_proposicoes"), {
-          href: "/camara/proposicoes",
-          titulo: "Proposicoes",
-          descricao: "Projetos de lei, requerimentos e indicacoes.",
+        incluir(temFonte(cidade, "camara_proposições"), {
+          href: "/camara/proposições",
+          titulo: "Proposições",
+          descricao: "Projetos de lei, requerimentos e indicações.",
         }),
         {
-          href: "/camara/comissoes",
-          titulo: "Comissoes",
-          descricao: "Composicao e pautas das comissoes.",
+          href: "/camara/comissões",
+          titulo: "Comissões",
+          descricao: "Composicao e pautas das comissões.",
         },
         {
-          href: "/camara/legislacao",
-          titulo: "Legislacao",
+          href: "/camara/legislação",
+          titulo: "Legislação",
           descricao: "Leis, decretos e normas municipais.",
         },
         {
-          href: "/legislacao/alertas",
-          titulo: "Legislacao · Alertas",
-          descricao: "Normas sinalizadas por possivel violacao de direitos.",
+          href: "/legislação/alertas",
+          titulo: "Legislação · Alertas",
+          descricao: "Normas sinalizadas por possível violacao de direitos.",
         },
         {
-          href: "/legislacao/bons-exemplos",
-          titulo: "Legislacao · Bons exemplos",
-          descricao: "Normas que ampliam direitos ou transparencia.",
+          href: "/legislação/bons-exemplos",
+          titulo: "Legislação · Bons exemplos",
+          descricao: "Normas que ampliam direitos ou transparência.",
         },
       ].filter((t): t is Topico => t !== null),
     },
     {
       id: "servicos",
-      titulo: "Servicos e cidade",
-      topicos: [
-        { href: "/servicos", titulo: "Servicos", descricao: "Telefones uteis e canais da cidade." },
-        { href: "/saude", titulo: "Saude", descricao: "Saude publica municipal." },
-        { href: "/educacao", titulo: "Educacao", descricao: "Escolas, matriculas e investimentos." },
-        { href: "/economia", titulo: "Economia", descricao: "Dados economicos do municipio." },
+      titulo: "Serviços e cidade",
+      tópicos: [
+        { href: "/servicos", titulo: "Servicos", descricao: "Telefones úteis e canais da cidade." },
+        { href: "/saude", titulo: "Saúde", descricao: "Saúde pública municipal." },
+        { href: "/educacao", titulo: "Educacao", descricao: "Escolas, matrículas e investimentos." },
+        { href: "/economia", titulo: "Economia", descricao: "Dados econômicos do município." },
         { href: "/meio-ambiente", titulo: "Meio ambiente", descricao: "Autuacoes, barragens e licenciamento." },
-        { href: "/clima", titulo: "Clima", descricao: "Riscos climaticos e alertas." },
+        { href: "/clima", titulo: "Clima", descricao: "Riscos climáticos e alertas." },
         { href: "/coleta-lixo", titulo: "Coleta de lixo", descricao: "Dias e rotas de coleta." },
-        { href: "/plantao-farmacias", titulo: "Plantao de farmacias", descricao: "Farmacias de plantao." },
-        { href: "/postos-combustivel", titulo: "Postos de combustivel", descricao: "Precos e postos monitorados." },
-        { href: "/seguranca", titulo: "Seguranca", descricao: "Dados de seguranca publica." },
+        { href: "/plantao-farmacias", titulo: "Plantão de farmácias", descricao: "Farmácias de plantão." },
+        { href: "/postos-combustível", titulo: "Postos de combustível", descricao: "Preços e postos monitorados." },
+        { href: "/seguranca", titulo: "Segurança", descricao: "Dados de segurança pública." },
       ],
     },
     {
       id: "territorio",
       titulo: "Territorio",
-      topicos: [
+      tópicos: [
         incluir(temFonte(cidade, "terras"), {
           href: "/terras",
           titulo: "Terras",
-          descricao: "Cadastro, CAR e ocupacao do territorio.",
+          descricao: "Cadastro, CAR e ocupação do território.",
         }),
         incluir(temFonte(cidade, "terras"), {
           href: "/terras/cruzamentos",
           titulo: "Cruzamentos territoriais",
-          descricao: "Sobreposicao de camadas geograficas.",
+          descricao: "Sobreposição de camadas geográficas.",
         }),
         {
           href: "/mineracao",
-          titulo: "Mineracao",
-          descricao: "Mineradoras, minerios e impactos.",
+          titulo: "Mineração",
+          descricao: "Mineradoras, minérios e impactos.",
         },
         incluir(temFonte(cidade, "citrolandia"), {
           href: "/citrolandia",
           titulo: "Citrolandia",
-          descricao: "Dados especificos do bairro Citrolandia.",
+          descricao: "Dados específicos do bairro Citrolandia.",
         }),
       ].filter((t): t is Topico => t !== null),
     },
     {
-      id: "transparencia",
-      titulo: "Transparencia e participacao",
-      topicos: [
-        { href: "/painel-do-cidadao", titulo: "Painel do cidadao", descricao: "Indicadores de transparencia." },
-        { href: "/nota-transparencia", titulo: "Nota de transparencia", descricao: "Avaliacao do acesso a informacao." },
-        { href: "/dados", titulo: "Dados abertos", descricao: "Conjuntos de dados disponiveis." },
-        { href: "/noticias", titulo: "Noticias", descricao: "Radar de noticias sobre a cidade." },
+      id: "transparência",
+      titulo: "Transparência e participação",
+      tópicos: [
+        { href: "/painel-do-cidadao", titulo: "Painel do cidadão", descricao: "Indicadores de transparência." },
+        { href: "/nota-transparência", titulo: "Nota de transparência", descricao: "Avaliação do acesso à informação." },
+        { href: "/dados", titulo: "Dados abertos", descricao: "Conjuntos de dados disponíveis." },
+        { href: "/noticias", titulo: "Noticias", descricao: "Radar de notícias sobre a cidade." },
         { href: "/assistente", titulo: "Assistente", descricao: "Pergunte aos dados da cidade." },
-        { href: "/metodologia", titulo: "Metodologia", descricao: "Como os dados sao coletados e apresentados." },
-        { href: "/sobre", titulo: "Sobre", descricao: "O que e o Controle Popular." },
+        { href: "/metodologia", titulo: "Metodologia", descricao: "Como os dados são coletados e apresentados." },
+        { href: "/sobre", titulo: "Sobre", descricao: "O que é o Controle Popular." },
       ],
     },
   ];
 
-  return grupos.filter((g) => g.topicos.length > 0);
+  return grupos.filter((g) => g.tópicos.length > 0);
 }
 
 export async function generateMetadata({
@@ -176,12 +176,12 @@ export async function generateMetadata({
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) return {};
   return {
-    title: `Indice — ${cidade.nome}-${cidade.uf}`,
-    description: `Navegue por todos os topicos de ${cidade.nome}-${cidade.uf} no Controle Popular.`,
+    title: `Índice — ${cidade.nome}-${cidade.uf}`,
+    description: `Navegue por todos os tópicos de ${cidade.nome}-${cidade.uf} no Controle Popular.`,
   };
 }
 
-export default async function IndiceDaCidade({
+export default async function ÍndiceDaCidade({
   params,
 }: {
   params: Promise<{ municipio: string }>;
@@ -190,19 +190,19 @@ export default async function IndiceDaCidade({
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) notFound();
 
-  const grupos = topicosDaCidade(cidade);
+  const grupos = tópicosDaCidade(cidade);
   const itensIndice = grupos.map((g) => ({ id: g.id, titulo: g.titulo }));
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice — {cidade.nome}</h1>
+        <h1 className="font-display text-3xl font-bold">Índice — {cidade.nome}</h1>
         <p className="max-w-2xl text-text-soft">
-          Navegue por todos os topicos disponiveis sobre {cidade.nome}-{cidade.uf}.
+          Navegue por todos os tópicos disponiveis sobre {cidade.nome}-{cidade.uf}.
         </p>
         <p className="text-[.95em]">
-          <a href="/indice" className="font-medium text-primary hover:underline">
-            Ver indice geral do portal →
+          <a href="/índice" className="font-medium text-primary hover:underline">
+            Ver índice geral do portal →
           </a>
         </p>
       </header>
@@ -213,7 +213,7 @@ export default async function IndiceDaCidade({
         <section key={grupo.id} id={grupo.id} className="mt-10 scroll-mt-20">
           <h2 className="font-display text-xl font-semibold">{grupo.titulo}</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {grupo.topicos.map((topico) => (
+            {grupo.tópicos.map((topico) => (
               <CartaoTopico key={topico.href} topico={topico} />
             ))}
           </div>
@@ -223,12 +223,12 @@ export default async function IndiceDaCidade({
       <section className="mt-12 border-t border-border pt-6">
         <h2 className="font-display text-lg font-semibold">Outras frentes</h2>
         <p className="mt-2 text-text-soft">
-          Alem desta cidade, o Controle Popular acompanha o Congresso Nacional, o Judiciario,
-          o meio ambiente de Minas, a reparacao de Brumadinho e a funcao social da terra.
+          Além desta cidade, o Controle Popular acompanha o Congresso Nacional, o Judiciário,
+          o meio ambiente de Minas, a reparação de Brumadinho e a função social da terra.
         </p>
         <p className="mt-3">
-          <a href="/indice" className="font-medium text-primary hover:underline">
-            Ver indice geral →
+          <a href="/índice" className="font-medium text-primary hover:underline">
+            Ver índice geral →
           </a>
         </p>
       </section>

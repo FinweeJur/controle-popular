@@ -11,7 +11,7 @@ import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
 export const metadata: Metadata = {
   title: 'Terra e Territórios — Eixo 2 | Controle Popular',
   description:
-    'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ONSA, terras indígenas e defesa dos biomas.',
+    'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e defesa dos biomas.',
 };
 
 export default function TerraETerritoriosHub() {

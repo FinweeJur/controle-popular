@@ -669,6 +669,9 @@ export function SeuNono() {
   }
 
   // Listener para abertura remota a partir de botões na Home e tabelas
+  const executarPerguntaIaRef = useRef(executarPerguntaIa);
+  executarPerguntaIaRef.current = executarPerguntaIa;
+
   useEffect(() => {
     const handleAbrir = (e: Event) => {
       const detail = (e as CustomEvent<{ pergunta?: string }>).detail;
@@ -676,12 +679,12 @@ export function SeuNono() {
       if (detail?.pergunta) {
         const p = detail.pergunta.trim();
         setPerguntaLivre(p);
-        executarPerguntaIa(p);
+        executarPerguntaIaRef.current(p);
       }
     };
     window.addEventListener("abrir-seu-nono", handleAbrir);
     return () => window.removeEventListener("abrir-seu-nono", handleAbrir);
-  }, [pathname]);
+  }, []);
 
   async function enviarPerguntaLivre(e: React.FormEvent) {
     e.preventDefault();

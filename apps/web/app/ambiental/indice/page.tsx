@@ -4,62 +4,62 @@ import { IndiceWiki } from "@/app/components/wiki";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 /**
- * Indice da frente /ambiental.
+ * Índice da frente /ambiental.
  *
- * Padrao wiki: aponta para os topicos ja publicados da frente. Cada card
+ * Padrao wiki: aponta para os tópicos ja publicados da frente. Cada card
  * descreve o destino e leva a pagina de conteudo real.
  */
 
-const topicos: Topico[] = [
+const tópicos: Topico[] = [
   {
     href: "/ambiental",
-    titulo: "Visao geral",
+    titulo: "Visão geral",
     descricao: "Panorama do Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, Justiça, Mariana e a Vale.",
   },
   {
     href: "/ambiental/barragens",
     titulo: "Barragens",
-    descricao: "Situacao e risco de barragens em Minas Gerais.",
+    descricao: "Situação e risco de barragens em Minas Gerais.",
   },
   {
     href: "/ambiental/convenios",
-    titulo: "Convenios ambientais",
-    descricao: "Repasses e convenios relacionados ao meio ambiente.",
+    titulo: "Convênios ambientais",
+    descricao: "Repasses e convênios relacionados ao meio ambiente.",
   },
   {
     href: "/ambiental/copam",
     titulo: "COPAM",
-    descricao: "Reunioes e decisoes do Conselho Estadual de Política Ambiental.",
+    descricao: "Reuniões e decisões do Conselho Estadual de Política Ambiental.",
   },
   {
     href: "/ambiental/decisoes",
-    titulo: "Decisoes de licenciamento",
-    descricao: "Decisoes com cobertura declarada do licenciamento.",
+    titulo: "Decisões de licenciamento",
+    descricao: "Decisões com cobertura declarada do licenciamento.",
   },
   {
     href: "/ambiental/direito-critico",
-    titulo: "Direito critico",
-    descricao: "Analises e estudos juridicos sobre a agenda ambiental.",
+    titulo: "Direito crítico",
+    descricao: "Análises e estudos jurídicos sobre a agenda ambiental.",
   },
   {
     href: "/ambiental/estudos",
     titulo: "Estudos",
-    descricao: "Estudos de impacto ambiental e relatorios.",
+    descricao: "Estudos de impacto ambiental e relatórios.",
   },
   {
-    href: "/ambiental/legislacao",
-    titulo: "Legislacao",
+    href: "/ambiental/legislação",
+    titulo: "Legislação",
     descricao: "Normas ambientais municipais, estaduais e federais.",
   },
   {
     href: "/ambiental/licenciamento",
     titulo: "Licenciamento",
-    descricao: "Processos de licenciamento ambiental por municipio.",
+    descricao: "Processos de licenciamento ambiental por município.",
   },
   {
     href: "/ambiental/patrimonio-cultural",
-    titulo: "Patrimonio cultural",
-    descricao: "Bens tombados e patrimonio cultural de Minas Gerais.",
+    titulo: "Patrimônio cultural",
+    descricao: "Bens tombados e patrimônio cultural de Minas Gerais.",
   },
   {
     href: "/ambiental/tac",
@@ -84,12 +84,12 @@ const topicos: Topico[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Indice — Meio Ambiente (ONSA) · Observatório Nacional Socioambiental — Controle Popular",
+  title: "Índice — Meio Ambiente (ONSA) · Observatório Nacional Socioambiental — Controle Popular",
   description:
-    "Navegue pelo Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, legislacao, patrimonio cultural, estudos, Mariana e a Vale.",
+    "Navegue pelo Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, legislação, patrimônio cultural, estudos, Mariana e a Vale.",
 };
 
-export default function IndiceAmbiental() {
+export default function ÍndiceAmbiental() {
   return (
     <main
       id="conteudo-principal"
@@ -97,19 +97,19 @@ export default function IndiceAmbiental() {
       className="mx-auto max-w-5xl px-4 py-8"
     >
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice — ONSA</h1>
+        <h1 className="font-display text-3xl font-bold">Índice — ONSA</h1>
         <p className="max-w-2xl text-text-soft">
           Observatório Nacional Socioambiental: licenciamento, barragens, COPAM,
-          legislacao, patrimonio cultural, estudos, Mariana e a Vale.
+          legislação, patrimônio cultural, estudos, Mariana e a Vale.
         </p>
       </header>
 
-      <IndiceWiki itens={[{ id: "topicos", titulo: "Topicos" }]} />
+      <IndiceWiki itens={[{ id: "tópicos", titulo: "Tópicos" }]} />
 
-      <section className="mt-10" id="topicos">
-        <h2 className="font-display text-xl font-semibold">Topicos</h2>
+      <section className="mt-10" id="tópicos">
+        <h2 className="font-display text-xl font-semibold">Tópicos</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topicos.map((topico) => (
+          {tópicos.map((topico) => (
             <CartaoTopico key={topico.href} topico={topico} />
           ))}
         </div>

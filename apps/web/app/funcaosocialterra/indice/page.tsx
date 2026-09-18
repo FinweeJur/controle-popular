@@ -2,31 +2,31 @@ import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 
-const topicos: Topico[] = [
+const tópicos: Topico[] = [
   {
-    href: "/funcaosocialterra",
-    titulo: "Visao geral",
-    descricao: "Panorama da funcao social da terra e do territorio.",
+    href: "/funçãosocialterra",
+    titulo: "Visão geral",
+    descricao: "Panorama da função social da terra e do territorio.",
   },
   {
-    href: "/funcaosocialterra/alertas",
+    href: "/funçãosocialterra/alertas",
     titulo: "Alertas",
     descricao: "Alertas sobre ocupacao e uso do territorio.",
   },
   {
-    href: "/funcaosocialterra/mapa",
+    href: "/funçãosocialterra/mapa",
     titulo: "Mapa",
     descricao: "Globo 3D com camadas de mineracao, CAR e mais.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "Indice — Funcao social da terra — Controle Popular",
+  title: "Índice — Função social da terra — Controle Popular",
   description:
-    "Navegue pelos dados da funcao social da terra: alertas, mapa de camadas e territorio.",
+    "Navegue pelos dados da função social da terra: alertas, mapa de camadas e territorio.",
 };
 
-export default function IndiceFuncaoSocialTerra() {
+export default function ÍndiceFuncaoSocialTerra() {
   return (
     <main
       id="conteudo-principal"
@@ -34,18 +34,18 @@ export default function IndiceFuncaoSocialTerra() {
       className="mx-auto max-w-5xl px-4 py-8"
     >
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice — Funcao social da terra</h1>
+        <h1 className="font-display text-3xl font-bold">Índice — Função social da terra</h1>
         <p className="max-w-2xl text-text-soft">
-          Dados da funcao social da terra: alertas, mapa de camadas e territorio.
+          Dados da função social da terra: alertas, mapa de camadas e territorio.
         </p>
       </header>
 
-      <IndiceWiki itens={[{ id: "topicos", titulo: "Topicos" }]} />
+      <IndiceWiki itens={[{ id: "tópicos", titulo: "Tópicos" }]} />
 
-      <section className="mt-10" id="topicos">
-        <h2 className="font-display text-xl font-semibold">Topicos</h2>
+      <section className="mt-10" id="tópicos">
+        <h2 className="font-display text-xl font-semibold">Tópicos</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topicos.map((topico) => (
+          {tópicos.map((topico) => (
             <CartaoTopico key={topico.href} topico={topico} />
           ))}
         </div>

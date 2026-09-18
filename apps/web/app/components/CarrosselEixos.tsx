@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
@@ -39,7 +39,7 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
     corBg: 'rgba(27, 99, 72, 0.1)',
     legenda:
       'Reúne dados de 203 cidades estratégicas no radar, licenciamento ambiental do ONSA em 11 estados, 942 barragens de mineração (SIGBM), Cadastro Ambiental Rural (CAR), demarcação de terras indígenas e quilombolas, poligonais minerárias e bacias hidrográficas.',
-    destaques: ['203 Cidades Estratégicas', 'Licenças ONSA (11 Estados)', '942 Barragens SIGBM', 'CAR & Terras Indígenas', 'Rios & Bacias'],
+    destaques: ['203 Cidades Estratégicas', 'Licenças Ambientais (11 Estados)', '942 Barragens SIGBM', 'CAR & Terras Indígenas', 'Rios & Bacias'],
   },
   {
     src: '/capas/ambiente-rios.webp',
@@ -66,42 +66,42 @@ export function CardCarousel({
 }: CardCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  const autoPlayTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoPlayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Rotação suave automática a cada 6 segundos quando não houver hover do usuário
+  const toNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % eixos.length);
+  }, [eixos.length]);
+
+  const toPrev = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + eixos.length) % eixos.length);
+  }, [eixos.length]);
+
+  const toSlide = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+
+  // Rotação suave automática a cada 6 segundos.
+  // Só pausa se o usuário estiver com o mouse diretamente sobre os cartões do palco.
   useEffect(() => {
     if (isHovered) return;
-    autoPlayTimer.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % eixos.length);
+
+    autoPlayTimerRef.current = setInterval(() => {
+      toNext();
     }, 6000);
+
     return () => {
-      if (autoPlayTimer.current) clearInterval(autoPlayTimer.current);
+      if (autoPlayTimerRef.current) {
+        clearInterval(autoPlayTimerRef.current);
+        autoPlayTimerRef.current = null;
+      }
     };
-  }, [isHovered, eixos.length]);
+  }, [isHovered, toNext]);
 
-  const toPrev = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setActiveIndex((prev) => (prev === 0 ? eixos.length - 1 : prev - 1));
-  };
-
-  const toNext = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setActiveIndex((prev) => (prev + 1) % eixos.length);
-  };
-
-  const toSlide = (index: number, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setActiveIndex(index);
-  };
-
-  const slideWidth = 200;
   const activeEixo = eixos[activeIndex] || eixos[0];
 
   return (
     <section
       aria-label="Apresentação dos três eixos temáticos do portal"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className={`my-8 sm:my-10 rounded-2xl border border-border bg-surface p-4 sm:p-7 shadow-xs overflow-hidden ${className}`}
     >
       {/* Cabeçalho da seção com seletor de abas */}
@@ -125,7 +125,7 @@ export function CardCarousel({
               onClick={() => toSlide(idx)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border-0 cursor-pointer ${
                 activeIndex === idx
-                  ? 'bg-surface text-foreground shadow-xs'
+                  ? 'bg-surface text-foreground shadow-xs font-bold'
                   : 'bg-transparent text-muted hover:text-foreground'
               }`}
               style={
@@ -140,116 +140,148 @@ export function CardCarousel({
         </div>
       </div>
 
-      {/* Carrossel com física 3D Spring viva */}
-      <div className="w-full flex flex-col items-center justify-center relative select-none py-3">
-        <div
-          className="relative h-[230px] flex items-center justify-start overflow-visible"
-          style={{ width: `${slideWidth}px` }}
-        >
-          <motion.div
-            className="flex w-fit items-center"
-            animate={{ x: -activeIndex * slideWidth }}
-            transition={{ type: 'spring', bounce: 0.15, duration: 0.7 }}
-          >
-            {eixos.map((item, i) => {
-              const isActive = activeIndex === i;
-              const diff = i - activeIndex;
+      {/* Palco do Carrossel 3D com posicionamento circular dinâmico */}
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full flex flex-col items-center justify-center relative select-none py-4"
+      >
+        {/* Contêiner de altura fixa para o palco 3D */}
+        <div className="relative w-full max-w-2xl h-[380px] flex items-center justify-center overflow-visible">
+          {eixos.map((item, i) => {
+            // Posição relativa em anel: 0 = centro, 1 = direita, 2 = esquerda
+            const diff = (i - activeIndex + eixos.length) % eixos.length;
+            const isCenter = diff === 0;
+            const isRight = diff === 1;
+            const isLeft = diff === 2;
 
-              const targetRotate = isHovered ? diff * 18 : diff * 8;
-              const targetScale = isActive ? 1.08 : isHovered ? 0.72 : 0.84;
-              const targetY = isHovered ? diff * 20 : 0;
+            // Coordenadas calculadas para transição suave contínua
+            let xOffset = 0;
+            let rotateVal = 0;
+            let scaleVal = 0.82;
+            let zIndexVal = 10;
+            let opacityVal = 0.65;
 
-              return (
-                <motion.div
-                  key={item.href}
-                  className="shrink-0 flex flex-col items-center gap-2 will-change-[transform,scale]"
-                  style={{ width: `${slideWidth}px` }}
-                  animate={{
-                    rotate: targetRotate,
-                    scale: targetScale,
-                    y: targetY,
-                  }}
-                  transition={{ type: 'spring', bounce: 0.25, duration: 0.7 }}
+            if (isCenter) {
+              xOffset = 0;
+              rotateVal = 0;
+              scaleVal = 1.1;
+              zIndexVal = 30;
+              opacityVal = 1;
+            } else if (isRight) {
+              xOffset = 300;
+              rotateVal = 6;
+              scaleVal = 0.82;
+              zIndexVal = 10;
+              opacityVal = 0.65;
+            } else if (isLeft) {
+              xOffset = -300;
+              rotateVal = -6;
+              scaleVal = 0.82;
+              zIndexVal = 10;
+              opacityVal = 0.65;
+            }
+
+            return (
+              <motion.div
+                key={item.href}
+                className="absolute top-1/2 left-1/2 flex flex-col items-center gap-2 will-change-transform cursor-pointer"
+                style={{ width: '320px', transformOrigin: 'center center' }}
+                initial={false}
+                animate={{
+                  x: `calc(-50% + ${xOffset}px)`,
+                  y: '-50%',
+                  scale: scaleVal,
+                  rotate: rotateVal,
+                  zIndex: zIndexVal,
+                  opacity: opacityVal,
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 240,
+                  damping: 24,
+                }}
+                onClick={() => toSlide(i)}
+              >
+                {/* Card com a arte gráfica e nome sobreposto */}
+                <div
+                  className={`relative rounded-2xl p-1.5 transition-all duration-300 ${
+                    isCenter
+                      ? 'ring-4 ring-primary shadow-2xl ring-offset-2 ring-offset-surface'
+                      : 'hover:opacity-90 hover:scale-105'
+                  }`}
                 >
-                  {/* Título do card com contraste adaptativo */}
-                  <div
-                    className={`text-xs md:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
-                      isActive
-                        ? 'opacity-100 scale-100'
-                        : 'opacity-60 scale-90 text-muted'
-                    }`}
-                    style={
-                      isActive
-                        ? {
-                            color: 'var(--cp-primary)',
-                            textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                          }
-                        : undefined
-                    }
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    referrerPolicy="no-referrer"
+                    className="w-[280px] h-[280px] sm:w-[310px] sm:h-[310px] max-w-[calc(100vw-3rem)] max-h-[calc(100vw-3rem)] object-cover rounded-xl shadow-lg border border-border"
+                  />
+                  {/* Overlay escuro na base do card */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                  {/* Nome do eixo sobreposto na base do card */}
+                  <span
+                    className="absolute bottom-3 left-3 right-3 text-sm sm:text-base font-extrabold uppercase tracking-wide text-white text-center drop-shadow-md"
+                    style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
                   >
-                    {item.title}
-                  </div>
-
-                  {/* Card com a arte gráfica */}
-                  <div
-                    onClick={() => toSlide(i)}
-                    className={`relative cursor-pointer rounded-2xl p-1.5 transition-all duration-300 ${
-                      isActive
-                        ? 'ring-3 ring-primary shadow-2xl ring-offset-2 ring-offset-surface'
-                        : 'opacity-70 hover:opacity-100 hover:scale-105'
-                    }`}
+                    {item.title.replace(/^\d+\.\s*/, '')}
+                  </span>
+                  {/* Badge do número no canto superior esquerdo */}
+                  <span
+                    className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-extrabold text-white shadow-md"
+                    style={{ backgroundColor: item.corVar }}
                   >
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      referrerPolicy="no-referrer"
-                      className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] object-cover rounded-xl shadow-lg border border-border"
-                    />
-                    <span
-                      className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-extrabold text-white shadow-md"
-                      style={{ backgroundColor: item.corVar }}
-                    >
-                      {item.title.split('.')[0]}.
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                    {item.title.split('.')[0]}.
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Controles de navegação com setas e dots */}
-        <div className="mt-4 px-3 py-1 flex items-center gap-2.5 justify-center rounded-full bg-surface-2 border border-border shadow-xs z-20">
+        {/* Controles de navegação com botões grandes e dots clicáveis */}
+        <div className="mt-4 px-4 py-1.5 flex items-center gap-3 justify-center rounded-full bg-surface-2 border border-border shadow-xs z-20">
           <button
             type="button"
-            onClick={toPrev}
+            onClick={(e) => {
+              e.stopPropagation();
+              toPrev();
+            }}
             aria-label="Eixo anterior"
-            className="p-1 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground"
+            title="Ver eixo anterior"
+            className="p-1.5 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground flex items-center justify-center"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
-          <div className="flex justify-center items-center gap-1.5 px-1">
+          <div className="flex justify-center items-center gap-2 px-1">
             {eixos.map((item, i) => (
               <button
                 key={item.href}
                 type="button"
-                onClick={() => toSlide(i)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toSlide(i);
+                }}
                 aria-label={`Selecionar ${item.title}`}
-                className={`rounded-full cursor-pointer h-2 transition-all duration-300 border-0 p-0 ${
+                className={`rounded-full cursor-pointer h-2.5 transition-all duration-300 border-0 p-0 ${
                   activeIndex === i
-                    ? 'w-6 bg-primary'
-                    : 'w-2 bg-muted hover:bg-foreground/50'
+                    ? 'w-7 bg-primary'
+                    : 'w-2.5 bg-muted hover:bg-foreground/50'
                 }`}
               />
             ))}
           </div>
           <button
             type="button"
-            onClick={toNext}
+            onClick={(e) => {
+              e.stopPropagation();
+              toNext();
+            }}
             aria-label="Próximo eixo"
-            className="p-1 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground"
+            title="Ver próximo eixo"
+            className="p-1.5 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground flex items-center justify-center"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
@@ -262,7 +294,7 @@ export function CardCarousel({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.2 }}
-          className="mt-5 rounded-2xl border border-border bg-surface-2/80 p-5 sm:p-6 shadow-sm"
+          className="mt-4 rounded-2xl border border-border bg-surface-2/80 p-5 sm:p-6 shadow-sm"
           style={{ borderLeft: `5px solid ${activeEixo.corVar}` }}
         >
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
