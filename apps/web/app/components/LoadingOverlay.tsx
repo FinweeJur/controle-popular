@@ -1,12 +1,15 @@
 "use client";
 
 import { useLoading } from "@/lib/use-loading";
+import { WavePhysicsLoader, CircularBars } from "@/app/components/loaders";
 
 /**
- * Indicador sutil de carregamento. Bolinha + contador aparecem no canto
- * inferior direito (acima do FAB do Seu Nonô) quando o usuário navega
- * entre páginas. Não bloqueia visualização nem navegação — é pequeno,
- * discreto e some automaticamente ao carregar.
+ * Indicador fixo e elegante de carregamento entre páginas do portal.
+ *
+ * Localizado no canto inferior esquerdo (fixed bottom-5 left-5 z-[55]),
+ * afastado do FAB do Seu Nonô (que mora na direita).
+ * Não sobrepõe texto, não bloqueia navegação e fecha automaticamente
+ * assim que a nova página conclui o carregamento.
  */
 export default function LoadingOverlay() {
   const { carregando, segundos } = useLoading();
@@ -14,14 +17,32 @@ export default function LoadingOverlay() {
   if (!carregando) return null;
 
   return (
-    <div
-      className="cp-painel-entra fixed bottom-20 right-4 z-[55] flex items-center gap-1.5 rounded-full border border-border/60 bg-surface/80 px-2.5 py-1 text-[.75rem] shadow-sm backdrop-blur-sm"
-      role="status"
-      aria-live="polite"
-      aria-label={`Carregando ha ${segundos} segundos`}
+    <aside
+      aria-label="Status de carregamento da página"
+      className="fixed bottom-5 left-5 z-[55] pointer-events-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
     >
-      <span className="cp-icon-spin inline-block h-3 w-3 rounded-full border-[1.5px] border-primary border-t-transparent" />
-      <span className="font-tabular text-text-soft">{segundos}s</span>
-    </div>
+      <div className="pointer-events-auto flex flex-col items-center rounded-2xl border border-border/80 bg-surface/95 p-3 shadow-2xl backdrop-blur-md max-w-[280px] sm:max-w-[320px]">
+        {/* Animação física de onda */}
+        <div className="w-full flex justify-center -my-10 overflow-hidden">
+          <WavePhysicsLoader className="scale-[0.52] origin-center py-0" />
+        </div>
+
+        {/* Rodapé com CircularBars e contador de segundos */}
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-1 flex items-center justify-between w-full gap-2 border-t border-border/40 pt-2 text-[0.75rem]"
+        >
+          <div className="flex items-center gap-1.5 font-medium text-text">
+            <CircularBars size={14} />
+            <span>Navegando no portal…</span>
+          </div>
+          <span className="font-tabular text-text-soft bg-surface-2 px-1.5 py-0.5 rounded text-[11px]">
+            {segundos}s
+          </span>
+        </div>
+      </div>
+    </aside>
   );
 }
+

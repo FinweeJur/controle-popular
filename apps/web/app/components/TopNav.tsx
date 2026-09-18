@@ -161,7 +161,7 @@ export default function TopNav() {
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    function fecharFora(ev: PointerEvent) {
+    function fecharFora(ev: MouseEvent) {
       if (!caixaRef.current?.contains(ev.target as Node)) {
         setMenuAberto(false);
         setHoverAberto(false);
@@ -173,10 +173,10 @@ export default function TopNav() {
         setHoverAberto(false);
       }
     }
-    document.addEventListener('pointerdown', fecharFora);
+    document.addEventListener('mousedown', fecharFora);
     document.addEventListener('keydown', fecharEsc);
     return () => {
-      document.removeEventListener('pointerdown', fecharFora);
+      document.removeEventListener('mousedown', fecharFora);
       document.removeEventListener('keydown', fecharEsc);
     };
   }, []);
@@ -259,7 +259,7 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
-            className={`absolute top-full left-0 z-50 w-[min(72rem,calc(100vw-1.5rem))] max-h-[calc(100vh-4.5rem)] overflow-y-auto ${
+            className={`absolute top-full left-0 z-[60] w-[min(72rem,calc(100vw-1.5rem))] max-h-[calc(100vh-4.5rem)] overflow-y-auto ${
               aberto ? 'block' : 'hidden'
             }`}
           >
