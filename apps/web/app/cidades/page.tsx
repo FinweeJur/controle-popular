@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
@@ -76,6 +77,15 @@ export default function PaginaCidadesEstrategicas() {
           <span>/</span>
           <span className="font-semibold text-foreground">Expansão Nacional</span>
         </nav>
+
+        {/* Desenho grande de abertura do eixo Cidades com título dinâmico de alto contraste */}
+        <CapaFrente
+          imagem="capas/cities-poco-dantas.webp"
+          alt="203 Cidades Estratégicas do Brasil — Controle Popular"
+          titulo="CIDADES ESTRATÉGICAS"
+          resumo="27 Capitais e 176 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas."
+          className="mb-8 rounded-2xl border border-border shadow-sm"
+        />
 
         {/* CABEÇALHO */}
         <header className="mb-8">

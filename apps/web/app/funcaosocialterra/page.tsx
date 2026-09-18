@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Cabecalho from "./Cabecalho";
+import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
@@ -84,22 +85,17 @@ export default async function FuncaoSocialTerraPage() {
   return (
     <>
       <Cabecalho />
-      <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
-        <p className="text-[11px] font-semibold tracking-wide text-text-soft uppercase">
-          {ZONA.etiqueta}
-        </p>
-        <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
-          {ZONA.titulo}
-        </h1>
-        <p className="mt-3 max-w-[62ch] text-text-soft">
-          Terra sem dono declarado não é terra sem função. O Cadastro Ambiental
-          Rural é declaratório: quem tem imóvel rural declara. O que sobra — área
-          que ninguém declarou — é o <strong>vazio cadastral</strong>, e é o
-          ponto de partida para perguntar de quem é aquela terra e o que se faz
-          dela. Mas o mapa desta frente não para mais no vazio cadastral: hoje
-          ele também mostra terra indígena, barragem, mineração, dinheiro
-          público e onde essas camadas se cruzam.
-        </p>
+      <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
+        {/* Desenho grande de abertura do eixo Terras com título dinâmico de alto contraste */}
+        <CapaFrente
+          imagem="capas/terras-arara.webp"
+          alt="Função Social da Terra — Controle Popular"
+          titulo={ZONA.titulo}
+          epigrafe="A terra é de quem nela trabalha e dela vive com respeito."
+          atribuicao="Tradição Popular e Territorial"
+          resumo="Terra sem dono declarado não é terra sem função. O Cadastro Ambiental Rural, terras indígenas, territórios quilombolas e sobreposições de mineração no mapa interativo."
+          className="mb-8 rounded-2xl border border-border shadow-sm"
+        />
 
         {/* A cobertura desta frente é MUITO desigual entre camadas, e a página
             não dizia isso em nenhum lugar visível — quem lê "6.378 normas" não

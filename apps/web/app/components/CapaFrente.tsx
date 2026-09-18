@@ -102,10 +102,10 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* MEIO: Título — sobe, fica abaixo do topo mas antes do centro */}
-          <div className="w-full pt-2 pb-4 text-center">
+          {/* MEIO: Título — um pouco menor e posicionado mais abaixo */}
+          <div className="w-full pt-8 sm:pt-14 md:pt-20 pb-4 text-center">
             <h1
-              className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-7xl drop-shadow-sm"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-sm"
               style={{
                 color: "var(--cp-primary)",
                 textShadow:

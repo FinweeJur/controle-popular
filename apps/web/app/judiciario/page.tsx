@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
-import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
@@ -43,31 +43,16 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
-      <section className="space-y-4">
-        <h1 className="font-display text-3xl font-bold sm:text-4xl">
-          Quem ocupa, quem indicou, quando vaga
-        </h1>
-        <p className="max-w-2xl text-lg opacity-80">
-          O Judiciário é o único Poder da República cujos membros não passam por eleição em
-          nenhum grau. Este site acompanha, cadeira por cadeira, quem ocupa cada tribunal,
-          quem indicou cada ministro e quando cada um deles vai completar 75 anos — a idade
-          em que a lei obriga todo magistrado a se aposentar.
+      <HeaderFrenteBrasilComS
+        etiqueta="PODER JUDICIÁRIO"
+        titulo="Quem ocupa, quem indicou, quando vaga"
+        descricao="O Judiciário é o único Poder da República cujos membros não passam por eleição em nenhum grau. Este site acompanha, cadeira por cadeira, quem ocupa cada tribunal, quem indicou cada ministro e quando cada um deles vai completar 75 anos — a idade em que a lei obriga todo magistrado a se aposentar."
+        idFotoBrasilComS="00033"
+      >
+        <p className="max-w-2xl text-xs text-text-soft">
+          Nenhum número desta página é opinião ou estimativa: todos vêm direto de fontes oficiais — o Senado Federal e os próprios tribunais —, creditadas no rodapé de cada página que os exibe.
         </p>
-        <p className="max-w-2xl text-sm opacity-70">
-          Nenhum número desta página é opinião ou estimativa: todos vêm direto de fontes
-          oficiais — o Senado Federal e os próprios tribunais —, creditadas no rodapé de cada
-          página que os exibe. O documento de origem aparece na linha de cada indicação
-          quando o Senado o publica.
-        </p>
-      </section>
-
-      {/* Foto de abertura da zona — acervo Brasil com S, com crédito na
-          legenda. Cartão emoldurado e não "fundo" de propósito: foto como
-          fundo de texto furaria o contraste; sem corte (termos do acervo). */}
-      <FotoBrasilComS
-        id="00033"
-        className="mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
-      />
+      </HeaderFrenteBrasilComS>
 
       <section className="grid gap-4 sm:grid-cols-3">
         <div className="rounded-lg border border-[var(--cp-border)] p-4">

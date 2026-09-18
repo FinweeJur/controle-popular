@@ -3,6 +3,7 @@ import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
+import CapaFrente from "@/app/components/CapaFrente";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -254,19 +255,21 @@ export default async function AmbientalHome() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
-      <header className="space-y-4">
-        <p
-          className="text-[.82em] font-semibold uppercase tracking-wide"
-          style={{ color: ZONA.cor }}
-        >
-          {ZONA.etiqueta}
-        </p>
-        <h1 className="font-display text-3xl font-bold sm:text-4xl">{ZONA.titulo}</h1>
-        <p className="max-w-2xl text-[1.05em] text-text-soft">{ZONA.descricao}</p>
+    <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
+      {/* Desenho grande de abertura do eixo Ambiental com título dinâmico de alto contraste */}
+      <CapaFrente
+        imagem="capas/ambiente-rios.webp"
+        alt="Meio Ambiente — Observatório Nacional Socioambiental"
+        titulo={ZONA.titulo}
+        epigrafe="Tudo o que a terra produz, tudo o que o homem fabrica, tudo o que o homem sonha, tudo vem da água."
+        atribuicao="João Guimarães Rosa"
+        resumo={ZONA.descricao}
+        className="mb-8 rounded-2xl shadow-sm border border-border"
+      />
 
+      <header className="space-y-4 mb-8">
         <p
-          className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
+          className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em] bg-surface"
           style={{ borderColor: ZONA.cor }}
         >
           <strong>As cinco frentes têm tela real agora.</strong> COPAM (F3), licenciamento
@@ -276,17 +279,7 @@ export default async function AmbientalHome() {
         </p>
       </header>
 
-      {/* Foto de abertura da zona — acervo Brasil com S (Lab 678), com
-          crédito na legenda. O "fundo de página" pedido pelo dono virou
-          cartão emoldurado de propósito: foto como fundo de texto furaria o
-          contraste dos temas; em cartão, nenhum número fica por cima dela.
-          Sem corte (termos do acervo) — ver `FotoBrasilComS.tsx`. */}
-      <FotoBrasilComS
-        id="00036"
-        className="mt-10 mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
-      />
-
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <div className="mt-8 grid gap-5 sm:grid-cols-2">
         {BLOCOS.map((b) => {
           const conteudo = (
             <>

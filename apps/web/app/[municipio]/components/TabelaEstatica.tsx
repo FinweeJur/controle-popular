@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ManifestoFatias } from "@/lib/estatico/fatiar";
 import { ordenarPor } from "@/lib/tabela/ordenar";
 import type { Direcao, TipoCampo } from "@/lib/tabela/ordenar";
+import { WavePhysicsLoader, CircularBars } from "@/app/components/loaders";
 
 /**
  * Tabela que lê um índice estático fatiado (ver `lib/estatico/fatiar.ts`) e faz
@@ -266,19 +267,27 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
       {controles && <div className="mb-4">{controles({ pronto: completo, linhas })}</div>}
       {camposBusca.length > 0 && (
         <div className="flex flex-wrap items-baseline gap-3">
-          <input
-            type="search"
-            value={busca}
-            disabled={!completo}
-            onChange={(e) => {
-              setBusca(e.target.value);
-              setPagina(1);
-            }}
-            placeholder={completo ? "Buscar…" : "Carregando para poder buscar…"}
-            aria-label="Buscar na tabela"
-            className="w-full max-w-sm rounded-lg border border-border bg-surface px-3 py-2 text-sm disabled:opacity-60"
-          />
-          <p className="font-tabular text-xs text-text-soft" aria-live="polite">
+          <div className="relative w-full max-w-sm flex items-center">
+            <input
+              type="search"
+              value={busca}
+              disabled={!completo}
+              onChange={(e) => {
+                setBusca(e.target.value);
+                setPagina(1);
+              }}
+              placeholder={completo ? "Buscar…" : "Carregando para poder buscar…"}
+              aria-label="Buscar na tabela"
+              className="w-full rounded-lg border border-border bg-surface pr-8 pl-3 py-2 text-sm disabled:opacity-60"
+            />
+            {!completo && (
+              <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center text-text-soft">
+                <CircularBars size={16} />
+              </div>
+            )}
+          </div>
+          <p className="font-tabular text-xs text-text-soft flex items-center gap-1.5" aria-live="polite">
+            {!completo && <CircularBars size={12} />}
             {completo
               ? `${filtradas.length.toLocaleString("pt-BR")} de ${totalLinhas.toLocaleString("pt-BR")}`
               : `${carregadas.toLocaleString("pt-BR")} de ${totalLinhas.toLocaleString("pt-BR")} carregadas`}
@@ -295,7 +304,12 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
         </p>
       )}
 
-      <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+      {carregadas === 0 && !completo ? (
+        <div className="mt-4 rounded-xl border border-border/60 bg-surface/50 p-8 flex flex-col items-center justify-center">
+          <WavePhysicsLoader legenda="Carregando fatias de dados da tabela…" />
+        </div>
+      ) : (
+        <div className="mt-4 overflow-x-auto rounded-lg border border-border">
         <p className="mb-1 px-1 text-xs text-text-soft sm:hidden">
           ← deslize para ver mais colunas →
         </p>
@@ -358,6 +372,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
           </tbody>
         </table>
       </div>
+      )}
 
       {completo && filtradas.length === 0 && (
         <p className="mt-4 text-sm text-text-soft">

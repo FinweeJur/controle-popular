@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
-import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { totaisHome } from "@/lib/db/queries/congresso";
 
@@ -22,38 +22,27 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
-      <section className="space-y-4">
-        <h1 className="font-display text-3xl font-bold sm:text-4xl">
-          O que o Congresso está decidindo sobre os seus direitos
-        </h1>
-        <p className="max-w-2xl text-lg opacity-80">
-          Monitoramento de projetos de lei federais por tema, palavra-chave, bancada e
-          comissão. Cada proposição recebe uma ficha técnica do que ela muda na letra da
-          lei e uma análise de quais direitos ela amplia ou restringe — sempre com o
-          dispositivo legal que fundamenta a leitura.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            href="/proposicoes"
-            className="rounded-md bg-[var(--cp-primary)] px-4 py-2 font-medium text-[var(--cp-primary-ink)]"
-          >
-            Ver proposições
-          </Link>
-          <Link
-            href="/metodologia"
-            className="rounded-md border border-[var(--cp-border)] px-4 py-2 font-medium"
-          >
-            Como classificamos
-          </Link>
-        </div>
-      </section>
-
-      {/* Foto de abertura da zona — acervo Brasil com S, com crédito na
-          legenda. Cartão emoldurado e não "fundo" de propósito: foto como
-          fundo de texto furaria o contraste; sem corte (termos do acervo). */}
-      <FotoBrasilComS
-        id="00031"
-        className="mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
+      <HeaderFrenteBrasilComS
+        etiqueta="PODER LEGISLATIVO FEDERAL"
+        titulo="O que o Congresso está decidindo sobre os seus direitos"
+        descricao="Monitoramento de projetos de lei federais por tema, palavra-chave, bancada e comissão. Cada proposição recebe uma ficha técnica do que ela muda na letra da lei e uma análise de quais direitos ela amplia ou restringe — sempre com o dispositivo legal que fundamenta a leitura."
+        idFotoBrasilComS="00031"
+        acoes={
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/proposicoes"
+              className="rounded-md bg-[var(--cp-primary)] px-4 py-2 font-medium text-[var(--cp-primary-ink)] hover:opacity-90 transition"
+            >
+              Ver proposições
+            </Link>
+            <Link
+              href="/metodologia"
+              className="rounded-md border border-[var(--cp-border)] px-4 py-2 font-medium hover:bg-surface-2 transition"
+            >
+              Como classificamos
+            </Link>
+          </div>
+        }
       />
 
       {totalProposicoes === null ? (

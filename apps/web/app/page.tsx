@@ -138,7 +138,7 @@ export default async function Hub() {
             Busca por tema, palavra-chave e território →
           </a>
           <a href="/cidades" className="font-medium text-primary hover:underline">
-            199 Cidades Estratégicas (Capitais & Polos) →
+            203 Cidades Estratégicas (Capitais & Polos) →
           </a>
           <a href="/alertas" className="font-medium text-primary hover:underline">
             Alertas & Notificações (Telegram, E-mail & WhatsApp) →
