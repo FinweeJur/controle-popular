@@ -78,10 +78,10 @@ export default function CapaFrente({
 
       {/* Texto sobreposto sobre a fotografia com acessibilidade e contraste */}
       {layout === "home" ? (
-        <div className="relative z-10 mx-auto flex min-h-[460px] w-full max-w-4xl flex-col justify-between px-4 py-6 sm:px-8 md:min-h-[520px] md:py-8 box-border break-words">
-          {/* TOPO: Epígrafe literária focada no canto superior esquerdo com quebra de versos e autor no mesmo tamanho */}
+        <div className="relative z-10 mx-auto flex min-h-[500px] w-full max-w-5xl flex-col justify-between px-4 py-6 sm:px-8 md:min-h-[580px] md:py-10 box-border break-words">
+          {/* TOPO: Epígrafe literária — canto superior DIREITO */}
           {listaEpigrafes.length > 0 && (
-            <div className="max-w-full sm:max-w-md text-left space-y-2">
+            <div className="ml-auto max-w-full sm:max-w-sm md:max-w-md text-right space-y-2">
               {listaEpigrafes.map((ep, i) => (
                 <p
                   key={i}
@@ -102,10 +102,10 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* MEIO: Título centralizado na página — cor segue o tema (var(--cp-primary)) como o ".com.br" da navbar */}
-          <div className="my-auto w-full py-4 text-center">
+          {/* MEIO: Título — sobe, fica abaixo do topo mas antes do centro */}
+          <div className="w-full pt-2 pb-4 text-center">
             <h1
-              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-6xl drop-shadow-sm"
+              className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-7xl drop-shadow-sm"
               style={{
                 color: "var(--cp-primary)",
                 textShadow:
@@ -116,10 +116,10 @@ export default function CapaFrente({
             </h1>
           </div>
 
-          {/* BASE: Só o texto que descreve o portal fica alinhado à direita */}
+          {/* BASE: Texto descritivo — metade direita, justificado */}
           <div className="mt-auto flex w-full justify-end">
             <p
-              className="max-w-md sm:max-w-lg text-right text-xs sm:text-sm leading-relaxed text-white font-medium"
+              className="w-full sm:w-3/5 md:w-1/2 text-justify text-xs sm:text-sm leading-relaxed text-white font-medium"
               style={{
                 textShadow:
                   "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",
@@ -129,8 +129,9 @@ export default function CapaFrente({
             </p>
           </div>
         </div>
+
       ) : (
-        <div className="relative z-10 mx-auto flex min-h-[420px] max-w-4xl flex-col justify-end px-4 py-8 sm:px-8 md:min-h-[480px] md:py-12">
+        <div className="relative z-10 mx-auto flex min-h-[480px] max-w-5xl flex-col justify-end px-4 py-8 sm:px-8 md:min-h-[560px] md:py-12">
           <div className="p-2 sm:p-4 md:max-w-3xl">
             {/* Epígrafes literárias — com contorno preto e sombra nítida */}
             {listaEpigrafes.length > 0 && (
@@ -155,13 +156,13 @@ export default function CapaFrente({
               </div>
             )}
 
-            {/* H1 Principal com contorno preto nítido */}
+            {/* H1 Principal com cor que muda com o tema e alto contraste garantido */}
             <h1
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-md"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-6xl drop-shadow-md"
               style={{
-                WebkitTextStroke: "1px #000",
+                color: "var(--cp-primary)",
                 textShadow:
-                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 3px 8px rgba(0,0,0,0.95)",
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
               }}
             >
               {titulo}

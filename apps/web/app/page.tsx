@@ -7,6 +7,7 @@ import CapaFrente from "@/app/components/CapaFrente";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
+import CardCarousel from "@/app/components/CarrosselEixos";
 import { citacaoPorId } from "@/lib/citacoes";
 
 /**
@@ -80,6 +81,9 @@ export default async function Hub() {
         ]}
         resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
       />
+
+      {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
+      <CardCarousel />
 
       {/* ═══ RESUMO DE DADOS GERAIS (PAINEL DE IMPACTO POPULAR) ═══ */}
       <section aria-label="Painel de dados gerais monitorados" className="my-8 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
