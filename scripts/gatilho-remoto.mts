@@ -177,6 +177,8 @@ const COMANDOS: Record<string, string> = {
   "/proximas": "proximas",
   "/code": "code",
   "/andamento": "andamento",
+  "/menu": "menu",
+  "/sessao": "sessao",
 };
 
 async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
@@ -199,6 +201,172 @@ function gravarOffset(n: number) {
   fs.writeFileSync(ARQUIVO_OFFSET, String(n));
 }
 
+// ── Handlers reutilizáveis (usados por comandos de texto E botões inline) ──
+
+async function cmdMenu(chatId: string) {
+  const texto =
+    "📋 *Menu — Controle Popular*\n\n" +
+    "Comandos disponíveis:\n\n" +
+    "📊 /status — estado do servidor (ocioso ou sincronizando)\n" +
+    "🔍 /tunel — status do Cloudflared e do next start\n" +
+    "🖥️ /sessao — PID, memória, uptime, reinícios, boot\n" +
+    "🔄 /sincronizar — git fetch + merge + push + build + deploy\n" +
+    "♻️ /reiniciar — mata, buildeja e reinicia o next start\n" +
+    "🤖 /code — status do portal (banco, R2, fontes)\n" +
+    "📋 /andamento — etapas concluídas do projeto\n" +
+    "📌 /proximas — lista de pendências\n\n" +
+    "Ou clique num botão below 👇";
+
+  const botoes = [
+    [{ text: "📊 Status", callback_data: "cmd_status" }, { text: "🔍 Tunel", callback_data: "cmd_tunel" }],
+    [{ text: "🖥️ Sessao", callback_data: "cmd_sessao" }, { text: "🔄 Sync", callback_data: "cmd_sincronizar" }],
+    [{ text: "♻️ Reiniciar", callback_data: "cmd_reiniciar" }],
+    [{ text: "🤖 Code", callback_data: "cmd_code" }, { text: "📋 Andamento", callback_data: "cmd_andamento" }],
+    [{ text: "📌 Proximas", callback_data: "cmd_proximas" }],
+  ];
+
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: texto,
+    parse_mode: "Markdown",
+    reply_markup: JSON.stringify({ inline_keyboard: botoes }),
+  });
+}
+
+async function cmdTunel(chatId: string) {
+  let status = "desconhecido";
+  try {
+    const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
+    status = svc.includes("RUNNING") ? " rodando" : " parado";
+  } catch { status = " nao encontrado"; }
+  let nextStart = "parado";
+  try {
+    const ps = execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Measure-Object | Select-Object -ExpandProperty Count"], { encoding: "utf-8" });
+    nextStart = ps.trim() === "0" ? "parado" : " rodando";
+  } catch { nextStart = "verificar manualmente"; }
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: `Tunel (Cloudflared):${status}\nNext (porta 3000):${nextStart}`,
+  });
+}
+
+async function cmdSessao(chatId: string) {
+  const linhas: string[] = ["🖥️ */sessao — estado da sessão*", ""];
+  try {
+    const ps = execFileSync("powershell", [
+      "-NoProfile", "-Command",
+      `Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Select-Object Id, WorkingSet64, StartTime | ConvertTo-Json -Compress`,
+    ], { encoding: "utf-8" });
+    const d = JSON.parse(ps.trim() || "null");
+    if (d) {
+      const p = Array.isArray(d) ? d[0] : d;
+      const rss = Math.round((p.WorkingSet64 || 0) / 1024 / 1024);
+      const uptime = p.StartTime ? Math.round((Date.now() - new Date(p.StartTime).getTime()) / 1000 / 60) : "?";
+      linhas.push(`*PID:* ${p.Id}`, `*Memoria:* ${rss} MB`, `*Uptime:* ${uptime} min`);
+    } else {
+      linhas.push(`*Next start:* PARADO`);
+    }
+  } catch { linhas.push(`*Next start:* nao detectado`); }
+  try {
+    const port = execFileSync("powershell", [
+      "-NoProfile", "-Command",
+      `(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1).OwningProcess`,
+    ], { encoding: "utf-8" }).trim();
+    linhas.push(`*Porta 3000:* ${port ? `PID ${port}` : "livre"}`);
+  } catch { linhas.push(`*Porta 3000:* verificar`); }
+  try {
+    const reinicios = JSON.parse(fs.readFileSync(path.join(RAIZ, "scripts", ".vigia-reinicios.json"), "utf-8"));
+    const recentes = (reinicios.carimbos || []).filter((t: number) => Date.now() - t < 3600000);
+    linhas.push(`*Reinicios (1h):* ${recentes.length}/6`);
+  } catch { linhas.push(`*Reinicios (1h):* 0/6`); }
+  try {
+    const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
+    linhas.push(`*Cloudflared:* ${svc.includes("RUNNING") ? "OK" : "parado"}`);
+  } catch { linhas.push(`*Cloudflared:* nao encontrado`); }
+  try {
+    const hb = fs.readFileSync(path.join(RAIZ, "scripts", ".heartbeat-vigia"), "utf-8").trim();
+    const idade = Math.round((Date.now() - new Date(hb).getTime()) / 1000 / 60);
+    linhas.push(`*Vigia heartbeat:* ${idade} min atras`);
+  } catch { linhas.push(`*Vigia heartbeat:* sem dado`); }
+  try {
+    const up = execFileSync("powershell", [
+      "-NoProfile", "-Command",
+      `(Get-CimInstance Win32_OperatingSystem).LastBootUpTime`,
+    ], { encoding: "utf-8" }).trim();
+    const boot = new Date(up);
+    const horas = Math.round((Date.now() - boot.getTime()) / 1000 / 60 / 60 * 10) / 10;
+    linhas.push(`*Maquina:* ${horas}h desde ultimo boot`);
+  } catch {}
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: linhas.join("\n"),
+    parse_mode: "Markdown",
+  });
+}
+
+async function cmdReiniciar(chatId: string) {
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: "reiniciando next start (build + start)...",
+  });
+  try {
+    execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Stop-Process -Force"], { encoding: "utf-8" });
+    execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; & 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next' build --webpack"], { encoding: "utf-8", timeout: 900000, cwd: "C:\\DevCoder\\controle-popular\\apps\\web" });
+    execFileSync("powershell", ["-Command", "Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next','start','-p','3000' -WorkingDirectory 'C:\\DevCoder\\controle-popular\\apps\\web' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text: "✅ next start reiniciado (porta 3000)",
+    });
+  } catch (e) {
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text: `❌ falha ao reiniciar: ${(e as Error).message.slice(0, 200)}`,
+    });
+  }
+}
+
+async function cmdSincronizar(chatId: string) {
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: "sincronizando e publicando — aviso quando terminar",
+  });
+  const { ok, resumo } = await rodarSync(`telegram:${chatId}`);
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: `${ok ? "✅" : "❌"} ${resumo}`,
+  });
+}
+
+async function cmdCode(chatId: string) {
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: await mensagemCode(),
+    parse_mode: "Markdown",
+  });
+}
+
+async function cmdAndamento(chatId: string) {
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: await mensagemAndamento(),
+    parse_mode: "Markdown",
+  });
+}
+
+async function cmdProximas(chatId: string) {
+  const pendencias = [
+    "1. CORS no R2 (dashboard → R2 →ucket → CORS)",
+    "2. Backfill completo: arquivar-fontes.mjs + enviar-fontes-r2.mjs",
+    "3. Bucket R2 publico (ja decidido)",
+    "4. Diario oficial D0–D5 (migrations 0077/0079)",
+    "5. LAI INCRA (prazo 28/08)",
+  ];
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: `Proximas pendencias:\n\n${pendencias.join("\n")}`,
+  });
+}
+
 async function loopTelegram() {
   let offset = lerOffset();
   for (;;) {
@@ -213,11 +381,19 @@ async function loopTelegram() {
       } catch { /* disco cheio é caso raro; o vigia denunciaria a idade do arquivo */ }
       const resp = await fetch(
         `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates` +
-          `?offset=${offset}&timeout=30&allowed_updates=["message"]`
+          `?offset=${offset}&timeout=30&allowed_updates=["message","callback_query"]`
       );
       const dados = (await resp.json()) as {
         ok: boolean;
-        result: Array<{ update_id: number; message?: { chat: { id: number }; text?: string } }>;
+        result: Array<{
+          update_id: number;
+          message?: { chat: { id: number }; text?: string };
+          callback_query?: {
+            id: string;
+            data?: string;
+            message?: { chat?: { id?: number }; text?: string };
+          };
+        }>;
       };
       if (!dados.ok) {
         log(`Telegram: getUpdates devolveu erro, esperando 10s`);
@@ -227,6 +403,31 @@ async function loopTelegram() {
       for (const upd of dados.result) {
         offset = upd.update_id + 1;
         gravarOffset(offset);
+
+        // ── Callback query (clique em botão inline) ──────────────────────
+        if (upd.callback_query) {
+          const cq = upd.callback_query;
+          const chatId = String(cq.message?.chat?.id ?? "");
+          if (chatId !== String(TELEGRAM_CHAT_ID)) continue;
+          const dadosBtn = (cq.data ?? "").trim().toLowerCase();
+          log(`Telegram: callback data=${dadosBtn}`);
+          const callbackMap: Record<string, () => Promise<unknown>> = {
+            "cmd_status": () => telegramApi("sendMessage", { chat_id: chatId, text: emAndamento ? "sincronização em andamento" : "ocioso, pronto para /sincronizar" }),
+            "cmd_tunel": () => cmdTunel(chatId),
+            "cmd_sessao": () => cmdSessao(chatId),
+            "cmd_reiniciar": () => cmdReiniciar(chatId),
+            "cmd_sincronizar": () => cmdSincronizar(chatId),
+            "cmd_code": () => cmdCode(chatId),
+            "cmd_andamento": () => cmdAndamento(chatId),
+            "cmd_proximas": () => cmdProximas(chatId),
+          };
+          if (callbackMap[dadosBtn]) {
+            await callbackMap[dadosBtn]();
+          }
+          await telegramApi("answerCallbackQuery", { callback_query_id: cq.id, show_alert: false }).catch(() => {});
+          continue;
+        }
+
         const msg = upd.message;
         if (!msg?.text) continue;
         if (String(msg.chat.id) !== String(TELEGRAM_CHAT_ID)) {
@@ -286,153 +487,44 @@ async function loopTelegram() {
           }
           continue;
         }
+        if (comando === "menu") {
+          await cmdMenu(String(msg.chat.id));
+          continue;
+        }
         if (comando === "status") {
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
-            text: emAndamento ? "sincronizaÃ§Ã£o em andamento" : "ocioso, pronto para /sincronizar",
+            text: emAndamento ? "sincronização em andamento" : "ocioso, pronto para /sincronizar",
           });
           continue;
         }
         if (comando === "tunel") {
-          let status = "desconhecido";
-          try {
-            const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
-            status = svc.includes("RUNNING") ? " rodando" : " parado";
-          } catch { status = " nÃ£o encontrado"; }
-          let nextStart = "parado";
-          try {
-            const ps = execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Measure-Object | Select-Object -ExpandProperty Count"], { encoding: "utf-8" });
-            nextStart = ps.trim() === "0" ? "parado" : " rodando";
-          } catch { nextStart = "verificar manualmente"; }
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: `Túnel (Cloudflared):${status}\nNext (porta 3000):${nextStart}`,
-          });
+          await cmdTunel(String(msg.chat.id));
           continue;
         }
         if (comando === "reiniciar") {
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: "reiniciando next start (build + start)...",
-          });
-          try {
-            // Matar processos next dev/start anteriores
-            execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Stop-Process -Force"], { encoding: "utf-8" });
-            // Build de producao
-            execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; & 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next' build --webpack"], { encoding: "utf-8", timeout: 900000, cwd: "C:\\DevCoder\\controle-popular\\apps\\web" });
-            // Iniciar next start
-            execFileSync("powershell", ["-Command", "Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next','start','-p','3000' -WorkingDirectory 'C:\\DevCoder\\controle-popular\\apps\\web' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
-            // Warmup em background
-            setTimeout(() => {
-              try {
-                execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 10; Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\tsx\\dist\\cli.mjs','C:\\DevCoder\\controle-popular\\scripts\\warmup-dev.mts','3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 5000 });
-              } catch { /* warmup é best-effort */ }
-            }, 0);
-            await telegramApi("sendMessage", {
-              chat_id: msg.chat.id,
-              text: "✅ next start reiniciado (porta 3000)",
-            });
-          } catch (e) {
-            await telegramApi("sendMessage", {
-              chat_id: msg.chat.id,
-              text: `❌ falha ao reiniciar: ${(e as Error).message.slice(0, 200)}`,
-            });
-          }
+          await cmdReiniciar(String(msg.chat.id));
           continue;
         }
         if (comando === "code") {
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: await mensagemCode(),
-            parse_mode: "Markdown",
-          });
+          await cmdCode(String(msg.chat.id));
           continue;
         }
         if (comando === "andamento") {
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: await mensagemAndamento(),
-            parse_mode: "Markdown",
-          });
+          await cmdAndamento(String(msg.chat.id));
           continue;
         }
         if (comando === "proximas") {
-          const pendencias = [
-            "1. CORS no R2 (dashboard → R2 →ucket → CORS)",
-            "2. Backfill completo: arquivar-fontes.mjs + enviar-fontes-r2.mjs",
-            "3. Bucket R2 público (já decidido)",
-            "4. Diário oficial D0–D5 (migrations 0077/0079)",
-            "5. LAI INCRA (prazo 28/08)",
-          ];
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: `Próximas pendências:\n\n${pendencias.join("\n")}`,
-          });
+          await cmdProximas(String(msg.chat.id));
           continue;
         }
         if (comando === "sessao") {
-          const linhas: string[] = ["🖥️ */sessao — estado da sessão*", ""];
-          // PID do next start
-          try {
-            const ps = execFileSync("powershell", [
-              "-NoProfile", "-Command",
-              `Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Select-Object Id, WorkingSet64, StartTime | ConvertTo-Json -Compress`,
-            ], { encoding: "utf-8" });
-            const dados = JSON.parse(ps.trim() || "null");
-            if (dados) {
-              const p = Array.isArray(dados) ? dados[0] : dados;
-              const rss = Math.round((p.WorkingSet64 || 0) / 1024 / 1024);
-              const uptime = p.StartTime ? Math.round((Date.now() - new Date(p.StartTime).getTime()) / 1000 / 60) : "?";
-              linhas.push(`*PID:* ${p.Id}`, `*Memória:* ${rss} MB`, `*Uptime:* ${uptime} min`);
-            } else {
-              linhas.push(`*Next start:* PARADO`);
-            }
-          } catch { linhas.push(`*Next start:* não detectado`); }
-          // Porta 3000
-          try {
-            const port = execFileSync("powershell", [
-              "-NoProfile", "-Command",
-              `(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1).OwningProcess`,
-            ], { encoding: "utf-8" }).trim();
-            linhas.push(`*Porta 3000:* ${port ? `PID ${port}` : "livre"}`);
-          } catch { linhas.push(`*Porta 3000:* verificar`); }
-          // Último restart do vigia
-          try {
-            const reinicios = JSON.parse(fs.readFileSync(path.join(RAIZ, "scripts", ".vigia-reinicios.json"), "utf-8"));
-            const recentes = (reinicios.carimbos || []).filter((t: number) => Date.now() - t < 3600000);
-            linhas.push(`*Reinícios (1h):* ${recentes.length}/6`);
-          } catch { linhas.push(`*Reinícios (1h):* 0/6`); }
-          // Cloudflared
-          try {
-            const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
-            linhas.push(`*Cloudflared:* ${svc.includes("RUNNING") ? "OK" : "parado"}`);
-          } catch { linhas.push(`*Cloudflared:* não encontrado`); }
-          // Heartbeat do vigia
-          try {
-            const hb = fs.readFileSync(path.join(RAIZ, "scripts", ".heartbeat-vigia"), "utf-8").trim();
-            const idade = Math.round((Date.now() - new Date(hb).getTime()) / 1000 / 60);
-            linhas.push(`*Vigia heartbeat:* ${idade} min atrás`);
-          } catch { linhas.push(`*Vigia heartbeat:* sem dado`); }
-          // Uptime da máquina
-          try {
-            const up = execFileSync("powershell", [
-              "-NoProfile", "-Command",
-              `(Get-CimInstance Win32_OperatingSystem).LastBootUpTime`,
-            ], { encoding: "utf-8" }).trim();
-            const boot = new Date(up);
-            const horas = Math.round((Date.now() - boot.getTime()) / 1000 / 60 / 60 * 10) / 10;
-            linhas.push(`*Máquina:* ${horas}h desde último boot`);
-          } catch {}
-          await telegramApi("sendMessage", {
-            chat_id: msg.chat.id,
-            text: linhas.join("\n"),
-            parse_mode: "Markdown",
-          });
+          await cmdSessao(String(msg.chat.id));
           continue;
         }
         await telegramApi("sendMessage", {
           chat_id: msg.chat.id,
-          text: "sincronizando e publicando â€” aviso quando terminar",
+          text: "sincronizando e publicando — aviso quando terminar",
         });
         const { ok, resumo } = await rodarSync(`telegram:${msg.chat.id}`);
         await telegramApi("sendMessage", {
