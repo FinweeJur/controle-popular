@@ -628,21 +628,44 @@ function extrairTextoOpencode(out: string): string {
 }
 
 async function opencodeChat(mensagem: string): Promise<string> {
+  // Escreve o comando no queue para a sessao opencode atual processar
+  const queueFile = path.join(RAIZ, ".opencode", "canario", "comandos.json");
+  const id = `cmd_${Date.now()}`;
+  const cmd = { id, mensagem, status: "pendente", criadoEm: new Date().toISOString() };
+
   try {
-    const stdout = execFileSync(OPENCODE_BIN, ["run", mensagem, "--format", "json", "--auto"], {
-      encoding: "utf-8",
-      timeout: 120_000,
-      maxBuffer: 10 * 1024 * 1024,
-    });
-    return extrairTextoOpencode(stdout);
-  } catch (e) {
-    const err = e as { stdout?: string; message?: string };
-    if (err.stdout) {
-      const texto = extrairTextoOpencode(err.stdout);
-      if (texto) return texto;
+    const dir = path.dirname(queueFile);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    // Le queue existente ou cria nova
+    let queue: Array<{ id: string; mensagem: string; status: string; criadoEm: string }> = [];
+    if (fs.existsSync(queueFile)) {
+      try { queue = JSON.parse(fs.readFileSync(queueFile, "utf-8")); } catch { queue = []; }
     }
-    throw new Error(`opencode: ${(err.message || "falha").slice(0, 200)}`);
+    queue.push(cmd);
+    fs.writeFileSync(queueFile, JSON.stringify(queue, null, 2));
+  } catch { /* ignora erro de escrita */ }
+
+  // Espera a sessao opencode responder (max 90s)
+  const inicio = Date.now();
+  while (Date.now() - inicio < 90_000) {
+    await esperar(2000);
+    try {
+      const queue = JSON.parse(fs.readFileSync(queueFile, "utf-8"));
+      const item = queue.find((q: { id: string }) => q.id === id);
+      if (item?.status === "respondido" && item.resposta) {
+        // Limpa itens antigos (mantem ultimos 10)
+        const limpa = queue.filter((q: { id: string }) => q.id !== id).slice(-10);
+        fs.writeFileSync(queueFile, JSON.stringify(limpa, null, 2));
+        return item.resposta;
+      }
+      if (item?.status === "erro") {
+        const limpa = queue.filter((q: { id: string }) => q.id !== id).slice(-10);
+        fs.writeFileSync(queueFile, JSON.stringify(limpa, null, 2));
+        return `Erro: ${item.resposta || "desconhecido"}`;
+      }
+    } catch { /* arquivo pode estar sendo escrito */ }
   }
+  return "Sessao opencode nao respondeu em 90s. Tente novamente.";
 }
 
 async function esperar(ms: number) {
