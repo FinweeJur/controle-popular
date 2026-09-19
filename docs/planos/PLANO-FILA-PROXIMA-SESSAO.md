@@ -77,6 +77,8 @@ Correção (dono, 5 minutos):
 | 5 | Bot de segurança + Guara Shield integrados | 🟡 médio | agente | 1–2 dias |
 | 6 | Fase 4 — Postgres do Guara no lugar da Neon | 🟠 difícil | agente | 2–3 h + rodada |
 | 7 | Laboratório: brincar com dados (dither-charts + dock + janelas + Seu Nonô) | 🔴 grande | agente, em fases | ~4 semanas |
+| 8 | Remuneração de servidores + donos/conselheiros/sócios de empresas (novas APIs) | 🟡 médio | agente, por frente | 1–2 semanas |
+| 9 | Mapeamento amplo de APIs (Brasil, LatAm, ONU) | 🟢 fácil | agente | 1–2 dias |
 
 Ordem sugerida: o trivial primeiro — destrava a leitura do resto.
 O Lab fica por último: é a maior peça, e também o maior ganho.
@@ -165,6 +167,72 @@ citação clicável, ressalva de IA visível, nenhum número reinventado.
 Critério de pronto: o dono monta em `/laboratorio`, sem escrever código,
 uma comparação "contratos em Betim × renda média", com gráfico dither e o
 Seu Nonô ativando a tela.
+
+### 8 — Remuneração de servidores públicos + donos e conselhos de empresas
+
+**Pedido do dono:** quanto cada servidor público recebe, e os donos,
+conselheiros e sócios majoritários das empresas — nas páginas
+Congresso, Câmaras, Prefeituras, Governos Estaduais, Judiciário e Empresas.
+
+Fontes de remuneração, por poder:
+
+| Frente | Fonte | Endereço |
+|---|---|---|
+| Deputados federais | API Dados Abertos da Câmara — despesas do gabinete | `/deputados/{id}/despesas` |
+| Senadores | API Dados Abertos do Senado — verba indenizatória | `/senador/{id}/despesas` |
+| Servidores federais | Portal da Transparência — API de remuneração | `/api-de-dados/remuneracao-servidores` |
+| Governos estaduais | Portal de transparência do estado (remuneração de pessoal) | ex.: `transparencia.mg.gov.br` |
+| Judiciário | CNJ — relatórios de remuneração de magistrados e servidores | `dadosabertos.cnj.jus.br` |
+| Câmaras municipais | portal de transparência da câmara, caso a caso | priorizar as 6 cidades atendidas |
+| Prefeituras | portal de transparência municipal | Betim, BH, SP primeiro |
+
+Fontes de CNPJ e de sociedades:
+
+| Base | O que cobre |
+|---|---|
+| Receita Federal — Dados Abertos do CNPJ (arquivo mensal) | cadastro completo com QSA (quadro de sócios), CNAE, capital social |
+| Brasil.io — Open Data CNPJ (também na Base dos Dados) | já usamos no M8 (`socios-vale.json`); filtrável |
+| ReceitaWS | consulta individual de CNPJ (não para carga em massa) |
+| QSA (dentro dos arquivos da Receita) | cargo do sócio: Administrador, Conselheiro, Presidente (`cargo_pessoa_socio`) |
+
+Prioridade de implementação:
+
+1. `/empresas` e `/empresas/[slug]` — sócio majoritário, conselheiros,
+   grupo econômico; a base do CNPJ alimenta o painel existente.
+2. Congresso — remuneração por página de deputado e senador.
+3. Judiciário — remuneração publicada pelo CNJ, por tribunal.
+4. Cidades — remuneração por portal municipal, cidade a cidade.
+
+⚠️ Dado pessoal: remuneração de agente público em função é informação
+de interesse social (LAI, art. 31). A guarda do AGENTS § 5.2 continua:
+**nenhum CPF** vai para a tela.
+
+Critério de pronto: cada frente exibindo valor mensal com fonte oficial
+(formato ABNT, autor e data); Empresas informa sócio majoritário e
+conselheiros no painel.
+
+### 9 — Mapeamento amplo de APIs e bases de dados
+
+**Pedido do dono:** mapear APIs e bases públicas e open source — Brasil,
+Latino-américa e ONU — para coletar ou conectar ao portal.
+Resultado: novo `docs/06-fontes/MAPEAMENTO-FONTES-AMPLAS.md`, no template
+do [FONTES.md](../06-fontes/FONTES.md): URL, acesso medido, licença, armadilha.
+
+Blocos a mapear (coordenar impacto social, ver AGENTS § 1):
+
+| Bloco | Fontes |
+|---|---|
+| Brasil federal | dados.gov.br, IBGE (SIDRA, Cidades), DATASUS (TABNET, CNES), Portal da Transparência (API), INEP, FNDE, PNCP, Transferegov, ANA, ANP, SUSEP |
+| Ambientais e territoriais | MapBiomas, INPE — PRODES e DETER (desmatamento), CNUC (unidades de conservação), FUNAI e INCRA (já temos), SNIS (água e esgoto) |
+| Social e cidade | TSE DivulgaCandContas, IBGE Cidades, Atlas do Desenvolvimento Humano (Brasil), CadÚnico, SLIS |
+| Econômico | B3 (cotações), CADE (concentração de mercado), TCU (programas). Portal da Transparência |
+| LatAm e ONU | CEPAL (estadísticas), UN Data, World Bank Data, OECD, UNDP (IDH), PAHO/OPS, UNODC, FAO, ILO, UNICEF, OpenDataLatam |
+
+Regras que valem já no mapeamento: ler o `robots.txt`, User-Agent honesto,
+pausa entre chamadas, e varredura de dado pessoal antes de commit (AGENTS § 11).
+
+Critério de pronto: `MAPEAMENTO-FONTES-AMPLAS.md` criado com pelo menos
+20 fontes sondadas (URL e status medido), priorizadas por impacto social.
 
 ## Origem
 
