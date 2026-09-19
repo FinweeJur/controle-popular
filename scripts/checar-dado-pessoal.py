@@ -118,6 +118,8 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47
               "84351260645", "843.512.606-45", "05982413615", "059.824.136-15",
               # falso positivo estrutural: numeros de PROCESSO de outorga ANA (2026-09-16) — 11 digitos que passam no mod-11 por coincidencia
               "23010000448", "23010004001", "23010000286", "23010000871", "23010001509",
+              # falsos positivos: valores financeiros em USD de demonstracoes financeiras (SEC/HKEX) capturados como 11 digitos — dinheiro, nao CPF
+              "88140000000", "52400000000", "33400000000",
               "05042570640", "23010001762", "16201000968", "23010000103",
               "93015091999", "99059511999", "16201001425", "16153332668"}
 

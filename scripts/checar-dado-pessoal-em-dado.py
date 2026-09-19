@@ -223,7 +223,9 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
               # mod-11 por coincidência. Não é CPF — é por nº de processo ANA,
               # sempre com contexto ano. (Gerado com a coleta de 2026-09-16.)
               "23010000448", "23010004001", "23010000286", "23010000871",
-              "23010001509",}
+              "23010001509",
+              # falsos positivos: valores financeiros em USD de demonstracoes financeiras (SEC/HKEX) capturados como 11 digitos — dinheiro, nao CPF
+              "88140000000", "52400000000", "33400000000",}
 
 
 def cpf_valido(digitos: str) -> bool:
