@@ -42,6 +42,18 @@ function escreverQueue(queue: Array<{ id: string; mensagem: string; status: stri
   }
 }
 
+function extrairTextoOpencode(out: string): string {
+  let resposta = "";
+  for (const linha of out.split("\n")) {
+    if (!linha.trim()) continue;
+    try {
+      const e = JSON.parse(linha);
+      if (e.type === "text" && e.part?.text) resposta += e.part.text;
+    } catch { /* ignora linhas nao-JSON */ }
+  }
+  return resposta;
+}
+
 function processarComando(mensagem: string): string {
   try {
     const stdout = execFileSync(OPENCODE_BIN, ["run", mensagem, "--format", "json", "--auto"], {
@@ -50,26 +62,13 @@ function processarComando(mensagem: string): string {
       maxBuffer: 10 * 1024 * 1024,
       cwd: RAIZ,
     });
-    // Try to extract text from JSON response
-    try {
-      const parsed = JSON.parse(stdout);
-      if (parsed.result?.text) return parsed.result.text;
-      if (parsed.text) return parsed.text;
-      if (parsed.result) return String(parsed.result);
-    } catch {
-      // Not JSON, return raw output
-    }
-    return stdout.trim().slice(0, 3000) || "Processado (sem saida)";
+    const texto = extrairTextoOpencode(stdout);
+    return texto || "Processado (sem saida textual)";
   } catch (e) {
     const err = e as { stdout?: string; message?: string };
     if (err.stdout) {
-      try {
-        const parsed = JSON.parse(err.stdout);
-        if (parsed.result?.text) return parsed.result.text;
-        if (parsed.text) return parsed.text;
-      } catch {
-        return err.stdout.trim().slice(0, 2000);
-      }
+      const texto = extrairTextoOpencode(err.stdout);
+      if (texto) return texto;
     }
     return `Erro: ${(err.message || "desconhecido").slice(0, 200)}`;
   }
