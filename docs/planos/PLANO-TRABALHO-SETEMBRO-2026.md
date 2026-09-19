@@ -1,8 +1,17 @@
-# 📁 Plano de Trabalho — 2026 Setembro
+# PLANO TRABALHO SETEMBRO 2026
 
-> **Tipo:** PLANO  
-> **Domínio:** gestão, priorização, execução  
-> **Status:** ATIVO
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-09-19
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md)
+> **Palavras-chave:** plano, expansão, fila
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Visão Geral](#visão-geral)
+
 
 ---
 

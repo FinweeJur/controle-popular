@@ -2,229 +2,175 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-16 (Duplo deploy Guara Cloud + Cloudflare Workers; Hub /editais com 50 certames e 5 requisitos obrigatórios; extrator jornalístico do radar de diários oficiais; descoberta instantânea de Estudos Rurais e hubs no buscador)
-> **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel, guara, editais, duplo deploy
+> **Última medição:** 2026-09-19
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md)
+> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [No ar agora](#no-ar-agora)
-- [Decisões do dono — 22/08/2026](#decisões-do-dono-22082026)
-- [Plano único — ordem de execução](#plano-único-ordem-de-execução)
-- [Fila viva — ranqueada por custo × benefício](#fila-viva-ranqueada-por-custo-benefício)
+- [Decisões do dono](#decisões-do-dono)
+- [Fila viva](#fila-viva)
 - [Bloqueios](#bloqueios)
 - [Dívida técnica registrada](#dívida-técnica-registrada)
+- [Entregas recentes](#entregas-recentes)
 - [Rito de trabalho](#rito-de-trabalho)
+- [Origem](#origem)
 
 ## Propósito
 
-Estado medido do portal controlepopular.com.br: o que está no ar, o que está bloqueado, o que vem a seguir, e as decisões que não podem ser reabertas sem remensurar. (medição em 16/08 — remeça antes de decidir com ele)
-
-> **Fila e decisões atualizadas em 22/08/2026.** A pedido do dono, este documento
-> passa a ser **o plano único**: tudo que falta fazer está aqui, em ordem, com a
-> decisão que destrava cada coisa. Os 13 arquivos de `docs/planos/` continuam
-> sendo onde mora a **medição** de cada trilha — aqui vai ponteiro, não cópia.
-> Duplicar detalhe foi o que fez o plano da expansão envelhecer em um dia.
+Estado medido do portal. A porta de entrada é o [PRODUTO.md](../01-produto/PRODUTO.md).
+Detalhe e medição antiga ficam em [`historico/`](../historico/).
+Aqui vai ponteiro, não cópia. Mudou algo? Atualize aqui no mesmo commit.
 
 ## No ar agora
 
-**Modo de publicação (a partir de 26/08/2026):** o site é servido por `next start` no `home-pc`, exposto à internet via **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`). O Worker Cloudflare continua deployado, mas **sem custom domains** — ele só existe como fallback técnico. O domínio `controlepopular.com.br` (e `www`) aponta para o túnel, não mais para o Worker. Ver detalhes operacionais em [OPERACAO.md](../05-operacao/OPERACAO.md) e o histórico da decisão em [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md).
+**Publicação (desde 19/09):** o site principal é servido pela **Guara Cloud**.
+Guara é a PaaS (plataforma que hospeda seu código) brasileira que roda
+o portal em container Docker, datacenter em São Paulo.
+Endereço em produção: `www.controlepopular.com.br`.
+Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy`.
 
-**Incidente 01/09/2026 — deploy falhou, site ficou fora, restaurado.** A rotina de deploy (`logs/rotina-2026-09-01T13-40-20-24500.log`) quebrou no upload de assets da Cloudflare: `fetch failed` / "Unable to resolve Cloudflare's API hostname" (rede/DNS para `api.cloudflare.com`), 2.649 de 4.891 assets, e o log termina em `ABORTADO: o deploy falhou. O site continua com a versão anterior.` O `next start -p 3000` não estava de pé, então o site ficou em 502 pelo túnel; restaurado em 01/09 ~15:37 local (HTTP 200 na home). A causa raiz do deploy (resolução de DNS para api.cloudflare.com) segue **em aberto** — reexecutar a rotina com `--forcar-deploy` depois de conferir rede.
-
-Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
-
-| Frente | O que está no ar |
-|---|---|
-| **Cidades** | seis municípios com contrato, licitação, diário de câmaras, rede de proteção, clima e defesa civil; índice fatiado em `[municipio]/camara/legislacao`; 199 cidades com fontes e documentos oficiais cruzados (PNCP, DATASUS, ComunicaBR, INEP, IBGE, LAI) |
-| **Congresso** | PLs e ofício ao Congresso com `.docx`/`.pdf` gerados no navegador; rubrica determinística |
-| **Judiciário** | grafo de jurisprudência com link de fonte; página de privacidade; processos ambientais por UF e tribunal (SIRENEJud, `/judiciario/sirenejud`); fichas analíticas detalhadas de 7 instituições (`/judiciario/instituicoes/[sigla]`: TJMG, MPMG, DPMG, TRT-3, TRF-6, DPU, TCE-MG) com liderança, organograma, contatos, orçamento LOA, corregedoria, ouvidoria e documentos |
-| **Função Social da Terra** | globo 3D com imagem de satélite por zoom e tooltip de 2 s; camadas de barragem, mineração, quilombolas; 4 camadas de alerta de sobreposição ligadas; faixa de 8 km × SIGMINE (1.899 processos que a interseção pura não vê); alerta quilombola × mancha com 6 sobreposições |
-| **Paraopeba** | auditoria AJRI com 467 fichas legíveis (sem modelo) e relacionados por tema+data; execução do Acordo (26 municípios, R$ 5,48 bi, 73,8% pago); repasse (1.214/1.214 linhas, R$ 1,65 bi); biblioteca das ATIs (597); clipping de ATIs (46) e IJs (59); radar de notícias; linha do tempo; ressalva `AvisoColetaEmCurso` em 5 páginas |
-| **ONSA (Observatório Nacional Socioambiental)** | direito crítico (30 normas + 15 precedentes em 5 temas); legislação estadual (6.378 normas) e federal (8.940 MMA/CNDH); barragens do país (SIGBM/ANM); processos ambientais por município de MG (SIRENEJud/CNJ, `/ambiental/judiciario`); Acordo do Rio Doce (`/ambiental/mariana`) e Observatório Vale (`/paraopeba/vale`) |
-
-Transversais confirmados: **tema pequi padrão** com script síncrono anti-flash (`data-theme="pequi"`); **faixa da navbar suave** (75s com pausa no hover); **capa vibrante da home** com texto em contorno preto e frosted glass card; **métrica consolidada de R$ 251 bi** discriminada na Home; **TopNav por Eixos Temáticos** com cores e ícones Lucide; **Emblema Oficial Aquarelado** na navbar (28px) e conjunto completo de ícones (`favicon.ico`, `icon.png`, `apple-icon.png`); **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios); **API pública v1** (`/api`, Swagger UI + OpenAPI, 14 datasets estáticos gerados no prebuild — 30/08/2026); **Notícias & Relatórios Técnicos** (`/noticias`, 18 matérias aprofundadas com SEO acadêmico ABNT/BibTeX, Schema.org e Dublin Core — 07/09/2026); **Painel e Fichas das 130 Top Empresas e Fundos por Setor** (`/empresas` e `/empresas/[slug]`, cobrindo 7 setores com tickers/ações, governança, ESG scores, direitos humanos, licenciamento ambiental, contratos públicos, TACs, linha do tempo interativa, gráfico SVG, 4 cartões de status e exportação CSV com UTF-8 BOM); **Plano de Destilação Sabiá 7B** (`docs/planos/PLANO-DISTILACAO-SABIA-7B-SEU-NONO.md`, dataset expandido para 405 amostras, treino executado com 100% no Golden Test Set em 07/09, exportado para GGUF Q4_K_M de 4.18 GiB); **Plano de Enriquecimento Empresas ESG** (`docs/planos/PLANO-ENRIQUECIMENTO-EMPRESAS-ESG.md`, Fase 0 concluída em 07/09: NOTICIAS_VALE preenchido com análise do Seu Nono Sabia 7B via Ollama, 3 PDFs ESG da Vale baixados, 18 fontes do portal ESG raspadas); **Coletores Rio Doce executados** (118 ATIs via AEDAS, 157 deliberações CBH-Doce); **Radar Paraopeba atualizado** (24 itens na janela de 45 dias, 5 com ato de autoridade); **⚠️ Code review 07/09: `NOTICIAS_VALE` vazio, dados simulados em `entidades-dados.ts` para empresas fora do array `EMPRESAS` (apenas Sigma Lithium e Vale)**); **Cascata de Fallback e Resiliência de IA** (Ollama multi-modelo local → Sabiazinho Maritaca → Ling → DeepSeek com fallback léxico); **Buscador Global com 35+ Páginas Mestras** (`apps/web/lib/busca/paginas-portal.ts`); **Auto-Melhoria Hermes Agent** (aprendizado noturno com relatório direto no Telegram às 06:30); **Kit Guias AppLivre** (`/tecnologia`, 3 usos simples com 3 passos a passo de IA cada); **Build Estático 100% Concluído** (5.203+ rotas compiladas com sucesso); **Duplo Deploy Guara Cloud + Cloudflare Workers** (Docker standalone em PaaS brasileira `br-gru`, container Node 22 com paridade funcional, compatibilidade D1/Postgres via `d1-compat.ts`, rate limit resiliente em memória — 16/09/2026); **Hub de Editais** (`/editais`, 50 certames públicos, gráfico SVG inline por órgão emissor, 4 cartões de status, filtros interativos, ordenação por coluna e exportação CSV com UTF-8 BOM `\uFEFF` — 16/09/2026); **Radar de Editais com Extrator Jornalístico** (novo módulo determinístico `radar-editais-extrator.mts`, geração de manchetes jornalísticas acessíveis `[Modalidade] [Órgão]: [Ação/Objeto]`, 25 matérias históricas reescritas com padrão editorial e 0 PII); **Descoberta de Páginas Estruturais no Buscador** (`buscarPaginasPortal` integrado na TopNav `BuscaGlobal.tsx` e em `/busca` `BuscaClient.tsx`, surfacing instantâneo de `/estudos-rurais`, `/editais`, acordos e instituições).
-
-## Decisões do dono — 22/08/2026
-
-Tomadas numa sessão só, depois do levantamento das 13 decisões que estavam
-espalhadas pelos planos. **Não reabrir sem remensurar.**
-
-| # | Decisão | O que ela destrava |
+| Papel | Modo | Estado |
 |---|---|---|
-| 1 | **Diário oficial: nomeação e exoneração SÃO publicadas** — "dados públicos de interesse coletivo, sob minha responsabilidade" (palavras do dono). ⚠️ O corte de **CPF, endereço e dado de saúde de pessoa física continua valendo** — não foi objeto desta decisão, é dado de terceiro, e as duas guardas automáticas (`scripts/checar-dado-pessoal-em-dado.py` e `sem-cpf-no-repo.test.ts`, mod-11) barram o commit de qualquer jeito | o coletor do diário (D1), parado desde 16/08. **✅ Coleta completa em 30/08/2026: 16.601 atos (jan/2020 → jul/2026), 80 meses × 2 entidades, 0 falhas** — `etl/betim/etl/camaras/sigpub.py` migrado de `curl.exe` para `requests` (curl.exe quebrado na máquina), commit `1e93eeb` |
-| 2 | **Chatbot: o cérebro é a Maritaca (Sabiá), com DeepSeek como alternativa.** Ambas são fora de EUA/Europa, que era a intenção da regra original; a Maritaca ainda é brasileira e treinada em português | `PLANO-CHATBOT-IA.md` + degrau 3 do `PLANO-INDICE…` |
-| 3 | **Acervo do chatbot: tudo que as respostas determinísticas não cobrirem.** O degrau 3 entra onde os degraus 0–2 devolvem vazio | idem |
-| 4 | **Ressalva de IA: sempre visível**, em toda resposta gerada, com citação da fonte | idem |
-| 5 | **Terras e Paraopeba ganham cabeçalho enxuto** (molde `congresso/layout.tsx`, não o `Header.tsx` rico de Cidades) | `REVISAO-UX-E-ONBOARDING.md` §5 |
-| 6 | **DataJud fica em consulta ao vivo** — não se publica derivado, então não é preciso notificar o CNJ (cláusulas 3.8/3.9). Confirma o desenho que o B8 já estava seguindo | B8 do plano da expansão |
-| 7 | **Espelho dos 467 PDFs da AJRI: público.** O resumo por modelo (§6) **continua em aberto** — decidir com os 10 primeiros PDFs medidos, não antes | `PLANO-ESPELHO-PDF-AJRI.md` fase 2 |
-| 8 | **Home ganha uma linha de orientação acima do grid** ("procurando sua cidade…"), sem redesenho dos 6 cards | `REVISAO-UX-E-ONBOARDING.md` §7 |
-| 9 | **GitHub Pages sai da fila.** ⚠️ Duas correções de fato: o repositório **é público** (`gh repo view` → PUBLIC em 22/08; o plano dizia "privado hoje"), e o Cloudflare já serve o portal — Pages não resolve problema nenhum hoje. `deploy-github-pages.md` vira contingência, não tarefa | — |
-| 10 | **Diário de Itinga: `https://www.itinga.mg.gov.br/diario`** (informado pelo dono; medido em 22/08: HTTP 200, página real da prefeitura) — a última das 6 cidades sem `fontes.diario_oficial` | o card do diário em Itinga |
-| 11 | **Protocolo da LAI do INCRA: o dono cuida do número** (prazo 28/08) | — |
-| 12 | **O ETL antigo da FGV continua vivo**, alinhado (User-Agent honesto + pausa de 1,5 s desde 17/08). Não aposentar por ora — é ele que alimenta a tela de Betim | encerra a dívida §3b do `TODO-PROXIMAS-RODADAS.md` |
-| 13 | **O código vai subir também para o Gitee, no futuro** — espelho, não mudança de casa: o GitHub continua sendo onde a CI roda (6 ETLs, as duas guardas de dado pessoal e o vigia de prazo de LAI). Sem data | item 29 |
-| 14 | **Backfill do diário oficial: desde janeiro/2020** ("penúltima gestão municipal"). **✅ CONCLUÍDO em 30/08/2026** — 16.601 atos de jan/2020 a jul/2026 (80 meses × 2 entidades), 0 falhas. Precisava de banco que a máquina de desenvolvimento não tem; coleta feita no home-pc com Postgres local, módulo `requests` (curl.exe quebrado na máquina). | `docs/planos/diario-oficial-plano.md` |
-| 15 | **Proposta de estruturação sociológica/investigativa do diário** — 7 eixos além dos 7 tipos (encadear processo/contrato, dispensa/inexigibilidade como subtipo, buracos de numeração, concentração de fornecedor, subtipo de pessoal, ritmo temporal, comparação entre cidades). Registrada, nada implementado | `docs/planos/diario-oficial-plano.md`, seção "Proposta" |
+| **principal** | `www.controlepopular.com.br` → Guara Cloud | ✅ 19/09 |
+| servidor 2 | Cloudflare Tunnel do `home-pc` com `next start -p 3000` | ✅ de pé, monitorado |
+| fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
+| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ⛔ pendente do dono |
 
-**Ainda em aberto** (não decididas hoje): licença da fonte *Icones do Brasil*
-(item 27); fusão `ARQUITETURA.md` × `MAPA-APLICACAO.md` (item 28); credenciamento
-no Conecta gov.br (item 16); resumo por modelo do AJRI (item 17).
+**Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
+A raiz nunca mora no Guara.
 
-## Plano único — ordem de execução
+**Banco:** Postgres da Neon (banco gerenciado em nuvem) ativo.
+Storage em **94% (470/500 MB)** — coleta nova não entra lá.
+`DATABASE_URL` configurada no Guara em **runtime e build**
+(`guara env set` e `guara env set -b`, 19/09).
 
-**Agora (destravado pelas decisões de 22/08):**
+**Alerta:** página que lê do banco no build congela HTML sem a variável de
+build. Restart não resolve; resolve `guara deploy` de imagem nova.
+Medido em 19/09 (deploys `de291a9b` e `5a4a08cc`).
 
-1. ~~**Restaurar o ETL da FGV**~~ — ✅ **feito em 22/08** (`git restore`). Os dois arquivos estavam apagados no diretório de trabalho, sem commit e sem decisão, com `.github/workflows/etl-betim.yml:359` ainda chamando o módulo.
-2. ~~**Diário oficial D1**~~ — ✅ **implementado e MESCLADO em 22/08** (branch `diario-oficial`, 5 commits). Coletor `etl/betim/etl/camaras/sigpub.py` + classificador portado pra Python. O conflito dos dois relatos do mecanismo se resolveu a favor da migration `0077` (GET + sessão + token CSRF reutilizável); ela errava só num ponto (`pagina` nunca vem preenchida). Medido ao vivo: 196 matérias da Prefeitura + 11 da Câmara só em julho/2026. ✅ **Gap de calibração fechado pelo chip `task_f4a38f90`**: "outro" caiu de 16% (32/196) para 5,6% (11/196) — fixture cresceu para 75 títulos reais, classificador (TS + Python) ganhou `REGISTRO DE PRECO` e `RATIFICACAO` isolada. Backfill decidido: desde 2020 (decisão 14). **Pendência real:** migration `0079` (ids de entidade) nunca aplicada em banco nenhum — gravação em `atos_diario` segue por fazer.
-3. ~~**Itinga no `diario_oficial`**~~ — ✅ **feito em 22/08** (`08998ea`), e a mesma passada achou um segundo erro: **Araçuaí apontava para `diariomunicipal.com.br/amm-mg`**, o portal da Associação Mineira de Municípios, e não para o diário da cidade — o mapeamento de 16/08 já media que só Diamantina bate limpo com SIGPub. Corrigido para `aracuai.mg.gov.br/diario-oficial-categorias` (HTTP 200 medido em 22/08). É a mesma família do crítico #2 de 17/08, sobrevivendo numa cidade que ninguém reconferiu.
-4. ~~**Cabeçalho enxuto em Terras e Paraopeba**~~ — ✅ **implementado em 22/08**, branch `cabecalho-zonas` (9 commits, não mesclada). Paraopeba ganhou `layout.tsx` de zona real (⚠️ tem 11 subpáginas, não 9 — corrigido durante o trabalho). Terras ganhou componente manual (`Cabecalho.tsx`), não `layout.tsx` — o conflito com o HUD do globo em `/mapa` foi **medido**, não suposto: o HUD roda isolado dentro do `<iframe>`, 9 painéis intactos após a mudança. `npm test`: 996+141, 0 falhas.
-5. ~~**Linha de orientação na home**~~ — ✅ **implementado em 22/08**, branch `home-orientacao` (2 commits, não mesclada). Contraste medido nos 3 temas (7,08:1 / 8,30:1 / 21:1 — todos acima do piso de 7:1 do alto-contraste).
-6. **Chatbot, passo 1: fechar a peça que falta.** ⚠️ Medido em 22/08: **nem Maritaca nem DeepSeek publicam endpoint de embeddings** (a doc da Maritaca recomenda a DeepInfra; a do DeepSeek só documenta `chat/completions`). RAG precisa de embeddings antes de geração. Caminho de custo zero: vetorizar **local via Ollama**, que também mantém o texto na máquina até a varredura de dado pessoal passar. ✅ **Medido em 22/08:** `nomic-embed-text` devolve 768 dimensões, mesma dimensão do índice de código do `code-graph-rag`. ✅ **Prova de conceito implementada em 22/08**, branch `chatbot-poc` (1 commit, não mesclada): `apps/web/lib/assistente/embeddings/`, testado sobre 4 normas reais do repo — 3 de 4 perguntas acertaram por similaridade; a 4ª (busca por termo exato) não acertou, achado documentado no código. **Achado de segurança:** a guarda de dado pessoal não cobre `etl/betim/dados/` (chip `task_dae5f906`). Falta ainda: geração de resposta (Maritaca/DeepSeek — precisa de credencial que não existe) e citação obrigatória (decisão 4) ligadas por cima disto.
-7. **Protocolar TCE-MG e CGE-MG** — os dois textos estão prontos no vault (`C:\Users\teste\Documents\Obsidian Vault\Projetos\`), sem protocolo desde 07/08. Depois de enviar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI diária vigia o prazo sozinha.
-8. ~~**SEO — visibilidade em buscadores**~~ — ✅ **integrado em 22/08** (`seo-fundacao`, 5 commits). `metadataBase`, Open Graph, Twitter Cards, JSON-LD (`WebSite` + `Organization`), sitemap atualizado, títulos/descriptions otimizados nas páginas principais de cidade, metadata adicionado em páginas sem, e `BreadcrumbJsonLd` na página de contratos. `tsc`, `validar-documentacao.py` e `npm test` verdes.
-9. ~~**Revisão de dados — Sprint 2 (contratos e fornecedores)**~~ — ✅ **integrado em 22/08** (`revisao-dados`, 5 commits). Limiares da dispensa corrigidos para os valores do art. 75 da Lei 14.133/2021, indicio de concentração por ano com N=3 configurável, badge e filtro `?conc=1` na tela de contratos, plano atualizado com pendências e lacunas declaradas. **Pendência real:** rodar ETL no `home-pc` para os novos limiares chegarem ao banco, e medir payload (Neon 402 nesta máquina).
-10. ~~**Revisão de dados — Sprint 3 (território e empreendimentos)**~~ — ✅ **pushada em 22/08** (`revisao-dados-sprint3`, 5 commits, sem merge). Tela `/[municipio]/terras/cruzamentos/` com cartões, gráfico, tabela filtrável, CSV e deep-link para o globo 3D; três tipos de cruzamento espacial (mineração, requerimento/interesse, mancha de barragem × quilombola); co-ocorrência municipal separada e rotulada; editorial do AGENTS.md aplicado (interseção ≠ causalidade, sem buffer). **Pendências:** payload só mede no home-pc; casamento por nome ainda é limitação; barragens completas dependem do banco.
-11. **Chatbot IA — laboratório L4** — ✅ **pushado em 22/08** (`chatbot-lab`). Pipeline RAG local via Ollama (`nomic-embed-text` + `qwen2.5:7b`), rota `/api/chatbot`, widget `/assistente-ia-lab` com ressalva e fontes. **Pendência:** decidir onde colocar a chave da API remota (Maritaca/DeepSeek) — `apps/web/.env.local` na máquina de dev para testes; `apps/web/.env.local` no home-pc ou secret do Cloudflare Worker para produção. Nunca commitar.
+## Decisões do dono
 
-**Esperando data:**
+Decisões de 22/08, numa sessão única. **Não reabrir sem remensurar.**
 
-8. **01/09 — Neon volta.** Runbook pronto e em ordem: `docs/planos/ROTEIRO-NEON-01-09.md` (migrations 0071–0077 → backfill de temas → URLs do TJMG → carga das 8.570 normas federais → auditoria dos 25.729 links). O B4 (PNCP) entra aqui, não antes.
-9. **28/08 — prazo da LAI do INCRA.** O dono anota o protocolo; a CI já vigia.
+| # | Decisão | Estado |
+|---|---|---|
+| 1 | Diário oficial: nomeação e exoneração publicadas; CPF de pessoa física continua cortado | ✅ coleta completa (16.601 atos) |
+| 2 | Cérebro do chatbot: Maritaca/Sabiá (BR), com DeepSeek como alternativa | na Fase 5 do chatbot |
+| 3 | Acervo do chatbot: tudo que o determinístico não cobre | parte do plano |
+| 4 | Ressalva de IA sempre visível, com citação da fonte | ✅ implementado |
+| 5 | Terras e Paraopeba com cabeçalho enxuto | ✅ entregue |
+| 6 | DataJud fica em consulta ao vivo, sem coleta | decisão mantida |
+| 7 | Espelho dos 467 PDFs da AJRI é público, destino R2 | fase 2, bloqueada por cookie |
+| 8 | Home com linha de orientação sobre a grade das cidades | ✅ entregue (22/08) |
+| 9 | GitHub Pages fora da fila | ✅ decisão mantida |
+| 10 | Diário de Itinga: `www.itinga.mg.gov.br/diario` | ✅ corrigido |
+| 11 | Protocolo da LAI do INCRA: o dono cuida | ⛔ pendente |
+| 12 | ETL antigo da FGV continua vivo e alinhado | ✅ decisão mantida |
+| 13 | Código sobe para o Gitee no futuro (espelho, não mudança) | 🟡 runbook pronto |
+| 14 | Backfill do diário oficial desde jan/2020 | ✅ concluído (30/08) |
+| 15 | Estrutura investigativa do diário: 7 eixos | registrado, sem implementação |
 
-**Esperando dado ou decisão de terceiro:** itens 16, 17, 19, 22, 23 e 27 da fila
-abaixo.
+## Fila viva
 
-## Fila viva — ranqueada por custo × benefício
+Organizada por custo e benefício. Esforço pequeno primeiro.
 
-**Degrau 2 do assistente entregue (16/08)** — composição determinística, sem modelo: "compare Betim e Belo Horizonte", "o que falta em Betim", "Contagem não é atendida". Regra escrita em `apps/web/lib/assistente/compor.ts`, sobre o índice do degrau 1, sem rede além dele; 23 testes novos. **Diário oficial D1** (coletor SIGPub — mecanismo de busca confirmado) deixou de esperar em 22/08, com o corte de LGPD decidido. Depois: indexação do ComunicaBR por município no índice (item 6), que espera o banco local.
+### Bloco A — fazer agora
 
-| # | Tarefa | Estado | Por quê / bloqueio |
+| # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| 1 | Degrau 2 do assistente | ✅ | entregue em 16/08: comparar/lacuna/não-atendida; 23 testes novos (681 vitest + 137 globo verdes); sem modelo, sem rede além do índice |
-| 2 | Protocolo da LAI do INCRA no Fala.BR | ⛔ | prazo real **2026-08-28** (`prorrogacao_concedida: true`); a única tarefa que fica **impossível** se atrasar. **O dono cuida do número** (decisão 11 de 22/08) — só o campo `protocolo` de `docs/LAI-PROTOCOLOS.json` |
-| 3 | Carregar as 8.940 normas federais | ✅ | **feito em 26/08** no Postgres local: 8.570 normas do MMA + 370 do CNDH carregadas; classificação de temas executada (`python -m etl.apis.classificar_temas_ambientais`) — 4.690/15.318 normas com tema atribuído. O site só reflete no próximo build. |
-| 4 | Clima e risco: aplicar migration `0074` e carregar o coletado | ✅ | **feito em 26/08** no Postgres local: migration `0074_adaptabrasil_risco_climatico.sql` aplicada e `etl.apis.adaptabrasil_risco` sincronizou 6.824 índices (8 indicadores × 853 municípios de MG). INMET continua só leitura (`--sondar`) — tabela de avisos ainda não existe. |
-| 5 | Migration `0071` na Neon | ⛔ | até 01/09; sem ela os 6 ETLs do GitHub reintroduzem convênio duplicado |
-| 6 | ComunicaBR: indexação por município no índice estático | ✅ | **feito em 26/08**: `scripts/gerar-indice-busca.mts` agora inclui um documento por município de MG a partir de `public/data/comunicabr-31.json`; só entram municípios com pelo menos 1 item com valor (ressalva da fonte preservada). São 853 municípios no arquivo, 5 cidades ativas do portal indexadas. |
-| 7 | **Arquivo de fontes em R2 (espelho)** | ✅ | **concluído em 30/08/2026**: 261 arquivos de fonte enviados para o bucket `controlepopular-fontes` (R2), 0 pendentes. 138 registros `sha256='sem-conteudo'` permanecem locais (sem PDF). | — |
-| 8 | 13 quilombolas + 103 barragens sem mancha | ✅ | **entregue**: cobertura unificada em `public/terras/globo/dados/camadas/` (27 territórios quilombolas + 156 barragens com mancha), com declaração explícita de lacuna e 6 interseções identificadas |
-| 9 | Trava de dado pessoal que varre o DADO | ✅ | entregue em 16/08: `scripts/checar-dado-pessoal-em-dado.py` (CPF mod-11 sobre valores de JSON de acervo) no pre-push e na CI + teste gêmeo vitest; segue a amostragem dos 200 documentos do acervo (plano Brumadinho §3) quando o dump existir |
-| 10 | Rouanet: junção incentivador × fornecedor + tela | ✅ | **entregue**: `JuncaoRouanet.tsx` integrado em `/[municipio]/prefeitura/cultura` com as 4 ressalvas editoriais mandatórias e suporte a 2.261 CNPJs do SALIC/MinC |
-| 11 | Coletor de notícias diário | ✅ | **concluído em 30/08**: coleta completa do diário oficial (D1) — 16.601 artigos de jan/2020 a jul/2026, 80 meses × 2 entidades, 0 falhas. Commit `1e93eeb`. |
-| 12 | Três ATIs como fonte do radar | ✅ | entregue em 16/08: feeds AEDAS/ADAI/Guaicuy no coletor + regra "Nota de pesar" na triagem, com teste (35 testes verdes) |
-| 13 | Resumir contratos/PLs/convênios truncados | 🟡 | escopo não definido: quantos, quais listagens |
-| 14 | URN / normas.leg.br | ✅ | **entregue**: `lib/ambiental/urn-lexml.ts` (24 testes) valida identificador canônico LexML e link oficial `normas.leg.br` para normas federais com tipagem fechada |
-| 15 | Incentivo ao esporte | ⛔ | `DADOS_GOV_BR_API_TOKEN` é JWT expirado — renovar em `etl/betim/.env` e o item destrava inteiro |
-| 16 | Conecta gov.br (CNPJ/CEP) | ⛔ | decisão do dono: credenciamento de PJ de direito privado ou não |
-| 17 | AJRI fase 2 (espelho dos 467 PDFs) e fase 3 (resumo) | ⛔ | **espelho público decidido em 22/08** (decisão 7) e destino é o R2, nunca o repositório — o `download_cover` carimba nome e CPF do pesquisador em cada PDF, e a trava mod-11 barra isso no git. Segue bloqueado por `AJRI_COOKIE`; ordem obrigatória: baixar → extrair → varrer dado pessoal → resumir; medir 10 PDFs antes de projetar. **O resumo por modelo continua em aberto** — decidir com os 10 medidos |
-| 18 | Diário oficial (D0–D5) | 🟢 | **destravado em 22/08** (decisão 1). D1 SIGPub com mecanismo confirmado, migration 0077 + classificador + **coleta completa 16.601 atos (jan/2020 → jul/2026, 80 meses, 0 falhas)** implementados e mesclados em 30/08 (`1e93eeb`). Itinga e Araçuaí com fontes. |
-| 19 | Pró-Brumadinho: outras duas páginas | ✅ | **entregue**: `/paraopeba/biblioteca` inclui 129 documentos do Governo de MG (probrumadinho) com tags e resumos; `/paraopeba/noticias` entrega radar automatizado |
-| 20 | ETL antigo da FGV | ✅ | **decidido em 22/08: continua vivo e alinhado** (UA honesto + pausa de 1,5 s desde 17/08), não se aposenta. Arquivos `etl/betim/etl/apis/{__init__,fgv_paraopeba}.py` presentes e `etl-betim.yml:359` consistente — verificado em 26/08 |
-| 21 | Ordenar e filtrar as listas de dados | ✅ | entregue em 17/08: `lib/tabela/ordenar.ts` (comparador texto/número/data, 14 testes) colado em `TabelaEstatica.tsx` — clique no cabeçalho (asc/desc/original), `aria-sort`, estado na URL (`?ordem=chave:asc`). As 11 listas herdam; lista com `formatar` só ordena declarando `ordernavel: true` |
-| 22 | Monitoramento da Vale — página dedicada | ✅ | **entregue**: `/paraopeba/vale` (série histórica de cotações B3 VALE3 com marcos e ressalvas) + `/paraopeba/vale/documentos` (ITRs/DFPs/FREs da CVM com links oficiais) + `/paraopeba/noticias` |
-| 23 | Geocodificar os dados da Vale | 🟡 | pedido do dono (16/08): escrever o plano de georreferenciar o que o item 22 levantar, reutilizando a infra de mapa/geometria existente (TODO-PROXIMAS-RODADAS.md item 12); executar quando houver dado |
-| 24 | Chatbot IA sobre o acervo | 🟢 | **as 3 decisões saíram em 22/08** (decisões 2–4): cérebro Maritaca/Sabiá (DeepSeek como alternativa), acervo = tudo que o determinístico não cobre, ressalva de IA sempre visível com citação. ⚠️ **Peça nova, medida em 22/08: nenhuma das duas tem endpoint de embeddings** — vetorização local (Ollama) em uso. ✅ **Fases 0–4 entregues em 31/08** (plano [PLANO-SEU-NONO-NOTEBOOKLM.md](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md)): acervo real em código (~110 pedaços, 6 frentes), contrato v2 com `url`/`rota`, verificador de citação com abstenção, ressalva sempre visível, tela cheia estilo NotebookLM com histórico e painel de fontes, dataset de finetuning (`etl/finetuning/dados-seu-nono.jsonl`). **Falta:** Fase 5 (pgvector na Neon — runbook [ROTEIRO-PGVECTOR-CHATBOT.md](../planos/ROTEIRO-PGVECTOR-CHATBOT.md), pós-01/09), build no home-pc e medição ris-kernel × Ollama (§1 do roteiro) |
-| 25 | Cabeçalho enxuto em Terras e Paraopeba | ✅ | **entregue em 22/08** (decisão 5): Paraopeba tem `app/paraopeba/layout.tsx` e Terras tem `app/funcaosocialterra/Cabecalho.tsx` importado nas páginas |
-| 26 | Linha de orientação na home | ✅ | **entregue em 22/08** (decisão 8): linha "Procurando sua cidade? O primeiro card abaixo é o seu." em `app/page.tsx` |
-| 27 | Licença da fonte *Icones do Brasil* | ⛔ | **decisão do dono, ainda em aberto** — e já está no repositório: 22 ícones mapeados em `BrasilIcon.tsx`. Licença **não verificada** (fonttoolbox "Unknown", fonts2u "Personal use"); uso público pede autorização do autor ou troca de fonte. *Brasil Icons* (a outra) é donationware e está resolvida com crédito |
-| 28 | Fundir `ARQUITETURA.md` × `MAPA-APLICACAO.md` | ⛔ | **decisão do dono, ainda em aberto**: os dois abrem descrevendo stack e deploy, e o MAPA ainda se intitula "Leilões.app / controle-popular". Recomendado: sobrevive `ARQUITETURA.md` (é o que `AGENTS.md` manda ler), absorvendo o que o MAPA tem de único — quem sumir quebra os links de `docs/LEIA-PRIMEIRO.md:27`. Conferir na fusão uma terceira divergência: `AGENTS.md` diz `output: export`, ARQUITETURA e MAPA dizem que **não** é export, é OpenNext |
-| 29 | Espelhar o código no Gitee | 🟡 | **decidido em 22/08** (decisão 13), sem data. É **espelho**: a CI não se muda — os 6 ETLs, `dado-pessoal.yml` e `prazos-lai.yml` são GitHub Actions e reescrevê-los seria o custo real da migração. Medido em 22/08: o repositório é público no GitHub, então não há segredo a reavaliar antes de espelhar. **A confirmar antes de abrir conta:** o Gitee exige verificação de identidade e submete repositório novo a revisão antes de ficar público — regra de plataforma, não deste projeto, e não foi medida aqui. **Passo a passo em [PLANO-ESPELHO-GITEE.md](../planos/PLANO-ESPELHO-GITEE.md)** (01/09) |
-| 30 | Publicar o portal após o bloqueio do Worker Free (erro 10027) | ✅ | **resolvido em 26/08 via Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado sem custom domains; `controlepopular.com.br` e `www` apontam para o túnel. Pendências operacionais: dono remover custom domains do Worker e criar `CLOUDFLARE_D1_API_TOKEN` para escrita D1 via REST fallback (sem isso, `/api/pageview` e writes similares falham). Ver [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md) |
-| 31 | Canário Telegram com interação automática | ✅ | entregue em 25/08: `scripts/gatilho-remoto.mts` rodando como ouvinte permanente no `home-pc` (Telegram long-poll + HTTP só no tailnet), respondendo `/status` e `/sincronizar` (fail-closed com árvore suja); novos `scripts/avisar-telegram.mts` (enviar status do deploy) e `scripts/ler-updates-telegram.mts` (ler respostas do dono). Credenciais em `scripts/.env`, nunca versionadas |
-| 32 | M7 — Coletor da frente Congresso via DadosAbertosBrasil | 🟢 | executando em 31/08: coletor Python com a lib (Câmara/Senado, UF=MG, redação de CPF na origem); ver [PLANO-M7-M11-CURADORIA-OSS.md](../planos/PLANO-M7-M11-CURADORIA-OSS.md) |
-| 33 | M8 — Rede de sócios via brasil.io (frente Empresas) | ✅ | **entregue**: `scripts/coletar-socios-brasilio.mts` executado com token; gerado `apps/web/data/socios-vale.json` com 6 diretores/presidente, CPF mascarado, ressalva e 0 CPFs em varredura mod-11 |
-| 34 | M11 — Presidio `--alta-confianca` na guarda | 🟡 | opcional, rule-only (sem modelos de ML), fallback como o validate-docbr; idem plano |
-| 35 | M9/M10 — changedetection.io e n8n em Podman | ✅ | **entregue em 31/08**: Podman 5.7.0 instalado no WSL2 (Ubuntu), `changedetection.io` (porta 5000) e `n8n` (porta 5678) com volumes persistentes em execução |
-| 36 | Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho) | 🟢 | **01/09**: rota `/ambiental/crimes-socioambientais` com 936 docs (645 ATIs Paraopeba + 118 AEDAS Rio Doce + 157 CBH-Doce + 16 Fundo Brasil), radar de notícias e coletores AEDAS Mariana, CBH-Doce e Fundo Brasil; pendente CIF/MPF/MG/ES e novas fontes (ANATER, Sec-Geral, signatarios da repactuacao). Plano: [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](../planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md) |
-| 37 | Build destravado | ✅ | **resolvido em 01/09** (`f50cc23`): o teste órfão `diario.adversarial.test.ts` (que referenciava módulos que nunca existiram em nenhum branch e quebrava o `next build`) foi removido. Rebuild de produção validado no home-pc (compilou, ~4.880 páginas). |
+| A1 | Validar banco no site: `/ambiental/licenciamento` mostra dados, não vazio | 🚧 | precisa de `guara deploy` com `DATABASE_URL` de build |
+| A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dono, 2 minutos |
+| A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
+| A4 | **Fase 4: migrar Neon → Postgres do Guara** | ⛔ | Neon em 94% manda mover |
+
+**Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
+28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
+6.2.1 (fix em 7.5.x). `npm audit fix` aplicado; sobem os transitivos.
+`guara security findings` está com bug no CLI — use `services vulnerabilities`.
+
+**Nota A4:** o Postgres do Guara tem 1 GiB incluso (2 GiB máximo), snapshot
+diário e endpoint privado (a rede particular da Guara, mais rápida e mais
+fechada que a internet). Variante pgvector habilita embeddings do assistente
+(rootbook `ROTEIRO-PGVECTOR-CHATBOT.md`); PostGIS habilita consultas de mapa
+no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
+`DATABASE_URL`, `guara deploy`.
+
+### Bloco B — destravadas, aguardando ordem
+
+| # | Tarefa | Estado | Nota |
+|---|---|---|---|
+| B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
+| B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
+| B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
+
+### Bloco C — ação externa do dono
+
+| # | Tarefa | Nota |
+|---|---|---|
+| C1 | Redirect da raiz no Cloudflare (A2) | dashboard do Cloudflare |
+| C2 | Anotar protocolo da LAI no `docs/LAI-PROTOCOLOS.json` | CI vigia o prazo sozinha |
+| C3 | Informar `AJRI_COOKIE` (fases 2 e 3 do PDFs da AJRI) | valor expira |
+| C4 | Abrir conta no Gitee e espelhar o código | runbook `PLANO-ESPELHO-GITEE.md` |
+| C5 | Aceitar convite do GitBook | espelho de docs |
+
+### Bloco D — destrava com a Fase 4
+
+- Fase 5 do chatbot: pgvector no banco novo (runbook no `planos/`).
+- Coleta nova volta ao Postger (hoje vai para D1 por causa do storage).
+- Índice de busca pode voltar a crescer sem estourar o teto da Neon.
+
+Runbooks: [`planos/`](../planos/).
 
 ## Bloqueios
 
-| Bloqueio | Até | O que desbloqueia |
-|---|---|---|
-| Neon sem `DATABASE_URL` nesta máquina | — | cota de egress do plano free estourou por causa dos builds (`apps/web/scripts/orcamento-egress.mts` raciona 85% build / 15% tráfego). Dono reativa o projeto no console Neon e fornece a connection string; aí roda `docs/planos/ROTEIRO-NEON-01-09.md` (atualizado em 08/09 para migrations 0071–0087). CI (ETLs) e Fase 5 do chatbot (pgvector) desbloqueiam com isso |
-| **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md) |
-| Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
-| **Coleta diário oficial D1** | ✅ resolvido em 30/08 | 16.601 atos de jan/2020 a jul/2026 coletados via SIGPub; módulo migrado de `curl.exe` (quebrado na máquina) para `requests` |
-| **Upload R2 de fontes** | ✅ resolvido em 30/08 | 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes |
-| Remoção de custom domains do Worker | ✅ resolvido em 26/08 | custom domains removidos do dashboard; DNS aponta para o túnel `controle-popular` |
-| Rede bloqueada na máquina de dev (WinError 10013) | — | navegador do dono para sondagens (foi assim que as duas correções do ComunicaBR saíram) |
-| LAI INCRA — login humano | **2026-08-28** (prorrogação concedida) | acessar o Fala.BR, localizar o pedido e anotar o protocolo em `docs/LAI-PROTOCOLOS.json` — o dono cuida disso |
-| Índice estático pendente de Postgres local | — | banco local com as cargas novas (Rouanet, ComunicaBR por município, repasse) — quem mede índice precisa do banco |
-| GitBook com convite pendente | — | dono aceitar o convite para espelhar `docs/` |
-| **`AI_API_KEY` pendente e NUNCA vai para o repo** | — | chave do provedor de IA (Maritaca/DeepSeek, decisão nº 2 acima) fica só em `.env.local` no `home-pc`; o repo segue com `.env.example` documentando o nome da variável. Quem implementar o degrau 3 do assistente lê de variável de ambiente, nunca commita credencial (regra do AGENTS.md) |
+| Bloqueio | Quem desbloqueia |
+|---|---|
+| Neon em 94% storage | Fase 4 (A4) — dono decide data |
+| HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
+| Raiz do domínio com 403 | redirect rule no Cloudflare (A2) |
+| `guara security findings` quebrado | usar `guara services vulnerabilities` |
+| PDFs da AJRI parados | `AJRI_COOKIE` (dono) |
+| `AI_API_KEY` nunca vai para o repo | fica em `.env.local`, fora do Git |
 
 ## Dívida técnica registrada
 
-As **duas compactações** (`apps/web/lib/comunicabr/arquivo.ts` × `apps/web/lib/estatico/compactar.ts`) **não são a mesma coisa**: uma é codec de estrutura aninhada com esqueleto nacional compartilhado (é o que faz 99 MiB caberem em 2,16 MB nos 853 municípios); a outra é genérica para tabela plana (Rouanet, 7,9 MB → 2,4 MB). **Decisão documentada: não unificar** — aplainar o ComunicaBR perde o ganho de ordem de grandeza, e enxertar aninhamento no genérico é complexidade para um único consumidor. Remeça antes de reabrir.
+- **Duas compactações não se unificam** (decisão de 16/08, medida):
+  `lib/comunicabr/arquivo.ts` (aninhado, 99 MiB → 2,16 MB) e
+  `lib/estatico/compactar.ts` (tabela plana, 7,9 MB → 2,4 MB).
+- **`apps/web/public/` pesa 52,3 MB.** Nada acima do aviso de 20 MiB;
+  o maior é `sigmine-interesse.geojson.gz` (6,06 MB).
+- **Auditoria dos 25.729 links** pendente
+  ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
-**Auditoria de assets (2026-08-23, code-review-geral):** `public/` inteiro pesa **52,3 MB**, maior asset individual é `sigmine-interesse.geojson.gz` com **6,06 MB** — nada acima do aviso de 20 MiB, muito menos do teto de 25. As camadas cruas seguintes (`sigmine-operacao` 5,67, `vazio-cadastral-vales` 4,53, `unidades-conservacao` 3,13, `lotes-vagos-bh` 2,97) ficam **abaixo do limiar de ~8 MiB crus** que governa o uso de `comprimida: true` no registry do globo — decisão mantida: não comprimir abaixo dele. Os dois grandes JSONs fora das camadas (`risco-climatico` 2,78 MB, `comunicabr-31` 2,16 MB) já estão minificados.
+## Entregas recentes
 
-## Entregas de 30/08/2026
+**19/09/2026** — commit `34983f01` e anteriores desta sessão:
 
-- **Diário oficial D1 — coleta completa**: 16.601 atos de jan/2020 a jul/2026 (80 meses × 2 entidades: Diamantina e Itinga), 0 falhas. Módulo `etl/betim/etl/camaras/sigpub.py` migrado de `curl.exe` (quebrado na máquina) para `requests.Session`. Commit `1e93eeb`.
-- **Upload R2 de fontes concluído**: 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes. 138 registros `sha256='sem-conteudo'` permanecem locais (sem PDF).
-- **Revisão de copy do portal**: 30 páginas principais verificadas — todas leem números do banco/bundle ao vivo (sem números hardcoded); 5 novas páginas de índice por frente criadas (`/ambiental/indice`, `/congresso/indice`, `/judiciario/indice`, `/paraopeba/indice`, `/funcaosocialterra/indice`). Todas as 22 rotas principais 200 OK após rebuild (`next build --webpack`). Commit `f6da72c`.
-- **Comandos `/code` e `/andamento` no Telegram**: status ao vivo (contagens de atos_diario, R2, backfill).
+- `DATABASE_URL` da Neon no Guara, runtime e build.
+- `www.controlepopular.com.br` active no Guara (via CLI).
+- Domínio da raiz não aceito no Guara → redirect no Cloudflare, pendente do dono.
+- Scan Trivy: 3 CRITICAL / 28 HIGH / 22 MEDIUM (fila A3).
+- TTS fala o microresumo do top-100 antes do conteúdo (`resumos-top100.ts`).
+- Loader pequeno `DotsRing` no buscador e no overlay (o grande continua o Wave).
+- 4 testes do assistente corrigidos (Uberlândia virou cidade atendida).
 
-## Entregas de 31/08/2026
-
-- **Pipeline de automação commitado e publicado** (baseline `42c87a0`, push `3cf961c..1ba0dd1`): registry tipado de fontes (`apps/web/lib/fontes/registry.ts`, 24 fontes), PicoClaw (hash de conteúdo, retry com backoff, histórico JSONL), Hermes, Colibri Bridge e as duas rotinas agendadas (`executar-rotina-madrugada.ps1` 03:30, `executar-rotina-manha.ps1` 05:30).
-- **M5 — Hermes sonda headers de produção**: HEAD em `controlepopular.com.br` mede os headers reais (CSP, HSTS, X-Frame-Options, X-Content-Type-Options — todos presentes, 13 aprovados / 0 alertas).
-- **Argus — verificador de páginas**: 158 rotas testadas em produção, 144 OK, 14 FALHA (404 em rotas ainda não publicadas no home-pc; 500 no bloco `/congresso` por consulta ao banco — Neon 402, reavaliar em 01/09).
-- **LinkMender — varredura de links**: 97 URLs testadas, 7 propostas de correção em `docs/relatorios-automacao/linkmender-propostas.md` (só propõe, nunca commita); 2 aplicadas (sidra PAM/PPM em `[municipio]/agro`), 1 descartada por qualidade (ANP proposta com 403).
-- **M4 — guarda de privacidade com validate-docbr**: `checar-dado-pessoal-em-dado.py` confirma mod-11 com a biblioteca (fallback seguro); trava `len == 11` antes do zero-padding do validate-docbr (IBGE de Betim viraria `00003106705` válido — falso positivo barrado); `SINTETICOS` das três guardas sincronizados.
-- **Triagem das fontes do PicoClaw**: 75% → 95,8% (23/24); CNJ inspeções, SIGMINE (geo.anm.gov.br), ComunicaBR (`comunicabr.presidencia.gov.br/api/v1/municipios/31`) e AJRI (`portal.auditoriasocioambiental.com.br`) com URLs corrigidas e medidas; funai documentado como quirk de TLS do Node desta máquina (fonte viva via .NET).
-- **DocVault — PDFs para R2**: catálogo manual + baixador com varredura de CPF fail-closed e upload para o bucket `controlepopular-fontes` (chave `docs/<slug>.pdf`); 2 relatórios de inspeção do CNJ (TJMG/TJBA 2026) baixados, varridos e enviados; nenhum PDF no repositório.
-- **M7 — coletor de parlamentares de MG**: `scripts/coletar-congresso-mg.py` com `DadosAbertosBrasil` (93 deputados + 3 senadores; `apps/web/data/congresso-mg.json`, 17 KB; CPF redigido na origem com abort se sobreviver); entrada `congresso-mg-parlamentares` no registry.
-- **M8 — coletor de sócios via brasil.io**: `scripts/coletar-socios-brasilio.mts` pronto e fail-closed, mas **a API exige token** (medido em 31/08: 401 sem `Authorization: Token`) — `socios-vale.json` fica pendente de `BRASILIO_API_TOKEN` em `scripts/.env`.
-- **M11 — guarda com Presidio**: `--alta-confianca` no `checar-dado-pessoal-em-dado.py` exige concordância do Presidio rule-only (sem modelo de ML — medido: `AnalyzerEngine` baixaria `en_core_web_lg` de 400 MB); Presidio roda só quando há candidato (290s → 28s); fallback idêntico ao atual sem a biblioteca.
-
-## Entregas de 08/09/2026
-
-- **Sanitização do git concluída** (plano `PROPOSICAO-SANITIZACAO-REPO.md`, Etapa 1): 4 commits temáticos (código UI `af904a23`, dado `af2f5586`, ETL `03aa2c66`, docs `56329ba5`), lixo de sessão apagado (22 `tmp_*.json`, 14 `commit-msg*.txt`), `.gitignore` com artefatos de máquina (HTML cru da Vale, screenshots, xlsx de trabalho, páginas `.local`), dado novo varrido por mod-11 (0 CPF real). `git status` limpo; 1.502 testes vitest + 141 globo + `tsc` verdes. Worktrees antigos em `C:\DevCoder\*` (b1, ambiental, busca, territorio, copy) pendentes de avaliação do dono.
-- **Página Estudos Rurais** (`/estudos-rurais`, commit `78719402`): 60 notícias coletadas nesta máquina (Google News RSS + feed ICA/UFVJM), gráfico SVG, cartões, CSV BOM UTF-8, filtro e ordenação; 13 testes. PPGER corrigido no plano: é o programa de **Estudos Rurais** da UFVJM. Lacuna: dissertações do DSpace (API responde 200 com SPA HTML) ficam para rodada no home-pc.
-- **Relatório Técnico Geral do site** (`docs/relatorios-automacao/relatorio-tecnico-geral.md`, commit `74568099`): gerador `scripts/gerar-relatorio-tecnico.mts` varre rotas/fontes/eixos na hora. Medido: **206 rotas, 9 frentes, 42 fontes, 3 eixos / 18 subfrentes**. Lacunas declaradas (17 rotas sem descrição extraível; 100 rotas de banco sem medição sem Neon).
-- **LinkMender v2** (commit `66f3e5fa`): verificar TODOS os links validando conteúdo (não só 200); link falho → 3 websearch com palavras-chave distintas; confirmação por 5 critérios (domínio oficial/R2, tipo igual, corpo confere, título similar jaccard ≥ 0,35, vivo-2xx); correção é **camada** (`apps/web/data/link-correcoes.json`) validada no prebuild e aplicada na geração — o dado versionado nunca é reescrito. 58 testes com fetch mockado. Primeira rodada real no home-pc: `npx tsx scripts/agent-tools/linkmender-v2.mts`.
-- **Trabalho novo desta máquina é o home-pc de publicação** — build e `next start` acontecem aqui. As duas `DATABASE_URL` (`apps/web/.env.local` e `scripts/.env`) apontam para o Postgres local (`127.0.0.1/controle_popular`); a string da Neon não está em `.env` nenhum da máquina — pendente do dono reativar no console e fornecer a URL para o runbook da Neon.
+**Anteriores:** [`historico/`](../historico/).
 
 ## Rito de trabalho
 
-Quem quer trabalhar entra por **PRODUTO.md** (a porta) e lê **DESENVOLVIMENTO.md** antes do primeiro commit; **FONTES.md**, **ARQUITETURA.md**, **OPERACAO.md** e **EDICAO.md** cobrem fonte, tetos, operação e edição conforme a tarefa. Dúvida entre dois caminhos: o registro de decisão e a medição vêm antes da escolha.
+1. Leia [PRODUTO.md](../01-produto/PRODUTO.md) e
+   [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md).
+2. Confira a [fila viva](#fila-viva) e os [bloqueios](#bloqueios).
+3. Antes de comitar: suíte e `tsc --noEmit`.
+4. Depois: rebase no `origin/main` e push do próprio trabalho.
+5. Dúvida entre dois caminhos: medição antes. Anote no documento certo.
 
 ## Origem
 
-Este documento absorve a fila viva e o estado de 16/08, atualizado com entregas de 30/08/2026. Arquivos-fonte e classificação:
-
-- `PLANO-2026-08-15.md` — **ENTREGUE** (executado até o fim; a fila viva dele é este documento)
-- `HANDOFF-2026-08-15-NOITE.md` — **ENTREGUE** (entrega documentada; pendências e decisões migradas para as seções acima)
-- `PLANO-DIREITOS-EM-MOVIMENTO.md` — **ENTREGUE** (quatro portas no ar: home, ajuda, informação e denúncia)
-- `PLANO-ACAO-CIDADA.md` — **ENTREGUE** (facilitador de denúncia em produção, fases 1–3)
-- `TODO-PROXIMAS-RODADAS.md` — **ARQUIVADO** (01/09/2026) — medição e justificativa histórica; a fila viva está nas seções acima; arquivo em [historico/planos/TODO-PROXIMAS-RODADAS.md](../historico/planos/TODO-PROXIMAS-RODADAS.md)
-- `diario-oficial-plano.md` — **ENTREGUE** (fases D0–D5 concluídas: coleta completa 16.601 atos em 30/08/2026, commit `1e93eeb`)
-- `PLANO-BASES-CLIMA-E-RISCO.md` — **ATIVO** (fatia 1 entregue; BATER, CEMADEN, INPE, SNIS e MapBiomas pendentes)
-- `PLANO-ESPELHO-PDF-AJRI.md` — **ATIVO** (fase 1 entregue; fases 2–3 por fazer, bloqueadas por `AJRI_COOKIE`)
-
-Classificação dos 13 planos, feita em 22/08 junto com as decisões acima:
-
-| Plano | Classificação |
-|---|---|
-| `ROTEIRO-EXECUCAO-PENDENCIAS.md` | **ARQUIVADO** (01/09/2026) — plano mestre de 30/08; itens migrados para a Fila viva acima; arquivo em [historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md](../historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md) |
-| `PLANO-EXPANSAO-ACORDOS-MG.md` | **ATIVO** — Blocos 0, A e a maior parte do B entregues (PR #2, 22/08); B7 morto com medição; B4 no Bloco C (Neon); Bloco D respondido hoje |
-| `PLANO-TRANSPARENCIA-JUSTICA.md` | **ATIVO** — sondagem fechada em 22/08; as 3 frentes estão sendo executadas em sessão paralela |
-| `PLANO-CHATBOT-IA.md` | **ARQUIVADO** (01/09/2026) — supersedido por [PLANO-SEU-NONO-NOTEBOOKLM.md](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md); arquivo em [historico/planos/PLANO-CHATBOT-IA.md](../historico/planos/PLANO-CHATBOT-IA.md) |
-| `PLANO-SEU-NONO-NOTEBOOKLM.md` | **ATIVO** (31/08) — Fases 0–4 implementadas (acervo real, contrato v2, verificador de citação, ressalva, tela cheia, dataset de finetuning); Fase 5 com runbook |
-| `ROTEIRO-PGVECTOR-CHATBOT.md` | **RUNBOOK** (31/08) — executa quando a Neon voltar (01/09), junto do `ROTEIRO-NEON-01-09.md` |
-| `PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` | **PARCIAL** — Parte 1 e degraus 0–2 entregues (16/08); o degrau 3 é o mesmo trabalho do chatbot, não um segundo |
-| `REVISAO-UX-E-ONBOARDING.md` | **ENTREGUE** — consertos e revisoes concluidos; itens 25 e 26 entregues em 22/08; skip-link WCAG 2.4.1 verificado e ativo em todas as frentes (Terras, Paraopeba, `/busca`, `/sobre`, Direitos em Movimento e hubs) |
-| `CLASSIFICACAO-COMPLETUDE.md` | **PARCIAL** — 4 críticos corrigidos em 17/08; falta a auditoria dos 25.729 links (01/09) |
-| `PLANO-GEOCODIFICACAO.md` | **ESPERANDO DADO** — plano escrito em 17/08; executa quando o monitoramento da Vale (item 22) tiver coleta |
-| `ROTEIRO-NEON-01-09.md` | **RUNBOOK** — executa em 01/09. ⚠️ O cabeçalho está escrito no passado ("a Neon voltou… em 01/09") e ainda não rodou; corrigir o tempo verbal antes que alguém leia como feito |
-| `deploy-github-pages.md` | **CONTINGÊNCIA, não fila** — o Cloudflare já serve o portal e o repositório é público (medido em 22/08); nada a executar (decisão 9) |
-| `PLANO-DATA-OCEAN-INTEGRACAO.md` | **ENTREGUE** (06/09/2026) — 3 eixos temáticos, 199 cidades estratégicas, 18 subfrentes e integração de dados |
-| `PLANO-TECNOLOGIA-IA-E-EDUCACAO-POPULAR.md` | **ENTREGUE** (06/09/2026) — rota `/tecnologia`, oficinas de IA local-first e catálogo Floresta de Apps / AppLivre |
-
+O estado antigo (filas de 30/08, 31/08 e 08/09) saiu deste documento.
+Foi consolidado na fila única acima; o detalhe mora em
+[`historico/`](../historico/).

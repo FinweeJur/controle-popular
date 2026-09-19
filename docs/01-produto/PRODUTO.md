@@ -1,98 +1,124 @@
-# Controle Popular
+# PRODUTO — o que é o portal, frentes e regras editoriais
 
 > **Tipo:** PRODUTO
 > **Domínio:** global
-> **Última medição:** 2026-08-30
+> **Última medição:** 2026-09-19
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** portal, frentes, regras editoriais, transparencia, cidades, congresso, judiciario, ambiental, paraopeba
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md)
+> **Palavras-chave:** portal, frentes, regras editoriais, acessibilidade, cidades, congresso, judiciario, ambiental, paraopeba, onsa, tts
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Quem lê, e o que isso exige](#quem-lê-e-o-que-isso-exige)
 - [As seis frentes](#as-seis-frentes)
-- [Principais features](#principais-features)
+- [Features principais](#features-principais)
 - [Regras editoriais](#regras-editoriais)
 - [Números que importam](#números-que-importam)
 
 ## Propósito
 
-Portal independente de transparência pública: reúne o dado oficial que já é público, mas vive espalhado por dezenas de sistemas, e o publica em uma tela só, por cidade e por tema, em português comum — no ar em controlepopular.com.br.
+Portal independente de transparência pública, no ar em controlepopular.com.br.
+Reúne o dado oficial que já é público, mas vive espalhado em dezenas de
+sistemas. Publica tudo em uma tela só, por cidade e por tema, em português comum.
 
 ## Quem lê, e o que isso exige
 
-O leitor está sob estresse — denúncia, remoção, barragem. Três consequências de qualidade, nessa ordem:
+O leitor está sob estresse — denúncia, remoção, barragem.
+Três consequências de qualidade, nesta ordem:
 
-1. **Acessibilidade não é opcional** — leitura em voz alta, navegação por teclado, três temas (claro, escuro, alto contraste), contraste medido por regra WCAG, número sempre ao lado da ressalva.
-2. **Número errado é dano** — todo número exibido tem fonte identificável; todo número que resulta de estimativa publica a taxa de erro ao lado.
-3. **Insinuação é dano, mesmo quando cada dado isolado está certo** — dois dados verdadeiros lado a lado nunca levam a uma conclusão que a fonte não autoriza.
+1. **Acessibilidade não é opcional.** Leitura em voz alta (TTS), teclado,
+   três temas, contraste medido por regra WCAG (a norma de acessibilidade
+   da web). Quando "ouvir esta página" fala a página, o **microresumo**
+   (frase que descreve o que a página contém) vem primeiro.
+2. **Número errado é dano.** Todo número exibido tem fonte identificável.
+   Estimativa exibe a taxa de erro ao lado.
+3. **Insinuação é dano.** Dois dados verdadeiros lado a lado não levam a
+   conclusão que a fonte não autoriza.
 
 ## As seis frentes
 
 | Frente | Rota | O que responde |
 |---|---|---|
-| Cidades | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Para onde vai o dinheiro da prefeitura e o que a câmara vota |
-| Congresso | `/congresso` | Proposições federais por tema, comissão e bancada; análise de direitos; ofício em PDF |
-| Judiciário | `/judiciario` | Composição dos sete tribunais, vacância por idade e indicações do Senado |
-| Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Quanto do território não tem imóvel declarado no CAR, no globo 3D |
-| Paraopeba | `/paraopeba` | A reparação de Brumadinho: clipping, linha do tempo, auxílio, documentos do processo |
-| ONSA | `/ambiental` | Observatório Nacional Socioambiental: pauta do COPAM, licenciamento, barragens do país, legislação, processos na Justiça, Mariana e a Vale |
+| Cidades | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Para onde vai o dinheiro da prefeitura; o que a câmara vota |
+| Congresso | `/congresso` | Proposições federais por tema; análise de direitos; ofício em PDF |
+| Judiciário | `/judiciario` | Composição de tribunais, vacância por idade, indicações |
+| Função Social da Terra | `/funcaosocialterra` | Quanto do território não tem imóvel no CAR, no globo 3D |
+| Paraopeba | `/paraopeba` | A reparação de Brumadinho: clipping, linha do tempo, documentos |
+| ONSA / Ambiental | `/ambiental` | Licenciamento, barragens, legislação, COPAM, Mariana |
 
-Rotas principais por frente, confirmadas no código:
+Rotas completas por frente, confirmadas no código:
 
-- **Cidades** — `/[municipio]/prefeitura` (contratos, licitações, despesas), `/camara` (proposições, vereadores), `/saude`, `/educacao`, `/economia`, `/mineracao`, `/terras`, `/meio-ambiente`, `/noticias`, `/servicos`, `/metodologia`. Cobertura varia por cidade e a diferença é mostrada, nunca escondida.
-- **Congresso** — `/proposicoes`, `/parlamentares`, `/bancadas`, `/comissoes`, `/votacoes`, `/alertas`, `/bons-exemplos`, `/agenda`, `/metodologia`.
-- **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/sirenejud` (processos ambientais do Judiciário, Brasil por UF e tribunal), `/metodologia`.
-- **Função Social da Terra** — `/mapa` (o globo 3D), `/alertas`.
-- **Paraopeba** — `/clipping` (radar de imprensa), `/linha-do-tempo`, `/auxilio`, `/documentos` (documentos do processo judicial por município), `/auditoria`, `/quem-atua`, `/entenda`, `/biblioteca`, `/execucao`.
-- **ONSA (Observatório Nacional Socioambiental)** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`, `/direito-critico`, `/patrimonio-cultural`, `/mariana` (Acordo do Rio Doce), `/judiciario` (processos ambientais por município de MG, SIRENEJud/CNJ) e `/paraopeba/vale` (Observatório Vale, B3/CVM).
+- **Cidades** — `/[municipio]/prefeitura`, `/camara`, `/saude`, `/educacao`,
+  `/economia`, `/mineracao`, `/terras`, `/meio-ambiente`, `/noticias`,
+  `/servicos`, `/metodologia`. A cobertura varia por cidade;
+  **a diferença é mostrada, nunca escondida**.
+- **Congresso** — `/proposicoes`, `/parlamentares`, `/bancadas`, `/comissoes`,
+  `/votacoes`, `/alertas`, `/bons-exemplos`, `/agenda`, `/metodologia`.
+- **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/sirenejud`,
+  `/metodologia`.
+- **Função Social da Terra** — `/mapa` (globo 3D), `/alertas`.
+- **Paraopeba** — `/clipping`, `/linha-do-tempo`, `/auxilio`, `/documentos`,
+  `/auditoria`, `/quem-atua`, `/entenda`, `/biblioteca`, `/execucao`.
+- **ONSA** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`,
+  `/direito-critico`, `/patrimonio-cultural`, `/mariana`, `/judiciario`,
+  `/paraopeba/vale`.
 
-## Principais features
+## Features principais
 
 | Feature | Onde | Nota |
 |---|---|---|
-| Painéis por município | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Seis cidades; cada uma com dezenas de seções, dados com fonte e lacunas declaradas |
-| Tabelas estáticas | rotas pesadas de cada zona | Acima de ~2 mil linhas, serve-se do índice fatiado ou da tabela estática — nunca o corpus inteiro como prop de componente de cliente (teto de 25 MiB por asset) |
-| Alertas de contrato | páginas de contratos de Cidades | Duas categorias, nunca uma: violação legal (com dispositivo citado) e heurística (sinal de investigação, com a ressalva de que não é prova) |
-| Radar de notícias Paraopeba | `/paraopeba/clipping` | Itens dos últimos dias por fonte, com as fontes que vieram vazias declaradas |
-| Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; o assistente navega para 241 destinos e não afirma nada — nenhum número é escrito por modelo de linguagem |
-| Seu Nonô (assistente IA) | widget flutuante em todas as páginas, expansível a tela cheia | RAG sobre o acervo do portal: respostas com citação `[n]` clicável da fonte, painel de fontes com link, ressalva de IA sempre visível (data + modelo) e verificação determinística de citação — a IA só embrulha o dado que existe (ver `PLANO-SEU-NONO-NOTEBOOKLM.md`) |
-| Painel de edição | `/[municipio]/admin` | Edição de conteúdo sem tocar em código |
-| Globo 3D | `/funcaosocialterra/mapa` | Dezenas de camadas geográficas, incluindo as oito do rompimento real de Brumadinho (SEMAD) e os documentos do processo por município |
-| API pública | `/api` (+ `/api/v1/`, `/api/openapi.yaml`) | Os agregados do portal em JSON aberto, sem chave, com Swagger UI; gerada no prebuild, contrato estável em `/api/v1/` |
+| Painéis por município | rotas das 6 cidades | Dados com fonte e lacunas declaradas |
+| Tabelas Estáticas | listas grandes | > 2 mil linhas: índice fatiado ou paginação no servidor — regra completa em [AGENTS.md § 5.1](/AGENTS.md#5.1-coleção-nunca-como-props-de-componente-de-cliente) |
+| Alertas de contrato | contratos de Cidades | Duas categorias: violação legal (dispositivo citado) e heurística (com ressalva) |
+| Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; navegação determinística, sem modelo |
+| Seu Nonô (IA) | widget flutuante | RAG (busca sobre acervo + geração) com citação clicável, ressalva sempre visível — plano: [`planos/PLANO-SEU-NONO-NOTEBOOKLM.md`](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md) |
+| "Ouvir esta página" (TTS) | botão na navbar, leitura flutuante | Lê **primeiro o microresumo** do top-100 (`apps/web/lib/resumos-top100.ts`), depois o conteúdo — a pessoa sabe onde está já na primeira frase |
+| Globo 3D | `/funcaosocialterra/mapa` | Camadas geográficas; 8 camadas do rompimento de Brumadinho |
+| API pública v1 | `/api`(, `/api/v1/`) | Agregados em JSON aberto, sem chave, Swagger UI |
+| Painel de edição | `/[municipio]/admin` (local, porta 3028) | Editar conteúdo sem tocar em código |
 
-**Lacunas declaradas são conteúdo, não defeito escondido.** As principais hoje: votações nominais do Congresso e de câmaras municipais zeradas no banco, diário oficial não coletado em nenhuma cidade, 69 de 252 magistrados com data de nascimento levantada, camada de terras devolutas reconhecidas publicada vazia (o INCRA não publica a base — a ausência é o achado).
+**Lacunas declaradas são conteúdo, não defeito escondido.** Principais hoje:
+votações nominais zeradas no banco; diário oficial sem coleta municipal;
+69 de 252 magistrados com data de nascimento; camada de terras devolutas
+publicada vazia (o INCRA não publica a base — a ausência é o achado).
 
 ## Regras editoriais
 
-A régua que organiza o projeto inteiro, em resumo:
+A régua do projeto inteiro:
 
-- **O número vem do dado; o modelo, se houver, só embrulha.** Resumo gerado por modelo é o portal afirmando algo: rotulado com data e modelo, e nunca apresentado como conclusão do autor do documento.
-- **Lacuna é informação.** Publicar só o que tem valor faz a cobertura parecer completa; a tela diz quantos itens vieram vazios.
-- **A ressalva viaja colada ao número, ou o número não vai.** O caso que gerou a regra: o total doado do acervo da Rouanet é do Brasil inteiro, e exibi-lo ao lado de um contrato municipal sugeriria que o dinheiro foi para ali.
-- **Nunca dois dados verdadeiros lado a lado levando a conclusão falsa.** Exemplo real: 827 das 853 cidades de Minas não têm relação com a bacia do Paraopeba, e a tela diz com todas as letras que receber o valor do repasse não significa ter sido atingida.
-- **Estimativa publica a taxa de erro ao lado do número.** O vazio cadastral medido tem taxa de erro de 30,0% (amostra conferida a olho sobre satélite), com o teto de 33% declarado como decisão, não como medição.
-- **Normalização numérica: unidades inteiras mais representativas.** Nunca expressar grandezas com decimais inferiores a 1 quando existir unidade de grandeza inteira correspondente ("0,4 bilhões" é erro editorial; a forma correta é "400 milhões"; "0,2 milhões" vira "200 mil"; "0,5 mil" vira "500").
-- **Governança de editais:** Certames, licitações e pregões de diários oficiais não poluem o feed do Blog (`/noticias`) nem a página de Novidades (`/novidades`). Pertencem à rota especializada `/editais` e são indexados no Buscador (`/busca`).
+- **O número vem do dado; o modelo, se houver, só embrulha.** Resumo gerado
+  por modelo é o portal afirmando algo. Rotulado com data e modelo, nunca
+  como conclusão do autor do documento.
+- **Lacuna é informação.** A tela diz quantos itens vieram vazios.
+- **A ressalva viaja colada ao número, ou o número não vai.** Origem da
+  regra: `total_doado` da Rouanet é do Brasil inteiro.
+- **Dois dados verdadeiros nunca devem levar a uma terceira conclusão fala.**
+  Exemplo: 827 de 853 cidades não têm relação com a bacia do Paraopeba.
+- **Estimativa publica taxa de erro ao lado.** Vazio cadastral: 30,0% de erro
+  (amostra conferida no satélite); teto 33% é decisão declarada.
+- **Unidade inteira sempre que houver.** "0,4 bilhões" é erro editorial;
+  "400 milhões" é a forma certa. Igual: "0,2 milhões" → "200 mil".
+- **Editais não poluem o feed.** Certames, licitações e pregões moram na rota
+  `/editais`; o Blog (`/noticias`) e `/novidades` não os recebem.
 
 ## Números que importam
 
-Todas as medições abaixo foram refeitas em 16/08 contra o código (medição em 16/08 — remeça antes de decidir com ele):
+Medidos em 16/08 — **remeça antes de decidir com eles**:
 
-| Número | O que é | Como remeça |
-|---|---|---|
-| 853 | municípios de MG na camada de divisas do globo | `node -e "const fs=require('fs');const f=JSON.parse(fs.readFileSync('apps/web/public/terras/globo/dados/camadas/municipios-mg.geojson','utf8'));console.log(f.features.length)"` |
-| 8.570 | normas federais do MMA no acervo de legislação | `node -e "const f=require('./etl/betim/dados/legislacao-mma.json');console.log(f.linhas.length)"` |
-| 2,26 MB | dado dos 853 municípios compactado para o build | `Get-Item apps/web/public/data/comunicabr-31.json \| Select-Object Length` |
-| 1.471+ | páginas do último build — 21 significa banco não lido | `node -e "console.log(Object.keys(require('./.next/prerender-manifest.json').routes).length)"` |
+| Número | O que é |
+|---|---|
+| 853 | municípios de MG na camada de divisas do globo |
+| 8.570 | normas federais do MMA no acervo |
+| 2,26 MB | dado dos 853 municípios compactado (`comunicabr-31.json`) |
+| 1.471+ | páginas no último build; se 21, o banco não foi lido |
+
+Como remedir cada um: script por script citados nos arquivos de origem
+(disponíveis no `historico/`) e no [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md).
 
 ## Origem
 
-Este documento absorve e substitui os seguintes arquivos-fonte:
-
-- `README.md` — absorvido (visão geral, operação, dados).
-- `docs/_historico/APRESENTACAO.md` — absorvido (o que é, frentes, método, garantias, lacunas).
-- `docs/planos/REVISAO-UX-E-ONBOARDING.md` — **ATIVO** (pendências abertas; segue em `docs/planos/`).
-- `docs/_historico/PLANO-INTEGRACAO-BRUMADINHO.md` — **ENTREGUE** (camadas no globo, triagem e documentos do processo implementados; vai para `docs/_historico/`).
-- `docs/LEIA-PRIMEIRO.md` — lido como contexto; não reescrito aqui.
+Absorve (e substitui) os arquivos: `README.md` antigo, `APRESENTACAO.md` e
+`PLANO-INTEGRACAO-BRUMADINHO.md` (em [`historico/`](../historico/)).
+`docs/LEIA-PRIMEIRO.md` lido como contexto.
+Revisão continua **ATIVA** em [`planos/REVISAO-UX-E-ONBOARDING.md`](../planos/REVISAO-UX-E-ONBOARDING.md).

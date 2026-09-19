@@ -1,8 +1,17 @@
-# 📋 PLANO-ESTRUTURA-NACIONAL — EXPANSÃO DO CONTROLE POPULAR
+# PLANO ESTRUTURA NACIONAL
 
-> **Data:** 10 de setembro de 2026
-> **Status:** ✅ FASE 1+2 CONCLUÍDA | FASE 3 Pendente (Neon) | 100% COBERTURA DADOS
-> **Prioridade:** ⭐⭐ (crítico para escalar além de MG)
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-09-19
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md)
+> **Palavras-chave:** plano, expansão, fila
+
+## Sumário
+
+- [Propósito](#propósito)
+- [OBJETIVO](#objetivo)
+
 
 ---
 

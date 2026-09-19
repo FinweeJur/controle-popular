@@ -1,56 +1,36 @@
-# Fontes de dados — referência operacional
+# Fontes de dados — catálogo operacional por fonte
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-08
+> **Última medição:** 2026-09-19
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Anatel, telefonia, SMP, ERB
+> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2
 
 ## Sumário
 
 - [Propósito](#propósito)
+- [Como ler este catálogo](#como-ler-este-catálogo)
 - [Regras gerais de coleta](#regras-gerais-de-coleta)
-- [CNJ e JUMA — litígio e jurisprudência nacional](#cnj-e-juma-litígio-e-jurisprudência-nacional)
-- [Biblioteca das ATIs do Paraopeba](#biblioteca-das-atis-do-paraopeba)
-- [Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho)](#crimes-socioambientais-biblioteca-unificada-mariana-e-brumadinho)
-- [Auditoria AJRI (Brumadinho)](#auditoria-ajri-brumadinho)
-- [Lei Rouanet / SALIC — e os três jeitos que a API mente](#lei-rouanet-salic-e-os-três-jeitos-que-a-api-mente)
-- [Território e mineração](#território-e-mineração)
-- [Pró-Brumadinho (Governo de MG) e auditoria FGV](#pró-brumadinho-governo-de-mg-e-auditoria-fgv)
-- [Fluxo financeiro — dinheiro ligado ao mapa](#fluxo-financeiro-dinheiro-ligado-ao-mapa)
-- [Clima e risco — AdaptaBrasil e INMET](#clima-e-risco-adaptabrasil-e-inmet)
-- [Legislação federal e URN LexML](#legislação-federal-e-urn-lexml)
-- [ComunicaBR — coleta de MG](#comunicabr-coleta-de-mg)
-- [LAI — portais e protocolos](#lai-portais-e-protocolos)
-- [Decisões de recurso de LAI da CGE-MG — o único corpus de LAI de MG pesquisável](#decisões-de-recurso-de-lai-da-cge-mg-o-único-corpus-de-lai-de-mg-pesquisável)
-- [Diário oficial — mapeamento SIGPub (sem coleta)](#diário-oficial-mapeamento-sigpub-sem-coleta)
-- [Rede de proteção de MG](#rede-de-proteção-de-mg)
-- [Radar de notícias do Paraopeba](#radar-de-notícias-do-paraopeba)
-- [Dados abertos de MG (`dados.mg.gov.br`) — CKAN que funciona, com três armadilhas](#dados-abertos-de-mg-dadosmggovbr-ckan-que-funciona-com-três-armadilhas)
-- [Transferegov (ex-SICONV) — o federal publica o que o estadual não publica](#transferegov-ex-siconv-o-federal-publica-o-que-o-estadual-não-publica)
-- [GTAC — o cadastro de TACs ambientais de MG (e o 403 que engana)](#gtac-o-cadastro-de-tacs-ambientais-de-mg-e-o-403-que-engana)
-- [Microsistema de lacunas — cobertura declarada](#microsistema-de-lacunas-cobertura-declarada)
-- [Painel Sisema (Power BI público) — um MENU que esconde 4 painéis e 87 abas](#painel-sisema-power-bi-público-um-menu-que-esconde-4-painéis-e-87-abas)
-- [barragens.mpmg.mp.br — 45 barragens em descaracterização, uma por post](#barragensmpmgmpbr-45-barragens-em-descaracterização-uma-por-post)
-- [MPMG — `transparencia.mpmg.mp.br/buscarTac` está morto (B7)](#mpmg-transparenciampmgmpbrbuscartac-está-morto-b7)
-- [DataJud do CNJ (B8) — CONSULTA AO VIVO, nunca coleta](#datajud-do-cnj-b8-consulta-ao-vivo-nunca-coleta)
-- [SIRENEJud (CNJ/CNMP) — o recorte ambiental do DataJud que PODE ser coletado](#sirenejud-cnjcnmp--o-recorte-ambiental-do-datajud-que-pode-ser-coletado)
-- [Biblioteca de inspeções da Corregedoria Nacional (CNJ) — 330 relatórios onde a sondagem viu "nada"](#biblioteca-de-inspeções-da-corregedoria-nacional-cnj-330-relatórios-onde-a-sondagem-viu-nada)
-- [CNIEP / Geopresídios (CNJ) — inspeção judicial em presídio, e a separação que inverte a manchete](#cniep-geopresídios-cnj-inspeção-judicial-em-presídio-e-a-separação-que-inverte-a-manchete)
-- [Defensoria Pública de MG — quatro fontes, e o denominador que nenhuma delas publica sozinha](#defensoria-pública-de-mg-quatro-fontes-e-o-denominador-que-nenhuma-delas-publica-sozinha)
-- [Justiça em Números (CNJ) — e a lacuna que ERA nossa, não do CNJ](#justiça-em-números-cnj-e-a-lacuna-que-era-nossa-não-do-cnj)
-- [STF — a transparência que eu disse não existir, e existe em 78 seções](#stf-a-transparência-que-eu-disse-não-existir-e-existe-em-78-seções)
-- [Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)](#atas-de-correição-do-trt-3-corregedoria-geral-da-justiça-do-trabalho-tst)
-- [Google Drive como repositório de documento público — as quatro armadilhas](#google-drive-como-repositório-de-documento-público-as-quatro-armadilhas)
-- [Anatel — Sistema Mosaico / Telefonia Móvel (SMP)](#anatel--sistema-mosaico--telefonia-móvel-smp)
-- [TSE DivulgaCandContas — Planos de Governo dos Eleitos](#tse-divulgacandcontas--planos-de-governo-dos-eleitos)
-- [Cloudflare R2 — Espelhamento Perene de Documentos Oficiais](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais)
+- [Fontes, por área](#fontes-por-área)
+- [Documentos de fonte por frente (FONTES-\*.md)](#documentos-por-frente)
 - [Decisões registradas](#decisões-registradas)
 
 ## Propósito
 
-Este documento consolida o levantamento, a classificação e o estado operacional de cada fonte de dados do portal, com as decisões de coleta e as armadilhas medidas em cada uma.
+Este documento consolida o levantamento, a classificação e o estado
+operacional de cada fonte do portal — com as decisões de coleta e as
+armadilhas **medidas** em cada uma. Cada seção diz: endereço, o que dá,
+o que mente e como coletar sem mentir.
+
+## Como ler este catálogo
+
+- **Cada seção é fonte por fonte**, com medição datada. Números aqui são
+  pisos, não eternidades — remeça antes de decidir com eles.
+- Os cinco documentos de escopo por frente vão no repositório:
+  ver [`FONTES-*.md`](#documentos-por-frente) abaixo.
+- Corredor rápido para agentes: [regras gerais](#regras-gerais-de-coleta)
+  primeiro; depois a seção da sua fonte.
 
 ## Regras gerais de coleta
 
@@ -58,10 +38,51 @@ Este documento consolida o levantamento, a classificação e o estado operaciona
 |---|---|
 | Pausa entre requisições | 1–2 s por host; 1,5 s na FGV; 4 s em sondas de link |
 | User-Agent honesto | Identifica o projeto. Exceções medidas: SIGMINE/ANM, CONAMA e planalto.gov.br só respondem a UA de navegador (403 ou conexão derrubada sem ele); Guaicuy devolve 406 ao urllib padrão |
-| Checkpoint | Coleta vazia não sobrescreve arquivo bom; 429/503 param a coleta; validar conteúdo, nunca só o status HTTP (302→200 de bloqueio eleitoral, `[]` com 200, esqueleto com nome nulo) |
+| Checkpoint | Coleta vazia não sobrescreve arquivo bom; 429/503 param a coleta; **validar conteúdo, nunca só o status HTTP** (302→200 de bloqueio eleitoral, `[]` com 200, esqueleto com nome nulo) |
 | Fora da CI | Nada agendado para fonte que muda 1×/mês; o radar roda antes do build; coletores manuais com retomada |
-| robots.txt | Respeitar, com decisão registrada (FGV veda o host inteiro — ver seção própria) |
-| Dado pessoal | Varredura mod-11 antes do commit + régua de triagem no build para dado ingerido + redação na origem para campos de 11 dígitos; máscara da fonte não é prova de proteção (ver Rouanet). CPF real já vazou em ementa oficial e em campo de nome; o hook é o que pegou |
+| robots.txt | Respeitar, com decisão registrada (FGV veda o host inteiro — ver [seção Pró-Brumadinho/FGV](#pró-brumadinho-governo-de-mg-e-auditoria-fgv)) |
+| Dado pessoal | Varredura mod-11 antes do commit + régua de triagem para dado ingerido + redação na origem para campos de 11 dígitos; **máscara da fonte não é prova de proteção** (ver [Rouanet](#lei-rouanet--salic--e-os-três-jeitos-que-a-api-mente)). CPF real já vazou na ementa oficial e em campo de nome; o hook é o que pegou |
+
+## Fontes, por área
+
+Tabela de navegação — âncora direta para cada catálogo:
+
+| Área | Fonte(s) | Âncora |
+|---|---|---|
+| Litígio e jurisprudência | CACOL, DataJud, JUMA | [§](#cnj-e-juma--litígio-e-jurisprudência-nacional) |
+| Paraopeba — ATIs | AEDAS, Guaicuy, ADAI, NACAB | [§](#biblioteca-das-atis-do-paraopeba) |
+| Brumadinho — auditoria | AJRI/AECOM | [§](#auditoria-ajri-brumadinho) |
+| Desastres unificados | Mariana + Brumadinho | [§](#crimes-socioambientais--biblioteca-unificada-mariana-e-brumadinho) |
+| Rouanet / SALIC | API MinC | [§](#lei-rouanet--salic--e-os-três-jeitos-que-a-api-mente) |
+| Território e mineração | FUNAI, SIGMINE, SIGBM, FEAM, INCRA | [§](#território-e-mineração) |
+| Fluxo financeiro | PNCP, SICOM, CFEM, QSA, Repasse | [§](#fluxo-financeiro--dinheiro-ligado-ao-mapa) |
+| Clima e risco | AdaptaBrasil, INMET, BATER | [§](#clima-e-risco--adaptabrasil-e-inmet) |
+| Legislação | MMA, CNDH, URN LexML | [§](#legislação-federal-e-urn-lexml) |
+| ComunicaBR | Página do governo | [§](#comunicabr--coleta-de-mg) |
+| LAI | Fala.BR, e-SICs | [§](#lai--portais-e-protocolos) |
+| Decisões LAI MG | CGE-MG | [§](#decisões-de-recurso-de-lai-da-cge-mg--o-único-corpus-de-lai-de-mg-pesquisável) |
+| Diário oficial | SIGPub, CMS por município | [§](#diário-oficial--mapeamento-sigpub-sem-coleta) |
+| Rede de proteção | MG, comarcas | [§](#rede-de-proteção-de-mg) |
+| Radar de notícias | MAB, Agência Brasil, Google, ATIs | [§](#radar-de-notícias-do-paraopeba) |
+| CKAN MG | `dados.mg.gov.br` | [§](#dados-abertos-de-mg-dadosmggovbr--ckan-que-funciona-com-três-armadilhas) |
+| Transferegov | ex-SICONV | [§](#transferegov-ex-siconv--o-federal-publica-o-que-o-estadual-não-publica) |
+| GTAC | TACs ambientais de MG | [§](#gtac--o-cadastro-de-tacs-ambientais-de-mg-e-o-403-que-engana) |
+| Lacunas normativas | Microsistema | [§](#microsistema-de-lacunas--cobertura-declarada) |
+| Power BI Sisema | 4 painéis-filhos, 87 abas | [§](#painel-sisema-power-bi-público--um-menu-que-esconde-4-painéis-e-87-abas) |
+| Barragens MPMG | descaracterização | [§](#barragens-mpmgmpbr--45-barragens-em-descaracterização-uma-por-post) |
+| MPMG buscarTac | **morto** (B7) | [§](#mpmg--transparenciampmgmpbrbuscartac-está-morto-b7) |
+| DataJud B8 | consulta ao vivo | [§](#datajud-do-cnj-b8--consulta-ao-vivo-nunca-coleta) |
+| SIRENEJud | recorte coletável | [§](#sirenejud-cnjcnmp--o-recorte-ambiental-do-datajud-que-pode-ser-coletado) |
+| Correicional CNJ | 330 relatórios | [§](#biblioteca-de-inspeções-da-corregedoria-nacional-cnj--330-relatórios-onde-a-sondagem-viu-nada) |
+| CNIEP | Geopresídios | [§](#cniep--geopresídios-cnj--inspeção-judicial-em-presídio-e-a-separação-que-inverte-a-manchete) |
+| Defensoria MG | DPMG | [§](#defensoria-pública-de-mg--quatro-fontes-e-o-denominador-que-nenhuma-delas-publica-sozinha) |
+| Justiça em Números | CNJ | [§](#justiça-em-números-cnj--e-a-lacuna-que-era-nossa-não-do-cnj) |
+| STF | transparência | [§](#stf--a-transparência-que-eu-disse-não-existir-e-existe-em-78-seções) |
+| TRT-3 | atas de correição | [§](#atas-de-correição-do-trt-3-corregedoria-geral-da-justiça-do-trabalho--tst) |
+| Google Drive | EIA/RIMA | [§](#google-drive-como-repositório-de-documento-público--as-quatro-armadilhas) |
+| Anatel | Mosaico / SMP | [§](#anatel--sistema-mosaico--telefonia-móvel-smp) |
+| TSE | planos de governo | [§](#tse-divulga-cand--planos-de-governo-dos-eleitos) |
+| Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -85,9 +106,9 @@ Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-soci
 
 - **Agregador:** `scripts/agregar-biblioteca-desastres.mts` funde o acervo das ATIs do Paraopeba (`apps/web/public/data/biblioteca-ati.json`, 645 itens, `desastre: brumadinho`) com os arquivos por fonte em `etl/betim/dados/desastres/*.json` e grava `apps/web/public/data/biblioteca-desastres.json` + `COBERTURA_BIBLIOTECA_DESASTRES`. A triagem de dado pessoal roda aqui (`triagem.ts::ehItemBloqueado`), uma cópia só da regra.
 - **ATIs de Mariana (AEDAS Rio Doce):** `scripts/coletar-biblioteca-ati-mariana.py` — 118 itens (01/09/2026) dos programas do Rio Doce (Aimorés, Barra Longa, Conselheiro Pena, Médio Rio Doce, Resplendor-Itueta, Vale do Aço) via wp-json, dedup por id (o mesmo documento pertence a vários projetos). Ficam de fora: Itatiaiuçu e Veredas Sol e Lares (vínculo com a bacia não confirmado).
-- **CBH-Doce — Comitê da Bacia do Rio Doce:** `scripts/coletar-biblioteca-cbh-doce.py` — 157 itens (01/09/2026, delibera��es e mo��es normativas via p�gina p�blica WP).
+- **CBH-Doce — Comitê da Bacia do Rio Doce:** `scripts/coletar-biblioteca-cbh-doce.py` — 157 itens (01/09/2026, deliberações e moções normativas via página pública WP).
 - **Fundo Brasil de Direitos Humanos:** `scripts/coletar-biblioteca-fundo-brasil.py` — 16 itens (01/09/2026) do programa "Programa Rio Doce" e editais de defesa de direitos humanos na bacia (ultimo edital 2025: 20 organizacoes, R$ 50.000 cada, total R$ 1.000.000,00). Coleta por paginas publicas do WordPress (cards `<a class="group bg-light">` com <h3>, <time> e <div class="text-black text-sm">).
-- **Pendentes de sondagem:** CIF (cif.org.br inacess�vel na sondagem de 01/09), MPF, �rg�os de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem se��o "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST p�blica confirmada (C�ritas, CTA, programa Doce da ADAI).
+- **Pendentes de sondagem:** CIF (cif.org.br inacessível na sondagem de 01/09), MPF, �rg�os de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem seção "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST pública confirmada (Cáritas, CTA, programa Doce da ADAI).
 
 ### Mapa amplo de fontes (pesquisa 01/09/2026)
 
@@ -274,28 +295,6 @@ Dois achados do cadastro: **72 dos 150 termos marcados "Vigente" têm data de ve
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.
 
-## Origem
-
-Este documento absorve os seguintes arquivos, com a classificação de destino:
-
-- `FONTES-CNJ-JUMA.md` → ENTREGUE/absorvido (referência; DataJud e JUMA sem ingestão — decisões de licença pendentes)
-- `FONTES-BIBLIOTECA-ATI.md` → ENTREGUE (coletor, dado, tela e testes no código)
-- `FONTES-AUDITORIA-AJRI.md` → ENTREGUE (catálogo 467 + rota no código; espelho de PDF não feito, declarado)
-- `FONTES-ROUANET-SALIC.md` → ENTREGUE (dados gravados; tela não feita, declarado)
-- `FONTES-TERRITORIO-E-MINERACAO.md` → ENTREGUE/absorvido (referência e mapeamento)
-- `FONTES-PRO-BRUMADINHO-E-FGV.md` → ENTREGUE (execução FGV 26 municípios + repasse 853 no código)
-- `FONTES-FLUXO-FINANCEIRO.md` → ENTREGUE/absorvido (levantamento; correção do CNPJ de convênio pendente no código)
-- `CLIMA-ADAPTABRASIL-E-INMET.md` → ENTREGUE/absorvido (coletor no código; migration 0074 não aplicada)
-- `LEGISLACAO-FEDERAL-MMA-CNDH.md` → ENTREGUE (carga 8.940 + migration no código)
-- `URN-LEXML-NORMAS-LEG-BR.md` → ENTREGUE (lib, testes e tela no código)
-- `COMUNICABR-COLETA-MG.md` → ENTREGUE (arquivo 2,26 MB + telas no código)
-- `LAI-PORTAIS.md` → ENTREGUE/absorvido (referência)
-- `diario-oficial-sigpub-mapeamento.md` → ENTREGUE/absorvido (mapeamento D0; coleta bloqueada por LGPD)
-- `REDE-PROTECAO-MG.md` → ENTREGUE/absorvido (referência)
-- `MICROSSISTEMA-LACUNAS.md` → ENTREGUE/absorvido (pesquisa; lacuna normativa fechada pela carga federal)
-- `RADAR-NOTICIAS-PARAOPEBA.md` → ENTREGUE (coletor, dado e tela no código)
-- `PLANO-INGESTAO-PARAOPEBA.md` → ENTREGUE/parcial (INST_DATA em `atores.ts`, auxílio em `auxilio.ts` e acervo UFMG em `documentos.ts` existem; camada de contagem por município do Solr não localizada no código)
-- `PLANO-ARQUIVO-DE-FONTES.md` → ENTREGUE/parcial (capturador com sha256/robots/CPF e tabela `arquivo_fontes` no código; upload R2 e selo na UI pendentes, declarados)
 ## Painel Sisema (Power BI público) — um MENU que esconde 4 painéis e 87 abas
 
 Sondado em 2026-08-21. O link que circula como "Painel de Termos de Compromisso de Barragens de Mineração" (`app.powerbi.com/view?r=eyJrIjoiOThhNzgyMTQt…`, resourceKey `98a78214-4e97-4394-b382-48779609fba2`) **não tem dado nenhum**: é um menu com duas abas, `MENU PAINEL` e `EQUIPE`. Quem abre e não acha número conclui que o painel é vazio — e ele não é.
@@ -606,8 +605,46 @@ Medido em 2026-09-17. Mecanismo de arquivamento perene de atos oficiais, relató
 - **Resolução dinâmica:** O helper `apps/web/lib/documentos/espelho.ts` resolve URLs em runtime (`resolverLinkDocumento`), usando o espelho R2 quando disponível e realizando fallback gracioso para a fonte original.
 - **Guarda de segurança:** Extração textual e varredura fail-closed por mod-11 CPF obrigatória antes de qualquer envio ao bucket.
 
+## Documentos por frente
+
+Os cinco documentos de escopo por frente, no repositório. A lista completa de
+fontes muda toda semana; o escopo, não — por isso esta página só aponta.
+
+| Arquivo | Escopo |
+|---|---|
+| [`FONTES-BIBLIOTECA-ATI.md`](FONTES-BIBLIOTECA-ATI.md) | acervo das Assessorias Técnicas Independentes do Paraopeba |
+| [`FONTES-BRUMADINHO-UFMG.md`](FONTES-BRUMADINHO-UFMG.md) | Plataforma Brumadinho da UFMG e o acervo do processo coletivo |
+| [`FONTES-CNJ-JUMA.md`](FONTES-CNJ-JUMA.md) | CNJ (DataJud), litigância do JUMA, legislação ambiental do MMA |
+| [`FONTES-FLUXO-FINANCEIRO.md`](FONTES-FLUXO-FINANCEIRO.md) | quem recebe dinheiro público, CFEM e quem controla quem |
+| [`FONTES-TERRITORIO-E-MINERACAO.md`](FONTES-TERRITORIO-E-MINERACAO.md) | FUNAI, INCRA, CNUC, ANM/SIGMINE |
+| [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
+
 ## Decisões registradas
 
 - **2026-09-17:** Implementado espelhamento perene de PDFs e atos oficiais no Cloudflare R2 com hash SHA-256 e checagem prévia fail-closed contra CPFs. Baixados e arquivados planos de governo de prefeitos eleitos de MG via API DivulgaCandContas do TSE.
 - **2026-09-08:** Cobertura de telefonia móvel publicada em duas opções complementares (torres pontuais e manchas poligonais), priorizando Vales do Jequitinhonha/Mucuri e Bacia do Paraopeba antes do estado completo de Minas Gerais. Polígono estadual comprimido em gzip (`.geojson.gz`) para manter o asset bem abaixo do teto de 25 MiB da Cloudflare.
 
+
+
+## Origem
+
+Este documento absorve os seguintes arquivos, com a classificação de destino:
+
+- `FONTES-CNJ-JUMA.md` → ENTREGUE/absorvido (referência; DataJud e JUMA sem ingestão — decisões de licença pendentes)
+- `FONTES-BIBLIOTECA-ATI.md` → ENTREGUE (coletor, dado, tela e testes no código)
+- `FONTES-AUDITORIA-AJRI.md` → ENTREGUE (catálogo 467 + rota no código; espelho de PDF não feito, declarado)
+- `FONTES-ROUANET-SALIC.md` → ENTREGUE (dados gravados; tela não feita, declarado)
+- `FONTES-TERRITORIO-E-MINERACAO.md` → ENTREGUE/absorvido (referência e mapeamento)
+- `FONTES-PRO-BRUMADINHO-E-FGV.md` → ENTREGUE (execução FGV 26 municípios + repasse 853 no código)
+- `FONTES-FLUXO-FINANCEIRO.md` → ENTREGUE/absorvido (levantamento; correção do CNPJ de convênio pendente no código)
+- `CLIMA-ADAPTABRASIL-E-INMET.md` → ENTREGUE/absorvido (coletor no código; migration 0074 não aplicada)
+- `LEGISLACAO-FEDERAL-MMA-CNDH.md` → ENTREGUE (carga 8.940 + migration no código)
+- `URN-LEXML-NORMAS-LEG-BR.md` → ENTREGUE (lib, testes e tela no código)
+- `COMUNICABR-COLETA-MG.md` → ENTREGUE (arquivo 2,26 MB + telas no código)
+- `LAI-PORTAIS.md` → ENTREGUE/absorvido (referência)
+- `diario-oficial-sigpub-mapeamento.md` → ENTREGUE/absorvido (mapeamento D0; coleta bloqueada por LGPD)
+- `REDE-PROTECAO-MG.md` → ENTREGUE/absorvido (referência)
+- `MICROSSISTEMA-LACUNAS.md` → ENTREGUE/absorvido (pesquisa; lacuna normativa fechada pela carga federal)
+- `RADAR-NOTICIAS-PARAOPEBA.md` → ENTREGUE (coletor, dado e tela no código)
+- `PLANO-INGESTAO-PARAOPEBA.md` → ENTREGUE/parcial (INST_DATA em `atores.ts`, auxílio em `auxilio.ts` e acervo UFMG em `documentos.ts` existem; camada de contagem por município do Solr não localizada no código)
+- `PLANO-ARQUIVO-DE-FONTES.md` → ENTREGUE/parcial (capturador com sha256/robots/CPF e tabela `arquivo_fontes` no código; upload R2 e selo na UI pendentes, declarados)
