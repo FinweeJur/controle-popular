@@ -15,6 +15,7 @@
 - [Antes do push — checklist](#antes-do-push-checklist)
 - [Trabalhar com IA](#trabalhar-com-IA)
 - [Grafo de código](#grafo-de-código)
+- [Padrão de Exibição e Exportação de Dados](#padrão-de-exibição-e-exportação-de-dados)
 - [Verificação](#verificação)
 - [Origem](#origem)
 
@@ -153,7 +154,20 @@ cgr start --repo-path X:\DevCoder\controle-popular --update-graph
 
 Snapshot 22/08/2026: 799 módulos, 3.684 arquivos, 8.412 funções;
 `lib/db/queries/municipios.ts` mais central (111 imports).
-Rode `--update-graph` antes de decidir com números.
+## Padrão de Exibição e Exportação de Dados
+
+Toda página ou componente que apresenta grandes volumes de dados (tabelas, listas, acervos, gastos) segue o **Padrão de 5 Coisas** (definido no AGENTS.md § 8 e consolidado em `apps/web/app/[municipio]/components/TabelaEstatica.tsx`):
+
+1. **Buscável e Filtrável**: Busca textual em tempo real no cliente e filtros por facetas reais (status, UF, ano, categoria, tags). Filtro vazio é proibido.
+2. **Ordenável e Classificável**: Ordenação por colunas (crescente/decrescente) cobrindo tanto valores e datas quanto tipos nominais.
+3. **Resumos e Cartões de Topo**: Agregados destacados acima da tabela que respondem "quanto é isso no total?".
+4. **Exportável Multi-formato**:
+   - **CSV**: Gera arquivo contendo estritamente o conjunto filtrado em tela, com separador ponto-e-vírgula (`;`) e BOM UTF-8 (`\uFEFF`) para leitura direta sem distorção de acentuação no Excel brasileiro.
+   - **PDF / Imprimir**: Dispara `window.print()` estilizado via regras CSS `@media print`, gerando PDF vetorial de alta legibilidade através do próprio navegador (sem bibliotecas externas pesadas no cliente).
+   - **Copiar Texto**: Botão rápido utilizando `navigator.clipboard.writeText` para área de transferência.
+   - **DOCX**: Quando aplicável para relatórios periciais/técnicos, gerado no pipeline de exportação ou disponível para download estático.
+5. **Contexto para o Chatbot (Seu Nonô)**: Toda nova rota ou entidade com dados cadastrais tem suas tags e perguntas mapeadas em `apps/web/lib/seo/contexto-pagina.ts`, permitindo que o assistente sugira temas correlatos sem sugerir a própria página onde o leitor já está.
+6. **Dados Sempre Linkáveis e Verificados**: Todo registro visível ao usuário (contrato, convênio, lei, processo, órgão, edital, parlamentar, fornecedor) deve possuir hiperlink direto e específico para a fonte oficial (aberto e testado pelo agente no momento da coleta). É expressamente vedado link genérico para a página inicial de um ministério ou portal quando o ato possui URL canônica própria ou protocolo oficial de busca.
 
 ## Verificação
 

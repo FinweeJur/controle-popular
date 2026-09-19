@@ -123,6 +123,18 @@ export default async function DetalheGovernoPage({
             das Secretarias e Ministérios. O status reflete atos e instrumentos executivos documentados,
             nunca juízo de valor opinativo.
           </p>
+
+          {mandato.esfera === "estadual" && (
+            <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-border pt-3 text-xs">
+              <span className="font-semibold text-text">Ver também:</span>
+              <Link
+                href={`/governo/${mandato.slug}/legislativo`}
+                className="inline-flex items-center gap-1 rounded-lg bg-primary/10 px-3 py-1 font-semibold text-primary hover:bg-primary/20 transition-colors"
+              >
+                🏛️ Assembleia Legislativa: Ranking de Deputados, Salários & Cota →
+              </Link>
+            </div>
+          )}
         </header>
 
         {/* ═══ PAINEL INTERATIVO (CARDS, GRÁFICO, FILTROS, CSV) ═══ */}

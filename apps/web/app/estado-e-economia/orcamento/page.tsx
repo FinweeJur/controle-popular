@@ -6,6 +6,8 @@ import RelacaoSuggestions from '@/app/components/eixos/RelacaoSuggestions';
 import CruzamentosEducativos from '@/app/components/eixos/CruzamentosEducativos';
 import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
 import { calcularCruzamentosMunicipais } from '@/lib/cruzamentos/correlacionador';
+import { obterSeriesEconomicas } from '@/lib/series-economicas';
+import TabelaSeriesBcbClient from './TabelaSeriesBcbClient';
 
 export const metadata: Metadata = {
   title: 'Orçamento Público — Eixo Estado e Economia | Controle Popular',
@@ -16,12 +18,17 @@ export const metadata: Metadata = {
 export default function OrcamentoPage() {
   const fichas = listarFichasPorSubfrente('orcamento');
   const fichaDestaque = fichas[0];
+  const dadosBcb = obterSeriesEconomicas();
+
+  const selicAtual = dadosBcb.series.selic_meta?.ultimoValor?.toFixed(2).replace('.', ',') ?? '10,50';
+  const ipcaMensal = dadosBcb.series.ipca_mensal?.ultimoValor?.toFixed(2).replace('.', ',') ?? '0,16';
+  const dataIpca = dadosBcb.series.ipca_mensal?.ultimaData ?? '01/08/2026';
 
   const indicadoresOrcamento = [
     { rotulo: 'Orçamento Federal Executado', valor: 'R$ 5,2 tri', obs: 'Execução orçamentária geral (SIOP)' },
     { rotulo: 'Repasses FPM / Fundeb', valor: 'R$ 380 bi', obs: 'Transferências constitucionais aos municípios' },
-    { rotulo: 'IPCA Acumulado 12m', valor: '4,24%', obs: 'Banco Central do Brasil (API Olinda)' },
-    { rotulo: 'Meta Selic Vigente', valor: '10,50%', obs: 'Taxa básica de juros (COPOM/BCB)' },
+    { rotulo: 'IPCA Mensal Oficial', valor: `${ipcaMensal}%`, obs: `Banco Central (SGS 433) — Ref. ${dataIpca}` },
+    { rotulo: 'Meta Selic Vigente', valor: `${selicAtual}% a.a.`, obs: 'Taxa básica de juros (COPOM/BCB SGS 432)' },
   ];
 
   const cruzamentos = calcularCruzamentosMunicipais({
@@ -104,6 +111,9 @@ export default function OrcamentoPage() {
           </div>
         </div>
       </section>
+
+      {/* SÉRIES MACROECONÔMICAS DO BANCO CENTRAL DO BRASIL (PADRÃO 5 COISAS) */}
+      <TabelaSeriesBcbClient dados={dadosBcb} />
 
       {/* COMPONENTE EDUCATIVO DATA OCEAN */}
       <CruzamentosEducativos

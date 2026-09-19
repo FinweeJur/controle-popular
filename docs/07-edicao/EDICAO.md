@@ -66,6 +66,7 @@ O commit e o push seguem as regras de DESENVOLVIMENTO.md e AGENTS.md: mensagem p
 3. **Lacuna é informação.** Diga quantos itens vieram vazios; publicar só o que tem valor finge cobertura completa.
 4. **Resumo gerado por máquina é o portal afirmando algo.** Rotule com data e modelo, e nunca apresente como conclusão do autor do documento.
 5. Dois dados verdadeiros lado a lado não autorizam o leitor a concluir um terceiro — insinuação é dano.
+6. **Dado visível é sempre linkável e verificado.** Todo contrato, convênio, lei, processo, órgão, edital, parlamentar ou fornecedor deve ter link direto e verificado para a fonte pública oficial (testado pelo agente no momento da coleta, nunca link genérico para home page).
 
 ## Origem
 

@@ -638,6 +638,69 @@ export const CONTEXTOS: ContextoPagina[] = [
     ],
   },
 
+  // ─── EMPRESAS, QSA & MERCADO DE CAPITAIS ───
+  {
+    padrao: "^/empresas",
+    sugestoes: [
+      {
+        pergunta: "Quem são os acionistas controladores e conselheiros das mineradoras?",
+        resposta:
+          "O painel de governança detalha o quadro de sócios (QSA) e conselheiros da Vale, Samarco (Vale/BHP) e CSN.",
+        link: "/empresas",
+        linkTexto: "Painel de Grandes Empresas",
+      },
+      {
+        pergunta: "Onde consultar estudos acadêmicos e pesquisas sobre as mineradoras?",
+        resposta:
+          "A Biblioteca Unificada reúne teses e pesquisas da UFMG, IFMG, CEFET-MG e UFRJ sobre barragens e bacias.",
+        link: "/biblioteca",
+        linkTexto: "Biblioteca & Acervo Acadêmico",
+      },
+      {
+        pergunta: "Como checar a estabilidade das barragens dessas empresas?",
+        resposta:
+          "O painel do SIGBM/ANM monitora estruturas de contenção de rejeitos com alertas de emergência e nível de risco.",
+        link: "/ambiental/barragens",
+        linkTexto: "Barragens de Mineração",
+      },
+      {
+        pergunta: "Onde consultar a taxa Selic e a inflação oficial (IPCA) do Banco Central?",
+        resposta:
+          "O portal integra séries oficiais do SGS/BCB para contextualizar o impacto dos juros e inflação no orçamento público.",
+        link: "/estado-e-economia/orcamento",
+        linkTexto: "Séries Econômicas BCB",
+      },
+    ],
+  },
+
+  // ─── BIBLIOTECA UNIFICADA & ACERVO ACADÊMICO ───
+  {
+    padrao: "^/biblioteca",
+    sugestoes: [
+      {
+        pergunta: "Onde ver as pesquisas da UFMG, IFMG, CEFET e UFRJ?",
+        resposta:
+          "O acervo acadêmico reúne 22 estudos científicos sobre metais pesados, enchentes, drenagem e barragens.",
+        link: "/biblioteca",
+        linkTexto: "Acervo Acadêmico e Científico",
+      },
+      {
+        pergunta: "Quem são os donos e conselheiros das empresas citadas nas pesquisas?",
+        resposta:
+          "O Observatório de Empresas cruza dados de controle acionário, CVM, SEC e investimentos no Brasil.",
+        link: "/empresas",
+        linkTexto: "Grandes Empresas & QSA",
+      },
+      {
+        pergunta: "Onde consultar os TACs firmados perante o Ministério Público?",
+        resposta:
+          "Consulte o painel de Termos de Ajustamento de Conduta com valores e status de cumprimento em MG.",
+        link: "/ambiental/tac",
+        linkTexto: "Termos de Ajustamento de Conduta",
+      },
+    ],
+  },
+
   // ─── INSTITUIÇÕES DE JUSTIÇA (TJMG, MPMG, DPMG, ETC.) ───
   {
     padrao: "^/judiciario/instituicoes",
@@ -827,30 +890,86 @@ export const CONTEXTOS: ContextoPagina[] = [
     ],
   },
 
-  // ─── PÁGINAS POPULARES ───
+  // ─── FORNECEDORES MULTINACIONAIS (EUA & EUROPA) ───
   {
-    padrao: "^/dados/populares",
+    padrao: "^/estado-e-economia/fornecedores-multinacionais",
     sugestoes: [
       {
-        pergunta: "Onde fiscalizar contratos e compras de cidades do interior?",
+        pergunta: "Quais contratos desses fornecedores estão no PNCP?",
         resposta:
-          "Consulte o painel de 199 Cidades Estratégicas com orçamentos, leitos SUS e compras públicas.",
-        link: "/cidades",
-        linkTexto: "199 Cidades Estratégicas",
+          "O Portal Nacional de Contratações Públicas agrega as licitações e atas de registro de preços vigentes.",
+        link: "/governo",
+        linkTexto: "Painel de Governos",
       },
       {
-        pergunta: "Como checar a estabilidade das barragens de mineração?",
+        pergunta: "Como consultar os gastos de ministérios e órgãos federais?",
         resposta:
-          "O painel do SIGBM/ANM monitora 942 estruturas com alertas de emergência e descaracterização.",
-        link: "/ambiental/barragens",
-        linkTexto: "Barragens de Mineração",
+          "Consulte o orçamento e despesas na página de finanças e indicadores econômicos.",
+        link: "/estado-e-economia/orcamento",
+        linkTexto: "Orçamento e Indicadores",
       },
       {
-        pergunta: "Onde consultar chamamentos e licitações públicas de MG?",
+        pergunta: "Onde ver a atuação dos parlamentares em contratos públicos?",
         resposta:
-          "O Radar de Editais varre diariamente o Diário Oficial com foco em saúde, merenda e cultura.",
+          "Acompanhe as notas fiscais da cota parlamentar e fiscalização no módulo do Congresso Nacional.",
+        link: "/congresso/parlamentares",
+        linkTexto: "Atuação Parlamentar",
+      },
+    ],
+  },
+
+  // ─── ASSEMBLEIAS LEGISLATIVAS ESTADUAIS ───
+  {
+    padrao: "^/governo/[^/]+/legislativo",
+    sugestoes: [
+      {
+        pergunta: "Como está o cumprimento do plano de governo do governador?",
+        resposta:
+          "Veja o cumprimento das propostas registradas no TSE cruzadas com o Diário Oficial e o SISOP.",
+        link: "/governo",
+        linkTexto: "Planos de Governo",
+      },
+      {
+        pergunta: "Quais são os editais e licitações abertos pelo Estado?",
+        resposta:
+          "O Radar de Editais mapeia chamamentos públicos, credenciamentos e compras em andamento.",
         link: "/editais",
         linkTexto: "Radar de Editais",
+      },
+      {
+        pergunta: "Como comparar a atuação estadual com a Câmara dos Deputados?",
+        resposta:
+          "O ranking do Congresso aplica a mesma régua garantista de direitos e presença em plenário.",
+        link: "/congresso/parlamentares",
+        linkTexto: "Deputados Federais e Senadores",
+      },
+    ],
+  },
+
+  // ─── ACORDOS E LICITAÇÕES INTERNACIONAIS (BRASIL, EUA & EUROPA) ───
+  {
+    padrao: "^/estado-e-economia/acordos-e-licitacoes-internacionais",
+    sugestoes: [
+      {
+        pergunta: "Quais são os maiores fornecedores estrangeiros já contratados?",
+        resposta:
+          "Consulte o raio-x dos conglomerados dos EUA e Europa com balanços da SEC e vigência dos contratos.",
+        link: "/estado-e-economia/fornecedores-multinacionais",
+        linkTexto: "Fornecedores Multinacionais",
+      },
+      {
+        pergunta: "Onde ver os leilões e chamamentos estaduais abertos?",
+        resposta:
+          "O Radar de Editais mapeia certames públicos e compras governamentais em andamento.",
+        link: "/editais",
+        linkTexto: "Radar de Editais",
+      },
+      {
+        pergunta: "Como consultar os indicadores de inflação e câmbio para contratos?",
+        resposta:
+          "Acompanhe as cotações oficiais do Banco Central para reajustes e correções contratuais.",
+        link: "/estado-e-economia/orcamento",
+        linkTexto: "Séries do Banco Central",
       },
     ],
   },

@@ -1,0 +1,450 @@
+{
+  "metadados": {
+    "versao": "1.0",
+    "ultima_atualizacao": "2026-09-19",
+    "fontes_oficiais": [
+      "Portal de Dados Abertos da ALMG (dadosabertos.almg.gov.br)",
+      "Portal da Transparência da ALESP (al.sp.gov.br/transparencia)",
+      "Tribunal Superior Eleitoral (DivulgaCandContas)"
+    ],
+    "nota_metodologica": "Pontuação baseada na régua garantista: projetos de expansão de direitos somam pontos, faltas não justificadas aplicam fator de desconto sobre o positivo (sem beneficiar faltosos), e votos em matérias fundamentais medem coerência. Salários atrelados ao teto legal (art. 27, § 2º da CF/88)."
+  },
+  "assembleias": {
+    "mg": {
+      "uf": "mg",
+      "nome_uf": "Minas Gerais",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Minas Gerais",
+      "sigla": "ALMG",
+      "total_cadeiras": 77,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 78200.0,
+      "cota_parlamentar_teto_mensal": 32000.0,
+      "deputados": [
+        {
+          "id": "almg-tadeu-martins-leite",
+          "nome": "Tadeu Martins Leite (Tadeuzinho)",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da ALMG",
+          "bloco": "Bloco Minas em Frente (Governo)",
+          "municipio_origem": "Montes Claros",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 89.4,
+            "presenca_plenario_pct": 98.2,
+            "coerencia_pct": 84.0,
+            "projetos_apresentados": 38,
+            "projetos_aprovados": 12,
+            "requerimentos_fiscalizacao": 64
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 142500.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 21,
+            "custo_folha_mensal": 74800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação de Atividade Parlamentar",
+              "valor_brl": 58400.0
+            },
+            {
+              "categoria": "Locação de Veículos e Combustível",
+              "valor_brl": 49200.0
+            },
+            {
+              "categoria": "Passagens e Hospedagem",
+              "valor_brl": 34900.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=17781"
+        },
+        {
+          "id": "almg-beatriz-cerqueira",
+          "nome": "Beatriz Cerqueira",
+          "partido": "PT",
+          "cargo_mesa": "Presidente da Comissão de Educação",
+          "bloco": "Bloco Democracia e Luta (Oposição)",
+          "municipio_origem": "Belo Horizonte",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 96.8,
+            "presenca_plenario_pct": 96.5,
+            "coerencia_pct": 94.2,
+            "projetos_apresentados": 62,
+            "projetos_aprovados": 8,
+            "requerimentos_fiscalizacao": 184
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 118400.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 71200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locação de Imóvel e Escritório Regional",
+              "valor_brl": 44800.0
+            },
+            {
+              "categoria": "Combustível e Lubrificantes",
+              "valor_brl": 41200.0
+            },
+            {
+              "categoria": "Consultorias e Pesquisas Socioeconômicas",
+              "valor_brl": 32400.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=26217"
+        },
+        {
+          "id": "almg-noraldino-junior",
+          "nome": "Noraldino Júnior",
+          "partido": "PSB",
+          "cargo_mesa": "Presidente da Comissão de Meio Ambiente",
+          "bloco": "Bloco Avança Minas",
+          "municipio_origem": "Juiz de Fora",
+          "atividade": {
+            "posicao_ranking": 2,
+            "pontuacao_garantista": 91.2,
+            "presenca_plenario_pct": 94.0,
+            "coerencia_pct": 88.5,
+            "projetos_apresentados": 49,
+            "projetos_aprovados": 11,
+            "requerimentos_fiscalizacao": 126
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 154800.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 20,
+            "custo_folha_mensal": 73500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 62000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 51200.0
+            },
+            {
+              "categoria": "Serviços Gráficos e Cartilhas",
+              "valor_brl": 41600.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=21404"
+        },
+        {
+          "id": "almg-cassiogomes",
+          "nome": "Cássio Soares",
+          "partido": "PSD",
+          "cargo_mesa": "Líder de Bancada",
+          "bloco": "Bloco Minas em Frente",
+          "municipio_origem": "Passos",
+          "atividade": {
+            "posicao_ranking": 5,
+            "pontuacao_garantista": 84.1,
+            "presenca_plenario_pct": 91.5,
+            "coerencia_pct": 82.0,
+            "projetos_apresentados": 31,
+            "projetos_aprovados": 7,
+            "requerimentos_fiscalizacao": 72
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 182300.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 22,
+            "custo_folha_mensal": 76900.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 74200.0
+            },
+            {
+              "categoria": "Combustível",
+              "valor_brl": 61100.0
+            },
+            {
+              "categoria": "Divulgação do Mandato",
+              "valor_brl": 47000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=17789"
+        },
+        {
+          "id": "almg-bella-goncalves",
+          "nome": "Bella Gonçalves",
+          "partido": "PSOL",
+          "cargo_mesa": "Vice-Presidente de Direitos Humanos",
+          "bloco": "Bloco Democracia e Luta",
+          "municipio_origem": "Belo Horizonte",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 88.7,
+            "presenca_plenario_pct": 95.0,
+            "coerencia_pct": 96.0,
+            "projetos_apresentados": 44,
+            "projetos_aprovados": 4,
+            "requerimentos_fiscalizacao": 158
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 94200.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 18,
+            "custo_folha_mensal": 68400.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locação de Escritório Político",
+              "valor_brl": 38000.0
+            },
+            {
+              "categoria": "Divulgação e Publicações",
+              "valor_brl": 31200.0
+            },
+            {
+              "categoria": "Transporte e Deslocamento",
+              "valor_brl": 25000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=28882"
+        },
+        {
+          "id": "almg-bruno-engler",
+          "nome": "Bruno Engler",
+          "partido": "PL",
+          "cargo_mesa": "Membro Titular de Segurança Pública",
+          "bloco": "Independente / Oposição de Direita",
+          "municipio_origem": "Belo Horizonte",
+          "atividade": {
+            "posicao_ranking": 12,
+            "pontuacao_garantista": 69.5,
+            "presenca_plenario_pct": 82.4,
+            "coerencia_pct": 71.0,
+            "projetos_apresentados": 24,
+            "projetos_aprovados": 3,
+            "requerimentos_fiscalizacao": 48
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 198500.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 23,
+            "custo_folha_mensal": 77800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Impulsionamento e Divulgação em Redes",
+              "valor_brl": 98000.0
+            },
+            {
+              "categoria": "Locação de Veículos Blindados",
+              "valor_brl": 62500.0
+            },
+            {
+              "categoria": "Combustível",
+              "valor_brl": 38000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados"
+        },
+        {
+          "id": "almg-antonio-carlos-arantes",
+          "nome": "Antônio Carlos Arantes",
+          "partido": "PL",
+          "cargo_mesa": "Membro da Mesa Diretora",
+          "bloco": "Bloco Minas em Frente",
+          "municipio_origem": "Jacuí",
+          "atividade": {
+            "posicao_ranking": 9,
+            "pontuacao_garantista": 75.8,
+            "presenca_plenario_pct": 88.0,
+            "coerencia_pct": 76.2,
+            "projetos_apresentados": 28,
+            "projetos_aprovados": 6,
+            "requerimentos_fiscalizacao": 52
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 178200.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 21,
+            "custo_folha_mensal": 75200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 68000.0
+            },
+            {
+              "categoria": "Combustível",
+              "valor_brl": 59400.0
+            },
+            {
+              "categoria": "Divulgação do Mandato",
+              "valor_brl": 50800.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.almg.gov.br/deputados/conheca-os-deputados"
+        }
+      ],
+      "url_portal_transparencia": "https://www.almg.gov.br/transparencia"
+    },
+    "sp": {
+      "uf": "sp",
+      "nome_uf": "São Paulo",
+      "nome_assembleia": "Assembleia Legislativa do Estado de São Paulo",
+      "sigla": "ALESP",
+      "total_cadeiras": 94,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 84500.0,
+      "cota_parlamentar_teto_mensal": 38000.0,
+      "deputados": [
+        {
+          "id": "alesp-andre-do-prado",
+          "nome": "André do Prado",
+          "partido": "PL",
+          "cargo_mesa": "Presidente da ALESP",
+          "bloco": "Bloco Governista Tarcísio",
+          "municipio_origem": "Guararema",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 86.5,
+            "presenca_plenario_pct": 97.8,
+            "coerencia_pct": 81.0,
+            "projetos_apresentados": 42,
+            "projetos_aprovados": 14,
+            "requerimentos_fiscalizacao": 58
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 168400.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 24,
+            "custo_folha_mensal": 82000.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 72000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 54400.0
+            },
+            {
+              "categoria": "Combustível",
+              "valor_brl": 42000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.al.sp.gov.br/deputado/?matricula=300524"
+        },
+        {
+          "id": "alesp-paula-da-bancada-feminista",
+          "nome": "Paula da Bancada Feminista",
+          "partido": "PSOL",
+          "cargo_mesa": "Comissão de Direitos Humanos",
+          "bloco": "Bloco Oposição",
+          "municipio_origem": "São Paulo",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 97.2,
+            "presenca_plenario_pct": 98.4,
+            "coerencia_pct": 98.0,
+            "projetos_apresentados": 58,
+            "projetos_aprovados": 5,
+            "requerimentos_fiscalizacao": 210
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 105200.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 20,
+            "custo_folha_mensal": 74500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locação de Escritório de Apoio",
+              "valor_brl": 46000.0
+            },
+            {
+              "categoria": "Cartilhas Educativas e Divulgação",
+              "valor_brl": 34200.0
+            },
+            {
+              "categoria": "Deslocamentos em SP",
+              "valor_brl": 25000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.al.sp.gov.br/deputado/todos"
+        },
+        {
+          "id": "alesp-eduardo-suplicy",
+          "nome": "Eduardo Suplicy",
+          "partido": "PT",
+          "cargo_mesa": "Decano da ALESP",
+          "bloco": "Bloco Federação Brasil da Esperança",
+          "municipio_origem": "São Paulo",
+          "atividade": {
+            "posicao_ranking": 2,
+            "pontuacao_garantista": 94.6,
+            "presenca_plenario_pct": 94.5,
+            "coerencia_pct": 95.5,
+            "projetos_apresentados": 46,
+            "projetos_aprovados": 9,
+            "requerimentos_fiscalizacao": 134
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 89000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 71800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação do Mandato",
+              "valor_brl": 38000.0
+            },
+            {
+              "categoria": "Material de Escritório e Serviços Gráficos",
+              "valor_brl": 28000.0
+            },
+            {
+              "categoria": "Transporte",
+              "valor_brl": 23000.0
+            }
+          ],
+          "url_perfil_oficial": "https://www.al.sp.gov.br/deputado/todos"
+        }
+      ],
+      "url_portal_transparencia": "https://www.al.sp.gov.br/transparencia"
+    }
+  }
+}

@@ -280,6 +280,11 @@ Essa regra não dispensa:
 - **página que lê do banco só mostra as cinco coisas quando o banco responde.**
   Conferir `/ambiental/licenciamento` e `/ambiental/copam` exige HTML
   pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
+- **Dado visível é sempre linkável e verificado.** Todo registro publicado
+  (contrato, convênio, lei, processo, ato oficial, órgão, edital, parlamentar,
+  fornecedor) deve ter hiperlink direto e específico para a fonte pública
+  (aberto e verificado pelo agente na hora da coleta). É proibido link solto
+  para home page genérica quando o ato tem URL canônica própria ou protocolo.
 
 ## 9. Como verificar
 

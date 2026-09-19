@@ -1,0 +1,764 @@
+{
+  "metadados": {
+    "versao": "1.0",
+    "ultima_atualizacao": "2026-09-19",
+    "fontes_principais": [
+      "Portal Nacional de Contratações Públicas (PNCP) - Lei 14.133/2021",
+      "Portal da Transparência da CGU / SIAFI",
+      "Comissão de Valores Mobiliários dos EUA (SEC - Form 10-K e 20-F)",
+      "Demonstrações Financeiras Internacionais Auditadas (IFRS - Europa)",
+      "Ministério da Defesa - Acordos de Compensação Tecnológica (Offsets)",
+      "Bolsas de Valores de Xangai e Hong Kong (SSE / HKEX - Relatórios Oficiais Auditados)",
+      "Agência Nacional de Energia Elétrica (ANEEL) - Contratos de Concessão de Transmissão"
+    ],
+    "cambio_referencia_usd_brl": 5.45
+  },
+  "empresas": [
+    {
+      "id": "msft",
+      "nome": "Microsoft Corporation",
+      "pais_origem": "Estados Unidos",
+      "continente": "América do Norte",
+      "sede": "Redmond, Washington, EUA",
+      "ticker": "MSFT",
+      "cik_sec": "0000789019",
+      "setor": "Tecnologia da Informação e Nuvem",
+      "orgaos_atendidos": [
+        "Governo Federal (MGI - Contrato Centralizado)",
+        "Supremo Tribunal Federal (STF)",
+        "Superior Tribunal de Justiça (STJ)",
+        "Tribunais de Justiça Estaduais (TJSP, TJMG, TJRJ)",
+        "Câmara dos Deputados e Senado Federal",
+        "Petrobras, Banco do Brasil e Caixa Econômica"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual",
+        "Judiciário",
+        "Congresso",
+        "Estatais"
+      ],
+      "objeto_fornecimento": "Licenças de sistemas operacionais Windows, suíte de produtividade Microsoft 365, plataforma de computação em nuvem Azure, ferramentas de segurança cibernética Defender e suporte técnico Premier",
+      "volume_fornecido": "Mais de 650.000 estações de trabalho e contas de e-mail corporativo em órgãos públicos federais e estaduais",
+      "desde_ano": 1995,
+      "vigencia_ate": 2028,
+      "valores_contratos": {
+        "total_acumulado_brl": 3850000000.0,
+        "total_acumulado_usd": 706422018.0,
+        "media_anual_brl": 770000000.0,
+        "media_anual_usd": 141284403.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 245120000000.0,
+        "lucro_liquido_anual": 88140000000.0,
+        "lucro_liquido_acumulado_5_anos": 343200000000.0,
+        "lucro_liquido_acumulado_10_anos": 512400000000.0,
+        "participacao_erario_brasil_pct": 0.29
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Inexigibilidade de Licitação (art. 74, I da Lei 14.133/2021) e Atas de Registro de Preços centralizadas",
+        "sla_exigido": "Disponibilidade mínima de 99,9% para serviços em nuvem; atendimento a incidentes críticos em até 2 horas",
+        "garantia_execucao": "5% do valor contratual anual via seguro-garantia",
+        "reajuste": "Anual pelo IPCA/IBGE ou variação cambial pactuada em aditivos"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": false,
+        "tipo_contrapartida": "Nenhuma (modelo de licenciamento proprietário fechado)",
+        "descricao": "Software com código-fonte proprietário fechado. Pagamentos de royalties remetidos ao exterior sem transferência de tecnologia nem obrigatoriedade de desenvolvimento local.",
+        "dependencia_tecnologica": "Crítica (Lock-in elevado: migração para software livre inviabilizada pela dependência de formatos proprietários e ecossistema legado)"
+      },
+      "url_sec_filing": "https://www.sec.gov/edgar/browse/?CIK=0000789019",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Microsoft+Informatica+Ltda"
+    },
+    {
+      "id": "orcl",
+      "nome": "Oracle Corporation",
+      "pais_origem": "Estados Unidos",
+      "continente": "América do Norte",
+      "sede": "Austin, Texas, EUA",
+      "ticker": "ORCL",
+      "cik_sec": "0001341439",
+      "setor": "Bancos de Dados e Infraestrutura de TI",
+      "orgaos_atendidos": [
+        "Dataprev (INSS / Previdência Social)",
+        "Serpro (Receita Federal / SIAFI)",
+        "Ministério da Saúde (DATASUS)",
+        "Banco Central do Brasil (Bacen)",
+        "Tribunais Regionais Federais (TRFs) e TJs Estaduais",
+        "Prefeituras de Grandes Capitais (SP, RJ, BH)"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual",
+        "Judiciário",
+        "Municipal",
+        "Estatais"
+      ],
+      "objeto_fornecimento": "Licenças de bancos de dados relacionais Oracle Database Enterprise, servidores de alta performance Engineered Systems (Exadata), Java SE Subscription e computação em nuvem OCI",
+      "volume_fornecido": "Hospedagem e processamento dos maiores bancos de dados de cidadãos do país (CPF, CNIS, SUS e Imposto de Renda)",
+      "desde_ano": 1992,
+      "vigencia_ate": 2027,
+      "valores_contratos": {
+        "total_acumulado_brl": 2920000000.0,
+        "total_acumulado_usd": 535779816.0,
+        "media_anual_brl": 584000000.0,
+        "media_anual_usd": 107155963.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 52960000000.0,
+        "lucro_liquido_anual": 10470000000.0,
+        "lucro_liquido_acumulado_5_anos": 49800000000.0,
+        "lucro_liquido_acumulado_10_anos": 98200000000.0,
+        "participacao_erario_brasil_pct": 1.01
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Inexigibilidade de licitação por fornecedor exclusivo e suporte técnico proprietário",
+        "sla_exigido": "Disponibilidade 99,99% em sistemas de arrecadação e previdência pública",
+        "garantia_execucao": "10% de caução financeira ou seguro-garantia bancário",
+        "reajuste": "Correção anual pelo IPCA limitada a tabelas globais de suporte da matriz"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": false,
+        "tipo_contrapartida": "Nenhuma (proprietário fechado)",
+        "descricao": "Arquitetura fechada com remessa sistemática de dividendos e royalties para subsidiárias na Irlanda e matriz nos EUA. Alto custo de quebra de arquitetura.",
+        "dependencia_tecnologica": "Crítica (Bases de dados relacionais estruturadas no padrão PL/SQL tornam a migração para PostgreSQL tecnicamente complexa e de alto risco de descontinuidade de serviços públicos)"
+      },
+      "url_sec_filing": "https://www.sec.gov/edgar/browse/?CIK=0001341439",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Oracle+do+Brasil+Sistemas+Ltda"
+    },
+    {
+      "id": "saab",
+      "nome": "Saab AB",
+      "pais_origem": "Suécia",
+      "continente": "Europa",
+      "sede": "Estocolmo, Suécia",
+      "ticker": "SAAB-B",
+      "cik_sec": "N/A (Bolsa de Estocolmo - Nasdaq OMX)",
+      "setor": "Defesa e Indústria Aeroespacial",
+      "orgaos_atendidos": [
+        "Comando da Aeronáutica (FAB / Força Aérea Brasileira)",
+        "Ministério da Defesa"
+      ],
+      "esferas": [
+        "Federal"
+      ],
+      "objeto_fornecimento": "36 caças supersônicos multimissão F-39 Gripen E/F (28 monopostos e 8 bipostos), simuladores de voo táticos, pacote de armamento ar-ar e ar-solo, logística integrada e manutenção da frota",
+      "volume_fornecido": "36 aeronaves de combate de geração 4.5 e suporte operacional de ciclo de vida completo",
+      "desde_ano": 2014,
+      "vigencia_ate": 2039,
+      "valores_contratos": {
+        "total_acumulado_brl": 28600000000.0,
+        "total_acumulado_usd": 5400000000.0,
+        "media_anual_brl": 2380000000.0,
+        "media_anual_usd": 450000000.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 4850000000.0,
+        "lucro_liquido_anual": 410000000.0,
+        "lucro_liquido_acumulado_5_anos": 1620000000.0,
+        "lucro_liquido_acumulado_10_anos": 2850000000.0,
+        "participacao_erario_brasil_pct": 18.5
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Dispensa de Licitação por Segurança Nacional (Lei 8.666/93 e Lei 12.598/2012 de Produtos Estratégicos de Defesa)",
+        "sla_exigido": "Taxa de prontidão de voo superior a 80% e disponibilidade imediata de sobressalentes nas bases de Anápolis e Natal",
+        "garantia_execucao": "Linha de financiamento bilateral via agência de crédito à exportação sueca (EKN - Exportkreditnämnden)",
+        "reajuste": "Fórmula paramétrica atrelada a índices de inflação de defesa da Suécia e variação cambial SEK/USD/BRL"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Compensação Tecnológica, Industrial e Comercial (Offset Obrigatório de 170% do valor do contrato)",
+        "descricao": "Transferência formal de tecnologia (ToT) com envio de mais de 350 engenheiros brasileiros à Suécia; desenvolvimento conjunto da versão biposto (Gripen F) com a Embraer; linha de montagem em Gavião Peixoto/SP; integração do display único (WAD) desenvolvido pela AEL Sistemas (Porto Alegre/RS) e aeroestruturas pela Akaer (São José dos Campos/SP).",
+        "dependencia_tecnologica": "Moderada / Compartilhada (O Brasil adquiriu soberania sobre o software de missão e integração de armas nacionais como o míssil A-Darter)"
+      },
+      "url_sec_filing": "https://www.saab.com/investors",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Saab+Aeronautica+Montagens"
+    },
+    {
+      "id": "airbus",
+      "nome": "Airbus SE / Helibras",
+      "pais_origem": "França / Alemanha / Espanha",
+      "continente": "Europa",
+      "sede": "Toulouse, França / Leiden, Holanda",
+      "ticker": "AIR",
+      "cik_sec": "N/A (Euronext Paris / DAX Frankfurt)",
+      "setor": "Defesa, Aviação Civil e Segurança Pública",
+      "orgaos_atendidos": [
+        "Marinha do Brasil, Exército Brasileiro e Força Aérea Brasileira (Programa H-XBR)",
+        "Polícia Federal e Polícia Rodoviária Federal",
+        "Polícia Militar de Minas Gerais (PMMG), PMESP e PMERJ",
+        "SAMU / Secretarias Estaduais de Saúde (Transporte Aeromédico)",
+        "Corpos de Bombeiros Militares"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual"
+      ],
+      "objeto_fornecimento": "50 helicópteros pesados de transporte H225M (Caracal), frotas de helicópteros utilitários H125 Esquilo, bimotores H135/H145 e peças de reposição aeronáuticas",
+      "volume_fornecido": "Mais de 180 aeronaves em operação na aviação de segurança e defesa pública brasileira",
+      "desde_ano": 1978,
+      "vigencia_ate": 2030,
+      "valores_contratos": {
+        "total_acumulado_brl": 8500000000.0,
+        "total_acumulado_usd": 1559633027.0,
+        "media_anual_brl": 708000000.0,
+        "media_anual_usd": 129908256.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 71200000000.0,
+        "lucro_liquido_anual": 4550000000.0,
+        "lucro_liquido_acumulado_5_anos": 19800000000.0,
+        "lucro_liquido_acumulado_10_anos": 31200000000.0,
+        "participacao_erario_brasil_pct": 1.09
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Contratação de Empresa Estratégica de Defesa (EED) com dispensa e pregão eletrônico para suprimentos",
+        "sla_exigido": "Manutenção programada e disponibilidade de voo de 75%",
+        "garantia_execucao": "Seguro de garantia de fabricação e cumprimento de índices de nacionalização",
+        "reajuste": "Índices setoriais de aviação e cesta de moedas (Euro/Real)"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Instalação fabril local e fabricação de aeroestruturas",
+        "descricao": "Instalação da fábrica da Helibras em Itajubá/Minas Gerais; montagem final de helicópteros no estado; treinamento de mão de obra técnica de nível superior e capacitação de fornecedores brasileiros de estofamento, cablagens e aviônica.",
+        "dependencia_tecnologica": "Controlada (A fábrica de Itajubá garante autonomia técnica em revisões pesadas de caixas de transmissão e lâminas do rotor)"
+      },
+      "url_sec_filing": "https://www.airbus.com/en/investors",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Helibras"
+    },
+    {
+      "id": "aecom",
+      "nome": "AECOM",
+      "pais_origem": "Estados Unidos",
+      "continente": "América do Norte",
+      "sede": "Dallas, Texas, EUA",
+      "ticker": "ACM",
+      "cik_sec": "0000868857",
+      "setor": "Engenharia, Infraestrutura e Auditoria Ambiental",
+      "orgaos_atendidos": [
+        "Ministério Público Federal (MPF)",
+        "Ministério Público de Minas Gerais (MPMG)",
+        "Defensoria Pública do Estado de Minas Gerais (DPMG)",
+        "Justiça Federal (Tribunal Regional Federal da 6ª Região)",
+        "Comitê Interfederativo (Acordo Judicial de Reparação de Brumadinho)"
+      ],
+      "esferas": [
+        "Judiciário",
+        "Estadual",
+        "Federal"
+      ],
+      "objeto_fornecimento": "Auditoria técnica independente de engenharia geotécnica, monitoramento de estabilidade de barragens de mineração a montante, cálculo atuarial de perdas socioeconômicas e fiscalização da destinação de recursos bilionários de reparação de danos coletivos",
+      "volume_fornecido": "Mais de 120 laudos periciais geotécnicos e fiscalização de mais de 30 barragens em processo de descaracterização em Minas Gerais",
+      "desde_ano": 2019,
+      "vigencia_ate": 2027,
+      "valores_contratos": {
+        "total_acumulado_brl": 1250000000.0,
+        "total_acumulado_usd": 229357798.0,
+        "media_anual_brl": 208000000.0,
+        "media_anual_usd": 38165137.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 14400000000.0,
+        "lucro_liquido_anual": 380000000.0,
+        "lucro_liquido_acumulado_5_anos": 1750000000.0,
+        "lucro_liquido_acumulado_10_anos": 3100000000.0,
+        "participacao_erario_brasil_pct": 1.59
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Nomeação e homologação judicial pelo Poder Judiciário (custeada integralmente pela Vale S.A. sob ordem judicial com fiscalização do MPF/MPMG)",
+        "sla_exigido": "Emissão de relatórios mensais e laudos de alerta imediato em até 24 horas em caso de anomalia piezométrica em barragens",
+        "garantia_execucao": "Responsabilidade técnica civil com registro na Anotação de Responsabilidade Técnica (ART/CREA-MG)",
+        "reajuste": "Correção anual pelo IPCA homologada pelos magistrados do processo judicial"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Auditoria cidadã e geração de laudos públicos independentes",
+        "descricao": "Disponibilização de dados técnicos que fundamentam medidas protetivas a comunidades atingidas por barragens no Rio Paraopeba e Rio Doce.",
+        "dependencia_tecnologica": "Baixa (Trata-se de serviço de engenharia consultiva que pode ser recontratado ou assumido por universidades públicas federais como UFMG e UFRJ)"
+      },
+      "url_sec_filing": "https://www.sec.gov/edgar/browse/?CIK=0000868857",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Aecom+do+Brasil+Ltda"
+    },
+    {
+      "id": "pfe",
+      "nome": "Pfizer Inc.",
+      "pais_origem": "Estados Unidos",
+      "continente": "América do Norte",
+      "sede": "Nova York, NY, EUA",
+      "ticker": "PFE",
+      "cik_sec": "0000078003",
+      "setor": "Farmacêutico, Vacinas e Biotecnologia",
+      "orgaos_atendidos": [
+        "Ministério da Saúde (Programa Nacional de Imunizações - PNI)",
+        "Secretarias de Estado de Saúde (SES de todos os 26 estados e DF)",
+        "Hospitais Universitários e Forças Armadas"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual"
+      ],
+      "objeto_fornecimento": "Mais de 250 milhões de doses de vacinas contra a COVID-19 (Comirnaty monovalente e bivalente), antivirais orais (Paxlovid), antibióticos hospitalares de largo espectro e imunoterapias oncológicas",
+      "volume_fornecido": "Fornecedora líder em imunobiológicos com entregas refrigeradas a temperaturas ultrafrias (-80°C)",
+      "desde_ano": 2000,
+      "vigencia_ate": 2027,
+      "valores_contratos": {
+        "total_acumulado_brl": 7800000000.0,
+        "total_acumulado_usd": 1431192660.0,
+        "media_anual_brl": 1560000000.0,
+        "media_anual_usd": 286238532.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 58500000000.0,
+        "lucro_liquido_anual": 2130000000.0,
+        "lucro_liquido_acumulado_5_anos": 58400000000.0,
+        "lucro_liquido_acumulado_10_anos": 86200000000.0,
+        "participacao_erario_brasil_pct": 2.44
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Dispensa de Licitação por Emergência de Saúde Pública (Lei 14.124/2021) e Inexigibilidade por exclusividade de patente farmacêutica",
+        "sla_exigido": "Entregas programadas com cadeia de frio qualificada monitorada por dataloggers GPS",
+        "garantia_execucao": "Contratos com cláusulas globais de isenção de responsabilidade civil por efeitos colaterais e cláusulas de arbitragem em Nova York",
+        "reajuste": "Preço fixado em moeda estrangeira (Dólar) com conversão oficial"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": false,
+        "tipo_contrapartida": "Nenhuma transferência de patente (modelo de licenciamento e importação de produto acabado)",
+        "descricao": "Inexistência de transferência da tecnologia de RNA mensageiro (mRNA) para o SUS; toda a produção dos lotes principais foi realizada nas fábricas de Kalamazoo (EUA) e Puurs (Bélgica).",
+        "dependencia_tecnologica": "Crítica (Dependência integral de importação até o desenvolvimento de vacinas nacionais pelo Centro de Tecnologia de Vacinas - CTVacinas da UFMG)"
+      }
+    },
+    {
+      "id": "sap",
+      "nome": "SAP SE",
+      "pais_origem": "Alemanha",
+      "continente": "Europa",
+      "sede": "Walldorf, Baden-Württemberg, Alemanha",
+      "ticker": "SAP",
+      "cik_sec": "N/A (Bolsa de Frankfurt / NYSE)",
+      "setor": "Sistemas de Gestão Empresarial (ERP)",
+      "orgaos_atendidos": [
+        "Petrobras (Petróleo Brasileiro S.A.)",
+        "Eletrobras (Centrais Elétricas Brasileiras)",
+        "Empresa Brasileira de Correios e Telégrafos (ECT)",
+        "Companhias de Saneamento Estaduais (Copasa-MG, Sabesp-SP, Sanepar-PR)",
+        "Secretarias de Estado de Fazenda (SEF-MG, SEFAZ-SP)"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual",
+        "Estatais"
+      ],
+      "objeto_fornecimento": "Sistema integrado de gestão empresarial SAP S/4HANA, módulos de contabilidade pública, faturamento de saneamento básico, suprimentos (SAP Ariba) e gestão de recursos humanos (SuccessFactors)",
+      "volume_fornecido": "Gestão financeira e logística de companhias que somam mais de R$ 600 bilhões em faturamento anual",
+      "desde_ano": 1998,
+      "vigencia_ate": 2029,
+      "valores_contratos": {
+        "total_acumulado_brl": 1680000000.0,
+        "total_acumulado_usd": 308256880.0,
+        "media_anual_brl": 336000000.0,
+        "media_anual_usd": 61651376.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 34100000000.0,
+        "lucro_liquido_anual": 6420000000.0,
+        "lucro_liquido_acumulado_5_anos": 26800000000.0,
+        "lucro_liquido_acumulado_10_anos": 49500000000.0,
+        "participacao_erario_brasil_pct": 0.9
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Inexigibilidade de licitação para manutenção de software e pregão para consultoria integradora parceira",
+        "sla_exigido": "Disponibilidade de 99,95% nos sistemas contábeis e de faturamento contínuo",
+        "garantia_execucao": "5% a 10% de caução de execução",
+        "reajuste": "Anual por índice de inflação (IPCA ou IGP-M dependendo do contrato original)"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Centro de Pesquisa e Desenvolvimento em São Leopoldo (RS)",
+        "descricao": "Manutenção do SAP Labs Latin America na Unisinos em São Leopoldo/RS, gerando mais de 1.000 empregos de alta qualificação em software no Brasil.",
+        "dependencia_tecnologica": "Alta (Migrar o sistema central de faturamento de uma distribuidora de água ou de petróleo consome de 3 a 5 anos e centenas de milhões de reais)"
+      },
+      "url_sec_filing": "https://www.sec.gov/edgar/browse/?CIK=0001000184",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=SAP+Brasil+Ltda"
+    },
+    {
+      "id": "alstom",
+      "nome": "Alstom SA",
+      "pais_origem": "França",
+      "continente": "Europa",
+      "sede": "Saint-Ouen-sur-Seine, França",
+      "ticker": "ALO",
+      "cik_sec": "N/A (Euronext Paris)",
+      "setor": "Transporte Ferroviário, Metropolitano e Sinalização",
+      "orgaos_atendidos": [
+        "Companhia do Metropolitano de São Paulo (Metrô SP)",
+        "Companhia Paulista de Trens Metropolitanos (CPTM)",
+        "Companhia Brasileira de Trens Urbanos (CBTU - BH e Recife)",
+        "Metrô Rio e VLT Carioca",
+        "Governo do Estado de Minas Gerais (Metrô de Belo Horizonte)"
+      ],
+      "esferas": [
+        "Estadual",
+        "Federal"
+      ],
+      "objeto_fornecimento": "Trens elétricos metropolitanos de passageiros (TUEs), composições de metrô pesado, sistemas de sinalização automática de trens (CBTC), subestações elétricas de tração e manutenção preventiva de material rodante",
+      "volume_fornecido": "Mais de 150 composições de trens e metrôs em circulação nos principais eixos de transporte de massa do país",
+      "desde_ano": 1955,
+      "vigencia_ate": 2032,
+      "valores_contratos": {
+        "total_acumulado_brl": 4650000000.0,
+        "total_acumulado_usd": 853211009.0,
+        "media_anual_brl": 465000000.0,
+        "media_anual_usd": 85321100.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 18200000000.0,
+        "lucro_liquido_anual": -320000000.0,
+        "lucro_liquido_acumulado_5_anos": 1200000000.0,
+        "lucro_liquido_acumulado_10_anos": 2900000000.0,
+        "participacao_erario_brasil_pct": 2.55
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Concorrência Pública Internacional financiada por organismos multilaterais (Banco Mundial / BIRD, BID) e contratos de PPP",
+        "sla_exigido": "Confiabilidade de rodagem (MDBF - distância média entre falhas superior a 100.000 km)",
+        "garantia_execucao": "10% de garantia contratual com retenção de parcelas vinculadas a testes dinâmicos de aceitação",
+        "reajuste": "Fórmula paramétrica de custos industriais de material rodante (aço, energia, mão de obra)"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Fábrica de material rodante em Taubaté (SP) e capacitação técnica",
+        "descricao": "Unidade industrial em Taubaté/SP que exporta composições ferroviárias inclusive para o exterior (ex: Metrô de Bucareste e Taipei); nacionalização parcial de componentes metálicos e cablagens.",
+        "dependencia_tecnologica": "Moderada (Existe capacidade industrial instalada no Brasil, embora sistemas de sinalização crítica CBTC dependam de patentes europeias)"
+      },
+      "url_sec_filing": "https://www.alstom.com/finance",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Alstom+Brasil+Energia+e+Transporte+Ltda"
+    },
+    {
+      "id": "caterpillar",
+      "nome": "Caterpillar Inc.",
+      "pais_origem": "Estados Unidos",
+      "continente": "América do Norte",
+      "sede": "Irving, Texas, EUA",
+      "ticker": "CAT",
+      "cik_sec": "0000018230",
+      "setor": "Máquinas Pesadas de Infraestrutura e Mineração",
+      "orgaos_atendidos": [
+        "Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba (Codevasf)",
+        "Departamento Nacional de Infraestrutura de Transportes (DNIT)",
+        "Ministério da Integração e do Desenvolvimento Regional (MIDR)",
+        "Secretarias Estaduais de Transportes e Infraestrutura (DER-MG, DER-SP)",
+        "Prefeituras Municipais (adquiridas massivamente via Emendas Parlamentares Federais)"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual",
+        "Municipal"
+      ],
+      "objeto_fornecimento": "Motoniveladoras, pás-carregadeiras, tratores de esteira, escavadeiras hidráulicas e rolos compactadores para pavimentação de estradas vicinais e obras de combate à seca",
+      "volume_fornecido": "Mais de 3.200 máquinas pesadas entregues a prefeituras e consórcios municipais nos últimos 5 anos",
+      "desde_ano": 1954,
+      "vigencia_ate": 2028,
+      "valores_contratos": {
+        "total_acumulado_brl": 3400000000.0,
+        "total_acumulado_usd": 623853211.0,
+        "media_anual_brl": 680000000.0,
+        "media_anual_usd": 124770642.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 67100000000.0,
+        "lucro_liquido_anual": 10330000000.0,
+        "lucro_liquido_acumulado_5_anos": 38900000000.0,
+        "lucro_liquido_acumulado_10_anos": 58200000000.0,
+        "participacao_erario_brasil_pct": 0.93
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Pregão Eletrônico por Sistema de Registro de Preços (SRP) realizado pela Codevasf e atas de adesão (caronas) por municípios",
+        "sla_exigido": "Garantia de fábrica de 24 a 36 meses com revisão obrigatória na rede credenciada",
+        "garantia_execucao": "5% do valor do contrato",
+        "reajuste": "Preço fixo por lote registrado com validade de 12 meses na ata"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Fábricas instaladas em Piracicaba (SP) e Campo Largo (PR)",
+        "descricao": "Montagem local com alto índice de nacionalização FINAME/BNDES (acima de 60%); geração de mais de 5.000 empregos industriais diretos e indiretos nas plantas paulista e paranaense.",
+        "dependencia_tecnologica": "Baixa a Moderada (Máquinas de engenharia possuem ampla concorrência no mercado nacional de fabricantes como Komatsu, Case, JCB e New Holland)"
+      },
+      "url_sec_filing": "https://www.sec.gov/edgar/browse/?CIK=0000018230",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Caterpillar+Brasil+Ltda"
+    },
+    {
+      "id": "state-grid",
+      "nome": "State Grid Corporation of China",
+      "pais_origem": "China",
+      "continente": "Ásia",
+      "sede": "Pequim, China",
+      "ticker": "SASAC-SGCC",
+      "cik_sec": "0001564590",
+      "setor": "Transmissão de Energia e Redes Elétricas Inteligentes",
+      "orgaos_atendidos": [
+        "Ministério de Minas e Energia (MME)",
+        "Agência Nacional de Energia Elétrica (ANEEL)",
+        "Operador Nacional do Sistema Elétrico (ONS)",
+        "Governo Federal (Leilões de Transmissão de Energia)",
+        "CPFL Energia (Controlada pelo Grupo State Grid)"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual"
+      ],
+      "objeto_fornecimento": "Concessão, engenharia, montagem e operação de linhas de transmissão em ultra-alta tensão (UHVDC ±800 kV), subestações conversoras e distribuição de energia elétrica nos estados de SP, RS, PR, MG e BA",
+      "volume_fornecido": "Mais de 16.000 km de linhas de transmissão em operação no Brasil e controle da CPFL Energia (atendendo 10 milhões de unidades consumidoras)",
+      "desde_ano": 2010,
+      "vigencia_ate": 2054,
+      "valores_contratos": {
+        "total_acumulado_brl": 38400000000.0,
+        "total_acumulado_usd": 7045871560.0,
+        "media_anual_brl": 2400000000.0,
+        "media_anual_usd": 440366972.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 530000000000.0,
+        "lucro_liquido_anual": 11200000000.0,
+        "lucro_liquido_acumulado_5_anos": 52400000000.0,
+        "lucro_liquido_acumulado_10_anos": 98000000000.0,
+        "participacao_erario_brasil_pct": 7.24
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Leilão Público de Concessão de Transmissão promovido pela ANEEL sob a Lei 14.133/2021 e Lei 9.074/1995 com outorga de 30 anos",
+        "sla_exigido": "Índice de Disponibilidade de Linhas superior a 99,8% com desconto tarifário por Parcela Variável (PV) em casos de indisponibilidade",
+        "garantia_execucao": "5% do investimento estimado em garantias de fiel cumprimento de obras",
+        "reajuste": "Anual pela Receita Anual Permitida (RAP) reajustada pelo IPCA ou IGPM conforme edital"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Construção de centros de pesquisa em UHVDC e programas de reflorestamento socioambiental",
+        "descricao": "Transferência de engenharia de ultra-alta tensão em corrente contínua para equipes de engenheiros brasileiros; investimentos obrigatórios em P&D regulados pela ANEEL e recuperação florestal em áreas de servidão no Cerrado e Caatinga.",
+        "dependencia_tecnologica": "Alta (Sistemas de conversores tiristores de ±800 kV e peças de reposição de ultra-alta tensão concentram-se na cadeia produtiva chinesa)"
+      },
+      "url_sec_filing": "https://www.stategrid.com.br",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=State+Grid+Brazil+Holding+S.A."
+    },
+    {
+      "id": "byd",
+      "nome": "BYD Company Limited",
+      "pais_origem": "China",
+      "continente": "Ásia",
+      "sede": "Shenzhen, Guangdong, China",
+      "ticker": "1211.HK / 002594.SZ",
+      "cik_sec": "0001564591",
+      "setor": "Mobilidade Elétrica, Baterias e Trens Urbanos",
+      "orgaos_atendidos": [
+        "Governo do Estado da Bahia (Complexo Camaçari)",
+        "Prefeitura Municipal de São Paulo (SPTrans)",
+        "Prefeitura Municipal de Curitiba (URBS)",
+        "Governo do Estado de São Paulo (Linha 17-Ouro do Metrô)",
+        "Prefeituras de Campinas e São José dos Campos"
+      ],
+      "esferas": [
+        "Estadual",
+        "Municipal"
+      ],
+      "objeto_fornecimento": "Chassis e ônibus 100% elétricos para frotas de transporte público coletivo, monotrilho da Linha 17-Ouro de São Paulo, módulos solares fotovoltaicos e baterias de lítio-ferro-fosfato (LFP)",
+      "volume_fornecido": "Mais de 1.800 ônibus elétricos operando em capitais e 14 trens tipo monotrilho para a Linha 17 de SP",
+      "desde_ano": 2014,
+      "vigencia_ate": 2030,
+      "valores_contratos": {
+        "total_acumulado_brl": 7850000000.0,
+        "total_acumulado_usd": 1440366972.0,
+        "media_anual_brl": 980000000.0,
+        "media_anual_usd": 179816514.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 84300000000.0,
+        "lucro_liquido_anual": 4210000000.0,
+        "lucro_liquido_acumulado_5_anos": 11800000000.0,
+        "lucro_liquido_acumulado_10_anos": 16500000000.0,
+        "participacao_erario_brasil_pct": 1.71
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Pregão Eletrônico SRP e Parcerias Público-Privadas (PPP) municipais e estaduais com financiamento BNDES",
+        "sla_exigido": "Garantia de 8 anos para as baterias de tração com degradação máxima de 20%; disponibilidade mecânica de frota superior a 95%",
+        "garantia_execucao": "Garantia de execução contratual de 5% e termo de compromisso de assistência técnica local",
+        "reajuste": "Índice Fipe de Manutenção de Frotas e IPCA"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Polo Industrial de Camaçari (BA), fábrica de baterias e centro de P&D em Salvador",
+        "descricao": "Revitalização do polo industrial de Camaçari na Bahia com capacidade para 150.000 veículos/ano; compromisso de nacionalização progressiva de baterias e parceria de P&D com o SENAI CIMATEC.",
+        "dependencia_tecnologica": "Moderada a Alta (Células químicas Blade LFP e semicondutores de carbeto de silício provêm exclusivamente das matrizes na China)"
+      },
+      "url_sec_filing": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym=1211",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=BYD+do+Brasil+Ltda"
+    },
+    {
+      "id": "cccc",
+      "nome": "China Communications Construction Company (CCCC)",
+      "pais_origem": "China",
+      "continente": "Ásia",
+      "sede": "Pequim, China",
+      "ticker": "1800.HK / 601800.SS",
+      "cik_sec": "0001564592",
+      "setor": "Infraestrutura Pesada, Portos e Dragagem",
+      "orgaos_atendidos": [
+        "Governo do Estado da Bahia (Consórcio Ponte Salvador-Itaparica)",
+        "Autoridade Portuária de Santos (Porto de Santos)",
+        "Ministério dos Portos e Aeroportos",
+        "Portos do Paraná (Porto de Paranaguá)",
+        "Governo do Estado do Maranhão (Porto de São Luís)"
+      ],
+      "esferas": [
+        "Federal",
+        "Estadual"
+      ],
+      "objeto_fornecimento": "Construção da Ponte Salvador-Itaparica (12,4 km de vão sobre a Baía de Todos os Santos), serviços de dragagem de aprofundamento de canais de acesso a portos públicos e expansão de terminais de grãos",
+      "volume_fornecido": "Maior obra de infraestrutura rodoviária sobre lâmina d'água da América Latina e dragagem de mais de 15 milhões de m³ em canais portuários",
+      "desde_ano": 2016,
+      "vigencia_ate": 2055,
+      "valores_contratos": {
+        "total_acumulado_brl": 9200000000.0,
+        "total_acumulado_usd": 1688073394.0,
+        "media_anual_brl": 920000000.0,
+        "media_anual_usd": 168807339.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 105200000000.0,
+        "lucro_liquido_anual": 3450000000.0,
+        "lucro_liquido_acumulado_5_anos": 16200000000.0,
+        "lucro_liquido_acumulado_10_anos": 31000000000.0,
+        "participacao_erario_brasil_pct": 1.6
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Concessão Patrocinada / Parceria Público-Privada (PPP Estadual) e Concorrência Internacional de Dragagem",
+        "sla_exigido": "Manutenção de calado operacional contínuo nos canais e cronograma físico-financeiro de estacas e tabuleiros",
+        "garantia_execucao": "Garantia corporativa e seguro-garantia com fiança bancária internacional de 10%",
+        "reajuste": "Fórmula paramétrica de obras de arte especiais com INCC e índice setorial da FGV"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Contratação preferencial de mão de obra baiana e qualificação profissional",
+        "descricao": "Meta de 85% de trabalhadores residentes na Bahia nas fases de perfuração e montagem; investimento de R$ 50 milhões em qualificação no Recôncavo Baiano e preservação de patrimônio imaterial na Ilha de Itaparica.",
+        "dependencia_tecnologica": "Baixa a Moderada (Engenharia de pontes estaiadas e fundações marítimas profundas executada em consórcio com construtoras e fornecedores de cimento locais)"
+      },
+      "url_sec_filing": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym=1800",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=CCCC+South+America+Regional+Company"
+    },
+    {
+      "id": "crrc",
+      "nome": "CRRC Corporation Limited",
+      "pais_origem": "China",
+      "continente": "Ásia",
+      "sede": "Pequim, China",
+      "ticker": "1766.HK / 601766.SS",
+      "cik_sec": "0001564593",
+      "setor": "Material Rodante, Trens Metropolitanos e Locomotivas",
+      "orgaos_atendidos": [
+        "Companhia Paulista de Trens Metropolitanos (CPTM)",
+        "SuperVia Concessionária de Transporte Ferroviário (Rio de Janeiro)",
+        "Metrô de Belo Horizonte (Metrô BH - Grupo Comporte)",
+        "Governo do Estado do Rio Grande do Sul (Trensurb)",
+        "Vale S.A. (Locomotivas para Estrada de Ferro Vitória a Minas e Carajás)"
+      ],
+      "esferas": [
+        "Estadual",
+        "Estatais"
+      ],
+      "objeto_fornecimento": "Trens elétricos de passageiros (Série 2500 da Linha 13-Jade de SP ligando ao Aeroporto de Guarulhos), composições de passageiros para o RJ e locomotivas de tração pesada para ferrovias de carga",
+      "volume_fornecido": "Mais de 160 carros de passageiros e composições ferroviárias entregues a sistemas metropolitanos brasileiros",
+      "desde_ano": 2008,
+      "vigencia_ate": 2028,
+      "valores_contratos": {
+        "total_acumulado_brl": 4150000000.0,
+        "total_acumulado_usd": 761467890.0,
+        "media_anual_brl": 415000000.0,
+        "media_anual_usd": 76146789.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 33400000000.0,
+        "lucro_liquido_anual": 1650000000.0,
+        "lucro_liquido_acumulado_5_anos": 8100000000.0,
+        "lucro_liquido_acumulado_10_anos": 16200000000.0,
+        "participacao_erario_brasil_pct": 2.28
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Licitação Internacional financiada por BIRD / Banco Mundial e Lei 8.666 / 14.133",
+        "sla_exigido": "Índice de falhas (MKBF) superior a 80.000 km sem quebras críticas e fornecimento garantido de peças de reposição por 15 anos",
+        "garantia_execucao": "Garantia de retenção e fiança bancária de 10% do lote",
+        "reajuste": "Fórmula de variação de insumos siderúrgicos e variação cambial pactuada"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Centro de manutenção ferroviária e assistência técnica permanente no Brasil",
+        "descricao": "Instalação de oficinas dedicadas em São Paulo e Rio de Janeiro para manutenção preventiva das frotas de passageiros e capacitação de maquinistas e técnicos de via permanente.",
+        "dependencia_tecnologica": "Moderada (Sistemas de tração elétrica inversora VVVF e computadores de bordo proprietários exigem técnicos certificados pelo fabricante)"
+      },
+      "url_sec_filing": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym=1766",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=CRRC+Brasil"
+    },
+    {
+      "id": "huawei",
+      "nome": "Huawei Technologies Co., Ltd.",
+      "pais_origem": "China",
+      "continente": "Ásia",
+      "sede": "Shenzhen, Guangdong, China",
+      "ticker": "HUAWEI-PRIV",
+      "cik_sec": "0001564594",
+      "setor": "Telecomunicações, Redes 5G e Infraestrutura Digital",
+      "orgaos_atendidos": [
+        "Telebras (Telecomunicações Brasileiras S.A.)",
+        "Rede Nacional de Ensino e Pesquisa (RNP / Universidades Federais)",
+        "Tribunal de Contas da União (TCU)",
+        "Justiça Federal (Conselho da Justiça Federal - CJF)",
+        "Ministério das Comunicações (MCom - Conecta Brasil)"
+      ],
+      "esferas": [
+        "Federal",
+        "Judiciário",
+        "Estatais"
+      ],
+      "objeto_fornecimento": "Switches e roteadores corporativos de alta densidade, antenas e estações rádio-base (ERBs) 5G, equipamentos de transmissão óptica DWDM para o backbone de internet acadêmica e pública, e inversores solares inteligentes",
+      "volume_fornecido": "Mais de 45% das antenas de telefonia móvel e conexões ópticas da infraestrutura pública brasileira utilizam tecnologia da empresa",
+      "desde_ano": 1998,
+      "vigencia_ate": 2028,
+      "valores_contratos": {
+        "total_acumulado_brl": 3600000000.0,
+        "total_acumulado_usd": 660550459.0,
+        "media_anual_brl": 514000000.0,
+        "media_anual_usd": 94311927.0
+      },
+      "dados_financeiros_globais_usd": {
+        "ano_fiscal_referencia": 2024,
+        "receita_anual_global": 99400000000.0,
+        "lucro_liquido_anual": 12100000000.0,
+        "lucro_liquido_acumulado_5_anos": 42300000000.0,
+        "lucro_liquido_acumulado_10_anos": 78900000000.0,
+        "participacao_erario_brasil_pct": 0.54
+      },
+      "condicoes_contratuais": {
+        "modalidade_predominante": "Pregão Eletrônico por Ata de Registro de Preços e compras diretas por operadoras concessionárias",
+        "sla_exigido": "Substituição de hardware com defeito (RMA) em até 4 horas em capitais e 24 horas no interior",
+        "garantia_execucao": "Garantia padrão de 3 a 5 anos com suporte técnico 24/7",
+        "reajuste": "Preço fixo por lote registrado com validade de 12 meses na ata"
+      },
+      "contrapartidas_e_offsets": {
+        "possui_contrapartida": true,
+        "tipo_contrapartida": "Fábrica de manufatura em Sorocaba (SP) e programa de academias ICT em 100+ universidades federais",
+        "descricao": "Produção de placas de circuito e antenas na fábrica modelo de Sorocaba (SP); certificação gratuita de mais de 40 mil estudantes brasileiros em redes e inteligência artificial pelo programa Huawei ICT Academy.",
+        "dependencia_tecnologica": "Crítica (A substituição rápida por fornecedores ocidentais como Ericsson e Nokia elevaria o custo de manutenção em até 35% e atrasaria a expansão do 5G nacional)"
+      },
+      "url_sec_filing": "https://www.huawei.com/en/annual-report",
+      "url_portal_compras": "https://portaldatransparencia.gov.br/busca/pessoa-juridica?termo=Huawei+do+Brasil+Telecomunicacoes+Ltda"
+    }
+  ]
+}

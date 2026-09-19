@@ -19,6 +19,7 @@ import {
   gerarJsonLdNoticia,
 } from "@/lib/noticias/portal";
 import CitarArtigoClient from "./CitarArtigoClient";
+import LeitorAudioArtigoClient from "./LeitorAudioArtigoClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 interface Props {
@@ -219,6 +220,13 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
           </div>
         </div>
       </header>
+
+      {/* LEITOR DE ÁUDIO ACESSÍVEL */}
+      <LeitorAudioArtigoClient
+        titulo={noticia.titulo}
+        resumo={noticia.resumo}
+        paragrafos={noticia.paragrafos}
+      />
 
       {/* PAINEL DE DADOS E MÉTRICAS CHAVE */}
       <section aria-label="Indicadores principais" className="mb-8 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs">
