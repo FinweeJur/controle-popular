@@ -265,7 +265,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     timeZone: "America/Sao_Paulo",
   });
 
-  // --- BLOCO 1: VIGIA DO SERVIDOR ---
+  // --- BLOCO 1: FAROL (VIGIA DO SERVIDOR) ---
   const vigia = obterStatusVigia();
   const statusServidorEmoji = vigia.producaoOk ? "🟢" : vigia.producaoStatus === 502 ? "🔴" : "⚠️";
   const statusServidorTexto = vigia.producaoOk
@@ -273,7 +273,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     : `Alerta HTTP ${vigia.producaoStatus || "Indisponível"} · latência ${vigia.latenciaMs}ms`;
 
   const blocoVigia = [
-    `🌐 <b>Vigia do Servidor</b> (<a href="${BASE_URL}/">Página Inicial</a>)`,
+    `🌐 <b>Farol</b> (<a href="${BASE_URL}/">Pagina Inicial</a>)`,
     `• Status: ${statusServidorEmoji} ${statusServidorTexto}`,
     `• Última medição: ${vigia.horaVerificacao || "registrada nesta manhã"}`,
     `• Intervenções do watchdog: ${vigia.reiniciosHoje > 0 ? `⚠️ ${vigia.reiniciosHoje} reinício(s) hoje` : "0 (estável)"}`,
@@ -345,7 +345,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     if (!texto) {
       rotinas.push({
         emoji: "🦜",
-        nome: "PicoClaw & Links",
+        nome: "Radar & Links",
         url: `${BASE_URL}/fontes`,
         urlTexto: "Fontes",
         status: SEM_REGISTRO,
@@ -359,7 +359,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
       if (resumo) {
         rotinas.push({
           emoji: "🦜",
-          nome: "PicoClaw & Links",
+          nome: "Radar & Links",
           url: `${BASE_URL}/fontes`,
           urlTexto: "Fontes",
           status: `${resumo[2]}/${resumo[1]} URLs ativas, ${resumo[3]} quebradas, ${propostas ?? "0"} correções propostas (${quando})`,
@@ -368,7 +368,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
       } else {
         rotinas.push({
           emoji: "🦜",
-          nome: "PicoClaw & Links",
+          nome: "Radar & Links",
           url: `${BASE_URL}/fontes`,
           urlTexto: "Fontes",
           status: `executou às ${quando} (sem sumário no log)`,
@@ -437,13 +437,13 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     }
   }
 
-  // 6. Manhã & Argus (05:30)
+  // 6. Manha & Olho (05:30)
   {
     const { texto, quando } = obterLogDoDia("rotina-manha_");
     if (!texto) {
       rotinas.push({
         emoji: "🧠",
-        nome: "Hermes & Argus",
+        nome: "Escudo & Olho",
         url: `${BASE_URL}/sobre`,
         urlTexto: "Sobre",
         status: SEM_REGISTRO,
@@ -454,7 +454,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
       const sondadas = (texto.match(/Sondando/g) || []).length;
       rotinas.push({
         emoji: "🧠",
-        nome: "Hermes & Argus",
+        nome: "Escudo & Olho",
         url: `${BASE_URL}/sobre`,
         urlTexto: "Sobre",
         status: `${sondadas} verificações de integridade, ${falhas} alertas (${quando})`,
@@ -501,7 +501,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
   // --- BLOCO 2.5: DETALHES DOS ERROS POR BOT ---
   const blocosErros: string[] = [];
 
-  // Hermes: alertas e falhas detalhados
+  // Escudo: alertas e falhas detalhados
   try {
     const hermes = JSON.parse(
       fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "hermes-auditoria-seguranca.json"), "utf-8")
@@ -509,7 +509,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     const alertas = (hermes.itens || []).filter((i: { status: string }) => i.status === "ALERTA");
     const falhas = (hermes.itens || []).filter((i: { status: string }) => i.status === "FALHA");
     if (alertas.length > 0 || falhas.length > 0) {
-      const linhas: string[] = [`🔒 <b>Hermes (Segurança) — ${alertas.length} alertas, ${falhas.length} falhas</b>`];
+      const linhas: string[] = [`🛡️ <b>Escudo (Seguranca) — ${alertas.length} alertas, ${falhas.length} falhas</b>`];
       for (const a of alertas.slice(0, 5)) {
         linhas.push(`   ⚠️ <b>${a.item}</b>: ${a.detalhes.slice(0, 120)}`);
       }
@@ -520,7 +520,7 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
     }
   } catch {}
 
-  // Argus: resumo de falhas (se houver padrão dominante)
+  // Olho: resumo de falhas (se houver padrao dominante)
   try {
     const argus = JSON.parse(
       fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "argus-paginas-status.json"), "utf-8")
@@ -536,19 +536,19 @@ function montarRelatorio(): { mensagem: string; totalRotinas: number; sucessosRo
         .map(([code, qtd]) => `HTTP ${code}: ${qtd}`)
         .join(", ");
       blocosErros.push(
-        `📄 <b>Argus (Páginas)</b>: ${falhas.length}/${argus.total} rotas com falha\n   └ ${resumo}`
+        `👁️ <b>Olho (Paginas)</b>: ${falhas.length}/${argus.total} rotas com falha\n   └ ${resumo}`
       );
     }
   } catch {}
 
-  // PicoClaw: fontes com falha detalhada
+  // Radar: fontes com falha detalhada
   try {
     const pico = JSON.parse(
       fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "picoclaw-fontes-status.json"), "utf-8")
     );
     const comFalha = (pico.resultados || []).filter((r: { ok: boolean }) => !r.ok);
     if (comFalha.length > 0) {
-      const linhas: string[] = [`🔍 <b>PicoClaw (Fontes) — ${comFalha.length} fonte(s) com falha</b>`];
+      const linhas: string[] = [`📡 <b>Radar (Fontes) — ${comFalha.length} fonte(s) com falha</b>`];
       for (const f of comFalha.slice(0, 5)) {
         const detalhe = f.erro || `HTTP ${f.statusHttp}`;
         linhas.push(`   ❌ <b>${f.nome}</b>: ${detalhe}`);

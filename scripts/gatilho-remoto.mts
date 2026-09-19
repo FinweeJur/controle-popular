@@ -210,7 +210,7 @@ async function cmdMenu(chatId: string) {
     "📊 /status — Verifica se o servidor está ocioso ou sincronizando\n" +
     "🔍 /tunel — Mostra estado do Cloudflare Tunnel e do next start\n" +
     "🖥️ /sessao — Detalhes da sessão: PID, memória, uptime, reinícios\n" +
-    "📋 /logs — Status de todos os bots: Vigia, Fontes, Segurança, Páginas\n" +
+    "📋 /logs — Status de todos os bots: Farol, Radar, Escudo, Olho\n" +
     "🔄 /sincronizar — Git pull + build + deploy (publica alterações)\n" +
     "♻️ /reiniciar — Reinicia o servidor do zero (build completo)\n" +
     "🤖 /code — Status do portal: banco, R2, fontes capturadas\n" +
@@ -369,50 +369,50 @@ async function cmdProximas(chatId: string) {
 }
 
 async function cmdLogs(chatId: string) {
-  const linhas: string[] = ["📋 *Logs dos Bots*\n"];
+  const linhas: string[] = ["📋 *Status dos Bots*\n"];
 
-  // Vigia Servidor
+  // Farol (Vigia do Servidor)
   try {
     const vigia = JSON.parse(fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "vigia-servidor-status.json"), "utf-8"));
     const idade = Math.round((Date.now() - new Date(vigia.atualizadoEm).getTime()) / 1000 / 60);
-    linhas.push(`🛡️ *Vigia:* ${vigia.producaoOk ? "OK" : "FALHA"} (${idade}min atras)`);
+    linhas.push(`🗼 *Farol:* ${vigia.producaoOk ? "OK" : "FALHA"} (${idade}min atras)`);
     linhas.push(`   Producao: HTTP ${vigia.producaoStatus}, latencia ${vigia.latenciaMs}ms`);
-  } catch { linhas.push(`🛡️ *Vigia:* sem dado`); }
+  } catch { linhas.push(`🗼 *Farol:* sem dado`); }
 
-  // PicoClaw (Vigia de Fontes)
+  // Radar (Vigia de Fontes)
   try {
     const pico = JSON.parse(fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "picoclaw-fontes-status.json"), "utf-8"));
-    linhas.push(`🔍 *Vigia de Fontes:* ${pico.online}/${pico.total} online (${pico.taxaDisponibilidade}%)`);
+    linhas.push(`📡 *Radar:* ${pico.online}/${pico.total} online (${pico.taxaDisponibilidade}%)`);
     if (pico.comFalha > 0) linhas.push(`   ⚠️ ${pico.comFalha} com falha`);
-  } catch { linhas.push(`🔍 *Vigia de Fontes:* sem dado`); }
+  } catch { linhas.push(`📡 *Radar:* sem dado`); }
 
-  // Hermes (Seguranca)
+  // Escudo (Seguranca)
   try {
     const hermes = JSON.parse(fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "hermes-auditoria-seguranca.json"), "utf-8"));
-    linhas.push(`🔒 *Seguranca:* ${hermes.aprovados} ok, ${hermes.alertas} alertas, ${hermes.falhas} falhas`);
-  } catch { linhas.push(`🔒 *Seguranca:* sem dado`); }
+    linhas.push(`🛡️ *Escudo:* ${hermes.aprovados} ok, ${hermes.alertas} alertas, ${hermes.falhas} falhas`);
+  } catch { linhas.push(`🛡️ *Escudo:* sem dado`); }
 
-  // Argus (Paginas)
+  // Olho (Paginas)
   try {
     const argus = JSON.parse(fs.readFileSync(path.join(RAIZ, "docs", "relatorios-automacao", "argus-paginas-status.json"), "utf-8"));
     const total = argus.resultados?.length ?? 0;
     const falhas = argus.resultados?.filter((r: { ok: boolean }) => !r.ok).length ?? 0;
-    linhas.push(`📄 *Paginas:* ${total - falhas}/${total} saudaveis`);
-  } catch { linhas.push(`📄 *Paginas:* sem dado`); }
+    linhas.push(`👁️ *Olho:* ${total - falhas}/${total} saudaveis`);
+  } catch { linhas.push(`👁️ *Olho:* sem dado`); }
 
-  // Gatilho heartbeat
+  // Painel heartbeat
   try {
     const hb = fs.readFileSync(path.join(RAIZ, "scripts", ".heartbeat-gatilho"), "utf-8").trim();
     const idade = Math.round((Date.now() - new Date(hb).getTime()) / 1000 / 60);
-    linhas.push(`🤖 *Comando Central:* ${idade < 10 ? "vivo" : `parado ha ${idade}min`}`);
-  } catch { linhas.push(`🤖 *Comando Central:* sem heartbeat`); }
+    linhas.push(`🎛️ *Painel:* ${idade < 10 ? "vivo" : `parado ha ${idade}min`}`);
+  } catch { linhas.push(`🎛️ *Painel:* sem heartbeat`); }
 
-  // Vigia heartbeat
+  // Farol heartbeat
   try {
     const hb = fs.readFileSync(path.join(RAIZ, "scripts", ".heartbeat-vigia"), "utf-8").trim();
     const idade = Math.round((Date.now() - new Date(hb).getTime()) / 1000 / 60);
-    linhas.push(`⏱️ *Vigia heartbeat:* ${idade}min atras`);
-  } catch { linhas.push(`⏱️ *Vigia heartbeat:* sem dado`); }
+    linhas.push(`🗼 *Farol heartbeat:* ${idade}min atras`);
+  } catch { linhas.push(`🗼 *Farol heartbeat:* sem dado`); }
 
   // Reinicios
   try {
@@ -432,7 +432,7 @@ async function loopTelegram() {
   let offset = lerOffset();
   for (;;) {
     try {
-      // Heartbeat: prova de vida por mtime (sem I/O de texto). O vigia
+      // Heartbeat: prova de vida por mtime (sem I/O de texto). O Farol
       // (scripts/vigia-servidor.mts) avisa o dono se este arquivo parar de
       // envelhecer — mesma lição do next start de 08/09: o processo silencioso
       // é o que morre sem ninguém ver.
