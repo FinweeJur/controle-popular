@@ -441,6 +441,78 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "prefeitura_dados_abertos_api": "ckan",
         "prefeitura_dados_abertos_host": "http://dados.prefeitura.sp.gov.br/api/3/action/"
       }
+    },
+    {
+      "id_municipio": "3109006",
+      "slug": "brumadinho",
+      "nome": "Brumadinho",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/brumadinho",
+      "lat": -20.1431,
+      "lng": -44.2003,
+      "branding": { "nome_portal": "Controle Popular Brumadinho" },
+      "fontes": { "paraopeba": true }
+    },
+    {
+      "id_municipio": "3167103",
+      "slug": "serro",
+      "nome": "Serro",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/serro",
+      "lat": -20.3794,
+      "lng": -43.4883,
+      "branding": { "nome_portal": "Controle Popular Serro" },
+      "fontes": {}
+    },
+    {
+      "id_municipio": "3127701",
+      "slug": "governador-valadares",
+      "nome": "Governador Valadares",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/governador-valadares",
+      "lat": -18.8547,
+      "lng": -41.9558,
+      "branding": { "nome_portal": "Controle Popular Governador Valadares" },
+      "fontes": {}
+    },
+    {
+      "id_municipio": "3131307",
+      "slug": "ipatinga",
+      "nome": "Ipatinga",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/ipatinga",
+      "lat": -19.4686,
+      "lng": -42.5369,
+      "branding": { "nome_portal": "Controle Popular Ipatinga" },
+      "fontes": {}
+    },
+    {
+      "id_municipio": "3136702",
+      "slug": "juiz-de-fora",
+      "nome": "Juiz de Fora",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/juiz-de-fora",
+      "lat": -21.7615,
+      "lng": -43.3488,
+      "branding": { "nome_portal": "Controle Popular Juiz de Fora" },
+      "fontes": {}
+    },
+    {
+      "id_municipio": "3170206",
+      "slug": "uberlandia",
+      "nome": "Uberlândia",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/uberlandia",
+      "lat": -18.9186,
+      "lng": -48.2772,
+      "branding": { "nome_portal": "Controle Popular Uberlândia" },
+      "fontes": {}
     }
   ];
 

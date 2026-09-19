@@ -120,7 +120,7 @@
     "numero": 14,
     "id": "legislacao",
     "titulo": "Legislação & Normas de Transparência",
-    "href": "/legislacao",
+    "href": "/ambiental/legislacao",
     "eixo": "Central ONSA & Ferramentas",
     "badge": "Acervo",
     "resumo": "Repositório de decretos, leis municipais e normas de acesso à informação e controle fiscal."
@@ -129,7 +129,7 @@
     "numero": 15,
     "id": "dados",
     "titulo": "Catálogo de Dados Abertos",
-    "href": "/dados",
+    "href": "/dados/populares",
     "eixo": "Central ONSA & Ferramentas",
     "badge": "Acervo",
     "resumo": "Ponto de partida para os datasets brutos do portal, dicionários de variáveis e arquivos compactados."
@@ -210,7 +210,7 @@
     "numero": 24,
     "id": "direitos-em-movimento-moradia",
     "titulo": "Direito à Moradia & Função Social Urbana",
-    "href": "/direitos-em-movimento/moradia",
+    "href": "/direitos-em-movimento",
     "eixo": "Eixo 1: Direitos em Movimento",
     "badge": "Moradia",
     "resumo": "Regularização fundiária urbana, mapeamento de áreas de risco e habitação de interesse social."
@@ -219,7 +219,7 @@
     "numero": 25,
     "id": "direitos-em-movimento-seguranca-alimentar",
     "titulo": "Segurança Alimentar & PAA/PNAE",
-    "href": "/direitos-em-movimento/seguranca-alimentar",
+    "href": "/direitos-em-movimento",
     "eixo": "Eixo 1: Direitos em Movimento",
     "badge": "Alimentação",
     "resumo": "Compras públicas de alimentos da agricultura familiar e programas de combate à vulnerabilidade alimentar."
@@ -507,7 +507,7 @@
     "numero": 57,
     "id": "paraopeba-repasses",
     "titulo": "Repasses Municipais de Brumadinho",
-    "href": "/paraopeba/repasses",
+    "href": "/paraopeba",
     "eixo": "Eixo 2: Terra e Territórios",
     "badge": "Paraopeba",
     "resumo": "Consulta transparente município a município dos recursos transferidos às 26 prefeituras atingidas."
@@ -525,7 +525,7 @@
     "numero": 59,
     "id": "paraopeba-ptr",
     "titulo": "Programa de Transferência de Renda (PTR)",
-    "href": "/paraopeba/ptr",
+    "href": "/paraopeba",
     "eixo": "Eixo 2: Terra e Territórios",
     "badge": "Paraopeba",
     "resumo": "Acompanhamento dos repasses mensais executados pela FGV em suporte financeiro às famílias atingidas."
@@ -732,7 +732,7 @@
     "numero": 82,
     "id": "governo-secretarias",
     "titulo": "Secretarias de Estado de MG",
-    "href": "/governo/secretarias",
+    "href": "/governo/mg",
     "eixo": "Eixo 3: Estado e Economia",
     "badge": "Congresso",
     "resumo": "Organograma do governo estadual, orçamentos setoriais e despesas de custeio por pasta."
@@ -795,7 +795,7 @@
     "numero": 89,
     "id": "empresas-setores",
     "titulo": "Setores Econômicos Mapeados",
-    "href": "/empresas/setores",
+    "href": "/empresas",
     "eixo": "Eixo 3: Estado e Economia",
     "badge": "Empresas",
     "resumo": "Panorama por segmento: mineração, siderurgia, energia, agronegócio e finanças."
@@ -840,7 +840,7 @@
     "numero": 94,
     "id": "funcaosocialterra-quilombos",
     "titulo": "Comunidades Quilombolas de Minas Gerais",
-    "href": "/funcaosocialterra/quilombos",
+    "href": "/funcaosocialterra",
     "eixo": "Eixo 2: Terra e Territórios",
     "badge": "Territórios",
     "resumo": "Mapeamento de comunidades certificadas pela Fundação Palmares, titulação de territórios e vulnerabilidades."
@@ -849,7 +849,7 @@
     "numero": 95,
     "id": "funcaosocialterra-indigenas",
     "titulo": "Terras Indígenas em Minas Gerais",
-    "href": "/funcaosocialterra/indigenas",
+    "href": "/funcaosocialterra",
     "eixo": "Eixo 2: Terra e Territórios",
     "badge": "Territórios",
     "resumo": "Demarcação, proteção territorial e situação jurídica das terras dos povos originários em MG."
@@ -876,7 +876,7 @@
     "numero": 98,
     "id": "privacidade",
     "titulo": "Termo Geral de Privacidade & Transparência",
-    "href": "/privacidade",
+    "href": "/sobre",
     "eixo": "Central ONSA & Ferramentas",
     "badge": "Termos",
     "resumo": "Compromisso de navegação anônima, ausência de cookies de rastreamento comercial e respeito à LGPD."
