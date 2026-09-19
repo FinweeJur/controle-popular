@@ -51,15 +51,17 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Disparar Deploy Webhook da Guara Cloud
+      - name: Disparar Deploy via Guara CLI
         env:
-          GUARA_DEPLOY_HOOK: ${{ secrets.GUARA_DEPLOY_HOOK }}
+          GUARA_API_KEY: ${{ secrets.GUARA_API_KEY }}
         run: |
-          if [ -n "$GUARA_DEPLOY_HOOK" ]; then
-            echo "Disparando webhook de deploy na Guara Cloud..."
-            curl -f -X POST "$GUARA_DEPLOY_HOOK"
-            echo "Webhook disparado com sucesso."
+          if [ -n "$GUARA_API_KEY" ]; then
+            echo "Instalando Guara CLI..."
+            npm install -g @guaracloud/cli
+            echo "Disparando deploy da branch main..."
+            guara deploy --branch main --yes
+            echo "Deploy disparado com sucesso."
           else
-            echo "GUARA_DEPLOY_HOOK não configurado nos secrets do repositório."
-            echo "Se a Guara Cloud estiver conectada diretamente ao repositório GitHub via App/Git Integration, o build iniciará automaticamente pelo commit na main."
+            echo "GUARA_API_KEY não configurado nos secrets do repositório."
+            echo "Configure: gh secret set GUARA_API_KEY"
           fi
