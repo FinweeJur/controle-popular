@@ -1,20 +1,25 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Hook global que detecta navegação entre páginas e dispara estados
  * de carregamento. Retorna { carregando, segundos }.
  *
  * - Ao clicar num link <a> interno, ativa o estado e começa a contar segundos
- * - Quando a página termina de carregar (load event), desativa
- * - Também desativa no timeout de 30s (segurança)
+ * - Quando o pathname muda (usePathname), desativa — sinal confiável de
+ *   que a navegação client-side do Next.js terminou
+ * - Timeout de 15s como safety net
  */
 export function useLoading() {
   const [carregando, setCarregando] = useState(false);
   const [segundos, setSegundos] = useState(0);
   const inicioRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
+  const lastPathnameRef = useRef(pathname);
 
   const parar = useCallback(() => {
     setCarregando(false);
@@ -23,7 +28,23 @@ export function useLoading() {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
   }, []);
+
+  // Para o loader quando o pathname muda (navegação completou)
+  useEffect(() => {
+    if (pathname !== lastPathnameRef.current) {
+      lastPathnameRef.current = pathname;
+      if (carregando) {
+        // Pequeno delay para a nova página renderizar
+        const t = setTimeout(parar, 300);
+        return () => clearTimeout(t);
+      }
+    }
+  }, [pathname, carregando, parar]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -63,24 +84,18 @@ export function useLoading() {
         const elapsed = Math.floor((Date.now() - inicioRef.current) / 1000);
         setSegundos(elapsed);
       }, 1000);
-    }
 
-    function onLoad() {
-      // Pequeno delay para garantir que a página já renderizou
-      setTimeout(parar, 300);
+      // Safety net: 15s máximo
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(parar, 15000);
     }
 
     document.addEventListener("click", onClick, { capture: true });
-    window.addEventListener("load", onLoad);
-
-    // Timeout de segurança: 30s
-    const timeout = setTimeout(parar, 30000);
 
     return () => {
       document.removeEventListener("click", onClick, { capture: true });
-      window.removeEventListener("load", onLoad);
-      clearTimeout(timeout);
       if (timerRef.current) clearInterval(timerRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [parar]);
 
