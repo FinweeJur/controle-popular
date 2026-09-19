@@ -358,15 +358,75 @@ async function loopTelegram() {
         }
         if (comando === "proximas") {
           const pendencias = [
-            "1. CORS no R2 (dashboard â†’ R2 â†’ucket â†’ CORS)",
+            "1. CORS no R2 (dashboard → R2 →ucket → CORS)",
             "2. Backfill completo: arquivar-fontes.mjs + enviar-fontes-r2.mjs",
-            "3. Bucket R2 pÃºblico (jÃ¡ decidido)",
-            "4. DiÃ¡rio oficial D0â€“D5 (migrations 0077/0079)",
+            "3. Bucket R2 público (já decidido)",
+            "4. Diário oficial D0–D5 (migrations 0077/0079)",
             "5. LAI INCRA (prazo 28/08)",
           ];
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
-            text: `PrÃ³ximas pendÃªncias:\n\n${pendencias.join("\n")}`,
+            text: `Próximas pendências:\n\n${pendencias.join("\n")}`,
+          });
+          continue;
+        }
+        if (comando === "sessao") {
+          const linhas: string[] = ["🖥️ */sessao — estado da sessão*", ""];
+          // PID do next start
+          try {
+            const ps = execFileSync("powershell", [
+              "-NoProfile", "-Command",
+              `Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Select-Object Id, WorkingSet64, StartTime | ConvertTo-Json -Compress`,
+            ], { encoding: "utf-8" });
+            const dados = JSON.parse(ps.trim() || "null");
+            if (dados) {
+              const p = Array.isArray(dados) ? dados[0] : dados;
+              const rss = Math.round((p.WorkingSet64 || 0) / 1024 / 1024);
+              const uptime = p.StartTime ? Math.round((Date.now() - new Date(p.StartTime).getTime()) / 1000 / 60) : "?";
+              linhas.push(`*PID:* ${p.Id}`, `*Memória:* ${rss} MB`, `*Uptime:* ${uptime} min`);
+            } else {
+              linhas.push(`*Next start:* PARADO`);
+            }
+          } catch { linhas.push(`*Next start:* não detectado`); }
+          // Porta 3000
+          try {
+            const port = execFileSync("powershell", [
+              "-NoProfile", "-Command",
+              `(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1).OwningProcess`,
+            ], { encoding: "utf-8" }).trim();
+            linhas.push(`*Porta 3000:* ${port ? `PID ${port}` : "livre"}`);
+          } catch { linhas.push(`*Porta 3000:* verificar`); }
+          // Último restart do vigia
+          try {
+            const reinicios = JSON.parse(fs.readFileSync(path.join(RAIZ, "scripts", ".vigia-reinicios.json"), "utf-8"));
+            const recentes = (reinicios.carimbos || []).filter((t: number) => Date.now() - t < 3600000);
+            linhas.push(`*Reinícios (1h):* ${recentes.length}/6`);
+          } catch { linhas.push(`*Reinícios (1h):* 0/6`); }
+          // Cloudflared
+          try {
+            const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
+            linhas.push(`*Cloudflared:* ${svc.includes("RUNNING") ? "OK" : "parado"}`);
+          } catch { linhas.push(`*Cloudflared:* não encontrado`); }
+          // Heartbeat do vigia
+          try {
+            const hb = fs.readFileSync(path.join(RAIZ, "scripts", ".heartbeat-vigia"), "utf-8").trim();
+            const idade = Math.round((Date.now() - new Date(hb).getTime()) / 1000 / 60);
+            linhas.push(`*Vigia heartbeat:* ${idade} min atrás`);
+          } catch { linhas.push(`*Vigia heartbeat:* sem dado`); }
+          // Uptime da máquina
+          try {
+            const up = execFileSync("powershell", [
+              "-NoProfile", "-Command",
+              `(Get-CimInstance Win32_OperatingSystem).LastBootUpTime`,
+            ], { encoding: "utf-8" }).trim();
+            const boot = new Date(up);
+            const horas = Math.round((Date.now() - boot.getTime()) / 1000 / 60 / 60 * 10) / 10;
+            linhas.push(`*Máquina:* ${horas}h desde último boot`);
+          } catch {}
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: linhas.join("\n"),
+            parse_mode: "Markdown",
           });
           continue;
         }

@@ -13,6 +13,7 @@
  * e por isso não é afetado.
  */
 import { spawn, spawnSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -45,6 +46,28 @@ export function portaResponde200(): boolean {
 }
 
 export function publicarTunel(registrar: Registrar = (l) => console.log(l)): boolean {
+  // Limpar processos órfãos node que NÃO são o vigia nem o gatilho-remoto
+  try {
+    const orfaos = spawnSync("powershell", [
+      "-NoProfile", "-Command",
+      `Get-Process node -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -notmatch 'vigia-servidor|gatilho-remoto|tsx.*gatilho' } | Select-Object Id, CommandLine | ConvertTo-Json -Compress`,
+    ], { encoding: "utf8" }).stdout?.trim();
+    if (orfaos && orfaos !== "null") {
+      const lista = JSON.parse(Array.isArray(orfaos) ? orfaos : `[${orfaos}]`);
+      for (const p of lista) {
+        // Só mata processos que NÃO têm child_process (para não matar o vigia/gatilho)
+        const temFilho = spawnSync("powershell", [
+          "-NoProfile", "-Command",
+          `(Get-CimInstance Win32_Process -Filter "ParentProcessId = ${p.Id}" -ErrorAction SilentlyContinue | Measure-Object).Count`,
+        ], { encoding: "utf8" }).stdout?.trim();
+        if (temFilho === "0") {
+          registrar(`matando órfão: pid ${p.Id}`);
+          spawnSync("powershell", ["-NoProfile", "-Command", `Stop-Process -Id ${p.Id} -Force -ErrorAction SilentlyContinue`]);
+        }
+      }
+    }
+  } catch { /* limpeza é best-effort */ }
+
   const pid = pidDaPorta(PORTA_TUNEL);
   if (pid) {
     const nome = spawnSync("powershell", [
@@ -68,17 +91,19 @@ export function publicarTunel(registrar: Registrar = (l) => console.log(l)): boo
   }
 
   const logNovo = path.join(LOGS, `next-start-${new Date().toISOString().replace(/[:.]/g, "-")}.log`);
+  fs.mkdirSync(LOGS, { recursive: true });
+  const logStream = fs.createWriteStream(logNovo, { flags: "a" });
   // shell:true e o jeito que funciona no Windows: o Node cita a linha inteira
   // de uma vez (cmd /d /s /c "<tudo>"). Com spawn("cmd", [...args]) o cmd
   // recebe aspas aninhadas e quebra o parser — o primeiro drill de 09/09
   // pegou isso: servidor nao subia, log nem nascia, pid undefined.
   const filho = spawn(
-    `npm run start -- -p ${PORTA_TUNEL} > "${logNovo}" 2>&1`,
+    `npm run start -- -p ${PORTA_TUNEL}`,
     {
       cwd: WEB,
       shell: true,
       detached: true,
-      stdio: "ignore",
+      stdio: ["ignore", logStream, logStream],
       // Desacoplado de propósito: o servidor precisa sobreviver a esta rotina. A
       // janela do Windows pode fechar o pai no fim da tarefa agendada.
       windowsHide: true,
