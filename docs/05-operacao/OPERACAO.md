@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-09-16 (duplo deploy configurado com Guara Cloud e Cloudflare Workers)
+> **Última medição:** 2026-09-19 (domínio customizado Guara Cloud documentado, TTS com microresumo)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc, guara, docker, duplo deploy
@@ -88,6 +88,18 @@ Start-Process -FilePath "C:\DevCoder\controle-popular\apps\web\node_modules\.bin
 # Reiniciar túnel (se mudar config.yml)
 & 'C:\DevCoder\tools\cloudflared.exe' --config 'C:\Users\Home\.cloudflared\config.yml' tunnel service restart
 ```
+
+### Migrar domínio para Guara Cloud (controlepopular.com.br)
+
+Quando o domínio customizado estiver configurado no Guara Cloud:
+
+1. **No dashboard Guara Cloud:** Domain → Add Custom Domain → `controlepopular.com.br`
+2. **No registrar do domínio:** criar CNAME apontando para o endpoint do Guara Cloud (ex: `controle-popular-web-0b4895-us-east-1.guaracloud.app`)
+3. **No Cloudflare DNS:** remover o registro que aponta para Cloudflare Workers (se existir)
+4. **Cloudflare Tunnel:** continuar ativo para `home-pc` como servidor 2 (pode usar subdomínio como `dev.controlepopular.com.br`)
+5. **`next.config.ts`:** não muda — `basePath` e `assetPrefix` continuam vazios
+
+**Ordem:** primeiro configurar no Guara Cloud, depois mudar o DNS, depois verificar com `dig controlepopular.com.br` e `curl -I https://controlepopular.com.br`.
 
 Regras:
 - **ATD (Bitdefender) desligado** durante operações longas (build, `next start`, deploy).

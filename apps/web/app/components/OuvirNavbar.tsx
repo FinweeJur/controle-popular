@@ -3,6 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { Volume2, Pause, Play, Square } from "lucide-react";
+import { RESUMOS_TOP100 } from "@/lib/resumos-top100";
 
 type Estado = "idle" | "falando" | "pausado";
 
@@ -89,8 +90,10 @@ export default function OuvirNavbar() {
   if (!mounted || !suportado || !temTexto) return null;
 
   async function iniciar() {
-    const texto = extrairTextoPrincipal();
-    if (!texto) return;
+    const textoPagina = extrairTextoPrincipal();
+    if (!textoPagina) return;
+    const resumo = RESUMOS_TOP100[pathname] ?? RESUMOS_TOP100[pathname.replace(/\/$/, "")];
+    const texto = resumo ? `${resumo}. ${textoPagina}` : textoPagina;
     const vozes = await obterVozes();
     const idioma = escolherIdioma(vozes);
     const voz = vozes.find((v) => v.lang?.toLowerCase() === idioma.toLowerCase());

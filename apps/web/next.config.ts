@@ -239,7 +239,11 @@ const nextConfig: NextConfig = {
       "public/data/**/*",
       "etl/betim/dados/**/*",
       "public/terras/globo/dados/**/*",
-      "node_modules/@neondatabase/**/*",
+      // @neondatabase NÃO pode ser excluído no standalone — é necessário em
+      // runtime no Docker da Guara Cloud para conectar ao Postgres via HTTP.
+      // A exclusão só faz sentido no Cloudflare Workers (que usa fetch direto).
+      // Se BUILD_TARGET=standalone, manter no bundle.
+      ...(standaloneBuild ? [] : ["node_modules/@neondatabase/**/*"]),
       "node_modules/docx/**/*",
       "node_modules/pdf-lib/**/*",
     ],

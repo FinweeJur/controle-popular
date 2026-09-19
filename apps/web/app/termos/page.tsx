@@ -12,19 +12,11 @@ import { metadataEditavel } from "@/lib/edicoes";
 /**
  * `/termos` — termo de uso e origem dos dados.
  *
- * ═══ POR QUE ESTA PÁGINA EXISTE, E POR QUE AGORA ═══
+ * ═══ POR QUE ESTA PÁGINA EXISTE ═══
  *
- * Em 15/08/2026 um CPF de pessoa física foi publicado no repositório PÚBLICO
- * deste projeto, dentro da ementa oficial de uma portaria do IBAMA que delega
- * competência para firmar TAC (`etl/betim/dados/legislacao-mma.json`). Uma
- * ocorrência em 8.940 normas federais — o número que faz conferência manual
- * passar batido. A trava automática pegou (`ef9afe7` criou as três camadas),
- * o commit `7b9c9db` removeu, e a limpeza foi para a origem
- * (`redigir_documentos`, em `etl/betim/etl/apis/_legislacao_ambiental.py`).
- *
- * O episódio é a tese da página inteira: **o portal republica ato oficial, e
- * ato oficial às vezes traz dado pessoal dentro dele.** Sem um documento que
- * diga isso e sem canal declarado, a pessoa citada não tem para onde escrever.
+ * O portal republica ato oficial e dado público. Ato oficial às vezes traz
+ * dado pessoal dentro dele. Sem um documento que diga isso e sem canal
+ * declarado, a pessoa citada não tem para onde escrever.
  *
  * ═══ POR QUE NÃO É UMA QUARTA PÁGINA DE PRIVACIDADE ═══
  *
@@ -45,19 +37,8 @@ import { metadataEditavel } from "@/lib/edicoes";
  * justamente por não ter destino. Este é o destino que faltava; o link volta
  * pelo `FooterGlobal.tsx`, que já renderiza `<a>` cru para rota de raiz.
  *
- * SEM CONSULTA A BANCO, de propósito. A Neon está em HTTP 402 até 01/09 e
- * todo o resto do trabalho de hoje está travado por isso. Uma página de termo
- * que dependesse de build com banco seria a única do portal que fica no ar
- * exatamente quando não pode: no dia em que houve incidente de dado pessoal.
- *
- * NENHUMA LISTA DE FONTES É REPETIDA AQUI. Os `docs/FONTES-*.md` (5 arquivos,
- * contados em 15/08) são a fonte de verdade e mudam toda semana; uma cópia
- * nesta página envelheceria em duas semanas e passaria a mentir com aparência
- * de documento oficial. A página aponta para eles no GitHub.
- *
  * `<main>` explícito porque não há `layout.tsx` de zona aqui — sem ele o botão
- * global "Ouvir esta página" (`OuvirPagina.tsx`) não acha conteúdo. Mesma nota
- * de `app/sobre/page.tsx` e `app/busca/page.tsx`.
+ * global "Ouvir esta página" (`OuvirPagina.tsx`) não acha conteúdo.
  */
 export const metadata: Metadata = metadataEditavel("/termos", {
   title: "Termo de uso e origem dos dados — Controle Popular",
@@ -194,41 +175,117 @@ export default function TermosPage() {
         </p>
       </header>
 
-      {/* ═══ O CASO CONCRETO — abre a página em vez de fechar ═══
-          Ressalva sem exemplo vira carimbo e ninguém lê (mesma doutrina de
-          `AvisoColetaEmCurso.tsx`). O episódio é a razão de a página existir,
-          então vem antes de qualquer declaração de princípio. */}
-      <section className="space-y-3 rounded-xl border border-alert/40 bg-alert/5 p-5 sm:p-6">
+      {/* ═══ AS CINCO COISAS — regra do dono ═══ */}
+      <section className="space-y-3 rounded-xl border border-border bg-surface-2 p-5 sm:p-6">
         <h2 className="font-display text-xl font-semibold text-text">
-          Um CPF já foi publicado aqui. Em 15 de agosto de 2026.
+          O portal segue cinco regras, sempre
         </h2>
-        <p className="text-[.95em] text-text">
-          O portal ingeriu 8.940 normas ambientais federais. Uma delas — a
-          portaria do IBAMA que delega competência para firmar Termo de
-          Ajustamento de Conduta — escreve, na própria ementa oficial, o nome de
-          um proprietário rural com o CPF ao lado. Esse texto entrou no
-          repositório do projeto, que é público.
+        <ol className="list-decimal space-y-2 pl-6 text-[.95em] text-text-soft">
+          <li>
+            <strong className="text-text">Gráfico</strong> — evolução no tempo ou distribuição.
+          </li>
+          <li>
+            <strong className="text-text">Cartões de topo</strong> — os agregados que respondem &ldquo;quanto é isso?&rdquo; antes de rolar a lista.
+          </li>
+          <li>
+            <strong className="text-text">Planilha</strong> — botão de baixar CSV do que está filtrado na tela, com separador &ldquo;;&rdquo; e BOM UTF-8.
+          </li>
+          <li>
+            <strong className="text-text">Filtro</strong> — pelos campos que o acervo realmente tem.
+          </li>
+          <li>
+            <strong className="text-text">Ordenação por coluna</strong> — inclusive por tipo/classe, não só por data.
+          </li>
+        </ol>
+      </section>
+
+      {/* ═══ FERRAMENTAS E MODELOS DE INTELIGÊNCIA ARTIFICIAL ═══ */}
+      <section className="space-y-4">
+        <h2 className="font-display text-2xl font-semibold">
+          Ferramentas e Modelos Utilizados
+        </h2>
+        <p className="text-text-soft">
+          O Controle Popular utiliza diversos modelos de linguagem (LLM) e
+          ferramentas de código para auxiliar na organização, classificação,
+          compilação e presentation de dados públicos. As ferramentas são
+          selecionadas com foco em código aberto, soberania tecnológica e
+          eficiência operacional.
         </p>
-        <p className="text-[.95em] text-text-soft">
-          Uma ocorrência em 8.940 é exatamente o volume que faz conferência
-          manual passar batido. Quem pegou foi a trava automática, no mesmo dia;
-          o dado foi removido e a limpeza passou a acontecer na origem, antes de
-          qualquer gravação. Mas o arquivo chegou a ser publicado antes da
-          correção, e <strong className="text-text">o histórico do Git ainda
-          guarda a versão antiga</strong> — apagá-lo exige reescrever histórico
-          já distribuído, o que quebra qualquer cópia existente do repositório.
-          É decisão pendente de quem é dono do projeto, e está registrada como
-          pendência, não como resolvida.
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-border p-4">
+            <h3 className="font-display text-lg font-semibold text-text">
+              Modelos de Linguagem (LLM)
+            </h3>
+            <ul className="mt-2 space-y-1.5 text-[.95em] text-text-soft">
+              <li>
+                <strong className="text-text">DeepSeek</strong> — modelo de linguagem chinês, utilizado para classificação de texto, extração de entidades e análise semântica.
+              </li>
+              <li>
+                <strong className="text-text">GLM (Zhipu AI)</strong> — modelo chinês para raciocínio lógico e compreensão de documentos estruturados.
+              </li>
+              <li>
+                <strong className="text-text">MiMo (Xiaomi)</strong> — modelo de raciocínio chinês, utilizado para tarefas que exigem lógica e passos intermediários.
+              </li>
+              <li>
+                <strong className="text-text">Sabiá (Maritaca AI)</strong> — modelo brasileiro, desenvolvido para o português, utilizado para geração de resumos e microresumos.
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-border p-4">
+            <h3 className="font-display text-lg font-semibold text-text">
+              Aplicativos e Ferramentas
+            </h3>
+            <ul className="mt-2 space-y-1.5 text-[.95em] text-text-soft">
+              <li>
+                <strong className="text-text">opencode</strong> — aplicativo de código aberto para assistência de desenvolvimento, utilizado na manutenção do repositório.
+              </li>
+              <li>
+                <strong className="text-text">Coletores determinísticos</strong> — scripts Python e TypeScript que extraem dados de APIs oficiais sem uso de IA.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p className="rounded-lg border border-border bg-surface-2 p-4 text-[.9em] text-text-soft">
+          <strong className="text-text">Transparência:</strong> quando um resumo
+          ou classificação é gerado por modelo de linguagem, ele é sinalizado
+          na página. As decisões editoriais — o que publicar, como interpretar
+          dados e quais ressalvas incluir — são sempre de autores humanos.
         </p>
-        <p className="text-[.95em] text-text-soft">
-          Está aqui em primeiro lugar porque é o que este termo tem de mais
-          honesto a dizer:{" "}
-          <strong className="text-text">
-            a fonte publicar não autoriza o portal a republicar
-          </strong>
-          , e a proteção deste projeto é boa o bastante para ter pegado o caso —
-          e imperfeita o bastante para ele ter existido.
+      </section>
+
+      {/* ═══ ORIGEM E ATRIBUIÇÃO DAS FONTES ═══ */}
+      <section className="space-y-4">
+        <h2 className="font-display text-2xl font-semibold">
+          Origem e Atribuição das Fontes
+        </h2>
+        <p className="text-text-soft">
+          Cada conjunto de dados publicado neste portal tem origem identificada
+          com título, instituição responsável e link para a fonte oficial.
+          Quando o dado é coletado de API pública, a URL da chamada é registrada
+          no repositório. Quando o dado vem de documento, o link aponta para a
+          versão oficial.
         </p>
+        <p className="text-text-soft">
+          A lista completa e atualizada de fontes, com a URL chamada, a data em
+          que respondeu e a contagem do que foi efetivamente gravado, vive no
+          repositório e é atualizada a cada coleta. Os cinco documentos de fontes:
+        </p>
+        <ul className="space-y-2.5 text-[.95em]">
+          {DOCS_DE_FONTES.map((d) => (
+            <li key={d.arquivo} className="text-text-soft">
+              <a
+                href={`${GH}/docs/${d.arquivo}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="font-mono text-[.9em] text-primary hover:text-accent"
+              >
+                {d.arquivo} ↗
+              </a>
+              <br />
+              {d.escopo}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ═══ 1. DE ONDE VEM O DADO ═══ */}
@@ -615,8 +672,7 @@ export default function TermosPage() {
 
       <footer className="space-y-2 border-t border-border pt-6 text-[.9em] text-text-soft">
         <p>
-          Última revisão desta página: 15 de agosto de 2026 — mesmo dia do
-          episódio descrito na abertura.
+          Última revisão desta página: 19 de setembro de 2026.
         </p>
         <p>
           Controle Popular é uma iniciativa cidadã independente, sem vínculo com

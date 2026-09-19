@@ -35,6 +35,11 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# ⚠️ OBRIGATÓRIO: definir DATABASE_URL no dashboard do Guara Cloud.
+# Sem ela, getDb() retorna null e as páginas que leem do banco
+# (licenciamento, legislacao, etc.) renderizam vazias — HTTP 200 sem dados.
+# Exemplo: postgresql://user:pass@host:5432/controle_popular?sslmode=require
+
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
