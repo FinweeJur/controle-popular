@@ -144,12 +144,32 @@ Lições, todas com código no repo:
 É a única operação capaz de apagar trabalho de outra sessão sem volta.
 Consequência: mensagem de commit torta publicada não tem conserto (ver §5.6).
 
-### 5.4. Worktree próprio, porta própria
+### 5.4. Worktree quando há briga, sessão nova quando o contexto envelhece
 
 **Anexar no dev server de outro checkout responde 200 com o código errado,
-sem avisar** — a pior forma de errar numa verificação. Cada sessão de
-assistente opera no próprio worktree, com porta própria em
-`.claude/launch.json`. O fluxo completo (junção de `node_modules`, portas,
+sem avisar** — a pior forma de errar numa verificação. A regra é
+condicional:
+
+| Situação | Regra |
+|---|---|
+| 1 sessão só no PC | commit direto na `main`, pathspec explícito |
+| 2+ sessões ao mesmo tempo | worktree + branch próprio, porta própria, rebase e push rápido |
+
+O ganho do worktree nunca foi o branch (branch é grátis) — é o disco
+separado: dois `next build` brigando no mesmo `.next`, dois dev servers,
+staging misturado (aconteceu 2× em 15/08). Sem briga, é imposto sem
+retorno.
+
+**Quando abrir sessão nova:**
+
+- contexto longo demais — sessão antiga esquece decisões e repete erro;
+- para acelerar — tarefas independentes correm lado a lado (global
+  AGENTS: agentes paralelos, uma sessão por tarefa, divisão por arquivo).
+- qualquer ferramenta serve (OpenCode, Hermes, Picoclaw, Cutiazinho):
+  uma tarefa por agente, arquivos de saída distintos, e o humano
+  integra ao final. Alternar ferramenta conta como "sessão nova".
+
+O fluxo completo (junção de `node_modules`, portas em `.claude/launch.json`,
 órfãos) está em [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md).
 
 ### 5.5. Commit por pathspec explícito
