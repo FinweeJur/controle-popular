@@ -26,6 +26,22 @@ export interface PaginaPortalIndexada {
 }
 
 export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
+  // ═══ LABORATÓRIO DE DADOS ═══
+  {
+    id: "laboratorio",
+    titulo: "Laboratório de Dados",
+    descricao: "Compare dois conjuntos de dados do portal em gráficos dither, com filtros do Seu Nonô. A busca alimenta as janelas do explorador.",
+    href: "/laboratorio",
+    frente: "geral",
+    rotulo: "Explorador · gráficos",
+    badgeCor: "var(--cp-geral, #7c7c9c)",
+    palavrasChave: [
+      "laboratorio", "explorador", "grafico", "dither", "dados", "comparar",
+      "comparacao", "janelas", "barragens", "licencas", "educacao", "economia",
+      "congresso", "judiciario", "clima", "esg", "vale", "pncp", "assembleias",
+      "multinacionais", "acordos",
+    ],
+  },
   // ═══ EIXO 1: DIREITOS EM MOVIMENTO ═══
   {
     id: "direitos-geral",

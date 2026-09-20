@@ -304,6 +304,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/laboratorio", { changeFrequency: "weekly", priority: 0.8 }),
     item("/cidades", { changeFrequency: "daily", priority: 0.9 }),
     item("/editais", { changeFrequency: "daily", priority: 0.9 }),
     item("/estudos-rurais", { changeFrequency: "weekly", priority: 0.8 }),

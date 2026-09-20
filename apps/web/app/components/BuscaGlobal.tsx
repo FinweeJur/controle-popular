@@ -5,7 +5,7 @@ import { Search, X } from "lucide-react";
 import { buscar, type IndiceBusca } from "@/lib/busca/indice";
 import { carregarIndiceBusca } from "@/lib/busca/carregarIndice";
 import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
-import { CircularBars } from "@/app/components/loaders";
+import { DotsRing } from "@/app/components/loaders";
 
 /**
  * Barra de busca GLOBAL da navbar — pedido do dono (01/09/2026):
@@ -116,7 +116,7 @@ export default function BuscaGlobal() {
         <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center justify-center">
           {!indice && !falha ? (
             <div title="Carregando índice...">
-              <CircularBars size={16} />
+              <DotsRing size={16} className="text-text-soft" />
             </div>
           ) : consulta.length > 0 ? (
             <button
@@ -152,7 +152,12 @@ export default function BuscaGlobal() {
               {paginasPortal.map((p) => (
                 <a
                   key={p.id}
-                  href={p.href}
+                  href={
+                    // F4 do laboratório: a consulta atual alimenta as janelas
+                    p.id === "laboratorio"
+                      ? `/laboratorio?q=${encodeURIComponent(consulta)}`
+                      : p.href
+                  }
                   onClick={() => setAberto(false)}
                   className="block rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 transition-colors hover:bg-primary/10"
                 >

@@ -134,6 +134,7 @@ export default async function IndiceGlobal() {
       titulo: "Por tema",
       topicos: [
         { href: "/busca", titulo: "Busca", descricao: "Procure por palavra, tema ou território.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Search size={14} /> },
+        { href: "/laboratorio", titulo: "Laboratório de Dados", descricao: "Compare dois conjuntos de dados em gráficos dither com auxílio do Seu Nonô.", cor: "var(--cp-geral, #7c7c9c)", badge: "✦ Novo", icon: <BarChart3 size={14} /> },
         { href: "/paraopeba/biblioteca", titulo: "Biblioteca de Documentos", descricao: "Acervo de publicações das ATIs, perícia e órgãos ambientais.", cor: "var(--cp-secondary)", badge: "Paraopeba", icon: <BookOpen size={14} /> },
         { href: "/dados/populares", titulo: "Páginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e ações da União em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },
@@ -161,6 +162,7 @@ export default async function IndiceGlobal() {
       titulo: "Por situação",
       topicos: [
         { href: "/direitos-em-movimento/denuncia", titulo: "Quero denunciar", descricao: "Canais de denúncia e proteção.", cor: "var(--cp-alert)", badge: "Ação", icon: <Shield size={14} /> },
+        { href: "/laboratorio", titulo: "Quero comparar dados lado a lado", descricao: "Abra duas janelas com gráficos de pontos e filtros por palavra-chave.", cor: "var(--cp-geral, #7c7c9c)", badge: "Ação", icon: <BarChart3 size={14} /> },
         { href: "/direitos-em-movimento/ajuda", titulo: "Preciso de ajuda", descricao: "Onde encontrar assistência jurídica e social.", cor: "var(--cp-alert)", badge: "Ação", icon: <HelpCircle size={14} /> },
         { href: "/noticias/tarifa-social-energia-agua-como-acessar", titulo: "Quero desconto na conta de luz e água", descricao: "Veja o passo a passo da Tarifa Social por estado e distribuidora.", cor: "var(--cp-primary)", badge: "Ação", icon: <Sparkles size={14} /> },
         { href: "/direitos-em-movimento/conselhos", titulo: "Quero participar do conselho da minha cidade", descricao: "Reuniões e contatos de CMS, CODEMA, Tutelares e Direitos Humanos.", cor: "var(--cp-alert)", badge: "Ação", icon: <Users size={14} /> },

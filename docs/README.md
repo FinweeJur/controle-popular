@@ -51,6 +51,7 @@ automáticamente pelos agentes de código.
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
 | Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
+| Laboratório de dados | LABORATORIO | [`dominios/LABORATORIO.md`](dominios/LABORATORIO.md) |
 
 Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/GATILHO-REMOTO.md)
 (ativação por Telegram) e runbooks citados no OPERACAO.

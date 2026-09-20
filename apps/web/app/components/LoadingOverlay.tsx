@@ -1,7 +1,7 @@
 "use client";
 
 import { useLoading } from "@/lib/use-loading";
-import { WavePhysicsLoader, CircularBars } from "@/app/components/loaders";
+import { WavePhysicsLoader, DotsRing } from "@/app/components/loaders";
 
 /**
  * Indicador fixo e elegante de carregamento entre páginas do portal.
@@ -34,7 +34,7 @@ export default function LoadingOverlay() {
           className="mt-1 flex items-center justify-between w-full gap-2 border-t border-border/40 pt-2 text-[0.75rem]"
         >
           <div className="flex items-center gap-1.5 font-medium text-text">
-            <CircularBars size={14} />
+            <DotsRing size={14} className="text-text-soft" />
             <span>Navegando no portal…</span>
           </div>
           <span className="font-tabular text-text-soft bg-surface-2 px-1.5 py-0.5 rounded text-[11px]">
