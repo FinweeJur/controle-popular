@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-20
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [ESTADO.md § fila](../02-estado/ESTADO.md#fila-viva), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
 > **Palavras-chave:** plano, sessão, fila, 1014, cname, fase 4, postgres, tts, exportação, laboratório, shield, skill
@@ -24,21 +24,23 @@ Cada item tem critério de pronto: quando roda no navegador e o dono confere.
 
 ## Resgate
 
-O que ficou aberto da sessão de 19/09:
+Estado medido na madrugada de 19→20/09 (sessão fase 4):
 
 | Item | Estado | Referência |
 |---|---|---|
-| `DATABASE_URL` no Guara (runtime + build) | ✅ | [ESTADO.md](../02-estado/ESTADO.md) |
-| Domínio `www` ativo no Guara | ✅ | `guara domains list --json` |
-| Vulnerabilidades do container (Guara Shield) | 🚧 | 3 CRITICAL / 28 HIGH / 22 MEDIUM; `npm audit fix` aplicado; **upgrade de `next` não iniciado** |
-| Testes do assistente (4 corrigidos) | ✅ | commit `34983f01` |
-| TTS microresumo + loader `DotsRing` | ✅ | commit `34983f01` |
-| Documentação reescrita (14 arquivos) | ✅ | commit `1a72a843` |
-| `/dados/populares` mais densa (25 itens) | ✅ | mesmo commit |
-| Validar banco no site (`/ambiental/licenciamento`) | 🚧 | precisa do DNS resolvido primeiro |
-| Redirect da raiz no Cloudflare | ⛔ | ação do dono |
-| **Fase 4 — Postgres do Guara** | ⛔ | não iniciada |
-| Spike Vozz/Piper no browser (TTS) | ⛔ | não iniciado |
+| Erro 1014 no www (proxy do Cloudflare) | ✅ | dono tirou o proxy; `Resolve-DnsName` aponta direto ao Guara |
+| Redirect raiz → www | ✅ | Page Rule 301 medida (`curl` 301 → `www/…/sobre`) |
+| Skill `/cp` de handoff | ✅ | commit `f329cd25` |
+| Fase 4 — Postgres do Guara | 🚧 | serviço `cp-postgres-597bd0` (postgis 17) com carga validada igual à Neon (menos as 2 tabelas `embeddings`); `DATABASE_URL` trocada runtime+build |
+| Driver no runtime do Guara | 🚧 | motor `pg` (TCP) para host não-Neon (`39225d91`); trace do `pg` no standalone (`3ea3a22`); **sombras restantes: chat do assistente ainda 502 em produção** |
+| Catálogo sem pgvector | ⚠️ | extensão `vector` indisponível nas variantes do Guara (medido via `pg_available_extensions`); embeddingsguiória ficam p/ Fase 5 (alternativa: Qdrant do catálogo) |
+| Deploy a cada ~5 dias | ✅ | política do dono: auto-deploy OFF, tarefa agendada `ControlePopular_DeployGuara_0555` (`deploy-guara-agendado.mts`: commit novo + ≥5 dias + CI verde) |
+| Vulnerabilidades do container (Guara Shield) | 🚧 | 3 CRITICAL / 28 HIGH / 22 MEDIUM; `npm audit fix` aplicado; upgrade de `next` não iniciado |
+| Laboratório F1 (`/laboratorio` dither) | ✅ | commit `b0655e00` em `agente/laboratorio-f1` — **aguardando merge na main** |
+| Blog: 10 posts com 2 parágrafos novos | ✅ | commit `296ab78b` (subagente opencode) |
+| DeepSeek sem saldo (HTTP 402) | ⛔ | chat de produção alterna para Maritaca/Sabiá (chave validada); falta validar ponta em produção |
+| Validar banco no site (A1) | 🚧 | `/ambiental/licenciamento` ainda com placeholders no HTML; páginas do banco com dado: pendente deploy verificado |
+| Watchdog falso alerta 22:30 | ✅ | relatório em UTF-16 reconhecido (`6fdf5eb9`) |
 
 ## Resposta honesta: mudamos de escopo rápido?
 
