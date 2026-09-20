@@ -38,12 +38,14 @@ describe("interpretar — navega", () => {
     expect(hrefs("licitações da prefeitura de Betim")[0]).toBe("/betim/prefeitura/licitacoes");
   });
 
-  it("assunto de cidade sem cidade vira uma opcao por cidade atendida", () => {
+  it("assunto de cidade sem cidade vira uma opção por cidade atendida, até o teto", () => {
     // A resposta honesta para "contratos" e "em qual cidade?", feita de
-    // botoes — nao a escolha de uma cidade por nossa conta.
+    // botões — nao a escolha de uma cidade por nossa conta. Com 12 cidades
+    // atendidas (o fallback ganhou 6 em 2026-09-19) e o teto de 8 botões,
+    // a resposta corte nos 8 primeiros — a escolha segue sendo da pessoa.
     const r = hrefs("contratos");
-    expect(r).toHaveLength(CIDADES.length);
-    expect(new Set(r)).toEqual(new Set(CIDADES.map((c) => `/${c.slug}/prefeitura/contratos`)));
+    expect(r).toHaveLength(Math.min(LIMITE_CANDIDATOS, CIDADES.length));
+    for (const h of r) expect(h).toMatch(/^\/[a-z-]+\/prefeitura\/contratos$/);
   });
 
   it("termo de duas palavras ganha do termo de uma", () => {
@@ -56,7 +58,7 @@ describe("interpretar — navega", () => {
   });
 
   it("nunca passa do teto de candidatos", () => {
-    // "mapa" casa com a camada de terras das 6 cidades mais o globo geral.
+    // "mapa" casa com a camada de terras das cidades atendidas más o globo geral.
     expect(interpretar("mapa").length).toBeLessThanOrEqual(LIMITE_CANDIDATOS);
   });
 });
@@ -112,10 +114,11 @@ describe("interpretar — nao adivinha", () => {
 
   it("CIDADE QUE O PORTAL NAO ATENDE devolve nada, nao outra cidade", () => {
     // O caso que a guarda de lugar existe para pegar. Sem ela, "saude" casa
-    // com a rota de saude das 6 cidades e a resposta seriam 6 botoes,
-    // nenhum deles Uberlandia — o assistente teria trocado a cidade da
-    // pergunta em silencio.
-    expect(interpretar("saúde em Uberlândia")).toEqual([]);
+    // com a rota de saude das cidades atendidas e a resposta seriam varios
+    // botoes, nenhum deles o lugar perguntado - o assistente teria trocado
+    // a cidade da pergunta em silencio. Uberlandia virou ATENDIDA em
+    // 2026-09-19; Viçosa e Ouro Preto seguem fora.
+    expect(interpretar("saúde em Viçosa")).toEqual([]);
     expect(interpretar("contratos de Contagem")).toEqual([]);
     expect(interpretar("licitações em Ouro Preto")).toEqual([]);
   });
@@ -129,7 +132,7 @@ describe("interpretar — nao adivinha", () => {
   });
 
   it("nome de cidade nao atendida sozinho devolve nada", () => {
-    expect(interpretar("Uberlândia")).toEqual([]);
+    expect(interpretar("Viçosa")).toEqual([]);
     expect(interpretar("Rio de Janeiro")).toEqual([]);
   });
 

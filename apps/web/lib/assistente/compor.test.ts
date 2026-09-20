@@ -93,10 +93,12 @@ describe("interpretarComposicao — cidade não atendida", () => {
     });
   });
 
-  it("'compare uberlandia e contagem' aponta a primeira, sem cidade atendida", () => {
-    expect(interpretarComposicao("compare uberlandia e contagem")).toEqual({
+  it("'compare vicosa e contagem' aponta a primeira, sem cidade atendida", () => {
+    // Uberlandia virou ATENDIDA (fallback ganhou cidades em 2026-09-19);
+    // o exemplo de "nenhuma atendida" saiu para Viçosa, que segue fora.
+    expect(interpretarComposicao("compare vicosa e contagem")).toEqual({
       tipo: "cidadeNaoAtendida",
-      nome: "uberlandia",
+      nome: "vicosa",
       cidade: null,
     });
   });
