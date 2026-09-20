@@ -204,16 +204,15 @@ Ninguém integra o trabalho de ninguém. Durante build/deploy nesta máquina,
 
 ### 5.7.1. Push = deploy manual (cota de build do Guara)
 
-Auto-deploy está **desligado** no Guara (19/09) — cada build gasta ~17 min
-e o plano Starter tem teto de 250 min/ciclo (painel "Uso"). Regras:
+Auto-deploy desligado no Guara (19/09). Um build gasta ~17 min e o
+plano Starter tem teto de 250 min/ciclo.
 
-- **Commit muitas vezes, push/deploy uma.** O último commit só.
-- Deploy é manual: suíte + `tsc` verdes → `guara deploy` (janela: fim de
-  sessão). Meta: 1–2 deploys por dia.
-- Sem mudança de código que afete a imagem? Não deployar: doc, dado, e
-  rodadas de coleta não pedem rebuild só porque saíram da `main` — leia
-  e decida. Conteúdo novo de dado versionado SIM pede (vai no build).
-- Build fracassado também queima cota. Nunca deployar com teste vermelho.
+- **Deploy no Guara só a cada ~5 dias** (política do dono) — detalhe e
+  ritual em [OPERACAO.md § 0](docs/05-operacao/OPERACAO.md#0-cadência-de-deploy-política-do-dono-19092026).
+- Commit muitas vezes, deploy uma (o último commit).
+- Teste diário no **servidor 2** (túnel do `home-pc`) e localhost —
+  não gasta cota.
+- Deploy só se a mudança afecta a imagem. Suíte + `tsc` verdes antes.
 
 ### 5.8. Privacidade contra agentes de IA
 

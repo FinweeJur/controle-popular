@@ -45,6 +45,28 @@ Nesta máquina de desenvolvimento **não dá para buildar nem medir `.cache`**: 
 
 A Guara Cloud é a PaaS soberana brasileira que hospeda o container Next.js em modo standalone, com cobrança em Reais e latência reduzida (datacenter em São Paulo, `br-gru`).
 
+### 0. Cadência de deploy (política do dono, 19/09/2026)
+
+O plano Starter paga build por minutos: um build do portal gasta
+**~17 min** e o ciclo traz **250 min** (painel "Uso"). Regra do dono:
+
+- **Deploy no Guara a cada ~5 dias, no máximo.** Empilhe commits;
+  o último commit é o que vai. Auto-deploy desligado (19/09).
+- **Dia a dia testa no servidor 2 e em localhost:**
+  - o túnel do `home-pc` serve `next start -p 3000` do checkout da
+    `main` (o `git pull` lá é a validação com dado real, sem gastar
+    cota do Guara);
+  - localhost nas sessões de trabalho (portas próprias por sessão,
+    ver [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md)).
+- Antes de subir o deploy da janela: suíte + `tsc --noEmit` verdes.
+- Deploy só quando a mudança afeta a imagem: código novo, dado
+  versionado novo, dependência, `Dockerfile`/`next.config`.
+- Build no Guara fracassado também queima cota — por isso a suíte
+  roda antes, nunca depois.
+- Meta de cota: 250 min / 17 min ≈ **14 builds por ciclo**. Com a
+  cadência de 5 dias sobra folga para emergência (rollback, hotfix)
+  sem estourar.
+
 ### 1. Estrutura do Deploy
 - **Dockerfile**: build multi-etapa em Node 22 Alpine, configurado para monorepo.
 - **Standalone**: `apps/web/next.config.ts` ativa `output: 'standalone'` em builds Docker/Node.
