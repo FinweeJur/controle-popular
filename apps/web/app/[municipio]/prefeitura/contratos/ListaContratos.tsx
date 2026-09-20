@@ -337,20 +337,29 @@ export default function ListaContratos({
               ))}
             </div>
           )}
-          {typeof c.link_fonte === "string" && c.link_fonte && (
-            <a
-              href={c.link_fonte}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
-            >
-              Conferir no PNCP
-              {typeof c.numero_contrato === "string" && c.numero_contrato
-                ? ` — contrato ${c.numero_contrato}`
-                : ""}{" "}
-              ↗
-            </a>
-          )}
+          {(() => {
+            const link =
+              (typeof c.link_fonte === "string" && c.link_fonte) ||
+              (typeof (c as Record<string, unknown>).link_pncp === "string" && ((c as Record<string, unknown>).link_pncp as string)) ||
+              (typeof (c as Record<string, unknown>).numero_controle_pncp === "string" && (c as Record<string, unknown>).numero_controle_pncp
+                ? `https://pncp.gov.br/app/contratos/${(c as Record<string, unknown>).numero_controle_pncp}`
+                : null);
+            if (!link) return null;
+            return (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit text-[11px] font-medium text-primary underline underline-offset-2"
+              >
+                Conferir no PNCP
+                {typeof c.numero_contrato === "string" && c.numero_contrato
+                  ? ` — contrato ${c.numero_contrato}`
+                  : ""}{" "}
+                ↗
+              </a>
+            );
+          })()}
         </div>
       ),
     },

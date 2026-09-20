@@ -302,10 +302,21 @@ export default async function InstituicaoPage({ params }: Props) {
               <strong className="text-text">Titular:</strong> {inst.corregedoria.titular}
             </p>
             <p className="leading-relaxed text-text-soft">{inst.corregedoria.funcao}</p>
-            <p className="pt-2">
-              <span className="font-semibold text-text">Canal de denúncias:</span>{" "}
-              <span className="text-text-soft">{inst.corregedoria.canalDenuncias}</span>
-            </p>
+            <div className="pt-2">
+              <span className="font-semibold text-text">Canal de denúncias: </span>
+              {inst.corregedoria.canalDenuncias.startsWith("http") ? (
+                <a
+                  href={inst.corregedoria.canalDenuncias}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-alert underline underline-offset-2 hover:opacity-80"
+                >
+                  Registrar Denúncia / Correição ↗
+                </a>
+              ) : (
+                <span className="text-text-soft">{inst.corregedoria.canalDenuncias}</span>
+              )}
+            </div>
           </div>
         </section>
 

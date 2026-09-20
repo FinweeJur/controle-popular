@@ -296,6 +296,16 @@ export function construirLinkOficial(
     return `http://www.siam.mg.gov.br/siam/legislacao/consulta_portarias.jsp?num=${encodeURIComponent(limpo || proc)}`;
   }
 
+  // 4b. SEMAD (MG) / FEAM / IEF (MG - Licenciamento e processos ambientais)
+  if (
+    (orgUpper.includes("SEMAD") && !orgUpper.includes("GO")) ||
+    orgUpper.includes("FEAM") ||
+    orgUpper.includes("IEF")
+  ) {
+    const limpo = proc.replace(/[^\d/]/g, "");
+    return `http://www.siam.mg.gov.br/siam/processo/consulta_processo.jsp?num=${encodeURIComponent(limpo || proc)}`;
+  }
+
   // 5. SEMA (MT)
   if (orgUpper.includes("SEMA (MT)") || orgUpper.includes("SEMA-MT")) {
     return `https://simlam.sema.mt.gov.br/portal/processo/consulta?termo=${encodeURIComponent(proc)}`;

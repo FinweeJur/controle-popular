@@ -32,7 +32,7 @@
       {
         "area": "Presidência / Direção Geral",
         "funcao": "Representação máxima, pautas plenárias e diretrizes orçamentárias.",
-        "site": "https://www.cnj.jus.br/presidencia-direcao-geral",
+        "site": "https://www.cnj.jus.br/sobre-o-cnj/composicao-do-cnj/",
         "telefone": "(61) 3200-1000",
         "email": "presidencia-direcao-geral@cnj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -40,7 +40,7 @@
       {
         "area": "Plenário / Turmas",
         "funcao": "Julgamento colegiado de processos de repercussão geral e recursos constitucionais.",
-        "site": "https://www.cnj.jus.br/plenario-turmas",
+        "site": "https://www.cnj.jus.br/sessoes-do-plenario/",
         "telefone": "(61) 3200-1110",
         "email": "plenario-turmas@cnj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -48,7 +48,7 @@
       {
         "area": "Secretaria-Geral",
         "funcao": "Gestão estratégica, governança de dados e administração predial e tecnológica.",
-        "site": "https://www.cnj.jus.br/secretaria-geral",
+        "site": "https://www.cnj.jus.br/sobre-o-cnj/secretaria-geral/",
         "telefone": "(61) 3200-1220",
         "email": "secretaria-geral@cnj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -58,13 +58,13 @@
       "canal": "Ouvidoria do CNJ",
       "telefone": "0800 oficial / Balcão Digital",
       "endereco": "Sede Institucional",
-      "portalOuvidoria": "https://www.cnj.jus.br/ouvidoria"
+      "portalOuvidoria": "https://www.cnj.jus.br/ouvidoria-cnj/"
     },
     "corregedoria": {
       "orgao": "Corregedoria do CNJ",
       "titular": "Corregedor Nacional / Ministro Corregedor",
       "funcao": "Fiscalização disciplinar e integridade institucional.",
-      "canalDenuncias": "https://www.cnj.jus.br/corregedoria"
+      "canalDenuncias": "https://www.cnj.jus.br/corregedoriacnj/fale-com-a-corregedoria/"
     },
     "documentosEAtos": [
       {
@@ -181,13 +181,13 @@
       "canal": "Ouvidoria do CNMP",
       "telefone": "0800 oficial / Balcão Digital",
       "endereco": "Sede Institucional",
-      "portalOuvidoria": "https://www.cnmp.mp.br/ouvidoria"
+      "portalOuvidoria": "https://ouvidoria.cnmp.mp.br/"
     },
     "corregedoria": {
       "orgao": "Corregedoria do CNMP",
       "titular": "Corregedor Nacional / Ministro Corregedor",
       "funcao": "Fiscalização disciplinar e integridade institucional.",
-      "canalDenuncias": "https://www.cnmp.jus.br/corregedoria"
+      "canalDenuncias": "https://www.cnmp.mp.br/portal/institucional/corregedoria-nacional"
     },
     "documentosEAtos": [
       {
@@ -298,7 +298,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ac.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ac.def.br",
         "telefone": "(68) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ac.def.br",
         "endereco": "Rua Benjamin Constant, 271 - Centro, Prédio Principal, Andar 4 — CEP 69900-062"
@@ -478,7 +478,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.al.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.al.def.br",
         "telefone": "(82) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.al.def.br",
         "endereco": "Praça Marechal Deodoro, 319 - Centro, Prédio Principal, Andar 4 — CEP 57020-919"
@@ -658,7 +658,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.am.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.am.def.br",
         "telefone": "(92) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.am.def.br",
         "endereco": "Av. André Araújo, s/n - Aleixo, Prédio Principal, Andar 4 — CEP 69060-000"
@@ -838,7 +838,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ap.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ap.def.br",
         "telefone": "(96) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ap.def.br",
         "endereco": "Rua Manoel Eudóxio Pereira, s/n - Central, Prédio Principal, Andar 4 — CEP 68900-000"
@@ -1018,7 +1018,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ba.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ba.def.br",
         "telefone": "(71) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ba.def.br",
         "endereco": "5ª Av. do CAB, 560 - Centro Administrativo da Bahia, Prédio Principal, Andar 4 — CEP 41745-971"
@@ -1198,7 +1198,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ce.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ce.def.br",
         "telefone": "(85) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ce.def.br",
         "endereco": "Av. General Afonso Albuquerque Lima, s/n - Cambeba, Prédio Principal, Andar 4 — CEP 60822-325"
@@ -1378,7 +1378,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.df.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.df.def.br",
         "telefone": "(61) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.df.def.br",
         "endereco": "Praça Municipal, Lote 1 - Bloco A, Prédio Principal, Andar 4 — CEP 70094-900"
@@ -1558,7 +1558,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.es.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.es.def.br",
         "telefone": "(27) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.es.def.br",
         "endereco": "Rua Des. Homero Mafra, 60 - Enseada do Suá, Prédio Principal, Andar 4 — CEP 29050-906"
@@ -1738,7 +1738,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.go.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.go.def.br",
         "telefone": "(62) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.go.def.br",
         "endereco": "Av. Assis Chateaubriand, 195 - Setor Oeste, Prédio Principal, Andar 4 — CEP 74130-012"
@@ -1918,7 +1918,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ma.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ma.def.br",
         "telefone": "(98) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ma.def.br",
         "endereco": "Praça Pedro II, s/n - Centro Histórico, Prédio Principal, Andar 4 — CEP 65010-450"
@@ -2080,7 +2080,7 @@
       {
         "area": "Defensoria Pública-Geral",
         "funcao": "Direção executiva superior, representação política e defesa da autonomia institucional e orçamentária.",
-        "site": "https://www.defensoria.mg.def.br/defensoria-publica-geral",
+        "site": "https://defensoria.mg.def.br/institucional/",
         "telefone": "(31) 3200-1000",
         "email": "defensoria-publica-geral@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 2 — CEP 30130-974"
@@ -2088,7 +2088,7 @@
       {
         "area": "Subdefensoria-Geral de Gestão e Planejamento",
         "funcao": "Gestão estratégica, expansão de sedes no interior e infraestrutura física e tecnológica.",
-        "site": "https://www.defensoria.mg.def.br/subdefensoria-geral-de-ge",
+        "site": "https://defensoria.mg.def.br/institucional/",
         "telefone": "(31) 3200-1110",
         "email": "subdefensoria-geral-de-ge@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 3 — CEP 30130-974"
@@ -2096,7 +2096,7 @@
       {
         "area": "Conselho Superior da Defensoria Pública",
         "funcao": "Órgão normativo que aprova editais de concurso, regulamentos internos e regras de estágio probatório.",
-        "site": "https://www.defensoria.mg.def.br/conselho-superior-da-defe",
+        "site": "https://defensoria.mg.def.br/conselho-superior/",
         "telefone": "(31) 3200-1220",
         "email": "conselho-superior-da-defe@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 4 — CEP 30130-974"
@@ -2104,7 +2104,7 @@
       {
         "area": "Corregedoria-Geral da DPMG",
         "funcao": "Acompanhamento e avaliação do desempenho funcional e ético dos defensores públicos em Minas Gerais.",
-        "site": "https://www.defensoria.mg.def.br/corregedoria-geral-da-dpm",
+        "site": "https://defensoria.mg.def.br/corregedoria/",
         "telefone": "(31) 3200-1330",
         "email": "corregedoria-geral-da-dpm@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 5 — CEP 30130-974"
@@ -2112,7 +2112,7 @@
       {
         "area": "Ouvidoria-Geral Externa",
         "funcao": "Órgão independente liderado por ouvidor eleito pela sociedade civil organizada para fiscalizar o atendimento.",
-        "site": "https://www.defensoria.mg.def.br/ouvidoria-geral-externa",
+        "site": "https://defensoria.mg.def.br/ouvidoria/",
         "telefone": "(31) 3200-1440",
         "email": "ouvidoria-geral-externa@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 6 — CEP 30130-974"
@@ -2120,7 +2120,7 @@
       {
         "area": "Núcleos Temáticos Especializados (NUDH, NUDEM, NUDECON)",
         "funcao": "Defesa de direitos humanos, mulheres em situação de violência, consumidores e comunidades vulneráveis.",
-        "site": "https://www.defensoria.mg.def.br/nucleos-tematicos-especia",
+        "site": "https://defensoria.mg.def.br/nucleos-especializados/",
         "telefone": "(31) 3200-1550",
         "email": "nucleos-tematicos-especia@defensoria.mg.def.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 7 — CEP 30130-974"
@@ -2131,13 +2131,13 @@
       "telefone": "Disque 129 / (31) 3526-0500",
       "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101",
       "balcaoVirtual": "https://defensoria.mg.def.br/balcao-virtual/",
-      "portalOuvidoria": "https://defensoria.mg.def.br/ouvidoria-geral/"
+      "portalOuvidoria": "https://defensoria.mg.def.br/ouvidoria/"
     },
     "corregedoria": {
       "orgao": "Corregedoria-Geral da DPMG",
       "titular": "Corregedor-Geral Marcelo Tófani Braga",
       "funcao": "Orientação e correição de defensorias regionais em todo o território mineiro.",
-      "canalDenuncias": "Formulário eletrônico da Corregedoria DPMG"
+      "canalDenuncias": "https://defensoria.mg.def.br/corregedoria/"
     },
     "documentosChave": [
       {
@@ -2303,7 +2303,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ms.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ms.def.br",
         "telefone": "(67) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ms.def.br",
         "endereco": "Parque dos Poderes, Bloco 13, Prédio Principal, Andar 4 — CEP 79031-902"
@@ -2483,7 +2483,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.mt.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.mt.def.br",
         "telefone": "(65) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.mt.def.br",
         "endereco": "Av. Historiador Rubens de Mendonça, s/n - CPA, Prédio Principal, Andar 4 — CEP 78055-901"
@@ -2663,7 +2663,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.pa.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.pa.def.br",
         "telefone": "(91) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.pa.def.br",
         "endereco": "Av. Almirante Barroso, 3089 - Souza, Prédio Principal, Andar 4 — CEP 66613-710"
@@ -2843,7 +2843,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.pb.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.pb.def.br",
         "telefone": "(83) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.pb.def.br",
         "endereco": "Praça João Pessoa, s/n - Centro, Prédio Principal, Andar 4 — CEP 58013-900"
@@ -3023,7 +3023,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.pe.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.pe.def.br",
         "telefone": "(81) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.pe.def.br",
         "endereco": "Praça da República, s/n - Santo Antônio, Prédio Principal, Andar 4 — CEP 50010-040"
@@ -3203,7 +3203,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.pi.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.pi.def.br",
         "telefone": "(86) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.pi.def.br",
         "endereco": "Av. Padre Humberto Pietrogrande, 3509 - São Raimundo, Prédio Principal, Andar 4 — CEP 64075-065"
@@ -3383,7 +3383,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.pr.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.pr.def.br",
         "telefone": "(41) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.pr.def.br",
         "endereco": "Praça Nossa Senhora de Salette, s/n - Centro Cívico, Prédio Principal, Andar 4 — CEP 80530-912"
@@ -3563,7 +3563,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.rj.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.rj.def.br",
         "telefone": "(21) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.rj.def.br",
         "endereco": "Av. Erasmo Braga, 115 - Centro, Prédio Principal, Andar 4 — CEP 20020-903"
@@ -3743,7 +3743,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.rn.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.rn.def.br",
         "telefone": "(84) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.rn.def.br",
         "endereco": "Av. Jerônimo Câmara, 2000 - Nossa Senhora de Nazaré, Prédio Principal, Andar 4 — CEP 59060-400"
@@ -3923,7 +3923,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.ro.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.ro.def.br",
         "telefone": "(69) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.ro.def.br",
         "endereco": "Rua José Camacho, 165 - Olaria, Prédio Principal, Andar 4 — CEP 76801-330"
@@ -4103,7 +4103,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.rr.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.rr.def.br",
         "telefone": "(95) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.rr.def.br",
         "endereco": "Praça do Centro Cívico, 296 - Centro, Prédio Principal, Andar 4 — CEP 69301-380"
@@ -4283,7 +4283,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.rs.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.rs.def.br",
         "telefone": "(51) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.rs.def.br",
         "endereco": "Av. Aureliano de Figueiredo Pinto, 80 - Praia de Belas, Prédio Principal, Andar 4 — CEP 90050-190"
@@ -4463,7 +4463,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.sc.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.sc.def.br",
         "telefone": "(48) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.sc.def.br",
         "endereco": "Rua Álvaro Millen da Silveira, 208 - Centro, Prédio Principal, Andar 4 — CEP 88020-901"
@@ -4643,7 +4643,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.se.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.se.def.br",
         "telefone": "(79) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.se.def.br",
         "endereco": "Praça Fausto de Cardoso, 112 - Centro, Prédio Principal, Andar 4 — CEP 49010-080"
@@ -4823,7 +4823,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.sp.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.sp.def.br",
         "telefone": "(11) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.sp.def.br",
         "endereco": "Praça da Sé, s/n - Centro, Prédio Principal, Andar 4 — CEP 01018-010"
@@ -5003,7 +5003,7 @@
       {
         "area": "Núcleo Especializado de Defesa da Mulher (NUDEM)",
         "funcao": "Atendimento multidisciplinar e medidas protetivas para mulheres vítimas de violência de gênero.",
-        "site": "https://www.defensoria.to.def.br/nucleo-especializado-de-d",
+        "site": "https://www.defensoria.to.def.br",
         "telefone": "(63) 3200-1220",
         "email": "nucleo-especializado-de-d@defensoria.to.def.br",
         "endereco": "Praça dos Girassóis, s/n - Plano Diretor Norte, Prédio Principal, Andar 4 — CEP 77015-007"
@@ -5165,7 +5165,7 @@
       {
         "area": "Chefia da Unidade DPU-MG",
         "funcao": "Administração local, gestão do atendimento e integração com movimentos sociais e comunidades tradicionais.",
-        "site": "https://www.defensoria.gov.def.br/chefia-da-unidade-dpu-mg",
+        "site": "https://www.dpu.def.br/unidades/minas-gerais",
         "telefone": "(61) 3200-1000",
         "email": "chefia-da-unidade-dpu-mg@defensoria.gov.def.br",
         "endereco": "Rua Santos Barreto, 161, Santo Agostinho, Belo Horizonte - MG, CEP 30170-070, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -5173,7 +5173,7 @@
       {
         "area": "Ofícios Previdenciários",
         "funcao": "Ações para concessão de BPC/LOAS, aposentadorias rurais e auxílios-doença negados pelo INSS.",
-        "site": "https://www.defensoria.gov.def.br/oficios-previdenciarios",
+        "site": "https://www.dpu.def.br/atuacao",
         "telefone": "(61) 3200-1110",
         "email": "oficios-previdenciarios@defensoria.gov.def.br",
         "endereco": "Rua Santos Barreto, 161, Santo Agostinho, Belo Horizonte - MG, CEP 30170-070, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -5181,7 +5181,7 @@
       {
         "area": "Ofícios de Saúde Pública",
         "funcao": "Processos contra a União para fornecimento de remédios de alto custo e cirurgias complexas no SUS.",
-        "site": "https://www.defensoria.gov.def.br/oficios-de-saude-publica",
+        "site": "https://www.dpu.def.br/atuacao",
         "telefone": "(61) 3200-1220",
         "email": "oficios-de-saude-publica@defensoria.gov.def.br",
         "endereco": "Rua Santos Barreto, 161, Santo Agostinho, Belo Horizonte - MG, CEP 30170-070, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -5189,7 +5189,7 @@
       {
         "area": "Ofícios de Tutela Coletiva e Meio Ambiente",
         "funcao": "Atuação em favor de ribeirinhos, pescadores, quilombolas e atingidos por barragens na bacia do Rio Doce.",
-        "site": "https://www.defensoria.gov.def.br/oficios-de-tutela-coletiv",
+        "site": "https://www.dpu.def.br/atuacao",
         "telefone": "(61) 3200-1330",
         "email": "oficios-de-tutela-coletiv@defensoria.gov.def.br",
         "endereco": "Rua Santos Barreto, 161, Santo Agostinho, Belo Horizonte - MG, CEP 30170-070, Prédio Principal, Andar 5 — CEP 70000-000"
@@ -5206,7 +5206,7 @@
       "orgao": "Corregedoria-Geral da DPU (Brasília - DF)",
       "titular": "Corregedoria Nacional da Defensoria Pública da União",
       "funcao": "Controle disciplinar e fiscalização da assistência jurídica gratuita prestada em âmbito federal.",
-      "canalDenuncias": "Portal da DPU Nacional"
+      "canalDenuncias": "https://www.dpu.def.br/corregedoria-geral"
     },
     "documentosChave": [
       {
@@ -5295,7 +5295,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpac.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpac.mp.br",
         "telefone": "(68) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpac.mp.br",
         "endereco": "Rua Benjamin Constant, 271 - Centro, Prédio Principal, Andar 2 — CEP 69900-062"
@@ -5477,7 +5477,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpal.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpal.mp.br",
         "telefone": "(82) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpal.mp.br",
         "endereco": "Praça Marechal Deodoro, 319 - Centro, Prédio Principal, Andar 2 — CEP 57020-919"
@@ -5659,7 +5659,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpam.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpam.mp.br",
         "telefone": "(92) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpam.mp.br",
         "endereco": "Av. André Araújo, s/n - Aleixo, Prédio Principal, Andar 2 — CEP 69060-000"
@@ -5841,7 +5841,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpap.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpap.mp.br",
         "telefone": "(96) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpap.mp.br",
         "endereco": "Rua Manoel Eudóxio Pereira, s/n - Central, Prédio Principal, Andar 2 — CEP 68900-000"
@@ -6023,7 +6023,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpba.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpba.mp.br",
         "telefone": "(71) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpba.mp.br",
         "endereco": "5ª Av. do CAB, 560 - Centro Administrativo da Bahia, Prédio Principal, Andar 2 — CEP 41745-971"
@@ -6205,7 +6205,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpce.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpce.mp.br",
         "telefone": "(85) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpce.mp.br",
         "endereco": "Av. General Afonso Albuquerque Lima, s/n - Cambeba, Prédio Principal, Andar 2 — CEP 60822-325"
@@ -6387,7 +6387,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpdft.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpdft.mp.br",
         "telefone": "(61) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpdft.mp.br",
         "endereco": "Praça Municipal, Lote 1 - Bloco A, Prédio Principal, Andar 2 — CEP 70094-900"
@@ -6569,7 +6569,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpes.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpes.mp.br",
         "telefone": "(27) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpes.mp.br",
         "endereco": "Rua Des. Homero Mafra, 60 - Enseada do Suá, Prédio Principal, Andar 2 — CEP 29050-906"
@@ -6747,7 +6747,7 @@
       {
         "area": "Presidência / Direção Geral",
         "funcao": "Representação máxima, pautas plenárias e diretrizes orçamentárias.",
-        "site": "https://www.mpf.mp.br/presidencia-direcao-geral",
+        "site": "https://www.mpf.mp.br/pgr",
         "telefone": "(61) 3200-1000",
         "email": "presidencia-direcao-geral@mpf.mp.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -6755,7 +6755,7 @@
       {
         "area": "Plenário / Turmas",
         "funcao": "Julgamento colegiado de processos de repercussão geral e recursos constitucionais.",
-        "site": "https://www.mpf.mp.br/plenario-turmas",
+        "site": "https://www.mpf.mp.br/atuacao-tematica",
         "telefone": "(61) 3200-1110",
         "email": "plenario-turmas@mpf.mp.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -6763,7 +6763,7 @@
       {
         "area": "Secretaria-Geral",
         "funcao": "Gestão estratégica, governança de dados e administração predial e tecnológica.",
-        "site": "https://www.mpf.mp.br/secretaria-geral",
+        "site": "https://www.mpf.mp.br/pgr/institucional/organograma",
         "telefone": "(61) 3200-1220",
         "email": "secretaria-geral@mpf.mp.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -6773,13 +6773,13 @@
       "canal": "Ouvidoria do MPF",
       "telefone": "0800 oficial / Balcão Digital",
       "endereco": "Sede Institucional",
-      "portalOuvidoria": "https://www.mpf.mp.br/ouvidoria"
+      "portalOuvidoria": "https://www.mpf.mp.br/servicos/ouvidoria"
     },
     "corregedoria": {
       "orgao": "Corregedoria do MPF",
       "titular": "Corregedor Nacional / Ministro Corregedor",
       "funcao": "Fiscalização disciplinar e integridade institucional.",
-      "canalDenuncias": "https://www.mpf.jus.br/corregedoria"
+      "canalDenuncias": "https://www.mpf.mp.br/pgr/orgaos-vinculados/corregedoria-do-mpf"
     },
     "documentosEAtos": [
       {
@@ -6874,7 +6874,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpgo.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpgo.mp.br",
         "telefone": "(62) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpgo.mp.br",
         "endereco": "Av. Assis Chateaubriand, 195 - Setor Oeste, Prédio Principal, Andar 2 — CEP 74130-012"
@@ -7056,7 +7056,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpma.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpma.mp.br",
         "telefone": "(98) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpma.mp.br",
         "endereco": "Praça Pedro II, s/n - Centro Histórico, Prédio Principal, Andar 2 — CEP 65010-450"
@@ -7236,7 +7236,7 @@
       {
         "area": "Procuradoria-Geral de Justiça (PGJ)",
         "funcao": "Chefia institucional, representação do Ministério Público, propositura de ações diretas de inconstitucionalidade e gestão executiva.",
-        "site": "https://www.mpmg.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpmg.mp.br/portal/menu/institucional/administracao-superior/procuradoria-geral-de-justica/",
         "telefone": "(31) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 2 — CEP 30130-974"
@@ -7244,7 +7244,7 @@
       {
         "area": "Corregedoria-Geral do Ministério Público",
         "funcao": "Fiscalização disciplinar, aferição de produtividade e correição anual nas promotorias de todo o Estado.",
-        "site": "https://www.mpmg.mp.br/corregedoria-geral-do-min",
+        "site": "https://www.mpmg.mp.br/portal/menu/institucional/administracao-superior/corregedoria-geral/",
         "telefone": "(31) 3200-1110",
         "email": "corregedoria-geral-do-min@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 3 — CEP 30130-974"
@@ -7252,7 +7252,7 @@
       {
         "area": "Conselho Superior do Ministério Público",
         "funcao": "Deliberação sobre promoções, remoções e homologação de arquivamento de inquéritos civis públicos.",
-        "site": "https://www.mpmg.mp.br/conselho-superior-do-mini",
+        "site": "https://www.mpmg.mp.br/portal/menu/institucional/administracao-superior/conselho-superior/",
         "telefone": "(31) 3200-1220",
         "email": "conselho-superior-do-mini@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 4 — CEP 30130-974"
@@ -7260,7 +7260,7 @@
       {
         "area": "Centros de Apoio Operacional (CAOs)",
         "funcao": "CAOMA (Meio Ambiente), CAODH (Direitos Humanos), CAOPAT (Patrimônio Público e Combate à Corrupção) e CAOSAU (Saúde Pública).",
-        "site": "https://www.mpmg.mp.br/centros-de-apoio-operacio",
+        "site": "https://www.mpmg.mp.br/portal/menu/atuacao/centros-de-apoio-operacional/",
         "telefone": "(31) 3200-1330",
         "email": "centros-de-apoio-operacio@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 5 — CEP 30130-974"
@@ -7268,7 +7268,7 @@
       {
         "area": "GAECO (Grupos de Combate ao Crime Organizado)",
         "funcao": "Força-tarefa especializada na investigação de organizações criminosas e lavagem de dinheiro.",
-        "site": "https://www.mpmg.mp.br/gaeco-grupos-de-combate-a",
+        "site": "https://www.mpmg.mp.br/portal/menu/atuacao/gaeco/",
         "telefone": "(31) 3200-1440",
         "email": "gaeco-grupos-de-combate-a@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 6 — CEP 30130-974"
@@ -7276,7 +7276,7 @@
       {
         "area": "Promotorias de Justiça Locais",
         "funcao": "Atendimento direto ao cidadão nas comarcas, fiscalização de contratos municipais, defesa da infância e júri popular.",
-        "site": "https://www.mpmg.mp.br/promotorias-de-justica-lo",
+        "site": "https://www.mpmg.mp.br/portal/menu/institucional/promotorias-de-justica/",
         "telefone": "(31) 3200-1550",
         "email": "promotorias-de-justica-lo@mpmg.mp.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 7 — CEP 30130-974"
@@ -7286,14 +7286,14 @@
       "canal": "Ouvidoria do Ministério Público de Minas Gerais",
       "telefone": "Disque 127 / (31) 3330-8409",
       "endereco": "Rua Dias Adorno, 367, Santo Agostinho, Belo Horizonte - MG, CEP 30190-110",
-      "balcaoVirtual": "https://www.mpmg.jus.br/portal/menu/ouvidoria/",
-      "portalOuvidoria": "https://ouvidoria.mpmg.jus.br/"
+      "balcaoVirtual": "https://www.mpmg.mp.br/portal/menu/ouvidoria/",
+      "portalOuvidoria": "https://ouvidoria.mpmg.mp.br/"
     },
     "corregedoria": {
       "orgao": "Corregedoria-Geral do MPMG",
       "titular": "Procurador de Justiça Marco Antônio Lopes dos Santos",
       "funcao": "Fiscalização de conduta e prazos processuais de promotores de justiça em todo o Estado de Minas Gerais.",
-      "canalDenuncias": "Protocolo direto na CGMPMG ou via Ouvidoria"
+      "canalDenuncias": "https://ouvidoria.mpmg.mp.br/manifestacao/"
     },
     "documentosChave": [
       {
@@ -7445,7 +7445,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpms.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpms.mp.br",
         "telefone": "(67) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpms.mp.br",
         "endereco": "Parque dos Poderes, Bloco 13, Prédio Principal, Andar 2 — CEP 79031-902"
@@ -7627,7 +7627,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpmt.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpmt.mp.br",
         "telefone": "(65) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpmt.mp.br",
         "endereco": "Av. Historiador Rubens de Mendonça, s/n - CPA, Prédio Principal, Andar 2 — CEP 78055-901"
@@ -7809,7 +7809,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mppa.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mppa.mp.br",
         "telefone": "(91) 3200-1000",
         "email": "procuradoria-geral-de-jus@mppa.mp.br",
         "endereco": "Av. Almirante Barroso, 3089 - Souza, Prédio Principal, Andar 2 — CEP 66613-710"
@@ -7991,7 +7991,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mppb.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mppb.mp.br",
         "telefone": "(83) 3200-1000",
         "email": "procuradoria-geral-de-jus@mppb.mp.br",
         "endereco": "Praça João Pessoa, s/n - Centro, Prédio Principal, Andar 2 — CEP 58013-900"
@@ -8173,7 +8173,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mppe.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mppe.mp.br",
         "telefone": "(81) 3200-1000",
         "email": "procuradoria-geral-de-jus@mppe.mp.br",
         "endereco": "Praça da República, s/n - Santo Antônio, Prédio Principal, Andar 2 — CEP 50010-040"
@@ -8355,7 +8355,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mppi.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mppi.mp.br",
         "telefone": "(86) 3200-1000",
         "email": "procuradoria-geral-de-jus@mppi.mp.br",
         "endereco": "Av. Padre Humberto Pietrogrande, 3509 - São Raimundo, Prédio Principal, Andar 2 — CEP 64075-065"
@@ -8537,7 +8537,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mppr.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mppr.mp.br",
         "telefone": "(41) 3200-1000",
         "email": "procuradoria-geral-de-jus@mppr.mp.br",
         "endereco": "Praça Nossa Senhora de Salette, s/n - Centro Cívico, Prédio Principal, Andar 2 — CEP 80530-912"
@@ -8719,7 +8719,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mprj.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mprj.mp.br",
         "telefone": "(21) 3200-1000",
         "email": "procuradoria-geral-de-jus@mprj.mp.br",
         "endereco": "Av. Erasmo Braga, 115 - Centro, Prédio Principal, Andar 2 — CEP 20020-903"
@@ -8901,7 +8901,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mprn.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mprn.mp.br",
         "telefone": "(84) 3200-1000",
         "email": "procuradoria-geral-de-jus@mprn.mp.br",
         "endereco": "Av. Jerônimo Câmara, 2000 - Nossa Senhora de Nazaré, Prédio Principal, Andar 2 — CEP 59060-400"
@@ -9083,7 +9083,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpro.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpro.mp.br",
         "telefone": "(69) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpro.mp.br",
         "endereco": "Rua José Camacho, 165 - Olaria, Prédio Principal, Andar 2 — CEP 76801-330"
@@ -9265,7 +9265,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mprr.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mprr.mp.br",
         "telefone": "(95) 3200-1000",
         "email": "procuradoria-geral-de-jus@mprr.mp.br",
         "endereco": "Praça do Centro Cívico, 296 - Centro, Prédio Principal, Andar 2 — CEP 69301-380"
@@ -9447,7 +9447,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mprs.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mprs.mp.br",
         "telefone": "(51) 3200-1000",
         "email": "procuradoria-geral-de-jus@mprs.mp.br",
         "endereco": "Av. Aureliano de Figueiredo Pinto, 80 - Praia de Belas, Prédio Principal, Andar 2 — CEP 90050-190"
@@ -9629,7 +9629,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpsc.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpsc.mp.br",
         "telefone": "(48) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpsc.mp.br",
         "endereco": "Rua Álvaro Millen da Silveira, 208 - Centro, Prédio Principal, Andar 2 — CEP 88020-901"
@@ -9811,7 +9811,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpse.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpse.mp.br",
         "telefone": "(79) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpse.mp.br",
         "endereco": "Praça Fausto de Cardoso, 112 - Centro, Prédio Principal, Andar 2 — CEP 49010-080"
@@ -9993,7 +9993,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpsp.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpsp.mp.br",
         "telefone": "(11) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpsp.mp.br",
         "endereco": "Praça da Sé, s/n - Centro, Prédio Principal, Andar 2 — CEP 01018-010"
@@ -10175,7 +10175,7 @@
       {
         "area": "Procuradoria-Geral de Justiça",
         "funcao": "Direção geral, representação perante o STF/STJ e proposição de ações de inconstitucionalidade.",
-        "site": "https://www.mpto.mp.br/procuradoria-geral-de-jus",
+        "site": "https://www.mpto.mp.br",
         "telefone": "(63) 3200-1000",
         "email": "procuradoria-geral-de-jus@mpto.mp.br",
         "endereco": "Praça dos Girassóis, s/n - Plano Diretor Norte, Prédio Principal, Andar 2 — CEP 77015-007"
@@ -10353,7 +10353,7 @@
       {
         "area": "Presidência / Direção Geral",
         "funcao": "Representação máxima, pautas plenárias e diretrizes orçamentárias.",
-        "site": "https://www.stf.jus.br/presidencia-direcao-geral",
+        "site": "https://portal.stf.jus.br/textos/verTexto.asp?servico=sobreStfComposicaoComposicao",
         "telefone": "(61) 3200-1000",
         "email": "presidencia-direcao-geral@stf.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -10361,7 +10361,7 @@
       {
         "area": "Plenário / Turmas",
         "funcao": "Julgamento colegiado de processos de repercussão geral e recursos constitucionais.",
-        "site": "https://www.stf.jus.br/plenario-turmas",
+        "site": "https://portal.stf.jus.br/sessoes/",
         "telefone": "(61) 3200-1110",
         "email": "plenario-turmas@stf.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -10369,7 +10369,7 @@
       {
         "area": "Secretaria-Geral",
         "funcao": "Gestão estratégica, governança de dados e administração predial e tecnológica.",
-        "site": "https://www.stf.jus.br/secretaria-geral",
+        "site": "https://portal.stf.jus.br/",
         "telefone": "(61) 3200-1220",
         "email": "secretaria-geral@stf.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -10379,13 +10379,13 @@
       "canal": "Ouvidoria do STF",
       "telefone": "0800 oficial / Balcão Digital",
       "endereco": "Sede Institucional",
-      "portalOuvidoria": "https://www.stf.jus.br/ouvidoria"
+      "portalOuvidoria": "https://portal.stf.jus.br/ouvidoria/"
     },
     "corregedoria": {
       "orgao": "Corregedoria do STF",
       "titular": "Corregedor Nacional / Ministro Corregedor",
       "funcao": "Fiscalização disciplinar e integridade institucional.",
-      "canalDenuncias": "https://www.stf.jus.br/corregedoria"
+      "canalDenuncias": "https://portal.stf.jus.br/"
     },
     "documentosEAtos": [
       {
@@ -10476,7 +10476,7 @@
       {
         "area": "Presidência / Direção Geral",
         "funcao": "Representação máxima, pautas plenárias e diretrizes orçamentárias.",
-        "site": "https://www.stj.jus.br/presidencia-direcao-geral",
+        "site": "https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional/Presidencia",
         "telefone": "(61) 3200-1000",
         "email": "presidencia-direcao-geral@stj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -10484,7 +10484,7 @@
       {
         "area": "Plenário / Turmas",
         "funcao": "Julgamento colegiado de processos de repercussão geral e recursos constitucionais.",
-        "site": "https://www.stj.jus.br/plenario-turmas",
+        "site": "https://www.stj.jus.br/sites/portalp/Institucional/Composicao",
         "telefone": "(61) 3200-1110",
         "email": "plenario-turmas@stj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -10492,7 +10492,7 @@
       {
         "area": "Secretaria-Geral",
         "funcao": "Gestão estratégica, governança de dados e administração predial e tecnológica.",
-        "site": "https://www.stj.jus.br/secretaria-geral",
+        "site": "https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional",
         "telefone": "(61) 3200-1220",
         "email": "secretaria-geral@stj.jus.br",
         "endereco": "Sede Institucional, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -10502,13 +10502,13 @@
       "canal": "Ouvidoria do STJ",
       "telefone": "0800 oficial / Balcão Digital",
       "endereco": "Sede Institucional",
-      "portalOuvidoria": "https://www.stj.jus.br/ouvidoria"
+      "portalOuvidoria": "https://www.stj.jus.br/sites/portalp/Transparencia/Ouvidoria"
     },
     "corregedoria": {
       "orgao": "Corregedoria do STJ",
       "titular": "Corregedor Nacional / Ministro Corregedor",
       "funcao": "Fiscalização disciplinar e integridade institucional.",
-      "canalDenuncias": "https://www.stj.jus.br/corregedoria"
+      "canalDenuncias": "https://www.stj.jus.br/sites/portalp/Transparencia"
     },
     "documentosEAtos": [
       {
@@ -10601,7 +10601,7 @@
       {
         "area": "Tribunal Pleno",
         "funcao": "Julgamento das contas do Governador do Estado, consultas jurídicas vinculantes e incidentes de inconstitucionalidade.",
-        "site": "https://www.tcemg.jus.br/tribunal-pleno",
+        "site": "https://www.tce.mg.gov.br/Colegiado-Composicao",
         "telefone": "(61) 3200-1000",
         "email": "tribunal-pleno@tcemg.jus.br",
         "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -10609,7 +10609,7 @@
       {
         "area": "1ª e 2ª Câmaras",
         "funcao": "Julgamento de tomada de contas especiais, contratos administrativos municipais e aposentadorias de servidores.",
-        "site": "https://www.tcemg.jus.br/1a-e-2a-camaras",
+        "site": "https://www.tce.mg.gov.br/Colegiado-Composicao",
         "telefone": "(61) 3200-1110",
         "email": "1a-e-2a-camaras@tcemg.jus.br",
         "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -10617,7 +10617,7 @@
       {
         "area": "Ministério Público de Contas (MPC-MG)",
         "funcao": "Órgão ministerial autônomo que oficia nos processos para garantir o cumprimento estrito da lei orçamentária.",
-        "site": "https://www.tcemg.jus.br/ministerio-publico-de-con",
+        "site": "https://mpc.tce.mg.gov.br/",
         "telefone": "(61) 3200-1220",
         "email": "ministerio-publico-de-con@tcemg.jus.br",
         "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -10625,7 +10625,7 @@
       {
         "area": "Diretoria de Fiscalização de Municípios (SICOM)",
         "funcao": "Recepção mensal de dados orçamentários e fiscais de todas as 853 prefeituras e câmaras de Minas.",
-        "site": "https://www.tcemg.jus.br/diretoria-de-fiscalizacao",
+        "site": "https://sicom.tce.mg.gov.br/",
         "telefone": "(61) 3200-1330",
         "email": "diretoria-de-fiscalizacao@tcemg.jus.br",
         "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435, Prédio Principal, Andar 5 — CEP 70000-000"
@@ -10633,7 +10633,7 @@
       {
         "area": "Suricato (Central de Inteligência)",
         "funcao": "Laboratório de auditoria automatizada que cruza CNPJs, parentesco e indícios de fraude em licitações públicas.",
-        "site": "https://www.tcemg.jus.br/suricato-central-de-intel",
+        "site": "https://www.tce.mg.gov.br/suricato",
         "telefone": "(61) 3200-1440",
         "email": "suricato-central-de-intel@tcemg.jus.br",
         "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435, Prédio Principal, Andar 6 — CEP 70000-000"
@@ -10650,7 +10650,7 @@
       "orgao": "Corregedoria do TCE-MG",
       "titular": "Conselheiro Durval Ângelo",
       "funcao": "Controle e correição interna de processos e cumprimento de prazos de auditoria.",
-      "canalDenuncias": "Protocolo eletrônico TCE-MG"
+      "canalDenuncias": "https://www.tce.mg.gov.br/corregedoria"
     },
     "documentosChave": [
       {
@@ -10755,7 +10755,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjac.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjac.jus.br",
         "telefone": "(68) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjac.jus.br",
         "endereco": "Rua Benjamin Constant, 271 - Centro, Prédio Principal, Andar 4 — CEP 69900-062"
@@ -10935,7 +10935,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjal.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjal.jus.br",
         "telefone": "(82) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjal.jus.br",
         "endereco": "Praça Marechal Deodoro, 319 - Centro, Prédio Principal, Andar 4 — CEP 57020-919"
@@ -11115,7 +11115,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjam.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjam.jus.br",
         "telefone": "(92) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjam.jus.br",
         "endereco": "Av. André Araújo, s/n - Aleixo, Prédio Principal, Andar 4 — CEP 69060-000"
@@ -11295,7 +11295,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjap.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjap.jus.br",
         "telefone": "(96) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjap.jus.br",
         "endereco": "Rua Manoel Eudóxio Pereira, s/n - Central, Prédio Principal, Andar 4 — CEP 68900-000"
@@ -11475,7 +11475,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjba.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjba.jus.br",
         "telefone": "(71) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjba.jus.br",
         "endereco": "5ª Av. do CAB, 560 - Centro Administrativo da Bahia, Prédio Principal, Andar 4 — CEP 41745-971"
@@ -11655,7 +11655,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjce.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjce.jus.br",
         "telefone": "(85) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjce.jus.br",
         "endereco": "Av. General Afonso Albuquerque Lima, s/n - Cambeba, Prédio Principal, Andar 4 — CEP 60822-325"
@@ -11835,7 +11835,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjdft.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjdft.jus.br",
         "telefone": "(61) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjdft.jus.br",
         "endereco": "Praça Municipal, Lote 1 - Bloco A, Prédio Principal, Andar 4 — CEP 70094-900"
@@ -12015,7 +12015,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjes.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjes.jus.br",
         "telefone": "(27) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjes.jus.br",
         "endereco": "Rua Des. Homero Mafra, 60 - Enseada do Suá, Prédio Principal, Andar 4 — CEP 29050-906"
@@ -12195,7 +12195,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjgo.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjgo.jus.br",
         "telefone": "(62) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjgo.jus.br",
         "endereco": "Av. Assis Chateaubriand, 195 - Setor Oeste, Prédio Principal, Andar 4 — CEP 74130-012"
@@ -12375,7 +12375,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjma.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjma.jus.br",
         "telefone": "(98) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjma.jus.br",
         "endereco": "Praça Pedro II, s/n - Centro Histórico, Prédio Principal, Andar 4 — CEP 65010-450"
@@ -12537,7 +12537,7 @@
       {
         "area": "Presidência",
         "funcao": "Representação institucional, gestão orçamentária, administração geral e relações com demais Poderes.",
-        "site": "https://www.tjmg.jus.br/presidencia",
+        "site": "https://www.tjmg.jus.br/portal-tjmg/institucional/presidencia/",
         "telefone": "(31) 3200-1000",
         "email": "presidencia@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 2 — CEP 30130-974"
@@ -12545,7 +12545,7 @@
       {
         "area": "1ª Vice-Presidência",
         "funcao": "Supervisão da área judiciária, admissibilidade de recursos para STJ/STF e distribuição processual de 2º grau.",
-        "site": "https://www.tjmg.jus.br/1a-vice-presidencia",
+        "site": "https://www.tjmg.jus.br/portal-tjmg/institucional/1-vice-presidencia/",
         "telefone": "(31) 3200-1110",
         "email": "1a-vice-presidencia@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 3 — CEP 30130-974"
@@ -12553,7 +12553,7 @@
       {
         "area": "2ª Vice-Presidência (EJEF)",
         "funcao": "Escola Judicial Edésio Fernandes — capacitação continuada de juízes e servidores e gestão da jurisprudência.",
-        "site": "https://www.tjmg.jus.br/2a-vice-presidencia-ejef",
+        "site": "https://ejef.tjmg.jus.br/",
         "telefone": "(31) 3200-1220",
         "email": "2a-vice-presidencia-ejef@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 4 — CEP 30130-974"
@@ -12561,7 +12561,7 @@
       {
         "area": "3ª Vice-Presidência (Cejusc)",
         "funcao": "Núcleo Permanente de Métodos Consensuais de Solução de Conflitos e coordenação dos centros de mediação.",
-        "site": "https://www.tjmg.jus.br/3a-vice-presidencia-cejus",
+        "site": "https://www.tjmg.jus.br/portal-tjmg/institucional/3-vice-presidencia/",
         "telefone": "(31) 3200-1330",
         "email": "3a-vice-presidencia-cejus@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 5 — CEP 30130-974"
@@ -12569,7 +12569,7 @@
       {
         "area": "Corregedoria-Geral de Justiça (CGJ)",
         "funcao": "Órgão de fiscalização, disciplina e orientação administrativa dos juizados, varas de 1º grau e cartórios de notas/registro.",
-        "site": "https://www.tjmg.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjmg.jus.br/portal-tjmg/corregedoria/",
         "telefone": "(31) 3200-1440",
         "email": "corregedoria-geral-de-jus@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 6 — CEP 30130-974"
@@ -12577,7 +12577,7 @@
       {
         "area": "Tribunal Pleno e Câmaras Especializadas",
         "funcao": "Julgamento colegiado de recursos e ações originárias (Câmaras Cíveis, Criminais e de Direito Público).",
-        "site": "https://www.tjmg.jus.br/tribunal-pleno-e-camaras",
+        "site": "https://www.tjmg.jus.br/portal-tjmg/institucional/composicao-do-tribunal/",
         "telefone": "(31) 3200-1550",
         "email": "tribunal-pleno-e-camaras@tjmg.jus.br",
         "endereco": "Av. Afonso Pena, 4001 - Serra, Prédio Principal, Andar 7 — CEP 30130-974"
@@ -12594,7 +12594,7 @@
       "orgao": "Corregedoria-Geral de Justiça de Minas Gerais",
       "titular": "Desembargador Estevão Lucchesi de Carvalho",
       "funcao": "Inspeção e correição ordinária de fóruns, secretarias de juízo e serventias extrajudiciais (cartórios).",
-      "canalDenuncias": "Sistema SISCOR / Atendimento da CGJ TJMG"
+      "canalDenuncias": "https://corregedoria.tjmg.jus.br/"
     },
     "documentosChave": [
       {
@@ -12760,7 +12760,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjms.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjms.jus.br",
         "telefone": "(67) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjms.jus.br",
         "endereco": "Parque dos Poderes, Bloco 13, Prédio Principal, Andar 4 — CEP 79031-902"
@@ -12940,7 +12940,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjmt.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjmt.jus.br",
         "telefone": "(65) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjmt.jus.br",
         "endereco": "Av. Historiador Rubens de Mendonça, s/n - CPA, Prédio Principal, Andar 4 — CEP 78055-901"
@@ -13120,7 +13120,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjpa.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjpa.jus.br",
         "telefone": "(91) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjpa.jus.br",
         "endereco": "Av. Almirante Barroso, 3089 - Souza, Prédio Principal, Andar 4 — CEP 66613-710"
@@ -13300,7 +13300,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjpb.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjpb.jus.br",
         "telefone": "(83) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjpb.jus.br",
         "endereco": "Praça João Pessoa, s/n - Centro, Prédio Principal, Andar 4 — CEP 58013-900"
@@ -13480,7 +13480,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjpe.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjpe.jus.br",
         "telefone": "(81) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjpe.jus.br",
         "endereco": "Praça da República, s/n - Santo Antônio, Prédio Principal, Andar 4 — CEP 50010-040"
@@ -13660,7 +13660,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjpi.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjpi.jus.br",
         "telefone": "(86) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjpi.jus.br",
         "endereco": "Av. Padre Humberto Pietrogrande, 3509 - São Raimundo, Prédio Principal, Andar 4 — CEP 64075-065"
@@ -13840,7 +13840,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjpr.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjpr.jus.br",
         "telefone": "(41) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjpr.jus.br",
         "endereco": "Praça Nossa Senhora de Salette, s/n - Centro Cívico, Prédio Principal, Andar 4 — CEP 80530-912"
@@ -14020,7 +14020,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjrj.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjrj.jus.br",
         "telefone": "(21) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjrj.jus.br",
         "endereco": "Av. Erasmo Braga, 115 - Centro, Prédio Principal, Andar 4 — CEP 20020-903"
@@ -14200,7 +14200,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjrn.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjrn.jus.br",
         "telefone": "(84) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjrn.jus.br",
         "endereco": "Av. Jerônimo Câmara, 2000 - Nossa Senhora de Nazaré, Prédio Principal, Andar 4 — CEP 59060-400"
@@ -14380,7 +14380,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjro.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjro.jus.br",
         "telefone": "(69) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjro.jus.br",
         "endereco": "Rua José Camacho, 165 - Olaria, Prédio Principal, Andar 4 — CEP 76801-330"
@@ -14560,7 +14560,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjrr.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjrr.jus.br",
         "telefone": "(95) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjrr.jus.br",
         "endereco": "Praça do Centro Cívico, 296 - Centro, Prédio Principal, Andar 4 — CEP 69301-380"
@@ -14740,7 +14740,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjrs.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjrs.jus.br",
         "telefone": "(51) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjrs.jus.br",
         "endereco": "Av. Aureliano de Figueiredo Pinto, 80 - Praia de Belas, Prédio Principal, Andar 4 — CEP 90050-190"
@@ -14920,7 +14920,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjsc.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjsc.jus.br",
         "telefone": "(48) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjsc.jus.br",
         "endereco": "Rua Álvaro Millen da Silveira, 208 - Centro, Prédio Principal, Andar 4 — CEP 88020-901"
@@ -15100,7 +15100,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjse.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjse.jus.br",
         "telefone": "(79) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjse.jus.br",
         "endereco": "Praça Fausto de Cardoso, 112 - Centro, Prédio Principal, Andar 4 — CEP 49010-080"
@@ -15280,7 +15280,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjsp.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjsp.jus.br",
         "telefone": "(11) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjsp.jus.br",
         "endereco": "Praça da Sé, s/n - Centro, Prédio Principal, Andar 4 — CEP 01018-010"
@@ -15460,7 +15460,7 @@
       {
         "area": "Corregedoria-Geral de Justiça",
         "funcao": "Correição ordinária e fiscalização de fóruns, juizados e serventias extrajudiciais (cartórios).",
-        "site": "https://www.tjto.jus.br/corregedoria-geral-de-jus",
+        "site": "https://www.tjto.jus.br",
         "telefone": "(63) 3200-1220",
         "email": "corregedoria-geral-de-jus@tjto.jus.br",
         "endereco": "Praça dos Girassóis, s/n - Plano Diretor Norte, Prédio Principal, Andar 4 — CEP 77015-007"
@@ -15622,7 +15622,7 @@
       {
         "area": "Presidência",
         "funcao": "Gestão superior e representação do tribunal mais jovem da Justiça Federal brasileira (criado em 2022).",
-        "site": "https://portal.trf6.jus.br/presidencia",
+        "site": "https://portal.trf6.jus.br/institucional/presidencia/",
         "telefone": "(61) 3200-1000",
         "email": "presidencia@trf6.jus.br",
         "endereco": "Av. Álvares Cabral, 1805, Santo Agostinho, Belo Horizonte - MG, CEP 30170-008, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -15630,7 +15630,7 @@
       {
         "area": "Vice-Presidência e Corregedoria Regional",
         "funcao": "Fiscalização correcional de varas federais, juizados especiais federais e distribuição de processos.",
-        "site": "https://portal.trf6.jus.br/vice-presidencia-e-correg",
+        "site": "https://portal.trf6.jus.br/institucional/corregedoria-regional/",
         "telefone": "(61) 3200-1110",
         "email": "vice-presidencia-e-correg@trf6.jus.br",
         "endereco": "Av. Álvares Cabral, 1805, Santo Agostinho, Belo Horizonte - MG, CEP 30170-008, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -15638,7 +15638,7 @@
       {
         "area": "Turmas Recursais e Julgadoras",
         "funcao": "Apreciação de recursos em matéria previdenciária (INSS), tributária federal, penal e socioambiental.",
-        "site": "https://portal.trf6.jus.br/turmas-recursais-e-julgad",
+        "site": "https://portal.trf6.jus.br/institucional/composicao-da-corte/",
         "telefone": "(61) 3200-1220",
         "email": "turmas-recursais-e-julgad@trf6.jus.br",
         "endereco": "Av. Álvares Cabral, 1805, Santo Agostinho, Belo Horizonte - MG, CEP 30170-008, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -15646,7 +15646,7 @@
       {
         "area": "Varas Federais Cíveis e de Execução Fiscal",
         "funcao": "Processamento de demandas contra autarquias federais, bancos públicos (CEF) e grandes devedores da União.",
-        "site": "https://portal.trf6.jus.br/varas-federais-civeis-e-d",
+        "site": "https://portal.trf6.jus.br/servicos-judiciais/jurisdicao-e-competencia/",
         "telefone": "(61) 3200-1330",
         "email": "varas-federais-civeis-e-d@trf6.jus.br",
         "endereco": "Av. Álvares Cabral, 1805, Santo Agostinho, Belo Horizonte - MG, CEP 30170-008, Prédio Principal, Andar 5 — CEP 70000-000"
@@ -15663,7 +15663,7 @@
       "orgao": "Corregedoria Regional do TRF-6",
       "titular": "Desembargador Federal Ricardo Machado Rabelo",
       "funcao": "Inspeção e controle das subseções judiciárias no interior de Minas e na capital.",
-      "canalDenuncias": "Portal da Corregedoria do TRF-6"
+      "canalDenuncias": "https://portal.trf6.jus.br/institucional/corregedoria-regional/"
     },
     "documentosChave": [
       {
@@ -15750,7 +15750,7 @@
       {
         "area": "Presidência",
         "funcao": "Representação política, gestão administrativa geral e homologação de acordos em dissídios coletivos.",
-        "site": "https://portal.trt3.jus.br/presidencia",
+        "site": "https://portal.trt3.jus.br/internet/institucional/administracao/presidencia",
         "telefone": "(61) 3200-1000",
         "email": "presidencia@trt3.jus.br",
         "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020, Prédio Principal, Andar 2 — CEP 70000-000"
@@ -15758,7 +15758,7 @@
       {
         "area": "1ª e 2ª Vice-Presidências",
         "funcao": "Distribuição de recursos para o Tribunal Superior do Trabalho (TST) e supervisão pedagógica da Escola Judicial.",
-        "site": "https://portal.trt3.jus.br/1a-e-2a-vice-presidencias",
+        "site": "https://portal.trt3.jus.br/internet/institucional/administracao",
         "telefone": "(61) 3200-1110",
         "email": "1a-e-2a-vice-presidencias@trt3.jus.br",
         "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020, Prédio Principal, Andar 3 — CEP 70000-000"
@@ -15766,7 +15766,7 @@
       {
         "area": "Corregedoria Regional",
         "funcao": "Fiscalização e correição periódica em todas as 158 Varas do Trabalho de Minas Gerais.",
-        "site": "https://portal.trt3.jus.br/corregedoria-regional",
+        "site": "https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria",
         "telefone": "(61) 3200-1220",
         "email": "corregedoria-regional@trt3.jus.br",
         "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020, Prédio Principal, Andar 4 — CEP 70000-000"
@@ -15774,7 +15774,7 @@
       {
         "area": "Turmas Julgadoras (1ª a 11ª Turma)",
         "funcao": "Julgamento colegiado de recursos ordinários contra decisões de primeira instância trabalhista.",
-        "site": "https://portal.trt3.jus.br/turmas-julgadoras-1a-a-11",
+        "site": "https://portal.trt3.jus.br/internet/institucional/composicao/turmas",
         "telefone": "(61) 3200-1330",
         "email": "turmas-julgadoras-1a-a-11@trt3.jus.br",
         "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020, Prédio Principal, Andar 5 — CEP 70000-000"
@@ -15782,7 +15782,7 @@
       {
         "area": "Varas do Trabalho",
         "funcao": "Onde começam as ações trabalhistas individuais e fiscalização de assédio e acidentes em empresas.",
-        "site": "https://portal.trt3.jus.br/varas-do-trabalho",
+        "site": "https://portal.trt3.jus.br/internet/conheca-o-trt/jurisdicao-e-enderecos",
         "telefone": "(61) 3200-1440",
         "email": "varas-do-trabalho@trt3.jus.br",
         "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020, Prédio Principal, Andar 6 — CEP 70000-000"
@@ -15799,7 +15799,7 @@
       "orgao": "Corregedoria Regional do TRT-3",
       "titular": "Desembargador Manoel Barbosa da Silva",
       "funcao": "Auditoria presencial e virtual de prazos processuais e produtividade dos juízes do trabalho.",
-      "canalDenuncias": "Atendimento e correição ordinária"
+      "canalDenuncias": "https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria/atendimento"
     },
     "documentosChave": [
       {

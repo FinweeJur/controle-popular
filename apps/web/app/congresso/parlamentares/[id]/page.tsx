@@ -75,11 +75,24 @@ export default async function PerfilParlamentar({ params }: { params: Params }) 
                 {p.email}
               </a>
             ) : null}
-            {p.url_perfil ? (
-              <a href={p.url_perfil} target="_blank" rel="noopener noreferrer" className="underline">
-                Perfil na Câmara ↗
-              </a>
-            ) : null}
+            {(() => {
+              const linkPerfil =
+                p.url_perfil ||
+                (p.casa_id === "senado"
+                  ? `https://www25.senado.leg.br/web/senadores/senador/-/perfil/${p.id_externo}`
+                  : `https://www.camara.leg.br/deputados/${p.id_externo}`);
+              const rotuloCasa = p.casa_id === "senado" ? "Senado Federal" : "Câmara dos Deputados";
+              return linkPerfil ? (
+                <a
+                  href={linkPerfil}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary underline hover:text-accent"
+                >
+                  Perfil no {rotuloCasa} ↗
+                </a>
+              ) : null;
+            })()}
           </div>
         </div>
       </header>

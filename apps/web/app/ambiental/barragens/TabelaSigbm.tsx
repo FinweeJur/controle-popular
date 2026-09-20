@@ -426,7 +426,18 @@ export default function TabelaSigbm() {
           <tbody>
             {ordenadas.map((b) => (
               <tr key={b.id} className="border-b border-border/60">
-                <td className="px-3 py-2 font-medium">{b.nome}</td>
+                <td className="px-3 py-2 font-medium">
+                  <a
+                    href={`https://app.anm.gov.br/sigbm/publico/gerenciar-barragem/detalhar/${b.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-text hover:text-primary hover:underline"
+                    title={`Ver ficha técnica oficial da barragem ${b.nome} (código ${b.id}) no SIGBM/ANM`}
+                  >
+                    <span>{b.nome}</span>
+                    <span className="text-[10px] text-text-soft">↗</span>
+                  </a>
+                </td>
                 <td className="whitespace-nowrap px-3 py-2">{b.municipio}</td>
                 <td className="px-3 py-2">{b.empreendedor}</td>
                 <td className="whitespace-nowrap px-3 py-2">{b.situacao}</td>

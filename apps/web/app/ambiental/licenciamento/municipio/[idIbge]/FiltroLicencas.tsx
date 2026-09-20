@@ -208,12 +208,26 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
                     href={l.link}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="underline opacity-80 hover:opacity-100"
+                    className="font-medium text-primary underline opacity-90 hover:opacity-100"
                   >
-                    Ver na fonte (SEMAD) ↗
+                    Ver na fonte oficial (SEMAD/SIAM) ↗
                   </a>
                   <span className="ml-2 opacity-50">
                     — EIA/RIMA podem estar disponíveis na página original
+                  </span>
+                </p>
+              ) : l.numeroProcesso ? (
+                <p className="mt-2 text-xs">
+                  <a
+                    href={`http://www.siam.mg.gov.br/siam/processo/consulta_processo.jsp?num=${encodeURIComponent(l.numeroProcesso)}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="font-medium text-primary underline opacity-90 hover:opacity-100"
+                  >
+                    Consultar processo {l.numeroProcesso} no SIAM/SEMAD ↗
+                  </a>
+                  <span className="ml-2 opacity-50">
+                    — Acesso direto aos autos digitais e pareceres técnicos
                   </span>
                 </p>
               ) : null}
@@ -231,7 +245,7 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
                 </p>
               ) : null}
 
-              {l.numeroProcesso ? (
+              {l.numeroProcesso && l.link ? (
                 <p className="mt-2 font-mono text-xs opacity-70">Processo {l.numeroProcesso}</p>
               ) : null}
             </li>

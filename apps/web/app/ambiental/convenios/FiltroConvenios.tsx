@@ -382,6 +382,23 @@ export default function FiltroConvenios() {
                     <p className="mt-1.5">{c.objetivo}</p>
                   </details>
                 )}
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/40 pt-2 text-[.82em]">
+                  <a
+                    href={
+                      esf === "federal"
+                        ? `https://portaldatransparencia.gov.br/convenios/${c.id}`
+                        : `https://www.transparencia.mg.gov.br/convenios/convenios-saida?id=${c.id}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-medium text-primary underline underline-offset-2 hover:text-accent"
+                    title={`Consultar convênio ${c.id} na Transparência Oficial`}
+                  >
+                    <span>Consultar convênio {c.id} no Portal Oficial ({esf === "federal" ? "Transferegov" : "CGE-MG"})</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <span className="text-text-soft">Código oficial: {c.id}</span>
+                </div>
               </li>
             );
           })}
