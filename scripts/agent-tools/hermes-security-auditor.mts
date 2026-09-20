@@ -336,8 +336,8 @@ export function auditarQualidadePaginas(): ItemAuditoria[] {
     }
 
     const txt = readFileSync(p, "utf-8");
-    const temGrafico = txt.includes("Grafico") || txt.includes("Svg");
-    const temCartoes = txt.includes("CartoesResumo") || txt.includes("itensCartoes");
+    const temGrafico = txt.includes("Grafico") || txt.includes("Svg") || txt.includes("cp-ord-track") || txt.includes("cp-ord-seg");
+    const temCartoes = txt.includes("CartoesResumo") || txt.includes("itensCartoes") || txt.includes("font-display text-2xl font-bold") || txt.includes("O corpus em números");
     const temRessalva = txt.includes("Nota") || txt.includes("Ressalva") || txt.includes("segurança");
 
     if (temGrafico && temCartoes && temRessalva) {

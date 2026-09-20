@@ -232,7 +232,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "federal",
     frente: "judiciario",
     descricao: "Consulta em tempo real a processos judiciais sem redistribuição de banco derivado.",
-    urlOficial: "https://datajud-wiki.cnj.jus.br",
+    urlOficial: "https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search",
     licenca: "termo-restrito-sem-derivados",
     frequenciaAtualizacao: "tempo-real",
     camada: "ao-vivo",
@@ -268,7 +268,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     // fetch do Node (undici) desta máquina é resetado no handshake TLS —
     // peculiaridade de stack, não indisponibilidade da fonte. Sondagem do
     // PicoClaw pode marcar FALHA aqui mesmo com a fonte viva.
-    urlOficial: "https://geoserver.funai.gov.br",
+    urlOficial: "https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities",
     licenca: "dominio-publico",
     frequenciaAtualizacao: "mensal",
     camada: "public-assets",
@@ -604,7 +604,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "federal",
     frente: "ambiental",
     descricao: "Acordos, pareceres, laudos do Instituto Lactec e Operação Rejeito sobre a barragem do Fundão (Mariana/ES).",
-    urlOficial: "https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
+    urlOficial: "https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "semanal",
     camada: "data-json",
@@ -712,6 +712,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "estadual",
     frente: "ambiental",
     descricao: "Ocorrências criminais de Minas Gerais via PowerBI (572.272 registros, 853 municípios, 2022-2026).",
+    // Domínio removido do DNS em ~2026-09. Dados coletados via download
+    // manual de PowerBI (BancoVDE*.xlsx). URL mantida para referência.
     urlOficial: "https://www.sinesp.mg.gov.br",
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
