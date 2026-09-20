@@ -29,7 +29,7 @@ const tópicos: Topico[] = [
     descricao: "Nomeações e indicacoes em tribunais.",
   },
   {
-    href: "/judiciario/inspeções",
+    href: "/judiciario/inspecoes",
     titulo: "Inspeções",
     descricao: "Inspeções da Corregedoria em órgãos judiciarios.",
   },
@@ -44,12 +44,12 @@ const tópicos: Topico[] = [
     descricao: "Como os dados do Judiciario são coletados.",
   },
   {
-    href: "/judiciario/números",
+    href: "/judiciario/numeros",
     titulo: "Números",
     descricao: "Justiça em Números: estatísticas do Judiciario.",
   },
   {
-    href: "/judiciario/presídios",
+    href: "/judiciario/presidios",
     titulo: "Presídios",
     descricao: "Sistema carcerário e geopresídios.",
   },

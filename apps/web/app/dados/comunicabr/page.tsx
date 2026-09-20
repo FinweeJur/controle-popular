@@ -295,12 +295,12 @@ export default async function ComunicaBRIndex() {
         <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
           Coleta própria de {geradoEm} contra{" "}
           <a
-            href="https://comunicabr.presidencia.gov.br"
+            href="https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline hover:text-accent"
           >
-            comunicabr.presidencia.gov.br ↗
+            ComunicaBR (SECOM / Gov.br) ↗
           </a>
           , uma requisição por município ({Math.round(meta.duracaoS / 60)} minutos de coleta), sem
           autenticação. As {formatNumberBR(cobertura.municipiosComResposta)} cidades responderam e{" "}

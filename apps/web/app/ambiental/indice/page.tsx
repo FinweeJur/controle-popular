@@ -47,7 +47,7 @@ const tópicos: Topico[] = [
     descricao: "Estudos de impacto ambiental e relatórios.",
   },
   {
-    href: "/ambiental/legislação",
+    href: "/ambiental/legislacao",
     titulo: "Legislação",
     descricao: "Normas ambientais municipais, estaduais e federais.",
   },

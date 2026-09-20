@@ -4,17 +4,17 @@ import { IndiceWiki } from "@/app/components/wiki";
 
 const tópicos: Topico[] = [
   {
-    href: "/funçãosocialterra",
+    href: "/funcaosocialterra",
     titulo: "Visão geral",
     descricao: "Panorama da função social da terra e do territorio.",
   },
   {
-    href: "/funçãosocialterra/alertas",
+    href: "/funcaosocialterra/alertas",
     titulo: "Alertas",
     descricao: "Alertas sobre ocupacao e uso do territorio.",
   },
   {
-    href: "/funçãosocialterra/mapa",
+    href: "/funcaosocialterra/mapa",
     titulo: "Mapa",
     descricao: "Globo 3D com camadas de mineracao, CAR e mais.",
   },

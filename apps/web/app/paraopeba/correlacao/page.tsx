@@ -255,7 +255,7 @@ export default function CorrelacaoPage() {
         <p className="mt-2 max-w-3xl text-[.93em] text-text-soft">
           Cotacoes de VALE3:{" "}
           <a
-            href="https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/"
+            href="https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/mercado-a-vista/series-historicas/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-accent hover:underline"

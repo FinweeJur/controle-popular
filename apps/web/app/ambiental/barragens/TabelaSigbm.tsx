@@ -257,7 +257,7 @@ export default function TabelaSigbm() {
           Situação como a ANM publica no cadastro — as 73 em descaracterização aqui são o registro
           federal, fonte diferente das 45 acompanhadas pelo MPMG em{" "}
           <Link href="/barragens/descaracterizacao" className="underline">
-            /barragens/descaracterizacao
+            /ambiental/barragens/descaracterizacao
           </Link>
           .
         </figcaption>

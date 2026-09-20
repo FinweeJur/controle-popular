@@ -79,7 +79,7 @@ export const PONTOS_ACHADOS: PontoAchado[] = [
       "Poligonais de mineração e faixas de restrição ambiental de 8 km no Vale do Jequitinhonha, com processos autorizados confrontados com comunidades tradicionais.",
     destaque: "Dezenas de processos em fase de lavra e requerimento.",
     fonte: "Agência Nacional de Mineração (ANM/SIGMINE)",
-    linkFonte: "https://sistemas.anm.gov.br/SCM/Extra/site/admin/pesquisarProcessos.aspx",
+    linkFonte: "https://www.gov.br/anm/pt-br/assuntos/processos/consulta-de-processos",
     linkPortal: "/aracuai",
     narracaoTexto:
       "No Vale do Jequitinhonha, observamos os processos minerários de lítio e suas faixas de proximidade em relação às áreas de preservação.",

@@ -67,8 +67,8 @@ const PROJETOS: ProjetoLivre[] = [
     ],
     tags: ["Next.js", "TypeScript", "Drizzle", "Dados Abertos", "LGPD"],
     status: "No ar",
-    linkGithub: "https://github.com/melkepinho/controle-popular",
-    linkApp: "https://controlepopular.com.br",
+    linkGithub: "https://github.com/FinweeJur/controle-popular",
+    linkApp: "https://www.controlepopular.com.br",
   },
   {
     id: "llm-br",

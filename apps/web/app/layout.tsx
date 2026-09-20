@@ -22,7 +22,7 @@ import "./globals.css";
  * Antes da unificação, cada um dos três repos tinha o seu próprio
  * RootLayout com `<html>`; num app só, apenas a raiz pode declará-lo.
  */
-const BASE_URL = "https://controlepopular.com.br";
+const BASE_URL = "https://www.controlepopular.com.br";
 const SITE_NAME = "Controle Popular";
 const DEFAULT_DESCRIPTION =
   "Mais de R$ 251 bilhões monitorados em dados públicos: 203 cidades estratégicas, acordos de Mariana e Brumadinho, 7 órgãos de Justiça de MG e diários oficiais com fontes e código aberto.";
@@ -99,7 +99,7 @@ const STRUCTURED_DATA = {
       name: SITE_NAME,
       url: BASE_URL,
       logo: `${BASE_URL}/capas/home-page.webp`,
-      sameAs: ["https://github.com/melkepinho/controle-popular"],
+      sameAs: ["https://github.com/FinweeJur/controle-popular"],
     },
   ],
 };

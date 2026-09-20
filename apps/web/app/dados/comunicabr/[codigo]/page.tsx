@@ -336,12 +336,12 @@ export default async function FichaComunicaBR({ params }: { params: Params }) {
       <p className="mt-10 text-[.85em] text-text-soft">
         Fonte:{" "}
         <a
-          href="https://comunicabr.presidencia.gov.br"
+          href="https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary underline hover:text-accent"
         >
-          ComunicaBR / Presidência da República ↗
+          ComunicaBR (SECOM / Gov.br) ↗
         </a>
         , coleta de {new Date(meta.geradoEm).toLocaleDateString("pt-BR")}. As siglas ao lado de cada
         bloco são o ministério que a própria fonte declara ({c.fontes.length} nesta cidade). Para

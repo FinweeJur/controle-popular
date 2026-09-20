@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 
 interface DatasetJsonLdProps {
   name: string;
@@ -29,7 +29,7 @@ export function DatasetJsonLd({
     "@type": "Dataset",
     name,
     description,
-    url: url.startsWith("http") ? url : `https://controlepopular.com.br${url}`,
+    url: url.startsWith("http") ? url : `https://www.controlepopular.com.br${url}`,
     keywords: keywords.join(", "),
     license,
     temporalCoverage,
@@ -40,7 +40,7 @@ export function DatasetJsonLd({
     creator: {
       "@type": "Organization",
       name: creator,
-      url: "https://controlepopular.com.br",
+      url: "https://www.controlepopular.com.br",
     },
     isAccessibleForFree: true,
   };

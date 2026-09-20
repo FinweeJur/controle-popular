@@ -52,6 +52,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         slug: 'seguranca-alimentar',
         icone: 'Apple',
         tagsRelacionadas: ['alimentacao', 'bolsa-familia', 'vulnerabilidade', 'nutricao'],
+        rotaLegada: '/direitos-em-movimento',
       },
       {
         id: 'moradia',
@@ -61,6 +62,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         slug: 'moradia',
         icone: 'Home',
         tagsRelacionadas: ['moradia', 'habitacao', 'remocoes', 'regularizacao'],
+        rotaLegada: '/direitos-em-movimento/ajuda',
       },
       {
         id: 'acesso-a-justica',
@@ -140,6 +142,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         slug: 'biomas',
         icone: 'Compass',
         tagsRelacionadas: ['biomas', 'cerrado', 'mata-atlantica', 'clima', 'adaptabrasil'],
+        rotaLegada: '/ambiental/clima-risco',
       },
     ],
   },
@@ -180,6 +183,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         slug: 'executivo',
         icone: 'ScrollText',
         tagsRelacionadas: ['executivo', 'prefeitura', 'diario-oficial', 'decretos'],
+        rotaLegada: '/governo',
       },
       {
         id: 'empresas',
@@ -208,6 +212,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         slug: 'transparencia',
         icone: 'Eye',
         tagsRelacionadas: ['transparencia', 'lai', 'tcu', 'controle-social', 'auditoria'],
+        rotaLegada: '/dados/comunicabr',
       },
     ],
   },

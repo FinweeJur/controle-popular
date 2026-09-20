@@ -305,7 +305,7 @@ export default async function FuncaoSocialTerraPage() {
                 deste portal.
               </p>
               <a
-                href="https://www.car.gov.br/publico/imoveis/index"
+                href="https://consulta.car.gov.br/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-2"
