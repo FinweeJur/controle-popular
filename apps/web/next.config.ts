@@ -188,6 +188,14 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  /**
+   * `pg` é carregado por `createRequire` em `lib/db/client.ts` (motor TCP
+   * para host não-Neon). O tracer (`@vercel/nft`) não segue
+   * `createRequire` com argumento variável — sem esta marcação o pacote
+   * ficaria FORA do standalone e o Docker da Guara morreria ao criar o
+   * Pool. Medido em 2026-09-20 (Fase 4).
+   */
+  ...(standaloneBuild ? { serverExternalPackages: ["pg"] } : {}),
   ...(exportandoEstatico
     ? {
         output: "export" as const,

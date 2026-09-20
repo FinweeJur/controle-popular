@@ -51,45 +51,44 @@ export type DB = ReturnType<typeof criar>;
  * build para o outro.
  */
 /**
- * O host é local? É o que decide o motor abaixo.
+ * O host é Neon? Só então o driver SQL-sobre-HTTP entra.
  *
- * Teste por HOSTNAME, não por `includes("localhost")`: uma URL da Neon pode
- * conter a palavra em qualquer lugar (nome de branch, senha) e cairia no
- * driver errado — falhando com "Failed to parse URL", não com algo legível.
+ * Troca por HOSTNAME, nunca por `includes`: uma URL pode conter a palavra
+ * em qualquer lugar (nome de branch, senha). Neon = termina em `neon.tech`.
+ * Qualquer outro host (localhost, Postgres do Guara, Postgres local)
+ * fala TCP puro e usa `pg` — o driver HTTP da Neon não abre conexão
+ * Postgres: ele monta uma URL de API `https://<host>/sql` e, apontado a
+ * outro Postgres, falha com `TypeError: fetch failed`. Medido em
+ * 2026-09-20: sitemap e páginas de Congresso morreram assim no runtime
+ * do Docker da Guara com o banco interno (`svc-*.svc.cluster.local`).
  */
-function ehPostgresLocal(url: string): boolean {
+function ehNeon(url: string): boolean {
   try {
-    const host = new URL(url).hostname;
-    return host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]";
+    return new URL(url).hostname.endsWith("neon.tech");
   } catch {
     return false;
   }
 }
 
 /**
- * MÁQUINA DE BUILD LOCAL (arquitetura C de `docs/deploy-github-pages.md` §7).
+ * MOTOR TCP (`pg` + `drizzle-orm/node-postgres`).
  *
- * `neon()` fala o protocolo SQL-sobre-HTTP da Neon: ele NÃO abre conexão
- * Postgres, ele monta uma URL de API a partir do host. Apontar
- * `DATABASE_URL` para `127.0.0.1` com ele não dá erro de conexão — dá isto,
- * medido em 2026-08-09:
- *
- *     NeonDbError: Error connecting to database:
- *     TypeError: Failed to parse URL from https://api.0.0.1/sql
- *
- * Ou seja: o passo 5 do `docs/build-em-outro-pc.md` ("crie um .env.local com
- * localhost") não podia funcionar sozinho. Faltava este ponto de troca, que
- * o mapa da estrutura já apontava como "o ponto de troca para qualquer modo
- * offline".
+ * Servia só quando `DATABASE_URL` apontava a localhost (build offline,
+ * docs/build-em-outro-pc.md §5). Desde a Fase 4 também serve o runtime do
+ * Docker da Guara Cloud: o host interno `svc-*.svc.cluster.local` não é
+ * Neon, então cai aqui — sem isso o driver HTTP da Neon mandava fetch
+ * HTTPS para o Postgres e producão morria com `fetch failed`.
  *
  * POR QUE `require` ESCONDIDO DO BUNDLER, e não `import` no topo: o alvo
- * padrão é Cloudflare Workers, com teto de 3 MiB gzip e sem TCP. Um
+ * padrão continua Cloudflare Workers, com teto de 3 MiB gzip e sem TCP. Um
  * `import { Pool } from "pg"` no topo deste arquivo entraria no bundle do
- * Worker em todo deploy, para um caminho que só roda em `next build` na
- * máquina de build. O `eval` faz o bundler não enxergar a dependência; o
- * caminho só executa quando o host é local, então no Worker nunca roda.
+ * Worker em todo deploy, para um caminho que lá nunca roda (o host da
+ * Neon usa o motor HTTP). O só-caminho-executado mantém o Worker enxuto.
  *
- * Por isso `pg` é devDependency: produção (Workers) nunca a carrega.
+ * `pg` virou dependency (não mais devDependency): agora ele vive no
+ * runtime — standalone da Guara e `next start` do túnel — e a presença no
+ * standalone garantida por `serverExternalPackages: ["pg"]` (nft não segue
+ * `createRequire` com argumento variável).
  */
 function criarLocal(url: string): DB {
   // `(0, eval)("require")` NAO serve aqui, e o modo de falha e traicoeiro:
@@ -135,7 +134,7 @@ export function getDb(): DB | null {
   const url = process.env.DATABASE_URL;
   if (!url) return (memo = null);
   try {
-    return (memo = ehPostgresLocal(url) ? criarLocal(url) : criar(url));
+  return (memo = ehNeon(url) ? criar(url) : criarLocal(url));
   } catch (e) {
     // O `catch` mudo era a pior falha do pipeline: `DATABASE_URL` presente e
     // driver quebrado davam build VERDE com zero pagina de cidade, porque
