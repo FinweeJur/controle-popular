@@ -191,11 +191,20 @@ const nextConfig: NextConfig = {
   /**
    * `pg` é carregado por `createRequire` em `lib/db/client.ts` (motor TCP
    * para host não-Neon). O tracer (`@vercel/nft`) não segue
-   * `createRequire` com argumento variável — sem esta marcação o pacote
-   * ficaria FORA do standalone e o Docker da Guara morreria ao criar o
-   * Pool. Medido em 2026-09-20 (Fase 4).
+   * `createRequire` com argumento variável — sem as duas marcas abaixo o
+   * Docker da Guara morre ao criar o Pool (`Cannot find module 'pg'`,
+   * medido 2026-09-20): `serverExternalPackages` impede o bundler de
+   * deduplicar o pacote dentro dos chunks e
+   * `outputFileTracingIncludes` o copia para o diretorio standalone.
    */
-  ...(standaloneBuild ? { serverExternalPackages: ["pg"] } : {}),
+  ...(standaloneBuild
+    ? {
+        serverExternalPackages: ["pg"],
+        outputFileTracingIncludes: {
+          "*": ["../../node_modules/pg/**/*"],
+        },
+      }
+    : {}),
   ...(exportandoEstatico
     ? {
         output: "export" as const,
