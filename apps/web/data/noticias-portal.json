@@ -1,5 +1,412 @@
 [
  {
+  "slug": "satelite-cbers-6-cooperacao-espacial-amazonia",
+  "titulo": "Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas",
+  "subtitulo": "Cooperação com a China investe US$ 51 milhões em radar SAR para flagrar desmatamento noturno.",
+  "resumo": "Brasil e China aprovam cronograma de desenvolvimento do satélite ambiental CBERS-6. Novo sensor de radar óptico superará limitações climáticas na fiscalização florestal.",
+  "categoria": "Tecnologia & Soberania",
+  "frente": "ambiental",
+  "subfrente": "Monitoramento por Satélite",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de dados do INPE e Agência Espacial Brasileira, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "cbers-6",
+   "inpe",
+   "amazonia",
+   "desmatamento",
+   "cooperacao-espacial"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026satelitecbers6,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/satelite-cbers-6-cooperacao-espacial-amazonia}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Instituto Nacional de Pesquisas Espaciais (INPE - Programa CBERS)",
+    "url": "https://www.gov.br/inpe/pt-br"
+   },
+   {
+    "nome": "Agência Espacial Brasileira (AEB)",
+    "url": "https://www.gov.br/aeb/pt-br"
+   },
+   {
+    "nome": "Ministério da Ciência, Tecnologia e Inovação (MCTI)",
+    "url": "https://www.gov.br/mcti/pt-br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Investimento Total",
+    "valor": "US$ 51 mi"
+   },
+   {
+    "rotulo": "Tecnologia do Sensor",
+    "valor": "Radar SAR"
+   },
+   {
+    "rotulo": "Cobertura sob Nuvens",
+    "valor": "100% contínua"
+   },
+   {
+    "rotulo": "Parceiros Oficiais",
+    "valor": "INPE & CNSA"
+   }
+  ],
+  "recomendacaoVerificar": "Acompanhe as especificações da missão no [Portal do INPE](https://www.gov.br/inpe/pt-br) e verifique os alertas de satélite no portal.",
+  "paragrafos": [
+   "O [Instituto Nacional de Pesquisas Espaciais (INPE)](https://www.gov.br/inpe/pt-br) avança no desenvolvimento do satélite ambiental CBERS-6. A missão internacional é desenvolvida em parceria com a agência espacial da China. O investimento conjunto está orçado em US$ 51 milhões para lançamento em órbita baixa. Os relatórios oficiais do programa constam no [Portal do INPE](https://www.gov.br/inpe/pt-br).",
+   "O satélite utilizará um sensor de radar de abertura sintética denominado SAR. Esta tecnologia emite pulsos capazes de atravessar coberturas de nuvens e névoas intensas. As imagens permitirão ao [Ibama](https://www.gov.br/ibama/pt-br) detectar desmatamentos ilegais e queimadas durante a noite. Os dados captados serão compartilhados gratuitamente com universidades públicas e institutos federais.",
+   "A soberania de monitoramento ambiental fortalece a preservação dos biomas da Amazônia e Cerrado. O leitor pode conferir os alertas e cruzamentos no [Observatório Ambiental (ONSA)](/ambiental)."
+  ]
+ },
+ {
+  "slug": "indicadores-economicos-banco-central-credito-inflacao",
+  "titulo": "Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano",
+  "subtitulo": "Séries temporais do BCB mostram impacto da Selic sobre juros ao consumidor e dívida pública.",
+  "resumo": "Atualização das séries econômicas do Banco Central reúne taxas de juros, inflação e endividamento. Crédito rotativo permanece elevado enquanto dívida líquida atinge 61% do PIB.",
+  "categoria": "Economia & Cidadania",
+  "frente": "estado",
+  "subfrente": "Indicadores Macroeconômicos",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de séries do SGS do Banco Central do Brasil, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "banco-central",
+   "bcb",
+   "selic",
+   "ipca",
+   "cheque-especial"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026indicadoreseconomicos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/indicadores-economicos-banco-central-credito-inflacao}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Banco Central do Brasil (SGS - Sistema Gerenciador de Séries Temporais)",
+    "url": "https://www3.bcb.gov.br/sgspub/"
+   },
+   {
+    "nome": "Portal de Dados Abertos do BCB",
+    "url": "https://dadosabertos.bcb.gov.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Cheque Especial",
+    "valor": "128,4% ao ano"
+   },
+   {
+    "rotulo": "Taxa Selic Vigente",
+    "valor": "10,50% ao ano"
+   },
+   {
+    "rotulo": "IPCA em 12 Meses",
+    "valor": "4,24%"
+   },
+   {
+    "rotulo": "Dívida Líquida / PIB",
+    "valor": "61,8% do PIB"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte as séries econômicas históricas no [Sistema Gerenciador de Séries do BCB](https://www3.bcb.gov.br/sgspub/) e no painel econômico.",
+  "paragrafos": [
+   "A base de dados do [Banco Central do Brasil (BCB)](https://dadosabertos.bcb.gov.br) atualizou os indicadores monetários nacionais. O custo médio do cheque especial cobrado aos correntistas bancários atingiu 128,4% ao ano. A taxa básica [Selic](https://www3.bcb.gov.br/sgspub/) mantida pelo Copom permanece no patamar de 10,50% anuais. As estatísticas oficiais estão disponíveis no [Sistema Gerenciador de Séries Temporais](https://www3.bcb.gov.br/sgspub/).",
+   "O índice de inflação oficial [IPCA](https://www.ibge.gov.br) acumulou variação de 4,24% no período de doze meses. Por outro lado, a Dívida Líquida do Setor Público alcançou 61,8% do PIB nacional. O crescimento das despesas financeiras pressiona o orçamento voltado para saúde e educação pública. O monitoramento das contas públicas pode ser acompanhado no [Painel de Orçamento](/estado-e-economia/orcamento).",
+   "O cidadão pode interagir com os gráficos históricos no [Painel de Orçamento e Economia](/estado-e-economia/orcamento). Os dados econômicos são atualizados diretamente através das APIs públicas oficiais."
+  ]
+ },
+ {
+  "slug": "minerais-criticos-litio-jequitinhonha-soberania",
+  "titulo": "Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional",
+  "subtitulo": "Minas Gerais concentra 85% das reservas brasileiras do mineral essencial para baterias elétricas.",
+  "resumo": "Exploração de lítio e terras raras atrai investimentos estrangeiros para municípios do semiárido mineiro. Nova regulação prioriza industrialização local e veta barragens a montante.",
+  "categoria": "Soberania Mineral",
+  "frente": "terra",
+  "subfrente": "Mineração & Comunidades",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de fontes do MME e ANM, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "litio",
+   "vale-do-jequitinhonha",
+   "minerais-criticos",
+   "aracuai",
+   "atinga"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026litiovalejequitinhonha,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/minerais-criticos-litio-jequitinhonha-soberania}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Ministério de Minas e Energia (MME - Minerais Estratégicos)",
+    "url": "https://www.gov.br/mme/pt-br"
+   },
+   {
+    "nome": "Agência Nacional de Mineração (ANM)",
+    "url": "https://www.gov.br/anm/pt-br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Reservas em MG",
+    "valor": "85% do país"
+   },
+   {
+    "rotulo": "Municípios Foco",
+    "valor": "Araçuaí e Itinga"
+   },
+   {
+    "rotulo": "Processos na ANM",
+    "valor": "14 concessões"
+   },
+   {
+    "rotulo": "Terras Raras (Goiás)",
+    "valor": "R$ 1,5 bi"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte os títulos minerários no [Sistema de Mineração da ANM](https://www.gov.br/anm/pt-br) e acompanhe os dados dos municípios no portal.",
+  "paragrafos": [
+   "Os municípios de [Araçuaí](/aracuai) e [Itinga](/itinga), no Vale do Jequitinhonha, lideram a mineração de lítio. As jazidas representam 85% das reservas economicamente viáveis conhecidas no Brasil. O mineral é matéria-prima fundamental para fabricação de baterias de veículos elétricos e eletrônicos. Os registros de concessão de lavra foram validados na [Agência Nacional de Mineração (ANM)](https://www.gov.br/anm/pt-br).",
+   "Em Goiás, o município de Minaçu recebeu R$ 1,5 bilhão em terras raras. A mineradora [Serra Verde](https://www.serraverde.com) opera o projeto com apoio financeiro de fundos dos Estados Unidos. O [Ministério de Minas e Energia](https://www.gov.br/mme/pt-br) determinou exigências rígidas de refino e processamento químico local. A norma veda a exportação exclusiva de minério bruto sem agregação de valor.",
+   "O observatório socioambiental fiscaliza o cumprimento das normas de sustentabilidade e proteção dos recursos hídricos. Acompanhe os indicadores das cidades produtoras na área de [Função Social da Terra](/terras)."
+  ]
+ },
+ {
+  "slug": "cobertura-celular-anatel-desertos-digitais-brasil",
+  "titulo": "Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País",
+  "subtitulo": "Desertos digitais isolam populações no interior do Norte e Nordeste da rede 4G e 5G.",
+  "resumo": "Mapeamento das antenas de telefonia móvel revela exclusão digital em centenas de municípios. Populações rurais enfrentam barreiras de acesso a serviços públicos e bancos digitais.",
+  "categoria": "Inclusão Digital",
+  "frente": "cidades",
+  "subfrente": "Telecomunicações & Cidadania",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir dos dados abertos de cobertura da Anatel e do FUST, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "anatel",
+   "cobertura-celular",
+   "desertos-digitais",
+   "fust",
+   "conectividade"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026coberturacelular,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/cobertura-celular-anatel-desertos-digitais-brasil}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Agência Nacional de Telecomunicações (Anatel - Dados Abertos)",
+    "url": "https://dados.gov.br/dados/conjuntos-dados/smp-cobertura"
+   },
+   {
+    "nome": "Ministério das Comunicações (FUST)",
+    "url": "https://www.gov.br/mcom/pt-br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Distritos sem 4G",
+    "valor": "1.420 localidades"
+   },
+   {
+    "rotulo": "Municípios Monitorados",
+    "valor": "5.571 cidades"
+   },
+   {
+    "rotulo": "Aporte do FUST",
+    "valor": "R$ 1,2 bi"
+   },
+   {
+    "rotulo": "Escolas Beneficiadas",
+    "valor": "4.000 unidades"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte o mapa de sinal móvel e antenas no [Portal de Cobertura da Anatel](https://dados.gov.br/dados/conjuntos-dados/smp-cobertura) e no painel de cidades.",
+  "paragrafos": [
+   "A [Anatel](https://dados.gov.br/dados/conjuntos-dados/smp-cobertura) mapeou as antenas de telefonia celular no Brasil. A pesquisa constatou que 1.420 distritos municipais rurais não possuem qualquer sinal 4G. Em cidades do interior do Amazonas e Pará, a conectividade atende exclusivamente a sede urbana. As planilhas abertas estão acessíveis nos [Dados Abertos da Anatel](https://dados.gov.br/dados/conjuntos-dados/smp-cobertura).",
+   "A falta de sinal móvel impede o acesso a prontuários eletrônicos e ensino digital. Para atenuar a carência, o [Ministério das Comunicações](https://www.gov.br/mcom/pt-br) aprovou R$ 1,2 bilhão do FUST. O fundo financia conexão de alta velocidade para quatro mil escolas públicas isoladas. As metas contratuais das operadoras privadas são auditadas pelos órgãos federais reguladores.",
+   "O cidadão pode acompanhar os dados de infraestrutura municipal na seção de [Cidades](/cidades). O portal apresenta a lista de localidades desatendidas por operadoras de telecomunicação."
+  ]
+ },
+ {
+  "slug": "monitoramento-barragens-sigbm-risco-minas-gerais",
+  "titulo": "Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM",
+  "subtitulo": "Estruturas de rejeitos mantêm comunidades sob monitoramento e exigem descaracterização urgente.",
+  "resumo": "Inventário do SIGBM mapeia 455 barragens de mineração em território mineiro. Três estruturas permanecem em nível máximo de alerta com risco de colapso.",
+  "categoria": "Meio Ambiente & Sociedade",
+  "frente": "ambiental",
+  "subfrente": "Segurança de Barragens",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de dados abertos do SIGBM e ANM, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "barragens-mg",
+   "sigbm",
+   "anm",
+   "brumadinho",
+   "seguranca-ambiental"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026monitoramentobarragens,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/monitoramento-barragens-sigbm-risco-minas-gerais}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Sistema Integrado de Gestão de Segurança de Barragens de Mineração (SIGBM/ANM)",
+    "url": "https://app.anm.gov.br/SIGBM/Publico/GerenciarMetadados"
+   },
+   {
+    "nome": "Agência Nacional de Mineração (ANM)",
+    "url": "https://www.gov.br/anm/pt-br"
+   },
+   {
+    "nome": "Fundação Renova & Acordo Judicial de Brumadinho",
+    "url": "https://www.mg.gov.br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Barragens Mapeadas em MG",
+    "valor": "455 estruturas"
+   },
+   {
+    "rotulo": "Em Nível de Emergência",
+    "valor": "38 barragens"
+   },
+   {
+    "rotulo": "Risco Crítico (Nível 3)",
+    "valor": "3 estruturas"
+   },
+   {
+    "rotulo": "Acordo de Reparação",
+    "valor": "R$ 37,68 bi"
+   }
+  ],
+  "recomendacaoVerificar": "Acompanhe vistorias e coordenadas no [Painel de Barragens](/ambiental/barragens) e confira no [SIGBM da ANM](https://app.anm.gov.br/SIGBM/Publico/GerenciarMetadados).",
+  "paragrafos": [
+   "O [SIGBM da ANM](https://app.anm.gov.br/SIGBM/Publico/GerenciarMetadados) registra 455 barragens de mineração em Minas Gerais. Deste total cadastrado, 38 estruturas operam sob nível oficial de emergência declarado. Três reservatórios permanecem classificados no nível 3 de risco com perigo de rompimento. Os relatórios semanais de fiscalização são publicados pela [Agência Nacional de Mineração](https://www.gov.br/anm/pt-br).",
+   "A barragem Forquilha III da mineradora [Vale](https://www.vale.com), em Ouro Preto, segue sob monitoramento ininterrupto. O Ministério Público acompanha as obras de descaracterização de represas construídas a montante. Paralelamente, o portal fiscaliza a execução do [Acordo Judicial de Reparação](https://www.mg.gov.br) de Brumadinho. O acordo destina R$ 37,68 bilhões para obras socioeconômicas e restauração ecológica regional.",
+   "O cidadão pode verificar as coordenadas geográficas de cada barragem no [Painel de Barragens](/ambiental/barragens). O mapa visualiza as manchas de inundação e a proximidade de comunidades rurais."
+  ]
+ },
+ {
+  "slug": "gastos-salarios-parlamentares-assembleias-estaduais",
+  "titulo": "Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias",
+  "subtitulo": "ALMG e Alesp reúnem centenas de deputados com benefícios mensais acima do teto constitucional.",
+  "resumo": "Mapeamento inédito consolida gastos dos legislativos estaduais em Minas Gerais e São Paulo. Cada deputado dispõe de dezenas de assessores e recursos para despesas de mandato.",
+  "categoria": "Fiscalização Parlamentar",
+  "frente": "estado",
+  "subfrente": "Poder Legislativo Estadual",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir dos Portais de Transparência da ALMG e da Alesp, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "assembleia-legislativa",
+   "almg",
+   "alesp",
+   "gastos-parlamentares",
+   "transparencia"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026assembleiasestaduais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/gastos-salarios-parlamentares-assembleias-estaduais}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Assembleia Legislativa do Estado de Minas Gerais (ALMG - Prestação de Contas)",
+    "url": "https://www.almg.gov.br/transparencia"
+   },
+   {
+    "nome": "Assembleia Legislativa do Estado de São Paulo (Alesp - Transparência)",
+    "url": "https://www.alessp.sp.gov.br/transparencia/"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Deputados na ALMG",
+    "valor": "77 parlamentares"
+   },
+   {
+    "rotulo": "Salário Base ALMG",
+    "valor": "R$ 34.774,64"
+   },
+   {
+    "rotulo": "Verba de Gabinete ALMG",
+    "valor": "até R$ 41,2 mil/mês"
+   },
+   {
+    "rotulo": "Deputados na Alesp",
+    "valor": "94 parlamentares"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte os gastos individuais de cada parlamentar no [Painel Legislativo de Minas Gerais](/governo/mg/legislativo) e no portal oficial da ALMG.",
+  "paragrafos": [
+   "A [Assembleia Legislativa de Minas Gerais (ALMG)](https://www.almg.gov.br/transparencia) conta com 77 deputados estaduais em exercício. Cada parlamentar recebe salário base mensal fixado em R$ 34.774,64. Além do subsídio, cada deputado dispõe de até R$ 41.200,00 para verba indenizatória. Os dados financeiros detalhados foram extraídos do [Portal da ALMG](https://www.almg.gov.br/transparencia).",
+   "No estado de São Paulo, a [Alesp](https://www.alessp.sp.gov.br/transparencia/) abriga a maior bancada estadual com 94 parlamentares. Os deputados paulistas contam com verba de despesas de gabinete de R$ 50.300,00 mensais. Somados aos salários, os custos operacionais das assembleias ultrapassam R$ 3,8 bilhões ao ano. O cidadão pode auditar as votações na [Alesp Transparência](https://www.alessp.sp.gov.br/transparencia/).",
+   "O novo painel cívico do portal reúne ranking de frequência, gastos e projetos apresentados. Consulte a lista de parlamentares no [Painel Legislativo de Minas Gerais](/governo/mg/legislativo). A ferramenta permite ao cidadão checar os nomes dos assessores nomeados em gabinetes."
+  ]
+ },
+ {
+  "slug": "preco-gasolina-capitais-cidades-estrategicas-anp",
+  "titulo": "Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais",
+  "subtitulo": "Rio Branco e Porto Velho registram combustíveis mais caros, enquanto São Paulo tem menor média.",
+  "resumo": "Levantamento semanal da ANP revela disparidade acentuada nos preços da gasolina pelo país. Custo do transporte e alíquotas estaduais explicam diferenças de até 30% nos postos.",
+  "categoria": "Economia Popular",
+  "frente": "cidades",
+  "subfrente": "Custo de Vida & Energia",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir da série histórica de combustíveis da ANP, auditado pelo ONSA.",
+  "publicadoEm": "2026-09-19T21:00:00Z",
+  "atualizadoEm": "2026-09-19T21:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "preco-gasolina",
+   "anp",
+   "combustiveis",
+   "inflacao",
+   "transporte"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais. Controle Popular, Brasília, set. 2026.",
+  "citacaoBibtex": "@article{onsa2026precogasolina,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/preco-gasolina-capitais-cidades-estrategicas-anp}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP)",
+    "url": "https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis"
+   },
+   {
+    "nome": "Ministério de Minas e Energia (MME)",
+    "url": "https://www.gov.br/mme/pt-br"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Mais Cara (Rio Branco)",
+    "valor": "R$ 7,12 / L"
+   },
+   {
+    "rotulo": "Mais Barata (São Paulo)",
+    "valor": "R$ 5,45 / L"
+   },
+   {
+    "rotulo": "Média em Belo Horizonte",
+    "valor": "R$ 5,59 / L"
+   },
+   {
+    "rotulo": "Disparidade Máxima",
+    "valor": "R$ 1,67 / L"
+   }
+  ],
+  "recomendacaoVerificar": "Consulte o histórico de postos e combustíveis no [Portal de Dados da ANP](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis) para fiscalizar os preços de sua cidade.",
+  "paragrafos": [
+   "A pesquisa de preços da [Agência Nacional do Petróleo (ANP)](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis) registrou forte variação regional. O preço médio do litro da gasolina comum alcançou R$ 7,12 em Rio Branco. Em Porto Velho, os postos de combustíveis cobraram média de R$ 6,89 por litro. A distância das refinarias eleva o frete de distribuição para os estados da Região Norte.",
+   "Em contrapartida, os postos da cidade de [São Paulo](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis) registraram a menor média nacional. O consumidor paulistano pagou em média R$ 5,45 por litro de gasolina comum. Em [Belo Horizonte](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis), o combustível registrou valor médio de R$ 5,59 por litro. A diferença de preços entre capitais atinge R$ 1,67 por litro comercializado.",
+   "A disparidade penaliza os orçamentos de famílias e trabalhadores de cidades periféricas e isoladas. O portal cruza esses indicadores municipais no [Painel de Municípios](/cidades). O cidadão pode comparar os custos de vida entre as capitais e municípios estratégicos."
+  ]
+ },
+ {
   "slug": "leiloes-ferroviarios-malha-oeste-disputa-internacional",
   "titulo": "Leilões Ferroviários Atraem Consórcios Globais para Modernizar Transporte de Cargas",
   "subtitulo": "ANTT abre concorrência internacional para renovação e operação de ferrovias estratégicas.",
@@ -478,22 +885,22 @@
   "atualizadoEm": "2026-09-19T21:00:00Z",
   "tempoLeituraMin": 4,
   "palavrasChave": [
-   "investimentos-chineses",
+   "china-brasil",
    "state-grid",
    "byd",
-   "mobilidade-eletrica",
-   "aneel"
+   "aneel",
+   "energia-limpa"
   ],
   "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil. Controle Popular, Brasília, set. 2026.",
-  "citacaoBibtex": "@article{onsa2026chinesasenergia,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/investimentos-chineses-transmissao-mobilidade-eletrica}\n}",
+  "citacaoBibtex": "@article{onsa2026investimentoschineses,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/investimentos-chineses-transmissao-mobilidade-eletrica}\n}",
   "fontesOficiais": [
    {
-    "nome": "Agência Nacional de Energia Elétrica (ANEEL)",
-    "url": "https://www.gov.br/aneel/pt-br"
+    "nome": "Agência Nacional de Energia Elétrica (ANEEL - Leilões)",
+    "url": "https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao"
    },
    {
     "nome": "Governo do Estado da Bahia (Secretaria da Fazenda)",
-    "url": "https://www.bahia.ba.gov.br"
+    "url": "https://www.ba.gov.br"
    },
    {
     "nome": "Operador Nacional do Sistema Elétrico (ONS)",
@@ -502,33 +909,27 @@
   ],
   "metricas": [
    {
-    "rotulo": "Linhas de Transmissão",
-    "valor": "16.000 km"
+    "rotulo": "Leilão ANEEL (State Grid)",
+    "valor": "R$ 18,1 bi"
    },
    {
-    "rotulo": "Ônibus Elétricos",
-    "valor": "1.800 unidades"
+    "rotulo": "Polo BYD em Camaçari",
+    "valor": "R$ 5,5 bi"
    },
    {
-    "rotulo": "Aporte Mapeado",
-    "valor": "R$ 46,2 bi"
+    "rotulo": "Extensão Linha HVDC",
+    "valor": "3.901 km"
    },
    {
-    "rotulo": "Empregos Diretos",
-    "valor": "10.000 vagas"
+    "rotulo": "Empregos Projetados",
+    "valor": "25 mil vagas"
    }
   ],
-  "recomendacaoVerificar": "Veja o detalhamento técnico no [Painel de Fornecedores Multinacionais](/estado-e-economia/fornecedores-multinacionais).",
+  "recomendacaoVerificar": "Acesse os editais de concessão no [Portal de Leilões da ANEEL](https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao) e verifique os relatórios no portal.",
   "paragrafos": [
-   "A presença de corporações estatais e privadas chinesas cresce em setores de base.",
-   "A State Grid opera mais de dezesseis mil quilômetros de linhas de transmissão.",
-   "A empresa arrematou o maior lote de transmissão da história da ANEEL.",
-   "A linha conecta usinas eólicas do Nordeste aos centros de consumo do Sudeste.",
-   "Na Bahia, a montadora BYD instalou fábrica de veículos elétricos em Camaçari.",
-   "A unidade produz automóveis limpos e processa lítio para fabricação de baterias.",
-   "Prefeituras de grandes capitais compram ônibus elétricos para renovar frotas de transporte coletivo.",
-   "As concessões públicas reduzem tarifas, mas elevam a dependência de peças importadas da Ásia.",
-   "O portal fiscaliza a aplicação das contrapartidas sociais firmadas nos contratos estaduais."
+   "A concessionária [State Grid Brasil](https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao) arrematou o maior lote de transmissão da história nacional. A empresa venceu o Leilão 002/2023 promovido pela [ANEEL](https://www.gov.br/aneel/pt-br). O contrato prevê investimento de R$ 18,1 bilhões em linhas de ultra-alta tensão. A linha transmitirá 3.901 quilômetros de energia limpa entre Maranhão e Goiás.",
+   "No setor automotivo, a fabricante chinesa [BYD](https://www.ba.gov.br) investe R$ 5,5 bilhões na Bahia. O complexo industrial ocupa as antigas instalações fabris no município de Camaçari. O [Governo do Estado da Bahia](https://www.ba.gov.br) concedeu incentivos tributários para a montadora até 2032. O polo produzirá baterias e ônibus elétricos para frotas urbanas municipais.",
+   "Os aportes chineses aceleram a modernização da infraestrutura e a transição energética brasileira. O portal documenta esses compromissos no [Painel de Acordos Internacionais](/estado-e-economia/acordos-e-licitacoes-internacionais). O leitor pode auditar as contrapartidas ambientais e contratuais de cada empreendimento."
   ]
  },
  {
@@ -546,10 +947,10 @@
   "tempoLeituraMin": 4,
   "palavrasChave": [
    "acordos-internacionais",
-   "parcerias-estrategicas",
-   "transicao-energetica",
+   "hidrogenio-verde",
+   "ferrovias",
    "bndes",
-   "politica-externa"
+   "ppi"
   ],
   "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos. Controle Popular, Brasília, set. 2026.",
   "citacaoBibtex": "@article{onsa2026acordosinternacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/acordos-internacionais-sete-setores-estrategicos}\n}",
@@ -563,8 +964,8 @@
     "url": "https://www.ppi.gov.br"
    },
    {
-    "nome": "Ministério das Relações Exteriores (Itamaraty)",
-    "url": "https://www.gov.br/mre/pt-br"
+    "nome": "Agência Nacional de Transportes Terrestres (ANTT)",
+    "url": "https://www.gov.br/antt/pt-br"
    }
   ],
   "metricas": [
@@ -577,56 +978,50 @@
     "valor": "13 nações"
    },
    {
-    "rotulo": "Setores Chave",
-    "valor": "7 eixos"
+    "rotulo": "Porto do Pecém (H2V)",
+    "valor": "US$ 2,0 bi"
    },
    {
-    "rotulo": "Editais Ativos",
-    "valor": "4 leilões"
+    "rotulo": "Malha Oeste Ferroviária",
+    "valor": "R$ 18,5 bi"
    }
   ],
-  "recomendacaoVerificar": "Acesse a página de [Acordos e Licitações Internacionais](/estado-e-economia/acordos-e-licitacoes-internacionais) para consultar documentos e fontes.",
+  "recomendacaoVerificar": "Acesse os projetos estruturados no [Hub de Projetos do BNDES](https://hubdeprojetos.bndes.gov.br) e no painel de acordos internacionais do portal.",
   "paragrafos": [
-   "O governo brasileiro mantém negociações diplomáticas e econômicas com treze potências mundiais.",
-   "Os projetos concentram investimentos em energia renovável, ferrovias, saúde, educação e mineração.",
-   "O BNDES coordena a estruturação financeira dos principais empreendimentos de infraestrutura sustentável.",
-   "A União Europeia apoia o corredor marítimo de hidrogênio verde no Ceará.",
-   "O Porto do Pecém fornecerá combustível descarbonizado diretamente para a Holanda.",
-   "Estados Unidos e Brasil debatem acordos de financiamento para terras raras em Goiás.",
-   "Os editais públicos exigem consultas prévias a comunidades tradicionais vizinhas aos projetos.",
-   "O Ministério do Desenvolvimento exige agregação de valor e industrialização em solo nacional.",
-   "O cidadão pode baixar a planilha completa no novo painel do portal."
+   "O governo federal mantém negociações diplomáticas e comerciais para projetos de grande porte. No Ceará, o [Porto do Pecém](https://www.ceara.gov.br) negocia US$ 2 bilhões com a União Europeia. O complexo produzirá hidrogênio verde voltado à exportação de energia limpa para Roterdã. O financiamento é estruturado pelo [BNDES](https://hubdeprojetos.bndes.gov.br) e por fundos europeus de sustentabilidade.",
+   "No setor de transportes, a [ANTT](https://www.gov.br/antt/pt-br) prepara a concessão da Malha Oeste ferroviária. O projeto orçado em R$ 18,5 bilhões prevê 1.973 quilômetros de ferrovias modernizadas. O traçado ligará o Mato Grosso do Sul aos portos exportadores do estado paulista. Consórcios da Europa e da China analisam os cadernos técnicos do leilão público.",
+   "Todas as informações foram organizadas no [Painel de Acordos Internacionais](/estado-e-economia/acordos-e-licitacoes-internacionais). A plataforma publica os links diretos para cada edital oficial e estudo socioeconômico."
   ]
  },
  {
   "slug": "fornecedores-multinacionais-brasil-ti-infraestrutura",
   "titulo": "Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil",
   "subtitulo": "Erário contrata gigantes dos Estados Unidos, Europa e Ásia para serviços essenciais do Estado.",
-  "resumo": "Portal mapeia contratos públicos com multinacionais dos EUA, Europa e China. Dados revelam dependência tecnológica em sistemas críticos e transporte.",
+  "resumo": "Levantamento revela contratos bilionários da administração pública com multinacionais de tecnologia e transporte. Dados apontam dependência de softwares estrangeiros e infraestrutura crítica.",
   "categoria": "Investigação Cívica",
   "frente": "estado",
   "subfrente": "Contratações Internacionais",
   "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de dados do PNCP, SEC e SIAFI, auditado pelo ONSA.",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de dados do Compras.gov.br, SEC e PNCP, auditado pelo ONSA.",
   "publicadoEm": "2026-09-19T21:00:00Z",
   "atualizadoEm": "2026-09-19T21:00:00Z",
   "tempoLeituraMin": 4,
   "palavrasChave": [
    "fornecedores-multinacionais",
-   "tecnologia-da-informacao",
-   "dependencia-tecnologica",
-   "pncp",
+   "microsoft",
+   "oracle",
+   "comprasnet",
    "transparencia-publica"
   ],
   "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil. Controle Popular, Brasília, set. 2026.",
   "citacaoBibtex": "@article{onsa2026fornecedoresmultinacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/fornecedores-multinacionais-brasil-ti-infraestrutura}\n}",
   "fontesOficiais": [
    {
-    "nome": "Portal Nacional de Contratações Públicas (PNCP)",
-    "url": "https://pncp.gov.br"
+    "nome": "Portal de Compras do Governo Federal (Compras.gov.br)",
+    "url": "https://compras.dados.gov.br"
    },
    {
-    "nome": "U.S. Securities and Exchange Commission (SEC - Form 10-K)",
+    "nome": "U.S. Securities and Exchange Commission (SEC Edgar)",
     "url": "https://www.sec.gov/edgar"
    },
    {
@@ -636,33 +1031,27 @@
   ],
   "metricas": [
    {
-    "rotulo": "Total Mapeado",
+    "rotulo": "Contratos Federais",
     "valor": "R$ 98,3 bi"
    },
    {
-    "rotulo": "Multinacionais",
-    "valor": "14 empresas"
+    "rotulo": "Microsoft no Brasil",
+    "valor": "R$ 2,1 bi"
    },
    {
-    "rotulo": "Setores Chave",
-    "valor": "6 áreas"
+    "rotulo": "Oracle no Governo",
+    "valor": "R$ 850 mi"
    },
    {
-    "rotulo": "Órgãos Públicos",
-    "valor": "50+ entidades"
+    "rotulo": "Corporações Mapeadas",
+    "valor": "14 gigantes"
    }
   ],
-  "recomendacaoVerificar": "Consulte o [Painel de Fornecedores Multinacionais](/estado-e-economia/fornecedores-multinacionais) para checar valores e contrapartidas.",
+  "recomendacaoVerificar": "Consulte o [Painel de Fornecedores Multinacionais](/estado-e-economia/fornecedores-multinacionais) para conferir valores, lucros globais e contrapartidas.",
   "paragrafos": [
-   "O setor público brasileiro contrata grandes corporações internacionais para operar serviços essenciais.",
-   "Contratos federais e estaduais com fornecedores estrangeiros ultrapassam noventa bilhões de reais.",
-   "A apuração cívica cruza dados do PNCP com registros financeiros da SEC americana.",
-   "Corporações como Microsoft e Oracle processam dados confidenciais de milhões de cidadãos brasileiros.",
-   "O Ministério da Gestão renovou licenças corporativas para tribunais e autarquias federais.",
-   "No setor de transportes, Alstom e CRRC fornecem trens para redes metropolitanas.",
-   "A dependência tecnológica dificulta a adoção de soluções nacionais de código aberto.",
-   "Muitos contratos de software não exigem transferência obrigatória de conhecimento ao país.",
-   "O cidadão pode auditar os pagamentos pelo Portal da Transparência do governo federal."
+   "A administração pública federal mantém contratos bilionários com grandes corporações internacionais de tecnologia. A empresa [Microsoft](https://compras.dados.gov.br) acumula R$ 2,1 bilhões em contratos federais ativos no país. Os recursos financiam licenças do Azure e programas corporativos para ministérios e tribunais. Os dados completos constam no [Portal de Compras do Governo Federal](https://compras.dados.gov.br).",
+   "A multinacional americana [Oracle](https://compras.dados.gov.br) administra bancos de dados de autarquias sociais estratégicas. Os contratos públicos somam R$ 850 milhões no [Dataprev](https://www.dataprev.gov.br) e no [SERPRO](https://www.serpro.gov.br). Estes servidores processam os pagamentos da previdência social e dados da Receita Federal. O faturamento global de cada empresa foi verificado na [SEC Edgar](https://www.sec.gov/edgar).",
+   "No setor de transportes, o governo de São Paulo contratou a fabricante [Alstom](https://www.alstom.com). A empresa francesa fornece novas composições para as linhas do Metrô paulista. Por sua vez, a fabricante chinesa [CRRC](https://www.crrcgc.cc) atende redes ferroviárias no Rio de Janeiro. A auditoria completa está disponível no [Painel de Fornecedores Multinacionais](/estado-e-economia/fornecedores-multinacionais)."
   ]
  },
  {
