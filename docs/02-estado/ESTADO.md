@@ -148,6 +148,22 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**20/09/2026** — push `d6e739a6`–`594d6b66`:
+
+- `/laboratorio` (F1–F7): dock flutuante, duas janelas dither, Seu Nonô
+  lateral, 22 fontes no catálogo, sessão na URL, testes.
+- Gráficos dither do amicro (MIT) adaptados, 6 tipos, sem dependência nova.
+- `/judiciario/contatos`: HTML de 986 KB para 265 KB — estatística do
+  agregado pré-computado e catálogo completo no bundle do cliente.
+- `BotoesExportar` (CSV, copiar, imprimir) em 5 tabelas do portal.
+- Dado órfão integrado: educação MG, ESG Vale, busca, Seu Nonô.
+- `guara-shield-bot.mts`: Trivy → Telegram, dedup por histórico.
+- drizzle-orm 0.45.2 (fecha HIGH de SQL injection).
+- Telegram: mensagens longas via stdin — o `npx` corta argumento na
+  quebra de linha; `$OutputEncoding = UTF8` antes do pipe.
+- Branches: F1 unificado; worktrees `cp-blog`, `cp-exportar`, `cp-guara`,
+  `cp-lab` removidos (backup dos pendentes no TEMP).
+
 **19/09/2026** — commit `34983f01` e anteriores desta sessão:
 
 - `DATABASE_URL` da Neon no Guara, runtime e build.
