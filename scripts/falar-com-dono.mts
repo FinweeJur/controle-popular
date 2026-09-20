@@ -28,7 +28,11 @@ async function main() {
   carregarEnv();
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-  const TEXTO = process.argv.slice(2).join(" ").trim();
+  const TEXTO =
+    process.argv.slice(2).join(" ").trim() ||
+    // npx corta argumentos na primeira quebra de linha no Windows — o corpo
+    // inteiro deve ir por stdin quando não há argumento (medido 20/09/2026).
+    fs.readFileSync(0, "utf-8").trim();
   if (!TOKEN || !CHAT_ID) {
     console.error("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausentes em scripts/.env");
     process.exit(2);
