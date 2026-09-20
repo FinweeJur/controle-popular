@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Gatilho remoto: deixa o `desktop-fefpddp` (ou qualquer dispositivo do
  * tailnet) pedir "sincronize e publique" a este PC, sem SSH e sem sessÃ£o
  * interativa â€” por HTTP dentro do Tailscale ou por mensagem no bot do
@@ -91,6 +91,7 @@ const ENV = await lerEnv(path.join(RAIZ, "scripts", ".env"));
 const GATILHO_TOKEN = ENV.GATILHO_TOKEN || "";
 const TELEGRAM_BOT_TOKEN = ENV.TELEGRAM_BOT_TOKEN || "";
 const TELEGRAM_CHAT_ID = ENV.TELEGRAM_CHAT_ID || "";
+const GATILHO_TELEGRAM_POLL = ENV.GATILHO_TELEGRAM_POLL === "true";
 const PORTA = Number(ENV.GATILHO_PORTA || 3029);
 
 if (!GATILHO_TOKEN) log("AVISO: GATILHO_TOKEN ausente â€” o canal HTTP fica DESLIGADO.");
@@ -754,11 +755,13 @@ if (GATILHO_TOKEN && ip) {
 } else if (GATILHO_TOKEN && !ip) {
   log("GATILHO_TOKEN configurado mas `tailscale ip -4` falhou â€” canal HTTP nÃ£o subiu.");
 }
-if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID && GATILHO_TELEGRAM_POLL) {
   void loopTelegram();
   log("Telegram: long-poll iniciado.");
+} else if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+  log("Telegram: long-poll desativado por padrão (defina GATILHO_TELEGRAM_POLL=true para ativar) — evita conflito 409 com Hermes.");
 }
-if (!(GATILHO_TOKEN && ip) && !(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID)) {
-  log("NENHUM canal configurado â€” preencha scripts/.env (ver scripts/.env.exemplo) e reinicie.");
+if (!(GATILHO_TOKEN && ip) && !(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID && GATILHO_TELEGRAM_POLL)) {
+  log("NENHUM canal ativo — preencha scripts/.env (ver scripts/.env.exemplo) e reinicie.");
   process.exit(1);
 }
