@@ -29,6 +29,14 @@ import type {
   RamoJustica,
   TipoUnidade,
 } from "@/lib/judiciario/contatos-tipos";
+import unidadesJson from "@/data/judiciario-unidades-contatos.json";
+
+/**
+ * O catálogo completo é importado aqui, no cliente — nunca via props de
+ * servidor. Props RSC serializavam ~800 KB 3x no HTML (régua 5.1 do
+ * AGENTS.md). A paginação (24/página) já acontece embaixo.
+ */
+const UNIDADES = unidadesJson as UnidadeJudiciaria[];
 
 /** Data ISO (yyyy-mm-dd) → pt-BR (dd/mm/aaaa). NaN vira "—" sem quebrar. */
 function formatDataBR(iso?: string): string {
@@ -39,12 +47,10 @@ function formatDataBR(iso?: string): string {
 }
 
 interface Props {
-  unidadesIniciais: UnidadeJudiciaria[];
   estatisticas: ResumoEstatisticasContatos;
 }
 
 export default function PainelVarasContatosClient({
-  unidadesIniciais,
   estatisticas,
 }: Props) {
   const [busca, setBusca] = useState("");
@@ -60,15 +66,15 @@ export default function PainelVarasContatosClient({
   // Lista de UFs disponíveis
   const listaUfs = useMemo(() => {
     const ufs = new Set<string>();
-    for (const u of unidadesIniciais) ufs.add(u.uf);
+    for (const u of UNIDADES) ufs.add(u.uf);
     return Array.from(ufs).sort((a, b) => (a === "MG" ? -1 : b === "MG" ? 1 : a.localeCompare(b)));
-  }, [unidadesIniciais]);
+  }, [UNIDADES]);
 
   // Filtragem e Busca
   const unidadesFiltradas = useMemo(() => {
     const t = busca.toLowerCase().trim();
 
-    return unidadesIniciais.filter((u) => {
+    return UNIDADES.filter((u) => {
       // Filtro de UF
       if (ufFiltro !== "todos" && u.uf !== ufFiltro) return false;
 
@@ -92,7 +98,7 @@ export default function PainelVarasContatosClient({
 
       return true;
     });
-  }, [unidadesIniciais, busca, ramoFiltro, tipoFiltro, ufFiltro]);
+  }, [UNIDADES, busca, ramoFiltro, tipoFiltro, ufFiltro]);
 
   // Ordenação
   const unidadesOrdenadas = useMemo(() => {
@@ -312,7 +318,7 @@ export default function PainelVarasContatosClient({
                   : "bg-surface-2 text-text hover:bg-border/60"
               }`}
             >
-              ⭐ Minas Gerais ({unidadesIniciais.filter((u) => u.uf === "MG").length})
+              ⭐ Minas Gerais ({UNIDADES.filter((u) => u.uf === "MG").length})
             </button>
             <button
               onClick={() => { setUfFiltro("todos"); setPaginaAtual(1); }}
@@ -322,7 +328,7 @@ export default function PainelVarasContatosClient({
                   : "bg-surface-2 text-text hover:bg-border/60"
               }`}
             >
-              Brasil Todo ({unidadesIniciais.length})
+              Brasil Todo ({UNIDADES.length})
             </button>
             {listaUfs
               .filter((uf) => uf !== "MG")

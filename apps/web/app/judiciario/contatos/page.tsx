@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
-import {
-  obterTodasUnidadesJudiciarias,
-  obterEstatisticasContatos,
-} from "@/lib/judiciario/contatos";
+import { obterEstatisticasContatos } from "@/lib/judiciario/contatos-estatisticas";
 import PainelVarasContatosClient from "./PainelVarasContatosClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
@@ -47,7 +44,6 @@ const LINKS_RELACIONADOS = [
 ];
 
 export default function PaginaContatosJudiciario() {
-  const unidades = obterTodasUnidadesJudiciarias();
   const estatisticas = obterEstatisticasContatos();
 
   const breadcrumbItems = [
@@ -94,10 +90,9 @@ export default function PaginaContatosJudiciario() {
         <IndiceWiki itens={SECOES_PAGINA} />
 
         {/* Painel Interativo */}
-        <PainelVarasContatosClient
-          unidadesIniciais={unidades}
-          estatisticas={estatisticas}
-        />
+        {/* O catálogo completo (990 unidades) mora no bundle do cliente —
+            passar como props inflava o HTML em ~3x (986 KB medido em 20/09). */}
+        <PainelVarasContatosClient estatisticas={estatisticas} />
 
         {/* Links Relacionados (Padrão Wiki) */}
         <LinksRelacionados links={LINKS_RELACIONADOS} />

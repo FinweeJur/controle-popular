@@ -1,0 +1,52 @@
+{
+  "totalUnidades": 990,
+  "porTipo": {
+    "Vara": 958,
+    "Juizado Especial": 27,
+    "CEJUSC": 1,
+    "Gabinete": 3,
+    "Secretaria": 1
+  },
+  "porRamo": {
+    "Estadual": 751,
+    "Federal": 54,
+    "Trabalho": 185
+  },
+  "porUF": {
+    "MG": 562,
+    "AC": 3,
+    "AL": 8,
+    "AM": 8,
+    "AP": 3,
+    "BA": 32,
+    "CE": 25,
+    "DF": 16,
+    "ES": 5,
+    "GO": 35,
+    "MA": 4,
+    "MS": 7,
+    "MT": 9,
+    "PA": 30,
+    "PB": 10,
+    "PE": 29,
+    "PI": 7,
+    "PR": 35,
+    "RJ": 31,
+    "RN": 12,
+    "RO": 5,
+    "RR": 2,
+    "RS": 31,
+    "SC": 22,
+    "SE": 4,
+    "SP": 50,
+    "TO": 5
+  },
+  "comBalcao": 990,
+  "geradoEm": "2026-09-20T16:01:44.590Z",
+  "totalVaras": 985,
+  "totalGabinetes": 3,
+  "totalSecretarias": 1,
+  "totalComarcas": 480,
+  "ufsAtendidas": 27,
+  "totalBalcoesVirtuais": 990
+}
