@@ -515,6 +515,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     badgeCor: "var(--cp-primary)",
     palavrasChave: ["documentacao", "api", "fontes", "arquitetura", "codigo aberto", "como funciona", "metodologia"],
   },
+  {
+    id: "fontes-27-estados",
+    titulo: "Fontes de Dados dos 27 Estados",
+    descricao: "Catálogo de portais oficiais de transparência, dados abertos e órgãos de controle dos 27 estados brasileiros.",
+    href: "/fontes-estados",
+    frente: "geral",
+    rotulo: "Fontes por Estado",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "fontes", "estados", "transparencia", "dados abertos", "controladoria",
+      "tribunal de contas", "assembleia legislativa", "ministerio publico",
+      "defensoria publica", "diario oficial", "licitacoes"
+    ],
+  },
 ];
 
 /**

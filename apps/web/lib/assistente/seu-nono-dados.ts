@@ -187,6 +187,26 @@ export const FRENTES: SeuNonoFrente[] = [
         ],
       },
       {
+        id: "educacao",
+        titulo: "Educação",
+        perguntas: [
+          {
+            id: "educacao-mg-dados",
+            pergunta: "Quais dados de educação de MG estão disponíveis?",
+            resposta:
+              "O portal reúne dados do IBGE (853 municípios com código) e do INEP (Censo Escolar): escolas públicas e privadas, matrículas do fundamental e médio, IDEB, taxa de aprovação, reprovação e abandono, docentes e infraestrutura das escolas.",
+            link: { href: "/educacao", texto: "Ver educação" },
+          },
+          {
+            id: "educacao-ideb",
+            pergunta: "O que é o IDEB e onde ver os dados?",
+            resposta:
+              "O IDEB (Índice de Desenvolvimento da Educação Básica) mede a qualidade das escolas. O portal mostra IDEB dos anos iniciais, anos finais e projeção 2025 para municípios de MG, com dados do INEP.",
+            link: { href: "/educacao", texto: "Ver IDEB de MG" },
+          },
+        ],
+      },
+      {
         id: "protecao-social",
         titulo: "Proteção social",
         perguntas: [
@@ -581,6 +601,19 @@ export const FRENTES: SeuNonoFrente[] = [
           },
         ],
       },
+      {
+        id: "esg-vale",
+        titulo: "Análise ESG da Vale",
+        perguntas: [
+          {
+            id: "esg-vale-analise",
+            pergunta: "Quais análises ESG da Vale estão disponíveis?",
+            resposta:
+              "O portal reúne análises ESG (Ambiental, Social e Governança) da Vale, geradas por IA a partir de fontes públicas. Cada análise tem resumo, texto completo e indicação do modelo utilizado.",
+            link: { href: "/paraopeba/analise", texto: "Ver análises ESG" },
+          },
+        ],
+      },
     ],
   },
   {
@@ -965,6 +998,38 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/biblioteca", texto: "Acessar Biblioteca Geral" },
       { href: "/judiciario/instituicoes", texto: "Painel dos 27 Estados" },
+    ],
+  },
+  {
+    id: "educacao-mg",
+    titulo: "Educação em MG (IBGE + INEP)",
+    resumo: "Indicadores educacionais dos municípios de Minas Gerais: escolas, matrículas, IDEB, aprovação, reprovação, abandono e infraestrutura, com dados do IBGE e INEP (Censo Escolar).",
+    dados: [
+      "IBGE: lista de 853 municípios de MG com código",
+      "INEP: escolas públicas e privadas por município",
+      "Matrículas do fundamental e médio",
+      "IDEB anos iniciais, anos finais e projeção 2025",
+      "Taxa de aprovação, reprovação e abandono no fundamental",
+      "Matrículas 2022 × 2023 (evolução)",
+      "Docentes fundamental e médio",
+      "Infraestrutura: internet e biblioteca nas escolas",
+    ],
+    links: [
+      { href: "/educacao", texto: "Ver educação" },
+    ],
+  },
+  {
+    id: "esg-vale",
+    titulo: "Análise ESG da Vale",
+    resumo: "Análises ESG (Ambiental, Social e Governança) da Vale geradas por IA (Seu Nono Sabia), integradas à frente Paraopeba.",
+    dados: [
+      "Análises temáticas da Vale com resumo e texto completo",
+      "Dados de múltiplas fontes públicas consolidados",
+      "Modelo de IA declarado em cada análise",
+      "Atualizações periódicas com data registrada",
+    ],
+    links: [
+      { href: "/paraopeba/analise", texto: "Ver análises ESG" },
     ],
   },
 ];
