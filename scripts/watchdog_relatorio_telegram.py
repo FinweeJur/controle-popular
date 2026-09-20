@@ -47,8 +47,15 @@ def main() -> int:
     relatorios_logs = REPO / "docs" / "relatorios-automacao" / "logs"
     if relatorios_logs.exists():
         for arq in relatorios_logs.glob(f"rotina-telegram_{hoje}*.log"):
-            txt = arq.read_text(encoding="utf-8", errors="replace")
-            if "RELATÓRIO TELEGRAM CONCLUÍDO" in txt or "concluído com sucesso" in txt.lower():
+            # O Tee-Object do PowerShell grava UTF-16 com BOM (medido em
+            # 19/09: o watchdog lia como UTF-8, nunca casava, e disparava
+            # alerta falso toda noite de 22:30). Ler bytes e decidir.
+            bruto = arq.read_bytes()
+            if bruto[:2] in (b"\xff\xfe", b"\xfe\xff"):
+                txt = bruto.decode("utf-16", errors="replace")
+            else:
+                txt = bruto.decode("utf-8", errors="replace")
+            if "TELEGRAM CONCLU" in txt.upper() or "enviado com sucesso" in txt.lower():
                 # Registra SUCCESS no log do watchdog para futuras checagens no mesmo dia
                 agora = datetime.datetime.now().isoformat(timespec="seconds")
                 with LOG_FILE.open("a", encoding="utf-8") as f:
