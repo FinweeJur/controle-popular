@@ -202,6 +202,19 @@ git fetch origin && git rebase origin/main && git push origin HEAD:main
 Ninguém integra o trabalho de ninguém. Durante build/deploy nesta máquina,
 **segure o push**.
 
+### 5.7.1. Push = deploy manual (cota de build do Guara)
+
+Auto-deploy está **desligado** no Guara (19/09) — cada build gasta ~17 min
+e o plano Starter tem teto de 250 min/ciclo (painel "Uso"). Regras:
+
+- **Commit muitas vezes, push/deploy uma.** O último commit só.
+- Deploy é manual: suíte + `tsc` verdes → `guara deploy` (janela: fim de
+  sessão). Meta: 1–2 deploys por dia.
+- Sem mudança de código que afete a imagem? Não deployar: doc, dado, e
+  rodadas de coleta não pedem rebuild só porque saíram da `main` — leia
+  e decida. Conteúdo novo de dado versionado SIM pede (vai no build).
+- Build fracassado também queima cota. Nunca deployar com teste vermelho.
+
 ### 5.8. Privacidade contra agentes de IA
 
 - [`.gitignore`](.gitignore) não protege contra leitura por IAs: agentes
