@@ -13,7 +13,8 @@ $Tarefas = @(
     @{ Nome = "ControlePopular_ColetorNoticias_0230";     Hora = "02:30"; Script = "executar-rotina-noticias.ps1";   Desc = "Noticias e diarios" },
     @{ Nome = "ControlePopular_PicoClaw_Madrugada";       Hora = "03:30"; Script = "executar-rotina-madrugada.ps1";  Desc = "Saude das fontes + linkmender + coletas" },
     @{ Nome = "ControlePopular_Hermes_Manha";             Hora = "05:30"; Script = "executar-rotina-manha.ps1";      Desc = "Sondagens e auditoria" },
-    @{ Nome = "ControlePopular_AutoDeploy_0550";          Hora = "05:50"; Script = "executar-rotina-meianoite.ps1";  Desc = "Build + deploy (era meia-noite; movida a pedido do dono 04/09)" },
+    @{ Nome = "ControlePopular_AutoDeploy_0550";          Hora = "05:50"; Script = "executar-rotina-meianoite.ps1";  Desc = "Build + deploy Workers/tunel (sem cota do Guara)" },
+    @{ Nome = "ControlePopular_DeployGuara_0555";         Hora = "05:55"; Script = "executar-rotina-deploy-guara.ps1"; Desc = "Deploy do Guara: novo commit + janela de 5 dias + CI verde" },
     @{ Nome = "ControlePopular_TelegramReport_0630";      Hora = "06:30"; Script = "executar-rotina-telegram.ps1";   Desc = "Relatorio ao dono (com retry no .mts)" },
     @{ Nome = "ControlePopular_ColetaMensal_Dia01";       Hora = "04:00"; Script = "executar-rotina-mensal.ps1";     Desc = "Coleta mensal, dia 01" }
     # Radar de editais (DOMG-e): roda o .mts direto (sem wrapper .ps1), porque
