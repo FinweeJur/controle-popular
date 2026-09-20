@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from "react";
 import type { DeputadoCeap } from "@/lib/congresso/ceap-nacional-dados";
+import BotoesExportar from "@/app/components/BotoesExportar";
+import type { ColunaCsv } from "@/lib/tabela/csv";
 
 interface TabelaCeapProps {
   parlamentares: DeputadoCeap[];
@@ -24,6 +26,14 @@ export default function TabelaCeap({ parlamentares, totaisPorUf, ressalvaEditori
     return Array.from(s).sort((a, b) => a.localeCompare(b, "pt-BR"));
   }, [parlamentares]);
 
+  const colunasCsv: ColunaCsv<DeputadoCeap>[] = useMemo(() => [
+    { chave: "nomeParlamentar", rotulo: "Parlamentar" },
+    { chave: "partido", rotulo: "Partido" },
+    { chave: "uf", rotulo: "UF" },
+    { chave: "totalGasto", rotulo: "Total Gasto (R$)", formatar: (v) => `R$ ${(v as number).toFixed(2).replace(".", ",")}` },
+    { chave: "qtdDespesas", rotulo: "Qtd Despesas" },
+  ], []);
+
   const filtrados = useMemo(() => {
     return parlamentares
       .filter((p) => {
@@ -39,28 +49,6 @@ export default function TabelaCeap({ parlamentares, totaisPorUf, ressalvaEditori
       })
       .sort((a, b) => b[ordenarPor] - a[ordenarPor]);
   }, [parlamentares, ufSelecionada, partidoSelecionado, busca, ordenarPor]);
-
-  const baixarCsv = () => {
-    const cabecalho = ["Parlamentar", "Partido", "UF", "Total Gasto (R$)", "Qtd Despesas", "Top 1 Fornecedor", "Top 1 Valor (R$)"];
-    const linhas = filtrados.map((p) => [
-      `"${p.nomeParlamentar.replace(/"/g, '""')}"`,
-      `"${p.partido}"`,
-      `"${p.uf}"`,
-      p.totalGasto.toFixed(2).replace(".", ","),
-      p.qtdDespesas,
-      `"${(p.topFornecedores[0]?.nome || "").replace(/"/g, '""')}"`,
-      (p.topFornecedores[0]?.total || 0).toFixed(2).replace(".", ","),
-    ]);
-
-    const conteudo = "\uFEFF" + [cabecalho.join(";"), ...linhas.map((l) => l.join(";"))].join("\r\n");
-    const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `cota-parlamentar-ceap-${ufSelecionada || "nacional"}.csv`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="space-y-6">
@@ -121,13 +109,11 @@ export default function TabelaCeap({ parlamentares, totaisPorUf, ressalvaEditori
           </select>
         </label>
 
-        <button
-          type="button"
-          onClick={baixarCsv}
-          className="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-text-contrast hover:opacity-90"
-        >
-          📥 Baixar Planilha CSV ({filtrados.length})
-        </button>
+        <BotoesExportar
+          dados={filtrados}
+          colunas={colunasCsv}
+          nomeArquivo={`cota-parlamentar-ceap-${ufSelecionada || "nacional"}`}
+        />
       </div>
 
       {/* Alerta Editorial Obrigatório */}

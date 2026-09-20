@@ -6,6 +6,8 @@ import RotuloBadge from "@/app/congresso/components/RotuloBadge";
 import VicioBadge from "@/app/congresso/components/VicioBadge";
 import Autoria from "@/app/congresso/components/Autoria";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+import BotoesExportar from "@/app/components/BotoesExportar";
+import type { ColunaCsv } from "@/lib/tabela/csv";
 import type { Proposicao, Analise } from "@/lib/congresso/proposicoes";
 import type { AutoriaResumo } from "@/lib/db/queries/congresso";
 import { RUBRICA, labelDoRotulo } from "@/lib/congresso/rubrica";
@@ -125,6 +127,15 @@ const COLUNAS: ColunaTabela<LinhaProposicao>[] = [
   },
 ];
 
+const COLUNAS_CSV: ColunaCsv<LinhaProposicao>[] = [
+  { chave: "identificacao", rotulo: "Proposição" },
+  { chave: "ementa", rotulo: "Ementa" },
+  { chave: "situacao", rotulo: "Situação" },
+  { chave: "ano", rotulo: "Ano" },
+  { chave: "data_apresentacao", rotulo: "Data", formatar: (v) =>
+    v.data_apresentacao ? new Date(v.data_apresentacao).toLocaleDateString("pt-BR") : "—" },
+];
+
 export default function ListaProposicoes({ base, temas }: ListaProposicoesProps) {
   const [tema, setTema] = useState<string | undefined>(undefined);
   const [rotulo, setRotulo] = useState<string | undefined>(undefined);
@@ -196,72 +207,79 @@ export default function ListaProposicoes({ base, temas }: ListaProposicoesProps)
       camposBusca={["ementa", "keywords", "identificacao"]}
       vazio="Nenhuma proposição sincronizada ainda."
       filtrar={filtrar}
-      controles={() => (
-        <div className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--cp-border)] p-4">
-          <label className="text-sm">
-            <span className="mr-2 opacity-75">Tema oficial</span>
-            <select
-              value={tema ?? ""}
-              onChange={(e) => setTema(e.target.value || undefined)}
-              className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
-            >
-              <option value="">Todos</option>
-              {temas.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="text-sm">
-            <span className="mr-2 opacity-75">Classificação</span>
-            <select
-              value={rotulo ?? ""}
-              onChange={(e) => setRotulo(e.target.value || undefined)}
-              className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
-            >
-              <option value="">Todas</option>
-              {RUBRICA.faixas.map((f) => (
-                <option key={f.rotulo} value={f.rotulo}>
-                  {f.label}
-                </option>
-              ))}
-              <option value="misto">{labelDoRotulo("misto")}</option>
-            </select>
-          </label>
-          <label className="text-sm">
-            <span className="mr-2 opacity-75">Ano</span>
-            <input
-              type="number"
-              value={ano}
-              onChange={(e) => setAno(e.target.value)}
-              placeholder="2026"
-              className="w-24 rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
-            />
-          </label>
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={soTramitando}
-              onChange={(e) => setSoTramitando(e.target.checked)}
-              className="size-4"
-            />
-            Só em tramitação
-          </label>
-          {(tema || rotulo || ano || !soTramitando) && (
-            <button
-              type="button"
-              onClick={() => {
-                setTema(undefined);
-                setRotulo(undefined);
-                setAno("");
-                setSoTramitando(true);
-              }}
-              className="text-sm underline"
-            >
-              limpar
-            </button>
-          )}
+      controles={({ filtradas }) => (
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--cp-border)] p-4">
+            <label className="text-sm">
+              <span className="mr-2 opacity-75">Tema oficial</span>
+              <select
+                value={tema ?? ""}
+                onChange={(e) => setTema(e.target.value || undefined)}
+                className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
+              >
+                <option value="">Todos</option>
+                {temas.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="text-sm">
+              <span className="mr-2 opacity-75">Classificação</span>
+              <select
+                value={rotulo ?? ""}
+                onChange={(e) => setRotulo(e.target.value || undefined)}
+                className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
+              >
+                <option value="">Todas</option>
+                {RUBRICA.faixas.map((f) => (
+                  <option key={f.rotulo} value={f.rotulo}>
+                    {f.label}
+                  </option>
+                ))}
+                <option value="misto">{labelDoRotulo("misto")}</option>
+              </select>
+            </label>
+            <label className="text-sm">
+              <span className="mr-2 opacity-75">Ano</span>
+              <input
+                type="number"
+                value={ano}
+                onChange={(e) => setAno(e.target.value)}
+                placeholder="2026"
+                className="w-24 rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
+              />
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={soTramitando}
+                onChange={(e) => setSoTramitando(e.target.checked)}
+                className="size-4"
+              />
+              Só em tramitação
+            </label>
+            {(tema || rotulo || ano || !soTramitando) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setTema(undefined);
+                  setRotulo(undefined);
+                  setAno("");
+                  setSoTramitando(true);
+                }}
+                className="text-sm underline"
+              >
+                limpar
+              </button>
+            )}
+          </div>
+          <BotoesExportar
+            dados={filtradas}
+            colunas={COLUNAS_CSV}
+            nomeArquivo="proposicoes-congresso"
+          />
         </div>
       )}
     />

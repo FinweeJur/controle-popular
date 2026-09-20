@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "@/lib/congresso/link";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+import BotoesExportar from "@/app/components/BotoesExportar";
+import type { ColunaCsv } from "@/lib/tabela/csv";
 import type { Votacao, VotoIndividual, LadoVoto } from "@/lib/congresso/votacoes";
 
 /**
@@ -87,6 +89,12 @@ const COLUNAS: ColunaTabela<LinhaVotacao>[] = [
   { chave: "votos", rotulo: "Votos", formatar: (v) => <ColunaVotos votos={v.votos} /> },
 ];
 
+const COLUNAS_CSV: ColunaCsv<LinhaVotacao>[] = [
+  { chave: "descricao", rotulo: "Votação" },
+  { chave: "siglaOrgao", rotulo: "Órgão" },
+  { chave: "data", rotulo: "Data", formatar: (v) => formatarData(v.data) },
+];
+
 export default function ListaVotacoes({ base }: { base: string }) {
   const [ano, setAno] = useState("");
   const primeiraRenderizacao = useRef(true);
@@ -134,23 +142,30 @@ export default function ListaVotacoes({ base }: { base: string }) {
       camposBusca={["descricao"]}
       vazio="Nenhuma votação sincronizada ainda."
       filtrar={filtrar}
-      controles={() => (
-        <div className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--cp-border)] p-4">
-          <label className="text-sm">
-            <span className="mr-2 opacity-75">Ano</span>
-            <input
-              type="number"
-              value={ano}
-              onChange={(e) => setAno(e.target.value)}
-              placeholder="2026"
-              className="w-24 rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
-            />
-          </label>
-          {ano && (
-            <button type="button" onClick={() => setAno("")} className="text-sm underline">
-              limpar
-            </button>
-          )}
+      controles={({ filtradas }) => (
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--cp-border)] p-4">
+            <label className="text-sm">
+              <span className="mr-2 opacity-75">Ano</span>
+              <input
+                type="number"
+                value={ano}
+                onChange={(e) => setAno(e.target.value)}
+                placeholder="2026"
+                className="w-24 rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
+              />
+            </label>
+            {ano && (
+              <button type="button" onClick={() => setAno("")} className="text-sm underline">
+                limpar
+              </button>
+            )}
+          </div>
+          <BotoesExportar
+            dados={filtradas}
+            colunas={COLUNAS_CSV}
+            nomeArquivo="votacoes-congresso"
+          />
         </div>
       )}
     />

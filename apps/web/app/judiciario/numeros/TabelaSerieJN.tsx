@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { formatNumberBR } from "@/lib/betim/format";
 import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
 import { SERIE_JN_TJMG, JN_META, type AnoJusticaEmNumeros } from "@/lib/judiciario/justica-em-numeros";
+import BotoesExportar from "@/app/components/BotoesExportar";
+import type { ColunaCsv } from "@/lib/tabela/csv";
 
 /**
  * Os 17 anos da série, um a um: filtra por intervalo de ano, ordena por
@@ -58,49 +60,14 @@ function fmtInt(v: number | null): string {
   return formatNumberBR(Math.round(v));
 }
 
-function baixarCsv(conteudo: string, nomeArquivo: string) {
-  const BOM = "﻿";
-  const blob = new Blob([BOM + conteudo], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = nomeArquivo;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-
-function csvCampo(v: string | number | null): string {
-  const s = v === null || v === undefined ? "" : String(v);
-  return `"${s.replace(/"/g, '""')}"`;
-}
-
-function paraCsv(linhas: AnoJusticaEmNumeros[]): string {
-  const cab = [
-    "ano",
-    "congestionamento_fracao",
-    "pendentes",
-    "casos_novos_por_magistrado",
-    "baixados",
-    "tempo_ate_baixa_unidade_nao_confirmada",
-    "fonte",
-  ];
-  const corpo = linhas.map((l) =>
-    [
-      l.ano,
-      l.congestionamento,
-      l.pendentes,
-      l.casosNovosPorMagistrado,
-      l.baixados,
-      l.tempoAteBaixa,
-      JN_META.fonte,
-    ]
-      .map(csvCampo)
-      .join(","),
-  );
-  return [cab.join(","), ...corpo].join("\n");
-}
+const COLUNAS_CSV: ColunaCsv<AnoJusticaEmNumeros>[] = [
+  { chave: "ano", rotulo: "Ano" },
+  { chave: "congestionamento", rotulo: "Congestão (fração)", formatar: (v) => v ?? "" },
+  { chave: "pendentes", rotulo: "Pendentes", formatar: (v) => v !== null ? formatNumberBR(Math.round(v)) : "" },
+  { chave: "casosNovosPorMagistrado", rotulo: "Casos novos/magistrado", formatar: (v) => v !== null ? formatNumberBR(Math.round(v)) : "" },
+  { chave: "baixados", rotulo: "Baixados", formatar: (v) => v !== null ? formatNumberBR(Math.round(v)) : "" },
+  { chave: "tempoAteBaixa", rotulo: "Tempo até a baixa (unidade não confirmada)", formatar: (v) => v !== null ? fmt1(v) : "" },
+];
 
 export default function TabelaSerieJN() {
   const anos = useMemo(() => SERIE_JN_TJMG.map((a) => a.ano), []);
@@ -194,15 +161,11 @@ export default function TabelaSerieJN() {
         <p className="text-[.9em] text-text-soft" aria-live="polite">
           <strong className="text-text">{filtradas.length}</strong> de {SERIE_JN_TJMG.length} anos
         </p>
-        <button
-          type="button"
-          onClick={() =>
-            baixarCsv(paraCsv(filtradas), `justica-em-numeros-tjmg-${filtradas.length}-anos.csv`)
-          }
-          className="rounded-lg border border-primary px-3 py-2 text-[.88em] font-semibold text-primary hover:bg-primary hover:text-surface"
-        >
-          Baixar CSV do filtrado ({filtradas.length})
-        </button>
+        <BotoesExportar
+          dados={filtradas}
+          colunas={COLUNAS_CSV}
+          nomeArquivo={`justica-em-numeros-tjmg-${filtradas.length}-anos`}
+        />
       </div>
 
       {/* ═══ TABELA ═══ */}

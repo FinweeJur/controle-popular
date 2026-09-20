@@ -86,7 +86,7 @@ export interface TabelaEstaticaProps<T> {
    * última fatia esconderia linha que ainda não chegou — o mesmo motivo pelo
    * qual a busca fica desabilitada.
    */
-  controles?: (ctx: { pronto: boolean; linhas: T[] }) => React.ReactNode;
+  controles?: (ctx: { pronto: boolean; linhas: T[]; filtradas: T[] }) => React.ReactNode;
 }
 
 type Estado = "carregando" | "pronto" | "erro";
@@ -264,7 +264,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
 
   return (
     <div className="mt-6">
-      {controles && <div className="mb-4">{controles({ pronto: completo, linhas })}</div>}
+      {controles && <div className="mb-4">{controles({ pronto: completo, linhas, filtradas })}</div>}
       {camposBusca.length > 0 && (
         <div className="flex flex-wrap items-baseline gap-3">
           <div className="relative w-full max-w-sm flex items-center">
