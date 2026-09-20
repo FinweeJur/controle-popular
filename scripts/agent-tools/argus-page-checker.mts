@@ -94,8 +94,9 @@ function valorDoSegmento(segmento: string, prefixoDaRota: string): string {
     case "[slug]":
       if (prefixoDaRota.includes("empresas")) return "sigma-lithium";
       if (prefixoDaRota.includes("noticias"))
-        return "mineradoras-acionam-stf-contra-pnab-auxilio-emergencial";
-      return "alexandre-da-paz";
+        return "satelite-cbers-6-cooperacao-espacial-amazonia";
+      if (prefixoDaRota.includes("vereadores")) return "1";
+      return "1";
     default:
       return "1";
   }
