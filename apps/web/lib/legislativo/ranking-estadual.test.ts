@@ -43,4 +43,24 @@ describe("ranking-estadual", () => {
     expect(csv).toContain("ALMG");
     expect(csv).toContain("Tadeu Martins Leite");
   });
+
+  it("contém cobertura de todas as 27 Unidades Federativas do Brasil", () => {
+    const ufs = listarUfsAssembleias();
+    expect(ufs.length).toBe(27);
+
+    const todasUfs = [
+      "ac", "al", "am", "ap", "ba", "ce", "df", "es", "go", "ma",
+      "mg", "ms", "mt", "pa", "pb", "pe", "pi", "pr", "rj", "rn",
+      "ro", "rr", "rs", "sc", "se", "sp", "to",
+    ];
+
+    for (const uf of todasUfs) {
+      const assembleia = obterAssembleiaEstadual(uf);
+      expect(assembleia).not.toBeNull();
+      expect(assembleia?.uf).toBe(uf);
+      expect(assembleia?.sigla.length).toBeGreaterThan(0);
+      expect(assembleia?.deputados.length).toBeGreaterThan(0);
+    }
+  });
 });
+

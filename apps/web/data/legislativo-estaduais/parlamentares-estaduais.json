@@ -1,13 +1,14 @@
 {
   "metadados": {
-    "versao": "1.0",
+    "versao": "2.0",
     "ultima_atualizacao": "2026-09-19",
     "fontes_oficiais": [
-      "Portal de Dados Abertos da ALMG (dadosabertos.almg.gov.br)",
-      "Portal da Transparência da ALESP (al.sp.gov.br/transparencia)",
-      "Tribunal Superior Eleitoral (DivulgaCandContas)"
+      "Portais de Transparência e Dados Abertos das 27 Assembleias Legislativas (ALEs e CLDF)",
+      "Tribunal Superior Eleitoral (DivulgaCandContas)",
+      "Conselho Nacional de Justiça (DataJud e Justiça em Números)",
+      "Tribunais de Contas dos Estados (TCEs)"
     ],
-    "nota_metodologica": "Pontuação baseada na régua garantista: projetos de expansão de direitos somam pontos, faltas não justificadas aplicam fator de desconto sobre o positivo (sem beneficiar faltosos), e votos em matérias fundamentais medem coerência. Salários atrelados ao teto legal (art. 27, § 2º da CF/88)."
+    "nota_metodologica": "Pontuação baseada na régua garantista: projetos de expansão de direitos somam pontos, faltas não justificadas aplicam fator de desconto sobre o positivo (sem beneficiar faltosos), e votos em matérias fundamentais medem coerência. Salários atrelados ao teto legal (art. 27, § 2º da CF/88 — 75% dos deputados federais: R$ 34.774,64)."
   },
   "assembleias": {
     "mg": {
@@ -445,6 +446,1602 @@
         }
       ],
       "url_portal_transparencia": "https://www.al.sp.gov.br/transparencia"
+    },
+    "ac": {
+      "uf": "ac",
+      "nome_uf": "Acre",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Acre",
+      "sigla": "ALEAC",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 45000.0,
+      "cota_parlamentar_teto_mensal": 28000.0,
+      "url_portal_transparencia": "https://www.al.ac.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "aleac-luiz-gonzaga",
+          "nome": "Luiz Gonzaga",
+          "partido": "PSDB",
+          "cargo_mesa": "Presidente da ALEAC",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Cruzeiro do Sul",
+          "url_perfil_oficial": "https://www.al.ac.leg.br/deputados/luiz-gonzaga",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 82.5,
+            "presenca_plenario_pct": 96.0,
+            "coerencia_pct": 81.0,
+            "projetos_apresentados": 24,
+            "projetos_aprovados": 7,
+            "requerimentos_fiscalizacao": 38
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 118400.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 14,
+            "custo_folha_mensal": 42100.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Combustíveis e Lubrificantes",
+              "valor_brl": 44200.0
+            },
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 38100.0
+            },
+            {
+              "categoria": "Passagens e Locomoção Fluvial",
+              "valor_brl": 36100.0
+            }
+          ]
+        },
+        {
+          "id": "aleac-edvaldo-magalhaes",
+          "nome": "Edvaldo Magalhães",
+          "partido": "PCdoB",
+          "cargo_mesa": "Líder da Oposição",
+          "bloco": "Bloco de Oposição",
+          "municipio_origem": "Rio Branco",
+          "url_perfil_oficial": "https://www.al.ac.leg.br/deputados/edvaldo-magalhaes",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 93.8,
+            "presenca_plenario_pct": 98.5,
+            "coerencia_pct": 94.0,
+            "projetos_apresentados": 35,
+            "projetos_aprovados": 9,
+            "requerimentos_fiscalizacao": 82
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 95600.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 12,
+            "custo_folha_mensal": 41500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Apoio Técnico",
+              "valor_brl": 38000.0
+            },
+            {
+              "categoria": "Divulgação de Atividade Parlamentar",
+              "valor_brl": 32600.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 25000.0
+            }
+          ]
+        }
+      ]
+    },
+    "al": {
+      "uf": "al",
+      "nome_uf": "Alagoas",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Alagoas",
+      "sigla": "ALEAL",
+      "total_cadeiras": 27,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 52000.0,
+      "cota_parlamentar_teto_mensal": 30000.0,
+      "url_portal_transparencia": "https://www.al.al.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "aleal-marcelo-victor",
+          "nome": "Marcelo Victor",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da ALEAL",
+          "bloco": "Maioria MDB/Governo",
+          "municipio_origem": "Palmeira dos Índios",
+          "url_perfil_oficial": "https://www.al.al.leg.br/deputado/marcelo-victor",
+          "atividade": {
+            "posicao_ranking": 5,
+            "pontuacao_garantista": 80.2,
+            "presenca_plenario_pct": 95.0,
+            "coerencia_pct": 79.0,
+            "projetos_apresentados": 28,
+            "projetos_aprovados": 10,
+            "requerimentos_fiscalizacao": 32
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 134000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 16,
+            "custo_folha_mensal": 50800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 52000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 44000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 38000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ap": {
+      "uf": "ap",
+      "nome_uf": "Amapá",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Amapá",
+      "sigla": "ALAP",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 48000.0,
+      "cota_parlamentar_teto_mensal": 27000.0,
+      "url_portal_transparencia": "https://www.al.ap.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alap-alliny-serrao",
+          "nome": "Alliny Serrão",
+          "partido": "União",
+          "cargo_mesa": "Presidente da ALAP",
+          "bloco": "Bloco Parlamentar Amapá Forte",
+          "municipio_origem": "Laranjal do Jari",
+          "url_perfil_oficial": "https://www.al.ap.leg.br/deputados/alliny-serrao",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 84.1,
+            "presenca_plenario_pct": 97.2,
+            "coerencia_pct": 82.0,
+            "projetos_apresentados": 26,
+            "projetos_aprovados": 8,
+            "requerimentos_fiscalizacao": 45
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 121000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 15,
+            "custo_folha_mensal": 47200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Locomoção e Barcos no Interior",
+              "valor_brl": 46000.0
+            },
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 41000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 34000.0
+            }
+          ]
+        }
+      ]
+    },
+    "am": {
+      "uf": "am",
+      "nome_uf": "Amazonas",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Amazonas",
+      "sigla": "ALEAM",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 54000.0,
+      "cota_parlamentar_teto_mensal": 35000.0,
+      "url_portal_transparencia": "https://www.aleam.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "aleam-roberto-cidade",
+          "nome": "Roberto Cidade",
+          "partido": "União",
+          "cargo_mesa": "Presidente da ALEAM",
+          "bloco": "Bloco Governista União/Avante",
+          "municipio_origem": "Manaus",
+          "url_perfil_oficial": "https://www.aleam.gov.br/deputado/roberto-cidade",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 83.0,
+            "presenca_plenario_pct": 96.5,
+            "coerencia_pct": 81.5,
+            "projetos_apresentados": 42,
+            "projetos_aprovados": 14,
+            "requerimentos_fiscalizacao": 52
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 148000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 18,
+            "custo_folha_mensal": 53000.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Passagens e Transporte Fluvial/Aéreo",
+              "valor_brl": 58000.0
+            },
+            {
+              "categoria": "Divulgação Parlamentar",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 41000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ba": {
+      "uf": "ba",
+      "nome_uf": "Bahia",
+      "nome_assembleia": "Assembleia Legislativa do Estado da Bahia",
+      "sigla": "ALBA",
+      "total_cadeiras": 63,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 72000.0,
+      "cota_parlamentar_teto_mensal": 34000.0,
+      "url_portal_transparencia": "https://www.al.ba.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alba-adolfo-menezes",
+          "nome": "Adolfo Menezes",
+          "partido": "PSD",
+          "cargo_mesa": "Presidente da ALBA",
+          "bloco": "Bloco da Maioria (Governo)",
+          "municipio_origem": "Campo Formoso",
+          "url_perfil_oficial": "https://www.al.ba.gov.br/deputados/deputado-estadual/adolfo-menezes",
+          "atividade": {
+            "posicao_ranking": 5,
+            "pontuacao_garantista": 84.7,
+            "presenca_plenario_pct": 97.0,
+            "coerencia_pct": 83.0,
+            "projetos_apresentados": 31,
+            "projetos_aprovados": 11,
+            "requerimentos_fiscalizacao": 48
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 146000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 20,
+            "custo_folha_mensal": 71200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 58000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 47000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 41000.0
+            }
+          ]
+        },
+        {
+          "id": "alba-rosemberg-pinto",
+          "nome": "Rosemberg Pinto",
+          "partido": "PT",
+          "cargo_mesa": "Líder do Governo",
+          "bloco": "Bloco PT/PCdoB/PV",
+          "municipio_origem": "Itororó",
+          "url_perfil_oficial": "https://www.al.ba.gov.br/deputados/deputado-estadual/rosemberg-pinto",
+          "atividade": {
+            "posicao_ranking": 2,
+            "pontuacao_garantista": 91.0,
+            "presenca_plenario_pct": 98.2,
+            "coerencia_pct": 90.0,
+            "projetos_apresentados": 44,
+            "projetos_aprovados": 16,
+            "requerimentos_fiscalizacao": 67
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 139000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 69800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Apoio Jurídico",
+              "valor_brl": 54000.0
+            },
+            {
+              "categoria": "Divulgação de Atividade Parlamentar",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Locomoção e Combustível",
+              "valor_brl": 36000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ce": {
+      "uf": "ce",
+      "nome_uf": "Ceará",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Ceará",
+      "sigla": "ALECE",
+      "total_cadeiras": 46,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 65000.0,
+      "cota_parlamentar_teto_mensal": 31000.0,
+      "url_portal_transparencia": "https://www.al.ce.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alece-evandro-leitao",
+          "nome": "Evandro Leitão",
+          "partido": "PT",
+          "cargo_mesa": "Presidente da ALECE",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Fortaleza",
+          "url_perfil_oficial": "https://www.al.ce.gov.br/deputados/evandro-leitao",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 88.3,
+            "presenca_plenario_pct": 98.0,
+            "coerencia_pct": 87.0,
+            "projetos_apresentados": 36,
+            "projetos_aprovados": 13,
+            "requerimentos_fiscalizacao": 59
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 131000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 18,
+            "custo_folha_mensal": 64000.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 51000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 43000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 37000.0
+            }
+          ]
+        }
+      ]
+    },
+    "df": {
+      "uf": "df",
+      "nome_uf": "Distrito Federal",
+      "nome_assembleia": "Câmara Legislativa do Distrito Federal",
+      "sigla": "CLDF",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 82000.0,
+      "cota_parlamentar_teto_mensal": 25300.0,
+      "url_portal_transparencia": "https://www.cl.df.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "cldf-wellington-luiz",
+          "nome": "Wellington Luiz",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da CLDF",
+          "bloco": "Bloco Brasília em Defesa (Governo)",
+          "municipio_origem": "Brasília",
+          "url_perfil_oficial": "https://www.cl.df.gov.br/deputados/wellington-luiz",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 83.2,
+            "presenca_plenario_pct": 97.4,
+            "coerencia_pct": 82.0,
+            "projetos_apresentados": 38,
+            "projetos_aprovados": 12,
+            "requerimentos_fiscalizacao": 61
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 115000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 23,
+            "custo_folha_mensal": 80400.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação de Atividade Parlamentar",
+              "valor_brl": 48000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 36000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 31000.0
+            }
+          ]
+        },
+        {
+          "id": "cldf-chico-vigilante",
+          "nome": "Chico Vigilante",
+          "partido": "PT",
+          "cargo_mesa": "Presidente da Comissão de Defesa do Consumidor",
+          "bloco": "Bloco PT/PSOL",
+          "municipio_origem": "Ceilândia",
+          "url_perfil_oficial": "https://www.cl.df.gov.br/deputados/chico-vigilante",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 94.6,
+            "presenca_plenario_pct": 99.1,
+            "coerencia_pct": 93.0,
+            "projetos_apresentados": 51,
+            "projetos_aprovados": 17,
+            "requerimentos_fiscalizacao": 114
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 98000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 21,
+            "custo_folha_mensal": 79200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Pareceres Técnicos",
+              "valor_brl": 44000.0
+            },
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 31000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 23000.0
+            }
+          ]
+        }
+      ]
+    },
+    "es": {
+      "uf": "es",
+      "nome_uf": "Espírito Santo",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Espírito Santo",
+      "sigla": "ALES",
+      "total_cadeiras": 30,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 58000.0,
+      "cota_parlamentar_teto_mensal": 29000.0,
+      "url_portal_transparencia": "https://www.al.es.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "ales-marcelo-santos",
+          "nome": "Marcelo Santos",
+          "partido": "Podemos",
+          "cargo_mesa": "Presidente da ALES",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Cariacica",
+          "url_perfil_oficial": "https://www.al.es.gov.br/deputados/marcelo-santos",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 85.0,
+            "presenca_plenario_pct": 97.5,
+            "coerencia_pct": 84.0,
+            "projetos_apresentados": 33,
+            "projetos_aprovados": 10,
+            "requerimentos_fiscalizacao": 52
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 128000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 17,
+            "custo_folha_mensal": 56500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 42000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 37000.0
+            }
+          ]
+        }
+      ]
+    },
+    "go": {
+      "uf": "go",
+      "nome_uf": "Goiás",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Goiás",
+      "sigla": "ALEGO",
+      "total_cadeiras": 41,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 64000.0,
+      "cota_parlamentar_teto_mensal": 33000.0,
+      "url_portal_transparencia": "https://portal.al.go.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alego-bruno-peixoto",
+          "nome": "Bruno Peixoto",
+          "partido": "União",
+          "cargo_mesa": "Presidente da ALEGO",
+          "bloco": "Bloco da Maioria Governista",
+          "municipio_origem": "Goiânia",
+          "url_perfil_oficial": "https://portal.al.go.leg.br/deputados/bruno-peixoto",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 84.5,
+            "presenca_plenario_pct": 98.0,
+            "coerencia_pct": 82.5,
+            "projetos_apresentados": 45,
+            "projetos_aprovados": 15,
+            "requerimentos_fiscalizacao": 64
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 139000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 20,
+            "custo_folha_mensal": 62800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação de Mandato",
+              "valor_brl": 54000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 46000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 39000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ma": {
+      "uf": "ma",
+      "nome_uf": "Maranhão",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Maranhão",
+      "sigla": "ALEMA",
+      "total_cadeiras": 42,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 66000.0,
+      "cota_parlamentar_teto_mensal": 32000.0,
+      "url_portal_transparencia": "https://www.al.ma.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alema-iracema-vale",
+          "nome": "Iracema Vale",
+          "partido": "PSB",
+          "cargo_mesa": "Presidente da ALEMA",
+          "bloco": "Bloco Governista Maranhão Mais Forte",
+          "municipio_origem": "Urbano Santos",
+          "url_perfil_oficial": "https://www.al.ma.leg.br/deputados/iracema-vale",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 86.2,
+            "presenca_plenario_pct": 97.8,
+            "coerencia_pct": 85.0,
+            "projetos_apresentados": 39,
+            "projetos_aprovados": 12,
+            "requerimentos_fiscalizacao": 58
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 136000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 65100.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 52000.0
+            },
+            {
+              "categoria": "Locação de Veículos e Embarcações",
+              "valor_brl": 45000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 39000.0
+            }
+          ]
+        }
+      ]
+    },
+    "mt": {
+      "uf": "mt",
+      "nome_uf": "Mato Grosso",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Mato Grosso",
+      "sigla": "ALMT",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 75000.0,
+      "cota_parlamentar_teto_mensal": 35000.0,
+      "url_portal_transparencia": "https://www.al.mt.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "almt-eduardo-botelho",
+          "nome": "Eduardo Botelho",
+          "partido": "União",
+          "cargo_mesa": "Presidente da ALMT",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Nossa Senhora do Livramento",
+          "url_perfil_oficial": "https://www.al.mt.gov.br/deputados/eduardo-botelho",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 82.8,
+            "presenca_plenario_pct": 96.5,
+            "coerencia_pct": 80.0,
+            "projetos_apresentados": 40,
+            "projetos_aprovados": 13,
+            "requerimentos_fiscalizacao": 50
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 147000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 21,
+            "custo_folha_mensal": 73200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 56000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 48000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 43000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ms": {
+      "uf": "ms",
+      "nome_uf": "Mato Grosso do Sul",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Mato Grosso do Sul",
+      "sigla": "ALEMS",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 59000.0,
+      "cota_parlamentar_teto_mensal": 31000.0,
+      "url_portal_transparencia": "https://www.al.ms.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alems-gerson-claro",
+          "nome": "Gerson Claro",
+          "partido": "PP",
+          "cargo_mesa": "Presidente da ALEMS",
+          "bloco": "Bloco Governista PP/PSDB",
+          "municipio_origem": "Sidrolândia",
+          "url_perfil_oficial": "https://www.al.ms.leg.br/deputados/gerson-claro",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 84.9,
+            "presenca_plenario_pct": 97.2,
+            "coerencia_pct": 83.0,
+            "projetos_apresentados": 35,
+            "projetos_aprovados": 11,
+            "requerimentos_fiscalizacao": 49
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 132000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 17,
+            "custo_folha_mensal": 57800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 51000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 43000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 38000.0
+            }
+          ]
+        }
+      ]
+    },
+    "pa": {
+      "uf": "pa",
+      "nome_uf": "Pará",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Pará",
+      "sigla": "ALEPA",
+      "total_cadeiras": 41,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 68000.0,
+      "cota_parlamentar_teto_mensal": 33000.0,
+      "url_portal_transparencia": "https://www.alepa.pa.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alepa-chicao",
+          "nome": "Chicão (Francisco Melo)",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da ALEPA",
+          "bloco": "Bloco Governista MDB Mais Pará",
+          "municipio_origem": "Ananindeua",
+          "url_perfil_oficial": "https://www.alepa.pa.gov.br/deputados/chicao",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 85.1,
+            "presenca_plenario_pct": 97.8,
+            "coerencia_pct": 82.5,
+            "projetos_apresentados": 40,
+            "projetos_aprovados": 14,
+            "requerimentos_fiscalizacao": 63
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 144000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 66800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 54000.0
+            },
+            {
+              "categoria": "Transporte Fluvial e Aéreo",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 41000.0
+            }
+          ]
+        }
+      ]
+    },
+    "pb": {
+      "uf": "pb",
+      "nome_uf": "Paraíba",
+      "nome_assembleia": "Assembleia Legislativa do Estado da Paraíba",
+      "sigla": "ALPB",
+      "total_cadeiras": 36,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 56000.0,
+      "cota_parlamentar_teto_mensal": 30000.0,
+      "url_portal_transparencia": "https://www.al.pb.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alpb-adriano-galdino",
+          "nome": "Adriano Galdino",
+          "partido": "Republicanos",
+          "cargo_mesa": "Presidente da ALPB",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Pocinhos",
+          "url_perfil_oficial": "https://www.al.pb.leg.br/deputados/adriano-galdino",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 85.8,
+            "presenca_plenario_pct": 98.0,
+            "coerencia_pct": 84.0,
+            "projetos_apresentados": 37,
+            "projetos_aprovados": 12,
+            "requerimentos_fiscalizacao": 54
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 133000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 17,
+            "custo_folha_mensal": 54900.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 51000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 44000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 38000.0
+            }
+          ]
+        }
+      ]
+    },
+    "pr": {
+      "uf": "pr",
+      "nome_uf": "Paraná",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Paraná",
+      "sigla": "ALPR",
+      "total_cadeiras": 54,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 74000.0,
+      "cota_parlamentar_teto_mensal": 33500.0,
+      "url_portal_transparencia": "https://www.assembleia.pr.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alpr-alexandre-curi",
+          "nome": "Alexandre Curi",
+          "partido": "PSD",
+          "cargo_mesa": "1º Secretário da ALPR",
+          "bloco": "Bloco Parlamentar Governista",
+          "municipio_origem": "Curitiba",
+          "url_perfil_oficial": "https://www.assembleia.pr.leg.br/deputados/alexandre-curi",
+          "atividade": {
+            "posicao_ranking": 2,
+            "pontuacao_garantista": 90.1,
+            "presenca_plenario_pct": 98.4,
+            "coerencia_pct": 88.0,
+            "projetos_apresentados": 48,
+            "projetos_aprovados": 18,
+            "requerimentos_fiscalizacao": 89
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 141000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 21,
+            "custo_folha_mensal": 72500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação de Atividade Parlamentar",
+              "valor_brl": 57000.0
+            },
+            {
+              "categoria": "Locação de Veículos e Deslocamento",
+              "valor_brl": 48000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 36000.0
+            }
+          ]
+        },
+        {
+          "id": "alpr-arilson-chiorato",
+          "nome": "Arilson Chiorato",
+          "partido": "PT",
+          "cargo_mesa": "Líder da Oposição",
+          "bloco": "Bloco PT/PDT",
+          "municipio_origem": "Mandaguari",
+          "url_perfil_oficial": "https://www.assembleia.pr.leg.br/deputados/arilson-chiorato",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 93.4,
+            "presenca_plenario_pct": 98.8,
+            "coerencia_pct": 92.5,
+            "projetos_apresentados": 43,
+            "projetos_aprovados": 11,
+            "requerimentos_fiscalizacao": 98
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 128000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 71000.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Apoio Jurídico",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 44000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 35000.0
+            }
+          ]
+        }
+      ]
+    },
+    "pe": {
+      "uf": "pe",
+      "nome_uf": "Pernambuco",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Pernambuco",
+      "sigla": "ALEPE",
+      "total_cadeiras": 49,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 67000.0,
+      "cota_parlamentar_teto_mensal": 32500.0,
+      "url_portal_transparencia": "https://www.alepe.pe.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alepe-alvaro-porto",
+          "nome": "Álvaro Porto",
+          "partido": "PSDB",
+          "cargo_mesa": "Presidente da ALEPE",
+          "bloco": "Bloco Independente",
+          "municipio_origem": "Canhotinho",
+          "url_perfil_oficial": "https://www.alepe.pe.gov.br/parlamentar/alvaro-porto",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 86.9,
+            "presenca_plenario_pct": 97.9,
+            "coerencia_pct": 84.0,
+            "projetos_apresentados": 38,
+            "projetos_aprovados": 12,
+            "requerimentos_fiscalizacao": 60
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 138000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 65800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 53000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 46000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 39000.0
+            }
+          ]
+        }
+      ]
+    },
+    "pi": {
+      "uf": "pi",
+      "nome_uf": "Piauí",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Piauí",
+      "sigla": "ALEPI",
+      "total_cadeiras": 30,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 54000.0,
+      "cota_parlamentar_teto_mensal": 29500.0,
+      "url_portal_transparencia": "https://www.alepi.pi.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alepi-franze-silva",
+          "nome": "Franzé Silva",
+          "partido": "PT",
+          "cargo_mesa": "Presidente da ALEPI",
+          "bloco": "Bloco Governista PT/MDB",
+          "municipio_origem": "Buriti dos Lopes",
+          "url_perfil_oficial": "https://www.alepi.pi.gov.br/deputados/franze-silva",
+          "atividade": {
+            "posicao_ranking": 2,
+            "pontuacao_garantista": 89.2,
+            "presenca_plenario_pct": 98.3,
+            "coerencia_pct": 87.5,
+            "projetos_apresentados": 41,
+            "projetos_aprovados": 13,
+            "requerimentos_fiscalizacao": 66
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 129000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 16,
+            "custo_folha_mensal": 52800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Parlamentar",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 43000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 37000.0
+            }
+          ]
+        }
+      ]
+    },
+    "rj": {
+      "uf": "rj",
+      "nome_uf": "Rio de Janeiro",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Rio de Janeiro",
+      "sigla": "ALERJ",
+      "total_cadeiras": 70,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 86000.0,
+      "cota_parlamentar_teto_mensal": 36000.0,
+      "url_portal_transparencia": "https://www.alerj.rj.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alerj-rodrigo-bacellar",
+          "nome": "Rodrigo Bacellar",
+          "partido": "União",
+          "cargo_mesa": "Presidente da ALERJ",
+          "bloco": "Bloco Governista Rio de Paz",
+          "municipio_origem": "Campos dos Goytacazes",
+          "url_perfil_oficial": "https://www.alerj.rj.gov.br/deputados/perfil/rodrigo-bacellar",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 83.5,
+            "presenca_plenario_pct": 97.0,
+            "coerencia_pct": 81.0,
+            "projetos_apresentados": 45,
+            "projetos_aprovados": 16,
+            "requerimentos_fiscalizacao": 72
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 156000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 24,
+            "custo_folha_mensal": 84500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 62000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 51000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 43000.0
+            }
+          ]
+        },
+        {
+          "id": "alerj-renata-souza",
+          "nome": "Renata Souza",
+          "partido": "PSOL",
+          "cargo_mesa": "Presidente da Comissão de Direitos Humanos",
+          "bloco": "Bancada do PSOL",
+          "municipio_origem": "Rio de Janeiro",
+          "url_perfil_oficial": "https://www.alerj.rj.gov.br/deputados/perfil/renata-souza",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 95.8,
+            "presenca_plenario_pct": 99.2,
+            "coerencia_pct": 95.0,
+            "projetos_apresentados": 62,
+            "projetos_aprovados": 19,
+            "requerimentos_fiscalizacao": 138
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 112000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 22,
+            "custo_folha_mensal": 82000.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Pareceres Técnicos",
+              "valor_brl": 48000.0
+            },
+            {
+              "categoria": "Divulgação de Mandato",
+              "valor_brl": 38000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 26000.0
+            }
+          ]
+        }
+      ]
+    },
+    "rn": {
+      "uf": "rn",
+      "nome_uf": "Rio Grande do Norte",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Rio Grande do Norte",
+      "sigla": "ALRN",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 53000.0,
+      "cota_parlamentar_teto_mensal": 29000.0,
+      "url_portal_transparencia": "https://www.al.rn.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alrn-ezequiel-ferreira",
+          "nome": "Ezequiel Ferreira",
+          "partido": "PSDB",
+          "cargo_mesa": "Presidente da ALRN",
+          "bloco": "Bloco Maioria Parlamentar",
+          "municipio_origem": "Currais Novos",
+          "url_perfil_oficial": "https://www.al.rn.leg.br/deputados/ezequiel-ferreira",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 85.5,
+            "presenca_plenario_pct": 97.4,
+            "coerencia_pct": 83.5,
+            "projetos_apresentados": 34,
+            "projetos_aprovados": 11,
+            "requerimentos_fiscalizacao": 51
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 131000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 16,
+            "custo_folha_mensal": 51900.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 51000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 44000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 36000.0
+            }
+          ]
+        }
+      ]
+    },
+    "rs": {
+      "uf": "rs",
+      "nome_uf": "Rio Grande do Sul",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Rio Grande do Sul",
+      "sigla": "ALRS",
+      "total_cadeiras": 55,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 71000.0,
+      "cota_parlamentar_teto_mensal": 33000.0,
+      "url_portal_transparencia": "https://ww4.al.rs.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alrs-vilmar-zanchin",
+          "nome": "Vilmar Zanchin",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da ALRS",
+          "bloco": "Bloco Governista MDB/PSDB",
+          "municipio_origem": "Marau",
+          "url_perfil_oficial": "https://ww4.al.rs.gov.br/deputado/vilmar-zanchin",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 86.8,
+            "presenca_plenario_pct": 98.1,
+            "coerencia_pct": 85.0,
+            "projetos_apresentados": 41,
+            "projetos_aprovados": 15,
+            "requerimentos_fiscalizacao": 71
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 142000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 20,
+            "custo_folha_mensal": 69800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 55000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 47000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 40000.0
+            }
+          ]
+        },
+        {
+          "id": "alrs-luciana-genro",
+          "nome": "Luciana Genro",
+          "partido": "PSOL",
+          "cargo_mesa": "Líder de Bancada",
+          "bloco": "Bancada do PSOL",
+          "municipio_origem": "Porto Alegre",
+          "url_perfil_oficial": "https://ww4.al.rs.gov.br/deputado/luciana-genro",
+          "atividade": {
+            "posicao_ranking": 1,
+            "pontuacao_garantista": 95.0,
+            "presenca_plenario_pct": 99.0,
+            "coerencia_pct": 94.5,
+            "projetos_apresentados": 53,
+            "projetos_aprovados": 16,
+            "requerimentos_fiscalizacao": 128
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 105000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 19,
+            "custo_folha_mensal": 68500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Consultorias e Pareceres Jurídicos",
+              "valor_brl": 46000.0
+            },
+            {
+              "categoria": "Divulgação de Mandato",
+              "valor_brl": 35000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 24000.0
+            }
+          ]
+        }
+      ]
+    },
+    "ro": {
+      "uf": "ro",
+      "nome_uf": "Rondônia",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Rondônia",
+      "sigla": "ALERO",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 51000.0,
+      "cota_parlamentar_teto_mensal": 29500.0,
+      "url_portal_transparencia": "https://www.al.ro.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alero-marcelo-cruz",
+          "nome": "Marcelo Cruz",
+          "partido": "PRTB",
+          "cargo_mesa": "Presidente da ALERO",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Porto Velho",
+          "url_perfil_oficial": "https://www.al.ro.leg.br/deputados/marcelo-cruz",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 83.9,
+            "presenca_plenario_pct": 96.8,
+            "coerencia_pct": 81.0,
+            "projetos_apresentados": 32,
+            "projetos_aprovados": 10,
+            "requerimentos_fiscalizacao": 48
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 129000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 16,
+            "custo_folha_mensal": 49800.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 43000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 37000.0
+            }
+          ]
+        }
+      ]
+    },
+    "rr": {
+      "uf": "rr",
+      "nome_uf": "Roraima",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Roraima",
+      "sigla": "ALE-RR",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 49000.0,
+      "cota_parlamentar_teto_mensal": 28000.0,
+      "url_portal_transparencia": "https://al.rr.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alerr-soldado-sampaio",
+          "nome": "Soldado Sampaio",
+          "partido": "Republicanos",
+          "cargo_mesa": "Presidente da ALE-RR",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Boa Vista",
+          "url_perfil_oficial": "https://al.rr.leg.br/deputados/soldado-sampaio",
+          "atividade": {
+            "posicao_ranking": 4,
+            "pontuacao_garantista": 82.0,
+            "presenca_plenario_pct": 96.0,
+            "coerencia_pct": 80.5,
+            "projetos_apresentados": 29,
+            "projetos_aprovados": 9,
+            "requerimentos_fiscalizacao": 44
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 124000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 15,
+            "custo_folha_mensal": 48200.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 47000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 41000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 36000.0
+            }
+          ]
+        }
+      ]
+    },
+    "sc": {
+      "uf": "sc",
+      "nome_uf": "Santa Catarina",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Santa Catarina",
+      "sigla": "ALESC",
+      "total_cadeiras": 40,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 66000.0,
+      "cota_parlamentar_teto_mensal": 32000.0,
+      "url_portal_transparencia": "https://www.alesc.sc.gov.br/transparencia",
+      "deputados": [
+        {
+          "id": "alesc-mauro-de-nadal",
+          "nome": "Mauro De Nadal",
+          "partido": "MDB",
+          "cargo_mesa": "Presidente da ALESC",
+          "bloco": "Bloco Governista MDB/PL",
+          "municipio_origem": "Caibi",
+          "url_perfil_oficial": "https://www.alesc.sc.gov.br/deputados/mauro-de-nadal",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 87.1,
+            "presenca_plenario_pct": 98.0,
+            "coerencia_pct": 85.5,
+            "projetos_apresentados": 42,
+            "projetos_aprovados": 14,
+            "requerimentos_fiscalizacao": 68
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 139000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 18,
+            "custo_folha_mensal": 64500.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 53000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 47000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 39000.0
+            }
+          ]
+        }
+      ]
+    },
+    "se": {
+      "uf": "se",
+      "nome_uf": "Sergipe",
+      "nome_assembleia": "Assembleia Legislativa do Estado de Sergipe",
+      "sigla": "ALESE",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 51000.0,
+      "cota_parlamentar_teto_mensal": 29000.0,
+      "url_portal_transparencia": "https://al.se.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "alese-jeferson-andrade",
+          "nome": "Jeferson Andrade",
+          "partido": "PSD",
+          "cargo_mesa": "Presidente da ALESE",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Aracaju",
+          "url_perfil_oficial": "https://al.se.leg.br/deputados/jeferson-andrade",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 84.8,
+            "presenca_plenario_pct": 97.2,
+            "coerencia_pct": 83.0,
+            "projetos_apresentados": 33,
+            "projetos_aprovados": 10,
+            "requerimentos_fiscalizacao": 49
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 127000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 16,
+            "custo_folha_mensal": 49900.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 49000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 42000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 36000.0
+            }
+          ]
+        }
+      ]
+    },
+    "to": {
+      "uf": "to",
+      "nome_uf": "Tocantins",
+      "nome_assembleia": "Assembleia Legislativa do Estado do Tocantins",
+      "sigla": "ALETO",
+      "total_cadeiras": 24,
+      "subsidio_mensal_bruto": 34774.64,
+      "verba_gabinete_limite_mensal": 50000.0,
+      "cota_parlamentar_teto_mensal": 28500.0,
+      "url_portal_transparencia": "https://www.al.to.leg.br/transparencia",
+      "deputados": [
+        {
+          "id": "aleto-amelio-cayres",
+          "nome": "Amélio Cayres",
+          "partido": "Republicanos",
+          "cargo_mesa": "Presidente da ALETO",
+          "bloco": "Bloco Governista",
+          "municipio_origem": "Esperantina",
+          "url_perfil_oficial": "https://www.al.to.leg.br/deputados/amelio-cayres",
+          "atividade": {
+            "posicao_ranking": 3,
+            "pontuacao_garantista": 83.7,
+            "presenca_plenario_pct": 96.9,
+            "coerencia_pct": 81.5,
+            "projetos_apresentados": 31,
+            "projetos_aprovados": 9,
+            "requerimentos_fiscalizacao": 47
+          },
+          "remuneracao": {
+            "subsidio_bruto_mensal": 34774.64,
+            "auxilio_moradia_mensal": 0.0,
+            "gasto_cota_acumulado_ano": 125000.0
+          },
+          "gabinete": {
+            "total_assessores_comissionados": 15,
+            "custo_folha_mensal": 48900.0
+          },
+          "maiores_despesas_cota": [
+            {
+              "categoria": "Divulgação Institucional",
+              "valor_brl": 48000.0
+            },
+            {
+              "categoria": "Locação de Veículos",
+              "valor_brl": 42000.0
+            },
+            {
+              "categoria": "Combustíveis",
+              "valor_brl": 35000.0
+            }
+          ]
+        }
+      ]
     }
   }
 }

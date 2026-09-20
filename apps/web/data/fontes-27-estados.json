@@ -1,0 +1,1298 @@
+[
+  {
+    "uf": "AC",
+    "slug": "ac",
+    "nome": "Acre",
+    "regiao": "Norte",
+    "capital": "Rio Branco",
+    "executivo": {
+      "portal_governo": "https://www.ac.gov.br",
+      "transparencia": "https://transparencia.ac.gov.br",
+      "dados_abertos": "https://dados.ac.gov.br",
+      "diario_oficial": "https://diariooficial.ac.gov.br",
+      "compras_licitacoes": "https://compras.ac.gov.br",
+      "orgao_ambiental": "https://meioambiente.ac.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEAC",
+      "portal_oficial": "https://www.al.ac.leg.br",
+      "transparencia_ale": "https://transparencia.al.ac.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ac.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJAC",
+        "portal": "https://www.tjac.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjac/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPAC",
+        "portal": "https://www.mpac.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-AC",
+        "portal": "https://www.defensoria.ac.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-AC",
+        "portal": "https://www.tce-ac.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Rio Branco",
+      "portal_osb": "https://osbrasil.org.br/unidade/ac",
+      "oab_seccional": "OAB Seccional Acre (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabac.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Acre)",
+      "conselho_saude": "Conselho Estadual de Saúde (Acre)"
+    }
+  },
+  {
+    "uf": "AL",
+    "slug": "al",
+    "nome": "Alagoas",
+    "regiao": "Nordeste",
+    "capital": "Maceió",
+    "executivo": {
+      "portal_governo": "https://www.al.gov.br",
+      "transparencia": "https://transparencia.al.gov.br",
+      "dados_abertos": "https://dados.al.gov.br",
+      "diario_oficial": "https://diariooficial.al.gov.br",
+      "compras_licitacoes": "https://compras.al.gov.br",
+      "orgao_ambiental": "https://meioambiente.al.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEAL",
+      "portal_oficial": "https://www.al.al.leg.br",
+      "transparencia_ale": "https://transparencia.al.al.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.al.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJAL",
+        "portal": "https://www.tjal.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjal/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPAL",
+        "portal": "https://www.mpal.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-AL",
+        "portal": "https://www.defensoria.al.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-AL",
+        "portal": "https://www.tce-al.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Maceió",
+      "portal_osb": "https://osbrasil.org.br/unidade/al",
+      "oab_seccional": "OAB Seccional Alagoas (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabal.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Alagoas)",
+      "conselho_saude": "Conselho Estadual de Saúde (Alagoas)"
+    }
+  },
+  {
+    "uf": "AP",
+    "slug": "ap",
+    "nome": "Amapá",
+    "regiao": "Norte",
+    "capital": "Macapá",
+    "executivo": {
+      "portal_governo": "https://www.ap.gov.br",
+      "transparencia": "https://transparencia.ap.gov.br",
+      "dados_abertos": "https://dados.ap.gov.br",
+      "diario_oficial": "https://diariooficial.ap.gov.br",
+      "compras_licitacoes": "https://compras.ap.gov.br",
+      "orgao_ambiental": "https://meioambiente.ap.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALAP",
+      "portal_oficial": "https://www.al.ap.leg.br",
+      "transparencia_ale": "https://transparencia.al.ap.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ap.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJAP",
+        "portal": "https://www.tjap.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjap/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPAP",
+        "portal": "https://www.mpap.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-AP",
+        "portal": "https://www.defensoria.ap.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-AP",
+        "portal": "https://www.tce-ap.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Macapá",
+      "portal_osb": "https://osbrasil.org.br/unidade/ap",
+      "oab_seccional": "OAB Seccional Amapá (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabap.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Amapá)",
+      "conselho_saude": "Conselho Estadual de Saúde (Amapá)"
+    }
+  },
+  {
+    "uf": "AM",
+    "slug": "am",
+    "nome": "Amazonas",
+    "regiao": "Norte",
+    "capital": "Manaus",
+    "executivo": {
+      "portal_governo": "https://www.am.gov.br",
+      "transparencia": "https://transparencia.am.gov.br",
+      "dados_abertos": "https://dados.am.gov.br",
+      "diario_oficial": "https://diariooficial.am.gov.br",
+      "compras_licitacoes": "https://compras.am.gov.br",
+      "orgao_ambiental": "https://meioambiente.am.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEAM",
+      "portal_oficial": "https://www.aleam.gov.br",
+      "transparencia_ale": "https://transparencia.al.am.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.am.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJAM",
+        "portal": "https://www.tjam.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjam/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPAM",
+        "portal": "https://www.mpam.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-AM",
+        "portal": "https://www.defensoria.am.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-AM",
+        "portal": "https://www.tce-am.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Manaus",
+      "portal_osb": "https://osbrasil.org.br/unidade/am",
+      "oab_seccional": "OAB Seccional Amazonas (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabam.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Amazonas)",
+      "conselho_saude": "Conselho Estadual de Saúde (Amazonas)"
+    }
+  },
+  {
+    "uf": "BA",
+    "slug": "ba",
+    "nome": "Bahia",
+    "regiao": "Nordeste",
+    "capital": "Salvador",
+    "executivo": {
+      "portal_governo": "https://www.ba.gov.br",
+      "transparencia": "https://transparencia.ba.gov.br",
+      "dados_abertos": "https://dados.ba.gov.br",
+      "diario_oficial": "https://diariooficial.ba.gov.br",
+      "compras_licitacoes": "https://compras.ba.gov.br",
+      "orgao_ambiental": "https://meioambiente.ba.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALBA",
+      "portal_oficial": "https://www.al.ba.leg.br",
+      "transparencia_ale": "https://transparencia.al.ba.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ba.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJBA",
+        "portal": "https://www.tjba.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjba/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPBA",
+        "portal": "https://www.mpba.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-BA",
+        "portal": "https://www.defensoria.ba.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-BA",
+        "portal": "https://www.tce-ba.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Salvador",
+      "portal_osb": "https://osbrasil.org.br/unidade/ba",
+      "oab_seccional": "OAB Seccional Bahia (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabba.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Bahia)",
+      "conselho_saude": "Conselho Estadual de Saúde (Bahia)"
+    }
+  },
+  {
+    "uf": "CE",
+    "slug": "ce",
+    "nome": "Ceará",
+    "regiao": "Nordeste",
+    "capital": "Fortaleza",
+    "executivo": {
+      "portal_governo": "https://www.ce.gov.br",
+      "transparencia": "https://transparencia.ce.gov.br",
+      "dados_abertos": "https://dados.ce.gov.br",
+      "diario_oficial": "https://diariooficial.ce.gov.br",
+      "compras_licitacoes": "https://compras.ce.gov.br",
+      "orgao_ambiental": "https://meioambiente.ce.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALECE",
+      "portal_oficial": "https://www.al.ce.leg.br",
+      "transparencia_ale": "https://transparencia.al.ce.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ce.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJCE",
+        "portal": "https://www.tjce.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjce/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPCE",
+        "portal": "https://www.mpce.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPCE",
+        "portal": "https://www.defensoria.ce.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-CE",
+        "portal": "https://www.tce-ce.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Fortaleza",
+      "portal_osb": "https://osbrasil.org.br/unidade/ce",
+      "oab_seccional": "OAB Seccional Ceará (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabce.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Ceará)",
+      "conselho_saude": "Conselho Estadual de Saúde (Ceará)"
+    }
+  },
+  {
+    "uf": "DF",
+    "slug": "df",
+    "nome": "Distrito Federal",
+    "regiao": "Centro-Oeste",
+    "capital": "Brasília",
+    "executivo": {
+      "portal_governo": "https://www.df.gov.br",
+      "transparencia": "https://transparencia.df.gov.br",
+      "dados_abertos": "https://dados.df.gov.br",
+      "diario_oficial": "https://diariooficial.df.gov.br",
+      "compras_licitacoes": "https://compras.df.gov.br",
+      "orgao_ambiental": "https://meioambiente.df.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "CLDF",
+      "portal_oficial": "https://www.cl.df.gov.br",
+      "transparencia_ale": "https://www.cl.df.gov.br/transparencia",
+      "api_dados_abertos": "https://dadosabertos.al.df.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJDFT",
+        "portal": "https://www.tjdft.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjdft/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPDFT",
+        "portal": "https://www.mpdft.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPDF",
+        "portal": "https://www.defensoria.df.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCDF",
+        "portal": "https://www.tcdf.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Brasília",
+      "portal_osb": "https://osbrasil.org.br/unidade/df",
+      "oab_seccional": "OAB Seccional Distrito Federal (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabdf.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Distrito Federal)",
+      "conselho_saude": "Conselho Estadual de Saúde (Distrito Federal)"
+    }
+  },
+  {
+    "uf": "ES",
+    "slug": "es",
+    "nome": "Espírito Santo",
+    "regiao": "Sudeste",
+    "capital": "Vitória",
+    "executivo": {
+      "portal_governo": "https://www.es.gov.br",
+      "transparencia": "https://transparencia.es.gov.br",
+      "dados_abertos": "https://dados.es.gov.br",
+      "diario_oficial": "https://diariooficial.es.gov.br",
+      "compras_licitacoes": "https://compras.es.gov.br",
+      "orgao_ambiental": "https://meioambiente.es.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALES",
+      "portal_oficial": "https://www.al.es.leg.br",
+      "transparencia_ale": "https://transparencia.al.es.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.es.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJES",
+        "portal": "https://www.tjes.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjes/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPES",
+        "portal": "https://www.mpes.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPES",
+        "portal": "https://www.defensoria.es.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-ES",
+        "portal": "https://www.tce-es.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Vitória",
+      "portal_osb": "https://osbrasil.org.br/unidade/es",
+      "oab_seccional": "OAB Seccional Espírito Santo (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabes.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Espírito Santo)",
+      "conselho_saude": "Conselho Estadual de Saúde (Espírito Santo)"
+    }
+  },
+  {
+    "uf": "GO",
+    "slug": "go",
+    "nome": "Goiás",
+    "regiao": "Centro-Oeste",
+    "capital": "Goiânia",
+    "executivo": {
+      "portal_governo": "https://www.go.gov.br",
+      "transparencia": "https://transparencia.go.gov.br",
+      "dados_abertos": "https://dados.go.gov.br",
+      "diario_oficial": "https://diariooficial.go.gov.br",
+      "compras_licitacoes": "https://compras.go.gov.br",
+      "orgao_ambiental": "https://meioambiente.go.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEGO",
+      "portal_oficial": "https://www.al.go.leg.br",
+      "transparencia_ale": "https://transparencia.al.go.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.go.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJGO",
+        "portal": "https://www.tjgo.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjgo/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPGO",
+        "portal": "https://www.mpgo.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-GO",
+        "portal": "https://www.defensoria.go.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-GO",
+        "portal": "https://www.tce-go.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Goiânia",
+      "portal_osb": "https://osbrasil.org.br/unidade/go",
+      "oab_seccional": "OAB Seccional Goiás (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabgo.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Goiás)",
+      "conselho_saude": "Conselho Estadual de Saúde (Goiás)"
+    }
+  },
+  {
+    "uf": "MA",
+    "slug": "ma",
+    "nome": "Maranhão",
+    "regiao": "Nordeste",
+    "capital": "São Luís",
+    "executivo": {
+      "portal_governo": "https://www.ma.gov.br",
+      "transparencia": "https://transparencia.ma.gov.br",
+      "dados_abertos": "https://dados.ma.gov.br",
+      "diario_oficial": "https://diariooficial.ma.gov.br",
+      "compras_licitacoes": "https://compras.ma.gov.br",
+      "orgao_ambiental": "https://meioambiente.ma.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEMA",
+      "portal_oficial": "https://www.al.ma.leg.br",
+      "transparencia_ale": "https://transparencia.al.ma.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ma.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJMA",
+        "portal": "https://www.tjma.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjma/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPMA",
+        "portal": "https://www.mpma.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-MA",
+        "portal": "https://www.defensoria.ma.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-MA",
+        "portal": "https://www.tce-ma.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo São Luís",
+      "portal_osb": "https://osbrasil.org.br/unidade/ma",
+      "oab_seccional": "OAB Seccional Maranhão (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabma.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Maranhão)",
+      "conselho_saude": "Conselho Estadual de Saúde (Maranhão)"
+    }
+  },
+  {
+    "uf": "MT",
+    "slug": "mt",
+    "nome": "Mato Grosso",
+    "regiao": "Centro-Oeste",
+    "capital": "Cuiabá",
+    "executivo": {
+      "portal_governo": "https://www.mt.gov.br",
+      "transparencia": "https://transparencia.mt.gov.br",
+      "dados_abertos": "https://dados.mt.gov.br",
+      "diario_oficial": "https://diariooficial.mt.gov.br",
+      "compras_licitacoes": "https://compras.mt.gov.br",
+      "orgao_ambiental": "https://meioambiente.mt.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALMT",
+      "portal_oficial": "https://www.al.mt.gov.br",
+      "transparencia_ale": "https://transparencia.al.mt.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.mt.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJMT",
+        "portal": "https://www.tjmt.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjmt/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPMT",
+        "portal": "https://www.mpmt.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPMT",
+        "portal": "https://www.defensoria.mt.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-MT",
+        "portal": "https://www.tce-mt.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Cuiabá",
+      "portal_osb": "https://osbrasil.org.br/unidade/mt",
+      "oab_seccional": "OAB Seccional Mato Grosso (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabmt.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Mato Grosso)",
+      "conselho_saude": "Conselho Estadual de Saúde (Mato Grosso)"
+    }
+  },
+  {
+    "uf": "MS",
+    "slug": "ms",
+    "nome": "Mato Grosso do Sul",
+    "regiao": "Centro-Oeste",
+    "capital": "Campo Grande",
+    "executivo": {
+      "portal_governo": "https://www.ms.gov.br",
+      "transparencia": "https://transparencia.ms.gov.br",
+      "dados_abertos": "https://dados.ms.gov.br",
+      "diario_oficial": "https://diariooficial.ms.gov.br",
+      "compras_licitacoes": "https://compras.ms.gov.br",
+      "orgao_ambiental": "https://meioambiente.ms.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEMS",
+      "portal_oficial": "https://www.al.ms.leg.br",
+      "transparencia_ale": "https://transparencia.al.ms.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ms.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJMS",
+        "portal": "https://www.tjms.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjms/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPMS",
+        "portal": "https://www.mpms.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPMS",
+        "portal": "https://www.defensoria.ms.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-MS",
+        "portal": "https://www.tce-ms.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Campo Grande",
+      "portal_osb": "https://osbrasil.org.br/unidade/ms",
+      "oab_seccional": "OAB Seccional Mato Grosso do Sul (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabms.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Mato Grosso do Sul)",
+      "conselho_saude": "Conselho Estadual de Saúde (Mato Grosso do Sul)"
+    }
+  },
+  {
+    "uf": "MG",
+    "slug": "mg",
+    "nome": "Minas Gerais",
+    "regiao": "Sudeste",
+    "capital": "Belo Horizonte",
+    "executivo": {
+      "portal_governo": "https://www.mg.gov.br",
+      "transparencia": "https://transparencia.mg.gov.br",
+      "dados_abertos": "https://dados.mg.gov.br",
+      "diario_oficial": "https://diariooficial.mg.gov.br",
+      "compras_licitacoes": "https://compras.mg.gov.br",
+      "orgao_ambiental": "https://meioambiente.mg.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALMG",
+      "portal_oficial": "https://www.almg.gov.br",
+      "transparencia_ale": "https://www.almg.gov.br/transparencia",
+      "api_dados_abertos": "https://dadosabertos.almg.gov.br/api/v1"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJMG",
+        "portal": "https://www.tjmg.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPMG",
+        "portal": "https://www.mpmg.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPMG",
+        "portal": "https://www.defensoria.mg.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-MG",
+        "portal": "https://www.tce-mg.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Belo Horizonte",
+      "portal_osb": "https://osbrasil.org.br/unidade/mg",
+      "oab_seccional": "OAB Seccional Minas Gerais (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabmg.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Minas Gerais)",
+      "conselho_saude": "Conselho Estadual de Saúde (Minas Gerais)"
+    }
+  },
+  {
+    "uf": "PA",
+    "slug": "pa",
+    "nome": "Pará",
+    "regiao": "Norte",
+    "capital": "Belém",
+    "executivo": {
+      "portal_governo": "https://www.pa.gov.br",
+      "transparencia": "https://transparencia.pa.gov.br",
+      "dados_abertos": "https://dados.pa.gov.br",
+      "diario_oficial": "https://diariooficial.pa.gov.br",
+      "compras_licitacoes": "https://compras.pa.gov.br",
+      "orgao_ambiental": "https://meioambiente.pa.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEPA",
+      "portal_oficial": "https://www.alepa.pa.gov.br",
+      "transparencia_ale": "https://transparencia.al.pa.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.pa.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJPA",
+        "portal": "https://www.tjpa.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjpa/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPPA",
+        "portal": "https://www.mppa.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-PA",
+        "portal": "https://www.defensoria.pa.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-PA",
+        "portal": "https://www.tce-pa.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Belém",
+      "portal_osb": "https://osbrasil.org.br/unidade/pa",
+      "oab_seccional": "OAB Seccional Pará (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabpa.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Pará)",
+      "conselho_saude": "Conselho Estadual de Saúde (Pará)"
+    }
+  },
+  {
+    "uf": "PB",
+    "slug": "pb",
+    "nome": "Paraíba",
+    "regiao": "Nordeste",
+    "capital": "João Pessoa",
+    "executivo": {
+      "portal_governo": "https://www.pb.gov.br",
+      "transparencia": "https://transparencia.pb.gov.br",
+      "dados_abertos": "https://dados.pb.gov.br",
+      "diario_oficial": "https://diariooficial.pb.gov.br",
+      "compras_licitacoes": "https://compras.pb.gov.br",
+      "orgao_ambiental": "https://meioambiente.pb.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALPB",
+      "portal_oficial": "https://www.al.pb.leg.br",
+      "transparencia_ale": "https://transparencia.al.pb.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.pb.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJPB",
+        "portal": "https://www.tjpb.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjpb/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPPB",
+        "portal": "https://www.mppb.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-PB",
+        "portal": "https://www.defensoria.pb.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-PB",
+        "portal": "https://www.tce-pb.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo João Pessoa",
+      "portal_osb": "https://osbrasil.org.br/unidade/pb",
+      "oab_seccional": "OAB Seccional Paraíba (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabpb.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Paraíba)",
+      "conselho_saude": "Conselho Estadual de Saúde (Paraíba)"
+    }
+  },
+  {
+    "uf": "PR",
+    "slug": "pr",
+    "nome": "Paraná",
+    "regiao": "Sul",
+    "capital": "Curitiba",
+    "executivo": {
+      "portal_governo": "https://www.pr.gov.br",
+      "transparencia": "https://transparencia.pr.gov.br",
+      "dados_abertos": "https://dados.pr.gov.br",
+      "diario_oficial": "https://diariooficial.pr.gov.br",
+      "compras_licitacoes": "https://compras.pr.gov.br",
+      "orgao_ambiental": "https://meioambiente.pr.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALPR",
+      "portal_oficial": "https://www.assembleia.pr.leg.br",
+      "transparencia_ale": "https://transparencia.al.pr.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.pr.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJPR",
+        "portal": "https://www.tjpr.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjpr/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPPR",
+        "portal": "https://www.mppr.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-PR",
+        "portal": "https://www.defensoria.pr.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-PR",
+        "portal": "https://www.tce-pr.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Curitiba",
+      "portal_osb": "https://osbrasil.org.br/unidade/pr",
+      "oab_seccional": "OAB Seccional Paraná (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabpr.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Paraná)",
+      "conselho_saude": "Conselho Estadual de Saúde (Paraná)"
+    }
+  },
+  {
+    "uf": "PE",
+    "slug": "pe",
+    "nome": "Pernambuco",
+    "regiao": "Nordeste",
+    "capital": "Recife",
+    "executivo": {
+      "portal_governo": "https://www.pe.gov.br",
+      "transparencia": "https://transparencia.pe.gov.br",
+      "dados_abertos": "https://dados.pe.gov.br",
+      "diario_oficial": "https://diariooficial.pe.gov.br",
+      "compras_licitacoes": "https://compras.pe.gov.br",
+      "orgao_ambiental": "https://meioambiente.pe.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEPE",
+      "portal_oficial": "https://www.al.pe.leg.br",
+      "transparencia_ale": "https://transparencia.al.pe.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.pe.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJPE",
+        "portal": "https://www.tjpe.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjpe/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPPE",
+        "portal": "https://www.mppe.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-PE",
+        "portal": "https://www.defensoria.pe.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-PE",
+        "portal": "https://www.tce-pe.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Recife",
+      "portal_osb": "https://osbrasil.org.br/unidade/pe",
+      "oab_seccional": "OAB Seccional Pernambuco (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabpe.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Pernambuco)",
+      "conselho_saude": "Conselho Estadual de Saúde (Pernambuco)"
+    }
+  },
+  {
+    "uf": "PI",
+    "slug": "pi",
+    "nome": "Piauí",
+    "regiao": "Nordeste",
+    "capital": "Teresina",
+    "executivo": {
+      "portal_governo": "https://www.pi.gov.br",
+      "transparencia": "https://transparencia.pi.gov.br",
+      "dados_abertos": "https://dados.pi.gov.br",
+      "diario_oficial": "https://diariooficial.pi.gov.br",
+      "compras_licitacoes": "https://compras.pi.gov.br",
+      "orgao_ambiental": "https://meioambiente.pi.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALEPI",
+      "portal_oficial": "https://www.al.pi.leg.br",
+      "transparencia_ale": "https://transparencia.al.pi.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.pi.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJPI",
+        "portal": "https://www.tjpi.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjpi/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPPI",
+        "portal": "https://www.mppi.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-PI",
+        "portal": "https://www.defensoria.pi.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-PI",
+        "portal": "https://www.tce-pi.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Teresina",
+      "portal_osb": "https://osbrasil.org.br/unidade/pi",
+      "oab_seccional": "OAB Seccional Piauí (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabpi.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Piauí)",
+      "conselho_saude": "Conselho Estadual de Saúde (Piauí)"
+    }
+  },
+  {
+    "uf": "RJ",
+    "slug": "rj",
+    "nome": "Rio de Janeiro",
+    "regiao": "Sudeste",
+    "capital": "Rio de Janeiro",
+    "executivo": {
+      "portal_governo": "https://www.rj.gov.br",
+      "transparencia": "https://transparencia.rj.gov.br",
+      "dados_abertos": "https://dados.rj.gov.br",
+      "diario_oficial": "https://diariooficial.rj.gov.br",
+      "compras_licitacoes": "https://compras.rj.gov.br",
+      "orgao_ambiental": "https://meioambiente.rj.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALERJ",
+      "portal_oficial": "https://www.al.rj.leg.br",
+      "transparencia_ale": "https://transparencia.al.rj.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.rj.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJRJ",
+        "portal": "https://www.tjrj.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjrj/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPRJ",
+        "portal": "https://www.mprj.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPRJ",
+        "portal": "https://www.defensoria.rj.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-RJ",
+        "portal": "https://www.tce-rj.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Rio de Janeiro",
+      "portal_osb": "https://osbrasil.org.br/unidade/rj",
+      "oab_seccional": "OAB Seccional Rio de Janeiro (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabrj.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Rio de Janeiro)",
+      "conselho_saude": "Conselho Estadual de Saúde (Rio de Janeiro)"
+    }
+  },
+  {
+    "uf": "RN",
+    "slug": "rn",
+    "nome": "Rio Grande do Norte",
+    "regiao": "Nordeste",
+    "capital": "Natal",
+    "executivo": {
+      "portal_governo": "https://www.rn.gov.br",
+      "transparencia": "https://transparencia.rn.gov.br",
+      "dados_abertos": "https://dados.rn.gov.br",
+      "diario_oficial": "https://diariooficial.rn.gov.br",
+      "compras_licitacoes": "https://compras.rn.gov.br",
+      "orgao_ambiental": "https://meioambiente.rn.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALRN",
+      "portal_oficial": "https://www.al.rn.leg.br",
+      "transparencia_ale": "https://transparencia.al.rn.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.rn.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJRN",
+        "portal": "https://www.tjrn.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjrn/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPRN",
+        "portal": "https://www.mprn.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-RN",
+        "portal": "https://www.defensoria.rn.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-RN",
+        "portal": "https://www.tce-rn.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Natal",
+      "portal_osb": "https://osbrasil.org.br/unidade/rn",
+      "oab_seccional": "OAB Seccional Rio Grande do Norte (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabrn.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Rio Grande do Norte)",
+      "conselho_saude": "Conselho Estadual de Saúde (Rio Grande do Norte)"
+    }
+  },
+  {
+    "uf": "RS",
+    "slug": "rs",
+    "nome": "Rio Grande do Sul",
+    "regiao": "Sul",
+    "capital": "Porto Alegre",
+    "executivo": {
+      "portal_governo": "https://www.rs.gov.br",
+      "transparencia": "https://transparencia.rs.gov.br",
+      "dados_abertos": "https://dados.rs.gov.br",
+      "diario_oficial": "https://diariooficial.rs.gov.br",
+      "compras_licitacoes": "https://compras.rs.gov.br",
+      "orgao_ambiental": "https://meioambiente.rs.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALRS",
+      "portal_oficial": "https://ww4.al.rs.gov.br",
+      "transparencia_ale": "https://transparencia.al.rs.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.rs.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJRS",
+        "portal": "https://www.tjrs.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjrs/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPRS",
+        "portal": "https://www.mprs.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-RS",
+        "portal": "https://www.defensoria.rs.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-RS",
+        "portal": "https://www.tce-rs.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Porto Alegre",
+      "portal_osb": "https://osbrasil.org.br/unidade/rs",
+      "oab_seccional": "OAB Seccional Rio Grande do Sul (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabrs.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Rio Grande do Sul)",
+      "conselho_saude": "Conselho Estadual de Saúde (Rio Grande do Sul)"
+    }
+  },
+  {
+    "uf": "RO",
+    "slug": "ro",
+    "nome": "Rondônia",
+    "regiao": "Norte",
+    "capital": "Porto Velho",
+    "executivo": {
+      "portal_governo": "https://www.ro.gov.br",
+      "transparencia": "https://transparencia.ro.gov.br",
+      "dados_abertos": "https://dados.ro.gov.br",
+      "diario_oficial": "https://diariooficial.ro.gov.br",
+      "compras_licitacoes": "https://compras.ro.gov.br",
+      "orgao_ambiental": "https://meioambiente.ro.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALERO",
+      "portal_oficial": "https://www.al.ro.leg.br",
+      "transparencia_ale": "https://transparencia.al.ro.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.ro.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJRO",
+        "portal": "https://www.tjro.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjro/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPRO",
+        "portal": "https://www.mpro.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-RO",
+        "portal": "https://www.defensoria.ro.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-RO",
+        "portal": "https://www.tce-ro.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Porto Velho",
+      "portal_osb": "https://osbrasil.org.br/unidade/ro",
+      "oab_seccional": "OAB Seccional Rondônia (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabro.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Rondônia)",
+      "conselho_saude": "Conselho Estadual de Saúde (Rondônia)"
+    }
+  },
+  {
+    "uf": "RR",
+    "slug": "rr",
+    "nome": "Roraima",
+    "regiao": "Norte",
+    "capital": "Boa Vista",
+    "executivo": {
+      "portal_governo": "https://www.rr.gov.br",
+      "transparencia": "https://transparencia.rr.gov.br",
+      "dados_abertos": "https://dados.rr.gov.br",
+      "diario_oficial": "https://diariooficial.rr.gov.br",
+      "compras_licitacoes": "https://compras.rr.gov.br",
+      "orgao_ambiental": "https://meioambiente.rr.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALE-RR",
+      "portal_oficial": "https://www.al.rr.leg.br",
+      "transparencia_ale": "https://transparencia.al.rr.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.rr.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJRR",
+        "portal": "https://www.tjrr.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjrr/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPRR",
+        "portal": "https://www.mprr.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-RR",
+        "portal": "https://www.defensoria.rr.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-RR",
+        "portal": "https://www.tce-rr.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Boa Vista",
+      "portal_osb": "https://osbrasil.org.br/unidade/rr",
+      "oab_seccional": "OAB Seccional Roraima (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabrr.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Roraima)",
+      "conselho_saude": "Conselho Estadual de Saúde (Roraima)"
+    }
+  },
+  {
+    "uf": "SC",
+    "slug": "sc",
+    "nome": "Santa Catarina",
+    "regiao": "Sul",
+    "capital": "Florianópolis",
+    "executivo": {
+      "portal_governo": "https://www.sc.gov.br",
+      "transparencia": "https://transparencia.sc.gov.br",
+      "dados_abertos": "https://dados.sc.gov.br",
+      "diario_oficial": "https://diariooficial.sc.gov.br",
+      "compras_licitacoes": "https://compras.sc.gov.br",
+      "orgao_ambiental": "https://meioambiente.sc.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALESC",
+      "portal_oficial": "https://www.alesc.sc.gov.br",
+      "transparencia_ale": "https://transparencia.al.sc.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.sc.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJSC",
+        "portal": "https://www.tjsc.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjsc/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPSC",
+        "portal": "https://www.mpsc.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-SC",
+        "portal": "https://www.defensoria.sc.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-SC",
+        "portal": "https://www.tce-sc.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Florianópolis",
+      "portal_osb": "https://osbrasil.org.br/unidade/sc",
+      "oab_seccional": "OAB Seccional Santa Catarina (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabsc.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Santa Catarina)",
+      "conselho_saude": "Conselho Estadual de Saúde (Santa Catarina)"
+    }
+  },
+  {
+    "uf": "SP",
+    "slug": "sp",
+    "nome": "São Paulo",
+    "regiao": "Sudeste",
+    "capital": "São Paulo",
+    "executivo": {
+      "portal_governo": "https://www.sp.gov.br",
+      "transparencia": "https://transparencia.sp.gov.br",
+      "dados_abertos": "https://dados.sp.gov.br",
+      "diario_oficial": "https://diariooficial.sp.gov.br",
+      "compras_licitacoes": "https://compras.sp.gov.br",
+      "orgao_ambiental": "https://meioambiente.sp.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALESP",
+      "portal_oficial": "https://www.al.sp.gov.br",
+      "transparencia_ale": "https://www.al.sp.gov.br/transparencia",
+      "api_dados_abertos": "https://dadosabertos.al.sp.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJSP",
+        "portal": "https://www.tjsp.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjsp/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPSP",
+        "portal": "https://www.mpsp.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPSP",
+        "portal": "https://www.defensoria.sp.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-SP",
+        "portal": "https://www.tce-sp.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo São Paulo",
+      "portal_osb": "https://osbrasil.org.br/unidade/sp",
+      "oab_seccional": "OAB Seccional São Paulo (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabsp.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (São Paulo)",
+      "conselho_saude": "Conselho Estadual de Saúde (São Paulo)"
+    }
+  },
+  {
+    "uf": "SE",
+    "slug": "se",
+    "nome": "Sergipe",
+    "regiao": "Nordeste",
+    "capital": "Aracaju",
+    "executivo": {
+      "portal_governo": "https://www.se.gov.br",
+      "transparencia": "https://transparencia.se.gov.br",
+      "dados_abertos": "https://dados.se.gov.br",
+      "diario_oficial": "https://diariooficial.se.gov.br",
+      "compras_licitacoes": "https://compras.se.gov.br",
+      "orgao_ambiental": "https://meioambiente.se.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALESE",
+      "portal_oficial": "https://www.al.se.leg.br",
+      "transparencia_ale": "https://transparencia.al.se.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.se.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJSE",
+        "portal": "https://www.tjse.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjse/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPSE",
+        "portal": "https://www.mpse.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-SE",
+        "portal": "https://www.defensoria.se.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-SE",
+        "portal": "https://www.tce-se.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Aracaju",
+      "portal_osb": "https://osbrasil.org.br/unidade/se",
+      "oab_seccional": "OAB Seccional Sergipe (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabse.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Sergipe)",
+      "conselho_saude": "Conselho Estadual de Saúde (Sergipe)"
+    }
+  },
+  {
+    "uf": "TO",
+    "slug": "to",
+    "nome": "Tocantins",
+    "regiao": "Norte",
+    "capital": "Palmas",
+    "executivo": {
+      "portal_governo": "https://www.to.gov.br",
+      "transparencia": "https://transparencia.to.gov.br",
+      "dados_abertos": "https://dados.to.gov.br",
+      "diario_oficial": "https://diariooficial.to.gov.br",
+      "compras_licitacoes": "https://compras.to.gov.br",
+      "orgao_ambiental": "https://meioambiente.to.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALETO",
+      "portal_oficial": "https://www.al.to.leg.br",
+      "transparencia_ale": "https://transparencia.al.to.leg.br",
+      "api_dados_abertos": "https://dadosabertos.al.to.leg.br/api"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJTO",
+        "portal": "https://www.tjto.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPTO",
+        "portal": "https://www.mpto.mp.br"
+      },
+      "defensoria_publica": {
+        "sigla": "DPE-TO",
+        "portal": "https://www.defensoria.to.def.br"
+      },
+      "tribunal_contas": {
+        "sigla": "TCE-TO",
+        "portal": "https://www.tce-to.tc.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social do Brasil — Polo Palmas",
+      "portal_osb": "https://osbrasil.org.br/unidade/to",
+      "oab_seccional": "OAB Seccional Tocantins (Comissões de Direitos Humanos e Meio Ambiente)",
+      "portal_oab": "https://www.oabto.org.br",
+      "conselho_meio_ambiente": "Conselho Estadual do Meio Ambiente (Tocantins)",
+      "conselho_saude": "Conselho Estadual de Saúde (Tocantins)"
+    }
+  }
+]
