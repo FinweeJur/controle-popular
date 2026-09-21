@@ -3,33 +3,25 @@ import { drizzle } from "drizzle-orm/neon-http";
 import * as schema from "./schema";
 
 /**
- * Acesso ao Postgres (Neon), substituindo o `@supabase/supabase-js` dos
- * três repos originais.
+ * Acesso ao Postgres — suporta Neon (HTTP), Guara Cloud e Postgres local.
  *
- * DRIVER: `@neondatabase/serverless` no modo HTTP. Cada query é um POST
- * HTTPS, sem conexão TCP persistente. Isso é requisito, não preferência:
- *  - o Neon Free suspende o compute depois de ~5 min ocioso, e é esse
- *    autosuspend que faz a franquia de 100 CU-h/mês durar o mês inteiro.
- *    Um pool persistente a manteria acordada 24/7 e queimaria a cota.
- *  - o destino é Cloudflare Workers, onde cada isolate é efêmero e não há
- *    onde um pool viver entre requisições.
- * Para transação multi-statement (escritas do Auth, na Fase 4) usar o modo
- * WebSocket (`drizzle-orm/neon-serverless`), não este.
+ * DETECÇÃO DE DRIVER (3 vias):
+ *  - localhost/127.0.0.1/::1 → `pg` (node-postgres, TCP) — build local
+ *  - hostname termina em neon.tech → `@neondatabase/serverless` (HTTP)
+ *  - qualquer outro hostname → `pg` (TCP) — ex: Guara Cloud, Supabase, RDS
+ *
+ * FALLBACK: se o primary falhar e `DATABASE_URL_NEON` estiver configurada,
+ * tenta a Neon automaticamente. Isso garante resiliência quando o Guara Cloud
+ * (ou outro Postgres remoto não-Neon) está fora.
+ *
+ * DRIVER NEON: `@neondatabase/serverless` no modo HTTP. Cada query é um POST
+ * HTTPS, sem conexão TCP persistente. O Neon Free suspende o compute depois
+ * de ~5 min ocioso — um pool persistente manteria acordada 24/7 e queimaria
+ * a cota. No Workers, cada isolate é efêmero e não há onde pool viver.
  *
  * TETO DE SUBREQUESTS: no Workers Free são 50 por invocação, e cada query
  * HTTP conta uma. Página que hoje faz 5-10 selects sequenciais deve virar
  * 1-2 com join/CTE. Nada de N+1.
- *
- * O QUE SUMIU DO SUPABASE, e por que não faz falta:
- *  - `db: { schema }`: os três schemas (`public`, `congresso`,
- *    `judiciario`) agora são `pgSchema` distintos no Drizzle, e as quatro
- *    tabelas homônimas viraram identificadores diferentes
- *    (`proposicoes` vs `proposicoesInCongresso`). Importar a errada passou
- *    a ser erro de compilação, em vez de dado errado silencioso.
- *  - `fetchAll()`: existia só para contornar o teto de 1000 linhas do
- *    PostgREST, que truncava sem erro. SQL direto não trunca.
- *  - `comColunaOpcional()`: existia porque o DDL era aplicado à mão e o
- *    código ia à frente do schema. Com migrations no pipeline, não.
  */
 
 export type DB = ReturnType<typeof criar>;
@@ -50,6 +42,7 @@ export type DB = ReturnType<typeof criar>;
  * custar uma consulta em vez de 110. O problema é só a que sobrevive de um
  * build para o outro.
  */
+
 /**
  * O host é Neon? Só então o driver SQL-sobre-HTTP entra.
  *
@@ -65,6 +58,22 @@ export type DB = ReturnType<typeof criar>;
 function ehNeon(url: string): boolean {
   try {
     return new URL(url).hostname.endsWith("neon.tech");
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Host é local? Decide se usa `pg` (TCP) ou `neon` (HTTP).
+ *
+ * Teste por HOSTNAME, não por `includes("localhost")`: uma URL da Neon pode
+ * conter a palavra em qualquer lugar (nome de branch, senha) e cairia no
+ * driver errado — falhando com "Failed to parse URL", não com algo legível.
+ */
+function ehPostgresLocal(url: string): boolean {
+  try {
+    const host = new URL(url).hostname;
+    return host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]";
   } catch {
     return false;
   }
@@ -120,27 +129,56 @@ function criar(url: string) {
 let memo: DB | null | undefined;
 
 /**
- * Conexão com o banco, ou `null` quando `DATABASE_URL` não está
- * configurada.
+ * Conexão com o banco, ou `null` quando `DATABASE_URL` não está configurada.
  *
  * O `null` é deliberado e herdado do `getSupabaseClient()` original:
  * chamadores DEVEM tratá-lo como "fonte de dados ainda não configurada" e
  * renderizar estado vazio, nunca lançar. É o que permite `next build`
  * rodar sem banco — sem isso, os ~50 arquivos que tocam dados passariam a
  * quebrar o build em qualquer ambiente sem credencial (CI, clone novo).
+ *
+ * FALLBACK: se o primary falhar e `DATABASE_URL_NEON` existir, tenta a Neon.
+ * Isso garante que o site funcione mesmo quando o Postgres primary (ex:
+ * Guara Cloud) está indisponível.
  */
 export function getDb(): DB | null {
   if (memo !== undefined) return memo;
   const url = process.env.DATABASE_URL;
   if (!url) return (memo = null);
-  try {
-  return (memo = ehNeon(url) ? criar(url) : criarLocal(url));
-  } catch (e) {
-    // O `catch` mudo era a pior falha do pipeline: `DATABASE_URL` presente e
-    // driver quebrado davam build VERDE com zero pagina de cidade, porque
-    // `generateStaticParams` recebia lista vazia e ninguem via a causa.
-    // Continua devolvendo `null` (chamador trata), mas agora diz por que.
-    console.error("[getDb] falhou ao criar conexao; seguindo sem banco:", e);
-    return (memo = null);
+
+  const urlNeon = process.env.DATABASE_URL_NEON;
+
+  // 1. Localhost → pg driver (build local, nunca muda)
+  if (ehPostgresLocal(url)) {
+    try {
+      return (memo = criarLocal(url));
+    } catch (e) {
+      console.error("[getDb] falhou ao criar conexao local; seguindo sem banco:", e);
+      return (memo = null);
+    }
   }
+
+  // 2. Neon (HTTP protocol) ou Postgres remoto (TCP padrão, ex: Guara Cloud)
+  try {
+    if (ehNeon(url)) {
+      return (memo = criar(url));
+    }
+    // Qualquer outro host remoto (Guara Cloud, Supabase, RDS, etc.)
+    // usa o pg driver via TCP — mesmo mecanismo do build local
+    return (memo = criarLocal(url));
+  } catch (e) {
+    console.error("[getDb] primary falhou:", e instanceof Error ? e.message : e);
+  }
+
+  // 3. Fallback: se primary falhou e Neon está configurada, tenta Neon
+  if (urlNeon && urlNeon !== url) {
+    try {
+      console.info("[getDb] tentando fallback para Neon...");
+      return (memo = criar(urlNeon));
+    } catch (e) {
+      console.error("[getDb] fallback Neon falhou:", e instanceof Error ? e.message : e);
+    }
+  }
+
+  return (memo = null);
 }

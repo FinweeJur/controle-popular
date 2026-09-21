@@ -140,10 +140,15 @@ Excludes ativos em `apps/web/next.config.ts`:
 
 Consumidores únicos verificados: repasse → `/[municipio]/prefeitura`; risco → `/[municipio]/clima`; biblioteca → `/paraopeba` + `/paraopeba/biblioteca`.
 
-### 3. Postgres (Neon) + D1
+### 3. Postgres (Neon, Guara Cloud ou local) + D1
 
-- Neon: ETL/build + dados históricos. Acesso por `lib/db/client.ts` (`getDb()` retorna `null` sem `DATABASE_URL` — página renderiza estado vazio, nunca lança; isso permite build sem banco).
-- Local: se `DATABASE_URL` aponta para `localhost`, troca para `pg` via `process.getBuiltinModule` (escondido do bundler — `pg` é devDependency). Caminho só roda em build.
+- **Driver detection 3 vias** (`lib/db/client.ts`):
+  - `localhost`/`127.0.0.1`/`::1` → `pg` (TCP, build local)
+  - `*.neon.tech` → `@neondatabase/serverless` (HTTP protocolo Neon)
+  - qualquer outro hostname → `pg` (TCP, ex: Guara Cloud, Supabase, RDS)
+- **Fallback**: se o primary falhar e `DATABASE_URL_NEON` estiver configurada, tenta a Neon automaticamente. Útil quando o Guara Cloud (ou outro Postgres remoto) está fora.
+- `getDb()` retorna `null` sem `DATABASE_URL` — página renderiza estado vazio, nunca lança; isso permite `next build` sem banco.
+- Local: se `DATABASE_URL` aponta para `localhost`, usa `pg` via `process.getBuiltinModule` (escondido do bundler — `pg` é devDependency). Caminho só roda em build.
 - D1: `lib/db/clientD1.ts` — escritas de runtime.
 - NUNCA passar `fetchOptions: { cache: "no-store" }` no driver HTTP: mata a estaticização (`DYNAMIC_SERVER_USAGE`). Cache entre builds é problema de `npm run prebuild`.
 - Teto de 50 subrequests por invocação no Workers Free: página deve fazer 1-2 selects com join/CTE, nunca N+1.
