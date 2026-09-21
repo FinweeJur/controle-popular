@@ -840,7 +840,17 @@ if (verComVerbas) {
  * roda tambem NO COMECO, para nao deixar lixo se uma execucao anterior
  * morreu no meio.
  */
-const neonSql = neon(process.env.DATABASE_URL!);
+const dbUrl = process.env.DATABASE_URL!;
+const dbHostname = new URL(dbUrl).hostname;
+const neonSql =
+  dbHostname.endsWith("neon.tech")
+    ? neon(dbUrl)
+    : (() => {
+        throw new Error(
+          `paridade-betim fixture section requer Neon (host=${dbHostname}). ` +
+            `DATABASE_URL deve apontar para um banco Neon.`
+        );
+      })();
 const FIX = "00000000-0000-4000-8000-0000000000";
 const TABELAS_FIXTURE = [
   "classificados",
