@@ -2,16 +2,16 @@
 
 > **Tipo:** HANDOFF
 > **Domínio:** global
-> **Última medição:** 2026-09-22
+> **Última medição:** 2026-09-22 ~21:30
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [ESTADO.md](02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](05-operacao/OPERACAO.md), [PLANO-FILA-PROXIMA-SESSAO.md](planos/PLANO-FILA-PROXIMA-SESSAO.md)
-> **Palavras-chave:** handoff, guara, etl, copam, pncp, licitacoes, contratos, deploy, convenios, proxy
+> **Palavras-chave:** handoff, guara, etl, copam, pncp, licitacoes, contratos, deploy, convenios, proxy, geneexus, portal-dados-abertos
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [O que já está feito](#feito)
-- [Coletas em andamento (22/09 17:17)](#andamento)
+- [Coletas fechadas (22/09 21:30)](#fechadas)
 - [Como continuar se o PC desligar](#continuar)
 - [Próximo passo depois das coletas](#deploy)
 - [Armadilhas desta sessão](#armadilhas)
@@ -37,22 +37,46 @@ Guara** e encheu as tabelas vazias do Betim. Se o PC desligar, este arquivo
 | SSH home-pc `.env` | ⛔ cancelado | sem senha; chave nova de TRANSPARENCIA no lugar |
 | Commit dos scripts de proxy + gitignore logs | ✅ `17304c84` | `scripts/start-proxy.ps1`, `restart-proxy.ps1`, `test-proxy-session.mjs` |
 
-## Coletas em andamento (22/09 17:17)
+## Coletas fechadas (22/09 21:30)
 
-Três ETLs detached no `home-pc` (cwd `etl\betim`). Logs na **raiz** do repo
-(gitignored).
+| Item | Estado | Como saber |
+|---|---|---|
+| COPAM | ✅ 479/479 reuniões, 2.491 itens | `copam_reunioes` |
+| Licitações Betim | ✅ **2.398** `betim_dados_abertos` + **2.471** `tce_mg_sicom` = **4.869** | portal JSON + SICOM |
+| Contratos Betim | ✅ **5.386** `betim_geneexus` + 5.430 TCE + 655 PNCP | CSV GeneXus / SICOM |
+| PNCP pncp.gov.br | ⛔ API fora | rede; espelho `pncp.dev` exige chave |
+| Compras.gov sem Betim | ⛔ 0 contratos/licitações CNPJ 18715391000196 | API v3 medida |
+| Neon | ⛔ vazia (`contratos`/`licitacoes` = 0) | não é fonte |
 
-| ETL | Log | Comando | Situação 17:17 |
-|---|---|---|---|
-| COPAM | `copam.log` | `python -u -m etl.apis.copam_reunioes --pagina-inicial 1 --pagina-final 454` | 🚧 423+ reuniões / 2222+ itens; pauta descendo (ago/2023) |
-| PNCP contratos 2025 | `pncp.log` | `python -u -m etl.pncp.contratos --id-municipio 3106705 --ano-inicio 2025` | 🔄 relançado após 504; `contratos`=655 antes do 2025 |
-| PNCP licitações | `licitacoes.log` | `python -u -m etl.pncp.licitacoes --id-municipio 3106705 --ano-inicio 2021` | 🚧 ano 2021, mod. 1 teve RetryError (parcial, re-rodar) |
+**Contagem Guara 21:30:** `copam_reunioes`=479,
+`copam_pauta_itens`=2491, `convenios_federais`=167,
+`contratos`=11471 (tce 5430 + geneexus 5386 + pncp 655),
+`licitacoes`=4869 (portal 2398 + tce 2471),
+`ambiental_licenciamento`=8612, `atos_oficiais`=10344.
 
-Contagens no banco (22/09 17:13): `convenios_federais`=167,
-`copam_reunioes`=423, `copam_pauta_itens`=2222, `contratos`=655,
-`licitacoes`=0, `ambiental_licenciamento`=8612, `atos_oficiais`=10344.
+### Fontes novas desta madrugada
+
+1. **Portal dados abertos** `betim_dados_abertos` → `licitacoes`
+   (`etl/apis/betim_dados_abertos.py` + migration `0088`):
+   `licitacoes/<ano>` + `chamamento-publico/<ano>`, 2019–2026.
+   `contratos/<ano>` do portal só tem 1 teste — não usar.
+
+2. **GeneXus prefeitura** `betim_geneexus` → `contratos`
+   (`etl/apis/betim_geneexus.py`):
+   `sginovo.betim.mg.gov.br/.../wmcontratotransparencia`.
+   Caminho medido: GET (cookie) → POST limpando ano → **POST CSV**
+   (1 arquivo, 5.387 linhas, cp1252, `;`). Paginação `PROXIMO` trava;
+   `?gxajaxEvt` → 403. Oracle GlassFish cai (500) — retry obrigatório.
+   `--csv <arquivo>` carrega offline quando o Oracle morre.
+
+3. **TCE-MG SICOM** `tce_mg_sicom` → `licitacoes`
+   (`etl/apis/tce_licitacoes.py`): cache ZIP em `X:\DevCoder\.tce-cache\`.
 
 **Tabela se chama `licitacoes` (sem acento).** Query com `licitações` falha.
+
+**Neon não tem backup** — só `ref_municipios_mg` e `atos_oficiais`.
+Recoleta via fontes acima é o caminho. PNCP quando voltar é upsert-safe
+(testar GET antes de relançar `etl.pncp.contratos`/`etl.pncp.licitacoes`).
 
 ## Como continuar se o PC desligar
 
@@ -124,6 +148,13 @@ fim das coletas** antes.
 | Copam `Cannot open empty stream` | AVISO não fatal em Decisão id_fonte |
 | Chave Guara no repo | **removida** do `test-proxy-session.mjs` antes do commit `17304c84` |
 | Logs na raiz | gitignored em `17304c84` (`proxy.*`, `copam.log`, `pncp.log`, `licitacoes.log`) |
+| GeneXus Oracle 500 | `sginovo` cai a cada poucos GET; retry + `--csv` offline |
+| GeneXus ano default 2026 | sem clear (`W0006EREFRESH` + `ANOINI=""`) o CSV só teria 29 págs |
+| CSV GeneXus cp1252 | UTF-8 falha no byte `0xD3`; usar `cp1252` |
+| Assinatura `dd/mm/aa` | `_data` aceita `%y`; senão `ano` vira 2020 quase todo |
+| `?gxajaxEvt` 403 | GlassFish "Forbidden action"; form POST puro funciona |
+| PROXIMO trava | pós-clear, 5 steps = unique 20; CSV é o caminho |
+| PNCP/Compras.gov | API municipal fora; Compras.gov 0 linhas Betim — GeneXus cobre |
 
 ## Origem
 

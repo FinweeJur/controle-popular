@@ -2,10 +2,10 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-22
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md)
-> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2
+> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim
 
 ## Sumário
 
@@ -56,6 +56,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Rouanet / SALIC | API MinC | [§](#lei-rouanet--salic--e-os-três-jeitos-que-a-api-mente) |
 | Território e mineração | FUNAI, SIGMINE, SIGBM, FEAM, INCRA | [§](#território-e-mineração) |
 | Fluxo financeiro | PNCP, SICOM, CFEM, QSA, Repasse | [§](#fluxo-financeiro--dinheiro-ligado-ao-mapa) |
+| Betim — licitações e contratos | Portal dados abertos, GeneXus sginovo | [§](#betim--licitações-e-contratos-municipais) |
 | Clima e risco | AdaptaBrasil, INMET, BATER | [§](#clima-e-risco--adaptabrasil-e-inmet) |
 | Legislação | MMA, CNDH, URN LexML | [§](#legislação-federal-e-urn-lexml) |
 | ComunicaBR | Página do governo | [§](#comunicabr--coleta-de-mg) |
@@ -173,6 +174,22 @@ Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doaco
 **Portal de MG**: Drupal sem API; 209 arquivos (156 PDF + 28 ZIP + 25 XLSX; 20/20 amostrados respondem); busca de documentos responde 403 ao público (só dá para listar varrendo páginas); notícias em **bloqueio eleitoral** desde 25/06 (302→200 — validar conteúdo ou o cabeçalho `X-Drupal-Periodo-Eleitoral-Redirect`); obrigações da Vale: previsto R$ 11,48 bi × arrecadado R$ 16,38 bi (31/07/2026) — **arrecadado maior não é sobra, é correção monetária**; link oficial para a FGV (`projetos-convertidos.html`) está morto (404).
 
 **FGV (Projeto Rio Paraopeba)**: SPA cujos dados são 4 JSONs de caminho fixo; ampliado de Betim para a bacia: 26 municípios, 450 linhas, 234 projetos; acordo corrigido R$ 5,48 bi — **é só Anexos I.3/I.4 (14,6% do acordo de R$ 37,6 bi); "executado" é desembolso, não obra pronta**; avanço físico deduplicado (12× menor) não ingerido. Armadilhas travadas por teste: célula mesclada de município (88% sem chave), rodapés/notas disfarçados de município, "Todos os Municípios de MG" não é município, número ora JS ora string com espaço rígido, BOM UTF-8. **`robots.txt` do www18.fgv.br é `Disallow: /`** — decisão registrada: duas requisições de caminho fixo (as mesmas do navegador), manual e nunca em CI, UA honesto, 1,5 s de pausa, canal aberto (`projetorioparaopeba@fgv.br`) antes de aumentar a frequência. (medição em 16/08 — remeça antes de decidir com ele)
+
+## Betim — licitações e contratos municipais
+
+Medido 22/09/2026. PNCP (`pncp.gov.br`) fora; Compras.gov.br tem **0** linhas
+para CNPJ `18715391000196` (todas as modalidades, anos testados). As duas
+fontes que funcionam são municipais:
+
+| Fonte | Endereço | O que dá | Armadilhas |
+|---|---|---|---|
+| Portal dados abertos | `betim.mg.gov.br/portal/dados-abertos/{licitacoes,chamamento-publico}/<ano>` | JSON `{"dados":[...]}`, 2019–2026 → **2.398** `licitacoes` (`fonte=betim_dados_abertos`) | mesmo item re-listado em anos de URL diferentes (chave **sem** o ano da URL); `valorEstimado` quase sempre vazio; HTML entities no texto; `contratos/<ano>` só tem 1 teste — **não usar** |
+| GeneXus prefeitura | `sginovo.betim.mg.gov.br/appares/servlet/wmcontratotransparencia` | CSV inteiro (~5.386 contratos) → `contratos` (`fonte=betim_geneexus`) | Oracle GlassFish cai (HTTP 500) — retry; página nasce filtrada em `2026` (clear `W0006EREFRESH` + `ANOINI=""`); export = POST evento `W0006E'CSV'.` (cp1252, `;`); `?gxajaxEvt` → 403; `PROXIMO` trava pós-clear; assinatura `dd/mm/aa` |
+| TCE-MG SICOM (cache) | ZIPs em `.tce-cache` | +**2.471** licitações + 5.430 contratos (`tce_mg_sicom`) | JWT de ~1 h; não escala para 854 |
+
+ETLs: `etl/apis/betim_dados_abertos.py`, `etl/apis/betim_geneexus.py`
+(`--csv` offline), `etl/apis/tce_licitacoes.py`. Migration `0088` abre
+`licitacoes.fonte`/`chave_fonte`.
 
 ## Fluxo financeiro — dinheiro ligado ao mapa
 

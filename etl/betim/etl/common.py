@@ -339,11 +339,23 @@ class _QueryBuilder:
                     rows = self._rows or []
                     if not rows:
                         return _Response([])
+                    sufixo = ""
+                    if self._op == "upsert" and self._on_conflict:
+                        # DEDUP antes do lote. O Postgres recusa ON CONFLICT DO
+                        # UPDATE se a MESMA chave aparece duas vezes no mesmo
+                        # comando (21000 CardinalityViolation) — medido no
+                        # cache TCE de Diamantina (2026-09-22): o ZIP traz
+                        # seq_contrato repetido e o Araçuaí passou (sem
+                        # colisão) enquanto o Diamantina morria no meio.
+                        chaves_d = [c.strip() for c in self._on_conflict.split(",")]
+                        vistos: dict[tuple, dict] = {}
+                        for row in rows:
+                            vistos[tuple(row.get(c) for c in chaves_d)] = row
+                        rows = list(vistos.values())
                     cols = sorted({k for r in rows for k in r.keys()})
                     col_list = ", ".join(f'"{c}"' for c in cols)
                     placeholder_row = "(" + ", ".join(["%s"] * len(cols)) + ")"
 
-                    sufixo = ""
                     if self._op == "upsert" and self._on_conflict:
                         conflito_cols = [c.strip() for c in self._on_conflict.split(",")]
                         conflito_sql = ", ".join(f'"{c}"' for c in conflito_cols)
