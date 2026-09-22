@@ -211,3 +211,10 @@ scripts/.quarentena-fontes.json
 # Radar de editais: rascunhos locais e processados (estado de maquina, nao dado versionado)
 apps/web/data/radar-editais/pendentes/
 apps/web/data/radar-editais/processados/
+
+# Logs de diagnostico da raiz (proxy Guara e ETLs em execucao nesta maquina)
+proxy.log
+proxy.err
+copam.log
+pncp.log
+licitacoes.log
