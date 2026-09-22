@@ -2,10 +2,10 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-22
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md)
-> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md)
+> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
 
 ## Sumário
 
@@ -43,14 +43,20 @@ Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy
 **Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
 A raiz nunca mora no Guara.
 
-**Banco:** Postgres da Neon (banco gerenciado em nuvem) ativo.
-Storage em **94% (470/500 MB)** — coleta nova não entra lá.
-`DATABASE_URL` configurada no Guara em **runtime e build**
-(`guara env set` e `guara env set -b`, 19/09).
+**Banco (medido 22/09):** a coleta do Betim já vai para o **Postgres do
+Guara** (`cp-postgres-597bd0`). A Neon continua na conta em 94%
+(470/500 MB) até a troca final de `DATABASE_URL` da aplicação (Fase 4).
+`DATABASE_URL` no Guara: **runtime e build = Yes** (CLI `env list`, 22/09).
+
+**Coleta 22/09 (Guara):** `convenios_federais`=167 ✅,
+`ambiental_licenciamento`=8612 ✅, `atos_oficiais`=10344 ✅.
+COPAM + PNCP contratos/licitações rodando — retomada em
+[HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md).
 
 **Alerta:** página que lê do banco no build congela HTML sem a variável de
 build. Restart não resolve; resolve `guara deploy` de imagem nova.
-Medido em 19/09 (deploys `de291a9b` e `5a4a08cc`).
+Medido em 19/09 (deploys `de291a9b` e `5a4a08cc`). `/betim/emendas` com
+"Em breve" é o mesmo efeito: `configured=false` no build antigo.
 
 ## Decisões do dono
 
@@ -82,10 +88,11 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| A1 | Validar banco no site: `/ambiental/licenciamento` mostra dados, não vazio | 🚧 | precisa de `guara deploy` com `DATABASE_URL` de build |
+| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dono 22/09) | 🚧 | COPAM + contratos 2025 + licitações; ver [HANDOFF](../HANDOFF-22-09-COLETA-GUARA.md) |
+| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0**; env de build já Yes |
 | A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dono, 2 minutos |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
-| A4 | **Fase 4: migrar Neon → Postgres do Guara** | ⛔ | Neon em 94% manda mover |
+| A4 | **Fase 4: migrar app Neon → Postgres do Guara** | 🚧 | banco Guara já enche; falta apontar a app e largar a Neon |
 
 **Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
 28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
@@ -147,6 +154,16 @@ Runbooks: [`planos/`](../planos/).
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
 ## Entregas recentes
+
+**22/09/2026** — coleta no Postgres do Guara (detalhe:
+[HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md)):
+
+- `convenios_federais` 167 linhas (R$ 298,6 mi, Betim); licenciamento
+  8.612; `DATABASE_URL` Build=Yes confirmada no CLI.
+- Scripts do proxy TCP commitados (`17304c84`): start/restart + teste de
+  TTL; chave Guara removida do repositório; logs da raiz no gitignore.
+- COPAM, contratos 2025 e licitações 2021 em coleta — deploy do site
+  **depois** que as três terminarem (ordem do dono).
 
 **20/09/2026** — push `d6e739a6`–`594d6b66`:
 

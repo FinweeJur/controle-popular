@@ -2,10 +2,10 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-20
+> **Última medição:** 2026-09-22
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [ESTADO.md § fila](../02-estado/ESTADO.md#fila-viva), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
-> **Palavras-chave:** plano, sessão, fila, 1014, cname, fase 4, postgres, tts, exportação, laboratório, shield, skill
+> **Relacionados:** [ESTADO.md § fila](../02-estado/ESTADO.md#fila-viva), [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
+> **Palavras-chave:** plano, sessão, fila, 1014, cname, fase 4, postgres, tts, exportação, laboratório, shield, skill, etl, coleta, deploy
 
 ## Sumário
 
@@ -21,6 +21,10 @@
 Fila da próxima sessão, com os 6 pedidos do dono de 19/09 à noite.
 Ranqueado da parte urgente e leve para a peça grande.
 Cada item tem critério de pronto: quando roda no navegador e o dono confere.
+
+**Topo da fila em 22/09 (ordem do dono):** terminar as coletas Betim no
+Guara (COPAM, contratos 2025, licitações) e **só então** `guara deploy`.
+Retomada exata: [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md).
 
 ## Resgate
 
