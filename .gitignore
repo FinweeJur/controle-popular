@@ -175,9 +175,13 @@ apps/web/.wrangler-dist/
 .agents/
 .claude/manha/
 .claude/worktrees/
+.claude/skills/
 
 # Pacotes e arquivos compactados de trabalho
 *.zip
+
+# Dump de dados do Neon pra migracao
+neon_export/
 
 # Capturas HTML cruas da coleta ESG da Vale (processadas nos JSONs de analise;
 # artefato de coleta, nao fonte)
