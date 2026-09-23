@@ -19,6 +19,7 @@ describe("listarNoticiasPortal — isolamento de editais e integridade do blog",
       "Investigação Cívica",
       "Explicador",
       "Divulgação Científica",
+      "Ferramentas do Portal",
     ]);
 
     const noticias = listarNoticiasPortal();
