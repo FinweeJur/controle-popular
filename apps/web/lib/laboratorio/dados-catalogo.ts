@@ -39,6 +39,7 @@ import {
   PNCP_MG_CONTRATOS,
   PNCP_MG_CONTRATOS_POR_ORGAO_E_ANO,
 } from "@/lib/ambiental/pncp-mg";
+import { carregarRemuneracoesJudiciario } from "@/lib/judiciario/remuneracoes-dados";
 
 // ── Tipos ──────────────────────────────────────────────────────────────────
 
@@ -533,6 +534,17 @@ export const CATALOGO_DADOS: DadoCatalogo[] = [
     descricao:
       "Contratos e licitações de órgãos ambientais de MG no PNCP, coletados por automação diária.",
   },
+  {
+    id: "judiciario-remuneracoes",
+    nome: "Remuneração do Judiciário",
+    categoria: "judiciario",
+    fonte: "CNJ / Brasil.IO — contracheques de magistrados",
+    rotaPortal: "/judiciario",
+    dadosParaDither: () => remuneracoesPorTribunal(),
+    filtrosDisponiveis: ["tribunal", "UF"],
+    descricao:
+      "Gasto total com folha de magistrados por tribunal (base + outras verbas, líquido).",
+  },
 ];
 
 function legislativoCadeirasPorUf(): SerieDither[] {
@@ -574,6 +586,15 @@ function pncpPorOrgao(): SerieDither[] {
     .sort((a, b) => b[1] - a[1])
     .map(([x, y]) => ({ x, y }));
   return [{ nome: "Valor contratado por órgão (R$)", pontos }];
+}
+
+function remuneracoesPorTribunal(): SerieDither[] {
+  const acervo = carregarRemuneracoesJudiciario();
+  if (!acervo || acervo.tribunais.length === 0) return [];
+  const pontos = acervo.tribunais
+    .map((t) => ({ x: t.sigla, y: t.totalGasto }))
+    .sort((a, b) => b.y - a.y);
+  return [{ nome: "Folha de magistrados por tribunal (R$)", pontos }];
 }
 
 // ── Helpers de consulta ────────────────────────────────────────────────────

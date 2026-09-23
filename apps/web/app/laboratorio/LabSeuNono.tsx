@@ -56,22 +56,11 @@ const GRAFICOS: { id: TipoGrafico; label: string; icon: typeof BarChart3 }[] = [
   { id: "crescimento", label: "Crescimento", icon: TrendingUp },
 ];
 
-const CAMADAS = [
-  "Licenças ambientais",
-  "Barragens SIGBM",
-  "Educação (IBGE/INEP)",
-  "Séries econômicas",
-  "Congresso (CEAP)",
-  "Judiciário",
-  "Clima",
-  "ESG",
-];
-
 const LINKS = [
   { href: "/ambiental/licenciamento", label: "Licenciamento" },
   { href: "/ambiental/barragens", label: "Barragens" },
   { href: "/cidades", label: "Cidades" },
-  { href: "/congresso", label: "Congreso" },
+  { href: "/congresso", label: "Congresso" },
   { href: "/judiciario", label: "Judiciário" },
   { href: "/dados", label: "Dados" },
 ];
@@ -92,32 +81,39 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 interface LabSeuNonoProps {
   grafico: TipoGrafico;
   onGraficoChange: (g: TipoGrafico) => void;
+  /** Camadas do catálogo PowerBI (id, nome, categoria). */
+  camadas?: { id: string; nome: string; categoria: string }[];
+  /** Ids atualmente ligados no dock. */
+  ligadas?: Set<string>;
+  onToggleCamada?: (id: string) => void;
 }
 
-export default function LabSeuNono({ grafico, onGraficoChange }: LabSeuNonoProps) {
+export default function LabSeuNono({
+  grafico,
+  onGraficoChange,
+  camadas = [],
+  ligadas,
+  onToggleCamada,
+}: LabSeuNonoProps) {
   const [open, setOpen] = useState(true);
   const [periodo, setPeriodo] = useState("2026");
   const [uf, setUf] = useState("MG");
   const [categoria, setCategoria] = useState("Ambiental");
   const [fonte, setFonte] = useState("IBGE");
-  const [camadas, setCamadas] = useState<Record<string, boolean>>({
-    "Licenças ambientais": true,
-    "Barragens SIGBM": false,
-    "Educação (IBGE/INEP)": false,
-    "Séries econômicas": false,
-    "Congresso (CEAP)": false,
-    "Judiciário": false,
-    "Clima": false,
-    "ESG": false,
-  });
   const [fsIdx, setFsIdx] = useState(1);
   const [altoContraste, setAltoContraste] = useState(false);
   const [animOn, setAnimOn] = useState(true);
   const [narrar, setNarrar] = useState(false);
+  const [filtroCat, setFiltroCat] = useState<string>("__todas__");
 
-  const toggleCamada = useCallback((c: string) => {
-    setCamadas((prev) => ({ ...prev, [c]: !prev[c] }));
-  }, []);
+  const camadasVisiveis = camadas.filter(
+    (c) => filtroCat === "__todas__" || c.categoria === filtroCat,
+  );
+  const categorias = [...new Set(camadas.map((c) => c.categoria))].sort();
+
+  const toggleLocal = useCallback((id: string) => {
+    onToggleCamada?.(id);
+  }, [onToggleCamada]);
 
   const aplicarFs = useCallback((delta: number) => {
     setFsIdx((prev) => {
@@ -261,21 +257,41 @@ export default function LabSeuNono({ grafico, onGraficoChange }: LabSeuNonoProps
             </div>
           </Section>
 
-          <Section title="Camadas de Dados">
-            <ul className="flex flex-col gap-1">
-              {CAMADAS.map((c) => (
-                <li key={c}>
-                  <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-xs text-text transition-colors hover:bg-surface">
-                    <input
-                      type="checkbox"
-                      checked={camadas[c]}
-                      onChange={() => toggleCamada(c)}
-                      className="accent-primary"
-                    />
-                    {c}
-                  </label>
-                </li>
-              ))}
+          <Section title={`Camadas de Dados (${ligadas?.size ?? camadas.length}/${camadas.length})`}>
+            <label className="mb-2 block">
+              <span className="sr-only">Filtrar camadas por categoria</span>
+              <select
+                value={filtroCat}
+                onChange={(e) => setFiltroCat(e.target.value)}
+                className="w-full cursor-pointer rounded-md border border-border bg-surface px-2 py-1.5 text-xs text-text"
+              >
+                <option value="__todas__">Todas as categorias</option>
+                {categorias.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </label>
+            <ul className="flex max-h-56 flex-col gap-1 overflow-y-auto">
+              {camadasVisiveis.map((c) => {
+                const ativa = ligadas?.has(c.id) ?? false;
+                return (
+                  <li key={c.id}>
+                    <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-xs text-text transition-colors hover:bg-surface">
+                      <input
+                        type="checkbox"
+                        checked={ativa}
+                        onChange={() => toggleLocal(c.id)}
+                        className="accent-primary"
+                      />
+                      <span className="flex-1 truncate">{c.nome}</span>
+                      <span className="text-[9px] uppercase text-text-soft">{c.categoria}</span>
+                    </label>
+                  </li>
+                );
+              })}
+              {camadasVisiveis.length === 0 && (
+                <li className="px-2 py-1 text-xs text-text-soft">Nenhuma camada nesta categoria.</li>
+              )}
             </ul>
           </Section>
 

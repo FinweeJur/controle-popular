@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, BarChart3, PieChart, Grid3X3, TrendingUp, Layers, Activity } from "lucide-react";
 import LabDither, { type DitherItem } from "./lab-dither";
 import { DitherBarChart } from "@/lib/laboratorio/dither-charts/DitherBarChart";
 import { DitherDonutChart } from "@/lib/laboratorio/dither-charts/DitherDonutChart";
@@ -19,10 +19,21 @@ export interface JanelaDados {
   filtros?: { label: string; valores: string[] };
 }
 
+const GRAFICOS: { id: TipoGrafico; label: string; icon: typeof BarChart3 }[] = [
+  { id: "barras", label: "Colunas", icon: BarChart3 },
+  { id: "donut", label: "Pizza", icon: PieChart },
+  { id: "heatmap", label: "Heatmap", icon: Grid3X3 },
+  { id: "linha", label: "Linha", icon: TrendingUp },
+  { id: "stacked", label: "Empilhado", icon: Layers },
+  { id: "gauge", label: "Gauge", icon: Activity },
+  { id: "crescimento", label: "Cresc.", icon: TrendingUp },
+];
+
 interface LabJanelaProps {
   dados: JanelaDados | null;
   posicao: "esquerda" | "direita";
   tipoGrafico?: TipoGrafico;
+  onGraficoChange?: (g: TipoGrafico) => void;
 }
 
 function adaptBar(itens: DitherItem[]) {
@@ -58,7 +69,7 @@ function adaptGauge(itens: DitherItem[]) {
 function adaptGrowth(itens: DitherItem[]) {
   return {
     data: itens.map((i, idx) => ({
-      date: `202${idx}`,
+      date: `202${idx % 10}`,
       value: i.valor,
       label: i.rotulo,
     })),
@@ -90,16 +101,30 @@ function renderChart(tipo: TipoGrafico, itens: DitherItem[]) {
     case "crescimento":
       return <DitherGrowthChart {...adaptGrowth(itens)} compact />;
     case "heatmap":
-      return <DitherHeatmapGrid rows={itens.map((i) => i.rotulo)} cols={["Valor"]} data={itens.map((i) => [i.valor])} compact />;
+      return (
+        <DitherHeatmapGrid
+          rows={itens.map((i) => i.rotulo)}
+          cols={["Valor"]}
+          data={itens.map((i) => [i.valor])}
+          compact
+        />
+      );
     case "stacked":
       return <DitherStackedChart {...adaptStacked(itens)} compact />;
+    case "linha":
+      return <DitherGrowthChart {...adaptGrowth(itens)} compact />;
     case "barras":
     default:
       return <DitherBarChart {...adaptBar(itens)} compact />;
   }
 }
 
-export default function LabJanela({ dados, posicao, tipoGrafico = "barras" }: LabJanelaProps) {
+export default function LabJanela({
+  dados,
+  posicao,
+  tipoGrafico = "barras",
+  onGraficoChange,
+}: LabJanelaProps) {
   const [filtro, setFiltro] = useState<string>("__todos__");
 
   const itensFiltrados = useMemo(() => {
@@ -141,6 +166,31 @@ export default function LabJanela({ dados, posicao, tipoGrafico = "barras" }: La
         </a>
       </header>
 
+      {onGraficoChange && (
+        <div
+          className="mb-3 flex flex-wrap gap-1"
+          role="group"
+          aria-label={`Tipo de gráfico — janela ${posicao}`}
+        >
+          {GRAFICOS.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => onGraficoChange(id)}
+              aria-pressed={tipoGrafico === id}
+              className={`flex cursor-pointer items-center gap-1 rounded border px-1.5 py-1 text-[10px] font-medium transition-colors ${
+                tipoGrafico === id
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "border-border bg-surface text-text-soft hover:bg-surface-2"
+              }`}
+            >
+              <Icon size={12} aria-hidden="true" />
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {dados.filtros && (
         <div className="mb-3">
           <label className="sr-only" htmlFor={`filtro-${posicao}`}>
@@ -164,6 +214,29 @@ export default function LabJanela({ dados, posicao, tipoGrafico = "barras" }: La
 
       <div className="flex-1 overflow-auto">
         {renderChart(tipoGrafico, itensFiltrados)}
+        {itensFiltrados.length > 0 && (
+          <div className="mt-2 max-h-40 overflow-auto rounded border border-border/50">
+            <table className="w-full text-[10px] text-text-soft">
+              <caption className="sr-only">Tabela da camada {dados.titulo}</caption>
+              <thead>
+                <tr className="border-b border-border text-left">
+                  <th scope="col" className="px-2 py-1">Categoria</th>
+                  <th scope="col" className="px-2 py-1 text-right">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {itensFiltrados.slice(0, 50).map((i) => (
+                  <tr key={i.rotulo} className="border-b border-border/30">
+                    <td className="px-2 py-0.5">{i.rotulo}</td>
+                    <td className="px-2 py-0.5 text-right tabular-nums">
+                      {i.valor.toLocaleString("pt-BR")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       <p className="mt-2 text-[10px] text-text-soft">{dados.fonteLabel}</p>

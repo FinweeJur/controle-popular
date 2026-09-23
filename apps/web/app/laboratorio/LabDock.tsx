@@ -10,17 +10,59 @@ import {
   Scale,
   Cloud,
   BarChart3,
+  Coins,
+  FileText,
+  Gavel,
+  Globe,
+  MapPin,
+  Radio,
+  Shield,
+  Landmark,
+  Briefcase,
+  Handshake,
+  Calculator,
+  BookOpen,
+  Cpu,
 } from "lucide-react";
 
-export type DatasetKey =
-  | "barragens"
-  | "licencas"
-  | "educacao"
-  | "economia"
-  | "congresso"
-  | "judiciario"
-  | "clima"
-  | "esg";
+export type DatasetKey = string;
+
+const ICONES: Record<string, React.ElementType> = {
+  "sigbm-barragens": Mountain,
+  "licencas-unificadas": Leaf,
+  "convenios-ambientais-mg": Handshake,
+  "decisoes-licenciamento": Gavel,
+  "legislacao-unificada": BookOpen,
+  "biblioteca-desastres": Cloud,
+  "educacao-mg": GraduationCap,
+  "series-economicas-bcb": TrendingUp,
+  "ceap-nacional": Coins,
+  "judiciario-contatos": Scale,
+  "judiciario-poder-indicacao": Gavel,
+  "judiciario-remuneracoes": Coins,
+  "clima-risco": Cloud,
+  "esg-vale": BarChart3,
+  "comunicabr-mg": MapPin,
+  "rouanet-mg": BookOpen,
+  "telefonia-mg": Radio,
+  "risco-direitos": Shield,
+  "legislativo-estaduais": Landmark,
+  "fornecedores-multinacionais": Briefcase,
+  "acordos-internacionais": Globe,
+  "pncp-mg": FileText,
+};
+
+/** Atalhos de tela cheia para as 8 camadas históricas (dock compacto). */
+export const DOCK_HISTORICO: DatasetKey[] = [
+  "sigbm-barragens",
+  "licencas-unificadas",
+  "educacao-mg",
+  "series-economicas-bcb",
+  "ceap-nacional",
+  "judiciario-contatos",
+  "clima-risco",
+  "esg-vale",
+];
 
 interface DockItem {
   key: DatasetKey;
@@ -28,29 +70,30 @@ interface DockItem {
   icon: React.ElementType;
 }
 
-const DOCK_ITEMS: DockItem[] = [
-  { key: "barragens", label: "Barragens", icon: Mountain },
-  { key: "licencas", label: "Licenças", icon: Leaf },
-  { key: "educacao", label: "Educação", icon: GraduationCap },
-  { key: "economia", label: "Economia", icon: TrendingUp },
-  { key: "congresso", label: "Congresso", icon: Users },
-  { key: "judiciario", label: "Judiciário", icon: Scale },
-  { key: "clima", label: "Clima", icon: Cloud },
-  { key: "esg", label: "ESG", icon: BarChart3 },
-];
-
 interface LabDockProps {
   active: DatasetKey | null;
   onSelect: (key: DatasetKey) => void;
+  /** Camadas do catálogo (id → nome). Se vier, o dock mostra TODAS. */
+  camadas?: { id: string; nome: string }[];
+  /** Ids ligados (checkbox do Seu Nonô) — só essas aparecem no dock. */
+  ligadas?: Set<string>;
 }
 
-export default function LabDock({ active, onSelect }: LabDockProps) {
+export default function LabDock({ active, onSelect, camadas, ligadas }: LabDockProps) {
+  const itens: DockItem[] = (camadas ?? DOCK_HISTORICO.map((id) => ({ id, nome: id })))
+    .filter((c) => !ligadas || ligadas.has(c.id))
+    .map((c) => ({
+      key: c.id,
+      label: c.nome,
+      icon: ICONES[c.id] ?? Cpu,
+    }));
+
   return (
     <nav
-      aria-label="Categorias de dados"
-      className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 gap-1 rounded-2xl border border-border/50 bg-surface/80 px-3 py-2 shadow-lg backdrop-blur-md sm:gap-2"
+      aria-label="Camadas de dados"
+      className="fixed bottom-4 left-1/2 z-50 flex max-w-[min(96vw,1100px)] -translate-x-1/2 gap-1 overflow-x-auto rounded-2xl border border-border/50 bg-surface/80 px-3 py-2 shadow-lg backdrop-blur-md sm:gap-2"
     >
-      {DOCK_ITEMS.map((item) => {
+      {itens.map((item) => {
         const Icon = item.icon;
         const isAtivo = active === item.key;
         return (
@@ -59,14 +102,14 @@ export default function LabDock({ active, onSelect }: LabDockProps) {
             onClick={() => onSelect(item.key)}
             aria-pressed={isAtivo}
             title={item.label}
-            className={`flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-[10px] font-medium transition-colors sm:px-3 sm:text-xs ${
+            className={`flex shrink-0 flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-[10px] font-medium transition-colors sm:px-3 sm:text-xs ${
               isAtivo
                 ? "bg-primary/15 text-primary"
                 : "text-text-soft hover:bg-surface-hover hover:text-text"
             }`}
           >
-            <Icon size={18} strokeWidth={isAtivo ? 2.2 : 1.6} />
-            <span className="hidden sm:inline">{item.label}</span>
+            <Icon size={18} strokeWidth={isAtivo ? 2.2 : 1.6} aria-hidden="true" />
+            <span className="hidden max-w-24 truncate sm:inline">{item.label}</span>
           </button>
         );
       })}

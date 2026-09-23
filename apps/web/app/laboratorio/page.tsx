@@ -2,25 +2,21 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
 import LabExplorador from "./LabExplorador";
-import {
-  resumoBarragens,
-  resumoLicencas,
-  resumoEducacao,
-  resumoEconomia,
-  resumoCongresso,
-  resumoJudiciario,
-  resumoClima,
-  resumoEsg,
-} from "./lab-dados";
+import { montarCamadasCatalogo, listarCamadasLab } from "./lab-camadas";
+import { resumoBarragens, resumoLicencas, resumoEducacao, resumoEconomia, resumoCongresso, resumoJudiciario, resumoClima, resumoEsg } from "./lab-dados";
 
 export const metadata: Metadata = {
   title: "Laboratório de Dados — Controle Popular",
   description:
-    "Explorador interativo de dados públicos: barragens, licenciamento, educação, economia, Congresso, Judiciário, clima e ESG.",
+    "Explorador interativo de dados públicos: 23 camadas ativáveis (barragens, licenciamento, salários, PNCP, educação, economia e mais).",
 };
 
 export default function LaboratorioPage() {
+  // 23 camadas do catálogo (PowerBI-style) + os resumos históricos
+  // (nomes legados usados pelo buscador `?q=` e URLs antigas).
+  const camadasCatalogo = montarCamadasCatalogo();
   const datasets = {
+    ...camadasCatalogo,
     barragens: resumoBarragens(),
     licencas: resumoLicencas(),
     educacao: resumoEducacao(),
@@ -30,6 +26,8 @@ export default function LaboratorioPage() {
     clima: resumoClima(),
     esg: resumoEsg(),
   };
+
+  const camadas = listarCamadasLab();
 
   return (
     <main
@@ -49,14 +47,14 @@ export default function LaboratorioPage() {
           Laboratório de Dados
         </h1>
         <p className="max-w-2xl text-sm text-text-soft">
-          Explore os acervos públicos do portal. Clique num ícone do dock para
-          carregar um conjunto de dados. As janelas são independentes — cada
-          uma pode mostrar um dado diferente.
+          {camadas.length} camadas ativáveis — ligue e desligue no painel do
+          Seu Nonô, escolha o tipo de gráfico por janela. Cada camada é um
+          agregado; o acervo bruto fica no servidor.
         </p>
       </header>
 
       <Suspense fallback={<p className="text-sm text-text-soft">Carregando...</p>}>
-        <LabExplorador datasets={datasets} />
+        <LabExplorador datasets={datasets} camadas={camadas} />
       </Suspense>
     </main>
   );
