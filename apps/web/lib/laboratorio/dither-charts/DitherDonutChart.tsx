@@ -85,7 +85,7 @@ export function DitherDonutChart({
         return;
       }
 
-      timeRef.current += reducedMotion.current ? 0 : 0.02;
+      timeRef.current += reducedMotion.current ? 0 : 0.004;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const logicalSize = 200;
@@ -98,7 +98,7 @@ export function DitherDonutChart({
       if (reducedMotion.current) {
         t = 1;
       } else if (morphStartTimeRef.current > 0) {
-        t = (performance.now() - morphStartTimeRef.current) / 500;
+        t = (performance.now() - morphStartTimeRef.current) / 2500;
         if (t > 1) t = 1;
       } else {
         t = 1;

@@ -1077,7 +1077,7 @@ body {
 }
 .cp-marquee-trilho {
   display: inline-block;
-  animation: cp-mq 75s linear infinite;
+  animation: cp-mq 105s linear infinite;
 }
 .cp-marquee:hover .cp-marquee-trilho {
   animation-play-state: paused;

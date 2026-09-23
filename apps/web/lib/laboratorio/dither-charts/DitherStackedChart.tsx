@@ -121,7 +121,7 @@ export function DitherStackedChart({
         return;
       }
 
-      timeRef.current += reducedMotion.current ? 0 : 0.02;
+      timeRef.current += reducedMotion.current ? 0 : 0.004;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       ctx.save();
@@ -138,7 +138,7 @@ export function DitherStackedChart({
       if (reducedMotion.current) {
         prog = 1;
       } else if (morphStartTimeRef.current > 0) {
-        prog = (performance.now() - morphStartTimeRef.current) / 620;
+        prog = (performance.now() - morphStartTimeRef.current) / 3100;
         if (prog > 1) prog = 1;
       } else {
         prog = 1;

@@ -46,7 +46,7 @@ export function ServerGauge({
       const { width: w, height: h } = rect.current;
       if (w === 0 || h === 0) { req = requestAnimationFrame(draw); return; }
 
-      time += reducedMotion.current ? 0 : 0.05;
+      time += reducedMotion.current ? 0 : 0.01;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       ctx.save();

@@ -32,10 +32,15 @@ export function DitherHeatmapGrid({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const timeRef = useRef(0);
   const requestRef = useRef<number>(0);
+  const reducedMotionRef = useRef(false);
+
+  useEffect(() => {
+    reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
 
   useEffect(() => {
     const draw = () => {
-      timeRef.current += 0.03;
+      timeRef.current += reducedMotionRef.current ? 0 : 0.006;
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');

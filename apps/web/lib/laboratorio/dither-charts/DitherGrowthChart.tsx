@@ -113,7 +113,7 @@ export function DitherGrowthChart({
         return;
       }
 
-      timeRef.current += reducedMotion.current ? 0 : 0.03;
+      timeRef.current += reducedMotion.current ? 0 : 0.006;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const cell = Math.max(3, Math.round(w / 180));
@@ -126,7 +126,7 @@ export function DitherGrowthChart({
       if (reducedMotion.current) {
         prog = 1;
       } else if (morphStartTimeRef.current > 0) {
-        prog = (performance.now() - morphStartTimeRef.current) / 460;
+        prog = (performance.now() - morphStartTimeRef.current) / 2300;
         if (prog > 1) prog = 1;
       } else {
         prog = 1;
