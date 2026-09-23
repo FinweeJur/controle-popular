@@ -84,7 +84,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Anatel | Mosaico / SMP | [§](#anatel--sistema-mosaico--telefonia-móvel-smp) |
 | TSE | planos de governo | [§](#tse-divulga-cand--planos-de-governo-dos-eleitos) |
 | Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
-| Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--o-que-a-descoberta-de-2309-achou) |
+| Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -659,13 +659,44 @@ UA honesto, pausa 1,5 s/host, checkpoint. **CPF válido no lote: 0** (mod-11, me
 **Lestingi USP 2010** (TAC/Termo de Acordo): URL `teses.usp.br/…/tde-04112010-135107/` devolveu
 conexão fechada no download (23/09) — retomar com retry ou mirror.
 
+### Grade `consulta-licenca` — negativo medido do piloto (23/09)
+
+A grade moderna do SIAM (`…/licenciamento/site/consulta-licenca`, 43.555 decisões,
+20/pág.) **não hospeda as LPs do piloto**. Esgotada por município, processo,
+modalidade e empreendimento, com UA honesta e pausa 1,5 s; evidência em
+`_lote-ambiental/condicionantes-piloto/grid-*.html` (lote fora do repo).
+
+| Consulta medida | Resultado |
+|---|---|
+| `LicencaSearch[ano]=1997` e `=2006` | 0 itens (página sem `summary`, sem `<tr data-key>`) |
+| `processo_adm` `11492`, `11492/2005`, `11492/2005/002/2006`, `0011492`, `11468/2005` | 0 linhas |
+| `empreendimento=Irape` / `Usina de Irape` | 20 linhas de "Pirapetinga" (falso positivo de substring); 0 de Irapé |
+| `empreendimento=CEMIG` | 41 linhas todas modernas (PCH/CGH/Três Marias); 0 do piloto |
+| `empreendimento=Ruralminas` / `Fundacao Rural` | 2 fichas de projetos (Araçuaí/Jaíba); 0 de Setúbal/Irapé |
+| 6 municípios do piloto × modalidade LP/LOC/LAC2/all | nenhum `data-key` row cita Irapé, Setúbal, processo 11492/11468 ou DICAF (scan 0 hits) |
+
+IDs do select inline (853 options, atributos após `name` quebram o pattern simples
+— regex `name="LicencaSearch\[municipio_id\]"[^>]*>`): Berilo 77, Chapada do Norte 185,
+Coronel Murta 223, Grão Mogol 324, Jenipapo de Minas 411, Virgem da Lapa 856
+(`municipios-select.json` no lote).
+
+**Armadilha da grade:** filtro com 0 itens devolve HTTP 200 *sem* `summary` e *sem*
+`data-key` — não é o `Erro (#2)` de `view-externo` (500). Contar linhas no corpo,
+nunca só o status. O `Erro (#2)` também aparece embutido em nome de município
+(Desterro *de Entre R*) — falso positivo de grep.
+
+Conclusão para a Fase 1: as LPs integrais (47 cond. Irapé / 36 cond. Setúbal) **não
+estão nesta grade**. Próxima via: legado SIAM/COPAM 1997–2006, SEMAD/Liferay
+`semad.mg.gov.br/documents/…`, pareceres IEF, pautas COPAM — não repetir a varredura
+da grade moderna por estes alvos.
+
 ### Pendências da Fase 1 (texto integral para segmentar condicionante)
 
 | Falta | Por quê |
 |---|---|
-| LP Irapé integral (47 cond. item a item) | processo SIAM/COPAM 1997 pré-SIAM moderno; ainda não localizado |
-| LP Setúbal integral (36 cond.) | PDF no SIAM/SEMAD não localizado |
-| Parecer IEF 0026/2006 | citado na ata CAP; PDF próprio não achado |
+| LP Irapé integral (47 cond. item a item) | processo SIAM/COPAM 1997 pré-SIAM moderno; grade `consulta-licenca` esgotada sem hit (23/09) |
+| LP Setúbal integral (36 cond.) | PDF no SIAM/SEMAD não localizado; grade moderna sem o processo 11492 (23/09) |
+| Parecer IEF 0026/2006 | citado na ata CAP; PDF próprio não achado na web |
 | TAC/Termo de Acordo MPF integral (07/07/2002) | só resumo nos Anexos via CEMIG/cgti |
 | Zucarelli 2006 dissertação UFMG | repositório UFMG; handle não achado ainda |
 

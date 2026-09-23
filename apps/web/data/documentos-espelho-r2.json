@@ -23,5 +23,1005 @@
     "urlR2": "https://fontes.controlepopular.com.br/docs/5550a7f9909cd1d5.pdf",
     "chaveR2": "docs/5550a7f9909cd1d5.pdf",
     "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/10/germinar_06.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5254899d54b8bd6e.pdf",
+    "chaveR2": "docs/5254899d54b8bd6e.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/12/germinar_07-site.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8ac36f07dd8227c4.pdf",
+    "chaveR2": "docs/8ac36f07dd8227c4.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/10/nec_jul_2025.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d4d04da695a8820e.pdf",
+    "chaveR2": "docs/d4d04da695a8820e.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/06/NACAB-EM-CAMPO_JAN2025.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/391b09c6ab7fd564.pdf",
+    "chaveR2": "docs/391b09c6ab7fd564.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_JUL2024.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a76ed5a306c30c51.pdf",
+    "chaveR2": "docs/a76ed5a306c30c51.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_DEZ2023.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/553f0ed97f7edd15.pdf",
+    "chaveR2": "docs/553f0ed97f7edd15.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/07/202307_nacab_em_campo_semestre_1_julho_2023.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/54d6306e9a785525.pdf",
+    "chaveR2": "docs/54d6306e9a785525.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2023/02/NEC_JANEIRO2023_web.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/23003a51fd7d0967.pdf",
+    "chaveR2": "docs/23003a51fd7d0967.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/04/20260304_nec_2025_web.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5d470bddb2fa4c89.pdf",
+    "chaveR2": "docs/5d470bddb2fa4c89.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/cbdb14a17f3c4513.pdf",
+    "chaveR2": "docs/cbdb14a17f3c4513.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/05/Mobilizacao-2.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6636e88a06903996.pdf",
+    "chaveR2": "docs/6636e88a06903996.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-3.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/71883da31397583a.pdf",
+    "chaveR2": "docs/71883da31397583a.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-4.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ccfa9d772b79f876.pdf",
+    "chaveR2": "docs/ccfa9d772b79f876.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-5.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0819b216d24f17df.pdf",
+    "chaveR2": "docs/0819b216d24f17df.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Boletim-Mobilizacao-06-Ser-mulher-atingida.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/262f38674d16c179.pdf",
+    "chaveR2": "docs/262f38674d16c179.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/09/mobilizacao_07-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6e08b4f4d9c05ac6.pdf",
+    "chaveR2": "docs/6e08b4f4d9c05ac6.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/01/Mobilizacao-008.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0268ead9546309ef.pdf",
+    "chaveR2": "docs/0268ead9546309ef.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/07/Reparacao-15_PDF-site-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2f77e267cd3a39a0.pdf",
+    "chaveR2": "docs/2f77e267cd3a39a0.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_14.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/31ae23f0b66cc23f.pdf",
+    "chaveR2": "docs/31ae23f0b66cc23f.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/02/reparacao_13-DIGITAL.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/e80f7b8c19f9b2ad.pdf",
+    "chaveR2": "docs/e80f7b8c19f9b2ad.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/11/reparacao_12_site.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/943c4c4c945815c6.pdf",
+    "chaveR2": "docs/943c4c4c945815c6.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/09/Reparacao_10_WEB.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/71528e2be12d260b.pdf",
+    "chaveR2": "docs/71528e2be12d260b.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_11web.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1d3a1b80fadc1888.pdf",
+    "chaveR2": "docs/1d3a1b80fadc1888.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/09/boletim_09_web.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/35f14c1ff5ec206d.pdf",
+    "chaveR2": "docs/35f14c1ff5ec206d.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2023/05/REPARACAO_08_WEB.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/61524c98021005e2.pdf",
+    "chaveR2": "docs/61524c98021005e2.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/12/Jornal-Reparacao_07_DIGITAL.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b35bd54f42ea0ac4.pdf",
+    "chaveR2": "docs/b35bd54f42ea0ac4.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/08/Jornal-Reparacao-Edicao-06-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/fa2c787df56d2f4b.pdf",
+    "chaveR2": "docs/fa2c787df56d2f4b.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/03/META-17-Entrega-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6a03c38531483feb.pdf",
+    "chaveR2": "docs/6a03c38531483feb.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/03/20260213_Lista-de-Projetos_ATI-R3-Paraopeba-NACAB-Versao-final-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/616edd4f9583cf25.pdf",
+    "chaveR2": "docs/616edd4f9583cf25.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/11/20251124_Nota-Tecnica-Estudo-sobre-Assinatura-Espectral.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/470238b8862f3d6d.pdf",
+    "chaveR2": "docs/470238b8862f3d6d.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8b169d74654d29e7.pdf",
+    "chaveR2": "docs/8b169d74654d29e7.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/07/Pesquisa_Mulheres_NACAB.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8231bbe7ab3eb09d.pdf",
+    "chaveR2": "docs/8231bbe7ab3eb09d.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/07/Cartilha-Povos-e-Comunidades-Tradicionais.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0d774884cc282bf8.pdf",
+    "chaveR2": "docs/0d774884cc282bf8.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/09/Resultados-Preliminares-das-Coletas-de-Agua.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ef242594775ea80f.pdf",
+    "chaveR2": "docs/ef242594775ea80f.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/09/20230706_cartilha_ipe_amarelo_v2.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/297895aa2afd8694.pdf",
+    "chaveR2": "docs/297895aa2afd8694.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2025/10/Nota-tecnica-PTR-versao-Final1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d0e57362f1828782.pdf",
+    "chaveR2": "docs/d0e57362f1828782.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2022/03/Cartilha_Aspectos_processuais_reparacao_individual.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4ecf71a02e1bab00.pdf",
+    "chaveR2": "docs/4ecf71a02e1bab00.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2023/01/Tutorial-Hidroweb_ATIR3_2023.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/05ae257cbd45ace1.pdf",
+    "chaveR2": "docs/05ae257cbd45ace1.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2021/12/Prescricao-e-Matriz-de-Danos-no-caso-Paraopeba-e-Tres-Marias.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/063b025f9c95ff0f.pdf",
+    "chaveR2": "docs/063b025f9c95ff0f.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/02/Manifestacao-CTC-Nacab.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/358ec789417bac55.pdf",
+    "chaveR2": "docs/358ec789417bac55.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/05/NotaTecnica_02-2026.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ba5e0d7f54202eed.pdf",
+    "chaveR2": "docs/ba5e0d7f54202eed.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/08/20260817_relatorio_analitico_prt_v2corrigido.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3f81556313273a67.pdf",
+    "chaveR2": "docs/3f81556313273a67.pdf",
+    "status": "dry-run"
+  },
+  "https://nacab.org.br/wp-content/uploads/2026/07/Nota-Tecnica-Finalistica-06-Suspensao-Acoes-Individuais.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/31c8abe010e9ab7c.pdf",
+    "chaveR2": "docs/31c8abe010e9ab7c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2026/08/DN-136_2026-Patrocinio-ao-ENCOB-2026-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0347c15921a3ad11.pdf",
+    "chaveR2": "docs/0347c15921a3ad11.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-135_2026-Apoio-a-Semana-do-Fazendeiro-VF_-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4b2cd37b2158c0fb.pdf",
+    "chaveR2": "docs/4b2cd37b2158c0fb.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-134_2026-CT_Instrumentos-de-Gestao-CBH-Doce_VF-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/79590c9247ed02ff.pdf",
+    "chaveR2": "docs/79590c9247ed02ff.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2026/01/DN-133_2025-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2026-2030-OK.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ae0b36fd8c92777b.pdf",
+    "chaveR2": "docs/ae0b36fd8c92777b.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-132_2025-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2026.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9e8d0415fdd69e29.pdf",
+    "chaveR2": "docs/9e8d0415fdd69e29.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-131_2025-PAP-2026-2030-ASSINADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b4abb56ae86208cb.pdf",
+    "chaveR2": "docs/b4abb56ae86208cb.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-REFERENDADA-CBH-DOCE-130_2025-Alteracao_Minuta-CG-ANA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c60c650f6e4ad842.pdf",
+    "chaveR2": "docs/c60c650f6e4ad842.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-129_2025-Estabelece-Comissao-Eleitoral-2026-2030-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/fe8b27a17b116f92.pdf",
+    "chaveR2": "docs/fe8b27a17b116f92.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/11/DN-128_2025-Aprova-Minuta-CG-ANA-2026_2030-ASSINADO-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5abc63322e6294d6.pdf",
+    "chaveR2": "docs/5abc63322e6294d6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/03/DN-127_2025-Aprova-Prorrogacao-da-Delegacao-da-AGEVAP-CNRH-VF-ASSINADO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/abc531388bfc0c66.pdf",
+    "chaveR2": "docs/abc531388bfc0c66.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-126_2024-Remanejamento-Rubrica-PAP-2024_2025.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/03a166fa52985e62.pdf",
+    "chaveR2": "docs/03a166fa52985e62.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-125_2024-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2025.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/820632273dc06858.pdf",
+    "chaveR2": "docs/820632273dc06858.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-124_2024-Revisao-DN-Diretrizes-CTS-Doce_.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/38cbd22436b64ff4.pdf",
+    "chaveR2": "docs/38cbd22436b64ff4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-123_2024-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a2d94cc41c2c12b9.pdf",
+    "chaveR2": "docs/a2d94cc41c2c12b9.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-122_2024-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/edab43a11f5328a8.pdf",
+    "chaveR2": "docs/edab43a11f5328a8.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-121_2024-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/fca5f81d8aed5f5f.pdf",
+    "chaveR2": "docs/fca5f81d8aed5f5f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-120_2024-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d06f49ef273569a8.pdf",
+    "chaveR2": "docs/d06f49ef273569a8.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-119_2024-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/050e405e255c0071.pdf",
+    "chaveR2": "docs/050e405e255c0071.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/08/DELIBERACAO-NORMATIVA-CBH-DOCE-118_2024-VF-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2ba2cc88e8da18ce.pdf",
+    "chaveR2": "docs/2ba2cc88e8da18ce.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/05/DN-117_2023-Editais-de-Chamamento-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/bf6634378dfe6118.pdf",
+    "chaveR2": "docs/bf6634378dfe6118.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-115_2023-PAP-2024-2025_CBH-Doce_21_12_2023_assinado-2-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/446a89eec6f85fca.pdf",
+    "chaveR2": "docs/446a89eec6f85fca.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-114_2023-Alteracao-da-CTCI-CBH-Doce-DELIBERADA-2.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b0e2147c4f5fd6df.pdf",
+    "chaveR2": "docs/b0e2147c4f5fd6df.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-112_2023-Aditivo-ao-CG-ANA-no-034-2020-REFERENDADA-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0e02d84d11ace355.pdf",
+    "chaveR2": "docs/0e02d84d11ace355.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-111_2023-Renovacao-Escola-de-Projetos-REFERENDADA-Copiar-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/68408c06b18b5f2c.pdf",
+    "chaveR2": "docs/68408c06b18b5f2c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-110_2023-Custeio-Taxi-Senisi-FNCBHs-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1421fa876b4fc65f.pdf",
+    "chaveR2": "docs/1421fa876b4fc65f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN113-2023_PIRH_ENQ-CBH-Doce-18-08-2023-3.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/39b172954121a914.pdf",
+    "chaveR2": "docs/39b172954121a914.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/12/DN-109_2022-Calendario-de-Reunioes-2021-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/85e6504caa8be408.pdf",
+    "chaveR2": "docs/85e6504caa8be408.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-108_SET_2022-Aprova-TDR-P31.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/269ceb2758d8c255.pdf",
+    "chaveR2": "docs/269ceb2758d8c255.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-106_JUN_2022-Aprova-minuta-do-Edital-de-Perdas.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/310fb773d010546a.pdf",
+    "chaveR2": "docs/310fb773d010546a.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-105_JUN_2022-Cria-o-GT-Sistema-de-Alerta-e-P31.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/7d55b9b181e4a5d4.pdf",
+    "chaveR2": "docs/7d55b9b181e4a5d4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_104_APROVADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a53cc0d0f5baf612.pdf",
+    "chaveR2": "docs/a53cc0d0f5baf612.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-103_FEV2021-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2022-2026-2.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d7bd314805b97c6f.pdf",
+    "chaveR2": "docs/d7bd314805b97c6f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-102_2021-Criacao-da-Comissao-Eleitoral-CBH-Doce-ATUALIZADO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/162908513502c6c4.pdf",
+    "chaveR2": "docs/162908513502c6c4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/12/DN-101_2021-Calendario-de-Reunioes-2021-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8772654073c843d2.pdf",
+    "chaveR2": "docs/8772654073c843d2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/01/DN-99_2021-Aprova-novo-R.I-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/11f1ba4d00effd21.pdf",
+    "chaveR2": "docs/11f1ba4d00effd21.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-98_2021-Contratacao-Cadastro-Reserva-Escola-de-Projetos-.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/dbcf9d4acf3c4c9c.pdf",
+    "chaveR2": "docs/dbcf9d4acf3c4c9c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-97_2021-Definicao-de-Cenarios-para-a-execucao-da-iniciativa-Rio-Vivo-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b396d3529f2d9378.pdf",
+    "chaveR2": "docs/b396d3529f2d9378.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-96_2021-Criacao-de-Grupo-de-Trabalho-para-Revisao-do-RI-VF.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9408a7f35825e675.pdf",
+    "chaveR2": "docs/9408a7f35825e675.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-95_2021-Prorrogacao-do-Mandato-VF.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/dfee9d4b3e2c916a.pdf",
+    "chaveR2": "docs/dfee9d4b3e2c916a.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-94_2021-Transferencia-de-Recursos-CBH-Doce-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c35a921bc8608a23.pdf",
+    "chaveR2": "docs/c35a921bc8608a23.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/05/DN-93_2021-Atualizacao-dos-valores-de-cobranca-na-Bacia-do-Rio-Doce-.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0a0bd8e2724253f3.pdf",
+    "chaveR2": "docs/0a0bd8e2724253f3.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/04/DN-92_2021-Cria-o-Grupo-de-Trabalho-para-revisão-da-cobrança-REFERENDADA-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2719ff37b4964f4f.pdf",
+    "chaveR2": "docs/2719ff37b4964f4f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/01/DN-91_2020-Autorização-para-transferência-direta-de-recurso-e-bens-IBIO-x-AGEVAP.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/71616023c23158dd.pdf",
+    "chaveR2": "docs/71616023c23158dd.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2021/01/PAP-Consolidado-DN_ANEXO-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/afb13c35e2a050f0.pdf",
+    "chaveR2": "docs/afb13c35e2a050f0.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-89-Retificação-PAP-2016-2020-COMPLETA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5372b9acf5f030d2.pdf",
+    "chaveR2": "docs/5372b9acf5f030d2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-88-Cria-e-Compõe-o-Grupo-de-Acompanhento-do-Contrato-de-Gestão.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4c07480c9708927e.pdf",
+    "chaveR2": "docs/4c07480c9708927e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-87_2020-Cria-o-GT-para-a-elaboração-do-PAP-2021-2025-Recursos-da-União-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4f753283694c8522.pdf",
+    "chaveR2": "docs/4f753283694c8522.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-86_AGOSTO_2020-Aprova-Minuta-de-CG-ANA-x-AGEVAP-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/57c28a128194598c.pdf",
+    "chaveR2": "docs/57c28a128194598c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-85_JULHO_2020-Adesão-ao-Protocolo-Observatório-das-Águas-REFERENDADA.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/60dec41ead7c533b.pdf",
+    "chaveR2": "docs/60dec41ead7c533b.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-84_JULHO_2020-Realização-de-Plenária-Virtual-CBH-Doce-COVID-19-Referendada.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/e0f9592187433397.pdf",
+    "chaveR2": "docs/e0f9592187433397.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-Referendada-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5647f9bb169a1525.pdf",
+    "chaveR2": "docs/5647f9bb169a1525.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2020/04/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-ad-referendum.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5e9a50c41982a6dc.pdf",
+    "chaveR2": "docs/5e9a50c41982a6dc.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/05/DN-82_DEZ2019-Cria-o-Grupo-de-Revisao-do-PIRH.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/7c33ee82e35ce0f6.pdf",
+    "chaveR2": "docs/7c33ee82e35ce0f6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-081_DEZ-2019-Atualização-PAP-Doce-2020-com-ANEXO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/abcde89df0a308b7.pdf",
+    "chaveR2": "docs/abcde89df0a308b7.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-80_OUT2019-Aprova-Errata-01-Edital-Nova-Agencia-ad-referendum.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/acc20dc8341507c6.pdf",
+    "chaveR2": "docs/acc20dc8341507c6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/11/DN-79_OUT2019-Aprova-Edital-Nova-Agencia.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/464a4d03e8827332.pdf",
+    "chaveR2": "docs/464a4d03e8827332.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/03/DN-78_OUT2019-ATUALIZADA-em-28-02-2024_assinado-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ea67c1a9daca6ae3.pdf",
+    "chaveR2": "docs/ea67c1a9daca6ae3.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/08/DN-77_AGO2019-Normas-e-Procedimentos-para-eleição-diretoria-executiva-2019-2021.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/71c9e5a7a11926fc.pdf",
+    "chaveR2": "docs/71c9e5a7a11926fc.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/07/DN-76_MAI2019-ad-referendum-Aprova-Estudo-de-Convergência-Fundação-Renova.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/35dd0863b12b99fb.pdf",
+    "chaveR2": "docs/35dd0863b12b99fb.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/04/Deliberação-75-Aprova-TDR-para-revisão-PIRH-e-enquadramento.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/21bb843330c46a38.pdf",
+    "chaveR2": "docs/21bb843330c46a38.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-74-Antecipação-de-Recursos-P-61-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/538e0121d6452549.pdf",
+    "chaveR2": "docs/538e0121d6452549.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-73-Define-interpretação-para-o-conceito-de-diária-previsto-da-DN-68_2018.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2a93268f161344d6.pdf",
+    "chaveR2": "docs/2a93268f161344d6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/09/Deliberação-72-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-Complementar-2017-2021.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9efe98813157df8e.pdf",
+    "chaveR2": "docs/9efe98813157df8e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/11/Deliberação-71-Aprova-Proposta-de-SGIRS-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/84504edefbf556c6.pdf",
+    "chaveR2": "docs/84504edefbf556c6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-70-Comissão-Eleitoral-para-processo-complementar-2017-2021.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6d4211a36621abd5.pdf",
+    "chaveR2": "docs/6d4211a36621abd5.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-69-Mecanismos-e-Valores-de-Cobrança-2018.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c70a5fee02b05b45.pdf",
+    "chaveR2": "docs/c70a5fee02b05b45.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br/wp-content/uploads/2019/10/Moção-nº-01_2018-Cobrança-no-ES-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d5c8057227939742.pdf",
+    "chaveR2": "docs/d5c8057227939742.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/04/Deliberação-68-Define-normas-para-gastos-no-programa-P61.2-e-revoga-a-DN-nº-55.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4cfb5857f6dd6c0e.pdf",
+    "chaveR2": "docs/4cfb5857f6dd6c0e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Delibera%C3%A7%C3%A3o-67-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2017-2021.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9bacd5af830ccf3c.pdf",
+    "chaveR2": "docs/9bacd5af830ccf3c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-66-Indica-representante-Conselho-Curador-Fundação-Renova_vf.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c115b861db54ec88.pdf",
+    "chaveR2": "docs/c115b861db54ec88.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-65-CBH-Doce-Comissão-Eleitoral-2017-2021_vf.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/aa883c7d635d4e51.pdf",
+    "chaveR2": "docs/aa883c7d635d4e51.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/08/Deliberação-64-Define-normas-para-participação-no-ENCOB.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/14af282853a7334f.pdf",
+    "chaveR2": "docs/14af282853a7334f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-63-Processo-Eleitoral-CBH-Doce-2013-2017_vf.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1908616cbecf9eaa.pdf",
+    "chaveR2": "docs/1908616cbecf9eaa.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-62-Atribuições-da-Diretoria-Colegiada-do-CBH-Doce-Revoga-DN-40.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/209610357cdc72f1.pdf",
+    "chaveR2": "docs/209610357cdc72f1.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-61-Institui-CTI_CBH-Doce-Revoga-DN-29-e-17.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b7a485e333f4cea0.pdf",
+    "chaveR2": "docs/b7a485e333f4cea0.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-60-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/780a0d02f4fb0923.pdf",
+    "chaveR2": "docs/780a0d02f4fb0923.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-59-Aprova-indicação-de-areas-nascentes-TTAC.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c35b5f0d9674e62a.pdf",
+    "chaveR2": "docs/c35b5f0d9674e62a.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-58-Indica-representantes-Conselho-Consultivo-da-Renova_vfinal.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/f7116ff2b8c85feb.pdf",
+    "chaveR2": "docs/f7116ff2b8c85feb.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-55-Define-normas-para-gastos-no-programa-P61.2_vf.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/76dfb69b50ae6229.pdf",
+    "chaveR2": "docs/76dfb69b50ae6229.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-57-ad-referendum-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9031978cddc50da8.pdf",
+    "chaveR2": "docs/9031978cddc50da8.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-56-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Santo-Antonio.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/40abda4367bc68b7.pdf",
+    "chaveR2": "docs/40abda4367bc68b7.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-54-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Suaçuí.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/142b23091b737015.pdf",
+    "chaveR2": "docs/142b23091b737015.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-53-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Piranga.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3571091f7a940af0.pdf",
+    "chaveR2": "docs/3571091f7a940af0.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52-Realocação-de-recursos-P61.2-ANA-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/64624157fe384f14.pdf",
+    "chaveR2": "docs/64624157fe384f14.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/255bda68b9439f9c.pdf",
+    "chaveR2": "docs/255bda68b9439f9c.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-051-Ad-Referendum-Aprova-Realocação-do-PAP.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/7601e2ab2ede958f.pdf",
+    "chaveR2": "docs/7601e2ab2ede958f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-51_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2d93fc89faf99c09.pdf",
+    "chaveR2": "docs/2d93fc89faf99c09.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-50-Define-normas-para-participação-no-ENCOB.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4fb605f2519154f6.pdf",
+    "chaveR2": "docs/4fb605f2519154f6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-49-Aprova-prorrogação-do-mandato-da-Diretoria-Executiva-2014-2016.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/16ef2b8793f79cc2.pdf",
+    "chaveR2": "docs/16ef2b8793f79cc2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-48-Institui-o-Plano-de-Aplicação-Plurianual-2016-2020.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/4bcb2c2233d56fcf.pdf",
+    "chaveR2": "docs/4bcb2c2233d56fcf.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-XX_Anexos_I_II_e_III_PAP_Doce_2016_2020_V4_Colegiada_30_11_15.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2cb53d15a8049d65.pdf",
+    "chaveR2": "docs/2cb53d15a8049d65.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-47-Aprova-segundo-termo-aditivo-ANA-IBIO-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/e0ddfc8c17515b0a.pdf",
+    "chaveR2": "docs/e0ddfc8c17515b0a.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-46_JUN2015-Aprova-indicação-IBIO-como-delegatária.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/bb62d1f8a684e3b9.pdf",
+    "chaveR2": "docs/bb62d1f8a684e3b9.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-AD-Referendum-Nº-45-de-18-de-março-de-2015.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3a13101fd297514d.pdf",
+    "chaveR2": "docs/3a13101fd297514d.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/DELIBERAÇÃO-Nº-44-CTGEC.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d0c8d069f316379a.pdf",
+    "chaveR2": "docs/d0c8d069f316379a.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-43-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/fa6b6305bcc52fda.pdf",
+    "chaveR2": "docs/fa6b6305bcc52fda.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-42-Altera-PAP-Doce-2012-a-2015-Final.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9b378b5fb84531d6.pdf",
+    "chaveR2": "docs/9b378b5fb84531d6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-nº41-Mandato-Diretoria-CBH-Doce.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/07f299d8d99033f6.pdf",
+    "chaveR2": "docs/07f299d8d99033f6.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-40-Atribuições-da-Diretoria-Colegiada.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/aef806d9c1cbd5a9.pdf",
+    "chaveR2": "docs/aef806d9c1cbd5a9.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-39-Normas-e-procedimentos-processo-complementar.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2d6736f19505de9b.pdf",
+    "chaveR2": "docs/2d6736f19505de9b.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-38_2014-GT-Processo-Complementar1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/bd612371f3fc69b2.pdf",
+    "chaveR2": "docs/bd612371f3fc69b2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-37-Prorrogação-do-Mandato-2009-2013.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8431d4c9fa55b5ab.pdf",
+    "chaveR2": "docs/8431d4c9fa55b5ab.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-36-CBH-Doce-Processo-Eleitoral-2013-2017.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a0c9847660aee093.pdf",
+    "chaveR2": "docs/a0c9847660aee093.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-35-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2013-2017.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/391ff82bd93266b0.pdf",
+    "chaveR2": "docs/391ff82bd93266b0.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-34-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/dd5cf838d950d3dd.pdf",
+    "chaveR2": "docs/dd5cf838d950d3dd.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2014/09/Delibera%C3%A7%C3%A3o-33-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1eb04775e23a1708.pdf",
+    "chaveR2": "docs/1eb04775e23a1708.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br/wp-content/uploads/2014/09/Moção-001_2012.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2cc0220deb004b43.pdf",
+    "chaveR2": "docs/2cc0220deb004b43.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_32_Institui.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3e1c1426a94cdb84.pdf",
+    "chaveR2": "docs/3e1c1426a94cdb84.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_031.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c41f98cd0c3052b1.pdf",
+    "chaveR2": "docs/c41f98cd0c3052b1.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_030.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/232f6247bfbd5b8e.pdf",
+    "chaveR2": "docs/232f6247bfbd5b8e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_029.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/86f67af3bbe07546.pdf",
+    "chaveR2": "docs/86f67af3bbe07546.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_028.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/9a67d643d7c938eb.pdf",
+    "chaveR2": "docs/9a67d643d7c938eb.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c755edf953d5ee88.pdf",
+    "chaveR2": "docs/c755edf953d5ee88.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027_anexo.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a3ec14c9cd32511e.pdf",
+    "chaveR2": "docs/a3ec14c9cd32511e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_026.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/f53649f4a6cd5da0.pdf",
+    "chaveR2": "docs/f53649f4a6cd5da0.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001_2011.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/40d5c4265c0f4484.pdf",
+    "chaveR2": "docs/40d5c4265c0f4484.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_024.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/37f941d22be8ee09.pdf",
+    "chaveR2": "docs/37f941d22be8ee09.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_023.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8439c9870d283f10.pdf",
+    "chaveR2": "docs/8439c9870d283f10.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_022.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/0bad1eecc3154d10.pdf",
+    "chaveR2": "docs/0bad1eecc3154d10.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_021.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/26ea56b575844ae4.pdf",
+    "chaveR2": "docs/26ea56b575844ae4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_020.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/812a8cbdddc68b45.pdf",
+    "chaveR2": "docs/812a8cbdddc68b45.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_019.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8bd64b6d775a8a5d.pdf",
+    "chaveR2": "docs/8bd64b6d775a8a5d.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_005.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/623c291c7f00dbc4.pdf",
+    "chaveR2": "docs/623c291c7f00dbc4.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_004.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/fa5fe210491897ab.pdf",
+    "chaveR2": "docs/fa5fe210491897ab.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_003.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/5ba846617fb4865c.pdf",
+    "chaveR2": "docs/5ba846617fb4865c.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/eca3c48d0bc5d57a.pdf",
+    "chaveR2": "docs/eca3c48d0bc5d57a.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/01a11a3393245a50.pdf",
+    "chaveR2": "docs/01a11a3393245a50.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002-2006.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1370b232747fed4d.pdf",
+    "chaveR2": "docs/1370b232747fed4d.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_018.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/426c301ba9daabc3.pdf",
+    "chaveR2": "docs/426c301ba9daabc3.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-18_DEZ2005-ad-referendum-Aprova-TDR-Final-ANEXO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a6eea90d53ee1649.pdf",
+    "chaveR2": "docs/a6eea90d53ee1649.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_017.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/78fc00698ad776a2.pdf",
+    "chaveR2": "docs/78fc00698ad776a2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_016.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2101118b99c85c50.pdf",
+    "chaveR2": "docs/2101118b99c85c50.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_015.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ce7fcb36a99b471f.pdf",
+    "chaveR2": "docs/ce7fcb36a99b471f.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_014.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6cc50528bd746e9e.pdf",
+    "chaveR2": "docs/6cc50528bd746e9e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_013.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c44825242ad18a18.pdf",
+    "chaveR2": "docs/c44825242ad18a18.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_012.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1894fc77cf3e60c8.pdf",
+    "chaveR2": "docs/1894fc77cf3e60c8.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_011.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/6ed5b0d32438253e.pdf",
+    "chaveR2": "docs/6ed5b0d32438253e.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_010.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/629f1ed50f71b831.pdf",
+    "chaveR2": "docs/629f1ed50f71b831.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_009.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/faeba781fdb75bda.pdf",
+    "chaveR2": "docs/faeba781fdb75bda.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_008.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/ae1b904e3d0fed00.pdf",
+    "chaveR2": "docs/ae1b904e3d0fed00.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_007.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/b204ab53ce3a5da4.pdf",
+    "chaveR2": "docs/b204ab53ce3a5da4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_006.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/efc0065cb3dbec8a.pdf",
+    "chaveR2": "docs/efc0065cb3dbec8a.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001-2004.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/dfff0d62833b5766.pdf",
+    "chaveR2": "docs/dfff0d62833b5766.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_005.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/2af34beb707f9b38.pdf",
+    "chaveR2": "docs/2af34beb707f9b38.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_004.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/1ea9d9c9b876c544.pdf",
+    "chaveR2": "docs/1ea9d9c9b876c544.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_003.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/57eb286b29842ab3.pdf",
+    "chaveR2": "docs/57eb286b29842ab3.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_002.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/f2c78e63f4e488a2.pdf",
+    "chaveR2": "docs/f2c78e63f4e488a2.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_001.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/eb2070b5158cc95a.pdf",
+    "chaveR2": "docs/eb2070b5158cc95a.pdf",
+    "status": "dry-run"
+  },
+  "https://www.cbhdoce.org.br/wp-content/uploads/2024/01/Relacao-de-Termos-de-Colaboracao-Tecnica-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/87a11eaa399a0307.pdf",
+    "chaveR2": "docs/87a11eaa399a0307.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2024/01/8-DN-116_2023-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2024-ASSINADO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/de6a11f195300752.pdf",
+    "chaveR2": "docs/de6a11f195300752.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-DOCE-107_JUN_2022-Aprova-processo-licitatorio-Produtora.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/d4358dbd26b2d674.pdf",
+    "chaveR2": "docs/d4358dbd26b2d674.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_100_2021_APROVADA-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/8b9e09059d03d363.pdf",
+    "chaveR2": "docs/8b9e09059d03d363.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2022/01/Regimento-Interno-CBH-Doce-Consolidado-Dez_2021-VIGENTE-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3423e622942842ca.pdf",
+    "chaveR2": "docs/3423e622942842ca.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/11/ERRATA-01-Edital-01_2019.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/36bbcfb64683dee4.pdf",
+    "chaveR2": "docs/36bbcfb64683dee4.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2019/11/Edital-Seleção-AGB-Plenária-CBH-Doce-31_10_2019.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/3585becf4beca3fd.pdf",
+    "chaveR2": "docs/3585becf4beca3fd.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/11/Proposta-GT-Residuos-21.08.18-Versão-final-1.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/c15885fbf1c59366.pdf",
+    "chaveR2": "docs/c15885fbf1c59366.pdf",
+    "status": "dry-run"
+  },
+  "https://cbhdoce.org.br/wp-content/uploads/2018/05/Nota-Técnica-v.FINAL-ANEXOS-CONSOLIDADO.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/docs/a89e6144134d4572.pdf",
+    "chaveR2": "docs/a89e6144134d4572.pdf",
+    "status": "dry-run"
   }
 }

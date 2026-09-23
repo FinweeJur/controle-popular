@@ -63,7 +63,7 @@ Confirmadas em 23/09. **Não reabrir sem remensurar.**
 ## Fase 1 — descoberta e espelho
 
 **Descoberta de 23/09 (medida):** mapa completo em
-[FONTES.md § Condicionantes](../06-fontes/FONTES.md#condicionantes--piloto-irapé-e-setubal--o-que-a-descoberta-de-2309-achou).
+[FONTES.md § Condicionantes](../06-fontes/FONTES.md#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads).
 
 Achados principais:
 
