@@ -218,3 +218,17 @@ proxy.err
 copam.log
 pncp.log
 licitacoes.log
+pncp-contratos.out
+pncp-licitacoes.out
+pncp-contratos.err
+pncp-licitacoes.err
+pncp-orgaos.out
+pncp-orgaos.err
+pncp-runner.out
+pncp-runner.err
+pncp-launch.log
+
+# Checkpoint de retomada dos ETLs PNCP (estado desta maquina; ver
+# etl/betim/etl/pncp/checkpoint.py). O que importa ja esta no banco.
+etl/betim/.checkpoint-pncp-*.json
+etl/betim/.checkpoint-pncp-*.json.tmp

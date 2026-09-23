@@ -17,7 +17,7 @@ BASE_URL = "https://pncp.gov.br/api/consulta/v1"
 INTER_REQUEST_SLEEP = 0.6
 
 
-@retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, min=3, max=60))
+@retry(stop=stop_after_attempt(8), wait=wait_exponential(multiplier=2, min=3, max=90))
 def _get(path: str, params: dict) -> dict:
     # 60s bastava enquanto a consulta era por UM CNPJ (Betim). Com a lista de
     # órgãos municipais — 57 em São Paulo — a mesma varredura faz dezenas de
@@ -35,15 +35,31 @@ def _get(path: str, params: dict) -> dict:
     # estourar, para que a próxima tentativa do tenacity pegue o servidor já
     # recuperado — sem isso, as 6 tentativas se esgotam rápido demais e a
     # exceção sobe (o chamador em `licitacoes.py` a trata por modalidade).
-    if 500 <= resp.status_code < 600:
+    # 504 Gateway Time-out derrubou 2026 em 23/09/2026 com 6×15 s: o gateway
+    # demora mais que o backend. 502/503/504 ganham espera longa.
+    if resp.status_code in (502, 503, 504):
+        time.sleep(45)
+    elif 500 <= resp.status_code < 600:
         time.sleep(15)
     resp.raise_for_status()
     return resp.json()
 
 
-def iter_contratos(cnpj_orgao: str, data_inicial: str, data_final: str, tamanho_pagina: int = 50):
-    """Yields raw contrato dicts from /v1/contratos for the given date window."""
-    pagina = 1
+def iter_contratos(
+    cnpj_orgao: str,
+    data_inicial: str,
+    data_final: str,
+    tamanho_pagina: int = 50,
+    pagina_inicio: int = 1,
+):
+    """Yields `(pagina, registros)` from /v1/contratos for the date window.
+
+    Devolve PÁGINA inteira (lista), não item a item, para o chamador gravar no
+    banco e gravar checkpoint **depois de cada página** — se a conexão cair no
+    meio, o que já entrou permanece e a próxima rodada retoma em
+    `pagina_inicio` (ver `etl.pncp.checkpoint`).
+    """
+    pagina = max(pagina_inicio, 1)
     while True:
         payload = _get(
             "/contratos",
@@ -58,15 +74,21 @@ def iter_contratos(cnpj_orgao: str, data_inicial: str, data_final: str, tamanho_
         registros = payload.get("data", [])
         if not registros:
             break
-        yield from registros
+        yield pagina, registros
         if pagina >= payload.get("totalPaginas", 0):
             break
         pagina += 1
         time.sleep(INTER_REQUEST_SLEEP)
 
 
-def iter_contratacoes(codigo_municipio_ibge: str, data_inicial: str, data_final: str,
-                       codigo_modalidade: int, tamanho_pagina: int = 50):
+def iter_contratacoes(
+    codigo_municipio_ibge: str,
+    data_inicial: str,
+    data_final: str,
+    codigo_modalidade: int,
+    tamanho_pagina: int = 50,
+    pagina_inicio: int = 1,
+):
     """Yields raw contratação (licitação) dicts from /v1/contratacoes/publicacao.
 
     DUAS COISAS QUE ESTE ENDPOINT NÃO FAZ, e que parecem que faz (medido em
@@ -93,7 +115,7 @@ def iter_contratacoes(codigo_municipio_ibge: str, data_inicial: str, data_final:
     tomando 429 até em requisição única por alguns minutos. Paralelizar esta
     coleta a torna MAIS lenta, não mais rápida.
     """
-    pagina = 1
+    pagina = max(pagina_inicio, 1)
     while True:
         payload = _get(
             "/contratacoes/publicacao",
@@ -109,7 +131,9 @@ def iter_contratacoes(codigo_municipio_ibge: str, data_inicial: str, data_final:
         registros = payload.get("data", [])
         if not registros:
             break
-        yield from registros
+        # Página inteira por yield: checkpoint + upsert a cada página no
+        # chamador (mesma razão de `iter_contratos`).
+        yield pagina, registros
         if pagina >= payload.get("totalPaginas", 0):
             break
         pagina += 1

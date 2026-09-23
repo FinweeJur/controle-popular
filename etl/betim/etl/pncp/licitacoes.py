@@ -24,6 +24,7 @@ import sys
 import time
 
 from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.pncp import checkpoint as ck
 from etl.pncp.client import INTER_REQUEST_SLEEP, iter_contratacoes
 
 MODALIDADES = range(1, 14)
@@ -60,9 +61,18 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
     ano_atual = dt.date.today().year
     total = 0
     descartados = 0
+    estado = ck.carregar(ck.NOME_LICITACOES)
     # (ano, modalidade) que não completaram — o PNCP devolveu erro no meio e o
     # cliente esgotou as tentativas. Ver o bloco abaixo.
     incompletos: list[tuple[int, int, str]] = []
+
+    def _gravar(rows_by_pncp: dict[str, dict]) -> int:
+        rows = list(rows_by_pncp.values())
+        for i in range(0, len(rows), 1000):
+            client.table("licitacoes").upsert(
+                rows[i : i + 1000], on_conflict="numero_controle_pncp"
+            ).execute()
+        return len(rows)
 
     for ano in range(ano_inicio, ano_atual + 1):
         data_inicial = f"{ano}0101"
@@ -75,41 +85,89 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
             # gravar nada. Medido ao vivo em 2026-08-05. Com a escrita por
             # modalidade, o estrago de uma falha é UMA modalidade de UM ano.
             #
-            # `rows_by_pncp` também é por modalidade: o dedupe existe para não
-            # repetir chave DENTRO de um mesmo lote de upsert (o Postgres
-            # recusa "cannot affect row a second time"). A mesma contratação
-            # aparecendo em duas modalidades agora cai em upserts SEPARADOS —
-            # inócuo, porque a chave de conflito é a mesma e o último ganha.
+            # Em 23/09/2026 o mesmo padrão evoluiu para PÁGINA: checkpoint
+            # por (ano, modalidade) + upsert a cada página, para queda de
+            # internet/PC no meio de uma modalidade grande não perder o lote.
+            # Prefixo do município: sem ele, rodar outra cidade depois de
+            # Betim pularia tudo (checkpoint "ok" de outra cidade).
+            chave = f"{id_municipio}:{ano}-{modalidade}"
+            if ck.unidade_pronta(estado, chave):
+                print(
+                    f"[etl.pncp.licitacoes] {chave} checkpoint=ok, pula",
+                    flush=True,
+                )
+                continue
+
+            pagina_inicio = ck.pagina_retomar(estado, chave)
+            if pagina_inicio > 1:
+                print(
+                    f"[etl.pncp.licitacoes] {chave} retoma na página {pagina_inicio}",
+                    flush=True,
+                )
+
             rows_by_pncp: dict[str, dict] = {}
+            paginas_gravadas = pagina_inicio - 1
+            item_ck = estado.get(chave)
+            registros_chave = (
+                int(item_ck.get("registros") or 0)
+                if isinstance(item_ck, dict)
+                else 0
+            )
             try:
-                for raw in iter_contratacoes(id_municipio, data_inicial, data_final, modalidade):
-                    esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
-                    if not incluir_outras_esferas and esfera != "M":
-                        descartados += 1
-                        continue
-                    row = _map_row(raw, id_municipio)
-                    rows_by_pncp[row["numero_controle_pncp"]] = row
+                for pagina, registros_brutos in iter_contratacoes(
+                    id_municipio,
+                    data_inicial,
+                    data_final,
+                    modalidade,
+                    pagina_inicio=pagina_inicio,
+                ):
+                    for raw in registros_brutos:
+                        esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
+                        if not incluir_outras_esferas and esfera != "M":
+                            descartados += 1
+                            continue
+                        row = _map_row(raw, id_municipio)
+                        rows_by_pncp[row["numero_controle_pncp"]] = row
+                    n = _gravar(rows_by_pncp)
+                    registros_chave += n
+                    rows_by_pncp = {}
+                    paginas_gravadas = max(paginas_gravadas, pagina)
+                    ck.marcar_parcela(
+                        estado,
+                        ck.NOME_LICITACOES,
+                        chave,
+                        pagina=paginas_gravadas,
+                        registros=registros_chave,
+                    )
+                    print(
+                        f"[etl.pncp.licitacoes] {chave} p={pagina} "
+                        f"lote={n} acumulado={registros_chave}",
+                        flush=True,
+                    )
             except Exception as e:
                 # UM ERRO DE UMA MODALIDADE NÃO DERRUBA O RESTO. O PNCP
                 # devolve 500 transitório sob carga; o upsert é idempotente
                 # (chave `numero_controle_pncp`), então re-rodar preenche a
-                # lacuna sem duplicar. Grava o parcial já coletado e segue.
+                # lacuna sem duplicar. O que já passou por página já está no
+                # banco e no checkpoint.
                 incompletos.append((ano, modalidade, type(e).__name__))
                 print(
                     f"[etl.pncp.licitacoes] AVISO: ano={ano} modalidade={modalidade} "
-                    f"interrompida ({type(e).__name__}); grava parcial e segue. "
+                    f"interrompida ({type(e).__name__}); parcial gravado e segue. "
                     f"Re-rode para completar.",
                     flush=True,
                 )
 
-            rows = list(rows_by_pncp.values())
-            # `licitacoes` tem ~18 colunas; um upsert do Postgres aceita 65.535
-            # placeholders, então lotes de 1.000 nunca passam do teto.
-            for i in range(0, len(rows), 1000):
-                client.table("licitacoes").upsert(
-                    rows[i : i + 1000], on_conflict="numero_controle_pncp"
-                ).execute()
-            total += len(rows)
+            n = _gravar(rows_by_pncp)
+            registros_chave += n
+            if not any(a == ano and m == modalidade for a, m, _ in incompletos):
+                ck.marcar_ok(
+                    estado,
+                    ck.NOME_LICITACOES,
+                    chave,
+                    registros=registros_chave,
+                )
+            total += registros_chave
             time.sleep(INTER_REQUEST_SLEEP)
         print(f"[etl.pncp.licitacoes] ano={ano} acumulado={total}", flush=True)
 

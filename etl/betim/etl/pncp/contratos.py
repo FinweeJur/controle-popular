@@ -17,6 +17,7 @@ from etl.common import (
     get_supabase_client,
     upsert_com_colunas_opcionais,
 )
+from etl.pncp import checkpoint as ck
 from etl.pncp.client import iter_contratos
 from etl.temas import classificar_contrato
 
@@ -200,24 +201,11 @@ def sync(
     print(f"[etl.pncp.contratos] {len(cnpjs)} CNPJ(s) de órgão")
     ano_atual = dt.date.today().year
     total = 0
-    for ano in range(ano_inicio, ano_atual + 1):
-        data_inicial = f"{ano}0101"
-        data_final = f"{ano}1231"
-        rows_by_pncp: dict[str, dict] = {}
-        for cnpj in cnpjs:
-            for raw in iter_contratos(cnpj, data_inicial, data_final):
-                row = _map_row(raw, id_municipio)
-                # Dedupe by numero_controle_pncp -- see etl.pncp.licitacoes
-                # for why (ON CONFLICT DO UPDATE can't affect the same row
-                # twice in one batch; PNCP can repeat a contrato across page
-                # boundaries). Com vários CNPJs o dedupe também cobre o
-                # mesmo contrato aparecendo sob dois órgãos.
-                rows_by_pncp[row["numero_controle_pncp"]] = row
+    estado = ck.carregar(ck.NOME_CONTRATOS)
+
+    def _gravar_lote(rows_by_pncp: dict[str, dict]) -> int:
         rows = list(rows_by_pncp.values())
         if rows:
-            # Lotes: um INSERT do Postgres aceita 65.535 placeholders e
-            # `contratos` tem ~19 colunas — com vários CNPJs de uma capital,
-            # um ano só passa do teto.
             for i in range(0, len(rows), 1000):
                 upsert_com_colunas_opcionais(
                     client,
@@ -226,8 +214,81 @@ def sync(
                     ["temas"],
                     on_conflict="numero_controle_pncp",
                 )
-        print(f"[etl.pncp.contratos] ano={ano} registros={len(rows)}")
-        total += len(rows)
+        return len(rows)
+
+    # Chave por cidade + CNPJ + ano. Sem a cidade, rodar BH depois de Betim
+    # pularia tudo (checkpoint "ok" de outra cidade). Sem o CNPJ, o retome de
+    # página de um órgão valeria para o outro (BH tem dezenas).
+    for ano in range(ano_inicio, ano_atual + 1):
+        data_inicial = f"{ano}0101"
+        data_final = f"{ano}1231"
+        for cnpj in cnpjs:
+            chave_unidade = f"{id_municipio}:{cnpj}:{ano}"
+            if ck.unidade_pronta(estado, chave_unidade):
+                print(
+                    f"[etl.pncp.contratos] {chave_unidade} checkpoint=ok, pula"
+                )
+                continue
+
+            pagina_inicio = ck.pagina_retomar(estado, chave_unidade)
+            if pagina_inicio > 1:
+                print(
+                    f"[etl.pncp.contratos] {chave_unidade} retoma na página "
+                    f"{pagina_inicio}",
+                    flush=True,
+                )
+            # Dedupe entre páginas do MESMO ano: a mesma chave não pode repetir
+            # dentro de um lote (Postgres recusa "cannot affect row a second
+            # time"). Entre lotes de páginas diferentes o último ganha — inócuo.
+            vistos_no_ano: set[str] = set()
+            rows_lote: dict[str, dict] = {}
+            paginas_gravadas = pagina_inicio - 1
+            item_ck = estado.get(chave_unidade)
+            registros_ano = (
+                int(item_ck.get("registros") or 0)
+                if isinstance(item_ck, dict)
+                else 0
+            )
+
+            for pagina, registros_brutos in iter_contratos(
+                cnpj, data_inicial, data_final, pagina_inicio=pagina_inicio
+            ):
+                for raw in registros_brutos:
+                    row = _map_row(raw, id_municipio)
+                    chave = row["numero_controle_pncp"]
+                    if not chave or chave in vistos_no_ano:
+                        continue
+                    vistos_no_ano.add(chave)
+                    rows_lote[chave] = row
+                # GRAVA POR PÁGINA. Antes o ano inteiro ficava em memória e só
+                # saía no fim — timeout/queda no meio perdia tudo (medido em
+                # 23/09/2026: 10 min de coleta e zero linha no banco).
+                n = _gravar_lote(rows_lote)
+                registros_ano += n
+                rows_lote = {}
+                paginas_gravadas = max(paginas_gravadas, pagina)
+                ck.marcar_parcela(
+                    estado,
+                    ck.NOME_CONTRATOS,
+                    chave_unidade,
+                    pagina=paginas_gravadas,
+                    registros=registros_ano,
+                )
+                print(
+                    f"[etl.pncp.contratos] {chave_unidade} p={pagina} "
+                    f"lote={n} acumulado={registros_ano}",
+                    flush=True,
+                )
+
+            n = _gravar_lote(rows_lote)
+            registros_ano += n
+            ck.marcar_ok(
+                estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
+            )
+            print(
+                f"[etl.pncp.contratos] {chave_unidade} registros={registros_ano}"
+            )
+            total += registros_ano
     print(f"[etl.pncp.contratos] total={total}")
 
 
