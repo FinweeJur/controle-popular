@@ -22,23 +22,45 @@ Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === INICIANDO ROTI
 Set-Location $RaizRepo
 
 # 1. Executa sondagem de integridade das fontes via PicoClaw
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/5. Executando PicoClaw Source Watcher..." | Tee-Object -FilePath $ArquivoLog -Append
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/6. Executando PicoClaw Source Watcher..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/agent-tools/picoclaw-source-watcher.mts *>> $ArquivoLog
 
 # 2. Executa verificacao de paginas do portal via Argus
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/5. Executando Argus Page Checker..." | Tee-Object -FilePath $ArquivoLog -Append
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/6. Executando Argus Page Checker..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/agent-tools/argus-page-checker.mts *>> $ArquivoLog
 
-# 3. Executa varredura de links externos via LinkMender (so propoe, nao commita)
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3/5. Executando LinkMender Checker..." | Tee-Object -FilePath $ArquivoLog -Append
+# 3. Varredura de links externos via LinkMender checker (relatorio so)
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3/6. Executando LinkMender Checker..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/agent-tools/linkmender-checker.mts *>> $ArquivoLog
 
-# 4. Executa coletas automatizadas das fontes prioritárias
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 4/5. Executando rotina de coletas automatizadas..." | Tee-Object -FilePath $ArquivoLog -Append
+# 3b. LinkMender PR — se a camada mudou, abre branch + PR com label bot/linkmender
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3b/6. Executando LinkMender PR..." | Tee-Object -FilePath $ArquivoLog -Append
+npx tsx scripts/agent-tools/linkmender-pr.mts *>> $ArquivoLog
+
+# 4. Executa coletas automatizadas das fontes prioritarias
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 4/6. Executando rotina de coletas automatizadas..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/rotina-coletas.mts --listar *>> $ArquivoLog
 
-# 5. Varredura obrigatória de privacidade (Mod-11 CPF)
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 5/5. Varredura de privacidade mod-11..." | Tee-Object -FilePath $ArquivoLog -Append
+# 5. Varredura obrigatoria de privacidade (Mod-11 CPF)
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 5/6. Varredura de privacidade mod-11..." | Tee-Object -FilePath $ArquivoLog -Append
 python scripts/checar-dado-pessoal-em-dado.py *>> $ArquivoLog
 
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === ROTINA DE MADRUGADA CONCLUÍDA ===" | Tee-Object -FilePath $ArquivoLog -Append
+# 6. Commit dos relatorios da rotina (pathspec explicito, mensagem -F)
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 6/6. Commit de relatorios (se houver diff)..." | Tee-Object -FilePath $ArquivoLog -Append
+$diffRel = git status --porcelain -- docs/relatorios-automacao/
+if ($diffRel) {
+    $msg = Join-Path $env:TEMP "msg-rotina-madrugada.txt"
+    Set-Content -Path $msg -Value @(
+        "rotina: atualiza relatorios da madrugada",
+        "",
+        "Saida da rotina local (LinkMender, Argus, PicoClaw).",
+        "",
+        "Co-Authored-By: opencode <noreply@github.com>"
+    ) -Encoding utf8
+    git add -- docs/relatorios-automacao/
+    git commit --only docs/relatorios-automacao/ -F $msg
+} else {
+    Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] sem diff em docs/relatorios-automacao." | Tee-Object -FilePath $ArquivoLog -Append
+}
+
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === ROTINA DE MADRUGADA CONCLUIDA ===" | Tee-Object -FilePath $ArquivoLog -Append
