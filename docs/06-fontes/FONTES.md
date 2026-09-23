@@ -2,7 +2,7 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-22
+> **Última medição:** 2026-09-23
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim
@@ -84,6 +84,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Anatel | Mosaico / SMP | [§](#anatel--sistema-mosaico--telefonia-móvel-smp) |
 | TSE | planos de governo | [§](#tse-divulga-cand--planos-de-governo-dos-eleitos) |
 | Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
+| Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--o-que-a-descoberta-de-2309-achou) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -635,6 +636,45 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 | [`FONTES-FLUXO-FINANCEIRO.md`](FONTES-FLUXO-FINANCEIRO.md) | quem recebe dinheiro público, CFEM e quem controla quem |
 | [`FONTES-TERRITORIO-E-MINERACAO.md`](FONTES-TERRITORIO-E-MINERACAO.md) | FUNAI, INCRA, CNUC, ANM/SIGMINE |
 | [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
+
+## Condicionantes — piloto Irapé e Setúbal (o que a descoberta de 23/09 achou)
+
+Sondado em 2026-09-23 para o [PLANO-CONDICIONANTES-AMBIENTAIS.md](../planos/PLANO-CONDICIONANTES-AMBIENTAIS.md). Nenhum coletor ainda; é o mapa de URL e processo da Fase 1.
+
+### UHE Irapé (CEMIG) — rio Jequitinhonha, Grão Mogol/Berilo
+
+| Marco | Medida | Fonte |
+|---|---|---|
+| LP | 10/12/1997, CBH/COPAM, **47 condicionantes** (reassentamento em destaque) | Zucarelli/GESTA, [ECSB 2007](http://www.ecsb2007.ufba.br/layout/padrao/azul/ecsb2007/arquivos_anteriores/st1_04.pdf) |
+| LI | 26/4/2002, condicionada a TAC com o MPF (assinado 07/07/2002) | idem; CEMIG/cgti |
+| LO | dez/2005, com obrigações do TAC ainda contestadas | Mapa de Conflitos Fiocruz |
+| Evidência de descumprimento | FEAM 2002 recomendou indeferir a LI (“PCA absolutamente insuficiente”); Comissão dos Atingidos denunciou prazos do TAC | idem |
+| Documentos acessíveis | Relatório GESTA-UFMG 2011 (ACP 2006.38.13.012165-7); pareceres SEMAD em `semad.mg.gov.br/documents/…` (padrão Liferay, PDF com camada de texto) | UFMG GESTA; SEMAD |
+| Processo SIAM/COPAM da UHE | **ainda não localizado** (1997/2002 antecede SIAM moderno) — próximo passo: SIAM/legado + pautas COPAM | — |
+| Já no repo | semente `UHE Irapé — CEMIG` em `scripts/coletar-ibama-mg.mts` → `apps/web/data/ibama-mg.json` | — |
+
+Armadas para o piloto: PDFs antigos da LP/LI podem virar scan (Tesseract). TAC do MPF é **evidência documental** de cláusula e de denúncia — não prova de descumprimento por si só (AGENTS §7).
+
+### Barragem de Setúbal — Jenipapo de Minas + Chapada do Norte (rio Setúbal → Araçuaí)
+
+⚠️ **Correção ao pressuposto do dono:** o projeto nasceu CEMIG (hidrelétrica, 1989/1990, parada), mas a obra concluída em **2010 é da Ruralminas** (hoje sob COPASA/SEAPA) para **abastecimento e uso múltiplo**, não UHE em operação. Fonte: ALMG, MAB, Agência Minas.
+
+| Marco | Medida | Fonte |
+|---|---|---|
+| Processo LI | `PROC/COPAM/Nº 11492/2005/002/2006`, Classe 5, válida até 09/03/2011, condicionada ao PCA + Parecer Técnico IEF nº 0026/2006 | ATA CAP 09/03/2007, IEF |
+| Condicionantes da LP | **36 condicionantes** (2006) | [ALMG 14/06/2006](https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html) |
+| LO | **inexistente há ~13 anos** (denúncia na audiência ALMG 22/05/2026) — status estrutural do piloto | [ALMG](https://www.almg.gov.br/comunicacao/noticias/arquivos/Impactos-socioambientais-da-Barragem-de-Setubal-pautam-audiencia-publica/), MAB |
+| EIA/RIMA | Ruralminas/Funarbe, 2005, 136 p. | citado em Ambiente e Água (2017) |
+| Responsável | 2010–2013 Ruralminas → SEAPA → COPASA (2025) | MAB 26/05/2026 |
+| Ainda não localizado | PDFs da LP (36 cond.) e do parecer IEF 0026/2006 no SIAM/SEMAD | próximo passo |
+
+Leitura para o status: sem LO, a página pode dizer `nao_informado`/`em_analise` com a lacuna pública declarada — não inventa descumprimento item a item.
+
+### Fontes de apoio (ambos)
+
+- Padrão de PDF com condicionantes e camada de texto: `semad.mg.gov.br/documents/…` e `sistemas.meioambiente.mg.gov.br/licenciamento/uploads/…` (pareceres CEMIG).
+- Evidência estruturada (AGENTS §1): SNISB (`possui_pae`), FEAM DCE, CAP/IBAMA autos, GTAC — cruzar por código/id, nunca por nome.
+- Espelho: R2 + varredura CPF antes do upload (`sincronizar-documentos-r2.mts` / `arquivar-fontes.mjs`).
 
 ## Decisões registradas
 
