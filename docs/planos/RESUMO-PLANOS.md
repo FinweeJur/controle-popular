@@ -42,6 +42,14 @@
 - **Schema:** `apps/web/lib/db/seed/cidades-mg.ts` (S1 bloqueado no Neon)
 - **Route:** `/municipios/mg` (M4 pendente)
 
+### 2b. 📡 Ampliação PNCP (6 principais → demais mapeadas)
+**Status:** ⏳ EM ANDAMENTO (Betim; ordem do dono 23/09)
+
+- **Plano:** [`PLANO-EXPANSAO-PNCP-199-CIDADES.md`](PLANO-EXPANSAO-PNCP-199-CIDADES.md)
+- **Fase A:** fechar contratos+licitações das 6 cidades do portal
+- **Fase C:** só depois, as demais de `cidades-estrategicas.json`
+- **Checkpoint:** `etl/betim/etl/pncp/checkpoint.py` (retomada por página)
+
 ### 3. 📜 TAUS / CDRU / Autorizações Territoriais
 **Status:** ⏳ PENDENTE
 
