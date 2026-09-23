@@ -495,6 +495,21 @@
         "3045"
       ],
       "port": 3045
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-bots-lab) -- bots de link/PR, laboratorio PowerBI, animacoes e chatbot. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-bots-lab-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3027"
+      ],
+      "port": 3027
     }
   ]
 }
