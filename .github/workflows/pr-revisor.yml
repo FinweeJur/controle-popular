@@ -1,0 +1,186 @@
+name: Revisor de PRs
+
+# Bot revisor (item 2 da sessão 23/09).
+# Em PRs abertos:
+#   1. roda a suíte de testes;
+#   2. se o PR tem a label `bot/linkmender`, sonda as urlNova do diff
+#      (HEAD + GET-range, regra "200 e mente");
+#   3. se tudo verde E label presente → merge automático (squash).
+# PRs sem label do bot NUNCA são mesclados por aqui — só testam.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: pr-revisor-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  testar:
+    name: Testes do PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Suíte de testes (lib)
+        run: npm run test:lib -w @cp/web
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Validar camada de correções de links
+        run: node apps/web/scripts/validar-link-correcoes.mjs
+
+      - name: Varredura de dado pessoal
+        run: python scripts/checar-dado-pessoal-em-dado.py
+
+  sondar-links-bot:
+    name: Sondar urlNova do LinkMender
+    needs: testar
+    if: contains(github.event.pull_request.labels.*.name, 'bot/linkmender')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Garantir origin/main para o diff
+        run: |
+          git fetch origin main:refs/remotes/origin/main || true
+
+      - name: Sondar links novos do diff
+        run: npx tsx scripts/agent-tools/sondar-pr-links.mts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  mesclar:
+    name: Merge automático (só label bot/linkmender)
+    needs: [testar, sondar-links-bot]
+    if: always() &&
+        needs.testar.result == 'success' &&
+        needs.sondar-links-bot.result == 'success' &&
+        contains(github.event.pull_request.labels.*.name, 'bot/linkmender') &&
+        github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependências (para avisar-telegram)
+        run: npm ci
+
+      - name: Comentar intenção de merge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const n = context.payload.pull_request.number;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: n,
+              body: [
+                "✅ **Revisor automático**: testes e sondagem de links OK.",
+                "",
+                "Merge squash em andamento (label `bot/linkmender`).",
+                "Se algo estiver torto, reabra o PR ou corrija na main.",
+              ].join("\n"),
+            });
+
+      - name: Squash merge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const n = context.payload.pull_request.number;
+            try {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: n,
+                merge_method: "squash",
+                commit_title: `linkmender: correcoes de links (PR #${n})`,
+                commit_message: [
+                  "Merge automatico do revisor de PRs.",
+                  "Gates: suite, typecheck, dado pessoal, sondagem de urlNova.",
+                  "",
+                  "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+                ].join("\n"),
+              });
+            } catch (e) {
+              core.error(`Falha no merge: ${e.message}`);
+              throw e;
+            }
+
+      - name: Avisar Telegram (merge)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        if: env.TELEGRAM_BOT_TOKEN != ''
+        run: |
+          npx tsx apps/web/scripts/avisar-telegram.mts \
+            "PR #${{ github.event.pull_request.number }} mesclado pelo revisor automatico (label bot/linkmender)."
+        continue-on-error: true
+
+  reprovar:
+    name: Comentar reprovação
+    needs: [testar, sondar-links-bot]
+    if: always() &&
+        (needs.testar.result == 'failure' || needs.sondar-links-bot.result == 'failure') &&
+        github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const n = context.payload.pull_request.number;
+            const falhouTestes = '${{ needs.testar.result }}' === 'failure';
+            const linksMortos = '${{ needs.sondar-links-bot.result }}' === 'failure';
+            const motivos = [];
+            if (falhouTestes) motivos.push("testes/typecheck/privacidade");
+            if (linksMortos) motivos.push("urlNova morta na sondagem");
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: n,
+              body: [
+                "⛔ **Revisor automático reprovou.**",
+                "",
+                `Motivos: ${motivos.join(" + ") || "checagem falhou"}.`,
+                "",
+                "PR **não** foi mesclado. Corrija e reabra, ou crie outro.",
+              ].join("\n"),
+            });
