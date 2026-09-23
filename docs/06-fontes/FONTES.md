@@ -654,10 +654,15 @@ UA honesto, pausa 1,5 s/host, checkpoint. **CPF válido no lote: 0** (mod-11, me
 | `irape-cemig-anuencia.pdf` | 127.451 | anuência CEMIG | oficial |
 | `setubal-cap-ata-ief-2007-03-09.pdf` | 51.468 | confirma `PROC/COPAM 11492/2005/002/2006` + **Parecer IEF 0026/2006** | oficial |
 | `siam-try-idNorma-45918.pdf` | 5.770.603 | **`Decreto 47.383/2018`** — zero ocorrências de Irapé/Setúbal (grep 23/09) | **descartado** como fonte do piloto |
+| `lestingi-usp-2010-marcelalestingi.pdf` | 7.405.958 | dissertação USP 2010 (145 p., text layer OK); 47 cond. LP 10/12/1997; TAC 07/07/2002 com 167 cond. + Anexos I–IV | acadêmico (rodapé) + confirmação de contagem |
 | 7× HTML ALMG/MAB/CEMIG/georef | — | 36 cond. Setúbal; sem LO ~13 anos; denúncias | oficial/midia |
 
-**Lestingi USP 2010** (TAC/Termo de Acordo): URL `teses.usp.br/…/tde-04112010-135107/` devolveu
-conexão fechada no download (23/09) — retomar com retry ou mirror.
+**Lestingi USP 2010** (TAC/Termo de Acordo): baixado 23/09 de
+`https://teses.usp.br/teses/disponiveis/86/86131/tde-04112010-135107/publico/marcelalestingi.pdf`
+(7.405.958 bytes, 145 p., text layer; **0 CPF** mod-11). Texto extraído em
+`lestingi-usp-2010-marcelalestingi.txt` (279.297 bytes). Confirma 47 cond.
+LP (CBH/COPAM, parecer FEAM) e cita TAC 07/07/2002 com **167 cond.** +
+Anexos I–IV — não substitui o TAC integral.
 
 ### Grade `consulta-licenca` — negativo medido do piloto (23/09)
 
