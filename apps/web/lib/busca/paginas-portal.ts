@@ -156,6 +156,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["mariana", "rio doce", "samarco", "renova", "repactuacao", "171 bi", "acordo mariana"],
   },
   {
+    id: "ambiental-condicionantes",
+    titulo: "Condicionantes ambientais de barragens",
+    descricao:
+      "Piloto Irapé e Setúbal: o que a licença e o TAC mandam cumprir, com status de evidência pública e link à fonte.",
+    href: "/ambiental/condicionantes",
+    frente: "ambiental",
+    rotulo: "Barragens · condicionantes",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "condicionante", "condicionantes", "irape", "irape", "setubal",
+      "barragem", "licenca previa", "tac", "reassentamento",
+    ],
+  },
+  {
     id: "paraopeba-hub",
     titulo: "Bacia do Paraopeba & Acordo de Brumadinho (R$ 37,7 Bi)",
     descricao: "Execução do Acordo Judicial de Brumadinho: R$ 5,48 bi nos 26 municípios atingidos e auditoria de projetos.",

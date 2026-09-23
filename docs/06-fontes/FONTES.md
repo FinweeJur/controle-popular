@@ -637,9 +637,41 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 | [`FONTES-TERRITORIO-E-MINERACAO.md`](FONTES-TERRITORIO-E-MINERACAO.md) | FUNAI, INCRA, CNUC, ANM/SIGMINE |
 | [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
 
-## Condicionantes — piloto Irapé e Setúbal (o que a descoberta de 23/09 achou)
+## Condicionantes — piloto Irapé e Setúbal (descoberta 23/09 + downloads)
 
-Sondado em 2026-09-23 para o [PLANO-CONDICIONANTES-AMBIENTAIS.md](../planos/PLANO-CONDICIONANTES-AMBIENTAIS.md). Nenhum coletor ainda; é o mapa de URL e processo da Fase 1.
+Sondado e **baixado** em 2026-09-23 para o [PLANO-CONDICIONANTES-AMBIENTAIS.md](../planos/PLANO-CONDICIONANTES-AMBIENTAIS.md).
+Lote em disco temporário (`_lote-ambiental/condicionantes-piloto/`), fora do repo até a varredura de CPF no commit.
+UA honesto, pausa 1,5 s/host, checkpoint. **CPF válido no lote: 0** (mod-11, medido 23/09).
+
+### Downloads medidos (23/09)
+
+| Arquivo | Bytes | Achado de conteúdo | Papel |
+|---|---:|---|---|
+| `irape-zucarelli-ecsb2007-47-condicionantes.pdf` | 258.929 | **47 cond. LP 10/12/1997**; TAC MPF; ACP; cassação de liminar | acadêmico (rodapé) + confirmação de contagem |
+| `irape-gesta-relatorio-agua-2006.pdf` | 403.863 | qualidade da água a jusante, nov/2006 | acadêmico + evidência LO |
+| `irape-gesta-relatorio-agua-2011.pdf` / `…acp-2011.pdf` | 4.042.148 | ACP `2006.38.13.012165-7`, perícia | acadêmico + evidência |
+| `irape-cemig-cgti-termo-acordo-anexos.pdf` | 77.470 | **Anexos I–IV do Termo de Acordo 07/07/2002** (CEMIG/cgti) | resume cláusulas; não substitui o TAC integral |
+| `irape-cemig-anuencia.pdf` | 127.451 | anuência CEMIG | oficial |
+| `setubal-cap-ata-ief-2007-03-09.pdf` | 51.468 | confirma `PROC/COPAM 11492/2005/002/2006` + **Parecer IEF 0026/2006** | oficial |
+| `siam-try-idNorma-45918.pdf` | 5.770.603 | **`Decreto 47.383/2018`** — zero ocorrências de Irapé/Setúbal (grep 23/09) | **descartado** como fonte do piloto |
+| 7× HTML ALMG/MAB/CEMIG/georef | — | 36 cond. Setúbal; sem LO ~13 anos; denúncias | oficial/midia |
+
+**Lestingi USP 2010** (TAC/Termo de Acordo): URL `teses.usp.br/…/tde-04112010-135107/` devolveu
+conexão fechada no download (23/09) — retomar com retry ou mirror.
+
+### Pendências da Fase 1 (texto integral para segmentar condicionante)
+
+| Falta | Por quê |
+|---|---|
+| LP Irapé integral (47 cond. item a item) | processo SIAM/COPAM 1997 pré-SIAM moderno; ainda não localizado |
+| LP Setúbal integral (36 cond.) | PDF no SIAM/SEMAD não localizado |
+| Parecer IEF 0026/2006 | citado na ata CAP; PDF próprio não achado |
+| TAC/Termo de Acordo MPF integral (07/07/2002) | só resumo nos Anexos via CEMIG/cgti |
+| Zucarelli 2006 dissertação UFMG | repositório UFMG; handle não achado ainda |
+
+**Regra (decisão 6 do dono, 23/09):** dissertação/tese/artigo/relatório GESTA
+**não** viram linha de `condicionantes` — vão no rodapé “Para saber mais”
+da página da barragem. Condicionante estruturado só de licença, TAC, CAP, parecer.
 
 ### UHE Irapé (CEMIG) — rio Jequitinhonha, Grão Mogol/Berilo
 

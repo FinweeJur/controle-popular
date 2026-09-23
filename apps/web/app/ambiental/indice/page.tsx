@@ -67,6 +67,12 @@ const tópicos: Topico[] = [
     descricao: "TACs e compromissos ambientais firmados.",
   },
   {
+    href: "/ambiental/condicionantes",
+    titulo: "Condicionantes de barragens",
+    descricao:
+      "Piloto Irapé e Setúbal: o que a licença e o TAC mandam cumprir, com evidência pública.",
+  },
+  {
     href: "/ambiental/conselhos",
     titulo: "Conselhos e comitês de bacia",
     descricao: "Comitês de bacias hidrográficas, CODEMAs e conselhos de direitos.",

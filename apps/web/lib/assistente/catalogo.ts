@@ -160,6 +160,7 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/ambiental", titulo: "ONSA", termos: ["onsa", "observatorio nacional socioambiental", "ambiental", "meio ambiente"], zona: "ambiental" },
   { sufixo: "/ambiental/licenciamento", titulo: "Licenciamento ambiental", termos: ["licenciamento", "licenca", "licencas"], zona: "ambiental" },
   { sufixo: "/ambiental/barragens", titulo: "Barragens de Minas", termos: ["barragem de minas", "barragens de minas"], zona: "ambiental" },
+  { sufixo: "/ambiental/condicionantes", titulo: "Condicionantes de barragens", termos: ["condicionante", "condicionantes", "irape", "setubal"], zona: "ambiental" },
   { sufixo: "/ambiental/copam", titulo: "COPAM", termos: ["copam", "conselho de politica ambiental"], zona: "ambiental" },
   { sufixo: "/ambiental/legislacao", titulo: "Legislação ambiental", termos: ["legislacao ambiental", "lei ambiental"], zona: "ambiental" },
   { sufixo: "/ambiental/patrimonio-cultural", titulo: "Patrimônio cultural", termos: ["patrimonio", "tombamento", "tombado"], zona: "ambiental" },

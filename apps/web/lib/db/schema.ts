@@ -3154,3 +3154,96 @@ export const contadores = pgTable(
 	}
 );
 
+/**
+ * Documento oficial de licenciamento/condicionante (LP, LI, LO, TAC,
+ * parecer, ata). Texto integral no R2; aqui só metadado + hash.
+ * Migration `0089_ambiental_condicionantes.sql`, plano
+ * `docs/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md`.
+ */
+export const documentos_ambientais = pgTable("documentos_ambientais", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	url_fonte: text().notNull(),
+	url_r2: text(),
+	hash_sha256: text(),
+	orgao: text().notNull(),
+	empreendimento: text().notNull(),
+	tipo_documento: text().notNull(),
+	data_documento: date(),
+	numero_processo: text(),
+	metodo_texto: text().default('nativo').notNull(),
+	aprovado_para_publicacao: boolean().default(false).notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("documentos_ambientais_empreendimento_idx").using("btree", table.empreendimento.asc().nullsLast().op("text_ops")),
+	index("documentos_ambientais_tipo_idx").using("btree", table.tipo_documento.asc().nullsLast().op("text_ops")),
+	index("documentos_ambientais_hash_idx").using("btree", table.hash_sha256.asc().nullsLast().op("text_ops")),
+	unique("documentos_ambientais_url_fonte_hash_sha256_key").on(table.url_fonte, table.hash_sha256),
+	check("documentos_ambientais_metodo_texto_check", sql`metodo_texto = ANY (ARRAY['nativo'::text, 'ocr'::text, 'sem_texto'::text])`),
+]);
+
+/**
+ * Uma condicionante de licença/TAC. Status `cumprida`/`nao_cumprida`/
+ * `parcial` exige `metodo_status <> 'sem_evidencia'` (decisão 1 do dono).
+ * Público acadêmico NÃO entra aqui (decisão 6) — ver
+ * `lib/ambiental/publicacoes-barragens.ts`.
+ */
+export const condicionantes = pgTable("condicionantes", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	documento_id: uuid().notNull(),
+	empreendimento: text().notNull(),
+	barragem_ref_fonte: text(),
+	barragem_ref_origem: text(),
+	ordem_na_fonte: integer(),
+	texto: text().notNull(),
+	tipo: text().default('outra').notNull(),
+	prazo: text(),
+	orgao: text().notNull(),
+	status: text().default('nao_informado').notNull(),
+	metodo_status: text().default('sem_evidencia').notNull(),
+	confianca: numeric({ precision: 3, scale: 2 }),
+	resumo_ia: text(),
+	resumo_ia_modelo: text(),
+	resumo_ia_em: date(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("condicionantes_empreendimento_idx").using("btree", table.empreendimento.asc().nullsLast().op("text_ops")),
+	index("condicionantes_status_idx").using("btree", table.status.asc().nullsLast().op("text_ops")),
+	index("condicionantes_tipo_idx").using("btree", table.tipo.asc().nullsLast().op("text_ops")),
+	index("condicionantes_documento_idx").using("btree", table.documento_id.asc().nullsLast().op("uuid_ops")),
+	index("condicionantes_barragem_idx").using("btree", table.barragem_ref_origem.asc().nullsLast().op("text_ops"), table.barragem_ref_fonte.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.documento_id],
+			foreignColumns: [documentos_ambientais.id],
+			name: "condicionantes_documento_id_fkey"
+		}).onDelete("cascade"),
+	check("condicionantes_tipo_check", sql`tipo = ANY (ARRAY['reassentamento'::text, 'ambiental'::text, 'social'::text, 'cultural'::text, 'seguranca'::text, 'monitoramento'::text, 'relatorio'::text, 'prazo'::text, 'compensacao'::text, 'outra'::text])`),
+	check("condicionantes_status_check", sql`status = ANY (ARRAY['cumprida'::text, 'parcial'::text, 'nao_cumprida'::text, 'nao_informado'::text, 'em_analise'::text])`),
+	check("condicionantes_metodo_status_check", sql`metodo_status = ANY (ARRAY['evidencia_estruturada'::text, 'evidencia_documental'::text, 'sem_evidencia'::text])`),
+	check("condicionantes_status_exige_evidencia", sql`(status <> ALL (ARRAY['cumprida'::text, 'nao_cumprida'::text, 'parcial'::text])) OR (metodo_status <> 'sem_evidencia'::text)`),
+]);
+
+/**
+ * Evidência linkada que sustenta um status. URL específica, nunca home
+ * genérica (AGENTS §8).
+ */
+export const condicionantes_evidencias = pgTable("condicionantes_evidencias", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	condicionante_id: uuid().notNull(),
+	tipo: text().notNull(),
+	url_especifica: text().notNull(),
+	data: date(),
+	observacao: text(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("condicionantes_evidencias_cond_idx").using("btree", table.condicionante_id.asc().nullsLast().op("uuid_ops")),
+	index("condicionantes_evidencias_tipo_idx").using("btree", table.tipo.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.condicionante_id],
+			foreignColumns: [condicionantes.id],
+			name: "condicionantes_evidencias_condicionante_id_fkey"
+		}).onDelete("cascade"),
+	check("condicionantes_evidencias_tipo_check", sql`tipo = ANY (ARRAY['dce'::text, 'pae'::text, 'auto'::text, 'relatorio'::text, 'ata'::text, 'outro'::text])`),
+]);
+

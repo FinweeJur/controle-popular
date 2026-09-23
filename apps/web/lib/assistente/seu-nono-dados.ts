@@ -927,6 +927,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     ],
     links: [
       { href: "/ambiental/barragens", texto: "Barragens" },
+      { href: "/ambiental/condicionantes", texto: "Condicionantes" },
       { href: "/ambiental/licenciamento", texto: "Licenciamento" },
       { href: "/ambiental/copam", texto: "COPAM" },
     ],

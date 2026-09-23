@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** ambiental
-> **Última medição:** 2026-09-23 (descoberta Fase 1 no mesmo dia)
+> **Última medição:** 2026-09-23 (Fase 2 aplicada e Fase 4 esqueleto no mesmo dia)
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [FONTES.md](../06-fontes/FONTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [PLANO-EXPANSAO-ACORDOS-MG.md](PLANO-EXPANSAO-ACORDOS-MG.md), [PLANO-revisao-dados-visibilizacao.md](PLANO-revisao-dados-visibilizacao.md)
 > **Palavras-chave:** plano, condicionantes, barragens, irape, setubal, licenciamento, ocr, r2, tac, etl
@@ -58,6 +58,7 @@ Confirmadas em 23/09. **Não reabrir sem remensurar.**
 | 3 | Texto integral dos PDFs no **espelho R2**; Postgres guarda só metadados, resumo, status e índice. |
 | 4 | Piloto = **só Irapé + Setúbal** com dado real antes de escalar. |
 | 5 | LLM só resume, rotulado (“gerado por máquina”, data, modelo) — nunca emite status. |
+| 6 | Publicações acadêmicas (dissertações, teses, artigos, relatórios GESTA) **não** viram condicionante estruturado. Vão no rodapé “Para saber mais” de cada página de barragem/empreendimento. O condicionante vem só de fonte oficial (licença, TAC, CAP, parecer). |
 
 ## Fase 1 — descoberta e espelho
 
@@ -91,7 +92,11 @@ Achados principais:
 descoberta (URL → órgão → método) escrita.
 
 **Pendente da descoberta:** PDFs da LP de Setúbal (36 cond.), Parecer IEF
-0026/2006, processo SIAM da UHE Irapé, TAC integral do MPF.
+0026/2006, processo SIAM da UHE Irapé, TAC integral do MPF, dissertação
+Zucarelli (UFMG), Lestingi USP (conexão fechada no download 23/09).
+Lestingi e GESTA baixados parcialmente — medições em
+[FONTES.md § Condicionantes](../06-fontes/FONTES.md#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads).
+`idNorma=45918` descartado (é o Decreto 47.383/2018).
 
 ## Fase 2 — banco (3 tabelas)
 
@@ -142,6 +147,7 @@ Cinco coisas (AGENTS §8), copiando o padrão de `/ambiental/copam`:
 | 3 | CSV do **filtrado** — separador `;`, BOM UTF-8 |
 | 4 | Filtro — barragem, tipo, status, órgão, período |
 | 5 | Ordenação por coluna |
+| + | Página de cada barragem/empreendimento fecha com rodapé “Para saber mais”: publicações acadêmicas (decisão 6), referência ABNT + hiperlink. |
 
 Regras de payload:
 
@@ -171,10 +177,14 @@ Após piloto verde, nesta ordem:
 - [ ] Irapé: licença localizada, texto extraído (OCR se preciso), condicionantes
       listadas, status honesto, links clicáveis ao documento.
 - [ ] Setúbal: idem.
-- [ ] Página no ar em dev com as cinco coisas.
-- [ ] `npm test` verde; `npx tsc --noEmit` limpo.
-- [ ] Dado ingerido sem CPF (script de varredura).
-- [ ] `python scripts/validar-documentacao.py` verde.
+- [x] Migration 0089 no Guara + seed de 7 documentos oficiais (23/09).
+- [x] Esqueleto da página `/ambiental/condicionantes` com as cinco coisas
+      (vazio honesto até a LP item a item) + rodapé “Para saber mais”.
+- [x] `npx tsc --noEmit` limpo; testes de `publicacoes-barragens` e navegação verdes.
+- [x] Dado ingerido sem CPF (script de varredura).
+- [x] `python scripts/validar-documentacao.py` verde.
+- [ ] `npm test` verde (pré-existente: `lib/noticias/portal.test.ts` categoria
+      “Ferramentas do Portal” fora do set do teste — não desta frente).
 
 ## Fora do escopo
 

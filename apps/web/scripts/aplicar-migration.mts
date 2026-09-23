@@ -27,7 +27,8 @@ if (!arquivo) {
   process.exit(1);
 }
 
-const envTexto = fs.readFileSync(new URL("../.env.local", import.meta.url), "utf8");
+const envLocal = new URL("../.env.local", import.meta.url);
+const envTexto = fs.existsSync(envLocal) ? fs.readFileSync(envLocal, "utf8") : "";
 const url =
   process.env.DATABASE_URL ||
   envTexto.match(/^DATABASE_URL=(.*)$/m)?.[1].trim().replace(/^["']|["']$/g, "");
