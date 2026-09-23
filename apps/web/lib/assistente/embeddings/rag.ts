@@ -30,6 +30,7 @@
 import { montarAcervo, type AcervoFonte } from "../acervo";
 import { verificarCitacao, rotuloVerificacao } from "../verificador-citacao";
 import { vetorizar, vetorizarLote, ollamaDisponivel, OllamaIndisponivel } from "./ollama";
+import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto } from "./remoto";
 import { similaridadeCosseno, similaridadeLexical } from "./similaridade";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { temChaveRemota } from "./provedores";
@@ -75,6 +76,23 @@ export function esquecerIndiceAcervo(): void {
   indiceEmMemoria = null;
 }
 
+/**
+ * Vetoriza UM texto: API remota (SiliconFlow) se `EMBED_API_KEY` existir,
+ * senão Ollama local. No Guara Starter o Ollama não cabe (256 MB de teto,
+ * medido 23/09) — lá só o caminho remoto funciona; no home-pc o Ollama
+ * continua de graça.
+ */
+async function vetorizarTexto(texto: string, timeoutMs?: number): Promise<number[]> {
+  if (temChaveEmbed()) return vetorizarRemoto(texto, { timeoutMs });
+  return vetorizar(texto, { timeoutMs });
+}
+
+/** Mesma escolha para lote (indexação do acervo). */
+async function vetorizarTextos(textos: string[], timeoutMs?: number): Promise<number[][]> {
+  if (temChaveEmbed()) return vetorizarLoteRemoto(textos, { timeoutMs });
+  return vetorizarLote(textos, { timeoutMs });
+}
+
 async function indexarAcervo(): Promise<IndiceAcervo> {
   if (indiceEmMemoria) return indiceEmMemoria;
   const fontes = montarAcervo();
@@ -82,9 +100,9 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
   const vetores: number[][] = [];
   for (let i = 0; i < textos.length; i += LOTE_EMBED) {
     const lote = textos.slice(i, i + LOTE_EMBED);
-    // `vetorizarLote` mantém a ORDEM do array — contrato do próprio Ollama
-    // (ver a docstring de `ollama.ts`); concatenar por lote preserva o índice.
-    vetores.push(...(await vetorizarLote(lote, { timeoutMs: TIMEOUT_INDEXACAO_MS })));
+    // ORDEM preservada por lote — contrato do Ollama e da API OpenAI-compat;
+    // concatenar por lote mantém o índice alinhado às fontes.
+    vetores.push(...(await vetorizarTextos(lote, TIMEOUT_INDEXACAO_MS)));
   }
   indiceEmMemoria = { fontes, vetores };
   return indiceEmMemoria;
@@ -131,9 +149,10 @@ export async function buscarNoAcervo(
   limiar?: number
 ): Promise<{ melhores: ResultadoBusca[]; abstem: boolean }> {
   const { indice, soLexical } = await indiceOuLexical();
-  // Só-lexical não chama `vetorizar`: sem Ollama não há embedding da pergunta,
-  // e `similaridadeCosseno` com vetores vazios seria ruído.
-  const vetorPergunta = soLexical ? [] : await vetorizar(pergunta);
+  // Só-lexical não chama `vetorizar`: sem provedor de embedding (Ollama ou
+  // API remota) não há embedding da pergunta, e `similaridadeCosseno` com
+  // vetores vazios seria ruído.
+  const vetorPergunta = soLexical ? [] : await vetorizarTexto(pergunta);
   const ranqueados: ResultadoBusca[] = indice.fontes
     .map((fonte, i) => {
       const cosseno = soLexical
@@ -209,8 +228,11 @@ export async function responderComRag(
   pergunta: string,
   opcoes: OpcoesRag = {}
 ): Promise<RespostaRag> {
-  // Sem chave remota, precisamos do Ollama local para geracao e embeddings.
-  if (!temChaveRemota() && !(await ollamaDisponivel())) {
+  // Sem chave de geração E sem embeddings remotos, precisamos do Ollama
+  // local (geração + vetorização). Com chave remota de geração mas sem
+  // Ollama nem `EMBED_API_KEY`, o índice degrada para lexical em vez de
+  // 503 (ramo de `indiceOuLexical`).
+  if (!temChaveRemota() && !temChaveEmbed() && !(await ollamaDisponivel())) {
     throw new OllamaIndisponivel("Ollama nao esta disponivel em http://172.18.176.1:11434");
   }
 

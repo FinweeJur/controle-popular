@@ -9,6 +9,11 @@
  * de qual esta ativo mora em `apps/web/data/ia-config.json` — estado de
  * maquina, ignorado pelo git, editavel pelo painel de edicao sem tocar no .env.
  *
+ * Fallback `AI_API_KEY`: quando NENHUMA variante existe mas `AI_API_KEY`
+ * esta preenchida (caso do Guara Cloud, medido 23/09/2026), a chave generica
+ * vale para o provedor deduzido de `AI_BASE_URL` (padrao Maritaca). Isto
+ * conserta o 503 do Seu Nono em producao sem espelhar chave no painel.
+ *
  * Todos os provedores sao compativeis com o formato OpenAI
  * (`POST /chat/completions`) e usam a variante flash/mais barata de cada
  * familia (deepseek-v4-flash, sabiazinho-4 e Ling-2.6-flash). Nenhum deles
@@ -86,7 +91,33 @@ export function salvarConfigIa(config: ConfigIa): void {
 }
 
 function chaveDoProvedor(id: IdProvedor): string {
-  return process.env[DEFINICOES[id].envKey] || "";
+  const especifica = (process.env[DEFINICOES[id].envKey] || "").trim();
+  if (especifica) return especifica;
+  // Fallback: quando NENHUMA variante existe, aceita a chave generica do
+  // ambiente (`AI_API_KEY`). E o caso do Guara Cloud: la so existe
+  // `AI_API_KEY` (chave Maritaca do chat das zonas), e as variantes
+  // `AI_API_KEY_*` do Seu Nono nunca foram setadas — sem isto o RAG caia
+  // em 503 (medido em 23/09/2026). O provedor e deduzido de `AI_BASE_URL`
+  // (padrao Maritaca, o que o Guara injeta hoje). O VALOR da chave nunca
+  // entra no codigo — so o NOME da env.
+  if (temAlgumaVariante()) return "";
+  if (id === idDoAmbienteGenerico()) return (process.env.AI_API_KEY || "").trim();
+  return "";
+}
+
+/** Alguma variante `AI_API_KEY_*` preenchida? */
+function temAlgumaVariante(): boolean {
+  return (Object.keys(DEFINICOES) as IdProvedor[]).some(
+    (id) => (process.env[DEFINICOES[id].envKey] || "").trim().length > 0
+  );
+}
+
+/** Qual provedor a chave generica `AI_API_KEY` representa, pela URL base. */
+function idDoAmbienteGenerico(): IdProvedor {
+  const base = (process.env.AI_BASE_URL || "").toLowerCase();
+  if (base.includes("deepseek")) return "deepseek";
+  if (base.includes("ling")) return "ling";
+  return "maritaca";
 }
 
 export function provedorDisponivel(id: IdProvedor): boolean {
@@ -111,7 +142,14 @@ export function listarProvedoresNaOrdem(): ProvedorIa[] {
 
 /** Alguma chave remota configurada? (decide entre API remota e Ollama local) */
 export function temChaveRemota(): boolean {
-  return provedorDisponivel("deepseek") || provedorDisponivel("maritaca") || provedorDisponivel("ling");
+  return (
+    provedorDisponivel("deepseek") ||
+    provedorDisponivel("maritaca") ||
+    provedorDisponivel("ling") ||
+    // chave generica do ambiente (fallback do Guara) — `chaveDoProvedor`
+    // e quem decide se ela vale para este provedor
+    ((process.env.AI_API_KEY || "").trim().length > 0 && !temAlgumaVariante())
+  );
 }
 
 /** Resumo para o painel de edicao — NUNCA devolve o valor das chaves. */
