@@ -142,6 +142,9 @@ Ordem recomendada (mantém o que já tem checkpoint):
 
 ## Fase B — preparar a ampliação (código, sem rodar)
 
+**Status (23–24/09/2026):** código entregue nesta sessão — ver
+[Execução B/C desta sessão](#execução-bc-desta-sessão-24092026).
+
 Pode ser feito **enquanto** a Fase A roda, desde que não derrube o processo
 de fundo nem misture staging.
 
@@ -186,6 +189,11 @@ de fundo nem misture staging.
 ## Fase C — executar as demais mapeadas
 
 **Pré-condição:** Fase A fechada + piloto da Fase B aprovado.
+
+**Divisão de filas (23/09):** SP + 25 capitais = handoff da outra IA
+([HANDOFF-23-09-PNCP-SP-CAPITAIS.md](../HANDOFF-23-09-PNCP-SP-CAPITAIS.md)).
+Esta sessão executa B e o **resto** de C (polos / MG fora das 6) — nunca a
+fila da outra IA. Um ETL PNCP por máquina.
 
 1. **Congelar a lista de entrada**
    - Snapshot versionado do manifesto (códigos IBGE 7 dígitos).
@@ -275,6 +283,27 @@ python scripts/validar-documentacao.py
 - Migrar banco (Fase 4 Guara) — não travar a coleta nele.
 - Deploy de expansão nacional sem as 6 principais fechadas.
 
+## Execução B/C desta sessão (24/09/2026)
+
+Ordem de serviço do dono: **B depois C, direto, sem perguntar; commit no fim.**
+
+| Passo | Artefato | O que faz |
+|---|---|---|
+| B1 | `etl/betim/etl/pncp/manifesto.py` | Lê `cidades-estrategicas.json`, exclui as 6 principais, marca `pronta` / `bloqueada-cnpj`, ordena MG → Sudeste → resto e polo antes de capital |
+| B2 | `etl/betim/etl/pncp/fila.py` | 1 cidade/vez (lock `.fila-pncp.lock`): contratos → licitações; pula cidade cujo checkpoint do IBGE está todo `ok` |
+| B3 | `etl/betim/etl/pncp/cobertura.py` | CSV `;` + BOM UTF-8 por IBGE a partir do manifesto + checkpoints |
+| B4 | `etl/betim/etl/pncp/preencher_cnpj.py` | Descobre `cnpj_prefeitura` no PNCP (esfera `M`, razão social de prefeitura/município) e grava em `municipios` |
+| B5 | `manifesto_test.py`, `checkpoint_test.py` | Namespace `{ibge}:…` e filtros do manifesto |
+| B6 | Este plano + FONTES + ESTADO | Medições datadas |
+| C1 | `etl/betim/dados/manifesto-pncp.csv` | Snapshot versionado da fila |
+| C2 | `preencher_cnpj` em lote | Destrava polos |
+| C3 | `fila --manifesto …` | Coleta só cidades `pronta` **fora** da fila B (SP/capitais da outra IA) |
+| C4 | `cobertura` + recontagem Guara | Números no banco |
+| C5 | `npm test` + `tsc` + commit pathspec + push | Publica o código |
+
+**Fora desta execução:** deploy Guara (cadência do dono), SP e as 25
+capitais do handoff, seeds de páginas além do PNCP.
+
 ## Decisões registradas
 
 1. **Ordem: 6 principais → depois as demais mapeadas** — decisão do dono
@@ -289,6 +318,8 @@ python scripts/validar-documentacao.py
 
 ## Origem / Histórico
 
+- 24/09/2026: Fase B implementada (manifesto, fila, cobertura, preencher
+  CNPJ, testes); Fase C iniciada nesta sessão (fora da fila B de SP).
 - 23/09/2026: plano escrito durante a coleta PNCP de Betim (checkpoint por
   página já em produção nesta máquina).
 - Reusa a Fase de cidades do

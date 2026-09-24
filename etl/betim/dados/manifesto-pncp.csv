@@ -1,0 +1,204 @@
+﻿ibge;nome;uf;regiao;tipo;status;cnpj_prefeitura;nota
+3103105;Araçuaí;MG;Sudeste;polo-interior;excluida-principal;;Fase A / 6 principais
+3104007;Araxá;MG;Sudeste;polo-interior;pronta;18140756000100;
+3105608;Barbacena;MG;Sudeste;polo-interior;pronta;17095043000109;
+3106705;Betim;MG;Sudeste;polo-interior;excluida-principal;18715391000196;Fase A / 6 principais
+3118601;Contagem;MG;Sudeste;polo-interior;pronta;18715508000131;
+3122003;Diamantina;MG;Sudeste;polo-interior;excluida-principal;;Fase A / 6 principais
+3122306;Divinópolis;MG;Sudeste;polo-interior;pronta;18291351000164;
+3127701;Governador Valadares;MG;Sudeste;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+3131002;Itinga;MG;Sudeste;polo-interior;excluida-principal;;Fase A / 6 principais
+3131307;Ipatinga;MG;Sudeste;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+3136702;Juiz de Fora;MG;Sudeste;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+3143302;Montes Claros;MG;Sudeste;polo-interior;pronta;22678874000135;
+3147907;Passos;MG;Sudeste;polo-interior;pronta;18241745000108;
+3148004;Patos de Minas;MG;Sudeste;polo-interior;pronta;18602011000107;
+3151800;Poços de Caldas;MG;Sudeste;polo-interior;pronta;18629840000183;
+3152501;Pouso Alegre;MG;Sudeste;polo-interior;pronta;18675983000121;
+3167202;Sete Lagoas;MG;Sudeste;polo-interior;pronta;24996969000122;
+3168606;Teófilo Otoni;MG;Sudeste;polo-interior;pronta;18404780000109;
+3170107;Uberaba;MG;Sudeste;polo-interior;pronta;18428839000190;
+3170206;Uberlândia;MG;Sudeste;polo-interior;pronta;18431312000620;
+3170701;Varginha;MG;Sudeste;polo-interior;pronta;19110162000100;
+3106200;Belo Horizonte;MG;Sudeste;capital;excluida-principal;18715383000140;Fase A / 6 principais
+3203205;Linhares;ES;Sudeste;polo-interior;pronta;27167410000188;
+3205002;Serra;ES;Sudeste;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+3301009;Campos dos Goytacazes;RJ;Sudeste;polo-interior;pronta;29116894000161;
+3301702;Duque de Caxias;RJ;Sudeste;polo-interior;pronta;29138328000150;
+3302403;Macaé;RJ;Sudeste;polo-interior;pronta;29115474000160;
+3303302;Niterói;RJ;Sudeste;polo-interior;pronta;28521748000159;
+3303401;Nova Friburgo;RJ;Sudeste;polo-interior;pronta;28606630000123;
+3303906;Petrópolis;RJ;Sudeste;polo-interior;pronta;29138344000143;
+3304904;São Gonçalo;RJ;Sudeste;polo-interior;pronta;28636579000100;
+3306305;Volta Redonda;RJ;Sudeste;polo-interior;pronta;32512501000143;
+3503208;Araraquara;SP;Sudeste;polo-interior;pronta;45276128000110;
+3506003;Bauru;SP;Sudeste;polo-interior;pronta;46137410000180;
+3509502;Campinas;SP;Sudeste;polo-interior;pronta;51885242000140;
+3510609;Carapicuíba;SP;Sudeste;polo-interior;delegada;44892693000140;delegada gemini (24/09)
+3513801;Diadema;SP;Sudeste;polo-interior;delegada;46523247000193;delegada gemini (24/09)
+3516200;Franca;SP;Sudeste;polo-interior;delegada;47970769000104;delegada gemini (24/09)
+3518800;Guarulhos;SP;Sudeste;polo-interior;delegada;46319000000150;delegada gemini (24/09)
+3525904;Jundiaí;SP;Sudeste;polo-interior;delegada;45780103000150;delegada gemini (24/09)
+3526902;Limeira;SP;Sudeste;polo-interior;delegada;45132495000140;delegada gemini (24/09)
+3529005;Marília;SP;Sudeste;polo-interior;delegada;44477909000100;delegada gemini (24/09)
+3529401;Mauá;SP;Sudeste;polo-interior;delegada;46522959000198;delegada gemini (24/09)
+3534401;Osasco;SP;Sudeste;polo-interior;delegada;46523171000104;delegada gemini (24/09)
+3538709;Piracicaba;SP;Sudeste;polo-interior;delegada;46341038000129;delegada gemini (24/09)
+3541406;Presidente Prudente;SP;Sudeste;polo-interior;delegada;55356653000108;delegada gemini (24/09)
+3543402;Ribeirão Preto;SP;Sudeste;polo-interior;delegada;56024581000156;delegada gemini (24/09)
+3547809;Santo André;SP;Sudeste;polo-interior;delegada;46522942000130;delegada gemini (24/09)
+3548500;Santos;SP;Sudeste;polo-interior;delegada;58200015000183;delegada gemini (24/09)
+3548708;São Bernardo do Campo;SP;Sudeste;polo-interior;delegada;46523239000147;delegada gemini (24/09)
+3548807;São Caetano do Sul;SP;Sudeste;polo-interior;delegada;59307595000175;delegada gemini (24/09)
+3549805;São José do Rio Preto;SP;Sudeste;polo-interior;delegada;46588950000180;delegada gemini (24/09)
+3549904;São José dos Campos;SP;Sudeste;polo-interior;delegada;46643466000106;delegada gemini (24/09)
+3552205;Sorocaba;SP;Sudeste;polo-interior;delegada;46634044000174;delegada gemini (24/09)
+3554102;Taubaté;SP;Sudeste;polo-interior;delegada;45176005000108;delegada gemini (24/09)
+3205309;Vitória;ES;Sudeste;capital;delegada;27142058000126;handoff SP+capitais (fila B)
+3304557;Rio de Janeiro;RJ;Sudeste;capital;delegada;42498733000148;handoff SP+capitais (fila B)
+3550308;São Paulo;SP;Sudeste;capital;excluida-principal;46395000000139;Fase A / 6 principais
+1100049;Cacoal;RO;Norte;polo-interior;pronta;04092714000128;
+1100122;Ji-Paraná;RO;Norte;polo-interior;pronta;04092672000125;
+1100304;Vilhena;RO;Norte;polo-interior;pronta;04092706000181;
+1200203;Cruzeiro do Sul;AC;Norte;polo-interior;pronta;04012548000102;
+1301902;Itacoatiara;AM;Norte;polo-interior;pronta;04241980000175;
+1302504;Manacapuru;AM;Norte;polo-interior;pronta;04274064000131;
+1303403;Parintins;AM;Norte;polo-interior;pronta;04329736000169;
+1304203;Tefé;AM;Norte;polo-interior;pronta;04426383000115;
+1500107;Abaetetuba;PA;Norte;polo-interior;pronta;05105127000199;
+1500602;Altamira;PA;Norte;polo-interior;pronta;05263116000137;
+1500800;Ananindeua;PA;Norte;polo-interior;pronta;05058441000168;
+1502103;Cametá;PA;Norte;polo-interior;pronta;05105283000150;
+1502400;Castanhal;PA;Norte;polo-interior;pronta;05121991000184;
+1503606;Itaituba;PA;Norte;polo-interior;pronta;05138730000177;
+1504208;Marabá;PA;Norte;polo-interior;pronta;05853163000130;
+1505502;Paragominas;PA;Norte;polo-interior;pronta;05193057000178;
+1506138;Redenção;PA;Norte;polo-interior;pronta;04144168000121;
+1506807;Santarém;PA;Norte;polo-interior;pronta;05182233000176;
+1508100;Tucuruí;PA;Norte;polo-interior;pronta;05251632000141;
+1600600;Santana;AP;Norte;polo-interior;pronta;23066640000108;
+1702109;Araguaína;TO;Norte;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+1709500;Gurupi;TO;Norte;polo-interior;pronta;01803618000152;
+2105302;Imperatriz;MA;Nordeste;polo-interior;pronta;06158455000116;
+2203909;Floriano;PI;Nordeste;polo-interior;pronta;06554067000154;
+2207702;Parnaíba;PI;Nordeste;polo-interior;pronta;06554430000131;
+2208007;Picos;PI;Nordeste;polo-interior;pronta;06553804000102;
+2304103;Crateús;CE;Nordeste;polo-interior;pronta;07982036000167;
+2304202;Crato;CE;Nordeste;polo-interior;pronta;07587975000107;
+2305506;Iguatu;CE;Nordeste;polo-interior;pronta;07810468000190;
+2307304;Juazeiro do Norte;CE;Nordeste;polo-interior;pronta;07974082000114;
+2311306;Quixadá;CE;Nordeste;polo-interior;pronta;23444748000189;
+2312908;Sobral;CE;Nordeste;polo-interior;pronta;07598634000137;
+2402006;Caicó;RN;Nordeste;polo-interior;pronta;08096570000139;
+2402600;Ceará-Mirim;RN;Nordeste;polo-interior;pronta;08004061000139;
+2403103;Currais Novos;RN;Nordeste;polo-interior;pronta;08109126000100;
+2407104;Macaíba;RN;Nordeste;polo-interior;pronta;08234148000100;
+2408003;Mossoró;RN;Nordeste;polo-interior;pronta;08348971000139;
+2409407;Pau dos Ferros;RN;Nordeste;polo-interior;pronta;08148421000176;
+2503704;Cajazeiras;PB;Nordeste;polo-interior;pronta;08923971000115;
+2504009;Campina Grande;PB;Nordeste;polo-interior;delegada;08993917000146;delegada gemini (24/09)
+2506301;Guarabira;PB;Nordeste;polo-interior;pronta;08785479000120;
+2510808;Patos;PB;Nordeste;polo-interior;pronta;09084815000170;
+2516201;Sousa;PB;Nordeste;polo-interior;pronta;08999674000153;
+2601102;Araripina;PE;Nordeste;polo-interior;pronta;11040854000118;
+2604106;Caruaru;PE;Nordeste;polo-interior;pronta;10091536000113;
+2606002;Garanhuns;PE;Nordeste;polo-interior;pronta;11303906000100;
+2609907;Ouricuri;PE;Nordeste;polo-interior;pronta;11040904000167;
+2610905;Pesqueira;PE;Nordeste;polo-interior;pronta;10264406000135;
+2611101;Petrolina;PE;Nordeste;polo-interior;delegada;10358190000177;delegada gemini (24/09)
+2613909;Serra Talhada;PE;Nordeste;polo-interior;pronta;10282945000105;
+2616407;Vitória de Santo Antão;PE;Nordeste;polo-interior;pronta;11049855000123;
+2700300;Arapiraca;AL;Nordeste;polo-interior;pronta;12198693000158;
+2702306;Coruripe;AL;Nordeste;polo-interior;pronta;12264230000147;
+2706307;Palmeira dos Índios;AL;Nordeste;polo-interior;pronta;12356879000198;
+2709301;União dos Palmares;AL;Nordeste;polo-interior;pronta;12332946000134;
+2802908;Itabaiana;SE;Nordeste;polo-interior;pronta;13104740000110;
+2900702;Alagoinhas;BA;Nordeste;polo-interior;pronta;13646005000138;
+2903201;Barreiras;BA;Nordeste;polo-interior;pronta;13654405000195;
+2905701;Camaçari;BA;Nordeste;polo-interior;pronta;14109763000180;
+2910800;Feira de Santana;BA;Nordeste;polo-interior;delegada;14043574000151;delegada gemini (24/09)
+2913606;Ilhéus;BA;Nordeste;polo-interior;pronta;13672597000162;
+2914802;Itabuna;BA;Nordeste;polo-interior;pronta;14147490000168;
+2918001;Jequié;BA;Nordeste;polo-interior;pronta;13894878000160;
+2918407;Juazeiro;BA;Nordeste;polo-interior;pronta;13915632000127;
+2919207;Lauro de Freitas;BA;Nordeste;polo-interior;pronta;13927819000140;
+2924009;Paulo Afonso;BA;Nordeste;polo-interior;pronta;14217327000124;
+2933307;Vitória da Conquista;BA;Nordeste;polo-interior;pronta;14239578000100;
+4101408;Apucarana;PR;Sul;polo-interior;pronta;75771253000168;
+4101804;Araucária;PR;Sul;polo-interior;pronta;76105535000199;
+4104303;Campo Mourão;PR;Sul;polo-interior;pronta;75904524000106;
+4104808;Cascavel;PR;Sul;polo-interior;pronta;76208867000107;
+4108304;Foz do Iguaçu;PR;Sul;polo-interior;pronta;76206606000140;
+4109401;Guarapuava;PR;Sul;polo-interior;pronta;76178037000176;
+4113700;Londrina;PR;Sul;polo-interior;delegada;75771477000170;delegada gemini (24/09)
+4115200;Maringá;PR;Sul;polo-interior;delegada;76282656000106;delegada gemini (24/09)
+4118402;Paranavaí;PR;Sul;polo-interior;pronta;76977768000181;
+4119905;Ponta Grossa;PR;Sul;polo-interior;pronta;76175884000187;
+4125506;São José dos Pinhais;PR;Sul;polo-interior;pronta;76105543000135;
+4127700;Toledo;PR;Sul;polo-interior;pronta;76205806000188;
+4128104;Umuarama;PR;Sul;polo-interior;pronta;76247378000156;
+4202008;Balneário Camboriú;SC;Sul;polo-interior;pronta;83102285000107;
+4202404;Blumenau;SC;Sul;polo-interior;pronta;83108357000115;
+4202909;Brusque;SC;Sul;polo-interior;pronta;83102343000194;
+4204202;Chapecó;SC;Sul;polo-interior;pronta;83021808000182;
+4204608;Criciúma;SC;Sul;polo-interior;pronta;82916818000113;
+4208203;Itajaí;SC;Sul;polo-interior;pronta;83102277000152;
+4208906;Jaraguá do Sul;SC;Sul;polo-interior;pronta;83102459000123;
+4209102;Joinville;SC;Sul;polo-interior;delegada;83169623000110;delegada gemini (24/09)
+4209300;Lages;SC;Sul;polo-interior;pronta;82777301000190;
+4211900;Palhoça;SC;Sul;polo-interior;pronta;82892316000108;
+4216602;São José;SC;Sul;polo-interior;pronta;82892274000105;
+4218707;Tubarão;SC;Sul;polo-interior;pronta;82928656000133;
+4304606;Canoas;RS;Sul;polo-interior;pronta;88577416000118;
+4305108;Caxias do Sul;RS;Sul;polo-interior;delegada;88830609000139;delegada gemini (24/09)
+4307005;Erechim;RS;Sul;polo-interior;pronta;87613477000120;
+4313409;Novo Hamburgo;RS;Sul;polo-interior;pronta;88254875000160;
+4314100;Passo Fundo;RS;Sul;polo-interior;pronta;87612537000190;
+4314407;Pelotas;RS;Sul;polo-interior;delegada;87455531000157;delegada gemini (24/09)
+4315602;Rio Grande;RS;Sul;polo-interior;bloqueada-cnpj;;cnpj_prefeitura ausente no catalogo
+4316808;Santa Cruz do Sul;RS;Sul;polo-interior;pronta;95440517000108;
+4316907;Santa Maria;RS;Sul;polo-interior;pronta;88488366000100;
+4318705;São Leopoldo;RS;Sul;polo-interior;pronta;89814693000160;
+5003207;Corumbá;MS;Centro-Oeste;polo-interior;pronta;03330461000110;
+5003702;Dourados;MS;Centro-Oeste;polo-interior;pronta;03155926000144;
+5008305;Três Lagoas;MS;Centro-Oeste;polo-interior;pronta;03184041000173;
+5102504;Cáceres;MT;Centro-Oeste;polo-interior;pronta;03214145000183;
+5105259;Lucas do Rio Verde;MT;Centro-Oeste;polo-interior;pronta;24772246000140;
+5107602;Rondonópolis;MT;Centro-Oeste;polo-interior;pronta;03347101000121;
+5107909;Sinop;MT;Centro-Oeste;polo-interior;pronta;15024003000132;
+5107958;Tangará da Serra;MT;Centro-Oeste;polo-interior;pronta;03788239000166;
+5108402;Várzea Grande;MT;Centro-Oeste;polo-interior;pronta;03507548000110;
+5200258;Águas Lindas de Goiás;GO;Centro-Oeste;polo-interior;pronta;01616520000196;
+5201108;Anápolis;GO;Centro-Oeste;polo-interior;delegada;01067479000146;delegada gemini (24/09)
+5201405;Aparecida de Goiânia;GO;Centro-Oeste;polo-interior;delegada;01005727000124;delegada gemini (24/09)
+5205109;Catalão;GO;Centro-Oeste;polo-interior;pronta;01505643000150;
+5208004;Formosa;GO;Centro-Oeste;polo-interior;pronta;01738780000134;
+5211503;Itumbiara;GO;Centro-Oeste;polo-interior;pronta;02204196000161;
+5211909;Jataí;GO;Centro-Oeste;polo-interior;pronta;01165729000180;
+5212501;Luziânia;GO;Centro-Oeste;polo-interior;pronta;01169416000109;
+5213103;Mineiros;GO;Centro-Oeste;polo-interior;pronta;02316537000190;
+5218805;Rio Verde;GO;Centro-Oeste;polo-interior;pronta;02056729000105;
+5221858;Valparaíso de Goiás;GO;Centro-Oeste;polo-interior;pronta;01616319000109;
+1100205;Porto Velho;RO;Norte;capital;delegada;04273099000101;handoff SP+capitais (fila B)
+1200401;Rio Branco;AC;Norte;capital;delegada;04034484000140;handoff SP+capitais (fila B)
+1302603;Manaus;AM;Norte;capital;delegada;04312677000112;handoff SP+capitais (fila B)
+1400100;Boa Vista;RR;Norte;capital;delegada;05943030000130;handoff SP+capitais (fila B)
+1501402;Belém;PA;Norte;capital;delegada;05055009000113;handoff SP+capitais (fila B)
+1600303;Macapá;AP;Norte;capital;delegada;05995766000180;handoff SP+capitais (fila B)
+1721000;Palmas;TO;Norte;capital;delegada;24851511000185;handoff SP+capitais (fila B)
+2111300;São Luís;MA;Nordeste;capital;delegada;06307102000130;handoff SP+capitais (fila B)
+2211001;Teresina;PI;Nordeste;capital;delegada;06554869000150;handoff SP+capitais (fila B)
+2304400;Fortaleza;CE;Nordeste;capital;delegada;07954605000160;handoff SP+capitais (fila B)
+2408102;Natal;RN;Nordeste;capital;delegada;08241747000143;handoff SP+capitais (fila B)
+2507507;João Pessoa;PB;Nordeste;capital;delegada;08778326000134;handoff SP+capitais (fila B)
+2611606;Recife;PE;Nordeste;capital;delegada;10565000000192;handoff SP+capitais (fila B)
+2704302;Maceió;AL;Nordeste;capital;delegada;12200135000180;handoff SP+capitais (fila B)
+2800308;Aracaju;SE;Nordeste;capital;delegada;13128780000152;handoff SP+capitais (fila B)
+2927408;Salvador;BA;Nordeste;capital;delegada;13927801000149;handoff SP+capitais (fila B)
+4106902;Curitiba;PR;Sul;capital;delegada;76417005000186;handoff SP+capitais (fila B)
+4205407;Florianópolis;SC;Sul;capital;delegada;82892508000190;handoff SP+capitais (fila B)
+4314902;Porto Alegre;RS;Sul;capital;delegada;92963560000160;handoff SP+capitais (fila B)
+5002704;Campo Grande;MS;Centro-Oeste;capital;delegada;03501509000106;handoff SP+capitais (fila B)
+5103403;Cuiabá;MT;Centro-Oeste;capital;delegada;03507530000194;handoff SP+capitais (fila B)
+5208707;Goiânia;GO;Centro-Oeste;capital;delegada;01612092000123;handoff SP+capitais (fila B)
+5300108;Brasília;DF;Centro-Oeste;capital;delegada;00394601000100;handoff SP+capitais (fila B)

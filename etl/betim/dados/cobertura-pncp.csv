@@ -1,0 +1,204 @@
+﻿ibge;nome;uf;tipo;status;cnpj_prefeitura;contratos_total;contratos_ok;licitacoes_total;licitacoes_ok;cidade_completa;ultimo_erro;atualizado_em
+3103105;Araçuaí;MG;polo-interior;excluida-principal;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3104007;Araxá;MG;polo-interior;pronta;18140756000100;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3105608;Barbacena;MG;polo-interior;pronta;17095043000109;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3106705;Betim;MG;polo-interior;excluida-principal;18715391000196;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3118601;Contagem;MG;polo-interior;pronta;18715508000131;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3122003;Diamantina;MG;polo-interior;excluida-principal;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3122306;Divinópolis;MG;polo-interior;pronta;18291351000164;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3127701;Governador Valadares;MG;polo-interior;pronta;20622890000180;6;6;42;42;sim;;2026-09-24T13:09:29+00:00
+3131002;Itinga;MG;polo-interior;excluida-principal;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3131307;Ipatinga;MG;polo-interior;pronta;19876424000142;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3136702;Juiz de Fora;MG;polo-interior;pronta;18338178000102;6;6;44;44;sim;;2026-09-24T13:09:29+00:00
+3143302;Montes Claros;MG;polo-interior;pronta;22678874000135;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3147907;Passos;MG;polo-interior;pronta;18241745000108;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3148004;Patos de Minas;MG;polo-interior;pronta;18602011000107;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3151800;Poços de Caldas;MG;polo-interior;pronta;18629840000183;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3152501;Pouso Alegre;MG;polo-interior;pronta;18675983000121;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3167202;Sete Lagoas;MG;polo-interior;pronta;24996969000122;6;6;78;78;sim;;2026-09-24T13:09:29+00:00
+3168606;Teófilo Otoni;MG;polo-interior;pronta;18404780000109;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3170107;Uberaba;MG;polo-interior;pronta;18428839000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3170206;Uberlândia;MG;polo-interior;pronta;18431312000620;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3170701;Varginha;MG;polo-interior;pronta;19110162000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3106200;Belo Horizonte;MG;capital;excluida-principal;18715383000140;36;36;78;78;sim;;2026-09-24T13:09:29+00:00
+3203205;Linhares;ES;polo-interior;pronta;27167410000188;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3205002;Serra;ES;polo-interior;bloqueada-cnpj;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3301009;Campos dos Goytacazes;RJ;polo-interior;pronta;29116894000161;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3301702;Duque de Caxias;RJ;polo-interior;pronta;29138328000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3302403;Macaé;RJ;polo-interior;pronta;29115474000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3303302;Niterói;RJ;polo-interior;pronta;28521748000159;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3303401;Nova Friburgo;RJ;polo-interior;pronta;28606630000123;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3303906;Petrópolis;RJ;polo-interior;pronta;29138344000143;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3304904;São Gonçalo;RJ;polo-interior;pronta;28636579000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3306305;Volta Redonda;RJ;polo-interior;pronta;32512501000143;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3503208;Araraquara;SP;polo-interior;pronta;45276128000110;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3506003;Bauru;SP;polo-interior;pronta;46137410000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3509502;Campinas;SP;polo-interior;pronta;51885242000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3510609;Carapicuíba;SP;polo-interior;pronta;44892693000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3513801;Diadema;SP;polo-interior;pronta;46523247000193;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3516200;Franca;SP;polo-interior;pronta;47970769000104;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3518800;Guarulhos;SP;polo-interior;pronta;46319000000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3525904;Jundiaí;SP;polo-interior;pronta;45780103000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3526902;Limeira;SP;polo-interior;pronta;45132495000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3529005;Marília;SP;polo-interior;pronta;44477909000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3529401;Mauá;SP;polo-interior;pronta;46522959000198;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3534401;Osasco;SP;polo-interior;pronta;46523171000104;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3538709;Piracicaba;SP;polo-interior;pronta;46341038000129;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3541406;Presidente Prudente;SP;polo-interior;pronta;55356653000108;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3543402;Ribeirão Preto;SP;polo-interior;pronta;56024581000156;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3547809;Santo André;SP;polo-interior;pronta;46522942000130;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3548500;Santos;SP;polo-interior;pronta;58200015000183;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3548708;São Bernardo do Campo;SP;polo-interior;pronta;46523239000147;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3548807;São Caetano do Sul;SP;polo-interior;pronta;59307595000175;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3549805;São José do Rio Preto;SP;polo-interior;pronta;46588950000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3549904;São José dos Campos;SP;polo-interior;pronta;46643466000106;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3552205;Sorocaba;SP;polo-interior;pronta;46634044000174;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3554102;Taubaté;SP;polo-interior;pronta;45176005000108;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3205309;Vitória;ES;capital;delegada;27142058000126;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3304557;Rio de Janeiro;RJ;capital;delegada;42498733000148;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+3550308;São Paulo;SP;capital;excluida-principal;46395000000139;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1100049;Cacoal;RO;polo-interior;pronta;04092714000128;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1100122;Ji-Paraná;RO;polo-interior;pronta;04092672000125;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1100304;Vilhena;RO;polo-interior;pronta;04092706000181;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1200203;Cruzeiro do Sul;AC;polo-interior;pronta;04012548000102;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1301902;Itacoatiara;AM;polo-interior;pronta;04241980000175;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1302504;Manacapuru;AM;polo-interior;pronta;04274064000131;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1303403;Parintins;AM;polo-interior;pronta;04329736000169;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1304203;Tefé;AM;polo-interior;pronta;04426383000115;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1500107;Abaetetuba;PA;polo-interior;pronta;05105127000199;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1500602;Altamira;PA;polo-interior;pronta;05263116000137;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1500800;Ananindeua;PA;polo-interior;pronta;05058441000168;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1502103;Cametá;PA;polo-interior;pronta;05105283000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1502400;Castanhal;PA;polo-interior;pronta;05121991000184;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1503606;Itaituba;PA;polo-interior;pronta;05138730000177;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1504208;Marabá;PA;polo-interior;pronta;05853163000130;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1505502;Paragominas;PA;polo-interior;pronta;05193057000178;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1506138;Redenção;PA;polo-interior;pronta;04144168000121;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1506807;Santarém;PA;polo-interior;pronta;05182233000176;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1508100;Tucuruí;PA;polo-interior;pronta;05251632000141;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1600600;Santana;AP;polo-interior;pronta;23066640000108;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1702109;Araguaína;TO;polo-interior;bloqueada-cnpj;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1709500;Gurupi;TO;polo-interior;pronta;01803618000152;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2105302;Imperatriz;MA;polo-interior;pronta;06158455000116;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2203909;Floriano;PI;polo-interior;pronta;06554067000154;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2207702;Parnaíba;PI;polo-interior;pronta;06554430000131;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2208007;Picos;PI;polo-interior;pronta;06553804000102;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2304103;Crateús;CE;polo-interior;pronta;07982036000167;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2304202;Crato;CE;polo-interior;pronta;07587975000107;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2305506;Iguatu;CE;polo-interior;pronta;07810468000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2307304;Juazeiro do Norte;CE;polo-interior;pronta;07974082000114;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2311306;Quixadá;CE;polo-interior;pronta;23444748000189;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2312908;Sobral;CE;polo-interior;pronta;07598634000137;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2402006;Caicó;RN;polo-interior;pronta;08096570000139;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2402600;Ceará-Mirim;RN;polo-interior;pronta;08004061000139;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2403103;Currais Novos;RN;polo-interior;pronta;08109126000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2407104;Macaíba;RN;polo-interior;pronta;08234148000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2408003;Mossoró;RN;polo-interior;pronta;08348971000139;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2409407;Pau dos Ferros;RN;polo-interior;pronta;08148421000176;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2503704;Cajazeiras;PB;polo-interior;pronta;08923971000115;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2504009;Campina Grande;PB;polo-interior;pronta;08993917000146;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2506301;Guarabira;PB;polo-interior;pronta;08785479000120;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2510808;Patos;PB;polo-interior;pronta;09084815000170;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2516201;Sousa;PB;polo-interior;pronta;08999674000153;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2601102;Araripina;PE;polo-interior;pronta;11040854000118;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2604106;Caruaru;PE;polo-interior;pronta;10091536000113;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2606002;Garanhuns;PE;polo-interior;pronta;11303906000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2609907;Ouricuri;PE;polo-interior;pronta;11040904000167;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2610905;Pesqueira;PE;polo-interior;pronta;10264406000135;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2611101;Petrolina;PE;polo-interior;pronta;10358190000177;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2613909;Serra Talhada;PE;polo-interior;pronta;10282945000105;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2616407;Vitória de Santo Antão;PE;polo-interior;pronta;11049855000123;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2700300;Arapiraca;AL;polo-interior;pronta;12198693000158;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2702306;Coruripe;AL;polo-interior;pronta;12264230000147;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2706307;Palmeira dos Índios;AL;polo-interior;pronta;12356879000198;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2709301;União dos Palmares;AL;polo-interior;pronta;12332946000134;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2802908;Itabaiana;SE;polo-interior;pronta;13104740000110;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2900702;Alagoinhas;BA;polo-interior;pronta;13646005000138;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2903201;Barreiras;BA;polo-interior;pronta;13654405000195;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2905701;Camaçari;BA;polo-interior;pronta;14109763000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2910800;Feira de Santana;BA;polo-interior;pronta;14043574000151;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2913606;Ilhéus;BA;polo-interior;pronta;13672597000162;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2914802;Itabuna;BA;polo-interior;pronta;14147490000168;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2918001;Jequié;BA;polo-interior;pronta;13894878000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2918407;Juazeiro;BA;polo-interior;pronta;13915632000127;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2919207;Lauro de Freitas;BA;polo-interior;pronta;13927819000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2924009;Paulo Afonso;BA;polo-interior;pronta;14217327000124;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2933307;Vitória da Conquista;BA;polo-interior;pronta;14239578000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4101408;Apucarana;PR;polo-interior;pronta;75771253000168;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4101804;Araucária;PR;polo-interior;pronta;76105535000199;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4104303;Campo Mourão;PR;polo-interior;pronta;75904524000106;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4104808;Cascavel;PR;polo-interior;pronta;76208867000107;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4108304;Foz do Iguaçu;PR;polo-interior;pronta;76206606000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4109401;Guarapuava;PR;polo-interior;pronta;76178037000176;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4113700;Londrina;PR;polo-interior;pronta;75771477000170;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4115200;Maringá;PR;polo-interior;pronta;76282656000106;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4118402;Paranavaí;PR;polo-interior;pronta;76977768000181;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4119905;Ponta Grossa;PR;polo-interior;pronta;76175884000187;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4125506;São José dos Pinhais;PR;polo-interior;pronta;76105543000135;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4127700;Toledo;PR;polo-interior;pronta;76205806000188;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4128104;Umuarama;PR;polo-interior;pronta;76247378000156;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4202008;Balneário Camboriú;SC;polo-interior;pronta;83102285000107;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4202404;Blumenau;SC;polo-interior;pronta;83108357000115;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4202909;Brusque;SC;polo-interior;pronta;83102343000194;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4204202;Chapecó;SC;polo-interior;pronta;83021808000182;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4204608;Criciúma;SC;polo-interior;pronta;82916818000113;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4208203;Itajaí;SC;polo-interior;pronta;83102277000152;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4208906;Jaraguá do Sul;SC;polo-interior;pronta;83102459000123;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4209102;Joinville;SC;polo-interior;pronta;83169623000110;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4209300;Lages;SC;polo-interior;pronta;82777301000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4211900;Palhoça;SC;polo-interior;pronta;82892316000108;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4216602;São José;SC;polo-interior;pronta;82892274000105;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4218707;Tubarão;SC;polo-interior;pronta;82928656000133;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4304606;Canoas;RS;polo-interior;pronta;88577416000118;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4305108;Caxias do Sul;RS;polo-interior;pronta;88830609000139;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4307005;Erechim;RS;polo-interior;pronta;87613477000120;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4313409;Novo Hamburgo;RS;polo-interior;pronta;88254875000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4314100;Passo Fundo;RS;polo-interior;pronta;87612537000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4314407;Pelotas;RS;polo-interior;pronta;87455531000157;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4315602;Rio Grande;RS;polo-interior;bloqueada-cnpj;;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4316808;Santa Cruz do Sul;RS;polo-interior;pronta;95440517000108;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4316907;Santa Maria;RS;polo-interior;pronta;88488366000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4318705;São Leopoldo;RS;polo-interior;pronta;89814693000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5003207;Corumbá;MS;polo-interior;pronta;03330461000110;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5003702;Dourados;MS;polo-interior;pronta;03155926000144;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5008305;Três Lagoas;MS;polo-interior;pronta;03184041000173;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5102504;Cáceres;MT;polo-interior;pronta;03214145000183;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5105259;Lucas do Rio Verde;MT;polo-interior;pronta;24772246000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5107602;Rondonópolis;MT;polo-interior;pronta;03347101000121;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5107909;Sinop;MT;polo-interior;pronta;15024003000132;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5107958;Tangará da Serra;MT;polo-interior;pronta;03788239000166;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5108402;Várzea Grande;MT;polo-interior;pronta;03507548000110;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5200258;Águas Lindas de Goiás;GO;polo-interior;pronta;01616520000196;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5201108;Anápolis;GO;polo-interior;pronta;01067479000146;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5201405;Aparecida de Goiânia;GO;polo-interior;pronta;01005727000124;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5205109;Catalão;GO;polo-interior;pronta;01505643000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5208004;Formosa;GO;polo-interior;pronta;01738780000134;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5211503;Itumbiara;GO;polo-interior;pronta;02204196000161;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5211909;Jataí;GO;polo-interior;pronta;01165729000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5212501;Luziânia;GO;polo-interior;pronta;01169416000109;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5213103;Mineiros;GO;polo-interior;pronta;02316537000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5218805;Rio Verde;GO;polo-interior;pronta;02056729000105;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5221858;Valparaíso de Goiás;GO;polo-interior;pronta;01616319000109;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1100205;Porto Velho;RO;capital;delegada;04273099000101;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1200401;Rio Branco;AC;capital;delegada;04034484000140;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1302603;Manaus;AM;capital;delegada;04312677000112;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1400100;Boa Vista;RR;capital;delegada;05943030000130;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1501402;Belém;PA;capital;delegada;05055009000113;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1600303;Macapá;AP;capital;delegada;05995766000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+1721000;Palmas;TO;capital;delegada;24851511000185;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2111300;São Luís;MA;capital;delegada;06307102000130;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2211001;Teresina;PI;capital;delegada;06554869000150;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2304400;Fortaleza;CE;capital;delegada;07954605000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2408102;Natal;RN;capital;delegada;08241747000143;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2507507;João Pessoa;PB;capital;delegada;08778326000134;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2611606;Recife;PE;capital;delegada;10565000000192;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2704302;Maceió;AL;capital;delegada;12200135000180;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2800308;Aracaju;SE;capital;delegada;13128780000152;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+2927408;Salvador;BA;capital;delegada;13927801000149;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4106902;Curitiba;PR;capital;delegada;76417005000186;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4205407;Florianópolis;SC;capital;delegada;82892508000190;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+4314902;Porto Alegre;RS;capital;delegada;92963560000160;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5002704;Campo Grande;MS;capital;delegada;03501509000106;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5103403;Cuiabá;MT;capital;delegada;03507530000194;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5208707;Goiânia;GO;capital;delegada;01612092000123;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
+5300108;Brasília;DF;capital;delegada;00394601000100;0;0;0;0;nao;;2026-09-24T13:09:29+00:00
