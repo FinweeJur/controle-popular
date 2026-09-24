@@ -8,10 +8,7 @@
 > **Relacionados:** [PLANO-CONDICIONANTES-AMBIENTAIS.md](PLANO-CONDICIONANTES-AMBIENTAIS.md), [PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md](PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md)  
 > **Palavras-chave:** pos-deploy, guara, migracao, sigma, condicionantes, topnav, shield  
 > **Worktree:** `.claude/worktrees/cp-bots-lab` (branch `cp-bots-lab`)  
-> **Main na hora:** `30ffccae` (sessão 23/09 publicada); plano commitado `5911536d`  
-> **Leitura estimada:** 6 min  
-> **Palavras-chave:** agente, pos-deploy, guara, migracao, sigma, condicionantes, topnav, shield  
-> **Relacionados:** [PLANO-CONDICIONANTES-AMBIENTAIS.md](PLANO-CONDICIONANTES-AMBIENTAIS.md), [PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md](PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md)
+> **Main na hora:** `30ffccae` (sessão 23/09 publicada); plano commitado `5911536d`
 
 ## Sumário
 
