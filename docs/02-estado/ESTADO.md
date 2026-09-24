@@ -113,6 +113,7 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 | B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
+| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | ⛔ | aguarda ordem do dono; **Fase 0 (medição) pode correr junto**; [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 
 ### Bloco C — ação externa do dono
 

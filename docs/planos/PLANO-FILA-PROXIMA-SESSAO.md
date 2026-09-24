@@ -85,6 +85,7 @@ Correção (dono, 5 minutos):
 | 7 | Laboratório: brincar com dados (dither-charts + dock + janelas + Seu Nonô) | 🔴 grande | agente, em fases | ~4 semanas |
 | 8 | Remuneração de servidores + donos/conselheiros/sócios de empresas (novas APIs) | 🟡 médio | agente, por frente | 1–2 semanas |
 | 9 | Mapeamento amplo de APIs (Brasil, LatAm, ONU) | 🟢 fácil | agente | 1–2 dias |
+| 10 | Globo 3D: cavas de mineração — Fase 0 (sondagem: Copernicus, Monitor MapBiomas, licenças de modelo) | 🟡 médio | agente | 1–2 dias |
 
 Ordem sugerida: o trivial primeiro — destrava a leitura do resto.
 O Lab fica por último: é a maior peça, e também o maior ganho.
@@ -240,7 +241,31 @@ pausa entre chamadas, e varredura de dado pessoal antes de commit (AGENTS § 11)
 Critério de pronto: `MAPEAMENTO-FONTES-AMPLAS.md` criado com pelo menos
 20 fontes sondadas (URL e status medido), priorizadas por impacto social.
 
+### 10 — Globo 3D: cavas de mineração — Fase 0 (sondagem)
+
+Plano completo: [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md)
+(item **B4** da [fila do ESTADO.md](../02-estado/ESTADO.md#fila-viva);
+pedido do dono em 24/09). Objetivo: achar mineração sem cadastro ANM no
+globo 3D, com satélite e modelos rodando **locais** (Chinese-CLIP +
+Qwen2.5-VL; nada de API de nuvem — decisão do dono 24/09).
+
+A Fase 0 é só medição e não disputa deploy — cabe numa sessão:
+
+| # | Medir | Saída |
+|---|---|---|
+| M1 | Conta Copernicus CDSE + 1 cena Sentinel-2 de MG | cadastro do dono (5 min) + cena baixada |
+| M2 | Monitor da Mineração (MapBiomas): shapefile e atributos | decisão anotada no FONTES |
+| M3 | Licença de cada modelo no card do Hugging Face | linha no FONTES |
+| M4 | Throughput de embedding na RTX 3050 (crops/s) | número com data |
+| M5 | Cache de imagem cabe no disco (estimativa 15 GB de 65,7) | path fora do git |
+| M6 | Termos da Esri: sem bulk download | regra escrita |
+| M7 | SIGMINE nacional: colunas de fase e tamanho | número com data |
+
+Critério de pronto: tabela M1–M7 preenchida no plano, com data.
+Depois: gate G0 (MapBiomas baseline?) e Fase 1 (calibração em MG).
+
 ## Origem
 
 Pedido do dono em 19/09 à noite: resgatar pendências, ranquear por
-dificuldade e documentar para as próximas sessões.
+dificuldade e documentar para as próximas sessões. Item 10 acrescentado
+em 24/09/2026 (sessão `/cp`, pedido do globo 3D).
