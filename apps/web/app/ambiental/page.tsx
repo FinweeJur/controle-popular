@@ -18,6 +18,7 @@ import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
+import { obterEstatisticasCar } from "@/lib/ambiental/car";
 
 /**
  * Home da zona /ambiental.
@@ -58,8 +59,19 @@ export default async function AmbientalHome() {
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
   const { resumo: resumoEstudos } = lerEstudos();
   const sirenejud = carregarSirenejudMg();
+  const estatisticasCar = obterEstatisticasCar();
 
   const BLOCOS = [
+    {
+      titulo: "Cadastro Ambiental Rural (CAR / IEF MG)",
+      linha: `${formatNumberBR(estatisticasCar.totalImoveis)} imóveis nas 14 URFBios — tempo médio de espera de ${formatNumberBR(estatisticasCar.tempoMedioAnaliseDias)} dias`,
+      texto:
+        "O raio-x da fila de análise do IEF/MG: 76,9% dos cadastros represados, divisão por 14 polos regionais, perfil por porte (módulos fiscais), setores econômicos e busca com links oficiais para SICAR e CAR 2.0.",
+      fase: "NOVO",
+      href: "/ambiental/car",
+      pronta: true,
+      linkTexto: "Consultar acervo do CAR →",
+    },
     {
       titulo: "Coleção Nossos: Rios, Serras, Animais, Territórios e Gente",
       linha: "5 frentes integradas: rios, serras, fauna silvestre, territórios tradicionais e impacto humano",
