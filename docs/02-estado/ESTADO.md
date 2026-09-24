@@ -94,9 +94,13 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | 🚧 | banco Guara já enche; falta apontar a app e largar a Neon |
 
-**Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
-28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
-6.2.1 (fix em 7.5.x). `npm audit fix` aplicado; sobem os transitivos.
+**Nota A3:** scan `guara services vulnerabilities` (19/09 e 23/09) achou
+CRITICAL/HIGH majoritariamente na **imagem base** (`node:*-alpine`:
+OpenSSL + npm embutido), não no `package-lock` do app — `npm audit
+--omit=dev` em 24/09: **0 falhas de produção**. `Dockerfile` corrigido
+24/09 (Node 22 + `apk upgrade` + runner sem npm); falta **deploy da
+janela** e rescan. Plano:
+[`PLANO-SEGURANCA-IMAGEM-GUARA.md`](../planos/PLANO-SEGURANCA-IMAGEM-GUARA.md).
 `guara security findings` está com bug no CLI — use `services vulnerabilities`.
 
 **Nota A4:** o Postgres do Guara tem 1 GiB incluso (2 GiB máximo), snapshot

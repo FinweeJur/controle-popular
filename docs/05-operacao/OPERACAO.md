@@ -68,9 +68,27 @@ O plano Starter paga build por minutos: um build do portal gasta
   sem estourar.
 
 ### 1. Estrutura do Deploy
-- **Dockerfile**: build multi-etapa em Node 22 Alpine, configurado para monorepo.
+- **Dockerfile**: build multi-etapa em **Node 22 Alpine** (medido 24/09 —
+  estava `node:20-alpine` no código enquanto a doc dizia 22; alinhado),
+  `apk upgrade` em todo estágio e **sem npm no runner** (CMD = `node server.js`).
+  Plano: [`PLANO-SEGURANCA-IMAGEM-GUARA.md`](../planos/PLANO-SEGURANCA-IMAGEM-GUARA.md).
 - **Standalone**: `apps/web/next.config.ts` ativa `output: 'standalone'` em builds Docker/Node.
 - **Serviço Guara**: `controle-popular-web-0b4895` na região `br-gru`.
+
+### 1b. Re-scan de segurança (Trivy)
+
+Só depois de um **deploy de imagem nova** (mudança de `Dockerfile`,
+dependência ou código que afete o container). Não gasta cota à toa.
+
+```bash
+guara services vulnerabilities -s controle-popular-web-0b4895
+npx tsx scripts/agent-tools/guara-shield-bot.mts --once
+```
+
+`guara security findings` está quebrado no CLI 0.3.0 — o scan válido é
+`services vulnerabilities` (Trivy). Relatório do bot:
+`docs/relatorios-automacao/guara-shield-relatorio.json`.
+
 
 ### 2. Automação e CI/CD
 - O workflow `.github/workflows/guara-deploy.yml` roda em todo push na branch `main`.

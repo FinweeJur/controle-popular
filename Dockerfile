@@ -1,8 +1,17 @@
 # syntax=docker/dockerfile:1
+#
+# Segurança da imagem (PLANO-SEGURANCA-IMAGEM-GUARA, 24/09/2026):
+# - Base Node 22 Alpine (alinha com OPERACAO §1 — o doc já dizia 22).
+# - `apk upgrade` em cada estágio: corta OpenSSL/`libssl3` desatualizado
+#   que o Trivy marcou como HIGH no runtime.
+# - Estágio runner SEM npm/yarn/corepack: o CMD é só `node server.js`.
+#   O npm embutido da base era a fonte de tar/minimatch/pacote/sigstore
+#   no scan — bibliotecas que o portal não usa em runtime.
+# Rescan pós-deploy: `guara services vulnerabilities -s <service>`.
 
 # ---- Estágio 1: Dependências ----
-FROM node:20-alpine AS deps
-RUN apk add --no-cache libc6-compat
+FROM node:22-alpine AS deps
+RUN apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copia manifestos de pacote
@@ -12,8 +21,8 @@ COPY apps/web/package.json ./apps/web/
 RUN npm ci
 
 # ---- Estágio 2: Build ----
-FROM node:20-alpine AS builder
-RUN apk add --no-cache libc6-compat
+FROM node:22-alpine AS builder
+RUN apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -25,9 +34,21 @@ COPY --from=deps /app/node_modules ./node_modules
 
 RUN npm run build -w @cp/web
 
-# ---- Estágio 3: Runner ----
-FROM node:20-alpine AS runner
-RUN apk add --no-cache libc6-compat
+# ---- Estágio 3: Runner (imagem final) ----
+FROM node:22-alpine AS runner
+# Atualiza pacotes de SO (OpenSSL etc.) e remove o package manager da base:
+# o servidor standalone não invoca npm. Some do Trivy tar/pacote/sigstore/
+# minimatch/glob que vinham do npm embutido no node:*-alpine.
+RUN apk upgrade --no-cache && apk add --no-cache libc6-compat && \
+    rm -rf \
+      /usr/local/lib/node_modules/npm \
+      /usr/local/lib/node_modules/corepack \
+      /usr/local/bin/npm \
+      /usr/local/bin/npx \
+      /usr/local/bin/corepack \
+      /usr/local/share/man \
+      /usr/share/man \
+      /tmp/*
 WORKDIR /app
 
 ENV NODE_ENV=production
