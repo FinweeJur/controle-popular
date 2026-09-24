@@ -1,5 +1,47 @@
 [
   {
+    "urlVelha": "https://api.salic.cultura.gov.br",
+    "urlNova": "https://api.salic.cultura.gov.br/docs",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-09-24T16:10:25.950Z"
+  },
+  {
+    "urlVelha": "https://comunicabr.presidencia.gov.br",
+    "urlNova": "https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr",
+    "criterios": [
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:migracao-portal"
+    ],
+    "data": "2026-09-20T14:30:00.000Z"
+  },
+  {
+    "urlVelha": "https://dadosabertos.almg.gov.br",
+    "urlNova": "http://dadosabertos.almg.gov.br/documentacao/index",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-09-24T16:10:01.709Z"
+  },
+  {
+    "urlVelha": "https://github.com/melkepinho/controle-popular",
+    "urlNova": "https://github.com/FinweeJur/controle-popular",
+    "criterios": [
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:repositorio-canonica"
+    ],
+    "data": "2026-09-20T14:30:00.000Z"
+  },
+  {
     "urlVelha": "https://legis.senado.leg.br/dadosabertos",
     "urlNova": "https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html",
     "criterios": [
@@ -33,14 +75,15 @@
     "data": "2026-09-09T17:46:47.068Z"
   },
   {
-    "urlVelha": "https://www.car.gov.br/publico/imoveis/index",
-    "urlNova": "https://consulta.car.gov.br/",
+    "urlVelha": "https://sistemas.anatel.gov.br",
+    "urlNova": "https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp",
     "criterios": [
+      "redirect-declarado-pelo-servidor",
       "dominio-oficial",
       "destino-verificado-vivo",
-      "estrategia:migracao-portal"
+      "estrategia:redirect"
     ],
-    "data": "2026-09-20T14:30:00.000Z"
+    "data": "2026-09-24T16:10:35.795Z"
   },
   {
     "urlVelha": "https://sistemas.anm.gov.br/SCM/Extra/site/admin/pesquisarProcessos.aspx",
@@ -63,22 +106,12 @@
     "data": "2026-09-20T14:30:00.000Z"
   },
   {
-    "urlVelha": "https://comunicabr.presidencia.gov.br",
-    "urlNova": "https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr",
+    "urlVelha": "https://www.car.gov.br/publico/imoveis/index",
+    "urlNova": "https://consulta.car.gov.br/",
     "criterios": [
       "dominio-oficial",
       "destino-verificado-vivo",
       "estrategia:migracao-portal"
-    ],
-    "data": "2026-09-20T14:30:00.000Z"
-  },
-  {
-    "urlVelha": "https://github.com/melkepinho/controle-popular",
-    "urlNova": "https://github.com/FinweeJur/controle-popular",
-    "criterios": [
-      "dominio-oficial",
-      "destino-verificado-vivo",
-      "estrategia:repositorio-canonica"
     ],
     "data": "2026-09-20T14:30:00.000Z"
   }
