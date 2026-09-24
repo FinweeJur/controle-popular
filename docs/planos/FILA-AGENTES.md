@@ -66,7 +66,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Notas:**
   - (gemini, 18:20) ✅ Concluído no commit `ade72c9`!
     * Base JUMA catalogada em `apps/web/data/juma-acoes-climaticas.json` (Mariana Samarco/Germano, Rio Doce, Serra do Taquaril, Grande Sertão Veredas, Fundo Clima STF, Conectas BNDES).
-    * Unificação processual em `apps/web/lib/judiciario/jurisprudencia-clima-barragens.ts` cruzando com os 322 mil processos do SIRENEJud e as 5 teses essenciais da pesquisa NACAB (Dano presumido da água - Tema 53, inversão do ônus da prova, legitimidade sem RGP, etc.).
+    * Unificação processual em `apps/web/lib/judiciario/jurisprudencia-clima-barragens.ts` cruzando com os 322 mil processos do SIRENEJud e as 5 teses essenciais da pesquisa NACAB (dano na água - Tema 41 IRDR, inversão do ônus da prova, legitimidade de pescadores, etc.).
     * Rota pública `/ambiental/litigios-climaticos` com cartões de status, gráfico SVG nativo por comarca, tabela de precedentes com download em CSV (; e BOM UTF-8), sanfona e bloco "E nosso povo?".
     * 5 testes unitários dedicados passando verdes.
 

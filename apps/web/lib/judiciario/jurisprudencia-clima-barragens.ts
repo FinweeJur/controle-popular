@@ -28,70 +28,98 @@ export interface TeseJurisprudenciaTJMG {
   impactoParaAtingidos: string;
   baciaOuConflito: string;
   fontePesquisa: string;
+  linkFonte: string;
+  linkPortal: string;
 }
 
 export const ACOES_JUMA: AcaoClimaticaJuma[] = acoesJuma as AcaoClimaticaJuma[];
 
+export const LINK_PAINEL_LITIGIOS =
+  "https://www.controlepopular.com.br/ambiental/litigios-climaticos";
+
 export const TESES_TJMG_BARRAGENS: TeseJurisprudenciaTJMG[] = [
   {
     id: "tjmg-dano-agua-in-re-ipsa",
-    numeroOuReferencia: "Tema Repetitivo TJMG nº 53 / IRDR",
+    numeroOuReferencia:
+      "Tema 41 — IRDR TJMG nº 1.0273.16.000131-2/001 (julgado em 24/10/2019)",
     tema: "Interrupção Prolongada do Fornecimento de Água Potável",
     tribunal: "TJMG",
     enunciadoResumido:
-      "O desabastecimento prolongado de água potável decorrente de contaminação por lama de rejeitos de minério gera dano moral presumido (in re ipsa), dispensando o cidadão de comprovar abalo psicológico individual.",
+      "A suspensão do fornecimento de água potável por vários dias, ou o fornecimento de água contaminada após o rompimento da barragem de Fundão, caracteriza dano moral; a mera dúvida subjetiva sobre a qualidade, por si só, não gera dano (tese 3 do Tema 41).",
     impactoParaAtingidos:
-      "Garante direito à indenização por dano moral para todos os residentes das cidades atingidas pelo corte de abastecimento, como Governador Valadares, Mariana e municípios do Paraopeba.",
+      "Fixa legitimidade e parâmetros de indenização para residentes em localidades abastecidas pelo Rio Doce; em pedido genérico, o TJMG arbitraram R$ 2.000,00 por pessoa (tese 5).",
     baciaOuConflito: "Bacia do Rio Doce e Bacia do Paraopeba",
-    fontePesquisa: "Pesquisa Jurisprudencial NACAB / Jurisprudência Uniformizada TJMG",
+    fontePesquisa:
+      "Portal TJMG, Tema 41 IRDR (acórdão de mérito 12/12/2019); tema relacionado 101 (COPASA/Nova Serrana, IRDR nº 1.0000.23.138516-2/001)",
+    linkFonte:
+      "https://www.tjmg.jus.br/portal-tjmg/jurisprudencia/recurso-repetitivo-e-repercussao-geral/legitimidade-ativa-indenizacao-moral-decorrente-da-interrupcao-do-fornecimento-de-agua-e-ou-duvida-quanto-a-sua-qualidade-apos-o-retorno-da-distribuicao-em-razao-do-rompimento-da-barragem-de-fundao-em-mariana-tema-41-irdr-tjmg-1.htm",
+    linkPortal: LINK_PAINEL_LITIGIOS,
   },
   {
     id: "tjmg-inversao-onus-prova",
-    numeroOuReferencia: "Enunciado Cível / Princípio da Precaução",
+    numeroOuReferencia:
+      "ACP Mariana nº 0400.15.004335-6, Cláusula 7ª do TTAC (02/10/2018); Súmula 618/STJ",
     tema: "Inversão do Ônus da Prova e Vulnerabilidade Técnica",
     tribunal: "TJMG",
     enunciadoResumido:
-      "Em ações indenizatórias socioambientais contra mineradoras, aplica-se a inversão do ônus da prova em favor dos atingidos, cabendo à mineradora comprovar que suas barragens ou emissões não causaram o dano.",
+      "Nas fases de negociação e liquidação da ACP de Mariana, as rés reconhecem a vulnerabilidade processual e probatória dos atingidos e asseguram a inversão do ônus da prova em favor deles (art. 6º, VIII, do CDC). A Súmula 618/STJ aplica a inversão às ações de degradação ambiental.",
     impactoParaAtingidos:
       "Protege famílias ribeirinhas e pequenos produtores rurais da exigência de laudos periciais caros e complexos.",
     baciaOuConflito: "Desastres da Samarco (Mariana) e Vale (Brumadinho)",
-    fontePesquisa: "Relatório de Pesquisa Jurisprudencial NACAB",
+    fontePesquisa:
+      "MPMG (Promotoria de Mariana) e pesquisa Jurisprudencial NACAB; Súmula 618/STJ",
+    linkFonte:
+      "https://www.migalhas.com.br/arquivos/2021/10/EFE568201F3EDE_mpmg.pdf",
+    linkPortal: LINK_PAINEL_LITIGIOS,
   },
   {
     id: "tjmg-pescadores-sem-rgp",
-    numeroOuReferencia: "Súmula e Precedentes de Câmaras Cíveis",
+    numeroOuReferencia:
+      "Apelação Cível nº 1.0521.16.005494-1/006, 12ª Câmara Cível, 11/11/2021",
     tema: "Legitimidade de Pescadores e Lavradores Informais",
     tribunal: "TJMG",
     enunciadoResumido:
-      "A falta de registro formal no Registro Geral da Atividade Pesqueira (RGP) não afasta o direito à indenização por lucros cessantes de pescadores artesanais e ribeirinhos cuja atividade de subsistência foi interrompida pela lama.",
+      "Pescadores profissionais com carteira vencida ou irregularidade administrativa seguem legítimos para indenização; a interrupção da pesca gera lucros cessantes e dano moral (acórdãos 1.0521.16.005494-1/006 e 1.0521.17.006159-7/003). A pesca amadorística gera ao menos dano moral (1.0000.25.037833-8/001).",
     impactoParaAtingidos:
       "Permite comprovação da condição de atingido por testemunhas, fotos, declarações de colônias ou cadastros de saúde pública.",
     baciaOuConflito: "Calha do Rio Doce e Calha do Rio Paraopeba",
-    fontePesquisa: "Pesquisa Jurisprudencial NACAB / TRF-6",
+    fontePesquisa:
+      "Acórdãos TJMG 12ª Câmara (Ponte Nova) e pesquisa Jurisprudencial NACAB",
+    linkFonte:
+      "https://www.conjur.com.br/wp-content/uploads/2023/09/pescadores-atingidos-desastre-receber.pdf",
+    linkPortal: LINK_PAINEL_LITIGIOS,
   },
   {
     id: "trf6-responsabilidade-solidaria",
-    numeroOuReferencia: "Ação Civil Pública Originária nº 1023772",
-    tema: "Responsabilidade Solidária de Controladoras Estrangeiras",
+    numeroOuReferencia:
+      "ACP nº 1023772-40.2021.4.01.3800 (TRF-6 / 4ª Vara Federal de MG)",
+    tema: "Plano Climático e de Desastres para a Bacia do Rio Doce",
     tribunal: "TRF-6",
     enunciadoResumido:
-      "As empresas controladoras e acionistas controladoras (Vale e BHP Billiton) respondem de forma solidária e ilimitada pela recuperação socioambiental integral e financiamento da assessoria técnica independente às comunidades atingidas.",
+      "Ação civil pública que exige da União e de MG a implementação de plano de adaptação e prevenção a desastres climáticos e hídricos em toda a calha do Rio Doce, diante da vulnerabilidade de cidades ribeirinhas a inundações e deslizamentos associados a rejeitos de minério.",
     impactoParaAtingidos:
-      "Impede que a operadora imediata (ex.: Samarco) alegue insolvência financeira para frustrar o pagamento de indenizações.",
+      "Busca obrigação estatal de prevenção que protege municípios da bacia antes de novo evento extremo; a responsabilidade solidária de controladoras por reparação integral aparece nos demais litígios da repactuação (ex.: acórdãos TJMG de pescadores).",
     baciaOuConflito: "Repactuação da Bacia do Rio Doce",
-    fontePesquisa: "4ª Vara Federal de Belo Horizonte / TRF-6",
+    fontePesquisa: "Portal Juma (PUC-Rio/LACLIMA) / TRF-6 — processo 1023772-40.2021.4.01.3800",
+    linkFonte: "https://plataformajuma.jur.puc-rio.br",
+    linkPortal: LINK_PAINEL_LITIGIOS,
   },
   {
     id: "tjmg-nulidade-quitacao-ampla",
-    numeroOuReferencia: "Precedentes das Câmaras de Direito Privado",
-    tema: "Nulidade de Quitação Geral Abusiva",
+    numeroOuReferencia:
+      "AJRI Acordo de Brumadinho (SEI nº 012220159.2020.8.13.0000); pesquisa NACAB",
+    tema: "Risco de Quitação Geral Abusiva em Acordos Extrajudiciais",
     tribunal: "TJMG",
     enunciadoResumido:
-      "São nulas as cláusulas de quitação irrestrita e definitiva em acordos extrajudiciais que busquem impedir o ajuizamento de ações sobre danos à saúde crônicos ou contaminações por metais pesados constatadas posteriormente.",
+      "A pesquisa NACAB e o AJRI de Brumadinho documentam o risco de cláusulas de quitação irrestrita em acordos extrajudiciais que impeçam reclamar por danos à saúde posteriores. O STJ, no REsp 2231199, validou quitação ampla em caso concreto — a controvérsia segue aberta; quem alega nulidade precisa de prova de vício do consentimento ou de lesão.",
     impactoParaAtingidos:
-      "Permite que pessoas que receberam auxílios emergenciais continuem pleiteando tratamento de saúde e indenizações por sequelas físicas.",
+      "Permite que pessoas que receberam auxílios emergenciais continuem pleiteando tratamento de saúde e indenizações por sequelas, quando demonstrado vício ou lesão na quitação.",
     baciaOuConflito: "Brumadinho, Mariana, Betim e Barra Longa",
-    fontePesquisa: "Pesquisa Jurisprudencial NACAB / MPMG",
+    fontePesquisa:
+      "Pesquisa Jurisprudencial NACAB; AJRI Brumadinho; STJ REsp 2231199 (valida quitação ampla)",
+    linkFonte:
+      "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+    linkPortal: LINK_PAINEL_LITIGIOS,
   },
 ];
 

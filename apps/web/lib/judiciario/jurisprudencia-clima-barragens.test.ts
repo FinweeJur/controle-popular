@@ -37,6 +37,28 @@ describe("Jurisprudência Socioambiental: Juma, SIRENEJud e TJMG", () => {
     expect(temas).toContain("Interrupção Prolongada do Fornecimento de Água Potável");
     expect(temas).toContain("Inversão do Ônus da Prova e Vulnerabilidade Técnica");
     expect(temas).toContain("Legitimidade de Pescadores e Lavradores Informais");
+
+    for (const t of teses) {
+      expect(t.numeroOuReferencia.trim().length).toBeGreaterThan(5);
+      expect(t.linkFonte).toMatch(/^https?:\/\//);
+      expect(t.linkPortal).toBe(
+        "https://www.controlepopular.com.br/ambiental/litigios-climaticos"
+      );
+    }
+
+    const tema41 = teses.find((t) => t.id === "tjmg-dano-agua-in-re-ipsa");
+    expect(tema41?.numeroOuReferencia).toContain("Tema 41");
+    expect(tema41?.numeroOuReferencia).toContain("1.0273.16.000131-2/001");
+    expect(tema41?.numeroOuReferencia).not.toContain("53");
+
+    const pescadores = teses.find((t) => t.id === "tjmg-pescadores-sem-rgp");
+    expect(pescadores?.numeroOuReferencia).toContain("1.0521.16.005494-1/006");
+
+    const trf6 = teses.find((t) => t.id === "trf6-responsabilidade-solidaria");
+    expect(trf6?.numeroOuReferencia).toContain("1023772-40.2021.4.01.3800");
+
+    const inversao = teses.find((t) => t.id === "tjmg-inversao-onus-prova");
+    expect(inversao?.numeroOuReferencia).toContain("0400.15.004335-6");
   });
 
   it("cruza com processos ambientais reais do SIRENEJud/CNJ", () => {

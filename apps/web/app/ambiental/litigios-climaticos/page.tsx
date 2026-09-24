@@ -22,14 +22,15 @@ export default function PaginaLitigiosClimaticos() {
   const sirenejud = carregarSirenejudMg();
 
   const gerarCsv = () => {
-    const cabecalho = "Fonte;Título / Tema;Número Processo / Referência;Tribunal;UF;Municípios;Resumo / Impacto;Link Oficial\n";
+    const cabecalho =
+      "Fonte;Título / Tema;Número Processo / Referência;Tribunal;UF;Municípios;Resumo / Impacto;Link Oficial;Link Painel\n";
     const linhasJuma = acoesJuma.map(
       (a) =>
-        `"JUMA (Litigância Climática)";"${a.titulo}";"${a.numeroProcesso}";"${a.tribunal}";"${a.uf}";"${a.municipios.join(", ")}";"${a.resumo.replace(/"/g, '""')}";"${a.linkOficial}"`
+        `"JUMA (Litigância Climática)";"${a.titulo}";"${a.numeroProcesso}";"${a.tribunal}";"${a.uf}";"${a.municipios.join(", ")}";"${a.resumo.replace(/"/g, '""')}";"${a.linkOficial}";"https://www.controlepopular.com.br/ambiental/litigios-climaticos"`
     );
     const linhasTeses = tesesTJMG.map(
       (t) =>
-        `"TJMG / TRF-6 (Jurisprudência Barragens)";"${t.tema}";"${t.numeroOuReferencia}";"${t.tribunal}";"MG";"${t.baciaOuConflito}";"${t.impactoParaAtingidos.replace(/"/g, '""')}";"${t.fontePesquisa}"`
+        `"TJMG / TRF-6 (Jurisprudência Barragens)";"${t.tema}";"${t.numeroOuReferencia.replace(/"/g, '""')}";"${t.tribunal}";"MG";"${t.baciaOuConflito}";"${t.impactoParaAtingidos.replace(/"/g, '""')}";"${t.linkFonte}";"${t.linkPortal}"`
     );
     return "\uFEFF" + cabecalho + [...linhasJuma, ...linhasTeses].join("\n");
   };
@@ -165,7 +166,17 @@ export default function PaginaLitigiosClimaticos() {
                   </span>
                   <span className="font-medium text-foreground">{a.tribunal}</span>
                 </div>
-                <span>Processo nº: {a.numeroProcesso}</span>
+                <span>
+                  Processo nº:{" "}
+                  <a
+                    href={a.linkOficial}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+                  >
+                    {a.numeroProcesso}
+                  </a>
+                </span>
               </div>
 
               <h3 className="mt-3 font-display text-base font-bold text-foreground">
@@ -177,7 +188,17 @@ export default function PaginaLitigiosClimaticos() {
 
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-2 text-xs text-muted border-t border-border">
                 <span>📍 Cidades: {a.municipios.join(", ")} ({a.uf})</span>
-                <span className="rounded bg-surface-3 px-2 py-0.5">Status: {a.status}</span>
+                <span className="flex flex-wrap items-center gap-2">
+                  <span className="rounded bg-surface-3 px-2 py-0.5">Status: {a.status}</span>
+                  <a
+                    href={a.linkOficial}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2"
+                  >
+                    Fonte
+                  </a>
+                </span>
               </div>
             </article>
           ))}
@@ -209,11 +230,30 @@ export default function PaginaLitigiosClimaticos() {
                 <p className="mt-2 text-xs text-muted">
                   {t.enunciadoResumido}
                 </p>
+                <p className="mt-2 text-[0.7rem] text-muted">
+                  Fonte: {t.fontePesquisa}{" "}
+                  <a
+                    href={t.linkFonte}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2"
+                  >
+                    (abrir)
+                  </a>
+                </p>
               </div>
 
               <div className="mt-4 rounded-xl bg-surface-1 p-3 text-xs text-muted">
                 <span className="font-semibold text-foreground">Impacto direto no bolso e vida do atingido: </span>
                 {t.impactoParaAtingidos}
+                <p className="mt-2">
+                  <a
+                    href={t.linkPortal}
+                    className="font-medium text-primary underline underline-offset-2"
+                  >
+                    Ver painel de litígios climáticos
+                  </a>
+                </p>
               </div>
             </article>
           ))}
