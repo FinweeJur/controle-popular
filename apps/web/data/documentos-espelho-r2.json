@@ -1,28 +1,27 @@
 {
   "https://nacab.org.br/wp-content/uploads/2025/06/germinar_1.pdf": {
-    "urlR2": "https://fontes.controlepopular.com.br/docs/45702873536ab1ca.pdf",
-    "chaveR2": "docs/45702873536ab1ca.pdf",
-    "status": "dry-run"
+    "status": "download-falhou",
+    "erro": "The operation was aborted due to timeout"
   },
   "https://nacab.org.br/wp-content/uploads/2025/06/germinar_02.pdf": {
     "urlR2": "https://fontes.controlepopular.com.br/docs/892dbb9d5a437837.pdf",
     "chaveR2": "docs/892dbb9d5a437837.pdf",
-    "status": "dry-run"
+    "sha256": "2f3593d118283582cc519c2b6ed1aeed564408aae1df65f5a96c83c4a4e9e61a",
+    "tamanhoBytes": 3328661,
+    "dataUpload": "2026-09-24T16:12:25.443Z",
+    "status": "enviado"
   },
   "https://nacab.org.br/wp-content/uploads/2025/06/germinar_03.pdf": {
-    "urlR2": "https://fontes.controlepopular.com.br/docs/33a359b19f03fc0b.pdf",
-    "chaveR2": "docs/33a359b19f03fc0b.pdf",
-    "status": "dry-run"
+    "status": "download-falhou",
+    "erro": "The operation was aborted due to timeout"
   },
   "https://nacab.org.br/wp-content/uploads/2025/06/Germinar_04_JAN_2025.pdf": {
-    "urlR2": "https://fontes.controlepopular.com.br/docs/1f53bcbf7c5c7872.pdf",
-    "chaveR2": "docs/1f53bcbf7c5c7872.pdf",
-    "status": "dry-run"
+    "status": "download-falhou",
+    "erro": "The operation was aborted due to timeout"
   },
   "https://nacab.org.br/wp-content/uploads/2025/06/germinar-05.pdf": {
-    "urlR2": "https://fontes.controlepopular.com.br/docs/5550a7f9909cd1d5.pdf",
-    "chaveR2": "docs/5550a7f9909cd1d5.pdf",
-    "status": "dry-run"
+    "status": "download-falhou",
+    "erro": "The operation was aborted due to timeout"
   },
   "https://nacab.org.br/wp-content/uploads/2025/10/germinar_06.pdf": {
     "urlR2": "https://fontes.controlepopular.com.br/docs/5254899d54b8bd6e.pdf",

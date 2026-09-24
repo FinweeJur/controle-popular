@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-09-08T17:33:12.707Z",
+  "gerado_em_utc": "2026-09-17T23:59:42.306Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -243,6 +243,26 @@
       "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
+      "camada": "infracoes-embargos",
+      "feicoes": 1466,
+      "bytes": 932000,
+      "comprimido": false,
+      "sha256": "4f4804e804513547a70906d72a7e8280437ee15265716818d0e7e0a032ef3757",
+      "mtime_utc": "2026-09-17T23:59:42.306Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "licencas-ambientais",
+      "feicoes": 5937,
+      "bytes": 3653005,
+      "comprimido": false,
+      "sha256": "e9eb5eb7787126737d9a01b9fb6d7542368ff79e5a1b15521c97fc3656473345",
+      "mtime_utc": "2026-09-17T23:59:41.770Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "lotes-vagos-bh",
       "feicoes": 8525,
       "bytes": 3114001,
@@ -281,6 +301,16 @@
       "mtime_utc": "2026-09-08T14:43:10.349Z",
       "obtencao": "derivada",
       "origem": "Acervo normativo das cidades do portal, com o lugar extraído da ementa e geocodificado pelo Nominatim (nunca do PDF ou do texto completo)"
+    },
+    {
+      "camada": "outorgas-agua",
+      "feicoes": 1205,
+      "bytes": 538207,
+      "comprimido": false,
+      "sha256": "40b58c9a40764ce824aae83f577214c3305a658ba25ab49fa20befb9bf724359",
+      "mtime_utc": "2026-09-17T23:59:42.153Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
       "camada": "pesquisa-noticias",
@@ -505,6 +535,9 @@
     "cobertura-telefonia-mg",
     "cobertura-telefonia-prioritarias",
     "estudos-ambientais",
+    "infracoes-embargos",
+    "licencas-ambientais",
+    "outorgas-agua",
     "presidios-mg",
     "torres-celular-mg",
     "torres-celular-prioritarias",

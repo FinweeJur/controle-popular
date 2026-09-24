@@ -93,12 +93,13 @@ function rodarGateCorrecoes(): void {
   execFileSync("node", ["apps/web/scripts/validar-link-correcoes.mjs"], {
     cwd: RAIZ,
     stdio: "inherit",
+    shell: process.platform === "win32",
   });
   // suíte do pipeline — lógica mockada, sem rede
   execFileSync(
-    "npx",
-    ["vitest", "run", "--config", "apps/web/vitest.config.mts", "lib/linkmender/"],
-    { cwd: RAIZ, stdio: "inherit" }
+    process.platform === "win32" ? "npx.cmd" : "npx",
+    ["vitest", "run", "--dir", "apps/web/lib/linkmender"],
+    { cwd: RAIZ, stdio: "inherit", shell: process.platform === "win32" }
   );
 }
 
