@@ -73,6 +73,16 @@ export default async function AmbientalHome() {
       linkTexto: "Consultar acervo do CAR →",
     },
     {
+      titulo: "Capacidade Institucional, Servidores e Orçamento",
+      linha: "IEF, IGAM, FEAM, IEPHA, IPHAN, ANA, ANEEL e IBAMA: série histórica de 10 anos (2016-2026)",
+      texto:
+        "O raio-x da força de trabalho e do orçamento real dos órgãos ambientais: queda média de 31,4% no efetivo de servidores, sobrecarga de até 13.160 processos por analista, histórico de concursos públicos e organogramas com contatos e coordenadores.",
+      fase: "NOVO",
+      href: "/ambiental/capacidade-institucional",
+      pronta: true,
+      linkTexto: "Ver capacidade e organogramas →",
+    },
+    {
       titulo: "Coleção Nossos: Rios, Serras, Animais, Territórios e Gente",
       linha: "5 frentes integradas: rios, serras, fauna silvestre, territórios tradicionais e impacto humano",
       texto:

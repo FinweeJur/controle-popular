@@ -1,0 +1,2641 @@
+{
+  "metadados": {
+    "titulo": "Série Histórica de Capacidade Institucional, Efetivo e Orçamento dos Órgãos Ambientais e de Patrimônio (2016-2026)",
+    "dataAtualizacao": "2026-09-24",
+    "versao": "1.0",
+    "metodologia": "Levantamento consolidado a partir de Portais de Transparência Estaduais e Federal (PEP/SIAPE), Relatórios Anuais de Gestão (RAG), Prestações de Contas ao TCU e TCE-MG, e LOAs deflacionadas pelo IPCA acumulado a preços de 2026.",
+    "ipcaAcumulado": {
+      "2026": 1,
+      "2016_para_2026": 1.724,
+      "2021_para_2026": 1.302
+    },
+    "totalOrgaos": 13
+  },
+  "orgaos": [
+    {
+      "sigla": "IEF-MG",
+      "nomeCompleto": "Instituto Estadual de Florestas de Minas Gerais",
+      "esfera": "Estadual",
+      "uf": "MG",
+      "papelRegulatorio": "Gestão das unidades de conservação estaduais, aplicação do Código Florestal (CAR), fiscalização da flora e fomento florestal",
+      "lideranca": {
+        "nome": "Breno Esteves Lasmar",
+        "cargo": "Diretor-Geral",
+        "gabinete": "Gabinete da Direção-Geral (GDG)",
+        "email": "breno.lasmar@meioambiente.mg.gov.br",
+        "telefone": "(31) 3915-1750"
+      },
+      "contatos": {
+        "emailGeral": "atendimento@meioambiente.mg.gov.br",
+        "telefones": [
+          "(31) 3915-1750",
+          "(31) 3915-1752"
+        ],
+        "enderecoSede": {
+          "logradouro": "Rodovia Papa João Paulo II, 4143, Edifício Minas, 1º e 2º andares, Cidade Administrativa",
+          "bairro": "Serra Verde",
+          "cidade": "Belo Horizonte",
+          "uf": "MG",
+          "cep": "31630-900"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "URF Centro-Sul",
+            "cidade": "Barbacena",
+            "endereco": "Rua Coronel Teófilo, 245 - São Geraldo",
+            "telefone": "(32) 3331-2855",
+            "email": "urf.centrosul@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URF Metropolitana",
+            "cidade": "Belo Horizonte",
+            "endereco": "Cidade Administrativa, Prédio Minas, 1º andar",
+            "telefone": "(31) 3915-1400",
+            "email": "urf.metro@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URF Norte",
+            "cidade": "Montes Claros",
+            "endereco": "Rua Dr. Veloso, 845 - Centro",
+            "telefone": "(38) 3224-7500",
+            "email": "urf.norte@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URF Rio Doce",
+            "cidade": "Governador Valadares",
+            "endereco": "Av. JK, 1200 - Vila Bretas",
+            "telefone": "(33) 3271-4010",
+            "email": "urf.riodoce@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URF Triângulo Mineiro",
+            "cidade": "Uberlândia",
+            "endereco": "Av. Afonso Pena, 3950 - Brasil",
+            "telefone": "(34) 3214-5500",
+            "email": "urf.triangulo@meioambiente.mg.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria-Geral do Estado de Minas Gerais (OGE-MG)",
+          "url": "https://www.ouvidoriageral.mg.gov.br",
+          "telefone": "162",
+          "email": "ouvidoria.ambiental@ouvidoria.mg.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Denúncia Unificado 181 / Sisema Denúncias",
+          "url": "https://www.transparencia.mg.gov.br/canais-de-atendimento",
+          "telefone": "181",
+          "email": "denuncia.ambiental@meioambiente.mg.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Gestão, consolidação territorial e conservação das 95 Unidades de Conservação Estaduais de Minas Gerais",
+        "Análise técnica, homologação e retificação do Cadastro Ambiental Rural (CAR)",
+        "Emissão de autorizações para intervenção ambiental e supressão de vegetação nativa",
+        "Coordenação da Força-Tarefa Prevenincêndio para resposta e prevenção a incêndios florestais",
+        "Fomento ao reflorestamento, conservação de nascentes e recuperação de bacias hidrográficas degradadas"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 2.606/1962 (Criação do Instituto Estadual de Florestas)",
+        "Lei Estadual nº 20.922/2013 (Dispõe sobre as políticas florestal e de proteção à biodiversidade no Estado)",
+        "Lei Estadual nº 21.972/2016 (Reestruturação do Sistema Estadual de Meio Ambiente e Recursos Hídricos - SISEMA)",
+        "Decreto Estadual nº 47.749/2019 (Processos de autorização para intervenção ambiental)",
+        "Decreto Estadual nº 48.706/2023 (Organização e competências do IEF)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Unidades de Conservação",
+          "sigla": "DIUC",
+          "cargo": "Diretor",
+          "responsavel": "Letícia Horta",
+          "funcao": "Planejamento, implantação, criação e manejo das unidades de conservação de proteção integral e de uso sustentável sob tutela estadual",
+          "telefone": "(31) 3915-1770",
+          "email": "diuc@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 2º andar",
+          "urlPagina": "https://www.ief.mg.gov.br/institucional/diretoria-de-unidades-de-conservacao"
+        },
+        {
+          "nome": "Diretoria de Conservação e Recuperação de Ecossistemas",
+          "sigla": "DCRE",
+          "cargo": "Diretora",
+          "responsavel": "Fernanda Silva Teixeira",
+          "funcao": "Execução de políticas de restauração ecológica, fomento florestal, viveiros de mudas nativas e recomposição de áreas de preservação permanente",
+          "telefone": "(31) 3915-1785",
+          "email": "dcre@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 2º andar",
+          "urlPagina": "https://www.ief.mg.gov.br/institucional/diretoria-de-conservacao-e-recuperacao-de-ecossistemas"
+        },
+        {
+          "nome": "Diretoria de Controle, Monitoramento e Geotecnologia",
+          "sigla": "DCMG",
+          "cargo": "Diretor",
+          "responsavel": "Thiago Cavalcante",
+          "funcao": "Análise técnica do CAR, processamento de autorizações de corte vegetal e sensoriamento remoto de cobertura florestal",
+          "telefone": "(31) 3915-1790",
+          "email": "dcmg@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.ief.mg.gov.br/institucional/diretoria-de-controle-monitoramento-e-geotecnologia"
+        },
+        {
+          "nome": "Diretoria de Gestão Regional",
+          "sigla": "DGR",
+          "cargo": "Diretor",
+          "responsavel": "Cláudio Castro",
+          "funcao": "Supervisão e articulação operacional das Unidades Regionais de Florestas e escritórios locais em todo o território mineiro",
+          "telefone": "(31) 3915-1760",
+          "email": "dgr@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.ief.mg.gov.br/institucional/diretoria-de-gestao-regional"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 1180,
+          "comissionados": 125,
+          "total": 1305
+        },
+        {
+          "ano": 2021,
+          "efetivos": 840,
+          "comissionados": 165,
+          "total": 1005
+        },
+        {
+          "ano": 2026,
+          "efetivos": 720,
+          "comissionados": 190,
+          "total": 910
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -38.98,
+      "variacaoPercentualTotal2016_2026": -30.27,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 148.5,
+          "orcamentoReal": 256.01
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 162,
+          "orcamentoReal": 210.92
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 198.4,
+          "orcamentoReal": 198.4
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -22.5,
+      "processosAtivosEstimados": 48600,
+      "analistasProcessamento": 145,
+      "indiceSobrecarga": 335.17,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência MG — Despesa com Pessoal Ativo IEF",
+          "orgao": "Governo do Estado de Minas Gerais / SEPLAG",
+          "tipo": "Transparência Pública",
+          "url": "https://www.transparencia.mg.gov.br/estado-pessoal/despesa-com-pessoal",
+          "descricao": "Quadro de pessoal ativo estatutário, celetista e comissionado do Instituto Estadual de Florestas",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório Anual de Gestão e Prestação de Contas IEF-MG",
+          "orgao": "Tribunal de Contas do Estado de Minas Gerais (TCE-MG)",
+          "tipo": "Relatório de Gestão / Auditoria",
+          "url": "https://www.ief.mg.gov.br/transparencia/relatorios-de-gestao",
+          "descricao": "Execução orçamentária e financeira anual auditada das ações de conservação florestal",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Lei Orçamentária Anual — Orçamento Fiscal e Próprio do IEF",
+          "orgao": "Assembleia Legislativa de Minas Gerais (ALMG)",
+          "tipo": "Legislação Orçamentária",
+          "url": "https://www.transparencia.mg.gov.br/planejamento-e-orcamento/orcamento-anual",
+          "descricao": "Dotações orçamentárias iniciais e executadas do IEF no período 2016-2026",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.ief.mg.gov.br",
+        "transparencia": "https://www.ief.mg.gov.br/transparencia",
+        "organograma": "https://www.ief.mg.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.ief.mg.gov.br/transparencia/relatorios-de-gestao",
+        "concursos": "https://www.ief.mg.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://car.meioambiente.mg.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2023,
+        "vagas": 163,
+        "banca": "IBFC",
+        "edital": "Edital SEPLAG/IEF nº 01/2022",
+        "hiatoAnosAnterior": 15,
+        "situacao": "Homologado e em fase de convocações / prorrogação",
+        "deficitEstimado": 460
+      }
+    },
+    {
+      "sigla": "IGAM-MG",
+      "nomeCompleto": "Instituto Mineiro de Gestão das Águas",
+      "esfera": "Estadual",
+      "uf": "MG",
+      "papelRegulatorio": "Regulação do uso de recursos hídricos, emissão de outorgas, cobrança pelo uso da água e monitoramento quali-quantitativo de bacias hidrográficas",
+      "lideranca": {
+        "nome": "Marcelo da Fonseca",
+        "cargo": "Diretor-Geral",
+        "gabinete": "Gabinete da Direção-Geral (GDG)",
+        "email": "marcelo.fonseca@meioambiente.mg.gov.br",
+        "telefone": "(31) 3915-1200"
+      },
+      "contatos": {
+        "emailGeral": "atendimento.igam@meioambiente.mg.gov.br",
+        "telefones": [
+          "(31) 3915-1200",
+          "(31) 3915-1220"
+        ],
+        "enderecoSede": {
+          "logradouro": "Rodovia Papa João Paulo II, 4143, Edifício Minas, 1º andar, Cidade Administrativa",
+          "bairro": "Serra Verde",
+          "cidade": "Belo Horizonte",
+          "uf": "MG",
+          "cep": "31630-900"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "URGA Central Metropolitana",
+            "cidade": "Belo Horizonte",
+            "endereco": "Cidade Administrativa, Prédio Minas, 1º andar",
+            "telefone": "(31) 3915-1240",
+            "email": "urga.metro@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URGA Triângulo Mineiro e Alto Paranaíba",
+            "cidade": "Uberlândia",
+            "endereco": "Av. Afonso Pena, 3950 - Brasil",
+            "telefone": "(34) 3214-5520",
+            "email": "urga.triangulo@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URGA Rio Doce",
+            "cidade": "Governador Valadares",
+            "endereco": "Av. JK, 1200 - Vila Bretas",
+            "telefone": "(33) 3271-4025",
+            "email": "urga.riodoce@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URGA São Francisco",
+            "cidade": "Montes Claros",
+            "endereco": "Rua Dr. Veloso, 845 - Centro",
+            "telefone": "(38) 3224-7520",
+            "email": "urga.saofrancisco@meioambiente.mg.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria-Geral do Estado de Minas Gerais (OGE-MG)",
+          "url": "https://www.ouvidoriageral.mg.gov.br",
+          "telefone": "162",
+          "email": "ouvidoria.ambiental@ouvidoria.mg.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Denúncia Unificado 181 / Sisema Denúncias Hídricas",
+          "url": "https://www.transparencia.mg.gov.br/canais-de-atendimento",
+          "telefone": "181",
+          "email": "denuncia.igam@meioambiente.mg.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Emissão de outorgas de direito de uso de recursos hídricos e autorizações para intervenção em cursos d'água",
+        "Operação da rede estadual de monitoramento hidrológico e da qualidade das águas superficiais e subterrâneas",
+        "Implementação e arrecadação dos instrumentos de cobrança pelo uso da água e apoio aos 36 Comitês de Bacias Hidrográficas (CBHs)",
+        "Prevenção, monitoramento e declaração de situações críticas de escassez hídrica e emergências em bacias",
+        "Gestão e aplicação de recursos do Fundo Estadual de Recursos Hídricos (FHIDRO)"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 12.584/1997 (Criação do Instituto Mineiro de Gestão das Águas)",
+        "Lei Estadual nº 13.199/1999 (Política Estadual de Recursos Hídricos)",
+        "Lei Estadual nº 21.972/2016 (Reestruturação do Sistema Estadual de Meio Ambiente - SISEMA)",
+        "Decreto Estadual nº 48.707/2023 (Estrutura orgânica e competências do IGAM)",
+        "Portaria IGAM nº 48/2019 (Normas e critérios para análise e emissão de outorga de direito de uso da água)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Planejamento e Regulação Hídrica",
+          "sigla": "DPRH",
+          "cargo": "Diretor",
+          "responsavel": "Thiago Santana",
+          "funcao": "Análise de pedidos de outorga, enquadramento de corpos de água e planos diretores de bacias",
+          "telefone": "(31) 3915-1230",
+          "email": "dprh@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.igam.mg.gov.br/institucional/diretoria-de-planejamento-e-regulacao-hidrica"
+        },
+        {
+          "nome": "Diretoria de Operações e Eventos Críticos",
+          "sigla": "DOEC",
+          "cargo": "Diretora",
+          "responsavel": "Camila Neves",
+          "funcao": "Operação de salas de situação, alerta de inundações, estiagens severas e segurança hídrica",
+          "telefone": "(31) 3915-1250",
+          "email": "doec@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.igam.mg.gov.br/institucional/diretoria-de-operacoes-e-eventos-criticos"
+        },
+        {
+          "nome": "Diretoria de Gestão Territorial de Recursos Hídricos",
+          "sigla": "DGTRH",
+          "cargo": "Diretor",
+          "responsavel": "Lucas Morais",
+          "funcao": "Fortalecimento dos Comitês de Bacia Hidrográfica, cobrança pelo uso da água e descentralização da gestão hídrica",
+          "telefone": "(31) 3915-1260",
+          "email": "dgtrh@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.igam.mg.gov.br/institucional/diretoria-de-gestao-territorial"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 340,
+          "comissionados": 55,
+          "total": 395
+        },
+        {
+          "ano": 2021,
+          "efetivos": 250,
+          "comissionados": 70,
+          "total": 320
+        },
+        {
+          "ano": 2026,
+          "efetivos": 215,
+          "comissionados": 85,
+          "total": 300
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -36.76,
+      "variacaoPercentualTotal2016_2026": -24.05,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 72,
+          "orcamentoReal": 124.13
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 81.5,
+          "orcamentoReal": 106.11
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 98.2,
+          "orcamentoReal": 98.2
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -20.89,
+      "processosAtivosEstimados": 31400,
+      "analistasProcessamento": 62,
+      "indiceSobrecarga": 506.45,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência MG — Servidores Ativos do IGAM",
+          "orgao": "Governo do Estado de Minas Gerais / SEPLAG",
+          "tipo": "Transparência Pública",
+          "url": "https://www.transparencia.mg.gov.br/estado-pessoal/despesa-com-pessoal",
+          "descricao": "Demonstrativo de cargos efetivos, recrutamento amplo e funções gratificadas do IGAM",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Gestão e Monitoramento de Recursos Hídricos IGAM",
+          "orgao": "Instituto Mineiro de Gestão das Águas / TCE-MG",
+          "tipo": "Relatório Anual / Prestação de Contas",
+          "url": "https://www.igam.mg.gov.br/transparencia/prestacao-de-contas",
+          "descricao": "Relatórios anuais de desempenho funcional, processos julgados e execução financeira do FHIDRO",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "LOA e Fundo Estadual de Recursos Hídricos (FHIDRO)",
+          "orgao": "Assembleia Legislativa de Minas Gerais (ALMG)",
+          "tipo": "Orçamento Público",
+          "url": "https://www.transparencia.mg.gov.br/planejamento-e-orcamento/fundos-estaduais",
+          "descricao": "Dotação orçamentária do FHIDRO e receitas provenientes de cobrança de água",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.igam.mg.gov.br",
+        "transparencia": "https://www.igam.mg.gov.br/transparencia",
+        "organograma": "https://www.igam.mg.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.igam.mg.gov.br/transparencia/prestacao-de-contas",
+        "concursos": "https://www.igam.mg.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://siga.meioambiente.mg.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2023,
+        "vagas": 42,
+        "banca": "IBFC",
+        "edital": "Edital SEPLAG/IGAM nº 01/2022",
+        "hiatoAnosAnterior": 15,
+        "situacao": "Homologado e em fase de convocações / prorrogação",
+        "deficitEstimado": 125
+      }
+    },
+    {
+      "sigla": "FEAM-MG",
+      "nomeCompleto": "Fundação Estadual do Meio Ambiente de Minas Gerais",
+      "esfera": "Estadual",
+      "uf": "MG",
+      "papelRegulatorio": "Licenciamento ambiental corretivo e preventivo, gestão da qualidade do ar e solo, e fiscalização de segurança de barragens industriais e de mineração no âmbito estadual",
+      "lideranca": {
+        "nome": "Rodrigo Franco",
+        "cargo": "Presidente",
+        "gabinete": "Gabinete da Presidência (GP)",
+        "email": "rodrigo.franco@meioambiente.mg.gov.br",
+        "telefone": "(31) 3915-1100"
+      },
+      "contatos": {
+        "emailGeral": "atendimento.feam@meioambiente.mg.gov.br",
+        "telefones": [
+          "(31) 3915-1100",
+          "(31) 3915-1125"
+        ],
+        "enderecoSede": {
+          "logradouro": "Rodovia Papa João Paulo II, 4143, Edifício Minas, 1º e 2º andares, Cidade Administrativa",
+          "bairro": "Serra Verde",
+          "cidade": "Belo Horizonte",
+          "uf": "MG",
+          "cep": "31630-900"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "URA Central Metropolitana",
+            "cidade": "Belo Horizonte",
+            "endereco": "Cidade Administrativa, Edifício Minas, 2º andar",
+            "telefone": "(31) 3915-1310",
+            "email": "ura.metro@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URA Sul de Minas",
+            "cidade": "Varginha",
+            "endereco": "Av. Manoel Diniz, 145 - Industrial JK",
+            "telefone": "(35) 3219-5400",
+            "email": "ura.sul@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URA Alto Paranaíba",
+            "cidade": "Patos de Minas",
+            "endereco": "Rua Major Jerônimo, 520 - Centro",
+            "telefone": "(34) 3822-9800",
+            "email": "ura.altoparanaiba@meioambiente.mg.gov.br"
+          },
+          {
+            "nome": "URA Zona da Mata",
+            "cidade": "Ubá",
+            "endereco": "Rua Antenor Machado, 180 - Centro",
+            "telefone": "(32) 3539-3100",
+            "email": "ura.zonadamata@meioambiente.mg.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria-Geral do Estado de Minas Gerais (OGE-MG)",
+          "url": "https://www.ouvidoriageral.mg.gov.br",
+          "telefone": "162",
+          "email": "ouvidoria.ambiental@ouvidoria.mg.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Denúncia Unificado 181 / Portal de Barragens Feam",
+          "url": "https://www.transparencia.mg.gov.br/canais-de-atendimento",
+          "telefone": "181",
+          "email": "denuncia.barragens@meioambiente.mg.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Análise e instrução de processos de licenciamento ambiental (LP, LI, LO e LAS) para atividades potencialmente poluidoras",
+        "Auditoria e fiscalização periódica de barragens de mineração e de resíduos industriais em Minas Gerais",
+        "Gestão da qualidade do ar, emissões industriais e inventário estadual de gases de efeito estufa",
+        "Gerenciamento de áreas contaminadas e monitoramento de resíduos sólidos urbanos e perigosos",
+        "Instrução técnica e subsídio às Câmaras Temáticas do COPAM (Conselho Estadual de Política Ambiental)"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 7.772/1980 (Dispõe sobre a proteção, conservação e melhoria do meio ambiente)",
+        "Lei Estadual nº 21.972/2016 (Reestruturação do Sistema Estadual de Meio Ambiente e Recursos Hídricos)",
+        "Lei Estadual nº 23.291/2019 (Institui a Política Estadual de Segurança de Barragens - Mar de Lama Nunca Mais)",
+        "Decreto Estadual nº 47.383/2018 (Procedimentos de licenciamento ambiental e tipificação de infrações)",
+        "Decreto Estadual nº 48.708/2023 (Competências e estrutura interna da FEAM)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Licenciamento Ambiental",
+          "sigla": "DLA",
+          "cargo": "Diretor",
+          "responsavel": "Cristiano Germano",
+          "funcao": "Coordenação dos processos de análise e instrução técnica de licenciamento para mineração, energia e indústrias",
+          "telefone": "(31) 3915-1150",
+          "email": "dla@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 2º andar",
+          "urlPagina": "https://www.feam.mg.gov.br/institucional/diretoria-de-licenciamento-ambiental"
+        },
+        {
+          "nome": "Diretoria de Gestão de Barragens e Resíduos",
+          "sigla": "DGBR",
+          "cargo": "Diretora",
+          "responsavel": "Alice Libânio",
+          "funcao": "Auditoria de estabilidade, cadastro estadual de barragens e fiscalização de conformidade com a Lei Mar de Lama Nunca Mais",
+          "telefone": "(31) 3915-1160",
+          "email": "barragens@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 2º andar",
+          "urlPagina": "https://www.feam.mg.gov.br/institucional/diretoria-de-gestao-de-barragens"
+        },
+        {
+          "nome": "Diretoria de Qualidade Ambiental e Mudanças Climáticas",
+          "sigla": "DQAMC",
+          "cargo": "Diretor",
+          "responsavel": "Felipe Gomes",
+          "funcao": "Monitoramento de qualidade do ar, inventário de emissões, gestão de áreas contaminadas e resíduos industriais",
+          "telefone": "(31) 3915-1175",
+          "email": "qualidade.ambiental@meioambiente.mg.gov.br",
+          "endereco": "Cidade Administrativa, Edifício Minas, 1º andar",
+          "urlPagina": "https://www.feam.mg.gov.br/institucional/diretoria-de-qualidade-ambiental"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 510,
+          "comissionados": 80,
+          "total": 590
+        },
+        {
+          "ano": 2021,
+          "efetivos": 390,
+          "comissionados": 110,
+          "total": 500
+        },
+        {
+          "ano": 2026,
+          "efetivos": 330,
+          "comissionados": 140,
+          "total": 470
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -35.29,
+      "variacaoPercentualTotal2016_2026": -20.34,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 115,
+          "orcamentoReal": 198.26
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 135,
+          "orcamentoReal": 175.77
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 172.5,
+          "orcamentoReal": 172.5
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -12.99,
+      "processosAtivosEstimados": 24800,
+      "analistasProcessamento": 88,
+      "indiceSobrecarga": 281.82,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência MG — Servidores FEAM",
+          "orgao": "Governo do Estado de Minas Gerais / SEPLAG",
+          "tipo": "Transparência Pública",
+          "url": "https://www.transparencia.mg.gov.br/estado-pessoal/despesa-com-pessoal",
+          "descricao": "Quadro de pesquisadores em ciência e tecnologia, gestores ambientais e analistas ambientais",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório Anual de Atividades e Barragens de MG",
+          "orgao": "Fundação Estadual do Meio Ambiente / TCE-MG",
+          "tipo": "Relatório de Gestão / Auditoria",
+          "url": "https://www.feam.mg.gov.br/transparencia/relatorios-de-gestao",
+          "descricao": "Inventário de barragens fiscalizadas, autos de infração e prestação de contas",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Execução Orçamentária e Financeira da FEAM",
+          "orgao": "Secretaria de Estado de Fazenda de Minas Gerais (SEF-MG)",
+          "tipo": "Orçamento Fiscal",
+          "url": "https://www.transparencia.mg.gov.br/planejamento-e-orcamento/execucao-orcamentaria",
+          "descricao": "Receitas de taxas de licenciamento (TFAMG) e despesas correntes executadas",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.feam.mg.gov.br",
+        "transparencia": "https://www.feam.mg.gov.br/transparencia",
+        "organograma": "https://www.feam.mg.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.feam.mg.gov.br/transparencia/relatorios-de-gestao",
+        "concursos": "https://www.feam.mg.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://barragens.feam.mg.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2023,
+        "vagas": 85,
+        "banca": "IBFC",
+        "edital": "Edital SEPLAG/FEAM nº 01/2022",
+        "hiatoAnosAnterior": 15,
+        "situacao": "Homologado e em fase de convocações / prorrogação",
+        "deficitEstimado": 180
+      }
+    },
+    {
+      "sigla": "IEPHA-MG",
+      "nomeCompleto": "Instituto Estadual do Patrimônio Histórico e Artístico de Minas Gerais",
+      "esfera": "Estadual",
+      "uf": "MG",
+      "papelRegulatorio": "Proteção, tombamento, registro de patrimônio imaterial, fiscalização de bens culturais protegidos e gestão do ICMS Patrimônio Cultural de MG",
+      "lideranca": {
+        "nome": "Marília Palhares Machado",
+        "cargo": "Presidente",
+        "gabinete": "Gabinete da Presidência",
+        "email": "presidencia@iepha.mg.gov.br",
+        "telefone": "(31) 3235-2812"
+      },
+      "contatos": {
+        "emailGeral": "comunicacao@iepha.mg.gov.br",
+        "telefones": [
+          "(31) 3235-2812",
+          "(31) 3235-2800"
+        ],
+        "enderecoSede": {
+          "logradouro": "Praça da Liberdade, 470, Edifício Rainha da Sucata",
+          "bairro": "Funcionários",
+          "cidade": "Belo Horizonte",
+          "uf": "MG",
+          "cep": "30140-010"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Escritório Regional de Ouro Preto e Mariana",
+            "cidade": "Ouro Preto",
+            "endereco": "Rua Direita, 102 - Centro Histórico",
+            "telefone": "(31) 3551-4015",
+            "email": "regional.ouropreto@iepha.mg.gov.br"
+          },
+          {
+            "nome": "Escritório Regional Diamantina e Vale do Jequitinhonha",
+            "cidade": "Diamantina",
+            "endereco": "Praça JK, 55 - Centro Histórico",
+            "telefone": "(38) 3531-2290",
+            "email": "regional.diamantina@iepha.mg.gov.br"
+          },
+          {
+            "nome": "Escritório Regional Sul de Minas",
+            "cidade": "São João del-Rei",
+            "endereco": "Rua Getúlio Vargas, 78 - Centro Histórico",
+            "telefone": "(32) 3371-8840",
+            "email": "regional.sjdr@iepha.mg.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria-Geral do Estado de Minas Gerais (OGE-MG)",
+          "url": "https://www.ouvidoriageral.mg.gov.br",
+          "telefone": "162",
+          "email": "ouvidoria@cultura.mg.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Fala.BR MG / Canal de Proteção ao Patrimônio",
+          "url": "https://www.transparencia.mg.gov.br/canais-de-atendimento",
+          "telefone": "181",
+          "email": "denuncia.patrimonio@iepha.mg.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Identificação, inventário, tombamento e registro de bens móveis, imóveis e imateriais de valor histórico em Minas Gerais",
+        "Emissão de anuências e pareceres técnicos de impacto ao patrimônio cultural tombado em processos de licenciamento ambiental",
+        "Avaliação e pontuação dos relatórios do ICMS Patrimônio Cultural dos 853 municípios mineiros",
+        "Vistoria, fiscalização e embargo de obras irregulares em perímetros de tombamento estadual",
+        "Apoio técnico à restauração de igrejas coloniais, centros urbanos e conjuntos arquitetônicos históricos"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 5.778/1971 (Criação do IEPHA-MG)",
+        "Lei Estadual nº 18.030/2009 (Critérios de distribuição da parcela de ICMS - ICMS Patrimônio Cultural)",
+        "Decreto Estadual nº 42.505/2002 (Procedimento para tombamento e registro de bens culturais)",
+        "Decreto Estadual nº 48.710/2023 (Competências, diretoria e estrutura interna do IEPHA-MG)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Conservação e Restauração",
+          "sigla": "DCR",
+          "cargo": "Diretor",
+          "responsavel": "Renato Cesar",
+          "funcao": "Elaboração e análise de projetos de restauração arquitetônica, conservação de acervos e intervenções físicas",
+          "telefone": "(31) 3235-2830",
+          "email": "dcr@iepha.mg.gov.br",
+          "endereco": "Praça da Liberdade, 470, 2º andar",
+          "urlPagina": "https://www.iepha.mg.gov.br/index.php/institucional/diretorias/dcr"
+        },
+        {
+          "nome": "Diretoria de Proteção e Memória",
+          "sigla": "DPM",
+          "cargo": "Diretora",
+          "responsavel": "Tânia Guimarães",
+          "funcao": "Instrução técnica de processos de tombamento, registro imaterial e pareceres de impacto cultural no licenciamento",
+          "telefone": "(31) 3235-2845",
+          "email": "dpm@iepha.mg.gov.br",
+          "endereco": "Praça da Liberdade, 470, 1º andar",
+          "urlPagina": "https://www.iepha.mg.gov.br/index.php/institucional/diretorias/dpm"
+        },
+        {
+          "nome": "Gerência de Articulação e ICMS Cultural",
+          "sigla": "GAICMS",
+          "cargo": "Gerente",
+          "responsavel": "Fábio Martins",
+          "funcao": "Gestão, capacitação municipal e pontuação anual dos 853 municípios participantes do programa ICMS Cultural",
+          "telefone": "(31) 3235-2850",
+          "email": "icms@iepha.mg.gov.br",
+          "endereco": "Praça da Liberdade, 470, 1º andar",
+          "urlPagina": "https://www.iepha.mg.gov.br/index.php/programas-e-acoes/icms-patrimonio-cultural"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 112,
+          "comissionados": 24,
+          "total": 136
+        },
+        {
+          "ano": 2021,
+          "efetivos": 82,
+          "comissionados": 31,
+          "total": 113
+        },
+        {
+          "ano": 2026,
+          "efetivos": 64,
+          "comissionados": 38,
+          "total": 102
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -42.86,
+      "variacaoPercentualTotal2016_2026": -25,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 22.4,
+          "orcamentoReal": 38.62
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 24.8,
+          "orcamentoReal": 32.29
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 28.5,
+          "orcamentoReal": 28.5
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -26.2,
+      "processosAtivosEstimados": 4850,
+      "analistasProcessamento": 18,
+      "indiceSobrecarga": 269.44,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência MG — Efetivo IEPHA",
+          "orgao": "Governo do Estado de Minas Gerais / SEPLAG",
+          "tipo": "Transparência Pública",
+          "url": "https://www.transparencia.mg.gov.br/estado-pessoal/despesa-com-pessoal",
+          "descricao": "Quadro de servidores concursados e comissionados do Instituto de Patrimônio Histórico",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório Anual de Gestão e Prestação de Contas IEPHA",
+          "orgao": "Tribunal de Contas do Estado de Minas Gerais (TCE-MG)",
+          "tipo": "Prestação de Contas / Auditoria",
+          "url": "https://www.iepha.mg.gov.br/index.php/transparencia/prestacao-de-contas",
+          "descricao": "Demonstrativos de execução orçamentária e resultados das ações de proteção ao patrimônio",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "LOA e Repasses do ICMS Patrimônio Cultural",
+          "orgao": "Secretaria de Estado de Cultura e Turismo de MG (SECULT)",
+          "tipo": "Orçamento e Indicadores",
+          "url": "https://www.iepha.mg.gov.br/index.php/programas-e-acoes/icms-patrimonio-cultural",
+          "descricao": "Série histórica de pontuação dos municípios e dotação do instituto",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.iepha.mg.gov.br",
+        "transparencia": "https://www.iepha.mg.gov.br/index.php/transparencia",
+        "organograma": "https://www.iepha.mg.gov.br/index.php/institucional/organograma",
+        "relatoriosGestao": "https://www.iepha.mg.gov.br/index.php/transparencia/prestacao-de-contas",
+        "concursos": "https://www.iepha.mg.gov.br/index.php/institucional/concursos",
+        "sistemasConsulta": "https://www.iepha.mg.gov.br/index.php/servicos/guia-de-bens-tombados"
+      },
+      "ultimoConcurso": {
+        "ano": 2013,
+        "vagas": 32,
+        "banca": "FGR Concursos",
+        "edital": "Edital IEPHA nº 01/2013",
+        "hiatoAnosAnterior": 13,
+        "situacao": "Expirado (aguardando autorização de novo certame)",
+        "deficitEstimado": 48
+      }
+    },
+    {
+      "sigla": "IPHAN",
+      "nomeCompleto": "Instituto do Patrimônio Histórico e Artístico Nacional",
+      "esfera": "Federal",
+      "uf": "DF",
+      "papelRegulatorio": "Tombamento, anuência em licenciamento ambiental para patrimônio arqueológico e histórico, fiscalização de bens da União e salvaguarda do patrimônio imaterial nacional",
+      "lideranca": {
+        "nome": "Leandro Grass",
+        "cargo": "Presidente",
+        "gabinete": "Gabinete da Presidência (GAPRE)",
+        "email": "presidencia@iphan.gov.br",
+        "telefone": "(61) 2024-5500"
+      },
+      "contatos": {
+        "emailGeral": "faleconosco@iphan.gov.br",
+        "telefones": [
+          "(61) 2024-5500",
+          "(61) 2024-5502"
+        ],
+        "enderecoSede": {
+          "logradouro": "SEPS Quadra 713/913, Bloco D, Edifício Iphan",
+          "bairro": "Asa Sul",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70390-135"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Superintendência do IPHAN em Minas Gerais (13ª SR)",
+            "cidade": "Belo Horizonte",
+            "endereco": "Rua Januária, 130 - Floresta",
+            "telefone": "(31) 3222-2440",
+            "email": "iphan-mg@iphan.gov.br"
+          },
+          {
+            "nome": "Superintendência do IPHAN no Rio de Janeiro (6ª SR)",
+            "cidade": "Rio de Janeiro",
+            "endereco": "Av. Rio Branco, 46, 3º andar - Centro",
+            "telefone": "(21) 2216-5700",
+            "email": "iphan-rj@iphan.gov.br"
+          },
+          {
+            "nome": "Superintendência do IPHAN na Bahia (7ª SR)",
+            "cidade": "Salvador",
+            "endereco": "Rua Carlos Gomes, 108 - Dois de Julho",
+            "telefone": "(71) 3321-2550",
+            "email": "iphan-ba@iphan.gov.br"
+          },
+          {
+            "nome": "Superintendência do IPHAN no Pará (2ª SR)",
+            "cidade": "Belém",
+            "endereco": "Av. Governador José Malcher, 563 - Nazaré",
+            "telefone": "(91) 3224-0699",
+            "email": "iphan-pa@iphan.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Plataforma Fala.BR / Ouvidoria do IPHAN",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 2024-5540",
+          "email": "ouvidoria@iphan.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Canal de Denúncias Fala.BR CGU/IPHAN",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "121",
+          "email": "corregedoria@iphan.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Tombamento nacional de conjuntos urbanos, arquitetônicos, paisagísticos e sítios históricos",
+        "Anuência obrigatória e emissão de Termos de Referência específicos em processos de licenciamento ambiental federal e estadual (Portaria Interministerial nº 60/2015 e Instrução Normativa Iphan nº 01/2015)",
+        "Gestão e cadastramento de sítios arqueológicos no Cadastro Nacional de Sítios Arqueológicos (CNSA)",
+        "Registro e salvaguarda de bens culturais de natureza imaterial reconhecidos como patrimônio do Brasil",
+        "Fiscalização e aplicação de penalidades administrativas por danos ou intervenções não autorizadas em patrimônio cultural acautelado"
+      ],
+      "marcoLegal": [
+        "Decreto-Lei nº 25/1937 (Organiza a proteção do patrimônio histórico e artístico nacional)",
+        "Lei Federal nº 3.924/1961 (Dispõe sobre os monumentos arqueológicos e pré-históricos)",
+        "Decreto Federal nº 3.551/2000 (Institui o Registro de Bens Culturais de Natureza Imaterial)",
+        "Instrução Normativa IPHAN nº 01/2015 (Regulamenta a atuação do Iphan nos processos de licenciamento ambiental)",
+        "Decreto Federal nº 11.178/2022 (Aprova a Estrutura Regimental do IPHAN)"
+      ],
+      "organograma": [
+        {
+          "nome": "Departamento de Patrimônio Material e Fiscalização",
+          "sigla": "DEPAM",
+          "cargo": "Diretor",
+          "responsavel": "Andrey Schlee",
+          "funcao": "Coordenação das ações de identificação, restauração, fiscalização e tombamento de monumentos e cidades históricas",
+          "telefone": "(61) 2024-5600",
+          "email": "depam@iphan.gov.br",
+          "endereco": "SEPS Quadra 713/913, Bloco D, 3º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/iphan/pt-br/composicao/depam"
+        },
+        {
+          "nome": "Centro Nacional de Arqueologia",
+          "sigla": "CNA",
+          "cargo": "Coordenadora-Geral",
+          "responsavel": "Jeane Santos",
+          "funcao": "Gestão do patrimônio arqueológico brasileiro, licenciamento arqueológico de empreendimentos e regulação de pesquisas",
+          "telefone": "(61) 2024-5700",
+          "email": "cna@iphan.gov.br",
+          "endereco": "SEPS Quadra 713/913, Bloco D, 2º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/iphan/pt-br/composicao/cna"
+        },
+        {
+          "nome": "Departamento de Patrimônio Imaterial",
+          "sigla": "DPI",
+          "cargo": "Diretora",
+          "responsavel": "Deyvesson Gusmão",
+          "funcao": "Instrução de processos de registro de saberes, celebrações, formas de expressão e lugares tradicionais",
+          "telefone": "(61) 2024-5800",
+          "email": "dpi@iphan.gov.br",
+          "endereco": "SEPS Quadra 713/913, Bloco D, 4º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/iphan/pt-br/composicao/dpi"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 1250,
+          "comissionados": 210,
+          "total": 1460
+        },
+        {
+          "ano": 2021,
+          "efetivos": 980,
+          "comissionados": 245,
+          "total": 1225
+        },
+        {
+          "ano": 2026,
+          "efetivos": 860,
+          "comissionados": 290,
+          "total": 1150
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -31.2,
+      "variacaoPercentualTotal2016_2026": -21.23,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 345,
+          "orcamentoReal": 594.78
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 385,
+          "orcamentoReal": 501.27
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 462,
+          "orcamentoReal": 462
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -22.32,
+      "processosAtivosEstimados": 19400,
+      "analistasProcessamento": 165,
+      "indiceSobrecarga": 117.58,
+      "fontes": [
+        {
+          "titulo": "Painel Estatístico de Pessoal (PEP) — Ministério da Gestão / SIAPE",
+          "orgao": "Governo Federal / MGI",
+          "tipo": "Transparência Federal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Quadro de servidores de carreira do IPHAN, aposentadorias e vacâncias",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Gestão e Prestação de Contas Ordinária IPHAN",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Prestação de Contas / Auditoria",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Relatórios de auditoria operacional sobre a capacidade técnica e orçamentária do IPHAN",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Orçamento da União (SIAFI / Siga Brasil)",
+          "orgao": "Senado Federal / Câmara dos Deputados",
+          "tipo": "Execução Orçamentária Federal",
+          "url": "https://www12.senado.leg.br/orcamento/sigabrasil",
+          "descricao": "Dotação autorizada, liquidada e paga da Ação Orçamentária de Preservação do Patrimônio Cultural",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/iphan",
+        "transparencia": "https://www.gov.br/iphan/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/iphan/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/iphan/pt-br/acesso-a-informacao/prestacao-de-contas",
+        "concursos": "https://www.gov.br/iphan/pt-br/acesso-a-informacao/concursos-e-selecoes",
+        "sistemasConsulta": "https://sicg.iphan.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2018,
+        "vagas": 411,
+        "banca": "Cebraspe",
+        "edital": "Edital IPHAN nº 01/2018",
+        "hiatoAnosAnterior": 9,
+        "situacao": "Expirado (pleito de 500 vagas protocolado no MGI)",
+        "deficitEstimado": 390
+      }
+    },
+    {
+      "sigla": "ANA",
+      "nomeCompleto": "Agência Nacional de Águas e Saneamento Básico",
+      "esfera": "Federal",
+      "uf": "DF",
+      "papelRegulatorio": "Regulação do acesso aos corpos hídricos de domínio da União, instituição de normas de referência para o saneamento básico e monitoramento da segurança de barragens hídricas",
+      "lideranca": {
+        "nome": "Veronica Sánchez da Cruz Rios",
+        "cargo": "Diretora-Presidente",
+        "gabinete": "Gabinete da Diretoria-Colegiada",
+        "email": "presidencia@ana.gov.br",
+        "telefone": "(61) 2109-5400"
+      },
+      "contatos": {
+        "emailGeral": "faleconosco@ana.gov.br",
+        "telefones": [
+          "(61) 2109-5400",
+          "0800-725-5455"
+        ],
+        "enderecoSede": {
+          "logradouro": "Setor Policial, Área 5, Quadra 3, Blocos B, L e M",
+          "bairro": "Complexo da Polícia Federal",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70610-200"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Unidade Regional de Monitoramento da Bacia do Rio São Francisco",
+            "cidade": "Salvador",
+            "endereco": "Av. Tancredo Neves, 1632 - Caminho das Árvores",
+            "telefone": "(71) 3115-8900",
+            "email": "regional.saofrancisco@ana.gov.br"
+          },
+          {
+            "nome": "Unidade Regional da Bacia do Rio Doce e Leste",
+            "cidade": "Belo Horizonte",
+            "endereco": "Av. Álvares Cabral, 1600 - Santo Agostinho",
+            "telefone": "(31) 3290-7100",
+            "email": "regional.riodoce@ana.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria da ANA / Fala.BR",
+          "url": "https://www.gov.br/ana/pt-br/canais_atendimento/ouvidoria",
+          "telefone": "(61) 2109-5555",
+          "email": "ouvidoria@ana.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Plataforma Fala.BR / Corregedoria da ANA",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "0800-725-5455",
+          "email": "corregedoria@ana.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Emissão e fiscalização de outorgas de direito de uso de recursos hídricos em rios de domínio da União (interestaduais e transfronteiriços)",
+        "Edição de Normas de Referência (NRs) regulatórias para a prestação dos serviços públicos de saneamento básico (Marco Legal do Saneamento)",
+        "Coordenação do Sistema Nacional de Informações sobre Recursos Hídricos (SNIRH)",
+        "Supervisão e consolidação do Relatório de Segurança de Barragens (RSB) fiscalizadas no Brasil",
+        "Regulação de tarifas de transposição e adução de água bruta (ex: Projeto de Integração do Rio São Francisco - PISF)"
+      ],
+      "marcoLegal": [
+        "Lei Federal nº 9.433/1997 (Institui a Política Nacional de Recursos Hídricos - Lei das Águas)",
+        "Lei Federal nº 9.984/2000 (Cria a Agência Nacional de Águas - ANA)",
+        "Lei Federal nº 12.334/2010 (Estabelece a Política Nacional de Segurança de Barragens - PNSB)",
+        "Lei Federal nº 14.026/2020 (Atualiza o Marco Legal do Saneamento Básico e confere à ANA competência normativa)",
+        "Resolução ANA nº 1938/2017 (Regulamento de outorga e fiscalização de usos hídricos)"
+      ],
+      "organograma": [
+        {
+          "nome": "Superintendência de Regulação de Recursos Hídricos",
+          "sigla": "SRH",
+          "cargo": "Superintendente",
+          "responsavel": "Vitor Saback",
+          "funcao": "Análise técnica e deferimento de outorgas de captação e lançamento em rios interestaduais",
+          "telefone": "(61) 2109-5430",
+          "email": "srh@ana.gov.br",
+          "endereco": "Setor Policial Sul, Bloco B, 2º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ana/pt-br/composicao/srh"
+        },
+        {
+          "nome": "Superintendência de Regulação de Saneamento Básico",
+          "sigla": "SAS",
+          "cargo": "Superintendente",
+          "responsavel": "Cintia Leal",
+          "funcao": "Elaboração de normas de referência sobre tarifas, metas de universalização e governança do saneamento",
+          "telefone": "(61) 2109-5480",
+          "email": "saneamento@ana.gov.br",
+          "endereco": "Setor Policial Sul, Bloco L, 1º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ana/pt-br/composicao/sas"
+        },
+        {
+          "nome": "Superintendência de Fiscalização e Segurança de Barragens",
+          "sigla": "SFI",
+          "cargo": "Superintendente",
+          "responsavel": "Alan Vaz Lopes",
+          "funcao": "Vistorias de campo, auditoria de segurança de barramentos de usos múltiplos e penalidades a infratores",
+          "telefone": "(61) 2109-5510",
+          "email": "fiscalizacao@ana.gov.br",
+          "endereco": "Setor Policial Sul, Bloco M, 2º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ana/pt-br/composicao/sfi"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 430,
+          "comissionados": 65,
+          "total": 495
+        },
+        {
+          "ano": 2021,
+          "efetivos": 375,
+          "comissionados": 75,
+          "total": 450
+        },
+        {
+          "ano": 2026,
+          "efetivos": 342,
+          "comissionados": 88,
+          "total": 430
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -20.47,
+      "variacaoPercentualTotal2016_2026": -13.13,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 380,
+          "orcamentoReal": 655.12
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 420,
+          "orcamentoReal": 546.84
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 510,
+          "orcamentoReal": 510
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -22.15,
+      "processosAtivosEstimados": 12800,
+      "analistasProcessamento": 110,
+      "indiceSobrecarga": 116.36,
+      "fontes": [
+        {
+          "titulo": "Painel de Pessoal das Agências Reguladoras Federais — MGI",
+          "orgao": "Governo Federal / Ministério da Gestão",
+          "tipo": "Transparência Pessoal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Especialistas em regulação de recursos hídricos e saneamento, analistas administrativos",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Gestão e Contas Anuais ANA — TCU",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Auditoria de Gestão",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Acórdãos do TCU relativos à capacidade regulatória da ANA pós-novo marco de saneamento",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Orçamento Geral da União — Agência Nacional de Águas",
+          "orgao": "Ministério da Fazenda / SOF",
+          "tipo": "Execução Orçamentária",
+          "url": "https://portaldatransparencia.gov.br/orgaos/20401",
+          "descricao": "Série histórica de dotações orçamentárias e arrecadação de taxas de fiscalização",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/ana",
+        "transparencia": "https://www.gov.br/ana/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/ana/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/ana/pt-br/acesso-a-informacao/acoes-e-programas/relatorios-de-gestao",
+        "concursos": "https://www.gov.br/ana/pt-br/acesso-a-informacao/concursos-e-selecoes",
+        "sistemasConsulta": "https://snirh.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2024,
+        "vagas": 40,
+        "banca": "Fundação Cesgranrio / Concurso Público Nacional Unificado (CPNU)",
+        "edital": "Edital CPNU Bloco 6 - Serviços de Regulação nº 06/2024",
+        "hiatoAnosAnterior": 12,
+        "situacao": "Em andamento / homologação de aprovados",
+        "deficitEstimado": 88
+      }
+    },
+    {
+      "sigla": "ANEEL",
+      "nomeCompleto": "Agência Nacional de Energia Elétrica",
+      "esfera": "Federal",
+      "uf": "DF",
+      "papelRegulatorio": "Regulação e fiscalização da geração, transmissão e distribuição de energia elétrica, incluindo aproveitamentos hidrelétricos e segurança de barragens de hidrelétricas",
+      "lideranca": {
+        "nome": "Sandoval de Araújo Feitosa Neto",
+        "cargo": "Diretor-Geral",
+        "gabinete": "Gabinete da Diretoria-Geral (GDG)",
+        "email": "diretoria@aneel.gov.br",
+        "telefone": "(61) 2192-8600"
+      },
+      "contatos": {
+        "emailGeral": "ouvidoria@aneel.gov.br",
+        "telefones": [
+          "(61) 2192-8600",
+          "167"
+        ],
+        "enderecoSede": {
+          "logradouro": "SGAN 603, Módulos I e J",
+          "bairro": "Asa Norte",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70830-110"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Agência Reguladora Delegada ARSESP",
+            "cidade": "São Paulo",
+            "endereco": "Av. Paulista, 2313 - Bela Vista",
+            "telefone": "(11) 3293-5100",
+            "email": "energia@arsesp.sp.gov.br"
+          },
+          {
+            "nome": "Agência Reguladora Delegada ARCON-PA",
+            "cidade": "Belém",
+            "endereco": "Rua dos Mundurucus, 1600 - Batista Campos",
+            "telefone": "(91) 3241-1188",
+            "email": "energia@arcon.pa.gov.br"
+          },
+          {
+            "nome": "Agência Reguladora Delegada AGERGS-RS",
+            "cidade": "Porto Alegre",
+            "endereco": "Av. Borges de Medeiros, 659 - Praia de Belas",
+            "telefone": "(51) 3288-8800",
+            "email": "energia@agergs.rs.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria Setorial ANEEL / Central 167",
+          "url": "https://www.gov.br/aneel/pt-br/canais_atendimento/ouvidoria",
+          "telefone": "167",
+          "email": "ouvidoria@aneel.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Fala.BR CGU / Corregedoria da ANEEL",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 2192-8700",
+          "email": "corregedoria@aneel.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Regulação e fiscalização das usinas geradoras hidrelétricas (UHEs, PCHs, CGHs), eólicas, solares e termelétricas",
+        "Fiscalização da segurança de barragens de usinas hidrelétricas no território nacional (PNSB)",
+        "Homologação e fiscalização das concessões de transmissão e redes de distribuição de energia",
+        "Fixação de tarifas de energia e bandeiras tarifárias para o mercado regulado",
+        "Mediação de conflitos técnicos e aplicação de multas regulatórias a concessionárias de energia"
+      ],
+      "marcoLegal": [
+        "Lei Federal nº 9.427/1996 (Institui a Agência Nacional de Energia Elétrica - ANEEL)",
+        "Lei Federal nº 9.074/1995 (Estabelece normas para outorga e prorrogações das concessões de energia)",
+        "Lei Federal nº 12.334/2010 (Política Nacional de Segurança de Barragens)",
+        "Resolução Normativa ANEEL nº 1.000/2021 (Regras de prestação do serviço público de distribuição de energia)",
+        "Resolução Normativa ANEEL nº 1.064/2023 (Segurança de barragens do setor elétrico)"
+      ],
+      "organograma": [
+        {
+          "nome": "Superintendência de Concessões e Autorizações de Geração",
+          "sigla": "SCG",
+          "cargo": "Superintendente",
+          "responsavel": "Carlos Alberto Calixto",
+          "funcao": "Outorga e aprovação técnica de projetos de usinas hidrelétricas, solares, eólicas e biomassa",
+          "telefone": "(61) 2192-8630",
+          "email": "scg@aneel.gov.br",
+          "endereco": "SGAN 603, Módulo I, 2º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/aneel/pt-br/composicao/scg"
+        },
+        {
+          "nome": "Superintendência de Fiscalização dos Serviços de Geração",
+          "sigla": "SFG",
+          "cargo": "Superintendente",
+          "responsavel": "Gentil Nogueira de Sá Jr.",
+          "funcao": "Inspeção e fiscalização técnica das usinas hidrelétricas e monitoramento da segurança estrutural de barragens",
+          "telefone": "(61) 2192-8650",
+          "email": "sfg@aneel.gov.br",
+          "endereco": "SGAN 603, Módulo J, 1º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/aneel/pt-br/composicao/sfg"
+        },
+        {
+          "nome": "Superintendência de Regulação dos Serviços de Transmissão",
+          "sigla": "SRT",
+          "cargo": "Superintendente",
+          "responsavel": "Marcio Pereira",
+          "funcao": "Regulação econômica, acesso à rede básica e planejamento regulatório de linhas de transmissão",
+          "telefone": "(61) 2192-8680",
+          "email": "srt@aneel.gov.br",
+          "endereco": "SGAN 603, Módulo I, 3º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/aneel/pt-br/composicao/srt"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 690,
+          "comissionados": 95,
+          "total": 785
+        },
+        {
+          "ano": 2021,
+          "efetivos": 585,
+          "comissionados": 110,
+          "total": 695
+        },
+        {
+          "ano": 2026,
+          "efetivos": 535,
+          "comissionados": 130,
+          "total": 665
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -22.46,
+      "variacaoPercentualTotal2016_2026": -15.29,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 520,
+          "orcamentoReal": 896.48
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 580,
+          "orcamentoReal": 755.16
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 685,
+          "orcamentoReal": 685
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -23.59,
+      "processosAtivosEstimados": 28500,
+      "analistasProcessamento": 195,
+      "indiceSobrecarga": 146.15,
+      "fontes": [
+        {
+          "titulo": "Painel Estatístico de Pessoal — ANEEL / MGI",
+          "orgao": "Governo Federal / MGI",
+          "tipo": "Transparência Federal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Quadro de especialistas em regulação do setor elétrico e técnicos regulatórios",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Auditoria de Governança e Fiscalização de Barragens ANEEL",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Acórdão TCU / Auditoria Operacional",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Avaliação da capacidade institucional para fiscalizar mais de 700 barragens hidrelétricas no país",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Orçamento da União — Agência Nacional de Energia Elétrica",
+          "orgao": "Câmara dos Deputados / SOF",
+          "tipo": "Execução Orçamentária",
+          "url": "https://portaldatransparencia.gov.br/orgaos/32210",
+          "descricao": "Execução financeira e contingenciamento da Taxa de Fiscalização de Serviços de Energia Elétrica (TFSEE)",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/aneel",
+        "transparencia": "https://www.gov.br/aneel/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/aneel/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/aneel/pt-br/acesso-a-informacao/relatorios-de-gestao",
+        "concursos": "https://www.gov.br/aneel/pt-br/acesso-a-informacao/concursos",
+        "sistemasConsulta": "https://sigael.aneel.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2024,
+        "vagas": 40,
+        "banca": "Fundação Cesgranrio / Concurso Público Nacional Unificado (CPNU)",
+        "edital": "Edital CPNU Bloco 6 - Serviços de Regulação nº 06/2024",
+        "hiatoAnosAnterior": 14,
+        "situacao": "Em andamento / homologação de aprovados",
+        "deficitEstimado": 155
+      }
+    },
+    {
+      "sigla": "IBAMA",
+      "nomeCompleto": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "esfera": "Federal",
+      "uf": "DF",
+      "papelRegulatorio": "Poder de polícia ambiental federal, licenciamento ambiental de grandes empreendimentos de impacto nacional ou interestadual, controle da qualidade ambiental e fiscalização",
+      "lideranca": {
+        "nome": "Rodrigo Agostinho",
+        "cargo": "Presidente",
+        "gabinete": "Gabinete da Presidência (GAPRE)",
+        "email": "presidencia.sede@ibama.gov.br",
+        "telefone": "(61) 3316-1001"
+      },
+      "contatos": {
+        "emailGeral": "faleconosco.sede@ibama.gov.br",
+        "telefones": [
+          "(61) 3316-1001",
+          "0800-061-8080"
+        ],
+        "enderecoSede": {
+          "logradouro": "SCEN Trecho 2, Edifício Sede do Ibama",
+          "bairro": "Asa Norte",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70818-900"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Superintendência do IBAMA em Minas Gerais (SUPES-MG)",
+            "cidade": "Belo Horizonte",
+            "endereco": "Av. do Contorno, 8121 - Santo Agostinho",
+            "telefone": "(31) 3555-6100",
+            "email": "supes.mg@ibama.gov.br"
+          },
+          {
+            "nome": "Superintendência do IBAMA no Pará (SUPES-PA)",
+            "cidade": "Belém",
+            "endereco": "Travessa Rui Barbosa, 1500 - Nazaré",
+            "telefone": "(91) 3216-6500",
+            "email": "supes.pa@ibama.gov.br"
+          },
+          {
+            "nome": "Superintendência do IBAMA em Mato Grosso (SUPES-MT)",
+            "cidade": "Cuiabá",
+            "endereco": "Rua 2, Quadra 4, Setor A - Centro Político Administrativo",
+            "telefone": "(65) 3648-7300",
+            "email": "supes.mt@ibama.gov.br"
+          },
+          {
+            "nome": "Superintendência do IBAMA no Rio de Janeiro (SUPES-RJ)",
+            "cidade": "Rio de Janeiro",
+            "endereco": "Praça XV de Novembro, 42 - Centro",
+            "telefone": "(21) 3077-4200",
+            "email": "supes.rj@ibama.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Plataforma Fala.BR / Ouvidoria-Geral do IBAMA",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 3316-1014",
+          "email": "ouvidoria.sede@ibama.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Linha Verde IBAMA / Fala.BR Denúncias",
+          "url": "https://www.gov.br/ibama/pt-br/canais_atendimento/fale-com-o-ibama",
+          "telefone": "0800-061-8080",
+          "email": "linhaverde.sede@ibama.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Licenciamento ambiental de empreendimentos de significativo impacto em âmbito federal (petróleo offshore, rodovias federais, portos, hidrelétricas interestaduais)",
+        "Poder de polícia ambiental federal: fiscalização, apreensão, embargo de obras irregulares e aplicação de multas",
+        "Operação e gestão do Centro Nacional de Prevenção e Combate aos Incêndios Florestais (Prevfogo)",
+        "Controle e fiscalização do comércio exterior de flora e fauna silvestres (Convenção CITES)",
+        "Controle de substâncias químicas perigosas, agrotóxicos e cadastro técnico federal (CTF/APP e CTF/AIDA)"
+      ],
+      "marcoLegal": [
+        "Lei Federal nº 7.735/1989 (Cria o Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis - IBAMA)",
+        "Lei Federal nº 6.938/1981 (Dispõe sobre a Política Nacional do Meio Ambiente - PNMA)",
+        "Lei Federal nº 9.605/1998 (Lei de Crimes Ambientais)",
+        "Lei Complementar nº 140/2011 (Fixa normas de cooperação federativa no licenciamento ambiental)",
+        "Decreto Federal nº 11.095/2022 (Aprova a Estrutura Regimental do IBAMA)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Licenciamento Ambiental",
+          "sigla": "DILIC",
+          "cargo": "Diretor",
+          "responsavel": "Itagyba Alvarenga Neto",
+          "funcao": "Coordenação das coordenações-gerais de petróleo, mineração, energia e transportes federais",
+          "telefone": "(61) 3316-1300",
+          "email": "dilic.sede@ibama.gov.br",
+          "endereco": "SCEN Trecho 2, Bloco C, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ibama/pt-br/composicao/dilic"
+        },
+        {
+          "nome": "Diretoria de Proteção Ambiental",
+          "sigla": "DIPRO",
+          "cargo": "Diretor",
+          "responsavel": "Jair Schmitt",
+          "funcao": "Planejamento e execução de operações nacionais de fiscalização contra desmatamento ilegal, garimpo e grilagem",
+          "telefone": "(61) 3316-1200",
+          "email": "dipro.sede@ibama.gov.br",
+          "endereco": "SCEN Trecho 2, Bloco B, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ibama/pt-br/composicao/dipro"
+        },
+        {
+          "nome": "Diretoria de Qualidade Ambiental",
+          "sigla": "DIQUA",
+          "cargo": "Diretora",
+          "responsavel": "Cristianne Pereira",
+          "funcao": "Avaliação ambiental de agrotóxicos, gestão do Cadastro Técnico Federal e monitoramento de poluentes",
+          "telefone": "(61) 3316-1400",
+          "email": "diqua.sede@ibama.gov.br",
+          "endereco": "SCEN Trecho 2, Bloco A, Brasília - DF",
+          "urlPagina": "https://www.gov.br/ibama/pt-br/composicao/diqua"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 3120,
+          "comissionados": 380,
+          "total": 3500
+        },
+        {
+          "ano": 2021,
+          "efetivos": 2240,
+          "comissionados": 420,
+          "total": 2660
+        },
+        {
+          "ano": 2026,
+          "efetivos": 2080,
+          "comissionados": 460,
+          "total": 2540
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -33.33,
+      "variacaoPercentualTotal2016_2026": -27.43,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 1450,
+          "orcamentoReal": 2499.8
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 1580,
+          "orcamentoReal": 2057.16
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 1950,
+          "orcamentoReal": 1950
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -21.99,
+      "processosAtivosEstimados": 62000,
+      "analistasProcessamento": 320,
+      "indiceSobrecarga": 193.75,
+      "fontes": [
+        {
+          "titulo": "Painel Estatístico de Pessoal (PEP) — Analistas Ambientais do IBAMA",
+          "orgao": "Governo Federal / MGI",
+          "tipo": "Transparência Federal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Quadro da Carreira de Especialista em Meio Ambiente (CEMA) e histórico de aposentadorias",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Fiscalização e Auditoria Operacional do TCU no IBAMA",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Acórdão TCU / Auditoria de Desempenho",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Avaliação sobre a defasagem no quadro de fiscais ambientais e tempo médio de licenciamento",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Execução Orçamentária e Financeira do IBAMA (SIAFI)",
+          "orgao": "Controladoria-Geral da União (CGU) / Tesouro Nacional",
+          "tipo": "Execução Orçamentária",
+          "url": "https://portaldatransparencia.gov.br/orgaos/44201",
+          "descricao": "Série histórica de dotações do Fundo Nacional do Meio Ambiente e recursos de fiscalização",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/ibama",
+        "transparencia": "https://www.gov.br/ibama/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/ibama/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/ibama/pt-br/acesso-a-informacao/acoes-e-programas/relatorios-de-gestao",
+        "concursos": "https://www.gov.br/ibama/pt-br/acesso-a-informacao/concursos-e-selecoes",
+        "sistemasConsulta": "https://servicos.ibama.gov.br/licenciamento"
+      },
+      "ultimoConcurso": {
+        "ano": 2022,
+        "vagas": 568,
+        "banca": "Cebraspe",
+        "edital": "Edital IBAMA nº 01/2021",
+        "hiatoAnosAnterior": 9,
+        "situacao": "Vigente / prorrogado até 2026 com chamamento de excedentes",
+        "deficitEstimado": 1040
+      }
+    },
+    {
+      "sigla": "ICMBio",
+      "nomeCompleto": "Instituto Chico Mendes de Conservação da Biodiversidade",
+      "esfera": "Federal",
+      "uf": "DF",
+      "papelRegulatorio": "Criação, gestão e proteção de 334 Unidades de Conservação Federais, autorizações de pesquisa e planos de ação nacional para conservação de espécies ameaçadas",
+      "lideranca": {
+        "nome": "Mauro Pires",
+        "cargo": "Presidente",
+        "gabinete": "Gabinete da Presidência (GAPRE)",
+        "email": "presidencia@icmbio.gov.br",
+        "telefone": "(61) 2028-9000"
+      },
+      "contatos": {
+        "emailGeral": "comunicacao@icmbio.gov.br",
+        "telefones": [
+          "(61) 2028-9000",
+          "(61) 2028-9005"
+        ],
+        "enderecoSede": {
+          "logradouro": "EQSW 103/104, Bloco C, Complexo Administrativo",
+          "bairro": "Setor Sudoeste",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70670-350"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Gerência Regional 11 (Sudeste / MG-RJ-ES)",
+            "cidade": "Belo Horizonte",
+            "endereco": "Av. do Contorno, 8121 - Santo Agostinho",
+            "telefone": "(31) 3555-6300",
+            "email": "gr11@icmbio.gov.br"
+          },
+          {
+            "nome": "Gerência Regional 1 (Norte / Pará Ocidental e Amapá)",
+            "cidade": "Santarém",
+            "endereco": "Av. Tapajós, 2201 - Laguinho",
+            "telefone": "(93) 3523-1120",
+            "email": "gr1@icmbio.gov.br"
+          },
+          {
+            "nome": "Gerência Regional 4 (Centro-Oeste / MT-MS)",
+            "cidade": "Cuiabá",
+            "endereco": "Rua 2, Quadra 4 - Centro Político Administrativo",
+            "telefone": "(65) 3648-7350",
+            "email": "gr4@icmbio.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Plataforma Fala.BR / Ouvidoria do ICMBio",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 2028-9250",
+          "email": "ouvidoria@icmbio.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Fala.BR CGU / Canal de Ilícitos Ambientais em UCs",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 2028-9000",
+          "email": "denuncia@icmbio.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Gestão, monitoramento da biodiversidade e fiscalização de mais de 170 milhões de hectares em 334 UCs Federais",
+        "Elaboração e implementação dos Planos de Ação Nacional para Conservação de Espécies Ameaçadas de Extinção (PANs)",
+        "Consolidação territorial e regularização fundiária de Parques Nacionais, Reservas Biológicas e Reservas Extrativistas",
+        "Concessão de serviços de apoio à visitação e ecoturismo em Parques Nacionais",
+        "Emissão de autorizações para captura, coleta e pesquisa biológica em unidades de conservação federais (Sisbio)"
+      ],
+      "marcoLegal": [
+        "Lei Federal nº 11.516/2007 (Cria o Instituto Chico Mendes de Conservação da Biodiversidade - ICMBio)",
+        "Lei Federal nº 9.985/2000 (Institui o Sistema Nacional de Unidades de Conservação da Natureza - SNUC)",
+        "Decreto Federal nº 4.340/2002 (Regulamenta artigos do SNUC)",
+        "Decreto Federal nº 11.193/2022 (Aprova a Estrutura Regimental do ICMBio)",
+        "Portaria ICMBio nº 1.150/2022 (Regras para elaboração de planos de manejo de UCs federais)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Criação e Manejo de Unidades de Conservação",
+          "sigla": "DIMAN",
+          "cargo": "Diretor",
+          "responsavel": "Bernardo Issa",
+          "funcao": "Planejamento, elaboração de planos de manejo, zones e ordenamento das unidades de conservação",
+          "telefone": "(61) 2028-9100",
+          "email": "diman@icmbio.gov.br",
+          "endereco": "EQSW 103/104, Bloco C, 1º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/icmbio/pt-br/composicao/diman"
+        },
+        {
+          "nome": "Diretoria de Ações Socioambientais e Consolidação Territorial",
+          "sigla": "DISAT",
+          "cargo": "Diretora",
+          "responsavel": "Kátia Torres",
+          "funcao": "Desapropriações, regularização fundiária, gestão de conflitos territoriais e apoio a comunidades tradicionais",
+          "telefone": "(61) 2028-9150",
+          "email": "disat@icmbio.gov.br",
+          "endereco": "EQSW 103/104, Bloco C, 2º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/icmbio/pt-br/composicao/disat"
+        },
+        {
+          "nome": "Diretoria de Pesquisa, Avaliação e Monitoramento da Biodiversidade",
+          "sigla": "DIBIO",
+          "cargo": "Diretor",
+          "responsavel": "Marcelo Marcelino",
+          "funcao": "Coordenação dos 14 Centros Nacionais de Pesquisa e Conservação e lista oficial de fauna ameaçada",
+          "telefone": "(61) 2028-9200",
+          "email": "dibio@icmbio.gov.br",
+          "endereco": "EQSW 103/104, Bloco C, 3º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/icmbio/pt-br/composicao/dibio"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 2420,
+          "comissionados": 290,
+          "total": 2710
+        },
+        {
+          "ano": 2021,
+          "efetivos": 1540,
+          "comissionados": 330,
+          "total": 1870
+        },
+        {
+          "ano": 2026,
+          "efetivos": 1450,
+          "comissionados": 380,
+          "total": 1830
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -40.08,
+      "variacaoPercentualTotal2016_2026": -32.47,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 1120,
+          "orcamentoReal": 1930.88
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 1180,
+          "orcamentoReal": 1536.36
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 1420,
+          "orcamentoReal": 1420
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -26.46,
+      "processosAtivosEstimados": 38000,
+      "analistasProcessamento": 210,
+      "indiceSobrecarga": 180.95,
+      "fontes": [
+        {
+          "titulo": "Painel de Pessoal — Força de Trabalho do ICMBio",
+          "orgao": "Governo Federal / Ministério da Gestão (MGI)",
+          "tipo": "Transparência Federal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Quadro de analistas ambientais e técnicos ambientais lotados em UCs federais",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Gestão e Contas Anuais do ICMBio",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Auditoria de Contas",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Avaliação de eficácia da proteção territorial e déficit crônico de servidores nas UCs",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Execução Orçamentária e Financeira — Gestão de Unidades de Conservação",
+          "orgao": "Tesouro Nacional / Siga Brasil",
+          "tipo": "Execução Orçamentária",
+          "url": "https://portaldatransparencia.gov.br/orgaos/44207",
+          "descricao": "Dotação orçamentária para consolidação de UCs e prevenção a incêndios florestais",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/icmbio",
+        "transparencia": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/icmbio/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/acoes-e-programas/relatorios-de-gestao",
+        "concursos": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/concursos-e-selecoes",
+        "sistemasConsulta": "https://www.gov.br/icmbio/pt-br/servicos/sistemas/sisbio"
+      },
+      "ultimoConcurso": {
+        "ano": 2022,
+        "vagas": 171,
+        "banca": "Cebraspe",
+        "edital": "Edital ICMBio nº 01/2021",
+        "hiatoAnosAnterior": 8,
+        "situacao": "Vigente / prorrogado até 2026 com chamamento de excedentes",
+        "deficitEstimado": 970
+      }
+    },
+    {
+      "sigla": "CETESB-SP",
+      "nomeCompleto": "Companhia Ambiental do Estado de São Paulo",
+      "esfera": "Estadual",
+      "uf": "SP",
+      "papelRegulatorio": "Licenciamento, fiscalização e monitoramento da qualidade das águas, do ar e do solo no Estado de São Paulo, além de atendimento a emergências químicas",
+      "lideranca": {
+        "nome": "Thomaz Toledo",
+        "cargo": "Diretor-Presidente",
+        "gabinete": "Presidência da CETESB",
+        "email": "presidencia_cetesb@sp.gov.br",
+        "telefone": "(11) 3133-3000"
+      },
+      "contatos": {
+        "emailGeral": "cetesb@sp.gov.br",
+        "telefones": [
+          "(11) 3133-3000",
+          "0800-011-3560"
+        ],
+        "enderecoSede": {
+          "logradouro": "Av. Professor Frederico Hermann Júnior, 345",
+          "bairro": "Alto de Pinheiros",
+          "cidade": "São Paulo",
+          "uf": "SP",
+          "cep": "05459-900"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Agência Ambiental de Campinas",
+            "cidade": "Campinas",
+            "endereco": "Rua Barão de Jaguara, 1481 - Centro",
+            "telefone": "(19) 3232-1522",
+            "email": "campinas_cetesb@sp.gov.br"
+          },
+          {
+            "nome": "Agência Ambiental de Santos",
+            "cidade": "Santos",
+            "endereco": "Praça dos Andradas, 20 - Centro",
+            "telefone": "(13) 3219-5020",
+            "email": "santos_cetesb@sp.gov.br"
+          },
+          {
+            "nome": "Agência Ambiental de Ribeirão Preto",
+            "cidade": "Ribeirão Preto",
+            "endereco": "Av. Presidente Kennedy, 1765 - Ribeirânia",
+            "telefone": "(16) 3624-9000",
+            "email": "ribeiraopreto_cetesb@sp.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria Geral da CETESB",
+          "url": "https://cetesb.sp.gov.br/ouvidoria",
+          "telefone": "(11) 3133-3535",
+          "email": "ouvidoria@cetesbnet.sp.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque CETESB / Emergências Químicas",
+          "url": "https://cetesb.sp.gov.br/denuncias",
+          "telefone": "0800-011-3560",
+          "email": "denuncia@cetesbnet.sp.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Licenciamento ambiental das atividades industriais, minerárias, químicas e de saneamento no Estado de São Paulo",
+        "Operação da rede telemétrica de monitoramento da qualidade do ar e balneabilidade de praias",
+        "Gestão e cadastramento de áreas contaminadas e fiscalização de passivos ambientais industriais",
+        "Pronto-atendimento a emergências químicas e acidentes com transporte de cargas perigosas",
+        "Controle de efluentes industriais, emissões atmosféricas e resíduos perigosos (CADRI)"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 118/1973 (Autoriza a constituição da CETESB)",
+        "Lei Estadual nº 997/1976 (Dispõe sobre o controle da poluição do meio ambiente)",
+        "Lei Estadual nº 13.577/2009 (Dispõe sobre diretrizes para proteção do solo e áreas contaminadas)",
+        "Decreto Estadual nº 8.468/1976 (Regulamento da Lei de Prevenção e Controle da Poluição)",
+        "Decreto Estadual nº 66.981/2022 (Modernização e regras de processos digitais da CETESB)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Controle e Licenciamento Ambiental",
+          "sigla": "DC",
+          "cargo": "Diretor",
+          "responsavel": "Adriano Queiroz",
+          "funcao": "Coordenação das agências ambientais regionais e emissão de licenças de instalação e operação",
+          "telefone": "(11) 3133-3300",
+          "email": "dc_cetesb@sp.gov.br",
+          "endereco": "Av. Prof. Frederico Hermann Jr, 345, Prédio 1, São Paulo - SP",
+          "urlPagina": "https://cetesb.sp.gov.br/institucional/diretorias/dc"
+        },
+        {
+          "nome": "Diretoria de Engenharia e Qualidade Ambiental",
+          "sigla": "DE",
+          "cargo": "Diretora",
+          "responsavel": "Maria Cristina",
+          "funcao": "Laboratórios de análises toxicológicas, monitoramento de bacias e medição da qualidade do ar",
+          "telefone": "(11) 3133-3400",
+          "email": "de_cetesb@sp.gov.br",
+          "endereco": "Av. Prof. Frederico Hermann Jr, 345, Prédio 6, São Paulo - SP",
+          "urlPagina": "https://cetesb.sp.gov.br/institucional/diretorias/de"
+        },
+        {
+          "nome": "Diretoria de Avaliação de Impacto Ambiental",
+          "sigla": "DA",
+          "cargo": "Diretor",
+          "responsavel": "Domenico Tremaroli",
+          "funcao": "Análise de Estudos de Impacto Ambiental (EIA/RIMA) de grandes obras e infraestrutura no Estado",
+          "telefone": "(11) 3133-3500",
+          "email": "da_cetesb@sp.gov.br",
+          "endereco": "Av. Prof. Frederico Hermann Jr, 345, Prédio 1, São Paulo - SP",
+          "urlPagina": "https://cetesb.sp.gov.br/institucional/diretorias/da"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 2350,
+          "comissionados": 180,
+          "total": 2530
+        },
+        {
+          "ano": 2021,
+          "efetivos": 1920,
+          "comissionados": 210,
+          "total": 2130
+        },
+        {
+          "ano": 2026,
+          "efetivos": 1780,
+          "comissionados": 240,
+          "total": 2020
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -24.26,
+      "variacaoPercentualTotal2016_2026": -20.16,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 580,
+          "orcamentoReal": 999.92
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 690,
+          "orcamentoReal": 898.38
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 890,
+          "orcamentoReal": 890
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -10.99,
+      "processosAtivosEstimados": 74000,
+      "analistasProcessamento": 380,
+      "indiceSobrecarga": 194.74,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência SP — Quadro Funcional CETESB",
+          "orgao": "Governo do Estado de São Paulo",
+          "tipo": "Transparência Estadual",
+          "url": "https://www.transparencia.sp.gov.br/remuneracao.html",
+          "descricao": "Quadro de empregados públicos celetistas concursados da Companhia Ambiental de SP",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Demonstrações Financeiras e Relatório Integrado CETESB",
+          "orgao": "Tribunal de Contas do Estado de São Paulo (TCE-SP)",
+          "tipo": "Balanço Patrimonial Auditado",
+          "url": "https://cetesb.sp.gov.br/demonstracoes-financeiras",
+          "descricao": "Receitas operacionais de licenciamento ambiental e custos com pessoal auditados pelo TCE-SP",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Qualidade Ambiental do Estado de São Paulo",
+          "orgao": "Secretaria de Meio Ambiente, Infraestrutura e Logística (SEMIL-SP)",
+          "tipo": "Relatório Anual",
+          "url": "https://cetesb.sp.gov.br/qualidade-ambiental",
+          "descricao": "Balanço dos processos de licenciamento, autos de infração e laudos emitidos",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://cetesb.sp.gov.br",
+        "transparencia": "https://cetesb.sp.gov.br/acesso-a-informacao",
+        "organograma": "https://cetesb.sp.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://cetesb.sp.gov.br/relatorios-de-gestao",
+        "concursos": "https://cetesb.sp.gov.br/trabalhe-conosco",
+        "sistemasConsulta": "https://e.ambiente.sp.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2023,
+        "vagas": 224,
+        "banca": "Fundação Vunesp",
+        "edital": "Edital CETESB nº 01/2023",
+        "hiatoAnosAnterior": 11,
+        "situacao": "Homologado em 2024 e em convocação",
+        "deficitEstimado": 570
+      }
+    },
+    {
+      "sigla": "SEMA-MT",
+      "nomeCompleto": "Secretaria de Estado de Meio Ambiente de Mato Grosso",
+      "esfera": "Estadual",
+      "uf": "MT",
+      "papelRegulatorio": "Licenciamento ambiental do agronegócio e obras, gestão do CAR-MT (SIMCAR), fiscalização contra desmatamento ilegal no Cerrado e Amazônia mato-grossense",
+      "lideranca": {
+        "nome": "Mauren Lazzaretti",
+        "cargo": "Secretária de Estado",
+        "gabinete": "Gabinete da Secretária (GS)",
+        "email": "gabinete@sema.mt.gov.br",
+        "telefone": "(65) 3613-7200"
+      },
+      "contatos": {
+        "emailGeral": "atendimento@sema.mt.gov.br",
+        "telefones": [
+          "(65) 3613-7200",
+          "0800-65-3838"
+        ],
+        "enderecoSede": {
+          "logradouro": "Rua C, s/n, Centro Político Administrativo",
+          "bairro": "Centro Político Administrativo",
+          "cidade": "Cuiabá",
+          "uf": "MT",
+          "cep": "78049-913"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Diretoria Regional de Sinop",
+            "cidade": "Sinop",
+            "endereco": "Av. dos Jacarandás, 2350 - Setor Comercial",
+            "telefone": "(66) 3531-4190",
+            "email": "regional.sinop@sema.mt.gov.br"
+          },
+          {
+            "nome": "Diretoria Regional de Rondonópolis",
+            "cidade": "Rondonópolis",
+            "endereco": "Rua Fernando Corrêa da Costa, 800 - Centro",
+            "telefone": "(66) 3422-5500",
+            "email": "regional.rondonopolis@sema.mt.gov.br"
+          },
+          {
+            "nome": "Diretoria Regional de Alta Floresta",
+            "cidade": "Alta Floresta",
+            "endereco": "Av. Ariosto da Riva, 1200 - Centro",
+            "telefone": "(66) 3521-3310",
+            "email": "regional.altafloresta@sema.mt.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria Setorial da SEMA-MT / Fale Cidadão",
+          "url": "https://www.sema.mt.gov.br/ouvidoria",
+          "telefone": "(65) 3613-7397",
+          "email": "ouvidoria@sema.mt.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Meio Ambiente MT / Denúncias Florestais",
+          "url": "https://www.sema.mt.gov.br/denuncias",
+          "telefone": "0800-65-3838",
+          "email": "denuncia@sema.mt.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Análise e validação dos Cadastros Ambientais Rurais no Sistema Mato-grossense de Cadastro Ambiental Rural (SIMCAR)",
+        "Licenciamento ambiental de atividades agropecuárias, desmate legal com Plano de Manejo Florestal Sustentável (PMFS) e PIV",
+        "Monitoramento contínuo por imagens de satélite diárias de alertas de desmatamento no Pantanal, Amazônia e Cerrado",
+        "Operações de fiscalização em campo com embargo de áreas desmatadas ilegalmente e apreensão de maquinários pesados",
+        "Gestão de recursos hídricos e outorga de uso para irrigação no maior polo agrícola do país"
+      ],
+      "marcoLegal": [
+        "Lei Complementar Estadual nº 214/2005 (Cria a Secretaria de Estado de Meio Ambiente - SEMA-MT)",
+        "Lei Complementar Estadual nº 592/2017 (Dispõe sobre o Programa de Regularização Ambiental e o SIMCAR)",
+        "Decreto Estadual nº 1.031/2017 (Regulamenta o SIMCAR e procedimentos de validação)",
+        "Decreto Estadual nº 697/2020 (Processos de licenciamento ambiental de atividades econômicas em MT)"
+      ],
+      "organograma": [
+        {
+          "nome": "Secretaria Adjunta de Licenciamento Ambiental e Recursos Hídricos",
+          "sigla": "SALRH",
+          "cargo": "Secretária Adjunta",
+          "responsavel": "Lilian Ferreira",
+          "funcao": "Supervisão da análise de licenças de atividades agrícolas, mineração e outorgas de captação hídrica",
+          "telefone": "(65) 3613-7240",
+          "email": "salrh@sema.mt.gov.br",
+          "endereco": "Rua C, Centro Político Administrativo, Bloco 2, Cuiabá - MT",
+          "urlPagina": "https://www.sema.mt.gov.br/institucional/salrh"
+        },
+        {
+          "nome": "Secretaria Adjunta de Mudanças Climáticas e Gestão Florestal",
+          "sigla": "SAMCGF",
+          "cargo": "Secretária Adjunta",
+          "responsavel": "Ligia Camargo",
+          "funcao": "Análise técnica do SIMCAR, aprovação de manejo florestal sustentável e REDD+",
+          "telefone": "(65) 3613-7260",
+          "email": "gestaoflorestal@sema.mt.gov.br",
+          "endereco": "Rua C, Centro Político Administrativo, Bloco 3, Cuiabá - MT",
+          "urlPagina": "https://www.sema.mt.gov.br/institucional/samcgf"
+        },
+        {
+          "nome": "Secretaria Adjunta de Fiscalização",
+          "sigla": "SAF",
+          "cargo": "Secretário Adjunto",
+          "responsavel": "Cezar Falcão",
+          "funcao": "Comando das operações integradas de combate ao desmate ilegal, queimadas e autos de infração",
+          "telefone": "(65) 3613-7280",
+          "email": "fiscalizacao@sema.mt.gov.br",
+          "endereco": "Rua C, Centro Político Administrativo, Bloco 1, Cuiabá - MT",
+          "urlPagina": "https://www.sema.mt.gov.br/institucional/saf"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 670,
+          "comissionados": 140,
+          "total": 810
+        },
+        {
+          "ano": 2021,
+          "efetivos": 540,
+          "comissionados": 185,
+          "total": 725
+        },
+        {
+          "ano": 2026,
+          "efetivos": 510,
+          "comissionados": 215,
+          "total": 725
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -23.88,
+      "variacaoPercentualTotal2016_2026": -10.49,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 185,
+          "orcamentoReal": 318.94
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 230,
+          "orcamentoReal": 299.46
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 295,
+          "orcamentoReal": 295
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -7.51,
+      "processosAtivosEstimados": 42000,
+      "analistasProcessamento": 95,
+      "indiceSobrecarga": 442.11,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência de Mato Grosso — Despesa com Pessoal SEMA",
+          "orgao": "Governo do Estado de Mato Grosso / SEPLAG-MT",
+          "tipo": "Transparência Estadual",
+          "url": "https://www.transparencia.mt.gov.br/pessoal",
+          "descricao": "Quadro efetivo de analistas de meio ambiente e técnicos de desenvolvimento econômico-social",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório de Gestão e Prestação de Contas SEMA-MT ao TCE-MT",
+          "orgao": "Tribunal de Contas do Estado de Mato Grosso (TCE-MT)",
+          "tipo": "Prestação de Contas Anual",
+          "url": "https://www.tce.mt.gov.br/processos",
+          "descricao": "Execução financeira e auditorias de cumprimento das metas de regularização ambiental",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "LOA — Orçamento Geral do Estado de Mato Grosso",
+          "orgao": "Secretaria de Estado de Fazenda (SEFAZ-MT)",
+          "tipo": "Orçamento Estadual",
+          "url": "https://www.transparencia.mt.gov.br/orcamento",
+          "descricao": "Dotação da SEMA e recursos de compensação ambiental e fundos florestais",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.sema.mt.gov.br",
+        "transparencia": "https://www.sema.mt.gov.br/transparencia",
+        "organograma": "https://www.sema.mt.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.sema.mt.gov.br/transparencia/relatorios-de-gestao",
+        "concursos": "https://www.sema.mt.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://simcar.sema.mt.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2022,
+        "vagas": 110,
+        "banca": "Fundação Getulio Vargas (FGV)",
+        "edital": "Edital SEPLAG/SEMA-MT nº 01/2022",
+        "hiatoAnosAnterior": 14,
+        "situacao": "Homologado e em período de vigência",
+        "deficitEstimado": 160
+      }
+    },
+    {
+      "sigla": "SEMAS-PA",
+      "nomeCompleto": "Secretaria de Estado de Meio Ambiente e Sustentabilidade do Pará",
+      "esfera": "Estadual",
+      "uf": "PA",
+      "papelRegulatorio": "Licenciamento de grandes projetos de mineração, infraestrutura e agropecuária na Amazônia paraense, fiscalização ambiental e validação do CAR",
+      "lideranca": {
+        "nome": "Mauro O'de Almeida",
+        "cargo": "Secretário de Estado",
+        "gabinete": "Gabinete do Secretário (GS)",
+        "email": "gabinete@semas.pa.gov.br",
+        "telefone": "(91) 3184-3330"
+      },
+      "contatos": {
+        "emailGeral": "atendimento@semas.pa.gov.br",
+        "telefones": [
+          "(91) 3184-3330",
+          "(91) 3184-3300"
+        ],
+        "enderecoSede": {
+          "logradouro": "Travessa Lomas Valentinas, 2717",
+          "bairro": "Marco",
+          "cidade": "Belém",
+          "uf": "PA",
+          "cep": "66095-770"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Núcleo Regional de Santarém (URE Santarém)",
+            "cidade": "Santarém",
+            "endereco": "Av. Marechal Rondon, 1200 - Prainha",
+            "telefone": "(93) 3523-2890",
+            "email": "ure.santarem@semas.pa.gov.br"
+          },
+          {
+            "nome": "Núcleo Regional de Marabá (URE Carajás)",
+            "cidade": "Marabá",
+            "endereco": "Folha 31, Quadra 1, Lote 1 - Nova Marabá",
+            "telefone": "(94) 3324-1500",
+            "email": "ure.maraba@semas.pa.gov.br"
+          },
+          {
+            "nome": "Núcleo Regional de Altamira (URE Xingu)",
+            "cidade": "Altamira",
+            "endereco": "Av. Brigadeiro Eduardo Gomes, 150 - São Sebastião",
+            "telefone": "(93) 3515-2240",
+            "email": "ure.altamira@semas.pa.gov.br"
+          },
+          {
+            "nome": "Núcleo Regional de Paragominas (URE Capim)",
+            "cidade": "Paragominas",
+            "endereco": "Rua Guimarães Rosa, 45 - Angelim",
+            "telefone": "(91) 3729-1800",
+            "email": "ure.paragominas@semas.pa.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria Geral da SEMAS-PA",
+          "url": "https://www.semas.pa.gov.br/ouvidoria",
+          "telefone": "(91) 3184-3315",
+          "email": "ouvidoria@semas.pa.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Silêncio / Denúncias de Crimes Ambientais SEMAS",
+          "url": "https://www.semas.pa.gov.br/denuncias",
+          "telefone": "(91) 3184-3330",
+          "email": "denuncia@semas.pa.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Licenciamento de grandes projetos minerários em Carajás, ferrovias, portos e polos agroindustriais",
+        "Gestão e validação do Cadastro Ambiental Rural (CAR) e Plano de Recuperação da Vegetação Nativa (PRVN)",
+        "Operações de fiscalização contra o desmatamento ilegal na Amazônia Oriental através da Força Estadual de Combate ao Desmatamento",
+        "Gestão e concessão de florestas públicas estaduais para manejo madeireiro sustentável",
+        "Execução do Plano Estadual Amazônia Agora (PEAA) e política estadual de bioeconomia e clima"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 7.026/2007 (Dispõe sobre a reestruturação da SEMAS-PA)",
+        "Lei Estadual nº 5.887/1995 (Dispõe sobre a Política Estadual de Meio Ambiente)",
+        "Lei Estadual nº 9.048/2020 (Institui a Política Estadual sobre Mudanças Climáticas do Pará)",
+        "Decreto Estadual nº 1.052/2020 (Institui o Plano Estadual Amazônia Agora - PEAA)",
+        "Decreto Estadual nº 1.628/2021 (Regulamenta o licenciamento ambiental e simplificação digital)"
+      ],
+      "organograma": [
+        {
+          "nome": "Secretaria Adjunta de Gestão e Regularidade Ambiental",
+          "sigla": "SAGRA",
+          "cargo": "Secretário Adjunto",
+          "responsavel": "Rodolpho Zahluth Bastos",
+          "funcao": "Supervisão da regularização fundiário-ambiental, validação do CAR e restauração ecológica",
+          "telefone": "(91) 3184-3340",
+          "email": "sagra@semas.pa.gov.br",
+          "endereco": "Travessa Lomas Valentinas, 2717, Bloco B, Belém - PA",
+          "urlPagina": "https://www.semas.pa.gov.br/institucional/sagra"
+        },
+        {
+          "nome": "Diretoria de Licenciamento Ambiental",
+          "sigla": "DLA",
+          "cargo": "Diretor",
+          "responsavel": "Marcelo Moreno",
+          "funcao": "Coordenação dos processos de licenciamento das indústrias, mineração e grandes obras de infraestrutura",
+          "telefone": "(91) 3184-3350",
+          "email": "dla@semas.pa.gov.br",
+          "endereco": "Travessa Lomas Valentinas, 2717, Bloco A, Belém - PA",
+          "urlPagina": "https://www.semas.pa.gov.br/institucional/dla"
+        },
+        {
+          "nome": "Diretoria de Fiscalização Ambiental",
+          "sigla": "DIFISC",
+          "cargo": "Diretor",
+          "responsavel": "Rayfran Trindade",
+          "funcao": "Comando das forças-tarefas em campo contra corte ilegal de madeira, garimpo e grilagem de terras públicas",
+          "telefone": "(91) 3184-3370",
+          "email": "fiscalizacao@semas.pa.gov.br",
+          "endereco": "Travessa Lomas Valentinas, 2717, Bloco C, Belém - PA",
+          "urlPagina": "https://www.semas.pa.gov.br/institucional/difisc"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 720,
+          "comissionados": 160,
+          "total": 880
+        },
+        {
+          "ano": 2021,
+          "efetivos": 580,
+          "comissionados": 220,
+          "total": 800
+        },
+        {
+          "ano": 2026,
+          "efetivos": 575,
+          "comissionados": 265,
+          "total": 840
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -20.14,
+      "variacaoPercentualTotal2016_2026": -4.55,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 195,
+          "orcamentoReal": 336.18
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 245,
+          "orcamentoReal": 318.99
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 320,
+          "orcamentoReal": 320
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -4.81,
+      "processosAtivosEstimados": 51000,
+      "analistasProcessamento": 105,
+      "indiceSobrecarga": 485.71,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência do Pará — Servidores SEMAS",
+          "orgao": "Governo do Estado do Pará / SEPLAD-PA",
+          "tipo": "Transparência Estadual",
+          "url": "https://www.transparencia.pa.gov.br/servidores",
+          "descricao": "Quadro de servidores estáveis de fiscalização e analistas de gestão ambiental",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Prestação de Contas Anual SEMAS-PA ao TCE-PA",
+          "orgao": "Tribunal de Contas do Estado do Pará (TCE-PA)",
+          "tipo": "Prestação de Contas / Auditoria",
+          "url": "https://www.tcepa.tc.br/processos",
+          "descricao": "Demonstrativos orçamentários auditados e relatórios de metas da COP-30 e PEAA",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "LOA — Orçamento do Estado do Pará",
+          "orgao": "Secretaria de Estado da Fazenda (SEFA-PA)",
+          "tipo": "Orçamento Fiscal",
+          "url": "https://www.transparencia.pa.gov.br/orcamento",
+          "descricao": "Dotação do Fundo Estadual do Meio Ambiente (FEMA) e receitas de taxas ambientais",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.semas.pa.gov.br",
+        "transparencia": "https://www.semas.pa.gov.br/transparencia",
+        "organograma": "https://www.semas.pa.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.semas.pa.gov.br/transparencia/relatorios-de-gestao",
+        "concursos": "https://www.semas.pa.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://car.semas.pa.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2023,
+        "vagas": 136,
+        "banca": "Instituto Consulplan",
+        "edital": "Edital SEMAS-PA nº 01/2022",
+        "hiatoAnosAnterior": 15,
+        "situacao": "Homologado e em período de vigência / convocação para COP-30",
+        "deficitEstimado": 145
+      }
+    },
+    {
+      "sigla": "INEMA-BA",
+      "nomeCompleto": "Instituto do Meio Ambiente e Recursos Hídricos da Bahia",
+      "esfera": "Estadual",
+      "uf": "BA",
+      "papelRegulatorio": "Execução das políticas de meio ambiente e recursos hídricos na Bahia, licenciamento ambiental estadual, outorga de águas e fiscalização",
+      "lideranca": {
+        "nome": "Maria Amélia Lins",
+        "cargo": "Diretora-Geral",
+        "gabinete": "Gabinete da Direção-Geral (GDG)",
+        "email": "diretoria.geral@inema.ba.gov.br",
+        "telefone": "(71) 3118-4000"
+      },
+      "contatos": {
+        "emailGeral": "atendimento@inema.ba.gov.br",
+        "telefones": [
+          "(71) 3118-4000",
+          "0800-071-1400"
+        ],
+        "enderecoSede": {
+          "logradouro": "Avenida Antônio Carlos Magalhães, 3840, Edifício CAPEMI",
+          "bairro": "Pituba",
+          "cidade": "Salvador",
+          "uf": "BA",
+          "cep": "41800-700"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Unidade Regional do Oeste (UR Barreiras)",
+            "cidade": "Barreiras",
+            "endereco": "Rua Guiomar Porto, 320 - Centro",
+            "telefone": "(77) 3612-9200",
+            "email": "ur.oeste@inema.ba.gov.br"
+          },
+          {
+            "nome": "Unidade Regional do Sudoeste (UR Vitória da Conquista)",
+            "cidade": "Vitória da Conquista",
+            "endereco": "Av. Otávio Santos, 210 - Recreio",
+            "telefone": "(77) 3424-8100",
+            "email": "ur.sudoeste@inema.ba.gov.br"
+          },
+          {
+            "nome": "Unidade Regional do Litoral Sul (UR Ilhéus)",
+            "cidade": "Ilhéus",
+            "endereco": "Av. Soares Lopes, 1050 - Centro",
+            "telefone": "(73) 3234-4500",
+            "email": "ur.litoralsul@inema.ba.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Ouvidoria Geral do Estado da Bahia / INEMA",
+          "url": "https://www.ouvidoria.ba.gov.br",
+          "telefone": "0800-284-0011",
+          "email": "ouvidoria@inema.ba.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Disque Meio Ambiente Bahia / Fala Salvador",
+          "url": "https://www.inema.ba.gov.br/denuncia",
+          "telefone": "0800-071-1400",
+          "email": "denuncia@inema.ba.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Licenciamento ambiental e emissão de autorizações para supressão de vegetação nativa na Caatinga e Mata Atlântica baiana",
+        "Outorga de direito de uso de águas superficiais e subterrâneas no semiárido e grandes aquíferos (Urucuia)",
+        "Gestão e cadastramento de imóveis rurais no Cadastro Estadual Florestal de Imóveis Rurais (CEFIR)",
+        "Fiscalização e combate ao desmatamento ilegal, carvoarias clandestinas e barramentos irregulares",
+        "Monitoramento da qualidade das bacias dos rios Paraguaçu, São Francisco, de Contas e Itapicuru"
+      ],
+      "marcoLegal": [
+        "Lei Estadual nº 12.212/2011 (Cria o Instituto do Meio Ambiente e Recursos Hídricos - INEMA)",
+        "Lei Estadual nº 10.431/2006 (Dispõe sobre a Política de Meio Ambiente e de Recursos Hídricos da Bahia)",
+        "Lei Estadual nº 11.612/2009 (Dispõe sobre a Política Estadual de Recursos Hídricos)",
+        "Decreto Estadual nº 14.024/2012 (Regulamento da Lei nº 10.431/2006)",
+        "Decreto Estadual nº 14.032/2012 (Estrutura regimental e atribuições do INEMA)"
+      ],
+      "organograma": [
+        {
+          "nome": "Diretoria de Regulação",
+          "sigla": "DIR",
+          "cargo": "Diretora",
+          "responsavel": "Daniella Fernandes",
+          "funcao": "Análise técnica e expedição de licenças ambientais para energia solar/eólica, agricultura irrigada e mineração",
+          "telefone": "(71) 3118-4030",
+          "email": "regulacao@inema.ba.gov.br",
+          "endereco": "Av. ACM, 3840, 4º andar, Salvador - BA",
+          "urlPagina": "https://www.inema.ba.gov.br/institucional/diretoria-de-regulacao"
+        },
+        {
+          "nome": "Diretoria de Recursos Hídricos e Monitoramento Ambiental",
+          "sigla": "DIRHI",
+          "cargo": "Diretor",
+          "responsavel": "Eduardo Topázio",
+          "funcao": "Gestão de bacias, análise de outorgas de irrigação e monitoramento hidrológico e qualidade da água",
+          "telefone": "(71) 3118-4050",
+          "email": "dirhi@inema.ba.gov.br",
+          "endereco": "Av. ACM, 3840, 5º andar, Salvador - BA",
+          "urlPagina": "https://www.inema.ba.gov.br/institucional/diretoria-de-recursos-hidricos"
+        },
+        {
+          "nome": "Diretoria de Fiscalização e Monitoramento",
+          "sigla": "DIFIS",
+          "cargo": "Diretora",
+          "responsavel": "Fabíola Cotrim",
+          "funcao": "Operações de combate ao desmatamento ilegal, fiscalização de barramentos e aplicação de autos de infração",
+          "telefone": "(71) 3118-4080",
+          "email": "fiscalizacao@inema.ba.gov.br",
+          "endereco": "Av. ACM, 3840, 3º andar, Salvador - BA",
+          "urlPagina": "https://www.inema.ba.gov.br/institucional/diretoria-de-fiscalizacao"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 790,
+          "comissionados": 130,
+          "total": 920
+        },
+        {
+          "ano": 2021,
+          "efetivos": 610,
+          "comissionados": 180,
+          "total": 790
+        },
+        {
+          "ano": 2026,
+          "efetivos": 580,
+          "comissionados": 210,
+          "total": 790
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -26.58,
+      "variacaoPercentualTotal2016_2026": -14.13,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 160,
+          "orcamentoReal": 275.84
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 190,
+          "orcamentoReal": 247.38
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 245,
+          "orcamentoReal": 245
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -11.18,
+      "processosAtivosEstimados": 36500,
+      "analistasProcessamento": 82,
+      "indiceSobrecarga": 445.12,
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência da Bahia — Servidores INEMA",
+          "orgao": "Governo do Estado da Bahia / SAEB",
+          "tipo": "Transparência Estadual",
+          "url": "https://www.transparencia.ba.gov.br/Pessoal",
+          "descricao": "Especialistas em meio ambiente e recursos hídricos e quadro comissionado do INEMA",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatório Anual de Atividades e Prestação de Contas ao TCE-BA",
+          "orgao": "Tribunal de Contas do Estado da Bahia (TCE-BA)",
+          "tipo": "Prestação de Contas / Auditoria",
+          "url": "https://www.tce.ba.gov.br/processos",
+          "descricao": "Auditorias sobre cumprimento de prazos de licenciamento ambiental e processos de outorga",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "LOA — Orçamento Geral do Estado da Bahia",
+          "orgao": "Secretaria da Fazenda da Bahia (SEFAZ-BA)",
+          "tipo": "Orçamento Fiscal",
+          "url": "https://www.transparencia.ba.gov.br/Orcamento",
+          "descricao": "Dotação do Fundo Estadual de Recursos Hídricos e Fundo de Meio Ambiente",
+          "anoReferencia": "2016-2026"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.inema.ba.gov.br",
+        "transparencia": "https://www.inema.ba.gov.br/transparencia",
+        "organograma": "https://www.inema.ba.gov.br/institucional/organograma",
+        "relatoriosGestao": "https://www.inema.ba.gov.br/transparencia/relatorios-de-gestao",
+        "concursos": "https://www.inema.ba.gov.br/institucional/concursos",
+        "sistemasConsulta": "https://cefir.inema.ba.gov.br"
+      },
+      "ultimoConcurso": {
+        "ano": 2022,
+        "vagas": 139,
+        "banca": "Instituto Brasileiro de Formação e Capacitação (IBFC)",
+        "edital": "Edital SAEB/INEMA nº 01/2022",
+        "hiatoAnosAnterior": 14,
+        "situacao": "Homologado e prorrogado até 2026",
+        "deficitEstimado": 210
+      }
+    }
+  ]
+}
