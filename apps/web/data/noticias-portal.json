@@ -1,5 +1,81 @@
 [
   {
+    "slug": "car-ief-mg-tempo-espera-grandes-empreendimentos-servidores",
+    "titulo": "Fila do CAR no IEF Leva 4 Anos, mas Grandes Empreendimentos Tramitam em Meses",
+    "subtitulo": "Com queda de 41% nos servidores do IEF e sobrecarga de 13 mil processos por analista, pequenos posseiros esperam anos enquanto grandes projetos avançam com prioridade.",
+    "resumo": "Radiografia inédita do ONSA revela que 76,9% dos 1,16 milhão de imóveis do CAR em Minas Gerais estão paralisados em análise. A média estadual supera 1.564 dias de espera, mas setores de silvicultura e mineração contam com ritos acelerados, assessorias privadas e análise automatizada. Levantamento aponta colapso de pessoal nos órgãos ambientais.",
+    "categoria": "Investigação Ambiental",
+    "frente": "ambiental",
+    "subfrente": "Cadastro Ambiental Rural & Capacidade Estatal",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto investigativo elaborado pelo ONSA com base nos acervos públicos do IEF-MG, SICAR, Portais de Transparência e prestação de contas dos órgãos ambientais.",
+    "publicadoEm": "2026-09-24T15:00:00Z",
+    "atualizadoEm": "2026-09-24T15:00:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "car",
+      "ief-mg",
+      "tempo-de-espera",
+      "silvicultura",
+      "mineracao",
+      "concursos",
+      "servidores-publicos",
+      "orcamento-ambiental",
+      "onsa"
+    ],
+    "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Fila do CAR no IEF Leva 4 Anos, mas Grandes Empreendimentos Tramitam em Meses. Controle Popular, Belo Horizonte, set. 2026.",
+    "citacaoBibtex": "@article{onsa2026cariefservidores,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Fila do CAR no IEF Leva 4 Anos, mas Grandes Empreendimentos Tramitam em Meses},\n  journal = {Controle Popular},\n  year = {2026},\n  month = {9},\n  url = {https://controlepopular.com.br/noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Cadastro Ambiental Rural (CAR / IEF MG) — Controle Popular",
+        "url": "https://controlepopular.com.br/ambiental/car"
+      },
+      {
+        "nome": "Capacidade Institucional dos Órgãos Ambientais — Controle Popular",
+        "url": "https://controlepopular.com.br/ambiental/capacidade-institucional"
+      },
+      {
+        "nome": "Instituto Estadual de Florestas (IEF/MG - CAR 2.0)",
+        "url": "https://csr.ufmg.br/car20_mg/"
+      },
+      {
+        "nome": "Consulta Pública do SICAR Nacional",
+        "url": "https://consultapublica.car.gov.br/publico/imoveis/consulta"
+      },
+      {
+        "nome": "Portal da Transparência do Estado de Minas Gerais",
+        "url": "https://www.transparencia.mg.gov.br/"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Espera Média no Estado",
+        "valor": "1.564 dias"
+      },
+      {
+        "rotulo": "Tramitação Grandes Projetos",
+        "valor": "90 a 240 dias"
+      },
+      {
+        "rotulo": "Queda Servidores IEF (10 anos)",
+        "valor": "-41,1%"
+      },
+      {
+        "rotulo": "Sobrecarga no IEF",
+        "valor": "13.160 CARs/analista"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte a fila do CAR por regional no [Painel do CAR](https://controlepopular.com.br/ambiental/car) e o quadro de servidores no [Painel de Capacidade Institucional](https://controlepopular.com.br/ambiental/capacidade-institucional).",
+    "paragrafos": [
+      "O Cadastro Ambiental Rural (CAR) em Minas Gerais atingiu 1,16 milhão de imóveis cadastrados, cobrindo mais de 42,7 milhões de hectares. No entanto, o tempo médio para validação de um cadastro no Instituto Estadual de Florestas (IEF) alcançou a marca de 1.564 dias — mais de quatro anos de espera em fila de análise. Dos cadastros inscritos no estado, 76,9% permanecem paralisados aguardando análise manual ou saneamento de pendências pelo órgão ambiental. O acervo consolidado pelas 14 Unidades Regionais (URFBios) pode ser auditado diretamente no painel [Cadastro Ambiental Rural no IEF/MG](/ambiental/car).",
+      "Os dados oficiais revelam uma profunda assimetria de velocidade conforme o porte e o setor econômico do imóvel rural. Enquanto a agricultura familiar e os pequenos posseiros (imóveis de até 4 Módulos Fiscais) enfrentam esperas que chegam a 1.600 até 2.300 dias (mais de 6 anos), grandes empreendimentos de silvicultura industrial (eucalipto e celulose) e projetos minerários conseguem validação completa em prazos que variam de 90 a 240 dias — até 17 vezes mais rápido que a média geral.",
+      "Essa discrepância decorre de dois fatores centrais. O primeiro é o acesso a consultorias privadas de georreferenciamento de alta precisão que ajustam os perímetros aos padrões exigidos pelo sistema de análise dinamizada (CAR 2.0), desenvolvido em parceria com o Centro de Sensoriamento Remoto da UFMG. O segundo é a vinculação desses imóveis a processos de licenciamento prioritários deliberados pelo Conselho Estadual de Política Ambiental (Copam), além de acordos de cooperação técnica com o Sisema. Já os pequenos produtores, dependentes da assistência técnica pública gratuita e mutirões de campo, acabam retidos por inconsistências cartográficas mínimas de Reserva Legal ou Área de Preservação Permanente (APP).",
+      "A raiz do gargalo não reside apenas na complexidade cartográfica, mas no encolhimento continuado da capacidade do Estado. Um levantamento decenal detalhado no painel de [Capacidade Institucional dos Órgãos Ambientais](/ambiental/capacidade-institucional) aponta que o IEF-MG perdeu 41,1% de seus servidores nos últimos 10 anos, caindo de 1.842 funcionários em 2016 para apenas 1.085 em 2026. Apenas 68 analistas em todo o estado dedicam-se à conferência do CAR, gerando uma sobrecarga matemática insustentável de aproximadamente 13.160 processos por analista.",
+      "O mesmo diagnóstico de esvaziamento se repete nos demais órgãos de fiscalização e patrimônio. O Instituto Mineiro de Gestão das Águas (IGAM) perdeu 30,4% de seu quadro técnico, enquanto o Instituto Estadual do Patrimônio Histórico e Artístico (IEPHA-MG) encolheu 37% e opera há mais de 13 anos sem a realização de qualquer concurso público. Em termos orçamentários, o poder de compra real deflacionado pelo IPCA recuou 19,9% no IEF e 24,5% no IEPHA, limitando vistorias de campo e auditorias in loco.",
+      "Para o cidadão, o reflexo desse descompasso é a insegurança jurídica e socioambiental. O pequeno agricultor vê travado o acesso a crédito rural e a programas de regularização florestal, enquanto as grandes corporações consolidam o desembaraço de suas cadeias de exportação. Os dados completos, com organogramas, contatos de coordenadores e a lista de imóveis por regional, estão disponíveis para livre consulta e fiscalização pública nas frentes temáticas do portal [Controle Popular](/ambiental)."
+    ]
+  },
+  {
     "slug": "laboratorio-de-dados-do-portal",
     "titulo": "Laboratório de Dados: Compare Séries Públicas em Gráficos de Pontos",
     "subtitulo": "Nova ferramenta do portal cruza duas bases públicas com visual dither e atalhos do Seu Nonô.",
