@@ -22,10 +22,6 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "camara_host": "https://sapl.aracuai.mg.leg.br/",
         "citrolandia": false,
         "cnpj_camara": "26201996000197",
-        "cnpjs_orgao": [
-          "17963083000117",
-          "26201996000197"
-        ],
         "legislatura": {
           "fim": 2028,
           "inicio": 2025,
@@ -44,12 +40,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "legislacao_fonte": "camara_sapl",
         "vereadores_fonte": "sapl",
         "camara_proposicoes": false,
-        "cnpjs_orgao_detalhe": {
-          "17963083000117": "MUNICIPIO DE ARACUAI",
-          "26201996000197": "CAMARA MUNICIPAL DE ARACUAI"
-        },
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "legislacao_municipal_host": "https://sapl.aracuai.mg.leg.br/",
         "prefeitura_transparencia_host": "https://aracuai-mg.portaltp.com.br/",
         "prefeitura_transparencia_sistema": "portaltp"
@@ -75,6 +66,14 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "camara_host": "https://www.cmbh.mg.gov.br/",
         "citrolandia": false,
         "cnpj_camara": "17316563000196",
+        "cnpjs_orgao": [
+          "18715383000140",
+          "07252975000156",
+          "17316563000196",
+          "16692121000181",
+          "16673998000125",
+          "07276220000191"
+        ],
         "datasus_6dig": "310620",
         "defesa_civil": false,
         "camara_render": "html",
@@ -84,7 +83,17 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "prefeitura_grp": true,
         "sic_prefeitura": "https://prefeitura.pbh.gov.br/lei-de-acesso-a-informacao",
         "prefeitura_host": "https://prefeitura.pbh.gov.br",
+        "cnpjs_orgao_detalhe": {
+          "07252975000156": "FUNDACAO MUNICIPAL DE CULTURA",
+          "07276220000191": "FUNDACAO DE PARQUES MUNICIPAIS E ZOOBOTANICA",
+          "16673998000125": "SUPERINTENDENCIA DE LIMPEZA URBANA",
+          "16692121000181": "HOSPITAL METROPOLITANO ODILON BEHRENS - HOB",
+          "17316563000196": "BELO HORIZONTE CAMARA MUNICIPAL",
+          "18715383000140": "MUNICIPIO DE BELO HORIZONTE"
+        },
+        "diario_oficial_coletor": "https://api-dom.pbh.gov.br/api/",
         "estado_municipios_count": 853,
+        "cnpjs_orgao_atualizado_em": "2026-09-23",
         "prefeitura_dados_abertos_api": "ckan",
         "prefeitura_dados_abertos_host": "https://ckan.pbh.gov.br/api/3/action/"
       }
@@ -105,7 +114,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "ouvidoria": "https://www.betim.mg.gov.br/portal/secretarias-paginas/85/conhecendo-a-ouvidoria/",
         "paraopeba": true,
         "sic_camara": "https://www.camarabetim.mg.gov.br/LAI/LeiAcesso",
-        "camara_host": "https://www.camarabetim.mg.gov.br/",
+        "camara_host": "https://camarabetim.mg.gov.br/",
         "citrolandia": true,
         "datasus_6dig": "310670",
         "camara_render": "spa",
@@ -117,6 +126,27 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "estado_municipios_count": 853,
         "prefeitura_transparencia_api": "REST",
         "prefeitura_transparencia_host": "http://servicos.betim.mg.gov.br/transparencia/"
+      }
+    },
+    {
+      "id_municipio": "3109006",
+      "slug": "brumadinho",
+      "nome": "Brumadinho",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/brumadinho",
+      "lat": -20.1428,
+      "lng": -44.2,
+      "branding": {
+        "nome_portal": "Controle Popular Brumadinho"
+      },
+      "fontes": {
+        "paraopeba": true,
+        "citrolandia": false,
+        "datasus_6dig": "310900",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
       }
     },
     {
@@ -136,11 +166,6 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "camara_host": "https://cmdiamantina.mg.gov.br/",
         "citrolandia": false,
         "cnpj_camara": "20209557000144",
-        "cnpjs_orgao": [
-          "17754136000190",
-          "20209557000144",
-          "97451751000166"
-        ],
         "legislatura": {
           "fim": 2028,
           "inicio": 2025
@@ -157,20 +182,56 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "prefeitura_host": "https://www.diamantina.mg.gov.br/",
         "legislacao_fonte": "camara_syssolution",
         "vereadores_fonte": "syssolution",
-        "cnpjs_orgao_detalhe": {
-          "17754136000190": "MUNICIPIO DE DIAMANTINA",
-          "20209557000144": "DIAMANTINA CAMARA MUNICIPAL",
-          "97451751000166": "FUNDO MUNICIPAL DE PREVIDENCIA"
-        },
         "sigpub_entidade_camara": "21672",
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "legislacao_municipal_host": "https://cmdiamantina.mg.gov.br/",
         "sigpub_entidade_prefeitura": "905",
         "prefeitura_transparencia_host": "https://portaltransp.com.br",
         "prefeitura_transparencia_param": "pdmt",
         "prefeitura_transparencia_sistema": "portaltransp",
         "prefeitura_transparencia_fornecedor": "portaltransp"
+      }
+    },
+    {
+      "id_municipio": "3127701",
+      "slug": "governador-valadares",
+      "nome": "Governador Valadares",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/governador-valadares",
+      "lat": -18.8575,
+      "lng": -41.9439,
+      "branding": {
+        "nome_portal": "Controle Popular Governador Valadares"
+      },
+      "fontes": {
+        "paraopeba": false,
+        "citrolandia": false,
+        "datasus_6dig": "312770",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
+      }
+    },
+    {
+      "id_municipio": "3131307",
+      "slug": "ipatinga",
+      "nome": "Ipatinga",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/ipatinga",
+      "lat": -19.4678,
+      "lng": -42.5369,
+      "branding": {
+        "nome_portal": "Controle Popular Ipatinga"
+      },
+      "fontes": {
+        "paraopeba": false,
+        "citrolandia": false,
+        "datasus_6dig": "313130",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
       }
     },
     {
@@ -191,10 +252,6 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "camara_host": "https://www.camaraitinga.mg.gov.br/",
         "citrolandia": false,
         "cnpj_camara": "26222059000118",
-        "cnpjs_orgao": [
-          "18348748000145",
-          "26222059000118"
-        ],
         "legislatura": {
           "fim": 2028,
           "inicio": 2025
@@ -211,11 +268,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "legislacao_fonte": "camara_simplesystem",
         "vereadores_fonte": "tse",
         "camara_proposicoes": true,
-        "cnpjs_orgao_detalhe": {
-          "26222059000118": "ITINGA CAMARA MUNICIPAL"
-        },
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "prefeitura_transparencia_host": "https://cidadesmg.com.br/portaltransparencia",
         "camara_simplesystem_categorias": {
           "LEIS": 581,
@@ -252,6 +305,69 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
       }
     },
     {
+      "id_municipio": "3136702",
+      "slug": "juiz-de-fora",
+      "nome": "Juiz de Fora",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/juiz-de-fora",
+      "lat": -21.6889,
+      "lng": -43.3444,
+      "branding": {
+        "nome_portal": "Controle Popular Juiz de Fora"
+      },
+      "fontes": {
+        "paraopeba": false,
+        "citrolandia": false,
+        "datasus_6dig": "313670",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
+      }
+    },
+    {
+      "id_municipio": "3167103",
+      "slug": "serro",
+      "nome": "Serro",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/serro",
+      "lat": -18.605,
+      "lng": -43.3789,
+      "branding": {
+        "nome_portal": "Controle Popular Serro"
+      },
+      "fontes": {
+        "paraopeba": false,
+        "citrolandia": false,
+        "datasus_6dig": "316710",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
+      }
+    },
+    {
+      "id_municipio": "3170206",
+      "slug": "uberlandia",
+      "nome": "Uberlândia",
+      "uf": "MG",
+      "cnpj_prefeitura": null,
+      "dominio": "controlepopular.br/uberlandia",
+      "lat": -18.9189,
+      "lng": -48.2769,
+      "branding": {
+        "nome_portal": "Controle Popular Uberlândia"
+      },
+      "fontes": {
+        "paraopeba": false,
+        "citrolandia": false,
+        "datasus_6dig": "317020",
+        "rotas_legadas": false,
+        "links_uteis_mg": true,
+        "estado_municipios_count": 853
+      }
+    },
+    {
       "id_municipio": "3550308",
       "slug": "sp",
       "nome": "São Paulo",
@@ -271,73 +387,6 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "camara_host": "https://www.saopaulo.sp.leg.br/",
         "citrolandia": false,
         "cnpj_camara": "50176288000128",
-        "cnpjs_orgao": [
-          "46395000000139",
-          "49269244000163",
-          "45000431000196",
-          "49269236000117",
-          "05969123000159",
-          "05539998000110",
-          "05640843000176",
-          "46854998000192",
-          "05563306000170",
-          "05499294000161",
-          "05587519000131",
-          "05658440000154",
-          "05652348000187",
-          "50176270000126",
-          "05587823000189",
-          "05639268000191",
-          "74118514000182",
-          "05515743000118",
-          "06056497000146",
-          "13864377000130",
-          "05629151000127",
-          "05529895000170",
-          "05604369000127",
-          "05510098000140",
-          "46392171000104",
-          "06108854000172",
-          "50176288000128",
-          "05655070000100",
-          "05579739000113",
-          "05568649000127",
-          "01164292000160",
-          "05611299000134",
-          "19153572000139",
-          "07420613000127",
-          "05626770000168",
-          "05535758000148",
-          "05658353000105",
-          "05546795000151",
-          "05636771000193",
-          "05659015000180",
-          "46392155000111",
-          "05667941000105",
-          "05494401000169",
-          "11958828000173",
-          "46392106000189",
-          "46392122000171",
-          "05649898000147",
-          "05612822000147",
-          "43076702000161",
-          "46392114000125",
-          "47902648000117",
-          "04537740000112",
-          "41814509000155",
-          "46392130000118",
-          "08082743000160",
-          "49269251000165",
-          "11702587000105",
-          "05245375000135",
-          "60850575000125",
-          "47109087000101",
-          "33840043000134",
-          "60269453000140",
-          "15913253000123",
-          "29599447000100",
-          "46392072000122"
-        ],
         "legislatura": {
           "fim": 2028,
           "inicio": 2025
@@ -346,173 +395,16 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "defesa_civil": false,
         "camara_render": "html",
         "rotas_legadas": false,
-        "camara_sessoes": {
-          "fonte": "https://www.saopaulo.sp.leg.br/",
-          "ordinarias": {
-            "hora": "15:00",
-            "dias_semana": [
-              "terca",
-              "quarta",
-              "quinta"
-            ]
-          }
-        },
-        "camara_youtube": {
-          "url": "https://www.youtube.com/@camarasaopaulo",
-          "canal": "TV Câmara São Paulo",
-          "channel_id": "UCaMgnZ7WNHF5TYBuK0skD4w"
-        },
         "diario_oficial": "https://diariooficial.prefeitura.sp.gov.br/",
         "links_uteis_mg": false,
         "sic_prefeitura": "https://esic.prefeitura.sp.gov.br/",
         "prefeitura_host": "https://capital.sp.gov.br",
         "obras_abertas_host": "https://obrasabertas.prefeitura.sp.gov.br/",
-        "cnpjs_orgao_detalhe": {
-          "01164292000160": "MUNICIPIO DE CACU",
-          "04537740000112": "SECRETARIA MUNICIPAL DE DESENVOLVIMENTO ECONOMICO E TRABALHO",
-          "05245375000135": "SECRETARIA MUNICIPAL DE SEGURANCA URBANA - SMSU",
-          "05494401000169": "SUBPREFEITURA PARELHEIROS",
-          "05499294000161": "SUBPREFEITURA SE",
-          "05510098000140": "SUBPREFEITURA M'BOI MIRIM",
-          "05515743000118": "SUBPREFEITURA VILA MARIA/VILA GUILHERME",
-          "05529895000170": "SUBPREFEITURA CIDADE TIRADENTES",
-          "05535758000148": "SUBPREFEITURA SAO MIGUEL PAULISTA",
-          "05539998000110": "SUBPREFEITURA PERUS/ANHANGUERA",
-          "05546795000151": "SUBPREFEITURA BUTANTA",
-          "05563306000170": "SUBPREFEITURA CASA VERDE/CACHOEIRINHA",
-          "05568649000127": "SUBPREFEITURA SANTO AMARO",
-          "05579739000113": "SUBPREFEITURA DO ITAIM PAULISTA",
-          "05587519000131": "PMSP -  SUBPREFEITURA ARICANDUVA/FORMOSA/CARRAO",
-          "05587823000189": "SUBPREFEITURA CIDADE ADEMAR",
-          "05604369000127": "SUBPREFEITURA CAMPO LIMPO",
-          "05611299000134": "SUBPREFEITURA  MOOCA",
-          "05612822000147": "SUBPREFEITURA ERMELINO MATARAZZO",
-          "05626770000168": "SUBPREFEITURA VILA MARIANA",
-          "05629151000127": "SUBPREFEITURA DE PIRITUBA/ JARAGUA",
-          "05636771000193": "SUBPREFEITURA IPIRANGA",
-          "05639268000191": "SUBPREFEITURA SAO MATEUS",
-          "05640843000176": "SUBPREFEITURA PENHA",
-          "05649898000147": "SUBPREFEITURA DE PINHEIROS",
-          "05652348000187": "SUBPREFEITURA SANTANA/TUCURUVI",
-          "05655070000100": "SUBPREFEITURA DE JACANA-TREMEMBE - SUB-JT",
-          "05658353000105": "SMSUB - SUBPREFEITURA LAPA",
-          "05658440000154": "SMSUB - SUBPREFEITURA CAPELA DO SOCORRO",
-          "05659015000180": "SUBPREFEITURA JABAQUARA",
-          "05667941000105": "SUBPREFEITURA DE GUAIANASES",
-          "05969123000159": "SUBPREFEITURA VILA PRUDENTE",
-          "06056497000146": "PMSP - SUBPREFEITURA ITAQUERA",
-          "06108854000172": "SUBPREFEITURA FREGUESIA/BRASILANDIA",
-          "07420613000127": "SECRETARIA MUNICIPAL DE DIREITOS HUMANOS E CIDADANIA",
-          "08082743000160": "SECRETARIA MUNICIPAL DA PESSOA COM DEFICIENCIA",
-          "11702587000105": "PMSP - SÃO PAULO PARCERIAS S.A.",
-          "11958828000173": "PMSP - SAO PAULO OBRAS",
-          "13864377000130": "FUNDO MUNICIPAL DE SAUDE - FMS",
-          "15913253000123": "FUNDACAO THEATRO MUNICIPAL DE SAO PAULO",
-          "19153572000139": "PREFEITURA REGIONAL SAPOPEMBA",
-          "29599447000100": "CONTROLADORIA GERAL DO MUNICIPIO",
-          "33840043000134": "SECRETARIA MUNICIPAL DE URBANISMO E LICENCIAMENTO",
-          "41814509000155": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MUNICIPIO DE SAO PAULO SP REGULA",
-          "43076702000161": "PMSP - EMPRESA DE TEC. DA INFORMAÇÃO - PRODAM",
-          "45000431000196": "PMSP - SECRETARIA MUNICIPAL DE TURISMO",
-          "46392072000122": "PROCURADORIA GERAL DO MUNICIPIO - PGM",
-          "46392106000189": "SECRETARIA MUNICIPAL DE HABITACAO",
-          "46392114000125": "SECRETARIA MUNICIPAL DE EDUCACAO",
-          "46392122000171": "SECRETARIA MUNICIPAL  DE ESPORTES E LAZER _  SEME",
-          "46392130000118": "SECRETARIA MUNICIPAL DA FAZENDA",
-          "46392155000111": "SAO PAULO SECRETARIA MUNICIPAL DE MOBILIDADE E TRANSPORTES",
-          "46392171000104": "SECRETARIA MUNICIPAL DE INFRAESTRUTURA URBANA E OBRAS",
-          "46395000000139": "MUNICIPIO DE SAO PAULO",
-          "46854998000192": "HOSPITAL DO SERVIDOR PUBLICO MUNICIPAL",
-          "47109087000101": "INSTITUTO DE PREVIDENCIA MUNICIPAL DE SAO PAULO IPREM",
-          "47902648000117": "PMSP - COMPANHIA DE ENGENHARIA DE TRÁFEGO",
-          "49269236000117": "SECRETARIA MUNICIPAL DAS SUBPREFEITURAS",
-          "49269244000163": "SAO PAULO SECRETARIA MUNICIPAL DE CULTURA",
-          "49269251000165": "SECRETARIA MUNICIPAL DE GESTAO - SG",
-          "50176270000126": "SAO PAULO TRIBUNAL DE CONTAS DO MUNICIPIO",
-          "50176288000128": "SAO PAULO CAMARA MUNICIPAL",
-          "60269453000140": "SECRETARIA MUNICIPAL DE ASSISTENCIA E DESENVOLVIMENTO SOCIAL",
-          "60850575000125": "PMSP - COMPANHIA METROPOLITANA DE HABITAÇÃO",
-          "74118514000182": "SAO PAULO SECRETARIA DO VERDE E DO MEIO AMBIENTE"
-        },
-        "ssp_sp_id_municipio": 565,
         "estado_municipios_count": 645,
-        "cnpjs_orgao_atualizado_em": "2026-08-10",
         "legislacao_municipal_host": "https://legislacao.prefeitura.sp.gov.br/",
         "prefeitura_dados_abertos_api": "ckan",
         "prefeitura_dados_abertos_host": "http://dados.prefeitura.sp.gov.br/api/3/action/"
       }
-    },
-    {
-      "id_municipio": "3109006",
-      "slug": "brumadinho",
-      "nome": "Brumadinho",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/brumadinho",
-      "lat": -20.1431,
-      "lng": -44.2003,
-      "branding": { "nome_portal": "Controle Popular Brumadinho" },
-      "fontes": { "paraopeba": true }
-    },
-    {
-      "id_municipio": "3167103",
-      "slug": "serro",
-      "nome": "Serro",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/serro",
-      "lat": -20.3794,
-      "lng": -43.4883,
-      "branding": { "nome_portal": "Controle Popular Serro" },
-      "fontes": {}
-    },
-    {
-      "id_municipio": "3127701",
-      "slug": "governador-valadares",
-      "nome": "Governador Valadares",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/governador-valadares",
-      "lat": -18.8547,
-      "lng": -41.9558,
-      "branding": { "nome_portal": "Controle Popular Governador Valadares" },
-      "fontes": {}
-    },
-    {
-      "id_municipio": "3131307",
-      "slug": "ipatinga",
-      "nome": "Ipatinga",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/ipatinga",
-      "lat": -19.4686,
-      "lng": -42.5369,
-      "branding": { "nome_portal": "Controle Popular Ipatinga" },
-      "fontes": {}
-    },
-    {
-      "id_municipio": "3136702",
-      "slug": "juiz-de-fora",
-      "nome": "Juiz de Fora",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/juiz-de-fora",
-      "lat": -21.7615,
-      "lng": -43.3488,
-      "branding": { "nome_portal": "Controle Popular Juiz de Fora" },
-      "fontes": {}
-    },
-    {
-      "id_municipio": "3170206",
-      "slug": "uberlandia",
-      "nome": "Uberlândia",
-      "uf": "MG",
-      "cnpj_prefeitura": null,
-      "dominio": "controlepopular.br/uberlandia",
-      "lat": -18.9186,
-      "lng": -48.2772,
-      "branding": { "nome_portal": "Controle Popular Uberlândia" },
-      "fontes": {}
     }
   ];
 

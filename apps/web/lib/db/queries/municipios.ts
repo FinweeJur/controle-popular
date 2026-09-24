@@ -218,8 +218,14 @@ export const IBGE_PARA_SLUG: Record<string, string> = {
   "3103405": "aracuai",
   "3106200": "bh",
   "3106705": "betim",
+  "3109006": "brumadinho",
   "3121605": "diamantina",
+  "3127701": "governador-valadares",
+  "3131307": "ipatinga",
   "3134004": "itinga",
+  "3136702": "juiz-de-fora",
+  "3167103": "serro",
+  "3170206": "uberlandia",
   "3550308": "sp",
 };
 

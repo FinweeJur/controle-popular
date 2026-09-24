@@ -30,7 +30,7 @@
  *
  * Baixar 5 MB para descobrir que "saúde em BH" é `/bh/saude` seria pagar o
  * acervo inteiro por uma tabela de rotas. O catálogo abaixo faz esse
- * trabalho com 241 destinos derivados de 6 cidades × 33 sufixos + 43
+ * trabalho com 439 destinos derivados de 12 cidades × 33 sufixos + 43
  * rotas gerais, e cabe no chunk. O índice da `/busca` continua sendo o
  * caminho certo para procurar DOCUMENTO — e é por isso que ele é carregado
  * sob demanda, e só quando a pessoa pede (ver `lib/assistente/documentos.ts`).
@@ -80,8 +80,8 @@ export interface EntradaCatalogo {
 }
 
 /**
- * Rotas de CIDADE, por sufixo. Expandidas por `CIDADES_DO_BUILD` (6 hoje) na
- * hora da consulta, não pré-montadas: 6 × 33 = 198 objetos que existiriam no
+ * Rotas de CIDADE, por sufixo. Expandidas por `CIDADES_DO_BUILD` (12 hoje) na
+ * hora da consulta, não pré-montadas: 12 × 33 = 396 objetos que existiriam no
  * chunk sem ninguém nunca olhar a maioria. Expandir custa um laço sobre 33
  * entradas por consulta — medido abaixo de 1 ms, ver `navegacao.test.ts`.
  *

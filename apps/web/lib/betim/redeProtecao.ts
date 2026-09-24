@@ -745,7 +745,7 @@ export function montarItensPainel(cidade: Cidade): ItemPainel[] {
 
 /**
  * Itens que não dependem de NENHUMA cidade: LAI federal, LAI estadual (MG —
- * a UF de 5 das 6 cidades cadastradas) e a fatia estadual/federal da rede de
+ * a UF de 11 das 12 cidades cadastradas) e a fatia estadual/federal da rede de
  * proteção. Existe para `/direitos-em-movimento`, a porta "onde buscar
  * ajuda" (`docs/PLANO-DIREITOS-EM-MOVIMENTO.md`): a necessidade vem antes
  * da cidade, e Disque 100 não espera a pessoa dizer onde está.

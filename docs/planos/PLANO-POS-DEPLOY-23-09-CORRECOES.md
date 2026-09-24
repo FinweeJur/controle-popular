@@ -3,7 +3,7 @@
 > **Tipo:** Plano  
 > **Domínio:** Operação / Frontend / Infra  
 > **Última medição:** 24/09/2026  
-> **Estado:** parcialmente aplicado — P0/P1/P3 concluídos; P2 parcial  
+> **Estado:** parcialmente aplicado — P0/P1/P3 concluídos; P2 parcial (item 6 parcial)  
 > **Leitura estimada:** curta (< 5 min)  
 > **Relacionados:** [PLANO-CONDICIONANTES-AMBIENTAIS.md](PLANO-CONDICIONANTES-AMBIENTAIS.md), [PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md](PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md)  
 > **Palavras-chave:** pos-deploy, guara, migracao, sigma, condicionantes, topnav, shield  
@@ -67,9 +67,13 @@ Duas camadas:
    (`lib/betim/staticParams.ts:53`). O export gera zero páginas de município
    ou congela HTML vazio.
 2. **Fontes placeholder:** em `lib/db/cidades-do-build.ts` estas cidades
-   têm `fontes: {}` (ou quase): **serro**, **governador-valadares**,
+   tinham `fontes: {}` (ou quase): **serro**, **gov.-valadares**,
    **ipatinga**, **juiz-de-fora**, **uberlandia**; brumadinho só
-   `paraopeba`. Cards ficam “em breve” por design até o ETL.
+   `paraopeba`. Cards ficavam “em breve” por design até o ETL.
+   **24/09:** migration `0090_seed_cidades_ativas.sql` ativou as 6
+   (`ativo=true`, lat/lng Wikipédia, `links_uteis_mg`, merge de `fontes`);
+   `cidades-do-build.ts` regenerado → 12 cidades. ETL de indicadores
+   (conteúdo por cidade) segue pendente no item 6.
 
 Betim tem fontes completas — se vazia, é a camada 1 (banco no build).
 
@@ -119,7 +123,7 @@ P2 qualidade de tela; P3 monitoramento.
 | 3 | **P1** | Linkar condicionantes no TopNav (Eixo 2) | `apps/web/app/components/TopNav.tsx` | ✅ link após Licenciamento |
 | 4 | **P1** | Incluir Sigma em `entidades-completas.json` (ou merge da ficha legada na tabela) | ETL + `mesclarLegadas()` | ✅ merge em `entidades-dados.ts` + teste |
 | 5 | **P1** | Linkar `/empresas/sigma-lithium` na página da Araçuaí | rota cidade / seção relacionados | ✅ bloco em `mineracao/page.tsx` (Araçuaí/Itinga) |
-| 6 | **P2** | Repovoar indicadores das 6 cidades vazias (ETL) | `scripts/` ETL + `cidades-do-build.ts` via prebuild | ⬜ pendente — fontes vazias em `cidades-do-build.ts` (serro, GV, ipatinga, JF, uberdia; brumadinho só paraopeba) |
+| 6 | **P2** | Repovoar indicadores das 6 cidades vazias (ETL) | `scripts/` ETL + `cidades-do-build.ts` via prebuild | 🚧 ativação feita (0090 + regeneração → 12 cidades); conteúdo ETL por cidade ainda pendente |
 | 7 | **P2** | Mobile: reduzir densidade da TopNav em `sm` | `TopNav.tsx` + breakpoints do tema | ✅ gap/px menores, Blog só ícone no xs, FontSize 28px no mobile, `--breakpoint-xs: 480px` |
 | 8 | **P2** | Lab: colher stack do erro e corrigir camada | build/runtime log + `lab-camadas.ts` | ⬜ pendente — sem stack capturado |
 | 9 | **P3** | Guara Shield: credenciais + `--once` para gerar relatório | `scripts/.env` + bot | ✅ `shell: win32` no spawn; `--once` gerou `guara-shield-relatorio.json` (0 CRITICAL/HIGH); Telegram ainda sem `scripts/.env` |

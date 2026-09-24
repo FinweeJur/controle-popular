@@ -14,7 +14,7 @@
  *
  * A contagem vem do ÍNDICE DA `/busca` — o mesmo ~5 MB do degrau 1,
  * carregado uma vez por sessão (`carregarIndice` em `documentos.ts`). O
- * índice cobre leis municipais e proposições das 6 cidades (ver
+ * índice cobre leis municipais e proposições das cidades ativas (ver
  * `scripts/gerar-indice-busca.mts`); os acervos ricos (ComunicaBR, Rouanet,
  * despesas) NÃO estão nele. Então "total" aqui significa "documentos no
  * índice", e a tela diz isso em texto — zero dado fora do índice é

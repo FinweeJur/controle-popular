@@ -45,7 +45,7 @@ export interface Candidato {
 /**
  * Teto de botões numa resposta.
  *
- * Oito porque "contratos" sem cidade legitimamente casa com as 6 cidades
+ * Oito porque "contratos" sem cidade legitimamente casa com as 12 cidades
  * mais as rotas gerais de licitação, e uma resposta de 15 botões deixa de
  * ser uma escolha para virar outra busca. Quem não achou o que queria
  * refina a frase — o campo continua ali.
@@ -238,8 +238,8 @@ function pontuar<T extends EntradaCatalogo>(palavras: string[], entrada: T): Ass
  * `true` quando a pessoa NOMEOU um lugar que o portal não atende.
  *
  * O caso que ela existe para resolver: "saúde em Uberlândia". "saúde" casa
- * com uma rota de cidade em todas as 6 cidades atendidas — e sem a guarda a
- * resposta seria seis botões de saúde, nenhum deles Uberlândia. O assistente
+ * com uma rota de cidade em todas as 12 cidades atendidas — e sem a guarda a
+ * resposta seria doze botões de saúde, nenhum deles Uberlândia. O assistente
  * teria trocado a cidade da pergunta em silêncio, que é a mesma classe de
  * erro registrada em `etl_default_de_cidade` (parâmetro de cidade vindo de
  * default reetiqueta dado) e em `analise_garantista_cidades` (filtro que
