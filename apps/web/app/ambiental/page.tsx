@@ -73,6 +73,16 @@ export default async function AmbientalHome() {
       linkTexto: "Consultar acervo do CAR →",
     },
     {
+      titulo: "Ecossistema Regulatório, Ambiental e Concessionárias",
+      linha: "OEMAs dos 27 estados, Ministérios, Autarquias federais e concessionárias de água e luz",
+      texto:
+        "O mapa completo de mais de 70 instituições: órgãos ambientais estaduais, agências reguladoras (IBAMA, ANA, ANEEL, ANM), empresas públicas e as maiores redes de abastecimento e energia elétrica do Brasil.",
+      fase: "NOVO",
+      href: "/ambiental/ecossistema",
+      pronta: true,
+      linkTexto: "Acessar mapa do ecossistema nacional →",
+    },
+    {
       titulo: "Capacidade Institucional, Servidores e Orçamento",
       linha: "IEF, IGAM, FEAM, IEPHA, IPHAN, ANA, ANEEL e IBAMA: série histórica de 10 anos (2016-2026)",
       texto:

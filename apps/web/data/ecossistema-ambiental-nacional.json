@@ -1,0 +1,1655 @@
+[
+  {
+    "id": "imac-ac",
+    "sigla": "IMAC",
+    "nomeCompleto": "Instituto de Meio Ambiente do Acre",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "AC",
+    "regiao": "Norte",
+    "papelPrincipal": "Órgão executor da política ambiental do Acre, responsável pelo licenciamento estadual, fiscalização florestal e gestão de unidades de conservação.",
+    "sistemasInformatizados": [
+      "Siga Acre",
+      "CAR-Acre",
+      "DOF/Sinaflor",
+      "SisFogo"
+    ],
+    "contatos": {
+      "email": "presidencia.imac@ac.gov.br",
+      "telefone": "(68) 3223-1992",
+      "endereco": "Rua Rui Barbosa, 17 - Centro, Rio Branco - AC, CEP 69900-084",
+      "portalUrl": "https://imac.ac.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ac.gov.br"
+    }
+  },
+  {
+    "id": "ima-al",
+    "sigla": "IMA-AL",
+    "nomeCompleto": "Instituto do Meio Ambiente do Estado de Alagoas",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "AL",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Execução da política de meio ambiente em Alagoas, licenciamento, monitoramento costeiro, balneabilidade e gestão de áreas de proteção ambiental.",
+    "sistemasInformatizados": [
+      "Sisla Alagoas",
+      "E-Fisco Ambiental",
+      "CAR-AL",
+      "Portal de Licenciamento"
+    ],
+    "contatos": {
+      "email": "ima@ima.al.gov.br",
+      "telefone": "(82) 3315-1738",
+      "endereco": "Av. Major Cícero de Góes Monteiro, 2197 - Mutange, Maceió - AL, CEP 57017-515",
+      "portalUrl": "https://ima.al.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.al.gov.br"
+    }
+  },
+  {
+    "id": "ipaam-am",
+    "sigla": "IPAAM",
+    "nomeCompleto": "Instituto de Proteção Ambiental do Amazonas",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "AM",
+    "regiao": "Norte",
+    "papelPrincipal": "Controle ambiental, monitoramento de bacias hidrográficas, licenciamento de atividades produtivas e fiscalização na Amazônia Ocidental.",
+    "sistemasInformatizados": [
+      "Siga-AM",
+      "Sinaflor",
+      "SiCAR-AM",
+      "SisBio-AM"
+    ],
+    "contatos": {
+      "email": "atendimento@ipaam.am.gov.br",
+      "telefone": "(92) 2123-6700",
+      "endereco": "Av. Mario Ypiranga Monteiro, 3280 - Parque 10 de Novembro, Manaus - AM, CEP 69050-030",
+      "portalUrl": "https://www.ipaam.am.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.am.gov.br"
+    }
+  },
+  {
+    "id": "sema-ap",
+    "sigla": "SEMA-AP",
+    "nomeCompleto": "Secretaria de Estado do Meio Ambiente do Amapá",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "AP",
+    "regiao": "Norte",
+    "papelPrincipal": "Formulação e execução de políticas de desenvolvimento sustentável, licenciamento e gestão do mosaico de áreas protegidas do Amapá.",
+    "sistemasInformatizados": [
+      "Sigam Amapá",
+      "CAR-AP",
+      "Sinaflor",
+      "Sisga"
+    ],
+    "contatos": {
+      "email": "gabinete@sema.ap.gov.br",
+      "telefone": "(96) 2101-2000",
+      "endereco": "Av. Mendonça Furtado, 53 - Centro, Macapá - AP, CEP 68900-060",
+      "portalUrl": "https://sema.ap.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ap.gov.br"
+    }
+  },
+  {
+    "id": "inema-ba",
+    "sigla": "INEMA-BA",
+    "nomeCompleto": "Instituto do Meio Ambiente e Recursos Hídricos da Bahia",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "BA",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Gestão unificada de meio ambiente e recursos hídricos na Bahia, outorga, licenciamento ambiental estadual e fiscalização dos biomas Caatinga e Mata Atlântica.",
+    "sistemasInformatizados": [
+      "SEIA (Sistema Estadual de Informações Ambientais)",
+      "CEFIR",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento.inema@inema.ba.gov.br",
+      "telefone": "(71) 3118-4000",
+      "endereco": "Avenida Antônio Carlos Magalhães, 600 - CAB, Salvador - BA, CEP 41745-900",
+      "portalUrl": "https://www.inema.ba.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ba.gov.br"
+    }
+  },
+  {
+    "id": "semace-ce",
+    "sigla": "SEMACE",
+    "nomeCompleto": "Superintendência Estadual do Meio Ambiente do Ceará",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "CE",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Execução da política ambiental no Ceará, licenciamento, fiscalização industrial e agropecuária, monitoramento de praias e recursos florestais.",
+    "sistemasInformatizados": [
+      "Natuur (Sistema de Licenciamento)",
+      "SIMA",
+      "SiCAR-CE",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento@semace.ce.gov.br",
+      "telefone": "(85) 3101-5520",
+      "endereco": "Rua Jaime Benévolo, 1400 - Fátima, Fortaleza - CE, CEP 60050-081",
+      "portalUrl": "https://www.semace.ce.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ce.gov.br"
+    }
+  },
+  {
+    "id": "ibram-df",
+    "sigla": "IBRAM",
+    "nomeCompleto": "Instituto do Meio Ambiente e dos Recursos Hídricos do Distrito Federal (Brasília Ambiental)",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "DF",
+    "regiao": "Centro-Oeste",
+    "papelPrincipal": "Gestão das unidades de conservação, parques ecológicos e licenciamento e fiscalização ambiental no Distrito Federal.",
+    "sistemasInformatizados": [
+      "SISLIC",
+      "SEI-GDF",
+      "SiCAR-DF",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento@ibram.df.gov.br",
+      "telefone": "(61) 3214-5600",
+      "endereco": "SEPN 511 Bloco C - Edifício Bittar, Brasília - DF, CEP 70750-543",
+      "portalUrl": "https://www.ibram.df.gov.br",
+      "ouvidoriaUrl": "https://participa.df.gov.br"
+    }
+  },
+  {
+    "id": "iema-es",
+    "sigla": "IEMA-ES",
+    "nomeCompleto": "Instituto Estadual de Meio Ambiente e Recursos Hídricos do Espírito Santo",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "ES",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Execução da política de meio ambiente e recursos hídricos do Espírito Santo, licenciamento de indústrias, portos e mineração e monitoramento da qualidade do ar.",
+    "sistemasInformatizados": [
+      "SEP (Sistema Eletrônico de Protocolo)",
+      "SiCAR-ES",
+      "SisAgua",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento@iema.es.gov.br",
+      "telefone": "(27) 3636-2599",
+      "endereco": "Rodovia BR-262, Km 0 - Jardim América, Cariacica - ES, CEP 29140-130",
+      "portalUrl": "https://iema.es.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.es.gov.br"
+    }
+  },
+  {
+    "id": "semad-go",
+    "sigla": "SEMAD-GO",
+    "nomeCompleto": "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de Goiás",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "GO",
+    "regiao": "Centro-Oeste",
+    "papelPrincipal": "Formulação e execução de políticas ambientais, outorga de uso da água, licenciamento e fiscalização do desmatamento e queimadas no Cerrado goiano.",
+    "sistemasInformatizados": [
+      "SGA (Sistema de Gestão Ambiental)",
+      "Sistema Ipê",
+      "CAR Goiás",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "semad@goias.gov.br",
+      "telefone": "(62) 3201-5150",
+      "endereco": "Rua 82, s/n - Palácio Pedro Ludovico Teixeira, Setor Sul, Goiânia - GO, CEP 74015-908",
+      "portalUrl": "https://www.meioambiente.go.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.go.gov.br"
+    }
+  },
+  {
+    "id": "sema-ma",
+    "sigla": "SEMA-MA",
+    "nomeCompleto": "Secretaria de Estado do Meio Ambiente e Recursos Naturais do Maranhão",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MA",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Gestão dos recursos ambientais e hídricos do Maranhão, licenciamento, fiscalização florestal e regulação de unidades de conservação.",
+    "sistemasInformatizados": [
+      "SIGA-MA",
+      "CAR Maranhão",
+      "Sinaflor",
+      "Siságua-MA"
+    ],
+    "contatos": {
+      "email": "atendimento@sema.ma.gov.br",
+      "telefone": "(98) 3194-8900",
+      "endereco": "Rua dos Bimbos, 200 - Ilhinha, São Luís - MA, CEP 65076-200",
+      "portalUrl": "https://sema.ma.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ma.gov.br"
+    }
+  },
+  {
+    "id": "semad-mg",
+    "sigla": "SEMAD-MG",
+    "nomeCompleto": "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de Minas Gerais",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Coordenação do Sistema Estadual de Meio Ambiente e Recursos Hídricos (SISEMA), planejamento estratégico, regularização e fiscalização ambiental integrada.",
+    "sistemasInformatizados": [
+      "SLA (Sistema de Licenciamento Ambiental)",
+      "SisemaNet",
+      "CAR-MG",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento@meioambiente.mg.gov.br",
+      "telefone": "(31) 3915-1000",
+      "endereco": "Rodovia Papa João Paulo II, 4143 - Prédio Minas, 1º e 2º andares, Cidade Administrativa, Belo Horizonte - MG, CEP 31630-900",
+      "portalUrl": "https://www.meioambiente.mg.gov.br",
+      "ouvidoriaUrl": "https://www.ouvidoriageral.mg.gov.br"
+    }
+  },
+  {
+    "id": "feam-mg",
+    "sigla": "FEAM",
+    "nomeCompleto": "Fundação Estadual do Meio Ambiente de Minas Gerais",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Execução do controle de qualidade ambiental, monitoramento da qualidade do ar e das águas, gestão de resíduos sólidos e segurança de barragens industriais.",
+    "sistemasInformatizados": [
+      "SLA",
+      "SIGBAR (Segurança de Barragens)",
+      "MTR (Manifesto de Resíduos)",
+      "Qualiar"
+    ],
+    "contatos": {
+      "email": "feam@meioambiente.mg.gov.br",
+      "telefone": "(31) 3915-1200",
+      "endereco": "Rodovia Papa João Paulo II, 4143 - Prédio Minas, Cidade Administrativa, Belo Horizonte - MG, CEP 31630-900",
+      "portalUrl": "https://www.feam.br",
+      "ouvidoriaUrl": "https://www.ouvidoriageral.mg.gov.br"
+    }
+  },
+  {
+    "id": "ief-mg",
+    "sigla": "IEF",
+    "nomeCompleto": "Instituto Estadual de Florestas de Minas Gerais",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Gestão das Unidades de Conservação Estaduais, conservação da biodiversidade, monitoramento da fauna e flora e regularização florestal (CAR/PRA).",
+    "sistemasInformatizados": [
+      "SiCAR-MG",
+      "Sinaflor",
+      "SGUC (Sistema de Gestão de UCs)",
+      "Sispass"
+    ],
+    "contatos": {
+      "email": "ief@meioambiente.mg.gov.br",
+      "telefone": "(31) 3915-1400",
+      "endereco": "Rodovia Papa João Paulo II, 4143 - Prédio Minas, Cidade Administrativa, Belo Horizonte - MG, CEP 31630-900",
+      "portalUrl": "https://www.ief.mg.gov.br",
+      "ouvidoriaUrl": "https://www.ouvidoriageral.mg.gov.br"
+    }
+  },
+  {
+    "id": "igam-mg",
+    "sigla": "IGAM",
+    "nomeCompleto": "Instituto Mineiro de Gestão das Águas",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Gestão e outorga do direito de uso de recursos hídricos de domínio estadual, cobrança pelo uso da água, segurança de barragens de água e monitoramento hidrológico.",
+    "sistemasInformatizados": [
+      "Sisout (Sistema de Outorga)",
+      "InfoHidro",
+      "Monitoramento de Bacias",
+      "Siga Águas"
+    ],
+    "contatos": {
+      "email": "igam@meioambiente.mg.gov.br",
+      "telefone": "(31) 3915-1300",
+      "endereco": "Rodovia Papa João Paulo II, 4143 - Prédio Minas, Cidade Administrativa, Belo Horizonte - MG, CEP 31630-900",
+      "portalUrl": "https://www.igam.mg.gov.br",
+      "ouvidoriaUrl": "https://www.ouvidoriageral.mg.gov.br"
+    }
+  },
+  {
+    "id": "imasul-ms",
+    "sigla": "IMASUL",
+    "nomeCompleto": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MS",
+    "regiao": "Centro-Oeste",
+    "papelPrincipal": "Gestão e fiscalização ambiental no Mato Grosso do Sul, com foco prioritário na conservação do Pantanal, licenciamento e outorga de recursos hídricos.",
+    "sistemasInformatizados": [
+      "SIRAM (Recursos Ambientais)",
+      "CAR-MS",
+      "Sinaflor",
+      "RHEOS"
+    ],
+    "contatos": {
+      "email": "imasul@imasul.ms.gov.br",
+      "telefone": "(67) 3318-5600",
+      "endereco": "Rua Desembargador Leão Neto do Carmo, s/n - Parque dos Poderes, Bloco 3, Campo Grande - MS, CEP 79031-902",
+      "portalUrl": "https://www.imasul.ms.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ms.gov.br"
+    }
+  },
+  {
+    "id": "sema-mt",
+    "sigla": "SEMA-MT",
+    "nomeCompleto": "Secretaria de Estado de Meio Ambiente de Mato Grosso",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "MT",
+    "regiao": "Centro-Oeste",
+    "papelPrincipal": "Licenciamento ambiental, monitoramento por sensoriamento remoto do desmatamento ilegal nos biomas Amazônia, Cerrado e Pantanal, e outorga de água.",
+    "sistemasInformatizados": [
+      "SIMLAM",
+      "SiCAR-MT",
+      "Sinaflor",
+      "Plataforma de Satélites MT"
+    ],
+    "contatos": {
+      "email": "atendimento@sema.mt.gov.br",
+      "telefone": "(65) 3613-7200",
+      "endereco": "Rua C, s/n - Centro Político Administrativo, Cuiabá - MT, CEP 78049-923",
+      "portalUrl": "https://www.sema.mt.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.mt.gov.br"
+    }
+  },
+  {
+    "id": "semas-pa",
+    "sigla": "SEMAS-PA",
+    "nomeCompleto": "Secretaria de Estado de Meio Ambiente e Sustentabilidade do Pará",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "PA",
+    "regiao": "Norte",
+    "papelPrincipal": "Regulação ambiental do Estado do Pará, licenciamento minerário e agropecuário, combate ao desmatamento, restauração florestal e bioeconomia.",
+    "sistemasInformatizados": [
+      "SISLAM",
+      "SIMLAM-PA",
+      "CAR-PA",
+      "Sinaflor",
+      "Sistema Selo Verde"
+    ],
+    "contatos": {
+      "email": "atendimento@semas.pa.gov.br",
+      "telefone": "(91) 3184-3300",
+      "endereco": "Travessa Lomas Valentinas, 2717 - Marco, Belém - PA, CEP 66095-770",
+      "portalUrl": "https://www.semas.pa.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.pa.gov.br"
+    }
+  },
+  {
+    "id": "sudema-pb",
+    "sigla": "SUDEMA-PB",
+    "nomeCompleto": "Superintendência de Administração do Meio Ambiente da Paraíba",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "PB",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Execução da política ambiental estadual da Paraíba, licenciamento, outorga, fiscalização de desmatamento na Caatinga e monitoramento de orla marítima.",
+    "sistemasInformatizados": [
+      "Sisga PB",
+      "CAR Paraíba",
+      "Sinaflor",
+      "Portal de Licenças"
+    ],
+    "contatos": {
+      "email": "sudema@sudema.pb.gov.br",
+      "telefone": "(83) 3218-5600",
+      "endereco": "Av. Monsenhor Walfredo Leal, 181 - Tambiá, João Pessoa - PB, CEP 58020-540",
+      "portalUrl": "https://sudema.pb.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.pb.gov.br"
+    }
+  },
+  {
+    "id": "cprh-pe",
+    "sigla": "CPRH",
+    "nomeCompleto": "Agência Estadual de Meio Ambiente de Pernambuco",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "PE",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Licenciamento ambiental de empreendimentos industriais e portuários (Complexo Suape), fiscalização florestal e conservação da fauna e flora pernambucanas.",
+    "sistemasInformatizados": [
+      "Sislam Pernambuco",
+      "SIGA-CPRH",
+      "CAR-PE",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "atendimento@cprh.pe.gov.br",
+      "telefone": "(81) 3182-8800",
+      "endereco": "Rua de Santana, 367 - Casa Forte, Recife - PE, CEP 52060-460",
+      "portalUrl": "https://www.cprh.pe.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.pe.gov.br"
+    }
+  },
+  {
+    "id": "semarh-pi",
+    "sigla": "SEMARH-PI",
+    "nomeCompleto": "Secretaria de Estado do Meio Ambiente e Recursos Hídricos do Piauí",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "PI",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Gestão dos recursos hídricos, combate à desertificação, licenciamento ambiental de parques solares e eólicos e fiscalização florestal no Piauí.",
+    "sistemasInformatizados": [
+      "Sigarh Piauí",
+      "CAR-PI",
+      "Sinaflor",
+      "SGA-PI"
+    ],
+    "contatos": {
+      "email": "atendimento@semarh.pi.gov.br",
+      "telefone": "(86) 3216-2038",
+      "endereco": "Centro Administrativo do Estado, Bloco G - São Pedro, Teresina - PI, CEP 64018-900",
+      "portalUrl": "https://www.semarh.pi.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.pi.gov.br"
+    }
+  },
+  {
+    "id": "iat-pr",
+    "sigla": "IAT-PR",
+    "nomeCompleto": "Instituto Água e Terra do Paraná",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "PR",
+    "regiao": "Sul",
+    "papelPrincipal": "Autarquia responsável pelo licenciamento unificado, outorga hídrica, ordenamento territorial, fiscalização da Mata Atlântica e preservação da Floresta de Araucárias.",
+    "sistemasInformatizados": [
+      "SGA-PR (Sistema de Gestão Ambiental)",
+      "e-Protocolo Paraná",
+      "SiCAR-PR",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "iat@iat.pr.gov.br",
+      "telefone": "(41) 3213-3700",
+      "endereco": "Rua Engenheiros Rebouças, 1206 - Rebouças, Curitiba - PR, CEP 80215-100",
+      "portalUrl": "https://www.iat.pr.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.pr.gov.br"
+    }
+  },
+  {
+    "id": "inea-rj",
+    "sigla": "INEA-RJ",
+    "nomeCompleto": "Instituto Estadual do Ambiente do Rio de Janeiro",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Execução da política de meio ambiente e recursos hídricos do RJ, licenciamento industrial, despoluição da Baía de Guanabara e segurança de barragens estaduais.",
+    "sistemasInformatizados": [
+      "SLAM (Licenciamento Ambiental)",
+      "Sisga RJ",
+      "CAR-RJ",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "inea@inea.rj.gov.br",
+      "telefone": "(21) 2332-4600",
+      "endereco": "Avenida Venezuela, 110 - Saúde, Rio de Janeiro - RJ, CEP 20081-312",
+      "portalUrl": "https://www.inea.rj.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.rj.gov.br"
+    }
+  },
+  {
+    "id": "idema-rn",
+    "sigla": "IDEMA-RN",
+    "nomeCompleto": "Instituto de Desenvolvimento Sustentável e Meio Ambiente do Rio Grande do Norte",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "RN",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Licenciamento e controle ambiental de parques eólicos offshore e onshore, salineiras, carcinicultura e conservação da zona costeira potiguar.",
+    "sistemasInformatizados": [
+      "Sisdia",
+      "CAR-RN",
+      "Sinaflor",
+      "SGA-RN"
+    ],
+    "contatos": {
+      "email": "atendimento@idema.rn.gov.br",
+      "telefone": "(84) 3232-1900",
+      "endereco": "Av. Alexandrino de Alencar, 1399 - Tirol, Natal - RN, CEP 59015-350",
+      "portalUrl": "https://www.idema.rn.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.rn.gov.br"
+    }
+  },
+  {
+    "id": "sedam-ro",
+    "sigla": "SEDAM-RO",
+    "nomeCompleto": "Secretaria de Estado do Desenvolvimento Ambiental de Rondônia",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "RO",
+    "regiao": "Norte",
+    "papelPrincipal": "Licenciamento de hidrelétricas e agropecuária, combate a queimadas e desmatamento, regularização fundiário-ambiental e gestão de UCs em Rondônia.",
+    "sistemasInformatizados": [
+      "SIAM",
+      "CAR Rondônia",
+      "Sinaflor",
+      "Sigam-RO"
+    ],
+    "contatos": {
+      "email": "atendimento@sedam.ro.gov.br",
+      "telefone": "(69) 3216-5200",
+      "endereco": "Av. Farquar, 2986 - Bairro Pedrinhas, Complexo Rio Madeira, Porto Velho - RO, CEP 76801-470",
+      "portalUrl": "https://www.sedam.ro.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.ro.gov.br"
+    }
+  },
+  {
+    "id": "femarh-rr",
+    "sigla": "FEMARH-RR",
+    "nomeCompleto": "Fundação Estadual do Meio Ambiente e Recursos Hídricos de Roraima",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "RR",
+    "regiao": "Norte",
+    "papelPrincipal": "Gestão florestal e de recursos hídricos, outorga, combate a ilícitos ambientais e licenciamento no extremo norte do país.",
+    "sistemasInformatizados": [
+      "Sisga Roraima",
+      "CAR-RR",
+      "Sinaflor",
+      "Sislic-RR"
+    ],
+    "contatos": {
+      "email": "femarh@femarh.rr.gov.br",
+      "telefone": "(95) 2121-9150",
+      "endereco": "Rua Jornalista Humberto Silva, 360 - São Pedro, Boa Vista - RR, CEP 69306-695",
+      "portalUrl": "https://femarh.rr.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.rr.gov.br"
+    }
+  },
+  {
+    "id": "fepam-rs",
+    "sigla": "FEPAM-RS",
+    "nomeCompleto": "Fundação Estadual de Proteção Ambiental Henrique Luis Roessler",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "RS",
+    "regiao": "Sul",
+    "papelPrincipal": "Licenciamento e fiscalização ambiental de polos industriais, petroquímicos e agrícolas, monitoramento de bacias hidrográficas e resposta a eventos climáticos no RS.",
+    "sistemasInformatizados": [
+      "SOL (Sistema Online de Licenciamento)",
+      "CAR Rio Grande do Sul",
+      "Sinaflor",
+      "Siga-RS"
+    ],
+    "contatos": {
+      "email": "fepam@fepam.rs.gov.br",
+      "telefone": "(51) 3288-9400",
+      "endereco": "Av. Borges de Medeiros, 261 - Centro Histórico, Porto Alegre - RS, CEP 90020-021",
+      "portalUrl": "https://www.fepam.rs.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.rs.gov.br"
+    }
+  },
+  {
+    "id": "ima-sc",
+    "sigla": "IMA-SC",
+    "nomeCompleto": "Instituto do Meio Ambiente de Santa Catarina",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "SC",
+    "regiao": "Sul",
+    "papelPrincipal": "Licenciamento, fiscalização e proteção da Mata Atlântica e faixa litorânea catarinense, análise do CAR e gestão de parques e reservas estaduais.",
+    "sistemasInformatizados": [
+      "SINFAT (Sistema de Informações Ambientais)",
+      "CAR Santa Catarina",
+      "Sinaflor",
+      "Portal de Balneabilidade"
+    ],
+    "contatos": {
+      "email": "ima@ima.sc.gov.br",
+      "telefone": "(48) 3665-4200",
+      "endereco": "Rua Felipe Schmidt, 485 - Centro, Florianópolis - SC, CEP 88010-001",
+      "portalUrl": "https://www.ima.sc.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.sc.gov.br"
+    }
+  },
+  {
+    "id": "adema-se",
+    "sigla": "ADEMA-SE",
+    "nomeCompleto": "Administração Estadual do Meio Ambiente de Sergipe",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "SE",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Emissão de licenças, outorgas, fiscalização e controle de efluentes e proteção dos estuários e bacias hidrográficas do Estado de Sergipe.",
+    "sistemasInformatizados": [
+      "Sigam Sergipe",
+      "CAR-SE",
+      "Sinaflor",
+      "Portal de Licenciamento"
+    ],
+    "contatos": {
+      "email": "atendimento@adema.se.gov.br",
+      "telefone": "(79) 3198-7150",
+      "endereco": "Rua Vila Cristina, 1051 - 13 de Julho, Aracaju - SE, CEP 49020-150",
+      "portalUrl": "https://adema.se.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.se.gov.br"
+    }
+  },
+  {
+    "id": "cetesb-sp",
+    "sigla": "CETESB",
+    "nomeCompleto": "Companhia Ambiental do Estado de São Paulo",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Agência de controle, fiscalização e monitoramento da poluição ambiental e licenciamento de polos petroquímicos, industriais e automotivos paulistas.",
+    "sistemasInformatizados": [
+      "PLA (Portal de Licenciamento Ambiental)",
+      "Qualar",
+      "InfoCetesb",
+      "Sigam-SP"
+    ],
+    "contatos": {
+      "email": "cetesb@sp.gov.br",
+      "telefone": "(11) 3133-3000",
+      "endereco": "Av. Professor Frederico Hermann Júnior, 345 - Alto de Pinheiros, São Paulo - SP, CEP 05459-900",
+      "portalUrl": "https://cetesb.sp.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.sp.gov.br"
+    }
+  },
+  {
+    "id": "sp-aguas",
+    "sigla": "SpÁguas",
+    "nomeCompleto": "Agência de Águas do Estado de São Paulo",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Regulação de águas superficiais e subterrâneas em SP, outorga, cobrança e segurança de barramentos hídricos (sucessora do DAEE).",
+    "sistemasInformatizados": [
+      "BDPO (Outorga de Águas)",
+      "Siagas",
+      "Sistema de Monitoramento Hidrológico SP"
+    ],
+    "contatos": {
+      "email": "spaguas@sp.gov.br",
+      "telefone": "(11) 3293-8200",
+      "endereco": "Rua do Riachuelo, 115 - Sé, São Paulo - SP, CEP 01007-904",
+      "portalUrl": "https://www.spaguas.sp.gov.br",
+      "ouvidoriaUrl": "https://ouvidoria.sp.gov.br"
+    }
+  },
+  {
+    "id": "naturatins-to",
+    "sigla": "NATURATINS",
+    "nomeCompleto": "Instituto Natureza do Tocantins",
+    "categoria": "Órgão Ambiental Estadual",
+    "esfera": "Estadual",
+    "uf": "TO",
+    "regiao": "Norte",
+    "papelPrincipal": "Execução da política de conservação da biodiversidade no ecótono Amazônia-Cerrado, licenciamento, outorga hídrica e gestão de parques tocantinenses.",
+    "sistemasInformatizados": [
+      "SIGA Tocantins",
+      "CAR-TO",
+      "Sinaflor",
+      "Portal de Licenciamento"
+    ],
+    "contatos": {
+      "email": "atendimento@naturatins.to.gov.br",
+      "telefone": "(63) 3218-2600",
+      "endereco": "Quadra 302 Norte, Alameda 02, Lote 03 - Plano Diretor Norte, Palmas - TO, CEP 77006-338",
+      "portalUrl": "https://www.to.gov.br/naturatins",
+      "ouvidoriaUrl": "https://ouvidoria.to.gov.br"
+    }
+  },
+  {
+    "id": "mma",
+    "sigla": "MMA",
+    "nomeCompleto": "Ministério do Meio Ambiente e Mudança do Clima",
+    "categoria": "Ministério Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Formulação da Política Nacional do Meio Ambiente (PNMA), coordenação do SISNAMA, metas de mitigação climática e combate ao desmatamento nacional.",
+    "sistemasInformatizados": [
+      "Sinima",
+      "CNUC (Unidades de Conservação)",
+      "SiCAR Nacional",
+      "Sinaflor"
+    ],
+    "contatos": {
+      "email": "ouvidoria@mma.gov.br",
+      "telefone": "(61) 2028-1000",
+      "endereco": "Esplanada dos Ministérios, Bloco B - Zona Cívico-Administrativa, Brasília - DF, CEP 70068-900",
+      "portalUrl": "https://www.gov.br/mma",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "mme",
+    "sigla": "MME",
+    "nomeCompleto": "Ministério de Minas e Energia",
+    "categoria": "Ministério Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Diretrizes de transição energética, leilões de energia elétrica, regulação de óleo, gás e biocombustíveis e políticas para o setor mineral brasileiro.",
+    "sistemasInformatizados": [
+      "PDE (Plano Decenal)",
+      "PNE 2050",
+      "SIGMINE",
+      "Painéis do Setor Elétrico"
+    ],
+    "contatos": {
+      "email": "ouvidoria@mme.gov.br",
+      "telefone": "(61) 2032-5555",
+      "endereco": "Esplanada dos Ministérios, Bloco U - Zona Cívico-Administrativa, Brasília - DF, CEP 70065-900",
+      "portalUrl": "https://www.gov.br/mme",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "midr",
+    "sigla": "MIDR",
+    "nomeCompleto": "Ministério da Integração e do Desenvolvimento Regional",
+    "categoria": "Ministério Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Coordenação da proteção e defesa civil nacional, infraestrutura de segurança hídrica (Transposição do Rio São Francisco) e irrigação pública.",
+    "sistemasInformatizados": [
+      "S2iD (Informações sobre Desastres)",
+      "PISF",
+      "Sindec",
+      "Painel de Defesa Civil"
+    ],
+    "contatos": {
+      "email": "ouvidoria@mdr.gov.br",
+      "telefone": "(61) 2034-5000",
+      "endereco": "Esplanada dos Ministérios, Bloco E - Zona Cívico-Administrativa, Brasília - DF, CEP 70067-901",
+      "portalUrl": "https://www.gov.br/mdr",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "ibama",
+    "sigla": "IBAMA",
+    "nomeCompleto": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Licenciamento ambiental de grandes projetos federais (óleo offshore, ferrovias, hidrelétricas) e fiscalização e polícia ambiental nacional.",
+    "sistemasInformatizados": [
+      "Sisnama",
+      "CTF (Cadastro Técnico Federal)",
+      "Sinaflor",
+      "Siscomex-Madeira",
+      "SisPass"
+    ],
+    "contatos": {
+      "email": "ouvidoria.sede@ibama.gov.br",
+      "telefone": "(61) 3316-1212",
+      "endereco": "SCEN Trecho 2, Edifício Sede do Ibama - Asa Norte, Brasília - DF, CEP 70818-900",
+      "portalUrl": "https://www.gov.br/ibama",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "icmbio",
+    "sigla": "ICMBio",
+    "nomeCompleto": "Instituto Chico Mendes de Conservação da Biodiversidade",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Gestão, proteção, monitoramento e manejo de mais de 330 Unidades de Conservação Federais e pesquisa para conservação de espécies ameaçadas.",
+    "sistemasInformatizados": [
+      "SISBIO",
+      "SAMGe",
+      "SISUC",
+      "SALVE (Espécies Ameaçadas)"
+    ],
+    "contatos": {
+      "email": "ouvidoria@icmbio.gov.br",
+      "telefone": "(61) 2028-9000",
+      "endereco": "EQSW 103/104, Complexo Administrativo, Bloco B - Setor Sudoeste, Brasília - DF, CEP 70670-350",
+      "portalUrl": "https://www.gov.br/icmbio",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "ana",
+    "sigla": "ANA",
+    "nomeCompleto": "Agência Nacional de Águas e Saneamento Básico",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Regulação de corpos hídricos de domínio federal, outorgas interestaduais, monitoramento hidrológico e normas de referência para o marco do saneamento.",
+    "sistemasInformatizados": [
+      "SNIRH",
+      "CNARH",
+      "HidroWeb",
+      "SAS (Acompanhamento do Saneamento)",
+      "Sala de Situação"
+    ],
+    "contatos": {
+      "email": "ouvidoria@ana.gov.br",
+      "telefone": "(61) 2109-5400",
+      "endereco": "SPO Área 5 Quadra 3 Bloco B - Setor Policial Sul, Brasília - DF, CEP 70610-200",
+      "portalUrl": "https://www.gov.br/ana",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "aneel",
+    "sigla": "ANEEL",
+    "nomeCompleto": "Agência Nacional de Energia Elétrica",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Regulação e fiscalização das tarifas, qualidade do serviço e investimentos das concessionárias de distribuição, transmissão e geração elétrica.",
+    "sistemasInformatizados": [
+      "SIGEL (Informações Georreferenciadas)",
+      "Duto",
+      "SARD",
+      "Painel de Qualidade do Fornecimento"
+    ],
+    "contatos": {
+      "email": "ouvidoria@aneel.gov.br",
+      "telefone": "(61) 2192-8600",
+      "endereco": "SGAN 603 Módulo I - Asa Norte, Brasília - DF, CEP 70830-110",
+      "portalUrl": "https://www.gov.br/aneel",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "anm",
+    "sigla": "ANM",
+    "nomeCompleto": "Agência Nacional de Mineração",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Outorga de títulos de lavra e pesquisa mineral, arrecadação da CFEM e fiscalização obrigatória da segurança das barragens de rejeitos de mineração.",
+    "sistemasInformatizados": [
+      "SIGBM (Segurança de Barragens)",
+      "Cadastro Mineiro",
+      "Sislegis",
+      "Siga CFEM"
+    ],
+    "contatos": {
+      "email": "ouvidoria@anm.gov.br",
+      "telefone": "(61) 3312-6600",
+      "endereco": "Setor Bancário Norte, Quadra 02 Bloco N - Asa Norte, Brasília - DF, CEP 70040-020",
+      "portalUrl": "https://www.gov.br/anm",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "anp",
+    "sigla": "ANP",
+    "nomeCompleto": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Regulação das atividades de exploração, refino, transporte e distribuição de derivados de petróleo, gás natural e biocombustíveis no país.",
+    "sistemasInformatizados": [
+      "SIGEP",
+      "SIMP",
+      "SRD",
+      "Painel Dinâmico de Royalties"
+    ],
+    "contatos": {
+      "email": "ouvidoria@anp.gov.br",
+      "telefone": "(21) 2112-8100",
+      "endereco": "Avenida Rio Branco, 65 - Centro, Rio de Janeiro - RJ, CEP 20090-004",
+      "portalUrl": "https://www.gov.br/anp",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "funai",
+    "sigla": "FUNAI",
+    "nomeCompleto": "Fundação Nacional dos Povos Indígenas",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Demarcação, proteção e gestão dos territórios indígenas e emissão de termos de anuência e manifestação técnica em licenciamento de grandes obras.",
+    "sistemasInformatizados": [
+      "SIGETI",
+      "Geoportal Funai",
+      "SEI-Funai",
+      "Cadastro de Terras Indígenas"
+    ],
+    "contatos": {
+      "email": "ouvidoria@funai.gov.br",
+      "telefone": "(61) 3247-6800",
+      "endereco": "Edifício Parque Cidade Corporate, SCS Quadra 9 Bloco C Torre B, Brasília - DF, CEP 70308-200",
+      "portalUrl": "https://www.gov.br/funai",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "incra",
+    "sigla": "INCRA",
+    "nomeCompleto": "Instituto Nacional de Colonização e Reforma Agrária",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Ordenamento da estrutura fundiária brasileira, assentamentos de reforma agrária, regularização de posses e titulação de territórios quilombolas.",
+    "sistemasInformatizados": [
+      "SNCR (Cadastro Rural)",
+      "SIGEF (Gestão Fundiária)",
+      "Plataforma de Governança Territorial"
+    ],
+    "contatos": {
+      "email": "ouvidoria@incra.gov.br",
+      "telefone": "(61) 3411-7400",
+      "endereco": "SBN Quadra 01 Bloco D - Edifício Palácio do Desenvolvimento, Brasília - DF, CEP 70057-900",
+      "portalUrl": "https://www.gov.br/incra",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "cprm-sgb",
+    "sigla": "CPRM/SGB",
+    "nomeCompleto": "Serviço Geológico do Brasil",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Levantamento geológico e hidrológico nacional, mapeamento de áreas de risco geológico em municípios e alertas de cheias de bacias federais.",
+    "sistemasInformatizados": [
+      "GeoSGB",
+      "RIMAS (Águas Subterrâneas)",
+      "SACE (Alerta Hidrológico)",
+      "Portal do Mapa Geológico"
+    ],
+    "contatos": {
+      "email": "ouvidoria@sgb.gov.br",
+      "telefone": "(61) 2108-8400",
+      "endereco": "SGAN Quadra 603 Conjunto J Parte A - Asa Norte, Brasília - DF, CEP 70830-030",
+      "portalUrl": "https://www.sgb.gov.br",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "petrobras",
+    "sigla": "Petrobras",
+    "nomeCompleto": "Petróleo Brasileiro S.A.",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Exploração, refino e transporte de hidrocarbonetos e biocombustíveis, com governança de impactos socioambientais em águas ultraprofundas e bacias sedimentares.",
+    "sistemasInformatizados": [
+      "Portal de SMS Petrobras",
+      "Canal de Fornecedores",
+      "SIGA Ambiental Offshore"
+    ],
+    "contatos": {
+      "email": "ouvidoria@petrobras.com.br",
+      "telefone": "(21) 3224-4477",
+      "endereco": "Avenida República do Chile, 65 - Centro, Rio de Janeiro - RJ, CEP 20031-912",
+      "portalUrl": "https://www.petrobras.com.br",
+      "ouvidoriaUrl": "https://ouvidoria.petrobras.com.br"
+    }
+  },
+  {
+    "id": "furnas",
+    "sigla": "Furnas",
+    "nomeCompleto": "Furnas Centrais Elétricas S.A.",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Geração e transmissão de energia elétrica de grande porte, operação dos reservatórios de Furnas, Marimbondo e Corumbá e planos de bacia associados.",
+    "sistemasInformatizados": [
+      "Telemetria de Reservatórios Furnas",
+      "SIGA Corporativo",
+      "Portal de Operações Eletrobras"
+    ],
+    "contatos": {
+      "email": "ouvidoria@furnas.com.br",
+      "telefone": "(21) 2528-3111",
+      "endereco": "Rua Real Grandeza, 219 - Botafogo, Rio de Janeiro - RJ, CEP 22283-900",
+      "portalUrl": "https://www.furnas.com.br",
+      "ouvidoriaUrl": "https://eletrobras.com/pt/Paginas/Ouvidoria.aspx"
+    }
+  },
+  {
+    "id": "chesf",
+    "sigla": "CHESF",
+    "nomeCompleto": "Companhia Hidro Elétrica do São Francisco",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Geração hidrelétrica e eólica no Nordeste (Sobradinho, Xingó, Paulo Afonso) e gestão hidrológica e de vazões ecológicas no Rio São Francisco.",
+    "sistemasInformatizados": [
+      "Telemetria Chesf Bacia São Francisco",
+      "SIGA Chesf",
+      "Operação Integrada Chesf"
+    ],
+    "contatos": {
+      "email": "ouvidoria@chesf.gov.br",
+      "telefone": "(81) 3229-2111",
+      "endereco": "Rua Delmiro Gouveia, 333 - San Martin, Recife - PE, CEP 50761-901",
+      "portalUrl": "https://www.chesf.com.br",
+      "ouvidoriaUrl": "https://eletrobras.com/pt/Paginas/Ouvidoria.aspx"
+    }
+  },
+  {
+    "id": "eletronorte",
+    "sigla": "Eletronorte",
+    "nomeCompleto": "Centrais Elétricas do Norte do Brasil S.A.",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Norte",
+    "papelPrincipal": "Geração e transmissão de energia na Amazônia Legal, operação do complexo hidrelétrico de Tucuruí e programas socioambientais amazônicos.",
+    "sistemasInformatizados": [
+      "Telemetria Tucuruí",
+      "SIGA Eletronorte",
+      "Monitoramento Socioambiental Norte"
+    ],
+    "contatos": {
+      "email": "ouvidoria@eln.gov.br",
+      "telefone": "(61) 3429-5000",
+      "endereco": "SCN Quadra 06 Conjunto A Bloco B e C - Asa Norte, Brasília - DF, CEP 70716-901",
+      "portalUrl": "https://www.eletronorte.gov.br",
+      "ouvidoriaUrl": "https://eletrobras.com/pt/Paginas/Ouvidoria.aspx"
+    }
+  },
+  {
+    "id": "eletrobras",
+    "sigla": "Eletrobras",
+    "nomeCompleto": "Centrais Elétricas Brasileiras S.A.",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Maior empresa do setor elétrico do continente, responsável por 44 mil km de linhas de transmissão e 40% da capacidade de geração do Brasil.",
+    "sistemasInformatizados": [
+      "Painel ESG Eletrobras",
+      "SIGA Corporativo Unificado",
+      "Portal de Transparência Eletrobras"
+    ],
+    "contatos": {
+      "email": "ouvidoria@eletrobras.com",
+      "telefone": "(21) 2514-5151",
+      "endereco": "Avenida Graça Aranha, 26 - Centro, Rio de Janeiro - RJ, CEP 20030-000",
+      "portalUrl": "https://eletrobras.com",
+      "ouvidoriaUrl": "https://eletrobras.com/pt/Paginas/Ouvidoria.aspx"
+    }
+  },
+  {
+    "id": "itaipu-binacional",
+    "sigla": "Itaipu Binacional",
+    "nomeCompleto": "Itaipu Binacional",
+    "categoria": "Empresa Pública",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Sul",
+    "papelPrincipal": "Entidade binacional (Brasil-Paraguai) operando a Usina Hidrelétrica de Itaipu, projetos de recuperação de matas ciliares e conservação da bacia do Rio Paraná.",
+    "sistemasInformatizados": [
+      "Telemetria e Níveis Hidrológicos Itaipu",
+      "Programa Cultivando Água Boa",
+      "Geoportal Itaipu"
+    ],
+    "contatos": {
+      "email": "ouvidoria@itaipu.gov.br",
+      "telefone": "(45) 3520-5252",
+      "endereco": "Avenida Tancredo Neves, 6731 - Jardim Itaipu, Foz do Iguaçu - PR, CEP 85866-900",
+      "portalUrl": "https://www.itaipu.gov.br",
+      "ouvidoriaUrl": "https://www.itaipu.gov.br/ouvidoria"
+    }
+  },
+  {
+    "id": "codevasf",
+    "sigla": "Codevasf",
+    "nomeCompleto": "Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba",
+    "categoria": "Empresa Pública",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Desenvolvimento integrado das bacias hidrográficas, implantação de perímetros públicos irrigados, saneamento e contenção de processos erosivos fluviais.",
+    "sistemasInformatizados": [
+      "SIG-Codevasf",
+      "Monitoramento de Perímetros Irrigados",
+      "SEI-Codevasf"
+    ],
+    "contatos": {
+      "email": "ouvidoria@codevasf.gov.br",
+      "telefone": "(61) 2038-3000",
+      "endereco": "SGAN Quadra 601 Conjunto I - Asa Norte, Brasília - DF, CEP 70830-901",
+      "portalUrl": "https://www.codevasf.gov.br",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "embrapa",
+    "sigla": "Embrapa",
+    "nomeCompleto": "Empresa Brasileira de Pesquisa Agropecuária",
+    "categoria": "Empresa Pública",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Pesquisa científica e inovação tecnológica sustentável para a agricultura e pecuária, zoneamento de risco climático e preservação de biomas agrícolas.",
+    "sistemasInformatizados": [
+      "GeoInfo Embrapa",
+      "Agritempo",
+      "Base de Dados da Pesquisa Agropecuária (BDPA)"
+    ],
+    "contatos": {
+      "email": "sac@embrapa.br",
+      "telefone": "(61) 3448-4000",
+      "endereco": "Parque Estação Biológica - PqEB s/nº - Asa Norte, Brasília - DF, CEP 70770-901",
+      "portalUrl": "https://www.embrapa.br",
+      "ouvidoriaUrl": "https://falabr.cgu.gov.br"
+    }
+  },
+  {
+    "id": "copasa-mg",
+    "sigla": "COPASA",
+    "nomeCompleto": "Companhia de Saneamento de Minas Gerais",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Abastecimento público de água tratada e esgotamento sanitário em 630 municípios de Minas Gerais, incluindo mananciais da RMBH (Rio Manso, Serra Azul e Vargem das Flores).",
+    "sistemasInformatizados": [
+      "Agência Virtual Copasa",
+      "Sistema Integrado de Mananciais",
+      "GIS Saneamento MG"
+    ],
+    "contatos": {
+      "email": "ouvidoria@copasa.com.br",
+      "telefone": "(31) 3250-1000",
+      "endereco": "Rua Mar de Espanha, 525 - Santo Antônio, Belo Horizonte - MG, CEP 30330-900",
+      "portalUrl": "https://www.copasa.com.br",
+      "ouvidoriaUrl": "https://www.copasa.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "sabesp-sp",
+    "sigla": "Sabesp",
+    "nomeCompleto": "Companhia de Saneamento Básico do Estado de São Paulo",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Prestação de serviços de saneamento básico em 375 municípios paulistas, incluindo o Sistema Cantareira, Alto Tietê e despoluição do Rio Pinheiros.",
+    "sistemasInformatizados": [
+      "Sabesp Net",
+      "Monitoramento dos Mananciais SP",
+      "Telemetria Cantareira"
+    ],
+    "contatos": {
+      "email": "ouvidoria@sabesp.com.br",
+      "telefone": "(11) 3388-8000",
+      "endereco": "Rua Costa Carvalho, 300 - Pinheiros, São Paulo - SP, CEP 05429-900",
+      "portalUrl": "https://www.sabesp.com.br",
+      "ouvidoriaUrl": "https://www.sabesp.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "sanepar-pr",
+    "sigla": "Sanepar",
+    "nomeCompleto": "Companhia de Saneamento do Paraná",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "PR",
+    "regiao": "Sul",
+    "papelPrincipal": "Gestão do ciclo da água, coleta e tratamento de efluentes em 345 municípios paranaenses, com foco na preservação das bacias do Iguaçu e Tibagi.",
+    "sistemasInformatizados": [
+      "Sanepar Virtual",
+      "Monitoramento de Bacias Hídricas PR",
+      "GIS Sanepar"
+    ],
+    "contatos": {
+      "email": "ouvidoria@sanepar.com.br",
+      "telefone": "(41) 3330-3000",
+      "endereco": "Rua Engenheiros Rebouças, 1376 - Rebouças, Curitiba - PR, CEP 80215-900",
+      "portalUrl": "https://www.sanepar.com.br",
+      "ouvidoriaUrl": "https://www.sanepar.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "corsan-rs",
+    "sigla": "Corsan",
+    "nomeCompleto": "Companhia Riograndense de Saneamento",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "RS",
+    "regiao": "Sul",
+    "papelPrincipal": "Abastecimento e tratamento de esgoto para 317 municípios do Rio Grande do Sul, com investimentos emergenciais pós-cheias históricas na bacia do Guaíba.",
+    "sistemasInformatizados": [
+      "Corsan Digital",
+      "Monitoramento de Mananciais RS",
+      "Centro de Operações Integradas"
+    ],
+    "contatos": {
+      "email": "ouvidoria@corsan.com.br",
+      "telefone": "(51) 3215-5600",
+      "endereco": "Rua Caldas Júnior, 120 - Centro Histórico, Porto Alegre - RS, CEP 90018-900",
+      "portalUrl": "https://www.corsan.com.br",
+      "ouvidoriaUrl": "https://www.corsan.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "embasa-ba",
+    "sigla": "Embasa",
+    "nomeCompleto": "Empresa Baiana de Águas e Saneamento",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "BA",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Captação, tratamento e distribuição de água e coleta de esgoto para 368 municípios baianos, operando mananciais do Rio Paraguaçu e Recôncavo.",
+    "sistemasInformatizados": [
+      "Agência Virtual Embasa",
+      "Telemetria de Redes BA",
+      "GIS Embasa"
+    ],
+    "contatos": {
+      "email": "ouvidoria@embasa.ba.gov.br",
+      "telefone": "(71) 3372-4600",
+      "endereco": "4ª Avenida, 420 - Centro Administrativo da Bahia (CAB), Salvador - BA, CEP 41745-002",
+      "portalUrl": "https://www.embasa.ba.gov.br",
+      "ouvidoriaUrl": "https://www.embasa.ba.gov.br/ouvidoria"
+    }
+  },
+  {
+    "id": "compesa-pe",
+    "sigla": "Compesa",
+    "nomeCompleto": "Companhia Pernambucana de Saneamento",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "PE",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Operação de sistemas hídricos complexos no semiárido pernambucano, adutoras do Agreste e Pajeú e saneamento na Região Metropolitana do Recife.",
+    "sistemasInformatizados": [
+      "Compesa Virtual",
+      "Monitoramento do Sistema Pirapama",
+      "Telemetria de Adutoras PE"
+    ],
+    "contatos": {
+      "email": "ouvidoria@compesa.com.br",
+      "telefone": "(81) 3412-9000",
+      "endereco": "Avenida Cruz Cabugá, 1387 - Santo Amaro, Recife - PE, CEP 50040-000",
+      "portalUrl": "https://www.compesa.com.br",
+      "ouvidoriaUrl": "https://www.compesa.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "casan-sc",
+    "sigla": "Casan",
+    "nomeCompleto": "Companhia Catarinense de Águas e Saneamento",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "SC",
+    "regiao": "Sul",
+    "papelPrincipal": "Sistemas de captação e purificação de água e estações de tratamento de esgoto atendendo 194 municípios catarinenses.",
+    "sistemasInformatizados": [
+      "Casan Autoatendimento",
+      "Monitoramento de Mananciais SC",
+      "GIS Casan"
+    ],
+    "contatos": {
+      "email": "ouvidoria@casan.com.br",
+      "telefone": "(48) 3221-5000",
+      "endereco": "Rua Emílio Blum, 83 - Centro, Florianópolis - SC, CEP 88020-010",
+      "portalUrl": "https://www.casan.com.br",
+      "ouvidoriaUrl": "https://www.casan.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "cagece-ce",
+    "sigla": "Cagece",
+    "nomeCompleto": "Companhia de Água e Esgoto do Ceará",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "CE",
+    "regiao": "Nordeste",
+    "papelPrincipal": "Serviços de água tratada e esgotamento sanitário em 151 municípios do Ceará, conectada ao Eixão das Águas e reservatórios de seca do semiárido.",
+    "sistemasInformatizados": [
+      "Cagece App",
+      "Telemetria Eixão das Águas",
+      "SCADA Saneamento CE"
+    ],
+    "contatos": {
+      "email": "ouvidoria@cagece.com.br",
+      "telefone": "(85) 3101-1700",
+      "endereco": "Av. Lauro Vieira Chaves, 1030 - Vila União, Fortaleza - CE, CEP 60422-901",
+      "portalUrl": "https://www.cagece.com.br",
+      "ouvidoriaUrl": "https://www.cagece.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "saneago-go",
+    "sigla": "Saneago",
+    "nomeCompleto": "Saneamento de Goiás S.A.",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "GO",
+    "regiao": "Centro-Oeste",
+    "papelPrincipal": "Captação, purificação e transporte de água e tratamento de esgoto para 226 cidades de Goiás, operando a bacia do Rio Meia Ponte e Sistema Corumbá.",
+    "sistemasInformatizados": [
+      "Agência Virtual Saneago",
+      "Monitoramento Rio Meia Ponte",
+      "GIS Saneago"
+    ],
+    "contatos": {
+      "email": "ouvidoria@saneago.com.br",
+      "telefone": "(62) 3269-9000",
+      "endereco": "Avenida Fued José Sebba, 1524 - Jardim Goiás, Goiânia - GO, CEP 74805-100",
+      "portalUrl": "https://www.saneago.com.br",
+      "ouvidoriaUrl": "https://www.saneago.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "cedae-rj",
+    "sigla": "Cedae",
+    "nomeCompleto": "Companhia Estadual de Águas e Esgotos do Rio de Janeiro",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Operação do mega complexo da Estação de Tratamento de Água (ETA) do Guandu e Sistema Imunana-Laranjal, fornecendo água tratada por atacado.",
+    "sistemasInformatizados": [
+      "Cedae Virtual",
+      "Monitoramento Complexo Guandu",
+      "Telemetria de Água Bruta"
+    ],
+    "contatos": {
+      "email": "ouvidoria@cedae.com.br",
+      "telefone": "(21) 2332-3500",
+      "endereco": "Avenida Presidente Vargas, 2655 - Cidade Nova, Rio de Janeiro - RJ, CEP 20210-030",
+      "portalUrl": "https://www.cedae.com.br",
+      "ouvidoriaUrl": "https://www.cedae.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "aguas-do-rio",
+    "sigla": "Águas do Rio",
+    "nomeCompleto": "Concessionária Águas do Rio (Grupo Aegea)",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Concessão privada dos blocos 1 e 4 do Rio de Janeiro: distribuição de água e esgotamento para a capital e 26 municípios fluminenses, incluindo Baía de Guanabara.",
+    "sistemasInformatizados": [
+      "Águas do Rio Digital",
+      "Telemetria de Redes e Bacias",
+      "Centro de Operações Integradas"
+    ],
+    "contatos": {
+      "email": "ouvidoria@aguasdorio.com.br",
+      "telefone": "0800 195 0195",
+      "endereco": "Rua Barão de Tefé, 34 - Saúde, Rio de Janeiro - RJ, CEP 20220-460",
+      "portalUrl": "https://aguasdorio.com.br",
+      "ouvidoriaUrl": "https://aguasdorio.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "aegea-saneamento",
+    "sigla": "Aegea Saneamento",
+    "nomeCompleto": "Aegea Saneamento e Participações S.A.",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Líder no setor privado de saneamento básico no Brasil, operando concessões e parcerias público-privadas em mais de 500 municípios e 15 estados.",
+    "sistemasInformatizados": [
+      "Plataforma Integrada de Operações",
+      "GIS Corporativo",
+      "Painel de Sustentabilidade Hídrica"
+    ],
+    "contatos": {
+      "email": "ouvidoria@aegea.com.br",
+      "telefone": "(11) 3046-5600",
+      "endereco": "Avenida Brigadeiro Faria Lima, 1663 - Jardim Paulistano, São Paulo - SP, CEP 01452-001",
+      "portalUrl": "https://www.aegea.com.br",
+      "ouvidoriaUrl": "https://www.aegea.com.br/contato/ouvidoria"
+    }
+  },
+  {
+    "id": "brk-ambiental",
+    "sigla": "BRK Ambiental",
+    "nomeCompleto": "BRK Ambiental Participações S.A.",
+    "categoria": "Concessionária de Água e Saneamento",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Empresa privada de saneamento básico presente em mais de 100 cidades em estados como TO, AL, PE, ES, SP, RJ, GO e MA, atendendo 16 milhões de pessoas.",
+    "sistemasInformatizados": [
+      "Minha BRK",
+      "Telemetria de Eficiência de Redes",
+      "Sistema de Gestão Operacional Hídrica"
+    ],
+    "contatos": {
+      "email": "ouvidoria@brkambiental.com.br",
+      "telefone": "0800 771 0001",
+      "endereco": "Rua do Rocio, 109 - Vila Olímpia, São Paulo - SP, CEP 04552-000",
+      "portalUrl": "https://www.brkambiental.com.br",
+      "ouvidoriaUrl": "https://www.brkambiental.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "cemig-mg",
+    "sigla": "CEMIG",
+    "nomeCompleto": "Companhia Energética de Minas Gerais",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Distribuição de energia elétrica em 774 municípios de Minas Gerais (maior rede de distribuição da América Latina) e geração eólica, solar e hidrelétrica.",
+    "sistemasInformatizados": [
+      "Cemig Atende",
+      "GIS-CEMIG Redes de Distribuição",
+      "APR-Web",
+      "Portal do Consumidor Livre"
+    ],
+    "contatos": {
+      "email": "ouvidoria@cemig.com.br",
+      "telefone": "(31) 3506-5000",
+      "endereco": "Avenida Barbacena, 1200 - Santo Agostinho, Belo Horizonte - MG, CEP 30190-131",
+      "portalUrl": "https://www.cemig.com.br",
+      "ouvidoriaUrl": "https://www.cemig.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "cpfl-energia",
+    "sigla": "CPFL Energia",
+    "nomeCompleto": "CPFL Energia S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Holding de distribuição de energia atendendo mais de 10 milhões de clientes no interior de SP e no RS (CPFL Paulista, Piratininga, Santa Cruz e RGE).",
+    "sistemasInformatizados": [
+      "CPFL Digital",
+      "Centro de Operação de Redes Avançado (COR)",
+      "GIS Corporativo Elétrico"
+    ],
+    "contatos": {
+      "email": "ouvidoria@cpfl.com.br",
+      "telefone": "(19) 3756-8000",
+      "endereco": "Rodovia Engenheiro Miguel Noel Nascentes Burnier, 1755 - Parque São Quirino, Campinas - SP, CEP 13088-900",
+      "portalUrl": "https://www.cpfl.com.br",
+      "ouvidoriaUrl": "https://www.cpfl.com.br/fale-conosco/ouvidoria"
+    }
+  },
+  {
+    "id": "copel-pr",
+    "sigla": "Copel",
+    "nomeCompleto": "Companhia Paranaense de Energia",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "PR",
+    "regiao": "Sul",
+    "papelPrincipal": "Geração, transmissão e distribuição de eletricidade nos 399 municípios do Paraná, pioneira na implantação do programa Rede Elétrica Inteligente (Smart Grid).",
+    "sistemasInformatizados": [
+      "Copel Digital",
+      "Rede Elétrica Inteligente (Smart Grid)",
+      "GIS-Copel Distribuição"
+    ],
+    "contatos": {
+      "email": "ouvidoria@copel.com",
+      "telefone": "(41) 3331-4000",
+      "endereco": "Rua José Izidoro Biazetto, 158 - Campo Comprido, Curitiba - PR, CEP 81200-240",
+      "portalUrl": "https://www.copel.com",
+      "ouvidoriaUrl": "https://www.copel.com/ouvidoria"
+    }
+  },
+  {
+    "id": "enel-brasil",
+    "sigla": "Enel Brasil",
+    "nomeCompleto": "Enel Brasil S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Operação de distribuição de eletricidade para mais de 15 milhões de unidades consumidoras em São Paulo (capital e Grande SP), Rio de Janeiro e Ceará.",
+    "sistemasInformatizados": [
+      "Agência Virtual Enel",
+      "SCADA Despacho de Redes",
+      "GIS Grid Enel Brasil"
+    ],
+    "contatos": {
+      "email": "ouvidoria@enel.com.br",
+      "telefone": "0800 727 2120",
+      "endereco": "Praça Ramos de Azevedo, 254 - República, São Paulo - SP, CEP 01037-010",
+      "portalUrl": "https://www.enel.com.br",
+      "ouvidoriaUrl": "https://www.enel.com.br/pt/ouvidoria.html"
+    }
+  },
+  {
+    "id": "equatorial-energia",
+    "sigla": "Equatorial Energia",
+    "nomeCompleto": "Equatorial Energia S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Grupo distribuidor e transmissor operando concessionárias em 7 estados (Maranhão, Pará, Piauí, Alagoas, Rio Grande do Sul, Goiás e Amapá).",
+    "sistemasInformatizados": [
+      "Agência Web Equatorial",
+      "Centro de Operações Integrado (COI)",
+      "GIS Equatorial"
+    ],
+    "contatos": {
+      "email": "ouvidoria@equatorialenergia.com.br",
+      "telefone": "(98) 3217-8200",
+      "endereco": "Alameda A, Quadra SGN, Lote 51 - Cohafuma, São Luís - MA, CEP 65074-115",
+      "portalUrl": "https://www.equatorialenergia.com.br",
+      "ouvidoriaUrl": "https://www.equatorialenergia.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "grupo-energisa",
+    "sigla": "Grupo Energisa",
+    "nomeCompleto": "Energisa S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Um dos maiores conglomerados privados de energia do país, com 11 distribuidoras cobrindo MG, MT, MS, TO, PB, SE, RO, AC, PR, SP e RJ.",
+    "sistemasInformatizados": [
+      "Energisa On",
+      "Sistema Integrado de Operação de Redes",
+      "GIS Energisa"
+    ],
+    "contatos": {
+      "email": "ouvidoria@grupoenergisa.com.br",
+      "telefone": "(21) 2122-6900",
+      "endereco": "Praça Botafogo, 228 - Botafogo, Rio de Janeiro - RJ, CEP 22250-040",
+      "portalUrl": "https://www.grupoenergisa.com.br",
+      "ouvidoriaUrl": "https://www.grupoenergisa.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "neoenergia",
+    "sigla": "Neoenergia",
+    "nomeCompleto": "Neoenergia S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Grupo controlado pela Iberdrola atuando em geração renovável, transmissão e na distribuição em Pernambuco (Celpe), Bahia (Coelba), Rio Grande do Norte (Cosern), SP/MS (Elektro) e Brasília (Neoenergia DF).",
+    "sistemasInformatizados": [
+      "Agência Virtual Neoenergia",
+      "Smart Metering",
+      "Centro de Operação Integrada Neoenergia"
+    ],
+    "contatos": {
+      "email": "ouvidoria@neoenergia.com",
+      "telefone": "(21) 3235-9800",
+      "endereco": "Praia do Flamengo, 78 - Flamengo, Rio de Janeiro - RJ, CEP 22210-030",
+      "portalUrl": "https://www.neoenergia.com",
+      "ouvidoriaUrl": "https://www.neoenergia.com/ouvidoria"
+    }
+  },
+  {
+    "id": "light-rj",
+    "sigla": "Light",
+    "nomeCompleto": "Light S.A.",
+    "categoria": "Concessionária de Luz e Energia",
+    "esfera": "Concessão / Mista",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "papelPrincipal": "Distribuição de energia elétrica para mais de 4,5 milhões de clientes na capital do Rio de Janeiro e outros 30 municípios da Baixada e Vale do Paraíba.",
+    "sistemasInformatizados": [
+      "Agência Virtual Light",
+      "Despacho Operacional de Redes Fluminenses",
+      "GIS Light"
+    ],
+    "contatos": {
+      "email": "ouvidoria@light.com.br",
+      "telefone": "0800 021 0196",
+      "endereco": "Avenida Marechal Floriano, 168 - Centro, Rio de Janeiro - RJ, CEP 20080-002",
+      "portalUrl": "https://www.light.com.br",
+      "ouvidoriaUrl": "https://www.light.com.br/ouvidoria"
+    }
+  },
+  {
+    "id": "ons",
+    "sigla": "ONS",
+    "nomeCompleto": "Operador Nacional do Sistema Elétrico",
+    "categoria": "Autarquia Federal",
+    "esfera": "Federal",
+    "uf": "BR / Nacional",
+    "regiao": "Nacional",
+    "papelPrincipal": "Coordenação e controle da operação das instalações de geração e transmissão de energia elétrica no Sistema Interligado Nacional (SIN), despacho hidrotérmico e monitoramento hidrológico dos reservatórios do país.",
+    "sistemasInformatizados": [
+      "SAGE (Sistema Aberto de Gerenciamento de Energia)",
+      "SINtegre",
+      "Portal de Dados Abertos do ONS",
+      "IPDO / PDO (Boletim Diário de Operação)",
+      "Sistema de Planejamento Energético (NEWAVE/DECOMP/GEVAZP)"
+    ],
+    "contatos": {
+      "email": "relacionamento@ons.org.br",
+      "telefone": "(21) 3444-9000",
+      "endereco": "Rua da Quitanda, 196 - Centro, Rio de Janeiro - RJ, CEP 20091-005 / Setor Comercial Norte, Ed. Brasília Trade Center, Brasília - DF",
+      "portalUrl": "https://www.ons.org.br",
+      "ouvidoriaUrl": "https://www.ons.org.br/paginas/sobre-o-ons/ouvidoria"
+    }
+  }
+]
+

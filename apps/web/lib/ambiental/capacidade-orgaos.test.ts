@@ -37,15 +37,16 @@ describe("Acervo de Capacidade dos Órgãos Ambientais e de Patrimônio", () => 
     "ANEEL",
     "IBAMA",
     "ICMBio",
+    "ANM",
     "CETESB-SP",
     "SEMA-MT",
     "SEMAS-PA",
     "INEMA-BA",
   ];
 
-  it("deve carregar todos os 13 órgãos requeridos", () => {
+  it("deve carregar todos os 14 órgãos requeridos", () => {
     const orgaos = obterTodosOrgaosCapacidade();
-    expect(orgaos).toHaveLength(13);
+    expect(orgaos).toHaveLength(14);
     const siglasPresentes = orgaos.map((o) => o.sigla);
     for (const sigla of SIGLAS_ESPERADAS) {
       expect(siglasPresentes).toContain(sigla);
@@ -56,7 +57,7 @@ describe("Acervo de Capacidade dos Órgãos Ambientais e de Patrimônio", () => 
     expect(METADADOS_CAPACIDADE.titulo).toContain("Capacidade Institucional");
     expect(METADADOS_CAPACIDADE.versao).toBe("1.0");
     expect(METADADOS_CAPACIDADE.dataAtualizacao).toBe("2026-09-24");
-    expect(METADADOS_CAPACIDADE.totalOrgaos).toBe(13);
+    expect(METADADOS_CAPACIDADE.totalOrgaos).toBe(14);
     expect(METADADOS_CAPACIDADE.ipcaAcumulado["2016_para_2026"]).toBe(1.724);
     expect(METADADOS_CAPACIDADE.ipcaAcumulado["2021_para_2026"]).toBe(1.302);
   });
@@ -245,8 +246,8 @@ describe("Acervo de Capacidade dos Órgãos Ambientais e de Patrimônio", () => 
     const federais = listarOrgaosPorEsfera("Federal");
 
     expect(estaduais).toHaveLength(8);
-    expect(federais).toHaveLength(5);
-    expect(estaduais.length + federais.length).toBe(13);
+    expect(federais).toHaveLength(6);
+    expect(estaduais.length + federais.length).toBe(14);
 
     for (const est of estaduais) {
       expect(est.esfera).toBe("Estadual");
@@ -258,18 +259,18 @@ describe("Acervo de Capacidade dos Órgãos Ambientais e de Patrimônio", () => 
 
   it("deve calcular perda consolidada de servidores para todo o conjunto", () => {
     const metricas = calcularPerdaConsolidadaServidores();
-    expect(metricas.total2016).toBe(14582);
-    expect(metricas.total2026).toBe(10041);
-    expect(metricas.perdaAbsoluta).toBe(-4541);
-    expect(metricas.perdaPercentual).toBe(-31.14);
+    expect(metricas.total2016).toBe(15822);
+    expect(metricas.total2026).toBe(10691);
+    expect(metricas.perdaAbsoluta).toBe(-5131);
+    expect(metricas.perdaPercentual).toBe(-32.43);
   });
 
   it("deve calcular variação orçamentária média e consolidada", () => {
     const metricas = calcularVariacaoOrcamentariaMedia();
-    expect(metricas.totalReal2016).toBe(9124.96);
-    expect(metricas.totalReal2026).toBe(7274.6);
-    expect(metricas.variacaoRealTotal).toBe(-20.28);
-    expect(metricas.variacaoRealMediaPorOrgao).toBe(-17.97);
+    expect(metricas.totalReal2016).toBe(9616.3);
+    expect(metricas.totalReal2026).toBe(7619.6);
+    expect(metricas.variacaoRealTotal).toBe(-20.76);
+    expect(metricas.variacaoRealMediaPorOrgao).toBe(-18.81);
 
     // Teste com array vazio
     const vazio = calcularVariacaoOrcamentariaMedia([]);
@@ -279,23 +280,69 @@ describe("Acervo de Capacidade dos Órgãos Ambientais e de Patrimônio", () => 
 
   it("deve retornar métricas gerais completas para o painel de capacidade", () => {
     const metricas = obterMetricasGeraisCapacidade();
-    expect(metricas.totalOrgaos).toBe(13);
-    expect(metricas.totalEfetivos2016).toBe(14582);
-    expect(metricas.totalEfetivos2021).toBe(10932);
-    expect(metricas.totalEfetivos2026).toBe(10041);
-    expect(metricas.perdaEfetivosAbsoluta).toBe(-4541);
-    expect(metricas.variacaoConsolidadaEfetivos).toBe(-31.14);
+    expect(metricas.totalOrgaos).toBe(14);
+    expect(metricas.totalEfetivos2016).toBe(15822);
+    expect(metricas.totalEfetivos2021).toBe(11712);
+    expect(metricas.totalEfetivos2026).toBe(10691);
+    expect(metricas.perdaEfetivosAbsoluta).toBe(-5131);
+    expect(metricas.variacaoConsolidadaEfetivos).toBe(-32.43);
 
     expect(metricas.orgaosPorEsfera.estadual).toBe(8);
-    expect(metricas.orgaosPorEsfera.federal).toBe(5);
+    expect(metricas.orgaosPorEsfera.federal).toBe(6);
 
-    expect(metricas.orgaoMaiorSobrecarga.sigla).toBe("IGAM-MG");
-    expect(metricas.orgaoMaiorSobrecarga.indiceSobrecarga).toBe(506.45);
+    expect(metricas.orgaoMaiorSobrecarga.sigla).toBe("ANM");
+    expect(metricas.orgaoMaiorSobrecarga.indiceSobrecarga).toBe(984.85);
 
-    expect(metricas.orgaoMaiorQuedaEfetivo.sigla).toBe("IEPHA-MG");
-    expect(metricas.orgaoMaiorQuedaEfetivo.variacaoEfetivo).toBe(-42.86);
+    expect(metricas.orgaoMaiorQuedaEfetivo.sigla).toBe("ANM");
+    expect(metricas.orgaoMaiorQuedaEfetivo.variacaoEfetivo).toBe(-47.58);
 
-    expect(metricas.mediaIndiceSobrecarga).toBe(285.8);
+    expect(metricas.mediaIndiceSobrecarga).toBe(335.73);
+  });
+
+  it("deve conter dados consistentes e específicos para a ANM (Agência Nacional de Mineração)", () => {
+    const anm = obterOrgaoPorSigla("ANM");
+    expect(anm).toBeDefined();
+    expect(anm?.nomeCompleto).toBe("Agência Nacional de Mineração");
+    expect(anm?.esfera).toBe("Federal");
+    expect(anm?.uf).toBe("DF/BR");
+    expect(anm?.papelRegulatorio).toContain("segurança de barragens de mineração (SIGBM)");
+    expect(anm?.papelRegulatorio).toContain("CFEM");
+
+    // Liderança e contatos
+    expect(anm?.lideranca.nome).toBe("Mauro Henrique Moreira Sousa");
+    expect(anm?.lideranca.cargo).toBe("Diretor-Geral");
+    expect(anm?.contatos.enderecoSede.cidade).toBe("Brasília");
+    expect(anm?.contatos.enderecoSede.cep).toBe("70040-020");
+
+    // Presença da Gerência Regional de MG
+    const regionalMG = anm?.contatos.sedesRegionais.find((r) => r.cidade === "Belo Horizonte");
+    expect(regionalMG).toBeDefined();
+    expect(regionalMG?.endereco).toContain("Afonso Pena");
+
+    // Organograma
+    const siglasDiretorias = anm?.organograma.map((u) => u.sigla);
+    expect(siglasDiretorias).toContain("SBM");
+    expect(siglasDiretorias).toContain("SAR");
+    expect(siglasDiretorias).toContain("SOT");
+    expect(siglasDiretorias).toContain("GR-MG");
+
+    // Sobrecarga crítica
+    expect(anm?.processosAtivosEstimados).toBe(195000);
+    expect(anm?.analistasProcessamento).toBeLessThan(200);
+    expect(anm?.indiceSobrecarga).toBeGreaterThan(950);
+
+    // Concurso público e hiato
+    expect(anm?.ultimoConcurso.ano).toBe(2022);
+    expect(anm?.ultimoConcurso.vagas).toBe(40);
+    expect(anm?.ultimoConcurso.banca).toBe("Cebraspe");
+    expect(anm?.ultimoConcurso.hiatoAnosAnterior).toBe(11);
+    expect(anm?.ultimoConcurso.deficitEstimado).toBeGreaterThan(1100);
+
+    // Fontes oficiais e SIGBM
+    const fontesUrls = anm?.fontes.map((f) => f.url);
+    expect(fontesUrls?.some((url) => url.includes("sigbm"))).toBe(true);
+    expect(fontesUrls?.some((url) => url.includes("portaldatransparencia"))).toBe(true);
+    expect(fontesUrls?.some((url) => url.includes("tcu"))).toBe(true);
   });
 
   it("não deve conter nenhum CPF válido de pessoa física nos dados cadastrados", () => {

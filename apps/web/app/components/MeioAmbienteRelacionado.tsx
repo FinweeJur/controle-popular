@@ -44,6 +44,12 @@ const LINKS: { href: string; label: string; icon: React.ElementType; color: stri
     icon: AlertOctagon,
     color: "var(--color-danger)",
   },
+  {
+    href: "/ambiental/ecossistema",
+    label: "Ecossistema Regulatório, OEMAs dos 27 Estados e Concessionárias de Água e Luz",
+    icon: Globe,
+    color: "var(--color-primary)",
+  },
 ]
 
 export default function MeioAmbienteRelacionado() {

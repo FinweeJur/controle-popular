@@ -470,11 +470,11 @@
   {
     "numero": 53,
     "id": "ambiental-barragens",
-    "titulo": "Painel de Barragens de Mineração",
+    "titulo": "SIGMA / Barragens & Mineração",
     "href": "/ambiental/barragens",
     "eixo": "Eixo 2: Terra e Territórios",
     "badge": "Barragens",
-    "resumo": "Todas as estruturas cadastradas na ANM/FEAM com nível de risco, dano potencial e localização geográfica."
+    "resumo": "Gestão de barragens da ANM/SIGBM e FEAM com classificação de dano potencial, categoria de risco e localização geográfica."
   },
   {
     "numero": 54,
@@ -585,7 +585,34 @@
     "resumo": "Mapa de riscos climáticos em MG: áreas de secas extremas, deslizamentos e enchentes recorrentes."
   },
   {
-    "numero": 66,
+    "id": "ambiental-car",
+    "titulo": "Cadastro Ambiental Rural (CAR / IEF-MG)",
+    "href": "/ambiental/car",
+    "eixo": "Eixo 2: Terra e Territórios",
+    "badge": "CAR / IEF",
+    "resumo": "Análise de 1,16 milhão de imóveis rurais em 14 URFBios de Minas Gerais, tempo médio de espera, setores e portes.",
+    "numero": 66
+  },
+  {
+    "id": "ambiental-capacidade-institucional",
+    "titulo": "Capacidade Institucional dos Órgãos Ambientais",
+    "href": "/ambiental/capacidade-institucional",
+    "eixo": "Eixo 2: Terra e Territórios",
+    "badge": "Institucional",
+    "resumo": "Série histórica decenal (2016-2026) de servidores, orçamento real deflacionado pelo IPCA e sobrecarga em 14 órgãos reguladores.",
+    "numero": 67
+  },
+  {
+    "id": "ambiental-ecossistema",
+    "titulo": "Ecossistema Regulatório e Concessionárias",
+    "href": "/ambiental/ecossistema",
+    "eixo": "Eixo 2: Terra e Territórios",
+    "badge": "Regulação",
+    "resumo": "Mapeamento dos órgãos ambientais dos 27 estados (OEMAs), ministérios federais, autarquias e concessionárias de água e luz.",
+    "numero": 68
+  },
+  {
+    "numero": 69,
     "id": "judiciario",
     "titulo": "Judiciário & Instituições de Justiça — Visão Geral",
     "href": "/judiciario",
@@ -594,7 +621,7 @@
     "resumo": "Transparência dos órgãos de justiça em Minas: orçamentos bilionários, auxílios e produtividade."
   },
   {
-    "numero": 67,
+    "numero": 70,
     "id": "judiciario-instituicoes",
     "titulo": "Diretório das Instituições de Justiça",
     "href": "/judiciario/instituicoes",
@@ -603,7 +630,7 @@
     "resumo": "Quadro comparativo de despesas, remunerações, lideranças e contatos de todas as cortes."
   },
   {
-    "numero": 68,
+    "numero": 71,
     "id": "judiciario-instituicoes-tjmg",
     "titulo": "TJMG — Tribunal de Justiça de MG",
     "href": "/judiciario/instituicoes/tjmg",
@@ -612,7 +639,7 @@
     "resumo": "Orçamento anual de R$ 14,96 bi: folha de pagamentos, auxílio-alimentação e diárias de magistrados."
   },
   {
-    "numero": 69,
+    "numero": 72,
     "id": "judiciario-instituicoes-mpmg",
     "titulo": "MPMG — Ministério Público de MG",
     "href": "/judiciario/instituicoes/mpmg",
@@ -621,7 +648,7 @@
     "resumo": "Orçamento de R$ 4,09 bi, verbas indenizatórias de promotores e atuação das promotorias de tutela coletiva."
   },
   {
-    "numero": 70,
+    "numero": 73,
     "id": "judiciario-instituicoes-dpmg",
     "titulo": "DPMG — Defensoria Pública de MG",
     "href": "/judiciario/instituicoes/dpmg",
@@ -630,7 +657,7 @@
     "resumo": "Orçamento de R$ 1,10 bi, disparidade em relação a TJ/MP e mapa do déficit de defensores públicos."
   },
   {
-    "numero": 71,
+    "numero": 74,
     "id": "judiciario-instituicoes-trt3",
     "titulo": "TRT-3 — Tribunal Regional do Trabalho (MG)",
     "href": "/judiciario/instituicoes/trt3",
@@ -639,7 +666,7 @@
     "resumo": "Orçamento de R$ 3,18 bi, varas trabalhistas de Minas, correições e atendimento ao trabalhador."
   },
   {
-    "numero": 72,
+    "numero": 75,
     "id": "judiciario-instituicoes-trf6",
     "titulo": "TRF-6 — Tribunal Regional Federal da 6ª Região",
     "href": "/judiciario/instituicoes/trf6",
@@ -648,7 +675,7 @@
     "resumo": "Justiça federal em MG: despesas de instalação, custeio e julgamentos de litígios federais."
   },
   {
-    "numero": 73,
+    "numero": 76,
     "id": "judiciario-instituicoes-tcemg",
     "titulo": "TCEMG — Tribunal de Contas do Estado",
     "href": "/judiciario/instituicoes/tcemg",
@@ -657,7 +684,7 @@
     "resumo": "Orçamento de R$ 1,15 bi, auditorias externas, pareceres sobre contas municipais e rejeições."
   },
   {
-    "numero": 74,
+    "numero": 77,
     "id": "judiciario-instituicoes-dpu",
     "titulo": "DPU — Defensoria Pública da União em MG",
     "href": "/judiciario/instituicoes/dpu",
@@ -666,7 +693,7 @@
     "resumo": "Assistência jurídica federal gratuita para o cidadão perante o INSS, Caixa e órgãos federais."
   },
   {
-    "numero": 75,
+    "numero": 78,
     "id": "judiciario-sirenejud",
     "titulo": "SIRENEJud — Ações Socioambientais do CNJ",
     "href": "/judiciario/sirenejud",
@@ -675,7 +702,7 @@
     "resumo": "Painel de processos judiciais ambientais por município, vara e classe processual em Minas Gerais."
   },
   {
-    "numero": 76,
+    "numero": 79,
     "id": "congresso",
     "titulo": "Congresso Nacional & Bancada Mineira",
     "href": "/congresso",
@@ -684,7 +711,7 @@
     "resumo": "Atuação dos 53 deputados e 3 senadores de Minas Gerais: votações, presença e propostas."
   },
   {
-    "numero": 77,
+    "numero": 80,
     "id": "congresso-gastos",
     "titulo": "Gastos da Cota Parlamentar (CEAP)",
     "href": "/congresso/gastos",
@@ -693,7 +720,7 @@
     "resumo": "Despesas indenizatórias de gabinete: passagens aéreas, combustível, consultorias e alimentação."
   },
   {
-    "numero": 78,
+    "numero": 81,
     "id": "congresso-proposicoes",
     "titulo": "Proposições & Projetos de Lei",
     "href": "/congresso/proposicoes",
@@ -702,7 +729,7 @@
     "resumo": "Acompanhamento das proposições em tramitação com foco em direitos sociais e sustentabilidade."
   },
   {
-    "numero": 79,
+    "numero": 82,
     "id": "congresso-votacoes",
     "titulo": "Votações Nominais da Bancada",
     "href": "/congresso/votacoes",
@@ -711,7 +738,7 @@
     "resumo": "Registro de como cada parlamentar mineiro votou nas principais reformas e medidas legislativas."
   },
   {
-    "numero": 80,
+    "numero": 83,
     "id": "congresso-emendas",
     "titulo": "Emendas Parlamentares para MG",
     "href": "/congresso/emendas",
@@ -720,7 +747,7 @@
     "resumo": "Rastreamento do destino de recursos federais alocados por deputados e senadores nas cidades do estado."
   },
   {
-    "numero": 81,
+    "numero": 84,
     "id": "governo",
     "titulo": "Governo de Minas — Promessas & Metas",
     "href": "/governo",
@@ -729,7 +756,7 @@
     "resumo": "Checagem das propostas do plano de governo estadual, concessões e privatizações."
   },
   {
-    "numero": 82,
+    "numero": 85,
     "id": "governo-secretarias",
     "titulo": "Secretarias de Estado de MG",
     "href": "/governo/mg",
@@ -738,7 +765,7 @@
     "resumo": "Organograma do governo estadual, orçamentos setoriais e despesas de custeio por pasta."
   },
   {
-    "numero": 83,
+    "numero": 86,
     "id": "estado-e-economia",
     "titulo": "Estado e Economia — Visão Geral",
     "href": "/estado-e-economia",
@@ -747,7 +774,7 @@
     "resumo": "Painel integrado das receitas estaduais, endividamento com a União e investimentos públicos."
   },
   {
-    "numero": 84,
+    "numero": 87,
     "id": "estado-e-economia-orcamento",
     "titulo": "Orçamento Estadual & ICMS (R$ 81,5 Bi)",
     "href": "/estado-e-economia/orcamento",
@@ -756,7 +783,7 @@
     "resumo": "Distribuição do ICMS, repasses automáticos aos municípios e execução orçamentária da LOA."
   },
   {
-    "numero": 85,
+    "numero": 88,
     "id": "instituicoes",
     "titulo": "Guia Institucional do Setor Público",
     "href": "/instituicoes",
@@ -765,7 +792,7 @@
     "resumo": "Diretório unificado de secretarias, autarquias e empresas estatais com telefones e ouvidorias."
   },
   {
-    "numero": 86,
+    "numero": 89,
     "id": "empresas",
     "titulo": "Top 130 Empresas & Fundos por Setor",
     "href": "/empresas",
@@ -774,7 +801,7 @@
     "resumo": "Monitoramento de governança corporativa, licenças, infrações ambientais e contratos com o Estado."
   },
   {
-    "numero": 87,
+    "numero": 90,
     "id": "empresas-vale",
     "titulo": "Vale S.A. — Perfil Corporativo & ESG",
     "href": "/empresas/vale",
@@ -783,7 +810,7 @@
     "resumo": "Produção mineral, balanço financeiro, compromissos judiciais dos rompimentos e autos de infração."
   },
   {
-    "numero": 88,
+    "numero": 91,
     "id": "empresas-sigma-lithium",
     "titulo": "Sigma Lithium — Mineração de Lítio",
     "href": "/empresas/sigma-lithium",
@@ -792,16 +819,7 @@
     "resumo": "Operações no Vale do Jequitinhonha, licenças ambientais, outorgas de água e incentivos fiscais."
   },
   {
-    "numero": 89,
-    "id": "empresas-setores",
-    "titulo": "Setores Econômicos Mapeados",
-    "href": "/empresas",
-    "eixo": "Eixo 3: Estado e Economia",
-    "badge": "Empresas",
-    "resumo": "Panorama por segmento: mineração, siderurgia, energia, agronegócio e finanças."
-  },
-  {
-    "numero": 90,
+    "numero": 92,
     "id": "empresas-documentos",
     "titulo": "Documentos & Pareceres Corporativos",
     "href": "/empresas/documentos",
@@ -810,7 +828,7 @@
     "resumo": "Autos de embargo do Ibama, relatórios da CVM e termos de ajuste de conduta das corporações."
   },
   {
-    "numero": 91,
+    "numero": 93,
     "id": "funcaosocialterra",
     "titulo": "Função Social da Terra — Painel Geral",
     "href": "/funcaosocialterra",
@@ -819,7 +837,7 @@
     "resumo": "Observatório da terra: conflitos agrários, sobreposições de títulos e regularização fundiária."
   },
   {
-    "numero": 92,
+    "numero": 94,
     "id": "funcaosocialterra-mapa",
     "titulo": "Globo 3D Interativo de Territórios",
     "href": "/funcaosocialterra/mapa",
@@ -828,7 +846,7 @@
     "resumo": "Visualização tridimensional em satélite de requerimentos minerários, CAR, UCs e territórios tradicionais."
   },
   {
-    "numero": 93,
+    "numero": 95,
     "id": "funcaosocialterra-alertas",
     "titulo": "Alertas de Sobreposição & Conflito",
     "href": "/funcaosocialterra/alertas",
@@ -837,7 +855,7 @@
     "resumo": "Identificação automática de processos de mineração sobrepostos a terras protegidas e quilombos."
   },
   {
-    "numero": 94,
+    "numero": 96,
     "id": "funcaosocialterra-quilombos",
     "titulo": "Comunidades Quilombolas de Minas Gerais",
     "href": "/funcaosocialterra",
@@ -846,7 +864,7 @@
     "resumo": "Mapeamento de comunidades certificadas pela Fundação Palmares, titulação de territórios e vulnerabilidades."
   },
   {
-    "numero": 95,
+    "numero": 97,
     "id": "funcaosocialterra-indigenas",
     "titulo": "Terras Indígenas em Minas Gerais",
     "href": "/funcaosocialterra",
@@ -855,31 +873,13 @@
     "resumo": "Demarcação, proteção territorial e situação jurídica das terras dos povos originários em MG."
   },
   {
-    "numero": 96,
+    "numero": 98,
     "id": "noticias",
     "titulo": "Central de Notícias & Relatórios Técnicos",
     "href": "/noticias",
     "eixo": "Central ONSA & Ferramentas",
     "badge": "Jornalismo",
     "resumo": "Artigos investigativos de profundidade com rigor científico, citações ABNT e metadados BibTeX."
-  },
-  {
-    "numero": 97,
-    "id": "ambiental-barragens-descaracterizacao",
-    "titulo": "Descaracterização de Barragens a Montante em MG",
-    "href": "/ambiental/barragens/descaracterizacao",
-    "eixo": "Eixo 2: Terra e Territórios",
-    "badge": "Mineração",
-    "resumo": "Acompanhamento do cronograma e execução da descaracterização das 30 barragens a montante em Minas Gerais após Mariana e Brumadinho."
-  },
-  {
-    "numero": 98,
-    "id": "privacidade",
-    "titulo": "Termo Geral de Privacidade & Transparência",
-    "href": "/sobre",
-    "eixo": "Central ONSA & Ferramentas",
-    "badge": "Termos",
-    "resumo": "Compromisso de navegação anônima, ausência de cookies de rastreamento comercial e respeito à LGPD."
   },
   {
     "numero": 99,

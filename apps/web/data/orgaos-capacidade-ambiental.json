@@ -9,7 +9,7 @@
       "2016_para_2026": 1.724,
       "2021_para_2026": 1.302
     },
-    "totalOrgaos": 13
+    "totalOrgaos": 14
   },
   "orgaos": [
     {
@@ -1837,6 +1837,243 @@
         "hiatoAnosAnterior": 8,
         "situacao": "Vigente / prorrogado até 2026 com chamamento de excedentes",
         "deficitEstimado": 970
+      }
+    },
+    {
+      "sigla": "ANM",
+      "nomeCompleto": "Agência Nacional de Mineração",
+      "esfera": "Federal",
+      "uf": "DF/BR",
+      "papelRegulatorio": "Regulação e fiscalização do setor minerário brasileiro, segurança de barragens de mineração (SIGBM), arrecadação da CFEM e outorga de títulos minerários",
+      "lideranca": {
+        "nome": "Mauro Henrique Moreira Sousa",
+        "cargo": "Diretor-Geral",
+        "gabinete": "Gabinete da Diretoria-Geral (GDG)",
+        "email": "diretoria.geral@anm.gov.br",
+        "telefone": "(61) 3312-6600"
+      },
+      "contatos": {
+        "emailGeral": "atendimento@anm.gov.br",
+        "telefones": [
+          "(61) 3312-6600",
+          "(61) 3312-6601"
+        ],
+        "enderecoSede": {
+          "logradouro": "SBN Quadra 2, Bloco N, Edifício Phenícia",
+          "bairro": "Asa Norte",
+          "cidade": "Brasília",
+          "uf": "DF",
+          "cep": "70040-020"
+        },
+        "sedesRegionais": [
+          {
+            "nome": "Gerência Regional da ANM em Minas Gerais (GR-MG)",
+            "cidade": "Belo Horizonte",
+            "endereco": "Av. Afonso Pena, 4000 - Cruzeiro, CEP 30130-009",
+            "telefone": "(31) 3254-2000",
+            "email": "gerencia.mg@anm.gov.br"
+          },
+          {
+            "nome": "Gerência Regional da ANM no Pará (GR-PA)",
+            "cidade": "Belém",
+            "endereco": "Rodovia Augusto Montenegro, km 7 - Parque Verde, CEP 66823-010",
+            "telefone": "(91) 3182-3500",
+            "email": "gerencia.pa@anm.gov.br"
+          },
+          {
+            "nome": "Gerência Regional da ANM na Bahia (GR-BA)",
+            "cidade": "Salvador",
+            "endereco": "Av. Ulysses Guimarães, 2895 - Sussuarana, CEP 41213-000",
+            "telefone": "(71) 3270-3600",
+            "email": "gerencia.ba@anm.gov.br"
+          }
+        ],
+        "ouvidoria": {
+          "canal": "Plataforma Fala.BR / Ouvidoria da ANM",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 3312-6700",
+          "email": "ouvidoria@anm.gov.br"
+        },
+        "canalDenuncia": {
+          "canal": "Fala.BR Denúncias / Canal de Integridade e Denúncia ANM",
+          "url": "https://falabr.cgu.gov.br",
+          "telefone": "(61) 3312-6700",
+          "email": "denuncia@anm.gov.br"
+        }
+      },
+      "responsabilidades": [
+        "Regulação e fiscalização das atividades de aproveitamento, exploração e beneficiamento dos recursos minerais em todo o Brasil",
+        "Supervisão e auditoria contínua de segurança das barragens de rejeitos de mineração por meio do SIGBM",
+        "Arrecadação, fiscalização e repasse federativo da Compensação Financeira pela Exploração de Recursos Minerais (CFEM)",
+        "Outorga de títulos minerários, regimes de concessão de lavra, autorizações de pesquisa mineral e licenciamentos",
+        "Aplicação de penalidades, multas, interdições de operações irregulares e combate à lavra ilegal e predatória"
+      ],
+      "marcoLegal": [
+        "Lei Federal nº 13.575/2017 (Cria a Agência Nacional de Mineração - ANM e extingue o Departamento Nacional de Produção Mineral - DNPM)",
+        "Decreto-Lei nº 227/1967 (Código de Mineração do Brasil)",
+        "Lei Federal nº 12.334/2010 e Lei nº 14.066/2020 (Política Nacional de Segurança de Barragens - PNSB)",
+        "Lei Federal nº 8.001/1990 e Lei nº 13.540/2017 (Regulamentam a distribuição e alíquotas da CFEM)",
+        "Decreto Federal nº 9.587/2018 (Estrutura Regimental e quadro demonstrativo de cargos da ANM)",
+        "Resolução ANM nº 95/2022 (Consolida os atos normativos sobre segurança de barragens de mineração)"
+      ],
+      "organograma": [
+        {
+          "nome": "Superintendência de Segurança de Barragens de Mineração",
+          "sigla": "SBM",
+          "cargo": "Superintendente",
+          "responsavel": "Luiz Paniago Neves",
+          "funcao": "Fiscalização e regulação de barragens de mineração em todo o território nacional, auditoria do SIGBM e gestão de alertas de risco geotécnico",
+          "telefone": "(61) 3312-6800",
+          "email": "sbm@anm.gov.br",
+          "endereco": "SBN Quadra 2, Bloco N, Edifício Phenícia, 8º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/anm/pt-br/assuntos/barragens"
+        },
+        {
+          "nome": "Superintendência de Arrecadação e Gestão de Receitas",
+          "sigla": "SAR",
+          "cargo": "Superintendente",
+          "responsavel": "Daniel Pollastrini",
+          "funcao": "Cobrança, arrecadação, fiscalização e partilha da Compensação Financeira pela Exploração de Recursos Minerais (CFEM) aos entes federados",
+          "telefone": "(61) 3312-6750",
+          "email": "arrecadacao@anm.gov.br",
+          "endereco": "SBN Quadra 2, Bloco N, Edifício Phenícia, 6º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/anm/pt-br/assuntos/cfem"
+        },
+        {
+          "nome": "Superintendência de Outorga de Títulos Minerários",
+          "sigla": "SOT",
+          "cargo": "Superintendente",
+          "responsavel": "Marina Ribeiro Dantas",
+          "funcao": "Análise técnica, instrução e outorga de títulos minerários, alvarás de pesquisa e portarias de concessão de lavra",
+          "telefone": "(61) 3312-6720",
+          "email": "outorga@anm.gov.br",
+          "endereco": "SBN Quadra 2, Bloco N, Edifício Phenícia, 5º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/anm/pt-br/assuntos/titulos-minerarios"
+        },
+        {
+          "nome": "Superintendência de Planejamento e Gestão Estratégica",
+          "sigla": "SPL",
+          "cargo": "Superintendente",
+          "responsavel": "Rodrigo Amorim Santos",
+          "funcao": "Planejamento institucional, modernização regulatória, gestão orçamentária e dimensionamento da força de trabalho da agência",
+          "telefone": "(61) 3312-6650",
+          "email": "planejamento@anm.gov.br",
+          "endereco": "SBN Quadra 2, Bloco N, Edifício Phenícia, 7º andar, Brasília - DF",
+          "urlPagina": "https://www.gov.br/anm/pt-br/composicao/planejamento"
+        },
+        {
+          "nome": "Gerência Regional da ANM no Estado de Minas Gerais",
+          "sigla": "GR-MG",
+          "cargo": "Gerente Regional",
+          "responsavel": "Fernando Antônio Freitas Lins",
+          "funcao": "Supervisão e execução das fiscalizações de campo em minas, cavas e barragens no estado com a maior concentração minerária do país",
+          "telefone": "(31) 3254-2000",
+          "email": "gerencia.mg@anm.gov.br",
+          "endereco": "Av. Afonso Pena, 4000, Bairro Cruzeiro, Belo Horizonte - MG, CEP 30130-009",
+          "urlPagina": "https://www.gov.br/anm/pt-br/composicao/gerencias-regionais/minas-gerais"
+        }
+      ],
+      "serieServidores": [
+        {
+          "ano": 2016,
+          "efetivos": 1240,
+          "comissionados": 140,
+          "total": 1380
+        },
+        {
+          "ano": 2021,
+          "efetivos": 780,
+          "comissionados": 160,
+          "total": 940
+        },
+        {
+          "ano": 2026,
+          "efetivos": 650,
+          "comissionados": 175,
+          "total": 825
+        }
+      ],
+      "variacaoPercentualEfetivo2016_2026": -47.58,
+      "variacaoPercentualTotal2016_2026": -40.22,
+      "serieOrcamento": [
+        {
+          "ano": 2016,
+          "orcamentoNominal": 285,
+          "orcamentoReal": 491.34
+        },
+        {
+          "ano": 2021,
+          "orcamentoNominal": 295,
+          "orcamentoReal": 384.09
+        },
+        {
+          "ano": 2026,
+          "orcamentoNominal": 345,
+          "orcamentoReal": 345
+        }
+      ],
+      "variacaoRealOrcamento2016_2026": -29.78,
+      "processosAtivosEstimados": 195000,
+      "analistasProcessamento": 198,
+      "indiceSobrecarga": 984.85,
+      "fontes": [
+        {
+          "titulo": "Painel Estatístico de Pessoal (PEP/SIAPE) — Efetivo da ANM",
+          "orgao": "Governo Federal / Ministério da Gestão e da Inovação (MGI)",
+          "tipo": "Transparência Pública Federal",
+          "url": "https://portaldatransparencia.gov.br/servidores",
+          "descricao": "Série histórica do quadro efetivo e vacâncias pós-criação da Agência Nacional de Mineração",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Relatórios de Gestão e Auditorias Operacionais do TCU na ANM (TC 011.602/2020-0 e TC 015.422/2023-4)",
+          "orgao": "Tribunal de Contas da União (TCU)",
+          "tipo": "Acórdão TCU / Auditoria de Governança",
+          "url": "https://pesquisa.apps.tcu.gov.br",
+          "descricao": "Auditorias do TCU apontando déficit crítico de pessoal superior a 60% e sobrecarga no monitoramento de barragens",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Execução Orçamentária e Repasses da CFEM — ANM (SIAFI/CGU)",
+          "orgao": "Controladoria-Geral da União (CGU) / Tesouro Nacional",
+          "tipo": "Execução Orçamentária",
+          "url": "https://portaldatransparencia.gov.br/orgaos/32317",
+          "descricao": "Dotações orçamentárias autorizadas e executadas da ANM e distribuição da arrecadação da CFEM",
+          "anoReferencia": "2016-2026"
+        },
+        {
+          "titulo": "Painel Público do Sistema Integrado de Gestão de Segurança de Barragens de Mineração (SIGBM)",
+          "orgao": "Agência Nacional de Mineração (ANM)",
+          "tipo": "Painel Estatístico Oficial",
+          "url": "https://app.anm.gov.br/sigbm/publico",
+          "descricao": "Cadastro nacional de barragens de mineração com mais de 920 estruturas cadastradas e monitoradas",
+          "anoReferencia": "2026"
+        },
+        {
+          "titulo": "Edital nº 01/2021 de Concurso Público ANM — Segurança de Barragens (DOU 24/12/2021)",
+          "orgao": "Imprensa Nacional / Diário Oficial da União (DOU)",
+          "tipo": "Diário Oficial da União",
+          "url": "https://www.in.gov.br/en/web/dou/-/edital-n-1-de-23-de-dezembro-de-2021-369888941",
+          "descricao": "Edital de abertura do concurso público para Especialista em Recursos Minerais com 40 vagas para Segurança de Barragens",
+          "anoReferencia": "2021-2022"
+        }
+      ],
+      "linksOficiais": {
+        "portalPrincipal": "https://www.gov.br/anm",
+        "transparencia": "https://www.gov.br/anm/pt-br/acesso-a-informacao",
+        "organograma": "https://www.gov.br/anm/pt-br/composicao",
+        "relatoriosGestao": "https://www.gov.br/anm/pt-br/acesso-a-informacao/acoes-e-programas/relatorios-de-gestao",
+        "concursos": "https://www.gov.br/anm/pt-br/acesso-a-informacao/concursos-e-selecoes",
+        "sistemasConsulta": "https://app.anm.gov.br/sigbm/publico"
+      },
+      "ultimoConcurso": {
+        "ano": 2022,
+        "vagas": 40,
+        "banca": "Cebraspe",
+        "edital": "Edital ANM nº 01/2021 (DOU de 24/12/2021)",
+        "hiatoAnosAnterior": 11,
+        "situacao": "Homologado com provimento exclusivo de 40 vagas para Especialista em Recursos Minerais / Segurança de Barragens",
+        "deficitEstimado": 1150
       }
     },
     {
