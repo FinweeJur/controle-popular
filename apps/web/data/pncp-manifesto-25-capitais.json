@@ -1,0 +1,209 @@
+{
+  "descricao": "Manifesto da Fase B de expansao do PNCP para as 25 capitais brasileiras (exceto BH e SP).",
+  "gerado_em": "2026-09-24T16:10:41.965Z",
+  "total_capitais": 25,
+  "fase": "B",
+  "status": "preparado_aguardando_fase_a",
+  "fila": [
+    {
+      "ordem": 1,
+      "id_municipio": "5300108",
+      "nome": "Brasília",
+      "uf": "DF",
+      "cnpj_prefeitura": "00394601000100",
+      "status": "pendente"
+    },
+    {
+      "ordem": 2,
+      "id_municipio": "5208707",
+      "nome": "Goiânia",
+      "uf": "GO",
+      "cnpj_prefeitura": "01612092000123",
+      "status": "pendente"
+    },
+    {
+      "ordem": 3,
+      "id_municipio": "5103403",
+      "nome": "Cuiabá",
+      "uf": "MT",
+      "cnpj_prefeitura": "03507530000194",
+      "status": "pendente"
+    },
+    {
+      "ordem": 4,
+      "id_municipio": "5002704",
+      "nome": "Campo Grande",
+      "uf": "MS",
+      "cnpj_prefeitura": "03501509000106",
+      "status": "pendente"
+    },
+    {
+      "ordem": 5,
+      "id_municipio": "4314902",
+      "nome": "Porto Alegre",
+      "uf": "RS",
+      "cnpj_prefeitura": "92963560000160",
+      "status": "pendente"
+    },
+    {
+      "ordem": 6,
+      "id_municipio": "4205407",
+      "nome": "Florianópolis",
+      "uf": "SC",
+      "cnpj_prefeitura": "82892508000190",
+      "status": "pendente"
+    },
+    {
+      "ordem": 7,
+      "id_municipio": "4106902",
+      "nome": "Curitiba",
+      "uf": "PR",
+      "cnpj_prefeitura": "76417005000186",
+      "status": "pendente"
+    },
+    {
+      "ordem": 8,
+      "id_municipio": "2800308",
+      "nome": "Aracaju",
+      "uf": "SE",
+      "cnpj_prefeitura": "13128780000152",
+      "status": "pendente"
+    },
+    {
+      "ordem": 9,
+      "id_municipio": "2704302",
+      "nome": "Maceió",
+      "uf": "AL",
+      "cnpj_prefeitura": "12200135000180",
+      "status": "pendente"
+    },
+    {
+      "ordem": 10,
+      "id_municipio": "2507507",
+      "nome": "João Pessoa",
+      "uf": "PB",
+      "cnpj_prefeitura": "08778326000134",
+      "status": "pendente"
+    },
+    {
+      "ordem": 11,
+      "id_municipio": "2408102",
+      "nome": "Natal",
+      "uf": "RN",
+      "cnpj_prefeitura": "08241747000143",
+      "status": "pendente"
+    },
+    {
+      "ordem": 12,
+      "id_municipio": "2304400",
+      "nome": "Fortaleza",
+      "uf": "CE",
+      "cnpj_prefeitura": "07954605000160",
+      "status": "pendente"
+    },
+    {
+      "ordem": 13,
+      "id_municipio": "1721000",
+      "nome": "Palmas",
+      "uf": "TO",
+      "cnpj_prefeitura": "24851511000185",
+      "status": "pendente"
+    },
+    {
+      "ordem": 14,
+      "id_municipio": "1600303",
+      "nome": "Macapá",
+      "uf": "AP",
+      "cnpj_prefeitura": "05995766000180",
+      "status": "pendente"
+    },
+    {
+      "ordem": 15,
+      "id_municipio": "1501402",
+      "nome": "Belém",
+      "uf": "PA",
+      "cnpj_prefeitura": "05055009000113",
+      "status": "pendente"
+    },
+    {
+      "ordem": 16,
+      "id_municipio": "1400100",
+      "nome": "Boa Vista",
+      "uf": "RR",
+      "cnpj_prefeitura": "05943030000130",
+      "status": "pendente"
+    },
+    {
+      "ordem": 17,
+      "id_municipio": "1302603",
+      "nome": "Manaus",
+      "uf": "AM",
+      "cnpj_prefeitura": "04312677000112",
+      "status": "pendente"
+    },
+    {
+      "ordem": 18,
+      "id_municipio": "1100205",
+      "nome": "Porto Velho",
+      "uf": "RO",
+      "cnpj_prefeitura": "04273099000101",
+      "status": "pendente"
+    },
+    {
+      "ordem": 19,
+      "id_municipio": "1200401",
+      "nome": "Rio Branco",
+      "uf": "AC",
+      "cnpj_prefeitura": "04034484000140",
+      "status": "pendente"
+    },
+    {
+      "ordem": 20,
+      "id_municipio": "2111300",
+      "nome": "São Luís",
+      "uf": "MA",
+      "cnpj_prefeitura": "06307102000130",
+      "status": "pendente"
+    },
+    {
+      "ordem": 21,
+      "id_municipio": "2211001",
+      "nome": "Teresina",
+      "uf": "PI",
+      "cnpj_prefeitura": "06554869000150",
+      "status": "pendente"
+    },
+    {
+      "ordem": 22,
+      "id_municipio": "2611606",
+      "nome": "Recife",
+      "uf": "PE",
+      "cnpj_prefeitura": "10565000000192",
+      "status": "pendente"
+    },
+    {
+      "ordem": 23,
+      "id_municipio": "2927408",
+      "nome": "Salvador",
+      "uf": "BA",
+      "cnpj_prefeitura": "13927801000149",
+      "status": "pendente"
+    },
+    {
+      "ordem": 24,
+      "id_municipio": "3205309",
+      "nome": "Vitória",
+      "uf": "ES",
+      "cnpj_prefeitura": "27142058000126",
+      "status": "pendente"
+    },
+    {
+      "ordem": 25,
+      "id_municipio": "3304557",
+      "nome": "Rio de Janeiro",
+      "uf": "RJ",
+      "cnpj_prefeitura": "42498733000148",
+      "status": "pendente"
+    }
+  ]
+}
