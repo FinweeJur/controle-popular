@@ -579,10 +579,12 @@ function acordosPorSetor(): SerieDither[] {
 function pncpPorOrgao(): SerieDither[] {
   const porOrgao: Record<string, number> = {};
   for (const linha of PNCP_MG_CONTRATOS_POR_ORGAO_E_ANO) {
-    porOrgao[linha.orgaoSigla] =
-      (porOrgao[linha.orgaoSigla] ?? 0) + linha.valorTotal;
+    // JSON/coletor gravam `orgao`; `orgaoSigla` era o campo errado e
+    // jogava tudo sob a chave "undefined" na tabela da janela.
+    porOrgao[linha.orgao] = (porOrgao[linha.orgao] ?? 0) + linha.valorTotal;
   }
   const pontos = Object.entries(porOrgao)
+    .filter(([x]) => x !== "undefined" && x !== "")
     .sort((a, b) => b[1] - a[1])
     .map(([x, y]) => ({ x, y }));
   return [{ nome: "Valor contratado por órgão (R$)", pontos }];

@@ -50,6 +50,16 @@ describe("dados-catalogo", () => {
     }
   });
 
+  it("pncp-mg não colapsa em rótulo undefined (campo orgao, não orgaoSigla)", () => {
+    const series = obterDadoPorId("pncp-mg")!.dadosParaDither();
+    const rotulos = series.flatMap((s) => s.pontos.map((p) => p.x));
+    expect(rotulos.length).toBeGreaterThan(0);
+    expect(rotulos).not.toContain("undefined");
+    expect(rotulos).not.toContain("");
+    // 4 órgãos ambientais de MG no agregado por órgão×ano
+    expect(rotulos.sort()).toEqual(["FEAM", "IEF", "IGAM", "SEMAD"]);
+  });
+
   it("obterDadoPorId returns undefined for missing", () => {
     expect(obterDadoPorId("nonexistent")).toBeUndefined();
   });

@@ -68,7 +68,11 @@ export interface ContratoPncpMg {
 }
 
 export interface AgregadoOrgaoAno {
-  orgaoSigla: string;
+  /** Campo real no JSON e no coletor (`agregarPorOrgaoEAno`): `orgao`,
+   *  não `orgaoSigla`. Lia `orgaoSigla` = chave `undefined` na tela
+   *  (medido 24/09 no /laboratorio — PNCP mostrava "undefined" somando
+   *  R$ 43 mi em uma linha só). */
+  orgao: string;
   ano: number;
   quantidade: number;
   valorTotal: number;

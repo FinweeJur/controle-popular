@@ -82,8 +82,15 @@ Betim tem fontes completas — se vazia, é a camada 1 (banco no build).
 - `montarCamadasCatalogo()` roda no build (`app/laboratorio/page.tsx:17`).
 - `data/judiciario-remuneracoes.json` está **vazio** (`tribunais: []`);
   o helper já trata isso (`lib/laboratorio/dados-catalogo.ts:593`).
-- **Falta o stack real** do erro (build log ou console). Suspeitos:
-  outra camada do catálogo, ou path de `data/` no container do Guara.
+- **Causa medida (24/09):** na janela PNCP a tabela mostrava
+  `undefined | R$ 43.086.125,96`. O coletor grava o agregado com o campo
+  `orgao` (`scripts/coletar-pncp-mg.mts:372`); a interface
+  `AgregadoOrgaoAno` e `pncpPorOrgao()` liam `orgaoSigla` → chave
+  `undefined` somando os 4 órgãos em uma linha só.
+  Chrome CDP headless em produção: **zero exceção de JS**; o "erro" na
+  tela era o rótulo `undefined` (e "Sem dados" honesto em
+  `judiciario-remuneracoes`). Corrigido em `pncp-mg.ts` +
+  `dados-catalogo.ts` + teste de rótulos.
 
 ### 6. Mobile/tablet — navbar cortada e botões sobrepostos
 
@@ -125,7 +132,7 @@ P2 qualidade de tela; P3 monitoramento.
 | 5 | **P1** | Linkar `/empresas/sigma-lithium` na página da Araçuaí | rota cidade / seção relacionados | ✅ bloco em `mineracao/page.tsx` (Araçuaí/Itinga) |
 | 6 | **P2** | Repovoar indicadores das 6 cidades vazias (ETL) | `scripts/` ETL + `cidades-do-build.ts` via prebuild | 🚧 ativação feita (0090 + regeneração → 12 cidades); conteúdo ETL por cidade ainda pendente |
 | 7 | **P2** | Mobile: reduzir densidade da TopNav em `sm` | `TopNav.tsx` + breakpoints do tema | ✅ gap/px menores, Blog só ícone no xs, FontSize 28px no mobile, `--breakpoint-xs: 480px` |
-| 8 | **P2** | Lab: colher stack do erro e corrigir camada | build/runtime log + `lab-camadas.ts` | ⬜ pendente — sem stack capturado |
+| 8 | **P2** | Lab: colher stack do erro e corrigir camada | build/runtime log + `lab-camadas.ts` | ✅ causa medida 24/09: campo `orgao` vs `orgaoSigla` no PNCP; sem exceção JS no CDP; teste de rótulos adicionado |
 | 9 | **P3** | Guara Shield: credenciais + `--once` para gerar relatório | `scripts/.env` + bot | ✅ `shell: win32` no spawn; `--once` gerou `guara-shield-relatorio.json` (0 CRITICAL/HIGH); Telegram ainda sem `scripts/.env` |
 
 ### Ordem sugerida de execução
