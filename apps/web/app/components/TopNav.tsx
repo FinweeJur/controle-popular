@@ -101,6 +101,7 @@ const SECOES_MENU = [
       { label: 'Reparação Paraopeba', href: '/paraopeba', icone: ShieldCheck },
       { label: 'Função Social & Globo 3D', href: '/funcaosocialterra', icone: Globe },
       { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet },
+      { label: 'Condicionantes de Barragens', href: '/ambiental/condicionantes', icone: AlertTriangle },
       { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
       { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
     ],
@@ -209,7 +210,7 @@ export default function TopNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-x-3 gap-y-2 px-3 sm:px-6 py-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-x-2 sm:gap-x-3 gap-y-2 px-2 sm:px-6 py-2">
         {/* Bloco do Logo + Botão de Índice com Menu Suspenso via Hover/Clique */}
         <div
           ref={caixaRef}
@@ -372,14 +373,14 @@ export default function TopNav() {
         </div>
 
         {/* Controles e Botões da Navbar (Sempre visíveis e alinhados) */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <Link
             href="/noticias"
             className="flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2 sm:px-2.5 py-1 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
             aria-label="Blog e Notícias"
           >
             <Newspaper size={13} aria-hidden="true" />
-            <span>Blog</span>
+            <span className="hidden sm:inline">Blog</span>
           </Link>
           <Link
             href="/alertas"

@@ -2,10 +2,16 @@
 
 > **Tipo:** Plano  
 > **Domínio:** Operação / Frontend / Infra  
-> **Última medição:** 23/09/2026  
-> **Estado:** leitura — nenhuma alteração aplicada ainda  
+> **Última medição:** 24/09/2026  
+> **Estado:** parcialmente aplicado — P0/P1/P3 concluídos; P2 parcial  
+> **Leitura estimada:** curta (< 5 min)  
+> **Relacionados:** [PLANO-CONDICIONANTES-AMBIENTAIS.md](PLANO-CONDICIONANTES-AMBIENTAIS.md), [PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md](PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md)  
+> **Palavras-chave:** pos-deploy, guara, migracao, sigma, condicionantes, topnav, shield  
 > **Worktree:** `.claude/worktrees/cp-bots-lab` (branch `cp-bots-lab`)  
-> **Main na hora:** `30ffccae` (sessão 23/09 publicada)
+> **Main na hora:** `30ffccae` (sessão 23/09 publicada); plano commitado `5911536d`  
+> **Leitura estimada:** 6 min  
+> **Palavras-chave:** agente, pos-deploy, guara, migracao, sigma, condicionantes, topnav, shield  
+> **Relacionados:** [PLANO-CONDICIONANTES-AMBIENTAIS.md](PLANO-CONDICIONANTES-AMBIENTAIS.md), [PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md](PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md)
 
 ## Sumário
 
@@ -109,24 +115,24 @@ Betim tem fontes completas — se vazia, é a camada 1 (banco no build).
 Prioridade: P0 bloqueia dado correto; P1 navegação/descoberta;
 P2 qualidade de tela; P3 monitoramento.
 
-| # | Prioridade | Ação | Arquivos / alvo |
-|---|---|---|---|
-| 1 | **P0** | Conferir/aplicar envs Guara: `DATABASE_URL` (-b), `EMBED_*`, `AI_API_KEY` | painel Guara / `guara env set` |
-| 2 | **P0** | Rodar migrations `0063_ambiental_licenciamento.sql` e `0089_ambiental_condicionantes.sql` no banco do Guara | SQL / Drizzle |
-| 3 | **P1** | Linkar condicionantes no TopNav (Eixo 2) | `apps/web/app/components/TopNav.tsx` |
-| 4 | **P1** | Incluir Sigma em `entidades-completas.json` (ou merge da ficha legada na tabela) | ETL + `apps/web/app/empresas/EmpresasClient.tsx` |
-| 5 | **P1** | Linkar `/empresas/sigma-lithium` na página da Araçuaí | rota cidade / seção relacionados |
-| 6 | **P2** | Repovoar indicadores das 6 cidades vazias (ETL) | `scripts/` ETL + `cidades-do-build.ts` via prebuild |
-| 7 | **P2** | Mobile: reduzir densidade da TopNav em `sm` | `TopNav.tsx` + breakpoints do tema |
-| 8 | **P2** | Lab: colher stack do erro e corrigir camada | build/runtime log + `lab-camadas.ts` |
-| 9 | **P3** | Guara Shield: credenciais + `--once` para gerar relatório | `scripts/.env` + bot |
+| # | Prioridade | Ação | Arquivos / alvo | Estado (24/09) |
+|---|---|---|---|---|
+| 1 | **P0** | Conferir/aplicar envs Guara: `DATABASE_URL` (-b), `EMBED_*`, `AI_API_KEY` | painel Guara / `guara env set` | ✅ envs conferidas no painel (Build=Yes); `EMBED_*` têm defaults em código |
+| 2 | **P0** | Rodar migrations `0064_ambiental_licenciamento.sql` e `0089_ambiental_condicionantes.sql` no banco do Guara | SQL / Drizzle | ✅ aplicadas via `scripts/aplicar-migration-guara.mjs` (proxy 15432); licenciamento 8.612 linhas; documentos seed 7 |
+| 3 | **P1** | Linkar condicionantes no TopNav (Eixo 2) | `apps/web/app/components/TopNav.tsx` | ✅ link após Licenciamento |
+| 4 | **P1** | Incluir Sigma em `entidades-completas.json` (ou merge da ficha legada na tabela) | ETL + `mesclarLegadas()` | ✅ merge em `entidades-dados.ts` + teste |
+| 5 | **P1** | Linkar `/empresas/sigma-lithium` na página da Araçuaí | rota cidade / seção relacionados | ✅ bloco em `mineracao/page.tsx` (Araçuaí/Itinga) |
+| 6 | **P2** | Repovoar indicadores das 6 cidades vazias (ETL) | `scripts/` ETL + `cidades-do-build.ts` via prebuild | ⬜ pendente — fontes vazias em `cidades-do-build.ts` (serro, GV, ipatinga, JF, uberdia; brumadinho só paraopeba) |
+| 7 | **P2** | Mobile: reduzir densidade da TopNav em `sm` | `TopNav.tsx` + breakpoints do tema | ✅ gap/px menores, Blog só ícone no xs, FontSize 28px no mobile, `--breakpoint-xs: 480px` |
+| 8 | **P2** | Lab: colher stack do erro e corrigir camada | build/runtime log + `lab-camadas.ts` | ⬜ pendente — sem stack capturado |
+| 9 | **P3** | Guara Shield: credenciais + `--once` para gerar relatório | `scripts/.env` + bot | ✅ `shell: win32` no spawn; `--once` gerou `guara-shield-relatorio.json` (0 CRITICAL/HIGH); Telegram ainda sem `scripts/.env` |
 
 ### Ordem sugerida de execução
 
-1. P0 (envs + migrations) — sem isso, itens 1/2/4/7 continuam quebrados.
-2. P1 (links e Sigma) — navegação, sem deploy de dado.
-3. P2 (ETL cidades, mobile, lab) — código + coleta.
-4. P3 (Shield).
+1. P0 (envs + migrations) — ✅ feito.
+2. P1 (links e Sigma) — ✅ feito.
+3. P2 (ETL cidades, lab) — restam itens 6 e 8.
+4. P3 (Shield) — ✅ relatório gerado; Telegram opcional.
 
 ## Verificação
 

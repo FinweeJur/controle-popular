@@ -68,6 +68,15 @@ export default async function MineracaoPage({
         minério sai do município.
       </p>
 
+      {cidade.slug === "aracuai" || cidade.slug === "itinga" ? (
+        <p className="mt-4 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
+          <Link href="/empresas/sigma-lithium" className="font-semibold text-primary hover:underline">
+            Sigma Lithium em {cidade.nome}
+          </Link>{" "}
+          — ficha cívica da mineradora (licenciamentos FEAM, processos ANM e notícias).
+        </p>
+      ) : null}
+
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <DataCard title={`CFEM arrecadada em ${data.anoMaisRecente}`} source={FONTE_ANM}>
           <p className="font-tabular text-2xl font-bold text-text">

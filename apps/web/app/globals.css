@@ -496,6 +496,11 @@
 }
 
 @theme inline {
+  /* Breakpoint extra: 480px. Usado por `hidden xs:inline` na TopNav —
+     sem ele, o texto do logo e o atalho "Busca →" ficam escondidos até
+     o sm (640px). Medido no pós-deploy 23/09 (PLANO-POS-DEPLOY). */
+  --breakpoint-xs: 480px;
+
   /* --font-clash-display/--font-general-sans/--font-tabular-raw are
      injected by next/font/local (app/fonts.ts) on <html>'s className --
      self-hosted, not fetched from Fontshare's CDN at runtime. */

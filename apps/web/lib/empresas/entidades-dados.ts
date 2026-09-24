@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { EMPRESAS, type EmpresaMonitorada } from "@/lib/empresas/dados";
 
 export interface ItemLinhaTempo {
   ano: string;
@@ -294,12 +295,67 @@ export function listarTodasEntidades(): EntidadeDetalhada[] {
       };
     });
 
-    CACHE_ENTIDADES = resultado;
-    return resultado;
+    CACHE_ENTIDADES = mesclarLegadas(resultado, EMPRESAS);
+    return CACHE_ENTIDADES;
   } catch (err) {
     console.error("Erro ao carregar entidades:", err);
-    return [];
+    return mesclarLegadas([], EMPRESAS);
   }
+}
+
+/**
+ * Ficha legada (`lib/empresas/dados.ts`) que não está no JSON entra na
+ * listagem de /empresas — caso real: Sigma Lithium tem página
+ * `/empresas/sigma-lithium` mas sumia da tabela (medido 23/09).
+ */
+function mesclarLegadas(
+  doJson: EntidadeDetalhada[],
+  legadas: EmpresaMonitorada[],
+): EntidadeDetalhada[] {
+  const slugs = new Set(doJson.map((e) => e.slug));
+  const extras: EntidadeDetalhada[] = [];
+  for (const emp of legadas) {
+    if (!emp.slug || slugs.has(emp.slug)) continue;
+    const isMineracao = emp.slug.includes("sigma") || emp.slug.includes("vale") || emp.slug.includes("miner");
+    extras.push({
+      slug: emp.slug,
+      nome: emp.nome,
+      tipo: "empresa_nacional",
+      setor: "mineracao",
+      setorRotulo: SETOR_NOMES.mineracao,
+      cnpj: emp.cnpj,
+      investimentoBrasil: emp.descricao,
+      contatos: {
+        endereco: emp.municipiosPrioridade.join(", ") || "Brasil",
+        site: emp.site || "https://controlepopular.com.br/empresas",
+        ri: "https://dados.cvm.gov.br/",
+      },
+      esg: {
+        riscoAmbiental: isMineracao ? "Crítico" : "Médio",
+        riscoSocial: isMineracao ? "Crítico" : "Médio",
+        governancaNivel: "Padrão CVM",
+        direitosHumanos: "Monitoramento cívico via acervo público do portal.",
+        impactoSocioambiental: emp.notas[0] || emp.descricao,
+        conformidadeLegal: "Monitorada por órgãos de controle e vigilância cidadã.",
+      },
+      empreendimentos: emp.municipiosPrioridade.length
+        ? [`Operações em ${emp.municipiosPrioridade.join(", ")}`]
+        : ["Empreendimentos no território brasileiro"],
+      licenciamentos: [],
+      contratos: [],
+      tacs: [],
+      linhaDoTempo: emp.notas.map((nota, i) => ({
+        ano: "2026",
+        titulo: "Nota de acompanhamento cívica",
+        descricao: nota,
+        tipo: "ambiental" as const,
+        severidade: "informativo" as const,
+        fonte: "Controle Popular",
+        ...(i === 0 ? {} : {}),
+      })),
+    });
+  }
+  return [...doJson, ...extras];
 }
 
 export function obterEntidadePorSlug(slug: string): EntidadeDetalhada | undefined {

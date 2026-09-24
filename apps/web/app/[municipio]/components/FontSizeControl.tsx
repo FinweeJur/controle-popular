@@ -50,13 +50,13 @@ export default function FontSizeControl() {
     <div
       role="group"
       aria-label="Tamanho do texto"
-      className="ml-1 flex items-center gap-1 border-l border-border pl-2"
+      className="ml-0.5 sm:ml-1 flex items-center gap-0.5 sm:gap-1 border-l border-border pl-1.5 sm:pl-2"
     >
       <button
         type="button"
         onClick={() => setFontSize(STEPS[Math.max(0, index - 1)])}
         aria-label="Diminuir texto"
-        className="flex h-8 w-8 items-center justify-center rounded-lg border border-border font-display text-[.85em] font-semibold text-text hover:bg-surface-2"
+        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-border font-display text-[.85em] font-semibold text-text hover:bg-surface-2"
       >
         A−
       </button>
@@ -64,7 +64,7 @@ export default function FontSizeControl() {
         type="button"
         onClick={() => setFontSize("md")}
         aria-label="Texto padrão"
-        className="flex h-8 w-8 items-center justify-center rounded-lg border border-border font-display text-base font-semibold text-text hover:bg-surface-2"
+        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-border font-display text-base font-semibold text-text hover:bg-surface-2"
       >
         A
       </button>
@@ -72,7 +72,7 @@ export default function FontSizeControl() {
         type="button"
         onClick={() => setFontSize(STEPS[Math.min(STEPS.length - 1, index + 1)])}
         aria-label="Aumentar texto"
-        className="flex h-8 w-8 items-center justify-center rounded-lg border border-border font-display text-[1.15em] font-semibold text-text hover:bg-surface-2"
+        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-border font-display text-[1.15em] font-semibold text-text hover:bg-surface-2"
       >
         A+
       </button>

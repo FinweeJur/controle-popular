@@ -87,10 +87,12 @@ interface TrivyOutput {
 
 function executarScan(): TrivyOutput | null {
   console.log("🔍 Executando guara services vulnerabilities --json ...");
+  // Windows: guara e .cmd; spawnSync sem shell não acha o binário no PATH.
   const r = spawnSync("guara", ["services", "vulnerabilities", "--json"], {
     cwd: RAIZ,
     encoding: "utf-8",
     timeout: 120_000,
+    shell: process.platform === "win32",
   });
   if (r.status !== 0) {
     console.error(`Scan falhou (exit ${r.status}): ${(r.stderr || "").slice(0, 300)}`);
