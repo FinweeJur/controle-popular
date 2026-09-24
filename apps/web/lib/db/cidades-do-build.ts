@@ -351,7 +351,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
       "slug": "uberlandia",
       "nome": "Uberlândia",
       "uf": "MG",
-      "cnpj_prefeitura": null,
+      "cnpj_prefeitura": "18431312000620",
       "dominio": "controlepopular.br/uberlandia",
       "lat": -18.9189,
       "lng": -48.2769,
