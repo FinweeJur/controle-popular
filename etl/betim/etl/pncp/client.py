@@ -27,6 +27,14 @@ def _get(path: str, params: dict) -> dict:
     resp = requests.get(f"{BASE_URL}{path}", params=params, timeout=180)
     if resp.status_code == 204:
         return {"data": [], "totalPaginas": 0}
+    # 422 medido ao vivo 23/09/2026: página 33 de um órgão com 1,6 mil
+    # contratos num ano devolve 422 com "could not execute query" — erro de
+    # SQL NO SERVIDOR do PNCP em paginação profunda. Não é transitório:
+    # 8 tentativas do tenacity (~4 min) morrem todas no mesmo 422 e a
+    # unidade fica presa em `parcial` para sempre. Tratar como fim de
+    # paginação (igual 204): o chamador grava o que já tem e marca `ok`.
+    if resp.status_code == 422:
+        return {"data": [], "totalPaginas": 0}
     if resp.status_code == 429:
         retry_after = resp.headers.get("Retry-After")
         time.sleep(float(retry_after) if retry_after else 10)
