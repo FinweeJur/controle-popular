@@ -1,0 +1,450 @@
+{
+ "gerado_em": "2026-09-25T22:44:00+00:00",
+ "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
+ "fontes": [
+  "MapBiomas Monitor da Mineracao (WFS pto:processos_minerarios; base ANM/SIGMINE)",
+  "MapBiomas mining_age (classe mineracao; dentro_sigmine=false na exclusao)",
+  "INPE/BDC STAC CBERS-4A/WPM L2 DN (CC BY 4.0)"
+ ],
+ "criterios": {
+  "positivo": "poligonal MG em fase extrativa (concessao/lavra garimpeira/registro/permissao) na data da cena",
+  "negativo": "ponto aleatorio em MG fora de todo poligono SIGMINE MG, fora da classe mineracao MapBiomas e com margem ~600 m",
+  "imagem": "512x512 px, RGB B3/B2/B1 de cena CBERS-4A/WPM (~8,4 m/px), cena mais recente com nuvem local <= 20%",
+  "nuvem": "regra combinada no recorte: acromatismo (saturacao <= 0,20) e brilho acima de 1,2x a mediana do proprio recorte, referencia de cena amostrada (3 janelas de 256 px) com veto de cena acromatica > 0,80, e recorte liso (< 0,02 de textura) e acromatico; regra que dispara vale 1.0; eo:cloud_cover do CBERS e nulo (medido 25/09/2026)"
+ },
+ "ressalva": "calibracao interna; positivo = area autorizada, nao atividade em curso; nenhum campo pessoal (sem titular) por design",
+ "total": {
+  "positivo": 18,
+  "negativo": 10
+ },
+ "itens": [
+  {
+   "tipo": "positivo",
+   "processo": "890039/1989",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -40.441571,
+    -18.560696,
+    -40.400829,
+    -18.522068
+   ],
+   "cena": "CBERS_4A_WPM_20260912_196_136_L2",
+   "data": "2026-09-12",
+   "nuvem": 0.1554,
+   "hash": "f7b6daabe373c418b4384892db52165deafa6ed9e09a6e535e9de3aed9414630",
+   "arquivo": "f7b6daabe373c418b4384892.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "831094/1997",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -47.889076,
+    -20.026569,
+    -47.847968,
+    -19.987942
+   ],
+   "cena": "CBERS_4A_WPM_20260829_205_138_L2",
+   "data": "2026-08-29",
+   "nuvem": 0.1187,
+   "hash": "75387f5b5c9032789b2354dd6a68ace04921aefed71cf61104485471424e0772",
+   "arquivo": "75387f5b5c9032789b2354dd.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "830224/2019",
+   "fase": "REGISTRO DE EXTRAÇÃO",
+   "bbox": [
+    -44.062737,
+    -18.368337,
+    -44.02204,
+    -18.32971
+   ],
+   "cena": "CBERS_4A_WPM_20260718_201_136_L2",
+   "data": "2026-07-18",
+   "nuvem": 0.1365,
+   "hash": "c3cb7f93ea20cee320d769d8091f6f9cdec131f43f602566fe310c2a97423e1f",
+   "arquivo": "c3cb7f93ea20cee320d769d8.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "005253/1941",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -41.752458,
+    -14.211403,
+    -41.712615,
+    -14.172776
+   ],
+   "cena": "CBERS_4A_WPM_20260728_199_131_L2",
+   "data": "2026-07-28",
+   "nuvem": 0.0752,
+   "hash": "08432325478c8883bba424f9f93f3115f6428b4473d0b587178e7f1c41441cc6",
+   "arquivo": "08432325478c8883bba424f9.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "002410/1965",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -48.36986,
+    -14.194114,
+    -48.33002,
+    -14.155486
+   ],
+   "cena": "CBERS_4A_WPM_20260919_207_131_L2",
+   "data": "2026-09-19",
+   "nuvem": 0.0043,
+   "hash": "571b899aa82476cafa3cd7d884504994ec1387675f037726e3947edfcebb7719",
+   "arquivo": "571b899aa82476cafa3cd7d8.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "820843/1997",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -48.179832,
+    -22.989531,
+    -48.137878,
+    -22.950904
+   ],
+   "cena": "CBERS_4A_WPM_20260903_204_142_L2",
+   "data": "2026-09-03",
+   "nuvem": 0.196,
+   "hash": "7156e0e545470a317bd9cbf5b527a7125d527e9cf5f37eed659eac62babfb55c",
+   "arquivo": "7156e0e545470a317bd9cbf5.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "820172/1996",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -46.865156,
+    -22.418167,
+    -46.823377,
+    -22.37954
+   ],
+   "cena": "CBERS_4A_WPM_20260808_203_141_L2",
+   "data": "2026-08-08",
+   "nuvem": 0.0466,
+   "hash": "030449220bb54130d06fe4ce22b353ca759979a9a1fcddcdfcca47e7f15a1ce7",
+   "arquivo": "030449220bb54130d06fe4ce.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -44.406225,
+    -14.973611,
+    -44.366243,
+    -14.934984
+   ],
+   "cena": "CBERS_4A_WPM_20260311_202_132_L2",
+   "data": "2026-03-11",
+   "nuvem": 0.0446,
+   "hash": "5e1412604206ce8c92225ba04dd5affc9c15c2c52cc676c63d488c44d730ea86",
+   "arquivo": "5e1412604206ce8c92225ba0.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -50.144091,
+    -17.577142,
+    -50.103577,
+    -17.538514
+   ],
+   "cena": "CBERS_4A_WPM_20260914_208_135_L2",
+   "data": "2026-09-14",
+   "nuvem": 0.0187,
+   "hash": "d9a19877d4a447274487ef1996c1657add8a02640a87ccbb5fcaef59d410d15a",
+   "arquivo": "d9a19877d4a447274487ef19.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -49.032945,
+    -22.021708,
+    -48.991284,
+    -21.983081
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_141_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.0214,
+   "hash": "1c5d7b2fd92e87199586458c408a06135eeb46eca07a05db176a57a261716123",
+   "arquivo": "1c5d7b2fd92e87199586458c.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -45.995994,
+    -14.062087,
+    -45.956177,
+    -14.02346
+   ],
+   "cena": "CBERS_4A_WPM_20260803_204_131_L2",
+   "data": "2026-08-03",
+   "nuvem": 0.0006,
+   "hash": "203df4b8f3cde6f90efea32692b6b43548103dd3ef8862ef787f91558719d1d8",
+   "arquivo": "203df4b8f3cde6f90efea326.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -43.576454,
+    -16.088237,
+    -43.536256,
+    -16.04961
+   ],
+   "cena": "CBERS_4A_WPM_20260718_201_133_L2",
+   "data": "2026-07-18",
+   "nuvem": 0.0709,
+   "hash": "b2b16da66241dc5957758f991005dd5ccc9f062b720ee815dcbd733fe5202dcf",
+   "arquivo": "b2b16da66241dc5957758f99.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -47.987547,
+    -22.457827,
+    -47.945756,
+    -22.4192
+   ],
+   "cena": "CBERS_4A_WPM_20260903_204_141_L2",
+   "data": "2026-09-03",
+   "nuvem": 0.0824,
+   "hash": "effaf73e51e4e502b32b90232b680e7491d74956ebfef32302de9c7ca93d1c40",
+   "arquivo": "effaf73e51e4e502b32b9023.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -49.110283,
+    -22.394727,
+    -49.068511,
+    -22.3561
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_141_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.0854,
+   "hash": "60b09d43a55d98abf6bc7fd556e38da43a3fd73ee2fe23383b3f8960032a410d",
+   "arquivo": "60b09d43a55d98abf6bc7fd5.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -40.053246,
+    -21.213292,
+    -40.011817,
+    -21.174664
+   ],
+   "cena": "CBERS_4A_WPM_20260717_195_140_L2",
+   "data": "2026-07-17",
+   "nuvem": 0.0,
+   "hash": "1280ed73b46d1dea2b413c6c54d6853600b6dcf3edb95bee1326c33a2a003def",
+   "arquivo": "1280ed73b46d1dea2b413c6c.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -46.683448,
+    -17.209965,
+    -46.643014,
+    -17.171338
+   ],
+   "cena": "CBERS_4A_WPM_20260803_204_135_L2",
+   "data": "2026-08-03",
+   "nuvem": 0.0006,
+   "hash": "dee356f55cf735c5287287962ce145bc0eabac41cc1e91de2105af2e89193d34",
+   "arquivo": "dee356f55cf735c528728796.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "890096/1991",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -40.696746,
+    -18.308303,
+    -40.656064,
+    -18.269676
+   ],
+   "cena": "CBERS_4A_WPM_20260912_196_136_L2",
+   "data": "2026-09-12",
+   "nuvem": 0.191,
+   "hash": "ec3ca8cc706d28323c1f46171c091f6b26df6760779f2594f6adfc42c9667ce4",
+   "arquivo": "ec3ca8cc706d28323c1f4617.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "890113/1989",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -40.631549,
+    -18.215714,
+    -40.590888,
+    -18.177086
+   ],
+   "cena": "CBERS_4A_WPM_20260912_196_136_L2",
+   "data": "2026-09-12",
+   "nuvem": 0.0726,
+   "hash": "b5bb630347dd120bb059231e50e16f0aecd3e4905f6df3cc838144c527e0875a",
+   "arquivo": "b5bb630347dd120bb059231e.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "890562/1988",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -40.63206,
+    -18.228334,
+    -40.591397,
+    -18.189706
+   ],
+   "cena": "CBERS_4A_WPM_20260912_196_136_L2",
+   "data": "2026-09-12",
+   "nuvem": 0.0853,
+   "hash": "db9987050b5a5866bbdf6fce51bced97896dff41f6adbaf4ffe96ea8277ea782",
+   "arquivo": "db9987050b5a5866bbdf6fce.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "bbox": [
+    -49.750727,
+    -18.201577,
+    -49.71007,
+    -18.16295
+   ],
+   "cena": "CBERS_4A_WPM_20260914_208_136_L2",
+   "data": "2026-09-14",
+   "nuvem": 0.1061,
+   "hash": "ecce5db255d5e9c35bbc65fd19564fdb9b0d17c4f066fdb79a1d52ec33320fca",
+   "arquivo": "ecce5db255d5e9c35bbc65fd.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "860230/2019",
+   "fase": "REGISTRO DE EXTRAÇÃO",
+   "bbox": [
+    -50.951686,
+    -14.919114,
+    -50.911714,
+    -14.880486
+   ],
+   "cena": "CBERS_4A_WPM_20251230_210_132_L2",
+   "data": "2025-12-30",
+   "nuvem": 0.1517,
+   "hash": "52b2dbd6c5f17130e08b4b6cf9c040266800007fd924e8d95d880730321be0ba",
+   "arquivo": "52b2dbd6c5f17130e08b4b6c.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "861042/2006",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -48.943058,
+    -15.854288,
+    -48.902907,
+    -15.81566
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_133_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.1749,
+   "hash": "8c58bd036a144eb521536f122d2f0d965fd33e22ac0c740743c090d7c72bb9be",
+   "arquivo": "8c58bd036a144eb521536f12.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "862066/2007",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -48.929017,
+    -15.866334,
+    -48.888863,
+    -15.827706
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_133_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.1437,
+   "hash": "8fa351fab41b48d6df414f79b7239121bedf8aeb88823389fdf2cee2ee172d13",
+   "arquivo": "8fa351fab41b48d6df414f79.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "860393/1993",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -49.002469,
+    -16.185934,
+    -48.962251,
+    -16.147306
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_133_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.1526,
+   "hash": "3b4010bba507bd50e89cf4223db12857afa3c67cbfd6d403b654d5ca29e91f05",
+   "arquivo": "3b4010bba507bd50e89cf422.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "860630/2003",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -48.893414,
+    -15.763943,
+    -48.85328,
+    -15.725316
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_133_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.1976,
+   "hash": "6979aac93a2517b3d1dd9e13fd64608f38e7a0022ce2d4e7f7995f4a7c2d3048",
+   "arquivo": "6979aac93a2517b3d1dd9e13.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "004853/1964",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -49.024806,
+    -16.267647,
+    -48.984572,
+    -16.22902
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_133_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.1537,
+   "hash": "6e590b3336c7a2bb692118fd93c270011a97a7fe7654c91884a2f0230e81ab96",
+   "arquivo": "6e590b3336c7a2bb692118fd.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "860070/2001",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -47.581108,
+    -16.742055,
+    -47.540775,
+    -16.703427
+   ],
+   "cena": "CBERS_4A_WPM_20251224_205_134_L2",
+   "data": "2025-12-24",
+   "nuvem": 0.1686,
+   "hash": "4d309565cc06f6c8d740f9958ce810f399a994ef0b598c46125bda3b9d13ea55",
+   "arquivo": "4d309565cc06f6c8d740f995.jpg"
+  },
+  {
+   "tipo": "positivo",
+   "processo": "815005/1970",
+   "fase": "CONCESSÃO DE LAVRA",
+   "bbox": [
+    -43.301197,
+    -20.954186,
+    -43.259839,
+    -20.915559
+   ],
+   "cena": "CBERS_4A_WPM_20251223_199_139_L2",
+   "data": "2025-12-23",
+   "nuvem": 0.1478,
+   "hash": "82bb3f2324ff364ff7455467d8ecbe512311e450b9d2fb36d9129f9387989698",
+   "arquivo": "82bb3f2324ff364ff7455467.jpg"
+  }
+ ]
+}

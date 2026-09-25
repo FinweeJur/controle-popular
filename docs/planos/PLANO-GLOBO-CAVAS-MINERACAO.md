@@ -163,7 +163,7 @@ Sete medições, todas hoje possíveis sem escrever código de produto:
 
 | # | Medir | Como |
 |---|---|---|
-| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; ✅ **alternativa sem conta medida:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
+| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; ✅ **alternativa sem conta medida em 25/09:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
 | M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | ✅ **medido 25/09:** libera por **GeoServer WFS público** (`pto/wfs`, `GetFeature outputFormat=application/json` — também aceita shape-zip); amostra confirmou os campos-chave (`transbordamento_lavra`, `lavra_fantasma`, `temporal_inconsistency`, `in_restricted_area`, `inappropriate_permission`) + SIGMINE (`processo`, `fase`, `nome`, `subs`, `uso`, `uf`, `area_ha`, `ult_evento`); camadas: `pto:processos_minerarios`, `pto:mv_transbordamento_borda`, `pto:geoserver_filtrada`, `pto:mining_age`. `robots.txt`: plataforma MapBiomas = `Disallow:` vazio (livre); host do GeoServer = **404 (sem robots → permitido por padrão)** — decisão registrada aqui: acessar com UA honesta e pausa ≥ 2 s |
 | M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | ✅ **medido 25/09:** Chinese-CLIP = **MIT** (API GitHub); **Qwen2.5-VL-3B = `qwen-research` (só não-comercial) — expectativa errada, modelo trocado**; Qwen3-VL-2B = **Apache 2.0**; InternVL2.5-2B = MIT; SigLIP = **Apache 2.0** |
 | M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | ✅ **medido 25/09:** 188M params, carga 3 s; 100 crops 256 px do CBERS; fp32: 13,3 (batch 4) → 46,4 crops/s (batch 32); **fp16 batch 16 = 48,6 crops/s (melhor)** → 50 mil recortes em **17,2 min**. Pesos = 753.177.983 bytes; hub HF travou (0 MB/12 min) → **curl direto (0,86–3,0 MB/s)**; `.bin` precisou virar `safetensors` (transformers 5.5 bloqueia `torch.load` no torch 2.5, CVE-2025-32434). Método: torch 2.5.1+cu121 (ONNX não medido — otimização opcional, decisão por medição futura) |
@@ -219,18 +219,89 @@ Critério de pronto: ≥ 5.000 positivos e ≥ 5.000 negativos; amostra de 200
 conferida à mão; varredura de dado pessoal se qualquer titular de processo
 entrar no dado (AGENTS § 5.2 — o coletor nacional já tem `--scan-cpf`).
 
-### Fase 2 — índice de similaridade, método B (3–5 dias)
+**Ampliação para treino (decisão do dono, 25/09):** o dono quer treinar
+desde o início, então a meta esticada é **10 mil por classe**. Medido em
+25/09: MG tem **7.656 poligonais nas fases extrativas** (WFS do Monitor) —
+os 10 mil positivos exigem **outra UF no lote** (GO/AM/PA na fila) ou
+complemento com Autorização de Pesquisa com guia (hoje `guia_utilizacao`
+vazio nessa fase no WFS — pendência medida, não suposição). Pilot medido:
+`scripts/coletar-cavas-calibracao.py` roda com cache retomável; nuvem
+heurística local (CBERS não tem `eo:cloud_cover` — medido).
 
-- **Chinese-CLIP** (encoder de visão) via ONNX na GPU; vetor por recorte;
-  índice em numpy ou FAISS CPU (estimativa: 10 mil vetores × 512 dim ≈ 20
-  MB).
-- Holdout 500 positivos / 500 negativos; limiar escolhido por **precisão
-  ≥ 70%**; curva precisão×recall publicada com data.
+### Medições da Fase 1 — 25/09 (piloto)
 
-Critério de pronto: número de precisão e recall medidos + revisão de 100
-exemplos. **Se precisão < 70%:** gate de treino fino (LoRA na RTX 3050,
-modelo pequeno) ou acionamento da reserva técnica (DINOv2/CLIP) — decisão
-do dono por medição na mão, nunca automática.
+Tudo abaixo foi medido em 25/09/2026 pelo agente principal, rodando o
+piloto de `scripts/coletar-cavas-calibracao.py`. Nada é estimativa.
+
+| O que medir | Valor (25/09) |
+|---|---|
+| Positivos coletados no piloto | **30** |
+| Negativos coletados no piloto | **18** |
+| Positivos sem cena CBERS em 18 meses | **4** (ficam para Sentinel-2) |
+| Negativos: candidatos aceitos × tentativas | **18 em 39** — o filtro espacial **esgotou** |
+| Recorte | 512 × 512 px, **~4,3 km** (512 × 8,4 m/px), JPEG q85, **~70 KB** (M5) |
+| Leitura da cena | janela HTTP (range) responde **HTTP 206**; cenas ~**14.276 × 14.648** px a **~8,4 m/px** |
+| Cache de datasets abertos | teto de **9 arquivos**; positivos **ordenados por cena** para reaproveitar o cache → **~3× menos leituras** |
+
+**O filtro espacial dos negativos precisa de diluição (medido).** 39
+tentativas produziram 18 negativos: o critério "fora de todo polígono e fora
+da classe mineração" gasta candidatos mais rápido do que a grade encontra
+ponto limpo. Antes do lote de 5 mil, o filtro é revisto — não basta
+aumentar `--limite`, o rendimento cai junto.
+
+**4 dos 30 positivos não têm cena CBERS em 18 meses.** Ficam reservados para
+Sentinel-2 (10 m); a regra de fallback "CBERS primeiro, Sentinel-2 onde não
+houver CBERS" vale, e a contagem deles fica visível no manifesto — lacuna é
+informação.
+
+**A radiometria do CBERS varia por cena — e isso matou o limiar de nuvem
+único (medido):**
+
+| Cena | Terreno (mediano) | Nuvens |
+|---|---:|---|
+| `206_133` | 144 DN | 231–484 |
+| `205_134` | ~276–400 DN | 800–966 |
+| `194_138` | **100% nublada** (medianas de amostragem 790 / 924 / 559) | — |
+
+- **REPROVADO: limiar absoluto único de nuvem (750 DN).** Os três casos
+  derrubam o número fixo: na `206_133` as nuvens vão de 231 a 484 — **todas
+  abaixo de 750**, o corte deixa nuvem passar; na `194_138` (100% nublada) as
+  medianas de amostragem são 790 / 924 / 559 — **uma delas abaixo do corte**;
+  só na `205_134` (nuvens 800–966) o número serviria. O corte tem de olhar a
+  cena, não o valor fixo.
+- **Detector novo: FECHADO EM 25/09 pelo Agente A** — regra combinada de
+  5 testes em `medir_nuvem()` (qualquer um que dispara vale nuvem = 1.0):
+  (1) legado 750 DN; (2) brilho relativo — acromáticos acima de 1,2× a
+  mediana do próprio recorte; (3) acromatismo do recorte — saturação
+  ≤ 0,20 em mais de 70% dos pixels; (4) veto de cena — cena amostrada
+  (3 janelas de 256 px, cacheada) com acromatismo > 0,80; (5) textura —
+  recorte liso (< 0,02) e acromático > 45% (névoa fina sem grão).
+  Constantes em `scripts/coletar-cavas-calibracao.py` (linhas 105–111).
+- **Revalidação dos 48 do piloto com a regra nova: 28 rejeitados**
+  (20 positivos e 8 negativos), 20 aceitos. Os 2 recortes de nuvem que
+  passavam antes (`2dc65ee4`, `10f3568a`) agora caem; os 2 conferidos à
+  mão (`03044922` — mina visível, `08432325` — área escura, aceitável)
+  continuam. JPGs apagados, checkpoint regravado, manifesto reexportado,
+  varredura de dado pessoal verde (285 arquivos). Margem apertada
+  anotada: acromatismo 0,70 no recorte limpo × 0,717 no nublado —
+  primeira coisa a remeçar no lote grande.
+
+### Fase 2 — treino fino do Chinese-CLIP (4–6 dias; antecipada pelo dono 25/09)
+
+- **Ordem nova:** treinar primeiro, comparar depois. Fine-tune do
+  **Chinese-CLIP** (RTX 3050, 4 GB: mistura fp16 + congelar o text tower;
+  cabeça de métrica ou LoRA) com os pares positivo/negativo da Fase 1;
+  **zero-shot vira linha de base** (mesmo holdout, mesma régua).
+- Holdout 500 positivos / 500 negativos **nunca vistos no treino**;
+  limiar escolhido por **precisão ≥ 70%**; curva precisão×recall publicada
+  com data.
+- Vetor por recorte índice em numpy/FAISS CPU (10 mil vetores × 512 dim ≈
+  20 MB).
+
+Critério de pronto: número de precisão e recall medidos do modelo treinado
+**e** do zero-shot + revisão de 100 exemplos. **Se treinado < 70%:**
+acionamento da reserva técnica (DINOv2/CLIP) — decisão do dono por
+medição na mão, nunca automática.
 
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
@@ -287,6 +358,73 @@ itens vieram sem imagem utilizável.
 Critério de pronto: o dono abre o globo, clica numa cava, e vê — sem
 escrever código — ressalva, data da imagem, fonte, método e link na ANM.
 
+### Painel de visualização, linha do tempo e exportação (pedido do dono 25/09)
+
+Pedido literal do dono (25/09/2026): painel **buscável, classificável,
+filtrável**, com resumos, contexto de chatbot, tags, datas e metadados;
+**linha do tempo de imagens** (botão/scroll passando imagem por imagem
+para ver a transformação do território); **copiar/exportar** (geolocalização,
+fotos, PDF, envio para ANM ou Polícia Militar); **relatório com fotos**.
+Esta seção estende a Fase 5 — as 5 coisas dela continuam valendo.
+
+#### A. Ficha da cava — dados e o que cada um responde
+
+| Pergunta do dono | De onde vem | Regra |
+|---|---|---|
+| Quando a cava **iniciou**? | Fase 3: primeiro ano com Δ > limiar na série Sentinel (2015→2026) | data + método visíveis; sem série → "sem histórico" |
+| Quando **ampliou**? / **encerrou**? / **pico de movimento**? | Δ por ano (NDVI/BSI/NDWI) — datas de cada mudança e ano do maior Δ | estado final: ativa / estável / encerrada (critério da Fase 3) |
+| Tamanho em **m² e km²**? | contagem de pixels × resolução² (MapBiomas 30 m = 900 m²/px; CBERS 8,4 m = 70,56 m²/px) ou polígono ANM projetado | **a resolução vem escrita na ficha** — número sem método não vai |
+| Qual **minério**? | **só o campo substância do cadastro ANM** (SIGMINE/WFS) | ⚠️ cor e região viram **hipótese visual rotulada** ("sugestão por cor — não é dado da fonte") com dupla verificação; sem fonte → "não sei" (regra editorial § 7) |
+| Tem **pesquisa minerária** na região? De quem? Quando? | cruzamento espacial com AUTORIZAÇÃO DE PESQUISA / REQUISIÇÃO (WFS Monitor + SIGMINE): titular, nº do processo, data de requerimento | o que não casar por código → "não casou" na tela (lacuna é informação) |
+
+**Tags** derivadas de dado, nunca à mão: `sem-cadastro-anm`,
+`cava-ativa`, `pico-<ano>`, `fora-de-poligono`, `dentro-de-ti-ou-uc`,
+`<substância>` do ANM, `mesmo-titular-em-n-cavas`. **Busca** por texto
+(processo, município, titular, substância) + filtros (estado da cava,
+UF, distância de TI/UC, fase, tamanho) + ordenação por coluna.
+
+#### B. Linha do tempo visual (o slider de imagens)
+
+- Slider com botão ◀/▶ e arraste: cada posição = um ano com imagem
+  própria (CBERS/Sentinel), **crossfade** com data impressa na tela e a
+  barra de Δ daquele intervalo — o leitor vê a cava crescer.
+- **Teto medido e decisão de armazenamento:** 7.090 minas × 10 anos ×
+  70 KB ≈ **5 GB — não entra**. Linha do tempo só para as cavas
+  **publicadas na fila revisada**; thumbnail **256 px (~25 KB)**; ano só
+  se tiver imagem limpa (regra do detector de nuvem); alvo ≤ ~300 KB por
+  cava em `public/terras/globo/dados/cavas-timeline/`. Acima do teto →
+  link ao Copernicus Browser (histórico externo, Fase 5).
+- Nunca baixar Esri; série é própria (Sentinel/CBERS, CC-BY).
+
+#### C. Copiar / exportar / relatório com fotos
+
+1. **Copiar:** coordenadas (graus decimais e DMS), link OSM/Google Maps,
+   resumo em texto (processo, município, datas, área, fonte).
+2. **Foto:** download do frame com crédito (INPE / "Contains modified
+   Copernicus Sentinel data [year]").
+3. **PDF — relatório sai com fotos:** impressão pelo próprio navegador
+   (print → PDF, **sem biblioteca nova**) com ficha, timeline de fotos
+   datadas, área, processo ANM, fontes em formato ABNT e ressalvas.
+4. **Enviar para ANM ou Polícia Militar:** o portal **não envia nada** —
+   monta o pacote (o PDF + geolocalização + links **oficiais medidos e
+   verificados** de denúncia de cada canal) e copia para a área de
+   transferência. Frase fixa no pacote: "anexar dado público não é
+   acusação — a apuração é da autoridade" (barra da Fase 0 vale).
+
+#### D. Contexto para o chatbot
+
+Hoje o chat é `lib/chat-comum.ts` + Ollama local. Cada cava publicada
+gera um bloco `contexto` (JSON leve, mesmo manifesto) que o chat injeta
+quando a pergunta é sobre aquela cava: metadados, tags, ressalvas e
+links. Regra: o chat só **repete o que está no dado** — número fora do
+dado é "não sei, e aqui está o que existe perto".
+
+Critério de pronto: ficha com as 4 datas datadas e com método; área em
+m²/km² com resolução escrita; slider passa a timeline de uma cava
+publicada sem travar; PDF sai com fotos e fontes; copiar geolocalização
+conferido à mão; busca/filtro roda sobre os campos que o acervo tem;
+cálculo de área e das 4 datas cobertos por teste em `lib/`
+
 ### Fase 6 — rotina mensal (2 dias)
 
 - Rodada mensal fora da CI: cena recente → Δ → camadas atualizadas;
@@ -301,7 +439,7 @@ Critério de pronto: uma rodada mensal completa, com relatório datado.
 | Fonte | O que dá | Acesso | Licença | Cuidado medido |
 |---|---|---|---|---|
 | SIGMINE / ANM | poligonais e fases dos processos | zip diário, UA de navegador | dados públicos | já coletado; `--scan-cpf` obrigatório |
-| Monitor da Mineração (MapBiomas) | `transborda`, `lavra_fant`, `inconsiste` | shapefile na plataforma | CC-BY 4.0 | beta; errou no lançamento (03/12/2025); citar "MapBiomas - Monitor da Mineração, acessado em [data]" |
+| Monitor da Mineração (MapBiomas) | `transborda`, `lavra_fant`, `inconsiste` | **GeoServer WFS público** `plataforma.geoserver.mapbiomas.org/geoserver/pto/wfs` (`version=1.1.0` obrigatório; também aceita shape-zip) — medido 25/09 | CC-BY 4.0 | beta; errou no lançamento (03/12/2025); citar "MapBiomas - Monitor da Mineração, acessado em [data]" |
 | MapBiomas Coleção 10 | classe mineração 30 m, série 1985→2024 | GEE / downloads | CC-BY 4.0 | Landsat 30 m — não vê cava pequena; é pré-filtro |
 | Copernicus Sentinel-2 L2A | série histórica 10 m desde 2015 | CDSE (cadastro grátis, cota) | Copernicus free | ⛔ **login não passou no dono (24/09)** — alternativas sem conta: Planetary Computer, AWS; atribuição "Contains modified Copernicus Sentinel data [year]" |
 | ECMWF Data Stores (`ecmwf-datastores-client`) | dado de **clima** (ERA5 etc.), não foto de satélite | cliente Python Apache 2.0, pede chave de conta Copernicus | Apache 2.0 | registrado pelo dono 24/09 como fronte de clima futuro; **não serve para imagem de cava** |
@@ -324,6 +462,9 @@ medido e armadilha (GUIA do catálogo).
 | `apps/web/public/terras/globo/js/config.js` | `LAYER_REGISTRY`, `ASSUNTOS`, hints |
 | `apps/web/public/terras/globo/dados/proveniencia.json` | origem de cada camada (script irmão `gerar-proveniencia-globo.mjs`) |
 | `apps/web/app/mineraicao/cavas/` | página com as 5 coisas |
+| `apps/web/app/mineraicao/cavas/[cava]/` | ficha + linha do tempo + exportação (pedido 25/09) |
+| `apps/web/lib/cavas/` | área, 4 datas, tags, contexto do chat — lógica pura com testes ao lado |
+| `apps/web/public/terras/globo/dados/cavas-timeline/` | thumbnails 256 px da linha do tempo (≤ ~300 KB/cava) |
 | `.gitignore` | cache de imagem Sentinel (path medido na Fase 0) |
 | `docs/06-fontes/FONTES.md` | fontes novas catalogadas |
 
@@ -366,6 +507,7 @@ medido e armadilha (GUIA do catálogo).
 | 3 — mudança no tempo | 1 semana | Fase 1 |
 | 4 — varredura | 1–2 semanas | Fases 2 e 3 |
 | 5 — publicação | 2–3 dias | Fase 4 |
+| 5+ — painel, linha do tempo e exportação (pedido 25/09) | 1–2 dias | Fase 5 |
 | 6 — rotina | 2 dias | Fase 5 |
 
 **Total: ~4–6 semanas de agente.** MVP útil (Fases 0–3 em MG, com Δ das
@@ -389,6 +531,24 @@ a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
   encoder de visão aberto brasileiro — registro para não reabrir pergunta.
 - **24/09/2026:** publicação exige dupla verificação (2 de 3 métodos) e
   revisão humana; palavra "ilegal" é vetada.
+- **25/09/2026 (dono): treinar desde o início.** O dono mandou treinar
+  bastante o modelo logo na Fase 1 para reduzir erro desde o começo —
+  a ordem vira: **coletar volume grande (meta esticada: 10 mil por
+  classe)** → **fine-tune do Chinese-CLIP na RTX 3050** → medir precisão
+  no holdout → só então comparar com o zero-shot. A similaridade sem
+  treino cai para **linha de base**, não para mais-valia. O piso do gate
+  (precisão ≥ 70%) e a revisão humana continuam valendo. Troca de modelo
+  primário (se precisar) continua voltando ao dono.
+- **25/09/2026 (dono): painel de visualização completo.** Busca, filtros,
+  tags, resumos e ficha com datas (início, ampliação, pico, encerramento),
+  área em m²/km², minério do cadastro ANM, pesquisa minerária da região;
+  **linha do tempo de imagens** com slider imagem por imagem; copiar/
+  exportar (geolocalização, fotos, **PDF com fotos**, pacote para ANM ou
+  Polícia Militar com links oficiais); **contexto por cava para o
+  chatbot**. Detalhe na seção [Painel de visualização, linha do tempo e
+  exportação](#painel-de-visualização-linha-do-tempo-e-exportação-pedido-do-dono-2509).
+- **25/09/2026 (dono): sem novos subagentes.** O trabalho do Agente A
+  (detector de nuvem) é retomado e terminado pela sessão principal.
 
 ## Origem
 

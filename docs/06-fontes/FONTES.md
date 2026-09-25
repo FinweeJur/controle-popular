@@ -2,10 +2,10 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-23
+> **Última medição:** 2026-09-25
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md)
-> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim
+> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
+> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim, mapbiomas, monitor-mineracao, wfs, cbers, sentinel-2, planetary-computer, esri, cavas, mineração
 
 ## Sumário
 
@@ -85,6 +85,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | TSE | planos de governo | [§](#tse-divulga-cand--planos-de-governo-dos-eleitos) |
 | Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
 | Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads) |
+| Cavas de mineração (Fase 1) | Monitor MapBiomas (WFS), SIGMINE, CBERS, Sentinel-2, Esri | [§](#cavas-de-mineração--monitor-mapbiomas-sigmine-e-imagens-de-satélite-fase-1-2509) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -744,8 +745,161 @@ Leitura para o status: sem LO, a página pode dizer `nao_informado`/`em_analise`
 - Evidência estruturada (AGENTS §1): SNISB (`possui_pae`), FEAM DCE, CAP/IBAMA autos, GTAC — cruzar por código/id, nunca por nome.
 - Espelho: R2 + varredura CPF antes do upload (`sincronizar-documentos-r2.mts` / `arquivar-fontes.mjs`).
 
+## Cavas de mineração — Monitor MapBiomas, SIGMINE e imagens de satélite (Fase 1, 25/09)
+
+Medido em 2026-09-25 para a **Fase 1** (terreno de calibração) do
+[PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md).
+Coletor de referência: `scripts/coletar-cavas-calibracao.py` (offline,
+checkpoint retomável, cache fora do git). Esta seção guarda **endereço,
+acesso medido e armadilha**; o pipeline está no plano.
+
+### Monitor da Mineração do MapBiomas — GeoServer WFS público
+
+- **Endereço:** `https://plataforma.geoserver.mapbiomas.org/geoserver/pto/wfs`
+  (a plataforma pública do Monitor é `plataforma.monitormineracao.mapbiomas.org`).
+- **O que dá:** poligonais dos processos minerários com a fase
+  (`pto:processos_minerarios` — base ANM/SIGMINE), classe de mineração por
+  ano (`pto:mining_age`) e os achados do próprio Monitor
+  (`pto:mv_transbordamento_borda`, `pto:geoserver_filtrada`).
+- **Como:** `GetFeature` com `outputFormat=application/json` (também aceita
+  `shape-zip`), paginação por `startIndex` + `maxFeatures=2500`.
+- **Licença/atribuição:** CC BY 4.0 — "MapBiomas - Monitor da Mineração,
+  acessado em [data]"; geometria e fase, ANM/SIGMINE.
+
+**Quatro armadilhas do WFS, medidas em 25/09:**
+
+| Armadilha | O que medido |
+|---|---|
+| **`version=1.1.0` é obrigatório** | com `1.0.0` o `CQL_FILTER` falha e os campos com acento não casam — mesmo servidor, mesma consulta |
+| **BBOX em ordem lat,lon** | no 1.1.0 o BBOX de MG é `-23.0,-51.1,-14.0,-39.8`; ordem lon,lat não devolve o recorte pedido |
+| **Campo de geometria é `geom`** | não `the_geom`; o filtro é `fase IN (…) AND BBOX(geom,…)` |
+| **Fase é texto com acento** | `CONCESSÃO DE LAVRA` e as demais só resolvem com a versão 1.1.0 acima |
+
+**Contagens de MG, medidas em 25/09:**
+
+| Medida | Valor (MG) |
+|---|---:|
+| Polígonos no BBOX de MG (`pto:processos_minerarios`) | **98.050** |
+| CONCESSÃO DE LAVRA | 6.942 |
+| LAVRA GARIMPEIRA | 375 |
+| REGISTRO DE EXTRAÇÃO | 339 |
+| **Soma das três fases extrativas** | **7.656** |
+| AUTORIZAÇÃO DE PESQUISA | 45.371 |
+| `guia_utilizacao` preenchido na fase Autorização de Pesquisa | **0** (601 em MG no total da coluna) |
+| `cfem` | 14.347 |
+| `mining_age` — total | 86.694 |
+| `mining_age` com `dentro_sigmine=false` | 3.869 |
+| `mining_age` com `dentro_sigmine=true` | 82.825 |
+
+⚠️ **"Autorização de Pesquisa com Guia vigente" não é mensurável hoje.** Nas
+45.371 autorizações de pesquisa de MG, `guia_utilizacao` vem nulo em todas —
+**0 com guia** (a coluna tem 601 preenchidos no restante de MG). Quem montar
+positivos com esse critério está publicando um número que a fonte não
+entrega. É pendência medida, não suposição.
+
+⚠️ **Três contagens de MG, três bases — não somar nem trocar uma pela
+outra:** 98.050 polígonos no WFS do Monitor (25/09); 54.890 processos em
+`sigmine-nacional.json` (M7, 16/09); 54.916 polígonos no zip diário do
+SIGMINE ([seção Território e mineração](#território-e-mineração), 16/08).
+Datas e recortes diferentes; nenhuma reconciliação foi feita.
+
+⚠️ **E as fases também divergem:** o WFS do Monitor dá **6.942** polígonos
+de CONCESSÃO DE LAVRA em MG (25/09) e **7.656** nas três fases extrativas,
+enquanto a linha antiga desta seção (SIGMINE/ANM, 16/08) dá **3.184**
+Concessão de Lavra e **7.083** "autorizam extrair", e a camada do globo
+`sigmine-operacao.geojson` tem **7.090** poligonais (24/09). São três
+caminhos para a mesma pergunta; **escolher um e calar os outros é o que
+produz manchete errada**. Publicar o número da base que a tela linka, com a
+data dessa base.
+
+**`robots.txt` (decisão registrada, consultado em 25/09):**
+
+- `plataforma.monitormineracao.mapbiomas.org/robots.txt` → `Disallow:` vazio (livre);
+- `plataforma.geoserver.mapbiomas.org/robots.txt` → **HTTP 404**, sem
+  declaração → acesso liberado por padrão. Decisão: UA honesta e pausa ≥ 2 s.
+
+**Ressalva editorial:** positivo = "área autorizada para extrair na fase X em
+<data>". Nada aqui prova atividade em curso — o manifesto é insumo de
+calibração interno, não achado público (barra de publicação do plano).
+
+### BDC / INPE — Brazilian Data Cube (STAC)
+
+- **Endereço:** `https://data.inpe.br/bdc/stac/v1` — **sem login**.
+- **Coleção usada:** `CB4A-WPM-L2-DN-1` (CBERS-4A, WPM, L2 DN).
+- **Bandas:** RGB = `BAND3`/`BAND2`/`BAND1`; `BAND4` = NIR. Pixel **int16**.
+- **Cena de referência (M8, medido 24/09):** `CBERS_4A_WPM_20260728_199_138_L4`
+  (28/07/2026, MG); `BAND2` = 132.603.859 bytes (126,5 MiB) em 140 s;
+  `BAND0` pancromática = 2,45 GB.
+- **Cadência CBERS-4A WPM sobre MG (12 meses, medido 25/09):** 661 itens,
+  125 datas distintas, passo médio 2,9 d, máximo 11 d.
+
+**Armadilhas medidas:**
+
+| Armadilha | O que medido |
+|---|---|
+| **`eo:cloud_cover` vem `null`** (medido 25/09) | não existe percentual de nuvem nesta coleção — a nuvem é heurística local, por recorte |
+| **18 meses em MG = 1.000 cenas** | bateu o teto da API (1.000 itens) — **paginação por token pendente de confirmar**; o número é piso, não total |
+| **`robots.txt`** | `User-agent: *` / `Disallow: /hiddenarea/` apenas → área coletada liberada; UA honesta `ControlePopular/1.0 (+controlepopular.com.br; transparencia)`; pausa 1–2 s |
+
+### Microsoft Planetary Computer — STAC público (Fase 0, M1)
+
+- **Endereço:** STAC do Microsoft Planetary Computer
+  (`planetarycomputer.microsoft.com`) — **sem conta**, com **token SAS
+  anônimo** por item.
+- **Medido em 25/09 (M1 do plano):** cena Sentinel-2 L2A de MG
+  `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail
+  **HTTP 200** com 3.035.715 bytes.
+- **Papel:** via sem conta para a série histórica do Sentinel-2 enquanto o
+  Copernicus CDSE não abrir (login do dono não passou em 24/09). Ordem de
+  tentativa registrada no plano: Planetary Computer → AWS Sentinel → conta
+  Copernicus (dono).
+
+### Sentinel-2 e Amazônia-1 — reservas medidas (25/09)
+
+| Fonte | O que dá | Acesso medido | Data |
+|---|---|---|---|
+| **Sentinel-2 L2A** | série histórica 10 m desde 2015 (método A, Fase 3) | Planetary Computer, sem conta, token SAS anônimo (M1) | 25/09/2026 |
+| **Amazônia-1 WFI** | reforço de cobertura, 64 m | coleção `AMZ1-WFI-L4-SR-1` no STAC do INPE, **sem login**; 357 cenas em 2 meses; thumbnail PNG 1.285.926 bytes (`AMAZONIA_1_WFI_20260919_036_021_L4`) | 25/09/2026 |
+
+Reserva ≠ escolha: as duas ficam guardadas como fallback de cobertura —
+a imagem fina de conferência do piloto é CBERS-4A WPM (BDC acima).
+Atribuição Sentinel-2: *"Contains modified Copernicus Sentinel data [year]"*.
+
+### Esri / ArcGIS — termos medidos (Fase 0, M6)
+
+Transcrição da M6 do plano, medida em 25/09:
+
+- **E204CW** (Master Agreement, fev/2024): *"Customer may not otherwise
+  scrape, download, or store Data"*.
+- **E300** (nov/2025): *"Programmatic use of session tokens (e.g., exporting
+  volumes of basemap tiles) is not permitted"*.
+
+**Decisão (como está no plano):** tile da Esri **só para exibição** no globo —
+**cómputo de treino/busca só com Sentinel-2, CBERS-4A e Amazônia-1** (CC-BY).
+Nunca baixar tiles Esri em massa, nunca exportar volume de basemap por token
+de sessão.
+
+### SIGMINE / ANM — base de positivos e de exclusão de negativos
+
+- **`apps/web/data/sigmine-nacional.json` = 274.659 processos** (M7,
+  coletado 16/09/2026), MG 54.890; colunas `proc, ano, fase, titular, subs,
+  uso, uf, area_ha, ev`. Zip diário da ANM exige UA de navegador;
+  `--scan-cpf` obrigatório antes de qualquer commit (AGENTS § 5.2).
+- **Exclusão de negativos (medido 25/09):** fora dos **98.050** polígonos do
+  BBOX de MG (WFS do Monitor) **e** fora das **3.869** feições de
+  `mining_age` com `dentro_sigmine=false` em MG (82.825 estão dentro).
+- O manifesto de calibração guarda **bbox, cena, data e hash** — sem titular,
+  sem CPF ([PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)).
+
 ## Decisões registradas
 
+- **2026-09-25:** WFS do Monitor da Mineração (MapBiomas) consultado só com
+  `version=1.1.0` — BBOX em ordem lat,lon, campo `geom`, filtro CQL por fase;
+  `robots.txt` do host do GeoServer devolve 404 (sem declaração) → acesso
+  liberado por padrão, com UA honesta e pausa ≥ 2 s. Cenas CBERS-4A via
+  BDC/INPE com `robots.txt` que só veda `/hiddenarea/`. Termos da Esri
+  (E204CW/E300): tile só para exibição humana; cómputo de treino e busca só
+  com Sentinel-2, CBERS-4A e Amazônia-1 — nunca tiles Esri.
 - **2026-09-17:** Implementado espelhamento perene de PDFs e atos oficiais no Cloudflare R2 com hash SHA-256 e checagem prévia fail-closed contra CPFs. Baixados e arquivados planos de governo de prefeitos eleitos de MG via API DivulgaCandContas do TSE.
 - **2026-09-08:** Cobertura de telefonia móvel publicada em duas opções complementares (torres pontuais e manchas poligonais), priorizando Vales do Jequitinhonha/Mucuri e Bacia do Paraopeba antes do estado completo de Minas Gerais. Polígono estadual comprimido em gzip (`.geojson.gz`) para manter o asset bem abaixo do teto de 25 MiB da Cloudflare.
 
