@@ -52,12 +52,19 @@ Tudo abaixo foi medido no disco hoje. Nada aqui é suposição.
 | Monitor da Mineração do MapBiomas | plataforma pública (beta 1.2) | 257.591 processos; 22.668 (8,8%) com indício (MapBiomas, 03/12/2025) |
 | Atributos do Monitor | shapefile público | `transborda`, `lavra_fant`, `inconsiste`, `area_miner` |
 | Imagem atual no globo | Esri World Imagery (em `js/layers/imagens.js`) | zoom máx. 19, CORS `*` |
+| **Satélites brasileiros** | INPE STAC `data.inpe.br/bdc/stac/v1` + AWS `s3://brazil-eosats` (sem conta) | **CBERS-4A WPM 2 m/8 m**, MUX 16 m; **Amazônia-1** 64 m, revisita 5 dias; CC-BY 4.0 |
+| Globo já "orbita" o CBERS | `js/layers/satelites.js` (TLE CelesTrak) | Sentinel-2, Landsat-9 e CBERS-4A em órbita simulada |
 | GPU desta máquina | `nvidia-smi` | RTX 3050, 4 GB VRAM |
 | Disco para cache | drive `X:` | 65,7 GB livres |
 | Modelo de visão no repo | — | **nenhum**; LLM hoje é só texto (`lib/chat-comum.ts`, Ollama local) |
 
 Dois fatos mudam o plano:
 
+- **Existem satélites brasileiros, grátis e abertos.** CBERS-4A (2 m na
+  câmera WPM) e Amazônia-1 (64 m, revisita 5 dias) são do INPE, baixáveis
+  por STAC público e pelo bucket aberto da AWS **sem conta**, com licença
+  CC-BY — atribuição ao INPE. CBERS vira a **imagem fina de conferência**;
+  Sentinel-2 segue como série histórica.
 - **O MapBiomas já faz parte do trabalho.** O Monitor cruza a classe de
   mineração do satélite com a base da ANM e marca `transborda` (lavra além
   do polígono), `lavra_fant` (polígono sem atividade) e `inconsiste`. É
@@ -122,7 +129,7 @@ Concreto, quatro travas (AGENTS § 7):
 ```
 SIGMINE/ANM (já coletado) ─┐
 MapBiomas Coleção 10 ──────┼─→ janelas candidatas ─→ Sentinel-2 (série 2015→2026)
-Monitor da Mineração ──────┘            │                    │
+Monitor da Mineração ──────┘         │                    │  + CBERS-4A (fina 2 m)
                                         │          ┌─────────┴─────────┐
                                         │     mudança espectral    embeddings Chinese-CLIP
                                         │        (método A)        (método B, k-NN)
@@ -154,13 +161,27 @@ Sete medições, todas hoje possíveis sem escrever código de produto:
 
 | # | Medir | Como |
 |---|---|---|
-| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG baixada | `dataspace.copernicus.eu` (cadastro do dono, 5 min) |
+| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; próximo: testar Planetary Computer e AWS Sentinel sem conta |
 | M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | plataforma + FONTES |
 | M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | card, não blog |
 | M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | script de banco de 100 imagens |
 | M5 | Orçamento de disco: 50 mil recortes ≈ 15 GB (0,3 MB cada) — cabe em 65,7 GB? cache fica **fora do git**, path em `.gitignore` | medir com 1.000 recortes reais |
 | M6 | Termos da Esri: visualização de tile ok; **bulk download proibido** → cómputo só com Sentinel | termos de uso |
 | M7 | SIGMINE nacional: colunas de fase e titular, tamanho, cobertura das 27 UFs | `sigmine-nacional.json` |
+| M8 | **Satélites brasileiros:** 1 cena CBERS-4A WPM (2 m) e 1 Amazônia-1 baixadas via INPE STAC ou `s3://brazil-eosats` (sem conta AWS); medir licença CC-BY e cadência de cenas em MG | ✅ **CBERS medido 24/09:** STAC `data.inpe.br/bdc/stac/v1` responde **sem login**; cena `CBERS_4A_WPM_20260728_199_138_L4` (28/07/2026, MG); BAND2 = 132.603.859 bytes (126,5 MiB) baixada em 140 s; BAND0 (pancromática 2 m) = 2,45 GB; miniatura conferida à mão (vegetação, solo exposto, nuvens). Falta: Amazônia-1 e cadência MG |
+
+**Nota sobre a API do Copernicus indicada pelo dono (24/09):** o dono
+não conseguiu fazer login no Copernicus e indicou o
+[`ecmwf-datastores-client`](https://github.com/ecmwf/ecmwf-datastores-client)
+como alternativa. Medido no README no mesmo dia: o cliente é Apache 2.0 e
+fala com os **ECMWF Data Stores** — o exemplo dele é
+`reanalysis-era5-pressure-levels`, ou seja, acervo de **clima** (ERA5),
+não imagem óptica de satélite; e ele pede `key` de conta Copernicus, o
+**mesmo login que travou**. Veredito: fica catalogado como fonte de dado
+climático (útil em frente futura de clima/risco), **não serve para foto
+de cava**. Foto de cava hoje sai do CBERS, medido e sem login. Se o
+Sentinel-2 histórico travar também, a ordem de tentativa é: Planetary
+Computer → AWS Sentinel → conta Copernicus (dono).
 
 **Gate G0:** se o Monitor entregar `transborda`/`lavra_fant` nacionais
 prontos, ele vira **baseline obrigatório** de toda fase seguinte. Se não,
@@ -172,8 +193,9 @@ risco maior de falso positivo — anotar).
 
 - **Positivos:** polígonos do SIGMINE nacional com fase que autoriza
   extrair (Concessão de Lavra, Permissão de Lavra Garimpeira, Autorização
-  de Pesquisa com Guia vigente) → recorte Sentinel-2 mediano por estação,
-  nuvem < 20%, 512 px.
+  de Pesquisa com Guia vigente) → recorte **CBERS-4A WPM (2 m/8 m)**
+  preferido, Sentinel-2 (10 m) onde não houver cena CBERS; mediano por
+  estação, nuvem < 20%, 512 px.
 - **Negativos:** solo exposto que **não** é mina (construção, queimada,
   agricultura), água, floresta — amostragem fora de polígonos e fora da
   classe mineração do MapBiomas.
@@ -268,7 +290,10 @@ Critério de pronto: uma rodada mensal completa, com relatório datado.
 | SIGMINE / ANM | poligonais e fases dos processos | zip diário, UA de navegador | dados públicos | já coletado; `--scan-cpf` obrigatório |
 | Monitor da Mineração (MapBiomas) | `transborda`, `lavra_fant`, `inconsiste` | shapefile na plataforma | CC-BY 4.0 | beta; errou no lançamento (03/12/2025); citar "MapBiomas - Monitor da Mineração, acessado em [data]" |
 | MapBiomas Coleção 10 | classe mineração 30 m, série 1985→2024 | GEE / downloads | CC-BY 4.0 | Landsat 30 m — não vê cava pequena; é pré-filtro |
-| Copernicus Sentinel-2 L2A | série histórica 10 m desde 2015 | CDSE (cadastro grátis, cota) | Copernicus free | atribuição "Contains modified Copernicus Sentinel data [year]" |
+| Copernicus Sentinel-2 L2A | série histórica 10 m desde 2015 | CDSE (cadastro grátis, cota) | Copernicus free | ⛔ **login não passou no dono (24/09)** — alternativas sem conta: Planetary Computer, AWS; atribuição "Contains modified Copernicus Sentinel data [year]" |
+| ECMWF Data Stores (`ecmwf-datastores-client`) | dado de **clima** (ERA5 etc.), não foto de satélite | cliente Python Apache 2.0, pede chave de conta Copernicus | Apache 2.0 | registrado pelo dono 24/09 como fronte de clima futuro; **não serve para imagem de cava** |
+| **CBERS-4A / CBERS-4 (INPE)** | **imagem fina 2 m/8 m (WPM)** e média 16 m (MUX) | INPE STAC `data.inpe.br/bdc/stac/v1` + AWS `s3://brazil-eosats` **sem conta** | CC-BY 4.0 | satélite Brasil–China; atribuir INPE; cadência em MG medida na M8 |
+| **Amazônia-1 (INPE)** | 100% brasileiro; 64 m, revisita 5 dias | INPE STAC / catálogo `dgi.inpe.br` | CC-BY (crédito INPE) | resolução grossa: serve de reforço de cobertura, não de detalhe |
 | Esri World Imagery | imagem atual para o olho humano | tiles (já no globo) | termos Esri | **bulk download proibido** — nunca baixar em massa |
 | IBAMA (embargos) e licenças estaduais | cruzamento de autorização ambiental | já coletados | dados públicos | `licencas-ambientais.geojson` 3,48 MB |
 | Copernicus Browser / Google Earth | verificação visual com histórico | link externo | — | levar o leitor lá, não re Hospedar imagem |
@@ -297,6 +322,7 @@ medido e armadilha (GUIA do catálogo).
 | `apps/web/public/` | 91,76 MB (globo = 57,70) | só `.gz` entra; imagem nunca |
 | GPU | RTX 3050, 4 GB | embedding e VLM 3B Q4 cabem; treino grande não |
 | Disco `X:` | 65,7 GB livres | cache de ~15 GB cabe; medir na Fase 0 |
+| Cena CBERS-4A WPM | BAND2 = 126,5 MiB; pancromática = 2,45 GB (medido 24/09) | recorte sai da cena na hora; cena crua só quando necessário |
 | Neon | 94% (470/500 MB), Fase 4 pendente | nada de imagem em banco |
 | Custo em produção | 0 (pipeline offline) | página não chama LLM nem satélite |
 
@@ -343,6 +369,9 @@ a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
   Qwen2.5-VL**; DINOv2/CLIP/SigLIP só como reserva técnica, e a troca
   volta ao dono. **Nada de API de nuvem de modelo**: pipeline 100% local,
   para que imagem e candidatos não saiam deste PC.
+- **24/09/2026 (dono):** aproveitar **satélites brasileiros** — CBERS-4A
+  (2 m) como imagem fina de conferência e Amazônia-1 como reforço; ambos
+  do INPE, grátis e CC-BY. Sentinel-2 continua como série histórica.
 - **24/09/2026:** modelos de origem EUA/China, licença MIT/Apache; não há
   encoder de visão aberto brasileiro — registro para não reabrir pergunta.
 - **24/09/2026:** publicação exige dupla verificação (2 de 3 métodos) e
