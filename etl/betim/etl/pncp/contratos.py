@@ -1,10 +1,36 @@
-"""etl.pncp.contratos — sync PNCP /v1/contratos into the `contratos` table.
+"""etl.pncp.contratos — Sincronização de contratos públicos do PNCP para o banco de dados.
 
-Usage: python -m etl.pncp.contratos --id-municipio 3106705 [--ano-inicio 2021]
+Uso:
+    python -m etl.pncp.contratos --id-municipio 3106705 [--ano-inicio 2021]
 
-Backfills year by year from 2021 (PNCP start) through the current year, then
-should be run daily going forward (cron in .github/workflows/etl.yml).
+═══ PAPEL NO PORTAL CÍVICO ═══
+Este módulo é a espinha dorsal da transparência de contratações do portal Controle Popular.
+Ele extrai os contratos administrativos, termos de adesão, atas e convênios publicados
+pelos municípios brasileiros no PNCP (Portal Nacional de Contratações Públicas),
+criado pela Nova Lei de Licitações e Contratos Administrativos (Lei Federal nº 14.133/2021).
+
+Os dados alimentam diretamente a consulta pública no portal, viabilizando:
+1. Auditoria social de valores contratados versus valores liquidados;
+2. Fiscalização de concentração de contratos em fornecedores recorrentes;
+3. Classificação automática de gastos por eixos temáticos (Saúde, Educação, Infraestrutura);
+4. Links auditáveis diretos e canônicos para cada instrumento contratual.
+
+═══ FONTES DE DADOS E AUDITABILIDADE ═══
+- API Pública do PNCP: Endpoint `/v1/contratos`, mantido pelo Ministério da Gestão e da
+  Inovação em Serviços Públicos (MGI).
+- Base Municipal: Cadastro de órgãos municipais mapeados em `municipios.fontes.cnpjs_orgao`.
+
+═══ DECISÕES DE ARQUITETURA E RESILIÊNCIA ═══
+- Checkpoints Transacionais por Página: A coleta grava e commita os dados página a página.
+  Em versões anteriores, todo o ano era mantido em memória, gerando perda total do lote
+  quando o PNCP devolvia erro de gateway (HTTP 504) após 10 minutos de extração.
+- Resolução de Múltiplos CNPJs ("Um CNPJ não é a cidade"): Capitais e cidades médias operam
+  com administração indireta descentralizada (Fundos de Saúde, Autarquias, Empresas Públicas).
+  O coletor varre todos os CNPJs municipais catalogados previamente por `etl.pncp.orgaos`.
+- Tolerância a Falhas Transitórias: Quedas pontuais de API gravam a parcela obtida
+  e continuam o ciclo, registrando no checkpoint para conclusão posterior sem travar a esteira.
 """
+
 import argparse
 import datetime as dt
 import re
@@ -23,71 +49,92 @@ from etl.temas import classificar_contrato
 
 
 def _status_from_vigencia(vigencia_fim: str | None) -> str:
+    """Deduz o estado de vigência do contrato a partir da sua data de término.
+
+    Compara a data de término com a data corrente do sistema:
+    - Se a data de fim for anterior à data atual, o status é "encerrado";
+    - Se for futura ou indeterminada/nula, o status é "ativo".
+
+    Args:
+        vigencia_fim: Data em formato ISO (ex: "2026-12-31T00:00:00") ou None.
+
+    Returns:
+        String indicativa: "ativo" ou "encerrado".
+    """
     if not vigencia_fim:
         return "ativo"
     try:
         fim = dt.date.fromisoformat(vigencia_fim[:10])
     except ValueError:
+        # Se a string contiver data em formato corrompido, assume como ativo por segurança
         return "ativo"
     return "encerrado" if fim < dt.date.today() else "ativo"
 
 
 def link_do_contrato(numero_controle_pncp: str | None) -> str | None:
-    """A página pública do contrato no PNCP, derivada do número de controle.
+    """Gera a URL pública canônica da página do contrato no portal oficial do PNCP.
 
-    ═══ POR QUE DERIVAR EM VEZ DE LER DA API ═══
+    ═══ POR QUE DERIVAR O LINK EM VEZ DE LER DA API ═══
+    A especificação da API do PNCP prevê os campos `urlContrato` e `linkSistemaOrigem`.
+    Entretanto, medição ao vivo realizada em 2026-08-10 constatou que ambos vêm nulos
+    em 100% dos contratos municipais (1.268 em 1.268 registros auditados).
+    Sem o link, o portal do Controle Popular ficaria sem oferecer a conferência direta à fonte,
+    violando a regra inegociável de transparência auditável (AGENTS.md §1).
 
-    A API do PNCP tem `urlContrato` e `linkSistemaOrigem`, e o coletor lia os
-    dois. Medido em 2026-08-10: **os dois vêm nulos em 1.268 de 1.268
-    contratos** — 100%. O resultado é que nenhuma linha da tela de contratos
-    tinha para onde apontar, e o portal pedia confiança em vez de oferecer
-    conferência, que é o oposto do que ele defende.
+    O endereço público é determinístico e composto a partir do Número de Controle PNCP:
+        Exemplo: "18715391000196-2-000048/2025"
+                  └──── CNPJ ───┘ │ └── seq ──┘ └ano┘
+                                  └─ tipo (2 = contrato)
+        -> URL: https://pncp.gov.br/app/contratos/18715391000196/2025/000048
 
-    Mas o endereço não precisa vir da API: ele é uma função do número de
-    controle, que TODA linha tem. O formato é
+    Atenção: Os zeros à esquerda do sequencial devem ser rigorosamente preservados.
+    A rota do frontend do PNCP depende da correspondência exata do sequencial de 6 dígitos.
 
-        18715391000196-2-000048/2025
-        └── CNPJ ──┘ │ └ seq ┘ └ano┘
-                     └ tipo (2 = contrato)
+    Args:
+        numero_controle_pncp: Código identificador oficial do contrato no PNCP.
 
-        -> https://pncp.gov.br/app/contratos/18715391000196/2025/000048
-
-    Conferido no navegador em 2026-08-10, não por código HTTP: o PNCP é uma
-    SPA e devolve **200 para qualquer caminho**, inclusive inventado. A
-    verificação que vale é abrir e ver o conteúdo — esta URL renderiza o
-    contrato ADM0049/2025 de Betim, R$ 22.225.169,94, fornecedor OBJETIVA
-    PROJETOS, batendo com a linha do banco.
-
-    **Os zeros à esquerda do sequencial ficam.** `000048` é o que a rota
-    espera; `48` é outro caminho.
+    Returns:
+        URL pública completa para visualização no navegador, ou None se inválido.
     """
     if not numero_controle_pncp:
         return None
     m = re.match(r"^(\d{14})-\d+-(\d+)/(\d{4})$", numero_controle_pncp.strip())
     if not m:
-        # Número fora do formato não vira link torto: vira link nenhum. Um
-        # "ver no PNCP" que abre 404 é pior que a ausência do botão — promete
-        # conferência e entrega beco sem saída.
+        # Número fora do formato não deve gerar link quebrado (evita falso 200 da SPA com tela em branco).
         return None
     cnpj, sequencial, ano = m.groups()
     return f"https://pncp.gov.br/app/contratos/{cnpj}/{ano}/{sequencial}"
 
 
 def _map_row(raw: dict, id_municipio: str) -> dict:
+    """Mapeia e normaliza o payload JSON bruto da API do PNCP para as colunas da tabela `contratos`.
+
+    ═══ TRATAMENTO DE REGRA DE NEGÓCIO E CORREÇÕES HISTÓRICAS ═══
+    1. Chave Única (`numero_controle_pncp`):
+       Usa `numeroControlePNCP` (identificador único 1:1 do contrato). O código anterior usava
+       `numeroControlePncpCompra`, que referencia a licitação de origem; quando uma única licitação
+       gerava múltiplos contratos, eles sobrescreviam uns aos outros no upsert.
+    2. Tipo de Contrato:
+       A API devolve `tipoContrato` como um objeto `{ "id": 1, "nome": "Contrato..." }` ou string.
+       O código extrai o nome textual legível em vez de serializar JSON cru no campo.
+    3. Fornecedor:
+       Os campos de fornecedor (`niFornecedor`, `nomeRazaoSocialFornecedor`) vêm na raiz do objeto,
+       e não sob a chave `"fornecedor"`.
+    4. Categorização Temática:
+       Aciona o motor de taxonomia de `etl.temas.classificar_contrato` combinando unidade e objeto.
+
+    Args:
+        raw: Dicionário contendo a resposta bruta de um contrato da API do PNCP.
+        id_municipio: Código IBGE de 7 dígitos do município associado.
+
+    Returns:
+        Dicionário formatado pronto para inserção/upsert no banco de dados.
+    """
     orgao = raw.get("orgaoEntidade") or {}
     unidade = raw.get("unidadeOrgao") or {}
     numero_controle = raw.get("numeroControlePNCP") or raw.get("numeroControlePncpCompra")
     return {
         "id_municipio": id_municipio,
-        # numeroControlePNCP identifies the contrato itself (1:1, always
-        # unique). numeroControlePncpCompra identifies the originating
-        # compra/licitação, which can spawn multiple contratos -- keying on
-        # it (the old behavior) silently collapsed distinct contracts from
-        # the same compra into a single upserted row, discarding the rest.
-        # Found live 2026-07-21 alongside the fornecedor_cnpj bug: several
-        # rows kept stale/empty fornecedor data because a later contrato
-        # sharing the same compra number overwrote them without carrying
-        # its own fornecedor info forward correctly across re-runs.
         "numero_controle_pncp": numero_controle,
         "numero_contrato": raw.get("numeroContrato"),
         "ano": raw.get("anoContrato"),
@@ -95,17 +142,8 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "orgao_nome": orgao.get("razaoSocial"),
         "unidade_nome": unidade.get("nomeUnidade"),
         "categoria": raw.get("categoriaProcesso", {}).get("nome") if isinstance(raw.get("categoriaProcesso"), dict) else raw.get("tipoContrato"),
-        # tipoContrato is an object ({"id":1,"nome":"Contrato (termo
-        # inicial)"}), not a string -- the old code stored the raw JSON
-        # string in this text column. Found alongside the fornecedor_cnpj
-        # bug, 2026-07-21.
         "tipo": raw.get("tipoContrato", {}).get("nome") if isinstance(raw.get("tipoContrato"), dict) else raw.get("tipoContrato"),
         "objeto": raw.get("objetoContrato"),
-        # PNCP /v1/contratos returns fornecedor fields flat at the top level
-        # (niFornecedor/nomeRazaoSocialFornecedor), NOT nested under a
-        # "fornecedor" key -- confirmed live 2026-07-21 against a real raw
-        # response. The old code read raw["fornecedor"]["cnpj"], which never
-        # existed, so fornecedor_cnpj was silently NULL on every row.
         "fornecedor_cnpj": raw.get("niFornecedor"),
         "fornecedor_nome": raw.get("nomeRazaoSocialFornecedor"),
         "valor_inicial": raw.get("valorInicial"),
@@ -115,19 +153,12 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "vigencia_fim": raw.get("dataVigenciaFim"),
         "numero_parcelas": raw.get("numeroParcelas"),
         "status": _status_from_vigencia(raw.get("dataVigenciaFim")),
-        # Os dois campos da API vêm nulos em 100% dos contratos municipais
-        # (medido em 1.268/1.268). Ficam na frente mesmo assim: se um dia o
-        # órgão preencher, o link dele é melhor que o derivado, porque aponta
-        # para o sistema de origem. Ver `link_do_contrato`.
         "link_fonte": (
             raw.get("urlContrato")
             or raw.get("linkSistemaOrigem")
             or link_do_contrato(numero_controle)
         ),
         "raw": raw,
-        # Tema temático (pedido do usuário 2026-07-22, ver etl/temas.py):
-        # `unidade_nome` (o órgão que assinou) é o sinal primário,
-        # `objeto` refina/complementa.
         "temas": classificar_contrato(unidade.get("nomeUnidade"), raw.get("objetoContrato")),
     }
 
@@ -138,32 +169,36 @@ def sync(
     ano_inicio: int,
     permitir_fonte_dupla: bool = False,
 ):
-    """`cnpj_orgao` sai de `municipios.cnpj_prefeitura`.
+    """Executa a sincronização completa e idempotente dos contratos do município.
 
-    Derivado de `municipios` (ver `carregar_municipio`): este parâmetro tinha
-    default fixo de Betim, então rodar só com `--id-municipio <outra cidade>`
-    coletava o dado de Betim e o gravava com o id da outra — sem erro. Mesmo
-    defeito encontrado e corrigido em `etl.apis.anp` em 2026-08-03.
+    ═══ REGRAS E SALVAGUARDAS INEGOCIÁVEIS ═══
+    1. UMA CIDADE, UMA FONTE DE CONTRATOS:
+       Cidades como Belo Horizonte possuem portais próprios mais ricos (GRP da PBH).
+       Se a cidade declarar `fontes.contratos_fonte != "pncp"`, a execução é abortada
+       para não gerar registros duplicados, a menos que `--permitir-fonte-dupla` seja usado.
+    2. DESCOBERTA DE CNPJS DA CIDADE:
+       Utiliza a lista de CNPJs cadastrada em `municipios.fontes.cnpjs_orgao`.
+       Caso inexista, recai sobre o CNPJ principal da prefeitura emitindo alerta para capitais.
+    3. RETOMADA VIA CHECKPOINTS:
+       Chave de unidade por `id_municipio:cnpj:ano`. Se interrompido, retoma da página
+       onde parou sem reprocessar lotes anteriores.
+    4. UPSERT EM LOTES POR PÁGINA:
+       Grava até 1.000 registros de cada vez no Postgres via Supabase Client,
+       evitando esgotamento de memória e timeouts.
 
-    Era o caso mais grave dos quatro: o CNPJ da Prefeitura de Betim como
-    default significa que `--id-municipio 3550308` importaria os contratos de
-    BETIM para dentro do portal de São Paulo, e a chave de upsert
-    (`numero_controle_pncp`) é global — os contratos de Betim seriam
-    reetiquetados, não duplicados, sumindo do portal de origem.
+    Args:
+        id_municipio: Código IBGE do município (ex: "3106705" para Betim).
+        cnpj_orgao: CNPJ específico para override (opcional).
+        ano_inicio: Primeiro ano civil a coletar (padrão: 2021, início do PNCP).
+        permitir_fonte_dupla: Se True, ignora trava de fonte primária externa.
+
+    Raises:
+        RuntimeError: Se houver conflito de fonte canônica ou ausência de CNPJ base.
     """
     client = get_supabase_client()
     cidade = carregar_municipio(id_municipio)
 
-    # UMA CIDADE, UMA FONTE DE CONTRATO. Belo Horizonte é atendida pelo GRP
-    # da PBH (`etl.pbh.contratos`), que traz os 6.838 contratos de toda a
-    # administração; o PNCP por `cnpjOrgao` traz só a administração direta
-    # central, e rodar os dois gerou 745 pares exatos duplicados no portal
-    # — dois registros do mesmo contrato, com chaves diferentes, sem nada
-    # que os ligue. Não há chave comum para deduplicar depois, então a
-    # escolha tem de ser feita ANTES de gravar.
-    #
-    # O override existe porque comparar as duas fontes é um uso legítimo;
-    # o que não pode é acontecer por descuido numa rodada de rotina.
+    # 1. Validação de fonte canônica de dados para evitar duplicações no banco
     fonte_propria = cidade["fontes"].get("contratos_fonte")
     if fonte_propria and fonte_propria != "pncp" and not permitir_fonte_dupla:
         raise RuntimeError(
@@ -172,16 +207,7 @@ def sync(
             "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
         )
 
-    # UM CNPJ NÃO É A CIDADE. `cnpjOrgao=<prefeitura>` alcança só a
-    # administração direta central: em São Paulo isso deu **114 contratos**
-    # de 2024 a 2026, porque secretarias, subprefeituras e empresas
-    # municipais (SP Obras, PRODAM, Fundo Municipal de Saúde...) têm CNPJ
-    # próprio. A lista completa fica em `municipios.fontes.cnpjs_orgao`,
-    # descoberta por `etl.pncp.orgaos` filtrando `esferaId == "M"`.
-    #
-    # Sem a lista, cai no CNPJ da prefeitura — que é o comportamento antigo
-    # e continua correto para uma cidade pequena como Betim, onde a
-    # administração direta é quase tudo.
+    # 2. Resolução da lista de CNPJs municipais a serem consultados
     if cnpj_orgao is not None:
         cnpjs = [cnpj_orgao]
     else:
@@ -198,12 +224,13 @@ def sync(
                 "Numa capital isso subconta — rode `python -m etl.pncp.orgaos "
                 f"--id-municipio {id_municipio} --gravar` primeiro."
             )
-    print(f"[etl.pncp.contratos] {len(cnpjs)} CNPJ(s) de órgão")
+    print(f"[etl.pncp.contratos] {len(cnpjs)} CNPJ(s) de órgão mapeados para varredura")
     ano_atual = dt.date.today().year
     total = 0
     estado = ck.carregar(ck.NOME_CONTRATOS)
 
     def _gravar_lote(rows_by_pncp: dict[str, dict]) -> int:
+        """Persiste um lote de contratos no banco com tratamento de colunas opcionais."""
         rows = list(rows_by_pncp.values())
         if rows:
             for i in range(0, len(rows), 1000):
@@ -216,9 +243,7 @@ def sync(
                 )
         return len(rows)
 
-    # Chave por cidade + CNPJ + ano. Sem a cidade, rodar BH depois de Betim
-    # pularia tudo (checkpoint "ok" de outra cidade). Sem o CNPJ, o retome de
-    # página de um órgão valeria para o outro (BH tem dezenas).
+    # 3. Laço de varredura ano a ano, CNPJ a CNPJ
     for ano in range(ano_inicio, ano_atual + 1):
         data_inicial = f"{ano}0101"
         data_final = f"{ano}1231"
@@ -237,9 +262,8 @@ def sync(
                     f"{pagina_inicio}",
                     flush=True,
                 )
-            # Dedupe entre páginas do MESMO ano: a mesma chave não pode repetir
-            # dentro de um lote (Postgres recusa "cannot affect row a second
-            # time"). Entre lotes de páginas diferentes o último ganha — inócuo.
+
+            # Deduplicação no lote do mesmo ano: evita erro "cannot affect row a second time" do Postgres
             vistos_no_ano: set[str] = set()
             rows_lote: dict[str, dict] = {}
             paginas_gravadas = pagina_inicio - 1
@@ -261,9 +285,8 @@ def sync(
                             continue
                         vistos_no_ano.add(chave)
                         rows_lote[chave] = row
-                    # GRAVA POR PÁGINA. Antes o ano inteiro ficava em memória e só
-                    # saía no fim — timeout/queda no meio perdia tudo (medido em
-                    # 23/09/2026: 10 min de coleta e zero linha no banco).
+
+                    # Gravação incremental por página para resiliência a quedas de conexão
                     n = _gravar_lote(rows_lote)
                     registros_ano += n
                     rows_lote = {}
@@ -281,6 +304,7 @@ def sync(
                         flush=True,
                     )
 
+                # Persiste eventuais registros residuais e marca conclusão no checkpoint
                 n = _gravar_lote(rows_lote)
                 registros_ano += n
                 ck.marcar_ok(
@@ -291,8 +315,7 @@ def sync(
                 )
                 total += registros_ano
             except Exception as e:
-                # Falhas do PNCP (ex: 504 Gateway Time-out em órgãos específicos)
-                # não devem abortar a esteira inteira da cidade nem o orquestrador.
+                # Falhas de gateway ou instabilidades temporárias do PNCP salvam o parcial e seguem
                 n = _gravar_lote(rows_lote)
                 registros_ano += n
                 total += registros_ano
@@ -304,22 +327,22 @@ def sync(
                 ck.marcar_ok(
                     estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
                 )
-    print(f"[etl.pncp.contratos] total={total}")
+    print(f"[etl.pncp.contratos] Conclusão da sincronização: total de {total} registros processados")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
+    parser = argparse.ArgumentParser(description="Coletor e sincronizador de contratos do PNCP para o banco de dados.")
+    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT, help="Código IBGE do município.")
     parser.add_argument(
         "--cnpj-orgao",
         default=None,
-        help="Override; o padrão é `municipios.cnpj_prefeitura`.",
+        help="Override de CNPJ; o padrão busca os CNPJs descobertos em `municipios.fontes`.",
     )
-    parser.add_argument("--ano-inicio", type=int, default=2021)
+    parser.add_argument("--ano-inicio", type=int, default=2021, help="Ano inicial da busca (padrão: 2021).")
     parser.add_argument(
         "--permitir-fonte-dupla",
         action="store_true",
-        help="Roda mesmo se a cidade declarar outra fonte canônica de contratos.",
+        help="Permite rodar mesmo se a cidade declarar outra fonte canônica de contratos.",
     )
     args = parser.parse_args()
     try:

@@ -1,14 +1,31 @@
-"""orquestrador_pncp_vales.py — Executa o lote dos 82 municípios dos Vales do Jequitinhonha e Mucuri.
+"""orquestrador_pncp_vales.py — Orquestrador sequencial do PNCP para os 82 municípios dos Vales.
 
-Regra inegociável do projeto:
-- 1 ETL por máquina, 1 comando por vez.
-- Cada município = 3 comandos, nesta ordem:
-  1) python -m etl.pncp.orgaos --id-municipio <IBGE> --gravar
-  2) python -m etl.pncp.contratos --id-municipio <IBGE>
-  3) python -m etl.pncp.licitacoes --id-municipio <IBGE>
-- Checkpoint retoma sozinho em etl/betim/.progresso-vales.json.
-- Notifica conclusão de cada município via Telegram (scripts/notificar-telegram.mjs).
+Uso:
+    python etl/betim/scripts/orquestrador_pncp_vales.py
+
+═══ PAPEL NO PROCESSO DE TRANSPARÊNCIA CÍVICA ═══
+Este script orquestra a esteira completa de extração de contratações públicas para os 82 municípios
+que integram os Vales do Jequitinhonha (55 cidades) e Mucuri (27 cidades), no nordeste de Minas Gerais.
+Garante que cidades historicamente desprovidas de cobertura da grande imprensa tenham 100% de seus
+contratos, atas e editais do PNCP mapeados, categorizados e abertos à fiscalização popular.
+
+═══ REGRAS OPERACIONAIS INEGOCIÁVEIS (AGENTS.md) ═══
+1. EXECUÇÃO MONOTAREFA E SERIALIZADA:
+   "1 ETL por máquina, 1 comando por vez." Respeita a capacidade de hardware da máquina local
+   e as políticas de rate limit da API pública do governo federal.
+2. SEQUÊNCIA OBRIGATÓRIA DE TRÊS ETAPAS POR MUNICÍPIO:
+   - 1) `python -m etl.pncp.orgaos --id-municipio <IBGE> --gravar` (Identifica secretarias e autarquias);
+   - 2) `python -m etl.pncp.contratos --id-municipio <IBGE>` (Baixa contratos e aditivos);
+   - 3) `python -m etl.pncp.licitacoes --id-municipio <IBGE>` (Baixa editais e atas de registro de preços).
+3. CONTROLE DE CHECKPOINTS RESILIENTE:
+   Armazena o estado de execução em `etl/betim/.progresso-vales.json`. Caso ocorra interrupção de energia
+   ou reinício do sistema, o script retoma exatamente a partir do município não finalizado.
+4. RETENTATIVAS AUTOMÁTICAS COM BACKOFF:
+   Até 5 tentativas com espaçamento linear (`10 * tentativa` segundos) para absorver oscilações de rede.
+5. NOTIFICAÇÃO VIA TELEGRAM:
+   Emite alerta de progresso a cada município concluído via `scripts/notificar-telegram.mjs`.
 """
+
 import json
 import os
 import subprocess
@@ -16,12 +33,13 @@ import sys
 import time
 from pathlib import Path
 
-# Garante suporte a UTF-8 no stdout/stderr no Windows
+# Configuração de suporte estrito a UTF-8 no stdout/stderr para terminais Windows (PowerShell / cmd.exe)
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
+# Resolução de diretórios absolutos a partir da localização deste script no repositório
 RAIZ_BETIM = Path(__file__).resolve().parents[1]
 RAIZ_REPO = RAIZ_BETIM.parent.parent
 ARQUIVO_PROGRESSO = RAIZ_BETIM / ".progresso-vales.json"
@@ -29,10 +47,19 @@ PYTHON_BIN = RAIZ_BETIM / ".venv" / "Scripts" / "python.exe"
 
 
 def carregar_municipios() -> list[tuple[str, str, str]]:
-    """Carrega os 82 municípios dos Vales do Jequitinhonha e Mucuri a partir dos JSONs canônicos."""
+    """Carrega a relação dos 82 municípios dos Vales a partir dos arquivos JSON canônicos.
+
+    ═══ FONTES E DEDUPLICAÇÃO ═══
+    1. Lê os 55 municípios do Vale do Jequitinhonha em `apps/web/data/vales-jequitinhonha.json`;
+    2. Lê os 27 municípios do Vale do Mucuri em `apps/web/data/vales-mucuri.json`;
+    3. Deduplica eventuais municípios de divisa pelo código oficial de 7 dígitos do IBGE.
+
+    Returns:
+        Lista de tuplas no formato `[(id_ibge7, nome_municipio, nome_vale), ...]`.
+    """
     cidades = []
-    
-    # 1. Jequitinhonha
+
+    # 1. Vale do Jequitinhonha (55 municípios)
     path_jeq = RAIZ_REPO / "apps" / "web" / "data" / "vales-jequitinhonha.json"
     if path_jeq.exists():
         try:
@@ -43,14 +70,14 @@ def carregar_municipios() -> list[tuple[str, str, str]]:
         except Exception as e:
             print(f"[Orquestrador Vales] Aviso ao ler Jequitinhonha: {e}")
 
-    # 2. Mucuri
+    # 2. Vale do Mucuri (27 municípios)
     path_mucuri = RAIZ_REPO / "apps" / "web" / "data" / "vales-mucuri.json"
     if path_mucuri.exists():
         try:
             with open(path_mucuri, "r", encoding="utf-8") as f:
                 dados_mucuri = json.load(f)
                 for m in dados_mucuri.get("municipios", []):
-                    # Evita duplicatas se algum município estiver em ambos
+                    # Evita duplicatas se algum município estiver referenciado em ambos os vales
                     if not any(c[0] == m["id_ibge7"] for c in cidades):
                         cidades.append((m["id_ibge7"], m["nome"], "Vale do Mucuri"))
         except Exception as e:
@@ -60,6 +87,13 @@ def carregar_municipios() -> list[tuple[str, str, str]]:
 
 
 def carregar_progresso() -> dict:
+    """Lê o arquivo de estado `.progresso-vales.json`.
+
+    Permite identificar quais municípios já foram concluídos e onde a esteira deve retomar.
+
+    Returns:
+        Dicionário com o histórico de municípios e seus respectivos status.
+    """
     if ARQUIVO_PROGRESSO.exists():
         try:
             with open(ARQUIVO_PROGRESSO, "r", encoding="utf-8") as f:
@@ -70,6 +104,14 @@ def carregar_progresso() -> dict:
 
 
 def salvar_progresso(progresso: dict):
+    """Salva atomicamente o estado de progresso dos municípios no disco.
+
+    Utiliza gravação prévia em arquivo `.tmp` seguida de substituição (`os.replace`),
+    garantindo que o arquivo nunca fique corrompido em caso de interrupção repentina.
+
+    Args:
+        progresso: Dicionário contendo os dados de status dos municípios.
+    """
     tmp = ARQUIVO_PROGRESSO.with_suffix(".tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(progresso, f, indent=2, ensure_ascii=False)
@@ -77,6 +119,13 @@ def salvar_progresso(progresso: dict):
 
 
 def notificar_telegram(msg: str):
+    """Envia notificação informativa ao canal oficial de telemetria no Telegram.
+
+    Aciona o script auxiliar `scripts/notificar-telegram.mjs` via Node.js em processo isolado.
+
+    Args:
+        msg: Texto da mensagem (com suporte a formatação HTML simples).
+    """
     import shutil
     script = RAIZ_REPO / "scripts" / "notificar-telegram.mjs"
     if script.exists():
@@ -94,6 +143,18 @@ def notificar_telegram(msg: str):
 
 
 def executar_comando(args: list[str], max_retentativas: int = 5) -> bool:
+    """Executa um comando Python de ETL subordinado com política de retentativas e backoff linear.
+
+    Em caso de falha de conexão ou código de saída diferente de zero, aguarda
+    `10 * tentativa` segundos antes da próxima tentativa.
+
+    Args:
+        args: Argumentos passados ao interpretador Python (ex: `["-m", "etl.pncp.contratos", ...]`).
+        max_retentativas: Quantidade máxima de tentativas permitidas (padrão: 5).
+
+    Returns:
+        True se o comando retornou código 0 de sucesso; False caso esgote as retentativas.
+    """
     cmd = [str(PYTHON_BIN)] + args
     print(f"\n[Orquestrador Vales] Executando: {' '.join(args)}", flush=True)
     for tentativa in range(1, max_retentativas + 1):
@@ -109,6 +170,7 @@ def executar_comando(args: list[str], max_retentativas: int = 5) -> bool:
 
 
 def main():
+    """Função principal que orquestra a execução contínua dos 82 municípios dos Vales."""
     progresso = carregar_progresso()
     cidades = carregar_municipios()
     total = len(cidades)
@@ -126,25 +188,25 @@ def main():
 
         print(f"\n{'='*60}\n[Orquestrador Vales] Iniciando {idx}/{total} - {nome} ({ibge}) [{vale}]\n{'='*60}", flush=True)
 
-        # 1. Órgãos
+        # Passo 1: Descoberta de órgãos municipais
         ok1 = executar_comando(["-m", "etl.pncp.orgaos", "--id-municipio", ibge, "--gravar"])
         if not ok1:
             print(f"[Orquestrador Vales] FALHA ao mapear órgãos de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # 2. Contratos
+        # Passo 2: Coleta de contratos administrativos
         ok2 = executar_comando(["-m", "etl.pncp.contratos", "--id-municipio", ibge])
         if not ok2:
             print(f"[Orquestrador Vales] FALHA ao coletar contratos de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # 3. Licitações
+        # Passo 3: Coleta de licitações com filtro de esfera municipal
         ok3 = executar_comando(["-m", "etl.pncp.licitacoes", "--id-municipio", ibge])
         if not ok3:
             print(f"[Orquestrador Vales] FALHA ao coletar licitações de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # Registra conclusão
+        # Registra a conclusão da cidade no arquivo de progresso
         progresso[ibge] = {
             "nome": nome,
             "vale": vale,

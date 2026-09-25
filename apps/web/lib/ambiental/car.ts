@@ -1,35 +1,55 @@
 /**
+ * apps/web/lib/ambiental/car.ts
+ *
  * Cadastro Ambiental Rural (CAR) em Minas Gerais — IEF/MG e SICAR.
  *
- * Estrutura e disponibiliza dados consolidados das 14 URFBios (Unidades
- * Regionais de Florestas e Biodiversidade do IEF/MG) e uma amostragem
- * auditável de imóveis rurais com código CAR oficial e hiperlinks diretos.
+ * ═══ PAPEL NO PORTAL CÍVICO ═══
+ * Este módulo estrutura, analisa e disponibiliza para fiscalização pública os dados do CAR
+ * em Minas Gerais, cobrindo as 14 URFBios (Unidades Regionais de Florestas e Biodiversidade)
+ * do IEF/MG e uma amostragem auditável de imóveis rurais com códigos oficiais e links de consulta.
+ *
+ * Permite ao cidadão, pesquisadores e movimentos do campo monitorar:
+ * 1. O ritmo e a morosidade do processo de validação ambiental das propriedades rurais;
+ * 2. A distribuição da posse da terra rural por Módulos Fiscais (pequeno, médio e grande porte);
+ * 3. O represamento crônico de cadastros na fila de análise técnica governamental;
+ * 4. A conformidade de empreendimentos agropecuários, minerários e silviculturais.
  *
  * ═══ FONTES E CONTEXTO INSTITUCIONAL ═══
+ * - IEF/MG (Instituto Estadual de Florestas) e SEMAD/MG (Secretaria de Meio Ambiente e Desenvolvimento Sustentável);
+ * - SICAR (Sistema Nacional de Cadastro Ambiental Rural / Ministério da Agricultura e Pecuária);
+ * - Painel Sisema (DSR Power BI) e Consulta Pública Oficial do SICAR (consultapublica.car.gov.br).
  *
- * Fonte oficial: Instituto Estadual de Florestas (IEF/MG), Secretaria de Estado
- * de Meio Ambiente e Desenvolvimento Sustentável (SEMAD/MG) e Sistema Nacional
- * de Cadastro Ambiental Rural (SICAR/Ministério da Agricultura e Pecuária).
- * Base de referência: Painel Sisema (DSR Power BI 2026-08-20) e Consulta Pública
- * do SICAR (consultapublica.car.gov.br).
+ * ═══ AS TRÊS RESSALVAS QUE VIAJAM COM O DADO (REGRA EDITORIAL DO PORTAL) ═══
+ * 1. O gargalo histórico de análise: Em Minas Gerais, mais de 76% dos imóveis rurais encontram-se
+ *    aguardando análise ou sob diligência no IEF. O tempo médio de espera ultrapassa 1.500 dias (~4 anos).
+ * 2. Porte por Módulos Fiscais (MF): Conforme a Lei Federal 12.651/2012 (Código Florestal), a classificação
+ *    adota: Pequeno (<= 4 MF), Médio (4 a 15 MF) e Grande (> 15 MF). A dimensão de 1 MF varia de 18 a 70 ha
+ *    dependendo do município mineiro.
+ * 3. Privacidade e Proteção de Dados (AGENTS.md §5.2): Nenhum CPF ou dado pessoal de pessoas físicas
+ *    é publicado neste acervo — publicam-se exclusivamente o código público alfanumérico do CAR,
+ *    a localização municipal e os atributos geográficos e ambientais do imóvel.
  *
- * ═══ AS TRÊS RESSALVAS QUE VIAJAM COM O DADO ═══
- *
- * 1. O gargalo histórico de análise: em Minas Gerais, mais de 76% dos imóveis
- *    rurais encontram-se aguardando análise ou em análise pelo IEF. O tempo médio
- *    de espera supera 1.500 dias (~4 anos).
- * 2. Porte por Módulos Fiscais (MF): a legislação ambiental (Lei Federal
- *    12.651/2012) classifica em Pequeno (<= 4 MF), Médio (4 a 15 MF) e Grande
- *    (> 15 MF). O valor do hectare por MF varia entre 18 ha e 70 ha por município.
- * 3. Privacidade e Proteção de Dados: nenhum CPF de pessoa física é publicado
- *    neste acervo — apenas o código identificador público do CAR e metadados
- *    geográficos/ambientais auditáveis.
+ * ═══ DECISÕES DE ARQUITETURA E DESENHO TÉCNICO ═══
+ * - Ponderação Estadual Real vs Amostragem: Para evitar que amostragens pontuais distorçam
+ *   a realidade estatística de Minas Gerais, a função `calcularTempoMedioAnaliseGeral` oferece
+ *   o cálculo ponderado sobre a totalidade dos 1.164.209 imóveis cadastrados no estado.
+ * - Suporte a Slugs e Nomes Canônicos: Métodos de busca de regionais aceitam tanto o slug
+ *   normalizado (ex: "alto-paranaiba") quanto a nomenclatura de exibição (ex: "Alto Paranaíba").
  */
 
 import carDataBruto from "../../data/car-mg.json";
 
+/**
+ * Classificação fundiária por Módulos Fiscais (MF) segundo a Lei Federal 12.651/2012:
+ * - Pequeno: Até 4 módulos fiscais (inclui agricultura familiar).
+ * - Médio: De 4 a 15 módulos fiscais.
+ * - Grande: Acima de 15 módulos fiscais.
+ */
 export type PorteImovelCar = "Pequeno" | "Médio" | "Grande";
 
+/**
+ * Atividade econômica principal declarada na propriedade rural.
+ */
 export type SetorCar =
   | "Agropecuária"
   | "Silvicultura"
@@ -37,73 +57,136 @@ export type SetorCar =
   | "Energia"
   | "Misto";
 
+/**
+ * Situação jurídica e administrativa da análise cadastral no órgão ambiental.
+ */
 export type StatusCar =
   | "Em Análise"
   | "Analisado com Pendências"
   | "Analisado Aprovado"
   | "Cancelado";
 
+/**
+ * Distribuição quantitativa ou proporcional de imóveis por faixa de porte.
+ */
 export interface DivisaoPorteCar {
+  /** Quantidade de pequenos imóveis (<= 4 MF). */
   pequeno: number;
+  /** Quantidade de médios imóveis (4 a 15 MF). */
   medio: number;
+  /** Quantidade de grandes imóveis (> 15 MF). */
   grande: number;
 }
 
+/**
+ * Resumo consolidado de uma das 14 Unidades Regionais de Florestas e Biodiversidade (URFBios).
+ */
 export interface ResumoUrfbioCar {
+  /** Slug identificador único em minúsculas (ex: "metropolitana", "norte"). */
   id: string;
+  /** Nome formal da regional do IEF. */
   nome: string;
+  /** Município que abriga a sede administrativa regional. */
   sede: string;
+  /** Total de imóveis rurais cadastrados na jurisdição da regional. */
   totalImoveis: number;
+  /** Extensão territorial total cadastrada em hectares (ha). */
   areaTotalHectares: number;
+  /** Tempo médio decorrido de tramitação e análise dos processos em dias. */
   tempoMedioAnaliseDias: number;
+  /** Percentual de cadastros ainda pendentes de conclusão da análise técnica. */
   percentualEmAnalise: number;
+  /** Setores produtivos predominantes na regional. */
   principaisSetores: SetorCar[];
+  /** Distribuição de imóveis por faixa de porte na regional. */
   divisaoPorte: DivisaoPorteCar;
 }
 
+/**
+ * Registro individual de um imóvel rural da amostragem auditável.
+ */
 export interface RegistroCar {
+  /** Código alfanumérico público oficial no padrão SICAR (ex: "MG-3106705-..."). */
   codigoCar: string;
+  /** Nome do município onde o imóvel está situado. */
   municipio: string;
+  /** Código IBGE oficial do município. */
   codigoIbge: number;
+  /** Nome da URFBio regional de vinculação. */
   urfbio: string;
+  /** Área total declarada da propriedade em hectares. */
   areaHectares: number;
+  /** Quantidade calculada de módulos fiscais da propriedade. */
   modulosFiscais: number;
+  /** Porte do imóvel (Pequeno, Médio ou Grande). */
   porte: PorteImovelCar;
+  /** Setor produtivo principal do imóvel. */
   setor: SetorCar;
+  /** Data da inscrição original no formato ISO (AAAA-MM-DD). */
   dataInscricao: string;
+  /** Situação atual do processo de análise no IEF. */
   status: StatusCar;
+  /** Tempo decorrido em dias desde a inscrição sem aprovação final. */
   tempoAnaliseDias: number;
+  /** Link direto para consulta oficial pública na base do SICAR. */
   linkOficial: string;
 }
 
+/**
+ * Parâmetros de filtragem para consulta e pesquisa de registros do CAR.
+ */
 export interface FiltroCar {
+  /** Filtrar por nome ou ID da regional URFBio. */
   urfbio?: string;
+  /** Filtrar por nome parcial ou exato do município. */
   municipio?: string;
+  /** Filtrar pelo código numérico do IBGE. */
   codigoIbge?: number;
+  /** Filtrar pelo porte do imóvel rural. */
   porte?: PorteImovelCar;
+  /** Filtrar pela atividade ou vocação produtiva. */
   setor?: SetorCar;
+  /** Filtrar pelo status de tramitação da análise cadastral. */
   status?: StatusCar;
+  /** Limite inferior da área do imóvel em hectares. */
   areaMinimaHa?: number;
+  /** Limite superior da área do imóvel em hectares. */
   areaMaximaHa?: number;
+  /** Quantidade mínima de dias aguardando análise técnica. */
   tempoMinimoDias?: number;
 }
 
+/**
+ * Métricas analíticas completas e consolidadas sobre o CAR no estado de Minas Gerais.
+ */
 export interface EstatisticasCarMg {
+  /** Total global de imóveis cadastrados no estado. */
   totalImoveis: number;
+  /** Área territorial total coberta pelo cadastro em hectares. */
   areaTotalHectares: number;
+  /** Média ponderada de dias de espera para análise em todo o estado. */
   tempoMedioAnaliseDias: number;
+  /** Taxa percentual de imóveis em fila de espera em Minas Gerais. */
   percentualEmAnalise: number;
+  /** Divisão fundiária consolidada em todo o estado. */
   distribuicaoPorte: DivisaoPorteCar;
+  /** Distribuição por status na amostragem detalhada. */
   distribuicaoStatusAmostragem: Record<StatusCar, number>;
+  /** Distribuição por setor produtivo na amostragem. */
   distribuicaoSetoresAmostragem: Record<SetorCar, number>;
+  /** Distribuição por porte na amostragem detalhada. */
   distribuicaoPorteAmostragem: DivisaoPorteCar;
+  /** Quantidade de regionais URFBios mapeadas (14 unidades). */
   totalUrfbios: number;
+  /** Quantidade de registros na amostragem auditável. */
   totalRegistrosAmostragem: number;
+  /** Tempo médio de análise computado sobre a amostragem em dias. */
   tempoMedioAnaliseAmostragemDias: number;
+  /** Dicionário do tempo médio de análise individualizado por URFBio. */
   tempoMedioPorUrfbio: Record<string, number>;
 }
 
-// Normalizador seguro do JSON tipado
+/** Estrutura do arquivo físico JSON contendo o acervo do CAR-MG. */
 interface DatasetCarJson {
   fonte: string;
   url_fonte: string;
@@ -151,7 +234,9 @@ interface DatasetCarJson {
 const DATASET = carDataBruto as unknown as DatasetCarJson;
 
 /**
- * Retorna as 14 URFBios do IEF/MG com seus respectivos resumos consolidados.
+ * Retorna as 14 URFBios do IEF/MG com seus respectivos indicadores consolidados.
+ *
+ * @returns Vetor de objetos `ResumoUrfbioCar`.
  */
 export function obterUrfbiosCar(): ResumoUrfbioCar[] {
   return DATASET.urfbios.map((u) => ({
@@ -172,7 +257,10 @@ export function obterUrfbiosCar(): ResumoUrfbioCar[] {
 }
 
 /**
- * Busca uma URFBio pelo ID de slug (ex: "metropolitana", "alto-paranaiba").
+ * Localiza uma regional URFBio pelo identificador em formato slug (ex: "metropolitana", "alto-paranaiba").
+ *
+ * @param id Slug identificador da regional.
+ * @returns Objeto `ResumoUrfbioCar` correspondente ou `undefined`.
  */
 export function obterUrfbioPorId(id: string): ResumoUrfbioCar | undefined {
   const normId = id.trim().toLowerCase();
@@ -180,7 +268,10 @@ export function obterUrfbioPorId(id: string): ResumoUrfbioCar | undefined {
 }
 
 /**
- * Busca uma URFBio pelo nome (ex: "Metropolitana", "Norte").
+ * Localiza uma regional URFBio pelo nome formal (ex: "Metropolitana", "Norte").
+ *
+ * @param nome Nome da unidade regional.
+ * @returns Objeto `ResumoUrfbioCar` correspondente ou `undefined`.
  */
 export function obterUrfbioPorNome(nome: string): ResumoUrfbioCar | undefined {
   const normNome = nome.trim().toLowerCase();
@@ -192,7 +283,20 @@ export function obterUrfbioPorNome(nome: string): ResumoUrfbioCar | undefined {
 }
 
 /**
- * Retorna a lista de registros de amostragem do CAR em MG, aplicando filtros opcionais.
+ * Retorna os registros da amostragem do CAR em MG, aplicando filtros opcionais combinados.
+ *
+ * ═══ FILTROS PERMITIDOS ═══
+ * - Regional URFBio;
+ * - Nome do município;
+ * - Código IBGE numérico;
+ * - Porte do imóvel (Pequeno, Médio, Grande);
+ * - Setor produtivo (Agropecuária, Silvicultura, Mineração, etc.);
+ * - Status de tramitação cadastral;
+ * - Faixas de área mínima e máxima em hectares;
+ * - Limite mínimo de dias em análise (permite focar em casos de morosidade extrema).
+ *
+ * @param filtro Objeto opcional contendo os critérios desejados.
+ * @returns Lista filtrada de objetos `RegistroCar`.
  */
 export function listarRegistrosCar(filtro?: FiltroCar): RegistroCar[] {
   const registros: RegistroCar[] = DATASET.amostragem_registros.map((r) => ({
@@ -265,7 +369,10 @@ export function listarRegistrosCar(filtro?: FiltroCar): RegistroCar[] {
 }
 
 /**
- * Busca um registro pelo código CAR exato.
+ * Localiza um registro de imóvel rural pelo seu código alfanumérico único do CAR.
+ *
+ * @param codigoCar Código completo do CAR (ex: "MG-3106705-...").
+ * @returns O imóvel correspondente ou `undefined` se não constar na amostragem.
  */
 export function obterRegistroPorCodigoCar(codigoCar: string): RegistroCar | undefined {
   const normCodigo = codigoCar.trim().toUpperCase();
@@ -275,10 +382,15 @@ export function obterRegistroPorCodigoCar(codigoCar: string): RegistroCar | unde
 }
 
 /**
- * Calcula o tempo médio de análise geral do estado de Minas Gerais.
+ * Calcula o tempo médio de análise cadastral no estado de Minas Gerais.
  *
- * @param modo 'ponderado_estado' utiliza os totais ponderados de todas as 14 URFBios
- *             (1.164.209 imóveis); 'amostragem' calcula a média aritmética da amostra.
+ * ═══ MODOS DE CÁLCULO ═══
+ * - 'ponderado_estado': Calcula a média ponderada pelo volume real de cadastros
+ *   de cada uma das 14 URFBios (cobre a totalidade de mais de 1,16 milhão de imóveis do estado).
+ * - 'amostragem': Calcula a média aritmética simples apenas entre os registros da amostragem auditável.
+ *
+ * @param modo 'ponderado_estado' (padrão) ou 'amostragem'.
+ * @returns Tempo médio estimado em dias (arredondado).
  */
 export function calcularTempoMedioAnaliseGeral(
   modo: "ponderado_estado" | "amostragem" = "ponderado_estado"
@@ -301,11 +413,12 @@ export function calcularTempoMedioAnaliseGeral(
 }
 
 /**
- * Calcula o tempo médio de análise de uma URFBio específica.
+ * Calcula ou obtém o tempo médio de análise de uma URFBio específica.
  *
- * @param urfbioNomeOuId Nome da regional (ex: "Sul", "Mata") ou id slug (ex: "sul")
- * @param modo 'oficial_urfbio' retorna o tempo médio consolidado da regional;
- *             'amostragem' calcula a média aritmética dos registros daquela regional.
+ * @param urfbioNomeOuId Nome da regional (ex: "Sul", "Mata") ou id slug (ex: "sul").
+ * @param modo 'oficial_urfbio' retorna o tempo médio apurado pelo IEF na regional;
+ *             'amostragem' calcula a média aritmética entre os registros amostrados daquela regional.
+ * @returns Quantidade de dias em média, ou `null` caso a regional não seja encontrada.
  */
 export function calcularTempoMedioAnaliseRegional(
   urfbioNomeOuId: string,
@@ -327,7 +440,10 @@ export function calcularTempoMedioAnaliseRegional(
 }
 
 /**
- * Retorna um mapa com o tempo médio de análise de cada uma das 14 URFBios.
+ * Gera um mapa associativo contendo o tempo médio de análise de cada uma das 14 URFBios.
+ *
+ * @param modo Modo de apuração ('oficial_urfbio' ou 'amostragem').
+ * @returns Dicionário mapeando `{ [nomeUrfbio]: tempoEmDias }`.
  */
 export function obterTempoMedioPorRegional(
   modo: "oficial_urfbio" | "amostragem" = "oficial_urfbio"
@@ -344,7 +460,13 @@ export function obterTempoMedioPorRegional(
 }
 
 /**
- * Retorna as estatísticas completas consolidadas do CAR em Minas Gerais.
+ * Retorna o conjunto completo de estatísticas consolidadas do CAR em Minas Gerais.
+ *
+ * Compila totais de imóveis, área total em hectares, percentual em análise,
+ * distribuições por status, setor e porte (tanto na base oficial quanto na amostragem),
+ * além das médias por regional.
+ *
+ * @returns Objeto `EstatisticasCarMg` consolidado.
  */
 export function obterEstatisticasCar(): EstatisticasCarMg {
   const urfbios = obterUrfbiosCar();

@@ -1,23 +1,37 @@
-"""etl.pncp.licitacoes — sync PNCP /v1/contratacoes/publicacao into `licitacoes`.
+"""etl.pncp.licitacoes — Sincronização de editais e contratações do PNCP para a tabela `licitacoes`.
 
-Usage: python -m etl.pncp.licitacoes --id-municipio 3106705 [--ano-inicio 2021]
+Uso:
+    python -m etl.pncp.licitacoes --id-municipio 3106705 [--ano-inicio 2021]
 
-Iterates codigoModalidadeContratacao 1..13 (PNCP modality codes) per year,
-since the endpoint requires a modality filter.
+═══ PAPEL NO PORTAL CÍVICO ═══
+Este módulo sincroniza as compras públicas, processos licitatórios, dispensas e inexigibilidades
+registradas pelos municípios brasileiros no Portal Nacional de Contratações Públicas (PNCP).
+No portal Controle Popular, essas informações alimentam:
+1. Painel de licitações abertas para acompanhamento de cidadãos e fornecedores locais;
+2. Auditoria de valores estimados versus valores homologados finais;
+3. Monitoramento de compras emergenciais ou contratações diretas sem disputa;
+4. Identificação de atas de registro de preços (SRP) e termos de referência.
 
-FILTRO DE ESFERA — a diferença entre "licitações do município" e "licitações
-que acontecem no município". `codigoMunicipioIbge` recorta por onde o órgão
-está SEDIADO, não por quem ele é. Em Betim a distinção quase não aparece; em
-São Paulo a mesma consulta devolve USP, Metrô, CPTM, TJ-SP, Tribunal de
-Contas do Estado, ministérios e conselhos profissionais — só a modalidade 6
-teve 8.647 registros em meio ano de 2025, a maioria de esfera federal ou
-estadual. Publicá-los como licitação da prefeitura seria inventar gasto
-municipal.
+═══ REGRA CRÍTICA: FILTRO DE ESFERA FEDERATIVA ═══
+Existe uma distinção fundamental entre "licitações do município" e "licitações que ocorrem no município".
+O parâmetro `codigoMunicipioIbge` do PNCP filtra exclusivamente pelo município onde o órgão está SEDIADO.
+Em capitais ou cidades universitárias, essa consulta traz editais de Universidades Federais, Metrô estadual,
+Tribunais de Justiça, Ministérios e Conselhos Profissionais (que nada têm a ver com os cofres municipais).
+Publicá-los como despesa municipal seria inventar gastos públicos inexistentes da prefeitura.
 
-A resposta já traz `orgaoEntidade.esferaId`; `M` é o que sobra depois do
-filtro. Betim não perde nada (a prefeitura é municipal por definição) e São
-Paulo passa a mostrar o que é dela.
+O coletor inspeciona `orgaoEntidade.esferaId`:
+- Mantém apenas `esferaId == "M"` (Esfera Municipal), exceto se explicitamente solicitado o contrário
+  via flag `--incluir-outras-esferas`.
+
+═══ DECISÕES DE ARQUITETURA E RESILIÊNCIA ═══
+- Iteração pelas 13 modalidades legais da Lei 14.133/2021: O endpoint do PNCP não suporta consulta
+  global sem modalidade. O coletor itera obrigatoriamente de 1 a 13.
+- Checkpoints Transacionais por Página: A sincronização grava e atualiza o checkpoint a cada página
+  de 50 itens. Em caso de instabilidade (HTTP 500 comum sob carga no PNCP), o trabalho já feito não se perde.
+- Resiliência Parcial: Se uma modalidade específica falhar por timeout do servidor federal, o lote
+  coletado é persistido e a esteira prossegue para as demais modalidades daquele ano.
 """
+
 import argparse
 import datetime as dt
 import sys
@@ -27,10 +41,23 @@ from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
 from etl.pncp import checkpoint as ck
 from etl.pncp.client import INTER_REQUEST_SLEEP, iter_contratacoes
 
+# Modalidades de licitação previstas na Lei Federal 14.133/2021 (códigos 1 a 13 do PNCP)
 MODALIDADES = range(1, 14)
 
 
 def _map_row(raw: dict, id_municipio: str) -> dict:
+    """Converte o objeto bruto de licitação retornado pelo PNCP para a estrutura da tabela `licitacoes`.
+
+    Extrai dados do órgão licitante, unidade administrativa compradora, modalidade,
+    objeto da compra, valores estimados e homologados, e datas do certame.
+
+    Args:
+        raw: Dicionário contendo o JSON de resposta da API para uma licitação.
+        id_municipio: Código IBGE de 7 dígitos do município ao qual o registro pertence.
+
+    Returns:
+        Dicionário formatado pronto para execução do comando de upsert no Postgres.
+    """
     orgao = raw.get("orgaoEntidade") or {}
     unidade = raw.get("unidadeOrgao") or {}
     modalidade = raw.get("modalidadeNome") or ""
@@ -57,16 +84,36 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = False):
+    """Executa a sincronização sistemática das licitações do município no PNCP.
+
+    Varre o período compreendido entre `ano_inicio` e o ano corrente. Para cada ano,
+    percorre as 13 modalidades de contratação pública com controle estrito de checkpoint.
+
+    ═══ TRATAMENTO DE CHECKPOINTS E RETOMADA ═══
+    - Chave do Checkpoint: `{id_municipio}:{ano}-{modalidade}`.
+    - Se a unidade já estiver com status "ok", é pulada imediatamente sem gasto de requisições de rede.
+    - Se a unidade tiver sido interrompida, retoma exatamente na página onde parou.
+    - Gravação em lotes de 1.000 registros com deduplicação por chave primária (`numero_controle_pncp`).
+
+    Args:
+        id_municipio: Código IBGE de 7 dígitos do município alvo.
+        ano_inicio: Primeiro ano a ser sincronizado (padrão: 2021).
+        incluir_outras_esferas: Se True, preserva órgãos estaduais e federais sediados na cidade.
+
+    Raises:
+        RuntimeError: Se houver modalidades que não puderam ser completadas após esgotadas as tentativas.
+    """
     client = get_supabase_client()
     ano_atual = dt.date.today().year
     total = 0
     descartados = 0
     estado = ck.carregar(ck.NOME_LICITACOES)
-    # (ano, modalidade) que não completaram — o PNCP devolveu erro no meio e o
-    # cliente esgotou as tentativas. Ver o bloco abaixo.
+
+    # Lista de tuplas (ano, modalidade, tipo_erro) que falharam por indisponibilidade transitória do PNCP
     incompletos: list[tuple[int, int, str]] = []
 
     def _gravar(rows_by_pncp: dict[str, dict]) -> int:
+        """Persiste o lote de licitações no Supabase em blocos de até 1.000 registros."""
         rows = list(rows_by_pncp.values())
         for i in range(0, len(rows), 1000):
             client.table("licitacoes").upsert(
@@ -78,18 +125,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
         data_inicial = f"{ano}0101"
         data_final = f"{ano}1231"
         for modalidade in MODALIDADES:
-            # GRAVA POR MODALIDADE, NÃO POR ANO. A versão anterior acumulava o
-            # ano inteiro em memória e só gravava no fim — um 500 do PNCP na
-            # modalidade 6/2024 (o pregão eletrônico, com centenas de páginas)
-            # apagava as modalidades já coletadas E os anos seguintes, sem
-            # gravar nada. Medido ao vivo em 2026-08-05. Com a escrita por
-            # modalidade, o estrago de uma falha é UMA modalidade de UM ano.
-            #
-            # Em 23/09/2026 o mesmo padrão evoluiu para PÁGINA: checkpoint
-            # por (ano, modalidade) + upsert a cada página, para queda de
-            # internet/PC no meio de uma modalidade grande não perder o lote.
-            # Prefixo do município: sem ele, rodar outra cidade depois de
-            # Betim pularia tudo (checkpoint "ok" de outra cidade).
+            # Chave única de checkpoint identificando o município, ano e modalidade da Lei 14.133
             chave = f"{id_municipio}:{ano}-{modalidade}"
             if ck.unidade_pronta(estado, chave):
                 print(
@@ -113,6 +149,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
                 if isinstance(item_ck, dict)
                 else 0
             )
+
             try:
                 for pagina, registros_brutos in iter_contratacoes(
                     id_municipio,
@@ -122,12 +159,15 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
                     pagina_inicio=pagina_inicio,
                 ):
                     for raw in registros_brutos:
+                        # Aplica o filtro estrito de esfera para isolar despesas genuinamente municipais
                         esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
                         if not incluir_outras_esferas and esfera != "M":
                             descartados += 1
                             continue
                         row = _map_row(raw, id_municipio)
                         rows_by_pncp[row["numero_controle_pncp"]] = row
+
+                    # Gravação por página: minimiza perda de dados em caso de queda de conexão
                     n = _gravar(rows_by_pncp)
                     registros_chave += n
                     rows_by_pncp = {}
@@ -145,11 +185,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
                         flush=True,
                     )
             except Exception as e:
-                # UM ERRO DE UMA MODALIDADE NÃO DERRUBA O RESTO. O PNCP
-                # devolve 500 transitório sob carga; o upsert é idempotente
-                # (chave `numero_controle_pncp`), então re-rodar preenche a
-                # lacuna sem duplicar. O que já passou por página já está no
-                # banco e no checkpoint.
+                # Falhas de gateway HTTP 500 do PNCP registram o parcial coletado e prosseguem
                 incompletos.append((ano, modalidade, type(e).__name__))
                 print(
                     f"[etl.pncp.licitacoes] AVISO: ano={ano} modalidade={modalidade} "
@@ -158,6 +194,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
                     flush=True,
                 )
 
+            # Grava eventuais registros residuais da modalidade
             n = _gravar(rows_by_pncp)
             registros_chave += n
             if not any(a == ano and m == modalidade for a, m, _ in incompletos):
@@ -171,15 +208,13 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
             time.sleep(INTER_REQUEST_SLEEP)
         print(f"[etl.pncp.licitacoes] ano={ano} acumulado={total}", flush=True)
 
-    # O descarte é ANUNCIADO: um número muito maior que o mantido significa
-    # que a cidade sedia muito órgão de outra esfera, não que a coleta falhou.
+    # Transparência sobre o filtro de esfera: alerta o operador sobre o volume descartado
     print(
-        f"[etl.pncp.licitacoes] total={total} "
+        f"[etl.pncp.licitacoes] Concluído total={total} registros municipais "
         f"(descartados por esfera != M: {descartados})"
     )
     if incompletos:
-        # Sai com erro para o cron/operador NOTAR — mas o que foi coletado já
-        # está gravado, e re-rodar completa só o que faltou.
+        # Se houve falhas de API, informa detalhadamente para repescagem na próxima rodada
         detalhe = ", ".join(f"{ano}/mod{mod}" for ano, mod, _ in incompletos)
         raise RuntimeError(
             f"{len(incompletos)} modalidade(s)-ano incompletas por erro do PNCP "
@@ -188,13 +223,13 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--ano-inicio", type=int, default=2021)
+    parser = argparse.ArgumentParser(description="Sincronizador de licitações do PNCP para o banco de dados.")
+    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT, help="Código IBGE do município.")
+    parser.add_argument("--ano-inicio", type=int, default=2021, help="Ano inicial da coleta (padrão: 2021).")
     parser.add_argument(
         "--incluir-outras-esferas",
         action="store_true",
-        help="Mantém órgãos federais/estaduais sediados na cidade (padrão: descarta).",
+        help="Preserva órgãos federais/estaduais sediados na cidade (padrão: descarta esfera != M).",
     )
     args = parser.parse_args()
     try:

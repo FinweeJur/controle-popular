@@ -2,59 +2,135 @@
  * lib/cidades/vales-jequitinhonha.ts
  *
  * Módulo de inteligência territorial e catálogo dos 55 municípios do Vale do Jequitinhonha (MG).
- * Consolida dados oficiais de localidades (IBGE), contratos públicos (PNCP),
- * minerais críticos (Lítio / ANM), comunidades tradicionais (Quilombolas, Geraizeiros, Vazanteiros)
- * e recursos hídricos da bacia hidrográfica do Rio Jequitinhonha.
+ *
+ * ═══ PAPEL NO PORTAL CÍVICO ═══
+ * Este módulo reúne os dados socioterritoriais, econômicos e de governança pública dos 55 municípios
+ * que formam o Vale do Jequitinhonha, no nordeste do estado de Minas Gerais.
+ * Suas funções centrais no Controle Popular são:
+ * 1. Estruturar a navegação cívica e transparência ativa nas 55 cidades da bacia;
+ * 2. Mapear o Polo do Lítio (mineral crítico para transição energética e baterias) e permitir
+ *    o acompanhamento cidadão das receitas da CFEM (Compensação Financeira pela Exploração Mineral);
+ * 3. Assegurar visibilidade às Comunidades Tradicionais (Quilombolas, Geraizeiros, Vazanteiros e Indígenas),
+ *    evitando a invisibilização dessas populações nos relatórios de impacto socioambiental;
+ * 4. Fornecer links paramétricos auditáveis e canônicos para o PNCP (Portal Nacional de Contratações Públicas).
+ *
+ * ═══ FONTES OFICIAIS DE DADOS ═══
+ * - IBGE (Instituto Brasileiro de Geografia e Estatística): Nomenclaturas, malhas territoriais
+ *   e códigos padronizados (7 dígitos com dígito verificador módulo 10 e 6 dígitos).
+ * - PNCP / Lei Federal 14.133/2021: Portal Nacional de Contratações Públicas (compras e contratos).
+ * - ANM (Agência Nacional de Mineração) / CPRM-SGB: Registros de títulos minerários, reservas
+ *   de espodumênio/lítio na Faixa Pegmatítica do Médio Jequitinhonha (ex: Araçuaí, Itinga).
+ * - FCP (Fundação Cultural Palmares) e INCRA: Certificação de territórios quilombolas e assentamentos tradicionais.
+ * - IGAM / CBH-Jequitinhonha: Delimitação das sub-bacias do Rio Jequitinhonha (Alto, Médio e Baixo).
+ *
+ * ═══ DECISÕES DE ARQUITETURA E DESENHO TÉCNICO ═══
+ * - Divisão Tripartite Oficial: O território é estruturado em Alto, Médio e Baixo Jequitinhonha,
+ *   respeitando as especificidades bioclimáticas e a hidrografia regional.
+ * - Performance estática com JSON versionado (`vales-jequitinhonha.json`): Dados lidos no build time,
+ *   sem necessidade de consultar o Postgres a cada renderização de página pública.
+ * - Cache Singleton em memória (`cacheCatalogo`): Minimiza I/O em tempo de execução server-side.
+ * - Resolução elástica de caminhos (`resolverCaminhoJson`): Compatível com execução a partir
+ *   da raiz, da pasta `apps/web` ou de suítes de teste automatizado (Vitest).
+ * - Tabela de Alias (`ALIAS_IBGE_LEGADO`): Compatibiliza códigos históricos com dígito verificador
+ *   divergente, assegurando que buscas de cidadãos ou links antigos continuem funcionando.
  */
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 
+/**
+ * Classificação regional tripartite do Vale do Jequitinhonha conforme hidrografia e relevo:
+ * - Alto Jequitinhonha: Região de cabeceiras na Serra do Espinhaço (Diamantina, Minas Novas, Capelinha).
+ * - Médio Jequitinhonha: Centro do vale e polo pegmatítico de lítio (Araçuaí, Itinga, Pedra Azul).
+ * - Baixo Jequitinhonha: Próximo à divisa com o sul da Bahia, foz na Mata Atlântica (Almenara, Salto da Divisa).
+ */
 export type SubRegiaoJequitinhonha =
   | "Alto Jequitinhonha"
   | "Médio Jequitinhonha"
   | "Baixo Jequitinhonha";
 
+/**
+ * Interface representativa de um município do Vale do Jequitinhonha.
+ */
 export interface MunicipioJequitinhonha {
+  /** Código IBGE oficial de 7 dígitos com DV (algoritmo mod-10). */
   id_ibge7: string;
+  /** Código IBGE de 6 dígitos (utilizado em sistemas federais de repasse). */
   id_ibge6: string;
+  /** Nome canônico oficial do município registrado no IBGE. */
   nome: string;
+  /** Sub-região geográfica (Alto, Médio ou Baixo Jequitinhonha). */
   sub_regiao: SubRegiaoJequitinhonha;
+  /** Cidade polo mais próxima para comércio, saúde e serviços públicos. */
   polo_regional: string;
+  /** Indica se o município possui lavra ativa, pesquisa ou reservas reconhecidas de lítio. */
   tem_litio: boolean;
+  /** Indica se há comunidades tradicionais mapeadas ou certificadas. */
   tem_comunidades_tradicionais: boolean;
+  /** Tipos de povos e comunidades tradicionais presentes (ex: Quilombolas, Geraizeiros, Vazanteiros). */
   tipo_comunidade: string[];
+  /** Bacia hidrográfica principal que banha o município. */
   bacia_principal: string;
+  /** Rótulos temáticos para busca, contextualização e categorização. */
   tags: string[];
+  /** URL de consulta de contratações públicas auditáveis no PNCP. */
   link_pncp: string;
+  /** Link para o portal próprio de transparência da prefeitura. */
   link_transparencia: string;
 }
 
+/**
+ * Catálogo completo consolidado dos 55 municípios do Vale do Jequitinhonha.
+ */
 export interface CatalogoJequitinhonha {
+  /** Contagem total de cidades no catálogo (55 municípios). */
   total_cidades: number;
+  /** Relação das três sub-regiões do território. */
   sub_regioes: SubRegiaoJequitinhonha[];
+  /** População total estimada somada de todos os municípios da bacia. */
   populacao_total_estimada: number;
+  /** Bioma predominante no território (Cerrado, Caatinga e Mata Atlântica). */
   bioma_predominante: string;
+  /** Bacia hidrográfica principal que define o vale. */
   bacia_hidrografica: string;
+  /** Data da extração dos dados no formato ISO (AAAA-MM-DD). */
   atualizado_em: string;
+  /** Fontes públicas oficiais utilizadas para composição da base. */
   fonte: string;
+  /** Lista completa dos 55 municípios tipados. */
   municipios: MunicipioJequitinhonha[];
 }
 
+/**
+ * Estatísticas e métricas analíticas agregadas para exibição no painel de controle do Vale.
+ */
 export interface EstatisticasJequitinhonha {
+  /** Quantidade total de cidades catalogadas. */
   totalCidades: number;
+  /** Quantidade de municípios envolvidos na cadeia extrativa do lítio. */
   totalLitio: number;
+  /** Quantidade de municípios com povos ou comunidades tradicionais. */
   totalTradicionais: number;
+  /** População regional total somada. */
   populacaoTotal: number;
+  /** Contagem de municípios por sub-região (Alto, Médio e Baixo). */
   municipiosPorSubregiao: Record<SubRegiaoJequitinhonha, number>;
+  /** Relação de todos os tipos de comunidades tradicionais presentes. */
   tiposComunidades: string[];
+  /** Lista única das principais bacias hidrográficas. */
   baciasPrincipais: string[];
+  /** Lista dos polos regionais de referência. */
   polosRegionais: string[];
 }
 
 /**
  * Mapeamento de compatibilidade para códigos legados ou rascunhos com dígito verificador incorreto.
- * Garante que buscas externas ou documentos antigos resolvam para o município oficial correspondente.
+ *
+ * ═══ MOTIVO TÉCNICO DA NORMALIZAÇÃO ═══
+ * Diversos sistemas estaduais e planilhas legadas contêm códigos IBGE de 7 dígitos com DV
+ * calculado incorretamente ou gerados por sistemas pré-consolidação do IBGE.
+ * Este mapeamento traduz requisições com códigos legados diretamente para o código
+ * canônico e oficial mantido pelo IBGE.
  */
 const ALIAS_IBGE_LEGADO: Record<string, string> = {
   // Alto Jequitinhonha
@@ -93,8 +169,17 @@ const ALIAS_IBGE_LEGADO: Record<string, string> = {
   "3159003": "3160306", // Santo Antônio do Jacinto
 };
 
+/** Cache em memória do catálogo JSON carregado para evitar leituras repetidas de disco. */
 let cacheCatalogo: CatalogoJequitinhonha | null = null;
 
+/**
+ * Resolve o caminho físico do arquivo `vales-jequitinhonha.json` no sistema de arquivos.
+ *
+ * Testa sucessivamente múltiplos caminhos possíveis no monorepo para garantir
+ * que scripts, testes unitários e servidor web localizem o arquivo sem falha.
+ *
+ * @returns Caminho absoluto ou relativo resolvido do arquivo JSON.
+ */
 function resolverCaminhoJson(): string {
   const caminhos = [
     path.resolve(process.cwd(), "data", "vales-jequitinhonha.json"),
@@ -108,7 +193,14 @@ function resolverCaminhoJson(): string {
   return caminhos[0];
 }
 
-/** Carrega o catálogo completo dos 55 municípios do Vale do Jequitinhonha com cache em memória. */
+/**
+ * Carrega o catálogo completo dos 55 municípios do Vale do Jequitinhonha com cache em memória.
+ *
+ * Aplica o padrão Singleton para evitar requisições redundantes de disco I/O.
+ *
+ * @throws {Error} Se o arquivo físico `vales-jequitinhonha.json` não for encontrado.
+ * @returns Objeto com metadados do catálogo e o vetor tipado de municípios.
+ */
 export function obterCatalogoJequitinhonha(): CatalogoJequitinhonha {
   if (cacheCatalogo) return cacheCatalogo;
 
@@ -122,13 +214,20 @@ export function obterCatalogoJequitinhonha(): CatalogoJequitinhonha {
   return cacheCatalogo;
 }
 
-/** Retorna a lista dos 55 municípios do Vale do Jequitinhonha. */
+/**
+ * Retorna a lista contendo todos os 55 municípios do Vale do Jequitinhonha.
+ *
+ * @returns Vetor de objetos `MunicipioJequitinhonha`.
+ */
 export function listarMunicipiosJequitinhonha(): MunicipioJequitinhonha[] {
   return obterCatalogoJequitinhonha().municipios;
 }
 
 /**
- * Localiza município pelo código IBGE (7 ou 6 dígitos), com suporte a alias legado.
+ * Localiza um município específico pelo código IBGE (7 ou 6 dígitos), com suporte a alias legado.
+ *
+ * @param id Código IBGE com 7 ou 6 dígitos (ex: "3103405" ou "310340").
+ * @returns O município correspondente ou `undefined` se não constar no catálogo.
  */
 export function obterMunicipioJequitinhonhaPorIbge(id: string): MunicipioJequitinhonha | undefined {
   const termo = id.trim();
@@ -144,23 +243,57 @@ export function obterMunicipioJequitinhonhaPorIbge(id: string): MunicipioJequiti
   );
 }
 
-/** Retorna os municípios produtores ou com reservas de lítio (Polo do Lítio / Vale do Lítio). */
+/**
+ * Retorna os municípios com reservas, pesquisas ou projetos minerários de lítio.
+ *
+ * ═══ RELEVÂNCIA PÚBLICA DO LÍTIO ═══
+ * O projeto "Lithium Valley Brazil" atraiu grandes empreendimentos internacionais
+ * para o Médio Jequitinhonha. Este filtro viabiliza auditoria cidadã das compensações
+ * financeiras (CFEM), das licenças ambientais emitidas e do impacto no uso de água regional.
+ *
+ * @returns Lista de municípios onde `tem_litio === true`.
+ */
 export function listarMunicipiosLitio(): MunicipioJequitinhonha[] {
   return listarMunicipiosJequitinhonha().filter((m) => m.tem_litio);
 }
 
-/** Retorna os municípios com presença reconhecida de comunidades tradicionais (quilombolas, geraizeiros, vazanteiros). */
+/**
+ * Retorna municípios com presença reconhecida de povos e comunidades tradicionais.
+ *
+ * Filtra municípios habitados por Quilombolas, Geraizeiros, Vazanteiros ou Indígenas.
+ *
+ * @returns Lista de municípios onde `tem_comunidades_tradicionais === true`.
+ */
 export function listarMunicipiosTradicionais(): MunicipioJequitinhonha[] {
   return listarMunicipiosJequitinhonha().filter((m) => m.tem_comunidades_tradicionais);
 }
 
-/** Retorna os municípios de determinada sub-região (Alto, Médio ou Baixo Jequitinhonha). */
+/**
+ * Filtra e retorna municípios de acordo com a sub-região geográfica (Alto, Médio ou Baixo).
+ *
+ * @param subregiao Sub-região desejada ("Alto Jequitinhonha", "Médio Jequitinhonha" ou "Baixo Jequitinhonha").
+ * @returns Vetor de municípios pertencentes à sub-região informada.
+ */
 export function listarPorSubregiao(subregiao: SubRegiaoJequitinhonha): MunicipioJequitinhonha[] {
   return listarMunicipiosJequitinhonha().filter((m) => m.sub_regiao === subregiao);
 }
 
 /**
- * Busca flexível de municípios por termo de busca (nome, código IBGE, bacia, tags ou comunidades).
+ * Busca flexível de municípios por termo textual em múltiplos campos.
+ *
+ * ═══ ALGORITMO DE BUSCA E NORMALIZAÇÃO ═══
+ * Executa normalização NFD sem diacríticos (acentos) e caixa baixa tanto no termo
+ * de pesquisa quanto nos dados dos municípios.
+ * Campos inspecionados:
+ * - Nome do município;
+ * - Bacia hidrográfica principal;
+ * - Nome da sub-região;
+ * - Códigos IBGE (7 e 6 dígitos);
+ * - Tags temáticas;
+ * - Tipos de comunidades tradicionais (ex: busca por "quilombola" retorna todas as cidades com quilombos).
+ *
+ * @param termo Termo de busca digitado pelo usuário.
+ * @returns Vetor de municípios compatíveis com o termo fornecido.
  */
 export function buscarMunicipiosJequitinhonha(termo: string): MunicipioJequitinhonha[] {
   const normalizado = termo
@@ -207,7 +340,14 @@ export function buscarMunicipiosJequitinhonha(termo: string): MunicipioJequitinh
   });
 }
 
-/** Retorna estatísticas consolidadas do território do Vale do Jequitinhonha. */
+/**
+ * Calcula e retorna estatísticas consolidadas do território do Vale do Jequitinhonha.
+ *
+ * Realiza agregação em passada única O(N), computando contagens por sub-região,
+ * totais minerários e de comunidades tradicionais, e ordenando listas de bacias e polos.
+ *
+ * @returns Objeto `EstatisticasJequitinhonha` preenchido.
+ */
 export function obterEstatisticasJequitinhonha(): EstatisticasJequitinhonha {
   const cat = obterCatalogoJequitinhonha();
   const municipios = cat.municipios;

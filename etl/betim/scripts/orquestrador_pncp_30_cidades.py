@@ -1,14 +1,34 @@
-"""orquestrador_pncp_30_cidades.py — Executa o lote das 30 cidades delegadas sequencialmente.
+"""orquestrador_pncp_30_cidades.py — Orquestrador sequencial do PNCP para as 30 cidades delegadas.
 
-Regra inegociável do projeto:
-- 1 ETL por máquina, 1 comando por vez.
-- Cada cidade = 3 comandos, nesta ordem:
-  1) python -m etl.pncp.orgaos --id-municipio <IBGE> --gravar
-  2) python -m etl.pncp.contratos --id-municipio <IBGE>
-  3) python -m etl.pncp.licitacoes --id-municipio <IBGE>
-- Checkpoint retoma sozinho. Se falhar, retenta com backoff.
-- Notifica conclusão de cada cidade via Telegram (scripts/passo-telegram.mts).
+Uso:
+    python etl/betim/scripts/orquestrador_pncp_30_cidades.py
+
+═══ PAPEL NO PROCESSO DE TRANSPARÊNCIA CÍVICA ═══
+Este script automatiza e supervisiona a extração completa de dados de compras públicas e contratos
+para o lote das 30 maiores cidades do interior paulista, mineiro e polos regionais brasileiros
+(Guarulhos, São Bernardo, Campina Grande, Feira de Santana, Joinville, Londrina, Caxias do Sul, etc.).
+
+Ao finalizar com sucesso todas as 30 cidades, o script aciona automaticamente a esteira seguinte:
+o orquestrador dos 82 municípios dos Vales do Jequitinhonha e Mucuri (`orquestrador_pncp_vales.py`).
+
+═══ REGRAS OPERACIONAIS INEGOCIÁVEIS (AGENTS.md) ═══
+1. EXECUÇÃO MONOTAREFA:
+   - "1 ETL por máquina, 1 comando por vez." É proibido paralelizar requisições pesadas ao PNCP,
+     sob pena de bloqueio de IP por HTTP 429 ou saturação da máquina local (`home-pc`).
+2. RITO DE TRÊS PASSOS POR MUNICÍPIO:
+   Para cada cidade, executam-se estritamente nesta ordem:
+   Passo 1: `python -m etl.pncp.orgaos --id-municipio <IBGE> --gravar` (Mapeia todos os CNPJs municipais)
+   Passo 2: `python -m etl.pncp.contratos --id-municipio <IBGE>` (Coleta os contratos de todos os CNPJs)
+   Passo 3: `python -m etl.pncp.licitacoes --id-municipio <IBGE>` (Coleta as licitações com filtro de esfera)
+3. RESILIÊNCIA E PERSISTÊNCIA ATÔMICA:
+   O progresso é salvo após cada cidade em `.progresso-30-cidades.json`. Em caso de reinicialização
+   da máquina ou do terminal, o script retoma imediatamente da primeira cidade pendente.
+4. RETENTATIVAS COM BACKOFF:
+   Falhas de conexão são retentadas até 5 vezes com espera progressiva (`10s * tentativa`).
+5. NOTIFICAÇÃO EM TEMPO REAL:
+   A cada cidade concluída com sucesso, envia um alerta ao canal de monitoramento do Telegram.
 """
+
 import json
 import os
 import subprocess
@@ -16,17 +36,19 @@ import sys
 import time
 from pathlib import Path
 
-# Garante suporte a UTF-8 no stdout/stderr no Windows
+# Configuração de suporte estrito a UTF-8 no stdout/stderr para terminais Windows (PowerShell / cmd.exe)
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
+# Resolução de diretórios absolutos a partir da localização canônica deste script
 RAIZ_BETIM = Path(__file__).resolve().parents[1]
 RAIZ_REPO = RAIZ_BETIM.parent.parent
 ARQUIVO_PROGRESSO = RAIZ_BETIM / ".progresso-30-cidades.json"
 PYTHON_BIN = RAIZ_BETIM / ".venv" / "Scripts" / "python.exe"
 
+# Relação ordenada das 30 cidades de grande porte do interior e regiões metropolitanas
 CIDADES = [
     ("3518800", "Guarulhos/SP"),
     ("3548708", "Sao Bernardo/SP"),
@@ -62,6 +84,13 @@ CIDADES = [
 
 
 def carregar_progresso() -> dict:
+    """Lê o arquivo de estado `.progresso-30-cidades.json`.
+
+    Permite identificar quais municípios já foram concluídos e onde a esteira deve retomar.
+
+    Returns:
+        Dicionário com o histórico de municípios e seus respectivos status.
+    """
     if ARQUIVO_PROGRESSO.exists():
         try:
             with open(ARQUIVO_PROGRESSO, "r", encoding="utf-8") as f:
@@ -72,6 +101,14 @@ def carregar_progresso() -> dict:
 
 
 def salvar_progresso(progresso: dict):
+    """Grava o estado de progresso de forma atômica no disco.
+
+    Escreve primeiro em arquivo temporário (`.tmp`) e depois renomeia, prevenindo
+    corrupção do JSON em caso de encerramento repentino do processo.
+
+    Args:
+        progresso: Dicionário contendo os dados de status das cidades.
+    """
     tmp = ARQUIVO_PROGRESSO.with_suffix(".tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(progresso, f, indent=2, ensure_ascii=False)
@@ -79,6 +116,13 @@ def salvar_progresso(progresso: dict):
 
 
 def notificar_telegram(msg: str):
+    """Envia notificação informativa ao canal oficial de telemetria no Telegram.
+
+    Aciona o script auxiliar `scripts/notificar-telegram.mjs` via Node.js em processo isolado.
+
+    Args:
+        msg: Texto da mensagem (com suporte a formatação HTML simples).
+    """
     import shutil
     script = RAIZ_REPO / "scripts" / "notificar-telegram.mjs"
     if script.exists():
@@ -96,6 +140,18 @@ def notificar_telegram(msg: str):
 
 
 def executar_comando(args: list[str], max_retentativas: int = 5) -> bool:
+    """Executa um módulo Python subordinado com política de retentativas e backoff linear.
+
+    Em caso de falha de conexão ou código de saída não-zero, aguarda `10 * tentativa` segundos
+    antes de tentar novamente (ex: 10s, 20s, 30s...).
+
+    Args:
+        args: Argumentos passados ao interpretador Python (ex: `["-m", "etl.pncp.contratos", ...]`).
+        max_retentativas: Número máximo de tentativas antes de abortar a esteira (padrão: 5).
+
+    Returns:
+        True se o comando retornou código 0 de sucesso; False caso esgote as retentativas.
+    """
     cmd = [str(PYTHON_BIN)] + args
     print(f"\n[Orquestrador] Executando: {' '.join(args)}", flush=True)
     for tentativa in range(1, max_retentativas + 1):
@@ -111,6 +167,7 @@ def executar_comando(args: list[str], max_retentativas: int = 5) -> bool:
 
 
 def main():
+    """Função principal que governa o ciclo de vida da esteira das 30 cidades."""
     progresso = carregar_progresso()
     total = len(CIDADES)
 
@@ -121,25 +178,25 @@ def main():
 
         print(f"\n{'='*60}\n[Orquestrador] Iniciando {idx}/{total} - {nome} ({ibge})\n{'='*60}", flush=True)
 
-        # 1. Órgãos
+        # Passo 1: Descoberta de todos os órgãos e CNPJs municipais
         ok1 = executar_comando(["-m", "etl.pncp.orgaos", "--id-municipio", ibge, "--gravar"])
         if not ok1:
             print(f"[Orquestrador] FALHA ao mapear órgãos de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # 2. Contratos
+        # Passo 2: Coleta de contratos administrativos
         ok2 = executar_comando(["-m", "etl.pncp.contratos", "--id-municipio", ibge])
         if not ok2:
             print(f"[Orquestrador] FALHA ao coletar contratos de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # 3. Licitações
+        # Passo 3: Coleta de licitações com filtro estrito de esfera
         ok3 = executar_comando(["-m", "etl.pncp.licitacoes", "--id-municipio", ibge])
         if not ok3:
             print(f"[Orquestrador] FALHA ao coletar licitações de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
 
-        # Registra conclusão
+        # Registro persistente de conclusão da cidade
         progresso[ibge] = {
             "nome": nome,
             "status": "concluido",
@@ -154,7 +211,7 @@ def main():
     print("\n🎉 Todas as 30 cidades grandes foram concluídas com sucesso!", flush=True)
     notificar_telegram("🎉 Todas as 30 cidades grandes do PNCP foram concluídas!")
 
-    # Transição automática para os Vales do Jequitinhonha e Mucuri
+    # Transição automática e contínua para os Vales do Jequitinhonha e Mucuri
     script_vales = RAIZ_BETIM / "scripts" / "orquestrador_pncp_vales.py"
     if script_vales.exists():
         print("\n🚀 Iniciando automaticamente a esteira dos 82 municípios dos Vales do Jequitinhonha e Mucuri...", flush=True)
