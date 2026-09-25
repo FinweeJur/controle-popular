@@ -77,15 +77,17 @@ def salvar_progresso(progresso: dict):
 
 
 def notificar_telegram(msg: str):
+    import shutil
     script = RAIZ_REPO / "scripts" / "notificar-telegram.mjs"
     if script.exists():
         try:
+            node_bin = shutil.which("node") or "node"
             subprocess.run(
-                ["node", str(script), msg],
+                [node_bin, str(script), msg],
                 cwd=str(RAIZ_REPO),
                 timeout=30,
                 capture_output=True,
-                shell=True,
+                shell=False,
             )
         except Exception as e:
             print(f"[Orquestrador Vales] Erro ao notificar Telegram: {e}")

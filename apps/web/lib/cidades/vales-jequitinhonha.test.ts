@@ -43,6 +43,21 @@ function calcularDvIbge(ibge6: string): number {
   return rem === 0 ? 0 : 10 - rem;
 }
 
+/**
+ * Resolução resiliente do caminho de dados independente de onde vitest é executado.
+ */
+function resolverCaminhoDado(nomeArquivo: string): string {
+  const tentativas = [
+    path.resolve(process.cwd(), "apps", "web", "data", nomeArquivo),
+    path.resolve(process.cwd(), "data", nomeArquivo),
+    path.resolve(__dirname, "../../data", nomeArquivo),
+  ];
+  for (const t of tentativas) {
+    if (fs.existsSync(t)) return t;
+  }
+  return tentativas[0];
+}
+
 describe("lib/cidades/vales-jequitinhonha — Catálogo e Inteligência Territorial do Vale do Jequitinhonha", () => {
   it("deve carregar exatamente os 55 municípios do catálogo do Vale do Jequitinhonha", () => {
     const catalogo = obterCatalogoJequitinhonha();
@@ -136,7 +151,7 @@ describe("lib/cidades/vales-jequitinhonha — Catálogo e Inteligência Territor
   });
 
   it("deve conferir os códigos IBGE de 7 e 6 dígitos com o cálculo matemático oficial de DV e municipios-mg.json", () => {
-    const jsonMgPath = path.resolve(process.cwd(), "apps", "web", "data", "municipios-mg.json");
+    const jsonMgPath = resolverCaminhoDado("municipios-mg.json");
     const rawMg = fs.readFileSync(jsonMgPath, "utf-8");
     const mgData = JSON.parse(rawMg) as Array<{ id: number; nome: string }>;
 
@@ -309,7 +324,7 @@ describe("lib/cidades/vales-jequitinhonha — Catálogo e Inteligência Territor
   });
 
   it("deve garantir zero CPFs nos dados (AGENTS.md §5.2)", () => {
-    const jsonPath = path.resolve(process.cwd(), "apps", "web", "data", "vales-jequitinhonha.json");
+    const jsonPath = resolverCaminhoDado("vales-jequitinhonha.json");
     const conteudo = fs.readFileSync(jsonPath, "utf-8");
 
     // Procura por sequências de 11 dígitos no arquivo de dados

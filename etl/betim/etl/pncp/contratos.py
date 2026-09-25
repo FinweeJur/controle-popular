@@ -250,45 +250,60 @@ def sync(
                 else 0
             )
 
-            for pagina, registros_brutos in iter_contratos(
-                cnpj, data_inicial, data_final, pagina_inicio=pagina_inicio
-            ):
-                for raw in registros_brutos:
-                    row = _map_row(raw, id_municipio)
-                    chave = row["numero_controle_pncp"]
-                    if not chave or chave in vistos_no_ano:
-                        continue
-                    vistos_no_ano.add(chave)
-                    rows_lote[chave] = row
-                # GRAVA POR PÁGINA. Antes o ano inteiro ficava em memória e só
-                # saía no fim — timeout/queda no meio perdia tudo (medido em
-                # 23/09/2026: 10 min de coleta e zero linha no banco).
+            try:
+                for pagina, registros_brutos in iter_contratos(
+                    cnpj, data_inicial, data_final, pagina_inicio=pagina_inicio
+                ):
+                    for raw in registros_brutos:
+                        row = _map_row(raw, id_municipio)
+                        chave = row["numero_controle_pncp"]
+                        if not chave or chave in vistos_no_ano:
+                            continue
+                        vistos_no_ano.add(chave)
+                        rows_lote[chave] = row
+                    # GRAVA POR PÁGINA. Antes o ano inteiro ficava em memória e só
+                    # saía no fim — timeout/queda no meio perdia tudo (medido em
+                    # 23/09/2026: 10 min de coleta e zero linha no banco).
+                    n = _gravar_lote(rows_lote)
+                    registros_ano += n
+                    rows_lote = {}
+                    paginas_gravadas = max(paginas_gravadas, pagina)
+                    ck.marcar_parcela(
+                        estado,
+                        ck.NOME_CONTRATOS,
+                        chave_unidade,
+                        pagina=paginas_gravadas,
+                        registros=registros_ano,
+                    )
+                    print(
+                        f"[etl.pncp.contratos] {chave_unidade} p={pagina} "
+                        f"lote={n} acumulado={registros_ano}",
+                        flush=True,
+                    )
+
                 n = _gravar_lote(rows_lote)
                 registros_ano += n
-                rows_lote = {}
-                paginas_gravadas = max(paginas_gravadas, pagina)
-                ck.marcar_parcela(
-                    estado,
-                    ck.NOME_CONTRATOS,
-                    chave_unidade,
-                    pagina=paginas_gravadas,
-                    registros=registros_ano,
+                ck.marcar_ok(
+                    estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
                 )
                 print(
-                    f"[etl.pncp.contratos] {chave_unidade} p={pagina} "
-                    f"lote={n} acumulado={registros_ano}",
+                    f"[etl.pncp.contratos] {chave_unidade} registros={registros_ano}"
+                )
+                total += registros_ano
+            except Exception as e:
+                # Falhas do PNCP (ex: 504 Gateway Time-out em órgãos específicos)
+                # não devem abortar a esteira inteira da cidade nem o orquestrador.
+                n = _gravar_lote(rows_lote)
+                registros_ano += n
+                total += registros_ano
+                print(
+                    f"[etl.pncp.contratos] AVISO: {chave_unidade} interrompida por erro na API ({type(e).__name__}: {e}); "
+                    f"parcial ({registros_ano} reg) gravado e segue.",
                     flush=True,
                 )
-
-            n = _gravar_lote(rows_lote)
-            registros_ano += n
-            ck.marcar_ok(
-                estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
-            )
-            print(
-                f"[etl.pncp.contratos] {chave_unidade} registros={registros_ano}"
-            )
-            total += registros_ano
+                ck.marcar_ok(
+                    estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
+                )
     print(f"[etl.pncp.contratos] total={total}")
 
 
