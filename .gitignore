@@ -233,3 +233,4 @@ pncp-launch.log
 # etl/betim/etl/pncp/checkpoint.py). O que importa ja esta no banco.
 etl/betim/.checkpoint-pncp-*.json
 etl/betim/.checkpoint-pncp-*.json.tmp
+etl/betim/.fila-pncp.lock

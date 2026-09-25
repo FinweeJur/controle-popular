@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** cidades
-> **Última medição:** 2026-09-24
+> **Última medição:** 2026-09-25
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [PLANO-AUTOMACAO-COLETA-CIDADES.md](PLANO-AUTOMACAO-COLETA-CIDADES.md), [PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md](PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** pncp, contratos, licitacoes, coleta, checkpoint, municipios, ibge, 199 cidades, guara, etl, ampliacao, fila
@@ -10,6 +10,7 @@
 ## Sumário
 
 - [Propósito](#propósito)
+- [Estado medido em 25/09](#estado-medido-em-2509)
 - [Estado medido em 24/09](#estado-medido-em-2409)
 - [Estado medido em 23/09](#estado-medido-em-2309)
 - [Escopo](#escopo)
@@ -28,6 +29,20 @@
 Definir a ordem e o ritual para ampliar a coleta PNCP (contratos e licitações)
 para as demais cidades mapeadas, **somente depois** de fechar a coleta atual
 das 6 cidades principais do portal.
+
+## Estado medido em 25/09
+
+Coleta da madrugada fechou 6 cidades (Manacapuru, Parintins, Tefé,
+Abaetetuba, Altamira, Ananindeua).
+
+| Item | Medição (25/09 07:35) |
+|---|---|
+| Cidades completas (ck contratos + licitações ok) | **36 / 136** prontas |
+| Fila restante | **100** |
+| Chaves ck contratos | 336 (336 ok, 0 parcial) |
+| Chaves ck licitações | 3.349 (3.349 ok, 0 parcial) |
+| Próximas da fila | Ananindeua/PA (refazer — morta no timeout), Cametã, Castanhal, Itaituba, Marabá, Paragominas (PA) |
+| Cidade morta no timeout | chaves só `ok` enganam `cidade_completa` — conferir `logs/pncp/<ibge>.out` |
 
 ## Estado medido em 24/09
 
