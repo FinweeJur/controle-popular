@@ -220,6 +220,56 @@ export const FRENTES: SeuNonoFrente[] = [
         ],
       },
       {
+        id: "vales-jequitinhonha-mucuri",
+        titulo: "Vales do Jequitinhonha e Mucuri",
+        perguntas: [
+          {
+            id: "compras-pncp-jequitinhonha",
+            pergunta: "Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP?",
+            resposta:
+              "Ô, meu amigo, é muito fácil acompanhar as contas dos nossos vales. O PNCP — sistema nacional de compras públicas — reúne contratos e licitações. Você digita a cidade e descobre os maiores fornecedores e obras. Dá para fiscalizar cada centavo gasto com merenda, remédios e asfalto. O cidadão bem informado protege o dinheiro do seu próprio povo.",
+            link: { href: "https://pncp.gov.br/app/editais?uf=MG", texto: "Acessar compras de MG no PNCP" },
+            links: [
+              { href: "https://pncp.gov.br", texto: "Portal Nacional de Contratações Públicas (PNCP)" },
+              { href: "/diamantina/indice", texto: "Painel de Diamantina no portal" },
+            ],
+          },
+          {
+            id: "polo-litio-jequitinhonha",
+            pergunta: "Quais municípios fazem parte do polo do lítio no Jequitinhonha e como fiscalizar?",
+            resposta:
+              "Olha só, meu compadre, o Vale vive a corrida do lítio. Os destaques são Araçuaí, Itinga e Coronel Murta no Médio Jequitinhonha. Para fiscalizar, acompanhe a CFEM — compensação financeira paga pela mineração às prefeituras. Fique de olho também no uso das águas dos rios locais. A riqueza do subsolo deve virar saúde, escola e dignidade popular.",
+            link: { href: "https://www.gov.br/anm/pt-br/assuntos/arrecadacao/distribuicao-da-cfem", texto: "Distribuição da CFEM na ANM" },
+            links: [
+              { href: "https://www.gov.br/anm/pt-br", texto: "Agência Nacional de Mineração (ANM)" },
+              { href: "/ambiental/barragens", texto: "Painel de Barragens e Mineração" },
+            ],
+          },
+          {
+            id: "municipios-mucuri-maxakali",
+            pergunta: "Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali?",
+            resposta:
+              "Uai, o Vale do Mucuri tem 27 municípios cheios de história. Teófilo Otoni é o polo regional e Nanuque desponta ao leste. Em Ladainha e Santa Helena de Minas vive o nobre Povo Maxakali. Você acompanha proteção social pelo SUAS — Sistema Único de Assistência Social. Monitore também os recursos hídricos e a transparência das compras municipais.",
+            link: { href: "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas", texto: "Terras Indígenas na FUNAI" },
+            links: [
+              { href: "https://pncp.gov.br/app/contratos?q=Te%C3%B3filo%20Otoni&uf=MG", texto: "Contratos do Mucuri no PNCP" },
+              { href: "/teofilo-otoni", texto: "Página de Teófilo Otoni" },
+            ],
+          },
+          {
+            id: "regras-qualidade-informacao-vales",
+            pergunta: "Quais são as regras de qualidade da informação das cidades dos vales?",
+            resposta:
+              "Pois é, meu amigo, transparência boa precisa de régua muito alta. Primeiro: fonte direta — link auditável que abre o documento oficial original. Segundo: dado buscável — achar processo ou fornecedor pelo nome na busca. Terceiro: lista filtrável — separar contratações por ano, valor ou modalidade. Quarto: microresumo cidadão — síntese em linguagem simples, sem termos difíceis. Quinto: chatbot com contexto — assistente que conhece o orçamento da cidade. Sexto: classificação com tags — etiquetas temáticas como saúde, educação e mineração.",
+            link: { href: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm", texto: "Lei de Acesso à Informação (LAI)" },
+            links: [
+              { href: "https://pncp.gov.br", texto: "Portal Nacional de Contratações Públicas" },
+              { href: "/busca", texto: "Buscador do Controle Popular" },
+            ],
+          },
+        ],
+      },
+      {
         id: "paraopeba-brumadinho",
         titulo: "Bacia do Paraopeba & Brumadinho",
         perguntas: [
@@ -988,6 +1038,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/tecnologia", texto: "Tecnologia Livre" },
       { href: "/transparencia-internacional", texto: "Transparência Internacional" },
+    ],
+  },
+  {
+    id: "vales-jequitinhonha-mucuri",
+    titulo: "Vales do Jequitinhonha e Mucuri",
+    resumo: "Contexto socioambiental e fiscalização dos 82 municípios dos Vales do Jequitinhonha e Mucuri: polo do lítio, compras no PNCP, terras indígenas Maxakali e regras de transparência.",
+    dados: [
+      "82 municípios mapeados com dados do IBGE, PNCP e FUNAI",
+      "Polo do Lítio no Médio Jequitinhonha: Araçuaí, Itinga e Coronel Murta",
+      "Vale do Mucuri: 27 municípios e proteção às terras indígenas Maxakali",
+      "Compras públicas e contratos municipais via PNCP com links auditáveis",
+      "As 6 regras de qualidade: fonte direta, buscável, filtrável, microresumo, chatbot e tags",
+      "Recursos hídricos e compensação financeira mineral (CFEM)",
+    ],
+    links: [
+      { href: "/busca", texto: "Buscar nos municípios dos vales" },
+      { href: "https://pncp.gov.br", texto: "Portal Nacional de Contratações Públicas" },
     ],
   },
 ];

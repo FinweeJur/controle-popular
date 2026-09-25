@@ -1,0 +1,1205 @@
+{
+  "total_cidades": 55,
+  "sub_regioes": [
+    "Alto Jequitinhonha",
+    "Médio Jequitinhonha",
+    "Baixo Jequitinhonha"
+  ],
+  "populacao_total_estimada": 689696,
+  "bioma_predominante": "Cerrado / Caatinga / Mata Atlântica",
+  "bacia_hidrografica": "Bacia Hidrográfica do Rio Jequitinhonha",
+  "atualizado_em": "2026-09-25",
+  "fonte": "IBGE Localidades (municipios-mg.json) / PNCP / ComunicaBR / SEDESE / UFVJM",
+  "municipios": [
+    {
+      "id_ibge7": "3121605",
+      "id_ibge6": "312160",
+      "nome": "Diamantina",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Patrimônio da Humanidade",
+        "UNESCO",
+        "Estrada Real",
+        "Diamantes",
+        "Apanhadores de Flores",
+        "Educação Superior"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG",
+      "link_transparencia": "https://www.diamantina.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3120102",
+      "id_ibge6": "312010",
+      "nome": "Couto de Magalhães de Minas",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Geraizeira",
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Manso",
+      "tags": [
+        "Estrada Real",
+        "Caminho dos Diamantes",
+        "Ecoturismo",
+        "Cerrado"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG",
+      "link_transparencia": "https://www.couto-de-magalhaes-de-minas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3125408",
+      "id_ibge6": "312540",
+      "nome": "Felício dos Santos",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Araçuaí",
+      "tags": [
+        "Águas Termais",
+        "Parque do Rio Preto",
+        "Apanhadores de Flores",
+        "Serra do Espinhaço"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG",
+      "link_transparencia": "https://www.felicio-dos-santos.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3127602",
+      "id_ibge6": "312760",
+      "nome": "Gouveia",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Paraúna",
+      "tags": [
+        "Portal do Vale",
+        "Estrada Real",
+        "Cachoeiras",
+        "Artesanato Têxtil"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Gouveia&uf=MG",
+      "link_transparencia": "https://www.gouveia.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3153301",
+      "id_ibge6": "315330",
+      "nome": "Presidente Kubitschek",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Manso",
+      "tags": [
+        "Serra do Espinhaço",
+        "Caminho dos Diamantes",
+        "Apanhadores de Flores",
+        "Ecoturismo"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG",
+      "link_transparencia": "https://www.presidente-kubitschek.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3125507",
+      "id_ibge6": "312550",
+      "nome": "São Gonçalo do Rio Preto",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Preto",
+      "tags": [
+        "Parque Estadual do Rio Preto",
+        "Ecoturismo",
+        "Conservação Ambiental",
+        "Praias de Água Doce"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG",
+      "link_transparencia": "https://www.sao-goncalo-do-rio-preto.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3165909",
+      "id_ibge6": "316590",
+      "nome": "Senador Modestino Gonçalves",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Itacambiruçu",
+      "tags": [
+        "Cerrado",
+        "Agricultura Familiar",
+        "Cachoeiras",
+        "Vale das Pedras"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG",
+      "link_transparencia": "https://www.senador-modestino-goncalves.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3113503",
+      "id_ibge6": "311350",
+      "nome": "Carbonita",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Araçuaí",
+      "tags": [
+        "Silvicultura",
+        "Eucalipto",
+        "Artesanato",
+        "Agricultura Familiar"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG",
+      "link_transparencia": "https://www.carbonita.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3132503",
+      "id_ibge6": "313250",
+      "nome": "Itamarandiba",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Itamarandiba",
+      "tags": [
+        "Polo Florestal",
+        "Parque da Serra Negra",
+        "Agricultura Familiar",
+        "Artesanato de Palha"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG",
+      "link_transparencia": "https://www.itamarandiba.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3171071",
+      "id_ibge6": "317107",
+      "nome": "Veredinha",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Geraizeira",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Veredas",
+        "Agricultura Familiar",
+        "Cultura Tropeira",
+        "Artesanato"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG",
+      "link_transparencia": "https://www.veredinha.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3112307",
+      "id_ibge6": "311230",
+      "nome": "Capelinha",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Polo Regional",
+        "Capital do Café",
+        "Comércio",
+        "Serviços",
+        "Agricultura Forte"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Capelinha&uf=MG",
+      "link_transparencia": "https://www.capelinha.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3102852",
+      "id_ibge6": "310285",
+      "nome": "Angelândia",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Agricultura Familiar",
+        "Mata Atlântica",
+        "Cafeicultura",
+        "Cachaça Artesanal"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG",
+      "link_transparencia": "https://www.angelandia.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3104452",
+      "id_ibge6": "310445",
+      "nome": "Aricanduva",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Agricultura Familiar",
+        "Cafeicultura",
+        "Mata Atlântica",
+        "Tradições Culturais"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG",
+      "link_transparencia": "https://www.aricanduva.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3121001",
+      "id_ibge6": "312100",
+      "nome": "Datas",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Geraizeira",
+        "Apanhadores de Flores Sempre-Vivas"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Serra do Espinhaço",
+        "Apanhadores de Flores",
+        "Caminho dos Diamantes",
+        "Queijo do Serro"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Datas&uf=MG",
+      "link_transparencia": "https://www.datas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3102407",
+      "id_ibge6": "310240",
+      "nome": "Alvorada de Minas",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Santo Antônio",
+      "tags": [
+        "Estrada Real",
+        "Queijo do Serro",
+        "Patrimônio Histórico",
+        "Mineração"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG",
+      "link_transparencia": "https://www.alvorada-de-minas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3116803",
+      "id_ibge6": "311680",
+      "nome": "Coluna",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Guanhães",
+      "tags": [
+        "Queijo Minas Artesanal",
+        "Agricultura Familiar",
+        "Trilhas do Rio Doce",
+        "Cafeicultura"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Coluna&uf=MG",
+      "link_transparencia": "https://www.coluna.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3156007",
+      "id_ibge6": "315600",
+      "nome": "Rio Vermelho",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Vermelho",
+      "tags": [
+        "Estrada Real",
+        "Queijo do Serro",
+        "Pedras Preciosas",
+        "Artesanato"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Rio%20Vermelho&uf=MG",
+      "link_transparencia": "https://www.rio-vermelho.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3166501",
+      "id_ibge6": "316650",
+      "nome": "Serra Azul de Minas",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Vermelho",
+      "tags": [
+        "Pico do Itambé",
+        "Parque Estadual",
+        "Ecoturismo",
+        "Queijo do Serro"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Serra%20Azul%20de%20Minas&uf=MG",
+      "link_transparencia": "https://www.serra-azul-de-minas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3167103",
+      "id_ibge6": "316710",
+      "nome": "Serro",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Nascente do Jequitinhonha",
+        "Patrimônio Histórico",
+        "IPHAN",
+        "Queijo do Serro",
+        "Estrada Real"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Serro&uf=MG",
+      "link_transparencia": "https://www.serro.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3160207",
+      "id_ibge6": "316020",
+      "nome": "Santo Antônio do Itambé",
+      "sub_regiao": "Alto Jequitinhonha",
+      "polo_regional": "Diamantina",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Vermelho",
+      "tags": [
+        "Pico do Itambé",
+        "Teto do Sertão Mineiro",
+        "Queijo do Serro",
+        "Ecoturismo"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG",
+      "link_transparencia": "https://www.santo-antonio-do-itambe.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3103405",
+      "id_ibge6": "310340",
+      "nome": "Araçuaí",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": true,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Araçuaí",
+      "tags": [
+        "Lítio",
+        "Polo Regional",
+        "Cultura do Barro",
+        "Vale do Lítio",
+        "Mestras Ceramistas",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG",
+      "link_transparencia": "https://www.aracuai.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3119500",
+      "id_ibge6": "311950",
+      "nome": "Coronel Murta",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": true,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Lítio",
+        "Pegmatito",
+        "Pedras Preciosas",
+        "Recursos Minerais",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Coronel%20Murta&uf=MG",
+      "link_transparencia": "https://www.coronel-murta.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3106507",
+      "id_ibge6": "310650",
+      "nome": "Berilo",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Araçuaí",
+      "tags": [
+        "Quilombola",
+        "Comunidade Gangorra",
+        "Barragem de Irapé",
+        "Cultura Tradicional",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Berilo&uf=MG",
+      "link_transparencia": "https://www.berilo.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3116100",
+      "id_ibge6": "311610",
+      "nome": "Chapada do Norte",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Minas Novas",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Capivari",
+      "tags": [
+        "Quilombola",
+        "Festa de Nossa Senhora do Rosário dos Homens Pretos",
+        "Patrimônio Imaterial",
+        "Artesanato de Palha"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG",
+      "link_transparencia": "https://www.chapada-do-norte.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3126505",
+      "id_ibge6": "312650",
+      "nome": "Francisco Badaró",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Setúbal",
+      "tags": [
+        "Agricultura Familiar",
+        "Artesanato",
+        "Semiárido",
+        "Cultura Popular"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG",
+      "link_transparencia": "https://www.francisco-badaro.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3134004",
+      "id_ibge6": "313400",
+      "nome": "Itinga",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": true,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Lítio",
+        "Polo do Lítio",
+        "Sigma Lithium",
+        "Cultura do Barro",
+        "CFEM",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Itinga&uf=MG",
+      "link_transparencia": "https://www.itinga.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3135456",
+      "id_ibge6": "313545",
+      "nome": "Jenipapo de Minas",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Setúbal",
+      "tags": [
+        "Cultura do Barro",
+        "Cerâmica Artesanal",
+        "Agricultura Familiar",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG",
+      "link_transparencia": "https://www.jenipapo-de-minas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3136520",
+      "id_ibge6": "313652",
+      "nome": "José Gonçalves de Minas",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Setúbal",
+      "tags": [
+        "Agricultura Familiar",
+        "Tradições Rurais",
+        "Semiárido",
+        "Recursos Hídricos"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Jos%C3%A9%20Gon%C3%A7alves%20de%20Minas&uf=MG",
+      "link_transparencia": "https://www.jose-goncalves-de-minas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3141405",
+      "id_ibge6": "314140",
+      "nome": "Medina",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Pedra Azul",
+      "tem_litio": true,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Medina",
+      "tags": [
+        "Lítio",
+        "Pedras Preciosas",
+        "Semiárido",
+        "BR-116",
+        "Pecuária"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Medina&uf=MG",
+      "link_transparencia": "https://www.medina.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3152170",
+      "id_ibge6": "315217",
+      "nome": "Ponto dos Volantes",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Cultura do Barro",
+        "Cerâmica de Santana",
+        "BR-116",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Ponto%20dos%20Volantes&uf=MG",
+      "link_transparencia": "https://www.ponto-dos-volantes.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3171600",
+      "id_ibge6": "317160",
+      "nome": "Virgem da Lapa",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": true,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Vacaria",
+      "tags": [
+        "Lítio",
+        "Pegmatito",
+        "Turmalinas",
+        "Artesanato",
+        "Semiárido"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG",
+      "link_transparencia": "https://www.virgem-da-lapa.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3141801",
+      "id_ibge6": "314180",
+      "nome": "Minas Novas",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Minas Novas",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Patrimônio Histórico",
+        "Cultura do Barro",
+        "Quilombola",
+        "Sobrado da Praça",
+        "Artesanato Têxtil"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG",
+      "link_transparencia": "https://www.minas-novas.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3169703",
+      "id_ibge6": "316970",
+      "nome": "Turmalina",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Capelinha",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Artesãos do Barro"
+      ],
+      "bacia_principal": "Rio Araçuaí",
+      "tags": [
+        "Cultura do Barro",
+        "Campo Buriti",
+        "Barragem de Irapé",
+        "Cerâmica Tradicional"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG",
+      "link_transparencia": "https://www.turmalina.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3138351",
+      "id_ibge6": "313835",
+      "nome": "Leme do Prado",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Geraizeira"
+      ],
+      "bacia_principal": "Rio Fanado",
+      "tags": [
+        "Barragem de Irapé",
+        "Agricultura Familiar",
+        "Semiárido",
+        "Ecoturismo"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG",
+      "link_transparencia": "https://www.leme-do-prado.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3148707",
+      "id_ibge6": "314870",
+      "nome": "Pedra Azul",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Pedra Azul",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio São Pedro",
+      "tags": [
+        "Polo Regional",
+        "Pedra Negra",
+        "Monólitos",
+        "Comércio",
+        "Agropecuária"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG",
+      "link_transparencia": "https://www.pedra-azul.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3102704",
+      "id_ibge6": "310270",
+      "nome": "Cachoeira de Pajeú",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Pedra Azul",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio São Pedro",
+      "tags": [
+        "Cachoeiras",
+        "Agricultura Familiar",
+        "Semiárido",
+        "Pecuária"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG",
+      "link_transparencia": "https://www.cachoeira-de-pajeu.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3117009",
+      "id_ibge6": "311700",
+      "nome": "Comercinho",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Pedra Azul",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Medina",
+      "tags": [
+        "Agricultura Familiar",
+        "Semiárido",
+        "Tradições Rurais",
+        "Recursos Hídricos"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG",
+      "link_transparencia": "https://www.comercinho.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3133303",
+      "id_ibge6": "313330",
+      "nome": "Itaobim",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Terra da Manga",
+        "Entroncamento Rodoviário",
+        "BR-116",
+        "Comércio",
+        "Rio Jequitinhonha"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG",
+      "link_transparencia": "https://www.itaobim.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3146305",
+      "id_ibge6": "314630",
+      "nome": "Padre Paraíso",
+      "sub_regiao": "Médio Jequitinhonha",
+      "polo_regional": "Araçuaí",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio São João",
+      "tags": [
+        "BR-116",
+        "Artesanato",
+        "Pedras Preciosas",
+        "Agricultura Familiar",
+        "Comércio"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG",
+      "link_transparencia": "https://www.padre-paraiso.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3101706",
+      "id_ibge6": "310170",
+      "nome": "Almenara",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Polo Regional",
+        "Capital do Baixo Jequitinhonha",
+        "Comércio",
+        "Educação Superior",
+        "Pecuária"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Almenara&uf=MG",
+      "link_transparencia": "https://www.almenara.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3105202",
+      "id_ibge6": "310520",
+      "nome": "Bandeira",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Divisa com Bahia",
+        "Agricultura Familiar",
+        "Pecuária",
+        "Mata Atlântica"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG",
+      "link_transparencia": "https://www.bandeira.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3122454",
+      "id_ibge6": "312245",
+      "nome": "Divisópolis",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Divisa com Bahia",
+        "Planalto dos Vales",
+        "Pecuária",
+        "Cafeicultura"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG",
+      "link_transparencia": "https://www.divisopolis.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3125606",
+      "id_ibge6": "312560",
+      "nome": "Felisburgo",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Mata Atlântica",
+        "Mata Escura",
+        "Pecuária",
+        "Agricultura Familiar"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Felisburgo&uf=MG",
+      "link_transparencia": "https://www.felisburgo.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3134707",
+      "id_ibge6": "313470",
+      "nome": "Jacinto",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Pecuária",
+        "Rio Jequitinhonha",
+        "Agricultura Familiar",
+        "Divisa com Bahia"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG",
+      "link_transparencia": "https://www.jacinto.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3135803",
+      "id_ibge6": "313580",
+      "nome": "Jequitinhonha",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Berço do Vale",
+        "Rio Jequitinhonha",
+        "Pesca Artesanal",
+        "Pecuária",
+        "Artesanato"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG",
+      "link_transparencia": "https://www.jequitinhonha.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3136009",
+      "id_ibge6": "313600",
+      "nome": "Joaíma",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Rubim do Sul",
+      "tags": [
+        "Pecuária",
+        "Cultura Popular",
+        "Agricultura Familiar",
+        "Mata Atlântica"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Joa%C3%ADma&uf=MG",
+      "link_transparencia": "https://www.joaima.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3136504",
+      "id_ibge6": "313650",
+      "nome": "Jordânia",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Divisa com Bahia",
+        "Pecuária de Corte",
+        "Agricultura",
+        "Comércio Local"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Jord%C3%A2nia&uf=MG",
+      "link_transparencia": "https://www.jordania.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3140555",
+      "id_ibge6": "314055",
+      "nome": "Mata Verde",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Divisa com Bahia",
+        "Agropecuária",
+        "Cafeicultura",
+        "Comércio"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG",
+      "link_transparencia": "https://www.mata-verde.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3143153",
+      "id_ibge6": "314315",
+      "nome": "Monte Formoso",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio São Bento",
+      "tags": [
+        "Agricultura Familiar",
+        "Quilombola",
+        "Artesanato",
+        "Mata Atlântica"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG",
+      "link_transparencia": "https://www.monte-formoso.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3146750",
+      "id_ibge6": "314675",
+      "nome": "Palmópolis",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": false,
+      "tipo_comunidade": [],
+      "bacia_principal": "Rio do Prado",
+      "tags": [
+        "Divisa com Bahia",
+        "Mata Atlântica",
+        "Pecuária",
+        "Agricultura Familiar"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG",
+      "link_transparencia": "https://www.palmopolis.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3155108",
+      "id_ibge6": "315510",
+      "nome": "Rio do Prado",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio do Prado",
+      "tags": [
+        "Reserva Biológica da Mata Escura",
+        "Mico-Leão-da-Cara-Dourada",
+        "Biodiversidade",
+        "Mata Atlântica"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Rio%20do%20Prado&uf=MG",
+      "link_transparencia": "https://www.rio-do-prado.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3156601",
+      "id_ibge6": "315660",
+      "nome": "Rubim",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Rubim do Sul",
+      "tags": [
+        "Pecuária",
+        "Pedras Preciosas",
+        "Cultura Popular",
+        "Cavalgadas"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Rubim&uf=MG",
+      "link_transparencia": "https://www.rubim.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3157104",
+      "id_ibge6": "315710",
+      "nome": "Salto da Divisa",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Vazanteira"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Cachoeira do Salto",
+        "UHE Itapebi",
+        "Divisa com Bahia",
+        "Rio Jequitinhonha",
+        "Pesca Artesanal"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG",
+      "link_transparencia": "https://www.salto-da-divisa.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3158102",
+      "id_ibge6": "315810",
+      "nome": "Santa Maria do Salto",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola",
+        "Indígena"
+      ],
+      "bacia_principal": "Rio Jequitinhonha",
+      "tags": [
+        "Mata Atlântica",
+        "Parque Estadual de Rio Corrente",
+        "Divisa com Bahia",
+        "Ecoturismo"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG",
+      "link_transparencia": "https://www.santa-maria-do-salto.mg.gov.br/transparencia"
+    },
+    {
+      "id_ibge7": "3160306",
+      "id_ibge6": "316030",
+      "nome": "Santo Antônio do Jacinto",
+      "sub_regiao": "Baixo Jequitinhonha",
+      "polo_regional": "Almenara",
+      "tem_litio": false,
+      "tem_comunidades_tradicionais": true,
+      "tipo_comunidade": [
+        "Quilombola"
+      ],
+      "bacia_principal": "Rio Jacinto",
+      "tags": [
+        "Divisa com Bahia",
+        "Pecuária",
+        "Agricultura Familiar",
+        "Artesanato"
+      ],
+      "link_pncp": "https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG",
+      "link_transparencia": "https://www.santo-antonio-do-jacinto.mg.gov.br/transparencia"
+    }
+  ]
+}
