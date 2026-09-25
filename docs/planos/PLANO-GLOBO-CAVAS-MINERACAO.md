@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-24
+> **Última medição:** 2026-09-25
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md), [PLANO-FILA-PROXIMA-SESSAO.md](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md)
 > **Palavras-chave:** mineracao, cava, sigmine, anm, mapbiomas, monitor-mineracao, sentinel-2, satelite, globo-3d, vision, embeddings, similaridade, dino, clip, licenciamento, garimpo, dupla-verificacao
@@ -50,7 +50,7 @@ Tudo abaixo foi medido no disco hoje. Nada aqui é suposição.
 | Interesse minerário (camada do globo) | `sigmine-interesse.geojson.gz` | 47.830 poligonais, 6,06 MB |
 | SIGMINE nacional já coletado | `apps/web/data/sigmine-nacional.json` | 8,85 MB (coletor `scripts/coletar-sigmine-nacional.py --brasil`) |
 | Monitor da Mineração do MapBiomas | plataforma pública (beta 1.2) | 257.591 processos; 22.668 (8,8%) com indício (MapBiomas, 03/12/2025) |
-| Atributos do Monitor | shapefile público | `transborda`, `lavra_fant`, `inconsiste`, `area_miner` |
+| Atributos do Monitor | **GeoServer WFS público** (`plataforma.geoserver.mapbiomas.org/geoserver/pto/wfs`, medido 25/09) | `transbordamento_lavra`, `lavra_fantasma`, `temporal_inconsistency`, `in_restricted_area`, `inappropriate_permission`, `uc_temporal_inconsistency`, `cfem`, `guia_utilizacao`, `nup` |
 | Imagem atual no globo | Esri World Imagery (em `js/layers/imagens.js`) | zoom máx. 19, CORS `*` |
 | **Satélites brasileiros** | INPE STAC `data.inpe.br/bdc/stac/v1` + AWS `s3://brazil-eosats` (sem conta) | **CBERS-4A WPM 2 m/8 m**, MUX 16 m; **Amazônia-1** 64 m, revisita 5 dias; CC-BY 4.0 |
 | Globo já "orbita" o CBERS | `js/layers/satelites.js` (TLE CelesTrak) | Sentinel-2, Landsat-9 e CBERS-4A em órbita simulada |
@@ -88,20 +88,22 @@ O Brasil tem modelos de **texto** (BERTimbau/USP; Sabiá da Maritaca,
 brasileiro mas por API, sem pesos abertos). Para imagem de satélite, o dono
 escolheu os chineses, todos código aberto:
 
-| Modelo | Origem | Licença (medida 24/09) | Papel aqui |
+| Modelo | Origem | Licença (medida) | Papel aqui |
 |---|---|---|---|
-| **Chinese-CLIP** (BAAI) | China | MIT | **primário:** extrair a "impressão digital" da imagem e achar parecidas |
-| **Qwen2.5-VL 3B** (Alibaba) | China | Apache 2.0 | **primário:** legenda e escore da fila de revisão, no Ollama local |
+| **Chinese-CLIP** (BAAI) | China | **MIT** (API do GitHub `OFA-Sys/chinese-clip`, medido 25/09) | **primário:** extrair a "impressão digital" da imagem e achar parecidas |
+| **Qwen3-VL 2B Instruct** (Alibaba) | China | **Apache 2.0** (card HF, medido 25/09) | **primário:** legenda e escore da fila de revisão, no Ollama local |
+| ~~Qwen2.5-VL 3B~~ (Alibaba) | China | ⚠️ **`qwen-research` = só não-comercial** (LICENSE do card, medido 25/09) — **descartado**, não era Apache | substituído pelo Qwen3-VL 2B acima |
 | **DINOv2** (Meta) | EUA | Apache 2.0 — código e pesos; reliberado de CC-BY-NC (card `facebook/dinov2-base`) | reserva técnica: entra só se o Chinese-CLIP reprovar no gate de precisão |
 | **CLIP** (OpenAI) | EUA | MIT — código e pesos | reserva técnica, mesmo critério |
 | **SigLIP** (Google) | EUA | Apache 2.0 (confirmar card na Fase 0) | reserva técnica, mesmo critério |
+| **InternVL2.5 2B** (OpenGVLab) | China | MIT (card HF, medido 25/09) | reserva técnica, mesmo critério |
 
 Reserva técnica ≠ escolha: americanos ficam guardados e **não são usados**
 a não ser que o medidor de precisão da Fase 2 reprove o chinês — e, nesse
 caso, a troca volta ao dono antes de acontecer.
 
 Licença permissiva (MIT/Apache) = pode usar, copiar e adaptar com
-atribuição. Chinese-CLIP (encoder Visão) e Qwen2.5-VL 3B cabem na RTX 3050
+atribuição. Chinese-CLIP (encoder Visão) e Qwen3-VL 2B cabem na RTX 3050
 de 4 GB. A licença final de cada peso é medida e catalogada em
 [FONTES.md](../06-fontes/FONTES.md) na Fase 0 — card do modelo, não blog.
 
@@ -161,14 +163,22 @@ Sete medições, todas hoje possíveis sem escrever código de produto:
 
 | # | Medir | Como |
 |---|---|---|
-| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; próximo: testar Planetary Computer e AWS Sentinel sem conta |
-| M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | plataforma + FONTES |
-| M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | card, não blog |
-| M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | script de banco de 100 imagens |
-| M5 | Orçamento de disco: 50 mil recortes ≈ 15 GB (0,3 MB cada) — cabe em 65,7 GB? cache fica **fora do git**, path em `.gitignore` | medir com 1.000 recortes reais |
-| M6 | Termos da Esri: visualização de tile ok; **bulk download proibido** → cómputo só com Sentinel | termos de uso |
-| M7 | SIGMINE nacional: colunas de fase e titular, tamanho, cobertura das 27 UFs | `sigmine-nacional.json` |
-| M8 | **Satélites brasileiros:** 1 cena CBERS-4A WPM (2 m) e 1 Amazônia-1 baixadas via INPE STAC ou `s3://brazil-eosats` (sem conta AWS); medir licença CC-BY e cadência de cenas em MG | ✅ **CBERS medido 24/09:** STAC `data.inpe.br/bdc/stac/v1` responde **sem login**; cena `CBERS_4A_WPM_20260728_199_138_L4` (28/07/2026, MG); BAND2 = 132.603.859 bytes (126,5 MiB) baixada em 140 s; BAND0 (pancromática 2 m) = 2,45 GB; miniatura conferida à mão (vegetação, solo exposto, nuvens). Falta: Amazônia-1 e cadência MG |
+| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; ✅ **alternativa sem conta medida:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
+| M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | ✅ **medido 25/09:** libera por **GeoServer WFS público** (`pto/wfs`, `GetFeature outputFormat=application/json` — também aceita shape-zip); amostra confirmou os campos-chave (`transbordamento_lavra`, `lavra_fantasma`, `temporal_inconsistency`, `in_restricted_area`, `inappropriate_permission`) + SIGMINE (`processo`, `fase`, `nome`, `subs`, `uso`, `uf`, `area_ha`, `ult_evento`); camadas: `pto:processos_minerarios`, `pto:mv_transbordamento_borda`, `pto:geoserver_filtrada`, `pto:mining_age`. `robots.txt`: plataforma MapBiomas = `Disallow:` vazio (livre); host do GeoServer = **404 (sem robots → permitido por padrão)** — decisão registrada aqui: acessar com UA honesta e pausa ≥ 2 s |
+| M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | ✅ **medido 25/09:** Chinese-CLIP = **MIT** (API GitHub); **Qwen2.5-VL-3B = `qwen-research` (só não-comercial) — expectativa errada, modelo trocado**; Qwen3-VL-2B = **Apache 2.0**; InternVL2.5-2B = MIT. SigLIP: card ainda a confirmar |
+| M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | 🚧 **parcial 25/09:** transformers 5.5.0 tem `ChineseCLIPVisionModel`; CUDA ok (RTX 3050). Pesos `pytorch_model.bin` = **753.177.983 bytes**; hub HF travou (0 MB em 12 min) → **curl direto a 0,86 MB/s, 398,7/753 MB baixados** em `Temp\opencode\cavas\chinese-clip\` (`curl -C -` retoma). Benchmark NÃO rodou ainda — retomar download e rodar `m4-bench.py` (100 crops do CBERS, batch 4–32, fp32 e fp16). Método desviado de ONNX para torch (já instalado); ONNX fica como otimização opcional |
+| M5 | Orçamento de disco: 50 mil recortes ≈ 15 GB (0,3 MB cada) — cabe em 65,7 GB? cache fica **fora do git**, path em `.gitignore` | pendente: medir com 1.000 recortes reais |
+| M6 | Termos da Esri: visualização de tile ok; **bulk download proibido** → cómputo só com Sentinel | pendente: ler termos de uso e citar cláusula |
+| M7 | SIGMINE nacional: colunas de fase e titular, tamanho, cobertura das 27 UFs | ✅ `sigmine-nacional.json` = 274.659 processos (2026-09-16), MG 54.890; colunas `proc,ano,fase,titular,subs,uso,uf,area_ha,ev` |
+| M8 | **Satélites brasileiros:** 1 cena CBERS-4A WPM (2 m) e 1 Amazônia-1 baixados via INPE STAC ou `s3://brazil-eosats` (sem conta AWS); medir licença CC-BY e cadência de cenas em MG | ✅ **CBERS medido 24/09:** STAC `data.inpe.br/bdc/stac/v1` responde **sem login**; cena `CBERS_4A_WPM_20260728_199_138_L4` (28/07/2026, MG); BAND2 = 132.603.859 bytes (126,5 MiB) baixada em 140 s; BAND0 (pancromática 2 m) = 2,45 GB; miniatura conferida à mão (vegetação, solo exposto, nuvens). Falta: Amazônia-1 e cadência MG |
+
+**Estado da Fase 0 em 25/09 07:45 (sessão interrompida — PC vai fechar):**
+faltam **M4** (retomar curl dos 753 MB e rodar o benchmark), **M5**,
+**M6** e o resto do **M8** (Amazônia-1 + cadência MG). Scripts de apoiro
+estão em `Temp\opencode\` (`m4-bench.py`, `m2-attrs.py`) — são aid, não
+produto; nenhum entra no repo. **Gate G0: SATISFEITO** — o Monitor entrega
+`transbordamento_lavra`/`lavra_fantasma` nacionais por WFS → baseline
+obrigatório das fases seguintes (método C da barra de publicação).
 
 **Nota sobre a API do Copernicus indicada pelo dono (24/09):** o dono
 não conseguiu fazer login no Copernicus e indicou o
