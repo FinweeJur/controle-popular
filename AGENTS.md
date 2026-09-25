@@ -224,6 +224,26 @@ plano Starter tem teto de 250 min/ciclo.
 - Nunca envie dado pessoal bruto (CPF) para prompts de IA — sanitize antes.
 - Sessões que exigem anonimato: Git com o e-mail `noreply` do provedor.
 
+### 5.9. Código tem SIM comentários explicativos e função clara
+
+**Regra do dono, 25/09/2026.** O Controle Popular é software cívico público
+e auditável. Código sem comentário é código opaco que prejudica a
+transparência e a continuidade do projeto:
+
+- **Cabeçalho de arquivo obrigatório:** todo `.ts`, `.tsx`, `.py`, `.mjs`
+  deve abrir com bloco de comentário (JSDoc ou docstring) explicando:
+  1. O que é o módulo e qual seu papel no portal;
+  2. A fonte oficial dos dados ou regras de negócio relacionadas;
+  3. Decisões técnicas ou restrições não triviais adotadas.
+- **Funções, queries e rotinas:** toda função pública, query do banco,
+  hook ou rota de API deve documentar o que faz, parâmetros e retorno.
+- **Explique o "porquê", não apenas o "o que":** o código diz como é feito;
+  o comentário explica *por que* foi feito assim (ex.: por que o DV do IBGE usa
+  módulo 10 com pesos 1 e 2, por que filtramos certas esferas, por que o
+  timeout de determinada API pública precisa ser mais longo).
+- **Linguagem:** português claro, direto, acessível tanto para desenvolvedores
+  quanto para cidadãos e pesquisadores que queiram auditar o código.
+
 ## 6. Armadilhas
 
 Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.

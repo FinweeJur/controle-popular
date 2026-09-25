@@ -28,6 +28,7 @@ defeito escondido.
 
 - **Regra das 5 Coisas em Páginas com Muito Dado:** Gráfico SVG acessível (sem bibliotecas pesadas), cartões de topo com agregados, busca textual sem acento, filtros interativos (`TagChip`) e exportação em planilha CSV com BOM UTF-8 e separador `;`.
 - **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de CPFs de pessoas físicas via cálculo **Mod-11** antes de qualquer persistência em dados abertos (100% de conformidade LGPD).
+- **Código Autoexplicativo e Comentado:** Todo módulo, componente, query e coletor traz cabeçalhos e comentários em português (JSDoc/docstrings) explicando o que é, qual a sua função pública e o motivo das escolhas técnicas adotadas, permitindo auditoria cívica por qualquer cidadão ou desenvolvedor.
 - **Coletores Automatizados:** Esteira com monitoramento proativo via Bot Telegram (`scripts/rotina-coletas.mts`) e automações locais com Podman (`changedetection.io` e `n8n`).
 
 ## API pública

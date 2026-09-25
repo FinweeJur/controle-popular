@@ -16,6 +16,7 @@
 - [Trabalhar com IA](#trabalhar-com-IA)
 - [Grafo de código](#grafo-de-código)
 - [Padrão de Exibição e Exportação de Dados](#padrão-de-exibição-e-exportação-de-dados)
+- [Padrão de Código e Comentários Explicativos](#padrão-de-código-e-comentários-explicativos)
 - [Verificação](#verificação)
 - [Origem](#origem)
 
@@ -168,6 +169,23 @@ Toda página ou componente que apresenta grandes volumes de dados (tabelas, list
    - **DOCX**: Quando aplicável para relatórios periciais/técnicos, gerado no pipeline de exportação ou disponível para download estático.
 5. **Contexto para o Chatbot (Seu Nonô)**: Toda nova rota ou entidade com dados cadastrais tem suas tags e perguntas mapeadas em `apps/web/lib/seo/contexto-pagina.ts`, permitindo que o assistente sugira temas correlatos sem sugerir a própria página onde o leitor já está.
 6. **Dados Sempre Linkáveis e Verificados**: Todo registro visível ao usuário (contrato, convênio, lei, processo, órgão, edital, parlamentar, fornecedor) deve possuir hiperlink direto e específico para a fonte oficial (aberto e testado pelo agente no momento da coleta). É expressamente vedado link genérico para a página inicial de um ministério ou portal quando o ato possui URL canônica própria ou protocolo oficial de busca.
+
+## Padrão de Código e Comentários Explicativos
+
+> **Regra do dono (25/09/2026):** Código sem comentário é código opaco. O Controle Popular é software cívico público, e cada linha deve ser auditável e compreensível por qualquer cidadão ou desenvolvedor.
+
+1. **Cabeçalho de Módulo Obrigatório**:
+   - Todo arquivo (`.ts`, `.tsx`, `.py`, `.mjs`) deve iniciar com um bloco descritivo explicando:
+     - Qual é a função daquele arquivo no ecossistema do portal.
+     - As fontes de dados consumidas ou produzidas.
+     - Particularidades ou armadilhas que motivaram a implementação.
+2. **Documentação de Funções e Métodos**:
+   - Funções públicas e utilitárias devem usar JSDoc/TSDoc em TypeScript ou docstrings em Python.
+   - Declarar o que a função faz, o significado de cada parâmetro e o formato do retorno.
+3. **Explicação do "Porquê"**:
+   - Documentar a motivação técnica ou a regra legal/cívica (ex.: fórmula do DV do IBGE, motivo de filtros de esfera, estratégias de retry em APIs públicas).
+4. **Linguagem**:
+   - Comentários escritos em português claro, direto e acessível, evitando jargões obscuros sem explicação.
 
 ## Verificação
 
