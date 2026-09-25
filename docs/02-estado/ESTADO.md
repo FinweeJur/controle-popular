@@ -2,9 +2,9 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-22
+> **Última medição:** 2026-09-24
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
 
 ## Sumário
@@ -48,10 +48,10 @@ Guara** (`cp-postgres-597bd0`). A Neon continua na conta em 94%
 (470/500 MB) até a troca final de `DATABASE_URL` da aplicação (Fase 4).
 `DATABASE_URL` no Guara: **runtime e build = Yes** (CLI `env list`, 22/09).
 
-**Coleta 22/09 (Guara):** `convenios_federais`=167 ✅,
-`ambiental_licenciamento`=8612 ✅, `atos_oficiais`=10344 ✅.
-COPAM + PNCP contratos/licitações rodando — retomada em
-[HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md).
+**Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
+`convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
+`ambiental_licenciamento`=8.612, `atos_oficiais`=10.344. Contagem e
+retomada em [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md).
 
 **Alerta:** página que lê do banco no build congela HTML sem a variável de
 build. Restart não resolve; resolve `guara deploy` de imagem nova.
@@ -88,8 +88,8 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dono 22/09) | 🚧 | COPAM + contratos 2025 + licitações; ver [HANDOFF](../HANDOFF-22-09-COLETA-GUARA.md) |
-| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0**; env de build já Yes |
+| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dono 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
+| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0** (liberado); env de build já Yes |
 | A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dono, 2 minutos |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | 🚧 | banco Guara já enche; falta apontar a app e largar a Neon |
@@ -113,7 +113,9 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 | B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
-| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | ⛔ | aguarda ordem do dono; **Fase 0 (medição) pode correr junto**; [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
+| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | ⛔ | **plano da próxima sessão (amanhã, 25/09)**: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md); Fase 0 pode correr junto |
+| B5 | Expansão PNCP: coleta da fila (105 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 24/09 — 31 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
+| B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 
 ### Bloco C — ação externa do dono
 
@@ -156,15 +158,27 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**24/09/2026** — `49f8db91` · `5c440d4f` · `7c67a3a0` · `cd60b79c`:
+
+- Litígios climáticos: teses citam processo real e linkam painel.
+- Expansão PNCP: fila, manifesto (203 cidades) e cobertura commitados;
+  coleta em curso na desktop — 31 completas, 105 na fila (medido 24/09).
+- 30 cidades grandes delegadas ao Gemini; 25 capitais são fila de outra
+  IA. Checkpoints contratatos 300 ok / licitações 2.959 ok, 0 parciais.
+- Globo 3D: plano de cavas de mineração medido no disco (`cd60b79c`).
+- Documentação: 4 planos/handoffs superados movidos para
+  [`historico/`](../historico/) (PLANO-FILA, PLANO-SESSAO-23-09,
+  HANDOFF-22-09, HANDOFF-ONDA2).
+
 **22/09/2026** — coleta no Postgres do Guara (detalhe:
-[HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md)):
+[HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)):
 
 - `convenios_federais` 167 linhas (R$ 298,6 mi, Betim); licenciamento
   8.612; `DATABASE_URL` Build=Yes confirmada no CLI.
 - Scripts do proxy TCP commitados (`17304c84`): start/restart + teste de
   TTL; chave Guara removida do repositório; logs da raiz no gitignore.
-- COPAM, contratos 2025 e licitações 2021 em coleta — deploy do site
-  **depois** que as três terminarem (ordem do dono).
+- COPAM (479), contratos (11.471) e licitações (4.869) fechados às 21:30 —
+  deploy do site pode ser a próxima ordem (A1).
 
 **20/09/2026** — push `d6e739a6`–`594d6b66`:
 

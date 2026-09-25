@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-24
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md)
 > **Palavras-chave:** plano, expansão, fila
@@ -43,11 +43,13 @@
 - **Route:** `/municipios/mg` (M4 pendente)
 
 ### 2b. 📡 Ampliação PNCP (6 principais → demais mapeadas)
-**Status:** ⏳ EM ANDAMENTO (Betim; ordem do dono 23/09)
+**Status:** 🚧 EM ANDAMENTO (medido 24/09)
 
 - **Plano:** [`PLANO-EXPANSAO-PNCP-199-CIDADES.md`](PLANO-EXPANSAO-PNCP-199-CIDADES.md)
-- **Fase A:** fechar contratos+licitações das 6 cidades do portal
-- **Fase C:** só depois, as demais de `cidades-estrategicas.json`
+- **Fase A:** ✅ fechada 22/09 (Betim, BH, Diamantina, Araçuaí, Itinga;
+  SP capital é fila de outra IA)
+- **Fase B:** ✅ commitada (`7c67a3a0`) — fila, manifesto, cobertura
+- **Fase C:** 🚧 coleta em curso — 31 completas, 105 na fila (203 no manifesto)
 - **Checkpoint:** `etl/betim/etl/pncp/checkpoint.py` (retomada por página)
 
 ### 3. 📜 TAUS / CDRU / Autorizações Territoriais
@@ -106,20 +108,24 @@
 
 ---
 
-## 🚧 BLOCKERS (Neon bloqueado)
+## 🚧 BLOCKERS (medido 24/09)
 
-> **Neon Neon Postgres está em HTTP 402 até 2026-09-01 (nota 402 venceu 01/09)**
-> - V2, O2, S1 bloqueados — dependem de migrations para Neon
-> - Solução: usar D1 (escritas) + dados JSON estáticos enquanto Neon offline
+> **Neon em 94% storage (470/500 MB)** — nota 402 venceu 01/09 e não
+> volta mais; o teto hoje é o disco.
+> - V2, O2, S1 esperam a **Fase 4**: migrar a app para o Postgres do
+>   Guara (1 GiB incluso) — fila A4 do [ESTADO](../02-estado/ESTADO.md)
+> - Enquanto isso: D1 (escritas) + dados JSON estáticos
 
 ---
 
-## 📊 MÉTRICAS FINAIS
+## 📊 MÉTRICAS FINAIS (medidas 24/09)
 
 | Métrica | Valor |
 |---------|-------|
-| **Testes passando** | 741+ ✅ |
-| **Contratos PNCP coletados** | 955 ✅ |
+| **Testes passando** | 1.579 vitest + 146 globo ✅ (baseline 19/09) |
+| **Contratos PNCP (expand.)** | ck contratos 300 chaves ok ✅ |
+| **Licitações PNCP (expand.)** | ck licitações 2.959 chaves ok ✅ |
+| **Cidades PNCP completas** | 31 de 136 prontas 🚧 |
 | **Conselheiros mapeados (Betim)** | 4 ✅ |
 | **Outorgas IGAM (fonte)** | 55.729 ✅ |
 | **Microresumos gerados** | 3 ✅ |

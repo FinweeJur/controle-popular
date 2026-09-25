@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-01
+> **Última medição:** 2026-09-24
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [ESTADO.md](../02-estado/ESTADO.md), [README.md](../README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** documentacao, historico, planos, template, medição, gitignore, validar-documentacao
@@ -64,6 +64,10 @@ Candidatos medidos em 01/09:
 | `planos/ROTEIRO-EXECUCAO-PENDENCIAS.md` | fila consolidada deve viver no ESTADO | fundir em ESTADO e arquivar |
 | `planos/TODO-PROXIMAS-RODADAS.md` | dívidas vivem no ESTADO | fundir em ESTADO e arquivar |
 | `planos/ROTEIRO-NEON-01-09.md` | data de validade 01/09; executar e arquivar com resultado | `historico/entregas/` após executar |
+| `planos/PLANO-FILA-PROXIMA-SESSAO.md` | fila da sessão 19/09; itens pendentes (remuneração) migrados para o ESTADO | ✅ movido → `historico/planos/` (24/09) |
+| `planos/PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md` | sessão 23/09 executada por inteiro (6 fases verificadas no código) | ✅ movido → `historico/planos/` (24/09) |
+| `HANDOFF-22-09-COLETA-GUARA.md` (raiz docs) | coletas fechadas 22/09 21:30; raiz só indexa | ✅ movido → `historico/entregas/` (24/09) |
+| `HANDOFF-ONDA2-AMBIENTAL.md` (raiz docs) | conteúdo duplicado no `PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md` | ✅ movido → `historico/entregas/` (24/09) |
 
 Demais `planos/` ativos (bases clima/risco, geocodificação, transparência justiça, espelho PDF AJRI, expansão nacional, revisão dados, SEO, UX/onboarding, diagnóstico UX, Handoff M9/M10 Podman, canário/chatbot consolidado) ficam em `planos/`, mas com estado e data de medição atualizados.
 

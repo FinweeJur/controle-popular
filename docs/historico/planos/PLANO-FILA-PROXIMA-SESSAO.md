@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-22
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [ESTADO.md § fila](../02-estado/ESTADO.md#fila-viva), [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
+> **Relacionados:** [ESTADO.md § fila](../../02-estado/ESTADO.md#fila-viva), [HANDOFF-22-09-COLETA-GUARA.md](../entregas/HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../../05-operacao/OPERACAO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](../../planos/PLANO-SEU-NONO-NOTEBOOKLM.md)
 > **Palavras-chave:** plano, sessão, fila, 1014, cname, fase 4, postgres, tts, exportação, laboratório, shield, skill, etl, coleta, deploy
 
 ## Sumário
@@ -24,7 +24,7 @@ Cada item tem critério de pronto: quando roda no navegador e o dono confere.
 
 **Topo da fila em 22/09 (ordem do dono):** terminar as coletas Betim no
 Guara (COPAM, contratos 2025, licitações) e **só então** `guara deploy`.
-Retomada exata: [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md).
+Retomada exata: [HANDOFF-22-09-COLETA-GUARA.md](../entregas/HANDOFF-22-09-COLETA-GUARA.md).
 
 ## Resgate
 
@@ -51,7 +51,7 @@ Estado medido na madrugada de 19→20/09 (sessão fase 4):
 Sim, mudou várias vezes — e está registrado. **Fechamos 6 frentes completas**
 (TTS microresumo, loader, testes do assistente, `DATABASE_URL`, domínio
 `www`, documentação inteira) e as **4 abertas** vivem no
-[ESTADO.md § fila](../02-estado/ESTADO.md#fila-viva).
+[ESTADO.md § fila](../../02-estado/ESTADO.md#fila-viva).
 
 Nada foi feito pela metade sem registro.
 Nenhum item foi abandonado silencioso — a fila atualiza com data.
@@ -95,7 +95,7 @@ O Lab fica por último: é a maior peça, e também o maior ganho.
 ### 1 e 2 — DNS e redirect
 
 Feitos quando os passos do dono rodarem. Depois volta
-[A1 do ESTADO.md](../02-estado/ESTADO.md#bloco-a-fazer-agora): validar dado
+[A1 do ESTADO.md](../../02-estado/ESTADO.md#bloco-a-fazer-agora): validar dado
 no `/ambiental/licenciamento`.
 
 ### 3 — Skill `/cp`
@@ -134,7 +134,7 @@ Um componente global, 4 ações — sem biblioteca nova:
 
 ### 6 — Fase 4: Postgres do Guara
 
-Já detalhado no [ESTADO.md](../02-estado/ESTADO.md#bloco-a-fazer-agora).
+Já detalhado no [ESTADO.md](../../02-estado/ESTADO.md#bloco-a-fazer-agora).
 Resumo:
 
 1. `guara services create` PostgreSQL 17 (ou a variante **pgvector** —
@@ -145,7 +145,7 @@ Resumo:
 5. `guara deploy` e validar o site.
 
 Custo: conta como serviço (2 de 3 no plano Starter). Destrava em sequência
-o [ROTEIRO-PGVECTOR-CHATBOT.md](ROTEIRO-PGVECTOR-CHATBOT.md) e a coleta nova
+o [ROTEIRO-PGVECTOR-CHATBOT.md](../../planos/ROTEIRO-PGVECTOR-CHATBOT.md) e a coleta nova
 que hoje vai para D1.
 
 ### 7 — Laboratório: brincar com os dados
@@ -168,7 +168,7 @@ os blocos.
 Fontes de dado do dock: datasets da API pública, acervo
 `etl/betim/dados/**/*.json`, índice `/busca-indice`.
 Conversa do Seu Nonô segue as regras do
-[PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md):
+[PLANO-SEU-NONO-NOTEBOOKLM.md](../../planos/PLANO-SEU-NONO-NOTEBOOKLM.md):
 citação clicável, ressalva de IA visível, nenhum número reinventado.
 
 Critério de pronto: o dono monta em `/laboratorio`, sem escrever código,
@@ -223,7 +223,7 @@ conselheiros no painel.
 **Pedido do dono:** mapear APIs e bases públicas e open source — Brasil,
 Latino-américa e ONU — para coletar ou conectar ao portal.
 Resultado: novo `docs/06-fontes/MAPEAMENTO-FONTES-AMPLAS.md`, no template
-do [FONTES.md](../06-fontes/FONTES.md): URL, acesso medido, licença, armadilha.
+do [FONTES.md](../../06-fontes/FONTES.md): URL, acesso medido, licença, armadilha.
 
 Blocos a mapear (coordenar impacto social, ver AGENTS § 1):
 
@@ -243,8 +243,8 @@ Critério de pronto: `MAPEAMENTO-FONTES-AMPLAS.md` criado com pelo menos
 
 ### 10 — Globo 3D: cavas de mineração — Fase 0 (sondagem)
 
-Plano completo: [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md)
-(item **B4** da [fila do ESTADO.md](../02-estado/ESTADO.md#fila-viva);
+Plano completo: [PLANO-GLOBO-CAVAS-MINERACAO.md](../../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
+(item **B4** da [fila do ESTADO.md](../../02-estado/ESTADO.md#fila-viva);
 pedido do dono em 24/09). Objetivo: achar mineração sem cadastro ANM no
 globo 3D, com satélite e modelos rodando **locais** (Chinese-CLIP +
 Qwen2.5-VL; nada de API de nuvem — decisão do dono 24/09).

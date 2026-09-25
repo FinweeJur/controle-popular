@@ -4,7 +4,7 @@
 > **Domínio:** ambiental
 > **Última medição:** 2026-09-17
 > **Leitura estimada:** média (10–15 min)
-> **Relacionados:** [HANDOFF-ONDA2-AMBIENTAL.md](../HANDOFF-ONDA2-AMBIENTAL.md), [F0-discovery.md](../dominios/ambiental/F0-discovery.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [HANDOFF-ONDA2-AMBIENTAL.md](../historico/entregas/HANDOFF-ONDA2-AMBIENTAL.md), [F0-discovery.md](../dominios/ambiental/F0-discovery.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** ambiental, licencas, outorgas, onda 2, coletores, 27 estados, igam, ibama, ana, orquestracao, dado pessoal
 
 ## Sumário

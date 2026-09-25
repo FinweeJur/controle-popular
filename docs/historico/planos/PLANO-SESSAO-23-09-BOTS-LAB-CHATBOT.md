@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-23
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PLANO-FILA-PROXIMA-SESSAO.md](PLANO-FILA-PROXIMA-SESSAO.md), [AGENTS.md](/AGENTS.md), [ROTEIRO-PGVECTOR-CHATBOT.md](ROTEIRO-PGVECTOR-CHATBOT.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [PLANO-FILA-PROXIMA-SESSAO.md](PLANO-FILA-PROXIMA-SESSAO.md), [AGENTS.md](/AGENTS.md), [ROTEIRO-PGVECTOR-CHATBOT.md](../../planos/ROTEIRO-PGVECTOR-CHATBOT.md)
 > **Palavras-chave:** plano, linkmender, pr, bot, revisor, laboratorio, powerbi, dither, marquee, chatbot, seu nono, embeddings, siliconflow, ollama, guara
 
 ## Sumário

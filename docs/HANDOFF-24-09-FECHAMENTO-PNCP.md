@@ -2,7 +2,7 @@
 
 > **Tipo:** HANDOFF
 > **Domínio:** cidades
-> **Última medição:** 2026-09-24 14:15
+> **Última medição:** 2026-09-24 17:55
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [PLANO-EXPANSAO-PNCP-199-CIDADES.md](planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md), [HANDOFF-23-09-PNCP-SP-CAPITAIS.md](HANDOFF-23-09-PNCP-SP-CAPITAIS.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](02-estado/ESTADO.md), [FONTES.md](06-fontes/FONTES.md)
 > **Palavras-chave:** handoff, pncp, home-pc, servidor, fila, verificacao, testes, litigios, cobertura, 429, paralelo
@@ -11,7 +11,7 @@
 
 - [Por que este handoff](#por-que-este-handoff)
 - [Divisão entre máquinas](#divisão-entre-máquinas)
-- [Estado medido 24/09 14:15](#estado-medido-2409-1415)
+- [Estado medido 24/09 17:55](#estado-medido-2409-1755)
 - [Escopo do home-pc](#escopo-do-home-pc)
 - [Ritual de verificação (paralelo)](#ritual-de-verificação-paralelo)
 - [O que NÃO fazer no home-pc](#o-que-não-fazer-no-home-pc)
@@ -29,8 +29,9 @@ O **home-pc é o servidor** e já fica de pé (túnel, testes, build).
 Ele pode rodar **em paralelo** a verificação e a escrita de docs que a
 desktop não consegue fazer durante a coleta.
 
-Litígios já foi publicado no commit `0e3d4f2e` (24/09) — testes 5/5 e
-`tsc` limpos na hora do commit.
+Litígios foi publicado e **pushado** no commit `49f8db91` (24/09) — testes
+5/5 e `tsc` limpos na hora do commit. Código Fase B/C também pushado em
+`7c67a3a0`; plano de cavas em `cd60b79c`.
 
 ## Divisão entre máquinas
 
@@ -46,20 +47,20 @@ rajada** e o limite é do host da API, não do PC — dois ETLs em dobro
 já foi medido (8 threads = 291×429). **Só coleta no home-pc se o dono
 liberar por escrito.**
 
-## Estado medido 24/09 14:15
+## Estado medido 24/09 17:55
 
 | Métrica | Valor |
 |---|---|
-| Manifesto `dados/manifesto-pncp.csv` | **203** linhas — 166 `pronta`, 25 `delegada` (capitais), 6 `excluida-principal`, 6 `bloqueada-cnpj` |
-| Cidades completas (ckpt contratos+licitações ok) | **23 / 166** prontas |
-| Fila restante | **143** |
-| Chaves checkpoint contratos | 258 (258 ok, 0 parcial) |
-| Chaves checkpoint licitações | 2395 (2394 ok, **1 parcial**) |
-| Parcial aberta | `3503208:2025-8` — Araraquara, página **73**, 3243 registros |
-| Próximas da fila | Araraquara, Bauru, Campinas, Carapicuíba, Diadema, Franca… |
-| Commit litígios | `0e3d4f2e` — **local, ainda sem push** |
-| Código Fase B (ETL) | **ainda não commitado** (`manifesto.py`, `fila.py`, `cobertura.py`, `preencher_cnpj.py`, testes, CSVs) |
-| `PLANO-EXPANSAO-PNCP-*.md` | modificado (medições da B/C) — entra no commit B/C |
+| Manifesto `dados/manifesto-pncp.csv` | **203** linhas — 136 `pronta`, 55 `delegada` (25 capitais fila B + 30 grandes delegadas ao Gemini), 6 `excluida-principal`, 6 `bloqueada-cnpj` |
+| Cidades completas (ckpt contratos+licitações ok) | **31 / 136** prontas |
+| Fila restante | **105** |
+| Chaves checkpoint contratos | 300 (300 ok, 0 parcial) |
+| Chaves checkpoint licitações | 2.959 (2.959 ok, 0 parcial) |
+| Parcial aberta | nenhuma |
+| Próximas da fila | Manacapuru, Parintins, Tefé (AM), Abaetetuba, Altamira (PA) |
+| Commit litígios | `49f8db91` — **pushado** |
+| Código Fase B (ETL) | **commitado e pushado** (`7c67a3a0`) |
+| `PLANO-EXPANSAO-PNCP-*.md` | estado medido 24/09 atualizado neste commit |
 
 Lock `.fila-pncp.lock` fica só na desktop. Checkpoints são **locais e
 gitignored** — o home-pc não os vê até a desktop commitar/empurrar
@@ -75,15 +76,14 @@ gitignored** — o home-pc não os vê até a desktop commitar/empurrar
    - pytest: `etl/betim/etl/pncp/*_test.py` com o venv hermes
    - `python scripts/checar-dado-pessoal-em-dado.py`
    - `python scripts/validar-documentacao.py`
-2. **Revisar o diff B/C** quando a desktop mandar o recorte (pathspec
-   proposto abaixo); acusar recebimento — **não commitar no lugar da
-   desktop** para não misturar staging.
+2. **Revisar o diff B/C** — já pushado (`7c67a3a0`); conferir o diff no
+   GitHub em vez de copiar pathspec.
 3. **Atualizar docs de estado** com números medidos que chegarem:
    `docs/02-estado/ESTADO.md` (fila) e `docs/06-fontes/FONTES.md`
    (ritual PNCP), se necessário, em **commit próprio** pathspec.
 4. **Conferir a rota** `/ambiental/litigios-climaticos` no build local
    do home-pc (card JUMA com âncora, link do painel, CSV com coluna
-   Link Painel) — o commit `0e3d4f2e` já passou vitest+tsc.
+   Link Painel) — o commit `49f8db91` já passou vitest+tsc.
 
 **Fora:**
 
@@ -122,30 +122,17 @@ commit. Não “consertar” o ETL de dentro do home-pc.
 
 ## Commit e push
 
-**Ordem combinada:**
+**Feito (24/09):** litígios `49f8db91`, handoff `5c440d4f`, Fase B/C
+`7c67a3a0`, cavas `cd60b79c` — tudo pushado.
 
-1. Desktop: push do litígios `0e3d4f2e` (validado) — pode ir junto com
-   o B/C se o dono preferir um único push.
-2. Desktop: fecha C3 o quanto puder → C4 (`python -m etl.pncp.cobertura
+**Resta (desktop):**
+
+1. Fecha C3 o quanto puder → C4 (`python -m etl.pncp.cobertura
    --manifesto dados/manifesto-pncp.csv`).
-3. Desktop: commit **B/C** com pathspec único:
-
-```text
-etl/betim/etl/pncp/manifesto.py
-etl/betim/etl/pncp/manifesto_test.py
-etl/betim/etl/pncp/fila.py
-etl/betim/etl/pncp/cobertura.py
-etl/betim/etl/pncp/checkpoint_test.py
-etl/betim/etl/pncp/preencher_cnpj.py
-etl/betim/dados/manifesto-pncp.csv
-etl/betim/dados/cobertura-pncp.csv
-docs/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md
-```
-
-4. Desktop: `git fetch && git rebase origin/main && git push origin HEAD:main`
-   — **só com suíte do home-pc verde**.
-5. home-pc: se mexer em ESTADO/FONTES, commit próprio depois do push da
-   desktop (pathspec dele).
+2. Commit de atualização de números com pathspec único (manifesto,
+   cobertura, plano PNCP, ESTADO, handoff) se o manifesto mudar.
+3. `git fetch && git rebase origin/main && git push origin HEAD:main`
+   — **só com suíte verde**.
 
 Mensagem PT sem acento, arquivo `-F`, trailer
 `Co-Authored-By: opencode <noreply@opencode.ai>`. **`--force` nunca.**
@@ -166,6 +153,6 @@ Mensagem PT sem acento, arquivo `-F`, trailer
 
 ## Primeiro passo
 
-1. `git fetch` no home-pc e conferir `0e3d4f2e` (ou o push mais novo).
+1. `git fetch` no home-pc e conferir o push mais novo (`cd60b79c` ou além).
 2. Rodar o ritual de verificação acima em paralelo.
 3. Avisar a desktop: verde/vermelho — a desktop só pusha com suíte verde.

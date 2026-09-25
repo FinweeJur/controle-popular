@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-24
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md), [PLANO-FILA-PROXIMA-SESSAO.md](PLANO-FILA-PROXIMA-SESSAO.md)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md), [PLANO-FILA-PROXIMA-SESSAO.md](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md)
 > **Palavras-chave:** mineracao, cava, sigmine, anm, mapbiomas, monitor-mineracao, sentinel-2, satelite, globo-3d, vision, embeddings, similaridade, dino, clip, licenciamento, garimpo, dupla-verificacao
 
 ## Sumário
@@ -352,5 +352,5 @@ a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
 
 Pedido do dono em 24/09/2026, no chat da sessão `/cp`. Medições do mesmo
 dia no disco e na web. Sinalizado na
-[PLANO-FILA-PROXIMA-SESSAO.md](PLANO-FILA-PROXIMA-SESSAO.md) como item 10
+[PLANO-FILA-PROXIMA-SESSAO.md](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) como item 10
 e no [ESTADO.md](../02-estado/ESTADO.md#fila-viva) como B4.

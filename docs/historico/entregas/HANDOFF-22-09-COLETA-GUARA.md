@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-22 ~21:30
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [ESTADO.md](02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](05-operacao/OPERACAO.md), [PLANO-FILA-PROXIMA-SESSAO.md](planos/PLANO-FILA-PROXIMA-SESSAO.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../../05-operacao/OPERACAO.md), [PLANO-FILA-PROXIMA-SESSAO.md](../planos/PLANO-FILA-PROXIMA-SESSAO.md)
 > **Palavras-chave:** handoff, guara, etl, copam, pncp, licitacoes, contratos, deploy, convenios, proxy, geneexus, portal-dados-abertos
 
 ## Sumário

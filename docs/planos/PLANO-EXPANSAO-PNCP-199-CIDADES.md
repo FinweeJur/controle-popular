@@ -2,14 +2,15 @@
 
 > **Tipo:** PLANO
 > **Domínio:** cidades
-> **Última medição:** 2026-09-23
+> **Última medição:** 2026-09-24
 > **Leitura estimada:** média (5-15 min)
-> **Relacionados:** [PLANO-AUTOMACAO-COLETA-CIDADES.md](PLANO-AUTOMACAO-COLETA-CIDADES.md), [PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md](PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [HANDOFF-22-09-COLETA-GUARA.md](../HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PLANO-AUTOMACAO-COLETA-CIDADES.md](PLANO-AUTOMACAO-COLETA-CIDADES.md), [PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md](PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** pncp, contratos, licitacoes, coleta, checkpoint, municipios, ibge, 199 cidades, guara, etl, ampliacao, fila
 
 ## Sumário
 
 - [Propósito](#propósito)
+- [Estado medido em 24/09](#estado-medido-em-2409)
 - [Estado medido em 23/09](#estado-medido-em-2309)
 - [Escopo](#escopo)
 - [Fase A — fechar as 6 cidades principais](#fase-a--fechar-as-6-cidades-principais)
@@ -27,6 +28,21 @@
 Definir a ordem e o ritual para ampliar a coleta PNCP (contratos e licitações)
 para as demais cidades mapeadas, **somente depois** de fechar a coleta atual
 das 6 cidades principais do portal.
+
+## Estado medido em 24/09
+
+Fase B commitada (`7c67a3a0`); Fase C rodando na desktop.
+
+| Item | Medição (24/09) |
+|---|---|
+| Manifesto `etl/betim/dados/manifesto-pncp.csv` | **203** linhas — 136 `pronta`, 55 `delegada` (25 capitais fila B + 30 grandes ao Gemini), 6 `excluida-principal`, 6 `bloqueada-cnpj` |
+| Cidades completas (ck contratos + licitações ok) | **31 / 136** prontas |
+| Fila restante | **105** |
+| Chaves ck contratos | 300 (300 ok, 0 parcial) |
+| Chaves ck licitações | 2.959 (2.959 ok, 0 parcial) |
+| Próximas da fila | Manacapuru/AM, Parintins/AM, Tefé/AM, Abaetetuba/PA, Altamira/PA |
+| CSV separador | `;` + BOM UTF-8 — **editar sempre com `\n'`**, nunca juntar com `;` |
+| Suíte ETL | 15 testes pytest verdes (manifesto, fila, cobertura, checkpoint) |
 
 ## Estado medido em 23/09
 

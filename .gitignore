@@ -215,6 +215,7 @@ apps/web/data/radar-editais/processados/
 # Logs de diagnostico da raiz (proxy Guara e ETLs em execucao nesta maquina)
 proxy.log
 proxy.err
+guara-proxy.log
 copam.log
 pncp.log
 licitacoes.log
