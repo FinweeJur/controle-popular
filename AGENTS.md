@@ -17,7 +17,7 @@ guara, neon, cloudflare, tunnel, deploy, loader, testes, idioma.
 - [5. Regras que não se negociam](#5-regras-que-não-se-negociam)
 - [6. Armadilhas que já custaram tempo](#6-armadilhas)
 - [7. Regra editorial](#7-regra-editorial)
-- [8. Página com muito dado tem cinco coisas](#8-página-com-muito-dado-tem-cinco-coisas)
+- [8. Padrão de dados: a regra das seis qualidades](#8-padrão-de-dados-a-regra-das-seis-qualidades)
 - [9. Como verificar](#9-como-verificar)
 - [10. Ferramentas de CLI desta máquina](#10-ferramentas)
 - [11. Coleta de dado de fonte pública](#11-coleta-de-dado)
@@ -288,19 +288,35 @@ Casos reais do repo:
 Resumo: **o número vem do dado; o modelo, se houver, só embrulha.**
 Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
 
-## 8. Página com muito dado tem cinco coisas
+## 8. Padrão de dados: a regra das seis qualidades
 
-**Regra do dono, 21/08/2026.** Vale para toda página que publica lista grande
-— licenciamento, TACs, convênios, decisões, barragens, estudos, contratos:
+**Regra do dono, 21/08/2026 (consolidada e expandida em 25/09/2026).**
+Vale para toda página que publica acervo ou lista de dados — licenciamento,
+TACs, convênios, decisões, barragens, estudos, contratos, compras e territórios:
 
-1. **Gráfico** — evolução ou distribuição, SVG inline ou CSS. Não se instala
-   biblioteca de gráfico.
-2. **Cartões de topo** — os agregados que respondem "quanto é isso?".
-3. **Planilha** — CSV do que está filtrado na tela, não do conjunto inteiro.
-   Separador `;` e BOM UTF-8 (marcação que faz o Excel brasileiro ler acento).
-4. **Filtro** — pelos campos que o acervo realmente tem. Filtro que devolve
-   vazio sempre é pior que filtro nenhum.
-5. **Ordenação por coluna** — inclusive por tipo/classe, não só por data.
+1. **Linkável e Verificado à Fonte Oficial Direta:** Todo registro publicado
+   (contrato, convênio, lei, processo, ato oficial, órgão, edital, parlamentar,
+   fornecedor) deve ter hiperlink direto e específico para a fonte pública
+   (aberto e verificado pelo agente na hora da coleta). É expressamente proibido
+   link solto para home page genérica quando o ato tem URL canônica própria ou protocolo.
+2. **Buscável e Filtrável:** Busca textual em tempo real tolerante a acentos e
+   filtros por facetas reais (status, UF, ano, categoria, tags). Filtro que
+   devolve vazio sempre é pior que filtro nenhum.
+3. **Classificável e Ordenável por Coluna:** Ordenação crescente/decrescente em
+   todas as colunas relevantes, contemplando tipos nominais (classes/categorias),
+   valores monetários e datas, nunca restrito apenas à data.
+4. **Resumo / Microresumo e Cartões de Topo:** Resumo claro em português direto
+   e cartões de topo com agregados que respondem de imediato ao leitor "quanto é isso no total?"
+   com números medidos e datados (nunca digitados à mão).
+5. **Chatbot com Contexto Cívico (Seu Nonô / Alceu Dispor):** Toda base ou
+   entidade alimenta o assistente cívico (RAG) com tags contextuais, metadados
+   e respostas acolhedoras em orações diretas com frases curtas de até 13 palavras,
+   apontando sempre links oficiais.
+6. **Exportável Multi-formato (CSV com BOM e Impressão Nativa):** Download de
+   planilha CSV estritamente do que está filtrado na tela, com separador `;` e
+   BOM UTF-8 (`\uFEFF`) para compatibilidade perfeita com o Excel brasileiro, além
+   de gráfico SVG nativo acessível (sem bibliotecas externas pesadas) e layout de
+   impressão vetorial via CSS `@media print`.
 
 Essa regra não dispensa:
 
@@ -309,14 +325,9 @@ Essa regra não dispensa:
   (`TS2590: union type too complex` foi o aviso do TypeScript);
 - gráfico com alternativa em texto ou tabela; cor nunca é o único canal;
 - número na tela vem de constante medida com data — não digite total à mão;
-- **página que lê do banco só mostra as cinco coisas quando o banco responde.**
+- **página que lê do banco só mostra as seis qualidades quando o banco responde.**
   Conferir `/ambiental/licenciamento` e `/ambiental/copam` exige HTML
   pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
-- **Dado visível é sempre linkável e verificado.** Todo registro publicado
-  (contrato, convênio, lei, processo, ato oficial, órgão, edital, parlamentar,
-  fornecedor) deve ter hiperlink direto e específico para a fonte pública
-  (aberto e verificado pelo agente na hora da coleta). É proibido link solto
-  para home page genérica quando o ato tem URL canônica própria ou protocolo.
 
 ## 9. Como verificar
 

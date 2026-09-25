@@ -26,7 +26,7 @@ defeito escondido.
 
 ## Destaques de Arquitetura e Dados
 
-- **Regra das 5 Coisas em Páginas com Muito Dado:** Gráfico SVG acessível (sem bibliotecas pesadas), cartões de topo com agregados, busca textual sem acento, filtros interativos (`TagChip`) e exportação em planilha CSV com BOM UTF-8 e separador `;`.
+- **Padrão das 6 Qualidades da Informação Cívica:** Toda página com acervo público segue 6 garantias auditáveis: (1) Hiperlink direto e verificado à fonte pública oficial; (2) Busca textual e filtros facetados por tags reais; (3) Ordenação crescente/decrescente por coluna (classes, datas e valores); (4) Microresumo e cartões de topo com agregados; (5) Contexto para o chatbot cívico Seu Nonô com respostas curtas de até 13 palavras; (6) Exportação em CSV com BOM UTF-8 (separador `;`) para Excel e impressão nativa via CSS.
 - **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de CPFs de pessoas físicas via cálculo **Mod-11** antes de qualquer persistência em dados abertos (100% de conformidade LGPD).
 - **Código Autoexplicativo e Comentado:** Todo módulo, componente, query e coletor traz cabeçalhos e comentários em português (JSDoc/docstrings) explicando o que é, qual a sua função pública e o motivo das escolhas técnicas adotadas, permitindo auditoria cívica por qualquer cidadão ou desenvolvedor.
 - **Coletores Automatizados:** Esteira com monitoramento proativo via Bot Telegram (`scripts/rotina-coletas.mts`) e automações locais com Podman (`changedetection.io` e `n8n`).
