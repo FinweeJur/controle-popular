@@ -2,7 +2,7 @@
 
 > **Tipo:** HANDOFF
 > **Domínio:** cidades
-> **Última medição:** 2026-09-25 07:35
+> **Última medição:** 2026-09-25 11:26
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [PLANO-EXPANSAO-PNCP-199-CIDADES.md](planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md), [HANDOFF-23-09-PNCP-SP-CAPITAIS.md](HANDOFF-23-09-PNCP-SP-CAPITAIS.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](02-estado/ESTADO.md), [FONTES.md](06-fontes/FONTES.md)
 > **Palavras-chave:** handoff, pncp, home-pc, servidor, fila, verificacao, testes, litigios, cobertura, 429, paralelo
@@ -11,7 +11,7 @@
 
 - [Por que este handoff](#por-que-este-handoff)
 - [Divisão entre máquinas](#divisão-entre-máquinas)
-- [Estado medido 25/09 07:35](#estado-medido-2509-0735)
+- [Estado medido 25/09 11:26](#estado-medido-2509-1126)
 - [Escopo do home-pc](#escopo-do-home-pc)
 - [Ritual de verificação (paralelo)](#ritual-de-verificação-paralelo)
 - [O que NÃO fazer no home-pc](#o-que-não-fazer-no-home-pc)
@@ -47,27 +47,30 @@ rajada** e o limite é do host da API, não do PC — dois ETLs em dobro
 já foi medido (8 threads = 291×429). **Só coleta no home-pc se o dono
 liberar por escrito.**
 
-## Estado medido 25/09 07:35
+## Estado medido 25/09 11:26
 
 | Métrica | Valor |
 |---|---|
 | Manifesto `dados/manifesto-pncp.csv` | **203** linhas — 136 `pronta`, 55 `delegada` (25 capitais fila B + 30 grandes delegadas ao Gemini), 6 `excluida-principal`, 6 `bloqueada-cnpj` |
-| Cidades completas (ckpt contratos+licitações ok) | **36 / 136** prontas |
-| Fila restante | **100** |
-| Chaves checkpoint contratos | 336 (336 ok, 0 parcial) |
-| Chaves checkpoint licitações | 3.349 (3.349 ok, 0 parcial) |
-| Parcial aberta | nenhuma |
-| Fechadas na madrugada | Manacapuru, Parintins, Tefé (AM), Abaetetuba, Altamira, Ananindeua (PA) |
-| Próximas da fila | Ananindeua (refazer — morta no timeout), Cametã, Castanhal, Itaituba, Marabá, Paragominas (PA) |
+| Cidades completas (ckpt contratos+licitações ok) | **47 / 136** prontas |
+| Fila restante | **89** |
+| Chaves checkpoint contratos | 402 (402 ok, 0 parcial) |
+| Chaves checkpoint licitações | 4.281 (4.280 ok, 1 parcial) |
+| Parcial aberta | Imperatriz/MA — modalidade 2026-9 (faltam 2026-10..13) |
+| Fechadas na madrugada | Manacapuru, Parintins, Tefé (AM), Abaetetuba, Altamira (PA) |
+| Fechadas na manhã | Ananindeua, Cametã, Castanhal, Itaituba, Marabá, Paragominas, Redenção, Santarém, Tucuruí (PA), Santana (AP), Gurupi (TO) |
+| Próximas da fila | Imperatriz/MA (refaz 2026-9), Floriano, Parnaíba, Picos (PI), Crateús (CE) |
 | Commit litígios | `49f8db91` — **pushado** |
 | Código Fase B (ETL) | **commitado e pushado** (`7c67a3a0`) |
 
 **Armadilha medida hoje:** cidade morta no timeout do shell deixa só
 chaves `ok` no checkpoint e **passa no critério barato** de
-`cidade_completa` — Ananindeua estava contando como completa com 16 de
-~78 chaves. A remoção das chaves a devolveu à fila; conferir
+`cidade_completa` — Ananindeua (16 de ~78) e Imperatriz (74 de 78)
+contavam completas. Remoção de chaves (Ananindeua) ou marcação
+`parcial` (Imperatriz) as devolvem à fila; conferir
 `logs/pncp/<ibge>.out` (arquivo existe = rodou inteiro) antes de acreditar
-em "completa".
+em "completa". Timeout de 30 min não bate em cidade grande — suba o
+`--timeout` da shell ou rode com `max-cidades 1` e retome.
 
 Lock `.fila-pncp.lock` fica só na desktop. Checkpoints são **locais e
 gitignored** — o home-pc não os vê até a desktop commitar/empurrar

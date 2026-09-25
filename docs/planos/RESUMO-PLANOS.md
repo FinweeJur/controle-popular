@@ -49,7 +49,7 @@
 - **Fase A:** ✅ fechada 22/09 (Betim, BH, Diamantina, Araçuaí, Itinga;
   SP capital é fila de outra IA)
 - **Fase B:** ✅ commitada (`7c67a3a0`) — fila, manifesto, cobertura
-- **Fase C:** 🚧 coleta em curso — 36 completas, 100 na fila (203 no manifesto)
+- **Fase C:** 🚧 coleta em curso — 47 completas, 89 na fila (203 no manifesto)
 - **Checkpoint:** `etl/betim/etl/pncp/checkpoint.py` (retomada por página)
 
 ### 3. 📜 TAUS / CDRU / Autorizações Territoriais
@@ -125,7 +125,7 @@
 | **Testes passando** | 1.579 vitest + 146 globo ✅ (baseline 19/09) |
 | **Contratos PNCP (expand.)** | ck contratos 300 chaves ok ✅ |
 | **Licitações PNCP (expand.)** | ck licitações 2.959 chaves ok ✅ |
-| **Cidades PNCP completas** | 36 de 136 prontas 🚧 |
+| **Cidades PNCP completas** | 47 de 136 prontas 🚧 |
 | **Conselheiros mapeados (Betim)** | 4 ✅ |
 | **Outorgas IGAM (fonte)** | 55.729 ✅ |
 | **Microresumos gerados** | 3 ✅ |

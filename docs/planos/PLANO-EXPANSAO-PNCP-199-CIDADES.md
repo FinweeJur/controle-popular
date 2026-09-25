@@ -32,17 +32,17 @@ das 6 cidades principais do portal.
 
 ## Estado medido em 25/09
 
-Coleta da madrugada fechou 6 cidades (Manacapuru, Parintins, Tefé,
-Abaetetuba, Altamira, Ananindeua).
+Coleta da madrugada e da manhã fechou 16 cidades (AM, PA, AP, TO);
+Imperatriz/MA parou no timeout e voltou para a fila.
 
-| Item | Medição (25/09 07:35) |
+| Item | Medição (25/09 11:26) |
 |---|---|
-| Cidades completas (ck contratos + licitações ok) | **36 / 136** prontas |
-| Fila restante | **100** |
-| Chaves ck contratos | 336 (336 ok, 0 parcial) |
-| Chaves ck licitações | 3.349 (3.349 ok, 0 parcial) |
-| Próximas da fila | Ananindeua/PA (refazer — morta no timeout), Cametã, Castanhal, Itaituba, Marabá, Paragominas (PA) |
-| Cidade morta no timeout | chaves só `ok` enganam `cidade_completa` — conferir `logs/pncp/<ibge>.out` |
+| Cidades completas (ck contratos + licitações ok) | **47 / 136** prontas |
+| Fila restante | **89** |
+| Chaves ck contratos | 402 (402 ok, 0 parcial) |
+| Chaves ck licitações | 4.281 (4.280 ok, 1 parcial) |
+| Próximas da fila | Imperatriz/MA (refaz 2026-9), Floriano/PI, Parnaíba/PI, Picos/PI, Crateús/CE |
+| Cidade morta no timeout | chaves só `ok` enganam `cidade_completa` (Ananindeua, Imperatriz) — conferir `logs/pncp/<ibge>.out` |
 
 ## Estado medido em 24/09
 

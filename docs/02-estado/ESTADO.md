@@ -114,7 +114,7 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
 | B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | ⛔ | **plano da próxima sessão (amanhã, 25/09)**: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md); Fase 0 pode correr junto |
-| B5 | Expansão PNCP: coleta da fila (100 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 — 36 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
+| B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 
 ### Bloco C — ação externa do dono
@@ -158,14 +158,18 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
-**25/09/2026** — coleta PNCP da madrugada (desktop):
+**25/09/2026** — coleta PNCP (madrugada e manhã, desktop):
 
-- 6 cidades fechadas: Manacapuru, Parintins, Tefé (AM), Abaetetuba,
-  Altamira, Ananindeua (PA) — **36 completas, 100 na fila** (medido 25/09
-  07:35). Checkpoints 336 contratos / 3.349 licitações, 0 parciais.
-- Ananindeua morreu no timeout do meio e ficava contando como completa
-  (chaves escritas estavam ok); chaves removidas do checkpoint para
-  voltar à fila. Lock órfão `.fila-pncp.lock` removido e gitignorado.
+- 16 cidades fechadas: AM (Manacapuru, Parintins, Tefé), PA (Abaetetuba,
+  Altamira, Ananindeua, Cametã, Castanhal, Itaituba, Marabá, Paragominas,
+  Redenção, Santarém, Tucuruí), AP (Santana), TO (Gurupi) —
+  **47 completas, 89 na fila** (medido 25/09 11:26). Checkpoints
+  402 contratos / 4.281 licitações, 1 parcial.
+- Imperatriz/MA morreu no timeout (74/78 chaves) e passava como
+  completa; modalidade 2026-9 marcada `parcial` no checkpoint local
+  para refazer e cobrir 2026-10..13. Ananindeua teve o mesmo problema
+  de madrugada (chaves removidas). Lock órfão `.fila-pncp.lock`
+  removido e gitignorado.
 
 **24/09/2026** — `49f8db91` · `5c440d4f` · `7c67a3a0` · `cd60b79c`:
 
