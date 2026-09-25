@@ -95,7 +95,7 @@ escolheu os chineses, todos código aberto:
 | ~~Qwen2.5-VL 3B~~ (Alibaba) | China | ⚠️ **`qwen-research` = só não-comercial** (LICENSE do card, medido 25/09) — **descartado**, não era Apache | substituído pelo Qwen3-VL 2B acima |
 | **DINOv2** (Meta) | EUA | Apache 2.0 — código e pesos; reliberado de CC-BY-NC (card `facebook/dinov2-base`) | reserva técnica: entra só se o Chinese-CLIP reprovar no gate de precisão |
 | **CLIP** (OpenAI) | EUA | MIT — código e pesos | reserva técnica, mesmo critério |
-| **SigLIP** (Google) | EUA | Apache 2.0 (confirmar card na Fase 0) | reserva técnica, mesmo critério |
+| **SigLIP** (Google) | EUA | Apache 2.0 (card `google/siglip-base-patch16-224`, medido 25/09) | reserva técnica, mesmo critério |
 | **InternVL2.5 2B** (OpenGVLab) | China | MIT (card HF, medido 25/09) | reserva técnica, mesmo critério |
 
 Reserva técnica ≠ escolha: americanos ficam guardados e **não são usados**
@@ -165,20 +165,23 @@ Sete medições, todas hoje possíveis sem escrever código de produto:
 |---|---|---|
 | M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; ✅ **alternativa sem conta medida:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
 | M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | ✅ **medido 25/09:** libera por **GeoServer WFS público** (`pto/wfs`, `GetFeature outputFormat=application/json` — também aceita shape-zip); amostra confirmou os campos-chave (`transbordamento_lavra`, `lavra_fantasma`, `temporal_inconsistency`, `in_restricted_area`, `inappropriate_permission`) + SIGMINE (`processo`, `fase`, `nome`, `subs`, `uso`, `uf`, `area_ha`, `ult_evento`); camadas: `pto:processos_minerarios`, `pto:mv_transbordamento_borda`, `pto:geoserver_filtrada`, `pto:mining_age`. `robots.txt`: plataforma MapBiomas = `Disallow:` vazio (livre); host do GeoServer = **404 (sem robots → permitido por padrão)** — decisão registrada aqui: acessar com UA honesta e pausa ≥ 2 s |
-| M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | ✅ **medido 25/09:** Chinese-CLIP = **MIT** (API GitHub); **Qwen2.5-VL-3B = `qwen-research` (só não-comercial) — expectativa errada, modelo trocado**; Qwen3-VL-2B = **Apache 2.0**; InternVL2.5-2B = MIT. SigLIP: card ainda a confirmar |
-| M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | 🚧 **parcial 25/09:** transformers 5.5.0 tem `ChineseCLIPVisionModel`; CUDA ok (RTX 3050). Pesos `pytorch_model.bin` = **753.177.983 bytes**; hub HF travou (0 MB em 12 min) → **curl direto a 0,86 MB/s, 398,7/753 MB baixados** em `Temp\opencode\cavas\chinese-clip\` (`curl -C -` retoma). Benchmark NÃO rodou ainda — retomar download e rodar `m4-bench.py` (100 crops do CBERS, batch 4–32, fp32 e fp16). Método desviado de ONNX para torch (já instalado); ONNX fica como otimização opcional |
-| M5 | Orçamento de disco: 50 mil recortes ≈ 15 GB (0,3 MB cada) — cabe em 65,7 GB? cache fica **fora do git**, path em `.gitignore` | pendente: medir com 1.000 recortes reais |
-| M6 | Termos da Esri: visualização de tile ok; **bulk download proibido** → cómputo só com Sentinel | pendente: ler termos de uso e citar cláusula |
+| M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | ✅ **medido 25/09:** Chinese-CLIP = **MIT** (API GitHub); **Qwen2.5-VL-3B = `qwen-research` (só não-comercial) — expectativa errada, modelo trocado**; Qwen3-VL-2B = **Apache 2.0**; InternVL2.5-2B = MIT; SigLIP = **Apache 2.0** |
+| M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | ✅ **medido 25/09:** 188M params, carga 3 s; 100 crops 256 px do CBERS; fp32: 13,3 (batch 4) → 46,4 crops/s (batch 32); **fp16 batch 16 = 48,6 crops/s (melhor)** → 50 mil recortes em **17,2 min**. Pesos = 753.177.983 bytes; hub HF travou (0 MB/12 min) → **curl direto (0,86–3,0 MB/s)**; `.bin` precisou virar `safetensors` (transformers 5.5 bloqueia `torch.load` no torch 2.5, CVE-2025-32434). Método: torch 2.5.1+cu121 (ONNX não medido — otimização opcional, decisão por medição futura) |
+| M5 | Orçamento de disco: 50 mil recortes ≈ 15 GB (0,3 MB cada) — cabe em 65,7 GB? cache fica **fora do git**, path em `.gitignore` | ✅ **medido 25/09:** 1.000 recortes reais 512 px JPEG q85 = **70,0 KB médio** (39 s) → 50 mil = **3,34 GB**; 100 mil = 6,68 GB. Cabe com folga nos 65,7 GB do `X:`; estimativa antiga de 15 GB era conservadora (valia se 0,3 MB/corte). Cache: `Temp\opencode\cavas\recortes-m5\` (fora do git) |
+| M6 | Termos da Esri: visualização de tile ok; **bulk download proibido** → cómputo só com Sentinel | ✅ **medido 25/09:** Master Agreement E204CW (fev/2024): *"Customer may not otherwise scrape, download, or store Data"*; E300 (nov/2025): *"Programmatic use of session tokens (e.g., exporting volumes of basemap tiles) is not permitted"*. Veredito: **tile da Esri só para exibição no globo; cómputo treino/busca só com Sentinel-2, CBERS e Amazônia-1** (CC-BY) |
 | M7 | SIGMINE nacional: colunas de fase e titular, tamanho, cobertura das 27 UFs | ✅ `sigmine-nacional.json` = 274.659 processos (2026-09-16), MG 54.890; colunas `proc,ano,fase,titular,subs,uso,uf,area_ha,ev` |
-| M8 | **Satélites brasileiros:** 1 cena CBERS-4A WPM (2 m) e 1 Amazônia-1 baixados via INPE STAC ou `s3://brazil-eosats` (sem conta AWS); medir licença CC-BY e cadência de cenas em MG | ✅ **CBERS medido 24/09:** STAC `data.inpe.br/bdc/stac/v1` responde **sem login**; cena `CBERS_4A_WPM_20260728_199_138_L4` (28/07/2026, MG); BAND2 = 132.603.859 bytes (126,5 MiB) baixada em 140 s; BAND0 (pancromática 2 m) = 2,45 GB; miniatura conferida à mão (vegetação, solo exposto, nuvens). Falta: Amazônia-1 e cadência MG |
+| M8 | **Satélites brasileiros:** 1 cena CBERS-4A WPM (2 m) e 1 Amazônia-1 baixados via INPE STAC ou `s3://brazil-eosats` (sem conta AWS); medir licença CC-BY e cadência de cenas em MG | ✅ **CBERS medido 24/09:** STAC `data.inpe.br/bdc/stac/v1` responde **sem login**; cena `CBERS_4A_WPM_20260728_199_138_L4` (28/07/2026, MG); BAND2 = 132.603.859 bytes (126,5 MiB) baixada em 140 s; BAND0 (pancromática 2 m) = 2,45 GB; miniatura conferida à mão (vegetação, solo exposto, nuvens). ✅ **Amazônia-1 e cadência medidos 25/09:** coleção `AMZ1-WFI-L4-SR-1` (357 cenas em 2 meses, sem login), thumbnail PNG de 1.285.926 bytes baixado (cena `AMAZONIA_1_WFI_20260919_036_021_L4`); **cadência CBERS-4A WPM sobre MG (12 meses): 661 itens, 125 datas distintas, passo médio 2,9 d, máximo 11 d** |
 
-**Estado da Fase 0 em 25/09 07:45 (sessão interrompida — PC vai fechar):**
-faltam **M4** (retomar curl dos 753 MB e rodar o benchmark), **M5**,
-**M6** e o resto do **M8** (Amazônia-1 + cadência MG). Scripts de apoiro
-estão em `Temp\opencode\` (`m4-bench.py`, `m2-attrs.py`) — são aid, não
-produto; nenhum entra no repo. **Gate G0: SATISFEITO** — o Monitor entrega
-`transbordamento_lavra`/`lavra_fantasma` nacionais por WFS → baseline
-obrigatório das fases seguintes (método C da barra de publicação).
+**Estado da Fase 0 em 25/09 07:45 → CONCLUÍDA em 25/09:** M1–M8 todos
+medidos acima (M1 por alternativa sem conta; M3 corrigindo a expectativa
+do Qwen; M6 por citação do Master Agreement). **Gate G0: SATISFEITO** —
+o Monitor entrega `transbordamento_lavra`/`lavra_fantasma` nacionais por
+WFS → baseline obrigatório das fases seguintes (método C da barra de
+publicação). **Critério de pronto de G0: tabela M1–M7 preenchida, com
+data.** Scripts de apoio (`m4-bench.py`, `m2-attrs.py`, `m5-disco.py`,
+`m8-stac.py`) ficam em `Temp\opencode\` — apoio de medição, não produto;
+nenhum entra no repo. Pesos do Chinese-CLIP (753 MB) e cache de recortes
+também fora do git. Próxima fase: **Fase 1 — terreno de calibração.**
 
 **Nota sobre a API do Copernicus indicada pelo dono (24/09):** o dono
 não conseguiu fazer login no Copernicus e indicou o
