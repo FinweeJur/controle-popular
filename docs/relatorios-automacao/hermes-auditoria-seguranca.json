@@ -1,10 +1,10 @@
 {
-  "geradoEm": "2026-09-16T08:33:22.364Z",
+  "geradoEm": "2026-09-25T08:31:30.839Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 14,
-  "aprovados": 7,
-  "alertas": 5,
-  "falhas": 2,
+  "totalVerificacoes": 17,
+  "aprovados": 10,
+  "alertas": 1,
+  "falhas": 6,
   "itens": [
     {
       "categoria": "seguranca",
@@ -27,26 +27,26 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonlin..."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=15552000; includeSubDomains; preload"
     },
     {
       "categoria": "seguranca",
       "item": "Produção: X-Frame-Options",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: DENY"
     },
     {
       "categoria": "seguranca",
       "item": "Produção: X-Content-Type-Options",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
     },
     {
       "categoria": "seguranca",
@@ -62,15 +62,33 @@
     },
     {
       "categoria": "cloudflare",
+      "item": "Limite de 25 MiB: fepam-rs-licencas.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 43.45 MiB, excedendo o teto do Cloudflare."
+    },
+    {
+      "categoria": "cloudflare",
+      "item": "Limite de 25 MiB: iat-pr-licencas.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 30.94 MiB, excedendo o teto do Cloudflare."
+    },
+    {
+      "categoria": "cloudflare",
+      "item": "Limite de 25 MiB: ima-sc-licencas.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 100.09 MiB, excedendo o teto do Cloudflare."
+    },
+    {
+      "categoria": "cloudflare",
       "item": "Limite de 25 MiB: sinesp-vde.json",
       "status": "FALHA",
       "detalhes": "Arquivo possui 71.85 MiB, excedendo o teto do Cloudflare."
     },
     {
       "categoria": "privacidade",
-      "item": "Varredura Mod-11 de CPF nos Acervos",
-      "status": "APROVADO",
-      "detalhes": "Todos os arquivos de dados foram escaneados com ZERO CPFs de pessoas físicas encontrados."
+      "item": "Script de Varredura de CPF",
+      "status": "FALHA",
+      "detalhes": "Script checar-dado-pessoal-em-dado.py não encontrado."
     },
     {
       "categoria": "qualidade_dados",
