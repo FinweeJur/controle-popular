@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** cidades
-> **Última medição:** 2026-09-25
+> **Última medição:** 2026-09-26
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-EXPANSAO-PNCP-199-CIDADES.md](PLANO-EXPANSAO-PNCP-199-CIDADES.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md)
 > **Palavras-chave:** jequitinhonha, mucuri, etl, pncp, cidades, qualidade da informacao, fontes, chatbot, 6 regras, litio
@@ -24,7 +24,7 @@
 
 Definir a metodologia, a arquitetura de dados e o cronograma de expansão do portal Controle Popular para todos os municípios do **Vale do Jequitinhonha** e do **Vale do Mucuri**, em Minas Gerais.
 
-Esta fase terá início imediatamente após a conclusão do lote prioritário das 30 grandes cidades delegadas pelo proprietário.
+Esta fase teve início após a conclusão do lote prioritário das 30 grandes cidades delegadas pelo proprietário e concluiu 100% da extração de dados brutos de todos os 82 municípios.
 
 ---
 
@@ -103,8 +103,9 @@ O assistente local do portal (`/api/chatbot`) e a ponte do Telegram serão provi
 
 | Fase | Ação | Status |
 |---|---|---|
-| **Fase 1** | Conclusão das 30 grandes cidades do lote delegado | 🚧 Em andamento (8/30 prontas) |
-| **Fase 2** | Seed dos municípios faltantes do Jequitinhonha e Mucuri no banco | ⏳ Próxima etapa |
-| **Fase 3** | Execução sequencial do ETL PNCP para os 55 municípios do Jequitinhonha | ⏳ Planejado |
-| **Fase 4** | Execução sequencial do ETL PNCP para os 27 municípios do Mucuri | ⏳ Planejado |
-| **Fase 5** | Geração e ativação das páginas públicas com as 6 regras de qualidade | ⏳ Planejado |
+| **Fase 1** | Conclusão das 30 grandes cidades do lote delegado | ✅ Concluída (30/30 no banco) |
+| **Fase 2** | Seed dos municípios faltantes do Jequitinhonha e Mucuri no banco | ✅ Concluída (82/82 semeados) |
+| **Fase 3** | Execução sequencial do ETL PNCP para os 55 municípios do Jequitinhonha | ✅ Concluída (55/55 extraídos) |
+| **Fase 4** | Execução sequencial do ETL PNCP para os 27 municípios do Mucuri | ✅ Concluída (27/27 extraídos) |
+| **Fase 5** | Geração e ativação das páginas públicas com as 6 regras de qualidade | 🚧 Próxima etapa ativa |
+
