@@ -45,6 +45,10 @@ RAIZ_REPO = RAIZ_BETIM.parent.parent
 ARQUIVO_PROGRESSO = RAIZ_BETIM / ".progresso-vales.json"
 PYTHON_BIN = RAIZ_BETIM / ".venv" / "Scripts" / "python.exe"
 
+# Garante que o modulo `etl` seja importavel diretamente por este script
+if str(RAIZ_BETIM) not in sys.path:
+    sys.path.insert(0, str(RAIZ_BETIM))
+
 
 def carregar_municipios() -> list[tuple[str, str, str]]:
     """Carrega a relação dos 82 municípios dos Vales a partir dos arquivos JSON canônicos.
@@ -169,6 +173,31 @@ def executar_comando(args: list[str], max_retentativas: int = 5) -> bool:
     return False
 
 
+def garantir_municipios_semeados(cidades: list[tuple[str, str, str]]):
+    """Garante que todos os municípios dos Vales existam na tabela `municipios`.
+
+    Evita que o ETL falhe com 'ABORT: id_municipio não existe em municipios'.
+    Insere com `ativo = False` para não afetar o build até a conclusão.
+    """
+    try:
+        from etl.common import get_supabase_client
+        client = get_supabase_client()
+        conn = client.conexao()
+        semeados = 0
+        for ibge, nome, _ in cidades:
+            cur = conn.execute(
+                "INSERT INTO municipios (id_municipio, nome, uf, ativo, branding, fontes) "
+                "VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT (id_municipio) DO NOTHING RETURNING id_municipio",
+                (ibge, nome, "MG", False, json.dumps({}), json.dumps({}))
+            )
+            if cur.fetchone():
+                semeados += 1
+        if semeados > 0:
+            print(f"[Orquestrador Vales] {semeados} municípios novos semeados em `municipios` com sucesso.", flush=True)
+    except Exception as e:
+        print(f"[Orquestrador Vales] Aviso ao garantir municípios no banco: {e}", flush=True)
+
+
 def main():
     """Função principal que orquestra a execução contínua dos 82 municípios dos Vales."""
     progresso = carregar_progresso()
@@ -180,6 +209,9 @@ def main():
         sys.exit(1)
 
     print(f"\n[Orquestrador Vales] Iniciando esteira dos Vales: {total} municípios catalogados.", flush=True)
+
+    # Garante que todas as cidades estejam registradas no banco antes de rodar os passos
+    garantir_municipios_semeados(cidades)
 
     for idx, (ibge, nome, vale) in enumerate(cidades, start=1):
         if progresso.get(ibge, {}).get("status") == "concluido":
