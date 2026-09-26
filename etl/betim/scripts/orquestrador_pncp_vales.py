@@ -214,17 +214,42 @@ def main():
     garantir_municipios_semeados(cidades)
 
     for idx, (ibge, nome, vale) in enumerate(cidades, start=1):
-        if progresso.get(ibge, {}).get("status") == "concluido":
-            print(f"[Orquestrador Vales] {idx}/{total} - {nome} ({ibge}) [{vale}] já concluída anteriormente.", flush=True)
+        status_anterior = progresso.get(ibge, {}).get("status")
+        if status_anterior in ("concluido", "sem_publicacoes_pncp"):
+            print(f"[Orquestrador Vales] {idx}/{total} - {nome} ({ibge}) [{vale}] já processada anteriormente (status: {status_anterior}).", flush=True)
             continue
 
         print(f"\n{'='*60}\n[Orquestrador Vales] Iniciando {idx}/{total} - {nome} ({ibge}) [{vale}]\n{'='*60}", flush=True)
 
-        # Passo 1: Descoberta de órgãos municipais
-        ok1 = executar_comando(["-m", "etl.pncp.orgaos", "--id-municipio", ibge, "--gravar"])
+        # Passo 1: Descoberta de órgãos municipais (com tolerância a municípios sem publicações no PNCP)
+        ok1 = executar_comando(["-m", "etl.pncp.orgaos", "--id-municipio", ibge, "--gravar", "--permitir-vazio"])
         if not ok1:
             print(f"[Orquestrador Vales] FALHA ao mapear órgãos de {nome}. Interrompendo.", flush=True)
             sys.exit(1)
+
+        # Inspeciona os órgãos municipais cadastrados na base para o município
+        from etl.common import carregar_municipio
+        cidade_atual = carregar_municipio(ibge)
+        cnpjs_encontrados = cidade_atual.get("fontes", {}).get("cnpjs_orgao", [])
+
+        # Se não houver órgãos municipais cadastrados no PNCP, registra e avança sem falhar
+        if not cnpjs_encontrados:
+            print(f"[Orquestrador Vales] {nome} ({ibge}) não possui órgãos no PNCP em 2025/2026. Registrado.", flush=True)
+            progresso[ibge] = {
+                "nome": nome,
+                "vale": vale,
+                "status": "sem_publicacoes_pncp",
+                "orgaos": 0,
+                "contratos": 0,
+                "licitacoes": 0,
+                "concluido_em": time.strftime("%Y-%m-%d %H:%M:%S"),
+            }
+            salvar_progresso(progresso)
+
+            msg = f"ℹ️ <b>Vales {idx}/{total}</b>: {nome}/MG ({ibge}) — sem órgãos no PNCP em 2025/2026. Registrado. [{vale}]"
+            print(f"[Orquestrador Vales] {msg}", flush=True)
+            notificar_telegram(msg)
+            continue
 
         # Passo 2: Coleta de contratos administrativos
         ok2 = executar_comando(["-m", "etl.pncp.contratos", "--id-municipio", ibge])
@@ -243,6 +268,7 @@ def main():
             "nome": nome,
             "vale": vale,
             "status": "concluido",
+            "orgaos": len(cnpjs_encontrados),
             "concluido_em": time.strftime("%Y-%m-%d %H:%M:%S"),
         }
         salvar_progresso(progresso)
