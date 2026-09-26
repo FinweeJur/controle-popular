@@ -45,6 +45,30 @@ from etl.pncp.client import INTER_REQUEST_SLEEP, iter_contratacoes
 MODALIDADES = range(1, 14)
 
 
+def _sanitizar_numeric(val: any) -> float | None:
+    """Sanitiza valores monetários para evitar estouro do tipo numeric(15, 2) do Postgres.
+
+    O tipo PostgreSQL numeric(15, 2) aceita valores com até 13 dígitos inteiros (menor que 10^13).
+    Valores bizarros digitados por erro humano em órgãos públicos (ex.: 43 trilhões de reais em Nanuque)
+    estouram o limite da coluna e quebram a transação. O valor bruto original permanece preservado no campo `raw`.
+
+    Args:
+        val: Valor numérico ou string retornado pelo PNCP.
+
+    Returns:
+        Float seguro para o Postgres, ou None se nulo/inválido/fora de escala.
+    """
+    if val is None:
+        return None
+    try:
+        f = float(val)
+        if abs(f) >= 1e13:
+            return None
+        return f
+    except (ValueError, TypeError):
+        return None
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict:
     """Converte o objeto bruto de licitação retornado pelo PNCP para a estrutura da tabela `licitacoes`.
 
@@ -72,8 +96,8 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "objeto": raw.get("objetoCompra"),
         "processo": raw.get("processo"),
         "srp": raw.get("srp"),
-        "valor_estimado": raw.get("valorTotalEstimado"),
-        "valor_homologado": raw.get("valorTotalHomologado"),
+        "valor_estimado": _sanitizar_numeric(raw.get("valorTotalEstimado")),
+        "valor_homologado": _sanitizar_numeric(raw.get("valorTotalHomologado")),
         "situacao": raw.get("situacaoCompraNome"),
         "data_publicacao_pncp": raw.get("dataPublicacaoPncp"),
         "data_abertura": raw.get("dataAberturaProposta"),
@@ -195,8 +219,16 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
                 )
 
             # Grava eventuais registros residuais da modalidade
-            n = _gravar(rows_by_pncp)
-            registros_chave += n
+            try:
+                n = _gravar(rows_by_pncp)
+                registros_chave += n
+            except Exception as e:
+                incompletos.append((ano, modalidade, type(e).__name__))
+                print(
+                    f"[etl.pncp.licitacoes] AVISO: erro ao gravar lote residual de ano={ano} "
+                    f"modalidade={modalidade} ({type(e).__name__}): {e}",
+                    flush=True,
+                )
             if not any(a == ano and m == modalidade for a, m, _ in incompletos):
                 ck.marcar_ok(
                     estado,

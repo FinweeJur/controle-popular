@@ -106,6 +106,30 @@ def link_do_contrato(numero_controle_pncp: str | None) -> str | None:
     return f"https://pncp.gov.br/app/contratos/{cnpj}/{ano}/{sequencial}"
 
 
+def _sanitizar_numeric(val: any) -> float | None:
+    """Sanitiza valores monetários para evitar estouro do tipo numeric(15, 2) do Postgres.
+
+    O tipo PostgreSQL numeric(15, 2) aceita valores com até 13 dígitos inteiros (menor que 10^13).
+    Valores anômalos por erro de digitação humana no portal da prefeitura estouram o limite
+    da coluna. O valor bruto original permanece preservado no campo `raw`.
+
+    Args:
+        val: Valor numérico ou string retornado pelo PNCP.
+
+    Returns:
+        Float seguro para o Postgres, ou None se nulo/inválido/fora de escala.
+    """
+    if val is None:
+        return None
+    try:
+        f = float(val)
+        if abs(f) >= 1e13:
+            return None
+        return f
+    except (ValueError, TypeError):
+        return None
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict:
     """Mapeia e normaliza o payload JSON bruto da API do PNCP para as colunas da tabela `contratos`.
 
@@ -146,8 +170,8 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "objeto": raw.get("objetoContrato"),
         "fornecedor_cnpj": raw.get("niFornecedor"),
         "fornecedor_nome": raw.get("nomeRazaoSocialFornecedor"),
-        "valor_inicial": raw.get("valorInicial"),
-        "valor_global": raw.get("valorGlobal"),
+        "valor_inicial": _sanitizar_numeric(raw.get("valorInicial")),
+        "valor_global": _sanitizar_numeric(raw.get("valorGlobal")),
         "data_assinatura": raw.get("dataAssinatura"),
         "vigencia_inicio": raw.get("dataVigenciaInicio"),
         "vigencia_fim": raw.get("dataVigenciaFim"),
