@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-26T06:38:29.289Z
+- Gerado em: 2026-09-27T06:37:00.328Z
 - Duracao total: 3.2 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 148
-- OK: 122
+- OK: 121
 - QUEBRADOS: 4
-- REDIRECTS: 12
+- REDIRECTS: 13
 - INCONSISTENTES: 10
-- Propostas geradas: 4
+- Propostas geradas: 5
 - Links sem proposta: 12
 
 ## Links quebrados e redirecionados
@@ -28,6 +28,7 @@
 | https://legis.senado.leg.br/dadosabertos | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
 | https://sistemas.anatel.gov.br | REDIRECT | 200 | https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp |
@@ -70,7 +71,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 
-### 4. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 4. https://pncp.gov.br/
+
+```diff
+- href="https://pncp.gov.br/"
++ href="https://www.gov.br/pncp/pt-br"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/[municipio]/interesses/page.tsx
+
+### 5. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
@@ -102,10 +114,10 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
+- https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://www.sinesp.mg.gov.br (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 

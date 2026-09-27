@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-25T08:31:30.839Z",
+  "geradoEm": "2026-09-26T08:31:19.154Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 17,
   "aprovados": 10,
@@ -86,9 +86,9 @@
     },
     {
       "categoria": "privacidade",
-      "item": "Script de Varredura de CPF",
+      "item": "Varredura Mod-11 de CPF nos Acervos",
       "status": "FALHA",
-      "detalhes": "Script checar-dado-pessoal-em-dado.py não encontrado."
+      "detalhes": "Falha na verificação de dados pessoais: Python n�o foi encontrado; executar sem argumentos para instalar do Microsoft Store ou desabilitar este atalho em Configura��es > Aplicativos > Configura��es avan�adas do aplicativo > Aliases de execu��o do aplicativo.\r\n"
     },
     {
       "categoria": "qualidade_dados",

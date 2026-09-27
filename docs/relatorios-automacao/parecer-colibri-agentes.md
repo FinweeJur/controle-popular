@@ -1,6 +1,6 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
-**Data da Execução:** 25/09/2026, 05:31:30  
+**Data da Execução:** 26/09/2026, 05:31:19  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Motor Determinístico Offline
 
@@ -32,7 +32,8 @@
 | CLOUDFLARE | Limite de 25 MiB: iat-pr-licencas.json | **FALHA** | Arquivo possui 30.94 MiB, excedendo o teto do Cloudflare. |
 | CLOUDFLARE | Limite de 25 MiB: ima-sc-licencas.json | **FALHA** | Arquivo possui 100.09 MiB, excedendo o teto do Cloudflare. |
 | CLOUDFLARE | Limite de 25 MiB: sinesp-vde.json | **FALHA** | Arquivo possui 71.85 MiB, excedendo o teto do Cloudflare. |
-| PRIVACIDADE | Script de Varredura de CPF | **FALHA** | Script checar-dado-pessoal-em-dado.py não encontrado. |
+| PRIVACIDADE | Varredura Mod-11 de CPF nos Acervos | **FALHA** | Falha na verificação de dados pessoais: Python n�o foi encontrado; executar sem argumentos para instalar do Microsoft Store ou desabilitar este atalho em Configura��es > Aplicativos > Configura��es avan�adas do aplicativo > Aliases de execu��o do aplicativo.
+ |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: sigbm | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: ibama | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: decisoes-lai | **ALERTA** | Possível ausência de Gráfico SVG ou Cartões de Topo na página. |
