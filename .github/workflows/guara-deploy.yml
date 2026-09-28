@@ -1,11 +1,16 @@
 name: Guara Cloud CI & Deploy
 
-# Esteira de testes automatizados e deploy contínuo na Guara Cloud (PaaS brasileira).
+# Esteira de testes automatizados e deploy da Guara Cloud (PaaS brasileira).
 #
-# Executa em cada push na branch `main`:
+# Em cada push e pull_request para `main` (sempre):
 # 1. Testes unitários (vitest na pasta apps/web)
 # 2. Varredura estrita de privacidade (scripts/checar-dado-pessoal-em-dado.py)
-# 3. Disparo de build/deploy da Guara Cloud via Deploy Webhook (quando GUARA_DEPLOY_HOOK configurado)
+#
+# Deploy NÃO roda em push (política do dono, OPERACAO.md §0, 19/09/2026):
+# um build gasta ~17 min dos 250 min do ciclo Starter, então o deploy é
+# manual, no máximo a cada ~5 dias. Dispare pelo botão "Run workflow"
+# (workflow_dispatch) ou pela CLI (OPERACAO.md §3). O push empilha commits;
+# o último é o que vai.
 
 on:
   push:
@@ -46,20 +51,27 @@ jobs:
         run: python scripts/checar-dado-pessoal-em-dado.py
 
   deploy:
-    name: Notificar / Disparar Deploy Guara Cloud
+    name: Disparar Deploy Guara Cloud (manual)
     needs: testar
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # Só em disparo manual: em push o deploy queima cota (OPERACAO.md §0).
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Disparar Deploy via Guara CLI
         env:
           GUARA_API_KEY: ${{ secrets.GUARA_API_KEY }}
+          # Slug do projeto (guara projects list). Pode ser sobrescrito pela
+          # variável de repositório GUARA_PROJECT se o projeto mudar de nome.
+          GUARA_PROJECT: ${{ vars.GUARA_PROJECT }}
         run: |
           if [ -n "$GUARA_API_KEY" ]; then
             echo "Instalando Guara CLI..."
             npm install -g @guaracloud/cli
-            echo "Disparando deploy da branch main..."
-            guara deploy --branch main --yes
+            # O CLI 0.3.0 não acha o projeto sozinho no runner (sem guara link):
+            # sem --project ele falha com "No project specified" (medido 28/09).
+            PROJECT="${GUARA_PROJECT:-controle-popular}"
+            echo "Disparando deploy do projeto $PROJECT, branch main..."
+            guara deploy --project "$PROJECT" --branch main --yes
             echo "Deploy disparado com sucesso."
           else
             echo "GUARA_API_KEY não configurado nos secrets do repositório."

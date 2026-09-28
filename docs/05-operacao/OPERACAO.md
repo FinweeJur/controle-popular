@@ -73,9 +73,17 @@ O plano Starter paga build por minutos: um build do portal gasta
 - **Serviço Guara**: `controle-popular-web-0b4895` na região `br-gru`.
 
 ### 2. Automação e CI/CD
-- O workflow `.github/workflows/guara-deploy.yml` roda em todo push na branch `main`.
-- Executa testes de unidade (`vitest`), auditoria de dados pessoais/CPF (`checar-dado-pessoal-em-dado.py`) e notifica o webhook da Guara Cloud (`GUARA_DEPLOY_HOOK`).
-- Em conexões diretas via Git Integration da Guara Cloud, o deploy inicia de forma autônoma assim que o commit entra na `main`.
+- O workflow `.github/workflows/guara-deploy.yml` roda em todo push e pull
+  request para a `main`: testes de unidade (`vitest`) e auditoria de dados
+  pessoais/CPF (`checar-dado-pessoal-em-dado.py`).
+- **O deploy não roda em push** (política do §0): o job `deploy` só
+  acontece em `workflow_dispatch` (botão "Run workflow" no Actions) ou via
+  CLI manual (§3). Em 28/09 o job em push falhava com `No project
+  specified` — o CLI 0.3.0 exige `--project controle-popular` e o runner
+  não tem `guara link`; corrigido junto com o travamento do deploy em push.
+- O workflow `mirror-gitee.yml` (espelho do repositório no Gitee) falha em
+  todo push enquanto os secrets `GITEE_USERNAME`/`GITEE_TOKEN` não forem
+  configurados — o próprio workflow diz que o espelho fica inativo até lá.
 
 ### 3. Deploy manual via Guara CLI
 ```bash
