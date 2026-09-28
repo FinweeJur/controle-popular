@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-09-27T06:37:00.328Z
-- Duracao total: 3.2 min
+- Gerado em: 2026-09-28T06:39:35.373Z
+- Duracao total: 3.4 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 148
-- OK: 121
-- QUEBRADOS: 4
+- OK: 118
+- QUEBRADOS: 5
 - REDIRECTS: 13
-- INCONSISTENTES: 10
-- Propostas geradas: 5
+- INCONSISTENTES: 12
+- Propostas geradas: 6
 - Links sem proposta: 12
 
 ## Links quebrados e redirecionados
@@ -33,8 +33,9 @@
 | https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
 | https://sistemas.anatel.gov.br | REDIRECT | 200 | https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp |
 | https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
+| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 206 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.fundacaorenova.org | REDIRECT | 200 | https://www.reparacaobaciariodoce.com/ |
+| https://www.gov.br/anp/vivo.pdf | QUEBRADO | 404 | https://www.gov.br/anp/vivo.pdf |
 
 ## Propostas com diff
 
@@ -86,19 +87,30 @@ Origem: apps/web/app/[municipio]/interesses/page.tsx
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
++ href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf"
 ```
 
 Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
+Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
 Origem: apps/web/lib/linkmender/busca.test.ts
+
+### 6. https://www.gov.br/anp/vivo.pdf
+
+```diff
+- href="https://www.gov.br/anp/vivo.pdf"
++ href="https://www.gov.br/anp/pt-br"
+```
+
+Confianca: media
+Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
+Origem: apps/web/lib/linkmender/pipeline.test.ts
 
 ## Quebrados e redirecionados sem proposta
 
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (206) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
 - https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
 - https://exemplo.org/a (404) — dominio nao governamental — correcao manual
@@ -113,11 +125,13 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
+- https://guaicuy.org.br/biblioteca/publicacoes/cinco-anos-do-desastre-crime-da-vale/ (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://www.controlepopular.com.br (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://www.sinesp.mg.gov.br (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
