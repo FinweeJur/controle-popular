@@ -1,5 +1,20 @@
 # Auditoria Visual e Responsividade Mobile (375x1200px)
 
+> **Tipo:** RELATORIO
+> **Domínio:** frontend
+> **Última medição:** 2026-09-28 (20 rotas auditadas com 375px exatos de viewport, zero overflow horizontal)
+> **Leitura estimada:** curta (< 5 min)
+> **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [README.md](../README.md)
+> **Palavras-chave:** mobile, responsividade, 375px, overflow horizontal, auditoria visual, chrome headless, prints
+
+## Sumário
+
+- [Dados da execução](#dados-da-execução)
+- [Galeria de capturas móveis](#-galeria-de-capturas-móveis)
+- [Correções realizadas na auditoria](#️-correções-realizadas-na-auditoria)
+
+## Dados da execução
+
 > **Data de execução:** 28/09/2026  
 > **Metodologia:** Captura automatizada via Chrome Headless com emulação de viewport mobile (375x1200px, DPR=2, mobile=true).  
 > **Resultado Geral:** 20 de 20 rotas auditadas com **375px exatos** de largura de viewport (zero overflow horizontal).
