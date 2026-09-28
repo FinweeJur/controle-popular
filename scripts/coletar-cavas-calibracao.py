@@ -35,6 +35,13 @@ Rodar:
     python scripts/coletar-cavas-calibracao.py --tipo negativo --limite 5000
     python scripts/coletar-cavas-calibracao.py --exporta          # só reexporta
 
+2a UF (Goiás) — mesma máquina, SEMPRE depois de fechar a rodada de MG
+(um escritor por checkpoint; dois coletores brigam pelo arquivo):
+    python scripts/coletar-cavas-calibracao.py --cenas cenas-go.json \
+        --alvos scripts/dados/cavas-go/positivos-go.json \
+        --exclusao scripts/dados/cavas-go/exclusao-go-bbox.json \
+        --ext -53.0 -19.5 -45.5 -13.5 --limite 2000
+
 ## Fonte e licenca
 
 - Poligonais e fases: https://plataforma.monitormineracao.mapbiomas.org/
@@ -158,8 +165,12 @@ def wfs_paginas(cql: str, max_features: int = 2500, so_geom: bool = False) -> li
     return features
 
 
-def carregar_positivos() -> list[dict]:
-    """Poligonais MG das fases extrativas (cache local por página)."""
+def carregar_positivos(alvos: Path | None = None) -> list[dict]:
+    """Alvos positivos: poligonais MG das fases extrativas (cache local
+    por página) ou arquivo pronto da 2ª UF (`--alvos`, ex. o
+    `scripts/dados/cavas-go/positivos-go.json` da outra máquina)."""
+    if alvos is not None:
+        return json.loads(Path(alvos).read_text(encoding="utf-8"))
     arq = CACHE / "positivos-mg.json"
     if arq.exists():
         return json.loads(arq.read_text(encoding="utf-8"))
@@ -186,9 +197,12 @@ def carregar_positivos() -> list[dict]:
     return out
 
 
-def carregar_exclusao() -> list[tuple[float, float, float, float]]:
-    """Bboxes (com margem) de TODO polígono SIGMINE de MG + classe mineração
-    do MapBiomas fora do cadastro. Usado só para sortear negativos."""
+def carregar_exclusao(exclusao: Path | None = None) -> list[tuple[float, float, float, float]]:
+    """Bboxes (com margem) de TODO polígono SIGMINE + classe mineração
+    do MapBiomas fora do cadastro. Usado só para sortear negativos.
+    `exclusao` (--exclusao) lê um arquivo pronto (2ª UF) sem ir ao WFS."""
+    if exclusao is not None:
+        return [tuple(b) for b in json.loads(Path(exclusao).read_text(encoding="utf-8"))]
     arq = CACHE / "exclusao-mg-bbox.json"
     if arq.exists():
         return [tuple(b) for b in json.loads(arq.read_text(encoding="utf-8"))]
@@ -306,9 +320,14 @@ def rejeitado_indice(pt, idx: dict, celula: float = 0.5) -> bool:
 
 # ---------------------------------------------------------------- STAC / cenas
 
-def buscar_cenas() -> list[dict]:
-    """Cenas CBERS-4A/WPM de MG (18 meses), com paginação por token."""
-    arq = CACHE / "cenas-mg.json"
+def buscar_cenas(arquivo: str = "cenas-mg.json") -> list[dict]:
+    """Cenas CBERS-4A/WPM (18 meses), com paginação por token.
+
+    `arquivo` é o nome dentro do cache: o padrão é MG; para a 2ª UF use
+    `cenas-go.json` (coletor `scripts/etl/cavas/coletar-cenas-go.py`).
+    O fetch por token só existe para MG — o arquivo de GO já vem pronto.
+    """
+    arq = CACHE / arquivo
     if arq.exists():
         return json.loads(arq.read_text(encoding="utf-8"))
     body = {"collections": [COLECAO],
@@ -647,6 +666,17 @@ def principal() -> int:
     ap.add_argument("--max-nuvem", type=float, default=0.20)
     ap.add_argument("--tentativas", type=int, default=3, help="cenas por recorte")
     ap.add_argument("--semente", type=int, default=42)
+    ap.add_argument("--cenas", default="cenas-mg.json",
+                    help="arquivo de cenas no cache (2a UF: cenas-go.json)")
+    ap.add_argument("--alvos", type=Path, default=None,
+                    help="JSON pronto de alvos positivos (2a UF); sem arg, busca MG no WFS")
+    ap.add_argument("--exclusao", type=Path, default=None,
+                    help="JSON pronto de bboxes de exclusao (2a UF); sem arg, monta o de MG")
+    ap.add_argument("--ext", type=float, nargs=4,
+                    default=[MG_EXT["minlon"], MG_EXT["minlat"],
+                             MG_EXT["maxlon"], MG_EXT["maxlat"]],
+                    metavar=("MINLON", "MINLAT", "MAXLON", "MAXLAT"),
+                    help="bbox de sorteio de negativos (padrao: MG)")
     ap.add_argument("--exporta", action="store_true", help="só reexporta o manifesto")
     args = ap.parse_args()
 
@@ -662,7 +692,7 @@ def principal() -> int:
     ja_neg = sum(1 for i in itens if i["tipo"] == "negativo")
 
     print("carregando cenas STAC...", flush=True)
-    cenas = buscar_cenas()
+    cenas = buscar_cenas(args.cenas)
 
     rng = random.Random(args.semente)
     pendentes_pos: list[dict] = []
@@ -670,8 +700,8 @@ def principal() -> int:
 
     if args.tipo in ("ambos", "positivo"):
         print("carregando positivos (fases extrativas MG)...", flush=True)
-        pos = carregar_positivos()
-        print(f"  positivos MG: {len(pos)} | ja no checkpoint: {ja_pos}", flush=True)
+        pos = carregar_positivos(args.alvos)
+        print(f"  alvos: {len(pos)} | ja no checkpoint: {ja_pos}", flush=True)
         rng.shuffle(pos)
         # agrupa por cena: reaproveita os 3 arquivos abertos (cache) por cena
         cenas_bboxes = [(c, _primeiro_anel(c.get("geom") or {})) for c in cenas]
@@ -690,7 +720,7 @@ def principal() -> int:
         pendentes_pos = pos
     if args.tipo in ("ambos", "negativo"):
         print("carregando exclusao para negativos...", flush=True)
-        exclusao = carregar_exclusao()
+        exclusao = carregar_exclusao(args.exclusao)
         print(f"  bboxes de exclusao: {len(exclusao)}", flush=True)
         idx = montar_indice(exclusao)
         print(f"  celulas do indice: {len(idx)}", flush=True)
@@ -698,10 +728,12 @@ def principal() -> int:
         reserva = max(alvo_total * 3, alvo_total + 20)
         n = 0
         tent = 0
+        ext = {"minlon": args.ext[0], "minlat": args.ext[1],
+               "maxlon": args.ext[2], "maxlat": args.ext[3]}
         while n < reserva and tent < alvo_total * 400 + 4000:
             tent += 1
-            pt = (rng.uniform(MG_EXT["minlon"], MG_EXT["maxlon"]),
-                  rng.uniform(MG_EXT["minlat"], MG_EXT["maxlat"]))
+            pt = (rng.uniform(ext["minlon"], ext["maxlon"]),
+                  rng.uniform(ext["minlat"], ext["maxlat"]))
             if rejeitado_indice(pt, idx):
                 continue
             pendentes_neg.append(pt)
