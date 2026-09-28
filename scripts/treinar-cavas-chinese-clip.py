@@ -23,14 +23,44 @@ REGRA DE OURO DO SPLIT — POR CENA, NUNCA ALEATÓRIO POR IMAGEM:
 
 O que este script faz:
   - lê checkpoint.jsonl + JPGs (valida nuvem <= 0.20; 1=positivo,
-    0=negativo);
-  - split por cena (acima);
+    0=negativo) UMA VEZ SÓ, no início do processo. Esse é o SNAPSHOT:
+    a coleta de negativos roda em paralelo com o treino e o disco
+    cresce sob os pés do script; reler o jsonl no meio do caminho
+    faria o holdout e o treino mudarem de composição sem ninguém ver;
+  - confere a integridade dos JPGs do snapshot (abre e decodifica cada
+    um, ~8 s para 2,1 mil imagens): um JPEG meio-escrito pela coleta
+    paralela derrubaria o treino na metade da época;
+  - split por cena (acima) FIXADO em
+    scripts/.cache/cavas-treino/split.json — o holdout vira lista
+    fechada de arquivos e o treino aceita os recortes novos da coleta,
+    desde que não sejam de cena do holdout (vedação por cena). Sem
+    esse arquivo, uma reexecução com --so-avaliar mediria num holdout
+    diferente do usado no treino (a coleta teria crescido) e a
+    comparação seria fraude sem querer;
   - aumento de dados (flip H/V, rotação 90°, zoom leve) só no treino;
   - fine-tune com fp16/AMP, batch pequeno + gradient accumulation,
     LR cosine com warmup, early stop por F1 de validação;
+  - estratégia de desbalanceamento (~18 positivos para cada negativo,
+    a questão central destes dados) via --estrategia:
+      * peso        — BCEWithLogitsLoss(pos_weight = neg/pos): a
+                      classe maioria (positivo) pesa neg/pos dentro do
+                      loss, igualando a contribuição total das duas
+                      classes sem repetir imagem nenhuma;
+      * sobreamostragem — WeightedRandomSampler com peso 1/n_classe:
+                      cada época sorteia metade positivos e metade
+                      negativos (os ~70 negativos são re-vistos ~12×
+                      por época, cada vez com aumento aleatório);
+      * nenhuma     — loss puro, controle do experimento;
   - checkpoint em Temp (nunca no repo), resumível com --continuar;
-  - métricas no holdout: precisão (gate >= 70%), recall, F1,
-    acurácia, matriz de confusão e varredura de limiar.
+  - avaliação no holdout: curva precisão×recall varrendo o limiar de
+    decisão de 0,05 a 0,95 (passo 0,01, salva inteira em
+    metricas.json); o limiar é escolhido AUTOMATICAMENTE como o de
+    MAIOR RECALL entre os que cumprem precisão >= 70% (o gate do
+    plano); matriz de confusão impressa no limiar escolhido e no 0,5;
+  - linha de base zero-shot (par de textos B, o mesmo medido pelo
+    Agente B) calculada no MESMO holdout com os pesos BASE do modelo —
+    antes de qualquer fine-tune tocar nos pesos — para a comparação
+    ser justa.
 
 Pesos: só model.safetensors (o pytorch_model.bin NÃO pode ser lido com
 torch.load no torch 2.5.1 — CVE-2025-32434). O script recusa rodar sem
@@ -44,17 +74,26 @@ Compatibilidade transformers 5.5.0 (medido nesta máquina):
     vocabulário cai para 5 tokens e tudo vira [UNK]).
 
 Exemplos:
-    # smoke test (2 épocas, 48 recortes atuais)
+    # smoke test (2 épocas, poucos recortes)
     python scripts/treinar-cavas-chinese-clip.py --epocas 2 --batch 4
+
+    # treino real, estratégia de pesos (default)
+    python scripts/treinar-cavas-chinese-clip.py --epocas 8 --batch 4 \
+        --acum 2 --lr 2e-5 --saida <dir em Temp>
+
+    # mesmo treino, competindo com sobreamostragem dos negativos
+    python scripts/treinar-cavas-chinese-clip.py --epocas 8 --batch 4 \
+        --acum 2 --lr 2e-5 --estrategia sobreamostragem --saida <dir>
 
     # retomar de onde parou
     python scripts/treinar-cavas-chinese-clip.py --epocas 8 --continuar
 
-    # só avaliar o melhor checkpoint no holdout
+    # só avaliar o melhor checkpoint no holdout (split lido do split.json)
     python scripts/treinar-cavas-chinese-clip.py --sem-treino
 """
 
 import argparse
+import gc
 import json
 import math
 import random
@@ -64,11 +103,16 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
+# Nota de ambiente (medido nesta máquina): o torch 2.5.1 de Windows NÃO
+# aceita PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True (é Linux) —
+# setar aqui só imprime UserWarning. O alívio real para a fragmentação
+# nesta GPU de 4 GiB compartilhada é empty_cache() nos caminhos de OOM.
+
 import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
 from transformers import ChineseCLIPModel, ChineseCLIPProcessor
 from transformers.optimization import get_cosine_schedule_with_warmup
 
@@ -87,12 +131,39 @@ DEFAULT_DADOS = (
     Path(__file__).resolve().parent.parent
     / "scripts" / ".cache" / "cavas-calibracao"
 )
+# Único arquivo novo que este script escreve dentro do repo: o split
+# fixo. Fica em .cache (não versionado) e é o que impede o holdout de
+# mudar quando a coleta paralela de negativos cresce.
+SPLIT_PADRAO = (
+    Path(__file__).resolve().parent.parent
+    / "scripts" / ".cache" / "cavas-treino" / "split.json"
+)
+
+# Par de textos B — a linha de base zero-shot medida pelo Agente B
+# (F1 0,923 num holdout pequeno). USAR OS MESMOS TEXTOS aqui, senão a
+# comparação fine-tune × zero-shot não vale nada.
+TEXTO_ZERO_SHOT_B = {
+    "nome": "B: solo-exposto x cobertura-vegetal",
+    "positivos": [
+        "solo exposto cavado por máquinas, áreas mineradas",
+        "terra movimentada, taludes, poços de mineração",
+    ],
+    "negativos": [
+        "campo verde, pastagem, cobertura vegetal contínua",
+        "lavoura ordenada, vegetação saudável",
+    ],
+}
 
 
 # ---------------------------------------------------------------- dados ----
 
 def carregar_registros(dados: Path, nuvem_max: float = NUVEM_MAX):
-    """Lê checkpoint.jsonl + confere os JPGs. Retorna lista de dicts."""
+    """Lê checkpoint.jsonl + confere os JPGs. Retorna lista de dicts.
+
+    SNAPSHOT: lê o jsonl UMA vez, na chamada. A coleta de negativos
+    roda em paralelo e só acrescenta linhas — quem chama esta função no
+    início do processo fica com a amostra congelada daquele instante.
+    """
     ckp = dados / "checkpoint.jsonl"
     if not ckp.exists():
         raise SystemExit(
@@ -165,6 +236,42 @@ def carregar_registros(dados: Path, nuvem_max: float = NUVEM_MAX):
             "Métricas de precisão não significam nada com uma classe só."
         )
     return registros
+
+
+def validar_integridade(registros):
+    """Abre e decodifica cada JPG do snapshot; devolve só os íntegros.
+
+    POR QUÊ: a coleta de negativos está gravando em paralelo. Entre o
+    jsonl e o disco pode existir um JPEG ainda meio-escrito; ele passa
+    pela checagem de existência (só testa Path.exists) e estoura no
+    meio da época, perdendo o trabalho. Custo medido: ~8 s para 2,1
+    mil imagens de 512x512 — barato perto de 8 épocas de treino.
+    """
+    quebrados, ok = [], 0
+    t0 = time.time()
+    for r in registros:
+        try:
+            img = Image.open(r["arquivo"])
+            img.load()          # decodifica de verdade, não só o cabeçalho
+            img.close()
+            ok += 1
+        except Exception as e:  # noqa: BLE001 — qualquer erro de PIL derruba o treino
+            quebrados.append((r["arquivo"], str(e)))
+    if quebrados:
+        print(f"  AVISO: {len(quebrados)} JPG(s) ilegível(is) fora do snapshot:")
+        for caminho, erro in quebrados[:5]:
+            print(f"    {Path(caminho).name}: {erro}")
+        print("  (provável arquivo meio-escrito pela coleta paralela)")
+    print(
+        f"Integridade do snapshot: {ok}/{len(registros)} JPGs decodificados "
+        f"em {time.time() - t0:.1f}s"
+    )
+    if ok == 0:
+        raise SystemExit("Nenhum JPG íntegro — snapshot inutilizável.")
+    if not quebrados:
+        return registros
+    ruins = {q[0] for q in quebrados}
+    return [r for r in registros if r["arquivo"] not in ruins]
 
 
 def split_por_cena(registros, frac_val=0.2, seed=42):
@@ -282,6 +389,167 @@ def split_por_cena(registros, frac_val=0.2, seed=42):
     return idx_treino, idx_val, info
 
 
+# ------------------------------------------- split fixo (split.json) ----
+
+def _relativo(registros, i):
+    """Chave estável de um recorte: 'positivo/hash.jpg' (sem caminho absoluto)."""
+    r = registros[i]
+    return f"{r['tipo']}/{Path(r['arquivo']).name}"
+
+
+def salvar_split(caminho: Path, registros, idx_treino, idx_val, info):
+    """Grava o split por cena: lista FECHADA do holdout (o treino cresce).
+
+    POR QUÊ: a coleta de negativos está rodando AGORA, em paralelo.
+    Sem este arquivo, o próximo --so-avaliar releria o jsonl já
+    crescendo, recalcularia outro holdout e publicaria uma métrica em
+    um conjunto que o treino nem viu — número bonito e sem significado.
+    A lista de treino também é gravada, mas como PROVENIÊNCIA: quem
+    decide o treino depois é a regra "todo o resto que não é cena de
+    holdout" (ver carregar_split).
+    """
+    doc = {
+        "versao": 1,
+        "criado_em": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "motivo": (
+            "holdout imutável: a coleta de negativos cresce em paralelo; "
+            "sem esta lista o holdout mudaria entre execuções"
+        ),
+        "seed": info.get("seed"),
+        "frac_val": info.get("frac_val"),
+        "info": info,
+        "treino": [_relativo(registros, i) for i in idx_treino],
+        "val": [_relativo(registros, i) for i in idx_val],
+    }
+    caminho = Path(caminho)
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(
+        json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8"
+    )
+    print(
+        f"Split fixado em {caminho} "
+        f"({len(doc['treino'])} treino / {len(doc['val'])} holdout)"
+    )
+
+
+def carregar_split(caminho: Path, registros):
+    """Lê split.json: holdout FIXO, treino que CRESCE com a coleta.
+
+    Regra que resolve o impasse entre "holdout não pode mudar" e "os
+    negativos novos não podem ser jogados fora":
+
+      * holdout = exatamente a lista de arquivos do arquivo, sem
+        acrescentar nem tirar ninguém;
+      * treino  = todo o resto do snapshot, EXCETO recorte de cena que
+        esteja no holdout (vedação por cena — sem ela, um negativo
+        novo colhido numa cena de holdout iria treinar o modelo a
+        acertar a prova);
+
+    Assim a coleta paralela só fortalece o treino e nunca contamina a
+    avaliação. Recortes do holdout que sumiram do disco viram aviso;
+    saída dura se o holdout ou o treino ficar vazio ou sem uma classe.
+    """
+    doc = json.loads(Path(caminho).read_text(encoding="utf-8"))
+    indice = {}
+    for i, r in enumerate(registros):
+        indice.setdefault(_relativo(registros, i), i)
+    val_lista = doc.get("val", [])
+    val_set = set(val_lista)
+    faltando = [x for x in val_lista if x not in indice]
+    idx_val = sorted({indice[x] for x in val_lista if x in indice})
+    if not idx_val:
+        raise SystemExit(
+            f"split.json ({caminho}) sem nenhum arquivo do holdout "
+            "presente no snapshot — não dá para avaliar. Apague o "
+            "split.json para remontar o split (o holdout será outro)."
+        )
+    # vedações de cena: cenas do holdout nunca entram no treino
+    cenas_val = set(doc.get("info", {}).get("cenas_val_lista", []))
+    cenas_val |= {registros[i]["cena"] for i in idx_val}
+    idx_treino, por_cena_vetada, no_treino_novo = [], 0, 0
+    treino_salvo = set(doc.get("treino", []))
+    for i in range(len(registros)):
+        rel = _relativo(registros, i)
+        if rel in val_set:
+            continue
+        if registros[i]["cena"] in cenas_val:
+            por_cena_vetada += 1
+            continue
+        idx_treino.append(i)
+        if rel not in treino_salvo:
+            no_treino_novo += 1
+    if not idx_treino:
+        raise SystemExit(
+            f"split.json ({caminho}) deixou o treino vazio — remonte o split."
+        )
+    info = dict(doc.get("info", {}))
+
+    def conta(idx):
+        p = sum(1 for i in idx if registros[i]["rotulo"] == 1)
+        return p, len(idx) - p
+
+    tp, tn = conta(idx_treino)
+    vp, vn = conta(idx_val)
+    cenas_t = {registros[i]["cena"] for i in idx_treino}
+    cenas_v = {registros[i]["cena"] for i in idx_val}
+    info.update({
+        "cenas_treino": len(cenas_t), "cenas_val": len(cenas_v),
+        "n_treino": len(idx_treino), "n_val": len(idx_val),
+        "treino_pos": tp, "treino_neg": tn,
+        "val_pos": vp, "val_neg": vn,
+        "cenas_val_lista": sorted(cenas_v),
+        "arquivo_split": str(Path(caminho)),
+        "holdout_fixo": True,
+    })
+    print(
+        f"Split FIXO lido de {caminho} (criado em {doc.get('criado_em')}): "
+        f"treino {len(idx_treino)} imgs / {len(cenas_t)} cenas "
+        f"({tp} pos, {tn} neg) | holdout {len(idx_val)} imgs / "
+        f"{len(cenas_v)} cenas ({vp} pos, {vn} neg)"
+    )
+    if faltando:
+        print(f"  AVISO: {len(faltando)} arquivo(s) do holdout sumiram do "
+              "snapshot — o holdout encolheu")
+    if no_treino_novo:
+        n_pos = sum(1 for i in idx_treino
+                    if _relativo(registros, i) not in treino_salvo
+                    and registros[i]["rotulo"] == 1)
+        print(
+            f"  coleta que cresceu: {no_treino_novo} recorte(s) novo(s) "
+            f"entraram no TREINO ({n_pos} pos, "
+            f"{no_treino_novo - n_pos} neg); holdout intocado"
+        )
+    if por_cena_vetada:
+        print(
+            f"  {por_cena_vetada} recorte(s) de cena do holdout ficaram "
+            "FORA do treino (vedação por cena)"
+        )
+    if vp == 0 or vn == 0 or tp == 0 or tn == 0:
+        raise SystemExit(
+            f"split.json sem uma classe de um lado (treino {tp}/{tn}, "
+            f"holdout {vp}/{vn}) — remonte o split."
+        )
+    return idx_treino, idx_val, info
+
+
+def aplicar_split(registros, caminho_split, frac_val, seed):
+    """Split fixo se o arquivo existir; senão calcula POR CENA e grava.
+
+    É a porta de entrada única do split: todo caminho (treino,
+    --so-avaliar) passa por aqui, para que treino e avaliação falem
+    sempre do mesmo conjunto.
+    """
+    caminho_split = Path(caminho_split)
+    if caminho_split.exists():
+        return carregar_split(caminho_split, registros)
+    idx_treino, idx_val, info = split_por_cena(
+        registros, frac_val=frac_val, seed=seed
+    )
+    salvar_split(caminho_split, registros, idx_treino, idx_val, info)
+    info["arquivo_split"] = str(caminho_split)
+    return idx_treino, idx_val, info
+
+
 # ------------------------------------------------------------ métricas ----
 
 def calcular_metricas(y_verdadeiro, y_probabilidade, limiar=0.5):
@@ -310,20 +578,104 @@ def calcular_metricas(y_verdadeiro, y_probabilidade, limiar=0.5):
     }
 
 
-def varredura_limiar(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO):
-    """Maior recall entre os limiares que atingem precisão >= alvo."""
-    melhor = None
-    for l in np.arange(0.05, 1.0, 0.01):
-        m = calcular_metricas(y_verdadeiro, y_probabilidade, limiar=float(l))
-        if m["precisao"] < alvo:
-            continue
-        chave = (m["recall"], m["precisao"])
-        if melhor is None or chave > melhor["chave"]:
-            melhor = {"limiar": m["limiar"], "recall": m["recall"],
-                      "precisao": m["precisao"], "chave": chave}
+def curva_precisao_recall(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO,
+                          inicio=0.05, fim=0.95, passo=0.01):
+    """Curva precisão×recall varrendo o limiar de decisão 0,05→0,95.
+
+    Devolve a curva INTEIRA (91 pontos, passo 0,01) e o limiar
+    escolhido. A escolha é automática e segue o enunciado do gate:
+    MAIOR RECALL entre os limiares cuja precisão >= alvo (70%).
+
+    Por que "maior recall" e não "maior F1": o gate do plano é uma
+    trava de precisão — "quando o detector diz cava, precisa ser cava
+    em 7 de cada 10 vezes". Dentro daquela trava, o que interessa ao
+    rastreamento é pegar o máximo de cavas possível (recall). Escolher
+    F1 solto ignoraria a trava do dono do plano.
+
+    Se NENHUM limiar cumpre a trava, devolve limiar_escolhido=None:
+    gate não passou em lugar nenhum da curva (é um resultado, não um
+    bug — o relatório precisa mostrar isso).
+
+    AVISO de método: o limiar é escolhido no próprio holdout, que é o
+    conjunto usado para reportar a métrica. Isso otimista o número
+    (seleção no teste). O caminho correto, quando houver dados para
+    isso, é calibrar o limiar numa validação e medir no-teste.
+    """
+    pontos, melhor = [], None
+    n = int(round((fim - inicio) / passo))
+    for k in range(n + 1):
+        l = round(inicio + k * passo, 2)
+        m = calcular_metricas(y_verdadeiro, y_probabilidade, limiar=l)
+        pontos.append({c: m[c] for c in
+                       ("limiar", "precisao", "recall", "f1", "acuracia",
+                        "tp", "fp", "fn", "tn")})
+        if m["precisao"] >= alvo:
+            chave = (m["recall"], m["precisao"])
+            if melhor is None or chave > melhor["chave"]:
+                melhor = {"limiar": m["limiar"], "recall": m["recall"],
+                          "precisao": m["precisao"], "chave": chave}
     if melhor:
         melhor.pop("chave")
-    return melhor
+    return {
+        "alvo_precisao": alvo,
+        "intervalo": [inicio, fim],
+        "passo": passo,
+        "n_pontos": len(pontos),
+        "curva": pontos,
+        "limiar_escolhido": melhor,
+    }
+
+
+def imprimir_curva(curva, a_cada=0.05):
+    """Imprime a curva a cada `a_cada` (a inteira fica em metricas.json)."""
+    print(f"  curva precisão×recall ({curva['n_pontos']} pontos de "
+          f"{curva['intervalo'][0]:.2f} a {curva['intervalo'][1]:.2f}, "
+          f"impressa a cada {a_cada:.2f}):")
+    print("    limiar  precisão  recall     F1    tp/fp/fn/tn")
+    for p in curva["curva"]:
+        if abs(round(p["limiar"] / a_cada) * a_cada - p["limiar"]) > 1e-9:
+            continue
+        print(f"    {p['limiar']:5.2f}   {p['precisao']:7.3f}  "
+              f"{p['recall']:6.3f}  {p['f1']:5.3f}  "
+              f"{p['tp']}/{p['fp']}/{p['fn']}/{p['tn']}")
+
+
+def avaliar_holdout(reais, probs, limiar_fixo, titulo):
+    """Fecha a avaliação do holdout: limiar fixo, curva PR e limiar do gate.
+
+    Três leituras da mesma predição, de propósito:
+      1. no limiar fixo (0,5 por padrão) — régua simples, comparável
+         com qualquer outro trabalho;
+      2. a curva inteira 0,05→0,95 — para o leitor ver o trade-off
+         precisão×recall sem acreditar na palavra de ninguém;
+      3. no limiar ESCOLHIDO (maior recall com precisão >= 70%) — é
+         ele que responde o gate do plano.
+
+    Retorna (metricas_limiar_fixo, curva, metricas_limiar_escolhido,
+    gate) e imprime tudo, com matriz de confusão nos dois limiares.
+    """
+    m_fixo = calcular_metricas(reais, probs, limiar=limiar_fixo)
+    imprimir_metricas(m_fixo, f"{titulo} · limiar fixo {limiar_fixo:.2f}")
+    curva = curva_precisao_recall(reais, probs)
+    imprimir_curva(curva)
+    escolhido = curva["limiar_escolhido"]
+    if escolhido is None:
+        print(
+            f"  LIMIAR ESCOLHIDO: nenhum — nenhum limiar de "
+            f"{curva['intervalo'][0]:.2f} a {curva['intervalo'][1]:.2f} "
+            f"cumpre precisão >= {ALVO_PRECISAO:.0%}"
+        )
+        return m_fixo, curva, None, "NÃO PASSOU"
+    m_lim = calcular_metricas(reais, probs, limiar=escolhido["limiar"])
+    gate = imprimir_metricas(
+        m_lim, f"{titulo} · LIMIAR ESCOLHIDO {escolhido['limiar']:.2f}"
+    )
+    print(
+        f"  limiar escolhido {escolhido['limiar']:.2f} = maior recall "
+        f"({escolhido['recall']:.3f}) entre os que cumprem precisão "
+        f">= {ALVO_PRECISAO:.0%} (aqui {escolhido['precisao']:.3f})"
+    )
+    return m_fixo, curva, m_lim, gate
 
 
 def imprimir_metricas(m, titulo, alvo=ALVO_PRECISAO):
@@ -452,6 +804,10 @@ def fazer_collate(processador):
 
 # -------------------------------------------------------- avaliação ----
 
+# Sem @torch.no_grad aqui de propósito: a época de treino (linha ~1230)
+# chama esta função para FINO-TUNAR — precisa do gradiente fluindo pelo
+# vision tower. Os caminhos de avaliação (avaliar, embeddings_texto,
+# avaliar_zero_shot) carregam o no_grad deles.
 def extrair_embedding_imagem(modelo, pixel_values):
     """pooler_output projetado em 512 dim e normalizado (L2)."""
     out = modelo.get_image_features(pixel_values=pixel_values)
@@ -471,6 +827,199 @@ def avaliar(modelo, cabeca, loader, dispositivo, uso_amp, limiar=0.5):
         probs.extend(torch.sigmoid(logits).cpu().tolist())
         reais.extend(lote["labels"].tolist())
     return calcular_metricas(reais, probs, limiar=limiar), probs, reais
+
+
+@torch.no_grad()
+def embeddings_texto(modelo, processador, textos, dispositivo):
+    """Embeddings L2-normalizados dos textos (mesmo pipeline do zero-shot."""
+    enc = processador(text=textos, return_tensors="pt", padding=True,
+                      truncation=True)
+    enc = {k: v.to(dispositivo) for k, v in enc.items()}
+    uso_amp = torch.amp.autocast("cuda", dtype=torch.float16,
+                                 enabled=dispositivo.type == "cuda")
+    with uso_amp:
+        out = modelo.get_text_features(**enc)
+    return F.normalize(out.pooler_output, dim=-1).float().cpu()
+
+
+def vram_livre_gib():
+    """Memória livre da GPU em GiB (99.0 se não houver CUDA)."""
+    if not torch.cuda.is_available():
+        return 99.0
+    return torch.cuda.mem_get_info()[0] / 2**30
+
+
+def esperar_vram(min_gib, paciencia_s=120, intervalo_s=3, estaveis=3):
+    """Espera até ter `min_gib` livres na GPU, no máximo `paciencia_s`.
+
+    POR QUÊ: neste PC há processos de outras sessões (geração de imagem,
+    ollama, coleta de negativos) que sobem e descem da GPU a qualquer
+    momento. OOM aqui é quase sempre disputa, não tamanho de batch — e
+    disputa passa. Dormir e conferir custa segundos; abortar um treino
+    custa minutos.
+
+    POR QUÊ `estaveis` amostras seguidas: a memória livre oscila em
+    segundos (rajada do outro processo entre dois vales). Uma leitura
+    alta isolada pode ser justamente o vale entre rajadas — lançar o
+    forward nesse instante dá OOM logo depois, mesmo com "VRAM
+    liberada". Exigir a mesma folga em `estaveis` amostras seguidas
+    filtra a rajada.
+
+    Devolve True se conseguiu a memória, False se estourou a paciência.
+    """
+    t0 = time.time()
+    seguidas = 0
+    while time.time() - t0 < paciencia_s:
+        if vram_livre_gib() >= min_gib:
+            seguidas += 1
+            if seguidas >= estaveis:
+                return True
+        else:
+            seguidas = 0
+        time.sleep(intervalo_s)
+    return False
+
+
+def tentar_oom(rotina, onde, tentativas=5, min_gib=2.0, paciencia_s=240,
+               ao_falhar=None):
+    """Executa `rotina`; se estourar CUDA OOM, limpa, espera VRAM e repete.
+
+    Detalhe que custou um treino inteiro descobrir: NÃO se pode limpar
+    memória DENTRO do bloco `except`. Enquanto a exceção está sendo
+    tratada, o traceback dela ainda segura os frames das camadas do
+    modelo — e com eles os activations de 2+ GiB. Rodar empty_cache ali
+    dentro não libera nada, e a próxima tentativa nasce endividada.
+    Por isso o ajuste (`ao_falhar`) e a limpeza rodam DEPOIS do bloco
+    except, quando a exceção já foi descartada.
+
+    `rotina` precisa ser callable de zero argumentos.
+    `ao_falhar(n_tentativa)` é chamado após cada falha (ex.: cortar o
+    batch) — também fora do except, de propósito.
+    """
+    for t in range(tentativas + 1):
+        try:
+            return rotina()
+        except torch.OutOfMemoryError:
+            if t >= tentativas:
+                raise
+            # só sinaliza: limpar aqui dentro não adianta (ver docstring)
+        # except encerrado → traceback solto, agora sim dá para liberar
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        if ao_falhar is not None:
+            ao_falhar(t + 1)
+        conseguiu = esperar_vram(min_gib, paciencia_s=paciencia_s)
+        nosso = (torch.cuda.memory_allocated() / 2**30
+                 if torch.cuda.is_available() else 0.0)
+        print(
+            f"  CUDA OOM em {onde}: tentativa {t + 1}/{tentativas} falhou; "
+            f"livre agora {vram_livre_gib():.2f} GiB (nosso alocado "
+            f"{nosso:.2f} GiB); esperando {min_gib} GiB livres "
+            f"{'por 3 amostras' if conseguiu else f'— esgotou {paciencia_s} s'}"
+        )
+    raise RuntimeError("inalcançável")
+
+
+# POR QUE o no_grad: sem ele o forward do zero-shot monta grafo de
+# autograd e a lista `embs` (tensors .cpu() ainda com grad_fn) segura os
+# nós CUDA vivos até o fim do laço. A memória sobe lote a lote e o OOM
+# estoura mesmo com ~2,4 GiB livres e batch 1 — parecia disputa de GPU,
+# mas era gradiente onde não havia treino. Medido em 28/09.
+@torch.no_grad()
+def avaliar_zero_shot(modelo, processador, registros, dispositivo, batch=16):
+    """Linha de base SEM treino, no MESMO holdout que o fine-tune.
+
+    Regra do Agente B (scripts/zero-shot-cavas.py), par de textos B:
+    a imagem é "cava" quando a similaridade média com os textos
+    positivos supera a média com os negativos. Sem limiar treinado —
+    é por isso que o número é a régua honesta do que o modelo sabe
+    sem tocar em peso nenhum.
+
+    TEM que ser chamada com o modelo ainda nos pesos BASE (antes de
+    carregar qualquer checkpoint de fine-tune): embedding de modelo já
+    afinado não é zero-shot, é modelo treinado disfarçado.
+
+    Retorna as métricas no limiar 0.5 sobre a regra em 0/1, mais a
+    margem (sim_pos - sim_neg) para a curva do zero-shot.
+    """
+    modelo.eval()
+    uso_amp = torch.amp.autocast("cuda", dtype=torch.float16,
+                                 enabled=dispositivo.type == "cuda")
+    estado = {"batch": max(1, int(batch)), "reducoes": 0}
+
+    def passar():
+        """Codifica as imagens do holdout em embeddings 512 dim."""
+        dl = DataLoader(
+            DatasetCavas(registros, treino=False), batch_size=estado["batch"],
+            shuffle=False, num_workers=0, collate_fn=fazer_collate(processador),
+        )
+        embs = []
+        for lote in dl:
+            pv = lote["pixel_values"].to(dispositivo, non_blocking=True)
+            with uso_amp:
+                embs.append(extrair_embedding_imagem(modelo, pv).float().cpu())
+        return embs
+
+    def cortar_batch(_tentativa):
+        """Reduz o batch pela metade a cada falha (até 3 cortes)."""
+        if estado["reducoes"] >= 3 or estado["batch"] <= 1:
+            return
+        estado["reducoes"] += 1
+        antigo = estado["batch"]
+        estado["batch"] = max(1, antigo // 2)
+        print(f"  CUDA OOM no zero-shot: batch {antigo} → "
+              f"{estado['batch']} (corte {estado['reducoes']}/3)")
+
+    lista = tentar_oom(passar, "zero-shot (imagens do holdout)",
+                       ao_falhar=cortar_batch)
+    emb_img = torch.cat(lista) if lista else torch.empty(0, 512)
+
+    par = TEXTO_ZERO_SHOT_B
+    textos = par["positivos"] + par["negativos"]
+    emb_txt = tentar_oom(
+        lambda: embeddings_texto(modelo, processador, textos, dispositivo),
+        "zero-shot (textos)",
+    )
+    n_pos_t = len(par["positivos"])
+    sim = emb_img @ emb_txt.T
+    margem = (sim[:, :n_pos_t].mean(dim=1) - sim[:, n_pos_t:].mean(dim=1))
+    pred = (margem > 0).numpy().astype(int)   # regra: sim_pos > sim_neg
+    rotulos = [r["rotulo"] for r in registros]
+    m = calcular_metricas(rotulos, pred, limiar=0.5)
+    m["regra"] = "media_sim(textos_pos) > media_sim(textos_neg)"
+    m["par_textos"] = par["nome"]
+    return m, margem.numpy().tolist(), rotulos
+
+
+def curva_zero_shot(rotulos, margens, alvo=ALVO_PRECISAO):
+    """Mesma lógica da curva PR, mas varrendo limiar na MARGEM do zero-shot.
+
+    A margem (sim_pos - sim_neg) não vive em 0..1, então em vez de
+    varrer 0,05→0,95 fixo varre os quantis 5%..95% das margens
+    observadas — mesma densidade de pontos, domínio adequado. Sem isso
+    o zero-shot teria um único ponto e a comparação com o fine-tune
+    (que escolhe limiar) seria desleal na mão do fine-tune.
+    """
+    m = np.asarray(margens, dtype=float)
+    if len(m) == 0:
+        return {"curva": [], "limiar_escolhido": None}
+    grade = np.unique(np.quantile(m, np.arange(0.05, 0.951, 0.01)))
+    pontos, melhor, chave_melhor = [], None, None
+    for l in grade:
+        r = calcular_metricas(rotulos, (m > l).astype(int), limiar=0.5)
+        # reescreve o limiar no espaço da margem para o relatório
+        # (0/1 predito com limiar 0.5 é exatamente "margem > l")
+        r["limiar"] = round(float(l), 4)
+        pontos.append({k: r[k] for k in
+                       ("limiar", "precisao", "recall", "f1", "acuracia",
+                        "tp", "fp", "fn", "tn")})
+        if r["precisao"] >= alvo:
+            chave = (r["recall"], r["precisao"])
+            if chave_melhor is None or chave > chave_melhor:
+                melhor, chave_melhor = dict(r), chave
+    return {"alvo_precisao": alvo, "dominio": "margem sim_pos-sim_neg",
+            "curva": pontos, "limiar_escolhido": melhor}
 
 
 # --------------------------------------------------------- treino ----
@@ -531,6 +1080,27 @@ def carregar_checkpoint(caminho, modelo, cabeca, otimizador=None,
     return ck
 
 
+def montar_loaders(treino_ds, val_ds, collate, batch, sampler, embaralhar):
+    """Cria os DataLoaders de treino e validação com o batch dado.
+
+    Separado numa função para o tratador de OOM refazer os dois com
+    batch menor no meio do treino, mantendo amostrador e embaralhamento
+    idênticos (senão a época repetida não seria a mesma época).
+    """
+    treino_dl = DataLoader(
+        treino_ds, batch_size=batch, shuffle=bool(embaralhar),
+        sampler=sampler, num_workers=0, collate_fn=collate,
+        drop_last=False,
+    )
+    # validação com o MESMO batch do treino: ela só faz forward, mas o
+    # pico de VRAM é o que importa quando a GPU é compartilhada
+    val_dl = DataLoader(
+        val_ds, batch_size=batch, shuffle=False, num_workers=0,
+        collate_fn=collate,
+    )
+    return treino_dl, val_dl
+
+
 def treinar(args, registros, idx_treino, idx_val, info_split,
             modelo, processador, dispositivo, saida: Path):
     treino_ds = DatasetCavas([registros[i] for i in idx_treino], treino=True,
@@ -538,13 +1108,50 @@ def treinar(args, registros, idx_treino, idx_val, info_split,
     val_ds = DatasetCavas([registros[i] for i in idx_val], treino=False,
                           seed=args.seed)
     collate = fazer_collate(processador)
-    treino_dl = DataLoader(
-        treino_ds, batch_size=args.batch, shuffle=True, num_workers=0,
-        collate_fn=collate, drop_last=False,
-    )
-    val_dl = DataLoader(
-        val_ds, batch_size=max(args.batch, 8), shuffle=False, num_workers=0,
-        collate_fn=collate,
+
+    # ---- desbalanceamento (~18 positivos por negativo) ----
+    # O problema central destes dados: sem freio, o loss aprende a chamar
+    # tudo de "positivo" e a precisão do gate despenca. Três caminhos
+    # (escolhidos por --estrategia), todos medidos no MESMO split:
+    n_pos = info_split["treino_pos"]
+    n_neg = info_split["treino_neg"]
+    criterio = torch.nn.BCEWithLogitsLoss()
+    sampler, embaralhar = None, True
+    if args.estrategia == "peso":
+        razao = (n_neg / n_pos) if (n_pos and n_neg) else 1.0
+        criterio = torch.nn.BCEWithLogitsLoss(
+            pos_weight=torch.tensor([razao], device=dispositivo)
+        )
+        nota = (
+            f"peso: pos_weight={razao:.4f} — a positiva é a MAIORIA, então "
+            "cada positivo vale só fração de um negativo dentro do loss e "
+            "as duas classes somam contribuição parecida; nenhuma imagem "
+            "é repetida"
+        )
+    elif args.estrategia == "sobreamostragem":
+        pesos = torch.tensor([
+            ((1.0 / n_pos) if r["rotulo"] == 1 else (1.0 / n_neg))
+            if (n_pos and n_neg) else 1.0
+            for r in treino_ds.registros
+        ], dtype=torch.double)
+        gen = torch.Generator()
+        gen.manual_seed(args.seed)
+        sampler = WeightedRandomSampler(pesos, num_samples=len(pesos),
+                                        replacement=True, generator=gen)
+        embaralhar = False  # sampler e shuffle=True são mutuamente exclusivos
+        vistos = len(pesos) / 2 / max(1, n_neg)
+        nota = (
+            f"sobreamostragem: sorteio metade/metade; os {n_neg} negativos "
+            f"do treino são re-vistos ~{vistos:.1f}x por época, cada vez "
+            "com aumento aleatório diferente (é o que segura o overfitting "
+            "do negativo repetido)"
+        )
+    else:
+        nota = "nenhuma: loss puro e sorteio uniforme (controle do teste)"
+    print(f"Estratégia de desbalanceamento [{args.estrategia}]: {nota}")
+
+    treino_dl, val_dl = montar_loaders(
+        treino_ds, val_ds, collate, args.batch, sampler, embaralhar
     )
 
     congelar_texto(modelo)
@@ -573,12 +1180,8 @@ def treinar(args, registros, idx_treino, idx_val, info_split,
     )
     escalador = torch.amp.GradScaler("cuda", enabled=dispositivo.type == "cuda")
 
-    n_pos = info_split["treino_pos"]
-    n_neg = info_split["treino_neg"]
-    pos_weight = torch.tensor(
-        [(n_neg / n_pos) if n_pos else 1.0], device=dispositivo
-    )
-    criterio = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+    # critério (criterio) e amostrador (sampler) já foram montados lá em
+    # cima, no bloco de --estrategia; aqui não se mexe mais neles.
 
     ultimo = saida / "ultimo.pt"
     melhor = saida / "melhor.pt"
@@ -608,8 +1211,22 @@ def treinar(args, registros, idx_treino, idx_val, info_split,
 
     paciencia = args.paciencia
     sem_melhora = 0
+    tentativas_oom = 0
     t_total = time.time()
-    for epoca in range(epoca_inicio, args.epocas):
+    if dispositivo.type == "cuda" and not esperar_vram(2.5, paciencia_s=90):
+        print(
+            f"  AVISO: treinando com {vram_livre_gib():.2f} GiB livres — "
+            "se disputa na GPU derrubar, a época repete sozinha"
+        )
+
+    def rodar_epoca(epoca):
+        """Roda UMA época (treino + validação) e devolve o registro.
+
+        Função aninhada de propósito: ela lê treino_dl/val_dl do escopo
+        de fora A CADA CHAMADA, então quando o tratador de OOM troca os
+        loaders por uns de batch menor, a próxima tentativa já usa o
+        batch novo — sem refatorar nada aqui dentro.
+        """
         modelo.train()
         cabeca.train()
         otimizador.zero_grad(set_to_none=True)
@@ -635,27 +1252,69 @@ def treinar(args, registros, idx_treino, idx_val, info_split,
                 otimizador.zero_grad(set_to_none=True)
                 agendador.step()
         loss_medio = soma_loss / max(1, n_lotes)
+        # tempo só do treino (sem a validação): é ele que serve para
+        # extrapolar o custo de 20 mil imagens, porque a validação tem
+        # tamanho fixo e não escala com o acervo
+        t_treino = time.time() - t0
 
         m_val, probs, reais = avaliar(
             modelo, cabeca, val_dl, dispositivo, uso_amp, limiar=0.5
         )
         vram = (torch.cuda.max_memory_allocated(dispositivo) / 2**30
                 if dispositivo.type == "cuda" else 0.0)
-        lr_atual = otimizador.param_groups[0]["lr"]
         registro = {
             "epoca": epoca,
             "loss_treino": round(loss_medio, 5),
-            "lr": lr_atual,
+            "lr": otimizador.param_groups[0]["lr"],
             "val": m_val,
             "vram_max_gb": round(vram, 3),
+            "segundos_treino": round(t_treino, 1),
+            "segundos_val": round(time.time() - t0 - t_treino, 1),
             "segundos": round(time.time() - t0, 1),
+            "batch": args.batch,
         }
+        return registro, m_val
+
+    for epoca in range(epoca_inicio, args.epocas):
+        # A GPU é compartilhada: se faltar memória, corta o batch ao meio
+        # e REPETE a mesma época — no máximo 3 vezes, depois desiste.
+        while True:
+            try:
+                registro, m_val = rodar_epoca(epoca)
+                break
+            except torch.OutOfMemoryError:
+                tentativas_oom += 1
+                if tentativas_oom > 3:
+                    print("OOM persistente após 3 tentativas — desisto.")
+                    raise
+                # NÃO limpar aqui dentro: o traceback da exceção ainda
+                # segura os frames (e activations) das camadas do modelo
+            # except encerrado → exceção descartada; aí sim limpa e refaz
+            gc.collect()
+            if dispositivo.type == "cuda":
+                torch.cuda.empty_cache()
+            antigo = args.batch
+            if args.batch > 1:
+                args.batch = max(1, args.batch // 2)
+                treino_dl, val_dl = montar_loaders(
+                    treino_ds, val_ds, collate, args.batch, sampler,
+                    embaralhar
+                )
+            esperar_vram(2.0, paciencia_s=120)
+            otimizador.zero_grad(set_to_none=True)
+            print(
+                f"  CUDA OOM na época {epoca + 1}: batch {antigo} → "
+                f"{args.batch} (tentativa {tentativas_oom}/3), VRAM "
+                f"livre {vram_livre_gib():.2f} GiB; a época recomeça"
+            )
         historico.append(registro)
         print(
-            f"Época {epoca + 1}/{args.epocas}: loss={loss_medio:.4f} "
-            f"lr={lr_atual:.2e} | val F1={m_val['f1']:.3f} "
+            f"Época {epoca + 1}/{args.epocas}: "
+            f"loss={registro['loss_treino']:.4f} "
+            f"lr={registro['lr']:.2e} | val F1={m_val['f1']:.3f} "
             f"precisão={m_val['precisao']:.3f} recall={m_val['recall']:.3f} "
-            f"| {registro['segundos']}s VRAM={vram:.2f} GiB"
+            f"| treino {registro['segundos_treino']}s + val "
+            f"{registro['segundos_val']}s VRAM={registro['vram_max_gb']:.2f} GiB"
         )
         if m_val["f1"] > melhor_f1:
             melhor_f1 = m_val["f1"]
@@ -707,7 +1366,20 @@ def main():
     ap.add_argument("--paciencia", type=int, default=3,
                     help="early stop por F1 de validação")
     ap.add_argument("--nuvem-max", type=float, default=NUVEM_MAX)
-    ap.add_argument("--limiar", type=float, default=0.5)
+    ap.add_argument("--limiar", type=float, default=0.5,
+                    help="limiar fixo reportado à parte; o limiar do gate "
+                         "é escolhido na curva PR (ver --estrategia)")
+    ap.add_argument("--estrategia",
+                    choices=("peso", "sobreamostragem", "nenhuma"),
+                    default="peso",
+                    help="como enfrentar o desbalanceamento ~18:1 "
+                         "'peso' = pos_weight no loss (default); "
+                         "'sobreamostragem' = WeightedRandomSampler "
+                         "metade/metade; 'nenhuma' = controle")
+    ap.add_argument("--split", type=Path, default=SPLIT_PADRAO,
+                    help="arquivo JSON que fixa o split por cena; existe = "
+                         "é ele que manda (holdout imutável), não existe = "
+                         "calcula por cena e grava aqui")
     ap.add_argument("--so-cabeca", action="store_true",
                     help="só treina a cabeça linear (backbone congelado)")
     ap.add_argument("--continuar", action="store_true",
@@ -734,19 +1406,64 @@ def main():
     dispositivo = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if dispositivo.type == "cpu":
         print("AVISO: sem CUDA — treino em CPU é lento; rodando em fp32.")
+    else:
+        livre, total = torch.cuda.mem_get_info()
+        print(
+            f"GPU: {torch.cuda.get_device_name(0)} — "
+            f"{livre / 2**30:.2f} GiB livres de {total / 2**30:.2f} GiB "
+            "(GPU compartilhada: OOM aqui costuma ser disputa, não batch)"
+        )
 
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
+    # SNAPSHOT ÚNICO: lê o jsonl uma vez, confere os JPGs e nunca mais
+    # relê. A coleta de negativos continua gravando em paralelo e isto
+    # garante que treino e avaliação falem da mesma amostra.
     registros = carregar_registros(args.dados, nuvem_max=args.nuvem_max)
-    idx_treino, idx_val, info_split = split_por_cena(
-        registros, frac_val=args.frac_val, seed=args.seed
+    registros = validar_integridade(registros)
+    idx_treino, idx_val, info_split = aplicar_split(
+        registros, args.split, args.frac_val, args.seed
+    )
+    print(
+        f"Amostra fixa: {len(registros)} recortes | treino "
+        f"{info_split['treino_pos']} pos/{info_split['treino_neg']} neg em "
+        f"{info_split['cenas_treino']} cenas | holdout "
+        f"{info_split['val_pos']} pos/{info_split['val_neg']} neg em "
+        f"{info_split['cenas_val']} cenas"
     )
 
     modelo, processador = carregar_modelo(args.modelo, dispositivo)
     saida = Path(args.saida)
     saida.mkdir(parents=True, exist_ok=True)
+
+    # Linha de base zero-shot ANTES de qualquer fine-tune: aqui o modelo
+    # ainda está com os pesos base. Depois de treinar() os pesos mudam e
+    # a conta deixaria de ser zero-shot.
+    if dispositivo.type == "cuda" and not esperar_vram(2.5, paciencia_s=90):
+        print(
+            f"  AVISO: GPU com só {vram_livre_gib():.2f} GiB livres "
+            "(outra sessão disputando) — seguindo mesmo assim"
+        )
+    zs_m, zs_margem, zs_rotulos = avaliar_zero_shot(
+        modelo, processador, [registros[i] for i in idx_val], dispositivo,
+        batch=args.batch,
+    )
+    zs_curva = curva_zero_shot(zs_rotulos, zs_margem)
+    print(
+        f"Zero-shot base [{TEXTO_ZERO_SHOT_B['nome']}] no holdout: "
+        f"precisão {zs_m['precisao']:.3f} recall {zs_m['recall']:.3f} "
+        f"F1 {zs_m['f1']:.3f} acurácia {zs_m['acuracia']:.3f} "
+        f"(tp {zs_m['tp']}/fp {zs_m['fp']}/fn {zs_m['fn']}/tn {zs_m['tn']})"
+    )
+    if zs_curva["limiar_escolhido"]:
+        z = zs_curva["limiar_escolhido"]
+        print(
+            f"  zero-shot com limiar na margem ({z['limiar']:+.4f}): "
+            f"precisão {z['precisao']:.3f} / recall {z['recall']:.3f} "
+            f"no gate de {ALVO_PRECISAO:.0%}"
+        )
 
     if args.so_avaliar:
         caminho = saida / "melhor.pt"
@@ -762,29 +1479,32 @@ def main():
         modelo.load_state_dict(ck["modelo"])
         cabeca.load_state_dict(ck["cabeca"])
         val_ds = DatasetCavas([registros[i] for i in idx_val], treino=False)
-        val_dl = DataLoader(val_ds, batch_size=max(args.batch, 8),
+        val_dl = DataLoader(val_ds, batch_size=args.batch,
                             shuffle=False, num_workers=0,
                             collate_fn=fazer_collate(processador))
         uso_amp = torch.amp.autocast(
             "cuda", dtype=torch.float16, enabled=dispositivo.type == "cuda"
         )
-        m, probs, reais = avaliar(modelo, cabeca, val_dl, dispositivo,
-                                  uso_amp, limiar=args.limiar)
-        gate = imprimir_metricas(m, f"Avaliação holdout ({caminho.name})")
-        varred = varredura_limiar(reais, probs)
-        if varred:
-            print(f"  varredura: limiar {varred['limiar']:.2f} → "
-                  f"precisão {varred['precisao']:.3f} / "
-                  f"recall {varred['recall']:.3f} no gate de "
-                  f"{ALVO_PRECISAO:.0%}")
+        _, probs, reais = tentar_oom(
+            lambda: avaliar(modelo, cabeca, val_dl, dispositivo, uso_amp,
+                            limiar=args.limiar),
+            "avaliação do holdout (--so-avaliar)",
+        )
+        m_fixo, curva, m_lim, gate = avaliar_holdout(
+            reais, probs, args.limiar, f"Avaliação holdout ({caminho.name})"
+        )
         relatorio = {
             "modo": "so-avaliar",
             "checkpoint": str(caminho),
             "epoca_ckp": ck.get("epoca"),
             "dados": str(args.dados),
             "split": info_split,
-            "metricas_holdout": m,
-            "varredura_limiar": varred,
+            "metricas_holdout": m_fixo,
+            "curva_pr": curva,
+            "metricas_limiar_escolhido": m_lim,
+            "limiar_escolhido": curva["limiar_escolhido"],
+            "zero_shot_holdout": zs_m,
+            "zero_shot_curva": zs_curva,
             "gate": gate,
             "alvo_precisao": ALVO_PRECISAO,
             "vram_max_gb": round(
@@ -815,23 +1535,76 @@ def main():
         epoca_best = None
         print("AVISO: melhor.pt não encontrado; avaliando o modelo final.")
     val_ds = DatasetCavas([registros[i] for i in idx_val], treino=False)
-    val_dl = DataLoader(val_ds, batch_size=max(args.batch, 8), shuffle=False,
+    val_dl = DataLoader(val_ds, batch_size=args.batch, shuffle=False,
                         num_workers=0, collate_fn=fazer_collate(processador))
     uso_amp = torch.amp.autocast(
         "cuda", dtype=torch.float16, enabled=dispositivo.type == "cuda"
     )
-    m, probs, reais = avaliar(modelo, cabeca, val_dl, dispositivo, uso_amp,
-                              limiar=args.limiar)
-    gate = imprimir_metricas(
-        m, f"HOLDOUT final (melhor checkpoint, época {epoca_best})"
+    _, probs, reais = tentar_oom(
+        lambda: avaliar(modelo, cabeca, val_dl, dispositivo, uso_amp,
+                        limiar=args.limiar),
+        "avaliação final do holdout",
     )
-    varred = varredura_limiar(reais, probs)
-    if varred:
-        print(f"  varredura: limiar {varred['limiar']:.2f} → "
-              f"precisão {varred['precisao']:.3f} / recall {varred['recall']:.3f}")
-    else:
-        print(f"  varredura: NENHUM limiar atinge precisão >= "
-              f"{ALVO_PRECISAO:.0%} neste holdout")
+    titulo = f"HOLDOUT final (melhor checkpoint, época {epoca_best})"
+    m_fixo, curva, m_lim, gate = avaliar_holdout(
+        reais, probs, args.limiar, titulo
+    )
+
+    # comparação justa: mesmo holdout, mesma régua de gate
+    print("=== COMPARAÇÃO (mesmo holdout, mesma regra de gate) ===")
+    print(
+        f"  zero-shot [{TEXTO_ZERO_SHOT_B['nome']}]: precisão "
+        f"{zs_m['precisao']:.3f} recall {zs_m['recall']:.3f} "
+        f"F1 {zs_m['f1']:.3f} | gate {zs_m['precisao'] >= ALVO_PRECISAO and 'PASSOU' or 'NÃO PASSOU'}"
+    )
+    if zs_curva["limiar_escolhido"]:
+        z = zs_curva["limiar_escolhido"]
+        print(
+            f"  zero-shot com limiar na margem ({z['limiar']:+.4f}): "
+            f"precisão {z['precisao']:.3f} recall {z['recall']:.3f} "
+            f"F1 {z['f1']:.3f} | gate "
+            f"{'PASSOU' if z['precisao'] >= ALVO_PRECISAO else 'NÃO PASSOU'}"
+        )
+    if m_lim:
+        print(
+            f"  fine-tune no limiar {m_lim['limiar']:.2f}: precisão "
+            f"{m_lim['precisao']:.3f} recall {m_lim['recall']:.3f} "
+            f"F1 {m_lim['f1']:.3f} | gate {gate}"
+        )
+
+    # Extrapolação para 20 mil imagens: só o tempo de TREINO escala com
+    # o acervo (validação tem tamanho fixo). A primeira época é
+    # descartada da média quando há mais de uma — ela paga o aquecimento
+    # de CUDA e o cache de disco.
+    dur = [h["segundos_treino"] for h in historico
+           if h.get("segundos_treino") is not None]
+    base = dur[1:] if len(dur) > 1 else dur
+    medio = (sum(base) / len(base)) if base else 0.0
+    n_tr = max(1, info_split["n_treino"])
+    extrapolacao = {
+        "epocas_medidas": len(base),
+        "segundos_por_epoca_treino": round(medio, 1),
+        "n_imagens_treino": n_tr,
+        "segundos_por_imagem": round(medio / n_tr, 4),
+        "20k_imgs_min_por_epoca": round(medio / n_tr * 20000 / 60, 1),
+        "20k_imgs_min_treino_completo": round(
+            medio / n_tr * 20000 * args.epocas / 60, 1
+        ),
+        "nota": (
+            "extrapolação linear pela contagem de imagens (mesmo batch, "
+            "mesma augmentação, mesma GPU); I/O e augmentação crescem "
+            "junto, mas o custo dominante é o forward/backward do ViT, "
+            "que escala por imagem"
+        ),
+    }
+    print(
+        f"Tempo de treino: {extrapolacao['segundos_por_epoca_treino']}s/época "
+        f"em {n_tr} imgs → 20 mil imagens ≈ "
+        f"{extrapolacao['20k_imgs_min_por_epoca']} min/época, "
+        f"{extrapolacao['20k_imgs_min_treino_completo']} min para "
+        f"{args.epocas} épocas"
+    )
+
     vram = (torch.cuda.max_memory_allocated(dispositivo) / 2**30
             if dispositivo.type == "cuda" else 0.0)
     relatorio = {
@@ -843,8 +1616,13 @@ def main():
         "split": info_split,
         "epoca_melhor": epoca_best,
         "historico": historico,
-        "metricas_holdout": m,
-        "varredura_limiar": varred,
+        "metricas_holdout": m_fixo,
+        "curva_pr": curva,
+        "metricas_limiar_escolhido": m_lim,
+        "limiar_escolhido": curva["limiar_escolhido"],
+        "zero_shot_holdout": zs_m,
+        "zero_shot_curva": zs_curva,
+        "extrapolacao": extrapolacao,
         "gate": gate,
         "alvo_precisao": ALVO_PRECISAO,
         "vram_max_gb": round(vram, 3),
