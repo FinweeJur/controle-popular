@@ -602,6 +602,12 @@ a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
   exportação](#painel-de-visualização-linha-do-tempo-e-exportação-pedido-do-dono-2509).
 - **25/09/2026 (dono): sem novos subagentes.** O trabalho do Agente A
   (detector de nuvem) é retomado e terminado pela sessão principal.
+- **28/09/2026 (dono): mais fases grandes no home-pc.** O home-pc (PC mais
+  fraco) assume rede e código: coleta GO, Fase 3 (série Sentinel) e Fase
+  5 (painel). Nesta máquina forte fica só o que exige GPU — treino fino,
+  triagem VLM — mais o fechamento da coleta MG em curso. **Cada máquina
+  tem cache e checkpoint próprios**; manifesto final une por hash, sem
+  duplicar. Um escritor por checkpoint vale por máquina.
 
 ## Origem
 
