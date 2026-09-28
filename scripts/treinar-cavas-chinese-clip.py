@@ -54,9 +54,11 @@ O que este script faz:
   - checkpoint em Temp (nunca no repo), resumível com --continuar;
   - avaliação no holdout: curva precisão×recall varrendo o limiar de
     decisão de 0,05 a 0,95 (passo 0,01, salva inteira em
-    metricas.json); o limiar é escolhido AUTOMATICAMENTE como o de
-    MAIOR RECALL entre os que cumprem precisão >= 70% (o gate do
-    plano); matriz de confusão impressa no limiar escolhido e no 0,5;
+    metricas.json); o limiar é escolhido AUTOMATICAMENTE com duas
+    portas: precisão >= 70% (o gate do plano) e, dentro dela, a MAIOR
+    ACURÁCIA BALANCEADA (a regra de "maior recall" puro escolhia o
+    limiar trivial que chama tudo de cava — medição 28/09); matriz de
+    confusão impressa no limiar escolhido e no 0,5;
   - linha de base zero-shot (par de textos B, o mesmo medido pelo
     Agente B) calculada no MESMO holdout com os pesos BASE do modelo —
     antes de qualquer fine-tune tocar nos pesos — para a comparação
@@ -583,14 +585,22 @@ def curva_precisao_recall(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO,
     """Curva precisão×recall varrendo o limiar de decisão 0,05→0,95.
 
     Devolve a curva INTEIRA (91 pontos, passo 0,01) e o limiar
-    escolhido. A escolha é automática e segue o enunciado do gate:
-    MAIOR RECALL entre os limiares cuja precisão >= alvo (70%).
+    escolhido. Duas portas em sequência (regra de 28/09):
 
-    Por que "maior recall" e não "maior F1": o gate do plano é uma
-    trava de precisão — "quando o detector diz cava, precisa ser cava
-    em 7 de cada 10 vezes". Dentro daquela trava, o que interessa ao
-    rastreamento é pegar o máximo de cavas possível (recall). Escolher
-    F1 solto ignoraria a trava do dono do plano.
+      1. PRECISÃO >= alvo (70%) — a trava do dono do plano, sem ela
+         nada entra;
+      2. dentro da trava, MAIOR ACURÁCIA BALANCEADA — média do recall
+         de positivos e de negativos —, desempate por maior recall.
+
+    Por que a porta 2 existe: com o holdout de 95,5% positivo (medição
+    de 28/09), "maior recall" puro escolhia o limiar 0,05, que chama
+    TODO MUNDO de cava — precisão 0,955 "passa" no gate só por causa da
+    base rate, e o modelo não aprendeu nada. A acurácia balanceada dá
+    0,5 nesse classificador trivial e 0,68 num limiar que separa de
+    verdade (medição: 8 de 21 negativos acertados em 0,5), então ela
+    empurra a escolha para onde existe sinal de separação. Escolher F1
+    solto ignoraria a trava do dono; escolher recall solto repete o
+    bug do trivial.
 
     Se NENHUM limiar cumpre a trava, devolve limiar_escolhido=None:
     gate não passou em lugar nenhum da curva (é um resultado, não um
@@ -610,10 +620,16 @@ def curva_precisao_recall(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO,
                        ("limiar", "precisao", "recall", "f1", "acuracia",
                         "tp", "fp", "fn", "tn")})
         if m["precisao"] >= alvo:
-            chave = (m["recall"], m["precisao"])
+            # acurácia balanceada: (recall_pos + recall_neg) / 2
+            rec_pos = (m["tp"] / (m["tp"] + m["fn"])) if (m["tp"] + m["fn"]) else 0.0
+            rec_neg = (m["tn"] / (m["tn"] + m["fp"])) if (m["tn"] + m["fp"]) else 0.0
+            bal = (rec_pos + rec_neg) / 2
+            chave = (round(bal, 6), m["recall"], m["precisao"])
             if melhor is None or chave > melhor["chave"]:
                 melhor = {"limiar": m["limiar"], "recall": m["recall"],
-                          "precisao": m["precisao"], "chave": chave}
+                          "precisao": m["precisao"],
+                          "acuracia_balanceada": round(bal, 4),
+                          "chave": chave}
     if melhor:
         melhor.pop("chave")
     return {
@@ -648,7 +664,8 @@ def avaliar_holdout(reais, probs, limiar_fixo, titulo):
          com qualquer outro trabalho;
       2. a curva inteira 0,05→0,95 — para o leitor ver o trade-off
          precisão×recall sem acreditar na palavra de ninguém;
-      3. no limiar ESCOLHIDO (maior recall com precisão >= 70%) — é
+      3. no limiar ESCOLHIDO (precisão >= 70% + maior acurácia
+         balanceada — regra de 28/09, ver curva_precisao_recall) — é
          ele que responde o gate do plano.
 
     Retorna (metricas_limiar_fixo, curva, metricas_limiar_escolhido,
@@ -671,9 +688,10 @@ def avaliar_holdout(reais, probs, limiar_fixo, titulo):
         m_lim, f"{titulo} · LIMIAR ESCOLHIDO {escolhido['limiar']:.2f}"
     )
     print(
-        f"  limiar escolhido {escolhido['limiar']:.2f} = maior recall "
-        f"({escolhido['recall']:.3f}) entre os que cumprem precisão "
-        f">= {ALVO_PRECISAO:.0%} (aqui {escolhido['precisao']:.3f})"
+        f"  limiar escolhido {escolhido['limiar']:.2f} = maior acurácia "
+        f"balanceada ({escolhido['acuracia_balanceada']:.3f}) entre os que "
+        f"cumprem precisão >= {ALVO_PRECISAO:.0%} (aqui "
+        f"{escolhido['precisao']:.3f}, recall {escolhido['recall']:.3f})"
     )
     return m_fixo, curva, m_lim, gate
 
