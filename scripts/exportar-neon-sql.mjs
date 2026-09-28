@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import fs from "fs";
 
-const NEON_URL = "postgresql://neondb_owner:npg_7tT3mNpdEwcG@ep-autumn-bonus-acgz2eby-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require";
+const NEON_URL = process.env.DATABASE_URL;
 
 const TABLES = [
   "ref_municipios_mg",
