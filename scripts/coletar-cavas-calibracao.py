@@ -599,6 +599,9 @@ def gravar_checkpoint(it: dict) -> None:
 
 def exportar_manifesto(itens: list[dict]) -> None:
     agora = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    # itens gravados antes de 28/09/2026 (campo --uf) são todos de MG
+    for it in itens:
+        it.setdefault("uf", "MG")
     doc = {
         "gerado_em": agora,
         "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
@@ -608,10 +611,11 @@ def exportar_manifesto(itens: list[dict]) -> None:
             "INPE/BDC STAC CBERS-4A/WPM L2 DN (CC BY 4.0)",
         ],
         "criterios": {
-            "positivo": "poligonal MG em fase extrativa (concessao/lavra garimpeira/"
-                        "registro/permissao) na data da cena",
-            "negativo": "ponto aleatorio em MG fora de todo poligono SIGMINE MG, "
-                        "fora da classe mineracao MapBiomas e com margem ~600 m",
+            "positivo": "poligonal em fase extrativa (concessao/lavra garimpeira/"
+                        "registro/permissao) na data da cena, na UF da rodada (campo uf)",
+            "negativo": "ponto aleatorio na UF da rodada fora de todo poligono "
+                        "SIGMINE, fora da classe mineracao MapBiomas e com margem "
+                        "~600 m",
             "imagem": "512x512 px, RGB B3/B2/B1 de cena CBERS-4A/WPM (~8,4 m/px), "
                       "cena mais recente com nuvem local <= 20%",
             "nuvem": "regra combinada no recorte: acromatismo (saturacao <= 0,20) "
@@ -678,6 +682,9 @@ def principal() -> int:
                     metavar=("MINLON", "MINLAT", "MAXLON", "MAXLAT"),
                     help="bbox de sorteio de negativos (padrao: MG)")
     ap.add_argument("--exporta", action="store_true", help="só reexporta o manifesto")
+    ap.add_argument("--uf", choices=["MG", "GO"], default="MG",
+                    help="UF desta rodada; vai para checkpoint e manifesto "
+                         "(o filtro de UF do painel vem daqui)")
     args = ap.parse_args()
 
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -757,7 +764,8 @@ def principal() -> int:
             destino.parent.mkdir(parents=True, exist_ok=True)
             destino.write_bytes(jpg)
             bbox_recorte = _bbox_recorte(p["centroide"])
-            it = {"tipo": "positivo", "processo": p["processo"], "fase": p["fase"],
+            it = {"tipo": "positivo", "uf": args.uf,
+                  "processo": p["processo"], "fase": p["fase"],
                   "bbox": bbox_recorte, "cena": cena_id, "data": data,
                   "nuvem": round(nuvem, 4), "hash": h, "arquivo": str(destino.name)}
             gravar_checkpoint(it)
@@ -783,7 +791,8 @@ def principal() -> int:
             destino = RECORTES / "negativo" / f"{h[:24]}.jpg"
             destino.parent.mkdir(parents=True, exist_ok=True)
             destino.write_bytes(jpg)
-            it = {"tipo": "negativo", "bbox": _bbox_recorte(pt), "cena": cena_id,
+            it = {"tipo": "negativo", "uf": args.uf,
+                  "bbox": _bbox_recorte(pt), "cena": cena_id,
                   "data": data, "nuvem": round(nuvem, 4), "hash": h,
                   "arquivo": str(destino.name)}
             gravar_checkpoint(it)
