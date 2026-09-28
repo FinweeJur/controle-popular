@@ -8,9 +8,13 @@ import {
 } from "./unificada";
 
 describe("Biblioteca Unificada e Acervo Acadêmico", () => {
-  it("carrega a base de dados consolidada com mais de 800 documentos", () => {
+  it("carrega a base de dados consolidada com mais de 400 documentos", () => {
     const docs = listarDocumentosUnificados();
-    expect(docs.length).toBeGreaterThan(800);
+    // Piso 400, não 800: o saneamento 82f2430c removeu 520 documentos
+    // sintéticos de empresas e a base real ficou em 475 (era 969).
+    // O piso protege contra base vazia/quebrada; a igualdade com
+    // METRICAS logo abaixo pega qualquer divergência de contagem.
+    expect(docs.length).toBeGreaterThan(400);
     expect(METRICAS_BIBLIOTECA.totalDocumentos).toBe(docs.length);
   });
 
