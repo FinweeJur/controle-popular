@@ -267,6 +267,7 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **`ENOTEMPTY` no `next build` (Windows)** | limpe o cache antes: `cmd.exe /c "if exist apps\web\.next rmdir /s /q apps\web\.next"` |
 | **Documentação fora do padrão** | CI quebra sem `Tipo`, `Domínio`, `Última medição`, `## Sumário`. Rode `python scripts/validar-documentacao.py` |
 | **Contêineres locais = Podman no WSL2** | Podman 5.x rootless no WSL2 (Ubuntu), nunca Docker Desktop. Portas fixas: 5000, 5678 |
+| **`guara deploy` sem `--project`** | o runner não tem `guara link`: CLI 0.3.0 devolve `No project specified` e o job de deploy fica vermelho em todo push (medido 28/09). Slug: `controle-popular` (`guara projects list`). No workflow o deploy só dispara em `workflow_dispatch` — push é só teste (OPERACAO §2) |
 
 ## 7. Regra editorial
 
