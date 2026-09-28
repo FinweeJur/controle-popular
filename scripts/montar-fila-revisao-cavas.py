@@ -137,6 +137,26 @@ def amostra_100(fila: list[dict], n: int) -> list[dict]:
     return escolhidos[:n]
 
 
+def _cartao(x: dict, num: int | None = None) -> str:
+    """Um <figure> com miniatura, legenda do VLM e metadados do recorte."""
+    img = f"recortes/{x['tipo']}/{html.escape(x['arquivo'])}"
+    esc = x["escore"] if x["escore"] is not None else "-"
+    nuvem = x.get("nuvem_indice")
+    nuvem_s = f"{nuvem:.0%}" if isinstance(nuvem, (int, float)) else "?"
+    num_s = f"<b>#{num}</b> · " if num is not None else ""
+    return (
+        f'<figure><img src="{img}" alt="recorte {html.escape(x["arquivo"])}" '
+        f'loading="lazy" width="256" height="256">'
+        f"<figcaption>{num_s}<b>{x['tipo']}</b> · escore {esc} · "
+        f"nuvem {nuvem_s}<br>"
+        f"{html.escape(x['legenda'][:220])}<br>"
+        f'<small>processo {html.escape(str(x.get("processo") or "—"))} · '
+        f'cena {html.escape(str(x.get("cena") or "—"))} · '
+        f'{html.escape(str(x.get("data_cena") or "—"))}</small>'
+        "</figcaption></figure>"
+    )
+
+
 def escrever_html(fila: list[dict], destino: Path) -> None:
     """Galeria estática (sem JS, sem lib) para a revisão humana abrir no
     navegador. Caminhos relativos: o HTML fica no mesmo cache das imagens."""
@@ -147,23 +167,7 @@ def escrever_html(fila: list[dict], destino: Path) -> None:
         itens = [x for x in fila if x["prioridade"] == prio]
         if not itens:
             continue
-        cartoes = []
-        for x in itens:
-            img = f"recortes/{x['tipo']}/{html.escape(x['arquivo'])}"
-            esc = x["escore"] if x["escore"] is not None else "-"
-            nuvem = x.get("nuvem_indice")
-            nuvem_s = f"{nuvem:.0%}" if isinstance(nuvem, (int, float)) else "?"
-            cartoes.append(
-                f'<figure><img src="{img}" alt="recorte {html.escape(x["arquivo"])}" '
-                f'loading="lazy" width="256" height="256">'
-                f"<figcaption><b>{x['tipo']}</b> · escore {esc} · "
-                f"nuvem {nuvem_s}<br>"
-                f"{html.escape(x['legenda'][:220])}<br>"
-                f'<small>processo {html.escape(str(x.get("processo") or "—"))} · '
-                f'cena {html.escape(str(x.get("cena") or "—"))} · '
-                f'{html.escape(str(x.get("data_cena") or "—"))}</small>'
-                "</figcaption></figure>"
-            )
+        cartoes = [_cartao(x) for x in itens]
         blocos.append(
             f'<section><h2 style="color:{cores[prio]}">prioridade {prio} '
             f'({len(itens)})</h2><div class="grade">{"".join(cartoes)}</div></section>'
@@ -182,6 +186,61 @@ def escrever_html(fila: list[dict], destino: Path) -> None:
         "<p>Ordem: prioridade alta primeiro. Estado inicial: pendente. "
         "Leia a legenda da IA e olhe a imagem — a IA nunca publica sozinha.</p>"
         + "".join(blocos) + "</body></html>"
+    )
+    destino.write_text(doc, encoding="utf-8")
+
+
+def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
+    """Folha de revisão dos 100 exemplos do gate (Fase 2 do plano).
+
+    Cada cartão numerado tem um seletor de estado (pendente/revisado/
+    descartado/publicável) que o navegador guarda em localStorage — o
+    revisor pode fechar e voltar — e um botão que exporta o estado em
+    JSON para devolver ao fluxo. Sem biblioteca: JS de ~15 linhas
+    embutido, imagem e legenda são o essencial."""
+    cartoes = []
+    for i, x in enumerate(amostra, start=1):
+        cartoes.append(
+            _cartao(x, num=i)
+            + f'<div class="estado"><label for="e{i}">estado:</label> '
+            f'<select id="e{i}" data-id="{html.escape(x["arquivo"])}">'
+            "<option>pendente</option><option>revisado</option>"
+            "<option>descartado</option><option>publicável</option>"
+            "</select></div>"
+        )
+    js = (
+        "const K='amostra100-estados';"
+        "const est=JSON.parse(localStorage.getItem(K)||'{}');"
+        "const sels=[...document.querySelectorAll('select[data-id]')];"
+        "function conta(){const n=sels.filter(s=>s.value!=='pendente').length;"
+        "document.getElementById('conta').textContent=n+' de '+sels.length;}"
+        "sels.forEach(s=>{s.value=est[s.dataset.id]||'pendente';"
+        "s.addEventListener('change',()=>{est[s.dataset.id]=s.value;"
+        "localStorage.setItem(K,JSON.stringify(est));conta();});});"
+        "document.getElementById('exportar').addEventListener('click',()=>{"
+        "const b=new Blob([JSON.stringify(est,null,1)],{type:'application/json'});"
+        "const a=document.createElement('a');a.href=URL.createObjectURL(b);"
+        "a.download='amostra-100-estados.json';a.click();});"
+        "conta();"
+    )
+    doc = (
+        "<!doctype html><html lang=pt-BR><head><meta charset=utf-8>"
+        "<title>Amostra de 100 — gate das cavas</title><style>"
+        "body{font-family:system-ui,sans-serif;margin:1.5rem;background:#fafafa}"
+        ".grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));"
+        "gap:1rem}figure{margin:0;background:#fff;border:1px solid #ddd;"
+        "border-radius:8px;padding:.5rem}img{width:100%;height:auto;"
+        "image-rendering:pixelated;border-radius:4px}"
+        "figcaption{font-size:.8rem;line-height:1.35;margin-top:.4rem}"
+        ".estado{margin-top:.3rem;font-size:.85rem}"
+        "select{font-size:.85rem}h1{font-size:1.3rem}</style></head><body>"
+        f"<h1>Amostra de {len(amostra)} — revisão humana do gate</h1>"
+        "<p>O gate do plano exige precisão medida <b>e</b> revisão de 100 "
+        "exemplos. Marque o estado de cada recorte; o navegador guarda na "
+        "máquina. <span id=conta></span> revisados. "
+        "<button id=exportar>Exportar estados (JSON)</button></p>"
+        f'<div class="grade">{"".join(cartoes)}</div>'
+        f"<script>{js}</script></body></html>"
     )
     destino.write_text(doc, encoding="utf-8")
 
@@ -210,6 +269,7 @@ def principal() -> int:
         "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in amostra),
         encoding="utf-8",
     )
+    escrever_html_amostra(amostra, args.saida / "amostra-100.html")
     escrever_html(fila, args.saida / "fila-revisao.html")
 
     cont = Counter((x["prioridade"], x["tipo"]) for x in fila)
