@@ -1,3 +1,26 @@
+/**
+ * apps/web/app/ambiental/car/page.tsx
+ *
+ * Página de Fiscalização do Cadastro Ambiental Rural (CAR) em Minas Gerais.
+ *
+ * ═══ PAPEL NO PORTAL CÍVICO ═══
+ * Apresenta a radiografia de regularização ambiental rural no estado de Minas Gerais:
+ * - 1,16 milhão de imóveis rurais sob gestão do Instituto Estadual de Florestas (IEF/MG);
+ * - Fila crônica de análise com tempo médio superior a 1.500 dias (~4,3 anos de espera);
+ * - Mapeamento das 14 Unidades Regionais de Florestas e Biodiversidade (URFBios);
+ * - Divisão por portes em Módulos Fiscais (pequeno, médio e grande porte);
+ * - Integração e links diretos para a Consulta Pública do SICAR e plataforma CAR 2.0 MG (CSR/UFMG).
+ *
+ * ═══ FONTES DOS DADOS ═══
+ * - SICAR Nacional / Ministério da Agricultura e Pecuária (https://consulta.car.gov.br/)
+ * - CAR 2.0 MG / Centro de Sensoriamento Remoto da UFMG (https://csr.ufmg.br/car20_mg/)
+ * - IEF/MG — Instituto Estadual de Florestas (http://www.ief.mg.gov.br/florestas/cadastro-ambiental-rural-car)
+ *
+ * ═══ DIRETRIZES DE PRIVACIDADE ═══
+ * Conforme AGENTS.md §5.2, nenhum CPF ou dado privado de pessoas físicas é exposto.
+ * Disponibilizam-se apenas os códigos públicos de recibo CAR e atributos fundiários.
+ */
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -21,7 +44,7 @@ export default function PaginaCarAmbiental() {
   const estatisticas = obterEstatisticasCar();
   const registrosBrutos = listarRegistrosCar();
 
-  // Mapeamento normalizado para o componente TabelaCar
+  // Mapeamento normalizado para o componente TabelaCar com links oficiais canônicos
   const registrosTabela: ImovelCar[] = registrosBrutos.map((r) => ({
     id: r.codigoCar,
     codigoCar: r.codigoCar,
@@ -36,8 +59,8 @@ export default function PaginaCarAmbiental() {
     status: r.status,
     dataCadastro: r.dataInscricao,
     tempoAnaliseDias: r.tempoAnaliseDias,
-    linkConsultaSicar: r.linkOficial,
-    linkConsultaCar20: `https://csr.ufmg.br/car20_mg/consultar-car/?car=${encodeURIComponent(r.codigoCar)}`,
+    linkConsultaSicar: r.linkOficial || "https://consulta.car.gov.br/",
+    linkConsultaCar20: "https://csr.ufmg.br/car20_mg/consultar-car/",
   }));
 
   // Ordenação das URFBios por tempo de análise decrescente para o gráfico comparativo
@@ -60,15 +83,36 @@ export default function PaginaCarAmbiental() {
       {/* CABEÇALHO */}
       <header className="mb-8">
         <div className="mb-3 flex flex-wrap gap-2">
-          <span className="rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
-            IEF / Sisema MG
-          </span>
-          <span className="rounded-full bg-indigo-100 px-3 py-0.5 text-xs font-semibold text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300">
-            CAR 2.0 MG (CSR / UFMG)
-          </span>
-          <span className="rounded-full bg-blue-100 px-3 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
-            SICAR Nacional (MAPA / MMA)
-          </span>
+          <a
+            href="http://www.ief.mg.gov.br/florestas/cadastro-ambiental-rural-car"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Portal oficial do IEF-MG sobre o Cadastro Ambiental Rural"
+            className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-semibold text-emerald-800 hover:bg-emerald-200 transition-colors dark:bg-emerald-950/60 dark:text-emerald-300 dark:hover:bg-emerald-900/60"
+          >
+            <span>IEF / Sisema MG</span>
+            <span aria-hidden="true" className="text-[10px]">↗</span>
+          </a>
+          <a
+            href="https://csr.ufmg.br/car20_mg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG"
+            className="inline-flex items-center gap-1 rounded-full bg-indigo-100 px-3 py-0.5 text-xs font-semibold text-indigo-800 hover:bg-indigo-200 transition-colors dark:bg-indigo-950/60 dark:text-indigo-300 dark:hover:bg-indigo-900/60"
+          >
+            <span>CAR 2.0 MG (CSR / UFMG)</span>
+            <span aria-hidden="true" className="text-[10px]">↗</span>
+          </a>
+          <a
+            href="https://consulta.car.gov.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Portal oficial da Consulta Pública do SICAR Nacional"
+            className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-0.5 text-xs font-semibold text-blue-800 hover:bg-blue-200 transition-colors dark:bg-blue-950/60 dark:text-blue-300 dark:hover:bg-blue-900/60"
+          >
+            <span>SICAR Nacional (MAPA / MMA)</span>
+            <span aria-hidden="true" className="text-[10px]">↗</span>
+          </a>
           <span className="rounded-full bg-amber-100 px-3 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
             14 Polos Regionais (URFBios)
           </span>

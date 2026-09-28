@@ -138,8 +138,7 @@ describe("Cadastro Ambiental Rural (CAR) - IEF/MG (apps/web/lib/ambiental/car.ts
         ]).toContain(r.status);
         expect(r.dataInscricao).toMatch(/^\d{4}-\d{2}-\d{2}$/);
         expect(r.tempoAnaliseDias).toBeGreaterThan(500);
-        expect(r.linkOficial).toContain("consultapublica.car.gov.br");
-        expect(r.linkOficial).toContain(r.codigoCar);
+        expect(r.linkOficial).toBe("https://consulta.car.gov.br/");
       }
     });
 

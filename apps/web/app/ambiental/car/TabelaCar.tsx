@@ -37,7 +37,7 @@ import {
  * 5. Ordenação por coluna (município, área, MF, dias em análise, data, status)
  *
  * Fontes oficiais auditadas:
- * - SICAR Nacional: https://consultapublica.car.gov.br/publico/imoveis/consulta
+ * - SICAR Nacional: https://consulta.car.gov.br/
  * - CAR 2.0 MG (CSR / UFMG): https://csr.ufmg.br/car20_mg/consultar-car/
  */
 
@@ -336,7 +336,7 @@ function gerarCsv(itens: ImovelCar[]): string {
       r.status,
       r.dataCadastro,
       r.tempoAnaliseDias,
-      r.linkConsultaSicar ?? "https://consultapublica.car.gov.br/publico/imoveis/consulta",
+      r.linkConsultaSicar ?? "https://consulta.car.gov.br/",
       r.linkConsultaCar20 ?? "https://csr.ufmg.br/car20_mg/consultar-car/",
     ]
       .map(csvEscape)
@@ -1193,6 +1193,11 @@ export default function TabelaCar({
         </div>
       ) : (
         <div className="rounded-2xl border border-border bg-surface shadow-sm overflow-hidden">
+          <div className="bg-surface-2/70 border-b border-border px-4 py-2.5 text-xs text-text-soft flex items-center justify-between gap-2">
+            <span>
+              💡 <strong>Como consultar:</strong> Ao clicar em <strong>SICAR</strong> ou <strong>CAR 2.0</strong>, o código CAR é copiado automaticamente. Cole-o (Ctrl+V) no campo de busca do portal governamental.
+            </span>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead className="bg-surface-2 border-b border-border">
@@ -1214,8 +1219,7 @@ export default function TabelaCar({
               <tbody className="divide-y divide-border/60 text-text">
                 {itensExibidos.map((r) => {
                   const urlSicar =
-                    r.linkConsultaSicar ??
-                    `https://consultapublica.car.gov.br/publico/imoveis/consulta`;
+                    r.linkConsultaSicar ?? "https://consulta.car.gov.br/";
                   const urlCar20 =
                     r.linkConsultaCar20 ??
                     `https://csr.ufmg.br/car20_mg/consultar-car/`;
@@ -1319,8 +1323,9 @@ export default function TabelaCar({
                             href={urlSicar}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => copiarCodigoCar(r.codigoCar)}
                             className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[11px] font-medium text-primary hover:text-primary/80 transition-colors"
-                            title="Consulta oficial do imóvel no SICAR Federal"
+                            title="Abre a Consulta Pública oficial do SICAR e copia o código CAR para colar na busca"
                           >
                             <span>SICAR</span>
                             <ExternalLink className="w-3 h-3" />
@@ -1329,8 +1334,9 @@ export default function TabelaCar({
                             href={urlCar20}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => copiarCodigoCar(r.codigoCar)}
                             className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[11px] font-medium text-emerald-700 dark:text-emerald-300 hover:opacity-80 transition-colors"
-                            title="Consulta na plataforma CAR 2.0 MG (CSR / UFMG)"
+                            title="Abre o portal CAR 2.0 MG (CSR/UFMG) e copia o código CAR para gerar o relatório"
                           >
                             <span>CAR 2.0</span>
                             <ExternalLink className="w-3 h-3" />

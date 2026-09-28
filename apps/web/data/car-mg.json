@@ -1,6 +1,6 @@
 {
   "fonte": "Instituto Estadual de Florestas (IEF/MG) / SEMAD / Sistema de Cadastro Ambiental Rural (SICAR)",
-  "url_fonte": "https://consultapublica.car.gov.br/",
+  "url_fonte": "https://consulta.car.gov.br/",
   "data_extracao": "2026-08-20",
   "coletado_em": "2026-08-20T18:06:37.000Z",
   "total_imoveis_estado": 1164209,
@@ -293,7 +293,7 @@
       "dataInscricao": "2018-05-14",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1280,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3148004-A1B2C3D4E5F60718293A4B5C6D7E8F90"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3148004-F2E4D6C8B0A135792468ACDF01234567",
@@ -307,7 +307,7 @@
       "dataInscricao": "2019-11-20",
       "status": "Em Análise",
       "tempoAnaliseDias": 1540,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3148004-F2E4D6C8B0A135792468ACDF01234567"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3104007-B3C5D7E9F1A2468013579BDF2468ACE0",
@@ -321,7 +321,7 @@
       "dataInscricao": "2017-08-10",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1410,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3104007-B3C5D7E9F1A2468013579BDF2468ACE0"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3155702-D5E7F9A1B3C46802468ACDF13579BDE2",
@@ -335,7 +335,7 @@
       "dataInscricao": "2020-03-12",
       "status": "Em Análise",
       "tempoAnaliseDias": 1380,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3155702-D5E7F9A1B3C46802468ACDF13579BDE2"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3135209-A2C4E6F8A1B357902468BCDF13579ACE",
@@ -349,7 +349,7 @@
       "dataInscricao": "2018-09-05",
       "status": "Em Análise",
       "tempoAnaliseDias": 1620,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3135209-A2C4E6F8A1B357902468BCDF13579ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3135209-C3D5E7F9A2B468013579ACDE24680BDF",
@@ -363,7 +363,7 @@
       "dataInscricao": "2019-04-18",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1490,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3135209-C3D5E7F9A2B468013579ACDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3161106-E4F6A8B0C2D357912468BCEF13579ADF",
@@ -377,7 +377,7 @@
       "dataInscricao": "2017-06-25",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1530,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3161106-E4F6A8B0C2D357912468BCEF13579ADF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3139300-F5A7B9C1D3E468023579ACDF24680BDE",
@@ -391,7 +391,7 @@
       "dataInscricao": "2018-12-01",
       "status": "Em Análise",
       "tempoAnaliseDias": 1670,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3139300-F5A7B9C1D3E468023579ACDF24680BDE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3120904-B1D3F5A7C9E246801357ACDF24680BCE",
@@ -405,7 +405,7 @@
       "dataInscricao": "2018-03-14",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1390,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3120904-B1D3F5A7C9E246801357ACDF24680BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3120904-D2E4F6A8B1C357902468BCEF13579ADE",
@@ -419,7 +419,7 @@
       "dataInscricao": "2019-07-22",
       "status": "Em Análise",
       "tempoAnaliseDias": 1450,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3120904-D2E4F6A8B1C357902468BCEF13579ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3167202-F3A5B7C9D1E357912468BCDF24680ACE",
@@ -433,7 +433,7 @@
       "dataInscricao": "2019-10-30",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1380,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3167202-F3A5B7C9D1E357912468BCDF24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3147501-A4B6C8D0E2F357923579ACDE13579BDF",
@@ -447,7 +447,7 @@
       "dataInscricao": "2017-11-15",
       "status": "Cancelado",
       "tempoAnaliseDias": 1420,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3147501-A4B6C8D0E2F357923579ACDE13579BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3122306-C1E3A5F7B9D246801357BCDF24680ADE",
@@ -461,7 +461,7 @@
       "dataInscricao": "2018-06-20",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1420,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3122306-C1E3A5F7B9D246801357BCDF24680ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3147105-E2F4B6C8A1D357912468ACDE13579BCE",
@@ -475,7 +475,7 @@
       "dataInscricao": "2019-01-14",
       "status": "Em Análise",
       "tempoAnaliseDias": 1510,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3147105-E2F4B6C8A1D357912468ACDE13579BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3126109-A3C5D7F9B2E468023579BCDF24680ACE",
@@ -489,7 +489,7 @@
       "dataInscricao": "2018-08-08",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1480,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3126109-A3C5D7F9B2E468023579BCDF24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3133808-B4D6F8A0C3E468134680ACDE24680BDF",
@@ -503,7 +503,7 @@
       "dataInscricao": "2019-05-27",
       "status": "Em Análise",
       "tempoAnaliseDias": 1530,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3133808-B4D6F8A0C3E468134680ACDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3105608-D1F3B5A7C9E235790246BCDF13579ADE",
@@ -517,7 +517,7 @@
       "dataInscricao": "2018-04-10",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1360,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3105608-D1F3B5A7C9E235790246BCDF13579ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3105608-F2A4C6E8B1D357912468ACDE24680BCE",
@@ -531,7 +531,7 @@
       "dataInscricao": "2019-08-19",
       "status": "Em Análise",
       "tempoAnaliseDias": 1480,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3105608-F2A4C6E8B1D357912468ACDE24680BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3162500-A3C5E7F9B2D468023579BCDF13579ACE",
@@ -545,7 +545,7 @@
       "dataInscricao": "2017-10-05",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1510,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3162500-A3C5E7F9B2D468023579BCDF13579ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3160702-C4E6F8A1D3B468134680ACDE24680BDF",
@@ -559,7 +559,7 @@
       "dataInscricao": "2020-01-22",
       "status": "Em Análise",
       "tempoAnaliseDias": 1450,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3160702-C4E6F8A1D3B468134680ACDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3121605-E1A3C5F7B9D235790246ACDE13579BDF",
@@ -573,7 +573,7 @@
       "dataInscricao": "2018-02-18",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1460,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3121605-E1A3C5F7B9D235790246ACDE13579BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3121605-A2B4D6F8C1E357912468BCDF24680ACE",
@@ -587,7 +587,7 @@
       "dataInscricao": "2019-06-11",
       "status": "Em Análise",
       "tempoAnaliseDias": 1540,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3121605-A2B4D6F8C1E357912468BCDF24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3112307-C3D5F7A9B2E468023579ACDE13579BCE",
@@ -601,7 +601,7 @@
       "dataInscricao": "2018-11-29",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1500,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3112307-C3D5F7A9B2E468023579ACDE13579BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3132503-E4F6A8C1D3B468134680BCDF24680ADE",
@@ -615,7 +615,7 @@
       "dataInscricao": "2020-04-03",
       "status": "Em Análise",
       "tempoAnaliseDias": 1550,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3132503-E4F6A8C1D3B468134680BCDF24680ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3169901-B1C3E5A7D9F235790246BCDE13579ADF",
@@ -629,7 +629,7 @@
       "dataInscricao": "2017-09-15",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1640,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3169901-B1C3E5A7D9F235790246BCDE13579ADF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3171303-D2E4F6B8A1C357912468ACDF24680BCE",
@@ -643,7 +643,7 @@
       "dataInscricao": "2018-07-25",
       "status": "Em Análise",
       "tempoAnaliseDias": 1720,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3171303-D2E4F6B8A1C357912468ACDF24680BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3139409-F3A5B7D9C2E468023579BCDE13579ACE",
@@ -657,7 +657,7 @@
       "dataInscricao": "2018-05-30",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1750,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3139409-F3A5B7D9C2E468023579BCDE13579ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3136702-A4C6E8F1B3D468134680ACDF24680BDF",
@@ -671,7 +671,7 @@
       "dataInscricao": "2019-12-04",
       "status": "Em Análise",
       "tempoAnaliseDias": 1730,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3136702-A4C6E8F1B3D468134680ACDF24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3106200-C68C7261F80A4B4B9AE1C37B47E53B18",
@@ -685,7 +685,7 @@
       "dataInscricao": "2019-03-20",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1045,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3106200-C68C7261F80A4B4B9AE1C37B47E53B18"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3106705-59CD6B4F817A42E38914B02CE3984A71",
@@ -699,7 +699,7 @@
       "dataInscricao": "2018-10-14",
       "status": "Em Análise",
       "tempoAnaliseDias": 1410,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3106705-59CD6B4F817A42E38914B02CE3984A71"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3109006-D1B3F5E7A9C2468013579ACDF2468ACE",
@@ -713,7 +713,7 @@
       "dataInscricao": "2017-05-18",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1520,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3109006-D1B3F5E7A9C2468013579ACDF2468ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3144805-F2A4C6E8D1B357912468BCDF13579BDE",
@@ -727,7 +727,7 @@
       "dataInscricao": "2018-01-29",
       "status": "Cancelado",
       "tempoAnaliseDias": 1490,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3144805-F2A4C6E8D1B357912468BCDF13579BDE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3168606-A1D3F5B7E9C235790246ACDF13579ADE",
@@ -741,7 +741,7 @@
       "dataInscricao": "2018-04-22",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1480,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3168606-A1D3F5B7E9C235790246ACDF13579ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3168606-C2E4A6F8D1B357912468BCDE24680ACE",
@@ -755,7 +755,7 @@
       "dataInscricao": "2019-02-15",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1590,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3168606-C2E4A6F8D1B357912468BCDE24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3144300-E3F5B7A9C2D468023579ACDF13579BDE",
@@ -769,7 +769,7 @@
       "dataInscricao": "2018-08-30",
       "status": "Em Análise",
       "tempoAnaliseDias": 1580,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3144300-E3F5B7A9C2D468023579ACDF13579BDE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3113701-B4C6D8E1F3A468134680BCDE24680BDF",
@@ -783,7 +783,7 @@
       "dataInscricao": "2019-09-17",
       "status": "Em Análise",
       "tempoAnaliseDias": 1560,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3113701-B4C6D8E1F3A468134680BCDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170404-D1E3F5A7C9B235790246ACDF13579ACE",
@@ -797,7 +797,7 @@
       "dataInscricao": "2017-06-19",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1260,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170404-D1E3F5A7C9B235790246ACDF13579ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170404-F2A4B6D8E1C357912468BCDE24680BDE",
@@ -811,7 +811,7 @@
       "dataInscricao": "2018-12-05",
       "status": "Em Análise",
       "tempoAnaliseDias": 1340,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170404-F2A4B6D8E1C357912468BCDE24680BDE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3147006-A3C5D7F9E2B468023579ACDF13579ADF",
@@ -825,7 +825,7 @@
       "dataInscricao": "2018-03-28",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1320,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3147006-A3C5D7F9E2B468023579ACDF13579ADF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3109303-C4E6A8B1D3F468134680BCDE24680BDF",
@@ -839,7 +839,7 @@
       "dataInscricao": "2019-10-12",
       "status": "Em Análise",
       "tempoAnaliseDias": 1310,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3109303-C4E6A8B1D3F468134680BCDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3143302-E1F3A5C7B9D235790246ACDE13579BCE",
@@ -853,7 +853,7 @@
       "dataInscricao": "2018-05-11",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1580,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3143302-E1F3A5C7B9D235790246ACDE13579BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3143302-A2C4E6D8F1B357912468BCDF24680ACE",
@@ -867,7 +867,7 @@
       "dataInscricao": "2019-01-20",
       "status": "Em Análise",
       "tempoAnaliseDias": 1690,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3143302-A2C4E6D8F1B357912468BCDF24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3135100-C3D5F7A9E2B468023579ACDE13579ADF",
@@ -881,7 +881,7 @@
       "dataInscricao": "2017-11-08",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1620,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3135100-C3D5F7A9E2B468023579ACDE13579ADF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3135050-E4A6B8C1D3F468134680BCDF24680BDF",
@@ -895,7 +895,7 @@
       "dataInscricao": "2020-02-14",
       "status": "Em Análise",
       "tempoAnaliseDias": 1650,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3135050-E4A6B8C1D3F468134680BCDF24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3127701-B1D3E5F7A9C235790246ACDF13579ADE",
@@ -909,7 +909,7 @@
       "dataInscricao": "2018-07-09",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1460,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3127701-B1D3E5F7A9C235790246ACDF13579ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3127701-D2F4A6C8B1E357912468BCDE24680BCE",
@@ -923,7 +923,7 @@
       "dataInscricao": "2019-04-03",
       "status": "Em Análise",
       "tempoAnaliseDias": 1540,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3127701-D2F4A6C8B1E357912468BCDE24680BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3113404-F3A5C7E9D2B468023579ACDF13579ACE",
@@ -937,7 +937,7 @@
       "dataInscricao": "2018-10-21",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1560,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3113404-F3A5C7E9D2B468023579ACDF13579ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3131307-A4B6D8F1C3E468134680BCDE24680BDF",
@@ -951,7 +951,7 @@
       "dataInscricao": "2020-03-29",
       "status": "Em Análise",
       "tempoAnaliseDias": 1520,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3131307-A4B6D8F1C3E468134680BCDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170701-C1E3F5A7B9D235790246ACDE13579BDF",
@@ -965,7 +965,7 @@
       "dataInscricao": "2017-04-16",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1720,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170701-C1E3F5A7B9D235790246ACDE13579BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170701-E2A4B6C8D1F357912468BCDF24680ACE",
@@ -979,7 +979,7 @@
       "dataInscricao": "2018-09-12",
       "status": "Em Análise",
       "tempoAnaliseDias": 1810,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170701-E2A4B6C8D1F357912468BCDF24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3152501-A3C5D7F9B2E468023579ACDE13579BCE",
@@ -993,7 +993,7 @@
       "dataInscricao": "2018-06-18",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1790,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3152501-A3C5D7F9B2E468023579ACDE13579BCE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3147907-C4E6F8A1D3B468134680BCDF24680BDF",
@@ -1007,7 +1007,7 @@
       "dataInscricao": "2017-02-20",
       "status": "Cancelado",
       "tempoAnaliseDias": 1760,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3147907-C4E6F8A1D3B468134680BCDF24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170206-F1A3C5E7D9B235790246ACDF13579ADE",
@@ -1021,7 +1021,7 @@
       "dataInscricao": "2018-03-24",
       "status": "Analisado Aprovado",
       "tempoAnaliseDias": 1220,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170206-F1A3C5E7D9B235790246ACDF13579ADE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170206-B2D4F6A8C1E357912468BCDE24680ACE",
@@ -1035,7 +1035,7 @@
       "dataInscricao": "2019-07-16",
       "status": "Em Análise",
       "tempoAnaliseDias": 1290,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170206-B2D4F6A8C1E357912468BCDE24680ACE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3170107-D3E5A7C9F2B468023579ACDF13579BDE",
@@ -1049,7 +1049,7 @@
       "dataInscricao": "2018-01-10",
       "status": "Analisado com Pendências",
       "tempoAnaliseDias": 1280,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3170107-D3E5A7C9F2B468023579ACDF13579BDE"
+      "linkOficial": "https://consulta.car.gov.br/"
     },
     {
       "codigoCar": "MG-3134202-F4A6B8D1C3E468134680BCDE24680BDF",
@@ -1063,7 +1063,7 @@
       "dataInscricao": "2019-11-04",
       "status": "Em Análise",
       "tempoAnaliseDias": 1310,
-      "linkOficial": "https://consultapublica.car.gov.br/publico/imoveis/consulta?recibo=MG-3134202-F4A6B8D1C3E468134680BCDE24680BDF"
+      "linkOficial": "https://consulta.car.gov.br/"
     }
   ]
 }

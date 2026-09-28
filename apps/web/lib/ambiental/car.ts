@@ -17,7 +17,7 @@
  * ═══ FONTES E CONTEXTO INSTITUCIONAL ═══
  * - IEF/MG (Instituto Estadual de Florestas) e SEMAD/MG (Secretaria de Meio Ambiente e Desenvolvimento Sustentável);
  * - SICAR (Sistema Nacional de Cadastro Ambiental Rural / Ministério da Agricultura e Pecuária);
- * - Painel Sisema (DSR Power BI) e Consulta Pública Oficial do SICAR (consultapublica.car.gov.br).
+ * - Painel Sisema (DSR Power BI) e Consulta Pública Oficial do SICAR (consulta.car.gov.br).
  *
  * ═══ AS TRÊS RESSALVAS QUE VIAJAM COM O DADO (REGRA EDITORIAL DO PORTAL) ═══
  * 1. O gargalo histórico de análise: Em Minas Gerais, mais de 76% dos imóveis rurais encontram-se
