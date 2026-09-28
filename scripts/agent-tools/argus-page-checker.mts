@@ -26,7 +26,7 @@ const RELATORIO_DESTINO = path.join(
   "argus-paginas-status.json"
 );
 
-const BASE_URL = "https://controlepopular.com.br";
+const BASE_URL = process.env.ARGUS_BASE_URL || "https://www.controlepopular.com.br";
 const TIMEOUT_MS = 15000;
 const USER_AGENT =
   "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular; verificador de paginas)";
@@ -95,7 +95,7 @@ function valorDoSegmento(segmento: string, prefixoDaRota: string): string {
       if (prefixoDaRota.includes("empresas")) return "sigma-lithium";
       if (prefixoDaRota.includes("noticias"))
         return "satelite-cbers-6-cooperacao-espacial-amazonia";
-      if (prefixoDaRota.includes("vereadores")) return "1";
+      if (prefixoDaRota.includes("vereadores")) return "alexandre-da-paz";
       return "1";
     default:
       return "1";
@@ -143,7 +143,8 @@ function extrairTitulo(html: string): string | null {
 }
 
 /** GET leve na rota pública: Range 0-4096, timeout 15s, UA honesto. */
-export async function checarPagina(rota: string): Promise<ResultadoPagina> {
+/** GET leve na rota pública: Range 0-4096, timeout 15s, UA honesto. */
+export async function checarPagina(rota: string, retentativa: boolean = true): Promise<ResultadoPagina> {
   const url = rotaParaUrl(rota);
   const inicio = Date.now();
   const controller = new AbortController();
@@ -157,6 +158,14 @@ export async function checarPagina(rota: string): Promise<ResultadoPagina> {
       },
       signal: controller.signal,
     });
+
+    // Se receber 502 ou 503 transitório (WAF/borda), tenta mais uma vez após pausa
+    if ((res.status === 502 || res.status === 503) && retentativa) {
+      clearTimeout(timer);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      return checarPagina(rota, false);
+    }
+
     const html = await res.text();
     const tempoMs = Date.now() - inicio;
 
@@ -183,6 +192,13 @@ export async function checarPagina(rota: string): Promise<ResultadoPagina> {
       veredito,
     };
   } catch (err) {
+    // Se timeout ou erro de conexão, tenta uma segunda vez se retentativa permitida
+    if (retentativa) {
+      clearTimeout(timer);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      return checarPagina(rota, false);
+    }
+
     return {
       rota,
       url,
@@ -217,6 +233,9 @@ export async function executarArgus(): Promise<RelatorioArgus> {
     } else {
       console.log(`  ✗ ${rota} FALHA: ${r.erroDeRede ?? `HTTP ${r.status}`} (${r.tempoMs}ms)`);
     }
+
+    // Intervalo de cortesia para não sobrecarregar WAF da Cloudflare
+    await new Promise((resolve) => setTimeout(resolve, 350));
   }
 
   const ok = resultados.filter((r) => r.veredito === "OK").length;

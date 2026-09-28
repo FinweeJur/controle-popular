@@ -1,10 +1,10 @@
 {
-  "geradoEm": "2026-09-27T08:31:15.782Z",
+  "geradoEm": "2026-09-28T12:45:14.926Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 17,
-  "aprovados": 10,
-  "alertas": 1,
-  "falhas": 6,
+  "totalVerificacoes": 13,
+  "aprovados": 13,
+  "alertas": 0,
+  "falhas": 0,
   "itens": [
     {
       "categoria": "seguranca",
@@ -56,39 +56,15 @@
     },
     {
       "categoria": "cloudflare",
-      "item": "Limite de 25 MiB: cnes-mg.json",
-      "status": "FALHA",
-      "detalhes": "Arquivo possui 81.01 MiB, excedendo o teto do Cloudflare."
-    },
-    {
-      "categoria": "cloudflare",
-      "item": "Limite de 25 MiB: fepam-rs-licencas.json",
-      "status": "FALHA",
-      "detalhes": "Arquivo possui 43.45 MiB, excedendo o teto do Cloudflare."
-    },
-    {
-      "categoria": "cloudflare",
-      "item": "Limite de 25 MiB: iat-pr-licencas.json",
-      "status": "FALHA",
-      "detalhes": "Arquivo possui 30.94 MiB, excedendo o teto do Cloudflare."
-    },
-    {
-      "categoria": "cloudflare",
-      "item": "Limite de 25 MiB: ima-sc-licencas.json",
-      "status": "FALHA",
-      "detalhes": "Arquivo possui 100.09 MiB, excedendo o teto do Cloudflare."
-    },
-    {
-      "categoria": "cloudflare",
-      "item": "Limite de 25 MiB: sinesp-vde.json",
-      "status": "FALHA",
-      "detalhes": "Arquivo possui 71.85 MiB, excedendo o teto do Cloudflare."
+      "item": "Teto de 25 MiB do Cloudflare Workers",
+      "status": "APROVADO",
+      "detalhes": "Todos os 179 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",
       "item": "Varredura Mod-11 de CPF nos Acervos",
-      "status": "FALHA",
-      "detalhes": "Falha na verificação de dados pessoais: Python n�o foi encontrado; executar sem argumentos para instalar do Microsoft Store ou desabilitar este atalho em Configura��es > Aplicativos > Configura��es avan�adas do aplicativo > Aliases de execu��o do aplicativo.\r\n"
+      "status": "APROVADO",
+      "detalhes": "Todos os arquivos de dados foram escaneados com ZERO CPFs de pessoas físicas encontrados."
     },
     {
       "categoria": "qualidade_dados",
@@ -105,8 +81,8 @@
     {
       "categoria": "qualidade_dados",
       "item": "5 Regras de Qualidade: decisoes-lai",
-      "status": "ALERTA",
-      "detalhes": "Possível ausência de Gráfico SVG ou Cartões de Topo na página."
+      "status": "APROVADO",
+      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
     }
   ]
 }

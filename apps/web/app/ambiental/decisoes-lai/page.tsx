@@ -163,11 +163,11 @@ export default function DecisoesLaiPage() {
         </ul>
       </section>
 
-      {/* ═══ OS DOIS AVISOS QUE MUDAM O QUE DÁ PARA PROMETER COM ESTE DADO ═══ */}
-      <section className="mt-6 grid gap-4 sm:grid-cols-2">
+      {/* ═══ RESSALVA EDITORIAL: OS DOIS AVISOS QUE MUDAM O QUE DÁ PARA PROMETER COM ESTE DADO ═══ */}
+      <section aria-label="Ressalva editorial" className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-xl border border-border bg-surface p-5 text-[.92em] leading-relaxed text-text-soft">
           <p className="font-display text-base font-semibold text-text">
-            Provimento é raro: {formatNumberBR(16)} em sete anos
+            Ressalva editorial · Provimento é raro: {formatNumberBR(16)} em sete anos
           </p>
           <p className="mt-2">
             Em 2020 e 2022 nenhum recurso foi provido. A ideia de filtrar por Provimento para

@@ -377,9 +377,14 @@ function extrairTextoPdf(base64: string, rotulo: string): PaginaExtraida[] {
   const tmpJson = tmpPdf + ".json";
   try {
     fs.writeFileSync(tmpPdf, Buffer.from(base64, "base64"));
-    const python = process.env.RADAR_PYTHON ?? "python";
+    const venvWin = path.join(RAIZ, "etl", "betim", ".venv", "Scripts", "python.exe");
+    const venvUnix = path.join(RAIZ, "etl", "betim", ".venv", "bin", "python");
+    const python =
+      process.env.RADAR_PYTHON ??
+      process.env.PYTHON_BIN ??
+      (fs.existsSync(venvWin) ? venvWin : fs.existsSync(venvUnix) ? venvUnix : "python");
     let r = spawnSync(python, [EXTRATOR, tmpPdf, tmpJson], { encoding: "utf-8", timeout: 180_000 });
-    if (r.error && !process.env.RADAR_PYTHON) {
+    if ((r.error || r.status === 9009) && !process.env.RADAR_PYTHON) {
       r = spawnSync("py", ["-3", EXTRATOR, tmpPdf, tmpJson], { encoding: "utf-8", timeout: 180_000 });
     }
     if (r.error) {

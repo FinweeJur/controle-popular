@@ -275,6 +275,21 @@ export function auditarLimitesCloudflare(): ItemAuditoria[] {
   return itens;
 }
 
+function obterPythonBin(): string {
+  if (process.env.PYTHON_BIN && existsSync(process.env.PYTHON_BIN)) {
+    return process.env.PYTHON_BIN;
+  }
+  const venvWindows = path.join(RAIZ, "etl", "betim", ".venv", "Scripts", "python.exe");
+  if (existsSync(venvWindows)) {
+    return venvWindows;
+  }
+  const venvUnix = path.join(RAIZ, "etl", "betim", ".venv", "bin", "python");
+  if (existsSync(venvUnix)) {
+    return venvUnix;
+  }
+  return "python";
+}
+
 export function auditarPrivacidadeCpf(): ItemAuditoria[] {
   const scriptVarredura = path.join(RAIZ, "scripts", "checar-dado-pessoal-em-dado.py");
   if (!existsSync(scriptVarredura)) {
@@ -288,7 +303,8 @@ export function auditarPrivacidadeCpf(): ItemAuditoria[] {
     ];
   }
 
-  const r = spawnSync("python", [scriptVarredura], {
+  const pythonExec = obterPythonBin();
+  const r = spawnSync(pythonExec, [scriptVarredura], {
     cwd: RAIZ,
     encoding: "utf-8",
   });
@@ -338,7 +354,14 @@ export function auditarQualidadePaginas(): ItemAuditoria[] {
     const txt = readFileSync(p, "utf-8");
     const temGrafico = txt.includes("Grafico") || txt.includes("Svg") || txt.includes("cp-ord-track") || txt.includes("cp-ord-seg");
     const temCartoes = txt.includes("CartoesResumo") || txt.includes("itensCartoes") || txt.includes("font-display text-2xl font-bold") || txt.includes("O corpus em números");
-    const temRessalva = txt.includes("Nota") || txt.includes("Ressalva") || txt.includes("segurança");
+    const temRessalva =
+      txt.includes("Nota") ||
+      txt.includes("Ressalva") ||
+      txt.includes("ressalva") ||
+      txt.includes("segurança") ||
+      txt.includes("não afirma irregularidade") ||
+      txt.includes("Avisos") ||
+      txt.includes("Aviso");
 
     if (temGrafico && temCartoes && temRessalva) {
       itens.push({
@@ -348,11 +371,15 @@ export function auditarQualidadePaginas(): ItemAuditoria[] {
         detalhes: "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial.",
       });
     } else {
+      const faltantes: string[] = [];
+      if (!temGrafico) faltantes.push("Gráfico");
+      if (!temCartoes) faltantes.push("Cartões de Topo");
+      if (!temRessalva) faltantes.push("Ressalva Editorial");
       itens.push({
         categoria: "qualidade_dados",
         item: `5 Regras de Qualidade: ${path.basename(path.dirname(p))}`,
         status: "ALERTA",
-        detalhes: "Possível ausência de Gráfico SVG ou Cartões de Topo na página.",
+        detalhes: `Possível ausência de componente obrigatório: ${faltantes.join(", ")}.`,
       });
     }
   }

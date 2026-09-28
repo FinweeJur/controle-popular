@@ -712,15 +712,15 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "estadual",
     frente: "ambiental",
     descricao: "Ocorrências criminais de Minas Gerais via PowerBI (572.272 registros, 853 municípios, 2022-2026).",
-    // Domínio removido do DNS em ~2026-09. Dados coletados via download
-    // manual de PowerBI (BancoVDE*.xlsx). URL mantida para referência.
-    urlOficial: "https://www.sinesp.mg.gov.br",
+    // Domínio www.sinesp.mg.gov.br desativado; dados gerenciados pela SEJUSP/MG
+    // e extraídos de estatísticas de segurança pública / Banco VDE.
+    urlOficial: "https://www.seguranca.mg.gov.br",
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/sinesp-vde.json",
+    caminhoArquivo: "apps/web/data/sinesp-vde-2026.json",
     rotaPortal: "/ambiental/crimes-socioambientais",
-    ressalvaEditorial: "Fonte via PowerBI (download manual). Dados de 2022-2026 com 99% de match no mapeamento IBGE.",
+    ressalvaEditorial: "Fonte via SEJUSP/MG (dados estatísticos de segurança pública). Dados de 2022-2026 com 99% de match no mapeamento IBGE.",
   },
 };
 

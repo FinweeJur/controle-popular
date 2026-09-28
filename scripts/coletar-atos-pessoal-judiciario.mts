@@ -81,8 +81,18 @@ function carregarEnv(): void {
   }
 }
 
+function obterPythonBin(): string {
+  if (process.env.PYTHON_BIN && fs.existsSync(process.env.PYTHON_BIN)) return process.env.PYTHON_BIN;
+  const venvWin = path.join(RAIZ, "etl", "betim", ".venv", "Scripts", "python.exe");
+  if (fs.existsSync(venvWin)) return venvWin;
+  const venvUnix = path.join(RAIZ, "etl", "betim", ".venv", "bin", "python");
+  if (fs.existsSync(venvUnix)) return venvUnix;
+  return "python";
+}
+
 function rodarGuarda(args: string[], rotulo: string): void {
-  const r = spawnSync("python", args, { cwd: RAIZ, encoding: "utf-8" });
+  const pythonExec = obterPythonBin();
+  const r = spawnSync(pythonExec, args, { cwd: RAIZ, encoding: "utf-8" });
   if (r.status !== 0) throw new Error(`Guarda ${rotulo} reprovou:\n${r.stdout}${r.stderr}`);
 }
 
@@ -110,16 +120,21 @@ function normalizar(t: string): string {
 
 async function obterEdicao(dataIso: string): Promise<{ paginas: string[]; url: string } | null> {
   const url = `${API_BASE}/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=${dataIso}`;
-  const r = await fetch(url, { headers: { "User-Agent": "ControlePopular/1.0 (radar editais; contato publico)" }, signal: AbortSignal.timeout(60000) });
+  const r = await fetch(url, { headers: { "User-Agent": "ControlePopular/1.0 (radar editais; contato publico)", Accept: "application/json" }, signal: AbortSignal.timeout(120000) });
   if (!r.ok) return null;
-  const j = (await r.json()) as { valor?: { arquivo: string; totalPaginas: number }; erros?: unknown[] } | null;
-  const v = j?.valor ?? (j as unknown as { arquivo: string; totalPaginas: number } | null);
-  if (!v || !v.arquivo) return null;
+  const j = (await r.json()) as {
+    dados?: { arquivoCadernoPrincipal?: { arquivo?: string; totalPaginas?: number } };
+    valor?: { arquivo?: string; totalPaginas?: number };
+    erros?: unknown[];
+  } | null;
+  const base64 = j?.dados?.arquivoCadernoPrincipal?.arquivo ?? j?.valor?.arquivo;
+  if (!base64) return null;
   const pdfPath = path.join(RAIZ, "logs", `domg-${dataIso}.pdf`);
   const txtPath = path.join(RAIZ, "logs", `domg-${dataIso}.txt.json`);
   fs.mkdirSync(path.dirname(pdfPath), { recursive: true });
-  fs.writeFileSync(pdfPath, Buffer.from(v.arquivo, "base64"));
-  const ex = spawnSync("python", [EXTRATOR, pdfPath, txtPath], { cwd: RAIZ, encoding: "utf-8", timeout: 180000 });
+  fs.writeFileSync(pdfPath, Buffer.from(base64, "base64"));
+  const pythonExec = obterPythonBin();
+  const ex = spawnSync(pythonExec, [EXTRATOR, pdfPath, txtPath], { cwd: RAIZ, encoding: "utf-8", timeout: 180000 });
   if (ex.status !== 0) {
     console.warn("extrator falhou:", (ex.stderr || ex.stdout || "").slice(0, 300));
     return null;
@@ -193,8 +208,20 @@ function casarComUnidades(recs: Designacao[]): Designacao[] {
 
 async function main(): Promise<void> {
   carregarEnv();
-  const dataIso = new Date().toISOString().slice(0, 10);
-  const ed = await obterEdicao(dataIso);
+  let dataIso = new Date().toISOString().slice(0, 10);
+  let ed = await obterEdicao(dataIso);
+  if (!ed) {
+    // Tenta até 4 dias para trás caso o jornal de hoje ainda não tenha sido publicado
+    for (let diasAtras = 1; diasAtras <= 4; diasAtras++) {
+      const d = new Date(Date.now() - diasAtras * 86400000).toISOString().slice(0, 10);
+      ed = await obterEdicao(d);
+      if (ed) {
+        dataIso = d;
+        console.log(`[atos-pessoal] edição de hoje ainda indisponível; usando última edição publicada (${d}).`);
+        break;
+      }
+    }
+  }
   if (!ed) {
     console.log("[atos-pessoal] edição do dia indisponível — nada a fazer.");
     return;

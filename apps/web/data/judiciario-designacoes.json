@@ -1,1 +1,134 @@
-[]
+[
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA PA",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA PATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 274/2026",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 274/2026",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 275/2026",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 275/2026",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 276/2026",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 276/2026",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 277/2026",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 277/2026",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 283/2025 – SEI ",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 283/2025 – SEI",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 284/2025 – SEI ",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 284/2025 – SEI",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 285/2025 – SEI ",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 285/2025 – SEI",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 286/2025 – SEI ",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 286/2025 – SEI",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 287/2025 – SEI ",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 287/2025 – SEI",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.913Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-26",
+  "ato": "PORTARIA Nº 1062 - REITOR/2026\", leia-se \"ANEXO ÚNICO - PORT",
+  "tipo": "OUTRO",
+  "pessoa": "ANEXO ÚNICO",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
+  "criado_em": "2026-09-28T12:57:20.914Z"
+ }
+]

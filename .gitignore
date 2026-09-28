@@ -234,3 +234,7 @@ pncp-launch.log
 etl/betim/.checkpoint-pncp-*.json
 etl/betim/.checkpoint-pncp-*.json.tmp
 etl/betim/.fila-pncp.lock
+
+# Acervos de dados brutos pesados locais (fora de apps/web e fora do bundle do Cloudflare)
+/data/
+
