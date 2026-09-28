@@ -891,6 +891,28 @@ de sessão.
 - O manifesto de calibração guarda **bbox, cena, data e hash** — sem titular,
   sem CPF ([PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)).
 
+### Cenas de Goiás (2ª UF) — medido 28/09/2026
+
+- **Coletor:** `scripts/etl/cavas/coletar-cenas-go.py` (offline, cache fora do git).
+- **BBOX de GO:** minlon=-53.0, minlat=-19.5, maxlon=-45.5, maxlat=-13.5.
+- **Janela:** 18 meses (2025-03-28 a 2026-09-28).
+- **Total real:** **643 cenas** (1 página, sem link `next` — não é piso da API).
+- **Validação:** 643/643 com BAND1-3 preenchidas.
+- **Formato:** idêntico ao `cenas-mg.json` (id, datetime, geom, bands).
+- **Cache:** `scripts/.cache/cavas-calibracao/cenas-go.json`.
+
+### Catálogo Sentinel-2 para a linha do tempo (Fase 3) — medido 28/09/2026
+
+- **Coletor:** `scripts/etl/cavas/catalogo-sentinel.py` (offline, cache fora do git).
+- **Fonte:** Planetary Computer STAC (`planetarycomputer.microsoft.com/api/stac/v1`),
+  sem login, coleção `sentinel-2-l2a`.
+- **Escopo:** MG e GO, anos 2015–2026 (1 arquivo por UF por ano).
+- **Limite:** 200 cenas/ano (1 página) — amostra representativa, não total.
+- **Total:** **4.736 cenas** (MG 2.400 + GO 2.336).
+- **Campos por cena:** id, datetime, cloud_cover, bbox.
+- **Cache:** `scripts/.cache/serie-sentinel/catalogo-{uf}-{ano}.json`.
+- ** cloud_cover presente em 100% das cenas** (validado).
+
 ## Decisões registradas
 
 - **2026-09-25:** WFS do Monitor da Mineração (MapBiomas) consultado só com
