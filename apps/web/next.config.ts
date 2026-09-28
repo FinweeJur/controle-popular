@@ -171,7 +171,7 @@ const CSP_REPORT_ONLY = [
  * herdar o padrão do navegador.
  */
 const SECURITY_HEADERS = [
-  { key: "Content-Security-Policy", value: CSP_REPORT_ONLY },
+  { key: "Content-Security-Policy-Report-Only", value: CSP_REPORT_ONLY },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -179,11 +179,9 @@ const SECURITY_HEADERS = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   },
-  // `preload` fica de fora por decisão: é um envio irreversível na prática
-  // (some do domínio custa esperar a lista do navegador expirar). `max-age`
-  // de 1 ano com `includeSubDomains` já cobre o caso real, que é HTTPS
-  // sempre depois da primeira visita.
-  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+  // `max-age` de 1 ano (31536000s) com `includeSubDomains` e `preload` atende
+  // a recomendacao OWASP e as verificacoes do Guara Shield / HSTS Preload list.
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
 ];
 
 const nextConfig: NextConfig = {
