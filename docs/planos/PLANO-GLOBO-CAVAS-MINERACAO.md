@@ -336,6 +336,26 @@ atingível sem os negativos da meta.
   `fila-revisao.html` (2.383 miniaturas) — a revisão dos 100 exemplos é
   humana e fica com o dono.
 
+Medições da tarde de 28/09 (mesmo split, coleta de negativos crescendo):
+
+- **Treino v1.5** (338 negativos já no treino): melhor F1 0,972 na
+  época 2 (precisão 0,967 / recall 0,978 no limiar 0,5); 59,3 s/época;
+  extrapolação 20 mil imagens: 10,4 min/época, 83,5 min p/ 8 épocas.
+- **Regra do limiar corrigida** (`309ea5f5`): a regra antiga — maior
+  recall entre precisão ≥ 70% — escolhia o limiar 0,05, que chama tudo
+  de cava (holdout é 95,5% positivo; precisão 0,955 por base rate,
+  tn = 0). Regra nova: precisão ≥ 70% **e**, dentro dela, maior
+  acurácia balanceada. Com os pesos de v1.5 escolhe 0,64 (precisão
+  0,968, acurácia balanceada 0,646, tn 7 de 21).
+- **GO pronto para coletar** (`7f0af4d8`, `93cf92d1`): alvos 1.625,
+  exclusão 24.819 bboxes, cenas GO 642 (medido aqui; a outra máquina
+  mediu 643) — dry-run em cache descartável: 2 pos + 2 neg com
+  `uf: GO`, **zero alvos sem cena CBERS**. Comando na docstring do
+  coletor; roda só depois de MG fechar (um escritor por checkpoint).
+- **Campo `uf`** agora é gravado em checkpoint e manifesto (MG
+  retroativo por `setdefault`) — é dele que o filtro de UF do painel
+  vai ler.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
