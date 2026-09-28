@@ -27,6 +27,7 @@ Só JSON de acervo/dataset em caminhos de DADO, por padrão:
         "apps/web/data", "apps/web/public/data",
         "docs/dados", "docs/judiciario", "docs/ambiental",
         "etl/betim/dados", "etl/judiciario/etl/dados",
+        "scripts/dados",
     ]
 
 A lista não é só os dois diretórios originais: é todo diretório rastreado
@@ -35,7 +36,9 @@ ou onde um doc de frente versiona corpus curado (ex. `docs/judiciario/f0-
 corpus-indicacoes.json`, 724 indicações). Ficar de fora daqui é ficar de fora
 do pre-push e da CI — foi o caso de `etl/betim/dados/` até 22/08/2026: 25 JSON
 de coletor, um deles com 8.570 normas, sem varredura nenhuma até alguém abrir
-o arquivo à mão por outro motivo e notar o buraco.
+o arquivo à mão por outro motivo e notar o buraco. De novo com
+`scripts/dados/` em 28/09/2026: os alvos de GO vieram de outra máquina e
+entraram sem estar na lista — mesma brecha, mesma correção.
 
 Espacial (`.geojson`) e CSV ficam de fora pela mesma decisão de design do
 script irmão: são dados de órgão público já vistados na ingestão, e varrer
@@ -185,6 +188,7 @@ DIRETORIOS_DADO = [
     "apps/web/data", "apps/web/public/data",
     "docs/dados", "docs/judiciario", "docs/ambiental",
     "etl/betim/dados", "etl/judiciario/etl/dados",
+    "scripts/dados",
 ]
 
 # `[0-9]` e NÃO `\d`: mesmo dialeto do script irmão, e a mesma razão — a
