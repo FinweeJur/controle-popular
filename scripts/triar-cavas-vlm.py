@@ -161,6 +161,43 @@ def listar_recortes(dados: Path, limite: int | None) -> list[tuple[str, Path]]:
     return tarefas
 
 
+def consertar_json(texto: str) -> str:
+    """Fecha o JSON que o modelo deixou aberto no meio do caminho.
+
+    Só concatena o que falta fechar (string pendurada, `}`/`]` na pilha);
+    nunca inventa campo nem valor. Um JSON reparado com escore cortado
+    vira registro sem escore — o montador da fila o joga em
+    "sem-triagem", que é a verdade.
+    """
+    saida = texto.strip()
+    dentro_de_string = False
+    escapando = False
+    pilha: list[str] = []
+    for ch in saida:
+        if escapando:
+            escapando = False
+            continue
+        if ch == "\\" and dentro_de_string:
+            escapando = True
+            continue
+        if ch == '"':
+            dentro_de_string = not dentro_de_string
+            continue
+        if dentro_de_string:
+            continue
+        if ch == "{":
+            pilha.append("}")
+        elif ch == "[":
+            pilha.append("]")
+        elif ch in "}]":
+            if pilha and pilha[-1] == ch:
+                pilha.pop()
+    if dentro_de_string:
+        saida += '"'
+    saida += "".join(reversed(pilha))
+    return saida
+
+
 def chamar_vlm(modelo: str, imagem_b64: str, prompt: str, tentativas: int = 3) -> dict:
     """Envia uma imagem + prompt ao Ollama e devolve o JSON decodificado.
 
@@ -189,7 +226,9 @@ def chamar_vlm(modelo: str, imagem_b64: str, prompt: str, tentativas: int = 3) -
             # reproduzível (§5.9: número vem do dado).
             "temperature": 0.0,
             "seed": 0,
-            "num_predict": 400,
+            # 700 (era 400): com temp 0 o modelo às vezes gasta tokens
+            # demais na legenda e corta o JSON no meio (medido 28/09).
+            "num_predict": 700,
         },
     }
     dados = json.dumps(corpo).encode("utf-8")
@@ -205,7 +244,14 @@ def chamar_vlm(modelo: str, imagem_b64: str, prompt: str, tentativas: int = 3) -
             with urllib.request.urlopen(req, timeout=300) as resp:
                 resposta = json.loads(resp.read().decode("utf-8"))
             texto = resposta.get("message", {}).get("content", "")
-            return json.loads(texto)
+            try:
+                return json.loads(texto)
+            except json.JSONDecodeError:
+                # JSON truncado pelo limite de tokens: com temperature 0 e
+                # seed 0 a falha é DETERMINISTICA — toda retentativa trunca
+                # no mesmo ponto, então só reparar resolve (medido 28/09:
+                # 2 recortes "Unterminated string" que nunca triariam).
+                return json.loads(consertar_json(texto))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError) as exc:
             ultimo_erro = exc
             espera = 3 * (tentativa + 1)
@@ -340,7 +386,14 @@ def main(argv: list[str] | None = None) -> int:
                     reg = json.loads(linha)
                 except json.JSONDecodeError:
                     continue
-                ja_traiados.add((str(reg.get("tipo")), str(reg.get("arquivo"))))
+                # Registro com erro NÃO entra em já-feitos: o recorte volta a
+                # ser triado na próxima rodada. Sem isto, uma falha do Ollama
+                # marcaria o arquivo como triado para sempre e a fila o
+                # mostraria "sem triagem" sem solução (medido 28/09). O
+                # montador da fila usa last-wins por arquivo, então o registro
+                # novo apaga o erro antigo sozinho.
+                if not reg.get("erro"):
+                    ja_traiados.add((str(reg.get("tipo")), str(reg.get("arquivo"))))
     restantes = [t for t in tarefas if (t[0], t[1].name) not in ja_traiados]
     if ja_traiados:
         print(f"retomando: {len(ja_traiados)} recorte(s) já triado(s) pulado(s)")

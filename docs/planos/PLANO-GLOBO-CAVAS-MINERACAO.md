@@ -224,7 +224,11 @@ desde o início, então a meta esticada é **10 mil por classe**. Medido em
 25/09: MG tem **7.656 poligonais nas fases extrativas** (WFS do Monitor) —
 os 10 mil positivos exigem **outra UF no lote** (GO/AM/PA na fila) ou
 complemento com Autorização de Pesquisa com guia (hoje `guia_utilizacao`
-vazio nessa fase no WFS — pendência medida, não suposição). Pilot medido:
+  vazio nessa fase no WFS — pendência medida, não suposição). **Medido em
+  28/09:** o campo existe, é booleano e tem valor **só em AUTORIZAÇÃO DE
+  PESQUISA** (25/25 na amostra: 12 False, 13 True); nas fases extrativas
+  segue vazio. O complemento de pesquisa com guia tem dado — o flag da
+  guia está lá. Pilot medido:
 `scripts/coletar-cavas-calibracao.py` roda com cache retomável; nuvem
 heurística local (CBERS não tem `eo:cloud_cover` — medido).
 
