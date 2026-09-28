@@ -303,6 +303,39 @@ Critério de pronto: número de precisão e recall medidos do modelo treinado
 acionamento da reserva técnica (DINOv2/CLIP) — decisão do dono por
 medição na mão, nunca automática.
 
+### Medições da Fase 2 e da fila — 28/09/2026 (parcial: negativos em coleta)
+
+Lote de trabalho: 2.000 positivos + 381 negativos (coleta de negativos
+ainda rodando; meta 10 mil/classe). Split por cena fixo, semente 42
+(`scripts/.cache/cavas-treino/split.json`): treino 1.740 (1.555/185),
+holdout 466 (445/21), 39 cenas — o holdout planejado de 500/500 não é
+atingível sem os negativos da meta.
+
+| Modelo | Precisão | Recall | F1 | tn no holdout |
+|---|---|---|---|---|
+| Zero-shot B (baseline) | 0,955 | 1,000 | 0,977 | 0 |
+| Fine-tune `peso` (pos_weight) | 0,955 | 1,000 | 0,977 | 0 |
+| Fine-tune `sobreamostragem` | **0,971** | 0,966 | 0,968 | 8 |
+
+- **Gate ≥ 70% de precisão: PASSOU — mas preliminar.** O holdout é 95,5%
+  positivo; chamar tudo de "cava" já dá 0,955. Só a sobreamostragem acerta
+  negativos (8/21). Repetir o gate quando os negativos chegarem a ≥ 5 mil.
+- VRAM 2,39 GiB (4 GiB); 71 s/época com 1.740 imagens; extrapolação para
+  20 mil: 13,5 min/época, 8 épocas ≈ 108 min. Bug corrigido no caminho:
+  faltava `@torch.no_grad()` na avaliação e o grafo de autograd derrubava
+  a GPU sem necessidade.
+- **Triagem VLM (`qwen3-vl:2b-instruct` local, Apache 2.0):** 2.366
+  recortes com legenda e escore; média pos 61,3 × neg 57,0, moda 70–75
+  nas **duas** classes, 2 erros em 2.366. Solo exposto fora do SIGMINE
+  parece mineração para o modelo (247 negativos ≥ 70) — hard negative
+  esperado, não bug. **O escore ordena a fila e nunca filtra** (Fase 4:
+  o VLM não publica sozinho).
+- Fila de revisão gerada por `scripts/montar-fila-revisao-cavas.py`:
+  `fila-revisao.jsonl` (2.383 itens, estado inicial *pendente*),
+  `amostra-100.jsonl` (estratificada p/ o gate) e a galeria
+  `fila-revisao.html` (2.383 miniaturas) — a revisão dos 100 exemplos é
+  humana e fica com o dono.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
