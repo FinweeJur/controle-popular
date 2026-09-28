@@ -84,6 +84,11 @@ O plano Starter paga build por minutos: um build do portal gasta
 - O workflow `mirror-gitee.yml` (espelho do repositório no Gitee) falha em
   todo push enquanto os secrets `GITEE_USERNAME`/`GITEE_TOKEN` não forem
   configurados — o próprio workflow diz que o espelho fica inativo até lá.
+- O workflow `mirror-hf.yml` espelha o HEAD no Hugging Face
+  (`FinweeBR/controle-popular`) a cada push, pelo script
+  `scripts/espelhar-hf.py`: só sobe o commitado, poda o que saiu do git
+  e usa o secret `HF_TOKEN`. Os 30 arquivos versionados sob `.cache/`
+  não sobem — o Hub proíbe caminho `.cache/` (limite da plataforma).
 
 ### 3. Deploy manual via Guara CLI
 ```bash

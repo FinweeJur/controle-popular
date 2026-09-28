@@ -1,0 +1,42 @@
+name: Espelho no Hugging Face
+
+# Espelha o HEAD commitado no Hub: huggingface.co/FinweeBR/controle-popular
+# Mesmo papel do espelho do Gitee — rede de seguranca caso o GitHub suma e
+# vitrine do projeto onde a comunidade de IA procura codigo.
+#
+# O script scripts/espelhar-hf.py faz o trabalho pesado:
+# - so sobe o que o git rastreia (git archive do HEAD, nunca a arvore
+#   de trabalho — build, cache e worktree ficam fora por construcao);
+# - poda do Hub o arquivo que saiu do git (o espelho nao acumula lixo);
+# - dedup do Hub: push cotidiano envia so o que mudou;
+# - token vem do secret HF_TOKEN e nunca aparece em log nem no repo.
+#
+# Falta de secret = falha ruidosa (exit 2 com instrucao), igual ao Gitee.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: mirror-hf
+  cancel-in-progress: true
+
+jobs:
+  espelho:
+    name: Enviar espelho para o Hub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar huggingface_hub
+        run: pip install "huggingface_hub>=1.0"
+
+      - name: Espelhar HEAD no Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/espelhar-hf.py
