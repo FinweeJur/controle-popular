@@ -708,19 +708,17 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
   "sinesp-vde": {
     slug: "sinesp-vde",
     nome: "SINESP VDE — Vítimas de Eventos Delituosos",
-    orgao: "Sistema Integrado de Informações de Segurança Pública (SINESP/SPCS)",
-    esfera: "estadual",
+    orgao: "Ministério da Justiça e Segurança Pública (MJSP / SINESP)",
+    esfera: "federal",
     frente: "ambiental",
-    descricao: "Ocorrências criminais de Minas Gerais via PowerBI (572.272 registros, 853 municípios, 2022-2026).",
-    // Domínio www.sinesp.mg.gov.br desativado; dados gerenciados pela SEJUSP/MG
-    // e extraídos de estatísticas de segurança pública / Banco VDE.
-    urlOficial: "https://www.seguranca.mg.gov.br",
+    descricao: "Painel nacional do SINESP (todos os 27 estados no acervo bruto; recorte de 853 municípios de MG ingerido no portal).",
+    urlOficial: "https://dados.gov.br/dados/conjuntos-dados/sistema-nacional-de-informacoes-de-seguranca-publica",
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
     caminhoArquivo: "apps/web/data/sinesp-vde-2026.json",
     rotaPortal: "/ambiental/crimes-socioambientais",
-    ressalvaEditorial: "Fonte via SEJUSP/MG (dados estatísticos de segurança pública). Dados de 2022-2026 com 99% de match no mapeamento IBGE.",
+    ressalvaEditorial: "Fonte federal via SINESP/MJSP. O portal ingere atualmente o recorte municipal de Minas Gerais; a base bruta nacional completa com todos os 27 estados é mantida no acervo bruto em etl/ e data/.",
   },
 };
 
