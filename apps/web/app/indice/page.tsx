@@ -20,6 +20,7 @@ import {
   Newspaper,
   Users,
   Sparkles,
+  Compass,
 } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import Link from "next/link";
@@ -168,6 +169,7 @@ export default async function IndiceGlobal() {
         { href: "/direitos-em-movimento/conselhos", titulo: "Quero participar do conselho da minha cidade", descricao: "Reuniões e contatos de CMS, CODEMA, Tutelares e Direitos Humanos.", cor: "var(--cp-alert)", badge: "Ação", icon: <Users size={14} /> },
         { href: "/judiciario/contatos", titulo: "Preciso falar com a Vara ou Fórum", descricao: "Contatos com DDD, e-mails, endereços com CEP e balcão virtual das 298 comarcas de MG e polos do país.", cor: "var(--cp-secondary)", badge: "Ação", icon: <Scale size={14} /> },
         { href: "/governo", titulo: "Quero checar se o governo cumpriu", descricao: "Painel comparativo de promessas de campanha versus entregas reais.", cor: "var(--cp-primary)", badge: "Ação", icon: <Landmark size={14} /> },
+        { href: "/assembleias", titulo: "Quero vigiar a Assembleia Legislativa", descricao: "Projetos de lei, ranking de deputados e gastos das 27 Assembleias Estaduais.", cor: "var(--cp-secondary)", badge: "Ação", icon: <Landmark size={14} /> },
         { href: "/cidades", titulo: "Quero dados da minha cidade", descricao: "Painel mestre com 203 cidades estratégicas do Brasil com SUS, PIB e contratos.", cor: "var(--cp-tertiary)", badge: "Ação", icon: <MapPin size={14} /> },
         { href: "/instituicoes", titulo: "Quero o contato oficial de um órgão", descricao: "Organograma, presidente, telefone, e-mail e endereço de órgãos públicos.", cor: "var(--cp-secondary)", badge: "Ação", icon: <Building2 size={14} /> },
         { href: "/paraopeba/entenda", titulo: "Quero entender Brumadinho", descricao: "Reparação, auxílio e acompanhamento do Acordo.", cor: "var(--cp-secondary)", badge: "Ação", icon: <AlertTriangle size={14} /> },
@@ -180,8 +182,9 @@ export default async function IndiceGlobal() {
   ];
 
   const itensIndice = [
-    { id: "eixos-tematicos", titulo: "Os 3 Eixos Temáticos" },
-    { id: "catalogo-100-paginas", titulo: "As 100 Principais Páginas" },
+    { id: "eixos-tematicos", titulo: "Os 4 Grandes Eixos" },
+    { id: "mapa-3d-destaque", titulo: "✦ Mapa 3D do Território" },
+    { id: "catalogo-100-paginas", titulo: "Catálogo Completo de Páginas" },
     { id: "novidades", titulo: "Novidades Recentes" },
     ...secoes.map((s) => ({ id: s.id, titulo: s.titulo })),
   ];
@@ -204,20 +207,19 @@ export default async function IndiceGlobal() {
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
         <p className="max-w-2xl text-text-soft">
-          Tudo o que o portal vigia, organizado do seu jeito: por eixos temáticos, pelas 100 principais páginas, por frente, por cidade, por
-          tema ou pela sua situação prática.
+          Tudo o que o portal vigia, organizado do seu jeito: por eixos temáticos, pelo mapa 3D do território, pelo catálogo completo de páginas, por frente, por cidade ou por tema.
         </p>
       </header>
 
       <IndiceWiki itens={itensIndice} />
 
-      {/* ═══ OS 3 GRANDES EIXOS TEMÁTICOS DO PORTAL ═══ */}
+      {/* ═══ OS 4 GRANDES EIXOS TEMÁTICOS DO PORTAL ═══ */}
       <section id="eixos-tematicos" className="mt-12 scroll-mt-20">
         <div className="mb-5">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Arquitetura Cívica</span>
-          <h2 className="font-display text-2xl font-bold text-text">Os Três Grandes Eixos Temáticos</h2>
+          <h2 className="font-display text-2xl font-bold text-text">Os Quatro Grandes Eixos Temáticos</h2>
           <p className="mt-1 text-sm text-text-soft">
-            Toda a fiscalização do portal é organizada em três eixos de interesse social e uma central técnica de transparência.
+            Toda a fiscalização do portal é organizada em quatro eixos de interesse social e transparência cívica.
           </p>
         </div>
 
@@ -288,7 +290,7 @@ export default async function IndiceGlobal() {
                 Estado e Economia
               </h3>
               <p className="mt-2 text-xs text-text-soft leading-relaxed">
-                Orçamento de MG, Compras Públicas (PNCP), Congresso Nacional (CEAP e emendas), Quem fiscaliza a Justiça, Varas e Empresas ESG.
+                Orçamento de MG, Compras Públicas (PNCP), Congresso Nacional, Assembleias Legislativas (27 UFs), Quem fiscaliza a Justiça, Varas e Empresas ESG.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-sky-500/20 flex items-center justify-between text-xs font-semibold text-sky-500">
@@ -297,30 +299,72 @@ export default async function IndiceGlobal() {
             </div>
           </Link>
 
-          {/* Central ONSA */}
+          {/* Eixo Central ONSA */}
           <Link
-            href="/sobre"
+            href="/central"
             className="group flex flex-col justify-between rounded-2xl border border-primary/30 bg-primary/5 p-5 transition hover:border-primary hover:bg-primary/10 shadow-xs"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="rounded border border-primary/30 bg-primary/20 px-2 py-0.5 text-xs font-bold uppercase text-primary">
-                  ONSA
+                  EIXO CENTRAL
                 </span>
-                <Sparkles className="h-5 w-5 text-primary" />
+                <Compass className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-display text-lg font-bold text-text group-hover:text-primary transition-colors">
-                Central & Ferramentas
+                Eixo Central (ONSA)
               </h3>
               <p className="mt-2 text-xs text-text-soft leading-relaxed">
                 Radar de Editais (DO-MG), Estudos Rurais, Documentação Técnica, API Pública, Biblioteca Digital, Blog e IA Livre.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-primary/20 flex items-center justify-between text-xs font-semibold text-primary">
-              <span>Conhecer Método</span>
+              <span>Explorar Eixo Central</span>
               <span>→</span>
             </div>
           </Link>
+        </div>
+      </section>
+
+      {/* ═══ DESTAQUE: MAPA 3D E GLOBO INTERATIVO DO TERRITÓRIO ═══ */}
+      <section id="mapa-3d-destaque" className="mt-12 scroll-mt-20">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-950/40 via-surface to-surface-2 p-6 sm:p-8 shadow-xl">
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                <Globe size={14} className="text-emerald-400" aria-hidden="true" />
+                <span>Visualizador Cartográfico Oficial em 3D</span>
+              </div>
+              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground">
+                Globo 3D & Mapa Interativo do Território
+              </h2>
+              <p className="text-sm sm:text-base text-text-soft leading-relaxed">
+                Navegue pelas camadas territoriais de todo o Brasil: mais de 1.480 processos minerários ativos da ANM, Cadastro Ambiental Rural (CAR), Terras Indígenas, Territórios Quilombolas, Unidades de Conservação e bacias hidrográficas do Rio Doce e Paraopeba com renderização vetorial tridimensional.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1 text-xs text-emerald-300 font-medium">
+                <span className="rounded-md bg-emerald-950/60 px-2.5 py-1 border border-emerald-800/40">✦ 1.488 Minerações ANM</span>
+                <span className="rounded-md bg-emerald-950/60 px-2.5 py-1 border border-emerald-800/40">✦ 203 Cidades Polo</span>
+                <span className="rounded-md bg-emerald-950/60 px-2.5 py-1 border border-emerald-800/40">✦ Camadas CAR / IEF-MG</span>
+                <span className="rounded-md bg-emerald-950/60 px-2.5 py-1 border border-emerald-800/40">✦ 100% Livre e Acessível</span>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+              <Link
+                href="/funcaosocialterra/mapa"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Globe size={18} aria-hidden="true" />
+                <span>Abrir Globo 3D Agora</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                href="/funcaosocialterra"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 hover:bg-surface px-4 py-2.5 text-xs font-semibold text-text-soft hover:text-foreground transition-colors"
+              >
+                <span>Painel Função Social da Terra</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

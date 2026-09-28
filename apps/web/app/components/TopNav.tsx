@@ -121,6 +121,7 @@ const SECOES_MENU = [
       { label: 'Quem fiscaliza a Justiça', href: '/judiciario/instituicoes', icone: Scale },
       { label: 'Varas, Gabinetes e Balcão', href: '/judiciario/contatos', icone: PhoneCall },
       { label: 'Congresso Nacional & Gastos', href: '/congresso', icone: Landmark },
+      { label: 'Assembleias Legislativas (27 UFs)', href: '/assembleias', icone: Landmark },
       { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users },
       { label: 'Radar Cívico de Editais', href: '/editais', icone: ShoppingBag },
       { label: 'Grandes Empresas & Fundos', href: '/empresas', icone: Building2 },
@@ -133,14 +134,14 @@ const SECOES_MENU = [
     id: 'transversal',
     badge: 'ONSA',
     titulo: 'Central & Ferramentas',
-    href: '/indice',
+    href: '/central',
     icone: Compass,
     cor: 'var(--cp-primary)',
     corClasse: 'text-primary hover:text-primary',
     badgeClasse: 'bg-primary/10 text-primary border-primary/30',
     links: [
+      { label: 'Página do Eixo Central', href: '/central', icone: Compass },
       { label: 'Índice Geral do Portal', href: '/indice', icone: List },
-      { label: 'Top 100 Páginas Catalogadas', href: '/indice#catalogo-100-paginas', icone: Sparkles },
       { label: 'Busca Global no Acervo', href: '/busca', icone: Search },
       { label: 'Blog & Notícias Analíticas', href: '/noticias', icone: Newspaper },
       { label: 'Alertas & Notificações', href: '/alertas', icone: Bell },
@@ -282,16 +283,16 @@ export default function TopNav() {
                     Índice Geral do Portal
                   </a>
                   <a
-                    href="/indice#catalogo-100-paginas"
+                    href="/central"
                     onClick={fechar}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 transition-colors duration-150 hover:bg-emerald-500/20"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
                   >
-                    <Sparkles size={13} aria-hidden="true" />
-                    <span>Top 100 Páginas</span>
+                    <Compass size={13} aria-hidden="true" />
+                    <span>Eixo Central (ONSA)</span>
                   </a>
                 </div>
                 <span className="text-xs font-semibold text-text-soft">
-                  3 Eixos Temáticos • 18 Subfrentes
+                  4 Eixos Temáticos • 30 Subfrentes
                 </span>
               </div>
 
@@ -347,18 +348,18 @@ export default function TopNav() {
                 ))}
               </div>
 
-              {/* Rodapé do menu com link de acesso rápido ao catálogo */}
+              {/* Rodapé do menu com link de acesso rápido ao Eixo Central (ONSA) */}
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/70 pt-3 sm:mt-4 sm:pt-4">
                 <div className="flex items-center gap-2 text-xs text-text-soft">
                   <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
-                  <span>Base unificada com 100 páginas catalogadas, microresumos e busca em tempo real.</span>
+                  <span>Observatório Nacional Socioambiental e ferramentas integradas em um só lugar.</span>
                 </div>
                 <a
-                  href="/indice#catalogo-100-paginas"
+                  href="/central"
                   onClick={fechar}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
                 >
-                  <span>Ver Catálogo Completo das 100 Páginas</span>
+                  <span>Conhecer o Eixo Central (ONSA)</span>
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -398,7 +399,7 @@ export default function TopNav() {
           </Link>
           <span className="hidden md:inline-flex"><ThemeSwitcher /></span>
           <span className="hidden lg:inline-flex"><CvdToggle /></span>
-          <FontSizeControl />
+          <span className="hidden sm:inline-flex"><FontSizeControl /></span>
         </div>
       </div>
       <Marquee frase="✦ FISCALIZA ✦ OLHO ABERTO ✦ O DINHEIRO É NOSSO ✦ TERRITÓRIO COMO ESPERANÇA ✦ NOSSA NATUREZA ✦ NOSSOS MISTÉRIOS ✦ CORAÇÃO SEM MEDO" />

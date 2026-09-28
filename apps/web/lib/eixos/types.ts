@@ -9,7 +9,7 @@
  * Modelo estrito com suporte a cruzamentos analíticos e sugestões interdisciplinares.
  */
 
-export type EixoId = 'direitos' | 'terra' | 'estado';
+export type EixoId = 'direitos' | 'terra' | 'estado' | 'central';
 
 export type SubfrenteId =
   // Eixo 1: Direitos em Movimento
@@ -32,7 +32,20 @@ export type SubfrenteId =
   | 'executivo'
   | 'empresas'
   | 'orcamento'
-  | 'transparencia';
+  | 'transparencia'
+  // Eixo Central: ONSA e Ferramentas
+  | 'busca'
+  | 'laboratorio'
+  | 'editais'
+  | 'biblioteca'
+  | 'noticias'
+  | 'tecnologia'
+  | 'documentacao'
+  | 'alertas'
+  | 'estudos-rurais'
+  | 'imprensa'
+  | 'sobre'
+  | 'termos';
 
 export interface Eixo {
   id: EixoId;

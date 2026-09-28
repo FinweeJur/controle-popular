@@ -102,12 +102,12 @@ export default function TabelaCidadesClient({ cidades }: Props) {
             />
           </div>
 
-          <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-muted" />
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
+            <Filter className="h-4 w-4 text-muted shrink-0" />
             <select
               value={regiaoFiltro}
               onChange={(e) => setRegiaoFiltro(e.target.value)}
-              className="rounded-lg border border-border bg-surface px-3 py-2 text-xs text-foreground focus:border-primary focus:outline-none"
+              className="flex-1 sm:flex-none rounded-lg border border-border bg-surface px-3 py-2 text-xs text-foreground focus:border-primary focus:outline-none"
               aria-label="Filtrar por região"
             >
               <option value="todas">Todas as Regiões (5)</option>
@@ -121,7 +121,7 @@ export default function TabelaCidadesClient({ cidades }: Props) {
             <select
               value={tipoFiltro}
               onChange={(e) => setTipoFiltro(e.target.value)}
-              className="rounded-lg border border-border bg-surface px-3 py-2 text-xs text-foreground focus:border-primary focus:outline-none"
+              className="flex-1 sm:flex-none rounded-lg border border-border bg-surface px-3 py-2 text-xs text-foreground focus:border-primary focus:outline-none"
               aria-label="Filtrar por tipo"
             >
               <option value="todos">Todos os Tipos (203)</option>
@@ -141,7 +141,7 @@ export default function TabelaCidadesClient({ cidades }: Props) {
       </div>
 
       {/* TABELA COM ROLAGEM */}
-      <div className="overflow-x-auto rounded-xl border border-border bg-surface">
+      <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-xl border border-border bg-surface">
         <table className="w-full text-left text-sm">
           <thead className="border-b border-border bg-surface-2 text-xs font-semibold text-muted uppercase tracking-wider">
             <tr>

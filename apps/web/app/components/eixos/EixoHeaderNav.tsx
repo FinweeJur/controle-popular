@@ -33,7 +33,11 @@ export default function EixoHeaderNav({ eixoAtivo, subfrenteAtiva }: Props) {
               const linkHref =
                 eixo.id === 'direitos'
                   ? '/direitos-em-movimento'
-                  : `/${eixo.id === 'terra' ? 'terra-e-territorios' : 'estado-e-economia'}`;
+                  : eixo.id === 'terra'
+                    ? '/terra-e-territorios'
+                    : eixo.id === 'estado'
+                      ? '/estado-e-economia'
+                      : '/central';
 
               return (
                 <Link
@@ -64,7 +68,7 @@ export default function EixoHeaderNav({ eixoAtivo, subfrenteAtiva }: Props) {
 
         {/* SUBFRENTES DO EIXO ATIVO */}
         {eixoAtivo && (
-          <div className="flex items-center gap-1 overflow-x-auto py-2 border-t border-border/40 text-xs no-scrollbar">
+          <div className="flex items-center gap-1 overflow-x-auto py-2 border-t border-border/40 text-xs [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <span className="text-muted pr-2 font-medium shrink-0">Subfrentes:</span>
             {CATALOGO_EIXOS[eixoAtivo].subfrentes.map((sub) => {
               const isSubAtiva = sub.id === subfrenteAtiva || sub.slug === subfrenteAtiva;

@@ -1,4 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { clashDisplay, generalSans, tabular } from "@/app/fonts";
