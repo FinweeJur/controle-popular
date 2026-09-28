@@ -1,3 +1,16 @@
+/**
+ * apps/web/app/cidades/page.tsx
+ *
+ * Painel de Expansão Nacional com as 203 cidades estratégicas monitoradas
+ * (27 capitais + 176 polos regionais dos 27 estados).
+ *
+ * Fontes oficiais:
+ * - IBGE (malha municipal e estimativas populacionais) e DATASUS.
+ *
+ * Regras e Decisões:
+ * - Apresenta catálogo com busca, filtros por região/UF/porte e exportação CSV.
+ */
+
 import Link from "next/link";
 import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -105,16 +118,6 @@ export default function PaginaCidadesEstrategicas() {
             e 176 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de
             contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
           </p>
-
-          {/* EPÍGRAFE EDITORIAL */}
-          <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-            <p>
-              &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
-            </p>
-            <p className="mt-1 text-xs not-italic font-medium text-foreground">
-              — Diretriz de Expansão Nacional e Tipagem Territorial do Controle Popular
-            </p>
-          </div>
         </header>
 
         {/* Banner de atalho para Varas e Fóruns das Cidades */}

@@ -25,8 +25,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Vale%20S.A.",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.vale.com/",
+      "ri": "https://ri.vale.com/"
     }
   },
   {
@@ -55,8 +55,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=CSN%20Minera%C3%A7%C3%A3o",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.csnmineracao.com.br/",
+      "ri": "https://ri.csnmineracao.com.br/"
     }
   },
   {
@@ -85,8 +85,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Samarco%20Minera%C3%A7%C3%A3o",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.samarco.com/",
+      "ri": "https://www.samarco.com/relacionamento-com-investidores/"
     }
   },
   {
@@ -115,8 +115,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=CBMM",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://cbmm.com/",
+      "ri": "https://cbmm.com/pt/institucional"
     }
   },
   {
@@ -145,8 +145,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Kinross%20Brasil%20Minera%C3%A7%C3%A3o",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.kinross.com.br/",
+      "ri": "https://www.kinross.com/investors/"
     }
   },
   {
@@ -175,8 +175,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Anglo%20American%20Brasil",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://brasil.angloamerican.com/",
+      "ri": "https://www.angloamerican.com/investors"
     }
   },
   {
@@ -205,8 +205,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Usiminas",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.usiminas.com/",
+      "ri": "https://ri.usiminas.com/"
     }
   },
   {
@@ -235,8 +235,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Gerdau%20S.A.",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.gerdau.com/",
+      "ri": "https://ri.gerdau.com/"
     }
   },
   {
@@ -265,8 +265,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Minera%C3%A7%C3%A3o%20Rio%20do%20Norte%20(MRN)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.mrn.com.br/",
+      "ri": "https://www.mrn.com.br/institucional"
     }
   },
   {
@@ -295,8 +295,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Jaguar%20Mining",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://jaguarmining.com/",
+      "ri": "https://jaguarmining.com/investors/"
     }
   },
   {
@@ -325,8 +325,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Petrobras",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://petrobras.com.br/",
+      "ri": "https://www.investidorpetrobras.com.br/"
     }
   },
   {
@@ -355,8 +355,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Eletrobras",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://eletrobras.com/",
+      "ri": "https://ri.eletrobras.com/"
     }
   },
   {
@@ -385,8 +385,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=CPFL%20Energia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.cpfl.com.br/",
+      "ri": "https://ri.cpfl.com.br/"
     }
   },
   {
@@ -415,8 +415,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Neoenergia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.neoenergia.com/",
+      "ri": "https://ri.neoenergia.com/"
     }
   },
   {
@@ -445,8 +445,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=CEMIG",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.cemig.com.br/",
+      "ri": "https://ri.cemig.com.br/"
     }
   },
   {
@@ -475,8 +475,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Copel",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.copel.com/",
+      "ri": "https://ri.copel.com/"
     }
   },
   {
@@ -505,8 +505,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Engie%20Brasil",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.engie.com.br/",
+      "ri": "https://ri.engie.com.br/"
     }
   },
   {
@@ -535,8 +535,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Equinor%20Brasil",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.equinor.com.br/",
+      "ri": "https://www.equinor.com/investors"
     }
   },
   {
@@ -565,8 +565,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Shell%20Brasil",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.shell.com.br/",
+      "ri": "https://www.shell.com/investors.html"
     }
   },
   {
@@ -595,8 +595,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Vibra%20Energia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.vibraenergia.com.br/",
+      "ri": "https://ri.vibraenergia.com.br/"
     }
   },
   {
@@ -625,8 +625,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Sabesp",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.sabesp.com.br/",
+      "ri": "https://ri.sabesp.com.br/"
     }
   },
   {
@@ -655,8 +655,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Copasa%20MG",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.copasa.com.br/",
+      "ri": "https://ri.copasa.com.br/"
     }
   },
   {
@@ -685,8 +685,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Sanepar",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.sanepar.com.br/",
+      "ri": "https://ri.sanepar.com.br/"
     }
   },
   {
@@ -715,8 +715,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Corsan",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.corsan.com.br/",
+      "ri": "https://ri.corsan.com.br/"
     }
   },
   {
@@ -745,8 +745,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Aegea%20Saneamento",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.aegea.com.br/",
+      "ri": "https://ri.aegea.com.br/"
     }
   },
   {
@@ -775,8 +775,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=BRK%20Ambiental",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.brkambiental.com.br/",
+      "ri": "https://ri.brkambiental.com.br/"
     }
   },
   {
@@ -805,8 +805,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Embasa",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.embasa.ba.gov.br/",
+      "ri": "https://ri.embasa.ba.gov.br/"
     }
   },
   {
@@ -835,8 +835,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Cedae",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://cedae.com.br/",
+      "ri": "https://cedae.com.br/governanca"
     }
   },
   {
@@ -865,8 +865,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Saneago",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.saneago.com.br/",
+      "ri": "https://ri.saneago.com.br/"
     }
   },
   {
@@ -895,8 +895,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Igu%C3%A1%20Saneamento",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://igua.com.br/",
+      "ri": "https://ri.igua.com.br/"
     }
   },
   {
@@ -925,8 +925,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=MRV%20Engenharia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.mrv.com.br/",
+      "ri": "https://ri.mrv.com.br/"
     }
   },
   {
@@ -955,8 +955,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Cyrela",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.cyrela.com.br/",
+      "ri": "https://ri.cyrela.com.br/"
     }
   },
   {
@@ -985,8 +985,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Construtora%20Tenda",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.tenda.com/",
+      "ri": "https://ri.tenda.com/"
     }
   },
   {
@@ -1015,8 +1015,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Direcional%20Engenharia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://direcional.com.br/",
+      "ri": "https://ri.direcional.com.br/"
     }
   },
   {
@@ -1045,8 +1045,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Cury%20Construtora",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://cury.net/",
+      "ri": "https://ri.cury.net/"
     }
   },
   {
@@ -1075,8 +1075,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Moura%20Dubeux",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://mouradubeux.com.br/",
+      "ri": "https://ri.mouradubeux.com.br/"
     }
   },
   {
@@ -1105,8 +1105,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Andrade%20Gutierrez",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.andradegutierrez.com.br/",
+      "ri": "https://www.andradegutierrez.com.br/governanca/"
     }
   },
   {
@@ -1135,8 +1135,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Camargo%20Corr%C3%AAa%20(Mover)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://moverpart.com/",
+      "ri": "https://moverpart.com/governanca-e-integridade/"
     }
   },
   {
@@ -1165,8 +1165,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Novonor%20(Odebrecht)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://novonor.com/",
+      "ri": "https://novonor.com/governanca-e-conformidade/"
     }
   },
   {
@@ -1195,8 +1195,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Eztec",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.eztec.com.br/",
+      "ri": "https://ri.eztec.com.br/"
     }
   },
   {
@@ -1225,8 +1225,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=WEG%20S.A.",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.weg.net/",
+      "ri": "https://ri.weg.net/"
     }
   },
   {
@@ -1255,8 +1255,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=TOTVS",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.totvs.com/",
+      "ri": "https://ri.totvs.com/"
     }
   },
   {
@@ -1285,8 +1285,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Locaweb%20(LWSA)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://lwsa.tech/",
+      "ri": "https://ri.lwsa.tech/"
     }
   },
   {
@@ -1315,8 +1315,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Stefanini",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://stefanini.com/",
+      "ri": "https://stefanini.com/pt-br/sobre/governanca"
     }
   },
   {
@@ -1345,8 +1345,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=CI%26T",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://ciandt.com/",
+      "ri": "https://investors.ciandt.com/"
     }
   },
   {
@@ -1375,8 +1375,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Positivo%20Tecnologia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.positivotecnologia.com.br/",
+      "ri": "https://ri.positivotecnologia.com.br/"
     }
   },
   {
@@ -1405,8 +1405,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Intelbras",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.intelbras.com/",
+      "ri": "https://ri.intelbras.com.br/"
     }
   },
   {
@@ -1435,8 +1435,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Mercado%20Livre%20Brasil",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.mercadolivre.com.br/",
+      "ri": "https://investor.mercadolibre.com/"
     }
   },
   {
@@ -1465,8 +1465,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Nubank%20(Nu%20Pagamentos)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://nubank.com.br/",
+      "ri": "https://investors.nu/"
     }
   },
   {
@@ -1495,8 +1495,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=VTEX",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://vtex.com/",
+      "ri": "https://ir.vtex.com/"
     }
   },
   {
@@ -1525,8 +1525,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Embraer%20S.A.",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://embraer.com/",
+      "ri": "https://ri.embraer.com.br/"
     }
   },
   {
@@ -1555,8 +1555,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Avibras%20Ind%C3%BAstria%20Aeroespacial",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.avibras.com.br/",
+      "ri": "https://www.avibras.com.br/site/sobre-a-avibras/governanca-corporativa.html"
     }
   },
   {
@@ -1585,8 +1585,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Helibras",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.helibras.com.br/",
+      "ri": "https://www.helibras.com.br/empresa/"
     }
   },
   {
@@ -1615,8 +1615,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Companhia%20Brasileira%20de%20Cartuchos%20(CBC)",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.cbc.com.br/",
+      "ri": "https://www.cbc.com.br/institucional/"
     }
   },
   {
@@ -1645,8 +1645,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Taurus%20Armas",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://taurusarmas.com.br/",
+      "ri": "https://ri.taurusarmas.com.br/"
     }
   },
   {
@@ -1675,8 +1675,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Mac%20Jee%20Defesa",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://macjee.com.br/",
+      "ri": "https://macjee.com.br/institucional/"
     }
   },
   {
@@ -1705,8 +1705,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Akaer%20Engenharia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.akaer.com.br/",
+      "ri": "https://www.akaer.com.br/sobre/"
     }
   },
   {
@@ -1735,8 +1735,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=SIATT%20Intelig%C3%AAncia",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.siatt.com.br/",
+      "ri": "https://www.siatt.com.br/sobre/"
     }
   },
   {
@@ -1765,8 +1765,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=Kryptus%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://kryptus.com/",
+      "ri": "https://kryptus.com/institucional/"
     }
   },
   {
@@ -1795,8 +1795,8 @@
     ],
     "contatos": {
       "endereco": "Brasil",
-      "site": "https://www.google.com/search?q=AEL%20Sistemas",
-      "ri": "https://dados.cvm.gov.br/"
+      "site": "https://www.ael.com.br/",
+      "ri": "https://www.ael.com.br/sobre/"
     }
   },
   {
@@ -1825,8 +1825,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001364742",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.blackrock.com/",
+      "ri": "https://ir.blackrock.com/"
     }
   },
   {
@@ -1855,8 +1855,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000102909",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://corporate.vanguard.com/",
+      "ri": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html"
     }
   },
   {
@@ -1885,8 +1885,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000093496",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.statestreet.com/",
+      "ri": "https://investors.statestreet.com/"
     }
   },
   {
@@ -1915,8 +1915,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000315066",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.fidelity.com/",
+      "ri": "https://www.fidelity.com/about-fidelity/our-company"
     }
   },
   {
@@ -1945,8 +1945,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000018349",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.capitalgroup.com/",
+      "ri": "https://www.capitalgroup.com/about-us.html"
     }
   },
   {
@@ -1975,8 +1975,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000019617",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.jpmorganchase.com/",
+      "ri": "https://www.jpmorganchase.com/ir"
     }
   },
   {
@@ -2005,8 +2005,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000895421",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.morganstanley.com/",
+      "ri": "https://www.morganstanley.com/about-us-ir"
     }
   },
   {
@@ -2035,8 +2035,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000070858",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.bankofamerica.com/",
+      "ri": "https://investor.bankofamerica.com/"
     }
   },
   {
@@ -2065,8 +2065,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000886982",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.goldmansachs.com/",
+      "ri": "https://www.goldmansachs.com/investor-relations/"
     }
   },
   {
@@ -2095,8 +2095,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000831001",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.citigroup.com/",
+      "ri": "https://www.citigroup.com/citi/investor/"
     }
   },
   {
@@ -2125,8 +2125,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000831259",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.fcx.com/",
+      "ri": "https://investors.fcx.com/"
     }
   },
   {
@@ -2155,8 +2155,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001164727",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.newmont.com/",
+      "ri": "https://www.newmont.com/investors/"
     }
   },
   {
@@ -2185,8 +2185,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001675149",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.alcoa.com/",
+      "ri": "https://investors.alcoa.com/"
     }
   },
   {
@@ -2215,8 +2215,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001001490",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.southerncoppercorp.com/",
+      "ri": "https://www.southerncoppercorp.com/investor-relations/"
     }
   },
   {
@@ -2245,8 +2245,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000764065",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.clevelandcliffs.com/",
+      "ri": "https://www.clevelandcliffs.com/investors"
     }
   },
   {
@@ -2275,8 +2275,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000915779",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.albemarle.com/",
+      "ri": "https://investors.albemarle.com/"
     }
   },
   {
@@ -2305,8 +2305,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001064728",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.peabodyenergy.com/",
+      "ri": "https://www.peabodyenergy.com/investors/"
     }
   },
   {
@@ -2335,8 +2335,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000215376",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.coeur.com/",
+      "ri": "https://investors.coeur.com/"
     }
   },
   {
@@ -2365,8 +2365,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000046941",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://hecla.com/",
+      "ri": "https://ir.hecla.com/"
     }
   },
   {
@@ -2395,8 +2395,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001262945",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.compassminerals.com/",
+      "ri": "https://investors.compassminerals.com/"
     }
   },
   {
@@ -2425,8 +2425,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000034088",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://corporate.exxonmobil.com/",
+      "ri": "https://investor.exxonmobil.com/"
     }
   },
   {
@@ -2455,8 +2455,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000093410",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.chevron.com/",
+      "ri": "https://www.chevron.com/investors"
     }
   },
   {
@@ -2485,8 +2485,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001163165",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.conocophillips.com/",
+      "ri": "https://www.conocophillips.com/investor-relations/"
     }
   },
   {
@@ -2515,8 +2515,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000821189",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.eogresources.com/",
+      "ri": "https://investors.eogresources.com/"
     }
   },
   {
@@ -2545,8 +2545,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000087347",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.slb.com/",
+      "ri": "https://investorcenter.slb.com/"
     }
   },
   {
@@ -2575,8 +2575,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000045012",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.halliburton.com/",
+      "ri": "https://ir.halliburton.com/"
     }
   },
   {
@@ -2605,8 +2605,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001701795",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.bakerhughes.com/",
+      "ri": "https://investors.bakerhughes.com/"
     }
   },
   {
@@ -2635,8 +2635,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000797468",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.oxy.com/",
+      "ri": "https://www.oxy.com/investors/"
     }
   },
   {
@@ -2665,8 +2665,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000753308",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.nexteraenergy.com/",
+      "ri": "https://www.investor.nexteraenergy.com/"
     }
   },
   {
@@ -2695,8 +2695,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001510295",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.marathonpetroleum.com/",
+      "ri": "https://ir.marathonpetroleum.com/"
     }
   },
   {
@@ -2725,8 +2725,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001410884",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.amwater.com/",
+      "ri": "https://ir.amwater.com/"
     }
   },
   {
@@ -2755,8 +2755,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001524472",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.xylem.com/",
+      "ri": "https://investors.xylem.com/"
     }
   },
   {
@@ -2785,8 +2785,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000007890",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.essentialutilities.com/",
+      "ri": "https://investor.essentialutilities.com/"
     }
   },
   {
@@ -2815,8 +2815,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000031418",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.ecolab.com/",
+      "ri": "https://investor.ecolab.com/"
     }
   },
   {
@@ -2845,8 +2845,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000066004",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.middlesexwater.com/",
+      "ri": "https://investors.middlesexwater.com/"
     }
   },
   {
@@ -2875,8 +2875,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001035201",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.calwatergroup.com/",
+      "ri": "https://ir.calwatergroup.com/"
     }
   },
   {
@@ -2905,8 +2905,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001056903",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.aswater.com/",
+      "ri": "https://ir.aswater.com/"
     }
   },
   {
@@ -2935,8 +2935,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000766869",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.sjwgroup.com/",
+      "ri": "https://ir.sjwgroup.com/"
     }
   },
   {
@@ -2965,8 +2965,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001089895",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.yorkwater.com/",
+      "ri": "https://investors.yorkwater.com/"
     }
   },
   {
@@ -2995,8 +2995,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000009092",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.badgermeter.com/",
+      "ri": "https://investors.badgermeter.com/"
     }
   },
   {
@@ -3025,8 +3025,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000018230",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.caterpillar.com/",
+      "ri": "https://investors.caterpillar.com/"
     }
   },
   {
@@ -3055,8 +3055,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000882184",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.drhorton.com/",
+      "ri": "https://investor.drhorton.com/"
     }
   },
   {
@@ -3085,8 +3085,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000920760",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.lennar.com/",
+      "ri": "https://investors.lennar.com/"
     }
   },
   {
@@ -3115,8 +3115,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000868857",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://aecom.com/",
+      "ri": "https://investors.aecom.com/"
     }
   },
   {
@@ -3145,8 +3145,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001125259",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.fluor.com/",
+      "ri": "https://investor.fluor.com/"
     }
   },
   {
@@ -3175,8 +3175,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=000052988",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.jacobs.com/",
+      "ri": "https://investor.jacobs.com/"
     }
   },
   {
@@ -3205,8 +3205,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001396009",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.vulcanmaterials.com/",
+      "ri": "https://ir.vulcanmaterials.com/"
     }
   },
   {
@@ -3235,8 +3235,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000916076",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.martinmarietta.com/",
+      "ri": "https://ir.martinmarietta.com/"
     }
   },
   {
@@ -3265,8 +3265,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000838358",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.pultegroupinc.com/",
+      "ri": "https://investors.pultegroupinc.com/"
     }
   },
   {
@@ -3295,8 +3295,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000795551",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.tollbrothers.com/",
+      "ri": "https://investors.tollbrothers.com/"
     }
   },
   {
@@ -3325,8 +3325,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000789019",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.microsoft.com/",
+      "ri": "https://www.microsoft.com/investor/"
     }
   },
   {
@@ -3355,8 +3355,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000320193",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.apple.com/",
+      "ri": "https://investor.apple.com/"
     }
   },
   {
@@ -3385,8 +3385,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001045810",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.nvidia.com/",
+      "ri": "https://investor.nvidia.com/"
     }
   },
   {
@@ -3415,8 +3415,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001652044",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://abc.xyz/",
+      "ri": "https://abc.xyz/investor/"
     }
   },
   {
@@ -3445,8 +3445,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001018724",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.aboutamazon.com/",
+      "ri": "https://ir.aboutamazon.com/"
     }
   },
   {
@@ -3475,8 +3475,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001326801",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://about.meta.com/",
+      "ri": "https://investor.fb.com/"
     }
   },
   {
@@ -3505,8 +3505,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001730168",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.broadcom.com/",
+      "ri": "https://investors.broadcom.com/"
     }
   },
   {
@@ -3535,8 +3535,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001341439",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.oracle.com/",
+      "ri": "https://investor.oracle.com/"
     }
   },
   {
@@ -3565,8 +3565,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000858877",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.cisco.com/",
+      "ri": "https://investor.cisco.com/"
     }
   },
   {
@@ -3595,8 +3595,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000051143",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.ibm.com/",
+      "ri": "https://www.ibm.com/investor"
     }
   },
   {
@@ -3625,8 +3625,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000936468",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.lockheedmartin.com/",
+      "ri": "https://investors.lockheedmartin.com/"
     }
   },
   {
@@ -3655,8 +3655,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000101829",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.rtx.com/",
+      "ri": "https://investors.rtx.com/"
     }
   },
   {
@@ -3685,8 +3685,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000012927",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.boeing.com/",
+      "ri": "https://investors.boeing.com/"
     }
   },
   {
@@ -3715,8 +3715,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001133421",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.northropgrumman.com/",
+      "ri": "https://investor.northropgrumman.com/"
     }
   },
   {
@@ -3745,8 +3745,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000040533",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.gd.com/",
+      "ri": "https://investorrelations.gd.com/"
     }
   },
   {
@@ -3775,8 +3775,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000042888",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.l3harris.com/",
+      "ri": "https://www.l3harris.com/investors"
     }
   },
   {
@@ -3805,8 +3805,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001360334",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.transdigm.com/",
+      "ri": "https://investor.transdigm.com/"
     }
   },
   {
@@ -3835,8 +3835,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0001501585",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://hii.com/",
+      "ri": "https://ir.hii.com/"
     }
   },
   {
@@ -3865,8 +3865,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000217346",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.textron.com/",
+      "ri": "https://investor.textron.com/"
     }
   },
   {
@@ -3895,8 +3895,8 @@
     ],
     "contatos": {
       "endereco": "United States",
-      "site": "https://www.sec.gov/edgar/browse/?CIK=0000026324",
-      "ri": "https://www.sec.gov/edgar"
+      "site": "https://www.curtisswright.com/",
+      "ri": "https://investors.curtisswright.com/"
     }
   }
 ]

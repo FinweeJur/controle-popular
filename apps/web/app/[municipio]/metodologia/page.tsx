@@ -231,7 +231,7 @@ export default async function MetodologiaPage({
           rel="noopener noreferrer"
           className="text-accent hover:underline"
         >
-          docs/alertas-contratos-revisao-juridica.md ↗
+          Revisão Jurídica dos Contratos de Betim (GitHub) ↗
         </a>
       </p>
     </div>

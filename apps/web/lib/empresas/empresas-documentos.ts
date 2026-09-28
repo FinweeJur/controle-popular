@@ -1,4 +1,18 @@
-﻿import fs from "node:fs";
+/**
+ * apps/web/lib/empresas/empresas-documentos.ts
+ *
+ * Módulo de consulta e catalogação de documentos oficiais das empresas monitoradas.
+ *
+ * Fontes oficiais:
+ * - Portais de Relações com Investidores (RI), relatórios CDP, relatórios de
+ *   sustentabilidade GRI/TCFD e demonstrações financeiras publicadas.
+ *
+ * Regras e Decisões:
+ * - Apenas documentos oficiais verificados com links canônicos e arquivos locais auditáveis.
+ * - Zero documentos sintéticos ou links para domínios inexistentes.
+ */
+
+import fs from "node:fs";
 import path from "node:path";
 
 export type TipoDocumentoEmpresa =
@@ -37,9 +51,9 @@ export interface CatalogoDocumentosResultado {
 }
 
 export const COBERTURA_DOCUMENTOS_EMPRESAS = {
-  totalDocumentos: 520,
-  totalEmpresas: 130,
-  paises: ["Brasil", "Estados Unidos"],
+  totalDocumentos: 26,
+  totalEmpresas: 20,
+  paises: ["Brasil", "Brasil / Canadá", "Estados Unidos"],
   tipos: [
     { id: "sustentabilidade", rotulo: "Sustentabilidade (ESG)" },
     { id: "financeiro", rotulo: "Demonstrações Financeiras" },

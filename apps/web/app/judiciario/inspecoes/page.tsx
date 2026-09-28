@@ -1,3 +1,16 @@
+/**
+ * apps/web/app/judiciario/inspecoes/page.tsx
+ *
+ * Painel de Transparência Institucional da Justiça (Inspeções da Corregedoria
+ * Nacional do CNJ e Déficit de Atendimento da Defensoria Pública).
+ *
+ * Fontes oficiais:
+ * - CNJ (Corregedoria Nacional de Justiça) e DPMG (Relatórios de Gestão e Déficit).
+ *
+ * Regras e Decisões:
+ * - Apresenta auditorias dos tribunais e cartões de topo com dados do CNJ.
+ */
+
 import Link from "next/link";
 import {
   listarOrgaosInspecionados,
@@ -70,15 +83,6 @@ export default function PaginaInspecoesJudiciario() {
             resumo="343 relatórios de inspeção do CNJ sobre 33 tribunais e dados de 178 comarcas desassistidas pela Defensoria Pública em MG."
             rotulo="Disparar Dados da Justiça no WhatsApp"
           />
-        </div>
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          <p>
-            &ldquo;Saber quem ocupa a cadeira do tribunal é importante; saber se o tribunal funciona para quem não tem dinheiro para pagar advogado particular é o que decide a justiça real.&rdquo;
-          </p>
-          <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz de Transparência Institucional do Controle Popular
-          </p>
         </div>
       </header>
 

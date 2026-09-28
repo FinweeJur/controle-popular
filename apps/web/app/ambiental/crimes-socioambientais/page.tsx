@@ -1,3 +1,17 @@
+/**
+ * apps/web/app/ambiental/crimes-socioambientais/page.tsx
+ *
+ * Página da Biblioteca Unificada dos Crimes Socioambientais de Barragens
+ * (Mariana, Brumadinho, casos nacionais e ações coletivas).
+ *
+ * Fontes oficiais:
+ * - FGV, Fiocruz, MPMG, MPF, DPU, DPMG, DPES, DPBA e ATIs (AEDAS, Cáritas, Nacab, Guaicuy).
+ *
+ * Regras e Decisões:
+ * - Apresenta acervo unificado e busca em tempo real com exportação CSV e indicadores de topo.
+ * - Hero section limpa e acessível sem menções a arquivos internos de documentação técnica.
+ */
+
 import Link from "next/link";
 import {
   carregarBibliotecaDesastres,
@@ -40,10 +54,6 @@ export default function PaginaCrimesSocioambientais() {
 
         <div className="mt-4 flex flex-wrap gap-2">
           <BotaoAlertaContextual tipo="resumo_pagina" titulo="Biblioteca Unificada dos Desastres de Barragens" orgaoTerritorio="Minas Gerais, Espírito Santo e Bahia" identificador="ONSA / Controle Popular" link="https://controlepopular.com.br/ambiental/crimes-socioambientais" resumo={`${total_documentos} laudos periciais, termos de ajustamento e estudos de saúde das bacias do Paraopeba e Rio Doce.`} rotulo="Disparar Acervo Documental no WhatsApp" />
-        </div>
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          <p>&ldquo;Memória não prescreve. Documentar o que a perícia mediu e o que a justiça homologou é a única garantia de que o dano não seja apagado pelo tempo.&rdquo;</p>
-          <p className="mt-1 text-xs not-italic font-medium text-foreground">— Diretriz Editorial ONSA — Observatório Nacional Socioambiental</p>
         </div>
       </header>
 

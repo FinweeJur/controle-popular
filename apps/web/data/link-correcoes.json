@@ -1,5 +1,25 @@
 [
   {
+    "urlVelha": "https://comunicabr.presidencia.gov.br",
+    "urlNova": "https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr",
+    "criterios": [
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:migracao-portal"
+    ],
+    "data": "2026-09-20T14:30:00.000Z"
+  },
+  {
+    "urlVelha": "https://github.com/melkepinho/controle-popular",
+    "urlNova": "https://github.com/FinweeJur/controle-popular",
+    "criterios": [
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:repositorio-canonica"
+    ],
+    "data": "2026-09-20T14:30:00.000Z"
+  },
+  {
     "urlVelha": "https://legis.senado.leg.br/dadosabertos",
     "urlNova": "https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html",
     "criterios": [
@@ -33,16 +53,6 @@
     "data": "2026-09-09T17:46:47.068Z"
   },
   {
-    "urlVelha": "https://www.car.gov.br/publico/imoveis/index",
-    "urlNova": "https://consulta.car.gov.br/",
-    "criterios": [
-      "dominio-oficial",
-      "destino-verificado-vivo",
-      "estrategia:migracao-portal"
-    ],
-    "data": "2026-09-20T14:30:00.000Z"
-  },
-  {
     "urlVelha": "https://sistemas.anm.gov.br/SCM/Extra/site/admin/pesquisarProcessos.aspx",
     "urlNova": "https://www.gov.br/anm/pt-br/assuntos/processos/consulta-de-processos",
     "criterios": [
@@ -63,22 +73,12 @@
     "data": "2026-09-20T14:30:00.000Z"
   },
   {
-    "urlVelha": "https://comunicabr.presidencia.gov.br",
-    "urlNova": "https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr",
+    "urlVelha": "https://www.car.gov.br/publico/imoveis/index",
+    "urlNova": "https://consulta.car.gov.br/",
     "criterios": [
       "dominio-oficial",
       "destino-verificado-vivo",
       "estrategia:migracao-portal"
-    ],
-    "data": "2026-09-20T14:30:00.000Z"
-  },
-  {
-    "urlVelha": "https://github.com/melkepinho/controle-popular",
-    "urlNova": "https://github.com/FinweeJur/controle-popular",
-    "criterios": [
-      "dominio-oficial",
-      "destino-verificado-vivo",
-      "estrategia:repositorio-canonica"
     ],
     "data": "2026-09-20T14:30:00.000Z"
   }
