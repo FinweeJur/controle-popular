@@ -62,7 +62,7 @@ export default async function CidadeLayout({
     // direto por prop.
     <CidadeProvider cidade={cidade}>
       <Header cidade={cidade} />
-      <main id="conteudo-principal" tabIndex={-1} className="flex-1">
+      <main id="conteudo-principal" tabIndex={-1} className="flex-1 w-full max-w-full min-w-0 overflow-x-hidden">
         {children}
       </main>
       <Footer cidade={cidade} />

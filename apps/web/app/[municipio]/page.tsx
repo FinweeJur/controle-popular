@@ -304,7 +304,7 @@ export default async function HomePage({
     <div>
       {/* HERO */}
       <section
-        className="border-b border-border px-4 py-14 sm:px-8 sm:py-20"
+        className="w-full max-w-full min-w-0 overflow-x-hidden border-b border-border px-4 py-14 sm:px-8 sm:py-20"
         style={{
           background:
             "radial-gradient(1100px 480px at 12% -12%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent), radial-gradient(820px 460px at 102% -6%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent)",
@@ -337,7 +337,7 @@ export default async function HomePage({
                 />
                 <button
                   type="submit"
-                  className="cursor-pointer rounded-xl border border-primary bg-primary px-6 py-3.5 font-semibold text-primary-ink"
+                  className="shrink-0 cursor-pointer rounded-xl border border-primary bg-primary px-4 sm:px-6 py-3.5 font-semibold text-primary-ink"
                 >
                   Buscar
                 </button>

@@ -112,7 +112,7 @@ export default function PainelEditais({
   const maxTotalGrafico = Math.max(1, ...topOrgaosGrafico.map((d) => d.total));
 
   return (
-    <section className="mt-8 space-y-8" aria-label="Painel interativo de editais">
+    <section className="mt-8 w-full max-w-full min-w-0 space-y-8" aria-label="Painel interativo de editais">
       {/* ─── 1. GRÁFICO SVG INLINE ────────────────────────────────────── */}
       <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
         <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border pb-3">
@@ -265,9 +265,9 @@ export default function PainelEditais({
       </div>
 
       {/* ─── 4 & 5. TABELA COM ORDENAÇÃO POR COLUNA ────────────────── */}
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
+      <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <div className="w-full max-w-full min-w-0 overflow-x-auto">
+          <table className="w-full min-w-[650px] text-left text-sm">
             <thead className="border-b border-border bg-surface-2 text-xs font-semibold text-text-soft uppercase">
               <tr>
                 {COLUNAS.map((col) => {

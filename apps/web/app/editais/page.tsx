@@ -32,7 +32,7 @@ export default function EditaisPage() {
   const anos = listarAnos();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+    <div className="mx-auto w-full max-w-6xl min-w-0 px-4 py-12 sm:py-16">
       <DatasetJsonLd
         name="Radar de Editais e Chamamentos Públicos de Minas Gerais"
         description="Dataset público e aberto com 50+ editais, licitações e chamamentos de interesse social coletados do Diário Oficial de Minas Gerais."
@@ -55,37 +55,37 @@ export default function EditaisPage() {
       </header>
 
       {/* ─── CARTÕES DE TOPO (STATUS & AGREGADOS) ─────────────────────── */}
-      <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-          <p className="text-xs font-semibold text-text-soft uppercase">Total de Certames</p>
-          <p className="mt-2 font-display text-3xl font-extrabold text-primary">
+      <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">
+        <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm min-w-0">
+          <p className="text-[11px] sm:text-xs font-semibold text-text-soft uppercase">Total de Certames</p>
+          <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-primary">
             {formatNumberBR(COBERTURA_EDITAIS.total)}
           </p>
           <p className="mt-1 text-[11px] text-text-soft">atos oficiais catalogados</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-          <p className="text-xs font-semibold text-text-soft uppercase">Órgãos Monitorados</p>
-          <p className="mt-2 font-display text-3xl font-extrabold text-text">
+        <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm min-w-0">
+          <p className="text-[11px] sm:text-xs font-semibold text-text-soft uppercase">Órgãos Monitorados</p>
+          <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-text">
             {COBERTURA_EDITAIS.orgaosCount}
           </p>
-          <p className="mt-1 text-[11px] text-text-soft">secretarias, fundações e institutos</p>
+          <p className="mt-1 text-[11px] text-text-soft">secretarias e institutos</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-          <p className="text-xs font-semibold text-text-soft uppercase">Modalidades Ativas</p>
-          <p className="mt-2 font-display text-3xl font-extrabold text-text">
+        <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm min-w-0">
+          <p className="text-[11px] sm:text-xs font-semibold text-text-soft uppercase">Modalidades Ativas</p>
+          <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-text">
             {COBERTURA_EDITAIS.modalidadesCount}
           </p>
-          <p className="mt-1 text-[11px] text-text-soft">chamamentos, credenciamentos e pregões</p>
+          <p className="mt-1 text-[11px] text-text-soft">chamamentos e pregões</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-          <p className="text-xs font-semibold text-text-soft uppercase">Última Edição</p>
-          <p className="mt-2 font-display text-2xl font-extrabold text-text">
+        <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm min-w-0">
+          <p className="text-[11px] sm:text-xs font-semibold text-text-soft uppercase">Última Edição</p>
+          <p className="mt-2 font-display text-xl sm:text-2xl font-extrabold text-text">
             {formatarDataIso(COBERTURA_EDITAIS.ultimaData)}
           </p>
-          <p className="mt-1 text-[11px] text-text-soft">rastreamento diário automatizado</p>
+          <p className="mt-1 text-[11px] text-text-soft">rastreamento diário</p>
         </div>
       </div>
 
