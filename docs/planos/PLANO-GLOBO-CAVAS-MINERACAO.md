@@ -393,6 +393,57 @@ negativos (v1 tinha 21).
   `bd8c83af…` sem escore (o treino o descarta sozinho na leitura do
   snapshot); 1 JPG órfão no disco, sem linha no checkpoint.
 
+### Eco do VLM e coleta de negativos — 29/09/2026 (medido)
+
+**Eco do prompt (legenda).** A v1 do prompt escrevia a descrição da
+legenda dentro do valor de exemplo do JSON; com temperature 0 o modelo
+guloso copiava a instrução inteira: **1.109 de 3.022 recortes (37%)**,
+com escore médio 55,0 contra 65,8 dos que vieram certos. A v2
+(`scripts/triar-cavas-vlm.py`, `b2dfd995`) deixa o valor vazio e move a
+descrição para as Regras; flag `--retri-eco` refaz legenda com eco,
+vazia ou sem escore.
+
+**A escala do escore muda com o prompt.** Controle com 40 recortes bons
+triados nas duas versões: média 59,9 (v1) → 65,5 (v2), delta +5,6, só
+40% idênticos — os cortes 50/70 da prioridade são atravessados. Por isso
+a retri foi **completa** (3.022), nunca só dos ecos; a triagem v1 ficou
+arquivada em `triagem-v1-<data>.jsonl`. Regra: prompt novo ⇒ retri
+completa.
+
+**Resultado da retri (3.015 itens na fila):** eco 0, legenda vazia 0;
+sem-triagem 4 (1 positivo com JSON truncado de forma determinística + 3
+negativos novos, ainda sem triagem). Sanidade v2 no lote: positivos
+66,9 × negativos 63,2 (2.810 com escore) — separação fraca; o escore do
+VLM ordena a fila de revisão, quem separa de verdade é o Chinese-CLIP.
+
+**Duas falhas transitórias do Ollama** (HTTP 500 e resposta vazia,
+≈199 negativos, 19,8 s cada por causa das 3 tentativas) foram
+investigadas: os JPEGs são válidos (512×512, pixels normais) e os
+mesmos arquivos respondem bem em teste isolado — era contenção do
+modelo local, não o arquivo. Repetidas as rodadas, restaram os 2 casos
+determinísticos citados acima.
+
+**Coleta de negativos: bug real, 2 h = zero recorte.** Duas causas,
+medidas com instrumentação somente-leitura:
+1. o sorteio não excluía janela já coletada e a rodada v1 usou a mesma
+   semente 42 — a reamostragem redesenhava os mesmos pontos e cada
+   candidato gastava ~30 s para o teste de hash descartar no fim;
+2. no empate de hash o `escolher_recorte` devolvia `None` e abandonava
+   o candidato inteiro (jogava fora as leituras feitas).
+
+Correções em `scripts/coletar-cavas-calibracao.py` (`943bd091`): índice
+das bboxes do checkpoint (grade de 0,02°, ~2,2 km) pula o candidato
+antes de abrir a cena; empate de hash tenta a próxima cena. Medido
+depois da correção, com semente 43: **+3 negativos em 8 min (~26/h)** —
+o candidato custa 15–45 s (1–3 cenas de 512 px, leitura remota), então
++900 ainda pede ~35 h. Próximo ganho mapeado: ordenar os negativos por
+cena primária (como os positivos fazem) para aproveitar o cache de
+cenas abertas.
+
+**Pendências:** 1 JPEG corrompido fora do checkpoint (o órfão
+`bd8c83af…`); 1 positivo com escore nulo por truncamento determinístico;
+coleta de +900 negativos em andamento (semente 43).
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
