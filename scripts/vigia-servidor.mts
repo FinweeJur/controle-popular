@@ -17,6 +17,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { publicarTunel } from "./agent-tools/publicar-tunel.mts";
+import { vigiarSaudeBasesEEtl } from "./agent-tools/vigia-dados-etl.mts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STATUS_FILE = path.join(RAIZ, "docs", "relatorios-automacao", "vigia-servidor-status.json");
@@ -163,6 +164,23 @@ async function main() {
     console.error(`[${new Date().toISOString()}] Falha externa: status=${result.status}`);
   }
 
+  // 3. Auditoria de bases de dados e pipelines de ETL
+  let saudeBases;
+  try {
+    saudeBases = vigiarSaudeBasesEEtl();
+    if (saudeBases.statusGeral === "CRITICO") {
+      const horaAtual = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      const problemas = [...saudeBases.basesVazias, ...saudeBases.basesCorrompidas].slice(0, 3).join("\n• ");
+      notifyTelegram(
+        `🚨 <b>Vigia: anomalia em base de dados</b>\n` +
+        `Detectei bases vazias ou corrompidas:\n• ${problemas}\n` +
+        `Verifique os coletores de dados. ⏰ ${horaAtual}`
+      );
+    }
+  } catch (err) {
+    console.error("Erro ao auditar bases e ETLs:", err);
+  }
+
   // Persistir métricas de monitoramento
   try {
     fs.mkdirSync(path.dirname(STATUS_FILE), { recursive: true });
@@ -173,6 +191,7 @@ async function main() {
       producaoStatus: result.status,
       latenciaMs,
       localOk: local.ok,
+      saudeBasesETL: saudeBases ?? null,
       erro: result.error ?? null,
     };
     fs.writeFileSync(STATUS_FILE, JSON.stringify(statusObj, null, 2), "utf-8");
@@ -180,7 +199,7 @@ async function main() {
   } catch {}
 
   // stdout vazio quando tudo ok (silent watchdog pattern)
-  if (result.ok && local.ok) {
+  if (result.ok && local.ok && (!saudeBases || saudeBases.statusGeral === "SAUDAVEL")) {
     process.exit(0);
   }
 }

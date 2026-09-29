@@ -1,9 +1,26 @@
 {
-  "atualizadoEm": "2026-09-20T09:47:09.632Z",
+  "atualizadoEm": "2026-09-29T20:20:21.178Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 1076,
+  "latenciaMs": 314,
   "localOk": true,
+  "saudeBasesETL": {
+    "atualizadoEm": "2026-09-29T20:20:21.177Z",
+    "totalBasesVerificadas": 397,
+    "basesVazias": [],
+    "basesCorrompidas": [],
+    "basesEstagnadas": [],
+    "etlsComFalha": [],
+    "etlsPendentes": [],
+    "statusGeral": "SAUDAVEL",
+    "resumoLinhas": [
+      "Bases verificadas: 397 arquivos JSON",
+      "Bases vazias ou zeradas: 0",
+      "Bases corrompidas: 0",
+      "Bases com estagnação (>60d): 0",
+      "Fontes/ETLs com status adverso: 0"
+    ]
+  },
   "erro": null
 }

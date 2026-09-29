@@ -92,7 +92,7 @@ export function publicarTunel(registrar: Registrar = (l) => console.log(l)): boo
 
   const logNovo = path.join(LOGS, `next-start-${new Date().toISOString().replace(/[:.]/g, "-")}.log`);
   fs.mkdirSync(LOGS, { recursive: true });
-  const logStream = fs.createWriteStream(logNovo, { flags: "a" });
+  const logFd = fs.openSync(logNovo, "a");
   // shell:true e o jeito que funciona no Windows: o Node cita a linha inteira
   // de uma vez (cmd /d /s /c "<tudo>"). Com spawn("cmd", [...args]) o cmd
   // recebe aspas aninhadas e quebra o parser — o primeiro drill de 09/09
@@ -103,7 +103,7 @@ export function publicarTunel(registrar: Registrar = (l) => console.log(l)): boo
       cwd: WEB,
       shell: true,
       detached: true,
-      stdio: ["ignore", logStream, logStream],
+      stdio: ["ignore", logFd, logFd],
       // Desacoplado de propósito: o servidor precisa sobreviver a esta rotina. A
       // janela do Windows pode fechar o pai no fim da tarefa agendada.
       windowsHide: true,

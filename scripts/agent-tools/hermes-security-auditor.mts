@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync, statSync, existsSync, readdirSy
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { auditarSupplyChain } from "./auditor-supply-chain.mts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const RELATORIO_DESTINO = path.join(
@@ -398,10 +399,23 @@ export async function executarAuditoriaHermes(): Promise<{
 }> {
   console.log("🛡️  [Hermes Agent] Iniciando auditoria de segurança defensiva e integridade de dados...");
 
+  const supplyChain = auditarSupplyChain();
+  const itensSupplyChain: ItemAuditoria[] = [
+    {
+      categoria: "seguranca",
+      item: "Supply Chain & Modelos de IA",
+      status: supplyChain.seguro ? "APROVADO" : "FALHA",
+      detalhes: supplyChain.seguro
+        ? "Zero formatos binários (.pickle/.joblib) e zero tokens expostos nos arquivos auditados."
+        : `Alertas: ${supplyChain.arquivosBinariosInseguros.join(", ") || supplyChain.tokensDetectados.map(t => t.arquivo).join(", ")}`,
+    },
+  ];
+
   const itens: ItemAuditoria[] = [
     ...auditarCspEHeaders(),
     ...(await auditarHeadersProducao()),
     ...auditarSegredosEVazamentos(),
+    ...itensSupplyChain,
     ...auditarLimitesCloudflare(),
     ...auditarPrivacidadeCpf(),
     ...auditarQualidadePaginas(),

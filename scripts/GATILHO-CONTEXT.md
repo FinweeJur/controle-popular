@@ -1,4 +1,4 @@
-﻿# Contexto: Gatilho Remoto â€” bot Telegram + opencode
+# Contexto: Gatilho Remoto â€” bot Telegram + opencode
 
 ## O que Ã©
 Bot Telegram que funciona como interface remota do projeto `controle-popular`. Aceita comandos e prompts de IA via mensagem.
@@ -10,8 +10,8 @@ Bot Telegram que funciona como interface remota do projeto `controle-popular`. A
 **Task Scheduler:** `Controle Popular - gatilho remoto`
 
 ## Canais de comunicaÃ§Ã£o
-- **Telegram bot** (long-poll, sem webhook): `TELEGRAM_BOT_TOKEN=8679298724:AAE6LRyzXl7WuugCKRqmSMrQcL1Sp3v-ed0`
-- **Chat ID autorizado:** `7250703518` (qualquer outro chat Ã© ignorado)
+- **Telegram bot** (long-poll, sem webhook): `TELEGRAM_BOT_TOKEN` configurado em `scripts/.env`
+- **Chat ID autorizado:** configurado em `scripts/.env` (qualquer outro chat é ignorado)
 - **HTTP no tailscale:** `http://100.91.10.1:3029/sincronizar` (sÃ³ dentro do tailnet, requer `GATILHO_TOKEN`)
 
 ## Comandos do bot

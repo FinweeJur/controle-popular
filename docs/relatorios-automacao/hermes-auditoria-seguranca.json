@@ -1,8 +1,8 @@
 {
-  "geradoEm": "2026-09-28T12:45:14.926Z",
+  "geradoEm": "2026-09-29T20:22:34.810Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 13,
-  "aprovados": 13,
+  "totalVerificacoes": 14,
+  "aprovados": 14,
   "alertas": 0,
   "falhas": 0,
   "itens": [
@@ -55,10 +55,16 @@
       "detalhes": "Nenhum token ou chave de credencial identificado nos arquivos críticos."
     },
     {
+      "categoria": "seguranca",
+      "item": "Supply Chain & Modelos de IA",
+      "status": "APROVADO",
+      "detalhes": "Zero formatos binários (.pickle/.joblib) e zero tokens expostos nos arquivos auditados."
+    },
+    {
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 179 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 184 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",

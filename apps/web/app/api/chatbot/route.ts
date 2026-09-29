@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { responderComRag, type RespostaRag } from "@/lib/assistente/embeddings/rag";
 import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
+import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
 
 /**
  * Limitador de taxa em memória por IP (Token Bucket) para proteção anti-DoS.
@@ -83,7 +84,16 @@ export async function POST(req: Request): Promise<Response> {
   if (!pergunta || pergunta.length < 3) {
     return NextResponse.json({ erro: "Escreva uma pergunta." }, { status: 400 });
   }
-  if (pergunta.length > 500) pergunta = pergunta.slice(0, 500);
+
+  // Blindagem contra injeção de prompt e jailbreak
+  const diagnostico = sanitizarEntradaUsuario(pergunta);
+  if (!diagnostico.seguro) {
+    return NextResponse.json(
+      { erro: diagnostico.textoSanitizado },
+      { status: 400 }
+    );
+  }
+  pergunta = diagnostico.textoSanitizado;
 
   try {
     const resposta: RespostaRag = await responderComRag(pergunta, { pathname, titulo });
