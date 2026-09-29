@@ -733,6 +733,53 @@ export const FRENTES: SeuNonoFrente[] = [
           },
         ],
       },
+      {
+        id: "laboratorio-e-analise",
+        titulo: "Laboratório de Dados, PowerBI & Árvore de Conexões",
+        perguntas: [
+          {
+            id: "laboratorio-powerbi-camadas",
+            pergunta: "Como comparar dois conjuntos de dados em gráficos dither no Laboratório?",
+            resposta:
+              "O Laboratório reúne 23 camadas ativáveis estilo PowerBI. Você escolhe duas bases e compara contratos, royalties, saúde ou barragens lado a lado em gráficos acessíveis.",
+            link: { href: "/laboratorio", texto: "Abrir Laboratório de Dados" },
+          },
+          {
+            id: "arvore-obsidian-conexoes",
+            pergunta: "Como navegar pela Árvore de Conexões do portal no estilo Obsidian?",
+            resposta:
+              "A Árvore de Conexões interativa (/laboratorio/arvore) mapeia os 4 eixos, 199 cidades e mineradoras em nós e arestas. Você pode aplicar zoom, arrastar nós e inspecionar relações cívicas.",
+            link: { href: "/laboratorio/arvore", texto: "Ver Árvore de Conexões (Obsidian)" },
+          },
+        ],
+      },
+      {
+        id: "editais-e-fontes-estados",
+        titulo: "Radar de Editais, Estudos Rurais & Fontes dos 27 Estados",
+        perguntas: [
+          {
+            id: "radar-editais-diario-oficial",
+            pergunta: "Como funciona o Radar de Editais do Diário Oficial de MG?",
+            resposta:
+              "O Radar varre o Diário Oficial diariamente e reúne 50+ certames de interesse social (saúde, educação, obras e leilões) com filtros por órgão e download em CSV.",
+            link: { href: "/editais", texto: "Radar de Editais" },
+          },
+          {
+            id: "estudos-rurais-jequitinhonha-mucuri",
+            pergunta: "Onde encontrar estudos sobre agricultura familiar, reforma agrária e agroecologia?",
+            resposta:
+              "A seção de Estudos Rurais reúne pesquisas do PPGER/UFVJM, notas técnicas sobre assentamentos e dados de produção camponesa nos Vales do Jequitinhonha e Mucuri.",
+            link: { href: "/estudos-rurais", texto: "Acervo de Estudos Rurais" },
+          },
+          {
+            id: "fontes-dados-27-estados",
+            pergunta: "Onde consultar os portais de transparência dos 27 estados brasileiros?",
+            resposta:
+              "O catálogo reúne links diretos dos portais de dados abertos, controladorias, assembleias e tribunais de contas de todas as 27 unidades da federação.",
+            link: { href: "/fontes-estados", texto: "Catálogo dos 27 Estados" },
+          },
+        ],
+      },
     ],
   },
 ];
@@ -1055,6 +1102,134 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/busca", texto: "Buscar nos municípios dos vales" },
       { href: "https://pncp.gov.br", texto: "Portal Nacional de Contratações Públicas" },
+    ],
+  },
+  {
+    id: "laboratorio-powerbi",
+    titulo: "Laboratório de Dados & PowerBI",
+    resumo: "Explorador analítico com 23 camadas ativáveis, gráficos dither, comparador municipal e Árvore de Conexões estilo Obsidian.",
+    dados: [
+      "23 camadas analíticas ativáveis: barragens, orçamentos, PNCP, leitos e royalties",
+      "Comparador de cidades lado a lado com gráficos acessíveis",
+      "Visualização de Grafo em Árvore de Conexões interativa (/laboratorio/arvore)",
+      "Exportação de dados em CSV com BOM UTF-8 e ponto-e-vírgula",
+    ],
+    links: [
+      { href: "/laboratorio", texto: "Laboratório de Dados" },
+      { href: "/laboratorio/arvore", texto: "Árvore de Conexões (Obsidian)" },
+      { href: "/laboratorio/comparador", texto: "Comparador Municipal" },
+      { href: "/laboratorio/graficos", texto: "Séries Históricas" },
+    ],
+  },
+  {
+    id: "editais-hub",
+    titulo: "Radar de Editais & Licitações (DO-MG)",
+    resumo: "Acompanhamento diário de certames públicos, compras emergenciais e chamamentos de interesse social em Minas Gerais.",
+    dados: [
+      "50+ editais e chamamentos públicos de interesse social catalogados diariamente",
+      "Filtros por órgão estadual (SES, SEE, Seinfra, DER), situação e modalidade",
+      "Links diretos para editais e anexos no Diário Oficial de MG",
+      "Exportação completa da base em CSV",
+    ],
+    links: [
+      { href: "/editais", texto: "Painel de Editais" },
+      { href: "/estado-e-economia/compras", texto: "Compras no PNCP" },
+    ],
+  },
+  {
+    id: "estudos-rurais",
+    titulo: "Estudos Rurais e Territoriais",
+    resumo: "Acervo acadêmico e comunitário sobre reforma agrária, comunidades quilombolas e produção camponesa nos Vales.",
+    dados: [
+      "Pesquisas em parceria com o PPGER/UFVJM e universidades federais",
+      "Mapeamento de assentamentos e agricultura familiar no Jequitinhonha e Mucuri",
+      "Dados fundiários e sobreposição territorial com o CAR",
+      "Notas técnicas sobre agroecologia e soberania alimentar",
+    ],
+    links: [
+      { href: "/estudos-rurais", texto: "Estudos Rurais" },
+      { href: "/terra-e-territorios", texto: "Terra e Territórios" },
+    ],
+  },
+  {
+    id: "fontes-27-estados",
+    titulo: "Fontes de Dados dos 27 Estados",
+    resumo: "Diretório unificado de órgãos de controle, tribunais de contas, assembleias e dados abertos do Brasil.",
+    dados: [
+      "Portais de transparência e dados abertos das 27 unidades da federação",
+      "Tribunais de Contas Estaduais (TCEs) e Ministérios Públicos (MPEs)",
+      "Assembleias Legislativas e diários oficiais estaduais",
+      "Sistemas de contratações públicas e consultas de processos",
+    ],
+    links: [
+      { href: "/fontes-estados", texto: "Fontes por Estado" },
+      { href: "/instituicoes", texto: "Organogramas & Lideranças" },
+    ],
+  },
+  {
+    id: "ambiental-condicionantes",
+    titulo: "Condicionantes Ambientais de Barragens",
+    resumo: "Auditoria do cumprimento de condicionantes das licenças prévias e TACs de grandes barragens em Minas Gerais.",
+    dados: [
+      "Piloto Irapé e Setúbal: status de evidência pública e links para pareceres técnicos",
+      "Obrigações de reassentamento, monitoramento sísmico e recuperação vegetal",
+      "Cruzamento com dados do SIGBM, FEAM e autos do COPAM",
+      "Documentos comprobatórios auditáveis",
+    ],
+    links: [
+      { href: "/ambiental/condicionantes", texto: "Condicionantes de Barragens" },
+      { href: "/ambiental/barragens", texto: "Painel de Barragens" },
+      { href: "/ambiental/licenciamento", texto: "Licenciamento Ambiental" },
+    ],
+  },
+  {
+    id: "rio-doce-mariana",
+    titulo: "Acordo do Rio Doce (Mariana) — R$ 171 Bi",
+    resumo: "Execução orçamentária da repactuação judicial de Mariana: repasses estaduais, obras de saneamento e indenizações.",
+    dados: [
+      "R$ 171 bilhões totais, sendo R$ 100 bilhões em dinheiro novo",
+      "Repasses município a município na bacia do Rio Doce em MG e ES",
+      "Obras estruturais de esgotamento sanitário, saúde e infraestrutura",
+      "Fiscalização do cumprimento de prazos do acordo judicial",
+    ],
+    links: [
+      { href: "/ambiental/mariana", texto: "Painel de Mariana" },
+      { href: "/paraopeba/vale", texto: "Observatório Vale" },
+    ],
+  },
+  {
+    id: "comunicabr-federal",
+    titulo: "ComunicaBR — Repasses Federais nos Municípios",
+    resumo: "Transferências diretas da União para os 853 municípios de Minas Gerais em programas sociais, saúde e educação.",
+    dados: [
+      "R$ 139 bilhões auditados em transferências do Governo Federal em MG",
+      "Detalhamento por Bolsa Família, SUS, Fundeb, BPC e Farmácia Popular",
+      "Consulta instantânea por município ou código IBGE",
+      "Exportação da série histórica",
+    ],
+    links: [
+      { href: "/dados/comunicabr", texto: "ComunicaBR em MG" },
+      { href: "/cidades", texto: "199 Cidades Estratégicas" },
+    ],
+  },
+  {
+    id: "instituicoes-justica-fichas",
+    titulo: "Fichas do Judiciário (TJMG, MPMG, DPMG, TCEMG)",
+    resumo: "Orçamentos, folhas de pagamento, penduricalhos e fiscalização externa dos órgãos de controle de Minas Gerais.",
+    dados: [
+      "TJMG: Orçamento de R$ 14,96 bi, auxílio-alimentação e produtividade",
+      "MPMG: Orçamento de R$ 4,09 bi, verbas indenizatórias e promotorias",
+      "DPMG: Orçamento de R$ 1,10 bi e mapa de déficit de defensores públicos",
+      "TCEMG: Orçamento de R$ 1,15 bi e julgamento de contas municipais",
+      "Guia com 990 varas, telefones, juízes e Balcão Virtual",
+    ],
+    links: [
+      { href: "/judiciario/instituicoes", texto: "Quem Fiscaliza a Justiça" },
+      { href: "/judiciario/instituicoes/tjmg", texto: "Ficha do TJMG" },
+      { href: "/judiciario/instituicoes/mpmg", texto: "Ficha do MPMG" },
+      { href: "/judiciario/instituicoes/dpmg", texto: "Ficha da DPMG" },
+      { href: "/judiciario/instituicoes/tcemg", texto: "Ficha do TCEMG" },
+      { href: "/judiciario/contatos", texto: "Varas & Balcão Virtual" },
     ],
   },
 ];

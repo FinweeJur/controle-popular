@@ -57,25 +57,137 @@ function avaliarEscadaBruta(
   const normalizada = semAcento(prompt.trim().toLowerCase());
   if (!normalizada) return null;
 
-  // ─── 1. DEGRAU: LABORATÓRIO / POWERBI / CRUZAMENTOS / COMPARADOR ───────
-  const regexLab = /\b(laboratorio|laborat[oó]rio|powerbi|power bi|cruzar|cruzamento|cruzar dados|comparador|gr[aá]ficos?|analytics|dashboard|painel bi|lab)\b/i;
+  // ─── 1. DEGRAU: LABORATÓRIO / POWERBI / ARVORE OBSIDIAN / CRUZAMENTOS ─
+  const regexArvore = /\b(arvore|grafo|obsidian|rede de conexoes|arvore de links|mapa mental)\b/i;
+  if (regexArvore.test(normalizada)) {
+    return {
+      tipo: "laboratorio",
+      titulo: "Árvore de Conexões Cívicas (Obsidian Graph)",
+      subtitulo: "Grafo Interativo dos 4 Eixos Temáticos",
+      texto:
+        "A visualização em árvore do Controle Popular mapeia nós e arestas de relacionamento entre 199 cidades, mineradoras, bacias e órgãos públicos com zoom, arrasto e inspeção de vínculos.",
+      categoria: "Visualização em Grafo",
+      atalhos: [
+        { rotulo: "Abrir Árvore de Conexões", href: "/laboratorio/arvore", principal: true },
+        { rotulo: "Laboratório de Dados", href: "/laboratorio" },
+        { rotulo: "Índice Geral do Portal", href: "/indice" },
+      ],
+    };
+  }
+
+  const regexLab = /\b(laboratorio|laborat[oó]rio|powerbi|power bi|cruzar|cruzamento|cruzar dados|comparador|gr[aá]ficos?|analytics|dashboard|painel bi|lab|camadas)\b/i;
   if (regexLab.test(normalizada)) {
     return {
       tipo: "laboratorio",
       titulo: "Laboratório de Cruzamento & PowerBI",
-      subtitulo: "Painel Analítico de Inteligência Cívica",
+      subtitulo: "23 Camadas Analíticas de Inteligência Cívica",
       texto:
         "O Laboratório de Dados do Controle Popular permite cruzar indicadores orçamentários, contratos, leitos hospitalares, licenças ambientais e royalties em gráficos e comparadores interativos.",
       categoria: "Análise de Dados",
       atalhos: [
         { rotulo: "Abrir Laboratório de Dados", href: "/laboratorio", principal: true },
+        { rotulo: "Árvore de Conexões (Obsidian)", href: "/laboratorio/arvore" },
         { rotulo: "Comparador de Cidades", href: "/laboratorio/comparador" },
         { rotulo: "Séries Históricas & Gráficos", href: "/laboratorio/graficos" },
         { rotulo: "Orçamento de Minas Gerais", href: "/estado-e-economia/orcamento" },
-        { rotulo: "199 Cidades Estratégicas", href: "/cidades" },
       ],
     };
   }
+
+  // ─── 1.5. DEGRAU: COMANDOS DIRETOS DE TABELAS & BASES (LICENÇAS, CONVÊNIOS, LEIS, TAC) ─
+  if (
+    normalizada.startsWith("licenciamento") ||
+    normalizada.startsWith("licenca") ||
+    normalizada.startsWith("licencas") ||
+    normalizada.includes("painel de licenciamento") ||
+    normalizada.includes("licenciamento ambiental")
+  ) {
+    const termoBusca = normalizada
+      .replace(/^licenciamento\s*(de\s*)?/i, "")
+      .replace(/^licencas?\s*(de\s*)?/i, "")
+      .replace(/ambiental/i, "")
+      .trim();
+
+    const linkHref = termoBusca ? `/ambiental/licenciamento?q=${encodeURIComponent(termoBusca)}` : "/ambiental/licenciamento";
+
+    return {
+      tipo: "pagina",
+      titulo: termoBusca ? `Licenciamento Ambiental: ${termoBusca}` : "Licenciamento Ambiental de Minas Gerais",
+      subtitulo: "19.713 Empreendimentos Catalogados · SEMAD / COPAM",
+      texto:
+        "Consulte processos de licença prévia (LP), instalação (LI) e operação (LO) deferidas pela SEMAD e pelo COPAM com filtros por município, setor e classe de impacto.",
+      categoria: "Licenciamento",
+      atalhos: [
+        { rotulo: "Abrir Tabela de Licenciamento", href: linkHref, principal: true },
+        { rotulo: "Pautas do COPAM", href: "/ambiental/copam" },
+        { rotulo: "Condicionantes de Barragens", href: "/ambiental/condicionantes" },
+        { rotulo: "Termos de Ajustamento (TACs)", href: "/ambiental/tac" },
+      ],
+    };
+  }
+
+  if (
+    normalizada.startsWith("convenio") ||
+    normalizada.startsWith("convenios") ||
+    normalizada.includes("painel de convenios")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "Convênios & Estudos Ambientais",
+      subtitulo: "3.000+ Parcerias Oficiais de Órgãos Estaduais",
+      texto:
+        "Tabela de convênios firmados pela SEMAD, IEF, IGAM e FEAM com prefeituras, universidades e entidades civis com valores, vigência e prestação de contas.",
+      categoria: "Convênios",
+      atalhos: [
+        { rotulo: "Tabela de Convênios", href: "/ambiental/convenios", principal: true },
+        { rotulo: "Compras no PNCP", href: "/estado-e-economia/compras" },
+        { rotulo: "Repasses ComunicaBR", href: "/dados/comunicabr" },
+      ],
+    };
+  }
+
+  if (
+    normalizada.startsWith("lei ") ||
+    normalizada.startsWith("leis ") ||
+    normalizada.startsWith("decreto ") ||
+    normalizada === "legislacao" ||
+    normalizada.includes("legislacao ambiental")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "Legislação Ambiental Unificada",
+      subtitulo: "20.000+ Normas com URN Canônica LexML",
+      texto:
+        "Acervo completo de leis, decretos e resoluções ambientais federais e estaduais com identificadores persistentes e texto integral.",
+      categoria: "Legislação",
+      atalhos: [
+        { rotulo: "Acervo de Legislação Ambiental", href: "/ambiental/legislacao", principal: true },
+        { rotulo: "Pautas do COPAM", href: "/ambiental/copam" },
+        { rotulo: "Termos de Ajustamento (TACs)", href: "/ambiental/tac" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "condicionantes" ||
+    normalizada.includes("condicionantes ambientais") ||
+    normalizada.includes("condicionantes de barragens")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "Condicionantes Ambientais de Barragens",
+      subtitulo: "Piloto Irapé e Setúbal · Evidências e Cumprimento",
+      texto:
+        "Auditoria pública de condicionantes de licenças e TACs: reassentamentos, monitoramento sísmico e proteção biológica com links auditáveis à fonte oficial.",
+      categoria: "Meio Ambiente",
+      atalhos: [
+        { rotulo: "Painel de Condicionantes", href: "/ambiental/condicionantes", principal: true },
+        { rotulo: "Painel de Barragens", href: "/ambiental/barragens" },
+        { rotulo: "Descaracterização", href: "/ambiental/barragens/descaracterizacao" },
+      ],
+    };
+  }
+
 
   // ─── 2. DEGRAU: CIDADES ESPECÍFICAS ────────────────────────────────────
   if (

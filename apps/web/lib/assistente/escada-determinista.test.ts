@@ -18,6 +18,28 @@ describe("avaliarEscadaDeterminista", () => {
 
     const res3 = avaliarEscadaDeterminista("comparador de graficos");
     expect(res3?.tipo).toBe("laboratorio");
+
+    const arvore = avaliarEscadaDeterminista("arvore obsidian");
+    expect(arvore?.tipo).toBe("laboratorio");
+    expect(arvore?.atalhos.some((a) => a.href === "/laboratorio/arvore")).toBe(true);
+  });
+
+  it("retorna cartão de comandos diretos para tabelas, licenças, convênios e leis", () => {
+    const lic = avaliarEscadaDeterminista("licenciamento ambiental");
+    expect(lic?.tipo).toBe("pagina");
+    expect(lic?.atalhos.some((a) => a.href.includes("/ambiental/licenciamento"))).toBe(true);
+
+    const conv = avaliarEscadaDeterminista("convenios");
+    expect(conv?.tipo).toBe("pagina");
+    expect(conv?.atalhos.some((a) => a.href === "/ambiental/convenios")).toBe(true);
+
+    const lei = avaliarEscadaDeterminista("legislacao ambiental");
+    expect(lei?.tipo).toBe("pagina");
+    expect(lei?.atalhos.some((a) => a.href === "/ambiental/legislacao")).toBe(true);
+
+    const cond = avaliarEscadaDeterminista("condicionantes");
+    expect(cond?.tipo).toBe("pagina");
+    expect(cond?.atalhos.some((a) => a.href === "/ambiental/condicionantes")).toBe(true);
   });
 
   it("retorna cartão de cidade para cidades específicas", () => {
