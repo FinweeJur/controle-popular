@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="pequi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terras Públicas — mapa de terra sem cadastro em Minas Gerais</title>
   <meta name="description" content="Mapa de pesquisa: onde há terra rural que nenhum imóvel declarou no cadastro ambiental, em Minas Gerais. Cada área é um lugar para conferir, não uma conclusão oficial.">
   <link rel="icon" type="image/svg+xml" href="/terras/globo/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var V = { pequi: 1, cerrado: 1, 'mata-atlantica': 1, caatinga: 1, pantanal: 1, light: 1, dark: 1, 'high-contrast': 1 };
+        var pDoc = window.parent && window.parent !== window ? window.parent.document.documentElement : null;
+        var t = (pDoc && pDoc.getAttribute('data-theme')) || localStorage.getItem('theme') || 'pequi';
+        var c = (pDoc && pDoc.getAttribute('data-cvd')) || localStorage.getItem('cp_cvd') || 'off';
+        document.documentElement.setAttribute('data-theme', V[t] ? t : 'pequi');
+        if (c === 'on') document.documentElement.setAttribute('data-cvd', 'on');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/terras/globo/css/hud.css">
 
   <!-- Importmap: Three.js vendorizado localmente em ./vendor/ (sem CDN, sem build — ver plano §2 e §8) -->

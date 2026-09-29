@@ -500,7 +500,7 @@ export function formatarValor(chave, valor) {
   if (chave === 'link_oficial' && valor) {
     const destino = urlSegura(valor);
     if (!destino) return escapar(valor);
-    return `<a href="${escapar(destino)}" target="_blank" rel="noopener" class="btn-fonte-oficial" style="color:var(--cp-primary,#38bdf8);font-weight:600;text-decoration:underline;">Abrir processo na fonte oficial ↗</a>`;
+    return `<a href="${escapar(destino)}" target="_blank" rel="noopener" class="btn-fonte-oficial" style="color:var(--accent-text,var(--cp-primary,#38bdf8));font-weight:600;text-decoration:underline;">Abrir processo na fonte oficial ↗</a>`;
   }
   if (chave === 'valor' && valor !== null && valor !== undefined) {
     const num = Number(valor);

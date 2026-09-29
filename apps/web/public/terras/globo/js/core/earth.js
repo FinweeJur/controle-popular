@@ -5,6 +5,7 @@
 // Helper interno: buildGraticule(radius)
 
 import * as THREE from 'three';
+import { lerTokenCor } from '../ui/tema.js';
 
 const R = 1; // raio unitário; todo o globo escala em torno disso
 
@@ -58,16 +59,38 @@ function buildGraticule(radius) {
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   const material = new THREE.LineBasicMaterial({
-    color: 0x38bdf8,       // ciano do design system
+    color: 0x38bdf8,       // cor inicial; sincronizada com --globe-glow
     transparent: true,
     opacity: 0.08,         // quase invisível — só textura de "instrumento"
     depthWrite: false,
   });
-  return new THREE.LineSegments(geometry, material);
+  const graticule = new THREE.LineSegments(geometry, material);
+  graticule.name = 'graticula';
+  return graticule;
 }
 
 /**
- * Monta a Terra: esfera Blue Marble (96x96) + atmosfera fresnel ciano + gráticula.
+ * Atualiza a cor do halo atmosférico (uniform `glowColor`) e da gratícula da
+ * Terra a partir do token CSS `--globe-glow` do tema ativo.
+ *
+ * @param {THREE.Group} terra - grupo retornado por `createEarth()`
+ */
+export function aplicarTemaNaTerra(terra) {
+  if (!terra) return;
+  const corGlow = lerTokenCor('--globe-glow', '#38bdf8');
+  const atmosfera = terra.getObjectByName?.('atmosfera');
+  const graticula = terra.getObjectByName?.('graticula');
+  try {
+    atmosfera?.material?.uniforms?.glowColor?.value?.set(corGlow);
+    graticula?.material?.color?.set(corGlow);
+  } catch {
+    atmosfera?.material?.uniforms?.glowColor?.value?.set(0x38bdf8);
+    graticula?.material?.color?.set(0x38bdf8);
+  }
+}
+
+/**
+ * Monta a Terra: esfera Blue Marble (384x192) + atmosfera fresnel + gráticula.
  * @returns {Promise<THREE.Group>} grupo pronto para scene.add()
  */
 export async function createEarth() {
@@ -105,16 +128,16 @@ export async function createEarth() {
   );
   group.add(globe);
 
-  // Atmosfera: shader fresnel de rim glow ciano, BackSide + blending aditivo.
+  // Atmosfera: shader fresnel de rim glow, BackSide + blending aditivo.
   // Nomeada porque o main.js precisa escondê-la no zoom profundo: a casca fica
   // a R*1.02 (~127 km de altitude) e, quando a câmera entra nela, as faces
   // internas cobrem a tela inteira em blending aditivo — o mapa some atrás de
-  // um véu ciano exatamente na aproximação que interessa.
+  // um véu colorido exatamente na aproximação que interessa.
   const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.02, 96, 96),
     new THREE.ShaderMaterial({
       uniforms: {
-        glowColor: { value: new THREE.Color(0x38bdf8) }, // acento ciano do design system
+        glowColor: { value: new THREE.Color(0x38bdf8) }, // sincronizado com --globe-glow
       },
       vertexShader: /* glsl */ `
         varying vec3 vN;
@@ -145,6 +168,9 @@ export async function createEarth() {
   // Gráticula sutil logo acima da superfície (mesmo raciocínio das camadas:
   // um fio de folga, não os 6,4 km de antes)
   group.add(buildGraticule(R * 1.00006));
+
+  aplicarTemaNaTerra(group);
+  group.userData.aplicarTema = () => aplicarTemaNaTerra(group);
 
   return group;
 }

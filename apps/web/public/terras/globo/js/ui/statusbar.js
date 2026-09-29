@@ -42,7 +42,7 @@ function formatCount(n) {
   return Number(n).toLocaleString('pt-BR');
 }
 
-export function createStatusBar(el, { onHelp, onLista } = {}) {
+export function createStatusBar(el, { onHelp, onLista, temas = [], temaAtual = '', onTema } = {}) {
   // --- Estrutura DOM ---
   el.innerHTML = '';
 
@@ -106,6 +106,24 @@ export function createStatusBar(el, { onHelp, onLista } = {}) {
   lista.setAttribute('aria-pressed', 'false');
   lista.addEventListener('click', () => onLista?.());
 
+  // Seletor de tema visual (8 temas do portal). Fica na barra de topo para
+  // funcionar também quando o mapa é aberto em aba cheia, fora do iframe.
+  let temaSelect = null;
+  if (Array.isArray(temas) && temas.length > 0) {
+    temaSelect = document.createElement('select');
+    temaSelect.className = 'tema-select';
+    temaSelect.title = 'Escolher tema visual e contraste do mapa';
+    temaSelect.setAttribute('aria-label', 'Tema visual do mapa');
+    for (const item of temas) {
+      const opt = document.createElement('option');
+      opt.value = item.id;
+      opt.textContent = `Tema: ${item.rotulo}`;
+      if (item.id === temaAtual) opt.selected = true;
+      temaSelect.appendChild(opt);
+    }
+    temaSelect.addEventListener('change', () => onTema?.(temaSelect.value));
+  }
+
   const help = document.createElement('button');
   help.type = 'button';
   help.className = 'help-btn';
@@ -114,7 +132,11 @@ export function createStatusBar(el, { onHelp, onLista } = {}) {
   help.setAttribute('aria-label', 'O que é este mapa e como usar');
   help.addEventListener('click', () => onHelp?.());
 
-  el.append(marca, spacer, count, lista, dataChip, clock, help);
+  if (temaSelect) {
+    el.append(marca, spacer, count, lista, temaSelect, dataChip, clock, help);
+  } else {
+    el.append(marca, spacer, count, lista, dataChip, clock, help);
+  }
 
   // --- Estado interno ---
   let featureCount = 0;
@@ -144,6 +166,12 @@ export function createStatusBar(el, { onHelp, onLista } = {}) {
       lista.setAttribute('aria-pressed', String(Boolean(aberta)));
       lista.classList.toggle('ativo', Boolean(aberta));
       lista.textContent = aberta ? 'Ver no mapa' : 'Ver em lista';
+    },
+    /** Sincroniza o tema selecionado quando a troca vem da barra do portal. */
+    setTema(id) {
+      if (temaSelect && id) {
+        temaSelect.value = id;
+      }
     },
     /** Para o relógio e limpa o intervalo (ex.: ao desmontar o HUD). */
     stop() {

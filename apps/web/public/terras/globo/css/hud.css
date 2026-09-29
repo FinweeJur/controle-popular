@@ -289,6 +289,40 @@ body {
 
 #statusbar .lista-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+/* Seletor de tema visual (ui/statusbar.js + ui/tema.js): permite alternar entre
+   os 8 temas do portal mesmo quando o globo é aberto em aba própria fora do
+   iframe, e acompanha automaticamente o tema da barra do portal. */
+#statusbar .tema-select {
+  appearance: none;
+  padding: 5px 24px 5px 10px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: 999px;
+  background-color: var(--color-surface-1);
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-2) 50%),
+                    linear-gradient(135deg, var(--text-2) 50%, transparent 50%);
+  background-position: calc(100% - 13px) 52%, calc(100% - 9px) 52%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+#statusbar .tema-select:hover {
+  color: var(--accent-text);
+  background-color: var(--accent-weak);
+  border-color: var(--accent-line);
+}
+
+#statusbar .tema-select option {
+  background: var(--color-surface-1);
+  color: var(--text-1);
+}
+
 /* Botão "?": reabre a explicação inicial a qualquer momento */
 #statusbar .help-btn {
   appearance: none;
@@ -636,6 +670,24 @@ body {
 #inspector .inspector-table td:first-child {
   color: var(--text-3);
   width: 38%;
+}
+/* Links de fonte oficial e normas dentro da ficha (`rotulos.js`). Sem regra
+   explícita, `<a>` caía no azul nativo do navegador (#0000EE), que tem razão
+   de contraste 1,46:1 nos fundos escuros do HUD (reprovado WCAG). `--accent-text`
+   é calibrado em todos os 8 temas (≥ 4,5:1 AA, e 8,59:1 AAA em alto contraste). */
+#inspector .inspector-table a {
+  color: var(--accent-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#inspector .inspector-table a:hover {
+  color: var(--text-1);
+}
+#inspector .inspector-table a:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: 2px;
 }
 
 /* Linha que explica de que camada é a área clicada */
@@ -2288,6 +2340,7 @@ body {
    controle ao painel acrescenta aqui também — foi o caso de
    `.layer-bulk-btn` (Ligar/Desligar tudo), no mesmo dia. */
 #statusbar .lista-btn:focus-visible,
+#statusbar .tema-select:focus-visible,
 #statusbar .help-btn:focus-visible,
 #focusbar .focus-btn:focus-visible,
 #zoombar .zoom-btn:focus-visible,
@@ -2305,6 +2358,7 @@ body {
 /* ---- Hover dos controles: clareia o preenchimento, nunca muda o matiz ---- */
 #statusbar .help-btn:hover,
 #statusbar .lista-btn:hover,
+#statusbar .tema-select:hover,
 #zoombar .zoom-btn:hover {
   box-shadow: 0 0 0 1px var(--accent-line), 0 4px 16px -6px var(--accent-medium);
 }
@@ -2573,3 +2627,56 @@ body {
 @media (prefers-reduced-motion: reduce) {
   #dica { transition: none; }
 }
+
+/* ============================================================
+   TEMAS CLARO E ALTO CONTRASTE — adaptações para elementos com
+   cores de camada embutidas (29/09/2026)
+   ============================================================
+   As cores das 20 camadas geográficas (`--cor-camada`, `L = 0.754`) foram
+   calibradas para brilhar sobre a textura escura Blue Marble no globo 3D.
+   Quando o usuário escolhe os temas Claro (`light`) ou Alto Contraste
+   (`high-contrast`), os painéis do HUD passam a ter fundo branco (`#ffffff`),
+   onde um ponto pastel de `L = 0.754` teria contraste de apenas 1,61:1 a
+   2,18:1 (abaixo do piso 3:1 de WCAG 1.4.11 Non-text Contrast).
+
+   Solução: manter o miolo na cor exata do polígono 3D (para a legenda nunca
+   mentir sobre o mapa) e envolver cada marcador com um anel escuro nítido,
+   garantindo contraste ≥ 12:1 do marcador contra o painel claro. */
+:root[data-theme="light"] #layers-panel .layer-marca,
+:root[data-theme="light"] #destaques .destaque-dot,
+:root[data-theme="light"] #lista .lista-dot {
+  box-shadow: 0 0 0 1.5px rgb(15 23 42 / 0.65);
+}
+
+:root[data-theme="high-contrast"] #layers-panel .layer-marca,
+:root[data-theme="high-contrast"] #destaques .destaque-dot,
+:root[data-theme="high-contrast"] #lista .lista-dot {
+  box-shadow: 0 0 0 2px #000000;
+}
+
+/* Em temas claros, o botão de destaque ativo (`aria-checked="true"`) usa a
+   borda de acento escuro do tema em vez de `--cor-camada` pastel pura. */
+:root[data-theme="light"] #destaques .destaque-btn[aria-checked="true"],
+:root[data-theme="high-contrast"] #destaques .destaque-btn[aria-checked="true"] {
+  border-color: var(--accent-line);
+  background: var(--accent-weak);
+}
+
+/* Alto Contraste (WCAG AAA): bordas sólidas de 2px em todos os painéis e
+   cartões flutuantes, eliminando dependência de transparência ou sombra. */
+:root[data-theme="high-contrast"] .hud-panel,
+:root[data-theme="high-contrast"] #intro .intro-card,
+:root[data-theme="high-contrast"] #dica {
+  border-width: 2px;
+  border-color: #000000;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root[data-theme="high-contrast"] #focusbar .focus-btn.active,
+:root[data-theme="high-contrast"] #layers-panel .regiao-chip[aria-checked="true"],
+:root[data-theme="high-contrast"] #statusbar .lista-btn.ativo {
+  border-width: 2px;
+  border-color: var(--accent);
+}
+

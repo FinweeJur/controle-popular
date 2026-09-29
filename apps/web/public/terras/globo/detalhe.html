@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="pequi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ver de perto | Terras Públicas</title>
   <link rel="icon" type="image/svg+xml" href="/terras/globo/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var V = { pequi: 1, cerrado: 1, 'mata-atlantica': 1, caatinga: 1, pantanal: 1, light: 1, dark: 1, 'high-contrast': 1 };
+        var pDoc = window.parent && window.parent !== window ? window.parent.document.documentElement : null;
+        var t = (pDoc && pDoc.getAttribute('data-theme')) || localStorage.getItem('theme') || 'pequi';
+        var c = (pDoc && pDoc.getAttribute('data-cvd')) || localStorage.getItem('cp_cvd') || 'off';
+        document.documentElement.setAttribute('data-theme', V[t] ? t : 'pequi');
+        if (c === 'on') document.documentElement.setAttribute('data-cvd', 'on');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/terras/globo/vendor-leaflet/leaflet.css">
   <link rel="stylesheet" href="/terras/globo/css/styles.css">
   <style>
@@ -39,14 +51,23 @@
       box-shadow: var(--shadow-raised);
       padding: var(--space-3) var(--space-4);
     }
+    :root[data-theme="high-contrast"] .painel {
+      border: 2px solid #000000;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
     .painel h1 { font-size: var(--text-meta); letter-spacing: var(--tracking-micro);
       text-transform: uppercase; color: var(--accent-text); margin-bottom: var(--space-2); }
     .painel table { width: 100%; border-collapse: collapse;
       font-family: var(--font-mono); font-size: var(--text-micro);
       font-variant-numeric: tabular-nums; }
     .painel td { padding: 3px 6px 3px 0; border-bottom: var(--border-hair);
-      color: var(--text-2); vertical-align: top; }
+      color: var(--text-2); vertical-align: top; overflow-wrap: anywhere; }
     .painel td:first-child { color: var(--text-3); white-space: nowrap; }
+    .painel table a { color: var(--accent-text); font-weight: 600;
+      text-decoration: underline; text-underline-offset: 2px; }
+    .painel table a:hover { color: var(--text-1); }
+    .painel table a:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: 2px; }
     .acoes { margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap; }
     .btn { padding: 7px 12px; border-radius: var(--radius-md); font-size: var(--text-micro);
       font-weight: var(--weight-semibold);
@@ -57,6 +78,8 @@
     .btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
     .btn.neutro { border-color: var(--glass-stroke); background: var(--color-surface-1);
       color: var(--text-2); }
+    .tema-select { cursor: pointer; font-family: var(--font-ui); }
+    .tema-select option { background: var(--color-surface-1); color: var(--text-1); }
     .aviso { margin-top: var(--space-2); font-size: 10px; color: var(--text-3); line-height: 1.5; }
     /* Coordenadas + botões de copiar — mesmo bloco do inspetor do globo
        (globe/js/ui/rotulos.js → blocoDeCoordenadas). */
@@ -120,7 +143,7 @@
       color: var(--text-3) !important; font-size: 9px !important; }
     .leaflet-control-attribution a { color: var(--text-2) !important; }
     .camada-base { position: fixed; bottom: var(--space-4); right: var(--space-4);
-      z-index: var(--z-over-leaflet); display: flex; gap: 6px; }
+      z-index: var(--z-over-leaflet); display: flex; gap: 6px; align-items: center; }
   </style>
 </head>
 <body>
@@ -142,6 +165,7 @@
   </div>
 
   <div class="camada-base">
+    <select class="btn neutro tema-select" id="select-tema" aria-label="Tema visual do mapa"></select>
     <a class="btn neutro" href="#" id="btn-satelite">Foto de satélite</a>
     <a class="btn neutro" href="#" id="btn-rotas">Mapa de ruas</a>
   </div>
@@ -155,6 +179,24 @@
     import { LAYER_REGISTRY } from '/terras/globo/js/config.js';
     import { injetarProveniencia } from '/terras/globo/js/ui/proveniencia.js';
     import { fetchLayer } from '/terras/globo/js/data/api.js';
+    import { TEMAS_GLOBO, iniciarSincroniaDeTema } from '/terras/globo/js/ui/tema.js';
+
+    const selectTema = document.getElementById('select-tema');
+    const controleTema = iniciarSincroniaDeTema({
+      onChange: ({ theme }) => {
+        if (selectTema) selectTema.value = theme;
+      },
+    });
+    if (selectTema) {
+      for (const item of TEMAS_GLOBO) {
+        const opt = document.createElement('option');
+        opt.value = item.id;
+        opt.textContent = `Tema: ${item.rotulo}`;
+        if (item.id === controleTema.estado.theme) opt.selected = true;
+        selectTema.appendChild(opt);
+      }
+      selectTema.addEventListener('change', () => controleTema.definirTema(selectTema.value));
+    }
 
     injetarProveniencia(document.getElementById('prov'));
 

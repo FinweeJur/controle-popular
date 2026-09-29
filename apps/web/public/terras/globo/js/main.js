@@ -13,13 +13,14 @@ import {
 } from './config.js';
 import { mesorregiaoDe } from './data/mesorregioes.js';
 import { municipioPorCodigo } from './data/municipios.js';
-import { createScene } from './core/scene.js';
-import { createEarth } from './core/earth.js';
+import { createScene, aplicarTemaNaCena } from './core/scene.js';
+import { createEarth, aplicarTemaNaTerra } from './core/earth.js';
 import { createControls } from './core/controls.js';
 import { criarArrastoDeSuperficie } from './core/arrastar.js';
 import { flyTo } from './core/flyto.js';
 import { centroDe, coordenadasDe, distanciaParaEnquadrar } from './core/enquadrar.js';
 import { createStatusBar } from './ui/statusbar.js';
+import { TEMAS_GLOBO, iniciarSincroniaDeTema } from './ui/tema.js';
 import { createFocusBar } from './ui/focusbar.js';
 import { criarDestaques } from './ui/destaques.js';
 import { createLayersPanel, camadaDoEndereco } from './ui/layerspanel.js';
@@ -40,15 +41,30 @@ import { FocusBoundaries } from './layers/boundaries.js';
 async function bootstrap() {
   const container = document.getElementById('globe-container');
 
+  // Sincroniza o tema visual e o modo daltônico (8 temas do portal) ANTES de
+  // criar a cena 3D, para que `createScene` e `createEarth` já nasçam com os
+  // tokens CSS (`--scene-void` e `--globe-glow`) do tema ativo.
+  let statusBarRef = null;
+  let sceneRef = null;
+  let terraRef = null;
+  const controleTema = iniciarSincroniaDeTema({
+    onChange: ({ theme }) => {
+      statusBarRef?.setTema(theme);
+      if (sceneRef) aplicarTemaNaCena(sceneRef);
+      if (terraRef) aplicarTemaNaTerra(terraRef);
+    },
+  });
+
   // --- Palco 3D (renderer, câmera, luzes — ACES, pixelRatio ≤ 2) ----------
   let renderer, scene, camera;
   try {
     ({ renderer, scene, camera } = createScene(container));
+    sceneRef = scene;
   } catch (err) {
     // Fallback gentil se WebGL2 não estiver disponível (plano §8).
     container.innerHTML =
-      '<p style="color:#9ca3af;font-family:monospace;padding:2rem">' +
-      'Seu navegador não suporta WebGL2 — o globo 3D não pôde iniciar.</p>';
+      '<div class="webgl-fallback"><p>' +
+      'Seu navegador não suporta WebGL2 — o globo 3D não pôde iniciar.</p></div>';
     console.error('[globe] falha ao criar cena:', err);
     return;
   }
@@ -60,6 +76,7 @@ async function bootstrap() {
 
   // --- Terra (esfera Blue Marble + atmosfera + gráticula) ------------------
   const terra = await createEarth();
+  terraRef = terra;
   scene.add(terra);
   // A casca de atmosfera fica a 1.02 raios (~127 km). Entrar nela com blending
   // aditivo tapa a tela de ciano; some quando a câmera passa para dentro.
@@ -112,7 +129,11 @@ async function bootstrap() {
       listaPanel.alternar();
       statusBar.setListaAberta(listaPanel.estaAberta());
     },
+    temas: TEMAS_GLOBO,
+    temaAtual: controleTema.estado.theme,
+    onTema: (novoTema) => controleTema.definirTema(novoTema),
   });
+  statusBarRef = statusBar;
 
   // Inspetor de área (clique no globo → ficha + botão de foco + vista 2D)
   const inspector = createInspector(
