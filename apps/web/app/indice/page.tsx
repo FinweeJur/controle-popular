@@ -203,7 +203,7 @@ export default async function IndiceGlobal() {
         titulo="CONTROLE POPULAR"
         epigrafe=""
         atribuicao=""
-        resumo="Seis frentes, um portal, o número na sua tela. Escolha uma porta — todas levam ao dado com a fonte ao lado."
+        resumo={`${ZONAS_PUBLICADAS.length} frentes, um portal, o número na sua tela. Escolha uma porta — todas levam ao dado com a fonte ao lado.`}
         className="mb-10 -mx-4 sm:-mx-8"
       />
       <header className="space-y-2">

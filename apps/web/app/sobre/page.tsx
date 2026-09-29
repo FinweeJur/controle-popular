@@ -211,7 +211,7 @@ export default async function SobrePage() {
         </div>
 
         <p className="text-[.9em] text-text-soft">
-          Seis cidades estão publicadas hoje: <strong className="text-text">{nomesCidades}</strong>.
+          {cidades.length} cidades estão publicadas hoje: <strong className="text-text">{nomesCidades}</strong>.
           A cobertura varia muito entre elas — a seção &ldquo;O que ainda falta&rdquo;, mais
           abaixo, mostra a diferença em vez de escondê-la.
         </p>
@@ -313,18 +313,19 @@ export default async function SobrePage() {
           de quem assina o contrato.
         </p>
         <p className="text-text-soft">
-          Do MAB vem a espinha dorsal da frente ambiental: a{" "}
+          Do MAB vem a postura da frente ambiental. Ele nos ensinou a cobrar
+          reparação pelos{" "}
           <a
             href="/ambiental/crimes-socioambientais"
             className="text-primary hover:text-accent"
           >
-            biblioteca de crimes socioambientais
+            crimes socioambientais
           </a>
-          , o acompanhamento das outorgas de água, o{" "}
+          , reunidos num acervo aberto; a acompanhar as outorgas de água; a{" "}
           <a href="/ambiental/barragens" className="text-primary hover:text-accent">
-            monitoramento de barragens
+            fiscalizar as barragens
           </a>{" "}
-          e a leitura do{" "}
+          e a vigiar o{" "}
           <a href="/ambiental/licenciamento" className="text-primary hover:text-accent">
             licenciamento ambiental
           </a>
@@ -517,12 +518,12 @@ export default async function SobrePage() {
         <h2 className="font-display text-2xl font-semibold">A parte técnica</h2>
 
         <div className="space-y-3">
-          <h3 className="font-display text-lg font-semibold">O portal é estático</h3>
+          <h3 className="font-display text-lg font-semibold">O site é pré-renderizado</h3>
           <p className="text-text-soft">
-            Não há banco de dados em produção. O comando de build lê o Postgres uma única vez
-            e transforma tudo em HTML pré-renderizado, publicado como arquivo — uma visita ao
-            site não toca em banco nenhum. A vantagem é dupla: sem banco em produção não há
-            custo de banco nem indisponibilidade por sobrecarga de consulta; a contrapartida é
+            Uma visita ao site não consulta banco nenhum. O comando de build lê o Postgres
+            (hoje no Guara Cloud, num datacenter em São Paulo) uma única vez e transforma tudo
+            em HTML pré-renderizado. A vantagem é dupla: sem consulta ao banco em cada visita
+            não há custo por acesso nem indisponibilidade por sobrecarga; a contrapartida é
             que o site só muda quando alguém reconstrói, o que roda numa rotina agendada
             (coleta → build → trava de contagem de páginas → publicação), que recusa publicar
             se a contagem de páginas cair abaixo de um piso ou encolher demais em relação à
@@ -537,7 +538,7 @@ export default async function SobrePage() {
               {[
                 ["Aplicação web", "Next.js (App Router), React"],
                 ["Acesso a dados", "Drizzle ORM sobre PostgreSQL"],
-                ["Publicação", "Cloudflare Workers, via adaptador OpenNext"],
+                ["Publicação", "Guara Cloud (principal) e Cloudflare Workers (fallback)"],
                 ["Coleta", "Python 3.12, ~150 arquivos em três pacotes de ETL"],
                 ["Esquema do banco", "migrations SQL numeradas, em quatro pacotes"],
                 ["Testes automatizados", "biblioteca TypeScript + suíte do globo 3D"],
