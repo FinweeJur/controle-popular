@@ -1,0 +1,104 @@
+{
+  "esqueleto": [
+    "mineralOuCommodity",
+    "codigoHs",
+    "origemPais",
+    "destinoPais",
+    "volumeAnualToneladas",
+    "valorFobUsdMilhoes",
+    "portoEmbarqueBrasil",
+    "portoDestino",
+    "fonteNome",
+    "urlOficial"
+  ],
+  "dicionarios": {
+    "mineralOuCommodity": [
+      "Minério de Ferro e Pelotas",
+      "Bauxita e Alumina Calcinada",
+      "Lítio em Espodumênio Concentrado",
+      "Nióbio (Ferronióbio e Óxidos)",
+      "Petróleo Bruto (Óleo Pesado e Médio)"
+    ],
+    "urlOficial": [
+      "https://comtradeapi.un.org",
+      "https://comexstat.mdic.gov.br",
+      "https://ec.europa.eu/eurostat",
+      "https://www.census.gov/foreign-trade/index.html",
+      "https://www.wto.org/english/res_e/statis_e/statis_e.htm"
+    ]
+  },
+  "linhas": [
+    [
+      0,
+      "2601",
+      "Brasil",
+      "China",
+      240000000,
+      22800,
+      "Porto de Tubarão (ES) / Ponta da Madeira (MA)",
+      "Portos de Qingdao e Ningbo-Zhoushan",
+      "OMC / UN Comtrade / MDIC Comex Stat",
+      0
+    ],
+    [
+      0,
+      "2601",
+      "Brasil",
+      "Holanda / União Europeia",
+      28500000,
+      3100,
+      "Porto de Tubarão (ES)",
+      "Porto de Roterdã (Terminal EMO)",
+      "OMC / Eurostat / MDIC Comex Stat",
+      2
+    ],
+    [
+      2,
+      "2836",
+      "Brasil (Araçuaí/MG)",
+      "China / Ásia",
+      270000,
+      390,
+      "Porto de Vitória (ES)",
+      "Portos de refino para baterias elétricas",
+      "MDIC Comex Stat / TSX SEDAR+",
+      1
+    ],
+    [
+      3,
+      "7202",
+      "Brasil (Araxá e Catalão)",
+      "Alemanha e União Europeia",
+      34000,
+      890,
+      "Porto de Santos (SP)",
+      "Siderúrgicas automotivas na Europa",
+      "OMC / MDIC Comex Stat / CBMM",
+      4
+    ],
+    [
+      1,
+      "2606",
+      "Brasil (Paragominas/PA)",
+      "Canadá e Noruega",
+      5200000,
+      1450,
+      "Porto de Vila do Conde (PA)",
+      "Refinarias de alumínio na América do Norte e Europa",
+      "UN Comtrade / ECCC NPRI",
+      0
+    ],
+    [
+      4,
+      "2709",
+      "Brasil (Bacia de Santos)",
+      "Estados Unidos",
+      18900000,
+      11200,
+      "Terminais Offshore do Pré-Sal (FPSOs)",
+      "Refinarias da Costa do Golfo (US Gulf Coast)",
+      "US Census Bureau CTY 3510 / ANP",
+      3
+    ]
+  ]
+}

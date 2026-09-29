@@ -958,10 +958,15 @@ Este plano consolida o trabalho de 3 subagentes de pesquisa lançados em
    Mount Polley BC/NOAMI, 12 mineradoras TSX no Brasil + 5 corporações EUA,
    Global Tailings Portal, Sabin Center Climate Litigation, CORE.
 
-**Arquivos já criados nesta sessão:**
-- `apps/web/lib/internacional/privacidade-internacional.ts`
-- `apps/web/lib/internacional/privacidade-internacional.test.ts`
+**Arquivos criados e consolidados:**
+- `apps/web/lib/internacional/privacidade-internacional.ts` e `.test.ts`
 - `apps/web/lib/internacional/idiomas-internacional.ts`
 - `apps/web/app/components/BarraIdiomaTrilingue.tsx`
-- `scripts/coletar-canada-acervo.mts`
+- `apps/web/data/internacional/indicadores-sociais.compact.json`
+- `apps/web/data/internacional/comercio-commodities.compact.json`
+- `apps/web/data/internacional/terra-territorios-global.compact.json`
+- `apps/web/lib/internacional/dados-multilaterais.ts` e `.test.ts`
+- `apps/web/app/internacional/page.tsx` e `PainelMultilateral.tsx`
+- `scripts/etl/internacional/gerar-dados-multilaterais.mts`
+- `scripts/bot-coletor-autonomo.mts` (automação completa com R2, Guara e Telegram)
 - `apps/web/lib/assistente/escada-determinista.ts` (modificado: degrau 6.5)

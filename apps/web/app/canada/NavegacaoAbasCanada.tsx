@@ -70,9 +70,9 @@ export default function NavegacaoAbasCanada({ abaAtiva }: NavegacaoAbasCanadaPro
   return (
     <nav
       aria-label="Navegação temática das seções do Canadá"
-      className="mb-8 border-b border-border pb-3 print:hidden"
+      className="mb-8 overflow-x-auto no-scrollbar border-b border-border pb-3 print:hidden"
     >
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex min-w-max items-center gap-2">
         {ITENS_NAV.map((item) => {
           const ativa = abaAtiva === item.id;
           return (

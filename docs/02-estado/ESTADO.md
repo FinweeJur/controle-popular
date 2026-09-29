@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-24
+> **Última medição:** 2026-09-29
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -171,6 +171,23 @@ Runbooks: [`planos/`](../planos/).
   para refazer e cobrir 2026-10..13. Ananindeua teve o mesmo problema
   de madrugada (chaves removidas). Lock órfão `.fila-pncp.lock`
   removido e gitignorado.
+
+**29/09/2026** — expansão internacional multilateral, NotebookLM offline e bot autônomo:
+
+- Expansão Multilateral & Internacional: Hub `/internacional` e sub-rotas temáticas
+  seguindo rigorosamente a Regra das 6 Qualidades.
+- Dados multilaterais ingeridos e compactados: ONU/PNUD (IDH, Gini, GII),
+  UNESCO (gastos em educação), OMS (saúde e expectativa de vida), OMC/Comtrade
+  (fluxos transnacionais de commodities minerais) e Territórios Globais.
+- Laboratório de Dados integrado com Caderno NotebookLM offline (Markdown cívico,
+  citações `[n]`, resumos) e widgets de Generative UI (`WidgetOnboardingCivico`,
+  `WidgetRastreabilidadeTransnacional`, `WidgetDebugSeuNono`).
+- Bot Coletor Autônomo (`scripts/bot-coletor-autonomo.mts`): fluxo completo com
+  sincronização S3/R2, ingestão de banco sem deploy desnecessário no Guara e
+  notificações formatadas no Telegram.
+- Responsividade móvel unificada: abas temáticas e tabelas com rolagem horizontal
+  nativa sem corte de viewport.
+- 47/47 testes da suíte internacional e laboratório 100% verdes, 0 PII em 473 JSONs.
 
 **24/09/2026** — `49f8db91` · `5c440d4f` · `7c67a3a0` · `cd60b79c`:
 

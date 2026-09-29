@@ -270,10 +270,41 @@ async function executarCicloAutomacao() {
   }
 
   // ══════════════════════════════════════════════════════════════════
-  // ETAPA 3: Acervos Nacionais e Fechamento
+  // ETAPA 3: Fontes Multilaterais (ONU, UNESCO, OMS, OMC e Territórios)
+  // ══════════════════════════════════════════════════════════════════
+  if (rodarTudo || args.includes("--multilateral") || args.includes("--onu")) {
+    console.log("\n[3/4] 🌐 Verificando dados multilaterais (ONU, UNESCO, OMS, OMC)...");
+    await pausaCortesia();
+
+    const arquivosMultilaterais = [
+      "apps/web/data/internacional/indicadores-sociais.compact.json",
+      "apps/web/data/internacional/comercio-commodities.compact.json",
+      "apps/web/data/internacional/terra-territorios-global.compact.json",
+    ];
+
+    let totalBytesMultilateral = 0;
+    for (const arq of arquivosMultilaterais) {
+      const p = path.join(RAIZ, arq);
+      if (fs.existsSync(p)) {
+        totalBytesMultilateral += fs.statSync(p).size;
+        await sincronizarArquivoParaS3(arq);
+      }
+    }
+
+    await atualizarEstadoGuaraPostgres("multilateral_onu_omc", arquivosMultilaterais.length);
+
+    await enviarAvisoTelegram(
+      `✅ *Etapa 3 concluída:* bases da ONU (IDH/Gini), UNESCO, OMS e OMC sincronizadas (${(totalBytesMultilateral / 1024).toFixed(1)} KB).`,
+      `🚧 *Iniciando etapa 4:* verificação final e integridade dos acervos nacionais.`,
+      `⏱️ *Cota Guara:* sincronização via runtime SQL sem rebuild de imagem.`
+    );
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // ETAPA 4: Acervos Nacionais e Fechamento
   // ══════════════════════════════════════════════════════════════════
   if (rodarTudo || args.includes("--nacional")) {
-    console.log("\n[3/3] 🇧🇷 Verificando integridade das camadas cívicas nacionais...");
+    console.log("\n[4/4] 🇧🇷 Verificando integridade das camadas cívicas nacionais...");
     await pausaCortesia();
 
     const arquivosNacionais = [
@@ -288,7 +319,7 @@ async function executarCicloAutomacao() {
     await atualizarEstadoGuaraPostgres("acervos_nacionais", arquivosNacionais.length);
 
     await enviarAvisoTelegram(
-      `✅ *Etapa 3 concluída:* ciclo autônomo do bot finalizado com sucesso.`,
+      `✅ *Etapa 4 concluída:* ciclo autônomo do bot finalizado com sucesso.`,
       `📊 *Portal pronto:* dados atualizados, buscáveis e indexados no Laboratório e no Seu Nonô.`
     );
   }

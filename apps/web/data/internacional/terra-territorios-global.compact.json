@@ -1,0 +1,83 @@
+{
+  "esqueleto": [
+    "id",
+    "pais",
+    "nomeTerritorio",
+    "povoOriginario",
+    "areaHectares",
+    "statusDemarcacao",
+    "concessoesMinerariasSobrepostas",
+    "focosCalorAnuaisSat",
+    "orgaoResponsavel",
+    "urlOficial"
+  ],
+  "dicionarios": {
+    "pais": [
+      "Brasil",
+      "Canadá",
+      "Estados Unidos"
+    ]
+  },
+  "linhas": [
+    [
+      "terra-xingu",
+      0,
+      "Parque Indígena do Xingu",
+      "16 etnias (Kamaiurá, Kuikuro, Yudjá, etc.)",
+      2642003,
+      "Homologada e Registrada",
+      0,
+      342,
+      "Fundação Nacional dos Povos Indígenas (Funai)",
+      "https://www.gov.br/funai/pt-br"
+    ],
+    [
+      "terra-yanomami",
+      0,
+      "Terra Indígena Yanomami",
+      "Yanomami e Ye'kwana",
+      9664975,
+      "Homologada (Sob Operação Federal de Desintrusão)",
+      412,
+      890,
+      "Funai / Ministério dos Povos Indígenas",
+      "https://geoserver.funai.gov.br"
+    ],
+    [
+      "terra-navajo",
+      2,
+      "Navajo Nation Reservation",
+      "Navajo (Diné)",
+      7100000,
+      "Federal Indian Reservation",
+      520,
+      124,
+      "Bureau of Indian Affairs (BIA / DOI)",
+      "https://biamaps.doi.gov/bogs/datadownload.html"
+    ],
+    [
+      "terra-cree-eeyou",
+      1,
+      "Eeyou Istchee (Cree Nation Territory)",
+      "Grand Council of the Crees (Eeyou Istchee)",
+      4500000,
+      "James Bay and Northern Quebec Agreement (Tratado Moderno)",
+      184,
+      56,
+      "Crown-Indigenous Relations and Northern Affairs (CIRNAC)",
+      "https://open.canada.ca/data/en/dataset"
+    ],
+    [
+      "terra-haida-gwaii",
+      1,
+      "Haida Gwaii Title Lands",
+      "Haida Nation",
+      1000000,
+      "Reconhecimento de Título Aborígine (Acordo 2024)",
+      12,
+      8,
+      "Council of the Haida Nation / Governo da Colúmbia Britânica",
+      "https://www.haidanation.ca"
+    ]
+  ]
+}
