@@ -9,6 +9,88 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, [data-theme="pequi"], [data-theme="pequi"] *));
 @custom-variant high-contrast (&:where([data-theme="high-contrast"], [data-theme="high-contrast"] *));
 
+/* ══════════════════════════════════════════════════════════════════
+   PONTEIRO DO MOUSE — Korkhon 2.0 XS (EfeMaden, domínio público)
+   https://www.rw-designer.com/cursor-set/korkhon-2-0-sx
+   Sete arquivos .cur em `public/cursor/`, servidos em `/cursor/`.
+
+   O "hotspot" (o pixel que de fato clica) está escrito no cabeçalho de
+   cada .cur; repetimos o mesmo valor aqui porque nem todo navegador
+   lê esse campo. Os valores batem com o desenho de cada arquivo e são
+   conferidos por `lib/cursores.test.ts`, que lê os dois lados.
+
+   POR QUE `!important` EM TODA DECLARAÇÃO: o site tem 188 usos da
+   classe `cursor-pointer`, 19 de `cursor-not-allowed`, ~30 regras
+   `cursor: pointer` avulsas e as camadas `base`/`utilities` do
+   Tailwind v4 — que vencem qualquer regra nossa por camada ou por
+   especificidade. Um bloco importante resolve os 200+ pontos de uma
+   vez; editar um por um seria o mesmo efeito com ordem de grandeza
+   mais código. Os estados abaixo continuam mandando: `!important` não
+   apaga especificidade entre DECLARAÇÕES importantes, então quem tem
+   seletor mais forte (desabilitado, texto, cruzeta) ganha do `*`.
+
+   Fora do pacote: os dois `.ani` (busy 259 KB + working 320 KB) não
+   foram copiados — `progress`/`wait` seguem com o cursor nativo.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Padrão: a seta do pacote, em todo elemento da página. */
+* {
+  cursor: url("/cursor/pointer.cur") 0 1, auto !important;
+}
+
+/* Clicável: link, botão, aba, seletor e o que a classe `cursor-pointer`
+   já marcava. A mão aponta para cima à esquerda — hotspot 5,2. */
+a[href],
+button,
+summary,
+select,
+label[for],
+[onclick],
+[role="button"],
+[role="link"],
+[role="tab"],
+[role="menuitem"],
+[role="switch"],
+.cursor-pointer {
+  cursor: url("/cursor/link.cur") 5 2, pointer !important;
+}
+
+/* Texto editável: a barra vertical do feixe. Onde só há texto para ler
+   a seta continua — seleção por arrasto funciona do mesmo jeito. */
+html input:not([type]),
+html input[type="text"],
+html input[type="search"],
+html input[type="email"],
+html input[type="url"],
+html input[type="tel"],
+html input[type="password"],
+html input[type="number"],
+html textarea,
+html [contenteditable=""],
+html [contenteditable="true"] {
+  cursor: url("/cursor/beam.cur") 6 11, text !important;
+}
+
+/* Indisponível: o círculo cortado. Ganha do link por especificidade
+   (`html :disabled` = 0,1,1 contra `a[href]` = 0,1,1, e vem depois). */
+html :disabled,
+html [aria-disabled="true"],
+html .cursor-not-allowed {
+  cursor: url("/cursor/unavailable.cur") 12 12, not-allowed !important;
+}
+
+/* Os três que o Tailwind já nomeia: cruzeta, arrastar e ajuda. */
+html .cursor-crosshair {
+  cursor: url("/cursor/precision.cur") 11 11, crosshair !important;
+}
+html .cursor-grab,
+html .cursor-grabbing {
+  cursor: url("/cursor/openhand.cur") 12 12, grab !important;
+}
+html .cursor-help {
+  cursor: url("/cursor/question.cur") 7 20, help !important;
+}
+
 :root {
   --cp-bg: #f7f8fa;
   --cp-surface: #ffffff;

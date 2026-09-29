@@ -26,6 +26,75 @@
    quando as duas línguas são legais no mesmo lugar. */
 @import url("/terras/globo/css/styles.css");
 
+/* ══════════════════════════════════════════════════════════════════
+   PONTEIRO DO MOUSE — Korkhon 2.0 XS (EfeMaden, domínio público)
+   https://www.rw-designer.com/cursor-set/korkhon-2-0-sx
+
+   ESPELHO do bloco que mora em `apps/web/app/globals.css` — os dois
+   mudam juntos. Este HTML (`/terras/globo/`) não passa pelo CSS do
+   Next, então repete a regra aqui; sem ela o globo ficava com o
+   ponteiro nativo do sistema e o resto do site com a seta do pacote.
+
+   `!important` porque este arquivo tem ~30 regras `cursor: pointer`
+   com seletor próprio (`#inspector button`, `#layers-panel ...`) que
+   venceriam qualquer regra nossa por especificidade. Os estados
+   abaixo continuam mandando: entre declarações importantes decide a
+   especificidade, e elas são mais fortes que o `*`.
+
+   Valores de hotspot conferidos contra o cabeçalho de cada .cur por
+   `apps/web/lib/cursores.test.ts`.
+   ══════════════════════════════════════════════════════════════════ */
+
+* {
+  cursor: url("/cursor/pointer.cur") 0 1, auto !important;
+}
+
+a[href],
+button,
+summary,
+select,
+label[for],
+[onclick],
+[role="button"],
+[role="link"],
+[role="tab"],
+[role="menuitem"],
+[role="switch"],
+.cursor-pointer {
+  cursor: url("/cursor/link.cur") 5 2, pointer !important;
+}
+
+html input:not([type]),
+html input[type="text"],
+html input[type="search"],
+html input[type="email"],
+html input[type="url"],
+html input[type="tel"],
+html input[type="password"],
+html input[type="number"],
+html textarea,
+html [contenteditable=""],
+html [contenteditable="true"] {
+  cursor: url("/cursor/beam.cur") 6 11, text !important;
+}
+
+html :disabled,
+html [aria-disabled="true"],
+html .cursor-not-allowed {
+  cursor: url("/cursor/unavailable.cur") 12 12, not-allowed !important;
+}
+
+html .cursor-crosshair {
+  cursor: url("/cursor/precision.cur") 11 11, crosshair !important;
+}
+html .cursor-grab,
+html .cursor-grabbing {
+  cursor: url("/cursor/openhand.cur") 12 12, grab !important;
+}
+html .cursor-help {
+  cursor: url("/cursor/question.cur") 7 20, help !important;
+}
+
 * {
   margin: 0;
   padding: 0;
