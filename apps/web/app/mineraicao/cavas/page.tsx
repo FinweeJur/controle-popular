@@ -45,6 +45,16 @@ const C = cartoesTopo(serie);
 const ESTADO = estadoDaSerie(serie, PUBLICACAO);
 const RESUMO_ESTADOS = estadosDados.resumo as Record<string, number>;
 
+/**
+ * Linha do último ano da série (2024).
+ *
+ * Vira camada do globo com o mesmo nome — `cavas-monitoradas` filtra
+ * `ano >= 2024` no mesmo arquivo, então o número daqui e o número de lá são o
+ * mesmo objeto em dois lugares. Ler da série em vez de digitar o total é o
+ * que impede os dois de divergirem quando a série for refeita (AGENTS § 8).
+ */
+const ULTIMO_ANO = serie.find((l) => l.ano === C.ultimoAno);
+
 export const metadata: Metadata = {
   title: "Onde a mineração cresceu em Minas Gerais - Controle Popular",
   description:
@@ -293,6 +303,53 @@ export default function PaginaCavas() {
           <strong>Receber sinal não é ilícito.</strong> “Sem cadastro na ANM” pode ser lavra informal,
           garimpo, areia isenta de cadastro, ou um polígono da ANM que não encosta por causa do desenho.
           É o convite para conferir na ANM — a apuração é da autoridade.
+        </p>
+      </section>
+
+      <section aria-label="Ver no globo" className="mt-6 rounded-2xl border border-border bg-surface-2 p-5">
+        <h2 className="text-xl font-semibold">Onde isso está no mapa</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
+          Estes dois conjuntos também são camadas do globo 3D. Os links abrem o globo com a camada já
+          acesa — e os números são os mesmos de cima, porque vêm dos mesmos arquivos. O globo não mostra
+          nenhuma imagem: ele desenha os polígonos.
+        </p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <li>
+            <a
+              href="/terras/globo/?camada=mineracao-sem-cadastro"
+              className="block rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus"
+            >
+              <span className="block text-2xl font-semibold tabular-nums">{fmt(C.qtdFora)}</span>
+              <span className="mt-1 block text-sm font-medium">
+                polígonos fora de todo polígono da ANM
+              </span>
+              <span className="mt-2 block text-xs text-text-soft">
+                {fmt(C.areaFora, 1)} hectares — camada “Mineração sem cadastro na ANM”
+              </span>
+              <span className="mt-2 block text-xs underline">Abrir no globo</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/terras/globo/?camada=cavas-monitoradas"
+              className="block rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus"
+            >
+              <span className="block text-2xl font-semibold tabular-nums">{fmt(ULTIMO_ANO?.qtd ?? 0)}</span>
+              <span className="mt-1 block text-sm font-medium">
+                polígonos cuja primeira detecção é de {C.ultimoAno}
+              </span>
+              <span className="mt-2 block text-xs text-text-soft">
+                {fmt(ULTIMO_ANO?.area ?? 0, 1)} hectares naquele ano — camada “Cavas detectadas na janela
+                ativa ({C.ultimoAno})”
+              </span>
+              <span className="mt-2 block text-xs underline">Abrir no globo</span>
+            </a>
+          </li>
+        </ul>
+        <p className="mt-3 text-xs text-text-soft">
+          O globo roda em 3D no navegador e pesa: as duas camadas nascem desligadas de propósito, e “Ligar
+          tudo” as pula — {fmt(C.qtdFora + (ULTIMO_ANO?.qtd ?? 0))} polígonos novos dobrariam o custo
+          sozinhos.
         </p>
       </section>
 

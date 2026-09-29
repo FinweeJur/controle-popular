@@ -8,10 +8,12 @@
  * a barragem de Fundão — corpus de prova de conceito, não o portal. Este
  * módulo monta o acervo REAL: as respostas pré-curadas do Seu Nonô
  * (`SeuNonoData.ts`), as sugestões contextuais por rota
- * (`contexto-pagina.ts`) e os resumos de dados das páginas
- * (`PAGINAS_DADOS`). Tudo texto já curado do portal, cada pedaço com
- * `rota`/`fonteUrl` — a disciplina de "citação colada ao número" do
- * `AGENTS.md`: se não há onde apontar a fonte, o pedaço não entra.
+ * (`contexto-pagina.ts`), os resumos de dados das páginas
+ * (`PAGINAS_DADOS`), as postagens do blog, os atos de pessoal e — desde a
+ * Fase 5 do plano de cavas — a série anual de mineração de MG. Tudo texto já
+ * curado do portal, cada pedaço com `rota`/`fonteUrl` — a disciplina de
+ * "citação colada ao número" do `AGENTS.md`: se não há onde apontar a fonte,
+ * o pedaço não entra.
  *
  * ═══ POR QUE EM CÓDIGO, E NÃO NUM JSON COMMITADO ═══
  *
@@ -40,6 +42,14 @@ import { FRENTES, PAGINAS_DADOS } from "@/app/components/SeuNonoData";
 import { CONTEXTOS } from "@/lib/seo/contexto-pagina";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { listarDesignacoes } from "@/lib/judiciario/designacoes";
+import serieCavas from "@/data/cavas-serie-mineracao-mg.json";
+import estadosCavas from "@/data/cavas-estados-mg.json";
+import {
+  cartoesTopo,
+  estadoDaSerie,
+  FONTE_ANM_PROCESSOS,
+  type LinhaSerie,
+} from "@/lib/cavas/serie";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -198,6 +208,126 @@ function deDesignacoes(): AcervoFonte[] {
   return fontes;
 }
 
+/** Rota das cavas de mineração — a página da Fase 5 (fonte interna). */
+const ROTA_CAVAS = "/mineraicao/cavas";
+
+/** Linhas da série anual de mineração de MG, em número de polígonos/hectares. */
+const SERIE_CAVAS = serieCavas.serie as LinhaSerie[];
+
+/** Agregados dos cartões de topo — número medido, nunca digitado à mão. */
+const CARTOES_CAVAS = cartoesTopo(SERIE_CAVAS);
+
+/** Estado da janela de 24 meses, calculado sobre a data da coleta. */
+const ESTADO_CAVAS = estadoDaSerie(SERIE_CAVAS, new Date(serieCavas.gerado_em));
+
+/**
+ * Pedaços de contexto das duas bases de cavas (Fase 5), para o assistente.
+ *
+ * É a regra 5 ("toda base alimenta o assistente") aplicada às bases de
+ * mineração: cada pedaço leva o agregado medido + a ressalva da própria
+ * fonte, e aponta a rota do portal ou a fonte oficial da ANM. Os números saem
+ * do JSON coletado (`cavas-serie-*.json`, `cavas-estados-*.json`) e das
+ * funções de `lib/cavas/serie.ts` — o mesmo caminho da página, então chatbot
+ * e tela nunca divergem (regra "o número vem do dado").
+ *
+ * @returns 6 pedaços, todos com rota e fonteUrl
+ */
+function deCavas(): AcervoFonte[] {
+  const fmt = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
+  const dataCavas = serieCavas.gerado_em.slice(0, 10).split("-").reverse().join("/");
+  const dataEstados = estadosCavas.gerado_em.slice(0, 10).split("-").reverse().join("/");
+  const C = CARTOES_CAVAS;
+  const R = estadosCavas.resumo;
+  const fonteMapa = `Fonte: ${serieCavas.fonte}. Camada ${serieCavas.camada}. Coletado em ${dataCavas}.`;
+  const rota = { href: ROTA_CAVAS, texto: "Série anual e tabela" };
+
+  return [
+    {
+      id: "cavas:cobertura",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "Quanto de chão mudou em Minas Gerais com mineração",
+      fonteUrl: ROTA_CAVAS,
+      texto:
+        `O portal acompanha ${fmt.format(C.poligonos)} polígonos de mineração em Minas Gerais, ` +
+        `somando ${fmt.format(C.area)} hectares entre ${C.primeiroAno} e ${C.ultimoAno} ` +
+        `(${C.qtdAnos} anos). A imagem tem ${serieCavas.resolucao_m} metros por pixel. ` +
+        `${serieCavas.fonte}. ${serieCavas.ressalva}. ${fonteMapa}`,
+      links: [rota],
+    },
+    {
+      id: "cavas:estado-janela",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "A mineração de MG ainda cresce, parou ou encerrou",
+      fonteUrl: ROTA_CAVAS,
+      texto:
+        `Estado da janela de 24 meses: ${ESTADO_CAVAS.estado}. ${ESTADO_CAVAS.explicacao}. ` +
+        `O pico de área nova foi em ${C.picoAno}, que não é o ano do teto da série (${C.primeiroAno}). ` +
+        (C.ultimoDelta == null
+          ? `O último ano (${C.ultimoAno}) não tem delta calculado. `
+          : `No último ano (${C.ultimoAno}) apareceram ${fmt.format(C.ultimoDelta)} hectares novos. `) +
+        `Estado calculado em ${dataCavas} por \`lib/cavas/serie.ts\`.`,
+      links: [rota],
+    },
+    {
+      id: "cavas:tres-estados",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "Em operação, indício ou sem cadastro: os três estados de uma cava",
+      fonteUrl: ROTA_CAVAS,
+      texto:
+        `Amostra de ${estadosCavas.amostra} cavas: ${R.em_operacao} em operação, ` +
+        `${R.indicio_processual} com indício processual e ${R.sem_cadastro_anm} sem cadastro na ANM. ` +
+        `Estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. ` +
+        `Estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. ` +
+        `Sem cadastro é fora de todo polígono ANM: o mapa enxerga mineração onde a ANM não tem cadastro. ` +
+        `Aparar no mapa não é ilegal por si só. Amostra datada de ${dataEstados}; não é total de MG.`,
+      links: [rota],
+    },
+    {
+      id: "cavas:fora-da-anm",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "Mineração mapeada fora de todo polígono da ANM",
+      fonteUrl: ROTA_CAVAS,
+      texto:
+        `A série soma ${fmt.format(C.qtdFora)} polígonos e ${fmt.format(C.areaFora)} hectares ` +
+        `fora de todo polígono da ANM, em ${C.qtdAnos} anos. Isso é ausência de cadastro, ` +
+        `não é ausência de mineração e não é, sozinho, prova de ilicitude. ` +
+        `${estadosCavas.ressalva}. ${fonteMapa}`,
+      links: [rota],
+    },
+    {
+      id: "cavas:limites",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "O que a base de cavas ainda não responde",
+      fonteUrl: ROTA_CAVAS,
+      texto:
+        `Lacunas declaradas da Fase 5: a coleta cobre só Minas Gerais, não todas as UF. ` +
+        `Não há distância até terra indígena nem área de conservação por cava. ` +
+        `Não há imagem de satélite com data de cada cava. ` +
+        `A resolução é ${serieCavas.resolucao_m} metros por pixel: cava pequena ou sob nuvem aparece atrasada. ` +
+        `${serieCavas.resolucao_aviso} ${serieCavas.ressalva}`,
+      links: [rota],
+    },
+    {
+      id: "cavas:conferir-anm",
+      frente: frenteDaRota(ROTA_CAVAS),
+      rota: ROTA_CAVAS,
+      titulo: "Como conferir um processo de mineração na ANM",
+      fonteUrl: FONTE_ANM_PROCESSOS,
+      texto:
+        `Para conferir o processo citado no portal, use a consulta pública da ANM. ` +
+        `O link não aceita parâmetro: o campo se chama NUP e a busca é manual. ` +
+        `Processo dentro de polígono ANM sem fase que autoriza extração é indício, não sentença. ` +
+        `Fonte: ${estadosCavas.fonte}.`,
+      links: [{ href: FONTE_ANM_PROCESSOS, texto: "Consultar processo na ANM" }, rota],
+    },
+  ];
+}
+
 /** Contagem de cobertura do acervo, para relatório e teste. */
 export interface CoberturaAcervo {
   total: number;
@@ -213,12 +343,21 @@ export interface AcervoMontado {
 }
 
 /**
- * Monta o acervo inteiro, determinístico: frentes → contextos → páginas.
- * Nenhuma dependência de fs/rede/banco — roda em qualquer ambiente.
+ * Monta o acervo inteiro, determinístico: frentes → contextos → páginas →
+ * posts → designações → cavas. Nenhuma dependência de fs/rede/banco — os
+ * JSONs de cavas entram como import estático (mesma disciplina de página
+ * estática do Next), então roda em qualquer ambiente.
  */
 export function montarAcervoDetalhado(): AcervoMontado {
   const { fontes: deFrentesFontes, puladas } = deFrentes();
-  const acervo = [...deFrentesFontes, ...deContextos(), ...dePaginasDados(), ...dePostsDoBlog(), ...deDesignacoes()];
+  const acervo = [
+    ...deFrentesFontes,
+    ...deContextos(),
+    ...dePaginasDados(),
+    ...dePostsDoBlog(),
+    ...deDesignacoes(),
+    ...deCavas(),
+  ];
 
   // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo
   // (regra "ou o número não vai" do AGENTS.md, aplicada em código).

@@ -808,3 +808,41 @@ export function notaDeRegiao(camada, regiao) {
   }
   return null;
 }
+
+/**
+ * Lê `?camada=<id>` da URL e devolve qual linha do painel acender.
+ *
+ * ═══ POR QUE EXISTE, E POR QUE NÃO É O `#area=` ═══
+ *
+ * O endereço `#area=<fonte>:<índice>` abre um polígono EXATO, e o índice é a
+ * posição dele dentro do ARQUIVO daquela fonte. Esse número não existe em
+ * nenhuma tabela do portal: apontar a página para ele afirmaria que aquela
+ * linha é aquele polígono — e em quase todos os casos seria outro. `?camada=`
+ * só acende a camada inteira e não afirma nada sobre feição nenhuma.
+ *
+ * Viva neste módulo (e não no main.js) porque é decisão de conteúdo, não de
+ * layout: o main.js roda o bootstrap inteiro no carregamento e não pode ser
+ * importado num teste.
+ *
+ * @param {string} search - `location.search`, com ou sem `?`
+ * @param {Array<{id: string, vazia?: boolean}>} camadas - registro resolvido
+ * @returns {string|null} o id a ligar, ou null quando nada deve ser ligado
+ */
+export function camadaDoEndereco(search, camadas) {
+  const id = new URLSearchParams(search).get('camada');
+  if (!id) return null;
+
+  const camada = camadas.find((c) => c.id === id);
+  if (!camada) {
+    console.warn(`[globe] o endereço pede a camada "${id}", que não existe — nada ligado.`);
+    return null;
+  }
+  // Mesmo motivo de o main.js recusar `vazia` ao abrir `#area=`: ligar uma
+  // linha que não desenha nada acende a chave do painel, e a partir daí o
+  // painel mente sobre o motivo de estar vazia.
+  if (camada.vazia) {
+    console.warn(`[globe] o endereço pede a camada "${id}", que está estruturalmente vazia hoje — nada para ligar.`);
+    return null;
+  }
+  return camada.id;
+}

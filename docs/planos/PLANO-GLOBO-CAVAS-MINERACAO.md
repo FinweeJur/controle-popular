@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-25
+> **Última medição:** 2026-09-29
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md), [PLANO-FILA-PROXIMA-SESSAO.md](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md)
 > **Palavras-chave:** mineracao, cava, sigmine, anm, mapbiomas, monitor-mineracao, sentinel-2, satelite, globo-3d, vision, embeddings, similaridade, dino, clip, licenciamento, garimpo, dupla-verificacao
@@ -522,13 +522,25 @@ escrever código — ressalva, data da imagem, fonte, método e link na ANM.
 
 **O que ficou pendente, escrito em vez de omitido**
 
-- **Deep-link `?camada=&idx=`** do globo para a página — não feito.
+- **Deep-link `?camada=`** — ✅ **feito em 29/09**: a página
+  `/mineraicao/cavas` tem a seção "Onde isso está no mapa" com dois links
+  `/terras/globo/?camada=...`, o globo abre a camada pedida
+  (`camadaDoEndereco()` em `js/ui/layerspanel.js`, testado), e o inspetor do
+  globo ganhou "Ver a série e a tabela no portal". **Segue pendente o
+  `idx=`**: destacar a cava individual na tabela não fecha, porque a tabela
+  é a amostra de 120 e a maioria dos 7.668 polígonos do globo não está nela.
+- **Contexto para o chatbot (regra 5)** — ✅ **feito em 29/09**: seis pedaços
+  `cavas:*` em `lib/assistente/acervo.ts`, com os números lidos dos mesmos
+  JSONs da página (série, cartões, estado da janela, três estados, lacunas,
+  link da ANM). Três testes em `acervo.test.ts` derrubam se o dado sumir ou
+  se o número virar texto digitado à mão.
+- **Tags derivadas de dado** — ainda não: `AcervoFonte` não tem campo de
+  tags; hoje a marcação vive no texto curado.
 - **Imagem da data no link externo** e **ressalva de IA visível por item** —
-  dependem da série Sentinel, ainda bloqueada (ver medições da Fase 3).
+  dependem da série Sentinel, ainda bloqueada (ver medições da Fase 3 e o
+  bloco do Sentinel em [FONTES.md](../06-fontes/FONTES.md)).
 - **Filtro por UF e por distância de TI/UC** — fora do escopo desta leva;
   a série cobre só MG e a distância não foi coletada.
-- **Contexto para o chatbot** (regra 5) e **tags derivadas de dado** —
-  ainda não ligados em `lib/assistente/`.
 
 ### Painel de visualização, linha do tempo e exportação (pedido do dono 25/09)
 

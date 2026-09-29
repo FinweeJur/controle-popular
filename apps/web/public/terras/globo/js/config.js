@@ -851,12 +851,16 @@ export const LAYER_REGISTRY = [
     hint: '3.869 polígonos de mineração mapeados pelo MapBiomas que caem FORA de todo polígono da ANM, somando 2.589,5 hectares. É o terceiro dos três estados editoriais da Fase 3: o satélite enxerga mineração onde o cadastro oficial não tem nada.',
     aviso: '"Sem cadastro na ANM" não é "ilegal": pode ser lavra informal, área de garimpo, extração de areia isenta de cadastro, ou polígono da ANM que não encosta por causa do desenho. É o convite para conferir na ANM, não a sentença. Nenhuma destas feições tem processo para linkar — e é exatamente isso que esta camada mede.',
     color: 0xfa8c72, /* oklch 0.754 0.139 34.65 — 21,2° da mais próxima (assentamentos) */ on: false, render: 'fill', listavel: true, pesada: true,
+    // Página que publica a MESMA base (Fase 5). O inspetor vira isto num link
+    // clicável; sem este campo não há para onde levar quem olhou o polígono.
+    portal: '/mineraicao/cavas',
   },
   {
     id: 'cavas-monitoradas', label: 'Cavas detectadas na janela ativa (2024)',
     hint: '3.799 polígonos de mineração cuja PRIMEIRA detecção é de 2024 — o conjunto que o critério de 24 meses da Fase 3 classifica como "ativa" num portal publicado em 2026. 4.234 hectares novos naquele ano, o segundo maior pulo da série.',
     aviso: '"Primeira detecção em 2024" não é "aberta em 2024": a camada é um raster de 30 m, então mineração pequena ou sob nuvem pode aparecer anos depois de começar. E ano da primeira detecção NÃO é ano de encerramento — para saber se parou, ver a série em /mineraicao/cavas.',
     color: 0xacb947, /* oklch 0.754 0.139 115.4 — 13,4° da mais próxima (lotes-vagos) */ on: false, render: 'fill', listavel: true, pesada: true,
+    portal: '/mineraicao/cavas',
   },
   // --- O cruzamento das duas coisas acima (15/08/2026) --------------------
   //

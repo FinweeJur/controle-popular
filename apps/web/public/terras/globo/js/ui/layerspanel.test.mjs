@@ -26,11 +26,13 @@
  *      `detalhe.html?camada=<fonte>`;
  *   5. `notaDeRegiao` diz a verdade sobre o que o filtro faz — inclusive quando
  *      a verdade é "esta fonte não sabe separar Jequitinhonha de Mucuri".
+ *   6. `camadaDoEndereco` (deep-link `?camada=`) só acende o que existe e o que
+ *      desenha — id inventado e camada vazia voltam null com aviso.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { agruparPorAssunto, notaDeRegiao } from './layerspanel.js';
+import { agruparPorAssunto, notaDeRegiao, camadaDoEndereco } from './layerspanel.js';
 import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
@@ -308,7 +310,7 @@ test('fonte separável NÃO ganha a ressalva de indistinta', () => {
 
 test('as camadas REAIS marcadas como indistintas são exatamente as três do INCRA nos Vales', () => {
   // Se alguém marcar/desmarcar `mesoIndistinta` sem medir o dado, este teste
-  // reprova. As três não trazem `codigo_ibge` nem `municipio` — só `area_ha` —
+  // reprova. As três não traz `codigo_ibge` nem `municipio` — só `area_ha` —
   // e por isso não há como dizer de qual vale é cada área.
   const indistintas = LAYER_REGISTRY.filter((f) => f.mesoIndistinta).map((f) => f.id).sort();
   assert.deepEqual(indistintas, [
@@ -317,4 +319,43 @@ test('as camadas REAIS marcadas como indistintas são exatamente as três do INC
     // `territorios-quilombolas-vales` saiu: a fonte foi absorvida pela
     // unificada, que é estadual e por isso não declara mesorregião.
   ]);
+});
+
+// --- camadaDoEndereco: o deep-link ?camada= que o portal usa -----------------
+
+/** Roda a função capturando o console.warn, para o aviso virar asserção. */
+function comAviso(fn) {
+  const avisos = [];
+  const original = console.warn;
+  console.warn = (m) => avisos.push(m);
+  try {
+    return { resultado: fn(), avisos };
+  } finally {
+    console.warn = original;
+  }
+}
+
+test('?camada= sem parâmetro não liga nada — quem só abriu o globo não ganha camada', () => {
+  assert.equal(camadaDoEndereco('', CAMADAS_RESOLVIDAS), null);
+  assert.equal(camadaDoEndereco('?outro=x', CAMADAS_RESOLVIDAS), null);
+});
+
+test('?camada= com id que existe devolve o id — é o link da página /mineraicao/cavas', () => {
+  for (const id of ['mineracao-sem-cadastro', 'cavas-monitoradas']) {
+    assert.equal(camadaDoEndereco(`?camada=${id}`, CAMADAS_RESOLVIDAS), id);
+  }
+});
+
+test('id inventado devolve null e AVISA — link morto não pode virar camada acesa', () => {
+  const { resultado, avisos } = comAviso(() => camadaDoEndereco('?camada=nao-existe', CAMADAS_RESOLVIDAS));
+  assert.equal(resultado, null);
+  assert.equal(avisos.length, 1, 'silêncio aqui vira bug invisível');
+  assert.match(avisos[0], /nao-existe/);
+});
+
+test('camada estruturalmente vazia é recusada — acenderia linha que não desenha', () => {
+  const camadas = [...CAMADAS_RESOLVIDAS, { id: 'so-de-estrutura', vazia: true }];
+  const { resultado, avisos } = comAviso(() => camadaDoEndereco('?camada=so-de-estrutura', camadas));
+  assert.equal(resultado, null);
+  assert.match(avisos[0], /vazia/);
 });

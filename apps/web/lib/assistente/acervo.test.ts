@@ -5,6 +5,9 @@ import {
   frenteDaRota,
   type AcervoFonte,
 } from "./acervo";
+import serieCavas from "@/data/cavas-serie-mineracao-mg.json";
+import estadosCavas from "@/data/cavas-estados-mg.json";
+import { FONTE_ANM_PROCESSOS } from "@/lib/cavas/serie";
 
 /**
  * Testes do acervo do chatbot (degrau 3).
@@ -100,6 +103,37 @@ describe("montarAcervo -- pedaços conhecidos das três fontes", () => {
     expect(f.rota).toBe("/betim/prefeitura/contratos");
     expect(f.texto.toLowerCase()).toContain("contratos");
     expect(f.links && f.links.length).toBeGreaterThan(1);
+  });
+});
+
+describe("bases de cavas no assistente -- regra 5", () => {
+  it("as duas bases de mineração viram pedaços com rota e fonte", () => {
+    const cavas = montarAcervo().filter((f) => f.id.startsWith("cavas:"));
+    expect(cavas.length).toBeGreaterThanOrEqual(6);
+    for (const f of cavas) {
+      expect(f.rota, `rota errada em ${f.id}`).toBe("/mineraicao/cavas");
+      expect(f.fonteUrl, `fonteUrl vazia em ${f.id}`).toBeTruthy();
+      expect(f.texto.length, `texto curto demais em ${f.id}`).toBeGreaterThan(80);
+    }
+  });
+
+  it("o número do chat vem do JSON coletado, não digitado à mão", () => {
+    const acervo = montarAcervo();
+    const estados = acervo.find((f) => f.id === "cavas:tres-estados")!;
+    expect(estados.texto).toContain(String(estadosCavas.resumo.em_operacao));
+    expect(estados.texto).toContain(String(estadosCavas.resumo.indicio_processual));
+    expect(estados.texto).toContain(String(estadosCavas.amostra));
+    const cobertura = acervo.find((f) => f.id === "cavas:cobertura")!;
+    expect(cobertura.texto).toContain(String(serieCavas.resolucao_m));
+    expect(cobertura.texto).toContain(
+      serieCavas.gerado_em.slice(0, 10).split("-").reverse().join("/")
+    );
+  });
+
+  it("pedaço da ANM aponta a fonte oficial, não a home do portal", () => {
+    const conferir = montarAcervo().find((f) => f.id === "cavas:conferir-anm")!;
+    expect(conferir.fonteUrl).toBe(FONTE_ANM_PROCESSOS);
+    expect(conferir.links?.some((l) => l.href === FONTE_ANM_PROCESSOS)).toBe(true);
   });
 });
 

@@ -2,7 +2,7 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-25
+> **Última medição:** 2026-09-29 (bloqueio do Sentinel-2 medido; série de cavas publicada a 30 m)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim, mapbiomas, monitor-mineracao, wfs, cbers, sentinel-2, planetary-computer, esri, cavas, mineração
@@ -912,6 +912,29 @@ de sessão.
 - **Campos por cena:** id, datetime, cloud_cover, bbox.
 - **Cache:** `scripts/.cache/serie-sentinel/catalogo-{uf}-{ano}.json`.
 - ** cloud_cover presente em 100% das cenas** (validado).
+
+### Sentinel-2 — download de pixels bloqueado nesta máquina — medido 28/09/2026
+
+- **O que se tentou:** recortes de 512 × 512 px do Sentinel-2 L2A para a
+  Fase 3 do [plano de cavas](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
+  (método A: Δ de área de 10 m por cava).
+- **Medido:** **~5 KB/s sustentados** no `home-pc`. O plano de GO/MG
+  (≈ 4.000 GO, ≈ 2,8 MiB por cena) não fecha nem a longo prazo.
+- **Causa, em três partes:**
+  1. os TIFFs CBERS-4A WPM do BDC saem **DEFLATE com 1 linha por strip e
+     sem overviews** → uma janela de 512 px vira **≈ 534 range requests**;
+  2. `data.inpe.br` aplica throttle/429 em rajada;
+  3. requisição pequena continua normal (16 B–93 KB em 0,5–25 s) — logo a
+     falha é de **volume**, não de IP bloqueado.
+- **O que continua funcionando:** catálogo STAC (só metadados) e o WFS do
+  Monitor. Por isso a Fase 3 saiu com `mining_age` a **30 m** e não com a
+  série de 10 m.
+- **Retomar só depois de:** medir de novo; trocar o range request em strip
+  por **COG com overviews** (`sentinel-cog` / AWS) e baixar a cena inteira
+  de uma vez, não janela de pixels.
+- **Enquanto isso, na tela:** o portal publica 30 m e **escreve a
+  resolução e a data na ficha**. Nenhuma série de 10 m aparece antes de a
+  coleta existir.
 
 ## Decisões registradas
 

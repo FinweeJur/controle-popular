@@ -253,6 +253,10 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     // versão deste botão.
     const podeExportar = podeExportarCamada(cfg);
     emFoco = { layerId, feature, idx };
+    // `target="_blank"` nos DOIS links de saída não é capricho: o globo roda
+    // dentro de um <iframe> (app/funcaosocialterra/mapa/page.tsx), e um link
+    // comum trocaria o conteúdo do quadro pelo portal — a pessoa perderia o
+    // mapa de onde veio. Aba nova preserve a origem nos dois sentidos.
     panel.innerHTML = `
       <button class="inspector-close" title="Fechar">×</button>
       <div class="inspector-title">${titulo}</div>
@@ -265,6 +269,10 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
         <a class="btn-2d" href="/terras/globo/detalhe.html?camada=${encodeURIComponent(layerId)}&fid=${idx}&lat=${lat.toFixed(5)}&lon=${lon.toFixed(5)}" target="_blank" rel="noopener">
           Ver de perto na imagem de satélite
         </a>
+        ${cfg?.portal ? `
+        <a class="btn-portal" href="${escapar(cfg.portal)}" target="_blank" rel="noopener">
+          Ver a série e a tabela no portal
+        </a>` : ''}
       </div>
       ${podeExportar ? `
       <div class="inspector-exportar">

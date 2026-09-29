@@ -774,7 +774,10 @@ body {
 }
 
 /* "Ver de perto": ação secundária — abre outra aba, tira a pessoa do globo */
-#inspector .btn-2d {
+/* `.btn-portal` divide o mesmo traje: é a saída para /mineraicao/cavas
+   (ui/inspector.js), que também leva a pessoa para fora do globo. */
+#inspector .btn-2d,
+#inspector .btn-portal {
   display: block;
   padding: 7px 12px;
   border: 1px solid var(--glass-stroke);
@@ -787,7 +790,8 @@ body {
   text-decoration: none;
   text-align: center;
 }
-#inspector .btn-2d:hover { color: var(--text-1); background: var(--color-hairline); }
+#inspector .btn-2d:hover,
+#inspector .btn-portal:hover { color: var(--text-1); background: var(--color-hairline); }
 
 /* ---- "Baixar esta área" (ui/exportar.js, via ui/inspector.js) ----
    Os mesmos três formatos do "Baixar" da lista (#lista .lista-exportar),

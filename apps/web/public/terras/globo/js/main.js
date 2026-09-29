@@ -22,7 +22,7 @@ import { centroDe, coordenadasDe, distanciaParaEnquadrar } from './core/enquadra
 import { createStatusBar } from './ui/statusbar.js';
 import { createFocusBar } from './ui/focusbar.js';
 import { criarDestaques } from './ui/destaques.js';
-import { createLayersPanel } from './ui/layerspanel.js';
+import { createLayersPanel, camadaDoEndereco } from './ui/layerspanel.js';
 import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
 import { createInspector, procurarFeicaoNoPonto, tituloDaArea } from './ui/inspector.js';
@@ -634,7 +634,15 @@ async function bootstrap() {
   // Com `#area=` no endereço, abre direto naquela área; senão, enquadra Minas
   // Gerais — contexto antes de descer ao município. Nenhum botão fica aceso:
   // os botões são municípios, e a abertura não é nenhum deles.
-  if (!(await abrirAreaDoEndereco())) {
+  //
+  // `?camada=` é ortogonal aos dois: ele só acende uma linha do painel e não
+  // mexe na câmera (quem manda `camada` quer ver o conjunto, não um polígono).
+  const abriuArea = await abrirAreaDoEndereco();
+
+  const idCamada = camadaDoEndereco(location.search, CAMADAS_RESOLVIDAS);
+  if (idCamada) await alternarCamada(idCamada, true);
+
+  if (!abriuArea) {
     focarRecorte(ABERTURA);
   }
 

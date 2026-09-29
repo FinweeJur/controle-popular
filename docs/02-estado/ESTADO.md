@@ -43,10 +43,11 @@ Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy
 **Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
 A raiz nunca mora no Guara.
 
-**Banco (medido 22/09):** a coleta do Betim já vai para o **Postgres do
-Guara** (`cp-postgres-597bd0`). A Neon continua na conta em 94%
-(470/500 MB) até a troca final de `DATABASE_URL` da aplicação (Fase 4).
-`DATABASE_URL` no Guara: **runtime e build = Yes** (CLI `env list`, 22/09).
+**Banco — Fase 4 concluída (confirmada pelo dono em 29/09):** a aplicação
+aponta para o **Postgres do Guara** (`cp-postgres-597bd0`, Postgres 17),
+com `DATABASE_URL` **runtime e build = Yes** e carga validada igual à da
+Neon, menos as 2 tabelas `embeddings`. A Neon continua na conta em 94%
+(470/500 MB) **sem uso** — sobra decidir o desligamento, que é do dono.
 
 **Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
 `convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
@@ -92,7 +93,7 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 | A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0** (liberado); env de build já Yes |
 | A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dono, 2 minutos |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
-| A4 | **Fase 4: migrar app Neon → Postgres do Guara** | 🚧 | banco Guara já enche; falta apontar a app e largar a Neon |
+| A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
 
 **Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
 28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
@@ -113,7 +114,7 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 | B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
-| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | ⛔ | **plano da próxima sessão (amanhã, 25/09)**: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md); Fase 0 pode correr junto |
+| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineraicao/cavas`, deep-link `?camada=` e contexto no chatbot. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 
@@ -139,7 +140,7 @@ Runbooks: [`planos/`](../planos/).
 
 | Bloqueio | Quem desbloqueia |
 |---|---|
-| Neon em 94% storage | Fase 4 (A4) — dono decide data |
+| Neon em 94% storage | ✅ app já no Guara (29/09) — sobra cancelar a conta Neon |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
 | Raiz do domínio com 403 | redirect rule no Cloudflare (A2) |
 | `guara security findings` quebrado | usar `guara services vulnerabilities` |

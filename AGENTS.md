@@ -70,15 +70,16 @@ A CI roda o mesmo script (`.github/workflows/docs.yml`).
 
 ## 3. Estado vivo
 
-1. **Banco: Neon (Postgres gerenciado) ativo, storage em ~94% (470/500 MB).**
-   Não se põe coleta nova lá. A pendência é a **Fase 4**: migrar para o
-   Postgres gerenciado do Guara (1 GiB incluso, 2 GiB máximo). Ver
+1. **Banco: Postgres do Guara (`cp-postgres-597bd0`) — Fase 4 concluída
+   (confirmada pelo dono em 29/09).** A aplicação já aponta para lá. A
+   Neon antiga está em 94% (470/500 MB), **sem uso**, e não recebe coleta
+   nova — sobra decidir o desligamento. Ver
    [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
 2. **`DATABASE_URL` configurada no Guara em runtime e build** (19/09).
    Página que lê do banco no build só sai com dado quando a variável existe
    no build — ver armadilha na [tabela §6](#6-armadilhas).
-3. **Publicação:** push na `main` → CI roda testes → deploy automático do
-   Guara (`GUARA_API_KEY` secretada no GitHub). Manual: `guara deploy`.
+3. **Publicação:** push na `main` → CI roda testes. **Deploy é manual**
+   (auto-deploy desligado, cota de build, ver § 5.7.1): `guara deploy`.
 4. **Domínio:** `www.controlepopular.com.br` é o site. A raiz
    `controlepopular.com.br` **não existe no Guara** (não aceita domínio
    "apex", ver §6) e depende de redirect 301 no Cloudflare — pendência do dono.

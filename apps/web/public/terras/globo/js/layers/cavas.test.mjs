@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { LAYER_REGISTRY, CAMADAS } from '../config.js';
+import { LAYER_REGISTRY, CAMADAS, resolverCamada } from '../config.js';
 import { ROTULOS, formatarValor } from '../ui/rotulos.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +32,31 @@ test('As 2 camadas da Fase 5 estão no LAYER_REGISTRY, desligadas e marcadas pes
     assert.equal(reg.pesada, true, `${id} deve ser pesada — "ligar tudo" não pode puxar estas 7.668 formas`);
     assert.ok(typeof reg.color === 'number', `${id} deve ter cor hex`);
     assert.ok(reg.hint && reg.aviso, `${id} deve declarar hint e aviso`);
+    // O inspetor só vira isto num link clicável se o campo existir — sem ele,
+    // quem olhou o polígono não tem para onde ir (deep-link Fase 5).
+    assert.equal(reg.portal, '/mineraicao/cavas', `${id} deve apontar para a página da série`);
+  }
+});
+
+// apps/web/app/mineraicao/cavas/page.tsx — o outro lado do deep-link.
+const PAGINA = path.resolve(__dirname, '..', '..', '..', '..', '..', 'app',
+  'mineraicao', 'cavas', 'page.tsx');
+
+test('Os links da página /mineraicao/cavas apontam para camadas que existem e não vazias', () => {
+  const fonte = readFileSync(PAGINA, 'utf8');
+  const ids = [...fonte.matchAll(/terras\/globo\/\?camada=([a-z0-9-]+)/g)].map((m) => m[1]);
+  // Extrair do .tsx em vez de repetir a lista aqui: id renomeado de um lado só
+  // quebra o teste antes de virar link morto no navegador.
+  assert.ok(ids.length >= 2, `a página deve ter ao menos 2 links de camada; achei ${ids.length}`);
+
+  for (const id of ids) {
+    assert.ok(LAYER_REGISTRY.some((l) => l.id === id), `${id} deve estar no LAYER_REGISTRY`);
+    // O `portal` vive na FONTE (é o inspetor que o lê) e é conferido no teste
+    // acima; aqui o que importa é a camada do PAINEL existir e desenhar.
+    const camada = CAMADAS.find((item) => item.id === id);
+    assert.ok(camada, `${id} deve estar em CAMADAS`);
+    assert.equal(resolverCamada(camada).vazia, false,
+      `${id} não pode estar vazia: o painel acenderia uma linha que não desenha nada`);
   }
 });
 
