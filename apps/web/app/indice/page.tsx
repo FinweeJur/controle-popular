@@ -21,6 +21,7 @@ import {
   Users,
   Sparkles,
   Compass,
+  TreeDeciduous,
 } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import Link from "next/link";
@@ -136,6 +137,7 @@ export default async function IndiceGlobal() {
       topicos: [
         { href: "/busca", titulo: "Busca", descricao: "Procure por palavra, tema ou território.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Search size={14} /> },
         { href: "/laboratorio", titulo: "Laboratório de Dados", descricao: "Compare dois conjuntos de dados em gráficos dither com auxílio do Seu Nonô.", cor: "var(--cp-geral, #7c7c9c)", badge: "✦ Novo", icon: <BarChart3 size={14} /> },
+        { href: "/laboratorio/arvore", titulo: "Árvore de Conexões (Obsidian)", descricao: "Visualização interativa em grafo com os 4 grandes eixos cívicos e 38 nós temáticos interligados.", cor: "var(--cp-eixo-terra)", badge: "✦ Grafo", icon: <TreeDeciduous size={14} /> },
         { href: "/paraopeba/biblioteca", titulo: "Biblioteca de Documentos", descricao: "Acervo de publicações das ATIs, perícia e órgãos ambientais.", cor: "var(--cp-secondary)", badge: "Paraopeba", icon: <BookOpen size={14} /> },
         { href: "/dados/populares", titulo: "Páginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e ações da União em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },

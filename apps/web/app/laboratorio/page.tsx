@@ -42,15 +42,25 @@ export default function LaboratorioPage() {
         · <span className="text-text">Laboratório</span>
       </nav>
 
-      <header className="mb-8 space-y-2">
-        <h1 className="font-display text-2xl font-bold text-text sm:text-3xl">
-          Laboratório de Dados
-        </h1>
-        <p className="max-w-2xl text-sm text-text-soft">
-          {camadas.length} camadas ativáveis — ligue e desligue no painel do
-          Seu Nonô, escolha o tipo de gráfico por janela. Cada camada é um
-          agregado; o acervo bruto fica no servidor.
-        </p>
+      <header className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-2">
+          <h1 className="font-display text-2xl font-bold text-text sm:text-3xl">
+            Laboratório de Dados
+          </h1>
+          <p className="max-w-2xl text-sm text-text-soft">
+            {camadas.length} camadas ativáveis — ligue e desligue no painel do
+            Seu Nonô, escolha o tipo de gráfico por janela. Cada camada é um
+            agregado; o acervo bruto fica no servidor.
+          </p>
+        </div>
+        <Link
+          href="/laboratorio/arvore"
+          className="inline-flex items-center gap-1.5 self-start rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-xs font-bold text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors shadow-xs"
+        >
+          <span>🌳</span>
+          <span>Árvore de Conexões</span>
+          <span className="text-[0.65rem] opacity-70">Obsidian Graph</span>
+        </Link>
       </header>
 
       <Suspense fallback={<p className="text-sm text-text-soft">Carregando...</p>}>

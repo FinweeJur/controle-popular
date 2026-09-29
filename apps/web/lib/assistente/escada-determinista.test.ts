@@ -132,8 +132,27 @@ describe("avaliarEscadaDeterminista", () => {
     expect(res?.texto.length).toBeGreaterThan(10);
   });
 
+  it("enriquece as respostas determinísticas com galho relacionado da árvore do site", () => {
+    const betim = avaliarEscadaDeterminista("betim");
+    expect(betim).not.toBeNull();
+    expect(betim?.galhoRelacionado).toBeDefined();
+    expect(betim?.galhoRelacionado?.eixoId).toBe("territorios");
+    expect(betim?.galhoRelacionado?.links.length).toBeGreaterThan(0);
+
+    const lab = avaliarEscadaDeterminista("laboratorio");
+    expect(lab).not.toBeNull();
+    expect(lab?.galhoRelacionado).toBeDefined();
+    expect(lab?.galhoRelacionado?.eixoId).toBe("central");
+
+    const tjmg = avaliarEscadaDeterminista("tjmg");
+    expect(tjmg).not.toBeNull();
+    expect(tjmg?.galhoRelacionado).toBeDefined();
+    expect(tjmg?.galhoRelacionado?.eixoId).toBe("estado");
+  });
+
   it("retorna null para perguntas arbitrárias que exigem busca profunda RAG / IA", () => {
     const res = avaliarEscadaDeterminista("qual foi o total gasto em combustivel no contrato xyz em 2023?");
     expect(res).toBeNull();
   });
 });
+

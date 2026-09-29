@@ -27,6 +27,7 @@ import { buscarRespostaCurada } from "../busca/resposta-curada";
 import { semAcento } from "../busca/normalizar";
 import { buscarPaginasPortal } from "../busca/paginas-portal";
 import { listarNoticiasPortal } from "../noticias/portal";
+import { obterLinksRelacionadosGalho, type GalhoRelacionado } from "./arvore-galhos";
 
 export interface AtalhoAcao {
   rotulo: string;
@@ -42,13 +43,14 @@ export interface ResultadoEscada {
   texto: string;
   atalhos: AtalhoAcao[];
   categoria?: string;
+  galhoRelacionado?: GalhoRelacionado;
 }
 
 /**
  * Avalia se a entrada do usuário corresponde a um degrau determinístico antes de invocar a IA.
- * Retorna o cartão de ação formatado ou `null` caso deva prosseguir para o RAG / IA.
+ * Executa a lógica bruta de casamento por regras.
  */
-export function avaliarEscadaDeterminista(
+function avaliarEscadaBruta(
   prompt: string,
   slugCidadeOuZona?: string
 ): ResultadoEscada | null {
@@ -332,6 +334,111 @@ export function avaliarEscadaDeterminista(
         { rotulo: "Vale S.A.", href: "/paraopeba/vale" },
         { rotulo: "Sigma Lithium", href: "/empresas/sigma-lithium" },
         { rotulo: "Painel de Barragens", href: "/ambiental/barragens" },
+      ],
+    };
+  }
+
+  // ─── 3.5. DEGRAU: INSTITUIÇÕES DE JUSTIÇA & ÓRGÃOS DE CONTROLE ────────
+  if (
+    normalizada === "tjmg" ||
+    normalizada.includes("tribunal de justica de minas") ||
+    normalizada.includes("desembargadores tjmg")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "TJMG — Tribunal de Justiça de Minas Gerais",
+      subtitulo: "Orçamento de R$ 14,96 Bi · Despesas e Folha de Pagamento",
+      texto:
+        "Ficha analítica do TJMG: orçamento anual, auxílio-alimentação (R$ 380 mi), diárias (R$ 48 mi), estrutura de comarcas e produtividade judiciária.",
+      categoria: "Poder Judiciário",
+      atalhos: [
+        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg", principal: true },
+        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
+        { rotulo: "Balcão Virtual e Varas", href: "/judiciario/contatos" },
+        { rotulo: "Recomendações CNJ", href: "/noticias/recomendacoes-cnj-cnmp-e-inspecoes-da-justica" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "mpmg" ||
+    normalizada.includes("ministerio publico de minas") ||
+    normalizada.includes("promotores mpmg")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "MPMG — Ministério Público de Minas Gerais",
+      subtitulo: "Orçamento de R$ 4,09 Bi · CAOMA e Verbas Indenizatórias",
+      texto:
+        "Ficha institucional do MPMG: promotorias especializadas, verbas indenizatórias (R$ 684 mi), ouvidoria pública e atuação ambiental.",
+      categoria: "Poder Judiciário",
+      atalhos: [
+        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg", principal: true },
+        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
+        { rotulo: "Canal de Denúncias", href: "/direitos-em-movimento/denuncia" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "dpmg" ||
+    normalizada.includes("defensoria publica de minas") ||
+    normalizada.includes("defensores publicos")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "DPMG — Defensoria Pública de Minas Gerais",
+      subtitulo: "Orçamento de R$ 1,10 Bi · Assistência Jurídica Gratuita",
+      texto:
+        "Ficha da DPMG: mapa de comarcas atendidas, déficit de defensores públicos perante a demanda e canais para atendimento gratuito ao cidadão.",
+      categoria: "Poder Judiciário",
+      atalhos: [
+        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg", principal: true },
+        { rotulo: "Onde Buscar Ajuda Jurídica", href: "/direitos-em-movimento/ajuda" },
+        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "tcemg" ||
+    normalizada === "tce" ||
+    normalizada.includes("tribunal de contas do estado")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "TCEMG — Tribunal de Contas do Estado de MG",
+      subtitulo: "Orçamento de R$ 1,15 Bi · Controle Externo das Contas",
+      texto:
+        "Ficha do TCEMG: fiscalização de contas dos 853 municípios mineiros, rejeição de contas de prefeitos e auditorias do estado.",
+      categoria: "Órgãos de Controle",
+      atalhos: [
+        { rotulo: "Ficha do TCEMG", href: "/judiciario/instituicoes/tcemg", principal: true },
+        { rotulo: "Orçamento de MG", href: "/estado-e-economia/orcamento" },
+        { rotulo: "199 Cidades Monitoradas", href: "/cidades" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "judiciario" ||
+    normalizada.includes("poder judiciario") ||
+    normalizada.includes("instituicoes de justica") ||
+    normalizada.includes("quem fiscaliza a justica")
+  ) {
+    return {
+      tipo: "pagina",
+      titulo: "Quem Fiscaliza a Justiça — Mapa das Instituições",
+      subtitulo: "TJMG, MPMG, DPMG, TRT-3, TRF-6, TCEMG, DPU e Conselhos",
+      texto:
+        "Painel comparativo das instituições de justiça em Minas Gerais: orçamentos, penduricalhos, folhas de pagamento e limites do controle externo no CNJ e CNMP.",
+      categoria: "Poder Judiciário",
+      atalhos: [
+        { rotulo: "Painel das Instituições de Justiça", href: "/judiciario/instituicoes", principal: true },
+        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg" },
+        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg" },
+        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg" },
+        { rotulo: "Balcão Virtual e Varas", href: "/judiciario/contatos" },
       ],
     };
   }
@@ -756,3 +863,35 @@ export function avaliarEscadaDeterminista(
 
   return null;
 }
+
+/**
+ * Avalia se a entrada do usuário corresponde a um degrau determinístico antes de invocar a IA.
+ * Retorna o cartão de ação formatado ou `null` caso deva prosseguir para o RAG / IA.
+ * 
+ * Regra de Galho da Árvore:
+ * Enriquece automaticamente o resultado com links de páginas irmãs temáticas
+ * pertencentes ao mesmo ramo/eixo do mapa do site.
+ */
+export function avaliarEscadaDeterminista(
+  prompt: string,
+  slugCidadeOuZona?: string
+): ResultadoEscada | null {
+  const resultado = avaliarEscadaBruta(prompt, slugCidadeOuZona);
+  if (!resultado) return null;
+
+  // Encontra a rota de referência para identificar o galho temático
+  const rotaReferencia =
+    resultado.atalhos.find((a) => a.principal)?.href ||
+    resultado.atalhos[0]?.href ||
+    "";
+
+  if (rotaReferencia && !resultado.galhoRelacionado) {
+    const galho = obterLinksRelacionadosGalho(rotaReferencia, 3);
+    if (galho) {
+      resultado.galhoRelacionado = galho;
+    }
+  }
+
+  return resultado;
+}
+

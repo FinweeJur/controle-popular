@@ -55,6 +55,7 @@ import {
   avaliarEscadaDeterminista,
   type ResultadoEscada,
 } from "@/lib/assistente/escada-determinista";
+import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
 
 /** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor. */
 function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
@@ -291,6 +292,44 @@ function BlocoRespostaIaSeuNono({
           </ul>
         )}
 
+        {(() => {
+          const rotaBase = fontes[0]?.rota || "";
+          const galho = rotaBase ? obterLinksRelacionadosGalho(rotaBase, 3) : null;
+          if (!galho || galho.links.length === 0) return null;
+          return (
+            <div className="mt-3 pt-2.5 border-t border-border">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
+                  <span>🌿</span>
+                  <span>Páginas no mesmo eixo:</span>
+                  <span className="font-bold text-foreground">{galho.eixoNome}</span>
+                </span>
+                <Link
+                  href="/laboratorio/arvore"
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
+                >
+                  <span>Árvore de links</span>
+                  <ExternalLink size={10} />
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {galho.links.map((link, idx) => (
+                  <Link
+                    key={idx}
+                    href={link.href}
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
+                  >
+                    <span>{link.rotulo}</span>
+                    <ArrowRight size={10} className="opacity-60" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         <div className="mt-3">
           <RessalvaIa
             modelo={modelo}
@@ -364,6 +403,40 @@ function BlocoRespostaEscadaSeuNono({
               >
                 <span>{a.rotulo}</span>
                 <ArrowRight size={11} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {resultado.galhoRelacionado && resultado.galhoRelacionado.links.length > 0 && (
+        <div className="mt-3 pt-2.5 border-t border-border/70">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
+              <span>🌿</span>
+              <span>Páginas no mesmo eixo:</span>
+              <span className="font-bold text-foreground">{resultado.galhoRelacionado.eixoNome}</span>
+              <span className="text-[0.62rem] text-text-soft/80">({resultado.galhoRelacionado.subgalho})</span>
+            </span>
+            <Link
+              href="/laboratorio/arvore"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
+            >
+              <span>Árvore de links</span>
+              <ExternalLink size={10} />
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {resultado.galhoRelacionado.links.map((link, idx) => (
+              <Link
+                key={idx}
+                href={link.href}
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-amber-500/50 transition-colors"
+              >
+                <span>{link.rotulo}</span>
+                <ArrowRight size={10} className="opacity-60" />
               </Link>
             ))}
           </div>
