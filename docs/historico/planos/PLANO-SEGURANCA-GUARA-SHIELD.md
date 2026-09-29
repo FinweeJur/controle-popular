@@ -4,7 +4,7 @@
 > **Domínio:** operacao
 > **Última medição:** 2026-09-28
 > **Leitura estimada:** média (8–12 min)
-> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [OPERACAO.md](../../05-operacao/OPERACAO.md), [ARQUITETURA.md](../../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** seguranca, guara shield, pentest, cve, docker, segredos, hsts, csp, posture score
 
 ## Sumário

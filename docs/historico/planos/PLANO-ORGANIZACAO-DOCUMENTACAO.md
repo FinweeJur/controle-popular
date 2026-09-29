@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-24
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [ESTADO.md](../02-estado/ESTADO.md), [README.md](../README.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](../../GUIA-DE-DOCUMENTACAO.md), [ESTADO.md](../../02-estado/ESTADO.md), [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** documentacao, historico, planos, template, medição, gitignore, validar-documentacao
 
 ## Sumário

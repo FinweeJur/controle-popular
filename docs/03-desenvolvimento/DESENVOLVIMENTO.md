@@ -2,7 +2,7 @@
 
 > **Tipo:** DESENVOLVIMENTO
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-29
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
 > **Palavras-chave:** worktree, commit, push, testes, typescript, IA, verificacao, code-graph-arag
@@ -192,16 +192,15 @@ Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, l
 ```bash
 npm test                                        # vitest + globo 3D
 npx tsc --noEmit                                # tipos
-npm run lint:textos                             # acentuação e grandezas
-npm run fix:textos                              # correção determinística
-python scripts/checar-dado-pessoal-em-dado.py    # CPF mod-11 (obrigatório)
+python scripts/checar-dado-pessoal-em-dado.py    # varredura em 473 JSONs de dado
+python scripts/validar-documentacao.py          # integridade de links e metadados
 ```
 
-Baseline em 19/09/2026: **1.579 testes no vitest + 146 no globo 3D**.
-⚠️ Contagem envelhece rápido: já circularam 247, 401, 601, 681, 699, 741…
-Antes de citar um número de teste, **remeça** e anote a data ao lado.
-Comentário errado sobrevive meses; teste é o que pega
-(um teste de código vs. nome IBGE salvou o case em 15/08).
+Baseline em 29/09/2026: **1.626 testes no vitest + 146 no globo 3D**.
+Suíte internacional e laboratório: **47/47 testes verdes**.
+Zero CPF mod-11 em 473 arquivos de dado ingerido.
+⚠️ Contagem envelhece rápido: antes de citar um número de teste, **remeça** e anote a data ao lado.
+Comentário errado sobrevive meses; teste é o que pega.
 
 ## Origem
 

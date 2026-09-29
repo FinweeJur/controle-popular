@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-09-24
+> **Última medição:** 2026-09-29
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md)
 > **Palavras-chave:** plano, expansão, fila
@@ -71,25 +71,49 @@
 - **Plano:** `docs/planos/PLANO-TRABALHO-SETEMBRO-2026.md`
 - **Skill:** `skills/productivity/verificacao-dados-automacao/SKILL.md`
 
+### 6. 🌐 Expansão Internacional & Multilateral
+**Status:** ✅ CONCLUÍDO (29/09)
+
+- **Hubs:** `/internacional` (ONU/UNESCO/OMS/OMC), `/eua` (SEC, NID, USAspending) e `/canada` (TSX, NPRI, CORE).
+- **Tradução:** Sistema trilíngue reativo PT/EN/ES com voz nativa e exportação CSV formatada.
+- **Bot Autônomo:** `scripts/bot-coletor-autonomo.mts` integrado com R2/S3 e avisos Telegram.
+
+### 7. 🔬 Laboratório de Dados & Caderno Cívico
+**Status:** ✅ CONCLUÍDO (29/09)
+
+- **Caderno NotebookLM:** Modo cívico offline em Markdown com citações `[n]` e dossiês.
+- **Generative UI:** Widgets de Onboarding Cívico, Rastreabilidade Transnacional e Debug do Seu Nonô.
+
+### 8. 🏛️ Assembleias Legislativas Estaduais
+**Status:** ✅ CONCLUÍDO (28/09)
+
+- **Rota:** `/assembleias` cobrindo as 27 unidades federativas com orçamentos, composição e links oficiais.
+
+### 9. 🛰️ Cavas de Mineração no Globo 3D
+**Status:** ✅ CONCLUÍDO (28/09)
+
+- **Rota:** `/mineracao/cavas` e visualização 3D/2D com modelo VLM calibrado no holdout de 88 negativos.
+
+### 10. 🛡️ Segurança Cívica & Telemetria ETL
+**Status:** ✅ CONCLUÍDO (29/09)
+
+- **Vigia ETL:** `vigia-dados-etl.mts` monitorando 397 coletores e bases públicas.
+- **Fact-Checking:** Motor inspirado no padrão IFCN/Lupa (`bot-fact-checker-pr.mts`).
+- **Resiliência:** Espelho automatizado no GitLab e Hugging Face.
+
 ---
 
 ## 📦 ARTEFATOS CONCLUÍDOS
 
-### Bots
+### Bots & Coletores
 | Script | Função | Status |
 |--------|--------|--------|
+| `scripts/bot-coletor-autonomo.mts` | Coletor autônomo com R2/S3 e Telegram | ✅ Ativo |
+| `scripts/agent-tools/vigia-dados-etl.mts` | Telemetria contínua de 397 bases | ✅ Ativo |
+| `scripts/bot-fact-checker-pr.mts` | Fact-checking cívico e abertura de PRs | ✅ Ativo |
 | `bots/verifica-dados.mts` | Cross-check de valores | ✅ Testado |
 | `bots/notifica-telegram.mts` | Notificação automática | ✅ Testado |
 | `bots/orquestrador.mts` | Orquestração de microetapas | ✅ Testado |
-| `bots/crosscheck-pdf-api.mts` | Cross-check PDF vs API | ✅ Testado |
-| `bots/microresumo-escassez-betim.mts` | Microresumo de escassez hídrica | ✅ Testado |
-
-### Scripts ETL
-| Script | Fonte | Status |
-|--------|-------|--------|
-| `scripts/etl/conselhos/scrape_conselhos_betim.mts` | Betim | ✅ Corrigido |
-| `scripts/etl/outorgas/coletar-outorgas-mg.mts` | IGAM/SIOUT | ✅ Funcional |
-| `scripts/coletar-pncp-mg.mts` | PNCP | ✅ 955 contratos coletados |
 
 ### Schemas
 | Schema | Tabelas | Status |
@@ -98,35 +122,16 @@
 | `apps/web/lib/db/schema-outorgas.ts` | outorgas, tipos_uso, regionais | ⏳ Aguarda Neon |
 | `apps/web/lib/db/schema-cidades-mg.ts` | cidades-beta | ⏳ Aguarda Neon |
 
-### Dados Gerados
-| Arquivo | Conteúdo |
-|--------|----------|
-| `apps/web/data/conselhos/conselhos-analise.json` | 4 conselheiros Betim |
-| `docs/audit/verificacao-2026-09-09.json` | Cross-check valores PNCP |
-| `docs/audit/crosscheck-2026-09-10.json` | Cross-check PDF vs API |
-| `docs/audit/microresumo-escassez-2026-09-10.json` | Escassez hídrica Betim |
-
 ---
 
-## 🚧 BLOCKERS (medido 24/09)
-
-> **Neon em 94% storage (470/500 MB)** — nota 402 venceu 01/09 e não
-> volta mais; o teto hoje é o disco.
-> - V2, O2, S1 esperam a **Fase 4**: migrar a app para o Postgres do
->   Guara (1 GiB incluso) — fila A4 do [ESTADO](../02-estado/ESTADO.md)
-> - Enquanto isso: D1 (escritas) + dados JSON estáticos
-
----
-
-## 📊 MÉTRICAS FINAIS (medidas 24/09)
+## 📊 MÉTRICAS FINAIS (medidas 29/09)
 
 | Métrica | Valor |
 |---------|-------|
-| **Testes passando** | 1.579 vitest + 146 globo ✅ (baseline 19/09) |
-| **Contratos PNCP (expand.)** | ck contratos 300 chaves ok ✅ |
-| **Licitações PNCP (expand.)** | ck licitações 2.959 chaves ok ✅ |
-| **Cidades PNCP completas** | 47 de 136 prontas 🚧 |
-| **Conselheiros mapeados (Betim)** | 4 ✅ |
-| **Outorgas IGAM (fonte)** | 55.729 ✅ |
-| **Microresumos gerados** | 3 ✅ |
-| **Cross-checks realizados** | 2 ✅ |
+| **Testes passando** | 1.626 vitest + 146 globo ✅ |
+| **Suíte Internacional/Lab** | 47/47 testes verdes ✅ |
+| **Arquivos de dados com 0 CPF** | 473 JSONs verificados ✅ |
+| **Bases e coletores vigiados** | 397 bases com telemetria ✅ |
+| **Assembleias estaduais** | 27 UFs integradas ✅ |
+| **Hubs Internacionais** | 3 hubs (/internacional, /eua, /canada) ✅ |
+| **Idiomas com tradução reativa** | 3 (PT, EN, ES) com TTS ✅ |

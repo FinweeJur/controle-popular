@@ -4,7 +4,7 @@
 > espelho para o **GitLab**: o Gitee nunca teve os secrets `GITEE_USERNAME` /
 > `GITEE_TOKEN` criados e o workflow ficava falhando em todo push desde 28/09.
 > O espelho vivo hoje é `gitlab.com/FinweeJur/controle-popular`, pelo
-> `mirror-gitlab.yml` — ver [OPERACAO.md § 2](../05-operacao/OPERACAO.md).
+> `mirror-gitlab.yml` — ver [OPERACAO.md § 2](../../05-operacao/OPERACAO.md).
 > Este plano fica como histórico da decisão de 22/08 (espelho, não mudança de
 > casa), que continua valendo com outro destino.
 
@@ -12,7 +12,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-01
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md) (Decisão 13, Fila #29), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md) (Decisão 13, Fila #29), [AGENTS.md](/AGENTS.md), [OPERACAO.md](../../05-operacao/OPERACAO.md)
 > **Palavras-chave:** plano, gitee, espelho, mirror, github, publicacao
 
 ## Sumário
@@ -31,7 +31,7 @@
 ## Origem do plano
 
 Este plano executa a **Decisão 13** do dono (22/08/2026) e a tarefa **#29 da fila
-viva** do [ESTADO.md](../02-estado/ESTADO.md): *"O código vai subir também para o
+viva** do [ESTADO.md](../../02-estado/ESTADO.md): *"O código vai subir também para o
 Gitee, no futuro — espelho, não mudança de casa."* O "plano em algum lugar" que o
 dono referenciou é exatamente esse registro no ESTADO.md — este arquivo transforma
 a decisão em passos executáveis.

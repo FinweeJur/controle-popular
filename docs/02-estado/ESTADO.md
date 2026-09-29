@@ -43,6 +43,16 @@ Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy
 **Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
 A raiz nunca mora no Guara.
 
+**Novos Hubs e Módulos Ativos (29/09):**
+- `/internacional`: Hub multilateral (ONU/PNUD, UNESCO, OMS, OMC, commodities e povos originários) com modo trilíngue e 6 Qualidades.
+- `/eua`: Transparência dos EUA (SEC EDGAR, barragens NID/USACE, compras USAspending.gov e BIA).
+- `/canada`: Mineradoras na TSX operando no Brasil, emissões ECCC NPRI, caso Mount Polley vs Mariana e ouvidoria CORE.
+- `/assembleias`: Hub e detalhe das 27 assembleias legislativas estaduais brasileiras.
+- `/mineracao/cavas`: Série histórica de cavas de mineração em MG com modelo VLM calibrado no holdout de 88 negativos.
+- `/laboratorio`: Caderno NotebookLM cívico offline (citações `[n]`, resumos) e widgets de Generative UI.
+- Assistente Seu Nonô: escada determinística para 100 páginas, tolerância a digitação, grafo de conhecimento e leitura por voz (TTS).
+- Infraestrutura Cívica: Vigia ETL de 397 bases, motor de fact-checking e espelho do código no GitLab e Hugging Face.
+
 **Banco — Fase 4 concluída (confirmada pelo dono em 29/09):** a aplicação
 aponta para o **Postgres do Guara** (`cp-postgres-597bd0`, Postgres 17),
 com `DATABASE_URL` **runtime e build = Yes** e carga validada igual à da
@@ -172,22 +182,39 @@ Runbooks: [`planos/`](../planos/).
   de madrugada (chaves removidas). Lock órfão `.fila-pncp.lock`
   removido e gitignorado.
 
-**29/09/2026** — expansão internacional multilateral, NotebookLM offline e bot autônomo:
+**29/09/2026** — consolidado dos últimos 50 commits (`b69e2e68` → `b8bcb7e3`):
 
-- Expansão Multilateral & Internacional: Hub `/internacional` e sub-rotas temáticas
-  seguindo rigorosamente a Regra das 6 Qualidades.
-- Dados multilaterais ingeridos e compactados: ONU/PNUD (IDH, Gini, GII),
-  UNESCO (gastos em educação), OMS (saúde e expectativa de vida), OMC/Comtrade
-  (fluxos transnacionais de commodities minerais) e Territórios Globais.
-- Laboratório de Dados integrado com Caderno NotebookLM offline (Markdown cívico,
-  citações `[n]`, resumos) e widgets de Generative UI (`WidgetOnboardingCivico`,
-  `WidgetRastreabilidadeTransnacional`, `WidgetDebugSeuNono`).
-- Bot Coletor Autônomo (`scripts/bot-coletor-autonomo.mts`): fluxo completo com
-  sincronização S3/R2, ingestão de banco sem deploy desnecessário no Guara e
-  notificações formatadas no Telegram.
-- Responsividade móvel unificada: abas temáticas e tabelas com rolagem horizontal
-  nativa sem corte de viewport.
-- 47/47 testes da suíte internacional e laboratório 100% verdes, 0 PII em 473 JSONs.
+- **Segurança Cívica & Infraestrutura (`b8bcb7e3`):**
+  - Implementado `vigia-dados-etl.mts` monitorando 397 bases e coletores.
+  - Criado motor de fact-checking cívico padrão IFCN/Lupa (`bot-fact-checker-pr.mts`).
+  - Blindagem estrita contra injeção de prompt direta e indireta no assistente.
+  - Auditor de supply chain bloqueando serializações inseguras e formatos binários.
+  - Espelho automatizado do repositório no GitLab (`ce7d2380`) e Hugging Face (`e49e616e`).
+- **Expansão Multilateral & Internacional (`89b7bc7f`, `ef7e6d79`, `b5a9906e`):**
+  - Hub multilateral `/internacional` com dados de ONU/PNUD (IDH, Gini, GII),
+    UNESCO (educação), OMS (saúde), OMC/Comtrade (minérios) e terras indígenas.
+  - Hubs temáticos `/eua` (SEC EDGAR, barragens NID/USACE, USAspending, BIA) e
+    `/canada` (mineradoras TSX, emissões NPRI, caso Mount Polley vs Mariana, CORE).
+  - Tradução dinâmica completa PT/EN/ES em botões, abas, tabelas e CSV.
+  - Bot coletor autônomo (`bot-coletor-autonomo.mts`) com R2/S3 e avisos Telegram.
+- **Laboratório de Dados, NotebookLM & Generative UI (`11d1ccf1`):**
+  - Caderno aberto NotebookLM offline com citações em colchetes `[n]` e dossiês.
+  - Três widgets Generative UI: Onboarding Cívico, Rastreabilidade Transnacional
+    e Painel de Debug do Seu Nonô.
+- **Assistente Seu Nonô & Grafo de Conhecimento (`97de5905`, `774245a3`, `ea39d4d9`, `81a019e4`):**
+  - Escada determinística expandida para 100 páginas, blog e central de transparência.
+  - Grafo da árvore de conhecimento estilo Obsidian com links de navegação cívica.
+  - Tolerância fonética a erros de digitação e typewriter responsivo.
+- **Terras, Cavas de Mineração & Visual (`b69e2e68` → `dc87165b`):**
+  - Detecção de cavas de mineração por satélite com modelo VLM holdout 88 negativos.
+  - Série temporal anual de MG no globo 3D e rota dedicada `/mineracao/cavas`.
+  - 8 temas oficiais com contraste medido no globo 3D e vista 2D.
+  - Ponteiro Korkhon 2.0 XS e auditoria mobile com overflow corrigido em 20 rotas.
+- **Assembleias Legislativas & Biblioteca Acadêmica (`d955172a`, `f4e1ba6c`):**
+  - Hub e páginas individuais das 27 assembleias estaduais do Brasil.
+  - 39 novos artigos acadêmicos SciELO e UFMG catalogados no acervo.
+- **Verificação:** 47/47 testes da suíte internacional e laboratório verdes,
+  0 erros de TypeScript e 0 dados pessoais em 473 JSONs.
 
 **24/09/2026** — `49f8db91` · `5c440d4f` · `7c67a3a0` · `cd60b79c`:
 

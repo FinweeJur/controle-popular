@@ -5,7 +5,7 @@
 > **Última medição:** 2026-09-04
 > **Palavras-chave:** pequi, tema, rebrand, hero, marquee, sanfona, epigrafe, citacoes, contraste, oklch
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [PLANO-COPY-VOZ.md](PLANO-COPY-VOZ.md) · [PLANO-REBRAND-FOTOS-E-POEMAS.md](PLANO-REBRAND-FOTOS-E-POEMAS.md)
+> **Relacionados:** [PLANO-COPY-VOZ.md](../../planos/PLANO-COPY-VOZ.md) · [PLANO-REBRAND-FOTOS-E-POEMAS.md](../../planos/PLANO-REBRAND-FOTOS-E-POEMAS.md)
 
 ## Sumário
 

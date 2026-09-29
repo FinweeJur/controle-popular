@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-09-29
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -47,6 +47,7 @@ automáticamente pelos agentes de código.
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
+| Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
@@ -68,6 +69,10 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
 - **Deploy principal = Guara Cloud** (19/09/2026): `www.controlepopular.com.br`
   ativa; a raiz vive de redirect no Cloudflare. Túnel e Worker seguem como
   servidor 2 e fallback. Detalhes: [ESTADO.md § No ar agora](02-estado/ESTADO.md#no-ar-agora).
+- **Expansão Multilateral & Internacional** (29/09/2026): Hubs `/internacional`,
+  `/eua` e `/canada`, modo trilíngue PT/EN/ES com voz nativa e bot coletor com R2.
+- **Espelhos de Resiliência** (29/09/2026): Replicação automática do código no
+  GitLab e Hugging Face em substituição ao Gitee.
 - **Docs reorganizados em pastas numeradas** (`01-produto/` a `07-edicao/`) —
   decisão de 22/08/2026, executada no mesmo dia.
 - **`ARQUITETURA.md` e `MAPA-APLICACAO.md` serão fundidos** — decisão em aberto

@@ -4,7 +4,7 @@
 > **Domínio:** global (Controle Popular + Floresta de Apps)
 > **Última medição:** 2026-09-01
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-SEO-VISIBILIDADE-BUSCADORES.md](PLANO-seo-visibilidade-buscadores.md), [PLANO-ESPELHO-GITEE.md](PLANO-ESPELHO-GITEE.md)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-SEO-VISIBILIDADE-BUSCADORES.md](PLANO-seo-visibilidade-buscadores.md), [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md)
 > **Palavras-chave:** plano, divulgacao, imprensa, email, whatsapp, instagram, video, zero-custo
 
 ## Sumário
@@ -72,7 +72,7 @@ Princípios que não se negociam (são o argumento do projeto):
       com UTM (`?utm_source=imprensa&utm_medium=email`).
 - [ ] Perfis públicos coerentes: GitHub (descrição dos repos), Instagram criado ou
       reativado, WhatsApp Business (ou número pessoal separado) com nome e foto.
-- [ ] Espelho no Gitee (ver [PLANO-ESPELHO-GITEE.md](PLANO-ESPELHO-GITEE.md)) —
+- [ ] Espelho no Gitee (ver [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md) — substituído por GitLab) —
       é um gancho de pauta para público técnico ("código aberto, espelhado em 2
       plataformas").
 

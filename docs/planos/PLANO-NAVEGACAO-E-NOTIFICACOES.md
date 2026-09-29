@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-01
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-DIVULGACAO-ZERO-CUSTO.md](PLANO-DIVULGACAO-ZERO-CUSTO.md), [PLANO-ESPELHO-GITEE.md](PLANO-ESPELHO-GITEE.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-DIVULGACAO-ZERO-CUSTO.md](PLANO-DIVULGACAO-ZERO-CUSTO.md), [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
 > **Palavras-chave:** plano, navegacao, header, indice, rodape, notificacoes, telegram, email, contador, downloads, lgpd
 
 ## Sumário

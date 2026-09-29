@@ -13,23 +13,28 @@ No ar: **[controlepopular.com.br](https://controlepopular.com.br)**
 Quando a fonte não tem, a tela diz que não tem — lacuna é informação, não
 defeito escondido.
 
-## As seis frentes
+## As frentes do portal
 
 | Frente | Rota | O que responde |
 |---|---|---|
 | Cidades | `/[municipio]` (`/sp`, `/bh`, `/betim`, `/diamantina`, `/aracuai`, `/itinga`) | Contratos, licitações, **diários oficiais municipais** com classificação temática determinística, repasses federais (ComunicaBR) e finanças |
+| Assembleias Estaduais | `/assembleias` | Composição, orçamentos, proposições e diários oficiais das **27 assembleias legislativas estaduais** |
 | Congresso | `/congresso` | Proposições federais por tema, comissão e bancada de Minas Gerais |
 | Judiciário | `/judiciario` | Composição dos tribunais, vacância, inspeções CNJ e processos ambientais (SIRENEJud) |
-| Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Vazio cadastral do CAR no globo 3D, terras indígenas, territórios quilombolas e **387 Unidades de Conservação (CNUC/MMA)** |
+| Função Social da Terra & Cavas | `/funcaosocialterra` (+ `/mapa`, `/mineracao/cavas`) | Vazio cadastral do CAR no globo 3D, **série histórica de cavas de mineração (VLM)**, terras indígenas e Unidades de Conservação (CNUC/MMA) |
 | Paraopeba | `/paraopeba` | A reparação de Brumadinho: auditoria FGV/AECOM, repasse aos 853 municípios (R$ 1,64 bi), clipping e linha do tempo |
-| ONSA · Observatório Nacional Socioambiental | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Acordo de Mariana (R$ 677 mi em MG)**, **Observatório Vale S.A. (B3/CVM)**, barragens do país (SIGBM/ANM), normas federais (MMA/CNDH), processos ambientais na Justiça (SIRENEJud), licenças IBAMA, TACs do GTAC, decisões LAI/CGE e pauta do COPAM |
+| ONSA · Observatório Socioambiental | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Acordo de Mariana**, **Observatório Vale S.A.**, barragens (SIGBM), licenças IBAMA, TACs, decisões LAI/CGE e pauta do COPAM |
+| Internacional & Multilateral | `/internacional` (+ `/eua`, `/canada`) | Indicadores sociais ONU/PNUD (IDH, Gini, GII), UNESCO, OMS, comércio OMC/Comtrade, corporações SEC EDGAR e mineradoras TSX |
+| Laboratório de Dados | `/laboratorio` | Caderno NotebookLM cívico offline (citações `[n]`), widgets de Generative UI e catálogo de 22 bases |
 
 ## Destaques de Arquitetura e Dados
 
 - **Padrão das 6 Qualidades da Informação Cívica:** Toda página com acervo público segue 6 garantias auditáveis: (1) Hiperlink direto e verificado à fonte pública oficial; (2) Busca textual e filtros facetados por tags reais; (3) Ordenação crescente/decrescente por coluna (classes, datas e valores); (4) Microresumo e cartões de topo com agregados; (5) Contexto para o chatbot cívico Seu Nonô com respostas curtas de até 13 palavras; (6) Exportação em CSV com BOM UTF-8 (separador `;`) para Excel e impressão nativa via CSS.
-- **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de CPFs de pessoas físicas via cálculo **Mod-11** antes de qualquer persistência em dados abertos (100% de conformidade LGPD).
-- **Código Autoexplicativo e Comentado:** Todo módulo, componente, query e coletor traz cabeçalhos e comentários em português (JSDoc/docstrings) explicando o que é, qual a sua função pública e o motivo das escolhas técnicas adotadas, permitindo auditoria cívica por qualquer cidadão ou desenvolvedor.
-- **Coletores Automatizados:** Esteira com monitoramento proativo via Bot Telegram (`scripts/rotina-coletas.mts`) e automações locais com Podman (`changedetection.io` e `n8n`).
+- **Modo Trilíngue Dinâmico (PT/EN/ES):** Suporte nativo a Português, Inglês e Espanhol com alternância reativa na interface, leitura em áudio via síntese de voz (TTS) e exportação multilíngue.
+- **Assistente Cívico Seu Nonô:** RAG determinístico integrado a caderno de notas offline, mapa mental em árvore no estilo Obsidian e escada de navegação para mais de 100 páginas do portal.
+- **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de dados pessoais (CPF Mod-11, SSN, SIN) antes de qualquer persistência em dados abertos (100% LGPD).
+- **Vigia de ETL e Fact-Checking Cívico:** Telemetria contínua de 397 coletores (`vigia-dados-etl.mts`), checagem automatizada de fontes (inspirada em IFCN, Lupa e Aos Fatos) e espelhos de resiliência no GitLab e Hugging Face.
+- **Código Autoexplicativo e Comentado:** Todo módulo, componente, query e coletor traz cabeçalhos e comentários em português (JSDoc/docstrings) explicando o que é, qual a sua função pública e o motivo das escolhas técnicas adotadas.
 
 ## API pública
 
