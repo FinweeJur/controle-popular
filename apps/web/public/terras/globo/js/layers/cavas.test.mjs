@@ -10,7 +10,7 @@ import { ROTULOS, formatarValor } from '../ui/rotulos.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CAMADAS_DIR = path.resolve(__dirname, '..', '..', 'dados', 'camadas');
 const PROVENIENCIA = path.resolve(__dirname, '..', '..', 'dados', 'proveniencia.json');
-// apps/web/data — a MESMA série que alimenta /mineraicao/cavas. Cruzar as duas
+// apps/web/data — a MESMA série que alimenta /mineracao/cavas. Cruzar as duas
 // pontas aqui é o que impede globo e página de publicarem números diferentes.
 const SERIE = path.resolve(__dirname, '..', '..', '..', '..', '..', 'data',
   'cavas-serie-mineracao-mg.json');
@@ -34,15 +34,15 @@ test('As 2 camadas da Fase 5 estão no LAYER_REGISTRY, desligadas e marcadas pes
     assert.ok(reg.hint && reg.aviso, `${id} deve declarar hint e aviso`);
     // O inspetor só vira isto num link clicável se o campo existir — sem ele,
     // quem olhou o polígono não tem para onde ir (deep-link Fase 5).
-    assert.equal(reg.portal, '/mineraicao/cavas', `${id} deve apontar para a página da série`);
+    assert.equal(reg.portal, '/mineracao/cavas', `${id} deve apontar para a página da série`);
   }
 });
 
-// apps/web/app/mineraicao/cavas/page.tsx — o outro lado do deep-link.
+// apps/web/app/mineracao/cavas/page.tsx — o outro lado do deep-link.
 const PAGINA = path.resolve(__dirname, '..', '..', '..', '..', '..', 'app',
-  'mineraicao', 'cavas', 'page.tsx');
+  'mineracao', 'cavas', 'page.tsx');
 
-test('Os links da página /mineraicao/cavas apontam para camadas que existem e não vazias', () => {
+test('Os links da página /mineracao/cavas apontam para camadas que existem e não vazias', () => {
   const fonte = readFileSync(PAGINA, 'utf8');
   const ids = [...fonte.matchAll(/terras\/globo\/\?camada=([a-z0-9-]+)/g)].map((m) => m[1]);
   // Extrair do .tsx em vez de repetir a lista aqui: id renomeado de um lado só

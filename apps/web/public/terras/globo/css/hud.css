@@ -930,7 +930,7 @@ body {
 }
 
 /* "Ver de perto": ação secundária — abre outra aba, tira a pessoa do globo */
-/* `.btn-portal` divide o mesmo traje: é a saída para /mineraicao/cavas
+/* `.btn-portal` divide o mesmo traje: é a saída para /mineracao/cavas
    (ui/inspector.js), que também leva a pessoa para fora do globo. */
 #inspector .btn-2d,
 #inspector .btn-portal {

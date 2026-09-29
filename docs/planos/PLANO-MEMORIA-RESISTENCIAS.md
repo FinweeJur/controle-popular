@@ -53,7 +53,7 @@ lacuna é informação.
 | Guarda editorial | `memoria: null` ⇒ a linha de memória **não** renderiza; cidade sem fonte confirmada nunca ganha marco inventado | ativo |
 | Padrão de copy única | `apps/web/lib/zonas.ts` (376 linhas) — mesma filosofia: texto em um lugar, lido por qualquer página | ativo |
 | Base de municípios | `apps/web/data/municipios-*.json` — **27 UFs** presentes (o Brasil inteiro) | publicado |
-| Página que já é casa disso | `/direitos-em-movimento`, além de `/historico`, `/biblioteca`, `/funcaosocialterra`, `/paraopeba`, `/mineraicao`, `/terra-e-territorios` | ativas |
+| Página que já é casa disso | `/direitos-em-movimento`, além de `/historico`, `/biblioteca`, `/funcaosocialterra`, `/paraopeba`, `/mineracao`, `/terra-e-territorios` | ativas |
 
 **Medição:** 853 municípios em MG (`apps/web/data/municipios-mg.json`) e
 5.570 no Brasil (`municipios-brasil.json`, 1,26 MB). Hoje a memória
@@ -207,7 +207,7 @@ Como decidir que um marco "é da" cidade:
 | **`/[municipio]`** | **cartão-carimbo v2**: memória local (ou do estado, rotulada) + cultura viva + ponte, com botão **Fonte** em cada marco |
 | `/[municipio]/historico` | linha do tempo da cidade (memória local + estadual + nacional) |
 | `/cidades` | visão de cobertura: quantos verbetes, por UF (lacuna declarada) |
-| Páginas de frente (`/congresso`, `/judiciario`, `/funcaosocialterra`, `/paraopeba`, `/mineraicao`, `/terra-e-territorios`) | epígrafe de memória ligada ao tema (ex.: Judiciário ⇄ Luís Gama e Esperança Garcia, já aprovados no PLANO-COPY-VOZ) |
+| Páginas de frente (`/congresso`, `/judiciario`, `/funcaosocialterra`, `/paraopeba`, `/mineracao`, `/terra-e-territorios`) | epígrafe de memória ligada ao tema (ex.: Judiciário ⇄ Luís Gama e Esperança Garcia, já aprovados no PLANO-COPY-VOZ) |
 | `/direitos-em-movimento` | vitrine das lutas, com tipo, período, lugar e fonte |
 | `/biblioteca` | verbetes como acervo pesquisável (busca tolerante a acento, facetas por tipo/UF/período) |
 | Assistente (Seu Nonô / Alceu Dispor) | verbetes no RAG, com tag de contexto e link oficial na resposta |

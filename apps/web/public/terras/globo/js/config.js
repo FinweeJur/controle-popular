@@ -831,7 +831,7 @@ export const LAYER_REGISTRY = [
   // --- As DUAS camadas da Fase 3/5 do plano de cavas (29/09/2026) -----------
   //
   // Fonte única: camada `pto:mining_age` do Monitor da Mineração (MapBiomas),
-  // WFS público do MapBiomas — a mesma série que dá a página /mineraicao/cavas.
+  // WFS público do MapBiomas — a mesma série que dá a página /mineracao/cavas.
   // Cada feição é UM polígono com o ano da PRIMEIRA detecção e a área em
   // hectares (unidade conferida contra shoelace projetado: razão 0,943).
   // Resolução 30 m (Landsat), não 10 m: isso está escrito na ficha de cada
@@ -853,14 +853,14 @@ export const LAYER_REGISTRY = [
     color: 0xfa8c72, /* oklch 0.754 0.139 34.65 — 21,2° da mais próxima (assentamentos) */ on: false, render: 'fill', listavel: true, pesada: true,
     // Página que publica a MESMA base (Fase 5). O inspetor vira isto num link
     // clicável; sem este campo não há para onde levar quem olhou o polígono.
-    portal: '/mineraicao/cavas',
+    portal: '/mineracao/cavas',
   },
   {
     id: 'cavas-monitoradas', label: 'Cavas detectadas na janela ativa (2024)',
     hint: '3.799 polígonos de mineração cuja PRIMEIRA detecção é de 2024 — o conjunto que o critério de 24 meses da Fase 3 classifica como "ativa" num portal publicado em 2026. 4.234 hectares novos naquele ano, o segundo maior pulo da série.',
-    aviso: '"Primeira detecção em 2024" não é "aberta em 2024": a camada é um raster de 30 m, então mineração pequena ou sob nuvem pode aparecer anos depois de começar. E ano da primeira detecção NÃO é ano de encerramento — para saber se parou, ver a série em /mineraicao/cavas.',
+    aviso: '"Primeira detecção em 2024" não é "aberta em 2024": a camada é um raster de 30 m, então mineração pequena ou sob nuvem pode aparecer anos depois de começar. E ano da primeira detecção NÃO é ano de encerramento — para saber se parou, ver a série em /mineracao/cavas.',
     color: 0xacb947, /* oklch 0.754 0.139 115.4 — 13,4° da mais próxima (lotes-vagos) */ on: false, render: 'fill', listavel: true, pesada: true,
-    portal: '/mineraicao/cavas',
+    portal: '/mineracao/cavas',
   },
   // --- O cruzamento das duas coisas acima (15/08/2026) --------------------
   //
@@ -1377,7 +1377,7 @@ export const CAMADAS = [
     fontes: ['sigmine-interesse'],
   },
   // Fase 5 do plano de cavas (29/09/2026) — mesma fonte da página
-  // /mineraicao/cavas, para o globo e a página se cobrirem com o mesmo número.
+  // /mineracao/cavas, para o globo e a página se cobrirem com o mesmo número.
   {
     id: 'mineracao-sem-cadastro', assunto: 'territorio-mineracao',
     label: 'Mineração sem cadastro na ANM',
@@ -1389,7 +1389,7 @@ export const CAMADAS = [
     id: 'cavas-monitoradas', assunto: 'territorio-mineracao',
     label: 'Cavas detectadas na janela ativa (2024)',
     hint: '3.799 polígonos com primeira detecção em 2024 — o conjunto que o critério de 24 meses da Fase 3 chama de "ativa". É a resposta do globo à pergunta "onde a mineração cresceu agora?".',
-    aviso: 'Detecção em 30 m: cava pequena ou sob nuvem aparece atrasada. Ano da primeira detecção não é ano de abertura nem de encerramento — a série completa está em /mineraicao/cavas.',
+    aviso: 'Detecção em 30 m: cava pequena ou sob nuvem aparece atrasada. Ano da primeira detecção não é ano de abertura nem de encerramento — a série completa está em /mineracao/cavas.',
     fontes: ['cavas-monitoradas'],
   },
   // --- Os cruzamentos, ligados em 15/08/2026 -------------------------------

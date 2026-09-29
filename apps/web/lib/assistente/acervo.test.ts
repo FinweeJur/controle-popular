@@ -111,7 +111,7 @@ describe("bases de cavas no assistente -- regra 5", () => {
     const cavas = montarAcervo().filter((f) => f.id.startsWith("cavas:"));
     expect(cavas.length).toBeGreaterThanOrEqual(6);
     for (const f of cavas) {
-      expect(f.rota, `rota errada em ${f.id}`).toBe("/mineraicao/cavas");
+      expect(f.rota, `rota errada em ${f.id}`).toBe("/mineracao/cavas");
       expect(f.fonteUrl, `fonteUrl vazia em ${f.id}`).toBeTruthy();
       expect(f.texto.length, `texto curto demais em ${f.id}`).toBeGreaterThan(80);
     }

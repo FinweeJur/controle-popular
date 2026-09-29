@@ -340,7 +340,7 @@ test('?camada= sem parâmetro não liga nada — quem só abriu o globo não gan
   assert.equal(camadaDoEndereco('?outro=x', CAMADAS_RESOLVIDAS), null);
 });
 
-test('?camada= com id que existe devolve o id — é o link da página /mineraicao/cavas', () => {
+test('?camada= com id que existe devolve o id — é o link da página /mineracao/cavas', () => {
   for (const id of ['mineracao-sem-cadastro', 'cavas-monitoradas']) {
     assert.equal(camadaDoEndereco(`?camada=${id}`, CAMADAS_RESOLVIDAS), id);
   }

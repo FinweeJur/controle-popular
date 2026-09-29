@@ -209,7 +209,7 @@ function deDesignacoes(): AcervoFonte[] {
 }
 
 /** Rota das cavas de mineração — a página da Fase 5 (fonte interna). */
-const ROTA_CAVAS = "/mineraicao/cavas";
+const ROTA_CAVAS = "/mineracao/cavas";
 
 /** Linhas da série anual de mineração de MG, em número de polígonos/hectares. */
 const SERIE_CAVAS = serieCavas.serie as LinhaSerie[];

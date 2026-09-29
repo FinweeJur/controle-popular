@@ -187,6 +187,19 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/direitos-em-movimento/denuncia", titulo: "Fazer uma denúncia", termos: ["denuncia", "denunciar", "reclamacao"], zona: "cidades" },
   { sufixo: "/direitos-em-movimento/informacao", titulo: "Pedido de informação (LAI)", termos: ["lai", "acesso a informacao", "pedido de informacao"], zona: "cidades" },
   { sufixo: "/direitos-em-movimento/ajuda", titulo: "Onde buscar ajuda", termos: ["ajuda", "defensoria", "ministerio publico"], zona: "cidades" },
+
+  // Bases e hubs novos (rodada 29/09/2026). As palavras já vêm sem acento e
+  // minúsculas, na forma que `separarPalavras()` produz — ver o cabeçalho.
+  { sufixo: "/ambiental/autorizacoes", titulo: "Imóveis da União em MG", termos: ["imoveis da uniao", "patrimonio da uniao", "destinacoes", "spu", "autorizacoes"], zona: "ambiental" },
+  { sufixo: "/ambiental/ppp", titulo: "Concessões e PPPs de MG", termos: ["ppp", "ppps", "concessao", "concessoes", "parceria publico-privada"], zona: "ambiental" },
+  { sufixo: "/cidades/mg", titulo: "Municípios de Minas Gerais", termos: ["municipios de mg", "municipios de minas", "cidades de mg", "lista de municipios"], zona: "cidades" },
+  { sufixo: "/mineracao/cavas", titulo: "Cavas de mineração", termos: ["cavas", "cava", "mineracao por satelite", "onde a mineracao cresceu"], zona: "terras" },
+  { sufixo: "/assembleias", titulo: "Assembleias legislativas", termos: ["assembleia", "assembleias", "deputados estaduais", "parlamento estadual"], zona: "congresso" },
+  { sufixo: "/internacional", titulo: "Transparência multilateral", termos: ["internacional", "multilateral", "onu", "unesco", "oms", "omc"], zona: "cidades" },
+  { sufixo: "/eua", titulo: "Observatório dos Estados Unidos", termos: ["eua", "estados unidos", "sec", "usaspending"], zona: "cidades" },
+  { sufixo: "/canada", titulo: "Observatório do Canadá", termos: ["canada", "tsx", "sedar", "npri"], zona: "cidades" },
+  { sufixo: "/laboratorio", titulo: "Laboratório de dados", termos: ["laboratorio", "power bi", "powerbi", "comparador"], zona: "cidades" },
+  { sufixo: "/estudos-rurais", titulo: "Estudos rurais", termos: ["estudos rurais", "reforma agraria", "agroecologia"], zona: "terras" },
 ];
 
 /**

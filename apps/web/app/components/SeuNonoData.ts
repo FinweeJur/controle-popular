@@ -237,6 +237,17 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "/diamantina", texto: "Diamantina" },
             ],
           },
+          {
+            id: "municipios-853-mg",
+            pergunta: "Onde ver todos os 853 municípios de Minas Gerais?",
+            resposta:
+              "A página Municípios de MG lista os 853 municípios do IBGE. Destaca 10 polos com população do Censo 2022.",
+            link: { href: "/cidades/mg", texto: "Municípios de Minas Gerais" },
+            links: [
+              { href: "/cidades", texto: "199 Cidades Estratégicas" },
+              { href: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios", texto: "Fonte Oficial IBGE" },
+            ],
+          },
         ],
       },
       {
@@ -361,6 +372,17 @@ export const FRENTES: SeuNonoFrente[] = [
               "O Conselho Estadual de Política Ambiental delibera sobre pedidos de licença em Minas Gerais. Veja atas e processos pautados.",
             link: { href: "/ambiental/copam", texto: "Pautas do COPAM" },
           },
+          {
+            id: "cavas-mineracao-satelite",
+            pergunta: "Onde ver as cavas de mineração no globo 3D?",
+            resposta:
+              "A página das Cavas traz a série anual de mineração em MG. Cruzamos uma amostra com polígonos da ANM. O globo 3D mostra as camadas.",
+            link: { href: "/mineracao/cavas", texto: "Cavas de Mineração" },
+            links: [
+              { href: "/funcaosocialterra/mapa", texto: "Abrir Globo 3D" },
+              { href: "/ambiental/barragens", texto: "Painel de Barragens SIGBM" },
+            ],
+          },
         ],
       },
       {
@@ -380,6 +402,17 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "Áreas sem cadastro ambiental rural que podem indicar terras devolutas ou sobreposições indevidas sobre o patrimônio público.",
             link: { href: "/funcaosocialterra", texto: "Metodologia Fundiária" },
+          },
+          {
+            id: "imoveis-uniao-spu",
+            pergunta: "Como consultar os imóveis da União em Minas Gerais?",
+            resposta:
+              "A página reúne 553 imóveis da União em Minas. Mostra destinação, classe, proprietário e área. Fonte: SPU.",
+            link: { href: "/ambiental/autorizacoes", texto: "Imóveis da União em MG" },
+            links: [
+              { href: "https://www.gov.br/gestao/pt-br/assuntos/patrimonio-da-uniao", texto: "SPU — Patrimônio da União" },
+              { href: "/funcaosocialterra", texto: "Função Social da Terra" },
+            ],
           },
         ],
       },
@@ -482,6 +515,17 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "Reportagens investigativas analisam editais, dispensas de licitação e contratos de cidades de médio e pequeno porte.",
             link: { href: "/noticias/estado-e-economia-pncp-compras", texto: "Auditoria do PNCP" },
+          },
+          {
+            id: "ppp-concessoes-mg",
+            pergunta: "Quais são as concessões e PPPs de Minas Gerais?",
+            resposta:
+              "A página reúne 20 contratos do Estado. Apenas 6 são a concessão em si. Os outros são apoio, supervisão ou estudo.",
+            link: { href: "/ambiental/ppp", texto: "Concessões e PPPs de MG" },
+            links: [
+              { href: "https://www.transparencia.mg.gov.br", texto: "Portal da Transparência MG" },
+              { href: "/estado-e-economia/compras", texto: "Compras Públicas (PNCP)" },
+            ],
           },
         ],
       },
@@ -596,6 +640,17 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "https://www.sedarplus.ca", texto: "SEDAR+ Canadá" },
             ],
           },
+          {
+            id: "hub-internacional-multilateral",
+            pergunta: "Como comparar o Brasil com ONU, UNESCO, OMS e OMC?",
+            resposta:
+              "O Hub Internacional compara o Brasil com potências do G8 e G20. Reúne IDH, Gini, saúde, educação e comércio de minérios.",
+            link: { href: "/internacional", texto: "Hub Internacional & Multilateral" },
+            links: [
+              { href: "https://www.un.org", texto: "Organização das Nações Unidas (ONU)" },
+              { href: "https://www.who.int", texto: "Organização Mundial da Saúde (OMS)" },
+            ],
+          },
         ],
       },
       {
@@ -684,6 +739,17 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "Acompanhe o voto de cada deputado em matérias de orçamento, saúde, educação e meio ambiente.",
             link: { href: "/congresso/votacoes", texto: "Votações Nominais" },
+          },
+          {
+            id: "assembleias-legislativas-27",
+            pergunta: "Como fiscalizar as 27 Assembleias Legislativas estaduais?",
+            resposta:
+              "O hub das Assembleias cobre as 27 Casas Legislativas. Traz deputados estaduais, comissões e projetos de interesse social.",
+            link: { href: "/assembleias", texto: "Assembleias Legislativas dos Estados" },
+            links: [
+              { href: "/congresso", texto: "Congresso Nacional" },
+              { href: "/fontes-estados", texto: "Fontes dos 27 Estados" },
+            ],
           },
         ],
       },
@@ -1343,6 +1409,105 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/eua/empresas", texto: "Corporações & Fundos SEC" },
       { href: "/eua", texto: "Hub EUA & Brasil" },
       { href: "https://www.sec.gov/edgar", texto: "SEC EDGAR" },
+    ],
+  },
+  {
+    id: "ambiental-autorizacoes",
+    titulo: "Destinações de Imóveis da União em MG (SPU)",
+    resumo: "Cadastro público dos imóveis da União em Minas Gerais, com destinação, classe, proprietário e área, auditável pela fonte oficial.",
+    dados: [
+      "553 imóveis da União em municípios mineiros",
+      "Destinação e regime de uso de cada imóvel",
+      "Classe, proprietário e área registrados",
+      "Busca, filtros, ordenação e export CSV",
+      "Fonte: SPU — Painel de Transparência Ativa",
+    ],
+    links: [
+      { href: "/ambiental/autorizacoes", texto: "Imóveis da União em MG" },
+      { href: "https://www.gov.br/gestao/pt-br/assuntos/patrimonio-da-uniao", texto: "SPU — Patrimônio da União" },
+    ],
+  },
+  {
+    id: "ambiental-ppp",
+    titulo: "Concessões e PPPs de Minas Gerais",
+    resumo: "Contratos do Estado de MG cujo objeto cita concessão ou parceria público-privada, com valor, vigência e concessionária.",
+    dados: [
+      "20 contratos ligados a concessão ou PPP em MG",
+      "6 são a concessão em si; os demais são apoio, supervisão ou estudo",
+      "Valor, vigência e concessionária de cada contrato",
+      "Ressalva editorial separa o instrumento do contrato de apoio",
+      "Fonte: Portal da Transparência de Minas Gerais",
+    ],
+    links: [
+      { href: "/ambiental/ppp", texto: "Painel de Concessões e PPPs" },
+      { href: "https://www.transparencia.mg.gov.br", texto: "Portal da Transparência MG" },
+    ],
+  },
+  {
+    id: "cidades-mg",
+    titulo: "Municípios de Minas Gerais (IBGE)",
+    resumo: "Lista completa dos 853 municípios de MG, com microrregiões e mesorregiões, e os 10 polos com população do Censo 2022.",
+    dados: [
+      "853 municípios de Minas Gerais catalogados pelo IBGE",
+      "Busca em tempo real, microrregiões e mesorregiões",
+      "10 polos regionais com população do Censo 2022",
+      "Código IBGE canônico de 6 e 7 dígitos",
+      "Fonte: API de Localidades do IBGE",
+    ],
+    links: [
+      { href: "/cidades/mg", texto: "Municípios de Minas Gerais" },
+      { href: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios", texto: "Fonte Oficial IBGE" },
+    ],
+  },
+  {
+    id: "mineracao-cavas",
+    titulo: "Cavas de Mineração em Minas Gerais",
+    resumo: "Série anual da mineração mapeada por satélite em MG e cruzamento de uma amostra de cavas com os polígonos da ANM, com camadas no globo 3D.",
+    dados: [
+      "Série anual de área de mineração nova em MG",
+      "Amostra datada de cavas cruzada com polígonos da ANM",
+      "Três estados: em operação, indício processual ou sem cadastro",
+      "Camadas acesas no globo 3D, com link direto",
+      "Fonte: MapBiomas (camada de mineração) e ANM",
+    ],
+    links: [
+      { href: "/mineracao/cavas", texto: "Painel das Cavas" },
+      { href: "/funcaosocialterra/mapa", texto: "Abrir Globo 3D" },
+      { href: "/ambiental/barragens", texto: "Painel de Barragens SIGBM" },
+    ],
+  },
+  {
+    id: "assembleias",
+    titulo: "Assembleias Legislativas dos Estados",
+    resumo: "Monitoramento cidadão das 27 Casas Legislativas estaduais e distrital: deputados estaduais, comissões e proposições de interesse social.",
+    dados: [
+      "27 Assembleias Legislativas estaduais e distrital",
+      "Deputados estaduais e composição da mesa diretora",
+      "Proposições de lei e comissões temáticas",
+      "Filtros por macrorregião e busca textual",
+      "Fontes: portais oficiais das 27 Casas",
+    ],
+    links: [
+      { href: "/assembleias", texto: "Hub das Assembleias" },
+      { href: "/congresso", texto: "Congresso Nacional" },
+      { href: "/fontes-estados", texto: "Fontes dos 27 Estados" },
+    ],
+  },
+  {
+    id: "internacional-multilateral",
+    titulo: "Transparência Multilateral & Internacional",
+    resumo: "Comparação cívica do Brasil com potências do G8 e G20 em IDH, desigualdade, saúde, educação, comércio de minérios e direitos territoriais.",
+    dados: [
+      "Indicadores sociais: IDH e índice de Gini (ONU/Banco Mundial)",
+      "Gastos em saúde e educação comparados entre países",
+      "Comércio internacional de minério, lítio e nióbio",
+      "Terras indígenas e salvaguardas socioambientais",
+      "Fontes: ONU/PNUD, UNESCO, OMS e OMC",
+    ],
+    links: [
+      { href: "/internacional", texto: "Hub Multilateral" },
+      { href: "/eua", texto: "Observatório dos EUA" },
+      { href: "/canada", texto: "Observatório do Canadá" },
     ],
   },
 ];

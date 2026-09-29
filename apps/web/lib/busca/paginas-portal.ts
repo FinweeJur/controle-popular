@@ -559,6 +559,92 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
       "defensoria publica", "diario oficial", "licitacoes"
     ],
   },
+
+  // ═══ NOVAS BASES E HUBs (rodada 29/09/2026) ═══
+  {
+    id: "ambiental-autorizacoes",
+    titulo: "Destinações de Imóveis da União em Minas Gerais",
+    descricao:
+      "Cadastro público dos imóveis da União em MG, com destinação, classe, proprietário e área — fonte SPU (Transparência Ativa).",
+    href: "/ambiental/autorizacoes",
+    frente: "ambiental",
+    rotulo: "União · Imóveis SPU",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "imoveis da uniao", "patrimonio da uniao", "spu", "destinacao", "destinacoes",
+      "autorizacoes", "imoveis publicos", "terras da uniao", "regime",
+    ],
+  },
+  {
+    id: "ambiental-ppp",
+    titulo: "Concessões e Parcerias Público-Privadas de Minas Gerais",
+    descricao:
+      "Os contratos mineiros cujo objeto cita concessão ou PPP, com valor, vigência e concessionária — separando a concessão do apoio e do estudo.",
+    href: "/ambiental/ppp",
+    frente: "ambiental",
+    rotulo: "PPPs · Concessões MG",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "ppp", "ppps", "concessao", "concessoes", "parceria publico-privada",
+      "parcerias publico-privadas", "concessionaria", "contrato mg", "governo de minas",
+    ],
+  },
+  {
+    id: "cidades-mg",
+    titulo: "Municípios de Minas Gerais (IBGE)",
+    descricao:
+      "Lista completa dos 853 municípios de MG com busca em tempo real, microrregiões e mesorregiões, e os 10 polos com população do Censo 2022.",
+    href: "/cidades/mg",
+    frente: "cidades",
+    rotulo: "MG · 853 Municípios",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "municipios de mg", "municipios de minas", "cidades de mg", "lista de municipios",
+      "ibge", "mesorregiao", "microrregiao", "censo 2022", "polos de mg", "853 municipios",
+    ],
+  },
+  {
+    id: "mineracao-cavas",
+    titulo: "Cavas de Mineração em Minas Gerais — Série e Globo 3D",
+    descricao:
+      "A série anual da mineração mapeada por satélite em MG e o cruzamento das cavas com os polígonos da ANM, com camadas no globo 3D.",
+    href: "/mineracao/cavas",
+    frente: "terras",
+    rotulo: "Cavas · Mineração",
+    badgeCor: "var(--cp-alert)",
+    palavrasChave: [
+      "cavas", "cava", "mineracao", "serie anual", "mapbiomas", "anm",
+      "mineracao por satelite", "onde a mineracao cresceu", "globo 3d", "rejeito",
+    ],
+  },
+  {
+    id: "assembleias-hub",
+    titulo: "Assembleias Legislativas dos Estados",
+    descricao:
+      "Auditoria cívica das 27 Casas Legislativas estaduais e distrital: deputados estaduais, comissões, proposições e rankings de atuação.",
+    href: "/assembleias",
+    frente: "congresso",
+    rotulo: "Assembleias · 27 UFs",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "assembleias", "assembleia", "assembleia legislativa", "deputados estaduais",
+      "parlamento estadual", "mesa diretora", "comissoes", "projetos estaduais",
+    ],
+  },
+  {
+    id: "internacional-multilateral",
+    titulo: "Transparência Multilateral & Internacional",
+    descricao:
+      "Comparação cívica do Brasil com potências do G8 e G20: IDH e Gini da ONU/Banco Mundial, gastos em saúde e educação, comércio de minérios e direitos territoriais.",
+    href: "/internacional",
+    frente: "geral",
+    rotulo: "Internacional · ONU/OMC",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "internacional", "multilateral", "onu", "pnud", "unesco", "oms", "omc",
+      "idh", "gini", "g8", "g20", "comercio de minerios", "povos originarios",
+    ],
+  },
 ];
 
 /**

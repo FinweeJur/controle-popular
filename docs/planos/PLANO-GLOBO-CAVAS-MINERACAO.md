@@ -138,7 +138,7 @@ Monitor da Mineração ──────┘         │                    │ 
                                         │          └─────────┬─────────┘
                                         │        dupla verificação + revisão humana
                                         └──→ fila de revisão ─→ GeoJSON .gz ─→ globo 3D
-                                                                    └─→ /mineraicao/cavas
+                                                                    └─→ /mineracao/cavas
 ```
 
 | Fase | O que resolve | Gate (decisão) | Esforço |
@@ -528,7 +528,7 @@ itens vieram sem imagem utilizável.
   GeoJSON gzip **< 2 MiB** cada; entrada em `LAYER_REGISTRY` e no assunto
   `territorio-mineracao` do `js/config.js`; `proveniencia.json` regenerado
   pelo `gerar-proveniencia-globo.mjs`.
-- **Página `/mineraicao/cavas` com as 5 coisas da regra do dono** (AGENTS
+- **Página `/mineracao/cavas` com as 5 coisas da regra do dono** (AGENTS
   § 8): gráfico SVG de Δ área/ano, cartões de topo (candidatos,
   confirmados, cobertura), CSV do filtrado (`;` + BOM UTF-8), filtro (UF,
   estado da cava, distância de TI/UC), ordenação por coluna.
@@ -562,7 +562,7 @@ escrever código — ressalva, data da imagem, fonte, método e link na ANM.
   115,4° (13,4° da mais próxima) — piso do projeto é 11,6°.
 - **`proveniencia.json` regenerado**: 54 camadas, origem declarada das duas
   novas, nenhuma caindo em `camadas_sem_origem_declarada`.
-- **Página `/mineraicao/cavas`**: 8 cartões de topo com números medidos,
+- **Página `/mineracao/cavas`**: 8 cartões de topo com números medidos,
   gráfico SVG nativo de Δ área/ano com tabela equivalente em `<details>`,
   os três estados editoriais com contagem, tabela de 120 cavas com busca,
   filtro por estado, ordenação por coluna e CSV do filtrado (`;` + BOM).
@@ -574,7 +574,7 @@ escrever código — ressalva, data da imagem, fonte, método e link na ANM.
 **O que ficou pendente, escrito em vez de omitido**
 
 - **Deep-link `?camada=`** — ✅ **feito em 29/09**: a página
-  `/mineraicao/cavas` tem a seção "Onde isso está no mapa" com dois links
+  `/mineracao/cavas` tem a seção "Onde isso está no mapa" com dois links
   `/terras/globo/?camada=...`, o globo abre a camada pedida
   (`camadaDoEndereco()` em `js/ui/layerspanel.js`, testado), e o inspetor do
   globo ganhou "Ver a série e a tabela no portal". **Segue pendente o
@@ -696,8 +696,8 @@ medido e armadilha (GUIA do catálogo).
 | `apps/web/public/terras/globo/dados/camadas/*.geojson.gz` | camadas novas do globo |
 | `apps/web/public/terras/globo/js/config.js` | `LAYER_REGISTRY`, `ASSUNTOS`, hints |
 | `apps/web/public/terras/globo/dados/proveniencia.json` | origem de cada camada (script irmão `gerar-proveniencia-globo.mjs`) |
-| `apps/web/app/mineraicao/cavas/` | página com as 5 coisas |
-| `apps/web/app/mineraicao/cavas/[cava]/` | ficha + linha do tempo + exportação (pedido 25/09) |
+| `apps/web/app/mineracao/cavas/` | página com as 5 coisas |
+| `apps/web/app/mineracao/cavas/[cava]/` | ficha + linha do tempo + exportação (pedido 25/09) |
 | `apps/web/lib/cavas/` | área, 4 datas, tags, contexto do chat — lógica pura com testes ao lado |
 | `apps/web/public/terras/globo/dados/cavas-timeline/` | thumbnails 256 px da linha do tempo (≤ ~300 KB/cava) |
 | `.gitignore` | cache de imagem Sentinel (path medido na Fase 0) |

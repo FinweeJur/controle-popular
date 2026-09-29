@@ -10,7 +10,7 @@ import {
 import TabelaCavas from "./TabelaCavas";
 
 /**
- * `/mineraicao/cavas` — Fase 5 do plano de cavas: a série anual da mineração
+ * `/mineracao/cavas` — Fase 5 do plano de cavas: a série anual da mineração
  * em Minas Gerais, com o Δ de área por ano e os três estados editoriais.
  *
  * ═══ POR QUE ESTA PÁGINA EXISTE ═══

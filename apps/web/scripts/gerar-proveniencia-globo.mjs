@@ -211,7 +211,7 @@ const ORIGENS = {
     servico: 'ANM/SIGMINE — processos minerários de MG nas demais fases (requerimento, pesquisa, disponibilidade): processo protocolado, não mina',
   },
   // Fase 5 do plano de cavas (29/09/2026) — as DUAS camadas da série anual,
-  // mesma fonte da página /mineraicao/cavas. Geradas por
+  // mesma fonte da página /mineracao/cavas. Geradas por
   // scripts/etl/cavas/fase3-mineracao-mg.py --camadas.
   'mineracao-sem-cadastro': {
     obtencao: 'automatica',
