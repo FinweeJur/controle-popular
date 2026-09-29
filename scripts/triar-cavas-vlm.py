@@ -42,8 +42,11 @@ USO
     # fila inteira (2112 recortes)
     python scripts/triar-cavas-vlm.py
 
-    # outro modelo ou outra pasta de dados
+    # outra modelo ou outra pasta de dados
     python scripts/triar-cavas-vlm.py --modelo qwen3-vl:2b-instruct --dados OUTRO/DIRETORIO
+
+    # refaz só as legendas quebradas (eco do prompt v1, vazias ou sem escore)
+    python scripts/triar-cavas-vlm.py --retri-eco
 
 Dependência: apenas biblioteca padrão do Python 3 (urllib/json) — nada de pip.
 """
@@ -81,18 +84,50 @@ MODELO_PADRAO = "qwen3-vl:2b-instruct"
 # Por que tantas restrições no texto: modelo de 4B encurta e inventa se deixado
 # livre; pedir "uma linha", "números inteiros" e enumeração fechada derruba a
 # taxa de resposta inválida.
+#
+# PROMPT v2 (28/09/2026): a v1 escrevia a descrição da legenda DENTRO do valor
+# de exemplo do JSON. Com temperature 0 o modelo guloso copiava o exemplo
+# literalmente no lugar de descrever a imagem — 1.109 de 3.022 recortes (37%)
+# voltaram com a própria instrução como legenda ("uma linha curta em
+# português descrevendo..."), com escore médio 55,0 contra 65,8 dos que vieram
+# certos. A v2 deixa o valor vazio e move a descrição para as Regras: exemplo
+# vazio não tem texto para copiar, então o modelo é obrigado a olhar a imagem.
+# A ESCALA DO ESCORE MUDA COM O PROMPT (controlado em 28/09/2026): 40 recortes
+# bons triados nas duas versões deram média 59,9 na v1 e 65,5 na v2 (delta
+# +5,6; só 40% idênticos; os cortes 50/70 da prioridade são atravessados). Por
+# isso a retri com v2 é SEMPRE COMPLETA, nunca só dos ecos — metade da fila em
+# v1 e metade em v2 deixaria o escore incomparável (§ "número vem do dado").
+# O texto de "escore", "confianca" e "nuvem" ficou byte a byte igual à v1;
+# a deriva vem do contexto de geração, não das palavras.
 PROMPT_TRIAGEM = """Você analisa recortes de satélite (CBERS) de Minas Gerais em busca de mineração a céu aberto.
 Responda SOMENTE com um objeto JSON exatamente com estas chaves e nenhum texto além dele:
 {
-  "legenda": "uma linha curta em português descrevendo o que se vê na imagem (terra exposta, piscina de decantação, estrada de terra, mata fechada, área urbana, água, etc.)",
+  "legenda": "",
   "escore": número inteiro de 0 a 100 com a evidência de mineração a céu aberto (0 = nada sugere mineração; 100 = mineração a céu aberto evidente),
   "confianca": uma destas palavras: alto, medio, baixo,
   "nuvem": uma destas palavras: sim, nao, parcial
 }
 Regras:
+- "legenda" deve ser uma linha curta em português descrevendo o que se vê na imagem real (terra exposta, piscina de decantação, estrada de terra, mata fechada, área urbana, água, etc.). Nunca deixe vazia e nunca repita esta instrução como legenda.
 - "escore" deve ser 0 quando a imagem não mostra nada de mineração.
 - "confianca" mede a SUA certeza sobre o escore, não o tamanho da mineração.
 - "nuvem" = sim se nuvens ou sombra de nuvem cobrem a maior parte do recorte; parcial se cobrem parte dele; nao se o recorte está limpio."""
+
+
+def legenda_quebrada(reg: dict) -> bool:
+    """Detecta registro cuja legenda precisa ser refeita (pedido do dono 28/09).
+
+    Três defeitos medidos no lote fechado de MG:
+    - eco do prompt: o modelo copiou a instrução como resposta (1.109 casos);
+    - legenda vazia: valor "" copiado do placeholder;
+    - escore nulo: JSON reparado cortado ou resposta sem número (2 casos —
+      os dois ficaram "sem-triagem" para sempre sem este peneirão, porque
+      erro vazio conta como já-triado).
+    """
+    legenda = str(reg.get("legenda") or "").strip()
+    if not legenda or "uma linha curta em portugu" in legenda[:70]:
+        return True
+    return reg.get("escore") is None
 
 
 def caminho_padrao_saida() -> Path:
@@ -350,6 +385,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--limite", type=int, default=None, help="máximo de recortes POR TIPO (ex.: 4 = 4 pos + 4 neg)")
     ap.add_argument("--modelo", type=str, default=MODELO_PADRAO, help="modelo do Ollama (vision)")
     ap.add_argument("--saida", type=Path, default=caminho_padrao_saida(), help="arquivo JSONL de saída")
+    ap.add_argument(
+        "--retri-eco",
+        action="store_true",
+        help="retria mesmo os registros sem erro quando a legenda veio com eco do prompt, vazia ou sem escore",
+    )
     args = ap.parse_args(argv)
 
     # Console do Windows nasce em cp1252 e explode com acento e símbolo de OK no
@@ -392,8 +432,13 @@ def main(argv: list[str] | None = None) -> int:
                 # mostraria "sem triagem" sem solução (medido 28/09). O
                 # montador da fila usa last-wins por arquivo, então o registro
                 # novo apaga o erro antigo sozinho.
-                if not reg.get("erro"):
-                    ja_traiados.add((str(reg.get("tipo")), str(reg.get("arquivo"))))
+                if reg.get("erro"):
+                    continue
+                # Com --retri-eco, legenda quebrada também volta para a fila
+                # (mesmo last-wins apagando o registro antigo na montagem).
+                if args.retri_eco and legenda_quebrada(reg):
+                    continue
+                ja_traiados.add((str(reg.get("tipo")), str(reg.get("arquivo"))))
     restantes = [t for t in tarefas if (t[0], t[1].name) not in ja_traiados]
     if ja_traiados:
         print(f"retomando: {len(ja_traiados)} recorte(s) já triado(s) pulado(s)")
