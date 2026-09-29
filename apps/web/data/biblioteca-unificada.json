@@ -1,15 +1,15 @@
 {
   "geradoEm": "2026-09-28T15:58:23.798141Z",
-  "totalDocumentos": 475,
+  "totalDocumentos": 514,
   "totalCategorias": 3,
   "totalTemas": 11,
   "totalEmpresas": 20,
   "totalInstituicoesJustica": 91,
-  "totalAcademico": 18,
+  "totalAcademico": 57,
   "distribuicaoPorCategoria": {
     "Empresas & ESG": 26,
     "Justiça & Controle": 431,
-    "Acadêmico & Pesquisa": 18
+    "Acadêmico & Pesquisa": 57
   },
   "distribuicaoPorTema": {
     "Vale & Mineração": 7,
@@ -25,12 +25,12 @@
     "Cidades & Território": 1
   },
   "distribuicaoPorAno": {
-    "2025": 221,
-    "2024": 61,
-    "2023": 36,
-    "2026": 144,
+    "2021": 1,
     "2022": 12,
-    "2021": 1
+    "2023": 36,
+    "2024": 61,
+    "2025": 221,
+    "2026": 144
   },
   "distribuicaoPorEstado": {
     "MG": 38,
@@ -10649,6 +10649,828 @@
         "planejamento-urbano"
       ],
       "tamanhoFormatado": "4.5 MB"
+    },
+    {
+      "id": "acad-scielo-consideracoes-epistemicas-psicologia-empirica",
+      "titulo": "Considerações epistêmicas sobre a Revista de Psicologia Empírica",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Ciência & Epistemologia",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Sabino, José Feres",
+      "microResumo": "O texto procura assinalar algumas características epistêmicas da Magazin zur Psicologia Empírica.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/bfjJqvTGDh8YchdGXjBWVqF/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "psicologia",
+        "epistemologia",
+        "ciencia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-walter-benjamin-passagens-parisienses",
+      "titulo": "Sobre Walter Benjamin e o ocultamento do trabalho nas passagens parisienses",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Filosofia & Cultura",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Costa, Gilmário Guerreiro da",
+      "microResumo": "O projeto das Passagens, de Walter Benjamin, tem fomentado debate fecundo e incessantes.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/h3hFk5ySRQVjNq6FMmYqwMQ/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "walter-benjamin",
+        "filosofia",
+        "cultura",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-travessia-topografica-berlim",
+      "titulo": "Uma travessia topográfica, histórica e cultural de Berlim",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "História & Cultura",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Bolle, Willi",
+      "microResumo": "Este é o relato de uma travessia de Berlim, realizada em 2023, por um grupo de.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/HZSyjw6WYnkfsGZDvH4fssg/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "berlim",
+        "historia",
+        "cultura",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-ecologia-integral",
+      "titulo": "Pressupostos epistemológicos da Ecologia integral: o ambiental, o social e o cultural",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Clima",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Junges, José Roque",
+      "microResumo": "Ecologia integral é uma proposta para pensar as questões ambientais, podendo servir de.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/7dYwqKcYsLHkNHGcyWqQBmD/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "ecologia",
+        "meio-ambiente",
+        "sustentabilidade",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-agricultura-organica-brasil",
+      "titulo": "Agricultura orgânica no Brasil: inconsistências e limitações nos dados oficiais",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Alimentos",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Spagnuolo, Felipe Alvares",
+      "microResumo": "O objetivo deste estudo foi verificar inconsistências e limitações nas informações sobre.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/BJvGtK5nTWFfXHntMPJbNXj/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "agricultura-organica",
+        "brasil",
+        "dados-oficiais",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-quilombola-women-soil",
+      "titulo": "Between gardens and backyards: three generations of quilombola women sentipensando the soil and its cultivation",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Território",
+      "entidade": "Revista Brasileira de Ciência do Solo (SciELO)",
+      "estado": "PR",
+      "ano": 2026,
+      "autor": "Prado, Douglas Silva do; Mello, Nilvania Aparecida de",
+      "microResumo": "Amid contemporary debates on decolonial ecologies and traditional knowledge, it is.",
+      "urlOficial": "https://www.scielo.br/j/rbcs/a/mqcCVbx4SN88c7JhX6nYMLL/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "quilombola",
+        "agricultura",
+        "solo",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-cadmium-cacao-soils",
+      "titulo": "Physical and chemical properties and enzymatic activities and their relations with potential availability of cadmium in Andean Colombian cacao-crop soils",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Solos",
+      "entidade": "Revista Brasileira de Ciência do Solo (SciELO)",
+      "estado": "CO",
+      "ano": 2026,
+      "autor": "Bustos-Linares, Cristian Camilo",
+      "microResumo": "Cadmium (Cd) is a toxic heavy metal with no biological function in plants. This element.",
+      "urlOficial": "https://www.scielo.br/j/rbcs/a/KGBVTkJHPShs7jjjgfY4K8F/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "cadmium",
+        "cacao",
+        "solos",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-teachers-perceptions-soils",
+      "titulo": "Perceptions of Basic Education Teachers about Soils",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Educação & Solos",
+      "entidade": "Revista Brasileira de Ciência do Solo (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Henrique, Schayanne Matos",
+      "microResumo": "In basic education, teachers are essential for Soil Education, a field that seeks to.",
+      "urlOficial": "https://www.scielo.br/j/rbcs/a/JZVXFZkmFpKQwvYysYVm8VR/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "educacao",
+        "solos",
+        "professores",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-autism-spectrum-prevalence",
+      "titulo": "Prevalence of autism spectrum disorder in children: complete census of a Brazilian municipality",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Cidades",
+      "entidade": "Cadernos de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Forcelini, Cassiano; Carregosa, Ana Luisa; Leitzke, Eduarda",
+      "microResumo": "The prevalence of autism spectrum disorder (ASD) has been an issue of great concern.",
+      "urlOficial": "https://www.scielo.br/j/csp/a/SSTHGvmqBszbPknHGqsR9sf/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "autismo",
+        "saude-publica",
+        "criancas",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-inequidades-ambientais-metropole",
+      "titulo": "Iniquidades ambientais na metrópole paulista, Brasil: vegetação, calor e poluição do ar segundo a vulnerabilidade social",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Cidades",
+      "entidade": "Cadernos de Saúde Pública (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Kanai, Claudio Makoto; Buralli, Rafael; Silva, Luis Roberto da",
+      "microResumo": "As desigualdades socioambientais nas metrópoles afetam a saúde de forma diferente.",
+      "urlOficial": "https://www.scielo.br/j/csp/a/qGhGcFvsMMFkmvbpMbbsrWf/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "inequidade-ambiental",
+        "metropole",
+        "saude",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-perigo-demora-aborto-legal",
+      "titulo": "O \"perigo da demora\" no acesso ao aborto legal no Brasil: a experiência de 111 mulheres",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Direitos",
+      "entidade": "Cadernos de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Diniz, Debora",
+      "microResumo": "O artigo analisa as barreiras enfrentadas por mulheres, adolescentes e meninas no acesso ao.",
+      "urlOficial": "https://www.scielo.br/j/csp/a/nwyn3LkYNnKLWZCvjHsfkNF/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "aborto-legal",
+        "saude",
+        "direitos",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-heart-rate-mortality",
+      "titulo": "Association of heart rate recovery with mortality risk in a 72-month survival analysis",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Epidemiologia",
+      "entidade": "Cadernos de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Costa, Bruno Margueritte",
+      "microResumo": "This study aimed to investigate whether heart rate recovery (HRR) is a predictor of all-cause.",
+      "urlOficial": "https://www.scielo.br/j/csp/a/NmrqctB5XypL9gjkWgw8LzN/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "cardiologia",
+        "mortalidade",
+        "epidemiologia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-open-science-csp",
+      "titulo": "Opening the review: perceptions and challenges of Open Science at CSP",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Ciência & Metodologia",
+      "entidade": "Cadernos de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Dias de Lima, Luciana",
+      "microResumo": "We analyze the perceptions and challenges related to open peer review (OPR) among contributors.",
+      "urlOficial": "https://www.scielo.br/j/csp/a/W6Q4czVwgbmnmW7DQLfvkMg/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "open-science",
+        "ciencia",
+        "metodologia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-interethnic-interaction-border",
+      "titulo": "Interethnic interaction in the context of border and territorial issues",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Sociologia & Território",
+      "entidade": "Sociologias (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Alykulova, Gulbu",
+      "microResumo": "This study aimed to examine the specific features of interethnic interaction in the.",
+      "urlOficial": "https://www.scielo.br/j/soc/a/M43jhK7gMfpfKyPnPRYXW9B/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "sociologia",
+        "territorio",
+        "etnia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-civic-identity-formation",
+      "titulo": "A comprehensive model of civic identity formation and pedagogical conditions for its implementation",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Educação & Cidadania",
+      "entidade": "Sociologias (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Kyzy, Gulnaz Adylbek",
+      "microResumo": "This study aimed to examine the implementation of the \"Kyrgyz Zharany\" model in higher.",
+      "urlOficial": "https://www.scielo.br/j/soc/a/RXGrD94pc6ZMmLCnvq5XKXD/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "cidadania",
+        "educacao",
+        "identidade",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-folk-pedagogy-dastans",
+      "titulo": "Folk pedagogy and ethnic identity in Central Asian dastans: a comparative analysis of Kyrgyz, Uzbek, and Karakalpak epics",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Educação & Cultura",
+      "entidade": "Sociologias (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Anarbekova, Venera",
+      "microResumo": "This study examines the ethnic components of Kyrgyz, Uzbek, and Karakalpak dastans and.",
+      "urlOficial": "https://www.scielo.br/j/soc/a/X57jh4qZkVN6CbW645ZCKhC/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "pedagogia",
+        "cultura",
+        "etnia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-demographic-challenges-armenia",
+      "titulo": "Demographic challenges as a threat to Armenia's economic security: regional perspectives and mitigation strategies",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Economia & Demografia",
+      "entidade": "Sociologias (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Sargsyan, Nairi",
+      "microResumo": "This study examines the impact of demographic threats on Armenia's economic security in.",
+      "urlOficial": "https://www.scielo.br/j/soc/a/v4Hb4pcvKWkKY6BpmmbpWYj/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "demografia",
+        "economia",
+        "armenia",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-raspberry-value-chain-serbia",
+      "titulo": "(Under)valuing infrastructures: transformations and frictions in Serbia's raspberry value chain since late socialism",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Economia",
+      "entidade": "Sociologias (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Thiemann, André",
+      "microResumo": "This article proposes to study agriculture by focusing on its infrastructures of value.",
+      "urlOficial": "https://www.scielo.br/j/soc/a/n5bFZ55h7fGRSTXb7b8LxgD/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "agricultura",
+        "economia",
+        "infrastructure",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-vaccine-hesitancy-brazil",
+      "titulo": "Vaccine hesitancy in Brazil: post-pandemic challenges and the use of artificial intelligence",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Tecnologia",
+      "entidade": "Revista de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Sato, Ana Paula Sayuri",
+      "microResumo": "Vaccine hesitancy is a global public health challenge, and its characteristics change.",
+      "urlOficial": "https://www.scielo.br/j/rsp/a/DpXFDQFFXsVJyXLssb8XY4b/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "vacina",
+        "hesitancia",
+        "inteligencia-artificial",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-climate-change-impacts-brazil",
+      "titulo": "Brazil is already experiencing the brutal impacts of climate change",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Clima",
+      "entidade": "Revista de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Lorenz, Camila",
+      "microResumo": "Brazil is increasingly experiencing severe climate events, including extreme droughts.",
+      "urlOficial": "https://www.scielo.br/j/rsp/a/4LqGTQhPxfghdXdqY8h385C/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "mudancas-climaticas",
+        "brasil",
+        "seca",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-ai-chronic-kidney-disease",
+      "titulo": "Applications of artificial intelligence in chronic kidney disease: a systematic review",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Tecnologia",
+      "entidade": "Revista de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Bittencourt, Jalila Andréa Sampaio",
+      "microResumo": "OBJECTIVE To identify the applications of artificial intelligence in the early.",
+      "urlOficial": "https://www.scielo.br/j/rsp/a/WmYrLPNYzxWKcsQ5ZVLfDFk/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "inteligencia-artificial",
+        "nefrologia",
+        "saude",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-nutritional-care-primary-health",
+      "titulo": "Analysis of the implementation of nutritional care in the context of Primary Health Care",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Nutrição",
+      "entidade": "Revista de Saúde Pública (SciELO)",
+      "estado": "BR",
+      "ano": 2026,
+      "autor": "Machado, Patrícia Maria de Oliveira",
+      "microResumo": "OBJECTIVE To evaluate the implementation of nutritional care within the Primary Health.",
+      "urlOficial": "https://www.scielo.br/j/rsp/a/FpMr8d97sgWvS5BGThJ67BL/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "nutricao",
+        "saude-publica",
+        "atencao-primaria",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-ecologia-integral-2026",
+      "titulo": "Pressupostos epistemológicos da Ecologia integral: o ambiental, o social e o cultural",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Clima",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Junges, José Roque",
+      "microResumo": "Ecologia integral é uma proposta para pensar as questões ambientais, podendo servir de base para políticas públicas integradas.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/7dYwqKcYsLHkNHGcyWqQBmD/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "ecologia",
+        "meio-ambiente",
+        "sustentabilidade",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-agricultura-organica-2026",
+      "titulo": "Agricultura orgânica no Brasil: inconsistências e limitações nos dados oficiais",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Alimentos",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Spagnuolo, Felipe Alvares",
+      "microResumo": "O objetivo deste estudo foi verificar inconsistências e limitações nas informações sobre agricultura orgânica no Brasil.",
+      "urlOficial": "https://www.scielo.br/j/ea/a/BJvGtK5nTWFfXHntMPJbNXj/?ilang=pt_BR",
+      "urlPdf": "",
+      "palavrasChave": [
+        "agricultura-organica",
+        "brasil",
+        "dados-oficiais",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-limites-produtividade-agricola",
+      "titulo": "Os limites da produtividade agrícola no Brasil entre 1975 e 2020",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Agricultura & Economia",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Autor não coletado",
+      "microResumo": "Análise dos limites da produtividade agrícola no Brasil entre 1975 e 2020, com foco em sustentabilidade e segurança alimentar.",
+      "urlOficial": "https://www.scielo.br/j/ea/",
+      "urlPdf": "",
+      "palavrasChave": [
+        "agricultura",
+        "produtividade",
+        "brasil",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-scielo-desigualdade-toxicidade-financeira",
+      "titulo": "Desigualdade de acesso e toxicidade financeira no crédito rural",
+      "tipo": "artigo_academico",
+      "tipoRotulo": "Artigo Científico",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Economia & Desigualdade",
+      "entidade": "Estudos Avançados (SciELO)",
+      "estado": "SP",
+      "ano": 2026,
+      "autor": "Autor não coletado",
+      "microResumo": "Estudo sobre desigualdade de acesso e toxicidade financeira no crédito rural brasileiro.",
+      "urlOficial": "https://www.scielo.br/j/ea/",
+      "urlPdf": "",
+      "palavrasChave": [
+        "credito-rural",
+        "desigualdade",
+        "agricultura",
+        "scielo"
+      ]
+    },
+    {
+      "id": "acad-ufmg-projeto-surubim-doce",
+      "titulo": "Projeto Surubim-do-Doce: educação ambiental em ambiente não escolar",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Educação",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Educação ambiental em ambiente não escolar por meio do Projeto Surubim-do-Doce.",
+      "urlOficial": "https://hdl.handle.net/1843/5204",
+      "urlPdf": "",
+      "palavrasChave": [
+        "educacao-ambiental",
+        "ufmg",
+        "meio-ambiente",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-saneamento-agenda-publica",
+      "titulo": "O saneamento na agenda pública: a dinâmica política e a implantação dos serviços",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saneamento & Cidades",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "A dinâmica política e a implantação dos serviços de saneamento no Brasil.",
+      "urlOficial": "https://hdl.handle.net/1843/5200",
+      "urlPdf": "",
+      "palavrasChave": [
+        "saneamento",
+        "ufmg",
+        "cidades",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-saneamento-basico-brasil-mg",
+      "titulo": "Saneamento básico: panorama no Brasil e em Minas Gerais, a partir dos censos",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saneamento & Cidades",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Panorama do saneamento básico no Brasil e em Minas Gerais, a partir dos censos.",
+      "urlOficial": "https://hdl.handle.net/1843/5173",
+      "urlPdf": "",
+      "palavrasChave": [
+        "saneamento",
+        "ufmg",
+        "minas-gerais",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-precos-alimentos-saudaveis",
+      "titulo": "Associação entre o preço relativo dos alimentos saudáveis, renda domiciliar per capita",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Economia",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Associação entre o preço relativo dos alimentos saudáveis e renda domiciliar per capita.",
+      "urlOficial": "https://hdl.handle.net/1843/5169",
+      "urlPdf": "",
+      "palavrasChave": [
+        "alimentos-saudaveis",
+        "ufmg",
+        "saude",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-modos-vida-cosmopoliticas",
+      "titulo": "Por outros modos de vida: cosmopolíticas nas regulações, utopias e espiritualidades",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Sociologia & Território",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Cosmopolíticas nas regulações, utopias e espiritualidades: por outros modos de vida.",
+      "urlOficial": "https://hdl.handle.net/1843/5144",
+      "urlPdf": "",
+      "palavrasChave": [
+        "sociologia",
+        "ufmg",
+        "territorio",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-gestao-residuos-textil",
+      "titulo": "Gestão de resíduos na indústria têxtil e sua relação com a qualidade da água",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Indústria",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Gestão de resíduos na indústria têxtil e sua relação com a qualidade da água.",
+      "urlOficial": "https://hdl.handle.net/1843/5201",
+      "urlPdf": "",
+      "palavrasChave": [
+        "residuos",
+        "ufmg",
+        "industria-textil",
+        "agua",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-revista-dialogo-anglo-american",
+      "titulo": "A Revista Diálogo e o monólogo como produto final: o caso da Anglo American",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Mineração & Comunidades",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "A Revista Diálogo e o monólogo como produto final: o caso da Anglo American em Minas Gerais.",
+      "urlOficial": "https://hdl.handle.net/1843/5101",
+      "urlPdf": "",
+      "palavrasChave": [
+        "mineracao",
+        "ufmg",
+        "anglo-american",
+        "comunidades",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-compensacao-ambiental",
+      "titulo": "Da legislação ao território: compensação ambiental e hotspots de qualidade do habitat",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Direito",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Da legislação ao território: compensação ambiental e hotspots de qualidade do habitat.",
+      "urlOficial": "https://hdl.handle.net/1843/5096",
+      "urlPdf": "",
+      "palavrasChave": [
+        "compensacao-ambiental",
+        "ufmg",
+        "direito-ambiental",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-coberturas-verdes",
+      "titulo": "Estudos de implantação de coberturas verdes em edificações residenciais no município",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Cidades & Sustentabilidade",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Estudos de implantação de coberturas verdes em edificações residenciais no município.",
+      "urlOficial": "https://hdl.handle.net/1843/5208",
+      "urlPdf": "",
+      "palavrasChave": [
+        "coberturas-verdes",
+        "ufmg",
+        "cidades",
+        "sustentabilidade",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-decisoes-estruturais-jurisdicao",
+      "titulo": "As decisões estruturais na jurisdição constitucional brasileira",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Direito & Justiça",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "As decisões estruturais na jurisdição constitucional brasileira: a utilização da.",
+      "urlOficial": "https://hdl.handle.net/1843/5213",
+      "urlPdf": "",
+      "palavrasChave": [
+        "direito",
+        "ufmg",
+        "jurisdicao-constitucional",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-escuta-gestaltica-lesbicas",
+      "titulo": "Escuta gestáltica de vivências lésbicas",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Direitos Humanos & Saúde",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Escuta gestáltica de vivências lésbicas.",
+      "urlOficial": "https://hdl.handle.net/1843/5209",
+      "urlPdf": "",
+      "palavrasChave": [
+        "direitos-humanos",
+        "ufmg",
+        "saude",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-ecotoxicity-entecavir",
+      "titulo": "Ecotoxicity of entecavir in Aliivibrio fischeri, Microcystis novacekii, Artemia",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Meio Ambiente & Saúde",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Ecotoxicity of entecavir in Aliivibrio fischeri, Microcystis novacekii, Artemia.",
+      "urlOficial": "https://hdl.handle.net/1843/5219",
+      "urlPdf": "",
+      "palavrasChave": [
+        "ecotoxicologia",
+        "ufmg",
+        "saude",
+        "tese"
+      ]
+    },
+    {
+      "id": "acad-ufmg-avaliacao-percepcao-sensorial",
+      "titulo": "Elaboração e validação de conteúdo de um instrumento de avaliação da percepção sensorial",
+      "tipo": "tese_doutorado",
+      "tipoRotulo": "Tese de Doutorado",
+      "categoria": "Acadêmico & Pesquisa",
+      "tema": "Saúde & Metodologia",
+      "entidade": "UFMG",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Autor não coletado",
+      "microResumo": "Elaboração e validação de conteúdo de um instrumento de avaliação da percepção sensorial.",
+      "urlOficial": "https://hdl.handle.net/1843/5227",
+      "urlPdf": "",
+      "palavrasChave": [
+        "saude",
+        "ufmg",
+        "metodologia",
+        "tese"
+      ]
     }
   ]
 }
