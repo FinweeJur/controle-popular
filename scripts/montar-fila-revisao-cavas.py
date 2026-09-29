@@ -200,13 +200,18 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
     embutido, imagem e legenda são o essencial."""
     cartoes = []
     for i, x in enumerate(amostra, start=1):
-        cartoes.append(
-            _cartao(x, num=i)
-            + f'<div class="estado"><label for="e{i}">estado:</label> '
+        seletor = (
+            f'<div class="estado"><label for="e{i}">estado:</label> '
             f'<select id="e{i}" data-id="{html.escape(x["arquivo"])}">'
             "<option>pendente</option><option>revisado</option>"
             "<option>descartado</option><option>publicável</option>"
             "</select></div>"
+        )
+        # O seletor entra DENTRO do <figure>: como ele era irmão do card
+        # na grade, virava célula solta e aparecia ao lado/debaixo da
+        # figura sem par (formato esquisito, medido pelo dono 28/09).
+        cartoes.append(
+            _cartao(x, num=i).replace("</figure>", seletor + "</figure>")
         )
     js = (
         "const K='amostra100-estados';"
@@ -232,8 +237,11 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
         "border-radius:8px;padding:.5rem}img{width:100%;height:auto;"
         "image-rendering:pixelated;border-radius:4px}"
         "figcaption{font-size:.8rem;line-height:1.35;margin-top:.4rem}"
-        ".estado{margin-top:.3rem;font-size:.85rem}"
-        "select{font-size:.85rem}h1{font-size:1.3rem}</style></head><body>"
+        ".estado{margin-top:.45rem;padding-top:.4rem;"
+        "border-top:1px dashed #ccc;font-size:.85rem}"
+        ".estado label{font-weight:600}"
+        "select{font-size:.9rem;margin-left:.25rem}"
+        "h1{font-size:1.3rem}</style></head><body>"
         f"<h1>Amostra de {len(amostra)} — revisão humana do gate</h1>"
         "<p>O gate do plano exige precisão medida <b>e</b> revisão de 100 "
         "exemplos. Marque o estado de cada recorte; o navegador guarda na "
