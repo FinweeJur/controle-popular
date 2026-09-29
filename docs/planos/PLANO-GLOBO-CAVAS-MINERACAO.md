@@ -360,6 +360,39 @@ Medições da tarde de 28/09 (mesmo split, coleta de negativos crescendo):
   retroativo por `setdefault`) — é dele que o filtro de UF do painel
   vai ler.
 
+### Fechamento de MG e gate v2 — 28/09/2026 (noite, medido)
+
+Coleta de negativos fechou às 20h23: **3.012 recortes** (2.000
+positivos + 1.012 negativos). Manifesto regerado e publicado
+(`63fee18e`); varredura de dado pessoal verde nos 289 arquivos antes
+de cada commit. Fila final: 3.012 itens — alta 345 pos / 698 neg,
+média 274/105, baixa 1.380/208; sem-triagem 2, erros do VLM 0.
+
+**Split v2** (mesma regra por cena, semente 42, remontado no
+fechamento às 21h37): treino 2.366 (1.442 pos / 924 neg, 222 cenas),
+holdout **646 (558 pos / 88 neg, 20 cenas)** — o holdout ganhou 67
+negativos (v1 tinha 21).
+
+| Modelo | Limiar | Precisão | Recall | F1 | Acurácia bal. | tn de 88 |
+|---|---|---|---|---|---|---|
+| Zero-shot B (baseline) | 0,50 | 0,864 | 1,000 | 0,927 | 0,500 | 0 |
+| Fine-tune `peso` | 0,62 | 0,879 | 1,000 | **0,935** | 0,562 | 11 |
+| Fine-tune `sobreamostragem` | 0,65 | **0,914** | 0,819 | 0,864 | **0,665** | 45 |
+
+- **Gate (precisão ≥ 70% + maior acurácia balanceada): os dois
+  passaram; vence `sobreamostragem`** (0,665 × 0,562) — é a única que
+  acerta negativo de verdade (45/88 contra 11/88), mesmo perdendo em
+  F1 para o `peso`. Zero-shot é trivial: chama tudo de cava e a
+  acurácia balanceada fica em 0,500.
+- A regra de 5 mil negativos para o gate "definitivo" continua em
+  pé; este é o gate intermediário com holdout de 88 negativos.
+- Custo medido: 72 s/época em 2.366 imagens, VRAM 2,39 GiB de 4 GiB;
+  early stop na época 4 (`peso`) e 7 (`sobreamostragem`) das 8.
+- Pendências: revisão humana dos 100 exemplos (dono, atalhos
+  "Revisao das cavas" na Área de Trabalho); JPEG corrompido
+  `bd8c83af…` sem escore (o treino o descarta sozinho na leitura do
+  snapshot); 1 JPG órfão no disco, sem linha no checkpoint.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
