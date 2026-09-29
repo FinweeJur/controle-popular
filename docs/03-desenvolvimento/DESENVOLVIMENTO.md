@@ -170,6 +170,22 @@ Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, l
    - **Copiar Texto**: Botão rápido utilizando `navigator.clipboard.writeText` para área de transferência.
    - **Gráficos Nativos**: Gráficos inline em SVG ou CSS sem dependências pesadas de terceiros.
 
+## Acessibilidade tipográfica das descrições
+
+> **Regra do dono (29/09/2026):** a descrição que fica **abaixo do título** da
+> página nunca é menor que `text-sm` (14px).
+
+O leitor do portal está sob estresse — denúncia, remoção, barragem. Letra
+miúda na descrição é barreira de leitura. O alvo é o parágrafo de resumo logo
+depois do `<h1>` de cada página — **não** é regra para cards de listagem,
+chips ou legendas de tabela.
+
+- Descrição com mais de ~2 linhas usa o componente `ResumoExpandivel`
+  (controle "Ver + Texto"): recolhida por padrão, abre no clique.
+- Ao aumentar a fonte, preservar o contraste AA ≥ 4,5:1; texto sobre foto usa
+  contorno e sombra (`apps/web/app/components/CapaFrente.tsx`).
+- A regra vive também no [AGENTS.md § 5.10](/AGENTS.md#510-fonte-mínima-da-descrição-da-página).
+
 ## Padrão de Código e Comentários Explicativos
 
 > **Regra do dono (25/09/2026):** Código sem comentário é código opaco. O Controle Popular é software cívico público, e cada linha deve ser auditável e compreensível por qualquer cidadão ou desenvolvedor.

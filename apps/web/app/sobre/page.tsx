@@ -292,6 +292,87 @@ export default async function SobrePage() {
         )}
       </section>
 
+      {/* ═══ DE ONDE VEM O NOME — agradecimento aos movimentos populares ═══ */}
+      <section className="space-y-4 rounded-2xl border border-border bg-surface-2 p-5 sm:p-6">
+        <h2 className="font-display text-2xl font-semibold">
+          De onde vem o nome — e a quem devemos
+        </h2>
+        <p className="text-text-soft">
+          O nome <strong className="text-text">Controle Popular</strong> não é
+          invenção de marketing. Vem de uma palavra de ordem do{" "}
+          <a
+            href="https://mab.org.br/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Movimento dos Atingidos por Barragens (MAB)
+          </a>
+          : &ldquo;Água e energia com soberania, distribuição da riqueza e
+          controle popular&rdquo;. É palavra de ordem de quem vive na bacia, não
+          de quem assina o contrato.
+        </p>
+        <p className="text-text-soft">
+          Do MAB vem a espinha dorsal da frente ambiental: a{" "}
+          <a
+            href="/ambiental/crimes-socioambientais"
+            className="text-primary hover:text-accent"
+          >
+            biblioteca de crimes socioambientais
+          </a>
+          , o acompanhamento das outorgas de água, o{" "}
+          <a href="/ambiental/barragens" className="text-primary hover:text-accent">
+            monitoramento de barragens
+          </a>{" "}
+          e a leitura do{" "}
+          <a href="/ambiental/licenciamento" className="text-primary hover:text-accent">
+            licenciamento ambiental
+          </a>
+          .
+        </p>
+        <p className="text-text-soft">
+          A{" "}
+          <a
+            href="/direitos-em-movimento/educacao"
+            className="text-primary hover:text-accent"
+          >
+            página de educação
+          </a>
+          , entre outras, foi inspirada no{" "}
+          <a
+            href="https://levante.org.br/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Levante Popular da Juventude
+          </a>
+          . A{" "}
+          <a
+            href="/direitos-em-movimento/saude-publica"
+            className="text-primary hover:text-accent"
+          >
+            página de saúde
+          </a>
+          , entre outras, foi inspirada no{" "}
+          <a
+            href="https://brasilpopular.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Movimento Brasil Popular
+          </a>
+          .
+        </p>
+        <p className="text-text-soft">
+          A homenagem é reconhecimento, não filiação. O portal publica dado
+          público e não fala em nome de movimento nenhum. Mas sem essas
+          organizações ninguém teria cobrado transparência na água, na barragem
+          e no licenciamento — e este portal não existiria.
+        </p>
+      </section>
+
       {/* ═══ 4. METODOLOGIA ═══ */}
       <section id="metodologia" className="scroll-mt-6 space-y-8">
         <h2 className="font-display text-2xl font-semibold">Metodologia</h2>

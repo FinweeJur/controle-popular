@@ -245,6 +245,21 @@ transparência e a continuidade do projeto:
 - **Linguagem:** português claro, direto, acessível tanto para desenvolvedores
   quanto para cidadãos e pesquisadores que queiram auditar o código.
 
+### 5.10. Fonte mínima da descrição da página
+
+**Regra do dono, 29/09/2026.** O portal atende gente sob estresse — denúncia,
+remoção, barragem. Letra miúda na descrição é barreira de leitura. A descrição
+que fica **abaixo do título** de cada página (o parágrafo de resumo logo depois
+do `<h1>`) tem piso e teto de comportamento:
+
+- **Nunca menor que `text-sm`** (14px). Vale para a descrição da PÁGINA sob o
+  título — não é regra para cards de listagem, chips ou legendas de tabela.
+- Descrição longa (mais de ~2 linhas) ganha o controle **"Ver + Texto"**:
+  aparece recolhida e abre no clique, para não empurrar o conteúdo.
+- O componente de referência é `ResumoExpandivel`; reutilize, não recrie.
+- Quem aumentar a fonte de uma página mantém o contraste: o texto sobre foto
+  usa contorno e sombra (`CapaFrente.tsx`), e o alvo continua AA ≥ 4,5:1.
+
 ## 6. Armadilhas
 
 Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
