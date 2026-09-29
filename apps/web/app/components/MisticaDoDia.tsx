@@ -76,12 +76,12 @@ export default function MisticaDoDia() {
         <p className="mt-1 text-[.95em] text-text-soft">{entrada.resumo}</p>
       ) : null}
       {entrada.semData ? (
-        <p className="mt-1 text-xs text-muted">
+        <p className="mt-1 text-[.8em] text-muted">
           Fato do calendário sem data no original — exibido para não deixar
           o dia vazio.
         </p>
       ) : null}
-      <p className="mt-3 text-xs text-muted">
+      <p className="mt-3 text-[.85em] text-muted">
         <span className="font-semibold">Fonte: </span>
         {entrada.url ? (
           <a
