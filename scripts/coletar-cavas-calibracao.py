@@ -119,6 +119,12 @@ TEX_ACROM_LIM = 0.45  # fracao acromatica minima para a regra de textura valer
 AMOSTRAS_CENA = ((0.12, 0.15), (0.55, 0.45), (0.85, 0.80))  # frac. de linha/coluna
 AMOSTRA_PX = 256  # cenas WPM ~14k px sem overviews: janela pequena (medido 25/09)
 MARGEM_EXCLUSAO = 0.006  # ~600 m de folga na exclusao de negativos
+# Celula da grade de janelas JA coletadas (~2,2 km). Serve para pular
+# candidato dentro de area ja coletada ANTES de compor a imagem: a rodada
+# de 29/09/2026 gastou ~30 s por candidato para o teste de hash descartar
+# depois (mesma semente 42 redesenhava os pontos da rodada v1; 2 h = zero
+# recorte novo). Menor que a janela (4,3 km) sobra pouca recusa indevida.
+CELULA_COLETADOS = 0.02
 
 
 def _get(url: str, timeout: int = 120, headers: dict | None = None) -> bytes:
@@ -658,7 +664,10 @@ def escolher_recorte(tipo: str, alvo, cenas, cands: list[dict], max_nuvem: float
         img.save(buf, "JPEG", quality=85)
         h = hashlib.sha256(buf.getvalue()).hexdigest()
         if h in hashes:
-            return None
+            # Janela identica ja coletada: tenta a PROXIMA cena em vez de
+            # desistir do candidato (outra data no mesmo ponto rende imagem
+            # distinta). Antes devolvia None e jogava fora as leituras todas.
+            continue
         return buf.getvalue(), cena["id"], cena["datetime"], nuvem, h
     return None
 
@@ -731,6 +740,13 @@ def principal() -> int:
         print(f"  bboxes de exclusao: {len(exclusao)}", flush=True)
         idx = montar_indice(exclusao)
         print(f"  celulas do indice: {len(idx)}", flush=True)
+        # Indice das janelas ja coletadas (bbox do checkpoint). A lista de
+        # itens ja esta em memoria, entao montar a grade e barato e evita
+        # recompor imagem de ponto que o hash ia recusar.
+        idx_coletados = montar_indice(
+            [tuple(it["bbox"]) for it in itens if it.get("bbox")],
+            celula=CELULA_COLETADOS,
+        )
         alvo_total = args.limite if args.tipo == "negativo" else max(0, args.limite - ja_neg)
         reserva = max(alvo_total * 3, alvo_total + 20)
         n = 0
@@ -741,7 +757,8 @@ def principal() -> int:
             tent += 1
             pt = (rng.uniform(ext["minlon"], ext["maxlon"]),
                   rng.uniform(ext["minlat"], ext["maxlat"]))
-            if rejeitado_indice(pt, idx):
+            if rejeitado_indice(pt, idx) or \
+                    rejeitado_indice(pt, idx_coletados, celula=CELULA_COLETADOS):
                 continue
             pendentes_neg.append(pt)
             n += 1
