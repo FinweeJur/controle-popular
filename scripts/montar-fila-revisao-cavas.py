@@ -145,7 +145,7 @@ def _cartao(x: dict, num: int | None = None) -> str:
     nuvem_s = f"{nuvem:.0%}" if isinstance(nuvem, (int, float)) else "?"
     num_s = f"<b>#{num}</b> · " if num is not None else ""
     # Eco do prompt: o VLM devolveu a própria instrução no lugar da
-    # descrição (1.117 de 3.012 no lote fechado, medido 28/09). Marcado
+    # descrição (1.117 de 3.012 no lote fechado, medido 29/09). Marcado
     # em vermelho para o revisor digitar a legenda dele.
     eco = "uma linha curta em portugu" in x["legenda"][:70]
     eco_s = (
@@ -219,7 +219,7 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
             "</select></div>"
         )
         # Campo aberto para o revisor digitar a legenda dele (pedido do
-        # dono 28/09); o valor vai no mesmo JSON exportado, por recorte.
+        # dono 29/09); o valor vai no mesmo JSON exportado, por recorte.
         correcao = (
             f'<div class="correcao"><label for="t{i}">'
             f"<b>sua legenda</b> (você digita):</label>"
@@ -228,7 +228,7 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
         )
         # O seletor e o campo entram DENTRO do <figure>: como eram irmãos
         # do card na grade, viravam célula solta e apareciam ao lado da
-        # figura sem par (formato esquisito, medido pelo dono 28/09).
+        # figura sem par (formato esquisito, medido pelo dono 29/09).
         cartoes.append(
             _cartao(x, num=i).replace(
                 "</figure>", seletor + correcao + "</figure>"

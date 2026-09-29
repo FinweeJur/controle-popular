@@ -85,14 +85,14 @@ MODELO_PADRAO = "qwen3-vl:2b-instruct"
 # livre; pedir "uma linha", "números inteiros" e enumeração fechada derruba a
 # taxa de resposta inválida.
 #
-# PROMPT v2 (28/09/2026): a v1 escrevia a descrição da legenda DENTRO do valor
+# PROMPT v2 (29/09/2026): a v1 escrevia a descrição da legenda DENTRO do valor
 # de exemplo do JSON. Com temperature 0 o modelo guloso copiava o exemplo
 # literalmente no lugar de descrever a imagem — 1.109 de 3.022 recortes (37%)
 # voltaram com a própria instrução como legenda ("uma linha curta em
 # português descrevendo..."), com escore médio 55,0 contra 65,8 dos que vieram
 # certos. A v2 deixa o valor vazio e move a descrição para as Regras: exemplo
 # vazio não tem texto para copiar, então o modelo é obrigado a olhar a imagem.
-# A ESCALA DO ESCORE MUDA COM O PROMPT (controlado em 28/09/2026): 40 recortes
+# A ESCALA DO ESCORE MUDA COM O PROMPT (controlado em 29/09/2026): 40 recortes
 # bons triados nas duas versões deram média 59,9 na v1 e 65,5 na v2 (delta
 # +5,6; só 40% idênticos; os cortes 50/70 da prioridade são atravessados). Por
 # isso a retri com v2 é SEMPRE COMPLETA, nunca só dos ecos — metade da fila em
@@ -115,7 +115,7 @@ Regras:
 
 
 def legenda_quebrada(reg: dict) -> bool:
-    """Detecta registro cuja legenda precisa ser refeita (pedido do dono 28/09).
+    """Detecta registro cuja legenda precisa ser refeita (pedido do dono 29/09).
 
     Três defeitos medidos no lote fechado de MG:
     - eco do prompt: o modelo copiou a instrução como resposta (1.109 casos);
