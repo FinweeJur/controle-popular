@@ -7,9 +7,10 @@ name: Espelho no GitLab
 # Espelho, não casa: a CI (ETLs, guardas de dado pessoal, vigia de LAI) segue
 # sendo GitHub Actions. Este workflow só copia o repositório para o GitLab.
 #
-# O que ele faz: `git push --mirror` do repositório para o espelho no GitLab.
-# `--mirror` copia branches e tags e apaga do espelho o que foi deletado aqui —
-# é isso que mantém o GitLab igual ao GitHub.
+# O que ele faz: copia branches e tags para o GitLab e apaga do espelho o que
+# foi deletado aqui (`push --prune`) — é isso que mantém o GitLab igual ao
+# GitHub. O `git push --mirror` não serve: ele leva `refs/remotes/*` e o
+# GitLab recusa o namespace inteiro.
 #
 # Segredo necessário (Settings > Secrets and variables > Actions):
 #   GITLAB_TOKEN — Personal Access Token do GitLab com escopo `write_repository`
@@ -61,4 +62,10 @@ jobs:
         run: |
           repo="${{ github.event.repository.name }}"
           git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/FinweeJur/${repo}.git"
-          git push --mirror gitlab
+          # NÃO usar `--mirror`: ele leva refs/remotes/* junto, e o GitLab
+          # recusa todo ref do namespace remoto com "deny updating a hidden
+          # ref" (medido em 29/09, run 36561062211). O equivalente exato é
+          # heads + tags, com --prune para apagar do espelho o que saiu daqui.
+          git fetch origin "+refs/heads/*:refs/remotes/origin/*"
+          git push --prune gitlab "+refs/remotes/origin/*:refs/heads/*"
+          git push gitlab "+refs/tags/*:refs/tags/*"
