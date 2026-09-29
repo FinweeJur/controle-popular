@@ -712,7 +712,7 @@ def principal() -> int:
 
     rng = random.Random(args.semente)
     pendentes_pos: list[dict] = []
-    pendentes_neg: list[tuple[float, float]] = []
+    pendentes_neg: list[tuple] = []  # vira [(ponto, cenas_que_contem)] apos a ordenacao
 
     if args.tipo in ("ambos", "positivo"):
         print("carregando positivos (fases extrativas MG)...", flush=True)
@@ -763,6 +763,20 @@ def principal() -> int:
             pendentes_neg.append(pt)
             n += 1
         print(f"  candidatos a negativo: {len(pendentes_neg)} (tentativas {tent})", flush=True)
+        # Ordena os candidatos pela cena primaria: candidatos seguidos caem
+        # na mesma cena e aproveitam o cache de datasets abertos, como os
+        # positivos ja fazem desde a Fase 1. Sem a ordem, cada candidato
+        # abria cena fria e a leitura custava 10-20 s (medido 29/09/2026).
+        # As cenas de cada ponto sao calculadas UMA vez e o laco reaproveita.
+        print("  ordenando candidatos por cena primaria...", flush=True)
+        com_cenas: list[tuple[str, list, tuple[float, float]]] = []
+        for i, pt in enumerate(pendentes_neg, 1):
+            lista = cenas_que_contem(pt, cenas)
+            com_cenas.append((lista[0]["id"] if lista else "", lista, pt))
+            if i % 500 == 0:
+                print(f"    {i}/{len(pendentes_neg)}", flush=True)
+        com_cenas.sort(key=lambda t: t[0])
+        pendentes_neg = [(pt, lista) for _, lista, pt in com_cenas]
 
     feitos = {"positivo": 0, "negativo": 0}
     # --- positivos -------------------------------------------------------
@@ -796,10 +810,9 @@ def principal() -> int:
     # --- negativos -------------------------------------------------------
     if args.tipo in ("ambos", "negativo"):
         limite_neg = args.limite if args.tipo == "negativo" else max(0, args.limite - ja_neg)
-        for pt in pendentes_neg:
+        for pt, cands in pendentes_neg:
             if feitos["negativo"] >= limite_neg:
                 break
-            cands = cenas_que_contem(pt, cenas)
             r = escolher_recorte("negativo", pt, cenas, cands,
                                  args.max_nuvem, args.tentativas, hashes, rng)
             if r is None:
