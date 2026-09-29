@@ -410,6 +410,50 @@ negativos (v1 tinha 21).
 Critério de pronto: Δ calculado com data para as 7.090 minas em operação
 de MG; 30 cavas conferidas à mão no Copernicus Browser.
 
+#### Medições da Fase 3 — 29/09/2026
+
+- **Bloqueio medido, e a saída que serviu.** A série Sentinel-2 (método A
+  original) ficou **bloqueada pela rede deste PC**: 256 KB do Planetary
+  Computer levaram 56 s (≈5 KB/s), 10 MB do INPE estouraram timeout em
+  162 s, e 10 MB de speed.cloudflare não terminaram em 180 s. Baixar banda
+  de satélite para 4.000 cavas não fecha aqui. Saída usada: camada
+  **`pto:mining_age`** do Monitor da Mineração (MapBiomas), que é
+  **um polígono por cava com o ano da primeira detecção e a área** — Δ por
+  ano sem baixar imagem.
+- **Prova de que é 1 linha por polígono:** quadro de 0,2° no Quadrilátero
+  Ferroso → 300 feições, **300 geometrias distintas, zero repetidas**. Então
+  `ano` = primeira detecção, não ano × polígono. Consequência honesta:
+  **Δ de área por cava individual não sai desta camada** — só Δ agregado por
+  ano; o Δ por cava continua sendo o método Sentinel, ainda bloqueado.
+- **Unidade do campo `area`: hectares** — conferido projetando a geometria
+  (SIRGAS 2000 / UTM 21–23S) e medindo por shoelace contra o campo da fonte:
+  razão **0,943 em 5/5 feições** (0,84–1,08). Sem esta conferência o número
+  sai sem unidade, e número sem método não vai na tela (AGENTS § 8).
+- **CSV do WFS é 7× mais rápido que GeoJSON** no mesmo servidor e mesma
+  página: **4,9 s / 93 KB** contra **35,4 s / 451 KB**. Coleta paginada de MG
+  em 35 páginas de 2.500 (`startIndex` + `sortBy=id`): **86.694 feições**
+  em ~7 min — batendo certinho o `numberMatched` do servidor.
+- **Série publicada** (`apps/web/data/cavas-serie-mineracao-mg.json`,
+  10,9 KB): 40 anos (1985→2024), **86.694 polígonos, 104.186,8 ha** de área
+  mapeada (1.041,9 km²). Salto de 2020→2022 (5.403 / 4.972 / 4.846 polígonos)
+  e estado `ativa` (última detecção 2024). 1985 é o teto da série — ali
+  cabe o que existia antes, tratar como baseline, não como "ano em que tudo
+  começou".
+- **Divisão fora do SIGMINE bateu com o plano:** 3.869 polígonos com
+  `dentro_sigmine=false` (2.589,5 ha) — **o mesmo 3.869 já medido na Fase 1**.
+  É a segunda verificação independente.
+- **Três estados editoriais, amostra datada**
+  (`apps/web/data/cavas-estados-mg.json`, 60,9 KB): **120 cavas com semente
+  42** → **84 em operação, 34 indício processual, 2 sem cadastro ANM**.
+  Corte por BBOX com buffer de 80 m, fases cruzadas com
+  `pto:processos_minerarios`.
+- **Achados de servidor a não repetir:** `uf_id`/`municipio_id` voltam
+  corrompidos (`[Ljava.lang.Long;@5fcf83ae`) → filtro de UF é **espacial**,
+  nunca por campo; `resultType=hits` quebra (JSONDecodeError /
+  RemoteDisconnected) → contar por `numberMatched` ou paginando; o `id`
+  chega como `mining_age.642279` mas o CQL `id IN (...)` quer **número**
+  (`id IN (642279)`, aspas quebram a conexão).
+
 ### Fase 4 — varredura de MG e depois o Brasil (1–2 semanas)
 
 - Pré-filtro barato (classe mineração MapBiomas + solo exposto Sentinel +
@@ -447,6 +491,44 @@ itens vieram sem imagem utilizável.
 
 Critério de pronto: o dono abre o globo, clica numa cava, e vê — sem
 escrever código — ressalva, data da imagem, fonte, método e link na ANM.
+
+#### Medições da Fase 5 — 29/09/2026
+
+**O que foi publicado**
+
+- **Duas camadas no globo**, ambas da mesma fonte da página
+  (`pto:mining_age`, MapBiomas, 30 m), geradas por
+  `scripts/etl/cavas/fase3-mineracao-mg.py --camadas`:
+  | camada | feições | arquivo | área |
+  |---|---:|---:|---:|
+  | `mineracao-sem-cadastro` | 3.869 | 1.565 KB cru | 2.589,5 ha |
+  | `cavas-monitoradas` | 3.799 | 1.811 KB cru | 4.234,4 ha (2024) |
+  Teto do plano: GeoJSON gzip < 2 MiB cada — **as duas ficam abaixo até
+  cruas** (gzip medido: 125 KB e 170 KB). Entradas em `LAYER_REGISTRY` e em
+  `CAMADAS` (assunto `territorio-mineracao`), `on: false` e `pesada: true`
+  nos dois: 7.668 polígonos novos não podem entrar em "ligar tudo" de graça.
+  Cores conferidas **em OKLCH**, não HSL: 34,65° (21,2° da mais próxima) e
+  115,4° (13,4° da mais próxima) — piso do projeto é 11,6°.
+- **`proveniencia.json` regenerado**: 54 camadas, origem declarada das duas
+  novas, nenhuma caindo em `camadas_sem_origem_declarada`.
+- **Página `/mineraicao/cavas`**: 8 cartões de topo com números medidos,
+  gráfico SVG nativo de Δ área/ano com tabela equivalente em `<details>`,
+  os três estados editoriais com contagem, tabela de 120 cavas com busca,
+  filtro por estado, ordenação por coluna e CSV do filtrado (`;` + BOM).
+- **Verificação verde**: `npm test` (172 arquivos de teste no vitest) e
+  `testar-globo.mjs` (153 testes, +7 novos em `js/layers/cavas.test.mjs`,
+  que cruza globo × série publicada e derruba se os dois números divergirem).
+  `checar-dado-pessoal-em-dado.py` verde nos 462 arquivos de dado.
+
+**O que ficou pendente, escrito em vez de omitido**
+
+- **Deep-link `?camada=&idx=`** do globo para a página — não feito.
+- **Imagem da data no link externo** e **ressalva de IA visível por item** —
+  dependem da série Sentinel, ainda bloqueada (ver medições da Fase 3).
+- **Filtro por UF e por distância de TI/UC** — fora do escopo desta leva;
+  a série cobre só MG e a distância não foi coletada.
+- **Contexto para o chatbot** (regra 5) e **tags derivadas de dado** —
+  ainda não ligados em `lib/assistente/`.
 
 ### Painel de visualização, linha do tempo e exportação (pedido do dono 25/09)
 

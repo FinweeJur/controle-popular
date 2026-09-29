@@ -828,6 +828,36 @@ export const LAYER_REGISTRY = [
     // chave dela.
     color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true, pesada: true,
   },
+  // --- As DUAS camadas da Fase 3/5 do plano de cavas (29/09/2026) -----------
+  //
+  // Fonte única: camada `pto:mining_age` do Monitor da Mineração (MapBiomas),
+  // WFS público do MapBiomas — a mesma série que dá a página /mineraicao/cavas.
+  // Cada feição é UM polígono com o ano da PRIMEIRA detecção e a área em
+  // hectares (unidade conferida contra shoelace projetado: razão 0,943).
+  // Resolução 30 m (Landsat), não 10 m: isso está escrito na ficha de cada
+  // feição (campo `resolucao_m`), porque número sem método não vai na tela.
+  //
+  // Elas existem porque a série Sentinel-2 do método A original ficou
+  // bloqueada pela rede da máquina de coleta (~5 KB/s medido em 28/09) — ver
+  // docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md § Fase 3, medições. O Δ por
+  // cava individual continua pendente; estas duas respondem o que dá para
+  // responder sem baixar imagem.
+  //
+  // `pesada` nas DUAS de propósito: 3.869 + 3.799 polígonos é ~7.600 shapes
+  // novos triangulados na thread principal (ver a nota de sigmine-interesse
+  // acima) — "ligar tudo" já passa de mil, elas dobrariam o custo sozinhas.
+  {
+    id: 'mineracao-sem-cadastro', label: 'Mineração sem cadastro na ANM',
+    hint: '3.869 polígonos de mineração mapeados pelo MapBiomas que caem FORA de todo polígono da ANM, somando 2.589,5 hectares. É o terceiro dos três estados editoriais da Fase 3: o satélite enxerga mineração onde o cadastro oficial não tem nada.',
+    aviso: '"Sem cadastro na ANM" não é "ilegal": pode ser lavra informal, área de garimpo, extração de areia isenta de cadastro, ou polígono da ANM que não encosta por causa do desenho. É o convite para conferir na ANM, não a sentença. Nenhuma destas feições tem processo para linkar — e é exatamente isso que esta camada mede.',
+    color: 0xfa8c72, /* oklch 0.754 0.139 34.65 — 21,2° da mais próxima (assentamentos) */ on: false, render: 'fill', listavel: true, pesada: true,
+  },
+  {
+    id: 'cavas-monitoradas', label: 'Cavas detectadas na janela ativa (2024)',
+    hint: '3.799 polígonos de mineração cuja PRIMEIRA detecção é de 2024 — o conjunto que o critério de 24 meses da Fase 3 classifica como "ativa" num portal publicado em 2026. 4.234 hectares novos naquele ano, o segundo maior pulo da série.',
+    aviso: '"Primeira detecção em 2024" não é "aberta em 2024": a camada é um raster de 30 m, então mineração pequena ou sob nuvem pode aparecer anos depois de começar. E ano da primeira detecção NÃO é ano de encerramento — para saber se parou, ver a série em /mineraicao/cavas.',
+    color: 0xacb947, /* oklch 0.754 0.139 115.4 — 13,4° da mais próxima (lotes-vagos) */ on: false, render: 'fill', listavel: true, pesada: true,
+  },
   // --- O cruzamento das duas coisas acima (15/08/2026) --------------------
   //
   // Estes dois arquivos existiam em `dados/camadas/` desde 13/08 e NÃO tinham
@@ -1341,6 +1371,22 @@ export const CAMADAS = [
     hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai.',
     aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
     fontes: ['sigmine-interesse'],
+  },
+  // Fase 5 do plano de cavas (29/09/2026) — mesma fonte da página
+  // /mineraicao/cavas, para o globo e a página se cobrirem com o mesmo número.
+  {
+    id: 'mineracao-sem-cadastro', assunto: 'territorio-mineracao',
+    label: 'Mineração sem cadastro na ANM',
+    hint: '3.869 polígonos, 2.589,5 hectares: mineração mapeada pelo MapBiomas (30 m, Monitor da Mineração) que fica fora de TODO polígono da ANM. Um terço das cavas do cruzamento da Fase 3 cai aqui.',
+    aviso: '"Sem cadastro na ANM" não é "ilegal" — a apuração é da autoridade, não do mapa. Nenhuma destas feições tem processo ANM para linkar, porque é justamente a ausência de processo que elas medem.',
+    fontes: ['mineracao-sem-cadastro'],
+  },
+  {
+    id: 'cavas-monitoradas', assunto: 'territorio-mineracao',
+    label: 'Cavas detectadas na janela ativa (2024)',
+    hint: '3.799 polígonos com primeira detecção em 2024 — o conjunto que o critério de 24 meses da Fase 3 chama de "ativa". É a resposta do globo à pergunta "onde a mineração cresceu agora?".',
+    aviso: 'Detecção em 30 m: cava pequena ou sob nuvem aparece atrasada. Ano da primeira detecção não é ano de abertura nem de encerramento — a série completa está em /mineraicao/cavas.',
+    fontes: ['cavas-monitoradas'],
   },
   // --- Os cruzamentos, ligados em 15/08/2026 -------------------------------
   // Ordem deliberada: o que JÁ ACONTECE vem antes do que PODE acontecer, e o

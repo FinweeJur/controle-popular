@@ -210,6 +210,17 @@ const ORIGENS = {
     obtencao: 'automatica',
     servico: 'ANM/SIGMINE — processos minerários de MG nas demais fases (requerimento, pesquisa, disponibilidade): processo protocolado, não mina',
   },
+  // Fase 5 do plano de cavas (29/09/2026) — as DUAS camadas da série anual,
+  // mesma fonte da página /mineraicao/cavas. Geradas por
+  // scripts/etl/cavas/fase3-mineracao-mg.py --camadas.
+  'mineracao-sem-cadastro': {
+    obtencao: 'automatica',
+    servico: 'MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos com dentro_sigmine=false; base ANM/SIGMINE para o teste de cadastro',
+  },
+  'cavas-monitoradas': {
+    obtencao: 'automatica',
+    servico: 'MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos de primeira detecção em 2024 (janela de 24 meses da Fase 3)',
+  },
   // Dinheiro público e mineração (13/08/2026) — ver
   // docs/HANDOFF-CAMADA-DINHEIRO.md e docs/FONTES-FLUXO-FINANCEIRO.md.
   'cfem-municipios': {

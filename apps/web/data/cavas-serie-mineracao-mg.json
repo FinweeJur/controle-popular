@@ -1,0 +1,428 @@
+{
+ "gerado_em": "2026-09-29T03:21:51+00:00",
+ "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, método A)",
+ "uf": "MG",
+ "fonte": "MapBiomas - Monitor da Mineração, acessado em 2026-09-29",
+ "fonte_url": "https://plataforma.monitormineracao.mapbiomas.org/",
+ "camada": "pto:mining_age",
+ "licenca": "CC BY 4.0 (MapBiomas; base ANM/SIGMINE)",
+ "resolucao_m": 30,
+ "area_unidade": "hectares (conferido 28/09 com shoelace projetado: razão média 0,95 contra o campo da fonte)",
+ "metodo": "cada linha do mining_age é UM polígono com o ano da primeira detecção e a área em hectares; área nova por ano = soma da área dos polígonos daquele ano",
+ "resolucao_aviso": "30 m (Landsat) — cava pequena de 30 m não aparece; ver ficha da cava",
+ "cobertura": {
+  "poligonos": 86694,
+  "area_total": 104186.77,
+  "poligonos_fora_sigmine": 3869,
+  "area_fora_sigmine": 2589.538
+ },
+ "estado_uf": {
+  "estado": "ativa",
+  "ultimo_ano": 2024,
+  "janela_meses": 24,
+  "explicacao": "última detecção em 2024; janela de 24 meses termina em 2024"
+ },
+ "serie": [
+  {
+   "ano": 1985,
+   "qtd": 1164,
+   "area": 17118.833400000003,
+   "area_fora_sigmine": 150.02650000000003,
+   "qtd_fora": 57,
+   "acumulado": 17118.833400000003,
+   "delta_area": 17118.833400000003,
+   "delta_pct": null
+  },
+  {
+   "ano": 1986,
+   "qtd": 1837,
+   "area": 2378.132199999994,
+   "area_fora_sigmine": 49.868100000000005,
+   "qtd_fora": 82,
+   "acumulado": 19496.965599999996,
+   "delta_area": 2378.132199999994,
+   "delta_pct": 13.891905741661073
+  },
+  {
+   "ano": 1987,
+   "qtd": 1127,
+   "area": 879.7118000000005,
+   "area_fora_sigmine": 23.832100000000004,
+   "qtd_fora": 42,
+   "acumulado": 20376.677399999997,
+   "delta_area": 879.7118000000005,
+   "delta_pct": 36.991711394345636
+  },
+  {
+   "ano": 1988,
+   "qtd": 1634,
+   "area": 1279.2054999999996,
+   "area_fora_sigmine": 60.15410000000002,
+   "qtd_fora": 67,
+   "acumulado": 21655.882899999997,
+   "delta_area": 1279.2054999999996,
+   "delta_pct": 145.41188375556618
+  },
+  {
+   "ano": 1989,
+   "qtd": 1920,
+   "area": 2400.487199999995,
+   "area_fora_sigmine": 31.235300000000006,
+   "qtd_fora": 72,
+   "acumulado": 24056.370099999993,
+   "delta_area": 2400.487199999995,
+   "delta_pct": 187.6545402595592
+  },
+  {
+   "ano": 1990,
+   "qtd": 1477,
+   "area": 1004.0609999999991,
+   "area_fora_sigmine": 36.0557,
+   "qtd_fora": 72,
+   "acumulado": 25060.43109999999,
+   "delta_area": 1004.0609999999991,
+   "delta_pct": 41.827384041039714
+  },
+  {
+   "ano": 1991,
+   "qtd": 1211,
+   "area": 939.6669999999989,
+   "area_fora_sigmine": 13.9326,
+   "qtd_fora": 38,
+   "acumulado": 26000.09809999999,
+   "delta_area": 939.6669999999989,
+   "delta_pct": 93.58664463613263
+  },
+  {
+   "ano": 1992,
+   "qtd": 1401,
+   "area": 1031.6614999999995,
+   "area_fora_sigmine": 25.577500000000008,
+   "qtd_fora": 59,
+   "acumulado": 27031.759599999987,
+   "delta_area": 1031.6614999999995,
+   "delta_pct": 109.79011713724125
+  },
+  {
+   "ano": 1993,
+   "qtd": 1803,
+   "area": 1487.474099999999,
+   "area_fora_sigmine": 43.51309999999995,
+   "qtd_fora": 76,
+   "acumulado": 28519.233699999986,
+   "delta_area": 1487.474099999999,
+   "delta_pct": 144.18237958865382
+  },
+  {
+   "ano": 1994,
+   "qtd": 2188,
+   "area": 1691.5241999999957,
+   "area_fora_sigmine": 40.87409999999997,
+   "qtd_fora": 98,
+   "acumulado": 30210.757899999982,
+   "delta_area": 1691.5241999999957,
+   "delta_pct": 113.7178926342312
+  },
+  {
+   "ano": 1995,
+   "qtd": 2125,
+   "area": 1653.7584999999974,
+   "area_fora_sigmine": 29.8554,
+   "qtd_fora": 82,
+   "acumulado": 31864.51639999998,
+   "delta_area": 1653.7584999999974,
+   "delta_pct": 97.76735680163497
+  },
+  {
+   "ano": 1996,
+   "qtd": 1986,
+   "area": 1405.671099999998,
+   "area_fora_sigmine": 47.32939999999998,
+   "qtd_fora": 100,
+   "acumulado": 33270.18749999998,
+   "delta_area": 1405.671099999998,
+   "delta_pct": 84.99857143591402
+  },
+  {
+   "ano": 1997,
+   "qtd": 1979,
+   "area": 1373.0892000000003,
+   "area_fora_sigmine": 40.47599999999997,
+   "qtd_fora": 104,
+   "acumulado": 34643.27669999998,
+   "delta_area": 1373.0892000000003,
+   "delta_pct": 97.68211070142954
+  },
+  {
+   "ano": 1998,
+   "qtd": 2187,
+   "area": 1779.6292999999982,
+   "area_fora_sigmine": 57.27979999999999,
+   "qtd_fora": 96,
+   "acumulado": 36422.90599999998,
+   "delta_area": 1779.6292999999982,
+   "delta_pct": 129.60769773733546
+  },
+  {
+   "ano": 1999,
+   "qtd": 2509,
+   "area": 2591.975399999992,
+   "area_fora_sigmine": 87.81009999999998,
+   "qtd_fora": 144,
+   "acumulado": 39014.88139999997,
+   "delta_area": 2591.975399999992,
+   "delta_pct": 145.64692770567413
+  },
+  {
+   "ano": 2000,
+   "qtd": 2275,
+   "area": 1523.615800000003,
+   "area_fora_sigmine": 73.88279999999999,
+   "qtd_fora": 126,
+   "acumulado": 40538.49719999997,
+   "delta_area": 1523.615800000003,
+   "delta_pct": 58.782031650455004
+  },
+  {
+   "ano": 2001,
+   "qtd": 1910,
+   "area": 1275.1339999999975,
+   "area_fora_sigmine": 57.0458,
+   "qtd_fora": 114,
+   "acumulado": 41813.63119999997,
+   "delta_area": 1275.1339999999975,
+   "delta_pct": 83.69130853066731
+  },
+  {
+   "ano": 2002,
+   "qtd": 1833,
+   "area": 1164.203099999999,
+   "area_fora_sigmine": 20.43,
+   "qtd_fora": 87,
+   "acumulado": 42977.834299999966,
+   "delta_area": 1164.203099999999,
+   "delta_pct": 91.30045156038513
+  },
+  {
+   "ano": 2003,
+   "qtd": 1921,
+   "area": 1512.5451999999989,
+   "area_fora_sigmine": 31.028400000000005,
+   "qtd_fora": 94,
+   "acumulado": 44490.379499999966,
+   "delta_area": 1512.5451999999989,
+   "delta_pct": 129.92107648570942
+  },
+  {
+   "ano": 2004,
+   "qtd": 1798,
+   "area": 1439.329,
+   "area_fora_sigmine": 24.36219999999999,
+   "qtd_fora": 65,
+   "acumulado": 45929.708499999964,
+   "delta_area": 1439.329,
+   "delta_pct": 95.1594041619385
+  },
+  {
+   "ano": 2005,
+   "qtd": 1721,
+   "area": 1820.6467999999984,
+   "area_fora_sigmine": 27.878400000000003,
+   "qtd_fora": 71,
+   "acumulado": 47750.35529999996,
+   "delta_area": 1820.6467999999984,
+   "delta_pct": 126.49274766227863
+  },
+  {
+   "ano": 2006,
+   "qtd": 1160,
+   "area": 951.6528000000019,
+   "area_fora_sigmine": 7.934300000000001,
+   "qtd_fora": 43,
+   "acumulado": 48702.00809999996,
+   "delta_area": 951.6528000000019,
+   "delta_pct": 52.27003941676127
+  },
+  {
+   "ano": 2007,
+   "qtd": 1819,
+   "area": 2022.1256999999973,
+   "area_fora_sigmine": 37.25649999999998,
+   "qtd_fora": 66,
+   "acumulado": 50724.13379999996,
+   "delta_area": 2022.1256999999973,
+   "delta_pct": 212.48565653355857
+  },
+  {
+   "ano": 2008,
+   "qtd": 2041,
+   "area": 3581.556399999985,
+   "area_fora_sigmine": 50.85249999999999,
+   "qtd_fora": 94,
+   "acumulado": 54305.690199999946,
+   "delta_area": 3581.556399999985,
+   "delta_pct": 177.1183858649336
+  },
+  {
+   "ano": 2009,
+   "qtd": 2296,
+   "area": 2077.3329999999974,
+   "area_fora_sigmine": 26.898400000000006,
+   "qtd_fora": 110,
+   "acumulado": 56383.023199999945,
+   "delta_area": 2077.3329999999974,
+   "delta_pct": 58.00084566586767
+  },
+  {
+   "ano": 2010,
+   "qtd": 2170,
+   "area": 1856.4565999999927,
+   "area_fora_sigmine": 30.82789999999999,
+   "qtd_fora": 110,
+   "acumulado": 58239.479799999935,
+   "delta_area": 1856.4565999999927,
+   "delta_pct": 89.367308948541
+  },
+  {
+   "ano": 2011,
+   "qtd": 2445,
+   "area": 2933.659499999987,
+   "area_fora_sigmine": 39.3485,
+   "qtd_fora": 91,
+   "acumulado": 61173.13929999992,
+   "delta_area": 2933.659499999987,
+   "delta_pct": 158.02467453319395
+  },
+  {
+   "ano": 2012,
+   "qtd": 2312,
+   "area": 2314.847099999992,
+   "area_fora_sigmine": 49.943499999999986,
+   "qtd_fora": 69,
+   "acumulado": 63487.986399999914,
+   "delta_area": 2314.847099999992,
+   "delta_pct": 78.9064681841912
+  },
+  {
+   "ano": 2013,
+   "qtd": 2118,
+   "area": 1601.0052999999943,
+   "area_fora_sigmine": 22.647699999999993,
+   "qtd_fora": 69,
+   "acumulado": 65088.99169999991,
+   "delta_area": 1601.0052999999943,
+   "delta_pct": 69.16246433727738
+  },
+  {
+   "ano": 2014,
+   "qtd": 1916,
+   "area": 1519.600499999993,
+   "area_fora_sigmine": 13.259,
+   "qtd_fora": 62,
+   "acumulado": 66608.5921999999,
+   "delta_area": 1519.600499999993,
+   "delta_pct": 94.91539472105423
+  },
+  {
+   "ano": 2015,
+   "qtd": 1737,
+   "area": 1583.0532999999934,
+   "area_fora_sigmine": 12.155400000000004,
+   "qtd_fora": 51,
+   "acumulado": 68191.6454999999,
+   "delta_area": 1583.0532999999934,
+   "delta_pct": 104.17562379059501
+  },
+  {
+   "ano": 2016,
+   "qtd": 1848,
+   "area": 1650.5458999999942,
+   "area_fora_sigmine": 24.316099999999988,
+   "qtd_fora": 67,
+   "acumulado": 69842.1913999999,
+   "delta_area": 1650.5458999999942,
+   "delta_pct": 104.26344457258648
+  },
+  {
+   "ano": 2017,
+   "qtd": 1753,
+   "area": 1270.5399000000004,
+   "area_fora_sigmine": 21.217299999999998,
+   "qtd_fora": 68,
+   "acumulado": 71112.7312999999,
+   "delta_area": 1270.5399000000004,
+   "delta_pct": 76.97695047438577
+  },
+  {
+   "ano": 2018,
+   "qtd": 1777,
+   "area": 1316.633499999994,
+   "area_fora_sigmine": 12.344399999999997,
+   "qtd_fora": 58,
+   "acumulado": 72429.3647999999,
+   "delta_area": 1316.633499999994,
+   "delta_pct": 103.62787504744979
+  },
+  {
+   "ano": 2019,
+   "qtd": 1649,
+   "area": 1482.8338999999971,
+   "area_fora_sigmine": 11.0477,
+   "qtd_fora": 57,
+   "acumulado": 73912.19869999989,
+   "delta_area": 1482.8338999999971,
+   "delta_pct": 112.62313316500028
+  },
+  {
+   "ano": 2020,
+   "qtd": 5403,
+   "area": 11464.62480000005,
+   "area_fora_sigmine": 433.8532999999998,
+   "qtd_fora": 253,
+   "acumulado": 85376.82349999994,
+   "delta_area": 11464.62480000005,
+   "delta_pct": 773.1563730772592
+  },
+  {
+   "ano": 2021,
+   "qtd": 4972,
+   "area": 6089.267699999986,
+   "area_fora_sigmine": 360.20129999999983,
+   "qtd_fora": 260,
+   "acumulado": 91466.09119999992,
+   "delta_area": 6089.267699999986,
+   "delta_pct": 53.11353669419656
+  },
+  {
+   "ano": 2022,
+   "qtd": 4846,
+   "area": 4525.88509999995,
+   "area_fora_sigmine": 193.8571999999999,
+   "qtd_fora": 273,
+   "acumulado": 95991.97629999988,
+   "delta_area": 4525.88509999995,
+   "delta_pct": 74.32560568818415
+  },
+  {
+   "ano": 2023,
+   "qtd": 2627,
+   "area": 3960.3620999999825,
+   "area_fora_sigmine": 166.759,
+   "qtd_fora": 129,
+   "acumulado": 99952.33839999986,
+   "delta_area": 3960.3620999999825,
+   "delta_pct": 87.50469825228276
+  },
+  {
+   "ano": 2024,
+   "qtd": 3799,
+   "area": 4234.431599999979,
+   "area_fora_sigmine": 102.37089999999995,
+   "qtd_fora": 193,
+   "acumulado": 104186.76999999984,
+   "delta_area": 4234.431599999979,
+   "delta_pct": 106.92031418036238
+  }
+ ],
+ "ressalva": "área de mineração mapeada, não atividade em curso; dado de calibração interno até a barra de publicação da Fase 0"
+}

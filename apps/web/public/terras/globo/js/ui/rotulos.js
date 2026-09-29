@@ -32,6 +32,11 @@ export const ROTULOS = {
   cfem_atraso_medido_meses: 'Atraso da fonte (meses)',
 
   area_ha: 'Tamanho',
+  // Fase 5 do plano de cavas (29/09/2026) — as duas chaves que a série
+  // `mining_age` do MapBiomas traz na ficha e que não existiam aqui.
+  estado: 'Estado desta cava',
+  resolucao_m: 'Resolução da imagem',
+  dentro_sigmine: 'Dentro de processo da ANM',
   municipio: 'Município',
   uf: 'Estado',
   codigo_ibge: 'Código do município (IBGE)',
@@ -392,6 +397,26 @@ function descreverFormato(c) {
 export function formatarValor(chave, valor) {
   if (chave === 'area_ha' && Number.isFinite(Number(valor))) {
     return descreverArea(valor);
+  }
+  // Fase 5 do plano de cavas — série `mining_age` do MapBiomas. O estado sai
+  // em frase: `sem_cadastro_anm` na tela seria a chave crua de novo, que é o
+  // defeito que este arquivo existe para impedir.
+  if (chave === 'estado' && valor) {
+    const frases = {
+      sem_cadastro_anm: 'fora de todo polígono da ANM — sem cadastro na área',
+      ativa: 'primeira detecção na janela ativa de 24 meses',
+      em_operacao: 'dentro de polígono da ANM em fase que autoriza extrair',
+      indicio_processual: 'dentro de polígono da ANM sem autorização de extração',
+    };
+    return frases[valor] ?? String(valor);
+  }
+  // A resolução vem SEMPRE escrita: número sem método não vai na tela
+  // (AGENTS § 8), e esta camada é um raster de 30 m, não levantamento de campo.
+  if (chave === 'resolucao_m' && Number.isFinite(Number(valor))) {
+    return `${formatarNumero(Number(valor), 0)} metros por pixel — a fonte é um raster; cava menor pode não aparecer`;
+  }
+  if (chave === 'dentro_sigmine') {
+    return valor ? 'sim' : 'não — fora de todo polígono da ANM';
   }
   // Áreas do par processo×faixa: mesma régua de `area_ha` (de 420 m² a
   // milhares de hectares, o descreverArea é a única régua que atravessa).

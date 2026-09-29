@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-09-17T23:59:42.306Z",
+  "gerado_em_utc": "2026-09-29T04:25:31.628Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -153,6 +153,16 @@
       "servico": "Semad/IDE-Sisema — áreas de revegetação/restauração pós-rompimento (ide_250102_mg_restauracao_pol) — licença presumida da série, não conferida individualmente"
     },
     {
+      "camada": "cavas-monitoradas",
+      "feicoes": 3799,
+      "bytes": 1854142,
+      "comprimido": false,
+      "sha256": "6e5c1b14f0eef8761054ec3f05b53d1eb0764afeb5819103b9273ac3039cad90",
+      "mtime_utc": "2026-09-29T04:25:31.628Z",
+      "obtencao": "automatica",
+      "servico": "MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos de primeira detecção em 2024 (janela de 24 meses da Fase 3)"
+    },
+    {
       "camada": "cfem-municipios",
       "feicoes": 10,
       "bytes": 48351,
@@ -281,6 +291,16 @@
       "mtime_utc": "2026-09-08T14:43:10.330Z",
       "obtencao": "automatica",
       "servico": "FEAM/IDE-Sisema — mancha de inundação (ide_1903_mg_mancha_inundacao_pae_pol), mesma origem da ZAS, simplificada para desenho"
+    },
+    {
+      "camada": "mineracao-sem-cadastro",
+      "feicoes": 3869,
+      "bytes": 1602772,
+      "comprimido": false,
+      "sha256": "23858d08e341af4df08caa3a1c1cfa5d04bb006842bcceb3ab3d4aef4cbf1864",
+      "mtime_utc": "2026-09-29T04:18:30.104Z",
+      "obtencao": "automatica",
+      "servico": "MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos com dentro_sigmine=false; base ANM/SIGMINE para o teste de cadastro"
     },
     {
       "camada": "municipios-mg",

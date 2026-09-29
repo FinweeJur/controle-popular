@@ -1,0 +1,2735 @@
+{
+ "gerado_em": "2026-09-29T03:55:40+00:00",
+ "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, cruzamento ANM)",
+ "uf": "MG",
+ "amostra": 120,
+ "semente": 42,
+ "fonte": "MapBiomas - Monitor da Mineração e ANM/SIGMINE, acessados em 2026-09-29",
+ "fonte_url": "https://plataforma.monitormineracao.mapbiomas.org/",
+ "licenca": "CC BY 4.0",
+ "buffer_m": 80,
+ "resolucao_m": 30,
+ "resumo": {
+  "em_operacao": 84,
+  "indicio_processual": 34,
+  "sem_cadastro_anm": 2
+ },
+ "itens": [
+  {
+   "id": 852,
+   "ano_primeira_deteccao": "1996",
+   "area": "0.3447",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "301100/2011",
+    "820026/2008",
+    "820063/1993",
+    "820543/1994"
+   ],
+   "bbox": [
+    -47.575778052797425,
+    -22.535118648939996,
+    -47.57402194720258,
+    -22.533381351060005
+   ]
+  },
+  {
+   "id": 6625,
+   "ano_primeira_deteccao": "2013",
+   "area": "0.413",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "808115/1974"
+   ],
+   "bbox": [
+    -46.928057214257024,
+    -18.365818648939996,
+    -46.92634278574298,
+    -18.363881351060005
+   ]
+  },
+  {
+   "id": 6966,
+   "ano_primeira_deteccao": "2019",
+   "area": "2.4944",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "831110/1997",
+    "831728/1988"
+   ],
+   "bbox": [
+    -46.921552084354246,
+    -17.150818648939993,
+    -46.91844791564575,
+    -17.146481351060007
+   ]
+  },
+  {
+   "id": 7703,
+   "ano_primeira_deteccao": "2022",
+   "area": "0.2342",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "831481/2024",
+    "831995/2008",
+    "832428/2000"
+   ],
+   "bbox": [
+    -46.910363189211154,
+    -19.672118648939993,
+    -46.90863681078884,
+    -19.670481351060005
+   ]
+  },
+  {
+   "id": 8010,
+   "ano_primeira_deteccao": "2017",
+   "area": "1.0688",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "832228/1993"
+   ],
+   "bbox": [
+    -46.9060522847767,
+    -17.199318648939993,
+    -46.9036477152233,
+    -17.196781351060007
+   ]
+  },
+  {
+   "id": 8072,
+   "ano_primeira_deteccao": "2008",
+   "area": "1.1124",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "831481/2024",
+    "831995/2008"
+   ],
+   "bbox": [
+    -46.90476317635541,
+    -19.669418648939995,
+    -46.902536823644596,
+    -19.667781351060007
+   ]
+  },
+  {
+   "id": 9761,
+   "ano_primeira_deteccao": "1999",
+   "area": "0.475",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "800005/1975",
+    "830241/1980",
+    "831537/2005"
+   ],
+   "bbox": [
+    -46.86965227116424,
+    -17.195518648939995,
+    -46.86794772883575,
+    -17.193881351060007
+   ]
+  },
+  {
+   "id": 10088,
+   "ano_primeira_deteccao": "2021",
+   "area": "0.1188",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "832080/2015"
+   ],
+   "bbox": [
+    -46.86725218813376,
+    -17.175118648939993,
+    -46.86544781186624,
+    -17.173381351060005
+   ]
+  },
+  {
+   "id": 11413,
+   "ano_primeira_deteccao": "2014",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "810330/1968",
+    "810331/1968",
+    "831405/1997"
+   ],
+   "bbox": [
+    -46.84566422940508,
+    -19.889118648939995,
+    -46.843935770594925,
+    -19.887481351060007
+   ]
+  },
+  {
+   "id": 12830,
+   "ano_primeira_deteccao": "2004",
+   "area": "0.0582",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "802996/1970",
+    "805552/1977",
+    "830369/2017",
+    "831224/1983"
+   ],
+   "bbox": [
+    -46.77676850523705,
+    -20.752418648939994,
+    -46.77493149476295,
+    -20.750681351060006
+   ]
+  },
+  {
+   "id": 13422,
+   "ano_primeira_deteccao": "2018",
+   "area": "0.1175",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830426/2019"
+   ],
+   "bbox": [
+    -46.73566029611753,
+    -19.053018648939993,
+    -46.733839703882474,
+    -19.051081351060006
+   ]
+  },
+  {
+   "id": 13664,
+   "ano_primeira_deteccao": "2003",
+   "area": "0.1162",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "808270/1975",
+    "830497/2019",
+    "832814/2009"
+   ],
+   "bbox": [
+    -46.70576921405507,
+    -20.891418648939993,
+    -46.70403078594493,
+    -20.889481351060006
+   ]
+  },
+  {
+   "id": 14675,
+   "ano_primeira_deteccao": "2014",
+   "area": "0.1154",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "RECONHECIMENTO GEOLÓGICO"
+   ],
+   "processos": [
+    "180266/1977",
+    "830850/2024",
+    "830860/2024",
+    "832105/2022",
+    "832350/2023"
+   ],
+   "bbox": [
+    -46.493074856116905,
+    -21.958418648939993,
+    -46.491125143883096,
+    -21.956681351060006
+   ]
+  },
+  {
+   "id": 14805,
+   "ano_primeira_deteccao": "1985",
+   "area": "1.7883",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "RECONHECIMENTO GEOLÓGICO"
+   ],
+   "processos": [
+    "180266/1977",
+    "830850/2024",
+    "830860/2024"
+   ],
+   "bbox": [
+    -46.491774845758066,
+    -21.956818648939993,
+    -46.48722515424193,
+    -21.954481351060007
+   ]
+  },
+  {
+   "id": 19289,
+   "ano_primeira_deteccao": "2005",
+   "area": "0.0581",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830132/1987",
+    "832968/2015"
+   ],
+   "bbox": [
+    -45.968469083745546,
+    -20.865818648939996,
+    -45.966730916254456,
+    -20.864181351060004
+   ]
+  },
+  {
+   "id": 21022,
+   "ano_primeira_deteccao": "2024",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830303/1988",
+    "830329/1995"
+   ],
+   "bbox": [
+    -45.625266595950265,
+    -20.372418648939995,
+    -45.62353340404973,
+    -20.370781351060007
+   ]
+  },
+  {
+   "id": 21146,
+   "ano_primeira_deteccao": "2016",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "300289/2024",
+    "830144/2004",
+    "830788/2012",
+    "831930/2022"
+   ],
+   "bbox": [
+    -45.62126607542673,
+    -20.267318648939995,
+    -45.61953392457327,
+    -20.265681351060007
+   ]
+  },
+  {
+   "id": 21542,
+   "ano_primeira_deteccao": "1989",
+   "area": "1.6914",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "APTO PARA DISPONIBILIDADE",
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "001040/1948",
+    "815056/1973",
+    "815426/1973",
+    "816518/1973",
+    "830144/2004"
+   ],
+   "bbox": [
+    -45.60866618015846,
+    -20.289318648939993,
+    -45.60603381984154,
+    -20.286081351060005
+   ]
+  },
+  {
+   "id": 22104,
+   "ano_primeira_deteccao": "2023",
+   "area": "0.1166",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830927/1999",
+    "831759/2006"
+   ],
+   "bbox": [
+    -45.58486666503828,
+    -20.386318648939994,
+    -45.58293333496172,
+    -20.384681351060006
+   ]
+  },
+  {
+   "id": 22262,
+   "ano_primeira_deteccao": "1998",
+   "area": "0.5831",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "823290/1972",
+    "830651/2005",
+    "831753/2005",
+    "831784/2008"
+   ],
+   "bbox": [
+    -45.58056633403964,
+    -20.319818648939993,
+    -45.57883366596036,
+    -20.317781351060006
+   ]
+  },
+  {
+   "id": 22300,
+   "ano_primeira_deteccao": "1998",
+   "area": "0.2331",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830103/1981",
+    "830808/2002",
+    "830981/1988",
+    "831183/2021",
+    "831759/2006"
+   ],
+   "bbox": [
+    -45.57996671129478,
+    -20.395718648939994,
+    -45.57793328870522,
+    -20.393881351060006
+   ]
+  },
+  {
+   "id": 23458,
+   "ano_primeira_deteccao": "2008",
+   "area": "1.213",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "830362/2018",
+    "830846/1998",
+    "831036/2020",
+    "831400/2002",
+    "831636/2016"
+   ],
+   "bbox": [
+    -45.02907380882469,
+    -21.765918648939994,
+    -45.02612619117531,
+    -21.762881351060006
+   ]
+  },
+  {
+   "id": 25227,
+   "ano_primeira_deteccao": "2013",
+   "area": "0.058",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "830938/2013",
+    "831530/1997"
+   ],
+   "bbox": [
+    -44.92817083249596,
+    -21.204218648939992,
+    -44.92642916750404,
+    -21.202581351060005
+   ]
+  },
+  {
+   "id": 27155,
+   "ano_primeira_deteccao": "1991",
+   "area": "0.1174",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "DIREITO DE REQUERER A LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830018/1994",
+    "830192/2007",
+    "830213/2012",
+    "830362/2004",
+    "831734/1997"
+   ],
+   "bbox": [
+    -44.654861422365286,
+    -19.296918648939993,
+    -44.653138577634714,
+    -19.294981351060006
+   ]
+  },
+  {
+   "id": 27167,
+   "ano_primeira_deteccao": "2004",
+   "area": "0.1174",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DIREITO DE REQUERER A LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830192/2007",
+    "830213/2012",
+    "830362/2004",
+    "831734/1997"
+   ],
+   "bbox": [
+    -44.65466142445908,
+    -19.297318648939996,
+    -44.65293857554092,
+    -19.295481351060005
+   ]
+  },
+  {
+   "id": 27592,
+   "ano_primeira_deteccao": "1992",
+   "area": "1.7019",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "834282/1996",
+    "836808/1994"
+   ],
+   "bbox": [
+    -44.646161348189835,
+    -19.281418648939994,
+    -44.643238651810165,
+    -19.278581351060005
+   ]
+  },
+  {
+   "id": 29245,
+   "ano_primeira_deteccao": "1994",
+   "area": "0.1173",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "830218/1981",
+    "830221/1981"
+   ],
+   "bbox": [
+    -44.544361637399774,
+    -19.342918648939992,
+    -44.54263836260022,
+    -19.341281351060005
+   ]
+  },
+  {
+   "id": 29792,
+   "ano_primeira_deteccao": "2012",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "300366/2020",
+    "831192/2006",
+    "831841/2004"
+   ],
+   "bbox": [
+    -44.47186445168088,
+    -19.935118648939994,
+    -44.47013554831912,
+    -19.933481351060006
+   ]
+  },
+  {
+   "id": 30185,
+   "ano_primeira_deteccao": "2010",
+   "area": "0.4086",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830996/2021",
+    "834181/2008"
+   ],
+   "bbox": [
+    -44.451465600876,
+    -20.170918648939995,
+    -44.449634399124,
+    -20.169281351060008
+   ]
+  },
+  {
+   "id": 30283,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.7004",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "834181/2008"
+   ],
+   "bbox": [
+    -44.44936560995711,
+    -20.173018648939994,
+    -44.446534390042885,
+    -20.170881351060007
+   ]
+  },
+  {
+   "id": 31297,
+   "ano_primeira_deteccao": "2018",
+   "area": "1.1049",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "830171/2005",
+    "832152/2011",
+    "832426/2004"
+   ],
+   "bbox": [
+    -44.38116849888463,
+    -20.751718648939995,
+    -44.37803150111537,
+    -20.748881351060007
+   ]
+  },
+  {
+   "id": 35104,
+   "ano_primeira_deteccao": "2000",
+   "area": "1.343",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "803142/1974",
+    "830517/2005",
+    "830564/1979",
+    "830565/1979",
+    "833061/2004"
+   ],
+   "bbox": [
+    -44.16176529247629,
+    -20.108118648939993,
+    -44.15993470752371,
+    -20.106181351060005
+   ]
+  },
+  {
+   "id": 35963,
+   "ano_primeira_deteccao": "2008",
+   "area": "1.0519",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830713/2016",
+    "830898/1991",
+    "830900/1991",
+    "831321/2009",
+    "831322/2009"
+   ],
+   "bbox": [
+    -44.12286466608783,
+    -19.979618648939994,
+    -44.119335333912176,
+    -19.977481351060007
+   ]
+  },
+  {
+   "id": 37361,
+   "ano_primeira_deteccao": "2002",
+   "area": "0.41",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "LICENCIAMENTO"
+   ],
+   "processos": [
+    "001119/1939",
+    "830293/2006",
+    "830437/1979",
+    "831053/2000",
+    "832182/2023"
+   ],
+   "bbox": [
+    -44.07796291233223,
+    -19.614018648939993,
+    -44.07533708766776,
+    -19.612081351060006
+   ]
+  },
+  {
+   "id": 37554,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.5219",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830009/2016",
+    "830834/2001",
+    "831291/2006",
+    "833015/2002"
+   ],
+   "bbox": [
+    -44.07117077640707,
+    -21.193718648939996,
+    -44.06882922359293,
+    -21.191581351060005
+   ]
+  },
+  {
+   "id": 37770,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.1168",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "831391/2004",
+    "833027/2003"
+   ],
+   "bbox": [
+    -44.06496510590108,
+    -20.069918648939993,
+    -44.063134894098916,
+    -20.067981351060006
+   ]
+  },
+  {
+   "id": 38122,
+   "ano_primeira_deteccao": "2012",
+   "area": "0.3513",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "LICENCIAMENTO"
+   ],
+   "processos": [
+    "001119/1939",
+    "832149/2009",
+    "832183/2023",
+    "832214/2007"
+   ],
+   "bbox": [
+    -44.054563228982225,
+    -19.680518648939994,
+    -44.05213677101778,
+    -19.678781351060007
+   ]
+  },
+  {
+   "id": 38558,
+   "ano_primeira_deteccao": "2017",
+   "area": "0.0586",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "001119/1939",
+    "003719/1943",
+    "804102/1977"
+   ],
+   "bbox": [
+    -44.01996291826345,
+    -19.615118648939994,
+    -44.018237081736544,
+    -19.613481351060006
+   ]
+  },
+  {
+   "id": 38647,
+   "ano_primeira_deteccao": "1994",
+   "area": "1.8158",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "001119/1939",
+    "801702/1978",
+    "812554/1970",
+    "832352/2009"
+   ],
+   "bbox": [
+    -44.019062823418565,
+    -19.596018648939996,
+    -44.01603717658144,
+    -19.592581351060005
+   ]
+  },
+  {
+   "id": 38686,
+   "ano_primeira_deteccao": "1990",
+   "area": "0.0586",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "001119/1939",
+    "001273/1964",
+    "830470/2008"
+   ],
+   "bbox": [
+    -44.017062741471705,
+    -19.577818648939996,
+    -44.0153372585283,
+    -19.576181351060004
+   ]
+  },
+  {
+   "id": 38794,
+   "ano_primeira_deteccao": "2011",
+   "area": "1.406",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "001119/1939",
+    "001273/1964",
+    "830470/2008"
+   ],
+   "bbox": [
+    -44.0173626915411,
+    -19.567718648939994,
+    -44.013137308458894,
+    -19.565181351060005
+   ]
+  },
+  {
+   "id": 39157,
+   "ano_primeira_deteccao": "2024",
+   "area": "0.058",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "008483/1966",
+    "830098/1978",
+    "830335/1988"
+   ],
+   "bbox": [
+    -43.99687068491454,
+    -21.175918648939994,
+    -43.99512931508546,
+    -21.174281351060007
+   ]
+  },
+  {
+   "id": 39808,
+   "ano_primeira_deteccao": "2023",
+   "area": "0.9339",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "002066/1954",
+    "003889/1963",
+    "005225/1955",
+    "008589/1942",
+    "831832/1988"
+   ],
+   "bbox": [
+    -43.97826557560147,
+    -20.166218648939996,
+    -43.97563442439853,
+    -20.163681351060006
+   ]
+  },
+  {
+   "id": 39966,
+   "ano_primeira_deteccao": "2021",
+   "area": "0.6421",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000332/1973",
+    "002066/1954",
+    "003457/1937",
+    "003889/1963"
+   ],
+   "bbox": [
+    -43.973965472131525,
+    -20.144718648939993,
+    -43.97223452786847,
+    -20.142981351060005
+   ]
+  },
+  {
+   "id": 40490,
+   "ano_primeira_deteccao": "1992",
+   "area": "0.8177",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000839/1966",
+    "003138/1935"
+   ],
+   "bbox": [
+    -43.96316501837911,
+    -20.052418648939994,
+    -43.960734981620895,
+    -20.049581351060006
+   ]
+  },
+  {
+   "id": 40509,
+   "ano_primeira_deteccao": "2009",
+   "area": "0.3493",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "831107/2021",
+    "832601/2012"
+   ],
+   "bbox": [
+    -43.96256768286011,
+    -20.590018648939996,
+    -43.96053231713989,
+    -20.587881351060005
+   ]
+  },
+  {
+   "id": 42176,
+   "ano_primeira_deteccao": "2024",
+   "area": "0.2329",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "831059/2021"
+   ],
+   "bbox": [
+    -43.93776757999281,
+    -20.569318648939994,
+    -43.93543242000719,
+    -20.567681351060006
+   ]
+  },
+  {
+   "id": 42187,
+   "ano_primeira_deteccao": "2009",
+   "area": "0.6408",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "043306/1956"
+   ],
+   "bbox": [
+    -43.9373670857739,
+    -20.470718648939993,
+    -43.935132914226095,
+    -20.469081351060005
+   ]
+  },
+  {
+   "id": 42414,
+   "ano_primeira_deteccao": "1994",
+   "area": "0.8167",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "814093/1974",
+    "830233/2007",
+    "832003/2024",
+    "832197/1986"
+   ],
+   "bbox": [
+    -43.93286602755154,
+    -20.258318648939994,
+    -43.930633972448454,
+    -20.255281351060006
+   ]
+  },
+  {
+   "id": 44527,
+   "ano_primeira_deteccao": "2002",
+   "area": "0.1171",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "001119/1939",
+    "002318/1945",
+    "831584/1990"
+   ],
+   "bbox": [
+    -43.899663239702456,
+    -19.682718648939993,
+    -43.897636760297544,
+    -19.681081351060005
+   ]
+  },
+  {
+   "id": 44760,
+   "ano_primeira_deteccao": "1993",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "001090/1957",
+    "811903/1971",
+    "830001/2024",
+    "830755/2008",
+    "831288/2024"
+   ],
+   "bbox": [
+    -43.8973661440801,
+    -20.281218648939994,
+    -43.8956338559199,
+    -20.279581351060006
+   ]
+  },
+  {
+   "id": 44807,
+   "ano_primeira_deteccao": "1998",
+   "area": "0.3571",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "808912/1976",
+    "834096/2010"
+   ],
+   "bbox": [
+    -43.897650346765545,
+    -16.714218648939994,
+    -43.89544965323446,
+    -16.712381351060007
+   ]
+  },
+  {
+   "id": 45082,
+   "ano_primeira_deteccao": "2017",
+   "area": "1.1668",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "830851/2005"
+   ],
+   "bbox": [
+    -43.894465964911824,
+    -20.245018648939993,
+    -43.89273403508818,
+    -20.243181351060006
+   ]
+  },
+  {
+   "id": 45182,
+   "ano_primeira_deteccao": "1997",
+   "area": "0.3496",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000890/1953",
+    "001603/1940"
+   ],
+   "bbox": [
+    -43.89316685894065,
+    -20.425418648939996,
+    -43.89133314105935,
+    -20.423481351060005
+   ]
+  },
+  {
+   "id": 45471,
+   "ano_primeira_deteccao": "1994",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "830851/2005"
+   ],
+   "bbox": [
+    -43.88836583608393,
+    -20.218818648939994,
+    -43.88663416391607,
+    -20.217081351060006
+   ]
+  },
+  {
+   "id": 46137,
+   "ano_primeira_deteccao": "2012",
+   "area": "0.5833",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "001090/1957",
+    "831964/1999"
+   ],
+   "bbox": [
+    -43.88096605592779,
+    -20.263518648939993,
+    -43.87813394407221,
+    -20.261581351060006
+   ]
+  },
+  {
+   "id": 46510,
+   "ano_primeira_deteccao": "1992",
+   "area": "0.35",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000334/1973",
+    "000654/1938",
+    "001090/1957",
+    "831238/1997",
+    "831964/1999"
+   ],
+   "bbox": [
+    -43.875366000418225,
+    -20.252218648939994,
+    -43.873133999581775,
+    -20.250381351060007
+   ]
+  },
+  {
+   "id": 46523,
+   "ano_primeira_deteccao": "2011",
+   "area": "14.8259",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "001802/1958",
+    "004811/1958",
+    "830166/2025",
+    "830889/1980",
+    "830892/2007"
+   ],
+   "bbox": [
+    -43.87606554224132,
+    -20.160218648939995,
+    -43.87203445775868,
+    -20.156081351060006
+   ]
+  },
+  {
+   "id": 46552,
+   "ano_primeira_deteccao": "1999",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000334/1973",
+    "000654/1938",
+    "001090/1957",
+    "831238/1997",
+    "831964/1999"
+   ],
+   "bbox": [
+    -43.87446600337778,
+    -20.252718648939993,
+    -43.872733996622216,
+    -20.251081351060005
+   ]
+  },
+  {
+   "id": 48019,
+   "ano_primeira_deteccao": "2013",
+   "area": "6.7028",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "300726/2018",
+    "831470/2002",
+    "831671/2012"
+   ],
+   "bbox": [
+    -43.85406670358357,
+    -20.396018648939993,
+    -43.849133296416426,
+    -20.390481351060007
+   ]
+  },
+  {
+   "id": 48516,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.0578",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "831106/2019",
+    "831114/2019",
+    "832304/2021"
+   ],
+   "bbox": [
+    -43.84457369027397,
+    -21.743218648939994,
+    -43.842826309726036,
+    -21.741581351060006
+   ]
+  },
+  {
+   "id": 51334,
+   "ano_primeira_deteccao": "2007",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "004575/1935",
+    "005886/1940",
+    "830538/2023",
+    "831158/2017",
+    "831257/2016"
+   ],
+   "bbox": [
+    -43.74896701858297,
+    -20.457318648939996,
+    -43.74723298141703,
+    -20.455581351060005
+   ]
+  },
+  {
+   "id": 51436,
+   "ano_primeira_deteccao": "2010",
+   "area": "0.3509",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000323/1973"
+   ],
+   "bbox": [
+    -43.74266413392124,
+    -19.869518648939994,
+    -43.74063586607876,
+    -19.867481351060007
+   ]
+  },
+  {
+   "id": 52593,
+   "ano_primeira_deteccao": "1989",
+   "area": "0.1749",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "APTO PARA DISPONIBILIDADE",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "000397/1942",
+    "832677/2007",
+    "834407/2007"
+   ],
+   "bbox": [
+    -43.624066625765366,
+    -20.378418648939995,
+    -43.622333374234636,
+    -20.376781351060007
+   ]
+  },
+  {
+   "id": 54207,
+   "ano_primeira_deteccao": "1986",
+   "area": "0.1774",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "003409/1950",
+    "830671/2011",
+    "831657/2022"
+   ],
+   "bbox": [
+    -43.551555547635964,
+    -17.981118648939994,
+    -43.54974445236404,
+    -17.979381351060006
+   ]
+  },
+  {
+   "id": 54686,
+   "ano_primeira_deteccao": "2016",
+   "area": "0.1183",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "LAVRA GARIMPEIRA"
+   ],
+   "processos": [
+    "812617/1973",
+    "830663/2013",
+    "832109/2011"
+   ],
+   "bbox": [
+    -43.52235524938352,
+    -17.911218648939993,
+    -43.520344750616474,
+    -17.909581351060005
+   ]
+  },
+  {
+   "id": 55171,
+   "ano_primeira_deteccao": "1995",
+   "area": "1.1239",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "LAVRA GARIMPEIRA"
+   ],
+   "processos": [
+    "812617/1973",
+    "830663/2013"
+   ],
+   "bbox": [
+    -43.51425518572492,
+    -17.896818648939995,
+    -43.51164481427508,
+    -17.894081351060006
+   ]
+  },
+  {
+   "id": 56655,
+   "ano_primeira_deteccao": "1989",
+   "area": "0.3502",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE"
+   ],
+   "processos": [
+    "006499/1961",
+    "831004/2009"
+   ],
+   "bbox": [
+    -43.49426555622148,
+    -20.161918648939995,
+    -43.49203444377852,
+    -20.160081351060004
+   ]
+  },
+  {
+   "id": 57141,
+   "ano_primeira_deteccao": "1997",
+   "area": "2.6259",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830434/2003",
+    "831406/2012",
+    "832670/2007"
+   ],
+   "bbox": [
+    -43.486365783674856,
+    -20.209618648939994,
+    -43.48353421632514,
+    -20.204981351060006
+   ]
+  },
+  {
+   "id": 57489,
+   "ano_primeira_deteccao": "2003",
+   "area": "0.1148",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "890056/1981",
+    "890453/2002",
+    "890816/2014"
+   ],
+   "bbox": [
+    -43.48287913791644,
+    -22.726618648939994,
+    -43.48082086208356,
+    -22.724981351060006
+   ]
+  },
+  {
+   "id": 57536,
+   "ano_primeira_deteccao": "2004",
+   "area": "0.459",
+   "dentro_sigmine": false,
+   "estado": "sem_cadastro_anm",
+   "frase": "fora de todo polígono ANM — o mapa enxerga mineração onde a ANM não tem cadastro",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "890816/2014"
+   ],
+   "bbox": [
+    -43.48257914959306,
+    -22.729118648939995,
+    -43.480420850406944,
+    -22.726581351060005
+   ]
+  },
+  {
+   "id": 57908,
+   "ano_primeira_deteccao": "2017",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830776/1990",
+    "832670/2007"
+   ],
+   "bbox": [
+    -43.47716585946971,
+    -20.223518648939994,
+    -43.47543414053029,
+    -20.221881351060006
+   ]
+  },
+  {
+   "id": 58609,
+   "ano_primeira_deteccao": "1992",
+   "area": "2.0656",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "830001/2011",
+    "830436/1983",
+    "831235/2017",
+    "831717/2015"
+   ],
+   "bbox": [
+    -43.46305696332457,
+    -18.308718648939994,
+    -43.45834303667543,
+    -18.306381351060004
+   ]
+  },
+  {
+   "id": 59704,
+   "ano_primeira_deteccao": "2021",
+   "area": "0.2918",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "002329/1935",
+    "831097/1984",
+    "831639/2000",
+    "832484/2016",
+    "832638/2006"
+   ],
+   "bbox": [
+    -43.43206572662906,
+    -20.196518648939993,
+    -43.42943427337094,
+    -20.194881351060005
+   ]
+  },
+  {
+   "id": 59824,
+   "ano_primeira_deteccao": "2020",
+   "area": "9.7652",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "831617/2005",
+    "832979/2002"
+   ],
+   "bbox": [
+    -43.42865947951321,
+    -18.873818648939995,
+    -43.426940520486795,
+    -18.871881351060004
+   ]
+  },
+  {
+   "id": 59886,
+   "ano_primeira_deteccao": "2017",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DIREITO DE REQUERER A LAVRA"
+   ],
+   "processos": [
+    "830475/2002",
+    "831596/2018"
+   ],
+   "bbox": [
+    -43.42716411898217,
+    -19.866218648939995,
+    -43.42533588101783,
+    -19.864581351060007
+   ]
+  },
+  {
+   "id": 59912,
+   "ano_primeira_deteccao": "1998",
+   "area": "2.5143",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "814416/1974",
+    "816623/1972",
+    "830289/1989"
+   ],
+   "bbox": [
+    -43.426664203352615,
+    -19.883718648939993,
+    -43.42473579664738,
+    -19.882081351060005
+   ]
+  },
+  {
+   "id": 61945,
+   "ano_primeira_deteccao": "1999",
+   "area": "0.5196",
+   "dentro_sigmine": false,
+   "estado": "sem_cadastro_anm",
+   "frase": "fora de todo polígono ANM — o mapa enxerga mineração onde a ANM não tem cadastro",
+   "fases": [],
+   "processos": [],
+   "bbox": [
+    -43.37547418973998,
+    -21.835718648939995,
+    -43.37352581026001,
+    -21.834081351060007
+   ]
+  },
+  {
+   "id": 62439,
+   "ano_primeira_deteccao": "2012",
+   "area": "0.5855",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830302/2018",
+    "831930/2013"
+   ],
+   "bbox": [
+    -43.307163130425394,
+    -19.660018648939996,
+    -43.3052368695746,
+    -19.657881351060006
+   ]
+  },
+  {
+   "id": 62670,
+   "ano_primeira_deteccao": "2004",
+   "area": "0.1171",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830302/2018",
+    "831441/2012",
+    "833938/2007"
+   ],
+   "bbox": [
+    -43.30336322898222,
+    -19.680518648939994,
+    -43.30143677101778,
+    -19.678781351060007
+   ]
+  },
+  {
+   "id": 65076,
+   "ano_primeira_deteccao": "1991",
+   "area": "1.1128",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "000577/1936",
+    "002354/1941",
+    "833906/2007"
+   ],
+   "bbox": [
+    -43.248762942704886,
+    -19.620518648939996,
+    -43.24663705729511,
+    -19.618381351060005
+   ]
+  },
+  {
+   "id": 65391,
+   "ano_primeira_deteccao": "1994",
+   "area": "0.4098",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "000577/1936",
+    "830602/1990",
+    "832029/2011",
+    "832059/2015"
+   ],
+   "bbox": [
+    -43.24436318611606,
+    -19.671918648939993,
+    -43.24253681388394,
+    -19.669381351060007
+   ]
+  },
+  {
+   "id": 65481,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.526",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "804321/1975"
+   ],
+   "bbox": [
+    -43.24296455287698,
+    -19.956518648939994,
+    -43.24053544712302,
+    -19.953881351060005
+   ]
+  },
+  {
+   "id": 66244,
+   "ano_primeira_deteccao": "2020",
+   "area": "0.2297",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "890266/2017",
+    "890286/2017",
+    "890395/1996"
+   ],
+   "bbox": [
+    -43.225878527208764,
+    -22.619118648939995,
+    -43.22392147279123,
+    -22.617381351060004
+   ]
+  },
+  {
+   "id": 68967,
+   "ano_primeira_deteccao": "2017",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002308/1935",
+    "830365/2014"
+   ],
+   "bbox": [
+    -43.17136376800598,
+    -19.793218648939995,
+    -43.169536231994016,
+    -19.791581351060007
+   ]
+  },
+  {
+   "id": 69518,
+   "ano_primeira_deteccao": "2022",
+   "area": "0.0597",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "833480/2006",
+    "834015/2006"
+   ],
+   "bbox": [
+    -43.12394787001184,
+    -16.070118648939996,
+    -43.122252129988155,
+    -16.068481351060004
+   ]
+  },
+  {
+   "id": 70231,
+   "ano_primeira_deteccao": "2007",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830477/2020",
+    "833060/2015"
+   ],
+   "bbox": [
+    -42.99706346469116,
+    -19.729918648939993,
+    -42.99533653530884,
+    -19.728181351060005
+   ]
+  },
+  {
+   "id": 70306,
+   "ano_primeira_deteccao": "1990",
+   "area": "0.7452",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "890291/1980",
+    "890309/2001"
+   ],
+   "bbox": [
+    -42.989679932991194,
+    -22.865918648939996,
+    -42.987420067008806,
+    -22.863781351060005
+   ]
+  },
+  {
+   "id": 70678,
+   "ano_primeira_deteccao": "2011",
+   "area": "0.4105",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "802140/1972",
+    "830152/2008"
+   ],
+   "bbox": [
+    -42.943561888154505,
+    -19.397018648939994,
+    -42.94163811184549,
+    -19.394481351060005
+   ]
+  },
+  {
+   "id": 77769,
+   "ano_primeira_deteccao": "1990",
+   "area": "0.0598",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "870602/1980"
+   ],
+   "bbox": [
+    -40.32564679114724,
+    -15.780218648939993,
+    -40.32395320885276,
+    -15.778581351060007
+   ]
+  },
+  {
+   "id": 79725,
+   "ano_primeira_deteccao": "2021",
+   "area": "0.0597",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "830357/1991",
+    "830371/1991",
+    "831705/2015"
+   ],
+   "bbox": [
+    -39.92144837319203,
+    -16.203318648939995,
+    -39.919751626807965,
+    -16.201681351060007
+   ]
+  },
+  {
+   "id": 151698,
+   "ano_primeira_deteccao": "1988",
+   "area": "0.238",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "860159/1989",
+    "860872/2009"
+   ],
+   "bbox": [
+    -49.210050564437545,
+    -16.769518648939993,
+    -49.20804943556245,
+    -16.767581351060006
+   ]
+  },
+  {
+   "id": 152434,
+   "ano_primeira_deteccao": "2015",
+   "area": "0.0595",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "860159/1989",
+    "860318/2024"
+   ],
+   "bbox": [
+    -49.17655063493855,
+    -16.787218648939994,
+    -49.174849365061455,
+    -16.785581351060006
+   ]
+  },
+  {
+   "id": 154535,
+   "ano_primeira_deteccao": "2013",
+   "area": "0.06",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "805789/1969",
+    "811717/1968",
+    "860436/2022",
+    "960146/2003"
+   ],
+   "bbox": [
+    -49.03954442268352,
+    -15.121718648939993,
+    -49.037855577316485,
+    -15.120081351060007
+   ]
+  },
+  {
+   "id": 155816,
+   "ano_primeira_deteccao": "2024",
+   "area": "0.12",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "808744/1968",
+    "862208/2005",
+    "960146/2003"
+   ],
+   "bbox": [
+    -48.980944332192266,
+    -15.095918648939993,
+    -48.97895566780774,
+    -15.094281351060008
+   ]
+  },
+  {
+   "id": 155935,
+   "ano_primeira_deteccao": "2012",
+   "area": "0.12",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "808744/1968",
+    "861302/2011",
+    "960146/2003"
+   ],
+   "bbox": [
+    -48.97554430066623,
+    -15.086918648939992,
+    -48.973655699333776,
+    -15.085281351060008
+   ]
+  },
+  {
+   "id": 157671,
+   "ano_primeira_deteccao": "2010",
+   "area": "0.2385",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "APTO PARA DISPONIBILIDADE",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "860086/1989",
+    "861413/2014"
+   ],
+   "bbox": [
+    -48.89134902014593,
+    -16.373118648939993,
+    -48.88965097985407,
+    -16.370781351060007
+   ]
+  },
+  {
+   "id": 163552,
+   "ano_primeira_deteccao": "2009",
+   "area": "1.5649",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002019/1939"
+   ],
+   "bbox": [
+    -48.4383418747406,
+    -14.375518648939993,
+    -48.4366581252594,
+    -14.373781351060007
+   ]
+  },
+  {
+   "id": 164115,
+   "ano_primeira_deteccao": "2014",
+   "area": "1.5044",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002019/1939"
+   ],
+   "bbox": [
+    -48.416542048810136,
+    -14.427818648939992,
+    -48.41485795118986,
+    -14.426181351060007
+   ]
+  },
+  {
+   "id": 164131,
+   "ano_primeira_deteccao": "2010",
+   "area": "0.4213",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002019/1939"
+   ],
+   "bbox": [
+    -48.41594185898101,
+    -14.370718648939992,
+    -48.414158141018994,
+    -14.369081351060007
+   ]
+  },
+  {
+   "id": 164893,
+   "ano_primeira_deteccao": "1990",
+   "area": "0.301",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002019/1939"
+   ],
+   "bbox": [
+    -48.388941809914414,
+    -14.355918648939992,
+    -48.38725819008558,
+    -14.354281351060008
+   ]
+  },
+  {
+   "id": 166963,
+   "ano_primeira_deteccao": "2013",
+   "area": "0.1195",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "861079/1986"
+   ],
+   "bbox": [
+    -48.198547181192026,
+    -15.885718648939992,
+    -48.19655281880797,
+    -15.884081351060008
+   ]
+  },
+  {
+   "id": 169239,
+   "ano_primeira_deteccao": "1988",
+   "area": "0.6584",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "003967/1967",
+    "861171/1993"
+   ],
+   "bbox": [
+    -47.884346084654915,
+    -15.587318648939993,
+    -47.88175391534509,
+    -15.585181351060008
+   ]
+  },
+  {
+   "id": 169412,
+   "ano_primeira_deteccao": "2024",
+   "area": "0.3591",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "003967/1967",
+    "861171/1993"
+   ],
+   "bbox": [
+    -47.879346062865615,
+    -15.581418648939993,
+    -47.877253937134384,
+    -15.579081351060008
+   ]
+  },
+  {
+   "id": 170736,
+   "ano_primeira_deteccao": "1998",
+   "area": "0.1197",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "860325/2017",
+    "861122/1988"
+   ],
+   "bbox": [
+    -47.84274598432116,
+    -15.559418648939992,
+    -47.841054015678836,
+    -15.557781351060008
+   ]
+  },
+  {
+   "id": 171210,
+   "ano_primeira_deteccao": "2004",
+   "area": "1.4897",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "804417/1973",
+    "820457/2022",
+    "820668/2009"
+   ],
+   "bbox": [
+    -47.76438022213413,
+    -22.916418648939995,
+    -47.762219777865866,
+    -22.913881351060006
+   ]
+  },
+  {
+   "id": 282120,
+   "ano_primeira_deteccao": "2009",
+   "area": "0.2316",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "820591/1979"
+   ],
+   "bbox": [
+    -47.61467207487458,
+    -21.440718648939995,
+    -47.612627925125416,
+    -21.438881351060004
+   ]
+  },
+  {
+   "id": 288391,
+   "ano_primeira_deteccao": "2010",
+   "area": "0.359",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "APTO PARA DISPONIBILIDADE",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "860765/1998",
+    "861205/2016"
+   ],
+   "bbox": [
+    -48.28164633974486,
+    -15.657318648939992,
+    -48.27965366025514,
+    -15.655281351060008
+   ]
+  },
+  {
+   "id": 309357,
+   "ano_primeira_deteccao": "2013",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA",
+    "DISPONIBILIDADE",
+    "LICENCIAMENTO",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "300074/2021",
+    "830224/2009",
+    "831408/2008",
+    "831569/2019",
+    "832417/2003"
+   ],
+   "bbox": [
+    -44.29126388418386,
+    -19.817418648939995,
+    -44.28953611581614,
+    -19.815781351060007
+   ]
+  },
+  {
+   "id": 374849,
+   "ano_primeira_deteccao": "2015",
+   "area": "0.0579",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "817597/1972",
+    "820591/1979"
+   ],
+   "bbox": [
+    -47.60857201456927,
+    -21.429218648939994,
+    -47.606827985430726,
+    -21.427581351060006
+   ]
+  },
+  {
+   "id": 502404,
+   "ano_primeira_deteccao": "2022",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "830542/2005",
+    "830650/2008",
+    "831081/1980",
+    "831743/2012"
+   ],
+   "bbox": [
+    -43.63346687414338,
+    -20.428318648939996,
+    -43.63173312585662,
+    -20.426681351060004
+   ]
+  },
+  {
+   "id": 597161,
+   "ano_primeira_deteccao": "2020",
+   "area": "2.3187",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA"
+   ],
+   "processos": [
+    "830355/2008",
+    "832427/2009"
+   ],
+   "bbox": [
+    -41.89775125894502,
+    -16.945518648939995,
+    -41.89464874105498,
+    -16.941381351060006
+   ]
+  },
+  {
+   "id": 606237,
+   "ano_primeira_deteccao": "1993",
+   "area": "7.6105",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002759/1936"
+   ],
+   "bbox": [
+    -43.82216926531086,
+    -20.903118648939994,
+    -43.817930734689135,
+    -20.897781351060004
+   ]
+  },
+  {
+   "id": 642279,
+   "ano_primeira_deteccao": "1997",
+   "area": "0.0579",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "817597/1972",
+    "820591/1979"
+   ],
+   "bbox": [
+    -47.608572062175405,
+    -21.438218648939994,
+    -47.60682793782459,
+    -21.436581351060006
+   ]
+  },
+  {
+   "id": 642486,
+   "ano_primeira_deteccao": "1997",
+   "area": "0.0573",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "DISPONIBILIDADE",
+    "LICENCIAMENTO",
+    "REQUERIMENTO DE LICENCIAMENTO",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "300316/2017",
+    "890072/2022",
+    "890103/2026",
+    "890155/2010",
+    "890299/2016"
+   ],
+   "bbox": [
+    -43.10488035144837,
+    -22.938418648939994,
+    -43.10311964855163,
+    -22.936781351060006
+   ]
+  },
+  {
+   "id": 656808,
+   "ano_primeira_deteccao": "1995",
+   "area": "0.1198",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "801526/1975",
+    "861026/2000",
+    "861087/2023"
+   ],
+   "bbox": [
+    -47.661045651383894,
+    -15.467418648939992,
+    -47.659354348616105,
+    -15.465481351060008
+   ]
+  },
+  {
+   "id": 681676,
+   "ano_primeira_deteccao": "1999",
+   "area": "0.0583",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "831237/1988"
+   ],
+   "bbox": [
+    -44.97106655894478,
+    -20.365018648939994,
+    -44.96933344105523,
+    -20.363281351060007
+   ]
+  },
+  {
+   "id": 690871,
+   "ano_primeira_deteccao": "2000",
+   "area": "0.0581",
+   "dentro_sigmine": true,
+   "estado": "em_operacao",
+   "frase": "dentro de polígono ANM em fase que autoriza extrair na data da coleta",
+   "fases": [
+    "CONCESSÃO DE LAVRA"
+   ],
+   "processos": [
+    "002759/1936"
+   ],
+   "bbox": [
+    -43.810069275822045,
+    -20.903318648939994,
+    -43.80823072417795,
+    -20.901681351060006
+   ]
+  },
+  {
+   "id": 710372,
+   "ano_primeira_deteccao": "2004",
+   "area": "0.0585",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE LAVRA"
+   ],
+   "processos": [
+    "830096/2007",
+    "831007/2017",
+    "832834/2016",
+    "833480/2011"
+   ],
+   "bbox": [
+    -44.269063235414194,
+    -19.681818648939995,
+    -44.26733676458581,
+    -19.680181351060007
+   ]
+  },
+  {
+   "id": 772324,
+   "ano_primeira_deteccao": "1988",
+   "area": "0.1189",
+   "dentro_sigmine": true,
+   "estado": "indicio_processual",
+   "frase": "dentro de polígono ANM sem autorização de extração — conferir na ANM",
+   "fases": [
+    "AUTORIZAÇÃO DE PESQUISA",
+    "REQUERIMENTO DE PESQUISA"
+   ],
+   "processos": [
+    "831301/2026",
+    "831442/2016",
+    "832427/2009"
+   ],
+   "bbox": [
+    -41.87105128911181,
+    -16.951818648939994,
+    -41.86904871088819,
+    -16.950181351060007
+   ]
+  }
+ ],
+ "ressalva": "amostra datada, não total de MG; positivo = área mapeada, não atividade em curso"
+}

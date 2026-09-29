@@ -49,8 +49,11 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // 'pistas', ao lado de presidios-mg. Só entrou — nenhum id saiu.
   // ⟲ 08/09/2026: 42 → 46. Entraram as 4 camadas de telefonia celular (Anatel,
   // SMP): torres e mancha de cobertura para regiões prioritárias e MG todo.
+  // ⟲ 29/09/2026: 49 → 51. Entraram `mineracao-sem-cadastro` e
+  // `cavas-monitoradas` (Fase 5 do plano de cavas, série `mining_age` do
+  // MapBiomas), ambas em 'territorio-mineracao'. Só entrou — nenhum id saiu.
   assert.equal(
-    CAMADAS.length, 49,
+    CAMADAS.length, 51,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -105,8 +108,12 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
   // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
   // alguém partiu ou unificou conceito sem dizer.
-  assert.equal(LAYER_REGISTRY.length, 53, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 49, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 29/09/2026: 53 → 55 fontes e 49 → 51 linhas. As duas fontes novas da
+  // Fase 5 do plano de cavas (`mineracao-sem-cadastro`, `cavas-monitoradas`),
+  // cada uma na sua linha — fonte única, como as outras de território e
+  // mineração. A diferença fonte-linha continua 4.
+  assert.equal(LAYER_REGISTRY.length, 55, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 51, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -152,6 +159,11 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // docs/FONTES-TERRITORIO-E-MINERACAO.md.
     'zas-barragens', 'mancha-inundacao-barragens', 'terras-indigenas',
     'alerta-ti-mancha', 'sigmine-operacao', 'sigmine-interesse',
+    // ⟲ 29/09/2026 — Fase 5 do plano de cavas (docs/planos/
+    // PLANO-GLOBO-CAVAS-MINERACAO.md). As duas fontes da série `mining_age`
+    // do MapBiomas, que já nascem dentro do contrato: os GeoJSON estão em
+    // `dados/camadas/<fonte>.geojson` e os deep-links são reais.
+    'mineracao-sem-cadastro', 'cavas-monitoradas',
     // Atos ambientais unificados (Onda 1, Onda 2, Federais e MG)
     'licencas-ambientais', 'outorgas-agua', 'infracoes-embargos',
     // Dinheiro público e mineração (13/08/2026) — ver
