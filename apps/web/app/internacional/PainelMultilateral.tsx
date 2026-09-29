@@ -57,6 +57,148 @@ const PERGUNTA_SEU_NONO: TextoTrilingue = {
   es: "¿Cómo se comparan el IDH y la desigualdad de Brasil con los países del G20?",
 };
 
+/** Dicionário de tradução da interface do Painel Multilateral para PT, EN e ES */
+const DICIONARIOS_UI: Record<
+  IdiomaExibicao,
+  {
+    abaSociais: string;
+    abaComercio: string;
+    abaTerritorios: string;
+    buscaPlaceholder: string;
+    todosPaises: string;
+    planilhaCsv: string;
+    imprimir: string;
+    thPais: string;
+    thIdh: string;
+    thGini: string;
+    thEducacao: string;
+    thSaude: string;
+    thVida: string;
+    thFonte: string;
+    referencia: string;
+    origem: string;
+    destino: string;
+    volumeEstimado: string;
+    milhoesAno: string;
+    faturamentoFob: string;
+    milhoesUsd: string;
+    portoEmbarque: string;
+    portoEntrega: string;
+    povoOriginario: string;
+    areaDemarcada: string;
+    hectares: string;
+    sobreposicaoMineraria: string;
+    titulosSobrepostos: string;
+    focosCalor: string;
+    focosAno: string;
+    verDemarcacao: string;
+    nenhumResultado: string;
+  }
+> = {
+  pt: {
+    abaSociais: "Indicadores Sociais (ONU/UNESCO/OMS)",
+    abaComercio: "Comércio de Minérios (OMC)",
+    abaTerritorios: "Terra e Povos Originários",
+    buscaPlaceholder: "Buscar por país, código ou contexto...",
+    todosPaises: "Todos os países",
+    planilhaCsv: "Planilha CSV",
+    imprimir: "Imprimir",
+    thPais: "País",
+    thIdh: "IDH (PNUD)",
+    thGini: "Gini Desigualdade",
+    thEducacao: "Educação % PIB",
+    thSaude: "Saúde % PIB",
+    thVida: "Vida (Anos)",
+    thFonte: "Fonte Oficial",
+    referencia: "Referência",
+    origem: "Origem:",
+    destino: "Destino Principal:",
+    volumeEstimado: "Volume Estimado:",
+    milhoesAno: "Milhões t/ano",
+    faturamentoFob: "Faturamento FOB:",
+    milhoesUsd: "Milhões",
+    portoEmbarque: "Porto de Embarque:",
+    portoEntrega: "Porto de Entrega:",
+    povoOriginario: "Povo Originário:",
+    areaDemarcada: "Área Demarcada:",
+    hectares: "hectares",
+    sobreposicaoMineraria: "Sobreposição Minerária:",
+    titulosSobrepostos: "títulos ANM/BIA",
+    focosCalor: "Focos de Calor (Satélite):",
+    focosAno: "focos/ano",
+    verDemarcacao: "Ver demarcação",
+    nenhumResultado: "Nenhum registro encontrado.",
+  },
+  en: {
+    abaSociais: "Social Indicators (UN/UNESCO/WHO)",
+    abaComercio: "Minerals Trade (WTO)",
+    abaTerritorios: "Land & Indigenous Peoples",
+    buscaPlaceholder: "Search by country, code or context...",
+    todosPaises: "All countries",
+    planilhaCsv: "CSV Spreadsheet",
+    imprimir: "Print",
+    thPais: "Country",
+    thIdh: "HDI (UNDP)",
+    thGini: "Gini Inequality",
+    thEducacao: "Education % GDP",
+    thSaude: "Health % GDP",
+    thVida: "Life (Years)",
+    thFonte: "Official Source",
+    referencia: "Benchmark",
+    origem: "Origin:",
+    destino: "Main Destination:",
+    volumeEstimado: "Estimated Volume:",
+    milhoesAno: "Million t/yr",
+    faturamentoFob: "FOB Revenue:",
+    milhoesUsd: "Million",
+    portoEmbarque: "Loading Port:",
+    portoEntrega: "Discharge Port:",
+    povoOriginario: "Indigenous People:",
+    areaDemarcada: "Demarcated Area:",
+    hectares: "hectares",
+    sobreposicaoMineraria: "Mining Overlap:",
+    titulosSobrepostos: "claims ANM/BIA",
+    focosCalor: "Heat Spots (Satellite):",
+    focosAno: "spots/yr",
+    verDemarcacao: "View boundary",
+    nenhumResultado: "No records found.",
+  },
+  es: {
+    abaSociais: "Indicadores Sociales (ONU/UNESCO/OMS)",
+    abaComercio: "Comercio de Minerales (OMC)",
+    abaTerritorios: "Tierra y Pueblos Originarios",
+    buscaPlaceholder: "Buscar por país, código o contexto...",
+    todosPaises: "Todos los países",
+    planilhaCsv: "Planilla CSV",
+    imprimir: "Imprimir",
+    thPais: "País",
+    thIdh: "IDH (PNUD)",
+    thGini: "Gini Desigualdad",
+    thEducacao: "Educación % PIB",
+    thSaude: "Salud % PIB",
+    thVida: "Vida (Años)",
+    thFonte: "Fuente Oficial",
+    referencia: "Referencia",
+    origem: "Origen:",
+    destino: "Destino Principal:",
+    volumeEstimado: "Volumen Estimado:",
+    milhoesAno: "Millones t/año",
+    faturamentoFob: "Facturación FOB:",
+    milhoesUsd: "Millones",
+    portoEmbarque: "Puerto de Embarque:",
+    portoEntrega: "Puerto de Entrega:",
+    povoOriginario: "Pueblo Originario:",
+    areaDemarcada: "Área Demarcada:",
+    hectares: "hectáreas",
+    sobreposicaoMineraria: "Superposición Minera:",
+    titulosSobrepostos: "títulos ANM/BIA",
+    focosCalor: "Focos de Calor (Satélite):",
+    focosAno: "focos/año",
+    verDemarcacao: "Ver demarcación",
+    nenhumResultado: "No se encontraron registros.",
+  },
+};
+
 interface PainelMultilateralProps {
   indicadores: IndicadorSocialMultilateral[];
   comercio: ComercioCommodityMultilateral[];
@@ -74,6 +216,9 @@ export default function PainelMultilateral({
   const [abaAtiva, setAbaAtiva] = useState<AbaTipo>("sociais");
   const [busca, setBusca] = useState("");
   const [paisFiltro, setPaisFiltro] = useState<string>("__todos__");
+
+  // Rótulos de interface traduzidos dinamicamente conforme o idioma selecionado
+  const ui = DICIONARIOS_UI[idioma];
 
   // Ordenação para Indicadores Sociais
   const [colunaOrdSociais, setColunaOrdSociais] = useState<keyof IndicadorSocialMultilateral>("idh");
@@ -120,26 +265,44 @@ export default function PainelMultilateral({
     });
   }, []);
 
-  // Exportação CSV (Regra da Qualidade 6)
+  // Exportação CSV (Regra da Qualidade 6 adaptável ao idioma)
   const exportarCsv = useCallback(() => {
     let cabecalho = "";
     let linhas: string[] = [];
     let nomeArquivo = "";
 
     if (abaAtiva === "sociais") {
-      cabecalho = "País;Código ISO3;IDH;Índice de Gini;Desigualdade Gênero (GII);Gastos Educação % PIB;Gastos Saúde % PIB;Expectativa de Vida;Fonte Oficial;URL Direta";
+      cabecalho =
+        idioma === "en"
+          ? "Country;ISO3 Code;HDI;Gini Index;Gender Inequality (GII);Education Spending % GDP;Health Spending % GDP;Life Expectancy;Official Source;Direct URL"
+          : idioma === "es"
+          ? "País;Código ISO3;IDH;Índice de Gini;Desigualdad Género (GII);Gasto Educación % PIB;Gasto Salud % PIB;Esperanza de Vida;Fuente Oficial;URL Directa"
+          : "País;Código ISO3;IDH;Índice de Gini;Desigualdade Gênero (GII);Gastos Educação % PIB;Gastos Saúde % PIB;Expectativa de Vida;Fonte Oficial;URL Direta";
+
       linhas = indicadoresFiltrados.map((item) =>
         `"${item.pais}";"${item.codigoIso3}";${item.idh};${item.gini};${item.desigualdadeGeneroGii};${item.gastoEducacaoPib};${item.gastoSaudePib};${item.expectativaVida};"${item.fonteOficial}";"${item.urlOficial}"`
       );
       nomeArquivo = `indicadores-sociais-multilaterais-${new Date().toISOString().substring(0, 10)}.csv`;
     } else if (abaAtiva === "comercio") {
-      cabecalho = "Commodity/Minério;Código HS;Origem;Destino;Volume Anual (t);Valor FOB (US$ Mi);Porto Embarque;Porto Destino;Fonte Oficial;URL Direta";
+      cabecalho =
+        idioma === "en"
+          ? "Commodity/Mineral;HS Code;Origin;Destination;Annual Volume (t);FOB Value (USD Million);Loading Port;Discharge Port;Official Source;Direct URL"
+          : idioma === "es"
+          ? "Mineral/Commodity;Código HS;Origen;Destino;Volumen Anual (t);Valor FOB (US$ Millones);Puerto Embarque;Puerto Destino;Fuente Oficial;URL Directa"
+          : "Commodity/Minério;Código HS;Origem;Destino;Volume Anual (t);Valor FOB (US$ Mi);Porto Embarque;Porto Destino;Fonte Oficial;URL Direta";
+
       linhas = comercio.map((c) =>
         `"${c.mineralOuCommodity}";"${c.codigoHs}";"${c.origemPais}";"${c.destinoPais}";${c.volumeAnualToneladas};${c.valorFobUsdMilhoes};"${c.portoEmbarqueBrasil}";"${c.portoDestino}";"${c.fonteNome}";"${c.urlOficial}"`
       );
       nomeArquivo = `comercio-commodities-multilateral-${new Date().toISOString().substring(0, 10)}.csv`;
     } else {
-      cabecalho = "Território;País;Povo Originário;Área (ha);Status Demarcação;Concessões Sobrepostas;Focos Calor Satélite;Órgão Responsável;URL Direta";
+      cabecalho =
+        idioma === "en"
+          ? "Territory;Country;Indigenous People;Area (ha);Demarcation Status;Overlapping Claims;Satellite Heat Spots;Responsible Agency;Direct URL"
+          : idioma === "es"
+          ? "Territorio;País;Pueblo Originario;Área (ha);Estado Demarcación;Superposición Minera;Focos Calor Satélite;Órgano Responsable;URL Directa"
+          : "Território;País;Povo Originário;Área (ha);Status Demarcação;Concessões Sobrepostas;Focos Calor Satélite;Órgão Responsável;URL Direta";
+
       linhas = territorios.map((t) =>
         `"${t.nomeTerritorio}";"${t.pais}";"${t.povoOriginario}";${t.areaHectares};"${t.statusDemarcacao}";${t.concessoesMinerariasSobrepostas};${t.focosCalorAnuaisSat};"${t.orgaoResponsavel}";"${t.urlOficial}"`
       );
@@ -156,7 +319,7 @@ export default function PainelMultilateral({
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }, [abaAtiva, indicadoresFiltrados, comercio, territorios]);
+  }, [abaAtiva, indicadoresFiltrados, comercio, territorios, idioma]);
 
   return (
     <div className="space-y-6">
@@ -183,7 +346,7 @@ export default function PainelMultilateral({
           }`}
         >
           <Users size={16} />
-          <span>Indicadores Sociais (ONU/UNESCO/OMS)</span>
+          <span>{ui.abaSociais}</span>
           <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
             {indicadores.length}
           </span>
@@ -199,7 +362,7 @@ export default function PainelMultilateral({
           }`}
         >
           <Globe size={16} />
-          <span>Comércio de Minérios (OMC)</span>
+          <span>{ui.abaComercio}</span>
           <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
             {comercio.length}
           </span>
@@ -215,7 +378,7 @@ export default function PainelMultilateral({
           }`}
         >
           <Compass size={16} />
-          <span>Terra e Povos Originários</span>
+          <span>{ui.abaTerritorios}</span>
           <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
             {territorios.length}
           </span>
@@ -236,7 +399,7 @@ export default function PainelMultilateral({
               type="text"
               value={busca}
               onChange={(e) => setBusca(e.target.value)}
-              placeholder="Buscar por país, código ou contexto..."
+              placeholder={ui.buscaPlaceholder}
               className="w-full rounded-xl border border-border bg-surface pl-9 pr-4 py-2 text-xs text-text placeholder:text-text-soft focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
@@ -248,7 +411,7 @@ export default function PainelMultilateral({
               onChange={(e) => setPaisFiltro(e.target.value)}
               className="rounded-xl border border-border bg-surface px-3 py-2 text-xs text-text focus:outline-none focus:ring-1 focus:ring-primary"
             >
-              <option value="__todos__">Todos os países ({paisesUnicos.length})</option>
+              <option value="__todos__">{ui.todosPaises} ({paisesUnicos.length})</option>
               {paisesUnicos.map((p) => (
                 <option key={p} value={p}>
                   {p}
@@ -264,19 +427,19 @@ export default function PainelMultilateral({
             type="button"
             onClick={exportarCsv}
             className="inline-flex items-center gap-1.5 rounded-xl border border-primary bg-primary px-3 py-2 text-xs font-semibold text-white shadow-xs hover:opacity-90 transition-opacity"
-            title="Baixar planilha compatível com Excel brasileiro (BOM UTF-8 e separador ;)"
+            title="Download CSV"
           >
             <Download size={14} />
-            <span>Planilha CSV</span>
+            <span>{ui.planilhaCsv}</span>
           </button>
           <button
             type="button"
             onClick={() => window.print()}
             className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-surface px-3 py-2 text-xs font-semibold text-text hover:bg-surface-2 transition-colors"
-            title="Imprimir relatório formatado"
+            title="Print"
           >
             <Printer size={14} />
-            <span className="hidden sm:inline">Imprimir</span>
+            <span className="hidden sm:inline">{ui.imprimir}</span>
           </button>
         </div>
       </div>
@@ -294,7 +457,7 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("pais")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      País <ArrowUpDown size={11} />
+                      {ui.thPais} <ArrowUpDown size={11} />
                     </button>
                   </th>
                   <th scope="col" className="p-3">
@@ -303,7 +466,7 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("idh")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      IDH (PNUD) <ArrowUpDown size={11} />
+                      {ui.thIdh} <ArrowUpDown size={11} />
                     </button>
                   </th>
                   <th scope="col" className="p-3">
@@ -312,7 +475,7 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("gini")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      Gini Desigualdade <ArrowUpDown size={11} />
+                      {ui.thGini} <ArrowUpDown size={11} />
                     </button>
                   </th>
                   <th scope="col" className="p-3 hidden md:table-cell">
@@ -321,7 +484,7 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("gastoEducacaoPib")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      Educação % PIB <ArrowUpDown size={11} />
+                      {ui.thEducacao} <ArrowUpDown size={11} />
                     </button>
                   </th>
                   <th scope="col" className="p-3 hidden md:table-cell">
@@ -330,7 +493,7 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("gastoSaudePib")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      Saúde % PIB <ArrowUpDown size={11} />
+                      {ui.thSaude} <ArrowUpDown size={11} />
                     </button>
                   </th>
                   <th scope="col" className="p-3">
@@ -339,10 +502,10 @@ export default function PainelMultilateral({
                       onClick={() => alternarOrdenacaoSociais("expectativaVida")}
                       className="inline-flex items-center gap-1 font-bold hover:text-text"
                     >
-                      Vida (Anos) <ArrowUpDown size={11} />
+                      {ui.thVida} <ArrowUpDown size={11} />
                     </button>
                   </th>
-                  <th scope="col" className="p-3 text-right">Fonte Oficial</th>
+                  <th scope="col" className="p-3 text-right">{ui.thFonte}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -365,7 +528,7 @@ export default function PainelMultilateral({
                               {item.pais}
                               {ehBrasil && (
                                 <span className="rounded bg-primary/20 text-primary text-[9px] px-1 py-0.2 uppercase">
-                                  Referência
+                                  {ui.referencia}
                                 </span>
                               )}
                             </div>
@@ -440,28 +603,28 @@ export default function PainelMultilateral({
                 </div>
                 <div className="space-y-1 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-text-soft">Origem:</span>
+                    <span className="text-text-soft">{ui.origem}</span>
                     <span className="font-semibold text-text">{c.origemPais}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-text-soft">Destino Principal:</span>
+                    <span className="text-text-soft">{ui.destino}</span>
                     <span className="font-semibold text-text">{c.destinoPais}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-text-soft">Volume Estimado:</span>
+                    <span className="text-text-soft">{ui.volumeEstimado}</span>
                     <span className="font-semibold text-text">
-                      {(c.volumeAnualToneladas / 1000000).toFixed(1)} Milhões t/ano
+                      {(c.volumeAnualToneladas / 1000000).toFixed(1)} {ui.milhoesAno}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-text-soft">Faturamento FOB:</span>
+                    <span className="text-text-soft">{ui.faturamentoFob}</span>
                     <span className="font-bold text-emerald-600 dark:text-emerald-400">
-                      US$ {c.valorFobUsdMilhoes.toLocaleString("pt-BR")} Milhões
+                      US$ {c.valorFobUsdMilhoes.toLocaleString(idioma === "en" ? "en-US" : "pt-BR")} {ui.milhoesUsd}
                     </span>
                   </div>
                   <div className="pt-2 text-[11px] text-text-soft border-t border-border">
-                    <div>Porto de Embarque: <strong>{c.portoEmbarqueBrasil}</strong></div>
-                    <div>Porto de Entrega: <strong>{c.portoDestino}</strong></div>
+                    <div>{ui.portoEmbarque} <strong>{c.portoEmbarqueBrasil}</strong></div>
+                    <div>{ui.portoEntrega} <strong>{c.portoDestino}</strong></div>
                   </div>
                 </div>
                 <div className="pt-1 text-right">
@@ -500,15 +663,15 @@ export default function PainelMultilateral({
                 </div>
                 <div className="space-y-1.5 text-xs text-text">
                   <div>
-                    <span className="text-text-soft">Povo Originário: </span>
+                    <span className="text-text-soft">{ui.povoOriginario} </span>
                     <strong>{t.povoOriginario}</strong>
                   </div>
                   <div>
-                    <span className="text-text-soft">Área Demarcada: </span>
-                    <strong>{t.areaHectares.toLocaleString("pt-BR")} hectares</strong>
+                    <span className="text-text-soft">{ui.areaDemarcada} </span>
+                    <strong>{t.areaHectares.toLocaleString(idioma === "en" ? "en-US" : "pt-BR")} {ui.hectares}</strong>
                   </div>
                   <div className="flex items-center justify-between pt-1">
-                    <span className="text-text-soft">Sobreposição Minerária:</span>
+                    <span className="text-text-soft">{ui.sobreposicaoMineraria}</span>
                     <span
                       className={`font-bold ${
                         t.concessoesMinerariasSobrepostas > 0
@@ -516,12 +679,12 @@ export default function PainelMultilateral({
                           : "text-emerald-500"
                       }`}
                     >
-                      {t.concessoesMinerariasSobrepostas} títulos ANM/BIA
+                      {t.concessoesMinerariasSobrepostas} {ui.titulosSobrepostos}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-text-soft">Focos de Calor (Satélite):</span>
-                    <span className="font-semibold text-text">{t.focosCalorAnuaisSat} focos/ano</span>
+                    <span className="text-text-soft">{ui.focosCalor}</span>
+                    <span className="font-semibold text-text">{t.focosCalorAnuaisSat} {ui.focosAno}</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between border-t border-border pt-2 text-[11px]">
@@ -532,7 +695,7 @@ export default function PainelMultilateral({
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
                   >
-                    Ver demarcação <ExternalLink size={10} />
+                    {ui.verDemarcacao} <ExternalLink size={10} />
                   </a>
                 </div>
               </div>
