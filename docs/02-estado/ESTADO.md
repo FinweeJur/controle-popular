@@ -169,6 +169,27 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**29/09/2026 (noite)** — Planos 2 a 5, com dados reais:
+
+- **Plano 3 — Autorizações territoriais (TAUS/CDRU e afins):** base fabricada
+  removida e trocada por **553 imóveis reais da União em MG** (SPU,
+  Transparência Ativa). Rota `/ambiental/autorizacoes` reescrita; gerador
+  `scripts/etl/territorio/gerar-destinacoes-uniao-mg.py`.
+- **Plano 4 — PPP:** base fabricada removida e trocada por **20 contratos reais
+  do Estado de MG** (Portal da Transparência MG / CKAN), separados em
+  `instrumento_concessao`, `supervisao_verificacao` e `estruturacao_estudos`.
+  Rota `/ambiental/ppp` criada (antes quebrada); gerador
+  `scripts/etl/concessoes/gerar-ppp-mg.py`.
+- **Plano 2 — Cidades de MG:** `/cidades/mg` com os 853 municípios do IBGE e os
+  10 polos com **população exata do Censo 2022** (IBGE, agregado 4714), não
+  mais estimativa digitada à mão.
+- **Plano 5 — Fiscalização de dados:** `bots/fiscaliza-bases.mts` varre as bases
+  JSON (399 arquivos, 173.119 registros), acusa CPF por mod-11, IBGE inválido,
+  duplicata, URL de fonte ausente e lacuna; `--self-test` com 11 casos.
+- **Verificação:** 1.872 testes vitest + 168 do globo verdes; `tsc --noEmit`
+  limpo; 0 crítico na varredura de CPF. Incidente das bases fabricadas
+  registrado em [FONTES.md § fontes dos Planos 2 a 4](../06-fontes/FONTES.md).
+
 **25/09/2026** — coleta PNCP (madrugada e manhã, desktop):
 
 - 16 cidades fechadas: AM (Manacapuru, Parintins, Tefé), PA (Abaetetuba,

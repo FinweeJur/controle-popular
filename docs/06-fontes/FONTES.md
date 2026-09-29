@@ -277,6 +277,49 @@ Número que saiu disso: **47,7% dos 870 convênios ambientais foram prorrogados,
 
 **Fora do CKAN:** o meio ambiente de MG quase não publica ali — nenhuma das 18 organizações é SEMAD/FEAM/IEF/IGAM (os convênios acima aparecem porque a CGE publica os de TODOS os órgãos). O ambiental vive nos sistemas do SISEMA. E a **SEDESE tem 1 conjunto só** (transferência de renda, 2020-21): tratar como dimensão, não como fonte.
 
+## Autorizações territoriais, PPP e população — as fontes dos Planos 2 a 4 (29/09/2026)
+
+Três fontes entraram com os Planos 2–4. Nenhuma é coletada por rede a cada
+rodada: os arquivos-fonte já estão versionados no repo e os geradores são
+`scripts/etl/territorio/gerar-destinacoes-uniao-mg.py` e
+`scripts/etl/concessoes/gerar-ppp-mg.py`.
+
+- **SPU — Painel de Transparência Ativa, aba *Imóveis da União*, filtro UF=MG.**
+  `https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html`.
+  Export CSV de 29/07/2026 (4.336 linhas em MG); o recorte geocodificado (553
+  imóveis) já vira a camada
+  `apps/web/public/terras/globo/dados/camadas/spu-imoveis-uniao.geojson`.
+  Alimenta `/ambiental/autorizacoes` (regime/destinação de cada imóvel).
+  **O que a fonte NÃO tem:** o termo individual de TAUS/CDRU. O cadastro é do
+  imóvel, não do ato — por isso a página fala "destinação", não "TAUS". A fonte
+  traz um typo real (`Em Processso de Destinação`), mantido como veio.
+- **Portal da Transparência de MG — base de contratos** (CKAN
+  `dados.mg.gov.br`; arquivo `etl/betim/dados/ckan-mg-fiscais-contrato.json`,
+  16.922 contratos). Alimenta `/ambiental/ppp`. **A armadilha:** buscar
+  "concessão" no texto devolve 71 contratos e a maioria NÃO é PPP — cantina de
+  universidade, comodato de glicosímetro, consultoria de estruturação,
+  treinamento. O gerador separa `instrumento_concessao` (a concessão em si),
+  `supervisao_verificacao` e `estruturacao_estudos`, e a página avisa que
+  contrato de apoio não é a PPP. 20 contratos reais no recorte de 29/09/2026.
+- **IBGE, Censo 2022 (agregado 4714, variável 93)** — população residente dos
+  10 polos de MG:
+  `https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93`.
+  Números exatos (BH 2.315.560; Betim 411.846; Diamantina 47.702) lidos em
+  29/09/2026 e guardados em `apps/web/lib/cidades/mg-polos.ts` com a fonte.
+
+**Armadilha do PNCP que vale anotar:** a busca pública
+`https://pncp.gov.br/api/search/?q=…&tipos_documento=contrato&uf=MG` devolve
+**HTTP 200 e o Brasil inteiro** — o parâmetro `uf` é ignorado em silêncio
+(medido 29/09/2026). Mesma família da armadilha de `/contratacoes/publicacao`
+em [AGENTS.md §6](/AGENTS.md): API que responde 200 e mente. Filtro de UF só
+vale se feito no cliente, pelo campo `uf` de cada registro.
+
+**Registro do incidente que originou tudo:** a primeira versão dos Planos 3 e 4
+publicou **bases fabricadas** (número de contrato, CNPJ e valor inventados à
+mão). Foram substituídas por estas fontes reais em 29/09/2026. Nenhum dado
+nestas duas páginas é digitado à mão: vem do arquivo versionado, e o gerador é
+reproduzível.
+
 ## Transferegov (ex-SICONV) — o federal publica o que o estadual não publica
 
 Medido em 21/08/2026. Coletor: `scripts/coletar-convenios-federais-mg.mts`. CSV puro, **sem chave e sem login**, em `https://repositorio.dados.gov.br/seges/detru/`. Recorte de MG: 29.475 convênios da União com proponente mineiro, R$ 27,98 bi, 49,2% desembolsado.

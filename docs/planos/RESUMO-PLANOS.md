@@ -36,11 +36,12 @@
 - **Microresumo:** `bots/microresumo-escassez-betim.mts` (gerado)
 
 ### 2. 🌆 Expansão para todas cidades de MG
-**Status:** ⏳ PARCIAL (Betim validado)
+**Status:** ✅ CONCLUÍDO (29/09)
 
-- **Cidades-beta:** 10 cidades com dados de Betim replicados
-- **Schema:** `apps/web/lib/db/seed/cidades-mg.ts` (S1 bloqueado no Neon)
-- **Route:** `/municipios/mg` (M4 pendente)
+- **Route:** `/cidades/mg` — 853 municípios do IBGE
+- **Polos:** `apps/web/lib/cidades/mg-polos.ts` — 10 polos com população
+  exata do **Censo 2022** (IBGE, agregado 4714)
+- **Schema:** `apps/web/lib/db/schema-cidades-mg.ts`
 
 ### 2b. 📡 Ampliação PNCP (6 principais → demais mapeadas)
 **Status:** 🚧 EM ANDAMENTO (medido 25/09)
@@ -53,22 +54,27 @@
 - **Checkpoint:** `etl/betim/etl/pncp/checkpoint.py` (retomada por página)
 
 ### 3. 📜 TAUS / CDRU / Autorizações Territoriais
-**Status:** ⏳ PENDENTE
+**Status:** ✅ CONCLUÍDO (29/09)
 
-- **Plano:** `docs/planos/PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md`
-- **SIOUT/MG:** Fonte única para TAUS, CDRU, outorgas
-- **Schema:** `apps/web/lib/db/schema-outorgas.ts` (pronto)
+- **Fonte real:** SPU — Transparência Ativa, imóveis da União em MG (553)
+- **Página:** `/ambiental/autorizacoes` (destinação/regime de cada imóvel)
+- **Gerador:** `scripts/etl/territorio/gerar-destinacoes-uniao-mg.py`
+- **Schema:** `apps/web/lib/db/schema-autorizacoes.ts`
 
 ### 4. 🤝 Parcerias Público-Privadas (PPP)
-**Status:** ⏳ PENDENTE
+**Status:** ✅ CONCLUÍDO (29/09)
 
-- **Plano:** `docs/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md`
-- **Fonte:** PNCP (coletado) + Diários Oficiais
+- **Fonte real:** Portal da Transparência MG (CKAN) — 20 contratos
+- **Página:** `/ambiental/ppp` (instrumento, supervisão e estruturação)
+- **Gerador:** `scripts/etl/concessoes/gerar-ppp-mg.py`
+- **Schema:** `apps/web/lib/db/schema-ppp.ts`
 
 ### 5. 🤖 Bot do N8n (fiscalização de bots)
-**Status:** ⏳ PENDENTE
+**Status:** ✅ CONCLUÍDO (29/09)
 
-- **Plano:** `docs/planos/PLANO-TRABALHO-SETEMBRO-2026.md`
+- **Bot:** `bots/fiscaliza-bases.mts` — varre as bases JSON do portal
+- **Fiscaliza:** CPF por mod-11, IBGE inválido, duplicata, URL ausente, lacuna
+- **Self-test:** `npx tsx bots/fiscaliza-bases.mts --self-test`
 - **Skill:** `skills/productivity/verificacao-dados-automacao/SKILL.md`
 
 ### 6. 🌐 Expansão Internacional & Multilateral
@@ -112,15 +118,18 @@
 | `scripts/agent-tools/vigia-dados-etl.mts` | Telemetria contínua de 397 bases | ✅ Ativo |
 | `scripts/bot-fact-checker-pr.mts` | Fact-checking cívico e abertura de PRs | ✅ Ativo |
 | `bots/verifica-dados.mts` | Cross-check de valores | ✅ Testado |
+| `bots/fiscaliza-bases.mts` | Fiscaliza as bases JSON (CPF, IBGE, duplicata, lacuna) | ✅ Ativo |
 | `bots/notifica-telegram.mts` | Notificação automática | ✅ Testado |
 | `bots/orquestrador.mts` | Orquestração de microetapas | ✅ Testado |
 
 ### Schemas
 | Schema | Tabelas | Status |
 |--------|---------|--------|
-| `apps/web/lib/db/schema-conselhos.ts` | membros, conselhos, atas | ⏳ Aguarda Neon |
-| `apps/web/lib/db/schema-outorgas.ts` | outorgas, tipos_uso, regionais | ⏳ Aguarda Neon |
-| `apps/web/lib/db/schema-cidades-mg.ts` | cidades-beta | ⏳ Aguarda Neon |
+| `apps/web/lib/db/schema-conselhos.ts` | membros, conselhos, atas | ✅ Pronto (app no Guara) |
+| `apps/web/lib/db/schema-outorgas.ts` | outorgas, tipos_uso, regionais | ✅ Pronto (app no Guara) |
+| `apps/web/lib/db/schema-cidades-mg.ts` | cidades_mg | ✅ Pronto (app no Guara) |
+| `apps/web/lib/db/schema-autorizacoes.ts` | autorizações/destinações (União) | ✅ Pronto |
+| `apps/web/lib/db/schema-ppp.ts` | parcerias e concessões | ✅ Pronto |
 
 ---
 
@@ -128,10 +137,13 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Testes passando** | 1.626 vitest + 146 globo ✅ |
+| **Testes passando** | 1.872 vitest + 168 globo ✅ |
+| **Bases JSON fiscalizadas** | 399 arquivos com 173.119 registros ✅ |
 | **Suíte Internacional/Lab** | 47/47 testes verdes ✅ |
 | **Arquivos de dados com 0 CPF** | 473 JSONs verificados ✅ |
 | **Bases e coletores vigiados** | 397 bases com telemetria ✅ |
 | **Assembleias estaduais** | 27 UFs integradas ✅ |
 | **Hubs Internacionais** | 3 hubs (/internacional, /eua, /canada) ✅ |
 | **Idiomas com tradução reativa** | 3 (PT, EN, ES) com TTS ✅ |
+| **Imóveis reais da União em MG** | 553 (SPU, Plano 3) ✅ |
+| **Contratos reais de concessão/PPP em MG** | 20 (Transparência MG, Plano 4) ✅ |
