@@ -12,7 +12,8 @@
 /* ══════════════════════════════════════════════════════════════════
    PONTEIRO DO MOUSE — Korkhon 2.0 XS (EfeMaden, domínio público)
    https://www.rw-designer.com/cursor-set/korkhon-2-0-sx
-   Sete arquivos .cur em `public/cursor/`, servidos em `/cursor/`.
+   Sete arquivos .cur + location.cur, e os dois .ani (busy e working),
+   todos em `public/cursor/`, servidos em `/cursor/`.
 
    O "hotspot" (o pixel que de fato clica) está escrito no cabeçalho de
    cada .cur; repetimos o mesmo valor aqui porque nem todo navegador
@@ -29,8 +30,13 @@
    apaga especificidade entre DECLARAÇÕES importantes, então quem tem
    seletor mais forte (desabilitado, texto, cruzeta) ganha do `*`.
 
-   Fora do pacote: os dois `.ani` (busy 259 KB + working 320 KB) não
-   foram copiados — `progress`/`wait` seguem com o cursor nativo.
+   CONTRASTE (regra do dono, 29/09, WCAG 1.4.11): o contorno dos dez
+   arquivos passou por `scripts/recolor-contraste-cursor.py`, que trocou
+   o marrom #5c4542 por preto puro. Motivo medido: o marrom só llegava
+   a 2,26 em floresta e 2,38 em asfalto — fundo de imagem de satélite do
+   globo, abaixo do mínimo de 3:1. Com preto + areia #cea67b os dois
+   limiares se sobrepõem e o par passa em qualquer fundo. O teste que
+   prova isso está em `lib/cursores.test.ts`.
    ══════════════════════════════════════════════════════════════════ */
 
 /* Padrão: a seta do pacote, em todo elemento da página. */
@@ -71,6 +77,24 @@ html [contenteditable="true"] {
   cursor: url("/cursor/beam.cur") 6 11, text !important;
 }
 
+/* Localização: o pino do lucide — `<MapPin/>` sai do react com
+   class="lucide lucide-map-pin" (lucide-react 1.27). Vale para o ícone
+   e para o botão/link que o envolve, porque `cursor` é herdado e o
+   :has só alcança o elemento interativo: o cartão que apenas MOSTRA um
+   endereço não vira alvo de clique. Vem antes do `:disabled` de
+   propósito — empatia de especificidade decide a ordem, e o
+   desabilitado tem de continuar ganhando. Hotspot 6,22. */
+html .cursor-location,
+html .lucide-map-pin,
+html .lucide-map-pinned,
+html .lucide-locate-fixed,
+html .lucide-locate,
+html a[href]:has(.lucide-map-pin),
+html button:has(.lucide-map-pin),
+html [role="button"]:has(.lucide-map-pin) {
+  cursor: url("/cursor/location.cur") 6 22, pointer !important;
+}
+
 /* Indisponível: o círculo cortado. Ganha do link por especificidade
    (`html :disabled` = 0,1,1 contra `a[href]` = 0,1,1, e vem depois). */
 html :disabled,
@@ -89,6 +113,28 @@ html .cursor-grabbing {
 }
 html .cursor-help {
   cursor: url("/cursor/question.cur") 7 20, help !important;
+}
+
+/* Espera total: a hora arejada (hotspot 11,11, centro do disco). O
+   atributo `body[data-carregando]` é ligado por `LoadingOverlay.tsx`
+   quando o portal navega entre páginas. Especificidade 0,1,2 e posição
+   final: atravessa todos os estados acima — durante a navegação o
+   cursor avisa que nada responde, e some sozinho quando a página chega. */
+html body[data-carregando],
+html body[data-carregando] * {
+  cursor: url("/cursor/busy.ani") 11 11, wait !important;
+}
+
+/* Trabalhando, mas respondendo: a seta animada (hotspot 0,1). Entra
+   quando a própria peça declara `aria-busy="true"` — busca global e
+   Seu Nonô — e nas classes que o Tailwind já nomeia. */
+html [aria-busy="true"],
+html [aria-busy="true"] *,
+html .cursor-progress {
+  cursor: url("/cursor/working.ani") 0 1, progress !important;
+}
+html .cursor-wait {
+  cursor: url("/cursor/busy.ani") 11 11, wait !important;
 }
 
 :root {

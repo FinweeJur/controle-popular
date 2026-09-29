@@ -79,7 +79,9 @@ export function ChatbotIaLaboratorio() {
         Sempre confira a fonte original.
       </p>
 
-      <form onSubmit={enviar} className="mt-4 flex gap-2">
+      {/* `aria-busy` enquanto o modelo responde: declara a espera para o
+          leitor de tela E vira o cursor working.ani na tela (globals.css). */}
+      <form onSubmit={enviar} className="mt-4 flex gap-2" aria-busy={carregando}>
         <input
           type="text"
           value={pergunta}

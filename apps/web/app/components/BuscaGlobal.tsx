@@ -83,7 +83,14 @@ export default function BuscaGlobal() {
   const mostrar = aberto && consulta.trim().length > 0;
 
   return (
-    <div ref={caixaRef} role="search" className="relative min-w-0 flex-1">
+    <div
+      ref={caixaRef}
+      role="search"
+      /* Enquanto o índice de busca baixa, o cursor vira a seta animada
+         do pacote Korkhon (working.ani) — `globals.css` lê `aria-busy`. */
+      aria-busy={!indice && !falha}
+      className="relative min-w-0 flex-1"
+    >
       <div className="relative flex items-center">
         {/* Ícone fixo de lupa na esquerda — sempre visível */}
         <Search

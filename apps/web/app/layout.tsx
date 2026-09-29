@@ -15,6 +15,7 @@ import { SeuNono } from "@/app/components/SeuNono";
 import { BackToTop } from "@/app/components/BackToTop";
 import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
+import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
 import "./globals.css";
 
@@ -222,6 +223,11 @@ export default function RootLayout({
           <BackToTop />
         <IndicePagina />
         <BeaconDownloadsGlobal />
+          {/* Dica no hover: janelinha explicativa depois de 2 s parado
+              sobre um botão ou link. Um componente aqui cobre as ~100
+              páginas do portal — o texto sai do `data-dica`, do
+              `aria-label` ou do `title` que a página já tem. */}
+          <DicaHover />
           {/* Seu Nonô — assistente flutuante. Modo texto enquanto IA não está
               configurada; modo IA (RAG) quando houver chave de API. */}
           <SeuNono />

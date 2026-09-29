@@ -42,7 +42,9 @@
    especificidade, e elas são mais fortes que o `*`.
 
    Valores de hotspot conferidos contra o cabeçalho de cada .cur por
-   `apps/web/lib/cursores.test.ts`.
+   `apps/web/lib/cursores.test.ts`. Os dez arquivos (.cur + .ani) já
+   passaram por `scripts/recolor-contraste-cursor.py` — contorno preto
+   para valer ≥3:1 sobre imagem de satélite (WCAG 1.4.11).
    ══════════════════════════════════════════════════════════════════ */
 
 * {
@@ -78,6 +80,21 @@ html [contenteditable="true"] {
   cursor: url("/cursor/beam.cur") 6 11, text !important;
 }
 
+/* Localização: o pino do lucide, no portal. Aqui não há lucide, mas o
+   bloco é espelho do `globals.css` e os dois mudam juntos — manter
+   igual vale mais que apagar três seletoores ociosos. Antes do
+   `:disabled` pelo mesmo motivo de lá. */
+html .cursor-location,
+html .lucide-map-pin,
+html .lucide-map-pinned,
+html .lucide-locate-fixed,
+html .lucide-locate,
+html a[href]:has(.lucide-map-pin),
+html button:has(.lucide-map-pin),
+html [role="button"]:has(.lucide-map-pin) {
+  cursor: url("/cursor/location.cur") 6 22, pointer !important;
+}
+
 html :disabled,
 html [aria-disabled="true"],
 html .cursor-not-allowed {
@@ -93,6 +110,24 @@ html .cursor-grabbing {
 }
 html .cursor-help {
   cursor: url("/cursor/question.cur") 7 20, help !important;
+}
+
+/* Espera total: a hora arejada. No portal o atributo vem do
+   `LoadingOverlay`; aqui de fora do React, se um dia ligarem
+   `data-carregando` no `<body>` do HTML estático, já funciona. */
+html body[data-carregando],
+html body[data-carregando] * {
+  cursor: url("/cursor/busy.ani") 11 11, wait !important;
+}
+
+/* Trabalhando, mas respondendo: a seta animada. */
+html [aria-busy="true"],
+html [aria-busy="true"] *,
+html .cursor-progress {
+  cursor: url("/cursor/working.ani") 0 1, progress !important;
+}
+html .cursor-wait {
+  cursor: url("/cursor/busy.ani") 11 11, wait !important;
 }
 
 * {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useLoading } from "@/lib/use-loading";
 import { WavePhysicsLoader, DotsRing } from "@/app/components/loaders";
 
@@ -10,9 +11,26 @@ import { WavePhysicsLoader, DotsRing } from "@/app/components/loaders";
  * afastado do FAB do Seu Nonô (que mora na direita).
  * Não sobrepõe texto, não bloqueia navegação e fecha automaticamente
  * assim que a nova página conclui o carregamento.
+ *
+ * Enquanto estiver aberto, liga `data-carregando` no `<body>`. É esse
+ * atributo — e não uma marcação em cada página — que faz o cursor do
+ * mouse virar a hora arejada do pacote Korkhon em TODA a tela
+ * (`globals.css`). O cursor é propriedade herdada, então um único
+ * atributo no corpo cobre as ~100 páginas do portal.
  */
 export default function LoadingOverlay() {
   const { carregando, segundos } = useLoading();
+
+  useEffect(() => {
+    if (carregando) {
+      document.body.setAttribute("data-carregando", "");
+    } else {
+      document.body.removeAttribute("data-carregando");
+    }
+    // Se o componente desmontar no meio da navegação, o atributo não
+    // pode ficar preso — senão o cursor ficaria preso em "esperando".
+    return () => document.body.removeAttribute("data-carregando");
+  }, [carregando]);
 
   if (!carregando) return null;
 
