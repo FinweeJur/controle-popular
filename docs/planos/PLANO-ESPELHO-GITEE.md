@@ -1,5 +1,13 @@
 # Plano de espelho dos repositórios no Gitee
 
+> **⛔ SUPERADO em 29/09/2026 — não executar.** O dono trocou o destino do
+> espelho para o **GitLab**: o Gitee nunca teve os secrets `GITEE_USERNAME` /
+> `GITEE_TOKEN` criados e o workflow ficava falhando em todo push desde 28/09.
+> O espelho vivo hoje é `gitlab.com/FinweeJur/controle-popular`, pelo
+> `mirror-gitlab.yml` — ver [OPERACAO.md § 2](../05-operacao/OPERACAO.md).
+> Este plano fica como histórico da decisão de 22/08 (espelho, não mudança de
+> casa), que continua valendo com outro destino.
+
 > **Tipo:** PLANO
 > **Domínio:** global
 > **Última medição:** 2026-09-01

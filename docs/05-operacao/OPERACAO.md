@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-09-19 (domínio customizado Guara Cloud documentado, TTS com microresumo)
+> **Última medição:** 2026-09-29 (espelho no GitLab no lugar do Gitee; token com `write_repository` conferido)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc, guara, docker, duplo deploy
@@ -81,9 +81,19 @@ O plano Starter paga build por minutos: um build do portal gasta
   CLI manual (§3). Em 28/09 o job em push falhava com `No project
   specified` — o CLI 0.3.0 exige `--project controle-popular` e o runner
   não tem `guara link`; corrigido junto com o travamento do deploy em push.
-- O workflow `mirror-gitee.yml` (espelho do repositório no Gitee) falha em
-  todo push enquanto os secrets `GITEE_USERNAME`/`GITEE_TOKEN` não forem
-  configurados — o próprio workflow diz que o espelho fica inativo até lá.
+- O workflow `mirror-gitlab.yml` espelha o repositório no GitLab
+  (`gitlab.com/FinweeJur/controle-popular`, projeto 87027844) a cada push e
+  todo domingo às 04:17 UTC, pelo mesmo `git push --mirror` de sempre: ele
+  copia branches e tags e apaga do espelho o que saiu daqui. Usa o secret
+  `GITLAB_TOKEN` (PAT com escopo `write_repository`, conferido em 29/09,
+  **expira em 29/10/2026** — renovar antes, senão o espelho fica vermelho
+  igual o Gitee ficava). O `mirror-gitee.yml` foi removido: o Gitee nunca
+  teve os secrets criados e ficava falhando em todo push desde 28/09.
+  - **Nesta máquina** (`home-pc`) o remote local já vem configurado e não
+    usa token nenhum: `git remote add gitlab git@gitlab.com:FinweeJur/controle-popular.git`,
+    autenticado por **deploy key** SSH com permissão de escrita (chave
+    `~/.ssh/id_gitlab_cp`, registrada como chave do projeto). Para mandar o
+    trabalho de uma sessão nova: `git push gitlab HEAD:main`.
 - O workflow `mirror-hf.yml` espelha o HEAD no Hugging Face
   (`FinweeBR/controle-popular`) a cada push, pelo script
   `scripts/espelhar-hf.py`: só sobe o commitado, poda o que saiu do git

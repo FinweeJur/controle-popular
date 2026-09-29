@@ -1,0 +1,64 @@
+name: Espelho no GitLab
+
+# Substitui o Gitee como espelho do repositório (decisão do dono, 29/09/2026).
+# O Gitee ficava vermelho desde 28/09 porque os secrets nunca foram criados;
+# o GitLab tem conta, projeto e token prontos, então o espelho passa a ser ele.
+#
+# Espelho, não casa: a CI (ETLs, guardas de dado pessoal, vigia de LAI) segue
+# sendo GitHub Actions. Este workflow só copia o repositório para o GitLab.
+#
+# O que ele faz: `git push --mirror` do repositório para o espelho no GitLab.
+# `--mirror` copia branches e tags e apaga do espelho o que foi deletado aqui —
+# é isso que mantém o GitLab igual ao GitHub.
+#
+# Segredo necessário (Settings > Secrets and variables > Actions):
+#   GITLAB_TOKEN — Personal Access Token do GitLab com escopo `write_repository`
+#                  (verificado em 29/09/2026; expira em 29/10/2026, renovar
+#                  antes — um espelho com token vencido volta a ficar vermelho).
+#
+# Projeto espelhado: gitlab.com/FinweeJur/controle-popular (id 87027844).
+# Nesta máquina o remote local `gitlab` autentica por SSH (deploy key com
+# permissão de escrita, sem segredo nenhum no config) — ver OPERACAO.md § 2.
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    # Semanal, às 04:17 UTC de domingo: pega push manual feito direto no
+    # GitLab e qualquer ref que o trigger de push não tenha visto.
+    - cron: "17 4 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-gitlab
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Espelho precisa do histórico inteiro, não só do último commit:
+          # `push --mirror` sem `fetch-depth: 0` subiria um repo órfão.
+          fetch-depth: 0
+
+      - name: Conferir secret (antes de qualquer rede)
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          if [ -z "$GITLAB_TOKEN" ]; then
+            echo "::error::secret GITLAB_TOKEN ausente — configurar em Settings > Secrets. O espelho fica inativo até lá."
+            exit 1
+          fi
+          echo "  OK  secret presente"
+
+      - name: Espelhar para o GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          repo="${{ github.event.repository.name }}"
+          git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/FinweeJur/${repo}.git"
+          git push --mirror gitlab

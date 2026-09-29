@@ -76,7 +76,7 @@ Decisões de 22/08, numa sessão única. **Não reabrir sem remensurar.**
 | 10 | Diário de Itinga: `www.itinga.mg.gov.br/diario` | ✅ corrigido |
 | 11 | Protocolo da LAI do INCRA: o dono cuida | ⛔ pendente |
 | 12 | ETL antigo da FGV continua vivo e alinhado | ✅ decisão mantida |
-| 13 | Código sobe para o Gitee no futuro (espelho, não mudança) | 🟡 runbook pronto |
+| 13 | Espelho do código fora do GitHub | ✅ GitLab no lugar do Gitee (29/09) |
 | 14 | Backfill do diário oficial desde jan/2020 | ✅ concluído (30/08) |
 | 15 | Estrutura investigativa do diário: 7 eixos | registrado, sem implementação |
 
@@ -124,7 +124,7 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 | C1 | Redirect da raiz no Cloudflare (A2) | dashboard do Cloudflare |
 | C2 | Anotar protocolo da LAI no `docs/LAI-PROTOCOLOS.json` | CI vigia o prazo sozinha |
 | C3 | Informar `AJRI_COOKIE` (fases 2 e 3 do PDFs da AJRI) | valor expira |
-| C4 | Abrir conta no Gitee e espelhar o código | runbook `PLANO-ESPELHO-GITEE.md` |
+| C4 | ~~Abrir conta no Gitee e espelhar o código~~ | ✅ feito no GitLab (29/09), `OPERACAO.md` § 2 |
 | C5 | Aceitar convite do GitBook | espelho de docs |
 
 ### Bloco D — destrava com a Fase 4
