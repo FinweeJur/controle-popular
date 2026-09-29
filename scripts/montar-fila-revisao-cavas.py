@@ -144,11 +144,22 @@ def _cartao(x: dict, num: int | None = None) -> str:
     nuvem = x.get("nuvem_indice")
     nuvem_s = f"{nuvem:.0%}" if isinstance(nuvem, (int, float)) else "?"
     num_s = f"<b>#{num}</b> · " if num is not None else ""
+    # Eco do prompt: o VLM devolveu a própria instrução no lugar da
+    # descrição (1.117 de 3.012 no lote fechado, medido 28/09). Marcado
+    # em vermelho para o revisor digitar a legenda dele.
+    eco = "uma linha curta em portugu" in x["legenda"][:70]
+    eco_s = (
+        '<b style="color:#b3261e">⚠ legenda da IA veio errada — '
+        "digite a sua embaixo</b><br>"
+        if eco
+        else ""
+    )
     return (
         f'<figure><img src="{img}" alt="recorte {html.escape(x["arquivo"])}" '
         f'loading="lazy" width="256" height="256">'
         f"<figcaption>{num_s}<b>{x['tipo']}</b> · escore {esc} · "
         f"nuvem {nuvem_s}<br>"
+        f"{eco_s}"
         f"{html.escape(x['legenda'][:220])}<br>"
         f'<small>processo {html.escape(str(x.get("processo") or "—"))} · '
         f'cena {html.escape(str(x.get("cena") or "—"))} · '
@@ -207,21 +218,41 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
             "<option>descartado</option><option>publicável</option>"
             "</select></div>"
         )
-        # O seletor entra DENTRO do <figure>: como ele era irmão do card
-        # na grade, virava célula solta e aparecia ao lado/debaixo da
+        # Campo aberto para o revisor digitar a legenda dele (pedido do
+        # dono 28/09); o valor vai no mesmo JSON exportado, por recorte.
+        correcao = (
+            f'<div class="correcao"><label for="t{i}">'
+            f"<b>sua legenda</b> (você digita):</label>"
+            f'<textarea id="t{i}" rows="2" data-id="{html.escape(x["arquivo"])}"'
+            ' placeholder="descreva o que se vê na foto"></textarea></div>'
+        )
+        # O seletor e o campo entram DENTRO do <figure>: como eram irmãos
+        # do card na grade, viravam célula solta e apareciam ao lado da
         # figura sem par (formato esquisito, medido pelo dono 28/09).
         cartoes.append(
-            _cartao(x, num=i).replace("</figure>", seletor + "</figure>")
+            _cartao(x, num=i).replace(
+                "</figure>", seletor + correcao + "</figure>"
+            )
         )
     js = (
         "const K='amostra100-estados';"
-        "const est=JSON.parse(localStorage.getItem(K)||'{}');"
+        "let est=JSON.parse(localStorage.getItem(K)||'{}');"
+        # migracao: formato antigo guardava so a string do estado
+        "for(const k in est){if(typeof est[k]==='string')"
+        "est[k]={estado:est[k],legenda:''};}"
         "const sels=[...document.querySelectorAll('select[data-id]')];"
-        "function conta(){const n=sels.filter(s=>s.value!=='pendente').length;"
+        "const its=[...document.querySelectorAll('textarea[data-id]')];"
+        "function salvar(){localStorage.setItem(K,JSON.stringify(est));conta();}"
+        "function conta(){const n=sels.filter(s=>"
+        "est[s.dataset.id].estado!=='pendente').length;"
         "document.getElementById('conta').textContent=n+' de '+sels.length;}"
-        "sels.forEach(s=>{s.value=est[s.dataset.id]||'pendente';"
-        "s.addEventListener('change',()=>{est[s.dataset.id]=s.value;"
-        "localStorage.setItem(K,JSON.stringify(est));conta();});});"
+        "sels.forEach(s=>{const id=s.dataset.id;"
+        "est[id]=est[id]||{estado:'pendente',legenda:''};"
+        "s.value=est[id].estado;"
+        "s.addEventListener('change',()=>{est[id].estado=s.value;salvar();});});"
+        "its.forEach(t=>{const id=t.dataset.id;"
+        "t.value=est[id]?est[id].legenda:'';"
+        "t.addEventListener('input',()=>{est[id].legenda=t.value;salvar();});});"
         "document.getElementById('exportar').addEventListener('click',()=>{"
         "const b=new Blob([JSON.stringify(est,null,1)],{type:'application/json'});"
         "const a=document.createElement('a');a.href=URL.createObjectURL(b);"
@@ -241,6 +272,10 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
         "border-top:1px dashed #ccc;font-size:.85rem}"
         ".estado label{font-weight:600}"
         "select{font-size:.9rem;margin-left:.25rem}"
+        ".correcao{margin-top:.4rem;font-size:.8rem}"
+        ".correcao textarea{width:100%;box-sizing:border-box;"
+        "font-family:inherit;font-size:.85rem;padding:.3rem;"
+        "border:1px solid #bbb;border-radius:4px;resize:vertical}"
         "h1{font-size:1.3rem}</style></head><body>"
         f"<h1>Amostra de {len(amostra)} — revisão humana do gate</h1>"
         "<p>O gate do plano exige precisão medida <b>e</b> revisão de 100 "
