@@ -1,5 +1,18 @@
 "use client";
 
+/**
+ * @file CartaoChatbotHome.tsx
+ * @description Cartão promocional de entrada do assistente Seu Nonô na página inicial.
+ * 
+ * Papel no portal:
+ * Permite ao cidadão disparar perguntas rápidas ou personalizadas diretamente para o Seu Nonô,
+ * abrindo o assistente flutuante ou o painel completo de inteligência cívica.
+ * 
+ * Regras e decisões:
+ * - Badge atualizado para 'IA Cidadã Popular · RAG' com ícone Sparkles.
+ * - Dispara evento customizado 'abrir-seu-nono' para acionar o widget global.
+ */
+
 import { useState } from "react";
 import Link from "next/link";
 import { MessageSquare, Sparkles, ArrowRight, CornerDownLeft } from "lucide-react";
@@ -78,7 +91,7 @@ export default function CartaoChatbotHome() {
               </h2>
               <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
                 <Sparkles className="h-2.5 w-2.5" />
-                IA Cidadã Livre (Sabiá 7B)
+                IA Cidadã Popular · RAG
               </span>
             </div>
             <p className="text-xs text-text-soft">

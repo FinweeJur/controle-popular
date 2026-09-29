@@ -27,7 +27,7 @@
  * é checada antes e o erro sai amigável quando o servidor não está de pé.
  */
 
-import { montarAcervo, type AcervoFonte } from "../acervo";
+import { montarAcervo, frenteDaRota, type AcervoFonte } from "../acervo";
 import { verificarCitacao, rotuloVerificacao } from "../verificador-citacao";
 import { vetorizar, vetorizarLote, ollamaDisponivel, OllamaIndisponivel } from "./ollama";
 import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto } from "./remoto";
@@ -39,16 +39,20 @@ export type { RespostaRag, FonteRag };
 
 const TOP_K_PADRAO = 3;
 /** Abaixo disso o top-1 é ruído — abstém (regra "não sei honesto"). */
-const LIMIAR_ABSTENCAO_PADRAO = 0.15;
+const LIMIAR_ABSTENCAO_PADRAO = 0.10;
 const PESO_COSSENO = 0.6;
 const PESO_LEXICAL = 0.4;
 const MAX_TENTATIVAS = 2;
 
-interface OpcoesRag {
+export interface OpcoesRag {
   topK?: number;
   modeloChat?: string;
   modeloEmbed?: string;
   limiarAbstencao?: number;
+  /** Rota da página onde o usuário está (ex: /ambiental/licenciamento), para priorizar contexto. */
+  pathname?: string;
+  /** Título da página atual. */
+  titulo?: string;
   /** Timeout da GERAÇÃO, em ms — o padrão de `geracao.ts` é 60 s; suba para
    *  modelos 7B em máquina lenta (medido em 31/08: 3B passou de 60 s com o
    *  servidor carregado). */
@@ -118,10 +122,17 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
 const INDICE_LEXICAL: IndiceAcervo = { fontes: [], vetores: [] };
 
 async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boolean }> {
+  if (indiceEmMemoria) return { indice: indiceEmMemoria, soLexical: false };
+  if (!temChaveEmbed() && !(await ollamaDisponivel())) {
+    const fontes = montarAcervo();
+    return {
+      indice: { fontes, vetores: fontes.map(() => []) },
+      soLexical: true,
+    };
+  }
   try {
     return { indice: await indexarAcervo(), soLexical: false };
-  } catch (e) {
-    if (!temChaveRemota()) throw e;
+  } catch {
     const fontes = montarAcervo();
     return {
       indice: { fontes, vetores: fontes.map(() => []) },
@@ -142,26 +153,41 @@ interface ResultadoBusca {
 }
 
 /** Rankeia o acervo por cosseno ⊕ lexical (ou só lexical, sem embeddings),
- *  do mais para o menos parecido. */
+ *  do mais para o menos parecido. Considera rota/página atual como boost de relevância. */
 export async function buscarNoAcervo(
   pergunta: string,
   topK?: number,
-  limiar?: number
+  limiar?: number,
+  pathname?: string
 ): Promise<{ melhores: ResultadoBusca[]; abstem: boolean }> {
   const { indice, soLexical } = await indiceOuLexical();
   // Só-lexical não chama `vetorizar`: sem provedor de embedding (Ollama ou
   // API remota) não há embedding da pergunta, e `similaridadeCosseno` com
   // vetores vazios seria ruído.
   const vetorPergunta = soLexical ? [] : await vetorizarTexto(pergunta);
+  const frenteRotaAtual = pathname ? frenteDaRota(pathname) : "";
+
   const ranqueados: ResultadoBusca[] = indice.fontes
     .map((fonte, i) => {
       const cosseno = soLexical
         ? 0
         : similaridadeCosseno(vetorPergunta, indice.vetores[i]);
-      const lexical = similaridadeLexical(pergunta, fonte.texto);
+      let lexical = similaridadeLexical(pergunta, `${fonte.titulo} ${fonte.texto}`);
+      
+      // Boost de afinidade com a rota ou frente da tela onde o usuário está
+      if (pathname && pathname.length > 0) {
+        if (
+          fonte.rota === pathname ||
+          (pathname !== "/" && (fonte.rota.startsWith(pathname) || pathname.startsWith(fonte.rota)))
+        ) {
+          lexical = Math.min(1.0, lexical + 0.15);
+        } else if (frenteRotaAtual && (fonte.frente === frenteRotaAtual || frenteDaRota(fonte.rota) === frenteRotaAtual)) {
+          lexical = Math.min(1.0, lexical + 0.08);
+        }
+      }
+
       // Só-lexical: score na MESMA escala do híbrido (0–1) para que o limiar
-      // de abstenção continue significa o que sempre significou — Jaccard
-      // puro dividido pelo peso lexical daria nota artificial baixa.
+      // de abstenção continue significando o que sempre significou.
       const score = soLexical ? lexical : scoreHibrido(cosseno, lexical);
       return { fonte, cosseno, lexical, score };
     })
@@ -239,7 +265,8 @@ export async function responderComRag(
   const { melhores, abstem } = await buscarNoAcervo(
     pergunta,
     opcoes.topK,
-    opcoes.limiarAbstencao
+    opcoes.limiarAbstencao,
+    opcoes.pathname
   );
 
   if (abstem) {

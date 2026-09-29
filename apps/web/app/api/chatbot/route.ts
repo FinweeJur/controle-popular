@@ -61,9 +61,21 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   let pergunta = "";
+  let pathname: string | undefined;
+  let titulo: string | undefined;
   try {
-    const body = (await req.json()) as { pergunta?: string };
+    const body = (await req.json()) as {
+      pergunta?: string;
+      pathname?: string;
+      titulo?: string;
+    };
     pergunta = (body.pergunta ?? "").trim();
+    if (typeof body.pathname === "string" && body.pathname.trim()) {
+      pathname = body.pathname.trim().slice(0, 200);
+    }
+    if (typeof body.titulo === "string" && body.titulo.trim()) {
+      titulo = body.titulo.trim().slice(0, 200);
+    }
   } catch {
     return NextResponse.json({ erro: "Pergunta invalida." }, { status: 400 });
   }
@@ -74,7 +86,7 @@ export async function POST(req: Request): Promise<Response> {
   if (pergunta.length > 500) pergunta = pergunta.slice(0, 500);
 
   try {
-    const resposta: RespostaRag = await responderComRag(pergunta);
+    const resposta: RespostaRag = await responderComRag(pergunta, { pathname, titulo });
     return NextResponse.json(resposta);
   } catch (e) {
     if (e instanceof OllamaIndisponivel) {

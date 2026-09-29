@@ -698,10 +698,10 @@ export const FRENTES: SeuNonoFrente[] = [
         titulo: "Tecnologia Livre & Metodologia Cívica",
         perguntas: [
           {
-            id: "tecnologia-ia-sabia",
+            id: "tecnologia-ia-popular",
             pergunta: "Como funciona a inteligência artificial do Seu Nonô e a tecnologia do portal?",
             resposta:
-              "O Seu Nonô é construído sobre modelos abertos soberanos (como o Sabiá 7B) e RAG local com busca vetorial sobre bancos de dados públicos e código 100% auditável.",
+              "O Seu Nonô utiliza arquitetura RAG (Recuperação Aumentada por Geração) com busca vetorial e lexical sobre acervos públicos oficiais, conectando modelos avançados a dados cívicos 100% auditáveis e com citação ABNT obrigatória.",
             link: { href: "/tecnologia", texto: "Tecnologia Livre & IA Cívica" },
           },
           {
@@ -1030,7 +1030,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     titulo: "Tecnologia Livre & Integridade",
     resumo: "Infraestrutura soberana de IA com modelos abertos, regras de Zero-Secret e respeito rigoroso à LGPD.",
     dados: [
-      "Integração do modelo Sabiá 7B para assistência cívica",
+      "Arquitetura RAG com busca vetorial e modelos via API/local para assistência cívica",
       "Varredura contínua de CPF e segredos via mod-11",
       "Código aberto e coletores auditáveis no GitHub",
       "Alinhamento às diretrizes de integridade da Transparência Internacional",

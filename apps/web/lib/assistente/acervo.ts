@@ -328,6 +328,145 @@ function deCavas(): AcervoFonte[] {
   ];
 }
 
+/**
+ * Pedaços de conhecimento macro e dados estruturantes do portal.
+ * Cobre o painel geral da Home (R$ 251 bi), as 5 perguntas fixas,
+ * a repactuação de Mariana (R$ 171 bi), o Judiciário MG, contratos PNCP,
+ * barragens a montante e o licenciamento ambiental SEMAD.
+ */
+function deDadosMacro(): AcervoFonte[] {
+  return [
+    {
+      id: "macro:soma-251-bi",
+      frente: "geral",
+      rota: "/",
+      titulo: "Soma dos R$ 251 bilhões monitorados no painel do portal",
+      fonteUrl: "/",
+      texto:
+        "O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. " +
+        "A soma pública oficial é composta por: Acordo de Repactuação do Rio Doce / Mariana (R$ 171 bilhões) + " +
+        "Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + " +
+        "Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + " +
+        "Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). " +
+        "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas.",
+      links: [
+        { href: "/", texto: "Painel Geral do Portal" },
+        { href: "/ambiental/mariana", texto: "Acordo de Mariana" },
+        { href: "/paraopeba/execucao", texto: "Acordo de Brumadinho" },
+        { href: "/judiciario/instituicoes", texto: "Orçamento da Justiça MG" },
+      ],
+    },
+    {
+      id: "macro:acordo-mariana-171-bi",
+      frente: "ambiental",
+      rota: "/ambiental/mariana",
+      titulo: "Repactuação do Rio Doce (Mariana) de R$ 171 bilhões",
+      fonteUrl: "/ambiental/mariana",
+      texto:
+        "O Acordo Judicial de Repactuação da Bacia do Rio Doce e Mariana soma R$ 171 bilhões totais. " +
+        "Desse valor, R$ 100 bilhões representam dinheiro novo a ser pago pelas mineradoras Samarco, Vale e BHP Billiton ao longo de 20 anos. " +
+        "Os recursos destinam-se a saúde pública, saneamento básico, infraestrutura, recuperação ambiental da calha do Rio Doce e repasses diretos aos municípios de Minas Gerais e do Espírito Santo atingidos pelo rompimento da barragem de Fundão.",
+      links: [
+        { href: "/ambiental/mariana", texto: "Painel da Bacia do Rio Doce" },
+        { href: "/ambiental/barragens", texto: "Painel de Barragens" },
+      ],
+    },
+    {
+      id: "macro:orcamento-justica-disparidade",
+      frente: "judiciario",
+      rota: "/judiciario/instituicoes",
+      titulo: "Orçamento do TJMG, MPMG e DPMG e a disparidade institucional",
+      fonteUrl: "/judiciario/instituicoes",
+      texto:
+        "O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. " +
+        "O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. " +
+        "Em contrapartida, a Defensoria Pública de Minas Gerais (DPMG) recebe R$ 1,06 bilhão — um orçamento 14 vezes menor que o TJMG. " +
+        "Essa disparidade orçamentária resulta no déficit da Defensoria Pública em 176 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
+      links: [
+        { href: "/judiciario/instituicoes", texto: "Fichas Orçamentárias da Justiça MG" },
+        { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria Pública" },
+        { href: "/judiciario/contatos", texto: "Guia de 990 Varas e Gabinetes" },
+      ],
+    },
+    {
+      id: "macro:pesquisa-contratos-prefeituras",
+      frente: "cidades",
+      rota: "/betim/prefeitura/contratos",
+      titulo: "Como pesquisar contratos e licitações de prefeituras no portal",
+      fonteUrl: "/betim/prefeitura/contratos",
+      texto:
+        "O portal audita contratações públicas municipais conectando-se ao PNCP (Portal Nacional de Contratações Públicas) e aos Diários Oficiais. " +
+        "Para pesquisar: acesse a página da cidade (ex: Betim, BH, Diamantina, Araçuaí, Itinga) e clique em 'Contratos' ou 'Licitações'. " +
+        "O sistema oferece busca por fornecedor, objeto, modalidade (Pregão, Dispensa, Inexigibilidade), alertas de concentração de receita, " +
+        "exportação em planilha CSV com UTF-8 BOM e link direto para o edital ou termo contratual original.",
+      links: [
+        { href: "/betim/prefeitura/contratos", texto: "Contratos de Betim" },
+        { href: "/diamantina/prefeitura/diario", texto: "Diário Oficial de Diamantina" },
+        { href: "/busca", texto: "Busca Universal de Contratos" },
+      ],
+    },
+    {
+      id: "macro:barragens-montante-nivel-3",
+      frente: "ambiental",
+      rota: "/ambiental/barragens/descaracterizacao",
+      titulo: "Barragens a montante e estruturas em nível 3 de emergência em MG",
+      fonteUrl: "/ambiental/barragens/descaracterizacao",
+      texto:
+        "O portal monitora 23 barragens a montante sob exigência legal de descaracterização pela Lei Estadual 23.291/2019 ('Mar de Lama Nunca Mais'). " +
+        "Duas barragens continuam em Nível 3 de Emergência (risco iminente de ruptura): Forquilha III (mina Fábrica, em Ouro Preto/Itabirito) e Sul Superior (mina Gongo Soco, em Barão de Cocais), ambas da Vale. " +
+        "O Programa de Descaracterização da Vale abrange 45 estruturas a montante em MG (21 concluídas e 24 em andamento até 2035). Os dados oficiais são integrados do SIGBM/ANM e FEAM.",
+      links: [
+        { href: "/ambiental/barragens/descaracterizacao", texto: "Descaracterização de Barragens" },
+        { href: "/ambiental/barragens", texto: "Painel Geral de Barragens" },
+      ],
+    },
+    {
+      id: "macro:licenciamento-semad-onsa",
+      frente: "ambiental",
+      rota: "/ambiental/licenciamento",
+      titulo: "Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema)",
+      fonteUrl: "/ambiental/licenciamento",
+      texto:
+        "O painel do ONSA reúne o censo completo de mais de 19.700 empreendimentos com licença ambiental deferida em Minas Gerais pela SEMAD (Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável). " +
+        "A consulta permite filtrar por 853 municípios, 8 setores oficiais (A - Agropecuária, B - Mineração, C - Indústrias Metalúrgicas, D - Química, E - Infraestrutura, F - Energia, G - Resíduos/Saneamento, H - Serviços), " +
+        "classes de risco 1 a 6 e modalidades (LP, LI, LO, LAC, LAS). Todas as licenças possuem link para o ato público e dados georreferenciados.",
+      links: [
+        { href: "/ambiental/licenciamento", texto: "Censo de Licenciamento Ambiental" },
+        { href: "/ambiental/copam", texto: "Pautas e Decisões do COPAM" },
+      ],
+    },
+    {
+      id: "macro:vales-jequitinhonha-mucuri-litio",
+      frente: "cidades",
+      rota: "/direitos-em-movimento",
+      titulo: "Vales do Jequitinhonha e Mucuri: polo do lítio e royalties da mineração",
+      fonteUrl: "/direitos-em-movimento",
+      texto:
+        "O portal mapeia 82 municípios dos Vales do Jequitinhonha e Mucuri. No Médio Jequitinhonha, o Polo do Lítio abrange Araçuaí, Itinga e Coronel Murta (projetos da Sigma Lithium e outras mineradoras). " +
+        "O portal fiscaliza a destinação da CFEM (Compensação Financeira pela Exploração de Recursos Minerais), o impacto nos recursos hídricos da bacia do Jequitinhonha, contratações no PNCP e a proteção das terras indígenas Maxakali no Vale do Mucuri.",
+      links: [
+        { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties do Lítio em Itinga" },
+        { href: "/funcaosocialterra", texto: "Terras Tradicionais e Indígenas" },
+      ],
+    },
+    {
+      id: "macro:canais-lai-conselhos-direitos",
+      frente: "direitos",
+      rota: "/direitos-em-movimento/informacao",
+      titulo: "Central de Canais LAI (445 entidades) e Conselhos de Direitos (710 colegiados)",
+      fonteUrl: "/direitos-em-movimento/informacao",
+      texto:
+        "A Central de Canais LAI reúne 445 entidades públicas brasileiras (prefeituras, câmaras, tribunais, órgãos federais e concessionárias de água/energia) com e-mail, telefone, e-SIC e modelo de pedido pronto. " +
+        "O portal também mapeia 710 conselhos participativos (Saúde, Meio Ambiente CODEMA, Tutelares, Direitos Humanos) das 27 UFs e 199 cidades estratégicas com datas de reunião e canais de participação popular.",
+      links: [
+        { href: "/direitos-em-movimento/informacao", texto: "Central de Canais LAI" },
+        { href: "/direitos-em-movimento/conselhos", texto: "Conselhos de Direitos" },
+        { href: "/direitos-em-movimento/denuncia", texto: "Canal de Denúncia Popular" },
+      ],
+    },
+  ];
+}
+
 /** Contagem de cobertura do acervo, para relatório e teste. */
 export interface CoberturaAcervo {
   total: number;
@@ -343,7 +482,7 @@ export interface AcervoMontado {
 }
 
 /**
- * Monta o acervo inteiro, determinístico: frentes → contextos → páginas →
+ * Monta o acervo inteiro, determinístico: macro → frentes → contextos → páginas →
  * posts → designações → cavas. Nenhuma dependência de fs/rede/banco — os
  * JSONs de cavas entram como import estático (mesma disciplina de página
  * estática do Next), então roda em qualquer ambiente.
@@ -351,6 +490,7 @@ export interface AcervoMontado {
 export function montarAcervoDetalhado(): AcervoMontado {
   const { fontes: deFrentesFontes, puladas } = deFrentes();
   const acervo = [
+    ...deDadosMacro(),
     ...deFrentesFontes,
     ...deContextos(),
     ...dePaginasDados(),

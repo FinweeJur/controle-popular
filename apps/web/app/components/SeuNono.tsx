@@ -1,5 +1,21 @@
 "use client";
 
+/**
+ * @file SeuNono.tsx
+ * @description Assistente Cívico Seu Nonô — inteligência popular do portal Controle Popular.
+ * 
+ * Papel no portal:
+ * Guia o cidadão por frentes temáticas (Cidades, Congresso, Judiciário, Meio Ambiente, Paraopeba),
+ * respostas pré-curadas, sugestões contextuais da rota atual e degraus determinísticos da Regra de Escada.
+ * Oferece modo widget flutuante e modo tela cheia expansível com histórico de turnos e painel de fontes.
+ * 
+ * Regras e decisões:
+ * - Regra de Escada: intercepta termos diretos (Laboratório, Cidades, Empresas, Respostas Curadas) antes da IA.
+ * - Efeito Typewriter: animação de digitação progressiva suave (~16ms) com cursor pulsante ▋ e fases de status.
+ * - Acessibilidade: botão 'Pular animação', clique no cartão para aceleração e atalhos de alto contraste e fontes.
+ * - Citação direta e auditável: marcadores [n] com deep links para fontes oficiais primárias.
+ */
+
 import { useState, useEffect, useMemo, useRef } from "react";
 import {
   X,
@@ -14,6 +30,7 @@ import {
   Zap,
   Maximize2,
   Minimize2,
+  ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,6 +44,17 @@ import {
 } from "./SeuNonoData";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
+import {
+  useTypewriter,
+  IndicadorStatusChat,
+  CursorPulsante,
+  BotaoPularAnimacao,
+  type StatusTypewriter,
+} from "./EfeitoTypewriter";
+import {
+  avaliarEscadaDeterminista,
+  type ResultadoEscada,
+} from "@/lib/assistente/escada-determinista";
 
 /** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor. */
 function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
@@ -80,6 +108,7 @@ interface TurnoIa {
   data?: string;
   verificacao?: "ok" | "parcial" | "falhou";
   fontes: FonteIa[];
+  escada?: ResultadoEscada;
 }
 
 /** Resolve a URL da fonte: interna vira URL absoluta, externa fica como está. */
@@ -169,6 +198,178 @@ function CardFonte({
         </button>
       </div>
     </li>
+  );
+}
+
+/**
+ * Renderizador de resposta IA com digitação progressiva e citações interativas.
+ */
+function BlocoRespostaIaSeuNono({
+  resposta,
+  fontes,
+  modelo,
+  data,
+  verificacao,
+  copiado,
+  aoAbrir,
+  aoCopiar,
+  animar = true,
+}: {
+  resposta: string;
+  fontes: FonteIa[];
+  modelo?: string;
+  data?: string;
+  verificacao?: "ok" | "parcial" | "falhou";
+  copiado: string | null;
+  aoAbrir: (url: string) => void;
+  aoCopiar: (url: string) => Promise<boolean>;
+  animar?: boolean;
+}) {
+  const { textoExibido, concluido, pular } = useTypewriter({
+    texto: resposta,
+    velocidadeMs: 16,
+    autoIniciar: animar,
+  });
+
+  return (
+    <div
+      onClick={pular}
+      className="space-y-3 cursor-pointer"
+      title={concluido ? undefined : "Clique para exibir o texto completo"}
+    >
+      <div className="rounded-lg border border-border bg-surface-2 px-3.5 py-3 text-sm text-text transition-colors hover:border-amber-500/30">
+        <p className="whitespace-pre-wrap leading-relaxed">
+          {renderizarRespostaComCitacoes(textoExibido, fontes, aoAbrir)}
+          {!concluido && <CursorPulsante />}
+        </p>
+
+        <BotaoPularAnimacao aoPular={pular} concluido={concluido} />
+
+        {fontes.length > 0 && (
+          <ul className="mt-3 space-y-1.5 border-t border-border pt-2.5">
+            {fontes.map((f) => (
+              <li
+                key={f.indice}
+                className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2.5 py-1.5 text-xs"
+              >
+                <span className="truncate text-text-soft">
+                  <span className="mr-1 rounded bg-primary/10 px-1 py-0.5 text-[0.68rem] font-bold text-primary">
+                    {f.indice}
+                  </span>
+                  {f.titulo ?? f.rota}
+                </span>
+                <span className="flex shrink-0 items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      aoAbrir(urlDaFonte(f));
+                    }}
+                    className="rounded p-1 text-text-soft hover:bg-surface-2"
+                    aria-label={`Abrir fonte ${f.indice}`}
+                  >
+                    <ExternalLink size={12} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={async (e) => {
+                      e.stopPropagation();
+                      await aoCopiar(urlDaFonte(f));
+                    }}
+                    className="rounded p-1 text-text-soft hover:bg-surface-2"
+                    aria-label={`Copiar link da fonte ${f.indice}`}
+                  >
+                    {copiado === urlDaFonte(f) ? (
+                      <Check size={12} className="text-primary" />
+                    ) : (
+                      <Copy size={12} />
+                    )}
+                  </button>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="mt-3">
+          <RessalvaIa
+            modelo={modelo}
+            data={data}
+            verificacao={verificacao}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Renderizador de resposta determinística (Regra de Escada) com botões e atalhos rápidos.
+ */
+function BlocoRespostaEscadaSeuNono({
+  resultado,
+  animar = true,
+}: {
+  resultado: ResultadoEscada;
+  animar?: boolean;
+}) {
+  const { textoExibido, concluido, pular } = useTypewriter({
+    texto: resultado.texto,
+    velocidadeMs: 16,
+    autoIniciar: animar,
+  });
+
+  return (
+    <div
+      onClick={pular}
+      className="rounded-xl border border-amber-500/40 bg-surface-2 p-4 text-sm text-text cursor-pointer transition-colors hover:border-amber-500/60"
+      title={concluido ? undefined : "Clique para exibir o texto completo"}
+    >
+      <div className="flex items-center gap-1.5 mb-1.5">
+        <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[0.68rem] font-bold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
+          <Sparkles className="h-2.5 w-2.5" />
+          {resultado.categoria ?? "Resposta Direta"}
+        </span>
+      </div>
+      <h3 className="font-display text-sm font-bold text-foreground">
+        {resultado.titulo}
+      </h3>
+      {resultado.subtitulo && (
+        <p className="text-[0.72rem] text-text-soft mb-2">{resultado.subtitulo}</p>
+      )}
+
+      <p className="mt-1.5 whitespace-pre-wrap leading-relaxed text-xs sm:text-sm">
+        {textoExibido}
+        {!concluido && <CursorPulsante />}
+      </p>
+
+      <BotaoPularAnimacao aoPular={pular} concluido={concluido} />
+
+      {resultado.atalhos.length > 0 && (
+        <div className="mt-3 pt-2.5 border-t border-border">
+          <p className="mb-2 text-[0.72rem] font-semibold text-text-soft">
+            Atalhos e ações diretas:
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {resultado.atalhos.map((a, i) => (
+              <Link
+                key={i}
+                href={a.href}
+                onClick={(e) => e.stopPropagation()}
+                className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
+                  a.principal
+                    ? "bg-primary text-white hover:opacity-90 font-bold"
+                    : "border border-border bg-surface hover:bg-surface-2 hover:border-amber-500/40 text-foreground"
+                }`}
+              >
+                <span>{a.rotulo}</span>
+                <ArrowRight size={11} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -265,6 +466,8 @@ export function SeuNono() {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
+  const [resultadoEscada, setResultadoEscada] = useState<ResultadoEscada | null>(null);
+  const [statusChat, setStatusChat] = useState<StatusTypewriter>("pronto");
   const [detalheIa, setDetalheIa] = useState<RespostaChatIa | null>(null);
   const [turnosIa, setTurnosIa] = useState<TurnoIa[]>([]);
   const [copiado, setCopiado] = useState<string | null>(null);
@@ -340,6 +543,8 @@ export function SeuNono() {
         setCategoria(null);
         setResposta(null);
         setRespostaIa(null);
+        setResultadoEscada(null);
+        setStatusChat("pronto");
         setDetalheIa(null);
         setErro(null);
         setPerguntaLivre("");
@@ -560,6 +765,8 @@ export function SeuNono() {
     } else if (nivel === "ia") {
       setErro(null);
       setRespostaIa(null);
+      setResultadoEscada(null);
+      setStatusChat("pronto");
       setNivel(categoria ? "perguntas" : frente ? "categorias" : "frentes");
     }
   }
@@ -574,6 +781,8 @@ export function SeuNono() {
     setCategoria(null);
     setResposta(null);
     setRespostaIa(null);
+    setResultadoEscada(null);
+    setStatusChat("pronto");
     setDetalheIa(null);
     setErro(null);
     setPerguntaLivre("");
@@ -619,17 +828,44 @@ export function SeuNono() {
     if (cmdResposta) {
       setRespostaComando(cmdResposta);
       setRespostaIa(null);
+      setResultadoEscada(null);
       setErro(null);
       setPerguntaLivre("");
+      setStatusChat("pronto");
       return;
     }
 
     setCarregando(true);
     setErro(null);
     setRespostaIa(null);
+    setResultadoEscada(null);
     setRespostaComando(null);
     setNivel("ia");
+    setStatusChat("consultando");
 
+    // 1. Degraus Determinísticos (Regra de Escada)
+    const degrau = avaliarEscadaDeterminista(trimmed, pathname ?? undefined);
+    if (degrau) {
+      setStatusChat("estruturando");
+      setTimeout(() => {
+        setResultadoEscada(degrau);
+        setStatusChat("digitando");
+        setCarregando(false);
+        setTurnosIa((turnos) => [
+          ...turnos,
+          {
+            pergunta: trimmed,
+            resposta: degrau.texto,
+            fontes: [],
+            escada: degrau,
+          },
+        ]);
+      }, 150);
+      setPerguntaLivre("");
+      return;
+    }
+
+    // 2. Chamada à API RAG
     try {
       const resp = await fetch("/api/chatbot", {
         method: "POST",
@@ -643,25 +879,30 @@ export function SeuNono() {
       const dados = (await resp.json()) as RespostaChatIa;
       if (!resp.ok || dados.erro) {
         setErro(dados.erro ?? "Não consegui responder agora.");
+        setStatusChat("pronto");
       } else {
         const respostaTexto = dados.resposta ?? "";
-        setRespostaIa(respostaTexto);
-        setDetalheIa(dados);
-        // Histórico da conversa — a tela cheia mostra todos os turnos.
-        setTurnosIa((turnos) => [
-          ...turnos,
-          {
-            pergunta: trimmed,
-            resposta: respostaTexto,
-            modelo: dados.modelo,
-            data: dados.data,
-            verificacao: dados.verificacao,
-            fontes: dados.fontes ?? [],
-          },
-        ]);
+        setStatusChat("estruturando");
+        setTimeout(() => {
+          setRespostaIa(respostaTexto);
+          setDetalheIa(dados);
+          setStatusChat("digitando");
+          setTurnosIa((turnos) => [
+            ...turnos,
+            {
+              pergunta: trimmed,
+              resposta: respostaTexto,
+              modelo: dados.modelo,
+              data: dados.data,
+              verificacao: dados.verificacao,
+              fontes: dados.fontes ?? [],
+            },
+          ]);
+        }, 150);
       }
     } catch (e) {
       setErro(e instanceof Error ? e.message : "Erro de rede");
+      setStatusChat("pronto");
     } finally {
       setCarregando(false);
       setPerguntaLivre("");
@@ -1177,11 +1418,10 @@ export function SeuNono() {
 
                 {/* A caixa de pergunta fica sempre visível na tela cheia —
                     a conversa continua; no modo widget, só antes da resposta. */}
-                {((!respostaIa && !erro) || (telaCheia && !carregando)) && (
+                {((!respostaIa && !resultadoEscada && !erro) || (telaCheia && !carregando)) && (
                   <>
                     <p className="text-sm text-text-soft">
-                      Descreva o que você quer saber. A IA responde com base nas páginas do
-                      portal e cita a fonte.
+                      Descreva o que você quer saber. O assistente prioriza dados oficiais diretos e cita fontes auditáveis.
                     </p>
                     <form onSubmit={enviarPerguntaLivre} className="flex gap-2">
                       <input
@@ -1189,14 +1429,14 @@ export function SeuNono() {
                         type="text"
                         value={perguntaLivre}
                         onChange={(e) => setPerguntaLivre(e.target.value)}
-                        placeholder="Ex: maiores contratos de Betim em 2025"
+                        placeholder="Ex: laboratorio, betim, vale, acordo de mariana"
                         className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-primary"
                         disabled={carregando}
                       />
                       <button
                         type="submit"
                         disabled={carregando || !perguntaLivre.trim()}
-                        className="rounded-lg bg-primary px-3 py-2 text-primary-ink hover:bg-primary/90 disabled:opacity-50"
+                        className="rounded-lg bg-primary px-3 py-2 text-primary-ink hover:bg-primary/90 disabled:opacity-50 transition-opacity"
                       >
                         <Sparkles size={16} />
                       </button>
@@ -1204,9 +1444,8 @@ export function SeuNono() {
                   </>
                 )}
 
-                {carregando && (
-                  <p className="text-sm text-text-soft">Pensando...</p>
-                )}
+                {/* Indicador de status em fases de busca/geração */}
+                <IndicadorStatusChat status={statusChat} />
 
                 {respostaComando && (
                   <div className="rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent">
@@ -1217,147 +1456,81 @@ export function SeuNono() {
                   </div>
                 )}
 
-                {respostaIa && (
+                {resultadoEscada && !telaCheia && (
                   <div className="space-y-3">
-                    {telaCheia ? (
-                      <ul className="space-y-4">
-                        {turnosIa.map((turno, ti) => (
-                          <li key={ti} className="space-y-2">
-                            <div className="rounded-lg bg-primary/10 px-3 py-2 text-sm text-text">
-                              <strong className="text-primary">Você:</strong> {turno.pergunta}
-                            </div>
-                            <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
-                              <p className="whitespace-pre-wrap">
-                                {renderizarRespostaComCitacoes(
-                                  turno.resposta,
-                                  turno.fontes,
-                                  abrirFonteEmAbaNova
-                                )}
-                              </p>
-                              {turno.fontes.length > 0 && (
-                                <ul className="mt-2 space-y-1 border-t border-border pt-2">
-                                  {turno.fontes.map((f) => (
-                                    <li
-                                      key={f.indice}
-                                      className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1 text-xs"
-                                    >
-                                      <span className="truncate text-text-soft">
-                                        {f.indice}. {f.titulo ?? f.rota}
-                                      </span>
-                                      <span className="flex shrink-0 items-center gap-1">
-                                        <button
-                                          onClick={() => abrirFonteEmAbaNova(urlDaFonte(f))}
-                                          className="rounded p-0.5 text-text-soft hover:bg-surface-2"
-                                          aria-label={`Abrir fonte ${f.indice}`}
-                                        >
-                                          <ExternalLink size={12} />
-                                        </button>
-                                        <button
-                                          onClick={async () => {
-                                            const u = urlDaFonte(f);
-                                            const ok = await copiarLink(u);
-                                            if (ok) {
-                                              setCopiado(u);
-                                              setTimeout(() => setCopiado((atual) => (atual === u ? null : atual)), 1500);
-                                            }
-                                          }}
-                                          className="rounded p-0.5 text-text-soft hover:bg-surface-2"
-                                          aria-label={`Copiar link da fonte ${f.indice}`}
-                                        >
-                                          {copiado === urlDaFonte(f) ? (
-                                            <Check size={12} className="text-primary" />
-                                          ) : (
-                                            <Copy size={12} />
-                                          )}
-                                        </button>
-                                      </span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                              <div className="mt-2">
-                                <RessalvaIa
-                                  modelo={turno.modelo}
-                                  data={turno.data}
-                                  verificacao={turno.verificacao}
-                                />
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <div className="space-y-3">
-                        <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
-                          <p className="whitespace-pre-wrap">
-                            {renderizarRespostaComCitacoes(
-                              respostaIa,
-                              detalheIa?.fontes ?? [],
-                              abrirFonteEmAbaNova
-                            )}
-                          </p>
-                          {detalheIa && detalheIa.fontes.length > 0 && (
-                            <ul className="mt-2 space-y-1 border-t border-border pt-2">
-                              {detalheIa.fontes.map((f) => (
-                                <li
-                                  key={f.indice}
-                                  className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1 text-xs"
-                                >
-                                  <span className="truncate text-text-soft">
-                                    {f.indice}. {f.titulo ?? f.rota}
-                                  </span>
-                                  <span className="flex shrink-0 items-center gap-1">
-                                    <button
-                                      onClick={() => abrirFonteEmAbaNova(urlDaFonte(f))}
-                                      className="rounded p-0.5 text-text-soft hover:bg-surface-2"
-                                      aria-label={`Abrir fonte ${f.indice}`}
-                                    >
-                                      <ExternalLink size={12} />
-                                    </button>
-                                    <button
-                                      onClick={async () => {
-                                        const u = urlDaFonte(f);
-                                        const ok = await copiarLink(u);
-                                        if (ok) {
-                                          setCopiado(u);
-                                          setTimeout(() => setCopiado((atual) => (atual === u ? null : atual)), 1500);
-                                        }
-                                      }}
-                                      className="rounded p-0.5 text-text-soft hover:bg-surface-2"
-                                      aria-label={`Copiar link da fonte ${f.indice}`}
-                                    >
-                                      {copiado === urlDaFonte(f) ? (
-                                        <Check size={12} className="text-primary" />
-                                      ) : (
-                                        <Copy size={12} />
-                                      )}
-                                    </button>
-                                  </span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                          <div className="mt-2">
-                            <RessalvaIa
-                              modelo={detalheIa?.modelo}
-                              data={detalheIa?.data}
-                              verificacao={detalheIa?.verificacao}
-                            />
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => {
-                            setRespostaIa(null);
-                            setDetalheIa(null);
-                            setErro(null);
-                          }}
-                          className="text-xs text-text-soft hover:text-primary"
-                        >
-                          ← Fazer outra pergunta
-                        </button>
-                      </div>
-                    )}
+                    <BlocoRespostaEscadaSeuNono resultado={resultadoEscada} animar={true} />
+                    <button
+                      onClick={() => {
+                        setResultadoEscada(null);
+                        setRespostaIa(null);
+                        setDetalheIa(null);
+                        setErro(null);
+                      }}
+                      className="text-xs text-text-soft hover:text-primary"
+                    >
+                      ← Fazer outra pergunta
+                    </button>
                   </div>
+                )}
+
+                {respostaIa && !telaCheia && (
+                  <div className="space-y-3">
+                    <BlocoRespostaIaSeuNono
+                      resposta={respostaIa}
+                      fontes={detalheIa?.fontes ?? []}
+                      modelo={detalheIa?.modelo}
+                      data={detalheIa?.data}
+                      verificacao={detalheIa?.verificacao}
+                      copiado={copiado}
+                      aoAbrir={abrirFonteEmAbaNova}
+                      aoCopiar={copiarLink}
+                      animar={true}
+                    />
+                    <button
+                      onClick={() => {
+                        setRespostaIa(null);
+                        setResultadoEscada(null);
+                        setDetalheIa(null);
+                        setErro(null);
+                      }}
+                      className="text-xs text-text-soft hover:text-primary"
+                    >
+                      ← Fazer outra pergunta
+                    </button>
+                  </div>
+                )}
+
+                {telaCheia && turnosIa.length > 0 && (
+                  <ul className="space-y-4">
+                    {turnosIa.map((turno, ti) => {
+                      const isLatest = ti === turnosIa.length - 1;
+                      return (
+                        <li key={ti} className="space-y-2">
+                          <div className="rounded-lg bg-primary/10 px-3 py-2 text-sm text-text">
+                            <strong className="text-primary">Você:</strong> {turno.pergunta}
+                          </div>
+                          {turno.escada ? (
+                            <BlocoRespostaEscadaSeuNono
+                              resultado={turno.escada}
+                              animar={isLatest && statusChat === "digitando"}
+                            />
+                          ) : (
+                            <BlocoRespostaIaSeuNono
+                              resposta={turno.resposta}
+                              fontes={turno.fontes}
+                              modelo={turno.modelo}
+                              data={turno.data}
+                              verificacao={turno.verificacao}
+                              copiado={copiado}
+                              aoAbrir={abrirFonteEmAbaNova}
+                              aoCopiar={copiarLink}
+                              animar={isLatest && statusChat === "digitando"}
+                            />
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
                 )}
 
                 {erro && (
@@ -1370,7 +1543,7 @@ export function SeuNono() {
                 )}
 
                 {/* Comandos de acessibilidade disponíveis */}
-                {!respostaIa && !respostaComando && !erro && !carregando && (
+                {!respostaIa && !resultadoEscada && !respostaComando && !erro && !carregando && (
                   <div className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2">
                     <p className="mb-1.5 text-xs font-medium text-text-soft">
                       Comandos de acessibilidade:

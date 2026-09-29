@@ -8,7 +8,7 @@
  * - Fichas orçamentárias das Instituições de Justiça (TJMG, MPMG, DPMG...)
  * - Painéis de Barragens e Descaracterização
  * - Cidades monitoradas (Betim, BH, Diamantina...)
- * - Tecnologia e IA Livre (Sabiá 7B, Ollama)
+ * - Tecnologia e IA Livre (Arquitetura RAG e Modelos Abertos)
  * - Ferramentas de Direitos em Movimento e ComunicaBR
  */
 
@@ -477,13 +477,13 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
   },
   {
     id: "central-tecnologia",
-    titulo: "Tecnologia & IA Livre — Seu Nonô, Sabiá 7B e Código Aberto",
-    descricao: "Arquitetura técnica do assistente cívico, modelos abertos, Ollama, métricas de latência e oficinas de IA.",
+    titulo: "Tecnologia & IA Livre — Seu Nonô, Arquitetura RAG e Código Aberto",
+    descricao: "Arquitetura técnica do assistente cívico, modelos abertos, busca vetorial e lexical, métricas de latência e oficinas de IA.",
     href: "/tecnologia",
     frente: "geral",
     rotulo: "Tecnologia · IA Livre",
     badgeCor: "var(--cp-primary)",
-    palavrasChave: ["tecnologia", "ia livre", "sabia 7b", "ollama", "seu nono", "codigo aberto", "github"],
+    palavrasChave: ["tecnologia", "ia livre", "rag", "ollama", "seu nono", "codigo aberto", "github", "inteligencia artificial"],
   },
   {
     id: "central-sobre",

@@ -205,29 +205,34 @@ export default function TermosPage() {
           Ferramentas e Modelos Utilizados
         </h2>
         <p className="text-text-soft">
-          O Controle Popular utiliza diversos modelos de linguagem (LLM) e
-          ferramentas de código para auxiliar na organização, classificação,
-          compilação e presentation de dados públicos. As ferramentas são
-          selecionadas com foco em código aberto, soberania tecnológica e
+          O Controle Popular utiliza arquitetura RAG (Recuperação Aumentada por
+          Geração), combinando busca vetorial e lexical sobre acervos públicos
+          oficiais com modelos de linguagem (LLM) via API e locais. O objetivo
+          é organizar, sintetizar e facilitar a consulta a dados públicos com
+          citação direta e obrigatória da fonte original. As ferramentas são
+          selecionadas com foco em soberania tecnológica, verificabilidade e
           eficiência operacional.
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border p-4">
             <h3 className="font-display text-lg font-semibold text-text">
-              Modelos de Linguagem (LLM)
+              Modelos de Linguagem e RAG
             </h3>
             <ul className="mt-2 space-y-1.5 text-[.95em] text-text-soft">
               <li>
-                <strong className="text-text">DeepSeek</strong> — modelo de linguagem chinês, utilizado para classificação de texto, extração de entidades e análise semântica.
+                <strong className="text-text">DeepSeek</strong> — modelo de linguagem via API/local, utilizado para classificação de texto, extração de entidades e análise semântica.
               </li>
               <li>
-                <strong className="text-text">GLM (Zhipu AI)</strong> — modelo chinês para raciocínio lógico e compreensão de documentos estruturados.
+                <strong className="text-text">GLM (Zhipu AI)</strong> — modelo via API para raciocínio lógico e compreensão de documentos estruturados.
               </li>
               <li>
-                <strong className="text-text">MiMo (Xiaomi)</strong> — modelo de raciocínio chinês, utilizado para tarefas que exigem lógica e passos intermediários.
+                <strong className="text-text">MiMo (Xiaomi)</strong> — modelo de raciocínio via API, utilizado para tarefas que exigem lógica e passos intermediários.
               </li>
               <li>
-                <strong className="text-text">Sabiá (Maritaca AI)</strong> — modelo brasileiro, desenvolvido para o português, utilizado para geração de resumos e microresumos.
+                <strong className="text-text">Sabiá (Maritaca AI)</strong> — modelo brasileiro via API, desenvolvido para o português, utilizado para sínteses e microresumos.
+              </li>
+              <li>
+                <strong className="text-text">Ollama / Modelos Abertos</strong> — execução local de modelos abertos para desenvolvimento soberano e ambientes offline.
               </li>
             </ul>
           </div>

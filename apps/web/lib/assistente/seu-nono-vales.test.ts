@@ -36,13 +36,13 @@ function cpfValido(digitos: string): boolean {
 }
 
 describe("Seu Nonô — Vales do Jequitinhonha e Mucuri", () => {
-  const frenteCidades = FRENTES.find((f) => f.id === "cidades");
-  const categoriaVales = frenteCidades?.categorias.find(
+  const frenteTerra = FRENTES.find((f) => f.id === "terra" || f.id === "cidades");
+  const categoriaVales = frenteTerra?.categorias.find(
     (c) => c.id === "vales-jequitinhonha-mucuri"
   );
 
-  it("deve conter a frente Cidades e a categoria dedicada aos Vales do Jequitinhonha e Mucuri", () => {
-    expect(frenteCidades).toBeDefined();
+  it("deve conter o Eixo Terra/Cidades e a categoria dedicada aos Vales do Jequitinhonha e Mucuri", () => {
+    expect(frenteTerra).toBeDefined();
     expect(categoriaVales).toBeDefined();
     expect(categoriaVales?.titulo).toBe("Vales do Jequitinhonha e Mucuri");
     expect(categoriaVales?.perguntas.length).toBeGreaterThanOrEqual(4);

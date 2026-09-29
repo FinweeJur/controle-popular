@@ -84,10 +84,29 @@ const STOPWORDS_PT = new Set([
 ]);
 
 /**
+ * Radicalização (stemming) leve em português para normalizar plurais, gêneros
+ * e sufixos comuns sem depender de bibliotecas externas pesadas.
+ */
+export function stemPt(t: string): string {
+  let s = t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  if (s.length <= 3) return s;
+  if (s.endsWith("coes") || s.endsWith("cao")) return s.slice(0, -3);
+  if (s.endsWith("mentos") || s.endsWith("mento")) return s.slice(0, -5);
+  if (s.endsWith("idades") || s.endsWith("idade")) return s.slice(0, -4);
+  if (s.endsWith("ados") || s.endsWith("adas") || s.endsWith("ado") || s.endsWith("ada")) return s.slice(0, -3);
+  if (s.endsWith("idos") || s.endsWith("idas") || s.endsWith("ido") || s.endsWith("ida")) return s.slice(0, -3);
+  if (s.endsWith("ores") || s.endsWith("oras") || s.endsWith("or") || s.endsWith("ora")) return s.slice(0, -2);
+  if (s.endsWith("arios") || s.endsWith("arias") || s.endsWith("ario") || s.endsWith("aria")) return s.slice(0, -4);
+  if (s.endsWith("acoes") || s.endsWith("acao")) return s.slice(0, -4);
+  if (s.endsWith("eis") || s.endsWith("ais") || s.endsWith("ois")) return s.slice(0, -3) + "l";
+  if (s.endsWith("es") && s.length > 4) return s.slice(0, -2);
+  if (s.endsWith("s") && s.length > 3) return s.slice(0, -1);
+  return s;
+}
+
+/**
  * Tokens normalizados de um texto: minúsculo, sem acento, só letras e
- * números, sem stopwords. A mesma régua de normalização usada pela busca do
- * portal (`lib/busca/normalizar.ts`) — divergir dela aqui criaria um
- * segundo dialeto de "mesma palavra" para o mesmo conteúdo.
+ * números, sem stopwords. Mantém siglas e números de 2+ caracteres (ex: "mg", "bi", "es").
  */
 export function tokensDe(texto: string): string[] {
   return texto
@@ -95,21 +114,58 @@ export function tokensDe(texto: string): string[] {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .split(/[^a-z0-9]+/)
-    .filter((t) => t.length > 2 && !STOPWORDS_PT.has(t));
+    .filter((t) => t.length >= 2 && !STOPWORDS_PT.has(t));
 }
 
+// Termos de alto valor cívico e informativo que garantem maior relevância
+const TERMOS_CHAVE_BOOST = new Set([
+  "251", "171", "37", "20", "14", "100", "16", "23", "45", "19", "199", "853", "27", "990", "176", "445", "710",
+  "tjmg", "mpmg", "dpmg", "semad", "copam", "pncp", "lai", "caged", "rais", "sus", "cnes", "ideb",
+  "sigbm", "anm", "ibama", "feam", "ief", "igam", "trf6", "stj", "stf", "tce", "tcu",
+  "mariana", "brumadinho", "paraopeba", "doce", "betim", "samarco", "vale", "litio",
+  "descaracterizacao", "repactuacao", "licenciamento", "barragens", "royalties", "cfem", "bi", "mg"
+]);
+
 /**
- * Similaridade lexical (Jaccard sobre tokens) entre dois textos — o
- * complemento barato do cosseno no ranking híbrido. 0 = nenhum token em
- * comum; 1 = os mesmos tokens. Texto sem tokens devolve 0, não erro.
+ * Similaridade lexical entre a pergunta (a) e o pedaço de acervo (b).
+ *
+ * Combina Recall de termos da pergunta (70%) com Jaccard de tokens (30%),
+ * radicalização leve de termos e boost para números e siglas cívicas.
  */
 export function similaridadeLexical(a: string, b: string): number {
-  const ta = new Set(tokensDe(a));
-  const tb = new Set(tokensDe(b));
-  if (ta.size === 0 || tb.size === 0) return 0;
+  const tokensA = tokensDe(a);
+  const tokensB = tokensDe(b);
+  if (tokensA.length === 0 || tokensB.length === 0) return 0;
+
+  const stemsB = new Set(tokensB.map(stemPt));
+  const setTokensB = new Set(tokensB);
+
   let intersecao = 0;
-  for (const t of ta) {
-    if (tb.has(t)) intersecao++;
+  let boostTotal = 0;
+
+  for (const t of tokensA) {
+    const s = stemPt(t);
+    // Casamento exato ou por radical (stemming)
+    const casou = setTokensB.has(t) || stemsB.has(s) || tokensB.some(tb => (tb.length >= 4 && t.length >= 4 && (tb.startsWith(t.slice(0, 4)) || t.startsWith(tb.slice(0, 4)))));
+    
+    if (casou) {
+      intersecao++;
+      if (TERMOS_CHAVE_BOOST.has(t) || /^\d+$/.test(t)) {
+        boostTotal += 0.08;
+      }
+    }
   }
-  return intersecao / (ta.size + tb.size - intersecao);
+
+  if (intersecao === 0) return 0;
+
+  // Recall ponderado: proporção de termos da pergunta encontrados no texto
+  const recallPergunta = intersecao / tokensA.length;
+  // Jaccard sobreposição
+  const jaccard = intersecao / (tokensA.length + tokensB.length - intersecao);
+
+  // Score composto (0 a 1)
+  const scoreBase = 0.70 * recallPergunta + 0.30 * jaccard;
+  const scoreComBoost = Math.min(1.0, scoreBase + boostTotal);
+
+  return scoreComBoost;
 }

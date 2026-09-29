@@ -473,7 +473,7 @@ export default function TecnologiaClient() {
                   <h4 className="text-xs font-bold text-foreground">IA 3: Assistente Offline Comunitário</h4>
                 </div>
                 <p className="text-xs text-muted leading-normal">
-                  <strong>Passo a passo:</strong> Configure um computador na sede comunitária usando Ollama + modelo Sabiá 7B ou Qwen. Carregue o estatuto do bairro e leis municipais para criar um tira-dúvidas que roda mesmo sem internet.
+                  <strong>Passo a passo:</strong> Configure um computador na sede comunitária com Ollama ou modelos via API integrados a dados oficiais via RAG. Carregue o estatuto do bairro e leis municipais para criar um tira-dúvidas que responde com fontes auditáveis.
                 </p>
               </div>
             </div>
