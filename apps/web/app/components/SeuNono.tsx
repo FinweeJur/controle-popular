@@ -843,24 +843,21 @@ export function SeuNono() {
     setNivel("ia");
     setStatusChat("consultando");
 
-    // 1. Degraus Determinísticos (Regra de Escada)
+    // 1. Degraus Determinísticos (Regra de Escada — Revelação Imediata)
     const degrau = avaliarEscadaDeterminista(trimmed, pathname ?? undefined);
     if (degrau) {
-      setStatusChat("estruturando");
-      setTimeout(() => {
-        setResultadoEscada(degrau);
-        setStatusChat("digitando");
-        setCarregando(false);
-        setTurnosIa((turnos) => [
-          ...turnos,
-          {
-            pergunta: trimmed,
-            resposta: degrau.texto,
-            fontes: [],
-            escada: degrau,
-          },
-        ]);
-      }, 150);
+      setResultadoEscada(degrau);
+      setStatusChat("pronto");
+      setCarregando(false);
+      setTurnosIa((turnos) => [
+        ...turnos,
+        {
+          pergunta: trimmed,
+          resposta: degrau.texto,
+          fontes: [],
+          escada: degrau,
+        },
+      ]);
       setPerguntaLivre("");
       return;
     }
@@ -1458,7 +1455,7 @@ export function SeuNono() {
 
                 {resultadoEscada && !telaCheia && (
                   <div className="space-y-3">
-                    <BlocoRespostaEscadaSeuNono resultado={resultadoEscada} animar={true} />
+                    <BlocoRespostaEscadaSeuNono resultado={resultadoEscada} animar={false} />
                     <button
                       onClick={() => {
                         setResultadoEscada(null);
@@ -1512,7 +1509,7 @@ export function SeuNono() {
                           {turno.escada ? (
                             <BlocoRespostaEscadaSeuNono
                               resultado={turno.escada}
-                              animar={isLatest && statusChat === "digitando"}
+                              animar={false}
                             />
                           ) : (
                             <BlocoRespostaIaSeuNono
