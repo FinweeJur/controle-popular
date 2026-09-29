@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-29T00:36:22+00:00",
+ "gerado_em": "2026-09-29T16:41:35+00:00",
  "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
  "fontes": [
   "MapBiomas Monitor da Mineracao (WFS pto:processos_minerarios; base ANM/SIGMINE)",
@@ -15,7 +15,7 @@
  "ressalva": "calibracao interna; positivo = area autorizada, nao atividade em curso; nenhum campo pessoal (sem titular) por design",
  "total": {
   "positivo": 2000,
-  "negativo": 1012
+  "negativo": 1020
  },
  "itens": [
   {
@@ -49197,6 +49197,126 @@
    "hash": "e93d71f476431b913b25f1e04da2cbf9004c967b222da5a639d022901e2ffd3c",
    "arquivo": "e93d71f476431b913b25f1e0.jpg",
    "uf": "MG"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.53047,
+    -15.882752,
+    -43.490313,
+    -15.844125
+   ],
+   "cena": "CBERS_4A_WPM_20260718_201_133_L2",
+   "data": "2026-07-18",
+   "nuvem": 0.1967,
+   "hash": "fe787f2c0daaa661d94a6d15cda492678d251b940b7f4fc4040447cc0946a9da",
+   "arquivo": "fe787f2c0daaa661d94a6d15.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.873652,
+    -22.157626,
+    -46.83195,
+    -22.118998
+   ],
+   "cena": "CBERS_4A_WPM_20260808_203_141_L2",
+   "data": "2026-08-08",
+   "nuvem": 0.1251,
+   "hash": "de8cd39905ed83dae0630f1eb80ea8f612b5da4c9cfbf97e608c8cb5bf3ab6fe",
+   "arquivo": "de8cd39905ed83dae0630f1e.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.861659,
+    -22.579036,
+    -46.819831,
+    -22.540409
+   ],
+   "cena": "CBERS_4A_WPM_20260708_203_141_L2",
+   "data": "2026-07-08",
+   "nuvem": 0.0588,
+   "hash": "6e70f5d4fbfe61f31c1b5cf6db8022b5009f7677cb35cc66c1e7b08d48c702b0",
+   "arquivo": "6e70f5d4fbfe61f31c1b5cf6.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -44.516498,
+    -14.624228,
+    -44.476581,
+    -14.585601
+   ],
+   "cena": "CBERS_4A_WPM_20260713_202_131_L2",
+   "data": "2026-07-13",
+   "nuvem": 0.0006,
+   "hash": "cc3914bf7d3e6f1af5f6f1f388a8b9e1b342d020feb6587c32ed62e44b90d306",
+   "arquivo": "cc3914bf7d3e6f1af5f6f1f3.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -44.083035,
+    -15.937339,
+    -44.042868,
+    -15.898711
+   ],
+   "cena": "CBERS_4A_WPM_20260818_201_133_L2",
+   "data": "2026-08-18",
+   "nuvem": 0.0057,
+   "hash": "65e7870ac8cf9d809fba1a9c315ecaddab47c31b6cbdcc05d4834d58a507e5d7",
+   "arquivo": "65e7870ac8cf9d809fba1a9c.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.84006,
+    -18.564961,
+    -49.799317,
+    -18.526333
+   ],
+   "cena": "CBERS_4A_WPM_20260914_208_136_L2",
+   "data": "2026-09-14",
+   "nuvem": 0.0786,
+   "hash": "7d04ccec9e5fa071453a59af1c5938cef6c15e325e84ee9eba092e91b671bec2",
+   "arquivo": "7d04ccec9e5fa071453a59af.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -44.494516,
+    -14.80723,
+    -44.454566,
+    -14.768602
+   ],
+   "cena": "CBERS_4A_WPM_20260311_202_132_L2",
+   "data": "2026-03-11",
+   "nuvem": 0.0196,
+   "hash": "1fea085f8f8c87e45d4e8b7d7df0341d559f0ad64f1737293edbfcd6cb18a6a6",
+   "arquivo": "1fea085f8f8c87e45d4e8b7d.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.175914,
+    -15.42615,
+    -43.135847,
+    -15.387523
+   ],
+   "cena": "CBERS_4A_WPM_20260416_201_132_L2",
+   "data": "2026-04-16",
+   "nuvem": 0.1829,
+   "hash": "0dd367787d2c09a64de350d3f7d7698047d28acdec0834d7ce549a75883e4a96",
+   "arquivo": "0dd367787d2c09a64de350d3.jpg"
   }
  ]
 }
