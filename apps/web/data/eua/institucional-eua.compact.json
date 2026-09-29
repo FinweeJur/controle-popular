@@ -1,0 +1,136 @@
+{
+  "esqueleto": [
+    "id",
+    "frente",
+    "codigoOficial",
+    "nome",
+    "esfera",
+    "estadoOuLocal",
+    "anoReferencia",
+    "metricaPrincipalRotulo",
+    "metricaPrincipalValor",
+    "unidadeMetrica",
+    "resumoCivico",
+    "eloBrasil",
+    "fonteOficial",
+    "urlOficial"
+  ],
+  "dicionarios": {
+    "frente": [
+      "Cidades-Polo (FIPS)",
+      "Congresso (Congress.gov)",
+      "Função Social da Terra (BIA/BLM)",
+      "Judiciário & Litígios (SCOTUS/SDNY)",
+      "Transparência & LAI (FOIA)"
+    ],
+    "esfera": [
+      "Federal",
+      "Municipal",
+      "Território Originário"
+    ],
+    "unidadeMetrica": [
+      "milhões de USD",
+      "dias úteis",
+      "milhões de acres",
+      "parlamentares federais"
+    ]
+  },
+  "linhas": [
+    [
+      "eua-inst-01",
+      0,
+      "FIPS-3651000",
+      "Nova York (City of New York)",
+      1,
+      "Nova York (NY)",
+      2026,
+      "Orçamento municipal aprovado",
+      112000,
+      0,
+      "Capital financeira mundial, sede da Bolsa de Nova York (NYSE) e das principais cortes com jurisdição sobre ADRs brasileiras.",
+      "Sede dos investidores que detêm a maioria das ações estrangeiras de empresas de Minas Gerais e do Brasil.",
+      "NYC Open Data / Mayor's Office of Management and Budget",
+      "https://opendata.cityofnewyork.us/"
+    ],
+    [
+      "eua-inst-02",
+      0,
+      "FIPS-1150000",
+      "Washington, D.C. (District of Columbia)",
+      0,
+      "Distrito de Colúmbia (D.C.)",
+      2026,
+      "Orçamento da capital federal",
+      20500,
+      0,
+      "Sede do governo federal dos EUA, da SEC, EPA, Suprema Corte e dos principais órgãos ambientais e fiscais.",
+      "Centro de decisões geopolíticas sobre tarifas de aço, acordos ambientais e financiamentos multilaterais.",
+      "Open Data DC",
+      "https://opendata.dc.gov/"
+    ],
+    [
+      "eua-inst-03",
+      1,
+      "US-CONGRESS-119",
+      "Congresso dos Estados Unidos (Senado e Câmara dos Representantes)",
+      0,
+      "Capitólio (Washington D.C.)",
+      2026,
+      "Total de membros votantes (100 Senadores + 435 Representantes)",
+      535,
+      3,
+      "Poder Legislativo dos EUA, com comissões de Relações Exteriores, Recursos Naturais e Energia que definem tarifas e sanções.",
+      "Debate legislações de rastreabilidade de desmatamento, importação de minerais críticos e direitos humanos.",
+      "Congress.gov / unitedstates GitHub",
+      "https://www.congress.gov/"
+    ],
+    [
+      "eua-inst-04",
+      3,
+      "COURTLISTENER-SDNY-VALE",
+      "Corte Distrital dos EUA para o Distrito Sul de Nova York (SDNY) — Caso Brumadinho",
+      0,
+      "Nova York (SDNY)",
+      2023,
+      "Acordo judicial civil com investidores de ADRs por Brumadinho",
+      55.9,
+      0,
+      "Ação coletiva de investidores da NYSE contra a Vale S.A. alegando declarações enganosas sobre a segurança de barragens. A corte de NY impôs indenização civil direta.",
+      "Demonstra o alcance da jurisdição norte-americana sobre tragédias e crimes socioambientais cometidos no Brasil.",
+      "CourtListener (Free Law Project) / SDNY",
+      "https://www.courtlistener.com/docket/14723908/in-re-vale-sa-securities-litigation/"
+    ],
+    [
+      "eua-inst-05",
+      2,
+      "BIA-AIAN-2026",
+      "Bureau of Indian Affairs (BIA) — Terras e Reservas Indígenas Federais",
+      2,
+      "Nacional (574 Tribos Reconhecidas)",
+      2026,
+      "Área total de terras sob proteção tribal e trust federal",
+      56.2,
+      2,
+      "Mapeamento das 326 reservas indígenas e territórios tribais nos EUA, com governança própria e proteção federal.",
+      "Equivalente direto às Terras Indígenas demarcadas pela FUNAI no Brasil, integradas no Globo 3D do portal.",
+      "U.S. Bureau of Indian Affairs (BIA GIS)",
+      "https://www.bia.gov/bia/ots/division-land-titles-records"
+    ],
+    [
+      "eua-inst-06",
+      4,
+      "US-FOIA-5USC552",
+      "Freedom of Information Act (FOIA) — Lei de Acesso à Informação dos EUA",
+      0,
+      "Nacional (Todas as Agências Federais)",
+      1966,
+      "Prazo padrão legal de resposta para pedidos cidadãos",
+      20,
+      1,
+      "Lei federal que garante a qualquer pessoa física ou jurídica do mundo o direito de solicitar documentos e dados públicos do governo dos EUA.",
+      "Cidadãos brasileiros e pesquisadores podem usar o FOIA gratuitamente para solicitar relatórios da SEC e EPA sobre o Brasil.",
+      "FOIA.gov (U.S. Department of Justice)",
+      "https://www.foia.gov/"
+    ]
+  ]
+}

@@ -172,6 +172,30 @@ describe("avaliarEscadaDeterminista", () => {
     expect(tjmg?.galhoRelacionado?.eixoId).toBe("estado");
   });
 
+  it("reconhece perguntas com erros de português e digitação comuns", () => {
+    const licComErro = avaliarEscadaDeterminista("licensiamento ambiental");
+    expect(licComErro).not.toBeNull();
+    expect(licComErro?.tipo).toBe("pagina");
+    expect(licComErro?.atalhos.some((a) => a.href.includes("/ambiental/licenciamento"))).toBe(true);
+
+    const betin = avaliarEscadaDeterminista("betin");
+    expect(betin).not.toBeNull();
+    expect(betin?.tipo).toBe("cidade");
+    expect(betin?.titulo).toContain("Betim");
+
+    const obsidiam = avaliarEscadaDeterminista("obsidiam");
+    expect(obsidiam).not.toBeNull();
+    expect(obsidiam?.tipo).toBe("laboratorio");
+    expect(obsidiam?.atalhos.some((a) => a.href === "/laboratorio/arvore")).toBe(true);
+
+    const conveino = avaliarEscadaDeterminista("conveinos");
+    expect(conveino).not.toBeNull();
+    expect(conveino?.tipo).toBe("pagina");
+
+    const orcameto = avaliarEscadaDeterminista("orcameto");
+    expect(orcameto).not.toBeNull();
+  });
+
   it("retorna null para perguntas arbitrárias que exigem busca profunda RAG / IA", () => {
     const res = avaliarEscadaDeterminista("qual foi o total gasto em combustivel no contrato xyz em 2023?");
     expect(res).toBeNull();

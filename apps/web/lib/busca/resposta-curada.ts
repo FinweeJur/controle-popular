@@ -408,6 +408,45 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       { href: "/judiciario/contatos", texto: "Ver Varas e Balcão Virtual" },
     ],
   },
+  // ─── CANADÁ & MINERAÇÃO (TSX) ──────────────────────────────
+  {
+    padroes: [
+      "mineradoras canadenses",
+      "mineracao canada",
+      "bolsa de toronto",
+      "tsx",
+      "ouvidoria core",
+      "sigma lithium canada",
+      "vale base metals",
+    ],
+    resposta:
+      "O portal monitora 12 mineradoras canadenses com projetos estratégicos no Brasil. Consulte barragens de rejeitos, relatórios do SEDAR+ e ouvidoria CORE.",
+    linkPrincipal: { href: "/canada/mineracao", texto: "Ver Mineradoras do Canadá (/canada/mineracao)" },
+    linksAdicionais: [
+      { href: "/canada", texto: "Hub Canadá & Brasil" },
+      { href: "/empresas", texto: "Painel de Grandes Empresas" },
+    ],
+  },
+
+  // ─── ESTADOS UNIDOS & EMPRESAS (SEC) ───────────────────────
+  {
+    padroes: [
+      "empresas eua",
+      "sec",
+      "sec edgar",
+      "form 20-f",
+      "acionistas da vale nos eua",
+      "fundos de investimento eua",
+      "blackrock brasil",
+    ],
+    resposta:
+      "Acompanhe relatórios anuais Form 20-F de corporações e fundos globais na SEC. Os dados cruzam acionistas controladores e mercado de capitais americano.",
+    linkPrincipal: { href: "/eua/empresas", texto: "Ver Corporações & Fundos SEC (/eua/empresas)" },
+    linksAdicionais: [
+      { href: "/eua", texto: "Hub EUA & Brasil" },
+      { href: "/empresas", texto: "Painel de Grandes Empresas" },
+    ],
+  },
 ];
 
 /**

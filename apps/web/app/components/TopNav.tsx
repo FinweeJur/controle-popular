@@ -103,6 +103,7 @@ const SECOES_MENU = [
       { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet },
       { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
       { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
+      { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe },
     ],
   },
   {
@@ -125,6 +126,7 @@ const SECOES_MENU = [
       { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users },
       { label: 'Radar Cívico de Editais', href: '/editais', icone: ShoppingBag },
       { label: 'Grandes Empresas & Fundos', href: '/empresas', icone: Building2 },
+      { label: 'EUA: SEC, Fundos & Comércio', href: '/eua', icone: Building2 },
       { label: 'Repasses Federais ComunicaBR', href: '/dados/comunicabr', icone: MapPin },
       { label: 'Convênios & Transferências', href: '/ambiental/convenios', icone: FileSpreadsheet },
       { label: 'Orçamento & Receitas de MG', href: '/estado-e-economia/orcamento', icone: BarChart3 },

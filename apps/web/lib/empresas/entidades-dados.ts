@@ -39,7 +39,7 @@ export interface LicenciamentoItem {
 export interface EntidadeDetalhada {
   slug: string;
   nome: string;
-  tipo: "empresa_nacional" | "empresa_eua" | "fundo_eua";
+  tipo: "empresa_nacional" | "empresa_eua" | "fundo_eua" | "empresa_canada";
   setor: string;
   setorRotulo: string;
   cnpj?: string;

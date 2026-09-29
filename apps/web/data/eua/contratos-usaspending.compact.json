@@ -1,0 +1,61 @@
+{
+  "esqueleto": [
+    "id",
+    "programaOuAward",
+    "agenciaFederal",
+    "recipiente",
+    "tipoTransacao",
+    "anoFiscal",
+    "valorUsdMilhoes",
+    "estadoOuPais",
+    "objetoContrato",
+    "eloBrasil",
+    "fonteOficial",
+    "urlOficial"
+  ],
+  "dicionarios": {},
+  "linhas": [
+    [
+      "eua-eco-01",
+      "USAspending.gov — Compras Públicas Federais e Contratos Militares/Civis",
+      "GSA / DoD / DoE / HHS",
+      "Empresas e Fornecedores Federais",
+      "Contrato Federal (Procurement)",
+      2026,
+      750000,
+      "Federal (Washington D.C.)",
+      "Portal transparente de todas as ordens de pagamento, compras públicas e doações executadas pelo governo federal dos EUA.",
+      "Permite auditar subsidiárias norte-americanas de grupos que operam no Brasil e empresas com contratos bilaterais.",
+      "USAspending.gov (U.S. Department of the Treasury)",
+      "https://www.usaspending.gov/search"
+    ],
+    [
+      "eua-eco-02",
+      "Balança Comercial Bilateral EUA x Brasil (US Census Bureau CTY 3510)",
+      "U.S. Census Bureau — International Trade",
+      "Exportadores e Importadores Brasil-EUA",
+      "Comércio Bilateral (Censo)",
+      2025,
+      85200,
+      "Brasil (Código de País Censo 3510)",
+      "Comércio exterior bilateral: exportações dos EUA de combustíveis e aeronaves; importações de petróleo bruto, ferro e celulose do Brasil.",
+      "Mede o fluxo físico e financeiro direto entre a economia dos EUA e os estados mineradores e agroindustriais do Brasil.",
+      "US Census Bureau Foreign Trade Statistics",
+      "https://www.census.gov/foreign-trade/balance/c3510.html"
+    ],
+    [
+      "eua-eco-03",
+      "Department of Energy (DOE) — Financiamento de Minerais Críticos e Lítio",
+      "U.S. Department of Energy (DOE / Loan Programs Office)",
+      "Cadeia de Suprimentos de Baterias e Minerais",
+      "Assistência / Grant",
+      2025,
+      2800,
+      "Nacional / Cadeias Estratégicas",
+      "Incentivos e subvenções sob o Inflation Reduction Act (IRA) para refino e suprimento de lítio, níquel e terras raras.",
+      "Impacta diretamente a atratividade e demanda por lítio do Vale do Jequitinhonha (MG) para montadoras americanas.",
+      "U.S. DOE Loan Programs Office",
+      "https://www.energy.gov/lpo/loan-programs-office"
+    ]
+  ]
+}

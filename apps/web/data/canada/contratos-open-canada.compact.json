@@ -1,0 +1,109 @@
+{
+  "esqueleto": [
+    "id",
+    "orgaoOuFundo",
+    "beneficiarioOuEmpresa",
+    "identificadorPublico",
+    "categoria",
+    "provinciaOuPaisDestino",
+    "setor",
+    "anoFiscal",
+    "valorCad",
+    "objetoResumo",
+    "urlOficial"
+  ],
+  "dicionarios": {
+    "categoria": [
+      "Subsídio / Grant (Open Canada)",
+      "Comércio Bilateral (StatCan)",
+      "Contrato Federal (Proactive Disclosure)",
+      "Crédito Exportação (EDC Brasil)",
+      "Árvore Societária (GLEIF LEI)"
+    ],
+    "anoFiscal": [
+      "2024-2025",
+      "2025",
+      "2026"
+    ]
+  },
+  "linhas": [
+    [
+      "ca-eco-01",
+      "Export Development Canada (EDC — Agência Oficial de Crédito à Exportação)",
+      "Operações de Infraestrutura, Mineração e Energia no Brasil",
+      "EDC-BR-DISCLOSURE-2024-2025",
+      3,
+      "Brasil (MG, PA, SP, RJ)",
+      "Mineração, Saneamento, Ferrovia e Energia Limpa",
+      0,
+      1450000000,
+      "Financiamentos, seguros de crédito e garantias concedidos pela estatal canadense EDC para exportadores canadenses e grandes corporações atuantes no Brasil (divulgação obrigatória de transações individuais).",
+      "https://www.edc.ca/en/about-us/corporate-social-responsibility/transparency-disclosure.html"
+    ],
+    [
+      "ca-eco-02",
+      "Natural Resources Canada (NRCan — Critical Minerals Infrastructure Fund)",
+      "Projetos de Cadeia de Suprimento de Minerais Críticos (Lítio, Níquel e Grafite)",
+      "NRCan-CMIF-2025",
+      0,
+      "Ontario e Quebec (Canadá)",
+      "Transição Energética & Minerais de Baterias",
+      0,
+      1500000000,
+      "Fundo público federal canadense para infraestrutura de energia e transporte ligada a minas de níquel, lítio e cobalto (incluindo o polo de Sudbury e refino em Becancour).",
+      "https://search.open.canada.ca/grants/"
+    ],
+    [
+      "ca-eco-03",
+      "Public Services and Procurement Canada (PSPC) & Crown-Indigenous Relations",
+      "Consórcios de Remediação Ambiental (Faro Mine & Giant Mine Remediation)",
+      "PSPC-NCRP-2025",
+      2,
+      "Yukon e Northwest Territories (Canadá)",
+      "Remediação de Minas Abandonadas (Passivo Público)",
+      0,
+      890000000,
+      "Contratos públicos bilionários pagos pelo contribuinte canadense para conter 237 mil toneladas de trióxido de arsênio na antiga mina de ouro Giant Mine e drenagem ácida na mina Faro, abandonadas por empresas privadas falidas.",
+      "https://search.open.canada.ca/contracts/"
+    ],
+    [
+      "ca-eco-04",
+      "Statistics Canada (StatCan) — Canadian International Merchandise Trade",
+      "Comércio Bilateral Canadá ↔ Brasil (Alumina, Potássio, Ouro e Aeronaves)",
+      "STATCAN-CIMT-BR-2025",
+      1,
+      "Canadá ↔ Brasil",
+      "Fertilizantes (Potássio), Bauxita/Alumina e Manufatura",
+      1,
+      11800000000,
+      "Fluxo comercial oficial entre Canadá e Brasil: o Brasil é grande fornecedor de alumina/bauxita (Pará) e ouro para refinarias canadenses, enquanto o Canadá é um dos maiores fornecedores de cloreto de potássio (fertilizante agrícola) para o Brasil.",
+      "https://www150.statcan.gc.ca/n1/en/type/data"
+    ],
+    [
+      "ca-eco-05",
+      "Global Legal Entity Identifier Foundation (GLEIF — Base Aberta LEI)",
+      "Mapeamento Societário: Matrizes Canadenses ↔ Subsidiárias Brasileiras",
+      "GLEIF-LEI-CA-BR",
+      4,
+      "Toronto / Vancouver ↔ Belo Horizonte / Belém / São Paulo",
+      "Transparência Societária & Mercado de Capitais",
+      2,
+      9800000000,
+      "Registros abertos de Legal Entity Identifier (LEI) que conectam sem custo a empresa controladora listada em Toronto (Level 2 Ultimate Parent) às suas controladas diretas no Brasil.",
+      "https://search.gleif.org"
+    ],
+    [
+      "ca-eco-06",
+      "Environment and Climate Change Canada (ECCC) — Environmental Damages Fund",
+      "Fundo Federal de Danos Ambientais (Multas da Lei de Pesca e Proteção Ambiental)",
+      "ECCC-EDF-2024-2025",
+      0,
+      "British Columbia, Ontario, Alberta e Quebec",
+      "Reparação Ecológica e Projetos Comunitários",
+      0,
+      142000000,
+      "Multas judiciais pagas por mineradoras e indústrias que violaram o Fisheries Act (lançamento de substâncias deletérias em rios com peixes) são obrigatoriamente destinadas a projetos de restauração comunitária e indígena.",
+      "https://www.canada.ca/en/environment-climate-change/services/environmental-funding/programs/environmental-damages-fund.html"
+    ]
+  ]
+}

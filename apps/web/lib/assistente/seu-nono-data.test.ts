@@ -38,6 +38,36 @@ describe("Catálogo do Seu Nonô (SeuNonoData.ts)", () => {
     expect(idsPaginas).toContain("rio-doce-mariana");
     expect(idsPaginas).toContain("comunicabr-federal");
     expect(idsPaginas).toContain("instituicoes-justica-fichas");
+    expect(idsPaginas).toContain("canada-mineracao");
+    expect(idsPaginas).toContain("eua-empresas");
+  });
+
+  it("deve conter a categoria Internacional (EUA & Canadá) com perguntas oficiais e frases até 13 palavras", () => {
+    const estado = FRENTES.find((f) => f.id === "estado");
+    expect(estado).toBeDefined();
+
+    const catInt = estado?.categorias.find((c) => c.id === "internacional-eua-canada");
+    expect(catInt).toBeDefined();
+    expect(catInt?.titulo).toBe("Internacional (EUA & Canadá)");
+    expect(catInt?.perguntas.length).toBeGreaterThanOrEqual(3);
+
+    // Verifica perguntas específicas solicitadas
+    const idsPerguntas = catInt?.perguntas.map((p) => p.id) || [];
+    expect(idsPerguntas).toContain("mineradoras-canadenses-jequitinhonha");
+    expect(idsPerguntas).toContain("acionistas-vale-eua");
+    expect(idsPerguntas).toContain("denuncia-ouvidoria-canada-core");
+
+    // Verifica regra de frases curtas de até 13 palavras nas respostas
+    for (const p of catInt?.perguntas || []) {
+      const frases = p.resposta
+        .split(/[.!?]+/)
+        .map((f) => f.trim())
+        .filter(Boolean);
+      for (const frase of frases) {
+        const palavras = frase.split(/\s+/).filter(Boolean);
+        expect(palavras.length).toBeLessThanOrEqual(13);
+      }
+    }
   });
 
   it("todas as perguntas devem ter links válidos e sem CPF", () => {

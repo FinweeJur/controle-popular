@@ -28,6 +28,7 @@ import { semAcento } from "../busca/normalizar";
 import { buscarPaginasPortal } from "../busca/paginas-portal";
 import { listarNoticiasPortal } from "../noticias/portal";
 import { obterLinksRelacionadosGalho, type GalhoRelacionado } from "./arvore-galhos";
+import { corrigirDigitacaoFrase } from "./corretor-digitacao";
 
 export interface AtalhoAcao {
   rotulo: string;
@@ -48,14 +49,17 @@ export interface ResultadoEscada {
 
 /**
  * Avalia se a entrada do usuário corresponde a um degrau determinístico antes de invocar a IA.
- * Executa a lógica bruta de casamento por regras.
+ * Executa a lógica bruta de casamento por regras, com correção tolerante a erros de digitação.
  */
 function avaliarEscadaBruta(
   prompt: string,
   slugCidadeOuZona?: string
 ): ResultadoEscada | null {
-  const normalizada = semAcento(prompt.trim().toLowerCase());
-  if (!normalizada) return null;
+  const bruta = semAcento(prompt.trim().toLowerCase());
+  if (!bruta) return null;
+
+  // Aplica correção tolerante a erros ortográficos e de digitação
+  const normalizada = corrigirDigitacaoFrase(bruta);
 
   // ─── 1. DEGRAU: LABORATÓRIO / POWERBI / ARVORE OBSIDIAN / CRUZAMENTOS ─
   const regexArvore = /\b(arvore|grafo|obsidian|rede de conexoes|arvore de links|mapa mental)\b/i;
@@ -443,9 +447,58 @@ function avaliarEscadaBruta(
       categoria: "Empresas",
       atalhos: [
         { rotulo: "Painel Geral de Empresas", href: "/empresas", principal: true },
+        { rotulo: "Mineradoras do Canadá (TSX)", href: "/canada/mineracao" },
+        { rotulo: "Corporações & Fundos EUA (SEC)", href: "/eua/empresas" },
         { rotulo: "Vale S.A.", href: "/paraopeba/vale" },
         { rotulo: "Sigma Lithium", href: "/empresas/sigma-lithium" },
-        { rotulo: "Painel de Barragens", href: "/ambiental/barragens" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "canada" ||
+    normalizada.includes("mineradoras canadenses") ||
+    normalizada.includes("bolsa de toronto") ||
+    normalizada.includes("tsx") ||
+    normalizada.includes("ouvidoria core") ||
+    normalizada.includes("core canada")
+  ) {
+    return {
+      tipo: "empresa",
+      titulo: "Canadá — Mineradoras no Brasil (TSX & TSXV)",
+      subtitulo: "Acervo da Bolsa de Toronto e Ouvidoria Federal CORE",
+      texto:
+        "Consulte 12 mineradoras canadenses com operações no Brasil (lítio no Jequitinhonha e ouro), barragens de rejeitos e canal de denúncias de direitos humanos.",
+      categoria: "Internacional",
+      atalhos: [
+        { rotulo: "Mineradoras do Canadá (/canada/mineracao)", href: "/canada/mineracao", principal: true },
+        { rotulo: "Hub Oficial do Canadá", href: "/canada" },
+        { rotulo: "Painel de Grandes Empresas", href: "/empresas" },
+        { rotulo: "Ouvidoria CORE Canadá", href: "https://core-ombuds.canada.ca" },
+      ],
+    };
+  }
+
+  if (
+    normalizada === "eua" ||
+    normalizada === "estados unidos" ||
+    normalizada.includes("empresas eua") ||
+    normalizada === "sec" ||
+    normalizada.includes("sec edgar") ||
+    normalizada.includes("fundos eua")
+  ) {
+    return {
+      tipo: "empresa",
+      titulo: "Estados Unidos — Corporações & Fundos na SEC",
+      subtitulo: "Mercado de Capitais e Formulários Form 20-F",
+      texto:
+        "Consulte relatórios anuais Form 20-F e 10-K na SEC americana, fundos globais como BlackRock e contratos federais no USAspending.gov.",
+      categoria: "Internacional",
+      atalhos: [
+        { rotulo: "Corporações & Fundos SEC (/eua/empresas)", href: "/eua/empresas", principal: true },
+        { rotulo: "Hub Oficial dos EUA", href: "/eua" },
+        { rotulo: "Painel de Grandes Empresas", href: "/empresas" },
+        { rotulo: "SEC EDGAR Oficial", href: "https://www.sec.gov/edgar" },
       ],
     };
   }

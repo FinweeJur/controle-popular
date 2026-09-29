@@ -1,0 +1,108 @@
+{
+  "esqueleto": [
+    "id",
+    "titulo",
+    "categoria",
+    "orgaoFonte",
+    "estado",
+    "identificadorOficial",
+    "riscoOuGravidade",
+    "metricaPrincipalRotulo",
+    "metricaPrincipalValor",
+    "unidadeMetrica",
+    "resumoImpacto",
+    "paraleloBrasil",
+    "fonteOficial",
+    "urlOficial"
+  ],
+  "dicionarios": {
+    "riscoOuGravidade": [
+      "Monitoramento Ativo",
+      "High Hazard (DPA Alto)",
+      "Multa Grave",
+      "Prioridade Nacional (NPL)"
+    ]
+  },
+  "linhas": [
+    [
+      "eua-amb-01",
+      "National Inventory of Dams (NID) — Barragens de Alto Dano Potencial (High Hazard)",
+      "Barragens (NID)",
+      "U.S. Army Corps of Engineers (USACE)",
+      "Nacional (50 Estados)",
+      "NID-USACE-2026",
+      1,
+      "Barragens classificadas com DPA Alto (High Hazard)",
+      15600,
+      "barragens de alto dano",
+      "O NID cataloga 91.500 barragens nos EUA, das quais mais de 15.000 são High Hazard (dano severo a vidas humanas caso rompam).",
+      "Exatamente a mesma distinção editorial que fazemos entre DPA (Dano Potencial Associado) e CRI (Categoria de Risco) na ANM/SIGBM.",
+      "National Inventory of Dams (USACE / FEMA)",
+      "https://nid.sec.usace.army.mil/#/"
+    ],
+    [
+      "eua-amb-02",
+      "EPA ECHO — Enforcement and Compliance History Online (Multas Industriais)",
+      "Multas & Fiscalização (EPA ECHO)",
+      "U.S. Environmental Protection Agency (EPA)",
+      "Federal (EPA Regions 1 a 10)",
+      "EPA-ECHO-DFR",
+      2,
+      "Multas civis e penais aplicadas por crimes ambientais (ano)",
+      1100,
+      "milhões de USD",
+      "A plataforma ECHO monitora o cumprimento de licenças federais (Clean Air Act, Clean Water Act e RCRA) com histórico completo de inspeções.",
+      "Equivalente direto aos autos de infração e multas do IBAMA e FEAM (MG) consolidados no Controle Popular.",
+      "U.S. EPA ECHO Detailed Facility Reports",
+      "https://echo.epa.gov/"
+    ],
+    [
+      "eua-amb-03",
+      "EPA Superfund (CERCLA) — Áreas de Contaminação Extrema sob Reparação Federal",
+      "Áreas Contaminadas (Superfund)",
+      "U.S. EPA Office of Superfund Remediation",
+      "Nacional (NPL Sites)",
+      "CERCLA-NPL-1340",
+      3,
+      "Sítios contaminados ativos na Lista de Prioridades Nacionais (NPL)",
+      1340,
+      "sítios contaminados",
+      "O programa Superfund obriga corporações poluidoras a pagarem pela descontaminação integral de bacias e solos degradados por químicos e rejeitos.",
+      "Modelo de responsabilização estrita que inspirou os acordos judiciais da Bacia do Paraopeba e do Rio Doce.",
+      "U.S. EPA Superfund National Priorities List",
+      "https://www.epa.gov/superfund/search-superfund-sites-where-you-live"
+    ],
+    [
+      "eua-amb-04",
+      "USGS Water Services — Rede Nacional de Monitoramento Hidrológico e Vazão de Rios",
+      "Hidrologia & Monitoramento (USGS)",
+      "U.S. Geological Survey (USGS)",
+      "Nacional (Bacias HUC)",
+      "USGS-NWIS-REST",
+      0,
+      "Estações telemétricas em tempo real ativas",
+      11800,
+      "estações de rio",
+      "Monitoramento contínuo de vazão, temperatura, turbidez e condutividade em rios impactados por mineração, represas e seca.",
+      "Equivalente técnico à Rede Hidrometeorológica Nacional da Agência Nacional de Águas (ANA) e IGAM.",
+      "USGS National Water Information System",
+      "https://waterdata.usgs.gov/nwis"
+    ],
+    [
+      "eua-amb-05",
+      "Climate TRACE — Emissões de Gases de Efeito Estufa medidas por Satélite nos EUA",
+      "Emissões & Clima (Climate TRACE)",
+      "Climate TRACE Coalition (Dados Abertos Independentes)",
+      "Nacional (USA)",
+      "CLIMATE-TRACE-USA-V6",
+      0,
+      "Emissões anuais monitoradas em instalações industriais e minas",
+      5400,
+      "Mt CO2e / ano",
+      "Monitoramento independente por inteligência artificial e sensores orbitais mapeando chaminés, refinarias e cavas de mineração.",
+      "Cruza com as emissões das cavas de ferro em Minas Gerais e Pará no módulo do Globo 3D do portal.",
+      "Climate TRACE Global Inventory",
+      "https://climatetrace.org/inventory"
+    ]
+  ]
+}

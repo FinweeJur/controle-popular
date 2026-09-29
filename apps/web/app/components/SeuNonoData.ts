@@ -1,3 +1,23 @@
+/**
+ * @file apps/web/app/components/SeuNonoData.ts
+ * @description Base oficial de conhecimento, perguntas curadas e fichas do assistente cívico Seu Nonô.
+ *
+ * Papel no portal:
+ * Alimenta a árvore de conhecimento do assistente cívico popular Seu Nonô (Alceu Dispor)
+ * e o motor de respostas curadas determinísticas. Estruturado em 4 frentes temáticas
+ * (Direitos em Movimento, Terra e Territórios, Estado e Economia, Central ONSA & Blog) e fichas de páginas.
+ *
+ * Fontes oficiais:
+ * - Leis federais, Constituição Federal, Diários Oficiais e Portal da Transparência.
+ * - CVM, SEC (EUA), SEDAR+/TSX (Canadá), ANM/SIGBM, FEAM/IBAMA e PNCP.
+ * - Ouvidorias públicas, Tribunais de Contas, Ministérios Públicos e ouvidoria canadense CORE.
+ *
+ * Decisões técnicas e restrições:
+ * - Regra do Dono: Respostas redigidas em orações diretas com frases curtas de até 13 palavras.
+ * - Cada resposta aponta links diretos para telas de dados e portais governamentais oficiais.
+ * - Conformidade estrita com a LGPD: varredura contínua de CPFs e proteção de dados pessoais.
+ */
+
 export interface SeuNonoLink {
   href: string;
   texto: string;
@@ -514,6 +534,67 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "A Compensação Financeira pela Exploração de Recursos Minerais (royalties da mineração) é mapeada nos municípios mineradores.",
             link: { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties de Mineração" },
+          },
+        ],
+      },
+      {
+        id: "internacional-eua-canada",
+        titulo: "Internacional (EUA & Canadá)",
+        perguntas: [
+          {
+            id: "mineradoras-canadenses-jequitinhonha",
+            pergunta: "Quais mineradoras canadenses operam no Vale do Jequitinhonha?",
+            resposta:
+              "Sigma Lithium e Lithium Ionic exploram lítio no Vale do Jequitinhonha. Suas ações negociam na Bolsa de Toronto (TSX e TSXV) no Canadá. O portal monitora relatórios técnicos, barragens de rejeitos e licenças das companhias.",
+            link: { href: "/canada/mineracao", texto: "Painel de Mineração Canadá (/canada/mineracao)" },
+            links: [
+              { href: "https://www.money.tmx.com", texto: "Bolsa de Toronto (TSX)" },
+              { href: "/empresas", texto: "Painel de Grandes Empresas" },
+            ],
+          },
+          {
+            id: "acionistas-vale-eua",
+            pergunta: "Quem são os maiores acionistas da Vale nos EUA?",
+            resposta:
+              "A Vale negocia recibos de ações (ADRs) na Bolsa de Nova York (NYSE). Grandes gestoras norte-americanas como BlackRock e Capital Group detêm participações relevantes. Os dados são auditados nos formulários Form 20-F da SEC dos EUA.",
+            link: { href: "/eua/empresas", texto: "Corporações & Fundos na SEC (/eua/empresas)" },
+            links: [
+              { href: "https://www.sec.gov/edgar", texto: "SEC EDGAR Oficial" },
+              { href: "/paraopeba/vale", texto: "Observatório Vale" },
+            ],
+          },
+          {
+            id: "denuncia-ouvidoria-canada-core",
+            pergunta: "Como fazer denúncia na ouvidoria canadense CORE?",
+            resposta:
+              "A CORE investiga abusos de direitos humanos de corporações canadenses no exterior. Qualquer cidadão atingido por mineradoras no Brasil pode registrar representação online gratuita. O portal orienta o passo a passo com formulário oficial canadense.",
+            link: { href: "https://core-ombuds.canada.ca", texto: "Ouvidoria CORE do Canadá" },
+            links: [
+              { href: "/canada/mineracao", texto: "Painel Canadá no Portal" },
+              { href: "/direitos-em-movimento/ajuda", texto: "Guia de Denúncia e Ajuda" },
+            ],
+          },
+          {
+            id: "sec-form-20f-cvm",
+            pergunta: "O que é o formulário Form 20-F da SEC nos Estados Unidos?",
+            resposta:
+              "O Form 20-F é o balanço anual obrigatório de companhias estrangeiras. Ele detalha passivos ambientais, processos judiciais e remuneração da diretoria. O Controle Popular cruza esses relatórios com registros da CVM brasileira.",
+            link: { href: "/eua/empresas", texto: "Painel EUA & Mercado de Capitais" },
+            links: [
+              { href: "https://www.sec.gov", texto: "Securities and Exchange Commission" },
+              { href: "/empresas/documentos", texto: "Biblioteca de Relatórios ESG" },
+            ],
+          },
+          {
+            id: "barragens-mineradoras-canadenses",
+            pergunta: "Quais mineradoras canadenses possuem barragens de mineração no Brasil?",
+            resposta:
+              "Kinross Gold, Lundin Mining e Yamana operam estruturas de mineração no país. O portal cruza dados do SIGBM com relatórios técnicos do SEDAR+. Consulte o mapa de barragens e níveis de emergência declarados.",
+            link: { href: "/canada/mineracao", texto: "Barragens de Mineradoras do Canadá" },
+            links: [
+              { href: "/ambiental/barragens", texto: "Painel de Barragens SIGBM" },
+              { href: "https://www.sedarplus.ca", texto: "SEDAR+ Canadá" },
+            ],
           },
         ],
       },
@@ -1230,6 +1311,38 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/judiciario/instituicoes/dpmg", texto: "Ficha da DPMG" },
       { href: "/judiciario/instituicoes/tcemg", texto: "Ficha do TCEMG" },
       { href: "/judiciario/contatos", texto: "Varas & Balcão Virtual" },
+    ],
+  },
+  {
+    id: "canada-mineracao",
+    titulo: "Canadá — Mineradoras no Brasil (TSX & TSXV)",
+    resumo: "Acervo da Bolsa de Toronto: 12 mineradoras canadenses com operações de lítio e ouro, barragens e ouvidoria CORE.",
+    dados: [
+      "12 mineradoras canadenses com ativos em território brasileiro",
+      "Projetos estratégicos de lítio no Vale do Jequitinhonha (Sigma e Lithium Ionic)",
+      "Monitoramento de barragens de rejeitos e vistorias da ANM",
+      "Canais de denúncia na ouvidoria de direitos humanos CORE do Canadá",
+    ],
+    links: [
+      { href: "/canada/mineracao", texto: "Mineradoras do Canadá" },
+      { href: "/canada", texto: "Hub Canadá & Brasil" },
+      { href: "https://core-ombuds.canada.ca", texto: "Ouvidoria CORE" },
+    ],
+  },
+  {
+    id: "eua-empresas",
+    titulo: "Estados Unidos — Corporações & Fundos na SEC",
+    resumo: "Mercado de capitais norte-americano: formulários Form 20-F, 10-K, recibos ADR e fundos globais.",
+    dados: [
+      "Formulários anuais Form 20-F de multinacionais e recibos ADR na NYSE",
+      "Grandes fundos globais e institucionais (BlackRock, Capital Group, Vanguard)",
+      "Cruzamento com registros da CVM brasileira e compras públicas",
+      "Monitoramento de contratos federais no USAspending.gov",
+    ],
+    links: [
+      { href: "/eua/empresas", texto: "Corporações & Fundos SEC" },
+      { href: "/eua", texto: "Hub EUA & Brasil" },
+      { href: "https://www.sec.gov/edgar", texto: "SEC EDGAR" },
     ],
   },
 ];

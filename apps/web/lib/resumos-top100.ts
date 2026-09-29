@@ -91,5 +91,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/funcaosocialterra": "Demarcação, proteção territorial e situação jurídica das terras dos povos originários em MG.",
   "/funcaosocialterra/mapa": "Visualização tridimensional em satélite de requerimentos minerários, CAR, UCs e territórios tradicionais.",
   "/funcaosocialterra/alertas": "Identificação automática de processos de mineração sobrepostos a terras protegidas e quilombos.",
-  "/noticias": "Artigos investigativos de profundidade com rigor científico, citações ABNT e metadados BibTeX."
+  "/noticias": "Artigos investigativos de profundidade com rigor científico, citações ABNT e metadados BibTeX.",
+  "/eua": "Painel dos EUA: SEC, corporações, contratos federais, barragens e comércio bilateral.",
+  "/canada": "Painel do Canadá: mineradoras na TSX, rejeitos NPRI, compras e Primeiras Nações."
 };
