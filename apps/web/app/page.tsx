@@ -8,6 +8,7 @@ import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
 import CardCarousel from "@/app/components/CarrosselEixos";
+import MisticaDoDia from "@/app/components/MisticaDoDia";
 import { citacaoPorId } from "@/lib/citacoes";
 
 /**
@@ -66,6 +67,12 @@ export default async function Hub() {
       tabIndex={-1}
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
+      {/* ═══ MÍSTICA DO DIA — luta popular ou fato de resistência do dia,
+          com fonte ABNT. Pedido do dono (29/09/2026): fica abaixo da nav
+          bar e do letreiro "✦ OLHO ABERTO ✦" (que vivem no TopNav/Marquee)
+          e acima da capa-hero. Sem entrada do dia, não renderiza nada. */}
+      <MisticaDoDia />
+
       {/* ═══ CAPA HOME — foto com overlay + texto (rebrand visual) */}
       <CapaFrente
         imagem="capas/home-page.webp"

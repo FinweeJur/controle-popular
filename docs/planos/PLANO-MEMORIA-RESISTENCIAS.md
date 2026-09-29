@@ -21,7 +21,7 @@
 - [Acessibilidade e as seis qualidades](#acessibilidade-e-as-seis-qualidades)
 - [Fases, esforço e critério de pronto](#fases-esforço-e-critério-de-pronto)
 - [Riscos e o que NÃO fazer](#riscos-e-o-que-não-fazer)
-- [Decisões abertas (dependem do dono)](#decisões-abertas-dependem-do-dono)
+- [Decisões registradas (dono, 29/09/2026)](#decisões-registradas-dono-29092026)
 - [Origem](#origem)
 
 ## Propósito
@@ -160,6 +160,29 @@ AGENTS.md vale para link também).
 é sempre a mais local e mais oficial. Se só houver fonte terciária, o
 verbete não entra.
 
+**Duas fontes novas incorporadas em 29/09/2026** (pedido do dono), já
+transformadas em dados:
+
+1. **Aos que virão — Calendário Insurgente**, de **Gustavo Seferian**
+   (2020; `aosquevirao.home.blog`) — 17 páginas de listagem colhidas por
+   script; **158 entradas** com link direto do post e a **data da citação
+   tirada do próprio post**, conforme decisão do dono.
+2. **Calendário Histórico dos Trabalhadores e Trabalhadoras**, do **MST,
+   2009** (organização de Ângelo Diogo Mazin, Janaina Strozake e Miguel
+   Enrique Almeida Stádile) — texto extraído do `.doc` em 29/09/2026
+   (UTF-16LE + limpeza de ruído binário); entradas sem URL, porque o
+   documento não tem página pública.
+
+**Regra do dono (29/09/2026): fato sem dia ou sem ano NÃO se perde.**
+O que tem dia/mês entra no dia (o campo de ano fica vazio quando a fonte
+não datou — 147 entradas assim); o que não tem data nenhuma vira
+`semData: true` e preenche, de forma determinística (semente sha1 do
+próprio texto), os dias do ano que ficaram sem fato. A tela avisa quando
+o fato foi posto ali para não deixar o dia vazio.
+
+Resultado: **523 entradas cobrindo o ano inteiro** (`apps/web/lib/memoria/calendario.ts`,
+gerado por script, nunca à mão). A mística do dia consome esse acervo.
+
 ## Regra de vinculação e o teste da vizinhança
 
 Como decidir que um marco "é da" cidade:
@@ -257,21 +280,27 @@ superior cobrindo o país inteiro do que 100 verbetes municipais ilhados.
 | Cobrir 5.570 cidades à mão | não: camadas primeiro, município onde há fonte |
 | Usar resumo de modelo como afirmação do portal | se houver, rotular máquina + data + modelo |
 
-## Decisões abertas (dependem do dono)
+## Decisões registradas (dono, 29/09/2026)
 
-1. **Fontes não estatais** (CPT, DATALUTA, DIEESE, ISA) entram com
-   atribuição explícita? *Recomendação: sim, marcadas como "organização
-   civil / academia" na ficha da fonte — memória de luta raramente está
-   só no Estado.*
-2. **Wikidata/Wikipédia como camada terciária** de mapa (nunca fonte
-   única)? *Recomendação: sim, só para achar lugar e período; verbete
-   sempre fecha em fonte primária.*
-3. **Enquadramento explícito "resistência"** no texto ou tom mais
-   descritivo ("o que aconteceu ali")? *Recomendação: manter o
-   vocabulário do campo popular, como o PLANO-COPY-VOZ já decidiu.*
-4. **Alvo do primeiro ciclo**: 100 municípios de MG ou começar nacional
-   pelas capitais? *Recomendação: MG com as 6 atuais completas + 20-30,
-   depois expansão.*
+1. **Fontes não estatais entram** — com citação e link, marcadas como
+   "organização civil / academia" na ficha da fonte. Memória de luta
+   raramente está só no Estado.
+2. **Ordem de preferência da fonte** — movimentos sociais (CPT, MAB),
+   entidades acadêmicas (Dataluta/NERA-UNESP, AEL/Unicamp, CPDOC) e
+   páginas oficiais (**Senado, Câmara, EBC, IBGE**, além de ANM, IPHAN,
+   Arquivo Nacional, Palmares, FUNAI, arquivos estaduais). **Wikipédia
+   só como camada terciária** — ponte para lugar e período, nunca no
+   campo `fonte`.
+3. **Vocabulário "resistência" mantido** — a gramática do campo popular
+   do [PLANO-COPY-VOZ.md](PLANO-COPY-VOZ.md) segue valendo.
+4. **Sequência** — memória em andamento (subagente); na volta,
+   continuar com o plano de mapeamento da mineração ilegal.
+5. **Mística do Dia na home** — entregue em 29/09/2026: bloco abaixo da
+   nav bar e do letreiro "✦ OLHO ABERTO ✦", acima da capa-hero
+   (`app/components/MisticaDoDia.tsx`), com a luta do dia e a citação
+   ABNT. Sem entrada do dia, o bloco não renderiza (lacuna declarada).
+   O calendário entra por chunk separado — 133 KB não podem pesar no
+   bundle da página mais visitada.
 
 ## Origem
 
