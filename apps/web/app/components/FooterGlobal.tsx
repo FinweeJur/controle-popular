@@ -66,6 +66,7 @@ const LINKS_PORTAL = [
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
+  { label: "Aprender", href: "/aprender" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   // Rótulo pela MATÉRIA, não pela sigla: "ComunicaBR" não diz nada a quem
