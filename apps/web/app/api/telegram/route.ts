@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { timingSafeEqual } from "node:crypto";
 
 /**
  * Webhook do Telegram — controlepopular.com.br/api/telegram
@@ -141,12 +142,39 @@ function subfrenteResposta(slug: keyof typeof FRONTES): { text: string; reply_ma
 
 // ── POST: webhook ────────────────────────────────────────────────────────────
 
+/**
+ * Compara o token do webhook em tempo constante. `===` sai cedo no primeiro
+ * byte diferente e vaza o segredo por timing; o tamanho não é segredo, então
+ * conferi-lo antes é seguro.
+ */
+function segredoConfere(header: string | null, secret: string): boolean {
+  if (!header) return false;
+  const a = Buffer.from(header);
+  const b = Buffer.from(secret);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+
+// Avisa UMA vez por processo que a porta está sem autenticação, para o buraco
+// não passar despercebido sem poluir o log a cada update.
+let avisouSemSegredo = false;
+
 export async function POST(req: Request) {
-  // Validar secret_token (se configurado)
-  const secretHeader = req.headers.get("x-telegram-bot-api-secret-token");
+  // Autenticação do webhook pelo secret_token que o Telegram envia no header.
+  // Com `TELEGRAM_WEBHOOK_SECRET` definido, a porta FECHA (403 sem o token).
+  // Sem ele, a porta segue ABERTA para o bot não parar — mas avisa no log:
+  // configure o segredo e reenvie o `setWebhook({ secret_token })`.
   const secret = process.env.TELEGRAM_WEBHOOK_SECRET;
-  if (secret && secretHeader !== secret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+  if (secret) {
+    const header = req.headers.get("x-telegram-bot-api-secret-token");
+    if (!segredoConfere(header, secret)) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+    }
+  } else if (!avisouSemSegredo) {
+    avisouSemSegredo = true;
+    console.warn(
+      "[telegram] TELEGRAM_WEBHOOK_SECRET ausente — webhook sem autenticação. " +
+        "Defina o segredo e reenvie setWebhook({ secret_token })."
+    );
   }
 
   let update;

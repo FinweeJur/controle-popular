@@ -215,16 +215,15 @@ propósito, para não arrastar a cadeia do banco para o bundle.
    `indicadores.ts` saiu também código morto (`const error = null`, resto da
    migração do Supabase).
 
-4. **Higiene de comentário.** O cabeçalho de `getDoacoesSummary`
-   ([vereadores.ts](../../apps/web/lib/betim/vereadores.ts)) diz que o
-   CPF/CNPJ do doador "não é mascarado" e, na frase seguinte, que "só se
-   expõe nome/tipo/valor/data, não o documento" — o comportamento está certo
-   (documento não é exposto; nome é público pela Lei 9.504/97), mas o texto é
-   contraditório. Reescrever.
+4. ✅ **Comentário contraditório — corrigido** (30/09/2026). O cabeçalho de
+   `getDoacoesSummary` ([vereadores.ts](../../apps/web/lib/betim/vereadores.ts))
+   agora diz o que acontece: o DOCUMENTO (CPF/CNPJ) não é exposto; o NOME é
+   público pela Lei 9.504/97.
 
-5. **`adminAuth` compara com `===`, não em tempo constante.** Com token de
-   alta entropia e porta verificada (401), é risco baixo; fica registrado como
-   higiene, não como falha.
+5. ✅ **`adminAuth` em tempo constante — corrigido** (30/09/2026). A
+   [adminAuth.ts](../../apps/web/lib/betim/adminAuth.ts) trocou o `===` por
+   `timingSafeEqual` (o `===` vaza o token por timing). Continua fechando sem
+   `ADMIN_TOKEN`.
 
 6. **O que está certo:** a fronteira cliente/servidor dos módulos puros; o
    `ok:false` explícito na degradação; a legislação municipal só com
@@ -254,13 +253,13 @@ verdade**.
    (`lib/rate-limit-ip.ts`), o mesmo das rotas `.din.ts` — o XFF cru é
    falsificável. (Consolida na camada de rota o achado 2 da Parte 2.)
 
-2. ⚠️ **Webhook do Telegram é fail-open sem `TELEGRAM_WEBHOOK_SECRET`.** A
-   rota só confere o `x-telegram-bot-api-secret-token` **se** a env existir
-   (`if (secret && secretHeader !== secret)`). A env não aparece em nenhum
-   `.env.example` nem doc — ou seja, hoje a porta provavelmente aceita
-   qualquer POST, que pode fazer o bot responder a chats arbitrários.
-   **Recomendação:** definir `TELEGRAM_WEBHOOK_SECRET` e tornar a rota
-   fail-closed. Não mudei o código: a correção depende do segredo no deploy.
+2. ✅ **Webhook do Telegram — endurecido, sem parar o bot** (30/09/2026). A
+   rota compara o `x-telegram-bot-api-secret-token` em **tempo constante** e
+   **fecha com 403** quando `TELEGRAM_WEBHOOK_SECRET` existe. Sem o segredo,
+   segue **aberta** (o bot continua funcionando) mas avisa no log — o buraco
+   não passa despercebido. A env agora está documentada em
+   [`apps/web/.env.example`](../../apps/web/.env.example). Falta o dono
+   definir o valor no deploy e reenviar o `setWebhook({ secret_token })`.
 
 3. 🔸 **`dados-resumidos` lê o banco com `getDb()` direto** (sem
    `comBancoReserva`) e sem rate limit; devolve `e.message` no 500. Baixo
