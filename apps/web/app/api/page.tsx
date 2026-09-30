@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ExemplosApi from "./ExemplosApi";
 
 export const metadata: Metadata = {
   title: "API pública · Controle Popular",
@@ -57,6 +58,8 @@ export default function ApiPublica() {
           </li>
         </ul>
       </section>
+
+      <ExemplosApi />
 
       <section className="space-y-3">
         <h2 className="font-display text-xl font-semibold">Regras</h2>
