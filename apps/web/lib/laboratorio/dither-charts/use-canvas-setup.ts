@@ -5,6 +5,12 @@ interface CanvasRect {
   height: number;
 }
 
+/**
+ * Preparo do `<canvas>` dos gráficos dither: tamanho pelo devicePixelRatio,
+ * observação de resize e leitura de `prefers-reduced-motion`. Compartilhado
+ * por `lib/laboratorio/dither-charts/`; a animação só roda com o canvas
+ * visível e sem pedido de movimento reduzido.
+ */
 export function useCanvasSetup() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rect = useRef<CanvasRect>({ width: 0, height: 0 });

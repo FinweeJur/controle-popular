@@ -9,6 +9,10 @@ export interface DonutSlice {
   value: number;
 }
 
+/**
+ * Gráfico de rosca dither (pontilhado) em `<canvas>`, adaptado do amicro
+ * (MIT). Fatias por props; a legenda em texto acompanha a cor.
+ */
 export interface DitherDonutChartProps {
   slices: DonutSlice[];
   title?: string;

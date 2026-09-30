@@ -14,6 +14,10 @@ export interface StackedBranch {
   weights?: number;
 }
 
+/**
+ * Barras empilhadas dither (pontilhadas) em `<canvas>`, adaptadas do amicro
+ * (MIT). Camadas e rótulos por props; legenda em texto acompanha cada série.
+ */
 export interface DitherStackedChartProps {
   branches: StackedBranch[];
   bands: StackedBand[];

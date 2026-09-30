@@ -8,6 +8,10 @@ export interface GrowthPoint {
   value: number;
 }
 
+/**
+ * Gráfico de crescimento/linha dither (pontilhado) em `<canvas>`, adaptado do
+ * amicro (MIT). Série por props; eixo e valor acompanham em texto.
+ */
 export interface DitherGrowthChartProps {
   data: GrowthPoint[];
   title?: string;

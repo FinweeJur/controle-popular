@@ -1,3 +1,9 @@
+/**
+ * Primitivas de desenho dos gráficos dither (feitos de pontos) — matemática
+ * pura, sem React e sem canvas: suavização, hash pseudoaleatório, cor e
+ * arredondamento. Base de `lib/laboratorio/dither-charts/`, adaptada do
+ * amicro (MIT). O desenho fica no componente; aqui só o testável sem DOM.
+ */
 export const smoothstep = (min: number, max: number, value: number) => {
   const x = Math.max(0, Math.min(1, (value - min) / (max - min)));
   return x * x * (3 - 2 * x);

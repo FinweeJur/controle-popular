@@ -3,6 +3,11 @@ import { motion, useSpring, useTransform, useReducedMotion } from 'framer-motion
 import { useCanvasSetup } from './use-canvas-setup';
 import { smoothstep, hash } from './dither-engine';
 
+/**
+ * Medidor (gauge) dither em `<canvas>` para um conjunto de métricas. Mesma
+ * base dos demais gráficos de `dither-charts/` (amicro, MIT); o número vai em
+ * texto ao lado do arco.
+ */
 export interface GaugeMetric {
   name: string;
   value: number;

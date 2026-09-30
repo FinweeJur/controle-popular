@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, AnimatePresence, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 
+/**
+ * Gráfico de barras dither (pontilhado) em `<canvas>`, com valor animado por
+ * `framer-motion`. Adaptado do amicro (MIT); a série entra por props e o
+ * número aparece em texto — cor não é o único canal.
+ */
 export interface DitherBarChartProps {
   labels: string[];
   values: number[];

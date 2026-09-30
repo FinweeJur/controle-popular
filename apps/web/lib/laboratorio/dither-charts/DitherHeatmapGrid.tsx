@@ -7,6 +7,11 @@ export interface HeatmapCell {
   value: number;
 }
 
+/**
+ * Grade de calor dither (pontilhada) em `<canvas>` — intensidade por célula,
+ * adaptada do amicro (MIT). A tabela/legenda em texto é a alternativa
+ * acessível; a cor nunca é o único canal.
+ */
 export interface DitherHeatmapGridProps {
   rows: string[];
   cols: string[];

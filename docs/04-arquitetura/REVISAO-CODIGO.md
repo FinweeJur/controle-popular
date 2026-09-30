@@ -26,6 +26,7 @@
 - [Parte 12 — conselhos e correlação](#parte-12--conselhos-e-correlação)
 - [Parte 13 — a compactação dupla](#parte-13--a-compactação-dupla)
 - [Parte 14 — arquivos da raiz de lib/](#parte-14--arquivos-da-raiz-de-lib)
+- [Parte 15 — laboratório dither e afins](#parte-15--laboratório-dither-e-afins)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -561,6 +562,29 @@ Oitava passada, nos módulos soltos da raiz de `lib/`.
 3. 🔸 **`resumos-top100.ts` é GERADO** (`// Gerado automaticamente de
    top-100-paginas.json`). Não ganha cabeçalho `/**` à mão — seria sobrescrito
    na próxima geração; o marcador `//` já cumpre o aviso, como em `schema.ts`.
+
+## Parte 15 — laboratório dither e afins
+
+Nona passada.
+
+### Achados da Parte 15
+
+1. ✅ **8 arquivos de `lib/laboratorio/dither-charts/` sem cabeçalho** ganharam
+   o bloco de onboarding: `dither-engine.ts`, `use-canvas-setup.ts`, os cinco
+   gráficos (`DitherBarChart`, `DitherDonutChart`, `DitherGrowthChart`,
+   `DitherHeatmapGrid`, `DitherStackedChart`) e `ServerGauge.tsx`. Todos apontam
+   a origem (**amicro, MIT**) e que a cor não é o único canal.
+
+2. ✅ **Conferidos** (cabeçalho e teste quando aplicável): `lib/documentos/espelho`,
+   `lib/editais/dados`, `lib/noticias/{ortografia,portal}`,
+   `lib/cultura/{salic,juncao-banco,juncao-fornecedor,incentivadores-mg}`,
+   `lib/eixos/*`, `lib/cidades/*`, `lib/presenca/vocabulario`,
+   `lib/telefonia/cobertura`, `lib/hiperlinks/referencias-cruzadas`,
+   `lib/seo/contexto-pagina`.
+
+3. 🔸 **`lib/laboratorio/dados-catalogo.ts`** foi o único ponto que toca o
+   índice de risco fora do eixo Cidades — sem furo, mas é onde uma mudança de
+   contrato de `IndiceRiscoDireitos` ecoaria primeiro.
 
 ## Achados e dívidas
 
