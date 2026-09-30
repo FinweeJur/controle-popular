@@ -50,6 +50,7 @@ import {
   FONTE_ANM_PROCESSOS,
   type LinhaSerie,
 } from "@/lib/cavas/serie";
+import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -482,6 +483,53 @@ export interface AcervoMontado {
 }
 
 /**
+ * Verbetes da memória das resistências (camadas país, região e UF) como
+ * pedaços do acervo — Fase 6 do plano de memória.
+ *
+ * Fonte: `lib/memoria/camadas.ts` (verbete curado, com fonte primária). O
+ * pedaço aponta para `/memoria` (a linha do tempo) e para a fonte oficial
+ * do verbete, para a resposta do assistente poder citar o link direto.
+ * Só entra verbete válido e com fonte primária — a mesma guarda editorial
+ * da tela (AGENTS.md §7).
+ */
+function deMemoria(): AcervoFonte[] {
+  const ROTA = "/memoria";
+  const slug = (s: string) =>
+    s
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "")
+      .slice(0, 40);
+
+  const todos = [
+    ...(CAMADAS_MEMORIA.pais["br"] ?? []),
+    ...Object.values(CAMADAS_MEMORIA.regiao).flat(),
+    ...Object.values(CAMADAS_MEMORIA.uf).flat(),
+  ].filter(verbeteValido);
+
+  const fontes: AcervoFonte[] = [];
+  for (const v of todos) {
+    const primaria = fontesPrimarias(v)[0];
+    if (!primaria) continue;
+    fontes.push({
+      id: `memoria:${v.nivel}:${v.chave}:${slug(v.titulo)}`,
+      frente: frenteDaRota(ROTA),
+      rota: ROTA,
+      titulo: v.titulo,
+      fonteUrl: primaria.url,
+      texto: `${v.titulo} (${v.periodo}): ${v.resumo} Fonte: ${primaria.orgao}, ${primaria.ano}.`,
+      links: [
+        { href: ROTA, texto: "Ver a linha do tempo das lutas" },
+        { href: primaria.url, texto: "Fonte oficial" },
+      ],
+    });
+  }
+  return fontes;
+}
+
+/**
  * Monta o acervo inteiro, determinístico: macro → frentes → contextos → páginas →
  * posts → designações → cavas. Nenhuma dependência de fs/rede/banco — os
  * JSONs de cavas entram como import estático (mesma disciplina de página
@@ -497,6 +545,7 @@ export function montarAcervoDetalhado(): AcervoMontado {
     ...dePostsDoBlog(),
     ...deDesignacoes(),
     ...deCavas(),
+    ...deMemoria(),
   ];
 
   // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo

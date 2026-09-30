@@ -137,6 +137,21 @@ describe("bases de cavas no assistente -- regra 5", () => {
   });
 });
 
+describe("memória no assistente — Fase 6", () => {
+  it("os verbetes de memória viram pedaços com rota /memoria e fonte oficial", () => {
+    const daMemoria = montarAcervo().filter((f) => f.id.startsWith("memoria:"));
+    expect(daMemoria.length).toBeGreaterThanOrEqual(30);
+    for (const f of daMemoria) {
+      expect(f.rota, `rota errada em ${f.id}`).toBe("/memoria");
+      expect(
+        f.fonteUrl.startsWith("http"),
+        `fonteUrl não oficial em ${f.id}: ${f.fonteUrl}`
+      ).toBe(true);
+      expect(f.links?.some((l) => l.href === "/memoria")).toBe(true);
+    }
+  });
+});
+
 describe("frenteDaRota -- régua de derivação", () => {
   it("mapeia as rotas das seis zonas", () => {
     expect(frenteDaRota("/betim/prefeitura/contratos")).toBe("cidades");
