@@ -58,6 +58,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { sincronizarEPublicar } from "./sincronizar-e-publicar.mts";
+import { enfileirar, resumoFila, type Fila, type TipoTarefa } from "../apps/web/lib/fila/fila";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LOGS = path.join(RAIZ, "logs");
@@ -66,6 +67,7 @@ const OPENCODE_BIN =
 const ARQUIVO_OFFSET = path.join(RAIZ, "scripts", ".gatilho-offset");
 const HEARTBEAT = path.join(RAIZ, "scripts", ".heartbeat-gatilho");
 const ARQUIVO_LOG = path.join(LOGS, "gatilho-remoto.log");
+const ARQUIVO_FILA = path.join(RAIZ, "docs", "relatorios-automacao", "fila-distribuida.json");
 
 fs.mkdirSync(LOGS, { recursive: true });
 
@@ -181,7 +183,15 @@ const COMANDOS: Record<string, string> = {
   "/menu": "menu",
   "/sessao": "sessao",
   "/logs": "logs",
+  "/fila": "fila",
+  "/rodar": "rodar",
 };
+
+/** Tipos válidos para `/rodar <tipo>` — espelha `lib/fila/tipos`. */
+const TIPOS_RODAR: TipoTarefa[] = [
+  "fonte", "pagina", "link", "dado", "teste",
+  "security", "pr", "indice", "rag", "build", "deploy",
+];
 
 async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
   const r = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${metodo}`, {
@@ -233,6 +243,27 @@ async function cmdMenu(chatId: string) {
     parse_mode: "Markdown",
     reply_markup: JSON.stringify({ inline_keyboard: botoes }),
   });
+}
+
+/** `/fila` — estado da fila distribuída (o que cada PC pegou). */
+async function cmdFila(chatId: string) {
+  let texto: string;
+  try {
+    const fila = JSON.parse(fs.readFileSync(ARQUIVO_FILA, "utf-8")) as Fila;
+    const r = resumoFila(fila);
+    const livres = fila.tarefas
+      .filter((t) => t.status === "livre")
+      .slice(0, 10)
+      .map((t) => `○ \`${t.id}\``)
+      .join("\n");
+    texto =
+      `🗂️ *Fila distribuída*\n` +
+      `${r.livre} livres · ${r.em_curso} em curso · ${r.feita} feitas · ${r.falhou} falharam\n\n` +
+      (livres || "_nada livre agora._");
+  } catch (e) {
+    texto = `Erro ao ler a fila: ${(e as Error).message.slice(0, 120)}`;
+  }
+  await telegramApi("sendMessage", { chat_id: chatId, text: texto, parse_mode: "Markdown" });
 }
 
 async function cmdTunel(chatId: string) {
@@ -587,6 +618,36 @@ async function loopTelegram() {
         }
         if (comando === "logs") {
           await cmdLogs(String(msg.chat.id));
+          continue;
+        }
+        if (comando === "fila") {
+          await cmdFila(String(msg.chat.id));
+          continue;
+        }
+        if (comando === "rodar") {
+          const tipo = textoNormalizado.split(/\s+/)[1] as TipoTarefa | undefined;
+          if (!tipo || !TIPOS_RODAR.includes(tipo)) {
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: `Uso: /rodar <tipo>. Tipos: ${TIPOS_RODAR.join(", ")}`,
+            });
+            continue;
+          }
+          try {
+            const fila = JSON.parse(fs.readFileSync(ARQUIVO_FILA, "utf-8")) as Fila;
+            const nova = enfileirar(fila, tipo, `manual-${Date.now()}`, new Date().toISOString());
+            fs.writeFileSync(ARQUIVO_FILA, JSON.stringify(nova, null, 2) + "\n", "utf-8");
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: `🗂️ Enfileirado *${tipo}*. O runner pega na próxima rodada.`,
+              parse_mode: "Markdown",
+            });
+          } catch (e) {
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: `Erro ao enfileirar: ${(e as Error).message.slice(0, 120)}`,
+            });
+          }
           continue;
         }
         await telegramApi("sendMessage", {
