@@ -69,6 +69,7 @@ const LINKS_PORTAL = [
   { label: "Aprender", href: "/aprender" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
+  { label: "Meus dados", href: "/meus-dados" },
   // Rótulo pela MATÉRIA, não pela sigla: "ComunicaBR" não diz nada a quem
   // nunca ouviu falar do portal da Presidência, e o rodapé é onde o leitor
   // decide se clica. Mesmo raciocínio de `nomeCurto` em `lib/zonas.ts`.

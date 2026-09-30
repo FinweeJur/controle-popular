@@ -56,6 +56,7 @@ const ATALHOS: { id: string; titulo: string; href: string; rotulo: string }[] = 
   { id: "recapitular", titulo: "Recapitular uma cidade", href: "/recapitular", rotulo: "Resumo" },
   { id: "aprender", titulo: "Aprender (lições curtas)", href: "/aprender", rotulo: "Cidadania" },
   { id: "temas", titulo: "Acompanhar temas", href: "/temas", rotulo: "Meus temas" },
+  { id: "meus-dados", titulo: "Meus dados (JSON)", href: "/meus-dados", rotulo: "Portabilidade" },
 ];
 
 export default function PaletaComandos() {

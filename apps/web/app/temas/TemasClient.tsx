@@ -77,7 +77,8 @@ function gravar(lista: string[]): void {
   ouvintes.forEach((o) => o());
 }
 
-function useTemas(): string[] {
+/** Lista reativa dos temas seguidos (reusada por "Meus dados"). */
+export function useTemas(): string[] {
   return useSyncExternalStore(inscrever, obterSnapshot, obterSnapshotServidor);
 }
 
