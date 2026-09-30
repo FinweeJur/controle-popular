@@ -354,6 +354,16 @@ export const NOS_ARVORE: NoArvore[] = [
     cor: "#059669",
     tamanho: 11,
   },
+  {
+    id: "ter-america-latina",
+    titulo: "América Latina (Mineração Transnacional)",
+    href: "/america-latina",
+    eixoId: "territorios",
+    subgalho: "Mineração",
+    rotuloCurto: "América Latina",
+    cor: "#f59e0b",
+    tamanho: 13,
+  },
 
   // ── EIXO 3: ESTADO E ECONOMIA ─────────────────────────────────────────────
   {
@@ -831,6 +841,9 @@ export const ARESTAS_ARVORE: ArestaArvore[] = [
   { fonte: "eixo-territorios", alvo: "ter-cidades-mg", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-cavas", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-autorizacoes", tipo: "hierarquia" },
+  { fonte: "eixo-territorios", alvo: "ter-america-latina", tipo: "hierarquia" },
+  { fonte: "ter-america-latina", alvo: "ter-globo", tipo: "relacionado", descricao: "Geolocalização 3D das Instalações" },
+  { fonte: "ter-america-latina", alvo: "est-empresas", tipo: "relacionado", descricao: "Mineradoras Transnacionais" },
   { fonte: "ter-cidades", alvo: "ter-betim", tipo: "hierarquia" },
   { fonte: "ter-cidades", alvo: "ter-bh", tipo: "hierarquia" },
   { fonte: "ter-cidades", alvo: "ter-diamantina", tipo: "hierarquia" },

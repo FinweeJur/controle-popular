@@ -984,6 +984,14 @@ export const LAYER_REGISTRY = [
     aviso: 'Cobre só 4 dos 854 municípios de MG (Araçuaí, Betim, Diamantina, Itinga) — os únicos onde contratos/convênios (presos à tabela `municipios`, 6 linhas) já coexistem com o licenciamento ambiental estadual (854 municípios). Ausência de ponto aqui NÃO quer dizer que a empresa não recebe dinheiro público — quer dizer que os outros 850 municípios ainda não têm contrato/convênio coletado para cruzar. O ponto marca ONDE fica a licença ambiental, não a sede de quem pagou. O cruzamento é por RAIZ de CNPJ (8 dígitos): identifica a empresa, mas não distingue matriz de filial.',
     color: 0x9da4ff, /* --layer-dinheiro-cruzamento */ on: false, render: 'point', pointSize: 0.007, listavel: true,
   },
+  // --- Observatório Transnacional de Mineração na América Latina (30/09/2026) ---
+  {
+    id: 'sedes-instalacoes-mineradoras-latam',
+    label: 'Mineradoras da América Latina — Sedes e Instalações',
+    hint: '51 sedes corporativas, minas de grande porte, plantas de lítio e portos minerais na América Latina (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá).',
+    aviso: 'Coordenadas georreferenciadas oficiais compiladas a partir de órgãos reguladores da América Latina (ANM, SERNAGEOMIN, INGEMMET, etc.). O ponto indica a sede ou o centro operacional da instalação.',
+    color: 0xf59e0b, /* âmbar dourado de mineração metálica */ on: true, render: 'point', pointSize: 0.007, listavel: true,
+  },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
   // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
@@ -1433,6 +1441,13 @@ export const CAMADAS = [
     hint: '2.285 pares, de 1.875 processos, atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra; 169 são de lítio, em 12 territórios.',
     aviso: 'Papel protocolado na ANM, não extração. Nunca somar com a camada de operação.',
     fontes: ['alerta-raio-territorio-sigmine-interesse'],
+  },
+  {
+    id: 'sedes-instalacoes-mineradoras-latam', assunto: 'territorio-mineracao',
+    label: 'Mineradoras da América Latina — Sedes e Instalações',
+    hint: '51 sedes corporativas, megaminas, plantas de lítio e portos minerais na América Latina (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá).',
+    aviso: 'Coordenadas georreferenciadas auditadas contra órgãos oficiais de mineração de 9 países latino-americanos.',
+    fontes: ['sedes-instalacoes-mineradoras-latam'],
   },
   {
     id: 'documentos-processo-municipios', assunto: 'brumadinho',

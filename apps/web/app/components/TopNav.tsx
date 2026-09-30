@@ -108,6 +108,7 @@ const SECOES_MENU = [
       { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
       { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
       { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe },
+      { label: 'América Latina & Mineração', href: '/america-latina', icone: Globe },
     ],
   },
   {

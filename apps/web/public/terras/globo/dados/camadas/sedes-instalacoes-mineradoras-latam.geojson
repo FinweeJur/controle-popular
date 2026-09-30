@@ -1,0 +1,1195 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fonte": "Controle Popular — Observatório Transnacional de Mineração na América Latina",
+    "dataAtualizacao": "2026-09-30",
+    "totalInstalacoes": 51,
+    "paisesCobertos": [
+      "Brasil",
+      "Chile",
+      "Peru",
+      "Argentina",
+      "México",
+      "Colômbia",
+      "Bolívia",
+      "Equador",
+      "Panamá"
+    ],
+    "aviso": "Coordenadas precisas em datum WGS84 compiladas a partir de relatórios regulatórios oficiais e imagens de satélite."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "br-vale-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.1729,
+          -22.9068
+        ]
+      },
+      "properties": {
+        "id": "br-vale-sede",
+        "nome": "Sede Corporativa Global - Vale S.A.",
+        "empresa": "Vale S.A.",
+        "pais": "Brasil",
+        "tipo": "sede_corporativa",
+        "mineral": "Ferro / Cobre / Níquel",
+        "status": "Sede Corporativa",
+        "bacia": "Baía de Guanabara / Rio de Janeiro",
+        "fonte": "CVM / Relatório Anual 20-F",
+        "descricao": "Sede administrativa da maior produtora de minério de ferro das Américas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-vale-carajas",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -50.1833,
+          -6.0614
+        ]
+      },
+      "properties": {
+        "id": "br-vale-carajas",
+        "nome": "Complexo Minerário de Carajás (S11D / Serra Norte)",
+        "empresa": "Vale S.A.",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Minério de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Itacaiúnas / Rio Tocantins",
+        "fonte": "ANM / Cadastro Nacional de Barragens",
+        "descricao": "Maior mina de minério de ferro a céu aberto do planeta, com teor médio acima de 65% Fe."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-vale-brucutu",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4111,
+          -19.8656
+        ]
+      },
+      "properties": {
+        "id": "br-vale-brucutu",
+        "nome": "Mina de Brucutu",
+        "empresa": "Vale S.A.",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Minério de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Doce / São Gonçalo do Rio Abaixo",
+        "fonte": "ANM / FEAM MG",
+        "descricao": "Uma das maiores minas do Quadrilátero Ferrífero de Minas Gerais, pioneira em caminhões autônomos."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-anglo-minasrio",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4258,
+          -19.0347
+        ]
+      },
+      "properties": {
+        "id": "br-anglo-minasrio",
+        "nome": "Complexo Minas-Rio",
+        "empresa": "Anglo American",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Minério de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Santo Antônio / Rio Doce",
+        "fonte": "SEMAD MG / ANM",
+        "descricao": "Mina a céu aberto interligada ao maior mineroduto do mundo (529 km até o Porto do Açu/RJ)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-sigma-grota-cirilo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -41.8319,
+          -16.6022
+        ]
+      },
+      "properties": {
+        "id": "br-sigma-grota-cirilo",
+        "nome": "Projeto Grota do Cirilo - Lítio Verde",
+        "empresa": "Sigma Lithium",
+        "pais": "Brasil",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio (Espodumênio)",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Jequitinhonha / Itinga e Araçuaí",
+        "fonte": "ANM / SEMAD MG (LOC)",
+        "descricao": "Principal complexo de extração de lítio em rocha pegmatítica do Vale do Jequitinhonha."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-kinross-paracatu",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.8856,
+          -17.2217
+        ]
+      },
+      "properties": {
+        "id": "br-kinross-paracatu",
+        "nome": "Mina Morro do Ouro",
+        "empresa": "Kinross Gold Corporation",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Ouro",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Paracatu / Rio São Francisco",
+        "fonte": "ANM / CVRM",
+        "descricao": "Maior mina de ouro a céu aberto do Brasil, com duas grandes barragens de rejeitos (Eustáquio e Santo Antônio)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-cbmm-araxa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.9458,
+          -19.6419
+        ]
+      },
+      "properties": {
+        "id": "br-cbmm-araxa",
+        "nome": "Complexo Industrial e Minerário de Araxá",
+        "empresa": "CBMM",
+        "pais": "Brasil",
+        "tipo": "complexo_beneficiamento",
+        "mineral": "Nióbio (Ferronióbio)",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Grande / Triângulo Mineiro",
+        "fonte": "ANM / CPRM",
+        "descricao": "Responsável por mais de 75% da produção global de nióbio e ligas de alta tecnologia."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-vale-salobo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -50.5372,
+          -5.7944
+        ]
+      },
+      "properties": {
+        "id": "br-vale-salobo",
+        "nome": "Mina de Cobre Salobo",
+        "empresa": "Vale Base Metals",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro",
+        "status": "Operação ativa",
+        "bacia": "Floresta Nacional de Tapirapé-Aquiri / Pará",
+        "fonte": "ANM / ICMBio",
+        "descricao": "Maior reserva de cobre comprovada do Brasil, operada com usina de concentração associada."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-samarco-germano",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4658,
+          -20.2319
+        ]
+      },
+      "properties": {
+        "id": "br-samarco-germano",
+        "nome": "Complexo de Germano",
+        "empresa": "Samarco (Vale / BHP)",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Minério de Ferro",
+        "status": "Operação retomada com filtragem",
+        "bacia": "Bacia do Rio Doce / Mariana",
+        "fonte": "ANM / FEAM",
+        "descricao": "Local do rompimento da barragem de Fundão em 2015; operação retomada sem uso de barragem a montante."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-csn-casadepedra",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.8617,
+          -20.5056
+        ]
+      },
+      "properties": {
+        "id": "br-csn-casadepedra",
+        "nome": "Mina Casa de Pedra",
+        "empresa": "CSN Mineração",
+        "pais": "Brasil",
+        "tipo": "mina_operacao",
+        "mineral": "Minério de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Bacia do Rio Paraopeba / Congonhas",
+        "fonte": "ANM / CVM",
+        "descricao": "Uma das mais antigas e produtivas minas de ferro do país, adjacente à malha urbana de Congonhas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-porto-tubarao",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -40.2444,
+          -20.2917
+        ]
+      },
+      "properties": {
+        "id": "br-porto-tubarao",
+        "nome": "Porto de Tubarão",
+        "empresa": "Vale S.A.",
+        "pais": "Brasil",
+        "tipo": "porto_minerario",
+        "mineral": "Terminal Graneleiro de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Oceano Atlântico / Vitória (ES)",
+        "fonte": "Antaq / Vale",
+        "descricao": "Maior porto exportador de minério de ferro e pelotas do Atlântico Sul."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "br-porto-ponta-madeira",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -44.3708,
+          -2.5714
+        ]
+      },
+      "properties": {
+        "id": "br-porto-ponta-madeira",
+        "nome": "Terminal Marítimo de Ponta da Madeira",
+        "empresa": "Vale S.A.",
+        "pais": "Brasil",
+        "tipo": "porto_minerario",
+        "mineral": "Terminal Graneleiro de Ferro",
+        "status": "Operação ativa",
+        "bacia": "Baía de São Marcos / São Luís (MA)",
+        "fonte": "Antaq / Marinha do Brasil",
+        "descricao": "Capaz de atracar os maiores navios mineraleiros do mundo (Valemax com 400.000 DWT)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-codelco-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6539,
+          -33.4429
+        ]
+      },
+      "properties": {
+        "id": "cl-codelco-sede",
+        "nome": "Sede Corporativa Central - Codelco",
+        "empresa": "Codelco (Corporación Nacional del Cobre)",
+        "pais": "Chile",
+        "tipo": "sede_corporativa",
+        "mineral": "Cobre",
+        "status": "Sede Estatal",
+        "bacia": "Región Metropolitana de Santiago",
+        "fonte": "Cochilco / CMF Chile",
+        "descricao": "Maior empresa estatal produtora de cobre do mundo, controladora das principais divisões chilenas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-bhp-escondida",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0719,
+          -24.2711
+        ]
+      },
+      "properties": {
+        "id": "cl-bhp-escondida",
+        "nome": "Mina Escondida",
+        "empresa": "Minera Escondida (BHP 57.5% / Rio Tinto 30% / JECO)",
+        "pais": "Chile",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Prata",
+        "status": "Operação ativa",
+        "bacia": "Deserto de Atacama / Región de Antofagasta",
+        "fonte": "SERNAGEOMIN Chile",
+        "descricao": "Maior produtora individual de cobre do planeta, responsável por cerca de 5% de todo o cobre mundial."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-codelco-chuquicamata",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.9,
+          -22.3167
+        ]
+      },
+      "properties": {
+        "id": "cl-codelco-chuquicamata",
+        "nome": "División Chuquicamata",
+        "empresa": "Codelco",
+        "pais": "Chile",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio",
+        "status": "Operação subterrânea",
+        "bacia": "Cuenca del Río Loa / Calama",
+        "fonte": "SERNAGEOMIN / Codelco",
+        "descricao": "Histórica e monumental mina a céu aberto, convertida para operação subterrânea de alta tecnologia."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-codelco-el-teniente",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3589,
+          -34.0956
+        ]
+      },
+      "properties": {
+        "id": "cl-codelco-el-teniente",
+        "nome": "División El Teniente",
+        "empresa": "Codelco",
+        "pais": "Chile",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Cordillera de los Andes / Región de O'Higgins",
+        "fonte": "SERNAGEOMIN Chile",
+        "descricao": "A maior mina subterrânea de cobre do mundo, com mais de 3.000 km de galerias subterrâneas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-collahuasi",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.6836,
+          -20.9753
+        ]
+      },
+      "properties": {
+        "id": "cl-collahuasi",
+        "nome": "Compañía Minera Doña Inés de Collahuasi",
+        "empresa": "Anglo American (44%) / Glencore (44%) / JCR (12%)",
+        "pais": "Chile",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Altiplano Andino / Región de Tarapacá",
+        "fonte": "SERNAGEOMIN / SMA Chile",
+        "descricao": "Mina a 4.400 metros de altitude, entre as três maiores operações de cobre do Chile."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-sqm-salardeatacama",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.25,
+          -23.5
+        ]
+      },
+      "properties": {
+        "id": "cl-sqm-salardeatacama",
+        "nome": "Complexo Salar de Atacama - SQM",
+        "empresa": "SQM (Sociedad Química y Minera de Chile)",
+        "pais": "Chile",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio (Carbonato e Hidróxido) / Potássio",
+        "status": "Operação ativa",
+        "bacia": "Salar de Atacama / Antofagasta",
+        "fonte": "CORFO / SMA Chile",
+        "descricao": "Maior reserva de salmoura de lítio em produção do mundo, no coração do 'Triângulo do Lítio'."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-albemarle-salardeatacama",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.3278,
+          -23.6028
+        ]
+      },
+      "properties": {
+        "id": "cl-albemarle-salardeatacama",
+        "nome": "Planta Salar de Atacama - Albemarle",
+        "empresa": "Albemarle Corporation",
+        "pais": "Chile",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio",
+        "status": "Operação ativa",
+        "bacia": "Salar de Atacama / Antofagasta",
+        "fonte": "SERNAGEOMIN / CORFO",
+        "descricao": "Segunda grande operadora de extração por evaporação solar de salmoura de lítio no Atacama."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-pelambres-antofagasta",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5019,
+          -31.7219
+        ]
+      },
+      "properties": {
+        "id": "cl-pelambres-antofagasta",
+        "nome": "Minera Los Pelambres",
+        "empresa": "Antofagasta Minerals (Grupo Luksic)",
+        "pais": "Chile",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Valle del Choapa / Región de Coquimbo",
+        "fonte": "SERNAGEOMIN / Antofagasta plc",
+        "descricao": "Principal operação da Antofagasta plc, com usina dessalinizadora própria na costa."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cl-porto-mejillones",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4503,
+          -23.1042
+        ]
+      },
+      "properties": {
+        "id": "cl-porto-mejillones",
+        "nome": "Terminal Portuario de Mejillones",
+        "empresa": "Puerto Mejillones",
+        "pais": "Chile",
+        "tipo": "porto_minerario",
+        "mineral": "Cobre / Ácido Sulfúrico",
+        "status": "Operação ativa",
+        "bacia": "Bahía de Mejillones / Antofagasta",
+        "fonte": "Directemar / Ministerio de Transportes Chile",
+        "descricao": "Porto especializado no embarque de concentrado de cobre e recepção de insumos para mineração."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-southern-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0375,
+          -12.0569
+        ]
+      },
+      "properties": {
+        "id": "pe-southern-sede",
+        "nome": "Sede Operacional Peru - Southern Copper",
+        "empresa": "Southern Copper Corporation (Grupo México)",
+        "pais": "Peru",
+        "tipo": "sede_corporativa",
+        "mineral": "Cobre / Prata",
+        "status": "Sede Regional",
+        "bacia": "Lima Metropolitana",
+        "fonte": "SMV Peru / SEC Form 10-K",
+        "descricao": "Escritório central de coordenação das minas de Toquepala e Cuajone e fundição de Ilo."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-antamina",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0519,
+          -9.5356
+        ]
+      },
+      "properties": {
+        "id": "pe-antamina",
+        "nome": "Compañía Minera Antamina",
+        "empresa": "BHP (33.75%) / Glencore (33.75%) / Teck (22.5%) / Mitsubishi (10%)",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Zinco / Prata / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Cordillera Blanca / Región Áncash",
+        "fonte": "INGEMMET / MINEM Peru",
+        "descricao": "Um dos maiores complexos polimetálicos do planeta a 4.300m de altitude, com mineroduto até Huarmey."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-cerro-verde",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5931,
+          -16.5369
+        ]
+      },
+      "properties": {
+        "id": "pe-cerro-verde",
+        "nome": "Sociedad Minera Cerro Verde",
+        "empresa": "Freeport-McMoRan (53.56%) / SMM Cerro Verde (21%) / Buenaventura (19.58%)",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Río Chili / Arequipa",
+        "fonte": "INGEMMET / OEFA Peru",
+        "descricao": "Complexo produtor de cobre a céu aberto nos arredores de Arequipa, com usinas concentradoras gigantes."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-las-bambas",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.3278,
+          -14.1028
+        ]
+      },
+      "properties": {
+        "id": "pe-las-bambas",
+        "nome": "Minera Las Bambas",
+        "empresa": "MMG Limited (62.5%) / Guoxin (22.5%) / CITIC (15%)",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio / Ouro",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Río Vilcabamba / Apurímac",
+        "fonte": "MINEM / OEFA Peru",
+        "descricao": "Uma das maiores minas de cobre do mundo, com histórico de conflitos no corredor logístico viário."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-quellaveco",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6139,
+          -17.1128
+        ]
+      },
+      "properties": {
+        "id": "pe-quellaveco",
+        "nome": "Proyecto Quellaveco",
+        "empresa": "Anglo American (60%) / Mitsubishi (40%)",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Río Asana / Moquegua",
+        "fonte": "INGEMMET / MINEM",
+        "descricao": "Primeira mina 100% digital do Peru, operada com caminhões e perfuratrizes totalmente autônomas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-toquepala",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6358,
+          -17.2519
+        ]
+      },
+      "properties": {
+        "id": "pe-toquepala",
+        "nome": "Mina Toquepala",
+        "empresa": "Southern Copper Corporation",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Prata / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Región Tacna",
+        "fonte": "INGEMMET Peru",
+        "descricao": "Mina a céu aberto em operação contínua desde a década de 1960 no sul peruano."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-yanacocha",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5028,
+          -6.9856
+        ]
+      },
+      "properties": {
+        "id": "pe-yanacocha",
+        "nome": "Minera Yanacocha",
+        "empresa": "Newmont Corporation",
+        "pais": "Peru",
+        "tipo": "mina_operacao",
+        "mineral": "Ouro / Cobre",
+        "status": "Operação ativa",
+        "bacia": "Cabecera de Cuenca / Cajamarca",
+        "fonte": "INGEMMET / MINEM",
+        "descricao": "A maior mina de ouro da América do Sul, operada por lixiviação em pilhas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pe-porto-matarani",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.1039,
+          -17.0019
+        ]
+      },
+      "properties": {
+        "id": "pe-porto-matarani",
+        "nome": "Terminal Portuario de Matarani",
+        "empresa": "Tisur (Grupo Romero)",
+        "pais": "Peru",
+        "tipo": "porto_minerario",
+        "mineral": "Concentrado de Cobre",
+        "status": "Operação ativa",
+        "bacia": "Océano Pacífico / Arequipa",
+        "fonte": "Autoridad Portuaria Nacional (APN Peru)",
+        "descricao": "Porto estratégico que embarca o minério de Cerro Verde, Las Bambas, Antapaccay e Southern."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-sede-buenosaires",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3816,
+          -34.6037
+        ]
+      },
+      "properties": {
+        "id": "ar-sede-buenosaires",
+        "nome": "Pólo Institucional de Mineração da Argentina",
+        "empresa": "Secretaría de Minería de la Nación",
+        "pais": "Argentina",
+        "tipo": "sede_corporativa",
+        "mineral": "Multimineral",
+        "status": "Sede Governamental",
+        "bacia": "Ciudad Autónoma de Buenos Aires",
+        "fonte": "Secretaría de Minería Argentina",
+        "descricao": "Órgão regulador nacional responsável pelo cadastro e fomento geológico-mineiro (SEGEMAR)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-arcadium-fenix",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.0358,
+          -25.4389
+        ]
+      },
+      "properties": {
+        "id": "ar-arcadium-fenix",
+        "nome": "Proyecto Fénix (Salar del Hombre Muerto)",
+        "empresa": "Arcadium Lithium (fusão Livent + Allkem)",
+        "pais": "Argentina",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio (Cloreto e Carbonato)",
+        "status": "Operação ativa",
+        "bacia": "Salar del Hombre Muerto / Catamarca",
+        "fonte": "Ministerio de Minería de Catamarca",
+        "descricao": "Pioneiro e mais antigo projeto de extração comercial de lítio em salmoura da Argentina."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-allkem-olaroz",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.8047,
+          -23.6542
+        ]
+      },
+      "properties": {
+        "id": "ar-allkem-olaroz",
+        "nome": "Proyecto Salar de Olaroz",
+        "empresa": "Arcadium Lithium (Allkem 66.5% / Toyota Tsusho 25% / JEMSE 8.5%)",
+        "pais": "Argentina",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio (Carbonato)",
+        "status": "Operação ativa",
+        "bacia": "Puna Jujeña / Susques, Jujuy",
+        "fonte": "Secretaría de Minería de Jujuy",
+        "descricao": "Grande planta de carbonato de lítio em salmoura a quase 4.000m de altitude."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-ganfeng-cauchari",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.7847,
+          -23.9519
+        ]
+      },
+      "properties": {
+        "id": "ar-ganfeng-cauchari",
+        "nome": "Proyecto Cauchari-Olaroz",
+        "empresa": "Minera Exar (Ganfeng Lithium 46.7% / Lithium Americas 44.8% / JEMSE 8.5%)",
+        "pais": "Argentina",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio",
+        "status": "Operação ativa",
+        "bacia": "Salar de Cauchari / Jujuy",
+        "fonte": "JEMSE / Gobierno de Jujuy",
+        "descricao": "Mais nova megaoperação de lítio na Argentina financiada com capital sino-canadense."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-barrick-veladero",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9542,
+          -29.3708
+        ]
+      },
+      "properties": {
+        "id": "ar-barrick-veladero",
+        "nome": "Mina Veladero",
+        "empresa": "Minera Argentina Gold (Barrick 50% / Shandong Gold 50%)",
+        "pais": "Argentina",
+        "tipo": "mina_operacao",
+        "mineral": "Ouro / Prata",
+        "status": "Operação ativa",
+        "bacia": "Cordillera Frontal / San Juan",
+        "fonte": "Ministerio de Minería de San Juan",
+        "descricao": "Mina de ouro a céu aberto na Cordilheira dos Andes com histórico de vazamentos de solução cianetada."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-glencore-alumbrera",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.6,
+          -27.3333
+        ]
+      },
+      "properties": {
+        "id": "ar-glencore-alumbrera",
+        "nome": "Bajo de la Alumbrera",
+        "empresa": "Glencore",
+        "pais": "Argentina",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Molibdênio",
+        "status": "Cuidado e manutenção / Reuso",
+        "bacia": "Belén / Catamarca",
+        "fonte": "Secretaría de Minería de Catamarca",
+        "descricao": "Primeira grande megamina da história da Argentina, em transição para o projeto integrado MARA."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ar-lundin-josemaria",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7547,
+          -28.4528
+        ]
+      },
+      "properties": {
+        "id": "ar-lundin-josemaria",
+        "nome": "Proyecto Josemaría",
+        "empresa": "Lundin Mining",
+        "pais": "Argentina",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Prata",
+        "status": "Desenvolvimento / Construção",
+        "bacia": "Iglesia / San Juan",
+        "fonte": "Gobierno de San Juan",
+        "descricao": "Megaprojeto de cobre que marca o retorno dos investimentos de pórfiro cuprífero na Argentina."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mx-grupomexico-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.1889,
+          19.4326
+        ]
+      },
+      "properties": {
+        "id": "mx-grupomexico-sede",
+        "nome": "Sede Corporativa Grupo México",
+        "empresa": "Grupo México",
+        "pais": "México",
+        "tipo": "sede_corporativa",
+        "mineral": "Cobre / Prata / Zinco",
+        "status": "Sede Corporativa",
+        "bacia": "Ciudad de México",
+        "fonte": "Bolsa Mexicana de Valores (BMV) / SEC",
+        "descricao": "Conglomerado controlador da Southern Copper e maior mineradora de cobre do México."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mx-buenavista-cobre",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.3019,
+          30.9856
+        ]
+      },
+      "properties": {
+        "id": "mx-buenavista-cobre",
+        "nome": "Mina Buenavista del Cobre (Cananea)",
+        "empresa": "Southern Copper / Grupo México",
+        "pais": "México",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Molibdênio",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Río Sonora / Cananea, Sonora",
+        "fonte": "SEMARNAT / PROFEPA",
+        "descricao": "Uma das maiores reservas de cobre do mundo; local do desastre ambiental do Rio Sonora em 2014."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mx-penoles-fresnillo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.8842,
+          23.1819
+        ]
+      },
+      "properties": {
+        "id": "mx-penoles-fresnillo",
+        "nome": "Mina Fresnillo",
+        "empresa": "Fresnillo plc / Industrias Peñoles",
+        "pais": "México",
+        "tipo": "mina_operacao",
+        "mineral": "Prata / Chumbo / Zinco",
+        "status": "Operação ativa",
+        "bacia": "Mesa Central / Zacatecas",
+        "fonte": "Secretaría de Economía México (DGM)",
+        "descricao": "A mina de prata primária mais rica e produtiva em operação contínua no mundo."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mx-newmont-penasquito",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.6833,
+          24.7333
+        ]
+      },
+      "properties": {
+        "id": "mx-newmont-penasquito",
+        "nome": "Mina Peñasquito",
+        "empresa": "Newmont Corporation",
+        "pais": "México",
+        "tipo": "mina_operacao",
+        "mineral": "Ouro / Prata / Chumbo / Zinco",
+        "status": "Operação ativa",
+        "bacia": "Mazapil / Zacatecas",
+        "fonte": "SEMARNAT / Newmont",
+        "descricao": "Maior mina polimetálica a céu aberto do México e uma das maiores produtoras de ouro e prata do continente."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mx-penoles-torreon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.4542,
+          25.5342
+        ]
+      },
+      "properties": {
+        "id": "mx-penoles-torreon",
+        "nome": "Complejo Metalúrgico Met-Mex Peñoles",
+        "empresa": "Industrias Peñoles",
+        "pais": "México",
+        "tipo": "complexo_beneficiamento",
+        "mineral": "Prata / Chumbo / Ouro / Zinco",
+        "status": "Operação ativa",
+        "bacia": "Comarca Lagunera / Torreón, Coahuila",
+        "fonte": "Secretaría de Economía México",
+        "descricao": "Maior complexo metalúrgico não ferroso da América Latina e o maior produtor de prata refinada do mundo."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "co-glencore-cerrejon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6719,
+          11.1019
+        ]
+      },
+      "properties": {
+        "id": "co-glencore-cerrejon",
+        "nome": "Mina Cerrejón",
+        "empresa": "Glencore (100%)",
+        "pais": "Colômbia",
+        "tipo": "mina_operacao",
+        "mineral": "Carvão Térmico",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Río Ranchería / La Guajira",
+        "fonte": "Agencia Nacional de Minería (ANM Colombia)",
+        "descricao": "A maior mina de carvão térmico a céu aberto da América Latina, com ferrovia privativa de 150 km."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "co-drummond-pribbenow",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.4756,
+          9.7042
+        ]
+      },
+      "properties": {
+        "id": "co-drummond-pribbenow",
+        "nome": "Mina Pribbenow (La Loma)",
+        "empresa": "Drummond Company",
+        "pais": "Colômbia",
+        "tipo": "mina_operacao",
+        "mineral": "Carvão Térmico",
+        "status": "Operação ativa",
+        "bacia": "Cuenca del Cesar / El Paso",
+        "fonte": "ANM Colombia / ANLA",
+        "descricao": "Principal operação de carvão da multinacional americana Drummond em território colombiano."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "co-south32-cerromatoso",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4358,
+          7.9542
+        ]
+      },
+      "properties": {
+        "id": "co-south32-cerromatoso",
+        "nome": "Mina Cerro Matoso",
+        "empresa": "South32",
+        "pais": "Colômbia",
+        "tipo": "complexo_beneficiamento",
+        "mineral": "Níquel (Ferroníquel)",
+        "status": "Operação ativa",
+        "bacia": "Montelíbano / Córdoba",
+        "fonte": "ANM Colombia",
+        "descricao": "Um dos maiores depósitos de níquel laterítico a céu aberto do mundo com fundição própria."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "co-porto-bolivar",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.9719,
+          12.2542
+        ]
+      },
+      "properties": {
+        "id": "co-porto-bolivar",
+        "nome": "Puerto Bolívar",
+        "empresa": "Cerrejón / Glencore",
+        "pais": "Colômbia",
+        "tipo": "porto_minerario",
+        "mineral": "Terminal Graneleiro de Carvão",
+        "status": "Operação ativa",
+        "bacia": "Mar do Caribe / Bahía Portete, La Guajira",
+        "fonte": "DIMAR / Supertransporte Colombia",
+        "descricao": "Porto carbonífero marítimo com capacidade para atracar navios Capesize com calado natural profundo."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bo-ylb-uyuni",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.5519,
+          -20.4856
+        ]
+      },
+      "properties": {
+        "id": "bo-ylb-uyuni",
+        "nome": "Complexo Industrial de Lítio Uyuni",
+        "empresa": "Yacimientos de Litio Bolivianos (YLB)",
+        "pais": "Bolívia",
+        "tipo": "projeto_litio",
+        "mineral": "Lítio (Carbonato) / Potássio",
+        "status": "Operação estatal",
+        "bacia": "Salar de Uyuni / Potosí",
+        "fonte": "Ministerio de Minería y Metalurgia Bolivia / YLB",
+        "descricao": "Centro nevrálgico da estratégia estatal boliviana sobre a maior reserva geológica de lítio da Terra."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bo-san-cristobal",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.2219,
+          -21.1542
+        ]
+      },
+      "properties": {
+        "id": "bo-san-cristobal",
+        "nome": "Mina San Cristóbal",
+        "empresa": "San Cristóbal Mining Inc. (ex-Sumitomo)",
+        "pais": "Bolívia",
+        "tipo": "mina_operacao",
+        "mineral": "Zinco / Chumbo / Prata",
+        "status": "Operação ativa",
+        "bacia": "Provincia Nor Lípez / Potosí",
+        "fonte": "SERGEOMIN Bolivia",
+        "descricao": "Maior empreendimento mineiro privado da Bolívia, localizado no altiplano andino a 4.000m de altitude."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bo-comibol-huanuni",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.8342,
+          -18.2856
+        ]
+      },
+      "properties": {
+        "id": "bo-comibol-huanuni",
+        "nome": "Empresa Minera Huanuni",
+        "empresa": "COMIBOL (Corporación Minera de Bolivia)",
+        "pais": "Bolívia",
+        "tipo": "mina_operacao",
+        "mineral": "Estanho (Cassiterita)",
+        "status": "Operação estatal",
+        "bacia": "Cerro Posokoni / Oruro",
+        "fonte": "COMIBOL / Ministerio de Minería",
+        "descricao": "Mundialmente famosa pela extração subterrânea de estanho de alto teor em rocha andina."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ec-mirador-cobre",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.4358,
+          -3.5719
+        ]
+      },
+      "properties": {
+        "id": "ec-mirador-cobre",
+        "nome": "Mina Mirador",
+        "empresa": "EcuaCorriente (CRCC-Tongling Nonferrous)",
+        "pais": "Equador",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Prata",
+        "status": "Operação ativa",
+        "bacia": "Cordillera del Cóndor / Zamora Chinchipe",
+        "fonte": "Ministerio de Energía y Minas Ecuador",
+        "descricao": "Primeira mina de cobre em grande escala a céu aberto na Amazônia equatoriana."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ec-fruta-del-norte",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6189,
+          -3.7656
+        ]
+      },
+      "properties": {
+        "id": "ec-fruta-del-norte",
+        "nome": "Mina Fruta del Norte",
+        "empresa": "Lundin Gold (Canadá)",
+        "pais": "Equador",
+        "tipo": "mina_operacao",
+        "mineral": "Ouro / Prata",
+        "status": "Operação ativa",
+        "bacia": "Cuenca Amazónica / Yantzaza, Zamora Chinchipe",
+        "fonte": "Ministerio de Energía y Minas Ecuador / Lundin Gold",
+        "descricao": "Depósito de ouro subterrâneo de alto teor operado com normas internacionais de sustentabilidade."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pa-cobre-panama",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.6519,
+          9.0042
+        ]
+      },
+      "properties": {
+        "id": "pa-cobre-panama",
+        "nome": "Mina Cobre Panamá",
+        "empresa": "First Quantum Minerals",
+        "pais": "Panamá",
+        "tipo": "mina_operacao",
+        "mineral": "Cobre / Ouro / Molibdênio",
+        "status": "Paralisada por decisão da Suprema Corte",
+        "bacia": "Corredor Biológico Mesoamericano / Donoso, Colón",
+        "fonte": "Ministerio de Comercio e Industrias (MICI) / Corte Suprema de Panamá",
+        "descricao": "Maior investimento privado da história do Panamá, objeto de litígio constitucional e ambiental histórico."
+      }
+    }
+  ]
+}

@@ -1,7 +1,17 @@
 {
-  "gerado_em_utc": "2026-09-29T04:25:31.628Z",
+  "gerado_em_utc": "2026-09-29T04:56:15.002Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
+    {
+      "camada": "sedes-instalacoes-mineradoras-latam",
+      "feicoes": 51,
+      "bytes": 37344,
+      "comprimido": false,
+      "sha256": "f9852a83ba9ac78227afa625d0fedc9f2f8a2858a4de5f276160af6fc38e5242",
+      "mtime_utc": "2026-09-30T21:14:45.000Z",
+      "obtencao": "direta",
+      "origem": "Observatório Transnacional de Mineração na América Latina — 51 sedes corporativas, megaminas, plantas de lítio, complexos metalúrgicos e portos de 9 países (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá) compilados de relatórios da ANM, SERNAGEOMIN, INGEMMET e SEC."
+    },
     {
       "camada": "alerta-quilombola-mancha",
       "feicoes": 6,
@@ -158,7 +168,7 @@
       "bytes": 1854142,
       "comprimido": false,
       "sha256": "6e5c1b14f0eef8761054ec3f05b53d1eb0764afeb5819103b9273ac3039cad90",
-      "mtime_utc": "2026-09-29T04:25:31.628Z",
+      "mtime_utc": "2026-09-29T04:56:14.993Z",
       "obtencao": "automatica",
       "servico": "MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos de primeira detecção em 2024 (janela de 24 meses da Fase 3)"
     },
@@ -298,7 +308,7 @@
       "bytes": 1602772,
       "comprimido": false,
       "sha256": "23858d08e341af4df08caa3a1c1cfa5d04bb006842bcceb3ab3d4aef4cbf1864",
-      "mtime_utc": "2026-09-29T04:18:30.104Z",
+      "mtime_utc": "2026-09-29T04:56:15.002Z",
       "obtencao": "automatica",
       "servico": "MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos com dentro_sigmine=false; base ANM/SIGMINE para o teste de cadastro"
     },
