@@ -123,7 +123,7 @@ export default function BuscaGlobal() {
         <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center justify-center">
           {!indice && !falha ? (
             <div title="Carregando índice...">
-              <DotsRing size={16} className="text-text-soft" />
+              <DotsRing size={16} className="text-text" />
             </div>
           ) : consulta.length > 0 ? (
             <button

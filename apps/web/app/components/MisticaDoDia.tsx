@@ -25,6 +25,7 @@
 
 import { useEffect, useState } from "react";
 import type { EntradaCalendario } from "@/lib/memoria/tipos";
+import { CampfireColonyAnim } from "@/app/components/CampfireColonyAnim";
 
 interface MisticaCarregada {
   entrada: EntradaCalendario;
@@ -61,41 +62,47 @@ export default function MisticaDoDia() {
   return (
     <aside
       aria-label="Mística do Dia"
-      className="mb-8 rounded-2xl border border-border bg-surface px-5 py-4 sm:px-6"
+      className="mistica-asile mb-8 rounded-2xl border border-border bg-surface px-4 py-3 sm:px-6 sm:py-4 flex items-center gap-3 sm:gap-4"
     >
-      <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
-        Mística do Dia
-      </p>
-      <p className="mt-2 text-[1.02em] text-foreground">
-        {entrada.ano ? (
-          <span className="font-semibold">{entrada.ano}: </span>
-        ) : null}
-        {entrada.titulo}
-      </p>
-      {entrada.resumo ? (
-        <p className="mt-1 text-[.95em] text-text-soft">{entrada.resumo}</p>
-      ) : null}
-      {entrada.semData ? (
-        <p className="mt-1 text-[.8em] text-muted">
-          Fato do calendário sem data no original — exibido para não deixar
-          o dia vazio.
+      {/* Fogueira decorativa à esquerda, alinhada à linha do título. */}
+      <CampfireColonyAnim />
+
+      {/* Conteúdo da mística à direita, começando na mesma altura da peça. */}
+      <div className="min-w-0 flex-1">
+        <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
+          Mística do Dia
         </p>
-      ) : null}
-      <p className="mt-3 text-[.85em] text-muted">
-        <span className="font-semibold">Fonte: </span>
-        {entrada.url ? (
-          <a
-            href={entrada.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-primary"
-          >
-            {abnt}
-          </a>
-        ) : (
-          abnt
-        )}
-      </p>
+        <p className="mt-1 text-[1.02em] text-foreground">
+          {entrada.ano ? (
+            <span className="font-semibold">{entrada.ano}: </span>
+          ) : null}
+          {entrada.titulo}
+        </p>
+        {entrada.resumo ? (
+          <p className="mt-1 text-[.95em] text-text-soft">{entrada.resumo}</p>
+        ) : null}
+        {entrada.semData ? (
+          <p className="mt-1 text-[.8em] text-muted">
+            Fato do calendário sem data no original — exibido para não deixar
+            o dia vazio.
+          </p>
+        ) : null}
+        <p className="mt-2 text-[.85em] text-muted">
+          <span className="font-semibold">Fonte: </span>
+          {entrada.url ? (
+            <a
+              href={entrada.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-primary"
+            >
+              {abnt}
+            </a>
+          ) : (
+            abnt
+          )}
+        </p>
+      </div>
     </aside>
   );
 }

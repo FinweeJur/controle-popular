@@ -12,7 +12,10 @@ import { motion } from "framer-motion";
  * de física. Pedido do dono (19/09/2026), portado de amicro.vercel.app.
  *
  * `size` escalona a geometria do original (48 px: ponto 8 px, origem no
- * centro). Cores via corrente (`bg-current`) para herdar tema claro/escuro.
+ * centro). Cores via `--dotsring-dot-color`: quem chama define o valor.
+ * Quando a variável não existe, cai em `currentColor` — herdando a cor do
+ * texto do tema. Assim o ponto nunca fica invisível por falta de contraste:
+ * basta o container declarar `--dotsring-dot-color` com cor de contraste.
  */
 export function DotsRing({ size = 16, className = "" }: { size?: number; className?: string }) {
   const ponto = size / 6;
@@ -21,18 +24,19 @@ export function DotsRing({ size = 16, className = "" }: { size?: number; classNa
       role="status"
       aria-label="Carregando..."
       className={`relative ${className}`}
-      style={{ width: size, height: size }}
+      style={{ width: size, height: size, color: "var(--dotsring-dot-color, currentColor)" }}
     >
       {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
         <motion.span
           key={i}
-          className="absolute top-0 left-1/2 rounded-full bg-current"
+          className="absolute top-0 left-1/2 rounded-full"
           style={{
             width: ponto,
             height: ponto,
             marginLeft: -ponto / 2,
             transformOrigin: `${ponto / 2}px ${size / 2}px`,
             rotate: i * 45,
+            backgroundColor: "var(--dotsring-dot-color, currentColor)",
           }}
           animate={{ scale: [1, 0.5, 1], opacity: [1, 0.3, 1] }}
           transition={{
