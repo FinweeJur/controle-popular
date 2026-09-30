@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   capitanias,
   fazendasTombadas,
+  listasPopulacao,
   mineracaoProtegida,
   terrasPublicas,
 } from "./camadas";
@@ -39,6 +40,14 @@ describe("camadas históricas (leitura dos GeoJSON publicados)", () => {
       expect(x.ato.length).toBeGreaterThan(0);
       expect(x.url).toContain("iepha");
     }
+  });
+
+  it("listas nominativas: índice do APM com local, data e link", () => {
+    const l = listasPopulacao();
+    expect(l.length).toBeGreaterThan(300);
+    // Nem todo local resolve em município — a lacuna é informação e o teste a aceita.
+    expect(l.some((x) => x.municipio)).toBe(true);
+    for (const x of l.slice(0, 20)) expect(x.url).toContain("siaapm");
   });
 
   it("mineração em área protegida: dois agregados com total", () => {

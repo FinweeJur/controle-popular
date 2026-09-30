@@ -8,6 +8,7 @@ import { localDaEntrada } from "@/lib/memoria/locais";
 import {
   capitanias,
   fazendasTombadas,
+  listasPopulacao,
   mineracaoProtegida,
   terrasPublicas,
   type AgregadoProtegido,
@@ -48,6 +49,7 @@ export default function PaginaHistoria() {
   const caps = capitanias();
   const fazendas = fazendasTombadas();
   const terras = terrasPublicas();
+  const listas = listasPopulacao();
   const protegidas = mineracaoProtegida();
 
   const revoltas = CALENDARIO_LUTAS.flatMap((e) => {
@@ -77,6 +79,9 @@ export default function PaginaHistoria() {
   const linhasTerras: LinhaHistoria[] = terras.map((t) => ({
     notacao: t.notacao, municipio: t.municipio, periodo: t.periodo, titulo: t.titulo, url: t.url,
   }));
+  const linhasListas: LinhaHistoria[] = listas.map((l) => ({
+    local: l.local, municipio: l.municipio ?? "—", data: l.data, notacao: l.notacao, url: l.url,
+  }));
 
   const colunasCaps: ColunaHistoria[] = [
     { chave: "nome", rotulo: "Capitania" },
@@ -104,6 +109,13 @@ export default function PaginaHistoria() {
     { chave: "municipio", rotulo: "Município" },
     { chave: "periodo", rotulo: "Período" },
     { chave: "titulo", rotulo: "Registro" },
+    { chave: "url", rotulo: "Fonte", tipo: "link" },
+  ];
+  const colunasListas: ColunaHistoria[] = [
+    { chave: "local", rotulo: "Local (como no documento)" },
+    { chave: "municipio", rotulo: "Município (IBGE)" },
+    { chave: "data", rotulo: "Data" },
+    { chave: "notacao", rotulo: "Notação" },
     { chave: "url", rotulo: "Fonte", tipo: "link" },
   ];
 
@@ -145,6 +157,7 @@ export default function PaginaHistoria() {
         <Cartao valor={revoltas.length.toLocaleString("pt-BR")} rotulo="revoltas com lugar identificado" />
         <Cartao valor={fazendas.length.toLocaleString("pt-BR")} rotulo="conjuntos rurais tombados (IEPHA)" />
         <Cartao valor={terras.length.toLocaleString("pt-BR")} rotulo="registros de terras públicas (APM)" />
+        <Cartao valor={listas.length.toLocaleString("pt-BR")} rotulo="listas nominativas (1838-1840)" />
         <Cartao valor={totalUC.toLocaleString("pt-BR")} rotulo="polígonos de mineração em UC" />
         <Cartao valor={totalQuil.toLocaleString("pt-BR")} rotulo="polígonos de mineração em quilombo" />
       </section>
@@ -189,6 +202,16 @@ export default function PaginaHistoria() {
         />
       ) : <Vazio>Sem a camada de terras públicas.</Vazio>}
 
+      {listas.length ? (
+        <TabelaHistoria
+          titulo="Listas nominativas (1838-1840) — APM"
+          nota="a fonte primária da população da província, incluindo a escravizada; o acervo cataloga o documento, não a contagem"
+          colunas={colunasListas}
+          linhas={linhasListas}
+          nomeCsv="historia-listas-nominativas"
+        />
+      ) : <Vazio>Sem o índice de listas nominativas.</Vazio>}
+
       <section aria-label="Mineração em área protegida" className="rounded-2xl border border-border bg-surface-2 p-5">
         <h2 className="text-xl font-semibold">Mineração detectada em área protegida</h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
@@ -225,6 +248,7 @@ export default function PaginaHistoria() {
           {[
             ["hist-capitanias", "Capitanias hereditárias (1534)"],
             ["hist-revoltas", "Revoltas e lutas com lugar"],
+            ["hist-listas-populacao", "Listas nominativas (1838-1840)"],
             ["hist-terras-publicas", "Terras públicas do Império"],
             ["hist-fazendas-engenhos", "Fazendas históricas tombadas"],
             ["mineracao-em-uc", "Mineração detectada em UC"],
@@ -249,6 +273,7 @@ export default function PaginaHistoria() {
           <li><strong>Revoltas:</strong> verbetes do acervo de memória do portal, com lugar pelo gazetteer curado; a fonte de cada fato está no verbete.</li>
           <li><strong>Fazendas:</strong> IEPHA-MG — bens culturais tombados (conjuntos rurais).</li>
           <li><strong>Terras públicas:</strong> Arquivo Público Mineiro (SIAAPM), Repartição Especial das Terras Públicas.</li>
+          <li><strong>Listas nominativas:</strong> Arquivo Público Mineiro (SIAAPM), Coleção Mapas de População (1838-1840) — a fonte primária da população, incluindo a escravizada.</li>
           <li><strong>Mineração:</strong> Monitor da Mineração (MapBiomas) × ANM/SIGMINE, cruzada com CNUC e INCRA por centroide.</li>
         </ul>
         <p className="mt-3 text-text-soft">
