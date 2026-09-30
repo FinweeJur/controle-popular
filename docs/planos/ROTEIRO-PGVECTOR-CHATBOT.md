@@ -28,11 +28,13 @@ persistente (não depende do Ollama estar de pé para indexar), escala além
 dos pedaços atuais, consultas híbridas no banco e o degrau 3 servido em
 produção.
 
-> ⚠️ **Atualização 30/09/2026:** a Neon saiu de cena (o app aponta para o
-> Postgres do Guara) e a extensão `vector` **não está disponível no Guara**.
-> O caminho ativo é índice em memória + cobertura do acervo — ver
-> [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook fica para
-> quando houver Postgres com pgvector.
+> ⚠️ **Atualização 30/09/2026:** confirmado no CLI do Guara — o catálogo
+> `postgres` **não oferece variante pgvector**, e a extensão `vector` não
+> existe em `pg_available_extensions` do banco atual (tem `postgis`,
+> `pg_trgm` e `unaccent`). Alternativa gerenciada no catálogo: **Qdrant**
+> (banco vetorial). O caminho ativo é índice em memória + cobertura do
+> acervo — ver [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook
+> fica para quando/se houver pgvector.
 
 ## Quando roda
 

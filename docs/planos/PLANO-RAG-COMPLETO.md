@@ -185,8 +185,8 @@ silencioso.
 | **R1 — bases catalogadas** | catálogo curado (`/api/v1/bases`) no RAG | ✅ 30/09 |
 | **R2 — inventário medido** | gerador + `bases-portal.json` no RAG | ✅ 30/09 |
 | **R3 — ligar degrau 3** | chaves no ambiente do Guara (runtime) | ✅ 30/09 (já configuradas; ver `guara env list`) |
-| **R4 — golden set** | 20 perguntas de fumaça + medição de abstenção | 🚧 |
-| **R5 — pgvector** | persistência do índice | ⛔ bloqueada (Guara sem `vector`) |
+| **R4 — golden set** | perguntas de fumaça + medição de abstenção | ✅ 30/09 (`lib/assistente/golden-set.ts`, 22 casos) |
+| **R5 — pgvector** | persistência do índice | ⛔ pgvector indisponível no Guara; alternativa gerenciada é o **Qdrant** |
 
 ## Executado em 30/09/2026
 
@@ -201,6 +201,19 @@ silencioso.
   memória municipal).
 - Verificado no Guara: as chaves de geração e de embeddings já estão no
   ambiente (R3 pronto). Falta medir a qualidade (R4).
+- **R4 — golden set** em `lib/assistente/golden-set.ts` (22 casos: 18 de
+  fonte, 4 de abstenção) + `golden-set.test.ts`, rodando em modo lexical.
+  O golden set revelou um defeito real: pergunta fora do escopo **não
+  abstinha** ("receita de bolo de cenoura" casava o orçamento do
+  Judiciário). Correção: `similaridade.ts` ganhou peso **IDF** e as
+  palavras de pergunta entraram nas stopwords; `rag.ts` subiu o piso de
+  abstenção do modo só-lexical para 0,45 (o híbrido segue em 0,10).
+- **R5 — investigado no CLI do Guara (30/09):** o catálogo `postgres` **não
+  oferece variante pgvector**, e a extensão `vector` não aparece em
+  `pg_available_extensions` do banco atual (tem `postgis`, `pg_trgm`,
+  `unaccent`). O catálogo oferece **Qdrant** (banco vetorial) como
+  alternativa gerenciada — é o caminho se um dia o índice precisar ser
+  persistente.
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 ## Riscos e métricas

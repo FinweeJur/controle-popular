@@ -73,14 +73,19 @@ export function ranquearPorSimilaridade<T>(
     .sort((x, y) => y.score - x.score);
 }
 
-// Stopwords do português — sem acento (o token já foi normalizado). A lista
-// é curta de propósito: só o que polui a sobreposição lexical sem carregar
-// significado ("de", "para", "que"); palavra curta demais cai pelo filtro
-// de tamanho, não pela lista.
+// Stopwords do português — sem acento (o token já foi normalizado). Inclui
+// as palavras de pergunta ("qual", "quem", "onde", "quanto"...) porque elas
+// aparecem em quase todo pedaço do acervo e, sem removê-las, a sobreposição
+// lexical marca pergunta fora do escopo como relevante (medido: "receita de
+// bolo de cenoura" casava a página de orçamento). A lista é curta de
+// propósito: só o que polui a sobreposição sem carregar significado.
 const STOPWORDS_PT = new Set([
   "de", "da", "do", "das", "dos", "em", "e", "para", "por", "com", "que",
   "como", "no", "na", "nos", "nas", "ao", "aos", "um", "uma", "uns", "umas",
   "pelo", "pela", "pra", "pro", "se", "sobre", "entre", "ate", "mais",
+  "qual", "quais", "quem", "quando", "onde", "quanto", "quantos", "quantas",
+  "porque", "pois", "foi", "sao", "ser", "esta", "estao", "tem", "ha",
+  "quero", "saber", "dizer", "fale", "conte", "veja", "ver",
 ]);
 
 /**
@@ -131,8 +136,18 @@ const TERMOS_CHAVE_BOOST = new Set([
  *
  * Combina Recall de termos da pergunta (70%) com Jaccard de tokens (30%),
  * radicalização leve de termos e boost para números e siglas cívicas.
+ *
+ * `pesoToken` opcional dá o peso IDF de cada termo da pergunta (termo comum
+ * no acervo pesa menos; termo raro pesa mais). Sem ele, a métrica é a
+ * contagem simples — compatível com quem chama a função fora do índice
+ * (ex.: testes). Com ele, é o que impede uma pergunta fora do escopo de
+ * pontuar alto por causa de uma palavra comum como "receita".
  */
-export function similaridadeLexical(a: string, b: string): number {
+export function similaridadeLexical(
+  a: string,
+  b: string,
+  pesoToken?: (t: string) => number
+): number {
   const tokensA = tokensDe(a);
   const tokensB = tokensDe(b);
   if (tokensA.length === 0 || tokensB.length === 0) return 0;
@@ -141,15 +156,19 @@ export function similaridadeLexical(a: string, b: string): number {
   const setTokensB = new Set(tokensB);
 
   let intersecao = 0;
+  let pesoCasado = 0;
+  let pesoTotal = 0;
   let boostTotal = 0;
 
   for (const t of tokensA) {
-    const s = stemPt(t);
+    const peso = pesoToken ? pesoToken(t) : 1;
+    pesoTotal += peso;
     // Casamento exato ou por radical (stemming)
-    const casou = setTokensB.has(t) || stemsB.has(s) || tokensB.some(tb => (tb.length >= 4 && t.length >= 4 && (tb.startsWith(t.slice(0, 4)) || t.startsWith(tb.slice(0, 4)))));
+    const casou = setTokensB.has(t) || stemsB.has(stemPt(t)) || tokensB.some(tb => (tb.length >= 4 && t.length >= 4 && (tb.startsWith(t.slice(0, 4)) || t.startsWith(tb.slice(0, 4)))));
     
     if (casou) {
       intersecao++;
+      pesoCasado += peso;
       if (TERMOS_CHAVE_BOOST.has(t) || /^\d+$/.test(t)) {
         boostTotal += 0.08;
       }
@@ -158,13 +177,16 @@ export function similaridadeLexical(a: string, b: string): number {
 
   if (intersecao === 0) return 0;
 
-  // Recall ponderado: proporção de termos da pergunta encontrados no texto
-  const recallPergunta = intersecao / tokensA.length;
+  // Recall: proporção (ponderada por IDF, quando há) dos termos da pergunta
+  // encontrados no texto.
+  const recall = pesoToken
+    ? (pesoTotal > 0 ? pesoCasado / pesoTotal : 0)
+    : intersecao / tokensA.length;
   // Jaccard sobreposição
   const jaccard = intersecao / (tokensA.length + tokensB.length - intersecao);
 
   // Score composto (0 a 1)
-  const scoreBase = 0.70 * recallPergunta + 0.30 * jaccard;
+  const scoreBase = 0.70 * recall + 0.30 * jaccard;
   const scoreComBoost = Math.min(1.0, scoreBase + boostTotal);
 
   return scoreComBoost;

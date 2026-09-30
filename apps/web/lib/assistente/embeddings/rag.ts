@@ -31,7 +31,7 @@ import { montarAcervo, frenteDaRota, type AcervoFonte } from "../acervo";
 import { verificarCitacao, rotuloVerificacao } from "../verificador-citacao";
 import { vetorizar, vetorizarLote, ollamaDisponivel, OllamaIndisponivel } from "./ollama";
 import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto } from "./remoto";
-import { similaridadeCosseno, similaridadeLexical } from "./similaridade";
+import { similaridadeCosseno, similaridadeLexical, tokensDe } from "./similaridade";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { temChaveRemota } from "./provedores";
 
@@ -40,6 +40,13 @@ export type { RespostaRag, FonteRag };
 const TOP_K_PADRAO = 3;
 /** Abaixo disso o top-1 é ruído — abstém (regra "não sei honesto"). */
 const LIMIAR_ABSTENCAO_PADRAO = 0.10;
+/**
+ * Piso de abstenção no modo SÓ-LEXICAL (sem embeddings): o ranking lexical é
+ * mais cru e superestima pergunta fora do escopo por causa de palavra comum.
+ * Medido no golden set (R4, 30/09/2026): perguntas fora do escopo param em
+ * ~0,40 e as dentro do escopo ficam acima de ~0,50 — daí o piso em 0,45.
+ */
+const LIMIAR_ABSTENCAO_LEXICAL = 0.45;
 const PESO_COSSENO = 0.6;
 const PESO_LEXICAL = 0.4;
 const MAX_TENTATIVAS = 2;
@@ -62,6 +69,25 @@ export interface OpcoesRag {
 interface IndiceAcervo {
   fontes: AcervoFonte[];
   vetores: number[][];
+  /** Peso IDF de cada termo, calculado sobre o acervo. */
+  pesoToken: (t: string) => number;
+}
+
+/**
+ * Peso IDF por termo, sobre o acervo inteiro: termo que aparece em muitos
+ * pedaços pesa menos, termo raro pesa mais. É o que impede uma pergunta fora
+ * do escopo de pontuar alto por causa de uma palavra comum ("receita",
+ * "cidade"). Calculado uma vez por índice.
+ */
+function construirPesoToken(fontes: AcervoFonte[]): (t: string) => number {
+  const df = new Map<string, number>();
+  for (const f of fontes) {
+    const unicos = new Set(tokensDe(`${f.titulo} ${f.texto}`));
+    for (const t of unicos) df.set(t, (df.get(t) ?? 0) + 1);
+  }
+  const N = fontes.length || 1;
+  const padrao = Math.log(1 + N);
+  return (t: string) => (df.has(t) ? Math.log(1 + N / (1 + df.get(t)!)) : padrao);
 }
 
 /** Índice vetorial do acervo em memória — indexar custa rede; cache do módulo. */
@@ -108,7 +134,7 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
     // concatenar por lote mantém o índice alinhado às fontes.
     vetores.push(...(await vetorizarTextos(lote, TIMEOUT_INDEXACAO_MS)));
   }
-  indiceEmMemoria = { fontes, vetores };
+  indiceEmMemoria = { fontes, vetores, pesoToken: construirPesoToken(fontes) };
   return indiceEmMemoria;
 }
 
@@ -125,7 +151,7 @@ async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boo
   if (!temChaveEmbed() && !(await ollamaDisponivel())) {
     const fontes = montarAcervo();
     return {
-      indice: { fontes, vetores: fontes.map(() => []) },
+      indice: { fontes, vetores: fontes.map(() => []), pesoToken: construirPesoToken(fontes) },
       soLexical: true,
     };
   }
@@ -134,7 +160,7 @@ async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boo
   } catch {
     const fontes = montarAcervo();
     return {
-      indice: { fontes, vetores: fontes.map(() => []) },
+      indice: { fontes, vetores: fontes.map(() => []), pesoToken: construirPesoToken(fontes) },
       soLexical: true,
     };
   }
@@ -171,7 +197,11 @@ export async function buscarNoAcervo(
       const cosseno = soLexical
         ? 0
         : similaridadeCosseno(vetorPergunta, indice.vetores[i]);
-      let lexical = similaridadeLexical(pergunta, `${fonte.titulo} ${fonte.texto}`);
+      let lexical = similaridadeLexical(
+        pergunta,
+        `${fonte.titulo} ${fonte.texto}`,
+        indice.pesoToken
+      );
       
       // Boost de afinidade com a rota ou frente da tela onde o usuário está
       if (pathname && pathname.length > 0) {
@@ -194,7 +224,7 @@ export async function buscarNoAcervo(
 
   const k = topK ?? TOP_K_PADRAO;
   const melhores = ranqueados.slice(0, k);
-  const limiarReal = limiar ?? LIMIAR_ABSTENCAO_PADRAO;
+  const limiarReal = limiar ?? (soLexical ? LIMIAR_ABSTENCAO_LEXICAL : LIMIAR_ABSTENCAO_PADRAO);
   const abstem = melhores.length === 0 || melhores[0].score < limiarReal;
   return { melhores, abstem };
 }

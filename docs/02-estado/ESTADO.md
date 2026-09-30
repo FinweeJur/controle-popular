@@ -180,6 +180,12 @@ Runbooks: [`planos/`](../planos/).
 - Correção de rota: o RAG é **em memória**, no alvo **Guara**; **não** usa
   pgvector/Neon. Plano corrigido em
   [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+- **R4:** golden set em `lib/assistente/golden-set.ts` (22 casos) e correção
+  da abstenção no modo lexical (peso IDF + palavras de pergunta nas
+  stopwords + piso 0,45). Sem isso, "receita de bolo" casava orçamento.
+- **R5:** investigado no CLI do Guara — o catálogo **não tem pgvector**; a
+  extensão `vector` não existe no banco (tem postgis/pg_trgm/unaccent). A
+  alternativa gerenciada é o **Qdrant**.
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 **30/09/2026** — F3 da memória: a camada município, com fonte local fechada.
