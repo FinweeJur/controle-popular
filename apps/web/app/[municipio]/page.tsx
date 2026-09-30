@@ -9,6 +9,7 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
 import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelular";
+import CartaoMemoria from "@/app/[municipio]/components/CartaoMemoria";
 import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
@@ -28,6 +29,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { memoriaDaCidade } from "@/lib/memoria-cidades";
+import { CAMADAS_MEMORIA, resolverMemoria } from "@/lib/memoria";
 import {
   getVereadores,
   getRankingVereadores,
@@ -298,6 +300,11 @@ export default async function HomePage({
   // cartão renderiza só a cultura — cidade sem fonte confirmada nunca ganha
   // marco inventado para enfeitar cartão.
   const memoria = memoriaDaCidade(cidade.slug);
+  // F5 — cartão-carimbo v2: desce a escada da memória (município → UF →
+  // região → país) pelo código IBGE. Sempre há ao menos o degrau país, então
+  // toda cidade ganha contexto com fonte; o cartão rotula o degrau e declara
+  // a lacuna municipal quando for o caso (ver CartaoMemoria.tsx).
+  const resultadoMemoria = resolverMemoria(cidade.id_municipio, CAMADAS_MEMORIA);
   const coberturaTelefonia = obterCoberturaTelefonia(cidade.id_municipio);
 
   return (
@@ -409,28 +416,17 @@ export default async function HomePage({
       </div>
 
       <main className="mx-auto flex max-w-5xl flex-col gap-14 px-4 py-14 sm:px-8">
-        {/* JÁ ACONTECEU AQUI — ⟲ 02/09, copy v6: a cidade entra pela
-            memória e pela cultura, não pelo número. `memoria.memoria` só
-            renderiza com fonte local fechada (`lib/memoria-cidades.ts`);
-            a cultura renderiza sempre. */}
-        {memoria ? (
-          <section
-            aria-label="Memória e cultura da cidade"
-            className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
-          >
-            <span className="text-[.82em] font-semibold tracking-wide text-primary uppercase">
-              Já aconteceu aqui
-            </span>
-            {memoria.memoria ? (
-              <p className="mt-2 text-[.98em] font-medium text-text">{memoria.memoria}</p>
-            ) : null}
-            <p className="mt-2 text-[.95em] text-text-soft">{memoria.cultura}</p>
-            <p className="mt-3 text-[.92em] text-text-soft">
-              A cidade que já fez história agora tem painel: contratos, diário
-              oficial e câmara, na tela.
-            </p>
-          </section>
-        ) : null}
+        {/* JÁ ACONTECEU AQUI — v2 (F5): a cidade entra pela memória e pela
+            cultura, não pelo número. `memoriaLocal` (copy das seis cidades
+            de `memoria-cidades.ts`) só entra com fonte local fechada; sem
+            ela, o cartão mostra o marco da camada mais específica (estado,
+            região ou país), ROTULADO e com a ressalva da lacuna. Ver
+            `CartaoMemoria.tsx`. */}
+        <CartaoMemoria
+          resultado={resultadoMemoria}
+          memoriaLocal={memoria?.memoria ?? null}
+          cultura={memoria?.cultura ?? null}
+        />
 
         {/* DIÁLOGO ENTRE FRENTES (Painéis-sanfona) */}
         <PainelDialogo
