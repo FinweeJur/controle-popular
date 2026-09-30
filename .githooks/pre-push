@@ -51,3 +51,19 @@ for CHECADOR in "$RAIZ/scripts/checar-dado-pessoal.py" \
     fi
     "$PY" "$CHECADOR"
 done
+
+# ── Segredos (gitleaks) — best-effort ───────────────────────────────────────
+# Irmão do checador de CPF: aqui a caça é CHAVE/token, não dado pessoal. Roda
+# só se o binário existir (não impõe instalação); a CI garante a checagem de
+# qualquer forma (`.github/workflows/scan-segredos.yml`). Config: `.gitleaks.toml`.
+if command -v gitleaks >/dev/null 2>&1; then
+    echo "pre-push: varrendo segredos com gitleaks..."
+    if ! gitleaks detect --no-git --source "$RAIZ" --redact --no-banner \
+            --config "$RAIZ/.gitleaks.toml"; then
+        echo "⛔ pre-push: gitleaks achou possível SEGREDO. Revise antes de subir."
+        echo "   Falso positivo? ajuste o allowlist em .gitleaks.toml."
+        exit 1
+    fi
+else
+    echo "ℹ️  pre-push: gitleaks não instalado — scan de segredo fica só na CI."
+fi

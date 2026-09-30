@@ -1,0 +1,36 @@
+# Configuração do gitleaks — scanner de SEGREDO no git.
+#
+# Papel no portal: o `.githooks/pre-push` e o `scripts/checar-dado-pessoal*.py`
+# já barram CPF; o gitleaks cobre a OUTRA família — chave de API, token, senha
+# de banco — no código e na configuração. São guardas complementares: uma olha
+# dado pessoal, a outra olha credencial.
+#
+# Roda em duas camadas: no hook local (best-effort, se `gitleaks` estiver
+# instalado) e na CI (`.github/workflows/scan-segredos.yml`). Ver AGENTS § 5.8.
+#
+# Uso local:
+#   gitleaks detect --redact --no-banner        # varre o histórico
+#   gitleaks protect --staged --no-banner       # só o que está staged
+
+title = "Controle Popular"
+
+[extend]
+# Mantém o conjunto de regras do próprio gitleaks (chaves AWS/GCP/Slack,
+# tokens genéricos, chaves privadas etc.).
+useDefault = true
+
+[allowlist]
+description = "Ruído esperado do repositório — não são segredos reais."
+paths = [
+  # Lockfiles trazem hashes de integridade, não segredos.
+  '''package-lock\.json$''',
+  '''pnpm-lock\.yaml$''',
+  # Vendor minificado e bundles de documentação (Swagger UI) no servidor estático.
+  '''apps/web/public/.*\.min\.js$''',
+  '''apps/web/public/api/docs/.*\.js$''',
+  # Dado versionado é dado público já sanitizado pela varredura de CPF;
+  # qualquer segredo aqui já seria outra falha, tratada no `bot-seguranca-merge`.
+  '''apps/web/data/.*\.json$''',
+  # Documentos históricos citam exemplos e trechos de config antigos.
+  '''docs/historico/''',
+]
