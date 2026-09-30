@@ -400,6 +400,16 @@ export default function TopNav() {
           >
             <Bell size={14} aria-hidden="true" className="text-primary" />
           </Link>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("abrir-paleta-comandos"))}
+            className="hidden sm:flex items-center gap-1.5 rounded-md border border-border px-2 py-1 text-xs font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+            aria-label="Abrir busca rápida (Ctrl K)"
+            title="Busca rápida (Ctrl+K)"
+          >
+            <Search size={13} aria-hidden="true" />
+            <kbd className="font-mono text-[10px] opacity-70">Ctrl K</kbd>
+          </button>
           <OuvirNavbar />
           <Link
             href="/busca"

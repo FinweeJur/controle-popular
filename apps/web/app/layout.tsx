@@ -11,6 +11,7 @@ import { clashDisplay, generalSans, tabular } from "@/app/fonts";
 import OuvirPagina from "@/app/components/OuvirPagina";
 import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
+import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { BackToTop } from "@/app/components/BackToTop";
 import PlayerRadio from "@/app/components/PlayerRadio";
@@ -205,6 +206,9 @@ export default function RootLayout({
               {children} porque precisa estar ACIMA dos headers de zona (que
               deixaram de ser fixos — ver `TopNav.tsx` e os layouts de zona). */}
           <TopNav />
+          {/* Paleta de comandos global (Ctrl/Cmd+K): ir, perguntar e buscar
+              num só atalho. Ver `PaletaComandos.tsx`. */}
+          <PaletaComandos />
           {children}
           {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
               <main> (inclusive /busca e /funcaosocialterra, que não usam o
