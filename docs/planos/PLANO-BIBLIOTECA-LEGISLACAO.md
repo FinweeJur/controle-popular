@@ -18,6 +18,7 @@
 - [As seis qualidades aplicadas](#as-seis-qualidades-aplicadas)
 - [Integração com o portal](#integração-com-o-portal)
 - [Fases de execução](#fases-de-execução)
+- [Status da F1](#status-da-f1)
 - [Regras editoriais e privacidade](#regras-editoriais-e-privacidade)
 - [Riscos e armadilhas](#riscos-e-armadilhas)
 - [Decisões registradas](#decisões-registradas)
@@ -172,6 +173,32 @@ sem quebrar o que a tela usa hoje. Campos-alvo por norma:
 
 Cada fase fecha com suíte e `tsc` verdes, cobertura **medida** e lacuna
 declarada.
+
+## Status da F1
+
+Iniciada em 30/09/2026 — primeiro código do plano, sem acervo gravado ainda.
+
+- **Núcleo puro:** [nucleo.ts](../../apps/web/lib/legislacao-municipal/nucleo.ts)
+  (parser do SAPL, dedup, `robots.txt`) e
+  [cidades.ts](../../apps/web/lib/legislacao-municipal/cidades.ts) — **12
+  câmaras de MG** confirmadas ao vivo (Contagem, Montes Claros, Divinópolis,
+  Sete Lagoas, Teófilo Otoni, Sabará, Varginha, Patos de Minas, Araguari,
+  Muriaé, Ubá, Conselheiro Lafaiete). Testes em `nucleo.test.ts`.
+- **Bot:** [coletor-legislacao-municipal.mts](../../bots/coletor-legislacao-municipal.mts).
+- **Ritmo (decisão registrada):** o `robots.txt` destas câmaras pede
+  `Crawl-delay: 60`. O bot lê o delay do próprio arquivo e o usa por padrão;
+  `--pausa` reduz, com aviso e registro no `meta` (`crawlDelayRobots`,
+  `pausaEfetiva`). Em 403/429, para.
+- **Ollama (fase seguinte):** `--enriquecer-ollama` classifica temas/tags e
+  resume via Ollama local. Sem a flag, `temas`/`tags` ficam vazios e `resumo`
+  fica `null` — lacuna declarada.
+- **Medido em sondagem** contra Contagem/2026: `page_size` máximo é 100,
+  `limit` é ignorado, e o ano tem 52 páginas (~5.187 matérias). A gravação
+  real é rodada operacional no `home-pc`, respeitando o delay.
+
+O que a F1 ainda deve: rodar o bot de fato, cobrir o **Plano B** onde a
+câmara não publica, e carregar o JSON em `ambiental_legislacao`
+(`esfera='municipal'`).
 
 ## Regras editoriais e privacidade
 

@@ -16,6 +16,26 @@ Verifica inconsistências entre fontes primárias e secundárias:
 npx tsx bots/verifica-dados.mts --limiar 0.01
 ```
 
+### `coletor-legislacao-municipal.mts`
+**Coletor de legislação municipal (biblioteca de leis)**
+
+Traz as matérias legislativas das câmaras com API aberta (SAPL) para
+`apps/web/data/legislacao-municipal/`, no shape de `ambiental_legislacao`
+com `esfera='municipal'`. Lê o `robots.txt` da câmara e respeita o
+`Crawl-delay` declarado. Plano:
+[`PLANO-BIBLIOTECA-LEGISLACAO.md`](../docs/planos/PLANO-BIBLIOTECA-LEGISLACAO.md).
+
+```bash
+# Sondagem (não grava) — 1 página de Contagem/2026
+npx tsx bots/coletor-legislacao-municipal.mts --sondar --cidade contagem --ano 2026 --paginas 1
+
+# Coleta real de uma cidade
+npx tsx bots/coletor-legislacao-municipal.mts --cidade contagem --ano 2026
+
+# Classificar temas/tags e resumir via Ollama local (fase seguinte)
+npx tsx bots/coletor-legislacao-municipal.mts --cidade contagem --enriquecer-ollama
+```
+
 ### `notifica-telegram.mts`
 **Notificação automática ao Telegram**
 
