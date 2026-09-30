@@ -15,6 +15,7 @@
 - [Parte 1 — camada de dados (lib/db)](#parte-1--camada-de-dados-libdb)
 - [Parte 2 — assistente (lib/assistente)](#parte-2--assistente-libassistente)
 - [Parte 3 — cidades (lib/betim)](#parte-3--cidades-libbetim)
+- [Parte 4 — rotas que leem banco (app/)](#parte-4--rotas-que-leem-banco-app)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -226,6 +227,49 @@ propósito, para não arrastar a cadeia do banco para o bundle.
    `ok:false` explícito na degradação; a legislação municipal só com
    `.gov.br` como "encontrado".
 
+## Parte 4 — rotas que leem banco (app/)
+
+A superfície é grande: **102 arquivos de `app/` importam `lib/db`**. A maior
+parte é Server Component pré-renderizado (o dado vem do build). O que importa
+na revisão de rota é: **payload**, **teto do Worker** e **o que é público de
+verdade**.
+
+| Peça | Papel |
+|---|---|
+| `*.din.ts` (22 rotas) | Só existem no alvo Cloudflare (rota dinâmica no request); no Guara, `next start`/`next dev`. |
+| `app/api/chatbot` | RAG do Seu Nonô (ver Parte 2). |
+| `app/api/telegram` | Webhook do bot (menus, callbacks). |
+| `app/api/v1/bases` | Catálogo público de bases, CORS `*` (dado público, ok). |
+| `app/api/dados-resumidos` | Agregados para o assistente. |
+| `app/api/pageview`, `contador`, `pedido-dados` | Escritas públicas no D1, com `ipDoCliente` + `lib/rate-limit`. |
+
+### Achados da Parte 4
+
+1. ✅ **IP do cliente no chatbot — corrigido.** `app/api/chatbot/route.ts`
+   extraía o IP inline (`cf-connecting-ip ?? x-forwarded-for[0] ?? 127.0.0.1`),
+   sem o `x-real-ip` e sem a documentação do motivo. Agora usa `ipDoCliente`
+   (`lib/rate-limit-ip.ts`), o mesmo das rotas `.din.ts` — o XFF cru é
+   falsificável. (Consolida na camada de rota o achado 2 da Parte 2.)
+
+2. ⚠️ **Webhook do Telegram é fail-open sem `TELEGRAM_WEBHOOK_SECRET`.** A
+   rota só confere o `x-telegram-bot-api-secret-token` **se** a env existir
+   (`if (secret && secretHeader !== secret)`). A env não aparece em nenhum
+   `.env.example` nem doc — ou seja, hoje a porta provavelmente aceita
+   qualquer POST, que pode fazer o bot responder a chats arbitrários.
+   **Recomendação:** definir `TELEGRAM_WEBHOOK_SECRET` e tornar a rota
+   fail-closed. Não mudei o código: a correção depende do segredo no deploy.
+
+3. 🔸 **`dados-resumidos` lê o banco com `getDb()` direto** (sem
+   `comBancoReserva`) e sem rate limit; devolve `e.message` no 500. Baixo
+   risco (agregado barato), mas fora do padrão da casa.
+
+4. 🔸 **`dangerouslySetInnerHTML` contabilizado** em toda a `app/`: JSON-LD
+   (constantes/`JSON.stringify` de dado controlado), notícias (HTML autoral) e
+   `relevanciaHtml` (sanitizado no ingestor). Nenhum caminho não confiável
+   hoje — mas é o ponto a vigiar quando entrar fonte externa.
+
+5. ✅ **Superfície mínima:** sem `middleware.ts`; `v1/bases` só dado público.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -268,7 +312,7 @@ Próximas micro-partes, por risco e retorno:
 |---|---|---|
 | 1 | ✅ `lib/assistente/` (RAG do Seu Nonô) | Feita — Parte 2 deste doc: prompt, abstenção e blindagem. |
 | 2 | ✅ `lib/betim/` | Feita — Parte 3 deste doc: fronteira de payload, três cabeçalhos e dois reads fora da reserva. |
-| 3 | `app/` — rotas que leem banco | Payload, teto do Worker, `.din.ts`. |
+| 3 | ✅ `app/` — rotas que leem banco | Feita — Parte 4: IP do chatbot, webhook do Telegram, payload. |
 | 4 | `scripts/` — coletores e ETL | Rate limit, User-Agent honesto, `robots.txt`. |
 | 5 | `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Frentes com cálculo próprio. |
 | 6 | `app/components/` | Acessibilidade (leitor sob estresse). |

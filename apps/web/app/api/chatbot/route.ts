@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { responderComRag, type RespostaRag } from "@/lib/assistente/embeddings/rag";
 import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
 import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
+import { ipDoCliente } from "@/lib/rate-limit-ip";
 
 /**
  * Limitador de taxa em memória por IP (Token Bucket) para proteção anti-DoS.
@@ -55,11 +56,10 @@ function verificarLimite(ip: string): boolean {
  * caindo para Ollama quando nao ha chave.
  */
 export async function POST(req: Request): Promise<Response> {
-  // Extrai IP cliente (via Cloudflare CF-Connecting-IP, X-Forwarded-For ou fallback)
-  const ip =
-    req.headers.get("cf-connecting-ip") ??
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    "127.0.0.1";
+  // IP do cliente pelo cabeçalho que a Cloudflare seta na borda
+  // (`lib/rate-limit-ip.ts`). NÃO ler `x-forwarded-for` cru: o cliente pode
+  // mandá-lo e a borda o repassa, então o primeiro valor é falsificável.
+  const ip = ipDoCliente(req);
 
   if (!verificarLimite(ip)) {
     return NextResponse.json(
