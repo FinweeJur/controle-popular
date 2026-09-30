@@ -41,12 +41,12 @@ export interface CoberturaEua {
  * Evita carregar os arrays de dados no servidor apenas para exibir totais nos cartões.
  */
 export const COBERTURA_EUA: CoberturaEua = {
-  dataMedicao: "2026-09-29",
-  empresasSecCatalogadas: 10,
-  registrosAmbientais: 5,
-  contratosEconomia: 3,
-  registrosInstitucionais: 6,
-  totalRegistros: 24,
+  dataMedicao: "2026-09-30",
+  empresasSecCatalogadas: 18,
+  registrosAmbientais: 9,
+  contratosEconomia: 7,
+  registrosInstitucionais: 10,
+  totalRegistros: 44,
   barragensHighHazardNid: 15600,
   cidadesPolo: 2,
 } as const;
