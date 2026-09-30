@@ -8,11 +8,9 @@
  * substitui. `CF-Connecting-IP` só existe se a requisição realmente veio
  * pela borda da Cloudflare, que o cliente não alcança para sobrescrever.
  *
- * ⚠️ DUPLICADO DE PROPÓSITO: `lib/chat-comum.ts` está sendo corrigido para
- * o mesmo `CF-Connecting-IP` em paralelo, por outro agente, no mesmo
- * commit-window — editá-lo aqui colidiria. TODO depois do merge dos dois:
- * unificar esta função com a de lá num só lugar (ela hoje só existe em
- * `responderAssistente`, inline).
+ * Esta é a FONTE ÚNICA da ordem dos cabeçalhos. `lib/chat-comum.ts`
+ * (`ipDoVisitante`) delega para cá, trocando só o sentinela de "sem cabeçalho"
+ * para `"anon"` — a unificação que o TODO anterior pedia, feita em 30/09/2026.
  */
 export function ipDoCliente(request: Request): string {
   const cfIp = request.headers.get("cf-connecting-ip");

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { ipDoCliente } from "./rate-limit-ip";
 
 /**
  * Núcleo compartilhado do assistente das três zonas.
@@ -31,31 +32,20 @@ const LIMITE_POR_JANELA = 20;
 const acessos = new Map<string, number[]>();
 
 /**
- * IP do visitante para o rate limit — não é `X-Forwarded-For`.
+ * IP do visitante para o rate limit do assistente.
  *
- * A Cloudflare ACRESCENTA o IP real ao FINAL do `X-Forwarded-For`, não
- * substitui o cabeçalho recebido do cliente. Então `X-Forwarded-For.split(",")[0]`
- * é o PRIMEIRO valor da lista — e esse primeiro valor é o que o próprio
- * cliente mandou. Quem quiser ganhar um balde novo por requisição só precisa
- * mandar um XFF diferente a cada vez; o limitador de `permitido()` virava
- * decorativo.
+ * Delega a `ipDoCliente` (`lib/rate-limit-ip.ts`), que é a FONTE ÚNICA da
+ * ordem dos cabeçalhos — `cf-connecting-ip` (a borda quem escreve) primeiro,
+ * depois `x-forwarded-for` e `x-real-ip`. Ler o `X-Forwarded-For.split(",")[0]`
+ * sozinho pegaria o valor que o PRÓPRIO cliente mandou, e o limitador de
+ * `permitido()` viraria decorativo.
  *
- * `CF-Connecting-IP` é a borda quem escreve, sempre — o cliente não consegue
- * forjar porque a Cloudflare reescreve esse cabeçalho específico em toda
- * requisição que passa por ela, descartando o que veio do cliente.
- *
- * Em dev local (`next dev`) não existe borda nenhuma, logo não existe
- * `CF-Connecting-IP` — a requisição nem passou pela Cloudflare. Cair para
- * XFF (ou "anon") AQUI é seguro: é o próprio processo local recebendo a
- * própria requisição, não há atacante entre as duas pontas para forjar nada.
- * Cair para XFF em PRODUÇÃO anularia o conserto — por isso o fallback para
- * XFF é só isso, um fallback de desenvolvimento, nunca o caminho real atrás
- * da Cloudflare.
+ * Aqui só se troca o sentinela de "sem cabeçalho" para `"anon"`, que é a
+ * chave de balde que o chat já usava antes da unificação.
  */
 export function ipDoVisitante(req: Request): string {
-  const cf = req.headers.get("cf-connecting-ip")?.trim();
-  if (cf) return cf;
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+  const ip = ipDoCliente(req);
+  return ip === "desconhecido" ? "anon" : ip;
 }
 
 function permitido(ip: string): boolean {

@@ -135,10 +135,10 @@ export interface DoadorRow {
  * Máximo real observado é ~86 doadores por vereador (bem abaixo do teto de
  * 1000 do PostgREST), então não precisa paginar.
  *
- * CPF/CNPJ de doador NÃO é mascarado de propósito — a Lei das Eleições
- * (Lei 9.504/97) exige divulgação plena do financiamento de campanha; o
- * nome do doador é informação pública por lei, ver `etl/bd/tse.py`. Aqui
- * só se expõe nome/tipo/valor/data, não o documento.
+ * O DOCUMENTO do doador (CPF/CNPJ) NÃO é exposto — a tela mostra só
+ * nome/tipo/valor/data. O NOME é informação pública por força da Lei das
+ * Eleições (Lei 9.504/97), que manda divulgar o financiamento de campanha.
+ * Ver `etl/bd/tse.py`.
  */
 export async function getDoacoesSummary(
   idMunicipio: IdMunicipio,
