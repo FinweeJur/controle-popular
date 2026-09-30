@@ -128,6 +128,17 @@ export interface OpcoesCompactar {
 }
 
 /**
+ * Coluna que cheira a DOCUMENTO PESSOAL (CPF e afins) — bloqueada por padrão,
+ * mesmo quando o chamador esquece `nuncaInternar`. Só 2 dos ~13 chamadores
+ * passavam a lista à mão; o padrão protege os outros. CNPJ NÃO entra: é dado
+ * público de empresa, e bloqueá-lo só perderia compressão.
+ */
+function pareceDocumentoPessoal(campo: string): boolean {
+  const c = campo.toLowerCase();
+  return c.includes("cpf") || ["titulo_eleitor", "cnh", "rg", "pis", "nit", "passaporte"].includes(c);
+}
+
+/**
  * Compacta uma lista de registros homogêneos.
  *
  * Aborta em lista vazia? **Não** — devolve um pacote vazio com esqueleto
@@ -161,7 +172,7 @@ export function compactar<T extends Record<string, unknown>>(
   const dicionarios: Record<string, string[]> = {};
 
   for (const campo of esqueleto) {
-    if (proibido.has(campo)) continue;
+    if (proibido.has(campo) || pareceDocumentoPessoal(campo)) continue;
     // Só texto é internado. Número já é curto e virar índice não paga; e um
     // dicionário de números confundiria o índice com o próprio valor na
     // leitura de quem abre o arquivo à mão.

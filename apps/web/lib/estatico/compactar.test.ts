@@ -62,6 +62,22 @@ describe("compactar/expandir", () => {
     expect(expandir(compactar(itens, { nuncaInternar: ["situacao"] }))).toEqual(itens);
   });
 
+  test("coluna de CPF nunca é internada, mesmo sem `nuncaInternar`", () => {
+    // Constante repetida: sozinha, a medição internaria. O bloqueio por padrão
+    // impede o dicionário de virar um índice limpo de documentos pessoais.
+    const itens = Array.from({ length: 300 }, (_, i) => ({
+      nome: `pessoa ${i}`,
+      cpf: "000.000.000-00",
+    }));
+    expect(compactar(itens).dicionarios).not.toHaveProperty("cpf");
+    expect(expandir(compactar(itens))[0].cpf).toBe("000.000.000-00");
+  });
+
+  test("CNPJ (dado público de empresa) NÃO é bloqueado por padrão", () => {
+    const itens = Array.from({ length: 300 }, (_, i) => ({ id: `x${i}`, cnpj: "00.000.000/0001-00" }));
+    expect(compactar(itens).dicionarios).toHaveProperty("cnpj");
+  });
+
   test("o dicionário é ordenado por frequência, com desempate estável", () => {
     // Repetido 100× de propósito: com 7 linhas só, internar NÃO paga (o
     // dicionário custa mais que a coluna por extenso) e o campo sai sem

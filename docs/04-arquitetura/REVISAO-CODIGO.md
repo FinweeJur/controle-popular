@@ -24,6 +24,7 @@
 - [Parte 10 — escrita pública e resiliência](#parte-10--escrita-pública-e-resiliência)
 - [Parte 11 — LinkMender e denúncia](#parte-11--linkmender-e-denúncia)
 - [Parte 12 — conselhos e correlação](#parte-12--conselhos-e-correlação)
+- [Parte 13 — a compactação dupla](#parte-13--a-compactação-dupla)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -507,6 +508,38 @@ Sexta passada, em módulos frios.
 
 3. ✅ **`lib/brumadinho/repasse.ts`** — dupla via de leitura: `node:fs` no
    build e `env.ASSETS.fetch` quando publicado. SERVER-ONLY; sem furo.
+
+## Parte 13 — a compactação dupla
+
+Sétima passada. Revisei de fato os dois codecs que o ESTADO cita como "dívida
+que não se unifica".
+
+### Achados da Parte 13
+
+1. ✅ **`lib/estatico/compactar.ts`** — esqueleto + rótulos internados. A
+   decisão de internar é **medida em bytes, coluna a coluna** (nunca por
+   palpite); aborta em arquivo truncado, em registro heterogêneo e em índice
+   fora do dicionário; serializa **uma linha por registro** para o diff seguir
+   legível.
+
+2. ⚠️ → ✅ **`nuncaInternar` era opt-in — endurecido** (30/09/2026). Só 2 dos
+   ~13 chamadores de `compactar` passavam a lista. Agora o módulo bloqueia
+   **por padrão** coluna que cheira a documento pessoal (nome contendo `cpf`,
+   ou `titulo_eleitor`, `cnh`, `rg`, `pis`, `nit`, `passaporte`), somado ao
+   `nuncaInternar` do chamador. **CNPJ não é bloqueado** — é dado público de
+   empresa. Testes cobrem os dois casos. O piso real continua sendo o scanner
+   de CPF sobre `apps/web/data`.
+
+3. ✅ **`lib/comunicabr/arquivo.ts`** — codec **posicional**, deliberadamente
+   diferente: o texto é NACIONAL e o número é municipal, então guarda um
+   dicionário de rótulos e uma **lista de esqueletos** (assinatura de estrutura
+   nova vira esqueleto novo, em vez de encaixe à força — o que evita saúde
+   virar educação). **Não unificar com `compactar`**: são ganhos de ordens
+   diferentes, e a duplicação é decisão, não descuido.
+
+4. ✅ **`lib/estatico/fatiar.ts` + `emitir.ts`** — fatiamento para o teto de
+   25 MiB do Cloudflare; o par "índice fatiado + `TabelaEstatica`" é o padrão
+   da casa para acervo grande.
 
 ## Achados e dívidas
 
