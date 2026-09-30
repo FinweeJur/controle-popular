@@ -107,4 +107,20 @@ describe("dados-desclassificados", () => {
     expect(portugalDoc).toBeDefined();
     expect(portugalDoc?.assuntos).toContain("DOPS");
   });
+
+  it("verifica que todos os 56 documentos estao geolocalizados com latitude, longitude e localidade", () => {
+    const docs = obterDocumentosDesclassificados();
+    expect(docs).toHaveLength(56);
+
+    for (const doc of docs) {
+      expect(typeof doc.latitude).toBe("number");
+      expect(typeof doc.longitude).toBe("number");
+      expect(typeof doc.localidadeFoco).toBe("string");
+      expect(doc.latitude).toBeGreaterThanOrEqual(-90);
+      expect(doc.latitude).toBeLessThanOrEqual(90);
+      expect(doc.longitude).toBeGreaterThanOrEqual(-180);
+      expect(doc.longitude).toBeLessThanOrEqual(180);
+      expect(doc.localidadeFoco?.length).toBeGreaterThan(3);
+    }
+  });
 });

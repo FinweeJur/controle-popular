@@ -51,6 +51,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.cia.gov/readingroom/document/cia-rdp80r01580r002000090001-0",
     urlPdfOriginal: "https://www.cia.gov/readingroom/docs/CIA-RDP80R01580R002000090001-0.pdf",
     contextoBrasil: "Documento emblemático do acervo State Dept/CIA liberado formalmente ao governo brasileiro em 2018, confirmando a ciência da cúpula presidencial sobre execuções.",
+    latitude: -15.7939,
+    longitude: -47.8828,
+    localidadeFoco: "Brasília, DF, Brasil (Gabinete Geisel / CIA)",
   },
   {
     id: "DOC-CIA-1964-BROTHER-SAM",
@@ -74,6 +77,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://history.state.gov/historicaldocuments/frus1964-68v31/d429",
     urlPdfOriginal: "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB118/10.pdf",
     contextoBrasil: "Comprova documentalmente a prontidão de envio de armamentos, munições e combustíveis pela frota naval americana caso houvesse resistência armada pró-Goulart.",
+    latitude: -22.9068,
+    longitude: -43.1729,
+    localidadeFoco: "Rio de Janeiro, RJ, Brasil (Baía de Guanabara)",
   },
   {
     id: "DOC-SNI-1976-CONDOR",
@@ -97,6 +103,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://sian.an.gov.br/sianex/consulta/login.asp",
     urlPdfOriginal: "http://memoriasreveladas.gov.br/acervo/documentos/condor-sni-1976.pdf",
     contextoBrasil: "Peça fundamental custodiada no Arquivo Nacional de Brasília comprovando o canal de cooperação operacional entre o SNI brasileiro e a DINA chilena.",
+    latitude: -34.6037,
+    longitude: -58.3816,
+    localidadeFoco: "Buenos Aires, Argentina (Rede Condor Cone Sul)",
   },
   {
     id: "DOC-DSI-1981-SERRA-PELADA",
@@ -120,6 +129,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://sian.an.gov.br/sianex/consulta/login.asp",
     urlPdfOriginal: "http://memoriasreveladas.gov.br/acervo/documentos/dsi-mme-serra-pelada-1981.pdf",
     contextoBrasil: "Mostra como a inteligência da ditadura subordinou a exploração mineral e a posse da terra no sudeste do Pará a intervenções de segurança interna.",
+    latitude: -5.9458,
+    longitude: -49.6644,
+    localidadeFoco: "Serra Pelada / Curionópolis, PA, Brasil",
   },
   {
     id: "DOC-UK-1983-JIC-NUCLEAR",
@@ -143,6 +155,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://discovery.nationalarchives.gov.uk/details/r/C12845610",
     urlPdfOriginal: "https://discovery.nationalarchives.gov.uk/download/CAB158-83-JIC-BRAZIL.pdf",
     contextoBrasil: "Mapeia as preocupações do gabinete britânico de que o Brasil dominasse o ciclo completo de enriquecimento isotópico de urânio em Iperó/SP.",
+    latitude: -23.0067,
+    longitude: -44.3181,
+    localidadeFoco: "Angra dos Reis, RJ, Brasil (Usinas Nucleares / JIC)",
   },
   {
     id: "DOC-CSIS-1989-MINING-AMAZON",
@@ -166,6 +181,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.bac-lac.gc.ca/eng/collectionsearch/Pages/collectionsearch.aspx",
     urlPdfOriginal: "https://open.canada.ca/en/search/ati/reference/lac-rg146-csis-brazil-1989.pdf",
     contextoBrasil: "Primeiro registro desclassificado no Canadá correlacionando investimentos em alvarás de pesquisa mineral no norte brasileiro com alertas de violações indígenas.",
+    latitude: -3.119,
+    longitude: -60.0217,
+    localidadeFoco: "Manaus / Amazônia Legal, Brasil (CSIS)",
   },
   {
     id: "DOC-STASI-1977-KWU-NUCLEAR",
@@ -189,6 +207,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.stasi-unterlagen-archiv.de/archiv/aktenfunde/",
     urlPdfOriginal: "https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-1892-brasilien-kernkraft.pdf",
     contextoBrasil: "Mostra como o acordo nuclear bilionário de 1975 transformou o Rio de Janeiro e Bonn em alvos de espionagem cruzada de potências ocidentais e orientais.",
+    latitude: 50.7374,
+    longitude: 7.0982,
+    localidadeFoco: "Bonn / Erlangen, Alemanha (KWU / Stasi)",
   },
   {
     id: "DOC-DGSE-1985-ALCANTARA",
@@ -212,6 +233,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.servicehistorique.sga.defense.gouv.fr/",
     urlPdfOriginal: "https://francearchives.gouv.fr/pdf/shd-de-2015-zt-441-bresil-spatial.pdf",
     contextoBrasil: "Explica os antecedentes de soberania aeroespacial brasileira e os embates geopolíticos em torno da base de lançamentos de Alcântara no Maranhão.",
+    latitude: -2.4089,
+    longitude: -44.4144,
+    localidadeFoco: "Alcântara, MA, Brasil (Centro Espacial CLA)",
   },
   {
     id: "DOC-ITALIA-1975-GLADIO-AMAZON",
@@ -235,6 +259,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "http://dati.acs.beniculturali.it/comitatodirettiva/",
     urlPdfOriginal: "http://dati.acs.beniculturali.it/declassificati/fasc-188-gladio-america-latina.pdf",
     contextoBrasil: "Documento oficial italiano tornado público por determinação governamental, demonstrando conexões ilícitas entre foragidos europeus e governos do Cone Sul.",
+    latitude: 41.9028,
+    longitude: 12.4964,
+    localidadeFoco: "Roma, Itália (Sede do SISMI / Operação Gladio)",
   },
   {
     id: "DOC-ASIO-1972-MINERALS",
@@ -258,6 +285,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://recordsearch.naa.gov.au/SearchRetrieve/Interface/SearchScreens/BasicSearch.aspx",
     urlPdfOriginal: "https://recordsearch.naa.gov.au/download/A6119-88-ASIO-BRAZIL.pdf",
     contextoBrasil: "Demonstra o mapeamento antecipado feito pela Austrália sobre a competitividade das jazidas de Carajás e Quadrilátero Ferrífero no mercado siderúrgico.",
+    latitude: -35.2809,
+    longitude: 149.13,
+    localidadeFoco: "Canberra, Austrália (ASIO / Mineração Global)",
   },
   {
     id: "DOC-ARGENTINA-1977-CONDOR",
@@ -281,6 +311,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.argentina.gob.ar/derechoshumanos/anm",
     urlPdfOriginal: "https://www.argentina.gob.ar/sites/default/files/anm-condor-desclassificado-1977.pdf",
     contextoBrasil: "Acervo desclassificado pelo Ministério de Defesa argentino que subsidiou julgamentos de crimes contra a humanidade nos dois países.",
+    latitude: -34.6037,
+    longitude: -58.3816,
+    localidadeFoco: "Buenos Aires, Argentina (Batallón 601)",
   },
   {
     id: "DOC-KGB-1969-AI5",
@@ -304,6 +337,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitalarchive.wilsoncenter.org/collection/21/cold-war-intelligence",
     urlPdfOriginal: "https://digitalarchive.wilsoncenter.org/document/kgb-assessment-brazil-military-regime-1969.pdf",
     contextoBrasil: "Permite ao pesquisador auditar como a inteligência da superpotência rival da Guerra Fria interpretava a geopolítica e a soberania dos recursos brasileiros.",
+    latitude: 55.7558,
+    longitude: 37.6173,
+    localidadeFoco: "Moscou, Rússia (Lubyanka / Primeira Diretoria KGB)",
   },
   {
     id: "DOC-FBI-1968-UNREST",
@@ -327,6 +363,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://vault.fbi.gov/",
     urlPdfOriginal: "https://vault.fbi.gov/brazil-political-unrest-1968/brazil-political-unrest-1968-part-01-of-01.pdf",
     contextoBrasil: "Evidencia o papel ativo dos adidos policiais americanos lotados na embaixada do Rio de Janeiro no levantamento diário de protestos cívicos.",
+    latitude: 38.8951,
+    longitude: -77.0364,
+    localidadeFoco: "Washington, D.C., EUA (Quartel-General do FBI)",
   },
   {
     id: "DOC-CSN-1973-ITAIPU",
@@ -350,6 +389,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://sian.an.gov.br/sianex/consulta/login.asp",
     urlPdfOriginal: "http://memoriasreveladas.gov.br/acervo/documentos/csn-itaipu-seguranca-1973.pdf",
     contextoBrasil: "Base jurídica e de inteligência que consolidou a construção da Usina de Itaipu e garantiu a liderança energética brasileira no Prata.",
+    latitude: -25.4089,
+    longitude: -54.5889,
+    localidadeFoco: "Foz do Iguaçu, PR, Brasil (Usina Binacional de Itaipu)",
   },
   {
     id: "DOC-CIA-1984-NIE-EXPANSION",
@@ -373,6 +415,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.cia.gov/readingroom/document/cia-rdp87t00495r000901010002-3",
     urlPdfOriginal: "https://www.cia.gov/readingroom/docs/CIA-RDP87T00495R000901010002-3.pdf",
     contextoBrasil: "Relatório estratégico dos EUA avaliando a capacidade industrial soberana do Brasil e a independência diplomática em relação ao FMI.",
+    latitude: 38.9517,
+    longitude: -77.1467,
+    localidadeFoco: "Langley, Virgínia, EUA (Sede Central da CIA)",
   },
   {
     id: "DOC-SSA-1979-SOUTH-ATLANTIC",
@@ -396,6 +441,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationalarchives.gov.za/",
     urlPdfOriginal: "https://www.saha.org.za/pdf/foip/trc-south-atlantic-security-1979.pdf",
     contextoBrasil: "Demonstra o posicionamento soberano do Itamaraty que rejeitou alianças militares com Pretória em defesa da autodeterminação dos povos africanos.",
+    latitude: -25.7479,
+    longitude: 28.2293,
+    localidadeFoco: "Pretória, África do Sul (DANS / Atlântico Sul)",
   },
   {
     id: "DOC-GIP-1983-OIL-COMMODITIES",
@@ -419,6 +467,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.mofa.gov.sa/en/Pages/default.aspx",
     urlPdfOriginal: "https://discovery.nationalarchives.gov.uk/download/FCO-8-5021-SAUDI-BRAZIL-TRADE.pdf",
     contextoBrasil: "Ilustra o mecanismo de compensação comercial (countertrade) criado durante as crises do petróleo para manter o abastecimento nacional sem queimar reservas em dólar.",
+    latitude: 24.7136,
+    longitude: 46.6753,
+    localidadeFoco: "Riade, Arábia Saudita (GIP / Comércio de Petróleo)",
   },
   {
     id: "DOC-MSS-1974-BEIJING-BRASILIA",
@@ -442,6 +493,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitalarchive.wilsoncenter.org/collection/51/chinese-foreign-policy-during-the-cold-war",
     urlPdfOriginal: "https://digitalarchive.wilsoncenter.org/document/fma-prc-brazil-diplomatic-relations-1974.pdf",
     contextoBrasil: "Marco histórico da diplomacia pragmática brasileira que abriu caminho para a China se tornar o maior parceiro comercial e destino do minério da Vale.",
+    latitude: 39.9042,
+    longitude: 116.4074,
+    localidadeFoco: "Pequim, China (Ministério da Segurança do Estado MSS)",
   },
   {
     id: "DOC-KCIA-1978-STEEL-SUPPLY",
@@ -465,6 +519,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.archives.go.kr/",
     urlPdfOriginal: "https://www.archives.go.kr/open_content/pdf/nak-kcia-steel-brazil-1978.pdf",
     contextoBrasil: "Mostra a articulação de segurança econômica da Coreia do Sul para garantir pelotas de minério de alta qualidade para o milagre industrial coreano.",
+    latitude: 37.5665,
+    longitude: 126.978,
+    localidadeFoco: "Seul / Pohang, Coreia do Sul (KCIA / POSCO)",
   },
   {
     id: "DOC-CESID-1981-CONO-SUR",
@@ -488,6 +545,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.cultura.gob.es/cultura/archivos/portada/aga.html",
     urlPdfOriginal: "https://www.defensa.gob.es/cni/archivo/cesid-informe-latinoamerica-1981.pdf",
     contextoBrasil: "Registra a avaliação internacional sobre a resistência de setores da linha-dura militar contra a redemocratização após o episódio do Riocentro.",
+    latitude: 40.4168,
+    longitude: -3.7038,
+    localidadeFoco: "Madri, Espanha (CESID / Redes Diplomáticas)",
   },
   {
     id: "DOC-BVD-1979-ROTTERDAM-COMMODITIES",
@@ -511,6 +571,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationaalarchief.nl/onderzoeken/archief/2.04.81",
     urlPdfOriginal: "https://www.nationaalarchief.nl/pdf/aivd-bvd-dossier-brazilie-rotterdam-1979.pdf",
     contextoBrasil: "Destaca o papel geopolítico de Roterdã como porta de entrada de commodities brasileiras e a dependência alimentar do gado europeu da soja do Cerrado.",
+    latitude: 51.9244,
+    longitude: 4.4777,
+    localidadeFoco: "Roterdã, Países Baixos (Porto de Roterdã e BVD)",
   },
   {
     id: "DOC-RAW-1979-NON-ALIGNED-NUCLEAR",
@@ -534,6 +597,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationalarchives.nic.in/",
     urlPdfOriginal: "https://www.nationalarchives.nic.in/pdf/raw-ib-special-report-brazil-nonaligned-1979.pdf",
     contextoBrasil: "Evidencia as convergências históricas de política externa entre Brasil e Índia em defesa da autonomia tecnológica e recusa a tutelas internacionais.",
+    latitude: 28.6139,
+    longitude: 77.209,
+    localidadeFoco: "Nova Délhi, Índia (R&AW / Não-Alinhados)",
   },
   {
     id: "DOC-BAKIN-1982-TROPICAL-FORESTS",
@@ -557,6 +623,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://anri.go.id/",
     urlPdfOriginal: "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/bakin-indonesia-brazil-cooperation-1982.pdf",
     contextoBrasil: "Documenta os primórdios da articulação das nações megadiversas detentoras das maiores florestas equatoriais do globo frente a pressões ocidentais.",
+    latitude: -6.2088,
+    longitude: 106.8456,
+    localidadeFoco: "Jacarta, Indonésia (BAKIN / Soberania Florestal)",
   },
   {
     id: "DOC-MOFA-1980-CARAJAS-INVESTMENT",
@@ -580,6 +649,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.mofa.go.jp/about/history/archive/",
     urlPdfOriginal: "https://www.mofa.go.jp/mofaj/files/000492819.pdf",
     contextoBrasil: "Comprova como o capital industrial japonês participou da estruturação da infraestrutura de escoamento mineral do Pará e Maranhão para o mercado global.",
+    latitude: 35.6762,
+    longitude: 139.6503,
+    localidadeFoco: "Tóquio, Japão (Kasumigaseki / Mitsui / PSIA)",
   },
   {
     id: "DOC-DFS-1975-EXILADOS-UNAM",
@@ -603,6 +675,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.gob.mx/agn",
     urlPdfOriginal: "https://www.gob.mx/agn/articulos/expedientes-dfs-exiliados-brasil-1975.pdf",
     contextoBrasil: "Revela a convivência paradoxal entre o asilo diplomático concedido pelo governo mexicano e o monitoramento clandestino de sua polícia secreta.",
+    latitude: 19.4326,
+    longitude: -99.1332,
+    localidadeFoco: "Cidade do México, México (DFS / Vigilância UNAM)",
   },
   {
     id: "DOC-PIDE-1973-LIGACOES-DOPS",
@@ -626,6 +701,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitarq.arquivos.pt/",
     urlPdfOriginal: "https://digitarq.arquivos.pt/viewer?id=4289012",
     contextoBrasil: "Evidência documental de acordos informais de extradição e repressão articulados entre as polícias secretas de Lisboa e do Brasil antes da Revolução de Abril.",
+    latitude: 38.7223,
+    longitude: -9.1393,
+    localidadeFoco: "Lisboa, Portugal (PIDE/DGS / Prontuários DOPS)",
   },
   {
     id: "DOC-MIT-1985-BRAZIL-DEFENSE",
@@ -649,6 +727,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.devletarsivleri.gov.tr/",
     urlPdfOriginal: "https://www.devletarsivleri.gov.tr/pdf/mit-raporu-brezilya-savunma-1985.pdf",
     contextoBrasil: "Mostra como o avanço tecnológico militar brasileiro nos anos 1980 transformou o país no 5º maior exportador de equipamentos de defesa do mundo ocidental.",
+    latitude: 39.9334,
+    longitude: 32.8597,
+    localidadeFoco: "Ancara, Turquia (MIT / Cooperação Militar)",
   },
   {
     id: "DOC-HAEU-1992-MINERAL-SAFEGUARDS",
@@ -672,6 +753,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.eui.eu/Research/HistoricalArchivesOfEU",
     urlPdfOriginal: "https://archives.eui.eu/en/fonds/BAC-1992-04-MINERALS-BRAZIL.pdf",
     contextoBrasil: "Antecedente das regras europeias de devida diligência mineral e florestal que impactam diretamente exportações e territórios tradicionais no Brasil.",
+    latitude: 50.8503,
+    longitude: 4.3517,
+    localidadeFoco: "Bruxelas, Bélgica (Comissão Europeia / HAEU)",
   },
   /* ══════════════════════════════════════════════════════════════════════════════════
    * ACERVO GLOBAL DESCLASSIFICADO (SEM FOCO NO BRASIL) — G20 E CRISES INTERNACIONAIS
@@ -698,6 +782,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.cia.gov/readingroom/collection/cuban-missile-crisis",
     urlPdfOriginal: "https://www.cia.gov/readingroom/docs/DOC_0001097202.pdf",
     contextoBrasil: "Dossiê canônico da Guerra Fria sobre o limiar de guerra termonuclear entre as superpotências sem envolvimento direto do Brasil.",
+    latitude: 22.8167,
+    longitude: -83.05,
+    localidadeFoco: "San Cristóbal, Pinar del Río, Cuba (Crise dos Mísseis)",
   },
   {
     id: "DOC-GLOBAL-GBR-1963-PHILBY",
@@ -721,6 +808,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://discovery.nationalarchives.gov.uk/details/r/C11234980",
     urlPdfOriginal: "https://discovery.nationalarchives.gov.uk/download/KV-2-3498.pdf",
     contextoBrasil: "Documento clássico de inteligência sobre espionagem mútua de potências europeias.",
+    latitude: 33.8938,
+    longitude: 35.5018,
+    localidadeFoco: "Beirute, Líbano (Fuga de Kim Philby / MI6)",
   },
   {
     id: "DOC-GLOBAL-DEU-1961-BERLIN-WALL",
@@ -744,6 +834,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.stasi-unterlagen-archiv.de/archiv/themen/beitrag/mauerbau-1961/",
     urlPdfOriginal: "https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-berliner-mauer-1961.pdf",
     contextoBrasil: "Registro histórico da divisão da Europa e contenção migratória na Cortina de Ferro.",
+    latitude: 52.5075,
+    longitude: 13.3904,
+    localidadeFoco: "Berlim (Checkpoint Charlie), Alemanha",
   },
   {
     id: "DOC-GLOBAL-FRA-1957-ALGERIA-BATTLE",
@@ -767,6 +860,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.servicehistorique.sga.defense.gouv.fr/",
     urlPdfOriginal: "https://francearchives.gouv.fr/pdf/shd-sdece-algerie-1957.pdf",
     contextoBrasil: "Doutrina de contrainsurgência que posteriormente influenciou escolas militares sul-americanas.",
+    latitude: 36.7538,
+    longitude: 3.0588,
+    localidadeFoco: "Argel (Casbah), Argélia (Batalha de Argel)",
   },
   {
     id: "DOC-GLOBAL-ITA-1980-BOLOGNA-MASSACRE",
@@ -790,6 +886,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "http://dati.acs.beniculturali.it/comitatodirettiva/",
     urlPdfOriginal: "http://dati.acs.beniculturali.it/declassificati/strage-bologna-fasc-22.pdf",
     contextoBrasil: "Documento sobre desvios e acobertamento de atos terroristas desclassificado pela presidência italiana.",
+    latitude: 44.5058,
+    longitude: 11.3431,
+    localidadeFoco: "Bolonha, Itália (Estação Central / Estratégia da Tensão)",
   },
   {
     id: "DOC-GLOBAL-CAN-1959-DEW-LINE",
@@ -813,6 +912,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.bac-lac.gc.ca/",
     urlPdfOriginal: "https://open.canada.ca/en/search/ati/reference/lac-rg146-dew-line-1959.pdf",
     contextoBrasil: "Dossiê de soberania polar e monitoramento aeroespacial na América do Norte.",
+    latitude: 68.3581,
+    longitude: -133.7228,
+    localidadeFoco: "Inuvik / Ártico Canadense (Linha DEW / NORAD)",
   },
   {
     id: "DOC-GLOBAL-RUS-1979-AFGHANISTAN",
@@ -836,6 +938,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitalarchive.wilsoncenter.org/collection/76/soviet-invasion-of-afghanistan",
     urlPdfOriginal: "https://digitalarchive.wilsoncenter.org/document/decision-politburo-soviet-entry-afghanistan-1979.pdf",
     contextoBrasil: "Documento oficial soviético decisivo sobre o conflito afegão dos anos 1980.",
+    latitude: 34.5553,
+    longitude: 69.2075,
+    localidadeFoco: "Cabul, Afeganistão (Palácio Tajbeg / Spetsnaz)",
   },
   {
     id: "DOC-GLOBAL-CHN-1972-NIXON-BEIJING",
@@ -859,6 +964,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitalarchive.wilsoncenter.org/collection/27/china-and-the-united-states",
     urlPdfOriginal: "https://digitalarchive.wilsoncenter.org/document/mao-nixon-meeting-beijing-transcript-1972.pdf",
     contextoBrasil: "Marco histórico da diplomacia asiática e reaproximação com o Ocidente.",
+    latitude: 39.9042,
+    longitude: 116.4074,
+    localidadeFoco: "Pequim (Zhongnanhai), China (Nixon-Mao)",
   },
   {
     id: "DOC-GLOBAL-JPN-1960-ANPO-SECURITY",
@@ -882,6 +990,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.mofa.go.jp/about/history/archive/",
     urlPdfOriginal: "https://www.mofa.go.jp/mofaj/files/000182741.pdf",
     contextoBrasil: "Base jurídica da aliança de segurança do Pacífico pós-Segunda Guerra Mundial.",
+    latitude: 35.6762,
+    longitude: 139.7547,
+    localidadeFoco: "Tóquio, Japão (Dieta Nacional / Protestos ANPO)",
   },
   {
     id: "DOC-GLOBAL-IND-1974-SMILING-BUDDHA",
@@ -905,6 +1016,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationalarchives.nic.in/",
     urlPdfOriginal: "https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf",
     contextoBrasil: "Primeiro teste nuclear realizado por uma nação fora dos cinco membros permanentes da ONU.",
+    latitude: 27.0911,
+    longitude: 71.7528,
+    localidadeFoco: "Pokhran, Rajastão, Índia (Teste Nuclear)",
   },
   {
     id: "DOC-GLOBAL-ZAF-1975-SAVANNAH-ANGOLA",
@@ -928,6 +1042,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationalarchives.gov.za/",
     urlPdfOriginal: "https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf",
     contextoBrasil: "Dossiê militar sobre o conflito fronteiriço na África Austral durante os anos 1970.",
+    latitude: -12.35,
+    longitude: 15.7333,
+    localidadeFoco: "Huambo, Angola (Operação Savannah)",
   },
   {
     id: "DOC-GLOBAL-SAU-1973-OPEC-EMBARGO",
@@ -951,6 +1068,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://discovery.nationalarchives.gov.uk/details/r/C11284560",
     urlPdfOriginal: "https://discovery.nationalarchives.gov.uk/download/FCO-67-941-OPEC-OIL-EMBARGO-1973.pdf",
     contextoBrasil: "Documento do primeiro grande choque do petróleo que redefiniu a economia global.",
+    latitude: 24.7136,
+    longitude: 46.6753,
+    localidadeFoco: "Riade, Arábia Saudita (Embargo da OPEP)",
   },
   {
     id: "DOC-GLOBAL-ARG-1982-RATTENBACH-MALVINAS",
@@ -974,6 +1094,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.argentina.gob.ar/derechoshumanos/anm",
     urlPdfOriginal: "https://www.argentina.gob.ar/sites/default/files/informe-rattenbach-malvinas-1982.pdf",
     contextoBrasil: "Auditoria histórica rigorosa das Forças Armadas argentinas sobre o conflito das Malvinas.",
+    latitude: -51.6977,
+    longitude: -57.8517,
+    localidadeFoco: "Port Stanley / Malvinas (Comissão Rattenbach)",
   },
   {
     id: "DOC-GLOBAL-AUS-1966-VIETNAM-DEPLOYMENT",
@@ -997,6 +1120,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://recordsearch.naa.gov.au/",
     urlPdfOriginal: "https://recordsearch.naa.gov.au/download/A6119-92-ASIO-VIETNAM-1966.pdf",
     contextoBrasil: "Análise da atuação australiana em coalizões militares no Pacífico.",
+    latitude: 10.5167,
+    longitude: 107.2167,
+    localidadeFoco: "Nui Dat, Vietnã (Base Militar Australiana)",
   },
   {
     id: "DOC-GLOBAL-KOR-1968-BLUE-HOUSE-PUEBLO",
@@ -1020,6 +1146,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.archives.go.kr/",
     urlPdfOriginal: "https://www.archives.go.kr/open_content/pdf/nak-kcia-blue-house-pueblo-1968.pdf",
     contextoBrasil: "Crise geopolítica asiática de 1968 que quase desencadeou uma nova guerra aberta na Coreia.",
+    latitude: 37.5866,
+    longitude: 126.9747,
+    localidadeFoco: "Seul (Casa Azul), Coreia do Sul",
   },
   {
     id: "DOC-GLOBAL-ESP-1981-GOLPE-23F",
@@ -1043,6 +1172,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.cultura.gob.es/cultura/archivos/portada/aga.html",
     urlPdfOriginal: "https://www.defensa.gob.es/cni/archivo/cesid-informe-23f-1981.pdf",
     contextoBrasil: "Episódio crucial da transição democrática ibérica e controle civil sobre as Forças Armadas.",
+    latitude: 40.4168,
+    longitude: -3.6961,
+    localidadeFoco: "Madri (Congresso dos Deputados), Espanha",
   },
   {
     id: "DOC-GLOBAL-NLD-1947-INDONESIA-ACTIONS",
@@ -1066,6 +1198,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.nationaalarchief.nl/",
     urlPdfOriginal: "https://www.nationaalarchief.nl/pdf/bvd-indonesie-politionele-acties-1947.pdf",
     contextoBrasil: "Documento oficial sobre a descolonização e a independência das Índias Orientais.",
+    latitude: -7.2575,
+    longitude: 112.7521,
+    localidadeFoco: "Java / Surabaya, Indonésia (Operações Coloniais)",
   },
   {
     id: "DOC-GLOBAL-IDN-1965-G30S-PURGE",
@@ -1089,6 +1224,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://anri.go.id/",
     urlPdfOriginal: "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/indonesia-1965-cables-bakin.pdf",
     contextoBrasil: "Dossiê desclassificado sobre a violência política em massa no sudeste asiático durante a Guerra Fria.",
+    latitude: -6.2088,
+    longitude: 106.8456,
+    localidadeFoco: "Jacarta, Indonésia (Movimento 30 de Setembro)",
   },
   {
     id: "DOC-GLOBAL-MEX-1968-TLATELOLCO",
@@ -1112,6 +1250,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.gob.mx/agn",
     urlPdfOriginal: "https://www.gob.mx/agn/articulos/expedientes-dfs-tlatelolco-1968.pdf",
     contextoBrasil: "Documento oficial do Arquivo Geral da Nação mexicana desclassificado sobre o massacre de 1968.",
+    latitude: 19.4517,
+    longitude: -99.1369,
+    localidadeFoco: "Praça de Tlatelolco, Cidade do México",
   },
   {
     id: "DOC-GLOBAL-PRT-1974-CRAVOS-REVOLUTION",
@@ -1135,6 +1276,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://digitarq.arquivos.pt/",
     urlPdfOriginal: "https://cd25a.uc.pt/media/pdf/relatorio-pide-25-abril-1974.pdf",
     contextoBrasil: "Registro histórico do colapso da ditadura mais longeva da Europa ocidental.",
+    latitude: 38.7119,
+    longitude: -9.1436,
+    localidadeFoco: "Largo do Carmo, Lisboa, Portugal",
   },
   {
     id: "DOC-GLOBAL-TUR-1974-CYPRUS-OPERATION",
@@ -1158,6 +1302,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.devletarsivleri.gov.tr/",
     urlPdfOriginal: "https://www.devletarsivleri.gov.tr/pdf/mit-kibris-baris-harekati-1974.pdf",
     contextoBrasil: "Dossiê militar sobre o conflito de partição territorial de Chipre em 1974.",
+    latitude: 35.1856,
+    longitude: 33.3823,
+    localidadeFoco: "Kyrenia / Nicósia, Chipre (Operação Atila)",
   },
   {
     id: "DOC-GLOBAL-EUR-1956-SPAAK-ROME",
@@ -1181,6 +1328,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.eui.eu/Research/HistoricalArchivesOfEU",
     urlPdfOriginal: "https://archives.eui.eu/en/fonds/CM3-1956-SPAAK-REPORT.pdf",
     contextoBrasil: "Origem documental dos blocos econômicos e do modelo comunitário europeu.",
+    latitude: 50.8503,
+    longitude: 4.3517,
+    localidadeFoco: "Val Duchesse / Bruxelas, Bélgica (Relatório Spaak)",
   },
   /* ══════════════════════════════════════════════════════════════════════════════════
    * FONTES MULTILATERAIS E TRANSNACIONAIS MAPDEADAS PELOS PESQUISADORES
@@ -1207,6 +1357,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://www.gleif.org/en/lei-data/access-and-use-lei-data",
     urlPdfOriginal: "https://www.gleif.org/downloads/lei-data/2024-global-lei-compendium.pdf",
     contextoBrasil: "Base aberta fundamental para rastrear a cadeia de propriedade de mineradoras multinacionais com filiais no Brasil.",
+    latitude: 47.3769,
+    longitude: 8.5417,
+    localidadeFoco: "Zurique / Basileia, Suíça (Sede Global GLEIF)",
   },
   {
     id: "DOC-GLOBAL-GRID-TAILINGS-PORTAL",
@@ -1230,6 +1383,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://tailings.grida.no/",
     urlPdfOriginal: "https://tailings.grida.no/download/global-tailings-portal-report.pdf",
     contextoBrasil: "Permite comparar os métodos das barragens de Minas Gerais e Pará com os padrões internacionais adotados no Canadá e Austrália.",
+    latitude: 58.3405,
+    longitude: 8.5934,
+    localidadeFoco: "Arendal, Noruega (GRID-Arendal UNEP)",
   },
   {
     id: "DOC-GLOBAL-CLIMATE-TRACE-FACILITIES",
@@ -1253,6 +1409,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://climatetrace.org/",
     urlPdfOriginal: "https://climatetrace.org/downloads/2024-emissions-inventory-report.pdf",
     contextoBrasil: "Auditoria independente de satélite que confronta relatórios de sustentabilidade declarados pelas mineradoras com dados medidos no espaço.",
+    latitude: 37.7749,
+    longitude: -122.4194,
+    localidadeFoco: "São Francisco, Califórnia, EUA (Climate TRACE)",
   },
   {
     id: "DOC-GLOBAL-OPENALEX-MINING-EVIDENCE",
@@ -1276,6 +1435,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://openalex.org/",
     urlPdfOriginal: "https://openalex.org/downloads/openalex-mining-dam-failures-dataset.pdf",
     contextoBrasil: "Catálogo acadêmico global com pesquisas revisadas por pares sobre as tragédias de Mariana e Brumadinho.",
+    latitude: 38.8951,
+    longitude: -77.0364,
+    localidadeFoco: "Washington, D.C., EUA (OpenAlex / OurResearch)",
   },
   {
     id: "DOC-GLOBAL-SABIN-CLIMATE-LITIGATION",
@@ -1299,6 +1461,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://climatecasechart.com/",
     urlPdfOriginal: "https://climatecasechart.com/wp-content/uploads/2024/07/global-climate-litigation-trends.pdf",
     contextoBrasil: "Mapeamento comparativo das ações climáticas no STF e cortes brasileiras contra casos internacionais no Reino Unido e Holanda.",
+    latitude: 40.8075,
+    longitude: -73.9626,
+    localidadeFoco: "Nova York (Columbia Law), EUA (Sabin Center)",
   },
   {
     id: "DOC-GLOBAL-NATIVE-LAND-MAPPING",
@@ -1322,6 +1487,9 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
     urlOficialCustodia: "https://native-land.ca/",
     urlPdfOriginal: "https://native-land.ca/resources/native-land-mapping-methodology.pdf",
     contextoBrasil: "Ferramenta global de transparência territorial e demarcação ancestral conectando lutas indígenas do Brasil às Primeiras Nações do Canadá e EUA.",
+    latitude: 49.2827,
+    longitude: -123.1207,
+    localidadeFoco: "Vancouver, BC, Canadá (Native Land Digital)",
   },
 ];
 

@@ -20,7 +20,10 @@
     "quantidadePaginas",
     "urlOficialCustodia",
     "urlPdfOriginal",
-    "contextoBrasil"
+    "contextoBrasil",
+    "latitude",
+    "longitude",
+    "localidadeFoco"
   ],
   "dicionarios": {
     "orgaoInteligencia": [
@@ -293,7 +296,10 @@
       3,
       33,
       "https://www.cia.gov/readingroom/docs/CIA-RDP80R01580R002000090001-0.pdf",
-      "Documento emblemático do acervo State Dept/CIA liberado formalmente ao governo brasileiro em 2018, confirmando a ciência da cúpula presidencial sobre execuções."
+      "Documento emblemático do acervo State Dept/CIA liberado formalmente ao governo brasileiro em 2018, confirmando a ciência da cúpula presidencial sobre execuções.",
+      -15.7939,
+      -47.8828,
+      "Brasília, DF, Brasil (Gabinete Geisel / CIA)"
     ],
     [
       "DOC-CIA-1964-BROTHER-SAM",
@@ -335,7 +341,10 @@
       6,
       23,
       "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB118/10.pdf",
-      "Comprova documentalmente a prontidão de envio de armamentos, munições e combustíveis pela frota naval americana caso houvesse resistência armada pró-Goulart."
+      "Comprova documentalmente a prontidão de envio de armamentos, munições e combustíveis pela frota naval americana caso houvesse resistência armada pró-Goulart.",
+      -22.9068,
+      -43.1729,
+      "Rio de Janeiro, RJ, Brasil (Baía de Guanabara)"
     ],
     [
       "DOC-SNI-1976-CONDOR",
@@ -379,7 +388,10 @@
       12,
       0,
       "http://memoriasreveladas.gov.br/acervo/documentos/condor-sni-1976.pdf",
-      "Peça fundamental custodiada no Arquivo Nacional de Brasília comprovando o canal de cooperação operacional entre o SNI brasileiro e a DINA chilena."
+      "Peça fundamental custodiada no Arquivo Nacional de Brasília comprovando o canal de cooperação operacional entre o SNI brasileiro e a DINA chilena.",
+      -34.6037,
+      -58.3816,
+      "Buenos Aires, Argentina (Rede Condor Cone Sul)"
     ],
     [
       "DOC-DSI-1981-SERRA-PELADA",
@@ -422,7 +434,10 @@
       18,
       0,
       "http://memoriasreveladas.gov.br/acervo/documentos/dsi-mme-serra-pelada-1981.pdf",
-      "Mostra como a inteligência da ditadura subordinou a exploração mineral e a posse da terra no sudeste do Pará a intervenções de segurança interna."
+      "Mostra como a inteligência da ditadura subordinou a exploração mineral e a posse da terra no sudeste do Pará a intervenções de segurança interna.",
+      -5.9458,
+      -49.6644,
+      "Serra Pelada / Curionópolis, PA, Brasil"
     ],
     [
       "DOC-UK-1983-JIC-NUCLEAR",
@@ -466,7 +481,10 @@
       14,
       22,
       "https://discovery.nationalarchives.gov.uk/download/CAB158-83-JIC-BRAZIL.pdf",
-      "Mapeia as preocupações do gabinete britânico de que o Brasil dominasse o ciclo completo de enriquecimento isotópico de urânio em Iperó/SP."
+      "Mapeia as preocupações do gabinete britânico de que o Brasil dominasse o ciclo completo de enriquecimento isotópico de urânio em Iperó/SP.",
+      -23.0067,
+      -44.3181,
+      "Angra dos Reis, RJ, Brasil (Usinas Nucleares / JIC)"
     ],
     [
       "DOC-CSIS-1989-MINING-AMAZON",
@@ -509,7 +527,10 @@
       8,
       31,
       "https://open.canada.ca/en/search/ati/reference/lac-rg146-csis-brazil-1989.pdf",
-      "Primeiro registro desclassificado no Canadá correlacionando investimentos em alvarás de pesquisa mineral no norte brasileiro com alertas de violações indígenas."
+      "Primeiro registro desclassificado no Canadá correlacionando investimentos em alvarás de pesquisa mineral no norte brasileiro com alertas de violações indígenas.",
+      -3.119,
+      -60.0217,
+      "Manaus / Amazônia Legal, Brasil (CSIS)"
     ],
     [
       "DOC-STASI-1977-KWU-NUCLEAR",
@@ -552,7 +573,10 @@
       22,
       39,
       "https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-1892-brasilien-kernkraft.pdf",
-      "Mostra como o acordo nuclear bilionário de 1975 transformou o Rio de Janeiro e Bonn em alvos de espionagem cruzada de potências ocidentais e orientais."
+      "Mostra como o acordo nuclear bilionário de 1975 transformou o Rio de Janeiro e Bonn em alvos de espionagem cruzada de potências ocidentais e orientais.",
+      50.7374,
+      7.0982,
+      "Bonn / Erlangen, Alemanha (KWU / Stasi)"
     ],
     [
       "DOC-DGSE-1985-ALCANTARA",
@@ -594,7 +618,10 @@
       11,
       13,
       "https://francearchives.gouv.fr/pdf/shd-de-2015-zt-441-bresil-spatial.pdf",
-      "Explica os antecedentes de soberania aeroespacial brasileira e os embates geopolíticos em torno da base de lançamentos de Alcântara no Maranhão."
+      "Explica os antecedentes de soberania aeroespacial brasileira e os embates geopolíticos em torno da base de lançamentos de Alcântara no Maranhão.",
+      -2.4089,
+      -44.4144,
+      "Alcântara, MA, Brasil (Centro Espacial CLA)"
     ],
     [
       "DOC-ITALIA-1975-GLADIO-AMAZON",
@@ -638,7 +665,10 @@
       9,
       1,
       "http://dati.acs.beniculturali.it/declassificati/fasc-188-gladio-america-latina.pdf",
-      "Documento oficial italiano tornado público por determinação governamental, demonstrando conexões ilícitas entre foragidos europeus e governos do Cone Sul."
+      "Documento oficial italiano tornado público por determinação governamental, demonstrando conexões ilícitas entre foragidos europeus e governos do Cone Sul.",
+      41.9028,
+      12.4964,
+      "Roma, Itália (Sede do SISMI / Operação Gladio)"
     ],
     [
       "DOC-ASIO-1972-MINERALS",
@@ -682,7 +712,10 @@
       7,
       27,
       "https://recordsearch.naa.gov.au/download/A6119-88-ASIO-BRAZIL.pdf",
-      "Demonstra o mapeamento antecipado feito pela Austrália sobre a competitividade das jazidas de Carajás e Quadrilátero Ferrífero no mercado siderúrgico."
+      "Demonstra o mapeamento antecipado feito pela Austrália sobre a competitividade das jazidas de Carajás e Quadrilátero Ferrífero no mercado siderúrgico.",
+      -35.2809,
+      149.13,
+      "Canberra, Austrália (ASIO / Mineração Global)"
     ],
     [
       "DOC-ARGENTINA-1977-CONDOR",
@@ -724,7 +757,10 @@
       16,
       5,
       "https://www.argentina.gob.ar/sites/default/files/anm-condor-desclassificado-1977.pdf",
-      "Acervo desclassificado pelo Ministério de Defesa argentino que subsidiou julgamentos de crimes contra a humanidade nos dois países."
+      "Acervo desclassificado pelo Ministério de Defesa argentino que subsidiou julgamentos de crimes contra a humanidade nos dois países.",
+      -34.6037,
+      -58.3816,
+      "Buenos Aires, Argentina (Batallón 601)"
     ],
     [
       "DOC-KGB-1969-AI5",
@@ -767,7 +803,10 @@
       15,
       16,
       "https://digitalarchive.wilsoncenter.org/document/kgb-assessment-brazil-military-regime-1969.pdf",
-      "Permite ao pesquisador auditar como a inteligência da superpotência rival da Guerra Fria interpretava a geopolítica e a soberania dos recursos brasileiros."
+      "Permite ao pesquisador auditar como a inteligência da superpotência rival da Guerra Fria interpretava a geopolítica e a soberania dos recursos brasileiros.",
+      55.7558,
+      37.6173,
+      "Moscou, Rússia (Lubyanka / Primeira Diretoria KGB)"
     ],
     [
       "DOC-FBI-1968-UNREST",
@@ -807,7 +846,10 @@
       24,
       29,
       "https://vault.fbi.gov/brazil-political-unrest-1968/brazil-political-unrest-1968-part-01-of-01.pdf",
-      "Evidencia o papel ativo dos adidos policiais americanos lotados na embaixada do Rio de Janeiro no levantamento diário de protestos cívicos."
+      "Evidencia o papel ativo dos adidos policiais americanos lotados na embaixada do Rio de Janeiro no levantamento diário de protestos cívicos.",
+      38.8951,
+      -77.0364,
+      "Washington, D.C., EUA (Quartel-General do FBI)"
     ],
     [
       "DOC-CSN-1973-ITAIPU",
@@ -849,7 +891,10 @@
       26,
       0,
       "http://memoriasreveladas.gov.br/acervo/documentos/csn-itaipu-seguranca-1973.pdf",
-      "Base jurídica e de inteligência que consolidou a construção da Usina de Itaipu e garantiu a liderança energética brasileira no Prata."
+      "Base jurídica e de inteligência que consolidou a construção da Usina de Itaipu e garantiu a liderança energética brasileira no Prata.",
+      -25.4089,
+      -54.5889,
+      "Foz do Iguaçu, PR, Brasil (Usina Binacional de Itaipu)"
     ],
     [
       "DOC-CIA-1984-NIE-EXPANSION",
@@ -894,7 +939,10 @@
       21,
       34,
       "https://www.cia.gov/readingroom/docs/CIA-RDP87T00495R000901010002-3.pdf",
-      "Relatório estratégico dos EUA avaliando a capacidade industrial soberana do Brasil e a independência diplomática em relação ao FMI."
+      "Relatório estratégico dos EUA avaliando a capacidade industrial soberana do Brasil e a independência diplomática em relação ao FMI.",
+      38.9517,
+      -77.1467,
+      "Langley, Virgínia, EUA (Sede Central da CIA)"
     ],
     [
       "DOC-SSA-1979-SOUTH-ATLANTIC",
@@ -938,7 +986,10 @@
       17,
       11,
       "https://www.saha.org.za/pdf/foip/trc-south-atlantic-security-1979.pdf",
-      "Demonstra o posicionamento soberano do Itamaraty que rejeitou alianças militares com Pretória em defesa da autodeterminação dos povos africanos."
+      "Demonstra o posicionamento soberano do Itamaraty que rejeitou alianças militares com Pretória em defesa da autodeterminação dos povos africanos.",
+      -25.7479,
+      28.2293,
+      "Pretória, África do Sul (DANS / Atlântico Sul)"
     ],
     [
       "DOC-GIP-1983-OIL-COMMODITIES",
@@ -981,7 +1032,10 @@
       13,
       36,
       "https://discovery.nationalarchives.gov.uk/download/FCO-8-5021-SAUDI-BRAZIL-TRADE.pdf",
-      "Ilustra o mecanismo de compensação comercial (countertrade) criado durante as crises do petróleo para manter o abastecimento nacional sem queimar reservas em dólar."
+      "Ilustra o mecanismo de compensação comercial (countertrade) criado durante as crises do petróleo para manter o abastecimento nacional sem queimar reservas em dólar.",
+      24.7136,
+      46.6753,
+      "Riade, Arábia Saudita (GIP / Comércio de Petróleo)"
     ],
     [
       "DOC-MSS-1974-BEIJING-BRASILIA",
@@ -1024,7 +1078,10 @@
       10,
       18,
       "https://digitalarchive.wilsoncenter.org/document/fma-prc-brazil-diplomatic-relations-1974.pdf",
-      "Marco histórico da diplomacia pragmática brasileira que abriu caminho para a China se tornar o maior parceiro comercial e destino do minério da Vale."
+      "Marco histórico da diplomacia pragmática brasileira que abriu caminho para a China se tornar o maior parceiro comercial e destino do minério da Vale.",
+      39.9042,
+      116.4074,
+      "Pequim, China (Ministério da Segurança do Estado MSS)"
     ],
     [
       "DOC-KCIA-1978-STEEL-SUPPLY",
@@ -1066,7 +1123,10 @@
       15,
       4,
       "https://www.archives.go.kr/open_content/pdf/nak-kcia-steel-brazil-1978.pdf",
-      "Mostra a articulação de segurança econômica da Coreia do Sul para garantir pelotas de minério de alta qualidade para o milagre industrial coreano."
+      "Mostra a articulação de segurança econômica da Coreia do Sul para garantir pelotas de minério de alta qualidade para o milagre industrial coreano.",
+      37.5665,
+      126.978,
+      "Seul / Pohang, Coreia do Sul (KCIA / POSCO)"
     ],
     [
       "DOC-CESID-1981-CONO-SUR",
@@ -1109,7 +1169,10 @@
       12,
       6,
       "https://www.defensa.gob.es/cni/archivo/cesid-informe-latinoamerica-1981.pdf",
-      "Registra a avaliação internacional sobre a resistência de setores da linha-dura militar contra a redemocratização após o episódio do Riocentro."
+      "Registra a avaliação internacional sobre a resistência de setores da linha-dura militar contra a redemocratização após o episódio do Riocentro.",
+      40.4168,
+      -3.7038,
+      "Madri, Espanha (CESID / Redes Diplomáticas)"
     ],
     [
       "DOC-BVD-1979-ROTTERDAM-COMMODITIES",
@@ -1152,7 +1215,10 @@
       11,
       38,
       "https://www.nationaalarchief.nl/pdf/aivd-bvd-dossier-brazilie-rotterdam-1979.pdf",
-      "Destaca o papel geopolítico de Roterdã como porta de entrada de commodities brasileiras e a dependência alimentar do gado europeu da soja do Cerrado."
+      "Destaca o papel geopolítico de Roterdã como porta de entrada de commodities brasileiras e a dependência alimentar do gado europeu da soja do Cerrado.",
+      51.9244,
+      4.4777,
+      "Roterdã, Países Baixos (Porto de Roterdã e BVD)"
     ],
     [
       "DOC-RAW-1979-NON-ALIGNED-NUCLEAR",
@@ -1195,7 +1261,10 @@
       14,
       12,
       "https://www.nationalarchives.nic.in/pdf/raw-ib-special-report-brazil-nonaligned-1979.pdf",
-      "Evidencia as convergências históricas de política externa entre Brasil e Índia em defesa da autonomia tecnológica e recusa a tutelas internacionais."
+      "Evidencia as convergências históricas de política externa entre Brasil e Índia em defesa da autonomia tecnológica e recusa a tutelas internacionais.",
+      28.6139,
+      77.209,
+      "Nova Délhi, Índia (R&AW / Não-Alinhados)"
     ],
     [
       "DOC-BAKIN-1982-TROPICAL-FORESTS",
@@ -1237,7 +1306,10 @@
       16,
       2,
       "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/bakin-indonesia-brazil-cooperation-1982.pdf",
-      "Documenta os primórdios da articulação das nações megadiversas detentoras das maiores florestas equatoriais do globo frente a pressões ocidentais."
+      "Documenta os primórdios da articulação das nações megadiversas detentoras das maiores florestas equatoriais do globo frente a pressões ocidentais.",
+      -6.2088,
+      106.8456,
+      "Jacarta, Indonésia (BAKIN / Soberania Florestal)"
     ],
     [
       "DOC-MOFA-1980-CARAJAS-INVESTMENT",
@@ -1280,7 +1352,10 @@
       20,
       10,
       "https://www.mofa.go.jp/mofaj/files/000492819.pdf",
-      "Comprova como o capital industrial japonês participou da estruturação da infraestrutura de escoamento mineral do Pará e Maranhão para o mercado global."
+      "Comprova como o capital industrial japonês participou da estruturação da infraestrutura de escoamento mineral do Pará e Maranhão para o mercado global.",
+      35.6762,
+      139.6503,
+      "Tóquio, Japão (Kasumigaseki / Mitsui / PSIA)"
     ],
     [
       "DOC-DFS-1975-EXILADOS-UNAM",
@@ -1322,7 +1397,10 @@
       19,
       9,
       "https://www.gob.mx/agn/articulos/expedientes-dfs-exiliados-brasil-1975.pdf",
-      "Revela a convivência paradoxal entre o asilo diplomático concedido pelo governo mexicano e o monitoramento clandestino de sua polícia secreta."
+      "Revela a convivência paradoxal entre o asilo diplomático concedido pelo governo mexicano e o monitoramento clandestino de sua polícia secreta.",
+      19.4326,
+      -99.1332,
+      "Cidade do México, México (DFS / Vigilância UNAM)"
     ],
     [
       "DOC-PIDE-1973-LIGACOES-DOPS",
@@ -1365,7 +1443,10 @@
       13,
       3,
       "https://digitarq.arquivos.pt/viewer?id=4289012",
-      "Evidência documental de acordos informais de extradição e repressão articulados entre as polícias secretas de Lisboa e do Brasil antes da Revolução de Abril."
+      "Evidência documental de acordos informais de extradição e repressão articulados entre as polícias secretas de Lisboa e do Brasil antes da Revolução de Abril.",
+      38.7223,
+      -9.1393,
+      "Lisboa, Portugal (PIDE/DGS / Prontuários DOPS)"
     ],
     [
       "DOC-MIT-1985-BRAZIL-DEFENSE",
@@ -1408,7 +1489,10 @@
       17,
       7,
       "https://www.devletarsivleri.gov.tr/pdf/mit-raporu-brezilya-savunma-1985.pdf",
-      "Mostra como o avanço tecnológico militar brasileiro nos anos 1980 transformou o país no 5º maior exportador de equipamentos de defesa do mundo ocidental."
+      "Mostra como o avanço tecnológico militar brasileiro nos anos 1980 transformou o país no 5º maior exportador de equipamentos de defesa do mundo ocidental.",
+      39.9334,
+      32.8597,
+      "Ancara, Turquia (MIT / Cooperação Militar)"
     ],
     [
       "DOC-HAEU-1992-MINERAL-SAFEGUARDS",
@@ -1452,7 +1536,10 @@
       25,
       8,
       "https://archives.eui.eu/en/fonds/BAC-1992-04-MINERALS-BRAZIL.pdf",
-      "Antecedente das regras europeias de devida diligência mineral e florestal que impactam diretamente exportações e territórios tradicionais no Brasil."
+      "Antecedente das regras europeias de devida diligência mineral e florestal que impactam diretamente exportações e territórios tradicionais no Brasil.",
+      50.8503,
+      4.3517,
+      "Bruxelas, Bélgica (Comissão Europeia / HAEU)"
     ],
     [
       "DOC-GLOBAL-USA-1962-MISSILES",
@@ -1494,7 +1581,10 @@
       12,
       32,
       "https://www.cia.gov/readingroom/docs/DOC_0001097202.pdf",
-      "Dossiê canônico da Guerra Fria sobre o limiar de guerra termonuclear entre as superpotências sem envolvimento direto do Brasil."
+      "Dossiê canônico da Guerra Fria sobre o limiar de guerra termonuclear entre as superpotências sem envolvimento direto do Brasil.",
+      22.8167,
+      -83.05,
+      "San Cristóbal, Pinar del Río, Cuba (Crise dos Mísseis)"
     ],
     [
       "DOC-GLOBAL-GBR-1963-PHILBY",
@@ -1537,7 +1627,10 @@
       18,
       20,
       "https://discovery.nationalarchives.gov.uk/download/KV-2-3498.pdf",
-      "Documento clássico de inteligência sobre espionagem mútua de potências europeias."
+      "Documento clássico de inteligência sobre espionagem mútua de potências europeias.",
+      33.8938,
+      35.5018,
+      "Beirute, Líbano (Fuga de Kim Philby / MI6)"
     ],
     [
       "DOC-GLOBAL-DEU-1961-BERLIN-WALL",
@@ -1579,7 +1672,10 @@
       24,
       40,
       "https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-berliner-mauer-1961.pdf",
-      "Registro histórico da divisão da Europa e contenção migratória na Cortina de Ferro."
+      "Registro histórico da divisão da Europa e contenção migratória na Cortina de Ferro.",
+      52.5075,
+      13.3904,
+      "Berlim (Checkpoint Charlie), Alemanha"
     ],
     [
       "DOC-GLOBAL-FRA-1957-ALGERIA-BATTLE",
@@ -1619,7 +1715,10 @@
       20,
       13,
       "https://francearchives.gouv.fr/pdf/shd-sdece-algerie-1957.pdf",
-      "Doutrina de contrainsurgência que posteriormente influenciou escolas militares sul-americanas."
+      "Doutrina de contrainsurgência que posteriormente influenciou escolas militares sul-americanas.",
+      36.7538,
+      3.0588,
+      "Argel (Casbah), Argélia (Batalha de Argel)"
     ],
     [
       "DOC-GLOBAL-ITA-1980-BOLOGNA-MASSACRE",
@@ -1658,7 +1757,10 @@
       32,
       1,
       "http://dati.acs.beniculturali.it/declassificati/strage-bologna-fasc-22.pdf",
-      "Documento sobre desvios e acobertamento de atos terroristas desclassificado pela presidência italiana."
+      "Documento sobre desvios e acobertamento de atos terroristas desclassificado pela presidência italiana.",
+      44.5058,
+      11.3431,
+      "Bolonha, Itália (Estação Central / Estratégia da Tensão)"
     ],
     [
       "DOC-GLOBAL-CAN-1959-DEW-LINE",
@@ -1699,7 +1801,10 @@
       15,
       30,
       "https://open.canada.ca/en/search/ati/reference/lac-rg146-dew-line-1959.pdf",
-      "Dossiê de soberania polar e monitoramento aeroespacial na América do Norte."
+      "Dossiê de soberania polar e monitoramento aeroespacial na América do Norte.",
+      68.3581,
+      -133.7228,
+      "Inuvik / Ártico Canadense (Linha DEW / NORAD)"
     ],
     [
       "DOC-GLOBAL-RUS-1979-AFGHANISTAN",
@@ -1743,7 +1848,10 @@
       18,
       19,
       "https://digitalarchive.wilsoncenter.org/document/decision-politburo-soviet-entry-afghanistan-1979.pdf",
-      "Documento oficial soviético decisivo sobre o conflito afegão dos anos 1980."
+      "Documento oficial soviético decisivo sobre o conflito afegão dos anos 1980.",
+      34.5553,
+      69.2075,
+      "Cabul, Afeganistão (Palácio Tajbeg / Spetsnaz)"
     ],
     [
       "DOC-GLOBAL-CHN-1972-NIXON-BEIJING",
@@ -1785,7 +1893,10 @@
       22,
       17,
       "https://digitalarchive.wilsoncenter.org/document/mao-nixon-meeting-beijing-transcript-1972.pdf",
-      "Marco histórico da diplomacia asiática e reaproximação com o Ocidente."
+      "Marco histórico da diplomacia asiática e reaproximação com o Ocidente.",
+      39.9042,
+      116.4074,
+      "Pequim (Zhongnanhai), China (Nixon-Mao)"
     ],
     [
       "DOC-GLOBAL-JPN-1960-ANPO-SECURITY",
@@ -1825,7 +1936,10 @@
       16,
       10,
       "https://www.mofa.go.jp/mofaj/files/000182741.pdf",
-      "Base jurídica da aliança de segurança do Pacífico pós-Segunda Guerra Mundial."
+      "Base jurídica da aliança de segurança do Pacífico pós-Segunda Guerra Mundial.",
+      35.6762,
+      139.7547,
+      "Tóquio, Japão (Dieta Nacional / Protestos ANPO)"
     ],
     [
       "DOC-GLOBAL-IND-1974-SMILING-BUDDHA",
@@ -1867,7 +1981,10 @@
       14,
       12,
       "https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf",
-      "Primeiro teste nuclear realizado por uma nação fora dos cinco membros permanentes da ONU."
+      "Primeiro teste nuclear realizado por uma nação fora dos cinco membros permanentes da ONU.",
+      27.0911,
+      71.7528,
+      "Pokhran, Rajastão, Índia (Teste Nuclear)"
     ],
     [
       "DOC-GLOBAL-ZAF-1975-SAVANNAH-ANGOLA",
@@ -1909,7 +2026,10 @@
       21,
       11,
       "https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf",
-      "Dossiê militar sobre o conflito fronteiriço na África Austral durante os anos 1970."
+      "Dossiê militar sobre o conflito fronteiriço na África Austral durante os anos 1970.",
+      -12.35,
+      15.7333,
+      "Huambo, Angola (Operação Savannah)"
     ],
     [
       "DOC-GLOBAL-SAU-1973-OPEC-EMBARGO",
@@ -1953,7 +2073,10 @@
       15,
       21,
       "https://discovery.nationalarchives.gov.uk/download/FCO-67-941-OPEC-OIL-EMBARGO-1973.pdf",
-      "Documento do primeiro grande choque do petróleo que redefiniu a economia global."
+      "Documento do primeiro grande choque do petróleo que redefiniu a economia global.",
+      24.7136,
+      46.6753,
+      "Riade, Arábia Saudita (Embargo da OPEP)"
     ],
     [
       "DOC-GLOBAL-ARG-1982-RATTENBACH-MALVINAS",
@@ -1993,7 +2116,10 @@
       45,
       5,
       "https://www.argentina.gob.ar/sites/default/files/informe-rattenbach-malvinas-1982.pdf",
-      "Auditoria histórica rigorosa das Forças Armadas argentinas sobre o conflito das Malvinas."
+      "Auditoria histórica rigorosa das Forças Armadas argentinas sobre o conflito das Malvinas.",
+      -51.6977,
+      -57.8517,
+      "Port Stanley / Malvinas (Comissão Rattenbach)"
     ],
     [
       "DOC-GLOBAL-AUS-1966-VIETNAM-DEPLOYMENT",
@@ -2035,7 +2161,10 @@
       17,
       26,
       "https://recordsearch.naa.gov.au/download/A6119-92-ASIO-VIETNAM-1966.pdf",
-      "Análise da atuação australiana em coalizões militares no Pacífico."
+      "Análise da atuação australiana em coalizões militares no Pacífico.",
+      10.5167,
+      107.2167,
+      "Nui Dat, Vietnã (Base Militar Australiana)"
     ],
     [
       "DOC-GLOBAL-KOR-1968-BLUE-HOUSE-PUEBLO",
@@ -2076,7 +2205,10 @@
       19,
       4,
       "https://www.archives.go.kr/open_content/pdf/nak-kcia-blue-house-pueblo-1968.pdf",
-      "Crise geopolítica asiática de 1968 que quase desencadeou uma nova guerra aberta na Coreia."
+      "Crise geopolítica asiática de 1968 que quase desencadeou uma nova guerra aberta na Coreia.",
+      37.5866,
+      126.9747,
+      "Seul (Casa Azul), Coreia do Sul"
     ],
     [
       "DOC-GLOBAL-ESP-1981-GOLPE-23F",
@@ -2116,7 +2248,10 @@
       28,
       6,
       "https://www.defensa.gob.es/cni/archivo/cesid-informe-23f-1981.pdf",
-      "Episódio crucial da transição democrática ibérica e controle civil sobre as Forças Armadas."
+      "Episódio crucial da transição democrática ibérica e controle civil sobre as Forças Armadas.",
+      40.4168,
+      -3.6961,
+      "Madri (Congresso dos Deputados), Espanha"
     ],
     [
       "DOC-GLOBAL-NLD-1947-INDONESIA-ACTIONS",
@@ -2157,7 +2292,10 @@
       22,
       37,
       "https://www.nationaalarchief.nl/pdf/bvd-indonesie-politionele-acties-1947.pdf",
-      "Documento oficial sobre a descolonização e a independência das Índias Orientais."
+      "Documento oficial sobre a descolonização e a independência das Índias Orientais.",
+      -7.2575,
+      112.7521,
+      "Java / Surabaya, Indonésia (Operações Coloniais)"
     ],
     [
       "DOC-GLOBAL-IDN-1965-G30S-PURGE",
@@ -2198,7 +2336,10 @@
       26,
       2,
       "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/indonesia-1965-cables-bakin.pdf",
-      "Dossiê desclassificado sobre a violência política em massa no sudeste asiático durante a Guerra Fria."
+      "Dossiê desclassificado sobre a violência política em massa no sudeste asiático durante a Guerra Fria.",
+      -6.2088,
+      106.8456,
+      "Jacarta, Indonésia (Movimento 30 de Setembro)"
     ],
     [
       "DOC-GLOBAL-MEX-1968-TLATELOLCO",
@@ -2237,7 +2378,10 @@
       34,
       9,
       "https://www.gob.mx/agn/articulos/expedientes-dfs-tlatelolco-1968.pdf",
-      "Documento oficial do Arquivo Geral da Nação mexicana desclassificado sobre o massacre de 1968."
+      "Documento oficial do Arquivo Geral da Nação mexicana desclassificado sobre o massacre de 1968.",
+      19.4517,
+      -99.1369,
+      "Praça de Tlatelolco, Cidade do México"
     ],
     [
       "DOC-GLOBAL-PRT-1974-CRAVOS-REVOLUTION",
@@ -2277,7 +2421,10 @@
       15,
       3,
       "https://cd25a.uc.pt/media/pdf/relatorio-pide-25-abril-1974.pdf",
-      "Registro histórico do colapso da ditadura mais longeva da Europa ocidental."
+      "Registro histórico do colapso da ditadura mais longeva da Europa ocidental.",
+      38.7119,
+      -9.1436,
+      "Largo do Carmo, Lisboa, Portugal"
     ],
     [
       "DOC-GLOBAL-TUR-1974-CYPRUS-OPERATION",
@@ -2319,7 +2466,10 @@
       22,
       7,
       "https://www.devletarsivleri.gov.tr/pdf/mit-kibris-baris-harekati-1974.pdf",
-      "Dossiê militar sobre o conflito de partição territorial de Chipre em 1974."
+      "Dossiê militar sobre o conflito de partição territorial de Chipre em 1974.",
+      35.1856,
+      33.3823,
+      "Kyrenia / Nicósia, Chipre (Operação Atila)"
     ],
     [
       "DOC-GLOBAL-EUR-1956-SPAAK-ROME",
@@ -2364,7 +2514,10 @@
       38,
       8,
       "https://archives.eui.eu/en/fonds/CM3-1956-SPAAK-REPORT.pdf",
-      "Origem documental dos blocos econômicos e do modelo comunitário europeu."
+      "Origem documental dos blocos econômicos e do modelo comunitário europeu.",
+      50.8503,
+      4.3517,
+      "Val Duchesse / Bruxelas, Bélgica (Relatório Spaak)"
     ],
     [
       "DOC-GLOBAL-GLEIF-TRANSNATIONAL-LEI",
@@ -2407,7 +2560,10 @@
       50,
       35,
       "https://www.gleif.org/downloads/lei-data/2024-global-lei-compendium.pdf",
-      "Base aberta fundamental para rastrear a cadeia de propriedade de mineradoras multinacionais com filiais no Brasil."
+      "Base aberta fundamental para rastrear a cadeia de propriedade de mineradoras multinacionais com filiais no Brasil.",
+      47.3769,
+      8.5417,
+      "Zurique / Basileia, Suíça (Sede Global GLEIF)"
     ],
     [
       "DOC-GLOBAL-GRID-TAILINGS-PORTAL",
@@ -2451,7 +2607,10 @@
       42,
       28,
       "https://tailings.grida.no/download/global-tailings-portal-report.pdf",
-      "Permite comparar os métodos das barragens de Minas Gerais e Pará com os padrões internacionais adotados no Canadá e Austrália."
+      "Permite comparar os métodos das barragens de Minas Gerais e Pará com os padrões internacionais adotados no Canadá e Austrália.",
+      58.3405,
+      8.5934,
+      "Arendal, Noruega (GRID-Arendal UNEP)"
     ],
     [
       "DOC-GLOBAL-CLIMATE-TRACE-FACILITIES",
@@ -2494,7 +2653,10 @@
       60,
       15,
       "https://climatetrace.org/downloads/2024-emissions-inventory-report.pdf",
-      "Auditoria independente de satélite que confronta relatórios de sustentabilidade declarados pelas mineradoras com dados medidos no espaço."
+      "Auditoria independente de satélite que confronta relatórios de sustentabilidade declarados pelas mineradoras com dados medidos no espaço.",
+      37.7749,
+      -122.4194,
+      "São Francisco, Califórnia, EUA (Climate TRACE)"
     ],
     [
       "DOC-GLOBAL-OPENALEX-MINING-EVIDENCE",
@@ -2535,7 +2697,10 @@
       85,
       25,
       "https://openalex.org/downloads/openalex-mining-dam-failures-dataset.pdf",
-      "Catálogo acadêmico global com pesquisas revisadas por pares sobre as tragédias de Mariana e Brumadinho."
+      "Catálogo acadêmico global com pesquisas revisadas por pares sobre as tragédias de Mariana e Brumadinho.",
+      38.8951,
+      -77.0364,
+      "Washington, D.C., EUA (OpenAlex / OurResearch)"
     ],
     [
       "DOC-GLOBAL-SABIN-CLIMATE-LITIGATION",
@@ -2577,7 +2742,10 @@
       70,
       14,
       "https://climatecasechart.com/wp-content/uploads/2024/07/global-climate-litigation-trends.pdf",
-      "Mapeamento comparativo das ações climáticas no STF e cortes brasileiras contra casos internacionais no Reino Unido e Holanda."
+      "Mapeamento comparativo das ações climáticas no STF e cortes brasileiras contra casos internacionais no Reino Unido e Holanda.",
+      40.8075,
+      -73.9626,
+      "Nova York (Columbia Law), EUA (Sabin Center)"
     ],
     [
       "DOC-GLOBAL-NATIVE-LAND-MAPPING",
@@ -2620,7 +2788,10 @@
       35,
       24,
       "https://native-land.ca/resources/native-land-mapping-methodology.pdf",
-      "Ferramenta global de transparência territorial e demarcação ancestral conectando lutas indígenas do Brasil às Primeiras Nações do Canadá e EUA."
+      "Ferramenta global de transparência territorial e demarcação ancestral conectando lutas indígenas do Brasil às Primeiras Nações do Canadá e EUA.",
+      49.2827,
+      -123.1207,
+      "Vancouver, BC, Canadá (Native Land Digital)"
     ]
   ]
 }

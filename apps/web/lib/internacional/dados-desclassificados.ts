@@ -50,6 +50,9 @@ export interface DocumentoDesclassificadoG20 {
   urlOficialCustodia: string;
   urlPdfOriginal: string;
   contextoBrasil: string;
+  latitude?: number;
+  longitude?: number;
+  localidadeFoco?: string;
 }
 
 /** Cache em memoria para evitar expansao repetida */
@@ -67,6 +70,34 @@ export function obterDocumentosDesclassificados(): DocumentoDesclassificadoG20[]
     ) as unknown as DocumentoDesclassificadoG20[];
   }
   return cacheDocumentos;
+}
+
+/**
+ * Retorna apenas os documentos que possuem coordenadas geográficas válidas.
+ */
+export function obterDocumentosDesclassificadosGeolocalizados(): (DocumentoDesclassificadoG20 & {
+  latitude: number;
+  longitude: number;
+  localidadeFoco: string;
+})[] {
+  const docs = obterDocumentosDesclassificados();
+  return docs.filter(
+    (d): d is DocumentoDesclassificadoG20 & { latitude: number; longitude: number; localidadeFoco: string } =>
+      typeof d.latitude === "number" &&
+      typeof d.longitude === "number" &&
+      typeof d.localidadeFoco === "string"
+  );
+}
+
+/**
+ * Busca um documento desclassificado específico pelo identificador canônico.
+ */
+export function obterDocumentoDesclassificadoPorId(
+  id: string
+): DocumentoDesclassificadoG20 | undefined {
+  const docs = obterDocumentosDesclassificados();
+  const idNormalizado = String(id || "").trim().toLowerCase();
+  return docs.find((d) => d.id.toLowerCase() === idNormalizado);
 }
 
 // Calculo dos agregados medidos para exportacao leve

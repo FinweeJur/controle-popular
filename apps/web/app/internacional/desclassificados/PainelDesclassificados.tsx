@@ -18,7 +18,9 @@
  * - Otimizado para smartphones (<= 640px) e adaptado aos 4 temas oficiais do portal.
  */
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   Search,
   ArrowUpDown,
@@ -36,6 +38,7 @@ import {
   Sparkles,
   Eye,
   X,
+  MapPin,
 } from "lucide-react";
 import type { DocumentoDesclassificadoG20 } from "@/lib/internacional/dados-desclassificados";
 import { semAcento } from "@/lib/busca/normalizar";
@@ -100,6 +103,8 @@ const DICIONARIOS_UI: Record<
     detalheSujeitos: string;
     detalheContextoBrasil: string;
     detalheNumeroRegistro: string;
+    btnVerNoMapa: string;
+    btnExplorarMapa: string;
   }
 > = {
   pt: {
@@ -132,6 +137,8 @@ const DICIONARIOS_UI: Record<
     btnCustodiaOficial: "Custódia Oficial ↗",
     btnBaixarPdf: "PDF Original ↗",
     btnDetalhes: "Ficha Arquivística",
+    btnVerNoMapa: "Ver no Mapa 🗺️",
+    btnExplorarMapa: "🗺️ Ver Acervo no Mapa Global",
     cardTotalDocs: "Total de Documentos",
     cardOrgaos: "Órgãos de Inteligência",
     cardMencionamBrasil: "Citando o Brasil",
@@ -176,6 +183,8 @@ const DICIONARIOS_UI: Record<
     btnCustodiaOficial: "Official Custody ↗",
     btnBaixarPdf: "Original PDF ↗",
     btnDetalhes: "Archival Record",
+    btnVerNoMapa: "View on Map 🗺️",
+    btnExplorarMapa: "🗺️ Explore on Global Map",
     cardTotalDocs: "Total Records",
     cardOrgaos: "Intelligence Agencies",
     cardMencionamBrasil: "Mentioning Brazil",
@@ -220,6 +229,8 @@ const DICIONARIOS_UI: Record<
     btnCustodiaOficial: "Custodia Oficial ↗",
     btnBaixarPdf: "PDF Original ↗",
     btnDetalhes: "Ficha Archivística",
+    btnVerNoMapa: "Ver en el Mapa 🗺️",
+    btnExplorarMapa: "🗺️ Ver en el Mapa Global",
     cardTotalDocs: "Total de Documentos",
     cardOrgaos: "Órganos de Inteligencia",
     cardMencionamBrasil: "Mencionan a Brasil",
@@ -273,6 +284,19 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
 
   // Modal de Detalhes
   const [documentoSelecionado, setDocumentoSelecionado] = useState<DocumentoDesclassificadoG20 | null>(null);
+
+  // Leitura do parâmetro ?id=... para carregar documento vindo do mapa
+  const searchParams = useSearchParams();
+  const idParam = searchParams ? searchParams.get("id") : null;
+
+  useEffect(() => {
+    if (idParam) {
+      const doc = documentos.find((d) => d.id.toLowerCase() === idParam.toLowerCase());
+      if (doc) {
+        setDocumentoSelecionado(doc);
+      }
+    }
+  }, [idParam, documentos]);
 
   const ui = DICIONARIOS_UI[idioma];
 
@@ -490,6 +514,16 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
               </button>
             </div>
 
+            <Link
+              href="/internacional/desclassificados/mapa"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+              title="Explorar geolocalização dos relatórios no mapa interativo mundial"
+            >
+              <MapPin size={13} />
+              <span className="hidden sm:inline">{ui.btnExplorarMapa}</span>
+              <span className="sm:hidden">Mapa 🗺️</span>
+            </Link>
+
             <button
               type="button"
               onClick={exportarCsv}
@@ -679,14 +713,24 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                 </div>
 
                 <div className="pt-3 border-t border-border flex items-center justify-between gap-2 text-xs">
-                  <button
-                    type="button"
-                    onClick={() => setDocumentoSelecionado(doc)}
-                    className="inline-flex items-center gap-1 text-[11px] text-text-soft hover:text-primary font-semibold"
-                  >
-                    <Eye size={12} />
-                    <span>{ui.btnDetalhes}</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setDocumentoSelecionado(doc)}
+                      className="inline-flex items-center gap-1 text-[11px] text-text-soft hover:text-primary font-semibold"
+                    >
+                      <Eye size={12} />
+                      <span>{ui.btnDetalhes}</span>
+                    </button>
+                    <Link
+                      href={`/internacional/desclassificados/mapa?id=${encodeURIComponent(doc.id)}`}
+                      className="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+                      title="Ver localização deste relatório no mapa mundial"
+                    >
+                      <MapPin size={12} />
+                      <span>Mapa</span>
+                    </Link>
+                  </div>
 
                   <div className="flex items-center gap-2">
                     <a
@@ -826,6 +870,13 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                         >
                           <Eye size={12} />
                         </button>
+                        <Link
+                          href={`/internacional/desclassificados/mapa?id=${encodeURIComponent(doc.id)}`}
+                          className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors inline-flex items-center gap-1"
+                          title="Ver localização deste relatório no mapa mundial"
+                        >
+                          <MapPin size={11} />
+                        </Link>
                         <a
                           href={doc.urlPdfOriginal}
                           target="_blank"
@@ -978,7 +1029,15 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                 Fechar
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href={`/internacional/desclassificados/mapa?id=${encodeURIComponent(documentoSelecionado.id)}`}
+                  className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors inline-flex items-center gap-1.5"
+                  title="Localizar este relatório no mapa mundial"
+                >
+                  <MapPin size={13} />
+                  <span>{ui.btnVerNoMapa}</span>
+                </Link>
                 <a
                   href={documentoSelecionado.urlOficialCustodia}
                   target="_blank"
