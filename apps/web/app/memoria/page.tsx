@@ -5,6 +5,8 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { CALENDARIO_LUTAS } from "@/lib/memoria/calendario";
 import { fonteCurta } from "@/lib/memoria/mistica";
+import { DATAS_REFERENCIA, citacaoCurtaData } from "@/lib/memoria/datas-referencia";
+import { ROTULO_TIPO } from "@/lib/memoria/rotulos";
 import LinhaDoTempo from "./LinhaDoTempo";
 import type { VerbeteLinha } from "./LinhaDoTempo";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -132,6 +134,75 @@ export default function MemoriaPage() {
           <span>Números medidos do acervo em {MEDIDO_EM}.</span>
         </p>
       </header>
+
+      {/* Datas de referência dos movimentos sociais e direitos humanos.
+          Fonte em citação curta (Instituição, Ano). */}
+      <section aria-labelledby="datas-referencia" className="space-y-4">
+        <div>
+          <h2 id="datas-referencia" className="font-display text-2xl font-bold text-foreground">
+            Datas de referência
+          </h2>
+          <p className="mt-1 max-w-3xl text-sm text-text-soft">
+            O calendário de luta dos movimentos sociais e dos direitos humanos:
+            dias fixos que os movimentos marcam todo ano, cada um com a fonte.
+          </p>
+        </div>
+
+        <div className="space-y-5">
+          {[...new Set(DATAS_REFERENCIA.map((d) => Number(d.diaMes.slice(0, 2))))]
+            .sort((a, b) => a - b)
+            .map((mes) => (
+              <div key={mes}>
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">
+                  {MESES[mes - 1]}
+                </h3>
+                <ul className="mt-2 space-y-3">
+                  {DATAS_REFERENCIA.filter(
+                    (d) => Number(d.diaMes.slice(0, 2)) === mes
+                  ).map((d) => {
+                    const dia = Number(d.diaMes.slice(3, 5));
+                    return (
+                      <li
+                        key={d.diaMes}
+                        className="rounded-xl border border-border bg-surface p-4"
+                      >
+                        <div className="flex flex-wrap items-baseline gap-2">
+                          <span className="font-mono font-bold text-primary">
+                            {String(dia).padStart(2, "0")}/{String(mes).padStart(2, "0")}
+                          </span>
+                          <h4 className="font-semibold text-text">{d.titulo}</h4>
+                        </div>
+                        <p className="mt-1 text-sm text-text-soft">{d.descricao}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {d.tipo.map((t) => (
+                            <span
+                              key={t}
+                              className="rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft"
+                            >
+                              {ROTULO_TIPO[t]}
+                            </span>
+                          ))}
+                        </div>
+                        <p className="mt-2 text-xs text-muted">
+                          <span className="font-semibold">Fonte: </span>
+                          <a
+                            href={d.fonte.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={`${d.fonte.titulo} — ${d.fonte.autor}`}
+                            className="underline hover:text-primary"
+                          >
+                            {citacaoCurtaData(d.fonte)}
+                          </a>
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+        </div>
+      </section>
 
       <LinhaDoTempo verbetes={verbetes} />
 
