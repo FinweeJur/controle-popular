@@ -149,15 +149,14 @@ Entrada pública: [`app/api/chatbot/route.ts`](../../apps/web/app/api/chatbot/ro
 
 ### Achados da Parte 2
 
-1. **Blindagem INDIRETA existe e não está ligada.** `sanitizarTextoParaContexto`
-   (`lib/seguranca/blindagem-prompt.ts`) foi escrito e testado para injeção
-   **indireta** (texto de documento), mas não é chamado em lugar nenhum: o
-   contexto do RAG entra cru em `montarPromptUsuario`
-   ([geracao.ts](../../apps/web/lib/assistente/embeddings/geracao.ts)). A
-   injeção **direta** está ligada (rota do chatbot). O risco é menor porque o
-   acervo é curado pela casa, mas a defesa prometida pelo próprio módulo está
-   desconectada. **Ligar `sanitizarTextoParaContexto` a `FonteRag.texto` antes
-   do prompt.**
+1. ✅ **Blindagem INDIRETA ligada** (corrigido em 30/09/2026).
+   `sanitizarTextoParaContexto` (`lib/seguranca/blindagem-prompt.ts`) era
+   escrito e testado para injeção **indireta**, mas não era chamado: o
+   contexto do RAG entrava cru em `montarPromptUsuario`
+   ([geracao.ts](../../apps/web/lib/assistente/embeddings/geracao.ts)). Agora o
+   texto de cada fonte é higienizado ANTES do prompt — só na cópia que o
+   modelo lê; o `FonteRag.texto` citado ao leitor fica intacto. Coberto por
+   `geracao.test.ts`.
 
 2. **Limitador de taxa por IP confia no cabeçalho errado como reserva.** A
    rota usa `cf-connecting-ip` primeiro (certo), mas cai para

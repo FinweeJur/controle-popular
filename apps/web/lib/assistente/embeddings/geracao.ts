@@ -17,6 +17,7 @@
 
 import { OLLAMA_BASE_URL, OllamaIndisponivel, type OpcoesOllama } from "./ollama";
 import { listarProvedoresNaOrdem, temChaveRemota, type ProvedorIa } from "./provedores";
+import { sanitizarTextoParaContexto } from "../../seguranca/blindagem-prompt";
 
 const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5-coder:3b";
 
@@ -74,7 +75,17 @@ Regras rigidas:
 - A resposta deve ser curta, direta, em portugues do Brasil.
 - Ao final, liste as fontes usadas, uma por linha, com o numero e o nome da pagina.`;
 
-function montarPromptUsuario(
+/**
+ * Monta o prompt do USUÁRIO (contexto + pergunta). Exportado para teste.
+ *
+ * O `texto` de cada fonte é higienizado por `sanitizarTextoParaContexto`
+ * (blindagem de injeção INDIRETA) ANTES de entrar no prompt, mas isso é feito
+ * só na CÓPIA que o modelo lê: o array `fontes` e o `FonteRag.texto` originais
+ * ficam intactos, porque esse texto é o que o leitor vê na citação. Sanitizar
+ * a fonte inteira apagaria o trecho citado de verdade — o oposto do que o
+ * portal promete.
+ */
+export function montarPromptUsuario(
   pergunta: string,
   fontes: FonteRag[],
   instrucaoExtra?: string
@@ -82,7 +93,8 @@ function montarPromptUsuario(
   const contexto = fontes
     .map((f, i) => {
       const rotulo = f.titulo ? ` (${f.titulo})` : "";
-      return `[Fonte ${i + 1}]${rotulo} (relevancia: ${(f.score * 100).toFixed(1)}%)\n${f.texto}`;
+      const trecho = sanitizarTextoParaContexto(f.texto);
+      return `[Fonte ${i + 1}]${rotulo} (relevancia: ${(f.score * 100).toFixed(1)}%)\n${trecho}`;
     })
     .join("\n\n");
 
