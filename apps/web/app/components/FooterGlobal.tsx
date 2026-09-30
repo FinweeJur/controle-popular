@@ -62,6 +62,7 @@ const LINKS_PORTAL = [
   { label: "Documentação Técnica", href: "/documentacao" },
   { label: "Governos & Promessas", href: "/governo" },
   { label: "Instituições & Secretarias", href: "/instituicoes" },
+  { label: "Guia de contatos", href: "/guia" },
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
