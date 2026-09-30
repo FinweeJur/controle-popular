@@ -50,6 +50,7 @@ const ATALHOS: { id: string; titulo: string; href: string; rotulo: string }[] = 
   { id: "paraopeba", titulo: "Bacia do Paraopeba", href: "/paraopeba", rotulo: "Brumadinho" },
   { id: "laboratorio", titulo: "Laboratório de Dados", href: "/laboratorio", rotulo: "Gráficos" },
   { id: "tecnologia", titulo: "Tecnologia & Ferramentas", href: "/tecnologia", rotulo: "Utilidades" },
+  { id: "modelos", titulo: "Modelos prontos", href: "/modelos", rotulo: "LAI e mais" },
 ];
 
 export default function PaletaComandos() {

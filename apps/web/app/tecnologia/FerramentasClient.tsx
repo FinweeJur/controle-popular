@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import {
   Calculator,
   CalendarDays,
@@ -644,6 +645,12 @@ export default function FerramentasClient() {
         <p className="mt-1 max-w-2xl text-sm text-muted leading-relaxed">
           Cinco utilidades prontas para usar, sem cadastro e sem custo. Tudo roda
           no seu navegador: nada é enviado, nada é guardado.
+        </p>
+        <p className="mt-2 text-sm text-muted">
+          Precisa de um texto para protocolar?{" "}
+          <Link href="/modelos" className="font-semibold text-primary hover:underline">
+            Ver os modelos prontos →
+          </Link>
         </p>
       </div>
 
