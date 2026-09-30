@@ -45,6 +45,7 @@ automáticamente pelos agentes de código.
 |---|---|---|
 | Arquitetura e payload | ARQUITETURA | [`04-arquitetura/ARQUITETURA.md`](04-arquitetura/ARQUITETURA.md) |
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
+| Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
