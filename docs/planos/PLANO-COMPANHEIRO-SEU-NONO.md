@@ -15,6 +15,7 @@
 - [Arquitetura](#arquitetura)
 - [Contrato `/api/companheiro`](#contrato-apicompanheiro)
 - [Fases](#fases)
+- [Sessão pareada e ponte (I3)](#sessão-pareada-e-ponte-i3)
 - [Repositórios e espelho](#repositórios-e-espelho)
 - [Segurança](#segurança)
 - [Como verificar](#como-verificar)
@@ -97,11 +98,58 @@ um dado real do portal (título de fonte, rota do catálogo). Nada é inventado.
 | **I1** | Provedor `portalProvider` no fork + painel de fontes | pendente |
 | **I2** | Espelho `companion/` + script `sync-companion.mts` | pendente |
 | **I3** | Identidade Seu Nonô (avatar, voz pt-BR, temas, cursor) | parcial |
+| **I3b** | Sessão pareada + ponte responsiva (portal) | 🚧 portal pronto 30/09; falta o lado do app |
 | **I4** | Pacote Windows + página explicativa no portal | pendente |
 
 O app (fases 1–5 do fork) já tem: arte do bichinho com critério de
 similaridade, tema preguiça/triângulo, trilha de galhos no overlay, menu
 **Bichinho** no tray e botões **DeepSeek** e **Sabiá (Maritaca)**.
+
+## Sessão pareada e ponte (I3)
+
+O companheiro é a boca e o olho; o portal é o cérebro. Para os dois agirem
+no mesmo turno, o site cria uma **sessão curta** e o bichinho entra **uma
+vez** com um código. Uma pergunta gera UM turno, transmitido aos dois: o
+chat do site abre o link e o companheiro recebe os galhos.
+
+**Transporte: em memória + SSE.** O RAG do portal já é em memória e o Guara
+roda em uma instância — a sessão segue o mesmo desenho. Estado: `Map` com
+TTL de 5 min (`apps/web/lib/companheiro/sessao.ts`). Sem conta, sem login,
+sem dado pessoal.
+
+| Rota | Método | Corpo | Devolve |
+|---|---|---|---|
+| `/api/companheiro/sessao` | POST | — | `{ id, codigo, expiraEm }` |
+| `/api/companheiro/sessao/parear` | POST | `{ codigo }` | `{ id, expiraEm }` |
+| `/api/companheiro/sessao/[id]/eventos` | GET | — | SSE (`aberta`, `pareada`, `turno`, `fechada`) |
+| `/api/companheiro/sessao/[id]/perguntar` | POST | `PedidoCompanheiro` | `RespostaCompanheiro` + evento `turno` |
+
+- O **código** (`ABC-123`, sem letras ambíguas) é o gesto humano; o **id**
+  (aleatório) é a credencial das rotas seguintes. O companheiro entra uma vez:
+  a segunda tentativa é recusada.
+- `perguntar` reusa `responderComoCompanheiro` — mesma escada e mesmo RAG do
+  site, sem duplicar regra. Passa por `sanitizarEntradaUsuario`, limite por IP
+  e, quando `COMPANHEIRO_TOKEN` existe, exige `Authorization: Bearer`.
+
+**Ponte responsiva.** O widget marca os alvos com `data-companheiro-alvo`
+(em `SeuNono.tsx`): os chips de citação `[n]` e o botão "Abrir página". O
+componente `PonteCompanheiro.tsx` mede cada alvo com `getBoundingClientRect`
+e envia o pacote para `http://127.0.0.1:<porta>` do companheiro.
+
+- **Opt-in:** só liga com `NEXT_PUBLIC_COMPANHEIRO_PONTE=1`; endereço em
+  `NEXT_PUBLIC_COMPANHEIRO_PONTE_URL` (padrão `http://127.0.0.1:8765/ponte`).
+- **Nunca posição fixa:** recalcula em `scroll`, `resize`, `ResizeObserver`
+  e `MutationObserver`, com throttle por `requestAnimationFrame`, para reagir a
+  celular, tablet e meia tela.
+- **Degrada em silêncio:** sem companheiro local, o `fetch` falha e nada
+  quebra. Nenhuma imagem de tela sai do navegador — só geometria e a URL.
+- ⚠️ **Private Network Access:** o servidor local do companheiro precisa
+  responder ao preflight `OPTIONS` com `Access-Control-Allow-Origin` (a origem
+  do portal) e `Access-Control-Allow-Private-Network: true`. O lado do app
+  (escutar a ponte, entrar na sessão e ouvir o SSE) é a próxima fatia do fork.
+
+Lógica pura testada em `lib/companheiro/sessao.test.ts` e
+`lib/companheiro/ponte.test.ts` (sem rede e sem DOM).
 
 ## Repositórios e espelho
 

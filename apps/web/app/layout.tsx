@@ -13,6 +13,7 @@ import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
 import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
+import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
 import { BackToTop } from "@/app/components/BackToTop";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import IndicePagina from "@/app/components/IndicePagina";
@@ -248,6 +249,10 @@ export default function RootLayout({
           {/* Seu Nonô — assistente flutuante. Modo texto enquanto IA não está
               configurada; modo IA (RAG) quando houver chave de API. */}
           <SeuNono />
+          {/* Ponte responsiva para o companheiro de desktop (bichinho). Só
+              age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
+              no-op. Ver `PonteCompanheiro.tsx`. */}
+          <PonteCompanheiro />
         </ThemeProvider>
       </body>
     </html>

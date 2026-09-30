@@ -44,6 +44,7 @@ import {
 } from "./SeuNonoData";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
+import { SessaoCompanheiro } from "./SessaoCompanheiro";
 import {
   useTypewriter,
   IndicadorStatusChat,
@@ -143,6 +144,8 @@ function renderizarRespostaComCitacoes(
       <button
         key={i}
         onClick={() => aoAbrir(url)}
+        data-companheiro-alvo="fonte"
+        data-companheiro-indice={n}
         title={`Abrir fonte ${n}: ${fonte.titulo ?? url}`}
         aria-label={`Abrir fonte ${n}: ${fonte.titulo ?? url}`}
         className="mx-0.5 inline-flex translate-y-[-1px] items-center rounded-md border border-primary/40 bg-primary/10 px-1.5 py-0 text-[.75rem] font-semibold leading-tight text-primary align-baseline hover:bg-primary/20"
@@ -1028,6 +1031,7 @@ export function SeuNono() {
               </div>
             </div>
             <div className="flex items-center gap-1">
+              <SessaoCompanheiro />
               {nivel !== "busca" && (
                 <button
                   onClick={abrirBusca}
@@ -1294,6 +1298,7 @@ export function SeuNono() {
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => abrirPagina(resposta.link!.href)}
+                              data-companheiro-alvo="abrir-pagina"
                               className="rounded p-1 text-text-soft hover:bg-surface-2"
                               aria-label={`Abrir ${resposta.link.texto}`}
                               title="Abrir página"
@@ -1331,6 +1336,7 @@ export function SeuNono() {
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => abrirPagina(l.href)}
+                              data-companheiro-alvo="abrir-pagina"
                               className="rounded p-1 text-text-soft hover:bg-surface-2"
                               aria-label={`Abrir ${l.texto}`}
                               title="Abrir página"
@@ -1434,6 +1440,7 @@ export function SeuNono() {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => abrirPagina(respostaContexto.link)}
+                            data-companheiro-alvo="abrir-pagina"
                             className="rounded p-1 text-text-soft hover:bg-surface-2"
                             aria-label={`Abrir ${respostaContexto.linkTexto}`}
                             title="Abrir página"
