@@ -1,3 +1,11 @@
+/**
+ * Correlação entre variação de cotação e notícia — o cruzamento que separa
+ * "o papel caiu" de "o papel caiu e saiu notícia junto".
+ *
+ * Recebe as séries já coletadas (`Cotacao[]`, `Noticia[]`) e devolve os
+ * movimentos significativos com a notícia próxima no tempo. Tudo puro e
+ * testável; a coleta mora fora daqui.
+ */
 export interface Cotacao {
   data: string;
   fechamento: number;

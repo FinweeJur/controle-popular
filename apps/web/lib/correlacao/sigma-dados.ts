@@ -1,5 +1,10 @@
 import { EventoAmbiental } from "./sigma";
 
+/**
+ * Eventos ambientais curados da Sigma Lithium — data, tipo, fonte e link. É a
+ * matéria-prima da linha do tempo (`sigma.ts`). Curadoria com fonte: cada
+ * evento aponta para o órgão/veículo de origem, nunca para o portal.
+ */
 export const EVENTOS_AMBIENTAIS_SIGMA: EventoAmbiental[] = [
   {
     data: "2025-08-02",

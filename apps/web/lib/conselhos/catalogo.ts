@@ -5,6 +5,16 @@ import type {
 } from "./tipos";
 import conselhosExpandidosJson from "@/data/conselhos-direitos.json";
 
+/**
+ * Catálogo de conselhos sociais e colegiados participativos — comitês de
+ * bacia, conselhos de direitos, de saúde etc. — com busca por município,
+ * categoria, esfera e bacia.
+ *
+ * Base curada (`CONSELHOS_BASE`) somada ao JSON versionado
+ * (`@/data/conselhos-direitos.json`). Funções puras de consulta; a tela só
+ * desenha o resultado.
+ */
+
 const CONSELHOS_BASE: RegistroConselho[] = [
   // ==========================================
   // COMITÊS DE BACIAS HIDROGRÁFICAS

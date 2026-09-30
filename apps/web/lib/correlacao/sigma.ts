@@ -1,3 +1,9 @@
+/**
+ * Linha do tempo ambiental da Sigma Lithium (Vale do Jequitinhonha) — junta
+ * eventos oficiais (`EventoAmbiental`: licença, embargo, multa, CFEM…) com as
+ * notícias de monitoramento, ordenados por data. Alimenta a frente
+ * `/empresas`. Função pura; o dado curado vem de `sigma-dados.ts`.
+ */
 export interface EventoAmbiental {
   data: string;
   tipo: "licenciamento" | "embargo" | "suspensao" | "multa" | "cfem" | "denuncia";

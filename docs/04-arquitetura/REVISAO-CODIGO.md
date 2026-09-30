@@ -23,6 +23,7 @@
 - [Parte 9 — testes que não testavam (navegação)](#parte-9--testes-que-não-testavam-navegação)
 - [Parte 10 — escrita pública e resiliência](#parte-10--escrita-pública-e-resiliência)
 - [Parte 11 — LinkMender e denúncia](#parte-11--linkmender-e-denúncia)
+- [Parte 12 — conselhos e correlação](#parte-12--conselhos-e-correlação)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -489,6 +490,23 @@ Quinta passada, em módulos frios.
    potencial em tese), mas o pipeline roda como **script no home-pc**, sobre
    URL curada — não é rota pública. **Se um dia virar API, precisa de
    allowlist de host.**
+
+## Parte 12 — conselhos e correlação
+
+Sexta passada, em módulos frios.
+
+### Achados da Parte 12
+
+1. ✅ **4 arquivos sem cabeçalho** ganharam o bloco de onboarding:
+   `lib/correlacao/detectar.ts`, `sigma.ts`, `sigma-dados.ts` e
+   `lib/conselhos/catalogo.ts`.
+
+2. ✅ **Conferidos por amostragem** (cabeçalho e teste ao lado): `lib/acordos`,
+   `lib/instituicoes`, `lib/clima`, `lib/assembleias`, `lib/legislativo`,
+   `lib/direitos`, `lib/direitos-humanos`, `lib/cavas`, `lib/estudos-rurais`.
+
+3. ✅ **`lib/brumadinho/repasse.ts`** — dupla via de leitura: `node:fs` no
+   build e `env.ASSETS.fetch` quando publicado. SERVER-ONLY; sem furo.
 
 ## Achados e dívidas
 
