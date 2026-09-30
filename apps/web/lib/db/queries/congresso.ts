@@ -1,5 +1,5 @@
 import { and, asc, count, desc, eq, ilike, inArray, isNotNull, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import {
   analise_itensInCongresso,
   analisesInCongresso,
@@ -36,60 +36,68 @@ import {
 
 /** Bancadas com a contagem de membros, agregada no banco. */
 export async function listarBancadasComContagem(tipo?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const q = db
-    .select({
-      id: bancadasInCongresso.id,
-      casa_id: bancadasInCongresso.casa_id,
-      id_externo: bancadasInCongresso.id_externo,
-      tipo: bancadasInCongresso.tipo,
-      nome: bancadasInCongresso.nome,
-      legislatura: bancadasInCongresso.legislatura,
-      url_site: bancadasInCongresso.url_site,
-      // COUNT sobre o LEFT JOIN, não sobre as linhas: bancada sem membro
-      // tem de aparecer com 0, e não sumir.
-      membros: count(bancada_membrosInCongresso.parlamentar_id),
-    })
-    .from(bancadasInCongresso)
-    .leftJoin(
-      bancada_membrosInCongresso,
-      eq(bancada_membrosInCongresso.bancada_id, bancadasInCongresso.id)
-    )
-    .groupBy(bancadasInCongresso.id);
-  return tipo ? q.where(eq(bancadasInCongresso.tipo, tipo)) : q;
+  return comBancoReserva(
+    (db) => {
+      const q = db
+        .select({
+          id: bancadasInCongresso.id,
+          casa_id: bancadasInCongresso.casa_id,
+          id_externo: bancadasInCongresso.id_externo,
+          tipo: bancadasInCongresso.tipo,
+          nome: bancadasInCongresso.nome,
+          legislatura: bancadasInCongresso.legislatura,
+          url_site: bancadasInCongresso.url_site,
+          // COUNT sobre o LEFT JOIN, não sobre as linhas: bancada sem membro
+          // tem de aparecer com 0, e não sumir.
+          membros: count(bancada_membrosInCongresso.parlamentar_id),
+        })
+        .from(bancadasInCongresso)
+        .leftJoin(
+          bancada_membrosInCongresso,
+          eq(bancada_membrosInCongresso.bancada_id, bancadasInCongresso.id)
+        )
+        .groupBy(bancadasInCongresso.id);
+      return tipo ? q.where(eq(bancadasInCongresso.tipo, tipo)) : q;
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
 
 export async function obterBancadaPorId(id: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select()
-    .from(bancadasInCongresso)
-    .where(eq(bancadasInCongresso.id, id))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select()
+        .from(bancadasInCongresso)
+        .where(eq(bancadasInCongresso.id, id))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /** Membros de uma bancada, já com os dados do parlamentar. */
 export async function membrosDaBancada(bancadaId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: parlamentaresInCongresso.id,
-      nome: parlamentaresInCongresso.nome,
-      partido: parlamentaresInCongresso.partido,
-      uf: parlamentaresInCongresso.uf,
-      url_foto: parlamentaresInCongresso.url_foto,
-      papel: bancada_membrosInCongresso.papel,
-    })
-    .from(bancada_membrosInCongresso)
-    .innerJoin(
-      parlamentaresInCongresso,
-      eq(parlamentaresInCongresso.id, bancada_membrosInCongresso.parlamentar_id)
-    )
-    .where(eq(bancada_membrosInCongresso.bancada_id, bancadaId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: parlamentaresInCongresso.id,
+          nome: parlamentaresInCongresso.nome,
+          partido: parlamentaresInCongresso.partido,
+          uf: parlamentaresInCongresso.uf,
+          url_foto: parlamentaresInCongresso.url_foto,
+          papel: bancada_membrosInCongresso.papel,
+        })
+        .from(bancada_membrosInCongresso)
+        .innerJoin(
+          parlamentaresInCongresso,
+          eq(parlamentaresInCongresso.id, bancada_membrosInCongresso.parlamentar_id)
+        )
+        .where(eq(bancada_membrosInCongresso.bancada_id, bancadaId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -104,27 +112,30 @@ export async function membrosDaBancada(bancadaId: string) {
  * falha antigo era silencioso.
  */
 export async function proposicoesDeAutores(parlamentarIds: string[]) {
-  const db = getDb();
-  if (!db || parlamentarIds.length === 0) return [];
-  return db
-    .select({
-      parlamentar_id: proposicao_autoresInCongresso.parlamentar_id,
-      id: proposicoesInCongresso.id,
-      identificacao: proposicoesInCongresso.identificacao,
-      ementa: proposicoesInCongresso.ementa,
-      data_apresentacao: proposicoesInCongresso.data_apresentacao,
-      rotulo: analisesInCongresso.rotulo,
-    })
-    .from(proposicao_autoresInCongresso)
-    .innerJoin(
-      proposicoesInCongresso,
-      eq(proposicoesInCongresso.id, proposicao_autoresInCongresso.proposicao_id)
-    )
-    .leftJoin(
-      analisesInCongresso,
-      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .where(inArray(proposicao_autoresInCongresso.parlamentar_id, parlamentarIds));
+  if (parlamentarIds.length === 0) return [];
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          parlamentar_id: proposicao_autoresInCongresso.parlamentar_id,
+          id: proposicoesInCongresso.id,
+          identificacao: proposicoesInCongresso.identificacao,
+          ementa: proposicoesInCongresso.ementa,
+          data_apresentacao: proposicoesInCongresso.data_apresentacao,
+          rotulo: analisesInCongresso.rotulo,
+        })
+        .from(proposicao_autoresInCongresso)
+        .innerJoin(
+          proposicoesInCongresso,
+          eq(proposicoesInCongresso.id, proposicao_autoresInCongresso.proposicao_id)
+        )
+        .leftJoin(
+          analisesInCongresso,
+          eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .where(inArray(proposicao_autoresInCongresso.parlamentar_id, parlamentarIds)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -146,127 +157,142 @@ export async function proposicoesDeAutores(parlamentarIds: string[]) {
  * linhas da análise por cada item.
  */
 export async function analisesComProposicao(rotulos: string[]) {
-  const db = getDb();
-  if (!db || rotulos.length === 0) return [];
-  return db
-    .select({
-      id: analisesInCongresso.id,
-      proposicao_id: analisesInCongresso.proposicao_id,
-      score: sql<number>`(${analisesInCongresso.score})::double precision`,
-      rotulo: analisesInCongresso.rotulo,
-      clausula_petrea: analisesInCongresso.clausula_petrea,
-      vedacao_retrocesso: analisesInCongresso.vedacao_retrocesso,
-      resumo_neutro: analisesInCongresso.resumo_neutro,
-      modelo: analisesInCongresso.modelo,
-      criado_em: analisesInCongresso.criado_em,
-      identificacao: proposicoesInCongresso.identificacao,
-      ementa: proposicoesInCongresso.ementa,
-      keywords: proposicoesInCongresso.keywords,
-      temas_oficiais: proposicoesInCongresso.temas_oficiais,
-      orgao_atual: proposicoesInCongresso.orgao_atual,
-      data_apresentacao: proposicoesInCongresso.data_apresentacao,
-    })
-    .from(analisesInCongresso)
-    .innerJoin(
-      proposicoesInCongresso,
-      eq(proposicoesInCongresso.id, analisesInCongresso.proposicao_id)
-    )
-    .where(
-      and(
-        eq(analisesInCongresso.status, "ok"),
-        inArray(analisesInCongresso.rotulo, rotulos)
-      )
-    );
+  if (rotulos.length === 0) return [];
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: analisesInCongresso.id,
+          proposicao_id: analisesInCongresso.proposicao_id,
+          score: sql<number>`(${analisesInCongresso.score})::double precision`,
+          rotulo: analisesInCongresso.rotulo,
+          clausula_petrea: analisesInCongresso.clausula_petrea,
+          vedacao_retrocesso: analisesInCongresso.vedacao_retrocesso,
+          resumo_neutro: analisesInCongresso.resumo_neutro,
+          modelo: analisesInCongresso.modelo,
+          criado_em: analisesInCongresso.criado_em,
+          identificacao: proposicoesInCongresso.identificacao,
+          ementa: proposicoesInCongresso.ementa,
+          keywords: proposicoesInCongresso.keywords,
+          temas_oficiais: proposicoesInCongresso.temas_oficiais,
+          orgao_atual: proposicoesInCongresso.orgao_atual,
+          data_apresentacao: proposicoesInCongresso.data_apresentacao,
+        })
+        .from(analisesInCongresso)
+        .innerJoin(
+          proposicoesInCongresso,
+          eq(proposicoesInCongresso.id, analisesInCongresso.proposicao_id)
+        )
+        .where(
+          and(
+            eq(analisesInCongresso.status, "ok"),
+            inArray(analisesInCongresso.rotulo, rotulos)
+          )
+        ),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Itens de um conjunto de análises. */
 export async function itensDasAnalises(analiseIds: string[]) {
-  const db = getDb();
-  if (!db || analiseIds.length === 0) return [];
-  return db
-    .select({
-      analise_id: analise_itensInCongresso.analise_id,
-      direito: analise_itensInCongresso.direito,
-      dispositivo: analise_itensInCongresso.dispositivo,
-      direcao: analise_itensInCongresso.direcao,
-      grau: analise_itensInCongresso.grau,
-      trecho: analise_itensInCongresso.trecho,
-      peso: sql<number>`(${analise_itensInCongresso.peso})::double precision`,
-    })
-    .from(analise_itensInCongresso)
-    .where(inArray(analise_itensInCongresso.analise_id, analiseIds));
+  if (analiseIds.length === 0) return [];
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          analise_id: analise_itensInCongresso.analise_id,
+          direito: analise_itensInCongresso.direito,
+          dispositivo: analise_itensInCongresso.dispositivo,
+          direcao: analise_itensInCongresso.direcao,
+          grau: analise_itensInCongresso.grau,
+          trecho: analise_itensInCongresso.trecho,
+          peso: sql<number>`(${analise_itensInCongresso.peso})::double precision`,
+        })
+        .from(analise_itensInCongresso)
+        .where(inArray(analise_itensInCongresso.analise_id, analiseIds)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Cobertura da análise: quantas proposições já foram analisadas. */
 export async function coberturaAnalise() {
-  const db = getDb();
-  if (!db) return { analisadas: 0, total: 0 };
-  const [[a], [t]] = await Promise.all([
-    db
-      .select({ n: count() })
-      .from(analisesInCongresso)
-      .where(eq(analisesInCongresso.status, "ok")),
-    db.select({ n: count() }).from(proposicoesInCongresso),
-  ]);
-  return { analisadas: a?.n ?? 0, total: t?.n ?? 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [[a], [t]] = await Promise.all([
+        db
+          .select({ n: count() })
+          .from(analisesInCongresso)
+          .where(eq(analisesInCongresso.status, "ok")),
+        db.select({ n: count() }).from(proposicoesInCongresso),
+      ]);
+      return { analisadas: a?.n ?? 0, total: t?.n ?? 0 };
+    },
+    { vazio: (r) => r.total === 0, padrao: { analisadas: 0, total: 0 }, rotulo: "congresso" }
+  );
 }
 
 /** Rótulo da análise por órgão em que a proposição está parada. */
 export async function rotulosPorOrgao() {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      orgao_atual: proposicoesInCongresso.orgao_atual,
-      rotulo: analisesInCongresso.rotulo,
-    })
-    .from(proposicoesInCongresso)
-    .leftJoin(
-      analisesInCongresso,
-      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .where(isNotNull(proposicoesInCongresso.orgao_atual));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          orgao_atual: proposicoesInCongresso.orgao_atual,
+          rotulo: analisesInCongresso.rotulo,
+        })
+        .from(proposicoesInCongresso)
+        .leftJoin(
+          analisesInCongresso,
+          eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .where(isNotNull(proposicoesInCongresso.orgao_atual)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export async function listarOrgaosAtivos() {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select()
-    .from(orgaosInCongresso)
-    .where(eq(orgaosInCongresso.ativo, true));
+  return comBancoReserva(
+    (db) =>
+      db.select().from(orgaosInCongresso).where(eq(orgaosInCongresso.ativo, true)),
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /** Órgão por sigla, sem diferenciar maiúscula/minúscula (era `.ilike()`). */
 export async function obterOrgaoPorSigla(sigla: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select()
-    .from(orgaosInCongresso)
-    .where(ilike(orgaosInCongresso.sigla, sigla))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select()
+        .from(orgaosInCongresso)
+        .where(ilike(orgaosInCongresso.sigla, sigla))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 export async function membrosDoOrgao(orgaoId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: parlamentaresInCongresso.id,
-      nome: parlamentaresInCongresso.nome,
-      partido: parlamentaresInCongresso.partido,
-      uf: parlamentaresInCongresso.uf,
-      email: parlamentaresInCongresso.email,
-      papel: orgao_membrosInCongresso.papel,
-    })
-    .from(orgao_membrosInCongresso)
-    .innerJoin(
-      parlamentaresInCongresso,
-      eq(parlamentaresInCongresso.id, orgao_membrosInCongresso.parlamentar_id)
-    )
-    .where(eq(orgao_membrosInCongresso.orgao_id, orgaoId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: parlamentaresInCongresso.id,
+          nome: parlamentaresInCongresso.nome,
+          partido: parlamentaresInCongresso.partido,
+          uf: parlamentaresInCongresso.uf,
+          email: parlamentaresInCongresso.email,
+          papel: orgao_membrosInCongresso.papel,
+        })
+        .from(orgao_membrosInCongresso)
+        .innerJoin(
+          parlamentaresInCongresso,
+          eq(parlamentaresInCongresso.id, orgao_membrosInCongresso.parlamentar_id)
+        )
+        .where(eq(orgao_membrosInCongresso.orgao_id, orgaoId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Proposições paradas num órgão, com o rótulo e o score da análise. */
@@ -287,28 +313,30 @@ export async function membrosDoOrgao(orgaoId: string) {
  * ou seja, a correção de uma coisa criou o gargalo da outra.
  */
 export async function proposicoesDoOrgao(sigla: string, limite = 60) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: proposicoesInCongresso.id,
-      identificacao: proposicoesInCongresso.identificacao,
-      ementa: proposicoesInCongresso.ementa,
-      data_apresentacao: proposicoesInCongresso.data_apresentacao,
-      rotulo: analisesInCongresso.rotulo,
-      score: sql<number>`(${analisesInCongresso.score})::double precision`,
-    })
-    .from(proposicoesInCongresso)
-    .leftJoin(
-      analisesInCongresso,
-      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .where(eq(proposicoesInCongresso.orgao_atual, sigla))
-    .orderBy(
-      desc(proposicoesInCongresso.data_apresentacao),
-      asc(proposicoesInCongresso.id)
-    )
-    .limit(limite);
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: proposicoesInCongresso.id,
+          identificacao: proposicoesInCongresso.identificacao,
+          ementa: proposicoesInCongresso.ementa,
+          data_apresentacao: proposicoesInCongresso.data_apresentacao,
+          rotulo: analisesInCongresso.rotulo,
+          score: sql<number>`(${analisesInCongresso.score})::double precision`,
+        })
+        .from(proposicoesInCongresso)
+        .leftJoin(
+          analisesInCongresso,
+          eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .where(eq(proposicoesInCongresso.orgao_atual, sigla))
+        .orderBy(
+          desc(proposicoesInCongresso.data_apresentacao),
+          asc(proposicoesInCongresso.id)
+        )
+        .limit(limite),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -320,16 +348,18 @@ export async function proposicoesDoOrgao(sigla: string, limite = 60) {
  * CPU. Um enum por linha é barato; a `ementa` é que é caríssima.
  */
 export async function rotulosDoOrgao(sigla: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({ rotulo: analisesInCongresso.rotulo })
-    .from(proposicoesInCongresso)
-    .leftJoin(
-      analisesInCongresso,
-      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .where(eq(proposicoesInCongresso.orgao_atual, sigla));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({ rotulo: analisesInCongresso.rotulo })
+        .from(proposicoesInCongresso)
+        .leftJoin(
+          analisesInCongresso,
+          eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .where(eq(proposicoesInCongresso.orgao_atual, sigla)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export interface FiltrosProposicoes {
@@ -369,161 +399,177 @@ export interface FiltrosProposicoes {
  * subrequest a mais, e o teto no Workers Free é 50.
  */
 export async function paginaDeProposicoes(filtros: FiltrosProposicoes = {}) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 20;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return comBancoReserva(
+    (db) => {
+      const porPagina = filtros.porPagina ?? 20;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
 
-  const cond = [];
-  if (filtros.casa) cond.push(eq(proposicoesInCongresso.casa_id, filtros.casa));
-  if (filtros.ano) cond.push(eq(proposicoesInCongresso.ano, filtros.ano));
-  if (filtros.tramitando !== undefined)
-    cond.push(eq(proposicoesInCongresso.tramitando, filtros.tramitando));
-  if (filtros.tema)
-    cond.push(sql`${proposicoesInCongresso.temas_oficiais} @> ARRAY[${filtros.tema}]::text[]`);
-  if (filtros.q) {
-    const termo = `%${filtros.q}%`;
-    cond.push(
-      sql`(${proposicoesInCongresso.ementa} ilike ${termo} or ${proposicoesInCongresso.keywords} ilike ${termo} or ${proposicoesInCongresso.identificacao} ilike ${termo})`
-    );
-  }
-  if (filtros.rotulo) cond.push(eq(analisesInCongresso.rotulo, filtros.rotulo));
-  if (filtros.autor) {
-    // `exists` e não join: um join com a autoria multiplicaria as linhas da
-    // página por autor e quebraria o `count(*) over ()` que dá o total.
-    cond.push(
-      sql`exists (select 1 from congresso.proposicao_autoria pa
-                   where pa.proposicao_id = ${proposicoesInCongresso.id}
-                     and pa.nome ilike ${`%${filtros.autor}%`})`
-    );
-  }
+      const cond = [];
+      if (filtros.casa) cond.push(eq(proposicoesInCongresso.casa_id, filtros.casa));
+      if (filtros.ano) cond.push(eq(proposicoesInCongresso.ano, filtros.ano));
+      if (filtros.tramitando !== undefined)
+        cond.push(eq(proposicoesInCongresso.tramitando, filtros.tramitando));
+      if (filtros.tema)
+        cond.push(sql`${proposicoesInCongresso.temas_oficiais} @> ARRAY[${filtros.tema}]::text[]`);
+      if (filtros.q) {
+        const termo = `%${filtros.q}%`;
+        cond.push(
+          sql`(${proposicoesInCongresso.ementa} ilike ${termo} or ${proposicoesInCongresso.keywords} ilike ${termo} or ${proposicoesInCongresso.identificacao} ilike ${termo})`
+        );
+      }
+      if (filtros.rotulo) cond.push(eq(analisesInCongresso.rotulo, filtros.rotulo));
+      if (filtros.autor) {
+        // `exists` e não join: um join com a autoria multiplicaria as linhas da
+        // página por autor e quebraria o `count(*) over ()` que dá o total.
+        cond.push(
+          sql`exists (select 1 from congresso.proposicao_autoria pa
+                       where pa.proposicao_id = ${proposicoesInCongresso.id}
+                         and pa.nome ilike ${`%${filtros.autor}%`})`
+        );
+      }
 
-  return db
-    .select({
-      proposicao: proposicoesInCongresso,
-      analise: analisesInCongresso,
-      // Só o nível de gravidade, não o objeto inteiro: a lista mostra o
-      // badge (silêncio quando `sem_indicio`), o detalhamento com
-      // dispositivo/trecho/justificativa fica só na página da proposição
-      // (`vicioDaProposicao` + `itensDoVicio`). `1:1` com `proposicoesInCongresso`
-      // (unique em `proposicao_id`), então o leftJoin não multiplica linha.
-      vicio_nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(proposicoesInCongresso)
-    .leftJoin(
-      analisesInCongresso,
-      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .leftJoin(
-      vicios_legislativosInCongresso,
-      eq(vicios_legislativosInCongresso.proposicao_id, proposicoesInCongresso.id)
-    )
-    .where(cond.length ? and(...cond) : undefined)
-    // Desempate por id: sem ele, proposições da mesma data saem em ordem
-    // indefinida e a paginação repete ou pula linhas entre páginas.
-    .orderBy(desc(proposicoesInCongresso.data_apresentacao), asc(proposicoesInCongresso.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+      return db
+        .select({
+          proposicao: proposicoesInCongresso,
+          analise: analisesInCongresso,
+          // Só o nível de gravidade, não o objeto inteiro: a lista mostra o
+          // badge (silêncio quando `sem_indicio`), o detalhamento com
+          // dispositivo/trecho/justificativa fica só na página da proposição
+          // (`vicioDaProposicao` + `itensDoVicio`). `1:1` com `proposicoesInCongresso`
+          // (unique em `proposicao_id`), então o leftJoin não multiplica linha.
+          vicio_nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(proposicoesInCongresso)
+        .leftJoin(
+          analisesInCongresso,
+          eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .leftJoin(
+          vicios_legislativosInCongresso,
+          eq(vicios_legislativosInCongresso.proposicao_id, proposicoesInCongresso.id)
+        )
+        .where(cond.length ? and(...cond) : undefined)
+        // Desempate por id: sem ele, proposições da mesma data saem em ordem
+        // indefinida e a paginação repete ou pula linhas entre páginas.
+        .orderBy(desc(proposicoesInCongresso.data_apresentacao), asc(proposicoesInCongresso.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /** Vício legislativo (indício de inconstitucionalidade) de UMA proposição. */
 export async function vicioDaProposicao(proposicaoId: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      id: vicios_legislativosInCongresso.id,
-      proposicao_id: vicios_legislativosInCongresso.proposicao_id,
-      nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
-      resumo: vicios_legislativosInCongresso.resumo,
-      modelo: vicios_legislativosInCongresso.modelo,
-      versao_rubrica: vicios_legislativosInCongresso.versao_rubrica,
-      status: vicios_legislativosInCongresso.status,
-      criado_em: vicios_legislativosInCongresso.criado_em,
-    })
-    .from(vicios_legislativosInCongresso)
-    .where(eq(vicios_legislativosInCongresso.proposicao_id, proposicaoId))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          id: vicios_legislativosInCongresso.id,
+          proposicao_id: vicios_legislativosInCongresso.proposicao_id,
+          nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
+          resumo: vicios_legislativosInCongresso.resumo,
+          modelo: vicios_legislativosInCongresso.modelo,
+          versao_rubrica: vicios_legislativosInCongresso.versao_rubrica,
+          status: vicios_legislativosInCongresso.status,
+          criado_em: vicios_legislativosInCongresso.criado_em,
+        })
+        .from(vicios_legislativosInCongresso)
+        .where(eq(vicios_legislativosInCongresso.proposicao_id, proposicaoId))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /** Itens (categorias de indício) de UM vício legislativo. */
 export async function itensDoVicio(vicioId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: vicio_itensInCongresso.id,
-      vicio_id: vicio_itensInCongresso.vicio_id,
-      categoria: vicio_itensInCongresso.categoria,
-      dispositivo: vicio_itensInCongresso.dispositivo,
-      justificativa: vicio_itensInCongresso.justificativa,
-      trecho: vicio_itensInCongresso.trecho,
-      confianca: sql<number>`(${vicio_itensInCongresso.confianca})::double precision`,
-    })
-    .from(vicio_itensInCongresso)
-    .where(eq(vicio_itensInCongresso.vicio_id, vicioId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: vicio_itensInCongresso.id,
+          vicio_id: vicio_itensInCongresso.vicio_id,
+          categoria: vicio_itensInCongresso.categoria,
+          dispositivo: vicio_itensInCongresso.dispositivo,
+          justificativa: vicio_itensInCongresso.justificativa,
+          trecho: vicio_itensInCongresso.trecho,
+          confianca: sql<number>`(${vicio_itensInCongresso.confianca})::double precision`,
+        })
+        .from(vicio_itensInCongresso)
+        .where(eq(vicio_itensInCongresso.vicio_id, vicioId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export async function obterProposicaoPorId(id: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select()
-    .from(proposicoesInCongresso)
-    .where(eq(proposicoesInCongresso.id, id))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select()
+        .from(proposicoesInCongresso)
+        .where(eq(proposicoesInCongresso.id, id))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 export async function analiseDaProposicao(proposicaoId: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      id: analisesInCongresso.id,
-      proposicao_id: analisesInCongresso.proposicao_id,
-      score: sql<number>`(${analisesInCongresso.score})::double precision`,
-      rotulo: analisesInCongresso.rotulo,
-      clausula_petrea: analisesInCongresso.clausula_petrea,
-      vedacao_retrocesso: analisesInCongresso.vedacao_retrocesso,
-      resumo_neutro: analisesInCongresso.resumo_neutro,
-      parecer_critico: analisesInCongresso.parecer_critico,
-      legislacao_relacionada: analisesInCongresso.legislacao_relacionada,
-      modelo: analisesInCongresso.modelo,
-      versao_rubrica: analisesInCongresso.versao_rubrica,
-      versao_prompt: analisesInCongresso.versao_prompt,
-      status: analisesInCongresso.status,
-      criado_em: analisesInCongresso.criado_em,
-    })
-    .from(analisesInCongresso)
-    .where(eq(analisesInCongresso.proposicao_id, proposicaoId))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          id: analisesInCongresso.id,
+          proposicao_id: analisesInCongresso.proposicao_id,
+          score: sql<number>`(${analisesInCongresso.score})::double precision`,
+          rotulo: analisesInCongresso.rotulo,
+          clausula_petrea: analisesInCongresso.clausula_petrea,
+          vedacao_retrocesso: analisesInCongresso.vedacao_retrocesso,
+          resumo_neutro: analisesInCongresso.resumo_neutro,
+          parecer_critico: analisesInCongresso.parecer_critico,
+          legislacao_relacionada: analisesInCongresso.legislacao_relacionada,
+          modelo: analisesInCongresso.modelo,
+          versao_rubrica: analisesInCongresso.versao_rubrica,
+          versao_prompt: analisesInCongresso.versao_prompt,
+          status: analisesInCongresso.status,
+          criado_em: analisesInCongresso.criado_em,
+        })
+        .from(analisesInCongresso)
+        .where(eq(analisesInCongresso.proposicao_id, proposicaoId))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 export async function autoresDaProposicao(proposicaoId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      parlamentar_id: parlamentaresInCongresso.id,
-      nome: parlamentaresInCongresso.nome,
-      partido: parlamentaresInCongresso.partido,
-      uf: parlamentaresInCongresso.uf,
-      email: parlamentaresInCongresso.email,
-      url_foto: parlamentaresInCongresso.url_foto,
-      ordem: proposicao_autoresInCongresso.ordem,
-      proponente: proposicao_autoresInCongresso.proponente,
-    })
-    .from(proposicao_autoresInCongresso)
-    .innerJoin(
-      parlamentaresInCongresso,
-      eq(parlamentaresInCongresso.id, proposicao_autoresInCongresso.parlamentar_id)
-    )
-    .where(eq(proposicao_autoresInCongresso.proposicao_id, proposicaoId))
-    .orderBy(asc(proposicao_autoresInCongresso.ordem));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          parlamentar_id: parlamentaresInCongresso.id,
+          nome: parlamentaresInCongresso.nome,
+          partido: parlamentaresInCongresso.partido,
+          uf: parlamentaresInCongresso.uf,
+          email: parlamentaresInCongresso.email,
+          url_foto: parlamentaresInCongresso.url_foto,
+          ordem: proposicao_autoresInCongresso.ordem,
+          proponente: proposicao_autoresInCongresso.proponente,
+        })
+        .from(proposicao_autoresInCongresso)
+        .innerJoin(
+          parlamentaresInCongresso,
+          eq(parlamentaresInCongresso.id, proposicao_autoresInCongresso.parlamentar_id)
+        )
+        .where(eq(proposicao_autoresInCongresso.proposicao_id, proposicaoId))
+        .orderBy(asc(proposicao_autoresInCongresso.ordem)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -535,63 +581,70 @@ export async function autoresDaProposicao(proposicaoId: string) {
  * aquela é a de contato. As duas continuam existindo de propósito.
  */
 export async function autoriaCompletaDaProposicao(proposicaoId: string) {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{
-    nome: string;
-    tipo: string | null;
-    partido: string | null;
-    uf: string | null;
-    ordem: number | null;
-    proponente: boolean;
-    cod_tipo: number | null;
-    parlamentar_id: string | null;
-  }>(sql`
-    select nome, tipo, partido, uf, ordem, proponente, cod_tipo, parlamentar_id
-      from congresso.proposicao_autoria
-     where proposicao_id = ${proposicaoId}
-     order by proponente desc, ordem asc nulls last, nome asc
-  `);
-  return (linhas.rows ?? []).map((l) => ({
-    ...l,
-    institucional: l.cod_tipo !== 10000,
-  }));
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{
+        nome: string;
+        tipo: string | null;
+        partido: string | null;
+        uf: string | null;
+        ordem: number | null;
+        proponente: boolean;
+        cod_tipo: number | null;
+        parlamentar_id: string | null;
+      }>(sql`
+        select nome, tipo, partido, uf, ordem, proponente, cod_tipo, parlamentar_id
+          from congresso.proposicao_autoria
+         where proposicao_id = ${proposicaoId}
+         order by proponente desc, ordem asc nulls last, nome asc
+      `);
+      return (linhas.rows ?? []).map((l) => ({
+        ...l,
+        institucional: l.cod_tipo !== 10000,
+      }));
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Itens de UMA análise, com os numéricos já convertidos. */
 export async function itensDaAnalise(analiseId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: analise_itensInCongresso.id,
-      analise_id: analise_itensInCongresso.analise_id,
-      direito: analise_itensInCongresso.direito,
-      dispositivo: analise_itensInCongresso.dispositivo,
-      direcao: analise_itensInCongresso.direcao,
-      grau: analise_itensInCongresso.grau,
-      trecho: analise_itensInCongresso.trecho,
-      confianca: sql<number>`(${analise_itensInCongresso.confianca})::double precision`,
-      peso: sql<number>`(${analise_itensInCongresso.peso})::double precision`,
-    })
-    .from(analise_itensInCongresso)
-    .where(eq(analise_itensInCongresso.analise_id, analiseId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: analise_itensInCongresso.id,
+          analise_id: analise_itensInCongresso.analise_id,
+          direito: analise_itensInCongresso.direito,
+          dispositivo: analise_itensInCongresso.dispositivo,
+          direcao: analise_itensInCongresso.direcao,
+          grau: analise_itensInCongresso.grau,
+          trecho: analise_itensInCongresso.trecho,
+          confianca: sql<number>`(${analise_itensInCongresso.confianca})::double precision`,
+          peso: sql<number>`(${analise_itensInCongresso.peso})::double precision`,
+        })
+        .from(analise_itensInCongresso)
+        .where(eq(analise_itensInCongresso.analise_id, analiseId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export async function tramitacoesDaProposicao(proposicaoId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      sequencia: tramitacoesInCongresso.sequencia,
-      data_hora: tramitacoesInCongresso.data_hora,
-      sigla_orgao: tramitacoesInCongresso.sigla_orgao,
-      descricao: tramitacoesInCongresso.descricao,
-      despacho: tramitacoesInCongresso.despacho,
-    })
-    .from(tramitacoesInCongresso)
-    .where(eq(tramitacoesInCongresso.proposicao_id, proposicaoId))
-    .orderBy(desc(tramitacoesInCongresso.sequencia));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          sequencia: tramitacoesInCongresso.sequencia,
+          data_hora: tramitacoesInCongresso.data_hora,
+          sigla_orgao: tramitacoesInCongresso.sigla_orgao,
+          descricao: tramitacoesInCongresso.descricao,
+          despacho: tramitacoesInCongresso.despacho,
+        })
+        .from(tramitacoesInCongresso)
+        .where(eq(tramitacoesInCongresso.proposicao_id, proposicaoId))
+        .orderBy(desc(tramitacoesInCongresso.sequencia)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export interface AutoriaResumo {
@@ -626,56 +679,60 @@ export interface AutoriaResumo {
  * Uma query só, com os ids parametrizados um a um (não interpolados).
  */
 export async function autoriaDeProposicoes(ids: string[]): Promise<AutoriaResumo[]> {
-  const db = getDb();
-  if (!db || ids.length === 0) return [];
-  const lista = sql.join(
-    ids.map((i) => sql`${i}`),
-    sql`, `
-  );
-  const linhas = await db.execute<{
-    proposicao_id: string;
-    nome: string;
-    tipo: string | null;
-    partido: string | null;
-    uf: string | null;
-    parlamentar_id: string | null;
-    cod_tipo: number | null;
-    total: number;
-  }>(sql`
-    select proposicao_id, nome, tipo, partido, uf, parlamentar_id, cod_tipo, total
-      from (
-        select a.*,
-               (count(*) over (partition by a.proposicao_id))::int as total,
-               row_number() over (
-                 partition by a.proposicao_id
-                 order by a.proponente desc, a.ordem asc nulls last, a.nome asc
-               ) as rn
-          from congresso.proposicao_autoria a
-         where a.proposicao_id in (${lista})
-      ) x
-     where rn <= 2
-     order by proposicao_id, rn
-  `);
+  if (ids.length === 0) return [];
+  return comBancoReserva(
+    async (db) => {
+      const lista = sql.join(
+        ids.map((i) => sql`${i}`),
+        sql`, `
+      );
+      const linhas = await db.execute<{
+        proposicao_id: string;
+        nome: string;
+        tipo: string | null;
+        partido: string | null;
+        uf: string | null;
+        parlamentar_id: string | null;
+        cod_tipo: number | null;
+        total: number;
+      }>(sql`
+        select proposicao_id, nome, tipo, partido, uf, parlamentar_id, cod_tipo, total
+          from (
+            select a.*,
+                   (count(*) over (partition by a.proposicao_id))::int as total,
+                   row_number() over (
+                     partition by a.proposicao_id
+                     order by a.proponente desc, a.ordem asc nulls last, a.nome asc
+                   ) as rn
+              from congresso.proposicao_autoria a
+             where a.proposicao_id in (${lista})
+          ) x
+         where rn <= 2
+         order by proposicao_id, rn
+      `);
 
-  const porProposicao = new Map<string, AutoriaResumo>();
-  for (const l of linhas.rows ?? []) {
-    const atual =
-      porProposicao.get(l.proposicao_id) ??
-      { proposicao_id: l.proposicao_id, autores: [], total: l.total };
-    atual.autores.push({
-      nome: l.nome,
-      tipo: l.tipo,
-      partido: l.partido,
-      uf: l.uf,
-      parlamentar_id: l.parlamentar_id,
-      // `cod_tipo` 10000 é "Deputado(a)". Qualquer outro é Poder Executivo,
-      // comissão, Senado, Judiciário ou sociedade civil — e a UI escreve
-      // esses sem "Dep.".
-      institucional: l.cod_tipo !== 10000,
-    });
-    porProposicao.set(l.proposicao_id, atual);
-  }
-  return [...porProposicao.values()];
+      const porProposicao = new Map<string, AutoriaResumo>();
+      for (const l of linhas.rows ?? []) {
+        const atual =
+          porProposicao.get(l.proposicao_id) ??
+          { proposicao_id: l.proposicao_id, autores: [], total: l.total };
+        atual.autores.push({
+          nome: l.nome,
+          tipo: l.tipo,
+          partido: l.partido,
+          uf: l.uf,
+          parlamentar_id: l.parlamentar_id,
+          // `cod_tipo` 10000 é "Deputado(a)". Qualquer outro é Poder Executivo,
+          // comissão, Senado, Judiciário ou sociedade civil — e a UI escreve
+          // esses sem "Dep.".
+          institucional: l.cod_tipo !== 10000,
+        });
+        porProposicao.set(l.proposicao_id, atual);
+      }
+      return [...porProposicao.values()];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 export type ProposicaoRelevante = {
@@ -724,55 +781,59 @@ export type ProposicaoRelevante = {
  * ignorar o índice e varrer 5,5 mil linhas sem avisar.
  */
 export async function proposicoesRelevantes(termos: string[], limite = 6) {
-  const db = getDb();
   // `or` é sintaxe de `websearch_to_tsquery`; os termos já vêm sem pontuação
   // do extrator, então não há como um deles injetar operador.
   const q = termos.filter(Boolean).join(" or ");
-  if (!db || q.length < 3) return [];
-  // `cross join` DEPOIS do `left join`, e não `from p, consulta left join a`:
-  // naquela forma o Postgres liga o LEFT JOIN a `consulta`, e a condição
-  // `a.proposicao_id = p.id` estoura com "invalid reference to FROM-clause
-  // entry for table p". O erro era engolido pela degradação do chamador, e o
-  // sintoma era o bloco de proposições simplesmente NÃO APARECER no contexto
-  // — falha silenciosa, achada só ao ler a resposta inteira do assistente.
-  // `termos_casados` conta quantos termos DISTINTOS o documento casa, e a
-  // ordenação o usa ANTES do rank.
-  //
-  // Isto existe porque o `or` sozinho não distingue sinal de ruído quando os
-  // termos fortes não existem no banco: medido em "mineração em área
-  // indígena" (nenhuma proposição de 2026 fala das duas coisas juntas), o
-  // resultado era radiodifusão do "Instituto Banco de Areia" — casando UM
-  // termo fraco, com rank parecido com o de qualquer outro que também casa
-  // um só. Um piso relativo de rank não resolve esse caso, justamente porque
-  // todos os candidatos empatam por baixo. Contar termos resolve: quem casa 2
-  // de 3 termos vem antes de quem casa 1, e o chamador pode exigir 2 quando a
-  // pergunta tem 2 ou mais termos de conteúdo.
-  const contagem = sql.join(
-    termos.filter(Boolean).map(
-      (t) =>
-        sql`(case when to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')) @@ plainto_tsquery('portuguese', ${t}) then 1 else 0 end)`
-    ),
-    sql` + `
-  );
+  if (q.length < 3) return [];
+  return comBancoReserva(
+    async (db) => {
+      // `cross join` DEPOIS do `left join`, e não `from p, consulta left join a`:
+      // naquela forma o Postgres liga o LEFT JOIN a `consulta`, e a condição
+      // `a.proposicao_id = p.id` estoura com "invalid reference to FROM-clause
+      // entry for table p". O erro era engolido pela degradação do chamador, e o
+      // sintoma era o bloco de proposições simplesmente NÃO APARECER no contexto
+      // — falha silenciosa, achada só ao ler a resposta inteira do assistente.
+      // `termos_casados` conta quantos termos DISTINTOS o documento casa, e a
+      // ordenação o usa ANTES do rank.
+      //
+      // Isto existe porque o `or` sozinho não distingue sinal de ruído quando os
+      // termos fortes não existem no banco: medido em "mineração em área
+      // indígena" (nenhuma proposição de 2026 fala das duas coisas juntas), o
+      // resultado era radiodifusão do "Instituto Banco de Areia" — casando UM
+      // termo fraco, com rank parecido com o de qualquer outro que também casa
+      // um só. Um piso relativo de rank não resolve esse caso, justamente porque
+      // todos os candidatos empatam por baixo. Contar termos resolve: quem casa 2
+      // de 3 termos vem antes de quem casa 1, e o chamador pode exigir 2 quando a
+      // pergunta tem 2 ou mais termos de conteúdo.
+      const contagem = sql.join(
+        termos.filter(Boolean).map(
+          (t) =>
+            sql`(case when to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')) @@ plainto_tsquery('portuguese', ${t}) then 1 else 0 end)`
+        ),
+        sql` + `
+      );
 
-  const linhas = await db.execute<ProposicaoRelevante>(sql`
-    select p.id, p.identificacao, p.ementa, p.situacao, p.orgao_atual,
-           a.rotulo, (a.score)::double precision as score,
-           ts_rank(
-             to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')),
-             c.tq
-           ) as rank,
-           (${contagem})::int as termos_casados
-      from congresso.proposicoes p
-      left join congresso.analises a
-             on a.proposicao_id = p.id and a.status = 'ok'
-      cross join (select websearch_to_tsquery('portuguese', ${q}) as tq) c
-     where to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,''))
-           @@ c.tq
-     order by termos_casados desc, rank desc, p.data_apresentacao desc nulls last
-     limit ${limite}
-  `);
-  return linhas.rows ?? [];
+      const linhas = await db.execute<ProposicaoRelevante>(sql`
+        select p.id, p.identificacao, p.ementa, p.situacao, p.orgao_atual,
+               a.rotulo, (a.score)::double precision as score,
+               ts_rank(
+                 to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')),
+                 c.tq
+               ) as rank,
+               (${contagem})::int as termos_casados
+          from congresso.proposicoes p
+          left join congresso.analises a
+                 on a.proposicao_id = p.id and a.status = 'ok'
+          cross join (select websearch_to_tsquery('portuguese', ${q}) as tq) c
+         where to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,''))
+               @@ c.tq
+         order by termos_casados desc, rank desc, p.data_apresentacao desc nulls last
+         limit ${limite}
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /* ─────────────────────── Busca rápida (autocomplete) ─────────────────── */
@@ -804,12 +865,13 @@ export type SugestaoBusca = {
  * existe em `proposicoes`.
  */
 export async function buscaRapidaCongresso(termo: string, limite = 8) {
-  const db = getDb();
   const q = termo.trim();
-  if (!db || q.length < 2) return [];
+  if (q.length < 2) return [];
   const like = `%${q}%`;
 
-  const linhas = await db.execute<SugestaoBusca>(sql`
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<SugestaoBusca>(sql`
     (select 'proposição' as tipo, p.identificacao as titulo,
             left(p.ementa, 110) as subtitulo,
             '/congresso/proposicoes/' || p.id as href,
@@ -848,8 +910,11 @@ export async function buscaRapidaCongresso(termo: string, limite = 8) {
       limit 3)
     order by peso
     limit ${limite}
-  `);
-  return linhas.rows ?? [];
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /* ─────────────────────── Agenda legislativa ─────────────────────── */
@@ -927,23 +992,23 @@ export interface FiltrosAgenda {
  * com uma, e a UI separa em memória.
  */
 export async function agenda(filtros: FiltrosAgenda = {}) {
-  const db = getDb();
-  if (!db) return { proximos: [] as EventoAgenda[], recentes: [] as EventoAgenda[] };
-  const limite = filtros.limite ?? 40;
+  return comBancoReserva(
+    async (db) => {
+      const limite = filtros.limite ?? 40;
 
-  const cond = [sql`true`];
-  if (filtros.soAudiencias) {
-    cond.push(
-      sql`e.cod_tipo in (${sql.join(
-        COD_AUDIENCIA.map((c) => sql`${c}`),
-        sql`, `
-      )})`
-    );
-  }
-  if (filtros.orgao) cond.push(sql`e.orgaos @> array[${filtros.orgao}]::text[]`);
-  const where = sql.join(cond, sql` and `);
+      const cond = [sql`true`];
+      if (filtros.soAudiencias) {
+        cond.push(
+          sql`e.cod_tipo in (${sql.join(
+            COD_AUDIENCIA.map((c) => sql`${c}`),
+            sql`, `
+          )})`
+        );
+      }
+      if (filtros.orgao) cond.push(sql`e.orgaos @> array[${filtros.orgao}]::text[]`);
+      const where = sql.join(cond, sql` and `);
 
-  const linhas = await db.execute<EventoAgenda>(sql`
+      const linhas = await db.execute<EventoAgenda>(sql`
     (${SELECT_EVENTO}
       where ${where} and e.inicio >= (now() at time zone 'America/Sao_Paulo')
       order by e.inicio asc limit ${limite})
@@ -951,14 +1016,21 @@ export async function agenda(filtros: FiltrosAgenda = {}) {
     (${SELECT_EVENTO}
       where ${where} and e.inicio < (now() at time zone 'America/Sao_Paulo')
       order by e.inicio desc limit ${limite})
-  `);
-  const todos = linhas.rows ?? [];
-  return {
-    // O `union all` não garante a ordem das partes; reordenar aqui é
-    // barato e torna o resultado independente do plano do Postgres.
-    proximos: todos.filter((e) => e.futuro).sort((a, b) => (a.inicio_iso ?? "").localeCompare(b.inicio_iso ?? "")),
-    recentes: todos.filter((e) => !e.futuro).sort((a, b) => (b.inicio_iso ?? "").localeCompare(a.inicio_iso ?? "")),
-  };
+      `);
+      const todos = linhas.rows ?? [];
+      return {
+        // O `union all` não garante a ordem das partes; reordenar aqui é
+        // barato e torna o resultado independente do plano do Postgres.
+        proximos: todos.filter((e) => e.futuro).sort((a, b) => (a.inicio_iso ?? "").localeCompare(b.inicio_iso ?? "")),
+        recentes: todos.filter((e) => !e.futuro).sort((a, b) => (b.inicio_iso ?? "").localeCompare(a.inicio_iso ?? "")),
+      };
+    },
+    {
+      vazio: (r) => r.proximos.length === 0 && r.recentes.length === 0,
+      padrao: { proximos: [] as EventoAgenda[], recentes: [] as EventoAgenda[] },
+      rotulo: "congresso",
+    }
+  );
 }
 
 /** `type`, não `interface` — mesmo motivo de `EventoAgenda`. */
@@ -986,13 +1058,14 @@ export type ItemPauta = {
  * `analises`, a agenda seria só um calendário.
  */
 export async function pautaDosEventos(eventoIds: string[]): Promise<ItemPauta[]> {
-  const db = getDb();
-  if (!db || eventoIds.length === 0) return [];
-  const lista = sql.join(
-    eventoIds.map((i) => sql`${i}`),
-    sql`, `
-  );
-  const linhas = await db.execute<ItemPauta>(sql`
+  if (eventoIds.length === 0) return [];
+  return comBancoReserva(
+    async (db) => {
+      const lista = sql.join(
+        eventoIds.map((i) => sql`${i}`),
+        sql`, `
+      );
+      const linhas = await db.execute<ItemPauta>(sql`
     select p.evento_id, p.ordem, p.titulo, p.topico, p.regime,
            p.relator_nome, p.relator_partido, p.relator_uf,
            p.proposicao_id, a.rotulo, (a.score)::double precision as score,
@@ -1003,58 +1076,80 @@ export async function pautaDosEventos(eventoIds: string[]): Promise<ItemPauta[]>
              on a.proposicao_id = p.proposicao_id and a.status = 'ok'
      where p.evento_id in (${lista})
      order by p.evento_id, p.ordem
-  `);
-  return linhas.rows ?? [];
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Siglas de órgão que aparecem na agenda, para popular o filtro. */
 export async function orgaosDaAgenda(): Promise<string[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{ sigla: string }>(sql`
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ sigla: string }>(sql`
     select distinct unnest(orgaos) as sigla from congresso.eventos
      where orgaos is not null order by 1
-  `);
-  return (linhas.rows ?? []).map((l) => l.sigla).filter(Boolean);
+      `);
+      return (linhas.rows ?? []).map((l) => l.sigla).filter(Boolean);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /** Temas oficiais distintos, para popular o filtro. */
 export async function temasDistintos() {
-  const db = getDb();
-  if (!db) return [];
-  // `unnest` faz o trabalho no banco. Antes vinham TODAS as proposições só
-  // para juntar os temas num Set em memória.
-  const linhas = await db.execute<{ tema: string }>(
-    sql`select distinct unnest(temas_oficiais) as tema
-        from congresso.proposicoes
-        where temas_oficiais is not null`
+  return comBancoReserva(
+    async (db) => {
+      // `unnest` faz o trabalho no banco. Antes vinham TODAS as proposições só
+      // para juntar os temas num Set em memória.
+      const linhas = await db.execute<{ tema: string }>(
+        sql`select distinct unnest(temas_oficiais) as tema
+            from congresso.proposicoes
+            where temas_oficiais is not null`
+      );
+      return (linhas.rows ?? []).map((l) => l.tema).filter(Boolean);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
   );
-  return (linhas.rows ?? []).map((l) => l.tema).filter(Boolean);
 }
 
 /** Totais da home. Duas contagens, sem trazer linha nenhuma. */
-export async function totaisHome() {
-  const db = getDb();
-  if (!db) return { proposicoes: null, analises: null };
-  const [[p], [a]] = await Promise.all([
-    db.select({ n: count() }).from(proposicoesInCongresso),
-    db.select({ n: count() }).from(analisesInCongresso),
-  ]);
-  return { proposicoes: p?.n ?? null, analises: a?.n ?? null };
+export async function totaisHome(): Promise<{
+  proposicoes: number | null;
+  analises: number | null;
+}> {
+  return comBancoReserva(
+    async (db): Promise<{ proposicoes: number | null; analises: number | null }> => {
+      const [[p], [a]] = await Promise.all([
+        db.select({ n: count() }).from(proposicoesInCongresso),
+        db.select({ n: count() }).from(analisesInCongresso),
+      ]);
+      return { proposicoes: p?.n ?? null, analises: a?.n ?? null };
+    },
+    {
+      vazio: (r) => (r.proposicoes ?? 0) === 0 && (r.analises ?? 0) === 0,
+      padrao: { proposicoes: null, analises: null },
+      rotulo: "congresso",
+    }
+  );
 }
 
 /**
  * Um parlamentar, pelo `id` interno (uuid) — a página de perfil parte daqui.
  */
 export async function obterParlamentarPorId(id: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [row] = await db
-    .select()
-    .from(parlamentaresInCongresso)
-    .where(eq(parlamentaresInCongresso.id, id))
-    .limit(1);
-  return row ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [row] = await db
+        .select()
+        .from(parlamentaresInCongresso)
+        .where(eq(parlamentaresInCongresso.id, id))
+        .limit(1);
+      return row ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1063,12 +1158,14 @@ export async function obterParlamentarPorId(id: string) {
  * já pré-renderam por inteiro (ver o comentário no topo do arquivo).
  */
 export async function listarParlamentaresAtivos() {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({ id: parlamentaresInCongresso.id })
-    .from(parlamentaresInCongresso)
-    .where(eq(parlamentaresInCongresso.ativo, true));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({ id: parlamentaresInCongresso.id })
+        .from(parlamentaresInCongresso)
+        .where(eq(parlamentaresInCongresso.ativo, true)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1077,20 +1174,22 @@ export async function listarParlamentaresAtivos() {
  * pré-renderada), com nome/partido/uf/foto além do id.
  */
 export async function listarParlamentaresComResumo() {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id: parlamentaresInCongresso.id,
-      casa_id: parlamentaresInCongresso.casa_id,
-      nome: parlamentaresInCongresso.nome,
-      nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
-      partido: parlamentaresInCongresso.partido,
-      uf: parlamentaresInCongresso.uf,
-      url_foto: parlamentaresInCongresso.url_foto,
-    })
-    .from(parlamentaresInCongresso)
-    .where(eq(parlamentaresInCongresso.ativo, true));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: parlamentaresInCongresso.id,
+          casa_id: parlamentaresInCongresso.casa_id,
+          nome: parlamentaresInCongresso.nome,
+          nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
+          partido: parlamentaresInCongresso.partido,
+          uf: parlamentaresInCongresso.uf,
+          url_foto: parlamentaresInCongresso.url_foto,
+        })
+        .from(parlamentaresInCongresso)
+        .where(eq(parlamentaresInCongresso.ativo, true)),
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1101,16 +1200,18 @@ export async function listarParlamentaresComResumo() {
  * justificada) fica naquele arquivo, lido pelos dois eixos — não aqui.
  */
 export async function presencaDiasDoParlamentar(parlamentarId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      situacao_dia: presencas_plenarioInCongresso.situacao_dia,
-      sessoes_total: presencas_plenarioInCongresso.sessoes_total,
-      sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
-    })
-    .from(presencas_plenarioInCongresso)
-    .where(eq(presencas_plenarioInCongresso.parlamentar_id, parlamentarId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          situacao_dia: presencas_plenarioInCongresso.situacao_dia,
+          sessoes_total: presencas_plenarioInCongresso.sessoes_total,
+          sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
+        })
+        .from(presencas_plenarioInCongresso)
+        .where(eq(presencas_plenarioInCongresso.parlamentar_id, parlamentarId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1128,32 +1229,34 @@ export async function presencaDiasDoParlamentar(parlamentarId: string) {
  * falha de casamento. A tela precisa dizer o tamanho da amostra, não escondê-lo.
  */
 export async function votosPorRotuloDoParlamentar(parlamentarId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      rotulo: analisesInCongresso.rotulo,
-      voto: votosInCongresso.voto,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(votosInCongresso)
-    .innerJoin(
-      votacoesInCongresso,
-      eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
-    )
-    .innerJoin(
-      proposicoesInCongresso,
-      eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
-    )
-    .innerJoin(
-      analisesInCongresso,
-      and(
-        eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
-        eq(analisesInCongresso.status, "ok")
-      )
-    )
-    .where(eq(votosInCongresso.parlamentar_id, parlamentarId))
-    .groupBy(analisesInCongresso.rotulo, votosInCongresso.voto);
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          rotulo: analisesInCongresso.rotulo,
+          voto: votosInCongresso.voto,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(votosInCongresso)
+        .innerJoin(
+          votacoesInCongresso,
+          eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
+        )
+        .innerJoin(
+          proposicoesInCongresso,
+          eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
+        )
+        .innerJoin(
+          analisesInCongresso,
+          and(
+            eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
+            eq(analisesInCongresso.status, "ok")
+          )
+        )
+        .where(eq(votosInCongresso.parlamentar_id, parlamentarId))
+        .groupBy(analisesInCongresso.rotulo, votosInCongresso.voto),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1165,16 +1268,18 @@ export async function votosPorRotuloDoParlamentar(parlamentarId: string) {
  * `calcularPresencaDias` por pessoa, régua idêntica ao perfil individual.
  */
 export async function presencaDiasDeTodos() {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      parlamentar_id: presencas_plenarioInCongresso.parlamentar_id,
-      situacao_dia: presencas_plenarioInCongresso.situacao_dia,
-      sessoes_total: presencas_plenarioInCongresso.sessoes_total,
-      sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
-    })
-    .from(presencas_plenarioInCongresso);
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          parlamentar_id: presencas_plenarioInCongresso.parlamentar_id,
+          situacao_dia: presencas_plenarioInCongresso.situacao_dia,
+          sessoes_total: presencas_plenarioInCongresso.sessoes_total,
+          sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
+        })
+        .from(presencas_plenarioInCongresso),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1185,36 +1290,38 @@ export async function presencaDiasDeTodos() {
  * removido da nota, não coerência zero.
  */
 export async function votosRotuloDeTodos() {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      parlamentar_id: votosInCongresso.parlamentar_id,
-      rotulo: analisesInCongresso.rotulo,
-      voto: votosInCongresso.voto,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(votosInCongresso)
-    .innerJoin(
-      votacoesInCongresso,
-      eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
-    )
-    .innerJoin(
-      proposicoesInCongresso,
-      eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
-    )
-    .innerJoin(
-      analisesInCongresso,
-      and(
-        eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
-        eq(analisesInCongresso.status, "ok")
-      )
-    )
-    .groupBy(
-      votosInCongresso.parlamentar_id,
-      analisesInCongresso.rotulo,
-      votosInCongresso.voto
-    );
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          parlamentar_id: votosInCongresso.parlamentar_id,
+          rotulo: analisesInCongresso.rotulo,
+          voto: votosInCongresso.voto,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(votosInCongresso)
+        .innerJoin(
+          votacoesInCongresso,
+          eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
+        )
+        .innerJoin(
+          proposicoesInCongresso,
+          eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
+        )
+        .innerJoin(
+          analisesInCongresso,
+          and(
+            eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
+            eq(analisesInCongresso.status, "ok")
+          )
+        )
+        .groupBy(
+          votosInCongresso.parlamentar_id,
+          analisesInCongresso.rotulo,
+          votosInCongresso.voto
+        ),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "congresso" }
+  );
 }
 
 function condicoesDeVotacoes(f: { ano?: number; q?: string }) {
@@ -1237,38 +1344,44 @@ function condicoesDeVotacoes(f: { ano?: number; q?: string }) {
 export async function votacoesPaginadas(
   filtros: { ano?: number; q?: string; pagina?: number; porPagina?: number } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 25;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
-  return db
-    .select({
-      id: votacoesInCongresso.id,
-      casa_id: votacoesInCongresso.casa_id,
-      data: votacoesInCongresso.data,
-      sigla_orgao: votacoesInCongresso.sigla_orgao,
-      descricao: votacoesInCongresso.descricao,
-      aprovacao: votacoesInCongresso.aprovacao,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(votacoesInCongresso)
-    .where(condicoesDeVotacoes(filtros))
-    // Desempate por id: mesmo motivo de `paginaDeProposicoes` — muitas
-    // votações compartilham a mesma data.
-    .orderBy(desc(votacoesInCongresso.data), asc(votacoesInCongresso.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+  return comBancoReserva(
+    (db) => {
+      const porPagina = filtros.porPagina ?? 25;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
+      return db
+        .select({
+          id: votacoesInCongresso.id,
+          casa_id: votacoesInCongresso.casa_id,
+          data: votacoesInCongresso.data,
+          sigla_orgao: votacoesInCongresso.sigla_orgao,
+          descricao: votacoesInCongresso.descricao,
+          aprovacao: votacoesInCongresso.aprovacao,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(votacoesInCongresso)
+        .where(condicoesDeVotacoes(filtros))
+        // Desempate por id: mesmo motivo de `paginaDeProposicoes` — muitas
+        // votações compartilham a mesma data.
+        .orderBy(desc(votacoesInCongresso.data), asc(votacoesInCongresso.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
 
 /** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos` (eixo Cidades). */
 export async function totaisDeVotacoes(filtros: { ano?: number; q?: string } = {}) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ total: sql<number>`count(*)::int` })
-    .from(votacoesInCongresso)
-    .where(condicoesDeVotacoes(filtros));
-  return linha ?? { total: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ total: sql<number>`count(*)::int` })
+        .from(votacoesInCongresso)
+        .where(condicoesDeVotacoes(filtros));
+      return linha ?? { total: 0 };
+    },
+    { vazio: (r) => r.total === 0, padrao: { total: 0 }, rotulo: "congresso" }
+  );
 }
 
 /**
@@ -1282,22 +1395,25 @@ export async function totaisDeVotacoes(filtros: { ano?: number; q?: string } = {
  * join é INNER.
  */
 export async function votosDeVotacoes(votacaoIds: string[]) {
-  const db = getDb();
-  if (!db || votacaoIds.length === 0) return null;
-  return db
-    .select({
-      votacao_id: votosInCongresso.votacao_id,
-      parlamentar_id: votosInCongresso.parlamentar_id,
-      voto: votosInCongresso.voto,
-      nome: parlamentaresInCongresso.nome,
-      nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
-      partido: parlamentaresInCongresso.partido,
-      uf: parlamentaresInCongresso.uf,
-    })
-    .from(votosInCongresso)
-    .innerJoin(
-      parlamentaresInCongresso,
-      eq(parlamentaresInCongresso.id, votosInCongresso.parlamentar_id)
-    )
-    .where(inArray(votosInCongresso.votacao_id, votacaoIds));
+  if (votacaoIds.length === 0) return null;
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          votacao_id: votosInCongresso.votacao_id,
+          parlamentar_id: votosInCongresso.parlamentar_id,
+          voto: votosInCongresso.voto,
+          nome: parlamentaresInCongresso.nome,
+          nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
+          partido: parlamentaresInCongresso.partido,
+          uf: parlamentaresInCongresso.uf,
+        })
+        .from(votosInCongresso)
+        .innerJoin(
+          parlamentaresInCongresso,
+          eq(parlamentaresInCongresso.id, votosInCongresso.parlamentar_id)
+        )
+        .where(inArray(votosInCongresso.votacao_id, votacaoIds)),
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "congresso" }
+  );
 }
