@@ -98,7 +98,7 @@ um dado real do portal (título de fonte, rota do catálogo). Nada é inventado.
 | **I1** | Provedor `portalProvider` no fork + painel de fontes | pendente |
 | **I2** | Espelho `companion/` + script `sync-companion.mts` | pendente |
 | **I3** | Identidade Seu Nonô (avatar, voz pt-BR, temas, cursor) | parcial |
-| **I3b** | Sessão pareada + ponte responsiva (portal) | 🚧 portal pronto 30/09; falta o lado do app |
+| **I3b** | Sessão pareada + ponte responsiva (portal + app) | 🚧 prontos 30/09; falta o teste de fumaça |
 | **I4** | Pacote Windows + página explicativa no portal | pendente |
 
 O app (fases 1–5 do fork) já tem: arte do bichinho com critério de
@@ -143,13 +143,16 @@ e envia o pacote para `http://127.0.0.1:<porta>` do companheiro.
   celular, tablet e meia tela.
 - **Degrada em silêncio:** sem companheiro local, o `fetch` falha e nada
   quebra. Nenhuma imagem de tela sai do navegador — só geometria e a URL.
-- ⚠️ **Private Network Access:** o servidor local do companheiro precisa
-  responder ao preflight `OPTIONS` com `Access-Control-Allow-Origin` (a origem
-  do portal) e `Access-Control-Allow-Private-Network: true`. O lado do app
-  (escutar a ponte, entrar na sessão e ouvir o SSE) é a próxima fatia do fork.
+- ⚠️ **Private Network Access:** o servidor local do companheiro responde ao
+  preflight `OPTIONS` com `Access-Control-Allow-Origin` (a origem do portal) e
+  `Access-Control-Allow-Private-Network: true`. O lado do app já existe no fork:
+  `ponte/` (servidor loopback + geometria viewport→tela) e
+  `ai/sessao_pareada.py` (parear, ouvir SSE, perguntar); o menu do tray tem
+  **Conectar ao Seu Nono (site)**. Falta o teste de fumaça com os dois de pé.
 
 Lógica pura testada em `lib/companheiro/sessao.test.ts` e
-`lib/companheiro/ponte.test.ts` (sem rede e sem DOM).
+`lib/companheiro/ponte.test.ts` (no portal) e em `companion/tests/` (no app,
+via `python -m unittest discover -s tests`).
 
 ## Repositórios e espelho
 
