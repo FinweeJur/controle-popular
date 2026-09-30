@@ -9,7 +9,10 @@ a triagem do VLM local (qwen3-vl:2b, escore 0-100, legenda) e escreve:
    revisado/descartado/publicável (critério de pronto da Fase 4).
 2. fila-revisao.html   — galeria local com miniaturas para a revisão
    humana da amostra de 100 exemplos (critério de pronto da Fase 2:
-   "precisão medida + revisão de 100 exemplos").
+   "precisão medida + revisão de 100 exemplos"). Cada imagem abre num
+   visualizador de ampliação: roda do mouse dá zoom onde o cursor está,
+   botões de centro 2× e 1:1, setas ← → trocam de imagem — a cava pode
+   ocupar menos de 1/8 do recorte de 512 px (pedido do dono, 30/09).
 3. amostra-100.jsonl   — amostra estratificada determinística (semente 42)
    para a revisão do gate: positivos de baixa pontuação (possíveis falsos
    positivos) + negativos de alta pontuação (possíveis cavas perdidas)
@@ -155,10 +158,12 @@ def _cartao(x: dict, num: int | None = None) -> str:
         else ""
     )
     return (
-        f'<figure><img src="{img}" alt="recorte {html.escape(x["arquivo"])}" '
-        f'loading="lazy" width="256" height="256">'
+        f'<figure><img class="mini" src="{img}" '
+        f'alt="recorte {html.escape(x["arquivo"])}" '
+        f'loading="lazy" width="256" height="256" '
+        f'title="clique para ampliar">'
         f"<figcaption>{num_s}<b>{x['tipo']}</b> · escore {esc} · "
-        f"nuvem {nuvem_s}<br>"
+        f"nuvem {nuvem_s} · <i>clique na imagem p/ ampliar</i><br>"
         f"{eco_s}"
         f"{html.escape(x['legenda'][:220])}<br>"
         f'<small>processo {html.escape(str(x.get("processo") or "—"))} · '
@@ -168,9 +173,122 @@ def _cartao(x: dict, num: int | None = None) -> str:
     )
 
 
+# Visualizador de ampliação (pedido do dono 30/09/2026: "falta zoom, a cava
+# pode ocupar menos de 1/8 da imagem"). Sem biblioteca: JS e CSS embutidos,
+# como o resto da página. Regras: roda do mouse amplia onde o cursor está
+# (mantém o ponto fixo), arrastar move, 1:1 mostra o pixel nativo, ajustar
+# devolve a imagem inteira, ← → trocam de imagem, Esc fecha. Só abre em
+# clique — quem está digitando legenda no textarea não abre por acidente.
+CSS_LUZ = (
+    "#luz{position:fixed;inset:0;background:rgba(0,0,0,.93);display:none;"
+    "z-index:50;font-family:system-ui,sans-serif;color:#eee}"
+    "#luz.aberta{display:block}"
+    "#luz .barra{position:absolute;top:0;left:0;right:0;display:flex;"
+    "gap:.5rem;align-items:center;padding:.5rem .7rem;background:#111;"
+    "flex-wrap:wrap;font-size:.85rem}"
+    "#luz .barra button{font-size:.85rem;padding:.25rem .6rem;"
+    "cursor:pointer;border:1px solid #555;background:#222;color:#eee;"
+    "border-radius:4px}"
+    "#luz .barra button:hover{background:#333}"
+    "#luz .palco{position:absolute;inset:38px 0 30px 0;overflow:hidden;"
+    "cursor:grab;touch-action:none}"
+    "#luz .palco.arrastando{cursor:grabbing}"
+    "#luz .palco img{position:absolute;left:50%;top:50%;"
+    "transform-origin:0 0;image-rendering:pixelated;"
+    "max-width:none;max-height:none;user-select:none;-webkit-user-drag:none}"
+    "#luz .dica{position:absolute;left:0;right:0;bottom:0;margin:0;"
+    "padding:.35rem .7rem;background:#111;font-size:.75rem;color:#bbb;"
+    "text-align:center}"
+    ".mini{cursor:zoom-in}"
+)
+
+JS_LUZ = r"""
+(function(){
+  const mini=[...document.querySelectorAll('img.mini')];
+  if(!mini.length) return;
+  let idx=0, esc=1, tx=0, ty=0, fit=1, nat=512, arr=false, mx=0, my=0;
+  const luz=document.createElement('div');
+  luz.id='luz';
+  luz.innerHTML='<div class=barra>'+
+    '<button data-a="menos">−</button><button data-a="mais">+</button>'+
+    '<button data-a="centro">centro 2×</button>'+
+    '<button data-a="real">1:1</button>'+
+    '<button data-a="ajustar">ajustar</button>'+
+    '<span class=pos></span>'+
+    '<button data-a="anterior">← anterior</button>'+
+    '<button data-a="proxima">próxima →</button>'+
+    '<span style="flex:1"></span>'+
+    '<button data-a="fechar">fechar (Esc)</button></div>'+
+    '<div class=palco><img alt="recorte ampliado"></div>'+
+    '<p class=dica>roda do mouse = amplia onde o cursor está · '+
+    'arrastar = mover · ← → trocam de imagem · Esc fecha</p>';
+  document.body.appendChild(luz);
+  const img=luz.querySelector('img'), palco=luz.querySelector('.palco'),
+        pos=luz.querySelector('.pos'),
+        fundo=luz.querySelector('.palco').parentNode;
+  function aplicar(){img.style.transform='translate('+tx+'px,'+ty+'px) scale('+esc+')';}
+  function ajustar(){
+    fit=Math.min(palco.clientWidth,palco.clientHeight)/nat;
+    esc=fit; tx=0; ty=0; aplicar();
+  }
+  function abrir(i){
+    idx=(i+mini.length)%mini.length;
+    img.src=mini[idx].currentSrc||mini[idx].src;
+    nat=mini[idx].naturalWidth||512;
+    luz.classList.add('aberta');
+    ajustar();
+    pos.textContent=(idx+1)+' de '+mini.length;
+  }
+  function fechar(){luz.classList.remove('aberta');}
+  function zoom(fator,cx,cy){
+    const novo=Math.max(fit*0.9,Math.min(esc*fator,fit*80));
+    tx=cx-(cx-tx)*(novo/esc); ty=cy-(cy-ty)*(novo/esc);
+    esc=novo; aplicar();
+  }
+  function centroCX(){return palco.clientWidth/2;}
+  function centroCY(){return palco.clientHeight/2;}
+  mini.forEach((m,i)=>m.addEventListener('click',()=>abrir(i)));
+  luz.addEventListener('click',e=>{
+    const a=e.target.dataset&&e.target.dataset.a;
+    if(a==='fechar')fechar();
+    else if(a==='mais')zoom(1.6,centroCX(),centroCY());
+    else if(a==='menos')zoom(1/1.6,centroCX(),centroCY());
+    else if(a==='centro'){esc=fit*2;tx=0;ty=0;aplicar();}
+    else if(a==='real'){esc=1;tx=0;ty=0;aplicar();}
+    else if(a==='ajustar')ajustar();
+    else if(a==='anterior')abrir(idx-1);
+    else if(a==='proxima')abrir(idx+1);
+    else if(e.target===fundo)fechar();
+  });
+  palco.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const r=palco.getBoundingClientRect();
+    zoom(e.deltaY<0?1.35:1/1.35,
+        e.clientX-r.left-r.width/2, e.clientY-r.top-r.height/2);
+  },{passive:false});
+  palco.addEventListener('mousedown',e=>{arr=true;mx=e.clientX;my=e.clientY;
+    palco.classList.add('arrastando');e.preventDefault();});
+  window.addEventListener('mousemove',e=>{
+    if(!arr)return; tx+=e.clientX-mx; ty+=e.clientY-my;
+    mx=e.clientX; my=e.clientY; aplicar();});
+  window.addEventListener('mouseup',()=>{arr=false;
+    palco.classList.remove('arrastando');});
+  document.addEventListener('keydown',e=>{
+    if(!luz.classList.contains('aberta'))return;
+    if(e.key==='Escape')fechar();
+    else if(e.key==='ArrowLeft')abrir(idx-1);
+    else if(e.key==='ArrowRight')abrir(idx+1);
+    else if(e.key==='+'||e.key==='=')zoom(1.6,centroCX(),centroCY());
+    else if(e.key==='-')zoom(1/1.6,centroCX(),centroCY());
+  });
+})();
+"""
+
+
 def escrever_html(fila: list[dict], destino: Path) -> None:
-    """Galeria estática (sem JS, sem lib) para a revisão humana abrir no
-    navegador. Caminhos relativos: o HTML fica no mesmo cache das imagens."""
+    """Galeria estática para a revisão humana abrir no navegador — sem
+    biblioteca (só o visualizador de ampliação embutido). Caminhos
+    relativos: o HTML fica no mesmo cache das imagens."""
     cores = {"alta": "#b3261e", "media": "#8a5a00", "baixa": "#1b5e20",
              "sem-triagem": "#444"}
     blocos = []
@@ -192,11 +310,14 @@ def escrever_html(fila: list[dict], destino: Path) -> None:
         "border-radius:8px;padding:.5rem}img{width:100%;height:auto;"
         "image-rendering:pixelated;border-radius:4px}"
         "figcaption{font-size:.8rem;line-height:1.35;margin-top:.4rem}"
-        "h1{font-size:1.3rem}h2{font-size:1.05rem}</style></head><body>"
+        "h1{font-size:1.3rem}h2{font-size:1.05rem}"
+        + CSS_LUZ + "</style></head><body>"
         f"<h1>Fila de revisão — {len(fila)} recortes da calibração MG</h1>"
         "<p>Ordem: prioridade alta primeiro. Estado inicial: pendente. "
-        "Leia a legenda da IA e olhe a imagem — a IA nunca publica sozinha.</p>"
-        + "".join(blocos) + "</body></html>"
+        "Leia a legenda da IA e olhe a imagem — a IA nunca publica sozinha. "
+        "Clique numa imagem para ampliar.</p>"
+        + "".join(blocos)
+        + f"<script>{JS_LUZ}</script></body></html>"
     )
     destino.write_text(doc, encoding="utf-8")
 
@@ -207,8 +328,9 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
     Cada cartão numerado tem um seletor de estado (pendente/revisado/
     descartado/publicável) que o navegador guarda em localStorage — o
     revisor pode fechar e voltar — e um botão que exporta o estado em
-    JSON para devolver ao fluxo. Sem biblioteca: JS de ~15 linhas
-    embutido, imagem e legenda são o essencial."""
+    JSON para devolver ao fluxo. Imagem e legenda são o essencial; a
+    ampliação (zoom com a roda do mouse, ← →, Esc) vem do mesmo
+    visualizador da galeria, sem biblioteca."""
     cartoes = []
     for i, x in enumerate(amostra, start=1):
         seletor = (
@@ -276,13 +398,15 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
         ".correcao textarea{width:100%;box-sizing:border-box;"
         "font-family:inherit;font-size:.85rem;padding:.3rem;"
         "border:1px solid #bbb;border-radius:4px;resize:vertical}"
-        "h1{font-size:1.3rem}</style></head><body>"
+        "h1{font-size:1.3rem}"
+        + CSS_LUZ + "</style></head><body>"
         f"<h1>Amostra de {len(amostra)} — revisão humana do gate</h1>"
         "<p>O gate do plano exige precisão medida <b>e</b> revisão de 100 "
         "exemplos. Marque o estado de cada recorte; o navegador guarda na "
         "máquina. <span id=conta></span> revisados. "
         "<button id=exportar>Exportar estados (JSON)</button></p>"
         f'<div class="grade">{"".join(cartoes)}</div>'
+        f"<script>{JS_LUZ}</script>"
         f"<script>{js}</script></body></html>"
     )
     destino.write_text(doc, encoding="utf-8")
