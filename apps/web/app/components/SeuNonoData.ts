@@ -927,6 +927,37 @@ export const FRENTES: SeuNonoFrente[] = [
           },
         ],
       },
+      {
+        id: "consumo-corporativo-mg-g20",
+        titulo: "Maiores Consumidores de Água, Energia, Combustível e Empregos (MG e G20)",
+        perguntas: [
+          {
+            id: "top50-consumidores-mg",
+            pergunta: "Quem são os maiores consumidores de água e energia em Minas Gerais?",
+            resposta:
+              "O painel lista as 50 maiores operações corporativas com dados do IGAM, ANA e CCEE.",
+            link: { href: "/consumo-corporativo", texto: "Ranking Top 50 MG e G20" },
+            links: [
+              { href: "https://www.snirh.gov.br/cnarh/", texto: "Fonte Oficial ANA CNARH" },
+              { href: "https://dadosabertos.ccee.org.br/", texto: "Fonte Oficial CCEE" },
+            ],
+          },
+          {
+            id: "tarifa-empresa-vs-cidadao",
+            pergunta: "Quanto uma grande empresa paga pela água e luz comparada ao cidadão?",
+            resposta:
+              "O cidadão paga até 318 vezes mais pela água tratada e 4,5 vezes mais pela luz.",
+            link: { href: "/consumo-corporativo", texto: "Ver Assimetria Tarifária" },
+          },
+          {
+            id: "pegada-hidrica-empregos-cnae",
+            pergunta: "Quais setores geram mais empregos por litro de água consumido?",
+            resposta:
+              "O comércio e a indústria automotiva geram muito mais empregos por água que a mineração.",
+            link: { href: "/consumo-corporativo", texto: "Ver Pegada Hídrica e CNAE" },
+          },
+        ],
+      },
     ],
   },
 ];

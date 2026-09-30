@@ -140,7 +140,17 @@ export default function PaginaHubInternacional() {
       </section>
 
       {/* LINKS DE ATALHO PARA HUBS ESPECÍFICOS */}
-      <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 print:hidden">
+      <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 print:hidden">
+        <Link
+          href="/consumo-corporativo"
+          className="flex items-center justify-between p-3.5 rounded-xl border border-sky-500/40 bg-sky-500/10 hover:border-sky-500 transition-colors group"
+        >
+          <div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">💧⚡ Maiores Consumidores</div>
+            <div className="text-[11px] text-text-soft">Top 50 MG e 20 países do G20 (Água/Luz)</div>
+          </div>
+          <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
+        </Link>
         <Link
           href="/europa"
           className="flex items-center justify-between p-3.5 rounded-xl border border-primary/30 bg-primary/5 hover:border-primary transition-colors group"

@@ -10,6 +10,7 @@ import RankingVereadores from "@/app/[municipio]/components/charts/RankingVeread
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
 import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelular";
 import CartaoMemoria from "@/app/[municipio]/components/CartaoMemoria";
+import SecaoMaioresConsumidoresCidade from "@/app/[municipio]/components/SecaoMaioresConsumidoresCidade";
 import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
@@ -558,6 +559,12 @@ export default async function HomePage({
             })}
           </div>
         </section>
+
+        {/* TOP 5 MAIORES CONSUMIDORES DE ÁGUA, ENERGIA, COMBUSTÍVEL, EMPREGOS E CAPITAL */}
+        <SecaoMaioresConsumidoresCidade
+          codigoIbge={String(cidade.id_municipio)}
+          nomeMunicipio={cidade.nome}
+        />
 
         {/* ÍNDICE DE RISCO A DIREITOS */}
         {temDadoRisco && riscoDireitos ? (

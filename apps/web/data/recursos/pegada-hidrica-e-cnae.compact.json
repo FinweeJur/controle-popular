@@ -1,0 +1,133 @@
+{
+  "esqueleto": [
+    "id",
+    "produtoOuSetor",
+    "cnaeAssociado",
+    "aguaLitrosPorTonelada",
+    "energiaKwhPorTonelada",
+    "empregosPorBilhaoLitrosAgua",
+    "empregosPorGwhEnergia",
+    "destinoExportacaoPrincipal",
+    "observacaoCivica",
+    "urlFonte"
+  ],
+  "dicionarios": {
+    "urlFonte": [
+      "https://bi.mte.gov.br/bgcaged/",
+      "https://dadosabertos.ccee.org.br/",
+      "https://data.apps.fao.org/aquastat/",
+      "https://www.snirh.gov.br/cnarh/",
+      "https://www.igam.mg.gov.br/"
+    ]
+  },
+  "linhas": [
+    [
+      "pegada-01",
+      "Minério de Ferro (Pelotização e Mineroduto)",
+      "0710-3 Extração de minério de ferro",
+      680,
+      52,
+      145,
+      5.1,
+      "China (68%), União Europeia (12%), Japão (8%)",
+      "Baixíssima geração de emprego direto por bilhão de litros de água captados; deixa passivo permanente de barragens.",
+      3
+    ],
+    [
+      "pegada-02",
+      "Carbonato/Concentrado de Lítio (Vale do Jequitinhonha)",
+      "0729-4 Extração de minerais metálicos não ferrosos",
+      14500,
+      480,
+      130,
+      5.8,
+      "China (55%), Estados Unidos (25%), Coreia do Sul (15%)",
+      "Concentrada no semiárido mineiro (Araçuaí/Itinga), onde comunidades rurais enfrentam racionamento hídrico.",
+      4
+    ],
+    [
+      "pegada-03",
+      "Aço Bruto e Laminados Siderúrgicos",
+      "2421-1 / 2422-9 Siderurgia integrada",
+      28500,
+      690,
+      185,
+      4.2,
+      "Estados Unidos (45%), América do Sul (25%), Europa (15%)",
+      "Altíssimo consumo de carvão mineral/vegetal e energia elétrica subsidiada no Mercado Livre.",
+      1
+    ],
+    [
+      "pegada-04",
+      "Alumínio Primário e Alumina",
+      "2441-5 Metalurgia do alumínio",
+      34000,
+      14800,
+      118,
+      1.6,
+      "Estados Unidos, União Europeia e Japão",
+      "Setor mais eletrointensivo da economia: 1 tonelada de alumínio consome o mesmo que 8 residências em um ano inteiro.",
+      1
+    ],
+    [
+      "pegada-05",
+      "Celulose Branqueada de Eucalipto",
+      "1710-9 Fabricação de celulose",
+      32000,
+      980,
+      105,
+      5.6,
+      "China (48%), União Europeia (28%), Estados Unidos (14%)",
+      "Além da captação industrial no Rio Doce, extensos monocultivos de eucalipto reduzem a recarga de nascentes.",
+      3
+    ],
+    [
+      "pegada-06",
+      "Soja e Milho Irrigados (Pivô Central)",
+      "0115-6 Cultivo de cereais e oleaginosas",
+      2145000,
+      210,
+      29,
+      4.4,
+      "China (72%), União Europeia (14%), Ásia (10%)",
+      "Exportação massiva de 'água virtual': cada tonelada de soja embarcada leva mais de 2 milhões de litros de água.",
+      2
+    ],
+    [
+      "pegada-07",
+      "Carne Bovina e Proteína Animal",
+      "1011-2 Frigoríficos e abate de reses",
+      15400000,
+      840,
+      248,
+      9.4,
+      "China, Estados Unidos, Oriente Médio e União Europeia",
+      "Maior pegada hídrica total (incluindo pastagem, dessedentação e lavagem industrial de carcaças).",
+      2
+    ],
+    [
+      "pegada-08",
+      "Indústria Automotiva, Autopeças e Manufatura",
+      "2910-7 Fabricação de veículos automotores",
+      4200,
+      1150,
+      1130,
+      17.5,
+      "Mercado Interno Brasileiro, Argentina, México e Chile",
+      "Gera 8 vezes mais empregos diretos por bilhão de litros de água consumidos do que a mineração primária.",
+      0
+    ],
+    [
+      "pegada-09",
+      "Comércio, Serviços, Tecnologia e Varejo Alimentar",
+      "4711-3 Comércio varejista e serviços urbanos",
+      450,
+      180,
+      5390,
+      50.7,
+      "Abastecimento Popular Municipal e Regional",
+      "Campeão em geração de postos de trabalho por unidade de água e energia consumida nas cidades.",
+      0
+    ]
+  ]
+}
