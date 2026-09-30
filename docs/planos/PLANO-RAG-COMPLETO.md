@@ -128,11 +128,11 @@ SeuNono.tsx (widget global)
 O desenho corrigido é: **ligar o degrau 3 é configuração; tornar o RAG
 "completo" é cobertura do acervo.**
 
-1. **Ligar o degrau 3 (runtime, sem repo).** Definir as chaves no ambiente do
-   Guara (runtime) — `AI_API_KEY` + `AI_BASE_URL` já resolvem o caso do Guara
-   (`provedores.ts` deduz o provedor da URL). Para busca vetorial, definir
-   `EMBED_API_KEY` (SiliconFlow `bge-m3`) — sem ela, degrada para lexical.
-   Nada disso vai para o repositório.
+1. **Ligar o degrau 3 (runtime, sem repo).** ✅ **Já configurado no Guara**
+   (verificado via `guara env list` em 30/09/2026): existem as chaves de
+   geração `AI_API_KEY_DEEPSEEK`, `AI_API_KEY_MARITACA`, `AI_API_KEY_LING` e
+   `AI_API_KEY` (+ `AI_BASE_URL`/`AI_MODEL` da Maritaca), e a de embeddings
+   `EMBED_API_KEY` (busca vetorial remota). Nada de chave no repositório.
 2. **Cobertura total das bases.** O acervo passa a incluir:
    - a **camada municipal** da memória (F3);
    - o **catálogo curado de bases** (`data/catalogo-bases-dados.json`), com
@@ -184,7 +184,7 @@ silencioso.
 | **R0 — acervo municipal** | camada município no RAG | ✅ 30/09 |
 | **R1 — bases catalogadas** | catálogo curado (`/api/v1/bases`) no RAG | ✅ 30/09 |
 | **R2 — inventário medido** | gerador + `bases-portal.json` no RAG | ✅ 30/09 |
-| **R3 — ligar degrau 3** | chaves no ambiente do Guara (runtime) | ⛔ ação do dono |
+| **R3 — ligar degrau 3** | chaves no ambiente do Guara (runtime) | ✅ 30/09 (já configuradas; ver `guara env list`) |
 | **R4 — golden set** | 20 perguntas de fumaça + medição de abstenção | 🚧 |
 | **R5 — pgvector** | persistência do índice | ⛔ bloqueada (Guara sem `vector`) |
 
@@ -199,13 +199,15 @@ silencioso.
 - `app/api/chatbot/route.ts`: docstring corrigida (Guara, sem pgvector).
 - `lib/assistente/acervo.test.ts`: novas invariantes (bases, inventário,
   memória municipal).
+- Verificado no Guara: as chaves de geração e de embeddings já estão no
+  ambiente (R3 pronto). Falta medir a qualidade (R4).
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 ## Riscos e métricas
 
 | Risco | Mitigação |
 |---|---|
-| Chave de API exposta | secret de ambiente (Guara), nunca no repo |
+| Chave de API exposta | secret de ambiente (Guara), nunca no repo — ⚠️ o `guara env list` imprime os valores em texto: não compartilhar o terminal/log |
 | LLM alucinar | prompt rígido + abstenção + verificação de citação |
 | Base classificada no tema errado | regra curada; ambíguo cai em "Outras bases" |
 | Índice frio/lento | lotes de 48, timeout de 180 s; degrada para lexical |
