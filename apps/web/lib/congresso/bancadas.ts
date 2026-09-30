@@ -2,6 +2,14 @@ import { listarBancadasComContagem, membrosDaBancada, obterBancadaPorId, proposi
 import { agregar, type PerfilAgregado } from "@/lib/congresso/agregado";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 
+/**
+ * Bancadas do Congresso — frentes, blocos, federações e partidos.
+ *
+ * A leitura bruta vem de `lib/db/queries/congresso` (já na cadeia de reserva);
+ * aqui só se junta a contagem de membros e o perfil agregado por rótulo. A
+ * ordenação por nome fica no JS porque `localeCompare(pt-BR)` não é a
+ * collation do Postgres — trocar mudaria a posição de nomes com acento.
+ */
 export type TipoBancada = "frente" | "bloco" | "federacao" | "partido";
 
 export interface Bancada {

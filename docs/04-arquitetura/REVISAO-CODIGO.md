@@ -17,6 +17,7 @@
 - [Parte 3 — cidades (lib/betim)](#parte-3--cidades-libbetim)
 - [Parte 4 — rotas que leem banco (app/)](#parte-4--rotas-que-leem-banco-app)
 - [Parte 5 — coleta (scripts/ e etl/)](#parte-5--coleta-scripts-e-etl)
+- [Parte 6 — frentes (ambiental, paraopeba, terras, judiciário, congresso)](#parte-6--frentes-ambiental-paraopeba-terras-judiciário-congresso)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -312,6 +313,47 @@ trabalho por-fonte; aqui vão as regras transversais do
    (`GATILHO_TOKEN`, `TELEGRAM_*`) e o raio de vazamento de cada uma; o `.env`
    real não é rastreado.
 
+## Parte 6 — frentes (ambiental, paraopeba, terras, judiciário, congresso)
+
+Cada frente é uma pasta em `lib/` com o mesmo desenho: **lógica pura** em
+`*.ts` testado ao lado, **dado grande** em `*-dados.ts` marcado
+`SERVER-ONLY`, e os coletores fora do app.
+
+| Frente | Núcleo | Observação |
+|---|---|---|
+| Ambiental | [lib/ambiental](../../apps/web/lib/ambiental) | ~45 módulos: legislação unificada, TAC, barragens, convênios e payload. |
+| Paraopeba | [lib/paraopeba](../../apps/web/lib/paraopeba) | Acordos, ATIs, auditoria AJRI e a régua de triagem de dado pessoal. |
+| Terras | [lib/terras](../../apps/web/lib/terras) | Leitura das camadas do globo 3D e cruzamentos por município. |
+| Judiciário | [lib/judiciario](../../apps/web/lib/judiciario) | Agregado, ofício determinístico, DataJud ao vivo, remunerações. |
+| Congresso | [lib/congresso](../../apps/web/lib/congresso) | Rubricas, ofício, rank, bancadas e o cliente LLM server-only. |
+
+### Achados da Parte 6
+
+1. ✅ **Dois arquivos sem cabeçalho** nessas frentes — `ambiental/nossos-rios-dados.ts`
+   (que ainda tinha **BOM** no início) e `congresso/bancadas.ts` — ganharam o
+   bloco de onboarding (regra 5.9); o BOM saiu.
+
+2. ✅ **Dado grande só no servidor.** Os `*-dados.ts` marcados `SERVER-ONLY`
+   (`estudos-dados`, `decisoes-cge-dados`, `auditoria-ajri-dados`,
+   `inspecoes-cnj-dados`, …) existem para o JSON bruto **não** cruzar a
+   fronteira servidor→cliente — a disciplina do teto de payload, respeitada.
+
+3. ✅ **Triagem de dado pessoal** mora em
+   [lib/paraopeba/triagem.ts](../../apps/web/lib/paraopeba/triagem.ts) — a
+   régua que pega "L.H.M.G." e listas de desaparecidos, que o mod-11 não
+   pega. É o complemento semântico do scanner de CPF.
+
+4. ✅ **Arquivos gerados** trazem o aviso no cabeçalho (`ARQUIVO GERADO — não
+   editar à mão`, ex. `ckan-mg-*`, `convenios-mg`, `tac-gtac`).
+
+5. 🔸 **Vigiar número curado.** `ambiental/nossos-rios-dados.ts` tem cada
+   indicador com `fonte`/`dataReferencia`, mas alguns campos de texto (ex.
+   `populacaoBacia: "2,3 milhões"`) não trazem a fonte colada — mesmo risco da
+   regra editorial: número sem data vira dívida.
+
+6. ✅ **Chave de LLM é server-only** em `congresso/llm/cliente.ts`, com aviso
+   explícito de nunca importar de client component.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -356,7 +398,7 @@ Próximas micro-partes, por risco e retorno:
 | 2 | ✅ `lib/betim/` | Feita — Parte 3 deste doc: fronteira de payload, três cabeçalhos e dois reads fora da reserva. |
 | 3 | ✅ `app/` — rotas que leem banco | Feita — Parte 4: IP do chatbot, webhook do Telegram, payload. |
 | 4 | ✅ `scripts/` — coletores e ETL | Feita — Parte 5: UA honesto (pendência por-fonte), segredos e `robots.txt`. |
-| 5 | `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Frentes com cálculo próprio. |
+| 5 | ✅ `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Feita — Parte 6: cabeçalhos, payload server-only, triagem. |
 | 6 | `app/components/` | Acessibilidade (leitor sob estresse). |
 | 7 | Compactação dupla | `lib/comunicabr/arquivo.ts` e `lib/estatico/compactar.ts`: duas implementações deliberadas — não unificar sem remedir. |
 

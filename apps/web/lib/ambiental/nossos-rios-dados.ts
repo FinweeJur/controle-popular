@@ -1,4 +1,15 @@
-﻿import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
+/**
+ * Dado versionado de `/ambiental/nossos-rios` — as fichas dos rios
+ * (Paraopeba, Doce e outros) com o número-protagonista, a população da bacia,
+ * os indicadores de monitoramento e o bloco "nosso povo, nossa gente".
+ *
+ * Curadoria com fonte e data em cada indicador (`IndicadorRio.fonte` /
+ * `dataReferencia`) — quem lê pode conferir de onde veio. Não é leitura de
+ * banco: é acervo versionado, no mesmo espírito de `lib/betim/legislacao/dados.ts`.
+ * Ao atualizar um número, atualize também `fonte`/`dataReferencia` — número
+ * sem data vira dívida (AGENTS § 8).
+ */
+import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
 
 export interface IndicadorRio {
   valor: string;
