@@ -17,7 +17,7 @@ import {
   sql,
   type SQL,
 } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { num } from "@/lib/db/num";
 import { ptBr } from "@/lib/db/ordem";
 import { STATUS_CONTRATO_ATIVO } from "@/lib/betim/statusContrato";
@@ -103,91 +103,106 @@ import {
  */
 
 export async function caixaDisponivel(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({ ano: caixa_disponivel.ano, valor: num(caixa_disponivel.valor) })
-    .from(caixa_disponivel)
-    .where(eq(caixa_disponivel.id_municipio, idMunicipio))
-    .orderBy(desc(caixa_disponivel.ano))
-    .limit(2);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({ ano: caixa_disponivel.ano, valor: num(caixa_disponivel.valor) })
+        .from(caixa_disponivel)
+        .where(eq(caixa_disponivel.id_municipio, idMunicipio))
+        .orderBy(desc(caixa_disponivel.ano))
+        .limit(2);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function listarIndicadores(idMunicipio: IdMunicipio, nomes?: string[]) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(indicadores.id_municipio, idMunicipio)];
-  if (nomes?.length) cond.push(inArray(indicadores.nome, nomes));
-  return db
-    .select({
-      nome: indicadores.nome,
-      valor: indicadores.valor,
-      valor_numerico: num(indicadores.valor_numerico),
-      ano_referencia: indicadores.ano_referencia,
-      unidade: indicadores.unidade,
-      // Entrou em 2026-08-10: os nove indicadores da home apareciam sem link
-      // de fonte, embaixo de um texto que promete "cada dado vem de fonte
-      // oficial, com link pra você conferir". `fonte` guarda o identificador
-      // do conjunto (`br_inep_ideb`); `lib/betim/fontesIndicadores.ts` traduz
-      // para nome e endereço.
-      fonte: indicadores.fonte,
-    })
-    .from(indicadores)
-    .where(and(...cond))
-    .orderBy(desc(indicadores.ano_referencia));
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(indicadores.id_municipio, idMunicipio)];
+      if (nomes?.length) cond.push(inArray(indicadores.nome, nomes));
+      return db
+        .select({
+          nome: indicadores.nome,
+          valor: indicadores.valor,
+          valor_numerico: num(indicadores.valor_numerico),
+          ano_referencia: indicadores.ano_referencia,
+          unidade: indicadores.unidade,
+          // Entrou em 2026-08-10: os nove indicadores da home apareciam sem link
+          // de fonte, embaixo de um texto que promete "cada dado vem de fonte
+          // oficial, com link pra você conferir". `fonte` guarda o identificador
+          // do conjunto (`br_inep_ideb`); `lib/betim/fontesIndicadores.ts` traduz
+          // para nome e endereço.
+          fonte: indicadores.fonte,
+        })
+        .from(indicadores)
+        .where(and(...cond))
+        .orderBy(desc(indicadores.ano_referencia));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function listarObras(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      nome: obras.nome,
-      situacao: obras.situacao,
-      valor: num(obras.valor),
-      percentual_execucao: num(obras.percentual_execucao),
-    })
-    .from(obras)
-    .where(eq(obras.id_municipio, idMunicipio))
-    // `nullsFirst: false` do PostgREST equivale a NULLS LAST no SQL.
-    .orderBy(sql`${obras.valor} desc nulls last`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          nome: obras.nome,
+          situacao: obras.situacao,
+          valor: num(obras.valor),
+          percentual_execucao: num(obras.percentual_execucao),
+        })
+        .from(obras)
+        .where(eq(obras.id_municipio, idMunicipio))
+        // `nullsFirst: false` do PostgREST equivale a NULLS LAST no SQL.
+        .orderBy(sql`${obras.valor} desc nulls last`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function listarPostos(idMunicipio: IdMunicipio, bandeira?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(postos_anp.id_municipio, idMunicipio)];
-  if (bandeira) cond.push(eq(postos_anp.bandeira, bandeira));
-  return db
-    .select({
-      cnpj: postos_anp.cnpj,
-      razao_social: postos_anp.razao_social,
-      endereco: postos_anp.endereco,
-      bairro: postos_anp.bairro,
-      bandeira: postos_anp.bandeira,
-      produtos: postos_anp.produtos,
-      nota_anp: postos_anp.nota_anp,
-      interditado: postos_anp.interditado,
-      lat: num(postos_anp.lat),
-      lng: num(postos_anp.lng),
-    })
-    .from(postos_anp)
-    .where(and(...cond))
-    .orderBy(ptBr(postos_anp.razao_social));
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(postos_anp.id_municipio, idMunicipio)];
+      if (bandeira) cond.push(eq(postos_anp.bandeira, bandeira));
+      return db
+        .select({
+          cnpj: postos_anp.cnpj,
+          razao_social: postos_anp.razao_social,
+          endereco: postos_anp.endereco,
+          bairro: postos_anp.bairro,
+          bandeira: postos_anp.bandeira,
+          produtos: postos_anp.produtos,
+          nota_anp: postos_anp.nota_anp,
+          interditado: postos_anp.interditado,
+          lat: num(postos_anp.lat),
+          lng: num(postos_anp.lng),
+        })
+        .from(postos_anp)
+        .where(and(...cond))
+        .orderBy(ptBr(postos_anp.razao_social));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: seguranca_ocorrencias.ano,
-      mes: seguranca_ocorrencias.mes,
-      natureza: seguranca_ocorrencias.natureza,
-      qtd: seguranca_ocorrencias.qtd,
-    })
-    .from(seguranca_ocorrencias)
-    .where(eq(seguranca_ocorrencias.id_municipio, idMunicipio));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: seguranca_ocorrencias.ano,
+          mes: seguranca_ocorrencias.mes,
+          natureza: seguranca_ocorrencias.natureza,
+          qtd: seguranca_ocorrencias.qtd,
+        })
+        .from(seguranca_ocorrencias)
+        .where(eq(seguranca_ocorrencias.id_municipio, idMunicipio));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -228,95 +243,104 @@ export async function listarServidores(
     porPagina?: number;
   } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = opts.porPagina ?? 50;
-  const pagina = Math.max(1, opts.pagina ?? 1);
+  return comBancoReserva(
+    async (db) => {
+      const porPagina = opts.porPagina ?? 50;
+      const pagina = Math.max(1, opts.pagina ?? 1);
 
-  const cond = [eq(servidores.id_municipio, idMunicipio)];
-  if (opts.orgao) cond.push(eq(servidores.orgao, opts.orgao));
+      const cond = [eq(servidores.id_municipio, idMunicipio)];
+      if (opts.orgao) cond.push(eq(servidores.orgao, opts.orgao));
 
-  if (opts.perfil === "comissionados") {
-    cond.push(sql`${servidores.vinculo} like 'EM COMISS%'`);
-  } else if (opts.perfil === "alto_escalao") {
-    cond.push(sql`(
-      (
-           ${servidores.cargo} like 'SECRETARIO %'
-        or ${servidores.cargo} like 'SECRETARIO-%'
-        or ${servidores.cargo} like 'SUBPREFEITO%'
-        or ${servidores.cargo} like 'CHEFE DE GABINETE%'
-        or ${servidores.cargo} like 'DIRETOR I%'
-        or ${servidores.cargo} like 'DIRETOR DE PROJETOS%'
-        or ${servidores.cargo} like 'DIRETOR DE PROGRAMA%'
-        or ${servidores.cargo} like 'PRESIDENTE%'
-        or ${servidores.cargo} like 'SUPERINTENDENTE%'
-        or ${servidores.cargo} like 'OUVIDOR GERAL%'
-        or ${servidores.cargo} like 'CONTROLADOR GERAL%'
-        or ${servidores.cargo} like 'PROCURADOR GERAL%'
-        or ${servidores.cargo} like 'ASSESSOR ESPECIAL%'
-        or ${servidores.cargo} like 'COORDENADOR I%'
-      )
-      -- A exclusao das funcoes de ESCOLA e o que faz este filtro significar
-      -- "cupula" em vez de "quem tem palavra de chefia no titulo".
-      and ${servidores.cargo} not like '%ESCOLA%'
-      and ${servidores.cargo} not like '%PEDAGOGIC%'
-    )`);
-  }
+      if (opts.perfil === "comissionados") {
+        cond.push(sql`${servidores.vinculo} like 'EM COMISS%'`);
+      } else if (opts.perfil === "alto_escalao") {
+        cond.push(sql`(
+          (
+               ${servidores.cargo} like 'SECRETARIO %'
+            or ${servidores.cargo} like 'SECRETARIO-%'
+            or ${servidores.cargo} like 'SUBPREFEITO%'
+            or ${servidores.cargo} like 'CHEFE DE GABINETE%'
+            or ${servidores.cargo} like 'DIRETOR I%'
+            or ${servidores.cargo} like 'DIRETOR DE PROJETOS%'
+            or ${servidores.cargo} like 'DIRETOR DE PROGRAMA%'
+            or ${servidores.cargo} like 'PRESIDENTE%'
+            or ${servidores.cargo} like 'SUPERINTENDENTE%'
+            or ${servidores.cargo} like 'OUVIDOR GERAL%'
+            or ${servidores.cargo} like 'CONTROLADOR GERAL%'
+            or ${servidores.cargo} like 'PROCURADOR GERAL%'
+            or ${servidores.cargo} like 'ASSESSOR ESPECIAL%'
+            or ${servidores.cargo} like 'COORDENADOR I%'
+          )
+          -- A exclusao das funcoes de ESCOLA e o que faz este filtro significar
+          -- "cupula" em vez de "quem tem palavra de chefia no titulo".
+          and ${servidores.cargo} not like '%ESCOLA%'
+          and ${servidores.cargo} not like '%PEDAGOGIC%'
+        )`);
+      }
 
-  if (opts.q) {
-    const termo = `%${opts.q}%`;
-    // Busca em nome OU cargo OU lotação, como no `.or()` do PostgREST.
-    cond.push(
-      sql`(${servidores.nome} ilike ${termo} or ${servidores.cargo} ilike ${termo} or ${servidores.lotacao} ilike ${termo})`
-    );
-  }
+      if (opts.q) {
+        const termo = `%${opts.q}%`;
+        // Busca em nome OU cargo OU lotação, como no `.or()` do PostgREST.
+        cond.push(
+          sql`(${servidores.nome} ilike ${termo} or ${servidores.cargo} ilike ${termo} or ${servidores.lotacao} ilike ${termo})`
+        );
+      }
 
-  return db
-    .select({
-      nome: servidores.nome,
-      cargo: servidores.cargo,
-      lotacao: servidores.lotacao,
-      vinculo: servidores.vinculo,
-      orgao: servidores.orgao,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(servidores)
-    .where(and(...cond))
-    // Desempate por nome + cargo: sem ordem total, a paginação pode
-    // repetir ou pular linhas entre páginas.
-    .orderBy(ptBr(servidores.nome), ptBr(servidores.cargo))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+      return db
+        .select({
+          nome: servidores.nome,
+          cargo: servidores.cargo,
+          lotacao: servidores.lotacao,
+          vinculo: servidores.vinculo,
+          orgao: servidores.orgao,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(servidores)
+        .where(and(...cond))
+        // Desempate por nome + cargo: sem ordem total, a paginação pode
+        // repetir ou pular linhas entre páginas.
+        .orderBy(ptBr(servidores.nome), ptBr(servidores.cargo))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function beneficiosSociais(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      programa: beneficios_sociais.programa,
-      competencia: beneficios_sociais.competencia,
-      beneficiarios: beneficios_sociais.beneficiarios,
-      valor_total: num(beneficios_sociais.valor_total),
-    })
-    .from(beneficios_sociais)
-    .where(eq(beneficios_sociais.id_municipio, idMunicipio))
-    .orderBy(asc(beneficios_sociais.competencia));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          programa: beneficios_sociais.programa,
+          competencia: beneficios_sociais.competencia,
+          beneficiarios: beneficios_sociais.beneficiarios,
+          valor_total: num(beneficios_sociais.valor_total),
+        })
+        .from(beneficios_sociais)
+        .where(eq(beneficios_sociais.id_municipio, idMunicipio))
+        .orderBy(asc(beneficios_sociais.competencia));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(verbas_indenizatorias.id_municipio, idMunicipio)];
-  if (vereadorId) cond.push(eq(verbas_indenizatorias.vereador_id, vereadorId));
-  return db
-    .select({
-      grupo_verba: verbas_indenizatorias.grupo_verba,
-      fornecedor: verbas_indenizatorias.fornecedor,
-      valor: num(verbas_indenizatorias.valor),
-    })
-    .from(verbas_indenizatorias)
-    .where(and(...cond));
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(verbas_indenizatorias.id_municipio, idMunicipio)];
+      if (vereadorId) cond.push(eq(verbas_indenizatorias.vereador_id, vereadorId));
+      return db
+        .select({
+          grupo_verba: verbas_indenizatorias.grupo_verba,
+          fornecedor: verbas_indenizatorias.fornecedor,
+          valor: num(verbas_indenizatorias.valor),
+        })
+        .from(verbas_indenizatorias)
+        .where(and(...cond));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -327,20 +351,23 @@ export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?
  * tela é a última linha, não o histórico.
  */
 export async function subsidioAtual(idMunicipio: IdMunicipio, vereadorId: string) {
-  const db = getDb();
-  if (!db) return null;
-  const linhas = await db
-    .select({
-      competencia: subsidios.competencia,
-      valor_bruto: num(subsidios.valor_bruto),
-      verbas_extras: num(subsidios.verbas_extras),
-      fonte: subsidios.fonte,
-    })
-    .from(subsidios)
-    .where(and(eq(subsidios.id_municipio, idMunicipio), eq(subsidios.vereador_id, vereadorId)))
-    .orderBy(desc(subsidios.competencia))
-    .limit(1);
-  return linhas[0] ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select({
+          competencia: subsidios.competencia,
+          valor_bruto: num(subsidios.valor_bruto),
+          verbas_extras: num(subsidios.verbas_extras),
+          fonte: subsidios.fonte,
+        })
+        .from(subsidios)
+        .where(and(eq(subsidios.id_municipio, idMunicipio), eq(subsidios.vereador_id, vereadorId)))
+        .orderBy(desc(subsidios.competencia))
+        .limit(1);
+      return linhas[0] ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -357,24 +384,27 @@ export async function subsidioAtual(idMunicipio: IdMunicipio, vereadorId: string
  * tipo que o driver escolhe.
  */
 export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
-      total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(verbas_indenizatorias)
-    .where(
-      and(
-        eq(verbas_indenizatorias.id_municipio, idMunicipio),
-        eq(verbas_indenizatorias.vereador_id, vereadorId),
-        isNotNull(verbas_indenizatorias.data)
-      )
-    )
-    .groupBy(sql`extract(year from ${verbas_indenizatorias.data})`)
-    .orderBy(sql`extract(year from ${verbas_indenizatorias.data}) desc`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
+          total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(verbas_indenizatorias)
+        .where(
+          and(
+            eq(verbas_indenizatorias.id_municipio, idMunicipio),
+            eq(verbas_indenizatorias.vereador_id, vereadorId),
+            isNotNull(verbas_indenizatorias.data)
+          )
+        )
+        .groupBy(sql`extract(year from ${verbas_indenizatorias.data})`)
+        .orderBy(sql`extract(year from ${verbas_indenizatorias.data}) desc`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -385,60 +415,69 @@ export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string)
  * cinco consultas antes desta.
  */
 export async function verbasPorVereadorPorAno(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      vereador_id: verbas_indenizatorias.vereador_id,
-      nome: vereadores.nome_urna,
-      slug: vereadores.slug,
-      partido: vereadores.partido,
-      ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
-      total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
-    })
-    .from(verbas_indenizatorias)
-    .innerJoin(vereadores, eq(vereadores.id, verbas_indenizatorias.vereador_id))
-    .where(
-      and(
-        eq(verbas_indenizatorias.id_municipio, idMunicipio),
-        isNotNull(verbas_indenizatorias.data)
-      )
-    )
-    .groupBy(
-      verbas_indenizatorias.vereador_id,
-      vereadores.nome_urna,
-      vereadores.slug,
-      vereadores.partido,
-      sql`extract(year from ${verbas_indenizatorias.data})`
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          vereador_id: verbas_indenizatorias.vereador_id,
+          nome: vereadores.nome_urna,
+          slug: vereadores.slug,
+          partido: vereadores.partido,
+          ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
+          total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
+        })
+        .from(verbas_indenizatorias)
+        .innerJoin(vereadores, eq(vereadores.id, verbas_indenizatorias.vereador_id))
+        .where(
+          and(
+            eq(verbas_indenizatorias.id_municipio, idMunicipio),
+            isNotNull(verbas_indenizatorias.data)
+          )
+        )
+        .groupBy(
+          verbas_indenizatorias.vereador_id,
+          vereadores.nome_urna,
+          vereadores.slug,
+          vereadores.partido,
+          sql`extract(year from ${verbas_indenizatorias.data})`
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function notaTransparencia(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select()
-    .from(nota_transparencia)
-    .where(eq(nota_transparencia.id_municipio, idMunicipio))
-    .orderBy(desc(nota_transparencia.ano));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select()
+        .from(nota_transparencia)
+        .where(eq(nota_transparencia.id_municipio, idMunicipio))
+        .orderBy(desc(nota_transparencia.ano));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id: comercios_essenciais.id,
-      nome: comercios_essenciais.nome,
-      tipo: comercios_essenciais.tipo,
-      bairro: comercios_essenciais.bairro,
-      endereco: comercios_essenciais.endereco,
-      telefone: comercios_essenciais.telefone,
-      lat: num(comercios_essenciais.lat),
-      lng: num(comercios_essenciais.lng),
-    })
-    .from(comercios_essenciais)
-    .where(eq(comercios_essenciais.id_municipio, idMunicipio));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          id: comercios_essenciais.id,
+          nome: comercios_essenciais.nome,
+          tipo: comercios_essenciais.tipo,
+          bairro: comercios_essenciais.bairro,
+          endereco: comercios_essenciais.endereco,
+          telefone: comercios_essenciais.telefone,
+          lat: num(comercios_essenciais.lat),
+          lng: num(comercios_essenciais.lng),
+        })
+        .from(comercios_essenciais)
+        .where(eq(comercios_essenciais.id_municipio, idMunicipio));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -454,18 +493,21 @@ export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
  * A contagem passou a vir de `resumoEscolas`, que já a calcula de graça.
  */
 export async function listarEscolas(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id_inep: escolas.id_inep,
-      nome: escolas.nome,
-      rede: escolas.rede,
-      matriculas: escolas.matriculas,
-    })
-    .from(escolas)
-    .where(eq(escolas.id_municipio, idMunicipio))
-    .orderBy(ptBr(escolas.nome));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          id_inep: escolas.id_inep,
+          nome: escolas.nome,
+          rede: escolas.rede,
+          matriculas: escolas.matriculas,
+        })
+        .from(escolas)
+        .where(eq(escolas.id_municipio, idMunicipio))
+        .orderBy(ptBr(escolas.nome));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -485,17 +527,20 @@ export async function listarEscolas(idMunicipio: IdMunicipio) {
  * conjunto 2.000× menor.
  */
 export async function resumoEscolas(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      rede: escolas.rede,
-      qtd: sql<number>`count(*)::int`,
-      matriculas: sql<number>`coalesce(sum(${escolas.matriculas}), 0)::int`,
-    })
-    .from(escolas)
-    .where(eq(escolas.id_municipio, idMunicipio))
-    .groupBy(escolas.rede);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          rede: escolas.rede,
+          qtd: sql<number>`count(*)::int`,
+          matriculas: sql<number>`coalesce(sum(${escolas.matriculas}), 0)::int`,
+        })
+        .from(escolas)
+        .where(eq(escolas.id_municipio, idMunicipio))
+        .groupBy(escolas.rede);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Classificados aprovados e ainda no prazo. */
@@ -503,31 +548,34 @@ export async function classificadosVigentes(
   idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const hoje = new Date().toISOString().slice(0, 10);
-  const cond = [
-    eq(classificados.id_municipio, idMunicipio),
-    eq(classificados.aprovado, true),
-    gte(classificados.expira_em, hoje),
-  ];
-  if (opts.categoria) cond.push(eq(classificados.categoria, opts.categoria));
-  if (opts.q) cond.push(ilike(classificados.titulo, `%${opts.q}%`));
-  return db
-    .select({
-      id: classificados.id,
-      categoria: classificados.categoria,
-      titulo: classificados.titulo,
-      descricao: classificados.descricao,
-      preco: num(classificados.preco),
-      contato_whatsapp: classificados.contato_whatsapp,
-      expira_em: classificados.expira_em,
-    })
-    .from(classificados)
-    .where(and(...cond))
-    // Desempate por id: dois anúncios criados no mesmo instante sairiam em
-    // ordem indefinida, e com SSG isso vira HTML diferente a cada build.
-    .orderBy(desc(classificados.created_at), asc(classificados.id));
+  return comBancoReserva(
+    async (db) => {
+      const hoje = new Date().toISOString().slice(0, 10);
+      const cond = [
+        eq(classificados.id_municipio, idMunicipio),
+        eq(classificados.aprovado, true),
+        gte(classificados.expira_em, hoje),
+      ];
+      if (opts.categoria) cond.push(eq(classificados.categoria, opts.categoria));
+      if (opts.q) cond.push(ilike(classificados.titulo, `%${opts.q}%`));
+      return db
+        .select({
+          id: classificados.id,
+          categoria: classificados.categoria,
+          titulo: classificados.titulo,
+          descricao: classificados.descricao,
+          preco: num(classificados.preco),
+          contato_whatsapp: classificados.contato_whatsapp,
+          expira_em: classificados.expira_em,
+        })
+        .from(classificados)
+        .where(and(...cond))
+        // Desempate por id: dois anúncios criados no mesmo instante sairiam em
+        // ordem indefinida, e com SSG isso vira HTML diferente a cada build.
+        .orderBy(desc(classificados.created_at), asc(classificados.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Negócios do Zap aprovados, com os filtros da página e da rota de API. */
@@ -535,28 +583,31 @@ export async function zapEstabelecimentos(
   idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string; bairros?: string[] } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [
-    eq(zap_estabelecimentos.id_municipio, idMunicipio),
-    eq(zap_estabelecimentos.aprovado, true),
-  ];
-  if (opts.categoria) cond.push(eq(zap_estabelecimentos.categoria, opts.categoria));
-  if (opts.q) cond.push(ilike(zap_estabelecimentos.nome, `%${opts.q}%`));
-  if (opts.bairros?.length) cond.push(inArray(zap_estabelecimentos.bairro, opts.bairros));
-  return db
-    .select({
-      id: zap_estabelecimentos.id,
-      nome: zap_estabelecimentos.nome,
-      whatsapp: zap_estabelecimentos.whatsapp,
-      categoria: zap_estabelecimentos.categoria,
-      descricao: zap_estabelecimentos.descricao,
-      bairro: zap_estabelecimentos.bairro,
-      cliques: zap_estabelecimentos.cliques,
-    })
-    .from(zap_estabelecimentos)
-    .where(and(...cond))
-    .orderBy(ptBr(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
+  return comBancoReserva(
+    async (db) => {
+      const cond = [
+        eq(zap_estabelecimentos.id_municipio, idMunicipio),
+        eq(zap_estabelecimentos.aprovado, true),
+      ];
+      if (opts.categoria) cond.push(eq(zap_estabelecimentos.categoria, opts.categoria));
+      if (opts.q) cond.push(ilike(zap_estabelecimentos.nome, `%${opts.q}%`));
+      if (opts.bairros?.length) cond.push(inArray(zap_estabelecimentos.bairro, opts.bairros));
+      return db
+        .select({
+          id: zap_estabelecimentos.id,
+          nome: zap_estabelecimentos.nome,
+          whatsapp: zap_estabelecimentos.whatsapp,
+          categoria: zap_estabelecimentos.categoria,
+          descricao: zap_estabelecimentos.descricao,
+          bairro: zap_estabelecimentos.bairro,
+          cliques: zap_estabelecimentos.cliques,
+        })
+        .from(zap_estabelecimentos)
+        .where(and(...cond))
+        .orderBy(ptBr(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -571,57 +622,63 @@ export async function zapEstabelecimentos(
  * Agora é SQL, com desempate por id.
  */
 export async function anunciosAtivos(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const hoje = new Date().toISOString().slice(0, 10);
-  return db
-    .select({
-      id: anuncios.id,
-      nome_comercio: anuncios.nome_comercio,
-      plano: anuncios.plano,
-      banner_url: anuncios.banner_url,
-      link: anuncios.link,
-    })
-    .from(anuncios)
-    .where(
-      and(
-        eq(anuncios.id_municipio, idMunicipio),
-        eq(anuncios.ativo, true),
-        lte(anuncios.data_inicio, hoje),
-        or(isNull(anuncios.data_fim), gte(anuncios.data_fim, hoje))
-      )
-    )
-    // `case` em vez de `(plano = 'premium') desc`: o segundo é NULL para
-    // plano nulo, e DESC no Postgres é NULLS FIRST — os sem plano viriam
-    // na frente dos premium.
-    .orderBy(sql`case when ${anuncios.plano} = 'premium' then 0 else 1 end`, asc(anuncios.id));
+  return comBancoReserva(
+    async (db) => {
+      const hoje = new Date().toISOString().slice(0, 10);
+      return db
+        .select({
+          id: anuncios.id,
+          nome_comercio: anuncios.nome_comercio,
+          plano: anuncios.plano,
+          banner_url: anuncios.banner_url,
+          link: anuncios.link,
+        })
+        .from(anuncios)
+        .where(
+          and(
+            eq(anuncios.id_municipio, idMunicipio),
+            eq(anuncios.ativo, true),
+            lte(anuncios.data_inicio, hoje),
+            or(isNull(anuncios.data_fim), gte(anuncios.data_fim, hoje))
+          )
+        )
+        // `case` em vez de `(plano = 'premium') desc`: o segundo é NULL para
+        // plano nulo, e DESC no Postgres é NULLS FIRST — os sem plano viriam
+        // na frente dos premium.
+        .orderBy(sql`case when ${anuncios.plano} = 'premium' then 0 else 1 end`, asc(anuncios.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Convênios e repasses federais, maior valor primeiro. */
 export async function conveniosFederais(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id: convenios_federais.id,
-      codigo: convenios_federais.codigo,
-      numero_convenio: convenios_federais.numero_convenio,
-      objeto: convenios_federais.objeto,
-      orgao_nome: convenios_federais.orgao_nome,
-      orgao_sigla: convenios_federais.orgao_sigla,
-      convenente_nome: convenios_federais.convenente_nome,
-      situacao: convenios_federais.situacao,
-      tipo_instrumento: convenios_federais.tipo_instrumento,
-      valor: num(convenios_federais.valor),
-      valor_liberado: num(convenios_federais.valor_liberado),
-      valor_contrapartida: num(convenios_federais.valor_contrapartida),
-      data_inicio_vigencia: convenios_federais.data_inicio_vigencia,
-      data_final_vigencia: convenios_federais.data_final_vigencia,
-      data_publicacao: convenios_federais.data_publicacao,
-    })
-    .from(convenios_federais)
-    .where(eq(convenios_federais.id_municipio, idMunicipio))
-    .orderBy(desc(convenios_federais.valor), asc(convenios_federais.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          id: convenios_federais.id,
+          codigo: convenios_federais.codigo,
+          numero_convenio: convenios_federais.numero_convenio,
+          objeto: convenios_federais.objeto,
+          orgao_nome: convenios_federais.orgao_nome,
+          orgao_sigla: convenios_federais.orgao_sigla,
+          convenente_nome: convenios_federais.convenente_nome,
+          situacao: convenios_federais.situacao,
+          tipo_instrumento: convenios_federais.tipo_instrumento,
+          valor: num(convenios_federais.valor),
+          valor_liberado: num(convenios_federais.valor_liberado),
+          valor_contrapartida: num(convenios_federais.valor_contrapartida),
+          data_inicio_vigencia: convenios_federais.data_inicio_vigencia,
+          data_final_vigencia: convenios_federais.data_final_vigencia,
+          data_publicacao: convenios_federais.data_publicacao,
+        })
+        .from(convenios_federais)
+        .where(eq(convenios_federais.id_municipio, idMunicipio))
+        .orderBy(desc(convenios_federais.valor), asc(convenios_federais.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -636,52 +693,58 @@ export async function conveniosFederais(idMunicipio: IdMunicipio) {
  * crédito sem assunto identificável (esperado, ver a docstring do ETL).
  */
 export async function atosOficiais(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      // `id` entrou para casar o ato com a análise garantista (0033). Sem
-      // ele a página de legislação não tem como saber se a norma que está
-      // renderizando foi analisada — e "não analisada" precisa aparecer
-      // como ausência de análise, não como neutro.
-      id: atos_oficiais.id,
-      tipo: atos_oficiais.tipo,
-      numero: atos_oficiais.numero,
-      ano: atos_oficiais.ano,
-      ementa: atos_oficiais.ementa,
-      data_publicacao: atos_oficiais.data_publicacao,
-      temas: atos_oficiais.temas,
-      // `feature_index`: só as normas que a extração conseguiu localizar E
-      // geocodificar (migration 0057) trazem valor aqui — o link "Ver no
-      // mapa" da lista só aparece quando não é null. `left join` de
-      // propósito: a maioria das normas não tem geocodificação, e isso não
-      // pode derrubar a linha da lista.
-      mapaIdx: atos_oficiais_geo.feature_index,
-    })
-    .from(atos_oficiais)
-    .leftJoin(atos_oficiais_geo, eq(atos_oficiais_geo.ato_id, atos_oficiais.id))
-    .where(eq(atos_oficiais.id_municipio, idMunicipio))
-    .orderBy(
-      sql`${atos_oficiais.data_publicacao} desc nulls last`,
-      asc(atos_oficiais.id)
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          // `id` entrou para casar o ato com a análise garantista (0033). Sem
+          // ele a página de legislação não tem como saber se a norma que está
+          // renderizando foi analisada — e "não analisada" precisa aparecer
+          // como ausência de análise, não como neutro.
+          id: atos_oficiais.id,
+          tipo: atos_oficiais.tipo,
+          numero: atos_oficiais.numero,
+          ano: atos_oficiais.ano,
+          ementa: atos_oficiais.ementa,
+          data_publicacao: atos_oficiais.data_publicacao,
+          temas: atos_oficiais.temas,
+          // `feature_index`: só as normas que a extração conseguiu localizar E
+          // geocodificar (migration 0057) trazem valor aqui — o link "Ver no
+          // mapa" da lista só aparece quando não é null. `left join` de
+          // propósito: a maioria das normas não tem geocodificação, e isso não
+          // pode derrubar a linha da lista.
+          mapaIdx: atos_oficiais_geo.feature_index,
+        })
+        .from(atos_oficiais)
+        .leftJoin(atos_oficiais_geo, eq(atos_oficiais_geo.ato_id, atos_oficiais.id))
+        .where(eq(atos_oficiais.id_municipio, idMunicipio))
+        .orderBy(
+          sql`${atos_oficiais.data_publicacao} desc nulls last`,
+          asc(atos_oficiais.id)
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Anos com "Despesas Pagas" lançadas, mais recente primeiro. */
 export async function anosDeDespesas(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .selectDistinct({ ano: despesas.ano })
-    .from(despesas)
-    .where(
-      and(
-        eq(despesas.id_municipio, idMunicipio),
-        eq(despesas.estagio, "Despesas Pagas"),
-        isNotNull(despesas.ano)
-      )
-    )
-    .orderBy(desc(despesas.ano));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .selectDistinct({ ano: despesas.ano })
+        .from(despesas)
+        .where(
+          and(
+            eq(despesas.id_municipio, idMunicipio),
+            eq(despesas.estagio, "Despesas Pagas"),
+            isNotNull(despesas.ano)
+          )
+        )
+        .orderBy(desc(despesas.ano));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -697,91 +760,103 @@ export async function despesasPorFuncao(
   ano: number,
   funcoes: string[]
 ) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      funcao: despesas.conta,
-      valor: sql<number>`sum(${despesas.valor})::double precision`,
-    })
-    .from(despesas)
-    .where(
-      and(
-        eq(despesas.id_municipio, idMunicipio),
-        eq(despesas.ano, ano),
-        eq(despesas.estagio, "Despesas Pagas"),
-        inArray(despesas.conta, funcoes)
-      )
-    )
-    .groupBy(despesas.conta)
-    // Desempate por nome: sem ele duas funções de mesmo valor sairiam em
-    // ordem indefinida, e com SSG o gráfico mudaria a cada build.
-    .orderBy(sql`sum(${despesas.valor}) desc`, ptBr(despesas.conta));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          funcao: despesas.conta,
+          valor: sql<number>`sum(${despesas.valor})::double precision`,
+        })
+        .from(despesas)
+        .where(
+          and(
+            eq(despesas.id_municipio, idMunicipio),
+            eq(despesas.ano, ano),
+            eq(despesas.estagio, "Despesas Pagas"),
+            inArray(despesas.conta, funcoes)
+          )
+        )
+        .groupBy(despesas.conta)
+        // Desempate por nome: sem ele duas funções de mesmo valor sairiam em
+        // ordem indefinida, e com SSG o gráfico mudaria a cada build.
+        .orderBy(sql`sum(${despesas.valor}) desc`, ptBr(despesas.conta));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function contatosUteis(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      nome: contatos_uteis.nome,
-      telefone: contatos_uteis.telefone,
-      categoria: contatos_uteis.categoria,
-      ordem: contatos_uteis.ordem,
-    })
-    .from(contatos_uteis)
-    .where(eq(contatos_uteis.id_municipio, idMunicipio))
-    .orderBy(asc(contatos_uteis.ordem), asc(contatos_uteis.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          nome: contatos_uteis.nome,
+          telefone: contatos_uteis.telefone,
+          categoria: contatos_uteis.categoria,
+          ordem: contatos_uteis.ordem,
+        })
+        .from(contatos_uteis)
+        .where(eq(contatos_uteis.id_municipio, idMunicipio))
+        .orderBy(asc(contatos_uteis.ordem), asc(contatos_uteis.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function coletaLixo(idMunicipio: IdMunicipio, bairro?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(coleta_lixo.id_municipio, idMunicipio)];
-  if (bairro) cond.push(ilike(coleta_lixo.bairro, `%${bairro}%`));
-  return db
-    .select({
-      bairro: coleta_lixo.bairro,
-      tipo: coleta_lixo.tipo,
-      dias_semana: coleta_lixo.dias_semana,
-      horario: coleta_lixo.horario,
-    })
-    .from(coleta_lixo)
-    .where(and(...cond))
-    .orderBy(ptBr(coleta_lixo.bairro), asc(coleta_lixo.id));
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(coleta_lixo.id_municipio, idMunicipio)];
+      if (bairro) cond.push(ilike(coleta_lixo.bairro, `%${bairro}%`));
+      return db
+        .select({
+          bairro: coleta_lixo.bairro,
+          tipo: coleta_lixo.tipo,
+          dias_semana: coleta_lixo.dias_semana,
+          horario: coleta_lixo.horario,
+        })
+        .from(coleta_lixo)
+        .where(and(...cond))
+        .orderBy(ptBr(coleta_lixo.bairro), asc(coleta_lixo.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Farmácias de plantão hoje: as 24h sempre, mais as que estão na escala. */
 export async function farmaciasPlantao(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const hoje = new Date().toISOString().slice(0, 10);
-  return db
-    .select({
-      id: farmacias_plantao.id,
-      nome: farmacias_plantao.nome,
-      endereco: farmacias_plantao.endereco,
-      telefone: farmacias_plantao.telefone,
-      plantao_inicio: farmacias_plantao.plantao_inicio,
-      plantao_fim: farmacias_plantao.plantao_fim,
-      h24: farmacias_plantao.h24,
-      lat: num(farmacias_plantao.lat),
-      lng: num(farmacias_plantao.lng),
-    })
-    .from(farmacias_plantao)
-    .where(
-      and(
-        eq(farmacias_plantao.id_municipio, idMunicipio),
-        or(
-          eq(farmacias_plantao.h24, true),
+  return comBancoReserva(
+    async (db) => {
+      const hoje = new Date().toISOString().slice(0, 10);
+      return db
+        .select({
+          id: farmacias_plantao.id,
+          nome: farmacias_plantao.nome,
+          endereco: farmacias_plantao.endereco,
+          telefone: farmacias_plantao.telefone,
+          plantao_inicio: farmacias_plantao.plantao_inicio,
+          plantao_fim: farmacias_plantao.plantao_fim,
+          h24: farmacias_plantao.h24,
+          lat: num(farmacias_plantao.lat),
+          lng: num(farmacias_plantao.lng),
+        })
+        .from(farmacias_plantao)
+        .where(
           and(
-            lte(farmacias_plantao.plantao_inicio, hoje),
-            gte(farmacias_plantao.plantao_fim, hoje)
+            eq(farmacias_plantao.id_municipio, idMunicipio),
+            or(
+              eq(farmacias_plantao.h24, true),
+              and(
+                lte(farmacias_plantao.plantao_inicio, hoje),
+                gte(farmacias_plantao.plantao_fim, hoje)
+              )
+            )
           )
         )
-      )
-    )
-    .orderBy(ptBr(farmacias_plantao.nome), asc(farmacias_plantao.id));
+        .orderBy(ptBr(farmacias_plantao.nome), asc(farmacias_plantao.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -807,38 +882,41 @@ export async function proposicoesPaginadas(
     porPagina?: number;
   } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 30;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return comBancoReserva(
+    async (db) => {
+      const porPagina = filtros.porPagina ?? 30;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
 
-  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
-  if (filtros.tipo) cond.push(eq(proposicoes.tipo, filtros.tipo));
-  if (filtros.situacao) cond.push(eq(proposicoes.situacao, filtros.situacao));
-  if (filtros.ano) cond.push(eq(proposicoes.ano, filtros.ano));
-  if (filtros.tema) cond.push(arrayContains(proposicoes.temas, [filtros.tema]));
-  if (filtros.q) cond.push(ilike(proposicoes.ementa, `%${filtros.q}%`));
+      const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+      if (filtros.tipo) cond.push(eq(proposicoes.tipo, filtros.tipo));
+      if (filtros.situacao) cond.push(eq(proposicoes.situacao, filtros.situacao));
+      if (filtros.ano) cond.push(eq(proposicoes.ano, filtros.ano));
+      if (filtros.tema) cond.push(arrayContains(proposicoes.temas, [filtros.tema]));
+      if (filtros.q) cond.push(ilike(proposicoes.ementa, `%${filtros.q}%`));
 
-  return db
-    .select({
-      id: proposicoes.id,
-      tipo: proposicoes.tipo,
-      numero: proposicoes.numero,
-      ano: proposicoes.ano,
-      ementa: proposicoes.ementa,
-      situacao: proposicoes.situacao,
-      data_apresentacao: proposicoes.data_apresentacao,
-      autores: proposicoes.autores,
-      link_fonte: proposicoes.link_fonte,
-      temas: proposicoes.temas,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(proposicoes)
-    .where(and(...cond))
-    // Desempate por id: sem ordem total, a paginação repete ou pula linhas.
-    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+      return db
+        .select({
+          id: proposicoes.id,
+          tipo: proposicoes.tipo,
+          numero: proposicoes.numero,
+          ano: proposicoes.ano,
+          ementa: proposicoes.ementa,
+          situacao: proposicoes.situacao,
+          data_apresentacao: proposicoes.data_apresentacao,
+          autores: proposicoes.autores,
+          link_fonte: proposicoes.link_fonte,
+          temas: proposicoes.temas,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(proposicoes)
+        .where(and(...cond))
+        // Desempate por id: sem ordem total, a paginação repete ou pula linhas.
+        .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -851,14 +929,17 @@ export async function proposicoesPaginadas(
  * `getSituacoesDisponiveis`.
  */
 export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .selectDistinct({ situacao: proposicoes.situacao })
-    .from(proposicoes)
-    .where(
-      and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.situacao))
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .selectDistinct({ situacao: proposicoes.situacao })
+        .from(proposicoes)
+        .where(
+          and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.situacao))
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -875,53 +956,62 @@ export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
  * das linhas, que é indefinida sem `order by`.
  */
 export async function temasDeProposicoes(idMunicipio: IdMunicipio, vereadorId?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
-  if (vereadorId) cond.push(eq(proposicoes.vereador_id, vereadorId));
-  return db
-    .select({
-      tema: sql<string>`unnest(${proposicoes.temas})`,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(proposicoes)
-    .where(and(...cond))
-    .groupBy(sql`1`)
-    .orderBy(sql`2 desc`, sql`1 asc`);
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+      if (vereadorId) cond.push(eq(proposicoes.vereador_id, vereadorId));
+      return db
+        .select({
+          tema: sql<string>`unnest(${proposicoes.temas})`,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(proposicoes)
+        .where(and(...cond))
+        .groupBy(sql`1`)
+        .orderBy(sql`2 desc`, sql`1 asc`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Áreas de atuação da Prefeitura — os temas dos contratos. */
 export async function temasDeContratos(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      tema: sql<string>`unnest(${contratos.temas})`,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(contratos)
-    .where(eq(contratos.id_municipio, idMunicipio))
-    .groupBy(sql`1`)
-    .orderBy(sql`2 desc`, sql`1 asc`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          tema: sql<string>`unnest(${contratos.temas})`,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(contratos)
+        .where(eq(contratos.id_municipio, idMunicipio))
+        .groupBy(sql`1`)
+        .orderBy(sql`2 desc`, sql`1 asc`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Grupos econômicos entre fornecedores, maior valor contratado primeiro. */
 export async function gruposEconomicos(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id: grupos_economicos.id,
-      nome_grupo: grupos_economicos.nome_grupo,
-      cnpjs: grupos_economicos.cnpjs,
-      socios_comuns: grupos_economicos.socios_comuns,
-      valor_total_contratos: num(grupos_economicos.valor_total_contratos),
-      qtd_contratos: grupos_economicos.qtd_contratos,
-      detectado_em: grupos_economicos.detectado_em,
-    })
-    .from(grupos_economicos)
-    .where(eq(grupos_economicos.id_municipio, idMunicipio))
-    .orderBy(desc(grupos_economicos.valor_total_contratos), asc(grupos_economicos.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          id: grupos_economicos.id,
+          nome_grupo: grupos_economicos.nome_grupo,
+          cnpjs: grupos_economicos.cnpjs,
+          socios_comuns: grupos_economicos.socios_comuns,
+          valor_total_contratos: num(grupos_economicos.valor_total_contratos),
+          qtd_contratos: grupos_economicos.qtd_contratos,
+          detectado_em: grupos_economicos.detectado_em,
+        })
+        .from(grupos_economicos)
+        .where(eq(grupos_economicos.id_municipio, idMunicipio))
+        .orderBy(desc(grupos_economicos.valor_total_contratos), asc(grupos_economicos.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -934,19 +1024,23 @@ export async function gruposEconomicos(idMunicipio: IdMunicipio) {
  * Quem recorta por cidade é a lista de CNPJs que chega aqui.
  */
 export async function fornecedoresPorCnpj(cnpjs: string[]) {
-  const db = getDb();
-  if (!db || cnpjs.length === 0) return null;
-  return db
-    .select({
-      cnpj: fornecedores.cnpj,
-      razao_social: fornecedores.razao_social,
-      nome_fantasia: fornecedores.nome_fantasia,
-      cnae_descricao: fornecedores.cnae_descricao,
-      municipio_sede: fornecedores.municipio_sede,
-      uf_sede: fornecedores.uf_sede,
-    })
-    .from(fornecedores)
-    .where(inArray(fornecedores.cnpj, cnpjs));
+  if (cnpjs.length === 0) return null;
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          cnpj: fornecedores.cnpj,
+          razao_social: fornecedores.razao_social,
+          nome_fantasia: fornecedores.nome_fantasia,
+          cnae_descricao: fornecedores.cnae_descricao,
+          municipio_sede: fornecedores.municipio_sede,
+          uf_sede: fornecedores.uf_sede,
+        })
+        .from(fornecedores)
+        .where(inArray(fornecedores.cnpj, cnpjs));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -958,15 +1052,18 @@ export async function fornecedoresPorCnpj(cnpjs: string[]) {
  * concentração inflado. Um `sum()` no banco não tem esse modo de falha.
  */
 export async function somaContratada(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-    })
-    .from(contratos)
-    .where(eq(contratos.id_municipio, idMunicipio));
-  return linha?.total ?? 0;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+        })
+        .from(contratos)
+        .where(eq(contratos.id_municipio, idMunicipio));
+      return linha?.total ?? 0;
+    },
+    { vazio: (r) => r === null || r === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -978,29 +1075,35 @@ export async function somaContratada(idMunicipio: IdMunicipio) {
  * `data.length`, então não depende de quantas linhas vieram.
  */
 export async function resumoContratosAtivos(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      qtd: sql<number>`count(*)::int`,
-      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-    })
-    .from(contratos)
-    .where(
-      and(eq(contratos.id_municipio, idMunicipio), inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]))
-    );
-  return linha ?? { qtd: 0, soma: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          qtd: sql<number>`count(*)::int`,
+          soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+        })
+        .from(contratos)
+        .where(
+          and(eq(contratos.id_municipio, idMunicipio), inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]))
+        );
+      return linha ?? { qtd: 0, soma: 0 };
+    },
+    { vazio: (r) => r === null || r.qtd === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Comissões do catálogo, em ordem de nome. */
 export async function listarComissoes(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({ id: comissoes.id, nome: comissoes.nome, especial: comissoes.especial })
-    .from(comissoes)
-    .where(eq(comissoes.id_municipio, idMunicipio))
-    .orderBy(ptBr(comissoes.nome), asc(comissoes.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({ id: comissoes.id, nome: comissoes.nome, especial: comissoes.especial })
+        .from(comissoes)
+        .where(eq(comissoes.id_municipio, idMunicipio))
+        .orderBy(ptBr(comissoes.nome), asc(comissoes.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1012,25 +1115,28 @@ export async function listarComissoes(idMunicipio: IdMunicipio) {
  * o app fazia depois.
  */
 export async function membrosDeComissoes(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      comissao_id: comissao_membros.comissao_id,
-      papel: comissao_membros.papel,
-      slug: vereadores.slug,
-      nome_urna: vereadores.nome_urna,
-    })
-    .from(comissao_membros)
-    .innerJoin(vereadores, eq(vereadores.id, comissao_membros.vereador_id))
-    .where(
-      and(
-        eq(comissao_membros.id_municipio, idMunicipio),
-        eq(comissao_membros.ativo, true),
-        isNotNull(comissao_membros.comissao_id)
-      )
-    )
-    .orderBy(ptBr(vereadores.nome_urna), asc(comissao_membros.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          comissao_id: comissao_membros.comissao_id,
+          papel: comissao_membros.papel,
+          slug: vereadores.slug,
+          nome_urna: vereadores.nome_urna,
+        })
+        .from(comissao_membros)
+        .innerJoin(vereadores, eq(vereadores.id, comissao_membros.vereador_id))
+        .where(
+          and(
+            eq(comissao_membros.id_municipio, idMunicipio),
+            eq(comissao_membros.ativo, true),
+            isNotNull(comissao_membros.comissao_id)
+          )
+        )
+        .orderBy(ptBr(vereadores.nome_urna), asc(comissao_membros.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1044,46 +1150,52 @@ export async function participacoesEmComissoes(
   idMunicipio: IdMunicipio,
   vereadorId: string
 ) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      nome_comissao_bruto: comissao_membros.nome_comissao_bruto,
-      papel: comissao_membros.papel,
-      ativo: comissao_membros.ativo,
-      data_inicio: comissao_membros.data_inicio,
-      data_fim: comissao_membros.data_fim,
-    })
-    .from(comissao_membros)
-    .where(
-      and(
-        eq(comissao_membros.id_municipio, idMunicipio),
-        eq(comissao_membros.vereador_id, vereadorId)
-      )
-    )
-    .orderBy(
-      sql`${comissao_membros.data_fim} desc nulls last`,
-      asc(comissao_membros.id)
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          nome_comissao_bruto: comissao_membros.nome_comissao_bruto,
+          papel: comissao_membros.papel,
+          ativo: comissao_membros.ativo,
+          data_inicio: comissao_membros.data_inicio,
+          data_fim: comissao_membros.data_fim,
+        })
+        .from(comissao_membros)
+        .where(
+          and(
+            eq(comissao_membros.id_municipio, idMunicipio),
+            eq(comissao_membros.vereador_id, vereadorId)
+          )
+        )
+        .orderBy(
+          sql`${comissao_membros.data_fim} desc nulls last`,
+          asc(comissao_membros.id)
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Produção agropecuária (IBGE PAM/PPM). */
 export async function producaoAgropecuaria(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      categoria: producao_agropecuaria.categoria,
-      produto: producao_agropecuaria.produto,
-      ano: producao_agropecuaria.ano,
-      quantidade: num(producao_agropecuaria.quantidade),
-      unidade: producao_agropecuaria.unidade,
-      area_colhida: num(producao_agropecuaria.area_colhida),
-      valor_producao_mil_reais: num(producao_agropecuaria.valor_producao_mil_reais),
-    })
-    .from(producao_agropecuaria)
-    .where(eq(producao_agropecuaria.id_municipio, idMunicipio))
-    .orderBy(asc(producao_agropecuaria.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          categoria: producao_agropecuaria.categoria,
+          produto: producao_agropecuaria.produto,
+          ano: producao_agropecuaria.ano,
+          quantidade: num(producao_agropecuaria.quantidade),
+          unidade: producao_agropecuaria.unidade,
+          area_colhida: num(producao_agropecuaria.area_colhida),
+          valor_producao_mil_reais: num(producao_agropecuaria.valor_producao_mil_reais),
+        })
+        .from(producao_agropecuaria)
+        .where(eq(producao_agropecuaria.id_municipio, idMunicipio))
+        .orderBy(asc(producao_agropecuaria.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 const COLUNAS_NOTICIA = {
@@ -1107,24 +1219,30 @@ const COLUNAS_NOTICIA = {
  * migration rodar; hoje ela já rodou e o fallback é código morto.
  */
 export async function listarNoticias(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_NOTICIA)
-    .from(noticias)
-    .where(eq(noticias.id_municipio, idMunicipio))
-    .orderBy(desc(noticias.publicado_em), asc(noticias.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_NOTICIA)
+        .from(noticias)
+        .where(eq(noticias.id_municipio, idMunicipio))
+        .orderBy(desc(noticias.publicado_em), asc(noticias.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function noticiaPorSlug(idMunicipio: IdMunicipio, slug: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ ...COLUNAS_NOTICIA, conteudo_html: noticias.conteudo_html })
-    .from(noticias)
-    .where(and(eq(noticias.id_municipio, idMunicipio), eq(noticias.slug, slug)))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ ...COLUNAS_NOTICIA, conteudo_html: noticias.conteudo_html })
+        .from(noticias)
+        .where(and(eq(noticias.id_municipio, idMunicipio), eq(noticias.slug, slug)))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1134,21 +1252,24 @@ export async function noticiaPorSlug(idMunicipio: IdMunicipio, slug: string) {
  * município, e um `limit` não estoura se algum dia tiver duas.
  */
 export async function saldoParaopeba(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      referencia: paraopeba_saldo_municipio.referencia,
-      valor_acordo_inicial: num(paraopeba_saldo_municipio.valor_acordo_inicial),
-      valor_acordo_atual: num(paraopeba_saldo_municipio.valor_acordo_atual),
-      empenhos_autorizados: num(paraopeba_saldo_municipio.empenhos_autorizados),
-      saldo_teto: num(paraopeba_saldo_municipio.saldo_teto),
-    })
-    .from(paraopeba_saldo_municipio)
-    .where(eq(paraopeba_saldo_municipio.id_municipio, idMunicipio))
-    .orderBy(asc(paraopeba_saldo_municipio.id))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          referencia: paraopeba_saldo_municipio.referencia,
+          valor_acordo_inicial: num(paraopeba_saldo_municipio.valor_acordo_inicial),
+          valor_acordo_atual: num(paraopeba_saldo_municipio.valor_acordo_atual),
+          empenhos_autorizados: num(paraopeba_saldo_municipio.empenhos_autorizados),
+          saldo_teto: num(paraopeba_saldo_municipio.saldo_teto),
+        })
+        .from(paraopeba_saldo_municipio)
+        .where(eq(paraopeba_saldo_municipio.id_municipio, idMunicipio))
+        .orderBy(asc(paraopeba_saldo_municipio.id))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 const COLUNAS_INICIATIVA = {
@@ -1188,13 +1309,16 @@ const COLUNAS_INICIATIVA = {
  * da planilha da FGV: das 19 iniciativas de Betim, 5 estão atrasadas.
  */
 export async function iniciativasParaopeba(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_INICIATIVA)
-    .from(paraopeba_iniciativas)
-    .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
-    .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_INICIATIVA)
+        .from(paraopeba_iniciativas)
+        .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
+        .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** As N iniciativas em execução mais longe de concluir. */
@@ -1202,31 +1326,37 @@ export async function iniciativasParaopebaMenosConcluidas(
   idMunicipio: IdMunicipio,
   limite = 5
 ) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_INICIATIVA)
-    .from(paraopeba_iniciativas)
-    .where(
-      and(
-        eq(paraopeba_iniciativas.id_municipio, idMunicipio),
-        eq(paraopeba_iniciativas.status, "Em execução"),
-        isNotNull(paraopeba_iniciativas.percentual_realizado)
-      )
-    )
-    .orderBy(asc(paraopeba_iniciativas.percentual_realizado), asc(paraopeba_iniciativas.id))
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_INICIATIVA)
+        .from(paraopeba_iniciativas)
+        .where(
+          and(
+            eq(paraopeba_iniciativas.id_municipio, idMunicipio),
+            eq(paraopeba_iniciativas.status, "Em execução"),
+            isNotNull(paraopeba_iniciativas.percentual_realizado)
+          )
+        )
+        .orderBy(asc(paraopeba_iniciativas.percentual_realizado), asc(paraopeba_iniciativas.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Quantos vereadores ativos — número-âncora do contexto do chat. */
 export async function contagemVereadoresAtivos(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ qtd: sql<number>`count(*)::int` })
-    .from(vereadores)
-    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)));
-  return linha?.qtd ?? 0;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ qtd: sql<number>`count(*)::int` })
+        .from(vereadores)
+        .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)));
+      return linha?.qtd ?? 0;
+    },
+    { vazio: (r) => r === null || r === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1238,24 +1368,28 @@ export async function contratosPorTermos(
   termos: string[],
   limite: number
 ) {
-  const db = getDb();
-  if (!db || termos.length === 0) return null;
-  const alternativas = termos.flatMap((t) => [
-    ilike(contratos.objeto, `%${t}%`),
-    ilike(contratos.fornecedor_nome, `%${t}%`),
-  ]);
-  return db
-    .select({
-      objeto: contratos.objeto,
-      fornecedor_nome: contratos.fornecedor_nome,
-      valor_global: num(contratos.valor_global),
-      ano: contratos.ano,
-      status: contratos.status,
-    })
-    .from(contratos)
-    .where(and(eq(contratos.id_municipio, idMunicipio), or(...alternativas)))
-    .orderBy(sql`${contratos.valor_global} desc nulls last`, asc(contratos.id))
-    .limit(limite);
+  if (termos.length === 0) return null;
+  return comBancoReserva(
+    async (db) => {
+      const alternativas = termos.flatMap((t) => [
+        ilike(contratos.objeto, `%${t}%`),
+        ilike(contratos.fornecedor_nome, `%${t}%`),
+      ]);
+      return db
+        .select({
+          objeto: contratos.objeto,
+          fornecedor_nome: contratos.fornecedor_nome,
+          valor_global: num(contratos.valor_global),
+          ano: contratos.ano,
+          status: contratos.status,
+        })
+        .from(contratos)
+        .where(and(eq(contratos.id_municipio, idMunicipio), or(...alternativas)))
+        .orderBy(sql`${contratos.valor_global} desc nulls last`, asc(contratos.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1271,38 +1405,45 @@ export async function proposicoesPorTermos(
   termos: string[],
   limite: number
 ) {
-  const db = getDb();
-  if (!db || termos.length === 0) return null;
-  return db
-    .select({
-      tipo: proposicoes.tipo,
-      numero: proposicoes.numero,
-      ano: proposicoes.ano,
-      ementa: proposicoes.ementa,
-      situacao: proposicoes.situacao,
-    })
-    .from(proposicoes)
-    .where(
-      and(
-        eq(proposicoes.id_municipio, idMunicipio),
-        or(...termos.map((t) => ilike(proposicoes.ementa, `%${t}%`)))
-      )
-    )
-    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
-    .limit(limite);
+  if (termos.length === 0) return null;
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          tipo: proposicoes.tipo,
+          numero: proposicoes.numero,
+          ano: proposicoes.ano,
+          ementa: proposicoes.ementa,
+          situacao: proposicoes.situacao,
+        })
+        .from(proposicoes)
+        .where(
+          and(
+            eq(proposicoes.id_municipio, idMunicipio),
+            or(...termos.map((t) => ilike(proposicoes.ementa, `%${t}%`)))
+          )
+        )
+        .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Ano mais recente com despesa lançada, em qualquer estágio. */
 export async function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ ano: despesas.ano })
-    .from(despesas)
-    .where(and(eq(despesas.id_municipio, idMunicipio), isNotNull(despesas.ano)))
-    .orderBy(desc(despesas.ano))
-    .limit(1);
-  return linha?.ano ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ ano: despesas.ano })
+        .from(despesas)
+        .where(and(eq(despesas.id_municipio, idMunicipio), isNotNull(despesas.ano)))
+        .orderBy(desc(despesas.ano))
+        .limit(1);
+      return linha?.ano ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1316,23 +1457,26 @@ export async function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
  * `lib/betim/prefeitura.ts`, que precisa dos dois.
  */
 export async function despesasAgrupadasPorFuncao(idMunicipio: IdMunicipio, ano: number) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      funcao: sql<string>`coalesce(nullif(${despesas.funcao}, ''), 'Outros')`,
-      valor: sql<number>`sum(${despesas.valor})::double precision`,
-    })
-    .from(despesas)
-    .where(
-      and(
-        eq(despesas.id_municipio, idMunicipio),
-        eq(despesas.ano, ano),
-        eq(despesas.estagio, "Despesas Pagas")
-      )
-    )
-    .groupBy(sql`1`)
-    .orderBy(sql`2 desc`, sql`1 asc`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          funcao: sql<string>`coalesce(nullif(${despesas.funcao}, ''), 'Outros')`,
+          valor: sql<number>`sum(${despesas.valor})::double precision`,
+        })
+        .from(despesas)
+        .where(
+          and(
+            eq(despesas.id_municipio, idMunicipio),
+            eq(despesas.ano, ano),
+            eq(despesas.estagio, "Despesas Pagas")
+          )
+        )
+        .groupBy(sql`1`)
+        .orderBy(sql`2 desc`, sql`1 asc`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1345,22 +1489,25 @@ export async function despesasAgrupadasPorFuncao(idMunicipio: IdMunicipio, ano: 
  * reais.
  */
 export async function receitaTotalDoAno(idMunicipio: IdMunicipio, ano: number) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ valor: num(receitas.valor) })
-    .from(receitas)
-    .where(
-      and(
-        eq(receitas.id_municipio, idMunicipio),
-        eq(receitas.ano, ano),
-        eq(receitas.estagio, "Receitas Brutas Realizadas"),
-        ilike(receitas.conta, "TOTAL DAS RECEITAS%")
-      )
-    )
-    .orderBy(asc(receitas.id))
-    .limit(1);
-  return linha?.valor ?? 0;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ valor: num(receitas.valor) })
+        .from(receitas)
+        .where(
+          and(
+            eq(receitas.id_municipio, idMunicipio),
+            eq(receitas.ano, ano),
+            eq(receitas.estagio, "Receitas Brutas Realizadas"),
+            ilike(receitas.conta, "TOTAL DAS RECEITAS%")
+          )
+        )
+        .orderBy(asc(receitas.id))
+        .limit(1);
+      return linha?.valor ?? 0;
+    },
+    { vazio: (r) => r === null || r === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1375,21 +1522,24 @@ export async function receitaTotalDoAno(idMunicipio: IdMunicipio, ano: number) {
  * motivo.
  */
 export async function maioresFornecedores(idMunicipio: IdMunicipio, limite = 5) {
-  const db = getDb();
-  if (!db) return null;
-  const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
-  return db
-    .select({
-      chave: sql<string>`${chave}`,
-      nome: sql<string>`coalesce(min(${contratos.fornecedor_nome}), ${chave})`,
-      cnpj: contratos.fornecedor_cnpj,
-      valor: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-    })
-    .from(contratos)
-    .where(eq(contratos.id_municipio, idMunicipio))
-    .groupBy(chave, contratos.fornecedor_cnpj)
-    .orderBy(sql`4 desc`, sql`1 asc`)
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
+      return db
+        .select({
+          chave: sql<string>`${chave}`,
+          nome: sql<string>`coalesce(min(${contratos.fornecedor_nome}), ${chave})`,
+          cnpj: contratos.fornecedor_cnpj,
+          valor: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+        })
+        .from(contratos)
+        .where(eq(contratos.id_municipio, idMunicipio))
+        .groupBy(chave, contratos.fornecedor_cnpj)
+        .orderBy(sql`4 desc`, sql`1 asc`)
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Filtros compartilhados pela listagem, pela exportação e pelos totais. */
@@ -1514,24 +1664,27 @@ export async function contratosPaginados(
     porPagina?: number;
   } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 25;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
-  return db
-    .select({
-      ...COLUNAS_CONTRATO,
-      total: sql<number>`(count(*) over ())::int`,
-      soma: sql<number>`(coalesce(sum(${contratos.valor_global}) over (), 0))::double precision`,
-      total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}) over ())::int`,
-    })
-    .from(contratos)
-    .where(condicoesDeContratos(idMunicipio, filtros))
-    // Desempate por id: sem ordem total a paginação repete ou pula linhas,
-    // e muitos contratos compartilham a mesma `data_assinatura`.
-    .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+  return comBancoReserva(
+    async (db) => {
+      const porPagina = filtros.porPagina ?? 25;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
+      return db
+        .select({
+          ...COLUNAS_CONTRATO,
+          total: sql<number>`(count(*) over ())::int`,
+          soma: sql<number>`(coalesce(sum(${contratos.valor_global}) over (), 0))::double precision`,
+          total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}) over ())::int`,
+        })
+        .from(contratos)
+        .where(condicoesDeContratos(idMunicipio, filtros))
+        // Desempate por id: sem ordem total a paginação repete ou pula linhas,
+        // e muitos contratos compartilham a mesma `data_assinatura`.
+        .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1556,17 +1709,20 @@ export async function totaisDeContratos(
     tipo?: string;
   } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      total: sql<number>`count(*)::int`,
-      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-      total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
-    })
-    .from(contratos)
-    .where(condicoesDeContratos(idMunicipio, filtros));
-  return linha ?? { total: 0, soma: 0, total_alertas: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+          total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
+        })
+        .from(contratos)
+        .where(condicoesDeContratos(idMunicipio, filtros));
+      return linha ?? { total: 0, soma: 0, total_alertas: 0 };
+    },
+    { vazio: (r) => r === null || r.total === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Contratos para a exportação em CSV — sem paginação, com teto. */
@@ -1585,14 +1741,17 @@ export async function contratosParaExport(
   },
   limite: number
 ) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_CONTRATO)
-    .from(contratos)
-    .where(condicoesDeContratos(idMunicipio, filtros))
-    .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_CONTRATO)
+        .from(contratos)
+        .where(condicoesDeContratos(idMunicipio, filtros))
+        .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1601,19 +1760,22 @@ export async function contratosParaExport(
  * AGENTS.md). Agregado no banco; sem linha nenhuma devolve lista vazia.
  */
 export async function contratosPorAno(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: contratos.ano,
-      total: sql<number>`count(*)::int`,
-      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-      com_alerta: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
-    })
-    .from(contratos)
-    .where(eq(contratos.id_municipio, idMunicipio))
-    .groupBy(contratos.ano)
-    .orderBy(sql`${contratos.ano} asc nulls last`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: contratos.ano,
+          total: sql<number>`count(*)::int`,
+          soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+          com_alerta: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
+        })
+        .from(contratos)
+        .where(eq(contratos.id_municipio, idMunicipio))
+        .groupBy(contratos.ano)
+        .orderBy(sql`${contratos.ano} asc nulls last`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Filtros do ranking de fornecedores. A faixa de valor é sobre o TOTAL
@@ -1644,38 +1806,41 @@ export async function fornecedoresRanking(
   filtros: FiltrosFornecedoresRanking = {},
   limite = 5000
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
-  const conds = [eq(contratos.id_municipio, idMunicipio)];
-  if (filtros.ano) conds.push(eq(contratos.ano, filtros.ano));
-  const tendo: SQL[] = [];
-  if (filtros.valorTotalMin !== undefined) {
-    tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) >= ${filtros.valorTotalMin}`);
-  }
-  if (filtros.valorTotalMax !== undefined) {
-    tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) <= ${filtros.valorTotalMax}`);
-  }
-  return db
-    .select({
-      chave: sql<string>`${chave}`,
-      razao_social: sql<string | null>`min(${contratos.fornecedor_nome})`,
-      cnpj: contratos.fornecedor_cnpj,
-      valor_total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
-      num_contratos: sql<number>`count(*)::int`,
-      num_orgaos: sql<number>`count(distinct ${contratos.orgao_nome})::int`,
-      ano_primeiro: sql<number | null>`min(${contratos.ano})::int`,
-      ano_ultimo: sql<number | null>`max(${contratos.ano})::int`,
-      tem_alerta: sql<boolean>`bool_or(coalesce(${contratos.alerta}, false))`,
-      data_abertura: sql<string | null>`max(${fornecedores.data_abertura}::text)`,
-    })
-    .from(contratos)
-    .leftJoin(fornecedores, eq(fornecedores.cnpj, contratos.fornecedor_cnpj))
-    .where(and(...conds))
-    .groupBy(chave, contratos.fornecedor_cnpj)
-    .having(tendo.length > 0 ? and(...tendo) : undefined)
-    .orderBy(sql`4 desc`, sql`1 asc`)
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
+      const conds = [eq(contratos.id_municipio, idMunicipio)];
+      if (filtros.ano) conds.push(eq(contratos.ano, filtros.ano));
+      const tendo: SQL[] = [];
+      if (filtros.valorTotalMin !== undefined) {
+        tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) >= ${filtros.valorTotalMin}`);
+      }
+      if (filtros.valorTotalMax !== undefined) {
+        tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) <= ${filtros.valorTotalMax}`);
+      }
+      return db
+        .select({
+          chave: sql<string>`${chave}`,
+          razao_social: sql<string | null>`min(${contratos.fornecedor_nome})`,
+          cnpj: contratos.fornecedor_cnpj,
+          valor_total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+          num_contratos: sql<number>`count(*)::int`,
+          num_orgaos: sql<number>`count(distinct ${contratos.orgao_nome})::int`,
+          ano_primeiro: sql<number | null>`min(${contratos.ano})::int`,
+          ano_ultimo: sql<number | null>`max(${contratos.ano})::int`,
+          tem_alerta: sql<boolean>`bool_or(coalesce(${contratos.alerta}, false))`,
+          data_abertura: sql<string | null>`max(${fornecedores.data_abertura}::text)`,
+        })
+        .from(contratos)
+        .leftJoin(fornecedores, eq(fornecedores.cnpj, contratos.fornecedor_cnpj))
+        .where(and(...conds))
+        .groupBy(chave, contratos.fornecedor_cnpj)
+        .having(tendo.length > 0 ? and(...tendo) : undefined)
+        .orderBy(sql`4 desc`, sql`1 asc`)
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1685,62 +1850,75 @@ export async function fornecedoresRanking(
  * global, chaveada por CNPJ.
  */
 export async function sancoesCeisPorCnpj(cnpjs: string[]) {
-  const db = getDb();
-  if (!db || cnpjs.length === 0) return null;
-  return db
-    .select({ cnpj: fornecedores.cnpj, ceis_detalhes: fornecedores.ceis_detalhes })
-    .from(fornecedores)
-    .where(inArray(fornecedores.cnpj, cnpjs));
+  if (cnpjs.length === 0) return null;
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({ cnpj: fornecedores.cnpj, ceis_detalhes: fornecedores.ceis_detalhes })
+        .from(fornecedores)
+        .where(inArray(fornecedores.cnpj, cnpjs));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Quantos estabelecimentos de saúde e a soma dos profissionais. */
 export async function resumoEstabelecimentosSaude(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      qtd: sql<number>`count(*)::int`,
-      profissionais: sql<number>`coalesce(sum(${saude_estabelecimentos.profissionais_count}), 0)::int`,
-    })
-    .from(saude_estabelecimentos)
-    .where(eq(saude_estabelecimentos.id_municipio, idMunicipio));
-  return linha ?? { qtd: 0, profissionais: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          qtd: sql<number>`count(*)::int`,
+          profissionais: sql<number>`coalesce(sum(${saude_estabelecimentos.profissionais_count}), 0)::int`,
+        })
+        .from(saude_estabelecimentos)
+        .where(eq(saude_estabelecimentos.id_municipio, idMunicipio));
+      return linha ?? { qtd: 0, profissionais: 0 };
+    },
+    { vazio: (r) => r === null || r.qtd === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function internacoesSaude(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: saude_internacoes.ano,
-      carater: saude_internacoes.carater,
-      qtd: saude_internacoes.qtd,
-      obitos: saude_internacoes.obitos,
-      permanencia_media: num(saude_internacoes.permanencia_media),
-    })
-    .from(saude_internacoes)
-    .where(eq(saude_internacoes.id_municipio, idMunicipio))
-    .orderBy(
-      desc(saude_internacoes.ano),
-      asc(saude_internacoes.carater),
-      asc(saude_internacoes.id)
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: saude_internacoes.ano,
+          carater: saude_internacoes.carater,
+          qtd: saude_internacoes.qtd,
+          obitos: saude_internacoes.obitos,
+          permanencia_media: num(saude_internacoes.permanencia_media),
+        })
+        .from(saude_internacoes)
+        .where(eq(saude_internacoes.id_municipio, idMunicipio))
+        .orderBy(
+          desc(saude_internacoes.ano),
+          asc(saude_internacoes.carater),
+          asc(saude_internacoes.id)
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Internações de urgência (caráter "2") a partir de um ano. */
 export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({ ano: saude_internacoes.ano, qtd: saude_internacoes.qtd })
-    .from(saude_internacoes)
-    .where(
-      and(
-        eq(saude_internacoes.id_municipio, idMunicipio),
-        eq(saude_internacoes.carater, "2"),
-        gte(saude_internacoes.ano, anoMinimo)
-      )
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({ ano: saude_internacoes.ano, qtd: saude_internacoes.qtd })
+        .from(saude_internacoes)
+        .where(
+          and(
+            eq(saude_internacoes.id_municipio, idMunicipio),
+            eq(saude_internacoes.carater, "2"),
+            gte(saude_internacoes.ano, anoMinimo)
+          )
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Ranking das internações por CID-10 (tabela `saude_internacoes_cid`,
@@ -1748,72 +1926,84 @@ export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMini
  * diagnóstico mais frequente para o menos, do ano mais recente para o
  * mais antigo. */
 export async function rankingCidsMunicipio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: saude_internacoes_cid.ano,
-      cid_codigo: saude_internacoes_cid.cid_codigo,
-      capitulo: saude_internacoes_cid.capitulo,
-      internacoes_total: saude_internacoes_cid.internacoes_total,
-      obitos_total: saude_internacoes_cid.obitos_total,
-      dias_permanencia_total: num(saude_internacoes_cid.dias_permanencia_total),
-      valor_total: num(saude_internacoes_cid.valor_total),
-    })
-    .from(saude_internacoes_cid)
-    .where(eq(saude_internacoes_cid.id_municipio, idMunicipio))
-    .orderBy(
-      desc(saude_internacoes_cid.ano),
-      desc(saude_internacoes_cid.internacoes_total),
-      asc(saude_internacoes_cid.cid_codigo)
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: saude_internacoes_cid.ano,
+          cid_codigo: saude_internacoes_cid.cid_codigo,
+          capitulo: saude_internacoes_cid.capitulo,
+          internacoes_total: saude_internacoes_cid.internacoes_total,
+          obitos_total: saude_internacoes_cid.obitos_total,
+          dias_permanencia_total: num(saude_internacoes_cid.dias_permanencia_total),
+          valor_total: num(saude_internacoes_cid.valor_total),
+        })
+        .from(saude_internacoes_cid)
+        .where(eq(saude_internacoes_cid.id_municipio, idMunicipio))
+        .orderBy(
+          desc(saude_internacoes_cid.ano),
+          desc(saude_internacoes_cid.internacoes_total),
+          asc(saude_internacoes_cid.cid_codigo)
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function arbovirosesDoMunicipio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      doenca: arboviroses.doenca,
-      ano: arboviroses.ano,
-      casos: arboviroses.casos,
-      nivel_alerta: arboviroses.nivel_alerta,
-    })
-    .from(arboviroses)
-    .where(eq(arboviroses.id_municipio, idMunicipio))
-    .orderBy(desc(arboviroses.ano), asc(arboviroses.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          doenca: arboviroses.doenca,
+          ano: arboviroses.ano,
+          casos: arboviroses.casos,
+          nivel_alerta: arboviroses.nivel_alerta,
+        })
+        .from(arboviroses)
+        .where(eq(arboviroses.id_municipio, idMunicipio))
+        .orderBy(desc(arboviroses.ano), asc(arboviroses.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Últimas semanas de dengue — janela curta, é o que o InfoDengue devolve. */
 export async function ultimasSemanasDeDengue(idMunicipio: IdMunicipio, limite: number) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      semana_epidemiologica: arboviroses.semana_epidemiologica,
-      casos: arboviroses.casos,
-      ano: arboviroses.ano,
-    })
-    .from(arboviroses)
-    .where(and(eq(arboviroses.id_municipio, idMunicipio), eq(arboviroses.doenca, "dengue")))
-    .orderBy(
-      desc(arboviroses.ano),
-      desc(arboviroses.semana_epidemiologica),
-      asc(arboviroses.id)
-    )
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          semana_epidemiologica: arboviroses.semana_epidemiologica,
+          casos: arboviroses.casos,
+          ano: arboviroses.ano,
+        })
+        .from(arboviroses)
+        .where(and(eq(arboviroses.id_municipio, idMunicipio), eq(arboviroses.doenca, "dengue")))
+        .orderBy(
+          desc(arboviroses.ano),
+          desc(arboviroses.semana_epidemiologica),
+          asc(arboviroses.id)
+        )
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function anoMaisRecenteDeMortalidade(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ ano: mortalidade.ano })
-    .from(mortalidade)
-    .where(and(eq(mortalidade.id_municipio, idMunicipio), isNotNull(mortalidade.ano)))
-    .orderBy(desc(mortalidade.ano))
-    .limit(1);
-  return linha?.ano ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ ano: mortalidade.ano })
+        .from(mortalidade)
+        .where(and(eq(mortalidade.id_municipio, idMunicipio), isNotNull(mortalidade.ano)))
+        .orderBy(desc(mortalidade.ano))
+        .limit(1);
+      return linha?.ano ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function topCausasDeMortalidade(
@@ -1821,28 +2011,34 @@ export async function topCausasDeMortalidade(
   ano: number,
   limite: number
 ) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({ grupo_causa: mortalidade.grupo_causa, obitos: mortalidade.obitos })
-    .from(mortalidade)
-    .where(and(eq(mortalidade.id_municipio, idMunicipio), eq(mortalidade.ano, ano)))
-    .orderBy(desc(mortalidade.obitos), asc(mortalidade.id))
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({ grupo_causa: mortalidade.grupo_causa, obitos: mortalidade.obitos })
+        .from(mortalidade)
+        .where(and(eq(mortalidade.id_municipio, idMunicipio), eq(mortalidade.ano, ano)))
+        .orderBy(desc(mortalidade.obitos), asc(mortalidade.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Óbitos por grupo de causa a partir de um ano — base do cálculo de tendência. */
 export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: mortalidade.ano,
-      grupo_causa: mortalidade.grupo_causa,
-      obitos: mortalidade.obitos,
-    })
-    .from(mortalidade)
-    .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: mortalidade.ano,
+          grupo_causa: mortalidade.grupo_causa,
+          obitos: mortalidade.obitos,
+        })
+        .from(mortalidade)
+        .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 const COLUNAS_VEREADOR = {
@@ -1872,13 +2068,16 @@ const COLUNAS_VEREADOR = {
  * as protegia nunca chegou a usar o fallback.
  */
 export async function listarVereadores(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_VEREADOR)
-    .from(vereadores)
-    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
-    .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_VEREADOR)
+        .from(vereadores)
+        .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
+        .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1894,29 +2093,35 @@ export async function listarVereadores(idMunicipio: IdMunicipio) {
  * vice-presidencia da CCJ vazia na tela.
  */
 export async function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select(COLUNAS_VEREADOR)
-    .from(vereadores)
-    .where(
-      and(
-        eq(vereadores.id_municipio, idMunicipio),
-        ne(vereadores.situacao_mandato, "em_exercicio")
-      )
-    )
-    .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select(COLUNAS_VEREADOR)
+        .from(vereadores)
+        .where(
+          and(
+            eq(vereadores.id_municipio, idMunicipio),
+            ne(vereadores.situacao_mandato, "em_exercicio")
+          )
+        )
+        .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function vereadorPorSlug(idMunicipio: IdMunicipio, slug: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select(COLUNAS_VEREADOR)
-    .from(vereadores)
-    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.slug, slug)))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select(COLUNAS_VEREADOR)
+        .from(vereadores)
+        .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.slug, slug)))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1933,44 +2138,50 @@ export async function proposicoesDeVereador(
   tema?: string,
   limite = 10
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [
-    eq(proposicoes.id_municipio, idMunicipio),
-    eq(proposicoes.vereador_id, vereadorId),
-  ];
-  if (tema) cond.push(arrayContains(proposicoes.temas, [tema]));
-  return db
-    .select({
-      tipo: proposicoes.tipo,
-      numero: proposicoes.numero,
-      ano: proposicoes.ano,
-      ementa: proposicoes.ementa,
-      situacao: proposicoes.situacao,
-      link_fonte: proposicoes.link_fonte,
-      temas: proposicoes.temas,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(proposicoes)
-    .where(and(...cond))
-    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
-    .limit(limite);
+  return comBancoReserva(
+    async (db) => {
+      const cond = [
+        eq(proposicoes.id_municipio, idMunicipio),
+        eq(proposicoes.vereador_id, vereadorId),
+      ];
+      if (tema) cond.push(arrayContains(proposicoes.temas, [tema]));
+      return db
+        .select({
+          tipo: proposicoes.tipo,
+          numero: proposicoes.numero,
+          ano: proposicoes.ano,
+          ementa: proposicoes.ementa,
+          situacao: proposicoes.situacao,
+          link_fonte: proposicoes.link_fonte,
+          temas: proposicoes.temas,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(proposicoes)
+        .where(and(...cond))
+        .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+        .limit(limite);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      destino: diarias.destino,
-      data_inicio: diarias.data_inicio,
-      data_fim: diarias.data_fim,
-      valor: num(diarias.valor),
-      motivo: diarias.motivo,
-    })
-    .from(diarias)
-    .where(and(eq(diarias.id_municipio, idMunicipio), eq(diarias.vereador_id, vereadorId)))
-    .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          destino: diarias.destino,
+          data_inicio: diarias.data_inicio,
+          data_fim: diarias.data_fim,
+          valor: num(diarias.valor),
+          motivo: diarias.motivo,
+        })
+        .from(diarias)
+        .where(and(eq(diarias.id_municipio, idMunicipio), eq(diarias.vereador_id, vereadorId)))
+        .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -1988,29 +2199,32 @@ export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: st
  * é esse.
  */
 export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      id: diarias.id,
-      natureza: diarias.natureza,
-      orgao: diarias.orgao,
-      orgao_nome: diarias.orgao_nome,
-      beneficiario: diarias.beneficiario,
-      cargo: diarias.cargo,
-      vereador_id: diarias.vereador_id,
-      origem: diarias.origem,
-      destino: diarias.destino,
-      data_inicio: diarias.data_inicio,
-      data_fim: diarias.data_fim,
-      qtd_diarias: num(diarias.qtd_diarias),
-      valor: num(diarias.valor),
-      motivo: diarias.motivo,
-      link_fonte: diarias.link_fonte,
-    })
-    .from(diarias)
-    .where(eq(diarias.id_municipio, idMunicipio))
-    .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          id: diarias.id,
+          natureza: diarias.natureza,
+          orgao: diarias.orgao,
+          orgao_nome: diarias.orgao_nome,
+          beneficiario: diarias.beneficiario,
+          cargo: diarias.cargo,
+          vereador_id: diarias.vereador_id,
+          origem: diarias.origem,
+          destino: diarias.destino,
+          data_inicio: diarias.data_inicio,
+          data_fim: diarias.data_fim,
+          qtd_diarias: num(diarias.qtd_diarias),
+          valor: num(diarias.valor),
+          motivo: diarias.motivo,
+          link_fonte: diarias.link_fonte,
+        })
+        .from(diarias)
+        .where(eq(diarias.id_municipio, idMunicipio))
+        .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2020,47 +2234,53 @@ export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
  * financiamento e o NOME é público, mas o documento não precisa aparecer.
  */
 export async function doacoesDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      doador_nome: doacoes_campanha.doador_nome,
-      doador_tipo: doacoes_campanha.doador_tipo,
-      valor: num(doacoes_campanha.valor),
-      data_doacao: doacoes_campanha.data_doacao,
-      total: sql<number>`(count(*) over ())::int`,
-      soma: sql<number>`(coalesce(sum(${doacoes_campanha.valor}) over (), 0))::double precision`,
-    })
-    .from(doacoes_campanha)
-    .where(
-      and(
-        eq(doacoes_campanha.id_municipio, idMunicipio),
-        eq(doacoes_campanha.vereador_id, vereadorId)
-      )
-    )
-    .orderBy(sql`${doacoes_campanha.valor} desc nulls last`, asc(doacoes_campanha.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          doador_nome: doacoes_campanha.doador_nome,
+          doador_tipo: doacoes_campanha.doador_tipo,
+          valor: num(doacoes_campanha.valor),
+          data_doacao: doacoes_campanha.data_doacao,
+          total: sql<number>`(count(*) over ())::int`,
+          soma: sql<number>`(coalesce(sum(${doacoes_campanha.valor}) over (), 0))::double precision`,
+        })
+        .from(doacoes_campanha)
+        .where(
+          and(
+            eq(doacoes_campanha.id_municipio, idMunicipio),
+            eq(doacoes_campanha.vereador_id, vereadorId)
+          )
+        )
+        .orderBy(sql`${doacoes_campanha.valor} desc nulls last`, asc(doacoes_campanha.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Patrimônio declarado na campanha (TSE), maior valor primeiro. */
 export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      tipo_item: bens_candidato.tipo_item,
-      descricao_item: bens_candidato.descricao_item,
-      valor: num(bens_candidato.valor),
-      total: sql<number>`(count(*) over ())::int`,
-      soma: sql<number>`(coalesce(sum(${bens_candidato.valor}) over (), 0))::double precision`,
-    })
-    .from(bens_candidato)
-    .where(
-      and(
-        eq(bens_candidato.id_municipio, idMunicipio),
-        eq(bens_candidato.vereador_id, vereadorId)
-      )
-    )
-    .orderBy(sql`${bens_candidato.valor} desc nulls last`, asc(bens_candidato.id));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          tipo_item: bens_candidato.tipo_item,
+          descricao_item: bens_candidato.descricao_item,
+          valor: num(bens_candidato.valor),
+          total: sql<number>`(count(*) over ())::int`,
+          soma: sql<number>`(coalesce(sum(${bens_candidato.valor}) over (), 0))::double precision`,
+        })
+        .from(bens_candidato)
+        .where(
+          and(
+            eq(bens_candidato.id_municipio, idMunicipio),
+            eq(bens_candidato.vereador_id, vereadorId)
+          )
+        )
+        .orderBy(sql`${bens_candidato.valor} desc nulls last`, asc(bens_candidato.id));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2094,28 +2314,31 @@ export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: strin
  * trata os dois casos separadamente.
  */
 export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      vereador_id: proposicoes.vereador_id,
-      tipo: proposicoes.tipo,
-      classe_teor: proposicoes.classe_teor,
-      rotulo: analises.rotulo,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(proposicoes)
-    .leftJoin(
-      analises,
-      and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
-    )
-    .where(and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.tipo)))
-    .groupBy(
-      proposicoes.vereador_id,
-      proposicoes.tipo,
-      proposicoes.classe_teor,
-      analises.rotulo
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          vereador_id: proposicoes.vereador_id,
+          tipo: proposicoes.tipo,
+          classe_teor: proposicoes.classe_teor,
+          rotulo: analises.rotulo,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(proposicoes)
+        .leftJoin(
+          analises,
+          and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
+        )
+        .where(and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.tipo)))
+        .groupBy(
+          proposicoes.vereador_id,
+          proposicoes.tipo,
+          proposicoes.classe_teor,
+          analises.rotulo
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** A proposição mais recente que casa com um filtro — teaser da Home. */
@@ -2123,40 +2346,43 @@ export async function ultimaProposicao(
   idMunicipio: IdMunicipio,
   filtro: { tipo?: string; situacao?: string }
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
-  if (filtro.tipo) cond.push(eq(proposicoes.tipo, filtro.tipo));
-  if (filtro.situacao) cond.push(eq(proposicoes.situacao, filtro.situacao));
-  const [linha] = await db
-    .select({
-      tipo: proposicoes.tipo,
-      numero: proposicoes.numero,
-      ano: proposicoes.ano,
-      ementa: proposicoes.ementa,
-      link_fonte: proposicoes.link_fonte,
-      data_apresentacao: proposicoes.data_apresentacao,
-    })
-    .from(proposicoes)
-    .where(and(...cond))
-    /**
-     * Desempate por NÚMERO, não por id — e a diferença é de significado,
-     * não de estilo.
-     *
-     * Quatro requerimentos dividem `data_apresentacao = 2026-07-15`. Um
-     * desempate por uuid escolheria o nº 821; a Câmara numera as
-     * proposições em sequência, então o nº 822 é que é o último. Com id o
-     * teaser da Home ficaria determinístico e ERRADO. O `id` continua no
-     * fim como garantia de ordem total, para o caso de número repetido.
-     */
-    .orderBy(
-      sql`${proposicoes.data_apresentacao} desc nulls last`,
-      desc(proposicoes.ano),
-      desc(proposicoes.numero),
-      asc(proposicoes.id)
-    )
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+      if (filtro.tipo) cond.push(eq(proposicoes.tipo, filtro.tipo));
+      if (filtro.situacao) cond.push(eq(proposicoes.situacao, filtro.situacao));
+      const [linha] = await db
+        .select({
+          tipo: proposicoes.tipo,
+          numero: proposicoes.numero,
+          ano: proposicoes.ano,
+          ementa: proposicoes.ementa,
+          link_fonte: proposicoes.link_fonte,
+          data_apresentacao: proposicoes.data_apresentacao,
+        })
+        .from(proposicoes)
+        .where(and(...cond))
+        /**
+         * Desempate por NÚMERO, não por id — e a diferença é de significado,
+         * não de estilo.
+         *
+         * Quatro requerimentos dividem `data_apresentacao = 2026-07-15`. Um
+         * desempate por uuid escolheria o nº 821; a Câmara numera as
+         * proposições em sequência, então o nº 822 é que é o último. Com id o
+         * teaser da Home ficaria determinístico e ERRADO. O `id` continua no
+         * fim como garantia de ordem total, para o caso de número repetido.
+         */
+        .orderBy(
+          sql`${proposicoes.data_apresentacao} desc nulls last`,
+          desc(proposicoes.ano),
+          desc(proposicoes.numero),
+          asc(proposicoes.id)
+        )
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 
@@ -2167,19 +2393,22 @@ export async function ultimaProposicao(
  * não tem coluna `id`, então o desempate de ordem não se aplica aqui.
  */
 export async function climaDaCidade(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      atual: clima_cache.atual,
-      diario: clima_cache.diario,
-      chuva_7d: num(clima_cache.chuva_7d),
-      atualizado_em: clima_cache.atualizado_em,
-    })
-    .from(clima_cache)
-    .where(eq(clima_cache.id_municipio, idMunicipio))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          atual: clima_cache.atual,
+          diario: clima_cache.diario,
+          chuva_7d: num(clima_cache.chuva_7d),
+          atualizado_em: clima_cache.atualizado_em,
+        })
+        .from(clima_cache)
+        .where(eq(clima_cache.id_municipio, idMunicipio))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -2209,77 +2438,84 @@ export async function analisesDoMunicipio(
   idMunicipio: IdMunicipio,
   rotulos?: string[]
 ) {
-  const db = getDb();
-  if (!db) return null;
-  if (rotulos && rotulos.length === 0) return [];
+  return comBancoReserva(
+    async (db) => {
+      if (rotulos && rotulos.length === 0) return [];
 
-  const cond = [eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")];
-  if (rotulos) cond.push(inArray(analises.rotulo, rotulos));
+      const cond = [eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")];
+      if (rotulos) cond.push(inArray(analises.rotulo, rotulos));
 
-  return db
-    .select({
-      id: analises.id,
-      ato_id: analises.ato_id,
-      proposicao_id: analises.proposicao_id,
-      tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
-      score: num(analises.score),
-      rotulo: analises.rotulo,
-      clausula_petrea: analises.clausula_petrea,
-      vedacao_retrocesso: analises.vedacao_retrocesso,
-      resumo_neutro: analises.resumo_neutro,
-      modelo: analises.modelo,
-      versao_rubrica: analises.versao_rubrica,
-      criado_em: analises.criado_em,
-      // Identificação e ementa vêm do lado que existir. `tipo` do ato já é
-      // texto ("Lei Ordinária"); o da proposição é código ("projeto_lei") e
-      // ganha rótulo em português na camada de cima.
-      ato_tipo: atos_oficiais.tipo,
-      ato_numero: atos_oficiais.numero,
-      ato_ano: atos_oficiais.ano,
-      ato_ementa: atos_oficiais.ementa,
-      ato_temas: atos_oficiais.temas,
-      ato_data: atos_oficiais.data_publicacao,
-      ato_link: atos_oficiais.link_fonte,
-      prop_tipo: proposicoes.tipo,
-      prop_numero: proposicoes.numero,
-      prop_ano: proposicoes.ano,
-      prop_ementa: proposicoes.ementa,
-      prop_temas: proposicoes.temas,
-      prop_data: proposicoes.data_apresentacao,
-      prop_situacao: proposicoes.situacao,
-      prop_autores: proposicoes.autores,
-      prop_link: proposicoes.link_fonte,
-    })
-    .from(analises)
-    .leftJoin(atos_oficiais, eq(atos_oficiais.id, analises.ato_id))
-    .leftJoin(proposicoes, eq(proposicoes.id, analises.proposicao_id))
-    .where(and(...cond));
+      return db
+        .select({
+          id: analises.id,
+          ato_id: analises.ato_id,
+          proposicao_id: analises.proposicao_id,
+          tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+          score: num(analises.score),
+          rotulo: analises.rotulo,
+          clausula_petrea: analises.clausula_petrea,
+          vedacao_retrocesso: analises.vedacao_retrocesso,
+          resumo_neutro: analises.resumo_neutro,
+          modelo: analises.modelo,
+          versao_rubrica: analises.versao_rubrica,
+          criado_em: analises.criado_em,
+          // Identificação e ementa vêm do lado que existir. `tipo` do ato já é
+          // texto ("Lei Ordinária"); o da proposição é código ("projeto_lei") e
+          // ganha rótulo em português na camada de cima.
+          ato_tipo: atos_oficiais.tipo,
+          ato_numero: atos_oficiais.numero,
+          ato_ano: atos_oficiais.ano,
+          ato_ementa: atos_oficiais.ementa,
+          ato_temas: atos_oficiais.temas,
+          ato_data: atos_oficiais.data_publicacao,
+          ato_link: atos_oficiais.link_fonte,
+          prop_tipo: proposicoes.tipo,
+          prop_numero: proposicoes.numero,
+          prop_ano: proposicoes.ano,
+          prop_ementa: proposicoes.ementa,
+          prop_temas: proposicoes.temas,
+          prop_data: proposicoes.data_apresentacao,
+          prop_situacao: proposicoes.situacao,
+          prop_autores: proposicoes.autores,
+          prop_link: proposicoes.link_fonte,
+        })
+        .from(analises)
+        .leftJoin(atos_oficiais, eq(atos_oficiais.id, analises.ato_id))
+        .leftJoin(proposicoes, eq(proposicoes.id, analises.proposicao_id))
+        .where(and(...cond));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Itens de um conjunto de análises da MESMA cidade. */
 export async function itensDeAnalises(idMunicipio: IdMunicipio, analiseIds: string[]) {
-  const db = getDb();
-  if (!db || analiseIds.length === 0) return [];
-  return db
-    .select({
-      analise_id: analise_itens.analise_id,
-      direito: analise_itens.direito,
-      dispositivo: analise_itens.dispositivo,
-      direcao: analise_itens.direcao,
-      mecanismo: analise_itens.mecanismo,
-      titulares: analise_itens.titulares,
-      grau: analise_itens.grau,
-      trecho: analise_itens.trecho,
-      confianca: num(analise_itens.confianca),
-      peso: num(analise_itens.peso),
-    })
-    .from(analise_itens)
-    .where(
-      and(
-        eq(analise_itens.id_municipio, idMunicipio),
-        inArray(analise_itens.analise_id, analiseIds)
-      )
-    );
+  if (analiseIds.length === 0) return [];
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          analise_id: analise_itens.analise_id,
+          direito: analise_itens.direito,
+          dispositivo: analise_itens.dispositivo,
+          direcao: analise_itens.direcao,
+          mecanismo: analise_itens.mecanismo,
+          titulares: analise_itens.titulares,
+          grau: analise_itens.grau,
+          trecho: analise_itens.trecho,
+          confianca: num(analise_itens.confianca),
+          peso: num(analise_itens.peso),
+        })
+        .from(analise_itens)
+        .where(
+          and(
+            eq(analise_itens.id_municipio, idMunicipio),
+            inArray(analise_itens.analise_id, analiseIds)
+          )
+        );
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 /**
@@ -2291,33 +2527,36 @@ export async function itensDeAnalises(idMunicipio: IdMunicipio, analiseIds: stri
  * sem o denominador ao lado parece veredito sobre a Câmara inteira.
  */
 export async function coberturaAnaliseMunicipio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  const [analisadas, totalAtos, totalProps] = await Promise.all([
-    db
-      .select({
-        tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
-        n: count(),
-      })
-      .from(analises)
-      .where(and(eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")))
-      .groupBy(sql`1`),
-    db
-      .select({ n: count() })
-      .from(atos_oficiais)
-      .where(eq(atos_oficiais.id_municipio, idMunicipio)),
-    db
-      .select({ n: count() })
-      .from(proposicoes)
-      .where(eq(proposicoes.id_municipio, idMunicipio)),
-  ]);
-  return {
-    atosAnalisados: analisadas.find((r) => r.tipo_objeto === "ato")?.n ?? 0,
-    proposicoesAnalisadas:
-      analisadas.find((r) => r.tipo_objeto === "proposicao")?.n ?? 0,
-    totalAtos: totalAtos[0]?.n ?? 0,
-    totalProposicoes: totalProps[0]?.n ?? 0,
-  };
+  return comBancoReserva(
+    async (db) => {
+      const [analisadas, totalAtos, totalProps] = await Promise.all([
+        db
+          .select({
+            tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+            n: count(),
+          })
+          .from(analises)
+          .where(and(eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")))
+          .groupBy(sql`1`),
+        db
+          .select({ n: count() })
+          .from(atos_oficiais)
+          .where(eq(atos_oficiais.id_municipio, idMunicipio)),
+        db
+          .select({ n: count() })
+          .from(proposicoes)
+          .where(eq(proposicoes.id_municipio, idMunicipio)),
+      ]);
+      return {
+        atosAnalisados: analisadas.find((r) => r.tipo_objeto === "ato")?.n ?? 0,
+        proposicoesAnalisadas:
+          analisadas.find((r) => r.tipo_objeto === "proposicao")?.n ?? 0,
+        totalAtos: totalAtos[0]?.n ?? 0,
+        totalProposicoes: totalProps[0]?.n ?? 0,
+      };
+    },
+    { vazio: (r) => r === null || (r.totalAtos === 0 && r.totalProposicoes === 0), padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2332,54 +2571,61 @@ export async function analisesDeObjetos(
   idMunicipio: IdMunicipio,
   ids: { atos?: string[]; proposicoes?: string[] }
 ) {
-  const db = getDb();
-  if (!db) return null;
+  return comBancoReserva(
+    async (db) => {
 
-  const porObjeto = [];
-  if (ids.atos?.length) porObjeto.push(inArray(analises.ato_id, ids.atos));
-  if (ids.proposicoes?.length)
-    porObjeto.push(inArray(analises.proposicao_id, ids.proposicoes));
-  if (porObjeto.length === 0) return { linhas: [], itens: [] };
+      const porObjeto = [];
+      if (ids.atos?.length) porObjeto.push(inArray(analises.ato_id, ids.atos));
+      if (ids.proposicoes?.length)
+        porObjeto.push(inArray(analises.proposicao_id, ids.proposicoes));
+      if (porObjeto.length === 0) return { linhas: [], itens: [] };
 
-  const linhas = await db
-    .select({
-      id: analises.id,
-      ato_id: analises.ato_id,
-      proposicao_id: analises.proposicao_id,
-      score: num(analises.score),
-      rotulo: analises.rotulo,
-      status: analises.status,
-      clausula_petrea: analises.clausula_petrea,
-      vedacao_retrocesso: analises.vedacao_retrocesso,
-      resumo_neutro: analises.resumo_neutro,
-      modelo: analises.modelo,
-      versao_rubrica: analises.versao_rubrica,
-    })
-    .from(analises)
-    .where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
+      const linhas = await db
+        .select({
+          id: analises.id,
+          ato_id: analises.ato_id,
+          proposicao_id: analises.proposicao_id,
+          score: num(analises.score),
+          rotulo: analises.rotulo,
+          status: analises.status,
+          clausula_petrea: analises.clausula_petrea,
+          vedacao_retrocesso: analises.vedacao_retrocesso,
+          resumo_neutro: analises.resumo_neutro,
+          modelo: analises.modelo,
+          versao_rubrica: analises.versao_rubrica,
+        })
+        .from(analises)
+        .where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
 
-  const itens = await itensDeAnalises(
-    idMunicipio,
-    linhas.map((l) => l.id)
+      const itens = await itensDeAnalises(
+        idMunicipio,
+        linhas.map((l) => l.id)
+      );
+      return { linhas, itens };
+    },
+    { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" }
   );
-  return { linhas, itens };
 }
 
 /** Itens (categorias de indício) de um conjunto de vícios da MESMA cidade. */
 export async function itensDeVicios(idMunicipio: IdMunicipio, vicioIds: string[]) {
-  const db = getDb();
-  if (!db || vicioIds.length === 0) return [];
-  return db
-    .select({
-      vicio_id: vicio_itens.vicio_id,
-      categoria: vicio_itens.categoria,
-      dispositivo: vicio_itens.dispositivo,
-      justificativa: vicio_itens.justificativa,
-      trecho: vicio_itens.trecho,
-      confianca: num(vicio_itens.confianca),
-    })
-    .from(vicio_itens)
-    .where(and(eq(vicio_itens.id_municipio, idMunicipio), inArray(vicio_itens.vicio_id, vicioIds)));
+  if (vicioIds.length === 0) return [];
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          vicio_id: vicio_itens.vicio_id,
+          categoria: vicio_itens.categoria,
+          dispositivo: vicio_itens.dispositivo,
+          justificativa: vicio_itens.justificativa,
+          trecho: vicio_itens.trecho,
+          confianca: num(vicio_itens.confianca),
+        })
+        .from(vicio_itens)
+        .where(and(eq(vicio_itens.id_municipio, idMunicipio), inArray(vicio_itens.vicio_id, vicioIds)));
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 /**
@@ -2393,34 +2639,37 @@ export async function viciosDeObjetos(
   idMunicipio: IdMunicipio,
   ids: { atos?: string[]; proposicoes?: string[] }
 ) {
-  const db = getDb();
-  if (!db) return null;
+  return comBancoReserva(
+    async (db) => {
 
-  const porObjeto = [];
-  if (ids.atos?.length) porObjeto.push(inArray(vicios_legislativos.ato_id, ids.atos));
-  if (ids.proposicoes?.length)
-    porObjeto.push(inArray(vicios_legislativos.proposicao_id, ids.proposicoes));
-  if (porObjeto.length === 0) return { linhas: [], itens: [] };
+      const porObjeto = [];
+      if (ids.atos?.length) porObjeto.push(inArray(vicios_legislativos.ato_id, ids.atos));
+      if (ids.proposicoes?.length)
+        porObjeto.push(inArray(vicios_legislativos.proposicao_id, ids.proposicoes));
+      if (porObjeto.length === 0) return { linhas: [], itens: [] };
 
-  const linhas = await db
-    .select({
-      id: vicios_legislativos.id,
-      ato_id: vicios_legislativos.ato_id,
-      proposicao_id: vicios_legislativos.proposicao_id,
-      nivel_gravidade: vicios_legislativos.nivel_gravidade,
-      status: vicios_legislativos.status,
-      resumo: vicios_legislativos.resumo,
-      modelo: vicios_legislativos.modelo,
-      versao_rubrica: vicios_legislativos.versao_rubrica,
-    })
-    .from(vicios_legislativos)
-    .where(and(eq(vicios_legislativos.id_municipio, idMunicipio), or(...porObjeto)));
+      const linhas = await db
+        .select({
+          id: vicios_legislativos.id,
+          ato_id: vicios_legislativos.ato_id,
+          proposicao_id: vicios_legislativos.proposicao_id,
+          nivel_gravidade: vicios_legislativos.nivel_gravidade,
+          status: vicios_legislativos.status,
+          resumo: vicios_legislativos.resumo,
+          modelo: vicios_legislativos.modelo,
+          versao_rubrica: vicios_legislativos.versao_rubrica,
+        })
+        .from(vicios_legislativos)
+        .where(and(eq(vicios_legislativos.id_municipio, idMunicipio), or(...porObjeto)));
 
-  const itens = await itensDeVicios(
-    idMunicipio,
-    linhas.map((l) => l.id)
+      const itens = await itensDeVicios(
+        idMunicipio,
+        linhas.map((l) => l.id)
+      );
+      return { linhas, itens };
+    },
+    { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" }
   );
-  return { linhas, itens };
 }
 
 /**
@@ -2431,18 +2680,21 @@ export async function viciosDeObjetos(
  * `id_municipio` para a tabela de itens.
  */
 export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      direito: analise_itens.direito,
-      tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
-      qtd: sql<number>`count(distinct ${analise_itens.analise_id})::int`,
-    })
-    .from(analise_itens)
-    .innerJoin(analises, eq(analises.id, analise_itens.analise_id))
-    .where(and(eq(analise_itens.id_municipio, idMunicipio), eq(analises.status, "ok")))
-    .groupBy(analise_itens.direito, sql`2`);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          direito: analise_itens.direito,
+          tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+          qtd: sql<number>`count(distinct ${analise_itens.analise_id})::int`,
+        })
+        .from(analise_itens)
+        .innerJoin(analises, eq(analises.id, analise_itens.analise_id))
+        .where(and(eq(analise_itens.id_municipio, idMunicipio), eq(analises.status, "ok")))
+        .groupBy(analise_itens.direito, sql`2`);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2478,23 +2730,26 @@ export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
  * porque a ata anotou o voto contrário dele confundiria as duas coisas.
  */
 export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      vereador_id: votos_camara.vereador_id,
-      voto: votos_camara.voto,
-      origem: votos_camara.origem,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(votos_camara)
-    .where(
-      and(
-        eq(votos_camara.id_municipio, idMunicipio),
-        isNotNull(votos_camara.vereador_id)
-      )
-    )
-    .groupBy(votos_camara.vereador_id, votos_camara.voto, votos_camara.origem);
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          vereador_id: votos_camara.vereador_id,
+          voto: votos_camara.voto,
+          origem: votos_camara.origem,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(votos_camara)
+        .where(
+          and(
+            eq(votos_camara.id_municipio, idMunicipio),
+            isNotNull(votos_camara.vereador_id)
+          )
+        )
+        .groupBy(votos_camara.vereador_id, votos_camara.voto, votos_camara.origem);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2520,42 +2775,45 @@ export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
  * publica.
  */
 export async function votosPorRotuloDeDireito(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      vereador_id: votos_camara.vereador_id,
-      rotulo: analises.rotulo,
-      voto: votos_camara.voto,
-      /** Autor da matéria — permite a coerência AUTORIA × VOTO sem uma
-       *  segunda consulta. */
-      autor_id: proposicoes.vereador_id,
-      qtd: sql<number>`count(*)::int`,
-    })
-    .from(votos_camara)
-    .innerJoin(votacoes_camara, eq(votacoes_camara.id, votos_camara.votacao_id))
-    .innerJoin(proposicoes, eq(proposicoes.id, votacoes_camara.proposicao_id))
-    .innerJoin(
-      analises,
-      and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
-    )
-    .where(
-      and(
-        eq(votos_camara.id_municipio, idMunicipio),
-        isNotNull(votos_camara.vereador_id),
-        // Voto NOMINAL apenas. `voto_contrario` de SP é anotação de
-        // dissidência em votação simbólica: registra quem foi CONTRA e não
-        // registra quem foi a favor. Contá-lo produziria uma taxa de
-        // coerência medida só sobre discordantes.
-        eq(votos_camara.origem, "nominal")
-      )
-    )
-    .groupBy(
-      votos_camara.vereador_id,
-      analises.rotulo,
-      votos_camara.voto,
-      proposicoes.vereador_id
-    );
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          vereador_id: votos_camara.vereador_id,
+          rotulo: analises.rotulo,
+          voto: votos_camara.voto,
+          /** Autor da matéria — permite a coerência AUTORIA × VOTO sem uma
+           *  segunda consulta. */
+          autor_id: proposicoes.vereador_id,
+          qtd: sql<number>`count(*)::int`,
+        })
+        .from(votos_camara)
+        .innerJoin(votacoes_camara, eq(votacoes_camara.id, votos_camara.votacao_id))
+        .innerJoin(proposicoes, eq(proposicoes.id, votacoes_camara.proposicao_id))
+        .innerJoin(
+          analises,
+          and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
+        )
+        .where(
+          and(
+            eq(votos_camara.id_municipio, idMunicipio),
+            isNotNull(votos_camara.vereador_id),
+            // Voto NOMINAL apenas. `voto_contrario` de SP é anotação de
+            // dissidência em votação simbólica: registra quem foi CONTRA e não
+            // registra quem foi a favor. Contá-lo produziria uma taxa de
+            // coerência medida só sobre discordantes.
+            eq(votos_camara.origem, "nominal")
+          )
+        )
+        .groupBy(
+          votos_camara.vereador_id,
+          analises.rotulo,
+          votos_camara.voto,
+          proposicoes.vereador_id
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2595,55 +2853,58 @@ export async function gastosAtipicos(
   idMunicipio: IdMunicipio,
   { minLinhas = 8, limite = 50 }: { minLinhas?: number; limite?: number } = {}
 ) {
-  const db = getDb();
-  if (!db) return [];
-  // `db.execute` devolve `NeonHttpQueryResult`, não um array — desembrulhar
-  // aqui e não no consumidor, senão cada tela repete o `.rows ?? []` e a
-  // primeira que esquecer compila e itera sobre o objeto errado.
-  const linhas = await db.execute<{
-    vereador_id: string | null;
-    beneficiario: string | null;
-    grupo_verba: string | null;
-    fornecedor: string | null;
-    data: string | null;
-    valor: number;
-    mediana_grupo: number;
-    p95_grupo: number;
-    vezes_a_mediana: number;
-    linhas_no_grupo: number;
-  }>(sql`
-    with base as (
-      select vereador_id, beneficiario, grupo_verba, fornecedor, data,
-             valor::float8 as valor
-        from verbas_indenizatorias
-       where id_municipio = ${idMunicipio}
-         and valor is not null
-         and grupo_verba is not null
-    ),
-    estat as (
-      select grupo_verba,
-             count(*)::int as linhas_no_grupo,
-             percentile_cont(0.5)  within group (order by valor) as mediana,
-             percentile_cont(0.95) within group (order by valor) as p95
-        from base
-       group by grupo_verba
-      having count(*) >= ${minLinhas}
-    )
-    select b.vereador_id, b.beneficiario, b.grupo_verba, b.fornecedor,
-           b.data::text as data, b.valor,
-           e.mediana as mediana_grupo,
-           e.p95     as p95_grupo,
-           (b.valor / e.mediana) as vezes_a_mediana,
-           e.linhas_no_grupo
-      from base b
-      join estat e using (grupo_verba)
-     where e.mediana > 0
-       and b.valor >= e.p95
-       and b.valor >= 2 * e.mediana
-     order by (b.valor / e.mediana) desc
-     limit ${limite}
-  `);
-  return linhas.rows ?? [];
+  return comBancoReserva(
+    async (db) => {
+      // `db.execute` devolve `NeonHttpQueryResult`, não um array — desembrulhar
+      // aqui e não no consumidor, senão cada tela repete o `.rows ?? []` e a
+      // primeira que esquecer compila e itera sobre o objeto errado.
+      const linhas = await db.execute<{
+        vereador_id: string | null;
+        beneficiario: string | null;
+        grupo_verba: string | null;
+        fornecedor: string | null;
+        data: string | null;
+        valor: number;
+        mediana_grupo: number;
+        p95_grupo: number;
+        vezes_a_mediana: number;
+        linhas_no_grupo: number;
+      }>(sql`
+        with base as (
+          select vereador_id, beneficiario, grupo_verba, fornecedor, data,
+                 valor::float8 as valor
+            from verbas_indenizatorias
+           where id_municipio = ${idMunicipio}
+             and valor is not null
+             and grupo_verba is not null
+        ),
+        estat as (
+          select grupo_verba,
+                 count(*)::int as linhas_no_grupo,
+                 percentile_cont(0.5)  within group (order by valor) as mediana,
+                 percentile_cont(0.95) within group (order by valor) as p95
+            from base
+           group by grupo_verba
+          having count(*) >= ${minLinhas}
+        )
+        select b.vereador_id, b.beneficiario, b.grupo_verba, b.fornecedor,
+               b.data::text as data, b.valor,
+               e.mediana as mediana_grupo,
+               e.p95     as p95_grupo,
+               (b.valor / e.mediana) as vezes_a_mediana,
+               e.linhas_no_grupo
+          from base b
+          join estat e using (grupo_verba)
+         where e.mediana > 0
+           and b.valor >= e.p95
+           and b.valor >= 2 * e.mediana
+         order by (b.valor / e.mediana) desc
+         limit ${limite}
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 /**
@@ -2661,36 +2922,42 @@ export async function gastosAtipicos(
  * municípios não é — por isso esta função não aceita lista de cidades.
  */
 export async function royaltiesCfemPorSubstancia(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: royalties_cfem.ano,
-      mes: royalties_cfem.mes,
-      substancia: royalties_cfem.substancia,
-      valor: num(royalties_cfem.valor),
-    })
-    .from(royalties_cfem)
-    .where(eq(royalties_cfem.id_municipio, idMunicipio))
-    .orderBy(desc(royalties_cfem.ano), desc(royalties_cfem.mes));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: royalties_cfem.ano,
+          mes: royalties_cfem.mes,
+          substancia: royalties_cfem.substancia,
+          valor: num(royalties_cfem.valor),
+        })
+        .from(royalties_cfem)
+        .where(eq(royalties_cfem.id_municipio, idMunicipio))
+        .orderBy(desc(royalties_cfem.ano), desc(royalties_cfem.mes));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Quem pagou CFEM, por ano — bruto; ver `royaltiesCfemPorSubstancia`. */
 export async function royaltiesCfemPorEmpresa(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      ano: royalties_cfem_empresas.ano,
-      empresa: royalties_cfem_empresas.empresa,
-      qtde_titulos: royalties_cfem_empresas.qtde_titulos,
-      valor_operacao: num(royalties_cfem_empresas.valor_operacao),
-      valor_cfem: num(royalties_cfem_empresas.valor_cfem),
-      pct_recolhimento: num(royalties_cfem_empresas.pct_recolhimento),
-    })
-    .from(royalties_cfem_empresas)
-    .where(eq(royalties_cfem_empresas.id_municipio, idMunicipio))
-    .orderBy(desc(royalties_cfem_empresas.ano), desc(royalties_cfem_empresas.valor_cfem));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          ano: royalties_cfem_empresas.ano,
+          empresa: royalties_cfem_empresas.empresa,
+          qtde_titulos: royalties_cfem_empresas.qtde_titulos,
+          valor_operacao: num(royalties_cfem_empresas.valor_operacao),
+          valor_cfem: num(royalties_cfem_empresas.valor_cfem),
+          pct_recolhimento: num(royalties_cfem_empresas.pct_recolhimento),
+        })
+        .from(royalties_cfem_empresas)
+        .where(eq(royalties_cfem_empresas.id_municipio, idMunicipio))
+        .orderBy(desc(royalties_cfem_empresas.ano), desc(royalties_cfem_empresas.valor_cfem));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 function condicoesDeLicitacoes(
@@ -2744,23 +3011,26 @@ export async function licitacoesPaginadas(
     porPagina?: number;
   } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 25;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
-  return db
-    .select({
-      ...COLUNAS_LICITACAO,
-      total: sql<number>`(count(*) over ())::int`,
-      soma_estimado: sql<number>`(coalesce(sum(${licitacoes.valor_estimado}) over (), 0))::double precision`,
-    })
-    .from(licitacoes)
-    .where(condicoesDeLicitacoes(idMunicipio, filtros))
-    // Desempate por id: mesmo motivo de `contratosPaginados` — muitas
-    // licitações compartilham a mesma `data_publicacao_pncp`.
-    .orderBy(sql`${licitacoes.data_publicacao_pncp} desc nulls last`, asc(licitacoes.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+  return comBancoReserva(
+    async (db) => {
+      const porPagina = filtros.porPagina ?? 25;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
+      return db
+        .select({
+          ...COLUNAS_LICITACAO,
+          total: sql<number>`(count(*) over ())::int`,
+          soma_estimado: sql<number>`(coalesce(sum(${licitacoes.valor_estimado}) over (), 0))::double precision`,
+        })
+        .from(licitacoes)
+        .where(condicoesDeLicitacoes(idMunicipio, filtros))
+        // Desempate por id: mesmo motivo de `contratosPaginados` — muitas
+        // licitações compartilham a mesma `data_publicacao_pncp`.
+        .orderBy(sql`${licitacoes.data_publicacao_pncp} desc nulls last`, asc(licitacoes.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos`. */
@@ -2768,38 +3038,47 @@ export async function totaisDeLicitacoes(
   idMunicipio: IdMunicipio,
   filtros: { ano?: number; situacao?: string; modalidade?: string; q?: string } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({
-      total: sql<number>`count(*)::int`,
-      soma_estimado: sql<number>`coalesce(sum(${licitacoes.valor_estimado}), 0)::double precision`,
-    })
-    .from(licitacoes)
-    .where(condicoesDeLicitacoes(idMunicipio, filtros));
-  return linha ?? { total: 0, soma_estimado: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          soma_estimado: sql<number>`coalesce(sum(${licitacoes.valor_estimado}), 0)::double precision`,
+        })
+        .from(licitacoes)
+        .where(condicoesDeLicitacoes(idMunicipio, filtros));
+      return linha ?? { total: 0, soma_estimado: 0 };
+    },
+    { vazio: (r) => r === null || r.total === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Situações distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
 export async function situacoesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .selectDistinct({ situacao: licitacoes.situacao })
-    .from(licitacoes)
-    .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.situacao)));
-  return linhas.map((l) => l.situacao as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .selectDistinct({ situacao: licitacoes.situacao })
+        .from(licitacoes)
+        .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.situacao)));
+      return linhas.map((l) => l.situacao as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 /** Modalidades distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
 export async function modalidadesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .selectDistinct({ modalidade: licitacoes.modalidade_nome })
-    .from(licitacoes)
-    .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.modalidade_nome)));
-  return linhas.map((l) => l.modalidade as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .selectDistinct({ modalidade: licitacoes.modalidade_nome })
+        .from(licitacoes)
+        .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.modalidade_nome)));
+      return linhas.map((l) => l.modalidade as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 function condicoesDeVotacoes(idMunicipio: IdMunicipio, f: { ano?: number; q?: string }) {
@@ -2825,32 +3104,35 @@ export async function votacoesPaginadas(
   idMunicipio: IdMunicipio,
   filtros: { ano?: number; q?: string; pagina?: number; porPagina?: number } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const porPagina = filtros.porPagina ?? 25;
-  const pagina = Math.max(1, filtros.pagina ?? 1);
-  return db
-    .select({
-      id: votacoes_camara.id,
-      data: votacoes_camara.data,
-      sessao: votacoes_camara.sessao,
-      tipo_votacao: votacoes_camara.tipo_votacao,
-      materia: votacoes_camara.materia,
-      ementa: votacoes_camara.ementa,
-      resultado: votacoes_camara.resultado,
-      presentes: votacoes_camara.presentes,
-      placar_sim: votacoes_camara.placar_sim,
-      placar_nao: votacoes_camara.placar_nao,
-      placar_abstencao: votacoes_camara.placar_abstencao,
-      placar_branco: votacoes_camara.placar_branco,
-      link_fonte: votacoes_camara.link_fonte,
-      total: sql<number>`(count(*) over ())::int`,
-    })
-    .from(votacoes_camara)
-    .where(condicoesDeVotacoes(idMunicipio, filtros))
-    .orderBy(sql`${votacoes_camara.data} desc nulls last`, asc(votacoes_camara.id))
-    .limit(porPagina)
-    .offset((pagina - 1) * porPagina);
+  return comBancoReserva(
+    async (db) => {
+      const porPagina = filtros.porPagina ?? 25;
+      const pagina = Math.max(1, filtros.pagina ?? 1);
+      return db
+        .select({
+          id: votacoes_camara.id,
+          data: votacoes_camara.data,
+          sessao: votacoes_camara.sessao,
+          tipo_votacao: votacoes_camara.tipo_votacao,
+          materia: votacoes_camara.materia,
+          ementa: votacoes_camara.ementa,
+          resultado: votacoes_camara.resultado,
+          presentes: votacoes_camara.presentes,
+          placar_sim: votacoes_camara.placar_sim,
+          placar_nao: votacoes_camara.placar_nao,
+          placar_abstencao: votacoes_camara.placar_abstencao,
+          placar_branco: votacoes_camara.placar_branco,
+          link_fonte: votacoes_camara.link_fonte,
+          total: sql<number>`(count(*) over ())::int`,
+        })
+        .from(votacoes_camara)
+        .where(condicoesDeVotacoes(idMunicipio, filtros))
+        .orderBy(sql`${votacoes_camara.data} desc nulls last`, asc(votacoes_camara.id))
+        .limit(porPagina)
+        .offset((pagina - 1) * porPagina);
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos`. */
@@ -2858,13 +3140,16 @@ export async function totaisDeVotacoes(
   idMunicipio: IdMunicipio,
   filtros: { ano?: number; q?: string } = {}
 ) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ total: sql<number>`count(*)::int` })
-    .from(votacoes_camara)
-    .where(condicoesDeVotacoes(idMunicipio, filtros));
-  return linha ?? { total: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ total: sql<number>`count(*)::int` })
+        .from(votacoes_camara)
+        .where(condicoesDeVotacoes(idMunicipio, filtros));
+      return linha ?? { total: 0 };
+    },
+    { vazio: (r) => r === null || r.total === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /**
@@ -2885,27 +3170,31 @@ export async function totaisDeVotacoes(
  * composição (`lib/betim/votacoesCamara.ts`) ordena em memória.
  */
 export async function votosDeVotacoes(idMunicipio: IdMunicipio, votacaoIds: string[]) {
-  const db = getDb();
-  if (!db || votacaoIds.length === 0) return null;
-  return db
-    .select({
-      votacao_id: votos_camara.votacao_id,
-      vereador_id: votos_camara.vereador_id,
-      nome_fonte: votos_camara.nome_fonte,
-      partido_fonte: votos_camara.partido_fonte,
-      voto: votos_camara.voto,
-      origem: votos_camara.origem,
-      slug: vereadores.slug,
-      nome_urna: vereadores.nome_urna,
-    })
-    .from(votos_camara)
-    .leftJoin(vereadores, eq(vereadores.id, votos_camara.vereador_id))
-    .where(
-      and(
-        eq(votos_camara.id_municipio, idMunicipio),
-        inArray(votos_camara.votacao_id, votacaoIds)
-      )
-    );
+  if (votacaoIds.length === 0) return null;
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          votacao_id: votos_camara.votacao_id,
+          vereador_id: votos_camara.vereador_id,
+          nome_fonte: votos_camara.nome_fonte,
+          partido_fonte: votos_camara.partido_fonte,
+          voto: votos_camara.voto,
+          origem: votos_camara.origem,
+          slug: vereadores.slug,
+          nome_urna: vereadores.nome_urna,
+        })
+        .from(votos_camara)
+        .leftJoin(vereadores, eq(vereadores.id, votos_camara.vereador_id))
+        .where(
+          and(
+            eq(votos_camara.id_municipio, idMunicipio),
+            inArray(votos_camara.votacao_id, votacaoIds)
+          )
+        );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 // ─────────────────── CAP · autuação ambiental estadual (MG) ───────────────────
@@ -2980,52 +3269,55 @@ export type CapResumo = {
  * `null` = banco não configurado (mesmo sinal do resto do arquivo).
  */
 export async function capResumo(idMunicipio: IdMunicipio): Promise<CapResumo | null> {
-  const db = getDb();
-  if (!db) return null;
-  const linhas = await db.execute<CapResumo>(sql`
-    with autos as (${CAP_AUTOS_DEDUP(idMunicipio)}),
-    por_ano as (
-      select extract(year from data_lavratura)::int as ano,
-             count(*)::int                          as autos,
-             coalesce(sum(valor_multa), 0)::float8  as multa
-        from autos
-       where data_lavratura is not null
-       group by 1
-       order by 1 desc
-       limit 15
-    ),
-    por_orgao as (
-      select coalesce(orgao, 'Não informado')       as chave,
-             count(*)::int                          as autos,
-             coalesce(sum(valor_multa), 0)::float8  as valor
-        from autos
-       group by 1
-       order by 2 desc
-    ),
-    por_debito as (
-      select coalesce(status_debito, 'Não informado')      as chave,
-             count(*)::int                                 as autos,
-             coalesce(sum(valor_remanescente), 0)::float8  as valor
-        from autos
-       group by 1
-       order by 2 desc
-    )
-    select
-      (select count(*)::int from autos)                                       as total_autos,
-      (select count(*)::int from cap_autos_infracao
-        where id_municipio = ${idMunicipio})                                  as total_linhas,
-      (select coalesce(sum(valor_multa), 0)::float8 from autos)               as total_multa,
-      (select coalesce(sum(valor_remanescente), 0)::float8 from autos)        as total_remanescente,
-      (select min(data_lavratura)::text from autos)                           as primeira_lavratura,
-      (select max(data_lavratura)::text from autos)                           as ultima_lavratura,
-      -- json_agg(t) sobre o ALIAS da CTE, e não json_agg(cte.*): a segunda
-      -- forma depende de o planner expor a CTE como composite. Sem crase
-      -- neste comentário: ele vive dentro de um template literal de JS.
-      coalesce((select json_agg(t) from por_ano t),    '[]'::json)            as por_ano,
-      coalesce((select json_agg(t) from por_orgao t),  '[]'::json)            as por_orgao,
-      coalesce((select json_agg(t) from por_debito t), '[]'::json)            as por_debito
-  `);
-  return (linhas.rows ?? [])[0] ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<CapResumo>(sql`
+        with autos as (${CAP_AUTOS_DEDUP(idMunicipio)}),
+        por_ano as (
+          select extract(year from data_lavratura)::int as ano,
+                 count(*)::int                          as autos,
+                 coalesce(sum(valor_multa), 0)::float8  as multa
+            from autos
+           where data_lavratura is not null
+           group by 1
+           order by 1 desc
+           limit 15
+        ),
+        por_orgao as (
+          select coalesce(orgao, 'Não informado')       as chave,
+                 count(*)::int                          as autos,
+                 coalesce(sum(valor_multa), 0)::float8  as valor
+            from autos
+           group by 1
+           order by 2 desc
+        ),
+        por_debito as (
+          select coalesce(status_debito, 'Não informado')      as chave,
+                 count(*)::int                                 as autos,
+                 coalesce(sum(valor_remanescente), 0)::float8  as valor
+            from autos
+           group by 1
+           order by 2 desc
+        )
+        select
+          (select count(*)::int from autos)                                       as total_autos,
+          (select count(*)::int from cap_autos_infracao
+            where id_municipio = ${idMunicipio})                                  as total_linhas,
+          (select coalesce(sum(valor_multa), 0)::float8 from autos)               as total_multa,
+          (select coalesce(sum(valor_remanescente), 0)::float8 from autos)        as total_remanescente,
+          (select min(data_lavratura)::text from autos)                           as primeira_lavratura,
+          (select max(data_lavratura)::text from autos)                           as ultima_lavratura,
+          -- json_agg(t) sobre o ALIAS da CTE, e não json_agg(cte.*): a segunda
+          -- forma depende de o planner expor a CTE como composite. Sem crase
+          -- neste comentário: ele vive dentro de um template literal de JS.
+          coalesce((select json_agg(t) from por_ano t),    '[]'::json)            as por_ano,
+          coalesce((select json_agg(t) from por_orgao t),  '[]'::json)            as por_orgao,
+          coalesce((select json_agg(t) from por_debito t), '[]'::json)            as por_debito
+      `);
+      return (linhas.rows ?? [])[0] ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
+  );
 }
 
 export type CapAutoRecente = {
@@ -3060,33 +3352,36 @@ export async function capAutosRecentes(
   idMunicipio: IdMunicipio,
   limite = 25
 ): Promise<CapAutoRecente[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<CapAutoRecente>(sql`
-    select numero_ai,
-           max(data_lavratura)::text          as data_lavratura,
-           max(nome_autuado)                  as nome_autuado,
-           max(cpf_cnpj)                      as cpf_cnpj,
-           max(orgao_autuante)                as orgao_autuante,
-           max(unidade_atual)                 as unidade_atual,
-           max(status_ai)                     as status_ai,
-           max(status_processo)               as status_processo,
-           max(status_debito)                 as status_debito,
-           max(valor_multa)::float8           as valor_multa,
-           max(valor_remanescente)::float8    as valor_remanescente,
-           count(*)::int                      as qtd_dispositivos,
-           string_agg(distinct dispositivo_legal, ' · ') as dispositivos,
-           bool_or(pen_embargo_obra = 'S' or pen_embargo_atividade = 'S') as tem_embargo,
-           bool_or(pen_apreensao = 'S')       as tem_apreensao,
-           bool_or(pen_demolicao = 'S')       as tem_demolicao
-      from cap_autos_infracao
-     where id_municipio = ${idMunicipio}
-       and numero_ai is not null
-     group by numero_ai
-     order by max(data_lavratura) desc nulls last, numero_ai desc
-     limit ${limite}
-  `);
-  return linhas.rows ?? [];
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<CapAutoRecente>(sql`
+        select numero_ai,
+               max(data_lavratura)::text          as data_lavratura,
+               max(nome_autuado)                  as nome_autuado,
+               max(cpf_cnpj)                      as cpf_cnpj,
+               max(orgao_autuante)                as orgao_autuante,
+               max(unidade_atual)                 as unidade_atual,
+               max(status_ai)                     as status_ai,
+               max(status_processo)               as status_processo,
+               max(status_debito)                 as status_debito,
+               max(valor_multa)::float8           as valor_multa,
+               max(valor_remanescente)::float8    as valor_remanescente,
+               count(*)::int                      as qtd_dispositivos,
+               string_agg(distinct dispositivo_legal, ' · ') as dispositivos,
+               bool_or(pen_embargo_obra = 'S' or pen_embargo_atividade = 'S') as tem_embargo,
+               bool_or(pen_apreensao = 'S')       as tem_apreensao,
+               bool_or(pen_demolicao = 'S')       as tem_demolicao
+          from cap_autos_infracao
+         where id_municipio = ${idMunicipio}
+           and numero_ai is not null
+         group by numero_ai
+         order by max(data_lavratura) desc nulls last, numero_ai desc
+         limit ${limite}
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
+  );
 }
 
 // ───────────────────────── Barragens · FEAM + SNISB ──────────────────────────
@@ -3107,50 +3402,56 @@ export async function capAutosRecentes(
  * onde agregar no banco é obrigatório.
  */
 export async function barragensFeam(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      nome: feam_barragens.nome,
-      id_sigibar: feam_barragens.id_sigibar,
-      empreendedor: feam_barragens.empreendedor,
-      atividade: feam_barragens.atividade,
-      finalidade: feam_barragens.finalidade,
-      situacao: feam_barragens.situacao,
-      condicao_estabilidade: feam_barragens.condicao_estabilidade,
-      metodo_construtivo: feam_barragens.metodo_construtivo,
-      altura_m: num(feam_barragens.altura_m),
-      volume_reservatorio_m3: num(feam_barragens.volume_reservatorio_m3),
-      categoria_risco: feam_barragens.categoria_risco,
-      dano_potencial: feam_barragens.dano_potencial,
-      classe: feam_barragens.classe,
-      nivel_emergencia: feam_barragens.nivel_emergencia,
-      suspensao: feam_barragens.suspensao,
-    })
-    .from(feam_barragens)
-    .where(eq(feam_barragens.id_municipio, idMunicipio))
-    .orderBy(desc(feam_barragens.nivel_emergencia), asc(feam_barragens.nome));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          nome: feam_barragens.nome,
+          id_sigibar: feam_barragens.id_sigibar,
+          empreendedor: feam_barragens.empreendedor,
+          atividade: feam_barragens.atividade,
+          finalidade: feam_barragens.finalidade,
+          situacao: feam_barragens.situacao,
+          condicao_estabilidade: feam_barragens.condicao_estabilidade,
+          metodo_construtivo: feam_barragens.metodo_construtivo,
+          altura_m: num(feam_barragens.altura_m),
+          volume_reservatorio_m3: num(feam_barragens.volume_reservatorio_m3),
+          categoria_risco: feam_barragens.categoria_risco,
+          dano_potencial: feam_barragens.dano_potencial,
+          classe: feam_barragens.classe,
+          nivel_emergencia: feam_barragens.nivel_emergencia,
+          suspensao: feam_barragens.suspensao,
+        })
+        .from(feam_barragens)
+        .where(eq(feam_barragens.id_municipio, idMunicipio))
+        .orderBy(desc(feam_barragens.nivel_emergencia), asc(feam_barragens.nome));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
 
 /** Ver `barragensFeam` — mesma razão para não fazer join no banco. */
 export async function barragensSnisb(idMunicipio: IdMunicipio) {
-  const db = getDb();
-  if (!db) return null;
-  return db
-    .select({
-      nome: snisb_barragens.nome,
-      codigo_snisb: snisb_barragens.codigo_snisb,
-      empreendedor: snisb_barragens.empreendedor,
-      uso_principal: snisb_barragens.uso_principal,
-      orgao_fiscalizador: snisb_barragens.orgao_fiscalizador,
-      categoria_risco: snisb_barragens.categoria_risco,
-      dano_potencial: snisb_barragens.dano_potencial,
-      nivel_perigo: snisb_barragens.nivel_perigo,
-      possui_pae: snisb_barragens.possui_pae,
-      possui_plano_seguranca: snisb_barragens.possui_plano_seguranca,
-      curso_dagua: snisb_barragens.curso_dagua,
-    })
-    .from(snisb_barragens)
-    .where(eq(snisb_barragens.id_municipio, idMunicipio))
-    .orderBy(asc(snisb_barragens.nome));
+  return comBancoReserva(
+    async (db) => {
+      return db
+        .select({
+          nome: snisb_barragens.nome,
+          codigo_snisb: snisb_barragens.codigo_snisb,
+          empreendedor: snisb_barragens.empreendedor,
+          uso_principal: snisb_barragens.uso_principal,
+          orgao_fiscalizador: snisb_barragens.orgao_fiscalizador,
+          categoria_risco: snisb_barragens.categoria_risco,
+          dano_potencial: snisb_barragens.dano_potencial,
+          nivel_perigo: snisb_barragens.nivel_perigo,
+          possui_pae: snisb_barragens.possui_pae,
+          possui_plano_seguranca: snisb_barragens.possui_plano_seguranca,
+          curso_dagua: snisb_barragens.curso_dagua,
+        })
+        .from(snisb_barragens)
+        .where(eq(snisb_barragens.id_municipio, idMunicipio))
+        .orderBy(asc(snisb_barragens.nome));
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+  );
 }
