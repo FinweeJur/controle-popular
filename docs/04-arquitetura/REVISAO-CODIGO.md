@@ -25,6 +25,7 @@
 - [Parte 11 — LinkMender e denúncia](#parte-11--linkmender-e-denúncia)
 - [Parte 12 — conselhos e correlação](#parte-12--conselhos-e-correlação)
 - [Parte 13 — a compactação dupla](#parte-13--a-compactação-dupla)
+- [Parte 14 — arquivos da raiz de lib/](#parte-14--arquivos-da-raiz-de-lib)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -540,6 +541,26 @@ que não se unifica".
 4. ✅ **`lib/estatico/fatiar.ts` + `emitir.ts`** — fatiamento para o teto de
    25 MiB do Cloudflare; o par "índice fatiado + `TabelaEstatica`" é o padrão
    da casa para acervo grande.
+
+## Parte 14 — arquivos da raiz de lib/
+
+Oitava passada, nos módulos soltos da raiz de `lib/`.
+
+### Achados da Parte 14
+
+1. ✅ **Conferidos** (cabeçalho e, quando aplicável, teste ao lado):
+   `alvo-de-build`, `atuacao-parlamentar`, `citacoes`, `dialogos`, `edicoes`,
+   `hero-narrativo`, `link-zona`, `lugares`, `memoria-cidades`,
+   `risco-direitos`, `rota-ausente`, `series-economicas`, `tags`,
+   `teia-interesses`, `use-loading`, `zonas`.
+
+2. ✅ **As duas `risco-direitos.ts` NÃO são duplicata:** a de `lib/` é o
+   **cálculo puro** do índice (0–100); a de `lib/db/queries/` é o **agregador**
+   que lê o banco. Complementares.
+
+3. 🔸 **`resumos-top100.ts` é GERADO** (`// Gerado automaticamente de
+   top-100-paginas.json`). Não ganha cabeçalho `/**` à mão — seria sobrescrito
+   na próxima geração; o marcador `//` já cumpre o aviso, como em `schema.ts`.
 
 ## Achados e dívidas
 
