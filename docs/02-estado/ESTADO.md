@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-29
+> **Última medição:** 2026-09-30
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -168,6 +168,21 @@ Runbooks: [`planos/`](../planos/).
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
 ## Entregas recentes
+
+**30/09/2026** — F3 da memória: a camada município, com fonte local fechada.
+
+- `apps/web/lib/memoria/municipios.ts`: **4 verbetes municipais** com fonte
+  conferida na coleta — Betim (caminhada pelo Rio Paraopeba, Brasil de Fato,
+  2022), Ipatinga (Massacre de Ipatinga, 1963, Arquivo Nacional), Araçuaí
+  (Quilombo Baú, Comissão Pró-Índio/Palmares) e Brumadinho (Memorial
+  Brumadinho, 2019).
+- `CAMADAS_MEMORIA.municipio` deixa de ser vazio e entra no RAG do
+  assistente; `UF_POR_MUNICIPIO` ganha Ipatinga (3131307) e Brumadinho
+  (3109006).
+- Lacuna declarada para as demais cidades: sem fonte local fechada, o
+  cartão desce para o estado, a região ou o país — nunca marco inventado.
+- Verificação: 1.949 testes vitest + 168 do globo verdes; `tsc --noEmit`
+  limpo.
 
 **29/09/2026 (noite)** — Planos 2 a 5, com dados reais:
 

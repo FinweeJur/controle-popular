@@ -46,6 +46,7 @@ function todosOsVerbetes(): VerbeteMemoria[] {
     ...VERBETES_PAIS,
     ...Object.values(VERBETES_REGIAO).flat(),
     ...Object.values(VERBETES_UF).flat(),
+    ...Object.values(CAMADAS_MEMORIA.municipio).flat(),
   ];
 }
 
@@ -144,11 +145,20 @@ describe("fontesPrimarias — a fonte terciária não decide", () => {
 
 describe("resolverMemoria — a escada da memória", () => {
   it("cai para a UF quando não há verbete do município", () => {
-    // Betim (3106705) não tem verbete próprio na camada município.
-    const r = resolverMemoria("3106705", CAMADAS_MEMORIA);
+    // Diamantina (3121605) ainda não tem verbete próprio na camada
+    // município; a escada sobe para o degrau de Minas Gerais.
+    const r = resolverMemoria("3121605", CAMADAS_MEMORIA);
     expect(r).not.toBeNull();
     expect(r?.nivel).toBe("uf");
     expect(r?.verbete.chave).toBe("mg");
+  });
+
+  it("acha o verbete do município antes de subir para a UF", () => {
+    // Ipatinga (3131307) tem verbete municipal com fonte fechada.
+    const r = resolverMemoria("3131307", CAMADAS_MEMORIA);
+    expect(r).not.toBeNull();
+    expect(r?.nivel).toBe("municipio");
+    expect(r?.verbete.chave).toBe("3131307");
   });
 
   it("encontra a UF pela própria chave", () => {
@@ -224,6 +234,27 @@ describe("camadas curadas", () => {
       }
       // Se houvesse só fonte terciária, `fontesPrimarias` ficaria vazio.
       expect(fontesPrimarias(v).length).toBeGreaterThan(0);
+    }
+  });
+
+  it("tem a camada município com fonte fechada (F3)", () => {
+    const chaves = Object.keys(CAMADAS_MEMORIA.municipio);
+    expect(chaves.length).toBeGreaterThanOrEqual(3);
+    // As cidades com verbete local desta rodada do F3.
+    expect(chaves).toEqual(
+      expect.arrayContaining(["3106705", "3131307", "3103405", "3109006"])
+    );
+  });
+
+  it("todo verbete municipal casa por código IBGE de 7 dígitos e tem UF mapeada", () => {
+    for (const [chave, lista] of Object.entries(CAMADAS_MEMORIA.municipio)) {
+      expect(chave).toMatch(/^\d{7}$/);
+      expect(CAMADAS_MEMORIA.ufPorMunicipio?.[chave]).toBeDefined();
+      expect(lista.length).toBeGreaterThanOrEqual(1);
+      for (const v of lista) {
+        expect(v.nivel).toBe("municipio");
+        expect(v.chave).toBe(chave);
+      }
     }
   });
 });

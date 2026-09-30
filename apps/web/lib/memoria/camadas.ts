@@ -20,11 +20,13 @@
  *   eles, `resolverMemoria` não sobe de um código IBGE para a UF.
  * - `MEMORIA_CIDADES_LEGADO` preserva, palavra por palavra, a copy das
  *   seis cidades que já publicavam em `lib/memoria-cidades.ts`. A camada
- *   município só vira verbete com fonte fechada (F3) — as três pendentes
- *   continuam com `memoria: null` até lá.
+ *   município passa a ter verbete com fonte fechada (F3) em
+ *   `./municipios.ts` — só entra cidade com fonte local conferida; as
+ *   demais continuam com `memoria: null` e a lacuna declarada.
  */
 
 import type { CamadasMemoria, MemoriaCidade, VerbeteMemoria } from "./tipos";
+import { VERBETES_MUNICIPIO } from "./municipios";
 
 // ─────────────────────────────────────────────────────────────────────
 // NÍVEL PAÍS — processos nacionais, chave "br".
@@ -915,8 +917,9 @@ export const REGIAO_POR_UF: Record<string, string> = {
 };
 
 /**
- * Código IBGE (7 dígitos) → UF. Cobre as seis cidades já publicadas no
- * portal; a camada município cresce no F3 e este mapa cresce com ela.
+ * Código IBGE (7 dígitos) → UF. Cobre as cidades com rota no portal e
+ * cresce junto com a camada município (F3): sem este degrau,
+ * `resolverMemoria` não sobe de um código IBGE para a UF.
  */
 export const UF_POR_MUNICIPIO: Record<string, string> = {
   "3550308": "sp",
@@ -925,6 +928,8 @@ export const UF_POR_MUNICIPIO: Record<string, string> = {
   "3106705": "mg",
   "3103405": "mg",
   "3134004": "mg",
+  "3109006": "mg",
+  "3131307": "mg",
 };
 
 /**
@@ -974,14 +979,15 @@ export const MEMORIA_CIDADES_LEGADO: Record<string, MemoriaCidade> = {
 
 /**
  * Todas as camadas já indexadas, no formato que `resolverMemoria` recebe.
- * A camada município entra vazia: os verbetes municipais com fonte
- * fechada chegam no F3; até lá, a cidade desce para a UF.
+ * A camada município (F3) tem os verbetes de `./municipios.ts`, todos com
+ * fonte local fechada; cidade sem verbete desce para a UF, a região ou o
+ * país, sempre com a lacuna declarada na tela.
  */
 export const CAMADAS_MEMORIA: CamadasMemoria = {
   pais: { br: VERBETES_PAIS },
   regiao: VERBETES_REGIAO,
   uf: VERBETES_UF,
-  municipio: {},
+  municipio: VERBETES_MUNICIPIO,
   ufPorMunicipio: UF_POR_MUNICIPIO,
   regiaoPorUf: REGIAO_POR_UF,
 };

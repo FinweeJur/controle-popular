@@ -23,6 +23,7 @@ export {
   MEMORIA_CIDADES_LEGADO,
   CAMADAS_MEMORIA,
 } from "./camadas";
+export { VERBETES_MUNICIPIO } from "./municipios";
 
 import { MEMORIA_CIDADES_LEGADO } from "./camadas";
 import type { MemoriaCidade } from "./tipos";
