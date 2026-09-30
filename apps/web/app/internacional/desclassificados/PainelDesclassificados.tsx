@@ -70,6 +70,9 @@ const DICIONARIOS_UI: Record<
     todosTemas: string;
     todosSujeitos: string;
     apenasCitamBrasil: string;
+    escopoTodos: string;
+    escopoBrasil: string;
+    escopoGlobal: string;
     modoTabela: string;
     modoCards: string;
     planilhaCsv: string;
@@ -112,6 +115,9 @@ const DICIONARIOS_UI: Record<
     todosTemas: "Todos os temas",
     todosSujeitos: "Todos os sujeitos",
     apenasCitamBrasil: "🇧🇷 Apenas os que citam o Brasil",
+    escopoTodos: "Todos os Dossiês",
+    escopoBrasil: "🇧🇷 Conexão com o Brasil",
+    escopoGlobal: "🌍 Internacional (Sem Brasil)",
     modoTabela: "Modo Tabela",
     modoCards: "Modo Dossiê",
     planilhaCsv: "Planilha CSV",
@@ -153,6 +159,9 @@ const DICIONARIOS_UI: Record<
     todosTemas: "All themes",
     todosSujeitos: "All subjects",
     apenasCitamBrasil: "🇧🇷 Mentioning Brazil only",
+    escopoTodos: "All Dossiers",
+    escopoBrasil: "🇧🇷 Connection to Brazil",
+    escopoGlobal: "🌍 International (Non-Brazil)",
     modoTabela: "Table View",
     modoCards: "Dossier View",
     planilhaCsv: "CSV Spreadsheet",
@@ -194,6 +203,9 @@ const DICIONARIOS_UI: Record<
     todosTemas: "Todos los temas",
     todosSujeitos: "Todos los sujetos",
     apenasCitamBrasil: "🇧🇷 Solo los que citan a Brasil",
+    escopoTodos: "Todos los Expedientes",
+    escopoBrasil: "🇧🇷 Conexión con Brasil",
+    escopoGlobal: "🌍 Internacional (Sin Brasil)",
     modoTabela: "Modo Tabla",
     modoCards: "Modo Dossier",
     planilhaCsv: "Planilla CSV",
@@ -243,7 +255,17 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
   const [filtroPais, setFiltroPais] = useState<string>("__todos__");
   const [filtroTema, setFiltroTema] = useState<string>("__todos__");
   const [filtroSujeito, setFiltroSujeito] = useState<string>("__todos__");
-  const [apenasBrasil, setApenasBrasil] = useState<boolean>(false);
+  const [filtroEscopo, setFiltroEscopo] = useState<"todos" | "brasil" | "global">("todos");
+
+  // Totais por escopo
+  const totalBrasil = useMemo(
+    () => documentos.filter((d) => d.paisesMencionados.includes("Brasil")).length,
+    [documentos]
+  );
+  const totalGlobal = useMemo(
+    () => documentos.filter((d) => !d.paisesMencionados.includes("Brasil")).length,
+    [documentos]
+  );
 
   // Ordenação
   const [colunaOrd, setColunaOrd] = useState<ColunaOrdenacao>("dataPublicacao");
@@ -281,7 +303,8 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
         if (filtroPais !== "__todos__" && doc.paisOrigem !== filtroPais) return false;
         if (filtroTema !== "__todos__" && !doc.temas.includes(filtroTema)) return false;
         if (filtroSujeito !== "__todos__" && !doc.sujeitosMencionados.includes(filtroSujeito)) return false;
-        if (apenasBrasil && !doc.paisesMencionados.includes("Brasil")) return false;
+        if (filtroEscopo === "brasil" && !doc.paisesMencionados.includes("Brasil")) return false;
+        if (filtroEscopo === "global" && doc.paisesMencionados.includes("Brasil")) return false;
 
         if (!q) return true;
 
@@ -303,7 +326,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
         const strB = String(valB || "").toLowerCase();
         return ordemDesc ? strB.localeCompare(strA) : strA.localeCompare(strB);
       });
-  }, [documentos, busca, filtroOrgao, filtroPais, filtroTema, filtroSujeito, apenasBrasil, colunaOrd, ordemDesc]);
+  }, [documentos, busca, filtroOrgao, filtroPais, filtroTema, filtroSujeito, filtroEscopo, colunaOrd, ordemDesc]);
 
   // Alternador de ordenação
   const alternarOrdenacao = useCallback((coluna: ColunaOrdenacao) => {
@@ -348,7 +371,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
     setFiltroPais("__todos__");
     setFiltroTema("__todos__");
     setFiltroSujeito("__todos__");
-    setApenasBrasil(false);
+    setFiltroEscopo("todos");
   };
 
   return (
@@ -555,25 +578,22 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
             </select>
           </div>
 
-          {/* Toggle Rápido Brasil */}
-          <div className="flex items-center">
-            <button
-              type="button"
-              onClick={() => setApenasBrasil((b) => !b)}
-              className={`w-full flex items-center justify-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
-                apenasBrasil
-                  ? "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold"
-                  : "border-border bg-surface-2 text-text-soft hover:text-text"
-              }`}
+          {/* Seletor de Escopo Geopolítico */}
+          <div>
+            <select
+              value={filtroEscopo}
+              onChange={(e) => setFiltroEscopo(e.target.value as "todos" | "brasil" | "global")}
+              className="w-full rounded-xl border border-border bg-surface-2 px-2.5 py-1.5 text-xs text-text focus:outline-none focus:ring-1 focus:ring-primary font-medium"
             >
-              <CheckCircle2 size={13} className={apenasBrasil ? "text-emerald-500" : "opacity-40"} />
-              <span>{ui.apenasCitamBrasil}</span>
-            </button>
+              <option value="todos">🌐 {ui.escopoTodos} ({documentos.length})</option>
+              <option value="brasil">{ui.escopoBrasil} ({totalBrasil})</option>
+              <option value="global">{ui.escopoGlobal} ({totalGlobal})</option>
+            </select>
           </div>
         </div>
 
         {/* CONTADOR DE RESULTADOS E BOTÃO DE LIMPEZA */}
-        {(busca || filtroOrgao !== "__todos__" || filtroPais !== "__todos__" || filtroTema !== "__todos__" || filtroSujeito !== "__todos__" || apenasBrasil) && (
+        {(busca || filtroOrgao !== "__todos__" || filtroPais !== "__todos__" || filtroTema !== "__todos__" || filtroSujeito !== "__todos__" || filtroEscopo !== "todos") && (
           <div className="flex items-center justify-between text-[11px] text-text-soft pt-1">
             <span>
               Exibindo <strong>{documentosFiltrados.length}</strong> de {documentos.length} documentos

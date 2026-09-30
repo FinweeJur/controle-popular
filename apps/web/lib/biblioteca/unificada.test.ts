@@ -68,8 +68,26 @@ describe("Biblioteca Unificada e Acervo Acadêmico", () => {
       expect(d.id).toBeTruthy();
       expect(d.titulo).toBeTruthy();
       expect(d.categoria).toBeTruthy();
-      expect(d.ano).toBeGreaterThanOrEqual(2010);
+      if (d.categoria === "Internacional & Geopolítica") {
+        expect(d.ano).toBeGreaterThanOrEqual(1940);
+      } else {
+        expect(d.ano).toBeGreaterThanOrEqual(2010);
+      }
       expect(d.urlOficial.startsWith("http")).toBe(true);
     }
+  });
+
+  it("inclui acervo internacional e geopolítico desclassificado e transnacional", () => {
+    const docs = listarDocumentosUnificados();
+    const internacionais = docs.filter(
+      (d) => d.categoria === "Internacional & Geopolítica"
+    );
+    expect(internacionais.length).toBeGreaterThanOrEqual(20);
+    expect(
+      internacionais.some((d) => d.tipo === "base_pesquisa_transnacional")
+    ).toBe(true);
+    expect(
+      internacionais.some((d) => d.tipo === "dossie_desclassificado")
+    ).toBe(true);
   });
 });

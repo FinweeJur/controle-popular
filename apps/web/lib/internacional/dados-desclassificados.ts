@@ -25,8 +25,8 @@
  * - Zero dado pessoal sensivel (validado por varredura automatica mod-11).
  */
 
-import { expandir, type TabelaCompacta } from "@/lib/estatico/compactar";
-import jsonDesclassificados from "@/data/internacional/desclassificados-g20.compact.json";
+import { expandir, type TabelaCompacta } from "../estatico/compactar";
+import jsonDesclassificados from "../../data/internacional/desclassificados-g20.compact.json";
 
 export interface DocumentoDesclassificadoG20 {
   id: string;

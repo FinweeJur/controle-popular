@@ -25,7 +25,8 @@ export interface DocumentoUnificado {
     | "Justiça & Controle"
     | "Ambiental & Desastres"
     | "Cidades & Gestão"
-    | "Congresso & Leis";
+    | "Congresso & Leis"
+    | "Internacional & Geopolítica";
   tema: string;
   entidade: string;
   estado: string;
@@ -45,6 +46,7 @@ export interface MetricasBiblioteca {
   totalEmpresas: number;
   totalInstituicoesJustica: number;
   totalAcademico: number;
+  totalInternacional?: number;
   distribuicaoPorCategoria: Record<string, number>;
   distribuicaoPorTema: Record<string, number>;
   distribuicaoPorAno: Record<string, number>;
@@ -58,6 +60,7 @@ export const METRICAS_BIBLIOTECA: MetricasBiblioteca = {
   totalEmpresas: dadosBrutos.totalEmpresas,
   totalInstituicoesJustica: dadosBrutos.totalInstituicoesJustica,
   totalAcademico: dadosBrutos.totalAcademico,
+  totalInternacional: dadosBrutos.totalInternacional || 0,
   distribuicaoPorCategoria: dadosBrutos.distribuicaoPorCategoria,
   distribuicaoPorTema: dadosBrutos.distribuicaoPorTema,
   distribuicaoPorAno: dadosBrutos.distribuicaoPorAno,

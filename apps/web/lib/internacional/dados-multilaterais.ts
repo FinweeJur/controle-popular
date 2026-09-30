@@ -21,10 +21,10 @@
  * - Zero dado pessoal (sem CPF Mod-11, SSN ou SIN).
  */
 
-import { expandir, type TabelaCompacta } from "@/lib/estatico/compactar";
-import jsonIndicadores from "@/data/internacional/indicadores-sociais.compact.json";
-import jsonComercio from "@/data/internacional/comercio-commodities.compact.json";
-import jsonTerritorios from "@/data/internacional/terra-territorios-global.compact.json";
+import { expandir, type TabelaCompacta } from "../estatico/compactar";
+import jsonIndicadores from "../../data/internacional/indicadores-sociais.compact.json";
+import jsonComercio from "../../data/internacional/comercio-commodities.compact.json";
+import jsonTerritorios from "../../data/internacional/terra-territorios-global.compact.json";
 
 export interface IndicadorSocialMultilateral {
   pais: string;

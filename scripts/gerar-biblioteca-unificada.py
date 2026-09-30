@@ -21,6 +21,22 @@ def salvar_json(caminho, dados):
     with open(caminho, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=2)
 
+def expandir_compacto(tabela):
+    esqueleto = tabela["esqueleto"]
+    dicionarios = tabela["dicionarios"]
+    linhas = tabela["linhas"]
+    saida = []
+    for linha in linhas:
+        obj = {}
+        for i, campo in enumerate(esqueleto):
+            if campo in dicionarios:
+                idx = linha[i]
+                obj[campo] = dicionarios[campo][idx]
+            else:
+                obj[campo] = linha[i]
+        saida.append(obj)
+    return saida
+
 def main():
     print("Iniciando gerador da Biblioteca Unificada...")
     
@@ -437,6 +453,103 @@ def main():
     todos_itens.extend(acervo_academico)
     print(f"- Processados {len(acervo_academico)} documentos e teses academicas.")
     
+    # 4. Acervo Internacional, Geopolítica & Transnacional
+    # Documentos globais desclassificados de inteligência (sem foco exclusivo no Brasil),
+    # bases científicas/ambientais transnacionais (GLEIF, Tailings, Climate TRACE, OpenAlex, Sabin, Native Land)
+    # e precedentes e diretivas europeias de devida diligência e litígios.
+    acervo_internacional = []
+    
+    # 4.1 Desclassificados G20 Globais & Bases Transnacionais
+    caminho_g20 = os.path.join(WEB_DATA_DIR, "internacional", "desclassificados-g20.compact.json")
+    if os.path.exists(caminho_g20):
+        dados_g20 = carregar_json(caminho_g20)
+        docs_g20 = expandir_compacto(dados_g20)
+        
+        for d in docs_g20:
+            doc_id = d.get("id", "")
+            # Selecionar dossiês globais (sem Brasil) e as 6 bases de pesquisa transnacionais
+            if doc_id.startswith("DOC-GLOBAL-"):
+                eh_pesquisa = any(x in doc_id for x in ["GLEIF", "GRID", "TRACE", "OPENALEX", "SABIN", "NATIVE"])
+                
+                # Classificar tema
+                if eh_pesquisa:
+                    tema = "Pesquisa & Transnacional Aberta"
+                elif any(x in doc_id for x in ["MISSILES", "DEW-LINE", "AFGHANISTAN", "VIETNAM", "CYPRUS"]):
+                    tema = "Defesa & Segurança Global"
+                elif any(x in doc_id for x in ["PHILBY", "BERLIN", "BOLOGNA", "G30S", "PUEBLO"]):
+                    tema = "Inteligência & Espionagem"
+                elif any(x in doc_id for x in ["BUDDHA", "OPEC", "SPAAK"]):
+                    tema = "Tratados & Economia Global"
+                elif any(x in doc_id for x in ["ALGERIA", "SAVANNAH", "MALVINAS", "TLATELOLCO", "CRAVOS", "23F", "INDONESIA"]):
+                    tema = "Descolonização & Conflitos"
+                else:
+                    tema = d.get("temas", ["Geopolítica Global"])[0] if d.get("temas") else "Geopolítica Global"
+                
+                ano_str = d.get("dataPublicacao", "2024")[:4]
+                try:
+                    ano_doc = int(ano_str)
+                except ValueError:
+                    ano_doc = 2024
+                    
+                acervo_internacional.append({
+                    "id": doc_id.lower(),
+                    "titulo": d.get("titulo", "Dossiê Desclassificado G20"),
+                    "tipo": "base_pesquisa_transnacional" if eh_pesquisa else "dossie_desclassificado",
+                    "tipoRotulo": "Base de Pesquisa Aberta" if eh_pesquisa else "Dossiê de Inteligência",
+                    "categoria": "Internacional & Geopolítica",
+                    "tema": tema,
+                    "entidade": f"{d.get('nomeCompletoOrgao', d.get('orgaoInteligencia', 'Órgão de Inteligência'))} ({d.get('paisOrigem', 'Global')})",
+                    "estado": "Global",
+                    "ano": ano_doc,
+                    "autor": f"{d.get('orgaoInteligencia', 'Inteligência')} — {d.get('paisOrigem', 'Global')}",
+                    "microResumo": d.get("resumo", ""),
+                    "urlOficial": d.get("urlOficialCustodia", ""),
+                    "urlPdf": d.get("urlPdfOriginal", d.get("urlOficialCustodia", "")),
+                    "palavrasChave": d.get("assuntos", []) + d.get("temas", []) + [d.get("codigoIsoPais", ""), "g20", "internacional"],
+                    "tamanhoFormatado": f"{d.get('quantidadePaginas', 10)} págs"
+                })
+
+    # 4.2 Precedentes, Diretivas e Litígios Transnacionais da Europa
+    caminho_eur = os.path.join(WEB_DATA_DIR, "europa", "europa-transnacional.compact.json")
+    if os.path.exists(caminho_eur):
+        dados_eur = carregar_json(caminho_eur)
+        docs_eur = expandir_compacto(dados_eur)
+        
+        for d in docs_eur:
+            ano_str = d.get("dataAto", "2024")[:4] if d.get("dataAto") else "2024"
+            try:
+                ano_doc = int(ano_str)
+            except ValueError:
+                ano_doc = 2024
+                
+            acervo_internacional.append({
+                "id": d.get("id", ""),
+                "titulo": f"{d.get('paisOrigem', 'Europa')}: {d.get('empresaEstrangeira', '')} — {d.get('orgaoJulgadorOuRegulador', '')}",
+                "tipo": "precedente_transnacional",
+                "tipoRotulo": "Regulação & Litígio Europeu",
+                "categoria": "Internacional & Geopolítica",
+                "tema": "Litígios & Regulação Europeia",
+                "entidade": d.get("orgaoJulgadorOuRegulador", d.get("empresaEstrangeira", "Tribunal Europeu")),
+                "estado": "Global",
+                "ano": ano_doc,
+                "autor": f"{d.get('orgaoJulgadorOuRegulador', 'Autoridade')} ({d.get('paisOrigem', 'Europa')})",
+                "microResumo": d.get("resumoFato", ""),
+                "urlOficial": d.get("urlOficialCanonica", ""),
+                "urlPdf": d.get("urlOficialCanonica", ""),
+                "palavrasChave": [
+                    d.get("setorEconomico", ""),
+                    d.get("marcoLegal", ""),
+                    d.get("paisOrigem", "").lower(),
+                    "europa",
+                    "transnacional",
+                    "devida-diligencia"
+                ],
+                "tamanhoFormatado": "Ato Oficial"
+            })
+
+    todos_itens.extend(acervo_internacional)
+    print(f"- Processados {len(acervo_internacional)} documentos e dossiês internacionais.")
+
     # Gerar distribuicoes agregadas para a regra das 5 coisas do AGENTS.md
     dist_tema = {}
     dist_categoria = {}
@@ -462,6 +575,7 @@ def main():
         "totalEmpresas": dados_empresas.get("totalEmpresas", 130),
         "totalInstituicoesJustica": len(dados_justica),
         "totalAcademico": len(acervo_academico),
+        "totalInternacional": len(acervo_internacional),
         "distribuicaoPorCategoria": dist_categoria,
         "distribuicaoPorTema": dist_tema,
         "distribuicaoPorAno": dist_ano,
