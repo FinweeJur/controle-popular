@@ -195,14 +195,19 @@ async function calcularIndiceComDb(
   // ── montar a entrada do motor e calcular ───────────────────────────────
   const indice = calcularIndiceRiscoDireitos({
     barragensCriticasQtd: feamCriticas + snisbCriticas,
-    sobreposicoesTiCarHa: 0,
+    // Sem query de banco para esta lente — `null` = não coletado, nunca 0.
+    sobreposicoesTiCarHa: null,
     infracoesIbamaAtivasQtd: autosIbama,
     contratosDoadoresReais: valorContratosDoadores,
     empresasSancionadasContratosQtd: contratosSancionados,
     camaraSemApiAberta,
-    internacoesCidsAmbientaisQtd: cidsAmbientais,
-    taxaMortalidadeEvitavel: 0,
-    indiceTransparenciaPntp: indiceTransparenciaPntp ?? 0,
+    // Sem internação de CID coletada para a cidade, o insumo é "não coletado" —
+    // não 0, que somaria pontos que não existem.
+    internacoesCidsAmbientaisQtd: cidsDoMunicipio.length > 0 ? cidsAmbientais : null,
+    // A tabela `mortalidade` não classifica "evitável" — não inventar taxa.
+    taxaMortalidadeEvitavel: null,
+    // `null` = PNTP não coletado. Antes virava 0 e somava +35 sozinho.
+    indiceTransparenciaPntp,
   });
 
   return {

@@ -135,6 +135,122 @@ export default function IndiceRiscoDireitosCard({
           textoSemDado="Dado de transparência e sistema da Câmara ainda não coletado para este município."
         />
       </div>
+
+      {/* Como calculamos — o cálculo aberto: fórmula, pesos, limiares e nível.
+          Regra editorial: o número vem do dado; a régua que o produziu também
+          tem de estar à vista. Ver `lib/risco-direitos.ts`. */}
+      <details className="mt-6 rounded-lg border border-border/50 bg-surface-raised p-4">
+        <summary className="cursor-pointer text-sm font-semibold text-text">
+          Como calculamos este índice
+        </summary>
+        <div className="mt-3 space-y-3 text-xs leading-relaxed text-text-soft">
+          <p>
+            O score geral (0–100) é a <strong>média ponderada</strong> de quatro
+            dimensões, cada uma também de 0 a 100:
+          </p>
+          <p className="overflow-x-auto rounded bg-surface px-3 py-2 font-mono text-[.72rem] text-text">
+            0,30×Saúde + 0,30×Socioambiental + 0,25×Integridade + 0,15×Opacidade
+          </p>
+          <p>
+            Cada dimensão parte de um piso e soma pontos ao cruzar um limiar
+            (satura em 100):
+          </p>
+          <ul className="space-y-1.5">
+            <li>
+              <strong>🏥 Saúde &amp; Vida — 30%.</strong> Piso 15. +40 se as
+              internações por CID sensível ao ambiente passam de 100; +30 se a
+              mortalidade evitável passa de 20.
+            </li>
+            <li>
+              <strong>🌳 Socioambiental e clima — 30%.</strong> Piso 10. +50 se
+              há barragem de mineração em emergência; +35 se há sobreposição de
+              imóvel rural (CAR) sobre terra indígena/quilombola; +20 se há
+              autuação do IBAMA.
+            </li>
+            <li>
+              <strong>🏛️ Finanças e erário — 25%.</strong> Piso 15. +50 se há
+              contrato com empresa sancionada (CEIS/CNEP); +30 se os contratos
+              com doadores de campanha passam de R$ 100 mil.
+            </li>
+            <li>
+              <strong>⚖️ Opacidade política — 15%.</strong> Piso 10. +45 se a
+              Câmara não publica as matérias em formato aberto; +35 se a nota de
+              transparência (PNTP) fica abaixo de 50.
+            </li>
+          </ul>
+          <p>
+            Níveis: <strong>Crítico</strong> ≥ 76 · <strong>Alto</strong> ≥ 51 ·{" "}
+            <strong>Moderado</strong> ≥ 26 · <strong>Baixo</strong> abaixo de 26.
+          </p>
+
+          {/* O CASO, DIMENSÃO POR DIMENSÃO — não a régua em abstrato, o
+              porquê desta nota: valor medido, limiar e quanto somou. */}
+          <div>
+            <p className="font-semibold text-text">
+              Por que esta nota — o caso de {municipioNome}
+            </p>
+            <div className="mt-2 space-y-3">
+              {(
+                [
+                  ["🏥 Saúde & Vida", indice.dimensoes.saudeVida, cobertura.saudeVida],
+                  ["🌳 Socioambiental e clima", indice.dimensoes.socioambientalClima, cobertura.socioambientalClima],
+                  ["🏛️ Finanças e erário", indice.dimensoes.integridadeErario, cobertura.integridadeErario],
+                  ["⚖️ Opacidade política", indice.dimensoes.opacidadePolitica, cobertura.opacidadePolitica],
+                ] as const
+              ).map(([titulo, dim, temDado]) => (
+                <div key={titulo}>
+                  <p className="text-text">
+                    <strong>{titulo}</strong>{" "}
+                    {temDado ? (
+                      <span className="font-tabular font-semibold">{dim.score}/100</span>
+                    ) : (
+                      <em>sem dado coletado</em>
+                    )}{" "}
+                    <span className="text-text-soft">
+                      (peso {Math.round(dim.peso * 100)}% · base {dim.piso})
+                    </span>
+                  </p>
+                  <ul className="mt-1 space-y-0.5">
+                    {dim.itens.map((it) => (
+                      <li key={it.rotulo}>
+                        <span aria-hidden className="font-mono text-text">
+                          {it.somou ? "▲" : it.coletado ? "·" : "–"}
+                        </span>{" "}
+                        {it.rotulo}: <span className="text-text">{it.valorMedido}</span>{" "}
+                        <span className="text-text-soft">
+                          ({it.limiar}) → {it.somou ? `+${it.pontos}` : "0"}
+                        </span>
+                        {" · Fonte: "}
+                        {it.urlFonte ? (
+                          <a
+                            href={it.urlFonte}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:underline"
+                          >
+                            {it.fonte} ↗
+                          </a>
+                        ) : (
+                          it.fonte
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-[.7rem] italic">
+            Legenda: <span className="font-mono">▲</span> limiar cruzado (somou
+            pontos) · <span className="font-mono">·</span> medido, abaixo do
+            limiar · <span className="font-mono">–</span> não coletado (não é
+            zero). O índice é <strong>sintético</strong>: soma limiares
+            verificáveis na fonte, não substitui a leitura de cada uma.
+            Dimensão sem dado aparece como “—” e não entra como zero.
+          </p>
+        </div>
+      </details>
     </section>
   );
 }
