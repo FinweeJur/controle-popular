@@ -40,6 +40,7 @@ describe("Catálogo do Seu Nonô (SeuNonoData.ts)", () => {
     expect(idsPaginas).toContain("instituicoes-justica-fichas");
     expect(idsPaginas).toContain("canada-mineracao");
     expect(idsPaginas).toContain("eua-empresas");
+    expect(idsPaginas).toContain("operacoes-militares-global");
   });
 
   it("deve conter a categoria Internacional (EUA & Canadá) com perguntas oficiais e frases até 13 palavras", () => {
@@ -49,13 +50,16 @@ describe("Catálogo do Seu Nonô (SeuNonoData.ts)", () => {
     const catInt = estado?.categorias.find((c) => c.id === "internacional-eua-canada");
     expect(catInt).toBeDefined();
     expect(catInt?.titulo).toBe("Internacional (EUA & Canadá)");
-    expect(catInt?.perguntas.length).toBeGreaterThanOrEqual(3);
+    expect(catInt?.perguntas.length).toBeGreaterThanOrEqual(6);
 
     // Verifica perguntas específicas solicitadas
     const idsPerguntas = catInt?.perguntas.map((p) => p.id) || [];
     expect(idsPerguntas).toContain("mineradoras-canadenses-jequitinhonha");
     expect(idsPerguntas).toContain("acionistas-vale-eua");
     expect(idsPerguntas).toContain("denuncia-ouvidoria-canada-core");
+    expect(idsPerguntas).toContain("operacoes-militares-defesa-global");
+    expect(idsPerguntas).toContain("pmc-mercenarios-contratos-privados");
+    expect(idsPerguntas).toContain("mapa-mundial-guerras-conflitos");
 
     // Verifica regra de frases curtas de até 13 palavras nas respostas
     for (const p of catInt?.perguntas || []) {

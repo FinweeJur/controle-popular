@@ -230,6 +230,18 @@ const ORIGENS = {
     obtencao: 'automatica',
     origem: 'Observatório de Capitais, Regulação e Mineração dos Estados Unidos (EUA) — 29 sedes corporativas, fundos globais, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais (SEC, EPA, USGS, MSHA, USACE, SDNY) e grandes minas estratégicas compilados de relatórios da SEC EDGAR, EPA ECHO, USGS MRDS e MSHA.',
   },
+  'sedes-mineracao-canada': {
+    obtencao: 'automatica',
+    origem: 'Observatório de Mineração e Capitais no Canadá — 24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras canadenses com atuação no Brasil e órgãos reguladores federais compilados a partir de relatórios da TMX Group, OSC, SEDAR+ e Environment and Climate Change Canada (NPRI).',
+  },
+  'sedes-litigios-portos-europa': {
+    obtencao: 'automatica',
+    origem: 'Observatório de Litígios, Sedes e Portos na Europa — 23 tribunais de litígios internacionais (High Court Londres, Rechtbank Rotterdam, Paris), sedes corporativas (BHP, Rio Tinto, Glencore, Enel) e portos de devida diligência (EUDR) auditados contra registros judiciais do Reino Unido, Países Baixos, França e União Europeia.',
+  },
+  'operacoes-militares-conflitos': {
+    obtencao: 'automatica',
+    origem: 'Observatório Global de Operações Militares, Conflitos e PMCs — 48 teatros de operações bélicas, deposições de regime, corporações mercenárias (PMCs) e mega-contratos armamentistas globais compilados a partir de relatórios oficiais da ONU, SIPRI, CRS do Congresso dos EUA, DoD e Corte Internacional de Justiça (CIJ).',
+  },
   // Dinheiro público e mineração (13/08/2026) — ver
   // docs/HANDOFF-CAMADA-DINHEIRO.md e docs/FONTES-FLUXO-FINANCEIRO.md.
   'cfem-municipios': {

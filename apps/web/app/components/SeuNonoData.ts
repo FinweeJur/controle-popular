@@ -651,6 +651,39 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "https://www.who.int", texto: "Organização Mundial da Saúde (OMS)" },
             ],
           },
+          {
+            id: "operacoes-militares-defesa-global",
+            pergunta: "O que é o acervo de operações militares e contratos de defesa?",
+            resposta:
+              "O portal mapeia 48 operações bélicas, deposições de regime e contratos militares. Reúne registros de potências da América do Norte, Europa e demais continentes. Conecta teatros de conflito, acordos armamentistas e empresas militares privadas.",
+            link: { href: "/internacional/operacoes-militares", texto: "Acervo de Operações Militares" },
+            links: [
+              { href: "/internacional/operacoes-militares/mapa", texto: "Mapa Mundial de Defesa" },
+              { href: "https://www.sipri.org", texto: "SIPRI Arms Transfers Database" },
+            ],
+          },
+          {
+            id: "pmc-mercenarios-contratos-privados",
+            pergunta: "Como o portal monitora empresas militares privadas (PMCs) e mercenários?",
+            resposta:
+              "Monitoramos contratos de segurança militar terceirizados por governos no exterior. O acervo lista corporações como Wagner, Academi, DynCorp e CACI. Apresenta faturamentos bilionários, teatros operacionais e relatórios da ONU.",
+            link: { href: "/internacional/operacoes-militares", texto: "Painel de PMCs e Contratos" },
+            links: [
+              { href: "https://www.icrc.org", texto: "Documento de Montreux (Cruz Vermelha / DHI)" },
+              { href: "/internacional/operacoes-militares/mapa", texto: "Mapa de Teatros de Operações" },
+            ],
+          },
+          {
+            id: "mapa-mundial-guerras-conflitos",
+            pergunta: "Onde consultar a geolocalização de guerras e intervenções estrangeiras?",
+            resposta:
+              "O Mapa de Defesa geolocaliza todos os teatros de operações e conflitos. Utiliza projeção vetorial interativa com coordenadas precisas e filtros temáticos. Cada ponto no mapa direciona para a ficha completa no acervo.",
+            link: { href: "/internacional/operacoes-militares/mapa", texto: "Mapa Mundial de Defesa" },
+            links: [
+              { href: "/internacional/operacoes-militares", texto: "Acervo Textual de Conflitos" },
+              { href: "/terras/globo", texto: "Globo 3D Terras (Camada de Conflitos)" },
+            ],
+          },
         ],
       },
       {
@@ -1539,6 +1572,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/internacional", texto: "Hub Multilateral" },
       { href: "/eua", texto: "Observatório dos EUA" },
       { href: "/canada", texto: "Observatório do Canadá" },
+    ],
+  },
+  {
+    id: "operacoes-militares-global",
+    titulo: "Operações Militares, Contratos de Defesa e PMCs",
+    resumo: "Mapeamento georreferenciado de 48 operações bélicas, deposições de regime, corporações mercenárias e contratos armamentistas globais.",
+    dados: [
+      "48 operações, intervenções, golpes e contratos militares geolocalizados",
+      "Cobertura de potências norte-americanas, europeias e teatros globais",
+      "Monitoramento de PMCs: faturamentos, efetivo e investigações de crimes",
+      "Fontes oficiais: CRS, DoD, SIPRI, Nações Unidas e CIJ",
+      "Mapa vetorial interativo com navegação bidirecional por ID",
+    ],
+    links: [
+      { href: "/internacional/operacoes-militares", texto: "Acervo de Operações Militares" },
+      { href: "/internacional/operacoes-militares/mapa", texto: "Mapa Mundial de Defesa" },
+      { href: "/terras/globo", texto: "Globo 3D Terras (Camada Militar)" },
     ],
   },
 ];

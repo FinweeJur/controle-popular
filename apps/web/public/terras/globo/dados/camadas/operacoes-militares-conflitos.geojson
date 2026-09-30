@@ -1,0 +1,1842 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fonte": "Controle Popular — Observatório de Operações Militares, Conflitos e Corporações de Defesa",
+    "dataAtualizacao": "2026-09-30",
+    "totalFeicoes": 48,
+    "distribuicaoTipos": {
+      "intervencao_militar_direta": 19,
+      "deposicao_regime_golpe": 8,
+      "guerra_proxy_apoio_rebelde": 2,
+      "pmc_milicia_privada": 9,
+      "contrato_defesa_armamento": 10
+    },
+    "aviso": "Coordenadas oficiais WGS84 compiladas a partir de resoluções da ONU, relatórios do CRS, DoD, SIPRI e CIJ."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "OP-1950-KOR-COREIA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.7052,
+          37.4563
+        ]
+      },
+      "properties": {
+        "id": "OP-1950-KOR-COREIA",
+        "nome": "Guerra da Coreia / Desembarque de Incheon — Intervenção Militar da Coalizão da ONU liderada pelos EUA na Península Coreana",
+        "titulo": "Intervenção Militar da Coalizão da ONU liderada pelos EUA na Península Coreana",
+        "codinome": "Guerra da Coreia / Desembarque de Incheon",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1950,
+        "anoFim": 1953,
+        "periodo": "1950–1953",
+        "duracaoEstimada": "1950 - 1953 (3 anos)",
+        "paisTeatro": "Coreia do Sul",
+        "continente": "Ásia e Oceania",
+        "localidade": "Incheon / Panmunjom",
+        "potencias": "Estados Unidos, Reino Unido, Canadá, Austrália, França",
+        "pmcs": "",
+        "contratadas": "Boeing, General Dynamics, Douglas Aircraft",
+        "resumo": "Conflito bélico internacional iniciado após o avanço norte-coreano, seguido de contra-ofensiva anfíbia anfíbia em Incheon sob comando do general MacArthur e intervenção chinesa.",
+        "baixasEstimadas": "~2,5 a 3 milhões de mortos (militares e civis)",
+        "custoFinanceiro": "US$ 30 bilhões (equivalente a US$ 390 bi corrigidos)",
+        "desfechoSoberania": "Assinatura do Armistício de Panmunjom e estabelecimento da Zona Desmilitarizada (DMZ) na latitude do Paralelo 38.",
+        "conexaoBrasil": "O Brasil foi pressionado pela administração Truman a enviar tropas terrestres, mas limitou sua atuação a apoio diplomático e fornecimento de matérias-primas minerais.",
+        "fonteOficial": "Congressional Research Service (CRS Report R42738) / US National Archives",
+        "link_oficial": "https://www.archives.gov/research/military/korean-war",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1950-KOR-COREIA",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1950-KOR-COREIA"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1956-EGY-SUEZ",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3019,
+          31.2653
+        ]
+      },
+      "properties": {
+        "id": "OP-1956-EGY-SUEZ",
+        "nome": "Operação Mosqueteiro / Crise de Suez — Ataque Militar Franco-Britânico e Israelense contra o Egito após Nacionalização do Canal",
+        "titulo": "Ataque Militar Franco-Britânico e Israelense contra o Egito após Nacionalização do Canal",
+        "codinome": "Operação Mosqueteiro / Crise de Suez",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1956,
+        "anoFim": 1956,
+        "periodo": "1956–1956",
+        "duracaoEstimada": "1956 (1 semana)",
+        "paisTeatro": "Egito",
+        "continente": "África",
+        "localidade": "Port Said / Canal de Suez",
+        "potencias": "Reino Unido, França, Israel",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Ação militar coordenada entre Reino Unido, França e Israel para retomar o controle do Canal de Suez e tentar derrubar o presidente Gamal Abdel Nasser após a nacionalização do canal.",
+        "baixasEstimadas": "~1.600 a 3.000 egípcios mortos",
+        "custoFinanceiro": "£ 500 milhões (provocou grave crise na libra esterlina)",
+        "desfechoSoberania": "Retirada humilhante das forças europeias sob forte pressão econômica dos EUA e ameaça da URSS, consolidando a soberania egípcia sobre o canal.",
+        "conexaoBrasil": "O Brasil integrou a Primeira Força de Emergência das Nações Unidas (UNEF I) através do Batalhão Suez (1957-1967), mantendo presença militar de paz na região.",
+        "fonteOficial": "The National Archives (Kew, UK) / UN Peacemaker",
+        "link_oficial": "https://discovery.nationalarchives.gov.uk/details/r/C1045",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1956-EGY-SUEZ",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1956-EGY-SUEZ"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1958-LBN-BLUEBAT",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5018,
+          33.8938
+        ]
+      },
+      "properties": {
+        "id": "OP-1958-LBN-BLUEBAT",
+        "nome": "Operação Blue Bat — Desembarque Militar dos Fuzileiros Navais dos EUA em Beirute (Doutrina Eisenhower)",
+        "titulo": "Desembarque Militar dos Fuzileiros Navais dos EUA em Beirute (Doutrina Eisenhower)",
+        "codinome": "Operação Blue Bat",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1958,
+        "anoFim": 1958,
+        "periodo": "1958–1958",
+        "duracaoEstimada": "1958 (3 meses)",
+        "paisTeatro": "Líbano",
+        "continente": "Oriente Médio",
+        "localidade": "Beirute / Aeroporto Internacional",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Primeira aplicação formal da Doutrina Eisenhower no Oriente Médio, com desembarque de 14.000 marines americanos no Líbano para conter tensões da crise política pró-pan-arabismo.",
+        "baixasEstimadas": "4 soldados dos EUA mortos; ~3.000 baixas libanesas em confrontos civis prévios",
+        "custoFinanceiro": "US$ 150 milhões",
+        "desfechoSoberania": "Estabilização temporária do governo pró-ocidental do presidente Camille Chamoun e transição negociada para Fouad Chehab.",
+        "conexaoBrasil": "O Brasil abrigava a maior comunidade de imigrantes libaneses do mundo, gerando forte comoção comunitária em São Paulo e debates no parlamento brasileiro.",
+        "fonteOficial": "Naval History and Heritage Command / CRS Report R42738",
+        "link_oficial": "https://www.history.navy.mil/research/library/online-reading-room/title-list-alphabetically/o/operation-bluebat.html",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1958-LBN-BLUEBAT",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1958-LBN-BLUEBAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1964-VNM-ROLLING-THUNDER",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.8542,
+          21.0285
+        ]
+      },
+      "properties": {
+        "id": "OP-1964-VNM-ROLLING-THUNDER",
+        "nome": "Operação Rolling Thunder / Guerra do Vietnã — Campanha Contínua de Bombardeio Aéreo Estratégico dos EUA sobre o Vietnã do Norte",
+        "titulo": "Campanha Contínua de Bombardeio Aéreo Estratégico dos EUA sobre o Vietnã do Norte",
+        "codinome": "Operação Rolling Thunder / Guerra do Vietnã",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1964,
+        "anoFim": 1973,
+        "periodo": "1964–1973",
+        "duracaoEstimada": "1964 - 1973 (9 anos)",
+        "paisTeatro": "Vietnã",
+        "continente": "Ásia e Oceania",
+        "localidade": "Hanói / Haiphong / Golfo de Tonquim",
+        "potencias": "Estados Unidos, Austrália, Nova Zelândia, Coreia do Sul",
+        "pmcs": "",
+        "contratadas": "Boeing (B-52), McDonnell Douglas (F-4), Bell Helicopter (UH-1), Dow Chemical (Agente Laranja)",
+        "resumo": "Campanha massiva de bombardeios da Força Aérea e Marinha dos EUA visando destruir a infraestrutura industrial e as rotas de suprimento da Trilha Ho Chi Minh.",
+        "baixasEstimadas": "+2 a 3 milhões de mortos vietnamitas; 58.220 militares dos EUA mortos",
+        "custoFinanceiro": "US$ 168 bilhões (equivalente a US$ 1 trilhão hoje)",
+        "desfechoSoberania": "Acordos de Paz de Paris (1973), retirada completa das tropas dos EUA e unificação do Vietnã sob o governo de Hanói em 1975.",
+        "conexaoBrasil": "A ditadura militar brasileira expressou solidariedade aos EUA na Guerra Fria, mas resistiu ao envio de tropas combatentes ('Batalhão Brasileiro') apesar dos apelos do presidente Johnson.",
+        "fonteOficial": "National Archives Vietnam War Records (RG 472) / Pentagon Papers",
+        "link_oficial": "https://www.archives.gov/research/military/vietnam-war",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1964-VNM-ROLLING-THUNDER",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1964-VNM-ROLLING-THUNDER"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1969-KHM-MENU",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.9282,
+          11.5564
+        ]
+      },
+      "properties": {
+        "id": "OP-1969-KHM-MENU",
+        "nome": "Operação Menu / Operação Freedom Deal — Campanha Clandestina de Bombardeio Aéreo em Larga Escala no Camboja por Nixon e Kissinger",
+        "titulo": "Campanha Clandestina de Bombardeio Aéreo em Larga Escala no Camboja por Nixon e Kissinger",
+        "codinome": "Operação Menu / Operação Freedom Deal",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1969,
+        "anoFim": 1973,
+        "periodo": "1969–1973",
+        "duracaoEstimada": "1969 - 1973 (4 anos)",
+        "paisTeatro": "Camboja",
+        "continente": "Ásia e Oceania",
+        "localidade": "Fronteira Oriental / Phnom Penh",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "Boeing",
+        "resumo": "Mais de 100.000 missões de bombardeio clandestino autorizadas pela Casa Branca sem conhecimento do Congresso dos EUA, lançando 540.000 toneladas de bombas em áreas civis e florestais do Camboja.",
+        "baixasEstimadas": "~150.000 a 300.000 civis cambojanos mortos",
+        "custoFinanceiro": "US$ 7 bilhões",
+        "desfechoSoberania": "Desestabilização social catastrófica do Camboja, que colapsou a monarquia de Sihanouk e criou vácuo de poder explorado pelo Khmer Vermelho de Pol Pot.",
+        "conexaoBrasil": "Precedente internacional histórico de desrespeito à soberania de países neutros via ações executivas encobertas, amplamente estudado na diplomacia do Itamaraty.",
+        "fonteOficial": "US House Judiciary Committee Impeachment Hearings (Article IV) / National Security Archive",
+        "link_oficial": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB193/index.htm",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1969-KHM-MENU",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1969-KHM-MENU"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1970-LAO-BARREL-ROLL",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.1866,
+          19.4539
+        ]
+      },
+      "properties": {
+        "id": "OP-1970-LAO-BARREL-ROLL",
+        "nome": "Operação Barrel Roll / A Guerra Secreta no Laos — Maior Bombardeio Per Capita da História Humana: A Guerra Aérea dos EUA no Laos",
+        "titulo": "Maior Bombardeio Per Capita da História Humana: A Guerra Aérea dos EUA no Laos",
+        "codinome": "Operação Barrel Roll / A Guerra Secreta no Laos",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1964,
+        "anoFim": 1973,
+        "periodo": "1964–1973",
+        "duracaoEstimada": "1964 - 1973 (9 anos)",
+        "paisTeatro": "Laos",
+        "continente": "Ásia e Oceania",
+        "localidade": "Planície dos Jarros / Xiangkhoang",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "Air America (CIA Proprietary Company)",
+        "resumo": "Operação da CIA e Força Aérea dos EUA lançando 2 milhões de toneladas de explosivos sobre o Laos (um bombardeio a cada 8 minutos por 9 anos), tornando o Laos o país mais bombardeado do planeta.",
+        "baixasEstimadas": "+50.000 civis laocianos mortos; 80 milhões de bombas não detonadas (UXO) até hoje",
+        "custoFinanceiro": "US$ 15 bilhões",
+        "desfechoSoberania": "Vitória do Pathet Lao e contaminação permanente do território agrícola com munições de fragmentação não explodidas.",
+        "conexaoBrasil": "Exemplo primordial da utilização de empresas aéreas de fachada (Air America) como precursoras das modernas PMCs de mercenários.",
+        "fonteOficial": "CIA FOIA Electronic Reading Room / Legacies of War Archives",
+        "link_oficial": "https://www.cia.gov/readingroom/collection/air-america",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1970-LAO-BARREL-ROLL",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1970-LAO-BARREL-ROLL"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1982-FLK-MALVINAS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.8517,
+          -51.6977
+        ]
+      },
+      "properties": {
+        "id": "OP-1982-FLK-MALVINAS",
+        "nome": "Guerra das Malvinas / Operação Corporate — Conflito Bélico Aeronaval entre Reino Unido e Argentina pela Soberania das Ilhas Malvinas",
+        "titulo": "Conflito Bélico Aeronaval entre Reino Unido e Argentina pela Soberania das Ilhas Malvinas",
+        "codinome": "Guerra das Malvinas / Operação Corporate",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1982,
+        "anoFim": 1982,
+        "periodo": "1982–1982",
+        "duracaoEstimada": "1982 (74 dias)",
+        "paisTeatro": "Argentina",
+        "continente": "América do Sul",
+        "localidade": "Port Stanley / Ilhas Malvinas",
+        "potencias": "Reino Unido",
+        "pmcs": "",
+        "contratadas": "Vickers Shipbuilding, BAE (Hawker Siddeley Harrier), Aérospatiale (Mísseis Exocet argentinos)",
+        "resumo": "Confronto armado após o desembarque argentino nas ilhas (Operação Rosário) e contra-ataque naval da Força-Tarefa britânica enviada por Margaret Thatcher com apoio de inteligência dos EUA.",
+        "baixasEstimadas": "649 militares argentinos mortos; 255 britânicos mortos; 3 civis",
+        "custoFinanceiro": "£ 2,8 bilhões",
+        "desfechoSoberania": "Restauração do controle colonial britânico nas ilhas e desmoronamento imediato da ditadura militar argentina do general Galtieri.",
+        "conexaoBrasil": "O Brasil declarou neutralidade oficial, mas apoiou diplomaticamente a reivindicação argentina de soberania territorial e interceptou bombardeiros britânicos Vulcan que violaram o espaço aéreo no Rio de Janeiro.",
+        "fonteOficial": "The National Archives (Kew, UK) / Relatório Oficial Rattenbach (Argentina)",
+        "link_oficial": "https://www.nationalarchives.gov.uk/falklands/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1982-FLK-MALVINAS",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1982-FLK-MALVINAS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1983-GRD-URGENT-FURY",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -61.7488,
+          12.0561
+        ]
+      },
+      "properties": {
+        "id": "OP-1983-GRD-URGENT-FURY",
+        "nome": "Operação Urgent Fury — Invasão Militar dos Estados Unidos na Ilha Caribenha de Granada",
+        "titulo": "Invasão Militar dos Estados Unidos na Ilha Caribenha de Granada",
+        "codinome": "Operação Urgent Fury",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1983,
+        "anoFim": 1983,
+        "periodo": "1983–1983",
+        "duracaoEstimada": "1983 (1 semana)",
+        "paisTeatro": "Granada",
+        "continente": "América Central e Caribe",
+        "localidade": "Saint George's / Aeroporto de Point Salines",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Invasão anfíbia e helitransportada ordenada pelo presidente Ronald Reagan após o assassinato do primeiro-ministro Maurice Bishop e tomada do poder por junta militar esquerdista.",
+        "baixasEstimadas": "45 militares granadinos mortos; 24 civis mortos; 19 militares dos EUA mortos",
+        "custoFinanceiro": "US$ 134 milhões",
+        "desfechoSoberania": "Derrubada da junta de Hudson Austin, desmantelamento da influência cubana na ilha e instauração de governo provisório pró-EUA.",
+        "conexaoBrasil": "Condenação da invasão na Assembleia Geral da ONU por 108 votos a 9, com voto contrário do Brasil ao unilateralismo militar nas Américas.",
+        "fonteOficial": "Congressional Research Service (CRS R42738) / UN General Assembly Resolution 38/7",
+        "link_oficial": "https://digitallibrary.un.org/record/56578",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1983-GRD-URGENT-FURY",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1983-GRD-URGENT-FURY"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1986-LBY-EL-DORADO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.1913,
+          32.8872
+        ]
+      },
+      "properties": {
+        "id": "OP-1986-LBY-EL-DORADO",
+        "nome": "Operação El Dorado Canyon — Ataques Aéreos Noturnos dos EUA contra Alvos Governamentais e Militares na Líbia",
+        "titulo": "Ataques Aéreos Noturnos dos EUA contra Alvos Governamentais e Militares na Líbia",
+        "codinome": "Operação El Dorado Canyon",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1986,
+        "anoFim": 1986,
+        "periodo": "1986–1986",
+        "duracaoEstimada": "1986 (1 noite)",
+        "paisTeatro": "Líbia",
+        "continente": "África",
+        "localidade": "Trípoli / Benghazi / Quartel Bab al-Azizia",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "General Dynamics (F-111 Aardvark)",
+        "resumo": "Ataque aéreo retaliatório ordenado por Ronald Reagan após atentado em discoteca de Berlim Ocidental, bombardeando quartéis em Trípoli e Benghazi.",
+        "baixasEstimadas": "~60 líbios mortos (incluindo a filha adotiva de Muammar Gaddafi); 2 pilotos dos EUA",
+        "custoFinanceiro": "US$ 250 milhões",
+        "desfechoSoberania": "Intensificação da crise diplomática e acirramento do confronto com a Líbia, culminando anos depois no atentado de Lockerbie.",
+        "conexaoBrasil": "França e Espanha negaram autorização de sobrevoo para os aviões dos EUA, forçando rota de 4.000 km pelo Oceano Atlântico contornando a costa europeia.",
+        "fonteOficial": "Air Force Historical Research Agency / CRS Report R42738",
+        "link_oficial": "https://www.afhra.af.mil/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1986-LBY-EL-DORADO",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1986-LBY-EL-DORADO"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1989-PAN-JUST-CAUSE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5199,
+          8.9824
+        ]
+      },
+      "properties": {
+        "id": "OP-1989-PAN-JUST-CAUSE",
+        "nome": "Operação Just Cause — Invasão Militar dos Estados Unidos ao Panamá e Captura do General Manuel Noriega",
+        "titulo": "Invasão Militar dos Estados Unidos ao Panamá e Captura do General Manuel Noriega",
+        "codinome": "Operação Just Cause",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1989,
+        "anoFim": 1990,
+        "periodo": "1989–1990",
+        "duracaoEstimada": "1989 - 1990 (1 mês)",
+        "paisTeatro": "Panamá",
+        "continente": "América Central e Caribe",
+        "localidade": "Cidade do Panamá / Bairro El Chorrillo",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "Lockheed (F-117 Nighthawk - estreia em combate)",
+        "resumo": "Mobilização de 27.000 militares americanos para capturar o homem forte do Panamá, Manuel Noriega (ex-colaborador da CIA), sob acusações de narcotráfico.",
+        "baixasEstimadas": "~500 a 1.000 civis panamenhos mortos; 23 militares dos EUA",
+        "custoFinanceiro": "US$ 163 milhões",
+        "desfechoSoberania": "Rendição de Noriega na Nunciatura Apostólica, extinção das Forças de Defesa do Panamá e posse do presidente Guillermo Endara em base militar dos EUA.",
+        "conexaoBrasil": "A OEA e a Assembleia Geral da ONU aprovaram resolução de profunda censura à intervenção dos EUA por violação da Carta da ONU e da soberania latino-americana.",
+        "fonteOficial": "US Southern Command / UN General Assembly Resolution 44/240",
+        "link_oficial": "https://digitallibrary.un.org/record/82998",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1989-PAN-JUST-CAUSE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1989-PAN-JUST-CAUSE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1991-IRQ-DESERT-STORM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.9774,
+          29.3759
+        ]
+      },
+      "properties": {
+        "id": "OP-1991-IRQ-DESERT-STORM",
+        "nome": "Operação Tempestade no Deserto / Guerra do Golfo — Campanha Militar Internacional da Coalizão de 35 Nações para Libertar o Kuwait",
+        "titulo": "Campanha Militar Internacional da Coalizão de 35 Nações para Libertar o Kuwait",
+        "codinome": "Operação Tempestade no Deserto / Guerra do Golfo",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1991,
+        "anoFim": 1991,
+        "periodo": "1991–1991",
+        "duracaoEstimada": "1991 (1 mês e meio)",
+        "paisTeatro": "Kuwait",
+        "continente": "Oriente Médio",
+        "localidade": "Cidade do Kuwait / Sul do Iraque / Basra",
+        "potencias": "Estados Unidos, Reino Unido, França, Arábia Saudita, Kuwait",
+        "pmcs": "",
+        "contratadas": "Lockheed Martin, Raytheon (Mísseis Tomahawk e Patriot), General Dynamics, McDonnell Douglas",
+        "resumo": "Campanha aérea de 42 dias seguida de ofensiva terrestre de 100 horas liderada pelo general Norman Schwarzkopf após a invasão e anexação do Kuwait pelo Iraque de Saddam Hussein.",
+        "baixasEstimadas": "~25.000 a 50.000 soldados iraquianos mortos; ~3.600 civis; 292 militares da coalizão",
+        "custoFinanceiro": "US$ 61 bilhões (US$ 36 bi pagos por Arábia Saudita e Kuwait)",
+        "desfechoSoberania": "Restauração da soberania do Kuwait, imposição de severo regime de sanções da ONU sobre o Iraque e criação das Zonas de Exclusão Aérea.",
+        "conexaoBrasil": "O Brasil perdeu grandes contratos comerciais no Iraque e teve de evacuar centenas de engenheiros da construtora Mendes Júnior que atuavam em Bagdá.",
+        "fonteOficial": "Department of Defense Final Report to Congress on the Conduct of the Persian Gulf War",
+        "link_oficial": "https://www.esd.whs.mil/FOIA/Reading-Room/Reading-Room-List_Categories/Gulf-War/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1991-IRQ-DESERT-STORM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1991-IRQ-DESERT-STORM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1992-SOM-RESTORE-HOPE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.3182,
+          2.0469
+        ]
+      },
+      "properties": {
+        "id": "OP-1992-SOM-RESTORE-HOPE",
+        "nome": "Operação Restore Hope / Batalha de Mogadíscio — Intervenção Humanitária-Militar das Forças Armadas dos EUA e ONU na Guerra Civil da Somália",
+        "titulo": "Intervenção Humanitária-Militar das Forças Armadas dos EUA e ONU na Guerra Civil da Somália",
+        "codinome": "Operação Restore Hope / Batalha de Mogadíscio",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1992,
+        "anoFim": 1994,
+        "periodo": "1992–1994",
+        "duracaoEstimada": "1992 - 1994 (2 anos)",
+        "paisTeatro": "Somália",
+        "continente": "África",
+        "localidade": "Mogadíscio / Mercado Bakara",
+        "potencias": "Estados Unidos, Itália, Paquistão, Malásia",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Força-Tarefa Unificada (UNITAF) para garantir ajuda humanitária durante grave fome, que escalou para combates urbanos contra a milícia do senhor da guerra Mohamed Farrah Aidid.",
+        "baixasEstimadas": "~1.000 a 2.000 somalis mortos; 18 soldados dos EUA (Batalha de Mogadíscio)",
+        "custoFinanceiro": "US$ 2,2 bilhões",
+        "desfechoSoberania": "Retirada unilateral das forças dos EUA pelo presidente Bill Clinton e colapso da missão da ONU, inaugurando a chamada 'Síndrome da Somália'.",
+        "conexaoBrasil": "A 'Síndrome da Somália' gerou recuo dos EUA em intervenções multilaterais, levando à omissão da comunidade internacional diante do Genocídio de Ruanda em 1994.",
+        "fonteOficial": "US Army Center of Military History / UN Security Council Resolution 794",
+        "link_oficial": "https://history.army.mil/brochures/Somalia/Somalia.htm",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1992-SOM-RESTORE-HOPE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1992-SOM-RESTORE-HOPE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1995-BIH-DELIBERATE-FORCE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.4131,
+          43.8563
+        ]
+      },
+      "properties": {
+        "id": "OP-1995-BIH-DELIBERATE-FORCE",
+        "nome": "Operação Deliberate Force — Campanha Aérea da OTAN contra Forças Sérvias da Bósnia após o Massacre de Srebrenica",
+        "titulo": "Campanha Aérea da OTAN contra Forças Sérvias da Bósnia após o Massacre de Srebrenica",
+        "codinome": "Operação Deliberate Force",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1995,
+        "anoFim": 1995,
+        "periodo": "1995–1995",
+        "duracaoEstimada": "1995 (3 semanas)",
+        "paisTeatro": "Bósnia e Herzegovina",
+        "continente": "Europa",
+        "localidade": "Sarajevo / Pale / Tuzla",
+        "potencias": "Estados Unidos, Reino Unido, França, Holanda, OTAN",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Bombardeios aéreos coordenados da OTAN contra artilharia, depósitos de munição e centros de comando das Forças Sérvias da Bósnia para forçar o cessar-fogo na Guerra da Bósnia.",
+        "baixasEstimadas": "~30 militares sérvios bósnios mortos; ~1.000 alvos destruídos",
+        "custoFinanceiro": "US$ 1,1 bilhão",
+        "desfechoSoberania": "Fim do cerco de Sarajevo e assinatura dos Acordos de Dayton em Ohio, dividindo a Bósnia em duas entidades autônomas.",
+        "conexaoBrasil": "O Brasil atuou no Tribunal Penal Internacional para a ex-Iugoslávia (TPIJ) em Haia, apoiando o julgamento por crimes de guerra e genocídio.",
+        "fonteOficial": "NATO Historical Archives / Dayton Peace Accords",
+        "link_oficial": "https://www.nato.int/cps/en/natohq/topics_52144.htm",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1995-BIH-DELIBERATE-FORCE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1995-BIH-DELIBERATE-FORCE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1999-YUG-ALLIED-FORCE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4489,
+          44.7866
+        ]
+      },
+      "properties": {
+        "id": "OP-1999-YUG-ALLIED-FORCE",
+        "nome": "Operação Allied Force / Bombardeio da Iugoslávia — Campanha Aérea de 78 Dias da OTAN contra a Iugoslávia sem Autorização do Conselho de Segurança da ONU",
+        "titulo": "Campanha Aérea de 78 Dias da OTAN contra a Iugoslávia sem Autorização do Conselho de Segurança da ONU",
+        "codinome": "Operação Allied Force / Bombardeio da Iugoslávia",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 1999,
+        "anoFim": 1999,
+        "periodo": "1999–1999",
+        "duracaoEstimada": "1999 (78 dias)",
+        "paisTeatro": "Sérvia",
+        "continente": "Europa",
+        "localidade": "Belgrado / Pristina / Novi Sad",
+        "potencias": "Estados Unidos, Reino Unido, Alemanha, França, Itália, OTAN",
+        "pmcs": "",
+        "contratadas": "Lockheed Martin, Raytheon, Boeing, Northrop Grumman (B-2 Spirit)",
+        "resumo": "Bombardeio massivo contra infraestrutura militar, pontes, usinas elétricas e a emissora de TV estatal em Belgrado para forçar Slobodan Milosevic a retirar tropas de Kosovo.",
+        "baixasEstimadas": "~500 a 1.500 civis iugoslavos mortos; embaixada da China em Belgrado atingida",
+        "custoFinanceiro": "US$ 4,5 bilhões",
+        "desfechoSoberania": "Retirada das forças sérvias, ocupação pela KFOR sob Resolução 1244 e posterior declaração unilateral de independência de Kosovo em 2008.",
+        "conexaoBrasil": "O Brasil, integrando o Conselho de Segurança da ONU, defendeu a primazia do direito internacional e criticou o ataque sem mandato formal da ONU.",
+        "fonteOficial": "UN Security Council Resolution 1244 / Human Rights Watch Report on NATO Civilian Casualties",
+        "link_oficial": "https://www.hrw.org/reports/2000/nato/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1999-YUG-ALLIED-FORCE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1999-YUG-ALLIED-FORCE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-2001-AFG-ENDURING-FREEDOM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.2075,
+          34.5553
+        ]
+      },
+      "properties": {
+        "id": "OP-2001-AFG-ENDURING-FREEDOM",
+        "nome": "Operação Enduring Freedom / Guerra do Afeganistão — Invasão Militar dos EUA e Coalizão Internacional no Afeganistão após os Atentados de 11 de Setembro",
+        "titulo": "Invasão Militar dos EUA e Coalizão Internacional no Afeganistão após os Atentados de 11 de Setembro",
+        "codinome": "Operação Enduring Freedom / Guerra do Afeganistão",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 2001,
+        "anoFim": 2021,
+        "periodo": "2001–2021",
+        "duracaoEstimada": "2001 - 2021 (20 anos)",
+        "paisTeatro": "Afeganistão",
+        "continente": "Ásia e Oceania",
+        "localidade": "Cabul / Kandahar / Tora Bora",
+        "potencias": "Estados Unidos, Reino Unido, Canadá, Alemanha, OTAN",
+        "pmcs": "DynCorp International, Academi / Constellis, Triple Canopy",
+        "contratadas": "Lockheed Martin, General Dynamics, Raytheon, KBR / Halliburton",
+        "resumo": "Campanha militar que derrubou o primeiro regime talibã e desencadeou a mais longa guerra da história dos EUA (20 anos), caracterizada por insurgência, drones e contraterrorismo.",
+        "baixasEstimadas": "+176.000 mortos (incluindo 46.000 civis afegãos); 2.461 militares dos EUA",
+        "custoFinanceiro": "US$ 2,31 trilhões (Brown University Costs of War Project)",
+        "desfechoSoberania": "Retirada caótica dos EUA em agosto de 2021, colapso do governo pró-ocidental e retorno imediato do Talibã ao poder em Cabul.",
+        "conexaoBrasil": "Demonstração do custo astronômico e da dependência crítica de empresas militares privadas (PMCs terceirizadas superavam o número de soldados no terreno).",
+        "fonteOficial": "Special Inspector General for Afghanistan Reconstruction (SIGAR) / Costs of War Project",
+        "link_oficial": "https://www.sigar.mil/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-2001-AFG-ENDURING-FREEDOM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-2001-AFG-ENDURING-FREEDOM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-2003-IRQ-IRAQI-FREEDOM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.3661,
+          33.3152
+        ]
+      },
+      "properties": {
+        "id": "OP-2003-IRQ-IRAQI-FREEDOM",
+        "nome": "Operação Iraqi Freedom / Invasão do Iraque — Invasão Militar do Iraque por Coalizão dos EUA sob Alegação Falsa de Armas de Destruição em Massa",
+        "titulo": "Invasão Militar do Iraque por Coalizão dos EUA sob Alegação Falsa de Armas de Destruição em Massa",
+        "codinome": "Operação Iraqi Freedom / Invasão do Iraque",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 2003,
+        "anoFim": 2011,
+        "periodo": "2003–2011",
+        "duracaoEstimada": "2003 - 2011 (8 anos)",
+        "paisTeatro": "Iraque",
+        "continente": "Oriente Médio",
+        "localidade": "Bagdá / Fallujah / Tikrit",
+        "potencias": "Estados Unidos, Reino Unido, Austrália, Polônia",
+        "pmcs": "Blackwater / Xe, CACI International, Titan Corp, Erinys International, DynCorp",
+        "contratadas": "Halliburton / KBR, Bechtel, Lockheed Martin, Boeing",
+        "resumo": "Guerra preventiva deflagrada pela administração George W. Bush e Tony Blair que derrubou Saddam Hussein, destruiu as instituições estatais iraquianas e gerou desestabilização regional com surgimento do ISIS.",
+        "baixasEstimadas": "+500.000 mortos diretos e indiretos; 4.492 militares dos EUA mortos",
+        "custoFinanceiro": "US$ 1,9 trilhão (estudo Watson Institute / Harvard)",
+        "desfechoSoberania": "Execução de Saddam Hussein, dissolução do exército iraquiano (Desbaathificação), guerra sectária civil e ocupação prolongada.",
+        "conexaoBrasil": "O diplomata brasileiro Sérgio Vieira de Mello, enviado especial da ONU em Bagdá, foi assassinado em 19 de agosto de 2003 em atentado a bomba no Hotel Canal.",
+        "fonteOficial": "The Chilcot Report (UK Iraq Inquiry) / US Senate Select Committee on Intelligence",
+        "link_oficial": "https://webarchive.nationalarchives.gov.uk/ukgwa/20171123122743/http://www.iraqinquiry.org.uk/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-2003-IRQ-IRAQI-FREEDOM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-2003-IRQ-IRAQI-FREEDOM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-2011-LBY-UNIFIED-PROTECTOR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.1913,
+          32.8872
+        ]
+      },
+      "properties": {
+        "id": "OP-2011-LBY-UNIFIED-PROTECTOR",
+        "nome": "Operação Unified Protector — Intervenção Militar e Bombardeio da OTAN na Líbia e Queda de Muammar Gaddafi",
+        "titulo": "Intervenção Militar e Bombardeio da OTAN na Líbia e Queda de Muammar Gaddafi",
+        "codinome": "Operação Unified Protector",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 2011,
+        "anoFim": 2011,
+        "periodo": "2011–2011",
+        "duracaoEstimada": "2011 (7 meses)",
+        "paisTeatro": "Líbia",
+        "continente": "África",
+        "localidade": "Trípoli / Benghazi / Sirte",
+        "potencias": "França, Reino Unido, Estados Unidos, Catar, OTAN",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Campanha aero-naval da OTAN autorizada sob pretexto de proteção de civis (Resolução 1973 da ONU), que rapidamente converteu-se em apoio militar direto aos rebeldes para derrubar o regime de Gaddafi.",
+        "baixasEstimadas": "+10.000 a 25.000 mortos durante o conflito",
+        "custoFinanceiro": "US$ 1,5 bilhão (apenas custo das Forças Armadas dos EUA)",
+        "desfechoSoberania": "Linchamento de Gaddafi, fragmentação territorial da Líbia entre milícias rivais e transformação do país em rota de tráfico humano e armas.",
+        "conexaoBrasil": "O Brasil absteve-se na votação da Resolução 1973 do Conselho de Segurança e formulou o conceito de 'Responsabilidade ao Proteger' (RwP) alertando contra mudanças forçadas de regime.",
+        "fonteOficial": "UN Security Council Resolution 1973 / UK House of Commons Foreign Affairs Committee Report",
+        "link_oficial": "https://publications.parliament.uk/pa/cm201617/cmselect/cmfaff/119/119.pdf",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-2011-LBY-UNIFIED-PROTECTOR",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-2011-LBY-UNIFIED-PROTECTOR"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-2013-MLI-SERVAL-BARKHANE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0447,
+          16.2717
+        ]
+      },
+      "properties": {
+        "id": "OP-2013-MLI-SERVAL-BARKHANE",
+        "nome": "Operações Serval e Barkhane no Sahel — Intervenção Militar Francesa no Mali, Níger e Burquina Fasso contra Insurgências Jihadistas",
+        "titulo": "Intervenção Militar Francesa no Mali, Níger e Burquina Fasso contra Insurgências Jihadistas",
+        "codinome": "Operações Serval e Barkhane no Sahel",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 2013,
+        "anoFim": 2022,
+        "periodo": "2013–2022",
+        "duracaoEstimada": "2013 - 2022 (9 anos)",
+        "paisTeatro": "Mali",
+        "continente": "África",
+        "localidade": "Gao / Kidal / Bamako",
+        "potencias": "França, Alemanha, União Europeia",
+        "pmcs": "",
+        "contratadas": "Dassault Aviation (Rafale), Thales, Arquus (Veículos Blindados)",
+        "resumo": "Mobilização de 5.000 militares franceses para conter o avanço de grupos armados no norte do Mali, estendendo-se por quase uma década de ocupação de bases militares em 5 países do Sahel.",
+        "baixasEstimadas": "53 soldados franceses mortos; milhares de civis e insurgentes mortos",
+        "custoFinanceiro": "€ 4,5 bilhões (cerca de € 1 bilhão por ano)",
+        "desfechoSoberania": "Ruptura diplomática das juntas militares do Mali, Níger e Burquina Fasso com Paris, expulsão das tropas francesas e aliança com o Wagner Group da Rússia.",
+        "conexaoBrasil": "Crise geopolítica do neocolonialismo e decadência do modelo 'Françafrique', acompanhada de perto pela diplomacia de cooperação Sul-Sul do Brasil com a África Ocidental.",
+        "fonteOficial": "Ministère des Armées (França) / Assemblée Nationale Française Rapport d'Information",
+        "link_oficial": "https://www.defense.gouv.fr/operations/operations/afrique-ouest-centrale/barkhane",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-2013-MLI-SERVAL-BARKHANE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-2013-MLI-SERVAL-BARKHANE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-2022-UKR-RUS-INVASION",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5234,
+          50.4501
+        ]
+      },
+      "properties": {
+        "id": "OP-2022-UKR-RUS-INVASION",
+        "nome": "Invasão da Ucrânia / Suporte Militar Maciço da OTAN — Maior Guerra Convencional em Solo Europeu desde 1945: Invasão Russa e Fornecimento de Armas Ocidentais",
+        "titulo": "Maior Guerra Convencional em Solo Europeu desde 1945: Invasão Russa e Fornecimento de Armas Ocidentais",
+        "codinome": "Invasão da Ucrânia / Suporte Militar Maciço da OTAN",
+        "tipo": "intervencao_militar_direta",
+        "tipoRotulo": "Intervenção Militar Direta",
+        "anoInicio": 2022,
+        "anoFim": null,
+        "periodo": "2022",
+        "duracaoEstimada": "2022 - presente (em curso)",
+        "paisTeatro": "Ucrânia",
+        "continente": "Europa",
+        "localidade": "Kiev / Kharkiv / Donbas / Mariupol",
+        "potencias": "Rússia, Estados Unidos, Reino Unido, Alemanha, Polônia",
+        "pmcs": "Wagner Group (Rússia), Redut (Rússia), Academi / Voluntários Ocidentais",
+        "contratadas": "Lockheed Martin (HIMARS, Javelin), Rheinmetall (Leopard, Munição 155mm), BAE Systems, General Dynamics",
+        "resumo": "Invasão militar em grande escala da Ucrânia pela Federação Russa, gerando resposta militar e econômica dos EUA e países da OTAN com fornecimento sem precedentes de armas, blindados e inteligência.",
+        "baixasEstimadas": "+500.000 baixas militares combinadas; dezenas de milhares de civis mortos",
+        "custoFinanceiro": "+US$ 300 bilhões em ajuda militar e financeira internacional",
+        "desfechoSoberania": "Conflito em andamento com ocupação russa de 18% do território ucraniano e corrida armamentista global no G20.",
+        "conexaoBrasil": "O Brasil condenou a invasão territorial na ONU, mas defendeu a diplomacia de paz, neutralidade de sanções e a não entrega de munições brasileiras à Ucrânia.",
+        "fonteOficial": "UN General Assembly Emergency Special Session Resolution ES-11/1 / CRS Report R47054",
+        "link_oficial": "https://crsreports.congress.gov/product/pdf/R/R47054",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-2022-UKR-RUS-INVASION",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-2022-UKR-RUS-INVASION"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1953-IRN-AJAX",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.389,
+          35.6892
+        ]
+      },
+      "properties": {
+        "id": "OP-1953-IRN-AJAX",
+        "nome": "Operação Ajax (TPAJAX) — Golpe de Estado Orquestrado pela CIA e MI6 no Irã para Derrubar o Primeiro-Ministro Mossadegh",
+        "titulo": "Golpe de Estado Orquestrado pela CIA e MI6 no Irã para Derrubar o Primeiro-Ministro Mossadegh",
+        "codinome": "Operação Ajax (TPAJAX)",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1953,
+        "anoFim": 1953,
+        "periodo": "1953–1953",
+        "duracaoEstimada": "1953 (1 semana)",
+        "paisTeatro": "Irã",
+        "continente": "Oriente Médio",
+        "localidade": "Teerã / Palácio Saadabad",
+        "potencias": "Estados Unidos, Reino Unido",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Operação secreta financiada pela inteligência dos EUA e Reino Unido após a nacionalização da Anglo-Iranian Oil Company (atual BP), subornando militares e políticos para instalar ditadura do Xá.",
+        "baixasEstimadas": "~300 mortos em confrontos de rua pagos por agentes da CIA",
+        "custoFinanceiro": "US$ 1 milhão (verba secreta da CIA em dinheiro vivo)",
+        "desfechoSoberania": "Deposição do líder democrático Mohammad Mossadegh, restauração do poder absoluto do Xá Reza Pahlavi e concessão de 40% do petróleo iraniano a empresas americanas.",
+        "conexaoBrasil": "Caso clássico de quebra de soberania estatal em represália à nacionalização de recursos energéticos nacionais (precedente estudado na criação da Petrobras em 1953).",
+        "fonteOficial": "National Security Archive (George Washington University) / CIA Declassified History",
+        "link_oficial": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB435/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1953-IRN-AJAX",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1953-IRN-AJAX"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1954-GTM-PBSUCCESS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.5069,
+          14.6349
+        ]
+      },
+      "properties": {
+        "id": "OP-1954-GTM-PBSUCCESS",
+        "nome": "Operação PBSUCCESS — Golpe de Estado e Invasão Paramilitar Organizada pela CIA na Guatemala contra Jacobo Árbenz",
+        "titulo": "Golpe de Estado e Invasão Paramilitar Organizada pela CIA na Guatemala contra Jacobo Árbenz",
+        "codinome": "Operação PBSUCCESS",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1954,
+        "anoFim": 1954,
+        "periodo": "1954–1954",
+        "duracaoEstimada": "1954 (2 semanas)",
+        "paisTeatro": "Guatemala",
+        "continente": "América Central e Caribe",
+        "localidade": "Cidade da Guatemala / Puerto Barrios",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Operação psicológica, bombardeios clandestinos e formação de milícia mercenária sob o coronel Castillo Armas para derrubar o presidente Jacobo Árbenz após reforma agrária contra a United Fruit Company.",
+        "baixasEstimadas": "Centenas de camponeses mortos; inaugurou 36 anos de guerra civil (+200.000 mortos)",
+        "custoFinanceiro": "US$ 3 milhões",
+        "desfechoSoberania": "Renúncia forçada de Árbenz, devolução das terras desapropriadas à United Fruit Company e instalação de juntas militares sanguinárias.",
+        "conexaoBrasil": "Gerou protestos massivos no Brasil em 1954 contra o imperialismo americano semanas antes do suicídio do presidente Getúlio Vargas.",
+        "fonteOficial": "CIA FOIA Electronic Reading Room / State Department Foreign Relations of the United States (FRUS)",
+        "link_oficial": "https://history.state.gov/historicaldocuments/frus1952-54Guat",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1954-GTM-PBSUCCESS",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1954-GTM-PBSUCCESS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1961-CUB-ZAPATA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0872,
+          22.0722
+        ]
+      },
+      "properties": {
+        "id": "OP-1961-CUB-ZAPATA",
+        "nome": "Invasão da Baía dos Porcos / Operação Zapata — Tentativa Fracassada de Invasão de Cuba por Brigada Paramilitar Mercenária Treinada pela CIA",
+        "titulo": "Tentativa Fracassada de Invasão de Cuba por Brigada Paramilitar Mercenária Treinada pela CIA",
+        "codinome": "Invasão da Baía dos Porcos / Operação Zapata",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1961,
+        "anoFim": 1961,
+        "periodo": "1961–1961",
+        "duracaoEstimada": "1961 (3 dias)",
+        "paisTeatro": "Cuba",
+        "continente": "América Central e Caribe",
+        "localidade": "Playa Girón / Baía dos Porcos",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Invasão de 1.400 exilados cubanos armados e financiados pela CIA (Brigada 2506), derrotados em 72 horas pelas Forças Armadas Revolucionárias de Cuba na praia de Playa Girón.",
+        "baixasEstimadas": "176 cubanos defensores mortos; 118 invasores mortos; 1.202 mercenários capturados",
+        "custoFinanceiro": "US$ 46 milhões",
+        "desfechoSoberania": "Vitória militar decisiva de Cuba, consolidação do regime socialista e aproximação estratégica de Fidel Castro com a União Soviética.",
+        "conexaoBrasil": "O presidente brasileiro Jânio Quadros condecorou Che Guevara com a Ordem do Cruzeiro do Sul em 1961, reafirmando a Política Externa Independente contra o isolamento de Cuba.",
+        "fonteOficial": "John F. Kennedy Presidential Library / Taylor Commission Report",
+        "link_oficial": "https://www.jfklibrary.org/asset-viewer/archives/jfknsa-330-001",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1961-CUB-ZAPATA",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1961-CUB-ZAPATA"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1961-COD-LUMUMBA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4794,
+          -11.6609
+        ]
+      },
+      "properties": {
+        "id": "OP-1961-COD-LUMUMBA",
+        "nome": "Deposição e Assassinato de Patrice Lumumba — Operação Encoberta da Bélgica e CIA para Assassinato do Primeiro-Ministro Patrice Lumumba",
+        "titulo": "Operação Encoberta da Bélgica e CIA para Assassinato do Primeiro-Ministro Patrice Lumumba",
+        "codinome": "Deposição e Assassinato de Patrice Lumumba",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1960,
+        "anoFim": 1961,
+        "periodo": "1960–1961",
+        "duracaoEstimada": "1960 - 1961 (6 meses)",
+        "paisTeatro": "República Democrática do Congo",
+        "continente": "África",
+        "localidade": "Katanga / Lubumbashi",
+        "potencias": "Bélgica, Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Eliminação física do líder anticolonialista do Congo recém-independente após a secessão de Katanga rica em urânio e cobalto, articulada pela inteligência belga e telegramas de Allen Dulles.",
+        "baixasEstimadas": "Assassinato de Lumumba e 2 ministros; milhares de mortos na Crise do Congo",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Ascensão da ditadura militar de Mobutu Sese Seko, que governou o Zaire de forma cleptocrática por mais de 30 anos com apoio ocidental.",
+        "conexaoBrasil": "O parlamento belga realizou comissão parlamentar de inquérito em 2001 reconhecendo a responsabilidade moral e oficial da Bélgica no assassinato de Lumumba.",
+        "fonteOficial": "Comissão Parlamentar Belga sobre o Assassinato de Patrice Lumumba (2001) / US Church Committee",
+        "link_oficial": "https://www.lachambre.be/kvvcr/showpage.cfm?section=/comm/lumumba&language=fr",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1961-COD-LUMUMBA",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1961-COD-LUMUMBA"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1964-BRA-BROTHER-SAM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.1729,
+          -22.9068
+        ]
+      },
+      "properties": {
+        "id": "OP-1964-BRA-BROTHER-SAM",
+        "nome": "Operação Brother Sam — Mobilização Naval e Logística Militar dos EUA em Apoio ao Golpe de 1964 no Brasil",
+        "titulo": "Mobilização Naval e Logística Militar dos EUA em Apoio ao Golpe de 1964 no Brasil",
+        "codinome": "Operação Brother Sam",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1964,
+        "anoFim": 1964,
+        "periodo": "1964–1964",
+        "duracaoEstimada": "1964 (1 semana)",
+        "paisTeatro": "Brasil",
+        "continente": "América do Sul",
+        "localidade": "Rio de Janeiro / Brasília / Baía de Guanabara",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Envio de força-tarefa aeronaval da Marinha dos EUA (incluindo porta-aviões USS Forrestal, destróieres e navios de combustível) ao litoral brasileiro para intervir em caso de resistência ao golpe contra João Goulart.",
+        "baixasEstimadas": "Instauração de ditadura militar de 21 anos com 434 mortos/desaparecidos oficiais",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Deposição inconstitucional do presidente João Goulart e ruptura democrática no Brasil por 21 anos.",
+        "conexaoBrasil": "Episódio central da história política contemporânea do Brasil, documentado em telegramas desclassificados do embaixador Lincoln Gordon e gravações de Lyndon Johnson.",
+        "fonteOficial": "National Security Archive (GWU) / LBJ Presidential Library Tape Recordings",
+        "link_oficial": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB118/index.htm",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1964-BRA-BROTHER-SAM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1964-BRA-BROTHER-SAM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1965-DOM-POWERPACK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9312,
+          18.4861
+        ]
+      },
+      "properties": {
+        "id": "OP-1965-DOM-POWERPACK",
+        "nome": "Operação Power Pack — Invasão Militar dos Fuzileiros dos EUA na República Dominicana para Conter Movimento Constitucionalista",
+        "titulo": "Invasão Militar dos Fuzileiros dos EUA na República Dominicana para Conter Movimento Constitucionalista",
+        "codinome": "Operação Power Pack",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1965,
+        "anoFim": 1966,
+        "periodo": "1965–1966",
+        "duracaoEstimada": "1965 - 1966 (1 ano)",
+        "paisTeatro": "República Dominicana",
+        "continente": "América Central e Caribe",
+        "localidade": "Santo Domingo",
+        "potencias": "Estados Unidos, Brasil (sob ditadura militar)",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Desembarque de 42.000 militares americanos para sufocar a revolta de militares patriotas liderados por Francisco Caamaño que exigiam o retorno do presidente constitucional Juan Bosch.",
+        "baixasEstimadas": "~3.000 a 4.000 dominicanos mortos; 44 soldados dos EUA mortos",
+        "custoFinanceiro": "US$ 180 milhões",
+        "desfechoSoberania": "Destruição do movimento constitucionalista, realização de eleições controladas e vitória de Joaquín Balaguer.",
+        "conexaoBrasil": "A ditadura militar brasileira de Castelo Branco enviou 1.250 soldados (FAIBRAS) para chefiar militarmente a Força Interamericana de Paz (FIP), sob o general Hugo Panasco Alvim.",
+        "fonteOficial": "US Army Center of Military History / OEA Documentos Oficiais da FIP",
+        "link_oficial": "https://history.army.mil/html/books/075/75-10/index.html",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1965-DOM-POWERPACK",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1965-DOM-POWERPACK"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1973-CHL-FUBELT",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6693,
+          -33.4489
+        ]
+      },
+      "properties": {
+        "id": "OP-1973-CHL-FUBELT",
+        "nome": "Operação FUBELT / Golpe Militar no Chile — Ação Encoberta da CIA e Apoio de Nixon e Kissinger ao Golpe Militar contra Salvador Allende",
+        "titulo": "Ação Encoberta da CIA e Apoio de Nixon e Kissinger ao Golpe Militar contra Salvador Allende",
+        "codinome": "Operação FUBELT / Golpe Militar no Chile",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1970,
+        "anoFim": 1973,
+        "periodo": "1970–1973",
+        "duracaoEstimada": "1970 - 1973 (3 anos)",
+        "paisTeatro": "Chile",
+        "continente": "América do Sul",
+        "localidade": "Santiago / Palácio de La Moneda",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "ITT Corporation (International Telephone and Telegraph)",
+        "resumo": "Guerra econômica ('make the economy scream'), financiamento de greves, sabotagens e articulação com as Forças Armadas chilenas comandadas por Augusto Pinochet, bombardeando o Palácio de La Moneda.",
+        "baixasEstimadas": "+3.000 mortos e desaparecidos; dezenas de milhares de torturados no Estádio Nacional",
+        "custoFinanceiro": "US$ 10 milhões em fundos secretos da CIA",
+        "desfechoSoberania": "Morte do presidente Salvador Allende no palácio presidencial e instauração de 17 anos de terrorismo de Estado sob a ditadura de Pinochet.",
+        "conexaoBrasil": "A ditadura brasileira atuou ativamente como base logística e financeira de suporte aos golpistas chilenos antes e após o 11 de setembro de 1973.",
+        "fonteOficial": "US Senate Church Committee Report on Covert Action in Chile (1975) / National Security Archive",
+        "link_oficial": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB8/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1973-CHL-FUBELT",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1973-CHL-FUBELT"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1975-URY-ARG-CONDOR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3816,
+          -34.6037
+        ]
+      },
+      "properties": {
+        "id": "OP-1975-URY-ARG-CONDOR",
+        "nome": "Operação Condor — Consórcio Transnacional de Terrorismo de Estado e Eliminação de Opositores Políticos no Cone Sul",
+        "titulo": "Consórcio Transnacional de Terrorismo de Estado e Eliminação de Opositores Políticos no Cone Sul",
+        "codinome": "Operação Condor",
+        "tipo": "deposicao_regime_golpe",
+        "tipoRotulo": "Deposição de Regime / Golpe",
+        "anoInicio": 1975,
+        "anoFim": 1983,
+        "periodo": "1975–1983",
+        "duracaoEstimada": "1975 - 1983 (8 anos)",
+        "paisTeatro": "Argentina",
+        "continente": "América do Sul",
+        "localidade": "Buenos Aires / Assunção / Santiago / Roma / Washington",
+        "potencias": "Chile, Argentina, Uruguai, Paraguai, Brasil, Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Pacto de cooperação clandestina entre as ditaduras de Chile, Argentina, Uruguai, Paraguai, Bolívia e Brasil para caçar, sequestrar, torturar e assassinar opositores além de suas fronteiras nacionais.",
+        "baixasEstimadas": "+50.000 mortos no Cone Sul; centenas de bebês sequestrados",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Assassinatos célebres no exterior como o de Orlando Letelier em Washington DC e Carlos Prats em Buenos Aires com carros-bomba.",
+        "conexaoBrasil": "O Brasil participou através do CIE e DOPS no sequestro dos uruguaios Lilian Celiberti e Universindo Díaz em Porto Alegre em 1978.",
+        "fonteOficial": "Arquivos do Terror (Paraguai) / Comissão Nacional da Verdade do Brasil (Relatório Final)",
+        "link_oficial": "https://www.gov.br/memoriasreveladas/pt-br/assuntos/comissao-nacional-da-verdade",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1975-URY-ARG-CONDOR",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1975-URY-ARG-CONDOR"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1979-AFG-CYCLONE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.5249,
+          34.0151
+        ]
+      },
+      "properties": {
+        "id": "OP-1979-AFG-CYCLONE",
+        "nome": "Operação Cyclone — Programa Secreto da CIA para Armamento e Financiamento dos Guerrilheiros Mujahideen no Afeganistão",
+        "titulo": "Programa Secreto da CIA para Armamento e Financiamento dos Guerrilheiros Mujahideen no Afeganistão",
+        "codinome": "Operação Cyclone",
+        "tipo": "guerra_proxy_apoio_rebelde",
+        "tipoRotulo": "Guerra por Procuração (Proxy)",
+        "anoInicio": 1979,
+        "anoFim": 1989,
+        "periodo": "1979–1989",
+        "duracaoEstimada": "1979 - 1989 (10 anos)",
+        "paisTeatro": "Afeganistão",
+        "continente": "Ásia e Oceania",
+        "localidade": "Peshawar / Cabul",
+        "potencias": "Estados Unidos, Arábia Saudita, Reino Unido, Paquistão",
+        "pmcs": "",
+        "contratadas": "General Dynamics (Mísseis Stinger)",
+        "resumo": "A mais longa e dispendiosa operação secreta da história da CIA, canalizando bilhões de dólares e mísseis Stinger via o serviço de inteligência do Paquistão (ISI) para combater o Exército Vermelho soviético.",
+        "baixasEstimadas": "+1 milhão de afegãos mortos; 14.453 militares soviéticos mortos",
+        "custoFinanceiro": "+US$ 20 bilhões em fundos conjuntos EUA e sauditas",
+        "desfechoSoberania": "Retirada soviética em 1989, guerra civil devastadora e formação inadvertida da Al-Qaeda e do Talibã com veteranos da guerrilha.",
+        "conexaoBrasil": "Precedente global do fenômeno de 'blowback' (efeito bumerangue) das intervenções secretas ocidentais.",
+        "fonteOficial": "CIA FOIA Reading Room / 9/11 Commission Report",
+        "link_oficial": "https://www.9-11commission.gov/report/",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1979-AFG-CYCLONE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1979-AFG-CYCLONE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "OP-1981-NIC-CONTRAS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2362,
+          12.115
+        ]
+      },
+      "properties": {
+        "id": "OP-1981-NIC-CONTRAS",
+        "nome": "Guerra dos Contras / Caso Irã-Contras — Financiamento Clandestino de Milícias Contrarrevolucionárias na Nicarágua pela Administração Reagan",
+        "titulo": "Financiamento Clandestino de Milícias Contrarrevolucionárias na Nicarágua pela Administração Reagan",
+        "codinome": "Guerra dos Contras / Caso Irã-Contras",
+        "tipo": "guerra_proxy_apoio_rebelde",
+        "tipoRotulo": "Guerra por Procuração (Proxy)",
+        "anoInicio": 1981,
+        "anoFim": 1990,
+        "periodo": "1981–1990",
+        "duracaoEstimada": "1981 - 1990 (9 anos)",
+        "paisTeatro": "Nicarágua",
+        "continente": "América Central e Caribe",
+        "localidade": "Manágua / Fronteira com Honduras",
+        "potencias": "Estados Unidos",
+        "pmcs": "",
+        "contratadas": "",
+        "resumo": "Operação ilegal coordenada pelo coronel Oliver North no Conselho de Segurança Nacional para financiar e armar as milícias dos Contras através da venda secreta de armas ao Irã, violando a Emenda Boland.",
+        "baixasEstimadas": "~30.000 nicaraguenses mortos; destruição massiva de escolas e clínicas",
+        "custoFinanceiro": "US$ 300 milhões em ajuda clandestina",
+        "desfechoSoberania": "Condenação histórica dos Estados Unidos pela Corte Internacional de Justiça (CIJ) em 1986 por violação do direito internacional e soberania da Nicarágua.",
+        "conexaoBrasil": "A Corte de Haia determinou que os EUA pagassem reparações bilionárias à Nicarágua pelo bloqueio e minagem dos portos, decisão vetada pelos EUA no Conselho de Segurança.",
+        "fonteOficial": "International Court of Justice (ICJ Case Nicaragua v. USA) / Walsh Iran-Contra Final Report",
+        "link_oficial": "https://www.icj-cij.org/case/70",
+        "link_acervo": "/internacional/operacoes-militares?id=OP-1981-NIC-CONTRAS",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=OP-1981-NIC-CONTRAS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-1995-SLE-EXECUTIVE-OUTCOMES",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -13.2299,
+          8.484
+        ]
+      },
+      "properties": {
+        "id": "PMC-1995-SLE-EXECUTIVE-OUTCOMES",
+        "nome": "Executive Outcomes na Guerra Civil de Serra Leoa — Contratação de Mercenários Sul-Africanos da Executive Outcomes pelo Governo de Serra Leoa",
+        "titulo": "Contratação de Mercenários Sul-Africanos da Executive Outcomes pelo Governo de Serra Leoa",
+        "codinome": "Executive Outcomes na Guerra Civil de Serra Leoa",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 1995,
+        "anoFim": 1996,
+        "periodo": "1995–1996",
+        "duracaoEstimada": "1995 - 1996 (1 ano)",
+        "paisTeatro": "Serra Leoa",
+        "continente": "África",
+        "localidade": "Freetown / Minas de Koidu",
+        "potencias": "África do Sul, Reino Unido",
+        "pmcs": "Executive Outcomes, Sandline International",
+        "contratadas": "",
+        "resumo": "O governo de Serra Leoa contratou a empresa militar privada sul-africana Executive Outcomes para combater os rebeldes da RUF (Frente Revolucionária Unida), recebendo concessões de minas de diamantes como pagamento.",
+        "baixasEstimadas": "Centenas de insurgentes mortos; expulsão da RUF da capital em semanas",
+        "custoFinanceiro": "US$ 35 milhões pagos em dinheiro e concessões minerárias da Branch Energy",
+        "desfechoSoberania": "Condução das primeiras eleições democráticas em quase 30 anos, mas consagrou a troca de segurança estatal por recursos minerais estratégicos.",
+        "conexaoBrasil": "Marco fundamental do surgimento da moderna indústria corporativa de mercenários (PMCs) ligada diretamente à extração de commodities e mineração.",
+        "fonteOficial": "United Nations Institute for Disarmament Research (UNIDIR) / DCAF Geneva Centre",
+        "link_oficial": "https://www.dcaf.ch/",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-1995-SLE-EXECUTIVE-OUTCOMES",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-1995-SLE-EXECUTIVE-OUTCOMES"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2000-COL-DYNCORP",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.993,
+          0.505
+        ]
+      },
+      "properties": {
+        "id": "PMC-2000-COL-DYNCORP",
+        "nome": "DynCorp no Plano Colômbia — Terceirização de Operações Militares e Pulverização Aérea com Glifosato pela DynCorp na Colômbia",
+        "titulo": "Terceirização de Operações Militares e Pulverização Aérea com Glifosato pela DynCorp na Colômbia",
+        "codinome": "DynCorp no Plano Colômbia",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2000,
+        "anoFim": 2015,
+        "periodo": "2000–2015",
+        "duracaoEstimada": "2000 - 2015 (15 anos)",
+        "paisTeatro": "Colômbia",
+        "continente": "América do Sul",
+        "localidade": "Putumayo / Caquetá / Fronteira com Equador",
+        "potencias": "Estados Unidos",
+        "pmcs": "DynCorp International",
+        "contratadas": "",
+        "resumo": "O Departamento de Estado dos EUA contratou a DynCorp International para pilotar aviões e helicópteros armados em missões de erradicação de coca com glifosato, busca e salvamento e treinamento de tropas colombianas.",
+        "baixasEstimadas": "Milhares de camponeses intoxicados; ação judicial internacional por deriva química",
+        "custoFinanceiro": "US$ 1,2 bilhão em contratos da DynCorp",
+        "desfechoSoberania": "Processo de povos indígenas equatorianos na corte federal de Washington contra a DynCorp por danos à saúde e meio ambiente causados pela deriva transfronteiriça de veneno.",
+        "conexaoBrasil": "Impacto direto na bacia amazônica compartilhada com o Brasil; o governo do Equador processou a Colômbia na Corte Internacional de Justiça em Haia pela pulverização.",
+        "fonteOficial": "US Government Accountability Office (GAO Report GAO-03-783) / US District Court DC",
+        "link_oficial": "https://www.gao.gov/products/gao-03-783",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2000-COL-DYNCORP",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2000-COL-DYNCORP"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2003-IRQ-CACI-TITAN",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.0622,
+          33.2922
+        ]
+      },
+      "properties": {
+        "id": "PMC-2003-IRQ-CACI-TITAN",
+        "nome": "Escândalo de Abu Ghraib / CACI e Titan Corp — Torturas e Abusos de Prisioneiros por Contratados Militares Privados na Prisão de Abu Ghraib",
+        "titulo": "Torturas e Abusos de Prisioneiros por Contratados Militares Privados na Prisão de Abu Ghraib",
+        "codinome": "Escândalo de Abu Ghraib / CACI e Titan Corp",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2003,
+        "anoFim": 2004,
+        "periodo": "2003–2004",
+        "duracaoEstimada": "2003 - 2004 (1 ano)",
+        "paisTeatro": "Iraque",
+        "continente": "Oriente Médio",
+        "localidade": "Prisão Central de Abu Ghraib / Bagdá",
+        "potencias": "Estados Unidos",
+        "pmcs": "CACI Premier Technology, Titan Corporation (L-3)",
+        "contratadas": "",
+        "resumo": "Interrogadores civis e tradutores contratados pelas empresas CACI International e Titan Corporation atuaram ao lado de policiais militares do exército americano na condução de torturas, humilhações e abusos sistemáticos.",
+        "baixasEstimadas": "Múltiplas mortes sob custódia e centenas de vítimas de tortura física e psicológica",
+        "custoFinanceiro": "Contratos de US$ 150 milhões para interrogadores civis",
+        "desfechoSoberania": "Vácuo legal onde contratados civis não podiam ser julgados pela corte marcial militar americana e gozavam de imunidade sob a Ordem 17 da CPA no Iraque.",
+        "conexaoBrasil": "Em 2024, após 16 anos de litígio, um júri federal dos EUA condenou a CACI International a pagar US$ 42 milhões a três sobreviventes iraquianos de Abu Ghraib.",
+        "fonteOficial": "Major General Antonio Taguba Report on Abu Ghraib / US Senate Armed Services Committee",
+        "link_oficial": "https://www.esd.whs.mil/FOIA/Reading-Room/Reading-Room-List_Categories/Detainee-Abuse/",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2003-IRQ-CACI-TITAN",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2003-IRQ-CACI-TITAN"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2004-IRQ-AEGIS-DEFENCE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.7835,
+          30.5081
+        ]
+      },
+      "properties": {
+        "id": "PMC-2004-IRQ-AEGIS-DEFENCE",
+        "nome": "Aegis Defence Services no Iraque — Contratos de Segurança Militar Britânicos da Aegis Defence Services e Vídeos de Tiroteio",
+        "titulo": "Contratos de Segurança Militar Britânicos da Aegis Defence Services e Vídeos de Tiroteio",
+        "codinome": "Aegis Defence Services no Iraque",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2004,
+        "anoFim": 2011,
+        "periodo": "2004–2011",
+        "duracaoEstimada": "2004 - 2011 (7 anos)",
+        "paisTeatro": "Iraque",
+        "continente": "Oriente Médio",
+        "localidade": "Bagdá / Basra",
+        "potencias": "Reino Unido, Estados Unidos",
+        "pmcs": "Aegis Defence Services (atual GardaWorld)",
+        "contratadas": "",
+        "resumo": "A empresa britânica Aegis Defence Services, liderada pelo ex-oficial do exército Tim Spicer, venceu contrato de US$ 293 milhões do Pentágono para coordenar todos os contratados de segurança privada no Iraque.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "US$ 450 milhões em contratos combinados",
+        "desfechoSoberania": "Em 2005, vídeos intitulados 'Trophy Videos' mostraram contratados da Aegis atirando indiscriminadamente contra carros civis iraquianos ao som de música pop.",
+        "conexaoBrasil": "Expansão de empresas de segurança privada britânicas no controle de infraestruturas críticas e proteção patrimonial de multinacionais petroleiras.",
+        "fonteOficial": "Special Inspector General for Iraq Reconstruction (SIGIR Report 05-005) / UK Parliament",
+        "link_oficial": "https://www.cybercemetery.unt.edu/archive/sigir/20131001092404/http://www.sigir.mil/",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2004-IRQ-AEGIS-DEFENCE",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2004-IRQ-AEGIS-DEFENCE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2005-IRQ-DEFION",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0428,
+          -12.0464
+        ]
+      },
+      "properties": {
+        "id": "PMC-2005-IRQ-DEFION",
+        "nome": "Defion Internacional / Recrutamento Latino para o Iraque — Recrutamento de Ex-Militares Peruanos e Chilenos como Guardas Baratos no Iraque",
+        "titulo": "Recrutamento de Ex-Militares Peruanos e Chilenos como Guardas Baratos no Iraque",
+        "codinome": "Defion Internacional / Recrutamento Latino para o Iraque",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2005,
+        "anoFim": 2008,
+        "periodo": "2005–2008",
+        "duracaoEstimada": "2005 - 2008 (3 anos)",
+        "paisTeatro": "Peru",
+        "continente": "América do Sul",
+        "localidade": "Lima / Base de Treinamento em Huachipa",
+        "potencias": "Estados Unidos, Peru",
+        "pmcs": "Defion Internacional, Triple Canopy",
+        "contratadas": "",
+        "resumo": "A empresa peruana Defion Internacional foi subcontratada pela americana Triple Canopy para recrutar milhares de ex-militares e policiais da América Latina com salários de US$ 1.000/mês para segurança em Bagdá.",
+        "baixasEstimadas": "Diversos mortos e feridos sem cobertura adequada de plano de saúde",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Comissão de Relações Exteriores do Congresso do Peru abriu investigações sobre a exportação de mão de obra militar precária para teatros de guerra estrangeiros.",
+        "conexaoBrasil": "Evidência da exploração de militares da América do Sul por PMCs norte-americanas, recebendo uma fração dos salários pagos a contratistas americanos ou europeus.",
+        "fonteOficial": "Grupo de Trabalho da ONU sobre o Uso de Mercenários (Relatório sobre o Peru A/HRC/7/7/Add.2)",
+        "link_oficial": "https://www.ohchr.org/en/special-procedures/wg-mercenaries",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2005-IRQ-DEFION",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2005-IRQ-DEFION"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2007-IRQ-NISOUR-BLACKWATER",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.3828,
+          33.3039
+        ]
+      },
+      "properties": {
+        "id": "PMC-2007-IRQ-NISOUR-BLACKWATER",
+        "nome": "Massacre da Praça Nisour / Blackwater — Fuzilamento de 17 Civis Desarmados em Bagdá por Contratados da Blackwater",
+        "titulo": "Fuzilamento de 17 Civis Desarmados em Bagdá por Contratados da Blackwater",
+        "codinome": "Massacre da Praça Nisour / Blackwater",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2007,
+        "anoFim": 2007,
+        "periodo": "2007–2007",
+        "duracaoEstimada": "2007 (1 dia)",
+        "paisTeatro": "Iraque",
+        "continente": "Oriente Médio",
+        "localidade": "Praça Nisour / Bagdá",
+        "potencias": "Estados Unidos",
+        "pmcs": "Blackwater USA / Xe / Academi / Constellis (Erik Prince)",
+        "contratadas": "",
+        "resumo": "Comboio blindado da Blackwater Security Consulting (atual Constellis) abriu fogo desproporcional com metralhadoras e lança-granadas contra uma praça lotada de civis desarmados em Bagdá, matando 17 pessoas.",
+        "baixasEstimadas": "17 civis iraquianos mortos (incluindo crianças de 9 anos); 20 feridos graves",
+        "custoFinanceiro": "Contratos de mais de US$ 1 bilhão concedidos à Blackwater pelo State Dept",
+        "desfechoSoberania": "Quatro atiradores foram condenados em corte federal nos EUA em 2014, mas foram integralmente perdoados pelo presidente Donald Trump em dezembro de 2020.",
+        "conexaoBrasil": "O perdão presidencial de 2020 foi formalmente repudiado pelo Escritório de Direitos Humanos da ONU como violação flagrante da obrigação de punir crimes de guerra.",
+        "fonteOficial": "US Department of Justice / United Nations Human Rights Office (OHCHR)",
+        "link_oficial": "https://www.justice.gov/opa/pr/four-former-blackwater-contractors-sentenced-prison",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2007-IRQ-NISOUR-BLACKWATER",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2007-IRQ-NISOUR-BLACKWATER"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2018-SYR-WAGNER-KHASHAM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.2978,
+          35.3022
+        ]
+      },
+      "properties": {
+        "id": "PMC-2018-SYR-WAGNER-KHASHAM",
+        "nome": "Batalha de Khasham / Wagner Group na Síria — Confronto Direto entre Forças Especiais dos EUA e Mercenários Russos do Wagner Group",
+        "titulo": "Confronto Direto entre Forças Especiais dos EUA e Mercenários Russos do Wagner Group",
+        "codinome": "Batalha de Khasham / Wagner Group na Síria",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2018,
+        "anoFim": 2018,
+        "periodo": "2018–2018",
+        "duracaoEstimada": "2018 (4 horas)",
+        "paisTeatro": "Síria",
+        "continente": "Oriente Médio",
+        "localidade": "Khasham / Usina de Gás Conoco, Deir ez-Zor",
+        "potencias": "Rússia, Síria, Estados Unidos",
+        "pmcs": "Wagner Group (Yevgeny Prigozhin)",
+        "contratadas": "",
+        "resumo": "Força de 500 combatentes pró-governo sírio e mercenários do Wagner Group avançaram contra instalação de gás em Deir ez-Zor guarnecida por forças curdas e operadores especiais dos EUA, resultando em bombardeio devastador.",
+        "baixasEstimadas": "~100 a 200 mercenários russos e sírios mortos; zero baixas americanas",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Primeiro confronto armado direto com vítimas russas e tropas americanas desde a Guerra Fria, com Moscou negando vínculos com os contratados privados.",
+        "conexaoBrasil": "Demonstração tática da negação plausível ('plausible deniability') utilizada por grandes potências ao terceirizar o combate bélico a corporações mercenárias.",
+        "fonteOficial": "US Central Command (CENTCOM) / Defense Intelligence Agency (DIA)",
+        "link_oficial": "https://www.centcom.mil/",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2018-SYR-WAGNER-KHASHAM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2018-SYR-WAGNER-KHASHAM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2019-VEN-SILVERCORP",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.9536,
+          10.6018
+        ]
+      },
+      "properties": {
+        "id": "PMC-2019-VEN-SILVERCORP",
+        "nome": "Operação Gideão / Silvercorp na Venezuela — Tentativa Fracassada de Incursão Marítima Mercenária contra a Venezuela",
+        "titulo": "Tentativa Fracassada de Incursão Marítima Mercenária contra a Venezuela",
+        "codinome": "Operação Gideão / Silvercorp na Venezuela",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2020,
+        "anoFim": 2020,
+        "periodo": "2020–2020",
+        "duracaoEstimada": "2020 (2 dias)",
+        "paisTeatro": "Venezuela",
+        "continente": "América do Sul",
+        "localidade": "Macuto / La Guaira",
+        "potencias": "Estados Unidos (sede da PMC)",
+        "pmcs": "Silvercorp USA (Jordan Goudreau)",
+        "contratadas": "",
+        "resumo": "Uma empresa de segurança privada com sede na Flórida (Silvercorp USA), comandada pelo ex-boina verde Jordan Goudreau, tentou uma invasão marítima para capturar Nicolás Maduro após assinar contrato com opositores.",
+        "baixasEstimadas": "8 mercenários mortos; 2 ex-militares dos EUA capturados (Luke Denman e Airan Berry)",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Fiasco operacional interceptado pela inteligência e pescadores locais, resultando na condenação dos norte-americanos a 20 anos de prisão na Venezuela.",
+        "conexaoBrasil": "Tentativa recente de golpe via contratação de empresa mercenária privada na fronteira norte do Brasil, debatida na OEA e Conselho de Segurança da ONU.",
+        "fonteOficial": "UN Security Council Meeting Records (S/PV.8730) / Indictment US District Court Southern District of Florida",
+        "link_oficial": "https://digitallibrary.un.org/record/3864455",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2019-VEN-SILVERCORP",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2019-VEN-SILVERCORP"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PMC-2022-MLI-MOURA-WAGNER",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.5667,
+          14.2833
+        ]
+      },
+      "properties": {
+        "id": "PMC-2022-MLI-MOURA-WAGNER",
+        "nome": "Massacre de Moura / Wagner Group no Mali — Execução em Massa de mais de 500 Civis em Moura por Forças Malinesas e Mercenários do Wagner",
+        "titulo": "Execução em Massa de mais de 500 Civis em Moura por Forças Malinesas e Mercenários do Wagner",
+        "codinome": "Massacre de Moura / Wagner Group no Mali",
+        "tipo": "pmc_milicia_privada",
+        "tipoRotulo": "PMC / Segurança Militar Privada",
+        "anoInicio": 2022,
+        "anoFim": 2022,
+        "periodo": "2022–2022",
+        "duracaoEstimada": "2022 (5 dias)",
+        "paisTeatro": "Mali",
+        "continente": "África",
+        "localidade": "Moura / Região de Mopti",
+        "potencias": "Mali, Rússia",
+        "pmcs": "Wagner Group / Africa Corps",
+        "contratadas": "",
+        "resumo": "Operação militar de 5 dias na cidade de Moura, no centro do Mali, onde soldados do exército malinês e contratados de língua russa do Wagner Group cercaram o mercado e executaram sumariamente civis desarmados.",
+        "baixasEstimadas": "+500 pessoas executadas sumariamente (relatório oficial da ONU)",
+        "custoFinanceiro": "",
+        "desfechoSoberania": "Investigação da ONU concluiu que houve crimes de guerra e violações contra a humanidade, levando a sanções dos EUA e União Europeia contra chefes do Wagner no Mali.",
+        "conexaoBrasil": "Expansão paramilitar de corporações privadas em Estados fragilizados da África Subsaariana com substituição de missões da ONU por tropas mercenárias.",
+        "fonteOficial": "Office of the United Nations High Commissioner for Human Rights (OHCHR Moura Fact-Finding Report)",
+        "link_oficial": "https://www.ohchr.org/en/press-releases/2023/05/un-human-rights-report-recommends-accountability-over-moura-killings-mali",
+        "link_acervo": "/internacional/operacoes-militares?id=PMC-2022-MLI-MOURA-WAGNER",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=PMC-2022-MLI-MOURA-WAGNER"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2001-USA-LOCKHEED-F35",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.4422,
+          32.7719
+        ]
+      },
+      "properties": {
+        "id": "CTR-2001-USA-LOCKHEED-F35",
+        "nome": "Programa F-35 Joint Strike Fighter — Maior Contrato de Armas da História Humana: O Caça F-35 Lightning II da Lockheed Martin",
+        "titulo": "Maior Contrato de Armas da História Humana: O Caça F-35 Lightning II da Lockheed Martin",
+        "codinome": "Programa F-35 Joint Strike Fighter",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2001,
+        "anoFim": null,
+        "periodo": "2001",
+        "duracaoEstimada": "2001 - presente (em produção)",
+        "paisTeatro": "Estados Unidos",
+        "continente": "América do Norte",
+        "localidade": "Fort Worth, Texas / Marham, Reino Unido",
+        "potencias": "Estados Unidos, Reino Unido, Itália, Holanda, Canadá",
+        "pmcs": "",
+        "contratadas": "Lockheed Martin, Pratt & Whitney, BAE Systems, Northrop Grumman",
+        "resumo": "Programa multinacional de caça de 5ª geração liderado pelos EUA com participação de Reino Unido, Itália, Holanda e Canadá, totalizando mais de US$ 1,7 trilhão no ciclo de vida.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "US$ 1,7 trilhão (ciclo de vida total estimado pelo GAO dos EUA)",
+        "desfechoSoberania": "Consolidação da hegemonia da Lockheed Martin na aviação de caça da OTAN, gerando dependência tecnológica total de softwares e peças controladas pelo Pentágono.",
+        "conexaoBrasil": "Na concorrência F-X2 do Brasil, a Força Aérea Brasileira (FAB) rejeitou o F/A-18 da Boeing dos EUA justamente pela recusa em transferir 100% dos códigos-fonte e tecnologia.",
+        "fonteOficial": "US Government Accountability Office (GAO Report GAO-23-106047) / Defense.gov Contracts",
+        "link_oficial": "https://www.gao.gov/products/gao-23-106047",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2001-USA-LOCKHEED-F35",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2001-USA-LOCKHEED-F35"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2003-USA-RAYTHEON-PATRIOT",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2173,
+          42.6053
+        ]
+      },
+      "properties": {
+        "id": "CTR-2003-USA-RAYTHEON-PATRIOT",
+        "nome": "Sistema de Mísseis Patriot / RTX Raytheon — Mega-Contratos Globais de Defesa Antiaérea e Mísseis MIM-104 Patriot da Raytheon",
+        "titulo": "Mega-Contratos Globais de Defesa Antiaérea e Mísseis MIM-104 Patriot da Raytheon",
+        "codinome": "Sistema de Mísseis Patriot / RTX Raytheon",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2003,
+        "anoFim": null,
+        "periodo": "2003",
+        "duracaoEstimada": "Contratos contínuos",
+        "paisTeatro": "Estados Unidos",
+        "continente": "América do Norte",
+        "localidade": "Tewksbury e Andover, Massachusetts",
+        "potencias": "Estados Unidos, Alemanha, Arábia Saudita, Ucrânia",
+        "pmcs": "",
+        "contratadas": "RTX (Raytheon Technologies), Lockheed Martin (mísseis PAC-3)",
+        "resumo": "Fornecimento de baterias de mísseis interceptadores Patriot para os EUA, Alemanha, Polônia, Taiwan, Ucrânia e Arábia Saudita, movimentando dezenas de bilhões de dólares por ano.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "+US$ 50 bilhões em vendas consolidadas de baterias e interceptadores",
+        "desfechoSoberania": "Papel central na defesa antimíssil em cenários de guerra ativa no Oriente Médio e na Ucrânia.",
+        "conexaoBrasil": "Rastreamento do complexo industrial de mísseis e seus lobbies junto ao Congresso dos EUA (Foreign Military Sales - FMS).",
+        "fonteOficial": "Defense Security Cooperation Agency (DSCA) Major Arms Sales Notifications",
+        "link_oficial": "https://www.dsca.mil/major-arms-sales",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2003-USA-RAYTHEON-PATRIOT",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2003-USA-RAYTHEON-PATRIOT"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2005-USA-GD-ABRAMS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0302,
+          42.5803
+        ]
+      },
+      "properties": {
+        "id": "CTR-2005-USA-GD-ABRAMS",
+        "nome": "General Dynamics / Tanques M1 Abrams e Submarinos Nucleares — Contratos de Carros de Combate M1A2 Abrams e Submarinos Nucleares Classe Columbia",
+        "titulo": "Contratos de Carros de Combate M1A2 Abrams e Submarinos Nucleares Classe Columbia",
+        "codinome": "General Dynamics / Tanques M1 Abrams e Submarinos Nucleares",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2005,
+        "anoFim": null,
+        "periodo": "2005",
+        "duracaoEstimada": "Contratos contínuos",
+        "paisTeatro": "Estados Unidos",
+        "continente": "América do Norte",
+        "localidade": "Sterling Heights, Michigan / Groton, Connecticut",
+        "potencias": "Estados Unidos, Polônia, Austrália",
+        "pmcs": "",
+        "contratadas": "General Dynamics Land Systems, General Dynamics Electric Boat",
+        "resumo": "A General Dynamics detém o monopólio da produção de carros de combate pesados e constrói a espinha dorsal da dissuasão nuclear naval com os submarinos estratégicos dos EUA.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "US$ 132 bilhões para o programa de submarinos Columbia",
+        "desfechoSoberania": "Manutenção da frota de tanques e garantia da tríade nuclear com mísseis balísticos Trident II.",
+        "conexaoBrasil": "Comparativo direto com o Programa de Desenvolvimento de Submarinos do Brasil (PROSUB), que constrói o primeiro submarino de propulsão nuclear da América Latina (Álvaro Alberto).",
+        "fonteOficial": "US Navy Fact Files / Congressional Research Service Report R41129",
+        "link_oficial": "https://crsreports.congress.gov/product/pdf/R/R41129",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2005-USA-GD-ABRAMS",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2005-USA-GD-ABRAMS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2008-GBR-BAE-M777",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.7571,
+          51.2787
+        ]
+      },
+      "properties": {
+        "id": "CTR-2008-GBR-BAE-M777",
+        "nome": "BAE Systems / Sistemas de Artilharia M777 — Produção e Exportação Global do Obuseiro Leve de Artilharia M777 pela Britânica BAE Systems",
+        "titulo": "Produção e Exportação Global do Obuseiro Leve de Artilharia M777 pela Britânica BAE Systems",
+        "codinome": "BAE Systems / Sistemas de Artilharia M777",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2008,
+        "anoFim": null,
+        "periodo": "2008",
+        "duracaoEstimada": "Contratos contínuos",
+        "paisTeatro": "Reino Unido",
+        "continente": "Europa",
+        "localidade": "Farnborough / Barrow-in-Furness, Reino Unido",
+        "potencias": "Reino Unido, Estados Unidos",
+        "pmcs": "",
+        "contratadas": "BAE Systems Land & Armaments",
+        "resumo": "O M777 de 155mm fabricado pela BAE Systems tornou-se a peça padrão de artilharia rebocada de titânio adotada pelos exércitos de EUA, Reino Unido, Canadá, Austrália e fornecida à Ucrânia.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "+US$ 5 bilhões em contratos de artilharia e modernização",
+        "desfechoSoberania": "A BAE Systems é a maior empresa de defesa da Europa e um dos 10 maiores contratistas militares do Pentágono nos EUA.",
+        "conexaoBrasil": "A BAE Systems fornece sistemas de canhões navais de 40mm e blindados M113 modernizados para o Exército Brasileiro e a Marinha do Brasil.",
+        "fonteOficial": "UK Ministry of Defence Annual Report / US Defense Security Cooperation Agency",
+        "link_oficial": "https://www.gov.uk/government/organisations/ministry-of-defence",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2008-GBR-BAE-M777",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2008-GBR-BAE-M777"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2010-FRA-THALES-RADAR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.2369,
+          48.8924
+        ]
+      },
+      "properties": {
+        "id": "CTR-2010-FRA-THALES-RADAR",
+        "nome": "Thales Group / Sistemas de Radar e Guerra Eletrônica — Contratos de Sensores Navais, Radares de Defesa Aérea e Satélites Militares do Thales Group",
+        "titulo": "Contratos de Sensores Navais, Radares de Defesa Aérea e Satélites Militares do Thales Group",
+        "codinome": "Thales Group / Sistemas de Radar e Guerra Eletrônica",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2010,
+        "anoFim": null,
+        "periodo": "2010",
+        "duracaoEstimada": "Contratos contínuos",
+        "paisTeatro": "França",
+        "continente": "Europa",
+        "localidade": "La Défense, Paris / Élancourt, França",
+        "potencias": "França, União Europeia",
+        "pmcs": "",
+        "contratadas": "Thales Group, Dassault Aviation",
+        "resumo": "A multinacional francesa Thales (parcialmente estatal) é uma das líderes mundiais em eletrônica de defesa, radares Ground Master e sistemas de combate para caças Rafale e navios de guerra.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "€ 18 bilhões de faturamento anual em defesa",
+        "desfechoSoberania": "Pilar de autonomia estratégica da França e principal exportador de tecnologia militar para o Oriente Médio, Ásia e América Latina.",
+        "conexaoBrasil": "A Thales possui forte presença no Brasil através da Omnisys (em São Bernardo do Campo/SP), fabricando radares de controle de tráfego aéreo e componentes de defesa.",
+        "fonteOficial": "Ministère des Armées (França) / Thales Universal Registration Document",
+        "link_oficial": "https://www.thalesgroup.com/en/investors",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2010-FRA-THALES-RADAR",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2010-FRA-THALES-RADAR"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2012-DEU-RHEINMETALL-155MM",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7828,
+          51.2497
+        ]
+      },
+      "properties": {
+        "id": "CTR-2012-DEU-RHEINMETALL-155MM",
+        "nome": "Rheinmetall / Rearmamento Europeu e Artilharia — Mega-Contratos de Munição de 155mm e Tanques Leopard da Alemã Rheinmetall",
+        "titulo": "Mega-Contratos de Munição de 155mm e Tanques Leopard da Alemã Rheinmetall",
+        "codinome": "Rheinmetall / Rearmamento Europeu e Artilharia",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2012,
+        "anoFim": null,
+        "periodo": "2012",
+        "duracaoEstimada": "Contratos contínuos",
+        "paisTeatro": "Alemanha",
+        "continente": "Europa",
+        "localidade": "Düsseldorf / Fábrica de Unterlüss, Alemanha",
+        "potencias": "Alemanha, Ucrânia, União Europeia",
+        "pmcs": "",
+        "contratadas": "Rheinmetall AG, Krauss-Maffei Wegmann (KNDS)",
+        "resumo": "A fabricante alemã Rheinmetall tornou-se o maior produtor ocidental de munições pesadas de artilharia e canhões de tanques, beneficiada pelo fundo especial de 100 bilhões de euros da Alemanha (Zeitenwende).",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "Carteira de pedidos recorde de € 40 bilhões (2024)",
+        "desfechoSoberania": "Rearmamento maciço da Alemanha e quebra histórica da política de restrição de exportação de armas para zonas de guerra ativa.",
+        "conexaoBrasil": "O chanceler alemão Olaf Scholz pediu pessoalmente ao Brasil munições de tanques Leopard 1 em 2023, pedido recusado pelo presidente Lula para preservar a posição pacifista do país.",
+        "fonteOficial": "Bundesministerium der Verteidigung (BMVg) / Rheinmetall Annual Financial Report",
+        "link_oficial": "https://www.bmvg.de/de",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2012-DEU-RHEINMETALL-155MM",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2012-DEU-RHEINMETALL-155MM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2015-USA-SAUDI-WEAPONS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.191,
+          15.3694
+        ]
+      },
+      "properties": {
+        "id": "CTR-2015-USA-SAUDI-WEAPONS",
+        "nome": "Venda Massiva de Armas para a Guerra do Iêmen — Pacotes de Bilhões de Dólares em Armamentos dos EUA e Reino Unido para a Arábia Saudita",
+        "titulo": "Pacotes de Bilhões de Dólares em Armamentos dos EUA e Reino Unido para a Arábia Saudita",
+        "codinome": "Venda Massiva de Armas para a Guerra do Iêmen",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2015,
+        "anoFim": 2022,
+        "periodo": "2015–2022",
+        "duracaoEstimada": "2015 - 2022 (7 anos)",
+        "paisTeatro": "Iêmen",
+        "continente": "Oriente Médio",
+        "localidade": "Sanaa / Hodeida / Riad",
+        "potencias": "Estados Unidos, Reino Unido, Arábia Saudita",
+        "pmcs": "",
+        "contratadas": "Raytheon (Bombas Paveway), Lockheed Martin, BAE Systems (Eurofighter)",
+        "resumo": "Exportação contínua de bombas inteligentes guiadas por laser, caças Eurofighter Typhoon e F-15, e munições para a coalizão saudita, empregadas em ataques aéreos contra casamentos, escolas e hospitais no Iêmen.",
+        "baixasEstimadas": "+377.000 mortos no Iêmen (por bombardeios, cólera e fome provocada por bloqueio naval)",
+        "custoFinanceiro": "+US$ 65 bilhões em vendas de armas dos EUA à Arábia Saudita entre 2015 e 2021",
+        "desfechoSoberania": "Pior crise humanitária do mundo segundo a ONU; o Congresso dos EUA aprovou resolução bipartidária pelo fim do apoio à guerra, vetada por Donald Trump.",
+        "conexaoBrasil": "Investigação da Anistia Internacional e Human Rights Watch revelou que munições de fragmentação fabricadas no Brasil pela empresa Avibras também foram utilizadas pela coalizão no Iêmen.",
+        "fonteOficial": "UN Panel of Experts on Yemen (UN Security Council S/2021/79) / SIPRI Arms Transfers Database",
+        "link_oficial": "https://www.un.org/securitycouncil/sanctions/2140/panel-of-experts/reports",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2015-USA-SAUDI-WEAPONS",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2015-USA-SAUDI-WEAPONS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2018-BRA-GRIPEN-SAAB",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -47.889,
+          -21.9969
+        ]
+      },
+      "properties": {
+        "id": "CTR-2018-BRA-GRIPEN-SAAB",
+        "nome": "Programa FX-2 / Caças Gripen NG Brasil-Suécia — Contrato Estratégico de Transferência Tecnológica de Caças F-39 Gripen para o Brasil",
+        "titulo": "Contrato Estratégico de Transferência Tecnológica de Caças F-39 Gripen para o Brasil",
+        "codinome": "Programa FX-2 / Caças Gripen NG Brasil-Suécia",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2014,
+        "anoFim": null,
+        "periodo": "2014",
+        "duracaoEstimada": "2014 - presente (em entregas)",
+        "paisTeatro": "Brasil",
+        "continente": "América do Sul",
+        "localidade": "Gavião Peixoto / Anápolis (Base Aérea)",
+        "potencias": "Brasil, Suécia",
+        "pmcs": "",
+        "contratadas": "Saab AB, Embraer Defesa e Segurança, AEL Sistemas",
+        "resumo": "Aquisição de 36 caças supersônicos de última geração da sueca Saab pela Força Aérea Brasileira (FAB), com cooperação industrial da Embraer e montagem de parte das aeronaves em solo brasileiro.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "39,3 bilhões de coroas suecas (cerca de US$ 5,4 bilhões)",
+        "desfechoSoberania": "Capacitação aeroespacial nacional e integração de aviônicos de ponta da Embraer, incluindo o painel de exibição única (WAD) desenvolvido por engenheiros brasileiros.",
+        "conexaoBrasil": "Principal programa de soberania aérea e defesa aeroespacial do Brasil e da América do Sul neste século, baseado na 1ª Ala de Anápolis/GO.",
+        "fonteOficial": "Tribunal de Contas da União (TCU) Acórdão 2715/2016 / Força Aérea Brasileira",
+        "link_oficial": "https://www.fab.mil.br/gripen",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2018-BRA-GRIPEN-SAAB",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2018-BRA-GRIPEN-SAAB"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2021-AUS-AUKUS-SUBMARINES",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.6007,
+          -34.9285
+        ]
+      },
+      "properties": {
+        "id": "CTR-2021-AUS-AUKUS-SUBMARINES",
+        "nome": "Pacto AUKUS / Submarinos Nucleares para a Austrália — Aliança Militar Estratégica AUKUS entre EUA, Reino Unido e Austrália",
+        "titulo": "Aliança Militar Estratégica AUKUS entre EUA, Reino Unido e Austrália",
+        "codinome": "Pacto AUKUS / Submarinos Nucleares para a Austrália",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2021,
+        "anoFim": null,
+        "periodo": "2021",
+        "duracaoEstimada": "2021 - 2050 (3 décadas)",
+        "paisTeatro": "Austrália",
+        "continente": "Ásia e Oceania",
+        "localidade": "Adelaide / San Diego / Barrow-in-Furness",
+        "potencias": "Austrália, Estados Unidos, Reino Unido",
+        "pmcs": "",
+        "contratadas": "BAE Systems, General Dynamics Electric Boat, Rolls-Royce Marine Power",
+        "resumo": "Pacto militar que cancelou abruptamente contrato de € 56 bilhões da Austrália com a França para fornecer submarinos de propulsão nuclear projetados pelos EUA e Reino Unido para conter a China no Indo-Pacífico.",
+        "baixasEstimadas": "",
+        "custoFinanceiro": "AU$ 268 a 368 bilhões (cerca de US$ 245 bilhões ao longo de 30 anos)",
+        "desfechoSoberania": "Crise diplomática inédita com a França ('facada nas costas'), com Paris retirando embaixadores de Washington e Camberra pela primeira vez na história.",
+        "conexaoBrasil": "Levantou intensos debates na Agência Internacional de Energia Atômica (AIEA) sobre salvaguardas de urânio enriquecido em reatores de submarinos, precedente que beneficia o PROSUB brasileiro.",
+        "fonteOficial": "Australian Parliament Joint Standing Committee on Treaties / US Congressional Research Service Report R47599",
+        "link_oficial": "https://crsreports.congress.gov/product/pdf/R/R47599",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2021-AUS-AUKUS-SUBMARINES",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2021-AUS-AUKUS-SUBMARINES"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CTR-2024-ISR-USA-MILITARY-AID",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2137,
+          31.7683
+        ]
+      },
+      "properties": {
+        "id": "CTR-2024-ISR-USA-MILITARY-AID",
+        "nome": "Assistência Militar e Armas dos EUA para Israel — Suprimento Aéreo Contínuo de Bombas MK-84 e Caças F-35 no Conflito do Oriente Médio",
+        "titulo": "Suprimento Aéreo Contínuo de Bombas MK-84 e Caças F-35 no Conflito do Oriente Médio",
+        "codinome": "Assistência Militar e Armas dos EUA para Israel",
+        "tipo": "contrato_defesa_armamento",
+        "tipoRotulo": "Mega-Contrato de Defesa",
+        "anoInicio": 2023,
+        "anoFim": null,
+        "periodo": "2023",
+        "duracaoEstimada": "2023 - presente (em curso)",
+        "paisTeatro": "Israel",
+        "continente": "Oriente Médio",
+        "localidade": "Tel Aviv / Faixa de Gaza / Jerusalém",
+        "potencias": "Estados Unidos, Alemanha, Reino Unido",
+        "pmcs": "",
+        "contratadas": "Boeing (Bombas JDAM), General Dynamics (Corpos de bombas MK-80), Lockheed Martin",
+        "resumo": "Envio de mais de 100 carregamentos militares contendo milhares de bombas guiadas de 2.000 libras (MK-84), projéteis de artilharia e apoio financeiro de mais de US$ 17 bilhões aprovado pelo Congresso dos EUA.",
+        "baixasEstimadas": "+41.000 palestinos mortos em Gaza; 1.200 israelenses mortos no 7 de Outubro",
+        "custoFinanceiro": "+US$ 17,9 bilhões em ajuda militar dos EUA (Watson Institute Brown University)",
+        "desfechoSoberania": "Ação movida pela África do Sul contra Israel na Corte Internacional de Justiça (CIJ) por violação da Convenção contra o Genocídio, com medidas cautelares emitidas pela corte.",
+        "conexaoBrasil": "O governo brasileiro apoiou a iniciativa da África do Sul na Corte de Haia e criticou reiteradamente o fornecimento ocidental de armas como combustível do massacre civil.",
+        "fonteOficial": "International Court of Justice (South Africa v. Israel) / US Congressional Research Service Report RL33222",
+        "link_oficial": "https://www.icj-cij.org/case/192",
+        "link_acervo": "/internacional/operacoes-militares?id=CTR-2024-ISR-USA-MILITARY-AID",
+        "link_mapa": "/internacional/operacoes-militares/mapa?id=CTR-2024-ISR-USA-MILITARY-AID"
+      }
+    }
+  ]
+}

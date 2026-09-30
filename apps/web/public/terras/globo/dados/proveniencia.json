@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-09-30T21:52:02.595Z",
+  "gerado_em_utc": "2026-09-30T22:25:28.788Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -333,6 +333,16 @@
       "origem": "Acervo normativo das cidades do portal, com o lugar extraído da ementa e geocodificado pelo Nominatim (nunca do PDF ou do texto completo)"
     },
     {
+      "camada": "operacoes-militares-conflitos",
+      "feicoes": 48,
+      "bytes": 107186,
+      "comprimido": false,
+      "sha256": "f95d30a445761d60eb7735f770da3eb38e5237a0be5e483b4814c4de47c82470",
+      "mtime_utc": "2026-09-30T22:25:28.788Z",
+      "obtencao": "automatica",
+      "origem": "Observatório Global de Operações Militares, Conflitos e PMCs — 48 teatros de operações bélicas, deposições de regime, corporações mercenárias (PMCs) e mega-contratos armamentistas globais compilados a partir de relatórios oficiais da ONU, SIPRI, CRS do Congresso dos EUA, DoD e Corte Internacional de Justiça (CIJ)."
+    },
+    {
       "camada": "outorgas-agua",
       "feicoes": 1205,
       "bytes": 538207,
@@ -399,8 +409,8 @@
       "comprimido": false,
       "sha256": "961748588d669771e67cf5184ba2529b97ee2a3f70b2f4bf94d709239e80a442",
       "mtime_utc": "2026-09-30T21:51:08.267Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "obtencao": "automatica",
+      "origem": "Observatório de Litígios, Sedes e Portos na Europa — 23 tribunais de litígios internacionais (High Court Londres, Rechtbank Rotterdam, Paris), sedes corporativas (BHP, Rio Tinto, Glencore, Enel) e portos de devida diligência (EUDR) auditados contra registros judiciais do Reino Unido, Países Baixos, França e União Europeia."
     },
     {
       "camada": "sedes-mineracao-canada",
@@ -409,8 +419,8 @@
       "comprimido": false,
       "sha256": "0edd284026239f1b59384f35620d8eb4eff34ecf5f3fdd2baf907774a14c990d",
       "mtime_utc": "2026-09-30T21:52:02.595Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "obtencao": "automatica",
+      "origem": "Observatório de Mineração e Capitais no Canadá — 24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras canadenses com atuação no Brasil e órgãos reguladores federais compilados a partir de relatórios da TMX Group, OSC, SEDAR+ e Environment and Climate Change Canada (NPRI)."
     },
     {
       "camada": "sigmine-interesse",
@@ -610,8 +620,6 @@
     "licencas-ambientais",
     "outorgas-agua",
     "presidios-mg",
-    "sedes-litigios-portos-europa",
-    "sedes-mineracao-canada",
     "torres-celular-mg",
     "torres-celular-prioritarias",
     "unidades-conservacao",
