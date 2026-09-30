@@ -67,7 +67,7 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // ⟲ 30/09/2026 (pedido do dev): 56 → 57. Entrou `hist-fazendas-engenhos`
   // (conjuntos rurais tombados, IEPHA), em 'historia'.
   assert.equal(
-    CAMADAS.length, 58,
+    CAMADAS.length, 59,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -135,8 +135,8 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // `mineracao-em-uc` e `mineracao-em-quilombo`.
   // ⟲ 30/09/2026: 60 → 61 fontes e 56 → 57 linhas com `hist-fazendas-engenhos`.
   // ⟲ 30/09/2026 (P6): 61 → 62 fontes e 57 → 58 linhas com `hist-revoltas`.
-  assert.equal(LAYER_REGISTRY.length, 62, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 58, 'sentinela: o número de LINHAS mudou');
+  assert.equal(LAYER_REGISTRY.length, 63, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 59, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -238,6 +238,8 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     'hist-fazendas-engenhos',
     // ⟲ 30/09/2026 — P6: revoltas e lutas com lugar (acervo de memória). Id NOVO.
     'hist-revoltas',
+    // ⟲ 30/09/2026 — P1/Fase G: listas nominativas 1838-1840 (APM). Id NOVO.
+    'hist-listas-populacao',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();

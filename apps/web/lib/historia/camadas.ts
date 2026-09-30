@@ -15,6 +15,7 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import indiceListas from "@/data/apm-listas-populacao.json";
 
 /**
  * Onde estão os GeoJSON. Dois candidatos porque o `cwd` muda de acordo com quem
@@ -101,6 +102,39 @@ export function fazendasTombadas(): FazendaTombada[] {
     classe: String(p.classe ?? "—"),
     ato: String(p.ato_legal ?? "—"),
     url: String(p.fonte_url ?? ""),
+  }));
+}
+
+/**
+ * As listas nominativas do APM (1838-1840) — a fonte primária da população da
+ * província, incluindo a escravizada. A página lista o ÍNDICE INTEIRO (354),
+ * inclusive os locais que não resolveram em município (`municipio: null`):
+ * a lacuna é informação, e é ela que diz o que ainda falta ler.
+ *
+ * ⚠️ O acervo cataloga o DOCUMENTO; ele NÃO traz a contagem de pessoas
+ * escravizadas — isso exigiria ler a imagem de cada lista.
+ */
+export interface ListaPopulacao {
+  local: string;
+  municipio: string | null;
+  data: string;
+  notacao: string;
+  url: string;
+}
+
+interface IndiceListas {
+  registros: { local?: string | null; municipio?: string | null; data?: string | null;
+    notacao?: string | null; url?: string | null }[];
+}
+
+export function listasPopulacao(): ListaPopulacao[] {
+  const registros = (indiceListas as unknown as IndiceListas).registros ?? [];
+  return registros.map((r) => ({
+    local: String(r.local ?? "—"),
+    municipio: r.municipio ? String(r.municipio) : null,
+    data: String(r.data ?? "—"),
+    notacao: String(r.notacao ?? "—"),
+    url: String(r.url ?? ""),
   }));
 }
 

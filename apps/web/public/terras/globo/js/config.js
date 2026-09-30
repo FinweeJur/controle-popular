@@ -1166,6 +1166,13 @@ export const LAYER_REGISTRY = [
     color: 0xd9534f,   /* vermelho de luta */
     on: false, render: 'point', pointSize: 7, listavel: true,
   },
+  {
+    id: 'hist-listas-populacao', label: 'Listas nominativas (1838-1840)',
+    hint: '121 listas de habitantes (fogos, idade, estado civil, alfabetização e ocupação) do Arquivo Público Mineiro, no município do documento — a fonte primária da população da província, incluindo a escravizada.',
+    aviso: 'O ponto é o MUNICÍPIO do documento, não o sítio. E o acervo NÃO traz a contagem de pessoas escravizadas — isso exigiria ler a imagem do documento. 233 dos 354 locais são freguesias que não resolveram e ficam sem ponto.',
+    color: 0x8b7db8,   /* roxo fosco de documento */
+    on: false, render: 'point', pointSize: 6, listavel: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1708,6 +1715,13 @@ export const CAMADAS = [
     hint: '15 revoltas e lutas do acervo de memória, com lugar inequívoco pelo gazetteer curado; ponto no centroide do município.',
     aviso: 'Piso: só 15 dos 533 verbetes têm lugar. Revolta é processo, não pino.',
     fontes: ['hist-revoltas'],
+  },
+  {
+    id: 'hist-listas-populacao', assunto: 'historia',
+    label: 'Listas nominativas (1838-1840)',
+    hint: '121 listas de habitantes do APM (fogos, idade, estado civil, alfabetização, ocupação), no município do documento.',
+    aviso: 'Ponto no município do documento, não no sítio; o acervo não traz a contagem de escravizados. 233 locais (freguesias) ficam sem ponto.',
+    fontes: ['hist-listas-populacao'],
   },
 ];
 

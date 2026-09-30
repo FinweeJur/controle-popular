@@ -291,7 +291,8 @@ destrava** — nada aqui se resolve por suposição.
 
 | # | Pendência | O que destrava | Dono | Estado |
 |---|---|---|---|---|
-| P1 | **Mineração escravizada** (Fase G): dado por município | medir o **recenseamento de 1872** e a base do **CEDEPLAR/UFMG** (demografia histórica) | agente | 🚧 CEDEPLAR responde 200; a página do programa de demografia foi achada, a base de dados ainda não |
+| P1 | **Mineração escravizada** (Fase G): dado por município | **FEITO em parte:** coleção *Mapas de População* do APM = **354 listas nominativas (1838-1840)** coletadas; **121** no mapa, 233 declarados. Falta: **contagem de escravizados** (exige leitura da imagem) e o censo de 1872 | agente | 🚧 |
+| P1b | **Censo de 1872** por município e **base histórica do CEDEPLAR** | Biblioteca do IBGE devolve **403** (dois UAs); CEDEPLAR 200 mas sem base exposta → procurar a via (contato/LAI ou repositório) | agente | ⛔ |
 | P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente | ⛔ |
 | P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente | ⛔ |
 | P4 | **IPHAN**: rota de dado em massa morta/barrada | achada a página `/iphan/pt-br/acesso-a-informacao/dados-abertos` (200), que aponta para o `dados.gov.br` — cuja **API devolve 401**; falta a via de download direto | agente | 🚧 |
@@ -414,14 +415,26 @@ destrava** — nada aqui se resolve por suposição.
 ### Fase G — mineração escravizada e população escravizada (pedido do dev, 30/09)
 
 - **Pedido:** cruzar e publicar os **locais de mineração escravizada**.
-- **Fontes já medidas:** IBGE *Brasil: 500 anos* (seções *negros* e *descoberta do ouro*)
-  documenta a mão de obra escravizada na mineração; o APM *Mapas de População* tem **338
-  registros** (1838-1840) — mas **sem lugar no título** (o lugar está dentro do mapa).
-- **A medir:** IPHAN (bens/SICG) e o **recenseamento de 1872** (população escravizada por
-  município) — este último é o dado que geolocaliza por município. Sondado em 30/09:
-  `geoservicos.iphan.gov.br` **não resolve** (DNS) e `dados.gov.br/api` devolveu **401**.
-- **Regra:** ponto só onde a fonte oficial disser o lugar — nunca inferir "onde havia
-  escravidão" pela mancha de mineração.
+- **A via encontrada — e é oficial:** a coleção **"Mapas de População" do APM** são
+  **listas nominativas de 1838-1840** (relação de habitantes, fogos, idade, estado civil,
+  nacionalidade, alfabetização e **ocupação**) — a fonte primária da população da província,
+  **incluindo a escravizada**. Cada item traz um campo **`Local`**.
+- **Coletado:** `scripts/coletar-apm-listas-populacao.py` (retomável, pausa de 2 s) leu a
+  coleção: **354 registros**; **121** resolvem em município de MG (pelo "Município de X" da
+  fonte e por um dicionário documentado de nomes de época, ex.: *Queluz → Conselheiro
+  Lafaiete*, *Curral del Rei → Belo Horizonte*) e viraram a camada
+  `hist-listas-populacao.geojson`; **233** são freguesias/distritos que **não** resolveram e
+  ficam **sem ponto**, declarados no índice (`apps/web/data/apm-listas-populacao.json`).
+- ⚠️ **O que a fonte NÃO dá:** a **contagem de pessoas escravizadas**. O acervo cataloga o
+  documento; o número exigiria ler/OCR da imagem de cada lista. Publicar "N escravizados"
+  a partir daqui seria inventar.
+- **Fontes que falharam, medidas:** **Biblioteca Nacional** (403 com UA honesto **e** com UA
+  de navegador, em `bndigital.bn.gov.br` e `bn.gov.br/acervo`) e **Biblioteca do IBGE**
+  (403 com os dois UAs). O **CEDEPLAR/UFMG** responde 200 (o programa de demografia foi
+  achado), mas a base de dados histórica não está exposta em página pública óbvia.
+- **Próximo passo natural:** cruzar as **121 listas** com as áreas de **mineração** para
+  dizer onde o documento de população coexiste com a lavra — sem confundir "lista
+  nominativa" com "escravidão na mineração", que é leitura de conteúdo.
 
 ### Fase H — fazendas e engenhos (pedido do dev, parcialmente feito)
 
