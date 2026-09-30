@@ -38,6 +38,7 @@ import {
   Sparkles,
   Leaf,
   FileSpreadsheet,
+  Radio,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -152,6 +153,7 @@ const SECOES_MENU = [
       { label: 'Índice Geral do Portal', href: '/indice', icone: List },
       { label: 'Busca Global no Acervo', href: '/busca', icone: Search },
       { label: 'Blog & Notícias Analíticas', href: '/noticias', icone: Newspaper },
+      { label: 'Rádios do Brasil e do Mundo', href: '/radio', icone: Radio },
       { label: 'Alertas & Notificações', href: '/alertas', icone: Bell },
       { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen },
       { label: 'Tecnologia & IA Livre', href: '/tecnologia', icone: Cpu },

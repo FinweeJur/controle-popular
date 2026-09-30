@@ -131,6 +131,12 @@ export default function FooterGlobal() {
           <BotoesNotificacao />
           <BotaoRadio />
           <a
+            href="/radio"
+            className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
+          >
+            📻 Diretório de rádios
+          </a>
+          <a
             href="/alertas"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
           >

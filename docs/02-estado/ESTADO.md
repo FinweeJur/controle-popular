@@ -174,6 +174,24 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**30/09/2026 — Diretório de rádios (`/radio`) e player multi-estação:**
+
+- Rota `/radio` com **26 estações** de **11 países**: federais (EBC, Câmara,
+  Senado), universitárias (UFMG, UFRJ, USP), comunitárias (Autêntica Favela FM,
+  Brasil de Fato, FM La Tribu) e populares do Sul Global (Cuba, Argentina,
+  Perú, Moçambique, Senegal, Gana, África do Sul, Nigéria, Palestina, Jamaica).
+- Dado curado em `apps/web/lib/radio/estacoes.ts`; cada stream é HTTPS e foi
+  conferido por requisição HTTP (áudio ou playlist), com o `site` oficial em
+  cada linha. Fonte da coleta: `radio-browser.info` e `radio.garden`
+  ([FONTES.md § Rádios](../06-fontes/FONTES.md)).
+- Player persistente reescrito: multi-estação por evento (`cp:radio-tocar`),
+  índice expansível no hover ao lado do Seu Nonô, logo + bandeira por estação.
+  HLS das federais via `hls.js` sob demanda (nova dependência).
+- Transcrição ao vivo **no navegador** (Whisper local, `transformers.js`) só
+  nas federais de fala com CORS; bolha sobe sozinha, o leitor pausa e rola
+  para trás. Sem API de IA. ⚠️ falta o teste de fumaça no navegador.
+- Verificação: 15 testes novos em `lib/radio`; `tsc` limpo nos arquivos novos.
+
 **30/09/2026 — RAG completo do Seu Nonô (cobertura das bases):**
 
 - O acervo do RAG ganhou a camada **município** da memória (F3) e um

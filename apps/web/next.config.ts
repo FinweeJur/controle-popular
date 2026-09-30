@@ -143,7 +143,12 @@ const extensoesDoPainel = painelLocalLigado ? ["local.tsx", "local.ts"] : [];
  */
 const CSP_REPORT_ONLY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
+  // Os scripts do portal são servidos por ele mesmo. `'wasm-unsafe-eval'` e
+  // `blob:` entram para a transcrição LOCAL de rádio: a bolha carrega o
+  // `transformers.js` (WebAssembly) e o Whisper roda no navegador, sem API.
+  // A importação vem de `cdn.jsdelivr.net` (origem de script, não de dados).
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net",
+  "worker-src 'self' blob:",
   // ⟲ `api.fontshare.com` entrou depois: a revisao abriu o mapa com o console
   // e viu violacao de style-src A CADA CARREGAMENTO, vinda de
   // `public/terras/globo/css/tokens/fonts.css`, que importa as fontes
@@ -152,16 +157,20 @@ const CSP_REPORT_ONLY = [
   // ninguem via: promover para bloqueante confiando naquele comentario
   // quebraria a tipografia do mapa em silencio.
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
-  "img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org",
+  // `https:` cobre as logos das rádios: o diretório `/radio` hotlinka o ícone
+  // oficial de cada emissora, e são dezenas de domínios — listá-los um a um
+  // viraria manutenção eterna. A marca continua sendo do dono da rádio.
+  "img-src 'self' data: https:",
   // Mesmo caso do style-src acima: os arquivos woff/woff2/ttf vem do CDN do
   // Fontshare, num host DIFERENTE do CSS que os importa.
   "font-src 'self' https://cdn.fontshare.com",
-  // Player persistente da Rádio Brasil de Fato (`PlayerRadio.tsx`): o stream
-  // AAC vem do provedor da emissora. Sem `media-src` liberado, um CSP
-  // bloqueante derrubaria o áudio — e como hoje a política está em Report-Only,
-  // a violação nem apareceria como erro. host:porta = endpoint direto da 98.9 FM.
-  "media-src 'self' https://s09.hstbr.net:8238",
-  "connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com",
+  // Player persistente e diretório de rádios: os streams de áudio vêm de
+  // dezenas de emissoras (EBC, Câmara, Senado, UFMG, rádios do Sul Global).
+  // CP sem `media-src` liberado derruba o áudio; aqui `https:` cobre todas.
+  "media-src 'self' https:",
+  // `data`/`blob` não entram aqui. `huggingface.co` e o CDN sustêm o download
+  // do modelo Whisper da transcrição local — o áudio NÃO sai do aparelho.
+  "connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co https://cloudflareinsights.com https://static.cloudflareinsights.com",
   "frame-src 'self'",
   "frame-ancestors 'self'",
   "object-src 'none'",

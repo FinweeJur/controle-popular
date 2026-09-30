@@ -13,6 +13,7 @@
 - [Como ler este catálogo](#como-ler-este-catálogo)
 - [Regras gerais de coleta](#regras-gerais-de-coleta)
 - [Fontes, por área](#fontes-por-área)
+- [Rádios](#rádios)
 - [Documentos de fonte por frente (FONTES-\*.md)](#documentos-por-frente)
 - [Decisões registradas](#decisões-registradas)
 
@@ -1224,6 +1225,28 @@ polígonos (mistura da ingestão antiga, pendência Pimentel) e a licença
 - **2026-09-08:** Cobertura de telefonia móvel publicada em duas opções complementares (torres pontuais e manchas poligonais), priorizando Vales do Jequitinhonha/Mucuri e Bacia do Paraopeba antes do estado completo de Minas Gerais. Polígono estadual comprimido em gzip (`.geojson.gz`) para manter o asset bem abaixo do teto de 25 MiB da Cloudflare.
 
 
+
+## Rádios
+
+**Medido em 2026-09-30.** O diretório `/radio` publica estações de rádio com
+transmissão direta. O dado mora em `apps/web/lib/radio/estacoes.ts` (versionado)
+e a página é montada a partir dele. Recorte do dono: menos grande mídia
+comercial, mais rádio pública federal, universitária, comunitária e do Sul
+Global, com programação musical.
+
+| Item | Registro |
+|---|---|
+| **Agregadores de partida** | `radio-browser.info` (API pública aberta) e `radio.garden` — sites de referência que conectam rádios do mundo |
+| **Fonte linkável** | o campo `site` de cada estação é a página oficial da emissora (AGENTS § 8.1) |
+| **Verificação** | cada `stream` foi conferido por requisição HTTP direta (`curl -sL --range 0-2000`), respondendo áudio ou playlist; status 200 sozinho não basta (AGENTS § 6) |
+| **Só HTTPS** | stream `http://` foi descartado: página HTTPS bloqueia áudio HTTP (conteúdo misto) |
+| **Formatos** | `mp3`/`aac` tocam nativos; `hls` (`.m3u8`, as federais EBC/Câmara/Senado) exige `hls.js`, importado sob demanda |
+| **Logo** | hotlink do ícone oficial, com monograma de reserva; a marca nunca é copiada para o repositório |
+| **Transcrição** | só nas federais de fala, no navegador (Whisper local, `transformers.js`); exige CORS no stream — medido: federais enviam `Access-Control-Allow-Origin`, as demais não |
+
+Decisão de licença: o portal **aponta** para o stream e para o site oficial, não
+redistribui o áudio nem hospeda a marca. A transcrição roda no aparelho do
+leitor e é rotulada como gerada por máquina (AGENTS § 7).
 
 ## Origem
 

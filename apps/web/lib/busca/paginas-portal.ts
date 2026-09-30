@@ -853,6 +853,21 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
       "quilombola", "unidade de conservacao", "globo 3d", "grilagem",
     ],
   },
+  {
+    id: "radio-hub",
+    titulo: "Rádios do Brasil e do Mundo",
+    descricao:
+      "Diretório de estações de rádio — públicas federais, universitárias, comunitárias e do Sul Global — com transmissão ao vivo, fonte oficial e filtro por país.",
+    href: "/radio",
+    frente: "geral",
+    rotulo: "Rádio · Diretório",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "radio", "radios", "estacao", "emissora", "ao vivo", "federal", "ebc",
+      "radio nacional", "radio mec", "universitaria", "ufmg", "comunitaria",
+      "radio favela", "brasil de fato", "cumbia", "reggae", "afrobeat", "musica",
+    ],
+  },
 ];
 
 /**

@@ -1,0 +1,711 @@
+/**
+ * Estações de rádio do portal — dado versionado, curto e conferido.
+ *
+ * Papel no portal: alimenta a página `/radio` e o player flutuante que vive
+ * ao lado do Seu Nonô. A régua é a do AGENTS § 7 e § 8: o número vem do dado,
+ * a fonte oficial acompanha cada estação, e o que não foi conferido não entra.
+ *
+ * De onde vem este dado (medido em 2026-09-30):
+ * - `stream` de cada emissora foi verificado por requisição HTTP direta
+ *   (`curl -sL --range 0-2000`), respondendo conteúdo de áudio ou playlist
+ *   HLS — não basta o status 200 (armadilha do AGENTS § 6: "API responde 200
+ *   e mente"). Todos os streams são **HTTPS**: página em HTTPS bloqueia áudio
+ *   em HTTP (conteúdo misto), então endereço http:// não entra.
+ * - A lista de partida veio de agregadores públicos que conectam rádios
+ *   (`radio-browser.info` e `radio.garden`); a coluna `fonteAgregador` diz por
+ *   onde a estação foi encontrada. O `site` é a página oficial da emissora.
+ * - `logo` aponta para o ícone/favicon do site oficial (hotlink), com desenho
+ *   de reserva (monograma) quando a imagem não carrega — nunca se copia a marca
+ *   para dentro do repositório, para não ferir direito autoral nem inflar
+ *   `apps/web/public/`.
+ *
+ * Decisões técnicas:
+ * - `formato` importa: `mp3`/`aac` tocam em `<audio>` em qualquer navegador;
+ *   `hls` (`.m3u8`) só toca nativo em Safari — no resto exige a biblioteca
+ *   `hls.js`, carregada sob demanda (ver `PlayerRadio.tsx`). Por isso o campo
+ *   é explícito e a página avisa a limitação.
+ * - `transcrevivel`: só as federais de fala entram. A transcrição local
+ *   (Whisper no navegador, sem API) exige CORS no stream — medido: as
+ *   federais EBC/Câmara/Senado enviam `Access-Control-Allow-Origin`, as
+ *   demais não. Sem CORS, o Web Audio entrega silêncio: melhor não oferecer.
+ * - A frequência e o país vêm da própria fonte; `verificadoEm` é a data da
+ *   conferência. Mudou um stream? Remeça e atualize a data.
+ */
+
+/** Categoria funcional da estação — é o filtro principal da página. */
+export type TipoRadio = "federal" | "universitaria" | "comunitaria" | "popular";
+
+/** Região do mundo — segundo eixo de filtro. */
+export type RegiaoRadio = "Brasil" | "America Latina" | "Africa" | "Asia e Caribe";
+
+/** Formato do stream, que decide como o player carrega o áudio. */
+export type FormatoRadio = "mp3" | "aac" | "hls";
+
+/** Uma estação de rádio publicada pelo portal. */
+export interface EstacaoRadio {
+  /** Identificador estável, usado nos eventos `cp:radio-tocar`. */
+  id: string;
+  /** Nome público da emissora. */
+  nome: string;
+  /** Categoria funcional (federal, universitária, comunitária, popular). */
+  tipo: TipoRadio;
+  /** Região do mundo. */
+  regiao: RegiaoRadio;
+  /** Código ISO 3166-1 alfa-2 do país (ex.: "BR", "CU"). */
+  pais: string;
+  /** Nome do país em português. */
+  paisNome: string;
+  /** Unidade federativa (só Brasil). */
+  uf?: string;
+  /** Cidade-sede da emissora. */
+  cidade?: string;
+  /** Frequência ou banda, quando a fonte informa. */
+  frequencia?: string;
+  /** O que a rádio toca — a "programação musical", em uma linha. */
+  programacao: string;
+  /** Uma frase de contexto cívico, sem juízo de valor. */
+  descricao: string;
+  /** URL HTTPS do stream de áudio (verificado). */
+  stream: string;
+  /** Formato do stream. */
+  formato: FormatoRadio;
+  /** Página oficial da emissora (fonte linkável, AGENTS § 8.1). */
+  site: string;
+  /** Ícone/favicon oficial (hotlink). Sem isto, cai no monograma. */
+  logo?: string;
+  /** Agregador de referência por onde a estação foi localizada. */
+  fonteAgregador: string;
+  /** `true` se o stream aceita CORS e a estação fala (permite transcrição). */
+  transcrevivel: boolean;
+  /** Data (AAAA-MM-DD) em que stream e fonte foram conferidos. */
+  verificadoEm: string;
+}
+
+/** Data única da última conferência do acervo inteiro. */
+export const RADIO_VERIFICADO_EM = "2026-09-30";
+
+/**
+ * Acervo curado. O recorte é deliberado: menos grande mídia comercial, mais
+ * rádio pública, universitária, comunitária e do Sul Global — com programação
+ * musical. Ver `docs/06-fontes/FONTES.md` para o registro da coleta.
+ */
+export const ESTACOES: readonly EstacaoRadio[] = [
+  // ─── Brasil · federais (públicas, fala — transcrevíveis) ───────────────
+  {
+    id: "radio-nacional-rio",
+    nome: "Rádio Nacional do Rio de Janeiro",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "RJ",
+    cidade: "Rio de Janeiro",
+    frequencia: "1130 AM",
+    programacao: "MPB, samba, jornalismo e esporte",
+    descricao:
+      "Rádio pública da EBC, no ar desde 1936; serviço ao cidadão e música brasileira.",
+    stream:
+      "https://radionacionalrio-stream.ebc.com.br/ebc/radionacionalriodejaneiro/playlist.m3u8",
+    formato: "hls",
+    site: "https://radionacional.ebc.com.br/",
+    logo: "https://radionacional.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-nacional-amazonia",
+    nome: "Rádio Nacional da Amazônia",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    cidade: "Brasília",
+    frequencia: "6180 kHz (onda curta)",
+    programacao: "Jornalismo, música regional e cidadania",
+    descricao:
+      "Leva informação e serviço às comunidades ribeirinhas e rurais da Amazônia.",
+    stream:
+      "https://radionacionalamazonia-stream.ebc.com.br/ebc/radionacionalamazonia/playlist.m3u8",
+    formato: "hls",
+    site: "https://radionacional.ebc.com.br/",
+    logo: "https://radionacional.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-nacional-brasilia",
+    nome: "Rádio Nacional de Brasília",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "DF",
+    cidade: "Brasília",
+    frequencia: "96.1 FM",
+    programacao: "MPB, jornalismo e prestação de serviço",
+    descricao: "Emissora pública da EBC na capital federal.",
+    stream:
+      "https://radionacionalfm-stream.ebc.com.br/ebc/radionacionalfm/playlist.m3u8",
+    formato: "hls",
+    site: "https://radionacional.ebc.com.br/",
+    logo: "https://radionacional.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-nacional-alto-solimoes",
+    nome: "Rádio Nacional do Alto Solimões",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "AM",
+    cidade: "Tabatinga",
+    frequencia: "670 kHz",
+    programacao: "Jornalismo regional e cultura amazônica",
+    descricao:
+      "Emissora pública da EBC na tríplice fronteira Brasil, Colômbia e Peru.",
+    stream:
+      "https://radionacionalaltosolimoes-stream.ebc.com.br/ebc/radionacionalaltosolimoes/playlist.m3u8",
+    formato: "hls",
+    site: "https://radionacional.ebc.com.br/",
+    logo: "https://radionacional.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-mec-fm",
+    nome: "Rádio MEC FM",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "RJ",
+    cidade: "Rio de Janeiro",
+    frequencia: "98.9 FM",
+    programacao: "Música clássica, instrumental e jazz",
+    descricao:
+      "Rádio pública da EBC dedicada à música de concerto e à cultura.",
+    stream:
+      "https://radiomecfm-stream.ebc.com.br/ebc/radiomecfm/playlist.m3u8",
+    formato: "hls",
+    site: "https://radiomec.ebc.com.br/",
+    logo: "https://radiomec.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-mec-am",
+    nome: "Rádio MEC AM",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "RJ",
+    cidade: "Rio de Janeiro",
+    frequencia: "800 AM",
+    programacao: "Música, educação e radiodramaturgia",
+    descricao:
+      "A mais antiga emissora do Brasil (1923), hoje gerida pela EBC.",
+    stream: "https://radiomec-stream.ebc.com.br/ebc/radiomec/playlist.m3u8",
+    formato: "hls",
+    site: "https://radiomec.ebc.com.br/",
+    logo: "https://radiomec.ebc.com.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-camara",
+    nome: "Rádio Câmara",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "DF",
+    cidade: "Brasília",
+    frequencia: "96.9 FM",
+    programacao: "Jornalismo legislativo e música brasileira",
+    descricao:
+      "Emissora da Câmara dos Deputados; acompanha o trabalho legislativo.",
+    stream: "https://stream3.camara.gov.br/radiocamara1t64/manifest.m3u8",
+    formato: "hls",
+    site: "https://www.camara.leg.br/radio/",
+    logo: "https://www.camara.leg.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-senado",
+    nome: "Rádio Senado",
+    tipo: "federal",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "DF",
+    cidade: "Brasília",
+    frequencia: "91.9 FM",
+    programacao: "Jornalismo legislativo e música",
+    descricao:
+      "Emissora do Senado Federal; cobre votações, comissões e audiências.",
+    stream: "https://www12.senado.leg.br/radiosenado/fmaac/playlist.m3u8",
+    formato: "hls",
+    site: "https://www12.senado.leg.br/radiosenado",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: true,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+
+  // ─── Brasil · universitárias ───────────────────────────────────────────
+  {
+    id: "radio-ufmg-educativa",
+    nome: "Rádio UFMG Educativa",
+    tipo: "universitaria",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "MG",
+    cidade: "Belo Horizonte",
+    frequencia: "104.5 FM",
+    programacao: "Música brasileira, cultura e educação",
+    descricao:
+      "Emissora da Universidade Federal de Minas Gerais, ligada à formação cidadã.",
+    stream: "https://www3.ufmg.br/streamingradioaovivo/aovivo.mp3",
+    formato: "mp3",
+    site: "https://www.ufmg.br/comunicacao/radio-ufmg-educativa/",
+    logo: "https://www.ufmg.br/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-ufrj",
+    nome: "Rádio UFRJ",
+    tipo: "universitaria",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "RJ",
+    cidade: "Rio de Janeiro",
+    programacao: "Música, ciência e cultura",
+    descricao: "Emissora da Universidade Federal do Rio de Janeiro.",
+    stream: "https://servidor21.brlogic.com:7712/live",
+    formato: "mp3",
+    site: "https://radio.ufrj.br/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-usp",
+    nome: "Rádio USP",
+    tipo: "universitaria",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "SP",
+    cidade: "São Paulo",
+    frequencia: "93.7 FM",
+    programacao: "Música clássica, jazz e cultura",
+    descricao: "Emissora da Universidade de São Paulo.",
+    stream: "https://flow.emm.usp.br:8008/radiousp-128.mp3",
+    formato: "mp3",
+    site: "https://www.radio.usp.br/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+
+  // ─── Brasil · comunitárias e populares ─────────────────────────────────
+  {
+    id: "radio-favela",
+    nome: "Autêntica Favela FM (Rádio Favela)",
+    tipo: "comunitaria",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "MG",
+    cidade: "Belo Horizonte",
+    frequencia: "106.7 FM",
+    programacao: "Funk, rap, samba e música periférica",
+    descricao:
+      "Nasceu em 1981 no Aglomerado da Serra; é uma das rádios comunitárias " +
+      "mais conhecidas do Brasil.",
+    stream: "https://radio.garden/api/ara/content/listen/9nuoTjkL/channel.mp3",
+    formato: "mp3",
+    site: "https://www.autenticafavelafm106-7.com",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-brasil-de-fato",
+    nome: "Rádio Brasil de Fato",
+    tipo: "comunitaria",
+    regiao: "Brasil",
+    pais: "BR",
+    paisNome: "Brasil",
+    cidade: "Nacional",
+    programacao: "Jornalismo popular, cultura e música",
+    descricao:
+      "Rádio do veículo de comunicação popular Brasil de Fato; já tocava no portal.",
+    stream: "https://s09.hstbr.net:8238/live",
+    formato: "mp3",
+    site: "https://www.brasildefato.com.br/",
+    logo: "https://www.brasildefato.com.br/favicon.ico",
+    fonteAgregador: "radios.com.br",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+
+  // ─── América Latina ────────────────────────────────────────────────────
+  {
+    id: "radio-rebelde",
+    nome: "Radio Rebelde",
+    tipo: "popular",
+    regiao: "America Latina",
+    pais: "CU",
+    paisNome: "Cuba",
+    cidade: "Havana",
+    frequencia: "96.7 FM",
+    programacao: "Música cubana, son, notícias",
+    descricao: "Emissora pública cubana, fundada em 1958 na Sierra Maestra.",
+    stream: "https://icecast.teveo.cu/kHKL7tWd",
+    formato: "mp3",
+    site: "https://www.radiorebelde.cu/",
+    logo: "https://www.radiorebelde.cu/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-nacional-argentina",
+    nome: "LRA1 Radio Nacional Argentina",
+    tipo: "popular",
+    regiao: "America Latina",
+    pais: "AR",
+    paisNome: "Argentina",
+    cidade: "Buenos Aires",
+    frequencia: "870 AM",
+    programacao: "Jornalismo, tango e folclore",
+    descricao: "Emissora pública argentina, a mais antiga do país (1937).",
+    stream: "https://sa.mp3.icecast.magma.edge-access.net/sc_rad1",
+    formato: "mp3",
+    site: "https://www.radionacional.com.ar/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "fm-la-tribu",
+    nome: "FM La Tribu",
+    tipo: "comunitaria",
+    regiao: "America Latina",
+    pais: "AR",
+    paisNome: "Argentina",
+    cidade: "Buenos Aires",
+    frequencia: "88.7 FM",
+    programacao: "Música independente e cultura livre",
+    descricao:
+      "Rádio comunitária cooperativa de Buenos Aires, referência de mídia livre.",
+    stream: "https://icecast.zeclogiccloud.com.de/fmlatribu",
+    formato: "mp3",
+    site: "https://fmlatribu.com/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-cuyum",
+    nome: "Radio Comunitaria Cuyum",
+    tipo: "comunitaria",
+    regiao: "America Latina",
+    pais: "AR",
+    paisNome: "Argentina",
+    cidade: "Mendoza",
+    programacao: "Comunicação popular e música",
+    descricao: "Emissora comunitária da rede Liberaturadio, em Mendoza.",
+    stream: "https://radios.liberaturadio.org/Cuyum",
+    formato: "mp3",
+    site: "https://radios.liberaturadio.org/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-yaravi",
+    nome: "Radio Yaraví",
+    tipo: "comunitaria",
+    regiao: "America Latina",
+    pais: "PE",
+    paisNome: "Peru",
+    cidade: "Arequipa",
+    frequencia: "107.7 FM",
+    programacao: "Música andina, cumbia e cultura",
+    descricao: "Emissora popular de Arequipa, com programação andina.",
+    stream: "https://tupanel.info/stream/radioyaravi/stream",
+    formato: "aac",
+    site: "https://www.radioyaravi.com/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-cumbia-mix",
+    nome: "Radio Cumbia Mix",
+    tipo: "popular",
+    regiao: "America Latina",
+    pais: "PE",
+    paisNome: "Peru",
+    cidade: "Lima",
+    programacao: "Cumbia, chicha e música tropical",
+    descricao: "Rádio peruana dedicada à cumbia e à música tropical.",
+    stream: "https://mdstrm.com/audio/6598b6ab95a235085823b24f/icecast.audio",
+    formato: "aac",
+    site: "https://radiocumbiamix.com/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+
+  // ─── África ────────────────────────────────────────────────────────────
+  {
+    id: "lm-radio-mocambique",
+    nome: "LM Radio Moçambique",
+    tipo: "popular",
+    regiao: "Africa",
+    pais: "MZ",
+    paisNome: "Moçambique",
+    cidade: "Maputo",
+    frequencia: "105.0 FM",
+    programacao: "Música moçambicana, marrabenta e jornalismo",
+    descricao: "Emissora moçambicana com música local e informação.",
+    stream: "https://edge.iono.fm/xice/392_medium.mp3",
+    formato: "mp3",
+    site: "https://lmradio.co.mz/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "timtimol-fm",
+    nome: "Timtimol FM",
+    tipo: "comunitaria",
+    regiao: "Africa",
+    pais: "SN",
+    paisNome: "Senegal",
+    cidade: "Ourossogui",
+    frequencia: "91.9 FM",
+    programacao: "Música africana, mbalax e informação comunitária",
+    descricao: "Rádio comunitária do norte do Senegal.",
+    stream: "https://stream.zeno.fm/4yx608hnu1duv",
+    formato: "mp3",
+    site: "https://zeno.fm/radio/timtimol-fm/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "oroko-radio",
+    nome: "Oroko Radio",
+    tipo: "comunitaria",
+    regiao: "Africa",
+    pais: "GH",
+    paisNome: "Gana",
+    cidade: "Acra",
+    programacao: "Afrobeat, música africana e eletrônica",
+    descricao: "Rádio independente de Acra, plataforma de música africana.",
+    stream: "https://oroko-radio.radiocult.fm/stream",
+    formato: "mp3",
+    site: "https://oroko-radio.radiocult.fm/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "helderberg-fm",
+    nome: "Helderberg FM",
+    tipo: "comunitaria",
+    regiao: "Africa",
+    pais: "ZA",
+    paisNome: "África do Sul",
+    cidade: "Somerset West",
+    frequencia: "93.9 FM",
+    programacao: "Música e programação comunitária",
+    descricao: "Rádio comunitária da região do Cabo Ocidental.",
+    stream: "https://helderberg.highquality.radiostream.co.za/",
+    formato: "mp3",
+    site: "https://www.helderbergfm.co.za/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "lagosjump-radio",
+    nome: "LagosJump Radio",
+    tipo: "popular",
+    regiao: "Africa",
+    pais: "NG",
+    paisNome: "Nigéria",
+    cidade: "Lagos",
+    programacao: "Afrobeats e música africana",
+    descricao: "Rádio nigeriana de música afro contemporânea.",
+    stream:
+      "https://radio.lagosjumpradio.com/listen/lagosjump_radio/radio.mp3",
+    formato: "mp3",
+    site: "https://lagosjumpradio.com/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+
+  // ─── Ásia e Caribe ─────────────────────────────────────────────────────
+  {
+    id: "radio-alhara",
+    nome: "Radio Al Hara",
+    tipo: "comunitaria",
+    regiao: "Asia e Caribe",
+    pais: "PS",
+    paisNome: "Palestina",
+    cidade: "Ramallah",
+    programacao: "Música árabe, música livre e cultura",
+    descricao:
+      "Rádio independente palestina, com programação musical e cultural.",
+    stream: "https://n02.radiojar.com/78cxy6wkxtzuv",
+    formato: "mp3",
+    site: "https://www.radioalhara.net/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "irie-fm",
+    nome: "Irie FM",
+    tipo: "popular",
+    regiao: "Asia e Caribe",
+    pais: "JM",
+    paisNome: "Jamaica",
+    cidade: "Ocho Rios",
+    frequencia: "105.1 FM",
+    programacao: "Reggae, dancehall e cultura jamaicana",
+    descricao: "Emissora jamaicana dedicada ao reggae.",
+    stream: "https://stream.iriefm.net:8008/stream",
+    formato: "mp3",
+    site: "https://iriefm.net/",
+    logo: "https://iriefm.net/favicon.ico",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+];
+
+/** Rótulos de exibição das categorias. */
+export const ROTULO_TIPO: Record<TipoRadio, string> = {
+  federal: "Pública federal",
+  universitaria: "Universitária",
+  comunitaria: "Comunitária",
+  popular: "Popular e independente",
+};
+
+/** Rótulos de exibição das regiões. */
+export const ROTULO_REGIAO: Record<RegiaoRadio, string> = {
+  Brasil: "Brasil",
+  "America Latina": "América Latina",
+  Africa: "África",
+  "Asia e Caribe": "Ásia e Caribe",
+};
+
+/** Ordem canônica das categorias (a página respeita esta ordem). */
+export const ORDEM_TIPOS: readonly TipoRadio[] = [
+  "federal",
+  "universitaria",
+  "comunitaria",
+  "popular",
+];
+
+/** Ordem canônica das regiões. */
+export const ORDEM_REGIOES: readonly RegiaoRadio[] = [
+  "Brasil",
+  "America Latina",
+  "Africa",
+  "Asia e Caribe",
+];
+
+/**
+ * Bandeira do país a partir do código ISO-3166-1 alfa-2.
+ *
+ * Truque dos "regional indicator symbols": a bandeira é formada por duas
+ * letras maiúsculas deslocadas para o bloco Unicode U+1F1E6. É texto, não
+ * imagem — funciona offline e não pesa no repositório.
+ */
+export function bandeiraDe(iso: string): string {
+  const codigo = iso.trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(codigo)) return "🏳️";
+  const BASE = 0x1f1e6; // 'A'
+  const A = "A".charCodeAt(0);
+  return (
+    String.fromCodePoint(BASE + (codigo.charCodeAt(0) - A)) +
+    String.fromCodePoint(BASE + (codigo.charCodeAt(1) - A))
+  );
+}
+
+/** Busca uma estação pelo id (undefined se não existir). */
+export function estacaoPorId(id: string): EstacaoRadio | undefined {
+  return ESTACOES.find((e) => e.id === id);
+}
+
+/** Agregados medidos do acervo — os cartões de topo leem daqui, nunca à mão. */
+export interface ResumoRadio {
+  total: number;
+  paises: number;
+  federais: number;
+  universitarias: number;
+  comunitarias: number;
+  popularres: number;
+  transcreviveis: number;
+  porRegiao: { regiao: RegiaoRadio; total: number }[];
+  porPais: { pais: string; paisNome: string; bandeira: string; total: number }[];
+}
+
+/** Calcula os agregados a partir do acervo (puro, testável). */
+export function resumirEstacoes(
+  estacoes: readonly EstacaoRadio[] = ESTACOES,
+): ResumoRadio {
+  const contagemPais = new Map<string, { paisNome: string; total: number }>();
+  const contagemRegiao = new Map<RegiaoRadio, number>();
+
+  for (const e of estacoes) {
+    const p = contagemPais.get(e.pais) ?? { paisNome: e.paisNome, total: 0 };
+    p.total += 1;
+    contagemPais.set(e.pais, p);
+    contagemRegiao.set(e.regiao, (contagemRegiao.get(e.regiao) ?? 0) + 1);
+  }
+
+  return {
+    total: estacoes.length,
+    paises: contagemPais.size,
+    federais: estacoes.filter((e) => e.tipo === "federal").length,
+    universitarias: estacoes.filter((e) => e.tipo === "universitaria").length,
+    comunitarias: estacoes.filter((e) => e.tipo === "comunitaria").length,
+    popularres: estacoes.filter((e) => e.tipo === "popular").length,
+    transcreviveis: estacoes.filter((e) => e.transcrevivel).length,
+    porRegiao: ORDEM_REGIOES.map((regiao) => ({
+      regiao,
+      total: contagemRegiao.get(regiao) ?? 0,
+    })),
+    porPais: [...contagemPais.entries()]
+      .map(([pais, v]) => ({
+        pais,
+        paisNome: v.paisNome,
+        bandeira: bandeiraDe(pais),
+        total: v.total,
+      }))
+      .sort((a, b) => b.total - a.total || a.paisNome.localeCompare(b.paisNome, "pt-BR")),
+  };
+}
