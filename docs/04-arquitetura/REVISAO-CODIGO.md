@@ -22,6 +22,7 @@
 - [Parte 8 — segurança e escrita](#parte-8--segurança-e-escrita)
 - [Parte 9 — testes que não testavam (navegação)](#parte-9--testes-que-não-testavam-navegação)
 - [Parte 10 — escrita pública e resiliência](#parte-10--escrita-pública-e-resiliência)
+- [Parte 11 — LinkMender e denúncia](#parte-11--linkmender-e-denúncia)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -463,6 +464,31 @@ Quarta passada, em módulos frios (longe das sessões paralelas).
 3. ✅ **`lib/empresas`** — 4 arquivos sem cabeçalho (`dados.ts`,
    `noticias.ts`, `entidades-dados.ts`, `sigmine.ts`) ganharam o bloco de
    onboarding; os dois últimos são **SERVER-ONLY** (`node:fs`) e agora avisam.
+
+## Parte 11 — LinkMender e denúncia
+
+Quinta passada, em módulos frios.
+
+### Achados da Parte 11
+
+1. ✅ **`lib/linkmender`** — verificação de link com HTTP real **e** validação
+   de CONTEÚDO, pela regra "200 e mente": HEAD com fallback GET-range,
+   `%PDF` exigido para PDF, soft-404 detectado, `finalUrl` comparada para
+   separar `REDIRECT` de `OK`. A correção é uma **camada**
+   (`data/link-correcoes.json`) aplicada no prebuild, que **nunca reescreve**
+   o dado versionado — a trilha é reversível.
+
+2. ✅ **`lib/denuncia`** — o facilitador de denúncia de direitos humanos é
+   **100% client-side**: nenhuma peça manda o texto para a rede (sem
+   `fetch`/`node:fs`). O rascunho é **opt-in** (`localStorage`), expira em
+   24h e tem "apagar tudo" sempre visível; o contrato (`tipos.ts`) declara
+   que o texto "nunca é serializado para uma requisição de rede". **Não
+   coleta CPF**; `nomeDenunciante` é opcional.
+
+3. 🔸 **Escopo do LinkMender.** `verificar.ts` busca URL arbitrária (SSRF
+   potencial em tese), mas o pipeline roda como **script no home-pc**, sobre
+   URL curada — não é rota pública. **Se um dia virar API, precisa de
+   allowlist de host.**
 
 ## Achados e dívidas
 
