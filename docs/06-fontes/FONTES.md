@@ -2,7 +2,7 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-29 (bloqueio do Sentinel-2 medido; série de cavas publicada a 30 m)
+> **Última medição:** 2026-09-30 (Fase B do mapeamento de mineração: IBAMA, ICMBio, FEAM, IDE-MG, ANM/DOU, FUNAI e INCRA medidos)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim, mapbiomas, monitor-mineracao, wfs, cbers, sentinel-2, planetary-computer, esri, cavas, mineração
@@ -86,7 +86,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
 | Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads) |
 | Cavas de mineração (Fase 1) | Monitor MapBiomas (WFS), SIGMINE, CBERS, Sentinel-2, Esri | [§](#cavas-de-mineração--monitor-mapbiomas-sigmine-e-imagens-de-satélite-fase-1-2509) |
-| Mineração ilegal (Fase B) | IBAMA embargos (ArcGIS), FEAM, IDE-MG | [§](#embargos-do-ibama-georreferenciados-feam-e-ide-mg--fase-b-3009) |
+| Mineração ilegal (Fase B) | IBAMA embargos, ICMBio, FEAM, ANM/DOU, IDE-MG, FUNAI, INCRA | [§](#embargos-do-ibama-georreferenciados-feam-e-ide-mg--fase-b-3009) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -1046,6 +1046,98 @@ infração) em bases diferentes — duas contagens, duas perguntas.
   além dessas: a IDE-MG não expõe autos de embargo. Uso provável aqui:
   áreas autorizadas FEAM para o estado `em_operacao` estadual.
 
+### ICMBio — autos e embargos em UC federais (item 2, fechado 30/09)
+
+- **Página:** `www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/
+  mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais`
+  (GET 200; `robots.txt` do `www.gov.br` não bloqueia o caminho do ICMBio).
+- **Downloads diretos (mesma página):** `autos_infracao_icmbio.xlsx`
+  (7.200.532 bytes) e `embargos_icmbio.xlsx` (2.572.637 bytes), mais as
+  versões `_shp.zip` e `_kml.zip` de cada um.
+- **WFS na INDE:**
+  `https://geoservicos.inde.gov.br/geoserver/ICMBio/ows?service=wfs&version=1.1.0&request=GetFeature&typeName=ICMBio:autos_infracao_icmbio&resultType=hits`
+  — camadas `ICMBio:autos_infracao_icmbio` e `ICMBio:embargos_icmbio`
+  (mais `limiteucsfederais_a`).
+- ⚠️ **`robots.txt` da INDE devolve `Crawl-delay: 30` para `User-agent: *`**
+  (medido 30/09): pausa de **30 s** entre chamadas neste host, não os 2 s
+  de sempre. Bloqueios específicos são só de bots de SEO.
+
+**Contagem 30/09/2026 — dupla verificação, dois métodos iguais:**
+WFS (`resultType=hits`, e `CQL_FILTER=uf='MG'`) **bateu exata** com a
+contagem local do xlsx (openpyxl, linhas não vazias):
+
+| Base | Brasil | MG | Faixa de anos |
+|---|---:|---:|---|
+| Autos de infração do ICMBio | 41.963 | **1.483** | 2008–2026 |
+| Embargos do ICMBio | 14.719 | **854** | 2009–2026 |
+
+- Campos úteis (autos): `uf`, `municipio`, `nome_uc`, `cnuc`,
+  `numero_ai`, `data`, `ano`, `embargo`, `tipo_infra`, `processo`,
+  `valor_mult`, `julgamento`. Embargos acrescentam `numero_emb` e `area`.
+- ⚠️ **`autuado` e `cpf_cnpj` existem nas duas bases** — nunca publicar
+  (AGENTS § 5.2); a ficha leva processo, UC, município e data.
+- ⚠️ **Não somar com o IBAMA.** Embargos do IBAMA (91.702 no Brasil,
+  4.692 em MG, seção acima) e do ICMBio (14.719 / 854) são órgãos
+  diferentes, sistemas diferentes, duas perguntas — duas contagens.
+- Armadilha: `Invoke-WebRequest -Method Head` nesta página devolve **403**
+  (Akamai); GET normal responde 200 — meça por GET.
+
+### ANM — portarias de suspensão de lavra (item 3, fechado com motivo 30/09)
+
+- **`dadosabertos.anm.gov.br` é índice estático de IIS com 15 diretórios**
+  (AMB, CFEM, DIPEM, PARTICIPA-ANM, PD, REPEM, SAD, SCM, SDA, SICOP,
+  SIGBM, SIGMINE, SOPLE, TAH — todos varridos em 30/09):
+  **nenhum diretório de atos ou portarias**. Os mais próximos são
+  `SCM/Portaria_de_Lavra.csv` (outorga — o ato oposto) e
+  `SIGMINE/BLOQUEIO.zip`.
+- **`SIGMINE/metadados-sigmine.ods` varrido:** zero ocorrências de
+  "suspensão"; o status publicado é só ativo/inativo (e a "situação"
+  das entradas do catálogo é metadado do próprio catálogo).
+- **Os atos existem e são públicos:** o DOU Seção 1 publica despachos da
+  ANM com interdição/suspensão de lavra — exemplo medido: despacho de
+  02/09/2026 da ANM/DIVFIS-MG com Termo de Interdição
+  103/2026/ANM/DIVFIS-MG ([DOU](https://www.in.gov.br/web/dou/-/despacho-735414485)).
+- **Contagem automatizada hoje: bloqueada — e o bloqueio está medido:**
+
+| Caminho | Resultado 30/09 |
+|---|---|
+| `api.in.gov.br/dou` (API oficial) | **403 sem chave** (`chave-api-dados-abertos` — cadastro humano) |
+| `www.in.gov.br/busca/-/buscar/dou` | **403** com UA honesto e com UA de navegador |
+| `www.in.gov.br/robots.txt` | **403** |
+| `pesquisa.in.gov.br` (página antiga de PDF) | **200**, mas só `frameset` de PDF do dia — entrega página, não busca |
+
+Caminho viável: **chave da API da Imprensa Nacional** (cadastro humano,
+gratuito) — decisão do dono. Raspagem de frameset PDF seria pesada e
+frágil; não recomenda-se sem a chave.
+
+### Terras indígenas e quilombo — o que dá para ampliar hoje (item 4, 30/09)
+
+**TI (FUNAI, mesma WFS de sempre):** MG tem **16 polígonos + 4 pontos =
+20 feições** — a camada publicada no globo tem só os 16 polígonos.
+
+| Camada | Brasil | MG |
+|---|---:|---:|
+| `Funai:tis_poligonais` | 663 (medido 16/08) | **16** |
+| `Funai:tis_pontos` | não medido (403 sem filtro) | **4** |
+
+Os 4 pontos de MG (medidos via `CQL_FILTER=uf_sigla='MG'`):
+**Cinta Vermelha Jundiba** (Araçuaí), **Mukurin** (Campanário),
+**Aranã Caboclo** e **Aranã Índio** (Araçuaí/Coronel Murta) — **todos
+em fase "Em Estudo"**, justamente a fase que o alerta não pode ignorar
+(direito originário, CF 231). Ampliar aqui não pede fonte nova: é a
+mesma WFS, camada de pontos que ficou de fora. Armadilha reproduzida em
+30/09: `GetFeature` nacional **sem filtro → 403 do nginx** (rate-limit,
+não permissão); com `CQL_FILTER` responde 200.
+
+**Quilombo (INCRA, Acervo Fundiário):** `tema=quilombolas_mg` hoje =
+**23 feições** (22 em 13/08 — cresceu 1). A contagem **nacional não
+medida**: `GetCapabilities` estourou timeout duas vezes (120 s) e
+`tema=quilombolas` devolveu resposta vazia (0 bytes) — serviço lento,
+como já registrado na seção histórico. A camada publicada tem 27
+polígonos (mistura da ingestão antiga, pendência Pimentel) e a licença
+"vedado uso comercial" segue valendo.
+
+
 ## Decisões registradas
 
 - **2026-09-30:** Embargos do IBAMA (Pamgia, ArcGIS REST) consultados com
@@ -1054,6 +1146,13 @@ infração) em bases diferentes — duas contagens, duas perguntas.
   `cpf_cnpj_embargado` nunca saem cru (AGENTS § 5.2). FEAM sem dado aberto
   bulk medido em `dados.mg.gov.br` — raspagem de portal Liferay só com
   decisão do dono.
+- **2026-09-30:** ICMBio medido por dois métodos que bateram exatos (WFS
+  INDE == contagem local do xlsx); INDE declara `Crawl-delay: 30` para
+  `User-agent: *` → pausa ≥ 30 s naquele host. ANM não publica ato de
+  suspensão em dado aberto; DOU automatizado exige chave de API da
+  Imprensa Nacional (cadastro humano) — bloqueio registrado, não é dado
+  inexistente. FUNAI: os 4 pontos de MG (TIs "Em Estudo") entram na
+  ampliação da Fase B — mesma WFS, camada `tis_pontos`, sem fonte nova.
 - **2026-09-25:** WFS do Monitor da Mineração (MapBiomas) consultado só com
   `version=1.1.0` — BBOX em ordem lat,lon, campo `geom`, filtro CQL por fase;
   `robots.txt` do host do GeoServer devolve 404 (sem declaração) → acesso

@@ -93,8 +93,9 @@ Ver Fase B.
   (`scripts/etl/cavas/fase3-mineracao-mg.py`);
 - série 1985→2024 do Monitor da Mineração a 30 m (`cavas-serie-mineracao-mg.json`);
 - gate do Chinese-CLIP v2 medido 28/09 (precisão 0,914 no holdout de 88
-  negativos) — **v3 em treino em 30/09 com 3.920 recortes e 1.920
-  negativos** ([PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md),
+  negativos); **v3 treinado em 30/09 e PASSOU o gate de 0,70** —
+  sobreamostragem no limiar 0,69 com precisão 0,721 em holdout de 794
+  ([PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md),
   medições de 30/09).
 
 ## Fontes por ordem de prioridade
@@ -108,12 +109,12 @@ existir, entra só como ponte terciária, nunca no campo `fonte`.
 |---|---|---|
 | ANM/SIGMINE + Monitor MapBiomas | poligonal de processos e detecção de mineração | **coletado** (Fase 1 do plano de cavas) |
 | CNUC (ICMBio) | unidades de conservação | **camada no globo** (387 MG) |
-| FUNAI | terras indígenas | **camada no globo** (16 MG) |
-| INCRA | territórios quilombolas | **camada no globo** (27 MG) |
+| FUNAI | terras indígenas | **camada no globo** (16 polígonos MG; +4 pontos medidos 30/09 para ampliar) |
+| INCRA | territórios quilombolas | **camada no globo** (27 MG; WFS atual com 23 em 30/09) |
 | IBAMA dados abertos | autos de infração/embargos | **coletado** (11.734; 11 de MG com mineração) |
-| **FEAM (MG)** | autos de embargo e infração estaduais | **falta medir** — prioridade da Fase B |
-| ICMBio | autos de infração em UC federais | **falta medir** — Fase B |
-| ANM (portarias de suspensão de lavra) | ato de suspensão por processo | **falta medir** — Fase B |
+| **FEAM (MG)** | autos de embargo e infração estaduais | **medido 30/09:** sem dado aberto bulk — coleta estadual continua fora |
+| ICMBio | autos de infração e embargos em UC federais | **medido 30/09:** 41.963 autos (1.483 MG) e 14.719 embargos (854 MG) — xlsx + WFS |
+| ANM (portarias de suspensão de lavra) | ato de suspensão por processo | **medido 30/09:** só no DOU; contagem automática exige chave de API (cadastro humano) |
 | MPF/TJMG | ações e TACs com mineração | fora desta fase; biblioteca já existe em outra frente |
 
 ## Fases de execução
@@ -154,8 +155,21 @@ motivo de não ter dado registrado.
   (ArcGIS Pamgia, robots 404, UA + pausa registrados).
 - **IDE-MG sondada:** 1.421 camadas, **nenhuma de embargo** — serve para
   áreas autorizadas FEAM, não para atos.
-- **Pendentes:** item 2 (ICMBio em UC), item 3 (ANM), item 4 (TI /
-  quilombo mais completos).
+- **Item 2 — ICMBio fechado:** 41.963 autos (1.483 MG, 2008–2026) e
+  14.719 embargos (854 MG, 2009–2026), **WFS da INDE == xlsx local**
+  (dupla verificação exata); INDE pede `Crawl-delay: 30`.
+- **Item 3 — ANM fechado com motivo:** sem ato de suspensão em dado
+  aberto (15 diretórios da ANM varridos; metadados SIGMINE sem
+  "suspensão"); DOU automatizado exige chave de API (403 medido) —
+  cadastro humano, decisão do dono.
+- **Item 4 — TI/quilombo medido:** FUNAI MG = 16 polígonos **+ 4 pontos
+  ("Em Estudo", a fase mais vulnerável)** — ampliação sem fonte nova;
+  INCRA `quilombolas_mg` = 23 (era 22), contagem nacional não respondeu
+  (serviço lento); pendência Pimentel (27 publicados) segue.
+
+**Fase B cumprida** — todos os quatro itens com contagem datada ou
+motivo registrado em FONTES.md. Sobram decisões humanas: chave da API do
+DOU, raspagem Liferay da FEAM e a pendência Pimentel do INCRA.
 
 ### Fase C — página `/mineracao/ilegal` (2 dias)
 
