@@ -16,6 +16,7 @@
 - [Parte 2 — assistente (lib/assistente)](#parte-2--assistente-libassistente)
 - [Parte 3 — cidades (lib/betim)](#parte-3--cidades-libbetim)
 - [Parte 4 — rotas que leem banco (app/)](#parte-4--rotas-que-leem-banco-app)
+- [Parte 5 — coleta (scripts/ e etl/)](#parte-5--coleta-scripts-e-etl)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -270,6 +271,47 @@ verdade**.
 
 5. ✅ **Superfície mínima:** sem `middleware.ts`; `v1/bases` só dado público.
 
+## Parte 5 — coleta (scripts/ e etl/)
+
+A camada que traz o dado bruto. São **~80 coletores `coletar-*`** em
+`scripts/`, mais o ETL por frente em `etl/<frente>/etl/`. Revisar um a um é
+trabalho por-fonte; aqui vão as regras transversais do
+[AGENTS § 11](/AGENTS.md) — User-Agent honesto, pausa por host, `robots.txt`
+— e o que foi medido.
+
+| Regra | Situação |
+|---|---|
+| Segredo fora do git | ✅ só `.env.example`/`.env.exemplo` rastreados, sem valores. |
+| Pausa entre requisições | ✅ 38 coletores com pausa explícita. |
+| `robots.txt` | ✅ lido e registrado em vários (o caso FGV, com escopo reduzido, está no repo). |
+| User-Agent honesto | ⚠️ misto — ver achado 1. |
+| Retomada por checkpoint | ✅ presente nos coletores longos (PNCP, cavas). |
+
+### Achados da Parte 5
+
+1. ⚠️ **User-Agent de navegador falso em alguns coletores** — contra o
+   AGENTS § 11 ("o nome do projeto, nunca UA de navegador falso"). Casos puros
+   (sem identificação do projeto):
+   `etl/judiciario/etl/tj/tjmg.py`,
+   `etl/betim/scripts/medir_links_fonte.py`,
+   `etl/congresso/etl/camara/presenca.py`,
+   `etl/betim/etl/camaras/sp.py`,
+   `etl/betim/etl/bd/tse.py`,
+   `etl/betim/etl/prefeitura/obras.py` (`"Mozilla/5.0"` puro).
+   Há ainda um híbrido disseminado
+   (`"Mozilla/5.0 (…) ControlePopular/1.0 (+https://…)"`) — identifica o
+   projeto, mas imita prefixo de navegador. **Não corrigi em massa:** trocar
+   UA pode fazer uma fonte bloquear a coleta, e coleta não se testa na CI.
+   Fica registrado para a correção por-fonte, com teste ao vivo.
+
+2. 🔸 **Superfície de ~80 coletores.** A revisão fina (checkpoint, tratamento
+   de 403/429, dedup) é por frente — encaixa nas próximas rodadas, não numa
+   passada só.
+
+3. ✅ **Higiene de segredo:** `scripts/.env.exemplo` documenta cada variável
+   (`GATILHO_TOKEN`, `TELEGRAM_*`) e o raio de vazamento de cada uma; o `.env`
+   real não é rastreado.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -313,7 +355,7 @@ Próximas micro-partes, por risco e retorno:
 | 1 | ✅ `lib/assistente/` (RAG do Seu Nonô) | Feita — Parte 2 deste doc: prompt, abstenção e blindagem. |
 | 2 | ✅ `lib/betim/` | Feita — Parte 3 deste doc: fronteira de payload, três cabeçalhos e dois reads fora da reserva. |
 | 3 | ✅ `app/` — rotas que leem banco | Feita — Parte 4: IP do chatbot, webhook do Telegram, payload. |
-| 4 | `scripts/` — coletores e ETL | Rate limit, User-Agent honesto, `robots.txt`. |
+| 4 | ✅ `scripts/` — coletores e ETL | Feita — Parte 5: UA honesto (pendência por-fonte), segredos e `robots.txt`. |
 | 5 | `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Frentes com cálculo próprio. |
 | 6 | `app/components/` | Acessibilidade (leitor sob estresse). |
 | 7 | Compactação dupla | `lib/comunicabr/arquivo.ts` e `lib/estatico/compactar.ts`: duas implementações deliberadas — não unificar sem remedir. |
