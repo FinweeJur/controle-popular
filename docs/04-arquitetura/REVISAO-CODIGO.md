@@ -13,6 +13,7 @@
 - [Método](#método)
 - [Mapa de camadas](#mapa-de-camadas)
 - [Parte 1 — camada de dados (lib/db)](#parte-1--camada-de-dados-libdb)
+- [Parte 2 — assistente (lib/assistente)](#parte-2--assistente-libassistente)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -118,6 +119,62 @@ Fora da reserva, de propósito:
 | [betimD1.ts](../../apps/web/lib/db/queries/betimD1.ts) | Escritas ao vivo no D1 | Escrita em outro banco. Ler num e escrever noutro dividiria o estado. |
 | [cidades-do-build.ts](../../apps/web/lib/db/cidades-do-build.ts) | Lista de cidades congelada | Gerado por script; é justamente o fallback de `municipios.ts`. |
 
+## Parte 2 — assistente (lib/assistente)
+
+O Seu Nonô responde em **degraus**, do mais barato ao mais caro: primeiro o
+que é determinístico (sem modelo, sem rede), e só então o RAG com LLM. A
+arquitetura está em `lib/assistente/`; o prompt e as defesas, em
+`lib/seguranca/`.
+
+| Módulo | Papel | Modelo? |
+|---|---|---|
+| [navegacao.ts](../../apps/web/lib/assistente/navegacao.ts) | Texto → destinos do portal (catálogo já no chunk; ~0,35 ms medidos) | não |
+| [documentos.ts](../../apps/web/lib/assistente/documentos.ts) | Passo 2, opcional: busca DOCUMENTO no índice estático da `/busca` | não |
+| [compor.ts](../../apps/web/lib/assistente/compor.ts) | Passo 3: compara cidades e aponta ausência por regra escrita | não |
+| [escada-determinista.ts](../../apps/web/lib/assistente/escada-determinista.ts) | Intercepta comandos e termos de alta frequência antes do modelo | não |
+| [corretor-digitacao.ts](../../apps/web/lib/assistente/corretor-digitacao.ts) | Tolerância a erro de digitação e fonética | não |
+| [catalogo.ts](../../apps/web/lib/assistente/catalogo.ts) | Catálogo de destinos — CONSTANTE de módulo, nunca prop (teto de payload) | não |
+| [acervo.ts](../../apps/web/lib/assistente/acervo.ts) | Monta o acervo REAL do RAG, com a fonte colada em cada pedaço | não |
+| [embeddings/rag.ts](../../apps/web/lib/assistente/embeddings/rag.ts) | Pipeline: pergunta → similaridade → geração → verificação de citação | sim |
+| [embeddings/geracao.ts](../../apps/web/lib/assistente/embeddings/geracao.ts) | Prompt do sistema + cascata de provedores (DeepSeek → Maritaca → Ling → Ollama) | sim |
+| [embeddings/pedacos.ts](../../apps/web/lib/assistente/embeddings/pedacos.ts), [ollama.ts](../../apps/web/lib/assistente/embeddings/ollama.ts), [remoto.ts](../../apps/web/lib/assistente/embeddings/remoto.ts), [similaridade.ts](../../apps/web/lib/assistente/embeddings/similaridade.ts) | Fatiar, vetorizar (local ou remoto) e rankear | embeddings |
+| [verificador-citacao.ts](../../apps/web/lib/assistente/verificador-citacao.ts) | Confere os marcadores `[n]` contra as fontes — não depende do modelo | não |
+| [golden-set.ts](../../apps/web/lib/assistente/golden-set.ts) | "Gabarito" versionado: o que DEVE recuperar e quando DEVE abster | não |
+| [fact-checking-civico.ts](../../apps/web/lib/assistente/fact-checking-civico.ts) | Motor de checagem (IFCN/Lupa) | não |
+| [arvore-galhos.ts](../../apps/web/lib/assistente/arvore-galhos.ts), [contexto-vales.ts](../../apps/web/lib/assistente/contexto-vales.ts) | Grafo de navegação e contexto territorial dos Vales | não |
+| [seu-nono-dados.ts](../../apps/web/lib/assistente/seu-nono-dados.ts) | Base pré-curada de respostas e links oficiais | não |
+
+Entrada pública: [`app/api/chatbot/route.ts`](../../apps/web/app/api/chatbot/route.ts)
+— valida, blinda contra injeção direta, limita taxa e chama o RAG.
+
+### Achados da Parte 2
+
+1. **Blindagem INDIRETA existe e não está ligada.** `sanitizarTextoParaContexto`
+   (`lib/seguranca/blindagem-prompt.ts`) foi escrito e testado para injeção
+   **indireta** (texto de documento), mas não é chamado em lugar nenhum: o
+   contexto do RAG entra cru em `montarPromptUsuario`
+   ([geracao.ts](../../apps/web/lib/assistente/embeddings/geracao.ts)). A
+   injeção **direta** está ligada (rota do chatbot). O risco é menor porque o
+   acervo é curado pela casa, mas a defesa prometida pelo próprio módulo está
+   desconectada. **Ligar `sanitizarTextoParaContexto` a `FonteRag.texto` antes
+   do prompt.**
+
+2. **Limitador de taxa por IP confia no cabeçalho errado como reserva.** A
+   rota usa `cf-connecting-ip` primeiro (certo), mas cai para
+   `x-forwarded-for.split(",")[0]` — que é o valor que o cliente inventa
+   (skill `revisar-seguranca-cp`). Além disso, o contador é em memória, por
+   instância. É defesa de higiene, não muralha.
+
+3. **Erro genérico devolve `e.message` ao cliente** (status 500), podendo
+   expor detalhe interno de provedor; o caso `OllamaIndisponivel` já é
+   tratado com mensagem pública. Padronizar a mensagem genérica.
+
+4. **O que está CERTO e não se reabre sem motivo:** prompt do sistema forte
+   (não inventar, citar `[n]`, abster-se, não insinuar); verificação
+   determinística de citação; golden set com casos de abstenção; sem
+   `dangerouslySetInnerHTML` nas rotas do assistente; chaves de IA só no
+   servidor (`.env.local`), nada em `NEXT_PUBLIC_`.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -158,7 +215,7 @@ Próximas micro-partes, por risco e retorno:
 
 | # | Micro-parte | Por quê |
 |---|---|---|
-| 1 | `lib/assistente/` (RAG do Seu Nonô) | Prompt, abstenção, dado pessoal em contexto. |
+| 1 | ✅ `lib/assistente/` (RAG do Seu Nonô) | Feita — Parte 2 deste doc: prompt, abstenção e blindagem. |
 | 2 | `lib/betim/` | Muitas regras de negócio e a maior frente. |
 | 3 | `app/` — rotas que leem banco | Payload, teto do Worker, `.din.ts`. |
 | 4 | `scripts/` — coletores e ETL | Rate limit, User-Agent honesto, `robots.txt`. |
