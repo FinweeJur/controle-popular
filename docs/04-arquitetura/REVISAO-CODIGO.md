@@ -261,9 +261,10 @@ verdade**.
    [`apps/web/.env.example`](../../apps/web/.env.example). Falta o dono
    definir o valor no deploy e reenviar o `setWebhook({ secret_token })`.
 
-3. 🔸 **`dados-resumidos` lê o banco com `getDb()` direto** (sem
-   `comBancoReserva`) e sem rate limit; devolve `e.message` no 500. Baixo
-   risco (agregado barato), mas fora do padrão da casa.
+3. ✅ **`dados-resumidos` na cadeia de reserva** (30/09/2026). As quatro
+   consultas passaram a usar `comBancoReserva`, e o 500 devolve mensagem
+   genérica (o detalhe vai para o log do servidor). Segue sem rate limit —
+   agregado barato, baixo risco.
 
 4. 🔸 **`dangerouslySetInnerHTML` contabilizado** em toda a `app/`: JSON-LD
    (constantes/`JSON.stringify` de dado controlado), notícias (HTML autoral) e
