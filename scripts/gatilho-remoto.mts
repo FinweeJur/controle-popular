@@ -185,6 +185,7 @@ const COMANDOS: Record<string, string> = {
   "/logs": "logs",
   "/fila": "fila",
   "/rodar": "rodar",
+  "/webhook": "webhook",
 };
 
 /** Tipos válidos para `/rodar <tipo>` — espelha `lib/fila/tipos`. */
@@ -226,7 +227,10 @@ async function cmdMenu(chatId: string) {
     "♻️ /reiniciar — Reinicia o servidor do zero (build completo)\n" +
     "🤖 /code — Status do portal: banco, R2, fontes capturadas\n" +
     "📋 /andamento — Lista do que já foi implementado\n" +
-    "📌 /proximas — Pendências e próximos passos\n\n" +
+    "📌 /proximas — Pendências e próximos passos\n" +
+    "🗂️ /fila — Estado da fila distribuída (o que cada PC pegou)\n" +
+    "▶️ /rodar <tipo> — Enfileira uma tarefa (fonte, dado, teste, security, rag…)\n" +
+    "🔗 /webhook — Conserta o webhook do bot público (registra no www)\n\n" +
     "Ou clique num botão abaixo 👇";
 
   const botoes = [
@@ -264,6 +268,36 @@ async function cmdFila(chatId: string) {
     texto = `Erro ao ler a fila: ${(e as Error).message.slice(0, 120)}`;
   }
   await telegramApi("sendMessage", { chat_id: chatId, text: texto, parse_mode: "Markdown" });
+}
+
+/**
+ * `/webhook` — (re)registra o webhook do bot PÚBLICO no WWW.
+ *
+ * O apex do domínio dá 301 e o Telegram não segue redirect, então webhook no
+ * apex deixa o bot mudo. Este comando roda no home-pc (que alcança a API do
+ * Telegram), registra no www e devolve o `getWebhookInfo` resumido.
+ */
+async function cmdWebhook(chatId: string) {
+  const url = "https://www.controlepopular.com.br/api/telegram";
+  const segredo = ENV.TELEGRAM_WEBHOOK_SECRET;
+  const r = (await telegramApi("setWebhook", {
+    url,
+    ...(segredo ? { secret_token: segredo } : {}),
+    allowed_updates: ["message", "callback_query"],
+  })) as { ok?: boolean; description?: string };
+  const info = (await telegramApi("getWebhookInfo", {})) as {
+    result?: { url?: string; pending_update_count?: number; last_error_message?: string };
+  };
+  const w = info.result ?? {};
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text:
+      (r.ok ? "✅ webhook registrado" : `⛔ falhou: ${r.description}`) +
+      `\nurl: ${w.url ?? url}` +
+      `\npendentes: ${w.pending_update_count ?? 0}` +
+      (w.last_error_message ? `\núltimo erro: ${w.last_error_message}` : "\nsem erro") +
+      (segredo ? "" : "\n(sem TELEGRAM_WEBHOOK_SECRET no .env — webhook aberto)"),
+  });
 }
 
 async function cmdTunel(chatId: string) {
@@ -648,6 +682,10 @@ async function loopTelegram() {
               text: `Erro ao enfileirar: ${(e as Error).message.slice(0, 120)}`,
             });
           }
+          continue;
+        }
+        if (comando === "webhook") {
+          await cmdWebhook(String(msg.chat.id));
           continue;
         }
         await telegramApi("sendMessage", {
