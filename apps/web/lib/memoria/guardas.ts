@@ -44,6 +44,11 @@ export function verbeteValido(v: VerbeteMemoria | null | undefined): boolean {
   if (!Array.isArray(v.tipo) || v.tipo.length === 0) return false;
   if (!Array.isArray(v.fonte) || v.fonte.length === 0) return false;
 
+  // Fonte terciária (Wikipédia/Wikidata) é ponte, nunca decisão: o verbete
+  // precisa de ao menos UMA fonte PRIMÁRIA — senão um marco só de enciclopédia
+  // entraria na tela, o oposto da regra "insinuação é dano".
+  if (!v.fonte.some((f) => !fonteTerciaria(f))) return false;
+
   return v.fonte.every(
     (f) =>
       preenchido(f.titulo) &&

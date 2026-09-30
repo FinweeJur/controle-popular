@@ -101,6 +101,20 @@ describe("verbeteValido — a guarda editorial", () => {
     expect(verbeteValido(null)).toBe(false);
     expect(verbeteValido(undefined)).toBe(false);
   });
+
+  it("recusa verbete cuja ÚNICA fonte é terciária (Wikipédia)", () => {
+    const v = verbeteBase();
+    v.fonte = [
+      {
+        autor: "Wikipédia",
+        titulo: "Verbetes de enciclopédia",
+        ano: "2024",
+        url: "https://pt.wikipedia.org/wiki/Inconfid%C3%AAncia_Mineira",
+        orgao: "Wikimedia",
+      },
+    ];
+    expect(verbeteValido(v)).toBe(false);
+  });
 });
 
 describe("fontesPrimarias — a fonte terciária não decide", () => {

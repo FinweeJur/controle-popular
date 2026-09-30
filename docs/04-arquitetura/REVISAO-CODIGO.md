@@ -27,6 +27,7 @@
 - [Parte 13 — a compactação dupla](#parte-13--a-compactação-dupla)
 - [Parte 14 — arquivos da raiz de lib/](#parte-14--arquivos-da-raiz-de-lib)
 - [Parte 15 — laboratório dither e afins](#parte-15--laboratório-dither-e-afins)
+- [Parte 16 — memória das resistências](#parte-16--memória-das-resistências)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -585,6 +586,26 @@ Nona passada.
 3. 🔸 **`lib/laboratorio/dados-catalogo.ts`** foi o único ponto que toca o
    índice de risco fora do eixo Cidades — sem furo, mas é onde uma mudança de
    contrato de `IndiceRiscoDireitos` ecoaria primeiro.
+
+## Parte 16 — memória das resistências
+
+Décima passada, em `lib/memoria`.
+
+### Achados da Parte 16
+
+1. ✅ **`lib/memoria/guardas.ts`** — `verbeteValido` recusa verbete sem fonte
+   completa; `fontesPrimarias` tira Wikipédia/Wikidata; `resolverMemoria` desce
+   município → UF → região → país e devolve o degrau mais específico com fonte.
+
+2. ⚠️ → ✅ **`verbeteValido` passou a exigir ao menos UMA fonte primária.**
+   Antes aceitava um verbete cuja única fonte fosse terciária (Wikipédia),
+   o oposto da regra "fonte terciária nunca decide". A base de hoje não tem
+   esse caso — há teste que garante que nenhuma fonte das camadas é
+   Wikipédia/Wikidata —, mas o guarda agora fecha a porta. Teste novo cobre.
+
+3. ✅ **Conferidos**: `lib/memoria/{calendario,camadas,datas-referencia,index,locais,mistica,municipios,rotulos,tipos}`,
+   `lib/deploy/tamanho-assets`, `lib/globo/voo`, `lib/recursos/dados-consumidores`,
+   `lib/automacao/rotinas.test`, `lib/legislativo/ranking-estadual`.
 
 ## Achados e dívidas
 
