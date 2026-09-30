@@ -240,6 +240,12 @@ export default function PaginaCidadesEstrategicas() {
           <h2 className="mb-3 font-display text-xl font-semibold text-foreground">
             Catálogo Completo das Cidades
           </h2>
+          <p className="mb-3 text-sm text-muted">
+            Quer ver duas lado a lado?{" "}
+            <Link href="/comparar" className="font-semibold text-primary hover:underline">
+              Comparar cidades →
+            </Link>
+          </p>
           <TabelaCidadesClient cidades={cidades} />
         </section>
 

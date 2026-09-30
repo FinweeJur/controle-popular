@@ -51,6 +51,7 @@ const ATALHOS: { id: string; titulo: string; href: string; rotulo: string }[] = 
   { id: "laboratorio", titulo: "Laboratório de Dados", href: "/laboratorio", rotulo: "Gráficos" },
   { id: "tecnologia", titulo: "Tecnologia & Ferramentas", href: "/tecnologia", rotulo: "Utilidades" },
   { id: "modelos", titulo: "Modelos prontos", href: "/modelos", rotulo: "LAI e mais" },
+  { id: "comparar", titulo: "Comparar cidades", href: "/comparar", rotulo: "Lado a lado" },
 ];
 
 export default function PaletaComandos() {

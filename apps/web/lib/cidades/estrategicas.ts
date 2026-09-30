@@ -217,6 +217,8 @@ export interface CidadeCompleta {
 }
 
 let cacheCidadesCompletas: Record<string, CidadeCompleta> | null = null;
+/** Metadados do arquivo (data de geração), guardados junto com o acervo. */
+let metaCidadesCompletas: { gerado_em?: string } | null = null;
 
 export function obterBancoCidadesCompletas(): Record<string, CidadeCompleta> {
   if (cacheCidadesCompletas) return cacheCidadesCompletas;
@@ -233,6 +235,7 @@ export function obterBancoCidadesCompletas(): Record<string, CidadeCompleta> {
         const raw = fs.readFileSync(c, "utf-8");
         const parsed = JSON.parse(raw);
         cacheCidadesCompletas = parsed.cidades as Record<string, CidadeCompleta>;
+        metaCidadesCompletas = { gerado_em: parsed.gerado_em };
         return cacheCidadesCompletas;
       } catch {
         // segue para proximo caminho
@@ -240,6 +243,15 @@ export function obterBancoCidadesCompletas(): Record<string, CidadeCompleta> {
     }
   }
   return {};
+}
+
+/**
+ * Data de geração do acervo `cidades-dados-completos.json`.
+ * Serve para o selo "dados de ..." — número sem data vira dívida (AGENTS §8).
+ */
+export function obterMetaCidadesCompletas(): { geradoEm: string | null } {
+  if (!cacheCidadesCompletas) obterBancoCidadesCompletas();
+  return { geradoEm: metaCidadesCompletas?.gerado_em ?? null };
 }
 
 export function obterDadosCompletosCidade(slugOuId: string): CidadeCompleta | null {
