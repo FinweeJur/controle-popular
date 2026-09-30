@@ -21,6 +21,7 @@
 - [Parte 7 — componentes e compactação](#parte-7--componentes-e-compactação)
 - [Parte 8 — segurança e escrita](#parte-8--segurança-e-escrita)
 - [Parte 9 — testes que não testavam (navegação)](#parte-9--testes-que-não-testavam-navegação)
+- [Parte 10 — escrita pública e resiliência](#parte-10--escrita-pública-e-resiliência)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -442,6 +443,26 @@ Terceira passada, sobre `lib/navegacao`, `lib/busca` e `lib/tabela`.
 
 3. ✅ **`lib/busca` e `lib/tabela`** conferidos por amostragem: cabeçalho e
    teste ao lado, sem lógica reimplementada no teste.
+
+## Parte 10 — escrita pública e resiliência
+
+Quarta passada, em módulos frios (longe das sessões paralelas).
+
+### Achados da Parte 10
+
+1. ✅ **`lib/pageviews/validar.ts`** — validação da escrita pública
+   (`POST /api/pageview`): recusa URL externa (`://`), URL protocol-relative
+   (`//`), espaço em branco e string acima de 300 caracteres. É honesta ao
+   dizer que é contador aproximado, não métrica de faturamento. Sem furo.
+
+2. ✅ **`lib/robusto/rede.ts`** — retry com as três regras do Google SRE
+   cap. 22, documentadas: jitter sempre (full jitter), retentável separado de
+   permanente (5xx/429/rede retentam; 4xx e validação nunca) e orçamento de
+   retry por processo. Sem furo.
+
+3. ✅ **`lib/empresas`** — 4 arquivos sem cabeçalho (`dados.ts`,
+   `noticias.ts`, `entidades-dados.ts`, `sigmine.ts`) ganharam o bloco de
+   onboarding; os dois últimos são **SERVER-ONLY** (`node:fs`) e agora avisam.
 
 ## Achados e dívidas
 

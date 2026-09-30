@@ -1,3 +1,12 @@
+/**
+ * Empresas monitoradas pela frente `/empresas` — a lista curada (Vale hoje)
+ * com CNPJ público, municípios prioritários, sinônimos de SIGMINE e links
+ * úteis.
+ *
+ * Curadoria com fonte: CNPJ de empresa é dado público — não é dado pessoal, a
+ * distinção que o portal segue. `sinonimosSigmine` alimenta o casamento com os
+ * processos da ANM; `obterEmpresa(slug)` acha uma empresa pelo slug.
+ */
 export interface EmpresaMonitorada {
   slug: string;
   nome: string;

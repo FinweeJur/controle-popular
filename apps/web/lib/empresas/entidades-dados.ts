@@ -1,6 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 
+/**
+ * SERVER-ONLY: as fichas detalhadas das entidades da frente `/empresas`
+ * (mineradoras e fundos do Brasil, EUA e Canadá), com linha do tempo, TACs,
+ * contratos e licenciamentos.
+ *
+ * Usa `node:fs` para ler o acervo versionado — NÃO importe de `"use client"`.
+ * Só ente jurídico entra aqui: CNPJ, CIK e ticker são públicos.
+ */
 export interface ItemLinhaTempo {
   ano: string;
   data?: string;

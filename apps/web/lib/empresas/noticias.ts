@@ -1,3 +1,8 @@
+/**
+ * Notícias curadas sobre a Sigma Lithium (Vale do Jequitinhonha) para a frente
+ * `/empresas`. Dado versionado com data, veículo e link — a manchete não é
+ * reescrita, só resumida; a fonte é o veículo, não o portal.
+ */
 export interface NoticiaMonitoramento {
   data: string;
   titulo: string;

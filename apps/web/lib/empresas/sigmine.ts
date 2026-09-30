@@ -2,6 +2,15 @@ import { readFile } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
 
+/**
+ * SERVER-ONLY: processos minerários do SIGMINE (ANM) que casam com as empresas
+ * monitoradas, lidos do GeoJSON do globo 3D
+ * (`public/terras/globo/dados/camadas/sigmine-operacao.geojson`).
+ *
+ * Usa `node:fs` — NÃO importe de `"use client"`. O casamento é por nome
+ * normalizado (sem acento, caixa alta) contra `sinonimosSigmine`: grafia de
+ * fonte oficial diverge, então casa por sinônimo, nunca por suposição.
+ */
 export interface ProcessoSigmine {
   processo: string;
   numero: number;
