@@ -54,6 +54,42 @@ const FRONTES = {
       { label: "📋 Processos", link: "https://controlepopular.com.br/judiciario/processos", desc: "Ações, denúncias e consultas públicas em tramitação." },
     ],
   },
+  internacional: {
+    label: "🌐 Internacional",
+    desc: "Hub multilateral: ONU/PNUD (IDH, Gini), UNESCO, OMS, OMC/Comtrade e povos originários — trilíngue PT/EN/ES.",
+    link: "https://www.controlepopular.com.br/internacional",
+    subfrentes: [
+      { label: "🌐 Multilateral", link: "https://www.controlepopular.com.br/internacional", desc: "ONU/PNUD, UNESCO, OMS e OMC/Comtrade em dados sobre o Brasil." },
+      { label: "🇺🇸 EUA", link: "https://www.controlepopular.com.br/eua", desc: "SEC EDGAR, barragens NID/USACE, USAspending e BIA." },
+      { label: "🇨🇦 Canadá", link: "https://www.controlepopular.com.br/canada", desc: "Mineradoras na TSX no Brasil, emissões ECCC NPRI e caso Mount Polley." },
+    ],
+  },
+  assembleias: {
+    label: "🏛️ Assembleias Estaduais",
+    desc: "Hub e ficha das 27 assembleias legislativas estaduais brasileiras: mesa, proposições e contatos.",
+    link: "https://www.controlepopular.com.br/assembleias",
+    subfrentes: [
+      { label: "🏛️ As 27 assembleias", link: "https://www.controlepopular.com.br/assembleias", desc: "Composição, mesa diretora e produção legislativa por estado." },
+    ],
+  },
+  mineracao: {
+    label: "⛏️ Mineração e Cavas",
+    desc: "Série histórica de cavas em MG por satélite (modelo VLM calibrado) e processos minerários.",
+    link: "https://www.controlepopular.com.br/mineracao/cavas",
+    subfrentes: [
+      { label: "⛏️ Cavas por satélite", link: "https://www.controlepopular.com.br/mineracao/cavas", desc: "Detecção anual de cavas e o cruzamento com o cadastro da ANM." },
+      { label: "🗺️ Globo 3D", link: "https://www.controlepopular.com.br/funcaosocialterra/mapa", desc: "Camadas geoespaciais: barragens, terras, cavas e territórios." },
+    ],
+  },
+  laboratorio: {
+    label: "🧪 Laboratório de Dados",
+    desc: "Caderno NotebookLM cívico offline, gráficos dither, grafo de conhecimento e widgets.",
+    link: "https://www.controlepopular.com.br/laboratorio",
+    subfrentes: [
+      { label: "🧪 Laboratório", link: "https://www.controlepopular.com.br/laboratorio", desc: "Notebook com citações [n] e generative UI sobre as bases do portal." },
+      { label: "🕸️ Árvore de Conexões", link: "https://www.controlepopular.com.br/laboratorio/arvore", desc: "Grafo estilo Obsidian dos 4 eixos e das subfrentes." },
+    ],
+  },
   terra: {
     label: "🌄 Terra e Territórios",
     desc: "Soberania socioambiental: 203 cidades estratégicas, bacias, terras indígenas, serras e biomas.",
@@ -102,8 +138,18 @@ function menuBotões(): Array<Array<{ text: string; callback_data: string }>> {
     [
       { text: "🌍 Meio Ambiente", callback_data: "frente_ambiental" },
       { text: "🏙️ Cidades", callback_data: "frente_cidades" },
+    ],
+    [
       { text: "🏛️ Congresso", callback_data: "frente_congresso" },
       { text: "⚖️ Judiciário", callback_data: "frente_judiciario" },
+    ],
+    [
+      { text: "🌐 Internacional", callback_data: "frente_internacional" },
+      { text: "🏛️ Assembleias", callback_data: "frente_assembleias" },
+    ],
+    [
+      { text: "⛏️ Mineração", callback_data: "frente_mineracao" },
+      { text: "🧪 Laboratório", callback_data: "frente_laboratorio" },
     ],
     [
       { text: "🌄 Terra e Territórios", callback_data: "eixo_terra" },
@@ -119,13 +165,17 @@ function menuTexto(): string {
     "🌍 Meio Ambiente (ONSA) — licenciamento, barragens, COPAM, crimes socioambientais\n" +
     "🏙️ Cidades — 5.571 municípios (IBGE/Censo), ranking, microresumos\n" +
     "🏛️ Congresso — proposições, parlamentares, orçamento, Lei Rouanet\n" +
-    "⚖️ Judiciário — decisões, processos, TJ-MG, CNJ, STF\n\n" +
+    "⚖️ Judiciário — decisões, processos, TJ-MG, CNJ, STF\n" +
+    "🌐 Internacional — ONU/PNUD, UNESCO, OMS, OMC, EUA e Canadá\n" +
+    "🏛️ Assembleias Estaduais — as 27 assembleias legislativas\n" +
+    "⛏️ Mineração e Cavas — cavas por satélite e processos minerários\n" +
+    "🧪 Laboratório de Dados — NotebookLM cívico e grafo de conexões\n\n" +
     "<b>Eixos Temáticos:</b>\n" +
     "🌄 Terra e Territórios — 203 cidades, bacias, terras indígenas, biomas\n" +
     "🏛️ Estado e Economia — transparência, contratos, Judiciário, orçamento\n" +
     "❤️ Direitos em Movimento — saúde, educação, trabalho, moradia, justiça\n\n" +
     "Clique em uma opção ou use os comandos:\n" +
-    "/ambiental, /cidades, /congresso, /judiciario, /terra, /estado, /direitos";
+    "/ambiental, /cidades, /congresso, /judiciario, /internacional, /assembleias, /mineracao, /laboratorio, /terra, /estado, /direitos";
 }
 
 function subfrenteResposta(slug: keyof typeof FRONTES): { text: string; reply_markup: { inline_keyboard: Array<Array<{ text: string; url: string }>> } } | null {
@@ -221,9 +271,15 @@ export async function POST(req: Request) {
 export async function GET() {
   return NextResponse.json({
     status: "online",
-    endpoint: "https://controlepopular.com.br/api/telegram",
+    // SEMPRE `www`: o apex devolve 301 e o Telegram NÃO segue redirect no
+    // webhook — registrar no apex deixa o bot mudo (ver docs/OPERACAO).
+    endpoint: "https://www.controlepopular.com.br/api/telegram",
     descricao: "Webhook do Telegram Bot — Controle Popular",
-    comandos: ["/menu", "/ambiental", "/cidades", "/congresso", "/judiciario", "/terra", "/estado", "/direitos"],
+    comandos: [
+      "/menu", "/ambiental", "/cidades", "/congresso", "/judiciario",
+      "/internacional", "/assembleias", "/mineracao", "/laboratorio",
+      "/terra", "/estado", "/direitos",
+    ],
     frentes: Object.keys(FRONTES),
     atualizado: new Date().toISOString(),
   });
@@ -246,6 +302,10 @@ function callbackParaResposta(data: string) {
     frente_cidades: subfrenteResposta("cidades") ?? menu,
     frente_congresso: subfrenteResposta("congresso") ?? menu,
     frente_judiciario: subfrenteResposta("judiciario") ?? menu,
+    frente_internacional: subfrenteResposta("internacional") ?? menu,
+    frente_assembleias: subfrenteResposta("assembleias") ?? menu,
+    frente_mineracao: subfrenteResposta("mineracao") ?? menu,
+    frente_laboratorio: subfrenteResposta("laboratorio") ?? menu,
     eixo_terra: subfrenteResposta("terra") ?? menu,
     eixo_estado: subfrenteResposta("estado") ?? menu,
     eixo_direitos: subfrenteResposta("direitos") ?? menu,
@@ -262,6 +322,10 @@ function comandoParaResposta(cmd: string) {
     "/cidades": subfrenteResposta("cidades") ?? menu,
     "/congresso": subfrenteResposta("congresso") ?? menu,
     "/judiciario": subfrenteResposta("judiciario") ?? menu,
+    "/internacional": subfrenteResposta("internacional") ?? menu,
+    "/assembleias": subfrenteResposta("assembleias") ?? menu,
+    "/mineracao": subfrenteResposta("mineracao") ?? menu,
+    "/laboratorio": subfrenteResposta("laboratorio") ?? menu,
     "/terra": subfrenteResposta("terra") ?? menu,
     "/estado": subfrenteResposta("estado") ?? menu,
     "/direitos": subfrenteResposta("direitos") ?? menu,
