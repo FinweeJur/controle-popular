@@ -19,6 +19,7 @@
 - [Parte 5 — coleta (scripts/ e etl/)](#parte-5--coleta-scripts-e-etl)
 - [Parte 6 — frentes (ambiental, paraopeba, terras, judiciário, congresso)](#parte-6--frentes-ambiental-paraopeba-terras-judiciário-congresso)
 - [Parte 7 — componentes e compactação](#parte-7--componentes-e-compactação)
+- [Parte 8 — segurança e escrita](#parte-8--segurança-e-escrita)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -379,6 +380,40 @@ registrada e não se toca sem remedir.
    **duas implementações deliberadas** (decisão de 16/08, registrada no
    ESTADO). Aplainar o codec perde o ganho de ordem de grandeza. Fica
    documentado como decisão, não como dívida a pagar.
+
+## Parte 8 — segurança e escrita
+
+Segunda passada, agora fina: os caminhos de escrita e de autorização —
+`lib/painel`, `lib/gestao`, `lib/rate-limit.ts`, `lib/rate-limit-ip.ts`,
+`lib/chat-comum.ts`, `lib/server-only/json-etl.ts` e as rotas `/api/admin`.
+
+### Achados da Parte 8
+
+1. ✅ **Admin fechado.** Os 6 handlers de `/api/admin/*` chamam
+   `isAdminAuthorized` (agora em tempo constante); sem `ADMIN_TOKEN`, 401.
+
+2. ✅ **Painel de edição é local por construção.** As rotas do painel só
+   existem como `*.local.ts`, que `next.config.ts` mantém fora de qualquer
+   build (`painelLocalLigado`). Ele usa `PAINEL_TOKEN` próprio (nunca o
+   `ADMIN_TOKEN`), **fail-closed**, e escreve caminho fixo
+   (`data/edicoes.json`) — sem travessia. O `git` roda por `execFileSync`
+   (sem shell, sem argumento do usuário).
+
+3. ✅ **JSON grande fora do bundle.** `json-etl.ts` (`SERVER-ONLY`) lê por
+   `readFileSync`, o padrão que evita estourar o teto de 3 MiB gzip do Worker
+   — o erro 10027 de 24/08 está documentado no cabeçalho.
+
+4. ✅ **IP unificado numa fonte só** (30/09/2026). `chat-comum.ts`
+   (`ipDoVisitante`) agora delega a `ipDoCliente` (`lib/rate-limit-ip.ts`),
+   que é a ordem canônica `cf-connecting-ip → x-forwarded-for → x-real-ip`.
+   Antes havia duas implementações da mesma regra; a de `rate-limit-ip.ts`
+   já trazia o TODO da unificação.
+
+5. 🔸 **`checarUpstash` renova a janela a cada `INCR`.** `EXPIRE` é chamado em
+   toda requisição, então sob carga sustentada a janela reinicia e o bloqueio
+   só solta após 60 s de silêncio. É mais rígido que o desejado, não mais
+   frouxo — e é caminho **dormente** (Upstash não está configurado; o padrão é
+   o binding do Worker). Fica anotado para quem ligar o Upstash.
 
 ## Achados e dívidas
 
