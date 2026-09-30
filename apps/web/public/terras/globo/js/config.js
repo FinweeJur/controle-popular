@@ -1159,6 +1159,13 @@ export const LAYER_REGISTRY = [
     color: 0xb08968,   /* terra/campo */
     on: false, render: 'point', pointSize: 6, listavel: true,
   },
+  {
+    id: 'hist-revoltas', label: 'Revoltas e lutas com lugar',
+    hint: '15 revoltas e lutas do acervo de memória do portal cujo lugar é inequívoco: ponto no centroide do município, com ano e tipo.',
+    aviso: 'Piso: 15 dos 533 verbetes têm lugar identificado — o resto fica sem ponto. E revolta é processo, não pino: o ponto marca onde a fonte situa o fato, não todo o território dele.',
+    color: 0xd9534f,   /* vermelho de luta */
+    on: false, render: 'point', pointSize: 7, listavel: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1694,6 +1701,13 @@ export const CAMADAS = [
     hint: '13 conjuntos rurais tombados em Minas (fazendas e uma usina), cada um com o ato legal do tombamento.',
     aviso: 'É o que está tombado, não o universo das fazendas e engenhos do estado; e o ponto é o centroide do município, não a sede.',
     fontes: ['hist-fazendas-engenhos'],
+  },
+  {
+    id: 'hist-revoltas', assunto: 'historia',
+    label: 'Revoltas e lutas com lugar',
+    hint: '15 revoltas e lutas do acervo de memória, com lugar inequívoco pelo gazetteer curado; ponto no centroide do município.',
+    aviso: 'Piso: só 15 dos 533 verbetes têm lugar. Revolta é processo, não pino.',
+    fontes: ['hist-revoltas'],
   },
 ];
 

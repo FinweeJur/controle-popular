@@ -224,6 +224,7 @@ export default function PaginaHistoria() {
         <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {[
             ["hist-capitanias", "Capitanias hereditárias (1534)"],
+            ["hist-revoltas", "Revoltas e lutas com lugar"],
             ["hist-terras-publicas", "Terras públicas do Império"],
             ["hist-fazendas-engenhos", "Fazendas históricas tombadas"],
             ["mineracao-em-uc", "Mineração detectada em UC"],

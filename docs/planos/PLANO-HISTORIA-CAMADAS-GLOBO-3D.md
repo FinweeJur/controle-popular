@@ -289,18 +289,19 @@ de publicar, em vez de link solto para catálogo genérico.
 Registradas por pedido do dev (30/09/2026). Cada uma diz **o que falta** e **o que a
 destrava** — nada aqui se resolve por suposição.
 
-| # | Pendência | O que destrava | Dono |
-|---|---|---|---|
-| P1 | **Mineração escravizada** (Fase G): dado por município | medir o **recenseamento de 1872** e a base do **CEDEPLAR/UFMG** (demografia histórica) | agente |
-| P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente |
-| P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente |
-| P4 | **IPHAN**: rota de dado em massa morta/barrada | `geoservicos.iphan.gov.br` não resolve (DNS); `dados.gov.br/api` dá 401 → reencontrar a via | agente |
-| P5 | **Biblioteca Nacional** (Fase E): cartografia dos tratados | sondar o acervo digital (BNDigital) para Tordesilhas/Madri/Santo Ildefonso | agente |
-| P6 | **Camada `hist-revoltas.geojson`** (Fase C): 14 revoltas com lugar, ainda fora do globo | gerar a camada a partir do gazetteer quando o recorte crescer | agente |
-| P7 | **Link canônico das obras acadêmicas** acima | conferir obra a obra (sem link solto de catálogo) | agente |
-| P8 | **Revisão humana dos 100 exemplos** (plano de cavas) | é do dev; barra a publicação de número novo da Fase E | dev |
-| P9 | **Confirmar a leitura de "maiores"** e o recorte da Fase A | é do dev | dev |
-| P10 | **Deploy** das camadas novas no Guara | política de ~5 dias; a suíte e o `tsc` estão verdes | dev |
+| # | Pendência | O que destrava | Dono | Estado |
+|---|---|---|---|---|
+| P1 | **Mineração escravizada** (Fase G): dado por município | medir o **recenseamento de 1872** e a base do **CEDEPLAR/UFMG** (demografia histórica) | agente | 🚧 CEDEPLAR responde 200; a página do programa de demografia foi achada, a base de dados ainda não |
+| P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente | ⛔ |
+| P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente | ⛔ |
+| P4 | **IPHAN**: rota de dado em massa morta/barrada | achada a página `/iphan/pt-br/acesso-a-informacao/dados-abertos` (200), que aponta para o `dados.gov.br` — cuja **API devolve 401**; falta a via de download direto | agente | 🚧 |
+| P5 | **Biblioteca Nacional** (Fase E): cartografia dos tratados | sondar o acervo digital — **medido 30/09: 403 com UA honesto E com UA de navegador**, em `bndigital.bn.gov.br` e `bn.gov.br/acervo`; a via segue a reencontrar | agente | ⛔ |
+| P6 | **Camada `hist-revoltas.geojson`** | **FEITO 30/09:** 15 lutas com lugar, geradas do próprio gazetteer (`scripts/gerar-camada-revoltas.py`) e registradas no globo | agente | ✅ |
+| P7 | **Link canônico das obras acadêmicas** acima | conferir obra a obra (sem link solto de catálogo) | agente | 🚧 |
+| P8 | **Revisão humana dos 100 exemplos** (plano de cavas) | é do dev; barra a publicação de número novo da Fase E | dev | ⛔ |
+| P9 | **Confirmar a leitura de "maiores"** e o recorte da Fase A | é do dev | dev | ⛔ |
+| P10 | **Deploy** das camadas novas no Guara | política de ~5 dias; a suíte e o `tsc` estão verdes | dev | ⛔ |
+| P11 | **Moeda/tabela de preço do provedor** para o custo em yuan | confirmar em que moeda o opencode grava `session.cost` (hoje a conversão usa taxa assumida 1 USD = 7,1) | dev | 🚧 |
 
 ## Fases de execução
 
@@ -373,8 +374,9 @@ destrava** — nada aqui se resolve por suposição.
   `Onde: <lugar>/<UF>` com o botão **"Voe até aqui"** (Fase 0).
 - **16 contextos históricos** publicados em `dados/contextos-lugares.json` (um por
   movimento), cada um com fonte (Arquivo Nacional, Biblioteca Nacional, Palmares).
-- **Pendente declarado:** a camada `hist-revoltas.geojson` no globo — o botão já voa sem
-  ela; a camada entra quando o recorte tiver densidade que justifique.
+- **Camada `hist-revoltas.geojson`: FEITA em 30/09** — 15 lutas com lugar, geradas do
+  próprio gazetteer por `scripts/gerar-camada-revoltas.py` e registradas no globo
+  (assunto `historia`, desligada). Antes era "pendente declarado"; a P6 fechou.
 - Suíte verde: **2.036 testes** no vitest + 177 no globo; `tsc` limpo.
 
 ### Fase D — sesmarias de MG (1–2 dias)
