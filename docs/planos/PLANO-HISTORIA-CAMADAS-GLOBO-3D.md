@@ -1,0 +1,256 @@
+# Plano de camadas históricas no globo 3D (revoltas, sesmarias e capitanias)
+
+> **Tipo:** PLANO
+> **Domínio:** global (história + território + memória)
+> **Última medição:** 2026-09-30
+> **Leitura estimada:** média (10–15 min)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [plano-geolocalizacao-camadas-globo-3d.md](plano-geolocalizacao-camadas-globo-3d.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** historia, globo 3d, capitanias hereditarias, sesmarias, revoltas, tordesilhas, tratado de madri, territorio, limites, ibge, arquivo publico mineiro, incra, openhistoricalmap, camadas, memoria
+
+## Sumário
+
+- [O que o dev pediu](#o-que-o-dev-pediu)
+- [O problema editorial: história não acusa, data e cita](#o-problema-editorial-história-não-acusa-data-e-cita)
+- [O que já existe no repositório (medido em 30/09/2026)](#o-que-já-existe-no-repositório-medido-em-30092026)
+- [Fontes medidas (30/09/2026)](#fontes-medidas-30092026)
+- [Fontes por sondar (não medidas)](#fontes-por-sondar-não-medidas)
+- [As cinco camadas propostas](#as-cinco-camadas-propostas)
+- [Fases de execução](#fases-de-execução)
+- [Regras editoriais específicas](#regras-editoriais-específicas)
+- [Riscos e o que NÃO fazer](#riscos-e-o-que-não-fazer)
+- [Decisões registradas](#decisões-registradas)
+- [Origem](#origem)
+
+## O que o dev pediu
+
+Pedido do dev de 30/09/2026, com as palavras dele:
+
+> "Com base em registros e mapas históricos preferencialmente de fontes oficiais e
+> acadêmicas, como Incra, IBGE, USP, UFMG, UFRJ, e outras, seja proativo na busca, faça
+> o plano abaixo: geo localizar e colocar camadas no mapa 3D de História, com localização
+> das revoltas, limites territoriais e de controle máximo, das sesmarias, capitanias
+> hereditárias e maiores."
+
+Este documento é esse plano: **pesquisa medida nas fontes** (o que dá e o que não dá),
+**as camadas** a construir, **as fases** e o que **não** fazer.
+
+⚠️ **Interpretação de "e maiores", a confirmar:** leio "maiores" como **a maior extensão de
+controle** — os limites máximos do território na colônia (Tordesilhas 1494 → Madri 1750 →
+Santo Ildefonso 1777), e não "as maiores sesmarias". As duas leituras estão previstas: a
+camada `hist-sesmarias-mg` pode ordenar por área **quando a fonte der a área**, e a camada
+de limites cobre o "controle máximo". Confirmar com o dev na [Fase A](#fases-de-execução).
+
+## O problema editorial: história não acusa, data e cita
+
+O portal publica ato oficial e dado público; a tentação, aqui, é pior que nas outras frentes:
+**mapa histórico parece prova**. Três regras governam estas camadas:
+
+1. **Fronteira colonial é aproximação, não linha exata.** Os mapas de 1574, 1750 e 1777 foram
+   desenhados à mão, em escalas diferentes, com trechos "por descobrir". Todo polígono desta
+   frente nasce com **ano, autor, obra e natureza** ("traçado histórico aproximado") na ficha.
+2. **Datas e autores viajam com o desenho.** A capitania de 1534 não é a de 1750; o "controle
+   máximo" só existe **contra um ano e um tratado**. Sem o ano, o número mente.
+3. **Nome colonial ≠ nome atual.** Sesmarias e capitanias usam freguesias, arraiais e vilas
+   que não existem hoje. Casar por nome é o erro clássico; o caminho é o **dicionário
+   documentado** (ver a armadilha de "município por nome" no [FONTES.md](../06-fontes/FONTES.md)),
+   com o que não casou **declarado**.
+
+E a frase da casa: **a história aqui é acervo documental, com fonte e data — o portal não
+julga o passado como julga um ato de hoje.** Cada ficha leva "Fonte oficial ↗".
+
+## O que já existe no repositório (medido em 30/09/2026)
+
+**A infraestrutura de camadas do globo já está pronta e documentada** —
+[plano-geolocalizacao-camadas-globo-3d.md](plano-geolocalizacao-camadas-globo-3d.md):
+
+- registro de camadas em `apps/web/public/terras/globo/js/config.js` (`ASSUNTOS` e
+  `LAYER_REGISTRY`, com `render: 'point'|'polygon'`, `color`, `pointSize`);
+- ficha lateral em `apps/web/public/terras/globo/js/ui/inspector.js`;
+- **geolocalização híbrida** já desenhada: coordenada nativa quando existe; senão
+  **centróide municipal (IBGE) com dispersão determinística** (espiral do número áureo pelo
+  hash do registro), o que evita empilhar pontos no mesmo pixel;
+- gerador de referência: `scripts/gerar-camadas-ambientais-globo.py`;
+- camadas versionadas em `apps/web/public/terras/globo/dados/camadas/`.
+
+**Dados que já existem e encostam nesta frente:**
+
+| Item | O que é | Onde |
+|---|---|---|
+| `lib/memoria/calendario.ts` | **538 verbetes** de lutas, revoltas e resistências (dia, ano, título, resumo, tipo, autor, órgão, URL) | campos medidos: `diaMes, ano, titulo, resumo, tipo, autor, orgao, url, semData, fonteCurta, fonteData` — ⚠️ **não há campo de lugar** |
+| `municipios-centroides.json` e `municipios-mg.json` | centróides oficiais do IBGE | `apps/web/data/` |
+| `terra-publica-certificada.geojson`, `devolutas-arrecadadas.geojson`, `assentamentos.geojson` | terra pública e assentamentos (INCRA) | camadas do globo |
+| `atos-area-protegida-municipios.geojson` | atos municipais sobre área protegida | camadas do globo |
+
+⚠️ **A lacuna que manda na Fase C:** os 538 verbetes de revolta **não têm coordenada nem
+município**. Georreferenciá-los exige **enriquecer o dado** (extrair o lugar do texto da
+fonte, documentado) — não "adivinhar" o ponto.
+
+## Fontes medidas (30/09/2026)
+
+Todas sondadas de verdade nesta máquina, em 30/09/2026, com User-Agent honesto.
+
+| Fonte | O que dá | O que **não** dá | Link |
+|---|---|---|---|
+| **IBGE — Brasil: 500 anos de povoamento** (oficial) | Seção *construção do território*: Tordesilhas, capitanias hereditárias, União Ibérica, descoberta do ouro, **tratados** e extensão atual. Texto + mapas (JPG) + publicação completa em PDF | Não é dado vetorial: é **mapa e texto** | [brasil500anos.ibge.gov.br](https://brasil500anos.ibge.gov.br/territorio-brasileiro-e-povoamento/construcao-do-territorio/capitanias-hereditarias.html) |
+| **IBGE — Evolução da Divisão Territorial do Brasil 1872-2010** (oficial) | Ficha do *Mapa das Capitanias Hereditárias* (**mapa de Luis Teixeira, 1574**); bbox do Brasil (−74,0 a −34,8; −33,7 a 5,27) | Formato **PDF/PNG** no catálogo; foi catalogado como "arquivo antigo" | ficha `cb6e6495-cd71-45d4-884f-904e6231858c` no [Catálogo de Metadados](https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/search?keyword=Captanias%20Heredit%C3%A1rias) |
+| **IBGE — malhas** (oficial) | Malhas atuais por UF/município/região em SVG, GeoJSON e TopoJSON | Não há malha **colonial** vetorial no FTP | API `servicodados.ibge.gov.br/api/v3/malhas/...`; espelho `geoftp.ibge.gov.br/.../malhas_municipais/` (**2000 a 2025**) |
+| **Arquivo Público Mineiro — SIAAPM, Seção Colonial** (oficial, MG) | **Registro de sesmarias** catalogado e pesquisável: séries `SC-01` (1605-1799), `SC-106` (1753-1754), `SC-112`, `SC-119`, `SC-122`, `SC-125`, `SC-127`, `SC-129`, `SC-140`, `SC-146`, `SC-172`… | É **catálogo de códices** (metadado + imagem), não geometria | busca `siaapm.cultura.mg.gov.br/modules/brtacervo/search.php?query=sesmaria` |
+| **APM — Terras Públicas e núcleos coloniais** (oficial, MG) | "Repartição Especial das Terras Públicas" e "Mapas de População e Títulos de Terra dos Núcleos Coloniais"; "Documentos Cartográficos" | Idem: catálogo e imagem | módulos `terras_publicas`, `mapas_populacao`, `grandes_formatos_docs` no SIAAPM |
+| **OpenHistoricalMap** (comunidade, CC0) | Fronteiras históricas do mundo em vetor; **têm relação de "Capitanias"** (relação `2751236` testada via Overpass) | **Não é fonte oficial**: é wiki colaborativa — serve de **ponto de partida**, sempre conferida contra o mapa oficial | Overpass `overpass-api.openhistoricalmap.org`; dados **CC0** |
+
+**O que a própria fonte oficial diz (IBGE 500 anos), para citar com precisão:** a capitania
+não era propriedade absoluta do donatário — as terras eram do Estado; o hereditário era o
+**poder de administrar**, e ao donatário se permitia **conceder sesmarias** ("lotes de terra
+não cultivada", com prazo para torná-la produtiva).
+
+## Fontes por sondar (não medidas)
+
+⚠️ Buscadores responderam mal nesta máquina em 30/09 (DuckDuckGo com captcha; Bing
+ignorando os termos técnicos). Ficam **nomeadas e com endereço provável** para a Fase A
+medir uma a uma:
+
+- **Biblioteca Nacional — cartografia digital (BNDigital)** — mapas do período colonial e do
+  Império (inclusive o *Mapa das Cortes*, 1749): ponto de partida para os **limites dos
+  tratados**. É a fonte primária natural do "controle máximo".
+- **Laboratórios de cartografia histórica (USP, UFMG, UFRJ)** — acervos georreferenciados e
+  artigos; o dev citou as três. Medir repositório, licença e formato antes de usar.
+- **INCRA — Acervo Fundiário** — o projeto **já consome** o WFS do INCRA; verificar se há
+  camada de **terras devolutas / sesmarias remanescentes** além do que o globo já publica.
+- **Wikidata / Wikipédia** — ponte terciária para **coordenadas de evento** (revoltas),
+  nunca como campo `fonte` (regra do [AGENTS.md § 7](/AGENTS.md)).
+
+## As cinco camadas propostas
+
+Cada camada diz **o que prova** e **o que não prova** — e a ficha publica isso.
+
+### 1. `hist-capitanias` — as capitanias hereditárias
+
+- **O que é:** polígonos das 14 donatarias (1534-1536) e a evolução até as capitanias
+  régias/província; recorte do Brasil.
+- **Fonte:** mapa oficial do IBGE (Luis Teixeira, 1574) e a seção *construção do território*;
+  **geometria de trabalho** a partir do OpenHistoricalMap, **conferida** contra o mapa oficial.
+- **O que prova:** onde a Coroa tentou dividir e administrar a costa.
+- **O que NÃO prova:** que a linha tenha sido realidade no terreno — muitas capitanias
+  fracassaram ou não passaram do papel.
+
+### 2. `hist-sesmarias-mg` — sesmarias de Minas Gerais
+
+- **O que é:** pontos por **registro** de sesmaria (e cartas de confirmação/doação), com
+  período, série/códice e link para o APM.
+- **Fonte:** APM — Seção Colonial (`brtacervo`), busca por palavra-chave "sesmaria".
+- **Como localizar:** o registro traz **lugar** (freguesia/arraial/vila); o ponto sai do
+  **dicionário documentado** lugar→município atual + **centróide IBGE com dispersão**; o que
+  não casa fica com `municipio_atual: null` e o nome **como na fonte** preservado.
+- **O que prova:** que um ato de doação existe no acervo, com data e lugar.
+- **O que NÃO prova:** a área no terreno — o documento raramente traz uma geometria fechada.
+- ⚠️ **Titular:** o nome do sesmeiro é parte do **ato oficial** e entra como o ato o traz;
+  **nunca** CPF/CNPJ e **nunca** cruzamento com base de pessoa física (AGENTS § 5.2).
+
+### 3. `hist-revoltas` — as revoltas no mapa
+
+- **O que é:** pontos das revoltas e lutas já catalogadas em `lib/memoria/calendario.ts`,
+  com ano, tipo e link da fonte.
+- **Fonte:** o próprio acervo do portal (Mística/Memória) + as fontes que ele cita; o
+  **enriquecimento** acrescenta `local`, `uf` e a coordenada (município IBGE).
+- **O que prova:** onde o episódio se deu, segundo a fonte citada.
+- **O que NÃO prova:** que o evento cobriu só aquele ponto — revolta é processo, não pino.
+
+### 4. `hist-territorio-maximo` — limites e controle máximo
+
+- **O que é:** traçados dos marcos — **Tordesilhas (1494)**, **Madri (1750)**, **Santo
+  Ildefonso (1777)** — e a extensão de controle efetivo no século XVIII.
+- **Fonte:** IBGE 500 anos (tratados) e mapas da **Biblioteca Nacional** (a sondar).
+- **O que prova:** o desenho **como um período e um tratado o fixaram**.
+- **O que NÃO prova:** presença efetiva contínua — "controle" é frágil e pontual; a ficha
+  diz isso.
+
+### 5. `hist-divisao-municipal-<ano>` — a evolução das malhas (se houver vetor)
+
+- **O que é:** malhas municipais históricas (1872, 1920, 1940…) para "ver o mapa mudar".
+- **Fonte:** IBGE — *Evolução da Divisão Territorial* (medido: **publicação e mapas em PDF**;
+  não se confirmou vetor no FTP, que só tem 2000-2025).
+- **Decisão de escopo:** se não houver vetor oficial, **declara a lacuna** e entrega só as
+  imagens citáveis — não desenhar à mão.
+
+## Fases de execução
+
+### Fase A — dicionário e gazetteer (0,5 dia)
+
+- Montar `lugar colonial → município atual` com fonte para cada casamento, reaproveitando o
+  dicionário de municípios e os centróides do IBGE; o que não casar fica declarado.
+- Reaproveitar a **dispersão determinística** do [plano de camadas](plano-geolocalizacao-camadas-globo-3d.md)
+  (nada de ponto aleatório que muda a cada build).
+- Sondar as **fontes por sondar** (BN, labs, INCRA) e registrar `robots.txt`, licença e formato.
+- **Confirmar com o dev** a leitura de "maiores" e o recorte (Brasil colônia × MG × período).
+
+### Fase B — capitanias (1–2 dias)
+
+- Obter a geometria do OpenHistoricalMap (CC0) e **conferir** contra o mapa do IBGE; onde
+  divergir, vale o oficial e a divergência fica escrita.
+- Camada nasce **desligada**, com o ano e a natureza na etiqueta.
+
+### Fase C — revoltas (1 dia)
+
+- Enriquecer `calendario.ts` com `local`, `uf` e coordenada (município IBGE); campo novo
+  documentado e testado em `mistica.test.ts`.
+- Gerar `hist-revoltas.geojson`; a tabela de `/memoria` ganha coluna "Onde".
+
+### Fase D — sesmarias de MG (1–2 dias)
+
+- Coletor do APM (`brtacervo`): busca por "sesmaria", paginação, só **metadado + link**;
+  varredura de dado pessoal antes de commitar (AGENTS § 5.2).
+- Gerar `hist-sesmarias-mg.geojson` (pontos) e o agregado por município/período.
+
+### Fase E — limites e tratados (1 dia)
+
+- Camada dos traçados (Tordesilhas/Madri/Santo Ildefonso); cada linha com o **ano e o
+  tratado** no nome. Depende do que a BN liberar na Fase A.
+
+### Fase F — globo, ficha e página (1 dia)
+
+- Registrar as camadas em `config.js` + ficha no `inspector.js`; as seis qualidades
+  ([AGENTS.md § 8](/AGENTS.md)) numa página `/historia` (busca, filtros por ano/tipo/UF,
+  ordenação, cartões de topo, CSV com BOM e `;`, impressão vetorial).
+- Critério de pronto: suíte verde, `tsc` limpo, acessibilidade AA, e **toda** camada com
+  `fonte`, `data`, `autor`, `licenca` e `natureza` no arquivo.
+
+## Regras editoriais específicas
+
+1. **História não acusa.** O portal publica o documento e o mapa; o juízo é do leitor e da
+   historiografia — nunca uma manchete do portal.
+2. **Data e autor no desenho.** Nenhum polígono/linha sai sem ano, obra e autoria.
+3. **Aproximação declarada.** Fronteira histórica é traçado aproximado; a ficha escreve isso.
+4. **Nunca somar bases diferentes** (capitanias × sesmarias × municípios — três perguntas).
+5. **Lugar por dicionário, jamais por forma.** O que não casar fica `null` e visível.
+6. **Fonte primária primeiro:** IBGE, APM, Biblioteca Nacional; comunidade (OHM) e Wikipédia
+   só como **partida**, com a conferência oficial registrada.
+
+## Riscos e o que NÃO fazer
+
+| Risco | O que fazer |
+|---|---|
+| Mapa de 1574 lido como fronteira exata | escrever "traçado histórico aproximado" na ficha e no rótulo da camada |
+| "Controle máximo" sem ano virar manchete | sempre com o tratado e o ano; nunca "o Brasil era X" |
+| Nome de sesmeiro tratado como dado pessoal | é ato oficial; publicar como o ato traz, **sem CPF/CNPJ** e sem cruzar com base de pessoa |
+| Casar arraial/freguesia por nome | dicionário documentado; divergência declarada |
+| Copiar o OpenHistoricalMap como se fosse oficial | conferir contra o mapa oficial; divergência escrita |
+| Camada pesada derrubar o globo | nascer desligada; teto de payload (AGENTS § 5.1) e GeoJSON simplificado |
+| Sobrepor "história" a "denúncia" na mesma tela | assunto próprio no globo (`ASSUNTOS`), cor e grupo separados |
+
+## Decisões registradas
+
+- **Dev, 30/09/2026:** pedir as camadas históricas no globo 3D (revoltas, limites e controle
+  máximo, sesmarias, capitanias), preferindo fontes **oficiais e acadêmicas** (Incra, IBGE,
+  USP, UFMG, UFRJ e outras), com busca proativa.
+- **Agente, 30/09/2026:** leitura de "maiores" como **maior extensão de controle**
+  (a confirmar na Fase A); camadas propostas acima; OpenHistoricalMap entra como ponto de
+  partida CC0, nunca como fonte oficial.
+- **Vale a regra da casa:** evidência histórica é **documento público com fonte e data**;
+  dado de pessoa só como o ato oficial o traz.
+
+## Origem
+
+- Pedido do dev em 30/09/2026 (chat).
+- Medições de 30/09/2026: IBGE (Brasil 500 anos; Catálogo de Metadados geo; malhas API v3 e
+  FTP), Arquivo Público Mineiro (SIAAPM, Seção Colonial e Terras Públicas) e OpenHistoricalMap
+  (Overpass). Infra de camadas do globo: [plano-geolocalizacao-camadas-globo-3d.md](plano-geolocalizacao-camadas-globo-3d.md).
