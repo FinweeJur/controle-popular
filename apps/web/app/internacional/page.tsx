@@ -140,7 +140,27 @@ export default function PaginaHubInternacional() {
       </section>
 
       {/* LINKS DE ATALHO PARA HUBS ESPECÍFICOS */}
-      <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 print:hidden">
+      <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 print:hidden">
+        <Link
+          href="/internacional/operacoes-militares"
+          className="flex items-center justify-between p-3.5 rounded-xl border border-red-500/40 bg-red-500/10 hover:border-red-500 transition-colors group"
+        >
+          <div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">⚔️ Operações Militares & PMCs</div>
+            <div className="text-[11px] text-text-soft">Intervenções, Golpes, Mercenários e Contratos</div>
+          </div>
+          <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
+        </Link>
+        <Link
+          href="/internacional/desclassificados"
+          className="flex items-center justify-between p-3.5 rounded-xl border border-primary/30 bg-primary/5 hover:border-primary transition-colors group"
+        >
+          <div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Arquivos Desclassificados</div>
+            <div className="text-[11px] text-text-soft">Inteligência do G20 (CIA, FBI, SNI, MI5)</div>
+          </div>
+          <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
+        </Link>
         <Link
           href="/consumo-corporativo"
           className="flex items-center justify-between p-3.5 rounded-xl border border-sky-500/40 bg-sky-500/10 hover:border-sky-500 transition-colors group"
@@ -153,7 +173,7 @@ export default function PaginaHubInternacional() {
         </Link>
         <Link
           href="/europa"
-          className="flex items-center justify-between p-3.5 rounded-xl border border-primary/30 bg-primary/5 hover:border-primary transition-colors group"
+          className="flex items-center justify-between p-3.5 rounded-xl border border-border bg-surface hover:border-primary/50 transition-colors group"
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇪🇺 Hub Europa</div>
@@ -182,12 +202,12 @@ export default function PaginaHubInternacional() {
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
         <Link
-          href="/internacional/desclassificados"
+          href="/internacional/operacoes-militares/mapa"
           className="flex items-center justify-between p-3.5 rounded-xl border border-border bg-surface hover:border-primary/50 transition-colors group"
         >
           <div>
-            <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Arquivos Desclassificados</div>
-            <div className="text-[11px] text-text-soft">Inteligência do G20 (CIA, FBI, SNI, MI5)</div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">🗺️ Mapa Mundial de Defesa</div>
+            <div className="text-[11px] text-text-soft">Geolocalização de conflitos e bases</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
