@@ -7,6 +7,9 @@ import { REDE_ITENS, LAI_ESTADUAL, LAI_FEDERAL, NAO_VERIFICADO } from "@/lib/bet
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
+import VitrineLutas from "./VitrineLutas";
+import type { VerbeteVitrine } from "./VitrineLutas";
 
 /**
  * `/direitos-em-movimento` — a PORTA, não uma seção nova para construir.
@@ -57,6 +60,39 @@ export default async function DireitosEmMovimentoHub() {
   const totalLei = normas.length + precedentes.length;
   const totalOrgs = REDE_ITENS.length;
   const totalLai = LAI_ESTADUAL.length + LAI_FEDERAL.length;
+
+  // Vitrine das lutas curadas (F5): país, regiões e UFs, cada uma com tipo,
+  // período, lugar e a fonte primária. Só verbete válido publica (guarda
+  // editorial: verbete sem fonte fechada não entra — AGENTS §7).
+  const capitalizar = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  const paraVitrine = (
+    ambito: string,
+    lugar: string | undefined,
+    lista: (typeof CAMADAS_MEMORIA.pais)[string]
+  ): VerbeteVitrine[] =>
+    lista.filter(verbeteValido).map((v) => ({
+      ambito,
+      lugar,
+      titulo: v.titulo,
+      periodo: v.periodo,
+      resumo: v.resumo,
+      tipo: v.tipo,
+      fonte: fontesPrimarias(v).map((f) => ({
+        orgao: f.orgao,
+        ano: f.ano,
+        titulo: f.titulo,
+        url: f.url,
+      })),
+    }));
+  const vitrine: VerbeteVitrine[] = [
+    ...paraVitrine("Brasil", undefined, CAMADAS_MEMORIA.pais["br"] ?? []),
+    ...Object.entries(CAMADAS_MEMORIA.regiao).flatMap(([regiao, lista]) =>
+      paraVitrine("Região", capitalizar(regiao), lista)
+    ),
+    ...Object.entries(CAMADAS_MEMORIA.uf).flatMap(([uf, lista]) =>
+      paraVitrine("Estado", uf.toUpperCase(), lista)
+    ),
+  ];
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
@@ -194,6 +230,20 @@ export default async function DireitosEmMovimentoHub() {
             mostra terra indígena, mineração e barragem, não esse recorte. Não aparecer no mapa
             não é o mesmo que não existir ali.
           </p>
+        </div>
+      </section>
+
+      <section className="mt-12" aria-labelledby="vitrine-lutas">
+        <h2 id="vitrine-lutas" className="font-display text-2xl font-bold">
+          Vitrine das lutas
+        </h2>
+        <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
+          Marcos de resistência do Brasil, das regiões e dos estados, com período,
+          lugar e a fonte de cada um. Todo verbete sai de fonte primária; lacuna é
+          declarada, nunca preenchida com marco inventado.
+        </p>
+        <div className="mt-6">
+          <VitrineLutas verbetes={vitrine} />
         </div>
       </section>
 
