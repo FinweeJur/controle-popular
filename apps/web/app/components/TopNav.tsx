@@ -68,6 +68,7 @@ const SECOES_MENU = [
     badgeClasse: 'bg-alert/10 text-alert border-alert/30',
     links: [
       { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake },
+      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen },
       { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity },
       { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap },
       { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase },
