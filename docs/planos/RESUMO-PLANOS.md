@@ -17,6 +17,10 @@
 
 ## 🎯 MACRO-ETAPAS DO PLANO DE EXPANSÃO
 
+> Planos concluídos e verificados saem de `docs/planos/` para
+> [`docs/historico/planos/`](../historico/planos/). Cada etapa abaixo aponta o
+> plano arquivado quando existe.
+
 ### 0. 🏛️ Conselhos Sociais / Direitos / Temáticos
 **Status:** ✅ CONCLUÍDO
 
@@ -60,6 +64,7 @@
 - **Página:** `/ambiental/autorizacoes` (destinação/regime de cada imóvel)
 - **Gerador:** `scripts/etl/territorio/gerar-destinacoes-uniao-mg.py`
 - **Schema:** `apps/web/lib/db/schema-autorizacoes.ts`
+- **Plano (arquivado):** [PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md](../historico/planos/PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md)
 
 ### 4. 🤝 Parcerias Público-Privadas (PPP)
 **Status:** ✅ CONCLUÍDO (29/09)
@@ -68,6 +73,7 @@
 - **Página:** `/ambiental/ppp` (instrumento, supervisão e estruturação)
 - **Gerador:** `scripts/etl/concessoes/gerar-ppp-mg.py`
 - **Schema:** `apps/web/lib/db/schema-ppp.ts`
+- **Plano (arquivado):** [PLANO-ANALISE-CONSELHOS-OUTORGAS.md](../historico/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md)
 
 ### 5. 🤖 Bot do N8n (fiscalização de bots)
 **Status:** ✅ CONCLUÍDO (29/09)
@@ -76,6 +82,7 @@
 - **Fiscaliza:** CPF por mod-11, IBGE inválido, duplicata, URL ausente, lacuna
 - **Self-test:** `npx tsx bots/fiscaliza-bases.mts --self-test`
 - **Skill:** `skills/productivity/verificacao-dados-automacao/SKILL.md`
+- **Plano (arquivado):** [PLANO-TRABALHO-SETEMBRO-2026.md](../historico/planos/PLANO-TRABALHO-SETEMBRO-2026.md)
 
 ### 6. 🌐 Expansão Internacional & Multilateral
 **Status:** ✅ CONCLUÍDO (29/09)

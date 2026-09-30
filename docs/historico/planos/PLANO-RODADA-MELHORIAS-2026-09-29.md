@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-29
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [PRODUTO.md](../../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../../03-desenvolvimento/DESENVOLVIMENTO.md)
 > **Palavras-chave:** fonte, acessibilidade, portabilidade, chatbot, índice, blog, defasagem, movimentos populares
 
 ## Sumário

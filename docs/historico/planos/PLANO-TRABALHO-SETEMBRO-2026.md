@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-19
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [GUIA-DE-DOCUMENTACAO.md](../../GUIA-DE-DOCUMENTACAO.md)
 > **Palavras-chave:** plano, expansão, fila
 
 ## Sumário
@@ -182,9 +182,9 @@ Expansão do portal **Controle Popular** com foco em **verificação de dados** 
 ## 🔗 LINKS ÚTEIS
 
 - **Skill de Verificação:** `skills/productivity/verificacao-dados-automacao/SKILL.md`
-- **Plano Detalhado:** `docs/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md`
-- **Plano de Expansão:** `docs/planos/PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md`
-- **Plano de Trabalho:** `docs/planos/PLANO-TRABALHO-SETEMBRO-2026.md`
+- **Plano Detalhado:** `docs/historico/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md`
+- **Plano de Expansão:** `docs/historico/planos/PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md`
+- **Plano de Trabalho:** `docs/historico/planos/PLANO-TRABALHO-SETEMBRO-2026.md`
 - **Resumo de Planos:** `docs/planos/RESUMO-PLANOS.md`
 - **Bot Verificação:** `bots/verifica-dados.mts`
 - **Bot Notificação:** `bots/notifica-telegram.mts`

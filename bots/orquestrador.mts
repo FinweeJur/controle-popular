@@ -80,7 +80,7 @@ async function notificar(etapa: Microetapa) {
 
 📝 ${etapa.descricao}
 
-🔗 Plano: docs/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md
+🔗 Plano: docs/historico/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md
 
 💡 Dica: ${etapa.comando}
   `.trim();
