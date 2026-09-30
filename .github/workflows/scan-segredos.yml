@@ -1,0 +1,37 @@
+name: Scan de segredos (gitleaks)
+
+# Terceira camada contra vazamento — irmã de `dado-pessoal.yml`:
+#   - `dado-pessoal.yml`  → CPF de pessoa real no código (mod-11);
+#   - este workflow        → CHAVE de API, token, senha de banco no código/config.
+#
+# Uma olha dado pessoal, a outra credencial; o repositório é PÚBLICO, então as
+# duas importam (AGENTS § 5.8). Config em `.gitleaks.toml`.
+#
+# Roda no push e no PR. Não precisa de segredo: o `GITHUB_TOKEN` do próprio
+# runner basta para o gitleaks-action ler o diff.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Histórico inteiro: o gitleaks varre commits, não só o HEAD.
+          fetch-depth: 0
+
+      - name: Rodar gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+          GITLEAKS_ENABLE_COMMENTS: "false"
