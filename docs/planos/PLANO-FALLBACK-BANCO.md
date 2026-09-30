@@ -125,6 +125,35 @@ Regra de ouro: **build e medição continuam no Postgres local** do home-pc;
 a Neon é reserva de leitura para o runtime, não alvo de `next build`
 (um build contra a Neon já levou HTTP 402).
 
+## Estado medido (2026-09-30)
+
+Diagnóstico da máquina de build (`home-pc`), sem imprimir segredo algum:
+
+- `apps/web/.env.local` aponta para **`127.0.0.1:5432`, db `controle_popular`**
+  (o Postgres local do build). **Não** há `DATABASE_URL_NEON` nem
+  `DATABASE_URL_HOMEPC` em nenhum `.env` desta máquina (só nomes de chave
+  foram lidos). `etl/betim/.env` idem.
+- Serviço do Windows **`postgresql-x64-18` rodando, mas escutando em
+  `5433`** — a porta `5432` está fechada. Divergência a resolver antes de
+  qualquer carga/medição local.
+- **`neonctl` não está instalado**: não há no PATH nem no
+  `node_modules` global (`C:\nodejs\node_modules` tem só o `guara` 0.3.0).
+- Túnel `cloudflared` (`C:\Users\teste\.cloudflared\config.yml`) expõe
+  apenas **`app.fozjuris.com.br` → `localhost:8000`**. **Não** expõe o
+  portal nem o Postgres do home-pc.
+
+**Consequência:** os dois passos deste plano ficam **bloqueados por
+insumo**, não por código:
+
+| Pendência | Falta |
+|---|---|
+| B — sincronizar a Neon pela CLI | connection string da Neon (fora do repo) **e** `neonctl` instalado/autenticado |
+| D — home-pc como reserva | **caminho de rede** Guara → Postgres do home-pc (hoje não existe; abrir Postgres público pelo túnel é risco e pede decisão explícita do dono) |
+
+O código já está pronto para os dois: basta `DATABASE_URL_NEON`
+(plano B) e `DATABASE_URL_HOMEPC`/`DATABASE_URL_RESERVA` (plano D) no
+ambiente do Guara.
+
 ## Riscos e regras
 
 - **Não** apontar `next build` para a Neon (egress). Build é sempre no
