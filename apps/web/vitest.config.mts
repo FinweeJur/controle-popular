@@ -24,6 +24,12 @@ export default defineConfig({
     include: ["lib/**/*.test.ts", "app/laboratorio/**/*.test.ts"],
     testTimeout: 30000,
     hookTimeout: 30000,
-    fileParallelism: false,
+    // Paralelismo ENTRE ARQUIVOS — medido em 30/09/2026: a suíte lib caiu de
+    // ~120-160 s (serial) para ~20 s, verde (218 arquivos, 2.154 testes). Cada
+    // arquivo já roda isolado no próprio worker, então o paralelismo não muda
+    // o resultado — muda só quanto tempo a máquina leva. Se um dia aparecer
+    // flakiness por disputa de recurso (porta, arquivo), o remédio é marcar o
+    // teste culpado com `sequential`/`describe.sequential`, NÃO desligar isto.
+    fileParallelism: true,
   },
 });
