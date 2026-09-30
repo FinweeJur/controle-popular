@@ -32,7 +32,9 @@
    "processo": "54170.003688/2005-70",
    "familias": "318",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 19
+   "indicios_mineracao": 19,
+   "lat": -17.175628,
+   "lon": -46.91254
   },
   {
    "tipo": "quilombola",
@@ -44,7 +46,9 @@
    "processo": "54170.008897/2003-48",
    "familias": "171",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 1
+   "indicios_mineracao": 1,
+   "lat": -17.1681,
+   "lon": -46.825712
   },
   {
    "tipo": "quilombola",
@@ -56,7 +60,9 @@
    "processo": "54170.000059/2004-15",
    "familias": "49",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 1
+   "indicios_mineracao": 1,
+   "lat": -17.199068,
+   "lon": -46.859127
   },
   {
    "tipo": "quilombola",
@@ -68,7 +74,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.237209,
+   "lon": -42.080032
   },
   {
    "tipo": "quilombola",
@@ -80,7 +88,9 @@
    "processo": "54170.005230/2012-84",
    "familias": "107",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -18.513551,
+   "lon": -43.495231
   },
   {
    "tipo": "quilombola",
@@ -92,7 +102,9 @@
    "processo": "54170.000070/2009-81",
    "familias": "95",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.682391,
+   "lon": -42.01222
   },
   {
    "tipo": "quilombola",
@@ -104,7 +116,9 @@
    "processo": "54170.005229/2012-50",
    "familias": "78",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -18.518604,
+   "lon": -43.524027
   },
   {
    "tipo": "quilombola",
@@ -116,7 +130,9 @@
    "processo": "4170.008821/2003-12",
    "familias": "387",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -15.75831,
+   "lon": -43.827141
   },
   {
    "tipo": "quilombola",
@@ -128,7 +144,9 @@
    "processo": "54170.000533/2005-81",
    "familias": "891",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -15.267054,
+   "lon": -43.268186
   },
   {
    "tipo": "quilombola",
@@ -140,7 +158,9 @@
    "processo": "54170.005061/2009-87",
    "familias": "29",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.236738,
+   "lon": -42.100856
   },
   {
    "tipo": "quilombola",
@@ -152,7 +172,9 @@
    "processo": "54170.003689/2005-14",
    "familias": "126",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -14.979186,
+   "lon": -43.959616
   },
   {
    "tipo": "quilombola",
@@ -164,7 +186,9 @@
    "processo": "54170.003740/2005-98",
    "familias": "30",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.940512,
+   "lon": -43.966225
   },
   {
    "tipo": "quilombola",
@@ -176,7 +200,9 @@
    "processo": "54170.001373/2006-79",
    "familias": "34",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.824831,
+   "lon": -43.907432
   },
   {
    "tipo": "quilombola",
@@ -188,7 +214,9 @@
    "processo": "54170.000671/2009-94",
    "familias": "79",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.019001,
+   "lon": -40.496862
   },
   {
    "tipo": "quilombola",
@@ -200,7 +228,9 @@
    "processo": "54170.000671/2009-94",
    "familias": "79",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.024783,
+   "lon": -40.524621
   },
   {
    "tipo": "quilombola",
@@ -212,7 +242,9 @@
    "processo": "54170.000671/2009-94",
    "familias": "79",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.046285,
+   "lon": -40.518598
   },
   {
    "tipo": "quilombola",
@@ -224,7 +256,9 @@
    "processo": "54170.000671/2009-94",
    "familias": "79",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.140579,
+   "lon": -40.533271
   },
   {
    "tipo": "quilombola",
@@ -236,7 +270,9 @@
    "processo": "54170.000671/2009-94",
    "familias": "79",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.160241,
+   "lon": -40.540012
   },
   {
    "tipo": "quilombola",
@@ -248,7 +284,9 @@
    "processo": "54170.001467/2006-48",
    "familias": "6",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.634417,
+   "lon": -41.062613
   },
   {
    "tipo": "quilombola",
@@ -260,7 +298,9 @@
    "processo": "54170.003745/2005-1",
    "familias": "88",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.302314,
+   "lon": -40.968496
   },
   {
    "tipo": "quilombola",
@@ -272,7 +312,9 @@
    "processo": "54170.007272/2009-54",
    "familias": "71",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.64113,
+   "lon": -44.082439
   },
   {
    "tipo": "quilombola",
@@ -284,7 +326,9 @@
    "processo": "54170.002492/2004-87",
    "familias": "21",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.04738,
+   "lon": -42.729865
   },
   {
    "tipo": "quilombola",
@@ -296,7 +340,9 @@
    "processo": "54170.007024/2005-80",
    "familias": "53",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.568831,
+   "lon": -42.331179
   },
   {
    "tipo": "quilombola",
@@ -308,7 +354,9 @@
    "processo": "54170.008053/2005-69",
    "familias": "73",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -15.747782,
+   "lon": -43.637762
   },
   {
    "tipo": "quilombola",
@@ -320,7 +368,9 @@
    "processo": "54170.006806/2014-92",
    "familias": "123",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -18.377589,
+   "lon": -46.714347
   },
   {
    "tipo": "quilombola",
@@ -332,7 +382,9 @@
    "processo": "54170.003889/2006-58",
    "familias": "189",
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -14.553355,
+   "lon": -43.942522
   },
   {
    "tipo": "quilombola",
@@ -344,7 +396,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.735941,
+   "lon": -43.828405
   },
   {
    "tipo": "terra_indigena",
@@ -356,7 +410,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.904083,
+   "lon": -41.390443
   },
   {
    "tipo": "terra_indigena",
@@ -368,7 +424,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": true,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -20.056041,
+   "lon": -44.225535
   },
   {
    "tipo": "terra_indigena",
@@ -380,7 +438,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.340545,
+   "lon": -45.075187
   },
   {
    "tipo": "terra_indigena",
@@ -392,7 +452,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -21.945653,
+   "lon": -46.332519
   },
   {
    "tipo": "terra_indigena",
@@ -404,7 +466,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.038174,
+   "lon": -43.119541
   },
   {
    "tipo": "terra_indigena",
@@ -416,7 +480,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.640616,
+   "lon": -41.669383
   },
   {
    "tipo": "terra_indigena",
@@ -428,7 +494,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -21.892999,
+   "lon": -46.410761
   },
   {
    "tipo": "terra_indigena",
@@ -440,7 +508,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.217678,
+   "lon": -41.303204
   },
   {
    "tipo": "terra_indigena",
@@ -452,7 +522,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -19.283966,
+   "lon": -41.355799
   },
   {
    "tipo": "terra_indigena",
@@ -464,7 +536,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.874572,
+   "lon": -40.581417
   },
   {
    "tipo": "terra_indigena",
@@ -476,7 +550,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -17.560944,
+   "lon": -41.269929
   },
   {
    "tipo": "terra_indigena",
@@ -488,7 +564,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -20.471127,
+   "lon": -45.0459
   },
   {
    "tipo": "terra_indigena",
@@ -500,7 +578,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -16.748663,
+   "lon": -45.214816
   },
   {
    "tipo": "terra_indigena",
@@ -512,7 +592,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -14.88281,
+   "lon": -44.288312
   },
   {
    "tipo": "terra_indigena",
@@ -524,7 +606,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -14.989527,
+   "lon": -44.183241
   },
   {
    "tipo": "terra_indigena",
@@ -536,7 +620,9 @@
    "processo": null,
    "familias": null,
    "em_bacia_paraopeba": false,
-   "indicios_mineracao": 0
+   "indicios_mineracao": 0,
+   "lat": -14.932115,
+   "lon": -44.124299
   }
  ]
 }

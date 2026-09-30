@@ -19,6 +19,7 @@ import { createControls } from './core/controls.js';
 import { criarArrastoDeSuperficie } from './core/arrastar.js';
 import { flyTo } from './core/flyto.js';
 import { centroDe, coordenadasDe, distanciaParaEnquadrar } from './core/enquadrar.js';
+import { vooDoEndereco, DISTANCIA_VOO_PADRAO } from './core/voo.js';
 import { createStatusBar } from './ui/statusbar.js';
 import { TEMAS_GLOBO, iniciarSincroniaDeTema } from './ui/tema.js';
 import { createFocusBar } from './ui/focusbar.js';
@@ -28,6 +29,7 @@ import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
 import { createInspector, procurarFeicaoNoPonto, tituloDaArea } from './ui/inspector.js';
 import { criarDica } from './ui/dica.js';
+import { criarContextoLugar } from './ui/contextolugar.js';
 import { createIntro } from './ui/intro.js';
 import { createBuscaMunicipio } from './ui/buscamunicipio.js';
 import { createListaPanel } from './ui/listapanel.js';
@@ -651,6 +653,30 @@ async function bootstrap() {
     reenquadrar = setTimeout(() => refazerFoco?.(), 250);
   });
 
+  const contextoLugar = criarContextoLugar();
+
+  /**
+   * Voa direto para um ponto do endereço — o botão "Voe até aqui" das páginas.
+   *
+   * Diferente de `focarRecorte`, não há recorte a enquadrar: o alvo é um ponto
+   * e a distância vem do próprio link (ou o padrão de município). O recorte
+   * anterior é limpo, senão a malha de Minas ficaria desenhada por baixo do voo.
+   */
+  function voarAte(voo) {
+    refazerFoco = () => voarAte(voo);
+    limparHash();
+    boundaries.show({ id: 'voe' }); // limpa o recorte e não desenha outro
+    focusBar?.setActive?.(null);
+    flyTo(camera, controls, {
+      id: `voe:${voo.lat},${voo.lon}`,
+      lat: voo.lat,
+      lon: voo.lon,
+      distance: voo.distance ?? DISTANCIA_VOO_PADRAO,
+      durMs: 1800,
+    });
+    contextoLugar.mostrar({ nome: voo.nome, ctx: voo.ctx });
+  }
+
   // --- Abertura ------------------------------------------------------------
   // Com `#area=` no endereço, abre direto naquela área; senão, enquadra Minas
   // Gerais — contexto antes de descer ao município. Nenhum botão fica aceso:
@@ -663,7 +689,13 @@ async function bootstrap() {
   const idCamada = camadaDoEndereco(location.search, CAMADAS_RESOLVIDAS);
   if (idCamada) await alternarCamada(idCamada, true);
 
-  if (!abriuArea) {
+  // "Voe até aqui" (core/voo.js): o ponto vem no endereço e a ficha de contexto
+  // do lugar abre ao chegar. Tem precedência sobre a abertura padrão e convive
+  // com `?camada=` — quem manda os dois quer o ponto E a camada acesa.
+  const voo = vooDoEndereco(location.search);
+  if (voo) {
+    voarAte(voo);
+  } else if (!abriuArea) {
     focarRecorte(ABERTURA);
   }
 

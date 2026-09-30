@@ -166,6 +166,11 @@ def main() -> None:
                 "familias": r(pr, "num_familias", "nr_familia"),
                 "em_bacia_paraopeba": em_bacia,
                 "indicios_mineracao": n_min,
+                # Centroide exato do polígono da comunidade: dá o ponto do botão
+                # "Voe até aqui" no globo, sem depender de município (que aqui é
+                # lista de nomes separados por vírgula, e quebraria o casamento).
+                "lat": round(c[1], 6) if c else None,
+                "lon": round(c[0], 6) if c else None,
             })
 
     comunidades.sort(key=lambda x: (-x["indicios_mineracao"], x["tipo"], x["nome"] or ""))

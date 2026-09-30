@@ -12,6 +12,7 @@
 - [O que o dev pediu](#o-que-o-dev-pediu)
 - [O problema editorial: história não acusa, data e cita](#o-problema-editorial-história-não-acusa-data-e-cita)
 - [O que já existe no repositório (medido em 30/09/2026)](#o-que-já-existe-no-repositório-medido-em-30092026)
+- [O botão "Voe até aqui" e a ficha de contexto](#o-botão-voe-até-aqui-e-a-ficha-de-contexto)
 - [Fontes medidas (30/09/2026)](#fontes-medidas-30092026)
 - [Fontes por sondar (não medidas)](#fontes-por-sondar-não-medidas)
 - [As cinco camadas propostas](#as-cinco-camadas-propostas)
@@ -30,6 +31,13 @@ Pedido do dev de 30/09/2026, com as palavras dele:
 > o plano abaixo: geo localizar e colocar camadas no mapa 3D de História, com localização
 > das revoltas, limites territoriais e de controle máximo, das sesmarias, capitanias
 > hereditárias e maiores."
+
+Complemento do mesmo pedido (30/09/2026): os pontos precisam de **links ao final,
+ligados na Mística do Dia com pequenos botões "voe até aqui"**, o mesmo na **página da
+linha do tempo e em outras páginas**; e, ao clicar na descrição do local, **um contexto
+histórico / educativo / informativo**. Esses dois itens estão especificados na seção
+[O botão "Voe até aqui" e a ficha de contexto](#o-botão-voe-até-aqui-e-a-ficha-de-contexto)
+e a infraestrutura deles já está implementada (Fase 0).
 
 Este documento é esse plano: **pesquisa medida nas fontes** (o que dá e o que não dá),
 **as camadas** a construir, **as fases** e o que **não** fazer.
@@ -84,6 +92,48 @@ julga o passado como julga um ato de hoje.** Cada ficha leva "Fonte oficial ↗"
 ⚠️ **A lacuna que manda na Fase C:** os 538 verbetes de revolta **não têm coordenada nem
 município**. Georreferenciá-los exige **enriquecer o dado** (extrair o lugar do texto da
 fonte, documentado) — não "adivinhar" o ponto.
+
+## O botão "Voe até aqui" e a ficha de contexto
+
+Duas peças que o dev pediu, e que valem para **qualquer** página — não só as históricas.
+
+### O deep link (contrato)
+
+```
+/terras/globo/?voe=<lat>,<lon>&nome=<rótulo>&ctx=<slug>&z=<distância>
+```
+
+- `voe` é o ponto (graus decimais). Fora da faixa válida, o globo ignora e abre no padrão —
+  melhor que voar para o oceano.
+- `nome` é o rótulo humano que a ficha mostra.
+- `ctx` é o slug do contexto em
+  `apps/web/public/terras/globo/dados/contextos-lugares.json`.
+- `z` é a distância ao centro da Terra (1 = superfície); omitida, usa o padrão de município.
+
+### O que já está implementado (Fase 0 — 30/09/2026)
+
+| Peça | Arquivo | Papel |
+|---|---|---|
+| Leitura do endereço | `public/terras/globo/js/core/voo.js` | parse + validação (`vooDoEndereco`, `enderecoVoarAte`) |
+| Teste da leitura | `public/terras/globo/js/core/voo.test.mjs` | **9 testes** (voo inválido, faixa, slug, ciclo) |
+| Ficha do lugar | `public/terras/globo/js/ui/contextolugar.js` | painel de contexto, fechável (botão e Esc) |
+| Textos | `public/terras/globo/dados/contextos-lugares.json` | contextos por slug, com fonte e link |
+| Ligação no globo | `public/terras/globo/js/main.js` | voa ao ponto e abre a ficha |
+| Botão (Next) | `app/components/BotaoVoarAte.tsx` + `lib/globo/voo.ts` (+ teste vitest) | `<BotaoVoarAte lat lon nome ctx />` em qualquer página |
+
+**Já ligado:** a tabela de comunidades de `/mineracao/ilegal` (cada linha tem lat/lon do
+centroide e um `ctx` por tipo — `terra-indigena` ou `territorio-quilombola`).
+
+**Entra em seguida:** Mística do Dia e linha do tempo — dependem do **campo de lugar** que
+os verbetes ainda não têm (Fase C) —, e as demais páginas conforme forem ganhando
+coordenada.
+
+### O contexto ao clicar
+
+Ao chegar, o globo abre um painel com **título, texto curto e o link da fonte oficial**.
+O texto é educativo e datado; quando o ponto não tem contexto publicado, a ficha **declara
+a lacuna** em vez de preencher com suposição (AGENTS § 7). Nada de HTML montado com dado do
+endereço: tudo por `textContent`, e o `ctx` só aceita slug (`[a-z0-9-]`).
 
 ## Fontes medidas (30/09/2026)
 
@@ -174,6 +224,14 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 
 ## Fases de execução
 
+### Fase 0 — infraestrutura do "voe até aqui" (feito em 30/09/2026)
+
+- Deep link, leitura validada, painel de contexto, textos por slug e o componente
+  `BotaoVoarAte`; primeiro uso na tabela de comunidades de `/mineracao/ilegal`.
+- Detalhe e arquivos na seção
+  [O botão "Voe até aqui" e a ficha de contexto](#o-botão-voe-até-aqui-e-a-ficha-de-contexto).
+- Suíte verde: 2.012 testes no vitest + 177 no globo (9 novos), `tsc` limpo.
+
 ### Fase A — dicionário e gazetteer (0,5 dia)
 
 - Montar `lugar colonial → município atual` com fonte para cada casamento, reaproveitando o
@@ -194,6 +252,8 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 - Enriquecer `calendario.ts` com `local`, `uf` e coordenada (município IBGE); campo novo
   documentado e testado em `mistica.test.ts`.
 - Gerar `hist-revoltas.geojson`; a tabela de `/memoria` ganha coluna "Onde".
+- **Ligar o botão da Fase 0:** `BotaoVoarAte` na Mística do Dia (home) e em cada verbete da
+  linha do tempo, com `ctx` do contexto do lugar.
 
 ### Fase D — sesmarias de MG (1–2 dias)
 
@@ -211,6 +271,8 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 - Registrar as camadas em `config.js` + ficha no `inspector.js`; as seis qualidades
   ([AGENTS.md § 8](/AGENTS.md)) numa página `/historia` (busca, filtros por ano/tipo/UF,
   ordenação, cartões de topo, CSV com BOM e `;`, impressão vetorial).
+- Cada linha/camada da página publica o **botão "Voe até aqui"** (Fase 0) com o `ctx` do
+  lugar — o mesmo par que a Mística e a linha do tempo usam.
 - Critério de pronto: suíte verde, `tsc` limpo, acessibilidade AA, e **toda** camada com
   `fonte`, `data`, `autor`, `licenca` e `natureza` no arquivo.
 

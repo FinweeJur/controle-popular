@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
+import BotaoVoarAte from "@/app/components/BotaoVoarAte";
 
 /**
  * Tabela das comunidades tradicionais de MG cruzadas com a mineração — busca,
@@ -27,6 +28,9 @@ export interface Comunidade {
   familias: string | null;
   em_bacia_paraopeba: boolean;
   indicios_mineracao: number;
+  /** Centroide do polígono (IBGE ordem GeoJSON); alimenta o botão "Voe até aqui". */
+  lat: number | null;
+  lon: number | null;
 }
 
 const ROTULO_TIPO: Record<Comunidade["tipo"], string> = {
@@ -196,6 +200,7 @@ export default function TabelaComunidades({
                   </button>
                 </th>
               ))}
+              <th scope="col" className="py-2 pr-4 font-semibold">No globo</th>
               <th scope="col" className="py-2 font-semibold">Conferir na fonte</th>
             </tr>
           </thead>
@@ -214,6 +219,18 @@ export default function TabelaComunidades({
                 </td>
                 <td className="py-2 pr-4">{c.em_bacia_paraopeba ? "sim" : "não"}</td>
                 <td className="py-2 pr-4 text-right tabular-nums">{c.indicios_mineracao}</td>
+                <td className="py-2 pr-4 text-xs">
+                  {c.lat != null && c.lon != null ? (
+                    <BotaoVoarAte
+                      lat={c.lat}
+                      lon={c.lon}
+                      nome={`${c.nome}${c.municipio ? ` (${c.municipio})` : ""}`}
+                      ctx={c.tipo === "terra_indigena" ? "terra-indigena" : "territorio-quilombola"}
+                    />
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td className="py-2 text-xs">
                   <a
                     href={c.tipo === "terra_indigena" ? FONTE_TI : FONTE_QUILOMBOLA}
@@ -234,7 +251,7 @@ export default function TabelaComunidades({
             ))}
             {filtradas.length === 0 ? (
               <tr>
-                <td colSpan={8} className="py-6 text-center text-text-soft">
+                <td colSpan={9} className="py-6 text-center text-text-soft">
                   Nenhuma linha com estes filtros — lacuna é informação, não erro.
                 </td>
               </tr>

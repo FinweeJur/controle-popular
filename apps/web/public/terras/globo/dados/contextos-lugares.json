@@ -1,0 +1,27 @@
+{
+  "_nota": "Contextos historicos/educativos do globo 3D, por slug. O botao \"Voe ate aqui\" manda ?voe=<lat>,<lon>&nome=<rotulo>&ctx=<slug>; ao chegar, o globo mostra o texto abaixo e o link da fonte oficial. Texto curto, direto, com a fonte citada. Nenhum campo aqui e dado de pessoa fisica.",
+  "terra-indigena": {
+    "titulo": "Terra indígena",
+    "contexto": "As terras indígenas são reconhecidas como direito originário pela Constituição de 1988 (art. 231): a demarcação declara um direito que já existe, não cria um. A Convenção 169 da OIT, com força de lei no Brasil (Decreto 10.088/2019), garante consulta livre, prévia e informada quando a obra ou a atividade afeta o povo — em qualquer fase do processo. O polígono aqui é da FUNAI.",
+    "fonte": "FUNAI — Terras Indígenas (geoserviços WFS) e Constituição Federal, art. 231",
+    "url": "https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities"
+  },
+  "territorio-quilombola": {
+    "titulo": "Território quilombola",
+    "contexto": "O território quilombola é a poligonal do processo de regularização fundiária conduzido pelo INCRA, com base no Decreto 4.887/2003 e no art. 68 do Ato das Disposições Constitucionais Transitórias. O documento traz a fase do processo (RTID publicado, titulação) — é etiqueta, não filtro. A lista da Fundação Cultural Palmares certifica a comunidade, mas não traz geometria.",
+    "fonte": "INCRA — Acervo Fundiário (territórios quilombolas) e Fundação Cultural Palmares",
+    "url": "http://acervofundiario.incra.gov.br/i3geo/ogc.php?service=WFS&version=1.1.0&request=GetCapabilities"
+  },
+  "bacia-paraopeba": {
+    "titulo": "Bacia do rio Paraopeba",
+    "contexto": "A bacia do rio Paraopeba é a circunscrição hidrográfica SF3, uma das unidades de planejamento de Minas Gerais geridas pelo CBH do Rio Paraopeba (Decreto estadual 40.398/1999), afluente do rio São Francisco. O desenho é o oficial do Sisema (base GEIRH), não a lista de municípios atingidos do Acordo de Brumadinho — são recortes diferentes e não se substituem.",
+    "fonte": "IDE-Sisema / IGAM — circunscrições hidrográficas (base GEIRH)",
+    "url": "https://geoserver.meioambiente.mg.gov.br/IDE/ows?service=WFS&version=1.1.0&request=GetCapabilities"
+  },
+  "mineracao-sem-cadastro": {
+    "titulo": "Mineração detectada fora do cadastro",
+    "contexto": "Estes polígonos são mineração detectada por satélite (Monitor da Mineração, MapBiomas) cujo centroide cai fora de todo polígono de processo da ANM. Ausência de cadastro no lugar aponta que a ANM não tem processo ali — o que pode ser lavra informal, garimpo, extração isenta ou folga do desenho. Receber sinal não é ilícito: é o convite para conferir na fonte, e a apuração é da autoridade.",
+    "fonte": "Monitor da Mineração (MapBiomas) × ANM/SIGMINE",
+    "url": "https://plataforma.brasil.mapbiomas.org/"
+  }
+}
