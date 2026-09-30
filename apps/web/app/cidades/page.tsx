@@ -20,6 +20,7 @@ import {
   listarCidadesEstrategicas,
   obterEstatisticasExpansao,
 } from "@/lib/cidades/estrategicas";
+import { CAMADAS_MEMORIA } from "@/lib/memoria";
 import TabelaCidadesClient from "./TabelaCidadesClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 
@@ -33,7 +34,8 @@ const SECOES_CIDADES = [
   { id: "status-totais", titulo: "1. Totais da Expansão" },
   { id: "grafico-distribuicao", titulo: "2. Distribuição por Região" },
   { id: "catalogo-cidades", titulo: "3. Catálogo das 203 Cidades" },
-  { id: "perguntas-frequentes", titulo: "4. Dúvidas Frequentes" },
+  { id: "cobertura-memoria", titulo: "4. Cobertura de Memória por UF" },
+  { id: "perguntas-frequentes", titulo: "5. Dúvidas Frequentes" },
 ];
 
 const LINKS_RELACIONADOS = [
@@ -62,6 +64,19 @@ const LINKS_RELACIONADOS = [
 export default function PaginaCidadesEstrategicas() {
   const cidades = listarCidadesEstrategicas();
   const stats = obterEstatisticasExpansao();
+
+  // Cobertura de memória (F5): quantos verbetes por camada e por UF. O
+  // município ainda não tem verbete próprio (fase F3); toda cidade, porém,
+  // já herda o contexto do estado, da região e do país no cartão-carimbo.
+  const municipiosComVerbete = Object.keys(CAMADAS_MEMORIA.municipio).length;
+  const totalVerbetes =
+    municipiosComVerbete +
+    Object.values(CAMADAS_MEMORIA.uf).reduce((s, l) => s + l.length, 0) +
+    Object.values(CAMADAS_MEMORIA.regiao).reduce((s, l) => s + l.length, 0) +
+    Object.values(CAMADAS_MEMORIA.pais).reduce((s, l) => s + l.length, 0);
+  const ufsDeMemoria = Object.entries(CAMADAS_MEMORIA.uf)
+    .map(([uf, lista]) => ({ uf: uf.toUpperCase(), n: lista.length }))
+    .sort((a, b) => a.uf.localeCompare(b.uf));
 
   // Gráfico de distribuição por região
   const regioes = [
@@ -228,7 +243,74 @@ export default function PaginaCidadesEstrategicas() {
           <TabelaCidadesClient cidades={cidades} />
         </section>
 
-        {/* 4. SANFONA DE DIÁLOGO */}
+        {/* 4. COBERTURA DE MEMÓRIA (F5) */}
+        <section id="cobertura-memoria" className="mb-8 rounded-xl border border-border bg-surface p-5">
+          <h2 className="font-display text-lg font-semibold text-foreground">
+            Cobertura de Memória das Lutas
+          </h2>
+          <p className="mt-1 text-xs text-muted">
+            Quantos verbetes de memória sustentam cada página de cidade. Onde
+            ainda não há verbete municipal com fonte fechada, a cidade herda o
+            contexto do estado, da região e do país — sempre com a lacuna
+            declarada.
+          </p>
+
+          <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
+            <div className="rounded-xl border border-border bg-surface-2 p-3">
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">Verbetes</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground">{totalVerbetes}</p>
+              <p className="mt-0.5 text-xs text-muted">no acervo de memória</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface-2 p-3">
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">UFs cobertas</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground">{ufsDeMemoria.length}</p>
+              <p className="mt-0.5 text-xs text-muted">contexto estadual</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface-2 p-3">
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">Regiões</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground">
+                {Object.keys(CAMADAS_MEMORIA.regiao).length}
+              </p>
+              <p className="mt-0.5 text-xs text-muted">macrorregiões</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface-2 p-3">
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">Municípios</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground">{municipiosComVerbete}</p>
+              <p className="mt-0.5 text-xs text-muted">com verbete próprio</p>
+            </div>
+          </div>
+
+          <details className="mt-4">
+            <summary className="cursor-pointer text-sm font-medium text-primary">
+              Ver as {ufsDeMemoria.length} UFs cobertas
+            </summary>
+            <ul className="mt-3 grid grid-cols-2 gap-x-4 sm:grid-cols-3">
+              {ufsDeMemoria.map((u) => (
+                <li
+                  key={u.uf}
+                  className="flex justify-between border-b border-border/50 py-1 text-xs"
+                >
+                  <span className="font-medium text-foreground">{u.uf}</span>
+                  <span className="font-mono text-muted">
+                    {u.n} {u.n === 1 ? "verbete" : "verbetes"}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </details>
+
+          <p className="mt-4 text-xs text-muted">
+            <strong>Lacuna declarada:</strong> {municipiosComVerbete === 0
+              ? "nenhum município tem ainda verbete próprio com fonte fechada"
+              : `${municipiosComVerbete} município(s) com verbete próprio`}
+            {" "}— os ciclos municipais são a próxima fase (F3).{" "}
+            <Link href="/memoria" className="font-semibold text-accent hover:underline">
+              Ver a Linha do Tempo das Lutas →
+            </Link>
+          </p>
+        </section>
+
+        {/* 5. SANFONA DE DIÁLOGO */}
         <section id="perguntas-frequentes" className="mb-8">
           <PainelDialogo
             titulo="Como funciona a expansão do Controle Popular para o Brasil?"
