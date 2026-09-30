@@ -15,7 +15,6 @@
  * - Totalmente responsivo para smartphones (<= 640px) e compatível com impressão.
  */
 
-import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -24,7 +23,7 @@ import {
 } from "@/lib/internacional/dados-desclassificados";
 import PainelDesclassificados from "./PainelDesclassificados";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { Shield, FileText, Globe2, Eye, LockOpen, ArrowRight, MapPin } from "lucide-react";
+import { Shield, FileText, Globe2, Eye, LockOpen, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Documentos Desclassificados de Inteligência do G20 | Controle Popular",
@@ -55,29 +54,19 @@ export default function PaginaDesclassificadosG20() {
 
       {/* CABEÇALHO DA PÁGINA */}
       <header className="mb-8">
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/20 px-3 py-0.5 text-xs font-semibold text-primary">
-              <LockOpen size={12} />
-              Acervo Desclassificado
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-500/20 px-3 py-0.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
-              <Shield size={12} />
-              Serviços de Inteligência do G20
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              <Globe2 size={12} />
-              Memória e Soberania Cívica
-            </span>
-          </div>
-
-          <Link
-            href="/internacional/desclassificados/mapa"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition shadow-xs"
-          >
-            <MapPin size={13} />
-            <span>🗺️ Explorar no Mapa Global</span>
-          </Link>
+        <div className="mb-3 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/20 px-3 py-0.5 text-xs font-semibold text-primary">
+            <LockOpen size={12} />
+            Acervo Desclassificado
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-500/20 px-3 py-0.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <Shield size={12} />
+            Serviços de Inteligência do G20
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <Globe2 size={12} />
+            Memória e Soberania Cívica
+          </span>
         </div>
 
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
@@ -151,16 +140,7 @@ export default function PaginaDesclassificadosG20() {
 
       {/* PAINEL INTERATIVO COM AS SEIS QUALIDADES */}
       <main id="conteudo-principal">
-        <Suspense
-          fallback={
-            <div className="rounded-2xl border border-border bg-surface p-12 text-center text-text-soft">
-              <div className="animate-spin text-primary inline-block mb-3">⟳</div>
-              <p className="text-sm font-semibold">Carregando acervo de inteligência...</p>
-            </div>
-          }
-        >
-          <PainelDesclassificados documentos={documentos} />
-        </Suspense>
+        <PainelDesclassificados documentos={documentos} />
       </main>
 
       {/* RODA PÉ GLOBAL */}

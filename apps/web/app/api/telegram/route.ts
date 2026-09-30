@@ -54,6 +54,42 @@ const FRONTES = {
       { label: "📋 Processos", link: "https://controlepopular.com.br/judiciario/processos", desc: "Ações, denúncias e consultas públicas em tramitação." },
     ],
   },
+  internacional: {
+    label: "🌐 Internacional",
+    desc: "Hub multilateral: ONU/PNUD (IDH, Gini), UNESCO, OMS, OMC/Comtrade e povos originários — trilíngue PT/EN/ES.",
+    link: "https://www.controlepopular.com.br/internacional",
+    subfrentes: [
+      { label: "🌐 Multilateral", link: "https://www.controlepopular.com.br/internacional", desc: "ONU/PNUD, UNESCO, OMS e OMC/Comtrade em dados sobre o Brasil." },
+      { label: "🇺🇸 EUA", link: "https://www.controlepopular.com.br/eua", desc: "SEC EDGAR, barragens NID/USACE, USAspending e BIA." },
+      { label: "🇨🇦 Canadá", link: "https://www.controlepopular.com.br/canada", desc: "Mineradoras na TSX no Brasil, emissões ECCC NPRI e caso Mount Polley." },
+    ],
+  },
+  assembleias: {
+    label: "🏛️ Assembleias Estaduais",
+    desc: "Hub e ficha das 27 assembleias legislativas estaduais brasileiras: mesa, proposições e contatos.",
+    link: "https://www.controlepopular.com.br/assembleias",
+    subfrentes: [
+      { label: "🏛️ As 27 assembleias", link: "https://www.controlepopular.com.br/assembleias", desc: "Composição, mesa diretora e produção legislativa por estado." },
+    ],
+  },
+  mineracao: {
+    label: "⛏️ Mineração e Cavas",
+    desc: "Série histórica de cavas em MG por satélite (modelo VLM calibrado) e processos minerários.",
+    link: "https://www.controlepopular.com.br/mineracao/cavas",
+    subfrentes: [
+      { label: "⛏️ Cavas por satélite", link: "https://www.controlepopular.com.br/mineracao/cavas", desc: "Detecção anual de cavas e o cruzamento com o cadastro da ANM." },
+      { label: "🗺️ Globo 3D", link: "https://www.controlepopular.com.br/funcaosocialterra/mapa", desc: "Camadas geoespaciais: barragens, terras, cavas e territórios." },
+    ],
+  },
+  laboratorio: {
+    label: "🧪 Laboratório de Dados",
+    desc: "Caderno NotebookLM cívico offline, gráficos dither, grafo de conhecimento e widgets.",
+    link: "https://www.controlepopular.com.br/laboratorio",
+    subfrentes: [
+      { label: "🧪 Laboratório", link: "https://www.controlepopular.com.br/laboratorio", desc: "Notebook com citações [n] e generative UI sobre as bases do portal." },
+      { label: "🕸️ Árvore de Conexões", link: "https://www.controlepopular.com.br/laboratorio/arvore", desc: "Grafo estilo Obsidian dos 4 eixos e das subfrentes." },
+    ],
+  },
   terra: {
     label: "🌄 Terra e Territórios",
     desc: "Soberania socioambiental: 203 cidades estratégicas, bacias, terras indígenas, serras e biomas.",
