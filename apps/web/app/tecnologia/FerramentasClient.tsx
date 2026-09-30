@@ -3,9 +3,11 @@
 import { useMemo, useState, useSyncExternalStore } from "react";
 import {
   Calculator,
+  CalendarDays,
   CheckCircle2,
   Clock,
   Info,
+  Ruler,
   Search,
   ShieldCheck,
   XCircle,
@@ -24,6 +26,18 @@ import {
   regraDeTres,
 } from "@/lib/utilitarios/calculos";
 import { FUSOS, formatarDataFuso, formatarHoraFuso } from "@/lib/utilitarios/fusos";
+import {
+  diasEntre,
+  formatarDataBR,
+  normalizarData,
+  prazoRespostaLAI,
+} from "@/lib/utilitarios/datas";
+import {
+  type Categoria,
+  NOME_CATEGORIA,
+  converter,
+  unidadesPorCategoria,
+} from "@/lib/utilitarios/medidas";
 
 /**
  * Ferramentas utilitárias client-side da página `/tecnologia`.
@@ -223,12 +237,15 @@ function CampoNumero({
   valor,
   onChange,
   sufixo,
+  tipo = "number",
 }: {
   id: string;
   rotulo: string;
   valor: string;
   onChange: (v: string) => void;
   sufixo?: string;
+  /** "number" (padrão) ou "date" — o campo de data usa o seletor nativo. */
+  tipo?: "number" | "date";
 }) {
   return (
     <label htmlFor={id} className="block text-sm">
@@ -236,8 +253,8 @@ function CampoNumero({
       <span className="relative flex items-center">
         <input
           id={id}
-          type="number"
-          inputMode="decimal"
+          type={tipo}
+          inputMode={tipo === "number" ? "decimal" : undefined}
           value={valor}
           onChange={(e) => onChange(e.target.value)}
           className="w-full rounded-xl border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
@@ -432,6 +449,183 @@ function VerificadorDigito() {
   );
 }
 
+/** Datas e prazos: intervalo entre datas e prazo de resposta de um pedido de LAI. */
+function DatasEPrazos() {
+  const [inicio, setInicio] = useState("");
+  const [fim, setFim] = useState("");
+  const [protocolo, setProtocolo] = useState("");
+
+  const dInicio = normalizarData(inicio);
+  const dFim = normalizarData(fim);
+  const dias = dInicio && dFim ? diasEntre(dInicio, dFim) : null;
+
+  const dProtocolo = normalizarData(protocolo);
+  const prazo = dProtocolo ? prazoRespostaLAI(dProtocolo) : null;
+
+  return (
+    <CartaoFerramenta
+      titulo="Datas e prazos"
+      descricao="Conte os dias entre duas datas e veja o prazo legal de resposta de um pedido de acesso à informação (LAI): 20 dias, prorrogáveis por mais 10."
+      icone={<CalendarDays size={20} />}
+    >
+      <div className="space-y-3">
+        <CampoNumero
+          id="datas-inicio"
+          rotulo="Data inicial"
+          tipo="date"
+          valor={inicio}
+          onChange={setInicio}
+        />
+        <CampoNumero
+          id="datas-fim"
+          rotulo="Data final"
+          tipo="date"
+          valor={fim}
+          onChange={setFim}
+        />
+      </div>
+
+      <div
+        role="status"
+        aria-live="polite"
+        className="mt-3 rounded-xl border border-primary/20 bg-primary/5 p-3"
+      >
+        <span className="block text-xs font-medium text-muted">Intervalo</span>
+        <span className="block font-mono text-lg font-bold text-foreground tabular-nums">
+          {dias === null
+            ? "Informe as duas datas."
+            : dias === 0
+              ? "Mesmo dia."
+              : `${dias} dia${Math.abs(dias) === 1 ? "" : "s"}`}
+        </span>
+      </div>
+
+      <div className="mt-4 border-t border-border/60 pt-4">
+        <CampoNumero
+          id="datas-lai"
+          rotulo="Data do pedido de acesso à informação (LAI)"
+          tipo="date"
+          valor={protocolo}
+          onChange={setProtocolo}
+        />
+        <p className="mt-2 text-sm text-muted leading-relaxed">
+          {prazo ? (
+            <>
+              Resposta em até <strong className="text-foreground">20 dias</strong>: até{" "}
+              <strong className="text-foreground">{formatarDataBR(prazo.limite)}</strong>.
+              Prorrogável, com justificativa, até{" "}
+              <strong className="text-foreground">{formatarDataBR(prazo.prorrogavelAte)}</strong>.
+            </>
+          ) : (
+            "Informe a data do protocolo para ver o prazo (Lei 12.527/2011, art. 11)."
+          )}
+        </p>
+      </div>
+    </CartaoFerramenta>
+  );
+}
+
+/** Conversor de unidades, com os alqueires separados por estado. */
+function ConversorUnidades() {
+  const [categoria, setCategoria] = useState<Categoria>("area");
+  const [de, setDe] = useState("ha");
+  const [para, setPara] = useState("m2");
+  const [valor, setValor] = useState("");
+
+  const unidades = useMemo(() => unidadesPorCategoria(categoria), [categoria]);
+
+  const trocarCategoria = (nova: Categoria) => {
+    const lista = unidadesPorCategoria(nova);
+    setCategoria(nova);
+    setDe(lista[0].id);
+    setPara(lista[1]?.id ?? lista[0].id);
+  };
+
+  const resultado = converter(paraNumero(valor), de, para);
+  const formatarMedida = (n: number) =>
+    new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 4 }).format(n);
+
+  return (
+    <CartaoFerramenta
+      titulo="Conversor de unidades"
+      descricao="Converta área, volume, massa e comprimento. O alqueire tem valor por estado — mineiro, paulista e goiano vêm separados, porque não são a mesma medida."
+      icone={<Ruler size={20} />}
+    >
+      <div className="mb-3 flex flex-wrap gap-1.5">
+        {(Object.keys(NOME_CATEGORIA) as Categoria[]).map((c) => (
+          <button
+            key={c}
+            type="button"
+            onClick={() => trocarCategoria(c)}
+            aria-pressed={categoria === c}
+            className={`rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all ${
+              categoria === c
+                ? "bg-primary text-white shadow-xs"
+                : "bg-surface-2 text-muted hover:bg-surface hover:text-foreground"
+            }`}
+          >
+            {NOME_CATEGORIA[c]}
+          </button>
+        ))}
+      </div>
+
+      <div className="space-y-3">
+        <CampoNumero
+          id="medida-valor"
+          rotulo="Valor"
+          valor={valor}
+          onChange={setValor}
+        />
+
+        <div className="grid grid-cols-2 gap-3">
+          <label htmlFor="medida-de" className="block text-sm">
+            <span className="mb-1 block text-xs font-medium text-muted">De</span>
+            <select
+              id="medida-de"
+              value={de}
+              onChange={(e) => setDe(e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface px-2 py-2 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+              {unidades.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.rotulo}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label htmlFor="medida-para" className="block text-sm">
+            <span className="mb-1 block text-xs font-medium text-muted">Para</span>
+            <select
+              id="medida-para"
+              value={para}
+              onChange={(e) => setPara(e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface px-2 py-2 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+              {unidades.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.rotulo}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div
+        role="status"
+        aria-live="polite"
+        className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-3"
+      >
+        <span className="block text-xs font-medium text-muted">Resultado</span>
+        <span className="block font-mono text-lg font-bold text-foreground tabular-nums">
+          {resultado === null ? "Informe um valor." : formatarMedida(resultado)}
+        </span>
+      </div>
+    </CartaoFerramenta>
+  );
+}
+
 /** Bloco completo das ferramentas utilitárias da página de tecnologia. */
 export default function FerramentasClient() {
   return (
@@ -448,15 +642,17 @@ export default function FerramentasClient() {
           Ferramentas que você usa agora
         </h2>
         <p className="mt-1 max-w-2xl text-sm text-muted leading-relaxed">
-          Três utilidades prontas para usar, sem cadastro e sem custo. Tudo roda
+          Cinco utilidades prontas para usar, sem cadastro e sem custo. Tudo roda
           no seu navegador: nada é enviado, nada é guardado.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <HorarioMundial />
         <CalculadoraCivica />
         <VerificadorDigito />
+        <DatasEPrazos />
+        <ConversorUnidades />
       </div>
     </section>
   );
