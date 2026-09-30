@@ -358,12 +358,45 @@ Essa regra não dispensa:
 
 ## 9. Como verificar
 
+**Regra do dono, 30/09/2026: a verificação é em CAMADAS.** O commit não
+espera a suíte inteira. Medido naquele dia: 2.134 testes, ~2–3 min, e a
+suíte cresce a cada sessão. Rodar tudo a cada commit bloqueia por trabalho de
+**outra sessão** (o repo muda sob você) e não protege mais que o escopo do
+diff. O que protege de verdade continua em todo commit.
+
+**Todo commit (segundos):**
+
 ```bash
-npm test                 # raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
-npx tsc --noEmit
+npx tsc --noEmit                              # em apps/web
+npx vitest run lib/sem-cpf-no-repo.test.ts    # guarda de CPF: o dado não pode vazar
+npx eslint <arquivos do diff>                 # só o que mudou
+python scripts/validar-documentacao.py        # se mexeu em docs/
 ```
 
-Baseline em 19/09: **1.579 testes no vitest + 146 no globo**.
+**Se o diff toca `lib/`:** rode o escopo do diff. O vitest usa o grafo de
+módulos e roda só os testes ligados ao que mudou:
+
+```bash
+npm run test:lib -- --changed HEAD   # de apps/web; o wrapper repassa a flag
+```
+
+`--changed` é mais seguro que escolher teste à mão: mexeu em `lib/x.ts`, ele
+roda quem importa `x`. Se você sabe de um teste sensível que ele não pegou,
+rode esse teste à mão.
+
+**UI pura (`.tsx`, sem `lib/`):** `tsc` + `eslint` bastam — nenhum teste
+importa componente.
+
+**Antes do push e do deploy:** aí sim a suíte completa e o globo.
+
+```bash
+npm test                 # raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
+```
+
+Baseline em 30/09/2026: **2.134 testes no vitest** (globo à parte).
+A guarda de CPF e o validador de docs entram em TODO commit — o que muda é
+só o volume de lógica não tocada.
+
 Armadilha que virou teste, não comentário: em 15/08 um comentário errado
 sobre código IBGE sobreviveu meses e copiou-se para uma tarefa. Quem pegou
 foi um teste que compara código com nome. Comentário errado continua
