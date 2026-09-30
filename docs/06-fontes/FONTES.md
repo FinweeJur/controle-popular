@@ -86,6 +86,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Cloudflare R2 | espelho de documentos | [§](#cloudflare-r2--espelhamento-perene-de-documentos-oficiais) |
 | Condicionantes (piloto) | COPAM/SEMAD Irapé + Setúbal | [§](#condicionantes--piloto-irapé-e-setubal--descoberta-2309--downloads) |
 | Cavas de mineração (Fase 1) | Monitor MapBiomas (WFS), SIGMINE, CBERS, Sentinel-2, Esri | [§](#cavas-de-mineração--monitor-mapbiomas-sigmine-e-imagens-de-satélite-fase-1-2509) |
+| Mineração ilegal (Fase B) | IBAMA embargos (ArcGIS), FEAM, IDE-MG | [§](#embargos-do-ibama-georreferenciados-feam-e-ide-mg--fase-b-3009) |
 
 ## CNJ e JUMA — litígio e jurisprudência nacional
 
@@ -979,8 +980,80 @@ de sessão.
   resolução e a data na ficha**. Nenhuma série de 10 m aparece antes de a
   coleta existir.
 
+## Embargos do IBAMA (georreferenciados), FEAM e IDE-MG — Fase B (30/09)
+
+Medido em 2026-09-30 para a **Fase B** do
+[PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md](../planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md).
+Todas as consultas com UA honesta `ControlePopular/1.0 (+controlepopular.com.br;
+transparencia)` e pausa ≥ 2 s; contagens via `returnCountOnly=true`
+(só número, sem baixar dado).
+
+### Embargos do IBAMA — ArcGIS REST (Pamgia), atualização diária
+
+- **Endereço:**
+  `https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/adm_embargos_ibama_a/MapServer`
+  — camada `0` = `base.adm_embargos_ibama_a`.
+- **`robots.txt` → HTTP 404** (sem declaração → acesso liberado por
+  padrão; decisão: UA honesta e pausa ≥ 2 s, como no WFS do Monitor).
+- **O que dá:** embargo georreferenciado com geometria (`shape`, ponto em
+  `num_longitude_tad`/`num_latitude_tad`), `dat_embargo`, `num_processo`,
+  `municipio`, `uf`, `des_tad`, `des_infracao`, `qtd_area_embargada`,
+  `operacao`, `ordem_fiscalizacao`. Descrição do serviço declara
+  **atualização diária**.
+
+**Contagens (30/09/2026):**
+
+| Medida | Valor |
+|---|---:|
+| Embargos no Brasil | **91.702** |
+| Embargos em MG | **4.692** |
+| MG + termo de mineração (`MINERAC`, `GARIMP`, `EXTRACAO MINERAL`, `CAVA`, `REJEITO` em `des_tad`/`des_infracao`) | **78** |
+| Brasil + mesmo filtro | **236** |
+
+⚠️ **Campos de pessoa:** `nome_embargado` e `cpf_cnpj_embargado` existem
+na camada. Nunca saem cru: a ficha publica processo, município, data e
+descrição do ato; varredura de CPF antes de qualquer commit (AGENTS § 5.2).
+
+⚠️ **Não somar com o acervo de texto.** `ibama-autos-infracao.json`
+(17/09, 11.734 autos) dá 11 de MG com termo de mineração; esta camada de
+**embargos** dá 78. São atos diferentes (termo de embargo × auto de
+infração) em bases diferentes — duas contagens, duas perguntas.
+
+### FEAM (órgão estadual de MG) — sem dado aberto bulk (medido 30/09)
+
+- `feam.br/dados-abertos` → aponta para o portal estadual
+  `dados.mg.gov.br`.
+- CKAN de `dados.mg.gov.br` (`api/3/action/package_search`): "auto de
+  infração" **0**, "embargo" **0**, "mineracao" **1** (dataset
+  irrelevante, Acordo Judicial da Vale) → **FEAM não publica autos de
+  infração nem embargos em dado aberto**.
+- `feam.br/autos-de-infração` é portal Liferay com consulta por
+  interface (busca e páginas HTML, sem download em massa medido). Coleta
+  seria raspagem de app — decição com o dono antes de qualquer coisa.
+
+### IDE-MG (Semad) — WFS com 1.421 camadas, nenhuma de embargo
+
+- **Endereço:** `https://geoserver.meioambiente.mg.gov.br/IDE/ows`
+  (`GetCapabilities` 1.1.0 → 939.130 bytes, **1.421 FeatureTypes**).
+- **Camadas de mineração:** `IDE:ide_1706_mg_ocor_minerais_pto`,
+  `IDE:ide_2401_mg_processos_minerarios_pol`,
+  `IDE:ide_2401_mg_recursos_minerais_pol`,
+  `IDE:ide_1706_mg_ocorrencias_minerais_pol`.
+- **Fiscalização/FEAM:** `IDE:ide_2401_mg_org_fiscalizacao_controle_pol`
+  (órgãos, não atos) e `IDE:ide_2105_mg_area_autoriz_interv_amb_feam_pol`
+  (áreas autorizadas de intervenção — o inverso de embargo).
+- **Nenhuma camada de embargo** no filtro `embargo|fiscaliz|miner|infra|auto`
+  além dessas: a IDE-MG não expõe autos de embargo. Uso provável aqui:
+  áreas autorizadas FEAM para o estado `em_operacao` estadual.
+
 ## Decisões registradas
 
+- **2026-09-30:** Embargos do IBAMA (Pamgia, ArcGIS REST) consultados com
+  `returnCountOnly=true`, UA honesta e pausa ≥ 2 s; `robots.txt` do host
+  devolve 404 (sem declaração) → liberado por padrão. `nome_embargado` e
+  `cpf_cnpj_embargado` nunca saem cru (AGENTS § 5.2). FEAM sem dado aberto
+  bulk medido em `dados.mg.gov.br` — raspagem de portal Liferay só com
+  decisão do dono.
 - **2026-09-25:** WFS do Monitor da Mineração (MapBiomas) consultado só com
   `version=1.1.0` — BBOX em ordem lat,lon, campo `geom`, filtro CQL por fase;
   `robots.txt` do host do GeoServer devolve 404 (sem declaração) → acesso

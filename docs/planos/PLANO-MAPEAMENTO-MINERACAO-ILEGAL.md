@@ -143,6 +143,20 @@ Para cada fonte: `robots.txt`, endpoint, contagem em MG, licença, armadilha
 Critério de pronto: cada fonte com contagem datada em FONTES.md, ou com o
 motivo de não ter dado registrado.
 
+**Status medido 30/09/2026** (seção
+[FONTES, Fase B](../06-fontes/FONTES.md#embargos-do-ibama-georreferenciados-feam-e-ide-mg--fase-b-3009)):
+
+- **Item 1 — FEAM fechado por medição:** sem dado aberto bulk
+  (`dados.mg.gov.br` com 0 de "auto de infração" e 0 de "embargo";
+  portal Liferay só com decisão do dono). Ganho de caminho: o IBAMA
+  federal tem embargo georreferenciado **atualizado diariamente** —
+  **91.702 no Brasil, 4.692 em MG, 78 em MG com termo de mineração**
+  (ArcGIS Pamgia, robots 404, UA + pausa registrados).
+- **IDE-MG sondada:** 1.421 camadas, **nenhuma de embargo** — serve para
+  áreas autorizadas FEAM, não para atos.
+- **Pendentes:** item 2 (ICMBio em UC), item 3 (ANM), item 4 (TI /
+  quilombo mais completos).
+
 ### Fase C — página `/mineracao/ilegal` (2 dias)
 
 - As seis qualidades ([AGENTS.md § 8](/AGENTS.md)): busca tolerante a

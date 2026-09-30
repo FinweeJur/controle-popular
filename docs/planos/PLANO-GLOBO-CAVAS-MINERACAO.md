@@ -444,6 +444,45 @@ cenas abertas.
 `bd8c83af…`); 1 positivo com escore nulo por truncamento determinístico;
 coleta de +900 negativos em andamento (semente 43).
 
+### Fechamento do lote +900 e gate v3 — 30/09/2026 (medido)
+
+**Coleta (semente 43) fechou às 22h34** de 29/09: **+900 negativos**
+(1.020 → 1.920), rc=0 — o ganho da ordenação por cena primária derrubou a
+projeção de 35 h para o lote rodar na noite. Manifesto publicado
+(`a9b21414`); fila remontada com **3.920 itens** (2.000 pos / 1.920 neg).
+
+**Triagem VLM dos 900 novos:** pico de 202 erros transitórios do Ollama
+às 22h34 (mesma contenção de 29/09), corrigidos pela passada seguinte —
+estado final por last-wins: **1 erro** (o JPEG corrompido `bd8c83af…`),
+4 itens sem escore (truncamento determinístico), **eco 0**.
+
+**Split v3** (por cena, semente 42, arquivado o split v2 antes do treino):
+treino 3.126 (1.608 pos / 1.518 neg, 206 cenas); holdout **794 (392 pos /
+402 neg, 57 cenas)** — o holdout de negativos passou de **88 → 402**.
+
+| Modelo | Limiar | Precisão | Recall | F1 | Veredito do gate (≥ 0,70) |
+|---|---|---|---|---|---|
+| Zero-shot B (baseline) | 0,50 | 0,494 | 1,000 | 0,661 | não (≈ prevalência do holdout) |
+| Fine-tune `peso` @ 0,50 | 0,50 | 0,654 | 0,796 | 0,718 | — |
+| Fine-tune `peso` (limiar do gate) | 0,69 | **0,709** | 0,602 | 0,651 | **PASSOU** |
+| Fine-tune `sobreamostragem` @ 0,50 | 0,50 | 0,684 | 0,778 | 0,728 | — |
+| Fine-tune `sobreamostragem` (limiar do gate) | 0,69 | **0,721** | 0,691 | 0,706 | **PASSOU** |
+
+- **Gate v3: PASSOU; vence `sobreamostragem` de novo** (0,721 de
+  precisão com recall 0,691 no limiar 0,69 escolhido na curva PR).
+- **Não comparar 0,914 (v2) com 0,721 (v3):** o holdout v2 tinha 88
+  negativos (20 cenas) e o v3 tem 402 (57 cenas); com a metade do
+  holdout virando negativo, a precisão na mesma taxa de acerto é menor.
+  O número que vale é o v3, sobre a amostra que existe hoje.
+- Custo medido: 99–105 s/época em 3.126 imagens, VRAM 2,39 GiB de 4;
+  melhor época 5 das 8 (early stop). Extrapolação do próprio script:
+  10,6 min por época numa hipotética leva de 20 mil imagens.
+- **Regra do plano mantida: 5 mil negativos para o gate definitivo** —
+  hoje 1.920; lote 5 (semente 44, +1.200) rodando com fechador
+  automático (triagem + remonta + Telegram).
+- Pendências: revisão humana dos 100 exemplos (dono, atalho na Área de
+  Trabalho; ganhou visualizador de ampliação em `c98f1120`).
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
