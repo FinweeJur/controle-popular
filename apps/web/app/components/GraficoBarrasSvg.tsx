@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Gráfico de barras em SVG nativo — sem biblioteca de gráfico externa (teto de
+ * payload e acessibilidade). O desenho é `aria-hidden`; o texto equivalente
+ * vem de `descricaoAcessivel`, que o chamador passa por extenso — cor nunca é
+ * o único canal. Parte da regra das seis qualidades do [AGENTS § 8](/AGENTS.md).
+ */
 export interface ItemGraficoBarras {
   rotulo: string;
   valor: number;

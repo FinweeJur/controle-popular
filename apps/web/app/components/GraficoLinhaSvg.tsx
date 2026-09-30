@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Gráfico de linha em SVG nativo — irmão de `GraficoBarrasSvg`, mesmo princípio
+ * de acessibilidade: o traço é `aria-hidden` e o texto equivalente vem de
+ * `descricaoAcessivel`, passado por extenso pelo chamador. Sem biblioteca de
+ * gráfico externa (teto de payload).
+ */
 export interface PontoGraficoLinha {
   rotulo: string; // Ex: "2020", "Jan/24", "2026-08"
   valor: number;

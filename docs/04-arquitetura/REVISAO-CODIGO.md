@@ -18,6 +18,7 @@
 - [Parte 4 — rotas que leem banco (app/)](#parte-4--rotas-que-leem-banco-app)
 - [Parte 5 — coleta (scripts/ e etl/)](#parte-5--coleta-scripts-e-etl)
 - [Parte 6 — frentes (ambiental, paraopeba, terras, judiciário, congresso)](#parte-6--frentes-ambiental-paraopeba-terras-judiciário-congresso)
+- [Parte 7 — componentes e compactação](#parte-7--componentes-e-compactação)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -354,6 +355,36 @@ Cada frente é uma pasta em `lib/` com o mesmo desenho: **lógica pura** em
 6. ✅ **Chave de LLM é server-only** em `congresso/llm/cliente.ts`, com aviso
    explícito de nunca importar de client component.
 
+## Parte 7 — componentes e compactação
+
+Fecha a revisão por duas caudas: a acessibilidade dos componentes globais
+(`app/components/`, 78 arquivos) e a **compactação dupla**, que é dívida
+registrada e não se toca sem remedir.
+
+### Achados da Parte 7
+
+1. ✅ **Imagens acessíveis.** As 18 tags `<img>` da `app/` têm `alt` (os dois
+   "candidatos sem alt" eram linhas de comentário, não tag). Ícone sem texto
+   não carrega informação sozinho.
+
+2. ✅ **Dois componentes de gráfico sem cabeçalho — corrigidos.**
+   [GraficoBarrasSvg.tsx](../../apps/web/app/components/GraficoBarrasSvg.tsx)
+   e [GraficoLinhaSvg.tsx](../../apps/web/app/components/GraficoLinhaSvg.tsx)
+   ganharam o bloco de onboarding. Os dois desenham com `aria-hidden` e
+   expõem `descricaoAcessivel` — a cor não é o único canal.
+
+3. ✅ **Acessibilidade transversal:** `CvdToggle` (daltonismo), temas com
+   contraste medido (testes do globo), `BotoesExportar` (CSV com BOM +
+   impressão). São as seis qualidades do [AGENTS § 8](/AGENTS.md) no
+   componente.
+
+4. 🔸 **Compactação dupla (não unificar).**
+   [lib/comunicabr/arquivo.ts](../../apps/web/lib/comunicabr/arquivo.ts) e
+   [lib/estatico/compactar.ts](../../apps/web/lib/estatico/compactar.ts) são
+   **duas implementações deliberadas** (decisão de 16/08, registrada no
+   ESTADO). Aplainar o codec perde o ganho de ordem de grandeza. Fica
+   documentado como decisão, não como dívida a pagar.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -399,8 +430,12 @@ Próximas micro-partes, por risco e retorno:
 | 3 | ✅ `app/` — rotas que leem banco | Feita — Parte 4: IP do chatbot, webhook do Telegram, payload. |
 | 4 | ✅ `scripts/` — coletores e ETL | Feita — Parte 5: UA honesto (pendência por-fonte), segredos e `robots.txt`. |
 | 5 | ✅ `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Feita — Parte 6: cabeçalhos, payload server-only, triagem. |
-| 6 | `app/components/` | Acessibilidade (leitor sob estresse). |
-| 7 | Compactação dupla | `lib/comunicabr/arquivo.ts` e `lib/estatico/compactar.ts`: duas implementações deliberadas — não unificar sem remedir. |
+| 6 | ✅ `app/components/` | Feita — Parte 7: imagens com `alt`, gráficos com `descricaoAcessivel`. |
+| 7 | ✅ Compactação dupla | Feita — Parte 7: registrada como decisão, não dívida. |
+
+**Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
+ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
+camada.
 
 ## Decisões registradas
 
