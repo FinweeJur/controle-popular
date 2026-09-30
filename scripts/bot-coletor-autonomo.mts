@@ -272,14 +272,15 @@ async function executarCicloAutomacao() {
   // ══════════════════════════════════════════════════════════════════
   // ETAPA 3: Fontes Multilaterais (ONU, UNESCO, OMS, OMC e Territórios)
   // ══════════════════════════════════════════════════════════════════
-  if (rodarTudo || args.includes("--multilateral") || args.includes("--onu")) {
-    console.log("\n[3/4] 🌐 Verificando dados multilaterais (ONU, UNESCO, OMS, OMC)...");
+  if (rodarTudo || args.includes("--multilateral") || args.includes("--onu") || args.includes("--desclassificados")) {
+    console.log("\n[3/4] 🌐 Verificando dados multilaterais e desclassificados (ONU, UNESCO, OMS, OMC, G20)...");
     await pausaCortesia();
 
     const arquivosMultilaterais = [
       "apps/web/data/internacional/indicadores-sociais.compact.json",
       "apps/web/data/internacional/comercio-commodities.compact.json",
       "apps/web/data/internacional/terra-territorios-global.compact.json",
+      "apps/web/data/internacional/desclassificados-g20.compact.json",
     ];
 
     let totalBytesMultilateral = 0;

@@ -41,13 +41,13 @@ export interface CoberturaCanada {
  * Evita carregar os arrays de dados no servidor apenas para exibir totais nos cartões.
  */
 export const COBERTURA_CANADA: CoberturaCanada = {
-  dataMedicao: "2026-09-29",
-  mineradorasTsxBrasil: 12,
-  registrosAmbientais: 9,
-  contratosGrants: 6,
-  registrosInstitucionais: 9,
-  totalRegistros: 36,
-  barragensMonitoradas: 8,
+  dataMedicao: "2026-09-30",
+  mineradorasTsxBrasil: 14,
+  registrosAmbientais: 12,
+  contratosGrants: 9,
+  registrosInstitucionais: 12,
+  totalRegistros: 47,
+  barragensMonitoradas: 10,
   cidadesPolo: 6,
 } as const;
 

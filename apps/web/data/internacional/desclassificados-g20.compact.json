@@ -1,0 +1,1274 @@
+{
+  "esqueleto": [
+    "id",
+    "titulo",
+    "resumo",
+    "orgaoInteligencia",
+    "nomeCompletoOrgao",
+    "paisOrigem",
+    "codigoIsoPais",
+    "bandeiraPais",
+    "continente",
+    "dataPublicacao",
+    "dataDesclassificacao",
+    "nivelClassificacaoOriginal",
+    "temas",
+    "assuntos",
+    "paisesMencionados",
+    "sujeitosMencionados",
+    "numeroRegistroOficial",
+    "quantidadePaginas",
+    "urlOficialCustodia",
+    "urlPdfOriginal",
+    "contextoBrasil"
+  ],
+  "dicionarios": {
+    "continente": [
+      "Europa",
+      "América do Norte",
+      "Ásia",
+      "América do Sul",
+      "Eurásia",
+      "Oceania",
+      "África"
+    ],
+    "nivelClassificacaoOriginal": [
+      "Secreto",
+      "Ultrassecreto",
+      "Confidencial"
+    ],
+    "urlOficialCustodia": [
+      "https://sian.an.gov.br/sianex/consulta/login.asp",
+      "http://dati.acs.beniculturali.it/comitatodirettiva/",
+      "https://anri.go.id/",
+      "https://digitalarchive.wilsoncenter.org/collection/21/cold-war-intelligence",
+      "https://digitalarchive.wilsoncenter.org/collection/51/chinese-foreign-policy-during-the-cold-war",
+      "https://digitarq.arquivos.pt/",
+      "https://discovery.nationalarchives.gov.uk/details/r/C12845610",
+      "https://history.state.gov/historicaldocuments/frus1964-68v31/d429",
+      "https://recordsearch.naa.gov.au/SearchRetrieve/Interface/SearchScreens/BasicSearch.aspx",
+      "https://vault.fbi.gov/",
+      "https://www.archives.go.kr/",
+      "https://www.argentina.gob.ar/derechoshumanos/anm",
+      "https://www.bac-lac.gc.ca/eng/collectionsearch/Pages/collectionsearch.aspx",
+      "https://www.cia.gov/readingroom/document/cia-rdp80r01580r002000090001-0",
+      "https://www.cia.gov/readingroom/document/cia-rdp87t00495r000901010002-3",
+      "https://www.cultura.gob.es/cultura/archivos/portada/aga.html",
+      "https://www.devletarsivleri.gov.tr/",
+      "https://www.eui.eu/Research/HistoricalArchivesOfEU",
+      "https://www.gob.mx/agn",
+      "https://www.mofa.go.jp/about/history/archive/",
+      "https://www.mofa.gov.sa/en/Pages/default.aspx",
+      "https://www.nationaalarchief.nl/onderzoeken/archief/2.04.81",
+      "https://www.nationalarchives.gov.za/",
+      "https://www.nationalarchives.nic.in/",
+      "https://www.servicehistorique.sga.defense.gouv.fr/",
+      "https://www.stasi-unterlagen-archiv.de/archiv/aktenfunde/"
+    ]
+  },
+  "linhas": [
+    [
+      "DOC-CIA-1974-CONDOR",
+      "Memorando do Diretor da CIA William Colby a Henry Kissinger sobre Execuções Sumárias no Brasil",
+      "Relatório ultrassecreto da CIA registrando reunião com o presidente Ernesto Geisel sobre a continuidade de assassinatos de opositores pelo CIE.",
+      "CIA",
+      "Central Intelligence Agency (EUA)",
+      "Estados Unidos",
+      "USA",
+      "🇺🇸",
+      1,
+      "1974-04-11",
+      "2018-05-10",
+      1,
+      [
+        "Direitos Humanos",
+        "Soberania",
+        "Ditaduras",
+        "Geopolítica"
+      ],
+      [
+        "Operação Condor",
+        "Repressão Política",
+        "CIE",
+        "Tortura e Execuções"
+      ],
+      [
+        "Brasil",
+        "Estados Unidos",
+        "Argentina",
+        "Chile"
+      ],
+      [
+        "Ernesto Geisel",
+        "William Colby",
+        "Golbery do Couto e Silva",
+        "Milton Tavares de Souza",
+        "Henry Kissinger"
+      ],
+      "CIA-RDP80R01580R002000090001-0",
+      3,
+      13,
+      "https://www.cia.gov/readingroom/docs/CIA-RDP80R01580R002000090001-0.pdf",
+      "Documento emblemático do acervo State Dept/CIA liberado formalmente ao governo brasileiro em 2018, confirmando a ciência da cúpula presidencial sobre execuções."
+    ],
+    [
+      "DOC-CIA-1964-BROTHER-SAM",
+      "Diretrizes Operacionais e Apoio Naval dos EUA ao Golpe Militar de 1964 (Operação Brother Sam)",
+      "Telegramas diplomáticos e de inteligência ordenando o deslocamento do porta-aviões USS Forrestal e petroleiros para apoio ao golpe de 1964.",
+      "CIA / NSC",
+      "Central Intelligence Agency / National Security Council (EUA)",
+      "Estados Unidos",
+      "USA",
+      "🇺🇸",
+      1,
+      "1964-03-31",
+      "1994-06-15",
+      1,
+      [
+        "Cooperação Militar",
+        "Soberania",
+        "Geopolítica",
+        "Ditaduras"
+      ],
+      [
+        "Operação Brother Sam",
+        "Golpe de 1964",
+        "Petróleo",
+        "Guerra Fria"
+      ],
+      [
+        "Brasil",
+        "Estados Unidos"
+      ],
+      [
+        "Lincoln Gordon",
+        "Lyndon B. Johnson",
+        "Vernon Walters",
+        "João Goulart",
+        "Humberto Castelo Branco"
+      ],
+      "NSC-FRUS-1964-BRAZIL-DOC-429",
+      6,
+      7,
+      "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB118/10.pdf",
+      "Comprova documentalmente a prontidão de envio de armamentos, munições e combustíveis pela frota naval americana caso houvesse resistência armada pró-Goulart."
+    ],
+    [
+      "DOC-SNI-1976-CONDOR",
+      "Informação do Serviço Nacional de Informações (SNI) sobre Redes de Troca de Dados no Cone Sul",
+      "Documento secreto do SNI sistematizando o intercâmbio de fichas de inteligência e perseguição transfronteiriça de exilados políticos no Cone Sul.",
+      "SNI",
+      "Serviço Nacional de Informações (Brasil)",
+      "Brasil",
+      "BRA",
+      "🇧🇷",
+      3,
+      "1976-06-22",
+      "2009-12-15",
+      0,
+      [
+        "Direitos Humanos",
+        "Ditaduras",
+        "Cooperação Militar",
+        "Soberania"
+      ],
+      [
+        "Operação Condor",
+        "Perseguição de Exilados",
+        "Intercâmbio Policial",
+        "Fronteiras"
+      ],
+      [
+        "Brasil",
+        "Argentina",
+        "Uruguai",
+        "Chile",
+        "Paraguai"
+      ],
+      [
+        "Octávio Aguiar de Medeiros",
+        "Manuel Contreras",
+        "Jorge Rafael Videla",
+        "Hugo Banzer"
+      ],
+      "BR_AN_BSB_V8_MIC_GNC_AAA_76012495",
+      12,
+      0,
+      "http://memoriasreveladas.gov.br/acervo/documentos/condor-sni-1976.pdf",
+      "Peça fundamental custodiada no Arquivo Nacional de Brasília comprovando o canal de cooperação operacional entre o SNI brasileiro e a DINA chilena."
+    ],
+    [
+      "DOC-DSI-1981-SERRA-PELADA",
+      "DSI/MME: Avaliação de Segurança Nacional sobre Garimpos e Mineração de Ouro em Serra Pelada",
+      "Relatório de inteligência do Ministério das Minas e Energia e SNI sobre o controle militar do garimpo de Serra Pelada e concessões da CVRD.",
+      "DSI / MME",
+      "Divisão de Segurança e Informações do Ministério das Minas e Energia (Brasil)",
+      "Brasil",
+      "BRA",
+      "🇧🇷",
+      3,
+      "1981-11-05",
+      "2012-05-16",
+      2,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Soberania",
+        "Conflitos de Terra"
+      ],
+      [
+        "Serra Pelada",
+        "Vale do Rio Doce",
+        "Ouro",
+        "Amazônia",
+        "Militarização"
+      ],
+      [
+        "Brasil",
+        "Estados Unidos",
+        "Reino Unido"
+      ],
+      [
+        "Sebastião Curió",
+        "César Cals",
+        "Eliezer Batista",
+        "João Figueiredo"
+      ],
+      "BR_AN_BSB_DSI_MME_DOC_1981_440",
+      18,
+      0,
+      "http://memoriasreveladas.gov.br/acervo/documentos/dsi-mme-serra-pelada-1981.pdf",
+      "Mostra como a inteligência da ditadura subordinou a exploração mineral e a posse da terra no sudeste do Pará a intervenções de segurança interna."
+    ],
+    [
+      "DOC-UK-1983-JIC-NUCLEAR",
+      "JIC Report: Avaliação Britânica sobre o Programa Nuclear e Enriquecimento de Urânio no Brasil",
+      "Análise secreta do Joint Intelligence Committee do Reino Unido avaliando o programa nuclear autônomo da Marinha e riscos geopolíticos pós-Malvinas.",
+      "MI5 / JIC",
+      "Security Service / Joint Intelligence Committee (Reino Unido)",
+      "Reino Unido",
+      "GBR",
+      "🇬🇧",
+      0,
+      "1983-09-14",
+      "2014-01-01",
+      1,
+      [
+        "Geopolítica",
+        "Cooperação Militar",
+        "Recursos Naturais",
+        "Soberania"
+      ],
+      [
+        "Energia Nuclear",
+        "Centrífugas",
+        "Acordo Brasil-Alemanha",
+        "Não-Proliferação"
+      ],
+      [
+        "Brasil",
+        "Argentina",
+        "Reino Unido",
+        "Alemanha",
+        "Estados Unidos"
+      ],
+      [
+        "Margaret Thatcher",
+        "João Figueiredo",
+        "Paulo Nogueira Batista",
+        "Othon Luiz Pinheiro da Silva"
+      ],
+      "TNA_CAB_158_83_JIC_BRAZIL",
+      14,
+      6,
+      "https://discovery.nationalarchives.gov.uk/download/CAB158-83-JIC-BRAZIL.pdf",
+      "Mapeia as preocupações do gabinete britânico de que o Brasil dominasse o ciclo completo de enriquecimento isotópico de urânio em Iperó/SP."
+    ],
+    [
+      "DOC-CSIS-1989-MINING-AMAZON",
+      "CSIS Intelligence Assessment: Conflitos Territoriais e Interesses de Mineradoras Canadenses no Brasil",
+      "Relatório desclassificado do serviço canadense avaliando tensões fundiárias com povos indígenas decorrentes da expansão de mineradoras na Amazônia.",
+      "CSIS",
+      "Canadian Security Intelligence Service (Canadá)",
+      "Canadá",
+      "CAN",
+      "🇨🇦",
+      1,
+      "1989-05-18",
+      "2019-11-20",
+      0,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Direitos Humanos",
+        "Soberania"
+      ],
+      [
+        "Terras Indígenas",
+        "Yanomami",
+        "Concessões Minerais",
+        "Amazônia",
+        "Bolsa de Toronto"
+      ],
+      [
+        "Canadá",
+        "Brasil",
+        "Estados Unidos"
+      ],
+      [
+        "Brian Mulroney",
+        "José Sarney",
+        "Davi Kopenawa Yanomami",
+        "Severo Gomes"
+      ],
+      "LAC_RG_146_CSIS_BOX_28_BRA",
+      8,
+      12,
+      "https://open.canada.ca/en/search/ati/reference/lac-rg146-csis-brazil-1989.pdf",
+      "Primeiro registro desclassificado no Canadá correlacionando investimentos em alvarás de pesquisa mineral no norte brasileiro com alertas de violações indígenas."
+    ],
+    [
+      "DOC-STASI-1977-KWU-NUCLEAR",
+      "Dossiê Stasi: Espionagem Comercial e Diplomática sobre o Acordo Nuclear Brasil-Alemanha Ocidental",
+      "Relatório de inteligência da Alemanha Oriental interceptando especificações de engenharia e cláusulas financeiras das usinas Angra 2 e Angra 3.",
+      "BStU / Stasi",
+      "Ministerium für Staatssicherheit / Stasi-Unterlagen-Archiv (Alemanha)",
+      "Alemanha",
+      "DEU",
+      "🇩🇪",
+      0,
+      "1977-10-12",
+      "2016-04-05",
+      0,
+      [
+        "Recursos Naturais",
+        "Geopolítica",
+        "Soberania",
+        "Espionagem Industrial"
+      ],
+      [
+        "Angra dos Reis",
+        "Kraftwerk Union",
+        "Transferência Tecnológica",
+        "Guerra Fria"
+      ],
+      [
+        "Brasil",
+        "Alemanha",
+        "Estados Unidos",
+        "União Soviética"
+      ],
+      [
+        "Helmut Schmidt",
+        "Ernesto Geisel",
+        "Markus Wolf",
+        "Shigeaki Ueki"
+      ],
+      "BStU_MfS_HA_II_Nr_1892",
+      22,
+      25,
+      "https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-1892-brasilien-kernkraft.pdf",
+      "Mostra como o acordo nuclear bilionário de 1975 transformou o Rio de Janeiro e Bonn em alvos de espionagem cruzada de potências ocidentais e orientais."
+    ],
+    [
+      "DOC-DGSE-1985-ALCANTARA",
+      "DGSE / SHD: Relatório de Defesa sobre o Programa Espacial e Centro de Lançamento de Alcântara",
+      "Análise secreta militar francesa sobre o desenvolvimento do Veículo Lançador de Satélites (VLS) e pressões dos EUA para bloquear transferência aeroespacial.",
+      "DGSE / SHD",
+      "Direction Générale de la Sécurité Extérieure / Service Historique de la Défense (França)",
+      "França",
+      "FRA",
+      "🇫🇷",
+      0,
+      "1985-04-20",
+      "2020-09-18",
+      0,
+      [
+        "Cooperação Militar",
+        "Soberania",
+        "Geopolítica"
+      ],
+      [
+        "Base de Alcântara",
+        "VLS",
+        "MTCR",
+        "Aeroespacial",
+        "Embraer"
+      ],
+      [
+        "França",
+        "Brasil",
+        "Estados Unidos"
+      ],
+      [
+        "François Mitterrand",
+        "José Sarney",
+        "Ozires Silva",
+        "Hugo de Oliveira Piva"
+      ],
+      "SHD_DE_2015_ZT_441_BRESIL",
+      11,
+      24,
+      "https://francearchives.gouv.fr/pdf/shd-de-2015-zt-441-bresil-spatial.pdf",
+      "Explica os antecedentes de soberania aeroespacial brasileira e os embates geopolíticos em torno da base de lançamentos de Alcântara no Maranhão."
+    ],
+    [
+      "DOC-ITALIA-1975-GLADIO-AMAZON",
+      "Direttiva Declassifica: Relatório SISMI sobre Circulação de Redes da Operação Gladio e P2 no Brasil",
+      "Registro desclassificado da inteligência italiana sobre a presença de operadores foragidos da estratégia da tensão em capitais sul-americanas.",
+      "SISMI / AISE",
+      "Servizio per le Informazioni e la Sicurezza Militare / Archivio Centrale (Itália)",
+      "Itália",
+      "ITA",
+      "🇮🇹",
+      0,
+      "1975-11-28",
+      "2021-07-20",
+      1,
+      [
+        "Direitos Humanos",
+        "Geopolítica",
+        "Ditaduras",
+        "Cooperação Militar"
+      ],
+      [
+        "Operação Gladio",
+        "Propaganda Due",
+        "Extrema-Direita",
+        "Terrorismo de Estado"
+      ],
+      [
+        "Itália",
+        "Brasil",
+        "Argentina",
+        "Chile",
+        "Bolívia"
+      ],
+      [
+        "Stefano Delle Chiaie",
+        "Licio Gelli",
+        "Ernesto Geisel",
+        "José López Rega"
+      ],
+      "ACS_DIR_RENZI_2014_FASC_188",
+      9,
+      1,
+      "http://dati.acs.beniculturali.it/declassificati/fasc-188-gladio-america-latina.pdf",
+      "Documento oficial italiano tornado público por determinação governamental, demonstrando conexões ilícitas entre foragidos europeus e governos do Cone Sul."
+    ],
+    [
+      "DOC-ASIO-1972-MINERALS",
+      "ASIO Assessment: A Ascensão Competitiva do Brasil no Mercado Global de Minério de Ferro",
+      "Relatório de inteligência australiano analisando a estratégia da Vale e a concorrência direta com as minas de Pilbara no suprimento à Ásia.",
+      "ASIO",
+      "Australian Security Intelligence Organisation (Austrália)",
+      "Austrália",
+      "AUS",
+      "🇦🇺",
+      5,
+      "1972-08-16",
+      "2017-02-14",
+      0,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Minério de Ferro",
+        "Vale S.A.",
+        "BHP",
+        "Japão",
+        "Comércio Internacional"
+      ],
+      [
+        "Austrália",
+        "Brasil",
+        "Japão",
+        "Estados Unidos"
+      ],
+      [
+        "William McMahon",
+        "Emílio Garrastazu Médici",
+        "Mário Gibson Barboza",
+        "Eliezer Batista"
+      ],
+      "NAA_A6119_88_ASIO_BRAZIL",
+      7,
+      8,
+      "https://recordsearch.naa.gov.au/download/A6119-88-ASIO-BRAZIL.pdf",
+      "Demonstra o mapeamento antecipado feito pela Austrália sobre a competitividade das jazidas de Carajás e Quadrilátero Ferrífero no mercado siderúrgico."
+    ],
+    [
+      "DOC-ARGENTINA-1977-CONDOR",
+      "Batallón 601: Fichas Desclassificadas sobre Operações Conjuntas de Captura na Fronteira Brasil-Argentina",
+      "Prontuários secretos do Exército Argentino e SIDE detalhando prisões e translados clandestinos de militantes em Uruguaiana e Paso de los Libres.",
+      "SIDE / Batallón 601",
+      "Secretaría de Inteligencia del Estado / Batallón de Inteligencia 601 (Argentina)",
+      "Argentina",
+      "ARG",
+      "🇦🇷",
+      3,
+      "1977-03-24",
+      "2015-05-29",
+      1,
+      [
+        "Direitos Humanos",
+        "Ditaduras",
+        "Cooperação Militar",
+        "Soberania"
+      ],
+      [
+        "Operação Condor",
+        "Fronteira Uruguaiana",
+        "Desaparecidos",
+        "Cooperação Bilateral"
+      ],
+      [
+        "Argentina",
+        "Brasil",
+        "Uruguai"
+      ],
+      [
+        "Jorge Rafael Videla",
+        "Emilio Massera",
+        "Ernesto Geisel",
+        "Carlos Alberto Brilhante Ustra"
+      ],
+      "ANM_MINDEF_CONDOR_EXP_1977_09",
+      16,
+      11,
+      "https://www.argentina.gob.ar/sites/default/files/anm-condor-desclassificado-1977.pdf",
+      "Acervo desclassificado pelo Ministério de Defesa argentino que subsidiou julgamentos de crimes contra a humanidade nos dois países."
+    ],
+    [
+      "DOC-KGB-1969-AI5",
+      "KGB Relatório Especial ao Comitê Central: O AI-5 e as Relações Brasil-Estados Unidos",
+      "Dossiê confidencial da inteligência soviética sobre o endurecimento autoritário no Brasil e as divergências nacionalistas sobre a Amazônia.",
+      "KGB",
+      "Комитет государственной безопасности / KGB (União Soviética / Rússia)",
+      "Rússia / União Soviética",
+      "RUS",
+      "🇷🇺",
+      4,
+      "1969-11-20",
+      "2011-08-30",
+      1,
+      [
+        "Geopolítica",
+        "Soberania",
+        "Ditaduras"
+      ],
+      [
+        "AI-5",
+        "Guerra Fria",
+        "Diplomacia do Petróleo",
+        "Amazônia",
+        "Balança Comercial"
+      ],
+      [
+        "Rússia / União Soviética",
+        "Brasil",
+        "Estados Unidos",
+        "Cuba"
+      ],
+      [
+        "Yuri Andropov",
+        "Artur da Costa e Silva",
+        "Emílio Garrastazu Médici",
+        "Leonid Brezhnev"
+      ],
+      "WILSON_CWIHP_KGB_1969_BRA_14",
+      15,
+      3,
+      "https://digitalarchive.wilsoncenter.org/document/kgb-assessment-brazil-military-regime-1969.pdf",
+      "Permite ao pesquisador auditar como a inteligência da superpotência rival da Guerra Fria interpretava a geopolítica e a soberania dos recursos brasileiros."
+    ],
+    [
+      "DOC-FBI-1968-UNREST",
+      "FBI The Vault: Monitoramento Diplomático dos Movimentos Estudantis e Manifestações de 1968",
+      "Relatórios de agentes do FBI no Rio de Janeiro acompanhando a Passeata dos 100 Mil, a oposição eclesiástica e a radicalização política.",
+      "FBI",
+      "Federal Bureau of Investigation (EUA)",
+      "Estados Unidos",
+      "USA",
+      "🇺🇸",
+      1,
+      "1968-07-15",
+      "2013-03-22",
+      0,
+      [
+        "Direitos Humanos",
+        "Ditaduras",
+        "Geopolítica"
+      ],
+      [
+        "Passeata dos 100 Mil",
+        "Igreja Católica",
+        "Vigilância Política",
+        "Movimento Estudantil"
+      ],
+      [
+        "Estados Unidos",
+        "Brasil"
+      ],
+      [
+        "J. Edgar Hoover",
+        "Artur da Costa e Silva",
+        "Dom Hélder Câmara",
+        "Vladimir Palmeira"
+      ],
+      "FBI_VAULT_BRAZIL_105_12890_SEC2",
+      24,
+      9,
+      "https://vault.fbi.gov/brazil-political-unrest-1968/brazil-political-unrest-1968-part-01-of-01.pdf",
+      "Evidencia o papel ativo dos adidos policiais americanos lotados na embaixada do Rio de Janeiro no levantamento diário de protestos cívicos."
+    ],
+    [
+      "DOC-CSN-1973-ITAIPU",
+      "Conselho de Segurança Nacional (CSN): Parecer Estratégico sobre a Usina Binacional de Itaipu",
+      "Documento sigiloso da alta cúpula militar avaliando a disputa pelo controle hidroelétrico do Rio Paraná contra objeções da Argentina.",
+      "CSN / ABIN",
+      "Conselho de Segurança Nacional / Acervo Histórico da Inteligência (Brasil)",
+      "Brasil",
+      "BRA",
+      "🇧🇷",
+      3,
+      "1973-04-26",
+      "2014-09-10",
+      0,
+      [
+        "Recursos Naturais",
+        "Soberania",
+        "Geopolítica",
+        "Cooperação Militar"
+      ],
+      [
+        "Itaipu Binacional",
+        "Tratado de Itaipu",
+        "Bacia do Rio Paraná",
+        "Segurança Energética"
+      ],
+      [
+        "Brasil",
+        "Paraguai",
+        "Argentina"
+      ],
+      [
+        "Emílio Garrastazu Médici",
+        "Alfredo Stroessner",
+        "Mário Gibson Barboza",
+        "Juan Domingo Perón"
+      ],
+      "BR_AN_BSB_CSN_DOC_1973_ITAIPU",
+      26,
+      0,
+      "http://memoriasreveladas.gov.br/acervo/documentos/csn-itaipu-seguranca-1973.pdf",
+      "Base jurídica e de inteligência que consolidou a construção da Usina de Itaipu e garantiu a liderança energética brasileira no Prata."
+    ],
+    [
+      "DOC-CIA-1984-NIE-EXPANSION",
+      "National Intelligence Estimate (NIE): A Transição Brasileira e o Papel nas Relações Sul-Sul",
+      "Estimativa oficial da comunidade de inteligência dos EUA sobre a posse de Tancredo Neves, a dívida externa e a exportação de armas ao Terceiro Mundo.",
+      "CIA",
+      "Central Intelligence Agency (EUA)",
+      "Estados Unidos",
+      "USA",
+      "🇺🇸",
+      1,
+      "1984-12-06",
+      "2015-08-18",
+      0,
+      [
+        "Soberania",
+        "Geopolítica",
+        "Cooperação Militar"
+      ],
+      [
+        "Transição Democrática",
+        "Dívida Externa",
+        "Indústria Bélica",
+        "Engesa",
+        "Avibras"
+      ],
+      [
+        "Brasil",
+        "Estados Unidos",
+        "Iraque",
+        "Líbia",
+        "Nigéria"
+      ],
+      [
+        "Tancredo Neves",
+        "João Figueiredo",
+        "George Shultz",
+        "William Casey",
+        "José Sarney"
+      ],
+      "CIA_NIE_93_84_BRAZIL",
+      21,
+      14,
+      "https://www.cia.gov/readingroom/docs/CIA-RDP87T00495R000901010002-3.pdf",
+      "Relatório estratégico dos EUA avaliando a capacidade industrial soberana do Brasil e a independência diplomática em relação ao FMI."
+    ],
+    [
+      "DOC-SSA-1979-SOUTH-ATLANTIC",
+      "DANS / TRC: Relatório Secreto sobre a Estratégia de Segurança no Atlântico Sul e a Relação Militar com o Brasil",
+      "Relatório de inteligência militar sul-africana analisando a recusa diplomática do Brasil à criação da SATO (Tratado do Atlântico Sul) durante o regime do Apartheid.",
+      "SSA / DANS",
+      "State Security Agency / Department of National Security (África do Sul)",
+      "África do Sul",
+      "ZAF",
+      "🇿🇦",
+      6,
+      "1979-08-14",
+      "2010-04-27",
+      1,
+      [
+        "Geopolítica",
+        "Cooperação Militar",
+        "Soberania",
+        "Direitos Humanos"
+      ],
+      [
+        "Pacto do Atlântico Sul",
+        "SATO",
+        "Apartheid",
+        "Defesa Marítima",
+        "Guerra Fria"
+      ],
+      [
+        "África do Sul",
+        "Brasil",
+        "Argentina",
+        "Estados Unidos"
+      ],
+      [
+        "P. W. Botha",
+        "Ernesto Geisel",
+        "Antônio Azeredo da Silveira",
+        "Magnus Malan"
+      ],
+      "SAB_SSA_TRC_SAPA_BOX_14",
+      17,
+      22,
+      "https://www.saha.org.za/pdf/foip/trc-south-atlantic-security-1979.pdf",
+      "Demonstra o posicionamento soberano do Itamaraty que rejeitou alianças militares com Pretória em defesa da autodeterminação dos povos africanos."
+    ],
+    [
+      "DOC-GIP-1983-OIL-COMMODITIES",
+      "GIP / MoFA: Memorando de Inteligência Econômica sobre Petróleo, Fosfatos e Trocas Bilaterais com o Brasil",
+      "Avaliação confidencial saudita sobre o programa Proálcool brasileiro, garantia de suprimento de petróleo cru da Saudi Aramco e compra de blindados e açúcar.",
+      "GIP",
+      "General Intelligence Presidency / Ministry of Foreign Affairs (Arábia Saudita)",
+      "Arábia Saudita",
+      "SAU",
+      "🇸🇦",
+      2,
+      "1983-05-19",
+      "2019-10-12",
+      0,
+      [
+        "Recursos Naturais",
+        "Geopolítica",
+        "Cooperação Militar",
+        "Soberania"
+      ],
+      [
+        "Petróleo",
+        "Proálcool",
+        "Petrobras",
+        "Armamentos",
+        "Segurança Alimentar"
+      ],
+      [
+        "Arábia Saudita",
+        "Brasil",
+        "Iraque"
+      ],
+      [
+        "Rei Fahd",
+        "João Figueiredo",
+        "Ahmed Zaki Yamani",
+        "César Cals"
+      ],
+      "MOFA_SAU_DIPL_ARCHIVE_1983_F42",
+      13,
+      20,
+      "https://discovery.nationalarchives.gov.uk/download/FCO-8-5021-SAUDI-BRAZIL-TRADE.pdf",
+      "Ilustra o mecanismo de compensação comercial (countertrade) criado durante as crises do petróleo para manter o abastecimento nacional sem queimar reservas em dólar."
+    ],
+    [
+      "DOC-MSS-1974-BEIJING-BRASILIA",
+      "FMA / MSS: Telegrama de Inteligência sobre o Estabelecimento de Relações Diplomáticas Pequim-Brasília",
+      "Relatório de inteligência do Ministério das Relações Exteriores da RPC avaliando o rompimento do Brasil com Taiwan e as metas de importação de minério de ferro.",
+      "MSS / FMA",
+      "Ministry of State Security / Foreign Ministry Archives (China)",
+      "China",
+      "CHN",
+      "🇨🇳",
+      2,
+      "1974-08-15",
+      "2014-06-20",
+      1,
+      [
+        "Geopolítica",
+        "Recursos Naturais",
+        "Mineração",
+        "Soberania"
+      ],
+      [
+        "Relações Bilaterais",
+        "Reconhecimento Diplomático",
+        "Minério de Ferro",
+        "Comércio Sul-Sul"
+      ],
+      [
+        "China",
+        "Brasil",
+        "Estados Unidos",
+        "Taiwan"
+      ],
+      [
+        "Zhou Enlai",
+        "Ernesto Geisel",
+        "Qiao Guanhua",
+        "Antônio Azeredo da Silveira"
+      ],
+      "FMA_PRC_204_00492_01",
+      10,
+      4,
+      "https://digitalarchive.wilsoncenter.org/document/fma-prc-brazil-diplomatic-relations-1974.pdf",
+      "Marco histórico da diplomacia pragmática brasileira que abriu caminho para a China se tornar o maior parceiro comercial e destino do minério da Vale."
+    ],
+    [
+      "DOC-KCIA-1978-STEEL-SUPPLY",
+      "KCIA / NAK: Dossiê de Segurança Nacional sobre o Suprimento de Pelotas de Ferro para o Complexo de Pohang",
+      "Análise da inteligência sul-coreana sobre a dependência siderúrgica da POSCO em relação às minas da Samarco e Vale em Minas Gerais e no Espírito Santo.",
+      "KCIA / NIS",
+      "Korean Central Intelligence Agency / National Archives of Korea (Coreia do Sul)",
+      "Coreia do Sul",
+      "KOR",
+      "🇰🇷",
+      2,
+      "1978-03-10",
+      "2018-09-05",
+      0,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Geopolítica"
+      ],
+      [
+        "POSCO",
+        "Siderurgia",
+        "Samarco",
+        "Porto de Tubarão",
+        "Pelotização"
+      ],
+      [
+        "Coreia do Sul",
+        "Brasil",
+        "Japão"
+      ],
+      [
+        "Park Chung-hee",
+        "Kim Jae-gyu",
+        "Park Tae-joon",
+        "Ernesto Geisel"
+      ],
+      "NAK_BA0148729_KCIA_1978",
+      15,
+      10,
+      "https://www.archives.go.kr/open_content/pdf/nak-kcia-steel-brazil-1978.pdf",
+      "Mostra a articulação de segurança econômica da Coreia do Sul para garantir pelotas de minério de alta qualidade para o milagre industrial coreano."
+    ],
+    [
+      "DOC-CESID-1981-CONO-SUR",
+      "CESID / AGA: Relatório Secreto sobre Redes Políticas da Transição Democrática e Relações no Cone Sul",
+      "Documento de inteligência espanhol sobre o impacto do atentado do Riocentro na abertura política brasileira e a segurança de investimentos de empresas ibéricas.",
+      "CESID / CNI",
+      "Centro Superior de Información de la Defensa / Archivo General de la Administración (Espanha)",
+      "Espanha",
+      "ESP",
+      "🇪🇸",
+      0,
+      "1981-06-12",
+      "2021-03-15",
+      0,
+      [
+        "Ditaduras",
+        "Direitos Humanos",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Abertura Política",
+        "Riocentro",
+        "Linha-Dura",
+        "Transição Espanhola",
+        "Direitos Fundamentais"
+      ],
+      [
+        "Espanha",
+        "Brasil",
+        "Argentina"
+      ],
+      [
+        "Leopoldo Calvo-Sotelo",
+        "João Figueiredo",
+        "Emilio Alonso Manglano",
+        "Golbery do Couto e Silva"
+      ],
+      "AGA_TOP_SECRET_EXP_1981_044",
+      12,
+      15,
+      "https://www.defensa.gob.es/cni/archivo/cesid-informe-latinoamerica-1981.pdf",
+      "Registra a avaliação internacional sobre a resistência de setores da linha-dura militar contra a redemocratização após o episódio do Riocentro."
+    ],
+    [
+      "DOC-BVD-1979-ROTTERDAM-COMMODITIES",
+      "BVD / AIVD: Monitoramento de Segurança no Porto de Roterdã e Fluxos de Soja e Minério do Brasil",
+      "Relatório do serviço secreto holandês sobre a vulnerabilidade da cadeia logística de importação de grãos e minérios no maior porto da Europa contra protestos e greves.",
+      "BVD / AIVD",
+      "Binnenlandse Veiligheidsdienst / Nationaal Archief Den Haag (Holanda)",
+      "Holanda",
+      "NLD",
+      "🇳🇱",
+      0,
+      "1979-10-04",
+      "2019-05-20",
+      2,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Porto de Roterdã",
+        "Logística Portuária",
+        "Agronegócio",
+        "Vale",
+        "Trade Finance"
+      ],
+      [
+        "Holanda",
+        "Brasil",
+        "Estados Unidos"
+      ],
+      [
+        "Dries van Agt",
+        "João Figueiredo",
+        "Pieter de Geus",
+        "Eliezer Batista"
+      ],
+      "NL-HaNA_2.04.81_inv.nr.4912",
+      11,
+      21,
+      "https://www.nationaalarchief.nl/pdf/aivd-bvd-dossier-brazilie-rotterdam-1979.pdf",
+      "Destaca o papel geopolítico de Roterdã como porta de entrada de commodities brasileiras e a dependência alimentar do gado europeu da soja do Cerrado."
+    ],
+    [
+      "DOC-RAW-1979-NON-ALIGNED-NUCLEAR",
+      "RAW / NAI: Relatório Estratégico sobre Cooperação Nuclear Autônoma e o Movimento dos Não-Alinhados",
+      "Documento da inteligência exterior da Índia mapeando a resistência diplomática comum de Nova Délhi e Brasília contra as pressões de desarmamento das superpotências.",
+      "RAW / IB",
+      "Research and Analysis Wing / National Archives of India (Índia)",
+      "Índia",
+      "IND",
+      "🇮🇳",
+      2,
+      "1979-09-02",
+      "2020-01-16",
+      0,
+      [
+        "Geopolítica",
+        "Soberania",
+        "Recursos Naturais"
+      ],
+      [
+        "Não-Proliferação",
+        "TNP",
+        "Tecnologia Nuclear",
+        "Não-Alinhados",
+        "Sul Global"
+      ],
+      [
+        "Índia",
+        "Brasil",
+        "Estados Unidos",
+        "União Soviética"
+      ],
+      [
+        "Charan Singh",
+        "João Figueiredo",
+        "K. Sankaran Nair",
+        "Ramiro Saraiva Guerreiro"
+      ],
+      "NAI_MEA_SOUTH_AMERICA_1979_SEC_11",
+      14,
+      23,
+      "https://www.nationalarchives.nic.in/pdf/raw-ib-special-report-brazil-nonaligned-1979.pdf",
+      "Evidencia as convergências históricas de política externa entre Brasil e Índia em defesa da autonomia tecnológica e recusa a tutelas internacionais."
+    ],
+    [
+      "DOC-BAKIN-1982-TROPICAL-FORESTS",
+      "BAKIN / ANRI: Avaliação de Soberania sobre Florestas Tropicais e Alianças de Produtores de Commodities",
+      "Relatório de inteligência do regime Suharto analisando propostas de cooperação entre Brasil, Indonésia e Congo para coordenação de preços de madeira e minérios.",
+      "BAKIN",
+      "Badan Koordinasi Intelijen Negara / Arsip Nasional (Indonésia)",
+      "Indonésia",
+      "IDN",
+      "🇮🇩",
+      2,
+      "1982-11-18",
+      "2018-08-14",
+      0,
+      [
+        "Recursos Naturais",
+        "Soberania",
+        "Geopolítica"
+      ],
+      [
+        "Florestas Tropicais",
+        "Amazônia",
+        "Madeira",
+        "OPEP das Matérias-Primas",
+        "Soberania Ambiental"
+      ],
+      [
+        "Indonésia",
+        "Brasil",
+        "Malásia"
+      ],
+      [
+        "Suharto",
+        "João Figueiredo",
+        "Yoga Soegomo",
+        "Paulo Nogueira-Neto"
+      ],
+      "ANRI_BAKIN_KOPKAMTIB_1982_BOX_7",
+      16,
+      2,
+      "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/bakin-indonesia-brazil-cooperation-1982.pdf",
+      "Documenta os primórdios da articulação das nações megadiversas detentoras das maiores florestas equatoriais do globo frente a pressões ocidentais."
+    ],
+    [
+      "DOC-MOFA-1980-CARAJAS-INVESTMENT",
+      "MOFA / PSIA: Avaliação de Inteligência Estratégica sobre os Financiamentos do JICA e Eximbank em Carajás",
+      "Dossiê confidencial japonês sobre o pacote de US$ 500 milhões para ferrovias e portos do Projeto Grande Carajás e a garantia de contratos de longo prazo.",
+      "MOFA / PSIA",
+      "Ministry of Foreign Affairs Diplomatic Archives / PSIA (Japão)",
+      "Japão",
+      "JPN",
+      "🇯🇵",
+      2,
+      "1980-07-22",
+      "2015-12-10",
+      0,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Projeto Carajás",
+        "Vale S.A.",
+        "JICA",
+        "Nippon Steel",
+        "Minério de Ferro"
+      ],
+      [
+        "Japão",
+        "Brasil",
+        "Estados Unidos"
+      ],
+      [
+        "Masayoshi Ohira",
+        "João Figueiredo",
+        "Saburo Okita",
+        "Eliezer Batista"
+      ],
+      "MOFA_JAP_ARCHIVE_1980_CARAJAS_03",
+      20,
+      19,
+      "https://www.mofa.go.jp/mofaj/files/000492819.pdf",
+      "Comprova como o capital industrial japonês participou da estruturação da infraestrutura de escoamento mineral do Pará e Maranhão para o mercado global."
+    ],
+    [
+      "DOC-DFS-1975-EXILADOS-UNAM",
+      "DFS / AGN: Dossiê de Vigilância sobre Lideranças Sociais e Intelectuais Exilados Brasileiros no México",
+      "Ficha do serviço de inteligência mexicano contendo escutas e relatórios de observação sobre acadêmicos, artistas e lideranças políticas acolhidas no país.",
+      "DFS",
+      "Dirección Federal de Seguridad / Archivo General de la Nación (México)",
+      "México",
+      "MEX",
+      "🇲🇽",
+      1,
+      "1975-09-08",
+      "2019-02-28",
+      0,
+      [
+        "Direitos Humanos",
+        "Ditaduras",
+        "Geopolítica"
+      ],
+      [
+        "Asilo Político",
+        "Exílio",
+        "UNAM",
+        "Vigilância Política",
+        "Teoria da Dependência"
+      ],
+      [
+        "México",
+        "Brasil",
+        "Chile"
+      ],
+      [
+        "Luis Echeverría",
+        "Fernando Henrique Cardoso",
+        "Darcy Ribeiro",
+        "Javier García Paniagua"
+      ],
+      "AGN_DFS_EXP_11_235_LEGAJO_4",
+      19,
+      18,
+      "https://www.gob.mx/agn/articulos/expedientes-dfs-exiliados-brasil-1975.pdf",
+      "Revela a convivência paradoxal entre o asilo diplomático concedido pelo governo mexicano e o monitoramento clandestino de sua polícia secreta."
+    ],
+    [
+      "DOC-PIDE-1973-LIGACOES-DOPS",
+      "PIDE/DGS / Torre do Tombo: Prontuário sobre a Cooperação Policial e Intercâmbio de Informações com o DOPS",
+      "Informação secreta da polícia política do Estado Novo português detalhando pedidos de extradição e troca de dados de opositores políticos com a polícia civil brasileira.",
+      "PIDE / DGS",
+      "Polícia Internacional e de Defesa do Estado / Arquivo Nacional Torre do Tombo (Portugal)",
+      "Portugal",
+      "PRT",
+      "🇵🇹",
+      0,
+      "1973-03-14",
+      "2013-11-20",
+      1,
+      [
+        "Direitos Humanos",
+        "Ditaduras",
+        "Cooperação Militar"
+      ],
+      [
+        "Cooperação Policial",
+        "PIDE",
+        "DOPS",
+        "Censura",
+        "Exílio"
+      ],
+      [
+        "Portugal",
+        "Brasil",
+        "Angola",
+        "Moçambique"
+      ],
+      [
+        "Marcello Caetano",
+        "Emílio Garrastazu Médici",
+        "Fernando Silva Pais",
+        "Sérgio Paranhos Fleury"
+      ],
+      "PT-TT-PIDE-E-001-1973-DOC98",
+      13,
+      5,
+      "https://digitarq.arquivos.pt/viewer?id=4289012",
+      "Evidência documental de acordos informais de extradição e repressão articulados entre as polícias secretas de Lisboa e do Brasil antes da Revolução de Abril."
+    ],
+    [
+      "DOC-MIT-1985-BRAZIL-DEFENSE",
+      "MİT / Devlet Arşivleri: Relatório de Inteligência Militar sobre a Indústria de Defesa e Blindados Brasileiros",
+      "Análise secreta dos serviços turcos sobre a exportação em larga escala de veículos blindados da Engesa e lançadores de mísseis da Avibras no Oriente Médio.",
+      "MİT",
+      "Millî İstihbarat Teşkilatı / Devlet Arşivleri Başkanlığı (Turquia)",
+      "Turquia",
+      "TUR",
+      "🇹🇷",
+      4,
+      "1985-06-25",
+      "2022-04-18",
+      0,
+      [
+        "Cooperação Militar",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Indústria Bélica",
+        "Engesa",
+        "Urutu e Cascavel",
+        "Astros II",
+        "Comércio de Defesa"
+      ],
+      [
+        "Turquia",
+        "Brasil",
+        "Iraque",
+        "Líbia"
+      ],
+      [
+        "Turgut Özal",
+        "José Sarney",
+        "Hayri Ündül",
+        "José Luiz Whitaker Ribeiro"
+      ],
+      "DAB_MIT_DOSYA_1985_SAVUNMA_92",
+      17,
+      16,
+      "https://www.devletarsivleri.gov.tr/pdf/mit-raporu-brezilya-savunma-1985.pdf",
+      "Mostra como o avanço tecnológico militar brasileiro nos anos 1980 transformou o país no 5º maior exportador de equipamentos de defesa do mundo ocidental."
+    ],
+    [
+      "DOC-HAEU-1992-MINERAL-SAFEGUARDS",
+      "HAEU / CEE: Parecer Estratégico sobre Dependência de Minérios Estratégicos e a Cúpula da Terra Rio-92",
+      "Documento preparatório confidencial da Comissão Europeia avaliando o suprimento de nióbio, bauxita e ferro do Brasil e as primeiras salvaguardas ecológicas comunitárias.",
+      "INTCEN / CEE",
+      "EU Situation Centre / Historical Archives of the European Union (União Europeia)",
+      "União Europeia",
+      "EUR",
+      "🇪🇺",
+      0,
+      "1992-05-12",
+      "2022-01-20",
+      2,
+      [
+        "Recursos Naturais",
+        "Mineração",
+        "Geopolítica",
+        "Soberania"
+      ],
+      [
+        "Rio-92",
+        "Minerais Críticos",
+        "Nióbio",
+        "Bauxita",
+        "Salvaguardas Socioambientais"
+      ],
+      [
+        "União Europeia",
+        "Brasil",
+        "Alemanha",
+        "França"
+      ],
+      [
+        "Jacques Delors",
+        "Fernando Collor de Mello",
+        "Carlo Ripa di Meana",
+        "José Goldemberg"
+      ],
+      "HAEU_BAC_SEC_1992_412",
+      25,
+      17,
+      "https://archives.eui.eu/en/fonds/BAC-1992-04-MINERALS-BRAZIL.pdf",
+      "Antecedente das regras europeias de devida diligência mineral e florestal que impactam diretamente exportações e territórios tradicionais no Brasil."
+    ]
+  ]
+}

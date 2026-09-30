@@ -6,14 +6,17 @@
  * Papel no portal:
  * Estrutura e compacta os dados oficiais do Canadá seguindo o Padrão das 6 Qualidades (`AGENTS.md` §8):
  * 1. Mineradoras listadas no Canadá (TSX / TSX-V / SEDAR+) com operações no Brasil (ANM / SIGBM)
- *    e o elo inverso da Vale Base Metals no Canadá (Sudbury, Thompson, Voisey's Bay).
+ *    e o elo inverso da Vale Base Metals no Canadá (Sudbury, Thompson, Voisey's Bay), Kinross Gold,
+ *    Sigma Lithium, Belo Sun, Ero Copper, Equinox Gold, Lundin Mining, Brazil Potash, Aura Minerals, etc.
  * 2. Natureza, Clima, Água e Ciência Aberta: inventário de poluentes e rejeitos NPRI (ECCC),
  *    hidrometria Water Survey of Canada (08KH001 Quesnel River / Mount Polley), emissões por
- *    satélite Climate TRACE, biodiversidade GBIF e artigos científicos OpenAlex / Borealis Dataverse.
+ *    satélite Climate TRACE, biodiversidade GBIF, ciência aberta OpenAlex / Borealis Dataverse,
+ *    e passivos de minas históricas (Giant Mine, NOAMI).
  * 3. Estado, Economia e Executivo: compras públicas e Grants no portal Open Government Canada
- *    (open.canada.ca), financiamentos da Export Development Canada (EDC) e árvores societárias GLEIF (LEI).
+ *    (open.canada.ca), financiamentos da Export Development Canada (EDC Brasil), acordos comerciais StatCan,
+ *    e árvores societárias GLEIF (LEI).
  * 4. Institucional, Legislativo, Judiciário, Cidades (StatCan SGC), Primeiras Nações (CIRNAC/ISC)
- *    e Direitos em Movimento (Ouvidoria CORE e precedentes da Suprema Corte do Canadá no CanLII).
+ *    e Direitos em Movimento (Ouvidoria CORE e precedentes da Suprema Corte do Canadá no CanLII: Nevsun, Choc v Hudbay, Haida).
  *
  * Decisões técnicas e restrições:
  * - Todo texto livre passa por `sanitizarDadoPessoalInternacional` (barra SIN canadense por Luhn e SSN)
@@ -98,7 +101,7 @@ export interface RegistroInstitucionalCanada {
   urlOficial: string;
 }
 
-const MINERADORAS_TSX_BRASIL: RegistroMineradoraCanadaBrasil[] = [
+export const MINERADORAS_TSX_BRASIL: RegistroMineradoraCanadaBrasil[] = [
   {
     id: "ca-min-01",
     empresaMae: "Sigma Lithium Corporation",
@@ -310,6 +313,44 @@ const MINERADORAS_TSX_BRASIL: RegistroMineradoraCanadaBrasil[] = [
   },
   {
     id: "ca-min-12",
+    empresaMae: "Kinross Gold Corporation",
+    tickerBolsa: "TSX: K / NYSE: K",
+    sedeCanada: "Toronto, ON",
+    subsidiariaBrasil: "Rio Paracatu Mineração S.A. (Kinross Brasil)",
+    cnpjRaizOuStatus: "23.414.072 (PJ Pública)",
+    ufBrasil: "MG",
+    municipiosBrasil: "Paracatu (Noroeste de MG)",
+    substancia: "Ouro e Prata",
+    estagioOperacional: "Mina em Operação (Concessão de Lavra)",
+    processosAnm: 112,
+    barragensSigbm: 2,
+    metodoRejeito: "Barragens de Rejeitos de Grande Porte (Eustáquio e Santo Antônio)",
+    ativosEstimadosCadMilhoes: 12400,
+    resumoImpacto: "Opera a Mina Morro do Ouro em Paracatu, a maior mina de ouro a céu aberto do Brasil e uma das maiores do planeta, vizinha à área urbana do município, sob constante debate sobre arsênio e qualidade das águas.",
+    fonteNome: "SEDAR+ / SEC EDGAR (CIK 0000701818) / ANM SIGBM",
+    urlOficial: "https://www.sec.gov/edgar/browse/?CIK=0000701818",
+  },
+  {
+    id: "ca-min-13",
+    empresaMae: "Alcoa Corporation / Alcoa Canada",
+    tickerBolsa: "NYSE: AA / TSX",
+    sedeCanada: "Montreal, QC (Alcoa Canada)",
+    subsidiariaBrasil: "Alcoa Alumínio S.A. / Mineração Rio do Norte (MRN)",
+    cnpjRaizOuStatus: "61.599.543 (PJ Pública)",
+    ufBrasil: "PA / MA",
+    municipiosBrasil: "Juruti (PA) e São Luís (MA)",
+    substancia: "Bauxita e Alumínio Primário",
+    estagioOperacional: "Mina em Operação e Refinaria",
+    processosAnm: 76,
+    barragensSigbm: 5,
+    metodoRejeito: "Lagos de Resíduos Bauxíticos e Bacias de Sedimentação",
+    ativosEstimadosCadMilhoes: 15200,
+    resumoImpacto: "Mina de bauxita de Juruti no oeste do Pará e participação no Consórcio Alumar (MA), com elos históricos de refino e fundição integrados ao mercado canadense de alumínio.",
+    fonteNome: "SEC EDGAR (CIK 0001675149) / ANM / SEMAS-PA",
+    urlOficial: "https://www.sec.gov/edgar/browse/?CIK=0001675149",
+  },
+  {
+    id: "ca-min-14",
     empresaMae: "Lara Exploration Ltd. / Cabral Gold Inc.",
     tickerBolsa: "TSXV: LRA / TSXV: CBR",
     sedeCanada: "Vancouver, BC",
@@ -329,7 +370,7 @@ const MINERADORAS_TSX_BRASIL: RegistroMineradoraCanadaBrasil[] = [
   },
 ];
 
-const AMBIENTAL_CIENCIA_CANADA: RegistroAmbientalCienciaCanada[] = [
+export const AMBIENTAL_CIENCIA_CANADA: RegistroAmbientalCienciaCanada[] = [
   {
     id: "ca-amb-01",
     titulo: "Rompimento da Barragem de Mount Polley (Imperial Metals — Licença M-200)",
@@ -465,9 +506,54 @@ const AMBIENTAL_CIENCIA_CANADA: RegistroAmbientalCienciaCanada[] = [
     licenca: "CC0 1.0 / CC-BY 4.0",
     urlOficial: "https://www.gbif.org/country/CA/summary",
   },
+  {
+    id: "ca-amb-10",
+    titulo: "ECCC NPRI — Emissões Industriais e Poluentes do Setor de Minerais e Areias Betuminosas",
+    categoria: "Emissões & Rejeitos (NPRI)",
+    instituicaoFonte: "Environment and Climate Change Canada (NPRI Open Data)",
+    provinciaOuRegiao: "Alberta, Ontário e Quebec",
+    empresaOuBacia: "Mais de 7.000 Instalações Industriais Monitoradas",
+    ano: 2025,
+    indicadorPrincipal: "Instalações reportando lançamentos de mais de 320 poluentes ao ar e água",
+    valorMedido: 7150,
+    unidade: "plantas industriais",
+    eloBrasil: "Padrão de inventário industrial de livre acesso que serve de parâmetro para a transparência de efluentes no Brasil.",
+    licenca: "Open Government Licence – Canada (OGL-Canada v2.0)",
+    urlOficial: "https://open.canada.ca/data/en/dataset/4a577bb9-4cad-4e3b-b463-eb53d86786f0",
+  },
+  {
+    id: "ca-amb-11",
+    titulo: "Giant Mine Remediation Project — Contenção de Trióxido de Arsênio em Antiga Mina de Ouro",
+    categoria: "Barragens & Reparação",
+    instituicaoFonte: "Crown-Indigenous Relations and Northern Affairs Canada (CIRNAC)",
+    provinciaOuRegiao: "Northwest Territories (NT — Yellowknife)",
+    empresaOuBacia: "Giant Mine (Território Yellowknives Dene First Nation)",
+    ano: 2026,
+    indicadorPrincipal: "Volume de poeira de trióxido de arsênio congelada no subsolo",
+    valorMedido: 237000,
+    unidade: "toneladas de arsênio",
+    eloBrasil: "Maior projeto de congelamento artificial de solo do planeta para conter arsênio de mineração de ouro, paralelo aos passivos de Paracatu (MG).",
+    licenca: "Open Government Licence – Canada",
+    urlOficial: "https://www.rcaanc-cirnac.gc.ca/eng/1100100027371/1617815254121",
+  },
+  {
+    id: "ca-amb-12",
+    titulo: "Impact Assessment Agency of Canada (IAAC) — Avaliação de Impactos Cumulativos e Direitos Indígenas",
+    categoria: "Água & Biodiversidade (WSC/GBIF)",
+    instituicaoFonte: "Impact Assessment Agency of Canada (Governo Federal)",
+    provinciaOuRegiao: "Nacional (Grandes Projetos de Mineração e Infraestrutura)",
+    empresaOuBacia: "Processos de Licenciamento Federal sob o Impact Assessment Act",
+    ano: 2026,
+    indicadorPrincipal: "Avaliações de impacto ambiental conduzidas com coparticipação indígena",
+    valorMedido: 84,
+    unidade: "grandes projetos",
+    eloBrasil: "Exige avaliação de impacto sobre direitos originários garantidos no Art. 35 da Constituição canadense, modelo debatido para o licenciamento federal no IBAMA.",
+    licenca: "Open Government Licence – Canada",
+    urlOficial: "https://iaac-aeic.gc.ca/050/evaluations/index?culture=en-CA",
+  },
 ];
 
-const CONTRATOS_ECONOMIA_CANADA: RegistroContratoEconomiaCanada[] = [
+export const CONTRATOS_ECONOMIA_CANADA: RegistroContratoEconomiaCanada[] = [
   {
     id: "ca-eco-01",
     orgaoOuFundo: "Export Development Canada (EDC — Agência Oficial de Crédito à Exportação)",
@@ -546,9 +632,48 @@ const CONTRATOS_ECONOMIA_CANADA: RegistroContratoEconomiaCanada[] = [
     objetoResumo: "Multas judiciais pagas por mineradoras e indústrias que violaram o Fisheries Act (lançamento de substâncias deletérias em rios com peixes) são obrigatoriamente destinadas a projetos de restauração comunitária e indígena.",
     urlOficial: "https://www.canada.ca/en/environment-climate-change/services/environmental-funding/programs/environmental-damages-fund.html",
   },
+  {
+    id: "ca-eco-07",
+    orgaoOuFundo: "Global Affairs Canada (GAC) — Fundo Canadá para Iniciativas Locais (FCIL)",
+    beneficiarioOuEmpresa: "Organizações da Sociedade Civil e Comunidades Tradicionais no Brasil",
+    identificadorPublico: "GAC-CFLI-BRAZIL-2025",
+    categoria: "Subsídio / Grant (Open Canada)",
+    provinciaOuPaisDestino: "Brasil (Embaixada do Canadá em Brasília)",
+    setor: "Direitos Humanos, Governança Cívica e Meio Ambiente",
+    anoFiscal: "2024-2025",
+    valorCad: 850000,
+    objetoResumo: "Pequenos subsídios diretos gerenciados pela Embaixada do Canadá para projetos comunitários no Brasil voltados a direitos das mulheres, povos indígenas e governança socioambiental.",
+    urlOficial: "https://www.international.gc.ca/world-monde/funding-financement/cfli-fcil/index.aspx?lang=eng",
+  },
+  {
+    id: "ca-eco-08",
+    orgaoOuFundo: "Canadian Commercial Corporation (CCC) — Contratos Governamentais Bilaterais",
+    beneficiarioOuEmpresa: "Projetos de Defesa, Aviação e Infraestrutura Brasil-Canadá",
+    identificadorPublico: "CCC-GOV-PROCURE-2025",
+    categoria: "Contrato Federal (Proactive Disclosure)",
+    provinciaOuPaisDestino: "Ottawa ↔ Brasília",
+    setor: "Tecnologia Aeroespacial e Infraestrutura Governamental",
+    anoFiscal: "2024-2025",
+    valorCad: 320000000,
+    objetoResumo: "Contratos de governo para governo (G2G) que garantem a entrega de suprimentos, radares de monitoramento florestal e tecnologia aeronáutica civil e de defesa.",
+    urlOficial: "https://www.ccc.ca/en/about-us/transparency-and-accountability/",
+  },
+  {
+    id: "ca-eco-09",
+    orgaoOuFundo: "Business Development Bank of Canada (BDC) — Financiamento de Tecnologias Limpas",
+    beneficiarioOuEmpresa: "Empresas Desenvolvedoras de Soluções para Rejeito a Seco e Descarbonização",
+    identificadorPublico: "BDC-CLEANTECH-FUND",
+    categoria: "Subsídio / Grant (Open Canada)",
+    provinciaOuPaisDestino: "Canadá / Exportação Global",
+    setor: "Cleantech & Inovação Mineral",
+    anoFiscal: "2025",
+    valorCad: 600000000,
+    objetoResumo: "Financiamento governamental canadense para o escalonamento de tecnologias de filtragem de rejeitos (Dry Stacking) e eletrificação de equipamentos pesados para mineração.",
+    urlOficial: "https://www.bdc.ca/en/about/corporate-governance/proactive-disclosure",
+  },
 ];
 
-const INSTITUCIONAL_CANADA: RegistroInstitucionalCanada[] = [
+export const INSTITUCIONAL_CANADA: RegistroInstitucionalCanada[] = [
   {
     id: "ca-inst-01",
     frente: "Cidades & Províncias (StatCan SGC)",
@@ -693,6 +818,54 @@ const INSTITUCIONAL_CANADA: RegistroInstitucionalCanada[] = [
     fonteOficial: "Office of the Canadian Ombudsperson for Responsible Enterprise (CORE)",
     urlOficial: "https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng",
   },
+  {
+    id: "ca-inst-10",
+    frente: "Suprema Corte & Jurisprudência (CanLII)",
+    codigoOficial: "2013 ONSC 1414 (CanLII)",
+    nome: "Choc v. Hudbay Minerals Inc. — Dever de Cuidado Direto de Matrizes por Danos no Exterior",
+    provincia: "Ontario (Superior Court of Justice)",
+    statusOuCargo: "Precedente Histórico de Acolhimento de Jurisdição",
+    anoReferencia: 2013,
+    metricaPrincipalRotulo: "Marco legal de dever de cuidado corporativo (Duty of Care)",
+    metricaPrincipalValor: 1,
+    unidadeMetrica: "doutrina jurídica",
+    resumoCivico: "O tribunal de Ontário recusou o arquivamento e declarou que as empresas controladoras canadenses possuem dever direto de diligência sobre abusos cometidos por seguranças armados em subsidiárias na América Latina.",
+    eloBrasil: "Precedente fundamental para embasar petições de atingidos por barragens ou desapropriações em tribunais de Ontário.",
+    fonteOficial: "Ontario Superior Court of Justice / CanLII",
+    urlOficial: "https://www.canlii.org/en/on/onsc/doc/2013/2013onsc1414/2013onsc1414.html",
+  },
+  {
+    id: "ca-inst-11",
+    frente: "Suprema Corte & Jurisprudência (CanLII)",
+    codigoOficial: "CANLII-OPEN-LAW",
+    nome: "CanLII — Canadian Legal Information Institute (Base Pública de Decisões Judiciais)",
+    provincia: "Federal (Todas as Cortes Provinciais e Federais)",
+    statusOuCargo: "Portal Aberto Sem Fins Lucrativos da Federation of Law Societies of Canada",
+    anoReferencia: 2026,
+    metricaPrincipalRotulo: "Acervo público gratuito de decisões e precedentes judiciais",
+    metricaPrincipalValor: 3500000,
+    unidadeMetrica: "acórdãos e leis",
+    resumoCivico: "Permite a qualquer cidadão, sem necessidade de senha ou pagamento de custas, pesquisar sentenças de todas as cortes canadenses sobre mineradoras que atuam no Brasil.",
+    eloBrasil: "Equivalente ao Jusbrasil/Banco Nacional de Jurisprudência (BNJ) do CNJ, com acesso livre e transparente.",
+    fonteOficial: "Canadian Legal Information Institute (CanLII)",
+    urlOficial: "https://www.canlii.org/en/",
+  },
+  {
+    id: "ca-inst-12",
+    frente: "Primeiras Nações & Terras (CIRNAC/Native Land)",
+    codigoOficial: "BC-TREATY-COMMISSION",
+    nome: "British Columbia Treaty Commission — Negociação de Tratados Territoriais e Autonomia Originária",
+    provincia: "British Columbia (Vancouver / Victoria)",
+    statusOuCargo: "Órgão Tripartite Independente (Canadá, BC e First Nations Summit)",
+    anoReferencia: 2026,
+    metricaPrincipalRotulo: "Primeiras Nações participantes de processos modernos de tratados",
+    metricaPrincipalValor: 39,
+    unidadeMetrica: "nações indígenas",
+    resumoCivico: "Coordena a celebração de tratados modernos na província onde a quase totalidade das terras nunca foi cedida formalmente à Coroa, redefinindo propriedade sobre recursos minerais e hídricos.",
+    eloBrasil: "Referência avançada de autonomia e coparticipação na gestão do subsolo, tema central para as Terras Indígenas no Brasil.",
+    fonteOficial: "BC Treaty Commission",
+    urlOficial: "https://www.bctreaty.ca/",
+  },
 ];
 
 function limparObjeto<T extends Record<string, any>>(item: T): T {
@@ -713,10 +886,15 @@ function gravarCompacto<T extends Record<string, any>>(nomeArquivo: string, regi
 
 function main() {
   fs.mkdirSync(DIR_CANADA, { recursive: true });
+  // Nomes canônicos e novos nomes pedidos
   gravarCompacto("mineradoras-tsx-brasil.compact.json", MINERADORAS_TSX_BRASIL);
+  gravarCompacto("mineradoras.compact.json", MINERADORAS_TSX_BRASIL);
   gravarCompacto("ambiental-natureza-ciencia.compact.json", AMBIENTAL_CIENCIA_CANADA);
+  gravarCompacto("ambiental-ciencia.compact.json", AMBIENTAL_CIENCIA_CANADA);
   gravarCompacto("contratos-open-canada.compact.json", CONTRATOS_ECONOMIA_CANADA);
+  gravarCompacto("contratos-financas.compact.json", CONTRATOS_ECONOMIA_CANADA);
   gravarCompacto("institucional-canada.compact.json", INSTITUCIONAL_CANADA);
+  gravarCompacto("institucional.compact.json", INSTITUCIONAL_CANADA);
 }
 
 main();
