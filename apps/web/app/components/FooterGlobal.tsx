@@ -5,6 +5,7 @@ import PedirDadosEmail from "@/app/components/PedirDadosEmail";
 import ContadorPublico from "@/app/components/ContadorPublico";
 import BotoesNotificacao from "@/app/components/BotoesNotificacao";
 import BotaoRadio from "@/app/components/BotaoRadio";
+import ReportarErro from "@/app/components/ReportarErro";
 
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
@@ -129,6 +130,7 @@ export default function FooterGlobal() {
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <PedirDadosEmail />
           <BotoesNotificacao />
+          <ReportarErro />
           <BotaoRadio />
           <a
             href="/radio"
