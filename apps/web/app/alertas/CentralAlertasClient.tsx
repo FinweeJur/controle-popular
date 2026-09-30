@@ -20,16 +20,9 @@ import {
   Leaf,
   Layers,
 } from "lucide-react";
+import { montarMensagemAlerta, type TipoAssuntoAlerta } from "@/lib/navegacao/alerta-contextual";
 
-export type TipoAssuntoAlerta =
-  | "contrato"
-  | "pl"
-  | "convenio"
-  | "clima"
-  | "reparacao"
-  | "licenciamento"
-  | "contato"
-  | "resumo_pagina";
+export type { TipoAssuntoAlerta };
 
 function CentralAlertasInner() {
   const searchParams = useSearchParams();
@@ -117,40 +110,18 @@ function CentralAlertasInner() {
     setTelefonesMensagem(modelo.telefones || "");
   };
 
-  // Gerador de mensagem para WhatsApp / Redes
-  const gerarTextoWhatsApp = () => {
-    const emojis: Record<TipoAssuntoAlerta, string> = {
-      contrato: "💼 *ALERTA DE CONTRATO PÚBLICO*",
-      pl: "📜 *ALERTA LEGISLATIVO — CÂMARA / CONGRESSO*",
-      convenio: "🤝 *ALERTA DE REPASSE & CONVÊNIO*",
-      clima: "🌧️ *AVISO DE RISCO SOCIOAMBIENTAL*",
-      reparacao: "⚖️ *ACOMPANHAMENTO DE REPARAÇÃO*",
-      licenciamento: "🌿 *ALERTA DE LICENCIAMENTO AMBIENTAL*",
-      contato: "📞 *CANAL INSTITUCIONAL & CONTATOS ÚTEIS*",
-      resumo_pagina: "📊 *DADOS PÚBLICOS & FISCALIZAÇÃO CIDADÃ*",
-    };
-
-    const cabecalho = emojis[tipoMensagem] || "🔔 *ALERTA CIDADÃO*";
-
-    let texto = `${cabecalho}
-📍 *Território / Órgão:* ${cidadeMensagem}
-📌 *Assunto:* ${tituloFato}
-🔢 *Identificação Oficial:* ${numeroReferencia}
-
-🔎 *Detalhes para fiscalização:*
-${detalheExtra}`;
-
-    if (telefonesMensagem) {
-      texto += `\n\n📞 *Telefones e Contatos para Acionar:*\n${telefonesMensagem}`;
-    }
-
-    texto += `\n\n🔗 *Confira a comprovação completa com dados oficiais:*
-${linkPortal}
-
-_Fonte: Dados públicos oficiais organizados pelo portal independente Controle Popular (controlepopular.com.br). Compartilhe com quem precisa saber!_`;
-
-    return texto;
-  };
+  // Gerador de mensagem para WhatsApp / Redes — texto em `lib/navegacao`,
+  // testável fora do componente e sem a lista de cabeçalhos duplicada.
+  const gerarTextoWhatsApp = () =>
+    montarMensagemAlerta({
+      tipo: tipoMensagem,
+      orgao: cidadeMensagem,
+      titulo: tituloFato,
+      identificador: numeroReferencia,
+      link: linkPortal,
+      detalhes: detalheExtra,
+      telefones: telefonesMensagem,
+    });
 
   const textoGerado = gerarTextoWhatsApp();
   const linkWhatsApp = `https://api.whatsapp.com/send?text=${encodeURIComponent(

@@ -19,6 +19,8 @@
 - [Parte 5 — coleta (scripts/ e etl/)](#parte-5--coleta-scripts-e-etl)
 - [Parte 6 — frentes (ambiental, paraopeba, terras, judiciário, congresso)](#parte-6--frentes-ambiental-paraopeba-terras-judiciário-congresso)
 - [Parte 7 — componentes e compactação](#parte-7--componentes-e-compactação)
+- [Parte 8 — segurança e escrita](#parte-8--segurança-e-escrita)
+- [Parte 9 — testes que não testavam (navegação)](#parte-9--testes-que-não-testavam-navegação)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -215,16 +217,15 @@ propósito, para não arrastar a cadeia do banco para o bundle.
    `indicadores.ts` saiu também código morto (`const error = null`, resto da
    migração do Supabase).
 
-4. **Higiene de comentário.** O cabeçalho de `getDoacoesSummary`
-   ([vereadores.ts](../../apps/web/lib/betim/vereadores.ts)) diz que o
-   CPF/CNPJ do doador "não é mascarado" e, na frase seguinte, que "só se
-   expõe nome/tipo/valor/data, não o documento" — o comportamento está certo
-   (documento não é exposto; nome é público pela Lei 9.504/97), mas o texto é
-   contraditório. Reescrever.
+4. ✅ **Comentário contraditório — corrigido** (30/09/2026). O cabeçalho de
+   `getDoacoesSummary` ([vereadores.ts](../../apps/web/lib/betim/vereadores.ts))
+   agora diz o que acontece: o DOCUMENTO (CPF/CNPJ) não é exposto; o NOME é
+   público pela Lei 9.504/97.
 
-5. **`adminAuth` compara com `===`, não em tempo constante.** Com token de
-   alta entropia e porta verificada (401), é risco baixo; fica registrado como
-   higiene, não como falha.
+5. ✅ **`adminAuth` em tempo constante — corrigido** (30/09/2026). A
+   [adminAuth.ts](../../apps/web/lib/betim/adminAuth.ts) trocou o `===` por
+   `timingSafeEqual` (o `===` vaza o token por timing). Continua fechando sem
+   `ADMIN_TOKEN`.
 
 6. **O que está certo:** a fronteira cliente/servidor dos módulos puros; o
    `ok:false` explícito na degradação; a legislação municipal só com
@@ -254,17 +255,18 @@ verdade**.
    (`lib/rate-limit-ip.ts`), o mesmo das rotas `.din.ts` — o XFF cru é
    falsificável. (Consolida na camada de rota o achado 2 da Parte 2.)
 
-2. ⚠️ **Webhook do Telegram é fail-open sem `TELEGRAM_WEBHOOK_SECRET`.** A
-   rota só confere o `x-telegram-bot-api-secret-token` **se** a env existir
-   (`if (secret && secretHeader !== secret)`). A env não aparece em nenhum
-   `.env.example` nem doc — ou seja, hoje a porta provavelmente aceita
-   qualquer POST, que pode fazer o bot responder a chats arbitrários.
-   **Recomendação:** definir `TELEGRAM_WEBHOOK_SECRET` e tornar a rota
-   fail-closed. Não mudei o código: a correção depende do segredo no deploy.
+2. ✅ **Webhook do Telegram — endurecido, sem parar o bot** (30/09/2026). A
+   rota compara o `x-telegram-bot-api-secret-token` em **tempo constante** e
+   **fecha com 403** quando `TELEGRAM_WEBHOOK_SECRET` existe. Sem o segredo,
+   segue **aberta** (o bot continua funcionando) mas avisa no log — o buraco
+   não passa despercebido. A env agora está documentada em
+   [`apps/web/.env.example`](../../apps/web/.env.example). Falta o dono
+   definir o valor no deploy e reenviar o `setWebhook({ secret_token })`.
 
-3. 🔸 **`dados-resumidos` lê o banco com `getDb()` direto** (sem
-   `comBancoReserva`) e sem rate limit; devolve `e.message` no 500. Baixo
-   risco (agregado barato), mas fora do padrão da casa.
+3. ✅ **`dados-resumidos` na cadeia de reserva** (30/09/2026). As quatro
+   consultas passaram a usar `comBancoReserva`, e o 500 devolve mensagem
+   genérica (o detalhe vai para o log do servidor). Segue sem rate limit —
+   agregado barato, baixo risco.
 
 4. 🔸 **`dangerouslySetInnerHTML` contabilizado** em toda a `app/`: JSON-LD
    (constantes/`JSON.stringify` de dado controlado), notícias (HTML autoral) e
@@ -286,25 +288,20 @@ trabalho por-fonte; aqui vão as regras transversais do
 | Segredo fora do git | ✅ só `.env.example`/`.env.exemplo` rastreados, sem valores. |
 | Pausa entre requisições | ✅ 38 coletores com pausa explícita. |
 | `robots.txt` | ✅ lido e registrado em vários (o caso FGV, com escopo reduzido, está no repo). |
-| User-Agent honesto | ⚠️ misto — ver achado 1. |
+| User-Agent honesto | ✅ coletores corrigidos (ver achado 1); reteste ao vivo pendente. |
 | Retomada por checkpoint | ✅ presente nos coletores longos (PNCP, cavas). |
 
 ### Achados da Parte 5
 
-1. ⚠️ **User-Agent de navegador falso em alguns coletores** — contra o
-   AGENTS § 11 ("o nome do projeto, nunca UA de navegador falso"). Casos puros
-   (sem identificação do projeto):
-   `etl/judiciario/etl/tj/tjmg.py`,
-   `etl/betim/scripts/medir_links_fonte.py`,
-   `etl/congresso/etl/camara/presenca.py`,
-   `etl/betim/etl/camaras/sp.py`,
-   `etl/betim/etl/bd/tse.py`,
-   `etl/betim/etl/prefeitura/obras.py` (`"Mozilla/5.0"` puro).
-   Há ainda um híbrido disseminado
-   (`"Mozilla/5.0 (…) ControlePopular/1.0 (+https://…)"`) — identifica o
-   projeto, mas imita prefixo de navegador. **Não corrigi em massa:** trocar
-   UA pode fazer uma fonte bloquear a coleta, e coleta não se testa na CI.
-   Fica registrado para a correção por-fonte, com teste ao vivo.
+1. ✅ **User-Agent honesto — corrigido nos coletores de coleta** (30/09/2026).
+   Os que coletam e usavam UA de navegador puro agora identificam o projeto,
+   mantendo o prefixo que passa no WAF:
+   `etl/judiciario/etl/tj/tjmg.py`, `etl/congresso/etl/camara/presenca.py`,
+   `etl/betim/etl/camaras/sp.py`, `etl/betim/etl/bd/tse.py` e
+   `etl/betim/etl/prefeitura/obras.py`.
+   `etl/betim/scripts/medir_links_fonte.py` **não entra**: o UA de navegador
+   dele é um reteste de falha, não coleta — estava documentado assim.
+   Falta o reteste ao vivo por fonte, que não se faz na CI.
 
 2. 🔸 **Superfície de ~80 coletores.** A revisão fina (checkpoint, tratamento
    de 403/429, dedup) é por frente — encaixa nas próximas rodadas, não numa
@@ -384,6 +381,67 @@ registrada e não se toca sem remedir.
    **duas implementações deliberadas** (decisão de 16/08, registrada no
    ESTADO). Aplainar o codec perde o ganho de ordem de grandeza. Fica
    documentado como decisão, não como dívida a pagar.
+
+## Parte 8 — segurança e escrita
+
+Segunda passada, agora fina: os caminhos de escrita e de autorização —
+`lib/painel`, `lib/gestao`, `lib/rate-limit.ts`, `lib/rate-limit-ip.ts`,
+`lib/chat-comum.ts`, `lib/server-only/json-etl.ts` e as rotas `/api/admin`.
+
+### Achados da Parte 8
+
+1. ✅ **Admin fechado.** Os 6 handlers de `/api/admin/*` chamam
+   `isAdminAuthorized` (agora em tempo constante); sem `ADMIN_TOKEN`, 401.
+
+2. ✅ **Painel de edição é local por construção.** As rotas do painel só
+   existem como `*.local.ts`, que `next.config.ts` mantém fora de qualquer
+   build (`painelLocalLigado`). Ele usa `PAINEL_TOKEN` próprio (nunca o
+   `ADMIN_TOKEN`), **fail-closed**, e escreve caminho fixo
+   (`data/edicoes.json`) — sem travessia. O `git` roda por `execFileSync`
+   (sem shell, sem argumento do usuário).
+
+3. ✅ **JSON grande fora do bundle.** `json-etl.ts` (`SERVER-ONLY`) lê por
+   `readFileSync`, o padrão que evita estourar o teto de 3 MiB gzip do Worker
+   — o erro 10027 de 24/08 está documentado no cabeçalho.
+
+4. ✅ **IP unificado numa fonte só** (30/09/2026). `chat-comum.ts`
+   (`ipDoVisitante`) agora delega a `ipDoCliente` (`lib/rate-limit-ip.ts`),
+   que é a ordem canônica `cf-connecting-ip → x-forwarded-for → x-real-ip`.
+   Antes havia duas implementações da mesma regra; a de `rate-limit-ip.ts`
+   já trazia o TODO da unificação.
+
+5. 🔸 **`checarUpstash` renova a janela a cada `INCR`.** `EXPIRE` é chamado em
+   toda requisição, então sob carga sustentada a janela reinicia e o bloqueio
+   só solta após 60 s de silêncio. É mais rígido que o desejado, não mais
+   frouxo — e é caminho **dormente** (Upstash não está configurado; o padrão é
+   o binding do Worker). Fica anotado para quem ligar o Upstash.
+
+## Parte 9 — testes que não testavam (navegação)
+
+Terceira passada, sobre `lib/navegacao`, `lib/busca` e `lib/tabela`.
+
+### Achados da Parte 9
+
+1. ⚠️ **Dois testes sem código sob teste — corrigidos** (30/09/2026).
+   `lib/navegacao/alerta-contextual.test.ts` montava a mensagem DENTRO do
+   próprio teste, e `lib/navegacao/indice-pagina.test.ts` redefinia a função
+   de slug no arquivo: os dois passavam sem exercitar produção nenhuma — o
+   caso que a skill `revisar-seguranca-cp` descreve ("verde não prova nada").
+   **Correção:** as funções puras viraram módulos reais —
+   [indice-pagina.ts](../../apps/web/lib/navegacao/indice-pagina.ts)
+   (`slugDeTitulo`) e
+   [alerta-contextual.ts](../../apps/web/lib/navegacao/alerta-contextual.ts)
+   (`montarMensagemAlerta`, `CABECALHOS_ALERTA`) —, os componentes
+   (`IndicePagina`, `CentralAlertasClient`, `BotaoAlertaContextual`) passaram
+   a importá-las, e os testes agora exercitam o código de verdade.
+
+2. ✅ **Cabeçalho de alerta duplicado.** A mesma lista de 8 cabeçalhos estava
+   copiada em `CentralAlertasClient` e em `BotaoAlertaContextual`. Unificada
+   em `CABECALHOS_ALERTA`; o corpo da mensagem continua próprio de cada tela
+   (de propósito — são telas diferentes).
+
+3. ✅ **`lib/busca` e `lib/tabela`** conferidos por amostragem: cabeçalho e
+   teste ao lado, sem lógica reimplementada no teste.
 
 ## Achados e dívidas
 

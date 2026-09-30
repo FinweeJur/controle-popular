@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { List, ChevronDown } from "lucide-react";
+import { slugDeTitulo } from "@/lib/navegacao/indice-pagina";
 
 export interface SecaoIndice {
   id: string;
@@ -43,13 +44,7 @@ export default function IndicePagina({
 
       let id = heading.id;
       if (!id) {
-        id = texto
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, "");
-        if (!id) id = `secao-${idx}`;
+        id = slugDeTitulo(texto, idx);
         heading.id = id;
       }
 

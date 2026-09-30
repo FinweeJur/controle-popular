@@ -2,16 +2,10 @@
 
 import { useState } from "react";
 import { Share2, MessageSquare, Send, Bell, Copy, CheckCircle2, ChevronDown } from "lucide-react";
+import { cabecalhoDeAlerta, type TipoAssuntoAlerta } from "@/lib/navegacao/alerta-contextual";
 
-export type TipoAlertaContextual =
-  | "licenciamento"
-  | "contato"
-  | "contrato"
-  | "pl"
-  | "convenio"
-  | "clima"
-  | "reparacao"
-  | "resumo_pagina";
+/** Mesmos assuntos do planejador `/alertas` — a lista única mora em `lib/`. */
+export type TipoAlertaContextual = TipoAssuntoAlerta;
 
 export interface BotaoAlertaContextualProps {
   tipo: TipoAlertaContextual;
@@ -48,20 +42,11 @@ export default function BotaoAlertaContextual({
       ? window.location.href
       : "https://controlepopular.com.br");
 
-  // Montagem da mensagem estruturada para WhatsApp e Redes
+  // Montagem da mensagem estruturada para WhatsApp e Redes. O cabeçalho vem
+  // da lista única em `lib/navegacao` (mesma do planejador `/alertas`); o
+  // corpo abaixo é PRÓPRIO desta tela compacta, de propósito.
   const gerarMensagemWhatsApp = () => {
-    const cabecalhos: Record<TipoAlertaContextual, string> = {
-      licenciamento: "🌿 *ALERTA DE LICENCIAMENTO AMBIENTAL*",
-      contato: "📞 *CANAL INSTITUCIONAL & CONTATOS ÚTEIS*",
-      contrato: "💼 *ALERTA DE CONTRATO PÚBLICO*",
-      pl: "📜 *ALERTA LEGISLATIVO — CÂMARA / CONGRESSO*",
-      convenio: "🤝 *ALERTA DE REPASSE & CONVÊNIO*",
-      clima: "🌧️ *AVISO DE RISCO SOCIOAMBIENTAL*",
-      reparacao: "⚖️ *ACOMPANHAMENTO DE REPARAÇÃO*",
-      resumo_pagina: "📊 *DADOS PÚBLICOS & FISCALIZAÇÃO CIDADÃ*",
-    };
-
-    const header = cabecalhos[tipo] || "🔔 *ALERTA DE CONTROLE POPULAR*";
+    const header = cabecalhoDeAlerta(tipo, "🔔 *ALERTA DE CONTROLE POPULAR*");
 
     let texto = `${header}
 📍 *Território / Órgão:* ${orgaoTerritorio}
