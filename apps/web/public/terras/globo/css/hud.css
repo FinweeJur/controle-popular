@@ -641,7 +641,7 @@ body {
 }
 #inspector .inspector-close:hover { color: var(--text-1); }
 
-/* ⟲ 13/08: A FICHA ESTOURAVA A LARGURA DO PAINEL, relatado pelo dono com
+/* ⟲ 13/08: A FICHA ESTOURAVA A LARGURA DO PAINEL, relatado pelo dev com
    captura de tela do desktop. Causa: `table-layout` automático somado a
    `white-space: nowrap` na coluna do rótulo. Enquanto os campos eram curtos
    (`area_ha`, `nome`) ninguém via; quando entraram os avisos longos das
@@ -1318,7 +1318,7 @@ body {
   border-radius: 1px;
 }
 
-/* Brilho na camada LIGADA — pedido do dono, e aqui ele informa: distingue
+/* Brilho na camada LIGADA — pedido do dev, e aqui ele informa: distingue
    "ligada" de "desligada" por um canal a mais que a chave. Estático, sem
    pulsar: brilho que pisca em repouso vira ruído. */
 #layers-panel .layer-row.on .layer-marca {

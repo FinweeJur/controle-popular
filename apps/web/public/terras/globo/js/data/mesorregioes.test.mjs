@@ -5,7 +5,7 @@
  *
  * A tabela existe para que o filtro de região possa separar **Vale do
  * Jequitinhonha** de **Vale do Mucuri** — a correção de nomenclatura pedida
- * pelo dono ("é preciso sempre especificar, pq tem vários em MG"). Ela é uma
+ * pelo dev ("é preciso sempre especificar, pq tem vários em MG"). Ela é uma
  * cópia de `pipeline/regioes.py` num app que não tem como importar Python,
  * então o risco é o clássico das cópias: divergir da origem sem ninguém notar.
  *

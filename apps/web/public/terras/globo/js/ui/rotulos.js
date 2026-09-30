@@ -13,7 +13,7 @@ import { pontoNaSuperficie } from './pontosuperficie.js';
 
 /** Nome de cada propriedade, em português. */
 export const ROTULOS = {
-  // ⟲ 13/08: OS AVISOS APARECIAM COMO CHAVE CRUA NA FICHA — o dono viu
+  // ⟲ 13/08: OS AVISOS APARECIAM COMO CHAVE CRUA NA FICHA — o dev viu
   // `aviso_nao_somar_entre_municipios` na tela, em snake_case. Eles foram
   // gravados DENTRO de cada feição de propósito, para que a ressalva viaje
   // com o dado e não fique só na legenda: o geojson é exportável, e quem

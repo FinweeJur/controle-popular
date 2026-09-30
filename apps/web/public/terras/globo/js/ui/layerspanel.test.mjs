@@ -54,10 +54,16 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // ⟲ 29/09/2026: 49 → 51. Entraram `mineracao-sem-cadastro` e
   // `cavas-monitoradas` (Fase 5 do plano de cavas, série `mining_age` do
   // MapBiomas), ambas em 'territorio-mineracao'. Só entrou — nenhum id saiu.
-  // ⟲ 30/09/2026: 51 → 52 → 53 → 55. Entraram `sedes-instalacoes-mineradoras-latam`,
-  // `sedes-capitais-mineracao-eua`, `sedes-mineracao-canada` e `sedes-litigios-portos-europa` em 'territorio-mineracao'. Só entrou — nenhum id saiu.
+  // ⟲ 30/09/2026: 51 → 52. Entrou `sedes-instalacoes-mineradoras-latam`
+  // (Observatório de Mineração na América Latina, 9 países e 51 instalações/sedes),
+  // em 'territorio-mineracao'. Só entrou — nenhum id saiu.
+  // ⟲ 30/09/2026 (Fase B do plano de história): 52 → 53. Entrou
+  // `hist-capitanias` (as 13 doações de 1534, do OpenHistoricalMap CC0), no
+  // assunto novo 'historia'. Só entrou — nenhum id saiu.
+  // ⟲ 30/09/2026 (Fase D do plano de história): 53 → 54. Entrou
+  // `hist-terras-publicas` (arquivo do APM), também em 'historia'.
   assert.equal(
-    CAMADAS.length, 55,
+    CAMADAS.length, 54,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -79,7 +85,7 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // (ZAS, mancha, minas) e só então o episódio. Ver o comentário em config.js.
   assert.deepEqual(
     grupos.map((g) => g.id),
-    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'ambiental', 'brumadinho', 'dinheiro', 'cidade', 'telefonia', 'pistas', 'referencia'],
+    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'ambiental', 'brumadinho', 'dinheiro', 'cidade', 'telefonia', 'pistas', 'historia', 'referencia'],
   );
 
   // Checagem cruzada 1:1 contra o registro, não só a contagem.
@@ -94,7 +100,7 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
 });
 
 test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que somem são as irmãs', () => {
-  // ⟲ 13/08/2026, fim do dia: 36→34 fontes, LINHAS continuam 30. O dono
+  // ⟲ 13/08/2026, fim do dia: 36→34 fontes, LINHAS continuam 30. O dev
   // perguntou "qual o sentido de dividir?" sobre as TRÊS fontes de
   // território quilombola (bacia, Vales, demais regiões) e tinha razão: a
   // separação era por REGIÃO, que é justamente o critério que este painel
@@ -116,9 +122,13 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // Fase 5 do plano de cavas (`mineracao-sem-cadastro`, `cavas-monitoradas`),
   // cada uma na sua linha — fonte única, como as outras de território e
   // mineração. A diferença fonte-linha continua 4.
-  // ⟲ 30/09/2026: 55 → 56 → 57 → 59 fontes e 51 → 52 → 53 → 55 linhas com `sedes-instalacoes-mineradoras-latam`, `sedes-capitais-mineracao-eua`, `sedes-mineracao-canada` e `sedes-litigios-portos-europa`.
-  assert.equal(LAYER_REGISTRY.length, 59, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 55, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 30/09/2026: 55 → 56 fontes e 51 → 52 linhas com `sedes-instalacoes-mineradoras-latam`.
+  // ⟲ 30/09/2026 (Fase B do plano de história): 56 → 57 fontes e 52 → 53
+  // linhas com `hist-capitanias`, fonte única no assunto novo 'historia'.
+  // ⟲ 30/09/2026 (Fase D): 57 → 58 fontes e 53 → 54 linhas com
+  // `hist-terras-publicas` (Arquivo Público Mineiro), mesma seção.
+  assert.equal(LAYER_REGISTRY.length, 58, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 54, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -169,9 +179,8 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // do MapBiomas, que já nascem dentro do contrato: os GeoJSON estão em
     // `dados/camadas/<fonte>.geojson` e os deep-links são reais.
     'mineracao-sem-cadastro', 'cavas-monitoradas',
-    // ⟲ 30/09/2026 — Expansão Transnacional: América Latina, Estados Unidos, Canadá e Europa
-    'sedes-instalacoes-mineradoras-latam', 'sedes-capitais-mineracao-eua',
-    'sedes-mineracao-canada', 'sedes-litigios-portos-europa',
+    // ⟲ 30/09/2026 — Expansão América Latina (mineradoras transnacionais)
+    'sedes-instalacoes-mineradoras-latam',
     // Atos ambientais unificados (Onda 1, Onda 2, Federais e MG)
     'licencas-ambientais', 'outorgas-agua', 'infracoes-embargos',
     // Dinheiro público e mineração (13/08/2026) — ver
@@ -207,6 +216,13 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // Telefonia móvel e conectividade (Anatel, SMP).
     'torres-celular-prioritarias', 'torres-celular-mg',
     'cobertura-telefonia-prioritarias', 'cobertura-telefonia-mg',
+    // ⟲ 30/09/2026 — Fase B do plano de história (docs/planos/
+    // PLANO-HISTORIA-CAMADAS-GLOBO-3D.md): as capitanias hereditárias de 1534,
+    // do OpenHistoricalMap (CC0). Id NOVO no contrato — nenhum id antigo saiu.
+    'hist-capitanias',
+    // ⟲ 30/09/2026 — Fase D: terras públicas do Império (Arquivo Público
+    // Mineiro). Id NOVO no contrato — nenhum id antigo saiu.
+    'hist-terras-publicas',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();

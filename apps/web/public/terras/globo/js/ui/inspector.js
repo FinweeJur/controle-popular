@@ -51,7 +51,7 @@ const FONTE_FAIXA_8KM = 'alerta-raio-territorio-sigmine-operacao';
  * (barragens) · Brumadinho" — e a barragem de verdade ("Barragem VI – Mina
  * Córrego do Feijão") só aparecia na TERCEIRA linha da tabela, depois de
  * "Identificador" e "Código SIGBM", dois números que não dizem nada sozinhos.
- * O dono pediu para conferir que a mancha já diz de qual barragem é — dizia,
+ * O dev pediu para conferir que a mancha já diz de qual barragem é — dizia,
  * mas enterrado; a pergunta que a pessoa faz ao clicar ("de qual barragem é
  * isso?") merece a resposta no título, não na terceira linha da ficha.
  */

@@ -42,7 +42,7 @@ export const DADOS_DE = '28/07/2026';
 //
 // ⟲ 13/08/2026 — trocado de "municípios da bacia do Paraopeba" (Betim, BH,
 // Contagem, Curvelo, Pompéu, S. J. de Bicas, Brumadinho) para "as cidades que
-// têm PORTAL DETALHADO próprio no site", a pedido do dono, olhando o mapa no
+// têm PORTAL DETALHADO próprio no site", a pedido do dev, olhando o mapa no
 // celular: ele quer os botões levando a lugar que já tem página pronta, não a
 // todo município que apareceu num cálculo. Geocódigos conferidos contra
 // `ref_municipios_mg` e `lib/db/cidades-do-build.ts` (não deduzidos):
@@ -161,7 +161,7 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 //
 // ⟲ 13/08/2026 — substitui o agrupamento por região que vigorou de 12/08 a
 // hoje. Aquele agrupamento tornou a lista legível, mas não resolveu o problema
-// que o dono relatou, e ele voltou a relatá-lo: "a questão das camadas tá muito
+// que o dev relatou, e ele voltou a relatá-lo: "a questão das camadas tá muito
 // confuso. Não vamos ficar ligando apenas do Paraopeba ou dos Vales."
 //
 // O diagnóstico, contado no registro de hoje: as 19 fontes do LAYER_REGISTRY
@@ -294,6 +294,7 @@ export const ASSUNTOS = [
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
   { id: 'telefonia',     titulo: 'Telefonia móvel e conectividade' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
+  { id: 'historia',      titulo: 'História — capitanias hereditárias' },
   { id: 'referencia',    titulo: 'Referência do mapa' },
 ];
 
@@ -306,7 +307,7 @@ export const ASSUNTOS = [
 // `jequitinhonha` (mesorregião 3103) e `mucuri` (3104) são tabelas separadas,
 // com 51 e 23 municípios — contados agora, e sem nenhum código em comum; a
 // entrada `vales` de lá é só a união das duas (74). Como Minas tem outros vales
-// (Vale do Aço, Vale do Rio Doce), "Vales" sem sobrenome é ambíguo, e o dono
+// (Vale do Aço, Vale do Rio Doce), "Vales" sem sobrenome é ambíguo, e o dev
 // pediu que se diga sempre qual.
 //
 // Elas aparecem separadas aqui porque o DADO sustenta a separação na maior
@@ -384,7 +385,7 @@ export const LAYER_REGISTRY = [
     hint: '21 áreas, 13.438 hectares (134 km²). Terra pública que já tem destino — por isso sai do cálculo de terra sem cadastro.',
     color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
-  // ⟲ 13/08 (fim do dia): TRÊS FONTES VIRARAM UMA, a pedido do dono, e ele
+  // ⟲ 13/08 (fim do dia): TRÊS FONTES VIRARAM UMA, a pedido do dev, e ele
   // estava certo: "qual o sentido de dividir?". Havia
   // `territorios-quilombolas` (bacia), `-vales` e `-outras-regioes`, e a
   // única razão da separação era técnica — `regioes` é filtro POR FONTE, e
@@ -516,7 +517,7 @@ export const LAYER_REGISTRY = [
   //
   // ⚠️ "Vales" saiu dos rótulos (13/08). Duas mesorregiões distintas do IBGE
   // num nome só, num estado que tem Vale do Aço e Vale do Rio Doce, é ambíguo —
-  // e o dono pediu que se diga sempre qual. Onde a fonte permite separar, quem
+  // e o dev pediu que se diga sempre qual. Onde a fonte permite separar, quem
   // separa é o filtro de região; onde não permite, o rótulo diz "Jequitinhonha
   // e Mucuri" por extenso e a fonte se marca `mesoIndistinta`.
   //
@@ -823,7 +824,7 @@ export const LAYER_REGISTRY = [
     // aqui. "Ligar tudo" (ui/layerspanel.js) pula qualquer camada `pesada`
     // de propósito: ligar as outras ~21 linhas soma umas 1.900 áreas de
     // preenchimento, a mesma ordem de grandeza do que já liga sozinho hoje;
-    // somar esta aqui multiplicaria isso por si só, na hora em que o dono
+    // somar esta aqui multiplicaria isso por si só, na hora em que o dev
     // testou o pedido — no celular. Continua alcançável, uma a uma, pela
     // chave dela.
     color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true, pesada: true,
@@ -992,30 +993,6 @@ export const LAYER_REGISTRY = [
     aviso: 'Coordenadas georreferenciadas oficiais compiladas a partir de órgãos reguladores da América Latina (ANM, SERNAGEOMIN, INGEMMET, etc.). O ponto indica a sede ou o centro operacional da instalação.',
     color: 0xf59e0b, /* âmbar dourado de mineração metálica */ on: true, render: 'point', pointSize: 0.007, listavel: true,
   },
-  // --- Observatório de Capitais e Mineração nos Estados Unidos (30/09/2026) ---
-  {
-    id: 'sedes-capitais-mineracao-eua',
-    label: 'Estados Unidos — Sedes, Capitais e Mineração',
-    hint: '29 sedes corporativas, fundos de investimento, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais (SEC, EPA, USGS, MSHA) e minas estratégicas nos EUA.',
-    aviso: 'Coordenadas georreferenciadas WGS84 compiladas a partir de registros da SEC EDGAR, EPA ECHO, USGS MRDS e relatórios anuais oficiais.',
-    color: 0x38bdf8, /* azul celeste para regulação e capitais transnacionais */ on: false, render: 'point', pointSize: 0.007, listavel: true,
-  },
-  // --- Observatório de Mineração e Capitais no Canadá (30/09/2026) ---
-  {
-    id: 'sedes-mineracao-canada',
-    label: 'Canadá — Sedes, TSX e Mineração',
-    hint: '24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras canadenses com atuação no Brasil e órgãos reguladores federais.',
-    aviso: 'Coordenadas WGS84 compiladas a partir de registros da TMX Group, OSC, SEDAR+ e Environment and Climate Change Canada (NPRI).',
-    color: 0xef4444, /* vermelho para capitais e mineração canadense */ on: false, render: 'point', pointSize: 0.007, listavel: true,
-  },
-  // --- Observatório de Litígios, Sedes e Portos na Europa (30/09/2026) ---
-  {
-    id: 'sedes-litigios-portos-europa',
-    label: 'Europa & Reino Unido — Litígios, Sedes e Portos',
-    hint: '23 tribunais de litígios internacionais (High Court Londres, Rechtbank Rotterdam, Paris), sedes corporativas (BHP, Rio Tinto, Glencore, Enel) e portos de devida diligência (EUDR).',
-    aviso: 'Coordenadas georreferenciadas oficiais compiladas a partir de registros judiciais britânicos/europeus, portuários e órgãos reguladores (BAFA/Comissão Europeia).',
-    color: 0x6366f1, /* índigo europeu */ on: false, render: 'point', pointSize: 0.007, listavel: true,
-  },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
   // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
@@ -1136,6 +1113,28 @@ export const LAYER_REGISTRY = [
     id: 'satelites-orbita', label: 'Satélites em órbita',
     hint: 'Onde estão agora os satélites que fotografam essas áreas. Posição calculada em tempo real.',
     color: 0xe8eef6,   /* --text-1: satélite é marca de UI, não camada de dado */ on: true, render: 'custom',
+  },
+  // --- História: capitanias hereditárias (Fase B do plano de história) ------
+  //
+  // Fonte: OpenHistoricalMap (CC0), relação a relação, com data de início e
+  // fim. A geometria é traçado histórico APROXIMADO, conferido no MODELO e na
+  // CONTAGEM contra o Mapa das Capitanias Hereditárias do IBGE (mapa de Luís
+  // Teixeira, 1574) — sem sobreposição pixel a pixel, porque o mapa de 1574 não
+  // tem georreferenciamento. Nasce DESLIGADA: são 13 polígonos de costa, e
+  // quem abriu o globo procurando o dado de hoje não pediu mapa do século XVI.
+  {
+    id: 'hist-capitanias', label: 'Capitanias hereditárias (1534)',
+    hint: 'As doações de 1534-1536, faixa por faixa: 13 capitanias na base do OpenHistoricalMap, cada uma com o ano de início e fim.',
+    aviso: 'Fronteira colonial é traçado aproximado, desenhado à mão no século XVI: diz onde a Coroa tentou dividir e administrar a costa, não onde a linha existiu no terreno.',
+    color: 0xc9a227,   /* ouro velho: cor de mapa antigo, distinta das camadas de dado atual */
+    on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'hist-terras-publicas', label: 'Terras públicas do Império (1850s)',
+    hint: '14 registros da Repartição Especial das Terras Públicas (Arquivo Público Mineiro) que nomeiam o município no título, cada um com o período e o link para o acervo.',
+    aviso: 'O ponto fica no centroide do MUNICÍPIO citado no título do registro, não no lugar exato da parcela — o acervo descreve o documento, não o perímetro. E é piso: o módulo tem 244 registros, e só 14 nomeiam município.',
+    color: 0x8aa06a,   /* oliva de mapa antigo */
+    on: false, render: 'point', pointSize: 6, listavel: true,
   },
 ];
 
@@ -1474,27 +1473,6 @@ export const CAMADAS = [
     fontes: ['sedes-instalacoes-mineradoras-latam'],
   },
   {
-    id: 'sedes-capitais-mineracao-eua', assunto: 'territorio-mineracao',
-    label: 'Estados Unidos — Sedes, Capitais e Mineração',
-    hint: '29 sedes corporativas, fundos de investimento, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais e minas estratégicas nos EUA.',
-    aviso: 'Coordenadas georreferenciadas auditadas contra órgãos oficiais dos EUA (SEC, EPA, USGS, MSHA).',
-    fontes: ['sedes-capitais-mineracao-eua'],
-  },
-  {
-    id: 'sedes-mineracao-canada', assunto: 'territorio-mineracao',
-    label: 'Canadá — Sedes, TSX e Mineração',
-    hint: '24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras transnacionais com atuação no Brasil e órgãos reguladores federais.',
-    aviso: 'Coordenadas georreferenciadas auditadas contra registros públicos da TMX Group, OSC e Environment Canada.',
-    fontes: ['sedes-mineracao-canada'],
-  },
-  {
-    id: 'sedes-litigios-portos-europa', assunto: 'territorio-mineracao',
-    label: 'Europa & Reino Unido — Litígios, Sedes e Portos',
-    hint: '23 tribunais de litígios internacionais, sedes de multinacionais europeias e portos de importação sob regulação EUDR.',
-    aviso: 'Coordenadas auditadas contra registros judiciais do Reino Unido, Países Baixos, França e União Europeia.',
-    fontes: ['sedes-litigios-portos-europa'],
-  },
-  {
     id: 'documentos-processo-municipios', assunto: 'brumadinho',
     label: 'Documentos do processo que citam o município',
     hint: '53 municípios citados nos documentos do processo judicial de Brumadinho, 1.149 menções. Brumadinho 192, São Joaquim de Bicas 81, Mário Campos 65.',
@@ -1655,12 +1633,29 @@ export const CAMADAS = [
     hint: 'Autos de infração, penalidades e termos de embargo emitidos por órgãos fiscalizadores.',
     fontes: ['infracoes-embargos'],
   },
+  // --- História (Fase B do PLANO-HISTORIA-CAMADAS-GLOBO-3D.md) --------------
+  // Primeira linha do assunto 'historia'. Fonte única (o GeoJSON das
+  // capitanias de 1534), sem irmã regional: o recorte é nacional, não da bacia.
+  {
+    id: 'hist-capitanias', assunto: 'historia',
+    label: 'Capitanias hereditárias (1534)',
+    hint: 'As doações de 1534-1536, faixa por faixa: 13 capitanias derivadas do OpenHistoricalMap (CC0), cada uma com o ano de início e fim.',
+    aviso: 'Fronteira colonial é traçado aproximado, desenhado à mão no século XVI: diz onde a Coroa tentou dividir e administrar a costa, não onde a linha existiu no terreno.',
+    fontes: ['hist-capitanias'],
+  },
+  {
+    id: 'hist-terras-publicas', assunto: 'historia',
+    label: 'Terras públicas do Império (1850s)',
+    hint: '14 registros de terras públicas de 1854-1857, do Arquivo Público Mineiro, que nomeiam o município no título — com período e link para o documento.',
+    aviso: 'O ponto é o centroide do MUNICÍPIO citado no título, não a parcela: o acervo cataloga o registro, não o perímetro. Piso: 244 registros no módulo, 14 nomeiam município.',
+    fontes: ['hist-terras-publicas'],
+  },
 ];
 
 // ---------------------------------------------------------------------------
 // Índices derivados. Existem para que ninguém precise varrer listas com
 // `find()` em caminho quente (o inspetor faz isso a cada clique no globo) e,
-// principalmente, para que a relação fonte↔conceito tenha UM dono só.
+// principalmente, para que a relação fonte↔conceito tenha UM dev só.
 // ---------------------------------------------------------------------------
 
 /** id de fonte → entrada do LAYER_REGISTRY. */

@@ -1219,12 +1219,33 @@ Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLO
 - **Resultado:** `apps/web/public/terras/globo/dados/camadas/hist-capitanias.geojson`
   (233 KB), registrada no globo no assunto `historia`, desligada de nascença.
 
+### Terras e sesmarias de MG — Arquivo Público Mineiro (Fase D, 30/09)
+
+Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
+
+- **SIAAPM** (`siaapm.cultura.mg.gov.br`, Secretaria de Estado de Cultura e Turismo de MG),
+  busca `modules/brtacervo/search.php` — `robots.txt` do host: **404** (sem declaração) →
+  coleta com User-Agent honesto e **pausa de 2 s** entre páginas.
+- ⚠️ **Sesmarias são SÉRIE, não item.** A busca por "sesmaria" devolve **1.726 registros de
+  livro** (`SC-106 Registro de sesmarias`, 1753-1754, rolo de microfilme), **sem lugar**. O
+  catálogo descreve o LIVRO; a freguesia de cada sesmaria está no índice digitalizado de
+  dentro do livro. Coletor grava **índice**, nunca ponto inventado.
+- **Terras Públicas** (`modules/terras_publicas`): **244 registros**; **14** nomeiam o
+  município no título → camada `hist-terras-publicas.geojson` (ponto no centroide do IBGE,
+  dispersão determinística), com período e link. Piso declarado.
+- ⚠️ **Fim por página vazia, nunca pelo teto:** a primeira rodada parou no teto de 80 páginas
+  e devolveu 1.600 como total; o teto subiu e o fim passou a ser provado (1.726).
+- ⚠️ **`PowerShell` mangla a query** do Overpass do OHM (colchetes) — use `requests`.
+
 ## Decisões registradas
 
 - **2026-09-30:** Capitanias hereditárias publicadas a partir do OpenHistoricalMap
   (CC0) — mapa colaborativo entra como ponto de partida, **conferido no modelo e
   na contagem** contra o mapa oficial do IBGE (Luís Teixeira, 1574). A camada
   nasce desligada e cada feição carrega `natureza: traçado histórico aproximado`.
+- **2026-09-30:** Sesmarias do APM publicadas como **índice documental**, nunca
+  como mapa: a fonte cataloga o LIVRO de registro, sem lugar. O que virou camada
+  foi o fundo *Terras Públicas*, cujos títulos nomeiam o município (14 de 244).
 - **2026-09-30:** Embargos do IBAMA (Pamgia, ArcGIS REST) consultados com
   `returnCountOnly=true`, UA honesta e pausa ≥ 2 s; `robots.txt` do host
   devolve 404 (sem declaração) → liberado por padrão. `nome_embargado` e

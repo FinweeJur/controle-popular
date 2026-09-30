@@ -214,7 +214,7 @@ function domFalso(html) {
  * Hiperlink na ficha da camada `estudos-ambientais` (20/08/2026).
  *
  * O ramo existe porque a ficha do globo precisa LEVAR ao documento — pedido do
- * dono: "que o mapa também integre o link pros EIA/RIMA com hiperlinks". E ele
+ * dev: "que o mapa também integre o link pros EIA/RIMA com hiperlinks". E ele
  * é testado porque emitir HTML dentro de uma tabela montada por interpolação é
  * exatamente onde uma URL torta vira injeção: `link_estudos` está na lista
  * branca `CHAVES_COM_HTML`, ou seja, o que ele devolve NÃO é escapado de novo

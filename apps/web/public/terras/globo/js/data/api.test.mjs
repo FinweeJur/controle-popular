@@ -21,7 +21,7 @@
  *      FeatureCollection do outro lado — a viagem de ida e volta não perde
  *      nem inventa feição;
  *   3. `DecompressionStream` ausente falha com mensagem CLARA e não derruba
- *      o processo — é o requisito do dono: navegador sem a API não pode
+ *      o processo — é o requisito do dev: navegador sem a API não pode
  *      quebrar o globo inteiro, só a linha desta camada (ver o `catch` de
  *      `LayerManager._carregar`, que trata qualquer erro de `fetchLayer` da
  *      mesma forma, comprimida ou não);

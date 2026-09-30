@@ -2,7 +2,7 @@
  * icones.js — ícones do painel de camadas, um por CONCEITO (config.js →
  * CAMADAS), não um por feição do mapa.
  *
- * Pedido do dono: reconhecimento visual imediato nas 22 linhas do painel,
+ * Pedido do dev: reconhecimento visual imediato nas 22 linhas do painel,
  * "algo mais leve no design tipo Lucide" — não emoji. `lucide-react` já é
  * dependência do projeto nas páginas React (Next.js, com build), mas o globo
  * é ES module puro servido de `public/`, SEM build step (ver o cabeçalho de

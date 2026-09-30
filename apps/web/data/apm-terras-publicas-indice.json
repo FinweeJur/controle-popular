@@ -1,0 +1,2008 @@
+{
+ "fonte": "Arquivo Público Mineiro (SIAAPM) — Secretaria de Estado de Cultura e Turismo de MG",
+ "coletado_em": "2026-09-30",
+ "total": 244,
+ "com_municipio_no_titulo": 25,
+ "sem_municipio_no_titulo": 219,
+ "municipio_nao_casado_no_ibge": 11,
+ "nao_casados": [
+  {
+   "cid": 105,
+   "municipio_lido": "Espírito Santo"
+  },
+  {
+   "cid": 367,
+   "municipio_lido": "Queluz"
+  },
+  {
+   "cid": 228,
+   "municipio_lido": "do Sabará"
+  },
+  {
+   "cid": 217,
+   "municipio_lido": "Paraíba Do Mato Dentro"
+  },
+  {
+   "cid": 60,
+   "municipio_lido": "Mato Dentro"
+  },
+  {
+   "cid": 268,
+   "municipio_lido": "Vila de"
+  },
+  {
+   "cid": 209,
+   "municipio_lido": "Barra Do"
+  },
+  {
+   "cid": 364,
+   "municipio_lido": "Cidade do Serro"
+  },
+  {
+   "cid": 108,
+   "municipio_lido": "Mato Dentro"
+  },
+  {
+   "cid": 201,
+   "municipio_lido": "Mato Dentro"
+  },
+  {
+   "cid": 385,
+   "municipio_lido": "Glória"
+  }
+ ],
+ "registros": [
+  {
+   "cid": 369,
+   "notacao": "TP-1-222",
+   "titulo": "Sumidouro, Nossa Senhora do Rosário do (Mariana)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=369"
+  },
+  {
+   "cid": 319,
+   "notacao": "TP-1-198",
+   "titulo": "São Bartolomeu",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=319"
+  },
+  {
+   "cid": 253,
+   "notacao": "TP-1-144",
+   "titulo": "Paraíba, São José do",
+   "periodo": "1855",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=253"
+  },
+  {
+   "cid": 405,
+   "notacao": "TP-2-006",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1863 - 1868",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=405"
+  },
+  {
+   "cid": 226,
+   "notacao": "TP-1-117",
+   "titulo": "Mariana, Nossa Senhora DAssunção de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=226"
+  },
+  {
+   "cid": 43,
+   "notacao": "TP-1-033",
+   "titulo": "Camargos, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=43"
+  },
+  {
+   "cid": 213,
+   "notacao": "TP-1-104",
+   "titulo": "Jacuri, São José do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=213"
+  },
+  {
+   "cid": 110,
+   "notacao": "TP-1-059",
+   "titulo": "Congonhas do Sabará, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=110"
+  },
+  {
+   "cid": 214,
+   "notacao": "TP-1-105",
+   "titulo": "Jaguari, São José do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=214"
+  },
+  {
+   "cid": 239,
+   "notacao": "TP-1-130",
+   "titulo": "Morada Nova, Nossa Senhora do Loreto da",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=239"
+  },
+  {
+   "cid": 39,
+   "notacao": "TP-1-029",
+   "titulo": "Buriti, Nossa Senhora da Penha do.",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=39"
+  },
+  {
+   "cid": 383,
+   "notacao": "TP-1-236",
+   "titulo": "Vargem Grande, São Caetano da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=383"
+  },
+  {
+   "cid": 62,
+   "notacao": "TP-1-050",
+   "titulo": "Cachoeira do Campo, Nossa Senhora de Nazaré da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=62"
+  },
+  {
+   "cid": 361,
+   "notacao": "TP-1-214",
+   "titulo": "Saúde, Nossa Senhora da (Mariana)",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=361"
+  },
+  {
+   "cid": 296,
+   "notacao": "TP-1-175",
+   "titulo": "Rio Abaixo, Santa Rita do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=296"
+  },
+  {
+   "cid": 376,
+   "notacao": "TP-1-229",
+   "titulo": "Três Corações de Jesus, Maria e José do Rio Verde",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=376"
+  },
+  {
+   "cid": 176,
+   "notacao": "TP-1-074",
+   "titulo": "Ferros, Santana dos",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=176"
+  },
+  {
+   "cid": 234,
+   "notacao": "TP-1-125",
+   "titulo": "Minas Novas, São Pedro do Fanado de",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=234"
+  },
+  {
+   "cid": 404,
+   "notacao": "TP-2-005",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1858 - 1860",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=404"
+  },
+  {
+   "cid": 249,
+   "notacao": "TP-1-140",
+   "titulo": "Ouro Fino, São Francisco de Paula do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=249"
+  },
+  {
+   "cid": 221,
+   "notacao": "TP-1-112",
+   "titulo": "Lambari, Senhor do Bom Jesus de Matozinhos do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=221"
+  },
+  {
+   "cid": 200,
+   "notacao": "TP-1-091",
+   "titulo": "Inficionado, Nossa Senhora de Nazareth do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=200"
+  },
+  {
+   "cid": 178,
+   "notacao": "TP-1-076",
+   "titulo": "Formiga, (Vila Nova Da) São Vicente Ferrer da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=178"
+  },
+  {
+   "cid": 115,
+   "notacao": "TP-1-064",
+   "titulo": "Coqueiros, Espírito Santo dos",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=115"
+  },
+  {
+   "cid": 264,
+   "notacao": "TP-1-155",
+   "titulo": "Penha Nossa Senhora da.",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=264"
+  },
+  {
+   "cid": 402,
+   "notacao": "TP-2-003",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1860 - 1861",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=402"
+  },
+  {
+   "cid": 58,
+   "notacao": "TP-1-046",
+   "titulo": "Casa Branca, Santo Antônio da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=58"
+  },
+  {
+   "cid": 224,
+   "notacao": "TP-1-115",
+   "titulo": "Madre de Deus, Curato de Nossa Senhora da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=224"
+  },
+  {
+   "cid": 304,
+   "notacao": "TP-1-183",
+   "titulo": "Rio das Pedras, Nossa Senhora da Conceição do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=304"
+  },
+  {
+   "cid": 314,
+   "notacao": "TP-1-193",
+   "titulo": "Santa Catarina",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=314"
+  },
+  {
+   "cid": 218,
+   "notacao": "TP-1-109",
+   "titulo": "Lage, Nossa Senhora da Penha de França da",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=218"
+  },
+  {
+   "cid": 122,
+   "notacao": "TP-1-066",
+   "titulo": "Cuiaté, Nossa Senhora da Conceição do.",
+   "periodo": "1856 - 1860",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=122"
+  },
+  {
+   "cid": 323,
+   "notacao": "TP-1-202",
+   "titulo": "São João Acima, Santana de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=323"
+  },
+  {
+   "cid": 356,
+   "notacao": "TP-1-210",
+   "titulo": "São Tiago (Bom Sucesso)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=356"
+  },
+  {
+   "cid": 400,
+   "notacao": "TP-2-002",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1858 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=400"
+  },
+  {
+   "cid": 250,
+   "notacao": "TP-1-141",
+   "titulo": "Ouro Preto, Nossa Senhora do Pilar de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=250"
+  },
+  {
+   "cid": 171,
+   "notacao": "TP-1-070",
+   "titulo": "Desemboque, Vila de Nossa Senhora do Desterro do",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=171"
+  },
+  {
+   "cid": 375,
+   "notacao": "TP-1-228",
+   "titulo": "Traíras, Santana de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=375"
+  },
+  {
+   "cid": 267,
+   "notacao": "TP-1-158",
+   "titulo": "Piedade dos Gerais, Nossa Senhora da",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=267"
+  },
+  {
+   "cid": 48,
+   "notacao": "TP-1-038",
+   "titulo": "Campestre, Nossa Senhora do Carmo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=48"
+  },
+  {
+   "cid": 173,
+   "notacao": "TP-1-072",
+   "titulo": "Espera, Nossa Senhora da Piedade da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=173"
+  },
+  {
+   "cid": 305,
+   "notacao": "TP-1-184",
+   "titulo": "Rio Preto, São Gonçalo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=305"
+  },
+  {
+   "cid": 307,
+   "notacao": "TP-1-186",
+   "titulo": "Rio Preto, Senhor dos Passos do Presídio do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=307"
+  },
+  {
+   "cid": 34,
+   "notacao": "TP-1-024",
+   "titulo": "Bom Despacho, Nossa Senhora do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=34"
+  },
+  {
+   "cid": 236,
+   "notacao": "TP-1-127",
+   "titulo": "Minas Novas, Nossa Senhora da Piedade",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=236"
+  },
+  {
+   "cid": 105,
+   "notacao": "TP-1-054",
+   "titulo": "Cristina, Vila da (Espírito Santo)",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=105"
+  },
+  {
+   "cid": 367,
+   "notacao": "TP-1-220",
+   "titulo": "Suaçuí, São Brás do (Queluz)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=367"
+  },
+  {
+   "cid": 179,
+   "notacao": "TP-1-077",
+   "titulo": "Furquim, Senhor Bom Jesus do Monte",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=179"
+  },
+  {
+   "cid": 47,
+   "notacao": "TP-1-037",
+   "titulo": "Toledo, São José da Campanha de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=47"
+  },
+  {
+   "cid": 223,
+   "notacao": "TP-1-114",
+   "titulo": "Leopoldina, São Sebastião da Vila",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=223"
+  },
+  {
+   "cid": 106,
+   "notacao": "TP-1-055",
+   "titulo": "Conceição da Barra, Nossa Senhora da",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=106"
+  },
+  {
+   "cid": 283,
+   "notacao": "TP-1-173",
+   "titulo": "Prata, Nossa Senhora do Carmo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=283"
+  },
+  {
+   "cid": 358,
+   "notacao": "TP-1-212",
+   "titulo": "Sapucaí, Santana do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=358"
+  },
+  {
+   "cid": 246,
+   "notacao": "TP-1-137",
+   "titulo": "Oliveira, (Vila De) Nossa Senhora da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=246"
+  },
+  {
+   "cid": 251,
+   "notacao": "TP-1-142",
+   "titulo": "Ouro Preto, Nossa Senhora do Pilar de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=251"
+  },
+  {
+   "cid": 61,
+   "notacao": "TP-1-049",
+   "titulo": "Cachoeira do Brumado, Nossa Senhora da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=61"
+  },
+  {
+   "cid": 107,
+   "notacao": "TP-1-056",
+   "titulo": "Conceição do Rio Verde, Nossa Senhora da (Baependi).",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=107"
+  },
+  {
+   "cid": 271,
+   "notacao": "TP-1-162",
+   "titulo": "Pitangui, Nossa Senhora do Pilar do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=271"
+  },
+  {
+   "cid": 220,
+   "notacao": "TP-1-111",
+   "titulo": "Alagoa Santa, Nossa Senhora da Saúde da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=220"
+  },
+  {
+   "cid": 247,
+   "notacao": "TP-1-138",
+   "titulo": "Ouro Branco, Santo Antônio",
+   "periodo": "1856 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=247"
+  },
+  {
+   "cid": 232,
+   "notacao": "TP-1-123",
+   "titulo": "Minas Novas, São Pedro do Fanado de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=232"
+  },
+  {
+   "cid": 180,
+   "notacao": "TP-1-078",
+   "titulo": "França, Nossa Senhora da Penha de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=180"
+  },
+  {
+   "cid": 368,
+   "notacao": "TP-1-221",
+   "titulo": "Sucuriu, Nossa Senhora da Conceição Dágua Suja do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=368"
+  },
+  {
+   "cid": 54,
+   "notacao": "TP-1-042",
+   "titulo": "Capituba, São Sebastião do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=54"
+  },
+  {
+   "cid": 228,
+   "notacao": "TP-1-119",
+   "titulo": "Matozinhos, Senhor Bom Jesus de (do Sabará)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=228"
+  },
+  {
+   "cid": 212,
+   "notacao": "TP-1-103",
+   "titulo": "Jacuri, São José do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=212"
+  },
+  {
+   "cid": 245,
+   "notacao": "TP-1-136",
+   "titulo": "Oliveira, Vila de Nossa Senhora da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=245"
+  },
+  {
+   "cid": 260,
+   "notacao": "TP-1-151",
+   "titulo": "Patafufo, Nossa Senhora da Piedade do (Pará).",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=260"
+  },
+  {
+   "cid": 241,
+   "notacao": "TP-1-132",
+   "titulo": "Morrinhos, Nossa Senhora do Bom Sucesso e Conceição de",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=241"
+  },
+  {
+   "cid": 357,
+   "notacao": "TP-1-211",
+   "titulo": "São Tomé das Letras (Baependi)",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=357"
+  },
+  {
+   "cid": 320,
+   "notacao": "TP-1-199",
+   "titulo": "São Caetano",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=320"
+  },
+  {
+   "cid": 217,
+   "notacao": "TP-1-108",
+   "titulo": "Joanésia, São Sebastião de (Paraíba Do Mato Dentro)",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=217"
+  },
+  {
+   "cid": 233,
+   "notacao": "TP-1-124",
+   "titulo": "Minas Novas, São Pedro do Fanado de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=233"
+  },
+  {
+   "cid": 259,
+   "notacao": "TP-1-150",
+   "titulo": "Passos, Senhor Bom Jesus dos",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=259"
+  },
+  {
+   "cid": 279,
+   "notacao": "TP-1-170",
+   "titulo": "Pouso Alto, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=279"
+  },
+  {
+   "cid": 282,
+   "notacao": "TP-1-172",
+   "titulo": "Prados, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=282"
+  },
+  {
+   "cid": 114,
+   "notacao": "TP-1-063",
+   "titulo": "Contendas, Santana de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=114"
+  },
+  {
+   "cid": 199,
+   "notacao": "TP-1-090",
+   "titulo": "Indaiá, Nossa Senhora das Dores do",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=199"
+  },
+  {
+   "cid": 374,
+   "notacao": "TP-1-227",
+   "titulo": "Traíras, Santana de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=374"
+  },
+  {
+   "cid": 372,
+   "notacao": "TP-1-225",
+   "titulo": "Tamanduá, São Bento do",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=372"
+  },
+  {
+   "cid": 312,
+   "notacao": "TP-1-191",
+   "titulo": "Sabará, Nossa Senhora da Conceição do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=312"
+  },
+  {
+   "cid": 244,
+   "notacao": "TP-1-135",
+   "titulo": "Nazaré, Nossa Senhora de",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=244"
+  },
+  {
+   "cid": 281,
+   "notacao": "TP-1-171",
+   "titulo": "Pouso Alto, Nossa Senhora do Carmo do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=281"
+  },
+  {
+   "cid": 269,
+   "notacao": "TP-1-160",
+   "titulo": "Piranga, Vila de Nossa Senhora da Conceição do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=269"
+  },
+  {
+   "cid": 313,
+   "notacao": "TP-1-192",
+   "titulo": "Sabará, Santa Luzia do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=313"
+  },
+  {
+   "cid": 297,
+   "notacao": "TP-1-176",
+   "titulo": "Rio Abaixo, São Gonçalo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=297"
+  },
+  {
+   "cid": 384,
+   "notacao": "TP-1-237",
+   "titulo": "Varginha, Espírito Santo da",
+   "periodo": "1855 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=384"
+  },
+  {
+   "cid": 311,
+   "notacao": "TP-1-190",
+   "titulo": "Roças Novas, Nossa Senhora da Madre de Deus de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=311"
+  },
+  {
+   "cid": 30,
+   "notacao": "TP-1-020",
+   "titulo": "Betim, Nossa Senhora do Carmo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=30"
+  },
+  {
+   "cid": 373,
+   "notacao": "TP-1-226",
+   "titulo": "Taquaruçu, Santíssimo Sacramento do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=373"
+  },
+  {
+   "cid": 308,
+   "notacao": "TP-1-187",
+   "titulo": "Rio Preto, São José do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=308"
+  },
+  {
+   "cid": 265,
+   "notacao": "TP-1-156",
+   "titulo": "Perdões, Senhor do Bom Jesus dos",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=265"
+  },
+  {
+   "cid": 359,
+   "notacao": "TP-1-213",
+   "titulo": "Sapucaí, Santana do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=359"
+  },
+  {
+   "cid": 242,
+   "notacao": "TP-1-133",
+   "titulo": "Morro Grande, São João Batista do",
+   "periodo": "1854 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=242"
+  },
+  {
+   "cid": 109,
+   "notacao": "TP-1-058",
+   "titulo": "Congonhas do Campo, Nossa Senhora da Conceição das",
+   "periodo": "1855 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=109"
+  },
+  {
+   "cid": 112,
+   "notacao": "TP-1-061",
+   "titulo": "Contagem, São Gonçalo da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=112"
+  },
+  {
+   "cid": 182,
+   "notacao": "TP-1-080",
+   "titulo": "Gouvêa, Santo Antônio do.",
+   "periodo": "1856 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=182"
+  },
+  {
+   "cid": 60,
+   "notacao": "TP-1-048",
+   "titulo": "Catas Altas, Nossa Senhora da Conceição (Mato Dentro)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=60"
+  },
+  {
+   "cid": 258,
+   "notacao": "TP-1-149",
+   "titulo": "Passa Tempo, Nossa Senhora da Glória do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=258"
+  },
+  {
+   "cid": 57,
+   "notacao": "TP-1-045",
+   "titulo": "Carmo do Rio Claro, Nossa Senhora do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=57"
+  },
+  {
+   "cid": 302,
+   "notacao": "TP-1-181",
+   "titulo": "Rio Pardo, (Vila do) Nossa Senhora da Conceição do",
+   "periodo": "1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=302"
+  },
+  {
+   "cid": 59,
+   "notacao": "TP-1-047",
+   "titulo": "Catas Altas da Noruega, São Gonçalo de",
+   "periodo": "1854 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=59"
+  },
+  {
+   "cid": 324,
+   "notacao": "TP-1-203",
+   "titulo": "São João Del-Rei, Nossa Senhora do Pilar de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=324"
+  },
+  {
+   "cid": 208,
+   "notacao": "TP-1-099",
+   "titulo": "Itaverava, Santo Antônio da",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=208"
+  },
+  {
+   "cid": 205,
+   "notacao": "TP-1-096",
+   "titulo": "Itajubá, Nossa Senhora da Soledade de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=205"
+  },
+  {
+   "cid": 379,
+   "notacao": "TP-1-232",
+   "titulo": "Turvo, Nossa Senhora das Dores do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=379"
+  },
+  {
+   "cid": 219,
+   "notacao": "TP-1-110",
+   "titulo": "Lagoa Dourada, Santo Antônio da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=219"
+  },
+  {
+   "cid": 20,
+   "notacao": "TP-1-010",
+   "titulo": "Antônio Pereira, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1860",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=20"
+  },
+  {
+   "cid": 316,
+   "notacao": "TP-1-195",
+   "titulo": "Santíssimo Coração de Jesus",
+   "periodo": "1854 - 1855",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=316"
+  },
+  {
+   "cid": 370,
+   "notacao": "TP-1-223",
+   "titulo": "Tabuleiro Grande, Nossa Senhora do Carmo (Sete Lagoas)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=370"
+  },
+  {
+   "cid": 36,
+   "notacao": "TP-1-026",
+   "titulo": "Bonfim, Vila do Senhor do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=36"
+  },
+  {
+   "cid": 202,
+   "notacao": "TP-1-093",
+   "titulo": "Itabira Do Campo, Nossa Senhora da Boa Viagem de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=202"
+  },
+  {
+   "cid": 315,
+   "notacao": "TP-1-194",
+   "titulo": "Santa Quitéria",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=315"
+  },
+  {
+   "cid": 299,
+   "notacao": "TP-1-178",
+   "titulo": "Rio Acima, Santo Antônio do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=299"
+  },
+  {
+   "cid": 25,
+   "notacao": "TP-1-015",
+   "titulo": "Barra do Bacalhau, Santana da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=25"
+  },
+  {
+   "cid": 363,
+   "notacao": "TP-1-216",
+   "titulo": "Serranos, Nossa Senhora do Bom Sucesso (Aiuruoca)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=363"
+  },
+  {
+   "cid": 273,
+   "notacao": "TP-1-164",
+   "titulo": "Pium-í, Nossa Senhora do Livramento do",
+   "periodo": "1856 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=273"
+  },
+  {
+   "cid": 321,
+   "notacao": "TP-1-200",
+   "titulo": "São Francisco de Sales",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=321"
+  },
+  {
+   "cid": 12,
+   "notacao": "TP-1-003",
+   "titulo": "Alegres, Santana dos",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=12"
+  },
+  {
+   "cid": 121,
+   "notacao": "TP-1-065",
+   "titulo": "Correntes, São Sebastião dos",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=121"
+  },
+  {
+   "cid": 207,
+   "notacao": "TP-1-098",
+   "titulo": "Itatiaiuçu, São Sebastião do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=207"
+  },
+  {
+   "cid": 37,
+   "notacao": "TP-1-027",
+   "titulo": "Bom Sucesso, Nossa Senhora do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=37"
+  },
+  {
+   "cid": 26,
+   "notacao": "TP-1-016",
+   "titulo": "Barra Longa, São José da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=26"
+  },
+  {
+   "cid": 27,
+   "notacao": "TP-1-017",
+   "titulo": "Barra do Rio das Velhas, Nossa Senhora do Bom Sucesso da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=27"
+  },
+  {
+   "cid": 211,
+   "notacao": "TP-1-102",
+   "titulo": "Jacuí, (Vila De) São Carlos do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=211"
+  },
+  {
+   "cid": 32,
+   "notacao": "TP-1-022",
+   "titulo": "Boa Vista, Santa Rita da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=32"
+  },
+  {
+   "cid": 240,
+   "notacao": "TP-1-131",
+   "titulo": "Morada Nova, Nossa Senhora de Loreto de",
+   "periodo": "1856 - 1860",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=240"
+  },
+  {
+   "cid": 45,
+   "notacao": "TP-1-035",
+   "titulo": "Campanha, São Gonçalo da",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=45"
+  },
+  {
+   "cid": 56,
+   "notacao": "TP-1-044",
+   "titulo": "Carmo do Escaramuça, Nossa Senhora do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=56"
+  },
+  {
+   "cid": 303,
+   "notacao": "TP-1-182",
+   "titulo": "Rio do Peixe, Nossa Senhora das Necessidades do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=303"
+  },
+  {
+   "cid": 318,
+   "notacao": "TP-1-197",
+   "titulo": "Santíssimo Coração de Jesus",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=318"
+  },
+  {
+   "cid": 351,
+   "notacao": "TP-1-209",
+   "titulo": "São Romão, Santo Antônio da Manga de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=351"
+  },
+  {
+   "cid": 337,
+   "notacao": "TP-1-204",
+   "titulo": "São José Del-Rei, Santo Antônio da Vila de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=337"
+  },
+  {
+   "cid": 365,
+   "notacao": "TP-1-218",
+   "titulo": "Sete Lagoas, Santo Antônio de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=365"
+  },
+  {
+   "cid": 6,
+   "notacao": "TP-2-001",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1854 - 1860",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=6"
+  },
+  {
+   "cid": 198,
+   "notacao": "TP-1-089",
+   "titulo": "Indaiá, Nossa Senhora das Dores do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=198"
+  },
+  {
+   "cid": 44,
+   "notacao": "TP-1-034",
+   "titulo": "Cambuí, Nossa Senhora do Carmo de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=44"
+  },
+  {
+   "cid": 377,
+   "notacao": "TP-1-230",
+   "titulo": "Três Pontas, Nossa Senhora da Ajuda de",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=377"
+  },
+  {
+   "cid": 257,
+   "notacao": "TP-1-148",
+   "titulo": "Paraopeba, Nossa Senhora da Piedade do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=257"
+  },
+  {
+   "cid": 103,
+   "notacao": "TP-1-052",
+   "titulo": "Chapéu de Uvas, Nossa Senhora DAssunção de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=103"
+  },
+  {
+   "cid": 268,
+   "notacao": "TP-1-159",
+   "titulo": "Piranga, Nossa Senhora da Conceição do (Vila de)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=268"
+  },
+  {
+   "cid": 317,
+   "notacao": "TP-1-196",
+   "titulo": "Santíssimo Coração de Jesus",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=317"
+  },
+  {
+   "cid": 158,
+   "notacao": "TP-1-068",
+   "titulo": "Curimataí, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=158"
+  },
+  {
+   "cid": 196,
+   "notacao": "TP-1-087",
+   "titulo": "Ibitipoca, Santa Rita da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=196"
+  },
+  {
+   "cid": 29,
+   "notacao": "TP-1-019",
+   "titulo": "Barbacena, Nossa Senhora da Piedade de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=29"
+  },
+  {
+   "cid": 362,
+   "notacao": "TP-1-215",
+   "titulo": "Serra Negra, São Joaquim da (Alfenas)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=362"
+  },
+  {
+   "cid": 266,
+   "notacao": "TP-1-157",
+   "titulo": "Piedade dos Gerais, Nossa Senhora da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=266"
+  },
+  {
+   "cid": 102,
+   "notacao": "TP-1-051",
+   "titulo": "Chapada, Santa Cruz da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=102"
+  },
+  {
+   "cid": 366,
+   "notacao": "TP-1-219",
+   "titulo": "Simão Pereira, Nossa Senhora da Glória e São Pedro de Alcânt...",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=366"
+  },
+  {
+   "cid": 55,
+   "notacao": "TP-1-043",
+   "titulo": "Capivari, Santana do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=55"
+  },
+  {
+   "cid": 203,
+   "notacao": "TP-1-094",
+   "titulo": "Itacambira, Santo Antônio do",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=203"
+  },
+  {
+   "cid": 195,
+   "notacao": "TP-1-086",
+   "titulo": "Ibitipoca, Nossa Senhora Da Conceição da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=195"
+  },
+  {
+   "cid": 206,
+   "notacao": "TP-1-097",
+   "titulo": "Itapecerica, Espírito Santo do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=206"
+  },
+  {
+   "cid": 263,
+   "notacao": "TP-1-154",
+   "titulo": "Patrocínio, Vila de Nossa Senhora do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=263"
+  },
+  {
+   "cid": 403,
+   "notacao": "TP-2-004",
+   "titulo": "Registros de circulares, ofícios e informações",
+   "periodo": "1862 - 1875",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=403"
+  },
+  {
+   "cid": 339,
+   "notacao": "TP-1-205",
+   "titulo": "São João Batista",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=339"
+  },
+  {
+   "cid": 46,
+   "notacao": "TP-1-036",
+   "titulo": "Campanha, Santo Antônio do Vale da",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=46"
+  },
+  {
+   "cid": 340,
+   "notacao": "TP-1-206",
+   "titulo": "São João Nepomuceno",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=340"
+  },
+  {
+   "cid": 19,
+   "notacao": "TP-1-009",
+   "titulo": "Antônio Dias, Nossa Senhora da Conceição de (Ouro Preto).",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=19"
+  },
+  {
+   "cid": 175,
+   "notacao": "TP-1-073",
+   "titulo": "Ferros, Santana dos",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=175"
+  },
+  {
+   "cid": 209,
+   "notacao": "TP-1-100",
+   "titulo": "Itinga, Santo Antônio da (Barra Do)",
+   "periodo": "1856 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=209"
+  },
+  {
+   "cid": 238,
+   "notacao": "TP-1-129",
+   "titulo": "Montes Claros, Nossa Senhora e São José de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=238"
+  },
+  {
+   "cid": 349,
+   "notacao": "TP-1-208",
+   "titulo": "São Romão, Santo Antônio da Manga de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=349"
+  },
+  {
+   "cid": 310,
+   "notacao": "TP-1-189",
+   "titulo": "Rio Vermelho, Nossa Senhora da Penha do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=310"
+  },
+  {
+   "cid": 230,
+   "notacao": "TP-1-121",
+   "titulo": "Meia Pataca, Santa Rita do (Cataguases)",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=230"
+  },
+  {
+   "cid": 227,
+   "notacao": "TP-1-118",
+   "titulo": "Mateus Leme, Santo Antônio do Morro de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=227"
+  },
+  {
+   "cid": 197,
+   "notacao": "TP-1-088",
+   "titulo": "Indaiá, Nossa Senhora das Dores do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=197"
+  },
+  {
+   "cid": 38,
+   "notacao": "TP-1-028",
+   "titulo": "Brumado do Suaçuí, Nossa Senhora das Grotas do. (Queluz).",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=38"
+  },
+  {
+   "cid": 16,
+   "notacao": "TP-1-006",
+   "titulo": "Amparo, Santo Antônio do.",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=16"
+  },
+  {
+   "cid": 256,
+   "notacao": "TP-1-147",
+   "titulo": "Paraíso, São Sebastião do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=256"
+  },
+  {
+   "cid": 113,
+   "notacao": "TP-1-062",
+   "titulo": "Contendas, Santana de",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=113"
+  },
+  {
+   "cid": 188,
+   "notacao": "TP-1-083",
+   "titulo": "Gorutuba, São José do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=188"
+  },
+  {
+   "cid": 192,
+   "notacao": "TP-1-084",
+   "titulo": "Gorutuba, São José do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=192"
+  },
+  {
+   "cid": 231,
+   "notacao": "TP-1-122",
+   "titulo": "Minas Novas, Freguesia de São Domingos do município de",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=231"
+  },
+  {
+   "cid": 306,
+   "notacao": "TP-1-185",
+   "titulo": "Rio Preto, Senhor dos Passos do Presídio do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=306"
+  },
+  {
+   "cid": 322,
+   "notacao": "TP-1-201",
+   "titulo": "São Francisco das Chagas do Campo Grande",
+   "periodo": "1855 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=322"
+  },
+  {
+   "cid": 35,
+   "notacao": "TP-1-025",
+   "titulo": "Bonfim, Senhor do (Montes Claros)",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=35"
+  },
+  {
+   "cid": 371,
+   "notacao": "TP-1-224",
+   "titulo": "Tamanduá, São Bento do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=371"
+  },
+  {
+   "cid": 50,
+   "notacao": "TP-1-040",
+   "titulo": "Campo Formoso, Nossa Senhora das Dores do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=50"
+  },
+  {
+   "cid": 193,
+   "notacao": "TP-1-085",
+   "titulo": "Gorutuba, São José do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=193"
+  },
+  {
+   "cid": 364,
+   "notacao": "TP-1-217",
+   "titulo": "Serro, Nossa Senhora da Conceição do (Cidade do Serro)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=364"
+  },
+  {
+   "cid": 204,
+   "notacao": "TP-1-095",
+   "titulo": "Itajubá, (Vila de) Nossa Senhora da Boa Vista de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=204"
+  },
+  {
+   "cid": 41,
+   "notacao": "TP-1-031",
+   "titulo": "Caldas, Nossa Senhora do Patrocínio de",
+   "periodo": "1855 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=41"
+  },
+  {
+   "cid": 229,
+   "notacao": "TP-1-120",
+   "titulo": "Santa Rita do Meia Pataca (Cataguases)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=229"
+  },
+  {
+   "cid": 347,
+   "notacao": "TP-1-207",
+   "titulo": "São Miguel e Almas dos Correntes (Guanhães)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=347"
+  },
+  {
+   "cid": 111,
+   "notacao": "TP-1-060",
+   "titulo": "Raposos, Nossa Senhora da Conceição de (Sabará)",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=111"
+  },
+  {
+   "cid": 40,
+   "notacao": "TP-1-030",
+   "titulo": "Cajuru, São Miguel do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=40"
+  },
+  {
+   "cid": 216,
+   "notacao": "TP-1-107",
+   "titulo": "Januária, Nossa Senhora do Amparo do Brejo do Salgado da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=216"
+  },
+  {
+   "cid": 301,
+   "notacao": "TP-1-180",
+   "titulo": "Rio Pardo, Senhor do Bom Jesus do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=301"
+  },
+  {
+   "cid": 169,
+   "notacao": "TP-1-069",
+   "titulo": "Desemboque, Vila de Nossa Senhora do Desterro do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=169"
+  },
+  {
+   "cid": 237,
+   "notacao": "TP-1-128",
+   "titulo": "Montes Claros, Nossa Senhora e São José de",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=237"
+  },
+  {
+   "cid": 378,
+   "notacao": "TP-1-231",
+   "titulo": "Turvo, Santa Rita do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=378"
+  },
+  {
+   "cid": 104,
+   "notacao": "TP-1-053",
+   "titulo": "Xopotó, São José do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=104"
+  },
+  {
+   "cid": 51,
+   "notacao": "TP-1-041",
+   "titulo": "Campo Místico, Senhor Bom Jesus do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=51"
+  },
+  {
+   "cid": 248,
+   "notacao": "TP-1-139",
+   "titulo": "Ouro Fino, São Francisco de Paula do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=248"
+  },
+  {
+   "cid": 300,
+   "notacao": "TP-1-179",
+   "titulo": "Rio Pardo, Nossa Senhora da Conceição do",
+   "periodo": "1854 - 1855",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=300"
+  },
+  {
+   "cid": 23,
+   "notacao": "TP-1-013",
+   "titulo": "Baependi, Vila de Nossa Senhora do Montserrat",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=23"
+  },
+  {
+   "cid": 380,
+   "notacao": "TP-1-233",
+   "titulo": "Porto do Turvo, Nossa Senhora da Conceição do",
+   "periodo": "",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=380"
+  },
+  {
+   "cid": 254,
+   "notacao": "TP-1-145",
+   "titulo": "Paraibuna, Santo Antônio do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=254"
+  },
+  {
+   "cid": 255,
+   "notacao": "TP-1-146",
+   "titulo": "Paraíso, São José do (Paraisópolis)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=255"
+  },
+  {
+   "cid": 270,
+   "notacao": "TP-1-161",
+   "titulo": "Pitangui, Nossa Senhora do Pilar do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=270"
+  },
+  {
+   "cid": 261,
+   "notacao": "TP-1-152",
+   "titulo": "Patos, Santo Antônio dos",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=261"
+  },
+  {
+   "cid": 172,
+   "notacao": "TP-1-071",
+   "titulo": "Diamantina, (Cidade De) Santo Antônio de",
+   "periodo": "1855 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=172"
+  },
+  {
+   "cid": 31,
+   "notacao": "TP-1-021",
+   "titulo": "Boa Esperança, Nossa Senhora das Dores da",
+   "periodo": "1856 - 1861",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=31"
+  },
+  {
+   "cid": 24,
+   "notacao": "TP-1-014",
+   "titulo": "Bambuí, Santana do",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=24"
+  },
+  {
+   "cid": 183,
+   "notacao": "TP-1-081",
+   "titulo": "Grão Mogol, Santo Antônio do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=183"
+  },
+  {
+   "cid": 22,
+   "notacao": "TP-1-012",
+   "titulo": "Aiuruoca, Nossa Senhora da Conceição de",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=22"
+  },
+  {
+   "cid": 177,
+   "notacao": "TP-1-075",
+   "titulo": "Formiga, (Vila Nova da) São Vicente Ferrer da",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=177"
+  },
+  {
+   "cid": 298,
+   "notacao": "TP-1-177",
+   "titulo": "Queluz, Nossa Senhora da Conceição de",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=298"
+  },
+  {
+   "cid": 309,
+   "notacao": "TP-1-188",
+   "titulo": "Rio Novo, Nossa Senhora da Conceição do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=309"
+  },
+  {
+   "cid": 210,
+   "notacao": "TP-1-101",
+   "titulo": "Jacuí, (Vila de) São Carlos do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=210"
+  },
+  {
+   "cid": 272,
+   "notacao": "TP-1-163",
+   "titulo": "Pium-í, Nossa Senhora do Livramento do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=272"
+  },
+  {
+   "cid": 215,
+   "notacao": "TP-1-106",
+   "titulo": "Brejo do Salgado, Nossa Senhora do Amparo do (Januária)",
+   "periodo": "1854 - 1855",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=215"
+  },
+  {
+   "cid": 284,
+   "notacao": "TP-1-174",
+   "titulo": "Presídio, São João Batista do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=284"
+  },
+  {
+   "cid": 42,
+   "notacao": "TP-1-032",
+   "titulo": "Calhau, Santo Antônio do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=42"
+  },
+  {
+   "cid": 382,
+   "notacao": "TP-1-235",
+   "titulo": "Uberaba, Santo Antônio e São Sebastião do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=382"
+  },
+  {
+   "cid": 13,
+   "notacao": "TP-1-002",
+   "titulo": "Alegres, Santana dos",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=13"
+  },
+  {
+   "cid": 18,
+   "notacao": "TP-1-008",
+   "titulo": "Antônio Dias Abaixo, Nossa Senhora de Nazareth de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=18"
+  },
+  {
+   "cid": 278,
+   "notacao": "TP-1-169",
+   "titulo": "Pouso Alegre, Bom Jesus do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=278"
+  },
+  {
+   "cid": 277,
+   "notacao": "TP-1-168",
+   "titulo": "Ponte Nova, São Sebastião da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=277"
+  },
+  {
+   "cid": 15,
+   "notacao": "TP-1-005",
+   "titulo": "Alfié, Santana do",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=15"
+  },
+  {
+   "cid": 235,
+   "notacao": "TP-1-126",
+   "titulo": "Minas Novas, Nossa Senhora da Piedade de",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=235"
+  },
+  {
+   "cid": 222,
+   "notacao": "TP-1-113",
+   "titulo": "Lavras do Funil, Santana de",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=222"
+  },
+  {
+   "cid": 276,
+   "notacao": "TP-1-167",
+   "titulo": "Pomba, Nossa Senhora das Mercês do",
+   "periodo": "1856 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=276"
+  },
+  {
+   "cid": 108,
+   "notacao": "TP-1-057",
+   "titulo": "Conceição do Serro, Nossa Senhora da (Mato Dentro)",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=108"
+  },
+  {
+   "cid": 186,
+   "notacao": "TP-1-082",
+   "titulo": "Gorutuba, São José do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=186"
+  },
+  {
+   "cid": 33,
+   "notacao": "TP-1-023",
+   "titulo": "Bom Despacho, Nossa Senhora do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=33"
+  },
+  {
+   "cid": 201,
+   "notacao": "TP-1-092",
+   "titulo": "Itabira, Nossa Senhora do Rosário (Mato Dentro)",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=201"
+  },
+  {
+   "cid": 28,
+   "notacao": "TP-1-018",
+   "titulo": "Barbacena, Nossa Senhora da Piedade de",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=28"
+  },
+  {
+   "cid": 181,
+   "notacao": "TP-1-079",
+   "titulo": "Glória, Nossa Senhora da",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=181"
+  },
+  {
+   "cid": 385,
+   "notacao": "TP-1-238",
+   "titulo": "Tombos, Nossa Senhora da Conceição dos (Glória)",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=385"
+  },
+  {
+   "cid": 262,
+   "notacao": "TP-1-153",
+   "titulo": "Patrocínio, (Vila Do) Nossa Senhora do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=262"
+  },
+  {
+   "cid": 275,
+   "notacao": "TP-1-166",
+   "titulo": "Pomba, (Vila do) São Manoel do",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=275"
+  },
+  {
+   "cid": 252,
+   "notacao": "TP-1-143",
+   "titulo": "Paracatu, Santo Antônio do",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=252"
+  },
+  {
+   "cid": 17,
+   "notacao": "TP-1-007",
+   "titulo": "Pedra do Anta, São Sebastião da",
+   "periodo": "1855 - 1858",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=17"
+  },
+  {
+   "cid": 14,
+   "notacao": "TP-1-004",
+   "titulo": "Alfenas, São José e Dores dos",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=14"
+  },
+  {
+   "cid": 154,
+   "notacao": "TP-1-067",
+   "titulo": "Curral Del Rei, Nossa Senhora da Boa Viagem do",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=154"
+  },
+  {
+   "cid": 243,
+   "notacao": "TP-1-134",
+   "titulo": "Muriaé, São Paulo do",
+   "periodo": "1854 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=243"
+  },
+  {
+   "cid": 49,
+   "notacao": "TP-1-039",
+   "titulo": "Campo Belo, Bom Jesus do",
+   "periodo": "1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=49"
+  },
+  {
+   "cid": 381,
+   "notacao": "TP-1-234",
+   "titulo": "Ubá, São Januário do",
+   "periodo": "1855 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=381"
+  },
+  {
+   "cid": 225,
+   "notacao": "TP-1-116",
+   "titulo": "Mar de Espanha, Nossa Senhora das Mercês da Vila do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=225"
+  },
+  {
+   "cid": 274,
+   "notacao": "TP-1-165",
+   "titulo": "Pomba, (Vila do) São Manoel do",
+   "periodo": "1854 - 1856",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=274"
+  },
+  {
+   "cid": 5,
+   "notacao": "TP-1-001",
+   "titulo": "Abre Campo, Santana de",
+   "periodo": "1855 - 1859",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=5"
+  },
+  {
+   "cid": 21,
+   "notacao": "TP-1-011",
+   "titulo": "Araxá, São Domingos do",
+   "periodo": "1855 - 1857",
+   "modulo": "terras_publicas",
+   "url": "https://www.siaapm.cultura.mg.gov.br/modules/terras_publicas/brtacervo.php?cid=21"
+  }
+ ]
+}

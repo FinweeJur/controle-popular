@@ -247,6 +247,28 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
   divergir, vale o oficial e a divergência fica escrita.
 - Camada nasce **desligada**, com o ano e a natureza na etiqueta.
 
+**Status medido 30/09/2026 — feito:**
+
+- **Geometria do OpenHistoricalMap** (CC0), relação a relação: **13 capitanias** com
+  `start_date`/`end_date`, incluindo Pernambuco — que no OHM se chama **Nova Lusitânia**
+  (1534-1700). Os anéis foram costurados a partir das *ways* (`outer`): **18 anéis, nenhum
+  aberto**.
+- **Camada versionada:** `apps/web/public/terras/globo/dados/camadas/hist-capitanias.geojson`
+  (233 KB), com `nome`, `inicio`, `fim`, `ohm_id`, `fonte`, `licenca` e `natureza`
+  ("traçado histórico aproximado") em cada feição.
+- **Conferência contra o mapa oficial do IBGE** — o *Mapa das Capitanias Hereditárias*
+  (mapa de **Luís Teixeira, 1574**, ficha `cb6e6495…`): confere no **modelo** (faixas
+  costeiras perpendiculares à costa, uma por donataria) e na **contagem** (13 no OHM × 14
+  doações históricas — as duas porções do Maranhão são uma relação só no OHM). **Não é
+  sobreposição pixel a pixel**: o mapa de 1574 não tem georreferenciamento, e isso fica
+  escrito na nota da camada.
+- **Registrada no globo** em `config.js`: assunto novo `historia`, linha e fonte próprias;
+  nasce **desligada**. Teste sentinela do painel atualizado (**57 fontes / 53 linhas**) e
+  `hist-capitanias` entrou no contrato de ids publicados.
+- ⚠️ **Armadilha medida:** consultar o Overpass por PowerShell mangla a query (colchetes);
+  a coleta foi feita com `requests` no Python. E o recorte por *bounding box* trouxe o
+  **Chile** junto — filtrar por relação, não por caixa.
+
 ### Fase C — revoltas (1 dia)
 
 - Enriquecer `calendario.ts` com `local`, `uf` e coordenada (município IBGE); campo novo
@@ -280,6 +302,27 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 - Coletor do APM (`brtacervo`): busca por "sesmaria", paginação, só **metadado + link**;
   varredura de dado pessoal antes de commitar (AGENTS § 5.2).
 - Gerar `hist-sesmarias-mg.geojson` (pontos) e o agregado por município/período.
+
+**Status medido 30/09/2026 — feito, com a premissa corrigida pela medição:**
+
+- **A premissa do plano não se sustentou, e a medição corrigiu o rumo.** O APM cataloga o
+  **LIVRO de registro**, não a sesmaria: a busca devolve **1.726 registros de série**
+  (ex.: `SC-106 Registro de sesmarias, 1753-1754`), **sem lugar**. Geolocalizar sesmaria a
+  sesmaria exigiria ler o índice digitalizado de cada livro — fora do alcance de um coletor.
+  Então **não se inventou ponto**: publica-se o **índice documental** em
+  `apps/web/data/apm-sesmarias-indice.json` (notação, título, período, link), e a ausência
+  de lugar fica escrita.
+- **O que DEU para geolocalizar foi outro fundo:** o módulo *Terras Públicas* tem **244
+  registros**, e **14** nomeiam o município no título (`TP-1-222 … (Mariana), 1855-1856`).
+  Vira a camada `hist-terras-publicas.geojson` (ponto no centroide do município do IBGE,
+  com dispersão determinística), com período e link do APM.
+- Índices completos em `apps/web/data/apm-terras-publicas-indice.json` (244, incluindo os
+  **11 que não casaram** no IBGE — nomes históricos como "Vila de", "Cueluz", "Mato Dentro").
+- Coletor: `scripts/coletar-apm-territorio-historico.py` (pausa de 2 s; **fim provado por
+  página vazia**, nunca pelo teto — a primeira rodada bateu no teto de 80 páginas e
+  devolveu 1.600 como se fosse o total).
+- Camada registrada no globo no assunto `historia`, **desligada**; teste sentinela do painel
+  atualizado (**58 fontes / 54 linhas**).
 
 ### Fase E — limites e tratados (1 dia)
 

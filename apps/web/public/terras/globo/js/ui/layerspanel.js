@@ -59,7 +59,7 @@
  *
  * ## "Ligar tudo" / "Desligar tudo" (13/08/2026)
  *
- * Pedido do dono olhando o mapa no celular: não existia jeito de ligar tudo de
+ * Pedido do dev olhando o mapa no celular: não existia jeito de ligar tudo de
  * uma vez. A pergunta que decidiu o desenho não foi "dá para ligar tudo" — dá,
  * é só chamar `onToggle` de cada linha — mas "o que acontece no celular dele
  * quando alguém aperta esse botão".
@@ -70,7 +70,7 @@
  * 7.090, e essa já liga sozinha na abertura sem travar nada). Ligar essa
  * camada junto com as outras ~21 somaria, numa pancada só, muito mais
  * trabalho síncrono do que o navegador de um celular tolera sem congelar —
- * exatamente onde o dono estava quando pediu o botão.
+ * exatamente onde o dev estava quando pediu o botão.
  *
  * Por isso "Ligar tudo" LIGA TODAS AS LINHAS QUE NÃO SÃO `pesada` (hoje só
  * "Interesse minerário na ANM"), e o texto abaixo dos botões diz isso em
@@ -83,7 +83,7 @@
  *
  * ## Ícones por conceito (13/08/2026)
  *
- * Pedido do dono, na mesma entrega: reconhecimento visual imediato nas 22
+ * Pedido do dev, na mesma entrega: reconhecimento visual imediato nas 22
  * linhas — "algo mais leve no design tipo Lucide", não emoji. `criarIconeCamada`
  * (./icones.js) devolve o `<svg>` já pronto (ou `null` se a camada não tiver
  * ícone mapeado — a linha não quebra, só fica sem ele). O ícone é SEMPRE
