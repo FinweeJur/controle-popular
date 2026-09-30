@@ -1,0 +1,1996 @@
+{
+ "gerado_em": "2026-09-30",
+ "fonte": "varredura de apps/web/data e apps/web/public/data",
+ "total_arquivos": 274,
+ "total_mb": 233.7,
+ "total_registros": 46273,
+ "temas": [
+  {
+   "tema": "ambiental-licencas",
+   "rotulo": "Licenças ambientais estaduais e federais",
+   "rota": "/ambiental/licencas",
+   "arquivos": 15,
+   "mb": 89.9,
+   "registros": 102,
+   "registros_parciais": true,
+   "exemplos": [
+    "cetesb-sp-licencas.json",
+    "fepam-rs-licencas.json",
+    "iat-pr-licencas.json",
+    "ibama-licencas.json",
+    "ibram-df-licencas.json",
+    "iema-es-licencas.json"
+   ]
+  },
+  {
+   "tema": "empresas",
+   "rotulo": "Empresas, ESG e incentivos culturais",
+   "rota": "/empresas",
+   "arquivos": 34,
+   "mb": 73.6,
+   "registros": 297,
+   "registros_parciais": true,
+   "exemplos": [
+    "cvm-vale.json",
+    "sec-form-20f-guidelines.pdf",
+    "vale-cdp-mudancas-climaticas-2025.pdf",
+    "vale-politica-mudancas-climaticas.pdf",
+    "vale-relatorio-natureza-biodiversidade-2024.pdf",
+    "empresas-documentos.json"
+   ]
+  },
+  {
+   "tema": "ambiental-outorgas",
+   "rotulo": "Outorgas de água (ANA/IGAM)",
+   "rota": "/ambiental/nossos-rios",
+   "arquivos": 2,
+   "mb": 21,
+   "registros": 0,
+   "registros_parciais": true,
+   "exemplos": [
+    "ana-outorgas.json",
+    "igam-outorgas.json"
+   ]
+  },
+  {
+   "tema": "mineracao",
+   "rotulo": "Mineração e cavas",
+   "rota": "/mineracao/cavas",
+   "arquivos": 5,
+   "mb": 12.2,
+   "registros": 43,
+   "registros_parciais": true,
+   "exemplos": [
+    "cavas-calibracao-manifesto.json",
+    "cavas-estados-mg.json",
+    "cavas-evidencias-mg.json",
+    "cavas-serie-mineracao-mg.json",
+    "sigmine-nacional.json"
+   ]
+  },
+  {
+   "tema": "cidades",
+   "rotulo": "Municípios, contratos e indicadores locais",
+   "rota": "/cidades",
+   "arquivos": 83,
+   "mb": 9.3,
+   "registros": 40016,
+   "registros_parciais": true,
+   "exemplos": [
+    "cidades-dados-completos.json",
+    "cidades-estrategicas.json",
+    "cnes-estabelecimentos-3106705.json",
+    "cnes-mg.json",
+    "comunicabr-31.json",
+    "contratos-pncp-consolidado.json"
+   ]
+  },
+  {
+   "tema": "ambiental",
+   "rotulo": "Meio ambiente e territórios",
+   "rota": "/ambiental",
+   "arquivos": 12,
+   "mb": 8,
+   "registros": 1000,
+   "registros_parciais": false,
+   "exemplos": [
+    "bases-clima-risco.json",
+    "car-mg.json",
+    "destinacoes-uniao-mg.json",
+    "ecossistema-ambiental-nacional.json",
+    "ibama-autos-infracao.json",
+    "ibama-mg.json"
+   ]
+  },
+  {
+   "tema": "paraopeba",
+   "rotulo": "Reparação do Rio Doce e do Paraopeba",
+   "rota": "/paraopeba",
+   "arquivos": 14,
+   "mb": 5.7,
+   "registros": 1341,
+   "registros_parciais": false,
+   "exemplos": [
+    "acordos-reparacao-mg.json",
+    "biblioteca-desastres-unificada.json",
+    "gestao-brumadinho.json",
+    "noticias-desastres.json",
+    "noticias-paraopeba.json",
+    "auditoria-ajri.json"
+   ]
+  },
+  {
+   "tema": "direitos",
+   "rotulo": "Direitos humanos",
+   "rota": "/direitos-em-movimento",
+   "arquivos": 4,
+   "mb": 4.3,
+   "registros": 9,
+   "registros_parciais": true,
+   "exemplos": [
+    "cndh-relatorio-bacias-doce-paraopeba.pdf",
+    "onu-direitos-humanos-agua-saneamento-brasil.pdf",
+    "redesca-empresas-direitos-humanos-padroes-interamericanos.pdf",
+    "relatorios-direitos-humanos.json"
+   ]
+  },
+  {
+   "tema": "congresso",
+   "rotulo": "Congresso Nacional",
+   "rota": "/congresso",
+   "arquivos": 4,
+   "mb": 2.4,
+   "registros": 23,
+   "registros_parciais": false,
+   "exemplos": [
+    "congresso-ceap-mg.json",
+    "congresso-ceap-nacional.json",
+    "congresso-mg.json",
+    "parlamentares-estaduais.json"
+   ]
+  },
+  {
+   "tema": "judiciario",
+   "rotulo": "Judiciário",
+   "rota": "/judiciario",
+   "arquivos": 16,
+   "mb": 2.1,
+   "registros": 1175,
+   "registros_parciais": false,
+   "exemplos": [
+    "cnj-inspecoes-defensoria.json",
+    "dpu-comite-tematico.json",
+    "instituicoes-todas-esferas.json",
+    "recomendacoes-cnj-cnmp.json",
+    "judiciario-contatos-stats.json",
+    "judiciario-designacoes.json"
+   ]
+  },
+  {
+   "tema": "governo",
+   "rotulo": "Gestão e governo",
+   "rota": "/governo",
+   "arquivos": 36,
+   "mb": 1.2,
+   "registros": 690,
+   "registros_parciais": false,
+   "exemplos": [
+    "editais-consolidado.json",
+    "gestao-aracuai.json",
+    "gestao-betim.json",
+    "gestao-bh.json",
+    "gestao-capitais.json",
+    "gestao-polos.json"
+   ]
+  },
+  {
+   "tema": "conselhos",
+   "rotulo": "Conselhos de direitos e colegiados",
+   "rota": "/direitos-em-movimento/conselhos",
+   "arquivos": 2,
+   "mb": 0.8,
+   "registros": 714,
+   "registros_parciais": false,
+   "exemplos": [
+    "conselhos-analise.json",
+    "conselhos-direitos.json"
+   ]
+  },
+  {
+   "tema": "noticias",
+   "rotulo": "Notícias e clipping do portal",
+   "rota": "/noticias",
+   "arquivos": 5,
+   "mb": 0.8,
+   "registros": 173,
+   "registros_parciais": false,
+   "exemplos": [
+    "noticias-portal.json",
+    "dados.compact.json",
+    "noticias-vale.json",
+    "clipping-ati.json",
+    "clipping-ij.json"
+   ]
+  },
+  {
+   "tema": "outros",
+   "rotulo": "Outras bases do portal",
+   "rota": "/busca",
+   "arquivos": 10,
+   "mb": 0.7,
+   "registros": 374,
+   "registros_parciais": false,
+   "exemplos": [
+    "assistente-acervo.json",
+    "biblioteca-unificada.json",
+    "catalogo-bases-dados.json",
+    "documentos-espelho-r2.json",
+    "edicoes.json",
+    "catalogo.json"
+   ]
+  },
+  {
+   "tema": "lai",
+   "rotulo": "Canais de acesso à informação (LAI)",
+   "rota": "/direitos-em-movimento/informacao",
+   "arquivos": 3,
+   "mb": 0.6,
+   "registros": 15,
+   "registros_parciais": false,
+   "exemplos": [
+    "canais-informacao-lai.json",
+    "decisoes-cge-lai.json",
+    "decisoes-cge.json"
+   ]
+  },
+  {
+   "tema": "estado-e-economia",
+   "rotulo": "Estado e economia",
+   "rota": "/estado-e-economia",
+   "arquivos": 4,
+   "mb": 0.3,
+   "registros": 42,
+   "registros_parciais": false,
+   "exemplos": [
+    "fontes-27-estados.json",
+    "indicadores-regionais.json",
+    "series-economicas-bcb.json",
+    "sgml-cotacoes.json"
+   ]
+  },
+  {
+   "tema": "assembleias",
+   "rotulo": "Assembleias legislativas estaduais",
+   "rota": "/assembleias",
+   "arquivos": 1,
+   "mb": 0.2,
+   "registros": 27,
+   "registros_parciais": false,
+   "exemplos": [
+    "assembleias-estaduais.json"
+   ]
+  },
+  {
+   "tema": "internacional",
+   "rotulo": "Organismos multilaterais",
+   "rota": "/internacional",
+   "arquivos": 6,
+   "mb": 0.2,
+   "registros": 18,
+   "registros_parciais": false,
+   "exemplos": [
+    "europa-transnacional.compact.json",
+    "comercio-commodities.compact.json",
+    "desclassificados-g20.compact.json",
+    "europa-transnacional.compact.json",
+    "indicadores-sociais.compact.json",
+    "terra-territorios-global.compact.json"
+   ]
+  },
+  {
+   "tema": "ambiental-barragens",
+   "rotulo": "Barragens de mineração (SIGBM/ANM)",
+   "rota": "/ambiental/barragens",
+   "arquivos": 1,
+   "mb": 0.1,
+   "registros": 8,
+   "registros_parciais": false,
+   "exemplos": [
+    "barragens-sigbm.json"
+   ]
+  },
+  {
+   "tema": "canada",
+   "rotulo": "Mineradoras canadenses e emissões",
+   "rota": "/canada",
+   "arquivos": 8,
+   "mb": 0.1,
+   "registros": 24,
+   "registros_parciais": false,
+   "exemplos": [
+    "ambiental-ciencia.compact.json",
+    "ambiental-natureza-ciencia.compact.json",
+    "contratos-financas.compact.json",
+    "contratos-open-canada.compact.json",
+    "institucional-canada.compact.json",
+    "institucional.compact.json"
+   ]
+  },
+  {
+   "tema": "terras",
+   "rotulo": "Terras, territórios, patrimônio e povos",
+   "rota": "/funcaosocialterra",
+   "arquivos": 2,
+   "mb": 0.1,
+   "registros": 161,
+   "registros_parciais": false,
+   "exemplos": [
+    "estudos-rurais.json",
+    "patrimonio-tombado-iepha.json"
+   ]
+  },
+  {
+   "tema": "eua",
+   "rotulo": "Transparência dos Estados Unidos",
+   "rota": "/eua",
+   "arquivos": 7,
+   "mb": 0,
+   "registros": 21,
+   "registros_parciais": false,
+   "exemplos": [
+    "ambiental-clima.compact.json",
+    "ambiental-natureza-eua.compact.json",
+    "contratos-comercio.compact.json",
+    "contratos-usaspending.compact.json",
+    "empresas-sec.compact.json",
+    "institucional-corte.compact.json"
+   ]
+  }
+ ],
+ "arquivos": [
+  {
+   "rel": "data/acordos-reparacao-mg.json",
+   "kb": 9,
+   "registros": 5,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "data/ana-outorgas.json",
+   "kb": 12520.2,
+   "registros": null,
+   "tema": "ambiental-outorgas"
+  },
+  {
+   "rel": "data/assembleias-estaduais.json",
+   "kb": 234.4,
+   "registros": 27,
+   "tema": "assembleias"
+  },
+  {
+   "rel": "data/assistente-acervo.json",
+   "kb": 56.6,
+   "registros": 2,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/barragens-sigbm.json",
+   "kb": 92.1,
+   "registros": 8,
+   "tema": "ambiental-barragens"
+  },
+  {
+   "rel": "data/bases-clima-risco.json",
+   "kb": 8.2,
+   "registros": 5,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/biblioteca-desastres-unificada.json",
+   "kb": 758.5,
+   "registros": 6,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "data/biblioteca-unificada.json",
+   "kb": 545.7,
+   "registros": 13,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/canada/ambiental-ciencia.compact.json",
+   "kb": 8.9,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/ambiental-natureza-ciencia.compact.json",
+   "kb": 8.9,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/contratos-financas.compact.json",
+   "kb": 6.3,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/contratos-open-canada.compact.json",
+   "kb": 6.3,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/institucional-canada.compact.json",
+   "kb": 11,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/institucional.compact.json",
+   "kb": 11,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/mineradoras-tsx-brasil.compact.json",
+   "kb": 10.9,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canada/mineradoras.compact.json",
+   "kb": 10.9,
+   "registros": 3,
+   "tema": "canada"
+  },
+  {
+   "rel": "data/canais-informacao-lai.json",
+   "kb": 462.6,
+   "registros": 6,
+   "tema": "lai"
+  },
+  {
+   "rel": "data/car-mg.json",
+   "kb": 30.7,
+   "registros": 11,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/catalogo-bases-dados.json",
+   "kb": 7.5,
+   "registros": 16,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/cavas-calibracao-manifesto.json",
+   "kb": 1444.5,
+   "registros": 7,
+   "tema": "mineracao"
+  },
+  {
+   "rel": "data/cavas-estados-mg.json",
+   "kb": 58.2,
+   "registros": 13,
+   "tema": "mineracao"
+  },
+  {
+   "rel": "data/cavas-evidencias-mg.json",
+   "kb": 1954.6,
+   "registros": 8,
+   "tema": "mineracao"
+  },
+  {
+   "rel": "data/cavas-serie-mineracao-mg.json",
+   "kb": 10.5,
+   "registros": 15,
+   "tema": "mineracao"
+  },
+  {
+   "rel": "data/cetesb-sp-licencas.json",
+   "kb": 24107.6,
+   "registros": null,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/cidades-dados-completos.json",
+   "kb": 487.7,
+   "registros": 5,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/cidades-estrategicas.json",
+   "kb": 147.7,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/cnes-estabelecimentos-3106705.json",
+   "kb": 2.4,
+   "registros": 5,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/cnes-mg.json",
+   "kb": 388.9,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/cnj-inspecoes-defensoria.json",
+   "kb": 5.2,
+   "registros": 6,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/comunicabr-31.json",
+   "kb": 2215.6,
+   "registros": 9,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/congresso-ceap-mg.json",
+   "kb": 0.4,
+   "registros": 8,
+   "tema": "congresso"
+  },
+  {
+   "rel": "data/congresso-ceap-nacional.json",
+   "kb": 2396.5,
+   "registros": 8,
+   "tema": "congresso"
+  },
+  {
+   "rel": "data/congresso-mg.json",
+   "kb": 16.8,
+   "registros": 5,
+   "tema": "congresso"
+  },
+  {
+   "rel": "data/conselhos/conselhos-analise.json",
+   "kb": 2.3,
+   "registros": 4,
+   "tema": "conselhos"
+  },
+  {
+   "rel": "data/conselhos-direitos.json",
+   "kb": 814.4,
+   "registros": 710,
+   "tema": "conselhos"
+  },
+  {
+   "rel": "data/contratos-pncp-consolidado.json",
+   "kb": 13.9,
+   "registros": 2,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/cvm-vale.json",
+   "kb": 20.3,
+   "registros": 15,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/decisoes-cge-lai.json",
+   "kb": 4.3,
+   "registros": 8,
+   "tema": "lai"
+  },
+  {
+   "rel": "data/destinacoes-uniao-mg.json",
+   "kb": 336,
+   "registros": 2,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/diario-atos-municipios.json",
+   "kb": 13.7,
+   "registros": 6,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/documentos-empresas/cndh-relatorio-bacias-doce-paraopeba.pdf",
+   "kb": 20.6,
+   "registros": null,
+   "tema": "direitos"
+  },
+  {
+   "rel": "data/documentos-empresas/onu-direitos-humanos-agua-saneamento-brasil.pdf",
+   "kb": 81.9,
+   "registros": null,
+   "tema": "direitos"
+  },
+  {
+   "rel": "data/documentos-empresas/redesca-empresas-direitos-humanos-padroes-interamericanos.pdf",
+   "kb": 4274.2,
+   "registros": null,
+   "tema": "direitos"
+  },
+  {
+   "rel": "data/documentos-empresas/sec-form-20f-guidelines.pdf",
+   "kb": 869.4,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/documentos-empresas/vale-cdp-mudancas-climaticas-2025.pdf",
+   "kb": 2709.9,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/documentos-empresas/vale-politica-mudancas-climaticas.pdf",
+   "kb": 382.6,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/documentos-empresas/vale-relatorio-natureza-biodiversidade-2024.pdf",
+   "kb": 21569,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/documentos-espelho-r2.json",
+   "kb": 51.4,
+   "registros": 205,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/dpu-comite-tematico.json",
+   "kb": 101.6,
+   "registros": 3,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/ecossistema-ambiental-nacional.json",
+   "kb": 62.3,
+   "registros": 73,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/edicoes.json",
+   "kb": 0,
+   "registros": 1,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/editais-consolidado.json",
+   "kb": 36.2,
+   "registros": 3,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/educacao-ibge-mg.json",
+   "kb": 0.9,
+   "registros": 14,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/educacao-inep-mg.json",
+   "kb": 11.7,
+   "registros": 2,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/empresas-documentos.json",
+   "kb": 24.4,
+   "registros": 6,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/empresas-perfil/entidades-completas.json",
+   "kb": 109.8,
+   "registros": 130,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/analise-amb.json",
+   "kb": 2.4,
+   "registros": 12,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/analise-teste.json",
+   "kb": 1.5,
+   "registros": 12,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/analise1.json",
+   "kb": 2.4,
+   "registros": 12,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/esg-analyses.json",
+   "kb": 2.1,
+   "registros": 3,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/meta/vale-esg-climate-pdf.json",
+   "kb": 0.4,
+   "registros": 7,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/meta/vale-esg-ghg-pdf.json",
+   "kb": 0.6,
+   "registros": 7,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/meta/vale-natureza-pdf.json",
+   "kb": 0.6,
+   "registros": 7,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/pdfs-download-log.json",
+   "kb": 1.7,
+   "registros": 3,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/Politica_Mudancas_Climaticas_Vale.pdf.pdf",
+   "kb": 382.6,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/vale-environment_doc.pdf",
+   "kb": 21569,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/vale-esg-climate_doc.pdf",
+   "kb": 382.6,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/Vale_SA_CDP_Relatorio_Corporativo_2025.pdf.pdf",
+   "kb": 2709.9,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg/Vale_Vale_Natureza_2024.pdf.pdf",
+   "kb": 21569,
+   "registros": null,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/esg-update.json",
+   "kb": 2.4,
+   "registros": 3,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/estudos-rurais/estudos-rurais.json",
+   "kb": 66.8,
+   "registros": 8,
+   "tema": "terras"
+  },
+  {
+   "rel": "data/eua/ambiental-clima.compact.json",
+   "kb": 7.4,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/ambiental-natureza-eua.compact.json",
+   "kb": 7.4,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/contratos-comercio.compact.json",
+   "kb": 5.1,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/contratos-usaspending.compact.json",
+   "kb": 5.1,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/empresas-sec.compact.json",
+   "kb": 9.6,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/institucional-corte.compact.json",
+   "kb": 7.4,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/eua/institucional-eua.compact.json",
+   "kb": 7.4,
+   "registros": 3,
+   "tema": "eua"
+  },
+  {
+   "rel": "data/europa/europa-transnacional.compact.json",
+   "kb": 48.9,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/fepam-rs-licencas.json",
+   "kb": 244.2,
+   "registros": 7,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/fichas/catalogo.json",
+   "kb": 8.3,
+   "registros": 7,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/fontes-27-estados.json",
+   "kb": 46.4,
+   "registros": 27,
+   "tema": "estado-e-economia"
+  },
+  {
+   "rel": "data/fornecedores/multinacionais-eua-europa.json",
+   "kb": 41.9,
+   "registros": 2,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/gestao/gestao-aracuai.json",
+   "kb": 4.1,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/gestao-betim.json",
+   "kb": 4.1,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/gestao-bh.json",
+   "kb": 4.1,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/gestao-brumadinho.json",
+   "kb": 4.1,
+   "registros": 15,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "data/gestao/gestao-capitais.json",
+   "kb": 131.8,
+   "registros": 30,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/gestao-polos.json",
+   "kb": 828.4,
+   "registros": 172,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ac.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-al.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-am.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ap.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ba.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ce.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-df.json",
+   "kb": 4.5,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-es.json",
+   "kb": 4.2,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-go.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ma.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-mg.json",
+   "kb": 5.8,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ms.json",
+   "kb": 4,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-mt.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-pa.json",
+   "kb": 4.2,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-pb.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-pe.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-pi.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-pr.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-rj.json",
+   "kb": 4.4,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-rn.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-ro.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-rr.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-rs.json",
+   "kb": 4,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-sc.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-se.json",
+   "kb": 3.9,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-sp.json",
+   "kb": 5.2,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-to.json",
+   "kb": 3.8,
+   "registros": 15,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/governo-uniao.json",
+   "kb": 6.4,
+   "registros": 16,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/manifesto-r2-planos.json",
+   "kb": 90.6,
+   "registros": 8,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/gestao/planos-governo-eleitos.json",
+   "kb": 2.7,
+   "registros": 5,
+   "tema": "governo"
+  },
+  {
+   "rel": "data/iat-pr-licencas.json",
+   "kb": 248,
+   "registros": 7,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/ibama-autos-infracao.json",
+   "kb": 3634.6,
+   "registros": 13,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/ibama-licencas.json",
+   "kb": 2740.2,
+   "registros": 11,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/ibama-mg.json",
+   "kb": 5.1,
+   "registros": 8,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/ibram-df-licencas.json",
+   "kb": 2762.9,
+   "registros": 7,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/iema-es-licencas.json",
+   "kb": 13560.2,
+   "registros": null,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/igam-outorgas.json",
+   "kb": 9009.1,
+   "registros": null,
+   "tema": "ambiental-outorgas"
+  },
+  {
+   "rel": "data/ima-sc-licencas.json",
+   "kb": 258.2,
+   "registros": 7,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/imasul-ms-licencas.json",
+   "kb": 17956.2,
+   "registros": null,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/indicadores-regionais.json",
+   "kb": 5.5,
+   "registros": 5,
+   "tema": "estado-e-economia"
+  },
+  {
+   "rel": "data/inema-ba-licencas.json",
+   "kb": 82,
+   "registros": 11,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/instituicoes-todas-esferas.json",
+   "kb": 91.1,
+   "registros": 19,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/internacional/comercio-commodities.compact.json",
+   "kb": 2.3,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/internacional/desclassificados-g20.compact.json",
+   "kb": 72.3,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/internacional/europa-transnacional.compact.json",
+   "kb": 48.9,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/internacional/indicadores-sociais.compact.json",
+   "kb": 4.8,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/internacional/terra-territorios-global.compact.json",
+   "kb": 1.9,
+   "registros": 3,
+   "tema": "internacional"
+  },
+  {
+   "rel": "data/judiciario/recomendacoes-cnj-cnmp.json",
+   "kb": 9.5,
+   "registros": 4,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/judiciario-contatos-stats.json",
+   "kb": 0.8,
+   "registros": 12,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/judiciario-designacoes.json",
+   "kb": 5.5,
+   "registros": 12,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/judiciario-instituicoes-detalhe.json",
+   "kb": 717.1,
+   "registros": 91,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/judiciario-remuneracoes.json",
+   "kb": 0.3,
+   "registros": 5,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/judiciario-unidades-contatos.json",
+   "kb": 804.3,
+   "registros": 990,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/juma-acoes-climaticas.json",
+   "kb": 9.5,
+   "registros": 9,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/legislativo-estaduais/parlamentares-estaduais.json",
+   "kb": 67.7,
+   "registros": 2,
+   "tema": "congresso"
+  },
+  {
+   "rel": "data/link-correcoes.json",
+   "kb": 2.6,
+   "registros": 8,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/mapeamento_municipios.csv",
+   "kb": 28.7,
+   "registros": null,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/mpf-grandes-casos.json",
+   "kb": 2.2,
+   "registros": 3,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/mpmg-coerdoce.json",
+   "kb": 2.2,
+   "registros": 3,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/mpmg-nucard.json",
+   "kb": 7.1,
+   "registros": 4,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/municipios-ac.compact.json",
+   "kb": 0.8,
+   "registros": 22,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ac.json",
+   "kb": 4.8,
+   "registros": 22,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-al.compact.json",
+   "kb": 3.7,
+   "registros": 102,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-al.json",
+   "kb": 23.4,
+   "registros": 102,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-am.compact.json",
+   "kb": 2.1,
+   "registros": 62,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-am.json",
+   "kb": 13.1,
+   "registros": 62,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ap.compact.json",
+   "kb": 0.6,
+   "registros": 16,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ap.json",
+   "kb": 3.5,
+   "registros": 16,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ba.compact.json",
+   "kb": 14.6,
+   "registros": 417,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ba.json",
+   "kb": 95,
+   "registros": 417,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-brasil.compact.json",
+   "kb": 202,
+   "registros": 5571,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-brasil.json",
+   "kb": 1257.7,
+   "registros": 5571,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ce.compact.json",
+   "kb": 6.2,
+   "registros": 184,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ce.json",
+   "kb": 40.6,
+   "registros": 184,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-centroides.json",
+   "kb": 517.1,
+   "registros": 16713,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-df.compact.json",
+   "kb": 0,
+   "registros": 1,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-df.json",
+   "kb": 0.2,
+   "registros": 1,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-es.compact.json",
+   "kb": 2.8,
+   "registros": 78,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-es.json",
+   "kb": 18.9,
+   "registros": 78,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-go.compact.json",
+   "kb": 9,
+   "registros": 246,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-go.json",
+   "kb": 56.4,
+   "registros": 246,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ma.compact.json",
+   "kb": 8.4,
+   "registros": 217,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ma.json",
+   "kb": 49.9,
+   "registros": 217,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-mg.compact.json",
+   "kb": 31.2,
+   "registros": 853,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-mg.json",
+   "kb": 192.3,
+   "registros": 853,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ms.compact.json",
+   "kb": 2.8,
+   "registros": 79,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ms.json",
+   "kb": 18.5,
+   "registros": 79,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-mt.compact.json",
+   "kb": 5.3,
+   "registros": 142,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-mt.json",
+   "kb": 32.3,
+   "registros": 142,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pa.compact.json",
+   "kb": 5.3,
+   "registros": 144,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pa.json",
+   "kb": 30.9,
+   "registros": 144,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pb.compact.json",
+   "kb": 7.9,
+   "registros": 223,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pb.json",
+   "kb": 49.5,
+   "registros": 223,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pe.compact.json",
+   "kb": 6.4,
+   "registros": 185,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pe.json",
+   "kb": 41.6,
+   "registros": 185,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pi.compact.json",
+   "kb": 8.8,
+   "registros": 224,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pi.json",
+   "kb": 52.1,
+   "registros": 224,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pr.compact.json",
+   "kb": 14.6,
+   "registros": 399,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-pr.json",
+   "kb": 89.8,
+   "registros": 399,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rj.compact.json",
+   "kb": 3.3,
+   "registros": 92,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rj.json",
+   "kb": 22.3,
+   "registros": 92,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rn.compact.json",
+   "kb": 6.1,
+   "registros": 167,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rn.json",
+   "kb": 36.6,
+   "registros": 167,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ro.compact.json",
+   "kb": 2,
+   "registros": 52,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-ro.json",
+   "kb": 11.4,
+   "registros": 52,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rr.compact.json",
+   "kb": 0.5,
+   "registros": 15,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rr.json",
+   "kb": 3.4,
+   "registros": 15,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rs.compact.json",
+   "kb": 18.1,
+   "registros": 497,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-rs.json",
+   "kb": 115.8,
+   "registros": 497,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-sc.compact.json",
+   "kb": 10.5,
+   "registros": 295,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-sc.json",
+   "kb": 63.9,
+   "registros": 295,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-se.compact.json",
+   "kb": 2.8,
+   "registros": 75,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-se.json",
+   "kb": 16.6,
+   "registros": 75,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-sp.compact.json",
+   "kb": 22.7,
+   "registros": 645,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-sp.json",
+   "kb": 143.5,
+   "registros": 645,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-to.compact.json",
+   "kb": 5.3,
+   "registros": 139,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/municipios-to.json",
+   "kb": 31.7,
+   "registros": 139,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/negociacoes-parcerias/acordos-licitacoes-internacionais.json",
+   "kb": 23.1,
+   "registros": 2,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/noticias-desastres.json",
+   "kb": 10.3,
+   "registros": 5,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "data/noticias-paraopeba.json",
+   "kb": 13.2,
+   "registros": 5,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "data/noticias-portal.json",
+   "kb": 669.2,
+   "registros": 160,
+   "tema": "noticias"
+  },
+  {
+   "rel": "data/noticias-radar/dados.compact.json",
+   "kb": 7.7,
+   "registros": 8,
+   "tema": "noticias"
+  },
+  {
+   "rel": "data/noticias-vale.json",
+   "kb": 38.2,
+   "registros": 3,
+   "tema": "noticias"
+  },
+  {
+   "rel": "data/novidades.json",
+   "kb": 4.5,
+   "registros": 17,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/orgaos-capacidade-ambiental.json",
+   "kb": 121.8,
+   "registros": 2,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/patrimonio-tombado-iepha.json",
+   "kb": 64.5,
+   "registros": 153,
+   "tema": "terras"
+  },
+  {
+   "rel": "data/pedido-build.json",
+   "kb": 0.2,
+   "registros": 5,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/pib-municipal-3103405.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3106200.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3106705.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3121605.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3134004.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3205309.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-3550308.json",
+   "kb": 1.5,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-4106902.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pib-municipal-4314902.json",
+   "kb": 1.4,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pncp-cobertura-25-capitais.csv",
+   "kb": 2.1,
+   "registros": null,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/pncp-manifesto-25-capitais.json",
+   "kb": 4.6,
+   "registros": 6,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/polos-interior-ibge.json",
+   "kb": 26,
+   "registros": 7,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/ppp-mg.json",
+   "kb": 23.3,
+   "registros": 2,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "data/relatorios-direitos-humanos.json",
+   "kb": 12,
+   "registros": 9,
+   "tema": "direitos"
+  },
+  {
+   "rel": "data/rouanet-mg-incentivadores.json",
+   "kb": 1385.6,
+   "registros": 11,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/rouanet-mg-projetos.json",
+   "kb": 999.1,
+   "registros": 11,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/sedam-ro-licencas.json",
+   "kb": 3842.4,
+   "registros": 7,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/sema-ma-licencas.json",
+   "kb": 2299.3,
+   "registros": 11,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/sema-mt-licencas.json",
+   "kb": 7855.7,
+   "registros": 12,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/semad-go-licencas.json",
+   "kb": 1183.1,
+   "registros": 11,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/semar-pi-licencas.json",
+   "kb": 14844.4,
+   "registros": null,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/semas-pa-licencas.json",
+   "kb": 59.4,
+   "registros": 11,
+   "tema": "ambiental-licencas"
+  },
+  {
+   "rel": "data/series-economicas-bcb.json",
+   "kb": 88.5,
+   "registros": 5,
+   "tema": "estado-e-economia"
+  },
+  {
+   "rel": "data/setores-estrategicos/catalogo-top10-eua-empresas-e-fundos.json",
+   "kb": 7.6,
+   "registros": 7,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/setores-estrategicos/catalogo-top10-setores.json",
+   "kb": 6,
+   "registros": 6,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/sgml-cotacoes.json",
+   "kb": 184,
+   "registros": 5,
+   "tema": "estado-e-economia"
+  },
+  {
+   "rel": "data/sigma-lithium-scraped.json",
+   "kb": 28.4,
+   "registros": 14,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/sigmine-nacional.json",
+   "kb": 9057.8,
+   "registros": null,
+   "tema": "mineracao"
+  },
+  {
+   "rel": "data/sinesp-vde-2026.json",
+   "kb": 23.8,
+   "registros": 5,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "data/socios-vale.json",
+   "kb": 1.3,
+   "registros": 5,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/telefonia-municipios-mg.json",
+   "kb": 482.9,
+   "registros": 853,
+   "tema": "cidades"
+  },
+  {
+   "rel": "data/top-100-paginas.json",
+   "kb": 32.4,
+   "registros": 100,
+   "tema": "outros"
+  },
+  {
+   "rel": "data/vale-sigma-lithium.json",
+   "kb": 9.3,
+   "registros": 4,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/vale3-cotacoes.json",
+   "kb": 403,
+   "registros": 3,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/vales-jequitinhonha.json",
+   "kb": 36,
+   "registros": 8,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/vales-mucuri.json",
+   "kb": 13.7,
+   "registros": 7,
+   "tema": "empresas"
+  },
+  {
+   "rel": "data/vereadores-betim.json",
+   "kb": 18.6,
+   "registros": 23,
+   "tema": "cidades"
+  },
+  {
+   "rel": "public/data/achados-tjmg.json",
+   "kb": 115.9,
+   "registros": 1,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "public/data/auditoria-ajri.json",
+   "kb": 301.6,
+   "registros": 467,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/biblioteca-ati.json",
+   "kb": 395.8,
+   "registros": 4,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/biblioteca-desastres.json",
+   "kb": 740.5,
+   "registros": 4,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/biblioteca-pro-brumadinho.json",
+   "kb": 121.3,
+   "registros": 4,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/clipping-ati.json",
+   "kb": 30.8,
+   "registros": 1,
+   "tema": "noticias"
+  },
+  {
+   "rel": "public/data/clipping-ij.json",
+   "kb": 44.5,
+   "registros": 1,
+   "tema": "noticias"
+  },
+  {
+   "rel": "public/data/clipping-paraopeba.json",
+   "kb": 89.6,
+   "registros": 1,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/comarcas-mg.json",
+   "kb": 65.2,
+   "registros": 1,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "public/data/comunicabr-31.json",
+   "kb": 2208.8,
+   "registros": 9,
+   "tema": "cidades"
+  },
+  {
+   "rel": "public/data/convenios-ambientais-mg.json",
+   "kb": 951.4,
+   "registros": 870,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "public/data/decisoes-cge.json",
+   "kb": 196.8,
+   "registros": 1,
+   "tema": "lai"
+  },
+  {
+   "rel": "public/data/documentos-paraopeba.json",
+   "kb": 492.5,
+   "registros": 471,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/estabelecimentos-mg.json",
+   "kb": 57.5,
+   "registros": 1,
+   "tema": "cidades"
+  },
+  {
+   "rel": "public/data/estudos-pericia.json",
+   "kb": 128.6,
+   "registros": 2,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "public/data/repasse-brumadinho-mg.json",
+   "kb": 284.5,
+   "registros": 7,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/resumo-ajri.json",
+   "kb": 2095,
+   "registros": 337,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/risco-climatico.json",
+   "kb": 2843.4,
+   "registros": 3,
+   "tema": "ambiental"
+  },
+  {
+   "rel": "public/data/sirenejud-mg.json",
+   "kb": 166.3,
+   "registros": 16,
+   "tema": "judiciario"
+  },
+  {
+   "rel": "public/data/tac-projetos.json",
+   "kb": 484.1,
+   "registros": 10,
+   "tema": "paraopeba"
+  },
+  {
+   "rel": "public/data/vale3-cotacoes.csv",
+   "kb": 137.4,
+   "registros": null,
+   "tema": "empresas"
+  }
+ ]
+}

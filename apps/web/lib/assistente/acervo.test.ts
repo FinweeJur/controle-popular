@@ -150,6 +150,42 @@ describe("memória no assistente — Fase 6", () => {
       expect(f.links?.some((l) => l.href === "/memoria")).toBe(true);
     }
   });
+
+  it("inclui a camada municipal (F3), com fonte http", () => {
+    const municipais = montarAcervo().filter((f) => f.id.startsWith("memoria:municipio:"));
+    expect(municipais.length).toBeGreaterThanOrEqual(9);
+    for (const f of municipais) {
+      expect(f.rota, `rota errada em ${f.id}`).toBe("/memoria");
+      expect(f.fonteUrl.startsWith("http"), `fonteUrl não oficial em ${f.id}`).toBe(true);
+    }
+  });
+});
+
+describe("bases de dados no assistente — regra 5", () => {
+  it("o catálogo curado de bases vira pedaços com página e fonte", () => {
+    const bases = montarAcervo().filter((f) => f.id.startsWith("base:"));
+    expect(bases.length).toBeGreaterThanOrEqual(16);
+    for (const f of bases) {
+      expect(f.rota.startsWith("/"), `rota inválida em ${f.id}: ${f.rota}`).toBe(true);
+      expect(
+        f.fonteUrl.startsWith("/") || f.fonteUrl.startsWith("http"),
+        `fonteUrl inválida em ${f.id}: ${f.fonteUrl}`
+      ).toBe(true);
+    }
+  });
+
+  it("o inventário medido cobre os temas do portal com rota real", () => {
+    const acervo = montarAcervo();
+    const temas = acervo.filter((f) => f.id.startsWith("bases:tema:"));
+    expect(temas.length).toBeGreaterThanOrEqual(15);
+    for (const f of temas) {
+      expect(f.rota.startsWith("/"), `rota inválida em ${f.id}: ${f.rota}`).toBe(true);
+      expect(f.texto.length, `texto curto demais em ${f.id}`).toBeGreaterThan(80);
+    }
+    const total = acervo.find((f) => f.id === "bases:total");
+    expect(total, "pedaço de total ausente").toBeDefined();
+    expect(total!.rota).toBe("/api/v1/bases");
+  });
 });
 
 describe("frenteDaRota -- régua de derivação", () => {

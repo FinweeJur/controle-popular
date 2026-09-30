@@ -169,6 +169,19 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**30/09/2026 — RAG completo do Seu Nonô (cobertura das bases):**
+
+- O acervo do RAG ganhou a camada **município** da memória (F3) e um
+  inventário medido de **todas as bases versionadas** (274 arquivos,
+  233,7 MB, 22 temas), mais o catálogo curado de bases com fonte oficial.
+- `scripts/inventariar-bases-dados.mts` (novo) gera
+  `data/bases-portal.json`; `acervo.ts` ganhou `deBases()` e
+  `deBasesPortal()`.
+- Correção de rota: o RAG é **em memória**, no alvo **Guara**; **não** usa
+  pgvector/Neon. Plano corrigido em
+  [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+- Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
+
 **30/09/2026** — F3 da memória: a camada município, com fonte local fechada.
 
 - `apps/web/lib/memoria/municipios.ts`: **9 verbetes municipais** com fonte

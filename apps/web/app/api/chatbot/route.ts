@@ -40,12 +40,19 @@ function verificarLimite(ip: string): boolean {
 }
 
 /**
- * Endpoint de laboratorio do chatbot IA com RAG local.
+ * Endpoint do chatbot IA do Seu Nonô com RAG.
  *
- * Esta rota so funciona em `next dev` ou em um servidor Node real — com
- * `output: export` ela nao vira arquivo estatico. O proposito e permitir
- * testar o pipeline fim-a-fim no home-pc antes de decidir como expor em
- * producao (Cloudflare Worker, serverless com Neon pgvector, etc.).
+ * Roda no servidor Node real — no alvo principal (Guara Cloud, standalone),
+ * nos servidores de teste (home-pc, `next start`) e no `next dev`. Com
+ * `output: export` (GitHub Pages) esta rota nao vira arquivo estatico e a
+ * IA nao existe; o widget cai na escada deterministica.
+ *
+ * O RAG e em memoria (`montarAcervo` + indice vetorial do processo): NAO usa
+ * o Postgres nem pgvector — as tabelas `embeddings` do schema estao fora
+ * deste caminho. Os embeddings vem do Ollama local ou de API remota
+ * (`EMBED_API_KEY`), e a geracao do provedor remoto ativo
+ * (`AI_API_KEY_DEEPSEEK`/`MARITACA`/`LING` ou `AI_API_KEY`+`AI_BASE_URL`),
+ * caindo para Ollama quando nao ha chave.
  */
 export async function POST(req: Request): Promise<Response> {
   // Extrai IP cliente (via Cloudflare CF-Connecting-IP, X-Forwarded-For ou fallback)

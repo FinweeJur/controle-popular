@@ -21,12 +21,18 @@
 
 ## Propósito
 
-Levar o acervo do chatbot (hoje montado em código por
+Levar o acervo do chatbot — hoje montado em código por
 `apps/web/lib/assistente/acervo.ts`, com índice vetorial em memória do
-processo) para uma tabela de chunks com **pgvector na Neon**, quando o banco
-voltar (HTTP 402 até 01/09/2026). Destrava: índice persistente (não depende
-do Ollama estar de pé para indexar), escala além dos ~110 pedaços atuais,
-consultas híbridas no banco e o degrau 3 servido em produção.
+processo — para uma tabela de chunks com **pgvector**. Destrava: índice
+persistente (não depende do Ollama estar de pé para indexar), escala além
+dos pedaços atuais, consultas híbridas no banco e o degrau 3 servido em
+produção.
+
+> ⚠️ **Atualização 30/09/2026:** a Neon saiu de cena (o app aponta para o
+> Postgres do Guara) e a extensão `vector` **não está disponível no Guara**.
+> O caminho ativo é índice em memória + cobertura do acervo — ver
+> [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook fica para
+> quando houver Postgres com pgvector.
 
 ## Quando roda
 

@@ -9,11 +9,14 @@
  * módulo monta o acervo REAL: as respostas pré-curadas do Seu Nonô
  * (`SeuNonoData.ts`), as sugestões contextuais por rota
  * (`contexto-pagina.ts`), os resumos de dados das páginas
- * (`PAGINAS_DADOS`), as postagens do blog, os atos de pessoal e — desde a
- * Fase 5 do plano de cavas — a série anual de mineração de MG. Tudo texto já
- * curado do portal, cada pedaço com `rota`/`fonteUrl` — a disciplina de
- * "citação colada ao número" do `AGENTS.md`: se não há onde apontar a fonte,
- * o pedaço não entra.
+ * (`PAGINAS_DADOS`), as postagens do blog, os atos de pessoal, a série anual
+ * de mineração de MG, a memória das resistências (país, região, UF e — desde
+ * o F3 — município), o catálogo curado de bases (`catalogo-bases-dados.json`)
+ * e o inventário medido de todas as bases versionadas (`bases-portal.json`,
+ * gerado por `scripts/inventariar-bases-dados.mts`). Tudo texto já curado do
+ * portal, cada pedaço com `rota`/`fonteUrl` — a disciplina de "citação colada
+ * ao número" do `AGENTS.md`: se não há onde apontar a fonte, o pedaço não
+ * entra.
  *
  * ═══ POR QUE EM CÓDIGO, E NÃO NUM JSON COMMITADO ═══
  *
@@ -51,6 +54,8 @@ import {
   type LinhaSerie,
 } from "@/lib/cavas/serie";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
+import catalogoBases from "@/data/catalogo-bases-dados.json";
+import basesPortal from "@/data/bases-portal.json";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -507,6 +512,10 @@ function deMemoria(): AcervoFonte[] {
     ...(CAMADAS_MEMORIA.pais["br"] ?? []),
     ...Object.values(CAMADAS_MEMORIA.regiao).flat(),
     ...Object.values(CAMADAS_MEMORIA.uf).flat(),
+    // F3: a camada município entra no RAG na etapa final — os verbetes
+    // locais com fonte fechada (Betim, Ipatinga, Araçuaí, Brumadinho e os
+    // demais de `lib/memoria/municipios.ts`).
+    ...Object.values(CAMADAS_MEMORIA.municipio).flat(),
   ].filter(verbeteValido);
 
   const fontes: AcervoFonte[] = [];
@@ -529,6 +538,131 @@ function deMemoria(): AcervoFonte[] {
   return fontes;
 }
 
+/** Uma base do catálogo curado (`data/catalogo-bases-dados.json`). */
+interface BaseCatalogo {
+  id: string;
+  nome: string;
+  orgaoFonte: string;
+  urlFonte: string;
+  arquivoLocal: string;
+  formato: string;
+  registros: number;
+  paginasConsumidoras?: string[];
+}
+
+/** Um tema do inventário medido (`data/bases-portal.json`). */
+interface InventarioTema {
+  tema: string;
+  rotulo: string;
+  rota: string;
+  arquivos: number;
+  mb: number;
+  registros: number;
+  registros_parciais: boolean;
+  exemplos: string[];
+}
+
+/** O inventário completo de bases versionadas do portal. */
+interface InventarioBases {
+  gerado_em: string;
+  total_arquivos: number;
+  total_mb: number;
+  total_registros: number;
+  temas: InventarioTema[];
+}
+
+/** Uma rota interna do portal é usável como link; `/[municipio]/...` não é. */
+function rotaUsavel(rota: string | undefined): rota is string {
+  return typeof rota === "string" && rota.startsWith("/") && !rota.includes("[");
+}
+
+/**
+ * Bases de dados do catálogo curado (`data/catalogo-bases-dados.json`) como
+ * pedaços do acervo — regra 5 ("toda base alimenta o assistente").
+ *
+ * Cada base vira um pedaço com o número MEDIDO de registros, o órgão de
+ * origem e a fonte oficial (`urlFonte`); a página consumidora vira o link
+ * interno. Só entra base com página real (rotas com `[` dinâmico são
+ * descartadas — link quebrado não entra no acervo).
+ */
+function deBases(): AcervoFonte[] {
+  const fontes: AcervoFonte[] = [];
+  for (const b of catalogoBases as BaseCatalogo[]) {
+    const rota = (b.paginasConsumidoras ?? []).find(rotaUsavel);
+    if (!rota) continue;
+    const fonteHttp = /^https?:\/\//i.test(b.urlFonte);
+    fontes.push({
+      id: `base:${b.id}`,
+      frente: frenteDaRota(rota),
+      rota,
+      titulo: `Base de dados: ${b.nome}`,
+      fonteUrl: fonteHttp ? b.urlFonte : rota,
+      texto:
+        `O portal publica a base "${b.nome}" (${b.registros} registros, ${b.formato}), ` +
+        `com origem em ${b.orgaoFonte}. Aparece em: ${(b.paginasConsumidoras ?? []).join(", ")}. ` +
+        `Fonte: ${b.urlFonte}.`,
+      links: [
+        { href: rota, texto: "Ver no portal" },
+        ...(fonteHttp ? [{ href: b.urlFonte, texto: "Fonte oficial" }] : []),
+      ],
+    });
+  }
+  return fontes;
+}
+
+/**
+ * Inventário medido de TODAS as bases versionadas do portal como pedaços do
+ * acervo — o assistente precisa saber o que o portal tem, mesmo quando o
+ * dado é grande demais para entrar na resposta.
+ *
+ * A fonte é `data/bases-portal.json`, gerado por
+ * `scripts/inventariar-bases-dados.mts` (varredura de `apps/web/data` e
+ * `apps/web/public/data`). Um pedaço por tema, com a contagem MEDIDA de
+ * arquivos/registros e a página real do tema; mais um pedaço de total que
+ * aponta o catálogo público (`/api/v1/bases`). A contagem parcial é
+ * declarada — arquivo grande não é aberto só para contar (lacuna é
+ * informação).
+ */
+function deBasesPortal(): AcervoFonte[] {
+  const inv = basesPortal as InventarioBases;
+  const dataBR = inv.gerado_em.split("-").reverse().join("/");
+  const fontes: AcervoFonte[] = [
+    {
+      id: "bases:total",
+      frente: "geral",
+      rota: "/api/v1/bases",
+      titulo: "Quantas bases de dados o portal publica",
+      fonteUrl: "/api/v1/bases",
+      texto:
+        `O portal publica ${inv.total_arquivos} arquivos de dados, somando ${inv.total_mb} MB, ` +
+        `organizados em ${inv.temas.length} temas. O catálogo curado, com fonte oficial de cada base, ` +
+        `está na API pública /api/v1/bases. Inventário medido em ${dataBR}.`,
+      links: [{ href: "/api/v1/bases", texto: "Catálogo de bases (API)" }],
+    },
+  ];
+
+  for (const t of inv.temas) {
+    if (!rotaUsavel(t.rota)) continue;
+    const parcial = t.registros_parciais
+      ? " (contagem parcial: arquivos grandes não abertos)"
+      : "";
+    fontes.push({
+      id: `bases:tema:${t.tema}`,
+      frente: frenteDaRota(t.rota),
+      rota: t.rota,
+      titulo: `Bases de ${t.rotulo}`,
+      fonteUrl: t.rota,
+      texto:
+        `Tema "${t.rotulo}": ${t.arquivos} arquivo(s), ${t.mb} MB` +
+        (t.registros > 0 ? `, ${t.registros} registros contados` : "") +
+        `${parcial}. Exemplos: ${t.exemplos.join(", ")}. Página do tema: ${t.rota}. ` +
+        `Inventário medido em ${dataBR}.`,
+      links: [{ href: t.rota, texto: t.rotulo }],
+    });
+  }
+  return fontes;
+}
+
 /**
  * Monta o acervo inteiro, determinístico: macro → frentes → contextos → páginas →
  * posts → designações → cavas. Nenhuma dependência de fs/rede/banco — os
@@ -546,6 +680,8 @@ export function montarAcervoDetalhado(): AcervoMontado {
     ...deDesignacoes(),
     ...deCavas(),
     ...deMemoria(),
+    ...deBases(),
+    ...deBasesPortal(),
   ];
 
   // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo

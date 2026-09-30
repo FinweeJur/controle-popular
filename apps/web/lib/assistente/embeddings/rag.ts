@@ -119,7 +119,6 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
  *  Pior que a busca vetorial, mas melhor do que devolver 503 com as
  *  chaves de geração vivas — e é transparente ao leitor (nenhum dado
  *  inventado: a abstenção continua valendo pelo mesmo limiar). */
-const INDICE_LEXICAL: IndiceAcervo = { fontes: [], vetores: [] };
 
 async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boolean }> {
   if (indiceEmMemoria) return { indice: indiceEmMemoria, soLexical: false };
