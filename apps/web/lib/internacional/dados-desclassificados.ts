@@ -37,7 +37,7 @@ export interface DocumentoDesclassificadoG20 {
   paisOrigem: string;
   codigoIsoPais: string;
   bandeiraPais: string;
-  continente: "América do Norte" | "América do Sul" | "Europa" | "Oceania" | "Eurásia";
+  continente: "América do Norte" | "América do Sul" | "Europa" | "Oceania" | "Eurásia" | "África" | "Ásia";
   dataPublicacao: string; // Formato YYYY-MM-DD
   dataDesclassificacao: string; // Formato YYYY-MM-DD
   nivelClassificacaoOriginal: "Ultrassecreto" | "Secreto" | "Confidencial" | "Reservado";

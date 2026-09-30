@@ -11,15 +11,21 @@ import {
 
 describe("dados-desclassificados", () => {
   it("carrega agregados de cobertura de desclassificados medidos e datados", () => {
-    expect(COBERTURA_DESCLASSIFICADOS.totalDocumentos).toBeGreaterThanOrEqual(15);
-    expect(COBERTURA_DESCLASSIFICADOS.totalOrgaos).toBeGreaterThanOrEqual(8);
-    expect(COBERTURA_DESCLASSIFICADOS.totalPaisesOrigem).toBeGreaterThanOrEqual(7);
-    expect(COBERTURA_DESCLASSIFICADOS.totalDocsMencionamBrasil).toBeGreaterThanOrEqual(12);
+    expect(COBERTURA_DESCLASSIFICADOS.totalDocumentos).toBeGreaterThanOrEqual(25);
+    expect(COBERTURA_DESCLASSIFICADOS.totalOrgaos).toBeGreaterThanOrEqual(15);
+    expect(COBERTURA_DESCLASSIFICADOS.totalPaisesOrigem).toBeGreaterThanOrEqual(20);
+    expect(COBERTURA_DESCLASSIFICADOS.totalDocsMencionamBrasil).toBeGreaterThanOrEqual(20);
     expect(COBERTURA_DESCLASSIFICADOS.mediaAnosEmSegredo).toBeGreaterThanOrEqual(20);
     expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Brasil");
     expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Estados Unidos");
     expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Reino Unido");
     expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Alemanha");
+    expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("China");
+    expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Japão");
+    expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("Índia");
+    expect(COBERTURA_DESCLASSIFICADOS.paisesOrigem).toContain("África do Sul");
+    expect(COBERTURA_DESCLASSIFICADOS.continentes).toContain("África");
+    expect(COBERTURA_DESCLASSIFICADOS.continentes).toContain("Ásia");
   });
 
   it("carrega documentos com URLs canonicas de custodia e PDFs oficiais", () => {
@@ -73,5 +79,32 @@ describe("dados-desclassificados", () => {
     expect(csisMining).toBeDefined();
     expect(csisMining?.paisOrigem).toBe("Canadá");
     expect(csisMining?.assuntos).toContain("Yanomami");
+  });
+
+  it("verifica documentos do G20 da Asia, Africa e Europa (China, Africa do Sul, Japao, Mexico, Portugal)", () => {
+    const docs = obterDocumentosDesclassificados();
+
+    const chinaDoc = docs.find((d) => d.id === "DOC-MSS-1974-BEIJING-BRASILIA");
+    expect(chinaDoc).toBeDefined();
+    expect(chinaDoc?.paisOrigem).toBe("China");
+    expect(chinaDoc?.continente).toBe("Ásia");
+    expect(chinaDoc?.assuntos).toContain("Minério de Ferro");
+
+    const africaSulDoc = docs.find((d) => d.id === "DOC-SSA-1979-SOUTH-ATLANTIC");
+    expect(africaSulDoc).toBeDefined();
+    expect(africaSulDoc?.continente).toBe("África");
+    expect(africaSulDoc?.sujeitosMencionados).toContain("P. W. Botha");
+
+    const japaoDoc = docs.find((d) => d.id === "DOC-MOFA-1980-CARAJAS-INVESTMENT");
+    expect(japaoDoc).toBeDefined();
+    expect(japaoDoc?.assuntos).toContain("Projeto Carajás");
+
+    const mexicoDoc = docs.find((d) => d.id === "DOC-DFS-1975-EXILADOS-UNAM");
+    expect(mexicoDoc).toBeDefined();
+    expect(mexicoDoc?.sujeitosMencionados).toContain("Darcy Ribeiro");
+
+    const portugalDoc = docs.find((d) => d.id === "DOC-PIDE-1973-LIGACOES-DOPS");
+    expect(portugalDoc).toBeDefined();
+    expect(portugalDoc?.assuntos).toContain("DOPS");
   });
 });
