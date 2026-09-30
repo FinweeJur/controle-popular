@@ -14,6 +14,7 @@
 - [Mapa de camadas](#mapa-de-camadas)
 - [Parte 1 — camada de dados (lib/db)](#parte-1--camada-de-dados-libdb)
 - [Parte 2 — assistente (lib/assistente)](#parte-2--assistente-libassistente)
+- [Parte 3 — cidades (lib/betim)](#parte-3--cidades-libbetim)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -174,6 +175,58 @@ Entrada pública: [`app/api/chatbot/route.ts`](../../apps/web/app/api/chatbot/ro
    `dangerouslySetInnerHTML` nas rotas do assistente; chaves de IA só no
    servidor (`.env.local`), nada em `NEXT_PUBLIC_`.
 
+## Parte 3 — cidades (lib/betim)
+
+A maior frente: ~72 módulos com as regras de negócio do eixo Cidades. A
+regra estrutural que se repete é a **fronteira de payload** — os módulos
+"puros" que rodam no cliente **proíbem importar `lib/db/queries/*`** de
+propósito, para não arrastar a cadeia do banco para o bundle.
+
+| Grupo | Exemplos | Papel |
+|---|---|---|
+| Apresentação pura (cliente) | [contratos-indicios.ts](../../apps/web/lib/betim/contratos-indicios.ts), [fornecedores-puro.ts](../../apps/web/lib/betim/fornecedores-puro.ts), [legislacao-filtro.ts](../../apps/web/lib/betim/legislacao-filtro.ts), [legislacao/logica.ts](../../apps/web/lib/betim/legislacao/logica.ts), [format.ts](../../apps/web/lib/betim/format.ts), [temas.ts](../../apps/web/lib/betim/temas.ts) | Cálculo e filtro sem React/rede/banco |
+| Segurança | [adminAuth.ts](../../apps/web/lib/betim/adminAuth.ts) | Porta dos `/api/admin/*` (falha fechando) |
+| Orquestração de dados | [contratos.ts](../../apps/web/lib/betim/contratos.ts), [vereadores.ts](../../apps/web/lib/betim/vereadores.ts), [saude.ts](../../apps/web/lib/betim/saude.ts), [redeProtecao.ts](../../apps/web/lib/betim/redeProtecao.ts) | Chamam `lib/db/queries` e degradam (`ok:false`) |
+| Diário e conteúdo | [diario.ts](../../apps/web/lib/betim/diario.ts), [noticias.ts](../../apps/web/lib/betim/noticias.ts), [legislacao/dados.ts](../../apps/web/lib/betim/legislacao/dados.ts) | Atos, blog e legislação municipal verificada |
+| Registro/estática | [staticParams.ts](../../apps/web/lib/betim/staticParams.ts), [dadosNav.ts](../../apps/web/lib/betim/dadosNav.ts), [basePath.ts](../../apps/web/lib/betim/basePath.ts) | Rotas, navegação e prefixo |
+
+### Achados da Parte 3
+
+1. **Dois reads com `getDb()` direto, fora da cadeia de reserva.**
+   [estatisticas-portal.ts](../../apps/web/lib/betim/estatisticas-portal.ts)
+   (`/sobre`) é candidato claro a `comBancoReserva`: sem reserva, um Guara
+   vazio deixa a página de números do próprio portal em branco.
+   [diario.ts](../../apps/web/lib/betim/diario.ts) tem fallback PRÓPRIO (por
+   fixture estática), então a ausência de reserva ali é decisão, não
+   esquecimento — registrado no cabeçalho do arquivo.
+
+2. **HTML cru em `noticias`.** [noticias.ts](../../apps/web/lib/betim/noticias.ts)
+   expõe `conteudoHtml`, renderizado com `dangerouslySetInnerHTML` em
+   `app/[municipio]/noticias/[slug]`. Hoje o conteúdo é autoral do portal
+   (`noticias_seed.py`), então o risco é baixo — mas se o campo passar a
+   receber HTML de fonte externa, precisa de lista branca, como já é feito
+   com `relevancia_html` (`sanitizar_html_curado`).
+
+3. ✅ **Três arquivos sem cabeçalho** (`diario.ts`, `indicadores.ts`,
+   `noticias.ts`) ganharam o bloco de onboarding (regra 5.9). Em
+   `indicadores.ts` saiu também código morto (`const error = null`, resto da
+   migração do Supabase).
+
+4. **Higiene de comentário.** O cabeçalho de `getDoacoesSummary`
+   ([vereadores.ts](../../apps/web/lib/betim/vereadores.ts)) diz que o
+   CPF/CNPJ do doador "não é mascarado" e, na frase seguinte, que "só se
+   expõe nome/tipo/valor/data, não o documento" — o comportamento está certo
+   (documento não é exposto; nome é público pela Lei 9.504/97), mas o texto é
+   contraditório. Reescrever.
+
+5. **`adminAuth` compara com `===`, não em tempo constante.** Com token de
+   alta entropia e porta verificada (401), é risco baixo; fica registrado como
+   higiene, não como falha.
+
+6. **O que está certo:** a fronteira cliente/servidor dos módulos puros; o
+   `ok:false` explícito na degradação; a legislação municipal só com
+   `.gov.br` como "encontrado".
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -215,7 +268,7 @@ Próximas micro-partes, por risco e retorno:
 | # | Micro-parte | Por quê |
 |---|---|---|
 | 1 | ✅ `lib/assistente/` (RAG do Seu Nonô) | Feita — Parte 2 deste doc: prompt, abstenção e blindagem. |
-| 2 | `lib/betim/` | Muitas regras de negócio e a maior frente. |
+| 2 | ✅ `lib/betim/` | Feita — Parte 3 deste doc: fronteira de payload, três cabeçalhos e dois reads fora da reserva. |
 | 3 | `app/` — rotas que leem banco | Payload, teto do Worker, `.din.ts`. |
 | 4 | `scripts/` — coletores e ETL | Rate limit, User-Agent honesto, `robots.txt`. |
 | 5 | `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Frentes com cálculo próprio. |

@@ -6,6 +6,20 @@ import { extrairEntidades } from "@/lib/diario/extrairEntidades";
 import diamantinaTitulos from "@/lib/diario/fixtures/diamantina-75-titulos.json";
 import atosMunicipiosJson from "../../data/diario-atos-municipios.json";
 
+/**
+ * Diário Oficial por município — leitura dos atos e montagem dos resumos.
+ *
+ * `fetchAtosDiario` lê a tabela `atos_diario` e, quando o banco não tem o
+ * município (ou está fora), cai num conjunto ESTÁTICO de fixtures
+ * (`apps/web/data/diario-atos-municipios.json` + os 75 títulos reais de
+ * Diamantina). A classificação de cada ato fica em `lib/diario/classificarAto`
+ * e a extração de entidades em `lib/diario/extrairEntidades` — este arquivo só
+ * orquestra.
+ *
+ * Nota para quem for revisar: este módulo usa `getDb()` direto, sem a cadeia
+ * `comBancoReserva`. O fallback aqui é por fixture, não por banco reserva —
+ * decisão a revisar quando o acervo do diário virar multi-banco.
+ */
 export interface ResumoDiarioOficial {
   total: number;
   totalEditais: number;

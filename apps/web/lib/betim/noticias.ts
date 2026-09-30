@@ -1,6 +1,16 @@
 import { listarNoticias, noticiaPorSlug } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
+/**
+ * Notícias do município — o blog de achados e explicadores do portal.
+ *
+ * `getNoticias` lista os resumos; `getNoticiaBySlug` traz o texto completo em
+ * `conteudoHtml`. Esse HTML é AUTORAL do portal (`etl/betim/etl/noticias_seed.py`)
+ * e por isso é renderizado com `dangerouslySetInnerHTML` na página do post. Se
+ * um dia o campo passar a receber HTML de fonte externa, ele precisa de
+ * sanitização com lista branca — o padrão de `sanitizar_html_curado` em
+ * `etl/betim/etl/apis/direito_critico_popular.py`.
+ */
 export interface NoticiaResumo {
   slug: string;
   titulo: string;
