@@ -11,6 +11,7 @@ import {
   estaVisivel,
   montarAlvos,
   montarPacotePonte,
+  origemNaTela,
   type AlvoGeometrico,
   type Viewport,
 } from "./ponte";
@@ -56,6 +57,32 @@ describe("montarAlvos", () => {
   });
 });
 
+describe("origemNaTela", () => {
+  it("soma o cromo do navegador ao canto da janela", () => {
+    const o = origemNaTela({
+      screenX: 100,
+      screenY: 50,
+      outerWidth: 1000,
+      outerHeight: 800,
+      innerWidth: 1000,
+      innerHeight: 700,
+    });
+    expect(o).toEqual({ x: 100, y: 150 });
+  });
+
+  it("centraliza a borda lateral quando a largura difere", () => {
+    const o = origemNaTela({
+      screenX: 0,
+      screenY: 0,
+      outerWidth: 1004,
+      outerHeight: 700,
+      innerWidth: 1000,
+      innerHeight: 700,
+    });
+    expect(o).toEqual({ x: 2, y: 0 });
+  });
+});
+
 describe("montarPacotePonte", () => {
   it("descarta alvos invisíveis e preenche dpr padrão", () => {
     const alvos = montarAlvos(
@@ -68,6 +95,7 @@ describe("montarPacotePonte", () => {
     const pacote = montarPacotePonte({
       sessaoId: "s1",
       url: "https://www.controlepopular.com.br/betim",
+      origem: { x: 10, y: 90 },
       viewport: VIEWPORT,
       alvos,
       em: 123,
@@ -76,6 +104,7 @@ describe("montarPacotePonte", () => {
     expect(pacote.viewport).toEqual({ largura: 400, altura: 800, dpr: 1 });
     expect(pacote.alvos).toHaveLength(1);
     expect(pacote.alvos[0].indice).toBe(2);
+    expect(pacote.origem).toEqual({ x: 10, y: 90 });
     expect(pacote.url).toBe("https://www.controlepopular.com.br/betim");
     expect(pacote.em).toBe(123);
   });
@@ -83,6 +112,7 @@ describe("montarPacotePonte", () => {
   it("leva o dpr informado (tela de alta densidade)", () => {
     const pacote = montarPacotePonte({
       url: "https://x",
+      origem: { x: 0, y: 0 },
       viewport: VIEWPORT,
       dpr: 2,
       alvos: [],

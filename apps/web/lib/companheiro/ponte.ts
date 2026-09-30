@@ -71,10 +71,50 @@ export interface PacotePonte {
   sessaoId?: string;
   /** URL da página aberta no navegador. */
   url: string;
+  /** Canto superior esquerdo do viewport em coordenadas de tela (px CSS). */
+  origem: OrigemTela;
   viewport: Viewport & { dpr: number };
   alvos: AlvoPonte[];
   /** Epoch ms da medição. */
   em: number;
+}
+
+/** Canto superior esquerdo do viewport, em px CSS de tela. */
+export interface OrigemTela {
+  x: number;
+  y: number;
+}
+
+/**
+ * Dados de posição que o navegador expõe via `window`. Em px CSS.
+ * `outer` é a janela inteira (com abas e barra de endereço); `inner` é o
+ * viewport. A diferença entre eles é o "cromo" do navegador.
+ */
+export interface JanelaNavegador {
+  screenX: number;
+  screenY: number;
+  outerWidth: number;
+  outerHeight: number;
+  innerWidth: number;
+  innerHeight: number;
+}
+
+/**
+ * Calcula onde o viewport começa na TELA a partir dos números do navegador.
+ *
+ * Por quê assim: o Chrome não entrega ao servidor local a posição da área de
+ * conteúdo. Os números de `window` entregam. A barra de ferramentas fica toda
+ * em cima, então o viewport começa `outerHeight - innerHeight` abaixo do topo
+ * da janela; as bordas laterais são pequenas e o viewport fica centralizado na
+ * largura. É uma aproximação honesta — o app documenta o erro de borda.
+ */
+export function origemNaTela(janela: JanelaNavegador): OrigemTela {
+  const bordaLateral = Math.max(0, janela.outerWidth - janela.innerWidth) / 2;
+  const cromoSuperior = Math.max(0, janela.outerHeight - janela.innerHeight);
+  return {
+    x: Math.round(janela.screenX + bordaLateral),
+    y: Math.round(janela.screenY + cromoSuperior),
+  };
 }
 
 /** Arredonda a caixa do DOM para inteiros do viewport. */
@@ -121,6 +161,7 @@ export function montarAlvos(itens: AlvoGeometrico[], viewport: Viewport): AlvoPo
 export function montarPacotePonte(args: {
   sessaoId?: string;
   url: string;
+  origem: OrigemTela;
   viewport: Viewport;
   dpr?: number;
   alvos: AlvoPonte[];
@@ -129,6 +170,7 @@ export function montarPacotePonte(args: {
   return {
     sessaoId: args.sessaoId,
     url: args.url,
+    origem: args.origem,
     viewport: { largura: args.viewport.largura, altura: args.viewport.altura, dpr: args.dpr ?? 1 },
     alvos: args.alvos.filter((a) => a.visivel),
     em: args.em ?? Date.now(),

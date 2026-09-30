@@ -35,7 +35,7 @@
  */
 
 import { useEffect, useRef } from "react";
-import { montarAlvos, montarPacotePonte, type AlvoGeometrico } from "@/lib/companheiro/ponte";
+import { montarAlvos, montarPacotePonte, origemNaTela, type AlvoGeometrico } from "@/lib/companheiro/ponte";
 
 /** Liga a ponte: sem `1`, o componente não faz nada. */
 const LIGADA = process.env.NEXT_PUBLIC_COMPANHEIRO_PONTE === "1";
@@ -82,6 +82,14 @@ export function PonteCompanheiro() {
       const pacote = montarPacotePonte({
         sessaoId: sessaoRef.current?.id,
         url: window.location.href,
+        origem: origemNaTela({
+          screenX: window.screenX,
+          screenY: window.screenY,
+          outerWidth: window.outerWidth,
+          outerHeight: window.outerHeight,
+          innerWidth: window.innerWidth,
+          innerHeight: window.innerHeight,
+        }),
         viewport,
         dpr: window.devicePixelRatio || 1,
         alvos,
