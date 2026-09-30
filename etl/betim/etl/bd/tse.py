@@ -68,8 +68,10 @@ ANO_ELEICAO_DEFAULT = 2024
 # `636.*.js`), não por documentação: não existe doc pública desta API.
 DIVULGA_BASE = "https://divulgacandcontas.tse.jus.br/divulga/rest"
 DIVULGA_HEADERS = {
+    # Prefixo de navegador (o WAF bloqueia sem) + identificação do projeto.
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 "
+    "ControlePopular/1.0 (+https://controlepopular.com.br)",
     "Accept": "application/json",
 }
 
