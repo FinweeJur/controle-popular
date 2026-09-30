@@ -57,8 +57,8 @@ async function api(metodo: string, corpo: Record<string, unknown>, token: string
 async function main() {
   carregarEnv();
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const DONO = process.env.TELEGRAM_CHAT_ID;
-  if (!TOKEN || !DONO) {
+  const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  if (!TOKEN || !CHAT_ID) {
     console.error("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausentes em scripts/.env");
     process.exit(2);
   }
@@ -103,7 +103,7 @@ async function main() {
         const msg = up.message;
         if (!msg || !msg.text) continue;
         const chat = msg.chat?.id !== undefined ? String(msg.chat.id) : "?";
-        if (chat !== String(DONO)) continue;
+        if (chat !== String(CHAT_ID)) continue;
         const de = msg.from?.first_name ?? msg.from?.username ?? "dev";
         const quando = new Date().toISOString();
         const registro = {
@@ -116,7 +116,7 @@ async function main() {
         console.log(`📩 [${quando}] ${de}: ${msg.text.slice(0, 200)}`);
         // Aviso imediato, resposta elaborada vem depois pelo agente.
         await api("sendMessage", {
-          chat_id: DONO,
+          chat_id: CHAT_ID,
           text: "✅ Recebi, Artur! Anotei aqui e já te respondo. 📋",
           disable_web_page_preview: true,
         }, TOKEN);

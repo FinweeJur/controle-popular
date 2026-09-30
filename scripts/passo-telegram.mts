@@ -19,7 +19,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const DONO = process.env.TELEGRAM_CHAT_ID;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const args = process.argv.slice(2);
 const fileIdx = args.indexOf("--file");
 const TEXTO = (
@@ -27,13 +27,13 @@ const TEXTO = (
     ? fs.readFileSync(args[fileIdx + 1], "utf-8")
     : args.join(" ")
 ).trim();
-if (!TOKEN || !DONO) { console.error("credenciais ausentes em scripts/.env"); process.exit(2); }
+if (!TOKEN || !CHAT_ID) { console.error("credenciais ausentes em scripts/.env"); process.exit(2); }
 if (!TEXTO) { console.error('uso: npx tsx scripts/passo-telegram.mts "mensagem" | --file <arquivo>'); process.exit(2); }
 
 const r = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
   method: "POST",
   headers: { "content-type": "application/json" },
-  body: JSON.stringify({ chat_id: DONO, text: TEXTO }),
+  body: JSON.stringify({ chat_id: CHAT_ID, text: TEXTO }),
 });
 console.log(r.ok ? "📣 etapa reportada" : `falha HTTP ${r.status}`);
 process.exit(r.ok ? 0 : 1);

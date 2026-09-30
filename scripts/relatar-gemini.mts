@@ -23,9 +23,9 @@ function carregarEnv() {
 carregarEnv();
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const DONO = process.env.TELEGRAM_CHAT_ID;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-if (!TOKEN || !DONO) {
+if (!TOKEN || !CHAT_ID) {
   console.error("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausentes em scripts/.env");
   process.exit(1);
 }
@@ -43,7 +43,7 @@ async function enviar() {
       headers: { "Content-Type": "application/json" },
       signal: AbortSignal.timeout(12000),
       body: JSON.stringify({
-        chat_id: DONO,
+        chat_id: CHAT_ID,
         text: texto,
         parse_mode: "HTML",
       }),
@@ -63,7 +63,7 @@ async function enviar() {
         headers: { "Content-Type": "application/json" },
         signal: AbortSignal.timeout(12000),
         body: JSON.stringify({
-          chat_id: DONO,
+          chat_id: CHAT_ID,
           text: textoSemHtml,
         }),
       });

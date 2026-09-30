@@ -31,7 +31,7 @@ function carregarEnv() {
 carregarEnv();
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const DONO = process.env.TELEGRAM_CHAT_ID;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const TEXTO = process.argv.slice(2).join(" ").trim();
 
 async function enviar(chatId: number | string, text: string) {
@@ -44,7 +44,7 @@ async function enviar(chatId: number | string, text: string) {
 }
 
 async function main() {
-  if (!TOKEN || !DONO) {
+  if (!TOKEN || !CHAT_ID) {
     console.error("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausentes em scripts/.env");
     process.exit(2);
   }
@@ -59,7 +59,7 @@ async function main() {
   } catch {
     // lista vazia/inexistente — só o dev recebe
   }
-  alvos.add(Number(DONO));
+  alvos.add(Number(CHAT_ID));
 
   let ok = 0;
   for (const id of alvos) {

@@ -8,7 +8,7 @@ Fontes e autoria (correções do dev em 29/09/2026):
   (organização de Ângelo Diogo Mazin, Janaina Strozake e Miguel Enrique
   Almeida Stádile), documento local sem URL.
 
-REGRA DO DONO: fato sem dia ou sem ano NÃO se perde. O que tem dia/mês
+REGRA DO DEV: fato sem dia ou sem ano NÃO se perde. O que tem dia/mês
 entra no dia (com ou sem ano); o que não tem data nenhuma vira "recheio"
 e preenche, de forma determinística (semente sha1 do próprio texto), os
 dias do ano que ficaram sem fato.
@@ -430,7 +430,7 @@ linhas = [
     " * fonte. O script limpa ruído, classifica o tipo de luta e guarda a",
     " * fonte.",
     " *",
-    " * REGRA DO DONO: fato sem dia ou sem ano NÃO se perde. O que tem dia",
+    " * REGRA DO DEV: fato sem dia ou sem ano NÃO se perde. O que tem dia",
     " * entra no dia (com ou sem ano, campo `ano` vazio quando a fonte não",
     " * datou); o que não tem data nenhuma vira `semData: true` e preenche,",
     " * de forma determinística, um dia do ano que ficou sem fato.",

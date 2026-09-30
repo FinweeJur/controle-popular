@@ -90,7 +90,7 @@ async function main() {
     console.log(`\n[update ${up.update_id}] chat=${chat} de=${de}${bot} data=${quando}`);
     if (chat === donoId) {
       achou++;
-      console.log(`>>> DONO: ${texto}`);
+      console.log(`>>> DEV: ${texto}`);
     } else {
       console.log(`    (outro chat): ${texto}`);
     }

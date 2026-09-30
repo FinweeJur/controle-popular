@@ -363,7 +363,7 @@ const saida = `// GERADO por \`scripts/gerar-resumo-ajri.mts\` a partir dos ${re
 // segurança determinística na fase de conteúdo; este script revalida o schema
 // (mesmo \`validar.py\`) e a paridade com o catálogo antes de gravar.
 //
-// ═══ OBRA NOVA × ESPELHO DE PDF — A DECISÃO QUE AINDA É DO DONO ═══
+// ═══ OBRA NOVA × ESPELHO DE PDF — A DECISÃO QUE AINDA É DO DEV ═══
 //
 // Os Termos de Uso do portal-fonte proíbem modificar e usar comercialmente o
 // material da AECOM — por isso o espelho de PDF ficou fora desta entrega

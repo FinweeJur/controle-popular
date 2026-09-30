@@ -173,7 +173,7 @@ export const ZONAS: Zona[] = [
     // Mesma disciplina de sempre: cortar pro que existe, atualizar quando
     // deixa de ser promessa.
     //
-    // ⟲ 13/08, A PEDIDO DO DONO: "não explica bem o estágio atual do painel".
+    // ⟲ 13/08, A PEDIDO DO DEV: "não explica bem o estágio atual do painel".
     // Ele estava certo por três razões, e as três são de precisão:
     //
     // 1. O TÍTULO PROMETIA MENOS DO QUE A ZONA FAZ. "O que o COPAM vai

@@ -6,7 +6,7 @@
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [ESTADO](../02-estado/ESTADO.md), [OPERACAO](../05-operacao/OPERACAO.md), [PROPOSICAO-SANITIZACAO-REPO](PROPOSICAO-SANITIZACAO-REPO.md), [ROTEIRO-NEON-01-09](ROTEIRO-NEON-01-09.md), [LinkMender (relatorios-automacao)](../relatorios-automacao/linkmender-propostas.md)
 > **Palavras-chave:** estudos rurais, ppger ufvjm, relatorio tecnico, linkmender, websearch, automacao, neon, build
-> **Status:** APROVADO PELO DONO — 08/09/2026, executar em ordem
+> **Status:** APROVADO PELO DEV — 08/09/2026, executar em ordem
 
 ## Sumário
 

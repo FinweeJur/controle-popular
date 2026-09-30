@@ -15,7 +15,7 @@
  * fonte. O script limpa ruído, classifica o tipo de luta e guarda a
  * fonte.
  *
- * REGRA DO DONO: fato sem dia ou sem ano NÃO se perde. O que tem dia
+ * REGRA DO DEV: fato sem dia ou sem ano NÃO se perde. O que tem dia
  * entra no dia (com ou sem ano, campo `ano` vazio quando a fonte não
  * datou); o que não tem data nenhuma vira `semData: true` e preenche,
  * de forma determinística, um dia do ano que ficou sem fato.

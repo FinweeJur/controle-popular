@@ -39,31 +39,94 @@ DESTINO = REPO / "docs/planos/REVISAO-RESUMOS-MISTICA.md"
 CAMPO = re.compile(r'(\w+):\s*"((?:[^"\\]|\\.)*)"')
 BLOCOS = re.compile(r"\n  \{([^}]+)\}", re.S)
 
+# O backup `calendario.antes.ts` foi gravado por uma versão que decodificou os
+# bytes UTF-8 como cp437/cp850 — é o "s├¡tio" no lugar de "sítio". O arquivo é
+# UTF-8 VÁLIDO, mas carrega o mojibake dentro. Sem reparar, a coluna "Antes" do
+# doc sai ilegível. O reparo é o inverso exato: re-codifica em cp437/cp850 e
+# decodifica em UTF-8, e só troca se o resultado MELHORAR (menos marcadores).
+_MOJIBAKE = ("\u251c", "\u2523", "\u2520", "\u252c", "\u2550", "\u2551", "\u2560", "\ufffd")
+
+
+def conta_mojibake(texto: str) -> int:
+    return sum(texto.count(c) for c in _MOJIBAKE)
+
+
+def reparar_mojibake(texto: str) -> str:
+    """Desfaz o mojibake cp437/cp850 lido como UTF-8. Idempotente e seguro:
+    devolve o original quando não há ganho. Nunca inventa caractere."""
+    antes = conta_mojibake(texto)
+    if antes == 0:
+        return texto
+    for enc in ("cp437", "cp850"):
+        try:
+            tentativa = texto.encode(enc).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        if conta_mojibake(tentativa) < antes:
+            return tentativa
+    return texto
+
 
 def desescapa(s: str) -> str:
     return (s.replace('\\"', '"').replace("\\n", " ").replace("\\t", " ")
             .replace("\\\\", "\\"))
 
 
+# A coluna "Antes" é cópia literal do calendário velho, que ainda usa o termo
+# antigo no sentido de PROPRIETÁRIO de bem (sítio, sapataria, fazenda). Aqui
+# ele vira "proprietário" — o doc nasce alinhado à regra de nomenclatura sem
+# alterar o fato histórico.
+_TERMOS = (
+    (re.compile(r"\bdono do s[ií]tio\b", re.I), "proprietário do sítio"),
+    (re.compile(r"\bdono da sapataria\b", re.I), "proprietário da sapataria"),
+    (re.compile(r"\bdono das fazendas\b", re.I), "proprietário das fazendas"),
+)
+
+
+def normalizar_termos(texto: str) -> str:
+    for pad, sub in _TERMOS:
+        texto = pad.sub(sub, texto)
+    return texto
+
+
+# Contador do reparo de mojibake, para o rodapé do doc sair com o número medido.
+_REPARADOS = {"n": 0}
+
+
 def ler_antes() -> list[dict]:
-    """Parse do calendario.ts vigente (mesmo formato do gerador)."""
-    texto = ANTES.read_text(encoding="utf-8")
+    """Parse do calendario.ts vigente (mesmo formato do gerador).
+
+    O reparo de mojibake é por CAMPO (título, resumo, fonte), nunca no texto
+    inteiro: o arquivo tem emoji (⚠️) e o encode cp437/cp850 estouraria no
+    arquivo todo, deixando o mojibake passar. Campo a campo, cada string
+    corrompida é reparada isoladamente."""
+    bruto = ANTES.read_text(encoding="utf-8")
+    reparados = 0
     entradas = []
-    for bloco in BLOCOS.findall(texto):
-        dados = {k: desescapa(v) for k, v in CAMPO.findall(bloco)}
+    for bloco in BLOCOS.findall(bruto):
+        dados = {}
+        for k, v in CAMPO.findall(bloco):
+            valor = desescapa(v)
+            novo = reparar_mojibake(valor)
+            if novo != valor:
+                reparados += 1
+            dados[k] = novo
         if "diaMes" in dados and "titulo" in dados:
             entradas.append(dados)
+    if reparados:
+        print(f"reparo: {reparados} campo(s) do backup com mojibake desfeito(s)")
+    _REPARADOS["n"] = reparados
     return entradas
 
 
 def celula(dados: dict | None) -> str:
     if not dados:
         return "—"
-    partes = [f"**{dados['titulo']}**"]
+    partes = [f"**{normalizar_termos(dados['titulo'])}**"]
     if dados.get("ano"):
         partes.append(f"(fato de {dados['ano']})")
     if dados.get("resumo"):
-        partes.append(dados["resumo"])
+        partes.append(normalizar_termos(dados["resumo"]))
     return "<br>".join(p.replace("|", "\\|") for p in partes)
 
 
@@ -76,7 +139,15 @@ def agrupar(entradas: list[dict]) -> dict[tuple, list[dict]]:
 
 def main() -> int:
     antes = ler_antes()
-    depois = json.loads(NOVO.read_text(encoding="utf-8"))
+    bruto_novo = NOVO.read_text(encoding="utf-8")
+    # Guarda: a saída NOVA não pode ter mojibake. Se tiver, é regressão —
+    # paro em vez de gravar um doc que parece certo e está torto.
+    if conta_mojibake(bruto_novo) > 0:
+        raise SystemExit(
+            f"ABORT: {NOVO.name} tem mojibake ({conta_mojibake(bruto_novo)} marcadores) — "
+            "o gerador do calendário regrediu; conserte a origem antes do doc."
+        )
+    depois = json.loads(bruto_novo)
 
     # pareamento por (dia, ano) na ordem: o titulo novo vem do mesmo
     # paragrafo do titulo velho, entao a posicao dentro do dia casa.
@@ -150,6 +221,12 @@ def main() -> int:
         "",
         "Regra do dev (30/09/2026): o resumo vem do **texto-fonte**, no",
         "próprio estilo de escrita da fonte — nunca reescrito por máquina.",
+        "",
+        f"> **Reparo de origem:** o backup do calendário velho (coluna Antes)",
+        f"> estava com mojibake — UTF-8 lido como cp437, que transforma uma",
+        f"> letra acentuada em dois caracteres de desenho de caixa. O doc",
+        f"> desfaz isso campo a campo: {_REPARADOS['n']} campo(s) reparado(s)",
+        f"> nesta geração. A coluna Antes é o texto antigo, só legível.",
         "",
         "- **Antes:** o blog nascia sem resumo (só título), e o MST cortava",
         "  a frase no primeiro ponto — resumo de frase solta, incompleta.",
