@@ -16,6 +16,8 @@
 - [Fontes medidas (30/09/2026)](#fontes-medidas-30092026)
 - [Fontes por sondar (não medidas)](#fontes-por-sondar-não-medidas)
 - [As cinco camadas propostas](#as-cinco-camadas-propostas)
+- [Referências acadêmicas (Geografia, História, Antropologia)](#referências-acadêmicas-geografia-história-antropologia)
+- [Pendências a resolver](#pendências-a-resolver)
 - [Fases de execução](#fases-de-execução)
 - [Regras editoriais específicas](#regras-editoriais-específicas)
 - [Riscos e o que NÃO fazer](#riscos-e-o-que-não-fazer)
@@ -221,6 +223,84 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
   não se confirmou vetor no FTP, que só tem 2000-2025).
 - **Decisão de escopo:** se não houver vetor oficial, **declara a lacuna** e entrega só as
   imagens citáveis — não desenhar à mão.
+
+## Referências acadêmicas (Geografia, História, Antropologia)
+
+Pedido do dev (30/09/2026): somar **artigos e livros acadêmicos** das três áreas para
+**caracterizar** (o que era uma sesmaria, um engenho, uma fazenda de café, um quilombo) e
+**localizar** (onde estavam, como o território mudou). Esta lista é a **bibliografia de
+trabalho** das Fases G e H; cada item entra na ficha da camada que ajudar a sustentar.
+
+⚠️ **Regra da casa aplicada:** aqui estão as obras (ABNT). O **link canônico de cada uma é
+pendência** — o portal linka à fonte, e a URL de cada obra será conferida uma a uma antes
+de publicar, em vez de link solto para catálogo genérico.
+
+**Geografia (formação territorial e geografia agrária)**
+
+- MORAES, Antonio Carlos Robert. *Bases da formação territorial do Brasil*. São Paulo:
+  Hucitec, 2000. — como o território colonial se organiza (capitanias → sesmarias → freguesias).
+- ABREU, Maurício de Almeida. *Geografia histórica do Rio de Janeiro (1502-1700)*. Rio de
+  Janeiro: Andrea Jakobsson, 2010. — método de geografia histórica para reconstituir o
+  território a partir de fontes.
+- FERNANDES, Bernardo Mançano. *A formação do MST no Brasil*. Petrópolis: Vozes, 2000. —
+  leitura da terra como território (ponte com a frente agrária do portal).
+
+**História (economia colonial, escravidão e os ciclos)**
+
+- PRADO JÚNIOR, Caio. *Formação do Brasil contemporâneo*. São Paulo: Brasiliense, 1942. —
+  o tripé cana/mineração/café na formação do país.
+- HOLANDA, Sérgio Buarque de. *Caminhos e fronteiras*. Rio de Janeiro: José Olympio, 1957. —
+  **localização**: rotas, sertões e a expansão do povoamento.
+- SCHWARTZ, Stuart B. *Segredos internos: engenhos e escravos na sociedade colonial*. São
+  Paulo: Companhia das Letras, 1988. — **engenhos de cana** (Fase H).
+- FURTADO, Celso. *Formação econômica do Brasil*. Rio de Janeiro: Fundo de Cultura, 1959. —
+  **café** e o deslocamento do centro econômico para o Sudeste.
+- GORENDER, Jacob. *O escravismo colonial*. São Paulo: Ática, 1978. — estrutura da
+  escravidão (Fase G).
+- MARTINS, Roberto Borges. *A economia escravista de Minas Gerais no século XIX*. Belo
+  Horizonte: CEDEPLAR/UFMG, 1982. — **Minas**: onde a economia escravista de fato operou.
+- PAIVA, Clotilde Andrade. *População e economia nas Minas Gerais do século XIX*. São
+  Paulo: USP, 1996 (tese). — **demografia histórica de MG**: base para o recenseamento de 1872.
+- REIS, João José. *Rebelião escrava no Brasil: a história do levante dos malês (1835)*. São
+  Paulo: Brasiliense, 1986. — a revolta dos malês (já com contexto na Fase C).
+- MOURA, Clóvis. *Rebeliões da senzala*. São Paulo: Zumbi, 1959. — quilombos e revoltas.
+
+**Antropologia (território, etnicidade e quilombo)**
+
+- CARNEIRO DA CUNHA, Manuela (org.). *História dos índios no Brasil*. São Paulo:
+  Companhia das Letras, 1992. — povos e territórios indígenas na colônia.
+- ARRUTI, José Maurício. *Mocambo: antropologia e história do processo de formação
+  quilombola*. Bauru: EDUSC, 2006. — **quilombo** como processo, não como resto.
+- O'DWYER, Eliane Cantarino (org.). *Quilombos: identidade étnica e territorialidade*. Rio
+  de Janeiro: FGV, 2002. — os critérios que sustentam o território (INCRA/4.887).
+- ALMEIDA, Alfredo Wagner Berno de. *Terras de quilombo, terras indígenas, "babaçuais
+  livres", "castanhais do povo", faixinais e fundos de pasto*. Manaus: PPGSCA-UFAM, 2006. —
+  como nomear e localizar territorialidades tradicionais.
+
+**Onde procurar os artigos (periódicos, para as Fases G e H)**
+
+- *Varia Historia* e *Tempo* (História, UFMG/UFF) · *Revista Brasileira de Estudos de
+  População* (v. CEDEPLAR/UFMG) · *Anais do Museu Paulista* · *Revista do Arquivo Público
+  Mineiro* · *GEOUSP* e *Revista do Departamento de Geografia* (USP) · *Boletim Paulista de
+  Geografia* · SciELO e Periódicos CAPES como porta de busca.
+
+## Pendências a resolver
+
+Registradas por pedido do dev (30/09/2026). Cada uma diz **o que falta** e **o que a
+destrava** — nada aqui se resolve por suposição.
+
+| # | Pendência | O que destrava | Dono |
+|---|---|---|---|
+| P1 | **Mineração escravizada** (Fase G): dado por município | medir o **recenseamento de 1872** e a base do **CEDEPLAR/UFMG** (demografia histórica) | agente |
+| P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente |
+| P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente |
+| P4 | **IPHAN**: rota de dado em massa morta/barrada | `geoservicos.iphan.gov.br` não resolve (DNS); `dados.gov.br/api` dá 401 → reencontrar a via | agente |
+| P5 | **Biblioteca Nacional** (Fase E): cartografia dos tratados | sondar o acervo digital (BNDigital) para Tordesilhas/Madri/Santo Ildefonso | agente |
+| P6 | **Camada `hist-revoltas.geojson`** (Fase C): 14 revoltas com lugar, ainda fora do globo | gerar a camada a partir do gazetteer quando o recorte crescer | agente |
+| P7 | **Link canônico das obras acadêmicas** acima | conferir obra a obra (sem link solto de catálogo) | agente |
+| P8 | **Revisão humana dos 100 exemplos** (plano de cavas) | é do dev; barra a publicação de número novo da Fase E | dev |
+| P9 | **Confirmar a leitura de "maiores"** e o recorte da Fase A | é do dev | dev |
+| P10 | **Deploy** das camadas novas no Guara | política de ~5 dias; a suíte e o `tsc` estão verdes | dev |
 
 ## Fases de execução
 
