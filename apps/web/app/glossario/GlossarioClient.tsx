@@ -58,7 +58,7 @@ export default function GlossarioClient() {
 
       <dl className="space-y-3">
         {termos.map((t: TermoGlossario) => (
-          <div key={t.id} className="rounded-2xl border border-border bg-surface p-4">
+          <div key={t.id} id={t.id} className="scroll-mt-24 rounded-2xl border border-border bg-surface p-4">
             <dt className="font-display text-base font-bold text-foreground">{t.termo}</dt>
             <dd className="mt-1 text-sm leading-relaxed text-muted">
               {t.definicao}

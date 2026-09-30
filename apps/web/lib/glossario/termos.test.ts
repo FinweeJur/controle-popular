@@ -8,11 +8,9 @@ import { buscarTermos, TERMOS } from "./termos";
  * com link inválido — e a pessoa sob estresse clica num beco.
  */
 describe("TERMOS", () => {
-  test("há termos, ids únicos e ordenados por nome", () => {
+  test("há termos e os ids são únicos", () => {
     expect(TERMOS.length).toBeGreaterThan(0);
     expect(new Set(TERMOS.map((t) => t.id)).size).toBe(TERMOS.length);
-    const nomes = TERMOS.map((t) => t.termo);
-    expect([...nomes].sort((a, b) => a.localeCompare(b, "pt-BR"))).toEqual(nomes);
   });
 
   test("todo termo tem definição e, se tiver fonte, link válido", () => {
@@ -25,8 +23,11 @@ describe("TERMOS", () => {
 });
 
 describe("buscarTermos", () => {
-  test("vazio devolve todos", () => {
-    expect(buscarTermos("")).toHaveLength(TERMOS.length);
+  test("vazio devolve todos, em ordem alfabética", () => {
+    const todos = buscarTermos("");
+    expect(todos).toHaveLength(TERMOS.length);
+    const nomes = todos.map((t) => t.termo);
+    expect([...nomes].sort((a, b) => a.localeCompare(b, "pt-BR"))).toEqual(nomes);
   });
 
   test("acha por termo ignorando acento e caixa", () => {

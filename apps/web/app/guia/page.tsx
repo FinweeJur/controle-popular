@@ -4,6 +4,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { obterTodosCanaisInformacao } from "@/lib/direitos/informacao";
 import { obterTodasUnidadesJudiciarias } from "@/lib/judiciario/contatos";
 import { montarGuia } from "@/lib/guia/contatos";
+import TermoGlossario from "@/app/components/TermoGlossario";
 import GuiaClient from "./GuiaClient";
 
 /**
@@ -55,7 +56,8 @@ export default function GuiaPage() {
           Telefone, e-mail e canal de ouvidoria de prefeituras, câmaras, órgãos
           federais e unidades da Justiça num só lugar. Busque, filtre e baixe em
           planilha. Cada linha mantém a origem: canal de acesso à informação
-          (LAI) e unidade judiciária são coisas diferentes.
+          (<TermoGlossario id="lai">LAI</TermoGlossario>) e unidade judiciária
+          são coisas diferentes.
         </p>
       </header>
 
