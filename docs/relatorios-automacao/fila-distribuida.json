@@ -1,0 +1,9 @@
+{
+  "geradoEm": "2026-09-30T00:00:00.000Z",
+  "tarefas": [
+    { "id": "dado:apps/web/data", "tipo": "dado", "alvo": "apps/web/data", "status": "livre", "atualizadoEm": "2026-09-30T00:00:00.000Z" },
+    { "id": "security:repositorio", "tipo": "security", "alvo": "repositorio", "status": "livre", "atualizadoEm": "2026-09-30T00:00:00.000Z" },
+    { "id": "rag:assistente", "tipo": "rag", "alvo": "assistente", "status": "livre", "atualizadoEm": "2026-09-30T00:00:00.000Z" },
+    { "id": "indice:/busca", "tipo": "indice", "alvo": "/busca", "status": "livre", "atualizadoEm": "2026-09-30T00:00:00.000Z" }
+  ]
+}
