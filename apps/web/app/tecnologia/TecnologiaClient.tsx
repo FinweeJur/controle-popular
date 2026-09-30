@@ -2,18 +2,13 @@
 
 import { useState, useMemo } from "react";
 import {
-  Cpu,
   Terminal,
   ShieldCheck,
-  Layers,
   ExternalLink,
   BookOpen,
   Sparkles,
   Search,
   CheckCircle2,
-  Lock,
-  ArrowRight,
-  FolderGit2,
 } from "lucide-react";
 
 function GithubIcon({ size = 14 }: { size?: number }) {
@@ -285,24 +280,99 @@ const CATEGORIAS = [
   { id: "utilitarios", label: "Utilitários & Ferramentas" },
 ];
 
+/**
+ * Selos de soberania digital, no espírito do AppLivre e do OpenAlternative.
+ * Dizem, sem rodeio, o que a ferramenta NÃO exige de quem usa — que é o que
+ * mais importa para quem está sob vigilância ou sem internet boa.
+ */
+type Selo = "sem-cadastro" | "offline" | "open-source" | "local-first" | "auto-hospedado";
+
+const SELOS: Record<Selo, string> = {
+  "sem-cadastro": "Sem cadastro",
+  offline: "Funciona offline",
+  "open-source": "Código aberto",
+  "local-first": "Dados no seu aparelho",
+  "auto-hospedado": "Você mesmo hospeda",
+};
+
+/**
+ * Complemento de cada projeto: selos e o nível "curioso" de explicação
+ * (o degrau do meio entre leigo e técnico).
+ *
+ * Fica num mapa à parte — e não dentro de `PROJETOS` — para manter o
+ * catálogo enxuto e permitir acrescentar selos sem reescrever cada entrada.
+ */
+const EXTRAS: Record<string, { selos: Selo[]; curioso: string }> = {
+  "controle-popular": {
+    selos: ["sem-cadastro", "open-source"],
+    curioso: "Um portal que junta dinheiro público de várias fontes e mostra cada número com o documento oficial ao lado.",
+  },
+  "llm-br": {
+    selos: ["open-source", "local-first", "auto-hospedado"],
+    curioso: "Uma biblioteca que liga a IA do próprio computador em qualquer projeto, sem depender de nuvem paga.",
+  },
+  applivre: {
+    selos: ["sem-cadastro", "open-source"],
+    curioso: "Um catálogo que ajuda a trocar programa pago por um gratuito, com explicação em três níveis.",
+  },
+  sementeira: {
+    selos: ["sem-cadastro", "offline"],
+    curioso: "Uma ferramenta que ajuda comunidades a montar projetos e conferir se cabem nas regras do acordo.",
+  },
+  "foz-juris": {
+    selos: ["local-first", "auto-hospedado"],
+    curioso: "Um sistema para advogados em que o processo fica no computador do escritório, não na nuvem.",
+  },
+  vaire: {
+    selos: ["sem-cadastro", "open-source"],
+    curioso: "Um robô que acompanha processos de tragédias e só publica depois que uma pessoa aprova.",
+  },
+  despacho: {
+    selos: ["offline", "auto-hospedado"],
+    curioso: "Um programa de escritório que funciona sem internet e avisa se alguém mexeu no histórico.",
+  },
+  openosc: {
+    selos: ["offline", "sem-cadastro"],
+    curioso: "Uma plataforma para associações prestarem contas de verba pública sem levar glosa.",
+  },
+  cutia: {
+    selos: ["local-first", "auto-hospedado", "offline"],
+    curioso: "Um conjunto de ferramentas que lê documentos e fotos usando IA no próprio computador.",
+  },
+  "osint-br": {
+    selos: ["open-source", "sem-cadastro"],
+    curioso: "Uma linha de comando que junta cadastros públicos para investigar empresas e contratos.",
+  },
+  agitprop: {
+    selos: ["offline", "local-first"],
+    curioso: "Um mapa offline para organizar panfletagem e mutirão por bairro.",
+  },
+  "coletanea-artivismo": {
+    selos: ["offline", "sem-cadastro", "open-source"],
+    curioso: "Uma galeria de cartazes históricos de protesto, pesquisável e que abre sem internet.",
+  },
+};
+
 export default function TecnologiaClient() {
   const [categoriaAtiva, setCategoriaAtiva] = useState("todas");
+  const [seloAtivo, setSeloAtivo] = useState<Selo | "todos">("todos");
   const [busca, setBusca] = useState("");
-  const [abaAberta, setAbaAberta] = useState<string | null>(null);
 
   const projetosFiltrados = useMemo(() => {
     const termo = busca.toLowerCase().trim();
     return PROJETOS.filter((p) => {
       const casaCategoria = categoriaAtiva === "todas" || p.categoria === categoriaAtiva;
+      const casaSelo =
+        seloAtivo === "todos" || (EXTRAS[p.id]?.selos.includes(seloAtivo) ?? false);
       const casaBusca =
         !termo ||
         p.nome.toLowerCase().includes(termo) ||
         p.subtitulo.toLowerCase().includes(termo) ||
         p.descricaoLeigo.toLowerCase().includes(termo) ||
         p.tags.some((t) => t.toLowerCase().includes(termo));
-      return casaCategoria && casaBusca;
+      return casaCategoria && casaSelo && casaBusca;
     });
-  }, [categoriaAtiva, busca]);
+  }, [categoriaAtiva, seloAtivo, busca]);
 
   return (
     <div className="space-y-12">
@@ -528,6 +598,38 @@ export default function TecnologiaClient() {
           ))}
         </div>
 
+        {/* Filtros de soberania digital (sem cadastro, offline, código aberto) */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="mr-1 text-xs font-medium text-muted">Soberania:</span>
+          <button
+            type="button"
+            onClick={() => setSeloAtivo("todos")}
+            aria-pressed={seloAtivo === "todos"}
+            className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-all ${
+              seloAtivo === "todos"
+                ? "border-primary/40 bg-primary/10 text-primary"
+                : "border-border bg-surface-2 text-muted hover:text-foreground"
+            }`}
+          >
+            Todas
+          </button>
+          {(Object.keys(SELOS) as Selo[]).map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setSeloAtivo(s)}
+              aria-pressed={seloAtivo === s}
+              className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-all ${
+                seloAtivo === s
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border bg-surface-2 text-muted hover:text-foreground"
+              }`}
+            >
+              {SELOS[s]}
+            </button>
+          ))}
+        </div>
+
         {/* Grade de Cartões */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {projetosFiltrados.map((p) => (
@@ -556,6 +658,19 @@ export default function TecnologiaClient() {
                 <h3 className="mt-3 font-display text-lg font-bold text-foreground">{p.nome}</h3>
                 <p className="text-xs font-medium text-primary">{p.subtitulo}</p>
 
+                {(EXTRAS[p.id]?.selos ?? []).length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {(EXTRAS[p.id]?.selos ?? []).map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full border border-border/60 bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-muted"
+                      >
+                        {SELOS[s]}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
                 <p className="mt-2.5 text-xs sm:text-sm text-muted leading-relaxed">
                   {p.descricaoLeigo}
                 </p>
@@ -563,9 +678,16 @@ export default function TecnologiaClient() {
                 {/* Detalhes Técnicos Expansíveis */}
                 <details className="mt-3 text-xs text-muted">
                   <summary className="cursor-pointer font-medium text-foreground hover:text-primary">
-                    Ver detalhes técnicos e arquitetura
+                    Ver explicação em 3 níveis e detalhes técnicos
                   </summary>
+                  {EXTRAS[p.id]?.curioso && (
+                    <p className="mt-2 leading-relaxed">
+                      <span className="font-semibold text-foreground">Nível curioso: </span>
+                      {EXTRAS[p.id]?.curioso}
+                    </p>
+                  )}
                   <p className="mt-2 rounded-lg bg-surface-2 p-2.5 leading-relaxed">
+                    <span className="font-semibold text-foreground">Nível técnico: </span>
                     {p.descricaoTecnica}
                   </p>
                   <ul className="mt-2 space-y-1 pl-1">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Download, Search, Filter } from "lucide-react";
 import type { CidadeEstrategica, RegiaoBrasil, TipoCidade } from "@/lib/cidades/estrategicas";
 import { slugCobertoPorIbge } from "@/lib/cidades/cobertas";
+import { BotaoFavoritar, MinhasCidades } from "./Favoritos";
 
 interface Props {
   cidades: CidadeEstrategica[];
@@ -88,6 +89,9 @@ export default function TabelaCidadesClient({ cidades }: Props) {
 
   return (
     <div className="space-y-4">
+      {/* MINHAS CIDADES — lista local, sem cadastro */}
+      <MinhasCidades />
+
       {/* BARRA DE FILTROS E PESQUISA */}
       <div className="flex flex-col gap-3 rounded-xl border border-border bg-surface-2 p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-1 flex-wrap items-center gap-3">
@@ -217,12 +221,22 @@ export default function TabelaCidadesClient({ cidades }: Props) {
                         ? `/${slugPiloto}`
                         : `/terra-e-territorios/cidades/${c.slug ?? c.id_municipio}`;
                       return (
-                        <Link
-                          href={destino}
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
-                        >
-                          Acessar →
-                        </Link>
+                        <div className="flex items-center justify-end gap-2">
+                          <BotaoFavoritar
+                            cidade={{
+                              id: c.id_municipio,
+                              nome: c.nome,
+                              uf: c.uf,
+                              href: destino,
+                            }}
+                          />
+                          <Link
+                            href={destino}
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                          >
+                            Acessar →
+                          </Link>
+                        </div>
                       );
                     })()}
                   </td>
