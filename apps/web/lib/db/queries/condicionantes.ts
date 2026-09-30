@@ -16,7 +16,7 @@
  */
 
 import { asc, desc, eq, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import {
   condicionantes,
   condicionantes_evidencias,
@@ -74,35 +74,37 @@ const CONTAGEM_VAZIA: ContagemCondicionantes = {
  * `nao_informado` — o denominador honesto do "% com informação" da tela.
  */
 export async function contarCondicionantes(): Promise<ContagemCondicionantes> {
-  const db = getDb();
-  if (!db) return CONTAGEM_VAZIA;
+  return comBancoReserva(
+    async (db) => {
+      try {
+        const [r] = await db
+          .select({
+            total: sql<number>`count(*)::int`,
+            cumpridas: sql<number>`count(*) filter (where ${condicionantes.status} = 'cumprida')::int`,
+            naoCumpridas: sql<number>`count(*) filter (where ${condicionantes.status} = 'nao_cumprida')::int`,
+            naoInformado: sql<number>`count(*) filter (where ${condicionantes.status} = 'nao_informado')::int`,
+            comInformacao: sql<number>`count(*) filter (where ${condicionantes.status} <> 'nao_informado')::int`,
+            empreendimentos: sql<number>`count(distinct ${condicionantes.empreendimento})::int`,
+          })
+          .from(condicionantes);
 
-  try {
-    const [r] = await db
-      .select({
-        total: sql<number>`count(*)::int`,
-        cumpridas: sql<number>`count(*) filter (where ${condicionantes.status} = 'cumprida')::int`,
-        naoCumpridas: sql<number>`count(*) filter (where ${condicionantes.status} = 'nao_cumprida')::int`,
-        naoInformado: sql<number>`count(*) filter (where ${condicionantes.status} = 'nao_informado')::int`,
-        comInformacao: sql<number>`count(*) filter (where ${condicionantes.status} <> 'nao_informado')::int`,
-        empreendimentos: sql<number>`count(distinct ${condicionantes.empreendimento})::int`,
-      })
-      .from(condicionantes);
-
-    const total = r?.total ?? 0;
-    return {
-      total,
-      comInformacao: r?.comInformacao ?? 0,
-      cumpridas: r?.cumpridas ?? 0,
-      naoCumpridas: r?.naoCumpridas ?? 0,
-      naoInformado: r?.naoInformado ?? 0,
-      empreendimentos: r?.empreendimentos ?? 0,
-      vazio: total === 0,
-    };
-  } catch (err) {
-    console.warn("[condicionantes] contarCondicionantes falhou ou tabela ausente:", err);
-    return CONTAGEM_VAZIA;
-  }
+        const total = r?.total ?? 0;
+        return {
+          total,
+          comInformacao: r?.comInformacao ?? 0,
+          cumpridas: r?.cumpridas ?? 0,
+          naoCumpridas: r?.naoCumpridas ?? 0,
+          naoInformado: r?.naoInformado ?? 0,
+          empreendimentos: r?.empreendimentos ?? 0,
+          vazio: total === 0,
+        };
+      } catch (err) {
+        console.warn("[condicionantes] contarCondicionantes falhou ou tabela ausente:", err);
+        return CONTAGEM_VAZIA;
+      }
+    },
+    { vazio: (r) => r.total === 0, padrao: CONTAGEM_VAZIA, rotulo: "condicionantes" }
+  );
 }
 
 /**
@@ -114,84 +116,89 @@ export async function listarCondicionantes(
   empreendimento: string,
   limite = 500,
 ): Promise<CondicionanteLinha[]> {
-  const db = getDb();
-  if (!db) return [];
+  return comBancoReserva(
+    async (db) => {
+      try {
+        const linhas = await db
+          .select({
+            id: condicionantes.id,
+            empreendimento: condicionantes.empreendimento,
+            texto: condicionantes.texto,
+            tipo: condicionantes.tipo,
+            prazo: condicionantes.prazo,
+            orgao: condicionantes.orgao,
+            status: condicionantes.status,
+            metodoStatus: condicionantes.metodo_status,
+            confianca: condicionantes.confianca,
+            resumoIa: condicionantes.resumo_ia,
+            ordemNaFonte: condicionantes.ordem_na_fonte,
+            documentoUrlFonte: documentos_ambientais.url_fonte,
+            documentoUrlR2: documentos_ambientais.url_r2,
+            documentoTipo: documentos_ambientais.tipo_documento,
+          })
+          .from(condicionantes)
+          .innerJoin(documentos_ambientais, eq(condicionantes.documento_id, documentos_ambientais.id))
+          .where(eq(condicionantes.empreendimento, empreendimento))
+          .orderBy(asc(condicionantes.ordem_na_fonte), asc(condicionantes.id))
+          .limit(limite);
 
-  try {
-    const linhas = await db
-      .select({
-        id: condicionantes.id,
-        empreendimento: condicionantes.empreendimento,
-        texto: condicionantes.texto,
-        tipo: condicionantes.tipo,
-        prazo: condicionantes.prazo,
-        orgao: condicionantes.orgao,
-        status: condicionantes.status,
-        metodoStatus: condicionantes.metodo_status,
-        confianca: condicionantes.confianca,
-        resumoIa: condicionantes.resumo_ia,
-        ordemNaFonte: condicionantes.ordem_na_fonte,
-        documentoUrlFonte: documentos_ambientais.url_fonte,
-        documentoUrlR2: documentos_ambientais.url_r2,
-        documentoTipo: documentos_ambientais.tipo_documento,
-      })
-      .from(condicionantes)
-      .innerJoin(documentos_ambientais, eq(condicionantes.documento_id, documentos_ambientais.id))
-      .where(eq(condicionantes.empreendimento, empreendimento))
-      .orderBy(asc(condicionantes.ordem_na_fonte), asc(condicionantes.id))
-      .limit(limite);
+        if (linhas.length === 0) return [];
 
-    if (linhas.length === 0) return [];
+        const evidencias = await db
+          .select({
+            condicionanteId: condicionantes_evidencias.condicionante_id,
+            tipo: condicionantes_evidencias.tipo,
+            url: condicionantes_evidencias.url_especifica,
+            data: condicionantes_evidencias.data,
+          })
+          .from(condicionantes_evidencias)
+          .orderBy(desc(condicionantes_evidencias.data));
 
-    const evidencias = await db
-      .select({
-        condicionanteId: condicionantes_evidencias.condicionante_id,
-        tipo: condicionantes_evidencias.tipo,
-        url: condicionantes_evidencias.url_especifica,
-        data: condicionantes_evidencias.data,
-      })
-      .from(condicionantes_evidencias)
-      .orderBy(desc(condicionantes_evidencias.data));
+        const porCond = new Map<string, CondicionanteLinha["evidencias"]>();
+        for (const e of evidencias) {
+          const arr = porCond.get(e.condicionanteId) ?? [];
+          arr.push({ tipo: e.tipo, url: e.url, data: e.data });
+          porCond.set(e.condicionanteId, arr);
+        }
 
-    const porCond = new Map<string, CondicionanteLinha["evidencias"]>();
-    for (const e of evidencias) {
-      const arr = porCond.get(e.condicionanteId) ?? [];
-      arr.push({ tipo: e.tipo, url: e.url, data: e.data });
-      porCond.set(e.condicionanteId, arr);
-    }
-
-    return linhas.map((l) => ({
-      ...l,
-      status: l.status as StatusCondicionante,
-      confianca: l.confianca == null ? null : Number(l.confianca),
-      evidencias: porCond.get(l.id) ?? [],
-    }));
-  } catch (err) {
-    console.warn("[condicionantes] listarCondicionantes falhou ou tabela ausente:", err);
-    return [];
-  }
+        return linhas.map((l) => ({
+          ...l,
+          status: l.status as StatusCondicionante,
+          confianca: l.confianca == null ? null : Number(l.confianca),
+          evidencias: porCond.get(l.id) ?? [],
+        }));
+      } catch (err) {
+        console.warn("[condicionantes] listarCondicionantes falhou ou tabela ausente:", err);
+        return [];
+      }
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "condicionantes" }
+  );
 }
 
 /** Documentos oficiais já espelhados/marcados para um empreendimento. */
 export async function documentosDoEmpreendimento(empreendimento: string) {
-  const db = getDb();
-  if (!db) return [];
-  try {
-    return await db
-      .select({
-        id: documentos_ambientais.id,
-        urlFonte: documentos_ambientais.url_fonte,
-        urlR2: documentos_ambientais.url_r2,
-        orgao: documentos_ambientais.orgao,
-        tipo: documentos_ambientais.tipo_documento,
-        data: documentos_ambientais.data_documento,
-        processo: documentos_ambientais.numero_processo,
-      })
-      .from(documentos_ambientais)
-      .where(eq(documentos_ambientais.empreendimento, empreendimento))
-      .orderBy(desc(documentos_ambientais.data_documento));
-  } catch (err) {
-    console.warn("[condicionantes] documentosDoEmpreendimento falhou ou tabela ausente:", err);
-    return [];
-  }
+  return comBancoReserva(
+    async (db) => {
+      try {
+        return await db
+          .select({
+            id: documentos_ambientais.id,
+            urlFonte: documentos_ambientais.url_fonte,
+            urlR2: documentos_ambientais.url_r2,
+            orgao: documentos_ambientais.orgao,
+            tipo: documentos_ambientais.tipo_documento,
+            data: documentos_ambientais.data_documento,
+            processo: documentos_ambientais.numero_processo,
+          })
+          .from(documentos_ambientais)
+          .where(eq(documentos_ambientais.empreendimento, empreendimento))
+          .orderBy(desc(documentos_ambientais.data_documento));
+      } catch (err) {
+        console.warn("[condicionantes] documentosDoEmpreendimento falhou ou tabela ausente:", err);
+        return [];
+      }
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "condicionantes" }
+  );
 }

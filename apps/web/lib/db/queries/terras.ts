@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { vazio_municipioInTerras } from "@/lib/db/schema";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
@@ -29,11 +29,14 @@ export interface VazioMunicipio {
 export async function vazioPorMunicipio(
   idMunicipio: IdMunicipio
 ): Promise<VazioMunicipio[] | null> {
-  const db = getDb();
-  if (!db) return null;
-  const linhas = await db
-    .select()
-    .from(vazio_municipioInTerras)
-    .where(eq(vazio_municipioInTerras.id_municipio, idMunicipio));
-  return linhas as VazioMunicipio[];
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select()
+        .from(vazio_municipioInTerras)
+        .where(eq(vazio_municipioInTerras.id_municipio, idMunicipio));
+      return linhas as VazioMunicipio[];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "terras" }
+  );
 }

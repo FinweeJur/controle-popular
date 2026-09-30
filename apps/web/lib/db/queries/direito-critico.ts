@@ -1,4 +1,4 @@
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { direito_critico_normas, direito_critico_precedentes } from "@/lib/db/schema";
 
 /**
@@ -91,19 +91,25 @@ function paraPrecedente(
 }
 
 export async function listarNormasDireitoCritico(): Promise<NormaDireitoCriticoRow[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.select().from(direito_critico_normas);
-  return linhas.map(paraNorma).sort((a, b) => a.idFonte - b.idFonte);
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.select().from(direito_critico_normas);
+      return linhas.map(paraNorma).sort((a, b) => a.idFonte - b.idFonte);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "direito-critico" }
+  );
 }
 
 export async function listarPrecedentesDireitoCritico(): Promise<
   PrecedenteDireitoCriticoRow[]
 > {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.select().from(direito_critico_precedentes);
-  return linhas.map(paraPrecedente).sort((a, b) => a.idFonte - b.idFonte);
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.select().from(direito_critico_precedentes);
+      return linhas.map(paraPrecedente).sort((a, b) => a.idFonte - b.idFonte);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "direito-critico" }
+  );
 }
 
 export interface ContagemDireitoCritico {

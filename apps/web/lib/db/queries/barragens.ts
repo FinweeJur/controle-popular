@@ -1,5 +1,5 @@
 import { asc, desc, eq, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { num } from "@/lib/db/num";
 import { feam_barragens, ref_municipios_mg, snisb_barragens } from "@/lib/db/schema";
 import { extrairTagsDeCampos } from "@/lib/tags";
@@ -50,44 +50,42 @@ const CONTAGEM_VAZIA: ContagemBarragensMg = {
 };
 
 export async function contarBarragensMg(): Promise<ContagemBarragensMg> {
-  const db = getDb();
-  if (!db) return CONTAGEM_VAZIA;
+  return comBancoReserva(
+    async (db) => {
+      const [feam] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          municipios: sql<number>`count(distinct ${feam_barragens.id_municipio})::int`,
+          emEmergencia: sql<number>`count(*) filter (where ${feam_barragens.nivel_emergencia} >= 1)::int`,
+          nivel3: sql<number>`count(*) filter (where ${feam_barragens.nivel_emergencia} = 3)::int`,
+          semEstabilidade: sql<number>`count(*) filter (where ${feam_barragens.condicao_estabilidade} is not null and ${feam_barragens.condicao_estabilidade} <> 'Atestada')::int`,
+        })
+        .from(feam_barragens);
 
-  const [feam] = await db
-    .select({
-      total: sql<number>`count(*)::int`,
-      municipios: sql<number>`count(distinct ${feam_barragens.id_municipio})::int`,
-      emEmergencia: sql<number>`count(*) filter (where ${feam_barragens.nivel_emergencia} >= 1)::int`,
-      nivel3: sql<number>`count(*) filter (where ${feam_barragens.nivel_emergencia} = 3)::int`,
-      // `is not null`: 2 linhas vêm com condição vazia na fonte — diferente
-      // de "Não Atestada"/"Não apresentou", que SÃO os 31 desta contagem
-      // (ver §5). Contar o vazio junto inflaria para 33.
-      semEstabilidade: sql<number>`count(*) filter (where ${feam_barragens.condicao_estabilidade} is not null and ${feam_barragens.condicao_estabilidade} <> 'Atestada')::int`,
-    })
-    .from(feam_barragens);
+      const [snisb] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          municipios: sql<number>`count(distinct ${snisb_barragens.id_municipio})::int`,
+        })
+        .from(snisb_barragens)
+        .where(sql`${snisb_barragens.id_municipio} like '31%'`);
 
-  const [snisb] = await db
-    .select({
-      total: sql<number>`count(*)::int`,
-      municipios: sql<number>`count(distinct ${snisb_barragens.id_municipio})::int`,
-    })
-    .from(snisb_barragens)
-    // Sem join: `id_municipio` já É o código IBGE (FK para
-    // `ref_municipios_mg.id_ibge`), e todo código de MG começa com '31'.
-    // A tabela tem grandfather de São Paulo (outra cidade do portal, fora
-    // desta zona estadual) — migration 0057 — por isso o filtro é preciso,
-    // não decorativo.
-    .where(sql`${snisb_barragens.id_municipio} like '31%'`);
-
-  return {
-    totalFeam: feam?.total ?? 0,
-    municipiosFeam: feam?.municipios ?? 0,
-    totalSnisb: snisb?.total ?? 0,
-    municipiosSnisb: snisb?.municipios ?? 0,
-    emEmergencia: feam?.emEmergencia ?? 0,
-    nivel3: feam?.nivel3 ?? 0,
-    semEstabilidadeAtestada: feam?.semEstabilidade ?? 0,
-  };
+      return {
+        totalFeam: feam?.total ?? 0,
+        municipiosFeam: feam?.municipios ?? 0,
+        totalSnisb: snisb?.total ?? 0,
+        municipiosSnisb: snisb?.municipios ?? 0,
+        emEmergencia: feam?.emEmergencia ?? 0,
+        nivel3: feam?.nivel3 ?? 0,
+        semEstabilidadeAtestada: feam?.semEstabilidade ?? 0,
+      };
+    },
+    {
+      vazio: (r) => r.totalFeam === 0 && r.totalSnisb === 0,
+      padrao: CONTAGEM_VAZIA,
+      rotulo: "barragens",
+    }
+  );
 }
 
 export interface BarragemFeamMg {
@@ -117,44 +115,47 @@ export interface BarragemFeamMg {
  * no cliente, mesmo raciocínio de `BuscaMunicipio` do COPAM.
  */
 export async function listarBarragensFeamMg(): Promise<BarragemFeamMg[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .select({
-      idIbge: feam_barragens.id_municipio,
-      municipio: ref_municipios_mg.nome,
-      nome: feam_barragens.nome,
-      empreendedor: feam_barragens.empreendedor,
-      atividade: feam_barragens.atividade,
-      finalidade: feam_barragens.finalidade,
-      situacao: feam_barragens.situacao,
-      condicaoEstabilidade: feam_barragens.condicao_estabilidade,
-      metodoConstrutivo: feam_barragens.metodo_construtivo,
-      categoriaRisco: feam_barragens.categoria_risco,
-      danoPotencial: feam_barragens.dano_potencial,
-      nivelEmergencia: feam_barragens.nivel_emergencia,
-      suspensao: feam_barragens.suspensao,
-      alturaM: num(feam_barragens.altura_m),
-    })
-    .from(feam_barragens)
-    .innerJoin(ref_municipios_mg, eq(feam_barragens.id_municipio, ref_municipios_mg.id_ibge))
-    .orderBy(desc(feam_barragens.nivel_emergencia), asc(ref_municipios_mg.nome), asc(feam_barragens.nome));
-  return linhas.map((b) => ({
-    ...b,
-    tags: extrairTagsDeCampos(
-      [
-        b.nome,
-        b.atividade,
-        b.finalidade,
-        b.situacao,
-        b.condicaoEstabilidade,
-        b.metodoConstrutivo,
-        b.categoriaRisco,
-        b.danoPotencial,
-      ],
-      REGRAS_TAGS_BARRAGENS
-    ),
-  }));
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select({
+          idIbge: feam_barragens.id_municipio,
+          municipio: ref_municipios_mg.nome,
+          nome: feam_barragens.nome,
+          empreendedor: feam_barragens.empreendedor,
+          atividade: feam_barragens.atividade,
+          finalidade: feam_barragens.finalidade,
+          situacao: feam_barragens.situacao,
+          condicaoEstabilidade: feam_barragens.condicao_estabilidade,
+          metodoConstrutivo: feam_barragens.metodo_construtivo,
+          categoriaRisco: feam_barragens.categoria_risco,
+          danoPotencial: feam_barragens.dano_potencial,
+          nivelEmergencia: feam_barragens.nivel_emergencia,
+          suspensao: feam_barragens.suspensao,
+          alturaM: num(feam_barragens.altura_m),
+        })
+        .from(feam_barragens)
+        .innerJoin(ref_municipios_mg, eq(feam_barragens.id_municipio, ref_municipios_mg.id_ibge))
+        .orderBy(desc(feam_barragens.nivel_emergencia), asc(ref_municipios_mg.nome), asc(feam_barragens.nome));
+      return linhas.map((b) => ({
+        ...b,
+        tags: extrairTagsDeCampos(
+          [
+            b.nome,
+            b.atividade,
+            b.finalidade,
+            b.situacao,
+            b.condicaoEstabilidade,
+            b.metodoConstrutivo,
+            b.categoriaRisco,
+            b.danoPotencial,
+          ],
+          REGRAS_TAGS_BARRAGENS
+        ),
+      }));
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "barragens" }
+  );
 }
 
 export interface MunicipioComBarragens {
@@ -176,48 +177,50 @@ export interface MunicipioComBarragens {
  * é mais frágil de ler do que compor em código.
  */
 export async function listarMunicipiosComBarragens(): Promise<MunicipioComBarragens[]> {
-  const db = getDb();
-  if (!db) return [];
+  return comBancoReserva(
+    async (db) => {
+      const [porFeam, porSnisb, nomes] = await Promise.all([
+        db
+          .select({ idIbge: feam_barragens.id_municipio, total: sql<number>`count(*)::int` })
+          .from(feam_barragens)
+          .groupBy(feam_barragens.id_municipio),
+        db
+          .select({ idIbge: snisb_barragens.id_municipio, total: sql<number>`count(*)::int` })
+          .from(snisb_barragens)
+          .where(sql`${snisb_barragens.id_municipio} like '31%'`)
+          .groupBy(snisb_barragens.id_municipio),
+        db.select({ idIbge: ref_municipios_mg.id_ibge, nome: ref_municipios_mg.nome }).from(ref_municipios_mg),
+      ]);
 
-  const [porFeam, porSnisb, nomes] = await Promise.all([
-    db
-      .select({ idIbge: feam_barragens.id_municipio, total: sql<number>`count(*)::int` })
-      .from(feam_barragens)
-      .groupBy(feam_barragens.id_municipio),
-    db
-      .select({ idIbge: snisb_barragens.id_municipio, total: sql<number>`count(*)::int` })
-      .from(snisb_barragens)
-      .where(sql`${snisb_barragens.id_municipio} like '31%'`)
-      .groupBy(snisb_barragens.id_municipio),
-    db.select({ idIbge: ref_municipios_mg.id_ibge, nome: ref_municipios_mg.nome }).from(ref_municipios_mg),
-  ]);
+      const nomePorId = new Map(nomes.map((n) => [n.idIbge, n.nome]));
+      const porId = new Map<string, MunicipioComBarragens>();
 
-  const nomePorId = new Map(nomes.map((n) => [n.idIbge, n.nome]));
-  const porId = new Map<string, MunicipioComBarragens>();
+      for (const f of porFeam) {
+        porId.set(f.idIbge, {
+          idIbge: f.idIbge,
+          nome: nomePorId.get(f.idIbge) ?? f.idIbge,
+          totalFeam: f.total,
+          totalSnisb: 0,
+        });
+      }
+      for (const s of porSnisb) {
+        const existente = porId.get(s.idIbge);
+        if (existente) {
+          existente.totalSnisb = s.total;
+        } else {
+          porId.set(s.idIbge, {
+            idIbge: s.idIbge,
+            nome: nomePorId.get(s.idIbge) ?? s.idIbge,
+            totalFeam: 0,
+            totalSnisb: s.total,
+          });
+        }
+      }
 
-  for (const f of porFeam) {
-    porId.set(f.idIbge, {
-      idIbge: f.idIbge,
-      nome: nomePorId.get(f.idIbge) ?? f.idIbge,
-      totalFeam: f.total,
-      totalSnisb: 0,
-    });
-  }
-  for (const s of porSnisb) {
-    const existente = porId.get(s.idIbge);
-    if (existente) {
-      existente.totalSnisb = s.total;
-    } else {
-      porId.set(s.idIbge, {
-        idIbge: s.idIbge,
-        nome: nomePorId.get(s.idIbge) ?? s.idIbge,
-        totalFeam: 0,
-        totalSnisb: s.total,
-      });
-    }
-  }
-
-  return [...porId.values()].sort(
-    (a, b) => b.totalFeam + b.totalSnisb - (a.totalFeam + a.totalSnisb) || a.nome.localeCompare(b.nome, "pt-BR")
+      return [...porId.values()].sort(
+        (a, b) => b.totalFeam + b.totalSnisb - (a.totalFeam + a.totalSnisb) || a.nome.localeCompare(b.nome, "pt-BR")
+      );
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "barragens" }
   );
 }
