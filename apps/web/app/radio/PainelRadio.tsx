@@ -335,7 +335,7 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
                     className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
                   >
                     <ExternalLink size={13} aria-hidden="true" />
-                    Fonte oficial
+                    {e.site.includes("radio.garden") ? "Ver no radio.garden" : "Fonte oficial"}
                   </a>
                   {e.transcrevivel && (
                     <span

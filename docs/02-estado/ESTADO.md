@@ -176,10 +176,11 @@ Runbooks: [`planos/`](../planos/).
 
 **30/09/2026 — Diretório de rádios (`/radio`) e player multi-estação:**
 
-- Rota `/radio` com **26 estações** de **11 países**: federais (EBC, Câmara,
-  Senado), universitárias (UFMG, UFRJ, USP), comunitárias (Autêntica Favela FM,
-  Brasil de Fato, FM La Tribu) e populares do Sul Global (Cuba, Argentina,
-  Perú, Moçambique, Senegal, Gana, África do Sul, Nigéria, Palestina, Jamaica).
+- Rota `/radio` com **44 estações** de **11 países**: 8 federais (EBC, Câmara,
+  Senado), **21 universitárias** (UFVJM, UFOP, UFV, UFU, UFMG, UFES, UFG, UFAL,
+  UFC, UFDPar, UFPB, UFPel, UFMS, UFSCar, UFCG, UFF, UFABC, UEL, UDESC, UFRJ,
+  USP) e comunitárias/populares do Sul Global (Cuba, Argentina, Peru,
+  Moçambique, Senegal, Gana, África do Sul, Nigéria, Palestina, Jamaica).
 - Dado curado em `apps/web/lib/radio/estacoes.ts`; cada stream é HTTPS e foi
   conferido por requisição HTTP (áudio ou playlist), com o `site` oficial em
   cada linha. Fonte da coleta: `radio-browser.info` e `radio.garden`

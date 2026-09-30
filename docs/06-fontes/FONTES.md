@@ -1199,8 +1199,32 @@ polígonos (mistura da ingestão antiga, pendência Pimentel) e a licença
 "vedado uso comercial" segue valendo.
 
 
+### Capitanias hereditárias — OpenHistoricalMap e mapa do IBGE (Fase B, 30/09)
+
+Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
+
+- **OpenHistoricalMap** — mapa histórico colaborativo, dados em **CC0** (domínio público).
+  Endpoint Overpass: `https://overpass-api.openhistoricalmap.org/api/interpreter`. Tem as
+  capitanias **relação a relação**, com `start_date`/`end_date`. Medido em 30/09/2026:
+  **13 capitanias de 1534** (a de Pernambuco aparece como **Nova Lusitânia**, 1534-1700).
+- ⚠️ **Não é fonte oficial** — é wiki comunitária: serve de ponto de partida, e a
+  conferência contra o mapa oficial está registrada na camada.
+- ⚠️ **Query por PowerShell mangla** (colchetes da expressão) → use `requests`/curl com
+  arquivo; e o recorte por *bounding box* do Brasil trouxe o **Chile** junto (filtre por
+  relação, não por caixa).
+- **IBGE — Catálogo de Metadados:** *Evolução da Divisão Territorial do Brasil 1872-2010 —
+  Mapa das Capitanias Hereditárias* (mapa de **Luís Teixeira, 1574**), ficha
+  `cb6e6495-cd71-45d4-884f-904e6231858c`; no catálogo é **PDF/PNG**, não vetor. É a
+  referência de conferência (modelo e contagem), sem georreferenciamento.
+- **Resultado:** `apps/web/public/terras/globo/dados/camadas/hist-capitanias.geojson`
+  (233 KB), registrada no globo no assunto `historia`, desligada de nascença.
+
 ## Decisões registradas
 
+- **2026-09-30:** Capitanias hereditárias publicadas a partir do OpenHistoricalMap
+  (CC0) — mapa colaborativo entra como ponto de partida, **conferido no modelo e
+  na contagem** contra o mapa oficial do IBGE (Luís Teixeira, 1574). A camada
+  nasce desligada e cada feição carrega `natureza: traçado histórico aproximado`.
 - **2026-09-30:** Embargos do IBAMA (Pamgia, ArcGIS REST) consultados com
   `returnCountOnly=true`, UA honesta e pausa ≥ 2 s; `robots.txt` do host
   devolve 404 (sem declaração) → liberado por padrão. `nome_embargado` e
@@ -1237,6 +1261,8 @@ Global, com programação musical.
 | Item | Registro |
 |---|---|
 | **Agregadores de partida** | `radio-browser.info` (API pública aberta) e `radio.garden` — sites de referência que conectam rádios do mundo |
+| **Abrangência** | 44 estações de 11 países; 21 universitárias brasileiras (UFVJM, UFOP, UFV, UFU, UFMG, UFES, UFG, UFAL, UFC, UFDPar, UFPB, UFPel, UFMS, UFSCar, UFCG, UFF, UFABC, UEL, UDESC, UFRJ, USP) |
+| **Stream das universitárias** | próprio da emissora quando disponível (UFU, UFES, UFG, UFAL); nas demais, o relay do `radio.garden` (`/api/ara/content/listen/<id>/channel.mp3`), que exige `User-Agent` de navegador |
 | **Fonte linkável** | o campo `site` de cada estação é a página oficial da emissora (AGENTS § 8.1) |
 | **Verificação** | cada `stream` foi conferido por requisição HTTP direta (`curl -sL --range 0-2000`), respondendo áudio ou playlist; status 200 sozinho não basta (AGENTS § 6) |
 | **Só HTTPS** | stream `http://` foi descartado: página HTTPS bloqueia áudio HTTP (conteúdo misto) |

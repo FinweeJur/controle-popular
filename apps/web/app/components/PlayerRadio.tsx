@@ -196,7 +196,7 @@ export default function PlayerRadio() {
 
         {/* Índice expansível: aparece ao passar o mouse/focar no botão. */}
         {indiceAberto && (
-          <div className="mb-2 w-[min(calc(100vw-2rem),21rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl">
+          <div className="absolute bottom-full left-0 mb-2 w-[min(calc(100vw-2rem),21rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl">
             <div className="flex items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
               <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
                 <ListMusic size={14} aria-hidden="true" />
