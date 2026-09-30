@@ -384,7 +384,7 @@ Cada movimento tem entrega própria e testável; nenhum depende dos outros.
 
 | Fase | Entrega | Depende de |
 |---|---|---|
-| **E0 — Medir** | medir o *bundle* real e o índice atual antes de tocar em UI | — |
+| **E0 — Medir** | medir o *bundle* real e o índice atual antes de tocar em UI | — · 🚧 ferramenta em `apps/web/scripts/medir-bundle.mjs`; medição real pendente de build |
 | **E1 — Cola** | paleta de comandos ligando busca + Seu Nonô + ações | E0 |
 | **E2 — Vínculo** | "minhas cidades" em `localStorage` + recapitulação | E1 |
 | **E3 — Oficina** | comparador, calculadora e gerador de dossiê | E2 |
@@ -392,6 +392,12 @@ Cada movimento tem entrega própria e testável; nenhum depende dos outros.
 | **E5 — Prazer** | micro-lições e quiz com a régua editorial acima | E4 |
 | **E6 — Caixa de ferramentas** | calculadora, horário mundial, verificador de dígito e `/guia` unificado | E3 |
 | **E7 — Oficina de bastidores** | enriquecimento offline (PicoClaw/Colibri/Ollama) virando dado estático | E0 |
+
+**Medição de 30/09 (proxy).** Sem build de produção no checkout, mediu-se o
+código-fonte dos 13 componentes de cliente criados: **129,6 KiB bruto · 40,5
+KiB gzip de fonte** (≈1,3% do teto de 3 MiB). É PROXY, não o bundle real — o
+bundle inclui React e o resto. A medição definitiva: `npm run build` e depois
+`node apps/web/scripts/medir-bundle.mjs` antes do deploy.
 
 **Não competir com a fila operacional.** O [ESTADO.md](../02-estado/ESTADO.md)
 tem o Bloco A (validar banco, redirect da raiz, vulnerabilidades) na frente.
