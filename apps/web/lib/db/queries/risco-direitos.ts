@@ -47,7 +47,8 @@
  */
 
 import { and, count, desc, eq, gt, inArray, isNotNull, ne, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
+import type { DB } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
 import {
   contratos,
@@ -86,13 +87,11 @@ const SO_CNPJ = sql`length(${doacoes_campanha.doador_documento_mascarado}) = 14`
  * de betim.ts). A cobertura acompanha o índice: cada dimensão diz se a
  * fonte dela tem dado coletado para esta cidade.
  */
-export async function indicadoresRiscoDireitos(
+async function calcularIndiceComDb(
+  db: DB,
   idMunicipio: IdMunicipio,
   cidade: Cidade
-): Promise<IndiceComCobertura | null> {
-  const db = getDb();
-  if (!db) return null;
-
+): Promise<IndiceComCobertura> {
   // ── 2. Socioambiental e Clima ─────────────────────────────────────────
   const [feamCriticas, snisbCriticas, autosIbama] = await Promise.all([
     db
@@ -217,4 +216,29 @@ export async function indicadoresRiscoDireitos(
         typeof (cidade.fontes ?? {})["camara_proposicoes"] === "boolean",
     },
   };
+}
+
+/**
+ * Busca os insumos reais do índice para o município e calcula o score,
+ * com a cadeia de reserva de banco (Guara → Neon → home-pc). Devolve
+ * `null` quando NENHUMA dimensão tem dado em nenhum banco — "0 real" e
+ * "0 sem dado" continuam separados pela `cobertura`.
+ */
+export async function indicadoresRiscoDireitos(
+  idMunicipio: IdMunicipio,
+  cidade: Cidade
+): Promise<IndiceComCobertura | null> {
+  return comBancoReserva(
+    (db) => calcularIndiceComDb(db, idMunicipio, cidade),
+    {
+      vazio: (r) =>
+        r === null ||
+        (!r.cobertura.saudeVida &&
+          !r.cobertura.socioambientalClima &&
+          !r.cobertura.integridadeErario &&
+          !r.cobertura.opacidadePolitica),
+      padrao: null,
+      rotulo: "risco-direitos",
+    }
+  );
 }
