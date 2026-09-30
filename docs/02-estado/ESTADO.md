@@ -112,10 +112,12 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 **Nota A4:** o Postgres do Guara tem 1 GiB incluso (2 GiB máximo), snapshot
 diário e endpoint privado (a rede particular da Guara, mais rápida e mais
-fechada que a internet). Variante pgvector habilita embeddings do assistente
-(rootbook `ROTEIRO-PGVECTOR-CHATBOT.md`); PostGIS habilita consultas de mapa
-no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
-`DATABASE_URL`, `guara deploy`.
+fechada que a internet). O catálogo **não tem variante pgvector** (medido
+30/09/2026): a extensão `vector` não existe no banco. PostGIS está
+disponível (consultas de mapa no servidor). O RAG do assistente roda em
+memória e não depende de pgvector — ver
+[PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md). Migração:
+`pg_dump` da Neon, carga no Guara, troca de `DATABASE_URL`, `guara deploy`.
 
 ### Bloco B — destravadas, aguardando ordem
 
@@ -140,7 +142,10 @@ no servidor. Migração: `pg_dump` da Neon, carga no Guara, troca de
 
 ### Bloco D — destrava com a Fase 4
 
-- Fase 5 do chatbot: pgvector no banco novo (runbook no `planos/`).
+- Fase 5 do chatbot (persistência do índice): ⛔ bloqueada — o catálogo do
+  Guara não tem pgvector e o Qdrant bate o teto do plano
+  (`TIER_LIMIT_EXCEEDED`, 402, medido 30/09). O RAG roda em memória (397
+  pedaços) e basta — ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
 - Coleta nova volta ao Postger (hoje vai para D1 por causa do storage).
 - Índice de busca pode voltar a crescer sem estourar o teto da Neon.
 

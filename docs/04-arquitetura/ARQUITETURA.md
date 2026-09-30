@@ -200,7 +200,7 @@ Fonte: `lib/db/schema.ts` (123 KB, introspectado do Neon via drizzle-kit) + `lib
 
 **O que já existe de bom:**
 - Full-text em português com unaccent: 4 índices GIN tsvector.
-- pgvector: `public.embeddings` e `congresso.embeddings` (vector 384) com HNSW `vector_cosine_ops` — RAG em produção.
+- pgvector: `public.embeddings` e `congresso.embeddings` (vector 384) com HNSW `vector_cosine_ops` — **tabelas legadas, sem uso**: o RAG do assistente roda em memória (`lib/assistente/embeddings/rag.ts`), e a extensão `vector` não existe no Postgres do Guara (medido 30/09/2026; ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md)).
 - Trigram: `congresso.parlamentares.nome` com GIN `gin_trgm_ops`.
 - Índices compostos bem pensados por município.
 - Sem soft-delete: padrão é flag `ativo`/`aprovado` — coerente, manter.

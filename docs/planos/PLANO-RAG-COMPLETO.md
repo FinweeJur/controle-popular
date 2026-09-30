@@ -145,9 +145,10 @@ O desenho corrigido é: **ligar o degrau 3 é configuração; tornar o RAG
 4. **Verificação.** Testes de invariante do acervo (todo pedaço tem rota e
    fonte; catálogo e inventário presentes) e um conjunto de perguntas de
    fumaça.
-5. **pgvector** segue como projeto separado e bloqueado pelo Guara — o
-   runbook `ROTEIRO-PGVECTOR-CHATBOT.md` só volta quando houver Postgres com
-   a extensão `vector`.
+5. **pgvector/Qdrant** seguem como projeto separado. O catálogo do Guara não
+   tem pgvector (medido) e a criação do **Qdrant** bateu o teto do plano
+   (`TIER_LIMIT_EXCEEDED`, HTTP 402, 30/09/2026). Com 397 pedaços curtos, o
+   índice em memória basta — não há ganho em persistir hoje.
 
 ## Cobertura das bases de dados
 
@@ -168,8 +169,12 @@ O inventário (`data/bases-portal.json`, medido em 30/09/2026) encontrou
 | Gestão e governo | 36 | 1,2 | /governo |
 | (demais temas) | — | — | — |
 
-O acervo do RAG passa a somar, além dos ~146 pedaços anteriores: 9 verbetes
-municipais, 16 bases curadas e 23 pedaços de inventário (1 total + 22 temas).
+**Medido em 30/09/2026:** o acervo tem **397 pedaços** —
+`180` na frente geral, 39 em ambiental, 30 em estado, 25 em terra, 23 no
+judiciário, 18 em cidades, 18 em direitos, 16 na central, 15 em
+direitos-em-movimento, 14 em paraopeba, 14 no congresso e 5 em função social
+da terra. Os pedaços novos desta rodada foram a memória municipal (9), o
+catálogo curado (16) e o inventário (23).
 
 **Limite declarado:** a contagem de registros é parcial — arquivos acima de
 8 MB não são abertos para contar (o teste e o inventário marcam
@@ -186,7 +191,7 @@ silencioso.
 | **R2 — inventário medido** | gerador + `bases-portal.json` no RAG | ✅ 30/09 |
 | **R3 — ligar degrau 3** | chaves no ambiente do Guara (runtime) | ✅ 30/09 (já configuradas; ver `guara env list`) |
 | **R4 — golden set** | perguntas de fumaça + medição de abstenção | ✅ 30/09 (`lib/assistente/golden-set.ts`, 22 casos) |
-| **R5 — pgvector** | persistência do índice | ⛔ pgvector indisponível no Guara; alternativa gerenciada é o **Qdrant** |
+| **R5 — persistência** | pgvector ou Qdrant para o índice | ⛔ pgvector não existe no Guara; Qdrant bate o teto do plano (402). Índice em memória basta para 397 pedaços |
 
 ## Executado em 30/09/2026
 
@@ -211,9 +216,12 @@ silencioso.
 - **R5 — investigado no CLI do Guara (30/09):** o catálogo `postgres` **não
   oferece variante pgvector**, e a extensão `vector` não aparece em
   `pg_available_extensions` do banco atual (tem `postgis`, `pg_trgm`,
-  `unaccent`). O catálogo oferece **Qdrant** (banco vetorial) como
-  alternativa gerenciada — é o caminho se um dia o índice precisar ser
-  persistente.
+  `unaccent`).
+- **Tentativa de criar o Qdrant (30/09):** o CLI devolveu
+  `TIER_LIMIT_EXCEEDED` (HTTP 402) — o plano não comporta o serviço extra. O
+  Qdrant segue como opção só se o plano subir.
+- **Índice medido:** `montarAcervoDetalhado().cobertura.total` = **397
+  pedaços** (não ~180), sem nenhuma resposta pulada por falta de rota.
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 ## Riscos e métricas
