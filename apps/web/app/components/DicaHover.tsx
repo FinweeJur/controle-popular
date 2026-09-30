@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 /**
  * ═══ Dica no hover — janelinha explicativa depois de 2 segundos ═══
  *
- * Regra do dono, 29/09/2026: ao deixar o mouse PARADO sobre um botão,
+ * Regra do dev, 29/09/2026: ao deixar o mouse PARADO sobre um botão,
  * link ou controle por 2 s, uma janelinha curta explica o que aquele
  * elemento faz. No teclado (Tab) a mesma dica aparece depois de 600 ms,
  * porque quem navega por teclado espera resposta imediata do foco.

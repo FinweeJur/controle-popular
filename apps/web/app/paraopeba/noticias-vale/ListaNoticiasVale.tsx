@@ -18,7 +18,7 @@ import { formatDateBR } from "@/lib/betim/format";
  * ═══ CSV: O QUE SAI E O QUE NÃO SAI ═══
  *
  * Só o que está FILTRADO na tela, separador `;` e BOM UTF-8 (senão o Excel
- * brasileiro abre tudo numa coluna e com acento quebrado — regra do dono,
+ * brasileiro abre tudo numa coluna e com acento quebrado — regra do dev,
  * 21/08/2026). Título, veículo, data e link: metadado, não o texto da
  * matéria. Quem quiser a reportagem abre o link.
  */
@@ -91,7 +91,7 @@ export default function ListaNoticiasVale({ noticias }: { noticias: NoticiaVale[
 
   return (
     <>
-      {/* Gráfico de evolução no tempo — a regra das "cinco coisas" do dono,
+      {/* Gráfico de evolução no tempo — a regra das "cinco coisas" do dev,
           versão mínima: barra CSS com a contagem em texto ao lado. */}
       <section className="mt-6">
         <h2 className="font-display text-xl font-semibold">Itens por mês</h2>

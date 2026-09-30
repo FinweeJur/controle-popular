@@ -11,7 +11,7 @@
  *
  * `clipping.ts`, `clipping-ati.ts`, `clipping-ij.ts`, `linha-do-tempo.ts`,
  * `atores.ts` e `auxilio.ts` vêm de `painel-paraopeba.html` — um snapshot
- * manual entregue pelo dono, sem API
+ * manual entregue pelo dev, sem API
  * por trás. `documentos.ts` vem do índice Solr público e vivo da Plataforma
  * Brumadinho UFMG, cruzado por município via o campo `places` que a própria
  * UFMG preenche (zero inferência de texto). As duas nunca se misturam num

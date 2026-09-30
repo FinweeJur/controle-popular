@@ -13,7 +13,7 @@ export const generateMetadata = metadataDaCidade(
   (c) => `Anuncie seu negócio local no ${nomePortal(c)} — divulgação única a partir de R$ 200, sem mensalidade.`
 );
 
-// Número comercial confirmado pelo dono em 2026-08-17.
+// Número comercial confirmado pelo dev em 2026-08-17.
 const WHATSAPP_COMERCIAL = "5531975709609";
 
 export default async function AnunciePage({

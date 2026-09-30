@@ -1,6 +1,6 @@
 """Gera o .docx da revisão com SÓ o conteúdo visível ao leitor.
 
-Pedido do dono em 30/09/2026: "me gere um .docx com só o que fica
+Pedido do dev em 30/09/2026: "me gere um .docx com só o que fica
 visível pro usuário". O .md de revisão carrega metadados, colunas de
 antes x depois e medições — ótimo para conferência técnica, ruim para
 leitura no Word. Este script é o oposto: nada de tabela comparativa,
@@ -8,9 +8,9 @@ só o que aparece na tela da Mística do Dia.
 
 O que é visível (app/components/MisticaDoDia.tsx):
   1. ano + título (juntos, ano em negrito) — o ano SÓ aparece quando o
-     título não traz o ano (unificação das datas, dono 30/09/2026);
+     título não traz o ano (unificação das datas, dev 30/09/2026);
   2. resumo, quando existe (no máximo 2 frases: cada história cabe em
-     2 parágrafos, dono 30/09/2026);
+     2 parágrafos, dev 30/09/2026);
   3. aviso "Fato do calendário sem data no original" (semData);
   4. "Fonte: " + citação CURTA `(Obra, Autor, Data)` — a mesma
      `fonteCurta()` de lib/memoria/mistica.ts, com link quando houver.

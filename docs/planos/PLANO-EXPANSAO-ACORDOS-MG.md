@@ -45,7 +45,7 @@ ambientais, projetos, contratos e convênios de MG — execução financeira,
 atendimento de metas, e documentos de corregedoria/ouvidoria de Governo de MG,
 MPMG, DPMG e TJMG.
 
-**Decisões do dono:** dinheiro e acordo em `/ambiental`, instituição de justiça em
+**Decisões do dev:** dinheiro e acordo em `/ambiental`, instituição de justiça em
 `/judiciario`; a coleta começa pelo **dinheiro**.
 
 ---
@@ -78,7 +78,7 @@ por trilha, dizendo onde retomar). A tarefa deixou de ser *criar* e passou a ser
 **Pendência real:** a memória `feedback_lightweight_todo.md` (intocada desde 05/08)
 prescreve um formato que **não é** o do arquivo real — ela pede checkboxes e as
 seções *Agora / Bloqueado / Próximas fases / Backlog / Feito*; o `TODO.md` usa
-*Em curso / Esperando data / Esperando decisão do dono*, sem checkbox e sem
+*Em curso / Esperando data / Esperando decisão do dev*, sem checkbox e sem
 "Feito", com a regra explícita "não é changelog". Alinhar a memória ao arquivo.
 
 ## 0.3. Não pisar no trabalho alheio *(regras válidas; números corrigidos)*
@@ -99,7 +99,7 @@ aquilo era flag de linha de comando.
 
 ⚠️ **Desvio registrado:** a instrução era abrir worktree próprio
 (`cp-acordos-mg`) antes da frente nova. **Não foi seguido** — tudo rodou no
-checkout principal, que a convenção permite para tarefa iniciada pelo dono. A
+checkout principal, que a convenção permite para tarefa iniciada pelo dev. A
 próxima sessão não deve procurar um worktree que não existe.
 
 ## 0.4. Trabalho em lote roda no jcode

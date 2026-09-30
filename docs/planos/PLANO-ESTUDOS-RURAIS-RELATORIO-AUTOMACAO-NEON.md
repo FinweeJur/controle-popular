@@ -117,4 +117,4 @@ Só depois das fases 1–3 estáveis:
 4. Número na tela vem de medição com data — nunca digitado à mão
 5. Lacuna é informação: dizer quantos itens vieram vazios
 6. `--force` nunca; commit por pathspec; mensagem por arquivo
-7. Uma fase por vez: entregou, mediu, o dono aprova, passa pra próxima
+7. Uma fase por vez: entregou, mediu, o dev aprova, passa pra próxima

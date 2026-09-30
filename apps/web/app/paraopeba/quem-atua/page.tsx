@@ -38,7 +38,7 @@ const ORDEM_CATEGORIAS: CategoriaAtor[] = ["judiciario", "mp", "gestora", "mov",
 // "associações autoras da ação" institucionais, não movimento — duas delas
 // com `contatos: []` no próprio painel-fonte. Por isso o destaque na hero
 // é só o MAB: é o único ator cujo `papelNoPainel` o identifica como
-// "Movimento social de base", e é o pedido literal do dono ("o movimento").
+// "Movimento social de base", e é o pedido literal do dev ("o movimento").
 const MOVIMENTO = ATORES_REPARACAO.find(
   (a) => a.papelNoPainel === "Movimento social de base",
 );

@@ -14,7 +14,7 @@
 - [As quatro pistas do diário — todas já corrigidas antes desta revisão](#as-quatro-pistas-do-diário-todas-já-corrigidas-antes-desta-revisão)
 - [🔴 Achados críticos (corrigidos)](#achados-críticos-corrigidos)
 - [🟡 Achados médios (corrigidos ou parcialmente corrigidos)](#achados-médios-corrigidos-ou-parcialmente-corrigidos)
-- [🟢 Achados baixos / editoriais — decisão do dono](#achados-baixos-editoriais-decisão-do-dono)
+- [🟢 Achados baixos / editoriais — decisão do dev](#achados-baixos-editoriais-decisão-do-dev)
 - [Vocabulário e siglas — auditoria dedicada](#vocabulário-e-siglas-auditoria-dedicada)
 - [Acessibilidade — o que mais foi testado](#acessibilidade-o-que-mais-foi-testado)
 - [Design system — o que aproveitar de Kokonut UI, Motion.dev e Bklit UI](#design-system-o-que-aproveitar-de-kokonut-ui-motiondev-e-bklit-ui)
@@ -22,7 +22,7 @@
 - [Origem](#origem)
 
 > Escrita em 14/08/2026, atendendo aos itens 7 e 8 de
-> `docs/planos/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
+> `docs/planos/TODO-PROXIMAS-RODADAS.md`. Pedido do dev, em duas partes: revisão
 > crítica de onboarding/acessibilidade/facilidade de uso, e o que dá para
 > aproveitar de Kokonut UI, Motion.dev e Bklit UI.
 >
@@ -48,8 +48,8 @@
 | Vermelho de alerta abaixo do piso do próprio tema alto contraste | 🟡 Médio | **Corrigido** — `ed003bd` |
 | Sem link "pular para o conteúdo" (WCAG 2.4.1) | 🟡 Médio | **Corrigido nas 4 zonas + home** — `bc2d372`; falta em Terras/Paraopeba/`/busca`/`/sobre`/Direitos em Movimento |
 | RTID sem expansão (mapa 3D) | 🟢 Baixo | **Corrigido** — `ed003bd` |
-| Terras e Paraopeba não têm cabeçalho/nav persistente nenhum | 🟡 Médio, arquitetural | **Decisão do dono** |
-| Home com 6 cards + 1 banner — sem destaque pra "minha cidade" | 🟢 Baixo, editorial | **Decisão do dono** |
+| Terras e Paraopeba não têm cabeçalho/nav persistente nenhum | 🟡 Médio, arquitetural | **Decisão do dev** |
+| Home com 6 cards + 1 banner — sem destaque pra "minha cidade" | 🟢 Baixo, editorial | **Decisão do dev** |
 | Kokonut UI / Motion.dev / Bklit UI — bibliotecas de animação | — | **Não adotar código nenhum**; 3 padrões vale copiar em CSS puro |
 
 247 testes de `lib/` + 121 de `globo` passando, `tsc --noEmit` limpo,
@@ -71,7 +71,7 @@ tinham commit de conserto, todos de 13/08, todos **antes** desta sessão:
    comentário no arquivo).
 3. **Três telas prometiam "ver metodologia" e abriam assunto errado** —
    corrigido em `2da2c28` (auditoria de discurso dedicada).
-4. **Dono não achou uma frente navegando no celular** — esta é a única
+4. **Dev não achou uma frente navegando no celular** — esta é a única
    das quatro que **não tinha commit de conserto**, porque a causa raiz
    (cabeçalho de zona cravado à mão) continuava lá. É o achado #1 desta
    revisão, abaixo.
@@ -247,7 +247,7 @@ e o painel de preview deste ambiente não compõe frame (mesma limitação
 que impediu tirar screenshot). Vale um Tab manual real antes de dar como
 fechado.
 
-### 5. Terras e Paraopeba não têm cabeçalho nem navegação persistente — decisão do dono
+### 5. Terras e Paraopeba não têm cabeçalho nem navegação persistente — decisão do dev
 
 **Onde**: `app/funcaosocialterra/page.tsx` (+ `/mapa`, `/alertas`) e
 `app/paraopeba/page.tsx` (+ 5 subpáginas).
@@ -274,7 +274,7 @@ volta para a PRÓPRIA home da zona, não para as outras cinco.
 layout — sticky ou não, larguras, se herda o estilo rico do `Header.tsx`
 de Cidades ou o estilo enxuto de `congresso/layout.tsx`, e como isso
 convive com o HUD do globo 3D. É desenho novo, não extensão de um padrão
-que já existe nessas duas telas. Fica para o dono decidir a forma; a
+que já existe nessas duas telas. Fica para o dev decidir a forma; a
 régua (`outrasZonas()`) já existe e pronta para alimentar o que for
 escolhido.
 
@@ -294,7 +294,7 @@ exato (conferido antes de editar).
 
 ---
 
-## 🟢 Achados baixos / editoriais — decisão do dono
+## 🟢 Achados baixos / editoriais — decisão do dev
 
 ### 7. A home tem seis cards + um banner — carga cognitiva pra quem só quer "minha cidade"
 
@@ -317,7 +317,7 @@ cidade" varre 6 blocos de texto denso antes de confirmar qual é o certo.
 **Não mexi**: mudar hierarquia visual (destacar um card, reordenar,
 resumir a descrição dos outros cinco) é decisão de identidade visual —
 exatamente o tipo de mudança que o escopo desta revisão pede pra deixar
-com o dono. Registro uma opção de baixo custo, sem redesenho: uma linha
+com o dev. Registro uma opção de baixo custo, sem redesenho: uma linha
 de texto acima do grid — "Procurando sua cidade? O primeiro card é o
 seu." — ou um botão "Ir direto pra minha cidade" que abre um seletor,
 sem mexer no grid em si.
@@ -410,7 +410,7 @@ O teto de bundle é real e apertado: o comentário do script `build` em
 `apps/web/package.json` registra que o deploy chegou a faltar **222 KiB**
 para caber no limite de 3 MiB (gzip) do Worker antes de trocar Turbopack
 por webpack (que economizou 499 KiB deduplicando o Drizzle). Não medi o
-bundle final desta sessão — a instrução do dono foi não rodar
+bundle final desta sessão — a instrução do dev foi não rodar
 `opennextjs-cloudflare build` — mas o histórico deixa a margem sabidamente
 estreita; qualquer biblioteca nova entra por cima disso, se entrar.
 
@@ -487,7 +487,7 @@ poderia entrar sozinha, sem Kokonut UI nem Bklit UI por cima.
   de bundle, cai sozinho em `prefers-reduced-motion` porque não anima
   nada além de opacidade/transform já cobertos pelo bloco existente.
   Não implementei: é experimento de polimento visual, não conserto de
-  bug, e cabe ao dono decidir se vale o tempo de teste cross-browser.
+  bug, e cabe ao dev decidir se vale o tempo de teste cross-browser.
 
 ### As três restrições, aplicadas
 

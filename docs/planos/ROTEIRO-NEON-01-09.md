@@ -28,7 +28,7 @@
   `apps/web/scripts/orcamento-egress.mts` (85% build / 15% tráfego). **Builds
   continuam no Postgres local** — o build NUNCA aponta para a Neon de novo.
 - ⚠️ A `DATABASE_URL` da Neon não existe em `.env` nenhum desta máquina
-  (removida no incidente). O dono copia do console Neon e coloca em um lugar
+  (removida no incidente). O dev copia do console Neon e coloca em um lugar
   que não vá para o repo.
 - As migrations chegaram a **0087** — a lista antiga (0071–0077) ficou curta.
 - Os passos 2 e 3 do roteiro antigo (backfill de temas e URLs do TJMG) já
@@ -37,7 +37,7 @@
 
 ## Passo 0 — reativar o projeto na Neon
 
-1. Dono entra no console Neon, reativa o projeto e copia a connection string.
+1. Dev entra no console Neon, reativa o projeto e copia a connection string.
 2. Guardar a string FORA do repo (o mesmo regime de `AI_API_KEY`).
 3. Exportar `DATABASE_URL` da Neon só na sessão que roda o runbook — nunca
    sobrescrever os `.env` que apontam para o local.

@@ -8,7 +8,7 @@ import type { CondicionanteLinha } from "@/lib/db/queries/condicionantes";
 
 /**
  * Tabela de condicionantes: filtro, ordenação por coluna e CSV do filtrado
- * (regra do dono — cinco coisas). Recebe as linhas do servidor; o piloto
+ * (regra do dev — cinco coisas). Recebe as linhas do servidor; o piloto
  * começa vazio e o componente diz isso com todas as letras (AGENTS §7).
  */
 
@@ -136,7 +136,7 @@ export default function FiltroCondicionantes({
           O texto integral item a item ainda não foi localizado no SIAM legado
           nem no SEMAD. Enquanto não houver trecho oficial, não publicamos
           linha inventada: status <em>não informado</em> sem evidência é regra
-          do dono (decisão 1).
+          do dev (decisão 1).
         </p>
         <p className="mt-2">
           Enquanto isso, veja os documentos oficiais e o rodapé “Para saber

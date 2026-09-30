@@ -75,7 +75,7 @@ controle-popular/
 
 ## Plugin canÃ¡rio
 - `.opencode/plugin/canario-telegram.ts`
-- Notifica dono sobre erros e pedidos de permissÃ£o do opencode
+- Notifica dev sobre erros e pedidos de permissÃ£o do opencode
 - `/ok <id>` / `/negar <id>` â†’ grava em `.opencode/canario/respostas.log`
 - Gatilho lÃª esse arquivo e responde ao plugin
 - `CANARIO_APROVACAO_REMOTA=1` ativa aprovaÃ§Ã£o remota (senÃ£o, sÃ³ observa)

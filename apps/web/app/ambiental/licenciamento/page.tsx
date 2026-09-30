@@ -33,7 +33,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
  * precisa para 5.562 linhas/16 MiB); aqui, o filtro por MUNICÍPIO é a
  * busca abaixo.
  *
- * ═══ AS CINCO COISAS (regra do dono, 2026-08-21, `AGENTS.md`) ═══
+ * ═══ AS CINCO COISAS (regra do dev, 2026-08-21, `AGENTS.md`) ═══
  *
  * Cartões de topo (agregados de `contagem` + a lacuna de data), dois
  * gráficos (por setor e por ano, `BarrasValor` — CSS puro, sem lib nova),

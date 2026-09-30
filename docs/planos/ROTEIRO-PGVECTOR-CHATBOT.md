@@ -33,7 +33,7 @@ produção.
 > existe em `pg_available_extensions` do banco atual (tem `postgis`,
 > `pg_trgm` e `unaccent`). A alternativa gerenciada seria o **Qdrant**, mas
 > ele bateu o teto do plano (`TIER_LIMIT_EXCEEDED`, HTTP 402) e foi
-> **abandonado por decisão do dono (30/09/2026)**. O desenho ativo é o índice
+> **abandonado por decisão do dev (30/09/2026)**. O desenho ativo é o índice
 > em memória + cobertura do acervo — ver
 > [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook fica
 > arquivado, sem execução prevista.
@@ -117,7 +117,7 @@ Em `apps/web/lib/assistente/embeddings/rag.ts`:
    pgvector (HNSW). Registrar antes/depois.
 3. **Embedding de produção**: `nomic-embed-text` local (768 dims, custo
    zero, já em uso) vs. `bge-m3` remoto (1024 dims, SiliconFlow) — decisão do
-   dono em aberto (PLANO-SEU-NONO-NOTEBOOKLM.md §10). Medir latência e
+   dev em aberto (PLANO-SEU-NONO-NOTEBOOKLM.md §10). Medir latência e
    acurácia no golden set de citações antes de trocar.
 
 ## Decisões registradas

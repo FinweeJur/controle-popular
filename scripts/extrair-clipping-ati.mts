@@ -42,7 +42,7 @@ import { fileURLToPath } from "node:url";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
-/** Painel entregue à mão pelo dono. Somente leitura — nunca reescrever. */
+/** Painel entregue à mão pelo dev. Somente leitura — nunca reescrever. */
 const FONTE = "X:/DevCoder/Projetos html/painel-paraopeba (V1).html";
 const DESTINO = resolve(RAIZ, "apps/web/lib/paraopeba/clipping-ati.ts");
 

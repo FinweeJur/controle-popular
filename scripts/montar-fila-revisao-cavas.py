@@ -5,14 +5,14 @@ Cruza o checkpoint do coletor (tipo, cena, bbox, processo, nuvem física) com
 a triagem do VLM local (qwen3-vl:2b, escore 0-100, legenda) e escreve:
 
 1. fila-revisao.jsonl  — todo item com estado "pendente", ordenado por
-   prioridade. É a fila que o revisor humano (dono) consome e promove para
+   prioridade. É a fila que o revisor humano (dev) consome e promove para
    revisado/descartado/publicável (critério de pronto da Fase 4).
 2. fila-revisao.html   — galeria local com miniaturas para a revisão
    humana da amostra de 100 exemplos (critério de pronto da Fase 2:
    "precisão medida + revisão de 100 exemplos"). Cada imagem abre num
    visualizador de ampliação: roda do mouse dá zoom onde o cursor está,
    botões de centro 2× e 1:1, setas ← → trocam de imagem — a cava pode
-   ocupar menos de 1/8 do recorte de 512 px (pedido do dono, 30/09).
+   ocupar menos de 1/8 do recorte de 512 px (pedido do dev, 30/09).
 3. amostra-100.jsonl   — amostra estratificada determinística (semente 42)
    para a revisão do gate: positivos de baixa pontuação (possíveis falsos
    positivos) + negativos de alta pontuação (possíveis cavas perdidas)
@@ -173,7 +173,7 @@ def _cartao(x: dict, num: int | None = None) -> str:
     )
 
 
-# Visualizador de ampliação (pedido do dono 30/09/2026: "falta zoom, a cava
+# Visualizador de ampliação (pedido do dev 30/09/2026: "falta zoom, a cava
 # pode ocupar menos de 1/8 da imagem"). Sem biblioteca: JS e CSS embutidos,
 # como o resto da página. Regras: roda do mouse amplia onde o cursor está
 # (mantém o ponto fixo), arrastar move, 1:1 mostra o pixel nativo, ajustar
@@ -341,7 +341,7 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
             "</select></div>"
         )
         # Campo aberto para o revisor digitar a legenda dele (pedido do
-        # dono 29/09); o valor vai no mesmo JSON exportado, por recorte.
+        # dev 29/09); o valor vai no mesmo JSON exportado, por recorte.
         correcao = (
             f'<div class="correcao"><label for="t{i}">'
             f"<b>sua legenda</b> (você digita):</label>"
@@ -350,7 +350,7 @@ def escrever_html_amostra(amostra: list[dict], destino: Path) -> None:
         )
         # O seletor e o campo entram DENTRO do <figure>: como eram irmãos
         # do card na grade, viravam célula solta e apareciam ao lado da
-        # figura sem par (formato esquisito, medido pelo dono 29/09).
+        # figura sem par (formato esquisito, medido pelo dev 29/09).
         cartoes.append(
             _cartao(x, num=i).replace(
                 "</figure>", seletor + correcao + "</figure>"

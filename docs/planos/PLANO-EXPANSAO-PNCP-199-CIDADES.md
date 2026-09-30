@@ -157,7 +157,7 @@ Ordem recomendada (mantém o que já tem checkpoint):
 
 5. **Deploy Guara**
    - Só depois das 6 + suíte verdes (`npm test`, `npx tsc --noEmit`).
-   - Cadência ~5 dias (política do dono; ver OPERACAO § 0).
+   - Cadência ~5 dias (política do dev; ver OPERACAO § 0).
    - Páginas que conferem: contratos, licitações, emendas, COPAM das cidades
      com rota.
 
@@ -280,7 +280,7 @@ ano por modalidade — o plano aceita isso; não comprimir histórico sem medir.
 | 203 vs 199 na comunicação | recontar JSON na data da fala; rótulo do portal ≠ tamanho do arquivo |
 | Dado pessoal | varrer dado ingerido; suíte antes de commitar dado |
 | Dois runs atropelam | um lock por checkpoint (ou trava simples de arquivo); detectar processo vivo antes de lançar |
-| Deploy no meio da coleta | deploy só na Fase A fechada e na cadência do dono |
+| Deploy no meio da coleta | deploy só na Fase A fechada e na cadência do dev |
 | Repo cresce com log | checkpoints e `pncp*.out/err` gitignored; CSV só quando consolidado |
 
 ## Verificação
@@ -316,7 +316,7 @@ python scripts/validar-documentacao.py
 
 ## Execução B/C desta sessão (24/09/2026)
 
-Ordem de serviço do dono: **B depois C, direto, sem perguntar; commit no fim.**
+Ordem de serviço do dev: **B depois C, direto, sem perguntar; commit no fim.**
 
 | Passo | Artefato | O que faz |
 |---|---|---|
@@ -332,12 +332,12 @@ Ordem de serviço do dono: **B depois C, direto, sem perguntar; commit no fim.**
 | C4 | `cobertura` + recontagem Guara | Números no banco |
 | C5 | `npm test` + `tsc` + commit pathspec + push | Publica o código |
 
-**Fora desta execução:** deploy Guara (cadência do dono), SP e as 25
+**Fora desta execução:** deploy Guara (cadência do dev), SP e as 25
 capitais do handoff, seeds de páginas além do PNCP.
 
 ## Decisões registradas
 
-1. **Ordem: 6 principais → depois as demais mapeadas** — decisão do dono
+1. **Ordem: 6 principais → depois as demais mapeadas** — decisão do dev
    em 23/09/2026; este documento é a ordem de serviço.
 2. **Checkpoint incremental é obrigatório** em toda coleta PNCP nova —
    sem ele, queda de internet apaga a rodada.

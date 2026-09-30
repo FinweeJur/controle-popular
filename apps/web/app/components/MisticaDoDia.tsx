@@ -5,12 +5,12 @@
  *
  * O que faz: mostra, abaixo da nav bar e do letreiro "✦ OLHO ABERTO ✦" e
  * acima da capa-hero, uma luta popular ou fato de resistência do DIA do
- * visitante, com a citação CURTA da fonte no formato do dono
- * `(Obra, Autor, Data)` e link quando houver. Pedido do dono em
+ * visitante, com a citação CURTA da fonte no formato do dev
+ * `(Obra, Autor, Data)` e link quando houver. Pedido do dev em
  * 29/09/2026 ("como a home editável do Google"), dentro do plano
  * `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`.
  *
- * UNIFICAÇÃO DAS DATAS (dono, 30/09/2026): o selo de ano só aparece
+ * UNIFICAÇÃO DAS DATAS (dev, 30/09/2026): o selo de ano só aparece
  * quando o título NÃO traz o ano; e a citação é curta, para a data não
  * sair duas vezes na tela.
  *

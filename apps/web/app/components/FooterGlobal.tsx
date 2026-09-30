@@ -78,7 +78,7 @@ const LINKS_PORTAL = [
 ];
 
 // Inscrição em novidades por e-mail (Tier 0, double opt-in: o visitante
-// envia o pedido e o dono confirma antes de incluir em qualquer lista).
+// envia o pedido e o dev confirma antes de incluir em qualquer lista).
 const MAILTO_NOVIDADES = `mailto:contato@controlepopular.com.br?subject=
   ${encodeURIComponent("Quero receber novidades \u2014 Controle Popular")}
   &body=${encodeURIComponent(

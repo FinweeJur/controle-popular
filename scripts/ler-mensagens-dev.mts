@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * scripts/ler-mensagens-dono.mts — lê mensagens do chat do dono via
+ * scripts/ler-mensagens-dev.mts — lê mensagens do chat do dev via
  * long-poll getUpdates, sem imprimir o token.
  *
  * Uso:
- *   npx tsx scripts/ler-mensagens-dono.mts [quantidade] [--offset N]
+ *   npx tsx scripts/ler-mensagens-dev.mts [quantidade] [--offset N]
  *
  * Se --offset for passado, usa N como ponto de partida (e confirma os
  * updates lidos). Sem --offset, apenas espelha a fila sem confirmar.
@@ -95,7 +95,7 @@ async function main() {
       console.log(`    (outro chat): ${texto}`);
     }
   }
-  console.log(`\nTotal: ${dados.result.length} update(s), ${achou} do dono.`);
+  console.log(`\nTotal: ${dados.result.length} update(s), ${achou} do dev.`);
 }
 main().catch((e) => {
   console.error(e);

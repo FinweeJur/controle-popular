@@ -1,6 +1,6 @@
-﻿"""Gera apps/web/lib/memoria/calendario.ts das duas fontes do dono.
+﻿"""Gera apps/web/lib/memoria/calendario.ts das duas fontes do dev.
 
-Fontes e autoria (correções do dono em 29/09/2026):
+Fontes e autoria (correções do dev em 29/09/2026):
 - "Aos que virão — Calendário Insurgente": de GUSTAVO SEFERIAN e, em 6
   posts, de CARLA BENITEZ MARTINS; a data da citação é a DATA DO POST
   (a URL do WordPress traz /AAAA/MM/DD/).
@@ -13,7 +13,7 @@ entra no dia (com ou sem ano); o que não tem data nenhuma vira "recheio"
 e preenche, de forma determinística (semente sha1 do próprio texto), os
 dias do ano que ficaram sem fato.
 
-CORREÇÃO DE RESUMO (regra do dono, 30/09/2026):
+CORREÇÃO DE RESUMO (regra do dev, 30/09/2026):
 - Antes: 158 posts do blog nasceram sem resumo (a listagem não traz o
   corpo) e o MST cortava no primeiro ". " - só 83 de 538 entradas tinham
   resumo, e esses eram frases soltas cortadas.
@@ -29,14 +29,14 @@ CORREÇÃO DE RESUMO (regra do dono, 30/09/2026):
   (sem legenda) e 11 são frases únicas fechadas - o título JÁ é a
   frase inteira da fonte; inventar contexto é proibido (AGENTS §7).
 - `fonteCurta` é gravado por entrada para o doc de revisão e para o
-  formato de citação curta pedido pelo dono (regra do dono, 30/09/2026):
+  formato de citação curta pedido pelo dev (regra do dev, 30/09/2026):
   (Obra, Autor, Data) — autor é a FONTE, não a pessoa:
   "Calendário Histórico dos Trabalhadores, MST, 2009" e
-  "Calendário Insurgente, Blog Aos que Virão, 2020". O dono explicou:
+  "Calendário Insurgente, Blog Aos que Virão, 2020". O dev explicou:
   "Blog Aos que Virão melhor que Seferian ou Benitez".
 
-SEM FRASE REPETIDA E OS QUATRO ELEMENTOS (regra do dono, 30/09/2026):
-- O dono apontou "umas frases que parecem repetidas": o mesmo parágrafo
+SEM FRASE REPETIDA E OS QUATRO ELEMENTOS (regra do dev, 30/09/2026):
+- O dev apontou "umas frases que parecem repetidas": o mesmo parágrafo
   do documento do MST alimenta dois dias vizinhos e a mesma frase
   aparecia no resumo dos dois. Agora cada resumo é ESCOLHIDO entre
   candidatos do próprio texto-fonte: candidato que repete frase de 60+
@@ -44,7 +44,7 @@ SEM FRASE REPETIDA E OS QUATRO ELEMENTOS (regra do dono, 30/09/2026):
   (mesmo parágrafo, verbete duplicado no documento), o melhor é usado
   mesmo assim e a contagem sai no fim (`repeticoes_forcadas`) — inventar
   texto para fugir da repetição é proibido (AGENTS §7).
-- Candidato é pontuado pelos 4 elementos exigidos pelo dono: QUEM
+- Candidato é pontuado pelos 4 elementos exigidos pelo dev: QUEM
   (pessoa ou movimento), O QUÊ (fato/luta), QUANDO (data/ano/período) e
   ONDE (cidade/estado/país/continente). Vai para a tela o candidato com
   MAIS elementos; empate fica com o mais próximo do título. A detecção é
@@ -52,7 +52,7 @@ SEM FRASE REPETIDA E OS QUATRO ELEMENTOS (regra do dono, 30/09/2026):
   siglas + países versionados no repo; lista de verbos/fatos) e a
   cobertura medida antes x depois vai para o doc de revisão e para
   TEMP/estatisticas-resumos.json — a medição é honesta, não garantia.
-- `gera-doc-resumos-mistica-docx.py` gera o .docx pedido pelo dono com
+- `gera-doc-resumos-mistica-docx.py` gera o .docx pedido pelo dev com
   SÓ o que o leitor vê na tela: ano + título, resumo e fonte.
 
 O script não inventa nada: data, título, autor e link vêm dos arquivos;
@@ -82,7 +82,7 @@ MESES = {
 MES_ABNT = ["jan.", "fev.", "mar.", "abr.", "maio", "jun.", "jul.", "ago.",
             "set.", "out.", "nov.", "dez."]
 # autor ABNT (proveniência do post) por usuário do blog; a citação CURTA
-# usa o nome do blog em vez da pessoa (regra do dono, 30/09/2026)
+# usa o nome do blog em vez da pessoa (regra do dev, 30/09/2026)
 AUTORES_BLOG = {
     "gustavoseferian": "SEFERIAN, Gustavo",
     "carlabenitezmartins": "BENITEZ MARTINS, Carla",
@@ -192,7 +192,7 @@ def _guloso(regiao: list[str]) -> str:
             continue
         if not saida and len(p) > CAP_RESUMO:
             # frase unica gigante: corta na pontuacao/ultima palavra antes
-            # do cap — nunca devolve 800 chars para a tela (regra do dono:
+            # do cap — nunca devolve 800 chars para a tela (regra do dev:
             # cada historia cabe em 2 paragrafos, sem ocupar a tela inteira)
             return corta_paragrafos(p, max_frases=1)
         if saida and len(saida) + 1 + len(p) > CAP_RESUMO:
@@ -209,7 +209,7 @@ def candidatas_de(texto: str, titulo: str) -> list[str]:
     O primeiro é o recorte original (1-2 frases perto do título). Os
     seguintes são janelas de 1 e 2 frases da mesma região: servem para o
     ESCOLHER entre eles quando o preferido repete frase já usada ou
-    entrega menos elementos (regra do dono, 30/09/2026). Nenhum candidato
+    entrega menos elementos (regra do dev, 30/09/2026). Nenhum candidato
     é reescrito — todos saem da fonte.
     """
     regiao = _regiao(texto, titulo)
@@ -240,7 +240,7 @@ def candidatas_de(texto: str, titulo: str) -> list[str]:
 
 
 def fonte_curta_blog(fonte_data: str) -> str:
-    """(Obra, Autor, Data): autor é o blog, nunca a pessoa (dono, 30/09)."""
+    """(Obra, Autor, Data): autor é o blog, nunca a pessoa (dev, 30/09)."""
     ano = re.search(r"\d{4}", fonte_data)
     return f"Calendário Insurgente, Blog Aos que Virão, {ano.group(0) if ano else fonte_data}"
 
@@ -393,7 +393,7 @@ for dia in vazios:
     usados += 1
 
 # medição (repetições e os 4 elementos) para o doc de revisão e para o
-# relatório do dono — série "sem_selecao" = recorte original greedy,
+# relatório do dev — série "sem_selecao" = recorte original greedy,
 # série "depois" = recorte escolhido; o doc soma o "antes aplicado"
 # lido do calendario.antes.ts. Os títulos acompanham bases/escolhidos na
 # ORDEM DE INSERÇÃO, por isso a medição roda ANTES do sort.
@@ -417,13 +417,13 @@ linhas = [
     ' * Calendário de lutas populares, resistências e revoltas — base da',
     ' * "Mística do Dia" da home (`app/components/MisticaDoDia.tsx`).',
     " *",
-    " * ORIGEM DOS DADOS (as duas fontes pedidas pelo dono em 29/09/2026):",
+    " * ORIGEM DOS DADOS (as duas fontes pedidas pelo dev em 29/09/2026):",
     " * 1. Aos que virão — Calendário Insurgente, de Gustavo Seferian e",
     " *    Carla Benitez Martins; a data da citação é a data do post (2020).",
     " *    https://aosquevirao.home.blog/category/calendario-insurgente/",
     " * 2. Calendário Histórico dos Trabalhadores e Trabalhadoras, do MST,",
     " *    2009 (org. Ângelo Diogo Mazin, Janaina Strozake e Miguel Enrique",
-    " *    Almeida Stádile), documento local do acervo do dono, sem URL.",
+    " *    Almeida Stádile), documento local do acervo do dev, sem URL.",
     " *",
     " * GERADO POR SCRIPT (`gera-calendario-insurgente.py`), nunca à mão: são",
     " * centenas de datas e transcrever abriria a porta a erro de data e de",
@@ -435,7 +435,7 @@ linhas = [
     " * datou); o que não tem data nenhuma vira `semData: true` e preenche,",
     " * de forma determinística, um dia do ano que ficou sem fato.",
     " *",
-    " * RESUMO VEM DO TEXTO-FONTE (regra do dono, 30/09/2026): 1-2 frases",
+    " * RESUMO VEM DO TEXTO-FONTE (regra do dev, 30/09/2026): 1-2 frases",
     " * no estilo de escrita da própria fonte, cap 400 — blog usa o corpo",
     " * coletado por `coleta-corpo-calendario.py`; MST e recheio usam o",
     " * parágrafo do documento. Nunca resumo reescrito por máquina.",

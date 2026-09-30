@@ -159,7 +159,7 @@ Tentado, sem sucesso, em todas as 6:
 - **CRF-MG** (`site.crfmg.org.br`) e **CRF-SP** (`portal.crfsp.org.br`):
   são conselhos de registro profissional (inscrição de farmacêutico/CR),
   não publicam escala de plantão por cidade — confirma a suposição inicial
-  da tarefa de que valeria checar, mas o CRF não é o dono desse dado.
+  da tarefa de que valeria checar, mas o CRF não é o dev desse dado.
 - **Betim**: página de Vigilância à Saúde (`/portal/secretarias-paginas/
   116/vigilancia-a-saude/`) lista a seção "Vigilância Sanitária de
   Medicamentos" só com e-mail de contato, sem link de escala. Portal de

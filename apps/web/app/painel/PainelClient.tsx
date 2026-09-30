@@ -14,7 +14,7 @@ import type { UltimoBuild } from "@/lib/painel/ultimo-build";
  *
  * O painel só existe localmente (`PAINEL_LOCAL=1` + dev server, ver
  * `next.config.ts`) e nunca é publicado — a proteção real é a rede, não o
- * token. Guardar o token no `localStorage` é escolha do dono (2026-08-15):
+ * token. Guardar o token no `localStorage` é escolha do dev (2026-08-15):
  * redigitar a cada aba era o custo de uma defesa que a arquitetura já não
  * precisa. Quem quiser a versão rígida usa o botão "Esquecer token".
  *

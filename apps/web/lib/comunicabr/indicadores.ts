@@ -16,7 +16,7 @@
  * subindicador declara o ministério de origem no campo `fonte` (medi **17
  * siglas distintas** nesse nível em Betim, e mais 4 que só aparecem no nível
  * do item — MDIC, MEMP, MM e MPS). Por isso `fonte` é campo obrigatório do
- * item achatado e a tela deve citá-lo: o número tem dono declarado, e quem
+ * item achatado e a tela deve citá-lo: o número tem fonte declarada, e quem
  * publica não precisa inventar procedência.
  *
  * ═══ AS TRÊS ARMADILHAS, TODAS MEDIDAS EM 15/08/2026 ═══

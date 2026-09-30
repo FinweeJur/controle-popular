@@ -23,7 +23,7 @@
 - [Ordem sugerida — maior ganho para quem vive no território, menor esforço](#ordem-sugerida-maior-ganho-para-quem-vive-no-território-menor-esforço)
 - [Origem](#origem)
 
-Pedido do dono: *"procure bases úteis para integração, como a de vulnerabilidade
+Pedido do dev: *"procure bases úteis para integração, como a de vulnerabilidade
 climática e me apresente COMO integrar."* Ele já decidiu que quer — este
 documento não pesa "vale a pena", só mostra o caminho: endpoint, esquema,
 onde encaixa na tela, o que atualiza sozinho e o que não, e o que falta.
@@ -142,7 +142,7 @@ id, geocod_ibge, name, indicator_id, year, scenario_id, pessimist, value, valuec
 
 Recursos hídricos, Segurança alimentar, Segurança energética,
 Infraestrutura portuária, Saúde (doenças vetoriais), e o próprio Desastres
-geo-hidrológicos. Não explorei os outros cinco a fundo — o pedido do dono
+geo-hidrológicos. Não explorei os outros cinco a fundo — o pedido do dev
 foi vulnerabilidade climática/desastre, que é exatamente o setor 60000.
 Se um dia servir saúde ou recursos hídricos, o padrão de chamada é
 idêntico, só troca o `indicador`.
@@ -193,7 +193,7 @@ create table if not exists adaptabrasil_indicadores (
 
 ## 2. IBGE + CEMADEN — "População em áreas de risco no Brasil" (BATER)
 
-Este é o item que responde à pergunta que o dono repetiu o dia inteiro:
+Este é o item que responde à pergunta que o dev repetiu o dia inteiro:
 **não é risco, é gente**. Nenhuma das fontes acima ou do que o portal já
 publica diz *quantas pessoas* moram numa área de risco — só onde o risco
 está.

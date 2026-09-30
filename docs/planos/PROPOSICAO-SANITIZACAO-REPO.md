@@ -70,7 +70,7 @@ Isso deixou o repo **difícil de navegar**. 🧭
 | `git fetch origin` + comparar commits locais × remotos | M | Ver o que é trabalho novo vs. duplicado |
 | Rebase do `main` local sobre `origin/main` (com cuidado, sem `--force`) | M | Local volta a ser igual ao GitHub + trabalho local |
 | Push do trabalho local legítimo | M | Nada se perde |
-| Apagar branches órfãs já entregues (com aval do dono) | M | Lista de branches encolhe |
+| Apagar branches órfãs já entregues (com aval do dev) | M | Lista de branches encolhe |
 
 ### Etapa 3 — Organizar documentação (M)
 
@@ -108,7 +108,7 @@ Isso deixou o repo **difícil de navegar**. 🧭
 
 ## ⏭️ Próximos passos sugeridos
 
-1. Dono aprova destino da pasta do Kimi (mover ou apagar). ✅
+1. Dev aprova destino da pasta do Kimi (mover ou apagar). ✅
 2. Aplicar `.gitattributes` + normalização (Etapa 1). 🧼
 3. Reconciliar `main` (Etapa 2) — de preferência numa sessão dedicada, com calma. 🔀
 4. Trazer planos oficiais da pasta do Kimi para `docs/planos/`. 🗂️

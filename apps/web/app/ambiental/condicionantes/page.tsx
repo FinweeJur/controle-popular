@@ -82,7 +82,7 @@ export default async function CondicionantesPage() {
         </p>
         <p className="max-w-3xl text-[0.95em] leading-relaxed text-text-soft opacity-90">
           Medido em 23/09/2026. Texto integral dos PDFs mora no espelho R2;
-          este banco guarda só metadados, trecho, resumo e status (decisão 3 do dono).
+          este banco guarda só metadados, trecho, resumo e status (decisão 3 do dev).
         </p>
       </header>
 

@@ -101,7 +101,7 @@ class _QueryBuilder:
     """
 
     def __init__(self, cliente, schema: str, table: str):
-        # Guarda o CLIENTE, não a conexão: só o dono da conexão pode
+        # Guarda o CLIENTE, não a conexão: só o dev da conexão pode
         # trocá-la, e `execute()` precisa disso para reconectar.
         self._cliente = cliente
         self._conn = cliente.conexao()
@@ -274,7 +274,7 @@ class PgClient:
     """Substitui o client do supabase-py: mesma chamada `.table(x)...`, mas
     fala Postgres direto na Neon em vez de PostgREST no Supabase.
 
-    Dono da conexão, e por isso o único que pode trocá-la: a Neon encerra
+    Dev da conexão, e por isso o único que pode trocá-la: a Neon encerra
     sessão ociosa e várias coletas deste eixo passam muito tempo entre uma
     escrita e a seguinte. Ver `_QueryBuilder.execute`."""
 

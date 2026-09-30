@@ -3,7 +3,7 @@ import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 /**
  * Foto de abertura do acervo Brasil com S, decorativa, com crédito.
  *
- * Layout pedido pelo dono (03/09): UMA foto por página, flutuando à
+ * Layout pedido pelo dev (03/09): UMA foto por página, flutuando à
  * direita, com o texto ao lado esquerdo — não mais a faixa de 4-5 fotos
  * no fim de cada página (saía descontextualizada).
  *

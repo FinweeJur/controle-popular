@@ -29,7 +29,7 @@ import {
  *
  * ═══ POR QUE NENHUM MODELO DE LINGUAGEM ═══
  *
- * Pedido explícito do dono: o que der para extrair do metadado é melhor que
+ * Pedido explícito do dev: o que der para extrair do metadado é melhor que
  * rodar modelo. E aqui dá: os 467 documentos têm `descricao` (0 vazias,
  * mediana de 346 caracteres), `codigo` de 8 segmentos em 467/467,
  * `instrumento`, `tipo`, `temas`, `data` e `disciplina`. Uma frase montada

@@ -73,7 +73,7 @@ Leia `docs/FONTES-TERRITORIO-E-MINERACAO.md` primeiro se quiser o "por quê"
 jurídico por trás de ZAS × raio de 8 km × mancha de inundação — este
 documento cobre o "onde" no config e o que foi MEDIDO em cada cruzamento.
 
-Pergunta original do dono do projeto: *"O raio de proximidade de áreas
+Pergunta original do dev do projeto: *"O raio de proximidade de áreas
 quilombolas e indígenas está funcionando para além de barragens? E de áreas
 de mineração? E de legislações que os afetem — por exemplo o PL que reduziu a
 Chapada do Lagoão em Araçuaí?"* — resposta era NÃO nos três eixos até
@@ -135,7 +135,7 @@ cd etl/betim && python -m venv .venv && .venv/Scripts/python -m pip install psyc
 
 ### O achado
 
-A lei que o dono citou de memória (*"o PL que reduziu a Chapada do Lagoão"*)
+A lei que o dev citou de memória (*"o PL que reduziu a Chapada do Lagoão"*)
 **já estava coletada**, com fonte oficial:
 
 ```

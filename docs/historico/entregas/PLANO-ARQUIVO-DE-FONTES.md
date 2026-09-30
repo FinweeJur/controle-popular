@@ -24,9 +24,9 @@
 
 ## Propósito
 
-> Pedido do dono em 13/08/2026: *"é possível baixar os PDFs / documentos que > estamos referenciando nos links e guardar dentro do nosso servidor ou do > Cloudflare? Assim, mesmo se o link quebrar, temos o documento — mas sem > excluir o link, para também mostrar de onde veio a fonte oficial."* >...
+> Pedido do dev em 13/08/2026: *"é possível baixar os PDFs / documentos que > estamos referenciando nos links e guardar dentro do nosso servidor ou do > Cloudflare? Assim, mesmo se o link quebrar, temos o documento — mas sem > excluir o link, para também mostrar de onde veio a fonte oficial."* >...
 
-> Pedido do dono em 13/08/2026: *"é possível baixar os PDFs / documentos que
+> Pedido do dev em 13/08/2026: *"é possível baixar os PDFs / documentos que
 > estamos referenciando nos links e guardar dentro do nosso servidor ou do
 > Cloudflare? Assim, mesmo se o link quebrar, temos o documento — mas sem
 > excluir o link, para também mostrar de onde veio a fonte oficial."*
@@ -210,7 +210,7 @@ nenhuma — já está feito. Conferido com `SELECT count(*), count(link_pdf)
 FROM ambiental_legislacao` contra o Postgres local em 2026-08-14.
 
 Consequência boa: as 1.183 normas de `serras` (180) + `recursos_hidricos`
-(1.003) — o recorte de maior prioridade pedido pelo dono — já tinham fonte
+(1.003) — o recorte de maior prioridade pedido pelo dev — já tinham fonte
 citável o tempo todo, e por isso entraram na varredura e na amostra de
 captura desta rodada (ver `docs/_historico/auditoria-2026-08-14-normas-protecao.md`).
 

@@ -25,7 +25,7 @@
 // (`docs/planos/PLANO-ESPELHO-PDF-AJRI.md`) e `descricao` continua transcrita
 // sem edição. A leitura adotada aqui é que o resumo é obra nova (paráfrase
 // com citação travada), não modificação — mas a decisão final de PUBLICAR
-// este arquivo é do dono, registrada em pendência. Até lá, o dado pode
+// este arquivo é do dev, registrada em pendência. Até lá, o dado pode
 // existir no repositório; a tela é que decide quando mostrar.
 //
 // ═══ POR QUE ARQUIVO SEPARADO, E SÓ NO CLIENTE ═══

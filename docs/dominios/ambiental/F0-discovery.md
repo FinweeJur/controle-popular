@@ -558,7 +558,7 @@ fonte já documentada.
 - **`BAR_DT_CADASTRO` vem em epoch milissegundos**, campo `esriFieldTypeDate` — não texto.
 - **Licença ambígua entre dois "items" do mesmo dado**: o item que alimenta o mapa público
   declara `licenseInfo: "Uso liberado bastando dar o crédito à ANA"`; o item "canônico" do
-  catálogo oficial (mesmo `recordCount`, dono diferente) devolve o campo de licença vazio.
+  catálogo oficial (mesmo `recordCount`, proprietário diferente) devolve o campo de licença vazio.
   Nenhum dos dois declara vedação comercial — o gate do `PROVENIENCIA.json` passa, mas a
   ambiguidade fica registrada.
 - **[VERIFY] não resolvido**: três números diferentes para "barragens de mineração em
@@ -656,7 +656,7 @@ original).
 Durante a mesma sessão, o usuário pediu para catalogar as fontes de `ecosistemas.meioambiente.mg.gov.br`
 e ofereceu login pessoal (CPF + senha) para acesso mais profundo. **A credencial não foi
 usada — a política deste projeto proíbe entrar com senha de terceiro em qualquer sistema,
-mesmo com autorização explícita do dono.** Tudo abaixo foi descoberto como visitante
+mesmo com autorização explícita do dev.** Tudo abaixo foi descoberto como visitante
 anônimo. Registrado aqui para que uma sessão futura não repita a tentativa nem presuma que
 o login foi testado.
 
@@ -1084,4 +1084,4 @@ origem, como manda `ambiental_licenciamento.py`.
 O HTML público de `licenciamento/site/view-externo?id=…` expõe
 `href="/licenciamento/site/deletearquivo?id=…"`. **O endpoint não foi chamado** — é ação
 destrutiva sobre documento oficial. Se não houver checagem de sessão no servidor, é remoção
-por GET anônimo. Registrado para decisão do dono sobre comunicar à SEMAD.
+por GET anônimo. Registrado para decisão do dev sobre comunicar à SEMAD.

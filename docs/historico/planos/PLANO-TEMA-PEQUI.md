@@ -9,7 +9,7 @@
 
 ## Sumário
 
-- [A decisão do dono](#a-decisao-do-dono)
+- [A decisão do dev](#a-decisao-do-dev)
 - [O que é o Pequi](#o-que-e-o-pequi)
 - [Peças que já existem (medição 04/09)](#pecas-que-ja-existem)
 - [Peças que faltam](#pecas-que-faltam)
@@ -17,15 +17,15 @@
 - [Micro-etapas](#micro-etapas)
 - [Fora de escopo](#fora-de-escopo)
 
-## A decisão do dono
+## A decisão do dev
 
 04/09, depois de ver o hero publicado: **"Não gostei do hero."**
-A referência nova é a **prévia v7.1 do rebrand** (a "PEQUI") que o dono colou
+A referência nova é a **prévia v7.1 do rebrand** (a "PEQUI") que o dev colou
 inteira: HTML + CSS + JS de uma home em capítulos, com epígrafes de Carolina
 Maria de Jesus, Conceição Evaristo, Guimarães Rosa, Itamar Vieira Junior e
 MAB, fitas marquee, sanfona das seis frentes, textura de grão e selos.
 
-A ordem do dono: **"Esse será um dos temas de cores disponíveis e o padrão."**
+A ordem do dev: **"Esse será um dos temas de cores disponíveis e o padrão."**
 
 ## O que é o Pequi
 
@@ -55,7 +55,7 @@ self-hosted (`app/fonts.ts`, woff2 locais). Nada de CDN novo.
 - **Padrão hoje:** `defaultTheme="light"` em `app/layout.tsx:129` → vira `pequi`.
 - **Voz:** o copy da prévia JÁ FOI publicado no cherry-pick `b3ece62`
   (hero, 6 frentes, "Já aconteceu aqui"). A prévia aprofunda: epígrafes e
-  capítulos com citações — o dono mandou **"aproveitar todas as citações aos
+  capítulos com citações — o dev mandou **"aproveitar todas as citações aos
   poucos"**, então cada micro-etapa leva uma ou duas, nunca todas de uma vez.
 - **Fotos:** Brasil com S no acervo local (`FotoBrasilComS.tsx`), crédito
   "Créditos: Brasil com S", sem corte. A prévia usa 00039, 00433, 00293 —
@@ -76,7 +76,7 @@ self-hosted (`app/fonts.ts`, woff2 locais). Nada de CDN novo.
 5. Capítulos em `max-width: 46rem` com epígrafe/princípio/display/ensaio/
    numcard — reestruturar a home atual em cima deles.
 6. Fonte "Ícones do Brasil" (glifos Y C P S M E nos selos): **o arquivo não
-   está no PC do dono** (consta em memória) e a licença diz *free for personal
+   está no PC do dev** (consta em memória) e a licença diz *free for personal
    use; conferir antes de produção*. Sem o ttf licenciado, selo usa o
    fallback SVG que a própria prévia já prevê (`.selo svg`).
 

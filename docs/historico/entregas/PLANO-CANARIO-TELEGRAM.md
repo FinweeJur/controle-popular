@@ -21,11 +21,11 @@
 
 ## Visão geral
 
-O canário passa de "avisos pontuais" para **canal bidirecional entre o dono e
+O canário passa de "avisos pontuais" para **canal bidirecional entre o dev e
 as sessões opencode**, com todo comando longo instrumentado de graça:
 
 ```
-Dono (celular) ⇅ Telegram ⇅ gatilho-remoto (long-poll, home-pc)
+Dev (celular) ⇅ Telegram ⇅ gatilho-remoto (long-poll, home-pc)
                               ├─ /status /testes /build /deploy /ia
                               └─ ponte de arquivos ⇄ plugin opencode
 Sessões opencode ── plugin canario-telegram.ts ──┘ (erros, pedidos de permissão)
@@ -62,7 +62,7 @@ Plugin auto-descoberto `.opencode/plugin/canario-telegram.ts`:
 | Hook | Comportamento |
 |---|---|
 | `event` | sessão com erro → alerta no Telegram (throttle 1/min) |
-| `permission.ask` | 🔐 envia ferramenta + argumentos; dono responde `/ok <id>` / `/negar <id>`; plugin consulta `respostas.log` e resolve. Opt-in por `CANARIO_APROVACAO_REMOTA=1`; sem a variável, apenas observa. Timeout = negar |
+| `permission.ask` | 🔐 envia ferramenta + argumentos; dev responde `/ok <id>` / `/negar <id>`; plugin consulta `respostas.log` e resolve. Opt-in por `CANARIO_APROVACAO_REMOTA=1`; sem a variável, apenas observa. Timeout = negar |
 
 Ponte com o gatilho por arquivos (`pending/` e `respostas.log` em
 `.opencode/canario/`) — mesma máquina, latência de segundos. O gatilho ganhou

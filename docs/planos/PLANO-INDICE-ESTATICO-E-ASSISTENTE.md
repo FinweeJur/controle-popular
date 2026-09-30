@@ -19,7 +19,7 @@
 > Escrito em 15/08/2026, no dia em que o deploy travou por payload. Números
 > medidos contra o repositório nesta data; onde não medi, está dito.
 >
-> Junta duas coisas que o dono pediu separadas e que são **a mesma obra**:
+> Junta duas coisas que o dev pediu separadas e que são **a mesma obra**:
 > servir as páginas pesadas do índice estático, e um assistente que aproveite
 > esse índice para ser útil. O assistente sem o índice vira um menu bonito; o
 > índice sem o assistente continua servindo uma tela só.
@@ -82,7 +82,7 @@ primeira servindo uma tela só.
 | 1 | `sp/educacao` | **21 MiB** | está a 4 MiB do teto **sem ninguém ter mexido**; é o próximo a estourar, e sozinho |
 | 2 | `bh/camara/legislacao` | 11 MiB | mesma forma, mesmo destino |
 | 3 | `diamantina/camara/legislacao` | 9,5 MiB | idem |
-| 4 | `ambiental/legislacao` | corrigida em 15/08 pelo dono | entra depois **como conversão durável**, não como conserto |
+| 4 | `ambiental/legislacao` | corrigida em 15/08 pelo dev | entra depois **como conversão durável**, não como conserto |
 
 O item 4 merece cuidado: já foi consertado hoje por enxugamento de payload (a
 opção 1 do handoff). Convertê-lo para o índice é a opção 2 — a durável.
@@ -132,7 +132,7 @@ guarde só o que tem valor faz o assistente responder com falsa completude, que
 
 ## Parte 3 — O assistente: sem modelo por padrão, com modelo quando precisar
 
-O dono pediu LLM, **e pediu que ele rode sem LLM sempre que possível**. Isso não
+O dev pediu LLM, **e pediu que ele rode sem LLM sempre que possível**. Isso não
 é meio-termo: é a arquitetura certa aqui, porque o portal é estático e a maioria
 esmagadora dos pedidos é navegação, não conversa.
 
@@ -152,7 +152,7 @@ uma resposta verificável por uma plausível.
 
 ### Por que o degrau 0 e o 2 cobrem quase tudo
 
-Os comandos que o dono descreveu — abrir página, abrir município no mapa,
+Os comandos que o dev descreveu — abrir página, abrir município no mapa,
 voltar no menu — **não têm ambiguidade linguística**. `/funcaosocialterra/mapa`
 já aceita `?camada=…&idx=…` (é o que o botão "Ver no mapa" dos alertas usa
 hoje), e as rotas de cidade são `/[municipio]/[secao]`. Casar texto com essa

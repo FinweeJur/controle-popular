@@ -6,7 +6,7 @@
  *
  * `scripts/rotina-local.mts` builda e publica o que já está no checkout desta
  * máquina; ele não mexe em git. Isso é correto para a rotina das 06:00 (o
- * dono decide quando integrar), mas cria um buraco para o gatilho remoto: o
+ * dev decide quando integrar), mas cria um buraco para o gatilho remoto: o
  * pedido "sincronize e publique" vindo de outra máquina (via
  * `gatilho-remoto.mts`) precisa da parte de git que a rotina não faz.
  *

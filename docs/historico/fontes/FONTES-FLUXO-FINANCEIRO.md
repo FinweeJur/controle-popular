@@ -369,7 +369,7 @@ não é o suficiente para provar identidade única**: dois sócios homônimos
 pelo nome, e o CPF mascarado não fecha a lacuna (faltam 5 dígitos). Ligar
 duas empresas porque compartilham `nome_socio` é um **sinal probabilístico**,
 não uma prova jurídica de controle comum — a tela que consumir isso precisa
-dizer "sócio em comum" e não "mesmo dono", e não pode oferecer o CPF
+dizer "sócio em comum" e não "mesmo dev", e não pode oferecer o CPF
 mascarado como se fosse identificador confiável para desambiguar.
 
 **O que não pode ser publicado, dito de forma direta**: CPF completo de

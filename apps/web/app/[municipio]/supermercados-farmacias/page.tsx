@@ -50,7 +50,7 @@ export default async function SupermercadosFarmaciasPage({
           <section className="mt-8 rounded-2xl border border-border bg-surface-2 px-6 py-5 text-sm text-text-soft">
             <p>
               <strong className="font-semibold text-text">
-                É dono de um supermercado ou farmácia e não está na lista?
+                É proprietário de um supermercado ou farmácia e não está na lista?
               </strong>{" "}
               O OpenStreetMap é um mapa colaborativo — qualquer pessoa pode
               adicionar ou corrigir um estabelecimento em{" "}

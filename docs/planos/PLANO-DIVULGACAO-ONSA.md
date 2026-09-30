@@ -9,7 +9,7 @@
 
 ## Sumário
 
-- [🎯 Missão oficial (texto do dono, 02/09/2026)](#missao-oficial-texto-do-dono-02092026)
+- [🎯 Missão oficial (texto do dev, 02/09/2026)](#missao-oficial-texto-do-dev-02092026)
 - [🏛️ Posicionamento](#posicionamento)
 - [📣 Canais (custo zero)](#canais-custo-zero)
 - [🗂️ Peças a produzir](#pecas-a-produzir)
@@ -17,7 +17,7 @@
 - [📏 Réguas](#reguas)
 - [⏭️ Próximo passo](#proximo-passo)
 
-## 🎯 Missão oficial (texto do dono, 02/09/2026)
+## 🎯 Missão oficial (texto do dev, 02/09/2026)
 
 > "Com raízes na História e na Geografia, este portal se utiliza da tecnologia
 > da Inteligência Artificial para somar na busca por justiça socioambiental e
@@ -84,4 +84,4 @@ Toda peça de divulgação carrega essa assinatura. ✍️
 
 ## ⏭️ Próximo passo
 
-Dono aprova as peças D2–D4 → produzir e disparar o primeiro lote.
+Dev aprova as peças D2–D4 → produzir e disparar o primeiro lote.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Recolore os cursores Korkhon: o contorno marrom vira preto puro.
 
-Por que existe este script (regra do dono, contraste de elemento gráfico,
+Por que existe este script (regra do dev, contraste de elemento gráfico,
 WCAG 1.4.11 — "≥3:1 contra qualquer cor adjacente"):
 
 O pacote Korkhon 2.0 XS pinta o contorno em #5c4542 (luminância relativa

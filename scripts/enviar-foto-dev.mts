@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * scripts/enviar-foto-dono.mts — envia uma FOTO (sendPhoto) só para o chat
- * do dono via Telegram, com caption opcional em HTML.
+ * scripts/enviar-foto-dev.mts — envia uma FOTO (sendPhoto) só para o chat
+ * do dev via Telegram, com caption opcional em HTML.
  *
  * Uso:
- *   npx tsx scripts/enviar-foto-dono.mts <caminho-da-imagem> ["caption"]
+ *   npx tsx scripts/enviar-foto-dev.mts <caminho-da-imagem> ["caption"]
  *
  * Lê TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID de scripts/.env.
  * Nunca imprime o token. Fail-closed se .env não existir.
@@ -35,7 +35,7 @@ async function main() {
     process.exit(2);
   }
   if (!CAMINHO || !fs.existsSync(CAMINHO)) {
-    console.error("Uso: npx tsx scripts/enviar-foto-dono.mts <imagem> [caption]");
+    console.error("Uso: npx tsx scripts/enviar-foto-dev.mts <imagem> [caption]");
     process.exit(2);
   }
   const form = new FormData();
@@ -51,7 +51,7 @@ async function main() {
     console.error(`HTTP ${r.status}: ${corpo.slice(0, 300)}`);
     process.exit(1);
   }
-  console.log("✅ Foto enviada ao dono.");
+  console.log("✅ Foto enviada ao dev.");
 }
 main().catch((e) => {
   console.error(e);

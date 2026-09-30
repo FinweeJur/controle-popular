@@ -291,7 +291,7 @@ _REGRAS: dict[str, re.Pattern] = {
         r"\bserra\b",
         re.IGNORECASE,
     ),
-    # ─── LUGARES COM NOME, pedidos pelo dono em 2026-08-15 ──────────────
+    # ─── LUGARES COM NOME, pedidos pelo dev em 2026-08-15 ──────────────
     #
     # `serra_relevo` responde "esta norma fala de alguma serra". Não responde
     # "quais normas tratam da Serra do Curral", que é a pergunta que alguém
@@ -307,7 +307,7 @@ _REGRAS: dict[str, re.Pattern] = {
     # ⚠️ `serra_curral` e `serra_caraca` deram **0 nas federais**, e isso é
     # esperado, não erro: as duas são objeto de norma ESTADUAL de Minas, e o
     # acervo estadual vive no Postgres — que esta máquina não alcança (a Neon
-    # está em cota até 01/09). São as duas que o dono nomeou primeiro; a
+    # está em cota até 01/09). São as duas que o dev nomeou primeiro; a
     # contagem real aparece quando `classificar_temas_ambientais` rodar na
     # máquina de build, sobre a tabela inteira.
     "serra_curral": re.compile(r"serra do curral", re.IGNORECASE),
@@ -316,7 +316,7 @@ _REGRAS: dict[str, re.Pattern] = {
     "serra_cipo": re.compile(r"serra do cip[oó]", re.IGNORECASE),        # 8
     "serra_espinhaco": re.compile(r"espinha[çc]o", re.IGNORECASE),       # 10
     "serra_canastra": re.compile(r"canastra", re.IGNORECASE),            # 13
-    # Os dois tipos de parque separados: o dono pediu "Parque Estadual"
+    # Os dois tipos de parque separados: o dev pediu "Parque Estadual"
     # explicitamente, e `unidade_conservacao` funde os dois num rótulo só.
     # A assimetria das contagens é a própria natureza do acervo — 423
     # parques nacionais contra 2 estaduais nas federais, e o inverso no

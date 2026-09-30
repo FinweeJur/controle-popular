@@ -22,7 +22,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
 });
 
 /**
- * `/ambiental/legislacao` — painel unificado, decisão do dono (2026-08-13):
+ * `/ambiental/legislacao` — painel unificado, decisão do dev (2026-08-13):
  * "é melhor unificar os painéis de legislação estadual / nacional /
  * proteção em um só, filtrável por temas". Decisão tomada, não reaberta
  * aqui — este comentário documenta a implementação, não o debate.
@@ -72,7 +72,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
  * (`estadual`/`critica`/`precedente`) num shape comum, só compartilha o
  * filtro de esfera/tema/busca.
  *
- * ═══ CARTÕES E GRÁFICO (regra do dono, 2026-08-21: "cinco coisas") ═══
+ * ═══ CARTÕES E GRÁFICO (regra do dev, 2026-08-21: "cinco coisas") ═══
  *
  * O gráfico pedido é "por ano de norma e por órgão emissor" — os dois só
  * existem sobre `estaduais` (a tabela `ambiental_legislacao`, que apesar do

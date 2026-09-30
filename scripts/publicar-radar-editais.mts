@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
  * scripts/publicar-radar-editais.mts — converte os pendentes do radar de
- * editais em notícias do blog e avisa o dono no Telegram.
+ * editais em notícias do blog e avisa o dev no Telegram.
  *
  * ═══ POSIÇÃO NO FLUXO ═══
  *
  *   radar-editais-diarios.mts (04:20)  →  pendentes/   (rascunho, só o radar)
  *   publicar-radar-editais.mts (04:50)  → noticias-portal.json + commit + push
  *
- * A publicação é AUTOMÁTICA por decisão do dono (10/09/2026): a tarefa
+ * A publicação é AUTOMÁTICA por decisão do dev (10/09/2026): a tarefa
  * agendada das 04:50 roda este script depois do radar. Guardas de dado
  * pessoal rodam antes E depois da escrita; commit e push são feitos aqui
  * (árvore suja travaria o autodeploy das 05:50, que é quem leva ao ar).
@@ -106,7 +106,7 @@ async function enviarTelegram(mensagem: string): Promise<void> {
       });
       clearTimeout(temporizador);
       if (res.ok) {
-        console.log(`✅ [publicar-radar] aviso enviado ao dono no Telegram (tentativa ${tentativa})`);
+        console.log(`✅ [publicar-radar] aviso enviado ao dev no Telegram (tentativa ${tentativa})`);
         return;
       }
       ultimoErro = `HTTP ${res.status} - ${(await res.text()).slice(0, 200)}`;
@@ -371,7 +371,7 @@ async function main(): Promise<void> {
   fs.writeFileSync(PORTAL_JSON, JSON.stringify(lista, null, 1) + "\n", "utf-8");
   console.log(`[publicar-radar] ${publicadas.length} notícia(s) gravada(s) em noticias-portal.json; ${puladas.length} pulada(s).`);
 
-  // Automação completa (pedido do dono): guarda -> grava -> commit -> push.
+  // Automação completa (pedido do dev): guarda -> grava -> commit -> push.
   // Sem commit a rotina das 05:50 abortaria por árvore suja e a notícia
   // nunca iria ao ar. Se o push falhar, o JSON volta ao estado original e
   // os pendentes permanecem para a próxima rodada.

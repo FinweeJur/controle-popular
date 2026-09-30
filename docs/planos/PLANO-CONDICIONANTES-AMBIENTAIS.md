@@ -11,7 +11,7 @@
 
 - [Propósito](#propósito)
 - [Contexto medido](#contexto-medido)
-- [Decisões do dono](#decisões-do-dono)
+- [Decisões do dev](#decisões-do-dev)
 - [Fase 1 — descoberta e espelho](#fase-1--descoberta-e-espelho)
 - [Fase 2 — banco (3 tabelas)](#fase-2--banco-3-tabelas)
 - [Fase 3 — ETL e classificação](#fase-3--etl-e-classificação)
@@ -47,14 +47,14 @@ Medido em 23/09 (leitura de repo + docs):
 | Irapé já aparece como semente IBAMA | `scripts/coletar-ibama-mg.mts` |
 | Setúbal sem registro fixo no repo | só menções incidentais |
 
-## Decisões do dono
+## Decisões do dev
 
 Confirmadas em 23/09. **Não reabrir sem remensurar.**
 
 | # | Decisão |
 |---|---|
 | 1 | Status `cumprida`/`nao_cumprida` **só** com evidência linkada (DCE, PAE, auto, relatório). Sem evidência: `nao_informado` + o que existe perto (AGENTS §7). |
-| 2 | Setúbal: descoberta de 23/09 corrigiu o pressuposto — Ruralminas/COPASA, uso múltiplo, sem LO. Piloto mantém o critério do dono (barragem antiga com condicionantes). |
+| 2 | Setúbal: descoberta de 23/09 corrigiu o pressuposto — Ruralminas/COPASA, uso múltiplo, sem LO. Piloto mantém o critério do dev (barragem antiga com condicionantes). |
 | 3 | Texto integral dos PDFs no **espelho R2**; Postgres guarda só metadados, resumo, status e índice. |
 | 4 | Piloto = **só Irapé + Setúbal** com dado real antes de escalar. |
 | 5 | LLM só resume, rotulado (“gerado por máquina”, data, modelo) — nunca emite status. |
@@ -203,7 +203,7 @@ Após piloto verde, nesta ordem:
 
 ## Origem
 
-Pedido do dono em 23/09/2026: plano de página/ETL de condicionantes
+Pedido do dev em 23/09/2026: plano de página/ETL de condicionantes
 ambientais, somando-se a `/ambiental/tac`, com piloto em barragens antigas
 (Irapé e Setúbal). Decisões 1–5 desta mesma sessão. Descoberta da Fase 1 no
 mesmo dia; registro em FONTES.md.

@@ -26,10 +26,10 @@ não por teoria:
 |---|---|---|---|
 | 07/08/2026 | Neon: 5,73 GB de egress em 7 dias, 9 rebuilds, 6 falharam tarde | site fora (402) | orçamento de build + trava |
 | 01/09/2026 | deploy quebrou no upload (DNS para api.cloudflare.com); `next start` morto | site 502 | vigia do servidor |
-| 08/09/2026 | `next start` morreu de novo, sem ninguém saber | site 502 (achado pelo dono, não pelo sistema) | vigia do servidor + heartbeat |
+| 08/09/2026 | `next start` morreu de novo, sem ninguém saber | site 502 (achado pelo dev, não pelo sistema) | vigia do servidor + heartbeat |
 
 ⚠️ O padrão dos dois últimos é o mesmo: **o processo mais importante do site
-não tinha supervisor**. Ninguém percebeu a morte — foi o dono quem viu.
+não tinha supervisor**. Ninguém percebeu a morte — foi o dev quem viu.
 
 ## O que já existe
 
@@ -86,7 +86,7 @@ heartbeat e o vigia denuncia quando ele para.
 **O que é:** tarefa agendada do Windows rodando a cada 5 minutos. Confere
 `http://127.0.0.1:3000`; se não responder 200:
 1. Reinicia o servidor (mesma lógica do `publicarTunel()` — reaproveitar)
-2. Avisa o Telegram (o dono é o primeiro a saber, nunca o último)
+2. Avisa o Telegram (o dev é o primeiro a saber, nunca o último)
 
 **Guarda obrigatória (orçamento de retry, do SRE):** máx. 3 reinícios por
 hora. Estourou → para de reiniciar, só avisa. Sem isso, um bug de boot
@@ -125,7 +125,7 @@ quer evitar).
 **Executado em 09/09:** `scripts/rotina-coletas.mts` — 3 falhas seguidas
 colocam a fonte em quarentena por UMA rodada (`scripts/.quarentena-fontes.json`),
 com aviso no log e retorno automático na seguinte. Rodada de fonte única
-(dono, à mão) ignora a quarentena — pedido explícito manda.
+(dev, à mão) ignora a quarentena — pedido explícito manda.
 
 **O que é:** fonte que falha (retentável) N rodadas seguidas (ex.: 3) entra em
 **quarentena** — a próxima rotina pula com aviso, e re-tenta na seguinte.
@@ -152,7 +152,7 @@ madrugada confere: heartbeat mais velho que X → avisa Telegram ("gatilho morto
 desde 21:40").
 
 **Por quê:** mesma lição do vigia — o processo silencioso é o que morre sem
-ninguém ver. O dono já recebe avisos no Telegram; que receba o de agente
+ninguém ver. O dev já recebe avisos no Telegram; que receba o de agente
 morto também.
 
 ### ✅ 5. Pós-mortem com template + rollback documentado (P1)
@@ -193,7 +193,7 @@ Crítica honesta — as fontes mandam coisas que **este** projeto não precisa:
 |---|---|
 | Load shedding, CoDel, gestão de fila | não há fila nem tráfego que sature; site é estático + cache |
 | SLO formal com janelas de burn-rate | overkill para 1 operador; o alerta simples ("site fora > 5 min") cobre o caso real |
-| Incident Command System (IC/CL/OL), PagerDuty, war room | equipe é o dono; Telegram + runbook bastam |
+| Incident Command System (IC/CL/OL), PagerDuty, war room | equipe é o dev; Telegram + runbook bastam |
 | Hedged requests, deadline propagation entre camadas | não há stack distribuída de RPC |
 | Graceful degradation programada | a versão degradada já existe de graça: página mostra "ainda não coletado" (regra editorial) |
 | Chaos engineering tipo Netflix Simian Army completo | o drill do item 6 é a versão da medida certa |
@@ -211,5 +211,5 @@ Crítica honesta — as fontes mandam coisas que **este** projeto não precisa:
 | 6 | Drill mensal agendado | 1 h | itens 1 e 6 dependem do vigia |
 
 **Critério de aceite do plano:** os incidentes de 01/09 e 08/09 não podem mais
-acontecer em silêncio — se o `next start` morrer, o Telegram do dono tem que
+acontecer em silêncio — se o `next start` morrer, o Telegram do dev tem que
 saber antes dele, e o site tem que voltar sozinho dentro de 10 minutos.

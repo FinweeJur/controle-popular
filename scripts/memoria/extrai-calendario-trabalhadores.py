@@ -6,12 +6,12 @@ ancoradas em data ("No dia 15 de marco de 1789, ..." / "em 1o de maio
 de 1886"). `vizinho` junta as linhas seguintes: e o texto-fonte do
 resumo quando o paragrafo proprio nao alcanca duas frases.
 
-Por que assim: o documento do dono e prosa corrida, sem estrutura de
+Por que assim: o documento do dev e prosa corrida, sem estrutura de
 banco. Ancorar em "<dia> de <mes>" e o unico jeito honesto de virar
 calendario sem inventar nada - a frase e do documento, nao do agente.
 Nao escreve no repositorio.
 
-CORRECAO (30/09/2026, regra do dono): a primeira versao cortava no
+CORRECAO (30/09/2026, regra do dev): a primeira versao cortava no
 primeiro ". " apos 40 caracteres e capava em 300 - o resumo da Mistica
 do Dia ficava uma frase solta, cortada no meio, e 297 de 380 entradas
 do MST ficavam sem resumo. Agora cada entrada guarda o PARAGRAFO
@@ -75,7 +75,7 @@ def linhas_vizinhas(i: int) -> str:
     - "Inter ...": referencia cruzada do proprio documento;
     - "4 de janeiro: 1808:": cabecalho de data de outro verbete;
     - "..., 2000.": linha de bibliografia (ano final com ponto).
-    Ainda assim o dono revisa o antes x depois no doc de revisao - o
+    Ainda assim o dev revisa o antes x depois no doc de revisao - o
     vizinho e chute honesto de contexto, nao certeza de topico.
     """
     partes: list[str] = []
@@ -131,7 +131,7 @@ entradas.sort(key=lambda e: (e["diaMes"], e["ano"] or ""))
 DESTINO.write_text(json.dumps(entradas, ensure_ascii=False, indent=1), encoding="utf-8")
 
 # --- recheio: fatos SEM data no original -------------------------------
-# Pedido do dono (29/09/2026): fato sem dia ou sem ano NÃO se perde; ele
+# Pedido do dev (29/09/2026): fato sem dia ou sem ano NÃO se perde; ele
 # preenche dia vazio de fato no calendário. Aqui só se colhe o texto cru
 # desses parágrafos (linhas sem âncora de data); a distribuição pelos dias
 # vazios acontece no gerador, de forma determinística.

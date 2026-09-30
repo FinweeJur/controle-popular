@@ -21,7 +21,7 @@
 - [Acessibilidade e as seis qualidades](#acessibilidade-e-as-seis-qualidades)
 - [Fases, esforço e critério de pronto](#fases-esforço-e-critério-de-pronto)
 - [Riscos e o que NÃO fazer](#riscos-e-o-que-não-fazer)
-- [Decisões registradas (dono, 29/09/2026)](#decisões-registradas-dono-29092026)
+- [Decisões registradas (dev, 29/09/2026)](#decisões-registradas-dev-29092026)
 - [Origem](#origem)
 
 ## Propósito
@@ -162,20 +162,20 @@ AGENTS.md vale para link também).
 é sempre a mais local e mais oficial. Se só houver fonte terciária, o
 verbete não entra.
 
-**Duas fontes novas incorporadas em 29/09/2026** (pedido do dono), já
+**Duas fontes novas incorporadas em 29/09/2026** (pedido do dev), já
 transformadas em dados:
 
 1. **Aos que virão — Calendário Insurgente**, de **Gustavo Seferian**
    (2020; `aosquevirao.home.blog`) — 17 páginas de listagem colhidas por
    script; **158 entradas** com link direto do post e a **data da citação
-   tirada do próprio post**, conforme decisão do dono.
+   tirada do próprio post**, conforme decisão do dev.
 2. **Calendário Histórico dos Trabalhadores e Trabalhadoras**, do **MST,
    2009** (organização de Ângelo Diogo Mazin, Janaina Strozake e Miguel
    Enrique Almeida Stádile) — texto extraído do `.doc` em 29/09/2026
    (UTF-16LE + limpeza de ruído binário); entradas sem URL, porque o
    documento não tem página pública.
 
-**Regra do dono (29/09/2026): fato sem dia ou sem ano NÃO se perde.**
+**Regra do dev (29/09/2026): fato sem dia ou sem ano NÃO se perde.**
 O que tem dia/mês entra no dia (o campo de ano fica vazio quando a fonte
 não datou — 147 entradas assim); o que não tem data nenhuma vira
 `semData: true` e preenche, de forma determinística (semente sha1 do
@@ -282,7 +282,7 @@ superior cobrindo o país inteiro do que 100 verbetes municipais ilhados.
 | Cobrir 5.570 cidades à mão | não: camadas primeiro, município onde há fonte |
 | Usar resumo de modelo como afirmação do portal | se houver, rotular máquina + data + modelo |
 
-## Decisões registradas (dono, 29/09/2026)
+## Decisões registradas (dev, 29/09/2026)
 
 1. **Fontes não estatais entram** — com citação e link, marcadas como
    "organização civil / academia" na ficha da fonte. Memória de luta
@@ -306,7 +306,7 @@ superior cobrindo o país inteiro do que 100 verbetes municipais ilhados.
 
 ## Origem
 
-- Pedido do dono em 29/09/2026: resgatar o plano de memória com a
+- Pedido do dev em 29/09/2026: resgatar o plano de memória com a
   história das resistências, revoltas e lutas populares de cada estado,
   região ou país, e acrescentar em cada cidade e página.
 - Herdeiro direto do [PLANO-COPY-VOZ.md](PLANO-COPY-VOZ.md) v3

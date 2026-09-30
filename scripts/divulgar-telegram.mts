@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * scripts/divulgar-telegram.mts — envia uma mensagem para TODOS os inscritos
- * do broadcast (scripts/inscritos.json) + o chat do dono.
+ * do broadcast (scripts/inscritos.json) + o chat do dev.
  *
- * Decisão do dono (01/09/2026): inscrição pública via /comecar no privado do
+ * Decisão do dev (01/09/2026): inscrição pública via /comecar no privado do
  * bot; broadcast aberto só para quem está inscrito; comandos de edição só do
  * criador (ver gatilho-remoto.mts).
  *
@@ -57,7 +57,7 @@ async function main() {
     const lidos = JSON.parse(fs.readFileSync(ARQUIVO_INSCRITOS, "utf-8")) as Array<{ chat_id: number }>;
     if (Array.isArray(lidos)) for (const i of lidos) alvos.add(i.chat_id);
   } catch {
-    // lista vazia/inexistente — só o dono recebe
+    // lista vazia/inexistente — só o dev recebe
   }
   alvos.add(Number(DONO));
 

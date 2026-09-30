@@ -91,9 +91,9 @@ LOG = "[etl.camaras.sapl]"
 # literalmente em `camara/proposicoes/page.tsx`.
 COLETOR = "sapl"
 
-# Tag de dono de `atos_oficiais`. A tabela não tem chave natural, então a
+# Tag de responsável de `atos_oficiais`. A tabela não tem chave natural, então a
 # única escrita possível é refresh total filtrando por `id_municipio` — que
-# APAGA TUDO da cidade. Dois coletores sem dono declarado se apagariam
+# APAGA TUDO da cidade. Dois coletores sem responsável declarado se apagariam
 # alternadamente. Mesmo mecanismo de `fontes.contratos_fonte` no PNCP.
 FONTE_LEGISLACAO = "camara_sapl"
 
@@ -487,15 +487,15 @@ def _gravar_normas(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> 
 
     # `atos_oficiais` não tem chave natural: a escrita é refresh total
     # filtrando só por `id_municipio`, ou seja, um DELETE de tudo que a
-    # cidade tem. Sem dono declarado, dois coletores se apagariam
+    # cidade tem. Sem responsável declarado, dois coletores se apagariam
     # alternadamente a cada rodada, e ninguém veria — cada um veria a própria
     # carga completa.
-    dono = fontes.get("legislacao_fonte")
-    if dono != FONTE_LEGISLACAO:
+    dono_declarado = fontes.get("legislacao_fonte")
+    if dono_declarado != FONTE_LEGISLACAO:
         raise RuntimeError(
-            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono!r}, não {FONTE_LEGISLACAO!r}. "
+            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono_declarado!r}, não {FONTE_LEGISLACAO!r}. "
             "Recuso escrever em atos_oficiais — o refresh total apagaria o acervo do "
-            "coletor que é dono da cidade."
+            "coletor que é responsável pela cidade."
         )
     if not linhas:
         print(f"{LOG} normas: nada coletado — NÃO apago o que já existe.")

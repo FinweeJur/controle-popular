@@ -9,27 +9,27 @@
 
 1. **Plano Frentes "Nossos" + Painéis-Sanfona + Seu Nonô** → `docs/planos/PLANO-NOSSOS-PAINEIS-SANFONA.md`. Micro-etapas do menor ao maior custo (Blocos A–E). ✅
 2. **Proposta de sanitização do repo** → `docs/planos/PROPOSICAO-SANITIZACAO-REPO.md`. ✅
-3. **Prompt para o Gemini** (estrutura, temas leves) → `docs/planos/PROMPT-GEMINI-ESTRUTURA.md`. ✅ Enviado ao dono no Telegram (arquivo .md). Gemini rodando; dono dará retorno.
+3. **Prompt para o Gemini** (estrutura, temas leves) → `docs/planos/PROMPT-GEMINI-ESTRUTURA.md`. ✅ Enviado ao dev no Telegram (arquivo .md). Gemini rodando; dev dará retorno.
 4. **Scripts de Telegram** (commitados e no GitHub):
-   - `scripts/falar-com-dono.mts` — envia mensagem só ao dono (HTML).
-   - `scripts/ler-mensagens-dono.mts` — lê updates com offset.
-   - `scripts/enviar-doc-dono.mts` — envia arquivo ao dono.
+   - `scripts/falar-com-dev.mts` — envia mensagem só ao dev (HTML).
+   - `scripts/ler-mensagens-dev.mts` — lê updates com offset.
+   - `scripts/enviar-doc-dev.mts` — envia arquivo ao dev.
    - `scripts/escuta-telegram.mts` — ouvinte contínuo com heartbeat + inbox em `logs/telegram-inbox.jsonl` + offset próprio `scripts/.jcode-telegram-offset`.
 5. **Commits no GitHub (main)** — docs e scripts publicados via worktree limpo `github-docs` (sem `--force`, sem conflito com o main local divergido).
 
-## 🧭 Decisões do dono nesta sessão
+## 🧭 Decisões do dev nesta sessão
 
 | # | Decisão |
 |---|---|
-| 1 | Tratar o dono por **Artur**, nunca "chefe". Comunicação por **Telegram** com muitos emojis, negrito e frases curtas. |
+| 1 | Tratar o dev por **Artur**, nunca "chefe". Comunicação por **Telegram** com muitos emojis, negrito e frases curtas. |
 | 2 | **ONSA = página de Meio Ambiente.** As subfrentes Nossos (rios, serras, animais, territórios, gente) moram **dentro do ONSA**, com tags `natureza` e `ecossistema`. |
 | 3 | Modelo desta sessão: **jcode - deepseek v4 flash**. Nos próximos commits, incluir modelo no trailer da mensagem. |
 | 4 | Status periódico no Telegram **a cada ~15 minutos**. |
-| 5 | Prompt do Gemini foi enviado; **deu erro na 1ª tentativa** (texto picado) — reenviado como **arquivo .md**; dono rodou no Gemini. **Retorno integrado** em `PLANO-NOSSOS-PAINEIS-SANFONA.md` (commit `4824927`, outra sessão/Antigravity): schema TS, contratos JSON, wireframes ASCII, bloco "E nosso povo?". |
+| 5 | Prompt do Gemini foi enviado; **deu erro na 1ª tentativa** (texto picado) — reenviado como **arquivo .md**; dev rodou no Gemini. **Retorno integrado** em `PLANO-NOSSOS-PAINEIS-SANFONA.md` (commit `4824927`, outra sessão/Antigravity): schema TS, contratos JSON, wireframes ASCII, bloco "E nosso povo?". |
 | 6 | **Avatar do Seu Nonô = imagem do Gemini** (`Gemini_Generated_Image_54tagj54tagj54ta.jfif` da pasta Kimi). ✅ |
 | 7 | **Tom do Seu Nonô:** mineiro animado + **ironia leve contra o poder** (empresário, latifundiário, deputado/senador conservador); respeito total com vítima, povo e luta. → `SEU-NONO-GOLDEN-SET-VOZ.md`. |
 | 8 | **Controle Popular é o portal virtual criado com IA do ONSA** (Observatório Nacional Socioambiental). Entra no rebranding → `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md`. |
-| 9 | **Não esperar o retorno do dono:** seguir trabalhando e mandando avanços; considerar mensagens novas imediatamente. |
+| 9 | **Não esperar o retorno do dev:** seguir trabalhando e mandando avanços; considerar mensagens novas imediatamente. |
 | 10 | Em aberto: reconciliar o `main` local (ahead 14 / behind 30) com o GitHub — depende de aval (pergunta 3). |
 | 11 | **Modelo a usar daqui em diante: `ling 1t`** (comando `/model ling 1t` no jcode, provider `ling-1t` no config). Próximos commits: modelo no trailer como "jcode - ling 1t". |
 | 12 | **Git resolvido via WSL:** git do Windows ficou preso globalmente (outra sessão ativa). O git do WSL funciona; commits `a50e5d1`/`089f030` (intro Seu Nonô Alceu Dispor, script delegar-gemini, wrapper gh) já pushados ao GitHub via WSL + worktree limpo. Wrapper: `scripts/gh-credential-wsl.sh`. |
@@ -45,16 +45,16 @@
 ## ⏭️ Próximos passos
 
 1. ~~Receber retorno do Gemini~~ — **integrado** no plano (commit `4824927`) e **revisado** (`REVISAO-PLANO-GEMINI.md`). ✅
-2. Dono decidir: ONSA abraça Terras? Bloco chama "E o social?" ou "E nosso povo?" → destrava Onda 1.
+2. Dev decidir: ONSA abraça Terras? Bloco chama "E o social?" ou "E nosso povo?" → destrava Onda 1.
 3. ~~Escolher avatar do Seu Nonô~~ — **decidido**: imagem do Gemini; **aplicado** no widget (commit `b9942e0`). ✅
 4. Executar **Onda 1** (schema, PainelDialogo, piloto Diamantina×Biribiri) — runbook em `ROTEIRO-EXECUCAO-ONDA1.md`; aguarda decisões 1–2.
-5. Rodar sanitização Etapa 1 (`.gitattributes` + renormalização) com aval do dono.
+5. Rodar sanitização Etapa 1 (`.gitattributes` + renormalização) com aval do dev.
 
 ## 📦 Entregas extras da sessão (docs em `docs/planos/`)
 
 - `SEU-NONO-GOLDEN-SET-VOZ.md` — 10 respostas mineiras + tom irreverente leve contra o poder. 🎙️
 - `MAPA-POEMAS-SUBFRENTES.md` — distribuição dos poemas pelas subfrentes Nossos, nenhum cortado. 📖
-- `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md` — Controle Popular = portal com IA do ONSA + missão oficial do dono. 🏛️
+- `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md` — Controle Popular = portal com IA do ONSA + missão oficial do dev. 🏛️
 - `REVISAO-PLANO-GEMINI.md` — nota sobre o retorno Gemini integrado. 🔍
 - `ROTEIRO-EXECUCAO-ONDA1.md` — runbook da fundação barata. 🏗️
 - `PLANO-DIVULGACAO-ONSA.md` — plano de mídia com a missão do ONSA. 📣

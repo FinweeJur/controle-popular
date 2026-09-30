@@ -23,11 +23,11 @@
 
 A `/laboratorio` deixa o leigo comparar dois conjuntos de dado do portal no
 mesmo padrão visual, sem escrever código. Critério de pronto (do plano):
-o dono monta, em dois cliques, uma comparação tipo "congresso × economia",
+o dev monta, em dois cliques, uma comparação tipo "congresso × economia",
 com o Seu Nonô acendo os gráficos por botão.
 
 Não é biblioteca de gráfico nova: todo gráfico é SVG/canvas com pontos —
-o estilo dither escolhido pelo dono em 20/09/2026 (referência:
+o estilo dither escolhido pelo dev em 20/09/2026 (referência:
 amicro — biblioteca MIT, componentes adaptados localmente).
 
 ## Como funciona

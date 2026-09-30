@@ -2,13 +2,13 @@
  * Calendário de lutas populares, resistências e revoltas — base da
  * "Mística do Dia" da home (`app/components/MisticaDoDia.tsx`).
  *
- * ORIGEM DOS DADOS (as duas fontes pedidas pelo dono em 29/09/2026):
+ * ORIGEM DOS DADOS (as duas fontes pedidas pelo dev em 29/09/2026):
  * 1. Aos que virão — Calendário Insurgente, de Gustavo Seferian e
  *    Carla Benitez Martins; a data da citação é a data do post (2020).
  *    https://aosquevirao.home.blog/category/calendario-insurgente/
  * 2. Calendário Histórico dos Trabalhadores e Trabalhadoras, do MST,
  *    2009 (org. Ângelo Diogo Mazin, Janaina Strozake e Miguel Enrique
- *    Almeida Stádile), documento local do acervo do dono, sem URL.
+ *    Almeida Stádile), documento local do acervo do dev, sem URL.
  *
  * GERADO POR SCRIPT (`gera-calendario-insurgente.py`), nunca à mão: são
  * centenas de datas e transcrever abriria a porta a erro de data e de
@@ -20,7 +20,7 @@
  * datou); o que não tem data nenhuma vira `semData: true` e preenche,
  * de forma determinística, um dia do ano que ficou sem fato.
  *
- * RESUMO VEM DO TEXTO-FONTE (regra do dono, 30/09/2026): 1-2 frases
+ * RESUMO VEM DO TEXTO-FONTE (regra do dev, 30/09/2026): 1-2 frases
  * no estilo de escrita da própria fonte, cap 400 — blog usa o corpo
  * coletado por `coleta-corpo-calendario.py`; MST e recheio usam o
  * parágrafo do documento. Nunca resumo reescrito por máquina.
@@ -1868,7 +1868,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "04-02",
     ano: "1962",
-    titulo: "Constantemente ameaçado de morte, João Pedro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo dono do sítio onde morava.",
+    titulo: "Constantemente ameaçado de morte, João Pedro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo proprietário do sítio onde morava.",
     resumo: "Milhares de camponeses acompanharam seu enterro. Sua companheira Elizabeth Teixeira tornou-se a principal líder das Ligas na região até que o golpe civil-militar em 1964 obrigou-a a viver escondida com outro nome no interior do Rio Grande do Norte.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -2091,7 +2091,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
     diaMes: "04-15",
     ano: "1920",
     titulo: "Inicia-se o périplo de Sacco e Vanzetti",
-    resumo: "No dia 15 de abril de 1920, há exatamente um século, um assalto a um pequeno estabelecimento comercial levou ao assassinato de duas pessoas no estado de Massachusetts: o dono da sapataria e seu contador. Sem encontrar eventuais autores ou suspeitos, a polícia local acusou Nicola Sacco e Bartolomeo Vanzetti – militantes de intensa atuação sindical – pelos assassinatos.",
+    resumo: "No dia 15 de abril de 1920, há exatamente um século, um assalto a um pequeno estabelecimento comercial levou ao assassinato de duas pessoas no estado de Massachusetts: o proprietário da sapataria e seu contador. Sem encontrar eventuais autores ou suspeitos, a polícia local acusou Nicola Sacco e Bartolomeo Vanzetti – militantes de intensa atuação sindical – pelos assassinatos.",
     tipo: ["resistencia"],
     autor: "SEFERIAN, Gustavo",
     orgao: "Aos que virão — Calendário Insurgente",
@@ -5398,7 +5398,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "11-05",
     ano: "1838",
-    titulo: "O movimento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas mãos do um capataz de Manoel Francisco Xavier, dono das fazendas Freguesia e Maravilha.",
+    titulo: "O movimento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas mãos do um capataz de Manoel Francisco Xavier, proprietário das fazendas Freguesia e Maravilha.",
     resumo: "O líder da fuga em massa, ocorrida após a tentativa de linchamento do capataz, foi Manoel Congo, um ferreiro de ofício.",
     tipo: ["quilombo"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",

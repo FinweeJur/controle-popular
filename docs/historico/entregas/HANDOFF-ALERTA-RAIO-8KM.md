@@ -21,11 +21,11 @@
 
 ## Propósito
 
-Este documento é para quem estiver com `apps/web/public/terras/globo/js/config.js` aberto — **eu não toquei nesse arquivo nem em nada dentro de `js/`**, de propósito: o dono estava editando `config.js` ao vivo no momento desta entrega (mesma regra de `docs/HANDOFF-ALERTAS-TERRITORIO.md`, que eu l...
+Este documento é para quem estiver com `apps/web/public/terras/globo/js/config.js` aberto — **eu não toquei nesse arquivo nem em nada dentro de `js/`**, de propósito: o dev estava editando `config.js` ao vivo no momento desta entrega (mesma regra de `docs/HANDOFF-ALERTAS-TERRITORIO.md`, que eu l...
 
 Este documento é para quem estiver com `apps/web/public/terras/globo/js/config.js`
 aberto — **eu não toquei nesse arquivo nem em nada dentro de `js/`**, de
-propósito: o dono estava editando `config.js` ao vivo no momento desta entrega
+propósito: o dev estava editando `config.js` ao vivo no momento desta entrega
 (mesma regra de `docs/HANDOFF-ALERTAS-TERRITORIO.md`, que eu li inteiro como
 referência de formato antes de escrever este). O que existe agora são os dois
 `.geojson` prontos, o script que os gerou, a proveniência registrada, e o texto

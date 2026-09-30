@@ -14,7 +14,7 @@
 - [Propósito](#propósito)
 - [🔴 Dívidas que precisam sair antes de crescer mais](#dívidas-que-precisam-sair-antes-de-crescer-mais)
 - [🟢 Resolvido em 13–17/08 (o histórico abaixo fica registrado)](#resolvido-em-131708-o-histórico-abaixo-fica-registrado)
-- [🟡 Pedidos do dono, registrados para não se perderem](#pedidos-do-dono-registrados-para-não-se-perderem)
+- [🟡 Pedidos do dev, registrados para não se perderem](#pedidos-do-dev-registrados-para-não-se-perderem)
 - [🟢 Planos já escritos, esperando execução](#planos-já-escritos-esperando-execução)
 - [🟠 Aberto pela rodada de 15/08 (biblioteca das ATIs)](#aberto-pela-rodada-de-1508-biblioteca-das-atis)
 - [Origem](#origem)
@@ -24,7 +24,7 @@
 > feature depois.
 >
 > ⚠️ **Desde 22/08 este arquivo não é mais a fila.** O plano único — o que falta
-> fazer, em ordem, com as decisões do dono já tomadas — vive em
+> fazer, em ordem, com as decisões do dev já tomadas — vive em
 > `docs/ESTADO.md`. Aqui ficam a **medição e a justificativa** de cada item
 > (por que a dívida existe, o que foi medido, o que deu errado antes), que é o
 > que não cabe numa fila. Item vivo daqui aparece lá com número.
@@ -104,14 +104,14 @@ CI — o raciocínio está no cabeçalho dele e em
 
 **Dívida:** alinhar o ETL antigo (User-Agent honesto + pausa) ou aposentá-lo
 em favor do coletor novo, já que a tela do Paraopeba agora cobre a bacia
-inteira e a de Betim cobre só Betim. Decisão do dono. Enquanto isso, não
+inteira e a de Betim cobre só Betim. Decisão do dev. Enquanto isso, não
 aumentar a frequência de nenhum dos dois.
 
 > ✅ **alinhado em 17/08:** `fgv_paraopeba.py` trocou o UA de navegador
 > falso pelo honesto `ControlePopular/1.0 (+https://github.com/FinweeJur/
 > controle-popular)` (mesma régua dos coletores novos) e ganhou pausa de
 > 1,5 s entre requisições. A aposentadoria do ETL em favor do coletor novo
-> continua sendo decisão do dono — o ETL antigo segue sendo o que alimenta
+> continua sendo decisão do dev — o ETL antigo segue sendo o que alimenta
 > a tela de Betim (`paraopeba_iniciativas`/`saldo`) via CI.
 
 O coletor do repasse dos 853 (`scripts/coletar-repasse-brumadinho-mg.mts`,
@@ -153,7 +153,7 @@ repositório os dois pares já estão travados por teste.
 
 > ✅ **resolvido.** Em 13/08 os 13 territórios quilombolas do INCRA que
 > faltavam entraram (terceira fonte `-outras-regioes`, depois **fundida em
-> UMA camada** a pedido do dono — "qual o sentido de dividir?"); em 15/08 os
+> UMA camada** a pedido do dev — "qual o sentido de dividir?"); em 15/08 os
 > alertas foram recalculados sobre a base maior e os números atualizados na
 > tela (ver `docs/_historico/HANDOFF-ALERTAS-TERRITORIO.md`, seção "✅
 > ENTREGUE em 15/08": 21 operação, 271 interesse, 6 mancha). Medido em
@@ -166,7 +166,7 @@ repositório os dois pares já estão travados por teste.
 
 ---
 
-## 🟡 Pedidos do dono, registrados para não se perderem
+## 🟡 Pedidos do dev, registrados para não se perderem
 
 ### 5. Analisar o commit do PC externo sobre CAR/INCRA
 
@@ -203,14 +203,14 @@ verificado** (existe e ninguém confirmou).
 > placeholder do `/anuncie`, Diário Oficial hardcoded de Betim em todas as
 > cidades, plantão de farmácias sem telefone/endereço, zap sem link).
 > **Rodada 4 (17/08):** críticos 1, 2, 3 e 4 corrigidos — WhatsApp
-> comercial real (dono confirmou 5531975709609), Diário Oficial por cidade
+> comercial real (dev confirmou 5531975709609), Diário Oficial por cidade
 > (`fontes.diario_oficial`, contagem de edições só em Betim, Itinga sem
 > fonte não renderiza o card), plantão de farmácias sem "—" prometido
 > (endereço nulo é omitido; o dado real segue dependente de escala oficial
 > que não é publicada em formato estruturado — busca de 17/08 confirmou) e
 > Zap sem link quebrado (`normalizarLinhasZap` nas duas pontas, build
 > estático + API D1, 10 testes novos). Faltam: auditoria total dos 25.729
-> links em banco (Neon, 01/09) e as decisões do dono listadas na seção 5
+> links em banco (Neon, 01/09) e as decisões do dev listadas na seção 5
 > do relatório.
 
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
@@ -223,14 +223,14 @@ raiz). A revisão dedicada achou mais: `<main>` faltando em 7 páginas
 contraste tinha o anel de foco em 1,42:1. Os baratos foram consertados
 direto no código (3 commits); o que é decisão de layout/identidade visual
 (dar cabeçalho a Terras e Paraopeba, hierarquia da home) ficou registrado
-para o dono decidir.
+para o dev decidir.
 
 Pedido literal: *"pensando no onboarding, facilitação de uso, acessibilidade
 da plataforma pra leigos, busque por possíveis dificuldades, possíveis
 dúvidas, como achar tudo mais fácil, pequenas microanimações pra facilitar"*.
 
 Pistas já colhidas hoje, sem procurar:
-- O dono navegou no celular e não achou uma frente que existia.
+- O dev navegou no celular e não achou uma frente que existia.
 - Um link "Termos" dava 404 em toda página do eixo Cidades.
 - Três telas prometiam "ver metodologia" e abriam página de outro assunto.
 - O rodapé fabricava o nome das frentes cortando string, e entregava
@@ -255,7 +255,7 @@ problema de "sigla sem explicação" melhor do que o hover-card que essas
 bibliotecas ensinam (explicação sempre visível, porque "tooltip não
 existe no celular" — comentário já existente em `config.js`).
 
-Pergunta do dono: o que dá para se inspirar/apropriar desses três para melhorar
+Pergunta do dev: o que dá para se inspirar/apropriar desses três para melhorar
 navegabilidade e design system.
 
 **Cuidado que vem da natureza do projeto**: portal de transparência lido por
@@ -346,7 +346,7 @@ que a Função Social da Terra e as camadas de barragem/mineração já têm.
 
 ### 13. Chatbot IA sobre o acervo (adaptação do plano do Leilões)
 
-Pedido literal (16/08): o dono trouxe o "Plano Final Contextualizado — Chatbot
+Pedido literal (16/08): o dev trouxe o "Plano Final Contextualizado — Chatbot
 IA pra Leilões.app" e pediu para **adaptar criticamente** pro Controle Popular
 e registrar no plano.
 
@@ -359,7 +359,7 @@ não se perder:
   confiança é o ativo.
 - **Só documento público entra na memória**, varrido pelas duas guardas de dado
   pessoal antes da ingestão — a barra aqui é LGPD, não FAQ de leilão.
-- **Decisões do dono em aberto antes de construir:** região do cérebro (o
+- **Decisões do dev em aberto antes de construir:** região do cérebro (o
   template exigia fora de EUA/Europa, mas o portal já roda em GitHub/Cloudflare/
   Neon — não é automático), qual acervo entra, e a ressalva de IA.
 
@@ -382,16 +382,16 @@ e `MAP_ICONES_BRASIL` preenchidos). Microanimações CSS (`cp-icon-hover`,
 `cp-icon-pulse`, `cp-icon-spin`) em `globals.css` com `prefers-reduced-motion`
 e alto contraste desligando efeitos.
 
-**Faltam 2 do Brasil Icons:** cruz e mapa da América Latina — dono não reportou
-ainda a letra no Character Map. Pedir ao dono para abrir `charmap.exe`,
+**Faltam 2 do Brasil Icons:** cruz e mapa da América Latina — dev não reportou
+ainda a letra no Character Map. Pedir ao dev para abrir `charmap.exe`,
 selecionar "Brasil Icons", localizar cruz e mapa da América Latina, e informar
 o "Keystroke".
 
-> ✅ **decidido em 17/08:** o dono mandou esquecer as duas letras e usar só os
+> ✅ **decidido em 17/08:** o dev mandou esquecer as duas letras e usar só os
 > 22 mapeados — cruz e mapa da América Latina saem do escopo
 > (`docs/CREDITOS-MIDIA.md`).
 
-**Licença (decisão do dono antes de publicar):** Brasil Icons é donationware
+**Licença (decisão do dev antes de publicar):** Brasil Icons é donationware
 (uso pessoal e comercial livre, crédito ©Woodcutter Manero). Icones do Brasil
 tem licença **não verificada** — fonttoolbox marca "Unknown" e fonts2u marca
 "Personal use" — uso público precisa de autorização do autor ou troca de
@@ -399,14 +399,14 @@ fonte.
 
 ### 15. Descrever a foto 00296 do acervo Brasil com S
 
-> ✅ **feito em 17/08.** O dono descreveu: "mulher com notebook, fone de
+> ✅ **feito em 17/08.** O dev descreveu: "mulher com notebook, fone de
 > ouvido e prato de comida na mesa". A foto entrou no `FOTOS_BRASILCOMS`
 > (`FotoBrasilComS.tsx`) com esse alt honesto e na faixa da frente Congresso.
 > Histórico abaixo fica para registrar a régua.
 
 A página do produto (`brasilcoms-00296`) não publica descrição/tags — sem o
 que mostrar na imagem, ela ficou de fora das faixas `CenasDoBrasil` (alt
-honesto é requisito). Alguém com visão descreve a foto (ou o dono passa o
+honesto é requisito). Alguém com visão descreve a foto (ou o dev passa o
 texto do produto) e ela entra na grade.
 
 ---
@@ -424,7 +424,7 @@ texto do produto) e ela entra na grade.
 | Direitos em Movimento | `docs/_historico/PLANO-DIREITOS-EM-MOVIMENTO.md` |
 | Facilitador de ação cidadã | `docs/_historico/PLANO-ACAO-CIDADA.md` |
 | Biblioteca das ATIs do Paraopeba | `docs/_historico/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
-| Chatbot IA sobre o acervo | `docs/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dono em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
+| Chatbot IA sobre o acervo | `docs/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dev em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
 
 ---
 

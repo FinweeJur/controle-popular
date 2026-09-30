@@ -11,7 +11,7 @@
 
 - [Propósito](#propósito)
 - [No ar agora](#no-ar-agora)
-- [Decisões do dono](#decisões-do-dono)
+- [Decisões do dev](#decisões-do-dev)
 - [Fila viva](#fila-viva)
 - [Bloqueios](#bloqueios)
 - [Dívida técnica registrada](#dívida-técnica-registrada)
@@ -38,7 +38,7 @@ Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy
 | **principal** | `www.controlepopular.com.br` → Guara Cloud | ✅ 19/09 |
 | servidor 2 | Cloudflare Tunnel do `home-pc` com `next start -p 3000` | ✅ de pé, monitorado |
 | fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
-| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ⛔ pendente do dono |
+| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ⛔ pendente do dev |
 
 **Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
 A raiz nunca mora no Guara.
@@ -53,11 +53,11 @@ A raiz nunca mora no Guara.
 - Assistente Seu Nonô: escada determinística para 100 páginas, tolerância a digitação, grafo de conhecimento e leitura por voz (TTS).
 - Infraestrutura Cívica: Vigia ETL de 397 bases, motor de fact-checking e espelho do código no GitLab e Hugging Face.
 
-**Banco — Fase 4 concluída (confirmada pelo dono em 29/09):** a aplicação
+**Banco — Fase 4 concluída (confirmada pelo dev em 29/09):** a aplicação
 aponta para o **Postgres do Guara** (`cp-postgres-597bd0`, Postgres 17),
 com `DATABASE_URL` **runtime e build = Yes** e carga validada igual à da
 Neon, menos as 2 tabelas `embeddings`. A Neon continua na conta em 94%
-(470/500 MB) **sem uso** — sobra decidir o desligamento, que é do dono.
+(470/500 MB) **sem uso** — sobra decidir o desligamento, que é do dev.
 
 **Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
 `convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
@@ -69,7 +69,7 @@ build. Restart não resolve; resolve `guara deploy` de imagem nova.
 Medido em 19/09 (deploys `de291a9b` e `5a4a08cc`). `/betim/emendas` com
 "Em breve" é o mesmo efeito: `configured=false` no build antigo.
 
-## Decisões do dono
+## Decisões do dev
 
 Decisões de 22/08, numa sessão única. **Não reabrir sem remensurar.**
 
@@ -85,7 +85,7 @@ Decisões de 22/08, numa sessão única. **Não reabrir sem remensurar.**
 | 8 | Home com linha de orientação sobre a grade das cidades | ✅ entregue (22/08) |
 | 9 | GitHub Pages fora da fila | ✅ decisão mantida |
 | 10 | Diário de Itinga: `www.itinga.mg.gov.br/diario` | ✅ corrigido |
-| 11 | Protocolo da LAI do INCRA: o dono cuida | ⛔ pendente |
+| 11 | Protocolo da LAI do INCRA: o dev cuida | ⛔ pendente |
 | 12 | ETL antigo da FGV continua vivo e alinhado | ✅ decisão mantida |
 | 13 | Espelho do código fora do GitHub | ✅ GitLab no lugar do Gitee (29/09) |
 | 14 | Backfill do diário oficial desde jan/2020 | ✅ concluído (30/08) |
@@ -99,9 +99,9 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dono 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
+| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dev 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
 | A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0** (liberado); env de build já Yes |
-| A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dono, 2 minutos |
+| A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dev, 2 minutos |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
 
@@ -130,7 +130,7 @@ memória e não depende de pgvector — ver
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 
-### Bloco C — ação externa do dono
+### Bloco C — ação externa do dev
 
 | # | Tarefa | Nota |
 |---|---|---|
@@ -142,7 +142,7 @@ memória e não depende de pgvector — ver
 
 ### Bloco D — destrava com a Fase 4
 
-- Fase 5 do chatbot (persistência do índice): ⛔ cancelada (decisão do dono,
+- Fase 5 do chatbot (persistência do índice): ⛔ cancelada (decisão do dev,
   30/09) — o Guara não tem pgvector e o Qdrant não cabe no plano. O RAG roda
   em memória (397 pedaços) e basta — ver
   [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
@@ -159,7 +159,7 @@ Runbooks: [`planos/`](../planos/).
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
 | Raiz do domínio com 403 | redirect rule no Cloudflare (A2) |
 | `guara security findings` quebrado | usar `guara services vulnerabilities` |
-| PDFs da AJRI parados | `AJRI_COOKIE` (dono) |
+| PDFs da AJRI parados | `AJRI_COOKIE` (dev) |
 | `AI_API_KEY` nunca vai para o repo | fica em `.env.local`, fora do Git |
 
 ## Dívida técnica registrada
@@ -188,7 +188,7 @@ Runbooks: [`planos/`](../planos/).
 - **R4:** golden set em `lib/assistente/golden-set.ts` (22 casos) e correção
   da abstenção no modo lexical (peso IDF + palavras de pergunta nas
   stopwords + piso 0,45). Sem isso, "receita de bolo" casava orçamento.
-- **R5:** cancelado (decisão do dono, 30/09) — o Guara não tem pgvector e o
+- **R5:** cancelado (decisão do dev, 30/09) — o Guara não tem pgvector e o
   Qdrant não cabe no plano (`TIER_LIMIT_EXCEEDED`, 402). O índice em memória
   é o desenho final.
 - **Busca × RAG:** a busca global (navbar e `/busca`) passou a cobrir a
@@ -323,7 +323,7 @@ Runbooks: [`planos/`](../planos/).
 
 - `DATABASE_URL` da Neon no Guara, runtime e build.
 - `www.controlepopular.com.br` active no Guara (via CLI).
-- Domínio da raiz não aceito no Guara → redirect no Cloudflare, pendente do dono.
+- Domínio da raiz não aceito no Guara → redirect no Cloudflare, pendente do dev.
 - Scan Trivy: 3 CRITICAL / 28 HIGH / 22 MEDIUM (fila A3).
 - TTS fala o microresumo do top-100 antes do conteúdo (`resumos-top100.ts`).
 - Loader pequeno `DotsRing` no buscador e no overlay (o grande continua o Wave).

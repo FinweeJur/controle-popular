@@ -8,7 +8,7 @@ import { normalizarTipo } from "@/lib/ambiental/urn-lexml";
 
 /**
  * Lógica PURA (sem React, sem banco) da unificação de `/ambiental/legislacao`
- * com `/ambiental/direito-critico` num painel só — pedido do dono: "é melhor
+ * com `/ambiental/direito-critico` num painel só — pedido do dev: "é melhor
  * unificar os painéis de legislação estadual / nacional / proteção em um
  * só, filtrável por temas". Decisão tomada, não reaberta aqui.
  *
@@ -78,7 +78,7 @@ export function esferaDaNatureza(natureza: NaturezaDireitoCritico): "nacional" |
   return natureza;
 }
 
-// ─── HIERARQUIA DAS NORMAS (pedido do dono, 03/09/2026) ───
+// ─── HIERARQUIA DAS NORMAS (pedido do dev, 03/09/2026) ───
 //
 // A ordenação "Tipo/classe" era alfabética sobre o `tipo` cru e as 5.595
 // portarias do acervo federal engoliam leis e decretos. Aqui a classe do
@@ -89,7 +89,7 @@ export function esferaDaNatureza(natureza: NaturezaDireitoCritico): "nacional" |
 // mais longo primeiro: "LEI COMPLEMENTAR 140/2011" tem que cair na banda 2,
 // não na 3 do prefixo "LEI".
 //
-// `EMC` fica na banda 4 por decisão EXPLÍCITA do dono — o peso segue o
+// `EMC` fica na banda 4 por decisão EXPLÍCITA do dev — o peso segue o
 // pedido à letra; o RÓTULO exibido na tela continua "Emenda constitucional".
 export const PESO_HIERARQUIA: Record<string, number> = {
   // 1 — Constituição e emendas
@@ -324,7 +324,7 @@ export function unificarItens(
 }
 
 /** ═══ ORDENAÇÃO HIERÁRQUICA — o DEFAULT da busca unificada (pedido do
- *  dono, 03/09/2026: "primeiro Constituição, depois internacional, federal,
+ *  dev, 03/09/2026: "primeiro Constituição, depois internacional, federal,
  *  estadual, local"; até hoje o default era a ordem da fonte e o sort
  *  "Tipo/classe" era alfabético, com 5.595 portarias engolindo a lista) ═══
  *

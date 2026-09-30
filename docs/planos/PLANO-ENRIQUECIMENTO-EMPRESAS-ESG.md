@@ -5,7 +5,7 @@
 > **Data:** 2026-09-07
 > **Última medição:** 2026-09-07
 > **Leitura estimada:** média (5–15 min)
-> **Prioridade:** alta (decisão do dono, item da fila)
+> **Prioridade:** alta (decisão do dev, item da fila)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
 > **Palavras-chave:** scraping, ESG, Vale, documentos, empresas, paraopeba, rio doce, seu-nono, sabia-7b
 
@@ -204,4 +204,4 @@ Este plano é resultado de code review do código de empresas em 07/09/2026. Com
 - Contexto do modelo Seu Nono Sabia 7B (treino concluído em 07/09)
 - Regras editoriais do AGENTS.md e PRODUTO.md
 
-Próximos passos: (1) aprovação do dono, (2) worktree próprio, (3) Fase 0 (correções urgentes), (4) Fase 1 (coletor), (5) build e deploy.
+Próximos passos: (1) aprovação do dev, (2) worktree próprio, (3) Fase 0 (correções urgentes), (4) Fase 1 (coletor), (5) build e deploy.

@@ -101,7 +101,7 @@ MIN_AMOSTRA_BASELINE = 3                # need >=3 contracts to estimate a stdev
 PREFIXO_OBJETO_LEN = 40                 # fallback grouping key when categoria is empty
 
 # ── Rule 2: Lei 14.133/2021 Art. 75 direct-award (dispensa) thresholds ─────
-# CORRIGIDO 2026-08-22 (decisão do dono, sprint revisao-dados): os valores
+# CORRIGIDO 2026-08-22 (decisão do dev, sprint revisao-dados): os valores
 # do art. 75 são R$ 400.000 para obras/serviços de engenharia e R$ 100.000
 # para bens/serviços comuns — a versão anterior (100.000/50.000) não eram
 # os valores da lei. O alerta dispara em >= 90% do limite (indício de

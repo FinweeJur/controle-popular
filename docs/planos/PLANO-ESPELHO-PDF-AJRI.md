@@ -12,12 +12,12 @@
 - [Propósito](#propósito)
 - [O que já está no ar (fase 1) e por que ela é segura](#o-que-já-está-no-ar-fase-1-e-por-que-ela-é-segura)
 - [1. Os 467 PDFs não cabem no repositório nem no Worker](#1-os-467-pdfs-não-cabem-no-repositório-nem-no-worker)
-- [2. A marca d'água com nome e CPF — decisão do dono, e a consequência técnica](#2-a-marca-dágua-com-nome-e-cpf-decisão-do-dono-e-a-consequência-técnica)
+- [2. A marca d'água com nome e CPF — decisão do dev, e a consequência técnica](#2-a-marca-dágua-com-nome-e-cpf-decisão-do-dev-e-a-consequência-técnica)
 - [3. Cadência de sincronização](#3-cadência-de-sincronização)
 - [4. Ordem sugerida](#4-ordem-sugerida)
 - [5. O que este plano NÃO decide](#5-o-que-este-plano-não-decide)
 - [6.1. O que ficou de fora da ficha legível, e por que não foi preguiça](#61-o-que-ficou-de-fora-da-ficha-legível-e-por-que-não-foi-preguiça)
-- [6.2. A ordem é obrigatória, e cada passo tem um dono anterior](#62-a-ordem-é-obrigatória-e-cada-passo-tem-um-dono-anterior)
+- [6.2. A ordem é obrigatória, e cada passo tem um dev anterior](#62-a-ordem-é-obrigatória-e-cada-passo-tem-um-dev-anterior)
 - [6.3. Um resumo de modelo, publicado, é **o portal afirmando algo**](#63-um-resumo-de-modelo-publicado-é-o-portal-afirmando-algo)
 - [6.4. O custo real, e o que medir antes de assumir qualquer número](#64-o-custo-real-e-o-que-medir-antes-de-assumir-qualquer-número)
 - [6.5. Ordem sugerida da fase 3](#65-ordem-sugerida-da-fase-3)
@@ -44,7 +44,7 @@
 - `apps/web/lib/paraopeba/ficha-legivel-ajri.ts` (15/08, à noite) — a **ficha
   legível** de cada documento: o que é, quando, sobre o quê, de onde vem, em
   linguagem comum. Função pura sobre os metadados, 24 testes, **zero modelo**.
-  É a metade do pedido do dono que dava para entregar sem baixar nada; a outra
+  É a metade do pedido do dev que dava para entregar sem baixar nada; a outra
   metade — conclusões e recomendações — é o §6 deste documento.
 
 Catálogo + link é **integralmente compatível** com os Termos de Uso do portal,
@@ -90,13 +90,13 @@ auditoria com anexo fotográfico e mapa — é plausível que estes sejam uma ou
 duas ordens de grandeza maiores. Passo 1 é capturar ~10 documentos, medir, e só
 então projetar os 467. Decidir com número, não com estimativa.
 
-## 2. A marca d'água com nome e CPF — decisão do dono, e a consequência técnica
+## 2. A marca d'água com nome e CPF — decisão do dev, e a consequência técnica
 
 **O fato.** O `download_cover` do portal gera o PDF na hora e carimba nele o
 **nome e o CPF de quem está logado**. Não há como pedir o arquivo sem a marca:
 ela é aplicada na geração, do lado do servidor.
 
-**A decisão.** O dono do projeto decidiu, como pesquisador, publicar assim e
+**A decisão.** O dev do projeto decidiu, como pesquisador, publicar assim e
 **assumir o risco** — o CPF na marca d'água é o dele, não de terceiro. A decisão
 está registrada aqui porque é dele, e porque quem executar a fase 2 precisa
 saber que ela foi tomada de olhos abertos.
@@ -186,7 +186,7 @@ credencial de R2, do upload, da tabela `arquivo_fontes` e da política escrita.
 
 ## 6.1. O que ficou de fora da ficha legível, e por que não foi preguiça
 
-O dono pediu, para cada documento, um resumo acessível com **tema, data, fato e
+O dev pediu, para cada documento, um resumo acessível com **tema, data, fato e
 conclusões/recomendações**. Os três primeiros saíram inteiros do metadado, sem
 modelo — é o que `ficha-legivel-ajri.ts` entrega hoje em 467/467.
 
@@ -211,7 +211,7 @@ Para dimensionar: as 467 descrições somam **151,2 KiB** de texto (média de 33
 caracteres). É o acervo inteiro de texto que este portal tem hoje da auditoria
 — e é, provavelmente, menos que **um** dos relatórios em PDF.
 
-## 6.2. A ordem é obrigatória, e cada passo tem um dono anterior
+## 6.2. A ordem é obrigatória, e cada passo tem um dev anterior
 
 ```
 1. baixar  →  2. extrair texto  →  3. varrer dado pessoal  →  4. resumir
@@ -354,5 +354,5 @@ Três estratégias, em ordem de preferência — e a primeira é de longe a melh
    decidir qualquer coisa. Se o CPF da marca d'água aparecer no texto — e vai —,
    a política do §2 deste documento precisa estar escrita antes do passo 4.
 4. Só então decidir se o resumo por modelo se justifica, com o custo na mesa.
-   **É uma decisão do dono, não de engenharia** — e a alternativa "não resumir,
+   **É uma decisão do dev, não de engenharia** — e a alternativa "não resumir,
    e melhorar a ficha determinística" continua sobre a mesa até ele decidir.

@@ -21,7 +21,7 @@
 - [Vitória esperada](#vitória-esperada)
 - [Origem](#origem)
 
-> Escrito em 2026-08-16, a pedido do dono: ele trouxe o **"Plano Final
+> Escrito em 2026-08-16, a pedido do dev: ele trouxe o **"Plano Final
 > Contextualizado — Chatbot IA pra Leilões.app"** e pediu para **adaptar
 > criticamente** pro Controle Popular e registrar no plano. O template é de
 > FAQ de leilão; aqui é portal de transparência, e isso muda as exigências.
@@ -60,7 +60,7 @@ confira a fonte"). Os dois convivem.
    EUA/Europa" (SiliconFlow/China). O portal **já roda em GitHub (EUA),
    Cloudflare (EUA), Neon (EUA/EU)** — a restrição geográfica não é automática
    aqui. Se valer, SiliconFlow (`Qwen/Qwen3-8B` + `BAAI/bge-m3`) é o cérebro;
-   se não, o leque abre (Z.ai, OpenRouter). Decisão do dono, registrada.
+   se não, o leque abre (Z.ai, OpenRouter). Decisão do dev, registrada.
 4. **Teto do Worker.** O porteiro (Cloudflare Worker) tem que caber no teto de
    bundle do alvo — o build já usa `--webpack` por causa disso; uma
    dependência grande de RAG pode estourar.
@@ -71,7 +71,7 @@ confira a fonte"). Os dois convivem.
 
 | Camada | O que é | Escolha |
 |---|---|---|
-| **L1 Cérebro público** | API LLM + embeddings | SiliconFlow: `Qwen/Qwen3-8B` + `BAAI/bge-m3` (grátis, sem cartão, OpenAI-compatible); alternativa se a região abrir: Z.ai/OpenRouter — **decisão do dono** |
+| **L1 Cérebro público** | API LLM + embeddings | SiliconFlow: `Qwen/Qwen3-8B` + `BAAI/bge-m3` (grátis, sem cartão, OpenAI-compatible); alternativa se a região abrir: Z.ai/OpenRouter — **decisão do dev** |
 | **L2 Memória do bot** | vetores do acervo público | Neon **pgvector** (ou Postgres local até 01/09); só documentos públicos varridos pelas guardas |
 | **L3 Porteiro** | pergunta → top-5 trechos → prompt → resposta + citação | Cloudflare Worker, dentro do teto de bundle |
 | **L4 Laboratório local** | testar prompts + fallback de emergência | Ollama + **Bode 7B** / **Tucano-2.4B** no home-pc (i7-3770, 16 GB) |
@@ -87,7 +87,7 @@ confira a fonte"). Os dois convivem.
 
 ## Ordem de execução
 
-1. **Decisões do dono** ✅ (22/08/2026): (a) cerebro — Maritaca/Sabia, DeepSeek
+1. **Decisões do dev** ✅ (22/08/2026): (a) cerebro — Maritaca/Sabia, DeepSeek
    como alternativa; (b) acervo = tudo que o assistente deterministico nao
    cobrir; (c) ressalva de IA sempre visivel com citacao.
 2. **Provar conceito** ✅ (22/08/2026): pipeline local Ollama + nomic-embed-text
@@ -118,5 +118,5 @@ confira a fonte"). Os dois convivem.
 real** de onde veio, com link da fonte, em ~2 s, com zero custo recorrente — e
 "não sei" honesto fora do acervo.
 
-**1º passo concreto (≤ 2 min, decisão do dono):** responder às três perguntas
+**1º passo concreto (≤ 2 min, decisão do dev):** responder às três perguntas
 do passo 1 acima — região do cérebro, acervo inicial e ressalva de IA.

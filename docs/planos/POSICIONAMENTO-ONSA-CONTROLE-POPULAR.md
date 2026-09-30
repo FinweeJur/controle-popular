@@ -9,25 +9,25 @@
 
 ## Sumário
 
-- [🧭 Decisão do dono (02/09/2026)](#decisao-do-dono-02092026)
-- [📖 Missão oficial (texto do dono, 02/09/2026)](#missao-oficial-texto-do-dono-02092026)
+- [🧭 Decisão do dev (02/09/2026)](#decisao-do-dev-02092026)
+- [📖 Missão oficial (texto do dev, 02/09/2026)](#missao-oficial-texto-do-dev-02092026)
 - [✍️ Frases de posicionamento (rascunho)](#frases-de-posicionamento-rascunho)
 - [🗺️ O que muda no plano](#o-que-muda-no-plano)
 - [⏭️ Próximo passo](#proximo-passo)
 
-## 🧭 Decisão do dono (02/09/2026)
+## 🧭 Decisão do dev (02/09/2026)
 
 **O Controle Popular é o portal virtual criado com IA do Observatório Nacional
 Socioambiental — ONSA.**
 
 O portal não é uma ferramenta solta: é a **vitrine digital do ONSA**. 🏛️
 
-## 📖 Missão oficial (texto do dono, 02/09/2026)
+## 📖 Missão oficial (texto do dev, 02/09/2026)
 
 > "Com raízes na História e na Geografia, este portal se utiliza da tecnologia
 > da Inteligência Artificial para somar na busca por **justiça socioambiental**
 > e **fiscalização cidadã** — acessível pela internet, **gratuitamente e sem
-> cadastro**, por qualquer celular ou computador." — **Artur**, dono do projeto
+> cadastro**, por qualquer celular ou computador." — **Artur**, dev do projeto
 
 Esse texto é a **espinha dorsal do rebranding** e deve aparecer em:
 - `/sobre` (manifesto longo); 📄
@@ -51,10 +51,10 @@ Esse texto é a **espinha dorsal do rebranding** e deve aparecer em:
 2. A página `/sobre` ganha o parágrafo do ONSA antes do manifesto. 📄
 3. Seu Nonô se apresenta como assistente com IA do ONSA. 🤖
 4. Metodologia e contato ganham o CNPJ/nome institucional do ONSA quando o
-   dono fornecer. 🏢
+   dev fornecer. 🏢
 5. ONDA 1 do rebranding inclui esta troca de identidade. 🔄
 
 ## ⏭️ Próximo passo
 
-Dono aprova as frases de posicionamento e informa dados institucionais do
+Dev aprova as frases de posicionamento e informa dados institucionais do
 ONSA (nome completo, descrição, link) → entra na copy oficial.

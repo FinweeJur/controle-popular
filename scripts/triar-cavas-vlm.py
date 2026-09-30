@@ -5,7 +5,7 @@ O QUE FAZ
 ---------
 Para cada recorte JPEG de `scripts/.cache/cavas-calibracao/recortes/{positivo,negativo}`,
 envia a imagem para um modelo de visão rodando LOCALMENTE no Ollama (nunca API de
-nuvem — veto do dono) e grava em JSONL, por recorte:
+nuvem — veto do dev) e grava em JSONL, por recorte:
 
     arquivo, legenda, escore (0-100), confianca, nuvem, modelo, data
 
@@ -64,7 +64,7 @@ import urllib.request
 from datetime import date
 from pathlib import Path
 
-# Endpoint local do Ollama. Nunca trocar por URL de nuvem: o dono vetou qualquer
+# Endpoint local do Ollama. Nunca trocar por URL de nuvem: o dev vetou qualquer
 # envio de imagem de cavas para API externa (as imagens são de área pública, mas o
 # combinado é rodar tudo nesta máquina).
 OLLAMA_URL = "http://127.0.0.1:11434"
@@ -115,7 +115,7 @@ Regras:
 
 
 def legenda_quebrada(reg: dict) -> bool:
-    """Detecta registro cuja legenda precisa ser refeita (pedido do dono 29/09).
+    """Detecta registro cuja legenda precisa ser refeita (pedido do dev 29/09).
 
     Três defeitos medidos no lote fechado de MG:
     - eco do prompt: o modelo copiou a instrução como resposta (1.109 casos);

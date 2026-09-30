@@ -22,7 +22,7 @@ const MAP_BRASIL_ICONS: Record<string, string> = {
   "mapa do brasil com bandeira": "h",
   havaianas: "j",
   capoeirista: "H",
-  // cruz e mapa da america latina ficaram fora: decisao do dono em 17/08
+  // cruz e mapa da america latina ficaram fora: decisao do dev em 17/08
   // (ver docs/CREDITOS-MIDIA.md) — usar so os mapeados.
 };
 

@@ -57,7 +57,7 @@ function useClippingIj(): NoticiaInstituicaoJustica[] {
  *
  * ═══ POR QUE AS ATIs VÊM PRIMEIRO ═══
  *
- * Pedido do dono, e ele tem razão de conteúdo: as três Assessorias Técnicas
+ * Pedido do dev, e ele tem razão de conteúdo: as três Assessorias Técnicas
  * Independentes foram **eleitas pelas comunidades atingidas** e escrevem do
  * lado de quem foi atingido. O clipping geral é cobertura sobre o caso; o
  * das ATIs é a voz da assessoria da população. Ordem de leitura importa.

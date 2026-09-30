@@ -84,7 +84,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Critério de pronto:** origin/main com os commits; testes e tsc verdes
   antes do push.
 - **Notas:**
-  - (jcode, 18:10) Aguardando decisão do dono (A: outra sessão publica,
+  - (jcode, 18:10) Aguardando decisão do dev (A: outra sessão publica,
     B: jcode publica via worktree limpo). tsc já validado sem erros.
 
 ---
@@ -254,4 +254,4 @@ marca status e conversa nas Notas. Nunca apagar Notas.
   5. /paraopeba/entenda — texto AGU corrigido ("a AGU, pela sua Consultoria-Geral, em nome da Presidencia").
 - **Status:** aberta
 - **Notas:**
-  - (hermes) fotos Brasil com S: legenda curta + layout 1-foto a direita ja estao no cp-hermes mas SEM commit — esperando o dono dar o visto. Se a sessao paralela mexer em CenasDoBrasil/FotoBrasilComS, coordenar aqui para nao sobrepor.
+  - (hermes) fotos Brasil com S: legenda curta + layout 1-foto a direita ja estao no cp-hermes mas SEM commit — esperando o dev dar o visto. Se a sessao paralela mexer em CenasDoBrasil/FotoBrasilComS, coordenar aqui para nao sobrepor.

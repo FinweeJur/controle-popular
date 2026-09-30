@@ -1,7 +1,7 @@
 r"""etl.apis.legislacao_mma — legislação ambiental **FEDERAL**, publicada em
 dados abertos pelo Ministério do Meio Ambiente e Mudança do Clima.
 
-Fecha a lacuna que o dono apontou: até 2026-08-14 `ambiental_legislacao`
+Fecha a lacuna que o dev apontou: até 2026-08-14 `ambiental_legislacao`
 tinha 6.378 normas e **todas eram estaduais de Minas** (Siam 4.077, Semad
 2.232, ALMG 69) — nenhuma federal, nem a Resolução CONAMA que rege o
 licenciamento que o próprio portal publica.

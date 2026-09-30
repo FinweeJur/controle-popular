@@ -42,7 +42,7 @@ import { metadataEditavel } from "@/lib/edicoes";
  * ═══ DUAS FONTES, NUNCA MISTURADAS ═══
  *
  * Clipping, linha do tempo, atores e auxílio vêm de um painel entregue à
- * mão pelo dono (`painel-paraopeba.html`) — acervo datado, sem API por
+ * mão pelo dev (`painel-paraopeba.html`) — acervo datado, sem API por
  * trás. Os documentos do processo vêm do índice Solr público da Plataforma
  * Brumadinho UFMG, cruzado por município via o campo `places` que a
  * própria UFMG preenche. `docs/PLANO-INGESTAO-PARAOPEBA.md` mede as duas.

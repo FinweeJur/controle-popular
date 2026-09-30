@@ -5,7 +5,7 @@ import { incrementarContador, totaisContadores } from "@/lib/db/queries/betimD1"
 
 /**
  * Contador público de envios/pedidos de dados e inscrições — o "contador de
- * envios / downloads" pedido pelo dono (PLANO-NAVEGACAO-E-NOTIFICACOES.md).
+ * envios / downloads" pedido pelo dev (PLANO-NAVEGACAO-E-NOTIFICACOES.md).
  *
  * Mesmo desenho do `/api/pageview`: POST é beacon de fogo-e-esqueça (o
  * cliente nem lê a resposta), GET alimenta o mostrador público no rodapé.

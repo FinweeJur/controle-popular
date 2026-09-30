@@ -450,11 +450,11 @@ def _coletar_leis(cidade: dict) -> list[dict]:
 
 
 def _gravar_leis(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> None:
-    dono = (cidade.get("fontes") or {}).get("legislacao_fonte")
-    if dono != FONTE_LEGISLACAO:
+    dono_declarado = (cidade.get("fontes") or {}).get("legislacao_fonte")
+    if dono_declarado != FONTE_LEGISLACAO:
         raise RuntimeError(
-            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono!r}, não {FONTE_LEGISLACAO!r}. "
-            "Recuso escrever em atos_oficiais — o refresh total apagaria o acervo do dono."
+            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono_declarado!r}, não {FONTE_LEGISLACAO!r}. "
+            "Recuso escrever em atos_oficiais — o refresh total apagaria o acervo de outro coletor."
         )
     if not linhas:
         print(f"{LOG} leis: nada coletado — NÃO apago o que já existe.")

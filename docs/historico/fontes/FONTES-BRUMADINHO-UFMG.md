@@ -29,7 +29,7 @@
 > `docs/PLANO-INTEGRACAO-BRUMADINHO.md`.** A conclusão "não ingerir" do
 > buscador de processos (seções 3 e 7 abaixo) partia de risco **não medido**
 > — "pode conter dado pessoal" tratado como motivo de bloqueio total, em vez
-> de pergunta a medir. O dono corrigiu a premissa: **processo coletivo é
+> de pergunta a medir. O dev corrigiu a premissa: **processo coletivo é
 > público por natureza**, publicidade dos atos processuais é regra
 > (CPC art. 189; LOMAN), não exceção, e o acervo já está publicado pela
 > própria UFMG — copiar metadado já público não cria exposição nova. O plano
@@ -44,7 +44,7 @@
 > registro histórico da pesquisa original — a correção vive no documento
 > novo, não por cima daqui.
 
-Pergunta do dono: dá pra integrar algo do mapa/dados da Plataforma Brumadinho
+Pergunta do dev: dá pra integrar algo do mapa/dados da Plataforma Brumadinho
 UFMG? Resposta longa abaixo. A curta é **quase nada do mapa, e nada do
 buscador de processos** — mas achei um jeito honesto e de custo zero de
 puxar valor de lá mesmo assim: **linkar**, não copiar.
@@ -74,7 +74,7 @@ qualidade nas páginas certas, não um pipeline.
 
 ## 1. Quem é quem — cinco portais diferentes, fácil de confundir
 
-O dono pediu para não confundir. Medido agora, são pelo menos cinco coisas
+O dev pediu para não confundir. Medido agora, são pelo menos cinco coisas
 distintas com "Brumadinho" no nome ou no assunto:
 
 | Portal | Endereço | Quem mantém | O que é |
@@ -88,7 +88,7 @@ distintas com "Brumadinho" no nome ou no assunto:
 | Vale — página ESG Brumadinho | `vale.com/esg/brumadinho` | Vale S.A. | Comunicação institucional da empresa responsável pelo rompimento. **Não é fonte independente.** Não é dado, é relações públicas. |
 | MPMG | `mpmg.mp.br` | Ministério Público de MG | Coautor institucional do Acordo (junto com MPF e DPMG). **Não mantém plataforma própria de dados** sobre Brumadinho — o que publica é notícia/comunicação, redirecionando para os portais acima. |
 
-**Portanto: "Plataforma Brumadinho UFMG" no pedido do dono é na verdade duas
+**Portanto: "Plataforma Brumadinho UFMG" no pedido do dev é na verdade duas
 coisas** — o site institucional (relatórios) e o app de busca de processos
 (Solr) — **mais uma terceira, escondida** (o IDE/GeoNode), que é a única com
 geodado de verdade.
@@ -343,7 +343,7 @@ Sugestão concreta, de baixo custo:
 - **Não pesquisei a fundo** o Portal da Auditoria Socioambiental (AECOM) nem
   o Pró-Brumadinho — apareceram no caminho da disambiguação pedida, mas a
   pergunta era sobre UFMG. Ambos merecem um levantamento próprio, no mesmo
-  padrão deste documento, se o dono quiser seguir por ali (o ERSHRE da AECOM
+  padrão deste documento, se o dev quiser seguir por ali (o ERSHRE da AECOM
   em particular pode ter dado de saúde/ambiente mais recente e mais fino que
   qualquer coisa do IDE de 2020 — mas também tem gate de CPF+nascimento para
   acessar os relatórios, o que já é um sinal de cautela redobrada).

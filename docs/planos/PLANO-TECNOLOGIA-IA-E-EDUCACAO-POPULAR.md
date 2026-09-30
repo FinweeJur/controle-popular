@@ -91,4 +91,4 @@ A nova rota pública `/tecnologia` reúne 5 oficinas didáticas em linguagem de 
 
 ## Origem
 
-Documento criado a partir da solicitação direta do dono em 06/09/2026 para consolidar os marcos de reformulação, as correções editoriais e o plano de educação em software livre.
+Documento criado a partir da solicitação direta do dev em 06/09/2026 para consolidar os marcos de reformulação, as correções editoriais e o plano de educação em software livre.

@@ -138,7 +138,7 @@ function csvEscape(value: unknown): string {
 
 /**
  * CSV dos contratos de Cultura, Esporte e Lazer filtrados — separador `;` e
- * BOM UTF-8 (regra do dono, 2026-08-21: `AGENTS.md`, "Excel brasileiro abre
+ * BOM UTF-8 (regra do dev, 2026-08-21: `AGENTS.md`, "Excel brasileiro abre
  * tudo numa coluna e com acento quebrado" sem os dois). BOM embutido aqui
  * porque quem serve isto é uma rota `.din.ts` que devolve o corpo pronto
  * (mesmo formato de `contratosToCsv`) — não um `Blob` montado no cliente.

@@ -249,7 +249,7 @@ export default function HeroNarrative() {
         {/* Título REAL, visível por padrão: o split-text é só um <span>
             por palavra, sem opacity 0 — se o JS falhar, o texto está lá. */}
         <h1 className="hero-titulo">
-          {/* ⟲ 03/09, dono escolheu o cherry-pick da copy v6 sobre o hero:
+          {/* ⟲ 03/09, dev escolheu o cherry-pick da copy v6 sobre o hero:
               a voz nova é o titulo-mor do portal (PLANO-COPY-VOZ.md). */}
           {"O dinheiro é seu. A gente mostra.".split(" ").map((palavra, i) => (
             <span key={`${palavra}-${i}`} className="hero-palavra">

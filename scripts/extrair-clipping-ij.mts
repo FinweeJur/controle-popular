@@ -45,7 +45,7 @@
  *    `linha-do-tempo.ts` ou `auxilio.ts` apagaria 19 notícias, 5 marcos e 1
  *    pagamento — é a armadilha que `docs/HANDOFF-PAINEL-PARAOPEBA-PAGINAS-
  *    PERDIDAS.md` §0 registra. A `FONTE` abaixo aponta para a cópia de
- *    391.941 bytes, entregue pelo dono em 15/08/2026, que é de onde
+ *    391.941 bytes, entregue pelo dev em 15/08/2026, que é de onde
  *    `clipping.ts` saiu. Mesmo assim este script **só escreve
  *    `clipping-ij.ts`**: os outros arquivos têm cada um o seu gerador, e
  *    misturar responsabilidades é como a perda começou.
@@ -62,7 +62,7 @@ import { fileURLToPath } from "node:url";
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 /**
- * Painel entregue à mão pelo dono. Somente leitura — nunca reescrever.
+ * Painel entregue à mão pelo dev. Somente leitura — nunca reescrever.
  * Se o arquivo mudar de lugar, é esta linha (e só ela) que muda: o cabeçalho
  * do TS gerado cita `basename(FONTE)`, então nunca passa a mentir sozinho.
  */

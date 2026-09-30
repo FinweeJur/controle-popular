@@ -10,7 +10,7 @@
  *
  * No bolo, 56 de 285 estabelecimentos não receberam inspeção em 12 meses
  * — 20%, um número que sugere descaso generalizado. **Separando por quem
- * responde, a conta muda de dono:** a Justiça comum cobre 213 de 217, e o buraco
+ * responde, a conta muda de responsável:** a Justiça comum cobre 213 de 217, e o buraco
  * inteiro está na Justiça Militar. Publicar os 20% sem separar seria acusar
  * exatamente quem está inspecionando.
  *

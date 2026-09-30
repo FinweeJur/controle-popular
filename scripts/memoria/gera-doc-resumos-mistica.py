@@ -11,10 +11,10 @@ Entradas:
 Saída:
   docs/planos/REVISAO-RESUMOS-MISTICA.md
 
-Por que: o dono revisa o texto ANTES de o calendario.ts ser trocado
+Por que: o dev revisa o texto ANTES de o calendario.ts ser trocado
 (regra do fluxo de 30/09/2026). O doc mostra, por dia, o titulo e o
 resumo antigos contra os novos, com a fonte curta de cada verbete, e as
-medições de repetição e dos 4 elementos pedidas pelo dono em 30/09.
+medições de repetição e dos 4 elementos pedidas pelo dev em 30/09.
 
 Nao inventa nada: as duas colunas sao recorte dos proprios arquivos.
 """
@@ -142,20 +142,20 @@ def main() -> int:
         "- [O que mudou](#o-que-mudou)",
         "- [Estatísticas medidas](#estatísticas-medidas)",
         "- [Repetições e os quatro elementos](#repetições-e-os-quatro-elementos)",
-        "- [Fontes curtas (formato do dono)](#fontes-curtas-formato-do-dono)",
+        "- [Fontes curtas (formato do dev)](#fontes-curtas-formato-do-dev)",
         "- [Revisão dia a dia](#revisão-dia-a-dia)",
-        "- [Decisão pendente do dono](#decisão-pendente-do-dono)",
+        "- [Decisão pendente do dev](#decisão-pendente-do-dev)",
         "",
         "## O que mudou",
         "",
-        "Regra do dono (30/09/2026): o resumo vem do **texto-fonte**, no",
+        "Regra do dev (30/09/2026): o resumo vem do **texto-fonte**, no",
         "próprio estilo de escrita da fonte — nunca reescrito por máquina.",
         "",
         "- **Antes:** o blog nascia sem resumo (só título), e o MST cortava",
         "  a frase no primeiro ponto — resumo de frase solta, incompleta.",
         "- **Depois:** 1-2 frases recortadas do parágrafo da fonte, cap 400.",
         "  O blog usa o corpo coletado post a post; o MST usa o parágrafo",
-        "  inteiro do documento do dono.",
+        "  inteiro do documento do dev.",
         "- **Autor corrigido:** 6 posts são de Carla Benitez Martins e",
         "  constavam como SEFERIAN.",
         f"- **As {len(depois) - com_resumo_depois} lacunas são honestas:**",
@@ -176,7 +176,7 @@ def main() -> int:
         "",
         "## Repetições e os quatro elementos",
         "",
-        "Dois pedidos do dono em 30/09/2026: apagar as frases que se",
+        "Dois pedidos do dev em 30/09/2026: apagar as frases que se",
         "repetiam entre verbetes e exigir os 4 elementos em todo resumo",
         "(quem, o quê, quando, onde).",
         "",
@@ -218,16 +218,16 @@ def main() -> int:
         "  o mesmo parágrafo aparece em dois verbetes — a repetição é da",
         "  fonte, não do gerador.",
         "",
-        "## Fontes curtas (formato do dono)",
+        "## Fontes curtas (formato do dev)",
         "",
-        "Padrão aprovado pelo dono (30/09/2026): `(Obra, Autor, Data)` —",
+        "Padrão aprovado pelo dev (30/09/2026): `(Obra, Autor, Data)` —",
         "",
     ]
     for fonte, n in sorted(fontes.items(), key=lambda x: -x[1]):
         linhas.append(f"- **{fonte}** — {n} verbetes")
     linhas += [
         "",
-        "Autor é a **FONTE**, nunca a pessoa (o dono: “Blog Aos que Virão",
+        "Autor é a **FONTE**, nunca a pessoa (o dev: “Blog Aos que Virão",
         "melhor que Seferian ou Benitez”). Data é o ano da citação: 2020",
         "no blog, 2009 no MST. A citação ABNT completa continua em",
         "`referenciaAbnt()` (`mistica.ts`); a curta é `fonteCurta()`.",
@@ -247,7 +247,7 @@ def main() -> int:
         )
     linhas += [
         "",
-        "## Decisão pendente do dono",
+        "## Decisão pendente do dev",
         "",
         "Aprovar este doc para trocar `apps/web/lib/memoria/calendario.ts`",
         "(roda o gerador sem `--para-revisao`) e os testes de",

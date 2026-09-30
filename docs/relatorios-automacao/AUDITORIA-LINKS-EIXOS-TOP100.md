@@ -27,7 +27,7 @@ A metodologia combinou:
 2. **Sondagem de rede HTTP:** Consulta automatizada a todas as URLs externas declaradas em código de UI com User-Agent honesto do projeto, identificando erros 404, domínios migrados e URLs quebradas.
 3. **Busca ativa e resolução canônica:** Consulta aos portais dos órgãos públicos e documentações oficiais para localizar as URLs ativas e oficiais.
 4. **Aplicação das correções:** Ajustes nos arquivos de UI, nas rotas legadas do catálogo de eixos e na camada de correção `apps/web/data/link-correcoes.json`.
-5. **Aprofundamento de links específicos (Regra do Dono):** Eliminação de links genéricos ou meramente de homepages em favor de links diretos para cada contrato, processo, convênio, licença, perfil e departamento.
+5. **Aprofundamento de links específicos (Regra do Dev):** Eliminação de links genéricos ou meramente de homepages em favor de links diretos para cada contrato, processo, convênio, licença, perfil e departamento.
 
 ## 2. Mapeamento das Top 100 Páginas
 

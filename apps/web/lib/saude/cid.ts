@@ -118,7 +118,7 @@ export const CIDS_MONITORAMENTO_AMBIENTAL: Record<string, {
  *
  * `popular` = como a pessoa fala da doença; `tecnico` = nome correto da
  * medicina (OMS/DATASUS, 4ª revisão em português). A formatação final é
- * sempre "Popular (Técnico, CID-10 X)" — o dono pediu nome popular na
+ * sempre "Popular (Técnico, CID-10 X)" — o dev pediu nome popular na
  * tabela e o técnico ao passar o mouse/clicar (o `title` da célula).
  *
  * A chave é a categoria de 3 caracteres; subcategorias com sufixo (ex:
@@ -147,7 +147,7 @@ function buscarNomePopular(cid: string): { popular: string; tecnico: string } | 
   return NOMES_POPULARES_CID[cid] ?? NOMES_POPULARES_CID[cid.slice(0, 3)] ?? null;
 }
 
-/** Descrição no formato pedido pelo dono: "Popular (Técnico, CID-10 X)". */
+/** Descrição no formato pedido pelo dev: "Popular (Técnico, CID-10 X)". */
 function formatarDescricaoCid(popular: string, tecnico: string, codigo: string): string {
   return `${popular} (${tecnico}, CID-10 ${codigo})`;
 }
@@ -168,7 +168,7 @@ export function enriquecerRegistroCid(
 
   const capitulo = base?.capitulo ?? inferirCapituloCid(limpo);
   // Prioridade: nome popular + técnico (dicionário local), mesmo quando a
-  // descrição já vem da fonte — o dono quer SEMPRE o nome popular na tabela.
+  // descrição já vem da fonte — o dev quer SEMPRE o nome popular na tabela.
   // Sem mapeamento popular, mantém a descrição da fonte; só no último caso
   // a linha vira o genérico "Diagnóstico CID-10 X".
   const descricao = nome

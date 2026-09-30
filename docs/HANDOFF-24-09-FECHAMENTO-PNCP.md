@@ -44,7 +44,7 @@ Litígios foi publicado e **pushado** no commit `49f8db91` (24/09) — testes
 **Um ETL PNCP por máquina** (regra do plano). O home-pc *poderia*
 coletar meia fila (outra máquina), mas a API PNCP responde **429 em
 rajada** e o limite é do host da API, não do PC — dois ETLs em dobro
-já foi medido (8 threads = 291×429). **Só coleta no home-pc se o dono
+já foi medido (8 threads = 291×429). **Só coleta no home-pc se o dev
 liberar por escrito.**
 
 ## Estado medido 25/09 11:26
@@ -97,8 +97,8 @@ gitignored** — o home-pc não os vê até a desktop commitar/empurrar
 
 **Fora:**
 
-- Qualquer `python -m etl.pncp.*` (coleta) sem ordem escrita do dono.
-- Deploy Guara (cadência ~5 dias, política do dono).
+- Qualquer `python -m etl.pncp.*` (coleta) sem ordem escrita do dev.
+- Deploy Guara (cadência ~5 dias, política do dev).
 - Fila B (SP + capitais).
 - `--force`, push de trabalho dos outros, leitura de `.env`.
 
@@ -125,7 +125,7 @@ commit. Não “consertar” o ETL de dentro do home-pc.
 | Não | Por quê |
 |---|---|
 | Lançar fila/orgaos/contratos/licitações | 429 compartilhado; 1 ETL por máquina e a desktop está coletando |
-| `guara deploy` | fora de escopo sem pedido do dono |
+| `guara deploy` | fora de escopo sem pedido do dev |
 | Commitar os arquivos `??` do ETL | pathspec da desktop; dois commits no mesmo lote quebram a ordem |
 | Ler/exibir `.env`, `guara-proxy.log` | segredo / lixo não versionado |
 | `git commit` sem caminho | leva staging alheio (AGENTS § 5.5) |

@@ -14,7 +14,7 @@
 - [A causa](#a-causa)
 - [O número que decide o conserto](#o-número-que-decide-o-conserto)
 - [Não é só esta página](#não-é-só-esta-página)
-- [O plano combinado com o dono](#o-plano-combinado-com-o-dono)
+- [O plano combinado com o dev](#o-plano-combinado-com-o-dev)
 - [O que já está feito, para não refazer](#o-que-já-está-feito-para-não-refazer)
 - [O que acontece amanhã se ninguém mexer](#o-que-acontece-amanhã-se-ninguém-mexer)
 
@@ -117,7 +117,7 @@ Medido por esfera, para servir de régua:
 `sp/educacao` vai cobrar a mesma conta sozinho, na próxima ingestão. Tratar
 isto como caso isolado da legislação é adiar o mesmo susto.
 
-## O plano combinado com o dono
+## O plano combinado com o dev
 
 1. ✅ **Enxugar o payload** — FEITO. Nenhum campo pôde ser cortado (a tela usa
    os treze), então o ganho veio da forma: tupla em vez de objeto, dicionário

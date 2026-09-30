@@ -10,7 +10,7 @@
 ## Sumário
 
 - [Propósito](#propósito)
-- [Decisões do dono](#decisões-do-dono)
+- [Decisões do dev](#decisões-do-dev)
 - [Fase 0 — Preparação](#fase-0--preparação)
 - [Fase 1 — Animações (itens 4 e 5)](#fase-1--animações-itens-4-e-5)
 - [Fase 2 — Chatbot Seu Nonô (item 6)](#fase-2--chatbot-seu-nonô-item-6)
@@ -22,11 +22,11 @@
 
 ## Propósito
 
-Plano detalhado da sessão de 23/09/2026, com os 7 pedidos do dono.
+Plano detalhado da sessão de 23/09/2026, com os 7 pedidos do dev.
 Sessões paralelas ativas ⇒ worktree próprio `cp-bots-lab`, branch própria,
 porta própria **3027**. Cada fase tem critério de pronto.
 
-## Decisões do dono
+## Decisões do dev
 
 | # | Decisão | Data |
 |---|---|---|
@@ -69,7 +69,7 @@ com os demais (zera o tempo).
 **Faixa da navbar 40% mais lenta:**
 `globals.css:1080` → `animation: cp-mq 75s` → **`105s`** (75 × 1,4).
 
-Critério de pronto: dono abre `/` e `/laboratorio` e confere o ritmo.
+Critério de pronto: dev abre `/` e `/laboratorio` e confere o ritmo.
 
 ## Fase 2 — Chatbot Seu Nonô (item 6)
 
@@ -97,7 +97,7 @@ Correção:
      `provedores.ts:14-16`).
 4. **Descartado:** Ollama no Guara — impossível no Starter (ver Decisões).
 5. Validar `POST /api/chatbot` → 200 no servidor 2 / localhost; deploy Guara
-   na janela de ~5 dias (política do dono).
+   na janela de ~5 dias (política do dev).
 
 Critério de pronto: chat responde com IA e cita fonte no servidor 2.
 
@@ -155,7 +155,7 @@ não plugado; salários (`judiciario-remuneracoes.json`) órfão.
 | Regra §8 | Gráfico + cartões + CSV `;`+BOM + filtro + ordenação mantidos |
 | Testes | Cada camada nova com agregado medido e datado |
 
-Critério de pronto (dono): em `/laboratorio`, sem código, ligar contratos +
+Critério de pronto (dev): em `/laboratorio`, sem código, ligar contratos +
 convênios + salários, escolher pizza e colunas, ver os três.
 
 ## Fase 6 — Verificação e publicação (item 7)
@@ -186,4 +186,4 @@ convênios + salários, escolher pizza e colunas, ver os três.
 
 ## Origem
 
-Pedido do dono em 23/09/2026 (7 itens), com as 4 decisões da sessão.
+Pedido do dev em 23/09/2026 (7 itens), com as 4 decisões da sessão.

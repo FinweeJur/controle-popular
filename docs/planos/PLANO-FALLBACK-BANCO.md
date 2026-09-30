@@ -148,7 +148,7 @@ insumo**, não por código:
 | Pendência | Falta |
 |---|---|
 | B — sincronizar a Neon pela CLI | connection string da Neon (fora do repo) **e** `neonctl` instalado/autenticado |
-| D — home-pc como reserva | **caminho de rede** Guara → Postgres do home-pc (hoje não existe; abrir Postgres público pelo túnel é risco e pede decisão explícita do dono) |
+| D — home-pc como reserva | **caminho de rede** Guara → Postgres do home-pc (hoje não existe; abrir Postgres público pelo túnel é risco e pede decisão explícita do dev) |
 
 O código já está pronto para os dois: basta `DATABASE_URL_NEON`
 (plano B) e `DATABASE_URL_HOMEPC`/`DATABASE_URL_RESERVA` (plano D) no

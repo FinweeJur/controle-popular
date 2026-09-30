@@ -1,7 +1,7 @@
 /**
  * ═══ ORDENAR E FILTRAR LISTAS DE DADO — A LÓGICA PURA ═══
  *
- * Pedido do dono (16/08/2026, ver `docs/planos/TODO-PROXIMAS-RODADAS.md` §10):
+ * Pedido do dev (16/08/2026, ver `docs/planos/TODO-PROXIMAS-RODADAS.md` §10):
  * as listas do portal (contratos, licitações, alertas, emendas, diárias…) devem
  * poder ORDENAR e FILTRAR por campo. Antes de colar isso num componente, o
  * mecanismo vive aqui, em lógica pura — o mesmo molde de

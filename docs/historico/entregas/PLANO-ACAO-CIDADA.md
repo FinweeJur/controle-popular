@@ -21,9 +21,9 @@
 
 ## Propósito
 
-> Escrito em 13/08/2026, a pedido do dono. Este documento é o plano — não há > código de feature nele. Números marcados como "medido" foram checados agora; > o resto é decisão a defender ou pesquisa com fonte citada.
+> Escrito em 13/08/2026, a pedido do dev. Este documento é o plano — não há > código de feature nele. Números marcados como "medido" foram checados agora; > o resto é decisão a defender ou pesquisa com fonte citada.
 
-> Escrito em 13/08/2026, a pedido do dono. Este documento é o plano — não há
+> Escrito em 13/08/2026, a pedido do dev. Este documento é o plano — não há
 > código de feature nele. Números marcados como "medido" foram checados agora;
 > o resto é decisão a defender ou pesquisa com fonte citada.
 
@@ -65,7 +65,7 @@ existe escrita pública aqui para limitar, porque não existe escrita.
 
 ### O rascunho enquanto a pessoa preenche — escolha e defesa
 
-A pergunta do dono: o rascunho pode ficar em `localStorage` enquanto a pessoa
+A pergunta do dev: o rascunho pode ficar em `localStorage` enquanto a pessoa
 preenche? Isso ajuda (não perde entrevista de 20 minutos se o navegador
 fechar) e atrapalha (fica gravado no aparelho, que pode ser apreendido).
 
@@ -186,11 +186,11 @@ inventando um destino):
 |---|---|---|
 | Envolve criança/adolescente | Conselho Tutelar do município + Disque 100 | plantão para casos urgentes, inclusive fora do horário comercial |
 | Violência contra a mulher | DEAM + Disque 180 + Defensoria | única DEAM 24h fica em BH; nas demais cidades, delegacia comum + Defensoria |
-| Um dos "em conflito" é agente do Estado (policial, fiscal, funcionário público) | MPMG/CAODH (controle da atividade policial) + Defensoria + registrar que **não é caso para resolver sozinho com a própria corporação do agente** | é o cenário descrito pelo dono como o de maior risco |
+| Um dos "em conflito" é agente do Estado (policial, fiscal, funcionário público) | MPMG/CAODH (controle da atividade policial) + Defensoria + registrar que **não é caso para resolver sozinho com a própria corporação do agente** | é o cenário descrito pelo dev como o de maior risco |
 | Racismo, xenofobia, LGBTfobia | DECRIN + MPMG | delegacia especializada existe só para isso |
 | Pessoa com deficiência ou idosa, vítima | DEADI + Defensoria | delegacia especializada |
 | Quilombola, indígena, comunidade tradicional, ou dano ambiental | Defensoria + MPMG/CAOMA + link para `/ambiental` (instrumento e precedente pelo tema) | é onde o portal já tem profundidade jurídica própria |
-| Nenhuma das anteriores, ou "não sei" | Defensoria (porta de entrada gratuita quase universal) + Ouvidoria do MPMG (127) + CNDH (Disque 100) | quando não há certeza, **sugerir mais de um e dizer por quê é melhor que fingir precisão** — é a instrução literal do dono, e é a atitude certa: mandar para o lugar errado gasta o único fôlego que a pessoa tinha |
+| Nenhuma das anteriores, ou "não sei" | Defensoria (porta de entrada gratuita quase universal) + Ouvidoria do MPMG (127) + CNDH (Disque 100) | quando não há certeza, **sugerir mais de um e dizer por quê é melhor que fingir precisão** — é a instrução literal do dev, e é a atitude certa: mandar para o lugar errado gasta o único fôlego que a pessoa tinha |
 
 Toda sugestão vem com o texto de `docs/REDE-PROTECAO-MG.md` (endereço,
 telefone, gratuidade, data da última verificação) — nunca reescrita de
@@ -198,7 +198,7 @@ memória, para não divergir do documento que já foi checado fonte a fonte.
 
 ### Sobre a CIDH, especificamente
 
-O dono pediu precisão aqui porque o erro mais caro é silencioso: mandar
+O dev pediu precisão aqui porque o erro mais caro é silencioso: mandar
 petição à Comissão Interamericana sem ter passado pelas vias internas
 **tem o caso inadmitido, e ninguém avisa a pessoa disso antes**.
 
@@ -246,7 +246,7 @@ banco**, porque o documento nasce no navegador:
    perto da cidade escolhida) — só depois de a Fase 1 provar o roteiro
    básico.
 4. **Fora de escopo, por decisão, não por esquecimento**: qualquer contagem
-   de uso que grave conteúdo. Se o dono quiser saber que o facilitador está
+   de uso que grave conteúdo. Se o dev quiser saber que o facilitador está
    sendo usado, o mecanismo de `pageview` já existente (sem dado pessoal, já
    auditado) cobre isso — não se cria coleta nova para medir engajamento de
    uma ferramenta de denúncia de risco.

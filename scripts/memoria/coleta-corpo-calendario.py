@@ -4,7 +4,7 @@ Entrada:  TEMP/blog-calendario.json (169 posts: titulo, url, autor)
 Saida:    TEMP/blog-corpos.json  ({url: paragrafo-fonte})
 
 Por que: os resumos da Mistica do Dia tem que vir do texto da propria
-fonte, no estilo de escrita dela (regra do dono, 30/09/2026). O JSON da
+fonte, no estilo de escrita dela (regra do dev, 30/09/2026). O JSON da
 listagem do blog traz titulo e URL, nao o corpo - sem este script o
 resumo do blog ficava vazio (158 de 538 entradas estavam assim).
 

@@ -115,7 +115,7 @@ node "C:\nodejs\node_modules\@guaracloud\cli\bin\run.js" catalog query \
 
 ## Próximo passo depois das coletas
 
-**Não deployar antes de as 3 coletas terminarem** (ordem do dono, 22/09).
+**Não deployar antes de as 3 coletas terminarem** (ordem do dev, 22/09).
 
 Quando COPAM + contratos 2025 + licitações saírem (EXIT=0 no log / processo
 morto sem traceback fatal):
@@ -133,8 +133,8 @@ morto sem traceback fatal):
 5. Push do trabalho próprio:
    `git fetch origin && git rebase origin/main && git push origin HEAD:main`.
 
-**Cadência de deploy:** ~5 dias (política do dono; cota de build Starter).
-Não fazer deploy agora se ainda faltar coleta — o dono pediu ir **até o
+**Cadência de deploy:** ~5 dias (política do dev; cota de build Starter).
+Não fazer deploy agora se ainda faltar coleta — o dev pediu ir **até o
 fim das coletas** antes.
 
 ## Armadilhas desta sessão
@@ -159,5 +159,5 @@ fim das coletas** antes.
 ## Origem
 
 Sessão de 22/09/2026: encher Postgres do Guara via CLI Guara, sem SSH.
-Pedido do dono: "vá até o final das coletas antes do deploy" e
+Pedido do dev: "vá até o final das coletas antes do deploy" e
 "salve o trabalho… pra caso o pc desligar".

@@ -12,7 +12,7 @@
 - [Objetivo](#objetivo)
 - [Como funciona hoje (medido)](#como-funciona-hoje-medido)
 - [Canal de fila entre agentes (novo)](#canal-de-fila-entre-agentes-novo)
-- [Como o dono usa](#como-o-dono-usa)
+- [Como o dev usa](#como-o-dev-usa)
 - [Primeira tarefa na fila](#primeira-tarefa-na-fila)
 - [Limites honestos](#limites-honestos)
 ## 🎯 Objetivo
@@ -27,7 +27,7 @@ dos commits e dialogando — sem pisar um no trabalho do outro. 🤝
   repo local** (ex.: commits `a24c081`, `b897dcd`).
 - O **jcode** (eu) também trabalha no mesmo checkout, commitando com
   pathspec explícito e publicando via worktree limpo (`github-docs`).
-- O **Telegram** é o canal com o dono (Artur). Prefixos:
+- O **Telegram** é o canal com o dev (Artur). Prefixos:
   - `/gemini` → tarefa para Gemini/Antigravity.
   - `/jcode` → tarefa para o jcode.
 
@@ -59,7 +59,7 @@ Formato de cada item:
 4. Item **concluído** registra commit/branch de referência.
 5. Nada de dado pessoal, segredo ou LAI na fila (é commitada).
 
-## 📣 Como o dono usa
+## 📣 Como o dev usa
 
 - Quer que o jcode delegue ao Gemini? Diga:
   `/jcode pergunte ao gemini sobre X`
@@ -76,6 +76,6 @@ via `/gemini` às 18:03.
 ## ⚠️ Limites honestos
 
 - O Antigravity **não escuta o Telegram** por conta própria (é app desktop).
-  O dono (Artur) é quem encaminha quando quer resposta imediata.
+  O dev (Artur) é quem encaminha quando quer resposta imediata.
 - A fila em arquivo é o canal **assíncrono e à prova de perda** entre os
   dois agentes: mesmo que o Telegram caia, o trabalho continua no repo.

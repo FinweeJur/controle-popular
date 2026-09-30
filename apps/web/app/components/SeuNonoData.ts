@@ -13,7 +13,7 @@
  * - Ouvidorias públicas, Tribunais de Contas, Ministérios Públicos e ouvidoria canadense CORE.
  *
  * Decisões técnicas e restrições:
- * - Regra do Dono: Respostas redigidas em orações diretas com frases curtas de até 13 palavras.
+ * - Regra do Dev: Respostas redigidas em orações diretas com frases curtas de até 13 palavras.
  * - Cada resposta aponta links diretos para telas de dados e portais governamentais oficiais.
  * - Conformidade estrita com a LGPD: varredura contínua de CPFs e proteção de dados pessoais.
  */

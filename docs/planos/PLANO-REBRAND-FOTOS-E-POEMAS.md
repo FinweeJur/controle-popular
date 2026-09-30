@@ -36,7 +36,7 @@ completam:
    [PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md](PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md),
    cuja Fase 1 (hero narrativo com GSAP na home) está entregue.
 
-Este plano pega **três elementos concretos** que o dono pediu — a faixa de
+Este plano pega **três elementos concretos** que o dev pediu — a faixa de
 poemas circulando, os destaques ao final e os headers com poesia — e os veste
 com o que o portal **já tem**: fotos do acervo Brasil com S e a paleta
 existente. Sem criar arte nova.
@@ -46,14 +46,14 @@ existente. Sem criar arte nova.
 | Peça | Onde | Estado |
 |---|---|---|
 | Hero narrativo (Fase 1 do plano de identidade) | `apps/web/app/components/HeroNarrative.tsx` + `lib/hero-narrativo.ts` | ✅ no ar desde o build de 03/09 |
-| Fotos Brasil com S | `apps/web/public/brasilcoms/` — 23 `.webp` | ✅ servidas; componente `FotoBrasilComS.tsx` com layout 1-foto-direita no worktree `cp-hermes`, aguardando visto do dono |
+| Fotos Brasil com S | `apps/web/public/brasilcoms/` — 23 `.webp` | ✅ servidas; componente `FotoBrasilComS.tsx` com layout 1-foto-direita no worktree `cp-hermes`, aguardando visto do dev |
 | Voz e epígrafes (v7.1) | `PLANO-COPY-VOZ.md` + tabela autorizada em `CITACOES-AUTORIZADAS.md` | ✅ texto aprovado, código da branch copy NÃO fundido (PR #4 aberto) |
 | Código do rebrand (home, hubs, nav, cidades) | branch `copy/voz-memoria-alegria`, 8 commits, PR #4 | 🚧 conflita com o hero-narrativo publicado |
 | Paleta OKLCH por tema | `apps/web/app/tokens/colors.css` (radicais `--color-*`, `--color-glow`) | ✅ usar como está |
 
 ## Decisão de escopo: sem SVG novo, só foto + ícone instalado
 
-Ordem do dono (03/09): **nenhum elemento SVG novo neste round.**
+Ordem do dev (03/09): **nenhum elemento SVG novo neste round.**
 
 - O `HeroNarrative` publicado já embute padrões SVG (Bulcão, fauna) — **fica
   como está**, não se adicionam outros.
@@ -120,7 +120,7 @@ Cabeçalho de seção/frente ganha epígrafe de **uma linha**, autor + obra + an
 - **Sem token novo.** A copy visual usa `--color-primary`, `--color-accent`,
   `--color-glow` e os temas por frente que já existem em `tokens/colors.css`.
 - Contraste AA continua obrigatório: epígrafe sobre fundo de tema escuro é
-  texto, não imagem — se o dono quiser textura por trás, vira foto com overlay
+  texto, não imagem — se o dev quiser textura por trás, vira foto com overlay
   medido (a armadilha do OKLCH/`transition:none` do AGENTS.md vale aqui).
 
 ## Fotos: acervo, layout e crédito
@@ -128,9 +128,9 @@ Cabeçalho de seção/frente ganha epígrafe de **uma linha**, autor + obra + an
 - **Acervo atual:** 23 `.webp` em `public/brasilcoms/`. Cada frente recebe
   **uma foto fixa por página** (rotação aleatória quebra a promessa do
   screenshot e do cache).
-- **Legenda:** exatamente `Créditos: Brasil com S` (decisão do dono, 03/09).
+- **Legenda:** exatamente `Créditos: Brasil com S` (decisão do dev, 03/09).
 - **Layout:** foto à direita, texto à esquerda, coladas, perto do topo — já
-  implementado no worktree `cp-hermes` (commit pendente do visto do dono).
+  implementado no worktree `cp-hermes` (commit pendente do visto do dev).
 - **Ampliação do acervo:** o projeto Brasil com S tem mais de 4 mil fotos
   livres; coletores novos seguem a regra de coleta do AGENTS.md (UA honesto,
   fora da CI, varredura de dado pessoal — aqui, rostos: a licença livre cobre
@@ -138,7 +138,7 @@ Cabeçalho de seção/frente ganha epígrafe de **uma linha**, autor + obra + an
 
 ## Ícones do Brasil: pendência de localização
 
-O dono mandou usar "os icons brazil e icones do brasil instalados nesse home
+O dev mandou usar "os icons brazil e icones do brasil instalados nesse home
 pc". Busca feita em 03/09 (varrida completa, documentada para ninguém repetir):
 
 - `node_modules` do repo e globais (`npm ls -g`): nenhum pacote com "brazil"
@@ -149,7 +149,7 @@ pc". Busca feita em 03/09 (varrida completa, documentada para ninguém repetir):
 - `Downloads`: pasta `brasilcoms` (fotos, não ícones) e zip de documentos.
 
 **Bloqueio:** sem localizar o pacote, os itens 2 e 3 usam foto e texto; o
-slot de ícone fica **vago, não improvisado**. Pedido ao dono: dizer onde os
+slot de ícone fica **vago, não improvisado**. Pedido ao dev: dizer onde os
 ícones foram instalados (caminho, ou nome exato do pacote) — pode ser um
 repositório clonado, um app (o "jcode-ui"?) ou um arquivo `.ico`/`.ttf` que a
 busca por nome não pegou.
@@ -158,11 +158,11 @@ busca por nome não pegou.
 
 | Fase | Entregável | Tempo | Depende de |
 |---|---|---|---|
-| 0 | Decisão do dono: PR #4 (merge × cherry-pick × reescrever sobre o hero) + paradeiro dos ícones | — | dono |
+| 0 | Decisão do dev: PR #4 (merge × cherry-pick × reescrever sobre o hero) + paradeiro dos ícones | — | dev |
 | 1 | Faixa de poemas na home + 6 frentes (frases só da tabela autorizada) | 0,5 dia | Fase 0 |
 | 2 | Destaques ao final (home, frentes, `[municipio]`) | 0,5 dia | Fase 0 |
 | 3 | Headers com epígrafe por frente | 0,5 dia | Fase 0 |
-| 4 | Fotos: landing do layout `cp-hermes` após visto + expansão medida do acervo Brasil com S | 1 dia | visto do dono |
+| 4 | Fotos: landing do layout `cp-hermes` após visto + expansão medida do acervo Brasil com S | 1 dia | visto do dev |
 
 Cada fase comita sozinha, com o pacote de fotos (Fase 4) separado do pacote de
 texto (Fases 1–3) — são revisões diferentes: um mexe layout, o outro mexe voz.
@@ -198,21 +198,21 @@ texto (Fases 1–3) — são revisões diferentes: um mexe layout, o outro mexe 
 |---|---|
 | Faixa vira enfeite que ofusca dado (portal é lido sob estresse) | posição fora da dobra útil; tamanho ≤ corpo do texto; pausa no `:hover` |
 | Conflito PR #4 × hero publicado duplicar poesia (herói já cita?) | Fase 0 decide antes; se cherry-pick, o diff da copy é lido contra `HeroNarrative` |
-| Ícone "não encontrado" virar ícone improvisado de outra origem | regra: slot vago até o dono apontar o pacote |
+| Ícone "não encontrado" virar ícone improvisado de outra origem | regra: slot vago até o dev apontar o pacote |
 | Foto com rosto identificado ganhar contexto errado ao lado de dado sensível | curadoria manual das 23 atuais por frente; legibilidade de rosto vira escolha editorial explícita |
 
 ## Decisões registradas
 
-- 2026-09-03 (dono): **sem SVG novo neste round**; fotos + ícones instalados
+- 2026-09-03 (dev): **sem SVG novo neste round**; fotos + ícones instalados
   no lugar de módulos geométricos novos.
-- 2026-09-03 (dono): paleta e proposta visual das `resposta*.md` + copy v7.1
+- 2026-09-03 (dev): paleta e proposta visual das `resposta*.md` + copy v7.1
   entram juntas, num plano só.
 - 2026-09-03 (sessão): faixa de poemas reusa o mecanismo do ticker de
   `noticias-vale` (CSS puro), não GSAP.
 
 ## Origem / Histórico
 
-- Pedidos do dono em 03/09 (tarde e noite, via desktop e Telegram): espalhar
+- Pedidos do dev em 03/09 (tarde e noite, via desktop e Telegram): espalhar
   fotos Brasil com S (uma por página, direita, texto esquerda, legenda curta);
   unificar branches e trabalho da Kimi; plano para aproveitar cores + faixa de
   poemas + destaques + headers da proposta maritaca/jcode/deepseek da manhã.

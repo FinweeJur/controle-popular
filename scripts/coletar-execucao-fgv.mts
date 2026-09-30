@@ -28,7 +28,7 @@
  * - **duas requisições, não um rastreamento.** Este script não segue link
  *   nenhum: pede dois JSON de caminho fixo, os mesmos dois que o navegador
  *   de qualquer visitante pede ao abrir a página de informações financeiras.
- * - **rodado à mão, quando o dono quiser.** Nada de agendador, nada de CI.
+ * - **rodado à mão, quando o dev quiser.** Nada de agendador, nada de CI.
  *   A referência do relatório muda uma vez por mês (medido: 20/07/2026 na
  *   coleta de 15/08/2026), então recoletar mais que isso não traz dado novo.
  * - **User-Agent que diz quem é** e pausa configurável entre as duas.

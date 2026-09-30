@@ -14,7 +14,7 @@
  * - a busca normaliza acento (NFD) e ignora caixa, como o resto do portal;
  * - a "fonte" é derivada da própria citação curta (`Insurgente` × MST),
  *   sem campo novo no dado;
- * - o CSV sai do RECORTE FILTRADO na tela (regra do dono, AGENTS §8.6) e
+ * - o CSV sai do RECORTE FILTRADO na tela (regra do dev, AGENTS §8.6) e
  *   com BOM UTF-8, via `BotoesExportar`.
  */
 

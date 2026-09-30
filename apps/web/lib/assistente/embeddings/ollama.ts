@@ -9,7 +9,7 @@
  * Isto NÃO chama Maritaca nem DeepSeek, e não tem chave de API — o Ollama
  * local não pede credencial nenhuma, é só um servidor HTTP em
  * `localhost:11434`. A GERAÇÃO de resposta (o "cérebro" das decisões do
- * dono) é outra peça, ainda sem credencial, e fica em `lib/chat-comum.ts`
+ * dev) é outra peça, ainda sem credencial, e fica em `lib/chat-comum.ts`
  * (`AI_BASE_URL`/`AI_API_KEY`, hoje DeepSeek) — este módulo não a toca.
  *
  * ═══ POR QUE `nomic-embed-text` / 768 DIMENSÕES NÃO SÃO CONSTANTE MÁGICA ═══

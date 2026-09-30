@@ -175,7 +175,7 @@ export default function TermosPage() {
         </p>
       </header>
 
-      {/* ═══ AS CINCO COISAS — regra do dono ═══ */}
+      {/* ═══ AS CINCO COISAS — regra do dev ═══ */}
       <section className="space-y-3 rounded-xl border border-border bg-surface-2 p-5 sm:p-6">
         <h2 className="font-display text-xl font-semibold text-text">
           O portal segue cinco regras, sempre
@@ -606,7 +606,7 @@ export default function TermosPage() {
           Até 15/08/2026 esta seção dizia que o canal reservado NÃO existia, e
           isso estava certo: a varredura daquele dia em `apps/web/app` e `docs/`
           não achou nenhum e-mail do próprio projeto (só e-mails de ÓRGÃOS —
-          ouvidorias, defensorias, câmaras). O dono definiu o endereço na mesma
+          ouvidorias, defensorias, câmaras). O dev definiu o endereço na mesma
           noite, e ele entra aqui.
 
           A DIVISÃO ENTRE OS DOIS CANAIS NÃO É ENFEITE, é a razão de o e-mail

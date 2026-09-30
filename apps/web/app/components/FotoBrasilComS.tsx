@@ -9,7 +9,7 @@
  *   (sem `object-fit: cover`): o que se vê é o quadro inteiro do acervo.
  *
  * `alt` descreve a cena pelos dados do acervo (tags da própria página do
- * produto) ou, quando a página não publica descrição, pela descrição do dono
+ * produto) ou, quando a página não publica descrição, pela descrição do dev
  * (00296, em 17/08: "mulher com notebook, fone de ouvido e prato de comida
  * na mesa"). A legenda só entra com descrição honesta.
  *

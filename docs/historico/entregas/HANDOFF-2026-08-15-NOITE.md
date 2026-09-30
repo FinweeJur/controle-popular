@@ -11,7 +11,7 @@
 
 - [Propósito](#propósito)
 - [O que entrou hoje, em uma linha cada](#o-que-entrou-hoje-em-uma-linha-cada)
-- [🔴 Travado em decisão do dono — nada anda sem isso](#travado-em-decisão-do-dono-nada-anda-sem-isso)
+- [🔴 Travado em decisão do dev — nada anda sem isso](#travado-em-decisão-do-dev-nada-anda-sem-isso)
 - [🟢 Pronto para pegar, sem bloqueio nenhum](#pronto-para-pegar-sem-bloqueio-nenhum)
 - [🟡 Precisa da máquina de build (`home-pc`), não desta](#precisa-da-máquina-de-build-home-pc-não-desta)
 - [🔵 Dívida técnica aberta](#dívida-técnica-aberta)
@@ -44,7 +44,7 @@
 | `1d394f3` | Testes do globo voltam a rodar no Windows |
 | `eac9eb8` · `f6ab225` | Documentação alinhada ao que foi medido |
 
-## 🔴 Travado em decisão do dono — nada anda sem isso
+## 🔴 Travado em decisão do dev — nada anda sem isso
 
 | # | O que | Por que trava |
 |---|---|---|
@@ -59,7 +59,7 @@
 
 ### 7. Documentos e notícias relacionadas no fim da ficha — **pedido explícito, nunca construído**
 
-O dono pediu: *"algumas notícias têm a ver com o tema de um documento; seria
+O dev pediu: *"algumas notícias têm a ver com o tema de um documento; seria
 importante que ao final da página de visualização detalhada apontasse para
 documentos e notícias relacionadas, como das ATIs, MAB, MPMG"*.
 

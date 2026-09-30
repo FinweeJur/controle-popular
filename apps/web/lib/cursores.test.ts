@@ -26,7 +26,7 @@
  *     `wPlanes`/`wBitCount` de um cursor, que num `.cur` são o hotspot).
  *     Divergiu, o clique cai fora do desenho. No `.ani` o mesmo campo
  *     mora dentro de cada chunk `icon` do RIFF.
- *  4. CONTRASTE (regra do dono, 29/09/2026, WCAG 1.4.11 — elemento
+ *  4. CONTRASTE (regra do dev, 29/09/2026, WCAG 1.4.11 — elemento
  *     gráfico precisa de ≥3:1 contra o fundo): mede de verdade os pixels
  *     de cada `.cur` e exige ≥3:1 contra os oito temas do portal E contra
  *     imagem de satélite (floresta e asfalto). Foi este teste que pegaria

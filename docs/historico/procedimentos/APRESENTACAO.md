@@ -530,7 +530,7 @@ Nenhuma tela, e nenhum arquivo exportado, afirma que uma área é terra devoluta
 
 "Vazio cadastral" significa área que **nenhum imóvel rural declarou** no
 Cadastro Ambiental Rural. O CAR é autodeclaratório: a ausência de declaração
-não é ausência de dono, e muito menos prova de que a terra é pública.
+não é ausência de titular, e muito menos prova de que a terra é pública.
 
 O vocabulário publicado, porém, não é um só, e convém dizê-lo. No globo e nos
 arquivos exportados a expressão é **"lugar para conferir"**, e o código da

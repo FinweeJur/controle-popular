@@ -10,7 +10,7 @@ CONTEXTO
 
 Você é o agente de execução do Controle Popular (repo FinweeJur/controle-popular,
 nesta máquina Windows, checkout em C:\DevCoder\controle-popular). O agente jcode
-(deepseek) atua como planejador e verificador; você executa o código. O dono é
+(deepseek) atua como planejador e verificador; você executa o código. O dev é
 Artur e acompanha pelo Telegram.
 
 O repositório tem hoje dois checkouts em jogo:
@@ -34,7 +34,7 @@ ESTADO ATUAL (medido 18:40)
   - c34364a — conselhos, litígios ambientais e direitos humanos na página
     municipal;
   - 0068073 — ouvinte de comandos Telegram para o Gemini.
-- O dono relatou que você está corrigindo conflito entre commit local e GitHub
+- O dev relatou que você está corrigindo conflito entre commit local e GitHub
   (worktrees etc.). Se for o caso, conclua essa correção primeiro.
 
 REGRAS DO REPO (obrigatórias)
@@ -63,9 +63,9 @@ TAREFA 1 — Resolver o conflito de publicação
   3. Identifique o que é trabalho seu/do projeto (Onda 1 + integrações) e o
      que é ruído (CRLF etc.).
   4. Publique no origin/main via worktree limpo ou rebase seguro.
-  5. Confirme com git log origin/main -5 e avise o dono no Telegram
+  5. Confirme com git log origin/main -5 e avise o dev no Telegram
      (mensagem curta: o que subiu).
-- Critério de pronto: origin/main contém a Onda 1 e as integrações; dono
+- Critério de pronto: origin/main contém a Onda 1 e as integrações; dev
   consegue ver as páginas novas no site depois do build.
 
 TAREFA 2 — Revisar a Onda 1
@@ -78,7 +78,7 @@ TAREFA 2 — Revisar a Onda 1
 - Critério de pronto: testes verdes, tsc limpo, nenhuma ponte quebrada.
 
 TAREFA 3 — Integração de direitos humanos (relatórios internacionais)
-- O pedido do dono (via /gemini): procurar e baixar relatórios temáticos do
+- O pedido do dev (via /gemini): procurar e baixar relatórios temáticos do
   CIDH, PIDESCA, Direitos Humanos ONU, combate à tortura, povos indígenas e
   afrodescendentes sobre Brasil e América Latina; usar os dados na integração
   visual cruzando por cidade/estado/país, junto com os relatórios do CNDH já
@@ -104,14 +104,14 @@ TAREFA 5 — Bases de clima e risco
 TAREFA 6 — Sanitização do repo (quando as tarefas acima estabilizarem)
 - Leia docs/planos/PROPOSICAO-SANITIZACAO-REPO.md.
 - Etapa 1: .gitattributes com * text=auto eol=lf + git add --renormalize
-  (somente com aval do dono, pois toca o repo inteiro).
+  (somente com aval do dev, pois toca o repo inteiro).
 - Não apague worktrees sem confirmar antes.
 
 COMO REPORTAR
 
 - A cada tarefa concluída, atualize docs/planos/FILA-AGENTES.md (status e
   Notas) e commite.
-- Envie ao dono no Telegram um resumo curto (o que fez, o que subiu, o que
+- Envie ao dev no Telegram um resumo curto (o que fez, o que subiu, o que
   falta). O jcode também lê a fila e o git para verificar.
 
 PRAZO/TOM

@@ -93,7 +93,7 @@ export default async function FuncaoSocialTerraPage() {
           titulo={ZONA.titulo}
           epigrafe="A terra é de quem nela trabalha e dela vive com respeito."
           atribuicao="Tradição Popular e Territorial"
-          resumo="Terra sem dono declarado não é terra sem função. O Cadastro Ambiental Rural, terras indígenas, territórios quilombolas e sobreposições de mineração no mapa interativo."
+          resumo="Terra sem titular declarado não é terra sem função. O Cadastro Ambiental Rural, terras indígenas, territórios quilombolas e sobreposições de mineração no mapa interativo."
           className="mb-8 rounded-2xl border border-border shadow-sm"
         />
 
@@ -321,7 +321,7 @@ export default async function FuncaoSocialTerraPage() {
             esta frente e Paraopeba nunca tinham ganhado. Resolvido para o
             RODAPÉ nesta mesma revisão (este componente).
             ⟲ 22/08: o CABEÇALHO chegou também — `<Cabecalho />` no topo da
-            página, decisão do dono (`docs/ESTADO.md`, decisão 5). Não é
+            página, decisão do dev (`docs/ESTADO.md`, decisão 5). Não é
             `layout.tsx` de zona: ver `Cabecalho.tsx` para o porquê (as três
             rotas incluem `/mapa`, o globo 3D em tela cheia, e um layout de
             zona colaria nele também). */}

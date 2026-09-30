@@ -26,17 +26,17 @@ Handoff operacional para a sessão que for executar M9 (changedetection.io) e M1
 
 - `docker: not found` e `podman: not found` na máquina de desenvolvimento.
 - `wsl --list --quiet` → **Ubuntu presente** (backend WSL2 pronto).
-- **Decisão do dono (31/08): containers = Podman, não Docker Desktop** — daemonless, rootless, sem licença restritiva nem daemon de VM com privilégios.
+- **Decisão do dev (31/08): containers = Podman, não Docker Desktop** — daemonless, rootless, sem licença restritiva nem daemon de VM com privilégios.
 - O agendamento atual (PowerShell + rotinas) **funciona e é testado diariamente** — nada de M9/M10 substitui nada até validar no lugar.
 - Os 6 itens M1–M6 e os M7/M8/M11 já foram entregues; M8 (brasil.io) segue pendente de token (ver ESTADO.md, itens 32–35).
 
 ## Pré-requisitos
 
-- [ ] **Podman Desktop instalado pelo dono** (Windows, backend WSL2/Ubuntu) e `podman --version` respondendo.
+- [ ] **Podman Desktop instalado pelo dev** (Windows, backend WSL2/Ubuntu) e `podman --version` respondendo.
 - [ ] Portas livres na máquina: **5000** (changedetection) e **5678** (n8n) — conferir com `Get-NetTCPConnection -LocalPort 5000,5678`.
 - [ ] `scripts/.env` com `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` (já existe — é o canário; ver `scripts/.env.exemplo`). **Nunca versionar.**
-- [ ] **Decisão do dono (pendente): onde vivem os segredos do n8n** — n8n tem credential store próprio dentro do container; a alternativa é o n8n executar comandos que leem `scripts/.env` (o segredo nunca entra no n8n). Recomendado: **segredos ficam em `scripts/.env`, o n8n só executa comandos** — assim o container não carrega token nenhum.
-- [ ] **Decisão do dono (pendente): versionar os workflows do n8n?** (export JSON em `scripts/n8n-workflows/` para rastreabilidade) — recomendado, mas não obrigatório.
+- [ ] **Decisão do dev (pendente): onde vivem os segredos do n8n** — n8n tem credential store próprio dentro do container; a alternativa é o n8n executar comandos que leem `scripts/.env` (o segredo nunca entra no n8n). Recomendado: **segredos ficam em `scripts/.env`, o n8n só executa comandos** — assim o container não carrega token nenhum.
+- [ ] **Decisão do dev (pendente): versionar os workflows do n8n?** (export JSON em `scripts/n8n-workflows/` para rastreabilidade) — recomendado, mas não obrigatório.
 
 ## M9 — changedetection.io
 
@@ -129,9 +129,9 @@ Primeiro acesso em `http://localhost:5678` (criar conta de usuário local — n�
 
 ## Decisões registradas
 
-- **Containers = Podman, não Docker Desktop** (dono, 31/08) — daemonless/rootless, sem licença restritiva; WSL2/Ubuntu já presente.
-- **Segredos fora do n8n** (recomendação deste handoff, confirmação do dono pendente): o n8n só executa comandos; tokens ficam em `scripts/.env`.
-- **Versionar workflows do n8n em `scripts/n8n-workflows/`** (recomendação, confirmação do dono pendente).
+- **Containers = Podman, não Docker Desktop** (dev, 31/08) — daemonless/rootless, sem licença restritiva; WSL2/Ubuntu já presente.
+- **Segredos fora do n8n** (recomendação deste handoff, confirmação do dev pendente): o n8n só executa comandos; tokens ficam em `scripts/.env`.
+- **Versionar workflows do n8n em `scripts/n8n-workflows/`** (recomendação, confirmação do dev pendente).
 - **changedetection e n8n são serviços locais** — nunca CI.
 
 ## Origem / Histórico

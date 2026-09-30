@@ -108,7 +108,7 @@ function csvEscape(value: unknown): string {
 }
 
 /**
- * CSV do ranking filtrado — separador `;` e BOM UTF-8 (regra do dono,
+ * CSV do ranking filtrado — separador `;` e BOM UTF-8 (regra do dev,
  * AGENTS.md: Excel brasileiro abre tudo numa coluna e com acento quebrado
  * sem os dois). CNPJ de pessoa jurídica é público e vai no arquivo;
  * pessoa física não entra nesta tela — quem não tem CNPJ aparece pelo

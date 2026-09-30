@@ -21,9 +21,9 @@
 
 ## Propósito
 
-O dono mandou duas fontes (CACOL do CNJ, base de litigância climática do JUMA) e perguntou se dava para integrar aos painéis existentes. Durante a apuração, ele mandou mais duas: a central de legislação ambiental do MMA (Congresso já filtrado por MG e por precedentes, mas com **zero** norma feder...
+O dev mandou duas fontes (CACOL do CNJ, base de litigância climática do JUMA) e perguntou se dava para integrar aos painéis existentes. Durante a apuração, ele mandou mais duas: a central de legislação ambiental do MMA (Congresso já filtrado por MG e por precedentes, mas com **zero** norma feder...
 
-O dono mandou duas fontes (CACOL do CNJ, base de litigância climática do JUMA) e
+O dev mandou duas fontes (CACOL do CNJ, base de litigância climática do JUMA) e
 perguntou se dava para integrar aos painéis existentes. Durante a apuração, ele
 mandou mais duas: a central de legislação ambiental do MMA (Congresso já filtrado
 por MG e por precedentes, mas com **zero** norma federal hoje) e as resoluções e
@@ -32,7 +32,7 @@ pergunta: **norma ou decisão de âmbito nacional que o portal ainda não tem.**
 
 **Isto é plano de COMO integrar, não avaliação de SE.** Onde a fonte é fraca (ex.:
 JUMA só tem 6 casos de MG), digo o número medido e sigo com o plano — a decisão de
-integrar já foi tomada pelo dono.
+integrar já foi tomada pelo dev.
 
 Todo endpoint abaixo foi **chamado de verdade em 2026-08-13/14** e respondeu; toda
 contagem foi **medida**, não estimada. Onde não consegui medir, está escrito que
@@ -57,10 +57,10 @@ não consegui, e por quê.
 | **MMA / CONAMA (legislação federal)** | Sim — CSV público, `dados.mma.gov.br`, e página do CONAMA enumerável por id. | **CC-BY confirmada** (CKAN `license_title`). Republicar é permitido, com atribuição. | `ambiental_legislacao` (mesma tabela, novo campo `esfera`) | Não — é legislação, não fato territorializável |
 | **CNDH (resoluções/recomendações)** | Sim — Recomendações via API GraphQL do Decidim (Participa+Brasil); Resoluções via página HTML estática do gov.br/mdh. Ambas responderam 200. | **CC BY-ND 3.0** (selo padrão gov.br, confirmado no rodapé). Permite citar/linkar; veda obra derivada do texto. | Painel de legislação **unificado** que outra frente está construindo (esfera=federal, tema=vocabulário CNDH) | Só com cruzamento textual — nenhuma das duas tem campo de município |
 
-A descoberta que mais muda o desenho: **CACOL, o painel que o dono mandou, não é
+A descoberta que mais muda o desenho: **CACOL, o painel que o dev mandou, não é
 a peça mais forte da sua própria família de dados.** O DataJud por trás dele é.
 E achei uma resolução do CNDH dedicada a Brumadinho (seção 4) — o teste que o
-dono pediu bateu.
+dev pediu bateu.
 
 ---
 
@@ -90,7 +90,7 @@ municipio_oj`** (UF **e** Município do órgão julgador), `Órgão Julgador` (n
 Classe`/`Classe`, **`CNPJ da parte`**, `Hierarquia de Assuntos` (8 níveis de
 árvore) e `Nome da parte`.
 
-Isto confirma o que o dono apontou: **o painel filtra por CNPJ e por
+Isto confirma o que o dev apontou: **o painel filtra por CNPJ e por
 Município** — não é granularidade grossa demais. O problema não é a
 granularidade, é o **acesso**: é um embed "view only", sem botão de exportação
 visível, e os slicers do Power BI não abriram de forma confiável na automação
@@ -432,7 +432,7 @@ create table juma_litigancia_climatica (
 
 ## 3. MMA / CONAMA — legislação ambiental federal
 
-O dono apontou a lacuna certa: `ambiental_legislacao` tem 6.378 normas, **todas
+O dev apontou a lacuna certa: `ambiental_legislacao` tem 6.378 normas, **todas
 estaduais de Minas** (SIAM 4.077, SEMAD 2.232, ALMG 69) — **zero federais**. O
 próprio código do projeto já sabia disso: `apps/web/app/ambiental/legislacao/page.tsx`
 diz "Fontes nacionais [...] ainda não entraram nesta busca [...] ficam para uma
@@ -542,7 +542,7 @@ alter table ambiental_legislacao
 - **Onde entra**: a página `/ambiental/legislacao` já existe — precisa (1)
   adicionar "MMA" à lista "De onde vem cada norma" e (2) atualizar/remover o
   parágrafo que hoje diz que fontes nacionais "ficam para uma próxima rodada".
-  Como o dono já decidiu unificar isto com CNDH e proteção num painel só
+  Como o dev já decidiu unificar isto com CNDH e proteção num painel só
   (seção 5), a exposição final pode não ser esta página isolada — mas o dado
   na tabela serve os dois formatos.
 
@@ -599,7 +599,7 @@ em espanhol/inglês do mesmo documento). Mesma armadilha de numeração por cicl
 A página também menciona arquivos `.rar` com resoluções anteriores a 2016 —
 não abri esses arquivos, **volume anterior a 2016 não medido**.
 
-### 4.3 O teste que o dono pediu — bateu
+### 4.3 O teste que o dev pediu — bateu
 
 Procurei por Brumadinho/Samarco/Mariana nos links da página de Resoluções.
 **Achei direto**:
@@ -613,7 +613,7 @@ Procurei por Brumadinho/Samarco/Mariana nos links da página de Resoluções.
 
 O CNDH publicou uma resolução **específica** sobre Brumadinho 24 dias depois do
 rompimento (25/01/2019 → 19/02/2019). É exatamente o caso de teste ideal que
-o dono pediu — e a camada do rompimento já existe no portal.
+o dev pediu — e a camada do rompimento já existe no portal.
 
 ### 4.4 Geografia — nenhum campo estruturado, mesma técnica da UFMG
 
@@ -703,7 +703,7 @@ insert into <tabela_unificada> (
 
 ## 5. O painel de legislação unificado — o que cada fonte precisa entregar
 
-O dono decidiu unificar os painéis de legislação (estadual + nacional +
+O dev decidiu unificar os painéis de legislação (estadual + nacional +
 proteção) num só, filtrável por tema — outra frente cuida da unificação em si.
 Da apuração deste documento, os campos de primeira classe que essa tabela
 precisa, porque **duas fontes diferentes (MMA/CONAMA e CNDH) já provaram que
@@ -775,7 +775,7 @@ precisam deles**:
    Brumadinho) — publica junto com a camada de rompimento que já existe.
 2. **MMA/CONAMA — legislação federal.** Licença CC-BY confirmada, encaixa na
    tabela que já existe (`ambiental_legislacao`) com uma migration pequena
-   (campo `esfera`), fecha a lacuna que o dono apontou como falha (federal =
+   (campo `esfera`), fecha a lacuna que o dev apontou como falha (federal =
    zero hoje).
 3. **JUMA — os 6 casos de MG.** Poucos, mas ricos e já filtrados; coleta trivial
    (HTML estático, sem navegador); o esforço real é a curadoria manual de

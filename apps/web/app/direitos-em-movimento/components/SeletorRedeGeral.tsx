@@ -18,7 +18,7 @@ import {
 /**
  * Seletor de duas perguntas — "o que você precisa" e "onde você está" —
  * NESSA ORDEM, para as portas "Onde buscar ajuda" e "Como pedir informação"
- * de `/direitos-em-movimento`. Decisão do dono, `docs/PLANO-DIREITOS-EM-
+ * de `/direitos-em-movimento`. Decisão do dev, `docs/PLANO-DIREITOS-EM-
  * MOVIMENTO.md`: quem sofreu violação não sabe em que aba do site está,
  * sabe o que aconteceu com ele — perguntar a cidade primeiro inverteria a
  * ordem do problema real.

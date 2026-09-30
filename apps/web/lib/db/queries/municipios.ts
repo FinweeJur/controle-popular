@@ -324,7 +324,7 @@ export function hostDoAcervoNormativo(cidade: Cidade): string | undefined {
  * certo dá credibilidade ao lugar errado.
  *
  * Deriva de `fontes.legislacao_fonte`, a mesma chave que o ETL usa para saber
- * quem é o dono do refresh de `atos_oficiais`.
+ * quem é o dev do refresh de `atos_oficiais`.
  */
 export function orgaoDoAcervoNormativo(cidade: Cidade): {
   orgao: string;

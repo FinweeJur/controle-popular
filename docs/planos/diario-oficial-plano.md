@@ -76,7 +76,7 @@ que passou 1.268 linhas sem link nenhum, custou caro: um portal que mostra ato
 administrativo sem apontar para o diário pede confiança.
 
 **O que fica de fora — ⚠️ corrigido em 22/08/2026.** A versão anterior deste
-parágrafo dizia que nomeação e exoneração ficariam de fora. **O dono decidiu o
+parágrafo dizia que nomeação e exoneração ficariam de fora. **O dev decidiu o
 contrário**: nomeação e exoneração **entram** — "dados públicos de interesse
 coletivo, sob minha responsabilidade" (`docs/ESTADO.md`, decisão 1). O que
 continua de fora é CPF, endereço e dado de saúde de pessoa física — dado de
@@ -141,7 +141,7 @@ com diário indexado e buscável. Progresso (22/08/2026, branch `diario-oficial`
   em julho/2026, ids de entidade capturados (Prefeitura 905, Câmara 21672).
   ⚠️ **Gap de calibração achado no dado real**: 16% caiu em `outro` (32/196),
   acima dos 4% da amostra de 70 títulos — duas causas identificadas, chip
-  `task_f4a38f90` aberto para o dono decidir se vale corrigir.
+  `task_f4a38f90` aberto para o dev decidir se vale corrigir.
 - ⏳ **gravação em banco**: nunca exercitada — a máquina de desenvolvimento
   não tem `DATABASE_URL`. Roda quando houver banco (`home-pc` ou Neon 01/09).
 
@@ -188,7 +188,7 @@ Não é o coletor rodar sem erro. É:
 
 ## Proposta — o que estruturar além dos 7 tipos, pensando como TCE ou repórter
 
-> Escrito em 22/08/2026, a pedido do dono: *"era bom entender que tipos de
+> Escrito em 22/08/2026, a pedido do dev: *"era bom entender que tipos de
 > dados tem no diário oficial. faça uma proposta do que pode ser mais
 > interessante sistematizar/estruturar de um ponto de vista sociológico [...]
 > pensando como um TCE ou um jornalista investigador."*
@@ -327,7 +327,7 @@ aparecem — senão o dado convida à leitura errada por omissão de contexto.
 
 **O quê:** `portaria`, como classificado hoje, mistura regulação
 administrativa comum ("PORTARIA SMS Nº 09") com atos de pessoal (nomeação,
-exoneração, designação de cargo comissionado). A decisão 1 do dono
+exoneração, designação de cargo comissionado). A decisão 1 do dev
 (22/08) autorizou especificamente nomeação/exoneração — vale um subtipo que
 isole ISSO dentro de `portaria`, não o balde inteiro.
 
@@ -413,4 +413,4 @@ pra dizer se Araçuaí, de porte parecido, fica em 2% ou em 15%.
 **Nada disto está implementado** — é proposta, registrada aqui para não se
 perder, no mesmo padrão dos outros planos deste diretório (`ponteiro, não
 cópia` — quando um item virar execução, o código e a medição vivem no commit
-e neste arquivo, a decisão do dono fica em `docs/ESTADO.md`).
+e neste arquivo, a decisão do dev fica em `docs/ESTADO.md`).

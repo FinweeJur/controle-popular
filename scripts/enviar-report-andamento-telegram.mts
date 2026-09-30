@@ -3,7 +3,7 @@
  * scripts/enviar-report-andamento-telegram.mts
  *
  * Envia relatório do andamento das implementações e auditorias do portal
- * diretamente para o Telegram do dono.
+ * diretamente para o Telegram do dev.
  */
 
 import fs from "node:fs";

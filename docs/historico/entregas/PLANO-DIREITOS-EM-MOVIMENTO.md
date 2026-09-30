@@ -10,9 +10,9 @@
 ## Sumário
 
 - [Propósito](#propósito)
-- [O pedido, na frase do dono](#o-pedido-na-frase-do-dono)
+- [O pedido, na frase do dev](#o-pedido-na-frase-do-dev)
 - [O achado que muda o tamanho do trabalho](#o-achado-que-muda-o-tamanho-do-trabalho)
-- [Decisão do dono: a seção é GERAL, e pergunta a cidade quando precisar](#decisão-do-dono-a-seção-é-geral-e-pergunta-a-cidade-quando-precisar)
+- [Decisão do dev: a seção é GERAL, e pergunta a cidade quando precisar](#decisão-do-dev-a-seção-é-geral-e-pergunta-a-cidade-quando-precisar)
 - [Desenho: quatro portas](#desenho-quatro-portas)
 - [Honestidade de cobertura — regra do projeto, não enfeite](#honestidade-de-cobertura-regra-do-projeto-não-enfeite)
 - [Ordem sugerida — maior ganho, menor esforço primeiro](#ordem-sugerida-maior-ganho-menor-esforço-primeiro)
@@ -20,14 +20,14 @@
 
 ## Propósito
 
-> Escrito em 13/08/2026, a pedido do dono. Este documento é o plano — não há > código de feature nele. Todo número marcado como "medido" foi contado agora, > contra o banco local e os arquivos do repositório; o resto é decisão a > defender.
+> Escrito em 13/08/2026, a pedido do dev. Este documento é o plano — não há > código de feature nele. Todo número marcado como "medido" foi contado agora, > contra o banco local e os arquivos do repositório; o resto é decisão a > defender.
 
-> Escrito em 13/08/2026, a pedido do dono. Este documento é o plano — não há
+> Escrito em 13/08/2026, a pedido do dev. Este documento é o plano — não há
 > código de feature nele. Todo número marcado como "medido" foi contado agora,
 > contra o banco local e os arquivos do repositório; o resto é decisão a
 > defender.
 
-## O pedido, na frase do dono
+## O pedido, na frase do dev
 
 > "Quais leis existem pra proteção dos ecossistemas, da fauna, flora e grupos
 > sociais e onde é possível buscar ajuda / parcerias. Passo a passo e links
@@ -52,7 +52,7 @@ Medido agora:
 
 Ou seja: **3 de 4 é encanamento de navegação; 1 de 4 é feature nova.**
 
-## Decisão do dono: a seção é GERAL, e pergunta a cidade quando precisar
+## Decisão do dev: a seção é GERAL, e pergunta a cidade quando precisar
 
 Havia duas saídas, e a escolha estava travando o começo:
 
@@ -161,7 +161,7 @@ Duas lacunas **têm que estar visíveis na seção**, não em rodapé:
 
 ## O que este plano NÃO decide
 
-- **Nome da URL.** `/direitos-em-movimento` é o que o dono falou; se virar
+- **Nome da URL.** `/direitos-em-movimento` é o que o dev falou; se virar
   outra coisa, é decisão dele, não achado técnico.
 - **Se o acervo de lei sai do `/ambiental`.** A recomendação aqui é NÃO sair.
 - **Texto de cada card.** Fica para quando a porta existir.

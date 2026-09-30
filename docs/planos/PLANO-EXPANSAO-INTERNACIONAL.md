@@ -10,7 +10,7 @@
 ## Sumário
 
 - [1. Objetivo e visão geral](#1-objetivo-e-visão-geral)
-- [2. Decisões de produto alinhadas com o dono](#2-decisões-de-produto-alinhadas-com-o-dono)
+- [2. Decisões de produto alinhadas com o dev](#2-decisões-de-produto-alinhadas-com-o-dev)
 - [3. Arquitetura da expansão](#3-arquitetura-da-expansão)
 - [4. Mapeamento das 6 frentes: Brasil × EUA × Canadá](#4-mapeamento-das-6-frentes-brasil--eua--canadá)
 - [5. Catálogo completo de fontes e APIs](#5-catálogo-completo-de-fontes-e-apis)
@@ -59,9 +59,9 @@ Dois recortes complementares:
 
 ---
 
-## 2. Decisões de produto alinhadas com o dono
+## 2. Decisões de produto alinhadas com o dev
 
-Respostas do dono a múltipla escolha (29/09/2026):
+Respostas do dev a múltipla escolha (29/09/2026):
 
 | Pergunta | Resposta |
 |---|---|
@@ -809,7 +809,7 @@ Testes específicos da expansão:
 | **9. Testes e deploy** | `npm test`, `tsc`, `validar-documentacao.py`, deploy Guara | Baixa | 🚧 Pendente |
 
 > [!TIP]
-> Deploy só a cada ~5 dias (política do dono, cota de build Guara).
+> Deploy só a cada ~5 dias (política do dev, cota de build Guara).
 > Testar no servidor 2 (túnel `home-pc`) e localhost antes de gastar build.
 
 ---
@@ -891,7 +891,7 @@ flowchart TD
 
 1. **Ativação e Agendamento:**
    - O daemon do `Cutiazinha` roda em segundo plano.
-   - Disparo diário automático (ex.: madrugada, 03:00) ou sob demanda por mensagem no Telegram enviada pelo dono:
+   - Disparo diário automático (ex.: madrugada, 03:00) ou sob demanda por mensagem no Telegram enviada pelo dev:
      - `/coletar eua` — dispara `scripts/coletar-eua-acervo.mts`
      - `/coletar canada` — dispara `scripts/coletar-canada-acervo.mts`
      - `/coletar sec` — consulta novos filings 10-K/20-F na SEC EDGAR
@@ -908,7 +908,7 @@ flowchart TD
 5. **Compactação e Geração de Estatísticas:**
    - O pipeline executa `compactar()` gerando arquivos leves `.compact.json` em `apps/web/data/eua/` e `apps/web/data/canada/`.
    - Atualiza as constantes de cobertura `COBERTURA_EUA` e `COBERTURA_CANADA`.
-6. **Notificação no Telegram (Regra do Dono, `AGENTS.md §12`):**
+6. **Notificação no Telegram (Regra do Dev, `AGENTS.md §12`):**
    - Envio de mensagem concisa no chat do Telegram (2 a 3 linhas):
      - *Linha 1 — etapa atual:* "Coleta EUA e Canadá concluída: 106 registros atualizados sem erros."
      - *Linha 2 — etapa futura:* "Gerando cobertura e compactação para o portal."
@@ -920,9 +920,9 @@ flowchart TD
 
 | Data | Decisão | Motivo |
 |---|---|---|
-| 29/09/2026 | Escopo duplo: espelho 6 frentes + transnacional | Resposta do dono à múltipla escolha |
-| 29/09/2026 | Hubs `/eua` e `/canada` + cruzamento nas frentes existentes | Resposta do dono |
-| 29/09/2026 | PT-BR padrão + trilíngue PT/EN/ES por botão | Resposta do dono |
+| 29/09/2026 | Escopo duplo: espelho 6 frentes + transnacional | Resposta do dev à múltipla escolha |
+| 29/09/2026 | Hubs `/eua` e `/canada` + cruzamento nas frentes existentes | Resposta do dev |
+| 29/09/2026 | PT-BR padrão + trilíngue PT/EN/ES por botão | Resposta do dev |
 | 29/09/2026 | SSN (EUA) e SIN (Canadá, Luhn) como guardas de privacidade | Equivalência com CPF Mod-11 do `AGENTS.md §5.2` |
 | 29/09/2026 | GLEIF CC0 para árvores societárias | 100% aberta, sem chave, resolve relação mãe/filha entre países |
 | 29/09/2026 | Separar Mining Claim de Mina Ativa (BLM e TSX junior miners) | Regra editorial equivalente ao SIGMINE (alvará ≠ concessão) |
@@ -936,7 +936,7 @@ flowchart TD
 ## Origem / Histórico
 
 Este plano consolida o trabalho de 3 subagentes de pesquisa lançados em
-29/09/2026 e o plano de implementação aprovado pelo dono na mesma data.
+29/09/2026 e o plano de implementação aprovado pelo dev na mesma data.
 
 **Relatórios de pesquisa integrados:**
 

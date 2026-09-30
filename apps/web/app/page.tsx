@@ -68,7 +68,7 @@ export default async function Hub() {
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
       {/* ═══ MÍSTICA DO DIA — luta popular ou fato de resistência do dia,
-          com fonte ABNT. Pedido do dono (29/09/2026): fica abaixo da nav
+          com fonte ABNT. Pedido do dev (29/09/2026): fica abaixo da nav
           bar e do letreiro "✦ OLHO ABERTO ✦" (que vivem no TopNav/Marquee)
           e acima da capa-hero. Sem entrada do dia, não renderiza nada. */}
       <MisticaDoDia />
@@ -236,7 +236,7 @@ export default async function Hub() {
       {/* ═══ CARTÃO INTERATIVO DO SEU NONÔ — IA CIDADÃ COM ATALHOS DIRETOS ═══ */}
       <CartaoChatbotHome />
 
-      {/* Linha de orientação -- decisão do dono, 22/08 (decisão 8 de
+      {/* Linha de orientação -- decisão do dev, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em
           `docs/planos/REVISAO-UX-E-ONBOARDING.md` §7 "seis cards + um
           banner"). Quem chega sem saber o nome de nenhuma das seis
@@ -345,7 +345,7 @@ export default async function Hub() {
       </div>
 
       {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO É UMA FRENTE ═══
-          Decisão do dono (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
+          Decisão do dev (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
           frentes são EIXOS DE PODER — lugares onde alguém decide sobre a
           vida da pessoa (prefeitura/câmara, Congresso, tribunais, COPAM,
           terra, e agora a reparação de Brumadinho). Esta seção não é mais
@@ -428,7 +428,7 @@ export default async function Hub() {
           vezes reduzidos — no Congresso, e é o Judiciário quem interpreta essas leis e
           resolve os conflitos, sem que ninguém tenha votado em quem ocupa essas cadeiras.
           A isso somam-se três frentes que não são um quarto Poder: duas são onde o Estado
-          decide sobre o território — o licenciamento ambiental de Minas e quem é dono da
+          decide sobre o território — o licenciamento ambiental de Minas e quem é dev da
           terra —, e a terceira acompanha se uma reparação já decidida na Justiça está
           sendo paga de verdade, mês a mês. São {contagemZonasPublicadas()} ao todo, e
           acompanhar só uma deixa boa parte da história de fora.

@@ -434,7 +434,7 @@ async function loopTelegram() {
   for (;;) {
     try {
       // Heartbeat: prova de vida por mtime (sem I/O de texto). O Farol
-      // (scripts/vigia-servidor.mts) avisa o dono se este arquivo parar de
+      // (scripts/vigia-servidor.mts) avisa o dev se este arquivo parar de
       // envelhecer — mesma lição do next start de 08/09: o processo silencioso
       // é o que morre sem ninguém ver.
       try {
@@ -502,7 +502,7 @@ async function loopTelegram() {
         // fila de respostas que o plugin consulta; nÃ£o passa pelo mapa de
         // COMANDOS de propÃ³sito.
         // NormalizaÃ§Ã£o: minÃºsculas, sem menÃ§Ã£o a @bot, espaÃ§os colapsados.
-        // Motivo medido em 26/08: dono enviou /STATUS (caixa alta) e caiu no
+        // Motivo medido em 26/08: dev enviou /STATUS (caixa alta) e caiu no
         // "nÃ£o reconhecido" â€” match exato era frÃ¡gil demais.
         const textoNormalizado = msg.text
           .trim()

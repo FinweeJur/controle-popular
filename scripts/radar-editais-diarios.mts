@@ -165,7 +165,7 @@ function mascararCpf(texto: string): string {
 // ──────────────────────────────────────────────────────────────────────────
 // Gancho de enriquecimento por LLM — DESATIVADO por padrão.
 //
-// O dono pediu detecção determinística nesta etapa. Se um dia o enriquecimento
+// O dev pediu detecção determinística nesta etapa. Se um dia o enriquecimento
 // de resumo/título por modelo for aceito, este é o ponto de costura: recebe o
 // candidato montado e devolve um parcial (titulo/resumo) ANTES de gravar.
 // Quem ligar este gancho assume a regra 8 do AGENTS.md (sanitizar antes do

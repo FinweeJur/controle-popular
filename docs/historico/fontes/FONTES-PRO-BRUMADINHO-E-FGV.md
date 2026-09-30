@@ -20,9 +20,9 @@
 
 ## Propósito
 
-As duas fontes que o dono pediu para a frente Paraopeba. As duas descrevem o mesmo Acordo Judicial de Reparação de Brumadinho (R$ 37,6 bi, 04/02/2021) — e **descrevem partes diferentes dele**, o que é a informação mais importante deste documento. Tudo abaixo foi **aberto e confirmado respondendo*...
+As duas fontes que o dev pediu para a frente Paraopeba. As duas descrevem o mesmo Acordo Judicial de Reparação de Brumadinho (R$ 37,6 bi, 04/02/2021) — e **descrevem partes diferentes dele**, o que é a informação mais importante deste documento. Tudo abaixo foi **aberto e confirmado respondendo*...
 
-As duas fontes que o dono pediu para a frente Paraopeba. As duas descrevem o
+As duas fontes que o dev pediu para a frente Paraopeba. As duas descrevem o
 mesmo Acordo Judicial de Reparação de Brumadinho (R$ 37,6 bi, 04/02/2021) —
 e **descrevem partes diferentes dele**, o que é a informação mais importante
 deste documento.

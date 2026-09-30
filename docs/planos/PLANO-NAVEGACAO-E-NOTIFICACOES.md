@@ -62,13 +62,13 @@ cada layout de zona, e não em cada uma das ~1.400 páginas.
 ### Tier 0 — botão `mailto` (imediato, zero backend) — ✅ no rodapé em 01/09
 
 Botão "Pedir dados por e-mail" (ícone de envelope) abre o cliente de e-mail com
-assunto e corpo pré-preenchidos para contato@controlepopular.com.br. O dono
+assunto e corpo pré-preenchidos para contato@controlepopular.com.br. O dev
 responde anexando o arquivo (o portal já exporta CSV/PDF em quase toda tela).
 
 ### Tier 1 — formulário de pedido (sem backend próprio)
 
 Botão abre Google Forms (gratuito): nome, e-mail, URL, formato, mensagem e
-checkbox LGPD. Cada resposta notifica o dono (e-mail do Forms + aviso opcional
+checkbox LGPD. Cada resposta notifica o dev (e-mail do Forms + aviso opcional
 no bot via AppScript). Resposta manual com o arquivo.
 
 ### Tier 2 — endpoint próprio + SMTP (automação)
@@ -76,10 +76,10 @@ no bot via AppScript). Resposta manual com o arquivo.
 Rota `/api/pedido-dados` (padrão das `route.din.ts`): valida (rate limit por
 IP, honeypot), gera o CSV na hora no padrão da tela (BOM UTF-8, `;`), envia via
 SMTP Umbler **no `next start` do home-pc** (o Worker free não fala SMTP — ver
-Riscos), notifica o dono no Telegram e não armazena e-mail (ou armazena com
+Riscos), notifica o dev no Telegram e não armazena e-mail (ou armazena com
 consentimento em D1 dedicado + rota de exclusão). ✅ **Etapa 1 (01/09):** a
 rota já está no ar com validação (rate limit, honeypot, e-mail) e
-**notificação ao dono no Telegram**; a etapa 2 (anexo automático via SMTP)
+**notificação ao dev no Telegram**; a etapa 2 (anexo automático via SMTP)
 fica pendente de decisão.
 
 ## Contador público de envios/downloads — ✅ implementado em 01/09
@@ -123,23 +123,23 @@ sem sair para /busca: digita e vê os resultados no dropdown.
 
 ## Botões de notificação (Telegram e e-mail) — ✅ no rodapé em 01/09
 
-- **Telegram — decisão do dono (01/09):** inscrição PÚBLICA via /comecar no
+- **Telegram — decisão do dev (01/09):** inscrição PÚBLICA via /comecar no
   privado do bot (qualquer pessoa entra/sai da lista; /parar sai). O bot
-  envia novidades para os inscritos quando o dono manda **/divulgar** no
+  envia novidades para os inscritos quando o dev manda **/divulgar** no
   chat do bot ou roda `scripts/divulgar-telegram.mts "mensagem"`.
   **Comandos de edição (/sincronizar, /status, /tunel, /reiniciar, /ok,
   /negar, /divulgar, /inscritos) continuam SÓ do chat do criador** — a
   gate do gatilho nunca abre o público para edição. Lista em
   `scripts/inscritos.json` (gitignored).
 - **E-mail:** "Receber novidades por e-mail" abre `mailto` pré-preenchido
-  (double opt-in: o dono confirma antes de incluir em qualquer lista).
+  (double opt-in: o dev confirma antes de incluir em qualquer lista).
 - Ambas as inscrições, quando existirem de verdade, incrementam o contador
   `notificacao` (beacon no clique).
 
 ## Fluxo de atendimento (manual)
 
 1. Pedido chega em contato@controlepopular.com.br (Tier 0/1).
-2. Dono exporta o arquivo (CSV pela tela; PDF do acervo; resumo = texto da
+2. Dev exporta o arquivo (CSV pela tela; PDF do acervo; resumo = texto da
    página) e responde com o modelo abaixo.
 3. Registra no `DIVULGACAO-LOG.md` (data, pedido, formato, entregue).
 4. Confirma recebimento e apaga o e-mail do solicitante sem consentimento.
@@ -171,7 +171,7 @@ sem sair para /busca: digita e vê os resultados no dropdown.
 - [x] Busca global na navbar com índice pré-carregado — 01/09.
 - [ ] Componente genérico `IndicePagina` (TOC de h2/h3) nos layouts de zona.
 - [x] Beacon de `download` no CSV compartilhado e em links PDF/CSV (global) — 01/09.
-- [x] `/api/pedido-dados` (Tier 2, etapa 1): valida e notifica o dono no Telegram — 01/09.
+- [x] `/api/pedido-dados` (Tier 2, etapa 1): valida e notifica o dev no Telegram — 01/09.
 - [ ] Modelo de resposta testado em 1 pedido real.
 - [ ] (Opcional) Formulário Google (Tier 1).
 - [ ] (Opcional) `/api/pedido-dados` com SMTP automático (Tier 2).

@@ -177,7 +177,7 @@ def parse_pagina(html: str) -> tuple[list[dict], bool]:
             if "info-data__child" in classes:
                 # Sessão do dia corrente. Sessão órfã (sem dia antes) é
                 # descartada em vez de atribuída ao dia anterior — inventar o
-                # dono de uma sessão é pior que perdê-la.
+                # dev de uma sessão é pior que perdê-la.
                 if atual is None:
                     continue
                 atual["sessoes_total"] += 1

@@ -18,7 +18,7 @@
 - [3. SIRENEJud fase 2](#3-sirenejud-fase-2)
 - [4. Itens destravados pelo token dados.gov.br](#4-itens-destravados-pelo-token-dadosgovbr)
 - [5. 01/09 — Neon volta](#5-0109-neon-volta)
-- [6. Bloqueados por decisão do dono](#6-bloqueados-por-decisão-do-dono)
+- [6. Bloqueados por decisão do dev](#6-bloqueados-por-decisão-do-dev)
 - [7. Como executar (agentes em paralelo)](#7-como-executar-agentes-em-paralelo)
 
 ## Propósito
@@ -32,10 +32,10 @@ que cada trilha precisa para começar. Atualizar este arquivo a cada entrega.
 
 | # | Tarefa | Custo | Bloqueio | Onde |
 |---|---|---|---|---|
-| 0 | Colar `DADOS_GOV_BR_API_TOKEN` em `etl/betim/.env` | 1 min (dono) | — | ✅ **feito 30/08** |
+| 0 | Colar `DADOS_GOV_BR_API_TOKEN` em `etl/betim/.env` | 1 min (dev) | — | ✅ **feito 30/08** |
 | 1 | Regenerar índice estático com o banco local cheio (diário 16.601 atos, normas 8.570, SIRENEJud 322.842/MG, ComunicaBR) | minutos | nenhum | `apps/web/scripts/gerar-indice-busca.mts` |
 | 2 | Ampliar respostas pré-prontas (degraus 0–2) com as análises novas — sem modelo | baixo | item 1 | §1 |
-| 3 | Degrau 3: chaves DeepSeek + Maritaca com fallback — código pronto; falta colar as chaves | 2 min (dono) | chaves | §1 |
+| 3 | Degrau 3: chaves DeepSeek + Maritaca com fallback — código pronto; falta colar as chaves | 2 min (dev) | chaves | §1 |
 | 4 | Skip-link WCAG 2.4.1 em Terras/Paraopeba/`/busca`/`/sobre`/DEM | baixo | nenhum | REVISAO-UX §49 |
 | 5 | Backfill PDFs → subir novos aprovados ao R2 | médio (rodeiro) | rede | rodando 30/08 |
 | 6 | SIRENEJud fase 2 — integrações do catálogo dados.gov.br | médio | token (feito) | §3 |
@@ -47,16 +47,16 @@ que cada trilha precisa para começar. Atualizar este arquivo a cada entrega.
 | 12 | SIRENEJud shapefiles (77 MB, geometria do dano) | alto | nenhum | §3 |
 | 13 | Gitee espelho | baixo (adm) | decisão de quando | ESTADO #29 |
 
-**Bloqueados por decisão do dono:** Conecta gov.br (#16), licença *Icones do
+**Bloqueados por decisão do dev:** Conecta gov.br (#16), licença *Icones do
 Brasil* (#27), fusão ARQUITETURA × MAPA (#28), AJRI fases 2–3 (`AJRI_COOKIE`),
-`AI_API_KEY` (dono vai colar, §1).
+`AI_API_KEY` (dev vai colar, §1).
 
 ## 1. IA do assistente — degraus e provedores
 
 **Regra dos degraus (já decidida):** 0 (navegação) → 1 (busca no índice) → 2
 (composição determinística) respondem SEM modelo, em milissegundos. O degrau 3
 (RAG + LLM) só é acionado quando os anteriores devolvem vazio — e a tela diz
-isso. Pedido do dono (30/08): **incluir o máximo de respostas pré-prontas
+isso. Pedido do dev (30/08): **incluir o máximo de respostas pré-prontas
 sobre dados, análises e índice atualizado** — ou seja, crescer os degraus 0–2
 antes de depender do modelo.
 
@@ -77,7 +77,7 @@ antes de depender do modelo.
 
 **Embeddings (vetorização):** nem DeepSeek nem Maritaca publicam endpoint de
 embeddings (medido em 22/08 e reafirmado em 30/08). Caminho atual: **Ollama
-local** no home-pc (instalado; subir o serviço). Pergunta em aberto do dono:
+local** no home-pc (instalado; subir o serviço). Pergunta em aberto do dev:
 se o repo **colibri** ajuda a acelerar a resposta do Ollama local — responder
 com medição antes de adotar (ver abaixo em "Em aberto"). Alternativa remota
 gratuita: SiliconFlow `BAAI/bge-m3`.
@@ -97,7 +97,7 @@ gratuita: SiliconFlow `BAAI/bge-m3`.
 
 ## 2. Monitoramento de empresas (Vale) — escopo expandido
 
-Pedido do dono (16/08), expandido em 30/08. É uma **frente nova** dentro do
+Pedido do dev (16/08), expandido em 30/08. É uma **frente nova** dentro do
 portal. Escopo consolidado:
 
 **2a. Fontes documentais (coleta):**
@@ -114,7 +114,7 @@ portal. Escopo consolidado:
 **2b. Linha do tempo com gráfico de valor das ações (novo, 30/08):**
 
 - Série histórica do **valor das ações negociadas na B3** (VALE3; considerar
-  também o ticker ADR se o dono quiser) — gráfico SVG inline, sem biblioteca
+  também o ticker ADR se o dev quiser) — gráfico SVG inline, sem biblioteca
   nova (regra do AGENTS.md).
 - Eventos do portal (datas de rompimento, acordos, relatórios) marcados como
   pontos na linha do tempo ao lado do preço — com ressalva editorial:
@@ -160,16 +160,16 @@ links. Destrava também: Rouanet junção (ESTADO #10), pgvector do chatbot,
 medição de payloads. ⚠️ O cabeçalho do runbook está no passado ("a Neon
 voltou…") e ainda não rodou — corrigir o tempo verbal antes de ler como feito.
 
-## 6. Bloqueados por decisão do dono
+## 6. Bloqueados por decisão do dev
 
 Conecta gov.br (credenciamento PJ), licença *Icones do Brasil*, fusão
 ARQUITETURA × MAPA, AJRI fases 2–3 (`AJRI_COOKIE`), prazo LAI INCRA
-(protocolo do dono). Nada disso anda sem a decisão — não entrar em fila
+(protocolo do dev). Nada disso anda sem a decisão — não entrar em fila
 paralela.
 
 ## 7. Como executar (agentes em paralelo)
 
-Preferência do dono (30/08): **sempre que possível, disparar agentes em
+Preferência do dev (30/08): **sempre que possível, disparar agentes em
 paralelo** — sessões simultâneas via jcode (modelo v4 flash) para acelerar.
 Regras para paralelizar com segurança neste repo:
 

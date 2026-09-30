@@ -34,7 +34,7 @@ import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
  *
  * Nasceu da fusão de `BuscaLegislacaoAmbiental.tsx` (o painel de 6.378
  * normas estaduais) com `BuscaDireitoCritico.tsx` (o painel de 30 normas +
- * 15 precedentes por tema de direito protegido) — o pedido do dono foi
+ * 15 precedentes por tema de direito protegido) — o pedido do dev foi
  * "unificar... filtrável por temas", preservando o que cada um fazia bem:
  * a dica de sobreposição entre fontes (estadual), a distinção visível
  * lei-vs-precedente (crítico), o chip de tema mesmo com contagem zero
@@ -139,7 +139,7 @@ const TEMAS_SEM_INSTRUMENTO_CRITICO = new Set(["especies"]);
 const PAGINA = 40;
 
 /**
- * ═══ ORDENAÇÃO E CSV (regra do dono, 2026-08-21: "cinco coisas") ═══
+ * ═══ ORDENAÇÃO E CSV (regra do dev, 2026-08-21: "cinco coisas") ═══
  *
  * `ordenarPor` é a mesma função pura já testada em `lib/tabela/ordenar.test.ts`
  * — nenhuma comparação nova nasce aqui. O obstáculo é que
@@ -148,7 +148,7 @@ const PAGINA = 40;
  * `chave: keyof T` de primeiro nível — por isso `paraChaveDeOrdenacao` empacota cada
  * item num objeto com três campos síntese (`tipoOrdenacao`/`anoOrdenacao`/
  * `esferaOrdenacao`) ANTES de chamar `ordenarPor`, e o resultado é
- * desempacotado de volta. "Tipo" é a ordenação pedida por escrito pelo dono:
+ * desempacotado de volta. "Tipo" é a ordenação pedida por escrito pelo dev:
  * para `estadual` é `row.tipo` (Lei, Decreto, Portaria…); para `critica`/
  * `precedente`, que não têm esse campo, é o rótulo da própria classe
  * (`CLASSE_LABEL`) — não inventa um "tipo" que a fonte não tem, agrupa pela
@@ -157,7 +157,7 @@ const PAGINA = 40;
  * (ver o cabeçalho de `lib/tabela/ordenar.ts`) — não aparecem misturados no
  * meio da lista como se tivessem ano zero.
  *
- * ═══ O DEFAULT AGORA É A HIERARQUIA (regra do dono, 03/09/2026) ═══
+ * ═══ O DEFAULT AGORA É A HIERARQUIA (regra do dev, 03/09/2026) ═══
  *
  * O estado `""` do seletor — antes "Como veio da fonte" — passou a aplicar a
  * ordenação hierárquica (`ordenarPorHierarquia` da lib, pura e testada):
@@ -342,7 +342,7 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
     return base;
   }, [itens, termoNormalizado, esfera, classe, fonte, tema, ano]);
 
-  // Ordenação — "" é o DEFAULT hierárquico (regra do dono, 03/09/2026):
+  // Ordenação — "" é o DEFAULT hierárquico (regra do dev, 03/09/2026):
   // esfera → banda do tipo → data desc, tudo em `ordenarPorHierarquia`
   // (pura, testada na lib). "fonte" mantém a ordem que vem de
   // `unificarItens` (estaduais por data desc, depois críticas, depois

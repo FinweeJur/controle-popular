@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * scripts/passo-telegram.mts — relatório de etapa de trabalho, SÓ para o
- * dono (TELEGRAM_CHAT_ID de scripts/.env). Sem broadcast nos inscritos.
+ * dev (TELEGRAM_CHAT_ID de scripts/.env). Sem broadcast nos inscritos.
  *
  * Uso:
  *   npx tsx scripts/passo-telegram.mts "✅ etapa X concluída — próximo: Y"

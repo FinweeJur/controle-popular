@@ -177,7 +177,7 @@ function dePaginasDados(): AcervoFonte[] {
 
 /** Postagens do blog entram no acervo: o assistente precisa conhecer as
  *  publicações para citar o que o portal afirma (regra "todo contexto no
- *  chatbot", pedido do dono em 10/09/2026). Cada post vira um pedaço com
+ *  chatbot", pedido do dev em 10/09/2026). Cada post vira um pedaço com
  *  o lead (resumo) + primeiro parágrafo — o texto inteiro pesaria demais
  *  na janela de contexto e não melhora a citação. */
 function dePostsDoBlog(): AcervoFonte[] {

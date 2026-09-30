@@ -24,7 +24,7 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
  * route.ts` e é carregado sob demanda por `PainelDecisoes` (cliente). Ver o
  * cabeçalho daquele lib para o raciocínio completo do teto de payload.
  *
- * ═══ AS CINCO COISAS (regra do dono, 2026-08-21, `AGENTS.md`) ═══
+ * ═══ AS CINCO COISAS (regra do dev, 2026-08-21, `AGENTS.md`) ═══
  *
  * Gráfico (deferidas × negativas por ano, com alternativa em tabela),
  * cartões de topo, CSV do filtrado, filtro (decisão/município/classe/

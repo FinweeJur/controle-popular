@@ -84,7 +84,7 @@ que hoje.
 
 ### 1. GSAP entra como dependência
 
-O dono liberou: o teto antigo de 3 MiB gzip de bundle não vigora mais
+O dev liberou: o teto antigo de 3 MiB gzip de bundle não vigora mais
 (novo estágio com Cloudflare Tunnel). `gsap` (+ `ScrollTrigger`) entra em
 `apps/web`. Ele pesa ~23 KB gzip somado ao bundle — irrelevante no novo
 estágio, e é a biblioteca que o protótipo já usa.
@@ -273,7 +273,7 @@ Para considerar **"atingido o objetivo"**:
 
 ## Decisões registradas
 
-- **GSAP liberado** — dono, 2026-09-03: o teto de 3 MiB gzip não vigora
+- **GSAP liberado** — dev, 2026-09-03: o teto de 3 MiB gzip não vigora
   mais; novo estágio usa Cloudflare Tunnel. `gsap` entra em `apps/web`.
 - **Primeira dobra sem bitmap** — o portal atende leitor sob estresse; a
   primeira dobra usa gradiente + SVG inline para não pesar o LCP.

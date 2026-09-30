@@ -30,7 +30,7 @@
 | Quem | Onde trabalha | Quem publica |
 |---|---|---|
 | Sessão de assistente com worktree próprio | `.claude/worktrees/<nome>` | **ela mesma**, por `rebase` + `push` |
-| Sessão iniciada pelo dono (tarefa de fundo) | o checkout principal | **ela mesma** |
+| Sessão iniciada pelo dev (tarefa de fundo) | o checkout principal | **ela mesma** |
 | A máquina de build (`home-pc`) | o checkout dela | ela mesma, e é a única que **publica o site** |
 
 **Ninguém integra o trabalho de ninguém.** Não existe um coordenador que

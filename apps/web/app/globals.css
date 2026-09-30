@@ -30,7 +30,7 @@
    apaga especificidade entre DECLARAÇÕES importantes, então quem tem
    seletor mais forte (desabilitado, texto, cruzeta) ganha do `*`.
 
-   CONTRASTE (regra do dono, 29/09, WCAG 1.4.11): o contorno dos dez
+   CONTRASTE (regra do dev, 29/09, WCAG 1.4.11): o contorno dos dez
    arquivos passou por `scripts/recolor-contraste-cursor.py`, que trocou
    o marrom #5c4542 por preto puro. Motivo medido: o marrom só llegava
    a 2,26 em floresta e 2,38 em asfalto — fundo de imagem de satélite do

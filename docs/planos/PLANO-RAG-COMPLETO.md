@@ -145,7 +145,7 @@ O desenho corrigido é: **ligar o degrau 3 é configuração; tornar o RAG
 4. **Verificação.** Testes de invariante do acervo (todo pedaço tem rota e
    fonte; catálogo e inventário presentes) e um conjunto de perguntas de
    fumaça.
-5. **Persistência do índice (pgvector/Qdrant): cancelada** (decisão do dono,
+5. **Persistência do índice (pgvector/Qdrant): cancelada** (decisão do dev,
    30/09/2026). O catálogo do Guara não tem pgvector; o **Qdrant** bateu o
    teto do plano (`TIER_LIMIT_EXCEEDED`, HTTP 402) e não será perseguido.
    Com 397 pedaços curtos, o índice em memória é o desenho final — remontar
@@ -220,7 +220,7 @@ silencioso.
   `unaccent`).
 - **Qdrant abandonado (30/09):** o CLI devolveu `TIER_LIMIT_EXCEEDED` (HTTP
   402) — o plano Starter (2 serviços) não comporta o serviço extra. Decisão
-  do dono: não perseguir; o índice em memória é o desenho final.
+  do dev: não perseguir; o índice em memória é o desenho final.
 - **Índice medido:** `montarAcervoDetalhado().cobertura.total` = **397
   pedaços** (não ~180), sem nenhuma resposta pulada por falta de rota.
 - **Busca × RAG (30/09):** a busca global (navbar e `/busca`) passou a cobrir a

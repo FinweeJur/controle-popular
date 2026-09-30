@@ -9,7 +9,7 @@
 
 ## Sumário
 
-- [Propósito e dono de cada fila](#propósito-e-dono-de-cada-fila)
+- [Propósito e responsável por cada fila](#propósito-e-responsável-por-cada-fila)
 - [Estado medido 23/09 15:30](#estado-medido-2309-1530)
 - [Escopo desta IA](#escopo-desta-ia)
 - [Como rodar (ritual)](#como-rodar-ritual)
@@ -21,11 +21,11 @@
 - [Commit e deploy](#commit-e-deploy)
 - [Fora de escopo](#fora-de-escopo)
 
-## Propósito e dono de cada fila
+## Propósito e responsável por cada fila
 
 Duas IAs na mesma máquina. **Uma fila por sessão. BH não é desta IA.**
 
-| Fila | Dono | Cidades |
+| Fila | Dev | Cidades |
 |---|---|---|
 | **A (esta sessão opencode local)** | sessão que já roda o PC | **BH 3106200** + fecha resíduo das 4 pequenas se precisar |
 | **B (handoff — outra IA)** | você | **SP 3550308** + **demais 25 capitais** do JSON |
@@ -33,7 +33,7 @@ Duas IAs na mesma máquina. **Uma fila por sessão. BH não é desta IA.**
 
 **Um ETL PNCP por máquina** (decisão no plano; API já é o gargalo).
 Se a fila A estiver viva, **não lance SP ao mesmo tempo** — espere o processo
-A morrer ou o dono liberar paralelo. Dois runs juntos só geram 429 em dobro.
+A morrer ou o dev liberar paralelo. Dois runs juntos só geram 429 em dobro.
 
 ## Estado medido 23/09 15:30
 
@@ -270,7 +270,7 @@ python scripts/validar-documentacao.py
 - **Deploy Guara:** só Fase A fechada + suíte verdes + cadência ~5 dias.
   Expansão de capitais **não** mistura janela de deploy da Fase A.
 - Push: `git fetch && git rebase origin/main && git push origin HEAD:main`
-  — só com dono ciente; segurar push se build/deploy na máquina.
+  — só com dev ciente; segurar push se build/deploy na máquina.
 
 ## Fora de escopo
 

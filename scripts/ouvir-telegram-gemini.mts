@@ -3,7 +3,7 @@
  * scripts/ouvir-telegram-gemini.mts — Auditor e Leitor de Mensagens do Telegram para o Gemini.
  *
  * Lê `logs/telegram-inbox.jsonl` diretamente do disco (rápido, sem bloqueio de rede com a escuta ativa),
- * verifica se alguma mensagem do dono ficou para trás sem ser considerada, e gera relatório claro.
+ * verifica se alguma mensagem do dev ficou para trás sem ser considerada, e gera relatório claro.
  */
 
 import fs from "node:fs";

@@ -6,7 +6,7 @@
  * ilustração "Colony" de Dave Chenell (dribbble.com/shots/2012985) e da
  * recriação em CodePen de jackiezen (codepen.io/jackiezen/pen/gOOgvOO).
  *
- * Por que compacto: o dono pediu a peça "espremida" na altura — pouco
+ * Por que compacto: o dev pediu a peça "espremida" na altura — pouco
  * espaço abaixo das copas e pouco acima do topo da fumaça — para ficar na
  * mesma linha do texto da mística, sem empurrar a capa para baixo.
  *

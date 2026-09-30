@@ -9,7 +9,7 @@ import { metadataEditavel } from "@/lib/edicoes";
  * Reusa `lib/betim/redeProtecao.ts` inteiro (mesma fonte de
  * `/[municipio]/rede-de-protecao`) através de `SeletorRedeGeral`, que só
  * decide QUANDO perguntar a cidade — depois da necessidade, nunca antes
- * (decisão do dono, `docs/PLANO-DIREITOS-EM-MOVIMENTO.md`).
+ * (decisão do dev, `docs/PLANO-DIREITOS-EM-MOVIMENTO.md`).
  *
  * `listarCidades()` aqui, no servidor: o seletor precisa da `Cidade`
  * INTEIRA (com `fontes`) pra chamar `montarItensPainel(cidade)` no

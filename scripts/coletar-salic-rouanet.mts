@@ -721,7 +721,7 @@ ordenada por nada. HTTP 200 nas cinco.
 
 > **NUNCA publique "o maior incentivador é o Banco do Brasil, com
 > R$ 648.387.436,40".** Essa frase foi escrita assim uma vez, em
-> \`docs/PLANO-2026-08-15.md\` §N2, e passada ao dono como fato. O valor está
+> \`docs/PLANO-2026-08-15.md\` §N2, e passada ao dev como fato. O valor está
 > certo para aquele CNPJ; o que é falso é chamá-lo de máximo — **é a primeira
 > linha da ordem natural da API**, não o topo de um ranking. Qualquer ranking
 > desta fonte exige varrer a lista inteira e ordenar do nosso lado, que é o que

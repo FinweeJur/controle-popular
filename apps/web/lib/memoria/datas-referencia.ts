@@ -11,7 +11,7 @@
  * AGENTS.md §7 (regra editorial) e §8 (as seis qualidades). Cada data tem
  * um `fonte` com a instituição que a sustenta — quando o tema é do Estado
  * (bioma, direito), a fonte é o órgão público; quando é de movimento
- * social, é a própria organização civil (decisão do dono, 29/09/2026).
+ * social, é a própria organização civil (decisão do dev, 29/09/2026).
  *
  * Decisão técnica: isto é uma lista CURADA, escrita à mão com fonte — não
  * vem do gerador do calendário (que transcreve as duas fontes históricas).
@@ -44,7 +44,7 @@ export interface DataReferencia {
 }
 
 /**
- * Citação curta no estilo do dono `(Autor, Data)` — ex.: "MAB, 2026",
+ * Citação curta no estilo do dev `(Autor, Data)` — ex.: "MAB, 2026",
  * "ONU Brasil, 2026", "MMA, 2026". O "autor" aqui é a FONTE (a
  * instituição), nunca a pessoa, como na fonte curta da Mística.
  */

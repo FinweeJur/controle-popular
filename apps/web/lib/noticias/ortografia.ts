@@ -1,7 +1,7 @@
 /**
  * Verificador determinístico de ortografia e estilo dos posts do blog.
  *
- * Regras do dono (10/09/2026), transformadas em porta de entrada:
+ * Regras do dev (10/09/2026), transformadas em porta de entrada:
  *
  * 1. VIOLAÇÃO (falha o teste): palavra com acento obrigatório escrita sem
  *    acento, de uma lista fechada e conservadora — só substantivos/adjetivos

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * scripts/deploy-guara-agendado.mts ??? deploy do Guara na cad??ncia do dono.
+ * scripts/deploy-guara-agendado.mts ??? deploy do Guara na cad??ncia do dev.
  *
  * Chama `guara deploy` s?? quando TUDO passa:
  *   1. h?? commit novo na origin/main que o Guara ainda n??o construiu
  *      (SHA difere do ??ltimo deployment);
  *   2. o ??ltimo deploy do Guara tem mais de N dias (padr??o 5 ??? pol??tica
- *      do dono, 19/09: plano Starter tem teto de 250 min de build/ciclo
+ *      do dev, 19/09: plano Starter tem teto de 250 min de build/ciclo
  *      e um build gasta ~17 min);
  *   3. roda em Windows pelo Task Scheduler (tarefa
  *      `ControlePopular_DeployGuara`), na janela da madrugada.

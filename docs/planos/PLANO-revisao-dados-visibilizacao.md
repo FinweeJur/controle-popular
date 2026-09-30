@@ -211,7 +211,7 @@ nas duas telas. Pendências registradas:
    motivo documentado no código (agregados de janela em SQL divergiriam do
    conjunto filtrado).
 
-#### Ajustes da passada `revisao-dados` (2026-08-22, decisão do dono)
+#### Ajustes da passada `revisao-dados` (2026-08-22, decisão do dev)
 
 1. **Regra de dispensa próxima do limite, documentada**: alerta dispara quando
    a contratação por dispensa atinge **90% do limite do art. 75 da Lei

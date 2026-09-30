@@ -8,14 +8,14 @@
  * matérias do SIGPub em agosto, parser do DOM sem queixa. E nenhum dos dois
  * tinha agendamento: o `rotina-coletas.mts` chama `--listar` na madrugada,
  * e o comando puro do módulo roda só a BETIM (ID_MUNICIPIO_DEFAULT). Quem
- * sentia falta do diário das outras cidades era o dono, não o código.
+ * sentia falta do diário das outras cidades era o dev, não o código.
  *
  * Este wrapper é a peça de agenda: roda um comando por cidade, na frente do
  * portal. SIGPub cobre as 5 cidades mineiras (o cadastro das entidades vem
  * do banco — cidade sem cadastro pula com aviso, nunca inventa id); o DOM
  * cobre Belo Horizonte, que tem portal próprio. Falha em uma cidade não
  * derruba a rodada das outras — o resumão no fim decide o exit code, e é ele
- * que o Telegram do dono mostra.
+ * que o Telegram do dev mostra.
  *
  * Uso:
  *   npx tsx scripts/coletar-diario-municipios.mts           # grava no banco

@@ -19,9 +19,9 @@
 
 ## Propósito
 
-> Pedido do dono em 13-14/08/2026: *"sigo achando vários links quebrados de > legislação e vários sem o pdf copiado através daquela técnica que usamos > antes, faça uma revisão vigorosa principalmente das normas de proteção"*. > > Correção de premissa registrada em `docs/PLANO-ARQUIVO-DE-FONTES.m...
+> Pedido do dev em 13-14/08/2026: *"sigo achando vários links quebrados de > legislação e vários sem o pdf copiado através daquela técnica que usamos > antes, faça uma revisão vigorosa principalmente das normas de proteção"*. > > Correção de premissa registrada em `docs/PLANO-ARQUIVO-DE-FONTES.m...
 
-> Pedido do dono em 13-14/08/2026: *"sigo achando vários links quebrados de
+> Pedido do dev em 13-14/08/2026: *"sigo achando vários links quebrados de
 > legislação e vários sem o pdf copiado através daquela técnica que usamos
 > antes, faça uma revisão vigorosa principalmente das normas de proteção"*.
 >
@@ -34,7 +34,7 @@
 > 700 links do universo geral (~29 mil) e, depois de refazer com pausa os
 > que pareciam quebrados, chegou a zero confirmados — a primeira passada
 > dela batia em limite de requisição/bloqueio de bot, não página morta. O
-> dono insistiu que segue achando link quebrado. Por isso esta rodada
+> dev insistiu que segue achando link quebrado. Por isso esta rodada
 > cobriu por INTEIRO (não amostra) o recorte de normas de proteção E foi
 > atrás da hipótese mais provável: link que responde `200` mas leva ao
 > lugar errado — quebra disfarçada, não erro de status.
@@ -89,7 +89,7 @@ não do portal.
 **Zero redirecionamento-para-home detectado** no recorte de normas de
 proteção, e **zero quebra disfarçada confirmada** nos 8 links de área
 protegida depois de checados com navegador real (ver abaixo). Isso não
-contradiz o dono: ele falou em "legislação" de forma geral, e o recorte de
+contradiz o dev: ele falou em "legislação" de forma geral, e o recorte de
 hoje foi só o de proteção, por pedido explícito ("principalmente"). Links
 quebrados que ele encontra podem estar em `atos_oficiais`/`proposicoes`
 fora deste recorte temático (~9.135 e ~13.317 linhas não cobertas aqui) —
@@ -112,7 +112,7 @@ Polônia", Lei 2924/2004 "APA Barragem da Extração", LC 178/2023 "APA
 Serra dos Cristais") tinham `link_fonte = https://cmdiamantina.mg.gov.br/leis`
 — a **listagem inteira de leis do município**, não a norma específica.
 Tecnicamente respondia `200`, então nenhum checador de status pegaria.
-Mesma categoria do "redireciona pra home" que o dono pediu para caçar,
+Mesma categoria do "redireciona pra home" que o dev pediu para caçar,
 embora o mecanismo seja outro (o coletor grava o link errado desde a
 origem, não um redirecionamento do servidor).
 
@@ -161,7 +161,7 @@ User-Agent honesto (planalto.gov.br, corteidh.or.cr, ohchr.org,
 undrr.org, gov.br/mdh, stf.jus.br). Confirmado com um SEGUNDO teste (UA de
 navegador comum via `curl`) que o host responde `200` para esse UA no
 mesmo host+path — é bloqueio anti-bot, comportamento idêntico ao 403/429
-que a regra do dono já cobre. **Nenhuma dessas URLs foi trocada.**
+que a regra do dev já cobre. **Nenhuma dessas URLs foi trocada.**
 
 1 URL (`documents.un.org/doc/undoc/...`) foi respeitosamente pulada por
 `robots.txt` — não checada, por decisão de não desobedecer o `Disallow`
@@ -202,7 +202,7 @@ de verdade".
 
 - `atos_oficiais.link_fonte` fora do recorte de área protegida (~9.135
   linhas com link) e `proposicoes.link_fonte` (~9.649 linhas com link) —
-  são o grosso dos 25.729 links do portal. Se o dono continua achando link
+  são o grosso dos 25.729 links do portal. Se o dev continua achando link
   quebrado, é provável que esteja aqui, fora do que foi pedido
   ("principalmente as normas de proteção") para esta rodada.
 - `congresso.proposicoes.url_fonte`/`url_inteiro_teor` (5.562 preenchidas)

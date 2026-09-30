@@ -37,7 +37,7 @@ Três consequências de qualidade, nesta ordem:
    conclusão que a fonte não autoriza.
 4. **Descrição legível.** A descrição que fica abaixo do título da página
    nunca é menor que `text-sm` (14px). Resumo longo abre no controle
-   "Ver + Texto" em vez de espremer o leitor. Regra do dono, 29/09/2026 —
+   "Ver + Texto" em vez de espremer o leitor. Regra do dev, 29/09/2026 —
    detalhe em [AGENTS.md § 5.10](/AGENTS.md#510-fonte-mínima-da-descrição-da-página).
 
 ## As seis frentes

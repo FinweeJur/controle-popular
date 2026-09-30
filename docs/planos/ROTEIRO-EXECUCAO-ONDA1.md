@@ -10,7 +10,7 @@
 ## Sumário
 
 - [🎯 Objetivo](#objetivo)
-- [⛔ Pré-requisitos (decisões do dono)](#pre-requisitos-decisoes-do-dono)
+- [⛔ Pré-requisitos (decisões do dev)](#pre-requisitos-decisoes-do-dev)
 - [🪜 Passos da Onda 1 (na ordem)](#passos-da-onda-1-na-ordem)
 - [✅ Critérios de aceite da Onda 1](#criterios-de-aceite-da-onda-1)
 - [🚧 Progresso real (atualizado 18:05)](#progresso-real-atualizado-1805)
@@ -21,7 +21,7 @@
 Executar a **Onda 1** do plano Nossos + Painéis-Sanfona: infraestrutura de
 dados + primeira prova visual no ar, sem dependência nova de servidor. 🏗️
 
-## ⛔ Pré-requisitos (decisões do dono)
+## ⛔ Pré-requisitos (decisões do dev)
 
 | # | Decisão | Status |
 |---|---|---|
@@ -42,7 +42,7 @@ Criar em `apps/web/lib/`:
 - `dialogos.ts` — tipos `FrenteId`, `NivelConfianca`, `PonteEntreFrentes` +
   as **primeiras 10 pontes estáticas** (Diamantina × Biribiri incluída).
 
-Fonte da verdade: schema da Parte 1 do plano (já aprovado pelo dono na
+Fonte da verdade: schema da Parte 1 do plano (já aprovado pelo dev na
 revisão? confirmar).
 
 **Verificação:** `npx tsc --noEmit` sem erro novo.
@@ -73,7 +73,7 @@ Plugar a sidebar sanfona em `/diamantina`:
 ### Passo 4 — Rotas e identidade
 
 - Registrar ONSA como casa oficial de meio ambiente e território.
-- `/funcaosocialterra` → redirect estático (se dono aprovar).
+- `/funcaosocialterra` → redirect estático (se dev aprovar).
 
 **Verificação:** rotas antigas continuam respondendo; sitemap atualizado.
 
@@ -95,7 +95,7 @@ A outra sessão (Antigravity) já implementou no main local:
 - ✅ `b897dcd` — subfrentes **Nossos Animais** e **Nossa Gente** com destaque
   na home do ONSA.
 
-⚠️ Commits ainda **não publicados no GitHub** (aguardando decisão do dono:
+⚠️ Commits ainda **não publicados no GitHub** (aguardando decisão do dev:
 quem publica).
 
 Pendências que seguem para mim/agente:

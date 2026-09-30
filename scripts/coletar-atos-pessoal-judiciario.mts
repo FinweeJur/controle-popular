@@ -38,7 +38,7 @@
  * `apps/web/data/judiciario-designacoes.json` (versionado): registros
  * {fonte, data_edicao, ato, tipo, pessoa, cargo, orgao, unidadeId?,
  *  urlFonte, criado_em}. Merge por chave (fonte|data_edicao|ato|pessoa).
- * Registros novos → Telegram do dono (padrão enviar-relatorio).
+ * Registros novos → Telegram do dev (padrão enviar-relatorio).
  * Commit + push por pathspec explícito (senão o autodeploy das 05:50
  * aborta em árvore suja — mesma lição do radar).
  *

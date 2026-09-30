@@ -137,13 +137,13 @@ export interface EntradaCalendario {
   orgao: string;
   /**
    * Data da FONTE para a citação ABNT (ex.: "23 ago. 2020" no post;
-   * "2009" no Calendário do MST) — dado do dono em 29/09/2026.
+   * "2009" no Calendário do MST) — dado do dev em 29/09/2026.
    */
   fonteData: string;
   /** Link direto e conferido; ausente quando a fonte é documento sem URL. */
   url?: string;
   /**
-   * Citação CURTA no formato do dono `(Obra, Autor, Data)` — ex.:
+   * Citação CURTA no formato do dev `(Obra, Autor, Data)` — ex.:
    * "Calendário Histórico das Trabalhadoras/es, MST, 2009" e
    * "Calendário Insurgente, Blog Aos que Virão, 2020" (30/09/2026).
    * O autor aqui é a FONTE/obra, nunca a pessoa que assina. Quando
@@ -152,7 +152,7 @@ export interface EntradaCalendario {
   fonteCurta?: string;
   /**
    * `true` = o fato veio sem data no original e foi posto neste dia para
-   * não deixá-lo vazio (regra do dono 29/09/2026). A tela avisa.
+   * não deixá-lo vazio (regra do dev 29/09/2026). A tela avisa.
    */
   semData?: boolean;
 }

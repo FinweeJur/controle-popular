@@ -17,11 +17,11 @@ import { ordenarPor, type Direcao } from "@/lib/tabela/ordenar";
  * Gerais (IEPHA-MG, migration `0072`). Mesmo padrão de filtro-no-cliente de
  * `BuscaLegislacaoUnificada.tsx` (corpus pequeno, sem `searchParams`).
  *
- * ═══ ORDENAÇÃO E CSV (2026-08-21, regra do dono: "cinco coisas") ═══
+ * ═══ ORDENAÇÃO E CSV (2026-08-21, regra do dev: "cinco coisas") ═══
  *
  * `ordenarPor` é a mesma função pura testada em `lib/tabela/ordenar.test.ts`
  * — nenhuma comparação nova é reimplementada aqui. "Categoria" é a ordenação
- * por tipo pedida explicitamente pelo dono; as outras (município, denominação,
+ * por tipo pedida explicitamente pelo dev; as outras (município, denominação,
  * processo/ano) existem porque uma lista com uma coluna só ordenável seria a
  * mesma limitação que a regra veio corrigir.
  *
@@ -103,7 +103,7 @@ export default function BuscaPatrimonioTombado({ linhas }: Props) {
     [linhas, termoNormalizado, categoria, municipio]
   );
 
-  // Ordenação por coluna (regra do dono, 2026-08-21) — "" mantém a ordem que
+  // Ordenação por coluna (regra do dev, 2026-08-21) — "" mantém a ordem que
   // já vem da fonte (município, decrescente — ver `listarPatrimonioTombado`).
   const ordenados = useMemo(() => {
     if (!ordemChave) return filtrados;

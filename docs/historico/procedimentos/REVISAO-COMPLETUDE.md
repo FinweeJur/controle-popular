@@ -23,9 +23,9 @@
 
 ## Propósito
 
-> Item 6 de `docs/TODO-PROXIMAS-RODADAS.md`. Pedido literal do dono: *"tem > várias páginas com dados incompletos, faltando contatos, telefones, > links"*. Executado em 2026-08-14, com o Postgres LOCAL desta máquina > (nunca a Neon).
+> Item 6 de `docs/TODO-PROXIMAS-RODADAS.md`. Pedido literal do dev: *"tem > várias páginas com dados incompletos, faltando contatos, telefones, > links"*. Executado em 2026-08-14, com o Postgres LOCAL desta máquina > (nunca a Neon).
 
-> Item 6 de `docs/TODO-PROXIMAS-RODADAS.md`. Pedido literal do dono: *"tem
+> Item 6 de `docs/TODO-PROXIMAS-RODADAS.md`. Pedido literal do dev: *"tem
 > várias páginas com dados incompletos, faltando contatos, telefones,
 > links"*. Executado em 2026-08-14, com o Postgres LOCAL desta máquina
 > (nunca a Neon).
@@ -38,7 +38,7 @@ SIGMINE) cuja esparsidade é da fonte, não do portal, e listar cada uma
 inflaria o documento sem ajudar ninguém a agir. O foco foi:
 
 1. Os três buracos que **já se sabia que existiam** (pedido literal do
-   dono): os 13 itens `NAO_VERIFICADO` de `lib/betim/redeProtecao.ts`, a
+   dev): os 13 itens `NAO_VERIFICADO` de `lib/betim/redeProtecao.ts`, a
    comissão da OAB de Contagem, e a amostra pequena da auditoria de
    hiperlinks de 13/08.
 2. Varredura das 8 zonas indicadas (`/betim` e demais cidades, `/congresso`,

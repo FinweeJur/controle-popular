@@ -22,9 +22,9 @@
 
 ## Propósito
 
-> Pedido do dono em 13/08/2026: *"acrescente ao plano de COMO usar essas > imagens no mapa 3d"*, citando que "todas as imagens que o INPE possui são > gratuitas e podem ser acessadas diretamente pelo usuário através do > catálogo disponível em `http://www.dgi.inpe.br/catalogo` ou > `http://www.dg...
+> Pedido do dev em 13/08/2026: *"acrescente ao plano de COMO usar essas > imagens no mapa 3d"*, citando que "todas as imagens que o INPE possui são > gratuitas e podem ser acessadas diretamente pelo usuário através do > catálogo disponível em `http://www.dgi.inpe.br/catalogo` ou > `http://www.dg...
 
-> Pedido do dono em 13/08/2026: *"acrescente ao plano de COMO usar essas
+> Pedido do dev em 13/08/2026: *"acrescente ao plano de COMO usar essas
 > imagens no mapa 3d"*, citando que "todas as imagens que o INPE possui são
 > gratuitas e podem ser acessadas diretamente pelo usuário através do
 > catálogo disponível em `http://www.dgi.inpe.br/catalogo` ou
@@ -46,7 +46,7 @@ uma ação que este assistente pode tomar — está escrito que não confirmei.
 |---|---|---|
 | 1 | As duas URLs do pedido são coisas diferentes? | **Não — é o MESMO catálogo.** `dgi.inpe.br/CDSR/` é um endereço antigo: testado agora, ele redireciona (301→302→301→200) até `dgi.inpe.br/catalogo/`, a mesma aplicação. Uma URL só, dois nomes. |
 | 2 | O catálogo funciona e cobre o quê? | Sim, testado no navegador e por API. **21 coleções** de imagem (Amazônia-1, CBERS-4A, CBERS-4, CBERS-2B, CBERS-2, ResourceSat-1), de 2003 até hoje. Sobre Brumadinho especificamente: **110 cenas medidas** só na coleção mais nova (CBERS-4A/WPM, 2 m/pixel) entre 2020 e 2024. |
-| 3 | "Acessadas diretamente", como o texto do dono diz — é isso mesmo? | **Parcialmente, e a diferença importa.** A MINIATURA (quicklook, o que dá pra ver no mapa) é livre, sem login — testado, baixei 3 de verdade. O PIXEL de verdade (a banda GeoTIFF, o que serviria pro globo) **exige e-mail cadastrado** — testado batendo no endpoint sem cadastro: `403 Invalid e-mail`. O texto do dono está certo sobre a miniatura e a licença; a parte "direto" não é 100% literal para o dado bruto. |
+| 3 | "Acessadas diretamente", como o texto do dev diz — é isso mesmo? | **Parcialmente, e a diferença importa.** A MINIATURA (quicklook, o que dá pra ver no mapa) é livre, sem login — testado, baixei 3 de verdade. O PIXEL de verdade (a banda GeoTIFF, o que serviria pro globo) **exige e-mail cadastrado** — testado batendo no endpoint sem cadastro: `403 Invalid e-mail`. O texto do dev está certo sobre a miniatura e a licença; a parte "direto" não é 100% literal para o dado bruto. |
 | 4 | Licença? | **CC BY-SA, conferida em duas páginas oficiais do INPE** (não presumida): o rodapé do catálogo linka `creativecommons.org/licenses/by-sa/4.0/`, e a página do LGI (`obt.inpe.br`) diz por extenso: *"As imagens disponibilizadas no Catálogo podem ser copiadas e redistribuídas desde que mencionada a fonte (INPE)"*. Pode processar e republicar, citando o INPE. |
 | 5 | Formato e volume — medidos? | Miniatura PNG: **de 129 KB a 3,8 MB por cena** (3 cenas medidas de verdade, números na seção 2). Banda GeoTIFF real: **não medi** — bloqueada pelo cadastro (seção 2.2). Cabe nos dois casos em Static Assets sem chegar perto do teto de 25 MiB; o risco de CONTAGEM de arquivo só apareceria se a proposta fosse "baixar o acervo inteiro", que não é o que este plano recomenda (seção 4). |
 | 6 | Existe serviço de tile (WMTS/XYZ)? | **Não.** O GeoServer do catálogo (`dgi.inpe.br/geoserver`, GetCapabilities chamado de verdade) só publica as GRADES de contorno das cenas (onde cada órbita passa), não o pixel da imagem. Ladrilhar (tile) a imagem seria trabalho NOSSO, não um serviço que o INPE já oferece — e a seção 3.3 explica por que este plano não recomenda fazer isso agora. |
@@ -229,7 +229,7 @@ desta pesquisa.
 
 ### 3.3 Por que a proposta não é "tile" — testado, não suposto
 
-O pedido do dono citava o teto de Static Assets (25 MiB/arquivo, risco de
+O pedido do dev citava o teto de Static Assets (25 MiB/arquivo, risco de
 CONTAGEM em massa) como algo a calcular se a proposta fosse ladrilhar
 (tile) a imagem. **Testei se o INPE oferece tile pronto (WMTS/XYZ) e a
 resposta é não**: o `GetCapabilities` do GeoServer do catálogo
@@ -385,7 +385,7 @@ Curvelo ou para os Vales.
 
 ## 6. Ordem sugerida — maior ganho, menor esforço primeiro
 
-1. **O dono cria a conta gratuita no catálogo do INPE** (botão "Registro",
+1. **O dev cria a conta gratuita no catálogo do INPE** (botão "Registro",
    `dgi.inpe.br/catalogo`) — passo que este assistente não pode fazer
    sozinho (criar conta é ação vedada, mesmo sendo grátis e pública). Sem
    isso, nada do pipeline real (seção 4.2) roda.
@@ -428,7 +428,7 @@ Curvelo ou para os Vales.
   recomendado (que já usa WPM, de acesso comum), mas fica registrado para
   não afirmar que 2 m é o teto absoluto do catálogo.
 - **Não reconferi a fonte das "21 sobreposições" de mineração** citada no
-  pedido do dono para o caso de uso de avanço de lavra (seção 5.3) — fora
+  pedido do dev para o caso de uso de avanço de lavra (seção 5.3) — fora
   do escopo desta pesquisa, que foi sobre o catálogo de imagem, não sobre
   releitura de `docs/FONTES-TERRITORIO-E-MINERACAO.md`.
 - **As 3 imagens baixadas ficaram só no scratchpad da sessão**, não no

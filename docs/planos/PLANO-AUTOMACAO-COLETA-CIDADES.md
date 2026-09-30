@@ -144,7 +144,7 @@ por máquina rotulado com data e modelo (regra editorial do AGENTS.md).
   `rotina-coletas.mts --frente cidades` + `coletar-cidade.mts` por cidade +
   enriquecimento + PicoClaw + guarda. Resultado publicado por pathspec, um
   commit por arquivo de saída (regras 5-6 do AGENTS.md).
-- **Paralelização por região** (preferência do dono, ver
+- **Paralelização por região** (preferência do dev, ver
   `ROTEIRO-EXECUCAO-PENDENCIAS.md` §7): 5 agentes jcode em paralelo — Norte
   (31 cidades), Nordeste (54), Centro-Oeste (24), Sudeste (54), Sul (38) —
   cada um com `cidades-estrategicas.json` da própria região e arquivos de
@@ -271,6 +271,6 @@ Plano derivado da leitura de `PRODUTO.md`, `ESTADO.md`, `OPERACAO.md`,
 `PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md`, `ROTEIRO-EXECUCAO-PENDENCIAS.md`,
 `HANDOFF-M9-M10-PODMAN.md` e do código (`registry.ts`,
 `picoclaw-source-watcher.mts`, `colibri-bridge.mts`, `rotina-coletas.mts`,
-`rotina-local.mts`) em 2026-09-01, a pedido do dono para automatizar a coleta
+`rotina-local.mts`) em 2026-09-01, a pedido do dev para automatizar a coleta
 das capitais e municípios grandes do interior via PicoClaw, jcode e Ollama com
 fallback via DeepSeek.

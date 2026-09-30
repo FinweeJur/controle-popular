@@ -3,7 +3,7 @@ import Link from "@/lib/paraopeba/link";
 
 /**
  * Zona /paraopeba. Molde ENXUTO igual `/congresso` e `/judiciario` — decisão
- * do dono em 22/08/2026 (`docs/ESTADO.md`, decisão 5): esta zona nunca teve
+ * do dev em 22/08/2026 (`docs/ESTADO.md`, decisão 5): esta zona nunca teve
  * `layout.tsx`, então nenhum link para as outras 11 rotas dela aparecia até
  * quem lia rolar cada página até o rodapé. Ver o comentário que já registrava
  * a lacuna em `paraopeba/page.tsx` (revisão de onboarding, 13/08).

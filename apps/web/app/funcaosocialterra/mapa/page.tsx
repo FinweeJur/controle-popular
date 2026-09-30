@@ -16,7 +16,7 @@ import { metadataEditavel } from "@/lib/edicoes";
  * Sem layout.tsx próprio: continua valendo, e agora por mais um motivo. Até
  * 22/08 a razão era só "criar layout de zona para esta única rota levaria
  * cabeçalho ao hub também, fora do que foi pedido". Hoje o hub TEM
- * cabeçalho (`<Cabecalho />`, decisão do dono em `docs/ESTADO.md`, decisão
+ * cabeçalho (`<Cabecalho />`, decisão do dev em `docs/ESTADO.md`, decisão
  * 5) — mas via componente manual, não `layout.tsx`, porque um layout.tsx
  * de zona colaria nas três rotas por igual, inclusive nesta, e aqui ele
  * envolveria `<GloboIframe>` também. `Cabecalho.tsx` explica por que isso é

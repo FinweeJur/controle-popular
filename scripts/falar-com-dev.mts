@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * scripts/enviar-doc-dono.mts — envia um ARQUIVO (documento) só para o chat
- * do dono via Telegram, com caption opcional em HTML.
+ * scripts/falar-com-dev.mts — envia mensagem SÓ para o chat do dev
+ * (TELEGRAM_CHAT_ID), com parse_mode HTML (negrito, itálico, código).
  *
  * Uso:
- *   npx tsx scripts/enviar-doc-dono.mts <caminho-do-arquivo> ["caption"]
+ *   npx tsx scripts/falar-com-dev.mts "texto com <b>negrito</b> e emoji"
  *
  * Lê TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID de scripts/.env.
- * Nunca imprime o token. Fail-closed se .env não existir.
+ * Nunca imprime o token. Falha fechado se .env não existir.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -28,30 +28,35 @@ async function main() {
   carregarEnv();
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-  const CAMINHO = process.argv[2];
-  const CAPTION = process.argv.slice(3).join(" ").trim();
+  const TEXTO =
+    process.argv.slice(2).join(" ").trim() ||
+    // npx corta argumentos na primeira quebra de linha no Windows — o corpo
+    // inteiro deve ir por stdin quando não há argumento (medido 20/09/2026).
+    fs.readFileSync(0, "utf-8").trim();
   if (!TOKEN || !CHAT_ID) {
     console.error("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausentes em scripts/.env");
     process.exit(2);
   }
-  if (!CAMINHO || !fs.existsSync(CAMINHO)) {
-    console.error("Uso: npx tsx scripts/enviar-doc-dono.mts <arquivo> [caption]");
+  if (!TEXTO) {
+    console.error('Uso: npx tsx scripts/falar-com-dev.mts "mensagem"');
     process.exit(2);
   }
-  const form = new FormData();
-  form.append("chat_id", CHAT_ID);
-  form.append("document", new Blob([fs.readFileSync(CAMINHO)]), path.basename(CAMINHO));
-  if (CAPTION) form.append("caption", CAPTION);
-  const r = await fetch(`https://api.telegram.org/bot${TOKEN}/sendDocument`, {
+  const r = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
-    body: form,
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: TEXTO,
+      parse_mode: "HTML",
+      disable_web_page_preview: true,
+    }),
   });
   if (!r.ok) {
     const corpo = await r.text();
     console.error(`HTTP ${r.status}: ${corpo.slice(0, 300)}`);
     process.exit(1);
   }
-  console.log("✅ Documento enviado ao dono.");
+  console.log("✅ Mensagem enviada ao dev.");
 }
 main().catch((e) => {
   console.error(e);

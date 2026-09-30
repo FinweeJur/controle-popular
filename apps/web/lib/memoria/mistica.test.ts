@@ -34,7 +34,7 @@ describe("calendário de lutas", () => {
     }
   });
 
-  it("mantém fato sem ano (regra do dono: fato sem data não se perde)", () => {
+  it("mantém fato sem ano (regra do dev: fato sem data não se perde)", () => {
     const semAno = CALENDARIO_LUTAS.filter((e) => !e.ano);
     expect(semAno.length).toBeGreaterThan(0);
     for (const e of semAno) {
@@ -142,7 +142,7 @@ describe("cobertura", () => {
 });
 
 describe("fonteCurta", () => {
-  it("usa a obra da fonte, nunca a pessoa que assina (formato do dono)", () => {
+  it("usa a obra da fonte, nunca a pessoa que assina (formato do dev)", () => {
     for (const e of CALENDARIO_LUTAS) {
       const curta = fonteCurta(e);
       const obra = /insurgente/i.test(e.orgao)

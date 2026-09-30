@@ -6,7 +6,7 @@
  * Agrega e lista condicionantes ambientais de barragens e documentos oficiais,
  * garantindo resiliência de pré-renderização quando o banco estiver indisponível ou sem tabela.
  *
- * Regras do dono (PLANO-CONDICIONANTES-AMBIENTAIS.md, 23/09):
+ * Regras do dev (PLANO-CONDICIONANTES-AMBIENTAIS.md, 23/09):
  * - status `cumprida`/`nao_cumprida` só com evidência linkada;
  * - agregado no servidor (AGENTS §5.1) — array cru nunca vira prop de cliente acima do teto;
  * - público acadêmico não consulta daqui (`lib/ambiental/publicacoes-barragens`).

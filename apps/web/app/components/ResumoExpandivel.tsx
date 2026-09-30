@@ -6,7 +6,7 @@ import { useId, useState } from "react";
  * Resumo de página que abre no clique — o controle "Ver + Texto".
  *
  * Papel no portal: é a descrição que fica ABAIXO do título (<h1>) de cada
- * página. Regra do dono (AGENTS.md § 5.10): o leitor está sob estresse
+ * página. Regra do dev (AGENTS.md § 5.10): o leitor está sob estresse
  * (denúncia, remoção, barragem), então letra miúda é barreira de leitura.
  * A descrição nunca é menor que `text-sm` (14px) e, quando passa de ~2
  * linhas, nasce recolhida para não empurrar o conteúdo.

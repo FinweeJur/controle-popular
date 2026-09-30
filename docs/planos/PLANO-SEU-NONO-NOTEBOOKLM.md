@@ -68,7 +68,7 @@ ataca prompt/retrieval na API e um modelo aberto local como fallback L4.
 - **Assistente de produção** já existe: `lib/chat-comum.ts`
   (`REGRAS_COMUNS` anti-alucinação, rate limit por IP, degradação honesta sem
   chave) + `route.din.ts` por zona (município, congresso, judiciário).
-- **Decisões do dono (22/08)**: cérebro = Maritaca (Sabiá) com DeepSeek como
+- **Decisões do dev (22/08)**: cérebro = Maritaca (Sabiá) com DeepSeek como
   alternativa; acervo = tudo que o determinístico não cobre; ressalva de IA
   sempre visível com citação.
 - **Infra**: site servido por `next start` no home-pc + Cloudflare Tunnel

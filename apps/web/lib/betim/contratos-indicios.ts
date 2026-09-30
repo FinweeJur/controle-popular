@@ -32,7 +32,7 @@ export function fornecedorCriadoNoAnoDoContrato(contrato: ContratoComAbertura): 
 
 /**
  * Limiar do indício de concentração: mesmo fornecedor com MAIS DE N
- * contratos assinados NO MESMO ANO (decisão do dono, sprint revisao-dados:
+ * contratos assinados NO MESMO ANO (decisão do dev, sprint revisao-dados:
  * N=3 como padrão). Não está em lei — o rótulo na tela é "indício", com a
  * regra visível; mudar aqui muda a tela e o filtro, sem tocar no ETL.
  */

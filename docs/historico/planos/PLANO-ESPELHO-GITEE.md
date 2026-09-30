@@ -1,6 +1,6 @@
 # Plano de espelho dos repositórios no Gitee
 
-> **⛔ SUPERADO em 29/09/2026 — não executar.** O dono trocou o destino do
+> **⛔ SUPERADO em 29/09/2026 — não executar.** O dev trocou o destino do
 > espelho para o **GitLab**: o Gitee nunca teve os secrets `GITEE_USERNAME` /
 > `GITEE_TOKEN` criados e o workflow ficava falhando em todo push desde 28/09.
 > O espelho vivo hoje é `gitlab.com/FinweeJur/controle-popular`, pelo
@@ -30,10 +30,10 @@
 
 ## Origem do plano
 
-Este plano executa a **Decisão 13** do dono (22/08/2026) e a tarefa **#29 da fila
+Este plano executa a **Decisão 13** do dev (22/08/2026) e a tarefa **#29 da fila
 viva** do [ESTADO.md](../../02-estado/ESTADO.md): *"O código vai subir também para o
 Gitee, no futuro — espelho, não mudança de casa."* O "plano em algum lugar" que o
-dono referenciou é exatamente esse registro no ESTADO.md — este arquivo transforma
+dev referenciou é exatamente esse registro no ESTADO.md — este arquivo transforma
 a decisão em passos executáveis.
 
 ## Objetivo
@@ -55,7 +55,7 @@ recebe issues, não roda ETL, não é a fonte do site.
 
 ## Escopo — o que espelhar
 
-Prioridade do dono sugerida (confirmar na hora de executar):
+Prioridade do dev sugerida (confirmar na hora de executar):
 
 | Repo | Licença | Espelhar? | Nota |
 |---|---|---|---|

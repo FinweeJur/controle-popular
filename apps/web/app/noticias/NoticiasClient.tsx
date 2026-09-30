@@ -53,7 +53,7 @@ const ORDENS = [
 
 /** Temas = palavras-chave do acervo, ordenadas por quantas matérias têm.
  * NÃO filtro por "tema popular" (2+ ocorrências): com o acervo pequeno, a
- * tarifa social de energia e água — achado do dono em 08/09 — teria 1 matéria
+ * tarifa social de energia e água — achado do dev em 08/09 — teria 1 matéria
  * e ficaria invisível no filtro. Palavra com 1 matéria é lista de títulos,
  * sim; invisível é pior. */
 function temasDisponiveis(noticias: NoticiaPortal[]): string[] {

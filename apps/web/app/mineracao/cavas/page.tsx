@@ -15,7 +15,7 @@ import TabelaCavas from "./TabelaCavas";
  *
  * ═══ POR QUE ESTA PÁGINA EXISTE ═══
  *
- * A pergunta do dono é "onde a mineração cresceu, e isso é legal?". Ela se
+ * A pergunta do dev é "onde a mineração cresceu, e isso é legal?". Ela se
  * responde em DUAS pontas, e as duas leem o MESMO arquivo — é o que impede o
  * globo e esta página de publicarem números diferentes:
  *

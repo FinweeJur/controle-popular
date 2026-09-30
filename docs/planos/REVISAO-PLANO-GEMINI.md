@@ -43,11 +43,11 @@ outra sessão/Antigravity, commit `4824927`) e agora tem:
 ## 🟡 Pontos de atenção (para a próxima rodada)
 
 1. **ONSA passa a abrigar terras** — decisão forte: mexe na identidade da
-   frente `/funcaosocialterra`. Confirmar com o dono antes de migrar rotas
+   frente `/funcaosocialterra`. Confirmar com o dev antes de migrar rotas
    legadas (mantendo alias, como o plano sugere). ⚠️
-2. **Nomenclatura do bloco:** o dono pediu inicialmente "E o social?";
+2. **Nomenclatura do bloco:** o dev pediu inicialmente "E o social?";
    o retorno Gemini usa "E nosso povo?"/"E nossa gente?". Deixar a versão
-   final com o dono. ✍️
+   final com o dev. ✍️
 3. **Dependência de dados:** bloco social precisa de SIH-SUS, Censo e
    AdaptaBrasil por município — já existem parcialmente (ver ESTADO). 📊
 4. **Poemas:** o `MAPA-POEMAS-SUBFRENTES.md` agora casa os versos com as
@@ -62,11 +62,11 @@ local (commit `a24c081`, 17 arquivos, ~1.933 linhas): `lib/lugares.ts`,
 `lib/dialogos.ts` (com testes), `PainelDialogo`, `CartaoPonteSanfona`,
 `PainelLugar`, `BlocoPovoGente`, rotas Nossos Rios/Serras/Territórios e a
 integração Biribiri em Diamantina. ⚠️ Commit ainda não publicado no GitHub
-(aguardando decisão do dono: quem publica). Não duplicar esta implementação.
+(aguardando decisão do dev: quem publica). Não duplicar esta implementação.
 
 ## ⏭️ Próximos passos sugeridos
 
-1. Dono valida: ONSA abraça terras? Bloco chama "E o social?" ou
+1. Dev valida: ONSA abraça terras? Bloco chama "E o social?" ou
    "E nosso povo?"? 
 2. Aprovar schema → criar `lib/lugares.ts` + `lib/dialogos.ts` (onda 1).
 3. Criar `PainelDialogo` com acessibilidade (onda 1).

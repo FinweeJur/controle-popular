@@ -206,7 +206,7 @@ import requests as _requests
 LOG = "[etl.camaras.sigpub]"
 
 # Valor de `municipios.fontes.diario_oficial_coletor` — não usado ainda por
-# nenhuma guarda de "dono" porque `atos_diario` não tem refresh total (é
+# nenhuma guarda de "dev" porque `atos_diario` não tem refresh total (é
 # upsert por chave natural prefixada, ver migration 0077); existe só como
 # rótulo de máquina consistente com `camara_coletor`/`legislacao_fonte` de
 # outros módulos, para quando um segundo fornecedor de diário for cadastrado

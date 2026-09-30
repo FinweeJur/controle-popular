@@ -24,7 +24,7 @@ rastreado. Desde 17/08/2026 este módulo usa User-Agent honesto
 o mesmo dos coletores novos) e pausa de 1,5 s entre requisições, em vez
 de fingir navegador. A aposentadoria deste ETL em favor de
 `scripts/coletar-execucao-fgv.mts` (que cobre a bacia inteira) continua
-sendo decisão do dono.
+sendo decisão do dev.
 """
 import argparse
 import io

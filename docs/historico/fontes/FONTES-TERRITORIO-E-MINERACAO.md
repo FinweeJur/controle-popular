@@ -607,7 +607,7 @@ COMÉRCIO, `territorios-quilombolas-vales.geojson` índice 5) são no territóri
 1. **ZAS + mancha da FEAM.** Maior ganho, menor esforço — é o geoserver que o
    projeto já consome, e substitui uma feature que teria nascido errada.
 2. **Terras indígenas da FUNAI**, todas as fases, fase na etiqueta.
-3. **Interseção TI × mancha** → o alerta que o dono pediu. Já sabemos que tem
+3. **Interseção TI × mancha** → o alerta que o dev pediu. Já sabemos que tem
    resultado em São Joaquim de Bicas.
 4. **SIGMINE**, separado em duas camadas ("minas em operação" / "interesse
    minerário"), com a de operação como padrão.

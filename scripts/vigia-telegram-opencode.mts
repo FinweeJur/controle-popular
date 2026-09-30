@@ -3,7 +3,7 @@
  *
  * Papel no portal:
  *   Monitora o fluxo de comunicação entre agentes (OpenCode, Hermes, Claude, Gemini/Antigravity)
- *   e o chat oficial do dono (Artur) no Telegram. Detecta comandos direcionados ao Gemini
+ *   e o chat oficial do dev (Artur) no Telegram. Detecta comandos direcionados ao Gemini
  *   (prefixos /gemini, @gemini ou tarefas na fila de agentes) e os registra para execução imediata.
  *
  * Fontes e integrações:
@@ -44,19 +44,19 @@ export interface TarefaDelegada {
 }
 
 /** Carrega variáveis do arquivo scripts/.env sem poluir o console */
-function carregarEnv(): { token: string; dono: string } {
+function carregarEnv(): { token: string; chatId: string } {
   let token = "";
-  let dono = "";
+  let chatId = "";
   if (fs.existsSync(ENV_PATH)) {
     for (const linha of fs.readFileSync(ENV_PATH, "utf-8").split(/\r?\n/)) {
       const m = linha.match(/^\s*([\w_]+)\s*=\s*(.*)\s*$/);
       if (m) {
         if (m[1] === "TELEGRAM_BOT_TOKEN") token = m[2].trim().replace(/^['"]|['"]$/g, "");
-        if (m[1] === "TELEGRAM_CHAT_ID") dono = m[2].trim().replace(/^['"]|['"]$/g, "");
+        if (m[1] === "TELEGRAM_CHAT_ID") chatId = m[2].trim().replace(/^['"]|['"]$/g, "");
       }
     }
   }
-  return { token, dono };
+  return { token, chatId };
 }
 
 /** Lê o último offset processado */
@@ -277,11 +277,11 @@ export async function rodarVigiaUmaVez(): Promise<{
   totalEncontradas: number;
   tarefas: TarefaDelegada[];
 }> {
-  const { token, dono } = carregarEnv();
+  const { token, chatId } = carregarEnv();
 
   const tarefasFila = verificarFilaAgentes();
   const tarefasOpencode = verificarComandosOpencode();
-  const tarefasTelegram = await verificarUpdatesTelegram(token, dono);
+  const tarefasTelegram = await verificarUpdatesTelegram(token, chatId);
 
   const todas = [...tarefasFila, ...tarefasOpencode, ...tarefasTelegram];
   for (const t of todas) {

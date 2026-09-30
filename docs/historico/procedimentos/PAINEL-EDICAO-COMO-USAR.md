@@ -131,7 +131,7 @@ para menos, que é o pior lado.
 ## O que ainda não está pronto
 
 - **Textos de abertura das páginas** (hero, ressalvas de cobertura) — decisão do
-  dono em 15/08 foi incluí-los no escopo. Exige marcar no código quais trechos
+  dev em 15/08 foi incluí-los no escopo. Exige marcar no código quais trechos
   são editáveis, um a um; hoje só título e descrição passam pelo
   `metadataEditavel`.
 - **Só `/paraopeba/entenda` está ligada.** Ligar outra é trocar o `metadata` da

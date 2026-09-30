@@ -267,7 +267,7 @@ export const ZONAS: Zona[] = [
   },
   {
     id: "paraopeba",
-    // Sexta frente, pedida pelo dono a partir de um painel entregue à mão
+    // Sexta frente, pedida pelo dev a partir de um painel entregue à mão
     // (`painel-paraopeba.html`) mais o índice público da Plataforma
     // Brumadinho UFMG — `docs/PLANO-INGESTAO-PARAOPEBA.md` mede as duas
     // fontes. Acrescentar aqui NÃO quebra texto nenhum: `nomeCurto` é campo

@@ -235,7 +235,7 @@ function gravarQuarentena(estado: Record<string, EstadoQuarentena>): void {
   fs.writeFileSync(ARQUIVO_QUARENTENA, JSON.stringify(estado, null, 2));
 }
 
-/** Rodadas em massa consultam; rodada de fonte única (dono, à mão) não —
+/** Rodadas em massa consultam; rodada de fonte única (dev, à mão) não —
  * pedido explícito manda sobre quarentena. */
 function fontePuladaPorQuarentena(slug: string): boolean {
   const estado = lerQuarentena()[slug];
@@ -268,7 +268,7 @@ function registrarQuarentena(slug: string, sucesso: boolean): void {
 }
 
 /**
- * Publica o que a rodada coletou (pedido do dono, 04/09).
+ * Publica o que a rodada coletou (pedido do dev, 04/09).
  *
  * ═══ POR QUE ═══
  * A coleta de madrugada escrevia em apps/web/data e parava ali: o

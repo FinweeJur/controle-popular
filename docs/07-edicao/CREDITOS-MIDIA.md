@@ -48,13 +48,13 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
   congresso 00089/00433/00308/00304/00296, judiciário 00414/00416/00417,
   Paraopeba 00397/00410.
 - **Decisões registradas:**
-  - "Fundo de página" pedido pelo dono virou cartão emoldurado: foto como
+  - "Fundo de página" pedido pelo dev virou cartão emoldurado: foto como
     fundo de texto furaria o contraste dos três temas; em cartão, nenhum
     número fica por cima dela.
   - **00296 voltou para a grade em 17/08**: a página do produto não publica
-    descrição, mas o dono descreveu a cena ("mulher com notebook, fone de
+    descrição, mas o dev descreveu a cena ("mulher com notebook, fone de
     ouvido e prato de comida na mesa") — alt honesto é requisito, e a
-    descrição do dono preenche. Entrou na faixa da frente Congresso (ao lado
+    descrição do dev preenche. Entrou na faixa da frente Congresso (ao lado
     do "home office").
   - As faixas dizem em voz alta que são ilustração e que os dados da página
     não dependem delas.
@@ -70,13 +70,13 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
   OTF instalado (558 KB) com wawoff2 — na verdade TTF (magic `00 01 00 00`),
   carregado via `next/font/local` em `app/fonts-icones.ts`.
 - **Conteúdo:** 236 glifos nos caracteres A-Z/a-z + PUA U+F001/F002, sem nome
-  descritivo. Ícones pedidos pelo dono: tucano, cacto, arara, café em grãos,
+  descritivo. Ícones pedidos pelo dev: tucano, cacto, arara, café em grãos,
   maracá, árvore, mapa do Brasil com bandeira, havaianas, mapa da América
   Latina, cruz, capoeirista.
 
 ### Icones do Brasil — Marcos Ferreira Maranzana (2009)
 
-- **Licença: NÃO VERIFICADA — decisão do dono pendente antes de usar em
+- **Licença: NÃO VERIFICADA — decisão do dev pendente antes de usar em
   produção.** fonttoolbox marca "Unknown" (não casou com arquivo de licença;
   único metadado é o gerador Fontographer 4.7) e fonts2u marca "Personal use"
   (veda uso comercial/público). O arquivo está no repositório e no plano,
@@ -84,12 +84,12 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
 - **Arquivo:** `apps/web/app/fonts/IconesDoBrasil.woff2` (48 KB), convertido
   do TTF instalado (170 KB, `ICONB_.TTF`) com wawoff2.
 - **Conteúdo:** 56 glifos nos caracteres A-Z/a-z, sem nome descritivo. Ícones
-  pedidos pelo dono: tartaruga, papagaio, banana, capoeira, violão, palmeira,
+  pedidos pelo dev: tartaruga, papagaio, banana, capoeira, violão, palmeira,
   onça, pandeiro, santa, mico, pão de açúcar, indígena, saci.
 
 ### Mapa letra→ícone (22/24 preenchidos via Character Map, 16/08/2026)
 
-> Decisão do dono em 17/08/2026: cruz e mapa da América Latina ficam de fora —
+> Decisão do dev em 17/08/2026: cruz e mapa da América Latina ficam de fora —
 > usar só os ícones já mapeados. 22 ícones em uso.
 
 | Fonte | Ícone | Letra |
@@ -103,8 +103,8 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
 | Brasil Icons | mapa do Brasil com bandeira | h |
 | Brasil Icons | havaianas | j |
 | Brasil Icons | capoeirista | H |
-| Brasil Icons | ~~cruz~~ | _saiu — decisão do dono em 17/08: usar só os mapeados_ |
-| Brasil Icons | ~~mapa da América Latina~~ | _saiu — decisão do dono em 17/08: usar só os mapeados_ |
+| Brasil Icons | ~~cruz~~ | _saiu — decisão do dev em 17/08: usar só os mapeados_ |
+| Brasil Icons | ~~mapa da América Latina~~ | _saiu — decisão do dev em 17/08: usar só os mapeados_ |
 | Icones do Brasil | tartaruga | n |
 | Icones do Brasil | papagaio | a |
 | Icones do Brasil | banana | b |

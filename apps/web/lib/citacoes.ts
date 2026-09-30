@@ -5,7 +5,7 @@
  *
  * Fontes de autorização:
  * - PLANO-COPY-VOZ.md (tabela de epígrafes, com autor, obra e ano)
- * - Aprovação direta do dono do projeto (2026-09-03): lote Evaristo
+ * - Aprovação direta do dev do projeto (2026-09-03): lote Evaristo
  *   (Olhos d'água, Roda Viva, Poemas da recordação) e lote Carolina
  *   (Quarto de Despejo / diário e "Não digam que fui rebotalho").
  *

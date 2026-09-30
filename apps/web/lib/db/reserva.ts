@@ -11,7 +11,7 @@
  * banco principal, veio vazio ou deu erro → roda a MESMA consulta no
  * próximo banco da cadeia.
  *
- * ═══ OS PLANOS (decisão do dono, 30/09/2026) ═══
+ * ═══ OS PLANOS (decisão do dev, 30/09/2026) ═══
  *
  * - **A — principal:** `DATABASE_URL` (Postgres do Guara).
  * - **B — Neon:** `DATABASE_URL_NEON` (HTTP da Neon), o reserva nominal.

@@ -19,9 +19,9 @@
 
 ## Propósito
 
-Duas fontes, pedidas juntas pelo dono, medidas separadamente porque não têm nada em comum tecnicamente: uma é um arquivo HTML estático entregue à mão (`painel-paraopeba.html`, 380 mil caracteres), a outra é um índice Solr vivo da UFMG já mapeado em `docs/PLANO-INTEGRACAO-BRUMADINHO.md`. Este docu...
+Duas fontes, pedidas juntas pelo dev, medidas separadamente porque não têm nada em comum tecnicamente: uma é um arquivo HTML estático entregue à mão (`painel-paraopeba.html`, 380 mil caracteres), a outra é um índice Solr vivo da UFMG já mapeado em `docs/PLANO-INTEGRACAO-BRUMADINHO.md`. Este docu...
 
-Duas fontes, pedidas juntas pelo dono, medidas separadamente porque não têm
+Duas fontes, pedidas juntas pelo dev, medidas separadamente porque não têm
 nada em comum tecnicamente: uma é um arquivo HTML estático entregue à mão
 (`painel-paraopeba.html`, 380 mil caracteres), a outra é um índice Solr vivo
 da UFMG já mapeado em `docs/PLANO-INTEGRACAO-BRUMADINHO.md`. Este documento
@@ -44,7 +44,7 @@ Lido antes de escrever: `docs/PLANO-INTEGRACAO-BRUMADINHO.md`,
 | 2 | Quantas entradas são novas frente a `redeProtecao.ts`? | **Medido: 16 das 18 organizações de `INST_DATA` não existem em `redeProtecao.ts` de forma alguma.** As outras 2 (MPMG, DPMG) já têm entrada — genérica, não específica do caso Brumadinho. Das 69 entradas de `PORTALS_DATA`, **60 são imprensa** (categoria que `redeProtecao.ts` nem tem) e as 4 que sobram (MAB, AEDAS, NACAB, Guaicuy) duplicam `INST_DATA`. |
 | 3 | O clipping de 149 notícias entra como está? | **Não.** Entra como acervo datado (com corte visível) ou não entra — nunca como página "atual". Justificativa na seção 1.3. |
 | 4 | Os números-resumo (R$ 21 bi, auxílio emergencial) têm fonte primária no portal? | **Não hoje.** O programa que esses números descrevem (Novo Auxílio Emergencial / PNAB, dez/2025 em diante) **não tem nenhum pipeline no portal** — `lib/betim/paraopeba.ts` cobre um programa diferente e já encerrado (PTR/Acordo 2021, migration 0022). Não publicar sem re-apurar na FGV/TJMG diretamente. |
-| 5 | Licença/autoria do Painel? | **Não declarada no arquivo — checado, não presumido.** Sem meta `author`, sem rodapé de crédito, sem aviso de copyright/licença em lugar nenhum das 2.900+ linhas. Cada notícia individual cita sua fonte (`source`/`portal`), mas o painel em si não diz quem o construiu. Pergunta em aberto para o dono, não decidida aqui. |
+| 5 | Licença/autoria do Painel? | **Não declarada no arquivo — checado, não presumido.** Sem meta `author`, sem rodapé de crédito, sem aviso de copyright/licença em lugar nenhum das 2.900+ linhas. Cada notícia individual cita sua fonte (`source`/`portal`), mas o painel em si não diz quem o construiu. Pergunta em aberto para o dev, não decidida aqui. |
 | 6 | O índice da UFMG tem campo de local? | **Sim, um: `places`.** Medido ao vivo hoje: 1.293 dos 7.107 documentos (18,2%) têm o campo preenchido; só 471 documentos (6,6% do total) trazem um valor que bate, por nome normalizado, com um dos 853 municípios de MG. O resto é nome de barragem, comunidade, rio, bacia ou região — não é campo de município puro. |
 | 7 | Dá para virar camada de mapa? | **Sim, como camada fraca e assim rotulada — não como geocodificação de verdade.** Sem lat/lon (confirmado, de novo, hoje: nenhum campo de coordenada em `fl=*`). O valor é "quantos documentos citam este município", não "onde o processo aconteceu". |
 
@@ -52,12 +52,12 @@ Lido antes de escrever: `docs/PLANO-INTEGRACAO-BRUMADINHO.md`,
 
 ## 1. Fonte 1 — O Painel Paraopeba
 
-### 1.1 Confirmação da estrutura (o dono já tinha mapeado certo)
+### 1.1 Confirmação da estrutura (o dev já tinha mapeado certo)
 
 Reabri o arquivo (`painel-paraopeba.html`, 391.941 bytes) e contei cada
 array programaticamente, não de olho:
 
-| Array | Contagem medida | Bate com o que o dono descreveu? |
+| Array | Contagem medida | Bate com o que o dev descreveu? |
 |---|---:|---|
 | `NEWS_DATA` | **149** itens | Sim |
 | `PORTALS_DATA` | **69** itens | Sim |
@@ -66,7 +66,7 @@ array programaticamente, não de olho:
 | `PAYMENTS` | **9** registros mensais | Sim |
 | `DATA_PANEL` | 8 pares número/legenda (não é lista) | Sim |
 
-Confirmado também o achado do dono sobre coordenada: não existe `lat`/`lng`
+Confirmado também o achado do dev sobre coordenada: não existe `lat`/`lng`
 em lugar nenhum do arquivo — vasculhei o texto inteiro atrás de padrão de
 coordenada e o único "lat" que aparece é dentro de "relator"/"relatando".
 **Não há camada de mapa possível a partir deste arquivo.**
@@ -234,10 +234,10 @@ declaração sobre quem construiu o painel em si. O `<title>` é "Painel
 Paraopeba — Cobertura Midiática".
 
 **Não decidido aqui, porque não posso decidir**: se este arquivo foi
-construído pelo dono, por uma das ATIs (o texto interno soa como ferramenta
+construído pelo dev, por uma das ATIs (o texto interno soa como ferramenta
 de assessoria de imprensa de uma ATI — ver 1.2), ou baixado de terceiro.
 Antes de republicar qualquer trecho — sobretudo o clipping (1.3) e a lista
-de imprensa (1.2, que decidimos não ingerir de qualquer forma) — o dono
+de imprensa (1.2, que decidimos não ingerir de qualquer forma) — o dev
 precisa confirmar a origem. Os itens individuais (nome de órgão, telefone,
 URL) são fato, não obra protegida — isso pode entrar independente da
 resposta. O que depende da resposta é publicar o PAINEL como está (design,
@@ -306,7 +306,7 @@ real.
 
 ### 2.3 Proposta honesta: camada fraca, com taxa de cobertura publicada
 
-Isto responde diretamente a ambas as perguntas do dono:
+Isto responde diretamente a ambas as perguntas do dev:
 
 1. **Sim, dá para virar camada** — join por nome normalizado entre
    `places` e `ref_municipios_mg`/`municipios-mg.geojson`, contando
@@ -320,7 +320,7 @@ Isto responde diretamente a ambas as perguntas do dono:
    sobre um trecho que apenas MENCIONA Brumadinho — o campo não distingue.
    **Rótulo obrigatório na camada: "documento que CITA este município",
    nunca "documento SOBRE este município" nem "evento neste município".**
-3. Para os 5.814 documentos sem `places` (81,8%), a alternativa que o dono
+3. Para os 5.814 documentos sem `places` (81,8%), a alternativa que o dev
    cogitou — inferir município a partir de `summary_pt` por regex/NLP — é
    tecnicamente possível, mas é **inferência nova, não extração de campo
    existente**, e precisa da mesma régua que o projeto já aplica em outro
@@ -396,7 +396,7 @@ processo.
 3. **Link de saída para o Painel da Reparação do Guaicuy**, em vez de
    ingerir o clipping de 149 notícias — custo quase zero (é um link), maior
    honestidade que replicar conteúdo que vai desatualizar no dia seguinte.
-4. **Decisão do dono sobre autoria do Painel** (seção 1.7) antes de
+4. **Decisão do dev sobre autoria do Painel** (seção 1.7) antes de
    qualquer publicação que cite o Painel como fonte de texto (resumos de
    notícia, curadoria de portais) — os fatos isolados (nome de órgão,
    telefone) do item 1 já podem seguir sem esperar essa resposta.
@@ -422,7 +422,7 @@ processo.
   `docs/PLANO-INTEGRACAO-BRUMADINHO.md` (seção 5) já deixou em aberto para
   a zona de busca.
 - Se a segunda etapa da geocodificação (inferência por texto, seção 2.3)
-  vale o esforço — depende de quanto peso o dono quer dar a cobertura
+  vale o esforço — depende de quanto peso o dev quer dar a cobertura
   completa vs. 6,6% honesto e pronto.
 - Se o clipping de 149 notícias entra mesmo como arquivo histórico, ou fica
   só o link para o Guaicuy — depende da resposta de autoria (seção 1.7).
@@ -433,7 +433,7 @@ processo.
 
 - **Autoria/licença do Painel não identificada** (seção 1.7) — vasculhado
   o arquivo inteiro, nenhuma declaração encontrada. Pergunta em aberto ao
-  dono, não resolvida por suposição.
+  dev, não resolvida por suposição.
 - **Não confirmei se os 9 valores de `PAYMENTS` (Novo Auxílio Emergencial,
   dez/2025–ago/2026) batem com os comunicados reais da FGV** — só medi que
   não existe pipeline no portal para eles hoje. Conferir contra

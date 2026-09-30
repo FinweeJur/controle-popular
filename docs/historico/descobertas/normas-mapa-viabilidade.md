@@ -19,16 +19,16 @@
 
 ## Propósito
 
-> Pedido original do dono do projeto: leis/decretos com endereço virarem uma > camada no globo 3D (`/funcaosocialterra/mapa`) — clicar no local mostra a > norma; clicar na norma mostra "ver no mapa". Ele confirmou "avance", com a > condição de medir antes de construir. Este documento é a medição....
+> Pedido original do dev do projeto: leis/decretos com endereço virarem uma > camada no globo 3D (`/funcaosocialterra/mapa`) — clicar no local mostra a > norma; clicar na norma mostra "ver no mapa". Ele confirmou "avance", com a > condição de medir antes de construir. Este documento é a medição....
 
-> Pedido original do dono do projeto: leis/decretos com endereço virarem uma
+> Pedido original do dev do projeto: leis/decretos com endereço virarem uma
 > camada no globo 3D (`/funcaosocialterra/mapa`) — clicar no local mostra a
 > norma; clicar na norma mostra "ver no mapa". Ele confirmou "avance", com a
 > condição de medir antes de construir. Este documento é a medição.
 
 > **Correção de 2026-08-11, depois da primeira versão deste documento.** A
 > primeira versão concluía "não construir", usando `<10-15%` de cobertura como
-> corte de parada. O dono do projeto corrigiu esse raciocínio: as outras
+> corte de parada. O dev do projeto corrigiu esse raciocínio: as outras
 > camadas do globo TAMBÉM são parciais por natureza (`spu-imoveis-uniao` é
 > 553 pontos de um cadastro que não cobre todo imóvel do Brasil;
 > `pesquisa-noticias` é oportunista por design) — cobertura parcial não é

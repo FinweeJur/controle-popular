@@ -31,7 +31,7 @@ O Cloudflare Tunnel entraria para **não depender do Tailscale** em nenhuma dess
 três frentes: o mesmo túnel criptografado de saída (sem porta aberta, sem
 firewall) publicaria o gatilho HTTP e o painel de edição sob o domínio que a
 zona `controlepopular.com.br` já tem na Cloudflare — acessível de qualquer
-máquina do dono, com autenticação por e-mail na borda.
+máquina do dev, com autenticação por e-mail na borda.
 
 ## Por que contingência, não fila
 
@@ -64,8 +64,8 @@ Nenhum hostname vai ao ar **antes** de existir política de **Cloudflare Access*
 
 | Hostname | Política Access | Defesa adicional |
 |---|---|---|
-| `gatilho.*` | E-mail do dono (OTP) | Bearer `GATILHO_TOKEN` já exigido pelo próprio endpoint |
-| `painel.*` | E-mail do dono (OTP) | `PAINEL_TOKEN` + painel só existe em `next dev` (fail-closed) |
+| `gatilho.*` | E-mail do dev (OTP) | Bearer `GATILHO_TOKEN` já exigido pelo próprio endpoint |
+| `painel.*` | E-mail do dev (OTP) | `PAINEL_TOKEN` + painel só existe em `next dev` (fail-closed) |
 
 Regra do projeto que continua valendo: **credenciais nunca vão ao repo** — o
 token do túnel fica no serviço do Windows; os segredos existentes ficam nos
@@ -81,7 +81,7 @@ token do túnel fica no serviço do Windows; os segredos existentes ficam nos
 5. `config.yml` com dois ingress (3029 e 3000) + regra final 404.
 6. Instalar como serviço: `cloudflared service install`.
 7. **Antes do primeiro acesso público:** criar as duas políticas no Zero Trust
-   (Access → Applications → Self-hosted) restritas ao e-mail do dono.
+   (Access → Applications → Self-hosted) restritas ao e-mail do dev.
 8. Teste de aceite (abaixo).
 
 ## Custos
@@ -121,7 +121,7 @@ Do lado de fora do tailnet (ex.: 4G do celular):
 | Login | cert.pem JÁ existia (máquina já autorizada) — mas na conta da zona errada (ver desvios) |
 | Túnel criado | `controle-popular` (`e0d8ef85-e1c2-4958-b503-d7cc71556876`) |
 | config.yml | `C:\Users\Home\.cloudflared\config.yml`, ingress validado |
-| Access apps | gatilho + painel, e-mail do dono, OTP — **criadas pelo dono antes de rotear DNS** (gate respeitado) |
+| Access apps | gatilho + painel, e-mail do dev, OTP — **criadas pelo dev antes de rotear DNS** (gate respeitado) |
 | CNAMEs | criados na zona correta após re-login (desvio 1) |
 | Serviço Windows | Running/Automatic — exigiu `--config` explícito no binPath (desvio 2) |
 | Conexões edge | 2× ativas (`2xcnf01, 2xgig09`) |
@@ -133,7 +133,7 @@ Fluxo completo `/sincronizar` autenticado fica para a próxima janela de deploy
 
 ## Fase 2 — domínio principal no ar via túnel (26/08/2026) ✅
 
-Após o Worker Free bater no teto de 3 MiB gzip (erro 10027) mesmo com ~2 MB de dado externalizado, o dono decidiu migrar a origem do tráfego público para o túnel. O Worker continua deployado como fallback técnico, mas sem custom domains ativas.
+Após o Worker Free bater no teto de 3 MiB gzip (erro 10027) mesmo com ~2 MB de dado externalizado, o dev decidiu migrar a origem do tráfego público para o túnel. O Worker continua deployado como fallback técnico, mas sem custom domains ativas.
 
 | Passo | Resultado |
 |---|---|

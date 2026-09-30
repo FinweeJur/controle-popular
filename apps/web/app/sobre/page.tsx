@@ -506,7 +506,7 @@ export default async function SobrePage() {
             não leitura direta de fonte oficial — por isso é a única que publica a taxa de erro
             dentro do próprio cartão de apresentação. &ldquo;Vazio cadastral&rdquo; significa
             área que nenhum imóvel rural declarou no Cadastro Ambiental Rural; o CAR é
-            autodeclaratório, então ausência de declaração não é ausência de dono, e muito
+            autodeclaratório, então ausência de declaração não é ausência de titular, e muito
             menos prova de que a terra é pública.
           </p>
           <TaxaDeErroTerras />

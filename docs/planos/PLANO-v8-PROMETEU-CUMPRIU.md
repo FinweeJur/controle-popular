@@ -98,7 +98,7 @@ Levantamento de 02/09/2026 (web, URLs verificadas):
 
 **MG é o estado mais maduro em dados abertos** (CKAN com despesa diária + TCE-MG com dados abertos + SISOP) — mais um motivo para o piloto P0 ser MG.
 
-**Pendente de inventário:** os datasets Brasil.IO já baixados (o dono registra que existem no home-pc; nesta máquina não foram localizados — F0 inclui mapeá-los).
+**Pendente de inventário:** os datasets Brasil.IO já baixados (o dev registra que existem no home-pc; nesta máquina não foram localizados — F0 inclui mapeá-los).
 
 **Reuso imediato do que o portal já domina:** clipping próprio (`noticias-*.json`), diários oficiais municipais (`diario-atos-municipios.json`), e o molde documental de `/paraopeba/auditoria` (AECOM: documento → veredito ancorado em fonte — a mesma engenharia, trocando laudo por plano de governo).
 
@@ -203,7 +203,7 @@ Rota proposta: `/mandato/[ente]` (ex.: `/mandato/mg`, `/mandato/uniao`, `/mandat
 
 ## 8. Rollout
 
-Ordem decidida pelo dono (02/09/2026) — estados primeiro, descendo:
+Ordem decidida pelo dev (02/09/2026) — estados primeiro, descendo:
 
 | Fase | Entes | Observação |
 |---|---|---|
@@ -238,5 +238,5 @@ Mandatos passados entram como arquivo histórico (o plano de 2022×2026 de MG po
 3. **Link rot de governo** — Wayback em toda evidência (o portal já registrou na retrospectiva o risco de zero snapshots próprios; aqui vira rotina).
 4. **ToS do Instagram** — nenhum scraping; só link citado/arquivado.
 5. **Assimetria de publicidade** — governos comunicam diferente; `sem_sinal` mede silêncio público, não inação. A redação da página diz isso explicitamente.
-6. **Carga de verificação** — time de 2 (dono + IA): priorizar P0/P1 com profundidade antes de ampliar; cada ente novo só entra quando os anteriores têm data de verificação recente.
+6. **Carga de verificação** — time de 2 (dev + IA): priorizar P0/P1 com profundidade antes de ampliar; cada ente novo só entra quando os anteriores têm data de verificação recente.
 7. **Neutralidade partidária** — mesma régua, mesmo schema, mesmos status para todo ente; a página nunca compara gestores, cada mandato é medido contra o próprio plano.

@@ -123,7 +123,7 @@ def _telefone_principal(bruto: str, unidade: str) -> str:
     Centro de Controle de Zoonoses tem quatro. A tela mostra UM por linha, e
     a escolha não é indiferente: o primeiro da lista do CCZ é um celular, e
     publicar celular como telefone de um serviço público é pior que publicar
-    o tronco, porque celular troca de dono. Daí a preferência pelo primeiro
+    o tronco, porque celular troca de titular. Daí a preferência pelo primeiro
     FIXO, com o primeiro número qualquer como recurso.
     """
     numeros = [n.strip() for n in (bruto or "").split(",") if n.strip()]

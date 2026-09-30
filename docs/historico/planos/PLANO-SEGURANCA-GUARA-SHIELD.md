@@ -163,9 +163,9 @@ Adicionar métrica do Guara Shield no relatório matinal (`relatorio-matinal.mts
 
 | Fase | Ação | Responsável | Prazo | Critério de Aceite |
 |---|---|---|---|---|
-| **Fase 1** | Limpeza do `-b` nas 9 chaves | Dono / CLI | Imediato (Dia 1) | 9 achados `secret_exposure` fechados |
+| **Fase 1** | Limpeza do `-b` nas 9 chaves | Dev / CLI | Imediato (Dia 1) | 9 achados `secret_exposure` fechados |
 | **Fase 2** | Patch no Dockerfile | Agente | Imediato (Dia 1) | Trivy zerado para vulnerabilidades críticas |
-| **Fase 3** | Deploy da nova imagem | Dono / Guara | Próximo ciclo de deploy | Alerta `runtime_detection` resolvido |
+| **Fase 3** | Deploy da nova imagem | Dev / Guara | Próximo ciclo de deploy | Alerta `runtime_detection` resolvido |
 | **Fase 4** | Ajuste HSTS e CSP | Agente | Dia 2 | Cabeçalhos validados com pontuação A+ no SecurityHeaders |
 | **Fase 5** | Bot de monitoramento | Agente | Dia 3 | Relatório diário no Telegram com postura ativa |
 

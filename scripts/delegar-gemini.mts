@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * scripts/delegar-gemini.mts — envia uma mensagem de TRABALHO para a sessão
- * Gemini/Antigravity, no chat do dono, com o prefixo "/gemini" para rotear.
+ * Gemini/Antigravity, no chat do dev, com o prefixo "/gemini" para rotear.
  *
- * O dono definiu (02/09/2026): mensagem começando com "/gemini" = só o
+ * O dev definiu (02/09/2026): mensagem começando com "/gemini" = só o
  * Gemini/Antigravity considera; "/jcode" = só o jcode (deepseek). Este script
- * usa o MESMO bot para postar no chat do dono com o prefixo /gemini, para
+ * usa o MESMO bot para postar no chat do dev com o prefixo /gemini, para
  * que a sessão Gemini que escuta o canal receba a tarefa delegada.
  *
  * Uso:
@@ -53,7 +53,7 @@ async function main() {
     console.error(`HTTP ${r.status}: ${corpoErro.slice(0, 300)}`);
     process.exit(1);
   }
-  console.log("✅ Tarefa delegada ao Gemini no chat do dono.");
+  console.log("✅ Tarefa delegada ao Gemini no chat do dev.");
 }
 main().catch((e) => {
   console.error(e);

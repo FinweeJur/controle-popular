@@ -162,7 +162,7 @@ traz localidade, origem e ano. Dos 188 itens dos dois sitemaps, **162 têm a
 tarja "Paraopeba"**; os 26 restantes são de Antônio Pereira ou não têm tarja —
 e item sem tarja fica de fora, porque não dá para afirmar que é desta bacia.
 
-**O Manual socioambiental que o dono apontou está no acervo**: o PDF
+**O Manual socioambiental que o dev apontou está no acervo**: o PDF
 `wp-content/uploads/2024/12/Manual-socioambiental-1.pdf` é o anexo do item
 `/biblioteca/publicacoes/manual-de-acesso-a-informacao-socioambiental/`
 (16/12/2024), que entrou pela coleta normal — junto com o folheto de
@@ -257,7 +257,7 @@ o que já existe").
 
 **6.2. A lacuna é de VOZ, e é do radar.** As três fontes atuais do radar são
 imprensa: MAB, Agência Brasil e Google Notícias. Falta a voz de quem é **parte
-no processo** — e ela chega primeiro. O item da ADAI que o dono apontou
+no processo** — e ela chega primeiro. O item da ADAI que o dev apontou
 (04/08/2026, decisão do juiz sobre o depósito do Novo Auxílio Emergencial de
 setembro) é precisamente o `ato_de_autoridade` que o radar existe para pegar, e
 que ele hoje só recebe pela imprensa, com atraso, porque os RSS do TJMG e do

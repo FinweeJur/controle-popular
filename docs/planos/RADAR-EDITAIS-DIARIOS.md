@@ -25,7 +25,7 @@ Este documento responde uma pergunta: **como o portal passa a acompanhar editais
 interesse social publicados em diários oficiais, sem intervenção humana diária.**
 A primeira rodada real do radar (10/09/2026) achou 18 candidatos na edição do dia,
 entre eles o Termo Aditivo 02/2026 do edital CONDEL-PPDDH/MG — exatamente a classe
-de ato que o dono quer capturar (participação da sociedade civil, conselhos,
+de ato que o dev quer capturar (participação da sociedade civil, conselhos,
 prazos de inscrição).
 
 ## O que já existia (reuso, nada reinventado)
@@ -104,16 +104,16 @@ texto original):
    `pendente`, com fonte, data, URL, título sugerido, trecho com contexto,
    score, termos). **Nunca escreve em `noticias-portal.json`.**
 2. `scripts/publicar-radar-editais.mts` (MANUAL — a publicação é decisão do
-   dono): roda as duas guardas de dado pessoal (aborta se qualquer uma sair
+   dev): roda as duas guardas de dado pessoal (aborta se qualquer uma sair
    com ≠ 0), converte cada pendente em `NoticiaPortal` — categoria
    **Explicador**, frente **estado**, subfrente *Participação & Editais
    Públicos*, `declaracaoIa` "Texto gerado automaticamente pelo radar de
    editais a partir do Diário Oficial, revisado pela equipe" — grava com
    read-modify-write no formato atual do JSON (indent 1), move o pendente para
-   `processados/` com status `publicado`, avisa o dono no Telegram e **não
+   `processados/` com status `publicado`, avisa o dev no Telegram e **não
    commita**.
 3. O commit/deploy segue a regra 7 do AGENTS.md (cada um publica o próprio
-   trabalho; a rotina do dono decide).
+   trabalho; a rotina do dev decide).
 
 ## Guardas de dado pessoal
 
@@ -138,7 +138,7 @@ texto original):
   manhã (05:30); a coleta mensal das 04:00 só age no dia 01. O radar faz UMA
   edição por rodada com pausa de 1,5 s — carga desprezível.
 - **O publicador NÃO é agendado** — publicação no blog continua sendo decisão
-  do dono. Agendar o publicador é o próximo passo quando o dono confiar na
+  do dev. Agendar o publicador é o próximo passo quando o dev confiar na
   calibração.
 
 ## Limitações conhecidas e calibração
@@ -158,11 +158,11 @@ texto original):
 
 ## Decisões registradas
 
-- **Detecção determinística sem LLM na coleta** — pedido do dono; gancho
+- **Detecção determinística sem LLM na coleta** — pedido do dev; gancho
   `enriquecerComLlm` fica desativado e documentado.
 - **Radar nunca escreve em `noticias-portal.json`** — só o publicador escreve,
   e só depois das duas guardas de dado pessoal.
-- **Publicação manual** — o publicador não entra na agenda até o dono decidir.
+- **Publicação manual** — o publicador não entra na agenda até o dev decidir.
 - **Máscara de CPF na gravação, guarda no publish** — duas redes independentes
   (regra 2 do AGENTS.md).
 - **robots.txt inexistente no DOMG-e** — seguir com UA honesto, pausa e escopo

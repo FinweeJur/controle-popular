@@ -220,4 +220,4 @@ Topicos do hub:
 
 ## Origem
 
-Surgiu do pedido do dono em 2026-08-24: estruturar o portal como wiki, com indices, sumarios, links gerais nos titulos e paginas relacionadas ao final, criando continuidade entre paginas.
+Surgiu do pedido do dev em 2026-08-24: estruturar o portal como wiki, com indices, sumarios, links gerais nos titulos e paginas relacionadas ao final, criando continuidade entre paginas.

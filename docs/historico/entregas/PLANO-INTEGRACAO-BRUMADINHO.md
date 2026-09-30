@@ -20,9 +20,9 @@
 
 ## Propósito
 
-> Parte da premissa corrigida pelo dono em 13/08/2026: **processo coletivo é > público por natureza**, publicidade dos atos processuais é a regra, o > sigilo é exceção, e o acervo do processo 5010709-36.2019.8.13.0024 (e os > outros 15 processos ligados a Brumadinho) já está publicado na internet...
+> Parte da premissa corrigida pelo dev em 13/08/2026: **processo coletivo é > público por natureza**, publicidade dos atos processuais é a regra, o > sigilo é exceção, e o acervo do processo 5010709-36.2019.8.13.0024 (e os > outros 15 processos ligados a Brumadinho) já está publicado na internet...
 
-> Parte da premissa corrigida pelo dono em 13/08/2026: **processo coletivo é
+> Parte da premissa corrigida pelo dev em 13/08/2026: **processo coletivo é
 > público por natureza**, publicidade dos atos processuais é a regra, o
 > sigilo é exceção, e o acervo do processo 5010709-36.2019.8.13.0024 (e os
 > outros 15 processos ligados a Brumadinho) já está publicado na internet
@@ -322,7 +322,7 @@ catálogo de metadado, que é uma categoria de risco bem menor.
 
 ### 2.4 Onde o risco de dado pessoal realmente mora — medido, não suposto
 
-O ponto do dono está correto: a maioria do acervo é ato processual público
+O ponto do dev está correto: a maioria do acervo é ato processual público
 (petição, decisão, certidão, intimação, despacho, ofício — 4.732 docs no
 tema "trâmites processuais"). **Mas o resumo (`summary_pt`) às vezes já
 contém dado sensível mesmo sem PDF**, e isso É medido, não hipótese:
@@ -499,7 +499,7 @@ público do Solr entrar no repositório ou em qualquer bucket:
    Sempre com link de volta para `plataforma.projetobrumadinho.ufmg.br`, o
    mesmo padrão de citação já usado para a FGV e para o site institucional.
 4. **Lacunas da seção 1.4** (SIGBM, InfoHidro, comitê de bacia, Defesa
-   Civil): não confirmadas nesta rodada — próximo levantamento, se o dono
+   Civil): não confirmadas nesta rodada — próximo levantamento, se o dev
    quiser seguir, com o mesmo padrão de rigor.
 
 ---

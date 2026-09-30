@@ -587,7 +587,7 @@ def curva_precisao_recall(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO,
     Devolve a curva INTEIRA (91 pontos, passo 0,01) e o limiar
     escolhido. Duas portas em sequência (regra de 28/09):
 
-      1. PRECISÃO >= alvo (70%) — a trava do dono do plano, sem ela
+      1. PRECISÃO >= alvo (70%) — a trava do dev do plano, sem ela
          nada entra;
       2. dentro da trava, MAIOR ACURÁCIA BALANCEADA — média do recall
          de positivos e de negativos —, desempate por maior recall.
@@ -599,7 +599,7 @@ def curva_precisao_recall(y_verdadeiro, y_probabilidade, alvo=ALVO_PRECISAO,
     0,5 nesse classificador trivial e 0,68 num limiar que separa de
     verdade (medição: 8 de 21 negativos acertados em 0,5), então ela
     empurra a escolha para onde existe sinal de separação. Escolher F1
-    solto ignoraria a trava do dono; escolher recall solto repete o
+    solto ignoraria a trava do dev; escolher recall solto repete o
     bug do trivial.
 
     Se NENHUM limiar cumpre a trava, devolve limiar_escolhido=None:

@@ -1,7 +1,7 @@
 r"""etl.apis.patrimonio_tombado_iepha — patrimônio cultural tombado por
 Minas Gerais (`patrimonio_tombado_iepha`, migration `0072`).
 
-Pedido do dono (2026-08-13, Tarefa 2b da unificação de legislação): o portal
+Pedido do dev (2026-08-13, Tarefa 2b da unificação de legislação): o portal
 só cobria proteção AMBIENTAL — tombamento de patrimônio cultural é o mesmo
 tipo de restrição territorial (uma serra tombada e uma serra com lavra
 autorizada em cima é o mesmo conflito que unidade de conservação vs.

@@ -18,7 +18,7 @@
 - [6. O que NÃO está neste plano](#6-o-que-não-está-neste-plano)
 - [Origem](#origem)
 
-> Escrito em 2026-08-17, a pedido do dono ("plano de como geocodificar isso tudo
+> Escrito em 2026-08-17, a pedido do dev ("plano de como geocodificar isso tudo
 > depois" — `docs/planos/TODO-PROXIMAS-RODADAS.md` §12). Este é o PLANO, não a
 > tela: a execução começa quando o monitoramento da Vale (§11) tiver dado
 > coletado. Depende da infra de mapa que a Função Social da Terra e as camadas

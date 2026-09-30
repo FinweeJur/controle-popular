@@ -6,7 +6,7 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 /**
  * `/ambiental/direito-critico` — página-PONTE. O painel próprio (30 normas
  * nacionais/internacionais + 15 precedentes, migration `0067`) foi
- * unificado com `/ambiental/legislacao` em 13/08/2026 (decisão do dono: "é
+ * unificado com `/ambiental/legislacao` em 13/08/2026 (decisão do dev: "é
  * melhor unificar os painéis... filtrável por temas"). Esta URL continua
  * existindo — link já compartilhado, indexado — só não serve mais o
  * conteúdo próprio, redireciona pro painel único.

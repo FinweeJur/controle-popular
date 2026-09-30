@@ -36,7 +36,7 @@ A proposta amadureceu em sete versões de tom, e as sete ficam registradas porqu
 5. **v5 — epígrafes da literatura** — Itamar Vieira Junior e Carolina Maria de Jesus, uma frase por capítulo, com autor, obra e ano.
 6. **v6 — Galeano, Guimarães Rosa e Conceição Evaristo** — a utopia de Birri/Galeano fecha o manifesto; a coragem de *Grande Sertão: Veredas* abre o capítulo do Judiciário; a escrevivência de Evaristo assina o capítulo do Congresso.
 7. **v7 — poemas do acervo do projeto e novo bloco de Guimarães Rosa** — três poemas do acervo (o catálogo de exemplos do povo, a "Herança" de Belo Horizonte e a saudação ao Vale do Jequitinhonha) e um lote de frases de *Grande Sertão: Veredas*, distribuídos pelas frentes com as mesmas réguas de sensibilidade.
-   - **v7.1 — ajustes do dono na prévia (esta)** — Cap. 1 ganha a pergunta direta ("Perguntar pra onde o dinheiro vai"); Cap. 4 troca "fumação" por "destruição"; Itinga troca "birra e teimosia" pelo verso da "boa utopia".
+   - **v7.1 — ajustes do dev na prévia (esta)** — Cap. 1 ganha a pergunta direta ("Perguntar pra onde o dinheiro vai"); Cap. 4 troca "fumação" por "destruição"; Itinga troca "birra e teimosia" pelo verso da "boa utopia".
 
 ## Princípio de voz
 
@@ -97,7 +97,7 @@ Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno a
 
 ## Poemas do acervo do projeto (v7)
 
-Em 02/09/2026 o dono entregou **três poemas do acervo do projeto** e um lote novo de frases de *Grande Sertão: Veredas* para entrar na copy, divididos entre as frentes. Os poemas são voz do próprio portal (autoria do acervo), o que muda a régua: não precisam de atribuição externa, mas precisam de **seleção** — porque são textos de ato, e o portal não é ato. A regra de corte é a mesma de sempre:
+Em 02/09/2026 o dev entregou **três poemas do acervo do projeto** e um lote novo de frases de *Grande Sertão: Veredas* para entrar na copy, divididos entre as frentes. Os poemas são voz do próprio portal (autoria do acervo), o que muda a régua: não precisam de atribuição externa, mas precisam de **seleção** — porque são textos de ato, e o portal não é ato. A regra de corte é a mesma de sempre:
 
 - **Entram:** os catálogos de exemplos, a memória com nome e data, a alegria, a cultura, o "igual pra igual".
 - **Ficam fora:** os versos de inimigos e explosão ("a futura queda de nossos inimigos", "antes que tudo acabe numa grande explosão", "antes que os capitalistas avancem") — registro de confronto partidário, fora do tom de um portal que qualquer vereador, de qualquer partido, precisa poder usar. O poema inteiro vive no acervo; a vitrine cita os versos que cabem num portal de dados.
@@ -141,7 +141,7 @@ Versos selecionados e destino:
 |---|---|
 | "…esse povo que luta e sonha no Vale do Jequitinhonha." | **Cap. 6 · Terras** e **bloco de Araçuaí** — a saudação vira a linha de cultura do Vale |
 | "Birra e teimosia para conquistar soberania." | **Cap. 6 · Terras** — verso-cunho acima do número protagonista |
-| "Construindo um novo dia, uma boa utopia." | **Bloco de Itinga** — v7.1, a pedido do dono: Itinga não cita "birra"; ganha o verso da construção e da utopia |
+| "Construindo um novo dia, uma boa utopia." | **Bloco de Itinga** — v7.1, a pedido do dev: Itinga não cita "birra"; ganha o verso da construção e da utopia |
 
 **Guimarães Rosa — lote novo de *Grande Sertão: Veredas* (1956)**
 
@@ -223,7 +223,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Kicker:** `CAPÍTULO 01 · PREFEITURA E CÂMARA`
 **Princípio (Tabular, acima do display):** `A CONTA É DE QUEM PAGA · VILA RICA, 1720`
-**Display (v7.1, a pedido do dono):**
+**Display (v7.1, a pedido do dev):**
 
 > **PERGUNTAR PRA ONDE O DINHEIRO VAI.**
 
@@ -282,7 +282,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Kicker:** `CAPÍTULO 04 · MEIO AMBIENTE`
 **Princípio:** `A TERRA É DE QUEM NELA VIVE · CONTESTADO, 1912–16`
-**Display (v7.1, a pedido do dono):**
+**Display (v7.1, a pedido do dev):**
 
 > **A LICENÇA SAI. A DESTRUIÇÃO FICA.**
 

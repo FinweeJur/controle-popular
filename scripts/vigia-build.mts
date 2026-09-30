@@ -29,7 +29,7 @@
  *
  * Não decide publicar sozinho: sem pedido, não roda. Não silencia falha — se a
  * rotina sair com código diferente de zero, grava isso no `ultimo-build.json`
- * para o painel mostrar, em vez de deixar o dono achando que publicou. E não
+ * para o painel mostrar, em vez de deixar o dev achando que publicou. E não
  * dá `--forcar-deploy`: as travas de piso de página e de queda relativa que a
  * rotina já tem existem justamente para o caso de o banco vir vazio.
  */

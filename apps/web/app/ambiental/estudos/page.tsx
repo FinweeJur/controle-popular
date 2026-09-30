@@ -23,7 +23,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/estudos", {
  * Molde estrutural: `ambiental/licenciamento/page.tsx` (cabeçalho, blocos de
  * contagem, rodapé de proveniência). A tabela filtrável (`BuscaEstudos.tsx`)
  * lê o índice fatiado de `dados/[arquivo]/route.ts` — mesmo mecanismo de
- * `congresso/proposicoes`, dono do `baseDados` abaixo.
+ * `congresso/proposicoes`, responsável pelo `baseDados` abaixo.
  */
 // Sem `searchParams`, mas com `force-static` mesmo assim: sem ele
 // `output: export` trata a rota como dinâmica e aborta com "missing

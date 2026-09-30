@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
  *
  * NÃO usar em: transição de página (`loading.tsx`, `WavePhysicsLoader`) e
  * carregamento de gráficos/tabelas grandes — lá o loader continua sendo o
- * de física. Pedido do dono (19/09/2026), portado de amicro.vercel.app.
+ * de física. Pedido do dev (19/09/2026), portado de amicro.vercel.app.
  *
  * `size` escalona a geometria do original (48 px: ponto 8 px, origem no
  * centro). Cores via `--dotsring-dot-color`: quem chama define o valor.

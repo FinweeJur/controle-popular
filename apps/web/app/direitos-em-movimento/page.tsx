@@ -14,11 +14,11 @@ import type { VerbeteVitrine } from "./VitrineLutas";
 /**
  * `/direitos-em-movimento` — a PORTA, não uma seção nova para construir.
  *
- * Pedido do dono (13/08): "quais leis existem pra proteção dos
+ * Pedido do dev (13/08): "quais leis existem pra proteção dos
  * ecossistemas, da fauna, flora e grupos sociais e onde é possível buscar
  * ajuda / parcerias. Passo a passo e links para que ação cidadã seja
  * possível por todos." Plano completo, com os números medidos e a decisão
- * de arquitetura já tomada pelo dono: `docs/PLANO-DIREITOS-EM-MOVIMENTO.md`.
+ * de arquitetura já tomada pelo dev: `docs/PLANO-DIREITOS-EM-MOVIMENTO.md`.
  * Não reabra a decisão (A) de lá — a seção é GERAL, e só pergunta a cidade
  * quando chega em "onde buscar ajuda": quem sofreu violação não sabe em
  * que aba do site está, sabe o que aconteceu com ele.

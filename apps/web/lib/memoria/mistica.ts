@@ -3,12 +3,12 @@
  * `CALENDARIO_LUTAS` e monta a citação ABNT da fonte.
  *
  * Papel no portal: alimentar o bloco "Mística do Dia" da home
- * (`app/components/MisticaDoDia.tsx`), pedido do dono em 29/09/2026 —
+ * (`app/components/MisticaDoDia.tsx`), pedido do dev em 29/09/2026 —
  * a home sempre referencia, quando houver, uma luta popular ou fato de
  * resistência daquele dia.
  *
  * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`
- * (decisões do dono: fontes não estatais com citação e link; Wikipédia só
+ * (decisões do dev: fontes não estatais com citação e link; Wikipédia só
  * como terciária) e AGENTS.md §7 (regra editorial).
  *
  * Decisões técnicas:
@@ -19,9 +19,9 @@
  * - `referenciaAbnt` monta a citação ABNT completa em runtime em vez de
  *   guardar o texto em cada entrada — o calendário tem centenas de entradas
  *   e repetir a ficha inflaria o módulo (que a home lê no cliente).
- * - `fonteCurta` é a citação CURTA que a tela usa (regra do dono,
+ * - `fonteCurta` é a citação CURTA que a tela usa (regra do dev,
  *   30/09/2026): `(Obra, Autor, Data)`, com autor sendo a FONTE, nunca a
- *   pessoa. Na tela, a ABNT longa repetiria título e datas — o que o dono
+ *   pessoa. Na tela, a ABNT longa repetiria título e datas — o que o dev
  *   mandou unificar ("sem mostrar a data duas vezes").
  * - `mostrarAnoSelo` evita o ano em dobro: quando o título já carrega o
  *   ano do fato, o selo `ano:` some.
@@ -104,12 +104,12 @@ export function diasCobertos(): number {
 }
 
 /**
- * Citação CURTA da fonte, no formato do dono (30/09/2026):
+ * Citação CURTA da fonte, no formato do dev (30/09/2026):
  * `(Obra, Autor, Data)` — ex.: "Calendário Histórico das Trabalhadoras/es,
  * MST, 2009" e "Calendário Insurgente, Blog Aos que Virão, 2020".
  *
  * O "autor" aqui é a OBRA/fonte, nunca a pessoa que assina (decisão do
- * dono). A data é o ano da obra — 2009 no MST, 2020 no blog. Usa o campo
+ * dev). A data é o ano da obra — 2009 no MST, 2020 no blog. Usa o campo
  * gravado pelo gerador; se faltar (entrada antiga), infere pela `orgao` e
  * pela pista de ano em `fonteData`, sem nunca inventar obra nova.
  */
@@ -125,7 +125,7 @@ export function fonteCurta(entrada: EntradaCalendario): string {
 /**
  * O selo de ano deve aparecer na tela? Não quando o próprio título já
  * traz o ano, e não quando não há ano. Assim a data não aparece duas
- * vezes (pedido do dono, 30/09/2026).
+ * vezes (pedido do dev, 30/09/2026).
  */
 export function mostrarAnoSelo(entrada: EntradaCalendario): boolean {
   if (!entrada.ano) return false;

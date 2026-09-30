@@ -8,18 +8,18 @@ import { enviarEmail } from "@/lib/email/enviar-smtp";
  * `/api/pedido-dados` — Tier 2 do plano de pedidos
  * (PLANO-NAVEGACAO-E-NOTIFICACOES.md).
  *
- * Etapa 1 (já no ar): valida o pedido e NOTIFICA o dono no Telegram.
+ * Etapa 1 (já no ar): valida o pedido e NOTIFICA o dev no Telegram.
  * Etapa 2 (01/09): quando o pedido é `tipo=csv` com `dataset` na allowlist
  * (`lib/email/datasets.ts`), monta o CSV na hora e ENVIA por e-mail ao
  * solicitante via SMTP (Umbler, STARTTLS — `lib/email/enviar-smtp.ts`).
- * Resumo/PDF seguem manuais (o dono responde anexando).
+ * Resumo/PDF seguem manuais (o dev responde anexando).
  *
  * Segurança:
  * - rate limit por IP; honeypot `website`; validação de e-mail;
  * - allowlist ESTRITA de datasets (nada de caminho arbitrário);
  * - o e-mail do solicitante não é armazenado (só viaja no SMTP);
  * - sem SMTP_PASS configurado, responde ok e cai no fluxo manual (Tier 0/1),
- *   ainda notificando o dono no Telegram.
+ *   ainda notificando o dev no Telegram.
  */
 export const runtime = "nodejs";
 

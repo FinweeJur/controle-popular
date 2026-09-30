@@ -9,7 +9,7 @@ Rodar:
     python scripts/coletar-biblioteca-ati-mariana.py --seco
     python scripts/coletar-biblioteca-ati-mariana.py
 
-## As ATIs de Mariana existem (correcao do dono, 01/09/2026)
+## As ATIs de Mariana existem (correcao do dev, 01/09/2026)
 
 ATIs existem nos DOIS desastres. O acervo ATI ja coletado
 (`coletar-biblioteca-ati.py`) cobre o programa Paraopeba (Brumadinho). As ATIs

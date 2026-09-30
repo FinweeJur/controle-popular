@@ -12,20 +12,20 @@
 - [O que mudou](#o-que-mudou)
 - [Estatísticas medidas](#estatísticas-medidas)
 - [Repetições e os quatro elementos](#repetições-e-os-quatro-elementos)
-- [Fontes curtas (formato do dono)](#fontes-curtas-formato-do-dono)
+- [Fontes curtas (formato do dev)](#fontes-curtas-formato-do-dev)
 - [Revisão dia a dia](#revisão-dia-a-dia)
-- [Decisão pendente do dono](#decisão-pendente-do-dono)
+- [Decisão pendente do dev](#decisão-pendente-do-dev)
 
 ## O que mudou
 
-Regra do dono (30/09/2026): o resumo vem do **texto-fonte**, no
+Regra do dev (30/09/2026): o resumo vem do **texto-fonte**, no
 próprio estilo de escrita da fonte — nunca reescrito por máquina.
 
 - **Antes:** o blog nascia sem resumo (só título), e o MST cortava
   a frase no primeiro ponto — resumo de frase solta, incompleta.
 - **Depois:** 1-2 frases recortadas do parágrafo da fonte, cap 400.
   O blog usa o corpo coletado post a post; o MST usa o parágrafo
-  inteiro do documento do dono.
+  inteiro do documento do dev.
 - **Autor corrigido:** 6 posts são de Carla Benitez Martins e
   constavam como SEFERIAN.
 - **As 15 lacunas são honestas:**
@@ -46,7 +46,7 @@ próprio estilo de escrita da fonte — nunca reescrito por máquina.
 
 ## Repetições e os quatro elementos
 
-Dois pedidos do dono em 30/09/2026: apagar as frases que se
+Dois pedidos do dev em 30/09/2026: apagar as frases que se
 repetiam entre verbetes e exigir os 4 elementos em todo resumo
 (quem, o quê, quando, onde).
 
@@ -79,14 +79,14 @@ Com seleção, por elemento (só o resumo): quem 483/518, o quê 460, quando 355
   o mesmo parágrafo aparece em dois verbetes — a repetição é da
   fonte, não do gerador.
 
-## Fontes curtas (formato do dono)
+## Fontes curtas (formato do dev)
 
-Padrão aprovado pelo dono (30/09/2026): `(Obra, Autor, Data)` —
+Padrão aprovado pelo dev (30/09/2026): `(Obra, Autor, Data)` —
 
 - **Calendário Histórico das Trabalhadoras/es, MST, 2009** — 375 verbetes
 - **Calendário Insurgente, Blog Aos que Virão, 2020** — 158 verbetes
 
-Autor é a **FONTE**, nunca a pessoa (o dono: “Blog Aos que Virão
+Autor é a **FONTE**, nunca a pessoa (o dev: “Blog Aos que Virão
 melhor que Seferian ou Benitez”). Data é o ano da citação: 2020
 no blog, 2009 no MST. A citação ABNT completa continua em
 `referenciaAbnt()` (`mistica.ts`); a curta é `fonteCurta()`.
@@ -259,7 +259,7 @@ Verbetes alterados, ordenados por dia. `—` = não existia antes
 | 04-01 | **Rda perdeu a partida final, no fat├¡dico 1┬║ de Abril de 1964.**<br>(fato de 1964) | **E infelizmente a esquerda perdeu a partida final, no fatídico 1º de Abril de 1964.**<br>(fato de 1964)<br>É preciso combater a imagem de que os trabalhadores e as forças progressistas perderam sem lutar. O golpe foi exatamente um freio ao extraordinário avanço das lutas populares, hegemonizadas pelos comunistas. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 04-01 | **Mas, em 1┬║ de abril de 1964, o medo das reformas que Jo├úo Goulart vinha anunciando levou os militares a efetuar o golpe.**<br>(fato de 1964) | **Mas, em 1º de abril de 1964, o medo das reformas que João Goulart vinha anunciando levou os militares a efetuar o golpe.**<br>(fato de 1964)<br>Brizola tentou organizar a resistência armada no Rio Grande do Sul, mas o presidente Jango optou por seguir de Porto Alegre para o exílio. Ferroviários do Rio de Janeiro e mineiros de Santa Catarina organizaram greves de protesto, mas todas as manifestações foram debeladas, com os presídios ficando dia a dia mais lotados. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 04-01 | **Apesar de o golpe ter sido deflagrado em 1┬║ de abril, como essa data ├® conhecida popularmente como dia da mentira, os golpistas optaram por registrar o golpe no dia 31 de mar├ºo.**<br>(fato de 1984) | **Apesar de o golpe ter sido deflagrado em 1º de abril, como essa data é conhecida popularmente como dia da mentira, os golpistas optaram por registrar o golpe no dia 31 de março.**<br>(fato de 1984)<br>São Paulo: Expressão Popular, 2009. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
-| 04-02 | **Dro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo dono do s├¡tio onde morava.**<br>(fato de 1962) | **Constantemente ameaçado de morte, João Pedro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo dono do sítio onde morava.**<br>(fato de 1962)<br>Milhares de camponeses acompanharam seu enterro. Sua companheira Elizabeth Teixeira tornou-se a principal líder das Ligas na região até que o golpe civil-militar em 1964 obrigou-a a viver escondida com outro nome no interior do Rio Grande do Norte. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
+| 04-02 | **Dro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo proprietário do s├¡tio onde morava.**<br>(fato de 1962) | **Constantemente ameaçado de morte, João Pedro Teixeira foi morto em uma emboscada em 2 de abril de 1962, encomendada pelo proprietário do sítio onde morava.**<br>(fato de 1962)<br>Milhares de camponeses acompanharam seu enterro. Sua companheira Elizabeth Teixeira tornou-se a principal líder das Ligas na região até que o golpe civil-militar em 1964 obrigou-a a viver escondida com outro nome no interior do Rio Grande do Norte. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 04-02 | **Assassinato de Paul McAuley**<br>(fato de 2019) | **Assassinato de Paul McAuley**<br>(fato de 2019)<br>Incinerado, foi encontrado por estudantes da comunidade “La Salle”, no Peru, há exato ano atrás. Missionário católico, o britânico marcou sua estada latina pela luta em prol de comunidades tradicionais, pela defesa dos direitos humanos e do ambiente. | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-03 | **Levante armado do Cerro Tute**<br>(fato de 1959) | **Levante armado do Cerro Tute**<br>(fato de 1959)<br>No dia 3 de abril de 1959, inspirados pela bem sucedida experiência revolucionária cubana, um grupo de 20 jovens panamenhos membros do Movimiento de Acción Revolucionaria (MAR) se colocou em luta contra as classes dominantes do Panamá e a submissão imperialista de sua nação. | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-04 | **Revolta da Madeira, dia de luta contra a ditadura salazarista e contra o aumento dos pre├ºos dos bens de vida dxs trabalhadorxs da ilha**<br>(fato de 1931) | **Revolta da Madeira, dia de luta contra a ditadura salazarista e contra o aumento dos preços dos bens de vida dxs trabalhadorxs da ilha**<br>(fato de 1931)<br>Iniciada como uma insubmissão militar – que não se alastra para demais territórios coloniais, se isolando em Açores e Madeira –, a Revolta na ilha portuguesa assume um caráter particular que não só articula inquietações ante o governo ditatorial português, reclamando o reestabelecimento da normalidade constitucional de outrora, como também atinge dimensões massivas por enfrentar a alta de preços | Calendário Insurgente, Blog Aos que Virão, 2020 |
@@ -278,7 +278,7 @@ Verbetes alterados, ordenados por dia. `—` = não existia antes
 | 04-12 | **Massacre de Xangai**<br>(fato de 1927) | **Massacre de Xangai**<br>(fato de 1927)<br>A Massacre de Xangai foi um dos mais emblemáticos incidentes a revelar como as organizações dos trabalhadores e trabalhadoras não devem confiar na ou se aliar à burguesia. | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-13 | **Nasce Gy├Ârgy Luk├ícs**<br>(fato de 1885) | **Nasce György Lukács**<br>(fato de 1885)<br>Um dos mais importantes teóricos marxistas do século XX, Lukács deve ter sua vida e obra saudada, indiferentemente a qual parte dela mais nos fiamos! Viva Lukács, viva a República dos Conselhos de 1919, viva a Revolução Húngara de 1956, viva o nosso futuro comunista! | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-14 | **Assassinato de Zuzu Angel**<br>(fato de 1976) | **Assassinato de Zuzu Angel**<br>(fato de 1976)<br>Sua luta durou até 14 de abril de 1976, data em que, supostamente em um acidente de automóvel, perdeu sua vida. Este acidente, em verdade, fora forjado, como bem se demonstrou anos após o término da ditadura, tanto pela Comissão Especial de Desaparecidos Políticos quanto pela Comissão Nacional da Verdade, que reconheceram a participação do Estado brasileiro em seu assassinato. | Calendário Insurgente, Blog Aos que Virão, 2020 |
-| 04-15 | **Inicia-se o p├®riplo de Sacco e Vanzetti**<br>(fato de 1920) | **Inicia-se o périplo de Sacco e Vanzetti**<br>(fato de 1920)<br>No dia 15 de abril de 1920, há exatamente um século, um assalto a um pequeno estabelecimento comercial levou ao assassinato de duas pessoas no estado de Massachusetts: o dono da sapataria e seu contador. Sem encontrar eventuais autores ou suspeitos, a polícia local acusou Nicola Sacco e Bartolomeo Vanzetti – militantes de intensa atuação sindical – pelos assassinatos. | Calendário Insurgente, Blog Aos que Virão, 2020 |
+| 04-15 | **Inicia-se o p├®riplo de Sacco e Vanzetti**<br>(fato de 1920) | **Inicia-se o périplo de Sacco e Vanzetti**<br>(fato de 1920)<br>No dia 15 de abril de 1920, há exatamente um século, um assalto a um pequeno estabelecimento comercial levou ao assassinato de duas pessoas no estado de Massachusetts: o proprietário da sapataria e seu contador. Sem encontrar eventuais autores ou suspeitos, a polícia local acusou Nicola Sacco e Bartolomeo Vanzetti – militantes de intensa atuação sindical – pelos assassinatos. | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-16 | **L├¬nin chega ├á R├║ssia depois de seu ex├¡lio na Sui├ºa**<br>(fato de 1917) | **Lênin chega à Rússia depois de seu exílio na Suiça**<br>(fato de 1917)<br>Findo seu exílio na Suiça, Lênin chegava com a locomotiva 293 na Estação Finlândia, em Petrogrado, tornando públicas suas Teses de Abril e participando de uma nova etapa do processo revolucionário russo, que logo desembocaria no estabelecimento do poder soviético. | Calendário Insurgente, Blog Aos que Virão, 2020 |
 | 04-16 | **Debilitam sua sa├║de e Mari├ítegui falece em 16 de abril de 1930.**<br>(fato de 1930) | **As complicações causadas pela amputação de sua perna debilitam sua saúde e Mariátegui falece em 16 de abril de 1930.**<br>(fato de 1930)<br>Considerado o fundador de um pensamento marxista latino-americano que não importava fórmulas e esquemas preconcebidos para explicar a realidade, Mariátegui, ao contrário, pensava a América Latina a partir do materialismo-histórico, mas considerando suas especificidades políticas, econômicas e também culturais. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 04-17 | **No dia 17 de abril de 1961, cerca de 1.500 cubanos exilados nos Estados Unidos, treinados e financiados pela CIA, desembarcam na Ba├¡a dos Porcos, em Cuba, com o objetivo de destruir o governo instaura**<br>(fato de 1961) | **No dia 17 de abril de 1961, cerca de 1.500 cubanos exilados nos Estados Unidos, treinados e financiados pela CIA, desembarcam na Baía dos Porcos, em Cuba, com o objetivo de destruir o governo**<br>(fato de 1961)<br>instaurado pela Revolução de 1959, sob o comando de Fidel Castro. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
@@ -571,7 +571,7 @@ Verbetes alterados, ordenados por dia. `—` = não existia antes
 | 11-03 | **Sua experi├¬ncia com educa├º├úo inicia-se em Kriukov e Poltava, onde administra escolas entre 1918 e 1920, logo ap├│s ter conclu├¡do o curso do Instituto Pedag├│gico de Poltava.** | **Dicionário da Escravidão Negra no Brasil: novo.**<br>Quilombos, insurreições, guerrilhas. Sociologia do Negro Brasileiro. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 11-04 | **Em 4 de novembro de 1969, foi preso pelo delegado S├®rgio Fleury, juntamente com outros freis dominicanos.**<br>(fato de 1969) | **Em 4 de novembro de 1969, foi preso pelo delegado Sérgio Fleury, juntamente com outros freis dominicanos.**<br>(fato de 1969)<br>Tito foi torturado no DOPS por cerca de 30 dias em 1969 e, em 1970, novamente sofreu torturas na Operação Bandeirantes. Em 1971, foi deportado para o Chile, onde é ameaçado e foge para a Itália. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 11-04 | **O 4 de novembro de 1969 incorporou-se ├á hist├│ria gra├ºas a um feito policial-militar que culminou no assassinato de Carlos Marighella.**<br>(fato de 1969) | **O 4 de novembro de 1969 incorporou-se à história graças a um feito policial-militar que culminou no assassinato de Carlos Marighella.**<br>(fato de 1969)<br>Ele foi perseguido como a caça mais cobiçada e condenado à morte cívica, à eliminação da memória coletiva. Só em 10 de dezembro de 1979, quando seus restos mortais foram trasladados para Salvador, sua cidade natal, Jorge Amado proclamou o fim da interdição expiatória: | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
-| 11-05 | **Mento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas m├úos do um capataz de Manoel Francisco Xavier, dono das fazendas Freguesia e Maravilha.**<br>(fato de 1838) | **O movimento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas mãos do um capataz de Manoel Francisco Xavier, dono das fazendas Freguesia e Maravilha.**<br>(fato de 1838)<br>O líder da fuga em massa, ocorrida após a tentativa de linchamento do capataz, foi Manoel Congo, um ferreiro de ofício. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
+| 11-05 | **Mento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas m├úos do um capataz de Manoel Francisco Xavier, proprietário das fazendas Freguesia e Maravilha.**<br>(fato de 1838) | **O movimento surgiu com a morte de um escravo, em 5 de novembro de 1838, pelas mãos do um capataz de Manoel Francisco Xavier, proprietário das fazendas Freguesia e Maravilha.**<br>(fato de 1838)<br>O líder da fuga em massa, ocorrida após a tentativa de linchamento do capataz, foi Manoel Congo, um ferreiro de ofício. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 11-06 | **Salvador Allende: a paz pelo socialismo.** | **Em homenagem aos cabanos, foi erguido na entrada da cidade de Belém um monumento projetado por Oscar Niemeyer, o Memorial da Cabanagem.**<br>Por Waldson Silva – Cabano paraense Fonte: NPC – Livro Agenda 2013 A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início do movimento Cabano: A Cabanagem. Belém, capital da Província do Pará, foi o grande centro das lutas decorridas ao longo de cinco anos. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 11-07 | **Desde o dia 7 de novembro, os metal├║rgicos da Companhia Sider├║rgica Nacional (CSN) estavam em greve, na cidade de Volta Redonda (RJ).** | **Desde o dia 7 de novembro, os metalúrgicos da Companhia Siderúrgica Nacional (CSN) estavam em greve, na cidade de Volta Redonda (RJ).**<br>Cerca de 20 mil trabalhadores aderiram à greve, e três mil deles ocuparam a usina. No dia 9, o exército invadiu a CSN, matando três trabalhadores. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 11-07 | **E outubro de 1917, no calend├írio russo (7 de novembro no calend├írio ocidental), pela primeira vez na hist├│ria da humanidade, triunfa uma revolu├º├úo que estabelece um novo sistema pol├¡tico, econ├┤mico e**<br>(fato de 1917) | **Em 25 de outubro de 1917, no calendário russo (7 de novembro no calendário ocidental), pela primeira vez na história da humanidade, triunfa uma revolução que estabelece um novo sistema político,**<br>(fato de 1917)<br>Apesar de ser um poderoso Império, com vastas extensões de terra nos continentes europeu e asiático, controlando povos de diversas etnias sob o domínio do tsar, espécie de imperador, o país ainda mantinha relações econômicas feudais e de privilégios à nobreza, enquanto o capitalismo já se encontrava consolidado na maior parte do mundo. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
@@ -637,7 +637,7 @@ Verbetes alterados, ordenados por dia. `—` = não existia antes
 | 12-30 | **Ainda na universidade, em Recife, Francisco Juli├úo convida v├írios colegas para organizar um escrit├│rio de advocacia a fim de defender os camponeses e trabalhadores rurais da explora├º├úo a que eram subm** | **Desde jovem, chama a atenção pela criatividade de seus repentes, cantados em festas e feiras da região.**<br>Patativa frequentou a escola apenas por alguns meses, quando tinha 12 anos, e por isso seus versos são marcados pela oralidade. Quando elaborava um novo poema, primeiro memorizava um verso para depois escrever outro. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 | 12-31 | **O autor da obra Geografia da fome, Josu├® Apol├┤nio de Castro, nasceu em Recife (PE).** | **Nascido em São Gabriel (RS) numa fazenda de gado, Hermenegildo de Assis Brasil viveu no município até os 13 anos, mudando-se para a capital gaúcha.**<br>Ingressa no exército e é expulso por indisciplina duas vezes: a primeira em São Gabriel, aos 16 anos, suspeito de preparar um levante; e, em 1930, quando trabalhava numa fábrica de cartuchos no Rio de Janeiro. Nesse mesmo ano, filia-se ao Partido Comunista. | Calendário Histórico das Trabalhadoras/es, MST, 2009 |
 
-## Decisão pendente do dono
+## Decisão pendente do dev
 
 Aprovar este doc para trocar `apps/web/lib/memoria/calendario.ts`
 (roda o gerador sem `--para-revisao`) e os testes de

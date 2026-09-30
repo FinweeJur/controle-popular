@@ -14,7 +14,7 @@ import localFont from "next/font/local";
  *   + PUA U+F001/F002.
  * - Icones do Brasil (Marcos Ferreira Maranzana, 2009): licença NÃO
  *   verificada (fonttoolbox "Unknown"; fonts2u marca "Personal use") —
- *   decisão do dono pendente antes de usar em produção (ver
+ *   decisão do dev pendente antes de usar em produção (ver
  *   `docs/CREDITOS-MIDIA.md`).
  */
 export const brasilIcons = localFont({

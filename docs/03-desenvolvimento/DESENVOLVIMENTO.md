@@ -35,7 +35,7 @@ com worktree próprio (checkout anexo ao mesmo repositório, sem clonagem):
 | Quem | Onde trabalha | Quem publica |
 |---|---|---|
 | Sessão de assistente | `.claude/worktrees/<nome>` | ela mesma (rebase + push) |
-| Tarefa do dono | checkout principal | ela mesma |
+| Tarefa do dev | checkout principal | ela mesma |
 | Máquina de build | checkout dela | ela, e é a única que publica o site |
 
 ```bash
@@ -172,7 +172,7 @@ Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, l
 
 ## Acessibilidade tipográfica das descrições
 
-> **Regra do dono (29/09/2026):** a descrição que fica **abaixo do título** da
+> **Regra do dev (29/09/2026):** a descrição que fica **abaixo do título** da
 > página nunca é menor que `text-sm` (14px).
 
 O leitor do portal está sob estresse — denúncia, remoção, barragem. Letra
@@ -188,7 +188,7 @@ chips ou legendas de tabela.
 
 ## Padrão de Código e Comentários Explicativos
 
-> **Regra do dono (25/09/2026):** Código sem comentário é código opaco. O Controle Popular é software cívico público, e cada linha deve ser auditável e compreensível por qualquer cidadão ou desenvolvedor.
+> **Regra do dev (25/09/2026):** Código sem comentário é código opaco. O Controle Popular é software cívico público, e cada linha deve ser auditável e compreensível por qualquer cidadão ou desenvolvedor.
 
 1. **Cabeçalho de Módulo Obrigatório**:
    - Todo arquivo (`.ts`, `.tsx`, `.py`, `.mjs`) deve iniciar com um bloco descritivo explicando:

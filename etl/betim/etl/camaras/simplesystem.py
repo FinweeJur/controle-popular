@@ -519,11 +519,11 @@ def _coletar_atos(host: str, cidade: dict, categorias: list[dict]) -> list[dict]
 
 def _gravar_atos(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> None:
     fontes = cidade.get("fontes") or {}
-    dono = fontes.get("legislacao_fonte")
-    if dono != FONTE_LEGISLACAO:
+    dono_declarado = fontes.get("legislacao_fonte")
+    if dono_declarado != FONTE_LEGISLACAO:
         raise RuntimeError(
-            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono!r}, não {FONTE_LEGISLACAO!r}. "
-            "Recuso escrever em atos_oficiais — o refresh total apagaria o acervo do dono."
+            f"{cidade['nome']}: `fontes.legislacao_fonte` é {dono_declarado!r}, não {FONTE_LEGISLACAO!r}. "
+            "Recuso escrever em atos_oficiais — o refresh total apagaria o acervo de outro coletor."
         )
     if not linhas:
         print(f"{LOG} atos_oficiais: nada coletado — NÃO apago o que já existe.")

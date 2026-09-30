@@ -19,12 +19,12 @@
 
 ## Propósito
 
-Entrega de 15/08/2026. A camada existe, o arquivo está gravado, a proveniência está registrada — **falta só colar as duas entradas em `js/config.js`**, que este documento traz prontas (seção 4). O `config.js` não foi editado de propósito: o dono estava editando o arquivo no momento desta entrega....
+Entrega de 15/08/2026. A camada existe, o arquivo está gravado, a proveniência está registrada — **falta só colar as duas entradas em `js/config.js`**, que este documento traz prontas (seção 4). O `config.js` não foi editado de propósito: o dev estava editando o arquivo no momento desta entrega....
 
 Entrega de 15/08/2026. A camada existe, o arquivo está gravado, a
 proveniência está registrada — **falta só colar as duas entradas em
 `js/config.js`**, que este documento traz prontas (seção 4). O `config.js`
-não foi editado de propósito: o dono estava editando o arquivo no momento
+não foi editado de propósito: o dev estava editando o arquivo no momento
 desta entrega.
 
 | O quê | Onde |
@@ -249,7 +249,7 @@ para quem for mexer na UI:
 
 ## 4. Texto exato para colar em `js/config.js`
 
-⚠️ **`js/config.js` não foi editado por esta entrega** (o dono estava
+⚠️ **`js/config.js` não foi editado por esta entrega** (o dev estava
 editando o arquivo). São duas entradas, nos dois registros, com os textos
 abaixo.
 
@@ -328,7 +328,7 @@ maior de longe (a segunda tem 5) — e um acervo judicial não é território
 nem mineração. **Criar um assunto novo (`'brumadinho'`, "O rompimento da
 B1 e a reparação") foi considerado e NÃO é proposto agora por uma razão
 só: ele nasceria certo com 9 linhas (as 8 da Semad + esta), o que é uma
-reorganização das 8 existentes — decisão do dono sobre camadas que já estão
+reorganização das 8 existentes — decisão do dev sobre camadas que já estão
 publicadas, não efeito colateral de uma camada nova.** Se essa
 reorganização acontecer, esta linha vai junto com a família B1, não com
 `sigmine-*`.
@@ -390,7 +390,7 @@ método, outro recorte", aqui dizendo "mesma ressalva, outra camada":
 | Opção | Valor | Quando escolher |
 |---|---|---|
 | **Proposta** | `0xf8b651` = `oklch(0.82 0.139 75)` | mantém o significado do âmbar e não se confunde com a camada de interesse minerário, que fica na mesma seção |
-| Alternativa | `0xe2a138` = `var(--caution)` | se o dono preferir zero valor de cor novo no arquivo; aceita os dois âmbares na mesma seção |
+| Alternativa | `0xe2a138` = `var(--caution)` | se o dev preferir zero valor de cor novo no arquivo; aceita os dois âmbares na mesma seção |
 
 `oklch(0.82 0.139 75)` = `#f8b651`, medido com o mesmo conversor validado.
 **Não use L .845** (o degrau exato do par `vazio-bacia`/`vazio-curvelo`):

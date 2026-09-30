@@ -47,7 +47,7 @@ export function carregarResumoMapaEstadual(): ResumoMapaEstadual {
   );
   // ⟲ 13/08, fim do dia: era a SOMA de duas fontes (bacia + Vales) e virou
   // leitura de uma só. As três camadas de território quilombola foram
-  // unificadas — o dono perguntou "qual o sentido de dividir?" e a divisão
+  // unificadas — o dev perguntou "qual o sentido de dividir?" e a divisão
   // era por região, critério que o painel do globo já havia abandonado de
   // manhã ao passar a agrupar por assunto. Somar arquivos aqui era o
   // sintoma: número de tela que precisa de aritmética para existir é sinal

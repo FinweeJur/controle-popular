@@ -116,7 +116,7 @@ Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-soci
 
 ### Mapa amplo de fontes (pesquisa 01/09/2026)
 
-Inventário dos repositórios documentais dos dois casos, com o que foi **medido** nesta máquina de dev (muitos exigem sondagem de navegador do dono ou rodada no home-pc — ver ESTADO.md "Rede bloqueada").
+Inventário dos repositórios documentais dos dois casos, com o que foi **medido** nesta máquina de dev (muitos exigem sondagem de navegador do dev ou rodada no home-pc — ver ESTADO.md "Rede bloqueada").
 
 **Mariana (Rio Doce, 2015):**
 
@@ -154,7 +154,7 @@ API pública sem chave; medido: 7.206 projetos UF=MG (7.141 com `valor_aprovado`
 | Mentira | Comportamento medido |
 |---|---|
 | Filtro inexistente devolve o catálogo inteiro | `?parametro_inexistente=1` → 200 com 113.548, igual a sem filtro. O próprio portal do MinC cai: `_links.incentivadores` usa `incentivador_id=<PRONAC>`, filtro não reconhecido → os 113.548 do Brasil com cara de "os deste projeto". Abortar quando total com/sem filtro bater |
-| `sort` é ignorado em silêncio | 5 variações de sort → mesmas linhas na mesma ordem (200 nas 5). **Nunca publique "o maior incentivador é X"** sem varrer a lista e ordenar localmente; um ranking falso já foi passado ao dono assim |
+| `sort` é ignorado em silêncio | 5 variações de sort → mesmas linhas na mesma ordem (200 nas 5). **Nunca publique "o maior incentivador é X"** sem varrer a lista e ordenar localmente; um ranking falso já foi passado ao dev assim |
 | Código IBGE errado devolve esqueleto com `nome_ibge: null` | Mesma família de 200 mentiroso, medida no ComunicaBR: IBGE de 7 dígitos → 200 com esqueleto vazio e `nome_ibge: null`; validar `nome_ibge`, não o status |
 
 Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doacoes` responde 404 em 9/9 — a trilha incentivador→projeto não existe hoje. Publicar `total_doado` de um domiciliado em BH como "dinheiro que entrou em MG" **inventa um número que parece certo** — a coluna sai rotulada "(Brasil)". Dado pessoal: a máscara cobre só `cgccpf`; 215 CPFs válidos vieram por extenso em campos de nome (210 proponentes + 5 incentivadores) — o hook pegou; redigir toda sequência de 11 dígitos em todo campo de texto. Arquivos compactados (esqueleto + dicionários + linhas; 69,1% menor) — ler sempre via `expandir()`, nunca por posição.
@@ -213,7 +213,7 @@ ETLs: `etl/apis/betim_dados_abertos.py`, `etl/apis/betim_geneexus.py`
 
 ## Legislação federal e URN LexML
 
-**MMA (CKAN)**: 8.570 normas federais (1937–2025), CC-BY, 8.345 com `link_pdf` (97,4%) — CNDH 370/370 (100%). O CSV não se lê com split ingênuo (CRLF termina registro; ancorar por vocabulário fechado de `ÁREA MMA`/`STATUS`; 280 registros sujos resolvidos; Resolução Conama: 511 por campo, não 536 do grep). 1.501 revogadas (`situacao`); grafo de revogação não construído. **CNDH**: 248 recomendações (GraphQL no Decidim, WAF exige curl_cffi) + 122 resoluções; CC BY-ND — ementa copiada literal, nunca resumida; `id_fonte` = URL (numeração reinicia por gestão). Um CPF real veio dentro de uma ementa oficial (pego por teste mod-11, limpo na origem; **histórico do git ainda contém o commit `e510f4e` — limpeza é decisão do dono**). **URN LexML**: só Lei/Decreto/Decreto-Lei/MP federais com data+número = 651 de 15.318 (4,2%); 16/17 resolveram (94,1% — ~6% de link morto conhecido); HTTP 200 não prova nada (SPA ecoa a URN; o sinal é `legislationIdentifier`); SRU do LexML atrás de bot-check — não usar; URN derivada a cada render, sem coluna.
+**MMA (CKAN)**: 8.570 normas federais (1937–2025), CC-BY, 8.345 com `link_pdf` (97,4%) — CNDH 370/370 (100%). O CSV não se lê com split ingênuo (CRLF termina registro; ancorar por vocabulário fechado de `ÁREA MMA`/`STATUS`; 280 registros sujos resolvidos; Resolução Conama: 511 por campo, não 536 do grep). 1.501 revogadas (`situacao`); grafo de revogação não construído. **CNDH**: 248 recomendações (GraphQL no Decidim, WAF exige curl_cffi) + 122 resoluções; CC BY-ND — ementa copiada literal, nunca resumida; `id_fonte` = URL (numeração reinicia por gestão). Um CPF real veio dentro de uma ementa oficial (pego por teste mod-11, limpo na origem; **histórico do git ainda contém o commit `e510f4e` — limpeza é decisão do dev**). **URN LexML**: só Lei/Decreto/Decreto-Lei/MP federais com data+número = 651 de 15.318 (4,2%); 16/17 resolveram (94,1% — ~6% de link morto conhecido); HTTP 200 não prova nada (SPA ecoa a URN; o sinal é `legislationIdentifier`); SRU do LexML atrás de bot-check — não usar; URN derivada a cada render, sem coluna.
 
 ## ComunicaBR — coleta de MG
 
@@ -754,7 +754,7 @@ da grade moderna por estes alvos.
 | TAC/Termo de Acordo MPF integral (07/07/2002) | só resumo nos Anexos via CEMIG/cgti |
 | Zucarelli 2006 dissertação UFMG | repositório UFMG; handle não achado ainda |
 
-**Regra (decisão 6 do dono, 23/09):** dissertação/tese/artigo/relatório GESTA
+**Regra (decisão 6 do dev, 23/09):** dissertação/tese/artigo/relatório GESTA
 **não** viram linha de `condicionantes` — vão no rodapé “Para saber mais”
 da página da barragem. Condicionante estruturado só de licença, TAC, CAP, parecer.
 
@@ -774,7 +774,7 @@ Armadas para o piloto: PDFs antigos da LP/LI podem virar scan (Tesseract). TAC d
 
 ### Barragem de Setúbal — Jenipapo de Minas + Chapada do Norte (rio Setúbal → Araçuaí)
 
-⚠️ **Correção ao pressuposto do dono:** o projeto nasceu CEMIG (hidrelétrica, 1989/1990, parada), mas a obra concluída em **2010 é da Ruralminas** (hoje sob COPASA/SEAPA) para **abastecimento e uso múltiplo**, não UHE em operação. Fonte: ALMG, MAB, Agência Minas.
+⚠️ **Correção ao pressuposto do dev:** o projeto nasceu CEMIG (hidrelétrica, 1989/1990, parada), mas a obra concluída em **2010 é da Ruralminas** (hoje sob COPASA/SEAPA) para **abastecimento e uso múltiplo**, não UHE em operação. Fonte: ALMG, MAB, Agência Minas.
 
 | Marco | Medida | Fonte |
 |---|---|---|
@@ -898,9 +898,9 @@ calibração interno, não achado público (barra de publicação do plano).
   `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail
   **HTTP 200** com 3.035.715 bytes.
 - **Papel:** via sem conta para a série histórica do Sentinel-2 enquanto o
-  Copernicus CDSE não abrir (login do dono não passou em 24/09). Ordem de
+  Copernicus CDSE não abrir (login do dev não passou em 24/09). Ordem de
   tentativa registrada no plano: Planetary Computer → AWS Sentinel → conta
-  Copernicus (dono).
+  Copernicus (dev).
 
 ### Sentinel-2 e Amazônia-1 — reservas medidas (25/09)
 
@@ -1033,7 +1033,7 @@ infração) em bases diferentes — duas contagens, duas perguntas.
   infração nem embargos em dado aberto**.
 - `feam.br/autos-de-infração` é portal Liferay com consulta por
   interface (busca e páginas HTML, sem download em massa medido). Coleta
-  seria raspagem de app — decição com o dono antes de qualquer coisa.
+  seria raspagem de app — decição com o dev antes de qualquer coisa.
 
 ### IDE-MG (Semad) — WFS com 1.421 camadas, nenhuma de embargo
 
@@ -1111,7 +1111,7 @@ contagem local do xlsx (openpyxl, linhas não vazias):
 | `pesquisa.in.gov.br` (página antiga de PDF) | **200**, mas só `frameset` de PDF do dia — entrega página, não busca |
 
 Caminho viável: **chave da API da Imprensa Nacional** (cadastro humano,
-gratuito) — decisão do dono. Raspagem de frameset PDF seria pesada e
+gratuito) — decisão do dev. Raspagem de frameset PDF seria pesada e
 frágil; não recomenda-se sem a chave.
 
 ### Autos de infração do Sisema (SEMAD, FEAM e IEF) — Power BI público (item 1, coletado 30/09)
@@ -1205,7 +1205,7 @@ polígonos (mistura da ingestão antiga, pendência Pimentel) e a licença
   devolve 404 (sem declaração) → liberado por padrão. `nome_embargado` e
   `cpf_cnpj_embargado` nunca saem cru (AGENTS § 5.2). FEAM sem dado aberto
   bulk medido em `dados.mg.gov.br` — raspagem de portal Liferay só com
-  decisão do dono.
+  decisão do dev.
 - **2026-09-30:** ICMBio medido por dois métodos que bateram exatos (WFS
   INDE == contagem local do xlsx); INDE declara `Crawl-delay: 30` para
   `User-agent: *` → pausa ≥ 30 s naquele host. ANM não publica ato de

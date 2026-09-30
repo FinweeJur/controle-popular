@@ -192,7 +192,7 @@ function csvEscape(value: unknown): string {
   return /[;"\n]/.test(str) ? `"${str.replace(/"/g, '""')}"` : str;
 }
 
-/** CSV do recorte filtrado — BOM UTF-8 e separador ";" (regra do dono). */
+/** CSV do recorte filtrado — BOM UTF-8 e separador ";" (regra do dev). */
 export function cruzamentosToCsv(rows: LinhaCruzamento[]): string {
   const BOM = "\ufeff";
   const cabecalho = [

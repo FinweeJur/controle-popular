@@ -12,7 +12,7 @@ import { formatNumberBR } from "@/lib/betim/format";
  * Satisfaz duas das cinco coisas ao mesmo tempo — gráfico com alternativa
  * em texto (`BarrasValor` já renderiza rótulo + valor por extenso, nunca só
  * a barra) e ordenação por coluna "inclusive por tipo/classe, não só por
- * data" (regra do dono em `AGENTS.md`).
+ * data" (regra do dev em `AGENTS.md`).
  */
 export interface ItemRanking {
   chave: string;

@@ -64,7 +64,7 @@ rotas estão na mesma faixa** (`sp/educacao` a 21 MiB, `bh/camara/legislacao` a
 
 Some-se a isso o gargalo maior, do mesmo plano: `next build` lê a **Neon**, que
 está em **HTTP 402 até 01/09**. Sem banco não há build; sem build não há deploy;
-e a publicação roda na máquina do dono, não nesta.
+e a publicação roda na máquina do dev, não nesta.
 
 ### A regra de produção que sai daí
 
@@ -103,7 +103,7 @@ O que envelheceu, e por quê:
 **1. A sexta frente não é Direitos em Movimento — é a Ambiental.** As seis
 zonas publicadas em `apps/web/lib/zonas.ts` são: Cidades, Congresso, Judiciário,
 **Ambiental**, Terra e território (`/funcaosocialterra`) e Paraopeba. Direitos
-em Movimento **não é uma frente por decisão explícita do dono**, registrada em
+em Movimento **não é uma frente por decisão explícita do dev**, registrada em
 comentário na home (`apps/web/app/page.tsx`, 13/08):
 
 > As frentes são eixos de poder — lugares onde alguém decide sobre a vida da
@@ -512,7 +512,7 @@ nenhum a tomou.
   depende do portal. A formulação segura, e verdadeira, é a do roteiro:
   **"o portal não pede seu nome e não recebe nada do que você escreve"**.
 - **Não chame de frente, e não chame de canal.** A home estampa "Transversal às
-  seis frentes", por decisão registrada do dono em 13/08. E não é canal de
+  seis frentes", por decisão registrada do dev em 13/08. E não é canal de
   denúncia: **é um gerador de documento**. Chamar de canal faria alguém escrever
   um relato esperando que ele chegasse a alguém.
 - **Não prometa cobertura estadual.** O roteamento só cita órgão catalogado em
@@ -561,7 +561,7 @@ roteiro evita que a próxima rodada gaste tempo redescobrindo o mesmo obstáculo
 | **Frente Ambiental (roteiro próprio)** | É a frente com mais número medido do portal, e é **exatamente a rota cujo deploy está travado** pelo payload de 35,5 MiB | **Adiado, não descartado.** Escrever roteiro para a única tela que não pode ser gravada seria trabalho para a gaveta |
 | **"Quem indicou quem" no Judiciário** | Existe como **contagem por autoridade nomeante**, não como grafo; e a cobertura é de 52 dos 252 magistrados, abaixo do 1/3 que o próprio componente exige para afirmar concentração | **Descartado por não ser filmável.** O roteiro 3 fica com vacância e cotas, que estão completas |
 | **Voto nominal do Congresso** | A página existe e a tabela tem **zero linhas** (12/08) | **Descartado.** Era função anunciada no roteiro de 29/07 e continua sem dado |
-| **Qualquer número "de hoje" que venha do banco** | O acervo do Congresso, os alertas por cidade, a cobertura da análise, as vacâncias projetadas em `/vagas` — todos saem do Postgres. A Neon está em **HTTP 402 até 01/09** e o banco de build é local à máquina do dono | **Não medível nesta sessão.** Por isso todo número deste arquivo carrega a data em que foi medido, e os de 09/08 e 12/08 estão marcados como tal em vez de apresentados como atuais |
+| **Qualquer número "de hoje" que venha do banco** | O acervo do Congresso, os alertas por cidade, a cobertura da análise, as vacâncias projetadas em `/vagas` — todos saem do Postgres. A Neon está em **HTTP 402 até 01/09** e o banco de build é local à máquina do dev | **Não medível nesta sessão.** Por isso todo número deste arquivo carrega a data em que foi medido, e os de 09/08 e 12/08 estão marcados como tal em vez de apresentados como atuais |
 
 ---
 

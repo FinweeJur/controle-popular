@@ -9,7 +9,7 @@
 
 ## Sumário
 
-- [O que o dono pediu](#o-que-o-dono-pediu)
+- [O que o dev pediu](#o-que-o-dev-pediu)
 - [O problema editorial: "ilegal" é veredito, evidência não é](#o-problema-editorial-ilegal-é-veredito-evidência-não-é)
 - [O que já existe (medido em 30/09/2026)](#o-que-já-existe-medido-em-30092026)
 - [Fontes por ordem de prioridade](#fontes-por-ordem-de-prioridade)
@@ -19,9 +19,9 @@
 - [Decisões registradas](#decisões-registradas)
 - [Origem](#origem)
 
-## O que o dono pediu
+## O que o dev pediu
 
-Pedido do dono de 29/09/2026, dentro da frente de memória: **"depois
+Pedido do dev de 29/09/2026, dentro da frente de memória: **"depois
 continuar com plano de mapeamento da mineração ilegal"**. Este documento é
 esse plano.
 
@@ -100,7 +100,7 @@ Ver Fase B.
 
 ## Fontes por ordem de prioridade
 
-Ordem de preferência do dono (29/09/2026): movimentos sociais, entidades
+Ordem de preferência do dev (29/09/2026): movimentos sociais, entidades
 acadêmicas, páginas oficiais — e **para evidência de ilegalidade a fonte é
 sempre oficial** (ato público é o que sustenta a ficha). Wikipédia, quando
 existir, entra só como ponte terciária, nunca no campo `fonte`.
@@ -180,7 +180,7 @@ motivo de não ter dado registrado.
 - **Item 3 — ANM fechado com motivo:** sem ato de suspensão em dado
   aberto (15 diretórios da ANM varridos; metadados SIGMINE sem
   "suspensão"); DOU automatizado exige chave de API (403 medido) —
-  cadastro humano, decisão do dono.
+  cadastro humano, decisão do dev.
 - **Item 4 — TI/quilombo medido:** FUNAI MG = 16 polígonos **+ 4 pontos
   ("Em Estudo", a fase mais vulnerável)** — ampliação sem fonte nova;
   INCRA `quilombolas_mg` = 23 (era 22), contagem nacional não respondeu
@@ -251,19 +251,19 @@ DOU, raspagem Liferay da FEAM e a pendência Pimentel do INCRA.
 
 ## Decisões registradas
 
-- **Dono, 29/09/2026:** seguir com este plano depois da memória; fontes não
+- **Dev, 29/09/2026:** seguir com este plano depois da memória; fontes não
   estatais só com citação e link; ordem movimentos → acadêmicas → oficiais;
   Wikipédia só terciária. Para este plano vale a exceção já praticada pela
   casa: **evidência de ilegalidade é sustentada por fonte oficial**, porque
   o sustento é ato público.
-- **Dono, 25/09/2026 (plano de cavas, vale aqui):** 100% local para
+- **Dev, 25/09/2026 (plano de cavas, vale aqui):** 100% local para
   inferência; gate com revisão humana de 100 exemplos antes de publicar.
 - **Agente, 30/09/2026:** rota sugerida `/mineracao/ilegal` (URL objetiva;
   a frase de cuidado mora no texto da página, não na URL).
 
 ## Origem
 
-- Pedido do dono em 29/09/2026 (frente de memória das resistências);
+- Pedido do dev em 29/09/2026 (frente de memória das resistências);
 - base: [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md)
   (fases 0–6) e as medições de 30/09/2026 em
   `scripts/etl/cavas/medir-evidencias-mg.py`.

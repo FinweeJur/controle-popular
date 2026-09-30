@@ -10,7 +10,7 @@
 ## Sumário
 
 - [Propósito](#propósito)
-- [Decisões do dono registradas](#decisões-do-dono-registradas)
+- [Decisões do dev registradas](#decisões-do-dev-registradas)
 - [Modelo de dado unificado](#modelo-de-dado-unificado)
 - [Coletores da fase 1](#coletores-da-fase-1)
 - [A página /ambiental/crimes-socioambientais](#a-página-ambientalcrimes-socioambientais)
@@ -37,13 +37,13 @@ Não é uma página nova de "notícia": é o acervo documental que sustenta qual
 alegação sobre reparação — decisão, laudo, resolução, termo — publicado por
 quem é parte ou autoridade no caso.
 
-## Decisões do dono registradas
+## Decisões do dev registradas
 
 1. **Absorver** a biblioteca das ATIs do Paraopeba; na abertura a biblioteca
    mostra só o **desastre em foco**, e o leitor amplia clicando na tag do outro
    caso.
 2. **ES + BA no escopo.** ES entra por ser bacia atingida do Doce (IEMA, AGERH,
-   MPES, TJES). BA entra principalmente por **notícias** — pedido do dono em
+   MPES, TJES). BA entra principalmente por **notícias** — pedido do dev em
    31/08/2026: "recentemente teve reconhecimento de atingidos da Bahia e tem
    mais notícias disso". Documental da BA fica em fase 2, guiado pelo que as
    notícias revelarem.
@@ -144,7 +144,7 @@ cliente recebe o array por fetch de asset:
   abertura com o desastre em foco: chega de `/paraopeba` → Brumadinho; de
   `/ambiental/mariana` → Mariana; entrada direta → os dois visíveis com selo de
   desastre em cada item; **clicar na tag do outro caso amplia** (decisão do
-  dono). Filtros por esfera, órgão, tipo, ano, UF e tags; ordenação por coluna
+  dev). Filtros por esfera, órgão, tipo, ano, UF e tags; ordenação por coluna
   (`lib/tabela/ordenar.ts`); CSV do filtrado (`lib/tabela/csv.ts`, `;` + BOM
   UTF-8); paginação "Ver mais" (~40); mensagem explícita de vazio.
 - **Notícias:** bloco "Radar" na mesma página (padrão `/paraopeba/clipping`),
@@ -165,13 +165,13 @@ cliente recebe o array por fetch de asset:
   Brumadinho). A biblioteca unificada em `/ambiental/crimes-socioambientais`
   cobre os DOIS desastres e inclui o mesmo acervo ATI como fonte. Não há
   duplicação de dado — as duas telas leem os mesmos arquivos.
-- Decisão do dono "abrir com o desastre em foco e ampliar clicando no outro"
+- Decisão do dev "abrir com o desastre em foco e ampliar clicando no outro"
   vale para a biblioteca unificada (chips por caso); a página do Paraopeba
   mantém o filtro por ATI/acervo que já tinha.
 
 ## Expansão — novas fontes e páginas do ecossistema (01/09/2026 + 05/09/2026)
 
-Escopo pedido pelo dono em 01/09/2026, ampliado em 05/09/2026 com notas técnicas de órgãos ministeriais e defensorias.
+Escopo pedido pelo dev em 01/09/2026, ampliado em 05/09/2026 com notas técnicas de órgãos ministeriais e defensorias.
 
 ### Fontes judiciais e ministeriais (adição 05/09/2026)
 
@@ -362,31 +362,31 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
 1. Biblioteca unificada absorve o DADO das ATIs; `/paraopeba/biblioteca` segue
    contentful (ver seção "Absorção da rota") — absorção de dado, não de rota.
 2. Abertura da biblioteca mostra o desastre em foco; ampliar clicando na tag do
-   outro caso (dono, 31/08/2026).
-3. ES + BA no escopo; BA por notícias na fase 1 (dono, 31/08/2026).
+   outro caso (dev, 31/08/2026).
+3. ES + BA no escopo; BA por notícias na fase 1 (dev, 31/08/2026).
 4. Metadado + link, nunca o arquivo — mesmo veredito da biblioteca das ATIs
    (Lei 9.610/98, direitos reservados sem licença declarada).
 5. `desastre` é campo obrigatório do item — dois casos não se misturam sem
    rótulo.
 6. ATIs existem nos dois desastres: o acervo ATI existente é do programa
    Paraopeba (Brumadinho); as ATIs de Mariana (Cáritas, CTA, AEDAS/ADAI no
-   Doce) são fonte nova com `desastre: "mariana"` (correção do dono, 01/09/2026).
-7. **Notas técnicas ministeriais e de defensorias entram na Fase 1.5** (dono,
+   Doce) são fonte nova com `desastre: "mariana"` (correção do dev, 01/09/2026).
+7. **Notas técnicas ministeriais e de defensorias entram na Fase 1.5** (dev,
    05/09/2026): MPMG (Coerdoce, Paraopeba, Jequitinhonha), MPF (Grandes Casos,
    Procuradoria em MG), DPU (Comitê Temático), DPMG. Bacias: Rio Doce, Paraopeba,
    Itatiauçu, Jequitinhonha. Prioridade P1: MPMG Coerdoce, MPF Grandes Casos,
    DPU Comitê Temático.
 8. **Itatiauçu coberta indiretamente** pelo MPMG Coordenadoria do Paraopeba e
    pelo CBH Paraopeba — não há fonte específica mapeada.
-9. **Expansão regional MG** (dono, 05/09/2026): além de Rio Doce e Paraopeba,
+9. **Expansão regional MG** (dev, 05/09/2026): além de Rio Doce e Paraopeba,
    cobrir Quadrilátero Ferrífero (Mina Apolo, Operação Rejeito), Vale do Aço,
    Jequitinhonha (lítio), São Francisco (quilombos), Rio das Velhas (poluição),
    garimpo ilegal no Norte e Sul de MG. 11 regiões mapeadas.
-10. **Expansão nacional** (dono, 05/09/2026): cobrir casos de escala nacional —
+10. **Expansão nacional** (dev, 05/09/2026): cobrir casos de escala nacional —
     Fundão (2015), Brumadinho (2019), Pingo d'Água (2024), Xikrin do Cateté,
     APA Tapajós, Extremo Sul da BA. Ações internacionais: BHP Londres, Vale
     SEC/EUA, Vale Amsterdã.
-11. **Ações coletivas das instituições de justiça** (dono, 05/09/2026): mapear
+11. **Ações coletivas das instituições de justiça** (dev, 05/09/2026): mapear
     ACPs, TACs, medidas cautelares do MPF, MPMG, DPU, DPMG, MPES, MPBA. Temas
     repetitivos do STJ (707, 1.204, 681, 438) e repercussão geral do STF (1.194).
     Status: Trânsito em julgado, vigente ou em andamento.
@@ -394,6 +394,6 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
 ## Origem
 
 Escrito em 31/08/2026 na sessão que criou a rota `/ambiental/crimes-socioambientais`.
-Absorve a decisão de `/paraopeba/biblioteca` (597 itens) e o pedido do dono de
+Absorve a decisão de `/paraopeba/biblioteca` (597 itens) e o pedido do dev de
 radar de notícias sobre reconhecimento de atingidos na Bahia. Sem arquivo
 anterior absorvido.

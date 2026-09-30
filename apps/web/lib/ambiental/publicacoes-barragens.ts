@@ -1,6 +1,6 @@
 /**
  * Publicações acadêmicas por barragem/empreendimento — rodapé
- * “Para saber mais” (decisão 6 do dono, 23/09/2026).
+ * “Para saber mais” (decisão 6 do dev, 23/09/2026).
  *
  * Estas linhas NÃO entram em `condicionantes` nem em status. Servem para
  * o leitor aprofundar com dissertação, tese, artigo ou relatório de

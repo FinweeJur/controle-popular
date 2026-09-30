@@ -27,7 +27,7 @@ movimentos populares que inspiram o projeto. Build só depois de executar tudo.
 
 ## Ranqueamento por custo/facilidade
 
-Mais fácil primeiro. "Build" fica por último por decisão do dono.
+Mais fácil primeiro. "Build" fica por último por decisão do dev.
 
 | # | Tarefa | Custo | Feito? |
 |---|--------|-------|--------|
@@ -87,7 +87,7 @@ Mais fácil primeiro. "Build" fica por último por decisão do dono.
 - Base: `data/noticias-portal.json` (150) + `data/novidades.json` (17).
 - Padrão: `scripts/gerar-10-posts-blog.py` (frases ≤15 palavras, link na fonte,
   resumo + métricas auditáveis).
-- Temas aprovados (dono) + dados internacionais recentes (ONU/UNESCO/OMS/OMC,
+- Temas aprovados (dev) + dados internacionais recentes (ONU/UNESCO/OMS/OMC,
   SEC/NID/USAspending, TSX/NPRI/CORE): PPPs de MG, 553 imóveis da União, 853
   municípios de MG, Censo 2022 dos polos, bot de fiscalização, e os hubs
   internacionais.
@@ -96,7 +96,7 @@ Mais fácil primeiro. "Build" fica por último por decisão do dono.
 - `npm test` + `tsc --noEmit` já verdes. Falta `next build` (≈17 min) para
   provar que `/ambiental/ppp`, `/ambiental/autorizacoes` e `/cidades/mg`
   renderizam.
-- **Depois do build: deploy no Guara Cloud** (`guara deploy`), pedido do dono
+- **Depois do build: deploy no Guara Cloud** (`guara deploy`), pedido do dev
   nesta rodada.
 
 ### 10. Política de uso de IA no site
@@ -134,8 +134,8 @@ Mais fácil primeiro. "Build" fica por último por decisão do dono.
 | Movimento | URL | Status |
 |-----------|-----|--------|
 | MAB — Movimento dos Atingidos por Barragens | https://mab.org.br/ | ✅ verificado |
-| Movimento Brasil Popular | https://brasilpopular.org/ | ✅ fornecido pelo dono |
-| Levante Popular da Juventude | https://levante.org.br/ | ✅ fornecido pelo dono |
+| Movimento Brasil Popular | https://brasilpopular.org/ | ✅ fornecido pelo dev |
+| Levante Popular da Juventude | https://levante.org.br/ | ✅ fornecido pelo dev |
 
 Inspiração por página:
 - MAB → biblioteca de crimes socioambientais (`/ambiental/crimes-socioambientais`),

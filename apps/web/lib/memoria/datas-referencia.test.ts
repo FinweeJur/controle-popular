@@ -4,7 +4,7 @@
  * Guardam o contrato: toda data tem dia/mês válido, título, descrição, ao
  * menos um tipo de luta e uma fonte com link http(s) — a mesma guarda
  * editorial de todo o acervo (AGENTS.md §7). A citação curta sai no
- * formato do dono `(Instituição, Ano)`.
+ * formato do dev `(Instituição, Ano)`.
  */
 
 import { describe, expect, it } from "vitest";

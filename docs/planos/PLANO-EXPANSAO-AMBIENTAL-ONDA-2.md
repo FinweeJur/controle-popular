@@ -287,5 +287,5 @@ O trabalho será dividido em etapas lógicas e commits separados (Regra 5 do `AG
 ## Decisões registradas
 
 - **D1 (2026-09-17):** Estados com barreiras severas (Grupo C) serão documentados formalmente em `relatorio-mapeamento-27-estados.md` em vez de criar scrapers frágeis ou tentar contornar logins.
-- **D2 (2026-09-17 — Atualizado pelo dono):** Coleta integral ("baixe tudo"). Os coletores devem baixar os dados na íntegra (full/100%). A decisão sobre quanto subir para o site ou fatiar por conta dos limites de asset do Cloudflare Worker (25 MiB asset / 3 MiB gzip) será tomada a posteriori na integração do feed, mas a extração inicial é completa.
+- **D2 (2026-09-17 — Atualizado pelo dev):** Coleta integral ("baixe tudo"). Os coletores devem baixar os dados na íntegra (full/100%). A decisão sobre quanto subir para o site ou fatiar por conta dos limites de asset do Cloudflare Worker (25 MiB asset / 3 MiB gzip) será tomada a posteriori na integração do feed, mas a extração inicial é completa.
 - **D3 (2026-09-17):** Cada commit será realizado por pathspec explícito (`--only`), com mensagem gravada em arquivo e sem acentos, conforme estipulado no `AGENTS.md`.

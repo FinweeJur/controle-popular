@@ -21,7 +21,7 @@
 
 O processo `next start` (porta 3000), que serve o site inteiro pelo túnel da
 Cloudflare, morreu em algum momento do dia 08/09. O túnel continuou de pé e
-respondeu **502** — o site ficou fora. Foi o **dono** quem percebeu, à noite,
+respondeu **502** — o site ficou fora. Foi o **dev** quem percebeu, à noite,
 perguntando "por que o site está fora do ar?". Nenhum sistema avisou.
 
 ## Impacto (medido)
@@ -57,7 +57,7 @@ confirmados no mesmo dia.
 
 ## O que deu certo
 
-- A detecção pelo dono foi rápida e sem ruído (a pergunta certa, direto)
+- A detecção pelo dev foi rápida e sem ruído (a pergunta certa, direto)
 - O túnel não caiu — o problema era 100% local e o diagnóstico por camadas
   (502 → porta sem ouvinte → processo morto) levou minutos
 

@@ -4,7 +4,7 @@
 > `app/components/Epigrafe.tsx`, variantes `inicio` / `fecho` / `balao`).
 >
 > **Autorizações:** PLANO-COPY-VOZ.md (tabela de epígrafes, com autor/obra/ano)
-> + lote aprovado pelo dono do projeto em 03/09/2026 (Evaristo — *Olhos d'água*,
+> + lote aprovado pelo dev do projeto em 03/09/2026 (Evaristo — *Olhos d'água*,
 > Roda Viva, *Poemas da recordação e outros movimentos*, Malê, 2017; Carolina —
 > *Quarto de Despejo*, 1960, diário e poema "Não digam que fui rebotalho").
 >
@@ -27,11 +27,11 @@
 
 ## Sumário
 
-- [Lote aprovado pelo dono (03/09/2026)](#lote-aprovado-pelo-dono-03092026)
+- [Lote aprovado pelo dev (03/09/2026)](#lote-aprovado-pelo-dev-03092026)
 - [Distribuição atual no portal](#distribuicao-atual-no-portal)
 - [Reservas (não aplicadas, prontas para uso)](#reservas-nao-aplicadas-prontas-para-uso)
 
-## Lote aprovado pelo dono (03/09/2026)
+## Lote aprovado pelo dev (03/09/2026)
 
 ### Conceição Evaristo
 

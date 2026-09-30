@@ -9,7 +9,7 @@
 
 ## Sumário
 
-- [O que o dono pediu](#o-que-o-dono-pediu)
+- [O que o dev pediu](#o-que-o-dev-pediu)
 - [Descobertas da medição de 24/09](#descobertas-da-medição-de-2409)
 - [Resposta sobre os modelos: origem e licença](#resposta-sobre-os-modelos-origem-e-licença)
 - [Barra de publicação — regra que não se negocia](#barra-de-publicação--regra-que-não-se-negocia)
@@ -23,7 +23,7 @@
 - [Decisões registradas](#decisões-registradas)
 - [Origem](#origem)
 
-## O que o dono pediu
+## O que o dev pediu
 
 Pedido de 24/09/2026: no globo 3D, rastrear **cavas de mineração** para
 identificar atividade mineral **sem autorização**. O caminho pedido:
@@ -34,7 +34,7 @@ identificar atividade mineral **sem autorização**. O caminho pedido:
    atualizada;
 4. detectar **mudança pelo histórico** — cava crescente, cava ativa.
 
-Este plano traduz o pedido em etapas mensuráveis. A decisão do dono no mesmo
+Este plano traduz o pedido em etapas mensuráveis. A decisão do dev no mesmo
 dia (ver [Decisões registradas](#decisões-registradas)) ajusta o passo 2:
 **similaridade primeiro, treino depois** — o modelo pronto já acha parecidos;
 treinamos só se a medição de precisão provar que precisa.
@@ -76,7 +76,7 @@ Dois fatos mudam o plano:
 
 ## Resposta sobre os modelos: origem, licença e privacidade
 
-**Privacidade primeiro (decisão do dono, 24/09):** todo modelo roda **local**
+**Privacidade primeiro (decisão do dev, 24/09):** todo modelo roda **local**
 neste PC. Peso baixado é arquivo no disco; a análise não manda imagem nem
 dado para Meta, OpenAI, Alibaba ou qualquer nuvem. Só sai da máquina quem
 for chamado por **API remota** — e esta está vetada no pipeline (ver
@@ -85,7 +85,7 @@ sem chave, sem telemetria.
 
 Nenhum modelo brasileiro de visão existe em aberto — registro honesto.
 O Brasil tem modelos de **texto** (BERTimbau/USP; Sabiá da Maritaca,
-brasileiro mas por API, sem pesos abertos). Para imagem de satélite, o dono
+brasileiro mas por API, sem pesos abertos). Para imagem de satélite, o dev
 escolheu os chineses, todos código aberto:
 
 | Modelo | Origem | Licença (medida) | Papel aqui |
@@ -100,7 +100,7 @@ escolheu os chineses, todos código aberto:
 
 Reserva técnica ≠ escolha: americanos ficam guardados e **não são usados**
 a não ser que o medidor de precisão da Fase 2 reprove o chinês — e, nesse
-caso, a troca volta ao dono antes de acontecer.
+caso, a troca volta ao dev antes de acontecer.
 
 Licença permissiva (MIT/Apache) = pode usar, copiar e adaptar com
 atribuição. Chinese-CLIP (encoder Visão) e Qwen3-VL 2B cabem na RTX 3050
@@ -148,7 +148,7 @@ Monitor da Mineração ──────┘         │                    │ 
 | **2** | Índice de similaridade (método B) | precisão ≥ 70% no holdout | 3–5 dias |
 | **3** | Mudança no tempo (método A) — "cava crescente" | Δ conferido em 30 cavas | 1 semana |
 | **4** | Varredura MG → Brasil | % de cobertura medida e publicada | 1–2 semanas |
-| **5** | Publicação no globo + página | dono confere no navegador | 2–3 dias |
+| **5** | Publicação no globo + página | dev confere no navegador | 2–3 dias |
 | **6** | Rotina mensal + alerta | 1 rodada mensal registrada | 2 dias |
 
 Pipeline roda **offline**, fora da CI, como todo coletor do repo (AGENTS
@@ -163,7 +163,7 @@ Sete medições, todas hoje possíveis sem escrever código de produto:
 
 | # | Medir | Como |
 |---|---|---|
-| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dono, 24/09)**; ✅ **alternativa sem conta medida em 25/09:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
+| M1 | Copernicus CDSE: cadastro grátis, cota, 1 cena S2 L2A de MG | ⛔ **login não passou (dev, 24/09)**; ✅ **alternativa sem conta medida em 25/09:** Planetary Computer STAC + token SAS anônimos; cena `S2A_MSIL2A_20260924T131251_R138_T23KNU_20260924T205410`, thumbnail HTTP 200 (3.035.715 bytes) |
 | M2 | Monitor da Mineração: shapefile baixa? atributos batem? `robots.txt` lido e decisão anotada no coletor | ✅ **medido 25/09:** libera por **GeoServer WFS público** (`pto/wfs`, `GetFeature outputFormat=application/json` — também aceita shape-zip); amostra confirmou os campos-chave (`transbordamento_lavra`, `lavra_fantasma`, `temporal_inconsistency`, `in_restricted_area`, `inappropriate_permission`) + SIGMINE (`processo`, `fase`, `nome`, `subs`, `uso`, `uf`, `area_ha`, `ult_evento`); camadas: `pto:processos_minerarios`, `pto:mv_transbordamento_borda`, `pto:geoserver_filtrada`, `pto:mining_age`. `robots.txt`: plataforma MapBiomas = `Disallow:` vazio (livre); host do GeoServer = **404 (sem robots → permitido por padrão)** — decisão registrada aqui: acessar com UA honesta e pausa ≥ 2 s |
 | M3 | Licença de cada peso no card do Hugging Face: Chinese-CLIP (MIT esperado), Qwen2.5-VL (Apache 2.0 esperado); reservas DINOv2/CLIP/SigLIP só registradas | ✅ **medido 25/09:** Chinese-CLIP = **MIT** (API GitHub); **Qwen2.5-VL-3B = `qwen-research` (só não-comercial) — expectativa errada, modelo trocado**; Qwen3-VL-2B = **Apache 2.0**; InternVL2.5-2B = MIT; SigLIP = **Apache 2.0** |
 | M4 | Throughput de embedding: crops/s na RTX 3050 (ONNX) | ✅ **medido 25/09:** 188M params, carga 3 s; 100 crops 256 px do CBERS; fp32: 13,3 (batch 4) → 46,4 crops/s (batch 32); **fp16 batch 16 = 48,6 crops/s (melhor)** → 50 mil recortes em **17,2 min**. Pesos = 753.177.983 bytes; hub HF travou (0 MB/12 min) → **curl direto (0,86–3,0 MB/s)**; `.bin` precisou virar `safetensors` (transformers 5.5 bloqueia `torch.load` no torch 2.5, CVE-2025-32434). Método: torch 2.5.1+cu121 (ONNX não medido — otimização opcional, decisão por medição futura) |
@@ -183,7 +183,7 @@ data.** Scripts de apoio (`m4-bench.py`, `m2-attrs.py`, `m5-disco.py`,
 nenhum entra no repo. Pesos do Chinese-CLIP (753 MB) e cache de recortes
 também fora do git. Próxima fase: **Fase 1 — terreno de calibração.**
 
-**Nota sobre a API do Copernicus indicada pelo dono (24/09):** o dono
+**Nota sobre a API do Copernicus indicada pelo dev (24/09):** o dev
 não conseguiu fazer login no Copernicus e indicou o
 [`ecmwf-datastores-client`](https://github.com/ecmwf/ecmwf-datastores-client)
 como alternativa. Medido no README no mesmo dia: o cliente é Apache 2.0 e
@@ -194,7 +194,7 @@ não imagem óptica de satélite; e ele pede `key` de conta Copernicus, o
 climático (útil em frente futura de clima/risco), **não serve para foto
 de cava**. Foto de cava hoje sai do CBERS, medido e sem login. Se o
 Sentinel-2 histórico travar também, a ordem de tentativa é: Planetary
-Computer → AWS Sentinel → conta Copernicus (dono).
+Computer → AWS Sentinel → conta Copernicus (dev).
 
 **Gate G0:** se o Monitor entregar `transborda`/`lavra_fant` nacionais
 prontos, ele vira **baseline obrigatório** de toda fase seguinte. Se não,
@@ -219,7 +219,7 @@ Critério de pronto: ≥ 5.000 positivos e ≥ 5.000 negativos; amostra de 200
 conferida à mão; varredura de dado pessoal se qualquer titular de processo
 entrar no dado (AGENTS § 5.2 — o coletor nacional já tem `--scan-cpf`).
 
-**Ampliação para treino (decisão do dono, 25/09):** o dono quer treinar
+**Ampliação para treino (decisão do dev, 25/09):** o dev quer treinar
 desde o início, então a meta esticada é **10 mil por classe**. Medido em
 25/09: MG tem **7.656 poligonais nas fases extrativas** (WFS do Monitor) —
 os 10 mil positivos exigem **outra UF no lote** (GO/AM/PA na fila) ou
@@ -290,7 +290,7 @@ informação.
   anotada: acromatismo 0,70 no recorte limpo × 0,717 no nublado —
   primeira coisa a remeçar no lote grande.
 
-### Fase 2 — treino fino do Chinese-CLIP (4–6 dias; antecipada pelo dono 25/09)
+### Fase 2 — treino fino do Chinese-CLIP (4–6 dias; antecipada pelo dev 25/09)
 
 - **Ordem nova:** treinar primeiro, comparar depois. Fine-tune do
   **Chinese-CLIP** (RTX 3050, 4 GB: mistura fp16 + congelar o text tower;
@@ -304,7 +304,7 @@ informação.
 
 Critério de pronto: número de precisão e recall medidos do modelo treinado
 **e** do zero-shot + revisão de 100 exemplos. **Se treinado < 70%:**
-acionamento da reserva técnica (DINOv2/CLIP) — decisão do dono por
+acionamento da reserva técnica (DINOv2/CLIP) — decisão do dev por
 medição na mão, nunca automática.
 
 ### Medições da Fase 2 e da fila — 28/09/2026 (parcial: negativos em coleta)
@@ -338,7 +338,7 @@ atingível sem os negativos da meta.
   `fila-revisao.jsonl` (2.383 itens, estado inicial *pendente*),
   `amostra-100.jsonl` (estratificada p/ o gate) e a galeria
   `fila-revisao.html` (2.383 miniaturas) — a revisão dos 100 exemplos é
-  humana e fica com o dono.
+  humana e fica com o dev.
 
 Medições da tarde de 28/09 (mesmo split, coleta de negativos crescendo):
 
@@ -388,7 +388,7 @@ negativos (v1 tinha 21).
   pé; este é o gate intermediário com holdout de 88 negativos.
 - Custo medido: 72 s/época em 2.366 imagens, VRAM 2,39 GiB de 4 GiB;
   early stop na época 4 (`peso`) e 7 (`sobreamostragem`) das 8.
-- Pendências: revisão humana dos 100 exemplos (dono, atalhos
+- Pendências: revisão humana dos 100 exemplos (dev, atalhos
   "Revisao das cavas" na Área de Trabalho); JPEG corrompido
   `bd8c83af…` sem escore (o treino o descarta sozinho na leitura do
   snapshot); 1 JPG órfão no disco, sem linha no checkpoint.
@@ -480,7 +480,7 @@ treino 3.126 (1.608 pos / 1.518 neg, 206 cenas); holdout **794 (392 pos /
 - **Regra do plano mantida: 5 mil negativos para o gate definitivo** —
   hoje 1.920; lote 5 (semente 44, +1.200) rodando com fechador
   automático (triagem + remonta + Telegram).
-- Pendências: revisão humana dos 100 exemplos (dono, atalho na Área de
+- Pendências: revisão humana dos 100 exemplos (dev, atalho na Área de
   Trabalho; ganhou visualizador de ampliação em `c98f1120`).
 
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
@@ -567,19 +567,19 @@ itens vieram sem imagem utilizável.
   GeoJSON gzip **< 2 MiB** cada; entrada em `LAYER_REGISTRY` e no assunto
   `territorio-mineracao` do `js/config.js`; `proveniencia.json` regenerado
   pelo `gerar-proveniencia-globo.mjs`.
-- **Página `/mineracao/cavas` com as 5 coisas da regra do dono** (AGENTS
+- **Página `/mineracao/cavas` com as 5 coisas da regra do dev** (AGENTS
   § 8): gráfico SVG de Δ área/ano, cartões de topo (candidatos,
   confirmados, cobertura), CSV do filtrado (`;` + BOM UTF-8), filtro (UF,
   estado da cava, distância de TI/UC), ordenação por coluna.
 - Cada item: link ao processo ANM, link ao visualizador externo com a
-  imagem da data, ressalva de IA visível (decisão 4 do dono), e frase de
+  imagem da data, ressalva de IA visível (decisão 4 do dev), e frase de
   que receber sinal não significa ilícito.
 - Deep-link do globo para a página no padrão `?camada=&idx=`; detalhe com
   Leaflet já existe no `detalhe.html` (Esri para o olho humano).
 - Verificação: `npm test`, `npx tsc --noEmit`, `scripts/testar-globo.mjs`
   e testes `js/**/*.test.mjs` do globo.
 
-Critério de pronto: o dono abre o globo, clica numa cava, e vê — sem
+Critério de pronto: o dev abre o globo, clica numa cava, e vê — sem
 escrever código — ressalva, data da imagem, fonte, método e link na ANM.
 
 #### Medições da Fase 5 — 29/09/2026
@@ -632,9 +632,9 @@ escrever código — ressalva, data da imagem, fonte, método e link na ANM.
 - **Filtro por UF e por distância de TI/UC** — fora do escopo desta leva;
   a série cobre só MG e a distância não foi coletada.
 
-### Painel de visualização, linha do tempo e exportação (pedido do dono 25/09)
+### Painel de visualização, linha do tempo e exportação (pedido do dev 25/09)
 
-Pedido literal do dono (25/09/2026): painel **buscável, classificável,
+Pedido literal do dev (25/09/2026): painel **buscável, classificável,
 filtrável**, com resumos, contexto de chatbot, tags, datas e metadados;
 **linha do tempo de imagens** (botão/scroll passando imagem por imagem
 para ver a transformação do território); **copiar/exportar** (geolocalização,
@@ -643,7 +643,7 @@ Esta seção estende a Fase 5 — as 5 coisas dela continuam valendo.
 
 #### A. Ficha da cava — dados e o que cada um responde
 
-| Pergunta do dono | De onde vem | Regra |
+| Pergunta do dev | De onde vem | Regra |
 |---|---|---|
 | Quando a cava **iniciou**? | Fase 3: primeiro ano com Δ > limiar na série Sentinel (2015→2026) | data + método visíveis; sem série → "sem histórico" |
 | Quando **ampliou**? / **encerrou**? / **pico de movimento**? | Δ por ano (NDVI/BSI/NDWI) — datas de cada mudança e ano do maior Δ | estado final: ativa / estável / encerrada (critério da Fase 3) |
@@ -703,7 +703,7 @@ cálculo de área e das 4 datas cobertos por teste em `lib/`
 
 - Rodada mensal fora da CI: cena recente → Δ → camadas atualizadas;
   checkpoint; alerta no Telegram no padrão do `guara-shield-bot.mts`.
-- Sem deploy a cada rodada — política do dono: deploy a cada ~5 dias
+- Sem deploy a cada rodada — política do dev: deploy a cada ~5 dias
   (AGENTS § 5.7.1). Camada nova espera o deploy comum.
 
 Critério de pronto: uma rodada mensal completa, com relatório datado.
@@ -715,8 +715,8 @@ Critério de pronto: uma rodada mensal completa, com relatório datado.
 | SIGMINE / ANM | poligonais e fases dos processos | zip diário, UA de navegador | dados públicos | já coletado; `--scan-cpf` obrigatório |
 | Monitor da Mineração (MapBiomas) | `transborda`, `lavra_fant`, `inconsiste` | **GeoServer WFS público** `plataforma.geoserver.mapbiomas.org/geoserver/pto/wfs` (`version=1.1.0` obrigatório; também aceita shape-zip) — medido 25/09 | CC-BY 4.0 | beta; errou no lançamento (03/12/2025); citar "MapBiomas - Monitor da Mineração, acessado em [data]" |
 | MapBiomas Coleção 10 | classe mineração 30 m, série 1985→2024 | GEE / downloads | CC-BY 4.0 | Landsat 30 m — não vê cava pequena; é pré-filtro |
-| Copernicus Sentinel-2 L2A | série histórica 10 m desde 2015 | CDSE (cadastro grátis, cota) | Copernicus free | ⛔ **login não passou no dono (24/09)** — alternativas sem conta: Planetary Computer, AWS; atribuição "Contains modified Copernicus Sentinel data [year]" |
-| ECMWF Data Stores (`ecmwf-datastores-client`) | dado de **clima** (ERA5 etc.), não foto de satélite | cliente Python Apache 2.0, pede chave de conta Copernicus | Apache 2.0 | registrado pelo dono 24/09 como fronte de clima futuro; **não serve para imagem de cava** |
+| Copernicus Sentinel-2 L2A | série histórica 10 m desde 2015 | CDSE (cadastro grátis, cota) | Copernicus free | ⛔ **login não passou no dev (24/09)** — alternativas sem conta: Planetary Computer, AWS; atribuição "Contains modified Copernicus Sentinel data [year]" |
+| ECMWF Data Stores (`ecmwf-datastores-client`) | dado de **clima** (ERA5 etc.), não foto de satélite | cliente Python Apache 2.0, pede chave de conta Copernicus | Apache 2.0 | registrado pelo dev 24/09 como fronte de clima futuro; **não serve para imagem de cava** |
 | **CBERS-4A / CBERS-4 (INPE)** | **imagem fina 2 m/8 m (WPM)** e média 16 m (MUX) | INPE STAC `data.inpe.br/bdc/stac/v1` + AWS `s3://brazil-eosats` **sem conta** | CC-BY 4.0 | satélite Brasil–China; atribuir INPE; cadência em MG medida na M8 |
 | **Amazônia-1 (INPE)** | 100% brasileiro; 64 m, revisita 5 dias | INPE STAC / catálogo `dgi.inpe.br` | CC-BY (crédito INPE) | resolução grossa: serve de reforço de cobertura, não de detalhe |
 | Esri World Imagery | imagem atual para o olho humano | tiles (já no globo) | termos Esri | **bulk download proibido** — nunca baixar em massa |
@@ -768,7 +768,7 @@ medido e armadilha (GUIA do catálogo).
    recorte não; varrer dado pessoal antes de commitar dado coletado.
 8. **Não chamar modelo por nuvem** (API da OpenAI, Meta, Alibaba/DashScope,
    qualquer "hosted"): imagem de satélite e candidato só saem deste PC se
-   passarem pela régua do dono — roda tudo no Ollama local (decisão
+   passarem pela régua do dev — roda tudo no Ollama local (decisão
    24/09).
 
 ## Estimativa e ordem
@@ -785,45 +785,45 @@ medido e armadilha (GUIA do catálogo).
 | 6 — rotina | 2 dias | Fase 5 |
 
 **Total: ~4–6 semanas de agente.** MVP útil (Fases 0–3 em MG, com Δ das
-7.090 minas) em ~2 semanas. A fila do dono continua mandando: este plano
+7.090 minas) em ~2 semanas. A fila do dev continua mandando: este plano
 entra como item **B4** do [ESTADO.md](../02-estado/ESTADO.md#fila-viva) —
 a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
 
 ## Decisões registradas
 
-- **24/09/2026 (dono):** similaridade primeiro, treino depois; calibrar em
+- **24/09/2026 (dev):** similaridade primeiro, treino depois; calibrar em
   **MG primeiro** e só então o Brasil; base de imagem **Sentinel-2
   (histórico) + Esri (atual, verificação humana)**.
-- **24/09/2026 (dono):** modelos **primários chineses — Chinese-CLIP +
+- **24/09/2026 (dev):** modelos **primários chineses — Chinese-CLIP +
   Qwen2.5-VL**; DINOv2/CLIP/SigLIP só como reserva técnica, e a troca
-  volta ao dono. **Nada de API de nuvem de modelo**: pipeline 100% local,
+  volta ao dev. **Nada de API de nuvem de modelo**: pipeline 100% local,
   para que imagem e candidatos não saiam deste PC.
-- **24/09/2026 (dono):** aproveitar **satélites brasileiros** — CBERS-4A
+- **24/09/2026 (dev):** aproveitar **satélites brasileiros** — CBERS-4A
   (2 m) como imagem fina de conferência e Amazônia-1 como reforço; ambos
   do INPE, grátis e CC-BY. Sentinel-2 continua como série histórica.
 - **24/09/2026:** modelos de origem EUA/China, licença MIT/Apache; não há
   encoder de visão aberto brasileiro — registro para não reabrir pergunta.
 - **24/09/2026:** publicação exige dupla verificação (2 de 3 métodos) e
   revisão humana; palavra "ilegal" é vetada.
-- **25/09/2026 (dono): treinar desde o início.** O dono mandou treinar
+- **25/09/2026 (dev): treinar desde o início.** O dev mandou treinar
   bastante o modelo logo na Fase 1 para reduzir erro desde o começo —
   a ordem vira: **coletar volume grande (meta esticada: 10 mil por
   classe)** → **fine-tune do Chinese-CLIP na RTX 3050** → medir precisão
   no holdout → só então comparar com o zero-shot. A similaridade sem
   treino cai para **linha de base**, não para mais-valia. O piso do gate
   (precisão ≥ 70%) e a revisão humana continuam valendo. Troca de modelo
-  primário (se precisar) continua voltando ao dono.
-- **25/09/2026 (dono): painel de visualização completo.** Busca, filtros,
+  primário (se precisar) continua voltando ao dev.
+- **25/09/2026 (dev): painel de visualização completo.** Busca, filtros,
   tags, resumos e ficha com datas (início, ampliação, pico, encerramento),
   área em m²/km², minério do cadastro ANM, pesquisa minerária da região;
   **linha do tempo de imagens** com slider imagem por imagem; copiar/
   exportar (geolocalização, fotos, **PDF com fotos**, pacote para ANM ou
   Polícia Militar com links oficiais); **contexto por cava para o
   chatbot**. Detalhe na seção [Painel de visualização, linha do tempo e
-  exportação](#painel-de-visualização-linha-do-tempo-e-exportação-pedido-do-dono-2509).
-- **25/09/2026 (dono): sem novos subagentes.** O trabalho do Agente A
+  exportação](#painel-de-visualização-linha-do-tempo-e-exportação-pedido-do-dev-2509).
+- **25/09/2026 (dev): sem novos subagentes.** O trabalho do Agente A
   (detector de nuvem) é retomado e terminado pela sessão principal.
-- **28/09/2026 (dono): mais fases grandes no home-pc.** O home-pc (PC mais
+- **28/09/2026 (dev): mais fases grandes no home-pc.** O home-pc (PC mais
   fraco) assume rede e código: coleta GO, Fase 3 (série Sentinel) e Fase
   5 (painel). Nesta máquina forte fica só o que exige GPU — treino fino,
   triagem VLM — mais o fechamento da coleta MG em curso. **Cada máquina
@@ -832,7 +832,7 @@ a Fase 0, por ser só medição, pode correr em paralelo sem disputar deploy.
 
 ## Origem
 
-Pedido do dono em 24/09/2026, no chat da sessão `/cp`. Medições do mesmo
+Pedido do dev em 24/09/2026, no chat da sessão `/cp`. Medições do mesmo
 dia no disco e na web. Sinalizado na
 [PLANO-FILA-PROXIMA-SESSAO.md](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) como item 10
 e no [ESTADO.md](../02-estado/ESTADO.md#fila-viva) como B4.

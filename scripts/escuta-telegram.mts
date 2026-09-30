@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * scripts/escuta-telegram.mts — ouvinte contínuo do chat do dono.
+ * scripts/escuta-telegram.mts — ouvinte contínuo do chat do dev.
  *
- * Roda em long-poll durante a sessão, grava mensagens novas do dono em
+ * Roda em long-poll durante a sessão, grava mensagens novas do dev em
  * logs/telegram-inbox.jsonl e manda um "recebido" imediato. Não imprime
  * token. Mantém offset próprio em scripts/.jcode-telegram-offset para não
  * conflitar com o .gatilho-offset do bot de comandos.
@@ -104,7 +104,7 @@ async function main() {
         if (!msg || !msg.text) continue;
         const chat = msg.chat?.id !== undefined ? String(msg.chat.id) : "?";
         if (chat !== String(DONO)) continue;
-        const de = msg.from?.first_name ?? msg.from?.username ?? "dono";
+        const de = msg.from?.first_name ?? msg.from?.username ?? "dev";
         const quando = new Date().toISOString();
         const registro = {
           recebido_em: quando,

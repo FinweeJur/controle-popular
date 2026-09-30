@@ -8,7 +8,7 @@ import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
 import { DotsRing } from "@/app/components/loaders";
 
 /**
- * Barra de busca GLOBAL da navbar — pedido do dono (01/09/2026):
+ * Barra de busca GLOBAL da navbar — pedido do dev (01/09/2026):
  * sempre visível, em todas as páginas, sem sair para /busca.
  *
  * Reusa o motor estático do portal (`lib/busca/indice.ts`) e o índice

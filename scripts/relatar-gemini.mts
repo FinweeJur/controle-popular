@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * scripts/relatar-gemini.mts
- * Envia relatório de avanço do agente Gemini / Antigravity para o Telegram do dono.
+ * Envia relatório de avanço do agente Gemini / Antigravity para o Telegram do dev.
  * Identifica explicitamente [Gemini] no cabeçalho e detalha o que avançou com emojis.
  */
 

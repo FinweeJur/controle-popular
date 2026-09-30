@@ -18,11 +18,11 @@
 
 ## Propósito
 
-Fila da próxima sessão, com os 6 pedidos do dono de 19/09 à noite.
+Fila da próxima sessão, com os 6 pedidos do dev de 19/09 à noite.
 Ranqueado da parte urgente e leve para a peça grande.
-Cada item tem critério de pronto: quando roda no navegador e o dono confere.
+Cada item tem critério de pronto: quando roda no navegador e o dev confere.
 
-**Topo da fila em 22/09 (ordem do dono):** terminar as coletas Betim no
+**Topo da fila em 22/09 (ordem do dev):** terminar as coletas Betim no
 Guara (COPAM, contratos 2025, licitações) e **só então** `guara deploy`.
 Retomada exata: [HANDOFF-22-09-COLETA-GUARA.md](../entregas/HANDOFF-22-09-COLETA-GUARA.md).
 
@@ -32,13 +32,13 @@ Estado medido na madrugada de 19→20/09 (sessão fase 4):
 
 | Item | Estado | Referência |
 |---|---|---|
-| Erro 1014 no www (proxy do Cloudflare) | ✅ | dono tirou o proxy; `Resolve-DnsName` aponta direto ao Guara |
+| Erro 1014 no www (proxy do Cloudflare) | ✅ | dev tirou o proxy; `Resolve-DnsName` aponta direto ao Guara |
 | Redirect raiz → www | ✅ | Page Rule 301 medida (`curl` 301 → `www/…/sobre`) |
 | Skill `/cp` de handoff | ✅ | commit `f329cd25` |
 | Fase 4 — Postgres do Guara | 🚧 | serviço `cp-postgres-597bd0` (postgis 17) com carga validada igual à Neon (menos as 2 tabelas `embeddings`); `DATABASE_URL` trocada runtime+build |
 | Driver no runtime do Guara | 🚧 | motor `pg` (TCP) para host não-Neon (`39225d91`); trace do `pg` no standalone (`3ea3a22`); **sombras restantes: chat do assistente ainda 502 em produção** |
 | Catálogo sem pgvector | ⚠️ | extensão `vector` indisponível nas variantes do Guara (medido via `pg_available_extensions`); embeddingsguiória ficam p/ Fase 5 (alternativa: Qdrant do catálogo) |
-| Deploy a cada ~5 dias | ✅ | política do dono: auto-deploy OFF, tarefa agendada `ControlePopular_DeployGuara_0555` (`deploy-guara-agendado.mts`: commit novo + ≥5 dias + CI verde) |
+| Deploy a cada ~5 dias | ✅ | política do dev: auto-deploy OFF, tarefa agendada `ControlePopular_DeployGuara_0555` (`deploy-guara-agendado.mts`: commit novo + ≥5 dias + CI verde) |
 | Vulnerabilidades do container (Guara Shield) | 🚧 | 3 CRITICAL / 28 HIGH / 22 MEDIUM; `npm audit fix` aplicado; upgrade de `next` não iniciado |
 | Laboratório F1 (`/laboratorio` dither) | ✅ | commit `b0655e00` em `agente/laboratorio-f1` — **aguardando merge na main** |
 | Blog: 10 posts com 2 parágrafos novos | ✅ | commit `296ab78b` (subagente opencode) |
@@ -65,7 +65,7 @@ Causa medida: o registro `www.controlepopular.com.br` no Cloudflare está
 destino do CNAME é `controle-popular-web-0b4895-controle-popular.guaracloud.com`
 que é **outra conta do Cloudflare**. CNAME proxied entre contas é proibido.
 
-Correção (dono, 5 minutos):
+Correção (dev, 5 minutos):
 
 1. Cloudflare → DNS → registro `www`
 2. **Proxy: OFF** (nuvem cinza, "DNS only")
@@ -76,8 +76,8 @@ Correção (dono, 5 minutos):
 
 | # | Item | Dificuldade | Responsável | Estimativa |
 |---|---|---|---|---|
-| 1 | Corrigir Error 1014 (proxy no CNAME do `www`) | 🟢 trivial | dono | 5 min |
-| 2 | Redirect raiz → www (Cloudflare Rules) | 🟢 trivial | dono | 5 min |
+| 1 | Corrigir Error 1014 (proxy no CNAME do `www`) | 🟢 trivial | dev | 5 min |
+| 2 | Redirect raiz → www (Cloudflare Rules) | 🟢 trivial | dev | 5 min |
 | 3 | Skill `/cp` (handoff de sessão no opencode) | 🟢 fácil | agente | 30–60 min |
 | 4 | Exportar PDF/CSV, imprimir, copiar — nas 100 páginas | 🟡 médio | agente | 1–2 dias |
 | 5 | Bot de segurança + Guara Shield integrados | 🟡 médio | agente | 1–2 dias |
@@ -94,7 +94,7 @@ O Lab fica por último: é a maior peça, e também o maior ganho.
 
 ### 1 e 2 — DNS e redirect
 
-Feitos quando os passos do dono rodarem. Depois volta
+Feitos quando os passos do dev rodarem. Depois volta
 [A1 do ESTADO.md](../../02-estado/ESTADO.md#bloco-a-fazer-agora): validar dado
 no `/ambiental/licenciamento`.
 
@@ -171,13 +171,13 @@ Conversa do Seu Nonô segue as regras do
 [PLANO-SEU-NONO-NOTEBOOKLM.md](../../planos/PLANO-SEU-NONO-NOTEBOOKLM.md):
 citação clicável, ressalva de IA visível, nenhum número reinventado.
 
-Critério de pronto: o dono monta em `/laboratorio`, sem escrever código,
+Critério de pronto: o dev monta em `/laboratorio`, sem escrever código,
 uma comparação "contratos em Betim × renda média", com gráfico dither e o
 Seu Nonô ativando a tela.
 
 ### 8 — Remuneração de servidores públicos + donos e conselhos de empresas
 
-**Pedido do dono:** quanto cada servidor público recebe, e os donos,
+**Pedido do dev:** quanto cada servidor público recebe,  e os titulares,
 conselheiros e sócios majoritários das empresas — nas páginas
 Congresso, Câmaras, Prefeituras, Governos Estaduais, Judiciário e Empresas.
 
@@ -220,7 +220,7 @@ conselheiros no painel.
 
 ### 9 — Mapeamento amplo de APIs e bases de dados
 
-**Pedido do dono:** mapear APIs e bases públicas e open source — Brasil,
+**Pedido do dev:** mapear APIs e bases públicas e open source — Brasil,
 Latino-américa e ONU — para coletar ou conectar ao portal.
 Resultado: novo `docs/06-fontes/MAPEAMENTO-FONTES-AMPLAS.md`, no template
 do [FONTES.md](../../06-fontes/FONTES.md): URL, acesso medido, licença, armadilha.
@@ -245,15 +245,15 @@ Critério de pronto: `MAPEAMENTO-FONTES-AMPLAS.md` criado com pelo menos
 
 Plano completo: [PLANO-GLOBO-CAVAS-MINERACAO.md](../../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
 (item **B4** da [fila do ESTADO.md](../../02-estado/ESTADO.md#fila-viva);
-pedido do dono em 24/09). Objetivo: achar mineração sem cadastro ANM no
+pedido do dev em 24/09). Objetivo: achar mineração sem cadastro ANM no
 globo 3D, com satélite e modelos rodando **locais** (Chinese-CLIP +
-Qwen2.5-VL; nada de API de nuvem — decisão do dono 24/09).
+Qwen2.5-VL; nada de API de nuvem — decisão do dev 24/09).
 
 A Fase 0 é só medição e não disputa deploy — cabe numa sessão:
 
 | # | Medir | Saída |
 |---|---|---|
-| M1 | Conta Copernicus CDSE + 1 cena Sentinel-2 de MG | cadastro do dono (5 min) + cena baixada |
+| M1 | Conta Copernicus CDSE + 1 cena Sentinel-2 de MG | cadastro do dev (5 min) + cena baixada |
 | M2 | Monitor da Mineração (MapBiomas): shapefile e atributos | decisão anotada no FONTES |
 | M3 | Licença de cada modelo no card do Hugging Face | linha no FONTES |
 | M4 | Throughput de embedding na RTX 3050 (crops/s) | número com data |
@@ -266,6 +266,6 @@ Depois: gate G0 (MapBiomas baseline?) e Fase 1 (calibração em MG).
 
 ## Origem
 
-Pedido do dono em 19/09 à noite: resgatar pendências, ranquear por
+Pedido do dev em 19/09 à noite: resgatar pendências, ranquear por
 dificuldade e documentar para as próximas sessões. Item 10 acrescentado
 em 24/09/2026 (sessão `/cp`, pedido do globo 3D).

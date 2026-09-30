@@ -91,7 +91,7 @@ function publicar(texto: string) {
     const promptFile = join(tmp, "prompt.md");
     const instrucao = [
       "Sociedade de manutencao do repositorio. Um relatorio curto de estagio do app foi gerado",
-      "(arquivo abaixo). Apresente-o ao dono de forma concisa, destacando: o que esta no ar,",
+      "(arquivo abaixo). Apresente-o ao dev de forma concisa, destacando: o que esta no ar,",
       "o que tem trabalho em andamento nao commitado, e o que esta bloqueado. Nao execute",
       "nenhuma acao de codigo — somente reporte.",
       "",

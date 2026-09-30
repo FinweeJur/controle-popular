@@ -20,7 +20,7 @@
 
 ## Propósito
 
-O dono pediu "melhorar os scrapers" (03/09). Uma varredura medida de subagente
+O dev pediu "melhorar os scrapers" (03/09). Uma varredura medida de subagente
 diagnosticou a esteira inteira. Este plano grava o diagnóstico e ranqueia as
 corrições; o que coube em código já saiu junto (helper `lib/coleta/
 fetch-resiliente.ts`, publicado em 8829ada).
@@ -48,7 +48,7 @@ Medido de: `picoclaw-fontes-status.json` (01/09), 5 rodadas do
 ## Diagnóstico do "anda mal"
 
 **Achado estrutural:** os coletores de notícias e diário oficial — exatamente
-os que o dono sente faltando — **não têm agendamento nenhum**. A task das
+os que o dev sente faltando — **não têm agendamento nenhum**. A task das
 03:30 chama `rotina-coletas.mts --listar` (que só lista!) e o
 `orquestrador-rotinas.mts` é PoC com dados hardcoded. Não é parser quebrado:
 é cron que não existe. Os parsers estão saudáveis (medido: SIGPub 222
@@ -85,7 +85,7 @@ retry nenhum (zero). Por isso uma instabilidade de 30s derruba a rodada.
 
 | # | Ação | Custo | Benefício |
 |---|---|---|---|
-| 1 | Ligar `sigpub.py`, `domweb.py` e `noticias-paraopeba.py` na rotina da madrugada (3 entradas no MAPA_SCRIPTS do `rotina-coletas.mts`) | 1h | **alto** — é o dado que o dono sente faltando |
+| 1 | Ligar `sigpub.py`, `domweb.py` e `noticias-paraopeba.py` na rotina da madrugada (3 entradas no MAPA_SCRIPTS do `rotina-coletas.mts`) | 1h | **alto** — é o dado que o dev sente faltando |
 | 2 | Consertar os slugs do watcher (FUNAI → `/geoserver/ows`; DataJud → caminho da API; ComunicaBR → fixar `presidencia.gov.br`) | 1h | alto — derruba 3 🔴 do painel |
 | 3 | Migrar `comunicabr`, `fgv` e `convenios-federais-mg` para o `fetch-resiliente` | 2–3h | médio — mata o retry zero do FGV |
 | 4 | Registrar PNCP no `MAPA_SCRIPTS` com janela própria e checkpoint de página | 2h | médio — 504 é da fonte; com checkpoint a rodada parcial vira progresso |
@@ -108,7 +108,7 @@ rodada de verificação seca antes.
 
 ## Origem / Histórico
 
-- Pedido do dono em 03/09 ("melhorar os scrapers"); diagnóstico medido por
+- Pedido do dev em 03/09 ("melhorar os scrapers"); diagnóstico medido por
   subagente (varredura das 19h, `deleg_a2264e9a`/task 3), top-5 testado ao
   vivo no mesmo dia sem WinError 10013 (rede estava OK na janela).
 - 04/09: esteira reordenada com deploy às 05:50 e report com retry —

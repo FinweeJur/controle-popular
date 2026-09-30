@@ -379,7 +379,7 @@ export function obterEstudoAusenteDoAcervo(): CasamentoEstudoNoticia {
     const encontrado = casamentos.find((c) => c.noticia.id === "er04");
     if (!encontrado) {
       throw new Error(
-        "sintese-integrada: notícia er04 não existe mais em CASAMENTOS_ESTUDO_NOTICIA — o achado de lacuna citado pela tarefa precisa de novo dono."
+        "sintese-integrada: notícia er04 não existe mais em CASAMENTOS_ESTUDO_NOTICIA — o achado de lacuna citado pela tarefa precisa de novo dev."
       );
     }
     estudoAusenteCache = encontrado;

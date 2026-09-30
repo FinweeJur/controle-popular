@@ -29,7 +29,7 @@ Auto-exclusão da consulta: se --imagem for um arquivo já indexado, o
 rank 1 seria a própria imagem (cosseno 1.0) e não diria nada. Por padrão
 ela é pulada e marcada; use --manter-self para ver mesmo assim.
 
-Saída em texto legível (regra do dono: frase curta, número com fonte).
+Saída em texto legível (regra do dev: frase curta, número com fonte).
 --json devolve o mesmo resultado estruturado para consumo por script.
 
 Exemplos:

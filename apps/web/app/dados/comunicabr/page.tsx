@@ -249,7 +249,7 @@ export default async function ComunicaBRIndex() {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-display text-xl font-semibold">Cada número tem dono declarado</h2>
+        <h2 className="font-display text-xl font-semibold">Cada número tem fonte declarada</h2>
         <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
           É a vantagem rara desta fonte, e o motivo de ela valer apesar de ser peça de comunicação:
           cada indicador diz qual ministério o declarou, e a que data ele se refere. São{" "}

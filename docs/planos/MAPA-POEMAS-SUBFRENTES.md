@@ -9,13 +9,13 @@
 
 ## Sumário
 
-- [🎯 Regra do dono](#regra-do-dono)
+- [🎯 Regra do dev](#regra-do-dev)
 - [📖 Poemas do acervo (fonte: retrospectiva local do Kimi)](#poemas-do-acervo-fonte-retrospectiva-local-do-kimi)
 - [🗺️ Distribuição nas subfrentes "Nossos" (novas casas)](#distribuicao-nas-subfrentes-nossos-novas-casas)
 - [📏 Réguas do mapa](#reguas-do-mapa)
 - [⏭️ Próximo passo](#proximo-passo)
 
-## 🎯 Regra do dono
+## 🎯 Regra do dev
 
 **Nenhum poema do acervo é cortado.** 🚫✂️
 
@@ -89,4 +89,4 @@ Mesmo que seja para encerrar uma página com um poema de **tema vizinho**. 🌇
 
 ## ⏭️ Próximo passo
 
-Dono aprova o mapa → versos entram nas páginas das subfrentes quando elas forem criadas (Bloco C do plano).
+Dev aprova o mapa → versos entram nas páginas das subfrentes quando elas forem criadas (Bloco C do plano).

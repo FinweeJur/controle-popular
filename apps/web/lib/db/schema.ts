@@ -3184,7 +3184,7 @@ export const documentos_ambientais = pgTable("documentos_ambientais", {
 
 /**
  * Uma condicionante de licença/TAC. Status `cumprida`/`nao_cumprida`/
- * `parcial` exige `metodo_status <> 'sem_evidencia'` (decisão 1 do dono).
+ * `parcial` exige `metodo_status <> 'sem_evidencia'` (decisão 1 do dev).
  * Público acadêmico NÃO entra aqui (decisão 6) — ver
  * `lib/ambiental/publicacoes-barragens.ts`.
  */

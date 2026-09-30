@@ -28,15 +28,15 @@ este portal nem por modelo — se a fonte nao publica snippet, o campo fica vazi
 e a tela diz "sem resumo". Ver regra: "o numero vem do dado; o modelo, se
 houver, so embrulha".
 
-## Por que estas buscas (pedido do dono, 31/08/2026)
+## Por que estas buscas (pedido do dev, 31/08/2026)
 
-O dono pediu radar especifico sobre **reconhecimento de atingidos na Bahia**
+O dev pediu radar especifico sobre **reconhecimento de atingidos na Bahia**
 ("recentemente teve reconhecimento de atingidos da Bahia e tem mais noticias
 disso") alem de Mariana e Brumadinho. As buscas:
 
 | Busca | Cobre |
 |---|---|
-| atingidos Bahia barragem OU mineracao OU reconhecimento | o pedido do dono (BA) |
+| atingidos Bahia barragem OU mineracao OU reconhecimento | o pedido do dev (BA) |
 | atingidos Rio Doce Espirito Santo | a bacia do Doce atingida em ES |
 | Mariana Samarco Fundao reparacao | Mariana 2015 |
 | Brumadinho Vale Paraopeba reparacao | Brumadinho 2019 |

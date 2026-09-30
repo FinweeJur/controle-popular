@@ -80,7 +80,7 @@ Detalhar a execução das melhorias M7–M11 da curadoria OSS (2016-08-31), em o
 - Alerta: webhook para o Telegram (canário já existente).
 - **Fora da CI**: serviço local do home-pc, nunca CI.
 
-**Estado:** 🟡 planejado, bloqueado por infra (Podman não instalado). Reavaliar quando o dono instalar o Podman. **Ponto de retomada: [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md)** — instalação, watches com URLs medidas, alerta Telegram, verificação.
+**Estado:** 🟡 planejado, bloqueado por infra (Podman não instalado). Reavaliar quando o dev instalar o Podman. **Ponto de retomada: [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md)** — instalação, watches com URLs medidas, alerta Telegram, verificação.
 
 ## M10 — Migração do agendamento para n8n local
 
@@ -92,7 +92,7 @@ Detalhar a execução das melhorias M7–M11 da curadoria OSS (2016-08-31), em o
 - Workflow `madrugada`: Cron 03:30 → PicoClaw → Argus → LinkMender → condicional (disponibilidade < 70% → alerta Telegram).
 - Workflow `manha`: Cron 05:30 → Hermes → DocVault → Colibri → relatório.
 - Os scripts PowerShell **não são apagados**: viram contingência documentada (rollback imediato).
-- Custo real da migração: reescrever a orquestração em JSON de workflow + manter `scripts/.env` fora do n8n (segredos ficam no n8n? decisão do dono).
+- Custo real da migração: reescrever a orquestração em JSON de workflow + manter `scripts/.env` fora do n8n (segredos ficam no n8n? decisão do dev).
 
 **Estado:** 🟡 planejado, bloqueado por infra (Podman). Prioridade abaixo do M9 (o agendamento atual funciona e é testado diariamente). **Ponto de retomada: [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md)** — workflows espelhando as rotinas, contingência e validação de 3 dias.
 
@@ -129,7 +129,7 @@ Proibido em paralelo: dois agentes no `registry.ts`, na guarda de privacidade ou
 
 ## Decisões registradas
 
-- **Containers = Podman, não Docker Desktop** (decisão do dono, 31/08): daemonless e rootless, sem licença comercial restritiva nem daemon de VM com privilégios; WSL2 com Ubuntu já presente na máquina. Mesmas imagens OCI e `podman compose` compatível com o `docker-compose.yml` das ferramentas.
+- **Containers = Podman, não Docker Desktop** (decisão do dev, 31/08): daemonless e rootless, sem licença comercial restritiva nem daemon de VM com privilégios; WSL2 com Ubuntu já presente na máquina. Mesmas imagens OCI e `podman compose` compatível com o `docker-compose.yml` das ferramentas.
 - **M9 e M10 ficam bloqueados por infra (Podman ausente), não por escolha** — medição em 31/08: `docker: not found` e `podman: not found`, WSL2 presente.
 - **Dado pessoal de sócio**: CPF nunca sai do coletor do M8; só nome e identificador mascarado vão para o repo.
 - **Presidio é opcional e rule-only** — sem modelos de ML; guarda atual é a régua base.

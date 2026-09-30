@@ -132,7 +132,7 @@ export function listarAnos(): number[] {
 // ─── CSV ──────────────────────────────────────────────────────────────────
 
 /**
- * CSV do recorte FILTRADO na tela. BOM UTF-8 + separador `;` (regra do dono,
+ * CSV do recorte FILTRADO na tela. BOM UTF-8 + separador `;` (regra do dev,
  * AGENTS.md: Excel brasileiro abre tudo numa coluna e com acento quebrado
  * sem os dois). Valores com `;`, `"` ou quebra de linha são aspas duplas.
  */

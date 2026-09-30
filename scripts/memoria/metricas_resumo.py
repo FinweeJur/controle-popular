@@ -5,9 +5,9 @@ em `gera-calendario-insurgente.py` e sustentar a comparação antes x
 depois em `gera-doc-resumos-mistica.py`. É código puro — carrega os
 gazetteiros na importação e não toca em nenhum arquivo de saída.
 
-Regras do dono que este módulo implementa (30/09/2026):
+Regras do dev que este módulo implementa (30/09/2026):
 1. SEM FRASE REPETIDA: o mesmo texto não pode aparecer no resumo de
-   dois verbetes diferentes (o dono apontou "frases que parecem
+   dois verbetes diferentes (o dev apontou "frases que parecem
    repetidas" — parágrafos do MST que alimentam dias vizinhos).
 2. OS QUATRO ELEMENTOS: "todo resumo precisa ter quem (pessoa ou
    movimento), o quê (fato/luta), quando e onde (cidade/estado/país/
@@ -120,7 +120,7 @@ DEMONIMOS = (
 )
 
 # Regiões subnacionais e regiões do Brasil — "onde" aceita cidade,
-# estado, país e continente (dono, 30/09/2026), e as fontes citam
+# estado, país e continente (dev, 30/09/2026), e as fontes citam
 # Chiapas, Catalunha, Sibéria, o Sertão e o Nordeste sem cidade alguma.
 REGIOES = (
     # México (a Zapatista é de Chiapas)
@@ -267,7 +267,7 @@ def sem_acento(texto: str) -> str:
 def corta_paragrafos(resumo: str, max_frases: int = 2, cap: int = CAP_RESUMO) -> str:
     """Limita o resumo a `max_frases` frases e ao teto de caracteres.
 
-    Regra do dono (30/09/2026): cada história cabe em 2 parágrafos, "ainda
+    Regra do dev (30/09/2026): cada história cabe em 2 parágrafos, "ainda
     que um pouco grandes" — o excesso cansa e ocupa a tela inicial. A
     seleção (`escolhe`) pode devolver janelas de 3 a 5 frases quando elas
     trazem mais dos 4 elementos; aqui o texto volta ao teto de 1-2 frases
@@ -289,7 +289,7 @@ def frases60(resumo: str) -> set[str]:
 
     Frase curta ("Presos 83 homens e 13 mulheres.") é normal na fonte e
     pode repetir sem ser defeito; frase longa repetida é o defeito que o
-    dono apontou.
+    dev apontou.
     """
     return {
         re.sub(r"\s+", " ", sem_acento(f)).strip()
@@ -378,7 +378,7 @@ def mede(itens: list[tuple[str, str]]) -> dict:
     """Métricas de repetição e cobertura dos 4 elementos de uma série.
 
     `itens` = (titulo, resumo) na ordem das entradas. Repetições e a
-    cobertura principal são sobre o RESUMO — a regra do dono é "todo
+    cobertura principal são sobre o RESUMO — a regra do dev é "todo
     resumo precisa ter quem, o quê, quando e onde". `cobertura_com_titulo`
     mede o par título + resumo, que é o que o leitor realmente vê na
     tela (`MisticaDoDia.tsx` mostra ano + título + resumo juntos), e

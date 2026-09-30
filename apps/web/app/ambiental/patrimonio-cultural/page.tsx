@@ -16,7 +16,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/patrimonio-cultur
 
 /**
  * `/ambiental/patrimonio-cultural` — Tarefa 2b da unificação de legislação
- * (pedido do dono, 2026-08-13): "isso hoje NÃO está no portal — o acervo é
+ * (pedido do dev, 2026-08-13): "isso hoje NÃO está no portal — o acervo é
  * ambiental [...] tombamento restringe o que pode ser feito com um
  * território, exatamente como área protegida ambiental".
  *
@@ -41,7 +41,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/patrimonio-cultur
  * processo (o IEPHA não publica nenhuma — orientação oficial é ida
  * presencial à biblioteca do instituto).
  *
- * ═══ CARTÕES, GRÁFICO, CSV, FILTRO, ORDENAÇÃO (regra do dono, 2026-08-21) ═══
+ * ═══ CARTÕES, GRÁFICO, CSV, FILTRO, ORDENAÇÃO (regra do dev, 2026-08-21) ═══
  *
  * O gráfico pedido é "por município e por tipo de tombamento" — em vez de
  * dois desenhos separados, é UM só, empilhado (mesmo mecanismo de

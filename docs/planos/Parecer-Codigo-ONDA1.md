@@ -64,7 +64,7 @@ Test Files: 2 passed | Tests: 11 passed
 ## ⏭️ Recomendação
 
 Publicar a Onda 1 no GitHub após:
-1. Dono decidir quem publica (outra sessão ou via worktree limpo).
+1. Dev decidir quem publica (outra sessão ou via worktree limpo).
 2. `npx tsc --noEmit` + `npm test` verdes no repo inteiro.
 3. Link check das pontes (nenhuma rota 404).
 

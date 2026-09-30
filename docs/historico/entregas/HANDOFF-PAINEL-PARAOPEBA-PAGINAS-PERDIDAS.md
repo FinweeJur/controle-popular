@@ -15,7 +15,7 @@
 - [2. `page-portais` — 69 portais (recusa consciente, mantida)](#2-page-portais-69-portais-recusa-consciente-mantida)
 - [3. `page-clipping` — 59 matérias das instituições de justiça (a perda maior)](#3-page-clipping-59-matérias-das-instituições-de-justiça-a-perda-maior)
 - [4. `page-educacao` — 48 itens didáticos](#4-page-educacao-48-itens-didáticos)
-- [5. Ordem sugerida, se o dono mandar seguir](#5-ordem-sugerida-se-o-dono-mandar-seguir)
+- [5. Ordem sugerida, se o dev mandar seguir](#5-ordem-sugerida-se-o-dev-mandar-seguir)
 
 ## Propósito
 
@@ -27,7 +27,7 @@ cada array programaticamente sobre o arquivo-fonte. Nada aqui é estimativa.
 **Fonte medida:** `X:\DevCoder\Projetos html\painel-paraopeba (V1).html`
 (376.048 bytes, 365.010 caracteres, UTF-8 válido, sem `charset` declarado).
 
-**Não ingerir nada deste documento sem pedido do dono.** Ele existe para que
+**Não ingerir nada deste documento sem pedido do dev.** Ele existe para que
 o que falta seja uma tarefa com número, não uma lembrança.
 
 ---
@@ -147,7 +147,7 @@ Quatro estruturas, todas ausentes do portal:
 
 ---
 
-## 5. Ordem sugerida, se o dono mandar seguir
+## 5. Ordem sugerida, se o dev mandar seguir
 
 1. **`CLIPPING_DATA` (59)** — maior volume cívico, método já pronto e
    provado nas ATIs, risco baixo.
@@ -158,7 +158,7 @@ Quatro estruturas, todas ausentes do portal:
 4. **Métricas (8)** — só com re-apuração; não copiar.
 5. **`PORTALS_DATA` (69)** — segue recusado.
 
-Antes de qualquer um deles: **perguntar ao dono se existe versão mais nova
+Antes de qualquer um deles: **perguntar ao dev se existe versão mais nova
 do painel** que o `(V1)`. O survey de 13/08 viu uma, de 391.941 bytes. Se
 ela reaparecer, ela é a fonte — e os 46 itens das ATIs devem ser
 re-extraídos dela (mesmo script, é só trocar a constante `FONTE`).

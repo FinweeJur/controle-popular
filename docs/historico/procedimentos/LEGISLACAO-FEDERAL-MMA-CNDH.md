@@ -20,9 +20,9 @@
 
 ## Propósito
 
-O dono apontou a falha: `/ambiental/legislacao` tinha **6.378 normas e todas eram estaduais de Minas** (Siam 4.077, Semad 2.232, ALMG 69). **Nenhuma federal** — nem a Resolução Conama que rege o licenciamento que o próprio portal publica. Foi por isso que uma busca por proteção animal não achava ...
+O dev apontou a falha: `/ambiental/legislacao` tinha **6.378 normas e todas eram estaduais de Minas** (Siam 4.077, Semad 2.232, ALMG 69). **Nenhuma federal** — nem a Resolução Conama que rege o licenciamento que o próprio portal publica. Foi por isso que uma busca por proteção animal não achava ...
 
-O dono apontou a falha: `/ambiental/legislacao` tinha **6.378 normas e todas
+O dev apontou a falha: `/ambiental/legislacao` tinha **6.378 normas e todas
 eram estaduais de Minas** (Siam 4.077, Semad 2.232, ALMG 69). **Nenhuma
 federal** — nem a Resolução Conama que rege o licenciamento que o próprio
 portal publica. Foi por isso que uma busca por proteção animal não achava
@@ -122,7 +122,7 @@ Duas plataformas que não se falam, as duas colhidas:
   campos ficam nulos em vez de inventados.
 - Página do Decidim atualizada pela fonte em **2026-01-29**.
 
-**O teste que o dono pediu bate.** Buscando Brumadinho / Samarco / Mariana /
+**O teste que o dev pediu bate.** Buscando Brumadinho / Samarco / Mariana /
 Rio Doce nas ementas: **5 atos**, entre eles
 
 - **Resolução nº 1, de 19 de fevereiro de 2019** — "Aprova o Relatório da
@@ -313,11 +313,11 @@ portal existe para mostrar.
 O CNDH mediu **zero** ocorrências; a chamada está lá para que uma resolução
 futura não vaze.
 
-> **Pendência para o dono.** O arquivo com o CPF chegou a ser commitado e
+> **Pendência para o dev.** O arquivo com o CPF chegou a ser commitado e
 > pushado antes da correção (commit `e510f4e`). O conteúdo atual está limpo,
 > mas o histórico do Git ainda tem a versão antiga, e o repositório é público.
 > Limpar exige reescrever histórico já publicado (`git filter-repo` + push
-> forçado), o que afeta qualquer clone existente — é decisão de quem é dono do
+> forçado), o que afeta qualquer clone existente — é decisão de quem é dev do
 > repositório, não deste documento.
 
 ### A proteção animal, conferida nos arquivos
@@ -354,7 +354,7 @@ equivalente na legislação da Semad — não podiam aparecer na sondagem origin
 
 ### Tags de lugar
 
-O dono também pediu tags de nome próprio — "Serra do Curral", "Serra da
+O dev também pediu tags de nome próprio — "Serra do Curral", "Serra da
 Caraça", "Parque Estadual". A tag `serra_relevo` que existia responde *"esta
 norma fala de alguma serra"*; não responde *"quais normas tratam da Serra do
 Curral"*, que é a pergunta que alguém de fato faz.
