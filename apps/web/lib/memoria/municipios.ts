@@ -111,7 +111,7 @@ export const VERBETES_MUNICIPIO: Record<string, VerbeteMemoria[]> = {
         {
           autor: "Fundação Cultural Palmares",
           titulo: "Certificação Quilombola",
-          ano: "2008",
+          ano: "2026",
           url: "https://www.gov.br/palmares/pt-br/departamentos/protecao-preservacao-e-articulacao/certificacao-quilombola",
           orgao: "Fundação Cultural Palmares",
         },
@@ -141,6 +141,142 @@ export const VERBETES_MUNICIPIO: Record<string, VerbeteMemoria[]> = {
           ano: "2025",
           url: "https://memorialbrumadinho.org.br/memorial-brumadinho/sobre/",
           orgao: "Memorial Brumadinho — associação das famílias",
+        },
+      ],
+    },
+  ],
+
+  // ───────────────────────────────────────────────────────────────────
+  // DIAMANTINA (3121605) — a luta pelo Parque do Biribiri público.
+  // ───────────────────────────────────────────────────────────────────
+  "3121605": [
+    {
+      nivel: "municipio",
+      chave: "3121605",
+      titulo: "Parque do Biribiri público",
+      periodo: "desde 2026",
+      resumo:
+        "Moradoras e moradores de Diamantina se organizam para manter o Parque Estadual do Biribiri sob gestão pública, contra a concessão à iniciativa privada. A mobilização cobra participação da comunidade nas decisões sobre o parque.",
+      tipo: ["direitos", "resistencia"],
+      lugar: "Parque Estadual do Biribiri, Diamantina",
+      tom: "coragem",
+      fonte: [
+        {
+          autor: "Brasil de Fato",
+          titulo:
+            "Moradores de Diamantina (MG) lutam para manter Parque do Biribiri público",
+          ano: "2026",
+          url: "https://www.brasildefato.com.br/2026/07/06/moradores-de-diamantina-mg-lutam-para-manter-parque-do-biribiri-publico/",
+          orgao: "Brasil de Fato — imprensa popular",
+        },
+      ],
+    },
+  ],
+
+  // ───────────────────────────────────────────────────────────────────
+  // ITINGA (3134004) — resistência à mineração de lítio no Vale.
+  // ───────────────────────────────────────────────────────────────────
+  "3134004": [
+    {
+      nivel: "municipio",
+      chave: "3134004",
+      titulo: "Resistência à mineração de lítio",
+      periodo: "2023-2026",
+      resumo:
+        "O Complexo Grota do Cirilo, da Sigma Mineração, ocupa a divisa entre Itinga e Araçuaí, no Vale do Jequitinhonha. Comunidades do entorno relatam poeira, casas rachadas e isolamento, e cobram a consulta prévia às populações da região antes da lavra.",
+      tipo: ["campo", "direitos", "resistencia"],
+      lugar: "Complexo Grota do Cirilo (divisa Itinga–Araçuaí)",
+      tom: "coragem",
+      fonte: [
+        {
+          autor: "Brasil de Fato",
+          titulo:
+            "Sigma segue operando no Jequitinhonha (MG) mesmo após Justiça paralisar lavra, dizem moradores",
+          ano: "2026",
+          url: "https://www.brasildefato.com.br/2026/09/16/sigma-segue-operando-no-jequitinhonha-mg-mesmo-apos-justica-paralisar-lavra-dizem-moradores/",
+          orgao: "Brasil de Fato — imprensa popular",
+        },
+      ],
+    },
+  ],
+
+  // ───────────────────────────────────────────────────────────────────
+  // GOVERNADOR VALADARES (3127701) — atingidos do Rio Doce.
+  // ───────────────────────────────────────────────────────────────────
+  "3127701": [
+    {
+      nivel: "municipio",
+      chave: "3127701",
+      titulo: "Atingidos do Rio Doce cobram reparação",
+      periodo: "desde 2015",
+      resumo:
+        "Depois do rompimento da barragem de Fundão, moradoras e moradores de Governador Valadares, na Bacia do Rio Doce, se organizaram em atos para cobrar reparação e água limpa. A cidade enfrentou a interrupção do abastecimento.",
+      tipo: ["direitos", "resistencia"],
+      lugar: "Governador Valadares",
+      tom: "coragem",
+      fonte: [
+        {
+          autor: "Brasil de Fato",
+          titulo:
+            "Ato em Governador Valadares (MG) denuncia descaso da Samarco com atingidos",
+          ano: "2016",
+          url: "https://www.brasildefato.com.br/2016/04/18/ato-em-governador-valadares-mg-denuncia-descaso-da-samarco-com-atingidos/",
+          orgao: "Brasil de Fato — imprensa popular",
+        },
+      ],
+    },
+  ],
+
+  // ───────────────────────────────────────────────────────────────────
+  // FELISBURGO (3125705) — o massacre de 2003 (conflito no campo).
+  // ───────────────────────────────────────────────────────────────────
+  "3125705": [
+    {
+      nivel: "municipio",
+      chave: "3125705",
+      titulo: "Massacre de Felisburgo",
+      periodo: "2003",
+      resumo:
+        "Em 20 de novembro de 2003, cinco militantes do MST foram assassinados em Felisburgo, no interior de Minas Gerais. O crime é lembrado como um dos episódios mais graves da luta pela terra no estado.",
+      tipo: ["campo", "direitos"],
+      lugar: "Felisburgo",
+      guarda: "reverente",
+      tom: "luto",
+      fonte: [
+        {
+          autor: "Brasil de Fato",
+          titulo:
+            "Massacre de Felisburgo, que assassinou cinco militantes do MST, completa 20 anos sem justiça",
+          ano: "2024",
+          url: "https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/",
+          orgao: "Brasil de Fato — imprensa popular",
+        },
+      ],
+    },
+  ],
+
+  // ───────────────────────────────────────────────────────────────────
+  // MARIANA (3140001) — o rompimento da barragem de Fundão, 2015.
+  // ───────────────────────────────────────────────────────────────────
+  "3140001": [
+    {
+      nivel: "municipio",
+      chave: "3140001",
+      titulo: "Rompimento da barragem de Fundão",
+      periodo: "2015",
+      resumo:
+        "Em 5 de novembro de 2015, o rompimento da barragem de Fundão, da Samarco (Vale e BHP), destruiu o distrito de Bento Rodrigues e matou 19 pessoas. A lama seguiu pelo rio Doce; a luta das pessoas atingidas por reparação continua.",
+      tipo: ["direitos", "resistencia"],
+      lugar: "Bento Rodrigues, Mariana",
+      guarda: "reverente",
+      tom: "luto",
+      fonte: [
+        {
+          autor: "Movimento dos Atingidos por Barragens",
+          titulo: "Rompimento da barragem de Fundão em Mariana (MG)",
+          ano: "2026",
+          url: "https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/",
+          orgao: "MAB — Movimento dos Atingidos por Barragens",
         },
       ],
     },

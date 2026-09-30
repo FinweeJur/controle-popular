@@ -507,7 +507,6 @@ function deMemoria(): AcervoFonte[] {
     ...(CAMADAS_MEMORIA.pais["br"] ?? []),
     ...Object.values(CAMADAS_MEMORIA.regiao).flat(),
     ...Object.values(CAMADAS_MEMORIA.uf).flat(),
-    ...Object.values(CAMADAS_MEMORIA.municipio).flat(),
   ].filter(verbeteValido);
 
   const fontes: AcervoFonte[] = [];

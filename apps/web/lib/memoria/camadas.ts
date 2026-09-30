@@ -930,6 +930,9 @@ export const UF_POR_MUNICIPIO: Record<string, string> = {
   "3134004": "mg",
   "3109006": "mg",
   "3131307": "mg",
+  "3127701": "mg",
+  "3125705": "mg",
+  "3140001": "mg",
 };
 
 /**

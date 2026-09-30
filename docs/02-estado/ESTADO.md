@@ -171,14 +171,16 @@ Runbooks: [`planos/`](../planos/).
 
 **30/09/2026** — F3 da memória: a camada município, com fonte local fechada.
 
-- `apps/web/lib/memoria/municipios.ts`: **4 verbetes municipais** com fonte
+- `apps/web/lib/memoria/municipios.ts`: **9 verbetes municipais** com fonte
   conferida na coleta — Betim (caminhada pelo Rio Paraopeba, Brasil de Fato,
   2022), Ipatinga (Massacre de Ipatinga, 1963, Arquivo Nacional), Araçuaí
-  (Quilombo Baú, Comissão Pró-Índio/Palmares) e Brumadinho (Memorial
-  Brumadinho, 2019).
-- `CAMADAS_MEMORIA.municipio` deixa de ser vazio e entra no RAG do
-  assistente; `UF_POR_MUNICIPIO` ganha Ipatinga (3131307) e Brumadinho
-  (3109006).
+  (Quilombo Baú, Comissão Pró-Índio/Palmares), Brumadinho (Memorial
+  Brumadinho, 2019), Diamantina (Parque do Biribiri público), Itinga
+  (resistência à mineração de lítio), Governador Valadares (atingidos do Rio
+  Doce), Felisburgo (Massacre de Felisburgo, 2003) e Mariana (barragem de
+  Fundão, 2015).
+- `CAMADAS_MEMORIA.municipio` deixa de ser vazio; `UF_POR_MUNICIPIO` cresce
+  com os códigos IBGE das cidades com verbete.
 - Lacuna declarada para as demais cidades: sem fonte local fechada, o
   cartão desce para o estado, a região ou o país — nunca marco inventado.
 - Verificação: 1.949 testes vitest + 168 do globo verdes; `tsc --noEmit`

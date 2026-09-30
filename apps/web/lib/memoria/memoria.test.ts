@@ -145,12 +145,12 @@ describe("fontesPrimarias — a fonte terciária não decide", () => {
 
 describe("resolverMemoria — a escada da memória", () => {
   it("cai para a UF quando não há verbete do município", () => {
-    // Diamantina (3121605) ainda não tem verbete próprio na camada
-    // município; a escada sobe para o degrau de Minas Gerais.
-    const r = resolverMemoria("3121605", CAMADAS_MEMORIA);
+    // São Paulo (3550308) tem rota no portal, mas ainda não tem verbete
+    // próprio na camada município; a escada sobe para o degrau de SP.
+    const r = resolverMemoria("3550308", CAMADAS_MEMORIA);
     expect(r).not.toBeNull();
     expect(r?.nivel).toBe("uf");
-    expect(r?.verbete.chave).toBe("mg");
+    expect(r?.verbete.chave).toBe("sp");
   });
 
   it("acha o verbete do município antes de subir para a UF", () => {
@@ -242,7 +242,10 @@ describe("camadas curadas", () => {
     expect(chaves.length).toBeGreaterThanOrEqual(3);
     // As cidades com verbete local desta rodada do F3.
     expect(chaves).toEqual(
-      expect.arrayContaining(["3106705", "3131307", "3103405", "3109006"])
+      expect.arrayContaining([
+        "3106705", "3131307", "3103405", "3109006",
+        "3121605", "3134004", "3127701", "3125705", "3140001",
+      ])
     );
   });
 

@@ -58,8 +58,9 @@ lacuna é informação.
 **Medição:** 853 municípios em MG (`apps/web/data/municipios-mg.json`) e
 5.570 no Brasil (`municipios-brasil.json`, 1,26 MB). As camadas país,
 região e UF estão completas (6 + 5 + 27 verbetes, F2). A camada município
-abriu no F3 (medido 30/09/2026): **4 verbetes com fonte local fechada** —
-Betim, Ipatinga, Araçuaí e Brumadinho em `lib/memoria/municipios.ts`.
+abriu no F3 (medido 30/09/2026): **9 verbetes com fonte local fechada** em
+`lib/memoria/municipios.ts` — Betim, Ipatinga, Araçuaí, Brumadinho,
+Diamantina, Itinga, Governador Valadares, Felisburgo e Mariana.
 
 ## Princípios: a memória aqui não é enfeite
 
@@ -259,7 +260,7 @@ deste município com fonte fechada".
 | **F0 — inventário** | mapa do que existe (medido acima) + lista de URLs conferidas por fonte | 0,5 dia | cada fonte da tabela tem URL aberta e verificada, ou é descartada |
 | **F1 — esquema e guarda** | `lib/memoria/` com as 4 camadas + `memoria.test.ts` (fonte obrigatória, código IBGE, `memoria: null` não inventa) | 1 dia | testes cobrem as guardas editoriais acima |
 | **F2 — camadas país, região, UF** | ~10 (país) + 5 (regiões) + 27 (UFs) verbetes, todos com fonte | 3-5 dias | toda página tem contexto mínimo com fonte |
-| **F3 — piloto MG municipal** | 20-30 cidades com verbete (as 6 atuais completas + maiores + territórios de luta) | 5-8 dias | 🚧 em andamento: 4 verbetes com fonte local fechada (Betim, Ipatinga, Araçuaí, Brumadinho) em `lib/memoria/municipios.ts`, medido 30/09/2026 — faltam as demais cidades do piloto |
+| **F3 — piloto MG municipal** | 20-30 cidades com verbete (as 6 atuais completas + maiores + territórios de luta) | 5-8 dias | 🚧 em andamento: 9 verbetes com fonte local fechada em `lib/memoria/municipios.ts`, medido 30/09/2026 — faltam as demais cidades do piloto |
 | **F4 — escala MG** | rumo aos 100 municípios, por ciclos | contínuo | cobertura medida em `/cidades` |
 | **F5 — UI e páginas** | cartão-carimbo v2, linha do tempo, blocos nas frentes, `/cidades` de cobertura | 3-4 dias | acessibilidade e impressão conferidas em cada tela |
 | **F6 — RAG e exportação** | verbetes no assistente + CSV/print + tags | 2 dias | resposta do chatbot cita fonte oficial |
