@@ -146,7 +146,8 @@ Consumidores únicos verificados: repasse → `/[municipio]/prefeitura`; risco �
   - `localhost`/`127.0.0.1`/`::1` → `pg` (TCP, build local)
   - `*.neon.tech` → `@neondatabase/serverless` (HTTP protocolo Neon)
   - qualquer outro hostname → `pg` (TCP, ex: Guara Cloud, Supabase, RDS)
-- **Fallback**: se o primary falhar e `DATABASE_URL_NEON` estiver configurada, tenta a Neon automaticamente. Útil quando o Guara Cloud (ou outro Postgres remoto) está fora.
+- **Fallback de conexão**: se o primary falhar AO CRIAR a conexão e `DATABASE_URL_NEON` estiver configurada, `getDb()` tenta a Neon.
+- **Fallback por consulta (cadeia A→B→D)** — `lib/db/reserva.ts`: o incidente real foi o Guara **conectar mas vir vazio** (ETL não rodou contra ele), e a página mostrar "ainda não rodou contra este banco". `comBancoReserva(consulta, { vazio, padrao, rotulo })` roda a consulta no plano A (`DATABASE_URL`, Guara); se vier vazia ou der erro, roda a MESMA consulta no plano B (`DATABASE_URL_NEON`) e depois no plano D (`DATABASE_URL_HOMEPC`/`DATABASE_URL_RESERVA`, o Postgres do home-pc). A primeira resposta não vazia vence e o log diz qual banco respondeu. **Plano C** é a rota dinâmica em runtime (`.din.ts`) — comportamento de página, não de conexão. Aplicado às leituras de `/ambiental/licenciamento`, `/ambiental/copam`, `/ambiental/legislacao` e `/ambiental/patrimonio-cultural`.
 - `getDb()` retorna `null` sem `DATABASE_URL` — página renderiza estado vazio, nunca lança; isso permite `next build` sem banco.
 - Local: se `DATABASE_URL` aponta para `localhost`, usa `pg` via `process.getBuiltinModule` (escondido do bundler — `pg` é devDependency). Caminho só roda em build.
 - D1: `lib/db/clientD1.ts` — escritas de runtime.

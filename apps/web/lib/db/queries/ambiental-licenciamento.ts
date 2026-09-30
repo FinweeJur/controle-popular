@@ -1,5 +1,5 @@
 import { asc, desc, eq, isNotNull, isNull, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { ambiental_licenciamento, ref_municipios_mg } from "@/lib/db/schema";
 import { extrairTagsDeCampos } from "@/lib/tags";
 import { REGRAS_TAGS_LICENCIAMENTO } from "@/lib/ambiental/tags-licenciamento";
@@ -97,42 +97,48 @@ export interface ContagemLicenciamento {
  * `app/ambiental/page.tsx`).
  */
 export async function contarLicenciamento(): Promise<ContagemLicenciamento> {
-  const db = getDb();
-  if (!db) return { total: 0, porSetor: [], porModalidade: [], porClasse: [] };
+  return comBancoReserva(
+    async (db) => {
+      const [totalRow] = await db
+        .select({ n: sql<number>`count(*)::int` })
+        .from(ambiental_licenciamento);
 
-  const [totalRow] = await db
-    .select({ n: sql<number>`count(*)::int` })
-    .from(ambiental_licenciamento);
+      const porSetor = await db
+        .select({
+          letra: ambiental_licenciamento.setor_letra,
+          rotulo: ambiental_licenciamento.setor_rotulo,
+          total: sql<number>`count(*)::int`,
+        })
+        .from(ambiental_licenciamento)
+        .groupBy(ambiental_licenciamento.setor_letra, ambiental_licenciamento.setor_rotulo)
+        .orderBy(asc(ambiental_licenciamento.setor_letra));
 
-  const porSetor = await db
-    .select({
-      letra: ambiental_licenciamento.setor_letra,
-      rotulo: ambiental_licenciamento.setor_rotulo,
-      total: sql<number>`count(*)::int`,
-    })
-    .from(ambiental_licenciamento)
-    .groupBy(ambiental_licenciamento.setor_letra, ambiental_licenciamento.setor_rotulo)
-    .orderBy(asc(ambiental_licenciamento.setor_letra));
+      const porModalidade = await db
+        .select({
+          modalidade: ambiental_licenciamento.modalidade,
+          total: sql<number>`count(*)::int`,
+        })
+        .from(ambiental_licenciamento)
+        .groupBy(ambiental_licenciamento.modalidade)
+        .orderBy(desc(sql`count(*)`));
 
-  const porModalidade = await db
-    .select({
-      modalidade: ambiental_licenciamento.modalidade,
-      total: sql<number>`count(*)::int`,
-    })
-    .from(ambiental_licenciamento)
-    .groupBy(ambiental_licenciamento.modalidade)
-    .orderBy(desc(sql`count(*)`));
+      const porClasse = await db
+        .select({
+          classe: ambiental_licenciamento.classe,
+          total: sql<number>`count(*)::int`,
+        })
+        .from(ambiental_licenciamento)
+        .groupBy(ambiental_licenciamento.classe)
+        .orderBy(asc(ambiental_licenciamento.classe));
 
-  const porClasse = await db
-    .select({
-      classe: ambiental_licenciamento.classe,
-      total: sql<number>`count(*)::int`,
-    })
-    .from(ambiental_licenciamento)
-    .groupBy(ambiental_licenciamento.classe)
-    .orderBy(asc(ambiental_licenciamento.classe));
-
-  return { total: totalRow?.n ?? 0, porSetor, porModalidade, porClasse };
+      return { total: totalRow?.n ?? 0, porSetor, porModalidade, porClasse };
+    },
+    {
+      vazio: (r) => r.total === 0,
+      padrao: { total: 0, porSetor: [], porModalidade: [], porClasse: [] },
+      rotulo: "licenciamento",
+    }
+  );
 }
 
 export interface LicenciamentoPorAno {
@@ -155,25 +161,31 @@ export interface ContagemLicenciamentoPorAno {
  * caírem num "ano" inventado.
  */
 export async function contarLicenciamentoPorAno(): Promise<ContagemLicenciamentoPorAno> {
-  const db = getDb();
-  if (!db) return { porAno: [], semDataEmissao: 0 };
+  return comBancoReserva(
+    async (db) => {
+      const porAno = await db
+        .select({
+          ano: sql<number>`extract(year from ${ambiental_licenciamento.data_emissao})::int`,
+          total: sql<number>`count(*)::int`,
+        })
+        .from(ambiental_licenciamento)
+        .where(isNotNull(ambiental_licenciamento.data_emissao))
+        .groupBy(sql`extract(year from ${ambiental_licenciamento.data_emissao})`)
+        .orderBy(sql`extract(year from ${ambiental_licenciamento.data_emissao}) asc`);
 
-  const porAno = await db
-    .select({
-      ano: sql<number>`extract(year from ${ambiental_licenciamento.data_emissao})::int`,
-      total: sql<number>`count(*)::int`,
-    })
-    .from(ambiental_licenciamento)
-    .where(isNotNull(ambiental_licenciamento.data_emissao))
-    .groupBy(sql`extract(year from ${ambiental_licenciamento.data_emissao})`)
-    .orderBy(sql`extract(year from ${ambiental_licenciamento.data_emissao}) asc`);
+      const [semData] = await db
+        .select({ n: sql<number>`count(*)::int` })
+        .from(ambiental_licenciamento)
+        .where(isNull(ambiental_licenciamento.data_emissao));
 
-  const [semData] = await db
-    .select({ n: sql<number>`count(*)::int` })
-    .from(ambiental_licenciamento)
-    .where(isNull(ambiental_licenciamento.data_emissao));
-
-  return { porAno, semDataEmissao: semData?.n ?? 0 };
+      return { porAno, semDataEmissao: semData?.n ?? 0 };
+    },
+    {
+      vazio: (r) => r.porAno.length === 0 && r.semDataEmissao === 0,
+      padrao: { porAno: [], semDataEmissao: 0 },
+      rotulo: "licenciamento",
+    }
+  );
 }
 
 export interface MunicipioComLicenciamento {
@@ -188,44 +200,51 @@ export interface MunicipioComLicenciamento {
  * `generateStaticParams` de `/ambiental/licenciamento/municipio/[idIbge]`.
  */
 export async function listarMunicipiosComLicenciamento(): Promise<MunicipioComLicenciamento[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .select({
-      idIbge: ambiental_licenciamento.id_municipio,
-      nome: ref_municipios_mg.nome,
-      total: sql<number>`count(*)::int`,
-    })
-    .from(ambiental_licenciamento)
-    .innerJoin(ref_municipios_mg, eq(ambiental_licenciamento.id_municipio, ref_municipios_mg.id_ibge))
-    .groupBy(ambiental_licenciamento.id_municipio, ref_municipios_mg.nome)
-    .orderBy(desc(sql`count(*)`));
-  return linhas;
+  return comBancoReserva(
+    async (db) =>
+      db
+        .select({
+          idIbge: ambiental_licenciamento.id_municipio,
+          nome: ref_municipios_mg.nome,
+          total: sql<number>`count(*)::int`,
+        })
+        .from(ambiental_licenciamento)
+        .innerJoin(ref_municipios_mg, eq(ambiental_licenciamento.id_municipio, ref_municipios_mg.id_ibge))
+        .groupBy(ambiental_licenciamento.id_municipio, ref_municipios_mg.nome)
+        .orderBy(desc(sql`count(*)`)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "licenciamento" }
+  );
 }
 
 /** Nome oficial de um município (de `ref_municipios_mg`), para o título da
  * página — não confundir com `municipioFonte` de cada linha, que é a
  * grafia crua da fonte (F0 §1.2: nome, não código IBGE). */
 export async function nomeMunicipioMg(idIbge: string): Promise<string | null> {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select({ nome: ref_municipios_mg.nome })
-    .from(ref_municipios_mg)
-    .where(eq(ref_municipios_mg.id_ibge, idIbge))
-    .limit(1);
-  return linha?.nome ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select({ nome: ref_municipios_mg.nome })
+        .from(ref_municipios_mg)
+        .where(eq(ref_municipios_mg.id_ibge, idIbge))
+        .limit(1);
+      return linha?.nome ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "licenciamento" }
+  );
 }
 
 /** Todas as licenças de um município, mais recente primeiro (por data de
  * emissão; licenças sem data — poucas — vão ao final). */
 export async function listarLicencasPorMunicipio(idIbge: string): Promise<LicencaAmbiental[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .select()
-    .from(ambiental_licenciamento)
-    .where(eq(ambiental_licenciamento.id_municipio, idIbge))
-    .orderBy(desc(ambiental_licenciamento.data_emissao), asc(ambiental_licenciamento.setor_letra));
-  return linhas.map(paraLicenca);
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select()
+        .from(ambiental_licenciamento)
+        .where(eq(ambiental_licenciamento.id_municipio, idIbge))
+        .orderBy(desc(ambiental_licenciamento.data_emissao), asc(ambiental_licenciamento.setor_letra));
+      return linhas.map(paraLicenca);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "licenciamento" }
+  );
 }

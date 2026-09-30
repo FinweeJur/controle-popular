@@ -126,6 +126,19 @@ function criar(url: string) {
   return drizzle(neon(url), { schema });
 }
 
+/**
+ * Cria a conexão para QUALQUER URL, escolhendo o driver pelo hostname
+ * (localhost → `pg`; `*.neon.tech` → HTTP da Neon; resto → `pg`).
+ *
+ * Existe para a cadeia de reserva (`lib/db/reserva.ts`) montar a conexão
+ * de um banco alternativo sem repetir a regra de detecção de driver.
+ */
+export function criarConexao(url: string): DB {
+  if (ehPostgresLocal(url)) return criarLocal(url);
+  if (ehNeon(url)) return criar(url);
+  return criarLocal(url);
+}
+
 let memo: DB | null | undefined;
 
 /**
@@ -137,44 +150,27 @@ let memo: DB | null | undefined;
  * rodar sem banco — sem isso, os ~50 arquivos que tocam dados passariam a
  * quebrar o build em qualquer ambiente sem credencial (CI, clone novo).
  *
- * FALLBACK: se o primary falhar e `DATABASE_URL_NEON` existir, tenta a Neon.
- * Isso garante que o site funcione mesmo quando o Postgres primary (ex:
- * Guara Cloud) está indisponível.
+ * FALLBACK DE CONEXÃO: se o primary falhar ao CRIAR a conexão e
+ * `DATABASE_URL_NEON` existir, tenta a Neon. O caso "conecta mas está
+ * vazio" NÃO é tratado aqui — quem trata é `comBancoReserva()`, por
+ * consulta (`lib/db/reserva.ts`).
  */
 export function getDb(): DB | null {
   if (memo !== undefined) return memo;
   const url = process.env.DATABASE_URL;
   if (!url) return (memo = null);
 
-  const urlNeon = process.env.DATABASE_URL_NEON;
-
-  // 1. Localhost → pg driver (build local, nunca muda)
-  if (ehPostgresLocal(url)) {
-    try {
-      return (memo = criarLocal(url));
-    } catch (e) {
-      console.error("[getDb] falhou ao criar conexao local; seguindo sem banco:", e);
-      return (memo = null);
-    }
-  }
-
-  // 2. Neon (HTTP protocol) ou Postgres remoto (TCP padrão, ex: Guara Cloud)
   try {
-    if (ehNeon(url)) {
-      return (memo = criar(url));
-    }
-    // Qualquer outro host remoto (Guara Cloud, Supabase, RDS, etc.)
-    // usa o pg driver via TCP — mesmo mecanismo do build local
-    return (memo = criarLocal(url));
+    return (memo = criarConexao(url));
   } catch (e) {
     console.error("[getDb] primary falhou:", e instanceof Error ? e.message : e);
   }
 
-  // 3. Fallback: se primary falhou e Neon está configurada, tenta Neon
+  const urlNeon = process.env.DATABASE_URL_NEON;
   if (urlNeon && urlNeon !== url) {
     try {
-      console.info("[getDb] tentando fallback para Neon...");
-      return (memo = criar(urlNeon));
+      console.info("[getDb] tentando fallback de conexão para Neon...");
+      return (memo = criarConexao(urlNeon));
     } catch (e) {
       console.error("[getDb] fallback Neon falhou:", e instanceof Error ? e.message : e);
     }

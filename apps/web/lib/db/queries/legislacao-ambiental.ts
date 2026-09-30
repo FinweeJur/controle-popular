@@ -1,5 +1,5 @@
 import { desc, sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { ambiental_legislacao } from "@/lib/db/schema";
 
 /**
@@ -88,13 +88,16 @@ function paraLinha(r: typeof ambiental_legislacao.$inferSelect): LegislacaoAmbie
  *  `id_fonte`/timestamps — a tela não precisa, e cada campo a menos é
  *  bytes a menos indo para o navegador num corpus deste tamanho. */
 export async function listarLegislacaoAmbiental(): Promise<LegislacaoAmbientalRow[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .select()
-    .from(ambiental_legislacao)
-    .orderBy(sql`${ambiental_legislacao.data} desc nulls last`, desc(ambiental_legislacao.ano));
-  return linhas.map(paraLinha);
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select()
+        .from(ambiental_legislacao)
+        .orderBy(sql`${ambiental_legislacao.data} desc nulls last`, desc(ambiental_legislacao.ano));
+      return linhas.map(paraLinha);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "legislacao" }
+  );
 }
 
 export interface ContagemLegislacaoAmbiental {
@@ -104,26 +107,28 @@ export interface ContagemLegislacaoAmbiental {
 
 /** Card da home de `/ambiental` — número real, não estimativa. */
 export async function contarLegislacaoAmbiental(): Promise<ContagemLegislacaoAmbiental> {
-  const db = getDb();
-  const vazio: ContagemLegislacaoAmbiental = {
-    total: 0,
-    porFonte: Object.fromEntries(FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, 0])) as Record<
-      FonteLegislacaoAmbiental,
-      number
-    >,
-  };
-  if (!db) return vazio;
-
-  const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; n: number }>(sql`
-    select fonte, count(*)::int as n from ambiental_legislacao group by fonte
-  `);
-  const porFonte = { ...vazio.porFonte };
-  let total = 0;
-  for (const l of linhas.rows ?? []) {
-    porFonte[l.fonte] = l.n;
-    total += l.n;
-  }
-  return { total, porFonte };
+  const vazioPorFonte = Object.fromEntries(
+    FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, 0])
+  ) as Record<FonteLegislacaoAmbiental, number>;
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; n: number }>(sql`
+        select fonte, count(*)::int as n from ambiental_legislacao group by fonte
+      `);
+      const porFonte = { ...vazioPorFonte };
+      let total = 0;
+      for (const l of linhas.rows ?? []) {
+        porFonte[l.fonte] = l.n;
+        total += l.n;
+      }
+      return { total, porFonte };
+    },
+    {
+      vazio: (r) => r.total === 0,
+      padrao: { total: 0, porFonte: vazioPorFonte },
+      rotulo: "legislacao",
+    }
+  );
 }
 
 export interface CoberturaTemasLegislacaoAmbiental {
@@ -141,31 +146,33 @@ export interface CoberturaTemasLegislacaoAmbiental {
  *  honestidade que a tarefa pediu: "sem tema atribuído" é contado, não
  *  escondido atrás de um balde "outros". */
 export async function contarCoberturaTemasLegislacaoAmbiental(): Promise<CoberturaTemasLegislacaoAmbiental> {
-  const db = getDb();
-  const vazio: CoberturaTemasLegislacaoAmbiental = {
-    total: 0,
-    comTema: 0,
-    porFonte: Object.fromEntries(
-      FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, { total: 0, comTema: 0 }])
-    ) as Record<FonteLegislacaoAmbiental, { total: number; comTema: number }>,
-  };
-  if (!db) return vazio;
-
-  const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; total: number; com_tema: number }>(sql`
-    select fonte, count(*)::int as total,
-           count(*) filter (where array_length(temas, 1) > 0)::int as com_tema
-    from ambiental_legislacao
-    group by fonte
-  `);
-  const porFonte = { ...vazio.porFonte };
-  let total = 0;
-  let comTema = 0;
-  for (const l of linhas.rows ?? []) {
-    porFonte[l.fonte] = { total: l.total, comTema: l.com_tema };
-    total += l.total;
-    comTema += l.com_tema;
-  }
-  return { total, comTema, porFonte };
+  const vazioPorFonte = Object.fromEntries(
+    FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, { total: 0, comTema: 0 }])
+  ) as Record<FonteLegislacaoAmbiental, { total: number; comTema: number }>;
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; total: number; com_tema: number }>(sql`
+        select fonte, count(*)::int as total,
+               count(*) filter (where array_length(temas, 1) > 0)::int as com_tema
+        from ambiental_legislacao
+        group by fonte
+      `);
+      const porFonte = { ...vazioPorFonte };
+      let total = 0;
+      let comTema = 0;
+      for (const l of linhas.rows ?? []) {
+        porFonte[l.fonte] = { total: l.total, comTema: l.com_tema };
+        total += l.total;
+        comTema += l.com_tema;
+      }
+      return { total, comTema, porFonte };
+    },
+    {
+      vazio: (r) => r.total === 0,
+      padrao: { total: 0, comTema: 0, porFonte: vazioPorFonte },
+      rotulo: "legislacao",
+    }
+  );
 }
 
 export interface ContagemTemaLegislacaoAmbiental {
@@ -176,13 +183,16 @@ export interface ContagemTemaLegislacaoAmbiental {
 /** Contadores por tema (os 8 do filtro) — medidos do banco a cada carga da
  *  página, não um número fixo no código que possa envelhecer. */
 export async function contarPorTemaLegislacaoAmbiental(): Promise<ContagemTemaLegislacaoAmbiental[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{ tema: string; n: number }>(sql`
-    select tema, count(*)::int as n
-    from ambiental_legislacao, unnest(temas) as tema
-    group by tema
-    order by n desc
-  `);
-  return linhas.rows ?? [];
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ tema: string; n: number }>(sql`
+        select tema, count(*)::int as n
+        from ambiental_legislacao, unnest(temas) as tema
+        group by tema
+        order by n desc
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "legislacao" }
+  );
 }

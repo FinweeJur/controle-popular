@@ -1,5 +1,5 @@
 import { desc } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import { patrimonio_tombado_iepha } from "@/lib/db/schema";
 
 /**
@@ -43,13 +43,16 @@ function paraLinha(r: typeof patrimonio_tombado_iepha.$inferSelect): PatrimonioT
 }
 
 export async function listarPatrimonioTombado(): Promise<PatrimonioTombadoRow[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db
-    .select()
-    .from(patrimonio_tombado_iepha)
-    .orderBy(desc(patrimonio_tombado_iepha.municipio));
-  return linhas.map(paraLinha);
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db
+        .select()
+        .from(patrimonio_tombado_iepha)
+        .orderBy(desc(patrimonio_tombado_iepha.municipio));
+      return linhas.map(paraLinha);
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "patrimonio" }
+  );
 }
 
 /** Card da home de `/ambiental` — número real, não estimativa. */
