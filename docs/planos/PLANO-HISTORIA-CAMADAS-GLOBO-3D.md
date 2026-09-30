@@ -329,6 +329,29 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 - Camada dos traçados (Tordesilhas/Madri/Santo Ildefonso); cada linha com o **ano e o
   tratado** no nome. Depende do que a BN liberar na Fase A.
 
+### Fase G — mineração escravizada e população escravizada (pedido do dev, 30/09)
+
+- **Pedido:** cruzar e publicar os **locais de mineração escravizada**.
+- **Fontes já medidas:** IBGE *Brasil: 500 anos* (seções *negros* e *descoberta do ouro*)
+  documenta a mão de obra escravizada na mineração; o APM *Mapas de População* tem **338
+  registros** (1838-1840) — mas **sem lugar no título** (o lugar está dentro do mapa).
+- **A medir:** IPHAN (bens/SICG) e o **recenseamento de 1872** (população escravizada por
+  município) — este último é o dado que geolocaliza por município. Sondado em 30/09:
+  `geoservicos.iphan.gov.br` **não resolve** (DNS) e `dados.gov.br/api` devolveu **401**.
+- **Regra:** ponto só onde a fonte oficial disser o lugar — nunca inferir "onde havia
+  escravidão" pela mancha de mineração.
+
+### Fase H — fazendas e engenhos (pedido do dev, parcialmente feito)
+
+- **Feito:** camada `hist-fazendas-engenhos` — **13 conjuntos rurais tombados** pelo
+  IEPHA-MG (fazendas históricas e uma usina), com `ato_legal` e link da fonte; ponto no
+  centroide do município.
+- **O que falta, e é grande:** "principais fazendas e engenhos de cana e de café" **não é o
+  que está tombado**. O universo pede inventário acadêmico/oficial (IPHAN *Inventário das
+  Fazendas de Café*; engenhos de cana em acervos de PE/AL; atlas da cafeicultura).
+- ⚠️ **Medido:** **nenhum engenho de cana** aparece no acervo do IEPHA — a camada de
+  engenhos exige outra fonte, declarada como pendência.
+
 ### Fase F — globo, ficha e página (1 dia)
 
 - Registrar as camadas em `config.js` + ficha no `inspector.js`; as seis qualidades

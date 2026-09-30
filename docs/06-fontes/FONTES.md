@@ -1237,6 +1237,30 @@ Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLO
   e devolveu 1.600 como total; o teto subiu e o fim passou a ser provado (1.726).
 - ⚠️ **`PowerShell` mangla a query** do Overpass do OHM (colchetes) — use `requests`.
 
+### Patrimônio tombado e camadas rurais históricas (30/09)
+
+Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md)
+(pedido do dev: mineração escravizada, fazendas e engenhos).
+
+- **IEPHA-MG** — acervo já ingerido pelo portal em
+  `apps/web/data/patrimonio-tombado-iepha.json`: **153 bens**, com `denominacao`,
+  `municipio`, `distrito`, `categoria`, `classeSubclasse` e `atoLegal`. **13**
+  são **conjuntos rurais** (fazendas históricas e uma usina) → camada
+  `hist-fazendas-engenhos.geojson`. O acervo **não tem coordenada do bem** (só
+  município e distrito) → ponto no centroide do município: **piso**.
+- ⚠️ **Grafia divergente:** o IEPHA grafa "Santa Rita do Jacutinga"; o IBGE
+  oficial é "Santa Rita de Jacutinga". O casamento exige dicionário documentado
+  (está no gerador).
+- ⚠️ **Engenho de cana não existe** neste acervo — a camada de engenhos precisa
+  de outra fonte.
+- **IPHAN** — sondado em 30/09: `geoservicos.iphan.gov.br` **não resolve** (DNS)
+  e `dados.gov.br/api/publico/conjuntos-dados` devolveu **401**. A via de dado
+  em massa segue **a medir** (página do IPHAN, bens tombados, Inventário das
+  Fazendas de Café).
+- **IBGE — Brasil: 500 anos** — seções *negros* e *descoberta do ouro*: base
+  documental da mineração escravizada (o dado por município, para geolocalizar,
+  é o recenseamento de 1872 — **a medir**).
+
 ## Decisões registradas
 
 - **2026-09-30:** Capitanias hereditárias publicadas a partir do OpenHistoricalMap

@@ -162,11 +162,14 @@ export default function PaginaMineracaoIlegal() {
           As camadas deste cruzamento também estão no globo 3D: terra indígena, território quilombola e a
           mineração detectada. Os links abrem o globo com a camada acesa.
         </p>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
             ["terras-indigenas", "Terras indígenas (FUNAI)"],
             ["territorios-quilombolas", "Territórios quilombolas (INCRA)"],
             ["mineracao-sem-cadastro", "Mineração sem cadastro na ANM"],
+            ["mineracao-em-uc", "Mineração detectada dentro de UC"],
+            ["mineracao-em-quilombo", "Mineração detectada dentro de quilombo"],
+            ["cavas-monitoradas", "Cavas detectadas na janela ativa"],
           ].map(([camada, rotulo]) => (
             <li key={camada}>
               <a

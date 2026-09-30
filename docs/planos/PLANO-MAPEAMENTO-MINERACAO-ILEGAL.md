@@ -213,6 +213,21 @@ DOU, raspagem Liferay da FEAM e a pendência Pimentel do INCRA.
   rótulo.
 - Critério de pronto: links da página abrem o globo com a camada acesa.
 
+**Status medido 30/09/2026 — feito:**
+
+- Gerador `scripts/etl/cavas/gerar-camadas-mineracao-protegida.py` (ray casting,
+  centroide): **`mineracao-em-uc` = 875 polígonos** (653 KB) e
+  **`mineracao-em-quilombo` = 21** (17 KB), de 7.668 polígonos de mineração.
+- Ambas nascem **desligadas**, com o aviso de **piso** e a frase de cuidado
+  ("estar dentro não é, por si, ilícito").
+- Registradas no assunto `territorio-mineracao` do globo; sentinela do painel
+  atualizado (**60 fontes / 56 linhas**) e contrato de ids.
+- Os **links da página** `/mineracao/ilegal` abrem o globo com a camada acesa
+  (a seção "Onde isso está no mapa" passou de 3 para 6 camadas).
+- A camada `mineracao-em-ti` **não foi criada**: o cruzamento dá **0** (nenhuma
+  mineração detectada com centroide em terra indígena em MG) — publicar uma
+  camada vazia seria ruído; a lacuna fica na página.
+
 ### Fase E — varrer com o gate (2–3 dias, depende do gate v3)
 
 - Aplicar o modelo treinado (gate v3, com 1.920 negativos) na varredura de

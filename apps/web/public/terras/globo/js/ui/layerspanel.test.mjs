@@ -62,8 +62,12 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // assunto novo 'historia'. Só entrou — nenhum id saiu.
   // ⟲ 30/09/2026 (Fase D do plano de história): 53 → 54. Entrou
   // `hist-terras-publicas` (arquivo do APM), também em 'historia'.
+  // ⟲ 30/09/2026 (Fase D do mapeamento da mineração): 54 → 56. Entraram
+  // `mineracao-em-uc` e `mineracao-em-quilombo`, em 'territorio-mineracao'.
+  // ⟲ 30/09/2026 (pedido do dev): 56 → 57. Entrou `hist-fazendas-engenhos`
+  // (conjuntos rurais tombados, IEPHA), em 'historia'.
   assert.equal(
-    CAMADAS.length, 54,
+    CAMADAS.length, 57,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -127,8 +131,11 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // linhas com `hist-capitanias`, fonte única no assunto novo 'historia'.
   // ⟲ 30/09/2026 (Fase D): 57 → 58 fontes e 53 → 54 linhas com
   // `hist-terras-publicas` (Arquivo Público Mineiro), mesma seção.
-  assert.equal(LAYER_REGISTRY.length, 58, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 54, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 30/09/2026 (Fase D da mineração): 58 → 60 fontes e 54 → 56 linhas com
+  // `mineracao-em-uc` e `mineracao-em-quilombo`.
+  // ⟲ 30/09/2026: 60 → 61 fontes e 56 → 57 linhas com `hist-fazendas-engenhos`.
+  assert.equal(LAYER_REGISTRY.length, 61, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 57, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -223,6 +230,11 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // ⟲ 30/09/2026 — Fase D: terras públicas do Império (Arquivo Público
     // Mineiro). Id NOVO no contrato — nenhum id antigo saiu.
     'hist-terras-publicas',
+    // ⟲ 30/09/2026 — Fase D do mapeamento da mineração: mineração
+    // detectada dentro de UC e de quilombo (centroide). Ids NOVOS.
+    'mineracao-em-uc', 'mineracao-em-quilombo',
+    // ⟲ 30/09/2026 — conjuntos rurais tombados (IEPHA-MG). Id NOVO.
+    'hist-fazendas-engenhos',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();

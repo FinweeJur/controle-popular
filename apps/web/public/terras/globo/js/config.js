@@ -1122,6 +1122,22 @@ export const LAYER_REGISTRY = [
   // Teixeira, 1574) — sem sobreposição pixel a pixel, porque o mapa de 1574 não
   // tem georreferenciamento. Nasce DESLIGADA: são 13 polígonos de costa, e
   // quem abriu o globo procurando o dado de hoje não pediu mapa do século XVI.
+  // --- Fase D do plano de mapeamento da mineração ilegal -------------------
+  // A mineração detectada por satélite cujo centroide cai DENTRO de área
+  // protegida oficial. Método por centroide: é PISO, não total. Estar dentro
+  // não é, por si, ilícito — a ficha diz isso (AGENTS § 7).
+  {
+    id: 'mineracao-em-uc', label: 'Mineração detectada dentro de UC',
+    hint: '875 polígonos de mineração (Monitor da Mineração × ANM) cujo centroide cai dentro de unidade de conservação de MG, federal, estadual ou municipal.',
+    aviso: 'Piso, não total: o teste é por centroide. E estar dentro de UC não é, por si, ilícito — pode haver lavra autorizada, zoneamento permissivo ou folga do desenho. É convite para conferir na fonte.',
+    color: 0xff9e5e, on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'mineracao-em-quilombo', label: 'Mineração detectada dentro de quilombo',
+    hint: '21 polígonos de mineração cujo centroide cai dentro de território quilombola (INCRA) — todos fora da bacia do Paraopeba.',
+    aviso: 'Piso, não total, e o território quilombola publicado é cobertura parcial. Estar dentro não prova atividade nem ilicitude — é sinal para conferir.',
+    color: 0xcf6bd6, on: false, render: 'fill', listavel: true,
+  },
   {
     id: 'hist-capitanias', label: 'Capitanias hereditárias (1534)',
     hint: 'As doações de 1534-1536, faixa por faixa: 13 capitanias na base do OpenHistoricalMap, cada uma com o ano de início e fim.',
@@ -1134,6 +1150,13 @@ export const LAYER_REGISTRY = [
     hint: '14 registros da Repartição Especial das Terras Públicas (Arquivo Público Mineiro) que nomeiam o município no título, cada um com o período e o link para o acervo.',
     aviso: 'O ponto fica no centroide do MUNICÍPIO citado no título do registro, não no lugar exato da parcela — o acervo descreve o documento, não o perímetro. E é piso: o módulo tem 244 registros, e só 14 nomeiam município.',
     color: 0x8aa06a,   /* oliva de mapa antigo */
+    on: false, render: 'point', pointSize: 6, listavel: true,
+  },
+  {
+    id: 'hist-fazendas-engenhos', label: 'Fazendas históricas tombadas (IEPHA)',
+    hint: '13 conjuntos rurais tombados em Minas — fazendas históricas e uma usina —, com o decreto ou homologação de cada um.',
+    aviso: 'Não é o mapa das principais fazendas e engenhos do estado: é o que está TOMBADO. E o ponto é o centroide do município, não a sede da fazenda. Engenho de cana não aparece no acervo do IEPHA.',
+    color: 0xb08968,   /* terra/campo */
     on: false, render: 'point', pointSize: 6, listavel: true,
   },
 ];
@@ -1633,6 +1656,21 @@ export const CAMADAS = [
     hint: 'Autos de infração, penalidades e termos de embargo emitidos por órgãos fiscalizadores.',
     fontes: ['infracoes-embargos'],
   },
+  // --- Fase D do mapeamento da mineração ilegal -----------------------------
+  {
+    id: 'mineracao-em-uc', assunto: 'territorio-mineracao',
+    label: 'Mineração detectada dentro de UC',
+    hint: '875 polígonos cujo centroide cai dentro de unidade de conservação, de 1995 a 2024. Método por centroide: piso.',
+    aviso: 'Piso, não total. E estar dentro de UC não é ilícito por si: pode ser lavra autorizada ou folga do desenho.',
+    fontes: ['mineracao-em-uc'],
+  },
+  {
+    id: 'mineracao-em-quilombo', assunto: 'territorio-mineracao',
+    label: 'Mineração detectada dentro de quilombo',
+    hint: '21 polígonos cujo centroide cai dentro de território quilombola (INCRA), todos fora da bacia do Paraopeba.',
+    aviso: 'Piso, não total; a camada de quilombo é cobertura parcial. Sinal para conferir, não veredito.',
+    fontes: ['mineracao-em-quilombo'],
+  },
   // --- História (Fase B do PLANO-HISTORIA-CAMADAS-GLOBO-3D.md) --------------
   // Primeira linha do assunto 'historia'. Fonte única (o GeoJSON das
   // capitanias de 1534), sem irmã regional: o recorte é nacional, não da bacia.
@@ -1649,6 +1687,13 @@ export const CAMADAS = [
     hint: '14 registros de terras públicas de 1854-1857, do Arquivo Público Mineiro, que nomeiam o município no título — com período e link para o documento.',
     aviso: 'O ponto é o centroide do MUNICÍPIO citado no título, não a parcela: o acervo cataloga o registro, não o perímetro. Piso: 244 registros no módulo, 14 nomeiam município.',
     fontes: ['hist-terras-publicas'],
+  },
+  {
+    id: 'hist-fazendas-engenhos', assunto: 'historia',
+    label: 'Fazendas históricas tombadas (IEPHA)',
+    hint: '13 conjuntos rurais tombados em Minas (fazendas e uma usina), cada um com o ato legal do tombamento.',
+    aviso: 'É o que está tombado, não o universo das fazendas e engenhos do estado; e o ponto é o centroide do município, não a sede.',
+    fontes: ['hist-fazendas-engenhos'],
   },
 ];
 
