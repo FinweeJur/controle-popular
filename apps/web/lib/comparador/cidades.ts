@@ -173,6 +173,35 @@ export interface LinhaComparacao {
   maior: "A" | "B" | null;
 }
 
+/**
+ * Texto-resumo de uma cidade, pronto para compartilhar (WhatsApp, e-mail).
+ *
+ * Junta os números principais num parágrafo curto com a fonte e a data. É o
+ * "cartão" da cidade: fácil de copiar sem cadastro e sem imagem, com a régua
+ * editorial do portal — o número vem do dado e a fonte viaja colada.
+ */
+export function resumoTexto(c: CidadeComparavel, dataAcervo: string | null): string {
+  const linhas = [
+    `${c.nome}/${c.uf} em números`,
+    "",
+    `População: ${formatarIndicador(c.populacao, "inteiro")} habitantes`,
+    `PIB: R$ ${formatarIndicador(c.pibBi, "decimal")} bilhões`,
+    `PIB por habitante: ${formatarIndicador(c.pibPerCapita, "moeda")}`,
+    `Repasses federais por ano: R$ ${formatarIndicador(c.repassesMi, "decimal")} milhões`,
+    `Repasses federais por habitante: ${formatarIndicador(repassesPerCapita(c), "moeda")}`,
+    `Estabelecimentos de saúde: ${formatarIndicador(c.saude, "inteiro")}`,
+    `Escolas: ${formatarIndicador(c.escolas, "inteiro")}`,
+    "",
+    `Fonte: acervo de cidades do Controle Popular (IBGE e fontes oficiais)${
+      dataAcervo ? `, ${dataAcervo}` : ""
+    }.`,
+    `Confira a fonte de cada número em https://www.controlepopular.com.br/${
+      c.slug ?? `terra-e-territorios/cidades/${c.id}`
+    }`,
+  ];
+  return linhas.join("\n");
+}
+
 /** Monta as linhas de comparação entre duas cidades. */
 export function compararCidades(a: CidadeComparavel, b: CidadeComparavel): LinhaComparacao[] {
   return INDICADORES_COMPARACAO.map((ind) => {

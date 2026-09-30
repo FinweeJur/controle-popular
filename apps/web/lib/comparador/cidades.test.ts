@@ -6,6 +6,7 @@ import {
   formatarIndicador,
   INDICADORES_COMPARACAO,
   repassesPerCapita,
+  resumoTexto,
   saudePor10Mil,
 } from "./cidades";
 
@@ -86,5 +87,17 @@ describe("compararCidades", () => {
   test("calcula a diferença absoluta formatada", () => {
     const populacao = linhas.find((l) => l.id === "populacao")!;
     expect(populacao.diferenca).toBe("1.600.000");
+  });
+});
+
+describe("resumoTexto", () => {
+  test("traz nome, números e fonte, sem campo vazio", () => {
+    const texto = resumoTexto(capital, "07/09/2026");
+    expect(texto).toContain("Belo Horizonte/MG");
+    expect(texto).toContain("População");
+    expect(texto).toContain("07/09/2026");
+    expect(texto).toContain("controlepopular.com.br");
+    expect(texto).not.toContain("undefined");
+    expect(texto).not.toContain("null");
   });
 });
