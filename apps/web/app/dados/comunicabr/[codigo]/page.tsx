@@ -268,7 +268,7 @@ export default async function FichaComunicaBR({ params }: { params: Params }) {
           O que o governo federal diz ter feito em {nome}
         </h1>
         {cadastro.length > 0 ? (
-          <p className="font-tabular text-[.9em] text-text-soft">
+          <p className="font-tabular text-[1em] text-text-soft">
             {cadastro
               .map((d) => `${d.titulo.replace(/:$/, "")}: ${d.valor}`)
               .join(" · ")}

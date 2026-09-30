@@ -119,7 +119,7 @@ export default function CapaFrente({
           {/* BASE: Texto descritivo — metade direita, justificado */}
           <div className="mt-auto flex w-full justify-end">
             <p
-              className="w-full sm:w-3/5 md:w-1/2 text-justify text-xs sm:text-sm leading-relaxed text-white font-medium"
+              className="w-full sm:w-3/5 md:w-1/2 text-justify text-sm sm:text-base leading-relaxed text-white font-medium"
               style={{
                 textShadow:
                   "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",
@@ -170,7 +170,7 @@ export default function CapaFrente({
 
             {/* Micro resumo da frente */}
             <p
-              className="mt-2.5 max-w-2xl text-xs sm:text-sm leading-relaxed text-white font-medium"
+              className="mt-2.5 max-w-2xl text-sm sm:text-base leading-relaxed text-white font-medium"
               style={{
                 textShadow:
                   "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)",

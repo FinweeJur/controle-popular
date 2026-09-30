@@ -13,7 +13,7 @@
  * `autorizacoes` por compatibilidade, embora o conteúdo seja de destinações.
  */
 
-import { carregarDestinacoesUniaoMg } from "@/lib/ambiental/autorizacoes";
+import { carregarDestinacoesUniaoMg } from "@/lib/ambiental/destinacoes-uniao-dados";
 import AutorizacoesClient from "./AutorizacoesClient";
 import Link from "next/link";
 

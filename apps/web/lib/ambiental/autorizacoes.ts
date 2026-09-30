@@ -20,18 +20,17 @@
  *
  * ═══ DECISÕES TÉCNICAS ═══
  *
- * - Leitura por `readFileSync` (server-only) com múltiplos candidatos de caminho:
- *   o build roda com `cwd` em `apps/web`, mas o script pode rodar da raiz. O import
- *   estático NÃO é usado aqui de propósito — o JSON entraria no bundle do cliente.
- * - As funções puras (filtro, métricas, CSV, microresumo) são as únicas que o
- *   componente de cliente importa; o `node:fs` é tree-shaken no bundle do navegador.
+ * - Este módulo é isomórfico de propósito: NÃO importa `node:fs`. O carregamento
+ *   do arquivo vive em `destinacoes-uniao-dados.ts` (server-only), porque o
+ *   componente de cliente importa daqui e o `node:fs` quebraria o build do
+ *   webpack (medido em 29/09/2026: UnhandledSchemeError em `node:path`).
+ * - As funções puras (filtro, métricas, CSV, microresumo) são as que o cliente
+ *   usa.
  * - Busca tolerante a acento e maiúscula via `semAcento` (mesma normalização da
  *   busca global do portal, `lib/busca/normalizar.ts`).
  * - Política Zero CPF: o cadastro do SPU não traz CPF; o teste cobre a regex.
  */
 
-import fs from "node:fs";
-import path from "node:path";
 import { semAcento } from "@/lib/busca/normalizar";
 
 /** Um imóvel da União em MG, como consta no cadastro do SPU. */
@@ -84,62 +83,6 @@ export interface MetricasDestinacoes {
   municipiosAtendidos: number;
   distribuicaoPorDestinacao: Record<string, number>;
   distribuicaoPorClasse: Record<string, number>;
-}
-
-const ARQUIVO_DADOS = "destinacoes-uniao-mg.json";
-
-/** Metadados vazios seguros para ambiente sem acesso ao arquivo (nunca inventa números). */
-const METADADOS_VAZIOS: MetadadosDestinacoesUniao = {
-  titulo: "Destinações de Imóveis da União em Minas Gerais",
-  fonte: "SPU - Painel de Transparência Ativa",
-  fonteUrl:
-    "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
-  dataAcessoFonte: "",
-  geradoEm: "",
-  dataReferencia: "",
-  total: 0,
-  totalMunicipios: 0,
-  porDestinacao: {},
-  ressalva:
-    "Cadastro de imóveis da União em MG com o regime/destinação de cada um. Não é a relação nominal de TAUS/CDRU.",
-};
-
-/**
- * Resolve o caminho do JSON tolerando dois `cwd`: `apps/web` (build/vitest) e a
- * raiz do monorepo. Mesmo padrão de `lib/ambiental/licencas-unificada.ts`.
- */
-function resolverCaminhoDados(): string | null {
-  const candidatos = [
-    path.resolve(process.cwd(), "data", ARQUIVO_DADOS),
-    path.resolve(process.cwd(), "apps", "web", "data", ARQUIVO_DADOS),
-  ];
-  for (const caminho of candidatos) {
-    if (fs.existsSync(caminho)) return caminho;
-  }
-  return null;
-}
-
-/**
- * Carrega o acervo real de destinações de imóveis da União em MG.
- *
- * Retorna `{ metadados, imoveis }`. Sem arquivo acessível devolve acervo vazio
- * com metadados neutros — nunca dado fabricado.
- */
-export function carregarDestinacoesUniaoMg(): AcervoDestinacoesUniao {
-  try {
-    const caminho = resolverCaminhoDados();
-    if (caminho) {
-      const conteudo = fs.readFileSync(caminho, "utf-8");
-      const bruto = JSON.parse(conteudo) as Partial<AcervoDestinacoesUniao>;
-      return {
-        metadados: bruto.metadados ?? METADADOS_VAZIOS,
-        imoveis: Array.isArray(bruto.imoveis) ? bruto.imoveis : [],
-      };
-    }
-  } catch {
-    // Fallback silencioso: ambiente sem acesso a disco (ex.: borda sem build).
-  }
-  return { metadados: METADADOS_VAZIOS, imoveis: [] };
 }
 
 /**

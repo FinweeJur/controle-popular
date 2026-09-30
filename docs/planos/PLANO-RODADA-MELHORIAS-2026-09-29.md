@@ -37,9 +37,11 @@ Mais fácil primeiro. "Build" fica por último por decisão do dono.
 | 5 | Índice: navbar + índice geral com páginas novas | Médio | aguarda |
 | 4 | Contexto do chatbot Seu Nonô (páginas e bases novas) | Médio | aguarda |
 | 1 | Fonte da descrição +2pt + "Ver + Texto" | Médio/Grande | aguarda |
-| 6 | 10 posts novos no blog (com dados internacionais) | Grande | aguarda |
+| 6 | 10 posts novos no blog (com dados internacionais) | Grande | ✅ nesta sessão |
 | 3 | Portabilidade tablet / meia tela (dev server + visual) | Médio | aguarda |
-| 7 | Build de verificação | Último | só depois de tudo |
+| 7 | Build de verificação e deploy no Guara Cloud | Último | só depois de tudo |
+| 10 | Política de uso de IA no site (modelo: Brasil de Fato) | Médio | aguarda |
+| 11 | Botão da Rádio Brasil de Fato no rodapé | Fácil | aguarda |
 
 ---
 
@@ -93,7 +95,23 @@ Mais fácil primeiro. "Build" fica por último por decisão do dono.
 ### 7. Verificar integração dos commits
 - `npm test` + `tsc --noEmit` já verdes. Falta `next build` (≈17 min) para
   provar que `/ambiental/ppp`, `/ambiental/autorizacoes` e `/cidades/mg`
-  renderizam. Fica para o fim.
+  renderizam.
+- **Depois do build: deploy no Guara Cloud** (`guara deploy`), pedido do dono
+  nesta rodada.
+
+### 10. Política de uso de IA no site
+- Adotar uma política de uso de IA para o portal, tendo como modelo e
+  referência a do **Brasil de Fato**
+  (https://www.brasildefato.com.br/politica-de-uso-de-inteligencias-artificiais/).
+- Criar rota própria (ex.: `/politica-de-ia` ou `/termos/ia`) ligada ao
+  rodapé, adaptando a linguagem ao método do portal ("o modelo extrai, o
+  programa calcula", rotulagem de conteúdo gerado, revisão permanente).
+
+### 11. Botão da Rádio Brasil de Fato no rodapé
+- Adicionar ao `FooterGlobal` um botão de play que leva à **Rádio Brasil de
+  Fato**.
+- Fontes: https://www.brasildefato.com.br/radioagencia/seja-parceiro/ e
+  https://www.radios.com.br/aovivo/radio-brasil-de-fato-989-fm/63689.
 
 ### 8. Defasagens (mapeadas nesta sessão)
 - `sobre/page.tsx:439-464` diz "não há banco em produção / portal estático /

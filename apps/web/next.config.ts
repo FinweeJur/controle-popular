@@ -156,6 +156,11 @@ const CSP_REPORT_ONLY = [
   // Mesmo caso do style-src acima: os arquivos woff/woff2/ttf vem do CDN do
   // Fontshare, num host DIFERENTE do CSS que os importa.
   "font-src 'self' https://cdn.fontshare.com",
+  // Player persistente da Rádio Brasil de Fato (`PlayerRadio.tsx`): o stream
+  // AAC vem do provedor da emissora. Sem `media-src` liberado, um CSP
+  // bloqueante derrubaria o áudio — e como hoje a política está em Report-Only,
+  // a violação nem apareceria como erro. host:porta = endpoint direto da 98.9 FM.
+  "media-src 'self' https://s09.hstbr.net:8238",
   "connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com",
   "frame-src 'self'",
   "frame-ancestors 'self'",

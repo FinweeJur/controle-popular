@@ -52,7 +52,7 @@ export default function HeaderFrenteBrasilComS({
             {titulo}
           </h1>
 
-          <p className="max-w-2xl text-[1.05em] text-text-soft leading-relaxed">
+          <p className="max-w-2xl text-[1.1em] text-text-soft leading-relaxed">
             {descricao}
           </p>
 

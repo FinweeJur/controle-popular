@@ -13,6 +13,7 @@ import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
 import { SeuNono } from "@/app/components/SeuNono";
 import { BackToTop } from "@/app/components/BackToTop";
+import PlayerRadio from "@/app/components/PlayerRadio";
 import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import DicaHover from "@/app/components/DicaHover";
@@ -221,6 +222,12 @@ export default function RootLayout({
 
           {/* Botão acessível para retornar ao topo da página em rolagens longas */}
           <BackToTop />
+          {/* Rádio Brasil de Fato — player PERSISTENTE. Montado no layout
+              raiz de propósito: a raiz não desmonta na navegação entre
+              páginas, então a transmissão continua ao trocar de página ou de
+              eixo. Se ficasse no rodapé (renderizado por página), pararia a
+              cada clique. Ver `PlayerRadio.tsx`. */}
+          <PlayerRadio />
         <IndicePagina />
         <BeaconDownloadsGlobal />
           {/* Dica no hover: janelinha explicativa depois de 2 s parado

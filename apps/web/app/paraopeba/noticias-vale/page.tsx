@@ -60,7 +60,7 @@ export default function NoticiasValePage() {
           feeds, não produção jornalística, e quem lê um título com cara de
           manchete não pode concluir que o portal afirma o que a notícia diz. */}
       <div className="mt-4 rounded-2xl border border-alert/40 bg-surface-2 p-5">
-        <p className="text-[.92em] text-text-soft">
+        <p className="text-[1em] text-text-soft">
           Coletadas de fontes públicas de notícias; o portal não produz conteúdo jornalístico.
           Veja sempre a fonte original. O resumo exibido é o que a própria fonte publicou no
           feed — nada foi escrito por aqui.

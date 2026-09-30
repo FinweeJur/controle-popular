@@ -4,6 +4,7 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import PedirDadosEmail from "@/app/components/PedirDadosEmail";
 import ContadorPublico from "@/app/components/ContadorPublico";
 import BotoesNotificacao from "@/app/components/BotoesNotificacao";
+import BotaoRadio from "@/app/components/BotaoRadio";
 
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
@@ -71,6 +72,7 @@ const LINKS_PORTAL = [
   { label: "Governo federal nas cidades de MG", href: "/dados/comunicabr" },
   { label: "Metodologia", href: "/sobre#metodologia" },
   { label: "Termos e origem dos dados", href: "/termos" },
+  { label: "Política de uso de IA", href: "/politica-de-ia" },
   { label: "Sobre o projeto", href: "/sobre" },
   { label: "Imprensa", href: "/imprensa" },
 ];
@@ -127,6 +129,7 @@ export default function FooterGlobal() {
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <PedirDadosEmail />
           <BotoesNotificacao />
+          <BotaoRadio />
           <a
             href="/alertas"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"

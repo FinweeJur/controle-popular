@@ -22,6 +22,8 @@ import {
   Sparkles,
   Compass,
   TreeDeciduous,
+  FileSpreadsheet,
+  Mountain,
 } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import Link from "next/link";
@@ -136,6 +138,11 @@ export default async function IndiceGlobal() {
       titulo: "Por tema",
       topicos: [
         { href: "/busca", titulo: "Busca", descricao: "Procure por palavra, tema ou território.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Search size={14} /> },
+        { href: "/ambiental/autorizacoes", titulo: "Autorizações & Destinações (União)", descricao: "553 imóveis da União em MG e o regime de cada um — fonte SPU.", cor: "var(--cp-eixo-terra)", badge: "✦ Novo", icon: <FileSpreadsheet size={14} /> },
+        { href: "/ambiental/ppp", titulo: "Concessões & PPP de MG", descricao: "20 contratos reais de concessão e parceria do Estado de Minas.", cor: "var(--cp-eixo-estado)", badge: "✦ Novo", icon: <Building2 size={14} /> },
+        { href: "/cidades/mg", titulo: "Cidades de Minas (853)", descricao: "Os 853 municípios de MG do IBGE, com microrregiões e mesorregiões.", cor: "var(--cp-eixo-terra)", badge: "✦ Novo", icon: <MapPin size={14} /> },
+        { href: "/mineracao/cavas", titulo: "Cavas de Mineração (satélite)", descricao: "Série anual de cavas detectadas por satélite no globo 3D.", cor: "var(--cp-eixo-terra)", badge: "✦ Novo", icon: <Mountain size={14} /> },
+        { href: "/internacional", titulo: "Hubs Internacionais", descricao: "ONU, UNESCO, OMS, OMC, EUA, Canadá e G20 num acervo só.", cor: "var(--cp-eixo-estado)", badge: "✦ Novo", icon: <Globe size={14} /> },
         { href: "/laboratorio", titulo: "Laboratório de Dados", descricao: "Compare dois conjuntos de dados em gráficos dither com auxílio do Seu Nonô.", cor: "var(--cp-geral, #7c7c9c)", badge: "✦ Novo", icon: <BarChart3 size={14} /> },
         { href: "/laboratorio/arvore", titulo: "Árvore de Conexões (Obsidian)", descricao: "Visualização interativa em grafo com os 4 grandes eixos cívicos e 38 nós temáticos interligados.", cor: "var(--cp-eixo-terra)", badge: "✦ Grafo", icon: <TreeDeciduous size={14} /> },
         { href: "/paraopeba/biblioteca", titulo: "Biblioteca de Documentos", descricao: "Acervo de publicações das ATIs, perícia e órgãos ambientais.", cor: "var(--cp-secondary)", badge: "Paraopeba", icon: <BookOpen size={14} /> },

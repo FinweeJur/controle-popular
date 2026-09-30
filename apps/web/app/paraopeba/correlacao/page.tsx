@@ -68,7 +68,7 @@ export default function CorrelacaoPage() {
 
       <section className="mt-10">
         <h2 className="font-display text-xl font-semibold">VALE3 {"\u2014"} B3</h2>
-        <p className="mt-2 max-w-3xl text-[.92em] text-text-soft">
+        <p className="mt-2 max-w-3xl text-[1em] text-text-soft">
           Movimentos com variacao absoluta {"\u2265"} {DEFAULT_CONFIG.limiarVariacao}%, com janela de{" "}
           {"\u00B1"}{DEFAULT_CONFIG.janelaDias} dias para correlacao com noticias.
         </p>

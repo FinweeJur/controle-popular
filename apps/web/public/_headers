@@ -57,7 +57,7 @@
 # e `tile.openstreetmap.org` são os tiles de satélite/OSM que
 # `terras/globo/detalhe.html` carrega.
 /*
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; font-src 'self' https://cdn.fontshare.com; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; font-src 'self' https://cdn.fontshare.com; media-src 'self' https://s09.hstbr.net:8238; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin

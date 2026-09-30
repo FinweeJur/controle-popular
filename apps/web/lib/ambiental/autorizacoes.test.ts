@@ -8,12 +8,12 @@
 
 import { describe, it, expect } from "vitest";
 import {
-  carregarDestinacoesUniaoMg,
   filtrarDestinacoes,
   calcularMetricasDestinacoes,
   gerarCsvDestinacoes,
   gerarMicroresumoDestinacoes,
 } from "./autorizacoes";
+import { carregarDestinacoesUniaoMg } from "./destinacoes-uniao-dados";
 
 const DESTINACAO_TOP = "Uso próprio em serviço público";
 const REGEX_CPF = /\b\d{3}\.\d{3}\.\d{3}-\d{2}\b/;
