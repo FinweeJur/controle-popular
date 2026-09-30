@@ -192,13 +192,12 @@ propósito, para não arrastar a cadeia do banco para o bundle.
 
 ### Achados da Parte 3
 
-1. **Dois reads com `getDb()` direto, fora da cadeia de reserva.**
+1. ✅ **Read fora da reserva — corrigido** (30/09/2026).
    [estatisticas-portal.ts](../../apps/web/lib/betim/estatisticas-portal.ts)
-   (`/sobre`) é candidato claro a `comBancoReserva`: sem reserva, um Guara
-   vazio deixa a página de números do próprio portal em branco.
-   [diario.ts](../../apps/web/lib/betim/diario.ts) tem fallback PRÓPRIO (por
-   fixture estática), então a ausência de reserva ali é decisão, não
-   esquecimento — registrado no cabeçalho do arquivo.
+   (`/sobre`) usava `getDb()` direto; agora passa por `comBancoReserva` e cai
+   no Neon/home-pc quando o Guara vem vazio. [diario.ts](../../apps/web/lib/betim/diario.ts)
+   segue com `getDb()` direto, mas **de propósito**: tem fallback PRÓPRIO por
+   fixture estática, registrado no cabeçalho do arquivo.
 
 2. **HTML cru em `noticias`.** [noticias.ts](../../apps/web/lib/betim/noticias.ts)
    expõe `conteudoHtml`, renderizado com `dangerouslySetInnerHTML` em
