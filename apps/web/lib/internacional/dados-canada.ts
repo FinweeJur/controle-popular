@@ -17,6 +17,7 @@ import mineradorasJson from "../../data/canada/mineradoras-tsx-brasil.compact.js
 import ambientalJson from "../../data/canada/ambiental-natureza-ciencia.compact.json";
 import contratosJson from "../../data/canada/contratos-open-canada.compact.json";
 import institucionalJson from "../../data/canada/institucional-canada.compact.json";
+import canadaGeoJson from "../../data/internacional/canada-geo.compact.json";
 
 import type {
   RegistroMineradoraCanadaBrasil,
@@ -24,6 +25,21 @@ import type {
   RegistroContratoEconomiaCanada,
   RegistroInstitucionalCanada,
 } from "../../../../scripts/coletar-canada-acervo.mts";
+
+export interface PontoGeoMineracaoCanada {
+  id: string;
+  nome: string;
+  empresa: string;
+  tipo: "sede_corporativa" | "mina_operacao" | "bolsa_valores" | "orgao_regulador";
+  mineralPrincipal: string;
+  cidade: string;
+  provincia: string;
+  bolsaListada: string;
+  latitude: number;
+  longitude: number;
+  fonteOficial: string;
+  descricao: string;
+}
 
 export interface CoberturaCanada {
   readonly dataMedicao: string;
@@ -34,6 +50,7 @@ export interface CoberturaCanada {
   readonly totalRegistros: number;
   readonly barragensMonitoradas: number;
   readonly cidadesPolo: number;
+  readonly pontosGeoespaciais: number;
 }
 
 /**
@@ -49,6 +66,7 @@ export const COBERTURA_CANADA: CoberturaCanada = {
   totalRegistros: 47,
   barragensMonitoradas: 10,
   cidadesPolo: 6,
+  pontosGeoespaciais: 24,
 } as const;
 
 export function obterMineradorasCanada(): RegistroMineradoraCanadaBrasil[] {
@@ -66,3 +84,11 @@ export function obterContratosCanada(): RegistroContratoEconomiaCanada[] {
 export function obterInstitucionalCanada(): RegistroInstitucionalCanada[] {
   return expandir(institucionalJson as unknown as TabelaCompacta) as unknown as RegistroInstitucionalCanada[];
 }
+
+/**
+ * Retorna os pontos geoespaciais do Canadá (sedes, megaminas, bolsa e órgãos reguladores).
+ */
+export function obterPontosGeoCanada(): PontoGeoMineracaoCanada[] {
+  return expandir(canadaGeoJson as unknown as TabelaCompacta) as unknown as PontoGeoMineracaoCanada[];
+}
+

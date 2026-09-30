@@ -87,8 +87,8 @@ export default function PlayerRadio() {
         if (Hls.isSupported()) {
           const hls = new Hls({ enableWorker: false });
           hlsRef.current = hls;
-          hls.on(Hls.Events.ERROR, (_evt, data) => {
-            if (data.fatal) {
+          hls.on(Hls.Events.ERROR, (_evt: unknown, data: { fatal?: boolean }) => {
+            if (data?.fatal) {
               setCarregando(false);
               setTocando(false);
             }

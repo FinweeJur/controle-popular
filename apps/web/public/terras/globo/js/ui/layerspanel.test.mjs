@@ -54,11 +54,10 @@ test('CAMADAS reais: 49 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // ⟲ 29/09/2026: 49 → 51. Entraram `mineracao-sem-cadastro` e
   // `cavas-monitoradas` (Fase 5 do plano de cavas, série `mining_age` do
   // MapBiomas), ambas em 'territorio-mineracao'. Só entrou — nenhum id saiu.
-  // ⟲ 30/09/2026: 51 → 52. Entrou `sedes-instalacoes-mineradoras-latam`
-  // (Observatório de Mineração na América Latina, 9 países e 51 instalações/sedes),
-  // em 'territorio-mineracao'. Só entrou — nenhum id saiu.
+  // ⟲ 30/09/2026: 51 → 52 → 53 → 55. Entraram `sedes-instalacoes-mineradoras-latam`,
+  // `sedes-capitais-mineracao-eua`, `sedes-mineracao-canada` e `sedes-litigios-portos-europa` em 'territorio-mineracao'. Só entrou — nenhum id saiu.
   assert.equal(
-    CAMADAS.length, 52,
+    CAMADAS.length, 55,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -117,9 +116,9 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // Fase 5 do plano de cavas (`mineracao-sem-cadastro`, `cavas-monitoradas`),
   // cada uma na sua linha — fonte única, como as outras de território e
   // mineração. A diferença fonte-linha continua 4.
-  // ⟲ 30/09/2026: 55 → 56 fontes e 51 → 52 linhas com `sedes-instalacoes-mineradoras-latam`.
-  assert.equal(LAYER_REGISTRY.length, 56, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 52, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 30/09/2026: 55 → 56 → 57 → 59 fontes e 51 → 52 → 53 → 55 linhas com `sedes-instalacoes-mineradoras-latam`, `sedes-capitais-mineracao-eua`, `sedes-mineracao-canada` e `sedes-litigios-portos-europa`.
+  assert.equal(LAYER_REGISTRY.length, 59, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 55, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -170,8 +169,9 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // do MapBiomas, que já nascem dentro do contrato: os GeoJSON estão em
     // `dados/camadas/<fonte>.geojson` e os deep-links são reais.
     'mineracao-sem-cadastro', 'cavas-monitoradas',
-    // ⟲ 30/09/2026 — Expansão América Latina (mineradoras transnacionais)
-    'sedes-instalacoes-mineradoras-latam',
+    // ⟲ 30/09/2026 — Expansão Transnacional: América Latina, Estados Unidos, Canadá e Europa
+    'sedes-instalacoes-mineradoras-latam', 'sedes-capitais-mineracao-eua',
+    'sedes-mineracao-canada', 'sedes-litigios-portos-europa',
     // Atos ambientais unificados (Onda 1, Onda 2, Federais e MG)
     'licencas-ambientais', 'outorgas-agua', 'infracoes-embargos',
     // Dinheiro público e mineração (13/08/2026) — ver

@@ -992,6 +992,30 @@ export const LAYER_REGISTRY = [
     aviso: 'Coordenadas georreferenciadas oficiais compiladas a partir de órgãos reguladores da América Latina (ANM, SERNAGEOMIN, INGEMMET, etc.). O ponto indica a sede ou o centro operacional da instalação.',
     color: 0xf59e0b, /* âmbar dourado de mineração metálica */ on: true, render: 'point', pointSize: 0.007, listavel: true,
   },
+  // --- Observatório de Capitais e Mineração nos Estados Unidos (30/09/2026) ---
+  {
+    id: 'sedes-capitais-mineracao-eua',
+    label: 'Estados Unidos — Sedes, Capitais e Mineração',
+    hint: '29 sedes corporativas, fundos de investimento, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais (SEC, EPA, USGS, MSHA) e minas estratégicas nos EUA.',
+    aviso: 'Coordenadas georreferenciadas WGS84 compiladas a partir de registros da SEC EDGAR, EPA ECHO, USGS MRDS e relatórios anuais oficiais.',
+    color: 0x38bdf8, /* azul celeste para regulação e capitais transnacionais */ on: false, render: 'point', pointSize: 0.007, listavel: true,
+  },
+  // --- Observatório de Mineração e Capitais no Canadá (30/09/2026) ---
+  {
+    id: 'sedes-mineracao-canada',
+    label: 'Canadá — Sedes, TSX e Mineração',
+    hint: '24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras canadenses com atuação no Brasil e órgãos reguladores federais.',
+    aviso: 'Coordenadas WGS84 compiladas a partir de registros da TMX Group, OSC, SEDAR+ e Environment and Climate Change Canada (NPRI).',
+    color: 0xef4444, /* vermelho para capitais e mineração canadense */ on: false, render: 'point', pointSize: 0.007, listavel: true,
+  },
+  // --- Observatório de Litígios, Sedes e Portos na Europa (30/09/2026) ---
+  {
+    id: 'sedes-litigios-portos-europa',
+    label: 'Europa & Reino Unido — Litígios, Sedes e Portos',
+    hint: '23 tribunais de litígios internacionais (High Court Londres, Rechtbank Rotterdam, Paris), sedes corporativas (BHP, Rio Tinto, Glencore, Enel) e portos de devida diligência (EUDR).',
+    aviso: 'Coordenadas georreferenciadas oficiais compiladas a partir de registros judiciais britânicos/europeus, portuários e órgãos reguladores (BAFA/Comissão Europeia).',
+    color: 0x6366f1, /* índigo europeu */ on: false, render: 'point', pointSize: 0.007, listavel: true,
+  },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
   // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
@@ -1448,6 +1472,27 @@ export const CAMADAS = [
     hint: '51 sedes corporativas, megaminas, plantas de lítio e portos minerais na América Latina (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá).',
     aviso: 'Coordenadas georreferenciadas auditadas contra órgãos oficiais de mineração de 9 países latino-americanos.',
     fontes: ['sedes-instalacoes-mineradoras-latam'],
+  },
+  {
+    id: 'sedes-capitais-mineracao-eua', assunto: 'territorio-mineracao',
+    label: 'Estados Unidos — Sedes, Capitais e Mineração',
+    hint: '29 sedes corporativas, fundos de investimento, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais e minas estratégicas nos EUA.',
+    aviso: 'Coordenadas georreferenciadas auditadas contra órgãos oficiais dos EUA (SEC, EPA, USGS, MSHA).',
+    fontes: ['sedes-capitais-mineracao-eua'],
+  },
+  {
+    id: 'sedes-mineracao-canada', assunto: 'territorio-mineracao',
+    label: 'Canadá — Sedes, TSX e Mineração',
+    hint: '24 sedes corporativas, Bolsa de Toronto (TSX), mineradoras transnacionais com atuação no Brasil e órgãos reguladores federais.',
+    aviso: 'Coordenadas georreferenciadas auditadas contra registros públicos da TMX Group, OSC e Environment Canada.',
+    fontes: ['sedes-mineracao-canada'],
+  },
+  {
+    id: 'sedes-litigios-portos-europa', assunto: 'territorio-mineracao',
+    label: 'Europa & Reino Unido — Litígios, Sedes e Portos',
+    hint: '23 tribunais de litígios internacionais, sedes de multinacionais europeias e portos de importação sob regulação EUDR.',
+    aviso: 'Coordenadas auditadas contra registros judiciais do Reino Unido, Países Baixos, França e União Europeia.',
+    fontes: ['sedes-litigios-portos-europa'],
   },
   {
     id: 'documentos-processo-municipios', assunto: 'brumadinho',

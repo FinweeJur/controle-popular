@@ -1,0 +1,530 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fonte": "Controle Popular — Observatório de Litígios Transnacionais e Sedes da Europa",
+    "dataAtualizacao": "2026-09-30",
+    "totalPontos": 23,
+    "paisesCobertos": [
+      "Reino Unido",
+      "Países Baixos",
+      "França",
+      "Alemanha",
+      "Bélgica",
+      "Portugal",
+      "Suíça",
+      "Itália",
+      "Espanha",
+      "Luxemburgo",
+      "Noruega"
+    ],
+    "aviso": "Coordenadas precisas em datum WGS84 compiladas a partir de registros públicos judiciais, corporativos e portuários oficiais."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "eu-tribunal-london-high-court",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1132,
+          51.5133
+        ]
+      },
+      "properties": {
+        "id": "eu-tribunal-london-high-court",
+        "nome": "High Court of Justice — Tribunal Superior de Londres (TCC)",
+        "entidade": "High Court of Justice of England and Wales (Technology and Construction Court)",
+        "tipo": "tribunal_litigio",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Ação Coletiva [2025] EWHC 3001 (TCC) e [2022] EWCA Civ 951",
+        "fonteOficial": "Judiciary UK / The National Archives (Find Case Law)",
+        "descricao": "Juízo responsável pelo julgamento histórico de responsabilidade da mineradora BHP pelo rompimento da barragem de Fundão em Mariana."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-tribunal-uk-supreme-court",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1275,
+          51.5
+        ]
+      },
+      "properties": {
+        "id": "eu-tribunal-uk-supreme-court",
+        "nome": "Supreme Court of the United Kingdom — Suprema Corte Britânica",
+        "entidade": "Supreme Court of the United Kingdom",
+        "tipo": "tribunal_litigio",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Precedentes [2019] UKSC 20 (Vedanta) e [2021] UKSC 3 (Okpabi)",
+        "fonteOficial": "Supreme Court of the United Kingdom / BAILII",
+        "descricao": "Fixou a doutrina do dever de cuidado corporativo extraterritorial sobre subsidiárias e operações no exterior."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-tribunal-rechtbank-rotterdam",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.4925,
+          51.9167
+        ]
+      },
+      "properties": {
+        "id": "eu-tribunal-rechtbank-rotterdam",
+        "nome": "Rechtbank Rotterdam — Tribunal Distrital de Roterdã",
+        "entidade": "Rechtbank Rotterdam (Poder Judiciário dos Países Baixos)",
+        "tipo": "tribunal_litigio",
+        "pais": "Países Baixos",
+        "cidade": "Roterdã",
+        "marcoLegalOuProcesso": "Processos C/10/646871 / HA ZA 22-835 (Braskem) e Rio Doce Claims",
+        "fonteOficial": "De Rechtspraak (rechtspraak.nl)",
+        "descricao": "Julga a responsabilidade civil da petroquímica Braskem pelo afundamento do solo em Maceió e ações do Rio Doce."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-tribunal-paris-judiciaire",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3086,
+          48.8944
+        ]
+      },
+      "properties": {
+        "id": "eu-tribunal-paris-judiciaire",
+        "nome": "Tribunal Judiciaire de Paris — Tribunal Judicial de Paris",
+        "entidade": "Tribunal Judiciaire de Paris (Chambre Civile)",
+        "tipo": "tribunal_litigio",
+        "pais": "França",
+        "cidade": "Paris",
+        "marcoLegalOuProcesso": "Loi nº 2017-399 (Loi sur le devoir de vigilance) / Ações Casino e BNP Paribas",
+        "fonteOficial": "Ministère de la Justice de France / data.gouv.fr",
+        "descricao": "Foro exclusivo da Lei de Vigilância corporativa em litígios sobre desmatamento na Amazônia e créditos pecuários."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-orgao-alemanha-bafa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5678,
+          50.1412
+        ]
+      },
+      "properties": {
+        "id": "eu-orgao-alemanha-bafa",
+        "nome": "BAFA — Departamento Federal de Controle de Exportação da Alemanha",
+        "entidade": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+        "tipo": "orgao_regulador",
+        "pais": "Alemanha",
+        "cidade": "Eschborn",
+        "marcoLegalOuProcesso": "Lieferkettensorgfaltspflichtengesetz (LkSG) / Procedimentos de Queixa Cívica",
+        "fonteOficial": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (bafa.de)",
+        "descricao": "Autoridade fiscalizadora de direitos humanos e meio ambiente em cadeias de soja, café e minério com destino à Alemanha."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-orgao-ue-comissao-europeia",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.3824,
+          50.8436
+        ]
+      },
+      "properties": {
+        "id": "eu-orgao-ue-comissao-europeia",
+        "nome": "Comissão Europeia — Regulação EUDR e Diretiva CSDDD",
+        "entidade": "European Commission (DG Environment / TRACES-NT)",
+        "tipo": "orgao_regulador",
+        "pais": "Bélgica",
+        "cidade": "Bruxelas",
+        "marcoLegalOuProcesso": "Regulamento (UE) 2023/1115 (EUDR) e Diretiva (UE) 2024/1760 (CSDDD)",
+        "fonteOficial": "EUR-Lex / European Commission",
+        "descricao": "Órgão executivo da União Europeia formulador das regras de devida diligência e embargo a commodities de áreas desmatadas."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-orgao-portugal-dciap",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.148,
+          38.7305
+        ]
+      },
+      "properties": {
+        "id": "eu-orgao-portugal-dciap",
+        "nome": "DCIAP — Departamento Central de Investigação e Ação Penal",
+        "entidade": "Ministério Público de Portugal / Polícia Judiciária",
+        "tipo": "orgao_regulador",
+        "pais": "Portugal",
+        "cidade": "Lisboa",
+        "marcoLegalOuProcesso": "Convenção de Auxílio Judiciário Mútuo em Matéria Penal da CPLP / Acordos MPF-DCIAP",
+        "fonteOficial": "Procuradoria-Geral da República Portuguesa (ministeriopublico.pt)",
+        "descricao": "Unidade de combate à corrupção transnacional, rastreamento de fluxos financeiros ilícitos e cooperação judiciária com o Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-uk-bhp-group",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1416,
+          51.5033
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-uk-bhp-group",
+        "nome": "Sede Corporativa BHP Group (UK) Limited",
+        "entidade": "BHP Group (UK) Limited / BHP Group Limited",
+        "tipo": "sede_corporativa",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Companies House nº 04902083 / Ação Civil [2025] EWHC 3001 (TCC)",
+        "fonteOficial": "Companies House UK / London Stock Exchange",
+        "descricao": "Sede corporativa britânica da mineradora anglo-australiana co-controladora da Samarco no desastre de Fundão."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-uk-rio-tinto",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1472,
+          51.5074
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-uk-rio-tinto",
+        "nome": "Sede Corporativa Rio Tinto plc",
+        "entidade": "Rio Tinto plc",
+        "tipo": "sede_corporativa",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Companies House nº 00719885 / Joint-ventures internacionais de bauxita e minério",
+        "fonteOficial": "Companies House UK / London Stock Exchange",
+        "descricao": "Segunda maior mineradora do mundo, com interesses em bauxita, alumínio e parcerias globais de exploração."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-uk-anglo-american",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1408,
+          51.5039
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-uk-anglo-american",
+        "nome": "Sede Corporativa Anglo American plc",
+        "entidade": "Anglo American plc",
+        "tipo": "sede_corporativa",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Companies House nº 03528412 / Sistema Minas-Rio e Níquel Goiás",
+        "fonteOficial": "Companies House UK / Agência Nacional de Mineração (ANM)",
+        "descricao": "Controladora do megaprojeto Minas-Rio, composto por lavra em Conceição do Mato Dentro e mineroduto até o Rio de Janeiro."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-uk-shell",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1175,
+          51.5061
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-uk-shell",
+        "nome": "Sede Corporativa Global Shell plc",
+        "entidade": "Shell plc",
+        "tipo": "sede_corporativa",
+        "pais": "Reino Unido",
+        "cidade": "Londres",
+        "marcoLegalOuProcesso": "Companies House nº 04366849 / Contratos de Partilha e Concessão Pré-Sal (ANP)",
+        "fonteOficial": "Companies House UK / Agência Nacional do Petróleo (ANP)",
+        "descricao": "Segunda maior produtora de petróleo e gás no Brasil, parceira nos campos gigantes do pré-sal nas Bacias de Santos e Campos."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-suica-glencore",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5264,
+          47.1953
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-suica-glencore",
+        "nome": "Sede Corporativa Glencore International AG",
+        "entidade": "Glencore International AG",
+        "tipo": "sede_corporativa",
+        "pais": "Suíça",
+        "cidade": "Baar",
+        "marcoLegalOuProcesso": "Zefix CHE-106.839.238 / Acordos de Leniência MPF e CGU",
+        "fonteOficial": "Zefix Handelsregister Zug / SIX Swiss Exchange",
+        "descricao": "Maior trading diversificada de commodities e metais do mundo, compradora de ferro, soja e combustíveis brasileiros."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-italia-enel",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4939,
+          41.9169
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-italia-enel",
+        "nome": "Sede Corporativa Enel S.p.A.",
+        "entidade": "Enel S.p.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Itália",
+        "cidade": "Roma",
+        "marcoLegalOuProcesso": "Registro Imprese Roma / Concessões de Distribuição Urbana ANEEL",
+        "fonteOficial": "Ministero dell'Economia e delle Finanze (MEF) / ANEEL",
+        "descricao": "Multinacional estatal italiana controladora de concessionárias de distribuição de energia em São Paulo e no Rio de Janeiro."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-espanha-santander",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8728,
+          40.4042
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-espanha-santander",
+        "nome": "Sede Corporativa Banco Santander S.A.",
+        "entidade": "Banco Santander S.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Espanha",
+        "cidade": "Boadilla del Monte",
+        "marcoLegalOuProcesso": "Registro Mercantil de Madrid / Sistema Financeiro Nacional (Bacen)",
+        "fonteOficial": "Comisión Nacional del Mercado de Valores (CNMV) / Bacen",
+        "descricao": "Maior banco espanhol com presença massiva no Brasil, financiador chave do agronegócio e de obras de infraestrutura."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-portugal-edp",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.1558,
+          38.7061
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-portugal-edp",
+        "nome": "Sede Corporativa EDP - Energias de Portugal S.A.",
+        "entidade": "EDP - Energias de Portugal S.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Portugal",
+        "cidade": "Lisboa",
+        "marcoLegalOuProcesso": "Registo Comercial de Lisboa / Concessões de Geração e Distribuição ANEEL",
+        "fonteOficial": "Comissão do Mercado de Valores Mobiliários (CMVM) / ANEEL",
+        "descricao": "Conglomerado de energia de Portugal com concessões hidrelétricas, solares, eólicas e rede de distribuição no Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-luxemburgo-arcelormittal",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1319,
+          49.6116
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-luxemburgo-arcelormittal",
+        "nome": "Sede Corporativa ArcelorMittal S.A.",
+        "entidade": "ArcelorMittal S.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Luxemburgo",
+        "cidade": "Luxemburgo",
+        "marcoLegalOuProcesso": "RCS Luxembourg B42180 / Concessões de Lavra e SIGBM ANM",
+        "fonteOficial": "Registre de Commerce et des Sociétés (Luxembourg) / ANM",
+        "descricao": "Maior siderúrgica do Ocidente, dona da Mina e Barragem de Serra Azul em Itatiaiuçu e usinas em Minas e Espírito Santo."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-noruega-norsk-hydro",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.6386,
+          59.9142
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-noruega-norsk-hydro",
+        "nome": "Sede Corporativa Norsk Hydro ASA",
+        "entidade": "Norsk Hydro ASA",
+        "tipo": "sede_corporativa",
+        "pais": "Noruega",
+        "cidade": "Oslo",
+        "marcoLegalOuProcesso": "Brønnøysundregistrene 914778271 / TAC Barcarena com MPF e Governo do Pará",
+        "fonteOficial": "Brønnøysundregistrene / Oslo Børs / MPF Pará",
+        "descricao": "Multinacional norueguesa de alumínio dona da refinaria Alunorte e da mina de bauxita de Paragominas no Pará."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-espanha-telefonica",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6592,
+          40.5147
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-espanha-telefonica",
+        "nome": "Sede Corporativa Telefónica S.A.",
+        "entidade": "Telefónica S.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Espanha",
+        "cidade": "Madri",
+        "marcoLegalOuProcesso": "Registro Mercantil de Madrid / Concessão do Serviço Telefônico Fixo e Móvel (ANATEL)",
+        "fonteOficial": "Comisión Nacional del Mercado de Valores (CNMV) / ANATEL",
+        "descricao": "Empresa de telecomunicações espanhola controladora da Vivo, maior operadora de telefonia celular e dados do Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-sede-espanha-iberdrola",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9372,
+          43.2683
+        ]
+      },
+      "properties": {
+        "id": "eu-sede-espanha-iberdrola",
+        "nome": "Sede Corporativa Iberdrola S.A.",
+        "entidade": "Iberdrola S.A.",
+        "tipo": "sede_corporativa",
+        "pais": "Espanha",
+        "cidade": "Bilbau",
+        "marcoLegalOuProcesso": "Registro Mercantil de Vizcaya / Neoenergia e Usina Hidrelétrica Belo Monte",
+        "fonteOficial": "Comisión Nacional del Mercado de Valores (CNMV) / ANEEL",
+        "descricao": "Controladora da Neoenergia, concessionária de distribuição em estados do Nordeste e sócia da usina de Belo Monte no Pará."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-porto-holanda-roterda",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.02,
+          51.954
+        ]
+      },
+      "properties": {
+        "id": "eu-porto-holanda-roterda",
+        "nome": "Porto de Roterdã — Terminal de Granéis EMO e Agronegócio",
+        "entidade": "Port of Rotterdam Authority / Europees Massagoed Overslagbedrijf (EMO)",
+        "tipo": "porto_hub",
+        "pais": "Países Baixos",
+        "cidade": "Roterdã",
+        "marcoLegalOuProcesso": "Regulamento Portuário de Roterdã / Diretiva Aduaneira da União Europeia",
+        "fonteOficial": "Havenbedrijf Rotterdam / Port of Rotterdam",
+        "descricao": "Maior complexo portuário marítimo da Europa e principal destino de descarregamento de minério de ferro e soja do Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-porto-belgica-antuerpia",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.385,
+          51.245
+        ]
+      },
+      "properties": {
+        "id": "eu-porto-belgica-antuerpia",
+        "nome": "Porto de Antuérpia-Bruges — Hub Logístico de Commodities",
+        "entidade": "Port of Antwerp-Bruges Authority",
+        "tipo": "porto_hub",
+        "pais": "Bélgica",
+        "cidade": "Antuérpia",
+        "marcoLegalOuProcesso": "Código Alfandegário Comunitário da União Europeia / EUDR",
+        "fonteOficial": "Port of Antwerp-Bruges Authority / Alfândega Federal Belga",
+        "descricao": "Segundo maior porto europeu, receptor de café, celulose, suco cítrico e produtos siderúrgicos de portos brasileiros."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-porto-alemanha-hamburgo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.97,
+          53.535
+        ]
+      },
+      "properties": {
+        "id": "eu-porto-alemanha-hamburgo",
+        "nome": "Porto de Hamburgo — Hub Portuário e Logístico da Alemanha",
+        "entidade": "Hamburg Port Authority (HPA)",
+        "tipo": "porto_hub",
+        "pais": "Alemanha",
+        "cidade": "Hamburgo",
+        "marcoLegalOuProcesso": "Hafensicherheitsgesetz / Monitoramento LkSG de Importações",
+        "fonteOficial": "Hamburg Port Authority (HPA) / Statistisches Bundesamt (Destatis)",
+        "descricao": "Porto alemão de entrada para grãos, café e minerais metálicos sujeitos a auditorias de devida diligência do LkSG."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eu-hub-suica-genebra",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1432,
+          46.2044
+        ]
+      },
+      "properties": {
+        "id": "eu-hub-suica-genebra",
+        "nome": "Pólo de Trading de Commodities Energéticas de Genebra",
+        "entidade": "Trafigura Group / Vitol Holding B.V.",
+        "tipo": "porto_hub",
+        "pais": "Suíça",
+        "cidade": "Genebra",
+        "marcoLegalOuProcesso": "Code des Obligations (art. 964a) / Acordos de Cooperação com o MPF",
+        "fonteOficial": "Registre du Commerce du Canton de Genève / Zefix",
+        "descricao": "Capital do comércio global de petróleo e minérios, centro de negociações de cargas transoceânicas com o Brasil."
+      }
+    }
+  ]
+}

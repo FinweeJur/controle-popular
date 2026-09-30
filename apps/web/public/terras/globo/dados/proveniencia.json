@@ -1,17 +1,7 @@
 {
-  "gerado_em_utc": "2026-09-29T04:56:15.002Z",
+  "gerado_em_utc": "2026-09-30T21:52:02.595Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
-    {
-      "camada": "sedes-instalacoes-mineradoras-latam",
-      "feicoes": 51,
-      "bytes": 37344,
-      "comprimido": false,
-      "sha256": "f9852a83ba9ac78227afa625d0fedc9f2f8a2858a4de5f276160af6fc38e5242",
-      "mtime_utc": "2026-09-30T21:14:45.000Z",
-      "obtencao": "direta",
-      "origem": "Observatório Transnacional de Mineração na América Latina — 51 sedes corporativas, megaminas, plantas de lítio, complexos metalúrgicos e portos de 9 países (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá) compilados de relatórios da ANM, SERNAGEOMIN, INGEMMET e SEC."
-    },
     {
       "camada": "alerta-quilombola-mancha",
       "feicoes": 6,
@@ -81,6 +71,16 @@
       "mtime_utc": "2026-09-08T14:43:10.245Z",
       "obtencao": "derivada",
       "origem": "Normas de atos_oficiais cuja ementa indica criação, alteração, redução ou extinção de área protegida, com cada ementa lida e classificada à mão antes de entrar"
+    },
+    {
+      "camada": "bacia-paraopeba",
+      "feicoes": 1,
+      "bytes": 1783791,
+      "comprimido": false,
+      "sha256": "c1246bea139df4a26fff4c6a6fe80c61c461bd9f87b13da882100653eec2bac8",
+      "mtime_utc": "2026-09-30T20:59:26.940Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
       "camada": "brumadinho-area-atingida",
@@ -373,6 +373,46 @@
       "servico": "SIRENEJud — CNJ/CNMP, arquivo em massa (parquet no S3 público do CNJ), agregado por comarca do órgão julgador e casado com a malha municipal do IBGE; só contagens, nomes de partes descartados na coleta"
     },
     {
+      "camada": "sedes-capitais-mineracao-eua",
+      "feicoes": 29,
+      "bytes": 24919,
+      "comprimido": false,
+      "sha256": "8c407d096a5bbe198d23951af3adb1fa296014459eaf64316dbd3ff3a9f76858",
+      "mtime_utc": "2026-09-30T21:46:33.123Z",
+      "obtencao": "automatica",
+      "origem": "Observatório de Capitais, Regulação e Mineração dos Estados Unidos (EUA) — 29 sedes corporativas, fundos globais, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais (SEC, EPA, USGS, MSHA, USACE, SDNY) e grandes minas estratégicas compilados de relatórios da SEC EDGAR, EPA ECHO, USGS MRDS e MSHA."
+    },
+    {
+      "camada": "sedes-instalacoes-mineradoras-latam",
+      "feicoes": 51,
+      "bytes": 37344,
+      "comprimido": false,
+      "sha256": "f9852a83ba9ac78227afa625d0fedc9f2f8a2858a4de5f276160af6fc38e5242",
+      "mtime_utc": "2026-09-30T21:51:19.844Z",
+      "obtencao": "automatica",
+      "origem": "Observatório Transnacional de Mineração na América Latina — 51 sedes corporativas, megaminas, plantas de lítio, complexos metalúrgicos e portos de 9 países (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá) compilados de relatórios da ANM, SERNAGEOMIN, INGEMMET e SEC."
+    },
+    {
+      "camada": "sedes-litigios-portos-europa",
+      "feicoes": 23,
+      "bytes": 19528,
+      "comprimido": false,
+      "sha256": "961748588d669771e67cf5184ba2529b97ee2a3f70b2f4bf94d709239e80a442",
+      "mtime_utc": "2026-09-30T21:51:08.267Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "sedes-mineracao-canada",
+      "feicoes": 24,
+      "bytes": 19970,
+      "comprimido": false,
+      "sha256": "0edd284026239f1b59384f35620d8eb4eff34ecf5f3fdd2baf907774a14c990d",
+      "mtime_utc": "2026-09-30T21:52:02.595Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "sigmine-interesse",
       "feicoes": 47830,
       "bytes": 6352147,
@@ -562,6 +602,7 @@
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
   "camadas_sem_origem_declarada": [
+    "bacia-paraopeba",
     "cobertura-telefonia-mg",
     "cobertura-telefonia-prioritarias",
     "estudos-ambientais",
@@ -569,6 +610,8 @@
     "licencas-ambientais",
     "outorgas-agua",
     "presidios-mg",
+    "sedes-litigios-portos-europa",
+    "sedes-mineracao-canada",
     "torres-celular-mg",
     "torres-celular-prioritarias",
     "unidades-conservacao",

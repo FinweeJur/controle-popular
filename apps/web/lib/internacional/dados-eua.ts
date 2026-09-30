@@ -17,6 +17,7 @@ import empresasSecJson from "../../data/eua/empresas-sec.compact.json";
 import ambientalJson from "../../data/eua/ambiental-natureza-eua.compact.json";
 import contratosJson from "../../data/eua/contratos-usaspending.compact.json";
 import institucionalJson from "../../data/eua/institucional-eua.compact.json";
+import geoEuaJson from "../../data/internacional/eua-geo.compact.json";
 
 import type {
   RegistroEmpresaSecEua,
@@ -25,12 +26,35 @@ import type {
   RegistroInstitucionalEua,
 } from "../../../../scripts/coletar-eua-acervo.mts";
 
+export type TipoPontoEua =
+  | "sede_corporativa"
+  | "fundo_investimento"
+  | "bolsa_valores"
+  | "orgao_regulador"
+  | "mina_estrategica";
+
+export interface PontoGeoEua {
+  id: string;
+  nome: string;
+  entidade: string;
+  tipo: TipoPontoEua;
+  setor: string;
+  cidade: string;
+  estadoUsa: string;
+  latitude: number;
+  longitude: number;
+  regulador: string;
+  fonteOficial: string;
+  descricao: string;
+}
+
 export interface CoberturaEua {
   readonly dataMedicao: string;
   readonly empresasSecCatalogadas: number;
   readonly registrosAmbientais: number;
   readonly contratosEconomia: number;
   readonly registrosInstitucionais: number;
+  readonly sedesCapitaisGeo: number;
   readonly totalRegistros: number;
   readonly barragensHighHazardNid: number;
   readonly cidadesPolo: number;
@@ -46,6 +70,7 @@ export const COBERTURA_EUA: CoberturaEua = {
   registrosAmbientais: 9,
   contratosEconomia: 7,
   registrosInstitucionais: 10,
+  sedesCapitaisGeo: 29,
   totalRegistros: 44,
   barragensHighHazardNid: 15600,
   cidadesPolo: 2,
@@ -66,3 +91,18 @@ export function obterContratosEua(): RegistroContratosEconomiaEua[] {
 export function obterInstitucionalEua(): RegistroInstitucionalEua[] {
   return expandir(institucionalJson as unknown as TabelaCompacta) as unknown as RegistroInstitucionalEua[];
 }
+
+/**
+ * Retorna todos os pontos georreferenciados dos EUA (sedes, fundos, bolsas, órgãos reguladores e minas).
+ */
+export function obterPontosGeoEua(): PontoGeoEua[] {
+  return expandir(geoEuaJson as unknown as TabelaCompacta) as unknown as PontoGeoEua[];
+}
+
+/**
+ * Busca um ponto geoespacial dos EUA pelo ID único.
+ */
+export function obterPontoGeoEuaPorId(id: string): PontoGeoEua | undefined {
+  return obterPontosGeoEua().find((p) => p.id === id);
+}
+

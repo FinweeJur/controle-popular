@@ -1,0 +1,571 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fonte": "Controle Popular — Observatório Canadense de Mineração e Governança Cívica",
+    "dataAtualizacao": "2026-09-30",
+    "totalPontos": 24,
+    "polos": [
+      "Toronto",
+      "Vancouver",
+      "Montreal",
+      "Calgary",
+      "Sudbury",
+      "Ottawa"
+    ],
+    "aviso": "Coordenadas precisas em datum WGS84 compiladas a partir de relatórios da TSX, SEDAR+, NRCan, NPRI e imagens de satélite."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "ca-tsx-bolsa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3817,
+          43.6487
+        ]
+      },
+      "properties": {
+        "id": "ca-tsx-bolsa",
+        "nome": "Bolsa de Valores de Toronto (TSX / TSX Venture)",
+        "empresa": "TMX Group Limited",
+        "tipo": "bolsa_valores",
+        "mineralPrincipal": "Mercado de Capitais Mineral",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.tsx.com",
+        "descricao": "Principal praça financeira de mineração global. Concentra mais de 40% das mineradoras de capital aberto do mundo, com projetos ativos em MG e na Amazônia."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-vale-base-metals-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3795,
+          43.6468
+        ]
+      },
+      "properties": {
+        "id": "ca-vale-base-metals-sede",
+        "nome": "Sede Global da Vale Base Metals (Vale Canada)",
+        "empresa": "Vale Canada Limited (Vale S.A.)",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Níquel, Cobre e Cobalto",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "NYSE",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0000917851",
+        "descricao": "Sede mundial da divisão de transição energética da brasileira Vale S.A., controlando minas em Sudbury, Thompson, Voisey's Bay e no Pará (Salobo e Onça Puma)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-kinross-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3789,
+          43.6496
+        ]
+      },
+      "properties": {
+        "id": "ca-kinross-sede",
+        "nome": "Sede Corporativa Global - Kinross Gold",
+        "empresa": "Kinross Gold Corporation",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro e Prata",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0000701818",
+        "descricao": "Matriz proprietária da Mina Morro do Ouro em Paracatu (MG), maior mina de ouro a céu aberto do Brasil e uma das maiores do planeta."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-barrick-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3792,
+          43.6473
+        ]
+      },
+      "properties": {
+        "id": "ca-barrick-sede",
+        "nome": "Sede Corporativa Global - Barrick Gold",
+        "empresa": "Barrick Gold Corporation",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro e Cobre",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.barrick.com",
+        "descricao": "Uma das maiores mineradoras de ouro do mundo, com megaprojetos na América Latina como Veladero (Argentina) e Pueblo Viejo (República Dominicana)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-belosun-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3824,
+          43.6515
+        ]
+      },
+      "properties": {
+        "id": "ca-belosun-sede",
+        "nome": "Sede Corporativa - Belo Sun Mining Corp.",
+        "empresa": "Belo Sun Mining Corp. (Forbes & Manhattan)",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sedarplus.ca",
+        "descricao": "Canadense do grupo Forbes & Manhattan que busca implantar o Projeto Volta Grande no Rio Xingu (PA), alvo de litígio judicial por povos indígenas e MPF."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-brazil-potash-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3948,
+          43.6742
+        ]
+      },
+      "properties": {
+        "id": "ca-brazil-potash-sede",
+        "nome": "Sede Corporativa - Brazil Potash Corp.",
+        "empresa": "Brazil Potash Corp. (Forbes & Manhattan)",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Potássio (Silvinita)",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "NYSE",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0001472326",
+        "descricao": "Matriz da Potássio do Brasil, que projeta extração subterrânea de fertilizante potássico em Autazes (AM), sob disputa judicial com o Povo Mura."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-aura-minerals-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3855,
+          43.6502
+        ]
+      },
+      "properties": {
+        "id": "ca-aura-minerals-sede",
+        "nome": "Sede Corporativa - Aura Minerals Inc.",
+        "empresa": "Aura Minerals Inc.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro e Cobre",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sedarplus.ca",
+        "descricao": "Mineradora multibilionária com dupla listagem na TSX e B3; opera as minas de ouro Apoena (MT), Almas (TO) e implanta o Projeto Borborema (RN)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-jaguar-mining-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3804,
+          43.6481
+        ]
+      },
+      "properties": {
+        "id": "ca-jaguar-mining-sede",
+        "nome": "Sede Corporativa - Jaguar Mining Inc.",
+        "empresa": "Jaguar Mining Inc.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sedarplus.ca",
+        "descricao": "Matriz da MSOL em Minas Gerais, operando minas subterrâneas de ouro em Santa Bárbara e Conceição do Pará no Quadrilátero Ferrífero."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-osc-regulador",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3811,
+          43.6521
+        ]
+      },
+      "properties": {
+        "id": "ca-osc-regulador",
+        "nome": "Comissão de Valores Mobiliários de Ontário (OSC)",
+        "empresa": "Ontario Securities Commission",
+        "tipo": "orgao_regulador",
+        "mineralPrincipal": "Regulação de Mercado e Divulgação Mineral",
+        "cidade": "Toronto",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.osc.ca",
+        "descricao": "Regulador que fiscaliza as empresas listadas na TSX e o cumprimento do padrão internacional de divulgação técnica de reservas minerais NI 43-101."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-lundin-mining-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1187,
+          49.2863
+        ]
+      },
+      "properties": {
+        "id": "ca-lundin-mining-sede",
+        "nome": "Sede Corporativa Global - Lundin Mining",
+        "empresa": "Lundin Mining Corporation",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Cobre, Ouro e Zinco",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.lundinmining.com",
+        "descricao": "Grupo canadense controlador do Complexo Chapada em Goiás (Mina Chapada / Saúva) e da megamina Candelaria no Chile, com forte atuação em cobre e ouro."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-sigma-lithium-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1215,
+          49.2842
+        ]
+      },
+      "properties": {
+        "id": "ca-sigma-lithium-sede",
+        "nome": "Sede Corporativa - Sigma Lithium Corporation",
+        "empresa": "Sigma Lithium Corporation",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Lítio (Espodumênio Verde)",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX-V",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0001848309",
+        "descricao": "Controladora do Projeto Grota do Cirilo em Araçuaí e Itinga (Vale do Jequitinhonha, MG), pioneira em empilhamento a seco de rejeitos de lítio."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-teck-resources-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1192,
+          49.2858
+        ]
+      },
+      "properties": {
+        "id": "ca-teck-resources-sede",
+        "nome": "Sede Corporativa Global - Teck Resources",
+        "empresa": "Teck Resources Limited",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Cobre, Zinco e Carvão Siderúrgico",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.teck.com",
+        "descricao": "Maior mineradora diversificada do Canadá. Opera megaminas de cobre na América Latina como Quebrada Blanca (Chile) e Antamina (Peru)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-first-quantum-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1136,
+          49.2875
+        ]
+      },
+      "properties": {
+        "id": "ca-first-quantum-sede",
+        "nome": "Sede Corporativa Global - First Quantum Minerals",
+        "empresa": "First Quantum Minerals Ltd.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Cobre, Níquel e Ouro",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.first-quantum.com",
+        "descricao": "Gigante canadense de cobre. Operou a controversa mina Cobre Panamá, paralisada pela Suprema Corte panamenha após massivos protestos cívicos e populares."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-equinox-gold-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1179,
+          49.2851
+        ]
+      },
+      "properties": {
+        "id": "ca-equinox-gold-sede",
+        "nome": "Sede Corporativa - Equinox Gold Corp.",
+        "empresa": "Equinox Gold Corp.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0001756607",
+        "descricao": "Produtora de ouro com sede em Vancouver. Opera a mina Riacho dos Machados (MG), Aurizona (MA) e os complexos Fazenda e Santa Luz (BA)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-ero-copper-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1154,
+          49.2849
+        ]
+      },
+      "properties": {
+        "id": "ca-ero-copper-sede",
+        "nome": "Sede Corporativa - Ero Copper Corp.",
+        "empresa": "Ero Copper Corp.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Cobre e Ouro",
+        "cidade": "Vancouver",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.sec.gov/edgar/browse/?CIK=0001853860",
+        "descricao": "Controladora da Mineração Caraíba na Bahia (Complexo Caraíba / Mina Pilar), do Projeto Tucumã no Pará e da mina Xavantina em Mato Grosso."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-gmining-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.4412,
+          45.4485
+        ]
+      },
+      "properties": {
+        "id": "ca-gmining-sede",
+        "nome": "Sede Corporativa - G Mining Ventures Corp.",
+        "empresa": "G Mining Ventures Corp.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Ouro",
+        "cidade": "Brossard (Grande Montreal)",
+        "provincia": "Quebec",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.gminingventures.com",
+        "descricao": "Desenvolvedora de minas de ouro que colocou em operação comercial a mina de Tocantinzinho em Itaituba (PA) e o projeto CentroGold no Maranhão."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-nutrien-sede",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0732,
+          51.0441
+        ]
+      },
+      "properties": {
+        "id": "ca-nutrien-sede",
+        "nome": "Sede Corporativa Global - Nutrien Ltd.",
+        "empresa": "Nutrien Ltd.",
+        "tipo": "sede_corporativa",
+        "mineralPrincipal": "Potássio e Fertilizantes",
+        "cidade": "Calgary",
+        "provincia": "Alberta",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://www.nutrien.com",
+        "descricao": "Maior produtora mundial de potássio; o Canadá é a principal fonte de importação de fertilizantes potássicos para a agricultura e safra de grãos do Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-vale-sudbury-operacao",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0569,
+          46.4719
+        ]
+      },
+      "properties": {
+        "id": "ca-vale-sudbury-operacao",
+        "nome": "Complexo Minerário e Fundição Copper Cliff (Vale)",
+        "empresa": "Vale Canada Limited",
+        "tipo": "mina_operacao",
+        "mineralPrincipal": "Níquel, Cobre e Platina",
+        "cidade": "Greater Sudbury",
+        "provincia": "Ontario",
+        "bolsaListada": "NYSE",
+        "fonteOficial": "https://pollution-waste.canada.ca/national-release-inventory/",
+        "descricao": "Coração histórico das minas subterrâneas de níquel da Vale no Canadá. Monitorada pelo NPRI para emissões atmosféricas e disposição de rejeitos."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-vale-thompson-operacao",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.8558,
+          55.7435
+        ]
+      },
+      "properties": {
+        "id": "ca-vale-thompson-operacao",
+        "nome": "Mina Thompson e Usina de Níquel (Vale)",
+        "empresa": "Vale Canada Limited",
+        "tipo": "mina_operacao",
+        "mineralPrincipal": "Níquel e Cobalto",
+        "cidade": "Thompson",
+        "provincia": "Manitoba",
+        "bolsaListada": "NYSE",
+        "fonteOficial": "https://www.gov.mb.ca/iem/mines/",
+        "descricao": "Operação subterrânea de níquel da Vale no norte de Manitoba, fornecendo sulfeto de alta pureza para refino e transição energética."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-vale-voiseys-bay-operacao",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.0911,
+          56.3353
+        ]
+      },
+      "properties": {
+        "id": "ca-vale-voiseys-bay-operacao",
+        "nome": "Mina de Níquel e Cobre de Voisey's Bay (Vale)",
+        "empresa": "Vale Newfoundland & Labrador Ltd.",
+        "tipo": "mina_operacao",
+        "mineralPrincipal": "Níquel, Cobre e Cobalto",
+        "cidade": "Voisey's Bay",
+        "provincia": "Newfoundland and Labrador",
+        "bolsaListada": "NYSE",
+        "fonteOficial": "https://iaac-aeic.gc.ca",
+        "descricao": "Mina de níquel da Vale no subártico, operada sob Acordo de Impactos e Benefícios (IBA) com os povos indígenas originários Innu e Inuit (Nunatsiavut)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-mount-polley-desastre",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.6033,
+          52.5511
+        ]
+      },
+      "properties": {
+        "id": "ca-mount-polley-desastre",
+        "nome": "Mina Mount Polley (Desastre de Rompimento de Barragem)",
+        "empresa": "Mount Polley Mining Corp. (Imperial Metals)",
+        "tipo": "mina_operacao",
+        "mineralPrincipal": "Cobre e Ouro",
+        "cidade": "Likely (Lago Quesnel)",
+        "provincia": "British Columbia",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://mines.nrs.gov.bc.ca/p/58851197aaecd9001b8227cc/overview",
+        "descricao": "Local do desastre de 2014 onde 25 milhões de m³ de rejeitos contaminaram o Lago Quesnel; investigado pelo mesmo perito que checou Fundão em Mariana."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-nrcan-regulador",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7072,
+          45.4011
+        ]
+      },
+      "properties": {
+        "id": "ca-nrcan-regulador",
+        "nome": "Ministério de Recursos Naturais do Canadá (NRCan / ESTMA)",
+        "empresa": "Natural Resources Canada",
+        "tipo": "orgao_regulador",
+        "mineralPrincipal": "Políticas Minerais e Transparência ESTMA",
+        "cidade": "Ottawa",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://natural-resources.canada.ca/our-natural-resources/minerals-mining/mining-policy-taxation-industry/extractive-sector-transparency-measures-act/18188",
+        "descricao": "Aplica a lei federal ESTMA, obrigando mineradoras canadenses a divulgar pagamentos de royalties e taxas a governos estrangeiros, incluindo a ANM no Brasil."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-npri-regulador",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7208,
+          45.4281
+        ]
+      },
+      "properties": {
+        "id": "ca-npri-regulador",
+        "nome": "Inventário Nacional de Emissões de Poluentes (NPRI / ECCC)",
+        "empresa": "Environment and Climate Change Canada",
+        "tipo": "orgao_regulador",
+        "mineralPrincipal": "Rejeitos, Efluentes e Emissões Minerais",
+        "cidade": "Gatineau / Ottawa",
+        "provincia": "Quebec",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://pollution-waste.canada.ca/national-release-inventory/",
+        "descricao": "Base pública federal obrigatória que rastreia descarte de rejeitos e poluentes tóxicos em todas as minas e fundições do Canadá para fiscalização socioambiental."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ca-core-ombuds-regulador",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6961,
+          45.4344
+        ]
+      },
+      "properties": {
+        "id": "ca-core-ombuds-regulador",
+        "nome": "Ouvidoria Canadense para Empresas Responsáveis (CORE)",
+        "empresa": "Office of the Canadian Ombudsperson for Responsible Enterprise",
+        "tipo": "orgao_regulador",
+        "mineralPrincipal": "Direitos Humanos e Mineração no Exterior",
+        "cidade": "Ottawa",
+        "provincia": "Ontario",
+        "bolsaListada": "TSX",
+        "fonteOficial": "https://core-ombuds.canada.ca",
+        "descricao": "Canal governamental gratuito onde comunidades brasileiras atingidas por mineradoras canadenses podem denunciar abusos socioambientais e violações de direitos."
+      }
+    }
+  ]
+}

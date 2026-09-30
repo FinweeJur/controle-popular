@@ -221,6 +221,15 @@ const ORIGENS = {
     obtencao: 'automatica',
     servico: 'MapBiomas — Monitor da Mineração (camada mining_age, 30 m), recorte de MG, só os polígonos de primeira detecção em 2024 (janela de 24 meses da Fase 3)',
   },
+  // Expansão Internacional — América Latina e Estados Unidos (30/09/2026)
+  'sedes-instalacoes-mineradoras-latam': {
+    obtencao: 'automatica',
+    origem: 'Observatório Transnacional de Mineração na América Latina — 51 sedes corporativas, megaminas, plantas de lítio, complexos metalúrgicos e portos de 9 países (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador e Panamá) compilados de relatórios da ANM, SERNAGEOMIN, INGEMMET e SEC.',
+  },
+  'sedes-capitais-mineracao-eua': {
+    obtencao: 'automatica',
+    origem: 'Observatório de Capitais, Regulação e Mineração dos Estados Unidos (EUA) — 29 sedes corporativas, fundos globais, bolsas de valores (NYSE, Nasdaq), órgãos reguladores federais (SEC, EPA, USGS, MSHA, USACE, SDNY) e grandes minas estratégicas compilados de relatórios da SEC EDGAR, EPA ECHO, USGS MRDS e MSHA.',
+  },
   // Dinheiro público e mineração (13/08/2026) — ver
   // docs/HANDOFF-CAMADA-DINHEIRO.md e docs/FONTES-FLUXO-FINANCEIRO.md.
   'cfem-municipios': {
