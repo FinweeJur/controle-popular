@@ -223,6 +223,12 @@ silencioso.
   do dono: não perseguir; o índice em memória é o desenho final.
 - **Índice medido:** `montarAcervoDetalhado().cobertura.total` = **397
   pedaços** (não ~180), sem nenhuma resposta pulada por falta de rota.
+- **Busca × RAG (30/09):** a busca global (navbar e `/busca`) passou a cobrir a
+  memória e as bases — `paginas-portal.ts` completado (16 hubs novos, 2 ids
+  duplicados removidos) e `gerar-indice-busca.mts` indexando `lib/memoria` +
+  `catalogo-bases-dados.json` + `bases-portal.json`. Ganhou a ponte
+  **"Perguntar ao Seu Nonô"** (`BuscaGlobal.tsx`), que dispara `abrir-seu-nono`
+  com a consulta.
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 ## Riscos e métricas

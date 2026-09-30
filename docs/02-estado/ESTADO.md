@@ -191,6 +191,9 @@ Runbooks: [`planos/`](../planos/).
 - **R5:** cancelado (decisão do dono, 30/09) — o Guara não tem pgvector e o
   Qdrant não cabe no plano (`TIER_LIMIT_EXCEEDED`, 402). O índice em memória
   é o desenho final.
+- **Busca × RAG:** a busca global (navbar e `/busca`) passou a cobrir a
+  memória e as bases (hubs completados + indexador `gerar-indice-busca.mts`)
+  e ganhou a ponte "Perguntar ao Seu Nonô".
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 **30/09/2026** — F3 da memória: a camada município, com fonte local fechada.

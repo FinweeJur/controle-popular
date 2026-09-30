@@ -516,26 +516,6 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["indice", "mapa", "todas as paginas", "sumario", "navegacao"],
   },
   {
-    id: "editais-hub",
-    titulo: "Radar de Editais e Licitações — Diário Oficial MG",
-    descricao: "50+ editais e chamamentos públicos de interesse social coletados do Diário Oficial de MG, filtráveis por órgão, área e situação.",
-    href: "/editais",
-    frente: "geral",
-    rotulo: "Editais · DO-MG",
-    badgeCor: "var(--cp-primary)",
-    palavrasChave: ["editais", "licitacoes", "chamamento", "diario oficial", "mg", "contratacao", "concurso", "pregao"],
-  },
-  {
-    id: "estudos-rurais-hub",
-    titulo: "Estudos Rurais e Territoriais",
-    descricao: "Análises sobre reforma agrária, assentamentos, função social da terra e territórios quilombolas em Minas Gerais.",
-    href: "/estudos-rurais",
-    frente: "estudos-rurais",
-    rotulo: "Estudos Rurais",
-    badgeCor: "var(--cp-primary)",
-    palavrasChave: ["estudos rurais", "reforma agraria", "assentamentos", "quilombolas", "territorio", "fundiario", "rural"],
-  },
-  {
     id: "documentacao-hub",
     titulo: "Documentação Técnica do Portal",
     descricao: "Como o portal funciona: arquitetura, fontes, API pública e princípios editoriais. Para jornalistas, pesquisadores e desenvolvedores.",
@@ -643,6 +623,234 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: [
       "internacional", "multilateral", "onu", "pnud", "unesco", "oms", "omc",
       "idh", "gini", "g8", "g20", "comercio de minerios", "povos originarios",
+    ],
+  },
+
+  // ═══ HUBs COMPLEMENTARES (completado 30/09/2026) ═══
+  // Fecha o buraco entre a busca e as bases que o RAG já cobre
+  // (PLANO-RAG-COMPLETO): cada hub vira resultado de busca.
+  {
+    id: "memoria-lutas",
+    titulo: "Linha do Tempo das Lutas e Resistências",
+    descricao:
+      "Memória das resistências, revoltas e lutas populares do país, dos estados e dos municípios, com data e fonte oficial.",
+    href: "/memoria",
+    frente: "geral",
+    rotulo: "Memória · Lutas",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "memoria", "lutas", "resistencia", "revolta", "greve", "quilombo",
+      "indigena", "anistia", "ditadura", "massacre", "direitos humanos",
+    ],
+  },
+  {
+    id: "ambiental-licencas",
+    titulo: "Licenças Ambientais Estaduais e Federais",
+    descricao:
+      "Acervo unificado de licenças de operação, instalação e prévias dos órgãos estaduais (CETESB, FEAM, INEA, IMASUL e outros) e do IBAMA.",
+    href: "/ambiental/licencas",
+    frente: "ambiental",
+    rotulo: "Licenças · 11 UFs",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "licencas", "licenca", "licenciamento", "cetesb", "feam", "ibama",
+      "imasul", "inea", "lo", "li", "lp", "empreendimento", "meio ambiente",
+    ],
+  },
+  {
+    id: "ambiental-licenciamento",
+    titulo: "Licenciamento Ambiental de Minas Gerais (SEMAD/COPAM)",
+    descricao:
+      "Censo dos empreendimentos com licença deferida pela SEMAD, filtrável por município, setor, classe de risco e modalidade.",
+    href: "/ambiental/licenciamento",
+    frente: "ambiental",
+    rotulo: "SEMAD · MG",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "licenciamento", "semad", "licenca", "classes de risco", "modalidade",
+      "empreendimentos", "mineracao", "infraestrutura", "residuos",
+    ],
+  },
+  {
+    id: "ambiental-copam",
+    titulo: "Pautas e Decisões do COPAM",
+    descricao:
+      "Reuniões, pautas e decisões do Conselho Estadual de Política Ambiental de Minas Gerais, com link ao ato e à fonte.",
+    href: "/ambiental/copam",
+    frente: "ambiental",
+    rotulo: "COPAM · Decisões",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "copam", "conselho", "ambiental", "reuniao", "pauta", "decisao",
+      "deliberacao", "minas gerais",
+    ],
+  },
+  {
+    id: "ambiental-tac",
+    titulo: "Termos de Ajustamento de Conduta (TACs Ambientais)",
+    descricao:
+      "Acervo de TACs ambientais firmados por órgãos públicos, com objeto, órgão e link ao documento.",
+    href: "/ambiental/tac",
+    frente: "ambiental",
+    rotulo: "TAC · Ambiental",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "tac", "termo de ajustamento", "ajustamento de conduta", "conduta",
+      "compromisso", "mpmg", "ibama", "reparacao",
+    ],
+  },
+  {
+    id: "ambiental-rios",
+    titulo: "Nossos Rios — Doce, Paraopeba e Jequitinhonha",
+    descricao:
+      "Outorgas de água da ANA e do IGAM, comitês de bacia e a qualidade da água dos rios monitorados, com fonte oficial.",
+    href: "/ambiental/nossos-rios",
+    frente: "ambiental",
+    rotulo: "Rios · Água",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "rios", "rio", "agua", "outorga", "outorgas", "ana", "igam",
+      "comite de bacia", "bacia", "doce", "paraopeba", "jequitinhonha",
+    ],
+  },
+  {
+    id: "judiciario-contatos",
+    titulo: "Varas, Gabinetes e Balcão Virtual da Justiça",
+    descricao:
+      "Guia de 990 varas e gabinetes do TJMG, TRT-3 e TRF-6, com contatos, endereços e canal virtual de atendimento.",
+    href: "/judiciario/contatos",
+    frente: "judiciario",
+    rotulo: "Justiça · Contatos",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "varas", "gabinete", "contatos", "balcao virtual", "comarca",
+      "tjmg", "trt", "trf", "telefone", "endereco", "atendimento",
+    ],
+  },
+  {
+    id: "empresas-hub",
+    titulo: "Grandes Empresas, ESG e Fundos",
+    descricao:
+      "Perfil de grandes empresas e fundos (Vale, Sigma Lithium e multinacionais), documentos corporativos, ESG e vínculos societários.",
+    href: "/empresas",
+    frente: "geral",
+    rotulo: "Empresas · ESG",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "empresas", "empresa", "esg", "vale", "socios", "qsa", "fundos",
+      "multinacionais", "cvm", "governanca", "emissoes",
+    ],
+  },
+  {
+    id: "eua-hub",
+    titulo: "Transparência dos Estados Unidos (SEC, USAspending, Barragens)",
+    descricao:
+      "Dados abertos dos EUA que afetam o Brasil: registros da SEC, compras USAspending.gov, barragens NID/USACE e terras da BIA.",
+    href: "/eua",
+    frente: "geral",
+    rotulo: "EUA · SEC",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "eua", "estados unidos", "sec", "edgar", "usaspending", "barragens",
+      "nid", "usace", "bia", "terras indigenas", "comercio",
+    ],
+  },
+  {
+    id: "canada-hub",
+    titulo: "Mineradoras Canadenses na TSX e Emissões",
+    descricao:
+      "Mineradoras listadas na TSX que operam no Brasil, emissões do ECCC NPRI, caso Mount Polley e a ouvidoria CORE.",
+    href: "/canada",
+    frente: "geral",
+    rotulo: "Canadá · TSX",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "canada", "tsx", "mineradoras", "mount polley", "npri", "eccc",
+      "emissoes", "core", "ouvidoria", "rejeitos",
+    ],
+  },
+  {
+    id: "conselhos-hub",
+    titulo: "Conselhos de Direitos e Colegiados Municipais",
+    descricao:
+      "Mapa dos conselhos de saúde, meio ambiente, tutelares e de direitos humanos, com datas de reunião e canais de participação.",
+    href: "/direitos-em-movimento/conselhos",
+    frente: "geral",
+    rotulo: "Conselhos · Participação",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "conselhos", "conselho", "colegiado", "participacao", "saude",
+      "tutelar", "codema", "direitos humanos", "reuniao",
+    ],
+  },
+  {
+    id: "governo-hub",
+    titulo: "Governos: Prometeu? Cumpriu?",
+    descricao:
+      "Acompanhamento dos planos de governo eleitos e das promessas, comparando o que foi anunciado com o que foi executado.",
+    href: "/governo",
+    frente: "geral",
+    rotulo: "Governo · Promessas",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "governo", "governos", "promessa", "plano de governo", "eleito",
+      "cumprimento", "meta", "gestao",
+    ],
+  },
+  {
+    id: "estado-economia-hub",
+    titulo: "Estado e Economia",
+    descricao:
+      "Auditoria do gasto público estadual: orçamento, arrecadação, séries econômicas e séries do Banco Central.",
+    href: "/estado-e-economia",
+    frente: "geral",
+    rotulo: "Estado · Economia",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "estado", "economia", "orcamento", "arrecadacao", "receita",
+      "tributo", "divida", "banco central", "series economicas",
+    ],
+  },
+  {
+    id: "transparencia-internacional-hub",
+    titulo: "Índices de Transparência Internacional",
+    descricao:
+      "Comparação do Brasil em índices globais de transparência, corrupção e governança, com a fonte de cada índice.",
+    href: "/transparencia-internacional",
+    frente: "geral",
+    rotulo: "Transparência · Global",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "transparencia internacional", "indice", "corrupcao", "governanca",
+      "ranking", "percepcao", "global",
+    ],
+  },
+  {
+    id: "biblioteca-hub",
+    titulo: "Biblioteca Geral e Pesquisa",
+    descricao:
+      "Acervo pesquisável de estudos, artigos, relatórios e publicações do portal, com busca tolerante a acento.",
+    href: "/biblioteca",
+    frente: "geral",
+    rotulo: "Biblioteca · Acervo",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "biblioteca", "acervo", "estudos", "artigos", "pesquisa",
+      "publicacoes", "relatorios", "scielo",
+    ],
+  },
+  {
+    id: "funcao-social-hub",
+    titulo: "Função Social da Terra e Territórios",
+    descricao:
+      "Terras públicas, territórios indígenas e quilombolas, unidades de conservação e o globo 3D com camadas de sobreposição.",
+    href: "/funcaosocialterra",
+    frente: "terras",
+    rotulo: "Terra · Territórios",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "funcao social", "terra", "territorio", "terras publicas", "indigena",
+      "quilombola", "unidade de conservacao", "globo 3d", "grilagem",
     ],
   },
 ];

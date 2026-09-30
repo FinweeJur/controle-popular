@@ -59,7 +59,7 @@ export interface DocumentoIndexado {
   /** href relativo — navegação interna (contexto: cidade/proposição/tribunal) */
   h: string;
   /** zona */
-  f: "cidades" | "congresso" | "judiciario" | "estudos" | "blog";
+  f: "cidades" | "congresso" | "judiciario" | "estudos" | "blog" | "geral";
   /** slug do município, quando faz sentido */
   m?: string;
   /** ano/data, para ordenar empate pelo mais recente */

@@ -55,10 +55,11 @@ const RÓTULO_ZONA: Record<Resultado["doc"]["f"], string> = {
   judiciario: "Judiciário",
   estudos: "Estudos Rurais",
   blog: "Blog",
+  geral: "Portal",
 };
 
 /** Zonas na ordem dos chips de filtro — mesmo vocabulario de `f`. */
-const ZONAS: (keyof typeof RÓTULO_ZONA)[] = ["cidades", "congresso", "judiciario", "estudos", "blog"];
+const ZONAS: (keyof typeof RÓTULO_ZONA)[] = ["cidades", "congresso", "judiciario", "estudos", "blog", "geral"];
 
 interface BuscaClientProps {
   cidades: Cidade[];

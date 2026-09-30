@@ -31,6 +31,11 @@
  * inteira de norma nenhuma a mais que isso — ementa livre continua vindo só
  * do `to_tsvector` do Postgres, sem gambiarra em JS.
  *
+ * Desde 30/09/2026 entram também, como documentos, a MEMÓRIA das
+ * resistências (`lib/memoria`) e as BASES de dados do portal (catálogo
+ * curado + inventário medido, o mesmo acervo do RAG) — ver
+ * `docs/planos/PLANO-RAG-COMPLETO.md`.
+ *
  * O que ENTRA A MAIS, e por que não é a mesma coisa que "indexar título":
  * cada documento ganha até dois lexemas PRÓPRIOS — o número da própria
  * proposição/ato (`"4793"`) e, quando existe abreviação de tipo conhecida
@@ -606,6 +611,130 @@ let designacaoDocs = 0;
     console.warn("[gerar-indice-busca] Novidades nao indexadas:", (e as Error).message);
   }
 
+  // ─────────────── memória das resistências (lib/memoria) ───────────────
+  // Os verbetes curados (país, região, UF e município) entram na busca: a
+  // pessoa procura "Quilombo Baú" ou "Massacre de Ipatinga" e acha a linha do
+  // tempo. Fonte: `lib/memoria/camadas.ts` — a MESMA que alimenta o RAG, então
+  // busca e assistente nunca divergem.
+  let memoriaDocs = 0;
+  try {
+    const { CAMADAS_MEMORIA, verbeteValido, fontesPrimarias } = await import(
+      "../lib/memoria/index.js"
+    );
+    const verbetes = [
+      ...(CAMADAS_MEMORIA.pais["br"] ?? []),
+      ...Object.values(CAMADAS_MEMORIA.regiao).flat(),
+      ...Object.values(CAMADAS_MEMORIA.uf).flat(),
+      ...Object.values(CAMADAS_MEMORIA.municipio).flat(),
+    ].filter(verbeteValido);
+    for (const v of verbetes) {
+      const texto = `${v.titulo} ${v.periodo ?? ""} ${v.resumo} ${v.lugar ?? ""}`;
+      const tsv = (
+        await db.execute<{ tsv: string }>(sql`
+          select to_tsvector('portuguese', public.unaccent_immutable(${texto}))::text as tsv
+        `)
+      ).rows ?? [];
+      registrar(
+        {
+          t: v.titulo,
+          e: truncarEmenta(v.resumo, LIMITE_EMENTA),
+          h: "/memoria",
+          f: "geral",
+          k: "estudo",
+          u: fontesPrimarias(v)[0]?.url,
+        },
+        texto,
+        tsv[0]?.tsv ?? ""
+      );
+      memoriaDocs++;
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Memoria nao indexada:", (e as Error).message);
+  }
+
+  // ─────────────── bases de dados do portal ───────────────
+  // Catálogo curado (fonte oficial por base) + inventário medido por tema —
+  // o mesmo acervo que o RAG cobre (ver PLANO-RAG-COMPLETO). Aqui vira
+  // documento de busca: "licenças ambientais" ou "outorgas" levam à página.
+  let basesDocs = 0;
+  try {
+    const catalogo = JSON.parse(
+      readFileSync(path.resolve(AQUI, "../data/catalogo-bases-dados.json"), "utf8")
+    ) as {
+      nome: string;
+      orgaoFonte: string;
+      urlFonte: string;
+      registros: number;
+      formato: string;
+      paginasConsumidoras?: string[];
+    }[];
+    for (const b of catalogo) {
+      const rota = (b.paginasConsumidoras ?? []).find(
+        (r) => r.startsWith("/") && !r.includes("[")
+      );
+      if (!rota) continue;
+      const texto = `${b.nome} ${b.orgaoFonte} ${b.formato} base de dados ${b.registros} registros`;
+      const tsv = (
+        await db.execute<{ tsv: string }>(sql`
+          select to_tsvector('portuguese', public.unaccent_immutable(${texto}))::text as tsv
+        `)
+      ).rows ?? [];
+      registrar(
+        {
+          t: `Base de dados: ${b.nome}`,
+          e: truncarEmenta(`${b.orgaoFonte} · ${b.registros} registros`, LIMITE_EMENTA),
+          h: rota,
+          f: "geral",
+          k: "estudo",
+          u: /^https?:\/\//i.test(b.urlFonte) ? b.urlFonte : undefined,
+        },
+        texto,
+        tsv[0]?.tsv ?? ""
+      );
+      basesDocs++;
+    }
+
+    const inv = JSON.parse(
+      readFileSync(path.resolve(AQUI, "../data/bases-portal.json"), "utf8")
+    ) as {
+      temas: {
+        tema: string;
+        rotulo: string;
+        rota: string;
+        arquivos: number;
+        mb: number;
+        registros: number;
+        exemplos: string[];
+      }[];
+    };
+    for (const t of inv.temas ?? []) {
+      if (!t.rota.startsWith("/") || t.rota.includes("[")) continue;
+      const texto = `${t.rotulo} base de dados ${t.exemplos.join(" ")}`;
+      const tsv = (
+        await db.execute<{ tsv: string }>(sql`
+          select to_tsvector('portuguese', public.unaccent_immutable(${texto}))::text as tsv
+        `)
+      ).rows ?? [];
+      registrar(
+        {
+          t: `Bases de ${t.rotulo}`,
+          e: truncarEmenta(
+            `${t.arquivos} arquivo(s), ${t.mb} MB — exemplos: ${t.exemplos.slice(0, 4).join(", ")}`,
+            LIMITE_EMENTA
+          ),
+          h: t.rota,
+          f: "geral",
+          k: "estudo",
+        },
+        texto,
+        tsv[0]?.tsv ?? ""
+      );
+      basesDocs++;
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] Bases nao indexadas:", (e as Error).message);
+  }
+
   // ─────────────────────────── formas (lote único) ───────────────────────────
   const listaSuperficies = [...superficies];
   type ParFormaRadical = { forma: string; radical: string | null };
@@ -647,12 +776,12 @@ let designacaoDocs = 0;
   const rDocs = resumoDoGrupo(arquivosDocs);
   const rVocab = resumoDoGrupo(arquivosVocab);
   const rFormas = resumoDoGrupo(arquivosFormas);
-  const porZona = { cidades: 0, congresso: 0, judiciario: 0, estudos: 0, blog: 0 };
+  const porZona = { cidades: 0, congresso: 0, judiciario: 0, estudos: 0, blog: 0, geral: 0 };
   for (const d of docsComId) porZona[d.f]++;
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}${designacaoDocs ? ` incl. ${designacaoDocs} designacoes` : ""}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}${novidadesDocs ? ` incl. ${novidadesDocs} novidades` : ""}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}${designacaoDocs ? ` incl. ${designacaoDocs} designacoes` : ""}, estudos rurais ${porZona.estudos}, blog ${porZona.blog}${novidadesDocs ? ` incl. ${novidadesDocs} novidades` : ""}, geral ${porZona.geral}${memoriaDocs ? ` incl. ${memoriaDocs} memoria` : ""}${basesDocs ? ` + ${basesDocs} bases` : ""}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(

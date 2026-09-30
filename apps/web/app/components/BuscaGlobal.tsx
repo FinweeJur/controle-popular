@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, Sparkles } from "lucide-react";
 import { buscar, type IndiceBusca } from "@/lib/busca/indice";
 import { carregarIndiceBusca } from "@/lib/busca/carregarIndice";
 import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
@@ -19,6 +19,15 @@ import { DotsRing } from "@/app/components/loaders";
  *
  * Enter abre a página completa de busca com o termo; o dropdown mostra os
  * 8 melhores resultados e o link "ver todos".
+ *
+ * ═══ BUSCA × SEU NONÔ (RAG) ═══
+ *
+ * A busca da navbar é PALAVRA-CHAVE (índice estático); o Seu Nonô é o
+ * assistente com IA/RAG (`/api/chatbot`). São motores diferentes — então,
+ * quando o termo não casa bem, este dropdown oferece "Perguntar ao Seu
+ * Nonô": dispara o evento global `abrir-seu-nono` com a pergunta, que o
+ * widget escuta em qualquer página (`app/components/SeuNono.tsx`). É a
+ * ponte busca → RAG, sem duplicar motor.
  */
 
 // Cache em módulo: TopNav remonta em toda navegação; o índice não é
@@ -81,6 +90,16 @@ export default function BuscaGlobal() {
   }, [indice, consulta]);
 
   const mostrar = aberto && consulta.trim().length > 0;
+
+  /** Ponte busca → RAG: abre o Seu Nonô já com a pergunta deste termo. */
+  function perguntarAoSeuNono() {
+    const p = consulta.trim();
+    if (!p) return;
+    window.dispatchEvent(
+      new CustomEvent("abrir-seu-nono", { detail: { pergunta: p } })
+    );
+    setAberto(false);
+  }
 
   return (
     <div
@@ -201,6 +220,19 @@ export default function BuscaGlobal() {
               </li>
             ))
           )}
+          <li className="mt-1 border-t border-border pt-1">
+            <button
+              type="button"
+              onClick={perguntarAoSeuNono}
+              title="Abrir o Seu Nonô e responder com IA, citando a fonte"
+              className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-xs font-semibold text-primary transition-colors hover:bg-surface-2"
+            >
+              <Sparkles size={13} aria-hidden="true" className="shrink-0" />
+              <span className="truncate">
+                Perguntar ao Seu Nonô: “{consulta.trim()}”
+              </span>
+            </button>
+          </li>
           <li className="mt-1 border-t border-border pt-1">
             <a
               href={`/busca?q=${encodeURIComponent(consulta)}`}
