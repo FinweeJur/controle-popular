@@ -80,6 +80,40 @@ export default function GuiaPage() {
         .
       </p>
 
+      <section className="mt-10 space-y-3 rounded-2xl border border-border bg-surface-2/40 p-5">
+        <h2 className="font-display text-xl font-semibold text-foreground">Fora do Brasil: embaixadas e consulados</h2>
+        <p className="text-sm leading-relaxed text-muted">
+          O portal ainda não tem base própria de embaixadas e consulados — e
+          inventar contato é pior que não ter. Por isso, aqui vai a fonte
+          oficial para consultar as representações do Brasil no exterior, e o
+          hub internacional do portal para os dados que já são nossos.
+        </p>
+        <ul className="flex flex-wrap gap-2">
+          <li>
+            <a
+              href="https://www.gov.br/mre/pt-br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:text-primary"
+            >
+              Itamaraty (MRE) — embaixadas e consulados
+            </a>
+          </li>
+          <li>
+            <Link
+              href="/internacional"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:text-primary"
+            >
+              Hub internacional do portal
+            </Link>
+          </li>
+        </ul>
+        <p className="text-xs text-muted">
+          Lacuna declarada: quando houver coleta com fonte oficial, esta seção
+          ganha a lista própria — como as 445 entidades de transparência.
+        </p>
+      </section>
+
       <div className="mt-16">
         <FooterGlobal />
       </div>
