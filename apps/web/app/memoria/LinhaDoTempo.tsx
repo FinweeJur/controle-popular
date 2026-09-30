@@ -21,6 +21,7 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Search } from "lucide-react";
 import BotoesExportar from "@/app/components/BotoesExportar";
+import BotaoVoarAte from "@/app/components/BotaoVoarAte";
 import { TagChip } from "@/app/components/TagChip";
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import {
@@ -43,6 +44,12 @@ export interface VerbeteLinha {
   semData?: boolean;
   /** Rótulo do dia do fato, ex.: "12 de janeiro". */
   dataLabel: string;
+  /** Onde aconteceu, quando o gazetteer da memória reconhece o movimento. */
+  lugar?: string;
+  uf?: string;
+  lat?: number;
+  lon?: number;
+  ctx?: string;
 }
 
 interface Props {
@@ -83,7 +90,9 @@ export default function LinhaDoTempo({ verbetes }: Props) {
       if (seculo !== "todos" && seculoDe(v.ano) !== seculo) return false;
       if (tipos.size > 0 && !v.tipo.some((t) => tipos.has(t))) return false;
       if (alvo) {
-        const texto = normalizar(`${v.titulo} ${v.resumo ?? ""} ${v.fonteCurta} ${v.dataLabel}`);
+        const texto = normalizar(
+          `${v.titulo} ${v.resumo ?? ""} ${v.lugar ?? ""} ${v.fonteCurta} ${v.dataLabel}`,
+        );
         if (!texto.includes(alvo)) return false;
       }
       return true;
@@ -131,6 +140,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
     { chave: "titulo", rotulo: "Título" },
     { chave: "resumo", rotulo: "Resumo" },
     { chave: "tipo", rotulo: "Tipo", formatar: (v: TipoLuta[]) => v.map((t) => ROTULO_TIPO[t]).join(", ") },
+    { chave: "lugar", rotulo: "Onde" },
     { chave: "fonteCurta", rotulo: "Fonte" },
     { chave: "url", rotulo: "Link" },
   ];
@@ -257,6 +267,19 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                     <h3 className="mt-0.5 font-semibold text-foreground">{v.titulo}</h3>
                     {v.resumo ? (
                       <p className="mt-1 text-sm leading-relaxed text-text-soft">{v.resumo}</p>
+                    ) : null}
+                    {v.lugar && v.lat != null && v.lon != null ? (
+                      <p className="mt-1 text-xs text-muted">
+                        <span className="font-semibold">Onde: </span>
+                        {v.lugar}
+                        {v.uf ? `/${v.uf}` : ""} ·{" "}
+                        <BotaoVoarAte
+                          lat={v.lat}
+                          lon={v.lon}
+                          nome={`${v.titulo} — ${v.lugar}${v.uf ? `/${v.uf}` : ""}`}
+                          ctx={v.ctx}
+                        />
+                      </p>
                     ) : null}
                     {v.semData ? (
                       <p className="mt-1 text-xs italic text-muted">

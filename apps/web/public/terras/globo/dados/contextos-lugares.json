@@ -23,5 +23,101 @@
     "contexto": "Estes polígonos são mineração detectada por satélite (Monitor da Mineração, MapBiomas) cujo centroide cai fora de todo polígono de processo da ANM. Ausência de cadastro no lugar aponta que a ANM não tem processo ali — o que pode ser lavra informal, garimpo, extração isenta ou folga do desenho. Receber sinal não é ilícito: é o convite para conferir na fonte, e a apuração é da autoridade.",
     "fonte": "Monitor da Mineração (MapBiomas) × ANM/SIGMINE",
     "url": "https://plataforma.brasil.mapbiomas.org/"
+  },
+  "inconfidencia-mineira": {
+    "titulo": "Inconfidência Mineira (1789)",
+    "contexto": "Conspiração de elites de Minas Gerais, em Vila Rica, contra o domínio colonial e a derrama, com ideias do Iluminismo. Delatada à Coroa, terminou em devassa: Joaquim José da Silva Xavier, o Tiradentes, foi enforcado no Rio de Janeiro em 1792. Vila Rica é hoje Ouro Preto.",
+    "fonte": "Arquivo Nacional — Autos da Devassa da Inconfidência Mineira",
+    "url": "https://www.gov.br/arquivonacional/pt-br"
+  },
+  "revolta-de-vila-rica": {
+    "titulo": "Revolta de Vila Rica (1720)",
+    "contexto": "Motim em Vila Rica contra a criação das Casas de Fundição e a cobrança do quinto real. A liderança de Felipe dos Santos terminou em execução exemplar: enforcado e esquartejado. O episódio é um dos primeiros choques entre mineiros e a Coroa.",
+    "fonte": "Arquivo Público Mineiro — Seção Colonial",
+    "url": "https://www.siaapm.cultura.mg.gov.br/"
+  },
+  "conjuracao-baiana": {
+    "titulo": "Conjuração Baiana / Revolta dos Alfaiates (1798)",
+    "contexto": "Movimento de negros, mestiços e pobres livres em Salvador por igualdade, república e fim da escravidão — a face popular do que, em Minas, foi conspiração de elite. Foi duramente reprimido, com enforcamentos e degredos.",
+    "fonte": "Arquivo Nacional — documentação sobre a Conjuração Baiana",
+    "url": "https://www.gov.br/arquivonacional/pt-br"
+  },
+  "revolta-dos-males": {
+    "titulo": "Revolta dos Malês (1835)",
+    "contexto": "Levante de africanos islamizados (os malês) em Salvador, na noite de 24 para 25 de janeiro de 1835, pela liberdade e pelo fim da escravidão. Foi a maior insurreição urbana de escravizados no Brasil; a repressão foi violenta.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "sabinada": {
+    "titulo": "Sabinada (1837-1838)",
+    "contexto": "Revolta em Salvador, no período regencial, liderada por classe média urbana, militares e intelectuais. Os revoltosos proclamaram a Bahia independente até a maioridade de D. Pedro II; o movimento foi derrotado e seus líderes, condenados.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "cabanagem": {
+    "titulo": "Cabanagem (1835-1840)",
+    "contexto": "Levante popular na Amazônia, com indígenas, mestiços e pobres, que tomou Belém em 1835 e chegou a governar a província. A repressão matou dezenas de milhares de pessoas — estimativas falam de um terço da população do Grão-Pará.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "balaiada": {
+    "titulo": "Balaiada (1838-1841)",
+    "contexto": "Revolta de sertanejos, vaqueiros e escravizados no Maranhão contra a miséria e o poder dos grandes proprietários, no período regencial. Chegou a reunir milhares de combatentes antes de ser vencida.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "revolta-de-beckman": {
+    "titulo": "Revolta de Beckman (1684)",
+    "contexto": "Motim em São Luís do Maranhão contra o monopólio da Companhia de Comércio e a falta de escravizados. Os irmãos Beckman lideraram a deposição das autoridades; foram depois presos e executados em Lisboa.",
+    "fonte": "Arquivo Nacional — documentação colonial",
+    "url": "https://www.gov.br/arquivonacional/pt-br"
+  },
+  "guerra-de-canudos": {
+    "titulo": "Guerra de Canudos (1896-1897)",
+    "contexto": "Comunidade de camponeses e sertanejos reunida em Canudos, no sertão da Bahia, em torno de Antônio Conselheiro. Resistiu a quatro expedições militares e foi destruída em 1897; a guerra foi retratada por Euclides da Cunha em Os Sertões (1902).",
+    "fonte": "Euclides da Cunha, Os Sertões (1902) — Biblioteca Nacional",
+    "url": "https://www.bn.gov.br/"
+  },
+  "revolucao-farroupilha": {
+    "titulo": "Revolução Farroupilha (1835-1845)",
+    "contexto": "A mais longa revolta regencial: estancieiros e militares do Rio Grande do Sul contra o governo imperial e os impostos sobre o charque. Proclamou a República Rio-Grandense e terminou, dez anos depois, pelo Tratado de Poncho Verde.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "guerra-do-contestado": {
+    "titulo": "Guerra do Contestado (1912-1916)",
+    "contexto": "Conflito armado na região disputada por Santa Catarina e Paraná, envolvendo posseiros, trabalhadores da ferrovia e a empresa que explorava a madeira e a terra. Reuniu milhares de sertanejos em comunidades rebeldes; a repressão deixou milhares de mortos.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "quilombo-dos-palmares": {
+    "titulo": "Quilombo dos Palmares (século XVII)",
+    "contexto": "O maior quilombo das Américas, na Serra da Barriga, em Alagoas: comunidades de negros fugidos que resistiram por décadas aos ataques coloniais. Zumbi, seu líder, foi morto em 20 de novembro de 1695 — data que se tornou o Dia da Consciência Negra.",
+    "fonte": "Fundação Cultural Palmares",
+    "url": "https://www.gov.br/palmares/pt-br"
+  },
+  "revolta-da-chibata": {
+    "titulo": "Revolta da Chibata (1910)",
+    "contexto": "Motim de marinheiros, quase todos negros, contra os castigos físicos na Marinha brasileira, no Rio de Janeiro. Liderados por João Cândido, o Almirante Negro, tomaram o controle dos navios e forçaram o fim da chibata; a anistia prometida foi depois rompida.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "revolta-da-vacina": {
+    "titulo": "Revolta da Vacina (1904)",
+    "contexto": "Motim popular no Rio de Janeiro contra a vacinação obrigatória e a reforma urbana que desalojou os pobres do centro. A revolta foi reprimida com violência e expôs o abismo entre a cidade modernizada e a população que nela vivia.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "quebra-quilos": {
+    "titulo": "Quebra-Quilos (1874-1875)",
+    "contexto": "Revolta de gente pobre na Paraíba e em Pernambuco contra os novos impostos e a imposição do sistema métrico decimal. Os revoltosos quebraram balanças e medidas; centenas foram presos e enviados a trabalhos forçados.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
+  },
+  "cabanada": {
+    "titulo": "Cabanada (1832-1835)",
+    "contexto": "Movimento de lavradores, pobres e quilombolas de Pernambuco e Alagoas, reunidos em mocambos, no conturbado período regencial. Contestava o governo e a ordem dos proprietários; a repressão foi violenta.",
+    "fonte": "Biblioteca Nacional — Acervo Digital",
+    "url": "https://www.bn.gov.br/"
   }
 }

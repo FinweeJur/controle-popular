@@ -30,12 +30,15 @@
 
 import { useEffect, useState } from "react";
 import type { EntradaCalendario } from "@/lib/memoria/tipos";
+import type { Local } from "@/lib/memoria/locais";
 import { CampfireColonyAnim } from "@/app/components/CampfireColonyAnim";
+import BotaoVoarAte from "@/app/components/BotaoVoarAte";
 
 interface MisticaCarregada {
   entrada: EntradaCalendario;
   fonte: string;
   seloAno: boolean;
+  local: Local | null;
 }
 
 export default function MisticaDoDia() {
@@ -43,8 +46,10 @@ export default function MisticaDoDia() {
 
   useEffect(() => {
     let vivo = true;
-    import("@/lib/memoria/mistica")
-      .then(({ misticaDoDia, fonteCurta, mostrarAnoSelo }) => {
+    // Os dois módulos entram juntos no chunk da Mística: o gazetteer de lugares
+    // é leve (coordenadas embutidas) e não pesa na home.
+    Promise.all([import("@/lib/memoria/mistica"), import("@/lib/memoria/locais")])
+      .then(([{ misticaDoDia, fonteCurta, mostrarAnoSelo }, { localDaEntrada }]) => {
         if (!vivo) return;
         const entrada = misticaDoDia(new Date());
         if (entrada) {
@@ -52,6 +57,7 @@ export default function MisticaDoDia() {
             entrada,
             fonte: fonteCurta(entrada),
             seloAno: mostrarAnoSelo(entrada),
+            local: localDaEntrada(entrada),
           });
         }
       })
@@ -67,7 +73,7 @@ export default function MisticaDoDia() {
 
   if (!mistica) return null;
 
-  const { entrada, fonte, seloAno } = mistica;
+  const { entrada, fonte, seloAno, local } = mistica;
 
   return (
     <aside
@@ -95,6 +101,19 @@ export default function MisticaDoDia() {
           <p className="mt-1 text-[.8em] text-muted">
             Fato do calendário sem data no original — exibido para não deixar
             o dia vazio.
+          </p>
+        ) : null}
+        {local ? (
+          <p className="mt-1 text-[.85em] text-muted">
+            <span className="font-semibold">Onde: </span>
+            {local.nome}
+            {local.uf ? `/${local.uf}` : ""} ·{" "}
+            <BotaoVoarAte
+              lat={local.lat}
+              lon={local.lon}
+              nome={`${entrada.titulo} — ${local.nome}${local.uf ? `/${local.uf}` : ""}`}
+              ctx={local.ctx}
+            />
           </p>
         ) : null}
         <p className="mt-2 text-[.85em] text-muted">

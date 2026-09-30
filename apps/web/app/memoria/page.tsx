@@ -5,6 +5,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { CALENDARIO_LUTAS } from "@/lib/memoria/calendario";
 import { fonteCurta } from "@/lib/memoria/mistica";
+import { localDaEntrada } from "@/lib/memoria/locais";
 import { DATAS_REFERENCIA, citacaoCurtaData } from "@/lib/memoria/datas-referencia";
 import { ROTULO_TIPO } from "@/lib/memoria/rotulos";
 import LinhaDoTempo from "./LinhaDoTempo";
@@ -36,6 +37,9 @@ const MEDIDO_EM = "30/09/2026";
 export default function MemoriaPage() {
   const verbetes: VerbeteLinha[] = CALENDARIO_LUTAS.map((e) => {
     const [mes, dia] = e.diaMes.split("-").map(Number);
+    // Onde aconteceu, pelo gazetteer curado (`lib/memoria/locais.ts`): sem
+    // reconhecimento, o campo fica indefinido e a tela não inventa lugar.
+    const local = localDaEntrada(e);
     return {
       diaMes: e.diaMes,
       ano: e.ano,
@@ -46,6 +50,11 @@ export default function MemoriaPage() {
       url: e.url,
       semData: e.semData,
       dataLabel: `${dia} de ${MESES[mes - 1]}`,
+      lugar: local?.nome,
+      uf: local?.uf,
+      lat: local?.lat,
+      lon: local?.lon,
+      ctx: local?.ctx,
     };
   });
 

@@ -255,6 +255,26 @@ Cada camada diz **o que prova** e **o que não prova** — e a ficha publica iss
 - **Ligar o botão da Fase 0:** `BotaoVoarAte` na Mística do Dia (home) e em cada verbete da
   linha do tempo, com `ctx` do contexto do lugar.
 
+**Status medido 30/09/2026 — feito, com o número declarado:**
+
+- **Gazetteer curado** em `apps/web/lib/memoria/locais.ts`: só nome de movimento
+  inequívoco (`Inconfidência Mineira`, `Cabanagem`, `Canudos`, `Palmares`, …). Palavra
+  ambígua (`palmares`, `chibata`, `males`, `farrapos`) fica **de fora** — casá-la daria
+  "onde" falso, e onde falso é dano.
+- **Coordenada do IBGE, conferida por teste:** as coordenadas estão embutidas no módulo
+  (para ele não levar o JSON de 529 KB ao bundle da home) e `locais.test.ts` compara cada
+  uma com `apps/web/data/municipios-centroides.json` — divergência > ~0,05° quebra o teste.
+- **Cobertura declarada: 14 de 533 verbetes** ganham lugar (Belém, Canudos, Marabá, Caxias,
+  Contestado, Ouro Preto, Recife, Rio, Salvador, São Paulo…). **A maior parte fica sem
+  lugar, e a tela diz isso** — lacuna é informação.
+- **Onde aparece:** Mística do Dia (home) e cada verbete de `/memoria` mostram
+  `Onde: <lugar>/<UF>` com o botão **"Voe até aqui"** (Fase 0).
+- **16 contextos históricos** publicados em `dados/contextos-lugares.json` (um por
+  movimento), cada um com fonte (Arquivo Nacional, Biblioteca Nacional, Palmares).
+- **Pendente declarado:** a camada `hist-revoltas.geojson` no globo — o botão já voa sem
+  ela; a camada entra quando o recorte tiver densidade que justifique.
+- Suíte verde: **2.036 testes** no vitest + 177 no globo; `tsc` limpo.
+
 ### Fase D — sesmarias de MG (1–2 dias)
 
 - Coletor do APM (`brtacervo`): busca por "sesmaria", paginação, só **metadado + link**;
