@@ -426,6 +426,7 @@ export default async function HomePage({
           resultado={resultadoMemoria}
           memoriaLocal={memoria?.memoria ?? null}
           cultura={memoria?.cultura ?? null}
+          hrefHistorico={`/${cidade.slug}/historico`}
         />
 
         {/* DIÁLOGO ENTRE FRENTES (Painéis-sanfona) */}

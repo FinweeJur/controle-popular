@@ -23,6 +23,7 @@
 import type { ResultadoMemoria } from "@/lib/memoria/tipos";
 import { fontesPrimarias } from "@/lib/memoria/guardas";
 import { ROTULO_TIPO } from "@/lib/memoria/rotulos";
+import Link from "@/lib/betim/link";
 
 /** Rótulo do degrau da escada em que o marco foi achado. */
 const NIVEL_ROTULO: Record<ResultadoMemoria["nivel"], string> = {
@@ -47,12 +48,15 @@ export interface CartaoMemoriaProps {
   memoriaLocal: string | null;
   /** Cultura viva da cidade; renderiza sempre que existir. */
   cultura: string | null;
+  /** Rota da linha do tempo da cidade (`/<slug>/historico`). */
+  hrefHistorico: string;
 }
 
 export default function CartaoMemoria({
   resultado,
   memoriaLocal,
   cultura,
+  hrefHistorico,
 }: CartaoMemoriaProps) {
   const verbete = resultado?.verbete ?? null;
   if (!verbete && !memoriaLocal && !cultura) return null;
@@ -133,6 +137,13 @@ export default function CartaoMemoria({
       {cultura ? (
         <p className="mt-3 text-[.95em] text-text-soft">{cultura}</p>
       ) : null}
+
+      <Link
+        href={hrefHistorico}
+        className="mt-3 inline-flex items-center gap-1 text-[.88em] font-semibold text-accent hover:underline"
+      >
+        Ver a história da cidade na linha do tempo →
+      </Link>
     </section>
   );
 }
