@@ -14,7 +14,9 @@ import {
   chaveDiaMes,
   diasCobertos,
   entradasDoDia,
+  fonteCurta,
   misticaDoDia,
+  mostrarAnoSelo,
   referenciaAbnt,
 } from "./mistica";
 
@@ -136,5 +138,53 @@ describe("cobertura", () => {
   it("cobre o ano inteiro: fato sem data preenche os dias vazios", () => {
     // 366 chaves (com 29/02); com o recheio do MST o alvo é o ano cheio.
     expect(diasCobertos()).toBeGreaterThan(340);
+  });
+});
+
+describe("fonteCurta", () => {
+  it("usa a obra da fonte, nunca a pessoa que assina (formato do dono)", () => {
+    for (const e of CALENDARIO_LUTAS) {
+      const curta = fonteCurta(e);
+      const obra = /insurgente/i.test(e.orgao)
+        ? "Calendário Insurgente, Blog Aos que Virão"
+        : "Calendário Histórico das Trabalhadoras/es, MST";
+      expect(curta, `fonte curta de ${e.diaMes}/${e.titulo}`).toContain(obra);
+      // o nome do autor-pessoa não entra na citação curta
+      expect(curta).not.toContain("SEFERIAN");
+      expect(curta).not.toContain("BENITEZ");
+    }
+  });
+
+  it("traz a data da obra: 2009 no MST e 2020 no blog", () => {
+    const mst = CALENDARIO_LUTAS.find((e) => !/insurgente/i.test(e.orgao));
+    const blog = CALENDARIO_LUTAS.find((e) => /insurgente/i.test(e.orgao));
+    expect(mst).toBeDefined();
+    expect(blog).toBeDefined();
+    if (mst) expect(fonteCurta(mst)).toContain("2009");
+    if (blog) expect(fonteCurta(blog)).toContain("2020");
+  });
+});
+
+describe("mostrarAnoSelo", () => {
+  it("some com o selo quando o título já traz o ano (não repete a data)", () => {
+    const comAnoNoTitulo = CALENDARIO_LUTAS.find(
+      (e) => e.ano && e.titulo.includes(e.ano),
+    );
+    expect(comAnoNoTitulo).toBeDefined();
+    if (comAnoNoTitulo) expect(mostrarAnoSelo(comAnoNoTitulo)).toBe(false);
+  });
+
+  it("mostra o selo quando o título não traz o ano", () => {
+    const semAnoNoTitulo = CALENDARIO_LUTAS.find(
+      (e) => e.ano && !e.titulo.includes(e.ano),
+    );
+    expect(semAnoNoTitulo).toBeDefined();
+    if (semAnoNoTitulo) expect(mostrarAnoSelo(semAnoNoTitulo)).toBe(true);
+  });
+
+  it("nunca mostra o selo sem ano (fato sem data não ganha data falsa)", () => {
+    const semAno = CALENDARIO_LUTAS.find((e) => !e.ano);
+    expect(semAno).toBeDefined();
+    if (semAno) expect(mostrarAnoSelo(semAno)).toBe(false);
   });
 });

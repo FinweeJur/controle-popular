@@ -16,9 +16,15 @@
  *   dia é ordenado de forma determinística: entrada COM link primeiro
  *   (fonte conferível), depois ano mais antigo, depois ordem alfabética.
  *   Determinismo importa: a mesma data tem que dar a mesma mística.
- * - `referenciaAbnt` monta a citação em runtime em vez de guardar o texto
- *   em cada entrada — o calendário tem 433 entradas e repetir a ficha
- *   inflaria o módulo (que a home lê no cliente, em chunk separado).
+ * - `referenciaAbnt` monta a citação ABNT completa em runtime em vez de
+ *   guardar o texto em cada entrada — o calendário tem centenas de entradas
+ *   e repetir a ficha inflaria o módulo (que a home lê no cliente).
+ * - `fonteCurta` é a citação CURTA que a tela usa (regra do dono,
+ *   30/09/2026): `(Obra, Autor, Data)`, com autor sendo a FONTE, nunca a
+ *   pessoa. Na tela, a ABNT longa repetiria título e datas — o que o dono
+ *   mandou unificar ("sem mostrar a data duas vezes").
+ * - `mostrarAnoSelo` evita o ano em dobro: quando o título já carrega o
+ *   ano do fato, o selo `ano:` some.
  */
 
 import { CALENDARIO_LUTAS } from "./calendario";
@@ -95,4 +101,33 @@ export function referenciaAbnt(entrada: EntradaCalendario, acesso?: Date): strin
 /** Quantos dias do ano têm ao menos uma entrada (para o painel de cobertura). */
 export function diasCobertos(): number {
   return POR_DIA.size;
+}
+
+/**
+ * Citação CURTA da fonte, no formato do dono (30/09/2026):
+ * `(Obra, Autor, Data)` — ex.: "Calendário Histórico das Trabalhadoras/es,
+ * MST, 2009" e "Calendário Insurgente, Blog Aos que Virão, 2020".
+ *
+ * O "autor" aqui é a OBRA/fonte, nunca a pessoa que assina (decisão do
+ * dono). A data é o ano da obra — 2009 no MST, 2020 no blog. Usa o campo
+ * gravado pelo gerador; se faltar (entrada antiga), infere pela `orgao` e
+ * pela pista de ano em `fonteData`, sem nunca inventar obra nova.
+ */
+export function fonteCurta(entrada: EntradaCalendario): string {
+  if (entrada.fonteCurta) return entrada.fonteCurta;
+  const ano = /\d{4}/.exec(entrada.fonteData)?.[0] ?? entrada.fonteData;
+  if (/insurgente/i.test(entrada.orgao)) {
+    return `Calendário Insurgente, Blog Aos que Virão, ${ano}`;
+  }
+  return `Calendário Histórico das Trabalhadoras/es, MST, ${ano}`;
+}
+
+/**
+ * O selo de ano deve aparecer na tela? Não quando o próprio título já
+ * traz o ano, e não quando não há ano. Assim a data não aparece duas
+ * vezes (pedido do dono, 30/09/2026).
+ */
+export function mostrarAnoSelo(entrada: EntradaCalendario): boolean {
+  if (!entrada.ano) return false;
+  return !entrada.titulo.includes(entrada.ano);
 }

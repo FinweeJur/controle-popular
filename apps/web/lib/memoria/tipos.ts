@@ -143,6 +143,14 @@ export interface EntradaCalendario {
   /** Link direto e conferido; ausente quando a fonte é documento sem URL. */
   url?: string;
   /**
+   * Citação CURTA no formato do dono `(Obra, Autor, Data)` — ex.:
+   * "Calendário Histórico das Trabalhadoras/es, MST, 2009" e
+   * "Calendário Insurgente, Blog Aos que Virão, 2020" (30/09/2026).
+   * O autor aqui é a FONTE/obra, nunca a pessoa que assina. Quando
+   * ausente, `fonteCurta()` em `mistica.ts` monta pelas outras pistas.
+   */
+  fonteCurta?: string;
+  /**
    * `true` = o fato veio sem data no original e foi posto neste dia para
    * não deixá-lo vazio (regra do dono 29/09/2026). A tela avisa.
    */

@@ -5,9 +5,14 @@
  *
  * O que faz: mostra, abaixo da nav bar e do letreiro "✦ OLHO ABERTO ✦" e
  * acima da capa-hero, uma luta popular ou fato de resistência do DIA do
- * visitante, com a citação ABNT da fonte (autor, ano e link quando
- * houver). Pedido do dono em 29/09/2026 ("como a home editável do
- * Google"), dentro do plano `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`.
+ * visitante, com a citação CURTA da fonte no formato do dono
+ * `(Obra, Autor, Data)` e link quando houver. Pedido do dono em
+ * 29/09/2026 ("como a home editável do Google"), dentro do plano
+ * `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`.
+ *
+ * UNIFICAÇÃO DAS DATAS (dono, 30/09/2026): o selo de ano só aparece
+ * quando o título NÃO traz o ano; e a citação é curta, para a data não
+ * sair duas vezes na tela.
  *
  * POR QUE COMPONENTE DE CLIENTE E CARGA SOB DEMANDA (decisão técnica):
  * 1. o dia tem que ser o do visitante, não o do build — a home é
@@ -29,7 +34,8 @@ import { CampfireColonyAnim } from "@/app/components/CampfireColonyAnim";
 
 interface MisticaCarregada {
   entrada: EntradaCalendario;
-  abnt: string;
+  fonte: string;
+  seloAno: boolean;
 }
 
 export default function MisticaDoDia() {
@@ -38,11 +44,15 @@ export default function MisticaDoDia() {
   useEffect(() => {
     let vivo = true;
     import("@/lib/memoria/mistica")
-      .then(({ misticaDoDia, referenciaAbnt }) => {
+      .then(({ misticaDoDia, fonteCurta, mostrarAnoSelo }) => {
         if (!vivo) return;
         const entrada = misticaDoDia(new Date());
         if (entrada) {
-          setMistica({ entrada, abnt: referenciaAbnt(entrada) });
+          setMistica({
+            entrada,
+            fonte: fonteCurta(entrada),
+            seloAno: mostrarAnoSelo(entrada),
+          });
         }
       })
       .catch(() => {
@@ -57,7 +67,7 @@ export default function MisticaDoDia() {
 
   if (!mistica) return null;
 
-  const { entrada, abnt } = mistica;
+  const { entrada, fonte, seloAno } = mistica;
 
   return (
     <aside
@@ -73,7 +83,7 @@ export default function MisticaDoDia() {
           Mística do Dia
         </p>
         <p className="mt-1 text-[1.02em] text-foreground">
-          {entrada.ano ? (
+          {seloAno ? (
             <span className="font-semibold">{entrada.ano}: </span>
           ) : null}
           {entrada.titulo}
@@ -96,10 +106,10 @@ export default function MisticaDoDia() {
               rel="noopener noreferrer"
               className="underline hover:text-primary"
             >
-              {abnt}
+              {fonte}
             </a>
           ) : (
-            abnt
+            fonte
           )}
         </p>
       </div>
