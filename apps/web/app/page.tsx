@@ -89,6 +89,32 @@ export default async function Hub() {
         resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
       />
 
+      {/* ═══ LANÇAMENTO PARA REVISÃO PÚBLICA DOS DADOS — pedido do dev,
+          30/09/2026: a página nova entra como lançamento ao público para
+          revisão dos dados. Fica logo abaixo da capa, acima do carrossel. ═══ */}
+      <section
+        aria-label="Lançamento para revisão pública dos dados"
+        className="mt-6 rounded-2xl border border-alert/40 bg-alert/10 p-5"
+      >
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+          Lançamento para revisão pública dos dados
+        </p>
+        <h2 className="mt-1 text-xl font-semibold">
+          Mineração e comunidades tradicionais em Minas Gerais
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
+          Publicamos o cruzamento das terras indígenas e dos territórios quilombolas de Minas Gerais com a
+          mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto para revisão:
+          aponte erro, lacuna ou dado faltante — o portal corrige na fonte oficial.
+        </p>
+        <a
+          href="/mineracao/ilegal"
+          className="mt-3 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
+        >
+          Ver os dados →
+        </a>
+      </section>
+
       {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
       <CardCarousel />
 
