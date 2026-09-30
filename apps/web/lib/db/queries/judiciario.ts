@@ -1,5 +1,6 @@
 import { and, asc, desc, eq, isNotNull, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import {
   alertasInJudiciario,
   magistradosInJudiciario,
@@ -58,12 +59,13 @@ export type SugestaoBusca = {
  * inexistente seria pior que não sugerir.
  */
 export async function buscaRapidaJudiciario(termo: string, limite = 8) {
-  const db = getDb();
   const q = termo.trim();
-  if (!db || q.length < 2) return [];
+  if (q.length < 2) return [];
   const like = `%${q}%`;
 
-  const linhas = await db.execute<SugestaoBusca>(sql`
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<SugestaoBusca>(sql`
     (select 'tribunal' as tipo, t.sigla as titulo, t.nome as subtitulo,
             '/judiciario/tribunais/' || lower(t.id) as href,
             t.url_composicao as fonte_url,
@@ -114,14 +116,18 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
       limit 4)
     order by peso
     limit ${limite}
-  `);
-  return linhas.rows ?? [];
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 export async function listarTribunais() {
-  const db = getDb();
-  if (!db) return null;
-  return db.select().from(tribunaisInJudiciario).orderBy(asc(tribunaisInJudiciario.ramo));
+  return comBancoReserva(
+    (db) => db.select().from(tribunaisInJudiciario).orderBy(asc(tribunaisInJudiciario.ramo)),
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "judiciario" }
+  );
 }
 
 /**
@@ -140,9 +146,9 @@ export async function listarTribunais() {
  * mesmo nome não sair duas vezes na página.
  */
 export async function integrantesSemCadeira(tribunalId: string) {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{
     id: string;
     nome: string;
     nome_completo: string | null;
@@ -166,39 +172,46 @@ export async function integrantesSemCadeira(tribunalId: string) {
               where o.magistrado_id = m.id and o.atual
            )
      order by m.nome
-  `);
-  return linhas.rows ?? [];
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 export async function ocupacoesAtuais(tribunalId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select()
-    .from(vw_vacanciaInJudiciario)
-    .where(
-      and(
-        eq(vw_vacanciaInJudiciario.tribunal_id, tribunalId),
-        eq(vw_vacanciaInJudiciario.atual, true)
-      )
-    );
+  return comBancoReserva(
+    (db) =>
+      db
+        .select()
+        .from(vw_vacanciaInJudiciario)
+        .where(
+          and(
+            eq(vw_vacanciaInJudiciario.tribunal_id, tribunalId),
+            eq(vw_vacanciaInJudiciario.atual, true)
+          )
+        ),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 /** Ocupações atuais com vacância projetada, da mais próxima para a mais distante. */
 export async function proximasVacancias(limite = 50) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select()
-    .from(vw_vacanciaInJudiciario)
-    .where(
-      and(
-        eq(vw_vacanciaInJudiciario.atual, true),
-        isNotNull(vw_vacanciaInJudiciario.vacancia_projetada)
-      )
-    )
-    .orderBy(asc(vw_vacanciaInJudiciario.vacancia_projetada))
-    .limit(limite);
+  return comBancoReserva(
+    (db) =>
+      db
+        .select()
+        .from(vw_vacanciaInJudiciario)
+        .where(
+          and(
+            eq(vw_vacanciaInJudiciario.atual, true),
+            isNotNull(vw_vacanciaInJudiciario.vacancia_projetada)
+          )
+        )
+        .orderBy(asc(vw_vacanciaInJudiciario.vacancia_projetada))
+        .limit(limite),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 /**
@@ -215,61 +228,67 @@ export async function proximasVacancias(limite = 50) {
  * e obrigava um `Array.isArray()` na saída. O join tipa direto.
  */
 export async function mandatosDirecao(tribunalId: string) {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select({
-      id: mandatos_direcaoInJudiciario.id,
-      cargo: mandatos_direcaoInJudiciario.cargo,
-      magistrado_nome: magistradosInJudiciario.nome,
-      data_inicio: mandatos_direcaoInJudiciario.data_inicio,
-      data_fim: mandatos_direcaoInJudiciario.data_fim,
-      biennio: mandatos_direcaoInJudiciario.biennio,
-      eleito: mandatos_direcaoInJudiciario.eleito,
-    })
-    .from(mandatos_direcaoInJudiciario)
-    .innerJoin(
-      magistradosInJudiciario,
-      eq(magistradosInJudiciario.id, mandatos_direcaoInJudiciario.magistrado_id)
-    )
-    .where(eq(mandatos_direcaoInJudiciario.tribunal_id, tribunalId));
+  return comBancoReserva(
+    (db) =>
+      db
+        .select({
+          id: mandatos_direcaoInJudiciario.id,
+          cargo: mandatos_direcaoInJudiciario.cargo,
+          magistrado_nome: magistradosInJudiciario.nome,
+          data_inicio: mandatos_direcaoInJudiciario.data_inicio,
+          data_fim: mandatos_direcaoInJudiciario.data_fim,
+          biennio: mandatos_direcaoInJudiciario.biennio,
+          eleito: mandatos_direcaoInJudiciario.eleito,
+        })
+        .from(mandatos_direcaoInJudiciario)
+        .innerJoin(
+          magistradosInJudiciario,
+          eq(magistradosInJudiciario.id, mandatos_direcaoInJudiciario.magistrado_id)
+        )
+        .where(eq(mandatos_direcaoInJudiciario.tribunal_id, tribunalId)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 export async function obterNomeacao(id: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select()
-    .from(nomeacoesInJudiciario)
-    .where(eq(nomeacoesInJudiciario.id, id))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select()
+        .from(nomeacoesInJudiciario)
+        .where(eq(nomeacoesInJudiciario.id, id))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "judiciario" }
+  );
 }
 
 export async function obterVaga(id: string) {
-  const db = getDb();
-  if (!db) return null;
-  const [linha] = await db
-    .select()
-    .from(vagasInJudiciario)
-    .where(eq(vagasInJudiciario.id, id))
-    .limit(1);
-  return linha ?? null;
+  return comBancoReserva(
+    async (db) => {
+      const [linha] = await db
+        .select()
+        .from(vagasInJudiciario)
+        .where(eq(vagasInJudiciario.id, id))
+        .limit(1);
+      return linha ?? null;
+    },
+    { vazio: (r) => r === null, padrao: null, rotulo: "judiciario" }
+  );
 }
 
 export async function listarVagas() {
-  const db = getDb();
-  if (!db) return [];
-  return db
-    .select()
-    .from(vagasInJudiciario)
-    .orderBy(desc(vagasInJudiciario.data_abertura));
+  return comBancoReserva(
+    (db) => db.select().from(vagasInJudiciario).orderBy(desc(vagasInJudiciario.data_abertura)),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "judiciario" }
+  );
 }
 
 export async function listarNomeacoes(tribunalId?: string) {
-  const db = getDb();
-  if (!db) return null;
-  const q = db.select().from(nomeacoesInJudiciario);
+  return comBancoReserva(
+    (db) => {
+      const q = db.select().from(nomeacoesInJudiciario);
   const comFiltro = tribunalId
     ? q.where(eq(nomeacoesInJudiciario.tribunal_id, tribunalId))
     : q;
@@ -284,14 +303,21 @@ export async function listarNomeacoes(tribunalId?: string) {
   // sobre a ordem (arbitrária) que o PostgREST devolvia, então empate
   // "funcionava" por acidente. Na Fase 5 tudo isto vira SSG, e ordem não
   // determinística geraria HTML diferente a cada build.
-  return comFiltro.orderBy(
-    sql`coalesce(${nomeacoesInJudiciario.data_deliberacao}, ${nomeacoesInJudiciario.data_mensagem}) desc nulls last`,
-    asc(nomeacoesInJudiciario.id)
+      return comFiltro.orderBy(
+        sql`coalesce(${nomeacoesInJudiciario.data_deliberacao}, ${nomeacoesInJudiciario.data_mensagem}) desc nulls last`,
+        asc(nomeacoesInJudiciario.id)
+      );
+    },
+    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "judiciario" }
   );
 }
 
 /**
  * Monitoramentos de UM usuário.
+ *
+ * DADO DE USUÁRIO — NÃO entra na cadeia de reserva: ler num banco e
+ * escrever em outro dividiria o estado do usuário. Só conteúdo público cai
+ * no `comBancoReserva`; o dado por usuário fica no banco principal.
  *
  * `userId` é o primeiro parâmetro e é OBRIGATÓRIO — não existe sobrecarga
  * sem ele, e ele nunca deve ser lido de query string ou body.
