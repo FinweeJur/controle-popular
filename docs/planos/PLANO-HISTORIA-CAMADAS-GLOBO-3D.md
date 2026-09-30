@@ -291,7 +291,7 @@ destrava** — nada aqui se resolve por suposição.
 
 | # | Pendência | O que destrava | Dono | Estado |
 |---|---|---|---|---|
-| P1 | **Mineração escravizada** (Fase G): dado por município | **FEITO em parte:** coleção *Mapas de População* do APM = **354 listas nominativas (1838-1840)** coletadas; **121** no mapa, 233 declarados. Falta: **contagem de escravizados** (exige leitura da imagem) e o censo de 1872 | agente | 🚧 |
+| P1 | **Mineração escravizada** (Fase G): dado por município | **CRUZADO em 30/09 com critério HISTÓRICO:** 64 das 121 listas em vila/comarca mineradora do séc. XVIII; o cruzamento com a lavra moderna foi **recusado por anacronismo** (está escrito na tela). Falta: **contagem de escravizados** (OCR da imagem) e o censo de 1872 | agente | 🚧 |
 | P1b | **Censo de 1872** por município e **base histórica do CEDEPLAR** | Biblioteca do IBGE devolve **403** (dois UAs); CEDEPLAR 200 mas sem base exposta → procurar a via (contato/LAI ou repositório) | agente | ⛔ |
 | P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente | ⛔ |
 | P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente | ⛔ |
@@ -435,6 +435,25 @@ destrava** — nada aqui se resolve por suposição.
 - **Próximo passo natural:** cruzar as **121 listas** com as áreas de **mineração** para
   dizer onde o documento de população coexiste com a lavra — sem confundir "lista
   nominativa" com "escravidão na mineração", que é leitura de conteúdo.
+
+**Critério acadêmico do cruzamento (pedido do dev: "com cuidado, revisando critério
+acadêmico científico") — feito em 30/09:**
+
+- **O cruzamento que se fez é HISTÓRICO:** o dicionário das **vilas e comarcas do ouro do
+  século XVIII** (`scripts/etl/historia/marcar-zona-mineradora.py`) marca a lista cujo
+  município pertenceu a uma vila mineradora — **64 das 121** listas caem em vila/comarca
+  (Vila Rica, Rio das Velhas, Rio das Mortes, Serro do Frio, Pitangui, Paracatu). Fonte:
+  IBGE *Brasil: 500 anos*; Prado Júnior (1942); Revista do Arquivo Público Mineiro.
+- **O cruzamento que se RECUSOU, e por quê:** cruzar as listas de 1838-1840 com a
+  **mineração detectada por satélite** (1995-2024) e concluir "mineração escravizada".
+  São dois dados verdadeiros separados por 150 anos — juntos, sugerem um terceiro falso.
+  **Anacronismo**, vedado pela regra editorial (AGENTS § 7). A recusa está escrita na tela.
+- **A ressalva da historiografia, publicada junto:** em 1838-1840 a economia escravista de
+  Minas já era **majoritariamente agrária**, não de lavra (MARTINS, Roberto Borges. *A
+  economia escravista de Minas Gerais no século XIX*. CEDEPLAR/UFMG, 1982). A lista vem de
+  lugar que **foi** minerador; o trabalho escravizado do período era, em boa parte, rural.
+- **O que a fonte ainda não dá:** a **contagem** de pessoas escravizadas — exigiria OCR da
+  imagem de cada lista. Fica declarado como pendência.
 
 ### Fase H — fazendas e engenhos (pedido do dev, parcialmente feito)
 

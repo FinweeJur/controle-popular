@@ -120,11 +120,15 @@ export interface ListaPopulacao {
   data: string;
   notacao: string;
   url: string;
+  /** Vila mineradora do século XVIII, quando o município pertencia a uma. */
+  vilaMineradora: string | null;
+  comarcaMineradora: string | null;
 }
 
 interface IndiceListas {
   registros: { local?: string | null; municipio?: string | null; data?: string | null;
-    notacao?: string | null; url?: string | null }[];
+    notacao?: string | null; url?: string | null;
+    zona_mineradora_vila?: string | null; zona_mineradora_comarca?: string | null }[];
 }
 
 export function listasPopulacao(): ListaPopulacao[] {
@@ -135,6 +139,8 @@ export function listasPopulacao(): ListaPopulacao[] {
     data: String(r.data ?? "—"),
     notacao: String(r.notacao ?? "—"),
     url: String(r.url ?? ""),
+    vilaMineradora: r.zona_mineradora_vila ? String(r.zona_mineradora_vila) : null,
+    comarcaMineradora: r.zona_mineradora_comarca ? String(r.zona_mineradora_comarca) : null,
   }));
 }
 

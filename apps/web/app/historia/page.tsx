@@ -80,7 +80,8 @@ export default function PaginaHistoria() {
     notacao: t.notacao, municipio: t.municipio, periodo: t.periodo, titulo: t.titulo, url: t.url,
   }));
   const linhasListas: LinhaHistoria[] = listas.map((l) => ({
-    local: l.local, municipio: l.municipio ?? "—", data: l.data, notacao: l.notacao, url: l.url,
+    local: l.local, municipio: l.municipio ?? "—", data: l.data, notacao: l.notacao,
+    vila: l.vilaMineradora ?? "—", url: l.url,
   }));
 
   const colunasCaps: ColunaHistoria[] = [
@@ -114,10 +115,12 @@ export default function PaginaHistoria() {
   const colunasListas: ColunaHistoria[] = [
     { chave: "local", rotulo: "Local (como no documento)" },
     { chave: "municipio", rotulo: "Município (IBGE)" },
+    { chave: "vila", rotulo: "Vila mineradora (séc. XVIII)" },
     { chave: "data", rotulo: "Data" },
     { chave: "notacao", rotulo: "Notação" },
     { chave: "url", rotulo: "Fonte", tipo: "link" },
   ];
+  const listasEmVila = listas.filter((l) => l.vilaMineradora).length;
 
   const totalUC = protegidas.find((p) => p.camada === "mineracao-em-uc")?.total ?? 0;
   const totalQuil = protegidas.find((p) => p.camada === "mineracao-em-quilombo")?.total ?? 0;
@@ -158,6 +161,7 @@ export default function PaginaHistoria() {
         <Cartao valor={fazendas.length.toLocaleString("pt-BR")} rotulo="conjuntos rurais tombados (IEPHA)" />
         <Cartao valor={terras.length.toLocaleString("pt-BR")} rotulo="registros de terras públicas (APM)" />
         <Cartao valor={listas.length.toLocaleString("pt-BR")} rotulo="listas nominativas (1838-1840)" />
+        <Cartao valor={listasEmVila.toLocaleString("pt-BR")} rotulo="listas em vila mineradora (séc. XVIII)" />
         <Cartao valor={totalUC.toLocaleString("pt-BR")} rotulo="polígonos de mineração em UC" />
         <Cartao valor={totalQuil.toLocaleString("pt-BR")} rotulo="polígonos de mineração em quilombo" />
       </section>
@@ -205,12 +209,40 @@ export default function PaginaHistoria() {
       {listas.length ? (
         <TabelaHistoria
           titulo="Listas nominativas (1838-1840) — APM"
-          nota="a fonte primária da população da província, incluindo a escravizada; o acervo cataloga o documento, não a contagem"
+          nota="fonte primária da população da província, incluindo a escravizada; o acervo cataloga o documento, não a contagem"
           colunas={colunasListas}
           linhas={linhasListas}
           nomeCsv="historia-listas-nominativas"
         />
       ) : <Vazio>Sem o índice de listas nominativas.</Vazio>}
+
+      <section aria-label="Critério do cruzamento" className="rounded-2xl border border-border bg-surface-2 p-5">
+        <h2 className="text-xl font-semibold">Como estas listas se cruzam com a mineração</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
+          A coluna <strong>“Vila mineradora (século XVIII)”</strong> marca a lista cujo município
+          pertencia a uma <strong>vila ou comarca do ouro</strong> — critério <strong>histórico</strong>,
+          com fonte. É factual e datado.
+        </p>
+        <p className="mt-3 rounded-xl border border-alert/40 bg-alert/10 p-3 text-sm">
+          <strong>O que NÃO se fez, de propósito:</strong> cruzar estas listas de 1838-1840 com a{" "}
+          <strong>mineração detectada por satélite</strong> (1995-2024) e concluir “mineração
+          escravizada”. São dois dados verdadeiros com 150 anos de distância: juntos, sugeririam um
+          terceiro falso. Isso é anacronismo, e a regra editorial do portal proíbe.
+        </p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-soft">
+          E vai a ressalva que a historiografia impõe: <strong>em 1838-1840 a economia escravista de
+          Minas já era sobretudo agrária</strong>, não de lavra (Martins, <em>A economia escravista de
+          Minas Gerais no século XIX</em>, CEDEPLAR/UFMG, 1982). A lista vem de lugar que <em>foi</em>
+          minerador; o trabalho escravizado que ela registra, no período, era em boa parte rural. O
+          acervo cataloga o documento — não traz a contagem de pessoas escravizadas, que exigiria ler
+          a imagem de cada lista.
+        </p>
+        <p className="mt-2 text-xs text-text-soft">
+          Dicionário de vilas e comarcas: IBGE, <em>Brasil: 500 anos de povoamento</em> (“descoberta do
+          ouro”); Prado Júnior, <em>Formação do Brasil contemporâneo</em> (1942); Revista do Arquivo
+          Público Mineiro.
+        </p>
+      </section>
 
       <section aria-label="Mineração em área protegida" className="rounded-2xl border border-border bg-surface-2 p-5">
         <h2 className="text-xl font-semibold">Mineração detectada em área protegida</h2>

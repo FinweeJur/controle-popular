@@ -37,7 +37,8 @@
    "local": "Olhos d Água.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=406",
-   "municipio": "Olhos d Água"
+   "municipio": "Olhos d Água",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1093,
@@ -48,7 +49,8 @@
    "local": "Curral del Rei.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1093",
-   "municipio": "Belo Horizonte"
+   "municipio": "Belo Horizonte",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 295,
@@ -59,7 +61,11 @@
    "local": "São José.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=295",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1051,
@@ -70,7 +76,11 @@
    "local": "Matozinhos, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1051",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 508,
@@ -81,7 +91,11 @@
    "local": "São Miguel de Piracicaba, Município de Itabira.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=508",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 504,
@@ -92,7 +106,11 @@
    "local": "Paróquia de Ouro Branco.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=504",
-   "municipio": "Ouro Branco"
+   "municipio": "Ouro Branco",
+   "zona_mineradora_vila": "Ouro Branco (termo de Vila Rica)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1055,
@@ -103,7 +121,8 @@
    "local": "Curral Del Rei.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1055",
-   "municipio": "Belo Horizonte"
+   "municipio": "Belo Horizonte",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1048,
@@ -114,7 +133,11 @@
    "local": "Congonhas, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1048",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1147,
@@ -125,7 +148,8 @@
    "local": "Conquista, Município de Queluz.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1147",
-   "municipio": "Conselheiro Lafaiete"
+   "municipio": "Conselheiro Lafaiete",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 940,
@@ -169,7 +193,11 @@
    "local": "Nossa Senhora da Conceição, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1047",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 532,
@@ -202,7 +230,11 @@
    "local": "Carrancas, Município de São João Del Rei.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=474",
-   "municipio": "São João Del Rei"
+   "municipio": "São João Del Rei",
+   "zona_mineradora_vila": "São João del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1094,
@@ -213,7 +245,11 @@
    "local": "Raposos, Feguesia da Alagoa Santa, Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1094",
-   "municipio": "Raposos"
+   "municipio": "Raposos",
+   "zona_mineradora_vila": "Raposos (termo de Sabará)",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 543,
@@ -235,7 +271,11 @@
    "local": "Ouro Preto.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=499",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1112,
@@ -246,7 +286,11 @@
    "local": "São João do Morro Grande, Município de Itabira.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1112",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 348,
@@ -290,7 +334,11 @@
    "local": "Raposos, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1053",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 493,
@@ -334,7 +382,11 @@
    "local": "São Bartolomeu, Município de Ouro Preto.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=506",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 511,
@@ -345,7 +397,8 @@
    "local": "Paróquia de Formiga, Município de Tamanduá.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=511",
-   "municipio": "Tamanduá"
+   "municipio": "Tamanduá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1059,
@@ -356,7 +409,11 @@
    "local": "Santa Quitéria, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1059",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 566,
@@ -367,7 +424,8 @@
    "local": "Barra do Rio das Velhas, Município de Formigas.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=566",
-   "municipio": "Formigas"
+   "municipio": "Formigas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 498,
@@ -378,7 +436,11 @@
    "local": "São José, Termo de Ouro Preto.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=498",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1057,
@@ -400,7 +462,11 @@
    "local": "Cachoeira do Campo, Município de Ouro Preto.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=500",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 548,
@@ -433,7 +499,11 @@
    "local": "Prados, Município de São José.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=325",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 293,
@@ -444,7 +514,11 @@
    "local": "São José.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=293",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 453,
@@ -455,7 +529,8 @@
    "local": "Carrancas, Município de São João Del-Rei.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=453",
-   "municipio": "São João Del-Rei"
+   "municipio": "São João Del-Rei",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 494,
@@ -466,7 +541,11 @@
    "local": "Ouro Branco, Termo de Ouro Preto.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=494",
-   "municipio": "Ouro Branco"
+   "municipio": "Ouro Branco",
+   "zona_mineradora_vila": "Ouro Branco (termo de Vila Rica)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 326,
@@ -477,7 +556,11 @@
    "local": "Bom Sucesso, Município de São José.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=326",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 345,
@@ -488,7 +571,8 @@
    "local": "Senhor do Bonfim, Município de Queluz.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=345",
-   "municipio": "Conselheiro Lafaiete"
+   "municipio": "Conselheiro Lafaiete",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 983,
@@ -499,7 +583,8 @@
    "local": "Campanha.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=983",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 934,
@@ -532,7 +617,11 @@
    "local": "São Bartolomeu, Município de Ouro Preto.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=496",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1115,
@@ -543,7 +632,11 @@
    "local": "Vila de São José.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1115",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 507,
@@ -554,7 +647,11 @@
    "local": "Itabira do Campo, Município de Ouro Preto.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=507",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1050,
@@ -565,7 +662,11 @@
    "local": "Alagoa Santa, município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1050",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 397,
@@ -576,7 +677,8 @@
    "local": "São José e Dores, Município de Jacuí.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=397",
-   "municipio": "Jacuí"
+   "municipio": "Jacuí",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 985,
@@ -587,7 +689,8 @@
    "local": "Santa Catarina, Município de Campanha.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=985",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 344,
@@ -598,7 +701,8 @@
    "local": "Santo Amaro, Município de Queluz.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=344",
-   "municipio": "Conselheiro Lafaiete"
+   "municipio": "Conselheiro Lafaiete",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 475,
@@ -620,7 +724,11 @@
    "local": "Furquim, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=136",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 923,
@@ -642,7 +750,11 @@
    "local": "Catas Altas, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=137",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 331,
@@ -686,7 +798,11 @@
    "local": "Camargos, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=135",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 459,
@@ -708,7 +824,11 @@
    "local": "Santo Antônio de Mateus Leme, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1060",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 982,
@@ -719,7 +839,8 @@
    "local": "Sagrados Corações de Jesus, Maria e José do Rio Verde, Município de Campanha.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=982",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1148,
@@ -741,7 +862,8 @@
    "local": "Carmo do Rio Claro, Termo de Jacuí.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=392",
-   "municipio": "Carmo do Rio Claro"
+   "municipio": "Carmo do Rio Claro",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 142,
@@ -763,7 +885,11 @@
    "local": "Santa Luzia, Município de Sabará.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1052",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 167,
@@ -840,7 +966,8 @@
    "local": "Curral del Rei.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1020",
-   "municipio": "Belo Horizonte"
+   "municipio": "Belo Horizonte",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 91,
@@ -873,7 +1000,11 @@
    "local": "Buriti, Município de Paracatu.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=411",
-   "municipio": "Paracatu"
+   "municipio": "Paracatu",
+   "zona_mineradora_vila": "Paracatu do Príncipe",
+   "zona_mineradora_comarca": "Comarca de Paracatu",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 457,
@@ -884,7 +1015,11 @@
    "local": "Madre de Deus, Município de São João Del Rei.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=457",
-   "municipio": "São João Del Rei"
+   "municipio": "São João Del Rei",
+   "zona_mineradora_vila": "São João del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1045,
@@ -895,7 +1030,11 @@
    "local": "Freguesia de Lagoa Dourada, Distrito de São José.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1045",
-   "municipio": "Lagoa Dourada"
+   "municipio": "Lagoa Dourada",
+   "zona_mineradora_vila": "Lagoa Dourada (termo de São João del Rei)",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 292,
@@ -906,7 +1045,11 @@
    "local": "Nossa Senhora da Glória do Passatempo, Município de São José.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=292",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 550,
@@ -917,7 +1060,8 @@
    "local": "Santana de Contendas, Município de Montes Claros de Formigas.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=550",
-   "municipio": "Montes Claros de Formigas"
+   "municipio": "Montes Claros de Formigas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 391,
@@ -939,7 +1083,11 @@
    "local": "Barra do Bacalhau, Município de Mariana.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=140",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 95,
@@ -972,7 +1120,11 @@
    "local": "Pissarão, Município de Diamantina.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=924",
-   "municipio": "Diamantina"
+   "municipio": "Diamantina",
+   "zona_mineradora_vila": "Arraial do Tijuco",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 148,
@@ -994,7 +1146,8 @@
    "local": "Arraial de São João de Gorutuba, Município de Formigas.",
    "assunto": "Mapa de população",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1152",
-   "municipio": "Formigas"
+   "municipio": "Formigas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1118,
@@ -1005,7 +1158,8 @@
    "local": "Coromandel, Município de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1118",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 343,
@@ -1049,7 +1203,8 @@
    "local": "Nossa Senhora do Carmo, Município de Santa Maria do Baependi.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=521",
-   "municipio": "Santa Maria do Baependi"
+   "municipio": "Santa Maria do Baependi",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1153,
@@ -1060,7 +1215,11 @@
    "local": "Curral Del Rei, Município de Sabará.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1153",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 450,
@@ -1071,7 +1230,11 @@
    "local": "Carrancas, Termo de São João Del Rei.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=450",
-   "municipio": "Carrancas"
+   "municipio": "Carrancas",
+   "zona_mineradora_vila": "Carrancas (termo de São João del Rei)",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 328,
@@ -1115,7 +1278,8 @@
    "local": "Santana de Contendas, Município de Montes Claros de Formigas.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=551",
-   "municipio": "Montes Claros de Formigas"
+   "municipio": "Montes Claros de Formigas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 484,
@@ -1126,7 +1290,8 @@
    "local": "Barbacena.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=484",
-   "municipio": "Barbacena"
+   "municipio": "Barbacena",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 535,
@@ -1137,7 +1302,8 @@
    "local": "São João Nepomuceno.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=535",
-   "municipio": "São João Nepomuceno"
+   "municipio": "São João Nepomuceno",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 938,
@@ -1148,7 +1314,8 @@
    "local": "Peçanha, Município do Serro.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=938",
-   "municipio": "Peçanha"
+   "municipio": "Peçanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 396,
@@ -1159,7 +1326,8 @@
    "local": "Cabo Verde, Município de Jacuí.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=396",
-   "municipio": "Jacuí"
+   "municipio": "Jacuí",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 984,
@@ -1170,7 +1338,8 @@
    "local": "Douradinhos, Município de Campanha.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=984",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 517,
@@ -1181,7 +1350,8 @@
    "local": "Bonfim, Município de Formigas.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=517",
-   "municipio": "Formigas"
+   "municipio": "Formigas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 327,
@@ -1225,7 +1395,8 @@
    "local": "Turvo, Município de Aiuruoca.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=537",
-   "municipio": "Aiuruoca"
+   "municipio": "Aiuruoca",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 539,
@@ -1269,7 +1440,11 @@
    "local": "São José da Barra Longa, Município de Mariana",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=101",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 90,
@@ -1280,7 +1455,11 @@
    "local": "Santa Bárbara, Município de Itabira.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=90",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 408,
@@ -1291,7 +1470,8 @@
    "local": "Carmo do Rio Claro, Termo de Jacuí.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=408",
-   "municipio": "Carmo do Rio Claro"
+   "municipio": "Carmo do Rio Claro",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 919,
@@ -1302,7 +1482,8 @@
    "local": "Nossa Senhora do Desterro do Desemboque, Município de Araxá.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=919",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1032,
@@ -1313,7 +1494,8 @@
    "local": "Distrito de Matozinhos, Termo de Sabará.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1032",
-   "municipio": "Matozinhos"
+   "municipio": "Matozinhos",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 918,
@@ -1324,7 +1506,8 @@
    "local": "Santana da Barra do Espírito Santo, Município de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=918",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1033,
@@ -1357,7 +1540,8 @@
    "local": "Senhor do Passos, Município de Jacuí.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=395",
-   "municipio": "Jacuí"
+   "municipio": "Jacuí",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1067,
@@ -1390,7 +1574,8 @@
    "local": "Nossa Senhora do Livramento de Piuí, Município de Tamanduá.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=541",
-   "municipio": "Tamanduá"
+   "municipio": "Tamanduá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 519,
@@ -1423,7 +1608,11 @@
    "local": "Mariana.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=151",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 191,
@@ -1445,7 +1634,11 @@
    "local": "Antônio Dias Abaixo, Município de Itabira.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=503",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 388,
@@ -1478,7 +1671,11 @@
    "local": "Santo Antônio do Manga, Município de Paracatu.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=412",
-   "municipio": "Paracatu"
+   "municipio": "Paracatu",
+   "zona_mineradora_vila": "Paracatu do Príncipe",
+   "zona_mineradora_comarca": "Comarca de Paracatu",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 531,
@@ -1489,7 +1686,8 @@
    "local": "Antônio Dias Abaixo, Município de Itabira do Mato Dentro.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=531",
-   "municipio": "Itabira do Mato Dentro"
+   "municipio": "Itabira do Mato Dentro",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 928,
@@ -1500,7 +1698,11 @@
    "local": "Santo Antônio, Município de Diamantina.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=928",
-   "municipio": "Diamantina"
+   "municipio": "Diamantina",
+   "zona_mineradora_vila": "Arraial do Tijuco",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 190,
@@ -1566,7 +1768,8 @@
    "local": "Nossa Senhora do Desterro do Desemboque, Município de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=410",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1028,
@@ -1643,7 +1846,8 @@
    "local": "Capela de São Domingos do Prata, Termo de Caeté",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1145",
-   "municipio": "São Domingos do Prata"
+   "municipio": "São Domingos do Prata",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1140,
@@ -1687,7 +1891,11 @@
    "local": "Nossa Senhora da Penha de França, Município de Diamantina.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=927",
-   "municipio": "Diamantina"
+   "municipio": "Diamantina",
+   "zona_mineradora_vila": "Arraial do Tijuco",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 170,
@@ -1698,7 +1906,8 @@
    "local": "Lavras.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=170",
-   "municipio": "Lavras"
+   "municipio": "Lavras",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 629,
@@ -1753,7 +1962,8 @@
    "local": "Campo Belo, Município de Tamanduá.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=520",
-   "municipio": "Tamanduá"
+   "municipio": "Tamanduá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 92,
@@ -1863,7 +2073,11 @@
    "local": "Ponte Nova, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=138",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 341,
@@ -1907,7 +2121,8 @@
    "local": "Extrema, Termo de São Romão.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=94",
-   "municipio": "Extrema"
+   "municipio": "Extrema",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 471,
@@ -1929,7 +2144,11 @@
    "local": "Arrepiados, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=100",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 523,
@@ -1973,7 +2192,11 @@
    "local": "Ouro Preto.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=495",
-   "municipio": "Ouro Preto"
+   "municipio": "Ouro Preto",
+   "zona_mineradora_vila": "Vila Rica",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 414,
@@ -1995,7 +2218,11 @@
    "local": "Tapera, Freguesia de Nossa Senhora da Conceição do Mato Dentro, Município de Serro.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=936",
-   "municipio": "Serro"
+   "municipio": "Serro",
+   "zona_mineradora_vila": "Serro do Frio",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 467,
@@ -2017,7 +2244,8 @@
    "local": "Bonfim, Termo de Vila do Príncipe.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1119",
-   "municipio": "Bonfim"
+   "municipio": "Bonfim",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 163,
@@ -2039,7 +2267,11 @@
    "local": "Itaverava, Termo de Queluz.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=334",
-   "municipio": "Itaverava"
+   "municipio": "Itaverava",
+   "zona_mineradora_vila": "Itaverava (termo de Vila Rica)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1157,
@@ -2050,7 +2282,8 @@
    "local": "Distrito de Santana da Barra do Rio das Velhas, Município de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1157",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 194,
@@ -2061,7 +2294,8 @@
    "local": "Bonfim, Termo do Pomba.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=194",
-   "municipio": "Bonfim"
+   "municipio": "Bonfim",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1108,
@@ -2072,7 +2306,8 @@
    "local": "São Gonçalo do Rio Abaixo, Termo de Caeté.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1108",
-   "municipio": "São Gonçalo do Rio Abaixo"
+   "municipio": "São Gonçalo do Rio Abaixo",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 931,
@@ -2083,7 +2318,11 @@
    "local": "Datas, Município de Diamantina.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=931",
-   "municipio": "Diamantina"
+   "municipio": "Diamantina",
+   "zona_mineradora_vila": "Arraial do Tijuco",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 144,
@@ -2116,7 +2355,8 @@
    "local": "São Francisco das Chagas do Campo Grande, Município de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1123",
-   "municipio": "Araxá"
+   "municipio": "Araxá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 149,
@@ -2127,7 +2367,8 @@
    "local": "Desterro do Melo, Termo de Mariana.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=149",
-   "municipio": "Desterro do Melo"
+   "municipio": "Desterro do Melo",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1063,
@@ -2138,7 +2379,11 @@
    "local": "Congonhas, Município de Sabará.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1063",
-   "municipio": "Sabará"
+   "municipio": "Sabará",
+   "zona_mineradora_vila": "Vila Real de Nossa Senhora da Conceição do Sabará",
+   "zona_mineradora_comarca": "Comarca do Rio das Velhas",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 99,
@@ -2149,7 +2394,11 @@
    "local": "Santa Rita do Turvo, Município de Mariana.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=99",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1121,
@@ -2204,7 +2453,11 @@
    "local": "Santo Antônio do Calambau, Município de Mariana.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=139",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 451,
@@ -2226,7 +2479,11 @@
    "local": "São José da Alagoa, Município de Itabira.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=76",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 393,
@@ -2281,7 +2538,8 @@
    "local": "Sagrados Corações de Jesus, Maria e José do Rio Verde, Município de Campanha.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1011",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 466,
@@ -2325,7 +2583,8 @@
    "local": "Itacambira / Brejo das Almas / Cabeceiras do Rio Verde/ Olhos Dágua / (Rio Pardo).",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=290",
-   "municipio": "Itacambira"
+   "municipio": "Itacambira",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1039,
@@ -2358,7 +2617,11 @@
    "local": "Santa Bárbara, Termo de Caeté.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1109",
-   "municipio": "Santa Bárbara"
+   "municipio": "Santa Bárbara",
+   "zona_mineradora_vila": "Santa Bárbara (termo de Vila Rica)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 567,
@@ -2402,7 +2665,11 @@
    "local": "Serro",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=933",
-   "municipio": "Serro"
+   "municipio": "Serro",
+   "zona_mineradora_vila": "Serro do Frio",
+   "zona_mineradora_comarca": "Comarca do Serro do Frio",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 1041,
@@ -2446,7 +2713,11 @@
    "local": "São João Del Rei.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=460",
-   "municipio": "São João Del Rei"
+   "municipio": "São João Del Rei",
+   "zona_mineradora_vila": "São João del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 93,
@@ -2501,7 +2772,8 @@
    "local": "Sucuriú, Município de Minas Novas.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=89",
-   "municipio": "Minas Novas"
+   "municipio": "Minas Novas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 394,
@@ -2578,7 +2850,11 @@
    "local": "Santo Antônio Abaixo e Brumadinho, Município de Itabira.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=75",
-   "municipio": "Itabira"
+   "municipio": "Itabira",
+   "zona_mineradora_vila": "Itabira do Mato Dentro",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 534,
@@ -2666,7 +2942,8 @@
    "local": "Água Suja, Município de Minas Novas.",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=96",
-   "municipio": "Minas Novas"
+   "municipio": "Minas Novas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 522,
@@ -2688,7 +2965,8 @@
    "local": "Queluz.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=333",
-   "municipio": "Conselheiro Lafaiete"
+   "municipio": "Conselheiro Lafaiete",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 568,
@@ -2699,7 +2977,8 @@
    "local": "Distrito de Patrocínio, Termo de Araxá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=568",
-   "municipio": "Patrocínio"
+   "municipio": "Patrocínio",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 978,
@@ -2710,7 +2989,8 @@
    "local": "Senhor Bom Jesus das Antas, Município de Campanha.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=978",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 146,
@@ -2721,7 +3001,11 @@
    "local": "Mariana.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=146",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 518,
@@ -2743,7 +3027,11 @@
    "local": "Carrancas, Termo de São João Del Rei.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=462",
-   "municipio": "Carrancas"
+   "municipio": "Carrancas",
+   "zona_mineradora_vila": "Carrancas (termo de São João del Rei)",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 143,
@@ -2831,7 +3119,8 @@
    "local": "Lambari, Termo de Campanha.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1014",
-   "municipio": "Lambari"
+   "municipio": "Lambari",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 335,
@@ -2842,7 +3131,11 @@
    "local": "Distrito de Catas Altas, Freguesia de Itaverava, Termo de Queluz.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=335",
-   "municipio": "Catas Altas"
+   "municipio": "Catas Altas",
+   "zona_mineradora_vila": "Catas Altas (termo de Vila Rica)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 187,
@@ -2864,7 +3157,8 @@
    "local": "Capela dos Serranos, Termo de Santa Maria do Baependi.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1127",
-   "municipio": "Serranos"
+   "municipio": "Serranos",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 82,
@@ -2952,7 +3246,11 @@
    "local": "Distrito de Buriti, Vila Arraial de Morrinhos e dos Couros, Município de Paracatu.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=417",
-   "municipio": "Paracatu"
+   "municipio": "Paracatu",
+   "zona_mineradora_vila": "Paracatu do Príncipe",
+   "zona_mineradora_comarca": "Comarca de Paracatu",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 73,
@@ -2996,7 +3294,8 @@
    "local": "São Gonçalo do Pará, Termo de Pitangui.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=155",
-   "municipio": "São Gonçalo do Pará"
+   "municipio": "São Gonçalo do Pará",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 71,
@@ -3128,7 +3427,8 @@
    "local": "São José das Alfenas, Município de Jacuí.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=389",
-   "municipio": "Jacuí"
+   "municipio": "Jacuí",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 545,
@@ -3139,7 +3439,8 @@
    "local": "São José do Tejuco, Município de Uberaba.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=545",
-   "municipio": "Uberaba"
+   "municipio": "Uberaba",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1129,
@@ -3183,7 +3484,8 @@
    "local": "Ponte Nova, Termo de Mariana.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=83",
-   "municipio": "Ponte Nova"
+   "municipio": "Ponte Nova",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 156,
@@ -3337,7 +3639,8 @@
    "local": "Queluz.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=332",
-   "municipio": "Conselheiro Lafaiete"
+   "municipio": "Conselheiro Lafaiete",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 79,
@@ -3348,7 +3651,8 @@
    "local": "Santa Cruz da Chapada, Município de Minas Novas",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=79",
-   "municipio": "Minas Novas"
+   "municipio": "Minas Novas",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 67,
@@ -3381,7 +3685,8 @@
    "local": "Pouso Alegre",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=452",
-   "municipio": "Pouso Alegre"
+   "municipio": "Pouso Alegre",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 64,
@@ -3513,7 +3818,8 @@
    "local": "Município de Jacuí (Aterrado, Ventania, São Francisco de Paula do Tejuco, Passos, Santa Rita, Alfenas, Sacra Família, São Joaquim, Cabo Verde, Carmo e Vila).",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=407",
-   "municipio": "Jacuí (Aterrado"
+   "municipio": "Jacuí (Aterrado",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 399,
@@ -3524,7 +3830,8 @@
    "local": "Cabo Verde, Termo da Vila de São Carlos de Jacuí.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=399",
-   "municipio": "Cabo Verde"
+   "municipio": "Cabo Verde",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1019,
@@ -3579,7 +3886,8 @@
    "local": "Coromandel.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=413",
-   "municipio": "Coromandel"
+   "municipio": "Coromandel",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 152,
@@ -3623,7 +3931,8 @@
    "local": "São Vicente Ferrer da Formiga, Município de São Bento do Tamanduá.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1149",
-   "municipio": "São Bento do Tamanduá"
+   "municipio": "São Bento do Tamanduá",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 502,
@@ -3634,7 +3943,8 @@
    "local": "São Francisco de Paula.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=502",
-   "municipio": "São Francisco de Paula"
+   "municipio": "São Francisco de Paula",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 527,
@@ -3678,7 +3988,8 @@
    "local": "Distritos do Município de Campanha (Vila da Campanha, São Domingos da Bocaina, Mutuca, Rio Verde, Lambari, Santa Catarina, São Sebastião, freguesia Nova de Itajubá, Nossa Senhora da Soledade de Itajubá, Santa Rita, [Carmo do Dourado], Dorados, Santa do Sapucaí, São Gonçalo e Mundo Novo).",
    "assunto": "Censo",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1008",
-   "municipio": "Campanha (Vila da Campanha"
+   "municipio": "Campanha (Vila da Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 501,
@@ -3722,7 +4033,11 @@
    "local": "Sumidouro, Município de Mariana.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=97",
-   "municipio": "Mariana"
+   "municipio": "Mariana",
+   "zona_mineradora_vila": "Vila do Carmo (Nossa Senhora do Carmo)",
+   "zona_mineradora_comarca": "Comarca de Vila Rica",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 416,
@@ -3755,7 +4070,8 @@
    "local": "Santa Catarina, Município de Campanha.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=979",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 524,
@@ -3777,7 +4093,8 @@
    "local": "Santa Rita, Município de Campanha.",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=980",
-   "municipio": "Campanha"
+   "municipio": "Campanha",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 387,
@@ -3788,7 +4105,8 @@
    "local": "Santa Rita do Rio Claro, Município de Jacuí.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=387",
-   "municipio": "Jacuí"
+   "municipio": "Jacuí",
+   "zona_mineradora_vila": null
   },
   {
    "cid": 1155,
@@ -3854,7 +4172,11 @@
    "local": "Santa Rita do Rio Abaixo - Município de São José.",
    "assunto": "Lista nominativa, Lista de habitantes, Lista de moradores.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=294",
-   "municipio": "Tiradentes"
+   "municipio": "Tiradentes",
+   "zona_mineradora_vila": "São José del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 470,
@@ -3865,7 +4187,11 @@
    "local": "São João Del Rei.",
    "assunto": "Censo.",
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=470",
-   "municipio": "São João Del Rei"
+   "municipio": "São João Del Rei",
+   "zona_mineradora_vila": "São João del Rei",
+   "zona_mineradora_comarca": "Comarca do Rio das Mortes",
+   "zona_mineradora_fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+   "zona_mineradora_ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo."
   },
   {
    "cid": 542,
@@ -3898,7 +4224,15 @@
    "local": "Município de Itabira (Ferros, Santa Maria, Itambé, Carmo em Tanque Acima, Cocais, São João do Morro Grande, Brumado, Santa Bárbara, Rio de São Francisco, Paças, São Gonçalo do Rio Acima, São Miguel, Prata, Santana do Alfié, Antônio Dias e Joanésia).",
    "assunto": null,
    "url": "https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=77",
-   "municipio": "Itabira (Ferros"
+   "municipio": "Itabira (Ferros",
+   "zona_mineradora_vila": null
   }
- ]
+ ],
+ "zona_mineradora": {
+  "criterio": "vila/comarca mineradora do século XVIII (critério HISTÓRICO, não a lavra moderna)",
+  "fonte": "Comarcas do ouro do século XVIII — IBGE, Brasil: 500 anos de povoamento; Prado Júnior, Formação do Brasil contemporâneo (1942); Revista do Arquivo Público Mineiro",
+  "ressalva": "A vila foi centro minerador no século XVIII, mas a lista é de 1838-1840, quando a economia escravista de Minas já era sobretudo agrária (Martins, CEDEPLAR/UFMG, 1982). O cruzamento NÃO é com a lavra moderna — usá-la seria anacronismo.",
+  "listas_em_vila_mineradora": 64,
+  "listas_fora": 71
+ }
 }
