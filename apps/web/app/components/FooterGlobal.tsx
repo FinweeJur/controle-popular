@@ -68,6 +68,7 @@ const LINKS_PORTAL = [
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Aprender", href: "/aprender" },
   { label: "Glossário", href: "/glossario" },
+  { label: "Mapa de conexões", href: "/grafo" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   { label: "Meus dados", href: "/meus-dados" },
