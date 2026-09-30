@@ -129,6 +129,22 @@ existir, entra só como ponte terciária, nunca no campo `fonte`.
 - Critério de pronto: script versionado, números batem com a medição de
   cima, CPF scan verde.
 
+**Fase A cumprida em 30/09/2026.** Script
+`scripts/etl/cavas/gerar-evidencias-mg.py` → `apps/web/data/cavas-evidencias-mg.json`
+(2,0 MB, 7.668 linhas, separador compacto). Números batem com a medição
+de cima: sem-cadastro 3.869 (UC 263 · TI 0 · quilombo 0) e
+cavas-monitoradas 3.799 (UC 431 · TI 0 · quilombo 18). Cada linha traz
+`municipio` (centroide contra os 853 polígonos de MG), `ano`, `area_ha`,
+`camada` e os **cinco estados**. CPF scan verde (315 arquivos de dado).
+
+⚠️ **Limite medido do estado de embargo:** o ArcGIS da Pamgia devolveu
+**geometria para só 43 dos 403** embargos de MG com termo de mineração —
+sem geometria não há teste de centroide. Nenhum centroide de mineração
+caiu dentro de embargo (piso **0**), e a ficha precisa declarar isso;
+não é "não há embargo em MG" (são 4.692 no estado). Regra "nunca somar
+bases diferentes" vale aqui: as duas camadas de mineração compartilham
+193 ids, por isso a linha guarda `camada`.
+
 ### Fase B — fechar as fontes que faltam (1–2 dias)
 
 Para cada fonte: `robots.txt`, endpoint, contagem em MG, licença, armadilha
