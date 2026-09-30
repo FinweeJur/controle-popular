@@ -1358,3 +1358,51 @@ body {
     animation: none;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────
+   BARRA DE ROLAGEM GLOBAL — fina; engrossa perto da borda direita.
+   Padrão de TODAS as páginas, junto da navbar, do letreiro e do rodapé.
+   O JS (`ScrollbarExpansivel.tsx`) liga `data-scroll-perto` no <html>
+   quando o ponteiro chega a ~64 px da direita; esta folha reage. O
+   movimento respeita `prefers-reduced-motion`.
+   ───────────────────────────────────────────────────────────────────── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cp-text-soft) transparent;
+}
+html[data-scroll-perto] {
+  scrollbar-width: auto;
+}
+
+/* WebKit/Blink (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html[data-scroll-perto] ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cp-border);
+  background: color-mix(in oklab, var(--cp-text-soft) 75%, transparent);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+html[data-scroll-perto] ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cp-primary);
+  background-clip: padding-box;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::-webkit-scrollbar,
+  html[data-scroll-perto] ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+}

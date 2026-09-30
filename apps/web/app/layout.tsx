@@ -18,6 +18,7 @@ import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
+import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import "./globals.css";
 
 /**
@@ -219,6 +220,11 @@ export default function RootLayout({
           {/* Overlay global de carregamento — spinner + contador de segundos
               no canto inferior direito ao navegar entre páginas. */}
           <LoadingOverlay />
+
+          {/* Barra de rolagem global: fina e engrossada perto da borda
+              direita. Só liga um atributo no <html>; a aparência mora no
+              globals.css. Padrão de todas as páginas, como a navbar. */}
+          <ScrollbarExpansivel />
 
           {/* Botão acessível para retornar ao topo da página em rolagens longas */}
           <BackToTop />
