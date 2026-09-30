@@ -67,6 +67,7 @@ const LINKS_PORTAL = [
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Aprender", href: "/aprender" },
+  { label: "Glossário", href: "/glossario" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   { label: "Meus dados", href: "/meus-dados" },
