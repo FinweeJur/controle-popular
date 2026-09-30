@@ -21,6 +21,7 @@ import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
+import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
 import "./globals.css";
 
 /**
@@ -69,6 +70,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+  },
+  // PWA: permite instalar o portal como app e abrir o casco sem rede.
+  // O service worker (`public/sw.js`) faz network-first para HTML — dado
+  // velho é dano. Ver `RegistrarServiceWorker.tsx`.
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Controle Popular",
+    statusBarStyle: "default",
   },
   icons: {
     icon: [
@@ -221,6 +231,8 @@ export default function RootLayout({
               visualizações precisa rodar em toda página das quatro zonas,
               não só nas que têm layout próprio. Ver `PageViewBeacon.tsx`. */}
           <PageViewBeacon />
+          {/* Registra o service worker do PWA (modo offline do casco). */}
+          <RegistrarServiceWorker />
 
           {/* Overlay global de carregamento — spinner + contador de segundos
               no canto inferior direito ao navegar entre páginas. */}
