@@ -142,10 +142,10 @@ memória e não depende de pgvector — ver
 
 ### Bloco D — destrava com a Fase 4
 
-- Fase 5 do chatbot (persistência do índice): ⛔ bloqueada — o catálogo do
-  Guara não tem pgvector e o Qdrant bate o teto do plano
-  (`TIER_LIMIT_EXCEEDED`, 402, medido 30/09). O RAG roda em memória (397
-  pedaços) e basta — ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+- Fase 5 do chatbot (persistência do índice): ⛔ cancelada (decisão do dono,
+  30/09) — o Guara não tem pgvector e o Qdrant não cabe no plano. O RAG roda
+  em memória (397 pedaços) e basta — ver
+  [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
 - Coleta nova volta ao Postger (hoje vai para D1 por causa do storage).
 - Índice de busca pode voltar a crescer sem estourar o teto da Neon.
 
@@ -188,9 +188,9 @@ Runbooks: [`planos/`](../planos/).
 - **R4:** golden set em `lib/assistente/golden-set.ts` (22 casos) e correção
   da abstenção no modo lexical (peso IDF + palavras de pergunta nas
   stopwords + piso 0,45). Sem isso, "receita de bolo" casava orçamento.
-- **R5:** investigado no CLI do Guara — o catálogo **não tem pgvector**; a
-  extensão `vector` não existe no banco (tem postgis/pg_trgm/unaccent). A
-  alternativa gerenciada é o **Qdrant**.
+- **R5:** cancelado (decisão do dono, 30/09) — o Guara não tem pgvector e o
+  Qdrant não cabe no plano (`TIER_LIMIT_EXCEEDED`, 402). O índice em memória
+  é o desenho final.
 - Verificação: suíte verde, `tsc --noEmit` limpo. Sem build nem deploy.
 
 **30/09/2026** — F3 da memória: a camada município, com fonte local fechada.

@@ -31,10 +31,12 @@ produção.
 > ⚠️ **Atualização 30/09/2026:** confirmado no CLI do Guara — o catálogo
 > `postgres` **não oferece variante pgvector**, e a extensão `vector` não
 > existe em `pg_available_extensions` do banco atual (tem `postgis`,
-> `pg_trgm` e `unaccent`). Alternativa gerenciada no catálogo: **Qdrant**
-> (banco vetorial). O caminho ativo é índice em memória + cobertura do
-> acervo — ver [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook
-> fica para quando/se houver pgvector.
+> `pg_trgm` e `unaccent`). A alternativa gerenciada seria o **Qdrant**, mas
+> ele bateu o teto do plano (`TIER_LIMIT_EXCEEDED`, HTTP 402) e foi
+> **abandonado por decisão do dono (30/09/2026)**. O desenho ativo é o índice
+> em memória + cobertura do acervo — ver
+> [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md). Este runbook fica
+> arquivado, sem execução prevista.
 
 ## Quando roda
 
