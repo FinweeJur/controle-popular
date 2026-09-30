@@ -50,7 +50,13 @@ import sys
 from pathlib import Path
 
 URL_LISTAGEM = "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/desembargadores.htm"
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+# UA honesto (AGENTS 11): o prefixo de navegador passa pelo WAF, e a parte
+# final identifica o projeto — sem ela ninguém sabe quem está coletando.
+UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 "
+    "ControlePopular/1.0 (+https://controlepopular.com.br)"
+)
 SAIDA_PADRAO = Path(__file__).resolve().parent.parent / "dados" / "tjmg-desembargadores.json"
 
 

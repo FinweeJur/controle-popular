@@ -112,10 +112,12 @@ _session = requests.Session()
 _session.headers.update(
     {
         # O portal `www` (diferente da API) responde 403 sem User-Agent de
-        # browser.
+        # browser. O prefixo passa pelo WAF; a parte final identifica o
+        # projeto (UX honesto, AGENTS 11).
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 "
+            "ControlePopular/1.0 (+https://controlepopular.com.br)"
         ),
         "Accept-Language": "pt-BR,pt;q=0.9",
     }

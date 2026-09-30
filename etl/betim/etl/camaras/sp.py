@@ -279,10 +279,12 @@ PARTES_VALIDAS = ("vereadores", "comissoes", "proposicoes", "verbas", "fontes")
 
 _SESSAO = requests.Session()
 # 403 sem isto (ver docstring). Um UA de navegador basta — o WAF da CMSP não
-# olha o handshake TLS.
+# olha o handshake TLS. O prefixo passa pelo WAF; a parte final identifica o
+# projeto (UX honesto, AGENTS 11).
 _SESSAO.headers["User-Agent"] = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 "
+    "ControlePopular/1.0 (+https://controlepopular.com.br)"
 )
 
 

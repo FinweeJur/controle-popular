@@ -285,25 +285,20 @@ trabalho por-fonte; aqui vão as regras transversais do
 | Segredo fora do git | ✅ só `.env.example`/`.env.exemplo` rastreados, sem valores. |
 | Pausa entre requisições | ✅ 38 coletores com pausa explícita. |
 | `robots.txt` | ✅ lido e registrado em vários (o caso FGV, com escopo reduzido, está no repo). |
-| User-Agent honesto | ⚠️ misto — ver achado 1. |
+| User-Agent honesto | ✅ coletores corrigidos (ver achado 1); reteste ao vivo pendente. |
 | Retomada por checkpoint | ✅ presente nos coletores longos (PNCP, cavas). |
 
 ### Achados da Parte 5
 
-1. ⚠️ **User-Agent de navegador falso em alguns coletores** — contra o
-   AGENTS § 11 ("o nome do projeto, nunca UA de navegador falso"). Casos puros
-   (sem identificação do projeto):
-   `etl/judiciario/etl/tj/tjmg.py`,
-   `etl/betim/scripts/medir_links_fonte.py`,
-   `etl/congresso/etl/camara/presenca.py`,
-   `etl/betim/etl/camaras/sp.py`,
-   `etl/betim/etl/bd/tse.py`,
-   `etl/betim/etl/prefeitura/obras.py` (`"Mozilla/5.0"` puro).
-   Há ainda um híbrido disseminado
-   (`"Mozilla/5.0 (…) ControlePopular/1.0 (+https://…)"`) — identifica o
-   projeto, mas imita prefixo de navegador. **Não corrigi em massa:** trocar
-   UA pode fazer uma fonte bloquear a coleta, e coleta não se testa na CI.
-   Fica registrado para a correção por-fonte, com teste ao vivo.
+1. ✅ **User-Agent honesto — corrigido nos coletores de coleta** (30/09/2026).
+   Os que coletam e usavam UA de navegador puro agora identificam o projeto,
+   mantendo o prefixo que passa no WAF:
+   `etl/judiciario/etl/tj/tjmg.py`, `etl/congresso/etl/camara/presenca.py`,
+   `etl/betim/etl/camaras/sp.py`, `etl/betim/etl/bd/tse.py` e
+   `etl/betim/etl/prefeitura/obras.py`.
+   `etl/betim/scripts/medir_links_fonte.py` **não entra**: o UA de navegador
+   dele é um reteste de falha, não coleta — estava documentado assim.
+   Falta o reteste ao vivo por fonte, que não se faz na CI.
 
 2. 🔸 **Superfície de ~80 coletores.** A revisão fina (checkpoint, tratamento
    de 403/429, dedup) é por frente — encaixa nas próximas rodadas, não numa

@@ -50,7 +50,11 @@ def _get_pagina(pagina: int) -> list[dict]:
     resp = requests.get(
         url,
         params={"pagina": pagina, "registros": REGISTROS_POR_PAGINA},
-        headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"},
+        headers={
+            # UA honesto: identifica o projeto (AGENTS 11).
+            "User-Agent": "Mozilla/5.0 (compatible; ControlePopular/1.0; +https://controlepopular.com.br)",
+            "Accept": "application/json",
+        },
         timeout=30,
     )
     resp.raise_for_status()
