@@ -192,7 +192,17 @@ Arquivo novo precisa de `git add` antes.
 
 As duas falhas aconteceram em 15/08; as duas foram pushadas antes de alguém
 ver. Escreva a mensagem num arquivo e use `git commit -F`. Português, sem
-acento, terminando com o trailer `Co-Authored-By`.
+acento, terminando com o trailer de coautoria.
+
+**Regra do dono (30/09/2026): o trailer traz SEMPRE o MODELO e a PLATAFORMA,
+um por linha.** Hoje:
+
+    Co-Authored-By: DeepSeek V4.1 Flash <noreply@deepseek.com>
+    Co-Authored-By: opencode <noreply@opencode.ai>
+
+Trocar de modelo ou de plataforma = trocar as duas linhas; nunca deixar só
+uma. Modelo e plataforma são a procedência do commit — quem audita precisa
+saber os dois.
 
 ### 5.7. Publique o próprio trabalho
 
