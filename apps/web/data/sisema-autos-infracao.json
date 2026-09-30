@@ -1,0 +1,12180 @@
+{
+ "fonte": "sisema_autos_infracao",
+ "fonte_nome": "Painel de Indicadores do Sisema — aba AUTOS DE INFRAÇÃO (Power BI público)",
+ "orgaos": "SEMAD, FEAM e IEF (a coluna 'Órgão Coordenador' diz qual)",
+ "cadencia": "mensal (o painel declara atualização mensal)",
+ "ressalva_fonte": "Dado do painel público do Sisema, sem login. O formato DSR do Power BI não é documentado; a coleta quebra de propósito se ele mudar.",
+ "ressalva_titular": "A entidade coletada NÃO traz nome, CPF/CNPJ nem RG — o portal publica o ato, nunca o titular (AGENTS § 5.2).",
+ "ressalva_agregado": "Este arquivo é o AGREGADO. O cru (583.644 linhas em 30/09/2026) não é versionado; recupera-se com `python -m etl.apis.sisema_autos_infracao --bruto`.",
+ "coletado_em": "2026-09-30T20:01:45.145068+00:00",
+ "paginas": 20,
+ "total": 583644,
+ "cobertura": {
+  "municipios_distintos": 1606,
+  "anos": {
+   "min": "1991",
+   "max": "2027"
+  },
+  "registros_sem_data": 2024,
+  "registros_data_fora_de_faixa": 80
+ },
+ "por_orgao": {
+  "(não informado)": 1,
+  "SEMAD": 351630,
+  "IEF": 232013
+ },
+ "por_situacao": {
+  "Remissão": 172088,
+  "Quitação do DAE": 141001,
+  "Em processamento": 121828,
+  "Encaminhado p/Insc divida ativa": 119395,
+  "Apto Envio AGE": 12281,
+  "Anulação de Processo": 6848,
+  "Cumprimento de Advertência": 4938,
+  "Prescrição": 4031,
+  "Defesa Deferida": 629,
+  "PECMA": 261,
+  "Recurso Deferido": 219,
+  "ART 47 - 46668/2014": 90,
+  "Arquivado": 26,
+  "Decadência": 8,
+  "(não informado)": 1
+ },
+ "por_ano": {
+  "(data fora de faixa)": 80,
+  "(sem data)": 2024,
+  "1991": 1,
+  "1992": 1,
+  "1993": 105,
+  "1994": 135,
+  "1995": 449,
+  "1996": 887,
+  "1997": 2688,
+  "1998": 5041,
+  "1999": 5098,
+  "2000": 5745,
+  "2001": 7293,
+  "2002": 1081,
+  "2003": 6996,
+  "2004": 14752,
+  "2005": 21510,
+  "2006": 19884,
+  "2007": 35814,
+  "2008": 32640,
+  "2009": 31624,
+  "2010": 21462,
+  "2011": 43212,
+  "2012": 27786,
+  "2013": 26280,
+  "2014": 25112,
+  "2015": 25136,
+  "2016": 26176,
+  "2017": 27429,
+  "2018": 27273,
+  "2019": 25547,
+  "2020": 20955,
+  "2021": 20806,
+  "2022": 18078,
+  "2023": 18006,
+  "2024": 14545,
+  "2025": 14817,
+  "2026": 7174,
+  "2027": 2
+ },
+ "por_municipio": [
+  {
+   "municipio": "BELO HORIZONTE",
+   "total": 23146,
+   "por_orgao": {
+    "SEMAD": 11666,
+    "IEF": 11480
+   }
+  },
+  {
+   "municipio": "UBERLANDIA",
+   "total": 8576,
+   "por_orgao": {
+    "IEF": 3808,
+    "SEMAD": 4768
+   }
+  },
+  {
+   "municipio": "SETE LAGOAS",
+   "total": 8348,
+   "por_orgao": {
+    "SEMAD": 3163,
+    "IEF": 5185
+   }
+  },
+  {
+   "municipio": "MONTES CLAROS",
+   "total": 6598,
+   "por_orgao": {
+    "SEMAD": 3914,
+    "IEF": 2684
+   }
+  },
+  {
+   "municipio": "UNAI",
+   "total": 5847,
+   "por_orgao": {
+    "SEMAD": 3478,
+    "IEF": 2369
+   }
+  },
+  {
+   "municipio": "PARACATU",
+   "total": 5488,
+   "por_orgao": {
+    "SEMAD": 3105,
+    "IEF": 2383
+   }
+  },
+  {
+   "municipio": "DIVINOPOLIS",
+   "total": 5236,
+   "por_orgao": {
+    "SEMAD": 3436,
+    "IEF": 1800
+   }
+  },
+  {
+   "municipio": "BETIM",
+   "total": 5137,
+   "por_orgao": {
+    "SEMAD": 2401,
+    "IEF": 2736
+   }
+  },
+  {
+   "municipio": "CONTAGEM",
+   "total": 4892,
+   "por_orgao": {
+    "SEMAD": 1627,
+    "IEF": 3265
+   }
+  },
+  {
+   "municipio": "JOAO PINHEIRO",
+   "total": 4218,
+   "por_orgao": {
+    "SEMAD": 1612,
+    "IEF": 2606
+   }
+  },
+  {
+   "municipio": "TEOFILO OTONI",
+   "total": 4103,
+   "por_orgao": {
+    "SEMAD": 2412,
+    "IEF": 1691
+   }
+  },
+  {
+   "municipio": "JUIZ DE FORA",
+   "total": 4094,
+   "por_orgao": {
+    "SEMAD": 2619,
+    "IEF": 1475
+   }
+  },
+  {
+   "municipio": "OURO PRETO",
+   "total": 3994,
+   "por_orgao": {
+    "SEMAD": 2071,
+    "IEF": 1923
+   }
+  },
+  {
+   "municipio": "GOVERNADOR VALADARES",
+   "total": 3734,
+   "por_orgao": {
+    "SEMAD": 2793,
+    "IEF": 941
+   }
+  },
+  {
+   "municipio": "PATOS DE MINAS",
+   "total": 3715,
+   "por_orgao": {
+    "SEMAD": 2279,
+    "IEF": 1436
+   }
+  },
+  {
+   "municipio": "FORMIGA",
+   "total": 3693,
+   "por_orgao": {
+    "SEMAD": 2634,
+    "IEF": 1059
+   }
+  },
+  {
+   "municipio": "MARIANA",
+   "total": 3607,
+   "por_orgao": {
+    "SEMAD": 1813,
+    "IEF": 1794
+   }
+  },
+  {
+   "municipio": "PATROCINIO",
+   "total": 3579,
+   "por_orgao": {
+    "SEMAD": 2363,
+    "IEF": 1216
+   }
+  },
+  {
+   "municipio": "CURVELO",
+   "total": 3555,
+   "por_orgao": {
+    "SEMAD": 2218,
+    "IEF": 1337
+   }
+  },
+  {
+   "municipio": "ITABIRA",
+   "total": 3317,
+   "por_orgao": {
+    "SEMAD": 1865,
+    "IEF": 1452
+   }
+  },
+  {
+   "municipio": "CARATINGA",
+   "total": 3306,
+   "por_orgao": {
+    "SEMAD": 2686,
+    "IEF": 620
+   }
+  },
+  {
+   "municipio": "ITAMARANDIBA",
+   "total": 3263,
+   "por_orgao": {
+    "SEMAD": 1313,
+    "IEF": 1950
+   }
+  },
+  {
+   "municipio": "UBERABA",
+   "total": 3251,
+   "por_orgao": {
+    "SEMAD": 2016,
+    "IEF": 1235
+   }
+  },
+  {
+   "municipio": "TRES MARIAS",
+   "total": 3241,
+   "por_orgao": {
+    "SEMAD": 2230,
+    "IEF": 1011
+   }
+  },
+  {
+   "municipio": "ARAGUARI",
+   "total": 3092,
+   "por_orgao": {
+    "SEMAD": 2098,
+    "IEF": 994
+   }
+  },
+  {
+   "municipio": "DIAMANTINA",
+   "total": 3055,
+   "por_orgao": {
+    "SEMAD": 2522,
+    "IEF": 533
+   }
+  },
+  {
+   "municipio": "ITUIUTABA",
+   "total": 2843,
+   "por_orgao": {
+    "SEMAD": 1260,
+    "IEF": 1583
+   }
+  },
+  {
+   "municipio": "UBA",
+   "total": 2792,
+   "por_orgao": {
+    "SEMAD": 2108,
+    "IEF": 684
+   }
+  },
+  {
+   "municipio": "POMPEU",
+   "total": 2696,
+   "por_orgao": {
+    "SEMAD": 1684,
+    "IEF": 1012
+   }
+  },
+  {
+   "municipio": "IPATINGA",
+   "total": 2667,
+   "por_orgao": {
+    "SEMAD": 1809,
+    "IEF": 858
+   }
+  },
+  {
+   "municipio": "MONTE CARMELO",
+   "total": 2619,
+   "por_orgao": {
+    "SEMAD": 1679,
+    "IEF": 940
+   }
+  },
+  {
+   "municipio": "BARBACENA",
+   "total": 2604,
+   "por_orgao": {
+    "SEMAD": 1313,
+    "IEF": 1291
+   }
+  },
+  {
+   "municipio": "VARGINHA",
+   "total": 2580,
+   "por_orgao": {
+    "SEMAD": 1878,
+    "IEF": 702
+   }
+  },
+  {
+   "municipio": "MANHUACU",
+   "total": 2542,
+   "por_orgao": {
+    "SEMAD": 1959,
+    "IEF": 583
+   }
+  },
+  {
+   "municipio": "PARA DE MINAS",
+   "total": 2443,
+   "por_orgao": {
+    "SEMAD": 1429,
+    "IEF": 1014
+   }
+  },
+  {
+   "municipio": "ABADIA DOS DOURADOS",
+   "total": 2425,
+   "por_orgao": {
+    "SEMAD": 2164,
+    "IEF": 261
+   }
+  },
+  {
+   "municipio": "CAMPO BELO",
+   "total": 2394,
+   "por_orgao": {
+    "SEMAD": 1386,
+    "IEF": 1008
+   }
+  },
+  {
+   "municipio": "CAPELINHA",
+   "total": 2348,
+   "por_orgao": {
+    "SEMAD": 1224,
+    "IEF": 1124
+   }
+  },
+  {
+   "municipio": "ARAXA",
+   "total": 2344,
+   "por_orgao": {
+    "SEMAD": 1646,
+    "IEF": 698
+   }
+  },
+  {
+   "municipio": "BURITIS",
+   "total": 2312,
+   "por_orgao": {
+    "SEMAD": 1095,
+    "IEF": 1217
+   }
+  },
+  {
+   "municipio": "BOCAIUVA",
+   "total": 2282,
+   "por_orgao": {
+    "SEMAD": 1195,
+    "IEF": 1087
+   }
+  },
+  {
+   "municipio": "POUSO ALEGRE",
+   "total": 2272,
+   "por_orgao": {
+    "SEMAD": 1586,
+    "IEF": 686
+   }
+  },
+  {
+   "municipio": "SAO FRANCISCO",
+   "total": 2238,
+   "por_orgao": {
+    "SEMAD": 1157,
+    "IEF": 1081
+   }
+  },
+  {
+   "municipio": "NOVO CRUZEIRO",
+   "total": 2204,
+   "por_orgao": {
+    "SEMAD": 974,
+    "IEF": 1230
+   }
+  },
+  {
+   "municipio": "MUTUM",
+   "total": 2196,
+   "por_orgao": {
+    "SEMAD": 1806,
+    "IEF": 390
+   }
+  },
+  {
+   "municipio": "ARINOS",
+   "total": 2137,
+   "por_orgao": {
+    "SEMAD": 781,
+    "IEF": 1356
+   }
+  },
+  {
+   "municipio": "CONSELHEIRO LAFAIETE",
+   "total": 2128,
+   "por_orgao": {
+    "SEMAD": 1126,
+    "IEF": 1002
+   }
+  },
+  {
+   "municipio": "ITAUNA",
+   "total": 2094,
+   "por_orgao": {
+    "SEMAD": 1165,
+    "IEF": 929
+   }
+  },
+  {
+   "municipio": "ALMENARA",
+   "total": 2090,
+   "por_orgao": {
+    "SEMAD": 968,
+    "IEF": 1122
+   }
+  },
+  {
+   "municipio": "COROMANDEL",
+   "total": 2047,
+   "por_orgao": {
+    "SEMAD": 1378,
+    "IEF": 669
+   }
+  },
+  {
+   "municipio": "JANUARIA",
+   "total": 2039,
+   "por_orgao": {
+    "SEMAD": 1312,
+    "IEF": 727
+   }
+  },
+  {
+   "municipio": "CARMO DO PARANAIBA",
+   "total": 2018,
+   "por_orgao": {
+    "SEMAD": 1593,
+    "IEF": 425
+   }
+  },
+  {
+   "municipio": "CORACAO DE JESUS",
+   "total": 1959,
+   "por_orgao": {
+    "SEMAD": 977,
+    "IEF": 982
+   }
+  },
+  {
+   "municipio": "ESMERALDAS",
+   "total": 1930,
+   "por_orgao": {
+    "SEMAD": 1143,
+    "IEF": 787
+   }
+  },
+  {
+   "municipio": "RIBEIRAO DAS NEVES",
+   "total": 1922,
+   "por_orgao": {
+    "SEMAD": 805,
+    "IEF": 1117
+   }
+  },
+  {
+   "municipio": "CAETE",
+   "total": 1918,
+   "por_orgao": {
+    "SEMAD": 862,
+    "IEF": 1056
+   }
+  },
+  {
+   "municipio": "BRASILANDIA DE MINAS",
+   "total": 1909,
+   "por_orgao": {
+    "SEMAD": 859,
+    "IEF": 1050
+   }
+  },
+  {
+   "municipio": "SAO JOAO DEL REI",
+   "total": 1905,
+   "por_orgao": {
+    "SEMAD": 1142,
+    "IEF": 763
+   }
+  },
+  {
+   "municipio": "JANAUBA",
+   "total": 1848,
+   "por_orgao": {
+    "SEMAD": 1116,
+    "IEF": 732
+   }
+  },
+  {
+   "municipio": "LAVRAS",
+   "total": 1827,
+   "por_orgao": {
+    "SEMAD": 1284,
+    "IEF": 543
+   }
+  },
+  {
+   "municipio": "SANTA LUZIA",
+   "total": 1807,
+   "por_orgao": {
+    "SEMAD": 1022,
+    "IEF": 785
+   }
+  },
+  {
+   "municipio": "SAO GONCALO DO ABAETE",
+   "total": 1807,
+   "por_orgao": {
+    "SEMAD": 1463,
+    "IEF": 344
+   }
+  },
+  {
+   "municipio": "GUANHAES",
+   "total": 1788,
+   "por_orgao": {
+    "SEMAD": 1247,
+    "IEF": 541
+   }
+  },
+  {
+   "municipio": "PASSOS",
+   "total": 1772,
+   "por_orgao": {
+    "SEMAD": 1004,
+    "IEF": 768
+   }
+  },
+  {
+   "municipio": "FERROS",
+   "total": 1761,
+   "por_orgao": {
+    "SEMAD": 850,
+    "IEF": 911
+   }
+  },
+  {
+   "municipio": "VAZANTE",
+   "total": 1749,
+   "por_orgao": {
+    "SEMAD": 724,
+    "IEF": 1025
+   }
+  },
+  {
+   "municipio": "MALACACHETA",
+   "total": 1702,
+   "por_orgao": {
+    "SEMAD": 736,
+    "IEF": 966
+   }
+  },
+  {
+   "municipio": "NOVA SERRANA",
+   "total": 1685,
+   "por_orgao": {
+    "IEF": 634,
+    "SEMAD": 1051
+   }
+  },
+  {
+   "municipio": "MORADA NOVA DE MINAS",
+   "total": 1642,
+   "por_orgao": {
+    "SEMAD": 1222,
+    "IEF": 420
+   }
+  },
+  {
+   "municipio": "LADAINHA",
+   "total": 1639,
+   "por_orgao": {
+    "SEMAD": 584,
+    "IEF": 1055
+   }
+  },
+  {
+   "municipio": "IBIRITE",
+   "total": 1632,
+   "por_orgao": {
+    "SEMAD": 383,
+    "IEF": 1249
+   }
+  },
+  {
+   "municipio": "PIUMHI",
+   "total": 1624,
+   "por_orgao": {
+    "SEMAD": 1055,
+    "IEF": 569
+   }
+  },
+  {
+   "municipio": "TIMOTEO",
+   "total": 1607,
+   "por_orgao": {
+    "SEMAD": 1156,
+    "IEF": 451
+   }
+  },
+  {
+   "municipio": "RAUL SOARES",
+   "total": 1600,
+   "por_orgao": {
+    "SEMAD": 1242,
+    "IEF": 358
+   }
+  },
+  {
+   "municipio": "ABAETE",
+   "total": 1597,
+   "por_orgao": {
+    "SEMAD": 1028,
+    "IEF": 569
+   }
+  },
+  {
+   "municipio": "JEQUITINHONHA",
+   "total": 1561,
+   "por_orgao": {
+    "SEMAD": 917,
+    "IEF": 644
+   }
+  },
+  {
+   "municipio": "PIRANGA",
+   "total": 1560,
+   "por_orgao": {
+    "SEMAD": 874,
+    "IEF": 686
+   }
+  },
+  {
+   "municipio": "VARZEA DA PALMA",
+   "total": 1559,
+   "por_orgao": {
+    "SEMAD": 759,
+    "IEF": 800
+   }
+  },
+  {
+   "municipio": "NOVA LIMA",
+   "total": 1541,
+   "por_orgao": {
+    "SEMAD": 894,
+    "IEF": 647
+   }
+  },
+  {
+   "municipio": "ARCOS",
+   "total": 1539,
+   "por_orgao": {
+    "SEMAD": 1161,
+    "IEF": 378
+   }
+  },
+  {
+   "municipio": "ARACUAI",
+   "total": 1512,
+   "por_orgao": {
+    "SEMAD": 820,
+    "IEF": 692
+   }
+  },
+  {
+   "municipio": "SABARA",
+   "total": 1508,
+   "por_orgao": {
+    "SEMAD": 875,
+    "IEF": 633
+   }
+  },
+  {
+   "municipio": "PITANGUI",
+   "total": 1479,
+   "por_orgao": {
+    "SEMAD": 987,
+    "IEF": 492
+   }
+  },
+  {
+   "municipio": "PRESIDENTE OLEGARIO",
+   "total": 1479,
+   "por_orgao": {
+    "SEMAD": 1051,
+    "IEF": 428
+   }
+  },
+  {
+   "municipio": "BOM DESPACHO",
+   "total": 1471,
+   "por_orgao": {
+    "SEMAD": 900,
+    "IEF": 571
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO MONTE",
+   "total": 1470,
+   "por_orgao": {
+    "SEMAD": 1168,
+    "IEF": 302
+   }
+  },
+  {
+   "municipio": "URUCUIA",
+   "total": 1470,
+   "por_orgao": {
+    "SEMAD": 421,
+    "IEF": 1049
+   }
+  },
+  {
+   "municipio": "LAGOA DA PRATA",
+   "total": 1468,
+   "por_orgao": {
+    "SEMAD": 806,
+    "IEF": 662
+   }
+  },
+  {
+   "municipio": "JAIBA",
+   "total": 1451,
+   "por_orgao": {
+    "SEMAD": 956,
+    "IEF": 495
+   }
+  },
+  {
+   "municipio": "SANTA VITORIA",
+   "total": 1435,
+   "por_orgao": {
+    "SEMAD": 1065,
+    "IEF": 370
+   }
+  },
+  {
+   "municipio": "PONTE NOVA",
+   "total": 1414,
+   "por_orgao": {
+    "SEMAD": 1103,
+    "IEF": 311
+   }
+  },
+  {
+   "municipio": "FELIXLANDIA",
+   "total": 1394,
+   "por_orgao": {
+    "SEMAD": 998,
+    "IEF": 396
+   }
+  },
+  {
+   "municipio": "RIACHINHO",
+   "total": 1371,
+   "por_orgao": {
+    "SEMAD": 460,
+    "IEF": 911
+   }
+  },
+  {
+   "municipio": "IPANEMA",
+   "total": 1361,
+   "por_orgao": {
+    "SEMAD": 1080,
+    "IEF": 281
+   }
+  },
+  {
+   "municipio": "CARMO DO RIO CLARO",
+   "total": 1359,
+   "por_orgao": {
+    "SEMAD": 823,
+    "IEF": 536
+   }
+  },
+  {
+   "municipio": "ITAIPE",
+   "total": 1356,
+   "por_orgao": {
+    "SEMAD": 540,
+    "IEF": 816
+   }
+  },
+  {
+   "municipio": "BARAO DE COCAIS",
+   "total": 1327,
+   "por_orgao": {
+    "SEMAD": 637,
+    "IEF": 690
+   }
+  },
+  {
+   "municipio": "RIO PARANAIBA",
+   "total": 1327,
+   "por_orgao": {
+    "SEMAD": 1144,
+    "IEF": 183
+   }
+  },
+  {
+   "municipio": "CONCEICAO DO MATO DENTRO",
+   "total": 1326,
+   "por_orgao": {
+    "SEMAD": 1004,
+    "IEF": 322
+   }
+  },
+  {
+   "municipio": "SANTANA DE PIRAPAMA",
+   "total": 1322,
+   "por_orgao": {
+    "SEMAD": 548,
+    "IEF": 774
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA",
+   "total": 1310,
+   "por_orgao": {
+    "SEMAD": 599,
+    "IEF": 711
+   }
+  },
+  {
+   "municipio": "MINAS NOVAS",
+   "total": 1306,
+   "por_orgao": {
+    "SEMAD": 879,
+    "IEF": 427
+   }
+  },
+  {
+   "municipio": "IBIA",
+   "total": 1300,
+   "por_orgao": {
+    "SEMAD": 1041,
+    "IEF": 259
+   }
+  },
+  {
+   "municipio": "SAO ROQUE DE MINAS",
+   "total": 1298,
+   "por_orgao": {
+    "SEMAD": 1080,
+    "IEF": 218
+   }
+  },
+  {
+   "municipio": "VICOSA",
+   "total": 1294,
+   "por_orgao": {
+    "SEMAD": 901,
+    "IEF": 393
+   }
+  },
+  {
+   "municipio": "OLIVEIRA",
+   "total": 1285,
+   "por_orgao": {
+    "SEMAD": 700,
+    "IEF": 585
+   }
+  },
+  {
+   "municipio": "MURIAE",
+   "total": 1255,
+   "por_orgao": {
+    "SEMAD": 817,
+    "IEF": 438
+   }
+  },
+  {
+   "municipio": "PEDRO LEOPOLDO",
+   "total": 1254,
+   "por_orgao": {
+    "SEMAD": 637,
+    "IEF": 617
+   }
+  },
+  {
+   "municipio": "BOA ESPERANCA",
+   "total": 1237,
+   "por_orgao": {
+    "SEMAD": 650,
+    "IEF": 587
+   }
+  },
+  {
+   "municipio": "TUPACIGUARA",
+   "total": 1233,
+   "por_orgao": {
+    "SEMAD": 814,
+    "IEF": 419
+   }
+  },
+  {
+   "municipio": "ITABIRITO",
+   "total": 1229,
+   "por_orgao": {
+    "SEMAD": 582,
+    "IEF": 647
+   }
+  },
+  {
+   "municipio": "POCOS DE CALDAS",
+   "total": 1227,
+   "por_orgao": {
+    "SEMAD": 763,
+    "IEF": 464
+   }
+  },
+  {
+   "municipio": "ITURAMA",
+   "total": 1202,
+   "por_orgao": {
+    "SEMAD": 777,
+    "IEF": 425
+   }
+  },
+  {
+   "municipio": "ESPINOSA",
+   "total": 1200,
+   "por_orgao": {
+    "SEMAD": 609,
+    "IEF": 591
+   }
+  },
+  {
+   "municipio": "AGUAS FORMOSAS",
+   "total": 1196,
+   "por_orgao": {
+    "SEMAD": 550,
+    "IEF": 646
+   }
+  },
+  {
+   "municipio": "MUNICIPIO NAO ESPECIFICADO",
+   "total": 1187,
+   "por_orgao": {
+    "SEMAD": 1187
+   }
+  },
+  {
+   "municipio": "VESPASIANO",
+   "total": 1179,
+   "por_orgao": {
+    "SEMAD": 655,
+    "IEF": 524
+   }
+  },
+  {
+   "municipio": "LAGOA SANTA",
+   "total": 1173,
+   "por_orgao": {
+    "SEMAD": 671,
+    "IEF": 502
+   }
+  },
+  {
+   "municipio": "CATAGUASES",
+   "total": 1169,
+   "por_orgao": {
+    "SEMAD": 933,
+    "IEF": 236
+   }
+  },
+  {
+   "municipio": "BRUMADINHO",
+   "total": 1168,
+   "por_orgao": {
+    "SEMAD": 575,
+    "IEF": 593
+   }
+  },
+  {
+   "municipio": "SERRO",
+   "total": 1162,
+   "por_orgao": {
+    "SEMAD": 815,
+    "IEF": 347
+   }
+  },
+  {
+   "municipio": "CORONEL FABRICIANO",
+   "total": 1158,
+   "por_orgao": {
+    "SEMAD": 751,
+    "IEF": 407
+   }
+  },
+  {
+   "municipio": "JOAO MONLEVADE",
+   "total": 1152,
+   "por_orgao": {
+    "SEMAD": 633,
+    "IEF": 519
+   }
+  },
+  {
+   "municipio": "BRASILIA DE MINAS",
+   "total": 1127,
+   "por_orgao": {
+    "SEMAD": 564,
+    "IEF": 563
+   }
+  },
+  {
+   "municipio": "TAIOBEIRAS",
+   "total": 1127,
+   "por_orgao": {
+    "SEMAD": 624,
+    "IEF": 503
+   }
+  },
+  {
+   "municipio": "CAMANDUCAIA",
+   "total": 1125,
+   "por_orgao": {
+    "SEMAD": 563,
+    "IEF": 562
+   }
+  },
+  {
+   "municipio": "FRUTAL",
+   "total": 1123,
+   "por_orgao": {
+    "SEMAD": 686,
+    "IEF": 437
+   }
+  },
+  {
+   "municipio": "SACRAMENTO",
+   "total": 1121,
+   "por_orgao": {
+    "SEMAD": 876,
+    "IEF": 245
+   }
+  },
+  {
+   "municipio": "RIO PARDO DE MINAS",
+   "total": 1115,
+   "por_orgao": {
+    "SEMAD": 729,
+    "IEF": 386
+   }
+  },
+  {
+   "municipio": "PERDIZES",
+   "total": 1110,
+   "por_orgao": {
+    "SEMAD": 872,
+    "IEF": 238
+   }
+  },
+  {
+   "municipio": "SABINOPOLIS",
+   "total": 1107,
+   "por_orgao": {
+    "SEMAD": 635,
+    "IEF": 472
+   }
+  },
+  {
+   "municipio": "INHAPIM",
+   "total": 1106,
+   "por_orgao": {
+    "SEMAD": 832,
+    "IEF": 274
+   }
+  },
+  {
+   "municipio": "BURITIZEIRO",
+   "total": 1104,
+   "por_orgao": {
+    "SEMAD": 622,
+    "IEF": 482
+   }
+  },
+  {
+   "municipio": "GRAO MOGOL",
+   "total": 1103,
+   "por_orgao": {
+    "SEMAD": 838,
+    "IEF": 265
+   }
+  },
+  {
+   "municipio": "LAJINHA",
+   "total": 1098,
+   "por_orgao": {
+    "SEMAD": 852,
+    "IEF": 246
+   }
+  },
+  {
+   "municipio": "SANTOS DUMONT",
+   "total": 1091,
+   "por_orgao": {
+    "SEMAD": 726,
+    "IEF": 365
+   }
+  },
+  {
+   "municipio": "TRES CORACOES",
+   "total": 1091,
+   "por_orgao": {
+    "SEMAD": 783,
+    "IEF": 308
+   }
+  },
+  {
+   "municipio": "ITAJUBA",
+   "total": 1081,
+   "por_orgao": {
+    "SEMAD": 587,
+    "IEF": 494
+   }
+  },
+  {
+   "municipio": "CORINTO",
+   "total": 1072,
+   "por_orgao": {
+    "SEMAD": 604,
+    "IEF": 468
+   }
+  },
+  {
+   "municipio": "SAO GOTARDO",
+   "total": 1069,
+   "por_orgao": {
+    "SEMAD": 743,
+    "IEF": 326
+   }
+  },
+  {
+   "municipio": "COLUNA",
+   "total": 1056,
+   "por_orgao": {
+    "SEMAD": 705,
+    "IEF": 351
+   }
+  },
+  {
+   "municipio": "GUARDA-MOR",
+   "total": 1056,
+   "por_orgao": {
+    "SEMAD": 644,
+    "IEF": 412
+   }
+  },
+  {
+   "municipio": "Sem Cadastro",
+   "total": 1036,
+   "por_orgao": {
+    "SEMAD": 1036
+   }
+  },
+  {
+   "municipio": "BRASILIA",
+   "total": 1033,
+   "por_orgao": {
+    "IEF": 1033
+   }
+  },
+  {
+   "municipio": "SAO DOMINGOS DO PRATA",
+   "total": 1027,
+   "por_orgao": {
+    "SEMAD": 406,
+    "IEF": 621
+   }
+  },
+  {
+   "municipio": "SAO JOAO EVANGELISTA",
+   "total": 1027,
+   "por_orgao": {
+    "SEMAD": 860,
+    "IEF": 167
+   }
+  },
+  {
+   "municipio": "ALFENAS",
+   "total": 1024,
+   "por_orgao": {
+    "SEMAD": 663,
+    "IEF": 361
+   }
+  },
+  {
+   "municipio": "NANUQUE",
+   "total": 1024,
+   "por_orgao": {
+    "SEMAD": 375,
+    "IEF": 649
+   }
+  },
+  {
+   "municipio": "BOM JESUS DO GALHO",
+   "total": 1019,
+   "por_orgao": {
+    "SEMAD": 857,
+    "IEF": 162
+   }
+  },
+  {
+   "municipio": "PIRAPORA",
+   "total": 1014,
+   "por_orgao": {
+    "SEMAD": 609,
+    "IEF": 405
+   }
+  },
+  {
+   "municipio": "BAMBUI",
+   "total": 1013,
+   "por_orgao": {
+    "SEMAD": 622,
+    "IEF": 391
+   }
+  },
+  {
+   "municipio": "LEOPOLDINA",
+   "total": 1011,
+   "por_orgao": {
+    "SEMAD": 629,
+    "IEF": 382
+   }
+  },
+  {
+   "municipio": "PECANHA",
+   "total": 1006,
+   "por_orgao": {
+    "SEMAD": 617,
+    "IEF": 389
+   }
+  },
+  {
+   "municipio": "CONCEICAO DAS ALAGOAS",
+   "total": 1000,
+   "por_orgao": {
+    "SEMAD": 733,
+    "IEF": 267
+   }
+  },
+  {
+   "municipio": "PEDRA AZUL",
+   "total": 994,
+   "por_orgao": {
+    "SEMAD": 499,
+    "IEF": 495
+   }
+  },
+  {
+   "municipio": "MARTINHO CAMPOS",
+   "total": 990,
+   "por_orgao": {
+    "SEMAD": 671,
+    "IEF": 319
+   }
+  },
+  {
+   "municipio": "PORTEIRINHA",
+   "total": 974,
+   "por_orgao": {
+    "SEMAD": 630,
+    "IEF": 344
+   }
+  },
+  {
+   "municipio": "CLAUDIO",
+   "total": 948,
+   "por_orgao": {
+    "SEMAD": 609,
+    "IEF": 339
+   }
+  },
+  {
+   "municipio": "SAO ROMAO",
+   "total": 947,
+   "por_orgao": {
+    "SEMAD": 642,
+    "IEF": 305
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO MARANHAO",
+   "total": 939,
+   "por_orgao": {
+    "SEMAD": 611,
+    "IEF": 328
+   }
+  },
+  {
+   "municipio": "OURO FINO",
+   "total": 938,
+   "por_orgao": {
+    "SEMAD": 537,
+    "IEF": 401
+   }
+  },
+  {
+   "municipio": "PARAOPEBA",
+   "total": 938,
+   "por_orgao": {
+    "SEMAD": 566,
+    "IEF": 372
+   }
+  },
+  {
+   "municipio": "SAO LOURENCO",
+   "total": 935,
+   "por_orgao": {
+    "SEMAD": 518,
+    "IEF": 417
+   }
+  },
+  {
+   "municipio": "CAPITOLIO",
+   "total": 934,
+   "por_orgao": {
+    "SEMAD": 757,
+    "IEF": 177
+   }
+  },
+  {
+   "municipio": "SAO JOAO DA PONTE",
+   "total": 932,
+   "por_orgao": {
+    "SEMAD": 555,
+    "IEF": 377
+   }
+  },
+  {
+   "municipio": "ALVINOPOLIS",
+   "total": 926,
+   "por_orgao": {
+    "SEMAD": 369,
+    "IEF": 557
+   }
+  },
+  {
+   "municipio": "LUZ",
+   "total": 926,
+   "por_orgao": {
+    "SEMAD": 643,
+    "IEF": 283
+   }
+  },
+  {
+   "municipio": "ALTO RIO DOCE",
+   "total": 909,
+   "por_orgao": {
+    "SEMAD": 542,
+    "IEF": 367
+   }
+  },
+  {
+   "municipio": "AGUAS VERMELHAS",
+   "total": 908,
+   "por_orgao": {
+    "SEMAD": 381,
+    "IEF": 527
+   }
+  },
+  {
+   "municipio": "CAMPINA VERDE",
+   "total": 906,
+   "por_orgao": {
+    "SEMAD": 640,
+    "IEF": 266
+   }
+  },
+  {
+   "municipio": "TURMALINA",
+   "total": 903,
+   "por_orgao": {
+    "SEMAD": 579,
+    "IEF": 324
+   }
+  },
+  {
+   "municipio": "BUENOPOLIS",
+   "total": 902,
+   "por_orgao": {
+    "SEMAD": 479,
+    "IEF": 423
+   }
+  },
+  {
+   "municipio": "SANTANA DO PARAISO",
+   "total": 902,
+   "por_orgao": {
+    "SEMAD": 735,
+    "IEF": 167
+   }
+  },
+  {
+   "municipio": "JABOTICATUBAS",
+   "total": 897,
+   "por_orgao": {
+    "SEMAD": 663,
+    "IEF": 234
+   }
+  },
+  {
+   "municipio": "SETUBINHA",
+   "total": 897,
+   "por_orgao": {
+    "SEMAD": 455,
+    "IEF": 442
+   }
+  },
+  {
+   "municipio": "MATEUS LEME",
+   "total": 896,
+   "por_orgao": {
+    "SEMAD": 500,
+    "IEF": 396
+   }
+  },
+  {
+   "municipio": "ITAMBACURI",
+   "total": 889,
+   "por_orgao": {
+    "SEMAD": 481,
+    "IEF": 408
+   }
+  },
+  {
+   "municipio": "RIO VERMELHO",
+   "total": 885,
+   "por_orgao": {
+    "SEMAD": 511,
+    "IEF": 374
+   }
+  },
+  {
+   "municipio": "BONFINOPOLIS DE MINAS",
+   "total": 884,
+   "por_orgao": {
+    "SEMAD": 419,
+    "IEF": 465
+   }
+  },
+  {
+   "municipio": "TIROS",
+   "total": 871,
+   "por_orgao": {
+    "SEMAD": 705,
+    "IEF": 166
+   }
+  },
+  {
+   "municipio": "CANDEIAS",
+   "total": 859,
+   "por_orgao": {
+    "SEMAD": 635,
+    "IEF": 224
+   }
+  },
+  {
+   "municipio": "ITAVERAVA",
+   "total": 857,
+   "por_orgao": {
+    "SEMAD": 275,
+    "IEF": 582
+   }
+  },
+  {
+   "municipio": "GUAXUPE",
+   "total": 843,
+   "por_orgao": {
+    "SEMAD": 585,
+    "IEF": 258
+   }
+  },
+  {
+   "municipio": "MATOZINHOS",
+   "total": 841,
+   "por_orgao": {
+    "SEMAD": 385,
+    "IEF": 456
+   }
+  },
+  {
+   "municipio": "SIMONESIA",
+   "total": 840,
+   "por_orgao": {
+    "SEMAD": 638,
+    "IEF": 202
+   }
+  },
+  {
+   "municipio": "ITAPECERICA",
+   "total": 839,
+   "por_orgao": {
+    "SEMAD": 412,
+    "IEF": 427
+   }
+  },
+  {
+   "municipio": "TRES PONTAS",
+   "total": 818,
+   "por_orgao": {
+    "SEMAD": 548,
+    "IEF": 270
+   }
+  },
+  {
+   "municipio": "OURO BRANCO",
+   "total": 817,
+   "por_orgao": {
+    "SEMAD": 322,
+    "IEF": 495
+   }
+  },
+  {
+   "municipio": "CANDIDO SALES",
+   "total": 807,
+   "por_orgao": {
+    "IEF": 807
+   }
+  },
+  {
+   "municipio": "ILICINEA",
+   "total": 803,
+   "por_orgao": {
+    "SEMAD": 498,
+    "IEF": 305
+   }
+  },
+  {
+   "municipio": "EXTREMA",
+   "total": 792,
+   "por_orgao": {
+    "SEMAD": 581,
+    "IEF": 211
+   }
+  },
+  {
+   "municipio": "PRATA",
+   "total": 792,
+   "por_orgao": {
+    "SEMAD": 572,
+    "IEF": 220
+   }
+  },
+  {
+   "municipio": "PAPAGAIOS",
+   "total": 791,
+   "por_orgao": {
+    "SEMAD": 546,
+    "IEF": 245
+   }
+  },
+  {
+   "municipio": "CARLOS CHAGAS",
+   "total": 782,
+   "por_orgao": {
+    "SEMAD": 399,
+    "IEF": 383
+   }
+  },
+  {
+   "municipio": "AUGUSTO DE LIMA",
+   "total": 780,
+   "por_orgao": {
+    "SEMAD": 522,
+    "IEF": 258
+   }
+  },
+  {
+   "municipio": "CARANGOLA",
+   "total": 773,
+   "por_orgao": {
+    "SEMAD": 543,
+    "IEF": 230
+   }
+  },
+  {
+   "municipio": "CAMPOS GERAIS",
+   "total": 766,
+   "por_orgao": {
+    "SEMAD": 499,
+    "IEF": 267
+   }
+  },
+  {
+   "municipio": "SAO PAULO",
+   "total": 764,
+   "por_orgao": {
+    "IEF": 764
+   }
+  },
+  {
+   "municipio": "POCRANE",
+   "total": 753,
+   "por_orgao": {
+    "SEMAD": 610,
+    "IEF": 143
+   }
+  },
+  {
+   "municipio": "POTE",
+   "total": 751,
+   "por_orgao": {
+    "SEMAD": 352,
+    "IEF": 399
+   }
+  },
+  {
+   "municipio": "SALINAS",
+   "total": 749,
+   "por_orgao": {
+    "SEMAD": 496,
+    "IEF": 253
+   }
+  },
+  {
+   "municipio": "LAGOA GRANDE",
+   "total": 745,
+   "por_orgao": {
+    "SEMAD": 477,
+    "IEF": 268
+   }
+  },
+  {
+   "municipio": "JOAIMA",
+   "total": 743,
+   "por_orgao": {
+    "SEMAD": 400,
+    "IEF": 343
+   }
+  },
+  {
+   "municipio": "MEDINA",
+   "total": 732,
+   "por_orgao": {
+    "SEMAD": 417,
+    "IEF": 315
+   }
+  },
+  {
+   "municipio": "CASSIA",
+   "total": 731,
+   "por_orgao": {
+    "SEMAD": 467,
+    "IEF": 264
+   }
+  },
+  {
+   "municipio": "MACHADO",
+   "total": 729,
+   "por_orgao": {
+    "SEMAD": 433,
+    "IEF": 296
+   }
+  },
+  {
+   "municipio": "FRANCISCO SA",
+   "total": 726,
+   "por_orgao": {
+    "SEMAD": 516,
+    "IEF": 210
+   }
+  },
+  {
+   "municipio": "CARMO DO CAJURU",
+   "total": 723,
+   "por_orgao": {
+    "SEMAD": 400,
+    "IEF": 323
+   }
+  },
+  {
+   "municipio": "NOVA PONTE",
+   "total": 722,
+   "por_orgao": {
+    "SEMAD": 568,
+    "IEF": 154
+   }
+  },
+  {
+   "municipio": "CONSELHEIRO PENA",
+   "total": 718,
+   "por_orgao": {
+    "SEMAD": 530,
+    "IEF": 188
+   }
+  },
+  {
+   "municipio": "CRISTAIS",
+   "total": 718,
+   "por_orgao": {
+    "SEMAD": 542,
+    "IEF": 176
+   }
+  },
+  {
+   "municipio": "ALPINOPOLIS",
+   "total": 708,
+   "por_orgao": {
+    "SEMAD": 391,
+    "IEF": 317
+   }
+  },
+  {
+   "municipio": "PASSA TEMPO",
+   "total": 707,
+   "por_orgao": {
+    "SEMAD": 385,
+    "IEF": 322
+   }
+  },
+  {
+   "municipio": "SENADOR MODESTINO GONCALVES",
+   "total": 706,
+   "por_orgao": {
+    "SEMAD": 440,
+    "IEF": 266
+   }
+  },
+  {
+   "municipio": "AIMORES",
+   "total": 704,
+   "por_orgao": {
+    "SEMAD": 503,
+    "IEF": 201
+   }
+  },
+  {
+   "municipio": "ESPERA FELIZ",
+   "total": 701,
+   "por_orgao": {
+    "SEMAD": 492,
+    "IEF": 209
+   }
+  },
+  {
+   "municipio": "JUATUBA",
+   "total": 700,
+   "por_orgao": {
+    "SEMAD": 369,
+    "IEF": 331
+   }
+  },
+  {
+   "municipio": "PORTO FIRME",
+   "total": 695,
+   "por_orgao": {
+    "SEMAD": 327,
+    "IEF": 368
+   }
+  },
+  {
+   "municipio": "IGARAPE",
+   "total": 692,
+   "por_orgao": {
+    "SEMAD": 408,
+    "IEF": 284
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO PARAISO",
+   "total": 684,
+   "por_orgao": {
+    "SEMAD": 387,
+    "IEF": 297
+   }
+  },
+  {
+   "municipio": "LAGOA DOURADA",
+   "total": 683,
+   "por_orgao": {
+    "SEMAD": 279,
+    "IEF": 404
+   }
+  },
+  {
+   "municipio": "CHAPADA GAUCHA",
+   "total": 682,
+   "por_orgao": {
+    "SEMAD": 501,
+    "IEF": 181
+   }
+  },
+  {
+   "municipio": "CONGONHAS",
+   "total": 682,
+   "por_orgao": {
+    "SEMAD": 344,
+    "IEF": 338
+   }
+  },
+  {
+   "municipio": "MANGA",
+   "total": 682,
+   "por_orgao": {
+    "SEMAD": 428,
+    "IEF": 254
+   }
+  },
+  {
+   "municipio": "ITAOBIM",
+   "total": 679,
+   "por_orgao": {
+    "SEMAD": 373,
+    "IEF": 306
+   }
+  },
+  {
+   "municipio": "PARAISOPOLIS",
+   "total": 673,
+   "por_orgao": {
+    "SEMAD": 325,
+    "IEF": 348
+   }
+  },
+  {
+   "municipio": "SANTA JULIANA",
+   "total": 667,
+   "por_orgao": {
+    "SEMAD": 514,
+    "IEF": 153
+   }
+  },
+  {
+   "municipio": "ANDRADAS",
+   "total": 666,
+   "por_orgao": {
+    "SEMAD": 397,
+    "IEF": 269
+   }
+  },
+  {
+   "municipio": "GUAPE",
+   "total": 666,
+   "por_orgao": {
+    "SEMAD": 479,
+    "IEF": 187
+   }
+  },
+  {
+   "municipio": "CONCEICAO DO PARA",
+   "total": 664,
+   "por_orgao": {
+    "SEMAD": 554,
+    "IEF": 110
+   }
+  },
+  {
+   "municipio": "MONTE AZUL",
+   "total": 659,
+   "por_orgao": {
+    "SEMAD": 349,
+    "IEF": 310
+   }
+  },
+  {
+   "municipio": "ALEM PARAIBA",
+   "total": 655,
+   "por_orgao": {
+    "SEMAD": 458,
+    "IEF": 197
+   }
+  },
+  {
+   "municipio": "GOUVEIA",
+   "total": 650,
+   "por_orgao": {
+    "SEMAD": 468,
+    "IEF": 182
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DO SUACUI",
+   "total": 645,
+   "por_orgao": {
+    "SEMAD": 460,
+    "IEF": 185
+   }
+  },
+  {
+   "municipio": "SERRA DO SALITRE",
+   "total": 645,
+   "por_orgao": {
+    "SEMAD": 515,
+    "IEF": 130
+   }
+  },
+  {
+   "municipio": "BELO ORIENTE",
+   "total": 644,
+   "por_orgao": {
+    "SEMAD": 457,
+    "IEF": 187
+   }
+  },
+  {
+   "municipio": "SAO JOAO DA LAGOA",
+   "total": 644,
+   "por_orgao": {
+    "SEMAD": 335,
+    "IEF": 309
+   }
+  },
+  {
+   "municipio": "MONTE ALEGRE DE MINAS",
+   "total": 643,
+   "por_orgao": {
+    "SEMAD": 472,
+    "IEF": 171
+   }
+  },
+  {
+   "municipio": "BAEPENDI",
+   "total": 642,
+   "por_orgao": {
+    "SEMAD": 375,
+    "IEF": 267
+   }
+  },
+  {
+   "municipio": "CATAS ALTAS DA NORUEGA",
+   "total": 642,
+   "por_orgao": {
+    "SEMAD": 156,
+    "IEF": 486
+   }
+  },
+  {
+   "municipio": "CARMOPOLIS DE MINAS",
+   "total": 641,
+   "por_orgao": {
+    "SEMAD": 473,
+    "IEF": 168
+   }
+  },
+  {
+   "municipio": "RIO MANSO",
+   "total": 639,
+   "por_orgao": {
+    "SEMAD": 275,
+    "IEF": 364
+   }
+  },
+  {
+   "municipio": "JACINTO",
+   "total": 637,
+   "por_orgao": {
+    "SEMAD": 415,
+    "IEF": 222
+   }
+  },
+  {
+   "municipio": "MANTENA",
+   "total": 636,
+   "por_orgao": {
+    "SEMAD": 504,
+    "IEF": 132
+   }
+  },
+  {
+   "municipio": "SANTA FE DE MINAS",
+   "total": 628,
+   "por_orgao": {
+    "SEMAD": 364,
+    "IEF": 264
+   }
+  },
+  {
+   "municipio": "PLANURA",
+   "total": 627,
+   "por_orgao": {
+    "SEMAD": 538,
+    "IEF": 89
+   }
+  },
+  {
+   "municipio": "MARLIERIA",
+   "total": 624,
+   "por_orgao": {
+    "SEMAD": 550,
+    "IEF": 74
+   }
+  },
+  {
+   "municipio": "PINTOPOLIS",
+   "total": 622,
+   "por_orgao": {
+    "SEMAD": 373,
+    "IEF": 249
+   }
+  },
+  {
+   "municipio": "AGUA BOA",
+   "total": 621,
+   "por_orgao": {
+    "SEMAD": 448,
+    "IEF": 173
+   }
+  },
+  {
+   "municipio": "ANDRELANDIA",
+   "total": 617,
+   "por_orgao": {
+    "SEMAD": 381,
+    "IEF": 236
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO JACURI",
+   "total": 615,
+   "por_orgao": {
+    "SEMAD": 465,
+    "IEF": 150
+   }
+  },
+  {
+   "municipio": "JOAQUIM FELICIO",
+   "total": 612,
+   "por_orgao": {
+    "SEMAD": 431,
+    "IEF": 181
+   }
+  },
+  {
+   "municipio": "PAINEIRAS",
+   "total": 612,
+   "por_orgao": {
+    "SEMAD": 410,
+    "IEF": 202
+   }
+  },
+  {
+   "municipio": "UBAPORANGA",
+   "total": 611,
+   "por_orgao": {
+    "SEMAD": 504,
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "CAMBUI",
+   "total": 610,
+   "por_orgao": {
+    "SEMAD": 296,
+    "IEF": 314
+   }
+  },
+  {
+   "municipio": "LAGOA FORMOSA",
+   "total": 605,
+   "por_orgao": {
+    "SEMAD": 462,
+    "IEF": 143
+   }
+  },
+  {
+   "municipio": "PEDRA DO INDAIA",
+   "total": 603,
+   "por_orgao": {
+    "SEMAD": 485,
+    "IEF": 118
+   }
+  },
+  {
+   "municipio": "CAMPESTRE",
+   "total": 601,
+   "por_orgao": {
+    "SEMAD": 337,
+    "IEF": 264
+   }
+  },
+  {
+   "municipio": "CONCEICAO DOS OUROS",
+   "total": 595,
+   "por_orgao": {
+    "SEMAD": 349,
+    "IEF": 246
+   }
+  },
+  {
+   "municipio": "SAO GONCALO DO RIO ABAIXO",
+   "total": 595,
+   "por_orgao": {
+    "SEMAD": 366,
+    "IEF": 229
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DE ITABIRA",
+   "total": 594,
+   "por_orgao": {
+    "SEMAD": 316,
+    "IEF": 278
+   }
+  },
+  {
+   "municipio": "ICARAI DE MINAS",
+   "total": 593,
+   "por_orgao": {
+    "SEMAD": 281,
+    "IEF": 312
+   }
+  },
+  {
+   "municipio": "IGUATAMA",
+   "total": 589,
+   "por_orgao": {
+    "SEMAD": 467,
+    "IEF": 122
+   }
+  },
+  {
+   "municipio": "ANTONIO DIAS",
+   "total": 585,
+   "por_orgao": {
+    "SEMAD": 419,
+    "IEF": 166
+   }
+  },
+  {
+   "municipio": "SANTANA DO MANHUACU",
+   "total": 584,
+   "por_orgao": {
+    "SEMAD": 437,
+    "IEF": 147
+   }
+  },
+  {
+   "municipio": "CARAI",
+   "total": 580,
+   "por_orgao": {
+    "SEMAD": 378,
+    "IEF": 202
+   }
+  },
+  {
+   "municipio": "ESTIVA",
+   "total": 576,
+   "por_orgao": {
+    "SEMAD": 310,
+    "IEF": 266
+   }
+  },
+  {
+   "municipio": "NEPOMUCENO",
+   "total": 572,
+   "por_orgao": {
+    "SEMAD": 400,
+    "IEF": 172
+   }
+  },
+  {
+   "municipio": "SAO JOAO DO PARAISO",
+   "total": 572,
+   "por_orgao": {
+    "SEMAD": 377,
+    "IEF": 195
+   }
+  },
+  {
+   "municipio": "TAQUARACU DE MINAS",
+   "total": 572,
+   "por_orgao": {
+    "SEMAD": 386,
+    "IEF": 186
+   }
+  },
+  {
+   "municipio": "VARZELANDIA",
+   "total": 569,
+   "por_orgao": {
+    "SEMAD": 332,
+    "IEF": 237
+   }
+  },
+  {
+   "municipio": "GUARACIABA",
+   "total": 566,
+   "por_orgao": {
+    "SEMAD": 313,
+    "IEF": 253
+   }
+  },
+  {
+   "municipio": "CAMPOS ALTOS",
+   "total": 562,
+   "por_orgao": {
+    "SEMAD": 399,
+    "IEF": 163
+   }
+  },
+  {
+   "municipio": "MANHUMIRIM",
+   "total": 562,
+   "por_orgao": {
+    "SEMAD": 345,
+    "IEF": 217
+   }
+  },
+  {
+   "municipio": "BOM SUCESSO",
+   "total": 560,
+   "por_orgao": {
+    "SEMAD": 393,
+    "IEF": 167
+   }
+  },
+  {
+   "municipio": "RIO PIRACICABA",
+   "total": 558,
+   "por_orgao": {
+    "SEMAD": 243,
+    "IEF": 315
+   }
+  },
+  {
+   "municipio": "VISCONDE DO RIO BRANCO",
+   "total": 558,
+   "por_orgao": {
+    "SEMAD": 360,
+    "IEF": 198
+   }
+  },
+  {
+   "municipio": "LAMBARI",
+   "total": 557,
+   "por_orgao": {
+    "SEMAD": 371,
+    "IEF": 186
+   }
+  },
+  {
+   "municipio": "VIRGEM DA LAPA",
+   "total": 556,
+   "por_orgao": {
+    "SEMAD": 373,
+    "IEF": 183
+   }
+  },
+  {
+   "municipio": "PIEDADE DE CARATINGA",
+   "total": 555,
+   "por_orgao": {
+    "SEMAD": 452,
+    "IEF": 103
+   }
+  },
+  {
+   "municipio": "IRAI DE MINAS",
+   "total": 554,
+   "por_orgao": {
+    "SEMAD": 404,
+    "IEF": 150
+   }
+  },
+  {
+   "municipio": "CALDAS",
+   "total": 552,
+   "por_orgao": {
+    "SEMAD": 376,
+    "IEF": 176
+   }
+  },
+  {
+   "municipio": "IAPU",
+   "total": 548,
+   "por_orgao": {
+    "SEMAD": 476,
+    "IEF": 72
+   }
+  },
+  {
+   "municipio": "FRANCISCO DUMONT",
+   "total": 547,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 341
+   }
+  },
+  {
+   "municipio": "CHALE",
+   "total": 545,
+   "por_orgao": {
+    "SEMAD": 440,
+    "IEF": 105
+   }
+  },
+  {
+   "municipio": "CORDISBURGO",
+   "total": 545,
+   "por_orgao": {
+    "SEMAD": 294,
+    "IEF": 251
+   }
+  },
+  {
+   "municipio": "GURINHATA",
+   "total": 544,
+   "por_orgao": {
+    "SEMAD": 403,
+    "IEF": 141
+   }
+  },
+  {
+   "municipio": "SENHORA DOS REMEDIOS",
+   "total": 544,
+   "por_orgao": {
+    "SEMAD": 258,
+    "IEF": 286
+   }
+  },
+  {
+   "municipio": "RIO ESPERA",
+   "total": 543,
+   "por_orgao": {
+    "SEMAD": 287,
+    "IEF": 256
+   }
+  },
+  {
+   "municipio": "MIRABELA",
+   "total": 542,
+   "por_orgao": {
+    "SEMAD": 309,
+    "IEF": 233
+   }
+  },
+  {
+   "municipio": "ERVALIA",
+   "total": 540,
+   "por_orgao": {
+    "SEMAD": 291,
+    "IEF": 249
+   }
+  },
+  {
+   "municipio": "ITAGUARA",
+   "total": 540,
+   "por_orgao": {
+    "SEMAD": 309,
+    "IEF": 231
+   }
+  },
+  {
+   "municipio": "CARANDAI",
+   "total": 534,
+   "por_orgao": {
+    "SEMAD": 342,
+    "IEF": 192
+   }
+  },
+  {
+   "municipio": "ITINGA",
+   "total": 533,
+   "por_orgao": {
+    "SEMAD": 373,
+    "IEF": 160
+   }
+  },
+  {
+   "municipio": "ANGELANDIA",
+   "total": 531,
+   "por_orgao": {
+    "SEMAD": 237,
+    "IEF": 294
+   }
+  },
+  {
+   "municipio": "IGARATINGA",
+   "total": 530,
+   "por_orgao": {
+    "SEMAD": 314,
+    "IEF": 216
+   }
+  },
+  {
+   "municipio": "ELOI MENDES",
+   "total": 527,
+   "por_orgao": {
+    "SEMAD": 339,
+    "IEF": 188
+   }
+  },
+  {
+   "municipio": "LIMA DUARTE",
+   "total": 523,
+   "por_orgao": {
+    "SEMAD": 438,
+    "IEF": 85
+   }
+  },
+  {
+   "municipio": "SAO PEDRO DO SUACUI",
+   "total": 523,
+   "por_orgao": {
+    "SEMAD": 452,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "CAPINOPOLIS",
+   "total": 520,
+   "por_orgao": {
+    "SEMAD": 324,
+    "IEF": 196
+   }
+  },
+  {
+   "municipio": "JACUTINGA",
+   "total": 517,
+   "por_orgao": {
+    "SEMAD": 329,
+    "IEF": 188
+   }
+  },
+  {
+   "municipio": "BOM JARDIM DE MINAS",
+   "total": 514,
+   "por_orgao": {
+    "SEMAD": 208,
+    "IEF": 306
+   }
+  },
+  {
+   "municipio": "PIMENTA",
+   "total": 514,
+   "por_orgao": {
+    "SEMAD": 351,
+    "IEF": 163
+   }
+  },
+  {
+   "municipio": "DURANDE",
+   "total": 512,
+   "por_orgao": {
+    "SEMAD": 350,
+    "IEF": 162
+   }
+  },
+  {
+   "municipio": "FORMOSO",
+   "total": 510,
+   "por_orgao": {
+    "SEMAD": 344,
+    "IEF": 166
+   }
+  },
+  {
+   "municipio": "RESPLENDOR",
+   "total": 509,
+   "por_orgao": {
+    "SEMAD": 342,
+    "IEF": 167
+   }
+  },
+  {
+   "municipio": "SANTA RITA DO SAPUCAI",
+   "total": 509,
+   "por_orgao": {
+    "SEMAD": 339,
+    "IEF": 170
+   }
+  },
+  {
+   "municipio": "BONFIM",
+   "total": 506,
+   "por_orgao": {
+    "SEMAD": 286,
+    "IEF": 220
+   }
+  },
+  {
+   "municipio": "AGUANIL",
+   "total": 505,
+   "por_orgao": {
+    "SEMAD": 376,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "IBIAI",
+   "total": 505,
+   "por_orgao": {
+    "SEMAD": 204,
+    "IEF": 301
+   }
+  },
+  {
+   "municipio": "ACUCENA",
+   "total": 504,
+   "por_orgao": {
+    "SEMAD": 408,
+    "IEF": 96
+   }
+  },
+  {
+   "municipio": "MARAVILHAS",
+   "total": 504,
+   "por_orgao": {
+    "SEMAD": 245,
+    "IEF": 259
+   }
+  },
+  {
+   "municipio": "BOM JESUS DO AMPARO",
+   "total": 502,
+   "por_orgao": {
+    "SEMAD": 277,
+    "IEF": 225
+   }
+  },
+  {
+   "municipio": "ITAMONTE",
+   "total": 501,
+   "por_orgao": {
+    "SEMAD": 372,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "ENTRE RIOS DE MINAS",
+   "total": 500,
+   "por_orgao": {
+    "SEMAD": 228,
+    "IEF": 272
+   }
+  },
+  {
+   "municipio": "MUZAMBINHO",
+   "total": 499,
+   "por_orgao": {
+    "SEMAD": 322,
+    "IEF": 177
+   }
+  },
+  {
+   "municipio": "PAINS",
+   "total": 491,
+   "por_orgao": {
+    "SEMAD": 352,
+    "IEF": 139
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DO SALTO",
+   "total": 488,
+   "por_orgao": {
+    "SEMAD": 240,
+    "IEF": 248
+   }
+  },
+  {
+   "municipio": "SANTA MARGARIDA",
+   "total": 486,
+   "por_orgao": {
+    "SEMAD": 370,
+    "IEF": 116
+   }
+  },
+  {
+   "municipio": "CONCEICAO DE IPANEMA",
+   "total": 484,
+   "por_orgao": {
+    "SEMAD": 388,
+    "IEF": 96
+   }
+  },
+  {
+   "municipio": "NOVA RESENDE",
+   "total": 481,
+   "por_orgao": {
+    "SEMAD": 288,
+    "IEF": 193
+   }
+  },
+  {
+   "municipio": "CORREGO FUNDO",
+   "total": 477,
+   "por_orgao": {
+    "SEMAD": 315,
+    "IEF": 162
+   }
+  },
+  {
+   "municipio": "VEREDINHA",
+   "total": 471,
+   "por_orgao": {
+    "SEMAD": 317,
+    "IEF": 154
+   }
+  },
+  {
+   "municipio": "DORES DO INDAIA",
+   "total": 469,
+   "por_orgao": {
+    "SEMAD": 299,
+    "IEF": 170
+   }
+  },
+  {
+   "municipio": "IMBE DE MINAS",
+   "total": 468,
+   "por_orgao": {
+    "SEMAD": 362,
+    "IEF": 106
+   }
+  },
+  {
+   "municipio": "ITATIAIUCU",
+   "total": 464,
+   "por_orgao": {
+    "SEMAD": 301,
+    "IEF": 163
+   }
+  },
+  {
+   "municipio": "SAO GONCALO DO SAPUCAI",
+   "total": 464,
+   "por_orgao": {
+    "SEMAD": 288,
+    "IEF": 176
+   }
+  },
+  {
+   "municipio": "PERDOES",
+   "total": 462,
+   "por_orgao": {
+    "SEMAD": 325,
+    "IEF": 137
+   }
+  },
+  {
+   "municipio": "CARMO DE MINAS",
+   "total": 461,
+   "por_orgao": {
+    "SEMAD": 278,
+    "IEF": 183
+   }
+  },
+  {
+   "municipio": "IPABA",
+   "total": 461,
+   "por_orgao": {
+    "SEMAD": 333,
+    "IEF": 128
+   }
+  },
+  {
+   "municipio": "ARICANDUVA",
+   "total": 460,
+   "por_orgao": {
+    "SEMAD": 269,
+    "IEF": 191
+   }
+  },
+  {
+   "municipio": "JEQUERI",
+   "total": 458,
+   "por_orgao": {
+    "SEMAD": 281,
+    "IEF": 177
+   }
+  },
+  {
+   "municipio": "PARAGUACU",
+   "total": 455,
+   "por_orgao": {
+    "SEMAD": 281,
+    "IEF": 174
+   }
+  },
+  {
+   "municipio": "PRESIDENTE JUSCELINO",
+   "total": 454,
+   "por_orgao": {
+    "SEMAD": 256,
+    "IEF": 198
+   }
+  },
+  {
+   "municipio": "MORRO DO PILAR",
+   "total": 453,
+   "por_orgao": {
+    "SEMAD": 179,
+    "IEF": 274
+   }
+  },
+  {
+   "municipio": "UBAI",
+   "total": 452,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 204
+   }
+  },
+  {
+   "municipio": "ARAPORA",
+   "total": 451,
+   "por_orgao": {
+    "SEMAD": 343,
+    "IEF": 108
+   }
+  },
+  {
+   "municipio": "CARBONITA",
+   "total": 451,
+   "por_orgao": {
+    "SEMAD": 290,
+    "IEF": 161
+   }
+  },
+  {
+   "municipio": "VARJAO DE MINAS",
+   "total": 450,
+   "por_orgao": {
+    "SEMAD": 334,
+    "IEF": 116
+   }
+  },
+  {
+   "municipio": "CAXAMBU",
+   "total": 449,
+   "por_orgao": {
+    "SEMAD": 242,
+    "IEF": 207
+   }
+  },
+  {
+   "municipio": "TAPIRA",
+   "total": 448,
+   "por_orgao": {
+    "SEMAD": 372,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "NOVO ORIENTE DE MINAS",
+   "total": 443,
+   "por_orgao": {
+    "SEMAD": 307,
+    "IEF": 136
+   }
+  },
+  {
+   "municipio": "OLHOS-DAGUA",
+   "total": 440,
+   "por_orgao": {
+    "SEMAD": 334,
+    "IEF": 106
+   }
+  },
+  {
+   "municipio": "CAPITAO ENEAS",
+   "total": 439,
+   "por_orgao": {
+    "SEMAD": 289,
+    "IEF": 150
+   }
+  },
+  {
+   "municipio": "LAGAMAR",
+   "total": 438,
+   "por_orgao": {
+    "SEMAD": 263,
+    "IEF": 175
+   }
+  },
+  {
+   "municipio": "MATIPO",
+   "total": 438,
+   "por_orgao": {
+    "SEMAD": 337,
+    "IEF": 101
+   }
+  },
+  {
+   "municipio": "BELO VALE",
+   "total": 436,
+   "por_orgao": {
+    "SEMAD": 307,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "JEQUITAI",
+   "total": 435,
+   "por_orgao": {
+    "SEMAD": 252,
+    "IEF": 183
+   }
+  },
+  {
+   "municipio": "CORONEL MURTA",
+   "total": 434,
+   "por_orgao": {
+    "SEMAD": 343,
+    "IEF": 91
+   }
+  },
+  {
+   "municipio": "SAO JOAQUIM DE BICAS",
+   "total": 433,
+   "por_orgao": {
+    "SEMAD": 237,
+    "IEF": 196
+   }
+  },
+  {
+   "municipio": "JURUAIA",
+   "total": 431,
+   "por_orgao": {
+    "SEMAD": 224,
+    "IEF": 207
+   }
+  },
+  {
+   "municipio": "RIO DO PRADO",
+   "total": 431,
+   "por_orgao": {
+    "SEMAD": 217,
+    "IEF": 214
+   }
+  },
+  {
+   "municipio": "MONTE SIAO",
+   "total": 430,
+   "por_orgao": {
+    "SEMAD": 235,
+    "IEF": 195
+   }
+  },
+  {
+   "municipio": "DIONISIO",
+   "total": 429,
+   "por_orgao": {
+    "SEMAD": 270,
+    "IEF": 159
+   }
+  },
+  {
+   "municipio": "JAPONVAR",
+   "total": 428,
+   "por_orgao": {
+    "SEMAD": 230,
+    "IEF": 198
+   }
+  },
+  {
+   "municipio": "POCO FUNDO",
+   "total": 426,
+   "por_orgao": {
+    "SEMAD": 258,
+    "IEF": 168
+   }
+  },
+  {
+   "municipio": "NOVA ERA",
+   "total": 424,
+   "por_orgao": {
+    "SEMAD": 213,
+    "IEF": 211
+   }
+  },
+  {
+   "municipio": "SARZEDO",
+   "total": 422,
+   "por_orgao": {
+    "SEMAD": 190,
+    "IEF": 232
+   }
+  },
+  {
+   "municipio": "BALDIM",
+   "total": 420,
+   "por_orgao": {
+    "SEMAD": 259,
+    "IEF": 161
+   }
+  },
+  {
+   "municipio": "FRANCA",
+   "total": 420,
+   "por_orgao": {
+    "IEF": 420
+   }
+  },
+  {
+   "municipio": "MONTALVANIA",
+   "total": 417,
+   "por_orgao": {
+    "SEMAD": 245,
+    "IEF": 172
+   }
+  },
+  {
+   "municipio": "DOM JOAQUIM",
+   "total": 413,
+   "por_orgao": {
+    "SEMAD": 305,
+    "IEF": 108
+   }
+  },
+  {
+   "municipio": "CONCEICAO DA APARECIDA",
+   "total": 409,
+   "por_orgao": {
+    "SEMAD": 226,
+    "IEF": 183
+   }
+  },
+  {
+   "municipio": "RIO CASCA",
+   "total": 408,
+   "por_orgao": {
+    "SEMAD": 292,
+    "IEF": 116
+   }
+  },
+  {
+   "municipio": "CATUJI",
+   "total": 407,
+   "por_orgao": {
+    "SEMAD": 210,
+    "IEF": 197
+   }
+  },
+  {
+   "municipio": "FERVEDOURO",
+   "total": 407,
+   "por_orgao": {
+    "SEMAD": 240,
+    "IEF": 167
+   }
+  },
+  {
+   "municipio": "GUARANESIA",
+   "total": 406,
+   "por_orgao": {
+    "SEMAD": 301,
+    "IEF": 105
+   }
+  },
+  {
+   "municipio": "SAPUCAI-MIRIM",
+   "total": 406,
+   "por_orgao": {
+    "SEMAD": 224,
+    "IEF": 182
+   }
+  },
+  {
+   "municipio": "ABRE CAMPO",
+   "total": 405,
+   "por_orgao": {
+    "SEMAD": 316,
+    "IEF": 89
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO AMPARO",
+   "total": 404,
+   "por_orgao": {
+    "SEMAD": 235,
+    "IEF": 169
+   }
+  },
+  {
+   "municipio": "LASSANCE",
+   "total": 403,
+   "por_orgao": {
+    "SEMAD": 281,
+    "IEF": 122
+   }
+  },
+  {
+   "municipio": "CAMACHO",
+   "total": 402,
+   "por_orgao": {
+    "SEMAD": 292,
+    "IEF": 110
+   }
+  },
+  {
+   "municipio": "ESTRELA DO SUL",
+   "total": 401,
+   "por_orgao": {
+    "SEMAD": 247,
+    "IEF": 154
+   }
+  },
+  {
+   "municipio": "PONTO DOS VOLANTES",
+   "total": 401,
+   "por_orgao": {
+    "SEMAD": 276,
+    "IEF": 125
+   }
+  },
+  {
+   "municipio": "DIVINO",
+   "total": 400,
+   "por_orgao": {
+    "SEMAD": 273,
+    "IEF": 127
+   }
+  },
+  {
+   "municipio": "CHAPADA DO NORTE",
+   "total": 399,
+   "por_orgao": {
+    "SEMAD": 294,
+    "IEF": 105
+   }
+  },
+  {
+   "municipio": "CARVALHOS",
+   "total": 398,
+   "por_orgao": {
+    "SEMAD": 114,
+    "IEF": 284
+   }
+  },
+  {
+   "municipio": "CRUZILIA",
+   "total": 397,
+   "por_orgao": {
+    "SEMAD": 193,
+    "IEF": 204
+   }
+  },
+  {
+   "municipio": "VERMELHO NOVO",
+   "total": 397,
+   "por_orgao": {
+    "SEMAD": 310,
+    "IEF": 87
+   }
+  },
+  {
+   "municipio": "SAO JOSE DA LAPA",
+   "total": 396,
+   "por_orgao": {
+    "SEMAD": 217,
+    "IEF": 179
+   }
+  },
+  {
+   "municipio": "ALTO JEQUITIBA",
+   "total": 394,
+   "por_orgao": {
+    "SEMAD": 264,
+    "IEF": 130
+   }
+  },
+  {
+   "municipio": "MARTINS SOARES",
+   "total": 394,
+   "por_orgao": {
+    "SEMAD": 269,
+    "IEF": 125
+   }
+  },
+  {
+   "municipio": "MERCES",
+   "total": 394,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 205
+   }
+  },
+  {
+   "municipio": "MONTE SANTO DE MINAS",
+   "total": 394,
+   "por_orgao": {
+    "SEMAD": 261,
+    "IEF": 133
+   }
+  },
+  {
+   "municipio": "CRISTALIA",
+   "total": 393,
+   "por_orgao": {
+    "SEMAD": 294,
+    "IEF": 99
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA DO TUGURIO",
+   "total": 393,
+   "por_orgao": {
+    "SEMAD": 171,
+    "IEF": 222
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO ITAMBE",
+   "total": 391,
+   "por_orgao": {
+    "SEMAD": 228,
+    "IEF": 163
+   }
+  },
+  {
+   "municipio": "MARIA DA FE",
+   "total": 390,
+   "por_orgao": {
+    "SEMAD": 230,
+    "IEF": 160
+   }
+  },
+  {
+   "municipio": "NAZARENO",
+   "total": 384,
+   "por_orgao": {
+    "SEMAD": 270,
+    "IEF": 114
+   }
+  },
+  {
+   "municipio": "ANTONIO CARLOS",
+   "total": 383,
+   "por_orgao": {
+    "SEMAD": 223,
+    "IEF": 160
+   }
+  },
+  {
+   "municipio": "BOTUMIRIM",
+   "total": 383,
+   "por_orgao": {
+    "SEMAD": 314,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "GAMELEIRAS",
+   "total": 382,
+   "por_orgao": {
+    "SEMAD": 220,
+    "IEF": 162
+   }
+  },
+  {
+   "municipio": "CIPOTANEA",
+   "total": 381,
+   "por_orgao": {
+    "SEMAD": 274,
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "CURRAL DE DENTRO",
+   "total": 381,
+   "por_orgao": {
+    "SEMAD": 157,
+    "IEF": 224
+   }
+  },
+  {
+   "municipio": "TEIXEIRAS",
+   "total": 380,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 178
+   }
+  },
+  {
+   "municipio": "BIQUINHAS",
+   "total": 378,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 130
+   }
+  },
+  {
+   "municipio": "DESTERRO DO MELO",
+   "total": 378,
+   "por_orgao": {
+    "SEMAD": 128,
+    "IEF": 250
+   }
+  },
+  {
+   "municipio": "FREI LAGONEGRO",
+   "total": 378,
+   "por_orgao": {
+    "SEMAD": 271,
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "VIRGINOPOLIS",
+   "total": 376,
+   "por_orgao": {
+    "SEMAD": 251,
+    "IEF": 125
+   }
+  },
+  {
+   "municipio": "MATO VERDE",
+   "total": 375,
+   "por_orgao": {
+    "SEMAD": 227,
+    "IEF": 148
+   }
+  },
+  {
+   "municipio": "DOM BOSCO",
+   "total": 373,
+   "por_orgao": {
+    "SEMAD": 192,
+    "IEF": 181
+   }
+  },
+  {
+   "municipio": "DIVISOPOLIS",
+   "total": 369,
+   "por_orgao": {
+    "SEMAD": 167,
+    "IEF": 202
+   }
+  },
+  {
+   "municipio": "BONITO DE MINAS",
+   "total": 368,
+   "por_orgao": {
+    "SEMAD": 293,
+    "IEF": 75
+   }
+  },
+  {
+   "municipio": "CACHOEIRA DE PAJEU",
+   "total": 368,
+   "por_orgao": {
+    "SEMAD": 246,
+    "IEF": 122
+   }
+  },
+  {
+   "municipio": "FELICIO DOS SANTOS",
+   "total": 368,
+   "por_orgao": {
+    "SEMAD": 261,
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA DO LESTE",
+   "total": 368,
+   "por_orgao": {
+    "SEMAD": 273,
+    "IEF": 95
+   }
+  },
+  {
+   "municipio": "CATAS ALTAS",
+   "total": 367,
+   "por_orgao": {
+    "SEMAD": 211,
+    "IEF": 156
+   }
+  },
+  {
+   "municipio": "ALTEROSA",
+   "total": 366,
+   "por_orgao": {
+    "SEMAD": 221,
+    "IEF": 145
+   }
+  },
+  {
+   "municipio": "CONGONHAL",
+   "total": 366,
+   "por_orgao": {
+    "SEMAD": 198,
+    "IEF": 168
+   }
+  },
+  {
+   "municipio": "MOEMA",
+   "total": 366,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 177
+   }
+  },
+  {
+   "municipio": "IPUIUNA",
+   "total": 365,
+   "por_orgao": {
+    "SEMAD": 201,
+    "IEF": 164
+   }
+  },
+  {
+   "municipio": "BOM REPOUSO",
+   "total": 364,
+   "por_orgao": {
+    "SEMAD": 142,
+    "IEF": 222
+   }
+  },
+  {
+   "municipio": "SALTO DA DIVISA",
+   "total": 364,
+   "por_orgao": {
+    "SEMAD": 213,
+    "IEF": 151
+   }
+  },
+  {
+   "municipio": "ENGENHEIRO NAVARRO",
+   "total": 363,
+   "por_orgao": {
+    "SEMAD": 203,
+    "IEF": 160
+   }
+  },
+  {
+   "municipio": "PADRE PARAISO",
+   "total": 363,
+   "por_orgao": {
+    "SEMAD": 211,
+    "IEF": 152
+   }
+  },
+  {
+   "municipio": "PERDIGAO",
+   "total": 363,
+   "por_orgao": {
+    "SEMAD": 282,
+    "IEF": 81
+   }
+  },
+  {
+   "municipio": "COROACI",
+   "total": 361,
+   "por_orgao": {
+    "SEMAD": 270,
+    "IEF": 91
+   }
+  },
+  {
+   "municipio": "PEDRA BONITA",
+   "total": 361,
+   "por_orgao": {
+    "SEMAD": 309,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "CARMO DA MATA",
+   "total": 360,
+   "por_orgao": {
+    "SEMAD": 239,
+    "IEF": 121
+   }
+  },
+  {
+   "municipio": "ATALEIA",
+   "total": 358,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 152
+   }
+  },
+  {
+   "municipio": "CABECEIRA GRANDE",
+   "total": 358,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 110
+   }
+  },
+  {
+   "municipio": "JAPARAIBA",
+   "total": 358,
+   "por_orgao": {
+    "SEMAD": 245,
+    "IEF": 113
+   }
+  },
+  {
+   "municipio": "BUENO BRANDAO",
+   "total": 357,
+   "por_orgao": {
+    "SEMAD": 203,
+    "IEF": 154
+   }
+  },
+  {
+   "municipio": "JEQUITIBA",
+   "total": 357,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 109
+   }
+  },
+  {
+   "municipio": "RIO ACIMA",
+   "total": 357,
+   "por_orgao": {
+    "SEMAD": 242,
+    "IEF": 115
+   }
+  },
+  {
+   "municipio": "BORDA DA MATA",
+   "total": 356,
+   "por_orgao": {
+    "SEMAD": 178,
+    "IEF": 178
+   }
+  },
+  {
+   "municipio": "PEDRAS DE MARIA DA CRUZ",
+   "total": 356,
+   "por_orgao": {
+    "SEMAD": 213,
+    "IEF": 143
+   }
+  },
+  {
+   "municipio": "DIOGO DE VASCONCELOS",
+   "total": 355,
+   "por_orgao": {
+    "SEMAD": 225,
+    "IEF": 130
+   }
+  },
+  {
+   "municipio": "TIRADENTES",
+   "total": 354,
+   "por_orgao": {
+    "SEMAD": 250,
+    "IEF": 104
+   }
+  },
+  {
+   "municipio": "CRISTINA",
+   "total": 353,
+   "por_orgao": {
+    "SEMAD": 145,
+    "IEF": 208
+   }
+  },
+  {
+   "municipio": "PALMOPOLIS",
+   "total": 353,
+   "por_orgao": {
+    "SEMAD": 204,
+    "IEF": 149
+   }
+  },
+  {
+   "municipio": "IBIRACI",
+   "total": 351,
+   "por_orgao": {
+    "SEMAD": 225,
+    "IEF": 126
+   }
+  },
+  {
+   "municipio": "MUNHOZ",
+   "total": 351,
+   "por_orgao": {
+    "SEMAD": 233,
+    "IEF": 118
+   }
+  },
+  {
+   "municipio": "URUANA DE MINAS",
+   "total": 351,
+   "por_orgao": {
+    "SEMAD": 149,
+    "IEF": 202
+   }
+  },
+  {
+   "municipio": "DESTERRO DE ENTRE RIOS",
+   "total": 350,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 161
+   }
+  },
+  {
+   "municipio": "ITAPEVA",
+   "total": 348,
+   "por_orgao": {
+    "SEMAD": 191,
+    "IEF": 157
+   }
+  },
+  {
+   "municipio": "MATIAS CARDOSO",
+   "total": 348,
+   "por_orgao": {
+    "SEMAD": 207,
+    "IEF": 141
+   }
+  },
+  {
+   "municipio": "CAMPANHA",
+   "total": 347,
+   "por_orgao": {
+    "SEMAD": 218,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "LAGOA DOS PATOS",
+   "total": 347,
+   "por_orgao": {
+    "SEMAD": 198,
+    "IEF": 149
+   }
+  },
+  {
+   "municipio": "BOTELHOS",
+   "total": 346,
+   "por_orgao": {
+    "SEMAD": 217,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "LIMEIRA DO OESTE",
+   "total": 345,
+   "por_orgao": {
+    "SEMAD": 259,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "PIRACEMA",
+   "total": 345,
+   "por_orgao": {
+    "SEMAD": 235,
+    "IEF": 110
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO OESTE",
+   "total": 345,
+   "por_orgao": {
+    "SEMAD": 276,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "MAR DE ESPANHA",
+   "total": 344,
+   "por_orgao": {
+    "SEMAD": 268,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "ROMARIA",
+   "total": 343,
+   "por_orgao": {
+    "SEMAD": 285,
+    "IEF": 58
+   }
+  },
+  {
+   "municipio": "INHAUMA",
+   "total": 342,
+   "por_orgao": {
+    "SEMAD": 245,
+    "IEF": 97
+   }
+  },
+  {
+   "municipio": "TOLEDO",
+   "total": 342,
+   "por_orgao": {
+    "SEMAD": 190,
+    "IEF": 152
+   }
+  },
+  {
+   "municipio": "FELISBURGO",
+   "total": 341,
+   "por_orgao": {
+    "SEMAD": 194,
+    "IEF": 147
+   }
+  },
+  {
+   "municipio": "SAO PEDRO DOS FERROS",
+   "total": 341,
+   "por_orgao": {
+    "SEMAD": 253,
+    "IEF": 88
+   }
+  },
+  {
+   "municipio": "CARNEIRINHO",
+   "total": 340,
+   "por_orgao": {
+    "SEMAD": 274,
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "VERDELANDIA",
+   "total": 339,
+   "por_orgao": {
+    "SEMAD": 224,
+    "IEF": 115
+   }
+  },
+  {
+   "municipio": "JECEABA",
+   "total": 337,
+   "por_orgao": {
+    "SEMAD": 130,
+    "IEF": 207
+   }
+  },
+  {
+   "municipio": "PIRAPETINGA",
+   "total": 335,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 133
+   }
+  },
+  {
+   "municipio": "SANTO HIPOLITO",
+   "total": 335,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 87
+   }
+  },
+  {
+   "municipio": "ITAPAGIPE",
+   "total": 334,
+   "por_orgao": {
+    "SEMAD": 223,
+    "IEF": 111
+   }
+  },
+  {
+   "municipio": "BANDEIRA",
+   "total": 333,
+   "por_orgao": {
+    "SEMAD": 183,
+    "IEF": 150
+   }
+  },
+  {
+   "municipio": "GUIMARANIA",
+   "total": 333,
+   "por_orgao": {
+    "SEMAD": 247,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "CAETANOPOLIS",
+   "total": 331,
+   "por_orgao": {
+    "SEMAD": 215,
+    "IEF": 116
+   }
+  },
+  {
+   "municipio": "CANAPOLIS",
+   "total": 331,
+   "por_orgao": {
+    "SEMAD": 245,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "CLARO DOS POCOES",
+   "total": 331,
+   "por_orgao": {
+    "SEMAD": 184,
+    "IEF": 147
+   }
+  },
+  {
+   "municipio": "INDIANOPOLIS",
+   "total": 331,
+   "por_orgao": {
+    "SEMAD": 292,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "REDUTO",
+   "total": 331,
+   "por_orgao": {
+    "SEMAD": 277,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "LAMIM",
+   "total": 330,
+   "por_orgao": {
+    "SEMAD": 154,
+    "IEF": 176
+   }
+  },
+  {
+   "municipio": "CANA VERDE",
+   "total": 326,
+   "por_orgao": {
+    "SEMAD": 259,
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "CACHOEIRA DE MINAS",
+   "total": 325,
+   "por_orgao": {
+    "SEMAD": 188,
+    "IEF": 137
+   }
+  },
+  {
+   "municipio": "SAO GONCALO DO PARA",
+   "total": 325,
+   "por_orgao": {
+    "SEMAD": 225,
+    "IEF": 100
+   }
+  },
+  {
+   "municipio": "GONCALVES",
+   "total": 323,
+   "por_orgao": {
+    "SEMAD": 188,
+    "IEF": 135
+   }
+  },
+  {
+   "municipio": "BARROSO",
+   "total": 320,
+   "por_orgao": {
+    "SEMAD": 181,
+    "IEF": 139
+   }
+  },
+  {
+   "municipio": "CAMPO FLORIDO",
+   "total": 320,
+   "por_orgao": {
+    "SEMAD": 256,
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "ITUMBIARA",
+   "total": 318,
+   "por_orgao": {
+    "IEF": 318
+   }
+  },
+  {
+   "municipio": "PEDRALVA",
+   "total": 317,
+   "por_orgao": {
+    "SEMAD": 195,
+    "IEF": 122
+   }
+  },
+  {
+   "municipio": "URUCANIA",
+   "total": 316,
+   "por_orgao": {
+    "SEMAD": 272,
+    "IEF": 44
+   }
+  },
+  {
+   "municipio": "PRADOS",
+   "total": 315,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 109
+   }
+  },
+  {
+   "municipio": "RESSAQUINHA",
+   "total": 314,
+   "por_orgao": {
+    "SEMAD": 166,
+    "IEF": 148
+   }
+  },
+  {
+   "municipio": "CAPUTIRA",
+   "total": 313,
+   "por_orgao": {
+    "SEMAD": 244,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "ITANHOMI",
+   "total": 312,
+   "por_orgao": {
+    "SEMAD": 252,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "SAO TOME DAS LETRAS",
+   "total": 312,
+   "por_orgao": {
+    "SEMAD": 216,
+    "IEF": 96
+   }
+  },
+  {
+   "municipio": "ALFREDO VASCONCELOS",
+   "total": 309,
+   "por_orgao": {
+    "SEMAD": 151,
+    "IEF": 158
+   }
+  },
+  {
+   "municipio": "SAO JOAO NEPOMUCENO",
+   "total": 309,
+   "por_orgao": {
+    "SEMAD": 216,
+    "IEF": 93
+   }
+  },
+  {
+   "municipio": "ALVORADA DE MINAS",
+   "total": 308,
+   "por_orgao": {
+    "SEMAD": 210,
+    "IEF": 98
+   }
+  },
+  {
+   "municipio": "LUISBURGO",
+   "total": 308,
+   "por_orgao": {
+    "SEMAD": 252,
+    "IEF": 56
+   }
+  },
+  {
+   "municipio": "SANTA RITA DE CALDAS",
+   "total": 308,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 119
+   }
+  },
+  {
+   "municipio": "GUIRICEMA",
+   "total": 305,
+   "por_orgao": {
+    "SEMAD": 176,
+    "IEF": 129
+   }
+  },
+  {
+   "municipio": "ITACAMBIRA",
+   "total": 305,
+   "por_orgao": {
+    "SEMAD": 244,
+    "IEF": 61
+   }
+  },
+  {
+   "municipio": "RUBIM",
+   "total": 305,
+   "por_orgao": {
+    "SEMAD": 134,
+    "IEF": 171
+   }
+  },
+  {
+   "municipio": "GALILEIA",
+   "total": 304,
+   "por_orgao": {
+    "SEMAD": 249,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "SOLEDADE DE MINAS",
+   "total": 304,
+   "por_orgao": {
+    "SEMAD": 186,
+    "IEF": 118
+   }
+  },
+  {
+   "municipio": "MATIAS BARBOSA",
+   "total": 303,
+   "por_orgao": {
+    "SEMAD": 246,
+    "IEF": 57
+   }
+  },
+  {
+   "municipio": "TARUMIRIM",
+   "total": 303,
+   "por_orgao": {
+    "SEMAD": 248,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "CRUCILANDIA",
+   "total": 301,
+   "por_orgao": {
+    "SEMAD": 152,
+    "IEF": 149
+   }
+  },
+  {
+   "municipio": "VIRGINIA",
+   "total": 301,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 176
+   }
+  },
+  {
+   "municipio": "COUTO DE MAGALHAES DE MINAS",
+   "total": 299,
+   "por_orgao": {
+    "SEMAD": 262,
+    "IEF": 37
+   }
+  },
+  {
+   "municipio": "CRISOLITA",
+   "total": 299,
+   "por_orgao": {
+    "SEMAD": 198,
+    "IEF": 101
+   }
+  },
+  {
+   "municipio": "GUIDOVAL",
+   "total": 297,
+   "por_orgao": {
+    "SEMAD": 199,
+    "IEF": 98
+   }
+  },
+  {
+   "municipio": "MIRAI",
+   "total": 296,
+   "por_orgao": {
+    "SEMAD": 226,
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "SAO JOAO DO MANHUACU",
+   "total": 295,
+   "por_orgao": {
+    "SEMAD": 222,
+    "IEF": 73
+   }
+  },
+  {
+   "municipio": "ITANHANDU",
+   "total": 294,
+   "por_orgao": {
+    "SEMAD": 183,
+    "IEF": 111
+   }
+  },
+  {
+   "municipio": "DOURADOQUARA",
+   "total": 293,
+   "por_orgao": {
+    "SEMAD": 231,
+    "IEF": 62
+   }
+  },
+  {
+   "municipio": "FUNILANDIA",
+   "total": 293,
+   "por_orgao": {
+    "SEMAD": 242,
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "JOANESIA",
+   "total": 293,
+   "por_orgao": {
+    "SEMAD": 237,
+    "IEF": 56
+   }
+  },
+  {
+   "municipio": "SENHORA DE OLIVEIRA",
+   "total": 293,
+   "por_orgao": {
+    "SEMAD": 172,
+    "IEF": 121
+   }
+  },
+  {
+   "municipio": "ENGENHEIRO CALDAS",
+   "total": 292,
+   "por_orgao": {
+    "SEMAD": 203,
+    "IEF": 89
+   }
+  },
+  {
+   "municipio": "RECREIO",
+   "total": 292,
+   "por_orgao": {
+    "SEMAD": 188,
+    "IEF": 104
+   }
+  },
+  {
+   "municipio": "ITAMBE DO MATO DENTRO",
+   "total": 291,
+   "por_orgao": {
+    "SEMAD": 165,
+    "IEF": 126
+   }
+  },
+  {
+   "municipio": "LUMINARIAS",
+   "total": 291,
+   "por_orgao": {
+    "SEMAD": 241,
+    "IEF": 50
+   }
+  },
+  {
+   "municipio": "PAULISTAS",
+   "total": 291,
+   "por_orgao": {
+    "SEMAD": 214,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "BERILO",
+   "total": 289,
+   "por_orgao": {
+    "SEMAD": 240,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "CONCEICAO DO RIO VERDE",
+   "total": 289,
+   "por_orgao": {
+    "SEMAD": 170,
+    "IEF": 119
+   }
+  },
+  {
+   "municipio": "JORDANIA",
+   "total": 289,
+   "por_orgao": {
+    "SEMAD": 128,
+    "IEF": 161
+   }
+  },
+  {
+   "municipio": "LEANDRO FERREIRA",
+   "total": 289,
+   "por_orgao": {
+    "SEMAD": 227,
+    "IEF": 62
+   }
+  },
+  {
+   "municipio": "DELFINOPOLIS",
+   "total": 288,
+   "por_orgao": {
+    "SEMAD": 219,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "SERRA AZUL DE MINAS",
+   "total": 288,
+   "por_orgao": {
+    "SEMAD": 179,
+    "IEF": 109
+   }
+  },
+  {
+   "municipio": "JURAMENTO",
+   "total": 287,
+   "por_orgao": {
+    "SEMAD": 264,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "LONTRA",
+   "total": 287,
+   "por_orgao": {
+    "SEMAD": 152,
+    "IEF": 135
+   }
+  },
+  {
+   "municipio": "VARGEM ALEGRE",
+   "total": 287,
+   "por_orgao": {
+    "SEMAD": 219,
+    "IEF": 68
+   }
+  },
+  {
+   "municipio": "PRESIDENTE BERNARDES",
+   "total": 286,
+   "por_orgao": {
+    "SEMAD": 203,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "AIURUOCA",
+   "total": 285,
+   "por_orgao": {
+    "SEMAD": 195,
+    "IEF": 90
+   }
+  },
+  {
+   "municipio": "BRASOPOLIS",
+   "total": 284,
+   "por_orgao": {
+    "SEMAD": 284
+   }
+  },
+  {
+   "municipio": "PIRANGUINHO",
+   "total": 284,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 78
+   }
+  },
+  {
+   "municipio": "RIACHO DOS MACHADOS",
+   "total": 283,
+   "por_orgao": {
+    "SEMAD": 180,
+    "IEF": 103
+   }
+  },
+  {
+   "municipio": "FRANCISCOPOLIS",
+   "total": 282,
+   "por_orgao": {
+    "SEMAD": 192,
+    "IEF": 90
+   }
+  },
+  {
+   "municipio": "MONTE BELO",
+   "total": 282,
+   "por_orgao": {
+    "SEMAD": 146,
+    "IEF": 136
+   }
+  },
+  {
+   "municipio": "PASSA QUATRO",
+   "total": 282,
+   "por_orgao": {
+    "SEMAD": 179,
+    "IEF": 103
+   }
+  },
+  {
+   "municipio": "CENTRALINA",
+   "total": 281,
+   "por_orgao": {
+    "SEMAD": 203,
+    "IEF": 78
+   }
+  },
+  {
+   "municipio": "IJACI",
+   "total": 281,
+   "por_orgao": {
+    "SEMAD": 233,
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "INDAIABIRA",
+   "total": 281,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 75
+   }
+  },
+  {
+   "municipio": "NOVA UNIAO",
+   "total": 280,
+   "por_orgao": {
+    "SEMAD": 147,
+    "IEF": 133
+   }
+  },
+  {
+   "municipio": "SAO JOAO DO PACUI",
+   "total": 277,
+   "por_orgao": {
+    "SEMAD": 213,
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "SAO JOSE DA BARRA",
+   "total": 275,
+   "por_orgao": {
+    "SEMAD": 169,
+    "IEF": 106
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO ANTA",
+   "total": 274,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 68
+   }
+  },
+  {
+   "municipio": "RIO POMBA",
+   "total": 273,
+   "por_orgao": {
+    "SEMAD": 150,
+    "IEF": 123
+   }
+  },
+  {
+   "municipio": "AREADO",
+   "total": 272,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "SENADOR FIRMINO",
+   "total": 272,
+   "por_orgao": {
+    "SEMAD": 158,
+    "IEF": 114
+   }
+  },
+  {
+   "municipio": "PAI PEDRO",
+   "total": 271,
+   "por_orgao": {
+    "SEMAD": 211,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO JACINTO",
+   "total": 271,
+   "por_orgao": {
+    "SEMAD": 93,
+    "IEF": 178
+   }
+  },
+  {
+   "municipio": "SERICITA",
+   "total": 270,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "CAMPO DO MEIO",
+   "total": 269,
+   "por_orgao": {
+    "SEMAD": 98,
+    "IEF": 171
+   }
+  },
+  {
+   "municipio": "MOEDA",
+   "total": 269,
+   "por_orgao": {
+    "SEMAD": 192,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "SAO JOAO BATISTA DO GLORIA",
+   "total": 269,
+   "por_orgao": {
+    "SEMAD": 136,
+    "IEF": 133
+   }
+  },
+  {
+   "municipio": "SAO TIAGO",
+   "total": 269,
+   "por_orgao": {
+    "SEMAD": 167,
+    "IEF": 102
+   }
+  },
+  {
+   "municipio": "VARGEM BONITA",
+   "total": 268,
+   "por_orgao": {
+    "SEMAD": 208,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "DATAS",
+   "total": 267,
+   "por_orgao": {
+    "SEMAD": 213,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "SAO VICENTE DE MINAS",
+   "total": 267,
+   "por_orgao": {
+    "SEMAD": 156,
+    "IEF": 111
+   }
+  },
+  {
+   "municipio": "INCONFIDENTES",
+   "total": 266,
+   "por_orgao": {
+    "SEMAD": 189,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "MACHACALIS",
+   "total": 266,
+   "por_orgao": {
+    "SEMAD": 126,
+    "IEF": 140
+   }
+  },
+  {
+   "municipio": "CARRANCAS",
+   "total": 265,
+   "por_orgao": {
+    "SEMAD": 156,
+    "IEF": 109
+   }
+  },
+  {
+   "municipio": "COQUEIRAL",
+   "total": 265,
+   "por_orgao": {
+    "SEMAD": 175,
+    "IEF": 90
+   }
+  },
+  {
+   "municipio": "ITUETA",
+   "total": 265,
+   "por_orgao": {
+    "SEMAD": 192,
+    "IEF": 73
+   }
+  },
+  {
+   "municipio": "BARRA LONGA",
+   "total": 264,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 58
+   }
+  },
+  {
+   "municipio": "FREI GASPAR",
+   "total": 264,
+   "por_orgao": {
+    "SEMAD": 149,
+    "IEF": 115
+   }
+  },
+  {
+   "municipio": "PRATAPOLIS",
+   "total": 264,
+   "por_orgao": {
+    "SEMAD": 139,
+    "IEF": 125
+   }
+  },
+  {
+   "municipio": "TAPARUBA",
+   "total": 264,
+   "por_orgao": {
+    "SEMAD": 226,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "PRUDENTE DE MORAIS",
+   "total": 263,
+   "por_orgao": {
+    "SEMAD": 111,
+    "IEF": 152
+   }
+  },
+  {
+   "municipio": "MESQUITA",
+   "total": 262,
+   "por_orgao": {
+    "SEMAD": 220,
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "PIEDADE DOS GERAIS",
+   "total": 262,
+   "por_orgao": {
+    "SEMAD": 110,
+    "IEF": 152
+   }
+  },
+  {
+   "municipio": "CAMBUQUIRA",
+   "total": 261,
+   "por_orgao": {
+    "SEMAD": 219,
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "CARMESIA",
+   "total": 261,
+   "por_orgao": {
+    "SEMAD": 190,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "ITAU DE MINAS",
+   "total": 261,
+   "por_orgao": {
+    "SEMAD": 154,
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "SANTA RITA DE MINAS",
+   "total": 260,
+   "por_orgao": {
+    "SEMAD": 220,
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "DIVISA ALEGRE",
+   "total": 258,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 177
+   }
+  },
+  {
+   "municipio": "MATERLANDIA",
+   "total": 258,
+   "por_orgao": {
+    "SEMAD": 187,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "SENHORA DO PORTO",
+   "total": 256,
+   "por_orgao": {
+    "SEMAD": 201,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "DELTA",
+   "total": 255,
+   "por_orgao": {
+    "SEMAD": 166,
+    "IEF": 89
+   }
+  },
+  {
+   "municipio": "DORES DE CAMPOS",
+   "total": 255,
+   "por_orgao": {
+    "SEMAD": 158,
+    "IEF": 97
+   }
+  },
+  {
+   "municipio": "INIMUTABA",
+   "total": 255,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "FORTUNA DE MINAS",
+   "total": 253,
+   "por_orgao": {
+    "SEMAD": 206,
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "ARAPONGA",
+   "total": 252,
+   "por_orgao": {
+    "SEMAD": 158,
+    "IEF": 94
+   }
+  },
+  {
+   "municipio": "BRAUNAS",
+   "total": 252,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 50
+   }
+  },
+  {
+   "municipio": "CAMPO AZUL",
+   "total": 252,
+   "por_orgao": {
+    "SEMAD": 157,
+    "IEF": 95
+   }
+  },
+  {
+   "municipio": "ITACARAMBI",
+   "total": 252,
+   "por_orgao": {
+    "SEMAD": 151,
+    "IEF": 101
+   }
+  },
+  {
+   "municipio": "MARIO CAMPOS",
+   "total": 252,
+   "por_orgao": {
+    "SEMAD": 128,
+    "IEF": 124
+   }
+  },
+  {
+   "municipio": "PONTO CHIQUE",
+   "total": 251,
+   "por_orgao": {
+    "SEMAD": 109,
+    "IEF": 142
+   }
+  },
+  {
+   "municipio": "TOCANTINS",
+   "total": 251,
+   "por_orgao": {
+    "SEMAD": 181,
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "SANTA RITA DO ITUETO",
+   "total": 249,
+   "por_orgao": {
+    "SEMAD": 195,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "ARAUJOS",
+   "total": 248,
+   "por_orgao": {
+    "SEMAD": 176,
+    "IEF": 72
+   }
+  },
+  {
+   "municipio": "CORREGO DANTA",
+   "total": 246,
+   "por_orgao": {
+    "SEMAD": 194,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "FRONTEIRA DOS VALES",
+   "total": 246,
+   "por_orgao": {
+    "SEMAD": 141,
+    "IEF": 105
+   }
+  },
+  {
+   "municipio": "GUARACIAMA",
+   "total": 246,
+   "por_orgao": {
+    "SEMAD": 147,
+    "IEF": 99
+   }
+  },
+  {
+   "municipio": "SAO JOSE DA VARGINHA",
+   "total": 246,
+   "por_orgao": {
+    "SEMAD": 147,
+    "IEF": 99
+   }
+  },
+  {
+   "municipio": "CAPARAO",
+   "total": 245,
+   "por_orgao": {
+    "SEMAD": 167,
+    "IEF": 78
+   }
+  },
+  {
+   "municipio": "IPIACU",
+   "total": 245,
+   "por_orgao": {
+    "SEMAD": 182,
+    "IEF": 63
+   }
+  },
+  {
+   "municipio": "DONA EUSEBIA",
+   "total": 244,
+   "por_orgao": {
+    "SEMAD": 143,
+    "IEF": 101
+   }
+  },
+  {
+   "municipio": "JAGUARACU",
+   "total": 244,
+   "por_orgao": {
+    "SEMAD": 224,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "PAVAO",
+   "total": 241,
+   "por_orgao": {
+    "SEMAD": 162,
+    "IEF": 79
+   }
+  },
+  {
+   "municipio": "RIBEIRAO PRETO",
+   "total": 241,
+   "por_orgao": {
+    "IEF": 241
+   }
+  },
+  {
+   "municipio": "RITAPOLIS",
+   "total": 241,
+   "por_orgao": {
+    "SEMAD": 165,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ DO ESCALVADO",
+   "total": 240,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "ASTOLFO DUTRA",
+   "total": 239,
+   "por_orgao": {
+    "SEMAD": 182,
+    "IEF": 57
+   }
+  },
+  {
+   "municipio": "BICAS",
+   "total": 239,
+   "por_orgao": {
+    "SEMAD": 142,
+    "IEF": 97
+   }
+  },
+  {
+   "municipio": "LEME DO PRADO",
+   "total": 237,
+   "por_orgao": {
+    "SEMAD": 194,
+    "IEF": 43
+   }
+  },
+  {
+   "municipio": "LUISLANDIA",
+   "total": 237,
+   "por_orgao": {
+    "SEMAD": 142,
+    "IEF": 95
+   }
+  },
+  {
+   "municipio": "PINGO-DAGUA",
+   "total": 237,
+   "por_orgao": {
+    "SEMAD": 190,
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "JOSE RAYDAN",
+   "total": 236,
+   "por_orgao": {
+    "SEMAD": 190,
+    "IEF": 46
+   }
+  },
+  {
+   "municipio": "MONTEZUMA",
+   "total": 236,
+   "por_orgao": {
+    "SEMAD": 160,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "DOM VICOSO",
+   "total": 235,
+   "por_orgao": {
+    "SEMAD": 122,
+    "IEF": 113
+   }
+  },
+  {
+   "municipio": "EWBANK DA CAMARA",
+   "total": 234,
+   "por_orgao": {
+    "SEMAD": 201,
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "JOSE GONCALVES DE MINAS",
+   "total": 234,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "ARCEBURGO",
+   "total": 233,
+   "por_orgao": {
+    "SEMAD": 163,
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "CONGONHAS DO NORTE",
+   "total": 232,
+   "por_orgao": {
+    "SEMAD": 156,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "IBERTIOGA",
+   "total": 232,
+   "por_orgao": {
+    "SEMAD": 112,
+    "IEF": 120
+   }
+  },
+  {
+   "municipio": "ONCA DE PITANGUI",
+   "total": 232,
+   "por_orgao": {
+    "SEMAD": 160,
+    "IEF": 72
+   }
+  },
+  {
+   "municipio": "POUSO ALTO",
+   "total": 231,
+   "por_orgao": {
+    "SEMAD": 161,
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "NOVA BELEM",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 176,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "RIBEIRAO VERMELHO",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 173,
+    "IEF": 57
+   }
+  },
+  {
+   "municipio": "SANTANA DO JACARE",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 183,
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "SAO DOMINGOS DAS DORES",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 175,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "SAO JOAO DO ORIENTE",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 192,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "TOMBOS",
+   "total": 230,
+   "por_orgao": {
+    "SEMAD": 151,
+    "IEF": 79
+   }
+  },
+  {
+   "municipio": "DIVINOLANDIA DE MINAS",
+   "total": 229,
+   "por_orgao": {
+    "SEMAD": 154,
+    "IEF": 75
+   }
+  },
+  {
+   "municipio": "ITUMIRIM",
+   "total": 229,
+   "por_orgao": {
+    "SEMAD": 162,
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "TURVOLANDIA",
+   "total": 229,
+   "por_orgao": {
+    "SEMAD": 143,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "BUGRE",
+   "total": 227,
+   "por_orgao": {
+    "SEMAD": 202,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "ALTO CAPARAO",
+   "total": 226,
+   "por_orgao": {
+    "SEMAD": 173,
+    "IEF": 53
+   }
+  },
+  {
+   "municipio": "CARMO DA CACHOEIRA",
+   "total": 226,
+   "por_orgao": {
+    "SEMAD": 155,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "CRUZEIRO DA FORTALEZA",
+   "total": 225,
+   "por_orgao": {
+    "SEMAD": 165,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "CORREGO NOVO",
+   "total": 224,
+   "por_orgao": {
+    "SEMAD": 169,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "SAO GONCALO DO RIO PRETO",
+   "total": 224,
+   "por_orgao": {
+    "SEMAD": 147,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "JUVENILIA",
+   "total": 223,
+   "por_orgao": {
+    "SEMAD": 146,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "DORES DE GUANHAES",
+   "total": 222,
+   "por_orgao": {
+    "SEMAD": 137,
+    "IEF": 85
+   }
+  },
+  {
+   "municipio": "PAULA CANDIDO",
+   "total": 222,
+   "por_orgao": {
+    "SEMAD": 146,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "SAO FRANCISCO DE PAULA",
+   "total": 222,
+   "por_orgao": {
+    "SEMAD": 135,
+    "IEF": 87
+   }
+  },
+  {
+   "municipio": "COMERCINHO",
+   "total": 221,
+   "por_orgao": {
+    "SEMAD": 95,
+    "IEF": 126
+   }
+  },
+  {
+   "municipio": "ITABIRINHA",
+   "total": 221,
+   "por_orgao": {
+    "SEMAD": 178,
+    "IEF": 43
+   }
+  },
+  {
+   "municipio": "BRAS PIRES",
+   "total": 220,
+   "por_orgao": {
+    "SEMAD": 114,
+    "IEF": 106
+   }
+  },
+  {
+   "municipio": "MONJOLOS",
+   "total": 220,
+   "por_orgao": {
+    "SEMAD": 137,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "PEDRINOPOLIS",
+   "total": 220,
+   "por_orgao": {
+    "SEMAD": 169,
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "RESENDE COSTA",
+   "total": 220,
+   "por_orgao": {
+    "SEMAD": 133,
+    "IEF": 87
+   }
+  },
+  {
+   "municipio": "SANTANA DOS MONTES",
+   "total": 220,
+   "por_orgao": {
+    "SEMAD": 107,
+    "IEF": 113
+   }
+  },
+  {
+   "municipio": "RIO DE JANEIRO",
+   "total": 218,
+   "por_orgao": {
+    "IEF": 218
+   }
+  },
+  {
+   "municipio": "DIVINESIA",
+   "total": 217,
+   "por_orgao": {
+    "SEMAD": 122,
+    "IEF": 95
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DA BELA VISTA",
+   "total": 217,
+   "por_orgao": {
+    "SEMAD": 176,
+    "IEF": 41
+   }
+  },
+  {
+   "municipio": "LARANJAL",
+   "total": 216,
+   "por_orgao": {
+    "SEMAD": 96,
+    "IEF": 120
+   }
+  },
+  {
+   "municipio": "MADRE DE DEUS DE MINAS",
+   "total": 216,
+   "por_orgao": {
+    "SEMAD": 133,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "SAO FRANCISCO DE SALES",
+   "total": 216,
+   "por_orgao": {
+    "SEMAD": 113,
+    "IEF": 103
+   }
+  },
+  {
+   "municipio": "SENADOR AMARAL",
+   "total": 215,
+   "por_orgao": {
+    "SEMAD": 131,
+    "IEF": 84
+   }
+  },
+  {
+   "municipio": "VITORIA DA CONQUISTA",
+   "total": 215,
+   "por_orgao": {
+    "IEF": 215
+   }
+  },
+  {
+   "municipio": "BRAZOPOLIS",
+   "total": 213,
+   "por_orgao": {
+    "IEF": 213
+   }
+  },
+  {
+   "municipio": "ENTRE FOLHAS",
+   "total": 213,
+   "por_orgao": {
+    "SEMAD": 167,
+    "IEF": 46
+   }
+  },
+  {
+   "municipio": "MAMONAS",
+   "total": 213,
+   "por_orgao": {
+    "SEMAD": 100,
+    "IEF": 113
+   }
+  },
+  {
+   "municipio": "ITUTINGA",
+   "total": 211,
+   "por_orgao": {
+    "SEMAD": 160,
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "NATALANDIA",
+   "total": 211,
+   "por_orgao": {
+    "SEMAD": 100,
+    "IEF": 111
+   }
+  },
+  {
+   "municipio": "PATIS",
+   "total": 211,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "CANTAGALO",
+   "total": 210,
+   "por_orgao": {
+    "SEMAD": 184,
+    "IEF": 26
+   }
+  },
+  {
+   "municipio": "OURO VERDE DE MINAS",
+   "total": 210,
+   "por_orgao": {
+    "SEMAD": 99,
+    "IEF": 111
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO MANTIMENTO",
+   "total": 210,
+   "por_orgao": {
+    "SEMAD": 178,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "QUARTEL GERAL",
+   "total": 207,
+   "por_orgao": {
+    "SEMAD": 176,
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "FLORESTAL",
+   "total": 206,
+   "por_orgao": {
+    "SEMAD": 128,
+    "IEF": 78
+   }
+  },
+  {
+   "municipio": "FRONTEIRA",
+   "total": 205,
+   "por_orgao": {
+    "SEMAD": 140,
+    "IEF": 65
+   }
+  },
+  {
+   "municipio": "ACAIACA",
+   "total": 204,
+   "por_orgao": {
+    "SEMAD": 129,
+    "IEF": 75
+   }
+  },
+  {
+   "municipio": "PEQUI",
+   "total": 204,
+   "por_orgao": {
+    "SEMAD": 127,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "VERISSIMO",
+   "total": 204,
+   "por_orgao": {
+    "SEMAD": 184,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "FREI INOCENCIO",
+   "total": 202,
+   "por_orgao": {
+    "SEMAD": 164,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "PERIQUITO",
+   "total": 202,
+   "por_orgao": {
+    "SEMAD": 133,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "SANTA RITA DO IBITIPOCA",
+   "total": 201,
+   "por_orgao": {
+    "SEMAD": 116,
+    "IEF": 85
+   }
+  },
+  {
+   "municipio": "AMPARO DA SERRA",
+   "total": 199,
+   "por_orgao": {
+    "SEMAD": 151,
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "DELFIM MOREIRA",
+   "total": 199,
+   "por_orgao": {
+    "SEMAD": 132,
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "BELA VISTA DE MINAS",
+   "total": 198,
+   "por_orgao": {
+    "SEMAD": 131,
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "PRATINHA",
+   "total": 198,
+   "por_orgao": {
+    "SEMAD": 145,
+    "IEF": 53
+   }
+  },
+  {
+   "municipio": "CASCALHO RICO",
+   "total": 196,
+   "por_orgao": {
+    "SEMAD": 126,
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "DORES DO TURVO",
+   "total": 196,
+   "por_orgao": {
+    "SEMAD": 113,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "MATA VERDE",
+   "total": 195,
+   "por_orgao": {
+    "SEMAD": 77,
+    "IEF": 118
+   }
+  },
+  {
+   "municipio": "ORIZANIA",
+   "total": 195,
+   "por_orgao": {
+    "SEMAD": 155,
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "SAO GERALDO",
+   "total": 195,
+   "por_orgao": {
+    "SEMAD": 137,
+    "IEF": 58
+   }
+  },
+  {
+   "municipio": "CORREGO DO BOM JESUS",
+   "total": 193,
+   "por_orgao": {
+    "SEMAD": 97,
+    "IEF": 96
+   }
+  },
+  {
+   "municipio": "SILVIANOPOLIS",
+   "total": 193,
+   "por_orgao": {
+    "SEMAD": 110,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "COIMBRA",
+   "total": 192,
+   "por_orgao": {
+    "SEMAD": 153,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "SANTA ROSA DA SERRA",
+   "total": 192,
+   "por_orgao": {
+    "SEMAD": 155,
+    "IEF": 37
+   }
+  },
+  {
+   "municipio": "JENIPAPO DE MINAS",
+   "total": 191,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "IBIRACATU",
+   "total": 190,
+   "por_orgao": {
+    "SEMAD": 101,
+    "IEF": 89
+   }
+  },
+  {
+   "municipio": "JACUI",
+   "total": 190,
+   "por_orgao": {
+    "SEMAD": 111,
+    "IEF": 79
+   }
+  },
+  {
+   "municipio": "SANTANA DO RIACHO",
+   "total": 190,
+   "por_orgao": {
+    "SEMAD": 136,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ DE MINAS",
+   "total": 189,
+   "por_orgao": {
+    "SEMAD": 66,
+    "IEF": 123
+   }
+  },
+  {
+   "municipio": "ARAPUA",
+   "total": 188,
+   "por_orgao": {
+    "SEMAD": 149,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "CONQUISTA",
+   "total": 188,
+   "por_orgao": {
+    "SEMAD": 136,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "RODEIRO",
+   "total": 187,
+   "por_orgao": {
+    "SEMAD": 123,
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "RUBELITA",
+   "total": 187,
+   "por_orgao": {
+    "SEMAD": 153,
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "DORESOPOLIS",
+   "total": 185,
+   "por_orgao": {
+    "SEMAD": 153,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "MIRADOURO",
+   "total": 183,
+   "por_orgao": {
+    "SEMAD": 97,
+    "IEF": 86
+   }
+  },
+  {
+   "municipio": "PRESIDENTE KUBITSCHEK",
+   "total": 182,
+   "por_orgao": {
+    "SEMAD": 130,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "VIEIRAS",
+   "total": 182,
+   "por_orgao": {
+    "SEMAD": 119,
+    "IEF": 63
+   }
+  },
+  {
+   "municipio": "EUGENOPOLIS",
+   "total": 181,
+   "por_orgao": {
+    "SEMAD": 110,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "MONTE FORMOSO",
+   "total": 181,
+   "por_orgao": {
+    "SEMAD": 104,
+    "IEF": 77
+   }
+  },
+  {
+   "municipio": "RAPOSOS",
+   "total": 180,
+   "por_orgao": {
+    "SEMAD": 96,
+    "IEF": 84
+   }
+  },
+  {
+   "municipio": "SAO MIGUEL DO ANTA",
+   "total": 180,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "SAO PEDRO DA UNIAO",
+   "total": 180,
+   "por_orgao": {
+    "SEMAD": 120,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "VARGEM GRANDE DO RIO PARDO",
+   "total": 180,
+   "por_orgao": {
+    "SEMAD": 97,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "CACHOEIRA DA PRATA",
+   "total": 178,
+   "por_orgao": {
+    "SEMAD": 102,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "CABO VERDE",
+   "total": 177,
+   "por_orgao": {
+    "SEMAD": 129,
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "GONZAGA",
+   "total": 176,
+   "por_orgao": {
+    "SEMAD": 140,
+    "IEF": 36
+   }
+  },
+  {
+   "municipio": "LIBERDADE",
+   "total": 176,
+   "por_orgao": {
+    "SEMAD": 98,
+    "IEF": 78
+   }
+  },
+  {
+   "municipio": "PALMA",
+   "total": 176,
+   "por_orgao": {
+    "SEMAD": 97,
+    "IEF": 79
+   }
+  },
+  {
+   "municipio": "BOM JESUS DA PENHA",
+   "total": 175,
+   "por_orgao": {
+    "SEMAD": 107,
+    "IEF": 68
+   }
+  },
+  {
+   "municipio": "ALPERCATA",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 151,
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "CAIANA",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 129,
+    "IEF": 44
+   }
+  },
+  {
+   "municipio": "CANAA",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 110,
+    "IEF": 63
+   }
+  },
+  {
+   "municipio": "CORONEL XAVIER CHAVES",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 146,
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "PASSABEM",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 85,
+    "IEF": 88
+   }
+  },
+  {
+   "municipio": "PIRANGUCU",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 140,
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO GOIABAL",
+   "total": 173,
+   "por_orgao": {
+    "SEMAD": 114,
+    "IEF": 59
+   }
+  },
+  {
+   "municipio": "PIEDADE DO RIO GRANDE",
+   "total": 172,
+   "por_orgao": {
+    "SEMAD": 103,
+    "IEF": 69
+   }
+  },
+  {
+   "municipio": "CAPELA NOVA",
+   "total": 169,
+   "por_orgao": {
+    "SEMAD": 87,
+    "IEF": 82
+   }
+  },
+  {
+   "municipio": "CAPITAO ANDRADE",
+   "total": 169,
+   "por_orgao": {
+    "SEMAD": 118,
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "CAPIM BRANCO",
+   "total": 168,
+   "por_orgao": {
+    "SEMAD": 85,
+    "IEF": 83
+   }
+  },
+  {
+   "municipio": "PIRAUBA",
+   "total": 167,
+   "por_orgao": {
+    "SEMAD": 146,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "TUMIRITINGA",
+   "total": 167,
+   "por_orgao": {
+    "SEMAD": 126,
+    "IEF": 41
+   }
+  },
+  {
+   "municipio": "BOCAINA DE MINAS",
+   "total": 166,
+   "por_orgao": {
+    "SEMAD": 137,
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "FORMOSA",
+   "total": 166,
+   "por_orgao": {
+    "IEF": 166
+   }
+  },
+  {
+   "municipio": "DOM CAVATI",
+   "total": 165,
+   "por_orgao": {
+    "SEMAD": 133,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "NINHEIRA",
+   "total": 165,
+   "por_orgao": {
+    "SEMAD": 101,
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "SERRA DOS AIMORES",
+   "total": 163,
+   "por_orgao": {
+    "SEMAD": 92,
+    "IEF": 71
+   }
+  },
+  {
+   "municipio": "CAMPINAS",
+   "total": 162,
+   "por_orgao": {
+    "IEF": 162
+   }
+  },
+  {
+   "municipio": "NOVA PORTEIRINHA",
+   "total": 162,
+   "por_orgao": {
+    "SEMAD": 120,
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "RIO PRETO",
+   "total": 162,
+   "por_orgao": {
+    "SEMAD": 134,
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO RIO ABAIXO",
+   "total": 162,
+   "por_orgao": {
+    "SEMAD": 94,
+    "IEF": 68
+   }
+  },
+  {
+   "municipio": "SARDOA",
+   "total": 162,
+   "por_orgao": {
+    "SEMAD": 131,
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "PATROCINIO DO MURIAE",
+   "total": 161,
+   "por_orgao": {
+    "SEMAD": 111,
+    "IEF": 50
+   }
+  },
+  {
+   "municipio": "VOLTA GRANDE",
+   "total": 161,
+   "por_orgao": {
+    "SEMAD": 95,
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "FRANCISCO BADARO",
+   "total": 160,
+   "por_orgao": {
+    "SEMAD": 94,
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "DIVINO DAS LARANJEIRAS",
+   "total": 159,
+   "por_orgao": {
+    "SEMAD": 124,
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "CAREACU",
+   "total": 158,
+   "por_orgao": {
+    "SEMAD": 118,
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO GRAMA",
+   "total": 158,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "RIO NOVO",
+   "total": 157,
+   "por_orgao": {
+    "SEMAD": 102,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "SAO JOAO DO MANTENINHA",
+   "total": 156,
+   "por_orgao": {
+    "SEMAD": 125,
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "CONEGO MARINHO",
+   "total": 155,
+   "por_orgao": {
+    "SEMAD": 106,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "AGUA COMPRIDA",
+   "total": 153,
+   "por_orgao": {
+    "SEMAD": 130,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "BERIZAL",
+   "total": 153,
+   "por_orgao": {
+    "SEMAD": 74,
+    "IEF": 79
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA DO MONTE VERDE",
+   "total": 153,
+   "por_orgao": {
+    "SEMAD": 120,
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "SERRANOPOLIS DE MINAS",
+   "total": 153,
+   "por_orgao": {
+    "SEMAD": 121,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "MATUTINA",
+   "total": 151,
+   "por_orgao": {
+    "SEMAD": 110,
+    "IEF": 41
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO RETIRO",
+   "total": 151,
+   "por_orgao": {
+    "SEMAD": 102,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "SAO FRANCISCO DO GLORIA",
+   "total": 150,
+   "por_orgao": {
+    "SEMAD": 104,
+    "IEF": 46
+   }
+  },
+  {
+   "municipio": "MEDEIROS",
+   "total": 148,
+   "por_orgao": {
+    "SEMAD": 116,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "CARANAIBA",
+   "total": 147,
+   "por_orgao": {
+    "SEMAD": 50,
+    "IEF": 97
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO AVENTUREIRO",
+   "total": 146,
+   "por_orgao": {
+    "SEMAD": 93,
+    "IEF": 53
+   }
+  },
+  {
+   "municipio": "MENDES PIMENTEL",
+   "total": 145,
+   "por_orgao": {
+    "SEMAD": 116,
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "NATERCIA",
+   "total": 144,
+   "por_orgao": {
+    "SEMAD": 68,
+    "IEF": 76
+   }
+  },
+  {
+   "municipio": "UNIAO DE MINAS",
+   "total": 144,
+   "por_orgao": {
+    "SEMAD": 100,
+    "IEF": 44
+   }
+  },
+  {
+   "municipio": "PIRAJUBA",
+   "total": 143,
+   "por_orgao": {
+    "SEMAD": 122,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "CATALAO",
+   "total": 142,
+   "por_orgao": {
+    "IEF": 142
+   }
+  },
+  {
+   "municipio": "FORTALEZA DE MINAS",
+   "total": 142,
+   "por_orgao": {
+    "SEMAD": 68,
+    "IEF": 74
+   }
+  },
+  {
+   "municipio": "SAO JOSE DOS CAMPOS",
+   "total": 141,
+   "por_orgao": {
+    "IEF": 141
+   }
+  },
+  {
+   "municipio": "CRISTIANO OTONI",
+   "total": 140,
+   "por_orgao": {
+    "SEMAD": 91,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "INGAI",
+   "total": 139,
+   "por_orgao": {
+    "SEMAD": 120,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "VIRGOLANDIA",
+   "total": 139,
+   "por_orgao": {
+    "SEMAD": 103,
+    "IEF": 36
+   }
+  },
+  {
+   "municipio": "BIAS FORTES",
+   "total": 138,
+   "por_orgao": {
+    "SEMAD": 82,
+    "IEF": 56
+   }
+  },
+  {
+   "municipio": "COMENDADOR GOMES",
+   "total": 138,
+   "por_orgao": {
+    "SEMAD": 106,
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "GUARANI",
+   "total": 138,
+   "por_orgao": {
+    "SEMAD": 99,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "TAPIRAI",
+   "total": 137,
+   "por_orgao": {
+    "SEMAD": 102,
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "CENTRAL DE MINAS",
+   "total": 136,
+   "por_orgao": {
+    "SEMAD": 111,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO ALEGRE",
+   "total": 133,
+   "por_orgao": {
+    "SEMAD": 85,
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "HELIODORA",
+   "total": 132,
+   "por_orgao": {
+    "SEMAD": 67,
+    "IEF": 65
+   }
+  },
+  {
+   "municipio": "CARVALHOPOLIS",
+   "total": 131,
+   "por_orgao": {
+    "SEMAD": 59,
+    "IEF": 72
+   }
+  },
+  {
+   "municipio": "CAPETINGA",
+   "total": 129,
+   "por_orgao": {
+    "SEMAD": 78,
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "JESUANIA",
+   "total": 128,
+   "por_orgao": {
+    "SEMAD": 78,
+    "IEF": 50
+   }
+  },
+  {
+   "municipio": "SANTANA DO GARAMBEU",
+   "total": 128,
+   "por_orgao": {
+    "SEMAD": 93,
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "ARANTINA",
+   "total": 127,
+   "por_orgao": {
+    "SEMAD": 82,
+    "IEF": 45
+   }
+  },
+  {
+   "municipio": "MONSENHOR PAULO",
+   "total": 127,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 46
+   }
+  },
+  {
+   "municipio": "CONFINS",
+   "total": 126,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 45
+   }
+  },
+  {
+   "municipio": "SAO JOSE DA SAFIRA",
+   "total": 126,
+   "por_orgao": {
+    "SEMAD": 107,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "FARIA LEMOS",
+   "total": 125,
+   "por_orgao": {
+    "SEMAD": 94,
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "ITAMARATI DE MINAS",
+   "total": 125,
+   "por_orgao": {
+    "SEMAD": 86,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "MORRO DA GARCA",
+   "total": 125,
+   "por_orgao": {
+    "SEMAD": 100,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "ITAMOGI",
+   "total": 124,
+   "por_orgao": {
+    "SEMAD": 69,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "IBITURUNA",
+   "total": 123,
+   "por_orgao": {
+    "SEMAD": 101,
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO RIO PRETO",
+   "total": 123,
+   "por_orgao": {
+    "SEMAD": 69,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "SILVEIRANIA",
+   "total": 123,
+   "por_orgao": {
+    "SEMAD": 80,
+    "IEF": 43
+   }
+  },
+  {
+   "municipio": "BERTOPOLIS",
+   "total": 122,
+   "por_orgao": {
+    "SEMAD": 74,
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "TABULEIRO",
+   "total": 122,
+   "por_orgao": {
+    "SEMAD": 82,
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "ESPIRITO SANTO DO DOURADO",
+   "total": 121,
+   "por_orgao": {
+    "SEMAD": 92,
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "BANDEIRA DO SUL",
+   "total": 120,
+   "por_orgao": {
+    "SEMAD": 67,
+    "IEF": 53
+   }
+  },
+  {
+   "municipio": "PASSA VINTE",
+   "total": 120,
+   "por_orgao": {
+    "SEMAD": 73,
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "DOM SILVERIO",
+   "total": 119,
+   "por_orgao": {
+    "SEMAD": 100,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "SANTA HELENA DE MINAS",
+   "total": 119,
+   "por_orgao": {
+    "SEMAD": 67,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "CHIADOR",
+   "total": 118,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 37
+   }
+  },
+  {
+   "municipio": "GRUPIARA",
+   "total": 118,
+   "por_orgao": {
+    "SEMAD": 78,
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "SAO GERALDO DO BAIXIO",
+   "total": 118,
+   "por_orgao": {
+    "SEMAD": 95,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "NAQUE",
+   "total": 117,
+   "por_orgao": {
+    "SEMAD": 87,
+    "IEF": 30
+   }
+  },
+  {
+   "municipio": "CEDRO DO ABAETE",
+   "total": 116,
+   "por_orgao": {
+    "SEMAD": 64,
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "ESTRELA DO INDAIA",
+   "total": 116,
+   "por_orgao": {
+    "SEMAD": 91,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "ORATORIOS",
+   "total": 116,
+   "por_orgao": {
+    "SEMAD": 102,
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "CONCEICAO DAS PEDRAS",
+   "total": 114,
+   "por_orgao": {
+    "SEMAD": 60,
+    "IEF": 54
+   }
+  },
+  {
+   "municipio": "IBITIURA DE MINAS",
+   "total": 110,
+   "por_orgao": {
+    "SEMAD": 61,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "CACHOEIRA DOURADA",
+   "total": 109,
+   "por_orgao": {
+    "SEMAD": 78,
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "ALVARENGA",
+   "total": 107,
+   "por_orgao": {
+    "SEMAD": 77,
+    "IEF": 30
+   }
+  },
+  {
+   "municipio": "BARRETOS",
+   "total": 107,
+   "por_orgao": {
+    "IEF": 107
+   }
+  },
+  {
+   "municipio": "CONCEICAO DA BARRA DE MINAS",
+   "total": 107,
+   "por_orgao": {
+    "SEMAD": 52,
+    "IEF": 55
+   }
+  },
+  {
+   "municipio": "CAMPANARIO",
+   "total": 106,
+   "por_orgao": {
+    "SEMAD": 90,
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "SEM PEIXE",
+   "total": 106,
+   "por_orgao": {
+    "SEMAD": 71,
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "DESCOBERTO",
+   "total": 105,
+   "por_orgao": {
+    "SEMAD": 80,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "ALAGOA",
+   "total": 104,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "CONSOLACAO",
+   "total": 104,
+   "por_orgao": {
+    "SEMAD": 66,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "OLIVEIRA FORTES",
+   "total": 104,
+   "por_orgao": {
+    "SEMAD": 77,
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "SERRANOS",
+   "total": 104,
+   "por_orgao": {
+    "SEMAD": 54,
+    "IEF": 50
+   }
+  },
+  {
+   "municipio": "ARACAI",
+   "total": 102,
+   "por_orgao": {
+    "SEMAD": 79,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "NOVA MODICA",
+   "total": 101,
+   "por_orgao": {
+    "SEMAD": 81,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "ESTRELA DALVA",
+   "total": 100,
+   "por_orgao": {
+    "SEMAD": 66,
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "MIRAVANIA",
+   "total": 100,
+   "por_orgao": {
+    "SEMAD": 51,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "NOVORIZONTE",
+   "total": 100,
+   "por_orgao": {
+    "SEMAD": 62,
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "SERRANIA",
+   "total": 100,
+   "por_orgao": {
+    "SEMAD": 64,
+    "IEF": 36
+   }
+  },
+  {
+   "municipio": "TOCOS DO MOJI",
+   "total": 100,
+   "por_orgao": {
+    "SEMAD": 33,
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "CLARAVAL",
+   "total": 98,
+   "por_orgao": {
+    "SEMAD": 90,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "MARIPA DE MINAS",
+   "total": 98,
+   "por_orgao": {
+    "SEMAD": 64,
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "PIEDADE DE PONTE NOVA",
+   "total": 98,
+   "por_orgao": {
+    "SEMAD": 85,
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "SANTANA DA VARGEM",
+   "total": 98,
+   "por_orgao": {
+    "SEMAD": 69,
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "JAMPRUCA",
+   "total": 97,
+   "por_orgao": {
+    "SEMAD": 72,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ DE SALINAS",
+   "total": 97,
+   "por_orgao": {
+    "SEMAD": 89,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "CATUTI",
+   "total": 96,
+   "por_orgao": {
+    "SEMAD": 77,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "SANTA RITA DE JACUTINGA",
+   "total": 96,
+   "por_orgao": {
+    "SEMAD": 76,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "SAO BRAS DO SUACUI",
+   "total": 95,
+   "por_orgao": {
+    "SEMAD": 46,
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "CAJURI",
+   "total": 94,
+   "por_orgao": {
+    "SEMAD": 72,
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "ROSARIO DA LIMEIRA",
+   "total": 94,
+   "por_orgao": {
+    "SEMAD": 60,
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "SIMAO PEREIRA",
+   "total": 94,
+   "por_orgao": {
+    "SEMAD": 73,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "SANTA EFIGENIA DE MINAS",
+   "total": 93,
+   "por_orgao": {
+    "SEMAD": 77,
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "CASA GRANDE",
+   "total": 91,
+   "por_orgao": {
+    "SEMAD": 31,
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "CUPARAQUE",
+   "total": 91,
+   "por_orgao": {
+    "SEMAD": 63,
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DA VARGEM ALEGRE",
+   "total": 90,
+   "por_orgao": {
+    "SEMAD": 66,
+    "IEF": 24
+   }
+  },
+  {
+   "municipio": "SOBRALIA",
+   "total": 90,
+   "por_orgao": {
+    "SEMAD": 67,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "ALBERTINA",
+   "total": 89,
+   "por_orgao": {
+    "SEMAD": 48,
+    "IEF": 41
+   }
+  },
+  {
+   "municipio": "PAIVA",
+   "total": 89,
+   "por_orgao": {
+    "SEMAD": 78,
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "QUELUZITO",
+   "total": 89,
+   "por_orgao": {
+    "SEMAD": 54,
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "SAO FELIX DE MINAS",
+   "total": 88,
+   "por_orgao": {
+    "SEMAD": 73,
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "CHACARA",
+   "total": 87,
+   "por_orgao": {
+    "SEMAD": 79,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "JOSENOPOLIS",
+   "total": 87,
+   "por_orgao": {
+    "SEMAD": 75,
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "SENADOR JOSE BENTO",
+   "total": 87,
+   "por_orgao": {
+    "SEMAD": 54,
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "BARAO DE MONTE ALTO",
+   "total": 86,
+   "por_orgao": {
+    "SEMAD": 43,
+    "IEF": 43
+   }
+  },
+  {
+   "municipio": "SAO TOMAS DE AQUINO",
+   "total": 85,
+   "por_orgao": {
+    "SEMAD": 56,
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "SERITINGA",
+   "total": 84,
+   "por_orgao": {
+    "SEMAD": 40,
+    "IEF": 44
+   }
+  },
+  {
+   "municipio": "PESCADOR",
+   "total": 82,
+   "por_orgao": {
+    "SEMAD": 40,
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "MINDURI",
+   "total": 81,
+   "por_orgao": {
+    "SEMAD": 42,
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "SANTANA DE CATAGUASES",
+   "total": 81,
+   "por_orgao": {
+    "SEMAD": 67,
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "GOIABEIRA",
+   "total": 80,
+   "por_orgao": {
+    "SEMAD": 61,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "PEDRA DO ANTA",
+   "total": 79,
+   "por_orgao": {
+    "SEMAD": 58,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "PEQUERI",
+   "total": 79,
+   "por_orgao": {
+    "SEMAD": 63,
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "SERRA DA SAUDADE",
+   "total": 79,
+   "por_orgao": {
+    "SEMAD": 73,
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "MARILAC",
+   "total": 78,
+   "por_orgao": {
+    "SEMAD": 61,
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "SAO JOAO DAS MISSOES",
+   "total": 78,
+   "por_orgao": {
+    "SEMAD": 50,
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "FAMA",
+   "total": 77,
+   "por_orgao": {
+    "SEMAD": 62,
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "SAO BENTO ABADE",
+   "total": 77,
+   "por_orgao": {
+    "SEMAD": 49,
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "BELMIRO BRAGA",
+   "total": 75,
+   "por_orgao": {
+    "SEMAD": 52,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "RIO DOCE",
+   "total": 75,
+   "por_orgao": {
+    "SEMAD": 65,
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "GLAUCILANDIA",
+   "total": 74,
+   "por_orgao": {
+    "SEMAD": 47,
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "GUARARA",
+   "total": 74,
+   "por_orgao": {
+    "SEMAD": 51,
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "WENCESLAU BRAZ",
+   "total": 74,
+   "por_orgao": {
+    "SEMAD": 55,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "GOIANA",
+   "total": 73,
+   "por_orgao": {
+    "SEMAD": 59,
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO DIVINO",
+   "total": 72,
+   "por_orgao": {
+    "SEMAD": 47,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "PEDRO TEIXEIRA",
+   "total": 71,
+   "por_orgao": {
+    "SEMAD": 64,
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "CORDISLANDIA",
+   "total": 70,
+   "por_orgao": {
+    "SEMAD": 43,
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "GUARULHOS",
+   "total": 70,
+   "por_orgao": {
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "SAO BERNARDO DO CAMPO",
+   "total": 70,
+   "por_orgao": {
+    "IEF": 70
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DO RIO VERDE",
+   "total": 70,
+   "por_orgao": {
+    "SEMAD": 48,
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "FRUTA DE LEITE",
+   "total": 69,
+   "por_orgao": {
+    "SEMAD": 56,
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "SAO JOAO DA MATA",
+   "total": 69,
+   "por_orgao": {
+    "SEMAD": 52,
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "SENADOR CORTES",
+   "total": 69,
+   "por_orgao": {
+    "SEMAD": 49,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "IGARAPAVA",
+   "total": 68,
+   "por_orgao": {
+    "IEF": 68
+   }
+  },
+  {
+   "municipio": "SAO SIMAO",
+   "total": 67,
+   "por_orgao": {
+    "IEF": 67
+   }
+  },
+  {
+   "municipio": "BATATAIS",
+   "total": 66,
+   "por_orgao": {
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "GOIANIA",
+   "total": 66,
+   "por_orgao": {
+    "IEF": 66
+   }
+  },
+  {
+   "municipio": "SAO GERALDO DA PIEDADE",
+   "total": 66,
+   "por_orgao": {
+    "SEMAD": 42,
+    "IEF": 24
+   }
+  },
+  {
+   "municipio": "BAIXO GUANDU",
+   "total": 64,
+   "por_orgao": {
+    "IEF": 64
+   }
+  },
+  {
+   "municipio": "PEDRA DOURADA",
+   "total": 63,
+   "por_orgao": {
+    "SEMAD": 41,
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "ARACITABA",
+   "total": 62,
+   "por_orgao": {
+    "SEMAD": 37,
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "CARINHANHA",
+   "total": 62,
+   "por_orgao": {
+    "IEF": 62
+   }
+  },
+  {
+   "municipio": "MARMELOPOLIS",
+   "total": 62,
+   "por_orgao": {
+    "SEMAD": 43,
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "SANTO ANDRE",
+   "total": 62,
+   "por_orgao": {
+    "IEF": 62
+   }
+  },
+  {
+   "municipio": "ARGIRITA",
+   "total": 61,
+   "por_orgao": {
+    "SEMAD": 40,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "CRISTALINA",
+   "total": 61,
+   "por_orgao": {
+    "IEF": 61
+   }
+  },
+  {
+   "municipio": "CURITIBA",
+   "total": 61,
+   "por_orgao": {
+    "IEF": 61
+   }
+  },
+  {
+   "municipio": "DIVISA NOVA",
+   "total": 61,
+   "por_orgao": {
+    "SEMAD": 41,
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "FERNANDES TOURINHO",
+   "total": 61,
+   "por_orgao": {
+    "SEMAD": 45,
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "PIAU",
+   "total": 61,
+   "por_orgao": {
+    "SEMAD": 40,
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "OLARIA",
+   "total": 60,
+   "por_orgao": {
+    "SEMAD": 51,
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO RIO PRETO",
+   "total": 60,
+   "por_orgao": {
+    "IEF": 60
+   }
+  },
+  {
+   "municipio": "OLIMPIO NORONHA",
+   "total": 58,
+   "por_orgao": {
+    "SEMAD": 50,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "TEIXEIRA DE FREITAS",
+   "total": 57,
+   "por_orgao": {
+    "IEF": 57
+   }
+  },
+  {
+   "municipio": "UMBURATIBA",
+   "total": 57,
+   "por_orgao": {
+    "SEMAD": 45,
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "ROCHEDO DE MINAS",
+   "total": 56,
+   "por_orgao": {
+    "SEMAD": 38,
+    "IEF": 18
+   }
+  },
+  {
+   "municipio": "NACIP RAYDAN",
+   "total": 55,
+   "por_orgao": {
+    "SEMAD": 49,
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "MOCOCA",
+   "total": 52,
+   "por_orgao": {
+    "IEF": 52
+   }
+  },
+  {
+   "municipio": "PADRE CARVALHO",
+   "total": 52,
+   "por_orgao": {
+    "SEMAD": 44,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "MUCURI",
+   "total": 51,
+   "por_orgao": {
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "SERTAOZINHO",
+   "total": 51,
+   "por_orgao": {
+    "IEF": 51
+   }
+  },
+  {
+   "municipio": "BRAGANCA PAULISTA",
+   "total": 49,
+   "por_orgao": {
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "ITUVERAVA",
+   "total": 49,
+   "por_orgao": {
+    "IEF": 49
+   }
+  },
+  {
+   "municipio": "COLOMBIA",
+   "total": 48,
+   "por_orgao": {
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "CORONEL PACHECO",
+   "total": 48,
+   "por_orgao": {
+    "SEMAD": 41,
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "LIMEIRA",
+   "total": 48,
+   "por_orgao": {
+    "IEF": 48
+   }
+  },
+  {
+   "municipio": "GUANAMBI",
+   "total": 47,
+   "por_orgao": {
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "MACEIO",
+   "total": 47,
+   "por_orgao": {
+    "IEF": 47
+   }
+  },
+  {
+   "municipio": "FERNANDOPOLIS",
+   "total": 45,
+   "por_orgao": {
+    "IEF": 45
+   }
+  },
+  {
+   "municipio": "ITAPIRA",
+   "total": 42,
+   "por_orgao": {
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "JALES",
+   "total": 42,
+   "por_orgao": {
+    "IEF": 42
+   }
+  },
+  {
+   "municipio": "JUNDIAI",
+   "total": 40,
+   "por_orgao": {
+    "IEF": 40
+   }
+  },
+  {
+   "municipio": "SANTANA DO DESERTO",
+   "total": 39,
+   "por_orgao": {
+    "SEMAD": 31,
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "VITORIA",
+   "total": 39,
+   "por_orgao": {
+    "IEF": 39
+   }
+  },
+  {
+   "municipio": "OUROESTE",
+   "total": 38,
+   "por_orgao": {
+    "IEF": 38
+   }
+  },
+  {
+   "municipio": "LUZIANIA",
+   "total": 37,
+   "por_orgao": {
+    "IEF": 37
+   }
+  },
+  {
+   "municipio": "MATHIAS LOBATO",
+   "total": 37,
+   "por_orgao": {
+    "SEMAD": 30,
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "GUAIRA",
+   "total": 36,
+   "por_orgao": {
+    "IEF": 36
+   }
+  },
+  {
+   "municipio": "PETROPOLIS",
+   "total": 36,
+   "por_orgao": {
+    "IEF": 36
+   }
+  },
+  {
+   "municipio": "ENCRUZILHADA",
+   "total": 35,
+   "por_orgao": {
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "EUNAPOLIS",
+   "total": 35,
+   "por_orgao": {
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "SAO JOAQUIM DA BARRA",
+   "total": 35,
+   "por_orgao": {
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "SOCORRO",
+   "total": 35,
+   "por_orgao": {
+    "IEF": 35
+   }
+  },
+  {
+   "municipio": "BARRA DE SAO FRANCISCO",
+   "total": 34,
+   "por_orgao": {
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "SERRA",
+   "total": 34,
+   "por_orgao": {
+    "IEF": 34
+   }
+  },
+  {
+   "municipio": "SAO JOSE DOS PINHAIS",
+   "total": 33,
+   "por_orgao": {
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "VALPARAISO DE GOIAS",
+   "total": 33,
+   "por_orgao": {
+    "IEF": 33
+   }
+  },
+  {
+   "municipio": "ALTINOPOLIS",
+   "total": 32,
+   "por_orgao": {
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "JOAO NEIVA",
+   "total": 32,
+   "por_orgao": {
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "VILA VELHA",
+   "total": 32,
+   "por_orgao": {
+    "IEF": 32
+   }
+  },
+  {
+   "municipio": "OSASCO",
+   "total": 31,
+   "por_orgao": {
+    "IEF": 31
+   }
+  },
+  {
+   "municipio": "BARRA MANSA",
+   "total": 30,
+   "por_orgao": {
+    "IEF": 30
+   }
+  },
+  {
+   "municipio": "CONDEUBA",
+   "total": 30,
+   "por_orgao": {
+    "IEF": 30
+   }
+  },
+  {
+   "municipio": "SAO JOAO DA BOA VISTA",
+   "total": 30,
+   "por_orgao": {
+    "IEF": 30
+   }
+  },
+  {
+   "municipio": "ANTONIO PRADO DE MINAS",
+   "total": 29,
+   "por_orgao": {
+    "SEMAD": 23,
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "CARIACICA",
+   "total": 29,
+   "por_orgao": {
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "JOANOPOLIS",
+   "total": 29,
+   "por_orgao": {
+    "IEF": 29
+   }
+  },
+  {
+   "municipio": "DIVINOLANDIA",
+   "total": 28,
+   "por_orgao": {
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "DUQUE DE CAXIAS",
+   "total": 28,
+   "por_orgao": {
+    "IEF": 28
+   }
+  },
+  {
+   "municipio": "AMERICANA",
+   "total": 27,
+   "por_orgao": {
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "CABECEIRAS",
+   "total": 27,
+   "por_orgao": {
+    "IEF": 27
+   }
+  },
+  {
+   "municipio": "CRUZEIRO",
+   "total": 26,
+   "por_orgao": {
+    "IEF": 26
+   }
+  },
+  {
+   "municipio": "PEDRA BELA",
+   "total": 26,
+   "por_orgao": {
+    "IEF": 26
+   }
+  },
+  {
+   "municipio": "ITINGA DO MARANHAO",
+   "total": 25,
+   "por_orgao": {
+    "IEF": 25
+   }
+  },
+  {
+   "municipio": "ARACRUZ",
+   "total": 24,
+   "por_orgao": {
+    "IEF": 24
+   }
+  },
+  {
+   "municipio": "ESPIRITO SANTO DO PINHAL",
+   "total": 24,
+   "por_orgao": {
+    "IEF": 24
+   }
+  },
+  {
+   "municipio": "JABOTICABAL",
+   "total": 23,
+   "por_orgao": {
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "MOGI DAS CRUZES",
+   "total": 23,
+   "por_orgao": {
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "SAO BENTO DO SAPUCAI",
+   "total": 23,
+   "por_orgao": {
+    "IEF": 23
+   }
+  },
+  {
+   "municipio": "COLATINA",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "NOVO GAMA",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "ORLANDIA",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "PIRACICABA",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "TRES RIOS",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "VARGEM GRANDE DO SUL",
+   "total": 22,
+   "por_orgao": {
+    "IEF": 22
+   }
+  },
+  {
+   "municipio": "DIADEMA",
+   "total": 21,
+   "por_orgao": {
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "PARANAIBA",
+   "total": 21,
+   "por_orgao": {
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "RIO VERDE",
+   "total": 21,
+   "por_orgao": {
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "VOLTA REDONDA",
+   "total": 21,
+   "por_orgao": {
+    "IEF": 21
+   }
+  },
+  {
+   "municipio": "MIGUELOPOLIS",
+   "total": 20,
+   "por_orgao": {
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "RIO DO ANTONIO",
+   "total": 20,
+   "por_orgao": {
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "SUMARE",
+   "total": 20,
+   "por_orgao": {
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "TRES LAGOAS",
+   "total": 20,
+   "por_orgao": {
+    "IEF": 20
+   }
+  },
+  {
+   "municipio": "BEBEDOURO",
+   "total": 19,
+   "por_orgao": {
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "BOM JESUS DA LAPA",
+   "total": 19,
+   "por_orgao": {
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "JUAZEIRO",
+   "total": 19,
+   "por_orgao": {
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "MOGI-GUACU",
+   "total": 19,
+   "por_orgao": {
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "RIACHO DE SANTANA",
+   "total": 19,
+   "por_orgao": {
+    "IEF": 19
+   }
+  },
+  {
+   "municipio": "ANAPOLIS",
+   "total": 18,
+   "por_orgao": {
+    "IEF": 18
+   }
+  },
+  {
+   "municipio": "SIMOLANDIA",
+   "total": 18,
+   "por_orgao": {
+    "IEF": 18
+   }
+  },
+  {
+   "municipio": "CACULE",
+   "total": 17,
+   "por_orgao": {
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "NOVA VICOSA",
+   "total": 17,
+   "por_orgao": {
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "SALVADOR",
+   "total": 17,
+   "por_orgao": {
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO VALE DO RIO PRETO",
+   "total": 17,
+   "por_orgao": {
+    "IEF": 17
+   }
+  },
+  {
+   "municipio": "BELO CAMPO",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "IACIARA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "ITATIBA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "LINHARES",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "MALHADA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "MILAGRES",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "MONTANHA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "MORTUGABA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "PLANALTINA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "SAO CAETANO DO SUL",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "SAPUCAIA",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "TAUBATE",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "VENDA NOVA DO IMIGRANTE",
+   "total": 16,
+   "por_orgao": {
+    "IEF": 16
+   }
+  },
+  {
+   "municipio": "ARARAS",
+   "total": 15,
+   "por_orgao": {
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "IBATIBA",
+   "total": 15,
+   "por_orgao": {
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "NOVA VENECIA",
+   "total": 15,
+   "por_orgao": {
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "PONTAL",
+   "total": 15,
+   "por_orgao": {
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "VOTUPORANGA",
+   "total": 15,
+   "por_orgao": {
+    "IEF": 15
+   }
+  },
+  {
+   "municipio": "AGUAS LINDAS DE GOIAS",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "ARARAQUARA",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "BRODOWSKI",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "CACU",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "CALDAS NOVAS",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "CAMPOS DOS GOYTACAZES",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "FOZ DO IGUACU",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "HERCULANDIA",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "JACAREI",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "NOVA IGUACU",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DE PADUA",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO PINHAL",
+   "total": 14,
+   "por_orgao": {
+    "IEF": 14
+   }
+  },
+  {
+   "municipio": "CAMPO GRANDE",
+   "total": 13,
+   "por_orgao": {
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "PAULINIA",
+   "total": 13,
+   "por_orgao": {
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "PEDREGULHO",
+   "total": 13,
+   "por_orgao": {
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "SAO GONCALO",
+   "total": 13,
+   "por_orgao": {
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "VALINHOS",
+   "total": 13,
+   "por_orgao": {
+    "IEF": 13
+   }
+  },
+  {
+   "municipio": "APARECIDA DE GOIANIA",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "BARUERI",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "CAMPOS DO JORDAO",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "LICINIO DE ALMEIDA",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "MESOPOLIS",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "MOGI-MIRIM",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "POA",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "SERRANA",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "TERESOPOLIS",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "TORRINHA",
+   "total": 12,
+   "por_orgao": {
+    "IEF": 12
+   }
+  },
+  {
+   "municipio": "ARAMINA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "CACHOEIRO DE ITAPEMIRIM",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "CACONDE",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "FEIRA DE SANTANA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "INDAIATUBA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "ITAIOPOLIS",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "ITAMARAJU",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "LORENA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "MOITA BONITA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "PATROCINIO PAULISTA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "PIQUETE",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DA ALEGRIA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "SAO CARLOS",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "TANQUE NOVO",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "VALENCA",
+   "total": 11,
+   "por_orgao": {
+    "IEF": 11
+   }
+  },
+  {
+   "municipio": "AGUAI",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "ALTO RIO NOVO",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "COTIA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "ITABAIANA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "ITANHEM",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "ITAPERUNA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "MAMBAI",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "PARANAPUA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "PIRASSUNUNGA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "QUATIS",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DE POSSE",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO DESCOBERTO",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "SAO MATEUS",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "TERESINA",
+   "total": 10,
+   "por_orgao": {
+    "IEF": 10
+   }
+  },
+  {
+   "municipio": "FLORIANOPOLIS",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "JACARACI",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "MAUA",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "RESENDE",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "RIFAINA",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DO JARDIM",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "SANTOS",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "SAO JOSE DA BELA VISTA",
+   "total": 9,
+   "por_orgao": {
+    "IEF": 9
+   }
+  },
+  {
+   "municipio": "AGUAS DE LINDOIA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "ATIBAIA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "BIRIGUI",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "BRUMADO",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "CAJURU",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "CAMACAN",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "CASSILANDIA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "CATANDUVA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "GUARA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "HORTOLANDIA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "IPUA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "ITAPETINGA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "MARINGA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "NIQUELANDIA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "NITEROI",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "PINDAMONHANGABA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "PINHALZINHO",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DE JETIBA",
+   "total": 8,
+   "por_orgao": {
+    "IEF": 8
+   }
+  },
+  {
+   "municipio": "ARACAJU",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "CARAPICUIBA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "CARMO",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "CASCAVEL",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "COLINA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "CRAVINHOS",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "FLORES DE GOIAS",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "GOIATUBA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "GUARAPUAVA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "ITAGUACU",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "ITAMBE",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "MONTE ALTO",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "NOVA FRIBURGO",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "NOVA GRANADA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "NOVA ODESSA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "PORCIUNCULA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "SANTA LEOPOLDINA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "SANTANA DE PARNAIBA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "SOROCABA",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "TAMBAU",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "VINHEDO",
+   "total": 7,
+   "por_orgao": {
+    "IEF": 7
+   }
+  },
+  {
+   "municipio": "ARACATUBA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "AVARE",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "BOM JESUS DA SERRA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "CAETITE",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "CAIEIRAS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "CARDOSO",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "CORRENTINA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "DOIS CORREGOS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "DOURADOS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "IBIRACU",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ICEM",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ILHEUS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ITABELA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ITABERAI",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ITAGI",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "ITAQUAQUECETUBA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "JOINVILLE",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "MANTENOPOLIS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "MEDIANEIRA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "NOVA ANDRADINA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "PINHEIROS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "PONTA GROSSA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "PRESIDENTE JANIO QUADROS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "QUIRINOPOLIS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "RIBEIRAO CORRENTE",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "RIBEIRAO DO LARGO",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "SANTA ALBERTINA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DA SERRA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "SAO VICENTE",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "TABOAO DA SERRA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "TRES RANCHOS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "UNIAO DA VITORIA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "VASSOURAS",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "VILA BOA",
+   "total": 6,
+   "por_orgao": {
+    "IEF": 6
+   }
+  },
+  {
+   "municipio": "AGUA CLARA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "BARRA DO PIRAI",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "BELFORD ROXO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "BOM JESUS DO ITABAPOANA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "CABREUVA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "CASTELO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "CONCEICAO DO CASTELO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "CORDEIROS",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "CRISTAIS PAULISTA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "DRACENA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "ESTRELA D'OESTE",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "IBIUNA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "IPAMERI",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "ITAJOBI",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "ITIRAPUA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "JATAI",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "LAGOA REAL",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "LARANJA DA TERRA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "LEME",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "MAIRIPORA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "MARAVILHA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "MONTES CLAROS DE GOIAS",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "OUVIDOR",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "PORTO FERREIRA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "PORTO UNIAO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "POSSE",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "PRESIDENTE PRUDENTE",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "RIBEIRAO PIRES",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "SANTA ROSA DE VITERBO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "SANTANA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "SUZANO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "TAPERA",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "VARGEM",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "VIRADOURO",
+   "total": 5,
+   "por_orgao": {
+    "IEF": 5
+   }
+  },
+  {
+   "municipio": "AMAMBAI",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ANHANGUERA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "APUCARANA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "AQUIDAUANA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ARUJA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "BALSAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "BATAGUASSU",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "BRASILANDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "BROTAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CACAPAVA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CACHOEIRA PAULISTA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CAMPOS VERDES",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CANDIBA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CAPIVARI",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CARAIBAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CAXIAS DO SUL",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CIDADE OCIDENTAL",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CIPO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CLAUDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CORACAO DE MARIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CORONEL VIVIDA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CORREGO DO OURO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "COSMOPOLIS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "COSTA RICA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CRUZ DAS ALMAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "CUMARI",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "DORES DO RIO PRETO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ELIAS FAUSTO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "FRANCO DA ROCHA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "GOIANAPOLIS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "GUACUI",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "GUARANI D'OESTE",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "GUARATINGA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "IBIASSUCE",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "IBIRAPUA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "INACIO MARTINS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "INOCENCIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "IPIAU",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ITABUNA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ITAGIMIRIM",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ITAPEMIRIM",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ITAPETININGA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "ITATIAIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "JEQUIE",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "LIVRAMENTO DO BRUMADO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "LUIS GOMES",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MACARANI",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MARABA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MARACAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MARAU",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MARCELANDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MATELANDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MONTE NEGRO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MORRO AGUDO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "MOSSORO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PANCAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PARELHAS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PATO BRANCO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PAULO DE FARIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PETROLINA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "PINHAIS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "RECIFE",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "REMANSO",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "RIOLANDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SANTA FE DO SUL",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SANTA ISABEL",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DE JESUS",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SAO JOSE",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SAO MIGUEL DO ARAGUAIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "SITIO D'ABADIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "TANHACU",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "TAPIRAMUTA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "TAQUARITINGA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "TURVELANDIA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "VARZEA PAULISTA",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "VITORIA BRASIL",
+   "total": 4,
+   "por_orgao": {
+    "IEF": 4
+   }
+  },
+  {
+   "municipio": "AGUIA BRANCA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "AMPARO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ANCHIETA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "APARECIDA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "APARECIDA DO TABOADO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "BANANAL",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "BURITIZAL",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "CACHOEIRA ALTA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "CASSIA DOS COQUEIROS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "CODO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "COLOMBO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "CONCEICAO DA BARRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "CORUMBAIBA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ECOPORANGA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ELDORADO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "EMBU",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "FEIRA DA MATA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "GOIAS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "GUARATINGUETA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "GUATAPARA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "IBITIARA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ITAQUIRAI",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ITARUMA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ITUPORANGA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "IUNA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "JABORANDI",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "JANDIRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "JARINU",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "LONDRINA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "LOUVEIRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "MACAE",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "MONTE ALEGRE DO SUL",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "MONTE AZUL PAULISTA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "MORUNGABA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ORIENTE",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "ORIZONA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PARANAIGUARA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PEDREIRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PIRES DO RIO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PIRIPA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PITANGUEIRAS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "POPULINA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "PRAIA GRANDE",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "RIBAS DO RIO PARDO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "RIO CLARO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "RODEIO BONITO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SALTO",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA D'OESTE",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ DAS PALMEIRAS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SAO FELIX DO CORIBE",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SELVIRIA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "SERRA NEGRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TABAPUA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TANABI",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TANGARA DA SERRA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TIJUCAS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TREMEDAL",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TRES BARRAS",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TUPA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "TUPI PAULISTA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "UMUARAMA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "VARGEM GRANDE PAULISTA",
+   "total": 3,
+   "por_orgao": {
+    "IEF": 3
+   }
+  },
+  {
+   "municipio": "AGUA DOCE DO NORTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AGUDOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ALFREDO CHAVES",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ALVORADA DO NORTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AMARGOSA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AMERICO BRASILIENSE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AMERICO DE CAMPOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "APERIBE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AQUIDABA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ARAPIRACA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "AURIFLAMA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BALNEARIO PINHAL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BARRA BONITA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BARRINHA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BARRO PRETO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BLUMENAU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BOA VIAGEM",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BOTUCATU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BREJETUBA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BURITI ALEGRE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BURITICUPU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "BURITIRAMA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CABO FRIO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CAMACARI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CAMPO ALEGRE DE LOURDES",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CAMPO NOVO DO PARECIS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CARUARU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CASTRO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CERES",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CIDADE GAUCHA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "COARACI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "COLORADO DO OESTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "COMBINADO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CONCHAL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CONCORDIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CORUMBA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CRICIUMA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CRISOPOLIS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CUIABA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "CURITIBANOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "DOM BASILIO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ENGENHEIRO BELTRAO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ENGENHEIRO COELHO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ESPLANADA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "EUCLIDES DA CUNHA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "FERRAZ DE VASCONCELOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "FORTALEZA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "FRANCISCO MORATO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GABRIEL MONTEIRO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GARCA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GOIANDIRA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GOIANESIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GUARAPARI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "GUARUJA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IBIRATAIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IBITINGA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IMPERATRIZ",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "INACIOLANDIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IPIRANGA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IRATI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IRUPI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITABAIANINHA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITAITUBA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITAJAI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITALVA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITAPEBI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITAQUARA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "ITARANTIM",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IUIU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "IVAIPORA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "JAU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "JOSELANDIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "JUCURUCU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "LAVRINHAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "LINS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MACAUBAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MAIQUINIQUE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MARA ROSA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MARECHAL FLORIANO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MARIALVA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MARILIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MATAO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MEDEIROS NETO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MINACU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MINEIROS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MIRACEMA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MIRASSOL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MIRASSOLANDIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MONTE ALEGRE DE GOIAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MONTEIRO LOBATO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MORRINHOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "MUCURICI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "NEVES PAULISTA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "NOSSA SENHORA DOS REMEDIOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "NOVA ESPERANCA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "NOVA IGUACU DE GOIAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "NOVA XAVANTINA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "OLIMPIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PADRE BERNARDO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PALMAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PALMEIRA DOS INDIOS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PARAGOMINAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PARAI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PARAIBA DO SUL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PARATI",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PARATINGA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PIEDADE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PINHAO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "POCOES",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PONTE SERRADA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PONTO BELO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PORTELANDIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PORTO ALEGRE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PORTO SEGURO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "POTIRAGUA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "PRESIDENTE VENCESLAU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "QUATRO BARRAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "RANCHO QUEIMADO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "RIO BONITO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SALES OLIVEIRA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANHARO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA DO SUL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA CLARA D'OESTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA MARIA DA VITORIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA RITA DO PASSA QUATRO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA TERESA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTA TEREZINHA DE GOIAS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTO AMARO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SANTO AMARO DA IMPERATRIZ",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO DOMINGOS DO NORTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO DOMINGOS DO SUL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO FRANCISCO DO SUL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO BARREIRO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO BELMONTE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO JOSE DO JACUIPE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO LUIS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO MIGUEL DO IGUACU",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO PAULO DE OLIVENCA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SAO RAIMUNDO NONATO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SERRA AZUL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SERRA DO RAMALHO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SERRANOPOLIS",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SIMOES FILHO",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "SINOP",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "TAPES",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "TELEMACO BORBA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "TEUTONIA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "VALENTIM GENTIL",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "VARZEA GRANDE",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "VIDEIRA",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "VITORIA DO MEARIM",
+   "total": 2,
+   "por_orgao": {
+    "IEF": 2
+   }
+  },
+  {
+   "municipio": "(não informado)",
+   "total": 1,
+   "por_orgao": {
+    "(não informado)": 1
+   }
+  },
+  {
+   "municipio": "AGUA LIMPA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "AGUAS DA PRATA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "AGUAS DE SAO PEDRO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ALEGRE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "AMORINOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ANDRADINA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ARAUCARIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "AREAL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ARENOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ARIQUEMES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BALSAMO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BATAIPORA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BAURU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BELEM",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BERTIOGA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOA VISTA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOA VISTA DO TUPIM",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOITUVA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOM JARDIM DE GOIAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOM JESUS DE GOIAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BOM JESUS DOS PERDOES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BONITO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "BREJO SANTO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CACADOR",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CACHOEIRAS DE MACACU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAIAPONIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAJOBI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMAMU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMAPUA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMBARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMBORIU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMPINAS DO PIAUI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMPO LIMPO PAULISTA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAMPOS BELOS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CANDIDO RODRIGUES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAPAO BONITO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CAPINZAL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CHAPECO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "COCALZINHO DE GOIAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "COCOS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CORNELIO PROCOPIO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CORUMBIARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CRUZ MACHADO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CUJUBIM",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CUNHA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "CURIONOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "DIVINO DE SAO LOURENCO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "DIVINOPOLIS DE GOIAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "DOMINGOS MARTINS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "DUAS BARRAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "FELIZ NATAL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "FLORESTOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "FORTUNA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "GANDU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "GLORIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "GUAIBA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "GUAPIACU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "GURUPI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "HOLAMBRA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IBIPORA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IBITIRAMA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IBITITA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IBOTIRAMA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ICARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ICONHA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IGAPORA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IGUATU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ILHA SOLTEIRA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "INHUMAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IPERO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IPIRA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IRACEMA DO OESTE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "IRACEMAPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITAGUAI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITAJUIPE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITAPECERICA DA SERRA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITAPEVI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITOBI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ITUPEVA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "JACIARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "JACOBINA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "JARAGUA DO SUL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "JUINA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "JUSSARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LAGES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LAPA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LARANJEIRAS DO SUL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LENCOIS PAULISTA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LUCELIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "LUIS ANTONIO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MACHADINHO D'OESTE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MAGDA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MALLET",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MANDAGUACU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARACANAU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARATAIZES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARECHAL CANDIDO RONDON",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARICA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARILANDIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MARZAGAO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MIMOSO DO SUL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MIRA ESTRELA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MOMBACA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MONTE ALEGRE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MONTE MOR",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MONTES ALTOS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "MUNIZ FREIRE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NAO-ME-TOQUE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NATAL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NILOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NOVA CANAA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NOVA LUZITANIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NOVO HORIZONTE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "NUPORANGA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "OLHO D AGUA GRANDE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ORINDIUVA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "OSVALDO CRUZ",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PALHOCA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PALMARES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PALMAS DE MONTE ALTO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PARACAMBI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PARAISO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PARAUAPEBAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PEDRO CANARIO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PINHEIRAL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PIRANGI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "POLONI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "POMPEIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PONTA PORA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PONTAL DO PARANA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PONTALINDA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PONTE ALTA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "PROMISSAO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "QUELUZ",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "QUILOMBO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "QUISSAMA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "RINCAO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "RIO NOVO DO SUL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "RIO QUENTE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "ROLANDIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SALTINHO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SALTO DO CEU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTA BARBARA DE GOIAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTA CARMEM",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ CABRALIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTA CRUZ DOS MILAGRES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTA MONICA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTO ANTONIO DA BARRA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SANTO ESTEVAO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SAO GABRIEL DA PALHA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SAO JOAO DAS DUAS PONTES",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SAO MIGUEL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SAO SEBASTIAO DA GRAMA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SAPUCAIA DO SUL",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SEBASTIAO LARANJEIRAS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SENADOR CANEDO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SEROPEDICA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SORRISO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "SUMIDOURO",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TAIUVA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TAPEJARA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TATUI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TERENOS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TERRA ROXA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "TUCUMA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "UBATA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "URANDI",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "URANIA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "URUACU",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "URUGUAIANA",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "VICENTINOPOLIS",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  },
+  {
+   "municipio": "VISTA ALEGRE",
+   "total": 1,
+   "por_orgao": {
+    "IEF": 1
+   }
+  }
+ ]
+}

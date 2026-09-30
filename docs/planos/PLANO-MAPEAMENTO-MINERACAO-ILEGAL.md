@@ -112,7 +112,7 @@ existir, entra só como ponte terciária, nunca no campo `fonte`.
 | FUNAI | terras indígenas | **camada no globo** (16 polígonos MG; +4 pontos medidos 30/09 para ampliar) |
 | INCRA | territórios quilombolas | **camada no globo** (27 MG; WFS atual com 23 em 30/09) |
 | IBAMA dados abertos | autos de infração/embargos | **coletado** (11.734; 11 de MG com mineração) |
-| **FEAM (MG)** | autos de embargo e infração estaduais | **medido 30/09:** sem dado aberto bulk — coleta estadual continua fora |
+| **FEAM (MG)** | autos de embargo e infração estaduais | **coletado 30/09 via painel do Sisema** — 583.644 autos (agregado); sem campo de tipo, não isola mineração |
 | ICMBio | autos de infração e embargos em UC federais | **medido 30/09:** 41.963 autos (1.483 MG) e 14.719 embargos (854 MG) — xlsx + WFS |
 | ANM (portarias de suspensão de lavra) | ato de suspensão por processo | **medido 30/09:** só no DOU; contagem automática exige chave de API (cadastro humano) |
 | MPF/TJMG | ações e TACs com mineração | fora desta fase; biblioteca já existe em outra frente |
@@ -163,12 +163,15 @@ motivo de não ter dado registrado.
 **Status medido 30/09/2026** (seção
 [FONTES, Fase B](../06-fontes/FONTES.md#embargos-do-ibama-georreferenciados-feam-e-ide-mg--fase-b-3009)):
 
-- **Item 1 — FEAM fechado por medição:** sem dado aberto bulk
-  (`dados.mg.gov.br` com 0 de "auto de infração" e 0 de "embargo";
-  portal Liferay só com decisão do dono). Ganho de caminho: o IBAMA
-  federal tem embargo georreferenciado **atualizado diariamente** —
-  **91.702 no Brasil, 4.692 em MG, 78 em MG com termo de mineração**
-  (ArcGIS Pamgia, robots 404, UA + pausa registrados).
+- **Item 1 — FEAM fechado com coletor:** sem dado aberto bulk (`dados.mg.gov.br`
+  com 0 de "auto de infração" e 0 de "embargo"; SIAM só busca por
+  número/CPF/nome, sem listagem). Ganho de caminho em dois lugares: (a) o IBAMA
+  federal tem embargo georreferenciado **atualizado diariamente** — **91.702 no
+  Brasil, 4.692 em MG, 78 em MG com termo de mineração** (ArcGIS Pamgia); (b) o
+  **painel do Sisema** (Power BI público) publica os autos estaduais —
+  **583.644 autos** (SEMAD 351.630 · IEF 232.013) em `sisema_autos_infracao.py`,
+  com agregado versionado. A aba não tem campo de tipo de infração, então
+  **não isola mineração** — serve ao acervo ambiental, não ao recorte de cava.
 - **IDE-MG sondada:** 1.421 camadas, **nenhuma de embargo** — serve para
   áreas autorizadas FEAM, não para atos.
 - **Item 2 — ICMBio fechado:** 41.963 autos (1.483 MG, 2008–2026) e

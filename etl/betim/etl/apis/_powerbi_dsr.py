@@ -95,6 +95,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Any
 
 LOG = "[etl.apis._powerbi_dsr]"
@@ -398,16 +399,29 @@ def decodificar_resposta(resposta: dict, membro: str = "DM0") -> Tabela:
 
 _RE_TEXTO_RT = re.compile(r"^'(.*)'$", re.DOTALL)
 _RE_NUMERO_RT = re.compile(r"^(-?\d+(?:\.\d+)?)[A-Za-z]?$")
+# O `RT` serializa data como expressão DAX `datetime'2026-06-20T00:00:00'`,
+# enquanto o `DM0` comprimido entrega a MESMA data em epoch MILISSEGUNDOS
+# (1466380800000). Comparar cru acusaria divergência de data que não existe —
+# foi o que travou a coleta de autos do Sisema em 30/09/2026. Normalizar o
+# token para epoch ms põe os dois lados na mesma régua.
+_RE_DATA_RT = re.compile(r"^datetime'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})'$")
 
 
 def _normalizar_rt(bruto: Any) -> Any:
-    """`"'SUTAF'"` -> `"SUTAF"`; `"2023L"` -> `2023`. O `RT` é serializado
-    como expressão DAX, não como JSON — comparar cru daria falso negativo."""
+    """`"'SUTAF'"` -> `"SUTAF"`; `"2023L"` -> `2023`;
+    `"datetime'2016-06-20T00:00:00'"` -> epoch ms. O `RT` é serializado como
+    expressão DAX, não como JSON — comparar cru daria falso negativo."""
     if not isinstance(bruto, str):
         return bruto
     texto = _RE_TEXTO_RT.match(bruto)
     if texto:
         return texto.group(1).replace("''", "'")
+    data = _RE_DATA_RT.match(bruto.strip())
+    if data:
+        # O texto do token é UTC e o DM0 usa epoch ms — a conversão alinha os
+        # dois, evitando o falso positivo do verificador de RT.
+        momento = datetime.strptime(data.group(1), "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+        return int(momento.timestamp() * 1000)
     numero = _RE_NUMERO_RT.match(bruto.strip())
     if numero:
         valor = numero.group(1)

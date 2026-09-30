@@ -379,7 +379,11 @@ Sondado em 2026-08-21. O link que circula como "Painel de Termos de Compromisso 
 
 **O decodificador do DSR já existe e serve aqui:** `etl/betim/etl/apis/_powerbi_dsr.py` (mesmo tenant `924f9847-242e-4a9a-8913-9e43649b9eaa` do painel de TACs).
 
-**Status:** menu e filhos mapeados; nenhuma aba extraída ainda. As de maior valor público, na ordem: AUTOS DE INFRAÇÃO, BARRAGENS EM EMERGÊNCIA, GESTÃO DE BARRAGENS, TERMOS DE COMPROMISSO PRA.
+**Status:** menu e filhos mapeados. **A aba AUTOS DE INFRAÇÃO já tem coletor**
+(`etl.apis.sisema_autos_infracao`, 30/09/2026 — 583.644 autos e o agregado
+versionado; ver a seção "Autos de infração do Sisema" acima). As demais abas de
+maior valor público seguem sem extração, na ordem: BARRAGENS EM EMERGÊNCIA,
+GESTÃO DE BARRAGENS, TERMOS DE COMPROMISSO PRA.
 
 ## barragens.mpmg.mp.br — 45 barragens em descaracterização, uma por post
 
@@ -1109,6 +1113,62 @@ contagem local do xlsx (openpyxl, linhas não vazias):
 Caminho viável: **chave da API da Imprensa Nacional** (cadastro humano,
 gratuito) — decisão do dono. Raspagem de frameset PDF seria pesada e
 frágil; não recomenda-se sem a chave.
+
+### Autos de infração do Sisema (SEMAD, FEAM e IEF) — Power BI público (item 1, coletado 30/09)
+
+**A FEAM não publica autos em dado aberto — mas o Estado publica, no painel do
+Sisema.** Medido em 30/09/2026, nesta ordem:
+
+- `dados.mg.gov.br` (CKAN): 0 para "auto de infração", 0 para "embargo".
+- SIAM (consulta pública da FEAM/SEMAD/IEF,
+  `https://transparencia.meioambiente.mg.gov.br/AI/index.php`): só aceita busca
+  por **número+dígito+ano**, **CPF/CNPJ** ou **nome completo** — não tem
+  listagem. Nenhuma dessas vias serve para acervo (e as duas últimas são dado
+  pessoal). `robots.txt` do host: 404 (sem declaração).
+- **Aba "AUTOS DE INFRAÇÃO" do Painel de Indicadores do Sisema** (Power BI
+  público, sem login): a fonte real. Ver a seção
+  [Painel Sisema](#painel-sisema-power-bi-público--um-menu-que-esconde-4-painéis-e-87-abas)
+  para como se chega ao relatório-filho.
+
+**Como coletar (implementado):** `etl/betim/etl/apis/sisema_autos_infracao.py`,
+com o mesmo `querydata` + decodificador DSR do coletor de TACs. IDs: resourceKey
+`6f0dee31-708d-42fd-ad2d-9a70e2f49dbc`, `modelId` 5910103, dataset
+`ce3de06e-efa2-465e-aec2-aa792967c532`. Entidade **`Autos_Infracao_Completa`**.
+
+⚠️ **Nunca usar `Autos_Infracao` (a entidade de 74 colunas):** ela traz
+`Autuado`, `CPF`, `CNPJ` e `RG/Insc. Est.` — dado pessoal (AGENTS § 5.2). A
+`Autos_Infracao_Completa` tem 12 colunas e nenhuma de titular; um guarda de
+lista-branca no coletor impede que alguém acrescente coluna de pessoa.
+
+⚠️ **Paginação obrigatória:** o servidor corta em **30.000 linhas por
+resposta** mesmo pedindo mais (medido: janela de 50.000 devolveu exatamente
+30.000). O total é quase 20× isso; a coleta pagina pelo `RestartTokens` do Power
+BI e só para quando uma página volta menor que a janela.
+
+⚠️ **Data em epoch ms × `datetime'...'` no RT:** o `DM0` traz a data em
+milissegundos desde 1970 e o *restart token* a traz como
+`datetime'2016-06-20T00:00:00'`. Antes de 30/09 isso fazia o verificador de RT
+acusar divergência falsa e travar a coleta; o `_powerbi_dsr` agora normaliza os
+dois (teste `test_rt_com_data_bate_com_epoch_do_dm0`).
+
+**Coleta de 30/09/2026 (medida):**
+
+| Medida | Valor |
+|---|---:|
+| Autos de infração | **583.644** |
+| SEMAD · IEF | 351.630 · 232.013 |
+| Municípios distintos | 1.606 |
+| Anos | 1991–2027 |
+| Sem data · data fora de faixa | 2.024 · 80 |
+
+⚠️ **A fonte tem data inválida digitada à mão** (medido: um registro datado de
+"2090"). O coletor não publica esse ano como fato: agrupa em
+"(data fora de faixa)". Lacuna é informação (AGENTS § 7).
+
+⚠️ **Volume:** o cru são 583.644 linhas. O repositório versiona só o
+**agregado** (`apps/web/data/sisema-autos-infracao.json`, 176 KB): total por
+órgão, situação, ano e município. O cru se refaz na máquina com
+`--bruto` (local, não versionar) — teto de payload do portal, AGENTS § 5.1.
 
 ### Terras indígenas e quilombo — o que dá para ampliar hoje (item 4, 30/09)
 

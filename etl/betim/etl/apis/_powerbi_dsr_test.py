@@ -42,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from etl.apis._powerbi_dsr import (  # noqa: E402
     ErroDSR,
     Tabela,
+    _normalizar_rt,
     conferir,
     conferir_contra_restart_token,
     decodificar_resposta,
@@ -312,6 +313,30 @@ def test_descriptor_ausente_ergue_em_vez_de_usar_posicao():
         }}}]}),
         "descriptor",
     )
+
+
+def test_normalizar_rt_converte_datetime_para_epoch_ms():
+    """O RT serializa data como `datetime'...'`; o DM0 entrega epoch ms.
+    Sem a normalização o verificador acusava divergência falsa."""
+    assert _normalizar_rt("datetime'2016-06-20T00:00:00'") == 1466380800000
+    assert _normalizar_rt("'SEMAD'") == "SEMAD"
+    assert _normalizar_rt("8305.24D") == 8305.24
+    assert _normalizar_rt("2023L") == 2023
+
+
+def test_rt_com_data_bate_com_epoch_do_dm0():
+    """Regressão 30/09/2026: a coluna de data vem em epoch ms no DM0 e o RT a
+    traz como `datetime'...'`. Antes da correção, `conferir_contra_restart_token`
+    levantava e travava a coleta de autos de infração do Sisema."""
+    resposta = _resposta_sintetica([
+        {"S": [{"N": "G0", "T": 1, "DN": "D0"}, {"N": "G1", "T": 7}], "C": [0, 1466380800000]},
+    ])
+    resposta["results"][0]["result"]["data"]["dsr"]["DS"][0]["RT"] = [
+        ["'alfa'", "datetime'2016-06-20T00:00:00'"]
+    ]
+    t = decodificar_resposta(resposta)
+    assert t.linhas[0]["x.Valor"] == 1466380800000
+    assert conferir_contra_restart_token(t)["conferido"] is True
 
 
 def _main() -> int:
