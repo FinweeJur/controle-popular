@@ -172,9 +172,12 @@ Todas sondadas de verdade nesta máquina, em 30/09/2026, com User-Agent honesto.
 | **IBGE — Brasil: 500 anos de povoamento** (oficial) | Seção *construção do território*: Tordesilhas, capitanias hereditárias, União Ibérica, descoberta do ouro, **tratados** e extensão atual. Texto + mapas (JPG) + publicação completa em PDF | Não é dado vetorial: é **mapa e texto** | [brasil500anos.ibge.gov.br](https://brasil500anos.ibge.gov.br/territorio-brasileiro-e-povoamento/construcao-do-territorio/capitanias-hereditarias.html) |
 | **IBGE — Evolução da Divisão Territorial do Brasil 1872-2010** (oficial) | Ficha do *Mapa das Capitanias Hereditárias* (**mapa de Luis Teixeira, 1574**); bbox do Brasil (−74,0 a −34,8; −33,7 a 5,27) | Formato **PDF/PNG** no catálogo; foi catalogado como "arquivo antigo" | ficha `cb6e6495-cd71-45d4-884f-904e6231858c` no [Catálogo de Metadados](https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/search?keyword=Captanias%20Heredit%C3%A1rias) |
 | **IBGE — malhas** (oficial) | Malhas atuais por UF/município/região em SVG, GeoJSON e TopoJSON | Não há malha **colonial** vetorial no FTP | API `servicodados.ibge.gov.br/api/v3/malhas/...`; espelho `geoftp.ibge.gov.br/.../malhas_municipais/` (**2000 a 2025**) |
-| **Arquivo Público Mineiro — SIAAPM, Seção Colonial** (oficial, MG) | **Registro de sesmarias** catalogado e pesquisável: séries `SC-01` (1605-1799), `SC-106` (1753-1754), `SC-112`, `SC-119`, `SC-122`, `SC-125`, `SC-127`, `SC-129`, `SC-140`, `SC-146`, `SC-172`… | É **catálogo de códices** (metadado + imagem), não geometria | busca `siaapm.cultura.mg.gov.br/modules/brtacervo/search.php?query=sesmaria` |
-| **APM — Terras Públicas e núcleos coloniais** (oficial, MG) | "Repartição Especial das Terras Públicas" e "Mapas de População e Títulos de Terra dos Núcleos Coloniais"; "Documentos Cartográficos" | Idem: catálogo e imagem | módulos `terras_publicas`, `mapas_populacao`, `grandes_formatos_docs` no SIAAPM |
-| **OpenHistoricalMap** (comunidade, CC0) | Fronteiras históricas do mundo em vetor; **têm relação de "Capitanias"** (relação `2751236` testada via Overpass) | **Não é fonte oficial**: é wiki colaborativa — serve de **ponto de partida**, sempre conferida contra o mapa oficial | Overpass `overpass-api.openhistoricalmap.org`; dados **CC0** |
+| **Arquivo Público Mineiro — SIAAPM, Seção Colonial** (oficial, MG) | **Registro de sesmarias** catalogado e pesquisável: **1.726 registros de série** (`SC-01` 1605-1799, `SC-106` 1753-1754, `SC-112`, `SC-119`, `SC-122`, `SC-125`, `SC-127`, `SC-129`, `SC-140`, `SC-146`, `SC-172`…) | É **catálogo de livros** (metadado + imagem), **sem lugar** da sesmaria — por isso virou **índice**, não camada | busca `siaapm.cultura.mg.gov.br/modules/brtacervo/search.php?query=sesmaria` |
+| **APM — Terras Públicas** (oficial, MG) | **244 registros**; **14** nomeiam o município no título → camada `hist-terras-publicas` | O ponto é o centroide do município; piso | módulo `terras_publicas` no SIAAPM |
+| **APM — Mapas de População** (oficial, MG) | **354 listas nominativas (1838-1840)**, com campo `Local`; **121** resolvem em município → camada `hist-listas-populacao`; **64** em vila mineradora do século XVIII | **Não traz a contagem** de pessoas escravizadas (exige OCR da imagem) | módulo `mapas_populacao` no SIAAPM |
+| **IEPHA-MG — patrimônio tombado** (oficial, MG) | **153 bens**; **13 conjuntos rurais** (fazendas e uma usina) → camada `hist-fazendas-engenhos` | Só o que está **tombado**; **nenhum engenho de cana**; sem coordenada do bem | `apps/web/data/patrimonio-tombado-iepha.json`; fonte `iepha.mg.gov.br` |
+| **Bloqueadas (medido 30/09)** | — | **Biblioteca Nacional 403** (UA honesto **e** de navegador); **Biblioteca do IBGE 403**; `dados.gov.br/api` **401**; `geoservicos.iphan.gov.br` **sem DNS** | ver P4 e P5 |
+| **OpenHistoricalMap** (comunidade, CC0) | Fronteiras históricas do mundo em vetor; **13 capitanias de 1534** por relação, cada uma com data de início e fim | **Não é fonte oficial**: é wiki colaborativa — serve de **ponto de partida**, sempre conferida contra o mapa oficial | Overpass `overpass-api.openhistoricalmap.org`; dados **CC0** |
 
 **O que a própria fonte oficial diz (IBGE 500 anos), para citar com precisão:** a capitania
 não era propriedade absoluta do donatário — as terras eram do Estado; o hereditário era o
@@ -189,11 +192,14 @@ medir uma a uma:
 
 - **Biblioteca Nacional — cartografia digital (BNDigital)** — mapas do período colonial e do
   Império (inclusive o *Mapa das Cortes*, 1749): ponto de partida para os **limites dos
-  tratados**. É a fonte primária natural do "controle máximo".
+  tratados**. **Medido 30/09: 403** com UA honesto e de navegador (P5) — a via a reencontrar.
 - **Laboratórios de cartografia histórica (USP, UFMG, UFRJ)** — acervos georreferenciados e
-  artigos; o dev citou as três. Medir repositório, licença e formato antes de usar.
+  artigos; o dev citou as três. **Medido 30/09:** o **CEDEPLAR/UFMG** responde 200 (programa de
+  demografia achado), mas a **base histórica não está exposta** (P1b); USP e UFRJ ainda a medir.
 - **INCRA — Acervo Fundiário** — o projeto **já consome** o WFS do INCRA; verificar se há
   camada de **terras devolutas / sesmarias remanescentes** além do que o globo já publica.
+- **IPHAN — bens e arqueologia** — a página `/iphan/pt-br/acesso-a-informacao/dados-abertos`
+  responde 200, mas os conjuntos apontam para o `dados.gov.br`, cuja **API devolve 401** (P4).
 - **Wikidata / Wikipédia** — ponte terciária para **coordenadas de evento** (revoltas),
   nunca como campo `fonte` (regra do [AGENTS.md § 7](/AGENTS.md)).
 
