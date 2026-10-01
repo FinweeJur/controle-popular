@@ -85,9 +85,23 @@ bots_*.js
 *.test_result.json
 
 # 6. Pipeline ETL fora do build
-# ATENÇÃO: Apenas etl/betim/dados/ é lido pelo app (json-etl.ts). O restante é ignorado.
-etl/**
-!etl/betim/dados/**
+# ATENÇÃO: Apenas etl/betim/dados/ é lido pelo app (json-etl.ts).
+# Não usar 'etl/**' com negação pois o motor Go do Docker descarta a pasta pai e ignora o '!'.
+etl/apps
+etl/congresso
+etl/cruzamentos
+etl/finetuning
+etl/judiciario
+etl/betim/.checkpoints*
+etl/betim/.venv
+etl/betim/analises_*
+etl/betim/apps
+etl/betim/calibracao_vicio
+etl/betim/dados-brutos
+etl/betim/dados-seed
+etl/betim/entrada
+etl/betim/etl
+etl/betim/scripts
 
 # 7. Acervos pesados de empresas e PDFs brutos fora do bundle
 apps/web/data/esg/**
