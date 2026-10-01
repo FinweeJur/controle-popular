@@ -35,6 +35,7 @@ defeito escondido.
 - **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de dados pessoais (CPF Mod-11, SSN, SIN) antes de qualquer persistência em dados abertos (100% LGPD).
 - **Vigia de ETL e Fact-Checking Cívico:** Telemetria contínua de 397 coletores (`vigia-dados-etl.mts`), checagem automatizada de fontes (inspirada em IFCN, Lupa e Aos Fatos) e espelhos de resiliência no GitLab e Hugging Face.
 - **Código Autoexplicativo e Comentado:** Todo módulo, componente, query e coletor traz cabeçalhos e comentários em português (JSDoc/docstrings) explicando o que é, qual a sua função pública e o motivo das escolhas técnicas adotadas.
+- **Catálogo de fontes com guarda anti-apodrecimento:** O registro único de fontes (`lib/fontes/registry.ts`) declara a camada de alocação e o caminho de cada base, e um teste recusa caminho que não existe no repositório — porque catálogo de dado apodrece em silêncio (a revisão flagrou 13 de 42 caminhos quebrados).
 
 ## API pública
 

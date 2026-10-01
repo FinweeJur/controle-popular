@@ -29,6 +29,7 @@
 - [Parte 15 — laboratório dither e afins](#parte-15--laboratório-dither-e-afins)
 - [Parte 16 — memória das resistências](#parte-16--memória-das-resistências)
 - [Parte 17 — acervos estaduais e multinacionais](#parte-17--acervos-estaduais-e-multinacionais)
+- [Parte 18 — dados de fonte (fontes, coleta, texto)](#parte-18--dados-de-fonte-fontes-coleta-texto)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -640,6 +641,49 @@ os dois tratados aqui.
 5. ✅ **Conferidos**: `lib/legislativo/*` (resto), `lib/fornecedores/*`,
    `lib/laboratorio/dados-catalogo` (liga os dois acervos ao gráfico dither).
 
+## Parte 18 — dados de fonte (fontes, coleta, texto)
+
+Décima segunda passada, nos utilitários de fonte e coleta.
+
+### Achados da Parte 18
+
+1. ✅ **`lib/coleta/fetch-resiliente.ts`** — cliente HTTP dos coletores:
+   User-Agent honesto, backoff exponencial com jitter, `Retry-After` (429/503),
+   4xx permanente × 5xx transitório e checkpoint atômico. Já bem documentado;
+   entra na tabela sem reescrita.
+
+2. ✅ **`lib/texto/normalizar-numeros.ts`** — converte fração de grandeza
+   ("0,4 bilhões" → "400 milhões") com concordância e prefixo "R$". Conferido;
+   sem defeito.
+
+3. ⚠️ → ✅ **`lib/fontes/registry.ts` — o catálogo de fontes apodreceu.** Dos
+   42 registros, **13 `caminhoArquivo` apontavam para arquivo inexistente**.
+   Causas medidas:
+   - dado migrado para bundle ETL em `etl/betim/dados/*`, lido no build por
+     `carregarJsonEtl` (sirenejud, tac-gtac, execucao-fgv, sintese-ajri,
+     inspecoes-cnj) — o catálogo dizia `data-json` e `apps/web/data/...`;
+   - dado embutido em módulo TS gerado (convenios-federais-mg);
+   - dado consolidado em `biblioteca-desastres-unificada.json` (dpmg-notas,
+     quadrilatero-ferrifero, casos-nacionais-crimes, acoes-coletivas-justica);
+   - geojson renomeado (terras-indigenas, territorios-quilombolas);
+   - arquivo renomeado (salic-rouanet → rouanet-mg-projetos).
+
+4. ⚠️ → ✅ **`CamadaDado` não tinha a camada ETL.** O catálogo existe para
+   declarar a camada de alocação de cada base (para não estourar o bundle);
+   sem `"etl"`, o dado servido por `carregarJsonEtl` era rotulado `data-json`
+   com caminho falso. Camada adicionada, com inicializador e teste atualizados.
+
+5. ✅ **Guarda contra drift.** `registry.test.ts` ganhou teste que exige, para
+   todo `caminhoArquivo` declarado, arquivo existente no repositório. O
+   apodrecimento silencioso não volta.
+
+6. 📌 **Registrado — o catálogo não é consumido.** `registry.ts` só é importado
+   pelo próprio teste. A promessa do cabeçalho ("rastreabilidade em todas as
+   telas e APIs" e "exposição na API pública") **não está ligada** ao `/api`
+   nem às telas. Dívida: ligar o registro ou assumir que é só documentação.
+
+7. ✅ **Conferidos**: `lib/fontes/*`, `lib/coleta/*`, `lib/texto/*`.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -673,6 +717,11 @@ Confirmados no código nesta rodada:
    `betimD1.ts`, `municipios.ts` e nas funções por USUÁRIO de `judiciario.ts`
    (`monitoramentosDoUsuario`, `alertasDoUsuario`, `criarMonitoramento`) —
    todas corretas por natureza, não são leitura pública.
+
+6. **O catálogo de fontes não é consumido (Parte 18).** `lib/fontes/registry.ts`
+   só é importado pelo próprio teste; a "exposição na API pública" do cabeçalho
+   não existe no código. Ou o portal passa a ler o registro, ou ele é documento
+   — não fonte de verdade. O caminho continua guardado por teste.
 
 ## Fila de revisão
 

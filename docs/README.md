@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-09-29
+> **Última medição:** 2026-09-30
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -67,6 +67,11 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
 
 ## Decisões registradas
 
+- **Catálogo de fonte se prova por teste, não por confiança** (30/09/2026):
+  a revisão de código achou 13 de 42 caminhos de arquivo do catálogo de fontes
+  apontando para arquivo inexistente (o dado migrara para bundles ETL em
+  `etl/betim/dados/` ou fora consolidado). `lib/fontes/registry.test.ts` agora
+  recusa caminho que não existe. Detalhe: [REVISAO-CODIGO.md, Parte 18](04-arquitetura/REVISAO-CODIGO.md).
 - **Deploy principal = Guara Cloud** (19/09/2026): `www.controlepopular.com.br`
   ativa; a raiz vive de redirect no Cloudflare. Túnel e Worker seguem como
   servidor 2 e fallback. Detalhes: [ESTADO.md § No ar agora](02-estado/ESTADO.md#no-ar-agora).

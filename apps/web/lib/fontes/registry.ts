@@ -27,6 +27,7 @@ export type CamadaDado =
   | "data-json" // Camada 1: apps/web/data/*.json (< 500 KB)
   | "public-assets" // Camada 2: apps/web/public/data/*.json (500 KB - 10 MB, com exclude)
   | "banco" // Camada 3: Postgres (Drizzle schema) / fatias estáticas
+  | "etl" // Camada ETL: etl/betim/dados/*.json lidos no build via carregarJsonEtl
   | "ao-vivo"; // Consulta em tempo real (ex: DataJud CNJ sem retenção)
 
 export type RegimeLicenca =
@@ -128,7 +129,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "semanal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/convenios-federais-mg.json",
+    caminhoArquivo: "apps/web/lib/ambiental/convenios-federais-mg.ts", // modulo gerado
     rotaPortal: "/[municipio]/prefeitura",
   },
 
@@ -162,7 +163,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/salic-rouanet-mg.json",
+    caminhoArquivo: "apps/web/data/rouanet-mg-projetos.json", // par: rouanet-mg-incentivadores.json
     rotaPortal: "/[municipio]/cultura",
     ressalvaEditorial: "Total doado informado na fonte é nacional, não restrito ao município.",
   },
@@ -220,8 +221,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     urlOficial: "https://www.cnj.jus.br/programas-e-acoes/sirenejud/",
     licenca: "dominio-publico",
     frequenciaAtualizacao: "mensal",
-    camada: "data-json",
-    caminhoArquivo: "apps/web/data/sirenejud-mg.json",
+    camada: "etl",
+    caminhoArquivo: "etl/betim/dados/sirenejud-mg.json",
     constanteCobertura: "COBERTURA_SIRENEJUD",
     rotaPortal: "/judiciario/sirenejud",
   },
@@ -251,8 +252,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     urlOficial: "https://www.cnj.jus.br/inspecoes-correicoes/",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
-    camada: "data-json",
-    caminhoArquivo: "apps/web/data/cnj-inspecoes.json",
+    camada: "etl",
+    caminhoArquivo: "etl/betim/dados/inspecoes-cnj-bundle.json",
     rotaPortal: "/judiciario/inspecoes",
   },
 
@@ -272,7 +273,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dominio-publico",
     frequenciaAtualizacao: "mensal",
     camada: "public-assets",
-    caminhoArquivo: "apps/web/public/terras/globo/dados/camadas/terras-indigenas-mg.geojson",
+    caminhoArquivo: "apps/web/public/terras/globo/dados/camadas/terras-indigenas.geojson",
     rotaPortal: "/funcaosocialterra/mapa",
   },
   "incra-quilombolas": {
@@ -286,7 +287,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "public-assets",
-    caminhoArquivo: "apps/web/public/terras/globo/dados/camadas/quilombolas-mg.geojson",
+    caminhoArquivo: "apps/web/public/terras/globo/dados/camadas/territorios-quilombolas.geojson",
     rotaPortal: "/funcaosocialterra/mapa",
   },
   "sigmine-anm": {
@@ -316,8 +317,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     urlOficial: "https://projetorioparaopeba.fgv.br",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "semanal",
-    camada: "data-json",
-    caminhoArquivo: "apps/web/data/execucao-fgv.json",
+    camada: "etl",
+    caminhoArquivo: "etl/betim/dados/execucao-fgv-bundle.json",
     constanteCobertura: "COBERTURA_EXECUCAO_FGV",
     rotaPortal: "/paraopeba/execucao",
   },
@@ -348,8 +349,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     urlOficial: "https://portal.auditoriasocioambiental.com.br",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
-    camada: "data-json",
-    caminhoArquivo: "apps/web/data/auditoria-ajri.json",
+    camada: "etl",
+    caminhoArquivo: "etl/betim/dados/sintese-ajri-bundle.json",
     constanteCobertura: "COBERTURA_AUDITORIA_AJRI",
     rotaPortal: "/paraopeba/auditoria",
   },
@@ -425,8 +426,8 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     urlOficial: "https://ecosistemas.meioambiente.mg.gov.br/gtac/",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
-    camada: "data-json",
-    caminhoArquivo: "apps/web/data/tac-gtac-mg.json",
+    camada: "etl",
+    caminhoArquivo: "etl/betim/dados/tac-gtac-bundle.json",
     constanteCobertura: "COBERTURA_GTAC_MG",
     rotaPortal: "/ambiental/tac",
   },
@@ -640,7 +641,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/dpmg-notas.json",
+    caminhoArquivo: "apps/web/data/biblioteca-desastres-unificada.json",
     constanteCobertura: "COBERTURA_DPMG",
     rotaPortal: "/ambiental/crimes-socioambientais",
     ressalvaEditorial: "Atuação em comitês do Acordo e notas sobre atingidos. P2 — menos documentos que MPMG e MPF.",
@@ -656,7 +657,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "semanal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/quadrilatero-ferrifero.json",
+    caminhoArquivo: "apps/web/data/biblioteca-desastres-unificada.json",
     rotaPortal: "/ambiental/crimes-socioambientais",
     ressalvaEditorial: "Conflitos de mineração no Vale do Aço com repercussão socioambiental. Prioridade crítica.",
   },
@@ -686,7 +687,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/casos-nacionais-crimes.json",
+    caminhoArquivo: "apps/web/data/biblioteca-desastres-unificada.json",
     rotaPortal: "/ambiental/crimes-socioambientais",
     ressalvaEditorial: "Casos com repercussão nacional e internacional. Número vem do dado; modelo só embrulha.",
   },
@@ -701,7 +702,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     licenca: "dominio-publico",
     frequenciaAtualizacao: "semanal",
     camada: "data-json",
-    caminhoArquivo: "apps/web/data/acoes-coletivas-justica.json",
+    caminhoArquivo: "apps/web/data/biblioteca-desastres-unificada.json",
     rotaPortal: "/ambiental/crimes-socioambientais",
     ressalvaEditorial: "Status: Trânsito em julgado, vigente ou em andamento. Ações coletivas são o portal afirmando algo — rotular como gerado por máquina se aplicável.",
   },
@@ -758,6 +759,7 @@ export function obterEstatisticasFontes(): {
     "data-json": 0,
     "public-assets": 0,
     banco: 0,
+    etl: 0,
     "ao-vivo": 0,
   };
 

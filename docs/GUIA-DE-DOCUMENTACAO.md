@@ -2,7 +2,7 @@
 
 > **Tipo:** GUIA
 > **Domínio:** global
-> **Última medição:** 2026-09-01
+> **Última medição:** 2026-09-30
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [README.md](README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** documentação, template, sumário, metadados, links internos, nomenclatura, validação, manutenção
@@ -144,6 +144,9 @@ A cada 30 dias, rodar `scripts/validar-documentacao.py`:
 2. Listar links internos quebrados.
 3. Listar medições com mais de 60 dias sem revisão.
 4. Verificar se `docs/README.md` reflete a estrutura real.
+5. Conferir se os catálogos de fonte não apodreceram: todo caminho de arquivo
+   declarado em `apps/web/lib/fontes/registry.ts` tem de existir no repositório
+   (`apps/web/lib/fontes/registry.test.ts` guarda o caso).
 
 ## Decisões registradas
 
@@ -152,3 +155,15 @@ A cada 30 dias, rodar `scripts/validar-documentacao.py`:
 - **`_historico/` vira `historico/` sem underline** — facilita busca e navegação; subdivide-se por tipo.
 - **Não duplicar `AGENTS.md`** — regras de commit, worktree e dado pessoal continuam lá; docs apenas remetem.
 - **Número medido com data** — toda medição citada traz a data; número sem data vira dívida.
+- **Documento que aponta caminho é conferido por teste, não por confiança**
+  (aprendizado da [Parte 18 da revisão](04-arquitetura/REVISAO-CODIGO.md)) —
+  13 de 42 caminhos do catálogo de fontes apontavam para arquivo inexistente.
+  Documento/catálogo sem guarda apodrece em silêncio.
+- **Dado que muda de camada muda a camada declarada** — quando um JSON sai de
+  `apps/web/data/` para um bundle ETL (`etl/betim/dados/*`, lido no build por
+  `carregarJsonEtl`) ou vira módulo TS gerado, o campo de camada/caminho no
+  catálogo muda junto. O número na tela não muda; a procedência, sim.
+- **Arquivo gerado abre com "GERADO — NÃO EDITE"** — vale para
+  `cidades-do-build.ts`, `convenios-federais-mg.ts` e para a saída do
+  `drizzle-kit introspect` em `lib/db`. Quem edita à mão perde a edição no
+  próximo gerador (dívida registrada na revisão).

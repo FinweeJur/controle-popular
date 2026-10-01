@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import {
   REGISTRY_FONTES,
   obterFonte,
@@ -19,7 +21,7 @@ describe("Registry Central de Fontes", () => {
       expect(f.orgao).toBeTruthy();
       expect(f.urlOficial.startsWith("http")).toBe(true);
       expect(["dominio-publico", "cc-by", "cc-by-sa", "cc-by-nd", "dados-abertos-gov", "lei-acesso-informacao", "termo-restrito-sem-derivados"]).toContain(f.licenca);
-      expect(["data-json", "public-assets", "banco", "ao-vivo"]).toContain(f.camada);
+      expect(["data-json", "public-assets", "banco", "etl", "ao-vivo"]).toContain(f.camada);
       expect(["cidades", "congresso", "judiciario", "terras", "paraopeba", "ambiental", "empresas", "transversal"]).toContain(f.frente);
     }
   });
@@ -61,5 +63,19 @@ describe("Registry Central de Fontes", () => {
     expect(stats.porCamada["public-assets"]).toBeGreaterThan(0);
     expect(stats.porFrente.ambiental).toBeGreaterThan(0);
     expect(stats.porFrente.cidades).toBeGreaterThan(0);
+  });
+
+  it("aponta caminhoArquivo para arquivo existente (guarda contra drift)", () => {
+    const cwd = process.cwd();
+    const raizes = [cwd, path.resolve(cwd, ".."), path.resolve(cwd, "..", "..")];
+    const faltando: string[] = [];
+    for (const f of listarTodasFontes()) {
+      if (!f.caminhoArquivo) continue;
+      const achou = raizes.some((r) =>
+        existsSync(path.join(r, f.caminhoArquivo as string)),
+      );
+      if (!achou) faltando.push(`${f.slug} -> ${f.caminhoArquivo}`);
+    }
+    expect(faltando).toEqual([]);
   });
 });
