@@ -186,24 +186,28 @@ export function CampfireColonyAnim() {
         <Pinheiro x={158} altura={70} />
         <Pinheiro x={184} altura={48} />
 
-        {/* Fumaça: o traço mais alto da cena, fino e quase reto. */}
+        {/* Fumaça: o traço mais alto da cena, fino e quase reto, também na
+            cor da marca do tema (`--cp-primary`). */}
         <g className="cp-fumaca">
           <path
             d="M 286 292 C 281 232 301 210 293 146 C 287 100 300 62 295 16"
             fill="none"
-            stroke="var(--cp-text-soft, #ffffff)"
+            stroke="var(--cp-primary, #f2701d)"
             strokeWidth="4"
             strokeLinecap="round"
             strokeDasharray="360 80"
-            opacity="0.55"
+            opacity="0.45"
           />
         </g>
 
-        {/* Fogueira entre os pinheiros e a pedra. */}
+        {/* Fogueira entre os pinheiros e a pedra. O brilho e as chamas
+            usam `--cp-primary` (a cor da marca do tema): laranja no pequi,
+            verde em Mata Atlântica, azul no Pantanal, terracota no Cerrado.
+            O miolo é a mesma cor clareada para o fogo ter núcleo. */}
         <g className="cp-chamas">
-          <circle cx={286} cy={302} r={20} fill="var(--cp-tertiary, #fde26c)" opacity="0.28" />
-          <Chama x={286} y={306} largura={16} altura={30} espelho={13} cor="var(--cp-tertiary, #fde26c)" opacidade={0.8} />
-          <Chama x={286} y={308} largura={8} altura={16} espelho={8} cor="var(--cp-primary, #fda263)" opacidade={1} />
+          <circle cx={286} cy={302} r={22} fill="var(--cp-primary, #f2701d)" opacity="0.3" />
+          <Chama x={286} y={306} largura={16} altura={30} espelho={13} cor="var(--cp-primary, #f2701d)" opacidade={0.9} />
+          <Chama x={286} y={308} largura={8} altura={16} espelho={8} cor="color-mix(in srgb, var(--cp-primary, #f2701d) 40%, #ffffff)" opacidade={1} />
         </g>
       </svg>
     </span>
