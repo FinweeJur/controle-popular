@@ -14,6 +14,7 @@ import TopNav from "@/app/components/TopNav";
 import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
+import { CompanheiroFlutuante } from "@/app/components/CompanheiroFlutuante";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
 import PlayerRadio from "@/app/components/PlayerRadio";
@@ -271,6 +272,10 @@ export default function RootLayout({
               age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
               no-op. Ver `PonteCompanheiro.tsx`. */}
           <PonteCompanheiro />
+          {/* Companheiro Seu Nonô — bichinho flutuante e arrastável no canto
+              inferior direito (a rádio e o widget do Seu Nonô ficam à
+              esquerda). Abre a sessão pareada com o app de desktop. */}
+          <CompanheiroFlutuante />
         </ThemeProvider>
       </body>
     </html>
