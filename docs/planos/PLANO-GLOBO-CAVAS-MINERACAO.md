@@ -518,6 +518,34 @@ antes de regerar a folha, senão a revisão se perde.
 dúvida". Antes de usar como rótulo, o significado precisa ser fechado com o
 dev.
 
+#### Modelo v4 pontua os 100 e encurta a fila — 01/10/2026
+
+Rodado o checkpoint **v4 (sobreamostragem, época 6, melhor F1 0,825)** sobre
+os 100 da folha, com o mesmo pré-processamento do treino (sem aumento),
+limiar 0,64 e `half` na GPU. Script descartável em
+`Temp\opencode\pontuar-amostra-100.py`; saída em
+`Temp\opencode\cavas\pontuacao-v4-amostra100.json`.
+
+- **Concorda com o rótulo em 84 de 100**; precisão 0,827 / recall 0,860
+  nesta amostra (confere com o gate).
+- O modelo é **bimodal**: negativos ~0,30, positivos ~0,69–0,9x. **Não há
+  item entre 0,45 e 0,64** — a "insegurança" não existe como faixa larga.
+- Logo, a fila de revisão cai de **100 para 16** (a discordância), gravada em
+  `fila-curta-v4.json` e na folha `scripts/.cache/cavas-calibracao/fila-curta-v4.html`.
+
+**Os 16 se abrem em dois grupos limpos:**
+
+- **9 possíveis falsos negativos** — rótulo `negativo`, mas VLM deu **85** e o
+  v4 ficou **0,67–0,69**, logo acima do limiar. Bate com os 4 FN que o dev já
+  achou à mão: **há cava dentro do conjunto de negativos**.
+- **7 possíveis falsos positivos** — rótulo `positivo`, mas VLM **0** e v4
+  **0,30**. Dos 7, **2 o dev já marcou `publicável`** — ou seja, nesses o
+  modelo erra e o dev vê a cava.
+
+**Consequência de método:** revisar 16 em vez de 100. Antes do próximo treino,
+**corrigir o rótulo dos negativos que são cava** — senão o modelo segue
+aprendendo vegetação onde há lavra, e o recall não sobe.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
