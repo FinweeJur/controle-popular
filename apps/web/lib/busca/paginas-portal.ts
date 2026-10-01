@@ -763,6 +763,21 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     ],
   },
   {
+    id: "empresas-executivos",
+    titulo: "Executivos, Conselhos e Porta Giratória",
+    descricao:
+      "Governança das grandes companhias: diretores, conselhos e comitês, remunerações, diretorias entrelaçadas e quem declarou à CVM ter exercido cargo público (porta giratória).",
+    href: "/empresas/executivos",
+    frente: "geral",
+    rotulo: "Empresas · Governança",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "executivos", "conselho", "conselheiros", "ceo", "diretoria", "comite",
+      "governanca", "remuneracao", "porta giratoria", "revolving door",
+      "interlocking", "cvm", "formulario de referencia", "fre", "pep",
+    ],
+  },
+  {
     id: "eua-hub",
     titulo: "Transparência dos Estados Unidos (SEC, USAspending, Barragens)",
     descricao:
