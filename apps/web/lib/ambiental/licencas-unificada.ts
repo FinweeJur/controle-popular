@@ -18,7 +18,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
-
+import { janelaDe } from "./licencas-arquivos";
 
 interface ArquivoLicencasRaw {
   total?: number;
@@ -30,29 +30,44 @@ interface ArquivoLicencasRaw {
   linhas?: (LinhaBruta | (string | number | null)[])[];
 }
 
-function carregarDataJson(nome: string, maxLinhas: number = 500): ArquivoLicencasRaw {
+/**
+ * Abre um acervo de licença preferindo a AMOSTRA versionada
+ * (`data/amostras/<arquivo>`) e caindo para o arquivo completo quando ele
+ * existe. A amostra tem os MESMOS metadados (total real, ressalva, truncado)
+ * e só as primeiras N linhas — exatamente a janela que a página publica, então
+ * o resultado é idêntico lendo de um ou de outro. O arquivo completo não entra
+ * no contexto de build do Guara (teto 256 MB); quem regenera a amostra é
+ * `scripts/gerar-amostras-licencas.mts`, no prebuild.
+ */
+function abrirJsonLicencas(nome: string): ArquivoLicencasRaw | null {
   const caminhos = [
+    path.resolve(process.cwd(), "apps", "web", "data", "amostras", nome),
+    path.resolve(process.cwd(), "data", "amostras", nome),
     path.resolve(process.cwd(), "apps", "web", "data", nome),
     path.resolve(process.cwd(), "data", nome),
   ];
   for (const c of caminhos) {
     if (existsSync(c)) {
       try {
-        const conteudo = readFileSync(c, "utf-8");
-        const dado = JSON.parse(conteudo) as ArquivoLicencasRaw;
-        if (Array.isArray(dado.linhas) && dado.linhas.length > maxLinhas) {
-          return {
-            ...dado,
-            linhas: dado.linhas.slice(0, maxLinhas),
-          };
-        }
-        return dado;
+        return JSON.parse(readFileSync(c, "utf-8")) as ArquivoLicencasRaw;
       } catch {
-        return { total: 0, linhas: [] };
+        return null;
       }
     }
   }
-  return { total: 0, linhas: [] };
+  return null;
+}
+
+function carregarDataJson(nome: string, maxLinhas: number = janelaDe(nome)): ArquivoLicencasRaw {
+  const dado = abrirJsonLicencas(nome);
+  if (!dado) return { total: 0, linhas: [] };
+  if (Array.isArray(dado.linhas) && dado.linhas.length > maxLinhas) {
+    return {
+      ...dado,
+      linhas: dado.linhas.slice(0, maxLinhas),
+    };
+  }
+  return dado;
 }
 
 /** Carrega JSON já normalizado (coletores Onda 2: campos completos incluindo
@@ -69,17 +84,12 @@ interface ArquivoNormalizadoRaw {
 
 function carregarLinhasNormalizadas(
   nome: string,
-  maxLinhas: number = 300,
+  maxLinhas: number = janelaDe(nome),
 ): { linhas: LinhaLicencaUnificada[]; meta: ArquivoNormalizadoRaw } {
-  const caminhos = [
-    path.resolve(process.cwd(), "apps", "web", "data", nome),
-    path.resolve(process.cwd(), "data", nome),
-  ];
-  for (const c of caminhos) {
-    if (existsSync(c)) {
-      try {
-        const dado = JSON.parse(readFileSync(c, "utf-8")) as ArquivoNormalizadoRaw;
-        const todas = (dado.linhas ?? []).map((l) => {
+  const dado = abrirJsonLicencas(nome) as (ArquivoNormalizadoRaw & ArquivoLicencasRaw) | null;
+  if (!dado) return { linhas: [], meta: {} };
+  try {
+    const todas = (dado.linhas ?? []).map((l) => {
           const lAny = l as LinhaLicencaUnificada & { valor_multa?: number | string | null; fonte_url?: string | null };
           const porte = l.porte ?? inferirPorte(null, null, l.tipo, l.microresumo, l.tags);
           const valor = l.valor_investimento ?? extrairValor(lAny.valor_multa, l.microresumo);
@@ -97,12 +107,9 @@ function carregarLinhasNormalizadas(
           linhas: todas.length > maxLinhas ? todas.slice(0, maxLinhas) : todas,
           meta: dado,
         };
-      } catch {
-        return { linhas: [], meta: {} };
-      }
-    }
+  } catch {
+    return { linhas: [], meta: {} };
   }
-  return { linhas: [], meta: {} };
 }
 
 const ibama = carregarDataJson("ibama-licencas.json");

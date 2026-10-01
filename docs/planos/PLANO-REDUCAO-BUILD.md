@@ -15,6 +15,7 @@
 - [Fase 2 — tirar JSON grande do contexto](#fase-2--tirar-json-grande-do-contexto)
 - [Fase 3 — compactação](#fase-3--compactação)
 - [Verificação por item](#verificação-por-item)
+- [Execução (01/10/2026) — F1 + F2 feitas, F3 dispensada](#execução-01102026--f1--f2-feitas-f3-dispensada)
 - [Decisões registradas](#decisões-registradas)
 
 ## O problema
@@ -126,6 +127,36 @@ rg -n "esg/vale-environment_doc|documentos-empresas" apps/web/app apps/web/lib
 Só remover o que `rg` não encontrar em `import`/`readFileSync` de rota
 pré-renderizada. Depois, remedir o contexto com o mesmo script da Fase 0 e só
 então **um** deploy (a cota de build está em 281/250 min).
+
+## Execução (01/10/2026) — F1 + F2 feitas, F3 dispensada
+
+Medido no worktree limpo (`origin/main` do dia, sem `node_modules`/`.next`):
+**442,1 MB antes → 223,5 MB depois** (teto 256 MB, folga de ~32 MB).
+
+- **F1 (`.dockerignore`):** `docs/`, `scripts/` da raiz, `companion/`,
+  `supabase/`, `bots/`, `colibri/`, `handoffs/`, `skills/`, `.hermes/`,
+  `.github/`, `.githooks/`, o `etl/` FORA de `etl/betim/dados/` (único trecho
+  que o build lê, via `lib/server-only/json-etl.ts`) e os PDFs de
+  `data/esg/` + `data/documentos-empresas/` (rg confirma: nenhum
+  `import`/`readFileSync` no build — só nome de CSV de download).
+- **F2 — caminho "fatiar", não "mover para public/data":** mover para
+  `public/data/` NÃO tiraria nada do contexto (`COPY . .` manda o `public/`
+  inteiro; medido: `public/` pesa 99,6 MB e segue no contexto). O que
+  funcionou foi a alternativa do próprio plano ("fatiar"): o JSON completo
+  segue versionado no repo, mas **fora do contexto via `.dockerignore`**, e o
+  build lê a **amostra versionada** em `apps/web/data/amostras/` — mesmos
+  metadados (total real, ressalva, truncado), só a janela que a página já
+  publicava (300/500 linhas por órgão). Gerador:
+  `scripts/gerar-amostras-licencas.mts` (entra no prebuild; no Guara, sem o
+  JSON completo, mantém a amostra versionada). Leitor: `licencas-unificada.ts`
+  agora prefere a amostra. Guarda: `lib/ambiental/licencas-amostras.test.ts`
+  (amostra existe, janela respeitada, total real preservado).
+- **F3 não foi precisada.** Com F1+F2 o alvo foi atingido com folga; os codecs
+  de compactação ficam intocados (decisão de 16/08 preservada).
+- **Verificação:** `tsc --noEmit` limpo; 12 testes verdes (8 do
+  `licencas-unificada.test.ts` + 4 novos); eslint 0 erros (1 warning
+  pré-existente); **simulação do Guara** com só as amostras no lugar dos JSON
+  completos: 6.912 registros, total real 641.265, 18 órgãos, `truncado: true`.
 
 ## Decisões registradas
 

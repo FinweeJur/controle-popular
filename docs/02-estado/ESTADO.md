@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-30
+> **Última medição:** 2026-10-01
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -155,6 +155,7 @@ Runbooks: [`planos/`](../planos/).
 
 | Bloqueio | Quem desbloqueia |
 |---|---|
+| Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
 | Neon em 94% storage | ✅ app já no Guara (29/09) — sobra cancelar a conta Neon |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
 | Raiz do domínio com 403 | redirect rule no Cloudflare (A2) |
@@ -173,6 +174,29 @@ Runbooks: [`planos/`](../planos/).
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
 ## Entregas recentes
+
+**01/10/2026 — Postgres do Guara completo + contexto de build no teto:**
+
+- **Banco:** as 48 tabelas que estavam em 0 no Guara foram populadas por
+  replicação `pg_dump --data-only` do Postgres local → proxy Guara
+  (destaques: `servidores` 139.599, `saude_internacoes_cid` 82.376,
+  `cap_autos_infracao` 78.039, `licitacoes` restante, `socios`, `ibama_*`,
+  `paraopeba_*`, `patrimonio_tombado_iepha`). Conferido: **0 tabelas em 0
+  que tenham dado local**. `nota_transparencia` foi com mapeamento de colunas
+  (`*_uf` local → `*_mg` Guara). Fonte da verdade dos coletores segue sendo o
+  Postgres local; não mexi em `.env` nenhum (credenciais só em variável de
+  processo).
+- **Build:** contexto de build derrubado de **442,1 MB para 223,5 MB**
+  (teto Guara 256 MB) — F1 (`.dockerignore`: docs, PDFs, etl fora de
+  `dados/`) + F2 (JSON de licença sai do contexto; build lê amostras
+  versionadas com total real preservado). F3 (compactação) dispensada.
+  Detalhe e verificação: [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md).
+- **Tailscale:** já ativo no `home-pc` (100.91.10.1, online, tailnet
+  `finweejur.github`) com `sshd` do Windows de pé — o desktop alcança este PC
+  por SSH no IP do tailnet. O Guara tem serviço de catálogo Tailscale
+  (v1.96.5, pede auth key) **não deployado**; o acesso ao Postgres segue pelo
+  `guara proxy`, que funciona (token de sessão falha 1× a cada tanto — basta
+  reconectar).
 
 **30/09/2026 — Diretório de rádios (`/radio`) e player multi-estação:**
 
