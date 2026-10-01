@@ -28,6 +28,7 @@ Só JSON de acervo/dataset em caminhos de DADO, por padrão:
         "docs/dados", "docs/judiciario", "docs/ambiental",
         "etl/betim/dados", "etl/judiciario/etl/dados",
         "scripts/dados",
+        "apps/web/public/municipios", "etl/congresso/etl/benchmark",
     ]
 
 A lista não é só os dois diretórios originais: é todo diretório rastreado
@@ -39,6 +40,17 @@ de coletor, um deles com 8.570 normas, sem varredura nenhuma até alguém abrir
 o arquivo à mão por outro motivo e notar o buraco. De novo com
 `scripts/dados/` em 28/09/2026: os alvos de GO vieram de outra máquina e
 entraram sem estar na lista — mesma brecha, mesma correção.
+
+Revisão de 01/10/2026 mediu a lista contra o disco: `git ls-files '*.json'`
+dá 110 diretórios com JSON rastreado e a lista tinha 8. Isso, por si só,
+NÃO era buraco — o script irmão (`checar-dado-pessoal.py`, constante
+`EXTENSOES`) varre `*.json` em todo arquivo rastreado via `git grep`, então
+quem está fora daqui nunca ficou sem rede nenhuma. O que este script dá de
+extra é a varredura ESTRUTURAL: só valores de texto, ignorando chaves e
+geometria, com `validate-docbr` por cima do mod-11. Entraram na lista os
+dois coletres que gravavam JSON rastreado fora dela — `apps/web/public/
+municipios` (semeador do IBGE, e é dado PUBLICADO no site) e `etl/congresso/
+etl/benchmark` (saída de pontuação). Medido depois: 444 arquivos, 15,6 s.
 
 Espacial (`.geojson`) e CSV ficam de fora pela mesma decisão de design do
 script irmão: são dados de órgão público já vistados na ingestão, e varrer
@@ -189,6 +201,12 @@ DIRETORIOS_DADO = [
     "docs/dados", "docs/judiciario", "docs/ambiental",
     "etl/betim/dados", "etl/judiciario/etl/dados",
     "scripts/dados",
+    # 01/10/2026 — dois coletres que gravavam JSON rastreado fora da lista:
+    # o semeador do IBGE (`scripts/etl/municipios/build-municipios-uf.mts`)
+    # e a pontuação do benchmark do congresso. O primeiro é dado PUBLICADO no
+    # site, então é o mais caro de errar. Ver o cabeçalho para a medição de
+    # por que isso não era um buraco antes.
+    "apps/web/public/municipios", "etl/congresso/etl/benchmark",
 ]
 
 # `[0-9]` e NÃO `\d`: mesmo dialeto do script irmão, e a mesma razão — a

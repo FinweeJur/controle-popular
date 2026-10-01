@@ -134,8 +134,17 @@ Lições, todas com código no repo:
 - `apps/web/lib/sem-cpf-no-repo.test.ts` valida CPF **por mod-11** (o dígito
   verificador do próprio CPF) no código versionado.
 - `scripts/checar-dado-pessoal-em-dado.py` varre o **dado ingerido** — os JSON
-  dos diretórios listados em `DIRETORIOS_DADO` (topo do script). Roda no
-  pre-push, na CI e na suíte.
+  dos diretórios listados em `DIRETORIOS_DADO` (topo do script). Roda na
+  suíte e na CI, e no pre-push **quando o hook está ligado**.
+- **O pre-push precisa ser ligado uma vez por clone:**
+  `git config core.hooksPath .githooks`. Sem esse comando o hook mora no repo
+  e não executa — e essa é a única camada que barra **antes** de o dado ir ao
+  ar; a CI só pega depois do push. Confira com
+  `git config --get core.hooksPath` (medido vazio em 01/10/2026 nesta
+  máquina, quando a instrução só existia em `DESENVOLVIMENTO.md`, não aqui).
+- A régua de dado tem **duas etapas**: mod-11 (sempre roda) e `validate-docbr`
+  (confirma o CPF e derruba falso positivo). Sem a biblioteca instalada a
+  segunda vira aviso no stderr — o CI instala, o clone nem sempre.
 - Coletor novo que grava JSON a cada rodada **entra em `DIRETORIOS_DADO`** —
   o flag `--extra` cobre um dump só, não o pre-push.
 - Rode a suíte **antes** de commitar dado coletado. Sempre.

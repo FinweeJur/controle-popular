@@ -31,6 +31,15 @@ jobs:
         with:
           python-version: "3.11"
 
+      # A régua de dado tem duas etapas: mod-11 (que roda sempre) e
+      # `validate-docbr` (que confirma o CPF e derruba falso positivo).
+      # Sem este passo a segunda etapa é só aviso no stderr — medido em
+      # 01/10/2026: nem a CI nem o clone local tinham a biblioteca, então a
+      # régua que foi validada em 31/08/2026 (M4) não estava rodando em
+      # lugar nenhum.
+      - name: Instalar a régua semântica de CPF
+        run: python -m pip install validate-docbr
+
       - name: Procurar CPF de pessoa real e segredo (código)
         run: python scripts/checar-dado-pessoal.py
 

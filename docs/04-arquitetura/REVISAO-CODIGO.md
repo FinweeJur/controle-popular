@@ -34,6 +34,7 @@
 - [Parte 20 — junções editoriais (cruzamentos e teia)](#parte-20--junções-editoriais-cruzamentos-e-teia)
 - [Parte 21 — busca estática (lib/busca)](#parte-21--busca-estática-libbusca)
 - [Parte 22 — respostas curadas e índice de páginas](#parte-22--respostas-curadas-e-índice-de-páginas)
+- [Parte 23 — a guarda de dado pessoal (a cadeia do §5.2)](#parte-23--a-guarda-de-dado-pessoal-a-cadeia-do-52)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -1067,6 +1068,76 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
    número canônico antes de reescrever dez arquivos, dois deles JSON de
    dado gerado. Registrado em **Fora do escopo desta sessão**.
 
+## Parte 23 — a guarda de dado pessoal (a cadeia do §5.2)
+
+Vigésima terceira passada, na defesa mais dura do projeto — a que o
+[AGENTS §5.2](/AGENTS.md) chama de regra que não se negocia. O que se mediu
+não foi o regex: ele é o mesmo em três cópias. O que se mediu foi **quantas
+das camadas prometidas estavam de pé**, porque duas delas dependiam de
+configuração que ninguém conferia.
+
+### Achados da Parte 23
+
+1. ⚠️ → ✅ **O pre-push não roda nesta máquina — corrigido (01/10/2026).**
+   Medido: `git config --get core.hooksPath` devolve **vazio**, e
+   `.git/hooks` não tem um arquivo sequer. O hook `.githooks/pre-push`
+   (3 KB) existe, é completo e roda as duas checagens — mas sem
+   `core.hooksPath .githooks` ele nunca executa. A instrução de ligá-lo
+   estava em [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md)
+   e no cabeçalho do próprio hook; **não estava no AGENTS §5.2**, que é o
+   texto que todo agente lê — e o §5.2 dizia que o script "roda no
+   pre-push, na CI e na suíte", no imperativo. O cabeçalho do
+   `dado-pessoal.yml:3-6` já chamava isto de "modo de falha silencioso".
+   Consequência real: a única camada que barra **antes** da publicação
+   estava desligada no PC que publica, e a CI só alcança o commit depois
+   que ele já está no `origin/main` de um repositório público.
+   **Correção:** `git config core.hooksPath .githooks` + linha de ligar o
+   hook no [AGENTS §5.2](/AGENTS.md).
+
+2. ⚠️ → ✅ **A segunda régua de CPF não roda em lugar nenhum — corrigido
+   (01/10/2026).** `checar-dado-pessoal-em-dado.py` tem duas etapas:
+   mod-11 (roda sempre) e `validate-docbr` (confirma o CPF de verdade e
+   derruba falso positivo). Medido: **local sem a biblioteca** — o script
+   imprimia "⚠️ validate-docbr não instalado" em toda execução — e o
+   workflow fazia só `actions/setup-python` e já rodava o script, sem
+   `pip install`. Ou seja, a régua validada em 31/08/2026 (M4) só aparecia
+   quando alguém instalava à mão. **Correção:** biblioteca instalada
+   localmente e passo `pip install validate-docbr` no
+   [dado-pessoal.yml](../../.github/workflows/dado-pessoal.yml).
+   Depois da correção: dado limpo (**444 arquivos**) e `--self-test`
+   verde ("a régua vê CPF válido, ignora sintético/IBGE/CNPJ e informa o
+   caminho").
+
+3. ⚠️ → ✅ **`DIRETORIOS_DADO` com 8 diretórios de 110 — e isso não era
+   buraco (corrigido de qualquer jeito).** `git ls-files '*.json'` dá 110
+   diretórios com JSON rastreado; a lista tinha 8. Ficavam de fora
+   `apps/web/public/municipios/*` (54 JSON do semeador do IBGE, **publicados
+   no site**) e `etl/congresso/etl/benchmark/saidas_sonnet` (97 JSON de
+   pontuação). Antes de publicar isso como falha, conferiu-se o outro guarda:
+   `checar-dado-pessoal.py` declara `*.json` em `EXTENSOES` (linha 52) e
+   varre **todo arquivo rastreado** por `git grep` — nenhum desses
+   diretórios ficou sem rede. O que falta neles é só a varredura
+   **estrutural** (só valores, não chaves nem geometria). A diferença importa:
+   um achado da Parte 23 sem essa conferência teria virado alerta falso.
+   Mesmo assim os dois entraram na lista, porque a regra do próprio script
+   manda; medido depois: **444 arquivos, 15,6 s** por rodada.
+
+4. ✅ **Três camadas confirmadas de pé.** (a) **Suíte:**
+   `lib/sem-dado-pessoal-no-repo.test.ts` — 2 testes verdes em 9,5 s.
+   (b) **CI:** `dado-pessoal.yml` roda código, roda dado e ainda roda o
+   `--self-test`. (c) **Prova de que a régua não é cega:** o self-test
+   confirma que acha CPF formatado e corrido, respeita `SINTETICOS` e não
+   dispara em sintético, IBGE ou CNPJ. Fora da cadeia: o `.cache` do
+   coletor de cavas (`scripts/.cache/`) não é rastreado — **0 arquivos** —
+   então não é exposição.
+
+5. 📌 **O guarda de código não tem `--self-test`.** Só o de dado tem. Se um
+   bug fizesse o de código passar sempre, a CI não acusaria: quem o prova
+   hoje é `lib/sem-cpf-no-repo.test.ts`, que é outro arquivo com outra
+   régua. O próprio script já avisa que a regra vive em "três cópias"
+   (ele, `checar-dado-pessoal.py` e o teste) — e das três, só uma se
+   auto-prova. Registrado, não corrigido nesta sessão.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -1119,6 +1190,7 @@ Próximas micro-partes, por risco e retorno:
 | 5 | ✅ `lib/ambiental/`, `lib/paraopeba/`, `lib/terras/`, `lib/judiciario/`, `lib/congresso/` | Feita — Parte 6: cabeçalhos, payload server-only, triagem. |
 | 6 | ✅ `app/components/` | Feita — Parte 7: imagens com `alt`, gráficos com `descricaoAcessivel`. |
 | 7 | ✅ Compactação dupla | Feita — Parte 7: registrada como decisão, não dívida. |
+| 8 | ✅ Cadeia de dado pessoal (`sem-dado-pessoal-no-repo.test.ts`, `.githooks/`, `dado-pessoal.yml`) | Feita — Parte 23: era o único módulo do repo sem menção em nenhuma parte, e é a regra §5.2. Achou o pre-push desligado e a segunda régua de CPF fora do ar. |
 
 **Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
 ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
@@ -1178,6 +1250,22 @@ cada correção com teste de regressão e conversão do marcador
 17. `buscarPaginasPortal` passa a usar `separarPalavras` (dívida 22.5).
 18. Marcador da Parte 9 corrigido para `⚠️ → ✅`.
 
+**Fase 5 — guarda de dado pessoal** ✅ **concluída (01/10/2026)**
+([AGENTS.md](/AGENTS.md) §5.2, [dado-pessoal.yml](../../.github/workflows/dado-pessoal.yml),
+`scripts/checar-dado-pessoal-em-dado.py`, este doc — Parte 23)
+
+19. Pre-push **ligado** nesta máquina (`git config core.hooksPath .githooks`)
+    e a linha de ligá-lo publicada no AGENTS §5.2, que antes prometia a
+    camada sem dizer que ela precisa ser acionada por clone (achado 23.1).
+20. `pip install validate-docbr` virou passo do workflow e a biblioteca
+    entrou no clone — a segunda régua de CPF, que derruba falso positivo,
+    roda de novo na CI e na máquina (achado 23.2).
+21. `DIRETORIOS_DADO` ganhou `apps/web/public/municipios` e
+    `etl/congresso/etl/benchmark`; o cabeçalho do script passou a registrar
+    **por que** a contagem de 8 em 110 não era buraco, para a próxima
+    leitura não publicar alerta falso (achado 23.3).
+22. Parte 23 publicada e referenciada na fila (linha 8).
+
 **Fora do escopo desta sessão** — registrado, não é esquecimento:
 
 - catálogo de fontes consumido (dívida 18): muda o contrato da API pública;
@@ -1195,6 +1283,9 @@ cada correção com teste de regressão e conversão do marcador
   que é a primeira da lista;
 - 14 e 12 mineradoras na mesma tela (achado 22.8): decide-se qual número é
   canônico antes de reescrever dez arquivos, dois deles JSON de dado gerado.
+- `--self-test` do guarda de **código** (dívida 23.5): hoje só o de dado se
+  prova; o de código é coberto por `sem-cpf-no-repo.test.ts`, que é outra
+  régua — três cópias da regra e uma só se auto-verifica.
 
 **Verificação em cada fase:** `tsc --noEmit`, `eslint` nos arquivos do diff,
 `vitest` do escopo, guarda de CPF e `python scripts/validar-documentacao.py`.
@@ -1209,3 +1300,7 @@ cada correção com teste de regressão e conversão do marcador
   repositório.
 - **Achado sem confirmação no código não entra aqui** — a ordem se decide por
   consequência, não por categoria.
+- **Contagem que parece buraco se mede contra o outro guarda antes de virar
+  alerta** — a Parte 23 achou 8 diretórios de 110 e só não publicou isso
+  como falha porque conferiu o `EXTENSOES` do script irmão. Achado dito sem
+  essa conferência é achado errado com cara de achado certo.
