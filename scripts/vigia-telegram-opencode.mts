@@ -13,8 +13,15 @@
  *   - logs/telegram-inbox.jsonl (histórico persistente de mensagens do inbox)
  *
  * Decisões técnicas:
- *   - Para ler o Telegram sem derrubar o webhook externo (tele.goldenherd.com),
- *     aplica o ciclo atômico: deleteWebhook -> getUpdates -> setWebhook.
+ *   - Para ler o Telegram sem derrubar o webhook do portal, aplica o ciclo
+ *     atômico: deleteWebhook -> getUpdates -> setWebhook.
+ *   - O webhook restaurado é o DO PORTAL (www). Até 01/10/2026 este script
+ *     restaurava `tele.goldenherd.com/tg/webhook/8679298724`, um endereço
+ *     externo que o dono não configurou — ele tomava a entrega das mensagens
+ *     do bot e o /menu do portal morria (o script de 30/09 consertava, e o
+ *     ciclo daqui desfazia). A restauração para o www é a decisão do dono de
+ *     01/10/2026: tirar o goldenherd de vez. Registrar o webhook também exige
+ *     `scripts/telegram-set-webhook.mts` para o menu de comandos.
  *   - Mantém offset próprio em scripts/.vigia-telegram-offset para não conflitar com outros agentes.
  *   - Salva tarefas detectadas em logs/tarefas-delegadas-gemini.json com data e status.
  */
@@ -31,7 +38,7 @@ const FILA_AGENTES_PATH = path.join(RAIZ, "docs", "planos", "FILA-AGENTES.md");
 const OPENCODE_CMDS_PATH = path.join(RAIZ, ".opencode", "canario", "comandos.json");
 const TAREFAS_GEMINI_PATH = path.join(RAIZ, "logs", "tarefas-delegadas-gemini.json");
 
-const WEBHOOK_URL = "https://tele.goldenherd.com/tg/webhook/8679298724";
+const WEBHOOK_URL = "https://www.controlepopular.com.br/api/telegram";
 
 /** Estrutura de tarefa registrada para o Gemini */
 export interface TarefaDelegada {

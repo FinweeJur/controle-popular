@@ -20,6 +20,28 @@
  * `TELEGRAM_WEBHOOK_SECRET` estiver no `.env`, registra o `secret_token` junto
  * (o app confere o header `x-telegram-bot-api-secret-token`).
  *
+ * ═══ MENU DE COMANDOS (setMyCommands) ═══
+ *
+ * Registrar o webhook entrega as MENSAGENS; não entrega o MENU. A lista que
+ * o Telegram mostra quando o usuário digita "/" vive numa chamada separada
+ * (`setMyCommands`) e mediu VAZIA em 01/10/2026 — o menu nunca foi registrado.
+ * Este script registra os dois: webhook em www + lista de comandos igual à
+ * que `app/api/telegram/route.ts` responde. A lista mora AQUI e na rota;
+ * mudou um comando, muda nos dois lugares (são 12, sem mecanismo de espelho).
+ *
+ * ═══ O ENDEREÇO ERRADO QUE ISTO DESFAZ ═══
+ *
+ * Medido em 01/10/2026: o webhook do bot apontava para
+ * `https://tele.goldenherd.com/tg/webhook/8679298724` — um endereço externo,
+ * fora do projeto, que aceita as mensagens em silêncio (pending 0, erro
+ * nenhum). A única citação no repo é o `vigia-telegram-opencode.mts`
+ * (commit `6d224a45`, 25/09/2026, sessão Antigravity), que o chama de
+ * "webhook externo" e o RESTAURA a cada ciclo. O dono não configurou esse
+ * endereço. Enquanto ele estiver ativo, o /menu do portal não recebe nada e
+ * mensagem de usuário vai para fora. Este script devolve a entrega ao www;
+ * se algum fluxo externo depender do goldenherd, ele vai re-tomar o webhook
+ * na próxima vez que rodar — e aí o sintoma (bot mudo para o portal) volta.
+ *
  * Uso:
  *   npx tsx scripts/telegram-set-webhook.mts            # registra no www
  *   npx tsx scripts/telegram-set-webhook.mts --info     # só consulta
@@ -31,6 +53,26 @@ import { fileURLToPath } from "node:url";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const URL_WEBHOOK = "https://www.controlepopular.com.br/api/telegram";
+
+/**
+ * Menu de comandos exibido pelo Telegram. Sem barra inicial (formato da API:
+ * `setMyCommands` recebe o comando NU, a barra é da conversa). As descrições
+ * são o que o usuário lê no autocomplete — frase direta, sem jargão.
+ */
+const COMANDOS = [
+  { command: "menu", description: "Abre o menu com todas as frentes do portal" },
+  { command: "ambiental", description: "Licenciamento, barragens, COPAM e crimes socioambientais" },
+  { command: "cidades", description: "Ranking e busca de municípios brasileiros" },
+  { command: "congresso", description: "Proposições, orçamento e Lei Rouanet" },
+  { command: "judiciario", description: "Decisões e processos de tribunais" },
+  { command: "internacional", description: "ONU, UNESCO, OMS, OMC, EUA e Canadá" },
+  { command: "assembleias", description: "As 27 assembleias legislativas estaduais" },
+  { command: "mineracao", description: "Cavas por satélite e processos minerários" },
+  { command: "laboratorio", description: "Caderno cívico e grafo de conexões" },
+  { command: "terra", description: "Cidades estratégicas, terras, serras e rios" },
+  { command: "estado", description: "Orçamento, contratos e transparência" },
+  { command: "direitos", description: "Saúde, educação, trabalho, moradia e justiça" },
+] as const;
 
 function lerEnv(caminho: string): Record<string, string> {
   const out: Record<string, string> = {};
@@ -51,13 +93,33 @@ if (!TOKEN) {
   process.exit(1);
 }
 
+/**
+ * Uma chamada à API do Telegram, com nova tentativa.
+ *
+ * Por que tentar de novo: medido em 01/10/2026 nesta máquina, a conexão com
+ * api.telegram.org sofre `ECONNRESET` intermitente — numa sequência de
+ * chamadas, uma cai (visto alternando entre setWebhook e setMyCommands).
+ * Sem nova tentativa, o script morre no meio e deixa o webhook num estado
+ * pela metade; com 4 tentativas espaçadas, o registro sai inteiro.
+ */
 async function api(metodo: string, corpo?: Record<string, unknown>) {
-  const r = await fetch(`https://api.telegram.org/bot${TOKEN}/${metodo}`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: corpo ? JSON.stringify(corpo) : undefined,
-  });
-  return r.json() as Promise<{ ok: boolean; result?: unknown; description?: string }>;
+  let ultimoErro: unknown;
+  for (let tent = 1; tent <= 4; tent++) {
+    try {
+      const r = await fetch(`https://api.telegram.org/bot${TOKEN}/${metodo}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: corpo ? JSON.stringify(corpo) : undefined,
+      });
+      return r.json() as Promise<{ ok: boolean; result?: unknown; description?: string }>;
+    } catch (e) {
+      ultimoErro = e;
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+  }
+  throw ultimoErro instanceof Error
+    ? ultimoErro
+    : new Error(String(ultimoErro ?? `fetch de ${metodo} falhou`));
 }
 
 async function principal() {
@@ -79,6 +141,16 @@ async function principal() {
     });
     console.log(r.ok ? `✅ webhook registrado em ${URL_WEBHOOK}` : `⛔ setWebhook falhou: ${r.description}`);
     if (!SECRET) console.log("ℹ️  sem TELEGRAM_WEBHOOK_SECRET no .env — webhook sem autenticação.");
+
+    // O webhook entrega as mensagens; o menu é OUTRA chamada. Sem este
+    // registro o usuário digita "/" e o Telegram não lista comando nenhum
+    // (medido vazio em 01/10/2026).
+    const c = await api("setMyCommands", { commands: COMANDOS });
+    console.log(
+      c.ok
+        ? `✅ menu de comandos registrado (${COMANDOS.length} comandos)`
+        : `⛔ setMyCommands falhou: ${c.description}`,
+    );
   }
 
   const info = await api("getWebhookInfo");
@@ -94,6 +166,11 @@ async function principal() {
   } else {
     console.log("último erro: nenhum");
   }
+
+  // O menu que o usuário vê ao digitar "/" — estado real, não suposição.
+  const cmds = await api("getMyCommands");
+  const lista = (cmds.result ?? []) as Array<{ command: string }>;
+  console.log(`menu de comandos: ${lista.length} registrado(s)`);
 }
 
 principal().catch((e) => {
