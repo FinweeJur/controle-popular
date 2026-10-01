@@ -84,6 +84,16 @@ export interface OpcoesReserva<T> {
   rotulo: string;
 }
 
+/** Executa uma promessa com timeout limite em milissegundos para nao prender a requisicao. */
+function comTimeout<T>(promessa: Promise<T>, ms: number, mensagem: string): Promise<T> {
+  return Promise.race([
+    promessa,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error(mensagem)), ms)
+    ),
+  ]);
+}
+
 /**
  * Roda `consulta` no principal e, se vier vazia ou falhar, nos reservas —
  * devolve a primeira resposta não vazia. `padrao` quando nenhum responde.
@@ -110,7 +120,12 @@ export async function comBancoReserva<T>(
 
   for (const t of tentativas) {
     try {
-      const r = await consulta(t.db);
+      const timeoutMs = t.nome === "guara" ? 10_000 : 5_000;
+      const r = await comTimeout(
+        consulta(t.db),
+        timeoutMs,
+        `tempo limite de ${timeoutMs}ms excedido em ${t.nome}`
+      );
       if (!vazio(r)) {
         if (t.nome !== "guara") {
           console.info(`[banco:${rotulo}] respondido pela reserva ${t.nome}`);

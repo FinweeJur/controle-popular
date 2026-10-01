@@ -200,6 +200,7 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   /**
    * DATA_PUBLICACAO: a data da última publicação, congelada NO BUILD.
    *
@@ -334,19 +335,15 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     /**
-     * Fase 6: o prerender das 354 páginas de `/congresso/bancadas/[id]` bateu
-     * no endpoint HTTP do Neon com a concorrência padrão (8) e DUAS páginas
-     * morreram com `fetch failed` / "took more than 60 seconds" — o build
-     * seguia e publicava um Worker com páginas faltando, sem falhar.
-     *
-     * Cada bancada faz um join que devolve ~200 membros (os `.cache` saem com
-     * 1,8 MB), então o gargalo é o banco, não a CPU do build. Baixar a
-     * concorrência e permitir retry troca alguns minutos de build por um
-     * build determinístico — que é o que importa quando a saída vai virar
-     * SSG servido de Static Assets.
+     * Otimização de concorrência por alvo:
+     * - No alvo `standalone` (Docker / Guara Cloud), o banco e a CPU executam
+     *   localmente/privado, permitindo concorrência 8 com retry 1 para acelerar
+     *   o build drasticamente e economizar minutos pagos.
+     * - No alvo Cloudflare Workers (`output: export`), mantém concorrência 3 e
+     *   retry 3 para não estourar subrequests e rate-limit do endpoint HTTP da Neon.
      */
-    staticGenerationMaxConcurrency: 3,
-    staticGenerationRetryCount: 3,
+    staticGenerationMaxConcurrency: standaloneBuild ? 8 : 3,
+    staticGenerationRetryCount: standaloneBuild ? 1 : 3,
   },
   // `redirects()` consta da lista de recursos NÃO suportados por
   // `output: 'export'` — e o modo de falha é silencioso, porque não há

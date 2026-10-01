@@ -61,6 +61,7 @@ ENV NEXT_PUBLIC_COMPANHEIRO_PONTE_URL=$NEXT_PUBLIC_COMPANHEIRO_PONTE_URL
 ENV NODE_ENV=production
 ENV BUILD_TARGET=standalone
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=2560"
 
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
