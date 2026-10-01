@@ -18,7 +18,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Landmark, ArrowLeft, Bot, ShieldCheck } from "lucide-react";
+import { Landmark, ArrowLeft, Bot, ShieldCheck, ExternalLink } from "lucide-react";
 import HubAssembleiasClient from "./HubAssembleiasClient";
 import {
   listarTodasAssembleias,
@@ -91,6 +91,26 @@ export default function AssembleiasPage() {
             </p>
           </div>
         </header>
+
+        {/* ═══ BANNER DE LIGAÇÃO: RECURSOS DOS 27 ESTADOS (ÁGUA, ENERGIA, COMBUSTÍVEL, PPPS E EMENDAS) ═══ */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-4 sm:p-5">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wide">
+              <span>Recursos Públicos, PPPs & Emendas dos 27 Estados</span>
+            </span>
+            <p className="text-xs sm:text-sm text-foreground">
+              Consulte também o raio-x das outorgas de água, tarifas de eletricidade, gastos com frotas de combustível,
+              carteira de concessões e as emendas impositivas dos 27 estados brasileiros.
+            </p>
+          </div>
+          <Link
+            href="/recursos/estados"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-ink shadow-xs hover:opacity-90 transition shrink-0"
+          >
+            <span>Ver Recursos dos 27 Estados</span>
+            <ExternalLink size={14} aria-hidden="true" />
+          </Link>
+        </div>
 
         {/* ═══ INTERFACE INTERATIVA DO HUB ═══ */}
         <HubAssembleiasClient assembleias={assembleias} metricas={metricas} />

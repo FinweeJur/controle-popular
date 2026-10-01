@@ -88,8 +88,10 @@ export function frenteDaRota(rota: string): string {
     return "cidades";
   }
   if (rota.startsWith("/congresso") || rota.startsWith("/assembleias")) return "congresso";
+  if (rota.startsWith("/recursos")) return "cidades";
   if (rota.startsWith("/judiciario")) return "judiciario";
   if (rota.startsWith("/ambiental")) return "ambiental";
+  if (rota.startsWith("/internacional")) return "ambiental";
   if (rota.startsWith("/paraopeba")) return "paraopeba";
   if (rota.startsWith("/funcaosocialterra")) return "funcaosocialterra";
   if (rota.startsWith("/direitos-em-movimento")) return "direitos-em-movimento";

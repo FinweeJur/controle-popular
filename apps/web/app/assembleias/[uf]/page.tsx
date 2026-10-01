@@ -258,6 +258,26 @@ export default async function AssembleiaDetalhePage({
           </div>
         </section>
 
+        {/* ═══ 3.1. RECURSOS PÚBLICOS, PPPS & EMENDAS DO ESTADO ═══ */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wide">
+              <span>Recursos Públicos, PPPs & Concessões de {assembleia.estado}</span>
+            </span>
+            <p className="text-xs sm:text-sm text-muted">
+              Veja a vazão outorgada de água, as tarifas de eletricidade, o gasto governamental com combustível,
+              a carteira de concessões e o impacto das emendas parlamentares em {assembleia.sigla}.
+            </p>
+          </div>
+          <Link
+            href={`/recursos/estados?busca=${assembleia.uf.toLowerCase()}`}
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-ink shadow-xs hover:opacity-90 transition shrink-0"
+          >
+            <span>Ver Recursos de {assembleia.uf}</span>
+            <ChevronRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+
         {/* ═══ 4. TRANSMISSÃO DE SESSÕES PLENÁRIAS (CARD BETIM STYLE) ═══ */}
         <TransmissaoSessaoCard
           transmissao={assembleia.transmissao}

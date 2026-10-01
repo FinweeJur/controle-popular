@@ -284,6 +284,56 @@ export default async function AmbientalHome() {
       pronta: true,
       linkTexto: "Ver a biblioteca dos crimes socioambientais →",
     },
+    {
+      titulo: "Grandes Barragens Mundiais",
+      linha: "62 estruturas no mundo — rejeitos, hidrelétricas e água",
+      texto:
+        "Catálogo de grandes barragens mundiais com histórico de rompimentos (Fundão, Feijão, Mount Polley), megahidrelétricas e dados de ICOLD, Global Tailings Portal e USACE NID.",
+      fase: "Global",
+      href: "/barragens-globais",
+      pronta: true,
+      linkTexto: "Ver as barragens mundiais →",
+    },
+    {
+      titulo: "Ameaças Ambientais nas Américas",
+      linha: "90 pontos críticos de pressão ecológica e territorial",
+      texto:
+        "32 espécies ameaçadas, 16 bacias fluviais sob estresse, 16 serras e 26 territórios de povos tradicionais e originários sob risco de exploração predatória.",
+      fase: "Américas",
+      href: "/ameacas-americas",
+      pronta: true,
+      linkTexto: "Ver ameaças nas Américas →",
+    },
+    {
+      titulo: "Conflitos Socioambientais Globais",
+      linha: "55 conflitos mundiais a partir do EJAtlas",
+      texto:
+        "Mapeamento de litígios ecológicos, defensores da terra e crimes corporativos em 5 continentes vinculados à extração de minério, petróleo, lítio e bauxita.",
+      fase: "EJAtlas",
+      href: "/conflitos-globais",
+      pronta: true,
+      linkTexto: "Ver conflitos socioambientais →",
+    },
+    {
+      titulo: "Crise Climática Global",
+      linha: "Emissões do G20 e as 20 maiores instalações poluidoras",
+      texto:
+        "Inventário das emissões de gases de efeito estufa (Climate TRACE/IPCC), anomalias térmicas extremas do Copernicus ECMWF e intensidade de carbono por setor.",
+      fase: "Clima",
+      href: "/crise-climatica",
+      pronta: true,
+      linkTexto: "Ver observatório do clima →",
+    },
+    {
+      titulo: "Recursos Públicos dos 27 Estados",
+      linha: "751 mil outorgas de água, tarifas de energia, combustível, PPPs e emendas",
+      texto:
+        "Mapeamento oficial dos 27 estados: outorgas hídricas (ANA), assimetria tarifária da eletricidade (ANEEL), combustível da frota pública (PNCP), concessões (BNDES) e emendas das 27 Assembleias.",
+      fase: "Nacional",
+      href: "/recursos/estados",
+      pronta: true,
+      linkTexto: "Ver recursos dos 27 estados →",
+    },
   ];
 
   return (

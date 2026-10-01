@@ -530,6 +530,47 @@ export const FRENTES: SeuNonoFrente[] = [
         ],
       },
       {
+        id: "recursos-27-estados",
+        titulo: "Recursos dos 27 Estados (Água, Energia, Combustível, PPPs e Emendas)",
+        perguntas: [
+          {
+            id: "outorgas-agua-27-estados",
+            pergunta: "Como consultar as outorgas de água dos 27 estados?",
+            resposta:
+              "O portal monitora 751 mil outorgas ativas da ANA. Veja vazões e órgãos gestores dos 27 estados.",
+            link: { href: "/recursos/estados", texto: "Painel de Recursos dos 27 Estados" },
+          },
+          {
+            id: "assimetria-tarifaria-energia",
+            pergunta: "O que é a assimetria tarifária entre o cidadão e a grande indústria?",
+            resposta:
+              "O cidadão paga em média 75% a mais pelo kWh. As indústrias compram energia no Mercado Livre mais barato.",
+            link: { href: "/recursos/estados", texto: "Comparar Tarifas de Energia" },
+          },
+          {
+            id: "combustivel-frotas-estados",
+            pergunta: "Quanto os governos estaduais gastam com combustível e frotas?",
+            resposta:
+              "Os 27 estados gastam R$ 3,4 bilhões anuais com frotas públicas. Os dados são auditados no Portal Nacional de Contratações.",
+            link: { href: "/recursos/estados", texto: "Gastos com Combustível" },
+          },
+          {
+            id: "ppps-concessoes-27-estados",
+            pergunta: "Onde consultar as concessões e PPPs de todos os estados?",
+            resposta:
+              "A carteira reúne R$ 214 bilhões em rodovias, saneamento e transportes. Os contratos são auditados pelo BNDES Hub e estados.",
+            link: { href: "/recursos/estados", texto: "PPPs e Concessões dos Estados" },
+          },
+          {
+            id: "emendas-estaduais-pix",
+            pergunta: "Como fiscalizar as emendas parlamentares e transferências PIX das Assembleias?",
+            resposta:
+              "As emendas impositivas somam R$ 12,8 bilhões nos 27 estados. O cidadão fiscaliza cotas por deputado e transferências PIX.",
+            link: { href: "/recursos/estados", texto: "Emendas nas 27 Assembleias" },
+          },
+        ],
+      },
+      {
         id: "documentacao-e-transparencia",
         titulo: "Documentação Técnica, APIs & Transparência",
         perguntas: [
@@ -1727,6 +1768,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/internacional/orcamentos", texto: "Orçamentos Estratégicos" },
       { href: "/internacional", texto: "Hub Multilateral" },
       { href: "/eua", texto: "Observatório dos EUA" },
+    ],
+  },
+  {
+    id: "recursos-27-estados",
+    titulo: "Recursos Públicos e Concessões dos 27 Estados",
+    resumo: "Auditoria comparativa dos 27 estados em 5 eixos: outorgas de água, tarifas de energia, combustível de frota, PPPs e emendas parlamentares.",
+    dados: [
+      "751 mil interferências e 48,6 bi m³/ano de água outorgada (ANA/SNIRH)",
+      "Assimetria tarifária elétrica: cidadão paga até 1,9x a tarifa industrial",
+      "R$ 3,4 bilhões em compras públicas de combustível registradas no PNCP",
+      "R$ 214,5 bilhões em contratos de PPP e concessões ativas (BNDES Hub)",
+      "R$ 12,8 bilhões em emendas parlamentares votadas em 27 Assembleias",
+    ],
+    links: [
+      { href: "/recursos/estados", texto: "Painel Recursos dos 27 Estados" },
+      { href: "/assembleias", texto: "Assembleias Legislativas" },
+      { href: "/consumo-corporativo", texto: "Consumo Corporativo MG & G20" },
     ],
   },
 ];
