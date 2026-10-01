@@ -97,7 +97,7 @@ export function CampfireColonyAnim() {
           transform-origin: 321px 288px;
         }
         .cp-campfire .cp-fumaca path {
-          animation: cp-dash 3s linear infinite;
+          animation: cp-fumaca-respira 4s ease-in-out infinite;
         }
         @keyframes cp-flicker {
           0%   { transform: rotate(-6deg); }
@@ -107,9 +107,9 @@ export function CampfireColonyAnim() {
           80%  { transform: rotate(-7deg) scale(1); }
           100% { transform: rotate(-4deg); }
         }
-        @keyframes cp-dash {
-          from { stroke-dashoffset: 0; }
-          to   { stroke-dashoffset: 600; }
+        @keyframes cp-fumaca-respira {
+          0%, 100% { opacity: 1; }
+          50%      { opacity: 0.72; }
         }
         @media (prefers-reduced-motion: reduce) {
           .cp-campfire .cp-fogo,
@@ -183,7 +183,8 @@ export function CampfireColonyAnim() {
           </g>
         ))}
 
-        {/* ── Fumaça: o caminho exato do original, some no topo ── */}
+        {/* ── Fumaça: o caminho exato do original, contínua (sem lacuna do
+            tracejado), some no topo pelo degradê e "respira" devagar ── */}
         <g className="cp-fumaca">
           <path
             d="M 420 -316 Q 470 -216 370 -66 C 270 134 390 84 320 284"
@@ -191,7 +192,6 @@ export function CampfireColonyAnim() {
             stroke="url(#cp-fumaca-degrade)"
             strokeWidth="5"
             strokeLinecap="round"
-            strokeDasharray="560 60"
           />
         </g>
 
