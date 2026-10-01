@@ -1,0 +1,83 @@
+{
+ "data": "2026-10-01",
+ "fonte": "exportacao amostra-100-estados.json (dev) + leitura leveldb",
+ "decididos": 43,
+ "contagem": {
+  "descartado": 12,
+  "revisado": 15,
+  "publicável": 16
+ },
+ "flips": [
+  {
+   "arquivo": "080c3686307c0ea85fbd5fac.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "13376c03805ac4be9b9828ef.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "15c6a29dbf5455fc8cffdea1.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "1de7c0e1dbb0a4ee5bd2657e.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "27c70fcb2aa540a375d34074.jpg",
+   "de": "positivo",
+   "para": "negativo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "325daca75d39c05065437289.jpg",
+   "de": "positivo",
+   "para": "negativo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "4a14fc404be5c9b63c143c39.jpg",
+   "de": "positivo",
+   "para": "negativo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "9d9f7a45a572d1751f8de407.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  },
+  {
+   "arquivo": "c02e9e6808f069049ba0bd6a.jpg",
+   "de": "negativo",
+   "para": "positivo",
+   "motivo": "revisao humana do dev"
+  }
+ ],
+ "duvidas_revisado": [
+  "075c7c0dabdffa6c7e1b98ef.jpg",
+  "0de2c570ee6d074de4fc060d.jpg",
+  "110767792044a21e95e34f7c.jpg",
+  "13a16a7bd26de3fdd7a13fa9.jpg",
+  "140cac3f5c9ba146b9a30d13.jpg",
+  "1a8463abd4d42de8a93b0151.jpg",
+  "1b0316c54c8fe303469ad588.jpg",
+  "1b3edc1b5f0555cc555487ee.jpg",
+  "1f4f8173765f116b99b1b7c7.jpg",
+  "227101c151fdad1a2f163d9a.jpg",
+  "251997d95e587eac3653bf41.jpg",
+  "2b5e77c6a5337a70e1e365d6.jpg",
+  "315f40338dbbb1826813e2ec.jpg",
+  "69ba659079ba0ae8f24b28bf.jpg",
+  "757163a508894c11a6c31920.jpg"
+ ]
+}

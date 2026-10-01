@@ -546,6 +546,12 @@ limiar 0,64 e `half` na GPU. Script descartável em
 **corrigir o rótulo dos negativos que são cava** — senão o modelo segue
 aprendendo vegetação onde há lavra, e o recall não sobe.
 
+**Feito em 01/10:** a exportação do dev (43 itens decididos) virou correção de
+rótulo no `checkpoint.jsonl` (com backup) — **9 flips** (3 positivo→negativo,
+6 negativo→positivo), verificados pós-escrita e versionados com motivo em
+`scripts/etl/cavas/revisao-humana-gate.json`. As 15 dúvidas (`revisado`)
+ficam de fora do flip até veredito.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
