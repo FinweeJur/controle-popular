@@ -57,6 +57,44 @@ export default function PlayerRadio() {
   // posição fica lembrada no `localStorage` (pedido do dono, 30/09/2026).
   const { estilo, arrastando, handlers, resetar } = usarArrastavel("cp_radio_pos");
 
+  // O índice abre no hover do botão. Ao sair, ele NÃO fecha na hora: há um
+  // vão de alguns pixels entre o botão e o painel, e fechar na saída tornava
+  // o índice quase inacessível (o ponteiro atravessava o vão e o painel
+  // sumia). Fecha só 1,5 s depois de a pessoa sair (pedido do dono,
+  // 30/09/2026); voltar ao painel dentro desse tempo cancela o fechamento.
+  const fecharTimer = useRef<number | null>(null);
+
+  const abrirIndice = useCallback(() => {
+    if (fecharTimer.current !== null) {
+      window.clearTimeout(fecharTimer.current);
+      fecharTimer.current = null;
+    }
+    setIndiceAberto(true);
+  }, []);
+
+  const fecharIndiceJa = useCallback(() => {
+    if (fecharTimer.current !== null) {
+      window.clearTimeout(fecharTimer.current);
+      fecharTimer.current = null;
+    }
+    setIndiceAberto(false);
+  }, []);
+
+  const agendarFecharIndice = useCallback(() => {
+    if (fecharTimer.current !== null) window.clearTimeout(fecharTimer.current);
+    fecharTimer.current = window.setTimeout(() => {
+      fecharTimer.current = null;
+      setIndiceAberto(false);
+    }, 1500);
+  }, []);
+
+  // Não deixa um timer pendente disparar depois de desmontar.
+  useEffect(() => {
+    return () => {
+      if (fecharTimer.current !== null) window.clearTimeout(fecharTimer.current);
+    };
+  }, []);
+
   const estacaoAtual = idAtual ? estacaoPorId(idAtual) ?? null : null;
 
   /** Publica o estado para os cartões da `/radio`. */
