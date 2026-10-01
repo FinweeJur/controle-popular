@@ -33,6 +33,7 @@
 - [Parte 19 — segurança, server-only e utilitários](#parte-19--segurança-server-only-e-utilitários)
 - [Parte 20 — junções editoriais (cruzamentos e teia)](#parte-20--junções-editoriais-cruzamentos-e-teia)
 - [Parte 21 — busca estática (lib/busca)](#parte-21--busca-estática-libbusca)
+- [Parte 22 — respostas curadas e índice de páginas](#parte-22--respostas-curadas-e-índice-de-páginas)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -889,6 +890,81 @@ arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
    não a curta; `carregarGrupoFatiado` trata `fatias === 0`; e a teia de
    erros de digitação só roda depois de esgotado exato e prefixo.
 
+## Parte 22 — respostas curadas e índice de páginas
+
+Décima sexta passada, nos 1.460 linhas de dado que a Parte 21 deixou de fora:
+[`resposta-curada.ts`](../../apps/web/lib/busca/resposta-curada.ts) (33
+entradas de resposta pronta) e
+[`paginas-portal.ts`](../../apps/web/lib/busca/paginas-portal.ts) (849
+linhas de páginas catalogadas). Diferente dos outros arquivos do módulo,
+estes dois **escrevem texto que o portal publica como resposta** — o risco
+aqui não é performance, é o portal responder algo que ninguém perguntou.
+
+### Achados da Parte 22
+
+1. ⚠️ **O campo `zona` é declarado em 14 entradas e nunca é lido.**
+   `PerguntaEspecial.zona` aparece como `congresso`, `judiciario`,
+   `ambiental`, `paraopeba` nas entradas, mas `buscarRespostaCurada` só
+   lê `padroes`, `linkPrincipal` e `linksAdicionais` — o parâmetro
+   `slugCidadeOuZona` vai só para `ajustarLinkParaCidade`, que reescreve
+   rota e **nunca filtra**. Medido em execução: a pergunta *"O que a CCJC
+   tem na pauta?"* chamada com slug `betim` devolve
+   `/congresso/comissoes` sem pestanejar. O filtro existe no dado e não
+   existe na regra.
+
+2. ⚠️ **Casamento por subcadeia nos dois sentidos — e o cidadão não vê
+   por que caiu lá.** A linha 487 testa
+   `normalizada.includes(pNorm) || pNorm.includes(normalizada)`: a
+   resposta dispara se a pergunta **contiver** o padrão ou se o padrão
+   **contiver** a pergunta. Como há padrões de uma palavra, qualquer
+   consulta curta que seja pedaço deles recebe a resposta pronta como se
+   fosse a resposta da pergunta. Medido em execução com slug `betim`:
+
+   | digitado | resposta devolvida |
+   |---|---|
+   | `rio` | *"A fiscalização externa do Judiciário brasileiro termina no 2º grau…"* → `/judiciario/instituicoes` |
+   | `vale` | *"O Observatório Vale reúne a série histórica de cotações B3…"* → `/paraopeba/vale` |
+   | `agenda` | Agenda do plenário e comissões → `/congresso/agenda` |
+   | `processos` | Litígios ambientais do SIRENEJud → `/judiciario/sirenejud` |
+
+   Quem digita *rio* quase sempre quer Rio de Janeiro ou o Rio doce; quem
+   digita *vale* pode querer o valor de uma coisa. Os dois recebem uma
+   resposta estreita rotulada como resposta do portal.
+
+3. ⚠️ **Duas cifras digitadas à mão, sem data.** `"…os R$ 677,4 milhões
+   da repactuação em Minas Gerais…"` (linha 118) e `"O portal monitora
+   909 barragens…"` (linha 124) são texto fixo. O número **existe** medido
+   em módulo de dado (`lib/ambiental/barragens-sigbm.ts` documenta a
+   contagem), mas aqui virou prosa colada — e a regra do §8 é que o número
+   na tela vem de constante medida com data. A contagem de barragens do
+   SIGBM muda; o texto não.
+
+4. 📌 **O teste de "integridade" não testa se a rota existe.**
+   `paginas-portal.test.ts:39` percorre as 849 linhas checando `id`,
+   `titulo`, `descricao`, `href.startsWith("/")` e `palavrasChave` — nada
+   verifica que `href` corresponde a uma rota real do App Router. Lista
+   hardcoded de rotas envelhece em silêncio; foi exatamente assim que
+   `/noticias/direitos-em-movimento-guia` chegou publicado apontando para
+   404 (achado desta semana, corrigido no commit `3d91f8dc`).
+
+5. 📌 **`buscarPaginasPortal` não usa `separarPalavras`.** A linha 881
+   divide por `split(/\s+/)` mantendo pontuação: `"licitações;"` vira o
+   termo `licitacoes;` e não casa com `licitacoes`. O resto do módulo
+   (`indice.ts`, `resposta-curada.ts`) passa tudo por `separarPalavras`.
+   Duas normalizações para a mesma busca.
+
+6. 📌 **O limiar 0,45 mede só o padrão.** `intersecao /
+   palavrasP.length` conta quanto do **padrão** está na pergunta, sem
+   penalizar pergunta muito maior que ele — uma pergunta de 30 palavras
+   que contenha metade de um padrão de 6 pontua alto e entra no mesmo
+   lugar de quem perguntou aquilo exatamente.
+
+7. ✅ **O que está certo.** Os 8 testes cobrem os caminhos reais,
+   inclusive o de prefixo de município (`"Quanto a Prefeitura de Betim
+   gasta em saúde?"` → `/betim/prefeitura/despesas`), e os casos negativos
+   (`"oi"` e uma string sem sentido devolvem `null`). Fora os dois números
+   do achado 3, as respostas curadas não trazem total de acervo solto.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -944,8 +1020,9 @@ Próximas micro-partes, por risco e retorno:
 
 **Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
 ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
-camada. A fina já cobre as Partes 17 a 21 — acervos estaduais, catálogo de
-fontes, utilitários transversais, junções editoriais e a busca estática.
+camada. A fina já cobre as Partes 17 a 22 — acervos estaduais, catálogo de
+fontes, utilitários transversais, junções editoriais, a busca estática e as
+respostas curadas.
 
 ## Decisões registradas
 
