@@ -19,19 +19,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { obterExecutivosConselhos } from "@/lib/server-only/dados-executivos";
+import { obterPortaGiratoria } from "@/lib/server-only/dados-porta-giratoria";
 import { COBERTURA_EXECUTIVOS } from "@/lib/empresas/dados-executivos";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelExecutivosClient from "./PainelExecutivosClient";
+import PainelPortaGiratoria from "./PainelPortaGiratoria";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 
 export const metadata: Metadata = {
   title: "Diretores, CEOs e Conselheiros das Grandes Empresas — Controle Popular",
   description:
-    "Mapeamento cívico de executivos estatutários, conselhos de administração e comitês de auditoria das 36 maiores empresas e fundos globais. Análise de governança corporativa, remunerações e diretorias entrelaçadas.",
+    "Mapeamento cívico de executivos estatutários, conselhos de administração e comitês de auditoria das 36 maiores empresas e fundos globais. Análise de governança corporativa, remunerações, diretorias entrelaçadas e porta giratória entre cargos públicos e a iniciativa privada.",
 };
 
 export default function ExecutivosEmpresasPage() {
   const executivos = obterExecutivosConselhos();
+  const portaGiratoria = obterPortaGiratoria();
+  const pepDeclaradas = portaGiratoria.registros.filter((r) => r.pep_declarada).length;
 
   const textoDescricao =
     `Vigilância cidadã sobre a liderança corporativa e a governança das ${COBERTURA_EXECUTIVOS.totalEmpresas} maiores corporações e fundos atuantes no Brasil e no mundo. ` +
@@ -92,6 +96,44 @@ export default function ExecutivosEmpresasPage() {
 
       {/* Painel Interativo no Padrão das Seis Qualidades */}
       <PainelExecutivosClient executivos={executivos} />
+
+      {/* Porta giratória: cargo público declarado × governança atual (FRE/CVM) */}
+      {portaGiratoria.total_registros > 0 ? (
+        <div className="space-y-6">
+          <section aria-label="Resumo da porta giratória" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { valor: portaGiratoria.total_registros.toLocaleString("pt-BR"), rotulo: "registros", nota: "administradores e membros de comitê" },
+              { valor: portaGiratoria.total_pessoas.toLocaleString("pt-BR"), rotulo: "pessoas", nota: "identidade única (documento usado só em memória)" },
+              { valor: portaGiratoria.total_empresas.toLocaleString("pt-BR"), rotulo: "companhias abertas", nota: "com governança na CVM" },
+              { valor: pepDeclaradas.toLocaleString("pt-BR"), rotulo: "PEP declaradas", nota: "pessoa politicamente exposta, por declaração da companhia" },
+            ].map((c) => (
+              <div key={c.rotulo} className="rounded-2xl border border-border bg-surface-2 p-5">
+                <p className="text-2xl font-semibold tabular-nums">{c.valor}</p>
+                <p className="mt-1 text-sm text-text-soft">{c.rotulo}</p>
+                <p className="mt-2 text-xs text-text-soft">{c.nota}</p>
+              </div>
+            ))}
+          </section>
+
+          <p className="rounded-xl border border-alert/40 bg-alert/10 p-3 text-sm">
+            <strong>Trânsito não é ilícito.</strong> Ter exercido cargo público e hoje integrar um conselho é
+            permitido e comum. O que esta seção faz é juntar as duas pontas com a fonte à vista: o trecho é a
+            declaração da própria companhia, e o link abre o formulário na CVM. A apuração de qualquer conflito é
+            da autoridade — o portal publica o sinal, não o veredito.
+          </p>
+
+          <PainelPortaGiratoria registros={portaGiratoria.registros} />
+
+          <p className="text-xs text-muted">
+            Fonte: {portaGiratoria.fonte}. Anos processados: {portaGiratoria.anos_processados.join(", ")}.
+            Atualizado em {portaGiratoria.atualizado_em}.{" "}
+            <a href={portaGiratoria.url_fonte} target="_blank" rel="noopener noreferrer" className="underline">
+              Dados abertos da CVM
+            </a>
+            . Coletor: <code>scripts/etl/empresas/coletar-porta-giratoria-cvm.py</code>.
+          </p>
+        </div>
+      ) : null}
 
       {/* Páginas Relacionadas e Cruzamentos Cívicos */}
       <div className="mt-12">

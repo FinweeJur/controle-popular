@@ -68,12 +68,16 @@ Verificado em 01/10/2026 (commits até `8c2baa38`).
 
 Rápido, alto retorno. O dado já foi coletado.
 
-1. **Licenças por UF:** expor as licenças dos novos estados no painel `/ambiental/licenciamento`,
-   com filtro por estado. Seguir o padrão `TabelaEstatica` e agregado no build (regra §5.1 do AGENTS.md).
-2. **Vales Jequitinhonha/Mucuri:** criar rota na frente Terra e Territórios
-   (candidato: `/terra-e-territorios/vales`), com fonte oficial e resumo medido.
-3. **Porta giratória completa:** cruzar cargo público anterior × conselho atual em
-   `/empresas/executivos`, citando Diário Oficial e CVM como fonte.
+1. ✅ **Licenças por UF:** já existia — o feed unificado `/ambiental/licencas` cobre IBAMA,
+   ANA, IGAM (MG) e 14 órgãos estaduais (BA, MA, PA, GO, MT, PI, PE, PI, ES, RO, MS, DF, SP, PR, SC, RS).
+2. ✅ **Vales Jequitinhonha/Mucuri:** `/terra-e-territorios/vales` — 82 municípios, lítio,
+   comunidades tradicionais, povo Maxakali, CSV e links oficiais (libs `lib/cidades/vales-*`).
+3. ✅ **Porta giratória:** seção na `/empresas/executivos` — 713 administradores de companhias
+   abertas que declararam cargo público (ministro, secretário, Banco Central, agência
+   reguladora, Tribunal de Contas, MP/CGU, cargo eletivo) no item 12 do Formulário de
+   Referência da CVM. Coletor: `scripts/etl/empresas/coletar-porta-giratoria-cvm.py`.
+   Fonte é a declaração da companhia (FRE/CVM), com link por linha — não o Diário Oficial,
+   que não publica histórico estruturado em dado aberto.
 
 ## Fase B — Construir o que falta
 
