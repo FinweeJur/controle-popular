@@ -154,6 +154,29 @@ O código já está pronto para os dois: basta `DATABASE_URL_NEON`
 (plano B) e `DATABASE_URL_HOMEPC`/`DATABASE_URL_RESERVA` (plano D) no
 ambiente do Guara.
 
+### Re-medição (2026-10-01): dois bloqueios locais superados
+
+Medido na mesma máquina (`home-pc`), sem imprimir segredo:
+
+- **Porta do Postgres local: resolvida.** `postgresql-x64-18` rodando e
+  **escutando em `5432`** (TCP testado: 5432 abre, 5433 fechada). A
+  divergência de 30/09 não existe mais — cargas e medições locais
+  seguem o `.env.local` existente sem ajuste.
+- **`neonctl` 5.0.0 está no PATH.** A medição de 30/09 ("não
+  instalado") está desatualizada. Falta só autenticação/credencial na
+  sessão para o plano B.
+- **O que segue pendente:** o Postgres do Guara (plano A) continua
+  **sem carga do ETL** — `/ambiental/licenciamento` no ar responde pela
+  reserva (Neon, dado mínimo de 08/09, sem as ondas 1 e 2 dos 15
+  estados). Rodar migrations + ETL contra o Guara exige
+  `DATABASE_URL` do Guara **na sessão** (nunca no `.env`) — mesmo
+  passo a passo do § "Manter a Neon sincronizada via CLI", apontando
+  para o Guara.
+- **Pendência de deploy mantida:** medir no próximo `guara deploy` se
+  o builder alcança o host interno do Postgres (`*.svc.cluster.local`).
+  O feed `/ambiental/licencas` (15 estados) não depende de banco — lê
+  dado estático versionado e já está no ar.
+
 ## Descoberta (30/09/2026, noite): o build não via o banco
 
 Causa-raiz da página vazia, **separada** da cadeia de reserva:
