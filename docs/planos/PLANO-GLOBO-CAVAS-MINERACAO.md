@@ -595,12 +595,11 @@ Fila viva desta frente, em ordem:
    venceu `sobreamostragem` (precisão 0,811 / recall 0,886 no limiar 0,64).
    Números completos na seção
    [Gate v5 com os rótulos corrigidos](#gate-v5-com-os-rótulos-corrigidos--01102026-medido).
-2. **Pan-sharpen 2 m (v6):** a PAN crua cega os modelos locais (medido:
-   v4 fora de distribuição; qwen3-vl:2b deu "75" constante em 15/16).
-   Caminho: juntar PAN 2 m com BAND3/2/1 (8 m) → recorte **colorido 2 m** →
-   retreinar. Script que gerou a PAN: `Temp\opencode\recortes-2m-pan.py`
-   (STAC `ids` → asset `BAND0`); a comparação visual do dev está em
-   `scripts/.cache/cavas-calibracao/comparacao-pan-2m.html`.
+2. **🚧 Pan-sharpen 2 m (v6) — lançado 01/10 15:01**: fechador
+   `Temp\opencode\fecha-v6.ps1` roda a geração completa (5.120 alvos,
+   ~18–26 h) e, com ≥ 95%, o treino v6 automático. Números e descoberta
+   de bandas em
+   [Pan-sharpen 2 m e gate v6](#pan-sharpen-2-m-e-gate-v6--01102026-medido).
 3. **Dúvidas do dev (15 `revisado`)** — legendas dizem "fiquei na dúvida se
    é mineração"; são a faixa onde o modelo 2 m deve decidir. Fechar o
    significado de `revisado` antes de virar rótulo.
@@ -616,6 +615,44 @@ Artefatos de 01/10: `revisao-humana-dev.json` (todas as marcas),
 `comparacao-pan-2m.html`, leitor de LevelDB do Brave
 (`Temp\opencode\le-leveldb.py`, precisa `cramjam`) — a folha grava em
 **localStorage do Brave**, não em arquivo.
+
+### Pan-sharpen 2 m e gate v6 — 01/10/2026 (medido)
+
+Piloto do gerador novo (`scripts/etl/cavas/gerar-recortes-2m.py`):
+recorte **colorido 512 px a 2 m/px** (~1,02 km de lado) por fusão
+Brovey da BAND0 (PAN 2 m) com BAND3/1/2 (8 m), lidas por janela HTTP.
+
+- **Piloto: 20/20 recortes, 14,2–18,2 s/recorte** (com STAC e abertura
+  fria de cenas), JPEG ~75 KB médio → 5.120 recortes ≈ **18–26 h**.
+  Extrapolado também para disco: ~384 MB (cache fora do git).
+- **Dois bugs corrigidos no caminho:** coordenada projetada passada
+  onde o código espera geográfica (NaN em todas as janelas) e retomável
+  que tratava erro como feito (agora só `status: ok` pula).
+- **Radiometria do L2 do WPM: o PAN chega ~1,5× mais brilhante que a
+  média RGB** (DN mediano 289 × ~172 na cena 205_134). Brovey de DN
+  bruto clareava tudo e dessaturava nuvem/solo. Correção: casar a
+  mediana do PAN com a da média RGB antes do ganho, ganho travado em
+  [0,5; 2,0].
+- **Descoberta de bandas — BAND1 é VERDE e BAND2 é AZUL no L2 do WPM.**
+  Medido contra a miniatura oficial do INPE da cena 205_134: sobre
+  vegetação o DN é B3 < B2 < B1; com G=B1 o verde domina, como na
+  miniatura; com a atribuição antiga (G=B2) a vegetação saía teal.
+  **Consequência: o acervo 8 m (v4/v5) foi gerado com G/B trocados.**
+  Como a troca vale para TODOS os recortes 8 m, o treino aprendeu com
+  uma correlação constante — os gates v2/v3/v5 não ficam invalidados —
+  mas a cor do acervo 8 m não é verdadeira. Os recortes 2 m nascem com
+  a atribuição correta; o v6 compara contra o v5 no MESMO holdout de
+  cenas (split.json do v5 fica imutável).
+- **Geometria conferida:** a janela central de 1,02 km bate feature a
+  feature com o recorte central do acervo 8 m (mesmo pivô, mesmas
+  nuvens, mesma estrada).
+- **Fechador `fecha-v6.ps1` lançado 01/10 15:01:** duas passadas de
+  geração (a segunda reprisa erros transitórios de rede), verificação
+  de rendimento com last-wins por hash, **barra de 95%** para liberar o
+  treino, depois treino `peso` + `sobreamostragem` com os mesmos
+  hiperparâmetros do v5, dumps `metricas-v6-*`, veredito
+  `gate-v6.veredito.txt` e Telegram. **Régua do gate v6: recall do v5
+  (0,886) e precisão ≥ 0,70.**
 
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
