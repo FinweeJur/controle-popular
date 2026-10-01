@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-09-30T22:25:28.788Z",
+  "gerado_em_utc": "2026-10-01T11:26:17.440Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -263,6 +263,66 @@
       "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
+      "camada": "hist-bens-tombados",
+      "feicoes": 2475,
+      "bytes": 1440060,
+      "comprimido": false,
+      "sha256": "6eccdf9836e4be4ede6cd5cc2b430707697ec2cc15fce2b301b299409614f016",
+      "mtime_utc": "2026-10-01T11:26:16.624Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "hist-capitanias",
+      "feicoes": 13,
+      "bytes": 238429,
+      "comprimido": false,
+      "sha256": "6fdf7df3caa59a74a87b74d8ef77feeb7d8ce6cb0c77c1a4f08d3235e1d961ae",
+      "mtime_utc": "2026-10-01T11:26:16.627Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "hist-fazendas-engenhos",
+      "feicoes": 13,
+      "bytes": 6972,
+      "comprimido": false,
+      "sha256": "1ecb3113a802ede98969b051a95f16f9d3f4d8a645b88cba0bab489c78d02274",
+      "mtime_utc": "2026-10-01T11:26:16.628Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "hist-listas-populacao",
+      "feicoes": 121,
+      "bytes": 79909,
+      "comprimido": false,
+      "sha256": "f12f9eb914973c860d7430710f3f187697df4bae8a320d8059872c8f5ff32144",
+      "mtime_utc": "2026-10-01T11:26:16.630Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "hist-revoltas",
+      "feicoes": 15,
+      "bytes": 7904,
+      "comprimido": false,
+      "sha256": "c3bfb998bc75fb3720152ebefe5bc691947810ad81f36d47b8227db4b4bf9818",
+      "mtime_utc": "2026-10-01T11:26:16.631Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "hist-terras-publicas",
+      "feicoes": 14,
+      "bytes": 7157,
+      "comprimido": false,
+      "sha256": "01af19687363fdba4e79f2746bf7b227909b92ae583c88176f37c4e33ac6c0f2",
+      "mtime_utc": "2026-10-01T11:26:16.632Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "infracoes-embargos",
       "feicoes": 1466,
       "bytes": 932000,
@@ -303,6 +363,26 @@
       "servico": "FEAM/IDE-Sisema — mancha de inundação (ide_1903_mg_mancha_inundacao_pae_pol), mesma origem da ZAS, simplificada para desenho"
     },
     {
+      "camada": "mineracao-em-quilombo",
+      "feicoes": 21,
+      "bytes": 17383,
+      "comprimido": false,
+      "sha256": "7538a8fadcf13842217c224b6cc04a30b395e69c9493180fd222403015432c63",
+      "mtime_utc": "2026-10-01T11:26:16.633Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "mineracao-em-uc",
+      "feicoes": 875,
+      "bytes": 668549,
+      "comprimido": false,
+      "sha256": "9579ac918927faf92100713161d7be45b0634b596ab824ba9948255681322a08",
+      "mtime_utc": "2026-10-01T11:26:16.637Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "mineracao-sem-cadastro",
       "feicoes": 3869,
       "bytes": 1602772,
@@ -338,7 +418,7 @@
       "bytes": 107186,
       "comprimido": false,
       "sha256": "f95d30a445761d60eb7735f770da3eb38e5237a0be5e483b4814c4de47c82470",
-      "mtime_utc": "2026-09-30T22:25:28.788Z",
+      "mtime_utc": "2026-10-01T11:26:17.440Z",
       "obtencao": "automatica",
       "origem": "Observatório Global de Operações Militares, Conflitos e PMCs — 48 teatros de operações bélicas, deposições de regime, corporações mercenárias (PMCs) e mega-contratos armamentistas globais compilados a partir de relatórios oficiais da ONU, SIPRI, CRS do Congresso dos EUA, DoD e Corte Internacional de Justiça (CIJ)."
     },
@@ -616,8 +696,16 @@
     "cobertura-telefonia-mg",
     "cobertura-telefonia-prioritarias",
     "estudos-ambientais",
+    "hist-bens-tombados",
+    "hist-capitanias",
+    "hist-fazendas-engenhos",
+    "hist-listas-populacao",
+    "hist-revoltas",
+    "hist-terras-publicas",
     "infracoes-embargos",
     "licencas-ambientais",
+    "mineracao-em-quilombo",
+    "mineracao-em-uc",
     "outorgas-agua",
     "presidios-mg",
     "torres-celular-mg",
