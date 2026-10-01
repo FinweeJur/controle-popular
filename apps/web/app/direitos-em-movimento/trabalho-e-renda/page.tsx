@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
 import RelacaoSuggestions from '@/app/components/eixos/RelacaoSuggestions';
@@ -57,6 +58,24 @@ export default function TrabalhoERendaPage() {
             </span>
           </div>
         ))}
+      </section>
+
+      {/* DESTAQUE: TRABALHO ESCRAVO CONTEMPORÂNEO (CADASTRO DE EMPREGADORES) */}
+      <section aria-label="Cadastro de Empregadores" className="mb-8 rounded-2xl border border-border bg-surface p-6 shadow-xs">
+        <h2 className="font-display text-lg font-bold text-foreground">
+          Trabalho escravo contemporâneo: a lista suja em CNPJ
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          O Cadastro de Empregadores do Ministério do Trabalho e Emprego, aberto em CNPJ: as empresas que
+          submeteram trabalhadores a condições análogas à escravidão, com o ato administrativo e o link para
+          conferir os contratos públicos de cada uma.
+        </p>
+        <Link
+          href="/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores"
+          className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
+        >
+          Abrir o Cadastro de Empregadores <span>→</span>
+        </Link>
       </section>
 
       {/* GRÁFICO SVG: SALDO POR SETOR ECONÔMICO */}

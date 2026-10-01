@@ -114,6 +114,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["lai", "acesso", "informacao", "pedido", "transparencia", "requerimento"],
   },
   {
+    id: "trabalho-cadastro-empregadores",
+    titulo: "Cadastro de Empregadores (trabalho escravo)",
+    descricao:
+      "A lista suja do MTE aberta em CNPJ: empresas que submeteram trabalhadores a condições análogas à escravidão, com o ato administrativo e os contratos públicos de cada uma.",
+    href: "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
+    frente: "geral",
+    rotulo: "Trabalho · Lista suja",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "trabalho escravo", "lista suja", "cadastro de empregadores", "mte",
+      "escravidao", "resgate", "fiscalizacao do trabalho", "cnpj", "análogo à escravidão",
+    ],
+  },
+  {
     id: "ambiental-legislacao",
     titulo: "Legislação Ambiental Unificada",
     descricao: "Acervo catalogado de leis, resoluções e decretos de proteção ambiental e climática de Minas Gerais.",

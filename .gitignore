@@ -185,6 +185,11 @@ apps/web/.wrangler-dist/
 # Pacotes e arquivos compactados de trabalho
 *.zip
 
+# Cache cru de coleta (arquivos originais baixados dos portais oficiais;
+# o dado processado e versionado mora em apps/web/data/). Cobre o ZIP do FRE
+# da CVM e o TXT do Cadastro de Empregadores do MTE.
+etl/betim/entrada/
+
 # Dump de dados do Neon pra migracao
 neon_export/
 

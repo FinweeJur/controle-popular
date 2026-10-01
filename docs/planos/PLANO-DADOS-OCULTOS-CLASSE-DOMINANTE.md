@@ -83,7 +83,7 @@ Rápido, alto retorno. O dado já foi coletado.
 
 | # | Frente | Fonte oficial | Primeira etapa |
 |---|---|---|---|
-| 4 | **Trabalho escravo contemporâneo** — lista suja × contratos públicos | MTE (lista suja), Portal da Transparência | Coletar a lista suja e cruzar com fornecedores já no portal |
+| 4 | ✅ **Trabalho escravo contemporâneo** — Cadastro de Empregadores (MTE) | MTE (Cadastro), PNCP, Portal da Transparência | Feito: `/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores` — 190 registros PJ, 181 empresas, 1.867 trabalhadores; pessoa física (388) contada e omitida (CPF nunca gravado). Coletor `scripts/etl/trabalho/coletar-lista-suja-mte.py`. Contratos por link oficial por CNPJ |
 | 5 | **Financiamento de campanha × contratos** | TSE (doações), Portal da Transparência | Cruzar doadores de 2022/2024/2026 com fornecedores de `/[municipio]` |
 | 6 | **Sonegação e renúncia fiscal por setor** | Receita Federal (Demonstrativos de Gastos Tributários), TCU | Coletar renúncia anual por setor e publicar painel comparativo |
 | 7 | **Encarceramento em massa** — perfil, pena, lotação | CNJ (SISDEPEN), DEPEN, SINEP | Ampliar `/judiciario/presidios` com perfil e taxa de lotação |
