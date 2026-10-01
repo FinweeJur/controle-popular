@@ -67,15 +67,25 @@ HOSTS_DO_PORTAL = ("controlepopular.com.br", "www.controlepopular.com.br")
 # Host de API do Telegram: é o mensageiro, não o destino do webhook.
 HOSTS_PERMITIDOS = HOSTS_DO_PORTAL + ("api.telegram.org",)
 
-# Arquivos que REGISTRAM o incidente do goldenherd — mencionam o nome de
-# propósito, para quem vier depois entender o que aconteceu. Nome novo fora
-# desta lista reprova: é o caso do agente que inventa outro relay.
+# Arquivos que REGISTRAM o incidente — mencionam o nome de propósito, para quem
+# vier depois entender o que aconteceu. Nome novo fora desta lista reprova: é o
+# caso do agente que inventa outro relay.
 ARQUIVOS_DO_INCIDENTE = {
-    "scripts/checar-webhook-telegram.py",
     "scripts/telegram-set-webhook.mts",
     "scripts/vigia-telegram-opencode.mts",
     "AGENTS.md",
 }
+
+# Arquivos que o varredor NÃO varre. É UM: ele mesmo.
+#
+# O `--self-test` precisa de endereços ruins como dado de prova — um caso que
+# diz "isto reprova" tem de conter o endereço que reprova. Varrer o próprio
+# arquivo de fixtures faria a régua reprovar a si mesma em todo push (medido:
+# o pre-push barrou o commit que introduziu este arquivo). O risco de abrir uma
+# exceção é o de sempre — endereço de verdade escondido aqui — e ele é pequeno
+# pelo tamanho do arquivo e porque este arquivo é justamente o que se revisa
+# quando a régua muda.
+ARQUIVOS_IGNORADOS = {"scripts/checar-webhook-telegram.py"}
 
 RE_URL = re.compile(r"https?://([^\s\"'`<>)\]}]+)")
 RE_LINHA_DE_WEBHOOK = re.compile(r"setWebhook|WEBHOOK_URL|URL_WEBHOOK", re.I)
@@ -113,6 +123,9 @@ def _oficial(host: str) -> bool:
 
 def problemas_na_linha(caminho: str, conteudo: str) -> list[str]:
     """Achados de R1, R2 e R3 para UMA linha. Puro: o --self-test reusa."""
+    if caminho in ARQUIVOS_IGNORADOS:
+        return []
+
     achados = []
 
     if not _eh_comentario(conteudo):
@@ -136,6 +149,9 @@ def problemas_na_linha(caminho: str, conteudo: str) -> list[str]:
 
 def problemas_no_arquivo(caminho: str) -> list[str]:
     """R5: arquivo que chama `setWebhook` só pode citar URL do portal ou da API."""
+    if caminho in ARQUIVOS_IGNORADOS:
+        return []
+
     achados = []
     for linha in _git_grep(r"https?://", caminho=caminho):
         _, numero, conteudo = linha
