@@ -1,3 +1,34 @@
+/**
+ * @file apps/web/lib/busca/resposta-curada.ts
+ * @description Respostas prontas e determinísticas da barra de busca e do
+ * assistente cívico (Seu Nonô / Alceu Dispor).
+ *
+ * Papel no portal: tabela de perguntas especiais de alta precisão — as
+ * perguntas de exemplo da barra de cada zona e os termos de alta frequência.
+ * A resposta fixa com link oficial sai em milissegundos, sem índice e sem
+ * banco. Se nada casar, quem responde é a etapa seguinte (base do Seu Nonô,
+ * e depois o índice de busca).
+ *
+ * Regra de negócio: AGENTS.md §7 (regra editorial), §8 (a regra das seis
+ * qualidades — número na tela vem de constante medida com data) e o
+ * "Plano de correção — sessão de 01/10/2026" em
+ * docs/04-arquitetura/REVISAO-CODIGO.md, Fase 3.
+ *
+ * Decisões não triviais (achados da Parte 22 da revisão):
+ * - `zona` passa a filtrar, mas **só quando o contexto é uma zona declarada
+ *   e diferente da entrada**: município não desambigua zona — quem pergunta
+ *   sobre a CCJC numa página de Betim quer a resposta da CCJC (achado 22.1).
+ * - O casamento é só na direção "a pergunta contém o padrão". A direção
+ *   inversa fazia "rio" casar com "rio doce" e responder o Judiciário
+ *   (achado 22.2); além disso a etapa exige pergunta de 2+ tokens — termo
+ *   solto cai na busca, que tem índice medido.
+ * - **Nenhuma cifra de acervo (contagem ou valor monetário) entra em prosa
+ *   nem em texto de link** (achado 22.3): a constante medida fica na página
+ *   de destino, e ela sim é datada. Importar o módulo de dado aqui para
+ *   repetir o número custaria dezenas de KB no bundle do assistente, que é
+ *   componente de cliente (`"use client"` — ver AGENTS.md §5.1).
+ */
+
 import { FRENTES } from "@/lib/assistente/seu-nono-dados";
 import { semAcento, separarPalavras } from "@/lib/busca/normalizar";
 
@@ -15,6 +46,10 @@ export interface RespostaCurada {
 /**
  * Respostas fixas com alta precisão para as perguntas de exemplo exibidas
  * na barra de busca de cada zona e termos de alta frequência.
+ *
+ * @property zona - a fronteira do portal a que a resposta pertence. Só é
+ * lida quando o contexto da chamada também é uma zona (ver
+ * `ZONAS_DECLARADAS`); ausente = resposta válida em qualquer fronteira.
  */
 interface PerguntaEspecial {
   padroes: string[];
@@ -24,7 +59,11 @@ interface PerguntaEspecial {
   linksAdicionais?: LinkResposta[];
 }
 
-const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
+/**
+ * Tabela exportada porque o teste de regressão percorre cada entrada
+ * conferindo que nenhuma traz cifra de acervo digitada na mão (§8).
+ */
+export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
   // ─── CONGRESSO ──────────────────────────────────────────────
   {
     padroes: ["restringem direitos", "restricao de direitos", "projetos que restringem", "alertas de direitos", "alerta de vicio"],
@@ -113,7 +152,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     padroes: ["acordo de mariana", "rio doce", "repactuacao mariana", "mariana"],
     zona: "ambiental",
     resposta:
-      "A página do Acordo do Rio Doce detalha a execução orçamentária dos R$ 677,4 milhões da repactuação em Minas Gerais, com divisão por anexos, gráfico de empenho e exportação CSV.",
+      "A página do Acordo do Rio Doce detalha a execução orçamentária da repactuação em Minas Gerais, com divisão por anexos, gráfico de empenho e exportação CSV.",
     linkPrincipal: { href: "/ambiental/mariana", texto: "Ver Acordo de Mariana" },
     linksAdicionais: [{ href: "/paraopeba/vale", texto: "Ver Observatório Vale" }],
   },
@@ -121,7 +160,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     padroes: ["barragens", "barragem", "descaracterizacao", "sigbm", "mancha de inundacao"],
     zona: "ambiental",
     resposta:
-      "O portal monitora 909 barragens do cadastro nacional (SIGBM/ANM) e de Minas Gerais (FEAM), exibindo manchas de inundação, nível de emergência e status de descaracterização.",
+      "O portal monitora as barragens do cadastro nacional (SIGBM/ANM) e de Minas Gerais (FEAM), exibindo manchas de inundação, nível de emergência e status de descaracterização.",
     linkPrincipal: { href: "/ambiental/barragens", texto: "Ver barragens no país e em MG" },
     linksAdicionais: [
       { href: "/ambiental/barragens/descaracterizacao", texto: "Ver descaracterização" },
@@ -140,7 +179,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     padroes: ["legislacao ambiental", "normas ambientais", "mma", "cndh", "urn lexml"],
     zona: "ambiental",
     resposta:
-      "Acervo com 8.940 normas federais (MMA/CNDH) e 6.378 normas estaduais de Minas Gerais, categorizadas por tema e identificadas por URN canônica do LexML.",
+      "Acervo com as normas federais (MMA/CNDH) e as estaduais de Minas Gerais, categorizadas por tema e identificadas por URN canônica do LexML.",
     linkPrincipal: { href: "/ambiental/legislacao", texto: "Ver legislação ambiental" },
     linksAdicionais: [{ href: "/ambiental/direito-critico", texto: "Ver Direito Crítico" }],
   },
@@ -150,7 +189,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     padroes: ["brumadinho", "acordo paraopeba", "reparacao brumadinho", "execucao do acordo"],
     zona: "paraopeba",
     resposta:
-      "Acompanhamento da execução de R$ 5,48 bilhões do Acordo de Reparação de Brumadinho nos 26 municípios da bacia, com auditoria da FGV/AJRI, biblioteca das ATIs e auxílio emergencial.",
+      "Acompanhamento da execução do Acordo de Reparação de Brumadinho nos municípios da bacia, com auditoria da FGV/AJRI, biblioteca das ATIs e auxílio emergencial.",
     linkPrincipal: { href: "/paraopeba/execucao", texto: "Ver execução do Acordo Paraopeba" },
     linksAdicionais: [
       { href: "/paraopeba/auditoria", texto: "Ver fichas de auditoria AJRI" },
@@ -299,7 +338,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     linkPrincipal: { href: "/direitos-em-movimento/saude-publica", texto: "Ver Painel de Saúde Pública (SUS)" },
     linksAdicionais: [
       { href: "/direitos-em-movimento/ajuda", texto: "Onde Buscar Ajuda" },
-      { href: "/cidades", texto: "Ver 199 Cidades Estratégicas" },
+      { href: "/cidades", texto: "Ver Cidades Estratégicas" },
     ],
   },
 
@@ -347,8 +386,8 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       "controle social",
     ],
     resposta:
-      "Mapeamento de 710 conselhos municipais de direitos em Minas Gerais (CMS, CODEMA, Tutelares e Assistência Social), com contatos oficiais, locais e orientações para participação popular.",
-    linkPrincipal: { href: "/direitos-em-movimento/conselhos", texto: "Ver 710 Conselhos de Direitos" },
+      "Mapeamento dos conselhos municipais de direitos em Minas Gerais (CMS, CODEMA, Tutelares e Assistência Social), com contatos oficiais, locais e orientações para participação popular.",
+    linkPrincipal: { href: "/direitos-em-movimento/conselhos", texto: "Ver Conselhos de Direitos" },
     linksAdicionais: [{ href: "/direitos-em-movimento/informacao", texto: "Ver Canais Oficiais LAI" }],
   },
 
@@ -383,7 +422,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       "reparacao brumadinho",
     ],
     resposta:
-      "Acompanhamento em tempo real das cotações da Vale (VALE3) na B3, comunicados de acionistas na CVM e auditoria dos R$ 5,48 bilhões já repassados aos 26 municípios da bacia do Paraopeba.",
+      "Acompanhamento em tempo real das cotações da Vale (VALE3) na B3, comunicados de acionistas na CVM e auditoria dos repasses já feitos aos municípios da bacia do Paraopeba.",
     linkPrincipal: { href: "/paraopeba/vale", texto: "Ver Cotações e Documentos CVM da Vale" },
     linksAdicionais: [
       { href: "/paraopeba/execucao", texto: "Ver Execução do Acordo de Brumadinho" },
@@ -401,7 +440,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       "fiscalizacao tribunais",
     ],
     resposta:
-      "Acervo de 343 relatórios de inspeção do Conselho Nacional de Justiça (CNJ) sobre tribunais estaduais e federais, além do mapa de comarcas com déficit de Defensores Públicos em MG.",
+      "Acervo de relatórios de inspeção do Conselho Nacional de Justiça (CNJ) sobre tribunais estaduais e federais, além do mapa de comarcas com déficit de Defensores Públicos em MG.",
     linkPrincipal: { href: "/judiciario/inspecoes", texto: "Ver Inspeções Judiciais do CNJ" },
     linksAdicionais: [
       { href: "/judiciario/recomendacoes", texto: "Ver Recomendações CNJ & CNMP" },
@@ -420,7 +459,7 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
       "vale base metals",
     ],
     resposta:
-      "O portal monitora 12 mineradoras canadenses com projetos estratégicos no Brasil. Consulte barragens de rejeitos, relatórios do SEDAR+ e ouvidoria CORE.",
+      "O portal monitora mineradoras canadenses com projetos estratégicos no Brasil. Consulte barragens de rejeitos, relatórios do SEDAR+ e ouvidoria CORE.",
     linkPrincipal: { href: "/canada/mineracao", texto: "Ver Mineradoras do Canadá (/canada/mineracao)" },
     linksAdicionais: [
       { href: "/canada", texto: "Hub Canadá & Brasil" },
@@ -448,6 +487,17 @@ const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     ],
   },
 ];
+
+/**
+ * Zonas que o portal declara nas próprias respostas curadas, derivadas da
+ * tabela — sem lista chumbada, para que uma fronteira nova entre sozinha.
+ *
+ * Um slug de município não é zona: só o contexto que aparecer aqui é que
+ * restringe a busca de resposta (achado 22.1).
+ */
+const ZONAS_DECLARADAS = new Set(
+  PERGUNTAS_ESPECIAIS.flatMap((e) => (e.zona ? [e.zona] : []))
+);
 
 /**
  * Ajusta links relativos para a cidade ativa, caso aplicável.
@@ -480,11 +530,29 @@ export function buscarRespostaCurada(
   const normalizada = semAcento(pergunta.trim().toLowerCase());
   if (normalizada.length < 3) return null;
 
+  // Termo solto não é pergunta: cai na busca, que tem índice medido.
+  // Sem isto, "rio" casava com "rio doce" e recebia a resposta do
+  // Judiciário como se fosse resposta dele (achado 22.2).
+  const tokens = normalizada.split(/\s+/).filter(Boolean);
+  if (tokens.length < 2) return null;
+
+  // Contexto de zona desambigua; contexto de município não — cidade não
+  // decide se a pergunta é sobre o Congresso ou sobre o Judiciário.
+  const zonaContexto =
+    slugCidadeOuZona && ZONAS_DECLARADAS.has(slugCidadeOuZona)
+      ? slugCidadeOuZona
+      : undefined;
+
   // 1. Tenta casar primeiro com perguntas especiais de alta precisão
   for (const esp of PERGUNTAS_ESPECIAIS) {
+    // Só descarta resposta de outra fronteira quando o contexto declarou a
+    // própria. Zona ausente na resposta = serve qualquer fronteira.
+    if (zonaContexto && esp.zona && esp.zona !== zonaContexto) continue;
     for (const padrao of esp.padroes) {
       const pNorm = semAcento(padrao.toLowerCase());
-      if (normalizada.includes(pNorm) || pNorm.includes(normalizada)) {
+      // Direção única: a pergunta contém o padrão. A direção inversa
+      // aceitava a pergunta como pedaço do padrão (achado 22.2).
+      if (normalizada.includes(pNorm)) {
         const linkPrincipal = ajustarLinkParaCidade(esp.linkPrincipal, slugCidadeOuZona);
         const linksAdicionais = esp.linksAdicionais?.map((l) =>
           ajustarLinkParaCidade(l, slugCidadeOuZona)

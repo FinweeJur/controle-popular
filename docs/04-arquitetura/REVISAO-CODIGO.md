@@ -915,7 +915,7 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
 
 ### Achados da Parte 22
 
-1. ⚠️ **O campo `zona` é declarado em 14 entradas e nunca é lido.**
+1. ⚠️ → ✅ **O campo `zona` é declarado em 13 entradas e nunca é lido.**
    `PerguntaEspecial.zona` aparece como `congresso`, `judiciario`,
    `ambiental`, `paraopeba` nas entradas, mas `buscarRespostaCurada` só
    lê `padroes`, `linkPrincipal` e `linksAdicionais` — o parâmetro
@@ -923,9 +923,21 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
    rota e **nunca filtra**. Medido em execução: a pergunta *"O que a CCJC
    tem na pauta?"* chamada com slug `betim` devolve
    `/congresso/comissoes` sem pestanejar. O filtro existe no dado e não
-   existe na regra.
+   existe na regra. *(A primeira redação dizia 14 entradas; contado linha a
+   linha em 01/10/2026, são 13: 4 de cada fronteira mais 1 de Paraopeba.)*
 
-2. ⚠️ **Casamento por subcadeia nos dois sentidos — e o cidadão não vê
+   **Corrigido (01/10/2026).** `zona` passa a ser lida: `ZONAS_DECLARADAS`
+   é derivada da própria tabela (sem lista chumbada, para que fronteira
+   nova entre sozinha) e o contexto só restringe quando é **uma zona
+   declarada e diferente da entrada**. Reapuração do caso medido: com
+   contexto `judiciario`, *"O que a CCJC tem na pauta?"* já **não** devolve
+   `/congresso/comissoes`; com `congresso` devolve; com `betim` continua
+   devolvendo — **decisão registrada**: município não desambigua fronteira,
+   porque quem pergunta sobre a CCJC numa página de cidade quer a resposta
+   da CCJC. Teste: `resposta-curada.test.ts` → *"zona do contexto descarta
+   resposta de outra fronteira"*.
+
+2. ⚠️ → ✅ **Casamento por subcadeia nos dois sentidos — e o cidadão não vê
    por que caiu lá.** A linha 487 testa
    `normalizada.includes(pNorm) || pNorm.includes(normalizada)`: a
    resposta dispara se a pergunta **contiver** o padrão ou se o padrão
@@ -944,13 +956,50 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
    digita *vale* pode querer o valor de uma coisa. Os dois recebem uma
    resposta estreita rotulada como resposta do portal.
 
-3. ⚠️ **Duas cifras digitadas à mão, sem data.** `"…os R$ 677,4 milhões
-   da repactuação em Minas Gerais…"` (linha 118) e `"O portal monitora
-   909 barragens…"` (linha 124) são texto fixo. O número **existe** medido
-   em módulo de dado (`lib/ambiental/barragens-sigbm.ts` documenta a
-   contagem), mas aqui virou prosa colada — e a regra do §8 é que o número
+   **Corrigido (01/10/2026), nos dois lados.** (a) A direção inversa foi
+   removida: casa só quem **contém** o padrão. (b) A etapa passou a exigir
+   pergunta de 2+ tokens — termo solto não é pergunta e cai na busca, que
+   tem índice medido. Reapuração: os quatro casos da tabela agora devolvem
+   `null`; fragmentos de duas palavras (`"restricao de"` diante de
+   `restricao de direitos`, `"aposentam ate"` diante de
+   `aposentam ate 2030`) também deixam de receber a resposta alheia, e a
+   direção correta segue casando (`"restricao de direitos"` →
+   `/congresso/alertas`). Três testes novos em `resposta-curada.test.ts`.
+
+3. ⚠️ → ✅ **Cifras digitadas à mão, sem data — nove, não duas.** A primeira
+   redação apontou duas: `"…os R$ 677,4 milhões da repactuação em Minas
+   Gerais…"` e `"O portal monitora 909 barragens…"`. Varredura linha a linha
+   de `resposta-curada.ts` em 01/10/2026 achou **nove** ocorrências de
+   cifra de acervo em prosa ou texto de link:
+
+   | cifra | resposta afetada |
+   |---|---|
+   | `R$ 677,4 milhões` | Acordo do Rio Doce |
+   | `909 barragens` | barragens SIGBM/ANM |
+   | `8.940` normas federais e `6.378` estaduais | legislação ambiental |
+   | `R$ 5,48 bilhões` + `26 municípios` | execução do Acordo (2 respostas) |
+   | `710 conselhos` (prosa **e** texto do link) | conselhos de direitos |
+   | `343 relatórios` | inspeções do CNJ |
+   | `12 mineradoras` | Canadá & mineração |
+   | `199 Cidades` (texto do link) | cidades |
+
+   O número **existe** medido em módulo de dado (`lib/ambiental/barragens-sigbm.ts`
+   documenta a contagem; `COBERTURA_CANADA` é literal, medida e datada em
+   2026-09-30), mas aqui virou prosa colada — e a regra do §8 é que o número
    na tela vem de constante medida com data. A contagem de barragens do
    SIGBM muda; o texto não.
+
+   **Corrigido (01/10/2026) por remoção, não por importação.** A constante
+   medida fica na página de destino, que a publica datada; a prosa deixa de
+   repeti-la. Repetir exigiria importar o módulo de dado aqui — e
+   `SeuNono.tsx` e `ChatbotIa.tsx` são `"use client"`, então cairia no
+   bundle do cliente: `barragens-sigbm.json` tem 92 KB e
+   `lib/internacional/dados-canada.ts` puxa 48 KB de JSON (AGENTS.md §5.1).
+   Permanecem só números de fato normativo, que não são total de acervo:
+   `75 anos (LC 152/2015)`, `20%` do quinto constitucional, `2º grau`,
+   `TRT-3`, `Form 20-F`, `VALE3`. Um teste percorre as 13 entradas da
+   tabela e falha se cifra de acervo voltar para prosa ou para texto de
+   link.
 
 4. 📌 **O teste de "integridade" não testa se a rota existe.**
    `paginas-portal.test.ts:39` percorre as 849 linhas checando `id`,
@@ -972,11 +1021,34 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
    que contenha metade de um padrão de 6 pontua alto e entra no mesmo
    lugar de quem perguntou aquilo exatamente.
 
-7. ✅ **O que está certo.** Os 8 testes cobrem os caminhos reais,
+7. ✅ **O que está certo.** Os 8 testes cobrim os caminhos reais,
    inclusive o de prefixo de município (`"Quanto a Prefeitura de Betim
    gasta em saúde?"` → `/betim/prefeitura/despesas`), e os casos negativos
-   (`"oi"` e uma string sem sentido devolvem `null`). Fora os dois números
-   do achado 3, as respostas curadas não trazem total de acervo solto.
+   (`"oi"` e uma string sem sentido devolvem `null`).
+
+   **Retificado em 01/10/2026.** A frase que acompanhava este item — *"fora
+   os dois números do achado 3, as respostas curadas não trazem total de
+   acervo solto"* — estava errada: a varredura da mesma rodada achou
+   **nove**, não dois (achado 3). O item foi marcado ✅ sem ter medido a
+   afirmação. É o motivo de a varredura ter virado teste: comentário
+   errado convence, teste não (AGENTS.md §9).
+
+8. 📌 **Mesma tela publica 14 e 12 para o mesmo acervo.** Achado novo,
+   medido em 01/10/2026 ao fechar o achado 3:
+   `data/canada/mineradoras-tsx-brasil.compact.json` tem 14 linhas
+   (`ca-min-01` … `ca-min-14`) e `COBERTURA_CANADA.mineradorasTsxBrasil`
+   é `14`, medido em 2026-09-30 — é o número que o cartão de `/canada`
+   renderiza. A mesma página e mais nove lugares dizem **12**: os metadados
+   de `/canada` e `/canada/mineracao`, `PainelMineracaoCanada.tsx`,
+   `SeuNonoData.ts`, `EmpresasClient.tsx`, `internacional/page.tsx`,
+   `europa/page.tsx`, `escada-determinista.ts` e dois JSON de dado
+   versionado (`assistente-acervo.json`, `noticias-portal.json`).
+   As duas contagens podem até ser defensáveis — 14 registros contra algum
+   recorte de 12, já que há projetos em fase de pesquisa — mas nada explica
+   a diferença ao leitor, e é exatamente a armadilha da §7: dois números
+   verdadeiros lado a lado. **Não corrigido aqui:** decide-se qual é o
+   número canônico antes de reescrever dez arquivos, dois deles JSON de
+   dado gerado. Registrado em **Fora do escopo desta sessão**.
 
 ## Achados e dívidas
 
@@ -1069,11 +1141,16 @@ cada correção com teste de regressão e conversão do marcador
 12. Índice passa a usar `comRetry` (achado 21.3) — resolve de uma vez o
     módulo `lib/robusto/rede.ts` órfão.
 
-**Fase 3 — respostas curadas** (`lib/busca/resposta-curada.ts`)
+**Fase 3 — respostas curadas** ✅ **concluída (01/10/2026)**
+(`lib/busca/resposta-curada.ts`, `lib/busca/resposta-curada.test.ts`)
 
-13. `zona` passa a filtrar quando informada (achado 22.1).
-14. O casamento deixa de aceitar subcadeia reversa (achado 22.2).
-15. Cifras tiradas da prosa ou datadas na fonte (achado 22.3).
+13. `zona` passa a filtrar quando o contexto é zona declarada e diferente;
+    contexto de município não filtra (achado 22.1).
+14. O casamento deixa de aceitar subcadeia reversa, e a etapa passa a exigir
+    pergunta de 2+ tokens (achado 22.2).
+15. As **nove** cifras de acervo saem da prosa e dos textos de link; o
+    número medido continua na página de destino (achado 22.3). Um teste
+    percorre as 13 entradas e falha se cifra voltar.
 
 **Fase 4 — higiene**
 
@@ -1095,7 +1172,9 @@ cada correção com teste de regressão e conversão do marcador
   20.9): antes de publicar constante datada é preciso saber **de onde** cada
   número é medido, e isso não está escrito em lugar nenhum;
 - fontes da Teia hardcoded (dívida 20.12): depende do catálogo da Parte 18,
-  que é a primeira da lista.
+  que é a primeira da lista;
+- 14 e 12 mineradoras na mesma tela (achado 22.8): decide-se qual número é
+  canônico antes de reescrever dez arquivos, dois deles JSON de dado gerado.
 
 **Verificação em cada fase:** `tsc --noEmit`, `eslint` nos arquivos do diff,
 `vitest` do escopo, guarda de CPF e `python scripts/validar-documentacao.py`.
