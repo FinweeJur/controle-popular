@@ -1062,9 +1062,11 @@ body {
   #layers-panel.collapsed:hover .layer-groups,
   #layers-panel.collapsed:hover .regiao-filtro,
   #layers-panel.collapsed:hover .layer-bulk,
+  #layers-panel.collapsed:hover .layer-salvas,
   #layers-panel.collapsed:focus-within .layer-groups,
   #layers-panel.collapsed:focus-within .regiao-filtro,
-  #layers-panel.collapsed:focus-within .layer-bulk {
+  #layers-panel.collapsed:focus-within .layer-bulk,
+  #layers-panel.collapsed:focus-within .layer-salvas {
     display: flex;
   }
 }
@@ -1213,6 +1215,66 @@ body {
   line-height: 1.4;
   color: var(--text-3);
 }
+
+/* ---- Link das camadas (30/09/2026) --------------------------------------
+   Ação sobre o CONJUNTO — mesma natureza de "Ligar tudo" —, então fica fora de
+   `.layer-groups`. A explicação (`.layer-salvas-dica`) é SEMPRE visível: é
+   doutrina do globo que nada dependa de hover, porque o celular não tem hover.
+   Ver ui/camadas-salvas.js e ui/layerspanel.js. */
+#layers-panel .layer-salvas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+#layers-panel .layer-salvas-btn {
+  appearance: none;
+  padding: 6px 8px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-1);
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+#layers-panel .layer-salvas-btn:hover {
+  color: var(--text-1);
+  background: var(--accent-weak);
+  border-color: var(--accent-line);
+}
+
+#layers-panel .layer-salvas-btn:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+#layers-panel .layer-salvas-dica {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
+#layers-panel .layer-salvas-status {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--text-2);
+  /* O link do fallback é longo e sem espaço; precisa poder quebrar. */
+  overflow-wrap: anywhere;
+}
+
+#layers-panel .layer-salvas-status.falhou { color: var(--caution); }
 
 /* ---- Grupos de assunto ------------------------------------------------- */
 #layers-panel .layer-groups {
@@ -1581,6 +1643,7 @@ body {
   #layers-panel .layer-explicar { width: 28px; height: 28px; font-size: 12px; }
   #layers-panel .regiao-chip { min-height: 36px; padding: 8px 12px; }
   #layers-panel .layer-bulk-btn { min-height: 36px; padding: 8px 12px; }
+  #layers-panel .layer-salvas-btn { min-height: 36px; padding: 8px 12px; }
 }
 
 /* Estado colapsado: esconde os grupos E o filtro de região, mantendo só o
@@ -1591,7 +1654,8 @@ body {
    recolhido. */
 #layers-panel.collapsed .layer-groups,
 #layers-panel.collapsed .regiao-filtro,
-#layers-panel.collapsed .layer-bulk {
+#layers-panel.collapsed .layer-bulk,
+#layers-panel.collapsed .layer-salvas {
   display: none;
 }
 

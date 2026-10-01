@@ -25,6 +25,9 @@ import { TEMAS_GLOBO, iniciarSincroniaDeTema } from './ui/tema.js';
 import { createFocusBar } from './ui/focusbar.js';
 import { criarDestaques } from './ui/destaques.js';
 import { createLayersPanel, camadaDoEndereco } from './ui/layerspanel.js';
+import {
+  camadasDoEndereco, lerCamadasSalvas, gravarCamadasSalvas, montarUrlComCamadas,
+} from './ui/camadas-salvas.js';
 import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
 import { createInspector, procurarFeicaoNoPonto, tituloDaArea } from './ui/inspector.js';
@@ -40,8 +43,25 @@ import { createSatellitesGroup } from './layers/satelites.js';
 import { criarImagensPorZoom } from './layers/imagens.js';
 import { FocusBoundaries } from './layers/boundaries.js';
 
+/**
+ * `localStorage` pode LANÇAR, e não só devolver null: navegador com cookies
+ * bloqueados, iframe com sandbox, modo privado de alguns navegadores. A
+ * memória das camadas é um extra — perder o acesso a ela não pode derrubar o
+ * bootstrap inteiro do globo. Aqui a falha vira `null`, e o app abre no padrão.
+ */
+function armazenamentoLocal() {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
 async function bootstrap() {
   const container = document.getElementById('globe-container');
+  // Resolvido UMA vez: o acesso em si já pode lançar (ver `armazenamentoLocal`),
+  // e não vale repetir o try/catch em cada leitura e escrita.
+  const armazenamento = armazenamentoLocal();
 
   // Sincroniza o tema visual e o modo daltônico (8 temas do portal) ANTES de
   // criar a cena 3D, para que `createScene` e `createEarth` já nasçam com os
@@ -501,8 +521,12 @@ async function bootstrap() {
   /**
    * Liga ou desliga um CONCEITO: age sobre todas as fontes dele que o filtro de
    * região deixa passar, e desliga as que ficaram de fora.
+   *
+   * `persistir: false` existe para a restauração (link `?camadas=` e memória do
+   * aparelho): abrir um link emprestado não deve sobrescrever o recorte salvo
+   * de quem abriu. Todo toque da pessoa passa pelo padrão (`true`) e grava.
    */
-  async function alternarCamada(idCamada, ligar) {
+  async function alternarCamada(idCamada, ligar, { persistir = true } = {}) {
     const camada = CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada);
     if (!camada) return;
     const regiao = layersPanel.regiaoAtual();
@@ -516,6 +540,63 @@ async function bootstrap() {
     }));
     layersPanel.setCarregando(idCamada, false);
     sincronizarCamada(idCamada);
+    if (persistir) salvarCamadas();
+  }
+
+  /**
+   * O conjunto de camadas ligadas NESTE momento, como ids de conceito.
+   *
+   * Exclui as `vazia` (a chave é desabilitada; nunca deveriam contar como
+   * ligadas) e é exatamente o que vai para o aparelho e para o link.
+   */
+  function camadasLigadas() {
+    return CAMADAS_RESOLVIDAS
+      .filter((c) => !c.vazia && layersPanel.isEnabled(c.id))
+      .map((c) => c.id);
+  }
+
+  /** Grava o recorte atual no aparelho. Escrita é conveniência: falha calada. */
+  function salvarCamadas() {
+    gravarCamadasSalvas(armazenamento, camadasLigadas());
+  }
+
+  /**
+   * Liga EXATAMENTE o conjunto pedido — restauração do aparelho ou link.
+   *
+   * Só toca no que DIVERGE do estado atual: a maioria das linhas já está no
+   * lugar, e mandar todas pelo `alternarCamada` seria requisição de dado à toa.
+   * `persistir: false` porque nem abrir um link nem restaurar a memória devem
+   * reescrever a memória — só o toque da pessoa escreve.
+   */
+  async function aplicarCamadas(ids, { persistir = false } = {}) {
+    const alvo = new Set(ids);
+    const tarefas = [];
+    for (const camada of CAMADAS_RESOLVIDAS) {
+      if (camada.vazia) continue;
+      const quer = alvo.has(camada.id);
+      if (quer === layersPanel.isEnabled(camada.id)) continue;
+      tarefas.push(alternarCamada(camada.id, quer, { persistir: false }));
+    }
+    await Promise.all(tarefas);
+    if (persistir) salvarCamadas();
+  }
+
+  /**
+   * Copia para a área de transferência o link com as camadas ligadas agora.
+   *
+   * Devolve `{ ok, url }` em vez de lançar: o painel mostra a mensagem e, se o
+   * navegador recusar a área de transferência (contexto não seguro, permissão
+   * negada), mostra o próprio link para cópia manual. Perder o link não é opção
+   * — ele é o que torna o recorte compartilhável.
+   */
+  async function copiarLinkDasCamadas() {
+    const url = montarUrlComCamadas(location.href, camadasLigadas());
+    try {
+      await navigator.clipboard.writeText(url);
+      return { ok: true, url };
+    } catch {
+      return { ok: false, url };
+    }
   }
 
   /**
@@ -578,6 +659,7 @@ async function bootstrap() {
       regioes: REGIOES,
       onToggle: (idCamada, ligar) => { alternarCamada(idCamada, ligar); },
       onRegiao: (regiao) => { aplicarRegiao(regiao); },
+      onCopiarLink: () => copiarLinkDasCamadas(),
     },
   );
 
@@ -608,12 +690,19 @@ async function bootstrap() {
   // Ativa as camadas marcadas como ligadas por padrão e já sincroniza os
   // contadores quando cada fetch terminar. O filtro nasce em "todas as
   // regiões", então nenhuma fonte é barrada aqui.
+  //
+  // O `await` no fim é o que faz a restauração enxergar o estado REAL: sem
+  // ele, `layersPanel.isEnabled` ainda não refletiria as camadas que nascem
+  // ligadas, e o diff de `aplicarCamadas` (ligar o pedido, desligar o resto)
+  // partiria de uma foto errada e deixaria default ligado onde não devia.
+  const aberturas = [];
   for (const camada of CAMADAS_RESOLVIDAS) {
     if (!camada.on) continue;
     for (const fonte of camada.fontesResolvidas) {
-      if (fonte.on) layers.enable(fonte.id).then(() => sincronizarCamada(camada.id));
+      if (fonte.on) aberturas.push(layers.enable(fonte.id).then(() => sincronizarCamada(camada.id)));
     }
   }
+  await Promise.all(aberturas);
 
 
   // --- Loop de animação -----------------------------------------------------
@@ -682,12 +771,31 @@ async function bootstrap() {
   // Gerais — contexto antes de descer ao município. Nenhum botão fica aceso:
   // os botões são municípios, e a abertura não é nenhum deles.
   //
-  // `?camada=` é ortogonal aos dois: ele só acende uma linha do painel e não
-  // mexe na câmera (quem manda `camada` quer ver o conjunto, não um polígono).
+  // `?camada=` e `?camadas=` são ortogonais ao `#area=` e à câmera: eles só
+  // acendem linhas do painel e não mexem no enquadramento (quem manda o
+  // conjunto quer ver as camadas, não um polígono).
   const abriuArea = await abrirAreaDoEndereco();
 
+  // Precedência das três portas do estado (ver ui/camadas-salvas.js):
+  // `?camadas=` (o conjunto, link compartilhável) manda; senão `?camada=` (o
+  // link antigo, de uma só, que continua valendo); senão o recorte guardado no
+  // aparelho. Sem nenhum dos três, ficam só as camadas que nascem ligadas.
+  //
+  // Nenhuma porta da URL persiste: abrir um link emprestado e não mexer em
+  // nada devolve o recorte da pessoa na próxima visita. Só o toque grava.
+  const idsDoEndereco = camadasDoEndereco(location.search, CAMADAS_RESOLVIDAS);
   const idCamada = camadaDoEndereco(location.search, CAMADAS_RESOLVIDAS);
-  if (idCamada) await alternarCamada(idCamada, true);
+  if (idsDoEndereco) {
+    await aplicarCamadas(idsDoEndereco);
+  } else if (idCamada) {
+    await alternarCamada(idCamada, true, { persistir: false });
+  } else {
+    // `lerCamadasSalvas` devolve `null` quando nunca houve memória e uma lista
+    // quando há — inclusive vazia, que é "a pessoa desligou tudo" e precisa
+    // ser restaurada como tal.
+    const salvas = lerCamadasSalvas(armazenamento, CAMADAS_RESOLVIDAS);
+    if (salvas) await aplicarCamadas(salvas);
+  }
 
   // "Voe até aqui" (core/voo.js): o ponto vem no endereço e a ficha de contexto
   // do lugar abre ao chegar. Tem precedência sobre a abertura padrão e convive

@@ -37,6 +37,8 @@
  *   .panel-header / .panel-title / .panel-collapse-btn
  *   .regiao-filtro / .regiao-chip        — o filtro de região (radiogroup)
  *   .layer-bulk / .layer-bulk-btn / .layer-bulk-nota — ligar/desligar tudo
+ *   .layer-salvas / .layer-salvas-btn / .layer-salvas-dica / .layer-salvas-status
+ *                                        — link compartilhável das camadas ligadas
  *   .layer-groups / .layer-group / .layer-group-titulo / .layer-list
  *   .layer-row (+ .on, .em-realce, .layer-vazia, .layer-empty, .layer-error,
  *               .carregando, .acabou-de-ligar)
@@ -47,12 +49,15 @@
  *
  * API pública:
  *   const painel = createLayersPanel(el, { camadas, assuntos, regioes,
- *                                          onToggle, onRegiao });
+ *                                          onToggle, onRegiao, onCopiarLink });
  *   painel.setEnabled(camadaId, on);   // sincroniza a chave sem disparar onToggle
  *   painel.isEnabled(camadaId);
  *   painel.setCarregando(camadaId, bool);
  *   painel.setStatus(camadaId, { on, count, total, error, indistinta });
  *   painel.regiaoAtual();              // id de REGIOES, ou null = todas
+ *
+ *   `onCopiarLink` é opcional: devolve `Promise<{ ok, url }>` e o painel mostra
+ *   o resultado no `aria-live`. Sem ele, o botão não é criado.
  *
  *   agruparPorAssunto(camadas, assuntos);  // exportada à parte, testada em
  *                                          // layerspanel.test.mjs sem montar DOM
@@ -160,7 +165,7 @@ const NOME_DA_FORMA = {
   satelite: 'marcador que se move',
 };
 
-export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, onRegiao } = {}) {
+export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, onRegiao, onCopiarLink } = {}) {
   el.innerHTML = '';
 
   /** id da região escolhida, ou null = todas. */
@@ -352,6 +357,68 @@ export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, on
   }
 
   el.appendChild(bulk);
+
+  // -------------------------------------------------------------------------
+  // Link das camadas — o recorte atual vira endereço, e o aparelho lembra
+  //
+  // Mora junto de "Ligar tudo"/"Desligar tudo" porque é a mesma natureza: ação
+  // sobre o CONJUNTO, não sobre uma linha. A memória no aparelho e o link
+  // compartilhável são a mesma decisão de produto — ver ui/camadas-salvas.js e
+  // a Camada 4 do plano do ecossistema (sem cadastro, sem rastreio).
+  //
+  // A explicação é SEMPRE VISÍVEL, e isso é doutrina do globo: o celular não
+  // tem hover, então nada que a pessoa precise saber pode depender de passar o
+  // dedo. O `title` do botão é só reforço para quem usa mouse; o texto de baixo
+  // é a explicação de verdade.
+  // -------------------------------------------------------------------------
+  if (typeof onCopiarLink === 'function') {
+    const salvas = document.createElement('div');
+    salvas.className = 'layer-salvas';
+
+    const btnCopiar = document.createElement('button');
+    btnCopiar.type = 'button';
+    btnCopiar.className = 'layer-salvas-btn';
+    btnCopiar.textContent = 'Copiar link das camadas';
+    btnCopiar.title = 'Copia um endereço que abre exatamente estas camadas';
+    salvas.appendChild(btnCopiar);
+
+    const dica = document.createElement('p');
+    dica.className = 'layer-salvas-dica';
+    dica.textContent =
+      'As camadas ligadas ficam guardadas neste aparelho e voltam na próxima visita. '
+      + 'O link copiado abre o mesmo conjunto em qualquer navegador — sem cadastro.';
+    salvas.appendChild(dica);
+
+    // `role="status"` + `aria-live`: quem usa leitor de tela ouve o resultado
+    // do clique. A mensagem de sucesso some? Não — fica até o próximo clique,
+    // porque informação que desaparece sozinha é informação perdida.
+    const status = document.createElement('p');
+    status.className = 'layer-salvas-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.hidden = true;
+    salvas.appendChild(status);
+
+    btnCopiar.addEventListener('click', async () => {
+      btnCopiar.disabled = true;
+      try {
+        const { ok, url } = await onCopiarLink();
+        status.hidden = false;
+        status.textContent = ok
+          ? 'Link copiado — cole onde quiser para abrir estas camadas.'
+          : `Não deu para copiar sozinho. O link é: ${url}`;
+        status.classList.toggle('falhou', !ok);
+      } catch {
+        status.hidden = false;
+        status.classList.add('falhou');
+        status.textContent = 'Não deu para montar o link agora.';
+      } finally {
+        btnCopiar.disabled = false;
+      }
+    });
+
+    el.appendChild(salvas);
+  }
 
   // Envelope de todos os grupos — é isto que `.collapsed` esconde (ver
   // hud.css). Precisa envolver os TÍTULOS de assunto também: escondendo só as
