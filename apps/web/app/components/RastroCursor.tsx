@@ -1,42 +1,44 @@
 "use client";
 
 /**
- * RastroCursor — trilha de palavras que acompanha o mouse.
+ * RastroCursor — trilha de LETRAS que desenha palavras seguindo o mouse.
  *
- * O que é: ao mover o mouse pela página, vão nascendo palavras na posição
- * do ponteiro; cada uma sobe um pouco, cresce e some. As palavras saem de
- * uma lista fixa e se alternam a cada aparição — paz, harmonia, saúde,
- * natureza, ayllu, pachamama, demarcaçãojá… — no vocabulário do portal
- * (cuidado, terra, luta, comunidade). A cada poucas aparições entra uma
- * saudação pelo RELÓGIO de quem lê: "bom dia", "boa tarde" ou "boa noite".
+ * O que é: uma corrente de caracteres atrás do ponteiro. Cada caractere é
+ * um elo da corrente: o primeiro persegue o mouse, o segundo persegue o
+ * primeiro, e assim por diante — o conjunto forma a curva do movimento. As
+ * letras saem de um texto fixo (o vocabulário do portal), lidas em ciclo:
+ * conforme a cabeça anda, o texto "rola" pela corrente e as palavras vão se
+ * alternando (paz, harmonia, saúde, natureza, ayllu, pachamama, abya yala…).
+ * De tempos em tempos entra a saudação pelo relógio de quem lê: bom dia,
+ * boa tarde ou boa noite.
  *
- * Pedido do dono (30/09/2026): copiar o efeito "TrailCursor" do Framer,
- * trocando o rastro por palavras pré-definidas alternadas. O módulo do
- * Framer é um asset pago que vem vazio fora do editor, então o efeito foi
- * RECRIADO aqui (não copiado).
+ * Pedido do dono (30/09/2026), a partir do vídeo "Vibe Coding a Cursor
+ * Trail Text Component in Framer" (efeito "TrailCursor"): a referência
+ * mostra uma corrente de letras escrevendo a palavra atrás do cursor. O
+ * módulo do Framer é asset pago e vem vazio fora do editor, então o efeito
+ * foi RECRIADO (não copiado).
  *
  * Decisões técnicas:
- * - tudo por `Pointer Events` e DOM criado direto (`document.createElement`),
- *   sem re-render do React a cada movimento — o mouse dispara dezenas de
- *   eventos por segundo e um `setState` por evento pesaria;
- * - a criação é limitada por DISTÂNCIA (52 px) e por TEMPO (45 ms), e o
- *   número de palavras vivas tem teto (16): o rastro não vira uma nuvem
- *   ilegível nem trava o celular;
- * - cada palavra é removida no `animationend` (não fica lixo no DOM);
- * - é decorativo: `aria-hidden`, `pointer-events: none` e sem captura de
- *   clique — não atrapalha botão, link nem leitor de tela;
- * - respeita `prefers-reduced-motion` e não liga em tela de toque
- *   (sem mouse, sem rastro): quem pediu menos movimento não vê nada.
+ * - corrente de nós com suavização (lerp) em `requestAnimationFrame`, texto
+ *   do DOM direto (sem re-render do React a cada quadro);
+ * - a cabeça anda mais rápido (0,35) que a cauda (0,42 de perseguição ao
+ *   nó anterior): dá o efeito de chicote/rastro da referência;
+ * - o índice do texto avança por DISTÂNCIA percorrida (24 px por letra),
+ *   não por tempo: parado, o texto não troca sozinho; andando, rola;
+ * - a opacidade cai ao longo da corrente (`--i`) e a camada some quando o
+ *   mouse para (economiza bateria e evita a "bola" de letras sobrepostas);
+ * - é decorativo: `aria-hidden`, `pointer-events: none`, sem captura de
+ *   clique; respeita `prefers-reduced-motion` e não liga em tela de toque.
  *
- * Cores: a palavra alterna entre `--cp-primary` e `--cp-accent`, então
- * acompanha o tema ativo. A sombra usa `color-mix` sobre o fundo.
+ * Cores: usa `--cp-accent` (acompanha o tema) com um brilho suave, no
+ * espírito neon da referência.
  */
 
 import { useEffect, useRef } from "react";
 
 /**
- * Vocabulário da trilha, na ordem em que se alterna. Fica aqui (não no
- * render) para o componente ser puramente de apresentação; acrescentar
+ * Vocabulário da trilha, na ordem em que as palavras se alternam. Fica aqui
+ * (fora do render) para o componente ser só apresentação; acrescentar
  * palavra é editar esta lista.
  */
 const PALAVRAS = [
@@ -87,14 +89,30 @@ function saudacao(agora: Date = new Date()): string {
   return "boa noite";
 }
 
-/** Distância mínima (px) entre duas palavras para não amontoar. */
-const PASSO = 52;
-/** Intervalo mínimo (ms) entre palavras mesmo com o mouse rápido. */
-const INTERVALO = 45;
-/** Teto de palavras vivas ao mesmo tempo. */
-const MAX_VIVAS = 16;
-/** De quantas em quantas palavras entra a saudação do horário. */
-const A_CADA_SAUDACAO = 9;
+/**
+ * Texto da corrente: as palavras separadas por espaço, com a saudação do
+ * horário entrando a cada 6 palavras. O espaço vira um elo "vazio", que
+ * separa visualmente uma palavra da outra.
+ */
+function montarTexto(): string {
+  const partes: string[] = [];
+  PALAVRAS.forEach((palavra, i) => {
+    partes.push(palavra);
+    if ((i + 1) % 6 === 0) partes.push(saudacao());
+  });
+  return partes.join(" ").toUpperCase();
+}
+
+/** Quantos elos (letras) a corrente tem. */
+const ELOS = 48;
+/** Suavização da cabeça (persegue o mouse). */
+const SUAVE_CABECA = 0.38;
+/** Suavização da cauda (cada elo persegue o anterior). */
+const SUAVE_CAUDA = 0.34;
+/** Quantos pixels a cabeça anda para a corrente rolar UMA letra. */
+const PX_POR_LETRA = 26;
+/** Sem mover por este tempo, a corrente some. */
+const OCIOSO_MS = 260;
 
 export default function RastroCursor() {
   const camadaRef = useRef<HTMLDivElement | null>(null);
@@ -102,67 +120,88 @@ export default function RastroCursor() {
   useEffect(() => {
     const camada = camadaRef.current;
     if (!camada) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
 
-    const semMovimento = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const semMouse = window.matchMedia(
-      "(hover: none), (pointer: coarse)",
-    ).matches;
-    if (semMovimento || semMouse) return;
+    const texto = montarTexto();
+    const elos: { el: HTMLSpanElement; x: number; y: number }[] = [];
+    for (let i = 0; i < ELOS; i += 1) {
+      const el = document.createElement("span");
+      el.className = "cp-rastro-elo";
+      el.style.setProperty("--i", String(i));
+      el.textContent = texto[i % texto.length];
+      camada.appendChild(el);
+      elos.push({ el, x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    }
 
-    let indicePalavra = 0;
-    let contadorSaudacao = 0;
-    let ultimoX = Number.NEGATIVE_INFINITY;
-    let ultimoY = Number.NEGATIVE_INFINITY;
-    let ultimoTempo = 0;
+    let alvoX = window.innerWidth / 2;
+    let alvoY = window.innerHeight / 2;
+    let ultimoMovimento = 0;
+    let distancia = 0;
+    let deslocamento = 0;
+    let quadro = 0;
+    let visivel = false;
 
-    const nascer = (x: number, y: number) => {
-      contadorSaudacao += 1;
-      const usaSaudacao = contadorSaudacao % A_CADA_SAUDACAO === 0;
-      const texto = usaSaudacao
-        ? saudacao()
-        : PALAVRAS[indicePalavra++ % PALAVRAS.length];
-
-      const palavra = document.createElement("span");
-      palavra.className = "cp-rastro";
-      palavra.textContent = texto;
-      palavra.style.left = `${x}px`;
-      palavra.style.top = `${y}px`;
-      // Desvio lateral e cor alternada dão vida sem sortear a palavra.
-      palavra.style.setProperty(
-        "--cp-rastro-dx",
-        `${(Math.random() * 2 - 1) * 24}px`,
-      );
-      palavra.style.setProperty(
-        "--cp-rastro-cor",
-        indicePalavra % 2 === 0 ? "var(--cp-primary)" : "var(--cp-accent)",
-      );
-
-      camada.appendChild(palavra);
-      palavra.addEventListener("animationend", () => palavra.remove(), {
-        once: true,
-      });
-      while (camada.childElementCount > MAX_VIVAS) {
-        camada.firstElementChild?.remove();
+    const acordar = () => {
+      if (!visivel) {
+        camada.style.opacity = "1";
+        visivel = true;
       }
+      if (!quadro) quadro = requestAnimationFrame(rodar);
     };
 
     const aoMover = (e: PointerEvent) => {
       if (e.pointerType === "touch") return;
-      const dx = e.clientX - ultimoX;
-      const dy = e.clientY - ultimoY;
-      if (dx * dx + dy * dy < PASSO * PASSO) return;
-      const agora = performance.now();
-      if (agora - ultimoTempo < INTERVALO) return;
-      ultimoX = e.clientX;
-      ultimoY = e.clientY;
-      ultimoTempo = agora;
-      nascer(e.clientX, e.clientY);
+      alvoX = e.clientX;
+      alvoY = e.clientY;
+      ultimoMovimento = performance.now();
+      acordar();
+    };
+
+    const rodar = () => {
+      const cabecaX = elos[0].x;
+      const cabecaY = elos[0].y;
+      elos[0].x += (alvoX - elos[0].x) * SUAVE_CABECA;
+      elos[0].y += (alvoY - elos[0].y) * SUAVE_CABECA;
+      for (let i = 1; i < elos.length; i += 1) {
+        elos[i].x += (elos[i - 1].x - elos[i].x) * SUAVE_CAUDA;
+        elos[i].y += (elos[i - 1].y - elos[i].y) * SUAVE_CAUDA;
+      }
+
+      const andou = Math.hypot(elos[0].x - cabecaX, elos[0].y - cabecaY);
+      if (andou > 0.01) {
+        distancia += andou;
+        const novo = Math.floor(distancia / PX_POR_LETRA);
+        if (novo !== deslocamento) {
+          deslocamento = novo;
+          for (let i = 0; i < elos.length; i += 1) {
+            elos[i].el.textContent =
+              texto[(((deslocamento + i) % texto.length) + texto.length) % texto.length];
+          }
+        }
+      }
+
+      for (const elo of elos) {
+        elo.el.style.transform = `translate3d(${elo.x.toFixed(1)}px, ${elo.y.toFixed(
+          1,
+        )}px, 0) translate(-50%, -50%)`;
+      }
+
+      if (performance.now() - ultimoMovimento > OCIOSO_MS && andou < 0.15) {
+        camada.style.opacity = "0";
+        visivel = false;
+        quadro = 0;
+        return;
+      }
+      quadro = requestAnimationFrame(rodar);
     };
 
     window.addEventListener("pointermove", aoMover, { passive: true });
-    return () => window.removeEventListener("pointermove", aoMover);
+    return () => {
+      window.removeEventListener("pointermove", aoMover);
+      if (quadro) cancelAnimationFrame(quadro);
+      elos.forEach((elo) => elo.el.remove());
+    };
   }, []);
 
   return (
@@ -174,31 +213,24 @@ export default function RastroCursor() {
           z-index: 30;
           pointer-events: none;
           overflow: hidden;
+          opacity: 0;
+          transition: opacity 0.25s ease;
           contain: strict;
         }
-        .cp-rastro {
+        .cp-rastro-elo {
           position: fixed;
           left: 0;
           top: 0;
-          transform: translate(-50%, -50%);
-          font-family: var(--font-clash-display, var(--font-general-sans, system-ui));
-          font-size: 0.82rem;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          white-space: nowrap;
-          color: var(--cp-rastro-cor, var(--cp-primary));
-          text-shadow: 0 1px 3px color-mix(in srgb, var(--cp-bg) 65%, transparent);
-          will-change: transform, opacity;
+          font-family: var(--font-tabular-raw, var(--font-general-sans, monospace));
+          font-size: 0.8rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          white-space: pre;
+          color: var(--cp-accent);
+          opacity: calc(1 - var(--i) * 0.02);
+          text-shadow: 0 0 6px color-mix(in srgb, var(--cp-accent) 60%, transparent);
+          will-change: transform;
           user-select: none;
-          opacity: 0;
-          animation: cp-rastro-vida 1.15s ease-out forwards;
-        }
-        @keyframes cp-rastro-vida {
-          0%   { opacity: 0;    transform: translate(-50%, -50%) scale(0.72); }
-          18%  { opacity: 0.95; }
-          100% { opacity: 0;
-                 transform: translate(-50%, calc(-50% - 30px))
-                            translateX(var(--cp-rastro-dx, 0px)) scale(1.06); }
         }
         @media (prefers-reduced-motion: reduce) {
           .cp-rastro-camada { display: none; }
