@@ -795,6 +795,15 @@ e o renderizador
    embrulha a frase no formato de dado; a regra é o contrário: o número vem
    do dado, o texto só o apresenta.
 
+7. ⚠️ **Ponto decimal em português publicado.** O mesmo módulo formata de
+   dois jeitos: o repasse usa `toLocaleString('pt-BR')` (`R$ 3.500`), mas
+   leitos e homicídios usam `.toFixed()` puro. Medido em execução, sem
+   população informada, a frase sai como *"A rede pública dispõe de 2.00
+   leitos SUS por mil habitantes frente a uma taxa anual de 100.0
+   homicídios por 100 mil hab."* — denominador fabricado (achado 2) e
+   separador decimal do inglês na mesma frase em português. Leitor
+   brasileiro lê vírgula; o portal manda ponto.
+
 7. 📌 **Sem hiperlink para a fonte.** `CruzamentoMunicipalItem` tem
    `indicadoresEnvolvidos: string[]` (nomes em texto, ex.
    `CNES/DataSUS`) e nenhum campo de URL. Regra das seis qualidades, item 1:
