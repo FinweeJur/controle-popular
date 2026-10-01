@@ -74,7 +74,15 @@ export function misticaDoDia(data: Date): EntradaCalendario | null {
   return lista && lista.length > 0 ? lista[0] : null;
 }
 
-/** Todas as entradas de um dia (para listas e para o assistente). */
+/**
+ * Todas as entradas de um dia (para listas e para o assistente).
+ *
+ * UM VERBETE POR ASSUNTO (regra do dev, 30/09/2026): o calendário já
+ * chega unificado — fatos do mesmo assunto no mesmo dia são um só
+ * verbete (curadoria em `scripts/memoria/assuntos-mistica.json`). Então
+ * esta lista é, por construção, "os assuntos do dia": a home mostra o
+ * primeiro por inteiro e lista os demais (`MisticaDoDia.tsx`).
+ */
 export function entradasDoDia(data: Date): EntradaCalendario[] {
   return POR_DIA.get(chaveDiaMes(data)) ?? [];
 }

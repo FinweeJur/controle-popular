@@ -9,11 +9,11 @@ só o que aparece na tela da Mística do Dia.
 O que é visível (app/components/MisticaDoDia.tsx):
   1. ano + título (juntos, ano em negrito) — o ano SÓ aparece quando o
      título não traz o ano (unificação das datas, dev 30/09/2026);
-  2. resumo, quando existe (no máximo 2 frases: cada história cabe em
+  2. resumo, quando existe (até 2 parágrafos: cada história cabe em
      2 parágrafos, dev 30/09/2026);
-  3. aviso "Fato do calendário sem data no original" (semData);
-  4. "Fonte: " + citação CURTA `(Obra, Autor, Data)` — a mesma
-     `fonteCurta()` de lib/memoria/mistica.ts, com link quando houver.
+  3. citação CURTA `(Obra, Autor, Data)` — a mesma `fonteCurta()` de
+     lib/memoria/mistica.ts, com link quando houver. SEM o rótulo
+     "Fonte:" e SEM a nota de "fato sem data" (dev, 30/09/2026).
 
 Entrada:  TEMP/calendario.novo.json  (saída do gerador)
 Saída:    docs/planos/REVISAO-RESUMOS-MISTICA.docx
@@ -86,20 +86,11 @@ def main() -> int:
         p.add_run(e["titulo"])
 
         if e.get("resumo"):
-            resumo = doc.add_paragraph(e["resumo"])
-            resumo.paragraph_format.space_after = Pt(2)
-
-        if e.get("semData"):
-            aviso = doc.add_paragraph(
-                "Fato do calendário sem data no original — exibido para "
-                "não deixar o dia vazio."
-            )
-            aviso.runs[0].italic = True
-            aviso.runs[0].font.size = Pt(9)
+            for paragrafo in e["resumo"].split("\n\n"):
+                resumo = doc.add_paragraph(paragrafo)
+                resumo.paragraph_format.space_after = Pt(2)
 
         fonte = doc.add_paragraph()
-        rotulo = fonte.add_run("Fonte: ")
-        rotulo.bold = True
         fonte.add_run(e.get("fonteCurta", ""))
         fonte.paragraph_format.space_after = Pt(10)
 
