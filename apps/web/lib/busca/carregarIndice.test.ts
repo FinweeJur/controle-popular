@@ -78,6 +78,41 @@ describe("carregarGrupoFatiado", () => {
     );
     await expect(carregarGrupoFatiado("/base")).rejects.toThrow(/HTTP 404/);
   });
+
+  // Achado 21.3 da revisão: a tela de busca só falhava DEPOIS de todo o resto
+  // ter carregado, e uma fatia de 40 KB que devolvesse 503 por 200 ms derrubava
+  // a busca inteira sem segunda chance. `comRetry` retenta só o retentável.
+  it("retenta erro transitorio (503) e falha na hora no definitivo (404)", async () => {
+    // A espera entre tentativas é jitter; em teste ela vira imediata, senão o
+    // teste depende de sorte (o jitter pode dar 0 ms ou quase 1 s).
+    const relogio = globalThis.setTimeout;
+    globalThis.setTimeout = ((fn: () => void) => {
+      fn();
+      return 0 as unknown as NodeJS.Timeout;
+    }) as typeof setTimeout;
+    try {
+      let tentativasManifesto = 0;
+      const fetchMock = vi.fn(async (url: string) => {
+        if (!url.endsWith("manifesto.json")) throw new Error(`inesperado: ${url}`);
+        tentativasManifesto++;
+        if (tentativasManifesto === 1) return { ok: false, status: 503, json: async () => ({}) } as Response;
+        return respostaJson(manifesto(0, [], []));
+      });
+      vi.stubGlobal("fetch", fetchMock);
+
+      expect(await carregarGrupoFatiado("/base")).toEqual([]);
+      expect(tentativasManifesto).toBe(2);
+
+      // 404 não se conserta com tentativa de novo.
+      const umaso = vi.fn(async () => ({ ok: false, status: 404, json: async () => ({}) }) as Response);
+      vi.stubGlobal("fetch", umaso);
+      await expect(carregarGrupoFatiado("/base")).rejects.toThrow(/HTTP 404/);
+      expect(umaso).toHaveBeenCalledTimes(1);
+    } finally {
+      globalThis.setTimeout = relogio;
+      vi.unstubAllGlobals();
+    }
+  });
 });
 
 describe("montarIndiceDeGrupos", () => {

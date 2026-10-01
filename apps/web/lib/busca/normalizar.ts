@@ -54,15 +54,26 @@ export function semAcento(texto: string): string {
  * - **Hífen vira separador.** "compra-e-venda" e "meio-ambiente" são rotas do
  *   portal, e quem busca digita com e sem hífen. Virar duas palavras faz as
  *   duas formas casarem.
- * - **Ponto e barra somem de números.** "Lei 1.234/2020" e "lei 1234 2020"
- *   têm de dar no mesmo lugar; `PL 3611` idem. Sem isto, o formato oficial da
- *   norma (o jeito como ela é citada em documento) seria o único que NÃO acha.
+ * - **Ponto de MILHAR some; vírgula DECIMAL não some — ela separa.**
+ *   "Lei 1.234/2020" e "lei 1234 2020" têm de dar no mesmo lugar; `PL 3611`
+ *   idem. Sem isto, o formato oficial da norma (o jeito como ela é citada em
+ *   documento) seria o único que NÃO acha. Mas a regra antiga apagava o ponto
+ *   E a vírgula com a mesma expressão (`(\d)[.,]`), e aí "1,5 leitos" virava
+ *   "15 leitos" — outro número, na mesma tela (medido na parte 21 da revisão).
+ *   Agora só o padrão de milhar pt-BR (`1.234`, `1.234.567`) é apagado; `1,5`
+ *   e `1.5` quebram em dois tokens, e `15` continua sendo `15`.
  * - **Número colado em letra separa.** "art5" -> "art" + "5".
+ *
+ * ⚠️ A tokenização de NÚMERO não foi medida no `to_tsvector`: a medida do
+ * cabeçalho deste arquivo é do radicalizador, que é letra. Se um dia a busca
+ * por número divergir do servidor, este é o ponto a conferir.
  */
 export function separarPalavras(texto: string): string[] {
   return semAcento(texto)
-    .replace(/(\d)[.,](?=\d)/g, "$1") // 1.234 -> 1234
-    .replace(/[^a-z0-9]+/g, " ") // hífen, barra, pontuação viram espaço
+    // 1.234.567 -> 1234567: só o padrão de milhar pt-BR (grupos de 3)
+    .replace(/\d{1,3}(?:\.\d{3})+(?!\d)/g, (m) => m.replace(/\./g, ""))
+    // hífen, barra, pontuação e a VÍRGULA DECIMAL viram espaço
+    .replace(/[^a-z0-9]+/g, " ")
     .replace(/([a-z])(\d)/g, "$1 $2")
     .replace(/(\d)([a-z])/g, "$1 $2")
     .trim()

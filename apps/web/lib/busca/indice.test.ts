@@ -10,7 +10,7 @@ import { interpretarConsulta, buscar, type IndiceBusca } from "./indice";
  *     iluminacao -> iluminaca      saude -> saud        lei -> lei
  *     leis       -> leis           contratos -> contrat
  */
-const LEXEMAS = ["iluminaca", "saud", "lei", "leis", "contrat", "public", "ambiental", "47", "4793", "pl"];
+const LEXEMAS = ["iluminaca", "saud", "lei", "leis", "contrat", "public", "ambiental", "47", "4793", "pl", "mental"];
 const id = (l: string) => LEXEMAS.indexOf(l);
 
 const INDICE: IndiceBusca = {
@@ -28,6 +28,9 @@ const INDICE: IndiceBusca = {
     47: id("47"),
     4793: id("4793"),
     pl: id("pl"),
+    // O doc 2 escreve "mental" na ementa, então o gerador indexa o radical —
+    // e a exclusão (Fase 2) só acha o doc pela lista de ocorrências da forma.
+    mental: id("mental"),
   },
   ocorrencias: [
     [1], // iluminaca
@@ -40,6 +43,7 @@ const INDICE: IndiceBusca = {
     [6], // 47 — artigo/emenda solto na ementa do doc 6, NAO e a mesma proposicao que "4793"
     [2], // 4793 — numero proprio da PL 3611/2023 (extra do gerador, ver gerador.ts)
     [2], // pl — abreviacao de tipo (extra do gerador)
+    [2], // mental — ementa "Politica de saude mental"
   ],
   docs: [
     { i: 1, t: "Lei 1.234/2020", e: "Dispoe sobre a iluminacao publica", h: "/a/1", f: "cidades", m: "betim", a: ["urbanismo"], d: "2020-01-01" },
@@ -82,6 +86,19 @@ describe("separarPalavras", () => {
   it("separa numero colado em letra", () => {
     expect(separarPalavras("art5")).toEqual(["art", "5"]);
     expect(separarPalavras("PL3611")).toEqual(["pl", "3611"]);
+  });
+
+  // Achado 21.4: a regra antiga apagava o ponto E a vírgula com a mesma
+  // expressão, e "1,5 leitos" casava com "15 leitos" — outro número, na mesma
+  // tela. Só o padrão de milhar pt-BR é apagado.
+  it("virgula decimal nao vira outro numero", () => {
+    expect(separarPalavras("1,5 leitos")).toEqual(["1", "5", "leitos"]);
+    expect(separarPalavras("15 leitos")).toEqual(["15", "leitos"]);
+    expect(separarPalavras("1.5 leitos")).toEqual(["1", "5", "leitos"]);
+  });
+
+  it("ponto de milhar continua sumindo, inclusive em cadeia", () => {
+    expect(separarPalavras("Lei 1.234.567/1998")).toEqual(["lei", "1234567", "1998"]);
   });
 });
 
@@ -195,5 +212,77 @@ describe("buscar", () => {
     // busca devolvia zero (Bug 1: "pl" sem fallback zera a consulta inteira
     // em E) ou os documentos errados (Bug 2).
     expect(ids(buscar("pl 4793", INDICE))).toEqual([2]);
+  });
+});
+
+/**
+ * Fase 2 da revisão de código (parte 21). Os dois índices abaixo existem
+ * separados de propósito: mexer no `INDICE` de cima quebraria 15 asserções
+ * que já conferem aquilo ali, e aqui só interessa UM defeito por vez.
+ */
+
+/** Índice para frase exata: só os docs interessam — frase não usa `formas`. */
+const INDICE_FRASE: IndiceBusca = {
+  lexemas: [],
+  formas: {},
+  ocorrencias: [],
+  docs: [
+    { i: 1, t: "Norma urbana", e: "Meio-ambiente e desenvolvimento", h: "/a/1", f: "cidades" },
+    { i: 2, t: "Lei 1.234/2020", e: "Dispoe sobre a procuradoria", h: "/a/2", f: "cidades" },
+    { i: 3, t: "Outra norma", e: "Meio ambiente urbano sem hifen", h: "/a/3", f: "cidades" },
+  ],
+};
+
+/** Índice para exclusão: `leitura` CONTÉM `lei` como subcadeia, e não é `lei`. */
+const INDICE_NEGATIVOS: IndiceBusca = {
+  lexemas: ["saude", "lei", "leitura"],
+  formas: { saude: 0, lei: 1, leitura: 2 },
+  ocorrencias: [[1, 2, 3], [3], [2]],
+  docs: [
+    { i: 1, t: "Hospital", e: "Atendimento de saude no municipio", h: "/a/1", f: "cidades" },
+    { i: 2, t: "Rede de leitura", e: "Saude e leitura na comunidade", h: "/a/2", f: "cidades" },
+    { i: 3, t: "Lei municipal", e: "Lei de saude publica", h: "/a/3", f: "cidades" },
+  ],
+};
+
+describe("buscar — texto normalizado igual ao da consulta (Fase 2)", () => {
+  // Achado 21.1: a consulta já saía como "meio ambiente"/"1234" e o texto era
+  // conferido COM ACENTO e COM PONTUAÇÃO. O leitor digitava a própria frase do
+  // documento e recebia zero.
+  it("frase exata casa texto com hifen e com numero de norma", () => {
+    expect(ids(buscar('"meio ambiente"', INDICE_FRASE))).toEqual([1, 3]);
+    expect(ids(buscar('"1.234"', INDICE_FRASE))).toEqual([2]);
+  });
+
+  // Achado 21.2: exclusão era `texto.includes(palavra)` — SUBCADEIA. O doc 2
+  // tem "leitura" e nunca teve "lei", mas saía mesmo assim.
+  it("exclusao e por palavra inteira, nao por substring", () => {
+    expect(ids(buscar("saude -lei", INDICE_NEGATIVOS))).toEqual([1, 2]);
+    // e a exclusão continua funcionando para quem tem a palavra de verdade
+    expect(ids(buscar("saude -leitura", INDICE_NEGATIVOS))).toEqual([1, 3]);
+  });
+
+  // O MESMO defeito do lado de dentro do achado 21.2: o bônus de título era
+  // `titulo.includes(palavra)`, e "Rede de leitura" ganhava +6 numa busca por
+  // "lei". Os três docs casam os mesmos dois radicais; só o que está NO
+  // TÍTULO pode receber o bônus.
+  it("titulo da bonus pelo radical, nao por subcadeia", () => {
+    const INDICE_TITULO: IndiceBusca = {
+      lexemas: ["saude", "leitura", "lei"],
+      formas: { saude: 0, leitura: 1, lei: 2 },
+      ocorrencias: [[1, 2, 3], [2], [1, 2, 3]],
+      docs: [
+        { i: 1, t: "Lei municipal de saude", e: "A lei dispoe sobre atendimento", h: "/a/1", f: "cidades" },
+        { i: 2, t: "Rede de leitura", e: "Saude, leitura e a lei do municipio", h: "/a/2", f: "cidades" },
+        { i: 3, t: "Ato normativo", e: "Saude, leitura e lei na comunidade", h: "/a/3", f: "cidades" },
+      ],
+    };
+    const r = buscar("saude lei", INDICE_TITULO);
+    expect(r.map((x) => x.doc.i)).toEqual([1, 2, 3]);
+    // doc 1 tem os dois radicais no título: +6 cada.
+    // doc 2 e doc 3 empatam: nenhum dos dois tem radical NO título. Com a
+    // regra antiga, "leitura" pagava o bônus de "lei" e o 2 saía à frente.
+    expect(r[1].pontos).toBe(r[2].pontos);
+    expect(r[0].pontos).toBe(r[1].pontos + 12);
   });
 });

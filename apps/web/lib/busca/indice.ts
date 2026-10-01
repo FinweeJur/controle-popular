@@ -1,4 +1,4 @@
-import { separarPalavras, semAcento, distancia, tolerancia } from "./normalizar";
+import { separarPalavras, distancia, tolerancia } from "./normalizar";
 
 /**
  * Busca estática — o motor que roda no navegador.
@@ -308,6 +308,25 @@ export function buscar(
   const positivos = termos.filter((t) => !t.negado);
   const negativos = termos.filter((t) => t.negado);
 
+  // A data de referência do período é da BUSCA, não do documento: calcular
+  // `dataDeHoje()` dentro de `docPassaPeriodo` fazia uma consulta atravessar a
+  // meia-noite com dois "hoje" diferentes (dívida 21.5 da revisão).
+  const hojeDeReferencia = hoje ?? dataDeHoje();
+
+  // Exclusão é pelo MESMO caminho dos positivos: a forma existe no vocabulário
+  // do acervo e o documento está na lista de ocorrências dela. A regra antiga
+  // era `texto.includes(palavra)` — SUBCADEIA, que excluía o que ninguém pediu
+  // para excluir: `-lei` derrubava tudo que contém "leitura", e `-rio`
+  // derrubava "prioridade" e "território" (achado 21.2 da revisão). Por
+  // RADICAL, e não por aproximação: quem negou uma palavra não pediu para
+  // negar a que parece com ela.
+  const proibidos = new Set<number>();
+  for (const n of negativos) {
+    const lexemaId = indice.formas[n.palavra];
+    if (lexemaId === undefined) continue; // palavra fora do acervo: nada a excluir
+    for (const docId of indice.ocorrencias[lexemaId] ?? []) proibidos.add(docId);
+  }
+
   // Sem palavra-chave, os filtros ainda valem: a tela usa isso para navegar
   // por tema/cidade sem digitar nada.
   const semTexto = positivos.length === 0 && frases.length === 0;
@@ -315,12 +334,18 @@ export function buscar(
   const pontos = new Map<number, number>();
   const aproximadosPorDoc = new Map<number, Set<string>>();
 
+  // Guarda os candidatos de cada termo: são os MESMOS radicais que decidem a
+  // pontuação, e o bônus de título passa a perguntar a eles se o título tem
+  // aquele radical — em vez de recalcular `candidatos()` por documento.
+  const candidatosPorTermo = new Map<string, ReturnType<typeof candidatos>>();
+
   if (semTexto) {
     for (const d of indice.docs) pontos.set(d.i, 0);
   } else {
     let primeiro = true;
     for (const termo of positivos) {
       const achados = candidatos(termo.palavra, indice);
+      candidatosPorTermo.set(termo.palavra, achados);
       const desteTermo = new Map<number, number>();
       for (const c of achados) {
         for (const docId of indice.ocorrencias[c.lexemaId] ?? []) {
@@ -359,30 +384,52 @@ export function buscar(
     if (municipio && doc.m !== municipio) continue;
     if (frente && frente.length > 0 && !frente.includes(doc.f)) continue;
     if (tipo && !docTemTipo(doc.k, tipo)) continue;
-    if (periodo && !docPassaPeriodo(doc.d, periodo, hoje)) continue;
-
-    const textoNormalizado = semAcento(`${doc.t} ${doc.e}`);
+    if (periodo && !docPassaPeriodo(doc.d, periodo, hojeDeReferencia)) continue;
 
     // Frase exata é conferida no texto, não nas ocorrências: manter posição de
     // cada palavra multiplicaria o tamanho do índice para atender um recurso
     // que aparece em poucas buscas.
+    //
+    // E o texto é normalizado com a MESMA função da consulta
+    // (`separarPalavras`), não com `semAcento` só. A consulta chega pronta
+    // ("meio ambiente", "1234") — o texto cru não: "Meio-ambiente" e "Lei
+    // 1.234/2020" não casavam com a própria frase que o leitor digitou
+    // (achado 21.1 da revisão).
     let ok = true;
     let extra = 0;
-    for (const frase of frases) {
-      if (textoNormalizado.includes(frase)) extra += PESO.frase;
-      else {
-        ok = false;
-        break;
+    if (frases.length > 0) {
+      const textoNormalizado = separarPalavras(`${doc.t} ${doc.e}`).join(" ");
+      for (const frase of frases) {
+        if (textoNormalizado.includes(frase)) extra += PESO.frase;
+        else {
+          ok = false;
+          break;
+        }
       }
     }
     if (!ok) continue;
 
-    if (negativos.some((n) => textoNormalizado.includes(n.palavra))) continue;
+    if (proibidos.has(docId)) continue;
 
     // Casar no título vale mais que casar no meio da ementa: quem busca
-    // "PL 3611" quer a proposição 3611, não as que a citam.
-    const noTitulo = semAcento(doc.t);
-    for (const t of positivos) if (noTitulo.includes(t.palavra)) extra += PESO.titulo;
+    // "PL 3611" quer a proposição 3611, não as que a citam. Mas o bônus é
+    // dado pelo MESMO radical que pontuou o corpo — `titulo.includes(palavra)`
+    // pagava +6 a quem tinha "leitura" no título numa busca por "lei", que é
+    // o mesmo defeito da exclusão, só que invertido (achado 21.2). Radical do
+    // título sai de `formas`, então "contratos" no título ainda casa com
+    // "contrato" na busca, que é o caso que a comparação literal perdia.
+    if (candidatosPorTermo.size > 0) {
+      const lexemasDoTitulo = new Set<number>();
+      for (const palavra of separarPalavras(doc.t)) {
+        const lexemaId = indice.formas[palavra];
+        if (lexemaId !== undefined) lexemasDoTitulo.add(lexemaId);
+      }
+      if (lexemasDoTitulo.size > 0) {
+        for (const achados of candidatosPorTermo.values()) {
+          if (achados.some((c) => lexemasDoTitulo.has(c.lexemaId))) extra += PESO.titulo;
+        }
+      }
+    }
 
     saida.push({
       doc,

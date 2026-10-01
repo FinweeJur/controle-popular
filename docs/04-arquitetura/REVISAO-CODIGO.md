@@ -804,30 +804,31 @@ e o renderizador
    separador decimal do inglês na mesma frase em português. Leitor
    brasileiro lê vírgula; o portal manda ponto.
 
-7. 📌 **Sem hiperlink para a fonte.** `CruzamentoMunicipalItem` tem
+8. 📌 **Sem hiperlink para a fonte.** `CruzamentoMunicipalItem` tem
    `indicadoresEnvolvidos: string[]` (nomes em texto, ex.
    `CNES/DataSUS`) e nenhum campo de URL. Regra das seis qualidades, item 1:
    todo registro publicado leva link direto e específico para a fonte
    oficial.
 
-8. 📌 **Totais de topo digitados à mão.** `/educacao` publica `178.416`,
+9. 📌 **Totais de topo digitados à mão.** `/educacao` publica `178.416`,
    `47,3 mi`, `88,2%`; `/saude-publica` publica `315.420`, `1,95`,
    `11,4 mi`. Constantes literais sem data de medição e sem constante
    medida por trás — iguais aos cartões que o §8 manda puxar de
    constante datada.
 
-9. 📌 **O teste consolida o defeito.** O caso *"trata lacunas sem falhar"*
+10. ⚠️ → ✅ **O teste consolidava o defeito — consertado na Fase 1
+    (01/10/2026).** O caso *"trata lacunas sem falhar"*
    só espera `status === 'neutro'` nos três cards: cobre o sintoma e não o
    defeito (mesmo padrão da Parte 9). Nenhum teste entra por
    `populacao` ausente, que é o caminho da taxa fabricada do achado 2.
 
-10. ✅ **Conferida a Teia de Interesses.** O cabeçalho declara que nenhum
+11. ✅ **Conferida a Teia de Interesses.** O cabeçalho declara que nenhum
     vínculo é exibido antes de comprovação em fonte oficial;
     `gerarRelatorioCidadao` filtra link em branco, declara a lacuna na
     metodologia e não inventa vínculo — com 4 testes cobrindo exatamente
     isso. É o padrão editorial que o `correlacionador` ainda não segue.
 
-11. 📌 **Fontes da Teia citadas na mão.** A metodologia do relatório lista
+12. 📌 **Fontes da Teia citadas na mão.** A metodologia do relatório lista
     `PNCP, TSE, SICAR, SIGBM/ANM, SIRENEJud, DATASUS` hardcoded,
     duplicando `lib/fontes/registry.ts` — catálogo que ninguém consome
     (achado 6 da Parte 18). Duas listas de fonte para o mesmo dado.
@@ -847,7 +848,8 @@ arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
 
 ### Achados da Parte 21
 
-1. ⚠️ **Frase exata com número de lei não acha nada — medido em execução.**
+1. ⚠️ → ✅ **Frase exata com número de lei não acha nada — corrigido
+   (01/10/2026).**
    `interpretarConsulta` normaliza a frase com `separarPalavras`
    (`"Lei 1.234/2020"` → `lei 1234 2020`), mas a conferência da linha 372
    compara com `semAcento(doc.t + " " + doc.e)`, que devolve
@@ -860,7 +862,8 @@ arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
    formato oficial como a norma é citada em documento, que o comentário de
    `separarPalavras` promete resolver.
 
-2. ⚠️ **Exclusão casa por subcadeia; inclusão casa por radical.** Os
+2. ⚠️ → ✅ **Exclusão casa por subcadeia; inclusão casa por radical —
+   corrigido nos dois lados (01/10/2026).** Os
    termos positivos passam por `candidatos()` (radical, prefixo e tolerância
    de digitação); os negativos (linha 380) e o bônus de título (linha 385)
    fazem `textoNormalizado.includes(palavra)` sobre o texto acento-sem, sem
@@ -869,8 +872,8 @@ arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
    *brasiliense*. Incluir é fino, excluir é grosso — e o leitor não vê o que
    sumiu.
 
-3. ⚠️ **O índice carrega com `fetch` nu, e a rede resiliente não é
-   importada por ninguém.** `carregarIndice.ts:30` faz `await fetch(url)`
+3. ⚠️ → ✅ **O índice carrega com `fetch` nu, e a rede resiliente não é
+   importada por ninguém — corrigido (01/10/2026).** `carregarIndice.ts:30` faz `await fetch(url)`
    sem timeout, sem retentativa e sem passar por
    [`lib/robusto/rede.ts`](../../apps/web/lib/robusto/rede.ts)
    (`comRetry`, `erroRetentavel`) — que **só existe no repo para o próprio
@@ -879,13 +882,14 @@ arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
    18). Um fragmento de rede que falha derruba a busca inteira, e o portal
    já tem o módulo pronto que resolvia.
 
-4. 📌 **`1,5` indexa como `15`.** `separarPalavras` usa
+4. 📌 → ✅ **`1,5` indexa como `15` — corrigido (01/10/2026).** `separarPalavras` usa
    `(\d)[.,](?=\d)` para capturar o milhar (`1.234` → `1234`), mas a mesma
    regra come a vírgula decimal: `1,5 leitos` vira `15 leitos`. Como
    consulta e documento passam pela mesma regra, os dois números casam
    entre si — para a busca, *1,5* e *15* deixam de ser valores distintos.
 
-5. 📌 **`hoje` pode ser recalculado por documento.** `docPassaPeriodo`
+5. 📌 → ✅ **`hoje` podia ser recalculado por documento — corrigido
+   (01/10/2026).** `docPassaPeriodo`
    aceita `hoje` opcional; `buscar()` só repassa se `OpcoesBusca.hoje` veio
    preenchido. Sem isso, `dataDeHoje()` roda uma vez **por documento** —
    milhares de `new Date()` por tecla — e um laço que cruza a meia-noite
@@ -1053,12 +1057,13 @@ cada correção com teste de regressão e conversão do marcador
 6. Lacuna vira status `sem-dado` com selo próprio (achado 1).
 7. Prosa deixa de concluir (achado 6).
 
-**Fase 2 — busca** (`lib/busca/`)
+**Fase 2 — busca** ✅ **concluída (01/10/2026)** (`lib/busca/`)
 
 8. Frase exata passa a conferir o texto **normalizado igual** ao da consulta
    (achado 21.1).
-9. Termos negativos passam a casar por radical, como os positivos
-   (achado 21.2).
+9. Termos negativos passam a casar por radical, como os positivos — e o
+   **bônus de título** também, que era o mesmo defeito do outro lado
+   (achado 21.2, os dois lados dele).
 10. `1,5` deixa de virar `15` (dívida 21.4).
 11. `hoje` calculado uma vez por busca, não por documento (dívida 21.5).
 12. Índice passa a usar `comRetry` (achado 21.3) — resolve de uma vez o
@@ -1082,7 +1087,15 @@ cada correção com teste de regressão e conversão do marcador
 - injeção de cabeçalho SMTP (dívida 19.4): defesa em profundidade, hoje não
   há chamador inseguro;
 - terceira cópia de CSV (dívida 19.5): mexe em exportação de e-mail;
-- limiar 0,45 do Seu Nonô (dívida 22.6): precisa de medida antes de mudar.
+- limiar 0,45 do Seu Nonô (dívida 22.6): precisa de medida antes de mudar;
+- hyperlink da fonte nos cruzamentos (dívida 20.8): pede uma URL por
+  indicador, que é formato do item publicado — a Fase 1 mexeu no cálculo,
+  não no formato;
+- totais de topo digitados à mão em `/educacao` e `/saude-publica` (dívida
+  20.9): antes de publicar constante datada é preciso saber **de onde** cada
+  número é medido, e isso não está escrito em lugar nenhum;
+- fontes da Teia hardcoded (dívida 20.12): depende do catálogo da Parte 18,
+  que é a primeira da lista.
 
 **Verificação em cada fase:** `tsc --noEmit`, `eslint` nos arquivos do diff,
 `vitest` do escopo, guarda de CPF e `python scripts/validar-documentacao.py`.

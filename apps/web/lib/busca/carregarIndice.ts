@@ -1,5 +1,6 @@
 import type { ManifestoFatias } from "../estatico/fatiar";
 import { NOME_MANIFESTO } from "../estatico/emitir";
+import { comRetry, RespostaHttp } from "../robusto/rede";
 import type { DocumentoIndexado, IndiceBusca } from "./indice";
 
 /**
@@ -26,10 +27,24 @@ export interface ProgressoCarregamento {
   bytesTotais: number;
 }
 
+/**
+ * Baixa um JSON do índice com RETRY.
+ *
+ * O índice é o último degrau da tela de busca: ele só chega quando as outras
+ * requisições já passaram. Um 503 de 200 ms numa fatia de 40 KB devolvia
+ * "busca indisponível" para o leitor, sem segunda chance (achado 21.3 da
+ * revisão, que também tirou `lib/robusto/rede.ts` do óbvio órfão).
+ *
+ * `comRetry` faz backoff exponencial com jitter e só retenta o RETENTÁVEL —
+ * 5xx, 429 e falha de rede. 404/400 falham na hora, porque retry não conserta
+ * arquivo que não existe.
+ */
 async function buscarJson<T>(url: string): Promise<T> {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
-  return (await r.json()) as T;
+  return comRetry(async () => {
+    const r = await fetch(url);
+    if (!r.ok) throw new RespostaHttp(r.status);
+    return (await r.json()) as T;
+  });
 }
 
 /**
