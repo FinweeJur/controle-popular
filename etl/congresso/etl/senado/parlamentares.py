@@ -42,7 +42,7 @@ import argparse
 import requests
 from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
 
-from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import get_db, registrar_fonte, upsert_em_lotes
 
 BASE = "https://legis.senado.leg.br/dadosabertos"
 CASA_ID = "senado"
@@ -116,8 +116,8 @@ def coletar() -> list[dict]:
 
 def sync() -> int:
     linhas = coletar()
-    client_sb = get_supabase_client()
-    total = upsert_em_lotes(client_sb, "parlamentares", linhas, on_conflict="casa_id,id_externo")
+    client_db = get_db()
+    total = upsert_em_lotes(client_db, "parlamentares", linhas, on_conflict="casa_id,id_externo")
     sem_foto = sum(1 for x in linhas if not x["url_foto"])
     sem_email = sum(1 for x in linhas if not x["email"])
     print(
@@ -125,7 +125,7 @@ def sync() -> int:
         f"({sem_foto} sem foto, {sem_email} sem e-mail)"
     )
     registrar_fonte(
-        client_sb,
+        client_db,
         "senado_parlamentares",
         f"{BASE}/senador/lista/atual",
         "parlamentares",

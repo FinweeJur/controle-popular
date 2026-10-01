@@ -98,7 +98,7 @@ import datetime
 import re
 import sys
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 # Ver cidadesmg.py: mesmo motivo (console do Windows não é UTF-8 por
 # padrão), mesmo remendo, mesma ressalva de que só afeta o log.
@@ -278,7 +278,7 @@ def sincronizar(id_municipio: str, *, sondar: bool = False) -> int:
             "Nada foi gravado. Conferir o portal antes de insistir."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     client.table("servidores").upsert(linhas, on_conflict="id_municipio,orgao,nome,cargo").execute()
     print(f"{LOG} id_municipio={id_municipio} servidores gravados={len(linhas)}")
     return len(linhas)

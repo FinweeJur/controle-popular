@@ -19,7 +19,7 @@ import json
 from pathlib import Path
 
 from etl import rubrica_vicio as rv
-from etl.common import get_supabase_client, upsert_em_lotes
+from etl.common import get_db, upsert_em_lotes
 
 
 def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
@@ -39,7 +39,7 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
     if manifesto["eixo"] != "federal":
         raise SystemExit(f"manifesto é do eixo {manifesto['eixo']!r}, este importador é do Congresso (federal).")
 
-    sb = get_supabase_client()
+    db = get_db()
     modelo = modelo or manifesto.get("modelo_pretendido") or "externo"
 
     vicios: list[dict] = []
@@ -97,14 +97,14 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
         print(f"\n[importar-vicio] nada para gravar. {stats}")
         return stats
 
-    upsert_em_lotes(sb, "vicios_legislativos", vicios, on_conflict="proposicao_id")
+    upsert_em_lotes(db, "vicios_legislativos", vicios, on_conflict="proposicao_id")
 
     ids = [v["proposicao_id"] for v in vicios]
     salvas = {
         r["proposicao_id"]: r["id"]
-        for r in sb.table("vicios_legislativos").select("id, proposicao_id").in_("proposicao_id", ids).execute().data
+        for r in db.table("vicios_legislativos").select("id, proposicao_id").in_("proposicao_id", ids).execute().data
     }
-    sb.table("vicio_itens").delete().in_("vicio_id", list(salvas.values())).execute()
+    db.table("vicio_itens").delete().in_("vicio_id", list(salvas.values())).execute()
 
     linhas = [
         {**item, "vicio_id": salvas[pid]}
@@ -113,7 +113,7 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
         for item in itens
     ]
     if linhas:
-        upsert_em_lotes(sb, "vicio_itens", linhas)
+        upsert_em_lotes(db, "vicio_itens", linhas)
 
     print(f"\n[importar-vicio] {len(vicios)} análises, {len(linhas)} itens. {stats}")
     return stats

@@ -36,7 +36,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     nome_para_fonte_externa,
 )
 
@@ -150,7 +150,7 @@ def sync(id_municipio: str, nome_municipio: str | None = None) -> None:
     para São Paulo devolveria zero linha — o CSV não tem o município — o que
     é silencioso demais para um portal, então aborta explicitamente.
     """
-    client = get_supabase_client()
+    client = get_db()
     recursos = _listar_recursos_csv()
     print(f"[etl.apis.crimes_mg] {len(recursos)} CSVs anuais encontrados")
 

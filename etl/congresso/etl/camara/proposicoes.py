@@ -25,7 +25,7 @@ import argparse
 from datetime import date
 
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 
 # Os tipos que efetivamente criam ou alteram direitos. Requerimentos e
 # indicações ficam de fora do escopo inicial: são milhares por ano e quase
@@ -34,9 +34,9 @@ from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_e
 TIPOS_PADRAO = ["PL", "PEC", "PLP", "MPV", "PDL", "PLV"]
 
 
-def _proposicoes_conhecidas(sb) -> set[str]:
+def _proposicoes_conhecidas(db) -> set[str]:
     linhas = fetch_all(
-        lambda: sb.table("proposicoes").select("id_externo").eq("casa_id", client.CASA_ID)
+        lambda: db.table("proposicoes").select("id_externo").eq("casa_id", client.CASA_ID)
     )
     return {linha["id_externo"] for linha in linhas}
 
@@ -66,7 +66,7 @@ def _detalhar(id_externo: str) -> dict:
     }
 
 
-def _autores(sb, proposicao_uuid: str, id_externo: str, mapa_parlamentares: dict[str, str]):
+def _autores(db, proposicao_uuid: str, id_externo: str, mapa_parlamentares: dict[str, str]):
     vinculos = []
     for a in client.get(f"/proposicoes/{id_externo}/autores").get("dados", []):
         pid = mapa_parlamentares.get(client.id_externo_da_uri(a.get("uri")) or "")
@@ -95,7 +95,7 @@ def _autores(sb, proposicao_uuid: str, id_externo: str, mapa_parlamentares: dict
 FLUSH = 200
 
 
-def _gravar_lote(sb, buffer: list[dict], mapa_parl: dict[str, str]) -> tuple[int, int]:
+def _gravar_lote(db, buffer: list[dict], mapa_parl: dict[str, str]) -> tuple[int, int]:
     """Grava um lote de proposições e a autoria das que têm `_novo`.
 
     Devolve (proposições_gravadas, vínculos_de_autoria). As proposições são
@@ -106,7 +106,7 @@ def _gravar_lote(sb, buffer: list[dict], mapa_parl: dict[str, str]) -> tuple[int
         return 0, 0
 
     linhas = [{k: v for k, v in b.items() if k != "_novo"} for b in buffer]
-    upsert_em_lotes(sb, "proposicoes", linhas, on_conflict="casa_id,id_externo")
+    upsert_em_lotes(db, "proposicoes", linhas, on_conflict="casa_id,id_externo")
 
     ids_novos = [b["id_externo"] for b in buffer if b.get("_novo")]
     if not ids_novos:
@@ -115,7 +115,7 @@ def _gravar_lote(sb, buffer: list[dict], mapa_parl: dict[str, str]) -> tuple[int
     # `.in_` fatiado: o mapa deste lote (<= FLUSH ids) cabe numa URL só.
     mapa_prop = {
         r["id_externo"]: r["id"]
-        for r in sb.table("proposicoes")
+        for r in db.table("proposicoes")
         .select("id, id_externo")
         .eq("casa_id", client.CASA_ID)
         .in_("id_externo", ids_novos)
@@ -126,10 +126,10 @@ def _gravar_lote(sb, buffer: list[dict], mapa_parl: dict[str, str]) -> tuple[int
     for id_externo in ids_novos:
         uuid = mapa_prop.get(id_externo)
         if uuid:
-            vinculos.extend(_autores(sb, uuid, id_externo, mapa_parl))
+            vinculos.extend(_autores(db, uuid, id_externo, mapa_parl))
     if vinculos:
         upsert_em_lotes(
-            sb, "proposicao_autores", vinculos, on_conflict="proposicao_id,parlamentar_id"
+            db, "proposicao_autores", vinculos, on_conflict="proposicao_id,parlamentar_id"
         )
     return len(linhas), len(vinculos)
 
@@ -140,8 +140,8 @@ def sync(
     tipos: list[str] | None = None,
     com_detalhe: bool = True,
 ) -> int:
-    sb = get_supabase_client()
-    conhecidas = _proposicoes_conhecidas(sb)
+    db = get_db()
+    conhecidas = _proposicoes_conhecidas(db)
     ano = ano or date.today().year
     tipos = tipos or TIPOS_PADRAO
 
@@ -149,7 +149,7 @@ def sync(
     mapa_parl = {
         r["id_externo"]: r["id"]
         for r in fetch_all(
-            lambda: sb.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
 
@@ -185,13 +185,13 @@ def sync(
             buffer.append(linha)
 
             if len(buffer) >= FLUSH:
-                g, a = _gravar_lote(sb, buffer, mapa_parl)
+                g, a = _gravar_lote(db, buffer, mapa_parl)
                 total_prop += g
                 total_aut += a
                 print(f"[camara.proposicoes] {total_prop} gravadas / {vistas} vistas…", flush=True)
                 buffer = []
 
-    g, a = _gravar_lote(sb, buffer, mapa_parl)
+    g, a = _gravar_lote(db, buffer, mapa_parl)
     total_prop += g
     total_aut += a
 
@@ -204,7 +204,7 @@ def sync(
         f"{total_aut} vínculos de autoria"
     )
 
-    registrar_fonte(sb, "camara_proposicoes", f"{client.BASE}/proposicoes", "proposicoes")
+    registrar_fonte(db, "camara_proposicoes", f"{client.BASE}/proposicoes", "proposicoes")
     return total_prop
 
 

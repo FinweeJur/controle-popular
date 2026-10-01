@@ -19,7 +19,7 @@ import json
 from pathlib import Path
 
 from etl import rubrica
-from etl.common import get_supabase_client, upsert_em_lotes
+from etl.common import get_db, upsert_em_lotes
 from etl.normas import extrair as extrair_normas
 
 
@@ -38,7 +38,7 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
             f"outra taxonomia e misturá-las compararia duas réguas."
         )
 
-    sb = get_supabase_client()
+    db = get_db()
     modelo = modelo or manifesto.get("modelo_pretendido") or "externo"
 
     # Ementas das proposições do manifesto: fonte da `legislacao_relacionada`
@@ -48,7 +48,7 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
     for i in range(0, len(ids_manifesto), 200):
         lote = ids_manifesto[i : i + 200]
         for r in (
-            sb.table("proposicoes").select("id, ementa").in_("id", lote).execute().data
+            db.table("proposicoes").select("id, ementa").in_("id", lote).execute().data
         ):
             ementas[r["id"]] = r.get("ementa") or ""
 
@@ -117,16 +117,16 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
         print(f"\n[importar] nada para gravar. {stats}")
         return stats
 
-    upsert_em_lotes(sb, "analises", analises, on_conflict="proposicao_id")
+    upsert_em_lotes(db, "analises", analises, on_conflict="proposicao_id")
 
     # Os itens dependem do uuid da análise, que só existe depois do upsert.
     ids = [a["proposicao_id"] for a in analises]
     salvas = {
         r["proposicao_id"]: r["id"]
-        for r in sb.table("analises").select("id, proposicao_id").in_("proposicao_id", ids).execute().data
+        for r in db.table("analises").select("id, proposicao_id").in_("proposicao_id", ids).execute().data
     }
     # Reimportar a mesma proposição não pode duplicar item: limpa antes.
-    sb.table("analise_itens").delete().in_("analise_id", list(salvas.values())).execute()
+    db.table("analise_itens").delete().in_("analise_id", list(salvas.values())).execute()
 
     linhas = [
         {**item, "analise_id": salvas[pid]}
@@ -135,7 +135,7 @@ def importar(diretorio: Path, modelo: str, dry_run: bool) -> dict:
         for item in itens
     ]
     if linhas:
-        upsert_em_lotes(sb, "analise_itens", linhas)
+        upsert_em_lotes(db, "analise_itens", linhas)
 
     print(f"\n[importar] {len(analises)} análises, {len(linhas)} itens. {stats}")
     return stats

@@ -44,7 +44,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, upsert_com_colunas_opcionais
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db, upsert_com_colunas_opcionais
 
 LOG = "[etl.apis.betim_geneexus]"
 FONTE = "betim_geneexus"
@@ -398,7 +398,7 @@ def sync(
     if not linhas:
         print(f"{LOG} nada parseado — não escrevo.", flush=True)
         return linhas
-    client = get_supabase_client()
+    client = get_db()
     upsert_com_colunas_opcionais(
         client,
         "contratos",

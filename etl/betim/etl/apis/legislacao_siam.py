@@ -63,7 +63,7 @@ import requests
 from lxml import html
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.apis._legislacao_ambiental import UA, chave_dedup
 
 LOG = "[etl.apis.legislacao_siam]"
@@ -231,7 +231,7 @@ def sondar(max_linhas: int | None) -> None:
 
 
 def sync() -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas, diag = coletar(verboso=True)
     print(f"{LOG} {diag['total_linhas_html']} linha(s) na fonte, {len(linhas)} montada(s) para gravar "
           f"({diag['sem_link']} sem link, pulada(s)).")

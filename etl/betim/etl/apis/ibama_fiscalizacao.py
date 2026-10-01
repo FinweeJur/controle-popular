@@ -103,7 +103,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 
@@ -410,7 +410,7 @@ def _gravar(tabela: str, cidade: dict, linhas: list[dict], permitir_reducao: boo
         # sem esta guarda (mesma armadilha 6 do `anm_cfem`).
         print(f"{LOG} {tabela}: nada coletado para {cidade['nome']} — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()
+    client = get_db()
     refresh_completo_seguro(
         client,
         tabela,

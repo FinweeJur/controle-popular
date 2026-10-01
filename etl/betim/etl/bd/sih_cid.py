@@ -34,7 +34,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 TABELA = "basedosdados.br_ms_sih.aihs_reduzidas"
 
@@ -146,7 +146,7 @@ def _map_linha(row: dict, id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     cid_col, colunas = _descobrir_coluna_cid()
     print(f"[etl.bd.sih_cid] coluna de CID: {cid_col}")
@@ -186,7 +186,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     try:
         if args.todos_ativos:
-            client = get_supabase_client()
+            client = get_db()
             ids = _municipios_ativos(client)
             if not ids:
                 raise RuntimeError("nenhum municipio com ativo=true")

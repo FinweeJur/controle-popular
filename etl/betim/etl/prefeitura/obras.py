@@ -27,7 +27,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 BASE_URL = "http://servicos.betim.mg.gov.br/transparencia/rest"
 REGISTROS_POR_PAGINA = 200
@@ -74,7 +74,7 @@ def _map_obra(raw: dict, id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str) -> int:
-    client = get_supabase_client()
+    client = get_db()
 
     todas: list[dict] = []
     pagina = 1

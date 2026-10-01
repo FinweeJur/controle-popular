@@ -9,7 +9,7 @@ Rodar de novo é seguro: upsert por slug, nunca duplica.
 import argparse
 import sys
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 POSTS = [
     {
@@ -211,7 +211,7 @@ tribunal.</p>
 
 
 def sync(id_municipio: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
     rows = []
     for post in POSTS:
         rows.append(

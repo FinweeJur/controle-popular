@@ -17,7 +17,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 ANO_MINIMO = 2015
 CONTA_CAIXA = "Caixa e Equivalentes de Caixa"
@@ -31,7 +31,7 @@ GROUP BY ano
 
 
 def sync(id_municipio: str, ano_minimo: int = ANO_MINIMO):
-    client = get_supabase_client()
+    client = get_db()
 
     raw = bd_query(
         QUERY_CAIXA.format(id_municipio=id_municipio, ano_minimo=ano_minimo, conta=CONTA_CAIXA)

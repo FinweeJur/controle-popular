@@ -20,7 +20,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 QUERY_FROTA = """
 WITH ultimo_mes_por_ano AS (
@@ -39,7 +39,7 @@ ORDER BY f.ano
 
 
 def sync(id_municipio: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
     rows_raw = bd_query(QUERY_FROTA.format(id_municipio=id_municipio))
 
     rows = []

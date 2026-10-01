@@ -38,7 +38,7 @@ import time
 
 import requests
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 # Endpoint oficial de consulta pública de contratações do PNCP
 BASE = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao"
@@ -166,7 +166,7 @@ def descobrir(ibge: str, anos: list[int]) -> dict[str, dict]:
 def sync(id_municipio: str, anos: list[int], gravar: bool, permitir_vazio: bool = False) -> dict[str, dict]:
     """Orquestra a descoberta de CNPJs e atualiza as fontes municipais no banco de dados.
 
-    ═══ ATUALIZAÇÃO NO SUPABASE / POSTGRES ═══
+    ═══ ATUALIZAÇÃO NO POSTGRES ═══
     Quando o parâmetro `gravar` for True:
     - Posiciona o CNPJ principal da prefeitura no topo da lista;
     - Agrega os demais CNPJs municipais descobertos em `municipios.fontes.cnpjs_orgao`;
@@ -177,7 +177,7 @@ def sync(id_municipio: str, anos: list[int], gravar: bool, permitir_vazio: bool 
     Args:
         id_municipio: Código IBGE de 7 dígitos do município.
         anos: Anos civis a serem pesquisados.
-        gravar: Se True, persiste os achados na tabela `municipios` do Supabase.
+        gravar: Se True, persiste os achados na tabela `municipios` do Postgres.
         permitir_vazio: Se True, tolera ausência de publicações municipais sem lançar erro.
 
     Returns:
@@ -198,7 +198,7 @@ def sync(id_municipio: str, anos: list[int], gravar: bool, permitir_vazio: bool 
             )
         print(f"\n[etl.pncp.orgaos] {cidade['nome']}: nenhum órgão municipal encontrado no PNCP nos anos {anos}.")
         if gravar:
-            client = get_supabase_client()
+            client = get_db()
             client.table("municipios").update(
                 {
                     "fontes": {
@@ -225,7 +225,7 @@ def sync(id_municipio: str, anos: list[int], gravar: bool, permitir_vazio: bool 
     principal = cidade["cnpj_prefeitura"]
     lista = ([principal] if principal else []) + [c for c in achados if c != principal]
 
-    client = get_supabase_client()
+    client = get_db()
     client.table("municipios").update(
         {
             "fontes": {

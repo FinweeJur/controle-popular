@@ -120,7 +120,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
     upsert_com_colunas_opcionais,
 )
@@ -528,7 +528,7 @@ def _gravar_atos(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> No
     if not linhas:
         print(f"{LOG} atos_oficiais: nada coletado — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()  # conexão nova: a coleta é longa
+    client = get_db()  # conexão nova: a coleta é longa
     refresh_completo_seguro(
         client,
         "atos_oficiais",
@@ -553,10 +553,10 @@ def sync(id_municipio: str, partes: set[str], *, permitir_reducao: bool = False)
     # proposições passa minutos em requisição HTTP (uma por publicação, pra
     # achar o PDF — `_link_documento`) sem tocar o banco nenhuma vez, e abrir
     # a conexão antes só deixaria uma sessão ociosa esse tempo todo à toa.
-    # Mesmo padrão de `syssolution.py::sync` (`_gravar_proposicoes(get_supabase_client(), ...)`).
+    # Mesmo padrão de `syssolution.py::sync` (`_gravar_proposicoes(get_db(), ...)`).
     if "proposicoes" in partes:
         linhas, sem_tipo = _coletar_proposicoes(host, cidade, categorias)
-        _gravar_proposicoes(get_supabase_client(), linhas, sem_tipo)
+        _gravar_proposicoes(get_db(), linhas, sem_tipo)
     if "leis" in partes:
         _gravar_atos(cidade, _coletar_atos(host, cidade, categorias), permitir_reducao)
 

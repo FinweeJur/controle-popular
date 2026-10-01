@@ -2,7 +2,7 @@
 
 Rodar:
   python -m etl.vacancia --testar          # regressão, sem banco
-  python -m etl.vacancia                    # recalcula e abre vagas (exige Supabase)
+  python -m etl.vacancia                    # recalcula e abre vagas (exige DATABASE_URL)
 
 Espelha lib/regras.ts::vacanciaCompulsoria — as duas leem o MESMO número
 (75 anos) de regras/regras.json. Se divergirem, é bug; por isso o valor
@@ -140,14 +140,14 @@ def testar() -> bool:
 
 
 def recalcular() -> int:
-    """Abre `vagas` para projeções cuja data já chegou. Exige Supabase."""
-    from etl.common import get_supabase_client, upsert_em_lotes, fetch_all
+    """Abre `vagas` para projeções cuja data já chegou. Exige DATABASE_URL."""
+    from etl.common import get_db, upsert_em_lotes, fetch_all
 
-    sb = get_supabase_client()
+    db = get_db()
     hoje = date.today()
     # vw_vacancia já entrega a data projetada por ocupação atual.
     linhas = fetch_all(
-        lambda: sb.table("vw_vacancia").select("*").eq("atual", True)
+        lambda: db.table("vw_vacancia").select("*").eq("atual", True)
     )
     abrir = []
     for o in linhas:
@@ -162,7 +162,7 @@ def recalcular() -> int:
                 }
             )
     if abrir:
-        upsert_em_lotes(sb, "vagas", abrir, on_conflict="cadeira_id,data_abertura")
+        upsert_em_lotes(db, "vagas", abrir, on_conflict="cadeira_id,data_abertura")
     print(f"[vacancia] {len(abrir)} vaga(s) aberta(s) por compulsória (régua v{VERSAO_REGRA})")
     return len(abrir)
 

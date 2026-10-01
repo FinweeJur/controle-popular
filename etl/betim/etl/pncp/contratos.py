@@ -40,7 +40,7 @@ from etl.common import (
     CITY_HALL_CNPJ,
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 from etl.pncp import checkpoint as ck
@@ -207,7 +207,7 @@ def sync(
        Chave de unidade por `id_municipio:cnpj:ano`. Se interrompido, retoma da página
        onde parou sem reprocessar lotes anteriores.
     4. UPSERT EM LOTES POR PÁGINA:
-       Grava até 1.000 registros de cada vez no Postgres via Supabase Client,
+       Grava até 1.000 registros de cada vez no Postgres,
        evitando esgotamento de memória e timeouts.
 
     Args:
@@ -219,7 +219,7 @@ def sync(
     Raises:
         RuntimeError: Se houver conflito de fonte canônica ou ausência de CNPJ base.
     """
-    client = get_supabase_client()
+    client = get_db()
     cidade = carregar_municipio(id_municipio)
 
     # 1. Validação de fonte canônica de dados para evitar duplicações no banco

@@ -88,7 +88,7 @@ from decimal import Decimal, InvalidOperation
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 from etl.temas import classificar_contrato
@@ -337,7 +337,7 @@ def sync(cidade: dict, origem_iter, *, dry_run: bool) -> list[dict]:
     if not linhas:
         print(f"{LOG} {cidade['nome']}: nada coletado — não escrevo.")
         return linhas
-    client = get_supabase_client()
+    client = get_db()
     # Upsert (não refresh total): contrato é histórico imutável e o dedup é por
     # (id_municipio, fonte, chave_fonte) — a chave que a migration 0045 criou.
     # `temas` é coluna opcional (pode não ter migration ainda) — daí o helper.

@@ -10,7 +10,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 BASE_URL = "https://info.dengue.mat.br/api/alertcity"
 DISEASES = ("dengue", "chikungunya", "zika")
@@ -52,7 +52,7 @@ def sync(id_municipio: str, geocode: str | None = None):
     `etl.apis.anp` e companhia em 2026-08-03.
     """
     geocode = geocode or id_municipio
-    client = get_supabase_client()
+    client = get_db()
     total = 0
     for disease in DISEASES:
         raw_rows = _get(geocode, disease)

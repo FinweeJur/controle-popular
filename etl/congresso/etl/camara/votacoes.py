@@ -28,7 +28,7 @@ from datetime import date, datetime, timedelta
 JANELA_DIAS = 7
 
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 
 
 def _janelas(inicio: str, fim: str) -> list[tuple[str, str]]:
@@ -44,19 +44,19 @@ def _janelas(inicio: str, fim: str) -> list[tuple[str, str]]:
 
 
 def sync(desde: str | None = None, dias: int = 30, com_votos: bool = True) -> int:
-    sb = get_supabase_client()
+    db = get_db()
     desde = desde or (date.today() - timedelta(days=dias)).isoformat()
 
     mapa_prop = {
         linha["id_externo"]: linha["id"]
         for linha in fetch_all(
-            lambda: sb.table("proposicoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("proposicoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
     mapa_parl = {
         linha["id_externo"]: linha["id"]
         for linha in fetch_all(
-            lambda: sb.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
 
@@ -100,7 +100,7 @@ def sync(desde: str | None = None, dias: int = 30, com_votos: bool = True) -> in
         print(f"[camara.votacoes] nenhuma votação desde {desde}")
         return 0
 
-    upsert_em_lotes(sb, "votacoes", votacoes, on_conflict="casa_id,id_externo")
+    upsert_em_lotes(db, "votacoes", votacoes, on_conflict="casa_id,id_externo")
     print(f"[camara.votacoes] {len(votacoes)} votações desde {desde}")
 
     if not com_votos:
@@ -109,7 +109,7 @@ def sync(desde: str | None = None, dias: int = 30, com_votos: bool = True) -> in
     mapa_votacao = {
         linha["id_externo"]: linha["id"]
         for linha in fetch_all(
-            lambda: sb.table("votacoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("votacoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
 
@@ -141,12 +141,12 @@ def sync(desde: str | None = None, dias: int = 30, com_votos: bool = True) -> in
             )
 
     if votos:
-        upsert_em_lotes(sb, "votos", votos, on_conflict="votacao_id,parlamentar_id")
+        upsert_em_lotes(db, "votos", votos, on_conflict="votacao_id,parlamentar_id")
     print(
         f"[camara.votacoes] {len(votos)} votos nominais em {nominais} votações "
         f"({len(votacoes) - nominais} simbólicas, sem voto individual)"
     )
-    registrar_fonte(sb, "camara_votacoes", f"{client.BASE}/votacoes", "votacoes")
+    registrar_fonte(db, "camara_votacoes", f"{client.BASE}/votacoes", "votacoes")
     return len(votacoes)
 
 

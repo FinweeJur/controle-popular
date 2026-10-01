@@ -27,7 +27,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     nome_para_fonte_externa,
 )
 
@@ -78,7 +78,7 @@ def sync(id_municipio: str, uf: str | None = None, municipio: str | None = None)
     casa por `cnpj` e apenas trocava o `id_municipio` da linha existente.
     Continuam aceitos como override explícito para o caso de a ANP grafar o
     nome de forma inesperada, mas o padrão agora é derivado do banco."""
-    client = get_supabase_client()
+    client = get_db()
     cidade = carregar_municipio(id_municipio)
     uf = uf or cidade["uf"]
     municipio = municipio or nome_para_fonte_externa(cidade["nome"])

@@ -16,7 +16,7 @@ import json
 from pathlib import Path
 
 from etl import analise_vicio as av
-from etl.common import carregar_municipio, get_supabase_client
+from etl.common import carregar_municipio, get_db
 
 INSTRUCOES = """# Análise de vício legislativo / indício de inconstitucionalidade — {municipio} ({id_municipio})
 
@@ -43,7 +43,7 @@ acerto — não force uma categoria.
 """
 
 
-def _normalizar_lote(sb, id_municipio: str, tipo_objeto: str, registros: list[dict]) -> list[dict]:
+def _normalizar_lote(db, id_municipio: str, tipo_objeto: str, registros: list[dict]) -> list[dict]:
     municipio = carregar_municipio(id_municipio)
     normaliza = av.normalizar_ato if tipo_objeto == "ato" else av.normalizar_proposicao
     return [normaliza(r, municipio) for r in registros]
@@ -89,33 +89,33 @@ def exportar_lista(objetos: list[dict], destino: Path, modelo_rotulo: str) -> in
 
 
 def exportar_por_ids(id_municipio: str, ids: list[str], tipo_objeto: str, destino: Path, modelo_rotulo: str) -> int:
-    sb = get_supabase_client()
+    db = get_db()
     tabela = "atos_oficiais" if tipo_objeto == "ato" else "proposicoes"
     campos = av.CAMPOS_ATO if tipo_objeto == "ato" else av.CAMPOS_PROPOSICAO
     registros: list[dict] = []
     for i in range(0, len(ids), 200):
         lote = ids[i : i + 200]
         registros.extend(
-            sb.table(tabela).select(campos).eq("id_municipio", id_municipio).in_("id", lote).execute().data
+            db.table(tabela).select(campos).eq("id_municipio", id_municipio).in_("id", lote).execute().data
         )
     por_id = {r["id"]: r for r in registros}
     faltando = [i for i in ids if i not in por_id]
     if faltando:
         print(f"[exportar-vicio] AVISO: {len(faltando)} id(s) não encontrados em {id_municipio}: {faltando}")
     ordenados = [por_id[i] for i in ids if i in por_id]
-    objetos = _normalizar_lote(sb, id_municipio, tipo_objeto, ordenados)
+    objetos = _normalizar_lote(db, id_municipio, tipo_objeto, ordenados)
     return exportar_lista(objetos, destino, modelo_rotulo)
 
 
 def exportar_fila(id_municipio: str, limite: int, tipo_objeto: str, destino: Path, modelo_rotulo: str) -> int:
-    sb = get_supabase_client()
+    db = get_db()
     tabela = "atos_oficiais" if tipo_objeto == "ato" else "proposicoes"
     campo_fk = "ato_id" if tipo_objeto == "ato" else "proposicao_id"
     campos = av.CAMPOS_ATO if tipo_objeto == "ato" else av.CAMPOS_PROPOSICAO
 
     analisados = {
         l[campo_fk]
-        for l in sb.table("vicios_legislativos")
+        for l in db.table("vicios_legislativos")
         .select(campo_fk)
         .eq("id_municipio", id_municipio)
         .not_.is_(campo_fk, "null")
@@ -124,7 +124,7 @@ def exportar_fila(id_municipio: str, limite: int, tipo_objeto: str, destino: Pat
     }
     ordenar = "data_publicacao" if tipo_objeto == "ato" else "data_apresentacao"
     registros = (
-        sb.table(tabela)
+        db.table(tabela)
         .select(campos)
         .eq("id_municipio", id_municipio)
         .order(ordenar, desc=True)
@@ -133,7 +133,7 @@ def exportar_fila(id_municipio: str, limite: int, tipo_objeto: str, destino: Pat
         .data
     )
     candidatos = [r for r in registros if r["id"] not in analisados][:limite]
-    objetos = _normalizar_lote(sb, id_municipio, tipo_objeto, candidatos)
+    objetos = _normalizar_lote(db, id_municipio, tipo_objeto, candidatos)
     return exportar_lista(objetos, destino, modelo_rotulo)
 
 

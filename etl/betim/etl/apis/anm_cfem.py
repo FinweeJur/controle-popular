@@ -87,7 +87,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 
@@ -565,7 +565,7 @@ def _gravar(tabela: str, cidade: dict, linhas: list[dict], permitir_reducao: boo
         return
     # Conexão nova para gravar: a coleta passa vários minutos entre escritas e
     # a Neon derruba conexão ociosa. Mesmo motivo de `etl/camaras/sapl.py`.
-    client = get_supabase_client()
+    client = get_db()
     refresh_completo_seguro(
         client,
         tabela,

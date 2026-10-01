@@ -216,10 +216,10 @@ def descobrir(de: int, ate: int, saida: Path | None = None) -> dict:
 
 
 def sync(ano: int) -> int:
-    """Modo F2: grava em `nomeacoes`. Exige Supabase configurado."""
-    from etl.common import get_supabase_client, upsert_em_lotes
+    """Modo F2: grava em `nomeacoes`. Exige DATABASE_URL configurado."""
+    from etl.common import get_db, upsert_em_lotes
 
-    sb = get_supabase_client()
+    db = get_db()
     analisadas = [analisar(p) for p in so_indicacoes(listar(ano))]
     judiciais = [a for a in analisadas if a["tribunal"]]
     if not judiciais:
@@ -245,14 +245,14 @@ def sync(ano: int) -> int:
         }
         for a in judiciais
     ]
-    upsert_em_lotes(sb, "nomeacoes", linhas, on_conflict="senado_id_externo")
+    upsert_em_lotes(db, "nomeacoes", linhas, on_conflict="senado_id_externo")
     print(f"[senado.indicacoes] {len(linhas)} indicações judiciais de {ano}")
     return len(linhas)
 
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="Indicações de autoridade — Senado Federal")
-    p.add_argument("--ano", type=int, help="grava um ano (exige Supabase)")
+    p.add_argument("--ano", type=int, help="grava um ano (exige DATABASE_URL)")
     p.add_argument("--descobrir", action="store_true", help="modo F0: só mede, não grava")
     p.add_argument("--de", type=int, default=2003)
     p.add_argument("--ate", type=int, default=2026)

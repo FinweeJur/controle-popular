@@ -35,7 +35,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 IDEB_REDE = "publica"
 IDEB_ENSINO = "fundamental"
@@ -100,7 +100,7 @@ def _latest_by_school(rows: list[dict]) -> dict[str, dict]:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     # 1. Municipal IDEB (fundamental, rede publica) -> indicadores
     ideb_mun_rows = bd_query(

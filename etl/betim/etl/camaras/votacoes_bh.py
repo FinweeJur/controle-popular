@@ -59,7 +59,7 @@ import fitz
 from curl_cffi import requests
 
 from etl.camaras import bh as bh_etl
-from etl.common import carregar_municipio, fetch_all, get_supabase_client
+from etl.common import carregar_municipio, fetch_all, get_db
 
 # Host de download PÚBLICO. Verificado: serve o PDF por idDocumento sem auth.
 DOWNLOAD = "https://cmbhsildownload.cmbh.mg.gov.br/silinternet/servico/download/documentoVinculado"
@@ -299,7 +299,7 @@ def sync(id_municipio: str, limite: int | None) -> tuple[int, int]:
             f"etl.camaras.votacoes_bh é da Câmara de Belo Horizonte; "
             f"{cidade['nome']} ({id_municipio}) tem outra fonte."
         )
-    client = get_supabase_client()
+    client = get_db()
     por_nome = _indice_vereadores(client, id_municipio)
 
     sessao = bh_etl._sessao()
@@ -339,7 +339,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     try:
         if a.id_documento:
-            client = get_supabase_client()
+            client = get_db()
             por_nome = _indice_vereadores(client, a.id_municipio)
             n = ingerir_documento(client, a.id_municipio, a.id_documento, por_nome)
             print(f"[votacoes_bh] {n} votação(ões) gravada(s) do documento {a.id_documento}")

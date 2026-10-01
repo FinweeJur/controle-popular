@@ -49,7 +49,7 @@ import re
 import sys
 import unicodedata
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 # Grafia da matéria (como cada casa escreve) → slug de `proposicoes.tipo`.
 #
@@ -270,7 +270,7 @@ def main() -> int:
     if not (args.id_municipio or args.todas or args.congresso):
         ap.error("informe --id-municipio, --todas ou --congresso")
 
-    client = get_supabase_client()
+    client = get_db()
 
     if args.congresso:
         print("Congresso:", ligar_congresso(client, args.dry_run))

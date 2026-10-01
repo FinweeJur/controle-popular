@@ -23,7 +23,7 @@ import json
 
 from etl import temas as temas_mod
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client
+from etl.common import fetch_all, get_db
 
 CAMPOS = (
     "id, id_externo, casa_id, identificacao, ementa, ementa_detalhada, keywords, "
@@ -32,10 +32,10 @@ CAMPOS = (
 )
 
 
-def _analisadas(sb) -> set[str]:
+def _analisadas(db) -> set[str]:
     return {
         r["proposicao_id"]
-        for r in fetch_all(lambda: sb.table("analises").select("proposicao_id"))
+        for r in fetch_all(lambda: db.table("analises").select("proposicao_id"))
     }
 
 
@@ -73,10 +73,10 @@ def montar_fila(
     limite_recentes: int = 100,
     limite_por_tema: int = 50,
 ) -> dict[str, list[dict]]:
-    sb = get_supabase_client()
-    analisadas = _analisadas(sb)
+    db = get_db()
+    analisadas = _analisadas(db)
 
-    todas = fetch_all(lambda: sb.table("proposicoes").select(CAMPOS).eq("casa_id", "camara"))
+    todas = fetch_all(lambda: db.table("proposicoes").select(CAMPOS).eq("casa_id", "camara"))
     todas = [p for p in todas if p["id"] not in analisadas]
 
     usadas: set[str] = set()

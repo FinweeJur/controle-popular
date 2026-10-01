@@ -46,7 +46,7 @@ import sys
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
 )
 from etl.pbh.cliente import _tentar
 
@@ -205,7 +205,7 @@ def sync(id_municipio: str) -> int:
             "a linha repetida sobrescreveria a anterior na mesma instrução."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     client.table("contatos_uteis").upsert(rows, on_conflict="id_municipio,nome").execute()
 
     por_categoria: dict[str, int] = {}

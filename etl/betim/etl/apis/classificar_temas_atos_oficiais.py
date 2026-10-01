@@ -26,14 +26,14 @@ tema nenhum -- a mudança só ACRESCENTA alternativas à regex existente), em
 import argparse
 from collections import Counter
 
-from etl.common import fetch_all, get_supabase_client
+from etl.common import fetch_all, get_db
 from etl.temas import TEMA_LABELS, classificar_texto
 
 LOG = "[etl.apis.classificar_temas_atos_oficiais]"
 
 
 def rodar(*, sondar: bool = False) -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas = fetch_all(
         lambda: client.table("atos_oficiais").select("id, id_municipio, ementa, temas")
     )

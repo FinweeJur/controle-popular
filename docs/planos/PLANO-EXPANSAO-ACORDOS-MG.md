@@ -223,7 +223,7 @@ Neon em HTTP 402 até **2026-09-01**; sem banco não há `next build`.
 | Carga das normas federais (8.570 MMA + 370 CNDH) | nunca rodou — `/ambiental/legislacao` mostra 0 nacionais |
 | Auditoria dos 25.729 links | `TODO-PROXIMAS-RODADAS.md` §6 |
 | Backfill de temas | 100 de 10.317 |
-| ⚠️ **B4 — PNCP, contratos estaduais** | **Movido do Bloco B para cá.** Não é "custo baixo": `etl/betim/etl/pncp/{contratos,licitacoes,orgaos}.py` gravam via `get_supabase_client()` |
+| ⚠️ **B4 — PNCP, contratos estaduais** | **Movido do Bloco B para cá.** Não é "custo baixo": `etl/betim/etl/pncp/{contratos,licitacoes,orgaos}.py` gravam via `get_db()` |
 
 ---
 

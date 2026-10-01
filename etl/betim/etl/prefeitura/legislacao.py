@@ -27,7 +27,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, PgAPIError, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, PgAPIError, get_db
 from etl.temas import classificar_texto
 
 BASE = "https://www.betim.mg.gov.br/portal/dados-abertos/legislacao"
@@ -84,7 +84,7 @@ def _inserir_com_temas_opcional(client, rows: list[dict]):
 
 
 def sync(id_municipio: str) -> int:
-    client = get_supabase_client()
+    client = get_db()
 
     distintos: dict[tuple, dict] = {}
     for ano in range(ANO_MINIMO, ANO_MAXIMO + 1):

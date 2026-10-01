@@ -3,7 +3,7 @@
 
 Usage: python -m etl.temas_backfill --id-municipio 3106705
 
-**Precisa da migration `0012_temas.sql` já rodada** (SQL Editor do
+**Precisa da migration `0012_temas.sql` já rodada** (na época: SQL Editor do
 Supabase) -- sem ela, todo update abaixo falha com "column temas does not
 exist" e o script para no primeiro erro (não tem sentido continuar).
 
@@ -14,7 +14,7 @@ existir. Roda uma vez; não precisa de cron.
 """
 import argparse
 
-from etl.common import ID_MUNICIPIO_DEFAULT, fetch_all, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, fetch_all, get_db
 from etl.temas import classificar_contrato, classificar_texto
 
 
@@ -45,7 +45,7 @@ def _backfill_contratos(client, id_municipio: str) -> int:
 
 
 def sync(id_municipio: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
     n_prop = _backfill_proposicoes(client, id_municipio)
     print(f"[etl.temas_backfill] proposicoes_classificadas={n_prop}")
     n_contratos = _backfill_contratos(client, id_municipio)

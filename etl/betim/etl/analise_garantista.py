@@ -48,7 +48,7 @@ import sys
 from pathlib import Path
 
 from etl import temas as temas_mod
-from etl.common import carregar_municipio, get_supabase_client
+from etl.common import carregar_municipio, get_db
 
 # etl/betim/etl/analise_garantista.py -> etl/betim/etl -> etl/betim -> etl -> raiz
 RAIZ_REPO = Path(__file__).resolve().parents[3]
@@ -349,7 +349,7 @@ def extrair_normas(texto: str | None) -> list[dict]:
 
 
 def _amostra(id_municipio: str, quantos: int, tipo_objeto: str) -> None:
-    sb = get_supabase_client()
+    db = get_db()
     municipio = carregar_municipio(id_municipio)
 
     tabela, campos, normaliza = (
@@ -358,7 +358,7 @@ def _amostra(id_municipio: str, quantos: int, tipo_objeto: str) -> None:
         else ("proposicoes", CAMPOS_PROPOSICAO, normalizar_proposicao)
     )
     linhas = (
-        sb.table(tabela).select(campos).eq("id_municipio", id_municipio).limit(quantos).execute().data
+        db.table(tabela).select(campos).eq("id_municipio", id_municipio).limit(quantos).execute().data
     )
     for linha in linhas:
         print("=" * 70)

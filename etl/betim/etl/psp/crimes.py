@@ -72,7 +72,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     nome_para_fonte_externa,
 )
 
@@ -233,7 +233,7 @@ def sync(id_municipio: str, desde: int = ANO_INICIAL_PADRAO, ate: int | None = N
             f"({cidade['nome']}) é de {cidade['uf']}. Para MG use etl.apis.crimes_mg."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     id_ssp = _id_ssp(client, cidade, id_municipio)
     ate = ate or dt.date.today().year
     if desde > ate:

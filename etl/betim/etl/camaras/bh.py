@@ -172,7 +172,7 @@ from tenacity import (
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
     upsert_com_colunas_opcionais,
 )
@@ -1036,7 +1036,7 @@ def sincronizar_custeio(
     # due to administrator command`, jogando fora 12 minutos de raspagem.
     # Reconectar aqui custa milissegundos e é o que separa "coletou e gravou"
     # de "coletou e perdeu".
-    client = get_supabase_client()
+    client = get_db()
     gravou = refresh_completo_seguro(
         client,
         "verbas_indenizatorias",
@@ -1071,7 +1071,7 @@ def sync(
     base = host.rstrip("/")
     print(f"{LOG} {municipio['nome']}-{municipio['uf']} ({id_municipio}) em {base}")
 
-    client = get_supabase_client()
+    client = get_db()
     sessao = _sessao()
 
     if "vereadores" in etapas:

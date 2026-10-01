@@ -33,7 +33,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 QUERY_ULTIMA_COMPETENCIA = """
 SELECT ano, mes
@@ -71,7 +71,7 @@ def _ultima_competencia(tabela: str, id_municipio: str) -> tuple[int, int] | Non
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     # `estabelecimento` e `profissional` são publicados com defasagens
     # diferentes (achado real 2026-07-24: estabelecimento chegava a

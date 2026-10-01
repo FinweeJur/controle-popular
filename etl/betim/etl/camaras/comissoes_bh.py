@@ -101,7 +101,7 @@ from etl.camaras.bh import CAMINHO_LISTA, _get, _sessao, _slug_ascii, _texto
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 
@@ -344,7 +344,7 @@ def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
     base = host.rstrip("/")
     print(f"{LOG} {municipio['nome']}-{municipio['uf']} ({id_municipio}) em {base}")
 
-    client = get_supabase_client()
+    client = get_db()
     sessao = _sessao()
 
     vereadores = (

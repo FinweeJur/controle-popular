@@ -5,7 +5,7 @@
  * ═══ POR QUE ESTE COLETOR EXISTE (B4) ═══
  *
  * `etl/betim/etl/pncp/{contratos,licitacoes,orgaos}.py` já sabem falar com o
- * PNCP, mas `contratos.py` e `licitacoes.py` gravam via `get_supabase_client()`
+ * PNCP, mas `contratos.py` e `licitacoes.py` gravam via `get_db()`
  * — e a Neon está em HTTP 402 até 2026-09-01. Este script NÃO conserta o
  * Python: é um coletor novo, em TypeScript, no molde de
  * `scripts/coletar-barragens-mpmg.mts`, que grava `etl/betim/dados/pncp-mg.json`

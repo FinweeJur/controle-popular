@@ -57,7 +57,7 @@ from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     PgAPIError,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 
@@ -135,7 +135,7 @@ def _normalize(nome: str | None) -> str:
 
 def _iso(value):
     """BigQuery DATE columns deserialize to Python date objects, which the
-    supabase-py/httpx JSON encoder can't serialize -- same issue already
+    old client (supabase-py/httpx) couldn't serialize -- same issue already
     found and fixed in etl/bd/cnpj.py's data_abertura."""
     if value is None:
         return None
@@ -219,7 +219,7 @@ def semear(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT, forcar: bo
     Devolve quantos vereadores foram gravados.
     """
     cidade = carregar_municipio(id_municipio)
-    client = get_supabase_client()
+    client = get_db()
 
     existentes = (
         client.table("vereadores").select("id").eq("id_municipio", id_municipio).execute().data or []
@@ -297,7 +297,7 @@ def sync(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT, incluir_doac
     once-per-term risk when it was written), so a second unguarded
     `sync()` call would duplicate every donation instead of just adding
     the new bens_candidato rows."""
-    client = get_supabase_client()
+    client = get_db()
 
     existing = (
         client.table("vereadores").select("id,nome_urna").eq("id_municipio", id_municipio).execute().data
@@ -490,7 +490,7 @@ def fotos(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT) -> int:
     sg_ue = _descobrir_sg_ue(cidade["uf"], cidade["nome"])
     id_eleicao = _descobrir_id_eleicao(ano_eleicao)
 
-    client = get_supabase_client()
+    client = get_db()
     vereadores = (
         client.table("vereadores")
         .select("id,nome_urna,id_candidato_tse")

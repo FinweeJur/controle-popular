@@ -174,7 +174,7 @@ def sync(dados_dir: str | None = None) -> None:
     Parâmetros:
     - dados_dir: pasta com os xlsx. Padrão: etl/betim/dados/temp/.
     """
-    from etl.betim.etl.common import get_supabase_client
+    from etl.betim.etl.common import get_db
 
     raiz = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
     if dados_dir is None:
@@ -190,7 +190,7 @@ def sync(dados_dir: str | None = None) -> None:
         print("[etl.apis.sinesp_vde] nenhum BancoVDE*.xlsx encontrado em", dados_dir)
         return
 
-    client = get_supabase_client()
+    client = get_db()
     total_gravado = 0
     total_sem_map = 0
 

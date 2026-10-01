@@ -31,7 +31,7 @@ each rule):
 
   - **Rule 1** (value > mean + 2*stdev of "similar" contracts by trigram
     similarity, last 2 years): true `pg_trgm` similarity isn't
-    straightforward to express through the supabase-py client without a
+    straightforward to express through this fluent client without a
     custom Postgres RPC function, so this takes the plan's documented
     fallback — group contracts by `categoria` (or, when that's empty, the
     first 40 normalized characters of `objeto`) and compute mean + 2*stdev
@@ -80,7 +80,7 @@ import statistics
 import sys
 import unicodedata
 
-from etl.common import ID_MUNICIPIO_DEFAULT, fetch_all, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, fetch_all, get_db
 
 CHUNK_SIZE = 500
 
@@ -649,7 +649,7 @@ def _check_regra_10(client, id_municipio: str) -> None:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     # fetch_all (etl/common.py) pages past PostgREST's 1000-row .execute()
     # cap — contratos was 576 rows when this was unpaginated (fine then),

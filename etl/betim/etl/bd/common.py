@@ -16,7 +16,7 @@ working end-to-end against `basedosdados.br_ibge_populacao.municipio` this
 session, no prompt, no cache dependency.
 
 Normalizes result rows (numpy/pandas scalars -> native Python, NaN -> None)
-so they upsert cleanly via supabase-py. Raises RuntimeError (ABORT
+so they upsert cleanly via the ETL's Postgres client. Raises RuntimeError (ABORT
 convention, same as etl/common.py) when no billing project or credentials
 file is configured.
 """

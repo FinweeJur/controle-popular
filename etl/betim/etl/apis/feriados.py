@@ -16,7 +16,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 FERIADOS_URL = "https://brasilapi.com.br/api/feriados/v1/{ano}"
 
@@ -29,7 +29,7 @@ def _fetch_ano(ano: int) -> list[dict]:
 
 
 def sync(anos: list[int] | None = None):
-    client = get_supabase_client()
+    client = get_db()
 
     if anos is None:
         ano_atual = dt.date.today().year

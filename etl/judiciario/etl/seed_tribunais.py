@@ -1,7 +1,7 @@
 """etl.seed_tribunais — gera 0003_seed_tribunais.sql a partir de regras.json.
 
 Rodar:
-  python -m etl.seed_tribunais > supabase/migrations/0003_seed_tribunais.sql
+  python -m etl.seed_tribunais > supabase/judiciario/migrations/0003_seed_tribunais.sql
 
 POR QUE GERAR, e não escrever à mão: as cotas e as contagens de cadeira
 vivem em `regras/regras.json` (a régua canônica, versão carimbada). Se o

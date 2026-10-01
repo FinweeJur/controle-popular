@@ -29,7 +29,7 @@ import sys
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 from etl.pbh.cliente import grp
@@ -146,7 +146,7 @@ def sync(id_municipio: str) -> None:
             "verificada antes (o nome do procedimento e o host mudam)."
         )
 
-    client = get_supabase_client()
+    client = get_db()
 
     brutos = grp("PContrato")
     contratos = {}

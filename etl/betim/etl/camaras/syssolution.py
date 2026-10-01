@@ -76,7 +76,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
     upsert_com_colunas_opcionais,
 )
@@ -459,7 +459,7 @@ def _gravar_leis(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> No
     if not linhas:
         print(f"{LOG} leis: nada coletado — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()  # conexão nova: a coleta é longa
+    client = get_db()  # conexão nova: a coleta é longa
     refresh_completo_seguro(
         client,
         "atos_oficiais",
@@ -632,7 +632,7 @@ def listar_tipos(id_municipio: str) -> None:
 def sync(id_municipio: str, partes: set[str], *, permitir_reducao: bool = False) -> None:
     cidade = carregar_municipio(id_municipio)
     _preparar_sessao(cidade)
-    client = get_supabase_client()
+    client = get_db()
 
     if "vereadores" in partes:
         _gravar_vereadores(client, cidade, _coletar_vereadores(cidade))
@@ -641,7 +641,7 @@ def sync(id_municipio: str, partes: set[str], *, permitir_reducao: bool = False)
         _gravar_comissoes(client, cidade, comissoes, membros)
     if "proposicoes" in partes:
         linhas, sem_tipo = _coletar_proposicoes(client, cidade)
-        _gravar_proposicoes(get_supabase_client(), linhas, sem_tipo)
+        _gravar_proposicoes(get_db(), linhas, sem_tipo)
     if "leis" in partes:
         _gravar_leis(cidade, _coletar_leis(cidade), permitir_reducao)
 

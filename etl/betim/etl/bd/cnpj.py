@@ -1,7 +1,7 @@
 """etl.bd.cnpj — enrich `fornecedores` / `socios` from br_me_cnpj, scoped to CNPJs seen in `contratos`.
 
 Source: `br_me_cnpj.empresas` + `estabelecimentos` + `socios` — looked up only
-for CNPJs already present in the `contratos` table (queried from Supabase
+for CNPJs already present in the `contratos` table (queried from Postgres
 first, then matched in BD). Target: `fornecedores` (unique on cnpj), `socios`
 (unique on cnpj, nome_socio). Cron: weekly.
 
@@ -45,7 +45,7 @@ from etl.apis.brasilapi import (
     linha_fornecedor_brasilapi,
 )
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 CHUNK_SIZE = 500
 
@@ -114,7 +114,7 @@ def _situacao_cadastral_label(code) -> str | None:
 
 def _iso(value):
     """BigQuery DATE columns deserialize to Python date/datetime objects,
-    which the supabase-py/httpx JSON encoder can't serialize -- found live
+    which the old client (supabase-py/httpx) couldn't serialize -- found live
     2026-07-21 (`TypeError: Object of type date is not JSON serializable`)
     once fornecedor_cnpj started resolving real CNPJs and this path finally
     ran end-to-end for the first time."""
@@ -140,7 +140,7 @@ def _iso(value):
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     contratos_resp = (
         client.table("contratos").select("fornecedor_cnpj").eq("id_municipio", id_municipio).execute()

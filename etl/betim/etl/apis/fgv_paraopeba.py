@@ -37,7 +37,7 @@ import requests
 
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 
@@ -146,7 +146,7 @@ def _num(v) -> float | None:
 
 
 def sync(id_municipio: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
     geral_bytes, financeiro_bytes, referencia = _achar_planilhas()
     print(f"[etl.apis.fgv_paraopeba] planilhas de referencia={referencia}")
 

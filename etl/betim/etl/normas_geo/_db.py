@@ -1,6 +1,6 @@
 """Conexão do pipeline `normas_geo` — Postgres LOCAL, sempre.
 
-Não usa `etl.common.get_supabase_client()` (que lê `DATABASE_URL` de
+Não usa `etl.common.get_db()` (que lê `DATABASE_URL` de
 `etl/betim/.env`, hoje inexistente neste worktree e historicamente apontado
 para a Neon nos outros eixos) para não correr o risco de herdar um valor
 apontando para fora deste PC. A regra do projeto é literal: 127.0.0.1, e

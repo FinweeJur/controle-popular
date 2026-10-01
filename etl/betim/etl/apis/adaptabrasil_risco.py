@@ -102,7 +102,7 @@ from collections import Counter
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 LOG = "[etl.apis.adaptabrasil_risco]"
 
@@ -321,7 +321,7 @@ def sondar(indicadores, uf: str, ano: int | None, cenario: int | None) -> None:
 
 
 def sync(indicadores, uf: str, ano: int | None, cenario: int | None) -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas = coletar(indicadores, uf=uf, ano=ano, cenario=cenario)
     if not linhas:
         print(f"{LOG} nada coletado — NÃO apago o que já existe.")

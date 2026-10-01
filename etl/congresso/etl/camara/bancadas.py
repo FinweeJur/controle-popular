@@ -25,7 +25,7 @@ import argparse
 import time
 
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 
 # Pausa entre as requisições de membros de cada frente, para não estrangular.
 # 1s (não 0.4): a 0.4 o throttle ainda pegava a rajada de 320. Deixa a
@@ -36,16 +36,16 @@ PAUSA_S = 1.0
 LEGISLATURA_ATUAL = 57
 
 
-def _mapa_parlamentares(sb) -> dict[str, str]:
+def _mapa_parlamentares(db) -> dict[str, str]:
     """id_externo → uuid, para resolver as FKs de bancada_membros."""
     linhas = fetch_all(
-        lambda: sb.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
+        lambda: db.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
     )
     return {linha["id_externo"]: linha["id"] for linha in linhas}
 
 
 def sync(legislatura: int = LEGISLATURA_ATUAL, com_membros: bool = True) -> int:
-    sb = get_supabase_client()
+    db = get_db()
 
     bancadas: list[dict] = []
     for f in client.paginar("/frentes", idLegislatura=legislatura):
@@ -82,19 +82,19 @@ def sync(legislatura: int = LEGISLATURA_ATUAL, com_membros: bool = True) -> int:
             }
         )
 
-    upsert_em_lotes(sb, "bancadas", bancadas, on_conflict="casa_id,tipo,id_externo")
+    upsert_em_lotes(db, "bancadas", bancadas, on_conflict="casa_id,tipo,id_externo")
     print(f"[camara.bancadas] {len(bancadas)} bancadas sincronizadas")
 
     if not com_membros:
         return len(bancadas)
 
     salvas = fetch_all(
-        lambda: sb.table("bancadas")
+        lambda: db.table("bancadas")
         .select("id, id_externo, tipo")
         .eq("casa_id", client.CASA_ID)
         .eq("tipo", "frente")
     )
-    parlamentares = _mapa_parlamentares(sb)
+    parlamentares = _mapa_parlamentares(db)
     if not parlamentares:
         print("[camara.bancadas] nenhum parlamentar no banco — rode etl.camara.parlamentares antes")
         return len(bancadas)
@@ -132,13 +132,13 @@ def sync(legislatura: int = LEGISLATURA_ATUAL, com_membros: bool = True) -> int:
 
     if membros:
         upsert_em_lotes(
-            sb, "bancada_membros", membros, on_conflict="bancada_id,parlamentar_id"
+            db, "bancada_membros", membros, on_conflict="bancada_id,parlamentar_id"
         )
     print(
         f"[camara.bancadas] {len(membros)} vínculos de membro sincronizados"
         + (f" ({falhas} frente(s) sem membros)" if falhas else "")
     )
-    registrar_fonte(sb, "camara_frentes", f"{client.BASE}/frentes", "bancadas")
+    registrar_fonte(db, "camara_frentes", f"{client.BASE}/frentes", "bancadas")
     return len(bancadas)
 
 

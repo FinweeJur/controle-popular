@@ -52,7 +52,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 
@@ -200,7 +200,7 @@ def sync(id_municipio: str, codigo_ibge: str | None = None, teto_paginas: int = 
     `etl.pncp.contratos` em 2026-08-03.
     """
     codigo_ibge = codigo_ibge or id_municipio
-    client = get_supabase_client()
+    client = get_db()
     brutos = _fetch_all(codigo_ibge, teto_paginas)
     rows = [m for r in brutos if (m := _map_row(r, id_municipio)) is not None]
 

@@ -15,7 +15,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 LOCALIDADES_URL = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/{id_municipio}"
 MALHAS_URL = "https://servicodados.ibge.gov.br/api/v3/malhas/municipios/{id_municipio}"
@@ -40,7 +40,7 @@ def _fetch_malha(id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     regiao = _fetch_regiao(id_municipio)
     malha = _fetch_malha(id_municipio)

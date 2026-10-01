@@ -134,7 +134,7 @@ from pathlib import Path
 import requests
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.apis._legislacao_ambiental import UA, chave_dedup, redigir_documentos
 
 LOG = "[etl.apis.legislacao_mma]"
@@ -462,7 +462,7 @@ def exportar_json(caminho: str) -> None:
 
 
 def sync() -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas, diag = coletar(verboso=True)
     print(f"{LOG} {diag['registros_csv']} registro(s) no CSV, {len(linhas)} para gravar.")
     if not linhas:

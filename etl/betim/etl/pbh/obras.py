@@ -104,7 +104,7 @@ import sys
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 from etl.pbh.cliente import ckan_action, csv_do_recurso
@@ -366,7 +366,7 @@ def sync(id_municipio: str, permitir_reducao: bool = False) -> int:
         )
 
     escreveu = refresh_completo_seguro(
-        client=get_supabase_client(),
+        client=get_db(),
         table="obras",
         filtros={"id_municipio": id_municipio},
         rows=linhas,

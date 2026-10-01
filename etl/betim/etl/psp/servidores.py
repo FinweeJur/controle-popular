@@ -75,7 +75,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
 )
 from etl.psp.orgaos_canonicos import canonizar_orgao, truncados_desconhecidos
 
@@ -385,7 +385,7 @@ def sync(id_municipio: str, meses: int = 1) -> None:
         f"remuneração até {ordenadas[0][0]}-{ordenadas[0][1]:02d} ({len(comps_remun)} meses)"
     )
 
-    client = get_supabase_client()
+    client = get_db()
     quadro = 0
     for pos, (ano, mes) in enumerate(ordenadas):
         # O mapa de órgão vem do arquivo de ativos da MESMA competência

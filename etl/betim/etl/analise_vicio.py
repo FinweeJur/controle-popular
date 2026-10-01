@@ -21,7 +21,7 @@ import importlib.util
 import sys
 from pathlib import Path
 
-from etl.common import carregar_municipio, get_supabase_client
+from etl.common import carregar_municipio, get_db
 
 RAIZ_REPO = Path(__file__).resolve().parents[3]
 DIR_CONGRESSO = RAIZ_REPO / "etl" / "congresso" / "etl"
@@ -204,7 +204,7 @@ CAMPOS_PROPOSICAO = "id, id_municipio, tipo, numero, ano, ementa, situacao, data
 
 
 def _amostra(id_municipio: str, quantos: int, tipo_objeto: str) -> None:
-    sb = get_supabase_client()
+    db = get_db()
     municipio = carregar_municipio(id_municipio)
     tabela, campos, normaliza = (
         ("atos_oficiais", CAMPOS_ATO, normalizar_ato)
@@ -212,7 +212,7 @@ def _amostra(id_municipio: str, quantos: int, tipo_objeto: str) -> None:
         else ("proposicoes", CAMPOS_PROPOSICAO, normalizar_proposicao)
     )
     linhas = (
-        sb.table(tabela).select(campos).eq("id_municipio", id_municipio).limit(quantos).execute().data
+        db.table(tabela).select(campos).eq("id_municipio", id_municipio).limit(quantos).execute().data
     )
     for linha in linhas:
         print("=" * 70)

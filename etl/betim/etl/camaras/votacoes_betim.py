@@ -51,7 +51,7 @@ import unicodedata
 import fitz
 from curl_cffi import requests
 
-from etl.common import carregar_municipio, fetch_all, get_supabase_client
+from etl.common import carregar_municipio, fetch_all, get_db
 
 BASE = "https://legislativo.camarabetim.mg.gov.br"
 HOST_ESPERADO = "legislativo.camarabetim.mg.gov.br"
@@ -179,7 +179,7 @@ def sync(id_municipio: str, limite: int | None = None) -> tuple[int, int]:
             f"({id_municipio}) tem outra fonte."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     vereadores = fetch_all(
         lambda: client.table("vereadores")
         .select("id, nome, nome_urna")

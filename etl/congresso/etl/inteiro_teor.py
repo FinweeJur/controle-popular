@@ -29,7 +29,7 @@ import re
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import fetch_all, get_supabase_client, upsert_em_lotes
+from etl.common import fetch_all, get_db, upsert_em_lotes
 
 MAX_CHARS = 200_000
 MAX_PAGINAS = 120
@@ -107,11 +107,11 @@ def extrair_texto(conteudo: bytes, content_type: str, url: str = "") -> tuple[st
 
 
 def sync(limite: int = 50, id_externo: str | None = None) -> int:
-    sb = get_supabase_client()
+    db = get_db()
 
     def query():
         q = (
-            sb.table("proposicoes")
+            db.table("proposicoes")
             .select("id, id_externo, identificacao, url_inteiro_teor")
             .not_.is_("url_inteiro_teor", "null")
         )
@@ -148,7 +148,7 @@ def sync(limite: int = 50, id_externo: str | None = None) -> int:
 
     if atualizacoes:
         upsert_em_lotes(
-            sb, "proposicoes", atualizacoes, tamanho=50, on_conflict="casa_id,id_externo"
+            db, "proposicoes", atualizacoes, tamanho=50, on_conflict="casa_id,id_externo"
         )
 
     print(f"[inteiro_teor] {len(atualizacoes)} textos gravados")

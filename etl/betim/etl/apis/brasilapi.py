@@ -110,7 +110,7 @@ from tenacity import (
     wait_exponential,
 )
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 BASE_URL = "https://brasilapi.com.br/api"
 CNPJ_URL = BASE_URL + "/cnpj/v1/{cnpj}"
@@ -570,7 +570,7 @@ def sync(
         f"max_consultas={max_consultas}"
     )
 
-    client = get_supabase_client()
+    client = get_db()
     if apenas in (None, "fornecedores"):
         enriquecer_fornecedores(client, id_municipio, max_consultas, intervalo_cnpj)
     if apenas in (None, "comercios"):

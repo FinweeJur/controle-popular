@@ -77,7 +77,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
     upsert_com_colunas_opcionais,
 )
@@ -503,7 +503,7 @@ def _gravar_normas(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> 
 
     # Conexão nova para gravar: a coleta pode passar do tempo de ociosidade
     # que a Neon tolera. Mesmo motivo de `etl/pbh/legislacao.py`.
-    client = get_supabase_client()
+    client = get_db()
     refresh_completo_seguro(
         client,
         "atos_oficiais",
@@ -587,7 +587,7 @@ def descobrir(id_municipio: str, gravar: bool) -> None:
             f"   where id_municipio = '{id_municipio}';"
         )
         return
-    client = get_supabase_client()
+    client = get_db()
     fontes = dict(cidade.get("fontes") or {})
     fontes.update({"camara_host": escolhido, "camara_coletor": COLETOR})
     client.table("municipios").update({"fontes": fontes}).eq("id_municipio", id_municipio).execute()
@@ -608,7 +608,7 @@ def sync(
     host = _conferir_identidade(cidade)
     _conferir_api(host, exigir_api)
 
-    client = get_supabase_client()
+    client = get_db()
 
     if "vereadores" in partes:
         _gravar_vereadores(client, cidade, _coletar_vereadores(host, cidade))

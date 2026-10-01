@@ -24,7 +24,7 @@ pessoal que não se coleta é dado pessoal que não vaza.
 import argparse
 
 from etl.camara import client
-from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import get_db, registrar_fonte, upsert_em_lotes
 
 LEGISLATURA_ATUAL = 57
 
@@ -72,14 +72,14 @@ def coletar(legislatura: int = LEGISLATURA_ATUAL) -> list[dict]:
 
 def sync(legislatura: int = LEGISLATURA_ATUAL) -> int:
     linhas = coletar(legislatura)
-    client_sb = get_supabase_client()
+    client_db = get_db()
     total = upsert_em_lotes(
-        client_sb, "parlamentares", linhas, on_conflict="casa_id,id_externo"
+        client_db, "parlamentares", linhas, on_conflict="casa_id,id_externo"
     )
     sem_email = sum(1 for x in linhas if not x["email"])
     print(f"[camara.parlamentares] {total} deputados sincronizados ({sem_email} sem e-mail)")
     registrar_fonte(
-        client_sb,
+        client_db,
         "camara_deputados",
         f"{client.BASE}/deputados",
         "parlamentares",

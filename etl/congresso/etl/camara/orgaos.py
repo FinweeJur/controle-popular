@@ -30,7 +30,7 @@ entrega — o ofício chega, só não pela caixa institucional do colegiado.
 import argparse
 
 from etl.camara import client
-from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import get_db, registrar_fonte, upsert_em_lotes
 
 TIPOS_INTERESSE = [1, 2, 3]  # Mesa Diretora, permanente, temporária
 
@@ -72,10 +72,10 @@ def coletar(tipos: list[int] | None = None) -> list[dict]:
 
 def sync() -> int:
     linhas = coletar()
-    sb = get_supabase_client()
-    total = upsert_em_lotes(sb, "orgaos", linhas, on_conflict="casa_id,id_externo")
+    db = get_db()
+    total = upsert_em_lotes(db, "orgaos", linhas, on_conflict="casa_id,id_externo")
     print(f"[camara.orgaos] {total} órgãos sincronizados")
-    registrar_fonte(sb, "camara_orgaos", f"{client.BASE}/orgaos", "comissoes")
+    registrar_fonte(db, "camara_orgaos", f"{client.BASE}/orgaos", "comissoes")
     return total
 
 

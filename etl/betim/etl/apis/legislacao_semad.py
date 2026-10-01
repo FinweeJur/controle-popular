@@ -55,7 +55,7 @@ import requests
 from lxml import html
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.apis._legislacao_ambiental import UA, chave_dedup
 
 LOG = "[etl.apis.legislacao_semad]"
@@ -215,7 +215,7 @@ def sondar(pausa: float, max_paginas: int | None) -> None:
 
 
 def sync(*, pausa: float = PAUSA_PADRAO) -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas, diag = coletar(pausa=pausa, verboso=True)
     print(f"{LOG} fonte declara {diag['total_declarado']}, {len(linhas)} linha(s) montada(s) para gravar.")
     if not linhas:

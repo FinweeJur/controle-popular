@@ -133,7 +133,7 @@ import sys
 
 import requests
 
-from etl.common import get_supabase_client, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
 
 LOG = "[etl.apis.ambiental_licenciamento]"
 
@@ -471,7 +471,7 @@ def sondar(nome_municipio: str | None) -> None:
 def sync(*, permitir_reducao: bool) -> None:
     """Sincroniza a camada INTEIRA (a fonte é um WFS estadual único, sem
     filtro por cidade no lado do servidor)."""
-    client = get_supabase_client()
+    client = get_db()
     print(f"{LOG} baixando e resolvendo município de cada licença contra ref_municipios_mg...")
     linhas, sem_match = coletar_e_resolver_estado(client)
     if sem_match:
@@ -487,7 +487,7 @@ def _gravar(linhas: list[dict], permitir_reducao: bool) -> None:
     if not linhas:
         print(f"{LOG} nada coletado/casado — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()
+    client = get_db()
     por_municipio: dict[str, list[dict]] = {}
     for linha in linhas:
         por_municipio.setdefault(linha["id_municipio"], []).append(linha)

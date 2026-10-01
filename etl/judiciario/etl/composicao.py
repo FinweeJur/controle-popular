@@ -31,7 +31,7 @@ import json
 import sys
 from pathlib import Path
 
-from .common import get_supabase_client, upsert_em_lotes
+from .common import get_db, upsert_em_lotes
 
 DADOS = Path(__file__).resolve().parent / "dados"
 
@@ -146,7 +146,7 @@ def sincronizar(tribunal: str) -> tuple[int, int]:
             print(f"[composicao] PROBLEMA: {p}")
         raise SystemExit(f"[composicao] {tribunal}: curadoria inconsistente, nada gravado")
 
-    sb = get_supabase_client()
+    db = get_db()
     trib = d["tribunal"]
     cargo = d.get("cargo")
     fonte = d.get("fonte", "")
@@ -169,13 +169,13 @@ def sincronizar(tribunal: str) -> tuple[int, int]:
         }
         for i in integrantes
     ]
-    n_mag = upsert_em_lotes(sb, "magistrados", magistrados, on_conflict="slug")
+    n_mag = upsert_em_lotes(db, "magistrados", magistrados, on_conflict="slug")
 
     # Recupera os uuids pelos slugs para montar as ocupações.
     slugs = [m["slug"] for m in magistrados]
     id_por_slug = {
         r["slug"]: str(r["id"])
-        for r in sb.table("magistrados").select("id, slug").in_("slug", slugs).execute().data
+        for r in db.table("magistrados").select("id, slug").in_("slug", slugs).execute().data
     }
 
     com_cadeira = [i for i in integrantes if i.get("cadeira_numero")]
@@ -183,7 +183,7 @@ def sincronizar(tribunal: str) -> tuple[int, int]:
     if com_cadeira:
         cadeiras = {
             int(r["numero"]): str(r["id"])
-            for r in sb.table("cadeiras")
+            for r in db.table("cadeiras")
             .select("id, numero")
             .eq("tribunal_id", trib)
             .execute()
@@ -208,7 +208,7 @@ def sincronizar(tribunal: str) -> tuple[int, int]:
             )
         if ocupacoes:
             n_ocup = upsert_em_lotes(
-                sb,
+                db,
                 "ocupacoes",
                 ocupacoes,
                 on_conflict="cadeira_id,magistrado_id,data_posse",
@@ -255,13 +255,13 @@ def ligar_nomeacoes(tribunal: str | None = None) -> int:
 
     Idempotente: só escreve onde `magistrado_id` está nulo.
     """
-    sb = get_supabase_client()
-    q = sb.table("nomeacoes").select("id, tribunal_id, senado_ementa, magistrado_id")
+    db = get_db()
+    q = db.table("nomeacoes").select("id, tribunal_id, senado_ementa, magistrado_id")
     if tribunal:
         q = q.eq("tribunal_id", tribunal)
     nomeacoes = [n for n in q.execute().data if not n.get("magistrado_id")]
 
-    magistrados = sb.table("magistrados").select("id, nome, nome_completo").execute().data
+    magistrados = db.table("magistrados").select("id, nome, nome_completo").execute().data
     # Do mais longo para o mais curto: se um nome completo contém outro
     # ("Carlos Augusto Amaral Oliveira" x "Carlos Augusto"), o mais específico
     # tem de ser testado primeiro.
@@ -281,7 +281,7 @@ def ligar_nomeacoes(tribunal: str | None = None) -> int:
                 break
 
     if ligadas:
-        upsert_em_lotes(sb, "nomeacoes", ligadas, on_conflict="id")
+        upsert_em_lotes(db, "nomeacoes", ligadas, on_conflict="id")
     print(
         f"[composicao] nomeações ligadas: {len(ligadas)} de {len(nomeacoes)} sem vínculo"
         + (f" (tribunal {tribunal})" if tribunal else "")

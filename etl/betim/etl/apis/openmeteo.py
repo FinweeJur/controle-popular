@@ -12,7 +12,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
@@ -66,7 +66,7 @@ def sync(id_municipio: str, lat: float | None = None, lng: float | None = None):
     coletava o dado de Betim e o gravava com o id da outra — sem erro. Mesmo
     defeito encontrado e corrigido em `etl.apis.anp` em 2026-08-03.
     """
-    client = get_supabase_client()
+    client = get_db()
     cidade = carregar_municipio(id_municipio)
     if lat is None:
         lat = cidade["lat"]

@@ -90,7 +90,7 @@ import unicodedata
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
 )
 from etl.pbh.cliente import ckan_action, csv_do_recurso, datastore_todos
 
@@ -475,7 +475,7 @@ def sync(id_municipio: str) -> None:
             flush=True,
         )
 
-    client = get_supabase_client()
+    client = get_db()
     todas = list(linhas.values())
     for i in range(0, len(todas), LOTE):
         client.table("diarias").upsert(

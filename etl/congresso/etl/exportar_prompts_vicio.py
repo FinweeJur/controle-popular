@@ -17,7 +17,7 @@ import json
 from pathlib import Path
 
 from etl import rubrica_vicio as rv
-from etl.common import fetch_all, get_supabase_client
+from etl.common import fetch_all, get_db
 
 INSTRUCOES = """# Análise de vício legislativo / indício de inconstitucionalidade
 
@@ -56,7 +56,7 @@ decide o nível, só aponta a categoria.
 """
 
 
-def _autores_das_proposicoes(sb, ids: list[str]) -> dict[str, str]:
+def _autores_das_proposicoes(db, ids: list[str]) -> dict[str, str]:
     """Autor principal (proponente, ou o primeiro por ordem) de cada
     proposição — o prompt precisa saber QUEM propôs para avaliar vício de
     iniciativa (regra 4 do SYSTEM: PL de conversão de MP ou de autoria do
@@ -73,7 +73,7 @@ def _autores_das_proposicoes(sb, ids: list[str]) -> dict[str, str]:
     for i in range(0, len(ids), 200):
         lote = ids[i : i + 200]
         linhas = (
-            sb.table("proposicao_autoria")
+            db.table("proposicao_autoria")
             .select("proposicao_id, nome, partido, uf, proponente, ordem, cod_tipo")
             .in_("proposicao_id", lote)
             .execute()
@@ -99,7 +99,7 @@ def _autores_das_proposicoes(sb, ids: list[str]) -> dict[str, str]:
         for i in range(0, len(faltando), 200):
             lote = faltando[i : i + 200]
             linhas = (
-                sb.table("proposicao_autores")
+                db.table("proposicao_autores")
                 .select("proposicao_id, ordem, proponente, parlamentar_id")
                 .in_("proposicao_id", lote)
                 .order("ordem")
@@ -110,7 +110,7 @@ def _autores_das_proposicoes(sb, ids: list[str]) -> dict[str, str]:
             nomes: dict[str, dict] = {}
             for j in range(0, len(parlamentar_ids), 200):
                 for p in (
-                    sb.table("parlamentares")
+                    db.table("parlamentares")
                     .select("id, nome, partido")
                     .in_("id", parlamentar_ids[j : j + 200])
                     .execute()
@@ -153,14 +153,14 @@ def _normalizar(prop: dict, autor: str | None) -> dict:
     }
 
 
-def _fila_vicio(sb, limite: int) -> list[dict]:
+def _fila_vicio(db, limite: int) -> list[dict]:
     """Proposições ainda sem análise de vício, mais recentes primeiro."""
     analisadas = {
         l["proposicao_id"]
-        for l in fetch_all(lambda: sb.table("vicios_legislativos").select("proposicao_id"))
+        for l in fetch_all(lambda: db.table("vicios_legislativos").select("proposicao_id"))
     }
     candidatas = fetch_all(
-        lambda: sb.table("proposicoes")
+        lambda: db.table("proposicoes")
         .select("id, sigla_tipo, identificacao, ementa, situacao, tramitando")
         .eq("tramitando", True)
         .order("data_apresentacao", desc=True)
@@ -174,8 +174,8 @@ def exportar_lista(props: list[dict], destino: Path, modelo_rotulo: str) -> int:
         print(f"[exportar-vicio] {destino}: nada a exportar.")
         return 0
 
-    sb = get_supabase_client()
-    autores = _autores_das_proposicoes(sb, [p["id"] for p in props])
+    db = get_db()
+    autores = _autores_das_proposicoes(db, [p["id"] for p in props])
     objetos = [_normalizar(p, autores.get(p["id"])) for p in props]
 
     destino.mkdir(parents=True, exist_ok=True)
@@ -208,12 +208,12 @@ def exportar_lista(props: list[dict], destino: Path, modelo_rotulo: str) -> int:
 
 
 def exportar_por_ids(ids: list[str], destino: Path, modelo_rotulo: str) -> int:
-    sb = get_supabase_client()
+    db = get_db()
     props: list[dict] = []
     for i in range(0, len(ids), 200):
         lote = ids[i : i + 200]
         props.extend(
-            sb.table("proposicoes")
+            db.table("proposicoes")
             .select("id, sigla_tipo, identificacao, ementa, situacao, tramitando")
             .in_("id", lote)
             .execute()
@@ -239,6 +239,6 @@ if __name__ == "__main__":
     if a.ids:
         exportar_por_ids([s.strip() for s in a.ids.split(",") if s.strip()], Path(a.dir), a.modelo)
     else:
-        sb = get_supabase_client()
-        fila = _fila_vicio(sb, a.limite)
+        db = get_db()
+        fila = _fila_vicio(db, a.limite)
         exportar_lista(fila, Path(a.dir), a.modelo)

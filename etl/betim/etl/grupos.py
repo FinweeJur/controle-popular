@@ -31,7 +31,7 @@ import argparse
 import datetime as dt
 import sys
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 CHUNK_SIZE = 500
 
@@ -84,7 +84,7 @@ def _replace_grupos(client, id_municipio: str, rows: list[dict]) -> None:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     contratos_resp = (
         client.table("contratos")

@@ -54,7 +54,7 @@ from datetime import date
 import requests
 from lxml import etree
 
-from etl.common import carregar_municipio, fetch_all, get_supabase_client
+from etl.common import carregar_municipio, fetch_all, get_db
 
 BASE = "https://splegispdarmazenamento.blob.core.windows.net/containersip"
 FONTE = "CMSP — Votações em dados abertos (XML anual)"
@@ -112,7 +112,7 @@ def sync(id_municipio: str, desde: int, ate: int) -> tuple[int, int]:
             f"({id_municipio}) tem outra fonte de votação."
         )
 
-    client = get_supabase_client()
+    client = get_db()
 
     # Índices de casamento: por id externo (nominal) e por nome (VotoContrario).
     vereadores = fetch_all(

@@ -25,7 +25,7 @@ import zipfile
 import openpyxl
 import requests
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 ZIP_URL = "https://radardatransparencia.atricon.org.br/dados/dados_pntp_{ano}.zip"
 PLANILHA_AVALIACOES = "pntp_{ano}/avaliacoes_pntp_{ano}.xlsx"
@@ -119,7 +119,7 @@ def _num_ou_nulo(valor):
 
 
 def sync(id_municipio: str, ano: int) -> None:
-    client = get_supabase_client()
+    client = get_db()
     cidade = carregar_municipio(id_municipio)
     uf_extenso = UF_POR_EXTENSO.get(cidade["uf"])
     if not uf_extenso:

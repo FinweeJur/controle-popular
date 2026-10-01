@@ -98,7 +98,7 @@ from decimal import Decimal
 
 import requests
 
-from etl.common import get_supabase_client, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
 
 LOG = "[etl.apis.snisb_barragens]"
 
@@ -299,7 +299,7 @@ def sync(uf: str, *, permitir_reducao: bool) -> None:
         print(f"{LOG} AVISO: ref_municipios_mg cobre MG (+ grandfather de cidade do "
               f"portal fora de MG) — rodar --uf {uf} tende a resolver poucas ou "
               f"nenhuma barragem. Ver a nota no topo do módulo.")
-    client = get_supabase_client()
+    client = get_db()
     print(f"{LOG} UF={uf}: baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
     linhas, sem_match = coletar_e_resolver_uf(client, uf)
     if sem_match:
@@ -318,7 +318,7 @@ def _gravar(linhas: list[dict], permitir_reducao: bool) -> None:
         # a tabela.
         print(f"{LOG} nada coletado/casado — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()
+    client = get_db()
     por_municipio: dict[str, list[dict]] = {}
     for linha in linhas:
         por_municipio.setdefault(linha["id_municipio"], []).append(linha)

@@ -80,7 +80,7 @@ import unicodedata
 
 import requests
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 LOG = "[etl.apis.copam_reunioes]"
 
@@ -648,7 +648,7 @@ def _gravar(client, reuniao: dict, itens: list[dict]) -> None:
 
 
 def sync(pagina_inicial: int = 1, pagina_final: int | None = None) -> None:
-    client = get_supabase_client()
+    client = get_db()
     catalogo = _carregar_catalogo(client)
     sessao = _sessao()
 

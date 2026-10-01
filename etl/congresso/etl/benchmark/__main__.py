@@ -5,7 +5,7 @@
     python -m etl.benchmark --repetir 3     # checa reprodutibilidade
     python -m etl.benchmark --caso 2638852  # um caso só, verboso
 
-NÃO precisa de Supabase. Só da API da Câmara (pública) e do LLM configurado.
+NÃO precisa de banco. Só da API da Câmara (pública) e do LLM configurado.
 
 Por que este arquivo existe
 ---------------------------

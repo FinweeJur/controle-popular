@@ -114,7 +114,7 @@ from lxml import html as LH
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 from etl.pbh.cliente import _tentar
@@ -607,7 +607,7 @@ def sync(
     # Conexão nova para escrever: a coleta acima leva ~30 min e nesse tempo
     # a sessão da Neon é derrubada por inatividade. Mesmo motivo (e mesmo
     # prejuízo já observado) do custeio em `etl/camaras/bh.py`.
-    client = get_supabase_client()
+    client = get_db()
     gravou = refresh_completo_seguro(
         client,
         "atos_oficiais",

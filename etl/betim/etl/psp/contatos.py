@@ -58,7 +58,7 @@ import sys
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
 )
 
 # Marca de que este pacote é o da Prefeitura de SÃO PAULO, no mesmo molde de
@@ -140,7 +140,7 @@ def sync(id_municipio: str) -> int:
             "instrução (ON CONFLICT não pode tocar a mesma linha duas vezes)."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     LOTE = 1000
     for i in range(0, len(rows), LOTE):
         client.table("contatos_uteis").upsert(

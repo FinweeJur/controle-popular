@@ -35,7 +35,7 @@ import sys
 
 from playwright.sync_api import sync_playwright
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, refresh_completo_seguro
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db, refresh_completo_seguro
 
 BASE_URL = "https://www.camarabetim.mg.gov.br"
 DIARIAS_PATH = "/Transparência/Diárias"
@@ -103,7 +103,7 @@ def _scrape(page) -> list[dict]:
 
 
 def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
-    client = get_supabase_client()
+    client = get_db()
 
     with sync_playwright() as p:
         browser = p.chromium.launch()

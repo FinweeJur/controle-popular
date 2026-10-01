@@ -74,7 +74,7 @@ from pathlib import Path
 import requests
 from lxml import html as lxml_html
 
-from ..common import get_supabase_client, registrar_fonte, upsert_em_lotes
+from ..common import get_db, registrar_fonte, upsert_em_lotes
 
 CASA_ID = "camara"
 URL = "https://www.camara.leg.br/deputados/{id}/presenca-plenario/{ano}"
@@ -224,7 +224,7 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    client = get_supabase_client()
+    client = get_db()
     parlamentares = (
         client.table("parlamentares")
         .select("id, id_externo, nome")

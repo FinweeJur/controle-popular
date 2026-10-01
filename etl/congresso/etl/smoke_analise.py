@@ -1,4 +1,4 @@
-"""Teste de fumaça da rubrica, SEM Supabase.
+"""Teste de fumaça da rubrica, SEM banco.
 
 `python -m etl.smoke_analise [--n 5]`
 

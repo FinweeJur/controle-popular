@@ -40,7 +40,7 @@ from html import unescape
 from playwright.sync_api import sync_playwright
 
 from etl.camaras.betim import BASE_URL, DETAIL_LINK_RE, _scrape_lista, _wait_for_blazor, _slugify
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, refresh_completo_seguro
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db, refresh_completo_seguro
 
 TAG_RE = re.compile(r"<[^>]+>")
 PERIODO_RE = re.compile(
@@ -113,7 +113,7 @@ def _scrape_comissoes_vereador(page, vereador_id: str) -> dict | None:
 
 
 def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
-    client = get_supabase_client()
+    client = get_db()
 
     vereadores_db = (
         client.table("vereadores").select("id, slug").eq("id_municipio", id_municipio).execute()

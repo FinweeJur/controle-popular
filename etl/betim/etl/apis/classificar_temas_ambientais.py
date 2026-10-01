@@ -21,7 +21,7 @@ import argparse
 import sys
 from collections import Counter
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.temas_ambientais import (
     TEMA_LABELS,
     TAG_LABELS,
@@ -45,7 +45,7 @@ def _classificar(linha: dict) -> tuple[list[str], list[str]]:
 
 
 def rodar(*, sondar: bool = False) -> None:
-    client = get_supabase_client()
+    client = get_db()
     resp = client.table("ambiental_legislacao").select(
         "id, fonte, ementa, indexacao"
     ).execute()

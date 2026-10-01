@@ -180,8 +180,8 @@ def garantir_municipios_semeados(cidades: list[tuple[str, str, str]]):
     Insere com `ativo = False` para não afetar o build até a conclusão.
     """
     try:
-        from etl.common import get_supabase_client
-        client = get_supabase_client()
+        from etl.common import get_db
+        client = get_db()
         conn = client.conexao()
         semeados = 0
         for ibge, nome, _ in cidades:

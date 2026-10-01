@@ -67,7 +67,7 @@ from etl.analise_garantista import (
     normalizar_ato,
     normalizar_proposicao,
 )
-from etl.common import carregar_municipio, fetch_all, get_supabase_client
+from etl.common import carregar_municipio, fetch_all, get_db
 
 # ── Normatividade por tipo ──────────────────────────────────────
 # Tier A: muda a lei que vale para o cidadão. Tier B: é norma, mas de
@@ -324,10 +324,10 @@ def tipos_desconhecidos(objetos: list[dict]) -> dict[str, int]:
     return fora
 
 
-def _analisados(sb, id_municipio: str) -> tuple[set[str], set[str]]:
+def _analisados(db, id_municipio: str) -> tuple[set[str], set[str]]:
     """Ids já analisados nesta cidade, separados por tipo de objeto."""
     linhas = fetch_all(
-        lambda: sb.table("analises")
+        lambda: db.table("analises")
         .select("ato_id, proposicao_id")
         .eq("id_municipio", id_municipio)
     )
@@ -350,21 +350,21 @@ def montar_fila(
     padrão bateu, quando bateu) — o exportador usa isso para separar em
     subpastas e o operador, para conferir a régua sem ler este código.
     """
-    sb = get_supabase_client()
+    db = get_db()
     municipio = carregar_municipio(id_municipio)
-    atos_feitos, props_feitas = _analisados(sb, id_municipio)
+    atos_feitos, props_feitas = _analisados(db, id_municipio)
 
     objetos: list[dict] = []
 
     if tipo_objeto in ("ambos", "ato"):
         brutos = fetch_all(
-            lambda: sb.table("atos_oficiais").select(CAMPOS_ATO).eq("id_municipio", id_municipio)
+            lambda: db.table("atos_oficiais").select(CAMPOS_ATO).eq("id_municipio", id_municipio)
         )
         objetos += [normalizar_ato(r, municipio) for r in brutos if r["id"] not in atos_feitos]
 
     if tipo_objeto in ("ambos", "proposicao"):
         brutos = fetch_all(
-            lambda: sb.table("proposicoes").select(CAMPOS_PROPOSICAO).eq("id_municipio", id_municipio)
+            lambda: db.table("proposicoes").select(CAMPOS_PROPOSICAO).eq("id_municipio", id_municipio)
         )
         objetos += [normalizar_proposicao(r, municipio) for r in brutos if r["id"] not in props_feitas]
 

@@ -123,7 +123,7 @@ import requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 
@@ -472,7 +472,7 @@ def _gravar(cidade: dict, linhas: list[dict], diag: dict, permitir_reducao: bool
               f"declarada(s) pela fonte (export-count: {diag.get('total_export_count')}). "
               f"Coleta possivelmente truncada.")
 
-    client = get_supabase_client()
+    client = get_db()
     refresh_completo_seguro(
         client,
         "cap_autos_infracao",

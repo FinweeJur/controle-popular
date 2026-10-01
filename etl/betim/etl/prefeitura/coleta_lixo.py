@@ -112,7 +112,7 @@ import openpyxl
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, refresh_completo_seguro
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db, refresh_completo_seguro
 
 LOG = "[etl.prefeitura.coleta_lixo]"
 
@@ -312,7 +312,7 @@ def sync(id_municipio: str, *, permitir_reducao: bool = False) -> dict[str, int]
 
     por_tipo = _parse_planilha(wb)
 
-    client = get_supabase_client()
+    client = get_db()
     resultado = {}
     for tipo, agregado in por_tipo.items():
         linhas = _linhas_para_gravar(id_municipio, agregado, tipo)

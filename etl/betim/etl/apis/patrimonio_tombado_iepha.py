@@ -33,7 +33,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 LOG = "[etl.apis.patrimonio_tombado_iepha]"
 
@@ -92,7 +92,7 @@ def sondar() -> None:
 
 
 def sync() -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas = coletar()
     print(f"{LOG} {len(linhas)} bem(ns) tombado(s) para gravar.")
     if not linhas:

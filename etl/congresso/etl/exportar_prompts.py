@@ -23,7 +23,7 @@ from pathlib import Path
 
 from etl import rubrica
 from etl.analise import _fila
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 INSTRUCOES = """# Análise de proposições — instruções
 
@@ -53,8 +53,8 @@ nem inventar artigo e ser levado a sério — o mesmo guarda-corpo do ETL.
 
 
 def exportar(limite: int, destino: Path, formato: str, modelo_rotulo: str) -> int:
-    sb = get_supabase_client()
-    fila = _fila(sb, limite)
+    db = get_db()
+    fila = _fila(db, limite)
     if not fila:
         print("[exportar] fila vazia — tudo analisado.")
         return 0

@@ -135,7 +135,7 @@ from decimal import Decimal, InvalidOperation
 import openpyxl
 import requests
 
-from etl.common import get_supabase_client, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
 
 LOG = "[etl.apis.feam_barragens]"
 
@@ -406,7 +406,7 @@ def sondar(nome_municipio: str | None) -> None:
 def sync(*, permitir_reducao: bool) -> None:
     """Sincroniza a planilha INTEIRA (249 barragens, MG inteira) — a fonte é
     um XLSX estadual único, então não há por-cidade para pedir."""
-    client = get_supabase_client()
+    client = get_db()
     print(f"{LOG} baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
     linhas, sem_match = coletar_e_resolver_estado(client)
     if sem_match:
@@ -424,7 +424,7 @@ def _gravar(linhas: list[dict], permitir_reducao: bool) -> None:
         # — refresh total com lista vazia apagaria TODA a tabela.
         print(f"{LOG} nada coletado/casado — NÃO apago o que já existe.")
         return
-    client = get_supabase_client()
+    client = get_db()
     por_municipio: dict[str, list[dict]] = {}
     for linha in linhas:
         por_municipio.setdefault(linha["id_municipio"], []).append(linha)

@@ -44,7 +44,7 @@ from collections import defaultdict
 
 import requests
 
-from ..common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from ..common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 from . import client
 
 CSV_URL = "https://dadosabertos.camara.leg.br/arquivos/proposicoesAutores/csv/proposicoesAutores-{ano}.csv"
@@ -108,46 +108,46 @@ def linhas_do_csv(texto: str):
         }
 
 
-def mapa_proposicoes(sb) -> dict[str, str]:
+def mapa_proposicoes(db) -> dict[str, str]:
     """`id_externo` -> uuid, só das proposições da Câmara já no banco.
 
     Paginado por `fetch_all`: são 5,5 mil hoje e o backfill histórico
     (2023-2025) multiplica isso.
     """
     linhas = fetch_all(
-        lambda: sb.table("proposicoes")
+        lambda: db.table("proposicoes")
         .select("id, id_externo")
         .eq("casa_id", client.CASA_ID)
     )
     return {str(r["id_externo"]): str(r["id"]) for r in linhas}
 
 
-def mapa_parlamentares(sb) -> dict[str, str]:
-    linhas = fetch_all(lambda: sb.table("parlamentares").select("id, id_externo"))
+def mapa_parlamentares(db) -> dict[str, str]:
+    linhas = fetch_all(lambda: db.table("parlamentares").select("id, id_externo"))
     return {str(r["id_externo"]): str(r["id"]) for r in linhas}
 
 
-def anos_no_banco(sb) -> list[int]:
-    linhas = fetch_all(lambda: sb.table("proposicoes").select("ano").eq("casa_id", client.CASA_ID))
+def anos_no_banco(db) -> list[int]:
+    linhas = fetch_all(lambda: db.table("proposicoes").select("ano").eq("casa_id", client.CASA_ID))
     return sorted({int(r["ano"]) for r in linhas if r.get("ano")})
 
 
-def ids_sem_autoria(sb) -> set[str]:
+def ids_sem_autoria(db) -> set[str]:
     """uuids que hoje não têm NENHUMA linha em `proposicao_autoria`."""
-    todas = {str(r["id"]) for r in fetch_all(lambda: sb.table("proposicoes").select("id"))}
+    todas = {str(r["id"]) for r in fetch_all(lambda: db.table("proposicoes").select("id"))}
     com = {
         str(r["proposicao_id"])
-        for r in fetch_all(lambda: sb.table("proposicao_autoria").select("proposicao_id"))
+        for r in fetch_all(lambda: db.table("proposicao_autoria").select("proposicao_id"))
     }
     return todas - com
 
 
 def sincronizar(ano: int, so_faltantes: bool = False) -> tuple[int, int]:
     """Grava a autoria de um ano. Devolve (linhas_autoria, vínculos_parlamentar)."""
-    sb = get_supabase_client()
-    props = mapa_proposicoes(sb)
-    parls = mapa_parlamentares(sb)
-    faltantes = ids_sem_autoria(sb) if so_faltantes else None
+    db = get_db()
+    props = mapa_proposicoes(db)
+    parls = mapa_parlamentares(db)
+    faltantes = ids_sem_autoria(db) if so_faltantes else None
 
     texto = baixar_csv(ano)
 
@@ -196,14 +196,14 @@ def sincronizar(ano: int, so_faltantes: bool = False) -> tuple[int, int]:
             )
 
     n_autoria = upsert_em_lotes(
-        sb, "proposicao_autoria", autoria, on_conflict="proposicao_id,nome"
+        db, "proposicao_autoria", autoria, on_conflict="proposicao_id,nome"
     )
     n_vinculos = upsert_em_lotes(
-        sb, "proposicao_autores", vinculos, on_conflict="proposicao_id,parlamentar_id"
+        db, "proposicao_autores", vinculos, on_conflict="proposicao_id,parlamentar_id"
     )
 
     registrar_fonte(
-        sb,
+        db,
         nome="camara-autoria-csv",
         url=CSV_URL.format(ano=ano),
         tipo_dados="autoria de proposições (arquivo em lote)",
@@ -229,8 +229,8 @@ def main(argv: list[str] | None = None) -> int:
 
     anos = args.ano
     if not anos:
-        sb = get_supabase_client()
-        anos = anos_no_banco(sb)
+        db = get_db()
+        anos = anos_no_banco(db)
         print(f"[autoria] anos no banco: {anos}")
 
     total = 0

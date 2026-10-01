@@ -23,11 +23,11 @@ data perderia o segundo.
 import argparse
 
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 
 
-def _ultima_sequencia_por_proposicao(sb) -> dict[str, int]:
-    linhas = fetch_all(lambda: sb.table("tramitacoes").select("proposicao_id, sequencia"))
+def _ultima_sequencia_por_proposicao(db) -> dict[str, int]:
+    linhas = fetch_all(lambda: db.table("tramitacoes").select("proposicao_id, sequencia"))
     ultima: dict[str, int] = {}
     for linha in linhas:
         pid = linha["proposicao_id"]
@@ -38,11 +38,11 @@ def _ultima_sequencia_por_proposicao(sb) -> dict[str, int]:
 
 
 def sync(limite: int = 300, todas: bool = False) -> int:
-    sb = get_supabase_client()
+    db = get_db()
 
     def query():
         q = (
-            sb.table("proposicoes")
+            db.table("proposicoes")
             .select("id, id_externo, identificacao, data_ultima_tramitacao")
             .eq("casa_id", client.CASA_ID)
         )
@@ -56,7 +56,7 @@ def sync(limite: int = 300, todas: bool = False) -> int:
     alvo = proposicoes[:limite]
     print(f"[camara.tramitacoes] {len(alvo)} de {len(proposicoes)} proposições nesta rodada")
 
-    ultima_seq = _ultima_sequencia_por_proposicao(sb)
+    ultima_seq = _ultima_sequencia_por_proposicao(db)
 
     novas: list[dict] = []
     atualizacoes: list[dict] = []
@@ -109,15 +109,15 @@ def sync(limite: int = 300, todas: bool = False) -> int:
             com_novidade += 1
 
     if novas:
-        upsert_em_lotes(sb, "tramitacoes", novas, on_conflict="proposicao_id,sequencia")
+        upsert_em_lotes(db, "tramitacoes", novas, on_conflict="proposicao_id,sequencia")
     if atualizacoes:
-        upsert_em_lotes(sb, "proposicoes", atualizacoes, on_conflict="casa_id,id_externo")
+        upsert_em_lotes(db, "proposicoes", atualizacoes, on_conflict="casa_id,id_externo")
 
     print(
         f"[camara.tramitacoes] {len(novas)} eventos novos em {com_novidade} proposições · "
         f"{len(atualizacoes)} situações atualizadas"
     )
-    registrar_fonte(sb, "camara_tramitacoes", f"{client.BASE}/proposicoes/{{id}}/tramitacoes", "tramitacoes")
+    registrar_fonte(db, "camara_tramitacoes", f"{client.BASE}/proposicoes/{{id}}/tramitacoes", "tramitacoes")
     return len(novas)
 
 

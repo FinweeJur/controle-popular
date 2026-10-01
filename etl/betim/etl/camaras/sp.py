@@ -177,7 +177,7 @@ from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     PgAPIError,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
     upsert_com_colunas_opcionais,
 )
@@ -1197,7 +1197,7 @@ def sync(
     anos = list(range(inicio, fim + 1))
     print(f"[{TAG}] id_municipio={id_municipio} anos={anos} partes={list(partes)}")
 
-    client = get_supabase_client()
+    client = get_db()
     if "vereadores" in partes:
         sync_vereadores(client, id_municipio)
     if "comissoes" in partes:

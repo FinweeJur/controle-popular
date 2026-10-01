@@ -18,10 +18,10 @@ import json
 from pathlib import Path
 
 from etl import analise_vicio as av
-from etl.common import get_supabase_client
+from etl.common import get_db
 
 
-def _fontes_do_banco(sb, id_municipio: str, objetos: list[dict]) -> dict[str, str]:
+def _fontes_do_banco(db, id_municipio: str, objetos: list[dict]) -> dict[str, str]:
     """Ementas relidas do banco (não usadas para nada além de log de
     conferência aqui, mas mantém o padrão do importador garantista de nunca
     confiar em dado que só existe no arquivo de resposta)."""
@@ -31,7 +31,7 @@ def _fontes_do_banco(sb, id_municipio: str, objetos: list[dict]) -> dict[str, st
         for i in range(0, len(ids), 200):
             lote = ids[i : i + 200]
             for r in (
-                sb.table(tabela).select("id, ementa").eq("id_municipio", id_municipio).in_("id", lote).execute().data
+                db.table(tabela).select("id, ementa").eq("id_municipio", id_municipio).in_("id", lote).execute().data
             ):
                 ementas[r["id"]] = r.get("ementa") or ""
     return ementas
@@ -57,10 +57,10 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
             f"e você passou --id-municipio {id_municipio}. Recusando."
         )
 
-    sb = get_supabase_client()
+    db = get_db()
     modelo = modelo or manifesto.get("modelo_pretendido") or "externo"
     objetos = manifesto["objetos"]
-    ementas = _fontes_do_banco(sb, id_municipio, objetos)
+    ementas = _fontes_do_banco(db, id_municipio, objetos)
 
     vicios: list[dict] = []
     itens_por_objeto: list[tuple[str, str, list[dict]]] = []
@@ -127,11 +127,11 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
     for coluna in ("ato_id", "proposicao_id"):
         grupo = [v for v in vicios if v[coluna]]
         if grupo:
-            sb.table("vicios_legislativos").upsert(grupo, on_conflict=coluna).execute()
+            db.table("vicios_legislativos").upsert(grupo, on_conflict=coluna).execute()
 
     salvas: dict[str, str] = {}
     for linha in (
-        sb.table("vicios_legislativos")
+        db.table("vicios_legislativos")
         .select("id, ato_id, proposicao_id")
         .eq("id_municipio", id_municipio)
         .execute()
@@ -143,7 +143,7 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
     ids_vicio = [salvas[oid] for _, oid, _ in itens_por_objeto if oid in salvas]
     if ids_vicio:
         for i in range(0, len(ids_vicio), 500):
-            sb.table("vicio_itens").delete().in_("vicio_id", ids_vicio[i : i + 500]).execute()
+            db.table("vicio_itens").delete().in_("vicio_id", ids_vicio[i : i + 500]).execute()
 
     linhas_itens = [
         {**item, "vicio_id": salvas[oid], "id_municipio": id_municipio}
@@ -152,7 +152,7 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
         for item in itens
     ]
     if linhas_itens:
-        sb.table("vicio_itens").insert(linhas_itens).execute()
+        db.table("vicio_itens").insert(linhas_itens).execute()
 
     print(f"\n[importar-vicio] {len(vicios)} análises, {len(linhas_itens)} itens. {stats}")
     return stats

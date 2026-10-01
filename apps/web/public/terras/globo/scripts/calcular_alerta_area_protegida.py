@@ -264,7 +264,7 @@ def _chave(row: dict) -> str:
 
 
 def main() -> None:
-    from etl.common import get_supabase_client, fetch_all
+    from etl.common import get_db, fetch_all
     from etl.temas import classificar_texto
 
     # Reusa exatamente a mesma regra de área protegida que corrigiu
@@ -285,7 +285,7 @@ def main() -> None:
         re.IGNORECASE,
     )
 
-    client = get_supabase_client()
+    client = get_db()
     linhas = fetch_all(
         lambda: client.table("atos_oficiais").select(
             "id, id_municipio, tipo, numero, ementa, data_publicacao, link_fonte"

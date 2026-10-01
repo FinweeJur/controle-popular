@@ -122,7 +122,7 @@ import requests as _requests
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 from etl.diario import classificar_ato
@@ -360,7 +360,7 @@ def _gravar_atos(client, linhas: list[dict]) -> None:
 
 
 # ─────────────────────────────── sondagem ─────────────────────────────
-# Sem banco: mede volume real sem `carregar_municipio` nem `get_supabase_client`
+# Sem banco: mede volume real sem `carregar_municipio` nem `get_db`
 # (mesmo espírito do `--sondar` de sigpub.py — prova de mecanismo antes de
 # qualquer gravação). `--base-api` explícito, nunca um default de cidade.
 
@@ -427,7 +427,7 @@ def sync(id_municipio: str, desde: date, ate: date, com_detalhe: bool) -> None:
     cidade = carregar_municipio(id_municipio)
     base_api = _conferir_base_api(cidade)
 
-    client = get_supabase_client()
+    client = get_db()
     session = _requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
 

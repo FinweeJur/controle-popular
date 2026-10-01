@@ -42,7 +42,7 @@ import time
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
 CHUNK_SIZE = 200
@@ -112,7 +112,7 @@ def _resumo_sancao(item: dict) -> dict:
 
 
 def sync(id_municipio: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
 
     resp = client.table("fornecedores").select("cnpj").execute()
     cnpjs = [r["cnpj"] for r in (resp.data or []) if r.get("cnpj")]

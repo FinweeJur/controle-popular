@@ -65,8 +65,8 @@ def _adapt(v):
 
 
 def _row_out(row: dict) -> dict:
-    """Converte os tipos nativos do psycopg para os MESMOS tipos que o
-    supabase-py entregava.
+    """Converte os tipos nativos do psycopg para os MESMOS tipos que a
+    API antiga entregava.
 
     O PostgREST devolvia JSON, então toda leitura chegava como primitivo:
     `date`/`timestamptz` viravam string ISO, `numeric` virava número,
@@ -105,17 +105,17 @@ def _rows_out(rows) -> list[dict]:
 
 class _QueryBuilder:
     """Reimplementação mínima, sobre psycopg puro, do subconjunto da API
-    fluente do supabase-py/postgrest-py que este ETL usa: `table()` com
+    fluente herdada (do supabase-py/postgrest-py) que este ETL mantém:
+    `table()` com
     `.select()` (inclusive `count="exact"`), `.eq()`/`.in_()`, `.order()`,
     `.limit()`/`.range()`, `.upsert()`/`.insert()`/`.update()`/`.delete()`
     e `.execute()` devolvendo `.data`/`.count`.
 
-    Existe porque, desde a Fase 3 da migração Cloudflare/Neon, o app
-    (apps/web) parou de ler o Supabase — mas todo este ETL continuava
-    escrevendo só nele, sincronizando dado para um banco que nada mais lê:
-    falha silenciosa, sem erro nenhum. Trocar a biblioteca (supabase-py →
-    psycopg) mantendo a MESMA forma de chamar evita reescrever os ~30
-    módulos um por um.
+    A forma das chamadas é a do cliente PostgREST antigo (Supabase), de
+    quando o ETL gravava lá; manter o mesmo formato evitou reescrever os
+    ~30 módulos um por um quando trocamos para psycopg. O serviço Supabase
+    foi abandonado no início do projeto — quem lê e escreve hoje é só o
+    Postgres de `DATABASE_URL`.
 
     Não implementa `.or_()`, `.contains()`, `.single()` nem `.ilike()`:
     nenhum módulo deste eixo usa (conferido por varredura), e um stub
@@ -404,10 +404,10 @@ class _QueryBuilder:
 
 
 class PgClient:
-    """Substitui o client do supabase-py: mesma chamada `.table(x)...`, mas
-    fala Postgres direto na Neon em vez de PostgREST no Supabase.
+    """Cliente Postgres com a mesma chamada `.table(x)...` do client antigo.
 
-    Dev da conexão, e por isso o único que pode trocá-la: a Neon encerra
+    Fala Postgres direto (DSN de `DATABASE_URL`), sem HTTP no meio. Dev da
+    conexão, e por isso o único que pode trocá-la: o servidor encerra
     sessão ociosa e várias coletas deste eixo passam muito tempo entre uma
     escrita e a seguinte. Ver `_QueryBuilder.execute`."""
 
@@ -446,19 +446,18 @@ class PgClient:
         return _QueryBuilder(self, self._schema, name)
 
 
-def get_supabase_client() -> PgClient:
-    """Nome mantido por compatibilidade com todo o ETL existente (~30 call
-    sites, `client = get_supabase_client()`) — desde a Fase 3 da migração
-    Cloudflare/Neon o app já lê exclusivamente do Neon; sem esta troca o ETL
-    continuaria gravando num banco (Supabase) que nada mais lê, apesar de
-    "funcionar" sem erro nenhum. `autocommit=True`: cada chamada
-    `.execute()` já é sua própria transação — não precisa de commit/rollback
-    manual, e um erro num lote não invalida os anteriores."""
+def get_db() -> PgClient:
+    """Cliente do banco do app para o ETL: `client = get_db()`.
+
+    Usa o `DATABASE_URL` do .env (mesma variável de `apps/web/.env.local`).
+    `autocommit=True`: cada chamada `.execute()` já é sua própria transação
+    — não precisa de commit/rollback manual, e um erro num lote não
+    invalida os anteriores."""
     if not DATABASE_URL:
         raise RuntimeError(
-            "DATABASE_URL não configurado no .env — aponte para o banco Neon "
-            "(mesma variável usada por apps/web/.env.local) antes de rodar "
-            "qualquer ETL."
+            "DATABASE_URL não configurado no .env — aponte para o banco do "
+            "app (mesma variável usada por apps/web/.env.local) antes de "
+            "rodar qualquer ETL."
         )
 
     return PgClient(DATABASE_URL, SCHEMA)
@@ -483,7 +482,7 @@ def carregar_municipio(id_municipio: str) -> dict:
     impossível de forma silenciosa — ou o id existe e traz tudo consistente,
     ou não existe e o módulo aborta.
     """
-    client = get_supabase_client()
+    client = get_db()
     linhas = (
         client.table("municipios")
         .select("id_municipio, nome, uf, cnpj_prefeitura, lat, lng, branding, fontes")

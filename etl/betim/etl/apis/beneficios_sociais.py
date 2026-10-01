@@ -29,7 +29,7 @@ import time
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
 
@@ -97,7 +97,7 @@ def sync(
     Transparência com o código de Betim e gravava o resultado como sendo de
     São Paulo. Agora ele simplesmente segue o id."""
     codigo_ibge = codigo_ibge or id_municipio 
-    client = get_supabase_client()
+    client = get_db()
     meses = _meses_desde(*desde)
 
     total_rows = 0

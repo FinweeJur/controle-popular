@@ -170,9 +170,9 @@ def carregar_cnpjs_banco(ibges: list[str]) -> dict[str, str]:
     """
     if not ibges:
         return {}
-    from etl.common import get_supabase_client
+    from etl.common import get_db
 
-    client = get_supabase_client()
+    client = get_db()
     # Lote em pedaços: PostgREST aceita `in.(a,b)` longo, mas 500 ids
     # por chamada é folga e cobre as 203 do manifesto.
     out: dict[str, str] = {}

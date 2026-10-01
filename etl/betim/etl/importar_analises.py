@@ -42,10 +42,10 @@ import json
 from pathlib import Path
 
 from etl import analise_garantista as ag
-from etl.common import fetch_all, get_supabase_client
+from etl.common import fetch_all, get_db
 
 
-def _ementas_do_banco(sb, id_municipio: str, objetos: list[dict]) -> dict[str, str]:
+def _ementas_do_banco(db, id_municipio: str, objetos: list[dict]) -> dict[str, str]:
     """Ementas relidas do banco, por id. Ver guarda-corpo (4)."""
     ementas: dict[str, str] = {}
     for tabela, tipo in (("atos_oficiais", "ato"), ("proposicoes", "proposicao")):
@@ -53,7 +53,7 @@ def _ementas_do_banco(sb, id_municipio: str, objetos: list[dict]) -> dict[str, s
         for i in range(0, len(ids), 200):
             lote = ids[i : i + 200]
             linhas = (
-                sb.table(tabela)
+                db.table(tabela)
                 .select("id, ementa")
                 .eq("id_municipio", id_municipio)
                 .in_("id", lote)
@@ -97,10 +97,10 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
             f"e você passou --id-municipio {id_municipio}. Recusando."
         )
 
-    sb = get_supabase_client()
+    db = get_db()
     modelo = modelo or manifesto.get("modelo_pretendido") or "externo"
     objetos = manifesto["objetos"]
-    ementas = _ementas_do_banco(sb, id_municipio, objetos)
+    ementas = _ementas_do_banco(db, id_municipio, objetos)
 
     analises: list[dict] = []
     itens_por_objeto: list[tuple[str, str, list[dict]]] = []  # (tipo_objeto, id, itens)
@@ -183,12 +183,12 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
     for coluna in ("ato_id", "proposicao_id"):
         grupo = [a for a in analises if a[coluna]]
         if grupo:
-            sb.table("analises").upsert(grupo, on_conflict=coluna).execute()
+            db.table("analises").upsert(grupo, on_conflict=coluna).execute()
 
     # Os itens dependem do uuid da análise, que só existe depois do upsert.
     salvas: dict[str, str] = {}
     for linha in fetch_all(
-        lambda: sb.table("analises")
+        lambda: db.table("analises")
         .select("id, ato_id, proposicao_id")
         .eq("id_municipio", id_municipio)
     ):
@@ -199,7 +199,7 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
     ids_analise = [salvas[oid] for _, oid, _ in itens_por_objeto if oid in salvas]
     if ids_analise:
         for i in range(0, len(ids_analise), 500):
-            sb.table("analise_itens").delete().in_("analise_id", ids_analise[i : i + 500]).execute()
+            db.table("analise_itens").delete().in_("analise_id", ids_analise[i : i + 500]).execute()
 
     linhas_itens = [
         {**item, "analise_id": salvas[oid], "id_municipio": id_municipio}
@@ -208,7 +208,7 @@ def importar(diretorio: Path, id_municipio: str, modelo: str, dry_run: bool) -> 
         for item in itens
     ]
     if linhas_itens:
-        sb.table("analise_itens").insert(linhas_itens).execute()
+        db.table("analise_itens").insert(linhas_itens).execute()
 
     print(f"\n[importar] {len(analises)} análises, {len(linhas_itens)} itens. {stats}")
     return stats

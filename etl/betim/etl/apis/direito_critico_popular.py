@@ -51,7 +51,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.temas_direito_critico import temas_da_lei, temas_do_precedente
 
 LOG = "[etl.apis.direito_critico_popular]"
@@ -207,7 +207,7 @@ def sondar() -> None:
 
 
 def sync() -> None:
-    client = get_supabase_client()
+    client = get_db()
     normas, precedentes = coletar()
     print(f"{LOG} {len(normas)} norma(s), {len(precedentes)} precedente(s) para gravar.")
     if normas:

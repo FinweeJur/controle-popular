@@ -22,12 +22,12 @@ banco AGORA e regrava. Não apaga nem cria linha; só escreve esta coluna.
 """
 import argparse
 
-from etl.common import carregar_municipio, fetch_all, get_supabase_client
+from etl.common import carregar_municipio, fetch_all, get_db
 from etl.fila_prioridade import classificar_ruido
 
 
 def backfill(id_municipio: str, dry_run: bool = False) -> dict[str, int]:
-    client = get_supabase_client()
+    client = get_db()
     # Valida a cidade ANTES de escrever: `--id-municipio` errado aqui
     # reclassificaria a cidade errada sem erro nenhum, que é a falha
     # silenciosa que `scripts/conferir_defaults_de_cidade.py` existe para

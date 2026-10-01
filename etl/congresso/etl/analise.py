@@ -27,7 +27,7 @@ import json
 import os
 
 from etl import rubrica
-from etl.common import fetch_all, get_supabase_client
+from etl.common import fetch_all, get_db
 from etl.llm import LLMError, get_provider
 from etl.normas import extrair as extrair_normas
 
@@ -51,22 +51,22 @@ def _hash_cache(prop: dict, provider) -> str:
     return hashlib.sha256(base.encode("utf-8")).hexdigest()
 
 
-def _fila(sb, limite: int) -> list[dict]:
+def _fila(db, limite: int) -> list[dict]:
     """Proposições sem análise, na ordem de prioridade."""
     analisadas = {
-        linha["proposicao_id"] for linha in fetch_all(lambda: sb.table("analises").select("proposicao_id"))
+        linha["proposicao_id"] for linha in fetch_all(lambda: db.table("analises").select("proposicao_id"))
     }
 
     # Direitos e palavras-chave que algum usuário está de fato monitorando.
     monitorados_temas: set[str] = set()
     for m in fetch_all(
-        lambda: sb.table("monitoramentos").select("temas, palavras_chave").eq("ativo", True)
+        lambda: db.table("monitoramentos").select("temas, palavras_chave").eq("ativo", True)
     ):
         monitorados_temas.update(m.get("temas") or [])
         monitorados_temas.update(m.get("palavras_chave") or [])
 
     candidatas = fetch_all(
-        lambda: sb.table("proposicoes")
+        lambda: db.table("proposicoes")
         .select("id, casa_id, identificacao, ementa, ementa_detalhada, keywords, temas_oficiais, texto_integral, ano, tramitando")
         .eq("tramitando", True)
         .order("data_apresentacao", desc=True)
@@ -82,14 +82,14 @@ def _fila(sb, limite: int) -> list[dict]:
     return candidatas[:limite]
 
 
-def analisar_uma(prop: dict, provider, sb=None, dry_run: bool = False) -> dict:
+def analisar_uma(prop: dict, provider, db=None, dry_run: bool = False) -> dict:
     """Analisa uma proposição. Nunca lança por culpa do modelo — devolve
     `status` para o chamador decidir."""
     hash_cache = _hash_cache(prop, provider)
 
     bruto = None
-    if sb is not None and not dry_run:
-        cached = sb.table("cache_ia").select("resposta").eq("hash", hash_cache).execute()
+    if db is not None and not dry_run:
+        cached = db.table("cache_ia").select("resposta").eq("hash", hash_cache).execute()
         if cached.data:
             bruto = cached.data[0]["resposta"]
 
@@ -101,8 +101,8 @@ def analisar_uma(prop: dict, provider, sb=None, dry_run: bool = False) -> dict:
         except LLMError as e:
             print(f"  [falhou] {prop.get('identificacao')}: {e}")
             return {"status": "falhou", "erro": str(e)}
-        if sb is not None and not dry_run:
-            sb.table("cache_ia").upsert(
+        if db is not None and not dry_run:
+            db.table("cache_ia").upsert(
                 {
                     "hash": hash_cache,
                     "tipo": "analise_rubrica",
@@ -156,13 +156,13 @@ def sync(limite: int = LIMITE_PADRAO, dry_run: bool = False) -> int:
               "funcionando: proposições sem análise aparecem como 'análise pendente'.")
         return 0
 
-    sb = get_supabase_client()
-    fila = _fila(sb, limite)
+    db = get_db()
+    fila = _fila(db, limite)
     print(f"[analise] {len(fila)} proposições na fila (teto {limite})")
 
     ok = revisao = falhou = 0
     for prop in fila:
-        r = analisar_uma(prop, provider, sb=sb, dry_run=dry_run)
+        r = analisar_uma(prop, provider, db=db, dry_run=dry_run)
         if r["status"] == "falhou":
             falhou += 1
             continue
@@ -171,11 +171,11 @@ def sync(limite: int = LIMITE_PADRAO, dry_run: bool = False) -> int:
             print(json.dumps(r["analise"], ensure_ascii=False, indent=2))
             print(f"  itens: {len(r['itens'])} | descartes: {r['descartes']}")
         else:
-            resp = sb.table("analises").upsert(r["analise"], on_conflict="proposicao_id").execute()
+            resp = db.table("analises").upsert(r["analise"], on_conflict="proposicao_id").execute()
             analise_id = resp.data[0]["id"]
-            sb.table("analise_itens").delete().eq("analise_id", analise_id).execute()
+            db.table("analise_itens").delete().eq("analise_id", analise_id).execute()
             if r["itens"]:
-                sb.table("analise_itens").insert(
+                db.table("analise_itens").insert(
                     [{**i, "analise_id": analise_id} for i in r["itens"]]
                 ).execute()
 

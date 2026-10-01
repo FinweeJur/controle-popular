@@ -30,7 +30,7 @@ from datetime import date
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import get_db, registrar_fonte, upsert_em_lotes
 
 BASE = "https://legis.senado.leg.br/dadosabertos"
 CASA_ID = "senado"
@@ -111,7 +111,7 @@ def sync(
     com_detalhe: bool = True,
     limite_detalhe: int = 200,
 ) -> int:
-    sb = get_supabase_client()
+    db = get_db()
     ano = ano or date.today().year
     tipos = tipos or TIPOS_PADRAO
 
@@ -140,13 +140,13 @@ def sync(
             except Exception as e:
                 print(f"  [detalhe] {linha['identificacao']}: {e}")
 
-    upsert_em_lotes(sb, "proposicoes", linhas, on_conflict="casa_id,id_externo")
+    upsert_em_lotes(db, "proposicoes", linhas, on_conflict="casa_id,id_externo")
     revisoras = sum(1 for x in linhas if (x["raw"].get("objetivo") or "") == "Revisora")
     print(
         f"[senado.processos] {len(linhas)} processos de {ano} "
         f"({revisoras} como casa revisora — já existem na Câmara)"
     )
-    registrar_fonte(sb, "senado_processos", f"{BASE}/processo", "proposicoes")
+    registrar_fonte(db, "senado_processos", f"{BASE}/processo", "proposicoes")
     return len(linhas)
 
 

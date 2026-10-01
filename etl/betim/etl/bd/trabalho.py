@@ -16,7 +16,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 QUERY_RAIS = """
 SELECT ano, AVG(valor_remuneracao_media) AS salario_medio
@@ -48,7 +48,7 @@ def _indicador(id_municipio: str, nome: str, valor_numerico, ano_referencia, uni
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     rows: list[dict] = []
     for raw in bd_query(QUERY_RAIS.format(id_municipio=id_municipio)):

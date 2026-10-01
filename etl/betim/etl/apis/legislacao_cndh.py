@@ -137,7 +137,7 @@ from curl_cffi import requests as creq
 from lxml import html as LH
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.apis._legislacao_ambiental import UA, redigir_documentos
 
 LOG = "[etl.apis.legislacao_cndh]"
@@ -432,7 +432,7 @@ def exportar_json(caminho: str) -> None:
 
 
 def sync() -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas, diag = coletar(verboso=True)
     print(f"{LOG} {len(linhas)} ato(s) para gravar.")
     if not linhas:

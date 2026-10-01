@@ -39,7 +39,7 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from ..common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from ..common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 from . import client
 
 URL_PUBLICA = "https://www.camara.leg.br/evento-legislativo/{id}"
@@ -150,11 +150,11 @@ def _linhas_pauta(evento_uuid: str, itens: list[dict], mapa_props: dict[str, str
 
 
 def sincronizar(de: date, ate: date, com_pauta: bool = True) -> tuple[int, int]:
-    sb = get_supabase_client()
+    db = get_db()
     mapa_props = {
         str(r["id_externo"]): str(r["id"])
         for r in fetch_all(
-            lambda: sb.table("proposicoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("proposicoes").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
 
@@ -169,13 +169,13 @@ def sincronizar(de: date, ate: date, com_pauta: bool = True) -> tuple[int, int]:
         return 0, 0
 
     linhas = [_linha_evento(ev, tipos) for ev in eventos]
-    n = upsert_em_lotes(sb, "eventos", linhas, on_conflict="casa_id,id_externo")
+    n = upsert_em_lotes(db, "eventos", linhas, on_conflict="casa_id,id_externo")
 
     # Recupera os uuids que o banco atribuiu, para gravar a pauta.
     ids_externos = [l["id_externo"] for l in linhas]
     uuid_por_externo = {
         str(r["id_externo"]): str(r["id"])
-        for r in sb.table("eventos")
+        for r in db.table("eventos")
         .select("id, id_externo")
         .eq("casa_id", client.CASA_ID)
         .in_("id_externo", ids_externos)
@@ -210,13 +210,13 @@ def sincronizar(de: date, ate: date, com_pauta: bool = True) -> tuple[int, int]:
             # que foi gravado fica gravado, e o progresso é visível.
             if len(pauta_linhas) >= 200 or i == len(deliberativos):
                 n_pauta += upsert_em_lotes(
-                    sb, "evento_pauta", pauta_linhas, on_conflict="evento_id,ordem,titulo"
+                    db, "evento_pauta", pauta_linhas, on_conflict="evento_id,ordem,titulo"
                 )
                 pauta_linhas = []
 
     audiencias = sum(1 for e in eventos if _cod(e, tipos) in COD_AUDIENCIA)
     registrar_fonte(
-        sb,
+        db,
         nome="camara-eventos",
         url=f"{client.BASE}/eventos",
         tipo_dados="agenda legislativa (eventos, audiências públicas, pauta)",

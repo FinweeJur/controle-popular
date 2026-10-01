@@ -20,7 +20,7 @@ relatado ANTES, em vez de estourar no meio da transação.
 import argparse
 import sys
 
-from etl.common import carregar_municipio, get_supabase_client
+from etl.common import carregar_municipio, get_db
 from etl.psp.orgaos_canonicos import ORGAOS_TRUNCADOS_SP
 
 TABELAS = ("servidores", "folha_pagamento")
@@ -28,7 +28,7 @@ TABELAS = ("servidores", "folha_pagamento")
 
 def corrigir(id_municipio: str, dry_run: bool = False) -> dict[str, int]:
     cidade = carregar_municipio(id_municipio)
-    con = get_supabase_client().conexao()
+    con = get_db().conexao()
     total: dict[str, int] = {}
 
     print(f"[corrigir_orgaos] {cidade['nome']} ({id_municipio})")

@@ -37,7 +37,7 @@ import datetime as dt
 import sys
 import time
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 from etl.pncp import checkpoint as ck
 from etl.pncp.client import INTER_REQUEST_SLEEP, iter_contratacoes
 
@@ -127,7 +127,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
     Raises:
         RuntimeError: Se houver modalidades que não puderam ser completadas após esgotadas as tentativas.
     """
-    client = get_supabase_client()
+    client = get_db()
     ano_atual = dt.date.today().year
     total = 0
     descartados = 0
@@ -137,7 +137,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
     incompletos: list[tuple[int, int, str]] = []
 
     def _gravar(rows_by_pncp: dict[str, dict]) -> int:
-        """Persiste o lote de licitações no Supabase em blocos de até 1.000 registros."""
+        """Persiste o lote de licitações no Postgres em blocos de até 1.000 registros."""
         rows = list(rows_by_pncp.values())
         for i in range(0, len(rows), 1000):
             client.table("licitacoes").upsert(

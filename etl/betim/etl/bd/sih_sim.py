@@ -41,7 +41,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 QUERY_INTERNACOES = """
 SELECT
@@ -98,7 +98,7 @@ def _map_mortalidade(row: dict, id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str):
-    client = get_supabase_client()
+    client = get_db()
 
     internacoes_raw = bd_query(
         QUERY_INTERNACOES.format(id_municipio_datasus=_datasus_6(id_municipio))

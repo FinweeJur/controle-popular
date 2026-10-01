@@ -38,7 +38,7 @@ from collections import defaultdict
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
 )
 from etl.pbh.cliente import grp
 
@@ -231,7 +231,7 @@ def sync(id_municipio: str, meses: int = 1) -> None:
             "`fontes.prefeitura_grp: true`."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     competencias = _competencias(meses)
     if not competencias:
         raise RuntimeError("nenhuma competência a sincronizar")

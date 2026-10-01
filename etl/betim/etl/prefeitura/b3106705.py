@@ -40,7 +40,7 @@ import time
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 BASE_URL = "http://servicos.betim.mg.gov.br/transparencia/rest"
 REGISTROS_POR_PAGINA = 100
@@ -133,7 +133,7 @@ def sync_servidores(id_municipio: str, ano: int, mes: int) -> int:
     zero-row result here as an error, only `sync()` decides whether to retry
     an earlier month).
     """
-    client = get_supabase_client()
+    client = get_db()
     total = 0
     for tipo, label in SERVIDOR_TIPOS.items():
         rows = []

@@ -31,7 +31,7 @@ from pathlib import Path
 from uuid import UUID
 
 from etl.analise_garantista import CAMPOS_PROPOSICAO, normalizar_proposicao
-from etl.common import carregar_municipio, get_supabase_client
+from etl.common import carregar_municipio, get_db
 from etl.exportar_prompts import exportar_lista
 
 TIPOS_PROJETO = ("projeto_lei", "emenda_lei_organica", "proposta_emenda_lei_organica")
@@ -73,7 +73,7 @@ def _serializavel(v):
 
 def exportar(id_municipio: str, destino: Path, n: int, modelo: str) -> int:
     municipio = carregar_municipio(id_municipio)
-    con = get_supabase_client().conexao()
+    con = get_db().conexao()
 
     with con.cursor() as cur:
         cur.execute(_SQL, (id_municipio, list(TIPOS_PROJETO), n))

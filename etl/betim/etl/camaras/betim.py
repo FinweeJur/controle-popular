@@ -51,8 +51,8 @@ full author list still lands in `autores`, just the FK points at one).
 No unique constraint exists yet on `proposicoes` for a natural key
 (tipo, numero, ano) -- migration `0007_proposicoes_unique.sql` adds one,
 but applying it requires DDL access this ETL environment doesn't have
-(supabase-py only does PostgREST CRUD, no raw SQL/DB connection string
-configured). Until a human runs that migration via the Supabase SQL
+(o client de então — supabase-py — só fazia CRUD PostgREST, sem SQL
+bruto configurado). Until a human runs that migration via the Supabase SQL
 Editor, `_upsert_proposicoes` below emulates upsert with a
 select-then-insert/update per row instead of `on_conflict`.
 
@@ -86,7 +86,7 @@ from playwright.sync_api import sync_playwright
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     PgAPIError,
-    get_supabase_client,
+    get_db,
     upsert_com_colunas_opcionais,
 )
 from etl.temas import classificar_texto
@@ -523,7 +523,7 @@ def _upsert_proposicoes(client, rows: list[dict]) -> int:
 
 
 def sync(id_municipio: str, incluir_proposicoes: bool = True) -> None:
-    client = get_supabase_client()
+    client = get_db()
 
     with sync_playwright() as p:
         browser = p.chromium.launch()

@@ -30,7 +30,7 @@ from typing import Any
 
 import requests
 
-from etl.common import get_supabase_client
+from etl.common import get_db
 from etl.pncp.fila import ler_manifesto
 from etl.pncp.manifesto import CATALOGO, carregar_catalogo, montar_manifesto
 
@@ -185,7 +185,7 @@ def descobrir(
 
 
 def gravar_cnpj(ibge: str, cnpj: str) -> None:
-    client = get_supabase_client()
+    client = get_db()
     linhas = (
         client.table("municipios")
         .select("id_municipio, fontes")

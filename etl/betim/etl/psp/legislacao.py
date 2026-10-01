@@ -149,7 +149,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 from etl.temas import classificar_texto
@@ -542,7 +542,7 @@ def sync(
         print(f"{LOG} {colididos} slug(s) disputados por mais de um ato — link trocado pela "
               "busca do catálogo (armadilha 3).")
 
-    client = get_supabase_client()
+    client = get_db()
     gravou = refresh_completo_seguro(
         client,
         "atos_oficiais",

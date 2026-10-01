@@ -38,7 +38,7 @@ import argparse
 import time
 
 from etl.camara import client
-from etl.common import fetch_all, get_supabase_client, registrar_fonte, upsert_em_lotes
+from etl.common import fetch_all, get_db, registrar_fonte, upsert_em_lotes
 
 # Mesmo valor de etl.camara.bancadas — a mesma API, o mesmo throttle.
 PAUSA_S = 1.0
@@ -64,10 +64,10 @@ def _peso(papel: str | None) -> int:
 
 
 def sync() -> int:
-    sb = get_supabase_client()
+    db = get_db()
 
     comissoes = fetch_all(
-        lambda: sb.table("orgaos").select("id, id_externo, sigla").eq("casa_id", client.CASA_ID)
+        lambda: db.table("orgaos").select("id, id_externo, sigla").eq("casa_id", client.CASA_ID)
     )
     if not comissoes:
         print("[camara.orgaos_membros] nenhuma comissão no banco — rode etl.camara.orgaos antes")
@@ -76,7 +76,7 @@ def sync() -> int:
     parlamentares = {
         r["id_externo"]: r["id"]
         for r in fetch_all(
-            lambda: sb.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
+            lambda: db.table("parlamentares").select("id, id_externo").eq("casa_id", client.CASA_ID)
         )
     }
     if not parlamentares:
@@ -116,12 +116,12 @@ def sync() -> int:
         membros.extend(melhor_por_pid.values())
 
     if membros:
-        upsert_em_lotes(sb, "orgao_membros", membros, on_conflict="orgao_id,parlamentar_id")
+        upsert_em_lotes(db, "orgao_membros", membros, on_conflict="orgao_id,parlamentar_id")
     print(
         f"[camara.orgaos_membros] {len(membros)} vínculos sincronizados"
         + (f" ({falhas} comissão(ões) sem membros)" if falhas else "")
     )
-    registrar_fonte(sb, "camara_orgaos_membros", f"{client.BASE}/orgaos/{{id}}/membros", "comissoes")
+    registrar_fonte(db, "camara_orgaos_membros", f"{client.BASE}/orgaos/{{id}}/membros", "comissoes")
     return len(membros)
 
 

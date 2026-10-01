@@ -97,7 +97,7 @@ import unicodedata
 
 import requests
 
-from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_db
 
 # Instâncias públicas do Overpass, em ordem de preferência. A principal
 # devolve 504 com frequência ("Dispatcher_Client::request_read_and_idx::
@@ -471,7 +471,7 @@ def sync(id_municipio: str, apagar_fora: bool = True) -> int:
             f"{cidade['nome']} — improvável para um município; nada foi gravado."
         )
 
-    client = get_supabase_client()
+    client = get_db()
     preservados = _preservar_telefones(client, id_municipio, rows)
     if preservados:
         print(f"[etl.apis.osm_comercios] telefones preservados do banco: {preservados}")

@@ -24,7 +24,7 @@ import re
 import sys
 import zipfile
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, upsert_com_colunas_opcionais
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db, upsert_com_colunas_opcionais
 
 LOG = "[etl.apis.tce_licitacoes]"
 FONTE = "tce_mg_sicom"
@@ -153,7 +153,7 @@ def sync(id_municipio: str, origem_iter, *, dry_run: bool) -> list[dict]:
     if not linhas:
         print(f"{LOG} nada parseado — não escrevo.")
         return linhas
-    client = get_supabase_client()
+    client = get_db()
     upsert_com_colunas_opcionais(
         client,
         "licitacoes",

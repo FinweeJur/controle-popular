@@ -33,7 +33,7 @@ import argparse
 import sys
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_db
 
 ANO_MINIMO = 2015
 
@@ -77,7 +77,7 @@ def _map_receita(row: dict, id_municipio: str) -> dict:
 
 
 def sync(id_municipio: str, ano_minimo: int = ANO_MINIMO):
-    client = get_supabase_client()
+    client = get_db()
 
     despesas_raw = bd_query(QUERY_DESPESAS.format(id_municipio=id_municipio, ano_minimo=ano_minimo))
     despesas_rows = [_map_despesa(r, id_municipio) for r in despesas_raw]

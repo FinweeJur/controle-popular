@@ -172,7 +172,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from etl.common import (
     ID_MUNICIPIO_DEFAULT,
     carregar_municipio,
-    get_supabase_client,
+    get_db,
     refresh_completo_seguro,
 )
 
@@ -583,7 +583,7 @@ def sync(id_municipio: str, permitir_reducao: bool = False) -> int:
     )
 
     gravou = refresh_completo_seguro(
-        client=get_supabase_client(),
+        client=get_db(),
         table="obras",
         filtros={"id_municipio": id_municipio},
         rows=linhas,

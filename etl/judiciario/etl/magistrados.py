@@ -1,8 +1,8 @@
 """etl.magistrados — curadoria da composição dos tribunais (F3).
 
 Rodar:
-  python -m etl.magistrados --seed-sql stf > supabase/migrations/0004_seed_stf.sql
-  python -m etl.magistrados --upsert stf         # grava direto (exige Supabase)
+  python -m etl.magistrados --seed-sql stf > supabase/judiciario/migrations/0004_seed_stf.sql
+  python -m etl.magistrados --upsert stf         # grava direto (exige DATABASE_URL)
 
 POR QUE CURADORIA, e não scraping: os portais dos tribunais são hostis a
 máquina (STF é soft-404, CNJ 503 — ver docs/F0-discovery.md). O universo
@@ -183,10 +183,10 @@ def gerar_sql_tse() -> str:
 
 
 def upsert(tribunal: str) -> int:
-    """Grava direto no Supabase (alternativa ao SQL). Exige .env."""
-    from etl.common import get_supabase_client, upsert_em_lotes
+    """Grava direto no Postgres (alternativa ao SQL). Exige .env."""
+    from etl.common import get_db, upsert_em_lotes
 
-    sb = get_supabase_client()
+    db = get_db()
     d = carregar(tribunal)
     trib = d["tribunal"]
     mags = [
@@ -199,7 +199,7 @@ def upsert(tribunal: str) -> int:
         }
         for m in d["ministros"]
     ]
-    upsert_em_lotes(sb, "magistrados", mags, on_conflict="slug")
+    upsert_em_lotes(db, "magistrados", mags, on_conflict="slug")
     print(f"[magistrados] {len(mags)} do {trib.upper()} gravados (ocupações/nomeações: use o SQL 0004).")
     return len(mags)
 
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--seed-sql", metavar="TRIBUNAL", help="emite o SQL de seed (ex.: stf)")
     p.add_argument("--seed-sql-tse", action="store_true", help="emite o SQL de seed do TSE (estrutura diferente)")
-    p.add_argument("--upsert", metavar="TRIBUNAL", help="grava magistrados no Supabase")
+    p.add_argument("--upsert", metavar="TRIBUNAL", help="grava magistrados no Postgres")
     args = p.parse_args()
     if args.seed_sql:
         sys.stdout.write(gerar_sql(args.seed_sql))
