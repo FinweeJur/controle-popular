@@ -201,6 +201,39 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   /**
+   * DATA_PUBLICACAO: a data da última publicação, congelada NO BUILD.
+   *
+   * A faixa global "site em desenvolvimento ... Última atualização: <data>"
+   * (`app/components/FaixaDesenvolvimento.tsx`) precisa de uma data que seja
+   * a do DEPLOY, não a do momento em que a página é renderizada. As três
+   * formas erradas de conseguir isso já foram consideradas aqui:
+   *
+   * - `new Date()` dentro do componente: o servidor que atende rota dinâmica
+   *   reinicia sozinho quando o Guara muda uma variável de ambiente, e a
+   *   faixa passaria a anunciar uma atualização que não aconteceu. Pior: as
+   *   páginas SSG guardariam a data do build e as dinâmicas a do restart —
+   *   dois valores diferentes para a mesma afirmação, no mesmo site.
+   * - arquivo gerado no `prebuild`: mudaria a cada build, e um arquivo
+   *   versionado que muda a cada build é ruído de `git status` para toda
+   *   sessão paralela (é exatamente o problema do manifesto de cavas).
+   * - variável de ambiente no painel do Guara: valor digitado à mão, e a
+   *   regra do portal é que número na tela vem de medição, não de digitação.
+   *
+   * A chave `env` do Next resolve as três de uma vez: ela é lida quando o
+   * `next build` carrega esta config e o valor é INLINED no bundle — para o
+   * cliente e para o servidor (`build/define-env.js` mescla `nextConfigEnv`
+   * em `defineEnv` sem separar alvo). Confirmado na fonte, não suposto: não
+   * depende de `fs`, de `ARG` no Dockerfile nem de nada em runtime, então
+   * vale nos dois alvos (Guara standalone e Cloudflare Workers) e em
+   * `output: 'export'`.
+   *
+   * Sobrescrever sem mexer no código: exportar `DATA_PUBLICACAO` antes do
+   * build (caso raro — ex.: reimprimir a mesma publicação).
+   */
+  env: {
+    DATA_PUBLICACAO: process.env.DATA_PUBLICACAO ?? new Date().toISOString(),
+  },
+  /**
    * `pg` é carregado por `createRequire` em `lib/db/client.ts` (motor TCP
    * para host não-Neon). O tracer (`@vercel/nft`) não segue
    * `createRequire` com argumento variável — sem as duas marcas abaixo o

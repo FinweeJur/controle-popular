@@ -11,6 +11,7 @@ import { clashDisplay, generalSans, tabular } from "@/app/fonts";
 import OuvirPagina from "@/app/components/OuvirPagina";
 import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
+import FaixaDesenvolvimento from "@/app/components/FaixaDesenvolvimento";
 import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
@@ -213,6 +214,13 @@ export default function RootLayout({
           <a href="#conteudo-principal" className="cp-skip-link">
             Pular para o conteúdo
           </a>
+          {/* Faixa de aviso global ("site em desenvolvimento ... última
+              atualização"), ACIMA da barra e em toda página: o portal está em
+              construção e anunciar isso no topo é mais honesto do que deixar
+              número provisório ser lido como definitivo. Não é sticky — a
+              navbar logo abaixo é que gruda no topo; ver `FaixaDesenvolvimento.tsx`
+              para as decisões de desenho e para a origem da data. */}
+          <FaixaDesenvolvimento />
           {/* Barra superior global, fixa em TODA página: logo no canto abre
               o menu do portal (hover/foco/clique) e os controles de
               tema/tamanho/contraste moram aqui, em UMA cópia. Fica antes de
