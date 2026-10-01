@@ -67,6 +67,34 @@ Itinga. Regra dura: casar por **código IBGE de 7 dígitos**, nunca por nome
 | **Inferência local** | Ollama (`localhost:11434`) | Embeddings (`nomic-embed-text`, 768 dims), RAG do chatbot, síntese do Colibri (`hermes3:8b`, `qwen2.5-coder:7b`, `qwen2.5-coder:1.5b`, `llama3.2:3b`) | Classificação residual dos atos, extração de entidades, resumo de textos longos e dedupe de registros coletados — sem dado sair da máquina |
 | **Fallback remoto** | DeepSeek (`deepseek-chat`, `https://api.deepseek.com`) | Provedor de IA do assistente (degrau 3) junto com a Maritaca, com cascata já implementada | Mesmo contrato de prompt do Ollama; acionado só quando o Ollama estiver fora do ar, lento ou com qualidade baixa; texto sempre sanitizado antes do envio |
 
+### Estado medido do Ollama local (01/10/2026, Ollama 0.34.2)
+
+`ollama list` nesta máquina devolve **6 modelos** — e **não** os citados na
+tabela acima (`hermes3:8b`, `qwen2.5-coder:*`, `llama3.2:3b` **não estão
+instalados**). Estado real:
+
+| Modelo | Tamanho | Situação |
+|---|---|---|
+| `gemma2:2b` | 1,6 GB | ✅ responde |
+| `qwen2.5:3b-instruct` | 1,9 GB | ✅ responde |
+| `nomic-embed-text:latest` | 274 MB | ✅ embeddings (não gera texto) |
+| `qwen3-vl:2b-instruct` | 1,9 GB | ✅ instalado (2 dias) |
+| `qwen3-vl:4b-instruct` | 3,3 GB | ✅ instalado (2 dias) |
+| `qwen2.5:7b-instruct-q4_K_M` | 4,7 GB | ⛔ **órfão** — ver abaixo |
+
+⚠️ **Armadilha medida: `ollama list` mente sobre modelo órfão.** O
+`qwen2.5:7b-instruct-q4_K_M` aparece na lista com 4,7 GB, mas o **blob dos
+pesos sumiu do disco**. Sintomas:
+
+- `ollama run`: `model "..." not found, try pulling it first`;
+- `ollama show`: `read GGUF metadata ...\blobs\sha256-2bada8a7...: O sistema
+  não pode encontrar o arquivo especificado`.
+
+Conserto: `ollama rm qwen2.5:7b-instruct-q4_K_M` e depois
+`ollama pull qwen2.5:7b-instruct-q4_K_M` (~4,7 GB). **Pendente por decisão do
+dev em 01/10.** Antes de contar com um modelo local, **teste-o** (`ollama
+show` ou uma geração curta), nunca confie só no `list`.
+
 ## Fontes por cidade e cadência
 
 Reusando o ranqueamento do plano de expansão (Tier 0/1/2/3), a cadência
