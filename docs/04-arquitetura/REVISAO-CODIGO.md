@@ -32,6 +32,7 @@
 - [Parte 18 — dados de fonte (fontes, coleta, texto)](#parte-18--dados-de-fonte-fontes-coleta-texto)
 - [Parte 19 — segurança, server-only e utilitários](#parte-19--segurança-server-only-e-utilitários)
 - [Parte 20 — junções editoriais (cruzamentos e teia)](#parte-20--junções-editoriais-cruzamentos-e-teia)
+- [Parte 21 — busca estática (lib/busca)](#parte-21--busca-estática-libbusca)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -821,6 +822,73 @@ e o renderizador
     duplicando `lib/fontes/registry.ts` — catálogo que ninguém consome
     (achado 6 da Parte 18). Duas listas de fonte para o mesmo dado.
 
+## Parte 21 — busca estática (lib/busca)
+
+Décima quinta passada, na qualidade nº 2 da regra das seis — *buscável e
+filtrável* —, e no maior módulo ainda intocado: **91 KB em 6 arquivos**, com
+6 testes (paridade 1:1). A busca do portal tem dois lados que precisam dar a
+mesma resposta: o Postgres (`to_tsvector('portuguese',
+unaccent_immutable(texto))`) e o navegador (índice fatiado). Esta parte
+revisa o lado do navegador — [`normalizar.ts`](../../apps/web/lib/busca/normalizar.ts),
+[`indice.ts`](../../apps/web/lib/busca/indice.ts) e
+[`carregarIndice.ts`](../../apps/web/lib/busca/carregarIndice.ts). Os dois
+arquivos de dado (`paginas-portal.ts`, 914 linhas; `resposta-curada.ts`,
+546 linhas) vão para a Parte 22.
+
+### Achados da Parte 21
+
+1. ⚠️ **Frase exata com número de lei não acha nada — medido em execução.**
+   `interpretarConsulta` normaliza a frase com `separarPalavras`
+   (`"Lei 1.234/2020"` → `lei 1234 2020`), mas a conferência da linha 372
+   compara com `semAcento(doc.t + " " + doc.e)`, que devolve
+   `lei 1.234/2020`. **Nunca casa.** Medido com índice real: o mesmo texto
+   digitado **sem aspas devolve 1 resultado; entre aspas, 0**. E a tela não
+   deixa passar — `BuscaClient.tsx:300` manda o leitor usar
+   *"aspas" para frase exata*, e o placeholder sugere
+   `PL 3611 — "frase exata" entre aspas`. Funciona com espaço simples
+   (`"PL 3611"`), quebra com ponto, barra, vírgula e hífen — justamente o
+   formato oficial como a norma é citada em documento, que o comentário de
+   `separarPalavras` promete resolver.
+
+2. ⚠️ **Exclusão casa por subcadeia; inclusão casa por radical.** Os
+   termos positivos passam por `candidatos()` (radical, prefixo e tolerância
+   de digitação); os negativos (linha 380) e o bônus de título (linha 385)
+   fazem `textoNormalizado.includes(palavra)` sobre o texto acento-sem, sem
+   radicalizar e sem separar palavras. Resultado: `-lei` também remove o
+   documento que fala em *leitura* ou *leilão*, e `-brasilia` remove
+   *brasiliense*. Incluir é fino, excluir é grosso — e o leitor não vê o que
+   sumiu.
+
+3. ⚠️ **O índice carrega com `fetch` nu, e a rede resiliente não é
+   importada por ninguém.** `carregarIndice.ts:30` faz `await fetch(url)`
+   sem timeout, sem retentativa e sem passar por
+   [`lib/robusto/rede.ts`](../../apps/web/lib/robusto/rede.ts)
+   (`comRetry`, `erroRetentavel`) — que **só existe no repo para o próprio
+   teste**: a varredura no repositório inteiro achou apenas `rede.ts` e
+   `rede.test.ts`. Mesmo destino do catálogo de fontes (achado 6 da Parte
+   18). Um fragmento de rede que falha derruba a busca inteira, e o portal
+   já tem o módulo pronto que resolvia.
+
+4. 📌 **`1,5` indexa como `15`.** `separarPalavras` usa
+   `(\d)[.,](?=\d)` para capturar o milhar (`1.234` → `1234`), mas a mesma
+   regra come a vírgula decimal: `1,5 leitos` vira `15 leitos`. Como
+   consulta e documento passam pela mesma regra, os dois números casam
+   entre si — para a busca, *1,5* e *15* deixam de ser valores distintos.
+
+5. 📌 **`hoje` pode ser recalculado por documento.** `docPassaPeriodo`
+   aceita `hoje` opcional; `buscar()` só repassa se `OpcoesBusca.hoje` veio
+   preenchido. Sem isso, `dataDeHoje()` roda uma vez **por documento** —
+   milhares de `new Date()` por tecla — e um laço que cruza a meia-noite
+   filtra com dias diferentes no mesmo resultado.
+
+6. ✅ **O que está certo e não deve ser "melhorado".** O cabeçalho de
+   `normalizar.ts` mede o radicalizador do Postgres (18.4, 2026-08-09) e
+   explica por que a ordem importa; o bloqueio de número puro no vizinho
+   morfológico veio de medição real (`4793` × `47`, 20 resultados
+   errados); a tolerância de digitação cresce com o tamanho da palavra e
+   não a curta; `carregarGrupoFatiado` trata `fatias === 0`; e a teia de
+   erros de digitação só roda depois de esgotado exato e prefixo.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -876,8 +944,8 @@ Próximas micro-partes, por risco e retorno:
 
 **Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
 ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
-camada. A fina já cobre as Partes 17 a 20 — acervos estaduais, catálogo de
-fontes, utilitários transversais e junções editoriais.
+camada. A fina já cobre as Partes 17 a 21 — acervos estaduais, catálogo de
+fontes, utilitários transversais, junções editoriais e a busca estática.
 
 ## Decisões registradas
 
