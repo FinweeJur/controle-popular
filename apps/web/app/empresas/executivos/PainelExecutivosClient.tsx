@@ -23,6 +23,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import Link from "next/link";
 import {
   Search,
   Download,
@@ -721,6 +722,63 @@ export default function PainelExecutivosClient({ executivos }: Props) {
           <em> &quot;Quais conselheiros da Samarco são indicados pela Vale e pela BHP?&quot;</em> ou 
           <em> &quot;Qual o mandato dos diretores da Petrobras perante a CVM?&quot;</em>.
         </p>
+      </section>
+
+      {/* ─── PÁGINAS RELACIONADAS DE INVESTIGAÇÃO ECONÔMICA E CÍVICA ─── */}
+      <section
+        aria-label="Páginas Relacionadas"
+        className="rounded-2xl border border-border bg-surface p-6 shadow-sm space-y-4"
+      >
+        <div className="border-b border-border/40 pb-3">
+          <h2 className="text-base font-bold text-foreground">
+            🔗 Investigações Relacionadas no Controle Popular
+          </h2>
+          <p className="text-xs text-muted mt-1">
+            Cruze a remuneração e governança de executivos com grandes fortunas e monopólios globais.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Link
+            href="/empresas/fortunas"
+            className="group rounded-xl border border-border bg-surface-2 p-4 hover:border-primary/50 transition flex flex-col justify-between space-y-3"
+          >
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
+                  💰 1.000 Maiores Fortunas Mundiais
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed">
+                As famílias controladoras e grandes acionistas, rendimentos mensais e equivalência em extrema pobreza.
+              </p>
+            </div>
+            <span className="text-xs font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition">
+              Ver Grandes Fortunas &rarr;
+            </span>
+          </Link>
+
+          <Link
+            href="/empresas/conglomerados"
+            className="group rounded-xl border border-border bg-surface-2 p-4 hover:border-primary/50 transition flex flex-col justify-between space-y-3"
+          >
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
+                  🌐 Monopólios, Holdings e Trustes
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Grafo 60fps</span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed">
+                Visualização em Canvas 60fps das redes de controle cruzado dos Big Three e cartéis de commodities.
+              </p>
+            </div>
+            <span className="text-xs font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition">
+              Auditar Monopólios &rarr;
+            </span>
+          </Link>
+        </div>
       </section>
     </div>
   );

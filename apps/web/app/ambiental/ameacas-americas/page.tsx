@@ -7,6 +7,7 @@ import {
 import PainelAmeacasClient from "./PainelAmeacasClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 
 /**
  * @file apps/web/app/ambiental/ameacas-americas/page.tsx
@@ -175,9 +176,60 @@ export default function PaginaAmeacasAmericas() {
       </main>
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* NAVEGAÇÃO RELACIONADA DO OBSERVATÓRIO SOCIOAMBIENTAL               */}
+      {/* PÁGINAS E INVESTIGAÇÕES RELACIONADAS                                */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <MeioAmbienteRelacionado />
+      <div className="mt-12 space-y-8">
+        <SecaoPaginasRelacionadas
+          titulo="Conexões Ecológicas e Territoriais"
+          subtitulo="Cruze espécies e bacias ameaçadas com conflitos socioambientais, barragens e o Globo 3D."
+          paginas={[
+            {
+              href: "/ambiental/conflitos-globais",
+              titulo: "Conflitos Socioambientais Mundiais",
+              descricao: "Atlas Global de Justiça Ambiental (EJAtlas): violência contra defensores e comunidades.",
+              badge: "EJAtlas",
+              icone: "justica",
+            },
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Barragens de rejeitos e megahidrelétricas com impacto direto em bacias e territórios.",
+              badge: "Mundial",
+              icone: "barragem",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Demarcação espacial de terras indígenas, quilombolas e cavas de mineração.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+            {
+              href: "/ambiental/nossos-rios",
+              titulo: "Nossos Rios & Bacias Hidrográficas",
+              descricao: "Monitoramento das 7 bacias estaduais, qualidade da água e outorgas de captação.",
+              badge: "Bacias",
+              icone: "floresta",
+            },
+            {
+              href: "/ambiental/crise-climatica",
+              titulo: "Observatório da Crise Climática",
+              descricao: "Emissões de gases de efeito estufa e anomalias de temperatura nas Américas.",
+              badge: "Clima",
+              icone: "clima",
+            },
+            {
+              href: "/empresas/fortunas",
+              titulo: "1.000 Maiores Fortunas Mundiais",
+              descricao: "Dinastias corporativas que financiam o agronegócio e a mineração no continente.",
+              badge: "Corporativo",
+              icone: "dinheiro",
+            },
+          ]}
+        />
+
+        <MeioAmbienteRelacionado />
+      </div>
     </div>
   );
 }

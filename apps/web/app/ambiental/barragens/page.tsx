@@ -84,6 +84,43 @@ export default async function BarragensIndex() {
           </div>
         </div>
 
+        {/* BANNER DE NAVEGAÇÃO CRUZADA: BARRAGENS MUNDIAIS E GLOBO 3D */}
+        <div className="grid gap-3 sm:grid-cols-2 pt-2">
+          <Link
+            href="/ambiental/barragens-globais"
+            className="flex items-center justify-between rounded-xl border border-primary/40 bg-primary/5 p-4 text-xs hover:border-primary hover:bg-primary/10 transition group"
+          >
+            <div>
+              <span className="font-bold text-foreground group-hover:text-primary flex items-center gap-1.5 text-sm">
+                🌍 Grandes Barragens Mundiais
+              </span>
+              <p className="text-muted mt-1 text-xs leading-relaxed">
+                62 estruturas globais de rejeitos, hidrelétricas e água (ICOLD, NID e Global Tailings).
+              </p>
+            </div>
+            <span className="text-primary font-bold text-lg group-hover:translate-x-1 transition shrink-0 ml-3">
+              &rarr;
+            </span>
+          </Link>
+
+          <Link
+            href="/funcaosocialterra/mapa"
+            className="flex items-center justify-between rounded-xl border border-emerald-500/40 bg-emerald-500/5 p-4 text-xs hover:border-emerald-500 hover:bg-emerald-500/10 transition group"
+          >
+            <div>
+              <span className="font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 flex items-center gap-1.5 text-sm">
+                🌐 Visualizar no Globo 3D
+              </span>
+              <p className="text-muted mt-1 text-xs leading-relaxed">
+                Sobreposição espacial de barragens com terras indígenas, quilombolas e cavas em satélite.
+              </p>
+            </div>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold text-lg group-hover:translate-x-1 transition shrink-0 ml-3">
+              &rarr;
+            </span>
+          </Link>
+        </div>
+
         <p className="max-w-2xl rounded-lg border border-dashed border-[var(--cp-border)] px-4 py-3 text-[.9em] opacity-80">
           <strong>As três fontes não se substituem.</strong> A FEAM só cobre mineração e
           indústria — abastecimento de água, irrigação e hidrelétrica ficam fora dela, mesmo

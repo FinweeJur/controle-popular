@@ -8,6 +8,7 @@ import {
   type LinhaSerie,
 } from "@/lib/cavas/serie";
 import TabelaCavas from "./TabelaCavas";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 
 /**
  * `/mineracao/cavas` — Fase 5 do plano de cavas: a série anual da mineração
@@ -410,6 +411,58 @@ export default function PaginaCavas() {
           está filtrado na tela, com separador <code>;</code> e BOM UTF-8 para abrir no Excel brasileiro.
         </p>
       </section>
+
+      {/* Páginas Relacionadas e Cruzamentos Cívicos */}
+      <div className="mt-12">
+        <SecaoPaginasRelacionadas
+          titulo="Investigações & Territórios Minerários"
+          subtitulo="Cruze a expansão das cavas com barragens globais, concessões na ANM e o Globo 3D."
+          paginas={[
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Cadastro global de barragens de rejeitos associadas aos maiores complexos minerários.",
+              badge: "Barragens",
+              icone: "barragem",
+            },
+            {
+              href: "/ambiental/barragens",
+              titulo: "Barragens em Minas Gerais (SIGBM)",
+              descricao: "Monitoramento das barragens de rejeitos da ANM/FEAM a montante e jusante das cavas.",
+              badge: "Minas Gerais",
+              icone: "barragem",
+            },
+            {
+              href: "/canada/mineracao",
+              titulo: "Mineradoras Canadenses no Brasil",
+              descricao: "Empresas listadas na TSX que exploram ouro e lítio em Minas Gerais e no Pará.",
+              badge: "Transnacional",
+              icone: "mineracao",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Visualização geoespacial das cavas de mineração sobrepostas a terras indígenas e CAR.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+            {
+              href: "/empresas/conglomerados",
+              titulo: "Monopólios e Redes de Mineração",
+              descricao: "Grafo dos conglomerados Big Mining (Vale, BHP, Rio Tinto) e fundos controladores.",
+              badge: "Holdings",
+              icone: "rede",
+            },
+            {
+              href: "/ambiental/ameacas-americas",
+              titulo: "Ameaças Ambientais nas Américas",
+              descricao: "Serras e bacias hidrográficas sob pressão do avanço das cavas de mineração.",
+              badge: "Américas",
+              icone: "floresta",
+            },
+          ]}
+        />
+      </div>
     </main>
   );
 }

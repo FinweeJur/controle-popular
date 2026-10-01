@@ -1370,6 +1370,63 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
           ))}
         </div>
       </section>
+
+      {/* ─── PÁGINAS RELACIONADAS DE INVESTIGAÇÃO ECONÔMICA E CÍVICA ─── */}
+      <section
+        aria-label="Páginas Relacionadas"
+        className="rounded-2xl border border-border bg-surface p-6 shadow-sm space-y-4"
+      >
+        <div className="border-b border-border/40 pb-3">
+          <h2 className="text-base font-bold text-foreground">
+            🔗 Investigações Relacionadas no Controle Popular
+          </h2>
+          <p className="text-xs text-muted mt-1">
+            Aprofunde a auditoria cívica cruzando holdings com as maiores fortunas e executivos.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Link
+            href="/empresas/fortunas"
+            className="group rounded-xl border border-border bg-surface-2 p-4 hover:border-primary/50 transition flex flex-col justify-between space-y-3"
+          >
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
+                  💰 1.000 Maiores Fortunas Mundiais
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed">
+                Catálogo dos bilionários e dinastias que controlam as holdings, com rendimento mensal e equivalência com extrema pobreza.
+              </p>
+            </div>
+            <span className="text-xs font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition">
+              Explorar Fortunas e Desigualdade &rarr;
+            </span>
+          </Link>
+
+          <Link
+            href="/empresas/executivos"
+            className="group rounded-xl border border-border bg-surface-2 p-4 hover:border-primary/50 transition flex flex-col justify-between space-y-3"
+          >
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
+                  👔 Diretores, CEOs e Conselhos
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Governança</span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed">
+                Composição estatutária das 36 maiores corporações no Brasil e mapeamento de conselhos entrelaçados (interlocking).
+              </p>
+            </div>
+            <span className="text-xs font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition">
+              Auditar Conselhos &rarr;
+            </span>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

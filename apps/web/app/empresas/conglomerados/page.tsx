@@ -33,6 +33,7 @@ import {
 } from "@/lib/empresas/dados-conglomerados";
 import PainelConglomeradosClient from "./PainelConglomeradosClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = {
@@ -187,6 +188,58 @@ export default function PaginaConglomerados() {
       <main>
         <PainelConglomeradosClient nos={nos} arestas={arestas} setores={setores} />
       </main>
+
+      {/* ─── PÁGINAS RELACIONADAS E CONEXÕES CÍVICAS ─── */}
+      <div className="mt-12">
+        <SecaoPaginasRelacionadas
+          titulo="Investigações & Redes de Poder Relacionadas"
+          subtitulo="Cruze as teias societárias com as maiores fortunas mundiais, conselhos corporativos e territórios."
+          paginas={[
+            {
+              href: "/empresas/fortunas",
+              titulo: "1.000 Maiores Fortunas Mundiais",
+              descricao: "Dinastias familiares e bilionários que controlam as holdings, tradings e fundos globais.",
+              badge: "Fortunas",
+              icone: "dinheiro",
+            },
+            {
+              href: "/empresas/executivos",
+              titulo: "CEOs e Conselhos Corporativos",
+              descricao: "Diretoria estatutária e interlocking directorates nas maiores corporações monitoradas.",
+              badge: "Governança",
+              icone: "empresa",
+            },
+            {
+              href: "/empresas",
+              titulo: "Observatório de Grandes Empresas",
+              descricao: "As 130 maiores companhias em atividade no Brasil: cotações, contratos públicos e multas.",
+              badge: "Empresas",
+              icone: "empresa",
+            },
+            {
+              href: "/canada/mineracao",
+              titulo: "Mineradoras Canadenses no Brasil",
+              descricao: "Rede da Bolsa de Toronto (TSX), Vale Base Metals e concessões de lítio e ouro na ANM.",
+              badge: "Mineração",
+              icone: "mineracao",
+            },
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Estruturas de rejeitos e hidrelétricas mantidas por multinacionais de commodities.",
+              badge: "Barragens",
+              icone: "barragem",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Visualização geoespacial das pressões de grandes holdings sobre terras indígenas e CAR.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+          ]}
+        />
+      </div>
 
       {/* ─── RODAPÉ METODOLÓGICO E FONTES OFICIAIS ─── */}
       <footer className="border-t border-border pt-6 text-xs text-muted space-y-2 print:border-t-0">

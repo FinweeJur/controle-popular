@@ -22,9 +22,39 @@ const LINKS: { href: string; label: string; icon: React.ElementType; color: stri
   },
   {
     href: "/ambiental/barragens",
-    label: "Barragens em MG — cadastro, impasses e descaracterização",
+    label: "Barragens em MG — cadastro SIGBM, níveis de emergência e descaracterização",
     icon: AlertOctagon,
     color: "var(--color-danger)",
+  },
+  {
+    href: "/ambiental/barragens-globais",
+    label: "Grandes Barragens Mundiais — 62 estruturas de rejeitos, hidrelétricas e água no mundo",
+    icon: AlertOctagon,
+    color: "var(--color-danger)",
+  },
+  {
+    href: "/ambiental/ameacas-americas",
+    label: "Ameaças nas Américas — espécies, rios, serras e comunidades tradicionais sob pressão",
+    icon: Sprout,
+    color: "var(--color-primary)",
+  },
+  {
+    href: "/ambiental/conflitos-globais",
+    label: "Conflitos Socioambientais Globais — 55 litígios mundiais documentados no EJAtlas",
+    icon: Gavel,
+    color: "var(--color-warning)",
+  },
+  {
+    href: "/ambiental/crise-climatica",
+    label: "Crise Climática Global — inventário de emissões do G20 e os 20 maiores poluidores industriais",
+    icon: Wind,
+    color: "var(--color-info)",
+  },
+  {
+    href: "/funcaosocialterra/mapa",
+    label: "Globo 3D de Terras — sobreposição de terras indígenas, quilombos, cavas e barragens",
+    icon: Globe,
+    color: "var(--color-primary)",
   },
   {
     href: "/ambiental/legislacao",

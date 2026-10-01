@@ -579,6 +579,20 @@ export const FRENTES: SeuNonoFrente[] = [
               "A Compensação Financeira pela Exploração de Recursos Minerais (royalties da mineração) é mapeada nos municípios mineradores.",
             link: { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties de Mineração" },
           },
+          {
+            id: "fortunas-mundiais-concentracao",
+            pergunta: "Quem são as 1.000 maiores fortunas e quanto ganham por mês?",
+            resposta:
+              "Mapeamento reúne US$ 13 trilhões em patrimônio. Rendimento mensal sustenta 778 milhões na extrema pobreza.",
+            link: { href: "/empresas/fortunas", texto: "1.000 Maiores Fortunas Mundiais" },
+          },
+          {
+            id: "equivalencia-social-fortunas",
+            pergunta: "Como é calculada a equivalência social de renda dos bilionários?",
+            resposta:
+              "Estimamos retorno anual de 4,5% sobre patrimônio. Comparamos com a linha de pobreza do Banco Mundial.",
+            link: { href: "/empresas/fortunas", texto: "Ver Calculadora de Equivalência" },
+          },
         ],
       },
       {
@@ -1655,6 +1669,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/internacional/operacoes-militares", texto: "Acervo de Operações Militares" },
       { href: "/internacional/operacoes-militares/mapa", texto: "Mapa Mundial de Defesa" },
       { href: "/terras/globo", texto: "Globo 3D Terras (Camada Militar)" },
+    ],
+  },
+  {
+    id: "fortunas-mundiais",
+    titulo: "1.000 Maiores Fortunas Mundiais",
+    resumo: "Catálogo auditável das 1.000 maiores fortunas e dinastias mundiais, com ganho mensal estimado e equivalência social.",
+    dados: [
+      "1.000 fortunas acumulando US$ 13,39 trilhões de patrimônio líquido",
+      "Rendimento mensal somado estimado em US$ 50,21 bilhões a cada 30 dias",
+      "Equivalência social: sustento de 778,5 milhões de pessoas na extrema pobreza",
+      "Filtros por pessoa física, dinastia familiar, país e setor econômico",
+      "Fontes oficiais: WID.world, SEC EDGAR, CVM e Banco Mundial",
+    ],
+    links: [
+      { href: "/empresas/fortunas", texto: "1.000 Maiores Fortunas Mundiais" },
+      { href: "/empresas/conglomerados", texto: "Monopólios e Holdings" },
+      { href: "/empresas/executivos", texto: "CEOs e Conselhos" },
     ],
   },
 ];

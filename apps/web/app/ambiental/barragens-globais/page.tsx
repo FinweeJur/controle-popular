@@ -32,6 +32,8 @@ import {
 import PainelBarragensGlobaisClient from "./PainelBarragensGlobaisClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import {
   ShieldAlert,
   Zap,
@@ -184,6 +186,60 @@ export default function PaginaBarragensGlobais() {
           <PainelBarragensGlobaisClient barragens={barragens} />
         </Suspense>
       </main>
+
+      {/* PÁGINAS RELACIONADAS E OBSERVATÓRIO MEIO AMBIENTE */}
+      <div className="mt-12 space-y-8">
+        <SecaoPaginasRelacionadas
+          titulo="Investigações & Territórios Relacionados"
+          subtitulo="Cruze o monitoramento de barragens com o cadastro nacional, concessões minerárias e o Globo 3D."
+          paginas={[
+            {
+              href: "/ambiental/barragens",
+              titulo: "Barragens em Minas Gerais (SIGBM/FEAM)",
+              descricao: "Cadastro oficial da ANM e FEAM com níveis de emergência 1, 2 e 3 e descaracterização.",
+              badge: "Nacional",
+              icone: "barragem",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Camada WGS84 de barragens mundiais sobreposta a terras indígenas e quilombos.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+            {
+              href: "/canada/mineracao",
+              titulo: "Mineradoras Canadenses no Brasil",
+              descricao: "Bolsa de Toronto (TSX), barragens de rejeitos e estudo de caso de Mount Polley.",
+              badge: "Transnacional",
+              icone: "mineracao",
+            },
+            {
+              href: "/ambiental/conflitos-globais",
+              titulo: "Conflitos Socioambientais Mundiais",
+              descricao: "Atlas Global de Justiça Ambiental (EJAtlas): Fundão, Brumadinho, Ok Tedi e mais.",
+              badge: "EJAtlas",
+              icone: "justica",
+            },
+            {
+              href: "/mineracao/cavas",
+              titulo: "Cavas de Mineração em Satélite",
+              descricao: "Série histórica do MapBiomas e cruzamento com polígonos minerários da ANM.",
+              badge: "Satélite",
+              icone: "floresta",
+            },
+            {
+              href: "/empresas/conglomerados",
+              titulo: "Monopólios e Holdings de Mineração",
+              descricao: "Rede societária e controle acionário da Vale, BHP, Rio Tinto e Glencore.",
+              badge: "Corporativo",
+              icone: "rede",
+            },
+          ]}
+        />
+
+        <MeioAmbienteRelacionado />
+      </div>
 
       {/* RODAPÉ GLOBAL */}
       <div className="mt-16 print:hidden">

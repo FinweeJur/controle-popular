@@ -25,6 +25,7 @@ import {
 } from "@/lib/internacional/dados-canada";
 import PainelMineracaoCanada from "./PainelMineracaoCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = {
@@ -95,6 +96,58 @@ export default function PaginaMineracaoCanada() {
           cobertura={COBERTURA_CANADA}
         />
       </main>
+
+      {/* INVESTIGAÇÕES E CONEXÕES TRANSNACIONAIS */}
+      <div className="mt-12">
+        <SecaoPaginasRelacionadas
+          titulo="Investigações & Conexões Transnacionais"
+          subtitulo="Cruze a atuação minerária canadense com barragens mundiais, conflitos do EJAtlas e o Globo 3D."
+          paginas={[
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Rompimento de Mount Polley (BC), rejeitos de mineração e barragens de lítio e ouro.",
+              badge: "Barragens",
+              icone: "barragem",
+            },
+            {
+              href: "/ambiental/conflitos-globais",
+              titulo: "Conflitos Socioambientais Globais",
+              descricao: "Atlas Global de Justiça Ambiental: litígios contra mineradoras canadenses no exterior.",
+              badge: "EJAtlas",
+              icone: "justica",
+            },
+            {
+              href: "/ambiental/ameacas-americas",
+              titulo: "Ameaças Ambientais nas Américas",
+              descricao: "Pressões ecológicas no Vale do Jequitinhonha, Xingu e bacias transfronteiriças.",
+              badge: "Américas",
+              icone: "floresta",
+            },
+            {
+              href: "/empresas/conglomerados",
+              titulo: "Monopólios e Redes de Mineração",
+              descricao: "Grafo dos fundos institucionais BlackRock, Vanguard e consórcios minerários globais.",
+              badge: "Holdings",
+              icone: "rede",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Visualização tridimensional de cavas minerárias e reservas das Primeiras Nações.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+            {
+              href: "/empresas/fortunas",
+              titulo: "1.000 Maiores Fortunas Mundiais",
+              descricao: "Bilionários do setor extrativista e fundos de private equity controladores de minas.",
+              badge: "Fortunas",
+              icone: "dinheiro",
+            },
+          ]}
+        />
+      </div>
 
       <FooterGlobal />
     </div>

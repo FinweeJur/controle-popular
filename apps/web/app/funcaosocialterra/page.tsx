@@ -4,6 +4,7 @@ import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { ZONAS } from "@/lib/zonas";
@@ -325,6 +326,58 @@ export default async function FuncaoSocialTerraPage() {
             `layout.tsx` de zona: ver `Cabecalho.tsx` para o porquê (as três
             rotas incluem `/mapa`, o globo 3D em tela cheia, e um layout de
             zona colaria nele também). */}
+        {/* Páginas e Investigações Relacionadas */}
+        <div className="mt-12">
+          <SecaoPaginasRelacionadas
+            titulo="Investigações & Territórios Relacionados"
+            subtitulo="Cruze a função social da terra com barragens globais, conflitos territoriais e mineradoras."
+            paginas={[
+              {
+                href: "/ambiental/barragens-globais",
+                titulo: "Grandes Barragens Mundiais",
+                descricao: "Mapeamento global de barragens de rejeitos e hidrelétricas com impacto em bacias.",
+                badge: "Barragens",
+                icone: "barragem",
+              },
+              {
+                href: "/ambiental/ameacas-americas",
+                titulo: "Ameaças Ambientais nas Américas",
+                descricao: "Pressões ecológicas sobre povos originários, comunidades quilombolas, rios e serras.",
+                badge: "Américas",
+                icone: "floresta",
+              },
+              {
+                href: "/ambiental/conflitos-globais",
+                titulo: "Conflitos Socioambientais Globais",
+                descricao: "Atlas Global de Justiça Ambiental: litígios e mobilizações por terra e direitos humanos.",
+                badge: "EJAtlas",
+                icone: "justica",
+              },
+              {
+                href: "/canada/mineracao",
+                titulo: "Mineradoras Canadenses no Brasil",
+                descricao: "Bolsa de Toronto (TSX), barragens e direitos minerários sobrepostos a territórios.",
+                badge: "Mineração",
+                icone: "mineracao",
+              },
+              {
+                href: "/empresas/conglomerados",
+                titulo: "Monopólios e Redes de Mineração",
+                descricao: "Grafo dos fundos institucionais e holdings que controlam concessões no agronegócio e minas.",
+                badge: "Holdings",
+                icone: "rede",
+              },
+              {
+                href: "/empresas/fortunas",
+                titulo: "1.000 Maiores Fortunas Mundiais",
+                descricao: "Dinastias familiares e bilionários proprietários de latifúndios e conglomerados de terras.",
+                badge: "Fortunas",
+                icone: "dinheiro",
+              },
+            ]}
+          />
+        </div>
+
         {/* Passarela de Legislação e Projetos de Lei */}
         <PassarelaLegislativa tema="terras" />
 

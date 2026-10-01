@@ -34,6 +34,7 @@ import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { Globe2, ShieldAlert, Award, Compass } from "lucide-react";
 
 export const metadata = {
@@ -191,6 +192,58 @@ export default function PaginaConflitosGlobais() {
           Roterdã) e fortalece redes mundiais de solidariedade aos defensores da vida e da água.
         </p>
       </section>
+
+      {/* Páginas Relacionadas e Conexões Cívicas */}
+      <div className="mb-12">
+        <SecaoPaginasRelacionadas
+          titulo="Investigações e Conexões Transnacionais"
+          subtitulo="Cruze os conflitos socioambientais com as holdings poluidoras, grandes barragens e as 1.000 fortunas."
+          paginas={[
+            {
+              href: "/ambiental/ameacas-americas",
+              titulo: "Ameaças Socioambientais nas Américas",
+              descricao: "90 pontos críticos de pressão ecológica: espécies, rios, serras e povos originários.",
+              badge: "Américas",
+              icone: "floresta",
+            },
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Histórico de rompimentos (Fundão, Feijão, Mount Polley) e barragens em descaracterização.",
+              badge: "Barragens",
+              icone: "barragem",
+            },
+            {
+              href: "/empresas/conglomerados",
+              titulo: "Monopólios e Holdings Corporativas",
+              descricao: "Grafo 60fps das redes de controle dos Big Three, Big Oil e mineradoras rés.",
+              badge: "Holdings",
+              icone: "rede",
+            },
+            {
+              href: "/empresas/executivos",
+              titulo: "CEOs e Conselhos Corporativos",
+              descricao: "Diretores das corporações envolvidas e conselhos entrelaçados (interlocking directorates).",
+              badge: "Governança",
+              icone: "empresa",
+            },
+            {
+              href: "/empresas/fortunas",
+              titulo: "1.000 Maiores Fortunas Mundiais",
+              descricao: "As famílias e bilionários que lucram com o extrativismo predatório global.",
+              badge: "Fortunas",
+              icone: "dinheiro",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Visualização tridimensional das terras tradicionais ameaçadas por mineração.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+          ]}
+        />
+      </div>
 
       {/* Links Relacionados do Meio Ambiente */}
       <MeioAmbienteRelacionado />

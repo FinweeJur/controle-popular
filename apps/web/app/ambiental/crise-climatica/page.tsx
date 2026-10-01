@@ -5,6 +5,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelCriseClimaticaClient from "./PainelCriseClimaticaClient";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
@@ -188,8 +189,57 @@ export default function PaginaCriseClimatica() {
         <PainelCriseClimaticaClient />
       </section>
 
-      {/* SEÇÃO RELACIONADA */}
-      <div className="mt-12 border-t border-border pt-8 print:hidden">
+      {/* SEÇÃO DE PÁGINAS RELACIONADAS E CRUZAMENTOS CÍVICOS */}
+      <div className="mt-12 space-y-8 print:hidden">
+        <SecaoPaginasRelacionadas
+          titulo="Conexões da Crise Climática & Justiça Socioambiental"
+          subtitulo="Cruze as emissões globais com grandes fortunas, holdings de energia e impactos em territórios."
+          paginas={[
+            {
+              href: "/empresas/fortunas",
+              titulo: "1.000 Maiores Fortunas Mundiais",
+              descricao: "A concentração de capital e a pegada de carbono dos bilionários e dinastias globais.",
+              badge: "Fortunas",
+              icone: "dinheiro",
+            },
+            {
+              href: "/empresas/conglomerados",
+              titulo: "Monopólios e Holdings de Energia & Petróleo",
+              descricao: "Rede das petrolíferas (Petrobras, Shell, Total) e fundos Big Three com índice HHI.",
+              badge: "Holdings",
+              icone: "rede",
+            },
+            {
+              href: "/ambiental/conflitos-globais",
+              titulo: "Conflitos Socioambientais Mundiais",
+              descricao: "Litígios do EJAtlas: contaminações por combustíveis fósseis e defesa da terra.",
+              badge: "EJAtlas",
+              icone: "justica",
+            },
+            {
+              href: "/ambiental/barragens-globais",
+              titulo: "Grandes Barragens Mundiais",
+              descricao: "Megahidrelétricas e barragens de rejeitos sob risco de secas e eventos extremos.",
+              badge: "Barragens",
+              icone: "barragem",
+            },
+            {
+              href: "/ambiental/ameacas-americas",
+              titulo: "Ameaças Ambientais nas Américas",
+              descricao: "Espécies e bacias hidrográficas sob estresse severo de secas e calor extremo.",
+              badge: "Américas",
+              icone: "floresta",
+            },
+            {
+              href: "/funcaosocialterra/mapa",
+              titulo: "Globo 3D de Sobreposições Territoriais",
+              descricao: "Visualização tridimensional das florestas públicas, terras indígenas e mineração.",
+              badge: "Globo 3D",
+              icone: "globo",
+            },
+          ]}
+        />
+
         <MeioAmbienteRelacionado />
       </div>
 
