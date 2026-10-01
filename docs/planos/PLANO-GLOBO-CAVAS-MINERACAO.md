@@ -483,6 +483,41 @@ treino 3.126 (1.608 pos / 1.518 neg, 206 cenas); holdout **794 (392 pos /
 - Pendências: revisão humana dos 100 exemplos (dev, atalho na Área de
   Trabalho; ganhou visualizador de ampliação em `c98f1120`).
 
+#### Revisão humana recuperada e lida — 01/10/2026
+
+A folha `amostra-100.html` grava as marcas em **localStorage** (chave
+`amostra100-estados`), não em arquivo. Recuperação medida:
+
+- O navegador usado foi o **Brave**; o dado vive em
+  `...\Brave-Browser\User Data\Default\Local Storage\leveldb` (blocos
+  **Snappy**). Leitor próprio em `Temp\opencode\le-leveldb.py` (usa
+  `cramjam`); a chave do SSTable traz 8 bytes de sequência e o valor um
+  byte de tipo antes do JSON (que está em **latin-1**).
+- Cópia preservada em `scripts/.cache/cavas-calibracao/revisao-humana-dev.json`.
+- **Medido: 29 itens decididos** — 7 `descartado`, 14 `publicável`,
+  8 `revisado` (= dúvida, pelo texto das legendas).
+
+**Erros de rótulo que a sua revisão revelou (o que o treino precisa ouvir):**
+
+- **1 falso positivo** (rótulo `positivo`, você descartou):
+  `325daca75d39c05065437289.jpg`.
+- **4 falsos negativos** (rótulo `negativo`, você marcou `publicável`):
+  `080c3686307c…`, `9d9f7a45a572…`, `c02e9e6808f0…`, `1de7c0e1dbb0…`.
+  Ou seja: há **cava dentro do conjunto de negativos** — isso envenena o
+  treino e explica recall.
+- **8 casos de dúvida** (não são veredito; o texto diz "fiquei na dúvida se
+  é mineração", "parece mais área de plantio") — é a faixa onde o modelo
+  deve decidir, não o humano no escuro.
+
+⚠️ **Armadilha nova: a fila anda sob o revisor.** A folha foi **regenerada**
+em 30/09 22:02 (split novo) e das 29 marcas só **17** caem na lista atual —
+as outras 12 apontam para recortes que saíram da amostra. Preservar o JSON
+antes de regerar a folha, senão a revisão se perde.
+
+⚠️ **`revisado` não é veredito binário** — hoje significa "olhei e fiquei na
+dúvida". Antes de usar como rótulo, o significado precisa ser fechado com o
+dev.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
