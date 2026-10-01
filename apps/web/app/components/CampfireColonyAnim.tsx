@@ -1,118 +1,79 @@
-"use client";
+﻿"use client";
 
 /**
  * CampfireColonyAnim — animação decorativa da Mística do Dia.
  *
- * O que é: reprodução da cena "Campfire Colony" — a ilustração de Dave
+ * O que é: reprodução FIEL da cena "Campfire Colony" — a ilustração de Dave
  * Chenell (dribbble.com/shots/2012985) recriada em CodePen por jackiezen
- * (codepen.io/jackiezen/pen/gOOgvOO). A composição da origem:
+ * (codepen.io/jackiezen/pen/gOOgvOO). O dono pediu similaridade de ~90% com
+ * o original, então a GEOMETRIA abaixo é a tradução direta das coordenadas
+ * do CSS do CodePen para este SVG (mesmas posições, mesmos tamanhos):
  *
- *   - céu em degradê quente (pêssego → salmão), sem nuvens;
- *   - um grupo de pinheiros FINOS e altos à esquerda, cada um com a
- *     sombra comprida deitada no chão, sempre para o MESMO canto
- *     (baixo-esquerda), o que dá a profundidade da cena;
- *   - um domo de pedra escuro à direita, com pinheiros pequenos atrás
- *     espiando por cima dele e a própria sombra no chão;
- *   - pedrinhas em cascata ao pé da pedra;
- *   - uma fogueira pequena e AFASTADA da pedra (entre os pinheiros e o
- *     domo), com a fumaça subindo como uma linha fina e quase reta.
+ *   - PINHEIROS: 10 árvores de base 12px (6+6) e altura 32/56px, nas
+ *     posições exatas do original. As bases NÃO ficam numa linha só: sobem
+ *     de y=332 (esquerda) até y=270 (direita) — é essa encosta que dá a
+ *     profundidade da cena;
+ *   - SOMBRAS: cada árvore tem a sombra do `:before` do original (triângulo
+ *     de 12px de base e 13/23px, inclinado com skewX(-70deg)), que vira uma
+ *     lasca comprida varrendo para baixo-esquerda (~64px nas altas);
+ *   - PEDRA: domo de 74×38 no mesmo lugar (x 360-434, base y=288), com o
+ *     reflexo claro na base direita (luz de baixo-direita) e a sombra em
+ *     faixa inclinada para a esquerda (rock-light do original);
+ *     4 pedrinhas em cascata descendo à esquerda, cada uma com sua sombra;
+ *   - FOGUEIRA: 42×42 em (300,272), com as TRÊS chamas em losango do
+ *     original (20×50, 8×20 e 2×8, aninhadas, opacidades .4/.8/.9) e o
+ *     halo de 30px — separada da pedra por ~40px, como na referência;
+ *   - FUMAÇA: o MESMO caminho do original (`M 150 0 Q 200 100 100 250
+ *     C 0 450 120 400 50 600`, deslocado para as coordenadas da cena),
+ *     com o tracejado correndo (dasharray 500/100) e o degradê que some
+ *     no topo (o mask-image do original);
+ *   - GRÃO: o ruído do `:before` do original vira um feTurbulence sutil.
  *
- * FIDELIDADE À ORIGEM (dono, 30/09/2026): as versões anteriores eram
- * esboços sem perspectiva (fogueira colada na pedra, sem sombra). Esta
- * segue a referência: luz vinda da direita, sombras compridas para a
- * esquerda, pinheiro com duas faces (relevo) e a fogueira separada.
+ * ÚNICA DIFERENÇA DE COR em relação ao original (pedido do dono,
+ * 30/09/2026): brilho, chamas e FUMAÇA usam `--cp-primary`, a cor da marca
+ * do tema ativo (laranja no pequi, verde em Mata Atlântica, azul no
+ * Pantanal…), no lugar do amarelo/laranja fixos. O resto usa tokens de
+ * tema com as cores do original como reserva.
  *
- * COR (dono, 30/09/2026): o brilho, as chamas e a FUMAÇA usam
- * `--cp-primary` — a cor da marca do tema ativo (laranja no pequi, verde
- * em Mata Atlântica, azul no Pantanal, terracota no Cerrado…). O miolo da
- * chama é a mesma cor clareada com `color-mix`.
- *
- * Cores do resto: cada parte usa um token de tema (`--cp-*`) com uma cor
- * de reserva da origem, então a peça acompanha o tema. Cor nunca é o
- * único canal e a animação é decorativa (`aria-hidden`); desligar o
- * movimento não perde informação.
- *
- * Acessibilidade: respeita `prefers-reduced-motion` (sem animação para
- * quem pediu menos movimento no sistema). O porte técnico traduz os
- * triângulos de borda e o SVG de fumaça do CodePen para um SVG único,
- * escalável, na proporção da cena (500×400).
+ * Acessibilidade: decorativa (`aria-hidden`), `pointer-events: none`,
+ * respeita `prefers-reduced-motion`.
  */
 
 import React from "react";
 
-/** Linha do chão: pinheiros e pedras assentam aqui. */
-const PISO = 322;
-
-/** Sombra deitada no chão, sempre para o mesmo canto (baixo-esquerda). */
-function sombraChao(x: number, largura: number, comprimento: number) {
-  const meia = largura / 2;
-  return `M ${x - meia} ${PISO} L ${x + meia} ${PISO} L ${x - meia - comprimento} ${
-    PISO + comprimento * 0.12
-  } Z`;
-}
-
 /**
- * Pinheiro fino com a sombra deitada no chão para a esquerda.
- *
- * O triângulo tem base estreita (a origem usa ~12px de base para 32-56px
- * de altura) e duas faces: a metade esquerda mais escura dá o relevo
- * (a luz vem da direita). A sombra é longa, no mesmo canto da cena.
+ * As 10 árvores do original: [x do ápice, y do ápice, y da base].
+ * A base é a LARGURA/2 do triângulo (6px de cada lado).
+ * Tradução do CSS: x = left + 6 (front) ou 390 + left + 6 (back);
+ * y do ápice = 400 - bottom - altura; y da base = 400 - bottom.
  */
-function Pinheiro({
-  x,
-  altura,
-  base = 11,
-}: {
-  x: number;
-  altura: number;
-  base?: number;
-}) {
-  const meia = base / 2;
-  return (
-    <g>
-      <path
-        d={sombraChao(x, base, altura * 0.95)}
-        fill="var(--cp-text-soft, #7a4a44)"
-        opacity="0.16"
-      />
-      <polygon
-        points={`${x},${PISO - altura} ${x - meia},${PISO} ${x + meia},${PISO}`}
-        fill="var(--cp-accent, #365e57)"
-      />
-      <polygon
-        points={`${x},${PISO - altura} ${x - meia},${PISO} ${x},${PISO}`}
-        fill="var(--cp-accent, #365e57)"
-        opacity="0.42"
-      />
-    </g>
-  );
+const ARVORES: [number, number, number][] = [
+  [86, 300, 332], // tree-1
+  [166, 300, 332], // tree-2
+  [178, 272, 328], // tree-3
+  [244, 280, 336], // tree-4
+  [340, 268, 324], // tree-5
+  [368, 244, 300], // tree-6
+  [374, 234, 290], // tree-7
+  [402, 224, 280], // tree-8 (container de trás)
+  [408, 229, 285], // tree-9 (container de trás)
+  [430, 238, 270], // tree-10 (container de trás)
+];
+
+/** Comprimento da sombra no chão (do skewX(-70deg) do original). */
+function sombraArvore(x: number, base: number, altura: number) {
+  const pontaX = x - altura * 1.14;
+  const pontaY = base + altura * 0.41;
+  return `${x - 6},${base} ${x + 6},${base} ${pontaX.toFixed(1)},${pontaY.toFixed(1)}`;
 }
 
-/** Chama em losango (triângulo para cima + espelho para baixo). */
-function Chama({
-  x,
-  y,
-  largura,
-  altura,
-  espelho,
-  cor,
-  opacidade,
-}: {
-  x: number;
-  y: number;
-  largura: number;
-  altura: number;
-  espelho: number;
-  cor: string;
-  opacidade: number;
-}) {
-  return (
-    <g fill={cor} opacity={opacidade}>
-      <polygon points={`${x},${y - altura} ${x - largura},${y} ${x + largura},${y}`} />
-      <polygon points={`${x - largura},${y} ${x + largura},${y} ${x},${y + espelho}`} />
-    </g>
-  );
-}
+/** As 4 pedrinhas em cascata do original: [x, y da base]. */
+const PEDRINHAS: [number, number][] = [
+  [350, 290],
+  [328, 298],
+  [310, 306],
+  [304, 318],
+];
 
 export function CampfireColonyAnim() {
   return (
@@ -131,27 +92,27 @@ export function CampfireColonyAnim() {
     >
       <style>{`
         .cp-campfire svg { width: 100%; height: 100%; display: block; overflow: hidden; }
-        .cp-campfire .cp-chamas {
-          animation: cp-flicker 3s ease-in-out infinite alternate;
-          transform-origin: 238px 306px;
+        .cp-campfire .cp-fogo {
+          animation: cp-flicker 3s ease alternate infinite;
+          transform-origin: 321px 288px;
         }
         .cp-campfire .cp-fumaca path {
-          animation: cp-dash 3.2s linear infinite;
+          animation: cp-dash 3s linear infinite;
         }
         @keyframes cp-flicker {
-          0%   { transform: rotate(-1deg); }
-          20%  { transform: rotate(1deg); }
-          40%  { transform: rotate(-1deg); }
-          60%  { transform: rotate(1deg) scale(1.1); }
-          80%  { transform: rotate(-2deg) scale(1); }
-          100% { transform: rotate(1deg); }
+          0%   { transform: rotate(-6deg); }
+          20%  { transform: rotate(-4deg); }
+          40%  { transform: rotate(-6deg); }
+          60%  { transform: rotate(-4deg) scale(1.1); }
+          80%  { transform: rotate(-7deg) scale(1); }
+          100% { transform: rotate(-4deg); }
         }
         @keyframes cp-dash {
           from { stroke-dashoffset: 0; }
-          to   { stroke-dashoffset: -440; }
+          to   { stroke-dashoffset: 600; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .cp-campfire .cp-chamas,
+          .cp-campfire .cp-fogo,
           .cp-campfire .cp-fumaca path { animation: none; }
         }
       `}</style>
@@ -161,68 +122,97 @@ export function CampfireColonyAnim() {
             <stop offset="0%" stopColor="var(--cp-surface-2, #ffd2bc)" />
             <stop offset="100%" stopColor="var(--cp-surface, #f8b9ae)" />
           </linearGradient>
-          <radialGradient id="cp-domo" cx="70%" cy="26%" r="100%">
-            <stop offset="0%" stopColor="var(--cp-text-soft, #4f5f5e)" />
-            <stop offset="60%" stopColor="var(--cp-muted, #35474a)" />
-            <stop offset="100%" stopColor="var(--cp-muted, #263538)" />
+          {/* Luz da pedra vinda de baixo-direita (o radial-gradient do original). */}
+          <radialGradient id="cp-pedra" cx="88%" cy="88%" r="120%">
+            <stop offset="0%" stopColor="var(--cp-text-soft, #917472)" />
+            <stop offset="45%" stopColor="var(--cp-muted, #43565a)" />
+            <stop offset="100%" stopColor="var(--cp-muted, #2f484f)" />
           </radialGradient>
+          {/* A fumaça some no topo (o mask-image linear-gradient do original:
+              opaco nos 30% de baixo, transparente lá em cima). */}
+          <linearGradient id="cp-fumaca-degrade" gradientUnits="userSpaceOnUse" x1="0" y1="-316" x2="0" y2="130">
+            <stop offset="0%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0" />
+            <stop offset="55%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0.42" />
+          </linearGradient>
+          {/* O halo do fogo (o box-shadow 30px do original), em degradê. */}
+          <radialGradient id="cp-halo">
+            <stop offset="0%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0.34" />
+            <stop offset="55%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="var(--cp-primary, #f2701d)" stopOpacity="0" />
+          </radialGradient>
+          {/* O grão do `:before` do original (ruído sobre o céu). */}
+          <filter id="cp-grao" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
         </defs>
+
         <rect x="0" y="0" width="500" height="400" fill="url(#cp-ceu)" />
+        <rect x="0" y="0" width="500" height="400" filter="url(#cp-grao)" opacity="0.07" />
 
-        {/* Pinheiros pequenos atrás do domo (espiando por cima da pedra). */}
-        <Pinheiro x={368} altura={48} base={10} />
-        <Pinheiro x={388} altura={40} base={10} />
-        <Pinheiro x={408} altura={32} base={9} />
+        {/* ── Sombras no chão (antes das árvores, para ficarem por trás) ── */}
+        <g fill="var(--cp-accent, #365e57)" opacity="0.34">
+          {ARVORES.map(([x, top, base], i) => (
+            <polygon key={`s${i}`} points={sombraArvore(x, base, base - top)} />
+          ))}
+        </g>
 
-        {/* Sombra comprida da pedra, no mesmo canto das árvores. */}
-        <path
-          d={`M 320 ${PISO} L 412 ${PISO} L 286 ${PISO + 12} Z`}
-          fill="var(--cp-text-soft, #7a4a44)"
-          opacity="0.16"
-        />
-
-        {/* Domo de pedra à direita. */}
-        <path d="M 300 322 A 51 50 0 0 1 402 322 Z" fill="url(#cp-domo)" />
-        {/* Reflexo claro na base direita (luz vinda da direita). */}
-        <path
-          d="M 360 322 A 51 50 0 0 1 402 322 L 360 322 Z"
+        {/* ── Sombra da pedra: faixa inclinada para a esquerda (rock-light) ── */}
+        <polygon
+          points="359.7,288 433.7,288 384.3,306 310.3,306"
           fill="var(--cp-text-soft, #917472)"
-          opacity="0.35"
+          opacity="0.5"
         />
 
-        {/* Pedrinhas em cascata ao pé da pedra. */}
-        <ellipse cx={318} cy={326} rx={8} ry={4.6} fill="var(--cp-text-soft, #5b6a68)" opacity="0.9" />
-        <ellipse cx={303} cy={332} rx={6} ry={3.6} fill="var(--cp-text-soft, #5b6a68)" opacity="0.82" />
-        <ellipse cx={289} cy={338} rx={4.8} ry={3} fill="var(--cp-text-soft, #5b6a68)" opacity="0.74" />
+        {/* ── As 10 árvores (cor chapada, como no original) ── */}
+        <g fill="var(--cp-accent, #365e57)">
+          {ARVORES.map(([x, top, base], i) => (
+            <polygon key={`a${i}`} points={`${x},${top} ${x - 6},${base} ${x + 6},${base}`} />
+          ))}
+        </g>
 
-        {/* Pinheiros finos à esquerda, com sombra no chão. */}
-        <Pinheiro x={58} altura={42} />
-        <Pinheiro x={80} altura={62} />
-        <Pinheiro x={102} altura={86} />
-        <Pinheiro x={126} altura={64} />
-        <Pinheiro x={150} altura={76} />
-        <Pinheiro x={176} altura={52} />
+        {/* ── Domo de pedra (a luz de baixo-direita já vem do degradê) ── */}
+        <path d="M 360 288 A 37 38 0 0 1 434 288 Z" fill="url(#cp-pedra)" />
 
-        {/* Fumaça: o traço mais alto da cena, na cor da marca do tema. */}
+        {/* ── Pedrinhas em cascata, cada uma com sua sombra ── */}
+        {PEDRINHAS.map(([x, y], i) => (
+          <g key={`p${i}`}>
+            <ellipse cx={x - 7} cy={y + 1.5} rx={7} ry={1.6} fill="var(--cp-text-soft, #917472)" opacity="0.5" />
+            <path d={`M ${x - 6} ${y} A 6 3.4 0 0 1 ${x + 6} ${y} Z`} fill="var(--cp-muted, #2f484f)" />
+          </g>
+        ))}
+
+        {/* ── Fumaça: o caminho exato do original, some no topo ── */}
         <g className="cp-fumaca">
           <path
-            d="M 238 300 C 233 240 253 214 245 150 C 239 104 252 64 247 16"
+            d="M 420 -316 Q 470 -216 370 -66 C 270 134 390 84 320 284"
             fill="none"
-            stroke="var(--cp-primary, #f2701d)"
-            strokeWidth="4"
+            stroke="url(#cp-fumaca-degrade)"
+            strokeWidth="5"
             strokeLinecap="round"
-            strokeDasharray="360 80"
-            opacity="0.45"
+            strokeDasharray="560 60"
           />
         </g>
 
-        {/* Fogueira AFASTADA da pedra (entre os pinheiros e o domo). O
-            brilho, as chamas e a fumaça usam `--cp-primary` (cor do tema);
-            o miolo é a mesma cor clareada. */}
-        <g className="cp-chamas">
-          <circle cx={238} cy={302} r={22} fill="var(--cp-primary, #f2701d)" opacity="0.3" />
-          <Chama x={238} y={306} largura={16} altura={30} espelho={13} cor="var(--cp-primary, #f2701d)" opacidade={0.9} />
-          <Chama x={238} y={308} largura={8} altura={16} espelho={8} cor="color-mix(in srgb, var(--cp-primary, #f2701d) 40%, #ffffff)" opacidade={1} />
+        {/* ── Fogueira: halo + as três chamas em losango do original ── */}
+        <circle cx={321} cy={280} r={36} fill="url(#cp-halo)" />
+        <g className="cp-fogo">
+          {/* flame-1: a maior, mais translúcida (0.4 no original) */}
+          <g fill="var(--cp-primary, #f2701d)" opacity="0.22">
+            <polygon points="310,242 300,276 320,276" />
+            <polygon points="300,276 320,276 310,292" />
+          </g>
+          {/* flame-2: média */}
+          <g fill="var(--cp-primary, #f2701d)" opacity="0.45">
+            <polygon points="316,278 312,290 320,290" />
+            <polygon points="312,290 320,290 316,298" />
+          </g>
+          {/* flame-3: o núcleo claro */}
+          <g fill="color-mix(in srgb, var(--cp-primary, #f2701d) 30%, #ffffff)" opacity="0.95">
+            <polygon points="319,292 318,296 320,296" />
+            <polygon points="318,296 320,296 319,300" />
+          </g>
         </g>
       </svg>
     </span>
