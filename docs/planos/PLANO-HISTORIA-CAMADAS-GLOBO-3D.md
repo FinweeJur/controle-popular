@@ -357,6 +357,27 @@ destrava** — nada aqui se resolve por suposição.
 | P10 | **Deploy** das camadas novas no Guara | política de ~5 dias; a suíte e o `tsc` estão verdes | dev | ⛔ |
 | P11 | **Moeda/tabela de preço do provedor** para o custo em yuan | confirmar em que moeda o opencode grava `session.cost` (hoje a conversão usa taxa assumida 1 USD = 7,1) | dev | 🚧 |
 
+### Receita de retomada — censo de 1872 de MG (P1b), medida em 30/09
+
+Deixada pronta para **sessão nova** (esta ficou longa). Sem redescobrir nada:
+
+1. **Baixar o texto** (OCR já feito pelo Archive, sem chave, UA honesto):
+   - `https://archive.org/download/recenseamento1872mg1/ProvinciaDeMinasGeraes1Parte_djvu.txt` (1,8 MB, baixou)
+   - `.../recenseamento1872mg2/ProvinciaDeMinasGeraes2Parte_djvu.txt` (1,9 MB) — **deu timeout**;
+     repetir com `timeout` maior ou em pedaços.
+2. **Metadados e a lista completa de itens:** `https://archive.org/metadata/<id>` (JSON; lista `files`).
+   Os 22 itens por província saem de
+   `https://archive.org/advancedsearch.php?q=recenseamento+1872&fl[]=identifier&fl[]=title&rows=60&output=json`.
+3. **Fonte oficial para conferência:** `liv25477_v*_<uf>.pdf` na biblioteca do IBGE
+   (caminho direto de PDF, 200; a busca dá 403). O **volume de MG não está em `_mg`** —
+   o texto do Archive é o caminho prático; **conferir as tabelas contra o PDF oficial
+   antes de publicar qualquer número**.
+4. **Parse:** são tabelas censitárias por **freguesia/paróquia** (população livre,
+   escravizada, condição, sexo, cor, idade). Cruzar com município → **só por código
+   IBGE**, nunca por nome (grafia de 1872 muda: "Goyaz", "Minas Geraes", "Parahyba").
+5. **Regra de anacronismo:** 1872 × lavra de satélite 2024 é cruzamento proibido;
+   a recusa fica escrita na tela. Contagem só quando a fonte conta.
+
 ## Fases de execução
 
 ### Fase 0 — infraestrutura do "voe até aqui" (feito em 30/09/2026)
