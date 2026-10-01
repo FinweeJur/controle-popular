@@ -226,6 +226,32 @@ describe("Assembleias Legislativas Estaduais - Filtros de Proposições", () => 
   it("deve retornar lista vazia para UF inexistente", () => {
     expect(listarProposicoesPorUf("ZZ")).toEqual([]);
   });
+
+  it("deve carregar proposições com histórico de tramitação detalhado quando disponível", () => {
+    const proposicoesMG = listarProposicoesPorUf("MG");
+    const comTramitacao = proposicoesMG.filter((p) => p.tramitacoes && p.tramitacoes.length > 0);
+    expect(comTramitacao.length).toBeGreaterThanOrEqual(1);
+
+    const pl2450 = comTramitacao.find((p) => p.codigo.includes("2.450"));
+    expect(pl2450).toBeDefined();
+    expect(pl2450?.tramitacoes).toHaveLength(4);
+
+    const ultimoAndamento = pl2450?.tramitacoes?.[0];
+    expect(ultimoAndamento?.siglaOrgao).toBe("CMA");
+    expect(ultimoAndamento?.descricao).toBeTruthy();
+    expect(ultimoAndamento?.dataHora).toBe("2026-03-24");
+  });
+
+  it("deve conter tramitações válidas na ALESP", () => {
+    const proposicoesSP = listarProposicoesPorUf("SP");
+    const comTramitacao = proposicoesSP.filter((p) => p.tramitacoes && p.tramitacoes.length > 0);
+    expect(comTramitacao.length).toBeGreaterThanOrEqual(1);
+
+    const pl504 = comTramitacao.find((p) => p.codigo.includes("504"));
+    expect(pl504).toBeDefined();
+    expect(pl504?.tramitacoes).toHaveLength(3);
+    expect(pl504?.orgaoAtual).toBe("PLEN");
+  });
 });
 
 describe("Assembleias Legislativas Estaduais - Comissões e Audiências", () => {

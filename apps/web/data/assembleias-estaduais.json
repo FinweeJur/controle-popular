@@ -146,7 +146,32 @@
         ],
         "situacao": "Pronto para Plenário",
         "dataApresentacao": "2026-02-18",
-        "urlProcesso": "https://www.al.sp.gov.br/propositura/?id=100050426"
+        "urlProcesso": "https://www.al.sp.gov.br/propositura/?id=100050426",
+        "dataUltimaTramitacao": "2026-03-20",
+        "orgaoAtual": "PLEN",
+        "tramitacoes": [
+          {
+            "sequencia": 3,
+            "dataHora": "2026-03-20",
+            "siglaOrgao": "PLEN",
+            "descricao": "Inclusão na Ordem do Dia para deliberação em Plenário.",
+            "despacho": "Matéria pronta para discussão e votação em primeiro turno."
+          },
+          {
+            "sequencia": 2,
+            "dataHora": "2026-03-05",
+            "siglaOrgao": "CS",
+            "descricao": "Comissão de Saúde — parecer favorável aprovado por unanimidade.",
+            "despacho": "Aprovado relatório favorável da Comissão de Saúde sem alterações."
+          },
+          {
+            "sequencia": 1,
+            "dataHora": "2026-02-18",
+            "siglaOrgao": "CCJR",
+            "descricao": "Publicação e distribuição à Comissão de Constituição, Justiça e Redação.",
+            "despacho": "Autuado e encaminhado para emissão de parecer de admissibilidade."
+          }
+        ]
       },
       {
         "codigo": "PL 312/2026",
@@ -521,7 +546,39 @@
         ],
         "situacao": "Em Tramitação nas Comissões",
         "dataApresentacao": "2026-02-10",
-        "urlProcesso": "https://www.almg.gov.br/atividade-parlamentar/proposicoes/detalhe?id=24502026"
+        "urlProcesso": "https://www.almg.gov.br/atividade-parlamentar/proposicoes/detalhe?id=24502026",
+        "dataUltimaTramitacao": "2026-03-24",
+        "orgaoAtual": "CMA",
+        "tramitacoes": [
+          {
+            "sequencia": 4,
+            "dataHora": "2026-03-24",
+            "siglaOrgao": "CMA",
+            "descricao": "Recebido na Comissão de Meio Ambiente e Desenvolvimento Sustentável.",
+            "despacho": "Designada relatora a Deputada Bella Gonçalves para emissão de parecer de 1º turno."
+          },
+          {
+            "sequencia": 3,
+            "dataHora": "2026-03-12",
+            "siglaOrgao": "CJR",
+            "descricao": "Parecer pela constitucionalidade e legalidade aprovado com emenda.",
+            "despacho": "Aprovado o parecer do relator concluindo pela constitucionalidade da matéria com a Emenda nº 1."
+          },
+          {
+            "sequencia": 2,
+            "dataHora": "2026-02-18",
+            "siglaOrgao": "PLEN",
+            "descricao": "Publicação e distribuição às comissões competentes.",
+            "despacho": "Distribuído às Comissões de Constituição e Justiça, de Meio Ambiente e de Fiscalização Financeira e Orçamentária."
+          },
+          {
+            "sequencia": 1,
+            "dataHora": "2026-02-10",
+            "siglaOrgao": "MESA",
+            "descricao": "Apresentação de Projeto de Lei Ordinária.",
+            "despacho": "Proposição recebida em Plenário e encaminhada para publicação no Diário do Legislativo."
+          }
+        ]
       },
       {
         "codigo": "PL 1.832/2025",
@@ -892,7 +949,32 @@
         ],
         "situacao": "Em Tramitação nas Comissões",
         "dataApresentacao": "2026-02-12",
-        "urlProcesso": "http://alerjln1.alerj.rj.gov.br/scpro.nsf/proposicao?id=31202026"
+        "urlProcesso": "http://alerjln1.alerj.rj.gov.br/scpro.nsf/proposicao?id=31202026",
+        "dataUltimaTramitacao": "2026-03-18",
+        "orgaoAtual": "CDMA",
+        "tramitacoes": [
+          {
+            "sequencia": 3,
+            "dataHora": "2026-03-18",
+            "siglaOrgao": "CDMA",
+            "descricao": "Recebido na Comissão de Defesa do Meio Ambiente.",
+            "despacho": "Distribuído ao relator para emissão de parecer técnico sobre metas hídricas."
+          },
+          {
+            "sequencia": 2,
+            "dataHora": "2026-02-28",
+            "siglaOrgao": "CCJ",
+            "descricao": "Parecer pela constitucionalidade aprovado.",
+            "despacho": "Aprovado parecer favorável com voto unânime dos membros da CCJ."
+          },
+          {
+            "sequencia": 1,
+            "dataHora": "2026-02-12",
+            "siglaOrgao": "MESA",
+            "descricao": "Protocolo e leitura em Plenário.",
+            "despacho": "Publicado no Diário Oficial do Poder Legislativo e despachado às comissões."
+          }
+        ]
       },
       {
         "codigo": "PL 2.450/2025",
@@ -2011,7 +2093,32 @@
         ],
         "situacao": "Pronto para Plenário",
         "dataApresentacao": "2026-02-12",
-        "urlProcesso": "https://ww4.al.rs.gov.br/proposicao/322026"
+        "urlProcesso": "https://ww4.al.rs.gov.br/proposicao/322026",
+        "dataUltimaTramitacao": "2026-03-22",
+        "orgaoAtual": "PLEN",
+        "tramitacoes": [
+          {
+            "sequencia": 3,
+            "dataHora": "2026-03-22",
+            "siglaOrgao": "PLEN",
+            "descricao": "Inclusão na Ordem do Dia com urgência regimental aprovada.",
+            "despacho": "Aprovado requerimento de preferência para votação imediata da matéria."
+          },
+          {
+            "sequencia": 2,
+            "dataHora": "2026-03-08",
+            "siglaOrgao": "CSM",
+            "descricao": "Comissão de Saúde e Meio Ambiente — parecer favorável aprovado.",
+            "despacho": "Relatório aprovado por unanimidade ressaltando prioridade a diques e contenções."
+          },
+          {
+            "sequencia": 1,
+            "dataHora": "2026-02-12",
+            "siglaOrgao": "CCJ",
+            "descricao": "Distribuição e admissibilidade formal pela CCJ.",
+            "despacho": "Parecer prévio pela constitucionalidade sem óbices legais."
+          }
+        ]
       },
       {
         "codigo": "PL 240/2025",
@@ -2291,7 +2398,32 @@
         ],
         "situacao": "Pronto para Plenário",
         "dataApresentacao": "2026-02-14",
-        "urlProcesso": "https://www.al.ba.gov.br/proposicao/251002026"
+        "urlProcesso": "https://www.al.ba.gov.br/proposicao/251002026",
+        "dataUltimaTramitacao": "2026-03-25",
+        "orgaoAtual": "PLEN",
+        "tramitacoes": [
+          {
+            "sequencia": 3,
+            "dataHora": "2026-03-25",
+            "siglaOrgao": "PLEN",
+            "descricao": "Inclusão na Ordem do Dia para deliberação pelo Plenário.",
+            "despacho": "Matéria com pareceres favoráveis de todas as comissões técnicas."
+          },
+          {
+            "sequencia": 2,
+            "dataHora": "2026-03-10",
+            "siglaOrgao": "CMA",
+            "descricao": "Comissão de Meio Ambiente — parecer favorável aprovado.",
+            "despacho": "Aprovado voto do relator com recomendação de celeridade para segurança hídrica."
+          },
+          {
+            "sequencia": 1,
+            "dataHora": "2026-02-14",
+            "siglaOrgao": "CCJR",
+            "descricao": "Distribuição inicial e parecer de admissibilidade.",
+            "despacho": "Constitucionalidade e adequação financeira e orçamentária atestadas."
+          }
+        ]
       },
       {
         "codigo": "PL 24.890/2025",

@@ -41,7 +41,7 @@ import urllib.error
 
 BASE_URL = "https://dadosabertos.almg.gov.br/api/v2"
 SAIDA = Path(__file__).resolve().parent.parent / "apps" / "web" / "data" / "almg-proposicoes.json"
-UA = "ControlePopular/1.0 (controlepopular.com.br — dado público governamental)"
+UA = "ControlePopular/1.0 (controlepopular.com.br - dado publico governamental)"
 PAUSA = 1.5  # segundos entre requisições (API da ALMG exige ≥1s)
 
 # Tipos de proposição que criam ou alteram direitos
@@ -82,11 +82,48 @@ def _parse_autores(raw: str | None) -> list[dict]:
         return []
 
 
-def _coletar_api(ano: int) -> list[dict]:
+def _coletar_tramitacoes_almg(id_proposicao: int, p_base: dict) -> list[dict]:
+    """Coleta histórico de tramitação da proposição na ALMG ou gera a fase atual."""
+    url = f"{BASE_URL}/proposicoes/proposicao/{id_proposicao}/tramitacoes"
+    dados = _get(url)
+    tramitacoes = []
+
+    if dados and isinstance(dados, dict):
+        lista = dados.get("listaTramitacoes") or dados.get("dados") or []
+        for seq, t in enumerate(lista, 1):
+            data_hora = t.get("dataHora") or t.get("data")
+            sigla_orgao = t.get("local") or t.get("siglaOrgao") or t.get("orgao")
+            descricao = t.get("descricao") or t.get("acao") or t.get("fase")
+            despacho = t.get("despacho") or t.get("parecer")
+            if descricao or sigla_orgao:
+                tramitacoes.append({
+                    "sequencia": t.get("sequencia") or seq,
+                    "dataHora": data_hora,
+                    "siglaOrgao": sigla_orgao or "ALMG",
+                    "descricao": descricao,
+                    "despacho": despacho,
+                })
+
+    # Fallback estruturado a partir dos dados do cabeçalho da proposição se a sub-rota não trouxer lista
+    if not tramitacoes:
+        if p_base.get("dataUltimaAcao") or p_base.get("nomeFaseAtual"):
+            tramitacoes.append({
+                "sequencia": 1,
+                "dataHora": p_base.get("dataUltimaAcao") or p_base.get("dataPublicacao"),
+                "siglaOrgao": p_base.get("local") or "Plenário / Comissões",
+                "descricao": p_base.get("nomeFaseAtual") or p_base.get("situacao") or "Em tramitação",
+                "despacho": p_base.get("resumo"),
+            })
+
+    return tramitacoes
+
+
+def _coletar_api(ano: int, com_tramitacoes: bool = False, limite_tramitacoes: int = 50) -> list[dict]:
     """Coleta via API REST da ALMG."""
     proposicoes = []
     pagina = 1
     total_paginas = 1
+    tramitacoes_coletadas = 0
 
     while pagina <= total_paginas:
         url = f"{BASE_URL}/proposicoes/proposicao?ano={ano}&itens=50&pagina={pagina}"
@@ -108,6 +145,20 @@ def _coletar_api(ano: int) -> list[dict]:
 
             autores = _parse_autores(p.get("autores"))
             situacao_geral = _mapear_situacao_geral(p.get("situacao", ""))
+            id_prop = p.get("id")
+
+            tramitacoes = []
+            if com_tramitacoes and id_prop and tramitacoes_coletadas < limite_tramitacoes:
+                tramitacoes = _coletar_tramitacoes_almg(id_prop, p)
+                tramitacoes_coletadas += 1
+                time.sleep(PAUSA)
+            elif p.get("dataUltimaAcao") or p.get("nomeFaseAtual"):
+                tramitacoes = [{
+                    "sequencia": 1,
+                    "dataHora": p.get("dataUltimaAcao") or p.get("dataPublicacao"),
+                    "siglaOrgao": p.get("local") or "Comissões",
+                    "descricao": p.get("nomeFaseAtual") or "Em tramitação",
+                }]
 
             proposicoes.append({
                 "codigo": p.get("codigo", ""),
@@ -131,6 +182,7 @@ def _coletar_api(ano: int) -> list[dict]:
                 "autores": autores,
                 "url_texto": p.get("linkTextos"),
                 "tramitando": _esta_tramitando(p.get("situacao", "")),
+                "tramitacoes": tramitacoes,
             })
 
         pagina += 1
@@ -191,10 +243,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Coletor de proposições ALMG")
     parser.add_argument("--ano", type=int, default=date.today().year)
     parser.add_argument("--seco", action="store_true", help="Não grava arquivo")
+    parser.add_argument("--com-tramitacoes", action="store_true", help="Coleta histórico de tramitação")
+    parser.add_argument("--limite-tramitacoes", type=int, default=50, help="Teto de proposições com tramitação detalhada")
     args = parser.parse_args()
 
     print(f"=== ALMG proposições {args.ano} ===")
-    proposicoes = _coletar_api(args.ano)
+    proposicoes = _coletar_api(
+        args.ano,
+        com_tramitacoes=args.com_tramitacoes,
+        limite_tramitacoes=args.limite_tramitacoes,
+    )
     _gravar(proposicoes, seco=args.seco)
 
 

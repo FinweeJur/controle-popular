@@ -3,6 +3,7 @@ import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import AnaliseAuditavel from "@/app/congresso/components/AnaliseAuditavel";
 import VicioAuditavel from "@/app/congresso/components/VicioAuditavel";
+import LinhaDoTempoTramitacao from "@/app/components/LinhaDoTempoTramitacao";
 import { obterProposicao, listarProposicoes } from "@/lib/congresso/proposicoes";
 import { exportandoEstatico, TETO_PAGINAS_ESTATICAS } from "@/lib/alvo-de-build";
 
@@ -193,30 +194,11 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
       </section>
 
       {tramitacoes.length ? (
-        <section>
-          <h2 className="font-display text-xl font-semibold">
-            Tramitação{" "}
-            <span className="font-normal opacity-70">({tramitacoes.length} eventos)</span>
-          </h2>
-          <ol className="mt-3 space-y-3 border-l border-[var(--cp-border)] pl-4">
-            {tramitacoes.slice(0, 20).map((t) => (
-              <li key={t.sequencia}>
-                <p className="text-sm font-medium">
-                  {formatarData(t.data_hora)} · {t.sigla_orgao}
-                </p>
-                <p className="text-sm opacity-85">{t.descricao}</p>
-                {t.despacho ? (
-                  <p className="mt-1 text-sm opacity-65">{t.despacho}</p>
-                ) : null}
-              </li>
-            ))}
-          </ol>
-          {tramitacoes.length > 20 ? (
-            <p className="mt-2 text-sm opacity-70">
-              Mostrando os 20 eventos mais recentes de {tramitacoes.length}.
-            </p>
-          ) : null}
-        </section>
+        <LinhaDoTempoTramitacao
+          eventos={tramitacoes}
+          urlProcessoOficial={p.url_fonte ?? undefined}
+          casaNome={p.casa_id === "senado" ? "Senado Federal" : "Câmara dos Deputados"}
+        />
       ) : null}
     </div>
   );

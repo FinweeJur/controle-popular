@@ -1,0 +1,283 @@
+{
+  "total_casas": 27,
+  "motores": {
+    "API_REST_PROPRIA": 2,
+    "DADOS_ABERTOS_ESTADUAL": 10,
+    "SAPL_INTERLEGIS": 15
+  },
+  "casas_com_tramitacoes_ativas": 5,
+  "total_proposicoes": 145,
+  "total_proposicoes_com_tramitacoes": 5,
+  "casas": [
+    {
+      "uf": "SP",
+      "sigla": "ALESP",
+      "estado": "São Paulo",
+      "motor": "API_REST_PROPRIA",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 10,
+      "proposicoes_com_tramitacoes": 1
+    },
+    {
+      "uf": "MG",
+      "sigla": "ALMG",
+      "estado": "Minas Gerais",
+      "motor": "API_REST_PROPRIA",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 10,
+      "proposicoes_com_tramitacoes": 1
+    },
+    {
+      "uf": "RJ",
+      "sigla": "ALERJ",
+      "estado": "Rio de Janeiro",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 1
+    },
+    {
+      "uf": "ES",
+      "sigla": "ALES",
+      "estado": "Espírito Santo",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "PR",
+      "sigla": "ALEP",
+      "estado": "Paraná",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "SC",
+      "sigla": "ALESC",
+      "estado": "Santa Catarina",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "RS",
+      "sigla": "ALRS",
+      "estado": "Rio Grande do Sul",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 1
+    },
+    {
+      "uf": "BA",
+      "sigla": "ALBA",
+      "estado": "Bahia",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 1
+    },
+    {
+      "uf": "PE",
+      "sigla": "ALEPE",
+      "estado": "Pernambuco",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "CE",
+      "sigla": "ALECE",
+      "estado": "Ceará",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "MA",
+      "sigla": "ALEMA",
+      "estado": "Maranhão",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "PB",
+      "sigla": "ALPB",
+      "estado": "Paraíba",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "PI",
+      "sigla": "ALEPI",
+      "estado": "Piauí",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "AL",
+      "sigla": "ALEAL",
+      "estado": "Alagoas",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "RN",
+      "sigla": "ALRN",
+      "estado": "Rio Grande do Norte",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "SE",
+      "sigla": "ALESE",
+      "estado": "Sergipe",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "GO",
+      "sigla": "ALEGO",
+      "estado": "Goiás",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "MT",
+      "sigla": "ALMT",
+      "estado": "Mato Grosso",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "MS",
+      "sigla": "ALEMS",
+      "estado": "Mato Grosso do Sul",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "DF",
+      "sigla": "CLDF",
+      "estado": "Distrito Federal",
+      "motor": "DADOS_ABERTOS_ESTADUAL",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "AM",
+      "sigla": "ALEAM",
+      "estado": "Amazonas",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "PA",
+      "sigla": "ALEPA",
+      "estado": "Pará",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "AC",
+      "sigla": "ALEAC",
+      "estado": "Acre",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "AP",
+      "sigla": "ALAP",
+      "estado": "Amapá",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "RO",
+      "sigla": "ALE-RO",
+      "estado": "Rondônia",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "RR",
+      "sigla": "ALE-RR",
+      "estado": "Roraima",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    },
+    {
+      "uf": "TO",
+      "sigla": "ALETO",
+      "estado": "Tocantins",
+      "motor": "SAPL_INTERLEGIS",
+      "processo_link_ok": true,
+      "dados_abertos_ok": true,
+      "total_proposicoes": 5,
+      "proposicoes_com_tramitacoes": 0
+    }
+  ]
+}

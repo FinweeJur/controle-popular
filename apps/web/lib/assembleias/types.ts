@@ -123,6 +123,22 @@ export interface AutorProposicao {
   partido: string;
 }
 
+/** Evento singular de tramitação legislativa estadual */
+export interface TramitacaoItem {
+  /** Sequência cronológica do evento */
+  sequencia: number;
+  /** Data e hora do andamento no formato ISO ou texto legível */
+  dataHora: string;
+  /** Sigla ou nome do órgão colegiado/comissão onde o ato ocorreu */
+  siglaOrgao: string;
+  /** Descrição sucinta do evento ou despacho da matéria */
+  descricao: string;
+  /** Despacho detalhado ou parecer do relator quando houver */
+  despacho?: string;
+  /** Link para documento oficial anexo ao andamento */
+  urlDocumento?: string;
+}
+
 /** Proposição legislativa de interesse social */
 export interface ProposicaoEstadual {
   /** Código oficial no formato 'TIPO NUMERO/ANO' (ex: 'PL 2.450/2026') */
@@ -141,6 +157,12 @@ export interface ProposicaoEstadual {
   dataApresentacao: string;
   /** Link para acompanhamento oficial da matéria */
   urlProcesso: string;
+  /** Data da última movimentação registrada */
+  dataUltimaTramitacao?: string;
+  /** Órgão ou comissão onde a matéria se encontra atualmente */
+  orgaoAtual?: string;
+  /** Histórico de andamentos e eventos da tramitação */
+  tramitacoes?: TramitacaoItem[];
 }
 
 /** Audiência pública legislativa */

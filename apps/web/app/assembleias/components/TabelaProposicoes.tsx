@@ -21,9 +21,10 @@
  * 6. Responsividade mobile nativa sem overflow horizontal.
  */
 
-import { useMemo, useState } from "react";
-import { Search, Filter, Download, ExternalLink, ArrowUpDown } from "lucide-react";
+import { Fragment, useMemo, useState } from "react";
+import { Search, Filter, Download, ExternalLink, ArrowUpDown, GitCommit, ChevronDown, ChevronUp } from "lucide-react";
 import type { ProposicaoEstadual } from "@/lib/assembleias/types";
+import LinhaDoTempoTramitacao from "@/app/components/LinhaDoTempoTramitacao";
 
 interface TabelaProposicoesProps {
   proposicoes: ProposicaoEstadual[];
@@ -41,6 +42,7 @@ export default function TabelaProposicoes({
   const [colunaOrdenacao, setColunaOrdenacao] = useState<keyof ProposicaoEstadual>("dataApresentacao");
   const [ordemAsc, setOrdemAsc] = useState(false);
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const [linhaAberta, setLinhaAberta] = useState<string | null>(null);
   const ITENS_POR_PAGINA = 15;
 
   // Extrai lista única de tipos, anos e situações disponíveis
@@ -279,7 +281,7 @@ export default function TabelaProposicoes({
                   <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
                 </div>
               </th>
-              <th className="px-3 py-3 text-right">Processo</th>
+              <th className="px-3 py-3 text-right">Tramitação / Processo</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -290,60 +292,110 @@ export default function TabelaProposicoes({
                 </td>
               </tr>
             ) : (
-              proposicoesPaginadas.map((prop) => (
-                <tr key={prop.codigo} className="transition-colors hover:bg-surface-2/60">
-                  <td className="px-4 py-3 font-mono font-bold text-foreground whitespace-nowrap">
-                    {prop.codigo}
-                  </td>
-                  <td className="px-3 py-3 whitespace-nowrap">
-                    <span className="rounded-md border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
-                      {prop.tipo}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 max-w-sm sm:max-w-md">
-                    <p className="line-clamp-2 text-xs text-foreground leading-relaxed">
-                      {prop.ementa}
-                    </p>
-                  </td>
-                  <td className="px-3 py-3 text-xs whitespace-nowrap text-muted">
-                    {prop.autores.map((a, i) => (
-                      <span key={a.nome}>
-                        {i > 0 && ", "}
-                        <strong className="text-foreground">{a.nome}</strong>{" "}
-                        <span className="text-[10px]">({a.partido})</span>
-                      </span>
-                    ))}
-                  </td>
-                  <td className="px-3 py-3 whitespace-nowrap">
-                    <span
-                      className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
-                        prop.situacao.includes("Aprovado") || prop.situacao.includes("Sancionado")
-                          ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
-                          : prop.situacao.includes("Pronto")
-                          ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30"
-                          : "bg-surface-2 text-muted border border-border"
-                      }`}
-                    >
-                      {prop.situacao}
-                    </span>
-                  </td>
-                  <td className="px-3 py-3 font-mono text-xs text-muted whitespace-nowrap">
-                    {prop.dataApresentacao}
-                  </td>
-                  <td className="px-3 py-3 text-right whitespace-nowrap">
-                    <a
-                      href={prop.urlProcesso}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-md border border-border bg-surface-2 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:border-primary hover:bg-surface"
-                      title="Ver processo legislativo oficial diretamente na Assembleia"
-                    >
-                      <span>Acessar</span>
-                      <ExternalLink size={12} aria-hidden="true" />
-                    </a>
-                  </td>
-                </tr>
-              ))
+              proposicoesPaginadas.map((prop) => {
+                const aberta = linhaAberta === prop.codigo;
+                const totalTramitacoes = prop.tramitacoes?.length ?? 0;
+
+                return (
+                  <Fragment key={prop.codigo}>
+                    <tr className={`transition-colors hover:bg-surface-2/60 ${aberta ? "bg-surface-2/40" : ""}`}>
+                      <td className="px-4 py-3 font-mono font-bold text-foreground whitespace-nowrap">
+                        {prop.codigo}
+                      </td>
+                      <td className="px-3 py-3 whitespace-nowrap">
+                        <span className="rounded-md border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+                          {prop.tipo}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 max-w-sm sm:max-w-md">
+                        <p className="line-clamp-2 text-xs text-foreground leading-relaxed">
+                          {prop.ementa}
+                        </p>
+                      </td>
+                      <td className="px-3 py-3 text-xs whitespace-nowrap text-muted">
+                        {prop.autores.map((a, i) => (
+                          <span key={a.nome}>
+                            {i > 0 && ", "}
+                            <strong className="text-foreground">{a.nome}</strong>{" "}
+                            <span className="text-[10px]">({a.partido})</span>
+                          </span>
+                        ))}
+                      </td>
+                      <td className="px-3 py-3 whitespace-nowrap">
+                        <span
+                          className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
+                            prop.situacao.includes("Aprovado") || prop.situacao.includes("Sancionado")
+                              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
+                              : prop.situacao.includes("Pronto")
+                              ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                              : "bg-surface-2 text-muted border border-border"
+                          }`}
+                        >
+                          {prop.situacao}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 font-mono text-xs text-muted whitespace-nowrap">
+                        {prop.dataApresentacao}
+                      </td>
+                      <td className="px-3 py-3 text-right whitespace-nowrap">
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => setLinhaAberta(aberta ? null : prop.codigo)}
+                            className={`inline-flex items-center gap-1 rounded-md border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                              aberta
+                                ? "border-primary bg-primary/10 text-primary"
+                                : "border-border bg-surface text-foreground hover:border-primary hover:text-primary"
+                            }`}
+                            title="Ver andamentos e despachos de tramitação"
+                            aria-expanded={aberta}
+                          >
+                            <GitCommit size={12} aria-hidden="true" />
+                            <span>Trâmite</span>
+                            {totalTramitacoes > 0 && (
+                              <span className="rounded-full bg-primary/20 px-1.5 py-0.2 text-[10px] font-bold text-primary">
+                                {totalTramitacoes}
+                              </span>
+                            )}
+                            {aberta ? (
+                              <ChevronUp size={12} aria-hidden="true" />
+                            ) : (
+                              <ChevronDown size={12} aria-hidden="true" />
+                            )}
+                          </button>
+
+                          <a
+                            href={prop.urlProcesso}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 rounded-md border border-border bg-surface-2 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:border-primary hover:bg-surface"
+                            title="Ver processo legislativo oficial diretamente na Assembleia"
+                          >
+                            <span>Oficial</span>
+                            <ExternalLink size={12} aria-hidden="true" />
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+
+                    {/* Linha expansível com o histórico de tramitação */}
+                    {aberta && (
+                      <tr className="bg-surface-2/30">
+                        <td colSpan={7} className="px-4 py-4 sm:px-6">
+                          <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
+                            <LinhaDoTempoTramitacao
+                              eventos={prop.tramitacoes ?? []}
+                              titulo={`Histórico de Tramitação — ${prop.codigo}`}
+                              urlProcessoOficial={prop.urlProcesso}
+                              casaNome={siglaAssembleia}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                );
+              })
             )}
           </tbody>
         </table>
