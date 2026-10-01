@@ -174,6 +174,46 @@ function fundosDeTema(): { nome: string; cor: string }[] {
   return fundos;
 }
 
+/**
+ * Devolve o payload `.cur` de cada chunk `icon` de um `.ani`.
+ * Mesma varredura de `hotspotDoAni`, mas sem parar no primeiro.
+ */
+function framesDoAni(caminho: string): Buffer[] {
+  const b = fs.readFileSync(caminho);
+  const frames: Buffer[] = [];
+  let pos = 12;
+  while (pos + 8 <= b.length) {
+    const tipo = b.toString("latin1", pos, pos + 4);
+    const tamanho = b.readUInt32LE(pos + 4);
+    const corpo = b.subarray(pos + 8, pos + 8 + tamanho);
+    if (tipo === "LIST" && corpo.toString("latin1", 0, 4) === "fram") {
+      let p = 4;
+      while (p + 8 <= corpo.length) {
+        const sub = corpo.toString("latin1", p, p + 4);
+        const subTam = corpo.readUInt32LE(p + 4);
+        if (sub === "icon") frames.push(corpo.subarray(p + 8, p + 8 + subTam));
+        p += 8 + subTam + (subTam & 1);
+      }
+    }
+    pos += 8 + tamanho + (tamanho & 1);
+  }
+  return frames;
+}
+
+/**
+ * Exige que um payload `.cur` tenha UMA única imagem, 32x32.
+ *
+ * O pacote original trazia 6 tamanhos (até 128x128): em tela com escala/DPI
+ * alta o navegador escolhia a imagem grande e o ponteiro virava um quadro
+ * gigante. 32x32 é o tamanho padrão de cursor; multi-tamanho é o defeito.
+ */
+function exigirCur32(nome: string, b: Buffer): void {
+  expect(b.readUInt16LE(2), `${nome} não é cursor`).toBe(2);
+  const n = b.readUInt16LE(4);
+  expect(n, `${nome}: ${n} imagens embutidas — multi-tamanho volta a escolher a grande`).toBe(1);
+  expect({ w: b[6] || 256, h: b[7] || 256 }, `${nome}: não é 32x32`).toEqual({ w: 32, h: 32 });
+}
+
 describe("cursores do site -- CSS e disco batem", () => {
   it("todo url('/cursor/...') do CSS existe em public/cursor e o hotspot bate", () => {
     for (const { rel, texto } of CSS) {
@@ -204,6 +244,20 @@ describe("cursores do site -- CSS e disco batem", () => {
         referenciados.has(arquivo),
         `${arquivo} está em public/cursor e ninguém o usa`
       ).toBe(true);
+    }
+  });
+
+  it("nenhum cursor carrega imagem maior que 32x32 (o ponteiro gigante)", () => {
+    for (const arquivo of fs.readdirSync(DIR_CURSOR).filter((a) => a.endsWith(".cur"))) {
+      exigirCur32(arquivo, fs.readFileSync(path.join(DIR_CURSOR, arquivo)));
+    }
+  });
+
+  it("todo frame de .ani é um .cur 32x32", () => {
+    for (const arquivo of fs.readdirSync(DIR_CURSOR).filter((a) => a.endsWith(".ani"))) {
+      const frames = framesDoAni(path.join(DIR_CURSOR, arquivo));
+      expect(frames.length, `${arquivo} sem frames`).toBeGreaterThan(0);
+      frames.forEach((f, i) => exigirCur32(`${arquivo} frame ${i}`, f));
     }
   });
 
@@ -259,7 +313,10 @@ describe("cursores do site -- contraste (WCAG 1.4.11, ≥3:1)", () => {
 
   it.each(arcur)("%s passa em ≥3:1 contra todos os fundos", (nome) => {
     const cores = coresOpacasDoCur(path.join(DIR_CURSOR, nome));
-    expect(cores.length, `${nome} sem pixels opacos para medir`).toBeGreaterThan(10);
+    // Piso baixo de propósito: depois do recorte para 32x32 (30/09/2026) um
+    // cursor fino — o feixe de texto, a cruzeta — tem só ~4 cores opacas.
+    // Antes o piso 10 media a união de vários tamanhos, não o ponteiro real.
+    expect(cores.length, `${nome} sem pixels opacos para medir`).toBeGreaterThanOrEqual(2);
     const lumCores = cores.map(luminancia);
     for (const fundo of fundos) {
       const melhor = Math.max(...lumCores.map((lc) => contraste(lc, luminancia(fundo.cor))));

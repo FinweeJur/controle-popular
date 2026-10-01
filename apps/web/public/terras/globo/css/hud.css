@@ -45,6 +45,10 @@
    `apps/web/lib/cursores.test.ts`. Os dez arquivos (.cur + .ani) já
    passaram por `scripts/recolor-contraste-cursor.py` — contorno preto
    para valer ≥3:1 sobre imagem de satélite (WCAG 1.4.11).
+
+   TAMANHO (30/09/2026): recortados para UMA imagem 32x32. O pacote trazia
+   até 128x128 e, em tela com escala alta, o navegador escolhia a imagem
+   grande — ponteiro gigante. Ver o bloco espelho em `app/globals.css`.
    ══════════════════════════════════════════════════════════════════ */
 
 * {

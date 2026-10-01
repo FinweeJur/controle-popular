@@ -37,6 +37,14 @@
    globo, abaixo do mínimo de 3:1. Com preto + areia #cea67b os dois
    limiares se sobrepõem e o par passa em qualquer fundo. O teste que
    prova isso está em `lib/cursores.test.ts`.
+
+   TAMANHO (30/09/2026): o pacote original trazia 6 tamanhos por arquivo
+   (até 128x128), e cada frame dos .ani carregava o .cur inteiro. Em tela
+   com escala/DPI alta o navegador escolhia a imagem grande e o ponteiro
+   virava um quadro gigante. Os arquivos foram recortados para UMA imagem
+   32x32 — o tamanho padrão de cursor: .cur de ~25 KB para ~4 KB, .ani de
+   ~280 KB para ~51 KB. `lib/cursores.test.ts` passou a recusar
+   multi-tamanho, para o defeito não voltar com o próximo pacote.
    ══════════════════════════════════════════════════════════════════ */
 
 /* Padrão: a seta do pacote, em todo elemento da página. */
