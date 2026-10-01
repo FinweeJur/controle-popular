@@ -6,6 +6,7 @@ import {
   obterMetaCidadesCompletas,
 } from "@/lib/cidades/estrategicas";
 import type { CidadeComparavel } from "@/lib/comparador/cidades";
+import TermoGlossario from "@/app/components/TermoGlossario";
 import CompararClient from "./CompararClient";
 
 /**
@@ -78,9 +79,12 @@ export default function CompararPage() {
           Comparar cidades
         </h1>
         <p className="text-base leading-relaxed text-muted sm:text-lg">
-          Escolha duas cidades e veja os números lado a lado. O valor por
-          habitante entra para igualar cidades de tamanhos diferentes. O realce
-          mostra o maior valor — não a melhor cidade.
+          Escolha duas cidades e veja os números lado a lado —{" "}
+          <TermoGlossario id="pib">PIB</TermoGlossario>, repasses, saúde e
+          escolas. O valor{" "}
+          <TermoGlossario id="per-capita">por habitante</TermoGlossario> entra
+          para igualar cidades de tamanhos diferentes. O realce mostra o maior
+          valor — não a melhor cidade.
         </p>
       </header>
 

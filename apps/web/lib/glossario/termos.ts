@@ -198,6 +198,17 @@ export const TERMOS: TermoGlossario[] = [
     definicao: "O valor que a lei reserva no orçamento para cada órgão, programa ou ação.",
   },
   {
+    id: "pib",
+    termo: "PIB (Produto Interno Bruto)",
+    definicao: "Soma de tudo o que é produzido numa cidade, estado ou país num ano. Não mede como a renda é distribuída.",
+    fonte: { nome: "IBGE", url: "https://www.ibge.gov.br" },
+  },
+  {
+    id: "per-capita",
+    termo: "Per capita",
+    definicao: "Valor dividido pelo número de habitantes. Serve para comparar lugares de tamanhos diferentes.",
+  },
+  {
     id: "empenho",
     termo: "Empenho",
     definicao: "Primeiro passo do gasto: o governo reserva dinheiro para pagar algo contratado. É a promessa de pagamento, não o pagamento.",

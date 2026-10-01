@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ExemplosApi from "./ExemplosApi";
+import TermoGlossario from "@/app/components/TermoGlossario";
 
 export const metadata: Metadata = {
   title: "API pública · Controle Popular",
@@ -77,9 +78,11 @@ export default function ApiPublica() {
             bacia. Quem consome a API recebe essa ressalva no manifesto.
           </li>
           <li>
-            <strong>Só agregados públicos.</strong> O DataJud do CNJ não está
-            aqui: a licença dele veda redistribuir derivado. O que está aqui é
-            o que o portal já publica em tela.
+            <strong>Só agregados públicos.</strong> O{" "}
+            <TermoGlossario id="datajud">DataJud</TermoGlossario> do{" "}
+            <TermoGlossario id="cnj">CNJ</TermoGlossario> não está aqui: a
+            licença dele veda redistribuir derivado. O que está aqui é o que o
+            portal já publica em tela.
           </li>
         </ul>
       </section>
