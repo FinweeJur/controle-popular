@@ -198,6 +198,24 @@ Runbooks: [`planos/`](../planos/).
   `guara proxy`, que funciona (token de sessão falha 1× a cada tanto — basta
   reconectar).
 
+**01/10/2026 — Correção do BuildKit 12Gi, Aceleração de Build e Resiliência da Reserva:**
+
+- **BuildKit 12Gi pod evicted (Guara Cloud):** corrigido com exclusão de pastas
+  de dados brutos (`data/`, `acervo-documentos/`, `logs/`, `screenshots/`) no
+  `.dockerignore` e remoção inline de `apps/web/.next/cache` e `/root/.npm` no mesmo
+  comando `RUN` de compilação do `Dockerfile`.
+- **Aceleração do build standalone:** `staticGenerationMaxConcurrency: 8` e
+  `retryCount: 1` no alvo standalone em `next.config.ts` (mantendo 3 para o
+  Cloudflare Workers), além de desativar source maps de produção do navegador
+  (`productionBrowserSourceMaps: false`) e adicionar
+  `NODE_OPTIONS="--max-old-space-size=2560"` para estabilidade de memória.
+- **Blindagem da reserva de banco:** adicionado `comTimeout` defensivo em
+  `apps/web/lib/db/reserva.ts` (10s Guara, 5s reservas). Evita travar o servidor
+  ou gerar timeouts em cascata quando a Neon está inativa ou suspensa.
+- **Resolução de GeoJSON no monorepo:** `resolverDirCamadas()` em
+  `apps/web/lib/terras/camadas.ts` busca em cascata na raiz e em `apps/web/public/`,
+  com captura graciosa em `lerGeoJSON` para nunca derrubar o build por camada ausente.
+
 **30/09/2026 — Diretório de rádios (`/radio`) e player multi-estação:**
 
 - Rota `/radio` com **44 estações** de **11 países**: 8 federais (EBC, Câmara,

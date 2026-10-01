@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import path from "node:path";
 
@@ -16,10 +16,19 @@ import path from "node:path";
  * reprocessa essas mesmas camadas).
  */
 
-export const DIR_CAMADAS = path.join(
-  process.cwd(),
-  "public/terras/globo/dados/camadas"
-);
+function resolverDirCamadas(): string {
+  const caminhos = [
+    path.join(process.cwd(), "public/terras/globo/dados/camadas"),
+    path.join(process.cwd(), "apps/web/public/terras/globo/dados/camadas"),
+    path.join(process.cwd(), "../../apps/web/public/terras/globo/dados/camadas"),
+  ];
+  for (const c of caminhos) {
+    if (existsSync(c)) return c;
+  }
+  return caminhos[0];
+}
+
+export const DIR_CAMADAS = resolverDirCamadas();
 
 export interface FeatureCollectionBruta<P> {
   type: string;
@@ -28,8 +37,17 @@ export interface FeatureCollectionBruta<P> {
 
 export function lerGeoJSON<P>(nomeArquivo: string): FeatureCollectionBruta<P> {
   const caminho = path.join(DIR_CAMADAS, nomeArquivo);
-  const bruto = nomeArquivo.endsWith(".gz")
-    ? gunzipSync(readFileSync(caminho))
-    : readFileSync(caminho);
-  return JSON.parse(bruto.toString("utf-8")) as FeatureCollectionBruta<P>;
+  if (!existsSync(caminho)) {
+    console.warn(`[lerGeoJSON] Arquivo não encontrado: ${caminho} (retornando coleção vazia)`);
+    return { type: "FeatureCollection", features: [] };
+  }
+  try {
+    const bruto = nomeArquivo.endsWith(".gz")
+      ? gunzipSync(readFileSync(caminho))
+      : readFileSync(caminho);
+    return JSON.parse(bruto.toString("utf-8")) as FeatureCollectionBruta<P>;
+  } catch (e) {
+    console.warn(`[lerGeoJSON] Erro ao ler ${caminho}:`, e);
+    return { type: "FeatureCollection", features: [] };
+  }
 }
