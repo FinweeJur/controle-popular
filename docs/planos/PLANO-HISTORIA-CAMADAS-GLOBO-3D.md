@@ -198,8 +198,9 @@ medir uma a uma:
   demografia achado), mas a **base histórica não está exposta** (P1b); USP e UFRJ ainda a medir.
 - **INCRA — Acervo Fundiário** — o projeto **já consome** o WFS do INCRA; verificar se há
   camada de **terras devolutas / sesmarias remanescentes** além do que o globo já publica.
-- **IPHAN — bens e arqueologia** — a página `/iphan/pt-br/acesso-a-informacao/dados-abertos`
-  responde 200, mas os conjuntos apontam para o `dados.gov.br`, cuja **API devolve 401** (P4).
+- **IPHAN — bens e arqueologia** — `/iphan/pt-br/acesso-a-informacao/dados-abertos` responde 200
+  mas **não linka o `dados.gov.br`**; as vias úteis estão na navegação: **Banco de Bens Culturais
+  Procurados (BCP)**, **Notificações de tombamento** e **Boletins Administrativos por ano** (P4).
 - **Wikidata / Wikipédia** — ponte terciária para **coordenadas de evento** (revoltas),
   nunca como campo `fonte` (regra do [AGENTS.md § 7](/AGENTS.md)).
 
@@ -346,7 +347,7 @@ destrava** — nada aqui se resolve por suposição.
 | P1b | **Censo de 1872** por município e **base histórica do CEDEPLAR** | Biblioteca do IBGE devolve **403** (dois UAs); CEDEPLAR 200 mas sem base exposta → procurar a via (contato/LAI ou repositório) | agente | ⛔ |
 | P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente | ⛔ |
 | P3 | **Fazendas de café** (Fase H): só as tombadas | **Inventário das Fazendas de Café** (IPHAN) e atlas da cafeicultura | agente | ⛔ |
-| P4 | **IPHAN**: rota de dado em massa morta/barrada | achada a página `/iphan/pt-br/acesso-a-informacao/dados-abertos` (200), que aponta para o `dados.gov.br` — cuja **API devolve 401**; falta a via de download direto | agente | 🚧 |
+| P4 | **IPHAN**: rota de dado em massa morta/barrada | `/iphan/pt-br/acesso-a-informacao/dados-abertos` responde 200 mas **não linka `dados.gov.br`**; a navegação do portal revela **três vias melhores**: `/servicos/banco-de-bens-culturais-procurados-bcp`, `/acesso-a-informacao/notificacoes-de-tombamento` e **Boletins Administrativos** por ano (os atos de tombamento). Sondar essas três | agente | 🚧 |
 | P5 | **Biblioteca Nacional** (Fase E): cartografia dos tratados | sondar o acervo digital — **medido 30/09: 403 com UA honesto E com UA de navegador**, em `bndigital.bn.gov.br` e `bn.gov.br/acervo`; a via segue a reencontrar | agente | ⛔ |
 | P6 | **Camada `hist-revoltas.geojson`** | **FEITO 30/09:** 15 lutas com lugar, geradas do próprio gazetteer (`scripts/gerar-camada-revoltas.py`) e registradas no globo | agente | ✅ |
 | P7 | **Link canônico das obras acadêmicas** acima | conferir obra a obra (sem link solto de catálogo) | agente | 🚧 |
