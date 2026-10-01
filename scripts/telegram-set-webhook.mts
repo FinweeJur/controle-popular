@@ -2,6 +2,22 @@
 /**
  * Conserta/registra o webhook do bot PÚBLICO do Telegram.
  *
+ * ═══ DOIS BOTS, DOIS PAPÉIS (decisão do dono, 01/10/2026) ═══
+ *
+ * - `@ControlePopularBOT` é o bot do PÚBLICO GERAL. Ele entrega o menu das
+ *   frentes do portal e é atendido pelo endpoint `/api/telegram` no www —
+ *   portanto vive de WEBHOOK. Este script é o dono desse webhook.
+ * - O bot de TRABALHO (comandos de status, sync, reiniciar) roda no `home-pc`
+ *   por LONG-POLL, com outro token. Os dois caminhos são exclusivos: Telegram
+ *   entrega por webhook OU por long-poll, nunca pelos dois.
+ *
+ * Por isso este script usa preferencialmente `TELEGRAM_BOT_TOKEN_PUBLICO`
+ * (caindo para `TELEGRAM_BOT_TOKEN` quando ela não existe) e CONFERE pelo
+ * `getMe` se o token é mesmo o do bot público. Sem essa conferência, rodar
+ * este script numa máquina cujo `.env` aponta para o bot de trabalho
+ * apontaria o webhook do bot ERRADO para o portal — e derrubaria o long-poll
+ * do bot de trabalho no mesmo golpe.
+ *
  * ═══ O PROBLEMA QUE ISTO RESOLVE ═══
  *
  * O Telegram entrega as mensagens por **POST** na URL do webhook. A raiz do
@@ -34,13 +50,10 @@
  * Medido em 01/10/2026: o webhook do bot apontava para
  * `https://tele.goldenherd.com/tg/webhook/8679298724` — um endereço externo,
  * fora do projeto, que aceita as mensagens em silêncio (pending 0, erro
- * nenhum). A única citação no repo é o `vigia-telegram-opencode.mts`
- * (commit `6d224a45`, 25/09/2026, sessão Antigravity), que o chama de
- * "webhook externo" e o RESTAURA a cada ciclo. O dono não configurou esse
- * endereço. Enquanto ele estiver ativo, o /menu do portal não recebe nada e
- * mensagem de usuário vai para fora. Este script devolve a entrega ao www;
- * se algum fluxo externo depender do goldenherd, ele vai re-tomar o webhook
- * na próxima vez que rodar — e aí o sintoma (bot mudo para o portal) volta.
+ * nenhum). A única citação no repo era o `vigia-telegram-opencode.mts`
+ * (commit `6d224a45`, 25/09/2026, sessão Antigravity), que o chamava de
+ * "webhook externo" e o RESTAURAVA a cada ciclo — o dono não configurou esse
+ * endereço, e o ciclo desfazia cada conserto.
  *
  * Uso:
  *   npx tsx scripts/telegram-set-webhook.mts            # registra no www
@@ -53,6 +66,9 @@ import { fileURLToPath } from "node:url";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const URL_WEBHOOK = "https://www.controlepopular.com.br/api/telegram";
+
+/** O bot que este script tem permissão de mexer. Qualquer outro: aborta. */
+const BOT_PUBLICO = "ControlePopularBOT";
 
 /**
  * Menu de comandos exibido pelo Telegram. Sem barra inicial (formato da API:
@@ -97,11 +113,26 @@ function lerEnv(caminho: string): Record<string, string> {
 }
 
 const ENV = lerEnv(path.join(RAIZ, "scripts", ".env"));
-const TOKEN = ENV.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN || "";
+/**
+ * O token do bot PÚBLICO entra primeiro. Numa máquina que também carrega o
+ * token do bot de trabalho (dev de código), é `TELEGRAM_BOT_TOKEN_PUBLICO`
+ * que diz qual credencial pode mexer no webhook do portal — sem ela, o
+ * `TELEGRAM_BOT_TOKEN` genérico seria usado, e é justamente ele que aponta
+ * para o bot errado em quem trabalha no dia a dia.
+ */
+const TOKEN =
+  ENV.TELEGRAM_BOT_TOKEN_PUBLICO ||
+  process.env.TELEGRAM_BOT_TOKEN_PUBLICO ||
+  ENV.TELEGRAM_BOT_TOKEN ||
+  process.env.TELEGRAM_BOT_TOKEN ||
+  "";
 const SECRET = ENV.TELEGRAM_WEBHOOK_SECRET || process.env.TELEGRAM_WEBHOOK_SECRET || "";
 
 if (!TOKEN) {
-  console.error("⛔ TELEGRAM_BOT_TOKEN ausente em scripts/.env — nada a fazer.");
+  console.error(
+    "⛔ Sem token em scripts/.env. Defina TELEGRAM_BOT_TOKEN_PUBLICO (bot público " +
+      `@${BOT_PUBLICO}) — ou TELEGRAM_BOT_TOKEN, se esta máquina só tem um bot.`,
+  );
   process.exit(1);
 }
 
@@ -134,8 +165,34 @@ async function api(metodo: string, corpo?: Record<string, unknown>) {
     : new Error(String(ultimoErro ?? `fetch de ${metodo} falhou`));
 }
 
+/**
+ * Aborta se o token em uso não for o do bot público.
+ *
+ * Só se aplica quando o script vai ESCREVER (registrar/remover). Sem esta
+ * trava, rodar este script numa máquina cujo `.env` aponta para o bot de
+ * trabalho (dev de código) apontaria o webhook do bot ERRADO para o portal —
+ * e ainda derrubaria o long-poll do bot de trabalho, que não pode conviver
+ * com webhook. O `--info` passa direto: é leitura, e às vezes é justamente o
+ * estado do bot errado que se quer ver.
+ */
+async function exigirBotPublico() {
+  const me = await api("getMe");
+  const username = (me.result as { username?: string } | undefined)?.username;
+  if (me.ok && username === BOT_PUBLICO) return;
+  console.error(
+    `⛔ este token é do bot @${username ?? "desconhecido"}, não do bot público @${BOT_PUBLICO}.`,
+  );
+  console.error("   O webhook do portal só pode ser mexido com o token do bot PÚBLICO.");
+  console.error("   O bot de trabalho (dev de código) usa long-poll, não webhook — ver o cabeçalho.");
+  process.exit(1);
+}
+
 async function principal() {
   const argv = process.argv.slice(2);
+
+  if (!argv.includes("--info")) {
+    await exigirBotPublico();
+  }
 
   if (argv.includes("--delete")) {
     const r = await api("deleteWebhook", { drop_pending_updates: false });

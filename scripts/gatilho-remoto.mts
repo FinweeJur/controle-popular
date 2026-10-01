@@ -82,8 +82,12 @@ function log(msg: string) {
 async function lerEnv(caminho: string): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
   if (!fs.existsSync(caminho)) return out;
-  for (const linha of fs.readFileSync(caminho, "utf-8").split("\n")) {
-    const m = linha.match(/^([A-Z_]+)=(.*)$/);
+  // `\r?` e `\uFEFF`: .env gravado no Windows (Notepad, `Set-Content -Encoding
+  // UTF8` do PowerShell 5.1) ganha CRLF e BOM. O regex termina em `$` e, sem
+  // a flag `m`, `$` não casa antes do `\r` — a última chave some; o BOM apaga
+  // a primeira. Medido em 01/10/2026 (ver AGENTS §6).
+  for (const linha of fs.readFileSync(caminho, "utf-8").split(/\r?\n/)) {
+    const m = linha.replace(/^\uFEFF/, "").match(/^([A-Z_]+)=(.*)$/);
     if (m) out[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
   }
   return out;
@@ -92,6 +96,16 @@ const ENV = await lerEnv(path.join(RAIZ, "scripts", ".env"));
 
 const GATILHO_TOKEN = ENV.GATILHO_TOKEN || "";
 const TELEGRAM_BOT_TOKEN = ENV.TELEGRAM_BOT_TOKEN || "";
+/**
+ * Token do bot PÚBLICO (@ControlePopularBOT) — usado SÓ pelo `/webhook`.
+ *
+ * O bot de trabalho (dev de código) roda por long-poll; webhook e long-poll
+ * são exclusivos no Telegram. Se o `/webhook` usasse o token de trabalho, ele
+ * apontaria o webhook do bot errado para o portal E derrubaria o long-poll —
+ * os dois sintomas no mesmo comando. Sem esta variável, o `/webhook` avisa em
+ * vez de tentar.
+ */
+const TELEGRAM_BOT_TOKEN_PUBLICO = ENV.TELEGRAM_BOT_TOKEN_PUBLICO || "";
 const TELEGRAM_CHAT_ID = ENV.TELEGRAM_CHAT_ID || "";
 const GATILHO_TELEGRAM_POLL = ENV.GATILHO_TELEGRAM_POLL === "true";
 const PORTA = Number(ENV.GATILHO_PORTA || 3029);
@@ -194,8 +208,12 @@ const TIPOS_RODAR: TipoTarefa[] = [
   "security", "pr", "indice", "rag", "build", "deploy",
 ];
 
-async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
-  const r = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${metodo}`, {
+async function telegramApi(
+  metodo: string,
+  corpo: Record<string, unknown>,
+  token: string = TELEGRAM_BOT_TOKEN,
+) {
+  const r = await fetch(`https://api.telegram.org/bot${token}/${metodo}`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(corpo),
@@ -276,16 +294,54 @@ async function cmdFila(chatId: string) {
  * O apex do domínio dá 301 e o Telegram não segue redirect, então webhook no
  * apex deixa o bot mudo. Este comando roda no home-pc (que alcança a API do
  * Telegram), registra no www e devolve o `getWebhookInfo` resumido.
+ *
+ * Usa `TELEGRAM_BOT_TOKEN_PUBLICO` e CONFERE pelo `getMe` se o bot é mesmo o
+ * público: este comando é do bot de trabalho, e o token do dia a dia é o do
+ * bot de trabalho. Sem a conferência, `/webhook` apontaria o webhook errado
+ * para o portal e mataria o long-poll do próprio bot que responde — os dois
+ * sintomas no mesmo clique.
  */
 async function cmdWebhook(chatId: string) {
   const url = "https://www.controlepopular.com.br/api/telegram";
+
+  if (!TELEGRAM_BOT_TOKEN_PUBLICO) {
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text:
+        "⛔ falta `TELEGRAM_BOT_TOKEN_PUBLICO` no scripts/.env.\n" +
+        "O webhook do portal é do bot PÚBLICO (@ControlePopularBOT).\n" +
+        "O token deste bot é o de trabalho, que vive de long-poll.\n" +
+        "Defina a variável e rode `/webhook` de novo. Nada foi registrado.",
+    });
+    return;
+  }
+
+  const me = (await telegramApi("getMe", {}, TELEGRAM_BOT_TOKEN_PUBLICO)) as {
+    ok?: boolean;
+    result?: { username?: string };
+  };
+  const dono = me.result?.username ?? "desconhecido";
+  if (dono !== "ControlePopularBOT") {
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text:
+        `⛔ o token em TELEGRAM_BOT_TOKEN_PUBLICO é do bot @${dono}, não do @ControlePopularBOT.\n` +
+        "Nada foi registrado — webhook e long-poll continuam como estavam.",
+    });
+    return;
+  }
+
   const segredo = ENV.TELEGRAM_WEBHOOK_SECRET;
-  const r = (await telegramApi("setWebhook", {
-    url,
-    ...(segredo ? { secret_token: segredo } : {}),
-    allowed_updates: ["message", "callback_query"],
-  })) as { ok?: boolean; description?: string };
-  const info = (await telegramApi("getWebhookInfo", {})) as {
+  const r = (await telegramApi(
+    "setWebhook",
+    {
+      url,
+      ...(segredo ? { secret_token: segredo } : {}),
+      allowed_updates: ["message", "callback_query"],
+    },
+    TELEGRAM_BOT_TOKEN_PUBLICO,
+  )) as { ok?: boolean; description?: string };
+  const info = (await telegramApi("getWebhookInfo", {}, TELEGRAM_BOT_TOKEN_PUBLICO)) as {
     result?: { url?: string; pending_update_count?: number; last_error_message?: string };
   };
   const w = info.result ?? {};
