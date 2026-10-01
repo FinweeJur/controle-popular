@@ -92,6 +92,7 @@ export function frenteDaRota(rota: string): string {
   if (rota.startsWith("/judiciario")) return "judiciario";
   if (rota.startsWith("/ambiental")) return "ambiental";
   if (rota.startsWith("/internacional")) return "ambiental";
+  if (rota.startsWith("/america-latina")) return "funcaosocialterra";
   if (rota.startsWith("/paraopeba")) return "paraopeba";
   if (rota.startsWith("/funcaosocialterra")) return "funcaosocialterra";
   if (rota.startsWith("/direitos-em-movimento")) return "direitos-em-movimento";

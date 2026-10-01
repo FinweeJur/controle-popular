@@ -1787,4 +1787,21 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/consumo-corporativo", texto: "Consumo Corporativo MG & G20" },
     ],
   },
+  {
+    id: "america-latina-mineracao",
+    titulo: "América Latina & Mineração Transnacional",
+    resumo: "Observatório de 51 instalações estratégicas de mineração em 9 países da América Latina integradas ao Globo 3D Terras.",
+    dados: [
+      "51 instalações georreferenciadas em 9 países latino-americanos",
+      "Triângulo do Lítio: Salares de Atacama, Hombre Muerto, Olaroz, Cauchari e Uyuni",
+      "Megaminas de cobre: Escondida, Chuquicamata, El Teniente, Antamina e Cerro Verde",
+      "Portos exportadores: Tubarão, Ponta da Madeira, Mejillones, Matarani e Bolívar",
+      "Fontes oficiais: ANM, SERNAGEOMIN, INGEMMET, SEGEMAR, SEMARNAT e COMIBOL",
+    ],
+    links: [
+      { href: "/america-latina", texto: "Mineração na América Latina" },
+      { href: "/funcaosocialterra/mapa", texto: "Globo 3D Terras" },
+      { href: "/empresas", texto: "Grandes Empresas e Mineradoras" },
+    ],
+  },
 ];
