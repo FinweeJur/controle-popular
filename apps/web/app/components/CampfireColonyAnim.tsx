@@ -113,7 +113,7 @@ export function CampfireColonyAnim() {
         display: "inline-block",
         verticalAlign: "middle",
         width: "100%",
-        maxWidth: 132,
+        maxWidth: 142,
         aspectRatio: "5 / 4",
         height: "auto",
         flexShrink: 0,
@@ -123,7 +123,7 @@ export function CampfireColonyAnim() {
         .cp-campfire svg { width: 100%; height: 100%; display: block; overflow: hidden; }
         .cp-campfire .cp-chamas {
           animation: cp-flicker 3s ease-in-out infinite alternate;
-          transform-origin: 286px 305px;
+          transform-origin: 286px 306px;
         }
         .cp-campfire .cp-fumaca path {
           animation: cp-dash 3.2s linear infinite;
@@ -159,10 +159,13 @@ export function CampfireColonyAnim() {
         </defs>
         <rect x="0" y="0" width="500" height="400" fill="url(#cp-ceu)" />
 
+        {/* Sombra deitada do domo no chão. */}
+        <ellipse cx={330} cy={322} rx={54} ry={6} fill="var(--cp-text-soft, #5b6a68)" opacity="0.12" />
+
         {/* Pinheiros pequenos atrás do domo (espiando por cima da pedra). */}
-        <Pinheiro x={352} altura={46} base={10} />
-        <Pinheiro x={370} altura={38} base={10} />
-        <Pinheiro x={388} altura={30} base={9} />
+        <Pinheiro x={352} altura={48} base={10} />
+        <Pinheiro x={372} altura={40} base={10} />
+        <Pinheiro x={390} altura={32} base={9} />
 
         {/* Domo de pedra à direita. */}
         <path
@@ -176,16 +179,17 @@ export function CampfireColonyAnim() {
         <ellipse cx={275} cy={332} rx={4.5} ry={3} fill="var(--cp-text-soft, #5b6a68)" opacity="0.75" />
 
         {/* Pinheiros finos à esquerda, com sombra no chão. */}
-        <Pinheiro x={70} altura={42} />
-        <Pinheiro x={98} altura={60} />
-        <Pinheiro x={122} altura={78} />
-        <Pinheiro x={148} altura={52} />
-        <Pinheiro x={176} altura={66} />
+        <Pinheiro x={58} altura={42} />
+        <Pinheiro x={84} altura={64} />
+        <Pinheiro x={108} altura={84} />
+        <Pinheiro x={134} altura={56} />
+        <Pinheiro x={158} altura={70} />
+        <Pinheiro x={184} altura={48} />
 
         {/* Fumaça: o traço mais alto da cena, fino e quase reto. */}
         <g className="cp-fumaca">
           <path
-            d="M 286 296 C 281 236 301 214 293 150 C 287 104 300 66 295 18"
+            d="M 286 292 C 281 232 301 210 293 146 C 287 100 300 62 295 16"
             fill="none"
             stroke="var(--cp-text-soft, #ffffff)"
             strokeWidth="4"
@@ -197,8 +201,9 @@ export function CampfireColonyAnim() {
 
         {/* Fogueira entre os pinheiros e a pedra. */}
         <g className="cp-chamas">
-          <Chama x={286} y={308} largura={13} altura={24} espelho={11} cor="var(--cp-tertiary, #fde26c)" opacidade={0.65} />
-          <Chama x={286} y={310} largura={6} altura={12} espelho={7} cor="var(--cp-primary, #fda263)" opacidade={0.95} />
+          <circle cx={286} cy={302} r={20} fill="var(--cp-tertiary, #fde26c)" opacity="0.28" />
+          <Chama x={286} y={306} largura={16} altura={30} espelho={13} cor="var(--cp-tertiary, #fde26c)" opacidade={0.8} />
+          <Chama x={286} y={308} largura={8} altura={16} espelho={8} cor="var(--cp-primary, #fda263)" opacidade={1} />
         </g>
       </svg>
     </span>
