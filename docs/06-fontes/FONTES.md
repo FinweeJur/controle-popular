@@ -1253,8 +1253,15 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-C
   (está no gerador).
 - ⚠️ **Engenho de cana não existe** neste acervo — a camada de engenhos precisa
   de outra fonte.
-- **IPHAN** — sondado em 30/09: `geoservicos.iphan.gov.br` **não resolve** (DNS) e
-  `dados.gov.br/api/publico/conjuntos-dados` devolveu **401**.
+- **IPHAN — base de bens tombados (medido 30/09):** a página
+  `/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados` publica
+  **planilhas oficiais**: `anexo-base-de-dados-tombamento-cgid.xlsx` (**2.542
+  linhas**; cabeçalho em **duas linhas** — grupos `TRAMITAÇÃO`, `INFORMAÇÕES SOBRE
+  O BEM`, `DADOS DO TOMBAMENTO` — e campos `UF`, `Município`, `Classificação`,
+  `Nome atribuído`, `Processo "T"`, `Ano de abertura`…) e
+  `anexo-base-de-dados-quilombos-cgid.xlsx`. ⚠️ O download exige o sufixo
+  **`/@@download/file`**. (De passagem: a API `dados.gov.br/api/publico/conjuntos-dados`
+  devolve **401** e `geoservicos.iphan.gov.br` **não resolve** — DNS.)
   ⚠️ **Armadilha medida (30/09):** o HTML do `www.gov.br/iphan` traz os links
   **escapados** (`\u002F` em vez de `/`) dentro do JSON embutido — no HTML cru
   **nenhum `href` aparece**. **Desescapando** (`\\u00XX` → caractere), a página dos
