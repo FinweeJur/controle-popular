@@ -15,6 +15,7 @@ import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
 import { BackToTop } from "@/app/components/BackToTop";
+import RastroCursor from "@/app/components/RastroCursor";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
@@ -245,6 +246,11 @@ export default function RootLayout({
 
           {/* Botão acessível para retornar ao topo da página em rolagens longas */}
           <BackToTop />
+          {/* Trilha de palavras que segue o mouse (efeito "cursor trail
+              text"). Decorativa: pointer-events none, aria-hidden e desligada
+              em prefers-reduced-motion e em tela de toque. Ver
+              `RastroCursor.tsx`. */}
+          <RastroCursor />
           {/* Rádio Brasil de Fato — player PERSISTENTE. Montado no layout
               raiz de propósito: a raiz não desmonta na navegação entre
               páginas, então a transmissão continua ao trocar de página ou de
