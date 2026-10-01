@@ -136,6 +136,21 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["terra", "territorio", "bacia", "floresta", "quilombo", "indigena", "car"],
   },
   {
+    id: "terra-vales",
+    titulo: "Vales do Jequitinhonha e do Mucuri — 82 municípios",
+    descricao:
+      "Catálogo territorial do nordeste mineiro: lítio do Médio Jequitinhonha, comunidades tradicionais, o povo Maxakali e links oficiais de conferência.",
+    href: "/terra-e-territorios/vales",
+    frente: "terras",
+    rotulo: "Eixo 2 · Vales · Jequitinhonha e Mucuri",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "jequitinhonha", "mucuri", "litio", "lithium valley", "geraizeiro", "vazanteiro",
+      "quilombola", "maxakali", "sempre-vivas", "aracuai", "itinga", "diamantina",
+      "teofilo otoni", "nanuque", "semiárido",
+    ],
+  },
+  {
     id: "cidades-hub",
     titulo: "199 Cidades Estratégicas de Minas Gerais",
     descricao: "Catálogo de municípios com dados de orçamento, contratações públicas, mineração e indicadores sociais.",

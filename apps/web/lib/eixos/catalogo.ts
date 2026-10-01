@@ -135,6 +135,15 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         rotaLegada: '/paraopeba',
       },
       {
+        id: 'vales',
+        eixoId: 'terra',
+        titulo: 'Vales do Jequitinhonha e do Mucuri',
+        descricao: '82 municípios: lítio do Médio Jequitinhonha, comunidades tradicionais e o povo Maxakali.',
+        slug: 'vales',
+        icone: 'MapPin',
+        tagsRelacionadas: ['jequitinhonha', 'mucuri', 'litio', 'comunidades-tradicionais', 'maxakali'],
+      },
+      {
         id: 'biomas',
         eixoId: 'terra',
         titulo: 'Biomas e Biodiversidade',

@@ -25,6 +25,7 @@ export type SubfrenteId =
   | 'cidades'
   | 'nossas-serras'
   | 'nossos-rios'
+  | 'vales'
   | 'biomas'
   // Eixo 3: Estado e Economia
   | 'judiciario'

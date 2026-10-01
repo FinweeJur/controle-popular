@@ -62,7 +62,7 @@ export default function TerraETerritoriosHub() {
               </p>
             </div>
             <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-              6 Subfrentes Ativas
+              7 Subfrentes Ativas
             </span>
           </div>
 
