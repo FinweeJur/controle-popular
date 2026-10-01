@@ -31,7 +31,9 @@ import {
   Maximize2,
   Minimize2,
   ArrowRight,
+  GripVertical,
 } from "lucide-react";
+import { usarArrastavel } from "@/lib/usarArrastavel";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -562,6 +564,12 @@ export function SeuNono() {
   const [dadosResumidos, setDadosResumidos] = useState<DadoResumido | null>(null);
   const [carregandoDados, setCarregandoDados] = useState(false);
 
+  // Widget arrastável: o canto pode tapar o conteúdo; a posição fica
+  // lembrada no `localStorage` (pedido do dono, 30/09/2026). O botão do FAB
+  // e o cabeçalho do painel servem de pega.
+  const { estilo, arrastando, foiArrasto, handlers, resetar } =
+    usarArrastavel("cp_nono_pos");
+
   const acoesRapidas = useAcoesRapidas(pathname);
 
   // A IA do assistente não depende de chave de API do lado do cliente: o
@@ -1007,7 +1015,12 @@ export function SeuNono() {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 flex flex-col items-start">
+    <div
+      // Em tela cheia o painel usa `fixed inset-0`; um `transform` no
+      // ancestral o prenderia à caixa arrastada, então a pega some ali.
+      style={telaCheia ? undefined : estilo}
+      className="fixed bottom-4 left-4 z-50 flex flex-col items-start"
+    >
       {aberto && (
         <div
           role={telaCheia ? "dialog" : undefined}
@@ -1021,7 +1034,15 @@ export function SeuNono() {
         >
           {/* Cabeçalho */}
           <div className="flex items-center justify-between border-b border-border bg-primary/10 px-4 py-3">
-            <div className="flex items-center gap-2">
+            <div
+              {...handlers}
+              onDoubleClick={resetar}
+              className={`flex touch-none items-center gap-2 ${
+                arrastando ? "cursor-grabbing" : "cursor-grab"
+              }`}
+              title="Arraste para mover; clique duplo volta ao canto"
+            >
+              <GripVertical size={14} className="shrink-0 text-text-soft" aria-hidden="true" />
               <AvatarSeuNono size={22} className="text-primary" />
               <div>
                 <p className="font-display text-sm font-semibold text-text">Seu Nonô</p>
@@ -1725,11 +1746,17 @@ export function SeuNono() {
       {/* Botão flutuante */}
       {!aberto && (
         <button
+          {...handlers}
+          onDoubleClick={resetar}
           onClick={() => {
+            if (foiArrasto()) return; // gesto foi mover, não abrir
             setAberto(true);
             if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
           }}
-          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          title="Arraste para mover; clique duplo volta ao canto"
+          className={`flex h-14 w-14 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            arrastando ? "cursor-grabbing" : "cursor-grab"
+          }`}
           aria-label="Abrir assistente Seu Nonô"
         >
           <AvatarSeuNono size={56} className="h-full w-full rounded-full" />

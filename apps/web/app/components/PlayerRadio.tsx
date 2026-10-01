@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ListMusic, Pause, Play, Radio } from "lucide-react";
+import { ChevronDown, GripVertical, ListMusic, Pause, Play, Radio } from "lucide-react";
 import {
   bandeiraDe,
   ESTACOES,
@@ -18,6 +18,7 @@ import {
 } from "@/lib/radio/eventos";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
+import { usarArrastavel } from "@/lib/usarArrastavel";
 
 /**
  * Player de rádio persistente e multi-estação.
@@ -52,6 +53,9 @@ export default function PlayerRadio() {
   const [tocando, setTocando] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [indiceAberto, setIndiceAberto] = useState(false);
+  // Janela arrastável: o canto pode tapar o que a pessoa precisa ler; a
+  // posição fica lembrada no `localStorage` (pedido do dono, 30/09/2026).
+  const { estilo, arrastando, handlers, resetar } = usarArrastavel("cp_radio_pos");
 
   const estacaoAtual = idAtual ? estacaoPorId(idAtual) ?? null : null;
 
@@ -185,6 +189,7 @@ export default function PlayerRadio() {
       />
 
       <div
+        style={estilo}
         className="fixed bottom-4 left-[4.75rem] z-40 flex flex-col items-start print:hidden"
         onMouseEnter={() => setIndiceAberto(true)}
         onMouseLeave={() => setIndiceAberto(false)}
@@ -257,6 +262,20 @@ export default function PlayerRadio() {
 
         {/* Botão flutuante principal */}
         <div className="flex items-stretch gap-1">
+          {/* Pega de arrasto: move a janelinha; clique duplo volta ao canto.
+              `touch-none` impede a página de rolar em vez de arrastar. */}
+          <button
+            type="button"
+            {...handlers}
+            onDoubleClick={resetar}
+            aria-label="Arrastar o player de rádio"
+            title="Arraste para mover; clique duplo volta ao canto"
+            className={`touch-none inline-flex cursor-grab items-center justify-center rounded-full border border-border bg-surface/95 px-1.5 text-text-soft shadow-lg backdrop-blur transition-colors hover:border-primary hover:text-primary ${
+              arrastando ? "cursor-grabbing" : ""
+            }`}
+          >
+            <GripVertical size={14} aria-hidden="true" />
+          </button>
           <button
             type="button"
             onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
