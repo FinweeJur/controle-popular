@@ -1,21 +1,22 @@
-# Plano de camadas históricas no globo 3D (revoltas, sesmarias e capitanias)
+# Plano de camadas históricas no globo 3D (capitanias, revoltas, terras e população)
 
 > **Tipo:** PLANO
 > **Domínio:** global (história + território + memória)
 > **Última medição:** 2026-09-30
 > **Leitura estimada:** média (10–15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [plano-geolocalizacao-camadas-globo-3d.md](plano-geolocalizacao-camadas-globo-3d.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** historia, globo 3d, capitanias hereditarias, sesmarias, revoltas, tordesilhas, tratado de madri, territorio, limites, ibge, arquivo publico mineiro, incra, openhistoricalmap, camadas, memoria
+> **Palavras-chave:** historia, globo 3d, capitanias hereditarias, sesmarias, revoltas, terras publicas, fazendas, engenhos, listas nominativas, mineracao escravizada, vilas mineradoras, tordesilhas, tratado de madri, ibge, arquivo publico mineiro, iepha, incra, openhistoricalmap, camadas, memoria
 
 ## Sumário
 
 - [O que o dev pediu](#o-que-o-dev-pediu)
+- [Status geral (30/09/2026)](#status-geral-30092026)
 - [O problema editorial: história não acusa, data e cita](#o-problema-editorial-história-não-acusa-data-e-cita)
 - [O que já existe no repositório (medido em 30/09/2026)](#o-que-já-existe-no-repositório-medido-em-30092026)
 - [O botão "Voe até aqui" e a ficha de contexto](#o-botão-voe-até-aqui-e-a-ficha-de-contexto)
 - [Fontes medidas (30/09/2026)](#fontes-medidas-30092026)
 - [Fontes por sondar (não medidas)](#fontes-por-sondar-não-medidas)
-- [As cinco camadas propostas](#as-cinco-camadas-propostas)
+- [As camadas propostas e o que já está no ar](#as-camadas-propostas-e-o-que-já-está-no-ar)
 - [Referências acadêmicas (Geografia, História, Antropologia)](#referências-acadêmicas-geografia-história-antropologia)
 - [Pendências a resolver](#pendências-a-resolver)
 - [Fases de execução](#fases-de-execução)
@@ -23,6 +24,23 @@
 - [Riscos e o que NÃO fazer](#riscos-e-o-que-não-fazer)
 - [Decisões registradas](#decisões-registradas)
 - [Origem](#origem)
+
+## Status geral (30/09/2026)
+
+Uma linha por etapa. "No ar" = publicado no repositório **e** verificado (suíte + `tsc`).
+
+| Etapa | Estado | O que falta |
+|---|---|---|
+| Fase 0 — "voe até aqui" + ficha de contexto | ✅ no ar | ligar o botão em mais páginas conforme ganharem coordenada |
+| Fase A — dicionário e gazetteer | ✅ no ar | P9: confirmar com o dev a leitura de "maiores" |
+| Fase B — capitanias (1534) | ✅ no ar | — |
+| Fase C — revoltas com lugar | ✅ no ar | OCR/conteúdo não se aplica |
+| Fase D — terras públicas do Império (APM) | ✅ no ar | — |
+| Fase F — página `/historia` | ✅ no ar | acessibilidade AA a revisar no dev server |
+| Fase G — listas nominativas + cruzamento histórico | 🚧 parcial | contagem de escravizados (OCR) e censo de 1872 (P1b) |
+| Fase H — fazendas e engenhos | 🚧 parcial | engenhos de cana e fazendas de café (P2, P3) |
+| Fase E — limites e tratados | ⛔ bloqueada | Biblioteca Nacional devolve 403 (P5) |
+| Camadas de mineração em UC/quilombo (plano da mineração) | ✅ no ar | — |
 
 ## O que o dev pediu
 
@@ -70,30 +88,38 @@ julga o passado como julga um ato de hoje.** Cada ficha leva "Fonte oficial ↗"
 
 ## O que já existe no repositório (medido em 30/09/2026)
 
-**A infraestrutura de camadas do globo já está pronta e documentada** —
-[plano-geolocalizacao-camadas-globo-3d.md](plano-geolocalizacao-camadas-globo-3d.md):
+**Camadas desta frente já publicadas no globo** (`/terras/globo/`, assunto `historia` e
+`territorio-mineracao`; todas nascem **desligadas**):
 
-- registro de camadas em `apps/web/public/terras/globo/js/config.js` (`ASSUNTOS` e
-  `LAYER_REGISTRY`, com `render: 'point'|'polygon'`, `color`, `pointSize`);
-- ficha lateral em `apps/web/public/terras/globo/js/ui/inspector.js`;
-- **geolocalização híbrida** já desenhada: coordenada nativa quando existe; senão
-  **centróide municipal (IBGE) com dispersão determinística** (espiral do número áureo pelo
-  hash do registro), o que evita empilhar pontos no mesmo pixel;
-- gerador de referência: `scripts/gerar-camadas-ambientais-globo.py`;
-- camadas versionadas em `apps/web/public/terras/globo/dados/camadas/`.
-
-**Dados que já existem e encostam nesta frente:**
-
-| Item | O que é | Onde |
+| Camada (id) | O que traz | Fonte |
 |---|---|---|
-| `lib/memoria/calendario.ts` | **538 verbetes** de lutas, revoltas e resistências (dia, ano, título, resumo, tipo, autor, órgão, URL) | campos medidos: `diaMes, ano, titulo, resumo, tipo, autor, orgao, url, semData, fonteCurta, fonteData` — ⚠️ **não há campo de lugar** |
-| `municipios-centroides.json` e `municipios-mg.json` | centróides oficiais do IBGE | `apps/web/data/` |
-| `terra-publica-certificada.geojson`, `devolutas-arrecadadas.geojson`, `assentamentos.geojson` | terra pública e assentamentos (INCRA) | camadas do globo |
-| `atos-area-protegida-municipios.geojson` | atos municipais sobre área protegida | camadas do globo |
+| `hist-capitanias` | **13** capitanias de 1534, com início/fim | OpenHistoricalMap (CC0) |
+| `hist-revoltas` | **15** revoltas e lutas com lugar | acervo de memória + gazetteer (IBGE) |
+| `hist-terras-publicas` | **14** registros de terras públicas do Império | Arquivo Público Mineiro |
+| `hist-fazendas-engenhos` | **13** conjuntos rurais tombados | IEPHA-MG |
+| `hist-listas-populacao` | **121** listas nominativas (1838-1840) | Arquivo Público Mineiro |
+| `mineracao-em-uc` | **875** polígonos de mineração em UC | MapBiomas × ANM × CNUC |
+| `mineracao-em-quilombo` | **21** polígonos em território quilombola | MapBiomas × ANM × INCRA |
 
-⚠️ **A lacuna que manda na Fase C:** os 538 verbetes de revolta **não têm coordenada nem
-município**. Georreferenciá-los exige **enriquecer o dado** (extrair o lugar do texto da
-fonte, documentado) — não "adivinhar" o ponto.
+**Páginas e infraestrutura:**
+
+- **`/historia`** — as cinco tabelas de leitura (capitanias, revoltas, fazendas, terras públicas,
+  listas nominativas), lendo os **mesmos** `.geojson` do globo por `lib/historia/camadas.ts`;
+  busca, ordenação, CSV por tabela e o **botão "Voe até aqui"** em cada revolta.
+- **`/mineracao/ilegal`** — o cruzamento comunidades × mineração, com **6 links** que abrem o globo
+  com a camada acesa.
+- **Deep link "voe até aqui"** (`public/terras/globo/js/core/voo.js` + `app/components/BotaoVoarAte.tsx`)
+  e a **ficha de contexto** (`contextos-lugares.json`, 20 contextos) — seção própria abaixo.
+- **`lib/memoria/locais.ts`** — o gazetteer curado de movimentos (coordenada do IBGE conferida por
+  teste) e o **`lib/historia/camadas.ts`**, que lê as camadas no servidor.
+- Registro de camadas em `apps/web/public/terras/globo/js/config.js` (`ASSUNTOS`, `LAYER_REGISTRY`,
+  `CAMADAS`), ficha em `js/ui/inspector.js`; sentinelas do painel em `js/ui/layerspanel.test.mjs`
+  (**63 fontes / 59 linhas**).
+
+**Coletores e geradores versionados:** `scripts/coletar-apm-territorio-historico.py`,
+`scripts/coletar-apm-listas-populacao.py` (retomável), `scripts/gerar-camada-revoltas.py`,
+`scripts/gerar-camada-fazendas-engenhos.py`, `scripts/etl/cavas/gerar-camadas-mineracao-protegida.py`,
+`scripts/etl/historia/marcar-zona-mineradora.py`.
 
 ## O botão "Voe até aqui" e a ficha de contexto
 
@@ -171,58 +197,77 @@ medir uma a uma:
 - **Wikidata / Wikipédia** — ponte terciária para **coordenadas de evento** (revoltas),
   nunca como campo `fonte` (regra do [AGENTS.md § 7](/AGENTS.md)).
 
-## As cinco camadas propostas
+## As camadas propostas e o que já está no ar
 
-Cada camada diz **o que prova** e **o que não prova** — e a ficha publica isso.
+Cada camada diz **o que prova** e **o que não prova** — e a ficha publica isso. O estado é o de
+30/09/2026.
 
-### 1. `hist-capitanias` — as capitanias hereditárias
+### 1. `hist-capitanias` — as capitanias hereditárias · ✅ **no ar** (13 polígonos)
 
-- **O que é:** polígonos das 14 donatarias (1534-1536) e a evolução até as capitanias
-  régias/província; recorte do Brasil.
-- **Fonte:** mapa oficial do IBGE (Luis Teixeira, 1574) e a seção *construção do território*;
-  **geometria de trabalho** a partir do OpenHistoricalMap, **conferida** contra o mapa oficial.
+- **O que é:** polígonos das capitanias de 1534-1536; recorte do Brasil.
+- **Fonte:** OpenHistoricalMap (CC0), **conferida** no modelo e na contagem contra o mapa oficial
+  do IBGE (Luís Teixeira, 1574).
 - **O que prova:** onde a Coroa tentou dividir e administrar a costa.
 - **O que NÃO prova:** que a linha tenha sido realidade no terreno — muitas capitanias
   fracassaram ou não passaram do papel.
+- **O que a medição corrigiu:** as 14 doações históricas aparecem como **13 relações** no OHM (as
+  duas porções do Maranhão são uma só); Pernambuco está lá como **"Nova Lusitânia"**.
 
-### 2. `hist-sesmarias-mg` — sesmarias de Minas Gerais
+### 2. Sesmarias do APM — ⚠️ **não é camada; é índice** (premissa corrigida pela medição)
 
-- **O que é:** pontos por **registro** de sesmaria (e cartas de confirmação/doação), com
-  período, série/códice e link para o APM.
-- **Fonte:** APM — Seção Colonial (`brtacervo`), busca por palavra-chave "sesmaria".
-- **Como localizar:** o registro traz **lugar** (freguesia/arraial/vila); o ponto sai do
-  **dicionário documentado** lugar→município atual + **centróide IBGE com dispersão**; o que
-  não casa fica com `municipio_atual: null` e o nome **como na fonte** preservado.
-- **O que prova:** que um ato de doação existe no acervo, com data e lugar.
-- **O que NÃO prova:** a área no terreno — o documento raramente traz uma geometria fechada.
-- ⚠️ **Titular:** o nome do sesmeiro é parte do **ato oficial** e entra como o ato o traz;
-  **nunca** CPF/CNPJ e **nunca** cruzamento com base de pessoa física (AGENTS § 5.2).
+- **O que a fonte dá:** o APM cataloga o **LIVRO de registro** de sesmarias (**1.726 séries**,
+  ex.: `SC-106 Registro de sesmarias, 1753-1754`), **sem lugar** — não a sesmaria individual.
+- **Decisão:** publicar o **índice documental** (`apps/web/data/apm-sesmarias-indice.json`), com
+  notação, título, período e link — **nunca ponto inventado**. Geolocalizar sesmaria a sesmaria
+  exigiria ler o índice digitalizado do livro.
+- **O que provou mesmo veio de outro fundo:** as **terras públicas** (abaixo).
 
-### 3. `hist-revoltas` — as revoltas no mapa
+### 3. `hist-revoltas` — as revoltas no mapa · ✅ **no ar** (15 pontos)
 
-- **O que é:** pontos das revoltas e lutas já catalogadas em `lib/memoria/calendario.ts`,
-  com ano, tipo e link da fonte.
-- **Fonte:** o próprio acervo do portal (Mística/Memória) + as fontes que ele cita; o
-  **enriquecimento** acrescenta `local`, `uf` e a coordenada (município IBGE).
+- **O que é:** pontos das revoltas e lutas do acervo de memória cujo lugar o gazetteer reconhece.
+- **Fonte:** o acervo do portal (Mística/Memória) + `lib/memoria/locais.ts` (coordenada do IBGE,
+  conferida por teste). Gerado por `scripts/gerar-camada-revoltas.py` — a camada, a página e a
+  Mística saem do mesmo dado.
 - **O que prova:** onde o episódio se deu, segundo a fonte citada.
-- **O que NÃO prova:** que o evento cobriu só aquele ponto — revolta é processo, não pino.
+- **O que NÃO prova:** que o evento cobriu só aquele ponto — revolta é processo, não pino; e é
+  **piso**: só 15 dos 533 verbetes têm lugar inequívoco.
 
-### 4. `hist-territorio-maximo` — limites e controle máximo
+### 4. `hist-territorio-maximo` — limites e controle máximo · ⛔ **bloqueada**
 
 - **O que é:** traçados dos marcos — **Tordesilhas (1494)**, **Madri (1750)**, **Santo
   Ildefonso (1777)** — e a extensão de controle efetivo no século XVIII.
-- **Fonte:** IBGE 500 anos (tratados) e mapas da **Biblioteca Nacional** (a sondar).
+- **Fonte:** IBGE 500 anos (tratados) e mapas da **Biblioteca Nacional** — **medido 30/09: 403
+  com UA honesto e com UA de navegador** (P5).
 - **O que prova:** o desenho **como um período e um tratado o fixaram**.
-- **O que NÃO prova:** presença efetiva contínua — "controle" é frágil e pontual; a ficha
-  diz isso.
+- **O que NÃO prova:** presença efetiva contínua — "controle" é frágil e pontual.
 
-### 5. `hist-divisao-municipal-<ano>` — a evolução das malhas (se houver vetor)
+### 5. `hist-divisao-municipal-<ano>` — a evolução das malhas · ⛔ **sem vetor**
 
 - **O que é:** malhas municipais históricas (1872, 1920, 1940…) para "ver o mapa mudar".
-- **Fonte:** IBGE — *Evolução da Divisão Territorial* (medido: **publicação e mapas em PDF**;
-  não se confirmou vetor no FTP, que só tem 2000-2025).
-- **Decisão de escopo:** se não houver vetor oficial, **declara a lacuna** e entrega só as
-  imagens citáveis — não desenhar à mão.
+- **Fonte:** IBGE — *Evolução da Divisão Territorial* (**publicação e mapas em PDF**; o FTP só tem
+  o vetor de **2000-2025**).
+- **Decisão de escopo:** sem vetor oficial, **declara a lacuna** e entrega só as imagens citáveis.
+
+### 6. `hist-terras-publicas` — terras públicas do Império · ✅ **no ar** (14 pontos)
+
+- **O que é:** registros da *Repartição Especial das Terras Públicas* (APM, 1854-1857) que nomeiam o
+  município no título, com período e link.
+- **O que NÃO prova:** a parcela no terreno — o ponto é o **centroide do município**; e é **piso**:
+  244 registros no acervo, 14 nomeiam município.
+
+### 7. `hist-fazendas-engenhos` — conjuntos rurais tombados · ✅ **no ar** (13 pontos)
+
+- **O que é:** fazendas históricas e uma usina **tombadas** pelo IEPHA-MG, com o ato legal.
+- **O que NÃO prova:** o universo das fazendas e engenhos do estado — é o que está tombado; e
+  **engenho de cana não existe** neste acervo (P2).
+
+### 8. `hist-listas-populacao` — listas nominativas (1838-1840) · 🚧 **no ar, com lacuna declarada**
+
+- **O que é:** **121** das **354** listas do APM (habitantes, fogos, idade, estado civil,
+  alfabetização e **ocupação**) que resolvem em município de MG; **64** vêm de vila/comarca
+  mineradora do século XVIII (critério histórico, não a lavra moderna).
+- **O que NÃO prova / não dá:** a **contagem** de pessoas escravizadas (exige OCR da imagem) e a
+  lavra no mesmo lugar no século XVIII — **cruzar com o satélite seria anacronismo** (recusado).
 
 ## Referências acadêmicas (Geografia, História, Antropologia)
 
@@ -323,6 +368,12 @@ destrava** — nada aqui se resolve por suposição.
 - Sondar as **fontes por sondar** (BN, labs, INCRA) e registrar `robots.txt`, licença e formato.
 - **Confirmar com o dev** a leitura de "maiores" e o recorte (Brasil colônia × MG × período).
 
+**Status medido 30/09/2026 — feito:** o dicionário vive em `lib/memoria/locais.ts` (movimentos) e
+nos geradores (`scripts/etl/historia/marcar-zona-mineradora.py` para as vilas do ouro), sempre com a
+coordenada lida do IBGE e **conferida por teste**. A dispersão determinística está nos geradores de
+camada. As fontes por sondar foram medidas e registradas na tabela de pendências. **Falta só a P9**
+(leitura de "maiores"), que é decisão do dev.
+
 ### Fase B — capitanias (1–2 dias)
 
 - Obter a geometria do OpenHistoricalMap (CC0) e **conferir** contra o mapa do IBGE; onde
@@ -412,6 +463,11 @@ destrava** — nada aqui se resolve por suposição.
 - Camada dos traçados (Tordesilhas/Madri/Santo Ildefonso); cada linha com o **ano e o
   tratado** no nome. Depende do que a BN liberar na Fase A.
 
+**Status medido 30/09/2026 — ⛔ bloqueada:** a **Biblioteca Nacional** devolve **403 com UA
+honesto e com UA de navegador** (`bndigital.bn.gov.br` e `bn.gov.br/acervo`), e a **Biblioteca do
+IBGE** também (403). Sem a cartografia digital dos tratados, a camada não nasce: desenhar à mão
+seria inventar fronteira. Fica na **P5**.
+
 ### Fase G — mineração escravizada e população escravizada (pedido do dev, 30/09)
 
 - **Pedido:** cruzar e publicar os **locais de mineração escravizada**.
@@ -432,9 +488,10 @@ destrava** — nada aqui se resolve por suposição.
   de navegador, em `bndigital.bn.gov.br` e `bn.gov.br/acervo`) e **Biblioteca do IBGE**
   (403 com os dois UAs). O **CEDEPLAR/UFMG** responde 200 (o programa de demografia foi
   achado), mas a base de dados histórica não está exposta em página pública óbvia.
-- **Próximo passo natural:** cruzar as **121 listas** com as áreas de **mineração** para
-  dizer onde o documento de população coexiste com a lavra — sem confundir "lista
-  nominativa" com "escravidão na mineração", que é leitura de conteúdo.
+- **Próximo passo natural:** ~~cruzar as 121 listas com as áreas de mineração~~ — **substituído
+  pelo critério acadêmico abaixo**, feito no mesmo dia: o cruzamento com a lavra moderna foi
+  **recusado por anacronismo**, e o que se fez foi o cruzamento **histórico** (vila/comarca do
+  ouro do século XVIII).
 
 **Critério acadêmico do cruzamento (pedido do dev: "com cuidado, revisando critério
 acadêmico científico") — feito em 30/09:**
@@ -476,6 +533,13 @@ acadêmico científico") — feito em 30/09:**
 - Critério de pronto: suíte verde, `tsc` limpo, acessibilidade AA, e **toda** camada com
   `fonte`, `data`, `autor`, `licenca` e `natureza` no arquivo.
 
+**Status medido 30/09/2026 — ✅ feito:** a página `/historia` está no ar com **cinco tabelas**
+(capitanias, revoltas — com o botão "Voe até aqui" —, fazendas tombadas, terras públicas e listas
+nominativas), lendo as camadas por `lib/historia/camadas.ts` (o mesmo `.geojson` do globo), com
+busca, ordenação e CSV por tabela, e a seção do **critério do cruzamento**. As sete camadas estão
+registradas no painel do globo; sentinelas em **63 fontes / 59 linhas**. **Resta a P8** (o próprio
+dev conferir a acessibilidade AA no dev server).
+
 ## Regras editoriais específicas
 
 1. **História não acusa.** O portal publica o documento e o mapa; o juízo é do leitor e da
@@ -486,6 +550,13 @@ acadêmico científico") — feito em 30/09:**
 5. **Lugar por dicionário, jamais por forma.** O que não casar fica `null` e visível.
 6. **Fonte primária primeiro:** IBGE, APM, Biblioteca Nacional; comunidade (OHM) e Wikipédia
    só como **partida**, com a conferência oficial registrada.
+7. **Anacronismo é proibido.** Não cruzar dados de séculos diferentes como se fossem o mesmo
+   fato (ex.: lista de 1838 × lavra detectada por satélite em 2024). O cruzamento válido é o
+   **histórico**, com o ano em cada ponta — e a recusa fica escrita na tela.
+8. **Contagem só quando a fonte conta.** "Lista nominativa" não é "N pessoas escravizadas": o
+   número exigiria ler o documento. Sem leitura, publica-se o documento, nunca o total.
+9. **Preço/etiqueta:** toda camada com fonte, data, autor, licença e natureza; o método
+   (centroide, piso) viaja no arquivo e na ficha.
 
 ## Riscos e o que NÃO fazer
 
@@ -495,18 +566,29 @@ acadêmico científico") — feito em 30/09:**
 | "Controle máximo" sem ano virar manchete | sempre com o tratado e o ano; nunca "o Brasil era X" |
 | Nome de sesmeiro tratado como dado pessoal | é ato oficial; publicar como o ato traz, **sem CPF/CNPJ** e sem cruzar com base de pessoa |
 | Casar arraial/freguesia por nome | dicionário documentado; divergência declarada |
+| **Cruzar séculos diferentes** (lista de 1838 × satélite de 2024) e sugerir "mineração escravizada" | recusar e **escrever a recusa** na tela; o cruzamento válido é com a vila mineradora do século XVIII |
+| Publicar "N escravizados" a partir do catálogo | o catálogo descreve o documento; só a leitura da imagem dá o número — e ela não existe ainda |
 | Copiar o OpenHistoricalMap como se fosse oficial | conferir contra o mapa oficial; divergência escrita |
 | Camada pesada derrubar o globo | nascer desligada; teto de payload (AGENTS § 5.1) e GeoJSON simplificado |
 | Sobrepor "história" a "denúncia" na mesma tela | assunto próprio no globo (`ASSUNTOS`), cor e grupo separados |
 
 ## Decisões registradas
 
-- **Dev, 30/09/2026:** pedir as camadas históricas no globo 3D (revoltas, limites e controle
-  máximo, sesmarias, capitanias), preferindo fontes **oficiais e acadêmicas** (Incra, IBGE,
-  USP, UFMG, UFRJ e outras), com busca proativa.
-- **Agente, 30/09/2026:** leitura de "maiores" como **maior extensão de controle**
-  (a confirmar na Fase A); camadas propostas acima; OpenHistoricalMap entra como ponto de
-  partida CC0, nunca como fonte oficial.
+- **Dev, 30/09/2026:** publicar **"voe até aqui"** na Mística do Dia, na linha do tempo e em
+  outras páginas, e dar **contexto histórico/educativo** ao clicar no local — atendido na Fase 0
+  e ligado em `/historia`, `/memoria` e `/mineracao/ilegal`.
+- **Dev, 30/09/2026:** somar **artigos acadêmicos** de Geografia, História e Antropologia para
+  caracterizar e localizar — feito: bibliografia de trabalho registrada, com o link canônico
+  como pendência (P7).
+- **Dev, 30/09/2026:** cruzar as listas com a mineração **"com cuidado, revisando critério
+  acadêmico científico"** — feito: cruzamento **histórico** (vila/comarca do ouro), com a recusa
+  do cruzamento anacrônico **escrita** na página.
+- **Dev, 30/09/2026:** reportar o **custo da sessão em yuan** a cada fase concluída. Medido na
+  telemetria do opencode (tabela `session`); a moeda/tabela do provedor é a **P11**.
+- **Dev, 30/09/2026:** registrar as **pendências para resolver depois** — a tabela
+  [Pendências a resolver](#pendências-a-resolver).
+- **Agente, 30/09/2026:** leitura de "maiores" como maior extensão de controle (P9, a confirmar);
+  OpenHistoricalMap entra como ponto de partida CC0, nunca como fonte oficial.
 - **Vale a regra da casa:** evidência histórica é **documento público com fonte e data**;
   dado de pessoa só como o ato oficial o traz.
 
