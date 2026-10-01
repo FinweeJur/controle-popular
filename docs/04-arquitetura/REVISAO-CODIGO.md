@@ -2,7 +2,7 @@
 
 > **Tipo:** ARQUITETURA
 > **Domínio:** global
-> **Última medição:** 2026-09-30
+> **Última medição:** 2026-10-01
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-FALLBACK-BANCO.md](../planos/PLANO-FALLBACK-BANCO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** revisao, onboarding, codigo, camadas, banco, drizzle, comBancoReserva, sanitizacao, seguranca, divida, indice
@@ -31,6 +31,7 @@
 - [Parte 17 — acervos estaduais e multinacionais](#parte-17--acervos-estaduais-e-multinacionais)
 - [Parte 18 — dados de fonte (fontes, coleta, texto)](#parte-18--dados-de-fonte-fontes-coleta-texto)
 - [Parte 19 — segurança, server-only e utilitários](#parte-19--segurança-server-only-e-utilitários)
+- [Parte 20 — junções editoriais (cruzamentos e teia)](#parte-20--junções-editoriais-cruzamentos-e-teia)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -728,6 +729,98 @@ Décima terceira passada, nos utilitários transversais e no envio de e-mail.
    recalculado em Betim `3106705` e Belo Horizonte `3106200`, e confere —,
    `lib/seo/contexto-pagina.ts`.
 
+## Parte 20 — junções editoriais (cruzamentos e teia)
+
+Décima quarta passada, no ponto mais sensível do portal: o módulo que junta
+dois dados verdadeiros e devolve uma frase para o leitor. É onde a
+[regra editorial](/AGENTS.md) aperta de verdade — dois números certos lado a
+lado podem sugerir um terceiro, falso. Nada aqui publica vínculo entre
+pessoas; o risco desta rodada é outro e mais comum: **concluir a partir de
+lacuna**, tratando "não sei" como "está tudo bem".
+
+Cobre [`lib/cruzamentos/correlacionador.ts`](../../apps/web/lib/cruzamentos/correlacionador.ts)
+(lido por 5 páginas), [`lib/teia-interesses.ts`](../../apps/web/lib/teia-interesses.ts)
+e o renderizador
+[`CruzamentosEducativos.tsx`](../../apps/web/app/components/eixos/CruzamentosEducativos.tsx).
+
+### Achados da Parte 20
+
+1. ⚠️ **A lacuna vira selo "Regular".** Quando um dos lados do cruzamento
+   não existe, `calcularCruzamentosMunicipais` devolve um card mesmo assim:
+   com `formula` (ex.: *Leitos Hospitalares × Demanda Populacional*) que
+   **não foi calculada**, um texto preenchido e `status: 'neutro'` — que o
+   componente renderiza como selo discreto "Regular". A página
+   `terra-e-territorios/cidades/[slug]` cai sempre nisso: passa **só** a
+   população, então os três cards saem sem número nenhum. O leitor lê
+   fórmula, selo e prosa e conclui que o portal analisou a cidade dele.
+   AGENTS §7: *lacuna é informação* — o selo de lacuna é "sem dado", não
+   "Regular".
+
+2. ⚠️ **População fabricada em dois caminhos.** `const pop = dados.populacao
+   ?? 50000` (correlacionador, linha 30) e
+   `dadosCompletos?.populacao ?? (cidade.tipo === 'capital' ? 1200000 : 150000)`
+   (`[slug]`, linha 88). Hoje é **latente**: as cinco chamadas passam
+   população e o `[slug]` não tem leitos/homicídios/repasses, então nada
+   multiplica. Mas qualquer campo que chegue depois passa a calcular
+   homicídios por 100 mil hab. e leitos por mil hab. sobre um número
+   digitado à mão — que é justamente o que o §8 proíbe
+   (*número na tela vem de constante medida com data*).
+
+3. ⚠️ **Um mesmo portal publica três referências de IDEB.** O motor usa
+   `idebMeta ?? 5.5`; a chamada de `/direitos-em-movimento/educacao` passa
+   `idebMeta: 5.8`; o cartão de topo **da mesma página** diz
+   `Meta nacional estipulada: 6,0`. Os valores divergem também: o cartão
+   publica `IDEB 5,8` e o cruzamento calcula com `idebAnosIniciais: 6,1`.
+   Sobra o rótulo `IDEB Médio Anos Iniciais`, que não existe no INEP —
+   o IDEB tem anos iniciais e anos finais. Número errado é dano.
+
+4. ⚠️ **Limiares sem fonte e sem data.** `taxaHomicidios > 25` e
+   `razaoLeitosPorHab < 1.5` (linha 66), `repassePerCapita > 1500`
+   (linha 96), `diferenca >= -0.5` (linha 36). São esses números que
+   decidem o selo "Alerta" ou "Positivo" — mas o rodapé do componente
+   promete *"Todo cruzamento tem base documental oficial (DataSUS, INEP,
+   SINESP, Tesouro)"*. Os limiares não vêm de nenhum dos quatro.
+
+5. ⚠️ **Repasso federal vira "Positivo".** `repassePerCapita > 1500 ?
+   'positivo' : 'neutro'` classifica receber mais transferência como
+   resultado bom, com selo verde. É julgamento de valor impresso como
+   cálculo — o mesmo desvio do *Repasse do Acordo* registrado no §7:
+   receber não é ser beneficiado.
+
+6. ⚠️ **Prosa que conclui sem medir.** *"Isso demonstra bom rendimento
+   escolar em relação à estrutura disponível"* — a estrutura não foi medida.
+   Também *"recursos vitais"* e *"duplo funil de vulnerabilidade"*. O módulo
+   embrulha a frase no formato de dado; a regra é o contrário: o número vem
+   do dado, o texto só o apresenta.
+
+7. 📌 **Sem hiperlink para a fonte.** `CruzamentoMunicipalItem` tem
+   `indicadoresEnvolvidos: string[]` (nomes em texto, ex.
+   `CNES/DataSUS`) e nenhum campo de URL. Regra das seis qualidades, item 1:
+   todo registro publicado leva link direto e específico para a fonte
+   oficial.
+
+8. 📌 **Totais de topo digitados à mão.** `/educacao` publica `178.416`,
+   `47,3 mi`, `88,2%`; `/saude-publica` publica `315.420`, `1,95`,
+   `11,4 mi`. Constantes literais sem data de medição e sem constante
+   medida por trás — iguais aos cartões que o §8 manda puxar de
+   constante datada.
+
+9. 📌 **O teste consolida o defeito.** O caso *"trata lacunas sem falhar"*
+   só espera `status === 'neutro'` nos três cards: cobre o sintoma e não o
+   defeito (mesmo padrão da Parte 9). Nenhum teste entra por
+   `populacao` ausente, que é o caminho da taxa fabricada do achado 2.
+
+10. ✅ **Conferida a Teia de Interesses.** O cabeçalho declara que nenhum
+    vínculo é exibido antes de comprovação em fonte oficial;
+    `gerarRelatorioCidadao` filtra link em branco, declara a lacuna na
+    metodologia e não inventa vínculo — com 4 testes cobrindo exatamente
+    isso. É o padrão editorial que o `correlacionador` ainda não segue.
+
+11. 📌 **Fontes da Teia citadas na mão.** A metodologia do relatório lista
+    `PNCP, TSE, SICAR, SIGBM/ANM, SIRENEJud, DATASUS` hardcoded,
+    duplicando `lib/fontes/registry.ts` — catálogo que ninguém consome
+    (achado 6 da Parte 18). Duas listas de fonte para o mesmo dado.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -783,7 +876,8 @@ Próximas micro-partes, por risco e retorno:
 
 **Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
 ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
-camada.
+camada. A fina já cobre as Partes 17 a 20 — acervos estaduais, catálogo de
+fontes, utilitários transversais e junções editoriais.
 
 ## Decisões registradas
 
