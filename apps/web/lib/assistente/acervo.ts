@@ -87,7 +87,7 @@ export function frenteDaRota(rota: string): string {
   ) {
     return "cidades";
   }
-  if (rota.startsWith("/congresso")) return "congresso";
+  if (rota.startsWith("/congresso") || rota.startsWith("/assembleias")) return "congresso";
   if (rota.startsWith("/judiciario")) return "judiciario";
   if (rota.startsWith("/ambiental")) return "ambiental";
   if (rota.startsWith("/paraopeba")) return "paraopeba";

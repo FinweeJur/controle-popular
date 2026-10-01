@@ -161,6 +161,12 @@ export interface ProposicaoEstadual {
   dataUltimaTramitacao?: string;
   /** Órgão ou comissão onde a matéria se encontra atualmente */
   orgaoAtual?: string;
+  /** Tema ou área de interesse da proposição (ex: Saúde, Meio Ambiente, Educação) */
+  tema?: string;
+  /** Âmbito territorial ou jurisdição da matéria (ex: 'Estadual - SP', 'Nacional') */
+  abrangencia?: string;
+  /** Data oficial de aprovação ou sanção da matéria, quando concluída (formato ISO) */
+  dataAprovacao?: string;
   /** Histórico de andamentos e eventos da tramitação */
   tramitacoes?: TramitacaoItem[];
 }
@@ -241,6 +247,10 @@ export interface FiltrosProposicoesEstaduais {
   q?: string;
   /** Tipo específico de proposição (ex: 'PL', 'PEC') */
   tipo?: string;
+  /** Tema ou área de interesse da proposição (ex: 'Saúde', 'Meio Ambiente') */
+  tema?: string;
+  /** Âmbito de abrangência federativa */
+  abrangencia?: string;
   /** Ano específico de apresentação */
   ano?: number;
   /** Situação atual (ex: 'Sancionado', 'Em Tramitação') */

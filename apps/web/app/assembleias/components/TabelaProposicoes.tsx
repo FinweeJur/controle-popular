@@ -31,24 +31,68 @@ interface TabelaProposicoesProps {
   siglaAssembleia: string;
 }
 
+/**
+ * Extrai ou categoriza o tema temático da proposição com base em palavras-chave da ementa
+ * caso o tema não tenha sido catalogado diretamente na fonte oficial.
+ */
+export function extrairTemaProposicao(p: ProposicaoEstadual): string {
+  if (p.tema) return p.tema;
+  const texto = `${p.codigo} ${p.ementa}`.toLowerCase();
+  if (texto.match(/saúde|hospital|sus|médic|vacina|leito|cirurgia|medicamento|doença|epidemia/)) return "Saúde Pública";
+  if (texto.match(/ambient|água|hídric|rio|resíduo|saneamento|floresta|fauna|flora|clima|polui|barragem|rejeito/)) return "Meio Ambiente & Recursos Hídricos";
+  if (texto.match(/educaç|escola|ensino|profess|aluno|merenda|universidade|creche|pedag/)) return "Educação & Ciência";
+  if (texto.match(/segurança|polícia|penitenciár|crime|violência|bombeir|armamento/)) return "Segurança Pública";
+  if (texto.match(/orçamento|tribut|imposto|fiscal|icms|receita|fundo|dívida|financeir/)) return "Orçamento & Tributação";
+  if (texto.match(/transporte|rodovia|trânsito|tarifa|mobilidade|estrada|ferrovia|ônibus|metrô/)) return "Transporte & Mobilidade";
+  if (texto.match(/mulher|indígen|quilomb|igualdade|criança|idoso|assistência|moradia|habitac|social/)) return "Direitos Sociais & Cidadania";
+  if (texto.match(/transparência|dados abertos|ouvidoria|acesso à informação|corrupção|fiscaliz/)) return "Transparência & Integridade";
+  return "Políticas Públicas Gerais";
+}
+
+/**
+ * Retorna a data em que a proposição foi aprovada ou sancionada,
+ * consultando o campo próprio ou a data de conclusão da tramitação.
+ */
+export function extrairDataAprovacao(p: ProposicaoEstadual): string | null {
+  if (p.dataAprovacao) return p.dataAprovacao;
+  const sit = p.situacao.toLowerCase();
+  if (sit.includes("sancionado") || sit.includes("aprovado") || sit.includes("promulgado")) {
+    return p.dataUltimaTramitacao ?? p.dataApresentacao;
+  }
+  return null;
+}
+
+/**
+ * Retorna o âmbito territorial / abrangência federativa da matéria.
+ */
+export function extrairAbrangencia(p: ProposicaoEstadual, siglaAssembleia: string): string {
+  return p.abrangencia ?? `Estadual (${siglaAssembleia})`;
+}
+
 export default function TabelaProposicoes({
   proposicoes,
   siglaAssembleia,
 }: TabelaProposicoesProps) {
   const [busca, setBusca] = useState("");
   const [tipoFiltro, setTipoFiltro] = useState("todos");
+  const [temaFiltro, setTemaFiltro] = useState("todos");
   const [situacaoFiltro, setSituacaoFiltro] = useState("todas");
   const [anoFiltro, setAnoFiltro] = useState("todos");
-  const [colunaOrdenacao, setColunaOrdenacao] = useState<keyof ProposicaoEstadual>("dataApresentacao");
+  const [colunaOrdenacao, setColunaOrdenacao] = useState<keyof ProposicaoEstadual | "tema">("dataApresentacao");
   const [ordemAsc, setOrdemAsc] = useState(false);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [linhaAberta, setLinhaAberta] = useState<string | null>(null);
   const ITENS_POR_PAGINA = 15;
 
-  // Extrai lista única de tipos, anos e situações disponíveis
+  // Extrai lista única de tipos, temas, anos e situações disponíveis
   const tiposDisponiveis = useMemo(() => {
     const set = new Set(proposicoes.map((p) => p.tipo));
     return Array.from(set).sort();
+  }, [proposicoes]);
+
+  const temasDisponiveis = useMemo(() => {
+    const set = new Set(proposicoes.map((p) => extrairTemaProposicao(p)));
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "pt-BR"));
   }, [proposicoes]);
 
   const anosDisponiveis = useMemo(() => {
@@ -67,10 +111,12 @@ export default function TabelaProposicoes({
 
     return proposicoes
       .filter((p) => {
+        const temaProp = extrairTemaProposicao(p);
         const casaBusca =
           !termo ||
           p.codigo.toLowerCase().includes(termo) ||
           p.ementa.toLowerCase().includes(termo) ||
+          temaProp.toLowerCase().includes(termo) ||
           p.autores.some(
             (a) =>
               a.nome.toLowerCase().includes(termo) ||
@@ -78,14 +124,23 @@ export default function TabelaProposicoes({
           );
 
         const casaTipo = tipoFiltro === "todos" || p.tipo === tipoFiltro;
+        const casaTema = temaFiltro === "todos" || temaProp === temaFiltro;
         const casaSituacao = situacaoFiltro === "todas" || p.situacao === situacaoFiltro;
         const casaAno = anoFiltro === "todos" || String(p.ano) === anoFiltro;
 
-        return casaBusca && casaTipo && casaSituacao && casaAno;
+        return casaBusca && casaTipo && casaTema && casaSituacao && casaAno;
       })
       .sort((a, b) => {
-        const valA = a[colunaOrdenacao];
-        const valB = b[colunaOrdenacao];
+        if (colunaOrdenacao === "tema") {
+          const temaA = extrairTemaProposicao(a);
+          const temaB = extrairTemaProposicao(b);
+          return ordemAsc
+            ? temaA.localeCompare(temaB, "pt-BR")
+            : temaB.localeCompare(temaA, "pt-BR");
+        }
+
+        const valA = a[colunaOrdenacao as keyof ProposicaoEstadual];
+        const valB = b[colunaOrdenacao as keyof ProposicaoEstadual];
 
         if (typeof valA === "string" && typeof valB === "string") {
           return ordemAsc
@@ -97,7 +152,7 @@ export default function TabelaProposicoes({
         }
         return 0;
       });
-  }, [proposicoes, busca, tipoFiltro, situacaoFiltro, anoFiltro, colunaOrdenacao, ordemAsc]);
+  }, [proposicoes, busca, tipoFiltro, temaFiltro, situacaoFiltro, anoFiltro, colunaOrdenacao, ordemAsc]);
 
   // Paginação
   const totalPaginas = Math.ceil(proposicoesFiltradas.length / ITENS_POR_PAGINA) || 1;
@@ -105,29 +160,53 @@ export default function TabelaProposicoes({
   const proposicoesPaginadas = proposicoesFiltradas.slice(inicio, inicio + ITENS_POR_PAGINA);
 
   // Alterna direção ou coluna de ordenação
-  function alternarOrdenacao(coluna: keyof ProposicaoEstadual) {
+  function alternarOrdenacao(coluna: keyof ProposicaoEstadual | "tema") {
     if (colunaOrdenacao === coluna) {
       setOrdemAsc(!ordemAsc);
     } else {
       setColunaOrdenacao(coluna);
-      setOrdemAsc(coluna === "codigo" || coluna === "tipo");
+      setOrdemAsc(coluna === "codigo" || coluna === "tipo" || coluna === "tema");
     }
     setPaginaAtual(1);
   }
 
   // Exportação CSV estrita com BOM UTF-8 e separador ';'
   function exportarCsv() {
-    const cabecalho = ["Código", "Tipo", "Ano", "Ementa", "Autores", "Situação", "Data Apresentação", "Link Oficial"];
-    const linhas = proposicoesFiltradas.map((p) => [
-      `"${p.codigo}"`,
-      `"${p.tipo}"`,
-      p.ano,
-      `"${p.ementa.replace(/"/g, '""')}"`,
-      `"${p.autores.map((a) => `${a.nome} (${a.partido})`).join(", ")}"`,
-      `"${p.situacao}"`,
-      `"${p.dataApresentacao}"`,
-      `"${p.urlProcesso}"`,
-    ]);
+    const cabecalho = [
+      "Código",
+      "Tipo",
+      "Tema",
+      "Abrangência",
+      "Ano",
+      "Ementa",
+      "Autores (Nome/Partido/Estado)",
+      "Situação",
+      "Data Protocolo",
+      "Data Aprovação",
+      "Link Oficial",
+    ];
+    const linhas = proposicoesFiltradas.map((p) => {
+      const tema = extrairTemaProposicao(p);
+      const abrangencia = extrairAbrangencia(p, siglaAssembleia);
+      const dataAprov = extrairDataAprovacao(p) ?? "Em tramitação";
+      const autoresFmt = p.autores
+        .map((a) => `${a.nome} (${a.partido} - ${siglaAssembleia})`)
+        .join(", ");
+
+      return [
+        `"${p.codigo}"`,
+        `"${p.tipo}"`,
+        `"${tema}"`,
+        `"${abrangencia}"`,
+        p.ano,
+        `"${p.ementa.replace(/"/g, '""')}"`,
+        `"${autoresFmt}"`,
+        `"${p.situacao}"`,
+        `"${p.dataApresentacao}"`,
+        `"${dataAprov}"`,
+        `"${p.urlProcesso}"`,
+      ];
+    });
 
     const csvContent = "\uFEFF" + [cabecalho.join(";"), ...linhas.map((l) => l.join(";"))].join("\r\n");
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
@@ -174,7 +253,7 @@ export default function TabelaProposicoes({
         </div>
 
         {/* Filtros em grade responsiva */}
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 pt-2 border-t border-border/40">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 pt-2 border-t border-border/40">
           {/* Tipo de Proposição */}
           <div className="flex items-center gap-1.5">
             <Filter size={13} className="text-muted shrink-0" aria-hidden="true" />
@@ -189,6 +268,26 @@ export default function TabelaProposicoes({
             >
               <option value="todos">Todos os Tipos ({proposicoes.length})</option>
               {tiposDisponiveis.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Tema Temático */}
+          <div className="flex items-center gap-1.5">
+            <select
+              value={temaFiltro}
+              onChange={(e) => {
+                setTemaFiltro(e.target.value);
+                setPaginaAtual(1);
+              }}
+              className="w-full rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-xs text-foreground focus:border-primary focus:outline-none"
+              aria-label="Filtrar por tema temático"
+            >
+              <option value="todos">Todos os Temas ({temasDisponiveis.length})</option>
+              {temasDisponiveis.map((t) => (
                 <option key={t} value={t}>
                   {t}
                 </option>
@@ -248,7 +347,7 @@ export default function TabelaProposicoes({
                 className="cursor-pointer px-4 py-3 hover:text-foreground select-none"
               >
                 <div className="flex items-center gap-1">
-                  <span>Código</span>
+                  <span>Código & Âmbito</span>
                   <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
                 </div>
               </th>
@@ -261,14 +360,23 @@ export default function TabelaProposicoes({
                   <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
                 </div>
               </th>
+              <th
+                onClick={() => alternarOrdenacao("tema")}
+                className="cursor-pointer px-3 py-3 hover:text-foreground select-none"
+              >
+                <div className="flex items-center gap-1">
+                  <span>Tema</span>
+                  <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
+                </div>
+              </th>
               <th className="px-4 py-3">Ementa & Objeto</th>
-              <th className="px-3 py-3">Autores</th>
+              <th className="px-3 py-3">Propositor(es)</th>
               <th
                 onClick={() => alternarOrdenacao("situacao")}
                 className="cursor-pointer px-3 py-3 hover:text-foreground select-none"
               >
                 <div className="flex items-center gap-1">
-                  <span>Situação</span>
+                  <span>Situação / Aprovação</span>
                   <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
                 </div>
               </th>
@@ -277,7 +385,7 @@ export default function TabelaProposicoes({
                 className="cursor-pointer px-3 py-3 hover:text-foreground select-none whitespace-nowrap"
               >
                 <div className="flex items-center gap-1">
-                  <span>Data</span>
+                  <span>Data Protocolo</span>
                   <ArrowUpDown size={12} className="text-muted" aria-hidden="true" />
                 </div>
               </th>
@@ -287,7 +395,7 @@ export default function TabelaProposicoes({
           <tbody className="divide-y divide-border">
             {proposicoesPaginadas.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-xs text-muted">
+                <td colSpan={8} className="px-4 py-8 text-center text-xs text-muted">
                   Nenhuma proposição encontrada para os filtros selecionados.
                 </td>
               </tr>
@@ -295,16 +403,29 @@ export default function TabelaProposicoes({
               proposicoesPaginadas.map((prop) => {
                 const aberta = linhaAberta === prop.codigo;
                 const totalTramitacoes = prop.tramitacoes?.length ?? 0;
+                const tema = extrairTemaProposicao(prop);
+                const abrangencia = extrairAbrangencia(prop, siglaAssembleia);
+                const dataAprov = extrairDataAprovacao(prop);
 
                 return (
                   <Fragment key={prop.codigo}>
                     <tr className={`transition-colors hover:bg-surface-2/60 ${aberta ? "bg-surface-2/40" : ""}`}>
-                      <td className="px-4 py-3 font-mono font-bold text-foreground whitespace-nowrap">
-                        {prop.codigo}
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <div className="font-mono font-bold text-foreground">
+                          {prop.codigo}
+                        </div>
+                        <span className="inline-block mt-0.5 rounded px-1.5 py-0.2 text-[10px] bg-surface-2 border border-border text-muted">
+                          {abrangencia}
+                        </span>
                       </td>
                       <td className="px-3 py-3 whitespace-nowrap">
                         <span className="rounded-md border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
                           {prop.tipo}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 whitespace-nowrap">
+                        <span className="inline-block rounded-md border border-border bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-foreground">
+                          {tema}
                         </span>
                       </td>
                       <td className="px-4 py-3 max-w-sm sm:max-w-md">
@@ -317,7 +438,7 @@ export default function TabelaProposicoes({
                           <span key={a.nome}>
                             {i > 0 && ", "}
                             <strong className="text-foreground">{a.nome}</strong>{" "}
-                            <span className="text-[10px]">({a.partido})</span>
+                            <span className="text-[10px]">({a.partido} - {siglaAssembleia})</span>
                           </span>
                         ))}
                       </td>
@@ -333,6 +454,11 @@ export default function TabelaProposicoes({
                         >
                           {prop.situacao}
                         </span>
+                        {dataAprov && (
+                          <span className="block text-[10px] font-mono text-emerald-600 dark:text-emerald-400 mt-0.5">
+                            Aprov.: {dataAprov}
+                          </span>
+                        )}
                       </td>
                       <td className="px-3 py-3 font-mono text-xs text-muted whitespace-nowrap">
                         {prop.dataApresentacao}
@@ -381,7 +507,7 @@ export default function TabelaProposicoes({
                     {/* Linha expansível com o histórico de tramitação */}
                     {aberta && (
                       <tr className="bg-surface-2/30">
-                        <td colSpan={7} className="px-4 py-4 sm:px-6">
+                        <td colSpan={8} className="px-4 py-4 sm:px-6">
                           <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
                             <LinhaDoTempoTramitacao
                               eventos={prop.tramitacoes ?? []}

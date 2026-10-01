@@ -864,6 +864,18 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "/fontes-estados", texto: "Fontes dos 27 Estados" },
             ],
           },
+          {
+            id: "tramitacao-legislativa-tabela",
+            pergunta: "Como pesquisar a tramitação de projetos de lei por tema, data e autor?",
+            resposta:
+              "Consulte a tabela interativa das 27 Assembleias e do Congresso. Filtre por tema, data de protocolo, aprovação e autor.",
+            link: { href: "/assembleias", texto: "Tabela das Assembleias Estaduais" },
+            links: [
+              { href: "/congresso/proposicoes", texto: "Proposições do Congresso" },
+              { href: "/assembleias/sp", texto: "Proposições de SP (ALESP)" },
+              { href: "/assembleias/mg", texto: "Proposições de MG (ALMG)" },
+            ],
+          },
         ],
       },
       {
