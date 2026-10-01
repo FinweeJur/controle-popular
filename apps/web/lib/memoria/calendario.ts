@@ -4867,14 +4867,12 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "09-30",
     ano: "",
-    titulo: "Geopolítica da fome – 2 volumes.",
-    resumo: "FERNANDES, Bernardo Mançano e GONÇALVES, Carlos Walter. Josué de Castro – vida e obra.",
+    titulo: "Nasce Carlos Maia de Souza, o Carlito Maia, em Lavras (MG)",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
     orgao: "Calendário Histórico dos Trabalhadores e Trabalhadoras (org. Ângelo Diogo Mazin, Janaina Strozake e Miguel Enrique Almeida Stádile)",
     fonteData: "2009",
     fonteCurta: "Calendário Histórico das Trabalhadoras/es, MST, 2009",
-    semData: true,
   },
   {
     diaMes: "10-01",

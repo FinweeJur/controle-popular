@@ -79,7 +79,7 @@ const SECOES_MENU = [
       { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion },
       { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send },
       { label: 'Decisões de Acesso (LAI)', href: '/ambiental/decisoes-lai', icone: FileText },
-      { label: 'Guia Cívico de Direitos', href: '/noticias/direitos-em-movimento-guia', icone: BookOpen },
+      { label: 'Guia Cívico de Direitos', href: '/direitos-em-movimento', icone: BookOpen },
     ],
   },
   {

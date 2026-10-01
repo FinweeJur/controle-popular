@@ -23,9 +23,12 @@
  * 3. sem entrada do dia, o componente não renderiza nada — a lacuna é
  *    declarada pelo silêncio, nunca por fato inventado (AGENTS.md §7).
  *
- * Acessibilidade: é um `aside` rotulado, sem cor como único canal, e a
- * fonte vai colada ao fato (rótulo "Fonte" com o ABNT visível), como o
- * §8 do AGENTS.md exige.
+ * Acessibilidade: é um `aside` rotulado e sem cor como único canal.
+ *
+ * EDIÇÃO DE TEXTO (dono, 30/09/2026): a fonte é citada DIRETO, sem o
+ * rótulo "Fonte:" e sem a nota "fato sem data no original". O bloco
+ * conta a história (quem, o que, quando, qual luta) e fecha com a citação
+ * curta `(Obra, Autor, Data)` — nada de legenda tampão.
  */
 
 import { useEffect, useState } from "react";
@@ -97,12 +100,6 @@ export default function MisticaDoDia() {
         {entrada.resumo ? (
           <p className="mt-1 text-[.95em] text-text-soft">{entrada.resumo}</p>
         ) : null}
-        {entrada.semData ? (
-          <p className="mt-1 text-[.8em] text-muted">
-            Fato do calendário sem data no original — exibido para não deixar
-            o dia vazio.
-          </p>
-        ) : null}
         {local ? (
           <p className="mt-1 text-[.85em] text-muted">
             <span className="font-semibold">Onde: </span>
@@ -117,7 +114,6 @@ export default function MisticaDoDia() {
           </p>
         ) : null}
         <p className="mt-2 text-[.85em] text-muted">
-          <span className="font-semibold">Fonte: </span>
           {entrada.url ? (
             <a
               href={entrada.url}
