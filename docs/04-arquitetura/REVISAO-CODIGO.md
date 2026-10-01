@@ -1138,6 +1138,17 @@ configuração que ninguém conferia.
    (ele, `checar-dado-pessoal.py` e o teste) — e das três, só uma se
    auto-prova. Registrado, não corrigido nesta sessão.
 
+6. 📌 **`gitleaks` não está nesta máquina — e o hook avisa honestamente.**
+   O pre-push foi exercitado pela primeira vez logo depois da correção
+   23.1 (01/10/2026) e imprimiu: `ℹ️ pre-push: gitleaks não instalado —
+   scan de segredo fica só na CI`. Isto é desenho, não defeito: o hook é
+   best-effort, `.gitleaks.toml` + `scan-segredos.yml` rodam no push, e o
+   guarda de código local **já caça padrão de credencial** (a própria
+   saída dele diz "nenhum CPF de pessoa real nem segredo"). O que sobra é
+   alcance: o gitleaks tem milhares de regras e o guarda local tem as
+   escritas à mão. Instalar exige baixar binário — esta máquina não tem
+   `winget` nem `scoop`. Decisão do dono, registrada aqui.
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -1286,6 +1297,9 @@ cada correção com teste de regressão e conversão do marcador
 - `--self-test` do guarda de **código** (dívida 23.5): hoje só o de dado se
   prova; o de código é coberto por `sem-cpf-no-repo.test.ts`, que é outra
   régua — três cópias da regra e uma só se auto-verifica.
+- `gitleaks` local (dívida 23.6): binário à mão, sem `winget` nem `scoop`
+  nesta máquina. A CI já roda `scan-segredos.yml` no push e o guarda de
+  código local já caça padrão de credencial — falta só alcance de regras.
 
 **Verificação em cada fase:** `tsc --noEmit`, `eslint` nos arquivos do diff,
 `vitest` do escopo, guarda de CPF e `python scripts/validar-documentacao.py`.
