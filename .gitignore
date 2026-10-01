@@ -5,6 +5,11 @@ out/
 .wrangler/
 .env
 .env.local
+# Backups e variantes de .env (contêm segredo). `.env.local` é match EXATO e
+# NÃO pega `.env.local.pre-guara.bak` — sem estas linhas, um backup com senha
+# de banco sobe por acidente em `git add .`.
+.env*.bak
+*.pre-guara.bak
 
 # Cópias baixadas por `scripts/arquivar-fontes.mjs` (arquivamento de fontes,
 # docs/PLANO-ARQUIVO-DE-FONTES.md). NUNCA dentro de `apps/web/public/` — ver
