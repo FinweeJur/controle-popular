@@ -23,8 +23,10 @@ build-status.txt
 
 # ── Redução do contexto de build (teto Guara = 256 MB; medido 442 MB em 01/10) ──
 # Documentação e ferramentas da máquina: nenhum passo do `next build` lê.
+# ATENÇÃO: `scripts/` da raiz NÃO pode sair — app/canada, app/eua e
+# lib/automacao importam tipos de scripts/coletar-*-acervo.mts (medido no
+# build de 01/10: TS2307 derrubou o deploy 4fb1efcd).
 docs
-scripts
 companion
 supabase
 bots
