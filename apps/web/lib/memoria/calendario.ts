@@ -88,7 +88,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "01-03",
     ano: "1898",
-    titulo: "3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes",
+    titulo: "3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro.",
     resumo: "Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro. Cavaleiro da Esperança , como o chamou o escritor Jorge Amado, participou do Movimento Tenentista em 1922 e, em 1924, inicia em Santo Ângelo, no Rio Grande do Sul, a Coluna Prestes, que andou por quase todo o Brasil – mais de 35 mil quilômetros – a cavalo e a pé, durante dois anos.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -575,7 +575,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "01-28",
     ano: "",
-    titulo: "Mahuad era vice-presidente de Abdalá Bucaram, destituído pelo Congresso Nacional em 1997, e seguia a cartilha estadunidense na política equatoriana: em 1998, substituiu a moeda corrente, o sucre, pelo dólar estadunidense",
+    titulo: "Mahuad era vice-presidente de Abdalá Bucaram, destituído pelo Congresso Nacional em 1997, e seguia a cartilha estadunidense na política equatoriana: em 1998, substituiu a moeda corrente, o sucre, pelo dólar estadunidense, realizando a chamada dolarização.",
     resumo: "Os pobres foram às ruas, numa insurreição generalizada.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -811,7 +811,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-14",
     ano: "",
-    titulo: "1997: Morte de Salete Strozake, educadora e dirigente do Movimento dos Trabalhadores Rurais Sem Terra",
+    titulo: "1997: Morte de Salete Strozake, educadora e dirigente do Movimento dos Trabalhadores Rurais Sem Terra Educadora popular e militante do Movimento dos Trabalhadores Rurais Sem Terra, organizadora do setor de educação do MST.",
     resumo: "Educadora popular e militante do Movimento dos Trabalhadores Rurais Sem Terra, organizadora do setor de educação do MST. Falecida em um acidente de ônibus no Paraná, foi homenageada com o nome da primeira turma de um curso de graduação para trabalhadores sem-terra, a Pedagogia da Terra, em parceria com a Unijuí.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -834,7 +834,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-16",
     ano: "",
-    titulo: "Outras terras do mundo reclamam a colaboração de meus modestos esforços",
+    titulo: "Outras terras do mundo reclamam a colaboração de meus modestos esforços Em abril de 1965 chega às selvas do Congo, onde permanece por sete meses.",
     resumo: "Em 1966, por insistência de Fidel, regressa a Cuba, onde, incógnito, se prepara junto a um grupo de companheiros e parte depois, em 23 de outubro do mesmo ano, para a Bolívia para consagrar-se à causa da libertação da América Latina.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -914,7 +914,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-21",
     ano: "2008",
-    titulo: "Trechos da palestra proferida por Emília Viotti da Costa, na Escola Nacional Florestan Fernandes, em 21 de fevereiro de 2008",
+    titulo: "Trechos da palestra proferida por Emília Viotti da Costa, na Escola Nacional Florestan Fernandes, em 21 de fevereiro de 2008 Sabemos que a economia colonial desde cedo se organizou em torno da exportação de produtos tropicais para a metrópole e",
     resumo: "Sabemos que a economia colonial desde cedo se organizou em torno da exportação de produtos tropicais para a metrópole e que a população nativa se revelou pouco adaptável ao trabalho agrícola. Sabemos também que o comércio de escravos estabelecido com países africanos revelou-se não só útil por fornecer escravos para a lavoura, como também extremamente lucrativos para os traficantes.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -925,7 +925,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-22",
     ano: "",
-    titulo: "1989: Morte de Olivio Albani, líder sem-terra",
+    titulo: "1989: Morte de Olivio Albani, líder sem-terra Olívio Albani estava entre as 700 famílias sem-terra que ocupavam a fazenda Caldato, em Palma Sola (SC), em 12 de junho",
     resumo: "Olívio Albani estava entre as 700 famílias sem-terra que ocupavam a fazenda Caldato, em Palma Sola (SC), em 12 de junho de 1989.",
     tipo: ["campo"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -971,7 +971,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-26",
     ano: "",
-    titulo: "1984: Greve de peões da construção civil – Belo Horizonte/MG",
+    titulo: "1984: Greve de peões da construção civil – Belo Horizonte/MG Mais de 30 mil peões da construção civil entram em greve em Belo Horizonte/MG exigindo reajuste salarial, registro em",
     resumo: "Mais de 30 mil peões da construção civil entram em greve em Belo Horizonte/MG exigindo reajuste salarial, registro em carteira e aviso prévio. A PM reprime um piquete e deixa um morto e 30 feridos.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -983,7 +983,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "02-27",
     ano: "1917",
-    titulo: "1917 (27 de fevereiro no calendário russo): Greve das tecelãs de São Petersburgo",
+    titulo: "1917 (27 de fevereiro no calendário russo): Greve das tecelãs de São Petersburgo Esta greve gera uma grande manifestação e dá início à Revolução Russa.",
     resumo: "Esta greve gera uma grande manifestação e dá início à Revolução Russa.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -1054,7 +1054,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "03-04",
     ano: "",
-    titulo: "Deixou obras interessantes, como Cachaça (contos, 1951), Irmão Juazeiro (romance, 1961), Que são as Ligas Camponesas (1962), Até quarta, Isabela (1964), Cambão (1975), Guia do camponês, ABC do camponês, Cartilha do camponês",
+    titulo: "Deixou obras interessantes, como Cachaça (contos, 1951), Irmão Juazeiro (romance, 1961), Que são as Ligas Camponesas (1962), Até quarta, Isabela (1964), Cambão (1975), Guia do camponês, ABC do camponês, Cartilha do camponês, Carta de alforria do camponês, Bença, mãe.",
     resumo: "A questão agrária no Brasil – volume IV: história e natureza das Ligas Camponesas. São Paulo: Expressão Popular, 2006.",
     tipo: ["campo"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -1553,7 +1553,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "03-29",
     ano: "",
-    titulo: "Constituiu o ponto culminante de um surto de mobilização que teve como marco o tiro no peito que matou o estudante Edson Luís de Lima Souto, de 18 anos, em 29 de março",
+    titulo: "Constituiu o ponto culminante de um surto de mobilização que teve como marco o tiro no peito que matou o estudante Edson Luís de Lima Souto, de 18 anos, em 29 de março, em meio à brutal invasão do refeitório universitário do Calabouço por tropas da Policia Militar.",
     resumo: "O movimento estudantil renascia na oposição ao aumento do preço do bandejão e à privatização do ensino, patrocinada por um governo submisso às políticas de mercantilização da vida apregoada pelos Estados Unidos em toda a América Latina. O aparelho repressivo resolveu cortar o bem pela raiz, mas a selvageria dramaticamente exposta em fotos e imagens pelos meios de comunicação gerou efe",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -1807,7 +1807,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "04-11",
     ano: "1925",
-    titulo: "Em 11 de abril de 1925, a Coluna Prestes, que vinha do Rio Grande do Sul, encontrou-se em Foz do Iguaçu com a Coluna Miguel Costa, que vinha de São Paulo, formando uma única coluna que percorreu cerca de 25 mil quilômetros pelo Brasil",
+    titulo: "Em 11 de abril de 1925, a Coluna Prestes, que vinha do Rio Grande do Sul, encontrou-se em Foz do Iguaçu com a Coluna Miguel Costa, que vinha de São Paulo, formando uma única coluna que percorreu cerca de 25 mil quilômetros pelo Brasil, entre 1925 e 1927",
     resumo: "A Grande Marcha Os militares e civis que participaram da Coluna reivindicavam a destituição do presidente Arthur Bernardes, a reformulação econômica e social do país, a nacionalização das empresas estrangeiras e o aumento de salários para todos os trabalhadores e trabalhadoras. O grande ideal era salvar a pátria",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -1889,7 +1889,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "04-17",
     ano: "1961",
-    titulo: "No dia 17 de abril de 1961, cerca de 1.500 cubanos exilados nos Estados Unidos, treinados e financiados pela CIA, desembarcam na Baía dos Porcos, em Cuba, com o objetivo de destruir o governo instaurado pela Revolução de 1959",
+    titulo: "No dia 17 de abril de 1961, cerca de 1.500 cubanos exilados nos Estados Unidos, treinados e financiados pela CIA, desembarcam na Baía dos Porcos, em Cuba, com o objetivo de destruir o governo instaurado pela Revolução de 1959, sob o comando de Fidel Castro.",
     resumo: "O governo estadunidense esperava repetir o feito dos guerrilheiros, assassinando Fidel Castro e recolocando no poder um grupo que se submetesse às ordens e interesses dos EUA. Porém, esse grupo não tinha nenhum apoio do povo cubano, e, em três dias de combate, quase todos os mercenários foram capturados.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -1948,7 +1948,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "04-20",
     ano: "1997",
-    titulo: "Na noite do dia 20 de abril de 1997, depois de participar de mobilizações em torno da questão agrária no Brasil, como a homologação das terras dos pataxós, Galdino dormia num ponto de ônibus na cidade de Brasília",
+    titulo: "Na noite do dia 20 de abril de 1997, depois de participar de mobilizações em torno da questão agrária no Brasil, como a homologação das terras dos pataxós, Galdino dormia num ponto de ônibus na cidade de Brasília, pois se atrasara para entrar na pensão onde estava hospedado.",
     resumo: "Galdino teve 90% de seu corpo queimado e não resistiu. Os jovens não foram condenados por assassinato, mas apenas por agressão física; depois de curto período em regime de prisão semiaberto, foram postos em liberdade.",
     tipo: ["campo"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -2282,7 +2282,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "05-07",
     ano: "2000",
-    titulo: "Paulo em 7 de maio de 2000:",
+    titulo: "Paulo em 7 de maio de 2000: Ser negro no Brasil é, pois, com frequência, ser objeto de um olhar enviesado.",
     resumo: "Ser negro no Brasil é, pois, com frequência, ser objeto de um olhar enviesado. A chamada boa sociedade parece considerar que há um lugar predeterminado, lá em baixo, para os negros, e assim tranquilamente se comporta .",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -2713,7 +2713,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "05-31",
     ano: "",
-    titulo: "Atos dos sindicatos, movimentos sociais e estudantis por todo o país foram organizados no dia 31 de maio, o chamado",
+    titulo: "Atos dos sindicatos, movimentos sociais e estudantis por todo o país foram organizados no dia 31 de maio, o chamado Dia Nacional de Solidariedade: somos todos petroleiros",
     resumo: "De seu lado, os trabalhadores da categoria de todo o país aprovam a suspensão da greve, indicada pela FUP. Em 3 de junho de 1995, a greve dos petroleiros termina com a saída dos trabalhadores da refinaria de Cubatão, mas entra para a história como a maior paralisação da categoria.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -2980,7 +2980,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "06-15",
     ano: "",
-    titulo: "Ocorrido entre os dias 11 e 15 de junho no Ginásio Nilson Nelson, definiu a palavra de ordem",
+    titulo: "Ocorrido entre os dias 11 e 15 de junho no Ginásio Nilson Nelson, definiu a palavra de ordem Reforma Agrária, por Justiça Social e Soberania Popular",
     resumo: "V Congresso reuniu 17.500 trabalhadores rurais e se tornou o maior congresso camponês já realizado na América Latina. Ocorrido entre os dias 11 e 15 de junho no Ginásio Nilson Nelson, definiu a palavra de ordem",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3038,7 +3038,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "06-18",
     ano: "1954",
-    titulo: "Com o argumento de que era preciso derrubar o presidente para impedir o avanço do comunismo internacional, o governo dos Estados Unidos treinou e financiou a formação de um exército de oposição, além de participar diretamente do golpe",
+    titulo: "Com o argumento de que era preciso derrubar o presidente para impedir o avanço do comunismo internacional, o governo dos Estados Unidos treinou e financiou a formação de um exército de oposição, além de participar diretamente do golpe, enviando tropas e aviões",
     resumo: "Conforme as tropas invasoras avançavam, as comunidades leais ao governo democrático eram massacradas. Sem o apoio do próprio Exército guatemalteco, Árbenz Guzmán foi obrigado a renunciar em 27 de junho de 1954 e exilar-se no México, onde faleceria em 1971.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3148,7 +3148,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "06-26",
     ano: "",
-    titulo: "Ao saírem de braços dados e com os traços inconfundíveis de consciência cidadã estampados nos rostos, tornaram a manhã nublada e vibrante de 26 de junho uma referência fundamental de inconformismo e rebeldia na longa luta contra o regime",
+    titulo: "Ao saírem de braços dados e com os traços inconfundíveis de consciência cidadã estampados nos rostos, tornaram a manhã nublada e vibrante de 26 de junho uma referência fundamental de inconformismo e rebeldia na longa luta contra o regime ditatorial.",
     resumo: "600 soldados atacam a comunidade mística camponês dos Muckers (beatos) no morro do Ferrabrás, S. Recebidos a bala, perdem os canhões e batem em retirada, com quatro mortos e 41 feridos.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3181,7 +3181,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "06-29",
     ano: "",
-    titulo: "Os trabalhadores e trabalhadoras, tendo à frente a Federação dos Trabalhadores Mineiros, organizações camponesas e sindicatos, se organizam em milícias, tomam quartéis, cercam diversas cidades",
+    titulo: "Os trabalhadores e trabalhadoras, tendo à frente a Federação dos Trabalhadores Mineiros, organizações camponesas e sindicatos, se organizam em milícias, tomam quartéis, cercam diversas cidades, derrotam sete regimentos militares e dissolvem o exército.",
     resumo: "A COB organizava toda a população em núcleos, tanto urbanos quanto rurais. Sem uma direção revolucionária efetiva, a COB, único poder militar naquele momento, entregou a presidência novamente a Estenssoro, que atuou diplomática e demagogicamente junto aos trabalhadores, com a intenção de reorganizar o exército e desarmar as massas.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3193,7 +3193,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "06-30",
     ano: "",
-    titulo: "1937: Morte de Antonio Gramsci, filósofo marxista italiano",
+    titulo: "1937: Morte de Antonio Gramsci, filósofo marxista italiano Antonio Gramsci nasceu em janeiro de 1891, na Sardenha, Itália, numa família de trabalhadores.",
     resumo: "Antonio Gramsci nasceu em janeiro de 1891, na Sardenha, Itália, numa família de trabalhadores. Aos 20 anos, mudou-se para Turim, onde tomou contato com o mundo operário.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3273,7 +3273,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-06",
     ano: "1871",
-    titulo: "Castro Alves faleceu em Salvador (BA) em 6 de julho de 1871, aos 24 anos, sem ter acabado a série de poemas chamada Os escravos, em que estão",
+    titulo: "Castro Alves faleceu em Salvador (BA) em 6 de julho de 1871, aos 24 anos, sem ter acabado a série de poemas chamada Os escravos, em que estão Navio negreiro",
     resumo: "Nesse ano, foi publicado seu primeiro livro, Espumas flutuantes. Sua poesia ganhou notoriedade com a denúncia da situação dos trabalhadores escravizados e pela defesa da abolição da escravatura.",
     tipo: ["quilombo", "greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3295,7 +3295,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-07",
     ano: "1953",
-    titulo: "Em junho de 1953 se gradua como médico e, em 7 de julho de 1953, parte novamente de Buenos Aires, rumo à Bolívia, com seu amigo Carlos",
+    titulo: "Em junho de 1953 se gradua como médico e, em 7 de julho de 1953, parte novamente de Buenos Aires, rumo à Bolívia, com seu amigo Carlos Ferrer.",
     resumo: "Percorre 6 mil quilômetros em trem, atravessa o lago Titicaca, volta ao Peru e mais tarde está no Equador, daí seguindo a Panamá e depois Costa Rica e Nicarágua, El Salvador e, finalmente, Guatemala. Caminhos da revolução que o aproximam pela primeira vez ao que definira como uma Che leu muito e viu muito mais em suas viagens pela América, o que o conduz a um contato muito estreito",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3317,7 +3317,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-09",
     ano: "",
-    titulo: "1948: Realizada a 1ª convenção nacional de defesa do petróleo, com a Campanha",
+    titulo: "1948: Realizada a 1ª convenção nacional de defesa do petróleo, com a Campanha Desde a década de 1930, ocorriam debates nacionais acerca da existência e exploração dos poços de petróleos brasileiros.",
     resumo: "Desde a década de 1930, ocorriam debates nacionais acerca da existência e exploração dos poços de petróleos brasileiros. Os nacionalistas se dividiam em dois grupos: o que defendia que o petróleo era propriedade dos brasileiros, e o que defendia a abertura às empresas privadas estrangeiras na exploração.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3375,7 +3375,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-14",
     ano: "1789",
-    titulo: "Descontentes com a crise econômica que o país atravessava e com os altos impostos cobrados para sustentar a nobreza que não trabalhava, no dia 14 de julho de 1789, o povo francês toma a fortaleza da Bastilha",
+    titulo: "Descontentes com a crise econômica que o país atravessava e com os altos impostos cobrados para sustentar a nobreza que não trabalhava, no dia 14 de julho de 1789, o povo francês toma a fortaleza da Bastilha, principal símbolo do poder absolutista",
     resumo: "Liberdade, Igualdade e Fraternidade . Em 26 de agosto de 1789, foi promulgada a Declaração Universal dos Direitos do Homem e do Cidadão.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3420,7 +3420,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-18",
     ano: "",
-    titulo: "Aqui não há mais cúmplices que tu e eu; tu, por opressor, e eu, por libertador, merecemos a morte",
+    titulo: "Aqui não há mais cúmplices que tu e eu; tu, por opressor, e eu, por libertador, merecemos a morte Túpac, sua esposa, seus filhos e seus principais partidários foram torturados na praça de Wacaypata.",
     resumo: "Túpac, sua esposa, seus filhos e seus principais partidários foram torturados na praça de Wacaypata. Cortaram-lhe a língua e tentaram esquartejá-lo, amarrando seus braços e pernas em quatro cavalos.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3444,7 +3444,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-20",
     ano: "",
-    titulo: "Era governador do Rio Grande do Sul quando Jânio Quadros renunciou, em agosto de 1961, e comandou a resistência civil ao golpe que os grupos conservadores queriam dar para impedir a posse de João Goulart, deflagrando a chamada",
+    titulo: "Era governador do Rio Grande do Sul quando Jânio Quadros renunciou, em agosto de 1961, e comandou a resistência civil ao golpe que os grupos conservadores queriam dar para impedir a posse de João Goulart, deflagrando a chamada Campanha da Legalidade",
     resumo: "Em 1962, Brizola foi eleito deputado federal e defendeu junto ao governo federal as reformas de base, que versavam, por exemplo, sobre a limitação da remessa de lucros das empresas ao exterior e a reforma agrária, liderando a Frente de Mobilização Popular.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3456,7 +3456,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-21",
     ano: "",
-    titulo: "Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita",
+    titulo: "Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita, como foi o caso do regime ditatorial de Fulgêncio Batista",
     resumo: "Além disso, em 1902, haviam obrigado os cubanos a incluírem uma emenda em sua constituição – a Emenda Platt – que dava o direito aos Estados Unidos de usar força militar e violar a soberania cubana sempre que seus interesses estivessem ameaçados.",
     tipo: ["direitos"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3579,7 +3579,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-29",
     ano: "",
-    titulo: "Essas políticas neoliberais, principalmente sob a gestão do presidente Carlos Salinas de Gortari (1988-1994), levaram o México a ter a maior dívida externa do mundo em 1995 e a um desemprego nas cidades que quase 30% das pessoas com",
+    titulo: "Essas políticas neoliberais, principalmente sob a gestão do presidente Carlos Salinas de Gortari (1988-1994), levaram o México a ter a maior dívida externa do mundo em 1995 e a um desemprego nas cidades que quase 30% das pessoas com capacidade de trabalhar.",
     resumo: "No dia 1º de janeiro de 1994, o Nafta entrou em vigor e, no mesmo dia, o mundo foi surpreendido por um levante armado de camponeses e indígenas de Chiapas, um dos estados mexicanos mais pobres. A rebelião reivindicava moradia, alimentação, saúde, educação, trabalho.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3591,7 +3591,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "07-30",
     ano: "",
-    titulo: "1991: O MST e a Comissão Pastoral da Terra recebem o Prêmio Nobel Alternativo na Suécia",
+    titulo: "1991: O MST e a Comissão Pastoral da Terra recebem o Prêmio Nobel Alternativo na Suécia Concedido pela Fundação The Right Livelihood Awards por sua ação pelo Direito à Vida Plena.",
     resumo: "Concedido pela Fundação The Right Livelihood Awards por sua ação pelo Direito à Vida Plena. A cerimônia ocorreu no Parlamento Sueco, em Estocolmo.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3686,7 +3686,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "08-06",
     ano: "1945",
-    titulo: "Em 6 de agosto de 1945, a força aérea estadunidense joga a bomba",
+    titulo: "Em 6 de agosto de 1945, a força aérea estadunidense joga a bomba (em português, garotinho) sobre a cidade de Hiroshima e, três dias depois, a",
     resumo: "(em português, garotinho) sobre a cidade de Hiroshima e, três dias depois, a (homem gordo) em Nagasaki. Estima-se que 200 mil pessoas tenham morrido imediatamente, sendo que os números são mais elevados considerando mortes posteriores pela radiação, podendo ultrapassar 300 mil pessoas, 90% civis.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3811,7 +3811,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "08-11",
     ano: "",
-    titulo: "Dos debates realizados entre os dias 7 e 11 de agosto, resultaram a palavra de ordem",
+    titulo: "Dos debates realizados entre os dias 7 e 11 de agosto, resultaram a palavra de ordem Reforma Agrária, por um Brasil sem Latifúndio",
     resumo: "Reforma Agrária, por um Brasil sem Latifúndio . Esse Congresso apontou para a construção da unidade entre os movimentos camponeses, que se manifestaria no fortalecimento da Via Campesina no período seguinte.",
     tipo: ["greve"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -3890,7 +3890,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "08-18",
     ano: "",
-    titulo: "Portugal passou a ser governado provisoriamente pela Junta de Salvação Nacional, com o lema",
+    titulo: "Portugal passou a ser governado provisoriamente pela Junta de Salvação Nacional, com o lema Democratizar, Descolonizar, Desenvolver",
     resumo: "Democratizar, Descolonizar, Desenvolver . O regime militar que governava o Brasil asilou vários salazaristas.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4024,7 +4024,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "08-28",
     ano: "1963",
-    titulo: "Em 28 de agosto de 1963, mais de 250 mil pessoas se juntaram na capital dos Estados Unidos, Washington, marchando com o lema",
+    titulo: "Em 28 de agosto de 1963, mais de 250 mil pessoas se juntaram na capital dos Estados Unidos, Washington, marchando com o lema Por trabalho e liberdade",
     resumo: "Por trabalho e liberdade , reivindicando direitos civis e o fim da discriminação racial contra a população negra de todo o país. Foi nessa ocasião que Luther King pronunciou a famosa frase Cem anos atrás, um grande americano, em cuja simbólica sombra estamos, assinou a Proclamação de Emancipação (...).",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4059,7 +4059,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "08-31",
     ano: "1958",
-    titulo: "Em 31 de agosto de 1958 inicia a invasão à parte ocidental do país, no comando da coluna 8",
+    titulo: "Em 31 de agosto de 1958 inicia a invasão à parte ocidental do país, no comando da coluna 8 Ciro Redondo",
     resumo: "A coluna chega à região montanhosa de Las Villas em 16 de outubro, começando assim a histórica Campanha de Las Villas. São tomadas suas principais cidades, finalizando com a Batalha de Santa Clara e a rendição das tropas inimigas em 1º de janeiro de 1959.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4239,7 +4239,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "09-12",
     ano: "",
-    titulo: "Mapa do Brasil: o MST é um movimento nacional e se preocupa em ajudar a resolver os problemas do povo em todos os lugares do país;",
+    titulo: "Mapa do Brasil: o MST é um movimento nacional e se preocupa em ajudar a resolver os problemas do povo em todos os lugares do país; Mulher e homem: representa a luta coletiva e conjunta.",
     resumo: "Mulher e homem: representa a luta coletiva e conjunta. No movimento, todas as pessoas devem participar igualmente: mulheres, homens, idosos, crianças, todos e todas; Facão: é uma ferramenta importante para os camponeses e camponesas.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4308,7 +4308,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "09-17",
     ano: "1971",
-    titulo: "Em 17 de setembro de 1971, Lamarca é assassinado pela ditadura militar no povoado de Pintadas (hoje município de Ipupiara), quando já estava cercado e fragilizado pela perseguição, por quase 300 quilômetros",
+    titulo: "Em 17 de setembro de 1971, Lamarca é assassinado pela ditadura militar no povoado de Pintadas (hoje município de Ipupiara), quando já estava cercado e fragilizado pela perseguição, por quase 300 quilômetros, que sofreu durante cerca de 20 dias no sertão.",
     resumo: "Na localidade onde foi morto, foi erguida uma praça com seu nome, e a data de sua morte é considerada feriado municipal. Em 2007, a Comissão de Anistia promoveu Lamarca, postumamente, ao posto de coronel.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4341,7 +4341,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "09-20",
     ano: "",
-    titulo: "Me mantenho firme na convicção de que somente a união de todas as camadas e classes sociais não comprometidas com a ditadura entreguista é que decidirá a instauração no Brasil de um regime de plena liberdade",
+    titulo: "Me mantenho firme na convicção de que somente a união de todas as camadas e classes sociais não comprometidas com a ditadura entreguista é que decidirá a instauração no Brasil de um regime de plena liberdade, de livre desenvolvimento econômico, de paz e nacionalismo No exílio",
     resumo: "No exílio, Gregório viveu no México, Cuba e União Soviética, onde passou a integrar o Movimento Internacional da Classe Operária no exílio. Com a anistia, retorna ao Brasil após dez anos.",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4598,7 +4598,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-08",
     ano: "1967",
-    titulo: "No combate de Quebrada del Yuro, em 8 de outubro de 1967, com feridas em uma perna que lhe dificultavam caminhar, com o fuzil destruído por um balaço e sem o carregador de sua pistola",
+    titulo: "No combate de Quebrada del Yuro, em 8 de outubro de 1967, com feridas em uma perna que lhe dificultavam caminhar, com o fuzil destruído por um balaço e sem o carregador de sua pistola, é feito prisioneiro e conduzido ao povoado de La Higuera.",
     resumo: "É assassinado no dia seguinte, na escola de la Higuera, por ordens da CIA e do alto comando do Exército boliviano.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4632,7 +4632,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-10",
     ano: "1980",
-    titulo: "Em 10 de outubro de 1980, é criada a Frente Farabundo Martí de Libertação Nacional (FMLN), homenageando um dos fundadores do Partido Comunista em 1930, que fora fuzilado em fevereiro de 1932 por forças militares",
+    titulo: "Em 10 de outubro de 1980, é criada a Frente Farabundo Martí de Libertação Nacional (FMLN), homenageando um dos fundadores do Partido Comunista em 1930, que fora fuzilado em fevereiro de 1932 por forças militares, comandadas a partir dos Estados Unidos.",
     resumo: "A FMNL unifica muitas organizações que lutavam por transformações sociais, e em janeiro de 1981 é lançada a ofensiva geral, chamando o povo a tomar armas e a libertar El Salvador, dando início a uma guerra popular revolucionária. A guerra durou até 1994, deixando quase cem mil mortos, com grande investimento diário dos Estados Unidos no combate às forças revolucionárias.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4655,7 +4655,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-12",
     ano: "",
-    titulo: "Além disso, o México aderiu ao Acordo de Livre Comércio da América do Norte (Nafta, sigla em inglês), juntamente com os Estados Unidos e Canadá",
+    titulo: "Além disso, o México aderiu ao Acordo de Livre Comércio da América do Norte (Nafta, sigla em inglês), juntamente com os Estados Unidos e Canadá, que permitia que as mercadorias e capitais circulassem nesses países sem pagarem impostos e taxas.",
     resumo: "Essas políticas neoliberais, principalmente sob a gestão do presidente Carlos Salinas de Gortari (1988-1994), levaram o México a ter a maior dívida externa do mundo em 1995 e a um desemprego nas cidades que quase 30% das pessoas com capacidade de trabalhar.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4667,7 +4667,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-13",
     ano: "",
-    titulo: "1983: Vitória da Encruzilhada Natalino, Rio Grande do Sul",
+    titulo: "1983: Vitória da Encruzilhada Natalino, Rio Grande do Sul Símbolo da luta pela terra, o acampamento da Encruzilhada Natalino foi montado em 1981, reunindo mais de 700 famílias",
     resumo: "Símbolo da luta pela terra, o acampamento da Encruzilhada Natalino foi montado em 1981, reunindo mais de 700 famílias sem-terra. Durante três anos, enfrentaram a ditadura militar, que transformou o acampamento em área de segurança nacional, sob controle do temível coronel Curió, que já havia participado da repressão à guerrilha do Araguaia.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4735,7 +4735,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-17",
     ano: "1912",
-    titulo: "No seu primeiro discurso, em 17 de outubro de 1912, logo após a prisão, declarou:",
+    titulo: "No seu primeiro discurso, em 17 de outubro de 1912, logo após a prisão, declarou: Há algo que os governos cuidam mais do que a vida humana, e esse algo é a segurança da propriedade, e é através da",
     resumo: "De hoje em diante, as mulheres vão concordar comigo e vão dizer: Nós desprezamos suas leis, senhores, colocamos a liberdade e a dignidade e o bem-estar das mulheres sobre todas essas considerações e vamos continuar essa luta como continuamos no passado; e qualquer sacrifício à propriedade ou dano à propriedade não será nossa culpa.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4746,7 +4746,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-17",
     ano: "",
-    titulo: "Posteriormente, as províncias de Ciudad de La Habana, La Habana, Matanzas e Villa Clara, representando o povo de Cuba, prestaram-lhe homenagem póstuma, e, em 17 de outubro, seus restos mortais",
+    titulo: "Posteriormente, as províncias de Ciudad de La Habana, La Habana, Matanzas e Villa Clara, representando o povo de Cuba, prestaram-lhe homenagem póstuma, e, em 17 de outubro, seus restos mortais, juntamente com os dos outros combatentes encontrados naquela data",
     resumo: "Durante 30 anos, seus restos mortais permaneceram naquela localidade, até a data de sua descoberta, em 28 de junho de 1997, e seu traslado a Cuba, em 12 de julho desse mesmo ano.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4826,7 +4826,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-23",
     ano: "1983",
-    titulo: "Gregório morreu na cidade de São Paulo em 23 de outubro de 1983, e é hoje lembrado pelos seus companheiros daquela época e pelos militantes de hoje da maneira como queria: como",
+    titulo: "Gregório morreu na cidade de São Paulo em 23 de outubro de 1983, e é hoje lembrado pelos seus companheiros daquela época e pelos militantes de hoje da maneira como queria: como o homem que foi amigo das crianças, dos pobres e excluídos; amado e respeitado pelo povo",
     resumo: "o homem que foi amigo das crianças, dos pobres e excluídos; amado e respeitado pelo povo, pelas massas exploradas e sofridas; odiado e temido pelos capitalistas, sendo considerado o inimigo número um das ditaduras fascistas Em Santa Teresa do Oeste/PR, militantes da via Campesina ocupam a área da multinacional Syngenta para denunciar práticas ilegais e sua ação a serviço do agronegócio.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -4870,7 +4870,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "10-26",
     ano: "",
-    titulo: "Em sua militância no Partido Social-Democrata alemão, Rosa se tornará uma das mais importantes dirigentes do partido naquele período, junto com Clara Zetkin, Karl Kautsky e Eduard Bernstein",
+    titulo: "Em sua militância no Partido Social-Democrata alemão, Rosa se tornará uma das mais importantes dirigentes do partido naquele período, junto com Clara Zetkin, Karl Kautsky e Eduard Bernstein, combatendo as teses reformistas desses dois últimos.",
     resumo: "Representa o partido diversas vezes nos Congressos da Internacional Socialista e também atua como professora de Economia Política e História Econômica na escola do partido. Atua em Varsóvia na Revolução Russa de 1905 e foi presa diversas vezes, acusada de incitar a desobediência civil.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5306,7 +5306,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "11-28",
     ano: "",
-    titulo: "1980: Fundação da Frente Farabundo Martí de Liberación Nacional (FMLN), em El Salvador",
+    titulo: "1980: Fundação da Frente Farabundo Martí de Liberación Nacional (FMLN), em El Salvador Entre os anos de 1930 e 1970, o Partido Comunista de El Salvador era um dos poucos espaços de organização da esquerda",
     resumo: "Entre os anos de 1930 e 1970, o Partido Comunista de El Salvador era um dos poucos espaços de organização da esquerda salvadorenha. Na década de 1970, nascem diversas organizações que se difundem entre muitas categorias de trabalhadores e trabalhadoras, inclusive das Forças Armadas.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5318,7 +5318,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "11-29",
     ano: "",
-    titulo: "Com a derrota japonesa no final da Segunda Guerra Mundial, a guerra civil prosseguiu, com uma nova ofensiva dos comunistas, a partir de 1947, que resultaria, dois anos depois",
+    titulo: "Com a derrota japonesa no final da Segunda Guerra Mundial, a guerra civil prosseguiu, com uma nova ofensiva dos comunistas, a partir de 1947, que resultaria, dois anos depois, na expulsão dos nacionalistas para Taiwan e na proclamação da República Popular da China",
     resumo: "Politicamente, Mao divergia das políticas stalinistas da União Soviética, e a relação entre os dois países sempre foi tumultuada, levando ao rompimento poucos anos depois. Em seu governo, tentou implementar o grande salto para a frente , com o objetivo de industrializar o país.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5366,7 +5366,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-03",
     ano: "",
-    titulo: "1971: Assassinato de Carlos Lamarca, militar e líder da guerrilha brasileira",
+    titulo: "1971: Assassinato de Carlos Lamarca, militar e líder da guerrilha brasileira Carlos Lamarca era o terceiro dos seis filhos de uma família pobre da zona norte carioca.",
     resumo: "Carlos Lamarca era o terceiro dos seis filhos de uma família pobre da zona norte carioca. Ainda na adolescência, participou da campanha O Petróleo é Nosso .",
     tipo: ["anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5402,7 +5402,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-06",
     ano: "",
-    titulo: "1974: Morto em combate Miguel Enríquez, secretário-geral do Movimento de Izquierda Revolucionária (MIR) do Chile",
+    titulo: "1974: Morto em combate Miguel Enríquez, secretário-geral do Movimento de Izquierda Revolucionária (MIR) do Chile Médico e fundador do Movimento Esquerda Revolucionária (MIR) do Chile, Miguel Enriquez nasceu em 27 de março de 1944,",
     resumo: "Médico e fundador do Movimento Esquerda Revolucionária (MIR) do Chile, Miguel Enriquez nasceu em 27 de março de 1944, em uma família de classe média alta em Concepción.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5459,7 +5459,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-10",
     ano: "1979",
-    titulo: "Só em 10 de dezembro de 1979, quando seus restos mortais foram trasladados para Salvador, sua cidade natal, Jorge Amado proclamou o fim da interdição expiatória:",
+    titulo: "Só em 10 de dezembro de 1979, quando seus restos mortais foram trasladados para Salvador, sua cidade natal, Jorge Amado proclamou o fim da interdição expiatória: Retiro da maldição e do silêncio e aqui inscrevo seu nome de baiano: Carlos Marighella",
     resumo: "Retiro da maldição e do silêncio e aqui inscrevo seu nome de baiano: Carlos Marighella Um Homem não desaparece com a sua morte. Ao contrário, pode crescer depois dela, engrandecer-se com ela e revelar sua verdadeira estátua à distância.",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5470,7 +5470,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-11",
     ano: "",
-    titulo: "O amor é que não se detém ante nenhum obstáculo,",
+    titulo: "O amor é que não se detém ante nenhum obstáculo, e pode mesmo existir até quando não se é livre.",
     resumo: "e pode mesmo existir até quando não se é livre. E no entanto ele é em si mesmo a expressão mais elevada do que houver de mais livre",
     tipo: ["resistencia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5505,7 +5505,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-14",
     ano: "",
-    titulo: "2000: Assassinato de Antônio Tavares, líder sem-terra, Paraná",
+    titulo: "2000: Assassinato de Antônio Tavares, líder sem-terra, Paraná Migrante nordestino vindo para São Paulo, Antônio Tavares Pereira, militante do MST, foi assassinado na BR-277, em",
     resumo: "Migrante nordestino vindo para São Paulo, Antônio Tavares Pereira, militante do MST, foi assassinado na BR-277, em Curitiba (PR). Sua militância teve início na década de 1970, quando sua família e centenas de outros trabalhadores paranaenses foram atingidos pela construção da hidrelétrica de Itaipu.",
     tipo: ["campo"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",
@@ -5664,7 +5664,7 @@ export const CALENDARIO_LUTAS: EntradaCalendario[] = [
   {
     diaMes: "12-27",
     ano: "",
-    titulo: "Depois de três meses de greve, ocupando e sendo despejados das terras da empresa estrangeira Cainsa, exigindo condições mínimas de trabalho e reforma agrária",
+    titulo: "Depois de três meses de greve, ocupando e sendo despejados das terras da empresa estrangeira Cainsa, exigindo condições mínimas de trabalho e reforma agrária, os trabalhadores e trabalhadoras da União dos Trabalhadores Açucareiros de Artigas (UTAA), no norte do Uruguai",
     resumo: "Terra para quem nela trabalha Após 4 anos de guerra e 54 dias de ataque, cai Santa Maria, em Santa Catariana, maior reduto de rebeldes da guerra do Contestado. Dois dias após o combate, o comandante dava a missão do exército por cumprida, afirmando que tudo foi destruído, subindo o número de habitações destruídas a 5.000",
     tipo: ["greve", "campo", "anistia"],
     autor: "MST — MOVIMENTO DOS TRABALHADORES RURAIS SEM TERRA",

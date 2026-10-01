@@ -125,6 +125,11 @@ for i, linha in enumerate(linhas):
             "paragrafo": paragrafo,
             "frase": frase,
             "vizinho": linhas_vizinhas(i),
+            # Linha IMEDIATAMENTE seguinte: o .txt quebra a sentença no meio
+            # a cada ~200 chars, e esta linha é a emenda natural dela. Fica
+            # separada do "vizinho" (que junta até 3 linhas para o resumo)
+            # para o gerador fechar o título sem arrastar parágrafo alheio.
+            "proxima": limpar(linhas[i + 1]) if i + 1 < len(linhas) else "",
         })
 
 entradas.sort(key=lambda e: (e["diaMes"], e["ano"] or ""))
@@ -161,7 +166,8 @@ for i, linha in enumerate(linhas):
     if chave in vistos_r:
         continue
     vistos_r.add(chave)
-    rcheio.append({"paragrafo": limpa[:TAM_PARAGRAFO], "vizinho": linhas_vizinhas(i)})
+    rcheio.append({"paragrafo": limpa[:TAM_PARAGRAFO], "vizinho": linhas_vizinhas(i),
+                   "proxima": limpar(linhas[i + 1]) if i + 1 < len(linhas) else ""})
 
 RECHEIO = ORIGEM.with_name("calendario-trabalhadores-recheio.json")
 RECHEIO.write_text(json.dumps(rcheio, ensure_ascii=False, indent=1), encoding="utf-8")

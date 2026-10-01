@@ -119,25 +119,57 @@ DATA_MST = "2009"
 FONTE_CURTA_MST = "Calendário Histórico das Trabalhadoras/es, MST, 2009"
 
 
-def titulo_e_resto(frase: str) -> tuple[str, str]:
-    """Título e o resto, sem NUNCA cortar no meio (regra do dono, 30/09).
+_PONTO_FINAL = re.compile(r"[.!?]")
+# Teto do pedaço emendado: a linha seguinte do .txt costuma ser curta
+# ("A Grande Marcha", "Campanha da Legalidade"); o teto evita arrastar
+# parágrafo inteiro quando a emenda é longa.
+_TETO_EMENDA = 120
 
-    Antes o título parava em 200 chars cortados em qualquer espaço (e o
-    blog levava um `[:200]` cru), o que exibia palavra e frase partidas
-    na home ("...nacionalização do comér"). Agora:
-    - frase curta (<= 240): inteira;
-    - frase longa: para no fim da última FRASE antes do teto; se não
-      houver, na última VÍRGULA; por fim, no último espaço — sempre em
-      fronteira, nunca no meio de palavra.
-    O que sobra vira candidato a resumo, então título + resumo leem
-    contínuo.
+
+def completa_frase(frase: str, continuacoes: list[str]) -> str:
+    """Fecha a frase que o .txt do MST cortou na virada de linha.
+
+    O documento do MST vira .txt com quebra dura a cada ~200 caracteres, e
+    a sentença continua na linha de baixo ("... ficou conhecido como" /
+    "A Grande Marcha"). O extrator lê uma linha só, então a frase (e o
+    título) saía cortada no meio da ideia. Aqui a frase sem pontuação
+    final é emendada no começo da linha seguinte até fechar (ou no teto).
+    Não inventa: só costura o que a própria fonte já dizia na linha
+    seguinte.
+    """
+    frase = (frase or "").strip()
+    if not frase or frase[-1] in ".!?":
+        return frase
+    for c in continuacoes:
+        c = (c or "").strip()
+        if not c:
+            continue
+        m = _PONTO_FINAL.search(c)
+        trecho = c[: m.start() + 1].strip() if m else c
+        if len(trecho) > _TETO_EMENDA:
+            corte = trecho.rfind(" ", 0, _TETO_EMENDA)
+            trecho = trecho[:corte].strip() if corte > 60 else trecho
+        return f"{frase} {trecho}".strip()
+    return frase
+
+
+def titulo_e_resto(frase: str) -> tuple[str, str]:
+    """Título e o resto, sem cortar no meio (regra do dono, 30/09).
+
+    A frase chega já EMENDADA (ver `completa_frase`). O título é a frase
+    inteira; quando ela passa do teto de 280 caracteres, para no fim de
+    uma frase anterior, ou na última vírgula, ou no último espaço —
+    sempre em fronteira, nunca no meio de palavra ou de oração. O que
+    sobra vira candidato a resumo, então título + resumo leem contínuo.
     """
     frase = frase.strip()
-    if len(frase) <= 240:
+    if not frase:
+        return "", ""
+    if len(frase) <= 280:
         return frase, ""
-    bruto = frase[:240]
+    bruto = frase[:280]
     fim = max(bruto.rfind(". "), bruto.rfind("! "), bruto.rfind("? "))
-    if fim >= 80:
+    if fim >= 120:
         return frase[:fim + 1].strip(), frase[fim + 1:].strip()
     virgula = bruto.rfind(", ")
     if virgula >= 120:
@@ -499,11 +531,13 @@ for post in json.loads((TEMP / "blog-calendario.json").read_text(encoding="utf-8
 # --- MST (mantém fato sem ano; o dia/mês já veio da âncora) -------------
 for e in json.loads((TEMP / "calendario-trabalhadores.json").read_text(encoding="utf-8")):
     paragrafo = limpa(e["paragrafo"])
+    vizinho = e.get("vizinho", "")
     frase = limpa(e.get("frase") or paragrafo[:200])
+    # o .txt quebra linha no meio: fecha a frase com a linha seguinte
+    frase = completa_frase(frase, [e.get("proxima", ""), vizinho, paragrafo])
     if len(frase) < 25:
         continue
     titulo, resto = titulo_e_resto(frase)
-    vizinho = e.get("vizinho", "")
     chave = f"{e['diaMes']}|{sem_acento(titulo)[:55]}"
     if chave in vistos:
         continue
@@ -559,8 +593,11 @@ for dia in vazios:
     item = recheio[indice]
     paragrafo = limpa(item["paragrafo"])
     indice += 1
-    titulo, resto = titulo_e_resto(SENTENCA.split(paragrafo)[0])
     vizinho = item.get("vizinho", "")
+    primeira = SENTENCA.split(paragrafo)[0]
+    titulo, resto = titulo_e_resto(
+        completa_frase(primeira, [item.get("proxima", ""), vizinho, paragrafo])
+    )
     cands = (
         candidatas_de(paragrafo, titulo)
         + candidatas_de(resto, "")

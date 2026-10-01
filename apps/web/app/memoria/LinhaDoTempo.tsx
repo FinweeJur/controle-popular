@@ -15,7 +15,10 @@
  * - a "fonte" é derivada da própria citação curta (`Insurgente` × MST),
  *   sem campo novo no dado;
  * - o CSV sai do RECORTE FILTRADO na tela (regra do dev, AGENTS §8.6) e
- *   com BOM UTF-8, via `BotoesExportar`.
+ *   com BOM UTF-8, via `BotoesExportar`;
+ * - EDIÇÃO (dono, 30/09/2026): a fonte é citada DIRETO, sem o rótulo
+ *   "Fonte:". A linha "sem data" do ano já dá o aviso, então a nota
+ *   antiga saiu. O resumo pode ter 2 parágrafos (um `<p>` por parágrafo).
  */
 
 import { useMemo, useState } from "react";
@@ -265,9 +268,16 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                       <span className="text-xs text-muted">{v.dataLabel}</span>
                     </div>
                     <h3 className="mt-0.5 font-semibold text-foreground">{v.titulo}</h3>
-                    {v.resumo ? (
-                      <p className="mt-1 text-sm leading-relaxed text-text-soft">{v.resumo}</p>
-                    ) : null}
+                    {v.resumo
+                      ? v.resumo.split(/\n{2,}/).map((paragrafo, j) => (
+                          <p
+                            key={j}
+                            className="mt-1 text-sm leading-relaxed text-text-soft"
+                          >
+                            {paragrafo}
+                          </p>
+                        ))
+                      : null}
                     {v.lugar && v.lat != null && v.lon != null ? (
                       <p className="mt-1 text-xs text-muted">
                         <span className="font-semibold">Onde: </span>
@@ -281,13 +291,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                         />
                       </p>
                     ) : null}
-                    {v.semData ? (
-                      <p className="mt-1 text-xs italic text-muted">
-                        Fato do calendário sem data no original — exibido para não deixar o dia vazio.
-                      </p>
-                    ) : null}
                     <p className="mt-1 text-xs text-muted">
-                      <span className="font-semibold">Fonte: </span>
                       {v.url ? (
                         <a
                           href={v.url}
