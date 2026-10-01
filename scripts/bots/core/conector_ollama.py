@@ -19,6 +19,22 @@ from typing import Any, Dict, Optional
 
 OLLAMA_URL_PADRAO = "http://localhost:11434/api/generate"
 MODELO_PADRAO = "qwen2.5-coder:7b"
+_OLLAMA_DISPONIVEL: Optional[bool] = None
+
+
+def verificar_ollama_ativo(host_ollama: str) -> bool:
+    """Verifica rapidamente (timeout 1.5s) se o daemon do Ollama está rodando."""
+    global _OLLAMA_DISPONIVEL
+    if _OLLAMA_DISPONIVEL is not None:
+        return _OLLAMA_DISPONIVEL
+    try:
+        url_tags = host_ollama.replace("/api/generate", "/api/tags")
+        req = urllib.request.Request(url_tags, headers={"User-Agent": "ControlePopular-Bot/1.0"})
+        with urllib.request.urlopen(req, timeout=1.5) as resp:
+            _OLLAMA_DISPONIVEL = (resp.status == 200)
+    except Exception:
+        _OLLAMA_DISPONIVEL = False
+    return _OLLAMA_DISPONIVEL
 
 
 def classificar_e_resumir_ato(
@@ -30,7 +46,11 @@ def classificar_e_resumir_ato(
 ) -> Dict[str, Any]:
     """
     Submete um ato público ao Ollama local para classificação e extração de entidades em JSON.
+    Se o daemon do Ollama não estiver em execução ou expirar, utiliza fallback determinístico.
     """
+    if not verificar_ollama_ativo(host_ollama):
+        return gerar_fallback_deterministico(texto_ato, tipo_contexto)
+
     prompt = f"""Você é o auditor cívico popular do portal Controle Popular (ONSA).
 Analise o ato oficial abaixo ({tipo_contexto}) e retorne ESTRITAMENTE um objeto JSON válido (sem markdown, sem preâmbulo).
 
@@ -67,7 +87,7 @@ Responda APENAS o JSON:"""
             texto_resp = data.get("response", "{}")
             return json.loads(texto_resp)
     except Exception:
-        # Fallback determinístico caso o Ollama esteja offline ou ocorra timeout
+        # Fallback determinístico caso o Ollama falhe durante o processamento
         return gerar_fallback_deterministico(texto_ato, tipo_contexto)
 
 

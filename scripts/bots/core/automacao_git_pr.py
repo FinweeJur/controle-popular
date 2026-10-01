@@ -103,4 +103,8 @@ def submeter_pull_request_autonomo(
     if commit_file.exists(): commit_file.unlink()
     if pr_body_file.exists(): pr_body_file.unlink()
 
+    # Retorna para a branch original após finalizar a submissão
+    print("🔄 [Git] Retornando para a branch principal (main)...")
+    executar_shell("git checkout main")
+
     return sucesso

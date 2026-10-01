@@ -424,6 +424,21 @@ const nextConfig: NextConfig = {
           return [{ source: "/(.*)", headers: SECURITY_HEADERS }];
         },
       }),
+
+  /**
+   * ═══ OTIMIZAÇÃO DE DISCO NO BUILDKIT (GUARA CLOUD / DOCKER STANDALONE) ═══
+   * Em contêineres de CI/CD descartáveis, o cache de compilação em disco
+   * do Webpack (.next/cache/webpack) consome entre 4 a 6 GiB no volume temporário,
+   * provocando despejo do pod Kubernetes ("EmptyDir buildkitd exceeds 12Gi").
+   * Como o contêiner de build é efêmero, desativar o cache de filesystem faz o
+   * Webpack processar diretamente na memória RAM, poupando gigabytes de I/O em disco.
+   */
+  webpack: (config, { dev }) => {
+    if (!dev && standaloneBuild) {
+      config.cache = false;
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

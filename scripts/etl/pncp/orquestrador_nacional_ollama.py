@@ -237,8 +237,32 @@ def coletar_contratos_pncp(ibge_id: str, ano: int = 2026, limite: int = 50) -> L
 # 3. AUDITORIA CÍVICA LOCAL VIA OLLAMA
 # ══════════════════════════════════════════════════════════════════════════════
 
+_OLLAMA_PNCP_ATIVO: Optional[bool] = None
+
+def verificar_ollama_ativo() -> bool:
+    """Verifica rapidamente (timeout 1.5s) se o daemon do Ollama está rodando."""
+    global _OLLAMA_PNCP_ATIVO
+    if _OLLAMA_PNCP_ATIVO is not None:
+        return _OLLAMA_PNCP_ATIVO
+    try:
+        req = urllib.request.Request("http://localhost:11434/api/tags", headers={"User-Agent": "ControlePopular-PNCP/1.0"})
+        with urllib.request.urlopen(req, timeout=1.5) as resp:
+            _OLLAMA_PNCP_ATIVO = (resp.status == 200)
+    except Exception:
+        _OLLAMA_PNCP_ATIVO = False
+    return _OLLAMA_PNCP_ATIVO
+
 def auditar_com_ollama(contrato: Dict[str, Any], modelo: str = DEFAULT_OLLAMA_MODEL) -> Dict[str, Any]:
     """Envia o contrato para triagem cívica pelo modelo local do Ollama."""
+    if not verificar_ollama_ativo():
+        return {
+            "categoria": "Administrativo",
+            "scoreRelevancia": 3,
+            "alerta": "nenhum",
+            "microresumo": f"Contrato de R$ {contrato['valor']:,.2f} para {contrato['objeto'][:60]}...",
+            "tags": ["pncp", "compras-publicas"]
+        }
+
     prompt = f"""Você é o auditor cívico popular do portal Controle Popular (ONSA).
 Analise o seguinte contrato público e retorne ESTRITAMENTE um objeto JSON válido (sem markdown, sem preâmbulo).
 

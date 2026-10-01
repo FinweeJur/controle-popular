@@ -1,61 +1,102 @@
+# .dockerignore — Controle Popular
+# Regras estritas para blindagem do contexto de build do Docker no Guara Cloud
+# Objetivo: Garantir contexto < 150 MB e evitar o estouro de 12Gi do BuildKit.
+
+# 1. Dependências e builds intermediários (todos os níveis)
 node_modules
 **/node_modules
 .next
 **/.next
-.git
 .open-next
 **/.open-next
-.claude
-**/.cache
-.opencode
-neon_export
-models
-*.log
-*.sql
-*.docx
-*.pyc
-__pycache__
-d1-backup*
 out
+**/out
+**/out/**
 dist
+**/dist
+**/dist/**
+.wrangler
+**/.wrangler*
+.arquivo-local
+**/.arquivo-local*
+.cache
+**/.cache
+**/.cache/**
+scripts/.cache/**
+
+# 2. Arquivos compactados e temporários
+_tmp*
+**/_tmp*
+**/*.zip
+**/*.tar
+**/*.tar.gz
+**/*.tgz
+**/*.rar
+**/*.7z
+# Exceção permitida: camadas geojson comprimidas usadas no Globo 3D
+!apps/web/public/terras/globo/dados/camadas/*.geojson.gz
+
+# 3. Logs, dumps e backups
+*.log
+**/*.log
+*.sql
+**/*.sql
+*.docx
+**/*.docx
+*.pyc
+**/*.pyc
+__pycache__
+**/__pycache__
+d1-backup*
 build-status.txt
 .env*.local
 
-# ── Redução do contexto de build (teto Guara = 256 MB; medido 442 MB em 01/10) ──
-# Documentação e ferramentas da máquina: nenhum passo do `next build` lê.
-# ATENÇÃO: `scripts/` da raiz NÃO pode sair — app/canada, app/eua e
-# lib/automacao importam tipos de scripts/coletar-*-acervo.mts (medido no
-# build de 01/10: TS2307 derrubou o deploy 4fb1efcd).
-docs
-companion
-supabase
-bots
-colibri
-handoffs
-skills
+# 4. Controle de versão e ferramentas de desenvolvimento/IA
+.git
+.claude
+.opencode
+.cursor
+.vscode
+.agents
 .hermes
 .github
 .githooks
-# Coleta fora do build: só etl/betim/dados/ é lido (json-etl.ts).
-etl/apps
-etl/betim/analises_lote1
-etl/betim/analises_lote2
-etl/betim/analises_calibracao
-etl/betim/calibracao_vicio
-etl/betim/dados-seed
-etl/betim/etl
-etl/betim/scripts
-etl/congresso
-etl/finetuning
-etl/judiciario
-# PDFs de relatório: não são abertos no build nem servidos por rota
-# (confirmado por busca em app/lib/scripts — só nome de CSV de download).
-apps/web/data/esg
-apps/web/data/documentos-empresas
-# JSON de licença grande (114 MB): o build lê a AMOSTRA versionada em
-# apps/web/data/amostras/ (gerada por scripts/gerar-amostras-licencas.mts).
-# O arquivo completo segue no repo e fora do Git não é apagado — só sai do
-# contexto. Lista = ARQUIVOS_LICENCAS em lib/ambiental/licencas-arquivos.ts.
+skills
+handoffs
+models
+neon_export
+
+# 5. Documentação, design e relatórios (não utilizados no runtime/build)
+docs/**
+companion/**
+supabase/**
+bots/**
+colibri/**
+screenshots/**
+logs/**
+acervo-documentos/**
+documentos-site/**
+data/**
+commit_msg_*.txt
+pr_body_*.md
+test_*.png
+test_*.js
+bots_*.js
+*.test_result.json
+
+# 6. Pipeline ETL fora do build
+# ATENÇÃO: Apenas etl/betim/dados/ é lido pelo app (json-etl.ts). O restante é ignorado.
+etl/**
+!etl/betim/dados/**
+
+# 7. Acervos pesados de empresas e PDFs brutos fora do bundle
+apps/web/data/esg/**
+apps/web/data/documentos-empresas/**
+**/*.pdf
+!apps/web/public/**/*.pdf
+
+# 8. JSONs de licenciamento bruto com amostras versionadas
+# O build lê a AMOSTRA em apps/web/data/amostras/
 apps/web/data/ana-outorgas.json
 apps/web/data/cetesb-sp-licencas.json
 apps/web/data/fepam-rs-licencas.json
@@ -74,13 +115,3 @@ apps/web/data/semas-pa-licencas.json
 apps/web/data/semad-go-licencas.json
 apps/web/data/semar-pi-licencas.json
 apps/web/data/sedam-ro-licencas.json
-
-# Dados brutos de ETL, staging e arquivos locais de apoio (fora de apps/web/):
-data
-acervo-documentos
-screenshots
-logs
-documentos-site
-.agents
-.cursor
-.vscode
