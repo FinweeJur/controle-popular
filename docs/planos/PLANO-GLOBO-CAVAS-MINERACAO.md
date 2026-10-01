@@ -654,6 +654,52 @@ Brovey da BAND0 (PAN 2 m) com BAND3/1/2 (8 m), lidas por janela HTTP.
   `gate-v6.veredito.txt` e Telegram. **Régua do gate v6: recall do v5
   (0,886) e precisão ≥ 0,70.**
 
+#### Veredito das 15 dúvidas `revisado` — 01/10/2026 (análise da máquina)
+
+Pedido do dev: "faça uma nova análise e me dê o veredito você". Método:
+recortes **2 m** gerados para as 15 (diretório próprio,
+`Temp\opencode\cavas\recortes-2m-duvidas\`, sem brigar com o fechador),
+comparação visual 8 m × 2 m lado a lado, escore do v4 e **baseline
+MapBiomas por bbox** (método C da barra de publicação). Veredito é da
+máquina — **flip de rótulo só com confirmação do dev**.
+
+**Achado de método — WFS 1.1.0 troca os eixos do BBOX:** `BBOX(geom,
+lat1,lon1,lat2,lon2)` devolve resultado; `lon,lat` devolve **0
+silenciosamente** (medido: positivo com 10 processos numa ordem e 0 na
+outra). Armadilha nova para a tabela §6.
+
+**Achado central — as dúvidas positivas são "lavra fantasma":** 6 das 7
+janelas positivas têm `lavra_fantasma=True` e `mining_age=0` no Monitor
+(ou seja: o cadastro autoriza, mas o MapBiomas não vê lavra ativa).
+`mining_age=0` não é quebra da consulta — o Quadrilátero Ferroso
+devolve feições na mesma consulta. É o caso real: polígono autorizado
+sem atividade visível. **Isso explica a confusão cava × plantio do
+dev** — o treino tem positivos que são fazenda na imagem.
+
+| arquivo | tipo | veredito da máquina | evidência |
+|---|---|---|---|
+| `075c7c0dabdf` | neg | **mantém negativo** | campos regulares, estradas retas; sem bancada |
+| `0de2c570ee6d` | neg | **mantém negativo** | represa + mata + estradas rurais; perturbação laranja fora da janela 2 m → observar na Fase 4 |
+| `110767792044` | neg | **mantém negativo** | agricultura + mata ciliar (dev e v4 já concordavam) |
+| `13a16a7bd26d` | neg | **mantém negativo** | roças com curvas de nível; sem bancada/poça de esteril |
+| `140cac3f5c9b` | neg | **mantém, com ressalva** | corredor de solo exposto sem assinatura de lavra; sem processo ANM; sem mining_age → revisar na Fase 4 |
+| `1b0316c54c8f` | neg | **mantém negativo** | pasto de morro com erosão (VLM 85 errado) |
+| `1f4f8173765f` | neg | **mantém negativo** | mata de encosta com afloramento rochoso |
+| `251997d95e58` | neg | **mantém negativo** | grade de silvicultura; anel no 8 m = açude fora da janela 2 m |
+| `1a8463abd4d4` | pos | **sem cava visível → flip proposto p/ negativo** | pasto + estrada + rio no recorte; lavra de 1934; lavra_fantasma |
+| `1b3edc1b5f05` | pos | **confirma positivo** (confiança média) | clareira branca com material exposto + solo laranja + lâmina d'água — pequena lavra |
+| `227101c151fd` | pos | **sem cava visível → flip proposto p/ negativo** | paisagem agrícola; lavra de 2014; lavra_fantasma |
+| `2b5e77c6a533` | pos | **sem cava visível → flip proposto p/ negativo** | mancha pálida pequena, insuficiente; lavra_fantasma |
+| `315f40338dbb` | pos | **sem cava visível → flip proposto p/ negativo** | mosaico agrícola puro; lavra de 1998; lavra_fantasma |
+| `69ba659079ba` | pos | **confirma positivo** (confiança alta) | sítio industrial com bancadas, estéril claro, galpão e estradas no 2 m |
+| `757163a50889` | pos | **indecidível → excluir do treino** (ou manter, a critério do dev) | clareira clara grande com estrada, compatível com areia/argila, sem bancada nítida |
+
+Resumo: **8 negativos mantidos, 2 positivos confirmados, 4 flips
+propostos, 1 exclusão sugerida.** Nenhuma "cava escondida" nos
+negativos em dúvida — os 4 falsos negativos que o dev achou antes não
+estão neste conjunto. O ganho real está nos positivos fantasma: tirá-los
+do treino ensina o modelo que fazenda não é cava.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
