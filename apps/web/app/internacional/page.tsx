@@ -172,6 +172,16 @@ export default function PaginaHubInternacional() {
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
         <Link
+          href="/internacional/orcamentos"
+          className="flex items-center justify-between p-3.5 rounded-xl border border-border bg-surface hover:border-primary/50 transition-colors group"
+        >
+          <div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">💰 7 Orçamentos Estratégicos</div>
+            <div className="text-[11px] text-text-soft">Defesa, IA, Clima, Energia e Água de EUA, Canadá e Europa</div>
+          </div>
+          <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
+        </Link>
+        <Link
           href="/europa"
           className="flex items-center justify-between p-3.5 rounded-xl border border-border bg-surface hover:border-primary/50 transition-colors group"
         >

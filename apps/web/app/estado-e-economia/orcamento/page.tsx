@@ -7,6 +7,8 @@ import CruzamentosEducativos from '@/app/components/eixos/CruzamentosEducativos'
 import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
 import { calcularCruzamentosMunicipais } from '@/lib/cruzamentos/correlacionador';
 import { obterSeriesEconomicas } from '@/lib/series-economicas';
+import Link from 'next/link';
+import { Globe, ArrowRight } from 'lucide-react';
 import TabelaSeriesBcbClient from './TabelaSeriesBcbClient';
 
 export const metadata: Metadata = {
@@ -120,6 +122,31 @@ export default function OrcamentoPage() {
         cruzamentos={cruzamentos}
         nomeMunicipio="Referência de Execução: Belo Horizonte (MG)"
       />
+
+      {/* BANNER DE CRUZAMENTO INTERNACIONAL */}
+      <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary inline-flex items-center gap-1">
+              <Globe size={13} aria-hidden="true" />
+              <span>Comparativo Internacional</span>
+            </span>
+          </div>
+          <h3 className="font-display font-bold text-foreground text-base sm:text-lg">
+            Orçamentos Estratégicos: EUA, Canadá e Europa
+          </h3>
+          <p className="text-xs text-muted max-w-2xl leading-relaxed">
+            Descubra como potências do hemisfério norte alocam recursos públicos em Defesa, Inteligência, P&amp;D, Segurança Hídrica, Energia e Crise Climática.
+          </p>
+        </div>
+        <Link
+          href="/internacional/orcamentos"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-ink hover:opacity-90 transition shrink-0 self-start sm:self-auto shadow-2xs"
+        >
+          <span>Auditar Orçamentos Globais</span>
+          <ArrowRight size={14} aria-hidden="true" />
+        </Link>
+      </div>
 
       {/* FICHAS DE ORÇAMENTO */}
       <section aria-labelledby="titulo-fichas-orcamento" className="mt-10">

@@ -677,6 +677,18 @@ export const FRENTES: SeuNonoFrente[] = [
             ],
           },
           {
+            id: "orcamentos-estrategicos-eua-canada-europa",
+            pergunta: "Como consultar os orçamentos militar, de inteligência, clima e energia de EUA, Canadá e Europa?",
+            resposta:
+              "Consulte o painel de orçamentos estratégicos globais. Compare gastos de defesa, inteligência, água e clima das potências do hemisfério norte.",
+            link: { href: "/internacional/orcamentos", texto: "Orçamentos Estratégicos Globais" },
+            links: [
+              { href: "/internacional", texto: "Hub Multilateral" },
+              { href: "/eua", texto: "Observatório dos EUA" },
+              { href: "/europa", texto: "Conexões com a Europa" },
+            ],
+          },
+          {
             id: "pmc-mercenarios-contratos-privados",
             pergunta: "Como o portal monitora empresas militares privadas (PMCs) e mercenários?",
             resposta:
@@ -1698,6 +1710,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/empresas/fortunas", texto: "1.000 Maiores Fortunas Mundiais" },
       { href: "/empresas/conglomerados", texto: "Monopólios e Holdings" },
       { href: "/empresas/executivos", texto: "CEOs e Conselhos" },
+    ],
+  },
+  {
+    id: "orcamentos-globais",
+    titulo: "Orçamentos Estratégicos de EUA, Canadá e Europa",
+    resumo: "Auditoria comparativa dos 7 orçamentos estratégicos (Militar, Inteligência, Economia, P&D, Água, Energia e Clima) das potências do hemisfério norte.",
+    dados: [
+      "7 eixos orçamentários: Militar, Inteligência, Economia, P&D, Água, Energia e Clima",
+      "EUA: US$ 842 bi em defesa e US$ 100 bi em inteligência",
+      "União Europeia: € 326 bi em defesa e € 155 bi em ação climática",
+      "Canadá: C$ 31 bi em defesa e metas de transição net-zero",
+      "Fontes: OMB, DoD, Treasury, StatsCan, Eurostat e Comissão Europeia",
+    ],
+    links: [
+      { href: "/internacional/orcamentos", texto: "Orçamentos Estratégicos" },
+      { href: "/internacional", texto: "Hub Multilateral" },
+      { href: "/eua", texto: "Observatório dos EUA" },
     ],
   },
 ];
