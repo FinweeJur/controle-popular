@@ -25,6 +25,7 @@
  */
 
 import { expandir, type TabelaCompacta } from "../estatico/compactar";
+import { semAcento } from "../busca/normalizar";
 import jsonConflitos from "../../data/ambiente/conflitos-socioambientais.compact.json";
 
 export interface ConflitoSocioambientalGlobal extends Record<string, unknown> {
@@ -142,7 +143,11 @@ export function filtrarConflitosGlobais(
   filtros: FiltrosConflitosGlobais = {}
 ): ConflitoSocioambientalGlobal[] {
   const conflitos = obterConflitosGlobais();
-  const termo = filtros.busca?.trim().toLowerCase();
+  // Normaliza os DOIS lados: quem digita "mineracao" precisa achar
+  // "mineração". `semAcento` também baixa as maiúsculas, então o
+  // `toLowerCase()` de antes vira redundante (revisão Parte 24, 01/10/2026:
+  // a busca devolvia 0 para "colombia" contra uma base que traz "Colômbia").
+  const termo = filtros.busca ? semAcento(filtros.busca.trim()) : "";
 
   return conflitos.filter((c) => {
     if (filtros.continente && filtros.continente !== "todos" && c.continente !== filtros.continente) {
@@ -154,14 +159,15 @@ export function filtrarConflitosGlobais(
     }
 
     if (filtros.commodity && filtros.commodity !== "todas") {
-      const comLower = c.commodities.toLowerCase();
-      if (!comLower.includes(filtros.commodity.toLowerCase())) {
+      if (!semAcento(c.commodities).includes(semAcento(filtros.commodity))) {
         return false;
       }
     }
 
     if (termo) {
-      const textoConsolidado = `${c.nome} ${c.pais} ${c.localidade} ${c.commodities} ${c.comunidades} ${c.empresas} ${c.tipoDano} ${c.status} ${c.resumo}`.toLowerCase();
+      const textoConsolidado = semAcento(
+        `${c.nome} ${c.pais} ${c.localidade} ${c.commodities} ${c.comunidades} ${c.empresas} ${c.tipoDano} ${c.status} ${c.resumo}`,
+      );
       if (!textoConsolidado.includes(termo)) {
         return false;
       }

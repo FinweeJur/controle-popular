@@ -35,6 +35,7 @@
 - [Parte 21 — busca estática (lib/busca)](#parte-21--busca-estática-libbusca)
 - [Parte 22 — respostas curadas e índice de páginas](#parte-22--respostas-curadas-e-índice-de-páginas)
 - [Parte 23 — a guarda de dado pessoal (a cadeia do §5.2)](#parte-23--a-guarda-de-dado-pessoal-a-cadeia-do-52)
+- [Parte 24 — busca por acento em `lib/ambiente/`](#parte-24--busca-por-acentos-libambiente)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -1149,6 +1150,68 @@ configuração que ninguém conferia.
    escritas à mão. Instalar exige baixar binário — esta máquina não tem
    `winget` nem `scoop`. Decisão do dono, registrada aqui.
 
+## Parte 24 — busca por acento em `lib/ambiente/`
+
+Vigésima quarta passada, nos três acervos de `lib/ambiente/` (ameaças
+americanas, conflitos globais, barragens mundiais) e nas telas que os
+mostram. O que se mediu foi **se o cidadão que digita sem acento acha o
+dado** — regra [`AGENTS.md` §8.2](/AGENTS.md): busca tolerante a acentos.
+
+### Achados da Parte 24
+
+1. ⚠️ → ✅ **A tela de `/ambiental/conflitos-globais` não tolerava acento —
+   corrigido (01/10/2026).** `PainelConflitosGlobaisClient.tsx` fazia
+   `busca.trim().toLowerCase()` e comparava com `textoGeral.toLowerCase()` —
+   só minúsculas, nenhuma normalização. Prova em código (teste temporário,
+   apagado depois): `"colombia"` devolvia **0** contra uma base que traz
+   `"Colômbia"`. Era a tela pública que violava §8.2; o painel vizinho de
+   `barragens-globais` já fazia certo (`semAcento` em cada campo), e **37
+   arquivos de `app/`** já usam `semAcento` — este era o outlier.
+   **Correção:** `semAcento` nos dois lados da comparação (termo, facet de
+   commodity e corpus consolidado).
+
+2. ⚠️ → ✅ **A função-documento do módulo tinha o mesmo defeito —
+   corrigido (01/10/2026).** `filtrarConflitosGlobais`
+   (`dados-conflitos-globais.ts:145,157,164`) fazia a mesma conta sem
+   `semAcento`, **e o cabeçalho do próprio arquivo prometia "busca
+   tolerante"** (linha 21) — código que contradiz o que diz que faz.
+   **Correção:** normalização nos dois lados, com comentário apontando a
+   medição.
+
+3. ⚠️ → ✅ **`obterBarragensPorPais` sem tolerância — corrigido
+   (01/10/2026).** `dados-barragens-globais.ts:136` comparava
+   `b.pais.toLowerCase()` com `pais.trim().toLowerCase()`; `"canada"`
+   devolvia **0** contra `"Canadá"`. Aqui o leitor **não sofria**: o painel
+   da tela tem filtro próprio e já normalizava. O defeito era da API
+   pública da lib, que divergia da tela que a usa como exemplo.
+   **Correção:** `semAcento` nos dois lados.
+
+4. ✅ **O controle existia dentro do mesmo diretório.**
+   `dados-ameacas-americas.ts` usa `semAcento` em **6 pontos** (país, bioma
+   e corpus) e tem teste que prova — `"mexico"` devolve **10**. Não faltava
+   conhecimento nem utilitário no repo: faltava aplicar nos outros dois
+   módulos. O teste de controle foi o que transformou "parece defeito" em
+   "é defeito aqui, e não aqui".
+
+5. 📌 **Duas dessas funções não são chamadas por rota nenhuma.** Medido:
+   `filtrarConflitosGlobais` e `obterBarragensPorPais` só são chamadas
+   pelos próprios testes. Isso muda a ordem de importância dos itens 2 e 3
+   — o dano real estava no item **1**, que é componente de tela. Registrado
+   para a próxima leitura não confundir "função da lib" com "o que o
+   leitor vê".
+
+### Prova da Parte 24
+
+Teste temporário `TEMP-acento.test.ts`, rodado antes e depois da correção,
+depois apagado (a regressão virou teste permanente nos dois arquivos de
+teste do módulo):
+
+| Caso | Antes | Depois |
+|---|---|---|
+| conflitos: busca `"colombia"` | **0** | **1** |
+| barragens: `obterBarragensPorPais("canada")` | **0** | **5** |
+| ameaças (controle): busca `"mexico"` | 10 | 10 |
+
 ## Achados e dívidas
 
 Confirmados no código nesta rodada:
@@ -1202,6 +1265,7 @@ Próximas micro-partes, por risco e retorno:
 | 6 | ✅ `app/components/` | Feita — Parte 7: imagens com `alt`, gráficos com `descricaoAcessivel`. |
 | 7 | ✅ Compactação dupla | Feita — Parte 7: registrada como decisão, não dívida. |
 | 8 | ✅ Cadeia de dado pessoal (`sem-dado-pessoal-no-repo.test.ts`, `.githooks/`, `dado-pessoal.yml`) | Feita — Parte 23: era o único módulo do repo sem menção em nenhuma parte, e é a regra §5.2. Achou o pre-push desligado e a segunda régua de CPF fora do ar. |
+| 9 | ✅ `lib/ambiente/` (ameaças, conflitos, barragens) | Feita — Parte 24: dois dos três acervos não toleravam acento na busca, e um deles **na tela**. O controle já existia no terceiro. |
 
 **Primeira passada concluída (30/09/2026).** A fila acima foi percorrida de
 ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
@@ -1276,6 +1340,20 @@ cada correção com teste de regressão e conversão do marcador
     **por que** a contagem de 8 em 110 não era buraco, para a próxima
     leitura não publicar alerta falso (achado 23.3).
 22. Parte 23 publicada e referenciada na fila (linha 8).
+
+**Fase 6 — busca por acento** ✅ **concluída (01/10/2026)**
+(`app/ambiental/conflitos-globais/PainelConflitosGlobaisClient.tsx`,
+`lib/ambiente/dados-conflitos-globais.ts`, `lib/ambiente/dados-barragens-globais.ts`,
+e os dois testes do módulo — Parte 24)
+
+23. Tela de `/ambiental/conflitos-globais` passa a normalizar os dois lados
+    da busca e da facet de commodity (achado 24.1) — era o dano visível.
+24. `filtrarConflitosGlobais` passa a cumprir o que o próprio cabeçalho
+    prometia, "busca tolerante" (achado 24.2).
+25. `obterBarragensPorPais` passa a aceitar o país sem acento, igual ao
+    painel que a referencia (achado 24.3).
+26. Regressão permanente: `0 → 1` e `0 → 5` viraram teste nos arquivos de
+    teste do módulo; o teste temporário foi apagado.
 
 **Fora do escopo desta sessão** — registrado, não é esquecimento:
 

@@ -24,6 +24,7 @@
  */
 
 import { expandir, type TabelaCompacta } from "../estatico/compactar";
+import { semAcento } from "../busca/normalizar";
 import jsonBarragens from "../../data/ambiente/barragens-mundiais.compact.json";
 
 export type TipoBarragem =
@@ -133,8 +134,12 @@ export function obterBarragensPorTipo(tipo: TipoBarragem): BarragemMundial[] {
  */
 export function obterBarragensPorPais(pais: string): BarragemMundial[] {
   const barragens = obterBarragensGlobais();
-  const paisNorm = pais.trim().toLowerCase();
-  return barragens.filter((b) => b.pais.toLowerCase() === paisNorm);
+  // Dois lados normalizados: "canada" precisa achar "Canadá" e "ROMÊNIA"
+  // precisa achar "Romênia" (revisão Parte 24, 01/10/2026 — devolvia 0).
+  // O painel da tela já fazia isto no seu próprio filtro; o que faltava era
+  // a função pública da lib não divergir dele.
+  const paisNorm = semAcento(pais.trim());
+  return barragens.filter((b) => semAcento(b.pais) === paisNorm);
 }
 
 // ==========================================

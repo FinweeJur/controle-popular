@@ -23,6 +23,7 @@ import {
   obterBarragensPorPais,
   COBERTURA_BARRAGENS_GLOBAIS,
 } from "./dados-barragens-globais";
+import { semAcento } from "../busca/normalizar";
 
 describe("Acervo de Grandes Barragens Mundiais (lib/ambiente/dados-barragens-globais)", () => {
   it("deve carregar mais de 50 barragens emblemáticas em todo o mundo", () => {
@@ -161,5 +162,17 @@ describe("Acervo de Grandes Barragens Mundiais (lib/ambiente/dados-barragens-glo
       expect(regexCpf.test(b.operador)).toBe(false);
       expect(regexCpf.test(b.rioOuBacia)).toBe(false);
     }
+  });
+
+  it("obterBarragensPorPais tolera acento: 'canada' acha 'Canadá' (Parte 24)", () => {
+    // Regressão da revisão de 01/10/2026: a função fazia só toLowerCase e
+    // "canada" devolvia 0 contra uma base que traz "Canadá". O painel da
+    // tela já normalizava no seu próprio filtro; quem usava a lib é que
+    // recebia lista vazia.
+    const alvo = obterBarragensGlobais().find((b) => /[^\x00-\x7F]/.test(b.pais));
+    expect(alvo, "a base tem país com acento").toBeTruthy();
+
+    const achados = obterBarragensPorPais(semAcento(alvo!.pais));
+    expect(achados.length, "chamada sem acento deve achar").toBeGreaterThan(0);
   });
 });

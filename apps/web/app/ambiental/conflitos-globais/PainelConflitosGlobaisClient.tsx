@@ -37,6 +37,7 @@ import {
   Layers,
 } from "lucide-react";
 import type { ConflitoSocioambientalGlobal } from "@/lib/ambiente/dados-conflitos-globais";
+import { semAcento } from "@/lib/busca/normalizar";
 
 interface Props {
   conflitosIniciais: ConflitoSocioambientalGlobal[];
@@ -81,7 +82,12 @@ export default function PainelConflitosGlobaisClient({
 
   // Aplicação da filtragem e ordenação em memória
   const conflitosFiltrados = useMemo(() => {
-    const termo = busca.trim().toLowerCase();
+    // Normaliza os DOIS lados da comparação — o mesmo padrão do painel de
+    // barragens-globais e das 37 telas que já usam `semAcento`. Sem isto o
+    // cidadão que digita "mineracao" ou "colombia" recebia lista vazia
+    // contra uma base que traz "mineração" e "Colômbia" (revisão Parte 24,
+    // 01/10/2026: medido 0 resultado antes da correção).
+    const termo = semAcento(busca.trim());
 
     const filtrados = conflitosIniciais.filter((c) => {
       if (filtroContinente !== "todos" && c.continente !== filtroContinente) {
@@ -91,12 +97,14 @@ export default function PainelConflitosGlobaisClient({
         return false;
       }
       if (filtroCommodity !== "todas") {
-        if (!c.commodities.toLowerCase().includes(filtroCommodity.toLowerCase())) {
+        if (!semAcento(c.commodities).includes(semAcento(filtroCommodity))) {
           return false;
         }
       }
       if (termo) {
-        const textoGeral = `${c.nome} ${c.pais} ${c.localidade} ${c.commodities} ${c.comunidades} ${c.empresas} ${c.tipoDano} ${c.status} ${c.resumo}`.toLowerCase();
+        const textoGeral = semAcento(
+          `${c.nome} ${c.pais} ${c.localidade} ${c.commodities} ${c.comunidades} ${c.empresas} ${c.tipoDano} ${c.status} ${c.resumo}`,
+        );
         if (!textoGeral.includes(termo)) {
           return false;
         }

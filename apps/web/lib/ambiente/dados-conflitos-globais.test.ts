@@ -14,6 +14,7 @@ import {
   obterCommoditiesConflitos,
   obterEstatisticasConflitos,
 } from "./dados-conflitos-globais";
+import { semAcento } from "../busca/normalizar";
 
 describe("dados-conflitos-globais", () => {
   it("carrega a constante agregada COBERTURA_CONFLITOS_GLOBAIS com totais medidos e datados", () => {
@@ -149,6 +150,21 @@ describe("dados-conflitos-globais", () => {
 
     const commodities = obterCommoditiesConflitos();
     expect(commodities.length).toBeGreaterThanOrEqual(10);
+  });
+
+  it("busca tolerante a acentos: 'colombia' acha 'Colômbia' (Parte 24)", () => {
+    // Regressão da revisão de 01/10/2026: a busca fazia só toLowerCase, e
+    // "colombia" devolvia 0 contra uma base que traz "Colômbia".
+    const alvo = obterConflitosGlobais().find((c) => /[^\x00-\x7F]/.test(c.pais));
+    expect(alvo, "a base tem país com acento").toBeTruthy();
+
+    const achados = filtrarConflitosGlobais({ busca: semAcento(alvo!.pais) });
+    expect(achados.length, "busca sem acento deve achar").toBeGreaterThan(0);
+  });
+
+  it("busca tolerante a acentos: 'litio' acha a commodity 'Lítio'", () => {
+    const achados = filtrarConflitosGlobais({ commodity: "litio" });
+    expect(achados.length, "facet commodity sem acento deve achar").toBeGreaterThan(0);
   });
 
   it("calcula estatísticas agregadas consistentes", () => {
