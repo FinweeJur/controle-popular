@@ -1253,10 +1253,15 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-C
   (está no gerador).
 - ⚠️ **Engenho de cana não existe** neste acervo — a camada de engenhos precisa
   de outra fonte.
-- **IPHAN** — sondado em 30/09: `geoservicos.iphan.gov.br` **não resolve** (DNS)
-  e `dados.gov.br/api/publico/conjuntos-dados` devolveu **401**. A via de dado
-  em massa segue **a medir** (página do IPHAN, bens tombados, Inventário das
-  Fazendas de Café).
+- **IPHAN** — sondado em 30/09: `geoservicos.iphan.gov.br` **não resolve** (DNS) e
+  `dados.gov.br/api/publico/conjuntos-dados` devolveu **401**.
+  ⚠️ **Armadilha medida (30/09):** o HTML do `www.gov.br/iphan` traz os links
+  **escapados** (`\u002F` em vez de `/`) dentro do JSON embutido — no HTML cru
+  **nenhum `href` aparece**. **Desescapando** (`\\u00XX` → caractere), a página dos
+  **Boletins Administrativos** entrega **99 PDFs** (semanais) e 700 páginas
+  internas. O `@@search` (ex.: `SearchableText=engenho`) é **JS-morto**: 0
+  resultado no HTML. A via boa é `boletins-administrativos/<ano>`; o
+  **Banco de Bens Culturais Procurados (BCP)** é app, não dado.
 - **IBGE — Brasil: 500 anos** — seções *negros* e *descoberta do ouro*: base
   documental da mineração escravizada (o dado por município, para geolocalizar,
   é o recenseamento de 1872 — **a medir**).
