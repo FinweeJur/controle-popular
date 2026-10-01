@@ -6,6 +6,7 @@ import ContadorPublico from "@/app/components/ContadorPublico";
 import BotoesNotificacao from "@/app/components/BotoesNotificacao";
 import BotaoRadio from "@/app/components/BotaoRadio";
 import ReportarErro from "@/app/components/ReportarErro";
+import CitarPagina from "@/app/components/CitarPagina";
 
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
@@ -136,6 +137,7 @@ export default function FooterGlobal() {
           <PedirDadosEmail />
           <BotoesNotificacao />
           <ReportarErro />
+          <CitarPagina />
           <BotaoRadio />
           <a
             href="/radio"
