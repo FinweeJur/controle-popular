@@ -33,6 +33,22 @@ FROM node:22-alpine AS builder
 RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 
+# ⚠️ OBRIGATÓRIO — as variaveis marcadas como "Build" no Guara chegam como
+# Docker ARG (doc: guaracloud.com/docs/services/environment-variables). Sem o
+# ARG declarado aqui, elas NAO existem durante `npm run build` — e as paginas
+# pre-renderizadas que leem o Postgres saem vazias (HTTP 200 sem dado), sem
+# erro nenhum. Medido em 30/09/2026: /ambiental/licenciamento no ar mostrava
+# "Nenhuma licenca coletada ainda" com 8.612 linhas na tabela do Guara.
+# O estagio builder nao entra na imagem final: o valor nao vaza para o runner.
+ARG DATABASE_URL
+ARG DATABASE_URL_NEON
+ARG DATABASE_URL_HOMEPC
+ARG DATABASE_URL_RESERVA
+ENV DATABASE_URL=$DATABASE_URL
+ENV DATABASE_URL_NEON=$DATABASE_URL_NEON
+ENV DATABASE_URL_HOMEPC=$DATABASE_URL_HOMEPC
+ENV DATABASE_URL_RESERVA=$DATABASE_URL_RESERVA
+
 ENV NODE_ENV=production
 ENV BUILD_TARGET=standalone
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -52,10 +68,13 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# ⚠️ OBRIGATÓRIO: definir DATABASE_URL no dashboard do Guara Cloud.
-# Sem ela, getDb() retorna null e as páginas que leem do banco
-# (licenciamento, legislacao, etc.) renderizam vazias — HTTP 200 sem dados.
-# Exemplo: postgresql://user:pass@host:5432/controle_popular?sslmode=require
+# ⚠️ OBRIGATÓRIO: definir DATABASE_URL no dashboard do Guara Cloud — em runtime
+# E marcada como "Build" (a flag --build do `guara env set`). Em runtime,
+# getDb() retorna null sem ela e as rotas dinâmicas que leem o banco respondem
+# vazio; no BUILD, o ARG declarado no estágio builder é quem entrega a mesma
+# variável ao `npm run build` (o prebuild regenera cidades e índice de busca a
+# partir do Postgres). Exemplo:
+# postgresql://user:pass@host:5432/controle_popular?sslmode=require
 
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs

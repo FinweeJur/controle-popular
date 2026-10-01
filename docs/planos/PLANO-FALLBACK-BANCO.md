@@ -154,6 +154,30 @@ O código já está pronto para os dois: basta `DATABASE_URL_NEON`
 (plano B) e `DATABASE_URL_HOMEPC`/`DATABASE_URL_RESERVA` (plano D) no
 ambiente do Guara.
 
+## Descoberta (30/09/2026, noite): o build não via o banco
+
+Causa-raiz da página vazia, **separada** da cadeia de reserva:
+
+- O `Dockerfile` (raiz) **não declarava `ARG` nenhum**. Pela doc do Guara
+  ([environment-variables](https://guaracloud.com/docs/services/environment-variables/)),
+  variável marcada "Build" chega ao build como **Docker `ARG`** e "precisa ser
+  declarada no Dockerfile com a instrução `ARG`" — sem isso,
+  `process.env.DATABASE_URL` é `undefined` durante o `npm run build`.
+- Prova medida: `/ambiental/licenciamento` no ar mostrava "Nenhuma licença
+  coletada ainda" enquanto `public.ambiental_licenciamento` tinha **8.612
+  linhas**, carregadas desde **22/09** — muito antes do deploy de 30/09 21:30.
+  A página é estática (SSG) e congela o que o build viu.
+- Sintoma irmão: `gerar-cidades.mts` tem guarda para `BUILD_TARGET=standalone`
+  que **preserva** o `cidades-do-build.ts` versionado quando o banco não
+  responde — o build seguiu verde, sem o banco.
+- Correção (esta rodada): o estágio builder do `Dockerfile` declara
+  `ARG DATABASE_URL`, `ARG DATABASE_URL_NEON`, `ARG DATABASE_URL_HOMEPC`,
+  `ARG DATABASE_URL_RESERVA` + `ENV` correspondentes. O estágio builder não
+  entra na imagem final — o valor não vaza para o runner.
+- **Pendente de medir:** se o builder do Guara alcança o host interno
+  (`*.svc.cluster.local`). Se não alcançar, o `ARG` não basta e o caminho vira
+  expor o banco (`guara proxy`) no build. Medir no próximo deploy.
+
 ## Riscos e regras
 
 - **Não** apontar `next build` para a Neon (egress). Build é sempre no
