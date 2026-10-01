@@ -1,0 +1,2382 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fonte": "Controle Popular — Observatório Global de Grandes Barragens (ICOLD, Global Tailings Portal, USACE NID, ANM/SIGBM)",
+    "dataAtualizacao": "2026-10-01",
+    "totalFeicoes": 62,
+    "distribuicaoTipos": {
+      "rejeitos_mineracao": 22,
+      "hidreletrica": 26,
+      "abastecimento_multiuso": 11,
+      "controle_cheias": 3
+    },
+    "aviso": "Coordenadas georreferenciadas oficiais WGS84 compiladas a partir de registros estatais e cadastros públicos."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "BAR-BR-FUNDAO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4681,
+          -20.2036
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-FUNDAO",
+        "nome": "Barragem de Fundão",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio Doce / Rio Gualaxo do Norte",
+        "alturaMetros": 55,
+        "volumeCapacidadeMm3": 50,
+        "operador": "Samarco Mineração (Vale S.A. / BHP Billiton)",
+        "risco": "Dano Potencial Crítico (Rompida)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 2008,
+        "resumo": "Rompimento em 05/11/2015 liberou 50 Mm³ de lama de rejeitos na Bacia do Rio Doce.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "samarco",
+          "vale",
+          "bhp",
+          "rio-doce",
+          "mariana",
+          "rompimento",
+          "desastre"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-FEIJAO-B1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -44.1194,
+          -20.1197
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-FEIJAO-B1",
+        "nome": "Barragem B1 — Córrego do Feijão",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio Paraopeba / Rio São Francisco",
+        "alturaMetros": 86,
+        "volumeCapacidadeMm3": 12.7,
+        "operador": "Vale S.A.",
+        "risco": "Dano Potencial Crítico (Rompida)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1976,
+        "resumo": "Rompimento por liquefação em 25/01/2019 vitimou 272 pessoas em Brumadinho.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "brumadinho",
+          "paraopeba",
+          "liquefacao",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-FORQUILHA-3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.7667,
+          -20.2522
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-FORQUILHA-3",
+        "nome": "Barragem Forquilha III",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio das Velhas / São Francisco",
+        "alturaMetros": 77,
+        "volumeCapacidadeMm3": 19.3,
+        "operador": "Vale S.A.",
+        "risco": "Nível 3 de Emergência (Risco Iminente / DPA Alto)",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1982,
+        "resumo": "Estrutura sob Nível 3 com remoção de comunidades na mancha de inundação e descaracterização em curso.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "ouro-preto",
+          "rio-das-velhas",
+          "nivel-3",
+          "descaracterizacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-DOUTOR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.8344,
+          -20.3069
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-DOUTOR",
+        "nome": "Barragem Doutor",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio das Velhas",
+        "alturaMetros": 74,
+        "volumeCapacidadeMm3": 35.8,
+        "operador": "Vale S.A.",
+        "risco": "Dano Potencial Alto (CRI/DPA - SIGBM)",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1978,
+        "resumo": "Descaracterização de grande volume de rejeito de minério de ferro em Ouro Preto.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "ouro-preto",
+          "descaracterizacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-SUL-SUPERIOR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4889,
+          -19.9575
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-SUL-SUPERIOR",
+        "nome": "Barragem Sul Superior",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio São João / Bacia do Rio Doce",
+        "alturaMetros": 85,
+        "volumeCapacidadeMm3": 6,
+        "operador": "Vale S.A.",
+        "risco": "Nível 3 de Emergência (Risco Crítico)",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1983,
+        "resumo": "Nível 3 com evacuação da comunidade de Socorro em Barão de Cocais em 2019.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "barao-de-cocais",
+          "nivel-3",
+          "evacuacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-GERMANO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4739,
+          -20.2242
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-GERMANO",
+        "nome": "Barragem de Germano",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Linha de Centro / Aterro Jusante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio Doce",
+        "alturaMetros": 180,
+        "volumeCapacidadeMm3": 129,
+        "operador": "Samarco Mineração",
+        "risco": "Dano Potencial Alto (CRI/DPA - SIGBM)",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1977,
+        "resumo": "Maior barragem de rejeitos da Samarco contígua a Fundão, sob constante reforço estrutural.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "samarco",
+          "mariana",
+          "rio-doce"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-CORREGO-SITIO-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.4111,
+          -19.9881
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-CORREGO-SITIO-2",
+        "nome": "Barragem Córrego do Sítio II (CDS II)",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Aterro / Jusante",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Conceição / Bacia do Rio Doce",
+        "alturaMetros": 58,
+        "volumeCapacidadeMm3": 10.2,
+        "operador": "AngloGold Ashanti",
+        "risco": "Dano Potencial Alto (CRI/DPA - SIGBM)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1989,
+        "resumo": "Armazenamento de rejeitos de mineração de ouro em Santa Bárbara com monitoramento intensivo.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "ouro",
+          "anglogold",
+          "santa-barbara"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-CASA-DE-PEDRA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.8569,
+          -20.4831
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-CASA-DE-PEDRA",
+        "nome": "Barragem Casa de Pedra",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Enrocamento e Linha de Centro",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Paraopeba / Bacia do São Francisco",
+        "alturaMetros": 76,
+        "volumeCapacidadeMm3": 50,
+        "operador": "CSN Mineração",
+        "risco": "Dano Potencial Alto (Área Urbana Adjacente)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1980,
+        "resumo": "Grande estrutura de rejeitos vizinha a bairros urbanos densamente povoados de Congonhas.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "csn",
+          "congonhas",
+          "zona-urbana"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-MARAVILHAS-3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.8761,
+          -20.2183
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-MARAVILHAS-3",
+        "nome": "Barragem Maravilhas III",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Aterro a Jusante e Linha de Centro",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio das Velhas",
+        "alturaMetros": 90,
+        "volumeCapacidadeMm3": 108,
+        "operador": "Vale S.A.",
+        "risco": "Dano Potencial Alto (CRI/DPA - SIGBM)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2014,
+        "resumo": "Principal complexo de disposição de rejeitos moderno da Vale no Quadrilátero Ferrífero.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "itabirito",
+          "rio-das-velhas"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-HYDRO-ALUNORTE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -48.7183,
+          -1.5422
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-HYDRO-ALUNORTE",
+        "nome": "Bacia de Depósito de Resíduos DRS-2 (Hydro Alunorte)",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Bacia de Depósito em Aterro Compactado",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio Murucupi / Baía do Marajó",
+        "alturaMetros": 15,
+        "volumeCapacidadeMm3": 8.5,
+        "operador": "Norsk Hydro Alunorte",
+        "risco": "Dano Potencial Alto (Poluição Hídrica / SEMAS)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2016,
+        "resumo": "Bacia de rejeitos de bauxita/alumina envolvida em denúncias de vazamento em Barcarena em 2018.",
+        "orgaoRegulador": "ANM / SEMAS Pará",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "bauxita",
+          "norsk-hydro",
+          "barcarena",
+          "para"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CA-MOUNT-POLLEY",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.5978,
+          52.5489
+        ]
+      },
+      "properties": {
+        "id": "BAR-CA-MOUNT-POLLEY",
+        "nome": "Mount Polley Tailings Dam",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Enrocamento com Alteamentos Sucessivos",
+        "pais": "Canadá",
+        "continente": "América do Norte",
+        "rioOuBacia": "Bacia do Rio Fraser / Quesnel Lake",
+        "alturaMetros": 40,
+        "volumeCapacidadeMm3": 24,
+        "operador": "Imperial Metals",
+        "risco": "Rompida (Falha de Fundação Glaciolacustre)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1997,
+        "resumo": "Rompimento em 04/08/2014 liberou 24 Mm³ de água e rejeitos em lago glacial da Colúmbia Britânica.",
+        "orgaoRegulador": "Global Tailings Portal / BC MEMPR",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "canada",
+          "imperial-metals",
+          "rompimento",
+          "quesnel-lake"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-PG-OK-TEDI",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.1444,
+          -5.2014
+        ]
+      },
+      "properties": {
+        "id": "BAR-PG-OK-TEDI",
+        "nome": "Ok Tedi Tailings Impoundment",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Enrocamento (Colapso durante Construção)",
+        "pais": "Papua-Nova Guiné",
+        "continente": "Oceania",
+        "rioOuBacia": "Bacia dos Rios Ok Tedi e Fly",
+        "alturaMetros": 50,
+        "volumeCapacidadeMm3": 60,
+        "operador": "Ok Tedi Mining Ltd (OTML)",
+        "risco": "Crítico / Despejo Direto em Rios",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1984,
+        "resumo": "Colapso do projeto de contenção em 1984 levou ao despejo de 2 bilhões de toneladas no rio Fly.",
+        "orgaoRegulador": "Global Tailings Portal / UNEP",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "papua-nova-guine",
+          "desastre-ambiental",
+          "fly-river"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-RO-BAIA-MARE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4972,
+          47.6389
+        ]
+      },
+      "properties": {
+        "id": "BAR-RO-BAIA-MARE",
+        "nome": "Baia Mare Bozanta Dam",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Dique de Terra para Lixiviação de Cianeto",
+        "pais": "Romênia",
+        "continente": "Europa",
+        "rioOuBacia": "Bacia do Rio Tisza / Rio Danúbio",
+        "alturaMetros": 10,
+        "volumeCapacidadeMm3": 0.1,
+        "operador": "Aurul SA (Esmeralda Exploration / Remin)",
+        "risco": "Rompida (Desastre Transfronteiriço por Cianeto)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1999,
+        "resumo": "Rompimento em 30/01/2000 contaminou o rio Tisza e o Danúbio com 100 toneladas de cianeto.",
+        "orgaoRegulador": "Global Tailings Portal / UNEP",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "romenia",
+          "cianeto",
+          "danubio",
+          "tisza",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-ES-AZNALCOLLAR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.2625,
+          37.5133
+        ]
+      },
+      "properties": {
+        "id": "BAR-ES-AZNALCOLLAR",
+        "nome": "Balsa de Rejeitos de Aznalcóllar (Los Frailes)",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Enrocamento com Alteamentos",
+        "pais": "Espanha",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Guadiamar / Bacia do Guadalquivir",
+        "alturaMetros": 28,
+        "volumeCapacidadeMm3": 15,
+        "operador": "Boliden Apirsa",
+        "risco": "Rompida (Ameaça ao Parque de Doñana)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1978,
+        "resumo": "Rompimento em 25/04/1998 vazou 5 Mm³ de lamas tóxicas até as margens do Parque Nacional de Doñana.",
+        "orgaoRegulador": "MITECO Espanha / ICOLD",
+        "linkOficial": "https://www.miteco.gob.es/",
+        "tags": [
+          "rejeitos",
+          "espanha",
+          "boliden",
+          "donana",
+          "guadiamar",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-IT-STAVA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.5186,
+          46.3117
+        ]
+      },
+      "properties": {
+        "id": "BAR-IT-STAVA",
+        "nome": "Stava Fluorite Tailings Dams",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante em Cascata",
+        "pais": "Itália",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Stava / Bacia do Rio Ádige",
+        "alturaMetros": 50,
+        "volumeCapacidadeMm3": 0.3,
+        "operador": "Prealpi Mineraria",
+        "risco": "Rompida (Catástrofe de Stava / 268 Mortos)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1969,
+        "resumo": "Duas barragens sobrepostas romperam em 19/07/1985 em Tesero, provocando 268 mortes.",
+        "orgaoRegulador": "Fondazione Stava 1985 / ICOLD",
+        "linkOficial": "https://www.stava1985.it/",
+        "tags": [
+          "rejeitos",
+          "italia",
+          "stava",
+          "liquefacao",
+          "catastrofe"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-ZA-MERRIESPRUIT",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8653,
+          -28.0617
+        ]
+      },
+      "properties": {
+        "id": "BAR-ZA-MERRIESPRUIT",
+        "nome": "Merriespruit Tailings Dam 4",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Alteamento a Montante",
+        "pais": "África do Sul",
+        "continente": "África",
+        "rioOuBacia": "Rio Sand / Bacia do Rio Vaal",
+        "alturaMetros": 31,
+        "volumeCapacidadeMm3": 1.2,
+        "operador": "Harmony Gold",
+        "risco": "Rompida (Liquefação / 17 Mortos)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1978,
+        "resumo": "Rompimento por liquefação em 22/02/1994 soterrou parte da cidade de Virginia com lama de ouro.",
+        "orgaoRegulador": "DWS África do Sul / Global Tailings Portal",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "africa-do-sul",
+          "ouro",
+          "merriespruit",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-ZA-JAGERSFONTEIN",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4317,
+          -29.7633
+        ]
+      },
+      "properties": {
+        "id": "BAR-ZA-JAGERSFONTEIN",
+        "nome": "Jagersfontein Diamond Tailings Dam",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Aterro de Resíduos de Diamante",
+        "pais": "África do Sul",
+        "continente": "África",
+        "rioOuBacia": "Rio Riet / Bacia do Rio Orange",
+        "alturaMetros": 25,
+        "volumeCapacidadeMm3": 4.5,
+        "operador": "Jagersfontein Developments",
+        "risco": "Rompida (Rompimento em Setembro/2022)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 2011,
+        "resumo": "Rompimento em 11/09/2022 destruiu dezenas de casas e contaminou cursos de água no Free State.",
+        "orgaoRegulador": "DWS África do Sul / Global Tailings Portal",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "africa-do-sul",
+          "diamante",
+          "rompimento",
+          "2022"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-KINGSTON-ASH",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5167,
+          35.9125
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-KINGSTON-ASH",
+        "nome": "Kingston Coal Ash Slurry Impoundment",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Dique de Terra para Cinzas Úmidas de Carvão",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Bacia do Rio Emory / Rio Clinch",
+        "alturaMetros": 18,
+        "volumeCapacidadeMm3": 4.1,
+        "operador": "Tennessee Valley Authority (TVA)",
+        "risco": "Rompida (Maior Desastre de Cinzas dos EUA)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1954,
+        "resumo": "Rompimento em 22/12/2008 derramou 4,1 Mm³ de lodo com metais pesados em rios do Tennessee.",
+        "orgaoRegulador": "US EPA / USACE NID",
+        "linkOficial": "https://nid.sec.usace.army.mil/",
+        "tags": [
+          "rejeitos",
+          "eua",
+          "carvao",
+          "tva",
+          "tennessee",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-AU-CADIA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.9958,
+          -33.4542
+        ]
+      },
+      "properties": {
+        "id": "BAR-AU-CADIA",
+        "nome": "Cadia Northern Tailings Facility",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Linha de Centro / Aterro Rochoso",
+        "pais": "Austrália",
+        "continente": "Oceania",
+        "rioOuBacia": "Bacia Murray-Darling / Cadiangullong Creek",
+        "alturaMetros": 42,
+        "volumeCapacidadeMm3": 28,
+        "operador": "Newcrest Mining (Newmont)",
+        "risco": "Alto Risco de Deformação / Em Reforma",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1998,
+        "resumo": "Colapso parcial de talude em 09/03/2018 gerou paralisação e plano emergencial de contenção.",
+        "orgaoRegulador": "NSW Resources Regulator / Global Tailings Portal",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "australia",
+          "ouro",
+          "cobre",
+          "deformacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-FI-TALVIVAARA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9861,
+          63.9725
+        ]
+      },
+      "properties": {
+        "id": "BAR-FI-TALVIVAARA",
+        "nome": "Talvivaara Gypsum Pond (Terrafame)",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Bacia de Gesso e Resíduos Químicos",
+        "pais": "Finlândia",
+        "continente": "Europa",
+        "rioOuBacia": "Bacia de Oulujoki / Lagos de Sotkamo",
+        "alturaMetros": 12,
+        "volumeCapacidadeMm3": 4,
+        "operador": "Terrafame Ltd (antiga Talvivaara)",
+        "risco": "Alto Risco Químico / Histórico de Vazamentos",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2008,
+        "resumo": "Série de vazamentos em 2012-2013 liberou sulfatos, níquel e urânio em ecossistemas árticos protegidos.",
+        "orgaoRegulador": "SYKE / Tukes Finlândia",
+        "linkOficial": "https://www.syke.fi/",
+        "tags": [
+          "rejeitos",
+          "finlandia",
+          "niquel",
+          "vazamento-quimico"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CA-SULLIVAN",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.9817,
+          49.7042
+        ]
+      },
+      "properties": {
+        "id": "BAR-CA-SULLIVAN",
+        "nome": "Sullivan Mine Tailings Complex",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Enrocamento Zonado com Drenagem Ácida",
+        "pais": "Canadá",
+        "continente": "América do Norte",
+        "rioOuBacia": "Mark Creek / Bacia do Kootenay",
+        "alturaMetros": 35,
+        "volumeCapacidadeMm3": 45,
+        "operador": "Teck Resources",
+        "risco": "Monitoramento Perpétuo / DPA Alto",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1950,
+        "resumo": "Centenária mina de chumbo e zinco sob perpétuo tratamento de drenagem ácida de rocha.",
+        "orgaoRegulador": "BC MEMPR / Global Tailings Portal",
+        "linkOficial": "https://tailing.grida.no/",
+        "tags": [
+          "rejeitos",
+          "canada",
+          "teck",
+          "chumbo-zinco",
+          "monitoramento-perpetuo"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-FEIJAO-B6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -44.1167,
+          -20.1242
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-FEIJAO-B6",
+        "nome": "Barragem B6 — Córrego do Feijão",
+        "tipo": "rejeitos_mineracao",
+        "tipoRotulo": "Rejeitos de Mineração",
+        "tipoEstrutura": "Terra e Enrocamento",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Bacia do Rio Paraopeba",
+        "alturaMetros": 21,
+        "volumeCapacidadeMm3": 1,
+        "operador": "Vale S.A.",
+        "risco": "Soterrada no Rompimento da B1 (2019)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1980,
+        "resumo": "Estrutura de sedimentação destruída e soterrada pelo colapso da barragem B1 em Brumadinho.",
+        "orgaoRegulador": "ANM / SIGBM (Brasil)",
+        "linkOficial": "https://app.anm.gov.br/SIGBM/Publico/GerenciarBarragem",
+        "tags": [
+          "rejeitos",
+          "brasil",
+          "vale",
+          "brumadinho",
+          "soterrada"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CN-THREE-GORGES",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.0078,
+          30.8267
+        ]
+      },
+      "properties": {
+        "id": "BAR-CN-THREE-GORGES",
+        "nome": "Barragem das Três Gargantas (Three Gorges)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Gravidade em Concreto",
+        "pais": "China",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Yangtze (Chang Jiang)",
+        "alturaMetros": 181,
+        "volumeCapacidadeMm3": 39300,
+        "operador": "China Three Gorges Corporation (CTG)",
+        "risco": "Dano Potencial Extremo / Alto Controle de Cheias",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2012,
+        "resumo": "Maior usina hidrelétrica do planeta em capacidade instalada (22.500 MW) e controle de cheias.",
+        "orgaoRegulador": "ICOLD / CTG China",
+        "linkOficial": "https://www.ctg.com.cn/",
+        "tags": [
+          "hidreletrica",
+          "china",
+          "yangtze",
+          "tres-gargantas",
+          "megaobra"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-PY-ITAIPU",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.5889,
+          -25.4086
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-PY-ITAIPU",
+        "nome": "Usina Hidrelétrica de Itaipu Binacional",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Gravidade de Concreto, Enrocamento e Contrafortes",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Paraná (Bacia do Prata)",
+        "alturaMetros": 196,
+        "volumeCapacidadeMm3": 29000,
+        "operador": "Itaipu Binacional (Brasil / Paraguai)",
+        "risco": "Infraestrutura Crítica Nacional / DPA Alto",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1984,
+        "resumo": "Segunda maior geradora histórica global com 14.000 MW compartilhados entre Brasil e Paraguai.",
+        "orgaoRegulador": "ANA / ANEEL / ICOLD",
+        "linkOficial": "https://www.itaipu.gov.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "paraguai",
+          "itaipu",
+          "rio-parana"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-BELO-MONTE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -51.7778,
+          -3.1258
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-BELO-MONTE",
+        "nome": "UHE Belo Monte (Sítio Pimental e Belo Monte)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Terra e Enrocamento com Turbinas a Fio d'Água",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Xingu / Bacia Amazônica",
+        "alturaMetros": 35,
+        "volumeCapacidadeMm3": 2069,
+        "operador": "Norte Energia S.A.",
+        "risco": "Dano Potencial Alto / Monitoramento Socioambiental",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2019,
+        "resumo": "Maior usina 100% brasileira com 11.233 MW, foco de amplo debate com povos indígenas da Volta Grande.",
+        "orgaoRegulador": "ANA / ANEEL / IBAMA",
+        "linkOficial": "https://www.norteenergiasa.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "xingu",
+          "amazonia",
+          "belo-monte",
+          "povos-indigenas"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-TUCURUI",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -49.6464,
+          -3.8328
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-TUCURUI",
+        "nome": "UHE Tucuruí",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Terra, Enrocamento e Concreto de Gravidade",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Tocantins / Bacia Tocantins-Araguaia",
+        "alturaMetros": 78,
+        "volumeCapacidadeMm3": 50300,
+        "operador": "Eletrobras Eletronorte",
+        "risco": "Dano Potencial Alto (CRI/DPA - ANA)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1984,
+        "resumo": "Potência de 8.370 MW gerando energia para indústria eletrointensiva e o Sistema Interligado Nacional.",
+        "orgaoRegulador": "ANA / ANEEL / ICOLD",
+        "linkOficial": "https://www.eletrobras.com/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "tucurui",
+          "rio-tocantins",
+          "eletrobras"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-HOOVER",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.7378,
+          36.0156
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-HOOVER",
+        "nome": "Hoover Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco-Gravidade de Concreto",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Rio Colorado / Lake Mead",
+        "alturaMetros": 221,
+        "volumeCapacidadeMm3": 35200,
+        "operador": "US Bureau of Reclamation (USBR)",
+        "risco": "High Hazard Potential (USACE NID)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1936,
+        "resumo": "Ícone da engenharia de 1936 represa o Lake Mead para regulação hídrica do sudoeste dos EUA.",
+        "orgaoRegulador": "USBR / USACE NID",
+        "linkOficial": "https://www.usbr.gov/lc/hooverdam/",
+        "tags": [
+          "hidreletrica",
+          "eua",
+          "colorado-river",
+          "hoover-dam",
+          "lake-mead"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-GRAND-COULEE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.9817,
+          47.9575
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-GRAND-COULEE",
+        "nome": "Grand Coulee Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Gravidade em Concreto Maciço",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Rio Columbia / Franklin D. Roosevelt Lake",
+        "alturaMetros": 168,
+        "volumeCapacidadeMm3": 11900,
+        "operador": "US Bureau of Reclamation (USBR)",
+        "risco": "High Hazard Potential (USACE NID)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1942,
+        "resumo": "Maior usina hidrelétrica dos Estados Unidos com 6.809 MW instalados no noroeste do Pacífico.",
+        "orgaoRegulador": "USBR / USACE NID",
+        "linkOficial": "https://www.usbr.gov/pn/grandcoulee/",
+        "tags": [
+          "hidreletrica",
+          "eua",
+          "columbia-river",
+          "grand-coulee"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-VE-GURI",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.9989,
+          7.7667
+        ]
+      },
+      "properties": {
+        "id": "BAR-VE-GURI",
+        "nome": "Central Hidroeléctrica Simón Bolívar (Represa de Guri)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Mista de Gravidade de Concreto e Terra",
+        "pais": "Venezuela",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Caroní / Bacia do Orinoco",
+        "alturaMetros": 162,
+        "volumeCapacidadeMm3": 135000,
+        "operador": "Corpoelec (Venezuela)",
+        "risco": "Infraestrutura Crítica Nacional / DPA Alto",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1986,
+        "resumo": "Capacidade de 10.235 MW abastecendo grande parte da rede elétrica nacional venezuelana.",
+        "orgaoRegulador": "ICOLD / MPPEE Venezuela",
+        "linkOficial": "http://www.corpoelec.gob.ve/",
+        "tags": [
+          "hidreletrica",
+          "venezuela",
+          "guri",
+          "rio-caroni"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-RU-SAYANO-SHUSHENSKAYA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.3686,
+          52.8272
+        ]
+      },
+      "properties": {
+        "id": "BAR-RU-SAYANO-SHUSHENSKAYA",
+        "nome": "Sayano-Shushenskaya Hydroelectric Plant",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco-Gravidade de Concreto",
+        "pais": "Rússia",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Yenisei / Sibéria",
+        "alturaMetros": 242,
+        "volumeCapacidadeMm3": 31300,
+        "operador": "RusHydro",
+        "risco": "Alto Risco Sísmico / Recuperada de Acidente",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1985,
+        "resumo": "Com 6.400 MW, é a maior usina da Rússia; sofreu grave acidente na casa de força em 2009 com 75 mortos.",
+        "orgaoRegulador": "RusHydro / ICOLD",
+        "linkOficial": "http://www.rushydro.ru/",
+        "tags": [
+          "hidreletrica",
+          "russia",
+          "siberia",
+          "yenisei",
+          "acidente-2009"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CN-XILUODU",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.6481,
+          28.2589
+        ]
+      },
+      "properties": {
+        "id": "BAR-CN-XILUODU",
+        "nome": "Xiluodu Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco Duplo de Concreto",
+        "pais": "China",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Jinsha / Bacia do Yangtze",
+        "alturaMetros": 285,
+        "volumeCapacidadeMm3": 12670,
+        "operador": "China Three Gorges Corporation (CTG)",
+        "risco": "Dano Potencial Extremo / Alto Risco Sísmico",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2013,
+        "resumo": "Terceira maior geradora do mundo com 13.860 MW e arco de concreto de 285 metros de altura.",
+        "orgaoRegulador": "ICOLD / CTG China",
+        "linkOficial": "https://www.ctg.com.cn/",
+        "tags": [
+          "hidreletrica",
+          "china",
+          "jinsha",
+          "xiluodu"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CN-BAIHETAN",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.9017,
+          27.2247
+        ]
+      },
+      "properties": {
+        "id": "BAR-CN-BAIHETAN",
+        "nome": "Baihetan Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco Duplo de Concreto",
+        "pais": "China",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Jinsha / Alto Yangtze",
+        "alturaMetros": 289,
+        "volumeCapacidadeMm3": 20630,
+        "operador": "China Three Gorges Corporation (CTG)",
+        "risco": "Dano Potencial Extremo / Tecnologia Ultra-Alta",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2022,
+        "resumo": "Complexo de 16.000 MW com 16 geradores de 1.000 MW cada, segundo maior do mundo.",
+        "orgaoRegulador": "ICOLD / CTG China",
+        "linkOficial": "https://www.ctg.com.cn/",
+        "tags": [
+          "hidreletrica",
+          "china",
+          "jinsha",
+          "baihetan",
+          "16000mw"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-ILHA-SOLTEIRA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -51.3639,
+          -20.3831
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-ILHA-SOLTEIRA",
+        "nome": "UHE Ilha Solteira",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Mista de Terra, Enrocamento e Concreto",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Paraná (São Paulo / MS)",
+        "alturaMetros": 74,
+        "volumeCapacidadeMm3": 21200,
+        "operador": "CTG Brasil",
+        "risco": "Dano Potencial Alto (CRI/DPA - ANA)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1973,
+        "resumo": "Capacidade de 3.444 MW na calha principal do Rio Paraná conectada ao canal Pereira Barreto.",
+        "orgaoRegulador": "ANA / ANEEL",
+        "linkOficial": "https://www.ctgbr.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "ilha-solteira",
+          "rio-parana"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-JIRAU",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.6467,
+          -9.2647
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-JIRAU",
+        "nome": "UHE Jirau",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento com Núcleo Asfáltico e Vertedouro",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Madeira / Bacia Amazônica",
+        "alturaMetros": 63,
+        "volumeCapacidadeMm3": 2747,
+        "operador": "Energia Sustentável do Brasil (ESBR / Engie)",
+        "risco": "Dano Potencial Alto / Monitoramento de Sedimentos",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2016,
+        "resumo": "Usina a fio d'água de 3.750 MW operando com 50 turbinas bulbo no complexo do Rio Madeira.",
+        "orgaoRegulador": "ANA / ANEEL / IBAMA",
+        "linkOficial": "https://www.energiasustentaveldobrasil.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "jirau",
+          "rio-madeira",
+          "amazonia"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-SANTO-ANTONIO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.9514,
+          -8.8028
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-SANTO-ANTONIO",
+        "nome": "UHE Santo Antônio",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Concreto Compactado a Rolo e Enrocamento",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Madeira / Rondônia",
+        "alturaMetros": 60,
+        "volumeCapacidadeMm3": 2810,
+        "operador": "Santo Antônio Energia (Eletrobras Furnas)",
+        "risco": "Dano Potencial Alto / Adjacente a Porto Velho",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2012,
+        "resumo": "Capacidade de 3.568 MW próxima ao perímetro urbano de Porto Velho sob rigoroso controle de cheias.",
+        "orgaoRegulador": "ANA / ANEEL / IBAMA",
+        "linkOficial": "https://www.santoantonioenergia.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "santo-antonio",
+          "rio-madeira",
+          "porto-velho"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CA-CHURCHILL-FALLS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.3167,
+          53.5317
+        ]
+      },
+      "properties": {
+        "id": "BAR-CA-CHURCHILL-FALLS",
+        "nome": "Churchill Falls Generating Station",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Complexo de 88 Diques e Aterros em Enrocamento",
+        "pais": "Canadá",
+        "continente": "América do Norte",
+        "rioOuBacia": "Churchill River / Smallwood Reservoir",
+        "alturaMetros": 36,
+        "volumeCapacidadeMm3": 32640,
+        "operador": "Churchill Falls (Labrador) Corp / Nalcor",
+        "risco": "High Consequence (CDA Guidelines)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1974,
+        "resumo": "Casa de força subterrânea de 5.428 MW alimentada pelo imenso reservatório Smallwood.",
+        "orgaoRegulador": "CDA / ICOLD / Nalcor",
+        "linkOficial": "https://www.hydro.mb.ca/",
+        "tags": [
+          "hidreletrica",
+          "canada",
+          "churchill-river",
+          "labrador"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CA-ROBERT-BOURASSA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.4525,
+          53.7853
+        ]
+      },
+      "properties": {
+        "id": "BAR-CA-ROBERT-BOURASSA",
+        "nome": "Robert-Bourassa Dam (La Grande-2)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento com Núcleo Morênico",
+        "pais": "Canadá",
+        "continente": "América do Norte",
+        "rioOuBacia": "La Grande River / Bacia da Baía de James",
+        "alturaMetros": 162,
+        "volumeCapacidadeMm3": 61700,
+        "operador": "Hydro-Québec",
+        "risco": "Infraestrutura Estratégica Norte-Americana",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1981,
+        "resumo": "Maior usina subterrânea da América do Norte com 5.616 MW instalados no norte do Québec.",
+        "orgaoRegulador": "Hydro-Québec / CDA",
+        "linkOficial": "https://www.hydroquebec.com/",
+        "tags": [
+          "hidreletrica",
+          "canada",
+          "hydro-quebec",
+          "baia-de-james"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CA-DANIEL-JOHNSON",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.7236,
+          50.6406
+        ]
+      },
+      "properties": {
+        "id": "BAR-CA-DANIEL-JOHNSON",
+        "nome": "Daniel-Johnson Dam (Manic-5)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Múltiplos Arcos e Contrafortes em Concreto",
+        "pais": "Canadá",
+        "continente": "América do Norte",
+        "rioOuBacia": "Manicouagan River / Cratera Manicouagan",
+        "alturaMetros": 214,
+        "volumeCapacidadeMm3": 141800,
+        "operador": "Hydro-Québec",
+        "risco": "High Consequence (CDA / ICOLD)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1968,
+        "resumo": "A mais alta barragem de arcos múltiplos do mundo, represando o colossal olho de Manicouagan.",
+        "orgaoRegulador": "Hydro-Québec / ICOLD",
+        "linkOficial": "https://www.hydroquebec.com/",
+        "tags": [
+          "hidreletrica",
+          "canada",
+          "manicouagan",
+          "arcos-multiplos"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CH-GRANDE-DIXENCE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4042,
+          46.0806
+        ]
+      },
+      "properties": {
+        "id": "BAR-CH-GRANDE-DIXENCE",
+        "nome": "Barrage de la Grande Dixence",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Gravidade em Concreto Maciço",
+        "pais": "Suíça",
+        "continente": "Europa",
+        "rioOuBacia": "Dixence / Bacia do Ródano (Alpes Valaisanos)",
+        "alturaMetros": 285,
+        "volumeCapacidadeMm3": 400,
+        "operador": "Grande Dixence SA",
+        "risco": "Alto Risco Alpino / Monitoramento Sísmico",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1961,
+        "resumo": "Barragem de gravidade mais alta do planeta (285m), captando degelo de 35 geleiras nos Alpes suíços.",
+        "orgaoRegulador": "SFOE Suíça / ICOLD",
+        "linkOficial": "https://www.grande-dixence.ch/",
+        "tags": [
+          "hidreletrica",
+          "suica",
+          "alpes",
+          "grande-dixence",
+          "recorde-altura"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-TJ-NUREK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.3478,
+          38.3714
+        ]
+      },
+      "properties": {
+        "id": "BAR-TJ-NUREK",
+        "nome": "Nurek Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Terra e Enrocamento com Núcleo Central de Argila",
+        "pais": "Tajiquistão",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Vakhsh / Bacia do Amu Dária",
+        "alturaMetros": 300,
+        "volumeCapacidadeMm3": 10500,
+        "operador": "Barki Tojik (Tajiquistão)",
+        "risco": "Alto Risco Sísmico (Cordilheira Pamir)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1980,
+        "resumo": "Uma das mais altas barragens de aterro do mundo com 300 metros de altura e 3.015 MW de energia.",
+        "orgaoRegulador": "ICOLD / World Bank",
+        "linkOficial": "https://www.worldbank.org/",
+        "tags": [
+          "hidreletrica",
+          "tajiquistao",
+          "vakhsh",
+          "nurek",
+          "300m"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-TJ-ROGUN",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.8833,
+          38.6833
+        ]
+      },
+      "properties": {
+        "id": "BAR-TJ-ROGUN",
+        "nome": "Rogun Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento com Núcleo de Argila",
+        "pais": "Tajiquistão",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Vakhsh / Cordilheira Pamir",
+        "alturaMetros": 335,
+        "volumeCapacidadeMm3": 13300,
+        "operador": "Rogun HPP OJSC / Webuild",
+        "risco": "Alto Risco Sísmico e Geopolítico / Em Obras",
+        "status": "em_construcao",
+        "statusRotulo": "Em Construção",
+        "ano": 2028,
+        "resumo": "Megaobra em construção projetada para ser a mais alta do planeta (335 metros) e gerar 3.600 MW.",
+        "orgaoRegulador": "ICOLD / World Bank",
+        "linkOficial": "https://www.worldbank.org/",
+        "tags": [
+          "hidreletrica",
+          "tajiquistao",
+          "rogun",
+          "recorde-mundial",
+          "construcao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-ZM-ZW-KARIBA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7619,
+          -16.5217
+        ]
+      },
+      "properties": {
+        "id": "BAR-ZM-ZW-KARIBA",
+        "nome": "Kariba Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco de Concreto Duplo",
+        "pais": "Zâmbia",
+        "continente": "África",
+        "rioOuBacia": "Rio Zambeze (Fronteira Zâmbia / Zimbábue)",
+        "alturaMetros": 128,
+        "volumeCapacidadeMm3": 180600,
+        "operador": "Zambezi River Authority (ZRA)",
+        "risco": "Alto Risco de Erosão na Fundação / Em Reforma",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1959,
+        "resumo": "Represa o maior reservatório artificial em volume de água do planeta, sob obras de reforço no dissipador.",
+        "orgaoRegulador": "ZRA / ICOLD / World Bank",
+        "linkOficial": "https://www.zambezira.org/",
+        "tags": [
+          "hidreletrica",
+          "zambia",
+          "zimbabue",
+          "zambeze",
+          "kariba",
+          "maior-volume"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-EG-ASWAN-HIGH",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.88,
+          23.97
+        ]
+      },
+      "properties": {
+        "id": "BAR-EG-ASWAN-HIGH",
+        "nome": "Aswan High Dam (Represa Alta de Assuã)",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento com Núcleo Argiloso e Injeções",
+        "pais": "Egito",
+        "continente": "África",
+        "rioOuBacia": "Rio Nilo / Lago Nasser",
+        "alturaMetros": 111,
+        "volumeCapacidadeMm3": 132000,
+        "operador": "Egyptian Electricity Holding Company",
+        "risco": "Segurança Nacional / Controle Histórico do Nilo",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1970,
+        "resumo": "Regula as cheias do Nilo, irriga o Egito e fornece 2.100 MW a partir do colossal Lago Nasser.",
+        "orgaoRegulador": "MWRI Egito / ICOLD",
+        "linkOficial": "https://www.mwri.gov.eg/",
+        "tags": [
+          "hidreletrica",
+          "egito",
+          "nilo",
+          "assua",
+          "lago-nasser"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-MZ-CAHORA-BASSA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.7,
+          -15.5833
+        ]
+      },
+      "properties": {
+        "id": "BAR-MZ-CAHORA-BASSA",
+        "nome": "Barragem de Cahora Bassa",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Arco de Concreto de Dupla Curvatura",
+        "pais": "Moçambique",
+        "continente": "África",
+        "rioOuBacia": "Rio Zambeze / Província de Tete",
+        "alturaMetros": 171,
+        "volumeCapacidadeMm3": 55800,
+        "operador": "Hidroeléctrica de Cahora Bassa (HCB)",
+        "risco": "Infraestrutura Crítica Regional / DPA Alto",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1974,
+        "resumo": "Quarta maior represa da África com 2.075 MW alimentando Moçambique, África do Sul e Zimbábue.",
+        "orgaoRegulador": "HCB / ICOLD",
+        "linkOficial": "https://www.hcb.co.mz/",
+        "tags": [
+          "hidreletrica",
+          "mocambique",
+          "zambeze",
+          "cahora-bassa"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-AR-PY-YACYRETA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.7389,
+          -27.4811
+        ]
+      },
+      "properties": {
+        "id": "BAR-AR-PY-YACYRETA",
+        "nome": "Represa Hidroeléctrica de Yacyretá",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Aterro de Terra e Enrocamento com Concreto",
+        "pais": "Argentina",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Paraná (Fronteira Argentina / Paraguai)",
+        "alturaMetros": 43,
+        "volumeCapacidadeMm3": 21000,
+        "operador": "Entidad Binacional Yacyretá (EBY)",
+        "risco": "Infraestrutura Crítica Binacional",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1994,
+        "resumo": "Complexo com 67 km de coroamento gerando 3.200 MW entre Ituzaingó e Ayolas.",
+        "orgaoRegulador": "EBY / ICOLD",
+        "linkOficial": "https://www.yacyreta.org.ar/",
+        "tags": [
+          "hidreletrica",
+          "argentina",
+          "paraguai",
+          "rio-parana",
+          "yacyreta"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-SOBRADINHO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -40.8267,
+          -9.4319
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-SOBRADINHO",
+        "nome": "UHE Sobradinho",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Terra e Enrocamento com Vertedouro em Concreto",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio São Francisco (Bahia)",
+        "alturaMetros": 41,
+        "volumeCapacidadeMm3": 34116,
+        "operador": "CHESF / Eletrobras",
+        "risco": "Dano Potencial Alto / Pulmão Hídrico do Nordeste",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1979,
+        "resumo": "Maior lago artificial do Brasil em área (4.214 km²), regulador essencial do Velho Chico e 1.050 MW.",
+        "orgaoRegulador": "ANA / ANEEL / CHESF",
+        "linkOficial": "https://www.chesf.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "sobradinho",
+          "rio-sao-francisco",
+          "chesf"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-FURNAS",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.3194,
+          -20.6694
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-FURNAS",
+        "nome": "UHE Furnas",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento com Núcleo Central de Argila",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Grande / Bacia do Paraná (Minas Gerais)",
+        "alturaMetros": 127,
+        "volumeCapacidadeMm3": 22950,
+        "operador": "Furnas Centrais Elétricas / Eletrobras",
+        "risco": "Dano Potencial Alto (CRI/DPA - ANA)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1963,
+        "resumo": "O 'Mar de Minas' com 1.216 MW e papel crucial como caixa d'água reguladora do Sudeste.",
+        "orgaoRegulador": "ANA / ANEEL / Furnas",
+        "linkOficial": "https://www.furnas.com.br/",
+        "tags": [
+          "hidreletrica",
+          "brasil",
+          "minas-gerais",
+          "furnas",
+          "rio-grande"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-OROVILLE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4886,
+          39.5392
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-OROVILLE",
+        "nome": "Oroville Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Aterro de Terra e Enrocamento Zonado",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Feather River / Bacia do Sacramento (Califórnia)",
+        "alturaMetros": 235,
+        "volumeCapacidadeMm3": 4364,
+        "operador": "California Department of Water Resources (DWR)",
+        "risco": "High Hazard Potential / Evacuação de 180.000 em 2017",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1968,
+        "resumo": "Barragem mais alta dos EUA (235m); vertedouro sofreu erosão crítica em 2017 forçando evacuação em massa.",
+        "orgaoRegulador": "USACE NID / California DWR",
+        "linkOficial": "https://water.ca.gov/Programs/State-Water-Project/SWP-Facilities/Oroville",
+        "tags": [
+          "abastecimento",
+          "eua",
+          "california",
+          "oroville",
+          "vertedouro",
+          "evacuacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-PK-TARBELA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.6978,
+          34.0883
+        ]
+      },
+      "properties": {
+        "id": "BAR-PK-TARBELA",
+        "nome": "Tarbela Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Terra e Enrocamento Zonado com Núcleo Central",
+        "pais": "Paquistão",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Indo (Khyber Pakhtunkhwa)",
+        "alturaMetros": 143,
+        "volumeCapacidadeMm3": 13690,
+        "operador": "WAPDA (Paquistão)",
+        "risco": "Dano Potencial Extremo / Alto Assoreamento",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1976,
+        "resumo": "Maior barragem de aterro em volume de material da história (106 Mm³ no aterro) para irrigação e 4.888 MW.",
+        "orgaoRegulador": "WAPDA / ICOLD",
+        "linkOficial": "http://www.wapda.gov.pk/",
+        "tags": [
+          "abastecimento",
+          "paquistao",
+          "rio-indo",
+          "tarbela",
+          "irrigacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-GLEN-CANYON",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.4842,
+          36.9367
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-GLEN-CANYON",
+        "nome": "Glen Canyon Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Arco de Concreto Maciço",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Rio Colorado / Lake Powell (Arizona)",
+        "alturaMetros": 216,
+        "volumeCapacidadeMm3": 33300,
+        "operador": "US Bureau of Reclamation (USBR)",
+        "risco": "High Hazard Potential / Severa Crise Hídrica",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1966,
+        "resumo": "Represa o Lake Powell sob severo estresse hídrico pela megasseca histórica da Bacia do Colorado.",
+        "orgaoRegulador": "USBR / USACE NID",
+        "linkOficial": "https://www.usbr.gov/uc/rm/crsp/gc/",
+        "tags": [
+          "abastecimento",
+          "eua",
+          "colorado-river",
+          "lake-powell",
+          "seca"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-TR-ATATURK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.3189,
+          37.4789
+        ]
+      },
+      "properties": {
+        "id": "BAR-TR-ATATURK",
+        "nome": "Atatürk Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Enrocamento com Núcleo Central de Argila",
+        "pais": "Turquia",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Eufrates (Anatólia)",
+        "alturaMetros": 169,
+        "volumeCapacidadeMm3": 48700,
+        "operador": "DSI State Hydraulic Works (Turquia)",
+        "risco": "Alto Impacto Geopolítico e Transfronteiriço",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1992,
+        "resumo": "Coração do Projeto GAP da Turquia irrigando 1,7 milhão de hectares e gerando 2.400 MW no Eufrates.",
+        "orgaoRegulador": "DSI Turquia / ICOLD",
+        "linkOficial": "https://www.dsi.gov.tr/",
+        "tags": [
+          "abastecimento",
+          "turquia",
+          "eufrates",
+          "irrigacao",
+          "gap"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-IT-VAJONT",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.3278,
+          46.2672
+        ]
+      },
+      "properties": {
+        "id": "BAR-IT-VAJONT",
+        "nome": "Diga del Vajont (Barragem de Vajont)",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Arco de Concreto de Dupla Curvatura",
+        "pais": "Itália",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Vajont / Bacia do Piave (Dolomitas)",
+        "alturaMetros": 262,
+        "volumeCapacidadeMm3": 168,
+        "operador": "SADE / Enel (Itália)",
+        "risco": "Desativada (Megadeslizamento / 1.917 Mortos)",
+        "status": "desativada_descaracterizacao",
+        "statusRotulo": "Descaracterização / Desativada",
+        "ano": 1960,
+        "resumo": "Em 09/10/1963 o Monte Toc desabou no lago criando onda de 250m que destruiu Longarone; a barragem ficou intacta.",
+        "orgaoRegulador": "Fondazione Vajont / ICOLD",
+        "linkOficial": "https://www.fondazionevajont.org/",
+        "tags": [
+          "desastre",
+          "italia",
+          "vajont",
+          "deslizamento",
+          "longarone"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-FR-MALPASSET",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7578,
+          43.5133
+        ]
+      },
+      "properties": {
+        "id": "BAR-FR-MALPASSET",
+        "nome": "Barrage de Malpasset",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Arco Ultrafino de Concreto",
+        "pais": "França",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Reyran / Côte d'Azur",
+        "alturaMetros": 66,
+        "volumeCapacidadeMm3": 48,
+        "operador": "Département du Var",
+        "risco": "Rompida (Falha Geológica / 423 Mortos)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1954,
+        "resumo": "Rompimento repentino em 02/12/1959 por foliação da rocha destruiu Fréjus matando 423 pessoas.",
+        "orgaoRegulador": "CFBR França / ICOLD",
+        "linkOficial": "https://www.barrages-cfbr.eu/",
+        "tags": [
+          "abastecimento",
+          "franca",
+          "malpasset",
+          "frejus",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-TETON",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.5386,
+          43.9097
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-TETON",
+        "nome": "Teton Dam",
+        "tipo": "controle_cheias",
+        "tipoRotulo": "Controle de Cheias",
+        "tipoEstrutura": "Aterro de Terra Zonal",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Teton River / Bacia do Snake River (Idaho)",
+        "alturaMetros": 93,
+        "volumeCapacidadeMm3": 355,
+        "operador": "US Bureau of Reclamation (USBR)",
+        "risco": "Rompida (Falha por Piping no Primeiro Enchimento)",
+        "status": "rompida_historico",
+        "statusRotulo": "Rompida (Histórico)",
+        "ano": 1975,
+        "resumo": "Rompimento em 05/06/1976 durante o primeiro enchimento causou 11 mortes e reformulou normas nos EUA.",
+        "orgaoRegulador": "USBR / USACE NID",
+        "linkOficial": "https://www.usbr.gov/history/teton.html",
+        "tags": [
+          "controle_cheias",
+          "eua",
+          "idaho",
+          "teton-dam",
+          "piping",
+          "rompimento"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-CN-BANQIAO",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.5628,
+          32.9817
+        ]
+      },
+      "properties": {
+        "id": "BAR-CN-BANQIAO",
+        "nome": "Banqiao Dam (Represa de Banqiao)",
+        "tipo": "controle_cheias",
+        "tipoRotulo": "Controle de Cheias",
+        "tipoEstrutura": "Aterro de Terra e Argila (Reconstruída em Concreto/Terra)",
+        "pais": "China",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Ru / Bacia do Rio Huai (Henan)",
+        "alturaMetros": 50,
+        "volumeCapacidadeMm3": 492,
+        "operador": "Ministério de Recursos Hídricos da China (MWR)",
+        "risco": "Rompida em 1975 (Maior Tragédia de Barragens da História)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1993,
+        "resumo": "Colapso em 08/08/1975 sob o Tufão Nina causou mais de 26.000 mortes diretas; foi reconstruída em 1993.",
+        "orgaoRegulador": "MWR China / ICOLD",
+        "linkOficial": "http://www.mwr.gov.cn/",
+        "tags": [
+          "controle_cheias",
+          "china",
+          "banqiao",
+          "tufao-nina",
+          "catastrofe-1975"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-BR-CANTAREIRA-JAGUARI",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.4258,
+          -22.9067
+        ]
+      },
+      "properties": {
+        "id": "BAR-BR-CANTAREIRA-JAGUARI",
+        "nome": "Represa Jaguari-Jacareí (Sistema Cantareira)",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Aterro de Terra e Enrocamento",
+        "pais": "Brasil",
+        "continente": "América do Sul",
+        "rioOuBacia": "Rio Jaguari / Bacia PCJ (São Paulo / MG)",
+        "alturaMetros": 63,
+        "volumeCapacidadeMm3": 1047,
+        "operador": "SABESP (São Paulo)",
+        "risco": "Dano Potencial Alto / Abastecimento de 7+ Milhões",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1974,
+        "resumo": "Principal reservatório do Sistema Cantareira garantindo segurança hídrica da Grande São Paulo.",
+        "orgaoRegulador": "ANA / DAEE SP / SABESP",
+        "linkOficial": "https://www.sabesp.com.br/",
+        "tags": [
+          "abastecimento",
+          "brasil",
+          "cantareira",
+          "sao-paulo",
+          "sabesp",
+          "seguranca-hidrica"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-PT-ALQUEVA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.4958,
+          38.1969
+        ]
+      },
+      "properties": {
+        "id": "BAR-PT-ALQUEVA",
+        "nome": "Barragem de Alqueva",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Arco-Gravidade em Concreto",
+        "pais": "Portugal",
+        "continente": "Europa",
+        "rioOuBacia": "Rio Guadiana (Alentejo)",
+        "alturaMetros": 96,
+        "volumeCapacidadeMm3": 4150,
+        "operador": "EDIA (Portugal)",
+        "risco": "Infraestrutura Crítica Nacional / DPA Alto",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2002,
+        "resumo": "Maior lago artificial da Europa Ocidental com 250 km² garantindo irrigação agrícola e 520 MW.",
+        "orgaoRegulador": "EDIA / APA Portugal / ICOLD",
+        "linkOficial": "https://www.edia.pt/",
+        "tags": [
+          "abastecimento",
+          "portugal",
+          "alqueva",
+          "guadiana",
+          "alentejo"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-AU-GLENMAGGIE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.7583,
+          -37.8986
+        ]
+      },
+      "properties": {
+        "id": "BAR-AU-GLENMAGGIE",
+        "nome": "Glenmaggie Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Gravidade em Concreto com Contrafortes e Comportas",
+        "pais": "Austrália",
+        "continente": "Oceania",
+        "rioOuBacia": "Macalister River / Bacia de Gippsland (Victoria)",
+        "alturaMetros": 37,
+        "volumeCapacidadeMm3": 177,
+        "operador": "Southern Rural Water (Austrália)",
+        "risco": "High Hazard (ANCOLD Guidelines)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1929,
+        "resumo": "Infraestrutura essencial para o Distrito de Irrigação de Macalister com 14 comportas radiais.",
+        "orgaoRegulador": "Southern Rural Water / ANCOLD",
+        "linkOficial": "https://www.srw.com.au/",
+        "tags": [
+          "abastecimento",
+          "australia",
+          "victoria",
+          "glenmaggie",
+          "irrigacao"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-IN-TEHRI",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4806,
+          30.3789
+        ]
+      },
+      "properties": {
+        "id": "BAR-IN-TEHRI",
+        "nome": "Tehri Dam",
+        "tipo": "hidreletrica",
+        "tipoRotulo": "Hidrelétrica & Energia",
+        "tipoEstrutura": "Enrocamento e Terra com Núcleo Impermeável",
+        "pais": "Índia",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Bhagirathi / Bacia do Ganges (Himalaia)",
+        "alturaMetros": 260,
+        "volumeCapacidadeMm3": 4000,
+        "operador": "THDC India Ltd",
+        "risco": "Extremo Risco Sísmico (Falha do Himalaia) / DPA Alto",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2006,
+        "resumo": "Barragem mais alta da Índia (260m) em área de alta sismicidade fornecendo 2.400 MW e água para Déli.",
+        "orgaoRegulador": "CEA Índia / ICOLD",
+        "linkOficial": "https://thdc.co.in/",
+        "tags": [
+          "hidreletrica",
+          "india",
+          "ganges",
+          "himalaia",
+          "tehri",
+          "sismico"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-IN-SARDAR-SAROVAR",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7489,
+          21.8317
+        ]
+      },
+      "properties": {
+        "id": "BAR-IN-SARDAR-SAROVAR",
+        "nome": "Sardar Sarovar Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Gravidade em Concreto Maciço",
+        "pais": "Índia",
+        "continente": "Ásia",
+        "rioOuBacia": "Rio Narmada (Gujarat)",
+        "alturaMetros": 163,
+        "volumeCapacidadeMm3": 9500,
+        "operador": "Sardar Sarovar Narmada Nigam Ltd (SSNNL)",
+        "risco": "Alto Impacto Social e Deslocamento Humano",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 2017,
+        "resumo": "Canaliza irrigação para 1,8 milhão de hectares em Gujarat e 1.450 MW após décadas de protestos sociais.",
+        "orgaoRegulador": "SSNNL / CWC Índia / ICOLD",
+        "linkOficial": "https://sardarsarovardam.org/",
+        "tags": [
+          "abastecimento",
+          "india",
+          "narmada",
+          "irrigacao",
+          "sardar-sarovar"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-SHASTA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4178,
+          40.7183
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-SHASTA",
+        "nome": "Shasta Dam",
+        "tipo": "abastecimento_multiuso",
+        "tipoRotulo": "Abastecimento & Multiuso",
+        "tipoEstrutura": "Arco-Gravidade de Concreto Curvo",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Sacramento River (Norte da Califórnia)",
+        "alturaMetros": 183,
+        "volumeCapacidadeMm3": 5615,
+        "operador": "US Bureau of Reclamation (USBR)",
+        "risco": "High Hazard Potential (USACE NID)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1945,
+        "resumo": "Chave mestra do Central Valley Project irrigando milhões de hectares agrícolas na Califórnia.",
+        "orgaoRegulador": "USBR / USACE NID",
+        "linkOficial": "https://www.usbr.gov/mp/ncao/shasta/",
+        "tags": [
+          "abastecimento",
+          "eua",
+          "california",
+          "shasta",
+          "central-valley"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BAR-US-FORT-PECK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.4178,
+          48.0069
+        ]
+      },
+      "properties": {
+        "id": "BAR-US-FORT-PECK",
+        "nome": "Fort Peck Dam",
+        "tipo": "controle_cheias",
+        "tipoRotulo": "Controle de Cheias",
+        "tipoEstrutura": "Aterro Hidráulico de Terra",
+        "pais": "Estados Unidos",
+        "continente": "América do Norte",
+        "rioOuBacia": "Rio Missouri (Montana)",
+        "alturaMetros": 76,
+        "volumeCapacidadeMm3": 23100,
+        "operador": "US Army Corps of Engineers (USACE)",
+        "risco": "High Hazard Potential (USACE NID)",
+        "status": "em_operacao",
+        "statusRotulo": "Em Operação",
+        "ano": 1940,
+        "resumo": "Maior barragem por aterro hidráulico dos EUA, construída na década de 1930 sob o New Deal.",
+        "orgaoRegulador": "USACE NID",
+        "linkOficial": "https://www.nwo.usace.army.mil/Missions/Dam-and-Lake-Projects/Missouri-River-Dams/Fort-Peck/",
+        "tags": [
+          "controle_cheias",
+          "eua",
+          "missouri-river",
+          "fort-peck",
+          "usace"
+        ]
+      }
+    }
+  ]
+}

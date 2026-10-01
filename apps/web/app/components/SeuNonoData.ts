@@ -684,6 +684,72 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "/terras/globo", texto: "Globo 3D Terras (Camada de Conflitos)" },
             ],
           },
+          {
+            id: "monopolios-holdings-big-three",
+            pergunta: "Como funcionam os monopólios e a rede dos Big Three?",
+            resposta:
+              "BlackRock, Vanguard e State Street controlam participações simultâneas em corporações concorrentes. O portal exibe grafo interativo em Canvas e índice HHI.",
+            link: { href: "/empresas/conglomerados", texto: "Observatório de Monopólios & Grafo" },
+            links: [
+              { href: "https://www.sec.gov/edgar", texto: "SEC EDGAR Estados Unidos" },
+              { href: "/empresas", texto: "Observatório Geral de Empresas" },
+            ],
+          },
+          {
+            id: "executivos-conselhos-interlocking",
+            pergunta: "O que são diretorias entrelaçadas e interlocking directorates nas empresas?",
+            resposta:
+              "Ocorre quando os mesmos conselheiros atuam simultaneamente em múltiplas empresas parceiras. O portal mapeia 143 executivos e conselhos das maiores corporações.",
+            link: { href: "/empresas/executivos", texto: "Painel de Executivos & Conselhos" },
+            links: [
+              { href: "https://www.gov.br/cvm", texto: "Comissão de Valores Mobiliários (CVM)" },
+              { href: "/empresas/conglomerados", texto: "Rede de Monopólios e Controle" },
+            ],
+          },
+          {
+            id: "ameacas-socioambientais-americas",
+            pergunta: "Quais são as principais espécies, rios e serras ameaçados nas Américas?",
+            resposta:
+              "O portal mapeia 90 ameaças críticas em todo o continente americano. Reúne espécies em extinção, bacias hídricas contaminadas e territórios tradicionais vulnerabilizados.",
+            link: { href: "/ambiental/ameacas-americas", texto: "Ameaças Socioambientais das Américas" },
+            links: [
+              { href: "https://www.icmbio.gov.br", texto: "ICMBio Livro Vermelho da Fauna" },
+              { href: "https://www.iucnredlist.org", texto: "IUCN Red List of Threatened Species" },
+            ],
+          },
+          {
+            id: "barragens-mundiais-rejeitos-energia",
+            pergunta: "Onde consultar o monitoramento global de grandes barragens e rejeitos?",
+            resposta:
+              "O portal cataloga 62 megabarragens mundiais de mineração, energia e abastecimento. Dados integrados ao Globo 3D com fontes da ANM e ICOLD.",
+            link: { href: "/ambiental/barragens-globais", texto: "Acervo de Grandes Barragens Mundiais" },
+            links: [
+              { href: "/terras/globo", texto: "Globo 3D Terras (Camada de Barragens)" },
+              { href: "https://www.icold-cigb.org", texto: "ICOLD — World Register of Dams" },
+            ],
+          },
+          {
+            id: "conflitos-socioambientais-globais",
+            pergunta: "Como auditar conflitos socioambientais e violações corporativas no mundo?",
+            resposta:
+              "Mapeamos 55 conflitos socioambientais emblemáticos com dados do EJAtlas internacional. Apresenta empresas rés, commodities envolvidas, comunidades afetadas e ações judiciais.",
+            link: { href: "/ambiental/conflitos-globais", texto: "Conflitos Socioambientais Mundiais" },
+            links: [
+              { href: "https://ejatlas.org", texto: "EJAtlas — Global Atlas of Environmental Justice" },
+              { href: "https://www.globalwitness.org", texto: "Global Witness — Defensores da Terra" },
+            ],
+          },
+          {
+            id: "crise-climatica-poluidores-g20",
+            pergunta: "Quais são os maiores emissores e poluidores industriais do planeta?",
+            resposta:
+              "O acervo reúne o balanço de gases do G20 e vinte mega-poluidores. Cruza dados do Climate TRACE, IPCC e anomalias térmicas do Copernicus.",
+            link: { href: "/ambiental/crise-climatica", texto: "Observatório da Crise Climática Global" },
+            links: [
+              { href: "https://climatetrace.org", texto: "Climate TRACE Emissões Globais" },
+              { href: "https://climate.copernicus.eu", texto: "Copernicus Climate Change Service" },
+            ],
+          },
         ],
       },
       {

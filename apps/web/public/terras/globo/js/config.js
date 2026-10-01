@@ -1025,6 +1025,14 @@ export const LAYER_REGISTRY = [
     aviso: 'Coordenadas oficiais WGS84 compiladas a partir de relatórios da ONU, SIPRI, CRS do Congresso dos EUA, DoD e CIJ. Cada ponto indica o teatro de operações ou centro de comando.',
     color: 0xf43f5e, /* rosa/carmesim alerta de conflitos e operações bélicas */ on: false, render: 'point', pointSize: 0.007, listavel: true,
   },
+  // --- Observatório Global de Grandes Barragens (01/10/2026) ---
+  {
+    id: 'barragens-mundiais-destaque',
+    label: 'Grandes Barragens Mundiais (Água, Energia, Rejeitos)',
+    hint: '62 grandes barragens emblemáticas em todo o planeta: estruturas de rejeitos da mineração, megacentrais hidrelétricas e represas de abastecimento.',
+    aviso: 'Coordenadas WGS84 compiladas a partir de ICOLD, Global Tailings Portal, USACE NID e ANM/SIGBM. Cada ponto indica a localização exata da represa.',
+    color: 0x0284c7, /* azul ciano / hídrico */ on: false, render: 'point', pointSize: 0.007, listavel: true,
+  },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
   // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
@@ -1575,6 +1583,13 @@ export const CAMADAS = [
     hint: '48 operações bélicas, golpes de Estado, empresas militares privadas e acordos armamentistas globais.',
     aviso: 'Coordenadas auditadas contra fontes oficiais multilaterais (ONU, CIJ, SIPRI, CRS).',
     fontes: ['operacoes-militares-conflitos'],
+  },
+  {
+    id: 'barragens-mundiais-destaque', assunto: 'territorio-mineracao',
+    label: 'Grandes Barragens Mundiais (Água, Energia, Rejeitos)',
+    hint: '62 megabarragens hidrelétricas, reservatórios de abastecimento e estruturas de rejeitos da mineração.',
+    aviso: 'Coordenadas auditadas contra fontes oficiais de segurança de barragens (ICOLD, UNEP Tailings, USACE, ANM).',
+    fontes: ['barragens-mundiais-destaque'],
   },
   {
     id: 'documentos-processo-municipios', assunto: 'brumadinho',

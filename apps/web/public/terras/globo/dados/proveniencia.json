@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-10-01T11:26:17.440Z",
+  "gerado_em_utc": "2026-10-01T12:55:26.385Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -79,6 +79,16 @@
       "comprimido": false,
       "sha256": "c1246bea139df4a26fff4c6a6fe80c61c461bd9f87b13da882100653eec2bac8",
       "mtime_utc": "2026-09-30T20:59:26.940Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "barragens-mundiais-destaque",
+      "feicoes": 62,
+      "bytes": 76901,
+      "comprimido": false,
+      "sha256": "ea7447a9babe3302d09a76aabb0694ad3826c342bd967201df83097df0a77061",
+      "mtime_utc": "2026-10-01T12:55:26.385Z",
       "obtencao": "nao_declarada",
       "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
@@ -418,7 +428,7 @@
       "bytes": 107186,
       "comprimido": false,
       "sha256": "f95d30a445761d60eb7735f770da3eb38e5237a0be5e483b4814c4de47c82470",
-      "mtime_utc": "2026-10-01T11:26:17.440Z",
+      "mtime_utc": "2026-10-01T11:33:26.591Z",
       "obtencao": "automatica",
       "origem": "Observatório Global de Operações Militares, Conflitos e PMCs — 48 teatros de operações bélicas, deposições de regime, corporações mercenárias (PMCs) e mega-contratos armamentistas globais compilados a partir de relatórios oficiais da ONU, SIPRI, CRS do Congresso dos EUA, DoD e Corte Internacional de Justiça (CIJ)."
     },
@@ -693,6 +703,7 @@
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
   "camadas_sem_origem_declarada": [
     "bacia-paraopeba",
+    "barragens-mundiais-destaque",
     "cobertura-telefonia-mg",
     "cobertura-telefonia-prioritarias",
     "estudos-ambientais",
