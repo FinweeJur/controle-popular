@@ -89,23 +89,51 @@ export default async function Hub() {
         resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
       />
 
-      {/* ═══ LANÇAMENTO PARA REVISÃO PÚBLICA DOS DADOS — pedido do dev,
-          30/09/2026: a página nova entra como lançamento ao público para
-          revisão dos dados. Fica logo abaixo da capa, acima do carrossel. ═══ */}
+      {/* ═══ AVISO — O PORTAL INTEIRO LANÇADO — pedido do dono, 01/10/2026:
+          o card de baixo dava a entender que só aquele cruzamento estava em
+          revisão. A correção é esta frase, num card próprio, acima do card do
+          cruzamento. O crédito vem em fonte menor, como pedido. ═══ */}
       <section
-        aria-label="Lançamento para revisão pública dos dados"
-        className="mt-6 rounded-2xl border border-alert/40 bg-alert/10 p-5"
+        aria-label="Portal lançado publicamente"
+        className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-xs"
+      >
+        <p className="max-w-3xl text-base leading-relaxed">
+          O portal inteiro está lançado publicamente para acesso, colaboração e revisão.
+        </p>
+        <p className="mt-2 max-w-3xl text-xs leading-relaxed text-text-soft">
+          Até agora, a maior parte do trabalho foi feito por um desenvolvedor / Artur Colito - (Github:{" "}
+          <a
+            href="https://github.com/FinweeJur"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            FinweeJur
+          </a>
+          ), advogado popular mestrando em Estudos Rurais na UFVJM em parceria com o Instituto Esperança
+          Maria.
+        </p>
+      </section>
+
+      {/* ═══ CRUZAMENTO DE TERRITÓRIOS E MINERAÇÃO — pedido do dono,
+          01/10/2026: este card fica abaixo do aviso e não fala mais de
+          revisão (a revisão agora é do portal inteiro, no card de cima).
+          O destino não muda: /mineracao/ilegal é a página que faz o
+          cruzamento. ═══ */}
+      <section
+        aria-label="Territórios e mineração em Minas Gerais"
+        className="mt-4 rounded-2xl border border-alert/40 bg-alert/10 p-5"
       >
         <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
-          Lançamento para revisão pública dos dados
+          Territórios e mineração
         </p>
         <h2 className="mt-1 text-xl font-semibold">
           Mineração e comunidades tradicionais em Minas Gerais
         </h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
           Publicamos o cruzamento das terras indígenas e dos territórios quilombolas de Minas Gerais com a
-          mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto para revisão:
-          aponte erro, lacuna ou dado faltante — o portal corrige na fonte oficial.
+          mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto — aponte erro,
+          lacuna ou dado faltante e o portal corrige na fonte oficial.
         </p>
         <a
           href="/mineracao/ilegal"
