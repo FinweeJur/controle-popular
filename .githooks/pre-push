@@ -44,7 +44,8 @@ fi
 RAIZ=$(git rev-parse --show-toplevel)
 
 for CHECADOR in "$RAIZ/scripts/checar-dado-pessoal.py" \
-                "$RAIZ/scripts/checar-dado-pessoal-em-dado.py"; do
+                "$RAIZ/scripts/checar-dado-pessoal-em-dado.py" \
+                "$RAIZ/scripts/checar-webhook-telegram.py"; do
     if [ ! -f "$CHECADOR" ]; then
         echo "⚠️  pre-push: $CHECADOR não existe — checagem PULADA."
         continue

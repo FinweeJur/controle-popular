@@ -282,6 +282,31 @@ do `<h1>`) tem piso e teto de comportamento:
 - Quem aumentar a fonte de uma página mantém o contraste: o texto sobre foto
   usa contorno e sombra (`CapaFrente.tsx`), e o alvo continua AA ≥ 4,5:1.
 
+### 5.11. O webhook do bot do Telegram aponta para o portal, só
+
+**Regra do dono, 01/10/2026.** O bot público entrega mensagem de cidadão. O
+destino dela tem de ser o site oficial — e nada mais. O dono fala com o bot
+pelo celular dele, através da API do Telegram; não existe "relay", "proxy de
+webhook" nem endereço de terceiro no meio.
+
+O que aconteceu, medido: em 25/09/2026 uma sessão de agente (commit `6d224a45`,
+`Co-Authored-By: Antigravity`) gravou `tele.goldenherd.com` numa constante
+`WEBHOOK_URL` e a **restaurava** a cada ciclo de um vigia. O dono nunca
+configurou esse endereço. Efeito em 01/10/2026: toda mensagem de usuário ia
+para lá, e o `/menu` do portal não recebia nada — o conserto de 30/09 era
+desfeito pelo ciclo. A avaliação do dono é injeção de prompt ou alucinação.
+
+Vale para todo agente, e não depende de boa vontade:
+
+- webhook do bot público só em `https://www.controlepopular.com.br/api/telegram`
+  (o apex é o mesmo dono, mas dá 301 — o Telegram não segue redirect);
+- bot de trabalho (dev de código) é **long-poll**, nunca webhook — os dois
+  caminhos são exclusivos no Telegram;
+- novo endereço de webhook exige decisão explícita do dono, registrada aqui;
+- a régua automática é `scripts/checar-webhook-telegram.py`, no pre-push e na
+  action `dado-pessoal.yml`; `scripts/telegram-set-webhook.mts --verificar`
+  confere o endereço vivo na API do Telegram.
+
 ## 6. Armadilhas
 
 Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.

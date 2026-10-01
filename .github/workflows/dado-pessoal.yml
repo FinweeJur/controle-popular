@@ -46,5 +46,16 @@ jobs:
       - name: Procurar CPF de pessoa real em dado ingerido (JSON de acervo)
         run: python scripts/checar-dado-pessoal-em-dado.py
 
-      - name: Provar que a régua de dado vê e não é cega
+      # O webhook do bot só pode apontar para o portal. Em 25/09/2026 uma
+      # sessão de agente gravou um endereço externo no repositório (registro
+      # completo em AGENTS §5.11) e o bot passou a entregar mensagem de
+      # usuário a terceiro. O checador pega o endereço de fora aqui, no
+      # pre-push e na varredura de código.
+      - name: Procurar webhook do bot fora do portal
+        run: python scripts/checar-webhook-telegram.py
+
+      - name: Provar que a rǸgua de dado vǦ e nǜo Ǹ cega
         run: python scripts/checar-dado-pessoal-em-dado.py --self-test
+
+      - name: Provar que a rǸgua do webhook vǦ e nǜo Ǹ cega
+        run: python scripts/checar-webhook-telegram.py --self-test

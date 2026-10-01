@@ -58,6 +58,7 @@
  * Uso:
  *   npx tsx scripts/telegram-set-webhook.mts            # registra no www
  *   npx tsx scripts/telegram-set-webhook.mts --info     # só consulta
+ *   npx tsx scripts/telegram-set-webhook.mts --verificar # confere o endereço vivo (sai 1 se estiver errado)
  *   npx tsx scripts/telegram-set-webhook.mts --delete    # remove o webhook
  */
 import fs from "node:fs";
@@ -190,7 +191,12 @@ async function exigirBotPublico() {
 async function principal() {
   const argv = process.argv.slice(2);
 
-  if (!argv.includes("--info")) {
+  // Escrita só quando o pedido é registrar (sem flag): `--info` e
+  // `--verificar` são leitura, e auditoria que escreve não é auditoria.
+  const querRegistrar =
+    !argv.includes("--info") && !argv.includes("--verificar") && !argv.includes("--delete");
+
+  if (!argv.includes("--info") && !argv.includes("--verificar")) {
     await exigirBotPublico();
   }
 
@@ -200,7 +206,7 @@ async function principal() {
     return;
   }
 
-  if (!argv.includes("--info")) {
+  if (querRegistrar) {
     const r = await api("setWebhook", {
       url: URL_WEBHOOK,
       // Só manda o segredo se ele existir; sem ele o app fica aberto (avisa no log).
@@ -240,6 +246,33 @@ async function principal() {
   const cmds = await api("getMyCommands");
   const lista = (cmds.result ?? []) as Array<{ command: string }>;
   console.log(`menu de comandos: ${lista.length} registrado(s)`);
+
+  if (argv.includes("--verificar")) {
+    verificarUrl(w);
+  }
+}
+
+/**
+ * Confere o endereço VIVO do webhook contra o oficial e sai com código de erro
+ * se estiver diferente.
+ *
+ * Esta é a camada que o repositório não alcança: um agente com o token pode
+ * chamar `setWebhook` direto na API, sem tocar em arquivo nenhum — foi assim
+ * que `tele.goldenherd.com` ficou no ar sem aparecer no diff. O checador de
+ * código (`scripts/checar-webhook-telegram.py`) pega o endereço no arquivo;
+ * este aqui pega o endereço em vigor. Serve para rotina/vigia, porque um
+ * `--verificar` que ninguém roda não verifica nada.
+ */
+function verificarUrl(w: Record<string, unknown>) {
+  const url = String(w.url ?? "");
+  if (url === URL_WEBHOOK) {
+    console.log(`✅ webhook no endereço oficial: ${url}`);
+    process.exit(0);
+  }
+  console.error(`⛔ webhook apontando para ${url || "(vazio)"}`);
+  console.error(`   endereço oficial: ${URL_WEBHOOK}`);
+  console.error("   Rode o script sem flag para re-registrar. Ver AGENTS §5.11.");
+  process.exit(1);
 }
 
 principal().catch((e) => {
