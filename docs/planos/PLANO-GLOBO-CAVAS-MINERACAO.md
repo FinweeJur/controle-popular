@@ -552,6 +552,37 @@ rótulo no `checkpoint.jsonl` (com backup) — **9 flips** (3 positivo→negativ
 `scripts/etl/cavas/revisao-humana-gate.json`. As 15 dúvidas (`revisado`)
 ficam de fora do flip até veredito.
 
+#### Handoff — como retomar (01/10/2026, sessão fechando)
+
+Fila viva desta frente, em ordem:
+
+1. **⏳ Gate v5 rodando** (`Temp\opencode\fecha-treino-v5.ps1`, lançado
+   ~12h51): treino peso + sobreamostragem com os 9 rótulos corrigidos,
+   hiperparâmetros idênticos ao v4. Ao fechar: `metricas-v5-*`,
+   `gate-v5.veredito.txt` e Telegram. **Comparar recall v5 × v4**
+   (0,851) — o ganho esperado vem dos 6 FN corrigidos.
+2. **Pan-sharpen 2 m (v6):** a PAN crua cega os modelos locais (medido:
+   v4 fora de distribuição; qwen3-vl:2b deu "75" constante em 15/16).
+   Caminho: juntar PAN 2 m com BAND3/2/1 (8 m) → recorte **colorido 2 m** →
+   retreinar. Script que gerou a PAN: `Temp\opencode\recortes-2m-pan.py`
+   (STAC `ids` → asset `BAND0`); a comparação visual do dev está em
+   `scripts/.cache/cavas-calibracao/comparacao-pan-2m.html`.
+3. **Dúvidas do dev (15 `revisado`)** — legendas dizem "fiquei na dúvida se
+   é mineração"; são a faixa onde o modelo 2 m deve decidir. Fechar o
+   significado de `revisado` antes de virar rótulo.
+4. **Fase E** do plano de mapeamento: liberada só após gate v5 + revisão
+   humana confirmada pelo dev (P8/P9).
+5. **⚠️ Guara estourou a cota de build** (356,85/250 min, ciclo até 19/out):
+   **deploy do portal pode falhar** até o ciclo virar. Vaga de projeto
+   sobrando (2.º slot) não serve para o pipeline — não tem GPU.
+
+Artefatos de 01/10: `revisao-humana-dev.json` (todas as marcas),
+`fila-curta-v4.html` (folha editável dos 16), `fila-curta-v4.json`,
+`pontuacao-v4-amostra100.json` (v4 nos 100 a 8 m), `recortes-2m/` +
+`comparacao-pan-2m.html`, leitor de LevelDB do Brave
+(`Temp\opencode\le-leveldb.py`, precisa `cramjam`) — a folha grava em
+**localStorage do Brave**, não em arquivo.
+
 ### Fase 3 — mudança no tempo, método A: "cava crescente" (1 semana)
 
 - Série anual mediana Sentinel-2 (2015→2026) por janela; índices NDVI
