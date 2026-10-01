@@ -1,7 +1,7 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import catalogo from "@/data/catalogo-bases-dados.json";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET() {
   return NextResponse.json(

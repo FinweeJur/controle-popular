@@ -80,6 +80,23 @@ function ehPostgresLocal(url: string): boolean {
 }
 
 /**
+ * Host é local ou interno de cluster Kubernetes (ex: Guara Cloud)?
+ * Hosts internos falam TCP puro sem TLS; forçar ssl: false evita erro FATAL 08P01 (protocol_violation).
+ */
+function ehHostInternoSemSsl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname;
+    if (host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]") return true;
+    if (host.endsWith(".cluster.local") || host.includes(".svc.") || host.endsWith(".internal")) return true;
+    if (parsed.searchParams.get("sslmode") === "disable") return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * MOTOR TCP (`pg` + `drizzle-orm/node-postgres`).
  *
  * Servia só quando `DATABASE_URL` apontava a localhost (build offline,
@@ -88,38 +105,34 @@ function ehPostgresLocal(url: string): boolean {
  * Neon, então cai aqui — sem isso o driver HTTP da Neon mandava fetch
  * HTTPS para o Postgres e producão morria com `fetch failed`.
  *
- * POR QUE `require` ESCONDIDO DO BUNDLER, e não `import` no topo: o alvo
- * padrão continua Cloudflare Workers, com teto de 3 MiB gzip e sem TCP. Um
- * `import { Pool } from "pg"` no topo deste arquivo entraria no bundle do
- * Worker em todo deploy, para um caminho que lá nunca roda (o host da
- * Neon usa o motor HTTP). O só-caminho-executado mantém o Worker enxuto.
- *
  * `pg` virou dependency (não mais devDependency): agora ele vive no
  * runtime — standalone da Guara e `next start` do túnel — e a presença no
  * standalone garantida por `serverExternalPackages: ["pg"]` (nft não segue
  * `createRequire` com argumento variável).
  */
 function criarLocal(url: string): DB {
-  // `(0, eval)("require")` NAO serve aqui, e o modo de falha e traicoeiro:
-  // em Node solto funciona, mas dentro do chunk do Turbopack (ESM) da
-  // `ReferenceError: require is not defined`, cai no catch de `getDb()` e o
-  // build sai VERDE com zero pagina de cidade. Medido em 2026-08-09.
-  //
-  // `process.getBuiltinModule` (Node 22) devolve `node:module` SEM import
-  // estatico — que e o ponto: o bundler do Worker continua sem enxergar `pg`.
   const { createRequire } = (
     process as unknown as { getBuiltinModule(id: string): typeof import("node:module") }
   ).getBuiltinModule("node:module");
   const requireDeNode = createRequire(`${process.cwd()}/`);
   const { Pool } = requireDeNode("pg");
   const { drizzle: drizzlePg } = requireDeNode("drizzle-orm/node-postgres");
-  // O cast mantém `DB` com UM tipo só. Os dois drivers expõem a mesma
-  // superfície para tudo que este app usa — e `db.execute()`, que é a
-  // diferença real entre eles, já é desembrulhado com `.rows ?? []` nos 13
-  // chamadores (`NeonHttpQueryResult` e `QueryResult` do pg têm ambos
-  // `.rows`). Sem o cast, o tipo de retorno viraria união e as 149 funções
-  // de consulta passariam a precisar de narrowing.
-  return drizzlePg(new Pool({ connectionString: url }), { schema }) as unknown as DB;
+
+  const semSsl = ehHostInternoSemSsl(url);
+  const poolConfig: Record<string, unknown> = {
+    connectionString: url,
+    connectionTimeoutMillis: 10000,
+  };
+
+  if (semSsl) {
+    // Hosts internos do cluster Kubernetes (ex.: cp-postgres do Guara) rodam em TCP puro
+    // sem TLS. Forçar ssl: false impede o envio de SSLRequest que causa FATAL 08P01 (protocol_violation).
+    poolConfig.ssl = false;
+  } else if (url.includes("sslmode=require") || !url.includes("sslmode=disable")) {
+    poolConfig.ssl = { rejectUnauthorized: false };
+  }
+
+  return drizzlePg(new Pool(poolConfig), { schema }) as unknown as DB;
 }
 
 function criar(url: string) {
