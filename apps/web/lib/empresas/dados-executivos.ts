@@ -20,14 +20,13 @@
  * Conformidade e Restrições Técnicas:
  * - LGPD: Estritamente nomes de titulares de cargos públicos estatutários de alta governança.
  *   ZERO dados pessoais sensíveis ou de identificação civil (sem CPF, sem RG, sem endereços).
- * - Leitura e descompactação sob demanda do arquivo `executivos-conselhos.compact.json` via esqueleto + rótulos internados.
- * - Resolução transparente de caminhos para suportar execução tanto no servidor Next.js quanto na suíte Vitest e CLI.
+ * - CLIENT-SAFE: este módulo NÃO pode importar `node:fs` — o componente de
+ *   cliente `PainelExecutivosClient.tsx` importa os tipos e constantes daqui, e
+ *   `node:fs` num bundle de navegador derruba o build com UnhandledSchemeError
+ *   (medido 01/10/2026: deploy 79af0f44 no Guara). A leitura do arquivo
+ *   `executivos-conselhos.compact.json` (esqueleto + rótulos internados) mora
+ *   em `lib/server-only/dados-executivos.ts`.
  */
-
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { expandir, type TabelaCompacta } from "@/lib/estatico/compactar";
 
 export type TipoOrgao = "diretoria_executiva" | "conselho_administracao" | "comite_auditoria";
 
@@ -69,95 +68,3 @@ export const COBERTURA_EXECUTIVOS = {
   dataAtualizacao: "2026-10-01",
   fontesReguladoras: ["CVM", "SEC", "SEDAR+", "Companies House", "CMVM", "BaFin", "AMF", "Oslo Børs", "CONSOB"],
 };
-
-/** Cache em memória para evitar releitura e reexpansão de disco no ciclo de vida do processo */
-let CACHE_EXECUTIVOS: RegistroExecutivo[] | null = null;
-
-/**
- * Localiza o arquivo de dados compactados considerando variações de CWD
- * entre execução do Next.js, suíte de testes Vitest e scripts na raiz.
- */
-function resolverCaminhoDados(): string {
-  const relativo = path.join("data", "empresas", "executivos-conselhos.compact.json");
-  const candidatos = [
-    path.join(process.cwd(), relativo),
-    path.join(process.cwd(), "apps", "web", relativo),
-  ];
-
-  try {
-    const dirModulo = path.dirname(fileURLToPath(import.meta.url));
-    candidatos.push(path.resolve(dirModulo, "../../data/empresas/executivos-conselhos.compact.json"));
-  } catch {
-    // Caso import.meta.url não esteja disponível em ambientes específicos de bundle
-  }
-
-  for (const cand of candidatos) {
-    if (fs.existsSync(cand)) {
-      return cand;
-    }
-  }
-
-  return candidatos[0];
-}
-
-/**
- * Retorna todos os executivos, conselheiros e membros de comitês de auditoria catalogados.
- *
- * @returns Lista completa e tipada de registros de governança corporativa.
- */
-export function obterExecutivosConselhos(): RegistroExecutivo[] {
-  if (CACHE_EXECUTIVOS) {
-    return CACHE_EXECUTIVOS;
-  }
-
-  try {
-    const caminho = resolverCaminhoDados();
-    if (!fs.existsSync(caminho)) {
-      return [];
-    }
-
-    const conteudoRaw = fs.readFileSync(caminho, "utf-8");
-    const tabelaCompacta = JSON.parse(conteudoRaw) as TabelaCompacta;
-    const itensExpandidos = expandir<RegistroExecutivo>(tabelaCompacta);
-
-    CACHE_EXECUTIVOS = itensExpandidos;
-    return CACHE_EXECUTIVOS;
-  } catch (erro) {
-    console.error("Falha ao carregar dados de executivos e conselhos:", erro);
-    return [];
-  }
-}
-
-/**
- * Filtra os membros de governança de uma empresa específica a partir do seu identificador/slug.
- *
- * @param empresaId - Slug canônico da empresa (ex.: 'vale', 'petrobras', 'samarco', 'bhp').
- * @returns Lista de executivos e conselheiros vinculados à corporação.
- */
-export function obterExecutivosPorEmpresa(empresaId: string): RegistroExecutivo[] {
-  const todos = obterExecutivosConselhos();
-  const idNormalizado = empresaId.trim().toLowerCase();
-  return todos.filter((item) => item.empresaId.toLowerCase() === idNormalizado);
-}
-
-/**
- * Retorna exclusivamente os executivos e conselheiros que possuem diretorias ou conselhos entrelaçados
- * (interlocking directorates) com outras corporações monitoradas.
- *
- * @returns Registros onde `interlockingIds` não está vazio.
- */
-export function obterDiretoriasEntrelacadas(): RegistroExecutivo[] {
-  const todos = obterExecutivosConselhos();
-  return todos.filter((item) => Array.isArray(item.interlockingIds) && item.interlockingIds.length > 0);
-}
-
-/**
- * Busca um registro de executivo ou conselheiro pelo seu identificador único.
- *
- * @param id - Identificador único (ex.: 'exec-vale-gustavo-pimenta').
- * @returns O registro correspondente ou `undefined` se não for localizado.
- */
-export function obterExecutivoPorId(id: string): RegistroExecutivo | undefined {
-  const todos = obterExecutivosConselhos();
-  return todos.find((item) => item.id === id);
-}

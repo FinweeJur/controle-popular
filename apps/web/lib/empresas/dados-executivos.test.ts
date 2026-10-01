@@ -17,6 +17,8 @@ import {
   obterExecutivosPorEmpresa,
   obterDiretoriasEntrelacadas,
   obterExecutivoPorId,
+} from "@/lib/server-only/dados-executivos";
+import {
   COBERTURA_EXECUTIVOS,
   ROTULOS_ORGAOS,
   type TipoOrgao,
