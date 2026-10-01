@@ -304,6 +304,8 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **Documentação fora do padrão** | CI quebra sem `Tipo`, `Domínio`, `Última medição`, `## Sumário`. Rode `python scripts/validar-documentacao.py` |
 | **Contêineres locais = Podman no WSL2** | Podman 5.x rootless no WSL2 (Ubuntu), nunca Docker Desktop. Portas fixas: 5000, 5678 |
 | **`guara deploy` sem `--project`** | o runner não tem `guara link`: CLI 0.3.0 devolve `No project specified` e o job de deploy fica vermelho em todo push (medido 28/09). Slug: `controle-popular` (`guara projects list`). No workflow o deploy só dispara em `workflow_dispatch` — push é só teste (OPERACAO §2) |
+| **Env do Guara: `-b` é só build** | a flag marca a variável para o BUILD da imagem e ela NÃO chega ao runtime. Medido 01/10/2026: `TELEGRAM_BOT_TOKEN` enviado com `-b` deixou o bot mudo — o portal recebia a mensagem e não tinha token para responder — enquanto o teste direto pelo mesmo token funcionava. Reenviado sem `-b` (rolling restart automático) e o bot respondeu. Variável usada em runtime vai SEM `-b`; a usada no build vai COM (é a linha logo acima vista ao contrário) |
+| **`.env` com CRLF ou BOM esconde chave** | leitor de `.env` com regex terminando em `$` não casa antes do `\r` — em JS, `$` sem a flag `m` não ignora o fim de linha. Medido 01/10/2026: uma linha acrescentada pelo PowerShell entrou com CRLF, o `TELEGRAM_WEBHOOK_SECRET` recém-escrito ficou invisível, o webhook subiu SEM `secret_token` e o bot ficou mudo (403). Notepad e `Set-Content -Encoding UTF8` do PowerShell 5.1 também gravam BOM, que apaga a PRIMEIRA chave. Leia com `split(/\r?\n/)` e remova `\uFEFF` |
 
 ## 7. Regra editorial
 

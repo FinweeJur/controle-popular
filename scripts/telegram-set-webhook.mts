@@ -74,11 +74,23 @@ const COMANDOS = [
   { command: "direitos", description: "Saúde, educação, trabalho, moradia e justiça" },
 ] as const;
 
+/**
+ * Lê KEY=VALUE de um .env. Tolera BOM e CRLF de propósito.
+ *
+ * Medido em 01/10/2026: uma linha acrescentada ao `scripts/.env` pelo
+ * PowerShell entrou com CRLF (o arquivo usa LF). O regex termina em `$`, e em
+ * JavaScript `$` sem a flag `m` NÃO casa antes do `\r` — a chave recém-escrita
+ * ficou invisível, o script anunciou "sem segredo no .env" e registrou o
+ * webhook SEM `secret_token`. Com o segredo já no ambiente dos contêineres,
+ * isso deixou o bot mudo nos dois sentidos até o arquivo ser normalizado. O
+ * `\uFEFF` é o mesmo estrago pelo começo: Notepad e `Set-Content -Encoding
+ * UTF8` do PowerShell 5.1 gravam BOM, e a PRIMEIRA chave do arquivo some.
+ */
 function lerEnv(caminho: string): Record<string, string> {
   const out: Record<string, string> = {};
   if (!fs.existsSync(caminho)) return out;
-  for (const linha of fs.readFileSync(caminho, "utf-8").split("\n")) {
-    const m = linha.match(/^([A-Z_]+)=(.*)$/);
+  for (const linha of fs.readFileSync(caminho, "utf-8").split(/\r?\n/)) {
+    const m = linha.replace(/^\uFEFF/, "").match(/^([A-Z_]+)=(.*)$/);
     if (m) out[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
   }
   return out;
