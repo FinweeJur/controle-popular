@@ -6,6 +6,10 @@ node_modules
 .open-next
 **/.open-next
 .claude
+**/.cache
+.opencode
+neon_export
+models
 *.log
 *.sql
 *.docx
