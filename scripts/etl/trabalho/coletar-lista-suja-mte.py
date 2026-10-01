@@ -68,8 +68,8 @@ def sanitizar_dado_pessoal(texto: str) -> str:
     Mascara CPF em qualquer campo de texto.
 
     A fonte cola o CPF no próprio nome do empregador em vários registros
-    (ex.: "JOSE RODRIGO PANAMA MOROCHO 23862099890") — pego pelo autoteste.
-    O CPF NUNCA pode chegar ao acervo versionado (AGENTS §5.2).
+    (ex.: "FULANO DE TAL 000.000.000-00" — aqui é sintético) — pego pelo
+    autoteste. O CPF NUNCA pode chegar ao acervo versionado (AGENTS §5.2).
     """
     texto = REGEX_CPF_FORMATADO.sub("***", texto or "")
     return REGEX_CPF_CRU.sub("***", texto)
