@@ -12,7 +12,7 @@
  * - Ferramentas de Direitos em Movimento e ComunicaBR
  */
 
-import { semAcento } from "./normalizar";
+import { semAcento, separarPalavras } from "./normalizar";
 
 export interface PaginaPortalIndexada {
   id: string;
@@ -179,11 +179,17 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     badgeCor: "var(--cp-secondary)",
     palavrasChave: ["brumadinho", "paraopeba", "vale", "acordo brumadinho", "37 bi", "atingidos", "reparacao"],
   },
+  // Dois hrefs destas entradas apontavam para rota que não existe
+  // (/paraopeba/repasses e /paraopeba/ptr) — medido em 01/10/2026 contra as
+  // 304 rotas do App Router. Repasses: quem consulta município a município
+  // é a página da execução do Acordo. PTR: o programa era outro (hoje o
+  // pagamento é o NAE), então o destino é o hub, que explica as duas siglas
+  // — e é o mesmo destino que top-100-paginas.json já usava.
   {
     id: "paraopeba-repasses",
     titulo: "Repasses Municipais do Acordo de Brumadinho",
     descricao: "Consulta município a município dos recursos transferidos pela Vale e Governo de Minas às prefeituras.",
-    href: "/paraopeba/repasses",
+    href: "/paraopeba/execucao",
     frente: "paraopeba",
     rotulo: "Repasses · R$ 5,48 Bi",
     badgeCor: "var(--cp-secondary)",
@@ -193,7 +199,7 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     id: "paraopeba-ptr",
     titulo: "Programa de Transferência de Renda (PTR)",
     descricao: "Acompanhamento do pagamento mensal às famílias atingidas gerido pela Fundação Getulio Vargas (FGV).",
-    href: "/paraopeba/ptr",
+    href: "/paraopeba",
     frente: "paraopeba",
     rotulo: "Auxílio · PTR",
     badgeCor: "var(--cp-secondary)",
@@ -875,10 +881,15 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
  * Casamento case-insensitive e unaccent sobre título, descrição, rota e palavras-chave.
  */
 export function buscarPaginasPortal(consulta: string, limite = 6): PaginaPortalIndexada[] {
-  const qLimpo = semAcento(consulta.trim().toLowerCase());
-  if (!qLimpo || qLimpo.length < 2) return [];
-
-  const termos = qLimpo.split(/\s+/).filter(Boolean);
+  // Uma normalização só para a consulta. `separarPalavras` tira acento e
+  // pontuação e separa letra de dígito — é o mesmo passo do índice de busca,
+  // então consulta e acervo se alinham sozinhos. Antes a consulta passava por
+  // `semAcento` + `split`, e "licitações;" virava o termo `licitacoes;`, que
+  // não casa com a palavra-chave `licitacoes` (dívida 22.5).
+  const termos = separarPalavras(consulta);
+  if (termos.length === 0) return [];
+  const qLimpo = termos.join(" ");
+  if (qLimpo.length < 2) return [];
 
   const pontuados = PAGINAS_PORTAL.map((pag) => {
     const tit = semAcento(pag.titulo.toLowerCase());

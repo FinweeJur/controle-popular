@@ -435,7 +435,7 @@ Terceira passada, sobre `lib/navegacao`, `lib/busca` e `lib/tabela`.
 
 ### Achados da Parte 9
 
-1. ⚠️ **Dois testes sem código sob teste — corrigidos** (30/09/2026).
+1. ⚠️ → ✅ **Dois testes sem código sob teste — corrigidos** (30/09/2026).
    `lib/navegacao/alerta-contextual.test.ts` montava a mensagem DENTRO do
    próprio teste, e `lib/navegacao/indice-pagina.test.ts` redefinia a função
    de slug no arquivo: os dois passavam sem exercitar produção nenhuma — o
@@ -1001,19 +1001,36 @@ aqui não é performance, é o portal responder algo que ninguém perguntou.
    tabela e falha se cifra de acervo voltar para prosa ou para texto de
    link.
 
-4. 📌 **O teste de "integridade" não testa se a rota existe.**
+4. 📌 → ✅ **O teste de "integridade" não testava se a rota existe.**
    `paginas-portal.test.ts:39` percorre as 849 linhas checando `id`,
    `titulo`, `descricao`, `href.startsWith("/")` e `palavrasChave` — nada
-   verifica que `href` corresponde a uma rota real do App Router. Lista
+   verificava que `href` corresponde a uma rota real do App Router. Lista
    hardcoded de rotas envelhece em silêncio; foi exatamente assim que
    `/noticias/direitos-em-movimento-guia` chegou publicado apontando para
    404 (achado desta semana, corrigido no commit `3d91f8dc`).
 
-5. 📌 **`buscarPaginasPortal` não usa `separarPalavras`.** A linha 881
-   divide por `split(/\s+/)` mantendo pontuação: `"licitações;"` vira o
-   termo `licitacoes;` e não casa com `licitacoes`. O resto do módulo
+   **Quitado em 01/10/2026.** Medição antes de escrever o teste: 304 rotas
+   na árvore `app/` contra 69 páginas catalogadas → **2 hrefs órfãos**, os
+   dois em Paraopeba: `/paraopeba/repasses` e `/paraopeba/ptr`, que não
+   existem em lugar nenhum do `app/`. O primeiro passou a apontar para
+   `/paraopeba/execucao` (a página que consulta município a município — a
+   descrição do card já dizia isso); o segundo, para o hub `/paraopeba`,
+   porque o PTR era outro programa (hoje o pagamento é o NAE) e o hub é
+   quem explica as duas siglas — mesmo destino que
+   `top-100-paginas.json` já usava. O teste agora varre `app/` a cada
+   execução e falha listando `id -> href` do que faltar.
+
+5. 📌 → ✅ **`buscarPaginasPortal` não usava `separarPalavras`.** A linha
+   881 dividia por `split(/\s+/)` mantendo pontuação: `"licitações;"` virava
+   o termo `licitacoes;` e não casava com `licitacoes`. O resto do módulo
    (`indice.ts`, `resposta-curada.ts`) passa tudo por `separarPalavras`.
    Duas normalizações para a mesma busca.
+
+   **Quitado em 01/10/2026.** A consulta inteira agora sai de
+   `separarPalavras` e os termos vêm do mesmo passo — uma normalização só,
+   igual à do índice. Teste: `"licitações;"` devolve exatamente o que
+   `"licitacoes"` devolve, e `"licitações púbicas:"` o que
+   `"licitacoes publicas"` devolve.
 
 6. 📌 **O limiar 0,45 mede só o padrão.** `intersecao /
    palavrasP.length` conta quanto do **padrão** está na pergunta, sem
@@ -1152,9 +1169,12 @@ cada correção com teste de regressão e conversão do marcador
     número medido continua na página de destino (achado 22.3). Um teste
     percorre as 13 entradas e falha se cifra voltar.
 
-**Fase 4 — higiene**
+**Fase 4 — higiene** ✅ **concluída (01/10/2026)**
+(`lib/busca/paginas-portal.ts`, `lib/busca/paginas-portal.test.ts`, este doc)
 
-16. Teste que confere se a rota de `PAGINAS_PORTAL` existe (dívida 22.4).
+16. Teste que confere se a rota de `PAGINAS_PORTAL` existe (achado 22.4) —
+    mediu 304 rotas contra 69 páginas e achou **2 hrefs órfãos**, ambos
+    corrigidos.
 17. `buscarPaginasPortal` passa a usar `separarPalavras` (dívida 22.5).
 18. Marcador da Parte 9 corrigido para `⚠️ → ✅`.
 
