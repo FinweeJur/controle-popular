@@ -238,3 +238,9 @@ etl/betim/.fila-pncp.lock
 # Acervos de dados brutos pesados locais (fora de apps/web e fora do bundle do Cloudflare)
 /data/
 
+# Arquivos de regras que o `next dev` REGERA a cada execução (não são fonte; a
+# fonte é o AGENTS.md da raiz). Sem ignorar, aparecem como "WIP" em toda sessão
+# e fazem sessões paralelas hesitarem — higiene, não conteúdo.
+apps/web/AGENTS.md
+apps/web/CLAUDE.md
+
