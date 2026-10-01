@@ -45,7 +45,7 @@ import type { VerbeteVitrine } from "./VitrineLutas";
  *    esquecimento)
  */
 export const metadata: Metadata = metadataEditavel("/direitos-em-movimento", {
-  title: "Direitos em Movimento — Controle Popular",
+  title: "Direitos em Movimento — Eixo 2 | Controle Popular",
   description:
     "Que lei protege isso, onde buscar ajuda, como pedir informação e como denunciar — reunidos num lugar só, para quem sofreu ou viu uma violação de direitos.",
 });
@@ -108,7 +108,7 @@ export default async function DireitosEmMovimentoHub() {
           className="text-[.82em] font-semibold uppercase tracking-wide"
           style={{ color: CARD_COR }}
         >
-          Transversal às cinco frentes · Para quem sofreu ou viu uma violação
+          Eixo 2: Direitos em Movimento · Para quem sofreu ou viu uma violação
         </p>
         <h1 className="font-display text-3xl font-bold sm:text-4xl">Direitos em Movimento</h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
@@ -117,6 +117,96 @@ export default async function DireitosEmMovimentoHub() {
           que aconteceu. A cidade só é perguntada na porta que realmente depende dela.
         </p>
       </header>
+
+      {/* SUBFRENTES PRIORITÁRIAS EM DESTAQUE */}
+      <section aria-label="Subfrentes prioritárias" className="mt-8 rounded-2xl border-2 border-amber-500/30 bg-amber-500/5 p-6">
+        <div className="mb-4">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-500">✦ Portas Prioritárias</span>
+          <h2 className="font-display text-xl font-bold text-foreground mt-1">
+            Subfrentes em Destaque Cívico
+          </h2>
+          <p className="text-sm text-text-soft">
+            Acesso imediato às garantias de direitos fundamentais, memória das lutas populares e saúde coletiva.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="/memoria"
+            className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Memória Operária</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
+                Linha do Tempo das Lutas
+              </h3>
+              <p className="text-xs text-text-soft mt-1 leading-relaxed">
+                6 décadas de resistência camponesa, sindical e comunitária no Brasil.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-3 flex items-center justify-between">
+              <span>Ver Linha do Tempo</span>
+              <span>→</span>
+            </span>
+          </a>
+
+          <a
+            href="/ambiental/legislacao"
+            className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Biblioteca Jurídica</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
+                Que Lei Protege Isso
+              </h3>
+              <p className="text-xs text-text-soft mt-1 leading-relaxed">
+                Leis ambientais, tratados internacionais e precedentes de tribunais.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-3 flex items-center justify-between">
+              <span>Consultar Leis</span>
+              <span>→</span>
+            </span>
+          </a>
+
+          <a
+            href="/direitos-em-movimento/saude-publica"
+            className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ SUS & Vida</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
+                Saúde Pública & SUS
+              </h3>
+              <p className="text-xs text-text-soft mt-1 leading-relaxed">
+                Leitos CNES, internações SIH e rede assistencial por município.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-3 flex items-center justify-between">
+              <span>Ver Painel SUS</span>
+              <span>→</span>
+            </span>
+          </a>
+
+          <a
+            href="/direitos-em-movimento/ajuda"
+            className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Assistência</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
+                Onde Buscar Ajuda
+              </h3>
+              <p className="text-xs text-text-soft mt-1 leading-relaxed">
+                Defensoria, assistência social, rede de proteção e tarifa social de água e luz.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-3 flex items-center justify-between">
+              <span>Buscar Ajuda</span>
+              <span>→</span>
+            </span>
+          </a>
+        </div>
+      </section>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         <PortaCard

@@ -142,7 +142,13 @@ export default async function IndiceGlobal() {
         { href: "/ambiental/ppp", titulo: "Concessões & PPP de MG", descricao: "20 contratos reais de concessão e parceria do Estado de Minas.", cor: "var(--cp-eixo-estado)", badge: "✦ Novo", icon: <Building2 size={14} /> },
         { href: "/cidades/mg", titulo: "Cidades de Minas (853)", descricao: "Os 853 municípios de MG do IBGE, com microrregiões e mesorregiões.", cor: "var(--cp-eixo-terra)", badge: "✦ Novo", icon: <MapPin size={14} /> },
         { href: "/mineracao/cavas", titulo: "Cavas de Mineração (satélite)", descricao: "Série anual de cavas detectadas por satélite no globo 3D.", cor: "var(--cp-eixo-terra)", badge: "✦ Novo", icon: <Mountain size={14} /> },
+        { href: "/assembleias", titulo: "27 Assembleias Legislativas", descricao: "Deputados estaduais, gastos, tramitação e comissões das 27 UFs.", cor: "var(--cp-eixo-estado)", badge: "✦ Novo", icon: <Landmark size={14} /> },
+        { href: "/memoria", titulo: "Linha do Tempo das Lutas & Memória", descricao: "6 décadas de lutas populares, terra, trabalho e resistência.", cor: "var(--cp-alert)", badge: "✦ Memória", icon: <Users size={14} /> },
+        { href: "/europa", titulo: "Europa & Conexões Transnacionais", descricao: "BHP em Londres, Braskem em Roterdã e devida diligência da UE.", cor: "var(--cp-eixo-estado)", badge: "✦ Internacional", icon: <Globe size={14} /> },
+        { href: "/eua", titulo: "Estados Unidos & Wall Street", descricao: "SEC, USGS, capitais financeiros e investidores institucionais.", cor: "var(--cp-eixo-estado)", badge: "✦ Internacional", icon: <Landmark size={14} /> },
+        { href: "/canada", titulo: "Canadá & Bolsa de Toronto", descricao: "TSX, NRCan e grandes mineradoras canadenses no Brasil.", cor: "var(--cp-eixo-estado)", badge: "✦ Internacional", icon: <Mountain size={14} /> },
         { href: "/internacional", titulo: "Hubs Internacionais", descricao: "ONU, UNESCO, OMS, OMC, EUA, Canadá e G20 num acervo só.", cor: "var(--cp-eixo-estado)", badge: "✦ Novo", icon: <Globe size={14} /> },
+        { href: "/radio", titulo: "Rádios Cívicas & Comunitárias", descricao: "Vozes do território, boletins de áudio e emissoras locais.", cor: "var(--cp-primary)", badge: "✦ Áudio", icon: <Sparkles size={14} /> },
         { href: "/laboratorio", titulo: "Laboratório de Dados", descricao: "Compare dois conjuntos de dados em gráficos dither com auxílio do Seu Nonô.", cor: "var(--cp-geral, #7c7c9c)", badge: "✦ Novo", icon: <BarChart3 size={14} /> },
         { href: "/laboratorio/arvore", titulo: "Árvore de Conexões (Obsidian)", descricao: "Visualização interativa em grafo com os 4 grandes eixos cívicos e 38 nós temáticos interligados.", cor: "var(--cp-eixo-terra)", badge: "✦ Grafo", icon: <TreeDeciduous size={14} /> },
         { href: "/paraopeba/biblioteca", titulo: "Biblioteca de Documentos", descricao: "Acervo de publicações das ATIs, perícia e órgãos ambientais.", cor: "var(--cp-secondary)", badge: "Paraopeba", icon: <BookOpen size={14} /> },
@@ -160,6 +166,7 @@ export default async function IndiceGlobal() {
         { href: "/instituicoes", titulo: "Organogramas & Lideranças", descricao: "Quem comanda, estrutura funcional e canais oficiais de órgãos públicos.", cor: "var(--cp-secondary)", badge: "Institucional", icon: <Building2 size={14} /> },
         { href: "/cidades", titulo: "203 Cidades Estratégicas", descricao: "Expansão para as 27 capitais e 176 polos do interior com dados do IBGE e DATASUS.", cor: "var(--cp-tertiary)", badge: "Nacional", icon: <MapPin size={14} /> },
         { href: "/empresas", titulo: "Grandes Empresas & Fundos", descricao: "Observatório de mineradoras, relatórios ESG, sócios e fornecedores públicos.", cor: "var(--cp-secondary)", badge: "Mercado", icon: <Building2 size={14} /> },
+        { href: "/empresas/fortunas", titulo: "Bilionários & Fortunas Minerais", descricao: "Rastreamento patrimonial e grupos controladores da mineração.", cor: "var(--cp-secondary)", badge: "✦ Mercado", icon: <Building2 size={14} /> },
         { href: "/biblioteca", titulo: "Biblioteca Geral & Pesquisa", descricao: "24.000 documentos, estudos de ATIs, relatórios periciais e decisões LAI.", cor: "var(--cp-accent)", badge: "Acervo", icon: <BookOpen size={14} /> },
         { href: "/judiciario/recomendacoes", titulo: "Recomendações CNJ & CNMP", descricao: "O que os conselhos nacionais mandaram corrigir em tribunais e promotorias.", cor: "var(--cp-secondary)", badge: "Justiça", icon: <Scale size={14} /> },
         { href: "/judiciario/contatos", titulo: "Varas e Balcão Virtual", descricao: "Telefone, e-mail, titular e balcão virtual de 990 varas de MG e cidades do Brasil.", cor: "var(--cp-secondary)", badge: "Judiciário", icon: <Scale size={14} /> },
@@ -186,6 +193,9 @@ export default async function IndiceGlobal() {
         { href: "/ambiental/mariana", titulo: "Quero o Acordo de Mariana", descricao: "Execução dos R$ 171 bi da repactuação histórica do Rio Doce.", cor: "var(--cp-tertiary)", badge: "Ação", icon: <Leaf size={14} /> },
         { href: "/ambiental/barragens", titulo: "Moro perto de uma barragem", descricao: "Situação e risco de barragens em Minas Gerais.", cor: "var(--cp-tertiary)", badge: "Ação", icon: <MapPin size={14} /> },
         { href: "/funcaosocialterra/mapa", titulo: "Quero ver o território", descricao: "Globo 3D com camadas de mineração, CAR, UCs e mais.", cor: "var(--cp-accent)", badge: "Ação", icon: <Map size={14} /> },
+        { href: "/memoria", titulo: "Quero conhecer a história das lutas populares", descricao: "Linha do tempo com 6 décadas de resistência do campo e da cidade.", cor: "var(--cp-alert)", badge: "Ação", icon: <Users size={14} /> },
+        { href: "/europa", titulo: "Quero acompanhar processos no exterior", descricao: "Ações na Corte de Londres (BHP/Mariana) e Haia/Roterdã.", cor: "var(--cp-eixo-estado)", badge: "Ação", icon: <Globe size={14} /> },
+        { href: "/radio", titulo: "Quero ouvir as rádios comunitárias", descricao: "Transmissões e boletins de áudio dos territórios de resistência.", cor: "var(--cp-primary)", badge: "Ação", icon: <Sparkles size={14} /> },
       ],
     },
   ];
@@ -233,40 +243,12 @@ export default async function IndiceGlobal() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Eixo 1 */}
-          <Link
-            href="/direitos-em-movimento"
-            className="group flex flex-col justify-between rounded-2xl border border-alert/30 bg-alert/5 p-5 transition hover:border-alert hover:bg-alert/10 shadow-xs"
-          >
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="rounded border border-alert/30 bg-alert/20 px-2 py-0.5 text-xs font-bold uppercase text-alert">
-                  EIXO 1
-                </span>
-                <HeartHandshake className="h-5 w-5 text-alert" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-text group-hover:text-alert transition-colors">
-                Direitos em Movimento
-              </h3>
-              <p className="mt-2 text-xs text-text-soft leading-relaxed">
-                Saúde (SUS), Educação (IDEB), Trabalho (CAGED), Conselhos de Direitos, LAI, canal de denúncia e assistência jurídica.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-alert/20 flex items-center justify-between text-xs font-semibold text-alert">
-              <span>Explorar Eixo</span>
-              <span>→</span>
-            </div>
-          </Link>
-
-          {/* Eixo 2 */}
-          <Link
-            href="/terra-e-territorios"
-            className="group flex flex-col justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5 transition hover:border-emerald-500 hover:bg-emerald-500/10 shadow-xs"
-          >
+          {/* Eixo 1: Terra e Território */}
+          <div className="group flex flex-col justify-between rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-5 transition hover:border-emerald-500 hover:bg-emerald-500/10 shadow-xs">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-xs font-bold uppercase text-emerald-500">
-                  EIXO 2
+                  EIXO 1
                 </span>
                 <Globe className="h-5 w-5 text-emerald-500" />
               </div>
@@ -276,18 +258,81 @@ export default async function IndiceGlobal() {
               <p className="mt-2 text-xs text-text-soft leading-relaxed">
                 203 Cidades Estratégicas, Bacias Paraopeba e Rio Doce (Brumadinho e Mariana), barragens, clima, licenciamento e Globo 3D.
               </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500">
-              <span>Explorar Eixo</span>
-              <span>→</span>
-            </div>
-          </Link>
 
-          {/* Eixo 3 */}
-          <Link
-            href="/estado-e-economia"
-            className="group flex flex-col justify-between rounded-2xl border border-sky-500/30 bg-sky-500/5 p-5 transition hover:border-sky-500 hover:bg-sky-500/10 shadow-xs"
-          >
+              {/* Subfrentes em Destaque */}
+              <div className="mt-4 pt-3 border-t border-emerald-500/20 space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">✦ Subfrentes em Destaque:</span>
+                <ul className="text-xs space-y-1 text-text">
+                  <li className="font-medium text-emerald-300">
+                    <Link href="/funcaosocialterra/mapa" className="hover:underline">✦ Função Social & Globo 3D</Link>
+                  </li>
+                  <li className="font-medium text-emerald-300">
+                    <Link href="/ambiental/mariana" className="hover:underline">✦ Repactuação Mariana (R$ 171 bi)</Link>
+                  </li>
+                  <li className="font-medium text-emerald-300">
+                    <Link href="/paraopeba" className="hover:underline">✦ Reparação Paraopeba (Brumadinho)</Link>
+                  </li>
+                  <li className="font-medium text-emerald-300">
+                    <Link href="/ambiental/licenciamento" className="hover:underline">✦ Licenciamentos Ambientais (11 UFs)</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <Link
+              href="/terra-e-territorios"
+              className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500 hover:underline"
+            >
+              <span>Explorar Eixo 1 Completo</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          {/* Eixo 2: Direitos em Movimento */}
+          <div className="group flex flex-col justify-between rounded-2xl border-2 border-alert/40 bg-alert/5 p-5 transition hover:border-alert hover:bg-alert/10 shadow-xs">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded border border-alert/30 bg-alert/20 px-2 py-0.5 text-xs font-bold uppercase text-alert">
+                  EIXO 2
+                </span>
+                <HeartHandshake className="h-5 w-5 text-alert" />
+              </div>
+              <h3 className="font-display text-lg font-bold text-text group-hover:text-alert transition-colors">
+                Direitos em Movimento
+              </h3>
+              <p className="mt-2 text-xs text-text-soft leading-relaxed">
+                Saúde (SUS), Educação (IDEB), Trabalho (CAGED), Conselhos de Direitos, LAI, canal de denúncia e assistência jurídica.
+              </p>
+
+              {/* Subfrentes em Destaque */}
+              <div className="mt-4 pt-3 border-t border-alert/20 space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-alert">✦ Subfrentes em Destaque:</span>
+                <ul className="text-xs space-y-1 text-text">
+                  <li className="font-medium text-amber-300">
+                    <Link href="/memoria" className="hover:underline">✦ Linha do Tempo das Lutas & Memória</Link>
+                  </li>
+                  <li className="font-medium text-amber-300">
+                    <Link href="/ambiental/legislacao" className="hover:underline">✦ Que Lei Protege Isso (Biblioteca)</Link>
+                  </li>
+                  <li className="font-medium text-amber-300">
+                    <Link href="/direitos-em-movimento/saude-publica" className="hover:underline">✦ Saúde Pública & SUS</Link>
+                  </li>
+                  <li className="font-medium text-amber-300">
+                    <Link href="/direitos-em-movimento/ajuda" className="hover:underline">✦ Onde Buscar Ajuda & Tarifa Social</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <Link
+              href="/direitos-em-movimento"
+              className="mt-4 pt-3 border-t border-alert/20 flex items-center justify-between text-xs font-semibold text-alert hover:underline"
+            >
+              <span>Explorar Eixo 2 Completo</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          {/* Eixo 3: Estado e Economia */}
+          <div className="group flex flex-col justify-between rounded-2xl border-2 border-sky-500/40 bg-sky-500/5 p-5 transition hover:border-sky-500 hover:bg-sky-500/10 shadow-xs">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="rounded border border-sky-500/30 bg-sky-500/20 px-2 py-0.5 text-xs font-bold uppercase text-sky-500">
@@ -301,37 +346,78 @@ export default async function IndiceGlobal() {
               <p className="mt-2 text-xs text-text-soft leading-relaxed">
                 Orçamento de MG, Compras Públicas (PNCP), Congresso Nacional, Assembleias Legislativas (27 UFs), Quem fiscaliza a Justiça, Varas e Empresas ESG.
               </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-sky-500/20 flex items-center justify-between text-xs font-semibold text-sky-500">
-              <span>Explorar Eixo</span>
-              <span>→</span>
-            </div>
-          </Link>
 
-          {/* Eixo Central ONSA */}
-          <Link
-            href="/central"
-            className="group flex flex-col justify-between rounded-2xl border border-primary/30 bg-primary/5 p-5 transition hover:border-primary hover:bg-primary/10 shadow-xs"
-          >
+              {/* Subfrentes em Destaque */}
+              <div className="mt-4 pt-3 border-t border-sky-500/20 space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400">✦ Subfrentes em Destaque:</span>
+                <ul className="text-xs space-y-1 text-text">
+                  <li className="font-medium text-sky-300">
+                    <Link href="/estado-e-economia/orcamento" className="hover:underline">✦ Orçamento & Receitas de MG</Link>
+                  </li>
+                  <li className="font-medium text-sky-300">
+                    <Link href="/judiciario/instituicoes" className="hover:underline">✦ Quem Fiscaliza a Justiça</Link>
+                  </li>
+                  <li className="font-medium text-sky-300">
+                    <Link href="/assembleias" className="hover:underline">✦ 27 Assembleias Legislativas</Link>
+                  </li>
+                  <li className="font-medium text-sky-300">
+                    <Link href="/ambiental/contratos" className="hover:underline">✦ Radar de Compras & Contratos</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <Link
+              href="/estado-e-economia"
+              className="mt-4 pt-3 border-t border-sky-500/20 flex items-center justify-between text-xs font-semibold text-sky-500 hover:underline"
+            >
+              <span>Explorar Eixo 3 Completo</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          {/* Eixo 4: Central ONSA e Ferramentas */}
+          <div className="group flex flex-col justify-between rounded-2xl border-2 border-primary/40 bg-primary/5 p-5 transition hover:border-primary hover:bg-primary/10 shadow-xs">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="rounded border border-primary/30 bg-primary/20 px-2 py-0.5 text-xs font-bold uppercase text-primary">
-                  EIXO CENTRAL
+                  EIXO 4
                 </span>
                 <Compass className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-display text-lg font-bold text-text group-hover:text-primary transition-colors">
-                Eixo Central (ONSA)
+                Central ONSA & Ferramentas
               </h3>
               <p className="mt-2 text-xs text-text-soft leading-relaxed">
-                Radar de Editais (DO-MG), Estudos Rurais, Documentação Técnica, API Pública, Biblioteca Digital, Blog e IA Livre.
+                Radar Diário de Editais (DO-MG), Biblioteca Digital, Árvore de Conexões em Grafo 3D, Assistente Seu Nonô, Rádios Cívicas e Laboratório.
               </p>
+
+              {/* Subfrentes em Destaque */}
+              <div className="mt-4 pt-3 border-t border-primary/20 space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-primary">✦ Subfrentes em Destaque:</span>
+                <ul className="text-xs space-y-1 text-text">
+                  <li className="font-medium text-amber-200">
+                    <Link href="/editais" className="hover:underline">✦ Radar de Editais Diários (DO-MG)</Link>
+                  </li>
+                  <li className="font-medium text-amber-200">
+                    <Link href="/biblioteca" className="hover:underline">✦ Biblioteca Digital (24k+ Docs)</Link>
+                  </li>
+                  <li className="font-medium text-amber-200">
+                    <Link href="/laboratorio/arvore" className="hover:underline">✦ Árvore de Conexões em Grafo 3D</Link>
+                  </li>
+                  <li className="font-medium text-amber-200">
+                    <Link href="/assistente" className="hover:underline">✦ Assistente Cívico Seu Nonô</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="mt-4 pt-3 border-t border-primary/20 flex items-center justify-between text-xs font-semibold text-primary">
-              <span>Explorar Eixo Central</span>
+            <Link
+              href="/central"
+              className="mt-4 pt-3 border-t border-primary/20 flex items-center justify-between text-xs font-semibold text-primary hover:underline"
+            >
+              <span>Explorar Central ONSA</span>
               <span>→</span>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </section>
 

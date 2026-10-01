@@ -31,6 +31,9 @@ export interface PaginaCatalogo {
   titulo: string;
   href: string;
   eixo: string;
+  subfrenteId?: string;
+  subfrente?: string;
+  destaque?: boolean;
   badge: string;
   resumo: string;
 }
@@ -41,8 +44,8 @@ interface Props {
 
 const EIXOS = [
   "Todos",
-  "Eixo 1: Direitos em Movimento",
-  "Eixo 2: Terra e Territórios",
+  "Eixo 1: Terra e Território",
+  "Eixo 2: Direitos em Movimento",
   "Eixo 3: Estado e Economia",
   "Central ONSA & Ferramentas",
 ] as const;
@@ -286,10 +289,12 @@ function obterIconeTema(p: PaginaCatalogo) {
 export default function Catalogo100PaginasClient({ paginas }: Props) {
   const [busca, setBusca] = useState("");
   const [eixoAtivo, setEixoAtivo] = useState<string>("Todos");
+  const [apenasDestaques, setApenasDestaques] = useState(false);
 
   const paginasFiltradas = useMemo(() => {
     const termo = busca.toLowerCase().trim();
     return paginas.filter((p) => {
+      if (apenasDestaques && !p.destaque) return false;
       const casaEixo =
         eixoAtivo === "Todos" ||
         p.eixo === eixoAtivo ||
@@ -300,10 +305,11 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
         p.titulo.toLowerCase().includes(termo) ||
         p.resumo.toLowerCase().includes(termo) ||
         p.href.toLowerCase().includes(termo) ||
-        p.badge.toLowerCase().includes(termo)
+        p.badge.toLowerCase().includes(termo) ||
+        (p.subfrente && p.subfrente.toLowerCase().includes(termo))
       );
     });
-  }, [paginas, busca, eixoAtivo]);
+  }, [paginas, busca, eixoAtivo, apenasDestaques]);
 
   return (
     <section id="catalogo-100-paginas" className="space-y-6 scroll-mt-20">
@@ -336,30 +342,45 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 pt-1" role="tablist" aria-label="Filtrar por eixo">
-          <span className="flex items-center gap-1 text-xs font-semibold text-text-soft mr-1">
-            <Filter className="h-3 w-3" /> Eixos:
-          </span>
-          {EIXOS.map((e) => {
-            const ativo = eixoAtivo === e;
-            const rotuloCurto = e.replace("Eixo 1: ", "").replace("Eixo 2: ", "").replace("Eixo 3: ", "");
-            return (
-              <button
-                key={e}
-                type="button"
-                role="tab"
-                aria-selected={ativo}
-                onClick={() => setEixoAtivo(e)}
-                className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-                  ativo
-                    ? "bg-primary text-primary-foreground font-semibold shadow-xs"
-                    : "border border-border bg-surface-2/60 text-text-soft hover:bg-surface-2 hover:text-text"
-                }`}
-              >
-                {rotuloCurto}
-              </button>
-            );
-          })}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+          <div className="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filtrar por eixo">
+            <span className="flex items-center gap-1 text-xs font-semibold text-text-soft mr-1">
+              <Filter className="h-3 w-3" /> Eixos:
+            </span>
+            {EIXOS.map((e) => {
+              const ativo = eixoAtivo === e;
+              const rotuloCurto = e.replace("Eixo 1: ", "").replace("Eixo 2: ", "").replace("Eixo 3: ", "");
+              return (
+                <button
+                  key={e}
+                  type="button"
+                  role="tab"
+                  aria-selected={ativo}
+                  onClick={() => setEixoAtivo(e)}
+                  className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                    ativo
+                      ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                      : "border border-border bg-surface-2/60 text-text-soft hover:bg-surface-2 hover:text-text"
+                  }`}
+                >
+                  {rotuloCurto}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setApenasDestaques(!apenasDestaques)}
+            className={`cursor-pointer inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all border ${
+              apenasDestaques
+                ? "border-primary bg-primary/20 text-primary shadow-xs ring-1 ring-primary"
+                : "border-border bg-surface-2/60 text-text-soft hover:border-primary/50 hover:text-primary"
+            }`}
+          >
+            <span>✦</span>
+            <span>Apenas Destaques</span>
+          </button>
         </div>
       </div>
 
@@ -383,7 +404,13 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
             const estilo = obterEstiloEixo(p.eixo);
             const IconeTema = obterIconeTema(p);
 
-            const cardClassName = `group relative flex flex-col justify-between rounded-xl border p-2.5 sm:p-3 transition-all ${estilo.card} hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`;
+            const cardClassName = `group relative flex flex-col justify-between rounded-xl border p-2.5 sm:p-3 transition-all ${
+              estilo.card
+            } ${
+              p.destaque
+                ? "ring-2 ring-primary/40 border-primary/50 bg-surface shadow-xs"
+                : ""
+            } hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`;
 
             const cardContent = (
               <>
@@ -400,14 +427,27 @@ export default function Catalogo100PaginasClient({ paginas }: Props) {
                         #{String(p.numero).padStart(2, "0")}
                       </span>
                     </div>
-                    <span
-                      className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${estilo.badge}`}
-                    >
-                      {p.badge}
-                    </span>
+                    <div className="flex items-center gap-1">
+                      {p.destaque && (
+                        <span className="rounded bg-primary/20 border border-primary/30 px-1 py-0.5 text-[9px] font-bold uppercase text-primary">
+                          ✦ Destaque
+                        </span>
+                      )}
+                      <span
+                        className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${estilo.badge}`}
+                      >
+                        {p.badge}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="font-display text-sm font-semibold text-text group-hover:text-primary transition-colors flex items-center justify-between gap-1 line-clamp-1">
+                  {p.subfrente && (
+                    <div className="text-[10px] font-semibold text-text-soft/90 truncate">
+                      {p.subfrente}
+                    </div>
+                  )}
+
+                  <h3 className={`font-display text-sm ${p.destaque ? "font-bold text-foreground" : "font-semibold text-text"} group-hover:text-primary transition-colors flex items-center justify-between gap-1 line-clamp-1`}>
                     <span>{p.titulo}</span>
                     {isExternal && (
                       <ExternalLink className="h-3 w-3 shrink-0 opacity-60 group-hover:opacity-100" aria-hidden="true" />

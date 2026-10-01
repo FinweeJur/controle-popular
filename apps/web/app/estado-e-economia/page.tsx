@@ -49,6 +49,96 @@ export default function EstadoEEconomiaHub() {
           ))}
         </section>
 
+        {/* 1.1 DESTAQUES PRIORITÁRIOS DO EIXO 3 */}
+        <section aria-label="Subfrentes prioritárias" className="mb-12 rounded-2xl border-2 border-blue-500/30 bg-blue-500/5 p-6 sm:p-8">
+          <div className="mb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-500">✦ Portas Prioritárias</span>
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mt-1">
+              Subfrentes em Destaque Cívico
+            </h2>
+            <p className="text-sm text-muted">
+              Rastreamento direto dos cofres públicos, legislativos estaduais e integridade do Judiciário.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <Link
+              href="/estado-e-economia/orcamento"
+              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Contas Públicas</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
+                  Orçamento de MG
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Receitas, despesas, transferências e séries macroeconômicas do BCB.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
+                <span>Ver Orçamento</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/judiciario/instituicoes"
+              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Controle Social</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
+                  Quem Fiscaliza a Justiça
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  CNJ, CNMP, corregedorias, tribunais de contas e balcão virtual de 990 varas.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
+                <span>Ver Órgãos</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/assembleias"
+              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Legislativo</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
+                  27 Assembleias Estaduais
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Deputados, gastos de gabinete, tramitações e comissões parlamentares.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
+                <span>Vigiar Assembleias</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/ambiental/contratos"
+              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ PNCP & Licitações</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
+                  Radar de Compras & Contratos
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Contratações públicas federais e municipais, fornecedores e atas de registro de preço.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
+                <span>Ver Contratos</span>
+                <span>→</span>
+              </span>
+            </Link>
+          </div>
+        </section>
+
         {/* 2. SUBFRENTES DO EIXO */}
         <section aria-labelledby="subfrentes-estado-titulo" className="mb-12">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-2">

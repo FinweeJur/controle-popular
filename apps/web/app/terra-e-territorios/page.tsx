@@ -9,7 +9,7 @@ import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
 import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
 
 export const metadata: Metadata = {
-  title: 'Terra e Territórios — Eixo 2 | Controle Popular',
+  title: 'Terra e Territórios — Eixo 1 | Controle Popular',
   description:
     'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e defesa dos biomas.',
 };
@@ -48,6 +48,96 @@ export default function TerraETerritoriosHub() {
               </span>
             </div>
           ))}
+        </section>
+
+        {/* 1.1 DESTAQUES PRIORITÁRIOS DO EIXO 1 */}
+        <section aria-label="Subfrentes prioritárias" className="mb-12 rounded-2xl border-2 border-emerald-500/30 bg-emerald-500/5 p-6 sm:p-8">
+          <div className="mb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-500">✦ Portas Prioritárias</span>
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mt-1">
+              Subfrentes em Destaque Cívico
+            </h2>
+            <p className="text-sm text-muted">
+              Acesso rápido aos núcleos territoriais com maior volume de dados e impacto social direto.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <Link
+              href="/funcaosocialterra/mapa"
+              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Cartografia 3D</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
+                  Função Social & Globo 3D
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Camadas de mineração, CAR, UCs e territórios tradicionais renderizados em 3D.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
+                <span>Abrir Globo 3D</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/ambiental/mariana"
+              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Repactuação</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
+                  Rio Doce (Mariana)
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Acompanhamento dos R$ 171 bi repactuados, perícias e cronogramas de obras.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
+                <span>Ver Repactuação</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/paraopeba"
+              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Bacia Atingida</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
+                  Paraopeba (Brumadinho)
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Acordo judicial de R$ 37,7 bi, perícias da UFMG e projetos nos 26 municípios.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
+                <span>Painel Paraopeba</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            <Link
+              href="/ambiental/licenciamento"
+              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
+            >
+              <div>
+                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Licenciamento</span>
+                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
+                  Licenciamento (11 UFs)
+                </h3>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  8.600+ processos e pautas do COPAM/SEMAD, supressão vegetal e TACs.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
+                <span>Ver Licenciamentos</span>
+                <span>→</span>
+              </span>
+            </Link>
+          </div>
         </section>
 
         {/* 2. SUBFRENTES DO EIXO */}

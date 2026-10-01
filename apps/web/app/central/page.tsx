@@ -171,6 +171,96 @@ export default function EixoCentralPage() {
         </div>
       </section>
 
+      {/* ═══ 2.1 DESTAQUES PRIORITÁRIOS DO EIXO CENTRAL ═══ */}
+      <section aria-label="Subfrentes prioritárias" className="mb-12 rounded-2xl border-2 border-primary/30 bg-primary/5 p-6 sm:p-8">
+        <div className="mb-4">
+          <span className="text-xs font-bold uppercase tracking-wider text-primary">✦ Portas Prioritárias</span>
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mt-1">
+            Subfrentes em Destaque Cívico
+          </h2>
+          <p className="text-sm text-muted">
+            Ferramentas centrais de maior demanda para pesquisadores, movimentos sociais e cidadãos.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link
+            href="/editais"
+            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-primary">✦ Diário Oficial</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                Radar de Editais (DO-MG)
+              </h3>
+              <p className="text-xs text-muted mt-1 leading-relaxed">
+                Chamamentos públicos, editais de fomento e licitações de interesse social.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+              <span>Abrir Radar</span>
+              <span>→</span>
+            </span>
+          </Link>
+
+          <Link
+            href="/biblioteca"
+            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-primary">✦ Acervo Público</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                Biblioteca Digital (24k+)
+              </h3>
+              <p className="text-xs text-muted mt-1 leading-relaxed">
+                24 mil laudos periciais, relatórios de ATIs, TACs e estudos de impacto.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+              <span>Pesquisar Acervo</span>
+              <span>→</span>
+            </span>
+          </Link>
+
+          <Link
+            href="/laboratorio/arvore"
+            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-primary">✦ Grafo Interativo</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                Árvore de Conexões (3D)
+              </h3>
+              <p className="text-xs text-muted mt-1 leading-relaxed">
+                Visualização estilo Obsidian em grafo conectando 4 eixos e 38 nós cívicos.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+              <span>Explorar Grafo</span>
+              <span>→</span>
+            </span>
+          </Link>
+
+          <Link
+            href="/assistente"
+            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
+          >
+            <div>
+              <span className="text-[10px] font-bold uppercase text-primary">✦ IA Cívica</span>
+              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                Assistente Seu Nonô
+              </h3>
+              <p className="text-xs text-muted mt-1 leading-relaxed">
+                Perguntas e respostas com síntese de voz, contexto de fontes e frases curtas.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+              <span>Falar com Seu Nonô</span>
+              <span>→</span>
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* ═══ 3. GRADE DE FERRAMENTAS E SUBFRENTES DO EIXO CENTRAL ═══ */}
       <section aria-labelledby="subfrentes-central-titulo" className="mb-12">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-4">

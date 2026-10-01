@@ -39,6 +39,7 @@ import {
   Leaf,
   FileSpreadsheet,
   Radio,
+  Layers,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -51,16 +52,63 @@ import Marquee from '@/app/components/Marquee';
 import OuvirNavbar from '@/app/components/OuvirNavbar';
 
 /**
- * Estrutura do menu do portal organizada nos 3 Grandes Eixos Temáticos e Central:
- * - Eixo 1: Direitos em Movimento (vermelho/coral)
- * - Eixo 2: Terra e Territórios (verde/esmeralda)
+ * Estrutura do menu do portal organizada nos 4 Grandes Eixos Temáticos e Central:
+ * - Eixo 1: Terra e Território (verde/esmeralda)
+ * - Eixo 2: Direitos em Movimento (vermelho/coral)
  * - Eixo 3: Estado e Economia (azul/celeste)
- * - Central: Notícias, Tecnologia e Ferramentas ONSA (laranja pequi)
+ * - Eixo 4: Central ONSA & Ferramentas (laranja pequi)
  */
-const SECOES_MENU = [
+interface ItemMenuLink {
+  label: string;
+  href: string;
+  icone: any;
+  destaque?: boolean;
+}
+
+interface SecaoMenu {
+  id: string;
+  badge: string;
+  titulo: string;
+  href: string;
+  icone: any;
+  cor: string;
+  corClasse: string;
+  badgeClasse: string;
+  links: ItemMenuLink[];
+}
+
+const SECOES_MENU: SecaoMenu[] = [
+  {
+    id: 'terra',
+    badge: 'EIXO 1',
+    titulo: 'Terra e Território',
+    href: '/terra-e-territorios',
+    icone: Globe,
+    cor: 'var(--cp-eixo-terra)',
+    corClasse: 'text-emerald-500 hover:text-emerald-400',
+    badgeClasse: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
+    links: [
+      { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe },
+      { label: 'Função Social & Globo 3D', href: '/funcaosocialterra/mapa', icone: Globe, destaque: true },
+      { label: 'Repactuação Rio Doce (Mariana)', href: '/ambiental/mariana', icone: Waves, destaque: true },
+      { label: 'Reparação Paraopeba (Brumadinho)', href: '/paraopeba', icone: ShieldCheck, destaque: true },
+      { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet, destaque: true },
+      { label: 'Descaracterização Barragens', href: '/ambiental/barragens/descaracterizacao', icone: AlertTriangle, destaque: true },
+      { label: '203 Cidades Estratégicas', href: '/cidades', icone: MapPin },
+      { label: 'Cidades de Minas (853)', href: '/cidades/mg', icone: MapPin },
+      { label: 'Nossos Rios & Bacias', href: '/terra-e-territorios/nossos-rios', icone: Waves },
+      { label: 'Nossas Serras & Topos de Morro', href: '/terra-e-territorios/nossas-serras', icone: Mountain },
+      { label: 'Cavas de Mineração (satélite)', href: '/mineracao/cavas', icone: Mountain },
+      { label: 'Clima & Risco AdaptaBrasil', href: '/ambiental/clima-risco', icone: Activity },
+      { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
+      { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
+      { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe },
+      { label: 'América Latina & Mineração', href: '/america-latina', icone: Globe },
+    ],
+  },
   {
     id: 'direitos',
-    badge: 'EIXO 1',
+    badge: 'EIXO 2',
     titulo: 'Direitos em Movimento',
     href: '/direitos-em-movimento',
     icone: HeartHandshake,
@@ -69,47 +117,17 @@ const SECOES_MENU = [
     badgeClasse: 'bg-alert/10 text-alert border-alert/30',
     links: [
       { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake },
-      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen },
-      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity },
+      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true },
+      { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true },
+      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true },
+      { label: 'Onde Buscar Ajuda & Tarifa Social', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true },
       { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap },
       { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase },
-      { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck },
-      { label: 'Conselhos de Direitos', href: '/direitos-em-movimento/conselhos', icone: Users },
-      { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle },
+      { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users },
       { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion },
       { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send },
       { label: 'Decisões de Acesso (LAI)', href: '/ambiental/decisoes-lai', icone: FileText },
-      { label: 'Guia Cívico de Direitos', href: '/direitos-em-movimento', icone: BookOpen },
-    ],
-  },
-  {
-    id: 'terra',
-    badge: 'EIXO 2',
-    titulo: 'Terra e Territórios',
-    href: '/terra-e-territorios',
-    icone: Globe,
-    cor: 'var(--cp-eixo-terra)',
-    corClasse: 'text-emerald-500 hover:text-emerald-400',
-    badgeClasse: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
-    links: [
-      { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe },
-      { label: '203 Cidades Estratégicas', href: '/cidades', icone: MapPin },
-      { label: 'Betim (Painel Completo)', href: '/betim', icone: MapPin },
-      { label: 'Brumadinho (Reparação)', href: '/brumadinho', icone: MapPin },
-      { label: 'Nossos Rios (Doce & Paraopeba)', href: '/terra-e-territorios/nossos-rios', icone: Waves },
-      { label: 'Nossas Serras & Mineração', href: '/terra-e-territorios/nossas-serras', icone: Mountain },
-      { label: 'Descaracterização Barragens', href: '/ambiental/barragens/descaracterizacao', icone: AlertTriangle },
-      { label: 'Repactuação Rio Doce', href: '/ambiental/mariana', icone: Waves },
-      { label: 'Reparação Paraopeba', href: '/paraopeba', icone: ShieldCheck },
-      { label: 'Função Social & Globo 3D', href: '/funcaosocialterra', icone: Globe },
-      { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet },
-      { label: 'Autorizações & Destinações (União)', href: '/ambiental/autorizacoes', icone: FileSpreadsheet },
-      { label: 'Cavas de Mineração (satélite)', href: '/mineracao/cavas', icone: Mountain },
-      { label: 'Cidades de Minas (853)', href: '/cidades/mg', icone: MapPin },
-      { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
-      { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
-      { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe },
-      { label: 'América Latina & Mineração', href: '/america-latina', icone: Globe },
+      { label: 'Direitos Humanos & Relatórios', href: '/ambiental/direitos-humanos', icone: Shield },
     ],
   },
   {
@@ -123,25 +141,25 @@ const SECOES_MENU = [
     badgeClasse: 'bg-sky-500/10 text-sky-500 border-sky-500/30',
     links: [
       { label: 'Visão Geral do Eixo', href: '/estado-e-economia', icone: Landmark },
-      { label: 'Governos: Prometeu? Cumpriu?', href: '/governo', icone: Landmark },
-      { label: 'Recomendações CNJ & CNMP', href: '/judiciario/recomendacoes', icone: Scale },
-      { label: 'Quem fiscaliza a Justiça', href: '/judiciario/instituicoes', icone: Scale },
-      { label: 'Varas, Gabinetes e Balcão', href: '/judiciario/contatos', icone: PhoneCall },
+      { label: 'Orçamento & Receitas de MG', href: '/estado-e-economia/orcamento', icone: BarChart3, destaque: true },
+      { label: 'Quem fiscaliza a Justiça', href: '/judiciario/instituicoes', icone: Scale, destaque: true },
+      { label: 'Varas, Gabinetes e Balcão', href: '/judiciario/contatos', icone: PhoneCall, destaque: true },
+      { label: 'Assembleias Legislativas (27 UFs)', href: '/assembleias', icone: Landmark, destaque: true },
+      { label: 'Radar de Compras & Contratos', href: '/ambiental/contratos', icone: ShoppingBag, destaque: true },
       { label: 'Congresso Nacional & Gastos', href: '/congresso', icone: Landmark },
-      { label: 'Assembleias Legislativas (27 UFs)', href: '/assembleias', icone: Landmark },
       { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users },
-      { label: 'Radar Cívico de Editais', href: '/editais', icone: ShoppingBag },
-      { label: 'Grandes Empresas & Fundos', href: '/empresas', icone: Building2 },
-      { label: 'Concessões & PPP de MG', href: '/ambiental/ppp', icone: Building2 },
+      { label: 'Governos: Prometeu? Cumpriu?', href: '/governo', icone: Landmark },
+      { label: 'Grandes Empresas & Fundos ESG', href: '/empresas', icone: Building2 },
+      { label: '1.000 Maiores Fortunas Mundiais', href: '/empresas/fortunas', icone: Building2 },
       { label: 'EUA: SEC, Fundos & Comércio', href: '/eua', icone: Building2 },
+      { label: 'Europa: Litígios Transnacionais', href: '/europa', icone: Globe },
       { label: 'Repasses Federais ComunicaBR', href: '/dados/comunicabr', icone: MapPin },
-      { label: 'Convênios & Transferências', href: '/ambiental/convenios', icone: FileSpreadsheet },
-      { label: 'Orçamento & Receitas de MG', href: '/estado-e-economia/orcamento', icone: BarChart3 },
+      { label: 'Concessões & PPP de MG', href: '/ambiental/ppp', icone: Building2 },
     ],
   },
   {
     id: 'transversal',
-    badge: 'ONSA',
+    badge: 'EIXO 4',
     titulo: 'Central & Ferramentas',
     href: '/central',
     icone: Compass,
@@ -150,17 +168,19 @@ const SECOES_MENU = [
     badgeClasse: 'bg-primary/10 text-primary border-primary/30',
     links: [
       { label: 'Página do Eixo Central', href: '/central', icone: Compass },
+      { label: 'Radar Diário de Editais', href: '/editais', icone: ShoppingBag, destaque: true },
+      { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen, destaque: true },
+      { label: 'Árvore de Conexões (Grafo 3D)', href: '/laboratorio/arvore', icone: Layers, destaque: true },
+      { label: 'Assistente Cívico Seu Nonô', href: '/assistente', icone: Sparkles, destaque: true },
       { label: 'Índice Geral do Portal', href: '/indice', icone: List },
       { label: 'Busca Global no Acervo', href: '/busca', icone: Search },
+      { label: 'Laboratório de Dados', href: '/laboratorio', icone: BarChart3 },
       { label: 'Blog & Notícias Analíticas', href: '/noticias', icone: Newspaper },
       { label: 'Rádios do Brasil e do Mundo', href: '/radio', icone: Radio },
       { label: 'Alertas & Notificações', href: '/alertas', icone: Bell },
-      { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen },
       { label: 'Tecnologia & IA Livre', href: '/tecnologia', icone: Cpu },
       { label: 'Documentação do Sistema', href: '/documentacao', icone: FileText },
       { label: 'Sobre o ONSA & Método', href: '/sobre', icone: Info },
-      { label: 'Sala de Imprensa & Dados', href: '/imprensa', icone: Building2 },
-      { label: 'Termos de Uso & LGPD', href: '/termos', icone: ShieldCheck },
     ],
   },
 ] as const;
@@ -343,12 +363,27 @@ export default function TopNav() {
                             <a
                               href={link.href}
                               onClick={fechar}
-                              className="flex items-center gap-1.5 rounded-md px-1.5 py-1 text-[0.85em] leading-snug text-text transition-colors duration-150 hover:bg-surface hover:text-primary"
+                              className={`flex items-center justify-between gap-1.5 rounded-md px-1.5 py-1 text-[0.85em] leading-snug transition-colors duration-150 ${
+                                link.destaque
+                                  ? "font-medium text-foreground bg-primary/10 border-l-2 border-primary pl-2 shadow-xs hover:bg-primary/15"
+                                  : "text-text hover:bg-surface hover:text-primary"
+                              }`}
                             >
-                              {IconeLink && (
-                                <IconeLink size={12} className="shrink-0 text-text-soft opacity-80" aria-hidden="true" />
+                              <div className="flex items-center gap-1.5 truncate">
+                                {IconeLink && (
+                                  <IconeLink
+                                    size={12}
+                                    className={`shrink-0 ${link.destaque ? "text-primary font-bold" : "text-text-soft opacity-80"}`}
+                                    aria-hidden="true"
+                                  />
+                                )}
+                                <span className="truncate">{link.label}</span>
+                              </div>
+                              {link.destaque && (
+                                <span className="shrink-0 text-[9px] font-bold tracking-wider text-primary uppercase">
+                                  ✦
+                                </span>
                               )}
-                              <span className="truncate">{link.label}</span>
                             </a>
                           </li>
                         );
