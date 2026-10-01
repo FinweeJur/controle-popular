@@ -28,6 +28,7 @@
 - [Parte 14 — arquivos da raiz de lib/](#parte-14--arquivos-da-raiz-de-lib)
 - [Parte 15 — laboratório dither e afins](#parte-15--laboratório-dither-e-afins)
 - [Parte 16 — memória das resistências](#parte-16--memória-das-resistências)
+- [Parte 17 — acervos estaduais e multinacionais](#parte-17--acervos-estaduais-e-multinacionais)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -606,6 +607,38 @@ Décima passada, em `lib/memoria`.
 3. ✅ **Conferidos**: `lib/memoria/{calendario,camadas,datas-referencia,index,locais,mistica,municipios,rotulos,tipos}`,
    `lib/deploy/tamanho-assets`, `lib/globo/voo`, `lib/recursos/dados-consumidores`,
    `lib/automacao/rotinas.test`, `lib/legislativo/ranking-estadual`.
+
+## Parte 17 — acervos estaduais e multinacionais
+
+Décima primeira passada, nos acervos que alimentam as páginas de governo e de
+economia (`lib/legislativo` e `lib/fornecedores`). A varredura de cabeçalhos,
+feita fora das partes 1–16, achou **só dois arquivos sem bloco de abertura** —
+os dois tratados aqui.
+
+### Achados da Parte 17
+
+1. ✅ **`lib/legislativo/ranking-estadual.ts`** — acervo das 27 assembleias
+   (ALEs e CLDF): deputados, remuneração, gabinete e ranking pela régua
+   garantista. Ganhou cabeçalho com a fonte oficial (TSE, CNJ, TCEs) e a nota
+   de que a pontuação é índice do projeto, não veredito sobre a pessoa.
+
+2. ⚠️ → ✅ **Fallback silencioso para MG removido.** `obterAssembleiaEstadual`
+   devolvia o acervo de MG para qualquer UF ausente. O JSON cobre as 27 UFs,
+   então o ramo era código morto — mas, se faltasse uma UF, a página
+   `[uf]/legislativo` publicaria deputado de MG sob a URL de outro estado.
+   Agora devolve `null` (a página já responde 404). Teste novo cobre.
+
+3. ⚠️ → ✅ **Texto fixo "parlamento mineiro"** em
+   `app/governo/[uf]/legislativo/page.tsx` — a descrição dizia "mineiro" nas
+   27 páginas, inclusive na ALESP (SP). Passou a citar a UF da assembleia.
+
+4. ⚠️ → ✅ **`mediaAnualGeralBrl` somava médias.** Em
+   `lib/fornecedores/calculos-multinacionais.ts`, o agregado chamado "média
+   anual geral" devolvia a SOMA das médias anuais (número inflado). Corrigido
+   para a média das médias. Sem consumidor hoje — corrigido antes do 1º uso.
+
+5. ✅ **Conferidos**: `lib/legislativo/*` (resto), `lib/fornecedores/*`,
+   `lib/laboratorio/dados-catalogo` (liga os dois acervos ao gráfico dither).
 
 ## Achados e dívidas
 

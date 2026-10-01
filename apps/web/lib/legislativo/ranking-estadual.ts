@@ -1,3 +1,22 @@
+/**
+ * Acervo do legislativo estadual: as 27 assembleias (ALEs e CLDF), seus
+ * deputados, remuneração, estrutura de gabinete e ranking pela régua
+ * garantista de direitos. Expõe acesso, agregados e exportação CSV.
+ *
+ * Fonte oficial (metadados do próprio JSON, atualizado em 2026-09-19):
+ *   - portais de transparência e dados abertos das 27 Assembleias e da CLDF;
+ *   - TSE (DivulgaCandContas) para identificação e partido;
+ *   - CNJ (DataJud) e Tribunais de Contas estaduais (TCEs).
+ *
+ * Decisões e ressalvas:
+ *   - A pontuação garantista é índice do PROJETO, não veredito sobre a pessoa:
+ *     projetos que ampliam direitos somam; faltas não justificadas descontam
+ *     (nunca somam). Exiba sempre como índice, com a metodologia à mão.
+ *   - Subsídio atrelado ao teto legal: art. 27, § 2º, da CF/88 = 75% do
+ *     subsídio de deputado federal (R$ 34.774,64 na referência).
+ *   - UF ausente do acervo devolve `null` (a página responde 404). Não existe
+ *     "fallback para MG": servir dado de outro estado seria número errado.
+ */
 import dadosJson from "@/data/legislativo-estaduais/parlamentares-estaduais.json";
 
 export interface AtividadeParlamentarEstadual {
@@ -66,11 +85,9 @@ interface BaseAssembleias {
 export function obterAssembleiaEstadual(uf: string): AssembleiaEstadual | null {
   const base = dadosJson as unknown as BaseAssembleias;
   const ufNormalizada = uf.toLowerCase();
-  if (base.assembleias[ufNormalizada]) {
-    return base.assembleias[ufNormalizada];
-  }
-  // Fallback para MG se a UF não tiver acervo completo ainda
-  return base.assembleias["mg"] || null;
+  // UF ausente do acervo devolve null de propósito: a página chama notFound().
+  // Um fallback para MG serviria dado de outro estado sob a URL errada.
+  return base.assembleias[ufNormalizada] ?? null;
 }
 
 export function listarUfsAssembleias(): string[] {

@@ -62,5 +62,10 @@ describe("ranking-estadual", () => {
       expect(assembleia?.deputados.length).toBeGreaterThan(0);
     }
   });
+
+  it("devolve null para UF fora do acervo (sem fallback silencioso para MG)", () => {
+    expect(obterAssembleiaEstadual("xx")).toBeNull();
+    expect(obterAssembleiaEstadual("zz")).toBeNull();
+  });
 });
 

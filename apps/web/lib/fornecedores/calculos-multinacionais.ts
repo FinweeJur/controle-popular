@@ -1,3 +1,25 @@
+/**
+ * Acervo de fornecedores multinacionais (EUA e Europa) que vendem ao Estado
+ * brasileiro. Expõe a tipagem do JSON versionado, os agregados de painel, a
+ * formatação de moeda e a exportação CSV.
+ *
+ * Fonte oficial (metadados do próprio JSON, atualizado em 2026-09-19):
+ *   - Portal Nacional de Contratações Públicas (PNCP) — Lei 14.133/2021;
+ *   - Portal da Transparência da CGU / SIAFI;
+ *   - SEC (formulários 10-K e 20-F) para as demonstrações das empresas dos EUA;
+ *   - demonstrações IFRS auditadas (Europa);
+ *   - Ministério da Defesa — acordos de compensação tecnológica (offsets);
+ *   - SSE/HKEX (relatórios auditados) e ANEEL (concessões de transmissão).
+ * Câmbio de referência USD/BRL registrado no JSON: 5.45.
+ *
+ * Decisões e ressalvas:
+ *   - O acervo mistura número global (lucro da empresa no mundo) com valor de
+ *     contrato no Brasil. A tela NÃO pode justapor os dois sem a ressalva
+ *     (AGENTS §7): lucro global alto não é causa do contrato brasileiro.
+ *   - `calcularAgregadosMultinacionais` devolve a MÉDIA das médias anuais
+ *     (`mediaAnualGeralBrl`), não a soma — somar médias inflaria o total.
+ *   - CSV no padrão do projeto: BOM UTF-8 e separador ';' (Excel pt-BR).
+ */
 import dadosJson from "@/data/fornecedores/multinacionais-eua-europa.json";
 
 export interface ValoresContratos {
@@ -107,10 +129,10 @@ export function calcularAgregadosMultinacionais(
     (acc, e) => acc + e.valores_contratos.total_acumulado_usd,
     0
   );
-  const mediaAnualGeralBrl = empresas.reduce(
-    (acc, e) => acc + e.valores_contratos.media_anual_brl,
-    0
-  );
+  // Média das médias anuais (não a soma): o campo é "média anual geral".
+  const mediaAnualGeralBrl =
+    empresas.reduce((acc, e) => acc + e.valores_contratos.media_anual_brl, 0) /
+    totalEmpresas;
   const totalComContrapartida = empresas.filter(
     (e) => e.contrapartidas_e_offsets.possui_contrapartida
   ).length;

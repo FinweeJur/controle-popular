@@ -95,7 +95,7 @@ export default async function DetalheLegislativoEstadualPage({
               {assembleia.nome_assembleia} ({assembleia.sigla})
             </h1>
             <p className="mt-2 text-sm text-text-soft leading-relaxed max-w-4xl">
-              Painel de transparência ativa do parlamento mineiro e estaduais:
+              Painel de transparência ativa do parlamento de {assembleia.nome_uf}:
               ranking de atividade com a régua garantista de direitos, frequência
               em votações nominais, subsídio constitucional bruto de{" "}
               <strong className="text-text">
