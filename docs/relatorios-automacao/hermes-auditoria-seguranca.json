@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-29T20:22:34.810Z",
+  "geradoEm": "2026-10-01T08:31:11.887Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
   "aprovados": 14,
@@ -28,7 +28,7 @@
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
       "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonlin..."
+      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'..."
     },
     {
       "categoria": "seguranca",
@@ -64,7 +64,7 @@
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 184 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 190 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",
