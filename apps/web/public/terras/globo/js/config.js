@@ -1173,6 +1173,13 @@ export const LAYER_REGISTRY = [
     color: 0x8b7db8,   /* roxo fosco de documento */
     on: false, render: 'point', pointSize: 6, listavel: true,
   },
+  {
+    id: 'hist-bens-tombados', label: 'Bens tombados pelo IPHAN (federal)',
+    hint: '2.475 bens tombados no plano federal, da base oficial do IPHAN, no município do bem. 161 têm nome de fazenda, engenho ou usina.',
+    aviso: 'É o que está TOMBADO no plano federal, não o universo de bens do país; e o ponto é o centroide do MUNICÍPIO, não o bem. 59 linhas da base não casaram no IBGE e ficam fora.',
+    color: 0xc98b4a,   /* sépia de inventário */
+    on: false, render: 'point', pointSize: 5, listavel: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1722,6 +1729,13 @@ export const CAMADAS = [
     hint: '121 listas de habitantes do APM (fogos, idade, estado civil, alfabetização, ocupação), no município do documento.',
     aviso: 'Ponto no município do documento, não no sítio; o acervo não traz a contagem de escravizados. 233 locais (freguesias) ficam sem ponto.',
     fontes: ['hist-listas-populacao'],
+  },
+  {
+    id: 'hist-bens-tombados', assunto: 'historia',
+    label: 'Bens tombados pelo IPHAN (federal)',
+    hint: '2.475 bens tombados federais (161 com nome rural: fazenda, engenho, usina), no município do bem.',
+    aviso: 'Ponto no centroide do município; é o que está tombado, não o universo.',
+    fontes: ['hist-bens-tombados'],
   },
 ];
 

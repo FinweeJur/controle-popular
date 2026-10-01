@@ -145,6 +145,35 @@ export function listasPopulacao(): ListaPopulacao[] {
 }
 
 /**
+ * Bens tombados pelo IPHAN (federal) cujo nome é de **fazenda, engenho, usina ou
+ * café** — é o recorte que responde ao pedido do dev, e cabe na página (161 de
+ * 2.475 no mapa). A base completa fica no globo e no índice
+ * (`apps/web/data/iphan-bens-tombados.json`).
+ */
+export interface BemTombadoFederal {
+  nome: string;
+  municipio: string;
+  uf: string;
+  classificacao: string;
+  ano: string;
+  processo: string;
+}
+
+export function bensTombadosRurais(): BemTombadoFederal[] {
+  return props("hist-bens-tombados")
+    .filter((p) => p.fazenda_engenho === true)
+    .map((p) => ({
+      nome: String(p.nome ?? "—"),
+      municipio: String(p.municipio ?? "—"),
+      uf: String(p.uf ?? "—"),
+      classificacao: String(p.classificacao ?? "—"),
+      ano: String(p.ano ?? "—"),
+      processo: String(p.processo_t ?? "—"),
+    }))
+    .sort((a, b) => a.uf.localeCompare(b.uf, "pt-BR") || a.nome.localeCompare(b.nome, "pt-BR"));
+}
+
+/**
  * Agregado da mineração detectada dentro de área protegida (Fase D do plano de
  * mineração). A página lista os NOMES das áreas protegidas afetadas, não os 875
  * polígonos: a geometria é do globo, a contagem é daqui.

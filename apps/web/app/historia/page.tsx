@@ -6,6 +6,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import { CALENDARIO_LUTAS } from "@/lib/memoria/calendario";
 import { localDaEntrada } from "@/lib/memoria/locais";
 import {
+  bensTombadosRurais,
   capitanias,
   fazendasTombadas,
   listasPopulacao,
@@ -50,6 +51,7 @@ export default function PaginaHistoria() {
   const fazendas = fazendasTombadas();
   const terras = terrasPublicas();
   const listas = listasPopulacao();
+  const bensFederais = bensTombadosRurais();
   const protegidas = mineracaoProtegida();
 
   const revoltas = CALENDARIO_LUTAS.flatMap((e) => {
@@ -112,6 +114,17 @@ export default function PaginaHistoria() {
     { chave: "titulo", rotulo: "Registro" },
     { chave: "url", rotulo: "Fonte", tipo: "link" },
   ];
+  const linhBens: LinhaHistoria[] = bensFederais.map((b) => ({
+    nome: b.nome, municipio: b.municipio, uf: b.uf, classificacao: b.classificacao, ano: b.ano, processo: b.processo,
+  }));
+  const colunasBens: ColunaHistoria[] = [
+    { chave: "nome", rotulo: "Bem tombado (federal)" },
+    { chave: "municipio", rotulo: "Município" },
+    { chave: "uf", rotulo: "UF" },
+    { chave: "classificacao", rotulo: "Classificação" },
+    { chave: "ano", rotulo: "Ano" },
+    { chave: "processo", rotulo: "Processo" },
+  ];
   const colunasListas: ColunaHistoria[] = [
     { chave: "local", rotulo: "Local (como no documento)" },
     { chave: "municipio", rotulo: "Município (IBGE)" },
@@ -162,6 +175,7 @@ export default function PaginaHistoria() {
         <Cartao valor={terras.length.toLocaleString("pt-BR")} rotulo="registros de terras públicas (APM)" />
         <Cartao valor={listas.length.toLocaleString("pt-BR")} rotulo="listas nominativas (1838-1840)" />
         <Cartao valor={listasEmVila.toLocaleString("pt-BR")} rotulo="listas em vila mineradora (séc. XVIII)" />
+        <Cartao valor={bensFederais.length.toLocaleString("pt-BR")} rotulo="bens federais rurais tombados (IPHAN)" />
         <Cartao valor={totalUC.toLocaleString("pt-BR")} rotulo="polígonos de mineração em UC" />
         <Cartao valor={totalQuil.toLocaleString("pt-BR")} rotulo="polígonos de mineração em quilombo" />
       </section>
@@ -205,6 +219,16 @@ export default function PaginaHistoria() {
           nomeCsv="historia-terras-publicas"
         />
       ) : <Vazio>Sem a camada de terras públicas.</Vazio>}
+
+      {bensFederais.length ? (
+        <TabelaHistoria
+          titulo="Fazendas, engenhos e usinas tombados pelo IPHAN (federal)"
+          nota="161 dos 2.475 bens tombados federais têm nome rural; ponto no centroide do município"
+          colunas={colunasBens}
+          linhas={linhBens}
+          nomeCsv="historia-bens-tombados-rurais"
+        />
+      ) : <Vazio>Sem a camada de bens tombados do IPHAN.</Vazio>}
 
       {listas.length ? (
         <TabelaHistoria
@@ -281,6 +305,7 @@ export default function PaginaHistoria() {
             ["hist-capitanias", "Capitanias hereditárias (1534)"],
             ["hist-revoltas", "Revoltas e lutas com lugar"],
             ["hist-listas-populacao", "Listas nominativas (1838-1840)"],
+            ["hist-bens-tombados", "Bens tombados pelo IPHAN"],
             ["hist-terras-publicas", "Terras públicas do Império"],
             ["hist-fazendas-engenhos", "Fazendas históricas tombadas"],
             ["mineracao-em-uc", "Mineração detectada em UC"],
