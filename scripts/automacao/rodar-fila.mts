@@ -90,6 +90,25 @@ function commitFila(caminho: string, titulo: string): void {
   git("commit", "--only", caminho, "-F", msg);
 }
 
+/**
+ * Processos que indicam trabalho PESADO na máquina. Enquanto um deles roda,
+ * o runner não pega tarefa quando `--somente-ocioso` está ligado: é a regra
+ * "usar a ociosidade, nunca competir com build/deploy" (F4 do plano).
+ * Best-effort: no Linux/mac a checagem não existe e o gate libera.
+ */
+const PESADOS = ["guara.exe", "next.exe", "guro.exe"];
+
+function maquinaPareceOcupada(): boolean {
+  if (process.platform !== "win32") return false;
+  try {
+    const out = spawnSync("tasklist", [], { encoding: "utf-8", timeout: 10_000 }).stdout ?? "";
+    const minusculo = out.toLowerCase();
+    return PESADOS.some((p) => minusculo.includes(p.toLowerCase()));
+  } catch {
+    return false;
+  }
+}
+
 function lerFila(caminho: string): Fila {
   if (!existsSync(caminho)) return { geradoEm: new Date().toISOString(), tarefas: [] };
   return JSON.parse(readFileSync(caminho, "utf-8")) as Fila;
@@ -107,6 +126,7 @@ function main(): void {
   };
   const executar = argv.includes("--executar");
   const push = argv.includes("--push");
+  const somenteOcioso = argv.includes("--somente-ocioso");
   const caminho = valor("--fila") ? resolve(valor("--fila")!) : FILA_PADRAO;
   const maquina = detectarMaquina(valor("--maquina"));
 
@@ -114,6 +134,13 @@ function main(): void {
   const r = resumoFila(fila);
   console.log(`${LOG} máquina=${maquina} fila=${caminho}`);
   console.log(`${LOG} resumo: ${r.livre} livres, ${r.em_curso} em curso, ${r.feita} feitas, ${r.falhou} falharam`);
+
+  // F4: não competir com build/deploy. Com `--somente-ocioso`, se há processo
+  // pesado na máquina, é melhor esperar a próxima rodada do Agendador.
+  if (somenteOcioso && maquinaPareceOcupada()) {
+    console.log(`${LOG} máquina ocupada (build/deploy/next em execução) — cedo a vez.`);
+    return;
+  }
 
   const tarefa = proximaTarefa(fila, maquina);
   if (!tarefa) {

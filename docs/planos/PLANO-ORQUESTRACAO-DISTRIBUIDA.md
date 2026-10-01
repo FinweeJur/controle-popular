@@ -20,6 +20,8 @@
 - [Ferramentas: colibri, ollama, cutiazinha, riskernel](#ferramentas-colibri-ollama-cutiazinha-riskernel)
 - [Baixa frequência — usar a ociosidade, nunca competir](#baixa-frequência--usar-a-ociosidade-nunca-competir)
 - [Fases de execução](#fases-de-execução)
+- [Status de execução](#status-de-execução-30092026)
+- [Ferramentas prontas (reaproveitar)](#ferramentas-prontas-reaproveitar-não-reinventar)
 - [Riscos e regras](#riscos-e-regras)
 - [Decisões registradas e abertas](#decisões-registradas-e-abertas)
 
@@ -181,6 +183,41 @@ o home-pc segue com tudo.
 | **F5** | **Cobertura de conhecimento**: `rag` (acervo+finetuning) e `indice` (busca) como tipos da fila | home-pc para `indice` |
 | **F6** | **Cutiazinha** como dispatcher de mensagem (fora do repo) | decisão do dono |
 | **F7** | **n8n** substituindo os `.ps1` | **Podman** (bloqueado) |
+
+## Status de execução (30/09/2026)
+
+| Fase | Entrega | Estado |
+|---|---|---|
+| F1 | Fila versionada + claim por commit | ✅ `apps/web/lib/fila/fila.ts` (+ teste) e `docs/relatorios-automacao/fila-distribuida.json` |
+| F2 | `/fila` e `/rodar <tipo>` no gatilho | ✅ `scripts/gatilho-remoto.mts` (ganhou também `/webhook`) |
+| F3 | Runner da fila | ✅ `scripts/automacao/rodar-fila.mts` — dry-run por padrão |
+| F4 | Gate de ociosidade | ✅ `--somente-ocioso` (cede a vez se há build/next rodando) |
+| F5 | Conhecimento como tipo da fila | ✅ `indice` (só home-pc) e `rag` no mapa do runner |
+| F6 | Cutiazinha como dispatcher | ⛔ externo (`C:\DevCoder\cutiazinha`) — decisão do dono |
+| F7 | n8n no lugar dos `.ps1` | ⛔ bloqueada: **Podman ausente** |
+
+O que mais entrou nesta leva, fora das fases:
+
+- **gitleaks** (scan de segredo) — `.gitleaks.toml`, workflow `scan-segredos.yml` e passo no `.githooks/pre-push`; irmã do `dado-pessoal.yml` (um caça CPF, o outro caça chave/token).
+- **act** — `.actrc`, para rodar GitHub Actions localmente (exige container).
+- **Espelhos** GitLab e Hugging Face — **já ativos e verdes** (os secrets existem).
+- **Testes ~6× mais rápidos** — `fileParallelism: true` no `apps/web/vitest.config.mts` (~120-160 s → ~21 s, verde), medido em 30/09.
+- **Bot público do Telegram** — menu no estágio atual e webhook corrigido para o **www** (o apex dá 301 e o Telegram não segue redirect — era o que deixava o `/menu` mudo).
+
+## Ferramentas prontas (reaproveitar, não reinventar)
+
+Pesquisa medida com `gh` em 30/09/2026 — o que serve à automação multi-forja:
+
+| Função | Repo | Estrelas |
+|---|---|---:|
+| Espelhar entre GitHub/Gitee/GitLab (Action) | `Yikun/hub-mirror-action` | 711 |
+| Auto-sync para Gitea/Forgejo | `RayLabsHQ/gitea-mirror` | 1.463 |
+| Rodar GitHub Actions local | `nektos/act` | 72.177 |
+| Dependências multi-forja | `renovatebot/renovate` | 22.634 |
+| Segredo no git | `gitleaks/gitleaks` | 29.580 |
+| Fluxos visuais (o M10/n8n) | `n8n-io/n8n` | — |
+
+GitLab e Gitee também têm **mirroring nativo** nas configurações do repositório.
 
 ## Riscos e regras
 
