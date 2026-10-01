@@ -552,15 +552,49 @@ rótulo no `checkpoint.jsonl` (com backup) — **9 flips** (3 positivo→negativ
 `scripts/etl/cavas/revisao-humana-gate.json`. As 15 dúvidas (`revisado`)
 ficam de fora do flip até veredito.
 
+#### Gate v5 com os rótulos corrigidos — 01/10/2026 (medido)
+
+O fechador automático (`Temp\opencode\fecha-treino-v5.ps1`) rodou de
+12h51 às 13h38 com os **9 rótulos corrigidos** pela revisão humana e
+hiperparâmetros idênticos ao v4. Split v5 (por cena, semente 42): treino
+4.067 (1.434 pos / 2.633 neg, 244 cenas), holdout **1.044 (563 pos / 481
+neg, 30 cenas)** — o holdout de negativos foi de 402 para 481.
+
+| Modelo | Época melhor | Limiar | Precisão | Recall | F1 | Acurácia bal. | tn de 481 |
+|---|---|---|---|---|---|---|---|
+| Zero-shot B (baseline) | — | 0,50 | 0,540 | 1,000 | 0,701 | 0,500 | 1 |
+| Fine-tune `peso` | 4 | 0,48 | 0,801 | 0,853 | 0,826 | 0,803 | 362 |
+| Fine-tune `sobreamostragem` | 4 | 0,64 | **0,811** | **0,886** | **0,847** | **0,823** | 358* |
+
+*tn do `sobreamostragem` no limiar 0,50 é 358; no limiar 0,64 do gate,
+recall 0,886 com precisão 0,811.
+
+- **Gate v5: PASSOU; vence `sobreamostragem` de novo** (terceira vez
+  seguida: v2, v3 e v5).
+- **O ganho esperado dos 6 falsos negativos corrigidos apareceu:** o
+  recall do `sobreamostragem` subiu de 0,851 (v4, amostra dos 100, 8 m)
+  para **0,886** (v5, holdout de 1.044, 8 m) — amostras diferentes, então
+  a comparação é indicativa, não pareada; e a direção bate com a previsão
+  do handoff.
+- Zero-shot segue trivial: chama tudo de cava (precisão 0,540 = a taxa
+  de positivos). Com limiar forçado na margem chega a precisão 0,717 mas
+  com recall 0,067 — não serve.
+- Custo medido: 127,4 s/época em 4.067 imagens, VRAM 2,39 GiB de 4;
+  extrapolação do script: 10,4 min/época numa leva de 20 mil.
+- Checkpoint pós-flip: **2.003 positivos / 3.117 negativos**; manifesto
+  reexportado (`gerado_em` 01/10) e varredura de dado pessoal verde
+  (444 arquivos).
+- **Regra dos 5 mil negativos para o gate definitivo segue em pé** —
+  hoje 3.117; faltam ~1.900.
+
 #### Handoff — como retomar (01/10/2026, sessão fechando)
 
 Fila viva desta frente, em ordem:
 
-1. **⏳ Gate v5 rodando** (`Temp\opencode\fecha-treino-v5.ps1`, lançado
-   ~12h51): treino peso + sobreamostragem com os 9 rótulos corrigidos,
-   hiperparâmetros idênticos ao v4. Ao fechar: `metricas-v5-*`,
-   `gate-v5.veredito.txt` e Telegram. **Comparar recall v5 × v4**
-   (0,851) — o ganho esperado vem dos 6 FN corrigidos.
+1. **✅ Gate v5 concluído em 01/10 13h38: PASSOU** (`gate-v5.veredito.txt`),
+   venceu `sobreamostragem` (precisão 0,811 / recall 0,886 no limiar 0,64).
+   Números completos na seção
+   [Gate v5 com os rótulos corrigidos](#gate-v5-com-os-rótulos-corrigidos--01102026-medido).
 2. **Pan-sharpen 2 m (v6):** a PAN crua cega os modelos locais (medido:
    v4 fora de distribuição; qwen3-vl:2b deu "75" constante em 15/16).
    Caminho: juntar PAN 2 m com BAND3/2/1 (8 m) → recorte **colorido 2 m** →
