@@ -74,3 +74,13 @@ apps/web/data/semas-pa-licencas.json
 apps/web/data/semad-go-licencas.json
 apps/web/data/semar-pi-licencas.json
 apps/web/data/sedam-ro-licencas.json
+
+# Dados brutos de ETL, staging e arquivos locais de apoio (fora de apps/web/):
+data
+acervo-documentos
+screenshots
+logs
+documentos-site
+.agents
+.cursor
+.vscode

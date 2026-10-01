@@ -226,9 +226,9 @@ export default function RastroCursor() {
           font-weight: 600;
           text-transform: uppercase;
           white-space: pre;
-          color: var(--cp-accent);
+          color: var(--cp-primary, var(--primary, #f2701d));
           opacity: calc(1 - var(--i) * 0.02);
-          text-shadow: 0 0 6px color-mix(in srgb, var(--cp-accent) 60%, transparent);
+          text-shadow: 0 0 6px color-mix(in srgb, var(--cp-primary, var(--primary, #f2701d)) 60%, transparent);
           will-change: transform;
           user-select: none;
         }

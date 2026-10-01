@@ -26,7 +26,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY apps/web/package.json ./apps/web/
 
-RUN npm ci
+RUN npm ci --no-audit --no-fund && npm cache clean --force
 
 # ---- Estágio 2: Build ----
 FROM node:22-alpine AS builder
@@ -65,7 +65,11 @@ ENV NEXT_TELEMETRY_DISABLED=1
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
-RUN npm run build -w @cp/web
+# Executa o build standalone e remove o cache intermediario do compilador
+# na mesma camada RUN para evitar estouro do volume temporario (12Gi) do pod BuildKit do Guara Cloud
+RUN npm run build -w @cp/web && \
+    rm -rf apps/web/.next/cache && \
+    rm -rf /root/.npm /tmp/*
 
 # ---- Estágio 3: Runner ----
 FROM node:22-alpine AS runner
