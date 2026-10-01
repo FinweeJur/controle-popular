@@ -130,5 +130,16 @@
   "orgao": "",
   "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-26",
   "criado_em": "2026-09-28T12:57:20.914Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-09-30",
+  "ato": "Decreto nº 47.859, de 07/02/2020, EXONERA A PEDIDO, com base",
+  "tipo": "EXONERAÇÃO",
+  "pessoa": "JAIR DAVID",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-09-30",
+  "criado_em": "2026-10-01T08:05:24.607Z"
  }
 ]
