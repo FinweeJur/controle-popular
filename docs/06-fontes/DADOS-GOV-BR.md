@@ -18,7 +18,7 @@
 
 ## Propósito
 
-Mapear o catálogo de dados abertos do governo federal ([dados.gov.br](https://dados.gov.br/dados/)) contra as seis frentes do portal: o que já está integrado, o que está bloqueado por credencial e quais conjuntos valem a próxima rodada de ETL — com o encaixe concreto de cada um (qual rota ou camada ele alimentaria).
+Mapear o catálogo de dados abertos do governo federal ([dados.gov.br](https://dados.gov.br/dados/)) contra os quatro grandes eixos temáticos e subfrentes do portal: o que já está integrado, o que está bloqueado por credencial e quais conjuntos valem a próxima rodada de ETL — com o encaixe concreto de cada um (qual rota ou camada ele alimentaria).
 
 ## O que já usamos do catálogo federal
 

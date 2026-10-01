@@ -28,7 +28,7 @@
 
 O [portal Controle Popular](https://controlepopular.com.br/) é um portal cívico de transparência pública. Ele reúne dados oficiais de dezenas de sistemas governamentais. O objetivo é publicar dados em uma única tela, em linguagem acessível.
 
-O portal possui seis frentes temáticas. São elas: [Cidades](https://controlepopular.com.br/cidades), [Congresso Nacional](https://controlepopular.com.br/congresso), [Judiciário](https://controlepopular.com.br/judiciario), [Ambiental/ONSA](https://controlepopular.com.br/ambiental), [Função Social da Terra](https://controlepopular.com.br/funcaosocialterra) e [Paraopeba](https://controlepopular.com.br/paraopeba).
+O portal é estruturado em quatro grandes eixos temáticos e mais de 36 subfrentes ativas: [Terra e Territórios](https://controlepopular.com.br/terra-e-territorios), [Direitos em Movimento](https://controlepopular.com.br/direitos-em-movimento), [Estado e Economia](https://controlepopular.com.br/estado-e-economia) e [Central ONSA e Ferramentas](https://controlepopular.com.br/central), integrando frentes como Cidades, Congresso, Judiciário, Bacias, Mineração e Meio Ambiente.
 
 A arquitetura usa Next.js 16, React 19, TypeScript e Tailwind CSS. Os dados vivem em dois bancos: Neon Postgres e Cloudflare D1. Neon Postgres é lido no build. Cloudflare D1 recebe escritas em runtime. A publicação usa Cloudflare Workers via OpenNext.
 
@@ -44,7 +44,7 @@ O portal serve a cidadãos sob estresse. São situações de denúncia, remoçã
 
 ## Abstract
 
-The Controle Popular portal (controlepopular.com.br) is a civic transparency portal. It aggregates official data from dozens of government systems into a single, accessible interface. The portal has six thematic fronts: Cities, Congress, Judiciary, ONSA — National Socio-Environmental Observatory, Social Function of Land, and Paraopeba. The technical architecture uses Next.js 16, React 19, TypeScript, and Tailwind CSS. Data is stored in two databases: Neon Postgres (read at build time) and Cloudflare D1 (runtime writes). Publishing uses Cloudflare Workers via OpenNext. The portal enforces strict editorial rules: personal data is automatically blocked, numbers without sources are not published, and insinuation is treated as harm. The system comprises 5,511 published pages (build of 16/09/2026), 29,917 searchable documents, and 722 automated tests (baseline 08/15/2026). The project serves citizens under stress — complaints, evictions, environmental disasters — making accessibility and numerical accuracy functional requirements. The project dialogues with five fields of knowledge: History, Geography, Law, Sociology, and Education.
+The Controle Popular portal (controlepopular.com.br) is a civic transparency portal. It aggregates official data from dozens of government systems into a single, accessible interface. The portal is organized into four main thematic axes and over 36 active sub-fronts: Land and Territories, Rights in Movement, State and Economy, and ONSA Central & Tools. The technical architecture uses Next.js 16, React 19, TypeScript, and Tailwind CSS. Data is stored in two databases: Neon Postgres (read at build time) and Cloudflare D1 (runtime writes). Publishing uses Cloudflare Workers via OpenNext. The portal enforces strict editorial rules: personal data is automatically blocked, numbers without sources are not published, and insinuation is treated as harm. The system comprises 5,511 published pages (build of 16/09/2026), 29,917 searchable documents, and 722 automated tests (baseline 08/15/2026). The project serves citizens under stress — complaints, evictions, environmental disasters — making accessibility and numerical accuracy functional requirements. The project dialogues with five fields of knowledge: History, Geography, Law, Sociology, and Education.
 
 **Keywords:** public transparency; civic portal; open data; digital accessibility; Next.js; Cloudflare Workers; civic technology.
 
@@ -65,18 +65,14 @@ O propósito é democratizar o acesso a dados públicos. O portal atua como pont
 
 A metodologia prioriza dados de interesse social. São eles: análise de direitos, desigualdade e participação. Também: recursos hídricos, licenciamento ambiental, concentração econômica. E parcerias público-privadas com transparência.
 
-### 1.3 Frentes temáticas
+### 1.3 Grandes Eixos Temáticos e Subfrentes
 
-O portal organiza dados em seis frentes:
+O portal organiza dados em quatro grandes eixos temáticos e mais de 36 subfrentes ativas:
 
-1. [Cidades](https://controlepopular.com.br/cidades);
-2. [Congresso Nacional](https://controlepopular.com.br/congresso);
-3. [Judiciário](https://controlepopular.com.br/judiciario);
-4. Ambiental/ONSA — [Observatório Nacional Socioambiental](https://controlepopular.com.br/ambiental);
-5. [Função Social da Terra](https://controlepopular.com.br/funcaosocialterra);
-6. [Paraopeba](https://controlepopular.com.br/paraopeba).
-
-Cada frente responde a uma pergunta distinta. Há três eixos transversais ao portal todo. São eles: [Direitos em Movimento](https://controlepopular.com.br/direitos-em-movimento), [Terra e Territórios](https://controlepopular.com.br/terra-e-territorios) e [Estado e Economia](https://controlepopular.com.br/estado-e-economia).
+1. [Terra e Territórios](https://controlepopular.com.br/terra-e-territorios) — 203 cidades estratégicas, 853 municípios de MG, Bacia do Paraopeba, Acordo de Mariana (Rio Doce), barragens, clima, mineração (cavas) e Globo 3D;
+2. [Direitos em Movimento](https://controlepopular.com.br/direitos-em-movimento) — Saúde (SUS), educação (IDEB), trabalho (CAGED), conselhos de direitos, LAI e canais populares de denúncia;
+3. [Estado e Economia](https://controlepopular.com.br/estado-e-economia) — Orçamento público de MG, compras públicas (PNCP), 27 Assembleias Legislativas, Congresso Nacional, Judiciário e conexões internacionais;
+4. [Central ONSA e Ferramentas](https://controlepopular.com.br/central) — Radar diário de editais (DO-MG), biblioteca digital com 24k+ docs, laboratório com gráficos interativos, rádios cívicas e assistente Seu Nonô.
 
 ### 1.4 Público-alvo
 
@@ -289,7 +285,7 @@ Hook pre-push e CI rechecam antes de commitar. Dado pessoal nunca chega à produ
 
 ---
 
-## 5. As Seis Frentes Temáticas
+## 5. Os Quatro Grandes Eixos e suas Subfrentes Temáticas
 
 ### 5.1 Cidades — Municipalidade
 

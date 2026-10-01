@@ -302,7 +302,7 @@ export default function TopNav() {
                   </a>
                 </div>
                 <span className="text-xs font-semibold text-text-soft">
-                  4 Eixos Temáticos • 30 Subfrentes
+                  4 Eixos Temáticos • 36+ Subfrentes
                 </span>
               </div>
 

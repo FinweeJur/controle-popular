@@ -2,19 +2,20 @@
 
 > **Tipo:** PRODUTO
 > **Domínio:** global
-> **Última medição:** 2026-09-19
+> **Última medição:** 2026-10-01
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md)
-> **Palavras-chave:** portal, frentes, regras editoriais, acessibilidade, cidades, congresso, judiciario, ambiental, paraopeba, onsa, tts
+> **Palavras-chave:** portal, eixos, subfrentes, regras editoriais, acessibilidade, terra, direitos, economia, onsa, cidades, ferramentas, tts
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Quem lê, e o que isso exige](#quem-lê-e-o-que-isso-exige)
-- [As seis frentes](#as-seis-frentes)
+- [Os Quatro Grandes Eixos e Subfrentes](#os-quatro-grandes-eixos-e-subfrentes)
 - [Features principais](#features-principais)
 - [Regras editoriais](#regras-editoriais)
 - [Números que importam](#números-que-importam)
+- [Origem](#origem)
 
 ## Propósito
 
@@ -40,39 +41,82 @@ Três consequências de qualidade, nesta ordem:
    "Ver + Texto" em vez de espremer o leitor. Regra do dev, 29/09/2026 —
    detalhe em [AGENTS.md § 5.10](/AGENTS.md#510-fonte-mínima-da-descrição-da-página).
 
-## As seis frentes
+## Os Quatro Grandes Eixos e Subfrentes
 
-| Frente | Rota | O que responde |
+O portal organiza sua fiscalização e acervo em **quatro grandes eixos temáticos**, cobrindo **mais de 36 subfrentes ativas**:
+
+| Eixo | Hub Principal | Âmbito e Missão |
 |---|---|---|
-| Cidades | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Para onde vai o dinheiro da prefeitura; o que a câmara vota |
-| Congresso | `/congresso` | Proposições federais por tema; análise de direitos; ofício em PDF |
-| Judiciário | `/judiciario` | Composição de tribunais, vacância por idade, indicações |
-| Função Social da Terra | `/funcaosocialterra` | Quanto do território não tem imóvel no CAR, no globo 3D |
-| Paraopeba | `/paraopeba` | A reparação de Brumadinho: clipping, linha do tempo, documentos |
-| ONSA / Ambiental | `/ambiental` | Licenciamento, barragens, legislação, COPAM, Mariana |
+| **1. Terra e Território** | `/terra-e-territorios` ou `/funcaosocialterra` | Soberania territorial, 203 cidades estratégicas, bacias hidrográficas (Paraopeba e Rio Doce), barragens, clima, mineração e Globo 3D |
+| **2. Direitos em Movimento** | `/direitos-em-movimento` | Saúde (SUS), educação básica (IDEB), trabalho (CAGED), conselhos de direitos, LAI, canal de denúncias e assistência jurídica comunitária |
+| **3. Estado e Economia** | `/estado-e-economia` | Orçamento público, compras governamentais (PNCP), 27 Assembleias Legislativas, Congresso Nacional, Judiciário e conexões internacionais |
+| **4. Central ONSA e Ferramentas** | `/central` ou `/laboratorio` | Radar diário de editais (DO-MG), biblioteca digital com 24k+ docs, laboratório de gráficos, rádios cívicas, IA livre e assistente Seu Nonô |
 
-Rotas completas por frente, confirmadas no código:
+### Subfrentes detalhadas por eixo
 
-- **Cidades** — `/[municipio]/prefeitura`, `/camara`, `/saude`, `/educacao`,
-  `/economia`, `/mineracao`, `/terras`, `/meio-ambiente`, `/noticias`,
-  `/servicos`, `/metodologia`. A cobertura varia por cidade;
-  **a diferença é mostrada, nunca escondida**.
-- **Congresso** — `/proposicoes`, `/parlamentares`, `/bancadas`, `/comissoes`,
-  `/votacoes`, `/alertas`, `/bons-exemplos`, `/agenda`, `/metodologia`.
-- **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/sirenejud`,
-  `/metodologia`.
-- **Função Social da Terra** — `/mapa` (globo 3D), `/alertas`.
-- **Paraopeba** — `/clipping`, `/linha-do-tempo`, `/auxilio`, `/documentos`,
-  `/auditoria`, `/quem-atua`, `/entenda`, `/biblioteca`, `/execucao`.
-- **ONSA** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`,
-  `/direito-critico`, `/patrimonio-cultural`, `/mariana`, `/judiciario`,
-  `/paraopeba/vale`.
+1. **Eixo 1 — Terra e Território (`/terra-e-territorios`)**
+   - **203 Cidades Estratégicas:** Painéis municipais com SUS, PIB e contratos (`/cidades`);
+   - **853 Municípios de MG:** Cobertura estadual completa e transferências (`/cidades/mg`);
+   - **Bacia do Rio Paraopeba:** Reparação do crime de Brumadinho, ATIs e linha do tempo (`/paraopeba`, `/brumadinho`);
+   - **Bacia do Rio Doce:** Repactuação de R$ 171 bi do desastre de Mariana (`/ambiental/mariana`);
+   - **Barragens e Descaracterização:** Monitoramento de estabilidade ANM/FEAM (`/ambiental/barragens`, `/ambiental/barragens/descaracterizacao`);
+   - **Cavas de Mineração:** Mapeamento histórico por satélite e visão computacional (`/mineracao/cavas`);
+   - **Nossas Serras:** Preservação de topos de morro e contenção minerária (`/terra-e-territorios/nossas-serras`);
+   - **Clima e Risco Climático:** Vulnerabilidade e indicadores AdaptaBrasil (`/ambiental/clima-risco`);
+   - **Licenciamento Ambiental:** Processos e audiências em 11 UFs (`/ambiental/licenciamento`);
+   - **Termos de Ajustamento (TAC):** TACs do IBAMA e órgãos estaduais (`/ambiental/tac`);
+   - **Decisões do COPAM:** Pautas e votações ambientais em Minas (`/ambiental/copam`);
+   - **Função Social & Globo 3D:** Terras indígenas, quilombolas e vazios do CAR (`/funcaosocialterra/mapa`);
+   - **Mineração Transnacional:** Hubs do Canadá (TSX) e América Latina (`/canada`, `/america-latina`).
+
+2. **Eixo 2 — Direitos em Movimento (`/direitos-em-movimento`)**
+   - **Saúde Pública & SUS:** Capacidade instalada, leitos e estabelecimentos CNES (`/direitos-em-movimento/saude-publica`);
+   - **Educação Básica:** Qualidade do ensino, IDEB e infraestrutura escolar (`/direitos-em-movimento/educacao`);
+   - **Trabalho e Renda:** Admissões e desligamentos formais do CAGED (`/direitos-em-movimento/trabalho-e-renda`);
+   - **Linha do Tempo das Lutas:** Acervo histórico de memória popular (`/memoria`);
+   - **Conselhos de Direitos:** Mapeamento de 710 conselhos municipais e estaduais (`/direitos-em-movimento/conselhos`);
+   - **Acesso à Justiça & Ajuda:** Defensoria Pública e assistência comunitária (`/direitos-em-movimento/ajuda`);
+   - **Canais de Informação (LAI):** Diretório de 445 portais oficiais de transparência (`/direitos-em-movimento/informacao`);
+   - **Decisões de Acesso (LAI):** Precedentes e recursos de informação pública (`/ambiental/decisoes-lai`);
+   - **Que Lei Protege Isso:** Legislação anotada por direito social violado (`/ambiental/legislacao`);
+   - **Canal de Denúncia Local:** Encaminhamento seguro para órgãos fiscalizadores (`/direitos-em-movimento/denuncia`).
+
+3. **Eixo 3 — Estado e Economia (`/estado-e-economia`)**
+   - **Orçamento Público de MG:** Dotação, arrecadação e execução financeira (`/estado-e-economia/orcamento`);
+   - **Compras Públicas & Licitações:** Contratos e certames via PNCP e TCE (`/editais`, `/ambiental/contratos`);
+   - **Concessões e PPPs:** Parcerias público-privadas de MG (`/ambiental/ppp`);
+   - **Convênios Federais:** Transferências voluntárias e emendas (`/ambiental/convenios`);
+   - **Repasses Federais ComunicaBR:** Dados dos 853 municípios (`/dados/comunicabr`);
+   - **Governos: Prometeu? Cumpriu?:** Checagem de programas e promessas de campanha (`/governo`);
+   - **Congresso Nacional:** Votações, bancadas e despesas de deputados e senadores (`/congresso`, `/congresso/mg`);
+   - **Assembleias Legislativas:** Monitoramento legislativo das 27 UFs (`/assembleias`);
+   - **Quem Fiscaliza a Justiça:** Órgãos de controle CNJ e CNMP (`/judiciario/instituicoes`);
+   - **Recomendações e Inspeções:** Atos disciplinares do CNJ e corregedorias (`/judiciario/recomendacoes`);
+   - **Varas, Gabinetes e Balcão Virtual:** Contatos e comarcas de 990 varas (`/judiciario/contatos`);
+   - **Grandes Empresas e ESG:** Acionistas, mineradoras e fornecedores (`/empresas`);
+   - **Transparência Internacional EUA:** SEC EDGAR, fundos e barragens americanas (`/eua`).
+
+4. **Eixo 4 — Central ONSA e Ferramentas (`/central`)**
+   - **Radar Diário de Editais:** Licitações e chamamentos do DO-MG (`/editais`);
+   - **Biblioteca Digital:** Mais de 24 mil documentos, perícias e decisões (`/biblioteca`);
+   - **Busca Universal Global:** Pesquisa instantânea em todo o acervo (`/busca`);
+   - **Laboratório de Dados:** Comparador de indicadores com gráficos dither acessíveis (`/laboratorio`);
+   - **Árvore de Conexões:** Grafo interativo 3D estilo Obsidian das relações cívicas (`/laboratorio/arvore`);
+   - **Blog e Notícias Analíticas:** Investigações com dupla checagem (`/noticias`);
+   - **Diretório de Rádios Cívicas:** 44 emissoras públicas e universitárias do mundo (`/radio`);
+   - **Alertas e Notificações:** Avisos de emergência climática e barragens (`/alertas`);
+   - **Tecnologia & IA Livre:** Ferramentas abertas e modelos locais sem big techs (`/tecnologia`);
+   - **Assistente Cívico Seu Nonô:** IA acolhedora e escada determinística com voz (`/assistente`);
+   - **Documentação e API Aberta:** Catálogo técnico e endpoints públicos (`/documentacao`, `/api`);
+   - **Sobre o ONSA & Método:** Princípios cívicos e Regra das Seis Qualidades (`/sobre`);
+   - **Sala de Imprensa:** Dados abertos para comunicadores e jornalistas (`/imprensa`);
+   - **Termos de Uso e LGPD:** Blindagem contra vazamento de CPFs e privacidade (`/termos`).
 
 ## Features principais
 
 | Feature | Onde | Nota |
 |---|---|---|
-| Painéis por município | rotas das 6 cidades | Dados com fonte e lacunas declaradas |
+| Painéis por município | 203 cidades estratégicas e 853 de MG | Dados com fonte e lacunas declaradas |
 | Tabelas Estáticas | listas grandes | > 2 mil linhas: índice fatiado ou paginação no servidor — regra completa em [AGENTS.md § 5.1](/AGENTS.md#5.1-coleção-nunca-como-props-de-componente-de-cliente) |
 | Alertas de contrato | contratos de Cidades | Duas categorias: violação legal (dispositivo citado) e heurística (com ressalva) |
 | Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; navegação determinística, sem modelo |

@@ -34,9 +34,12 @@ Monorepo Next.js 16. Três modos de publicar:
 | Cloudflare Workers (OpenNext) | servidor "sem servidor" na borda da Cloudflare | fallback técnico |
 | Cloudflare Tunnel do `home-pc` | túnel que expõe este PC à internet | servidor 2 / emergência |
 
-Seis frentes: [Cidades](docs/01-produto/PRODUTO.md),
-Congresso, Judiciário, Função Social da Terra, Paraopeba e ONSA
-(Observatório Nacional Socioambiental, ver [PRODUTO.md](docs/01-produto/PRODUTO.md)).
+Quatro Grandes Eixos Temáticos e mais de 36 subfrentes:
+1. **Terra e Território** (Cidades estratégicas, bacias hidrográficas, barragens, mineração, CAR, clima e Globo 3D);
+2. **Direitos em Movimento** (Saúde/SUS, Educação/IDEB, Trabalho/CAGED, Conselhos, LAI e assistência jurídica);
+3. **Estado e Economia** (Orçamento, compras públicas, Congresso, 27 Assembleias, Judiciário, empresas e transparência internacional EUA/Canadá/Europa);
+4. **Central ONSA e Ferramentas** (Editais diários, biblioteca digital, laboratório de dados, rádios cívicas e assistente Seu Nonô).
+Ver detalhamento completo em [PRODUTO.md](docs/01-produto/PRODUTO.md).
 
 **"Busca com potencial de interesse social"** governa toda coleta:
 social (direitos, desigualdade), ambiental (água, licença, esgoto),
