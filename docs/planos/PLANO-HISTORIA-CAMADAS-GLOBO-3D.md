@@ -343,7 +343,7 @@ destrava** — nada aqui se resolve por suposição.
 
 | # | Pendência | O que destrava | Dono | Estado |
 |---|---|---|---|---|
-| P1 | **Mineração escravizada** (Fase G): dado por município | **CRUZADO em 30/09 com critério HISTÓRICO:** 64 das 121 listas em vila/comarca mineradora do séc. XVIII; o cruzamento com a lavra moderna foi **recusado por anacronismo** (está escrito na tela). Falta: **contagem de escravizados** (OCR da imagem) e o censo de 1872 | agente | 🚧 |
+| P1 | **Mineração escravizada** (Fase G): dado por município | **CRUZADO em 30/09 com critério HISTÓRICO:** 64 das 121 listas em vila/comarca mineradora do séc. XVIII; o cruzamento com a lavra moderna foi **recusado por anacronismo**. **A contagem está bloqueada na ORIGEM:** o APM não publica a imagem (só `Microfilme: MP Rolo-04/Flash 02`) — não há o que OCRizar. Caminhos: pedido ao arquivo (LAI/consulta) ou digitalização; OCR local disponível na máquina: **Ollama `qwen3-vl` 2b/4b** (sem chave) | agente | ⛔ |
 | P1b | **Censo de 1872** por município e **base histórica do CEDEPLAR** | Biblioteca do IBGE devolve **403** (dois UAs); CEDEPLAR 200 mas sem base exposta → procurar a via (contato/LAI ou repositório) | agente | ⛔ |
 | P2 | **Engenhos de cana** (Fase H): nenhum no IEPHA | acervos de PE/AL e **IPHAN** (a medir) | agente | ⛔ |
 | P3 | **Fazendas de café** (Fase H): só as tombadas | **A via achada em 30/09:** os **Boletins Administrativos do IPHAN** (`/iphan/pt-br/centrais-de-conteudo/boletins-administrativos/<ano>`) são **PDFs semanais** (**99 em 2026**) com os atos de tombamento — é por onde se lê o inventário de fazendas/engenhos. Custo: ler PDF (não é dado tabular) | agente | 🚧 |
@@ -519,6 +519,20 @@ acadêmico científico") — feito em 30/09:**
   lugar que **foi** minerador; o trabalho escravizado do período era, em boa parte, rural.
 - **O que a fonte ainda não dá:** a **contagem** de pessoas escravizadas — exigiria OCR da
   imagem de cada lista. Fica declarado como pendência.
+
+**OCR — o que existe nesta máquina, medido em 30/09 (resposta ao dev):**
+
+- **Local, sem cadastro e sem chave:** há caminho — mas **não há OCR clássico instalado**:
+  falta o binário do **Tesseract** (o `pytesseract` existe, o motor não), e não há
+  **PaddleOCR** nem **RapidOCR** (os pares chineses, `pip`, sem cadastro). O que **há**:
+  `transformers` 5.5, `torch` 2.5.1+cu121, `PIL`, `pypdf` e **PyMuPDF**, e o **Ollama com
+  `qwen3-vl:2b` e `qwen3-vl:4b` já baixados** — VLM local, sem chave.
+- **Nuvem chinesa (Baidu/Tencent) exige chave/cadastro** → excluída pela regra do dev.
+- ⚠️ **Mas o OCR está bloqueado na ORIGEM, não na ferramenta:** o APM **não publica a
+  imagem** das listas — o item traz só `Microfilme: MP Rolo-04/Flash 02`. Sem scan on-line,
+  não há o que OCRizar: a contagem exige pedido ao arquivo (LAI/consulta) **ou** a
+  digitalização. Por isso o caminho prático hoje é **ler os Boletins do IPHAN** (Fase H),
+  que **já têm camada de texto** — sem OCR.
 
 ### Fase H — fazendas e engenhos (pedido do dev, parcialmente feito)
 

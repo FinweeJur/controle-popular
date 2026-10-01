@@ -1262,6 +1262,11 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-C
   internas. O `@@search` (ex.: `SearchableText=engenho`) é **JS-morto**: 0
   resultado no HTML. A via boa é `boletins-administrativos/<ano>`; o
   **Banco de Bens Culturais Procurados (BCP)** é app, não dado.
+  ⚠️ **E a URL do PDF mente duas vezes:** pedir o `.pdf` direto devolve
+  **HTML** (`text/html`, 706 KB — a página do arquivo). O binário está em
+  **`<url-do-pdf>/@@download/file`** (`application/pdf`, 634.720 bytes medidos).
+  **O PDF é digital** (camada de texto): 40 páginas e ~1.635 caracteres por
+  página no BAE nº 2.050/2026 — **mineração por regex, sem OCR**.
 - **IBGE — Brasil: 500 anos** — seções *negros* e *descoberta do ouro*: base
   documental da mineração escravizada (o dado por município, para geolocalizar,
   é o recenseamento de 1872 — **a medir**).
