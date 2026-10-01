@@ -85,7 +85,11 @@ export default async function PaginaIndividualCidade({ params }: Props) {
       }
     : obterPibMunicipal(cidade.id_municipio);
 
-  const populacaoReal = dadosCompletos?.populacao ?? (cidade.tipo === 'capital' ? 1200000 : 150000);
+  // População MEDIDA apenas. O fallback antigo (`capital ? 1200000 : 150000`)
+  // era número digitado à mão virando denominador de taxa por habitante —
+  // AGENTS.md §8. Sem população, o motor devolve `sem-dado` em vez de
+  // calcular sobre dado inventado.
+  const populacaoReal = dadosCompletos?.populacao;
 
   // Calcula cruzamentos leigos do Data Ocean para a cidade
   const cruzamentos = calcularCruzamentosMunicipais({

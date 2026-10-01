@@ -110,6 +110,18 @@ export interface CruzamentoMunicipalItem {
   titulo: string;
   formula: string; // Ex: 'Renda × IDEB'
   explicacao: string;
-  status: 'atencao' | 'positivo' | 'neutro';
+  /**
+   * `sem-dado` NÃO é "está tudo bem": é a lacuna declarada, e o renderizador
+   * dá selo próprio para ela. Sem este status, um município sem dado nenhum
+   * saía na tela com selo "Regular" — o leitor lia ausência de informação
+   * como avaliação de resultado (AGENTS.md, regra editorial).
+   */
+  status: 'atencao' | 'positivo' | 'neutro' | 'sem-dado';
   indicadoresEnvolvidos: string[];
+  /**
+   * Critério numérico que produziu o selo, quando ele não vem de fonte
+   * oficial. Exibido na tela para o leitor saber o que está medindo —
+   * limiar sem origem impresso como se fosse dado de DataSUS/INEP é dano.
+   */
+  criterio?: string;
 }

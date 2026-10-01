@@ -45,6 +45,12 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
             statusCor = 'border-amber-500/40 bg-amber-500/5 text-amber-950 dark:text-amber-200';
             statusBadge = 'bg-amber-500/20 text-amber-800 dark:text-amber-300 font-semibold';
             statusIcon = '⚠️';
+          } else if (item.status === 'sem-dado') {
+            // Selo próprio: ausência de dado não pode ler-se como "Regular".
+            // O leitor precisa ver que o portal não sabe, não que está tudo bem.
+            statusCor = 'border-dashed border-border bg-surface-2/60 text-muted';
+            statusBadge = 'bg-surface-2 text-muted border border-border';
+            statusIcon = '❔';
           }
 
           return (
@@ -58,7 +64,14 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
                     Cruzamento #{index + 1}
                   </span>
                   <span className={`rounded-md px-2 py-0.5 text-xs ${statusBadge}`}>
-                    {statusIcon} {item.status === 'positivo' ? 'Positivo' : item.status === 'atencao' ? 'Alerta' : 'Regular'}
+                    {statusIcon}{' '}
+                    {item.status === 'positivo'
+                      ? 'Positivo'
+                      : item.status === 'atencao'
+                        ? 'Alerta'
+                        : item.status === 'sem-dado'
+                          ? 'Sem dado'
+                          : 'Regular'}
                   </span>
                 </div>
 
@@ -72,6 +85,12 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
                 <p className="text-sm leading-relaxed text-muted">
                   {item.explicacao}
                 </p>
+
+                {item.criterio && (
+                  <p className="mt-2 text-xs text-muted border-l-2 border-border pl-2">
+                    {item.criterio}
+                  </p>
+                )}
               </div>
 
               <div className="mt-4 pt-3 border-t border-border/40 text-xs text-muted">
@@ -85,7 +104,11 @@ export default function CruzamentosEducativos({ cruzamentos, nomeMunicipio }: Pr
 
       <div className="mt-6 rounded-xl bg-surface-2/60 border border-dashed border-border p-4 text-xs text-muted flex flex-wrap items-center justify-between gap-3">
         <p>
-          💡 <strong>Princípio Editorial:</strong> Todo cruzamento tem base documental oficial (DataSUS, INEP, SINESP, Tesouro). Nenhuma correlação implica condenação isolada — lacunas e ressalvas viajam coladas aos números.
+          💡 <strong>Princípio Editorial:</strong> Os dados vêm de fonte oficial
+          (DataSUS, INEP, SINESP, Tesouro); os limites que viram selo são
+          critério deste portal e aparecem escritos em cada card. Nenhuma
+          correlação implica condenação isolada — lacuna declarada e ressalva
+          viajam coladas ao número.
         </p>
       </div>
     </section>

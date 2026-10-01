@@ -747,7 +747,7 @@ e o renderizador
 
 ### Achados da Parte 20
 
-1. ⚠️ **A lacuna vira selo "Regular".** Quando um dos lados do cruzamento
+1. ⚠️ → ✅ **A lacuna vira selo "Regular" — corrigido (01/10/2026).** Quando um dos lados do cruzamento
    não existe, `calcularCruzamentosMunicipais` devolve um card mesmo assim:
    com `formula` (ex.: *Leitos Hospitalares × Demanda Populacional*) que
    **não foi calculada**, um texto preenchido e `status: 'neutro'` — que o
@@ -758,7 +758,7 @@ e o renderizador
    AGENTS §7: *lacuna é informação* — o selo de lacuna é "sem dado", não
    "Regular".
 
-2. ⚠️ **População fabricada em dois caminhos.** `const pop = dados.populacao
+2. ⚠️ → ✅ **População fabricada em dois caminhos — corrigido (01/10/2026).** `const pop = dados.populacao
    ?? 50000` (correlacionador, linha 30) e
    `dadosCompletos?.populacao ?? (cidade.tipo === 'capital' ? 1200000 : 150000)`
    (`[slug]`, linha 88). Hoje é **latente**: as cinco chamadas passam
@@ -768,7 +768,7 @@ e o renderizador
    digitado à mão — que é justamente o que o §8 proíbe
    (*número na tela vem de constante medida com data*).
 
-3. ⚠️ **Um mesmo portal publica três referências de IDEB.** O motor usa
+3. ⚠️ → ✅ **Um mesmo portal publica três referências de IDEB — corrigido (01/10/2026).** O motor usa
    `idebMeta ?? 5.5`; a chamada de `/direitos-em-movimento/educacao` passa
    `idebMeta: 5.8`; o cartão de topo **da mesma página** diz
    `Meta nacional estipulada: 6,0`. Os valores divergem também: o cartão
@@ -776,26 +776,26 @@ e o renderizador
    Sobra o rótulo `IDEB Médio Anos Iniciais`, que não existe no INEP —
    o IDEB tem anos iniciais e anos finais. Número errado é dano.
 
-4. ⚠️ **Limiares sem fonte e sem data.** `taxaHomicidios > 25` e
+4. ⚠️ → ✅ **Limiares sem fonte e sem data — corrigido (01/10/2026).** `taxaHomicidios > 25` e
    `razaoLeitosPorHab < 1.5` (linha 66), `repassePerCapita > 1500`
    (linha 96), `diferenca >= -0.5` (linha 36). São esses números que
    decidem o selo "Alerta" ou "Positivo" — mas o rodapé do componente
    promete *"Todo cruzamento tem base documental oficial (DataSUS, INEP,
    SINESP, Tesouro)"*. Os limiares não vêm de nenhum dos quatro.
 
-5. ⚠️ **Repasso federal vira "Positivo".** `repassePerCapita > 1500 ?
+5. ⚠️ → ✅ **Repasso federal vira "Positivo" — corrigido (01/10/2026).** `repassePerCapita > 1500 ?
    'positivo' : 'neutro'` classifica receber mais transferência como
    resultado bom, com selo verde. É julgamento de valor impresso como
    cálculo — o mesmo desvio do *Repasse do Acordo* registrado no §7:
    receber não é ser beneficiado.
 
-6. ⚠️ **Prosa que conclui sem medir.** *"Isso demonstra bom rendimento
+6. ⚠️ → ✅ **Prosa que conclui sem medir — corrigida (01/10/2026).** *"Isso demonstra bom rendimento
    escolar em relação à estrutura disponível"* — a estrutura não foi medida.
    Também *"recursos vitais"* e *"duplo funil de vulnerabilidade"*. O módulo
    embrulha a frase no formato de dado; a regra é o contrário: o número vem
    do dado, o texto só o apresenta.
 
-7. ⚠️ **Ponto decimal em português publicado.** O mesmo módulo formata de
+7. ⚠️ → ✅ **Ponto decimal em português publicado — corrigido (01/10/2026).** O mesmo módulo formata de
    dois jeitos: o repasse usa `toLocaleString('pt-BR')` (`R$ 3.500`), mas
    leitos e homicídios usam `.toFixed()` puro. Medido em execução, sem
    população informada, a frase sai como *"A rede pública dispõe de 2.00
@@ -1032,6 +1032,60 @@ ponta a ponta; o que sobra é revisão fina por fonte/módulo, não mais por
 camada. A fina já cobre as Partes 17 a 22 — acervos estaduais, catálogo de
 fontes, utilitários transversais, junções editoriais, a busca estática e as
 respostas curadas.
+
+## Plano de correção — sessão de 01/10/2026
+
+Ordem por **dano** (número publicado errado primeiro), uma fase por commit,
+cada correção com teste de regressão e conversão do marcador
+`⚠️` → `⚠️ → ✅` nesta mesma sessão.
+
+**Fase 1 — número publicado errado** ✅ **concluída (01/10/2026)**
+(`lib/cruzamentos/`, `lib/eixos/types.ts`, `CruzamentosEducativos.tsx`,
+`app/terra-e-territorios/cidades/[slug]/page.tsx`)
+
+1. População fabricada → sem população válida, não se calcula taxa (achado 2).
+2. `.toFixed()` → `toLocaleString('pt-BR')` (achado 7).
+3. `idebMeta ?? 5.5` → sem meta, não se compara (achado 3).
+4. Repasse deixa de ser `positivo` — receber transferência não é juízo de
+   valor (achado 5).
+5. Limiares viram constante nomeada e o critério é declarado na tela, sem
+   prometer que ele vem de DataSUS/INEP/SINESP/Tesouro (achado 4).
+6. Lacuna vira status `sem-dado` com selo próprio (achado 1).
+7. Prosa deixa de concluir (achado 6).
+
+**Fase 2 — busca** (`lib/busca/`)
+
+8. Frase exata passa a conferir o texto **normalizado igual** ao da consulta
+   (achado 21.1).
+9. Termos negativos passam a casar por radical, como os positivos
+   (achado 21.2).
+10. `1,5` deixa de virar `15` (dívida 21.4).
+11. `hoje` calculado uma vez por busca, não por documento (dívida 21.5).
+12. Índice passa a usar `comRetry` (achado 21.3) — resolve de uma vez o
+    módulo `lib/robusto/rede.ts` órfão.
+
+**Fase 3 — respostas curadas** (`lib/busca/resposta-curada.ts`)
+
+13. `zona` passa a filtrar quando informada (achado 22.1).
+14. O casamento deixa de aceitar subcadeia reversa (achado 22.2).
+15. Cifras tiradas da prosa ou datadas na fonte (achado 22.3).
+
+**Fase 4 — higiene**
+
+16. Teste que confere se a rota de `PAGINAS_PORTAL` existe (dívida 22.4).
+17. `buscarPaginasPortal` passa a usar `separarPalavras` (dívida 22.5).
+18. Marcador da Parte 9 corrigido para `⚠️ → ✅`.
+
+**Fora do escopo desta sessão** — registrado, não é esquecimento:
+
+- catálogo de fontes consumido (dívida 18): muda o contrato da API pública;
+- injeção de cabeçalho SMTP (dívida 19.4): defesa em profundidade, hoje não
+  há chamador inseguro;
+- terceira cópia de CSV (dívida 19.5): mexe em exportação de e-mail;
+- limiar 0,45 do Seu Nonô (dívida 22.6): precisa de medida antes de mudar.
+
+**Verificação em cada fase:** `tsc --noEmit`, `eslint` nos arquivos do diff,
+`vitest` do escopo, guarda de CPF e `python scripts/validar-documentacao.py`.
 
 ## Decisões registradas
 
