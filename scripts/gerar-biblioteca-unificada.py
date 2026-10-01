@@ -550,6 +550,36 @@ def main():
     todos_itens.extend(acervo_internacional)
     print(f"- Processados {len(acervo_internacional)} documentos e dossiês internacionais.")
 
+    # SANEAMENTO (dono, 01/10/2026): a biblioteca so publica documento que
+    # existe. Medido: 358 de 542 itens traziam urlPdf em
+    # arquivos.controlepopular.com.br, dominio que NAO resolve (links mortos);
+    # o bloco "Plano Estrategico e Diretrizes de Transparencia Cidada" era um
+    # template repetido por orgao, com urlOficial "/<orgao>/estrategia" (404).
+    # Tambem remove titulo repetido (mesmo nome = mesmo fato).
+    HOST_MORTO = "arquivos.controlepopular.com.br"
+    vistos = set()
+    saneados = []
+    for item in todos_itens:
+        url_of = item.get("urlOficial") or ""
+        titulo = (item.get("titulo") or "").strip()
+        if "Plano Estrat" in titulo and "Transpar" in titulo and "Cidad" in titulo:
+            continue
+        if url_of.rstrip("/").endswith("/estrategia"):
+            continue
+        if HOST_MORTO in (item.get("urlPdf") or ""):
+            item.pop("urlPdf", None)
+        if not (url_of.startswith("http") and HOST_MORTO not in url_of):
+            continue
+        chave = titulo.lower()
+        if chave in vistos:
+            continue
+        vistos.add(chave)
+        saneados.append(item)
+    removidos = len(todos_itens) - len(saneados)
+    if removidos:
+        print(f"- Saneamento: {removidos} item(ns) fabricado(s)/repetido(s)/sem link vivo removido(s).")
+    todos_itens = saneados
+
     # Gerar distribuicoes agregadas para a regra das 5 coisas do AGENTS.md
     dist_tema = {}
     dist_categoria = {}
