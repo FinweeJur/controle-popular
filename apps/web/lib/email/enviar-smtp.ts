@@ -34,7 +34,13 @@ function lerResposta(soquete: net.Socket): Promise<string> {
     let dados = "";
     const onDados = (buf: Buffer) => {
       dados += buf.toString("utf-8");
-      if (/\r?\n$/.test(dados)) {
+      // Resposta SMTP pode ter várias linhas: continuação começa com
+      // `<código>-` e a última com `<código> ` (RFC 5321 § 4.2.1). Só a
+      // última linha fecha a resposta — parar na primeira quebra desalinharia
+      // o próximo comando (o que sobra da resposta vira comando lido errado).
+      const linhas = dados.split(/\r?\n/).filter((l) => l.length > 0);
+      const ultima = linhas[linhas.length - 1];
+      if (/\r?\n$/.test(dados) && ultima && /^\d{3} /.test(ultima)) {
         soquete.off("data", onDados);
         soquete.off("error", onErro);
         resolve(dados.trim());
@@ -101,9 +107,23 @@ export function extrairLinhas(dados: unknown): Array<Record<string, unknown>> | 
   return null;
 }
 
+/**
+ * Prepara o corpo do DATA: faz "dot-stuffing" (toda linha iniciada por "."
+ * ganha um "." extra — RFC 5321 § 4.5.2) e acrescenta o terminador CRLF.CRLF.
+ *
+ * O terminador entra DEPOIS do stuffing, de propósito: se o stuffing tocasse a
+ * linha final, `\r\n.\r\n` viraria `\r\n..\r\n` e o servidor ficaria esperando
+ * o fim do DATA para sempre. Foi o defeito corrigido aqui em 30/09/2026.
+ */
+export function prepararDadosSmtp(mensagem: string): string {
+  return mensagem.replace(/\r\n\./g, "\r\n..").replace(/^\./, "..") + ".\r\n";
+}
+
 export async function enviarEmail(opts: EnvioEmail): Promise<void> {
   const cru = net.connect(opts.port, opts.host);
-  cru.setTimeout(30_000);
+  // Sem handler, 'timeout' só emite o evento: o soquete fica pendurado e a
+  // promise nunca resolve nem rejeita. Destruir com erro rejeita quem espera.
+  cru.setTimeout(30_000, () => cru.destroy(new Error("timeout SMTP")));
   try {
     await aguardarEvento(cru, "connect");
     await lerResposta(cru); // 220 banner
@@ -141,9 +161,8 @@ export async function enviarEmail(opts: EnvioEmail): Promise<void> {
         Buffer.from(anexo.conteudo, "utf-8").toString("base64").replace(/(.{76})/g, "$1\r\n") +
         "\r\n";
     }
-    mensagem += `--${boundary}--\r\n.\r\n`;
-    // dot-stuffing: linha que começa com "." ganha um "." extra
-    s.write(mensagem.replace(/\r\n\./g, "\r\n.."));
+    mensagem += `--${boundary}--\r\n`;
+    s.write(prepararDadosSmtp(mensagem));
     await lerResposta(s); // 250 enfileirado
     await cmd(s, "QUIT", [221]);
   } finally {

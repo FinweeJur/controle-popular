@@ -30,6 +30,7 @@
 - [Parte 16 — memória das resistências](#parte-16--memória-das-resistências)
 - [Parte 17 — acervos estaduais e multinacionais](#parte-17--acervos-estaduais-e-multinacionais)
 - [Parte 18 — dados de fonte (fontes, coleta, texto)](#parte-18--dados-de-fonte-fontes-coleta-texto)
+- [Parte 19 — segurança, server-only e utilitários](#parte-19--segurança-server-only-e-utilitários)
 - [Achados e dívidas](#achados-e-dívidas)
 - [Fila de revisão](#fila-de-revisão)
 - [Decisões registradas](#decisões-registradas)
@@ -683,6 +684,49 @@ Décima segunda passada, nos utilitários de fonte e coleta.
    nem às telas. Dívida: ligar o registro ou assumir que é só documentação.
 
 7. ✅ **Conferidos**: `lib/fontes/*`, `lib/coleta/*`, `lib/texto/*`.
+
+## Parte 19 — segurança, server-only e utilitários
+
+Décima terceira passada, nos utilitários transversais e no envio de e-mail.
+
+### Achados da Parte 19
+
+1. ⚠️ → ✅ **`lib/email/enviar-smtp.ts` — o dot-stuffing corrompia o
+   terminador.** O corpo do `DATA` passava por `replace(/\r\n\./g, "\r\n..")`
+   **depois** de o terminador `\r\n.\r\n` já ter sido anexado: o `\r\n.` final
+   virava `\r\n..` e o servidor SMTP ficava esperando o fim do DATA — o envio
+   travava. O terminador agora entra depois do stuffing, na função pura
+   `prepararDadosSmtp`, com teste de regressão.
+
+2. ⚠️ → ✅ **Leitura de resposta SMTP multi-linha.** `lerResposta` fechava na
+   primeira quebra de linha; como as respostas (`EHLO`, `STARTTLS`, `AUTH`)
+   têm várias linhas (`250-` de continuação e `250 ` na última — RFC 5321
+   §4.2.1), um pacote TCP partido desalinhava o comando seguinte. Agora só a
+   última linha (`^\d{3} `) fecha a resposta.
+
+3. ⚠️ → ✅ **`timeout` sem handler.** `socket.setTimeout(30s)` só emitia o
+   evento; a promise podia pendurar para sempre. Agora destrói o soquete com
+   erro, que rejeita quem espera.
+
+4. 📌 **Injeção de cabeçalho — defesa em profundidade.** `de`/`para` entram
+   crus em `MAIL FROM`/`RCPT TO`/`From:`/`To:`. O único consumidor
+   (`/api/pedido-dados`) valida o e-mail com regex que barra `\s` (logo, CRLF),
+   então não há furo hoje. Fica registrado: novo chamador que passe `para` sem
+   validar reabre a injeção.
+
+5. 📌 **Terceira cópia de CSV.** `jsonParaCsv` reimplementa o padrão do portal
+   (BOM + `;`) já centralizado em `lib/tabela/csv.ts`. Dívida: unificar.
+
+6. 📌 **CSV sem neutralização de fórmula.** `escaparCelulaCsv`
+   (`lib/tabela/csv.ts`) protege aspas e separador, mas não neutraliza célula
+   que começa com `=`, `+`, `-` ou `@` (CSV injection ao abrir no Excel). O
+   dado é oficial e o risco é baixo; fica registrado.
+
+7. ✅ **Conferidos**: `lib/tabela/csv.ts` e `ordenar.ts` (ordenação estável;
+   ausente vai para o fim nas duas direções), `lib/utilitarios/{calculos,
+   documentos,fusos}` — o DV do código IBGE (módulo 10, pesos 1 e 2) foi
+   recalculado em Betim `3106705` e Belo Horizonte `3106200`, e confere —,
+   `lib/seo/contexto-pagina.ts`.
 
 ## Achados e dívidas
 
