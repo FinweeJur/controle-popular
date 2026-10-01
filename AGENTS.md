@@ -338,6 +338,9 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **Concorrência de build (24 min)** | `staticGenerationMaxConcurrency: 3` em `next.config.ts` herdado do Cloudflare Workers estrangula o build no Guara Cloud. Use `standaloneBuild ? 8 : 3` e retry 1 para reduzir minutos pagos |
 | **Fallback cego no `getDb()`** | `new Pool()` de `pg` instancia objeto sem abrir conexão TCP imediata: o `try/catch` de `getDb()` nunca pegava falha. O fallback real vive em `comBancoReserva()` por consulta (`reserva.ts`), com timeout defensivo de 10s no principal e 5s nas reservas |
 | **`DIR_CAMADAS` e `process.cwd()`** | `path.join(process.cwd(), "public/...")` quebra quando rodado da raiz do monorepo (`apps/web/public` não é achado). Use `resolverDirCamadas()` em `camadas.ts` com busca em cascata |
+| **Windows: `UnicodeEncodeError` em scripts Python** | Console Windows em `cp1252` quebra ao imprimir emojis ou caracteres Unicode (`\u2550`). Todo script Python deve iniciar com `sys.stdout.reconfigure(encoding='utf-8', errors='replace')` e usar separadores ASCII padrão (`=` ou `-`) |
+| **APIs públicas com gzip silencioso (`0x8b`)** | APIs como IBGE ou PNCP retornam payload comprimido em gzip (`0x1f 0x8b`). `urllib.request` falha sem descompressão. O cliente HTTP deve testar `raw.startswith(b'\x1f\x8b')` e usar `gzip.decompress(raw)` |
+| **Automação de PR via GitHub CLI (`gh`)** | `gh pr create` requer branch remota prévia (`git push -u origin <branch>`) e título sem quebras de linha. Use `--body-file` com arquivo temporário para resumos longos e remova os arquivos temporários após o envio |
 
 ## 7. Regra editorial
 

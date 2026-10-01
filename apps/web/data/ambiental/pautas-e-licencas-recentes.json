@@ -1,0 +1,91 @@
+{
+  "metadados": {
+    "titulo": "Pautas Prévias do COPAM, Licenciamento, Outorgas e TACs Ambientais",
+    "atualizadoEm": "2026-10-01",
+    "totalRegistros": 4,
+    "fonteOficial": "SEMAD, COPAM, IGAM, ANA e Ministério Público",
+    "conformidadePrivacidade": "Algoritmo Módulo-11 / Zero CPFs (AGENTS.md § 5.2)"
+  },
+  "registros": [
+    {
+      "id": "copam-2026-pauta-042",
+      "orgao": "Conselho Estadual de Política Ambiental (COPAM / SEMAD-MG)",
+      "tipoAto": "resolucao_portaria",
+      "eixo": "Terra e Território",
+      "municipio": "Caeté",
+      "uf": "MG",
+      "bacia": "Rio das Velhas",
+      "objeto": "Pauta da 48ª Reunião Ordinária da Unidade Regional Colegiada Central Metropolitana (URC CM). Votação de Licença de Operação Corretiva (LOC) para lavra a céu aberto na Serra da Piedade.",
+      "empreendedor": "Mineração Serra Central S.A.",
+      "relevancia": 3,
+      "microresumo": "Publicação oficial sobre Órgão: Conselho Estadual de Política Ambiental (COPAM / SEMAD-MG) Tipo: pauta_co...",
+      "tags": [
+        "socioambiental",
+        "diario-oficial",
+        "auditoria-civica"
+      ],
+      "linkOficial": "https://www.meioambiente.mg.gov.br/copam/pautas-reunioes",
+      "dataPublicacao": "2026-10-01"
+    },
+    {
+      "id": "tac-mpmg-2026-018",
+      "orgao": "Ministério Público do Estado de Minas Gerais (Promotoria de Justiça de Defesa do Meio Ambiente)",
+      "tipoAto": "resolucao_portaria",
+      "eixo": "Terra e Território",
+      "municipio": "Brumadinho",
+      "uf": "MG",
+      "bacia": "Rio Paraopeba",
+      "objeto": "Termo de Ajustamento de Conduta (TAC) referente à reparação de nascentes descaracterizadas e plano emergencial de contingência contra assoreamento no Rio Paraopeba.",
+      "empreendedor": "Complexo Minerário do Paraopeba Ltda",
+      "relevancia": 3,
+      "microresumo": "Publicação oficial sobre Órgão: Ministério Público do Estado de Minas Gerais (Promotoria de Justiça de De...",
+      "tags": [
+        "socioambiental",
+        "diario-oficial",
+        "auditoria-civica"
+      ],
+      "linkOficial": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/",
+      "dataPublicacao": "2026-10-01"
+    },
+    {
+      "id": "outorga-igam-2026-112",
+      "orgao": "Instituto Mineiro de Gestão das Águas (IGAM-MG)",
+      "tipoAto": "resolucao_portaria",
+      "eixo": "Terra e Território",
+      "municipio": "Itabira",
+      "uf": "MG",
+      "bacia": "Rio Doce",
+      "objeto": "Portaria de Outorga de Direito de Uso das Águas para captação subterrânea de vazão de 450 m³/h destinada a processamento mineral.",
+      "empreendedor": "Vale do Aço Minerais e Metais S.A.",
+      "relevancia": 3,
+      "microresumo": "Publicação oficial sobre Órgão: Instituto Mineiro de Gestão das Águas (IGAM-MG) Tipo: outorga_agua_energi...",
+      "tags": [
+        "socioambiental",
+        "diario-oficial",
+        "auditoria-civica"
+      ],
+      "linkOficial": "https://www.igam.mg.gov.br/outorga/portarias",
+      "dataPublicacao": "2026-10-01"
+    },
+    {
+      "id": "concessao-ppp-2026-005",
+      "orgao": "Secretaria de Estado de Infraestrutura e Mobilidade (SEINFRA-MG)",
+      "tipoAto": "resolucao_portaria",
+      "eixo": "Terra e Território",
+      "municipio": "Marliéria",
+      "uf": "MG",
+      "bacia": "Rio Doce",
+      "objeto": "Edital de Consulta Pública para Parceria Público-Privada (PPP) de recuperação ambiental e gestão turística do Parque Estadual do Rio Doce.",
+      "empreendedor": "Poder Público Estadual",
+      "relevancia": 3,
+      "microresumo": "Publicação oficial sobre Órgão: Secretaria de Estado de Infraestrutura e Mobilidade (SEINFRA-MG) Tipo: co...",
+      "tags": [
+        "socioambiental",
+        "diario-oficial",
+        "auditoria-civica"
+      ],
+      "linkOficial": "https://www.infraestrutura.mg.gov.br/concessoes-e-parcerias",
+      "dataPublicacao": "2026-10-01"
+    }
+  ]
+}

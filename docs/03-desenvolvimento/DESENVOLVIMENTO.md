@@ -203,6 +203,29 @@ chips ou legendas de tabela.
 4. **Linguagem**:
    - Comentários escritos em português claro, direto e acessível, evitando jargões obscuros sem explicação.
 
+### Padrão de Scripts de Coleta e Bots Autônomos (Python)
+
+Todo bot, crawler ou coletor novo em Python deve obrigatoriamente seguir este padrão arquitetural:
+1. **Reconfiguração de encoding no topo** (protege contra `UnicodeEncodeError` no Windows):
+   ```python
+   if hasattr(sys.stdout, 'reconfigure'):
+       sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+       sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+   ```
+2. **Descompressão automática de gzip** em chamadas HTTP públicas (`0x1f 0x8b`):
+   ```python
+   raw = resp.read()
+   if raw.startswith(b'\x1f\x8b'):
+       raw = gzip.decompress(raw)
+   dados = json.loads(raw.decode('utf-8'))
+   ```
+3. **Higienização estrita de CPFs via algoritmo Módulo-11** antes de qualquer gravação em disco (`scripts/bots/core/validador_mod11.py`).
+4. **Automação de entrega Git com Pull Request autônomo** via GitHub CLI (`gh pr create`), com commits em pathspec explícito e trailer oficial de coautoria:
+   ```text
+   Co-Authored-By: Ollama Local <noreply@ollama.ai>
+   Co-Authored-By: opencode <noreply@opencode.ai>
+   ```
+
 ## Verificação
 
 ```bash
