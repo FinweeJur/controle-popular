@@ -1,4 +1,4 @@
-import { temFonte, nomePortal, type Cidade } from "@/lib/db/queries/municipios";
+import { nomePortal, type Cidade } from "@/lib/db/queries/municipios";
 
 /**
  * Dados de `/[municipio]/rede-de-protecao` — a seção que responde duas
@@ -18,10 +18,12 @@ import { temFonte, nomePortal, type Cidade } from "@/lib/db/queries/municipios";
  *
  * ═══ POR QUE ESTADUAL/FEDERAL SÃO CONST, NÃO TABELA ═══
  *
- * Mesma decisão de `links-uteis-mg/page.tsx`: é uma lista curta e curada
- * (< 40 itens), atualizada por commit quando um link mudar — não dado
+ * Mesma decisão de `links-uteis-mg/page.tsx`: é uma lista curada (~90 itens
+ * desde 02/10/2026, quando `JUSTICA_ESTADUAL` somou as Defensorias e MPs das
+ * outras 26 UFs), atualizada por commit quando um link mudar — não dado
  * operacional que cresce por ETL. Uma tabela pra isso seria infraestrutura
- * sem uso: nada aqui precisa de paginação, filtro no servidor ou ingestão.
+ * sem uso: o filtro por UF é em memória (dezenas de linhas por estado), não
+ * precisa de paginação nem de ingestão.
  *
  * ═══ O QUE É DINÂMICO ═══
  *
@@ -95,6 +97,15 @@ export interface ItemPainel {
   oQueAtende: string;
   necessidades: Necessidade[];
   abrangencia: Abrangencia;
+  /**
+   * UF do órgão — só usada nos itens estaduais de OUTROS estados (item 6).
+   * Item com `abrangencia: "estadual"` e SEM `uf` é de MG, como sempre foi;
+   * item estadual COM `uf` só aparece para quem está naquela UF. Sem esse
+   * campo o seletor nacional mostraria a Defensoria de São Paulo para quem
+   * mora na Bahia — o erro de estado errado que o teste de `redeProtecao`
+   * já protege desde 13/08.
+   */
+  uf?: string;
   natureza: Natureza;
   site: string | null;
   telefone?: string;
@@ -630,7 +641,171 @@ export const REDE_ITENS: ItemPainel[] = [
     gratuito: true,
     verificadoEm: V,
   },
+
+  // ═══ Justiça federal — vale para qualquer estado (item 6) ═══
+  // MPF e DPU, as duas portas federais que faltavam no acervo. Fonte:
+  // verificação ao vivo em 2026-10-02 dos sites oficiais (`mpf.mp.br` e
+  // `dpu.def.br`). A DPU estava catalogada em dado antigo como
+  // `dpu.jus.br` — host que NÃO resolve hoje; o correto, confirmado ao vivo,
+  // é `dpu.def.br`.
+  {
+    id: "rede-mpf",
+    tipo: "ajuda",
+    nome: "Ministério Público Federal (MPF)",
+    oQueAtende:
+      "Fiscaliza a lei federal e investiga crime contra a União, o patrimônio público, o meio ambiente e povos indígenas — atua em todo o país. Não é advogado da pessoa: defende interesses coletivos e federais, mas qualquer cidadão pode denunciar.",
+    necessidades: ["denunciar", "consumidor", "direitos_humanos", "meio_ambiente_terras"],
+    abrangencia: "federal",
+    natureza: "oficial",
+    site: "https://www.mpf.mp.br",
+    gratuito: true,
+    verificadoEm: "2026-10-02",
+    nota: "A denúncia de irregularidade entra pela Ouvidoria do MPF (https://www.mpf.mp.br/o-mpf/orgaos-superiores/ouvidoria). As Câmaras de Coordenação e Revisão organizam a atuação por tema — não recebem denúncia direta.",
+  },
+  {
+    id: "rede-dpu",
+    tipo: "ajuda",
+    nome: "Defensoria Pública da União (DPU)",
+    oQueAtende:
+      "Assistência jurídica gratuita em causas federais — benefícios do INSS, saúde, moradia, migração, refúgio e processos contra a União. Presente nas 27 capitais e em núcleos de interiorização.",
+    necessidades: ["defesa_gratuita", "assistencia_social", "direitos_humanos"],
+    abrangencia: "federal",
+    natureza: "oficial",
+    site: "https://www.dpu.def.br",
+    telefone: "(61) 3318-4330",
+    endereco: "SBN Quadra 1, Bloco F, Edifício Palácio da Agricultura, Asa Norte, Brasília/DF, CEP 70040-908",
+    gratuito: true,
+    verificadoEm: "2026-10-02",
+    nota: "Ouvidoria: https://www.dpu.def.br/institucional/ouvidoria-dpu. Telefones de plantão: https://www.dpu.def.br/telefones-de-plantao. Encontre a unidade da sua cidade em https://www.dpu.def.br/contatos-dpu.",
+  },
 ];
+
+// ═══════════ Defensorias e MPs ESTADUAIS — 26 UFs (item 6) ═══════════
+//
+// O dono pediu as principais instituições de justiça de todo o país. Até
+// 02/10/2026 o painel só conhecia a Defensoria e o MP de MG. Aqui entram as
+// Defensorias Públicas e os Ministérios Públicos das outras 26 unidades
+// federativas (os 25 estados restantes + o Distrito Federal). MG fica de
+// fora de propósito: já tem itens próprios e mais ricos em `REDE_ITENS`
+// (`rede-defensoria-mg`, `rede-mpmg` e os CAOs) — duplicar criaria dois
+// cartões para o mesmo órgão.
+//
+// Fonte: cada URL é o site oficial da instituição, aberto ao vivo em
+// 2026-10-02. O host que respondeu 200 foi usado (alguns estados só servem
+// sem `www`, outros só com). NÃO foram coletados telefone nem endereço —
+// inventar contato é o dano que o portal mais evita (AGENTS §5.2/§7); a
+// pendência fica registrada em `NAO_VERIFICADO`.
+//
+// O `uf` de cada item permite ao seletor (`SeletorRedeGeral`) mostrar a
+// instituição do estado certo e só ela.
+
+interface EstadoJustica {
+  uf: string;
+  nome: string;
+  /** Site oficial da Defensoria Pública estadual/distrital. */
+  dpSite: string;
+  /** Site oficial do Ministério Público estadual/distrital. */
+  mpSite: string;
+}
+
+const ESTADOS_JUSTICA: EstadoJustica[] = [
+  { uf: "AC", nome: "Acre", dpSite: "https://defensoria.ac.def.br", mpSite: "https://www.mpac.mp.br" },
+  { uf: "AL", nome: "Alagoas", dpSite: "https://defensoria.al.def.br", mpSite: "https://www.mpal.mp.br" },
+  { uf: "AP", nome: "Amapá", dpSite: "https://defensoria.ap.def.br", mpSite: "https://www.mpap.mp.br" },
+  { uf: "AM", nome: "Amazonas", dpSite: "https://defensoria.am.def.br", mpSite: "https://www.mpam.mp.br" },
+  { uf: "BA", nome: "Bahia", dpSite: "https://www.defensoria.ba.def.br", mpSite: "https://www.mpba.mp.br" },
+  { uf: "CE", nome: "Ceará", dpSite: "https://www.defensoria.ce.def.br", mpSite: "https://www.mpce.mp.br" },
+  { uf: "DF", nome: "Distrito Federal", dpSite: "https://www.defensoria.df.gov.br", mpSite: "https://www.mpdft.mp.br" },
+  { uf: "ES", nome: "Espírito Santo", dpSite: "https://www.defensoria.es.def.br", mpSite: "https://www.mpes.mp.br" },
+  { uf: "GO", nome: "Goiás", dpSite: "https://www.defensoria.go.def.br", mpSite: "https://www.mpgo.mp.br" },
+  { uf: "MA", nome: "Maranhão", dpSite: "https://defensoria.ma.def.br", mpSite: "https://www.mpma.mp.br" },
+  { uf: "MT", nome: "Mato Grosso", dpSite: "https://www.defensoria.mt.def.br", mpSite: "https://www.mpmt.mp.br" },
+  { uf: "MS", nome: "Mato Grosso do Sul", dpSite: "https://www.defensoria.ms.def.br", mpSite: "https://www.mpms.mp.br" },
+  { uf: "PA", nome: "Pará", dpSite: "https://www.defensoria.pa.def.br", mpSite: "https://www.mppa.mp.br" },
+  { uf: "PB", nome: "Paraíba", dpSite: "https://defensoria.pb.def.br", mpSite: "https://www.mppb.mp.br" },
+  { uf: "PR", nome: "Paraná", dpSite: "https://www.defensoriapublica.pr.def.br", mpSite: "https://www.mppr.mp.br" },
+  { uf: "PE", nome: "Pernambuco", dpSite: "https://www.defensoria.pe.def.br", mpSite: "https://www.mppe.mp.br" },
+  { uf: "PI", nome: "Piauí", dpSite: "https://www.defensoria.pi.def.br", mpSite: "https://www.mppi.mp.br" },
+  { uf: "RJ", nome: "Rio de Janeiro", dpSite: "https://www.defensoria.rj.def.br", mpSite: "https://www.mprj.mp.br" },
+  { uf: "RN", nome: "Rio Grande do Norte", dpSite: "https://www.defensoria.rn.def.br", mpSite: "https://www.mprn.mp.br" },
+  { uf: "RS", nome: "Rio Grande do Sul", dpSite: "https://www.defensoria.rs.def.br", mpSite: "https://www.mprs.mp.br" },
+  { uf: "RO", nome: "Rondônia", dpSite: "https://www.defensoria.ro.def.br", mpSite: "https://www.mpro.mp.br" },
+  { uf: "RR", nome: "Roraima", dpSite: "https://defensoria.rr.def.br", mpSite: "https://www.mprr.mp.br" },
+  { uf: "SC", nome: "Santa Catarina", dpSite: "https://defensoria.sc.def.br", mpSite: "https://www.mpsc.mp.br" },
+  { uf: "SP", nome: "São Paulo", dpSite: "https://www.defensoria.sp.def.br", mpSite: "https://www.mpsp.mp.br" },
+  { uf: "SE", nome: "Sergipe", dpSite: "https://www.defensoria.se.def.br", mpSite: "https://www.mpse.mp.br" },
+  { uf: "TO", nome: "Tocantins", dpSite: "https://www.defensoria.to.def.br", mpSite: "https://www.mpto.mp.br" },
+];
+
+/**
+ * Lista completa das 27 UFs para o seletor de estado (sigla + nome), ordenada
+ * por nome do estado. MG entra aqui separado: não tem item em
+ * `JUSTICA_ESTADUAL` (já é coberto pelo acervo próprio de `REDE_ITENS`), mas
+ * precisa aparecer na lista para o usuário mineiro poder voltar ao seu estado.
+ */
+export const UFS_JUSTICA: { sigla: string; nome: string }[] = [
+  ...ESTADOS_JUSTICA.map((e) => ({ sigla: e.uf, nome: e.nome })),
+  { sigla: "MG", nome: "Minas Gerais" },
+].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+
+/**
+ * Itens de justiça estadual gerados para as 26 UFs. Cada UF rende dois
+ * cartões: a Defensoria (defesa gratuita) e o Ministério Público (denúncia
+ * e fiscalização). Gerado por `flatMap` em vez de 52 literais para o dado
+ * não divergir do par UF/site — uma linha por estado, uma só para editar.
+ */
+export const JUSTICA_ESTADUAL: ItemPainel[] = ESTADOS_JUSTICA.flatMap((e) => {
+  const uf = e.uf;
+  const distrital = uf === "DF";
+  return [
+    {
+      id: `defensoria-${uf.toLowerCase()}`,
+      tipo: "ajuda",
+      nome: distrital
+        ? `Defensoria Pública do Distrito Federal`
+        : `Defensoria Pública do Estado de ${e.nome}`,
+      oQueAtende: `Representa de graça na Justiça quem não tem dinheiro para advogado em ${
+        distrital ? "todo o Distrito Federal" : `todo o ${e.nome}`
+      } — moradia, saúde, família, criminal, violência doméstica e outros direitos. Procure a unidade mais próxima no site oficial.`,
+      necessidades: ["defesa_gratuita", "violencia_mulher", "protecao_crianca"],
+      abrangencia: "estadual",
+      uf,
+      natureza: "oficial",
+      site: e.dpSite,
+      gratuito: true,
+      verificadoEm: "2026-10-02",
+      nota: "Telefone e endereço da unidade não foram confirmados nesta rodada — confirme no próprio site antes de se deslocar.",
+    },
+    {
+      id: `mp-${uf.toLowerCase()}`,
+      tipo: "ajuda",
+      nome: distrital
+        ? "Ministério Público do Distrito Federal e Territórios (MPDFT)"
+        : `Ministério Público do Estado de ${e.nome}`,
+      oQueAtende: `Fiscaliza a lei e pode investigar irregularidade ${
+        distrital ? "no Distrito Federal" : `em ${e.nome}`
+      } — patrimônio público, meio ambiente, consumidor, criança e adolescente, direitos humanos. Qualquer pessoa pode denunciar.`,
+      necessidades: ["denunciar", "consumidor", "direitos_humanos"],
+      abrangencia: "estadual",
+      uf,
+      natureza: "oficial",
+      site: e.mpSite,
+      gratuito: true,
+      verificadoEm: "2026-10-02",
+      nota: "A denúncia concreta vai para a Promotoria da comarca. A Ouvidoria do órgão recebe e encaminha — o endereço dela está no site oficial.",
+    },
+  ];
+});
+
+/**
+ * Itens estaduais de justiça de uma UF. Retorna vazio quando não há UF (o
+ * seletor ainda não perguntou) ou quando é MG (coberta pelo acervo próprio).
+ */
+export function justicaDaUf(uf: string | null | undefined): ItemPainel[] {
+  if (!uf) return [];
+  const alvo = uf.toUpperCase();
+  return JUSTICA_ESTADUAL.filter((i) => i.uf === alvo);
+}
 
 /** Referências sem confirmação de link oficial — nunca misturadas ao restante. */
 export interface NaoVerificado {
@@ -668,6 +843,7 @@ export const NAO_VERIFICADO: NaoVerificado[] = [
   { titulo: "Comissão de Direitos Humanos da OAB-MG (seccional)", nota: "MUDANÇA em 2026-08-17: o bloqueio 403 sumiu — `www.oabmg.org.br/institucional/comissoes` carrega a listagem (comissões de Assuntos Penitenciários, Direito Marítimo, Educação Digital, Enfrentamento ao Trabalho Escravo, Defesa da Cidadania e dos Interesses Coletivos etc.). A Comissão de Direitos Humanos NÃO aparece na primeira página da listagem e a página individual (`comissao?id=300`) carrega o conteúdo via JavaScript — o GET direto devolve só o esqueleto. Paginação da listagem via AJAX (`listagemComissoes?_page=N`) não reproduzível por automação simples (retorna vazio). Sede confirmada segue: Rua Tenente Brito Melo, 210, Barro Preto, BH, (31) 2102-5800." },
   { titulo: "Comissões de Direitos Humanos das câmaras municipais", nota: "Betim tem uma comissão real e nomeada — \"Comissão de Direitos Humanos, Promoção da Igualdade Racial e das Minorias\" (Kenin do G10 na presidência, mandato 2025/2026), citada por reportagem de abril/2026 — mas sem telefone/e-mail direto encontrado, só o mandato via Câmara. Diamantina: sem evidência de comissão própria, só conselhos do Executivo (CMDCA, COMDIM). Não verificadas as demais câmaras do portal." },
   { titulo: "Delegacias especializadas fora de Belo Horizonte", nota: "Betim como amostra: a DEAM tem endereço/telefone confirmados numa fonte federal (gov.br/mdh/.../deam_mg_betim — Rua Pedro Neves, 44, Centro, Betim/MG, CEP 32500-000, tel. (31) 3539-2579 / 3539-3531), mas um agregador não-oficial diverge nos dois dados (outro endereço, outro telefone, outro e-mail). Como as duas fontes discordam e nenhuma foi cross-confirmada com o buscador oficial da PCMG, o item continua não promovido a item confirmado — mas fica registrado aqui como pista forte. As demais dezenas de municípios seguem sem checagem individual: use a busca oficial da PCMG (policiacivil.mg.gov.br/delegacia/exibir) e confirme por telefone antes de ir." },
+  { titulo: "Telefone e endereço das Defensorias e MPs estaduais (26 UFs)", nota: "PENDÊNCIA CONSCIENTE (2026-10-02, item 6): os itens `defensoria-<uf>` e `mp-<uf>` de `JUSTICA_ESTADUAL` têm só o site oficial — o link foi aberto ao vivo em 2026-10-02 e respondeu, mas telefone e endereço de cada unidade NÃO foram coletados. O portal prefere não mostrar contato a mostrar contato errado (AGENTS §5.2/§7). Quem quiser completar: abrir a página de unidades do site de cada órgão e registrar telefone/endereço com a data da conferência." },
 ];
 
 /**
@@ -724,7 +900,11 @@ const CIDADES_POR_ITEM: Record<string, string[]> = {
  * pelo que faz sentido mostrar para aquela cidade.
  */
 export function montarItensPainel(cidade: Cidade): ItemPainel[] {
-  const deMG = temFonte(cidade, "links_uteis_mg");
+  // A cidade é mineira? O teste é a UF, NÃO `temFonte(cidade, "links_uteis_mg")`:
+  // `temFonte` devolve `true` para cidade sem config nenhuma (ver
+  // `queries/municipios.ts`), então uma cidade de SP sem fontes ganhava os
+  // órgãos de MG — o erro de "estado errado" (item 6).
+  const deMG = cidade.uf === "MG";
   const itens: ItemPainel[] = [...itensLaiMunicipal(cidade), ...LAI_FEDERAL];
   if (deMG) itens.push(...LAI_ESTADUAL);
 
@@ -739,6 +919,11 @@ export function montarItensPainel(cidade: Cidade): ItemPainel[] {
     // Paulo apontaria para o órgão errado do estado errado.
     if (item.abrangencia === "federal" || deMG) itens.push(item);
   }
+
+  // Defensoria e MP do estado da cidade (item 6). Para MG não devolve nada:
+  // o estado já tem os itens próprios acima. Para a cidade não mineira das 6,
+  // é aqui que ela passa a ganhar a instituição do estado certo.
+  itens.push(...justicaDaUf(cidade.uf));
 
   return itens;
 }
@@ -757,13 +942,27 @@ export function montarItensPainel(cidade: Cidade): ItemPainel[] {
  * unidade que a pessoa ainda não localizou. Depois que ela escolhe a
  * cidade, é `montarItensPainel(cidade)` — a mesma função de sempre — quem
  * decide a lista inteira, municipal incluído.
+ *
+ * ═══ O PARÂMETRO `uf` (item 6) ═══
+ *
+ * Sem argumento, o comportamento é o de sempre (federal + MG + rede
+ * estadual/federal). Com uma UF, o seletor informa o estado da pessoa e a
+ * função troca o bloco estadual de MG pelo da UF: some a LAI estadual
+ * mineira e os órgãos estaduais de MG, entram a Defensoria e o MP daquela
+ * UF. Isso evita mandar quem mora em São Paulo para o MPMG.
  */
-export function itensSemCidade(): ItemPainel[] {
-  return [
-    ...LAI_FEDERAL,
-    ...LAI_ESTADUAL,
-    ...REDE_ITENS.filter((i) => i.abrangencia !== "municipal"),
-  ];
+export function itensSemCidade(uf?: string): ItemPainel[] {
+  const alvo = uf?.toUpperCase();
+  const incluiMg = alvo === undefined || alvo === "MG";
+  const itens: ItemPainel[] = [...LAI_FEDERAL];
+  if (incluiMg) itens.push(...LAI_ESTADUAL);
+  for (const item of REDE_ITENS) {
+    if (item.abrangencia === "municipal") continue;
+    if (item.abrangencia === "estadual" && !incluiMg) continue;
+    itens.push(item);
+  }
+  itens.push(...justicaDaUf(alvo));
+  return itens;
 }
 
 export { nomePortal };

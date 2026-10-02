@@ -2,9 +2,12 @@ import { describe, expect, test } from "vitest";
 import { comoIdMunicipio, type Cidade } from "@/lib/db/queries/municipios";
 import {
   montarItensPainel,
+  itensSemCidade,
+  justicaDaUf,
   LAI_ESTADUAL,
   LAI_FEDERAL,
   REDE_ITENS,
+  JUSTICA_ESTADUAL,
   NECESSIDADE_ORDEM,
 } from "./redeProtecao";
 
@@ -98,8 +101,53 @@ describe("montarItensPainel", () => {
   });
 });
 
+describe("justiça estadual por UF (item 6)", () => {
+  test("cada uma das 26 UFs fora de MG tem Defensoria e MP, com uf marcada", () => {
+    expect(JUSTICA_ESTADUAL).toHaveLength(52);
+    const ufs = new Set(JUSTICA_ESTADUAL.map((i) => i.uf));
+    expect(ufs.size).toBe(26);
+    expect(ufs.has("MG")).toBe(false);
+    for (const uf of ufs) {
+      const itens = justicaDaUf(uf);
+      expect(itens, `UF ${uf}`).toHaveLength(2);
+      expect(itens.every((i) => i.abrangencia === "estadual")).toBe(true);
+      expect(itens.every((i) => i.site?.startsWith("https://"))).toBe(true);
+    }
+  });
+
+  test("São Paulo recebe Defensoria e MP de SP, nunca os de MG", () => {
+    const c = cidade({ slug: "sp", nome: "São Paulo", uf: "SP" });
+    const itens = montarItensPainel(c);
+    expect(itens.some((i) => i.id === "defensoria-sp")).toBe(true);
+    expect(itens.some((i) => i.id === "mp-sp")).toBe(true);
+    expect(itens.some((i) => i.id === "rede-mpmg")).toBe(false);
+    expect(itens.some((i) => i.id === "rede-defensoria-mg")).toBe(false);
+  });
+
+  test("MG não duplica: justicaDaUf devolve vazio e o acervo próprio segue", () => {
+    expect(justicaDaUf("MG")).toHaveLength(0);
+    const c = cidade({ slug: "betim", nome: "Betim", uf: "MG" });
+    const itens = montarItensPainel(c);
+    expect(itens.some((i) => i.id === "rede-mpmg")).toBe(true);
+    expect(itens.some((i) => i.id === "defensoria-mg")).toBe(false);
+  });
+
+  test("itensSemCidade(uf) troca o bloco estadual; sem uf, segue o de sempre", () => {
+    const semUf = itensSemCidade();
+    expect(semUf.some((i) => i.id === "lai-mg-executivo")).toBe(true);
+    expect(semUf.some((i) => i.uf)).toBe(false);
+
+    const sp = itensSemCidade("SP");
+    expect(sp.some((i) => i.id === "lai-mg-executivo")).toBe(false);
+    expect(sp.some((i) => i.id === "rede-mpmg")).toBe(false);
+    expect(sp.some((i) => i.id === "defensoria-sp")).toBe(true);
+    expect(sp.some((i) => i.id === "mp-sp")).toBe(true);
+    expect(sp.some((i) => i.id === "lai-falabr")).toBe(true);
+  });
+});
+
 describe("integridade dos dados curados", () => {
-  const todos = [...LAI_ESTADUAL, ...LAI_FEDERAL, ...REDE_ITENS];
+  const todos = [...LAI_ESTADUAL, ...LAI_FEDERAL, ...REDE_ITENS, ...JUSTICA_ESTADUAL];
 
   test("todo item tem ao menos uma necessidade válida", () => {
     for (const it of todos) {

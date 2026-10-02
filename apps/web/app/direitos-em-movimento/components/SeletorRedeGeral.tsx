@@ -8,6 +8,7 @@ import {
   ABRANGENCIA_LABEL,
   NATUREZA_LABEL,
   NAO_VERIFICADO,
+  UFS_JUSTICA,
   montarItensPainel,
   itensSemCidade,
   type ItemPainel,
@@ -53,14 +54,20 @@ export default function SeletorRedeGeral({ cidades, necessidadeFixa }: Props) {
   const [necessidade, setNecessidade] = useState<Necessidade | "">(necessidadeFixa ?? "");
   const [cidadeSlug, setCidadeSlug] = useState<string>("");
   const [outraCidadeNome, setOutraCidadeNome] = useState<string>("");
+  // UF do estado — item 6: permite mostrar a Defensoria e o MP do estado da
+  // pessoa mesmo quando a cidade dela não está entre as cadastradas.
+  const [uf, setUf] = useState<string>("");
 
   const necessidadeAtual = necessidadeFixa ?? necessidade;
   const cidadeEscolhida = cidades.find((c) => c.slug === cidadeSlug) ?? null;
   const respondeuOutra = cidadeSlug === "__outra__";
 
   const itensBase = useMemo(
-    () => (cidadeEscolhida ? montarItensPainel(cidadeEscolhida) : itensSemCidade()),
-    [cidadeEscolhida]
+    () =>
+      cidadeEscolhida
+        ? montarItensPainel(cidadeEscolhida)
+        : itensSemCidade(uf || undefined),
+    [cidadeEscolhida, uf]
   );
 
   const itens = useMemo(
@@ -110,8 +117,9 @@ export default function SeletorRedeGeral({ cidades, necessidadeFixa }: Props) {
             </p>
             {!necessidadeFixa && (
               <p className="mt-1 text-sm text-text-soft">
-                Opcional — o estadual e o federal abaixo já servem sem essa resposta. Só
-                responda para ver o canal municipal da sua cidade.
+                Opcional — o federal abaixo já serve sem essa resposta. Escolha a cidade
+                para ver o canal municipal, ou só o estado para ver a Defensoria e o
+                Ministério Público de lá.
               </p>
             )}
             <div className="mt-3 flex flex-wrap gap-2">
@@ -148,6 +156,27 @@ export default function SeletorRedeGeral({ cidades, necessidadeFixa }: Props) {
                 Outra cidade
               </button>
             </div>
+
+            {!cidadeEscolhida && (
+              <div className="mt-3">
+                <label htmlFor="uf-justica" className="text-xs font-medium text-text-soft">
+                  Estado (UF) — mostra a Defensoria e o Ministério Público estaduais
+                </label>
+                <select
+                  id="uf-justica"
+                  value={uf}
+                  onChange={(e) => setUf(e.target.value)}
+                  className="mt-1 block w-full max-w-xs rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+                >
+                  <option value="">Selecione o estado…</option>
+                  {UFS_JUSTICA.map((u) => (
+                    <option key={u.sigla} value={u.sigla}>
+                      {u.nome} ({u.sigla})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             {respondeuOutra && (
               <div className="mt-3">
@@ -250,7 +279,9 @@ function CardItem({ item }: { item: ItemPainel }) {
           {TIPO_LABEL[item.tipo]}
         </Badge>
         <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
-          {ABRANGENCIA_LABEL[item.abrangencia]}
+          {item.abrangencia === "estadual" && item.uf
+            ? `Estadual (${item.uf})`
+            : ABRANGENCIA_LABEL[item.abrangencia]}
         </span>
         <span
           className="rounded-full px-2.5 py-1 text-xs font-medium"
