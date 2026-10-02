@@ -157,7 +157,7 @@ Lições, todas com código no repo:
 É a única operação capaz de apagar trabalho de outra sessão sem volta.
 Consequência: mensagem de commit torta publicada não tem conserto (ver §5.6).
 
-### 5.4. Worktree quando há briga, sessão nova quando o contexto envelhece
+### 5.4. Worktree quando há briga, sessão nova quando o contexto fica sujo
 
 **Anexar no dev server de outro checkout responde 200 com o código errado,
 sem avisar** — a pior forma de errar numa verificação. A regra é
@@ -173,11 +173,15 @@ separado: dois `next build` brigando no mesmo `.next`, dois dev servers,
 staging misturado (aconteceu 2× em 15/08). Sem briga, é imposto sem
 retorno.
 
-**Quando abrir sessão nova:**
+**Quando abrir sessão nova** — pelo SINTOMA, não pelo tamanho:
 
-- contexto longo demais — sessão antiga esquece decisões e repete erro;
+- **contexto sujo, não "longo":** a sessão repete decisão já resolvida,
+  carrega thread abandonada ou divergiu do combinado. Modelo de 1M de
+  contexto pode seguir, se o fio estiver coerente; o `/cp` carrega o
+  estado durável entre sessões. **Tamanho de janela não é o gatilho** — e a
+  regra não se amarra a modelo (256k, 1M, o que vier);
 - para acelerar — tarefas independentes correm lado a lado (global
-  AGENTS: agentes paralelos, uma sessão por tarefa, divisão por arquivo).
+  AGENTS: agentes paralelos, uma sessão por tarefa, divisão por arquivo);
 - qualquer ferramenta serve (OpenCode, Hermes, Picoclaw, Cutiazinho):
   uma tarefa por agente, arquivos de saída distintos, e o humano
   integra ao final. Alternar ferramenta conta como "sessão nova".
