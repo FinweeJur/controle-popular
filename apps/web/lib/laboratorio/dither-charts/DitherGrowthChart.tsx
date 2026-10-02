@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, useSpring, useTransform, useReducedMotion } from 'framer-motion';
-import { useCanvasSetup } from './use-canvas-setup';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
 import { smoothstep, clamp } from './dither-engine';
 
 export interface GrowthPoint {
@@ -54,7 +54,7 @@ export function DitherGrowthChart({
   theme = 'dark',
   compact = false,
 }: DitherGrowthChartProps) {
-  const { canvasRef, rect, isVisible, reducedMotion } = useCanvasSetup();
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [scrubIndex, setScrubIndex] = useState<number | null>(null);
@@ -67,7 +67,6 @@ export function DitherGrowthChart({
   const maxVal = useMemo(() => Math.max(...values, 1), [values]);
 
   const timeRef = useRef(0);
-  const requestRef = useRef<number>(0);
   const pointerPosRef = useRef({ x: -100, y: -100 });
   const pointerActiveRef = useRef(false);
 
@@ -99,25 +98,17 @@ export function DitherGrowthChart({
     morphStartTimeRef.current = performance.now();
   }, [values, maxVal]);
 
-  useEffect(() => {
-    const draw = () => {
-      if (!isVisible.current) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
+  useDitherLoop(
+    (frameScale) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const { width: w, height: h } = rect.current;
-      if (w === 0 || h === 0) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
+      if (w === 0 || h === 0) return;
 
-      timeRef.current += reducedMotion.current ? 0 : 0.006;
+      timeRef.current += reducedMotion.current ? 0 : 0.006 * frameScale;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const cell = Math.max(3, Math.round(w / 180));
@@ -197,14 +188,10 @@ export function DitherGrowthChart({
       }
 
       ctx.restore();
-      requestRef.current = requestAnimationFrame(draw);
-    };
-
-    requestRef.current = requestAnimationFrame(draw);
-    return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-    };
-  }, [theme, reducedMotion, values, maxVal]);
+    },
+    [theme, values, maxVal],
+    { canvasRef },
+  );
 
   const handlePointer = (e: React.PointerEvent) => {
     const wrapper = wrapperRef.current;

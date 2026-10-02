@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
+import { hash } from './dither-engine';
 
 export interface HeatmapCell {
   row: string;
@@ -34,55 +36,51 @@ export function DitherHeatmapGrid({
   compact = false,
 }: DitherHeatmapGridProps) {
   const [hoveredCell, setHoveredCell] = useState<{ row: number; col: number } | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
   const timeRef = useRef(0);
-  const requestRef = useRef<number>(0);
-  const reducedMotionRef = useRef(false);
+  // O hover vive num ref: o laço de desenho é criado uma vez e lê daqui, para
+  // o movimento do mouse não cancelar/recriar o rAF.
+  const hoveredRef = useRef<{ row: number; col: number } | null>(null);
 
-  useEffect(() => {
-    reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }, []);
+  // Maior valor da grade: calcular dentro do quadro alocava `data.flat()` 60x
+  // por segundo sem necessidade.
+  const maxVal = useMemo(() => Math.max(...data.flat(), 1), [data]);
 
-  useEffect(() => {
-    const draw = () => {
-      timeRef.current += reducedMotionRef.current ? 0 : 0.006;
+  useDitherLoop(
+    (frameScale) => {
+      const { width: w, height: h } = rect.current;
+      if (w === 0 || h === 0) return;
+      timeRef.current += reducedMotion.current ? 0 : 0.006 * frameScale;
+
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = canvas.getBoundingClientRect();
-      if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-      }
-
       ctx.save();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.scale(dpr, dpr);
 
-      const w = rect.width;
-      const h = rect.height;
       const numCols = cols.length || 1;
       const numRows = rows.length || 1;
       const cellW = w / numCols;
       const cellH = h / numRows;
       const dotCell = Math.max(3, Math.round(w / 160));
 
-      const maxVal = Math.max(...data.flat(), 1);
-
       data.forEach((row, d) => {
         row.forEach((val, c) => {
           const x0 = c * cellW;
           const y0 = d * cellH;
-          const isHovered = hoveredCell?.row === d && hoveredCell?.col === c;
+          const isHovered = hoveredRef.current?.row === d && hoveredRef.current?.col === c;
           const intensity = val / maxVal;
 
           for (let bx = Math.floor(x0); bx < Math.ceil(x0 + cellW - 2); bx += dotCell) {
             for (let by = Math.floor(y0); by < Math.ceil(y0 + cellH - 2); by += dotCell) {
               const shimmer = Math.sin(bx * 0.1 + timeRef.current * 2) * 0.1;
-              if (Math.random() < intensity + shimmer || isHovered) {
+              // `hash` (determinístico) no lugar de `Math.random`: o padrão de
+              // pontos para de flutuar entre quadros.
+              if (hash(bx, by) < intensity + shimmer || isHovered) {
                 ctx.fillStyle = isHovered
                   ? 'var(--cp-accent, #0e8f6e)'
                   : `rgba(255, 255, 255, ${Math.min(1, Math.max(0.2, intensity))})`;
@@ -95,12 +93,10 @@ export function DitherHeatmapGrid({
       });
 
       ctx.restore();
-      requestRef.current = requestAnimationFrame(draw);
-    };
-
-    requestRef.current = requestAnimationFrame(draw);
-    return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
-  }, [data, rows, cols, hoveredCell]);
+    },
+    [data, rows, cols],
+    { canvasRef },
+  );
 
   if (compact) {
     return (
@@ -134,9 +130,13 @@ export function DitherHeatmapGrid({
             const numRows = rows.length || 1;
             const cIdx = Math.min(Math.max(0, Math.floor((x / rect.width) * numCols)), numCols - 1);
             const rIdx = Math.min(Math.max(0, Math.floor((y / rect.height) * numRows)), numRows - 1);
+            hoveredRef.current = { row: rIdx, col: cIdx };
             setHoveredCell({ row: rIdx, col: cIdx });
           }}
-          onPointerLeave={() => setHoveredCell(null)}
+          onPointerLeave={() => {
+            hoveredRef.current = null;
+            setHoveredCell(null);
+          }}
         >
           <canvas ref={canvasRef} className="w-full h-full pointer-events-none" />
 

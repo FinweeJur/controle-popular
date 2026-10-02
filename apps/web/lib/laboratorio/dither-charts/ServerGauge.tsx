@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, useSpring, useTransform, useReducedMotion } from 'framer-motion';
-import { useCanvasSetup } from './use-canvas-setup';
+import { useSpring } from 'framer-motion';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
 import { smoothstep, hash } from './dither-engine';
 
 /**
@@ -28,7 +28,8 @@ export function ServerGauge({
   compact = false,
 }: ServerGaugeProps) {
   const [metricIndex, setMetricIndex] = useState(0);
-  const { canvasRef, rect, isVisible, reducedMotion } = useCanvasSetup();
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
+  const timeRef = useRef(0);
   const metric = metrics[metricIndex] || metrics[0];
 
   const valSpring = useSpring(metric.value, { stiffness: 120, damping: 20 });
@@ -37,21 +38,18 @@ export function ServerGauge({
     valSpring.set(metric.value);
   }, [metric.value, valSpring]);
 
-  useEffect(() => {
-    let req: number;
-    let time = 0;
-    const draw = () => {
-      if (!isVisible.current) { req = requestAnimationFrame(draw); return; }
-
+  useDitherLoop(
+    (frameScale) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const { width: w, height: h } = rect.current;
-      if (w === 0 || h === 0) { req = requestAnimationFrame(draw); return; }
+      if (w === 0 || h === 0) return;
 
-      time += reducedMotion.current ? 0 : 0.01;
+      timeRef.current += reducedMotion.current ? 0 : 0.01 * frameScale;
+      const time = timeRef.current;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       ctx.save();
@@ -115,11 +113,10 @@ export function ServerGauge({
       }
 
       ctx.restore();
-      req = requestAnimationFrame(draw);
-    };
-    req = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(req);
-  }, [metric, valSpring, reducedMotion]);
+    },
+    [metric],
+    { canvasRef },
+  );
 
   if (compact) {
     return (

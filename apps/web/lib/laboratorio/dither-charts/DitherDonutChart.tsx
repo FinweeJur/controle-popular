@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, useSpring, useTransform, useReducedMotion } from 'framer-motion';
-import { useCanvasSetup } from './use-canvas-setup';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
 import { smoothstep, hash, hexToRgba, drawRoundedWedge } from './dither-engine';
 
 export interface DonutSlice {
@@ -44,13 +44,12 @@ export function DitherDonutChart({
   compact = false,
 }: DitherDonutChartProps) {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const { canvasRef, rect, isVisible, reducedMotion } = useCanvasSetup();
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
 
   const total = useMemo(() => slices.reduce((a, s) => a + s.value, 0), [slices]);
   const shares = useMemo(() => slices.map(s => s.value / (total || 1)), [slices, total]);
 
   const timeRef = useRef(0);
-  const requestRef = useRef<number>(0);
   const morphStartTimeRef = useRef(0);
   const fromSharesRef = useRef<number[]>([]);
   const targetSharesRef = useRef<number[]>([]);
@@ -71,25 +70,17 @@ export function DitherDonutChart({
     }
   }, [shares]);
 
-  useEffect(() => {
-    const draw = () => {
-      if (!isVisible.current) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
+  useDitherLoop(
+    (frameScale) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const { width: logW, height: logH } = rect.current;
-      if (logW === 0 || logH === 0) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
+      if (logW === 0 || logH === 0) return;
 
-      timeRef.current += reducedMotion.current ? 0 : 0.004;
+      timeRef.current += reducedMotion.current ? 0 : 0.004 * frameScale;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const logicalSize = 200;
@@ -124,7 +115,7 @@ export function DitherDonutChart({
         if (share === 0) continue;
 
         const sweep = share * Math.PI * 2;
-        let aStart = startAngle + gap / 2;
+        const aStart = startAngle + gap / 2;
         let aEnd = startAngle + sweep - gap / 2;
         if (aEnd < aStart) aEnd = aStart;
 
@@ -160,7 +151,7 @@ export function DitherDonutChart({
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 55 - cell || dist > 86 + cell) continue;
 
-            let a = Math.atan2(dy, dx);
+            const a = Math.atan2(dy, dx);
             let normalizedA = a - aStart;
             while (normalizedA < 0) normalizedA += Math.PI * 2;
             while (normalizedA >= Math.PI * 2) normalizedA -= Math.PI * 2;
@@ -189,14 +180,10 @@ export function DitherDonutChart({
       }
 
       ctx.restore();
-      requestRef.current = requestAnimationFrame(draw);
-    };
-
-    requestRef.current = requestAnimationFrame(draw);
-    return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-    };
-  }, [reducedMotion, slices]);
+    },
+    [slices],
+    { canvasRef },
+  );
 
   if (compact) {
     return (

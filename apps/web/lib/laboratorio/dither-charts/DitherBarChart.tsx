@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, AnimatePresence, useSpring, useTransform, useReducedMotion } from 'framer-motion';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
+import { hash } from './dither-engine';
 
 /**
  * Gráfico de barras dither (pontilhado) em `<canvas>`, com valor animado por
@@ -39,10 +41,11 @@ export function DitherBarChart({
   compact = false,
 }: DitherBarChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
   const timeRef = useRef(0);
-  const requestRef = useRef<number>(0);
-  const reducedMotionRef = useRef(false);
+  // O hover vive num ref porque o laço de desenho é criado uma vez; lê-lo do
+  // estado faria cada movimento do mouse recriar o rAF.
+  const hoveredRef = useRef<number | null>(null);
 
   const { total, maxVal } = useMemo(() => {
     const tot = values.reduce((a, b) => a + b, 0);
@@ -50,31 +53,22 @@ export function DitherBarChart({
     return { total: tot, maxVal: mx };
   }, [values]);
 
-  useEffect(() => {
-    reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }, []);
+  useDitherLoop(
+    (frameScale) => {
+      const { width: w, height: h } = rect.current;
+      if (w === 0 || h === 0) return;
+      timeRef.current += reducedMotion.current ? 0 : 0.006 * frameScale;
 
-  useEffect(() => {
-    const draw = () => {
-      timeRef.current += reducedMotionRef.current ? 0 : 0.006;
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = canvas.getBoundingClientRect();
-      if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-      }
-
       ctx.save();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.scale(dpr, dpr);
 
-      const w = rect.width;
-      const h = rect.height;
       const colW = w / values.length;
       const barW = Math.min(colW * 0.55, 36);
       const cell = Math.max(3, Math.round(w / 160));
@@ -84,7 +78,7 @@ export function DitherBarChart({
         const x0 = cx - barW / 2;
         const barH = maxVal > 0 ? (val / maxVal) * (h * 0.82) : 0;
         const yTop = h - barH;
-        const isHovered = hoveredIdx === i;
+        const isHovered = hoveredRef.current === i;
 
         for (let bx = Math.floor(x0); bx < Math.ceil(x0 + barW); bx += cell) {
           for (let by = Math.floor(yTop); by < h; by += cell) {
@@ -92,7 +86,9 @@ export function DitherBarChart({
             const wave = Math.sin(bx * 0.08 + timeRef.current * 2) * 0.1;
             const density = 0.4 + 0.6 * (1 - distToTop) + wave;
 
-            if (Math.random() < density || isHovered) {
+            // `hash` no lugar de `Math.random`: o padrão de pontos fica estável
+            // entre quadros — some a flutuação que refazia o desenho todo frame.
+            if (hash(bx, by) < density || isHovered) {
               ctx.fillStyle = isHovered ? 'var(--cp-accent, #0e8f6e)' : 'rgba(255, 255, 255, 0.75)';
               const sz = cell * (isHovered ? 0.95 : 0.75);
               const offset = (cell - sz) / 2;
@@ -103,12 +99,10 @@ export function DitherBarChart({
       });
 
       ctx.restore();
-      requestRef.current = requestAnimationFrame(draw);
-    };
-
-    requestRef.current = requestAnimationFrame(draw);
-    return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
-  }, [values, maxVal, hoveredIdx]);
+    },
+    [values, maxVal],
+    { canvasRef },
+  );
 
   if (compact) {
     return (
@@ -147,9 +141,13 @@ export function DitherBarChart({
             const x = e.clientX - rect.left;
             const colW = rect.width / values.length;
             const idx = Math.min(Math.max(0, Math.floor(x / colW)), values.length - 1);
+            hoveredRef.current = idx;
             setHoveredIdx(idx);
           }}
-          onPointerLeave={() => setHoveredIdx(null)}
+          onPointerLeave={() => {
+            hoveredRef.current = null;
+            setHoveredIdx(null);
+          }}
         >
           <canvas ref={canvasRef} className="w-full h-full pointer-events-none" />
 

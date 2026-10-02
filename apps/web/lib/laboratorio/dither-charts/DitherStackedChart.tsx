@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, useSpring, useTransform, useReducedMotion } from 'framer-motion';
-import { useCanvasSetup } from './use-canvas-setup';
-import { smoothstep, hash, drawRoundedRect, getAxisMax, formatCurrency } from './dither-engine';
+import { useCanvasSetup, useDitherLoop } from './use-canvas-setup';
+import { hash, drawRoundedRect, getAxisMax, formatCurrency } from './dither-engine';
 
 export interface StackedBand {
   name: string;
@@ -64,7 +64,7 @@ export function DitherStackedChart({
 }: DitherStackedChartProps) {
   const [hoverBranch, setHoverBranch] = useState<number | null>(null);
   const [hoverBand, setHoverBand] = useState<number | null>(null);
-  const { canvasRef, rect, isVisible, reducedMotion } = useCanvasSetup();
+  const { canvasRef, rect, reducedMotion } = useCanvasSetup();
 
   const branchWeights = useMemo(() => {
     const w = branches.map((b) => b.weights ?? 1 / branches.length);
@@ -73,28 +73,25 @@ export function DitherStackedChart({
   }, [branches]);
 
   const { data, totalValue, axisMax } = useMemo(() => {
-    let tot = 0;
     const branchData = branches.map((b, bIdx) => {
       const branchBase = baseTotal * branchWeights[bIdx];
-      let branchTotal = 0;
       const bandData = bands.map((band) => {
         const wobble = 0.9 + 0.14 * Math.sin(bIdx * 3.1 + bands.indexOf(band) * 1.7);
         const val = Math.round(branchBase * multiplier * band.share * wobble);
-        branchTotal += Math.max(6, val);
         return { value: Math.max(6, val) };
       });
-      tot += branchTotal;
+      const branchTotal = bandData.reduce((s, bd) => s + bd.value, 0);
       return { total: branchTotal, bands: bandData };
     });
 
+    const totalValue = branchData.reduce((s, b) => s + b.total, 0);
     const maxBranchTotal = Math.max(...branchData.map((b) => b.total));
     const axMax = getAxisMax(maxBranchTotal);
 
-    return { data: branchData, totalValue: tot, axisMax: axMax };
+    return { data: branchData, totalValue, axisMax: axMax };
   }, [branches, bands, baseTotal, multiplier, branchWeights]);
 
   const timeRef = useRef(0);
-  const requestRef = useRef<number>(0);
   const drawnRef = useRef<Map<string, number>>(new Map());
   const morphStartTimeRef = useRef(0);
   const fromStateRef = useRef<Map<string, number>>(new Map());
@@ -107,25 +104,17 @@ export function DitherStackedChart({
     morphStartTimeRef.current = performance.now();
   }, [data]);
 
-  useEffect(() => {
-    const draw = () => {
-      if (!isVisible.current) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
+  useDitherLoop(
+    (frameScale) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const { width: w, height: h } = rect.current;
-      if (w === 0 || h === 0) {
-        requestRef.current = requestAnimationFrame(draw);
-        return;
-      }
+      if (w === 0 || h === 0) return;
 
-      timeRef.current += reducedMotion.current ? 0 : 0.004;
+      timeRef.current += reducedMotion.current ? 0 : 0.004 * frameScale;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       ctx.save();
@@ -211,12 +200,10 @@ export function DitherStackedChart({
       }
 
       ctx.restore();
-      requestRef.current = requestAnimationFrame(draw);
-    };
-
-    requestRef.current = requestAnimationFrame(draw);
-    return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
-  }, [data, axisMax, branches, bands]);
+    },
+    [data, axisMax, branches, bands],
+    { canvasRef },
+  );
 
   if (compact) {
     return (
