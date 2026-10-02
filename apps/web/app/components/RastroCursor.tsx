@@ -111,8 +111,8 @@ const SUAVE_CABECA = 0.38;
 const SUAVE_CAUDA = 0.34;
 /** Quantos pixels a cabeça anda para a corrente rolar UMA letra. */
 const PX_POR_LETRA = 26;
-/** Sem mover por este tempo, a corrente some. */
-const OCIOSO_MS = 260;
+/** Sem mover por este tempo, a corrente começa a sumir. */
+const OCIOSO_MS = 700; // 0,7 s (pedido do dono, 02/10/2026)
 
 export default function RastroCursor() {
   const camadaRef = useRef<HTMLDivElement | null>(null);
@@ -214,7 +214,8 @@ export default function RastroCursor() {
           pointer-events: none;
           overflow: hidden;
           opacity: 0;
-          transition: opacity 0.25s ease;
+          /* Desaparecimento em 0,7 s (pedido do dono, 02/10/2026; era 0,25 s). */
+          transition: opacity 0.7s ease;
           contain: strict;
         }
         .cp-rastro-elo {
