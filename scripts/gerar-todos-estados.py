@@ -765,6 +765,12 @@ for sigla, slug, nome, gestor, partido, orgao_principal, meta_texto in OUTROS_ES
 
 
 def main():
+    raise SystemExit(
+        "DESATIVADO (02/10/2026): este gerador criava propostas FABRICADAS para "
+        "15 UFs (PDF, hash, URLs e valores inventados, com trecho repetido). "
+        "As metas devem vir da extracao do PDF oficial do TSE. Nao use ate "
+        "trocar o template por coleta real."
+    )
     print(f"[*] Gerando arquivos JSON para {len(DADOS_ESTADOS)} estados...")
     for est in DADOS_ESTADOS:
         arquivo = DESTINO_DIR / f"governo-{est['slug']}.json"

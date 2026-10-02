@@ -139,6 +139,11 @@ export default async function DetalheGovernoPage({
         </header>
 
         {/* ═══ PAINEL INTERATIVO (CARDS, GRÁFICO, FILTROS, CSV) ═══ */}
+        {mandato.coleta_pendente && (
+          <p className="mb-4 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
+            {mandato.coleta_pendente}
+          </p>
+        )}
         <PainelGestaoClient mandato={mandato} />
       </main>
 

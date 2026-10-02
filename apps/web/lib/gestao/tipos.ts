@@ -88,6 +88,12 @@ export interface MandatoGestao {
   ultima_medicao: string;
   propostas: Proposta[];
   iniciativas_fora_do_plano: IniciativaForaDoPlano[];
+  /**
+   * Explica por que a lista de propostas está vazia quando a extração do plano
+   * do TSE ainda não foi feita. Publicar meta sem a fonte seria dano; a lacuna
+   * é declarada (regra do portal), não escondida.
+   */
+  coleta_pendente?: string;
 }
 
 export interface ResumoStatusGestao {
