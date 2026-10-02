@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import Link from "@/lib/ambiental/link";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import {
@@ -11,14 +12,19 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 type Params = Promise<{ idIbge: string }>;
 
 /**
- * Uma página por município com item de pauta do COPAM — algumas centenas,
- * mesma escala das outras rotas com `generateStaticParams` deste app (ver
- * `parlamentares/[id]`). Nome do município sai do PRIMEIRO item (todos os
- * itens do mesmo `idIbge` carregam o mesmo nome, resolvido contra
- * `ref_municipios_mg` — ver `etl.apis.copam_reunioes._municipio_estruturado`
- * e `_municipios_do_texto`).
+ * Uma página por município com item de pauta do COPAM. Nome do município sai
+ * do PRIMEIRO item (todos os itens do mesmo `idIbge` carregam o mesmo nome,
+ * resolvido contra `ref_municipios_mg` — ver
+ * `etl.apis.copam_reunioes._municipio_estruturado` e `_municipios_do_texto`).
+ *
+ * ~500 municípios: pré-render total é uma leitura no banco por página no
+ * build. Com runtime atrás (Guara/Cloudflare), devolver vazio deixa o Next
+ * renderizar sob demanda COM cache; a lista só é enumerada no alvo
+ * `output: 'export'`.
  */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   return (await listarMunicipiosComItensCopam()).map((m) => ({ idIbge: m.idIbge }));
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { notFound } from "next/navigation";
 import PerfilAgregadoView from "@/app/congresso/components/PerfilAgregado";
 import PainelPresenca from "@/app/congresso/components/PainelPresenca";
@@ -9,12 +10,15 @@ import { obterParlamentar, listarIdsDeParlamentares } from "@/lib/congresso/parl
 type Params = Promise<{ id: string }>;
 
 /**
- * ~512 parlamentares ativos — mesma ordem de grandeza das 354 bancadas, que
- * já pré-renderam por inteiro (ver o comentário em `queries/congresso.ts`).
- * Pré-render total aqui, sem o `exportandoEstatico`/`dynamicParams` que
- * `proposicoes/[id]` usa para 5.500+ itens.
+ * ~590 parlamentares — pré-render total é uma leitura no banco por página
+ * durante o build. Segue o padrão de `proposicoes/[id]`: com runtime atrás
+ * (Guara/Cloudflare), devolver vazio deixa o Next renderizar sob demanda COM
+ * cache. A lista só é enumerada no alvo `output: 'export'`, onde não existe
+ * sob demanda.
  */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   return (await listarIdsDeParlamentares()).map((id) => ({ id }));
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { exportandoEstatico } from '@/lib/alvo-de-build';
 import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
@@ -37,6 +38,11 @@ interface Props {
 }
 
 export async function generateStaticParams() {
+  // Pré-render total é uma leitura por cidade no build. Com runtime atrás
+  // (Guara/Cloudflare), devolver vazio deixa o Next renderizar sob demanda
+  // COM cache; a lista só é enumerada no alvo `output: 'export'`.
+  if (!exportandoEstatico) return [];
+
   const cidades = listarCidadesEstrategicas();
   return cidades.map((c) => ({
     slug: c.slug ?? c.id_municipio,

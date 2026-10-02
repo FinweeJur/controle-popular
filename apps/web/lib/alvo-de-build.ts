@@ -10,6 +10,11 @@
  * - **GitHub Pages** (`output: 'export'`) — HTML puro. Não existe "sob
  *   demanda": o que não for enumerado no build simplesmente não existe.
  *
+ * O alvo **Guara Cloud** (`output: 'standalone'`, `BUILD_TARGET=standalone`)
+ * roda um servidor Node inteiro: `exportandoEstatico` é falso nele e vale a
+ * mesma regra do Cloudflare — lista vazia + `dynamicParams` = render sob
+ * demanda com cache.
+ *
  * `PAGES_BASE_PATH` é o output `base_path` de `actions/configure-pages@v5`,
  * e é o mesmo sinal que o `next.config.ts` usa. **String vazia é um valor
  * legítimo** (é o que o action devolve quando há domínio próprio), então o

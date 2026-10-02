@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { notFound } from "next/navigation";
 import PerfilAgregadoView from "@/app/congresso/components/PerfilAgregado";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
@@ -7,8 +8,15 @@ import { obterBancada, ROTULO_TIPO, listarBancadas } from "@/lib/congresso/banca
 
 type Params = Promise<{ id: string }>;
 
-/** ~64 bancadas — pequeno o bastante pra pré-render total no build. */
+/**
+ * ~354 bancadas — pré-render total é uma leitura no banco por página no
+ * build. Com runtime atrás (Guara/Cloudflare), devolver vazio deixa o Next
+ * renderizar sob demanda COM cache; a lista só é enumerada no alvo
+ * `output: 'export'`.
+ */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   const bancadas = await listarBancadas();
   return (bancadas ?? []).map((b) => ({ id: b.id }));
 }

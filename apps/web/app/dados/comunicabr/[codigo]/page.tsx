@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 
 import { formatNumberBR } from "@/lib/betim/format";
 import type { CategoriaComunicaBR, ItemComunicaBR, SubIndicadorComunicaBR } from "@/lib/comunicabr/indicadores";
@@ -49,6 +50,13 @@ import {
 type Params = Promise<{ codigo: string }>;
 
 export async function generateStaticParams() {
+  // Pré-render total seria uma leitura no banco por município durante o build
+  // (~850). Com runtime atrás (Guara/Cloudflare), devolver vazio deixa o Next
+  // renderizar sob demanda COM cache: a 1ª visita grava, as seguintes servem
+  // pronto. Só o alvo `output: 'export'` precisa da lista inteira — lá não
+  // existe sob demanda e o que faltar vira 404 permanente.
+  if (!exportandoEstatico) return [];
+
   return (await resumoDosMunicipios()).map((m) => ({ codigo: m.codigo }));
 }
 

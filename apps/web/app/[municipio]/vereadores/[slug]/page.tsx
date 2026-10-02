@@ -4,6 +4,7 @@ import ProposicoesDoVereador, {
   ProposicoesDoVereadorCompletas,
 } from "./ProposicoesDoVereador";
 import { notFound } from "next/navigation";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AtuacaoVereador from "@/app/[municipio]/components/charts/AtuacaoVereador";
 import OrdinalLegend from "@/app/[municipio]/components/charts/OrdinalLegend";
@@ -40,9 +41,10 @@ interface VereadorPageProps {
  * `[municipio]`, então é o par (cidade, vereador) que identifica a rota.
  *
  * Sem isto o `output: 'export'` recusa a página inteira ("missing
- * generateStaticParams() so it cannot be used with output: export"). No alvo
- * Cloudflare a página já era pré-renderizada, então lá o efeito é só
- * antecipar o trabalho para o build em vez de deixá-lo sob demanda.
+ * generateStaticParams() so it cannot be used with output: export"). Nos
+ * alvos com runtime (Guara/Cloudflare) a lista sai vazia de propósito: a rota
+ * rende sob demanda COM cache, em vez de pré-renderizar centenas de páginas
+ * (uma leitura no banco por página) durante o build.
  *
  * Consulta `listarCidades()` de novo em vez de reaproveitar o
  * `generateStaticParams` do layout porque os dois rodam independentes; são
@@ -64,6 +66,8 @@ function fonteDaCamara(cidade: Cidade) {
 }
 
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   const cidades = await listarCidades();
   const pares: { municipio: string; slug: string }[] = [];
   for (const cidade of cidades) {

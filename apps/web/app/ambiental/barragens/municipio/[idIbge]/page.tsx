@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import Link from "@/lib/ambiental/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { comoIdMunicipio } from "@/lib/db/queries/municipios";
@@ -22,8 +23,15 @@ type Params = Promise<{ idIbge: string }>;
  * (`app/[municipio]/meio-ambiente/barragens`, `lib/betim/barragens.ts`) —
  * reaproveitada aqui em vez de duplicar o algoritmo de junção por nome, que
  * é o núcleo desta seção.
+ *
+ * ~440 municípios: pré-render total é uma leitura no banco por página no
+ * build. Com runtime atrás (Guara/Cloudflare), devolver vazio deixa o Next
+ * renderizar sob demanda COM cache; a lista só é enumerada no alvo
+ * `output: 'export'`.
  */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   return (await listarMunicipiosComBarragens()).map((m) => ({ idIbge: m.idIbge }));
 }
 

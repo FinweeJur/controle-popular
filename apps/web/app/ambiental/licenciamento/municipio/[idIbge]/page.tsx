@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "@/lib/ambiental/link";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   listarLicencasPorMunicipio,
@@ -20,6 +21,12 @@ type Params = Promise<{ idIbge: string }>;
  * usa).
  */
 export async function generateStaticParams() {
+  // ~830 municípios com licença: pré-render total é uma leitura no banco por
+  // página durante o build. Com runtime atrás (Guara/Cloudflare), devolver
+  // vazio deixa o Next renderizar sob demanda COM cache. Só o alvo
+  // `output: 'export'` precisa da lista inteira.
+  if (!exportandoEstatico) return [];
+
   return (await listarMunicipiosComLicenciamento()).map((m) => ({ idIbge: m.idIbge }));
 }
 

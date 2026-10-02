@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import Link from "@/lib/ambiental/link";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { idsFonteReunioesCopam, obterReuniaoCopamPorIdFonte } from "@/lib/db/queries/copam";
@@ -8,11 +9,14 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 type Params = Promise<{ idFonte: string }>;
 
 /**
- * 454 reuniões coletadas — mesma ordem de grandeza de bancadas/parlamentares
- * do Congresso, que já pré-renderam por inteiro (ver `parlamentares/[id]`).
- * Pré-render total, sem `dynamicParams`.
+ * ~450 reuniões coletadas — pré-render total é uma leitura no banco por
+ * página no build. Com runtime atrás (Guara/Cloudflare), devolver vazio deixa
+ * o Next renderizar sob demanda COM cache; a lista só é enumerada no alvo
+ * `output: 'export'`.
  */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
+
   return (await idsFonteReunioesCopam()).map((idFonte) => ({ idFonte: String(idFonte) }));
 }
 
