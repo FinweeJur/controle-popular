@@ -6,6 +6,10 @@
  * sessão, mostra o código para o companheiro de desktop entrar, ouve os turnos
  * pelo SSE e abre o link da página que o bichinho apontou.
  *
+ * OPCIONAL: a galinha web (`CompanheiroFlutuante.tsx`) roda sozinha e não
+ * depende deste painel. Ele só existe para quem tem o app de desktop — fica
+ * atrás do botão "conectar app" e nunca exige configuração.
+ *
  * PAPEL NO PROJETO
  * ----------------
  * É a ponta do site no fluxo pareado: o widget cria a sessão (POST
@@ -121,9 +125,9 @@ export function SessaoCompanheiro() {
         type="button"
         onClick={() => (aberto ? setAberto(false) : void abrirSessao())}
         className="rounded-full p-1 text-text-soft hover:bg-surface-2"
-        aria-label="Conectar o companheiro Seu Nono (bichinho)"
+        aria-label="Conectar o app do companheiro (opcional)"
         aria-expanded={aberto}
-        title="Conectar companheiro"
+        title="Conectar app (opcional)"
       >
         <Cable size={18} />
       </button>
@@ -135,7 +139,7 @@ export function SessaoCompanheiro() {
           className="absolute right-0 top-9 z-10 w-64 rounded-xl border border-border bg-surface p-3 text-left shadow-lg"
         >
           <div className="flex items-start justify-between gap-2">
-            <p className="text-xs font-semibold text-text">Conectar o companheiro</p>
+            <p className="text-xs font-semibold text-text">Conectar app do companheiro (opcional)</p>
             <button
               type="button"
               onClick={() => setAberto(false)}
@@ -151,7 +155,7 @@ export function SessaoCompanheiro() {
           {sessao && (
             <>
               <p className="mt-1 text-[.72rem] leading-relaxed text-text-soft">
-                No bichinho, escolha <strong>Entrar numa sessão</strong> e digite:
+                No app Seu Nonô (desktop), escolha <strong>Entrar numa sessão</strong> e digite:
               </p>
               <div className="mt-2 flex items-center justify-between gap-2 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5">
                 <code className="font-tabular text-base font-bold tracking-widest text-text">

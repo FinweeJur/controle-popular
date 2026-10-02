@@ -2,147 +2,118 @@
 
 /**
  * @file CompanheiroFlutuante.tsx
- * @description O companheiro Seu Nonô no site: um bichinho-preguiça flutuante,
- * arrastável, que abre a sessão pareada com o companheiro de desktop.
+ * @description O companheiro Seu Nonô no site: uma galinha flutuante e
+ * arrastável que abre o assistente cívico. Roda SOZINHA — sem código, sem app
+ * e sem pareamento (decisão do dono, 02/10/2026, PLANO-CORRECOES-POS-DEPLOY).
  *
  * PAPEL NO PROJETO
  * ----------------
  * É a cara visível do companheiro no portal. A rádio (`PlayerRadio.tsx`) e o
- * widget do Seu Nonô (`SeuNono.tsx`) já vivem no canto inferior esquerdo e são
- * arrastáveis (`usarArrastavel`). Este bichinho nasce na COLUNA ESQUERDA, logo
- * ACIMA do Seu Nonô (`left-4 bottom-20`), em 48 px para não tomar tela — e
- * também é arrastável, com a posição lembrada no `localStorage`
- * (chave `cp_companheiro_pos`).
+ * widget do Seu Nonô (`SeuNono.tsx`) vivem no canto inferior esquerdo e são
+ * arrastáveis (`usarArrastavel`). Esta galinha nasce na MESMA coluna, logo
+ * acima do Seu Nonô (`bottom-20 left-4`), em 48 px, e também é arrastável, com
+ * a posição lembrada no `localStorage` (chave `cp_companheiro_pos`).
  *
- * O companheiro de verdade roda no desktop (repo FinweeJur/clicky-ptbr). Aqui a
- * pessoa gera o código da sessão pareada e digita no app: uma pergunta, um
- * turno, dois desfechos (o chat abre o link; o bichinho voa até o botão).
+ * Quem conduz a pessoa até a página é o Seu Nonô: clicar na galinha publica o
+ * evento global `abrir-seu-nono`, que o `SeuNono.tsx` ouve para abrir o
+ * assistente com a escada determinística e o RAG. A galinha não gera código de
+ * sessão: o pareamento com o app de desktop segue OPCIONAL, dentro do próprio
+ * widget (`SessaoCompanheiro.tsx`, botão "conectar app"). Sem app, nada quebra.
  *
  * DECISÕES TÉCNICAS
  * -----------------
  * - Reusa `usarArrastavel`: **clique ≠ arrasto** pelo limiar de 5 px, senão
- *   mexer o bichinho abriria o painel sem querer.
- * - A sessão vem de `POST /api/companheiro/sessao`. Ao criar, publica o evento
- *   `cp:sessao-companheiro`, que a `PonteCompanheiro` ouve para etiquetar as
- *   coordenadas dos alvos na tela.
- * - Arte servida de `public/companheiro/preguica.png`, ampliada com
- *   `image-rendering: pixelated` para não borrar os pixels.
- * - Sem dado pessoal e sem imagem: só o código da sessão e a resposta do RAG.
+ *   mexer a galinha abriria o assistente sem querer.
+ * - **Arte do Petdex** (`dingdong-chicken`, autor hydrogen2o): o atlas público
+ *   foi baixado de `petdex.dev` e recortado para a linha `idle`
+ *   (`public/companheiro/dingdong-chicken/idle.webp`). Procedência e a
+ *   pendência de licença ficam em `PROVENIENCIA.md`, na mesma pasta — o dono
+ *   vai contatar o autor (decisão de 02/10/2026).
+ * - Anima no CSS e desliga em `prefers-reduced-motion: reduce` (§ acessibilidade).
+ * - É um `<button>` de verdade: foco visível, teclado (Enter/Espaço) e
+ *   `aria-label` — a galinha é decorativa (`aria-hidden`), o foco é o botão.
  */
 
-import { useCallback, useState } from "react";
-import Image from "next/image";
-import { Check, Copy, X } from "lucide-react";
+import { useCallback } from "react";
 import { usarArrastavel } from "@/lib/usarArrastavel";
+
+/**
+ * Galinha do companheiro — sprite do Petdex (`dingdong-chicken`).
+ *
+ * O atlas (8 colunas × 11 linhas de 192×208) foi recortado para a linha
+ * `idle` e salvo em `public/companheiro/dingdong-chicken/idle.webp`
+ * (procedência e licença em `PROVENIENCIA.md`, mesma pasta). Cada célula tem
+ * margem transparente: a galinha ocupa x44–147 / y5–203, então o recorte usa
+ * só essa caixa e o fundo avança os quadros por `background-position`.
+ *
+ * A animação é CSS puro e para em `prefers-reduced-motion: reduce` (aí fica no
+ * quadro 0). O tamanho é calculado para caber no botão de 48 px.
+ */
+function GalinhaCompanheira({ className = "" }: { className?: string }) {
+  // Geometria MEDIDA no atlas — não são valores mágicos; ver PROVENIENCIA.md.
+  const CAIXA = { x: 44, y: 5, w: 103, h: 198 };
+  const QUADROS = 7;
+  const CELULA = 192; // largura de uma célula na folha
+  const ALTURA = 42; // cabe no botão h-12 (48 px) com folga
+  const escala = ALTURA / CAIXA.h;
+  const x0 = CAIXA.x * escala;
+
+  return (
+    <span
+      aria-hidden="true"
+      className={`cp-galinha ${className}`}
+      style={{
+        display: "block",
+        width: Math.round(CAIXA.w * escala),
+        height: Math.round(CAIXA.h * escala),
+        backgroundImage: "url('/companheiro/dingdong-chicken/idle.webp')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: `${1536 * escala}px ${208 * escala}px`,
+        backgroundPositionX: `${-x0}px`,
+        backgroundPositionY: `${-CAIXA.y * escala}px`,
+      }}
+    >
+      <style>{`
+        .cp-galinha { animation: cp-galinha-idle 1.1s steps(${QUADROS}) infinite; }
+        @keyframes cp-galinha-idle {
+          from { background-position-x: ${-x0}px; }
+          to   { background-position-x: ${-(x0 + QUADROS * CELULA * escala)}px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .cp-galinha { animation: none; }
+        }
+      `}</style>
+    </span>
+  );
+}
 
 export function CompanheiroFlutuante() {
   const { estilo, arrastando, foiArrasto, handlers } = usarArrastavel("cp_companheiro_pos");
-  const [aberto, setAberto] = useState(false);
-  const [sessao, setSessao] = useState<{ id: string; codigo: string } | null>(null);
-  const [erro, setErro] = useState<string | null>(null);
-  const [copiado, setCopiado] = useState(false);
 
-  /** Cria a sessão pareada (uma vez) e publica o id para a ponte. */
-  const abrir = useCallback(async () => {
-    setAberto(true);
-    if (sessao) return;
-    setErro(null);
-    try {
-      const resp = await fetch("/api/companheiro/sessao", { method: "POST" });
-      const dados = (await resp.json()) as { id?: string; codigo?: string; erro?: string };
-      if (!resp.ok || !dados.id || !dados.codigo) {
-        throw new Error(dados.erro ?? "Nao consegui abrir a sessao.");
-      }
-      setSessao({ id: dados.id, codigo: dados.codigo });
-      window.dispatchEvent(
-        new CustomEvent("cp:sessao-companheiro", { detail: { id: dados.id, codigo: dados.codigo } }),
-      );
-    } catch (e) {
-      setErro(e instanceof Error ? e.message : "Erro de rede ao abrir a sessao.");
-    }
-  }, [sessao]);
-
+  /** Clicar leva ao assistente; arrastar só move a galinha. */
   const aoClicar = useCallback(() => {
     if (foiArrasto()) return; // o gesto foi arrastar, não clicar
-    if (aberto) setAberto(false);
-    else void abrir();
-  }, [aberto, abrir, foiArrasto]);
-
-  const copiar = useCallback(async () => {
-    if (!sessao) return;
-    try {
-      await navigator.clipboard.writeText(sessao.codigo);
-      setCopiado(true);
-      setTimeout(() => setCopiado(false), 1500);
-    } catch {
-      // sem clipboard: o código segue visível na tela
-    }
-  }, [sessao]);
+    window.dispatchEvent(new CustomEvent("abrir-seu-nono"));
+  }, [foiArrasto]);
 
   return (
     <div className="fixed bottom-20 left-4 z-40 print:hidden" style={estilo}>
-      <div className="relative flex flex-col items-end">
+      <div className="group relative flex flex-col items-end">
         <button
           type="button"
           onClick={aoClicar}
           {...handlers}
-          aria-label="Abrir o companheiro Seu Nono (bichinho)"
-          aria-expanded={aberto}
-          title="Companheiro Seu Nono — arraste para mover"
-          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface shadow-lg transition hover:bg-surface-2 ${arrastando ? "cursor-grabbing" : "cursor-pointer"}`}
+          aria-label="Abrir o Seu Nonô, o assistente do portal"
+          title="Pergunte ao Seu Nonô — arraste para mover"
+          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface shadow-lg transition hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${arrastando ? "cursor-grabbing" : "cursor-pointer"}`}
         >
-          <Image
-            src="/companheiro/preguica.png"
-            alt=""
-            width={32}
-            height={32}
-            priority={false}
-            style={{ imageRendering: "pixelated" }}
-          />
+          <GalinhaCompanheira />
         </button>
 
-        {aberto && (
-          <div
-            role="dialog"
-            aria-label="Sessao do companheiro"
-            className="absolute bottom-full left-0 mb-2 w-64 rounded-xl border border-border bg-surface p-3 text-left shadow-lg"
-          >
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-xs font-semibold text-text">Companheiro Seu Non&ocirc;</p>
-              <button
-                type="button"
-                onClick={() => setAberto(false)}
-                className="rounded p-0.5 text-text-soft hover:bg-surface-2"
-                aria-label="Fechar"
-              >
-                <X size={14} />
-              </button>
-            </div>
-
-            <p className="mt-1 text-[.72rem] leading-relaxed text-text-soft">
-              Ele fica na sua tela e leva voc&ecirc; at&eacute; a p&aacute;gina que responde. No
-              bichinho, escolha <strong>Entrar numa sess&atilde;o</strong> e digite o c&oacute;digo:
-            </p>
-
-            {erro && <p className="mt-2 text-[.72rem] text-alert">{erro}</p>}
-
-            {sessao && (
-              <div className="mt-2 flex items-center justify-between gap-2 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5">
-                <code className="font-tabular text-base font-bold tracking-widest text-text">
-                  {sessao.codigo}
-                </code>
-                <button
-                  type="button"
-                  onClick={() => void copiar()}
-                  className="rounded p-1 text-text-soft hover:bg-surface"
-                  aria-label="Copiar codigo"
-                >
-                  {copiado ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+        {/* Dica visual: aparece no hover e no foco por teclado. */}
+        <span className="pointer-events-none absolute left-full top-1/2 ml-2 -translate-y-1/2 whitespace-nowrap rounded-lg border border-border bg-surface-2 px-2 py-1 text-xs text-text opacity-0 shadow transition group-hover:opacity-100 group-focus-within:opacity-100">
+          Pergunte ao Seu Non&ocirc;
+        </span>
       </div>
     </div>
   );

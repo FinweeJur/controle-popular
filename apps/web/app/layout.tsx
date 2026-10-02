@@ -286,9 +286,9 @@ export default function RootLayout({
               age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
               no-op. Ver `PonteCompanheiro.tsx`. */}
           <PonteCompanheiro />
-          {/* Companheiro Seu Nonô — bichinho flutuante e arrastável no canto
-              inferior direito (a rádio e o widget do Seu Nonô ficam à
-              esquerda). Abre a sessão pareada com o app de desktop. */}
+          {/* Companheiro Seu Nonô — galinha flutuante e arrastável no canto
+              inferior esquerdo, acima do widget do Seu Nonô. Roda sozinha:
+              clicar abre o assistente; sem código nem pareamento com app. */}
           <CompanheiroFlutuante />
         </ThemeProvider>
       </body>
