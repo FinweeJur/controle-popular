@@ -18,6 +18,7 @@ import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
 import { CompanheiroFlutuante } from "@/app/components/CompanheiroFlutuante";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
+import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
@@ -260,6 +261,11 @@ export default function RootLayout({
               em prefers-reduced-motion e em tela de toque. Ver
               `RastroCursor.tsx`. */}
           <RastroCursor />
+          {/* Pinta o preenchimento dos cursores com a cor primária do tema
+              (contorno preto intacto). O binário `.cur` não lê custom
+              property; a recoloração é feita em runtime e publicada em
+              variáveis CSS lidas pelo `globals.css`. Ver `CursorTema.tsx`. */}
+          <CursorTema />
           {/* Rádio Brasil de Fato — player PERSISTENTE. Montado no layout
               raiz de propósito: a raiz não desmonta na navegação entre
               páginas, então a transmissão continua ao trocar de página ou de

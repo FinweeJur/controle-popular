@@ -49,7 +49,7 @@
 
 /* Padrão: a seta do pacote, em todo elemento da página. */
 * {
-  cursor: url("/cursor/pointer.cur") 0 1, auto !important;
+  cursor: var(--cp-cursor-pointer, url("/cursor/pointer.cur")) 0 1, auto !important;
 }
 
 /* Clicável: link, botão, aba, seletor e o que a classe `cursor-pointer`
@@ -66,7 +66,7 @@ label[for],
 [role="menuitem"],
 [role="switch"],
 .cursor-pointer {
-  cursor: url("/cursor/link.cur") 5 2, pointer !important;
+  cursor: var(--cp-cursor-link, url("/cursor/link.cur")) 5 2, pointer !important;
 }
 
 /* Texto editável: a barra vertical do feixe. Onde só há texto para ler
@@ -82,7 +82,7 @@ html input[type="number"],
 html textarea,
 html [contenteditable=""],
 html [contenteditable="true"] {
-  cursor: url("/cursor/beam.cur") 6 11, text !important;
+  cursor: var(--cp-cursor-beam, url("/cursor/beam.cur")) 6 11, text !important;
 }
 
 /* Localização: o pino do lucide — `<MapPin/>` sai do react com
@@ -100,7 +100,7 @@ html .lucide-locate,
 html a[href]:has(.lucide-map-pin),
 html button:has(.lucide-map-pin),
 html [role="button"]:has(.lucide-map-pin) {
-  cursor: url("/cursor/location.cur") 6 22, pointer !important;
+  cursor: var(--cp-cursor-location, url("/cursor/location.cur")) 6 22, pointer !important;
 }
 
 /* Indisponível: o círculo cortado. Ganha do link por especificidade
@@ -108,19 +108,19 @@ html [role="button"]:has(.lucide-map-pin) {
 html :disabled,
 html [aria-disabled="true"],
 html .cursor-not-allowed {
-  cursor: url("/cursor/unavailable.cur") 12 12, not-allowed !important;
+  cursor: var(--cp-cursor-unavailable, url("/cursor/unavailable.cur")) 12 12, not-allowed !important;
 }
 
 /* Os três que o Tailwind já nomeia: cruzeta, arrastar e ajuda. */
 html .cursor-crosshair {
-  cursor: url("/cursor/precision.cur") 11 11, crosshair !important;
+  cursor: var(--cp-cursor-precision, url("/cursor/precision.cur")) 11 11, crosshair !important;
 }
 html .cursor-grab,
 html .cursor-grabbing {
-  cursor: url("/cursor/openhand.cur") 12 12, grab !important;
+  cursor: var(--cp-cursor-openhand, url("/cursor/openhand.cur")) 12 12, grab !important;
 }
 html .cursor-help {
-  cursor: url("/cursor/question.cur") 7 20, help !important;
+  cursor: var(--cp-cursor-question, url("/cursor/question.cur")) 7 20, help !important;
 }
 
 /* Espera total: a hora arejada (hotspot 11,11, centro do disco). O
