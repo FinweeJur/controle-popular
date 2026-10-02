@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global (build / deploy)
-> **Última medição:** 2026-10-01
+> **Última medição:** 2026-10-02
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** build, dockerignore, contexto, limite 256 MB, guara, payload, compactacao, camada, pdf, json
@@ -16,6 +16,7 @@
 - [Fase 3 — compactação](#fase-3--compactação)
 - [Verificação por item](#verificação-por-item)
 - [Execução (01/10/2026) — F1 + F2 feitas, F3 dispensada](#execução-01102026--f1--f2-feitas-f3-dispensada)
+- [Segunda varredura (02/10/2026)](#segunda-varredura-02102026)
 - [Decisões registradas](#decisões-registradas)
 
 ## O problema
@@ -157,6 +158,30 @@ Medido no worktree limpo (`origin/main` do dia, sem `node_modules`/`.next`):
   `licencas-unificada.test.ts` + 4 novos); eslint 0 erros (1 warning
   pré-existente); **simulação do Guara** com só as amostras no lugar dos JSON
   completos: 6.912 registros, total real 641.265, 18 órgãos, `truncado: true`.
+
+## Segunda varredura (02/10/2026)
+
+Contexto efetivo: **223,5 MB → ~199,6 MB** (teto 256 MB, folga de ~56 MB).
+Medição por `git ls-files` com tamanho em disco — o Guara builda a partir do
+git, então arquivo local não versionado não entra no contexto.
+
+Dois assets mortos, confirmados por `rg` (nenhum `import`/`readFileSync`):
+
+| MB | Arquivo | Por que é morto |
+|---:|---|---|
+| 8,8 | `apps/web/data/sigmine-nacional.json` | citado só no metadado `bases-portal.json`; `deBasesPortal()` nunca abre o arquivo |
+| 15,1 | `apps/web/public/capas/*.jfif` (4) | o código só referencia os `.webp` equivalentes |
+
+Somados ao `.dockerignore` (`apps/web/data/sigmine-nacional.json`,
+`apps/web/public/capas/*.jfif`): **−23,9 MB**, sem apagar nada do repo.
+
+O que resta e **não** sai por linha de ignore: `etl/betim/dados/*.json`
+(~45 MB, lido pelo build via `lib/server-only/json-etl.ts`) e
+`apps/web/public/terras/globo/dados` (61 MB, asset do globo em runtime).
+Para cortá-los, o caminho é o da F2 (amostra/fatiar), não o `.dockerignore`.
+
+Nota: `apps/web/public/busca-indice` (16,5 MB) **não é versionado** — o Guara
+não o recebe e o prebuild o regenera. Nada a fazer.
 
 ## Decisões registradas
 

@@ -109,6 +109,13 @@ apps/web/data/documentos-empresas/**
 **/*.pdf
 !apps/web/public/**/*.pdf
 
+# 7.1. Assets mortos (medido 02/10/2026) — o site usa os equivalentes .webp
+# e nenhum codigo le estes arquivos; ficam no repo, so saem do contexto.
+# `sigmine-nacional.json` e listado no inventario do RAG (bases-portal.json)
+# apenas como metadado — `deBasesPortal()` nunca abre o arquivo. Economia ~24 MB.
+apps/web/data/sigmine-nacional.json
+apps/web/public/capas/*.jfif
+
 # 8. JSONs de licenciamento bruto com amostras versionadas
 # O build lê a AMOSTRA em apps/web/data/amostras/
 apps/web/data/ana-outorgas.json
