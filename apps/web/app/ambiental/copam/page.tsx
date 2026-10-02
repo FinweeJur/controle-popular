@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { sql } from "drizzle-orm";
 import { formatNumberBR } from "@/lib/betim/format";
-import { getDb } from "@/lib/db/client";
+import { comBancoReserva } from "@/lib/db/reserva";
 import {
   contarReunioesCopam,
   listarMunicipiosComItensCopam,
@@ -35,7 +35,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/copam", {
  * fica fora dela, e outros arquivos da zona `/ambiental` importam dali. Por
  * isso `contarItensCopamPorAno`/`contarItensCopamPorDecisao` são funções
  * locais deste arquivo, no MESMO estilo de `listarMunicipiosComItensCopam`
- * (SQL cru com `sql\`...\`` + `getDb()`, `.rows ?? []`) — só que vivendo aqui
+ * (SQL cru com `sql\`...\`` + `comBancoReserva`, `.rows ?? []`) — só que vivendo aqui
  * porque só esta página as usa.
  */
 const SITUACAO_ROTULO: Record<string, string> = {
@@ -52,16 +52,23 @@ interface ItensCopamPorAno {
 /** Itens de pauta por ano DA REUNIÃO — agregado (nunca a lista de itens),
  *  alimenta o gráfico "por ano". */
 async function contarItensCopamPorAno(): Promise<ItensCopamPorAno[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{ ano: number; itens: number }>(sql`
-    select extract(year from r.data)::int as ano, count(*)::int as itens
-    from copam_pauta_itens i
-    join copam_reunioes r on r.id = i.id_reuniao
-    group by ano
-    order by ano asc
-  `);
-  return linhas.rows ?? [];
+  // `comBancoReserva`, e não `getDb()` cru: um soluço de conexão aqui derrubava
+  // o BUILD inteiro na geração estática de /ambiental/copam (medido 02/10/2026,
+  // "timeout exceeded when trying to connect" neste join). Com a reserva, o
+  // pior caso é `[]` e o build termina.
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ ano: number; itens: number }>(sql`
+        select extract(year from r.data)::int as ano, count(*)::int as itens
+        from copam_pauta_itens i
+        join copam_reunioes r on r.id = i.id_reuniao
+        group by ano
+        order by ano asc
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "copam" }
+  );
 }
 
 type BaldeDecisaoCopam =
@@ -89,30 +96,35 @@ interface ItensCopamPorDecisao {
  * de itens de `contarReunioesCopam()`.
  */
 async function contarItensCopamPorDecisao(): Promise<ItensCopamPorDecisao[]> {
-  const db = getDb();
-  if (!db) return [];
-  const linhas = await db.execute<{ balde: BaldeDecisaoCopam; itens: number }>(sql`
-    select
-      case
-        when i.decisao in ('APROVADA','APROVADO','DEFERIDO','DEFERIDA','HOMOLOGADO','HOMOLOGADA')
-          then 'aprovado'
-        when i.decisao in ('REPROVADA','REPROVADO','INDEFERIDO','INDEFERIDA')
-          then 'indeferido'
-        when i.decisao in ('PEDIDO DE VISTAS','RETORNO DE VISTAS')
-          then 'pedido_de_vistas'
-        when i.decisao in (
-          'RETIRADO DE PAUTA','RETIRADA DE PAUTA','ADIADO','ADIADA','ARQUIVADO','ARQUIVADA',
-          'CANCELADO','CANCELADA','REVOGADO','REVOGADA','PREJUDICADO','PREJUDICADA',
-          'APRESENTADO','APRESENTADA'
-        ) then 'sem_merito'
-        when i.decisao is null then 'sem_decisao'
-        else 'outro'
-      end as balde,
-      count(*)::int as itens
-    from copam_pauta_itens i
-    group by balde
-  `);
-  return linhas.rows ?? [];
+  // Mesma razão do `contarItensCopamPorAno`: passar pela reserva impede que um
+  // timeout de conexão derrube o build; o pior caso vira `[]`.
+  return comBancoReserva(
+    async (db) => {
+      const linhas = await db.execute<{ balde: BaldeDecisaoCopam; itens: number }>(sql`
+        select
+          case
+            when i.decisao in ('APROVADA','APROVADO','DEFERIDO','DEFERIDA','HOMOLOGADO','HOMOLOGADA')
+              then 'aprovado'
+            when i.decisao in ('REPROVADA','REPROVADO','INDEFERIDO','INDEFERIDA')
+              then 'indeferido'
+            when i.decisao in ('PEDIDO DE VISTAS','RETORNO DE VISTAS')
+              then 'pedido_de_vistas'
+            when i.decisao in (
+              'RETIRADO DE PAUTA','RETIRADA DE PAUTA','ADIADO','ADIADA','ARQUIVADO','ARQUIVADA',
+              'CANCELADO','CANCELADA','REVOGADO','REVOGADA','PREJUDICADO','PREJUDICADA',
+              'APRESENTADO','APRESENTADA'
+            ) then 'sem_merito'
+            when i.decisao is null then 'sem_decisao'
+            else 'outro'
+          end as balde,
+          count(*)::int as itens
+        from copam_pauta_itens i
+        group by balde
+      `);
+      return linhas.rows ?? [];
+    },
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "copam" }
+  );
 }
 
 const BALDE_INFO: Record<BaldeDecisaoCopam, { rotulo: string; slot: 1 | 2 | 3 | 4 | null }> = {
