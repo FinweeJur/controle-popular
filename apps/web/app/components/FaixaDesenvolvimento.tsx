@@ -48,8 +48,8 @@ export default function FaixaDesenvolvimento() {
       aria-label="Aviso: site em desenvolvimento"
       className="border-b border-alert/30 bg-alert/10 px-4 py-1.5 text-center text-sm text-alert"
     >
-      Site em desenvolvimento. Os dados ainda estão sendo conferidos e podem
-      conter erros.{" "}
+      Site em desenvolvimento, aberto para acesso, colaboração e revisão. Os
+      dados ainda estão sendo conferidos e podem conter erros.{" "}
       <time dateTime={DATA_PUBLICACAO_ISO.slice(0, 10)}>
         Última atualização: {data}
       </time>

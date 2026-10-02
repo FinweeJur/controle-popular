@@ -54,13 +54,17 @@ export default function PoliticaDeIaPage() {
           Política de uso de inteligência artificial
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Este portal usa inteligência artificial para{" "}
-          <strong className="text-text">ler texto</strong> — nunca para escrever
-          número. Esta página explica onde a IA entra, onde ela não entra, e como
-          o leitor identifica quando um conteúdo passou por modelo.
+          Site em desenvolvimento, aberto para acesso, colaboração e revisão. Os
+          dados ainda estão sendo conferidos e podem conter erros. O site foi
+          feito com auxílio de Inteligência Artificial - IA, como modelos de
+          linguagem como <strong className="text-text">Deepseek</strong>,{" "}
+          <strong className="text-text">Mimo</strong>,{" "}
+          <strong className="text-text">Claude</strong> e ferramentas como{" "}
+          <strong className="text-text">OpenCode</strong>, entre outras.
         </p>
         <p className="text-sm text-text-soft">
-          Última revisão: setembro de 2026. O portal está em revisão permanente.
+          Esta página explica onde a IA entra, onde ela não entra, e como o leitor
+          identifica quando um conteúdo passou por modelo.
         </p>
       </header>
 

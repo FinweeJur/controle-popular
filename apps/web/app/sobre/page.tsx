@@ -84,20 +84,98 @@ export default async function SobrePage() {
         />
       </header>
 
+      {/* ═══ INSPIRAÇÕES E REFERÊNCIAS — logo após a Carolina Maria de Jesus ═══ */}
+      <section className="space-y-4 rounded-2xl border border-border bg-surface-2 p-5 sm:p-6">
+        <h2 className="font-display text-2xl font-semibold">
+          Inspirações e Referências
+        </h2>
+        <p className="text-text-soft">
+          O nome <strong className="text-text">Controle Popular</strong> não é
+          invenção de marketing. Vem de uma palavra de ordem do{" "}
+          <a
+            href="https://mab.org.br/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Movimento dos Atingidos por Barragens (MAB)
+          </a>
+          : &ldquo;Água e energia com soberania, distribuição da riqueza e
+          controle popular&rdquo;.
+        </p>
+        <p className="text-text-soft">
+          Do MAB vem a postura da frente ambiental. Ele nos ensinou a cobrar
+          reparação pelos{" "}
+          <a
+            href="/ambiental/crimes-socioambientais"
+            className="text-primary hover:text-accent"
+          >
+            crimes socioambientais
+          </a>
+          , reunidos num acervo aberto; a acompanhar as outorgas de água; a{" "}
+          <a href="/ambiental/barragens" className="text-primary hover:text-accent">
+            fiscalizar as barragens
+          </a>{" "}
+          e a vigiar o{" "}
+          <a href="/ambiental/licenciamento" className="text-primary hover:text-accent">
+            licenciamento ambiental
+          </a>
+          .
+        </p>
+        <p className="text-text-soft">
+          A{" "}
+          <a
+            href="/direitos-em-movimento/educacao"
+            className="text-primary hover:text-accent"
+          >
+            página de educação
+          </a>
+          , entre outras, foi inspirada no{" "}
+          <a
+            href="https://levante.org.br/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Levante Popular da Juventude
+          </a>
+          . A{" "}
+          <a
+            href="/direitos-em-movimento/saude-publica"
+            className="text-primary hover:text-accent"
+          >
+            página de saúde
+          </a>
+          , entre outras, foi inspirada no{" "}
+          <a
+            href="https://brasilpopular.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Movimento Brasil Popular
+          </a>
+          . E a inspiração tecnológica hacker pra criar redes mais justas e
+          tecnologia mais acessível veio da{" "}
+          <a
+            href="https://codigonaobinario.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-primary hover:text-accent"
+          >
+            Código Não Binário
+          </a>
+          , organização que bate de frente com as Big Techs quando é pra falar de
+          IA.
+        </p>
+        <p className="text-text-soft">
+          Sem essas organizações cobrando por justiça e direitos nas florestas,
+          nas águas, no campo, na cidade e nas redes, esse portal não existiria.
+        </p>
+      </section>
+
       {/* ═══ 1. O QUE É ═══ */}
       <section className="space-y-3">
-        <p className="text-text-soft">
-          O dado sobre um contrato de prefeitura já é público: está no Portal Nacional de
-          Contratações Públicas. O dado sobre um projeto de lei federal já é público: está na
-          API de Dados Abertos da Câmara dos Deputados. O que não existia era o lugar onde um
-          morador encontra as duas coisas sem saber de antemão que os dois sistemas existem,
-          como se chamam e qual campo consultar. O portal é esse lugar.
-        </p>
-        <p className="text-text-soft">
-          O público-alvo é o cidadão sem formação jurídica ou estatística — é por isso que
-          termo técnico é explicado na própria tela em que aparece, e não numa página de
-          glossário que ninguém abre.
-        </p>
         <p className="rounded-lg border border-border bg-surface-2 p-4 text-[.95em] text-text-soft">
           A regra que organiza o projeto inteiro: <strong className="text-text">todo
           número exibido tem fonte identificável, e todo número que resulta de estimativa
@@ -110,17 +188,18 @@ export default async function SobrePage() {
       {/* ═══ 2. HONESTIDADE SOBRE IA — a seção mais importante desta página ═══ */}
       <section className="space-y-4 rounded-2xl border border-border bg-surface-2 p-5 sm:p-6">
         <h2 className="font-display text-2xl font-semibold">
-          Este portal usa inteligência artificial — e o portal está em revisão
+          Site em desenvolvimento e uso de Inteligência Artificial
         </h2>
         <p className="text-text-soft">
-          Sem enfeite: parte do dado que você lê aqui foi lido, extraído ou classificado com
-          o auxílio de modelos de linguagem — as ferramentas usadas na construção do projeto
-          foram <strong className="text-text">Claude Code</strong>,{" "}
-          <strong className="text-text">Kimi Code</strong> e{" "}
-          <strong className="text-text">ZaiCode</strong>. E, por causa disso,{" "}
-          <strong className="text-text">o portal está em revisão</strong> — não é um estado
-          transitório que vai acabar numa data marcada, é uma condição permanente de um
-          projeto que usa IA na coleta e pede para ser conferido.
+          Site em desenvolvimento, aberto para acesso, colaboração e revisão. Os
+          dados ainda estão sendo conferidos e podem conter erros.
+        </p>
+        <p className="text-text-soft">
+          O site foi feito com auxílio de Inteligência Artificial - IA, como
+          modelos de linguagem como <strong className="text-text">Deepseek</strong>,{" "}
+          <strong className="text-text">Mimo</strong>,{" "}
+          <strong className="text-text">Claude</strong> e ferramentas como{" "}
+          <strong className="text-text">OpenCode</strong>, entre outras.
         </p>
         <p className="text-text-soft">
           Isso não significa que os números são palpite. O projeto segue uma doutrina que
@@ -292,87 +371,8 @@ export default async function SobrePage() {
         )}
       </section>
 
-      {/* ═══ DE ONDE VEM O NOME — agradecimento aos movimentos populares ═══ */}
-      <section className="space-y-4 rounded-2xl border border-border bg-surface-2 p-5 sm:p-6">
-        <h2 className="font-display text-2xl font-semibold">
-          De onde vem o nome — e a quem devemos
-        </h2>
-        <p className="text-text-soft">
-          O nome <strong className="text-text">Controle Popular</strong> não é
-          invenção de marketing. Vem de uma palavra de ordem do{" "}
-          <a
-            href="https://mab.org.br/"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="text-primary hover:text-accent"
-          >
-            Movimento dos Atingidos por Barragens (MAB)
-          </a>
-          : &ldquo;Água e energia com soberania, distribuição da riqueza e
-          controle popular&rdquo;. É palavra de ordem de quem vive na bacia, não
-          de quem assina o contrato.
-        </p>
-        <p className="text-text-soft">
-          Do MAB vem a postura da frente ambiental. Ele nos ensinou a cobrar
-          reparação pelos{" "}
-          <a
-            href="/ambiental/crimes-socioambientais"
-            className="text-primary hover:text-accent"
-          >
-            crimes socioambientais
-          </a>
-          , reunidos num acervo aberto; a acompanhar as outorgas de água; a{" "}
-          <a href="/ambiental/barragens" className="text-primary hover:text-accent">
-            fiscalizar as barragens
-          </a>{" "}
-          e a vigiar o{" "}
-          <a href="/ambiental/licenciamento" className="text-primary hover:text-accent">
-            licenciamento ambiental
-          </a>
-          .
-        </p>
-        <p className="text-text-soft">
-          A{" "}
-          <a
-            href="/direitos-em-movimento/educacao"
-            className="text-primary hover:text-accent"
-          >
-            página de educação
-          </a>
-          , entre outras, foi inspirada no{" "}
-          <a
-            href="https://levante.org.br/"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="text-primary hover:text-accent"
-          >
-            Levante Popular da Juventude
-          </a>
-          . A{" "}
-          <a
-            href="/direitos-em-movimento/saude-publica"
-            className="text-primary hover:text-accent"
-          >
-            página de saúde
-          </a>
-          , entre outras, foi inspirada no{" "}
-          <a
-            href="https://brasilpopular.org/"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="text-primary hover:text-accent"
-          >
-            Movimento Brasil Popular
-          </a>
-          .
-        </p>
-        <p className="text-text-soft">
-          A homenagem é reconhecimento, não filiação. O portal publica dado
-          público e não fala em nome de movimento nenhum. Mas sem essas
-          organizações ninguém teria cobrado transparência na água, na barragem
-          e no licenciamento — e este portal não existiria.
-        </p>
-      </section>
+      {/* O card "Inspirações e Referências" foi movido para logo após a
+          epígrafe da Carolina Maria de Jesus, no topo desta página. */}
 
       {/* ═══ 4. METODOLOGIA ═══ */}
       <section id="metodologia" className="scroll-mt-6 space-y-8">
