@@ -349,17 +349,40 @@ export default async function AmbientalHome() {
         className="mb-8 rounded-2xl shadow-sm border border-border"
       />
 
-      <header className="space-y-4 mb-8">
-        <p
-          className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em] bg-surface"
-          style={{ borderColor: ZONA.cor }}
-        >
-          <strong>As cinco frentes têm tela real agora.</strong> COPAM (F3), licenciamento
-          (F4), barragens (F5), legislação e precedentes por tema (F6+F7, unificados em
-          13/08/2026) e patrimônio cultural tombado (F8, novo) — todos com dado coletado,
-          abaixo.
+      {/* ═══ GUIA RÁPIDO — as frentes ambientais em um clique ═══ */}
+      <nav
+        aria-label="Guia rápido da área ambiental"
+        className="rounded-2xl border bg-surface p-4 sm:p-5"
+        style={{ borderColor: ZONA.cor }}
+      >
+        <h2 className="font-display text-lg font-semibold">Guia rápido</h2>
+        <p className="mt-1 text-[.9em] text-text-soft">
+          Oito portas para o dado ambiental estadual — CAR, licenciamento, licenças e
+          outorgas, TACs, estudos (EIA-RIMA), barragens, o Acordo do Rio Doce (Mariana) e a
+          reparação de Brumadinho. As telas aprofundadas continuam existindo; o guia só
+          encurta o caminho.
         </p>
-      </header>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {[
+            { rotulo: "CAR / IEF", href: "/ambiental/car" },
+            { rotulo: "Licenciamento", href: "/ambiental/licenciamento" },
+            { rotulo: "Licenças e outorgas", href: "/ambiental/licencas" },
+            { rotulo: "TACs", href: "/ambiental/tac" },
+            { rotulo: "Estudos (EIA-RIMA)", href: "/ambiental/estudos" },
+            { rotulo: "Barragens", href: "/ambiental/barragens" },
+            { rotulo: "Acordo do Rio Doce (Mariana)", href: "/ambiental/mariana" },
+            { rotulo: "Reparação Brumadinho", href: "/paraopeba" },
+          ].map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-sm font-medium text-text transition-colors hover:border-primary hover:text-primary"
+            >
+              {l.rotulo}
+            </Link>
+          ))}
+        </div>
+      </nav>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         {BLOCOS.map((b) => {
