@@ -365,6 +365,43 @@ export default function EixoCentralPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ USO DE IA E AGRADECIMENTOS — repetidos do /sobre, com link para lá ═══ */}
+      <section className="mb-10 rounded-2xl border border-border bg-surface-1 p-6 text-sm leading-relaxed text-muted">
+        <h3 className="mb-2 font-display text-lg font-bold text-foreground">
+          Uso de Inteligência Artificial
+        </h3>
+        <p className="mb-4">
+          Site em desenvolvimento, aberto para acesso, colaboração e revisão. Os dados ainda
+          estão sendo conferidos e podem conter erros. O site foi feito com auxílio de
+          Inteligência Artificial - IA, como modelos de linguagem como Deepseek, Mimo e Claude
+          e ferramentas como OpenCode, entre outras. O portal usa IA para{" "}
+          <strong className="text-foreground">ler texto</strong> — nunca para escrever número.
+          A política completa está em{" "}
+          <Link href="/politica-de-ia" className="font-medium text-primary hover:underline">
+            Política de uso de IA
+          </Link>{" "}
+          e a apresentação do portal em{" "}
+          <Link href="/sobre" className="font-medium text-primary hover:underline">
+            Sobre o Controle Popular
+          </Link>
+          .
+        </p>
+
+        <h3 className="mb-2 font-display text-lg font-bold text-foreground">
+          Inspirações e Referências
+        </h3>
+        <p>
+          O nome Controle Popular vem de uma palavra de ordem do MAB — Movimento dos Atingidos
+          por Barragens. A postura da frente ambiental, a página de educação (inspirada no
+          Levante Popular da Juventude) e a de saúde (inspirada no Movimento Brasil Popular)
+          vêm dessas organizações. E a inspiração tecnológica hacker pra criar redes mais
+          justas veio da Código Não Binário. Sem essas organizações cobrando por justiça e
+          direitos, esse portal não existiria. E ao Instituto Esperança Maria, pelas
+          experiências em educação ambiental de direitos humanos, que agora dão luz a esse
+          portal.
+        </p>
+      </section>
     </EixoLayout>
   );
 }

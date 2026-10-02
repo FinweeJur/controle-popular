@@ -171,6 +171,9 @@ export default async function SobrePage() {
         <p className="text-text-soft">
           Sem essas organizações cobrando por justiça e direitos nas florestas,
           nas águas, no campo, na cidade e nas redes, esse portal não existiria.
+          E ao <strong className="text-text">Instituto Esperança Maria</strong>, pelas
+          experiências em educação ambiental de direitos humanos, que agora dão luz
+          a esse portal.
         </p>
       </section>
 
@@ -300,6 +303,22 @@ export default async function SobrePage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ═══ TERMO DE USO DE IA — unificado logo após os links das subfrentes ═══ */}
+        <div className="rounded-2xl border border-border bg-surface p-5">
+          <h3 className="font-display text-lg font-semibold">
+            Termo de uso de Inteligência Artificial
+          </h3>
+          <p className="mt-1 text-[.95em] text-text-soft">
+            O portal usa IA para <strong className="text-text">ler texto</strong> e extrair
+            campos — nunca para escrever número nem opinar. A política completa, com onde a
+            IA entra e onde ela não entra, está em{" "}
+            <a href="/politica-de-ia" className="text-primary hover:text-accent">
+              /politica-de-ia
+            </a>
+            .
+          </p>
         </div>
 
         <p className="text-[.9em] text-text-soft">
