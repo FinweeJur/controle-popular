@@ -7,7 +7,12 @@
  * LÊ. Se um dos dois mudar o formato, o outro quebra — por isso o formato está
  * escrito nos dois lugares e coberto por teste dos dois lados.
  *
- * Formato: `/terras/globo/?voe=<lat>,<lon>&nome=<texto>&ctx=<slug>&z=<distância>`
+ * Formato: `/terras/globo/index.html?voe=<lat>,<lon>&nome=<texto>&ctx=<slug>&z=<distância>`
+ *
+ * A base é `.../index.html`, NÃO `.../`: o Next responde `/terras/globo/` com
+ * 308 (redirect de barra) e o destino cai em 404 — o leitor via "página não
+ * encontrada" em vez do globo. `GloboIframe.tsx` já usa `index.html` pelo mesmo
+ * motivo.
  */
 export interface Voo {
   lat: number;
@@ -20,7 +25,7 @@ export interface Voo {
   base?: string;
 }
 
-export function enderecoVoarAte({ lat, lon, nome, ctx, distancia, base = "/terras/globo/" }: Voo): string {
+export function enderecoVoarAte({ lat, lon, nome, ctx, distancia, base = "/terras/globo/index.html" }: Voo): string {
   const p = new URLSearchParams();
   p.set("voe", `${lat},${lon}`);
   if (nome) p.set("nome", String(nome).slice(0, 120));

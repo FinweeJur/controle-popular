@@ -10,7 +10,7 @@ import { enderecoVoarAte } from "./voo";
 describe("enderecoVoarAte", () => {
   it("monta o endereço com voe, nome e ctx", () => {
     const url = enderecoVoarAte({ lat: -20.3856, lon: -43.5036, nome: "Ouro Preto", ctx: "ouro-preto" });
-    expect(url.startsWith("/terras/globo/?")).toBe(true);
+    expect(url.startsWith("/terras/globo/index.html?")).toBe(true);
     const p = new URLSearchParams(url.slice(url.indexOf("?")));
     expect(p.get("voe")).toBe("-20.3856,-43.5036");
     expect(p.get("nome")).toBe("Ouro Preto");
