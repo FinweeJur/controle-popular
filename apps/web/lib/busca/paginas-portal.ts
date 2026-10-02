@@ -387,6 +387,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["congresso", "deputados", "senadores", "ceap", "cota parlamentar", "camara", "brasilia"],
   },
   {
+    id: "eleicoes-fornecedores-campanha",
+    titulo: "Fornecedores de Campanha 2022 (MG) — quem a campanha pagou",
+    descricao:
+      "Empresas que receberam das campanhas de 2022 em Minas Gerais, por CNPJ, com total contratado, principais candidatos e link para conferir os contratos públicos.",
+    href: "/congresso/financiamento-eleitoral",
+    frente: "congresso",
+    rotulo: "Eleições · Fornecedores",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "eleicoes", "financiamento", "fornecedores", "campanha", "tse",
+      "prestacao de contas", "despesas", "doacao", "contratos", "cnpj",
+    ],
+  },
+  {
     id: "comunicabr-hub",
     titulo: "ComunicaBR — R$ 139 Bi do Governo Federal em Minas Gerais",
     descricao: "Painel unificado dos repasses federais nos 853 municípios mineiros: Bolsa Família, SUS, Fundeb e BPC.",
