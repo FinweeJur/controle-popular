@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-01T06:41:23.556Z
-- Duracao total: 7.4 min
+- Gerado em: 2026-10-02T06:41:53.029Z
+- Duracao total: 6.8 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
-- Total de URLs unicas testadas: 371
-- OK: 318
-- QUEBRADOS: 5
-- REDIRECTS: 22
-- INCONSISTENTES: 26
-- Propostas geradas: 10
+- Total de URLs unicas testadas: 410
+- OK: 346
+- QUEBRADOS: 4
+- REDIRECTS: 27
+- INCONSISTENTES: 33
+- Propostas geradas: 14
 - Links sem proposta: 17
 
 ## Links quebrados e redirecionados
@@ -25,6 +25,7 @@
 | https://dadosabertos.almg.gov.br | REDIRECT | 200 | http://dadosabertos.almg.gov.br/documentacao/index |
 | https://drive.google.com/exemplo | QUEBRADO | 404 | https://drive.google.com/exemplo |
 | https://exemplo.org/a | QUEBRADO | 404 | https://exemplo.org/a |
+| https://falabr.cgu.gov.br | REDIRECT | 200 | https://falabr.cgu.gov.br/web/home |
 | https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md | QUEBRADO | 404 | https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md |
 | https://legis.senado.leg.br/dadosabertos | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
@@ -32,6 +33,7 @@
 | https://museudainconfidencia.museus.gov.br/ | REDIRECT | 403 | https://www.gov.br/museus/pt-br/museus-ibram/museu-da-inconfidencia |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
 | https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
+| https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
 | https://sistemas.anatel.gov.br | REDIRECT | 200 | https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp |
@@ -40,10 +42,12 @@
 | https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cptnacional.org.br/ | REDIRECT | 200 | https://cptnacional.org.br/ |
 | https://www.fundacaorenova.org | REDIRECT | 200 | https://www.reparacaobaciariodoce.com/ |
-| https://www.gov.br/anp/vivo.pdf | QUEBRADO | 404 | https://www.gov.br/anp/vivo.pdf |
 | https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 | REDIRECT | 200 | https://ojs.ifch.unicamp.br/index.php/rhs/article/download/231/217/0 |
+| https://www.mpmg.mp.br | REDIRECT | 200 | https://www.mpmg.mp.br/portal/ |
 | https://www.revistas.usp.br/revhistoria/article/view/89008 | REDIRECT | 200 | https://revistas.usp.br/revhistoria/pt_BR/article/view/89008 |
 | https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica | REDIRECT | 200 | https://www.se.gov.br/agencia |
+| https://www.tjmg.jus.br | REDIRECT | 200 | https://www.tjmg.jus.br/portal-tjmg/ |
+| https://www.trf6.jus.br | REDIRECT | 200 | https://portal.trf6.jus.br/ |
 | https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia | REDIRECT | 200 | https://www2.camara.leg.br/acl_users/credentials_cookie_auth/require_login?came_from=https%3A//www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia |
 
 ## Propostas com diff
@@ -92,7 +96,62 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/[municipio]/interesses/page.tsx
 
-### 5. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 5. https://falabr.cgu.gov.br
+
+```diff
+- href="https://falabr.cgu.gov.br"
++ href="https://falabr.cgu.gov.br/web/home"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/glossario/termos.ts
+
+### 6. https://www.tjmg.jus.br
+
+```diff
+- href="https://www.tjmg.jus.br"
++ href="https://www.tjmg.jus.br/portal-tjmg/"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/glossario/termos.ts
+
+### 7. https://www.mpmg.mp.br
+
+```diff
+- href="https://www.mpmg.mp.br"
++ href="https://www.mpmg.mp.br/portal/"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/glossario/termos.ts
+
+### 8. https://portal.trt3.jus.br
+
+```diff
+- href="https://portal.trt3.jus.br"
++ href="https://portal.trt3.jus.br/internet"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/glossario/termos.ts
+
+### 9. https://www.trf6.jus.br
+
+```diff
+- href="https://www.trf6.jus.br"
++ href="https://portal.trf6.jus.br/"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/glossario/termos.ts
+
+### 10. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
@@ -103,18 +162,7 @@ Confianca: media
 Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
 Origem: apps/web/lib/linkmender/busca.test.ts
 
-### 6. https://www.gov.br/anp/vivo.pdf
-
-```diff
-- href="https://www.gov.br/anp/vivo.pdf"
-+ href="https://www.gov.br/anp/pt-br"
-```
-
-Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
-Origem: apps/web/lib/linkmender/pipeline.test.ts
-
-### 7. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 11. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -125,7 +173,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 8. https://museudainconfidencia.museus.gov.br/
+### 12. https://museudainconfidencia.museus.gov.br/
 
 ```diff
 - href="https://museudainconfidencia.museus.gov.br/"
@@ -136,7 +184,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 9. https://auniao.pb.gov.br/servicos/copy_of_jornal-a-uniao/dec-30
+### 13. https://auniao.pb.gov.br/servicos/copy_of_jornal-a-uniao/dec-30
 
 ```diff
 - href="https://auniao.pb.gov.br/servicos/copy_of_jornal-a-uniao/dec-30"
@@ -147,7 +195,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 10. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+### 14. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
 
 ```diff
 - href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
@@ -180,7 +228,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 
 ## Inconsistentes (nao verificados, sem proposta)
 
-- https://aosquevirao.home.blog/2020/01/01/1o-de-janeiro-de-1994-revolucao-zapatista-em-chiapas-mexico/ (rede) — erro de rede: fetch failed
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
@@ -190,21 +237,29 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1 (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://pib.socioambiental.org/pt/Povo:Mura (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://pib.socioambiental.org/pt/Povo:Waimiri_Atroari (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://pib.socioambiental.org/pt/Povo:Waj%C3%A3pi (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://pib.socioambiental.org/pt/Povo:Xavante (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://pib.socioambiental.org/pt/Povo:Yanomami (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://www.cnmp.mp.br (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12528.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14133.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/leis/l4320.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/l6683.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/leis/l6938.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/leis/l7347orig.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/leis/l8001.htm (rede) — erro de rede: fetch failed
+- https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
+- https://x (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
 ---
