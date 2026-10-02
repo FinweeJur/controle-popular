@@ -2,72 +2,58 @@
 
 /**
  * @file CompanheiroFlutuante.tsx
- * @description O companheiro Seu Nonô no site: uma galinha flutuante, viva e
- * arrastável, que abre o assistente cívico. Roda SOZINHA — sem código, sem app
- * e sem pareamento (decisão do dono, 02/10/2026).
+ * @description O companheiro Seu Nonô no site: uma galinha SOLTA que anda pelo
+ * chão da tela, sobre o conteúdo, e VOA em arco até o botão que a pessoa
+ * precisa clicar quando o Seu Nonô encontra uma página. Roda sozinha — sem
+ * código, sem app e sem pareamento (decisão do dono, 02/10/2026).
  *
- * PAPEL NO PROJETO
- * ----------------
- * É a cara visível do companheiro no portal. A rádio (`PlayerRadio.tsx`) e o
- * widget do Seu Nonô (`SeuNono.tsx`) vivem no canto inferior esquerdo e são
- * arrastáveis (`usarArrastavel`). Esta galinha nasce na MESMA coluna, logo
- * acima do Seu Nonô (`bottom-20 left-4`), e também é arrastável, com a posição
- * lembrada no `localStorage` (chave `cp_companheiro_pos`).
+ * MECÂNICA (adaptada do Clicky original) ────────────────────────────────────
+ * O Clicky de desktop (farzaa/clicky, porta Bitshank-2338/clicky-windows,
+ * espelhado aqui) tem três peças que reproduzimos:
  *
- * Montada no layout RAIZ (`app/layout.tsx`), ela NÃO desmonta na navegação
- * entre páginas — então a galinha permanece de uma página para outra, com a
- * posição e o estado de ânimo preservados.
+ *   1. **Bicho solto, ao lado do conteúdo** — não é um botão; é um overlay
+ *      `pointer-events: none` (o sprite continua arrastável). Ele não bloqueia
+ *      o clique no que está atrás.
+ *   2. **Voo em arco bezier** ("teacher pace") até o alvo, em vez de pulo seco.
+ *   3. **Anel pulsante** sobre o elemento enquanto ele fica parado ali
+ *      ("dwell"), e depois volta a passear.
  *
- * ═══ A GALINHA TEM VIDA: 9 ESTADOS DO ATLAS PETDEX ═══
+ * QUEM DIZ ONDE CLICAR: a resposta do Seu Nonô marca o botão "Abrir página"
+ * com `data-companheiro-alvo="abrir-pagina"` (o mesmo atributo que a
+ * `PonteCompanheiro` manda para o app local). A galinha observa o DOM, acha o
+ * primeiro alvo visível e voa até ele. O Seu Nonô responde; a galinha guia.
  *
- * A arte é o atlas do Petdex (`dingdong-chicken`, autor hydrogen2o — ver
- * `public/companheiro/dingdong-chicken/PROVENIENCIA.md`). O atlas tem 8
- * colunas × 9 linhas de 192×208, onde cada LINHA é um estado e cada coluna um
- * quadro (alguns estados têm menos quadros). Os estados usados:
+ * A galinha vive no layout RAIZ (`app/layout.tsx`): permanece de uma página
+ * para outra.
  *
- *   idle | running-right | running-left | waving | jumping
- *   failed | waiting | running | review
- *
- * O estado reage ao contexto do portal, "combinando com o estágio" da página:
- *   - trocar de rota  → `jumping` (chegou);
- *   - passar o mouse  → `waving` (acena);
- *   - arrastar        → `running-left`/`running-right` (corre para o lado);
- *   - abrir o Seu Nonô → `waiting` (pensando);
- *   - sem internet    → `failed` (triste, fica até voltar);
- *   - parada há um tempo → `review` (quebra o idle).
+ * ARTE: atlas do Petdex (`dingdong-chicken`) — 8 colunas × 9 linhas de 192×208,
+ * uma linha por estado. Ver `public/companheiro/dingdong-chicken/PROVENIENCIA.md`.
  *
  * DECISÕES TÉCNICAS
  * -----------------
- * - O quadro avança por `requestAnimationFrame` escrevendo `background-position`
- *   direto no DOM (via `ref`), SEM re-render do React a cada quadro.
- * - Um atlas único (`estados.webp`, 99 KB, linha `idle`..`review`) é carregado
- *   uma vez e cacheado; o peso foi cortado de 1,2 MB para 99 KB recortando as
- *   9 linhas e reduzindo a 0,4 da escala nativa.
- * - Reusa `usarArrastavel`: **clique ≠ arrasto** pelo limiar de 5 px.
- * - `prefers-reduced-motion: reduce` congela no quadro 0 do idle.
- * - É um `<button>` de verdade: foco visível, teclado (Enter/Espaço) e
- *   `aria-label` — a galinha é decorativa (`aria-hidden`), o foco é o botão.
+ * - Um único `requestAnimationFrame` escreve `transform`/`background-position`
+ *   direto no DOM, SEM re-render por quadro. Passeio e voo são a mesma
+ *   interpolação de posição.
+ * - O alvo é relido a cada quadro (`getBoundingClientRect`), então o voo
+ *   acompanha rolagem e mudança de layout sozinho.
+ * - `prefers-reduced-motion`: fica parado no canto e não voa (acessibilidade).
+ * - Clique na galinha abre o Seu Nonô; arrastar a move.
  */
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import { usePathname } from "next/navigation";
-import { usarArrastavel } from "@/lib/usarArrastavel";
 
 // ── Geometria do atlas (medida; ver PROVENIENCIA.md) ──────────────────────
 const CELL_W = 192;
 const CELL_H = 208;
 const SHEET_COLS = 8;
 const SHEET_ROWS = 9;
-/** Caixa que a galinha de fato ocupa dentro da célula (o resto é transparente). */
 const BBOX = { x: 44, y: 5, w: 103, h: 198 };
-/** Altura que a galinha tem na tela (cabe no botão de 48 px). */
 const ALTURA_TELA = 42;
 const ESCALA = ALTURA_TELA / BBOX.h;
-/** Duração de um quadro, em ms. */
-const PERIODO = 130;
+const PERIODO = 130; // ms por quadro
 
-/** Estado -> linha no atlas e número de quadros (colunas usadas). */
 const ESTADOS = {
   idle: { linha: 0, quadros: 7 },
   "running-right": { linha: 1, quadros: 8 },
@@ -79,167 +65,295 @@ const ESTADOS = {
   running: { linha: 7, quadros: 6 },
   review: { linha: 8, quadros: 6 },
 } as const;
-
 type NomeEstado = keyof typeof ESTADOS;
 
-/** `background-position` que mostra o quadro `frame` do estado. */
 function posicao(nome: NomeEstado, frame: number): string {
   const x = -(BBOX.x + frame * CELL_W) * ESCALA;
   const y = -(BBOX.y + ESTADOS[nome].linha * CELL_H) * ESCALA;
   return `${x}px ${y}px`;
 }
 
-interface EstadoAnim {
-  nome: NomeEstado;
-  /** Instante (ms) em que o estado começou, para calcular o quadro. */
-  inicio: number;
-  /** Instante em que um estado efêmero termina; `Infinity` para os fixos. */
-  fim: number;
+// ── Física do passeio/voo ─────────────────────────────────────────────────
+const LARGURA_PET = Math.round(BBOX.w * ESCALA); // ~22
+const ALTURA_PET = Math.round(BBOX.h * ESCALA); // 42
+const VELOCIDADE = 34; // px por segundo andando
+const MARGEM = 12;
+const DUR_VOO_MIN = 420; // ms
+const DUR_VOO_MAX = 900; // ms
+const ESPERA_NO_ALVO_MS = 2800;
+
+interface Ponto {
+  x: number;
+  y: number;
 }
 
-const IDLE: EstadoAnim = { nome: "idle", inicio: 0, fim: Number.POSITIVE_INFINITY };
+/** Ponto de uma curva de Bézier quadrática (arco do voo, "teacher pace"). */
+function bezier(p0: Ponto, c: Ponto, p1: Ponto, t: number): Ponto {
+  const u = 1 - t;
+  return {
+    x: u * u * p0.x + 2 * u * t * c.x + t * t * p1.x,
+    y: u * u * p0.y + 2 * u * t * c.y + t * t * p1.y,
+  };
+}
+
+/** Suaviza a velocidade do voo (parte devagar, chega devagar). */
+function suavizar(t: number): number {
+  return t * t * (3 - 2 * t);
+}
+
+interface Voo {
+  fase: "ida" | "volta";
+  p0: Ponto;
+  ctrl: Ponto;
+  inicio: number;
+  dur: number;
+  destino: Ponto;
+}
 
 export function CompanheiroFlutuante() {
-  const { estilo, arrastando, foiArrasto, handlers } = usarArrastavel("cp_companheiro_pos");
   const pathname = usePathname();
-
+  const caixaRef = useRef<HTMLDivElement>(null);
   const spriteRef = useRef<HTMLSpanElement>(null);
-  const estadoRef = useRef<EstadoAnim>(IDLE);
-  const arrastandoRef = useRef(false);
-  const direcaoRef = useRef<"running-right" | "running-left">("running-right");
-  const pegaX = useRef(0);
-  const pegaY = useRef(0);
-  const ultimoX = useRef(0);
+  const anelRef = useRef<HTMLSpanElement>(null);
 
-  /** Pede um estado por um tempo; estados `Infinity` seguram até outro pedir. */
-  const pedir = useCallback((nome: NomeEstado, duracaoMs: number) => {
-    const agora = performance.now();
-    estadoRef.current = { nome, inicio: agora, fim: agora + duracaoMs };
+  const posRef = useRef<Ponto>({ x: 24, y: 0 }); // y = o quanto subiu do chão
+  const direcaoRef = useRef(1);
+  const pausaAteRef = useRef(0);
+  const arrastandoRef = useRef(false);
+  const alvoElRef = useRef<HTMLElement | null>(null);
+  const vooRef = useRef<Voo | null>(null);
+  const chegouEmRef = useRef<number | null>(null);
+  const estadoRef = useRef<{ nome: NomeEstado; inicio: number }>({ nome: "idle", inicio: 0 });
+
+  // Posição inicial antes da pintura (evita "pulo" no primeiro quadro).
+  useLayoutEffect(() => {
+    if (caixaRef.current) {
+      caixaRef.current.style.transform = `translate3d(${posRef.current.x}px, 0, 0)`;
+    }
   }, []);
 
-  // Espelha o estado de arrasto num ref (o laço lê no rAF, fora do render).
-  useEffect(() => {
-    arrastandoRef.current = arrastando;
-  }, [arrastando]);
-
-  // ── O laço de animação: escreve background-position direto no DOM ────────
-  useEffect(() => {
-    const el = spriteRef.current;
-    if (!el) return;
-    el.style.backgroundPosition = posicao("idle", 0);
-
-    // Sem movimento: fica no quadro 0 do idle.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let raf = 0;
-    const passo = (t: number) => {
-      const est = estadoRef.current;
-      // Estado efêmero vencido volta a `idle` (o arrasto manda enquanto acontece).
-      if (t > est.fim && !arrastandoRef.current) {
-        estadoRef.current = { nome: "idle", inicio: t, fim: Number.POSITIVE_INFINITY };
+  /** Escreve posição, quadro e anel direto no DOM. */
+  const aplicar = useCallback((agora: number, estado: NomeEstado) => {
+    if (caixaRef.current) {
+      caixaRef.current.style.transform = `translate3d(${Math.round(posRef.current.x)}px, ${Math.round(-posRef.current.y)}px, 0)`;
+    }
+    if (spriteRef.current) {
+      const def = ESTADOS[estado];
+      const frame = Math.floor((agora - estadoRef.current.inicio) / PERIODO) % def.quadros;
+      spriteRef.current.style.backgroundPosition = posicao(estado, frame);
+    }
+    // Anel pulsante sobre o alvo durante o "dwell". `display` (não `opacity`):
+    // a animação `animate-ping` mexe na opacidade e venceria o estilo inline.
+    const anel = anelRef.current;
+    if (anel) {
+      if (chegouEmRef.current !== null && alvoElRef.current) {
+        const r = alvoElRef.current.getBoundingClientRect();
+        anel.style.left = `${r.left - 6}px`;
+        anel.style.top = `${r.top - 6}px`;
+        anel.style.width = `${r.width + 12}px`;
+        anel.style.height = `${r.height + 12}px`;
+        anel.style.display = "block";
+      } else {
+        anel.style.display = "none";
       }
-      const atual = estadoRef.current;
-      const def = ESTADOS[atual.nome];
-      const frame = Math.floor((t - atual.inicio) / PERIODO) % def.quadros;
-      el.style.backgroundPosition = posicao(atual.nome, frame);
+    }
+  }, []);
+
+  // ── Centro do alvo onde a galinha para (logo acima dele, sem cobrir) ────
+  const pontoDoAlvo = useCallback((): Ponto | null => {
+    const el = alvoElRef.current;
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return null;
+    const x = Math.min(
+      window.innerWidth - LARGURA_PET - MARGEM,
+      Math.max(MARGEM, r.left + r.width / 2 - LARGURA_PET / 2),
+    );
+    const y = Math.max(0, window.innerHeight - r.top - 2);
+    return { x, y };
+  }, []);
+
+  // ── O laço: passeio, voo de ida, dwell e voo de volta ───────────────────
+  useEffect(() => {
+    const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    let anterior = performance.now();
+
+    const passo = (agora: number) => {
+      const dt = Math.min(0.05, (agora - anterior) / 1000);
+      anterior = agora;
+      let estado: NomeEstado = "idle";
+      const voo = vooRef.current;
+
+      if (voo) {
+        const t = Math.min(1, (agora - voo.inicio) / voo.dur);
+        const destino = voo.fase === "ida" ? pontoDoAlvo() ?? voo.destino : voo.destino;
+        posRef.current = bezier(voo.p0, voo.ctrl, destino, suavizar(t));
+        estado = voo.fase === "ida" ? "jumping" : "running";
+        if (t >= 1) {
+          vooRef.current = null;
+          if (voo.fase === "ida") chegouEmRef.current = agora; // dwell no alvo
+        }
+      } else if (chegouEmRef.current !== null) {
+        // Parada no alvo: acena e mostra o anel. Depois, voo de volta.
+        estado = "waving";
+        if (agora - chegouEmRef.current > ESPERA_NO_ALVO_MS) {
+          chegouEmRef.current = null;
+          const p0 = { ...posRef.current };
+          const destino: Ponto = { x: Math.max(MARGEM, Math.min(window.innerWidth - LARGURA_PET - MARGEM, p0.x)), y: 0 };
+          vooRef.current = {
+            fase: "volta",
+            p0,
+            ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 80 },
+            inicio: agora,
+            dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + Math.abs(p0.x - destino.x)),
+            destino,
+          };
+        }
+      } else if (!arrastandoRef.current && !semMovimento) {
+        // Passeio: anda, pausa de vez em quando, vira nas bordas.
+        if (agora >= pausaAteRef.current) {
+          posRef.current.x += direcaoRef.current * VELOCIDADE * dt;
+          const maxX = window.innerWidth - LARGURA_PET - MARGEM;
+          if (posRef.current.x <= MARGEM) {
+            posRef.current.x = MARGEM;
+            direcaoRef.current = 1;
+          } else if (posRef.current.x >= maxX) {
+            posRef.current.x = maxX;
+            direcaoRef.current = -1;
+          }
+          estado = direcaoRef.current > 0 ? "running-right" : "running-left";
+          if (Math.random() < 0.004) pausaAteRef.current = agora + 900 + Math.random() * 1800;
+        } else {
+          estado = "idle";
+        }
+      }
+
+      if (estadoRef.current.nome !== estado) estadoRef.current = { nome: estado, inicio: agora };
+      aplicar(agora, estado);
       raf = requestAnimationFrame(passo);
     };
+
     raf = requestAnimationFrame(passo);
     return () => cancelAnimationFrame(raf);
+  }, [aplicar, pontoDoAlvo]);
+
+  // ── Voa em arco até um alvo ─────────────────────────────────────────────
+  const voarPara = useCallback(
+    (el: HTMLElement) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return; // fora da tela
+      alvoElRef.current = el;
+      const p0 = { ...posRef.current };
+      const destino: Ponto =
+        pontoDoAlvo() ?? { x: r.left, y: Math.max(0, window.innerHeight - r.top - 2) };
+      vooRef.current = {
+        fase: "ida",
+        p0,
+        ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 90 },
+        inicio: performance.now(),
+        dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + (Math.abs(p0.x - destino.x) + Math.abs(p0.y - destino.y)) * 0.4),
+        destino,
+      };
+      chegouEmRef.current = null;
+    },
+    [pontoDoAlvo],
+  );
+
+  // Nova resposta do Seu Nonô muda o DOM: procura um alvo e voa até ele.
+  useEffect(() => {
+    const procurar = () => {
+      if (vooRef.current || chegouEmRef.current !== null || alvoElRef.current) return;
+      const alvo = document.querySelector<HTMLElement>('[data-companheiro-alvo="abrir-pagina"]');
+      if (alvo) voarPara(alvo);
+    };
+    const obs = new MutationObserver(procurar);
+    obs.observe(document.body, { childList: true, subtree: true });
+    procurar();
+    const t = window.setTimeout(procurar, 600);
+    return () => {
+      obs.disconnect();
+      window.clearTimeout(t);
+    };
+  }, [pathname, voarPara]);
+
+  // Gatilho manual (outro componente pode pedir o voo).
+  useEffect(() => {
+    const aoPedir = (e: Event) => {
+      const sel = (e as CustomEvent<{ seletor?: string }>).detail?.seletor;
+      const el = sel
+        ? document.querySelector<HTMLElement>(sel)
+        : document.querySelector<HTMLElement>('[data-companheiro-alvo="abrir-pagina"]');
+      if (el) voarPara(el);
+    };
+    window.addEventListener("cp:companheiro-voar", aoPedir);
+    return () => window.removeEventListener("cp:companheiro-voar", aoPedir);
+  }, [voarPara]);
+
+  const aoClicar = useCallback(() => {
+    if (arrastandoRef.current) return;
+    window.dispatchEvent(new CustomEvent("abrir-seu-nono"));
   }, []);
 
-  // ── Reações ao contexto do portal ────────────────────────────────────────
-  // Trocou de página: um pulinho de chegada.
-  useEffect(() => {
-    pedir("jumping", 800);
-  }, [pathname, pedir]);
-
-  // Abriu o Seu Nonô: a galinha fica "pensando" junto.
-  useEffect(() => {
-    const aoAbrir = () => pedir("waiting", 1500);
-    window.addEventListener("abrir-seu-nono", aoAbrir);
-    return () => window.removeEventListener("abrir-seu-nono", aoAbrir);
-  }, [pedir]);
-
-  // Sem internet: triste. Voltou: comemora.
-  useEffect(() => {
-    const offline = () => {
-      estadoRef.current = { nome: "failed", inicio: performance.now(), fim: Number.POSITIVE_INFINITY };
-    };
-    const online = () => pedir("jumping", 800);
-    if (typeof navigator !== "undefined" && navigator.onLine === false) offline();
-    window.addEventListener("offline", offline);
-    window.addEventListener("online", online);
-    return () => {
-      window.removeEventListener("offline", offline);
-      window.removeEventListener("online", online);
-    };
-  }, [pedir]);
-
-  // Parada há um tempo: uma quebra de idle de vez em quando.
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      if (!arrastandoRef.current && estadoRef.current.nome === "idle") {
-        pedir("review", 1600);
-      }
-    }, 22000);
-    return () => window.clearInterval(id);
-  }, [pedir]);
-
-  /** Clicar leva ao assistente; arrastar só move a galinha. */
-  const aoClicar = useCallback(() => {
-    if (foiArrasto()) return;
-    window.dispatchEvent(new CustomEvent("abrir-seu-nono"));
-  }, [foiArrasto]);
-
-  // Handlers do arrasto + a direção do movimento para correr para o lado certo.
-  const handlersCompostos = {
-    onPointerDown: (e: ReactPointerEvent<HTMLElement>) => {
-      pegaX.current = e.clientX;
-      pegaY.current = e.clientY;
-      ultimoX.current = e.clientX;
-      handlers.onPointerDown(e);
-    },
-    onPointerMove: (e: ReactPointerEvent<HTMLElement>) => {
-      handlers.onPointerMove(e);
-      if (Math.hypot(e.clientX - pegaX.current, e.clientY - pegaY.current) < 5) return;
-      const dx = e.clientX - ultimoX.current;
-      if (Math.abs(dx) > 2) direcaoRef.current = dx >= 0 ? "running-right" : "running-left";
-      ultimoX.current = e.clientX;
-      if (estadoRef.current.nome !== direcaoRef.current) {
-        estadoRef.current = { nome: direcaoRef.current, inicio: performance.now(), fim: Number.POSITIVE_INFINITY };
-      }
-    },
-    onPointerUp: (e: ReactPointerEvent<HTMLElement>) => {
-      handlers.onPointerUp(e);
-      estadoRef.current = IDLE;
-    },
-    onPointerCancel: (e: ReactPointerEvent<HTMLElement>) => {
-      handlers.onPointerCancel(e);
-      estadoRef.current = IDLE;
-    },
+  // Arrasto: tira do passeio; soltar retoma a partir dali.
+  const pega = useRef<{ px: number; py: number; x0: number; y0: number } | null>(null);
+  const onPointerDown = (e: ReactPointerEvent<HTMLElement>) => {
+    pega.current = { px: e.clientX, py: e.clientY, x0: posRef.current.x, y0: posRef.current.y };
+    arrastandoRef.current = true;
+    alvoElRef.current = null;
+    vooRef.current = null;
+    chegouEmRef.current = null;
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+  const onPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
+    const g = pega.current;
+    if (!g) return;
+    posRef.current.x = Math.max(MARGEM, Math.min(window.innerWidth - LARGURA_PET - MARGEM, g.x0 + e.clientX - g.px));
+    posRef.current.y = Math.max(0, g.y0 - (e.clientY - g.py));
+  };
+  const onPointerUp = () => {
+    pega.current = null;
+    arrastandoRef.current = false;
+    pausaAteRef.current = performance.now() + 600;
   };
 
   return (
-    <div className="fixed bottom-20 left-4 z-40 print:hidden" style={estilo}>
-      <div className="group relative flex flex-col items-end">
+    <>
+      {/* Anel pulsante sobre o alvo (mecânica do Clicky). Click-through. */}
+      <span
+        ref={anelRef}
+        aria-hidden="true"
+        className="pointer-events-none fixed z-40 animate-ping rounded-xl border-2 border-primary"
+        style={{ display: "none" }}
+      />
+
+      {/* A galinha. O container é click-through; só o sprite pega o ponteiro. */}
+      <div
+        ref={caixaRef}
+        className="pointer-events-none fixed bottom-2 left-0 z-40 print:hidden"
+        style={{ willChange: "transform" }}
+      >
         <button
           type="button"
           onClick={aoClicar}
-          onMouseEnter={() => pedir("waving", 900)}
-          onFocus={() => pedir("waving", 900)}
-          {...handlersCompostos}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
           aria-label="Abrir o Seu Nonô, o assistente do portal"
-          title="Pergunte ao Seu Nonô — arraste para mover"
-          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface shadow-lg transition hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${arrastando ? "cursor-grabbing" : "cursor-pointer"}`}
+          title="Pergunte ao Seu Nonô — arraste a galinha para mover"
+          className="pointer-events-auto block touch-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-grab active:cursor-grabbing"
+          style={{ width: LARGURA_PET + 8, height: ALTURA_PET }}
         >
           <span
             ref={spriteRef}
             aria-hidden="true"
             style={{
               display: "block",
-              width: Math.round(BBOX.w * ESCALA),
-              height: Math.round(BBOX.h * ESCALA),
+              width: LARGURA_PET,
+              height: ALTURA_PET,
+              margin: "0 auto",
               backgroundImage: "url('/companheiro/dingdong-chicken/estados.webp')",
               backgroundRepeat: "no-repeat",
               backgroundSize: `${SHEET_COLS * CELL_W * ESCALA}px ${SHEET_ROWS * CELL_H * ESCALA}px`,
@@ -247,12 +361,7 @@ export function CompanheiroFlutuante() {
             }}
           />
         </button>
-
-        {/* Dica visual: aparece no hover e no foco por teclado. */}
-        <span className="pointer-events-none absolute left-full top-1/2 ml-2 -translate-y-1/2 whitespace-nowrap rounded-lg border border-border bg-surface-2 px-2 py-1 text-xs text-text opacity-0 shadow transition group-hover:opacity-100 group-focus-within:opacity-100">
-          Pergunte ao Seu Non&ocirc;
-        </span>
       </div>
-    </div>
+    </>
   );
 }

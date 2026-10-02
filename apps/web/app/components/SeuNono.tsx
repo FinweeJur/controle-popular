@@ -46,7 +46,6 @@ import {
 } from "./SeuNonoData";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
-import { SessaoCompanheiro } from "./SessaoCompanheiro";
 import {
   useTypewriter,
   IndicadorStatusChat,
@@ -1052,7 +1051,6 @@ export function SeuNono() {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              <SessaoCompanheiro />
               {nivel !== "busca" && (
                 <button
                   onClick={abrirBusca}
