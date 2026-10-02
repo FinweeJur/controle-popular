@@ -9,9 +9,30 @@ Arte de terceiros usada no bichinho flutuante do portal.
 | Autor | `hydrogen2o` (https://github.com/hydrogen2o) |
 | Fonte original | https://petdex.dev/pets/dingdong-chicken |
 | Atlas | https://assets.petdex.dev/pets/dingdong-chicken-4e6ba3f9603d/sprite.webp |
-| Formato | 8 colunas × 11 linhas de 192×208 px; linha 0 = `idle`, 7 quadros |
+| Formato | 8 colunas × 11 linhas de 192×208 px |
 | Baixado em | 2026-10-02 |
-| Arquivo usado | `idle.webp` (recorte da linha `idle`, 1536×208, ~34 KB) |
+| Arquivo usado | `estados.webp` (linhas 0–8, reduzido a 0,4 da escala; 99 KB) |
+
+## Estados (linhas do atlas)
+
+O atlas do ChatGPT/Petdex tem **9 estados** (linhas), cada um com uma
+quantidade de quadros (colunas):
+
+| # | Estado | Quadros | Uso no site |
+|---|---|---|---|
+| 0 | `idle` | 7 | parada (padrão) |
+| 1 | `running-right` | 8 | correndo ao arrastar para a direita |
+| 2 | `running-left` | 8 | correndo ao arrastar para a esquerda |
+| 3 | `waving` | 4 | acena no hover/foco |
+| 4 | `jumping` | 5 | pula ao trocar de página |
+| 5 | `failed` | 8 | sem internet |
+| 6 | `waiting` | 6 | ao abrir o Seu Nonô (pensando) |
+| 7 | `running` | 6 | (reserva) |
+| 8 | `review` | 6 | quebra de idle de vez em quando |
+
+As linhas 9 e 10 existem no atlas original mas **não têm nome documentado** —
+ficaram de fora. O `estados.webp` recorta só as 9 primeiras e reduz para 0,4
+(768×936 → 614×749), cortando o peso de 1,2 MB para 99 KB.
 
 ## Licença — PENDENTE
 
@@ -24,9 +45,3 @@ a arte enviada por usuário.
 (`hydrogen2o`) depois** para confirmar a permissão. Se a permissão não vier,
 trocar por arte própria ou remover este diretório e o uso em
 `app/components/CompanheiroFlutuante.tsx`.
-
-## Como rebaixar outros estados
-
-Se precisar de outro estado (ex.: `waving`, linha 3), baixe o atlas original
-pela URL acima e recorte a linha correspondente para um webp de 1536×208,
-seguindo a mesma lógica do `idle.webp`.
