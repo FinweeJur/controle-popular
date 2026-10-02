@@ -11,6 +11,8 @@ import { lerEstabelecimentosMg } from "@/lib/judiciario/presidios-cniep-dados";
 /** Sinônimo — o dado agora vive no loader server-only. */
 const ESTABELECIMENTOS_MG = lerEstabelecimentosMg();
 import TabelaPresidios from "./TabelaPresidios";
+import { obterSisdepen } from "@/lib/server-only/dados-sisdepen";
+import TabelaSisdepenUf from "./TabelaSisdepenUf";
 
 /**
  * `/judiciario/presidios` — quem inspeciona os estabelecimentos penais de
@@ -74,6 +76,10 @@ function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?:
 }
 
 export default function PresidiosPage() {
+  const sis = obterSisdepen();
+  const b = sis.brasil;
+  const fmtInt = (n: number) => n.toLocaleString("pt-BR");
+  const fmtPct = (n: number | null) => (n == null ? "—" : n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%");
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
@@ -253,6 +259,51 @@ export default function PresidiosPage() {
 
       {/* ═══ A TABELA COMPLETA (cliente) ═══ */}
       <TabelaPresidios />
+
+      {/* ═══ O OUTRO LADO: QUEM ESTÁ PRESO (SISDEPEN) ═══ */}
+      {sis.total_estabelecimentos > 0 ? (
+        <section aria-label="População prisional" className="mt-14 space-y-5">
+          <header>
+            <p className="text-[.82em] font-semibold uppercase tracking-wide text-text-soft">
+              O outro lado · População prisional
+            </p>
+            <h2 className="font-display text-[1.4em] leading-tight font-bold text-text">
+              Quantas pessoas estão presas — e em que condições de lotação
+            </h2>
+            <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
+              A inspeção acima diz se o juiz visitou a prisão. Este bloco diz o que ele encontra: o censo do
+              SISDEPEN ({sis.ciclo}), com a população prisional, a capacidade declarada e o perfil.{" "}
+              <strong className="text-text">Ocupação acima de 100% é superlotação</strong> — não é avaliação do
+              portal, é a conta entre o número de presos e as vagas que a própria administração declarou.
+            </p>
+          </header>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <Cartao valor={fmtInt(b.populacao)} rotulo="pessoas presas no Brasil" nota={`${fmtInt(sis.total_estabelecimentos)} estabelecimentos no censo`} />
+            <Cartao valor={fmtPct(b.taxa_ocupacao)} rotulo="taxa de ocupação nacional" nota="população ÷ capacidade declarada" />
+            <Cartao valor={fmtPct(b.provisorios_pct)} rotulo="presos sem condenação" nota={`${fmtInt(b.provisorios)} pessoas aguardando julgamento`} />
+            <Cartao valor={fmtPct(b.pretos_pardos_pct)} rotulo="são pretos ou pardos" nota="cor/raça autodeclarada, agregada" />
+          </div>
+
+          <p className="rounded-xl border border-alert/40 bg-alert/10 p-3 text-[.92em]">
+            <strong>Dado autodeclarado e agregado.</strong> A cor/raça e a faixa etária são preenchidas pela
+            própria administração penitenciária e validadas pela SENAPPEN; o portal publica só o total por UF —
+            nenhum dado individual. Superlotação, provisoriedade e perfil são fatos do censo oficial, não
+            conclusão deste portal.
+          </p>
+
+          <TabelaSisdepenUf registros={sis.registros} />
+
+          <p className="text-[.82em] text-text-soft">
+            Fonte:{" "}
+            <a href={sis.url_fonte} target="_blank" rel="noopener noreferrer" className="underline">
+              SENAPPEN — SISDEPEN ({sis.ciclo})
+            </a>
+            {" "}(<a href={sis.url_arquivo} target="_blank" rel="noopener noreferrer" className="underline">arquivo</a>).
+            Coletor: <code>scripts/etl/sisdepen/coletar-sisdepen.py</code>. {sis.metodologia}
+          </p>
+        </section>
+      ) : null}
 
       {/* ═══ DECLARAÇÃO ═══ */}
       <section
