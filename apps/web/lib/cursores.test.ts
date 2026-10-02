@@ -53,8 +53,14 @@ const CSS = [
 
 const DIR_CURSOR = path.join(RAIZ, "public", "cursor");
 
-/** Regex única: captura `nome.ext` e o par de hotspot escrito no CSS. */
-const RE_URL = /url\("\/cursor\/([\w-]+\.(?:cur|ani))"\)\s+(\d+)\s+(\d+)/g;
+/**
+ * Regex única: captura `nome.ext` e o par de hotspot escrito no CSS.
+ * O `\)?` cobre a forma com variável do `globals.css`
+ * (`var(--cp-cursor-x, url("/cursor/x.cur"))`) — o `CursorTema` pinta o
+ * preenchimento com a cor do tema e mantém o `.cur` como fallback. O
+ * `hud.css` do globo segue com o `url(...)` literal.
+ */
+const RE_URL = /url\("\/cursor\/([\w-]+\.(?:cur|ani))"\)\)?\s+(\d+)\s+(\d+)/g;
 
 /**
  * Lê o hotspot do primeiro frame (32 px, o que o navegador usa em tela
@@ -264,7 +270,7 @@ describe("cursores do site -- CSS e disco batem", () => {
   it("os quatro estados essenciais estão ligados no portal", () => {
     const { texto } = CSS[0];
     expect(texto, "seta padrão sem arquivo").toMatch(
-      /\*\s*\{\s*cursor: url\("\/cursor\/pointer\.cur"\)/
+      /\*\s*\{\s*cursor:\s*(?:var\(--cp-cursor-pointer,\s*)?url\("\/cursor\/pointer\.cur"\)/
     );
     expect(texto).toMatch(/url\("\/cursor\/link\.cur"\)/);
     expect(texto).toMatch(/url\("\/cursor\/beam\.cur"\)/);
@@ -275,7 +281,7 @@ describe("cursores do site -- CSS e disco batem", () => {
   it("localização e os dois .ani de carregamento estão ligados nos dois CSS", () => {
     for (const { rel, texto } of CSS) {
       expect(texto, `${rel} sem cursor de localização`).toMatch(
-        /url\("\/cursor\/location\.cur"\)\s+6\s+22/
+        /url\("\/cursor\/location\.cur"\)\)?\s+6\s+22/
       );
       expect(texto, `${rel} sem busy.ani`).toMatch(
         /url\("\/cursor\/busy\.ani"\)\s+11\s+11/
