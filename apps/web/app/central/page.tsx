@@ -397,7 +397,8 @@ export default function EixoCentralPage() {
           Levante Popular da Juventude) e a de saúde (inspirada no Movimento Brasil Popular)
           vêm dessas organizações. E a inspiração tecnológica hacker pra criar redes mais
           justas veio da Código Não Binário. Sem essas organizações cobrando por justiça e
-          direitos, esse portal não existiria. E ao Instituto Esperança Maria, pelas
+          direitos nas florestas, nas águas, no campo, na cidade e nas redes, esse portal não
+          existiria. E ao Instituto Esperança Maria, pelas
           experiências em educação ambiental de direitos humanos, que agora dão luz a esse
           portal.
         </p>
