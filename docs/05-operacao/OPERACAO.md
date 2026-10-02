@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-09-29 (espelho no GitLab no lugar do Gitee; token com `write_repository` conferido)
+> **Última medição:** 2026-10-02 (deploy `278e6430` healthy; diagnóstico de build e teto de 60s por página documentados)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc, guara, docker, duplo deploy
@@ -112,6 +112,31 @@ guara logs controle-popular-web-0b4895 --tail 100
 # Deploy manual a partir da branch atual
 guara deploy --service controle-popular-web-0b4895
 ```
+
+### Diagnosticar build que falha (aprendizado 02/10/2026)
+
+`guara build-logs` tem **timeout de 30s no servidor**. Em build com muito log
+(3 tentativas, ~30 min) a resposta estoura e o CLI devolve
+`Could not reach GuaraCloud API` — que parece rede, mas é o teto de 30s do
+servidor. Notas medidas:
+
+- O `-d <id>` **curto** devolve `BAD_REQUEST`; use o **UUID completo**
+  (`guara deployments list --json`).
+- Para ler o log de verdade, chame o próprio cliente do CLI com timeout
+  longo (script temporário; nunca imprime a chave). IDs do portal:
+  projeto `bf90d097-7def-44f9-bff4-b610d209886d`, serviço web
+  `6a817bb9-1485-4c4b-8248-bcd432839949`.
+  `GET /api/v1/projects/<proj>/services/<svc>/deployments/<dep>/logs?limit=N&direction=backward`.
+- `limit` pequeno (≤40) responde; grande estoura os 30s do servidor.
+- O container de build do Guara tem **3 CPUs** → 3 workers no SSG.
+
+O log de 02/10 mostrou o que derrubava o build, e cada um tem sua armadilha
+no [AGENTS.md §6](/AGENTS.md):
+
+- **Teto de 60s por página**: `/paraopeba/biblioteca` falhou nas 3 tentativas.
+- Causa: `getCloudflareContext({ async: true })` no SSG subia wrangler/workerd.
+- Correção: variante **sync** (lança na hora fora do Worker e cai no disco).
+- Deploy `278e6430` subiu **healthy** depois da correção.
 
 ### Manter o site no ar (modo túnel)
 

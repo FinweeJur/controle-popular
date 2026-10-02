@@ -17,6 +17,7 @@
 - [Verificação por item](#verificação-por-item)
 - [Execução (01/10/2026) — F1 + F2 feitas, F3 dispensada](#execução-01102026--f1--f2-feitas-f3-dispensada)
 - [Segunda varredura (02/10/2026)](#segunda-varredura-02102026)
+- [Falhas de build de 02/10/2026 (tempo, não contexto)](#falhas-de-build-de-02102026-tempo-não-contexto)
 - [Decisões registradas](#decisões-registradas)
 
 ## O problema
@@ -182,6 +183,22 @@ Para cortá-los, o caminho é o da F2 (amostra/fatiar), não o `.dockerignore`.
 
 Nota: `apps/web/public/busca-indice` (16,5 MB) **não é versionado** — o Guara
 não o recebe e o prebuild o regenera. Nada a fazer.
+
+## Falhas de build de 02/10/2026 (tempo, não contexto)
+
+O contexto já cabia (~199,6 MB), mas o build seguia falhando. O log do deploy
+(ver diagnóstico em [OPERACAO.md](../05-operacao/OPERACAO.md)) mostrou **três**
+causas, todas de TEMPO — nenhuma de tamanho:
+
+| Sintoma | Causa | Correção |
+|---|---|---|
+| `Invalid segment configuration export detected` | `dynamicParams = !exportandoEstatico` (não-literal) em `app/[municipio]/layout.tsx` | literal `true` — commit `493d4d03` |
+| `Export encountered an error` em `/ambiental/copam` | agregações locais liam `getDb()` cru, sem reserva; timeout de conexão derruba o SSG | `comBancoReserva` — commit `8a8f96de` |
+| `/paraopeba/biblioteca` > 60s nas 3 tentativas | `getCloudflareContext({ async: true })` no SSG sobe wrangler/workerd; quebra no Alpine | variante sync — commit `78eaa3a5` |
+
+Deploy `278e6430` subiu **healthy**. Lição: o teto de **60s por página** é o
+limitante real quando o banco carregado deixa cada leitura lenta; página que
+estoura de forma consistente sai do build (render sob demanda) ou perde custo.
 
 ## Decisões registradas
 

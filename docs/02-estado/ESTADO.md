@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-01
+> **Última medição:** 2026-10-02
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -100,7 +100,7 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
 | A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dev 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
-| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | 🚧 | `guara deploy` **só depois de A0** (liberado); env de build já Yes |
+| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | ✅ | deploy `278e6430` **healthy** (02/10); o build travava por teto de 60s/página — ver [PLANO-REDUCAO-BUILD](../planos/PLANO-REDUCAO-BUILD.md) |
 | A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dev, 2 minutos |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
@@ -174,6 +174,18 @@ Runbooks: [`planos/`](../planos/).
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
 ## Entregas recentes
+
+**02/10/2026 — deploy do Guara volta a subir (healthy) e cursor temático:**
+
+- **Deploy `278e6430` healthy** depois de destravar três causas de build, todas
+  de TEMPO (não de contexto): `dynamicParams` não-literal, agregações do copam
+  sem `comBancoReserva` e `getCloudflareContext({ async: true })` subindo
+  wrangler/workerd no SSG (teto de 60s por página). Detalhe em
+  [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md) e
+  [OPERACAO.md](../05-operacao/OPERACAO.md).
+- **Cursor segue a cor primária do tema:** `CursorTema.tsx` recoloriza o
+  preenchimento dos `.cur` em runtime (canvas → data URI em variável CSS);
+  contorno preto intacto. Commit `96625e37`.
 
 **01/10/2026 — Postgres do Guara completo + contexto de build no teto:**
 
