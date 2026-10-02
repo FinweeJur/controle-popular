@@ -45,7 +45,9 @@ export default async function ServidoresPage({ params: rota }: ServidoresPagePro
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Servidores da Prefeitura
       </h1>
-      <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
+      {/* Piso `text-sm` da regra § 5.10 (o antigo `text-[1.02em]` não tinha
+          piso garantido se o tamanho-base caísse). */}
+      <p className="mt-2 max-w-2xl text-sm sm:text-base text-text-soft">
         {/* `{" "}` no fim da linha: o JSX descarta a quebra de linha quando
             a linha seguinte começa com uma expressão, e "de" colaria em
             "Betim". Foi o único caso, e quem apontou foi o diff do texto

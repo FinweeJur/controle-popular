@@ -60,7 +60,10 @@ export default function AssembleiasPage() {
                 Assembleias Legislativas do Brasil
               </h1>
 
-              <p className="text-xs sm:text-sm text-muted leading-relaxed">
+              {/* Piso `text-sm` da regra § 5.10: no celular o texto do resumo
+                  não pode cair para 12px (`text-xs`), que é barreira de leitura
+                  para quem chega sob estresse. */}
+              <p className="text-sm sm:text-base text-muted leading-relaxed">
                 Monitoramento cidadão de todas as 27 Casas Legislativas estaduais e distrital.
                 Consulte projetos de lei de interesse social, comissões temáticas,
                 audiências públicas, composição da mesa diretora e ranking de atuação cívica.

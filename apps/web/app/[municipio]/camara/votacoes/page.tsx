@@ -50,7 +50,9 @@ export default async function VotacoesPage({ params: rota }: VotacoesPageProps) 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Votações nominais
       </h1>
-      <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
+      {/* Piso `text-sm` da regra § 5.10 (o antigo `text-[1.02em]` não tinha
+          piso garantido se o tamanho-base caísse). */}
+      <p className="mt-2 max-w-2xl text-sm sm:text-base text-text-soft">
         Quem votou o quê, matéria por matéria — o placar oficial mostra
         quantos votaram Sim ou Não; aqui está o nome de cada vereador por
         trás desse número. Nem toda câmara publica o voto individual; onde

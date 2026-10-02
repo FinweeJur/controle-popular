@@ -74,7 +74,9 @@ export default async function ContratosPage({ params: rota }: ContratosPageProps
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Contratos públicos
       </h1>
-      <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
+      {/* Piso `text-sm` da regra § 5.10 (o antigo `text-[1.02em]` não tinha
+          piso garantido se o tamanho-base caísse). */}
+      <p className="mt-2 max-w-2xl text-sm sm:text-base text-text-soft">
         Dados do Portal Nacional de Contratações Públicas (PNCP). Cada
         valor e fornecedor com link direto à fonte oficial.{" "}
         <Link href="/prefeitura/licitacoes" className="font-medium text-accent hover:underline">

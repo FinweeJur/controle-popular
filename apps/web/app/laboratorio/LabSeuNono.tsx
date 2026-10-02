@@ -49,6 +49,9 @@ import {
 import WidgetOnboardingCivico from "@/app/components/generative-ui/WidgetOnboardingCivico";
 import WidgetRastreabilidadeTransnacional from "@/app/components/generative-ui/WidgetRastreabilidadeTransnacional";
 import WidgetDebugSeuNono from "@/app/components/generative-ui/WidgetDebugSeuNono";
+// Botão reutilizável que dispara o evento global `abrir-seu-nono` — evita
+// reimplementar aqui o acoplamento com o assistente (infra já existe).
+import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
 
 const SUGESTOES = [
   "Mostre a evolução das licenças ambientais",
@@ -280,12 +283,13 @@ export default function LabSeuNono({
                 <ul className="flex flex-col gap-1.5">
                   {SUGESTOES.map((s) => (
                     <li key={s}>
-                      <button
-                        type="button"
-                        className="w-full cursor-pointer rounded-md border border-border bg-surface px-3 py-2 text-left text-xs text-text transition-colors hover:border-primary hover:bg-primary/10"
-                      >
-                        {s}
-                      </button>
+                      {/* Antes o botão não fazia nada; agora envia a sugestão
+                          direto ao Seu Nonô. */}
+                      <BotaoPerguntarNono
+                        pergunta={s}
+                        rotulo={s}
+                        classeExtra="w-full justify-start text-left text-xs"
+                      />
                     </li>
                   ))}
                 </ul>
@@ -451,7 +455,13 @@ export default function LabSeuNono({
                       key={idx}
                       className="rounded-lg border border-border bg-surface p-2.5 text-xs space-y-1"
                     >
-                      <div className="font-semibold text-text">🤖 {p.pergunta}</div>
+                      {/* A pergunta era texto morto; virou botão que abre o
+                          Seu Nonô já com o contexto do caderno. */}
+                      <BotaoPerguntarNono
+                        pergunta={p.pergunta}
+                        rotulo={p.pergunta}
+                        classeExtra="w-full justify-start text-left text-xs"
+                      />
                       <div className="text-[10px] text-text-soft">{p.contexto}</div>
                     </li>
                   ))}

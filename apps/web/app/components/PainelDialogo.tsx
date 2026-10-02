@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import type { PonteEntreFrentes } from "@/lib/lugares";
 import { obterDialogosPorRota, obterTopicoDialogo } from "@/lib/dialogos";
 import CartaoPonteSanfona from "./CartaoPonteSanfona";
+// Uma mudança aqui cobre todas as páginas que usam a prop `perguntas`:
+// cada FAQ ganha o atalho para perguntar ao Seu Nonô.
+import BotaoPerguntarNono from "./BotaoPerguntarNono";
 
 export interface PerguntaDialogo {
   id: string;
@@ -80,6 +83,10 @@ export default function PainelDialogo({
               <p className="mt-3 text-[0.88rem] leading-relaxed text-text-soft border-t border-border pt-3">
                 {p.resposta}
               </p>
+              {/* Quem não achou a resposta pronta segue direto ao assistente. */}
+              <div className="mt-3">
+                <BotaoPerguntarNono pergunta={p.pergunta} />
+              </div>
             </details>
           ))}
         </div>

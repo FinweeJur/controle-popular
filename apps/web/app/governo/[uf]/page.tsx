@@ -118,7 +118,8 @@ export default async function DetalheGovernoPage({
             </p>
           </div>
 
-          <p className="mt-4 text-xs leading-relaxed text-text-soft">
+          {/* Texto descritivo da página sob o <h1>: piso `text-sm` (§ 5.10). */}
+          <p className="mt-4 text-sm leading-relaxed text-text-soft">
             Cada compromisso registrado na Justiça Eleitoral é cotejado com os empenhos e contratos
             das Secretarias e Ministérios. O status reflete atos e instrumentos executivos documentados,
             nunca juízo de valor opinativo.

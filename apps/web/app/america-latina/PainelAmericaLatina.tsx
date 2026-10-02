@@ -45,6 +45,9 @@ import type {
 } from "@/lib/internacional/dados-america-latina";
 import { semAcento } from "@/lib/busca/normalizar";
 import BarraIdiomaTrilingue from "@/app/components/BarraIdiomaTrilingue";
+// O link morto `/assistente?pergunta=` foi trocado por este botão, que
+// dispara o Seu Nonô pelo evento global `abrir-seu-nono`.
+import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
 import type {
   IdiomaExibicao,
   TextoTrilingue,
@@ -360,15 +363,13 @@ export default function PainelAmericaLatina({
               <p>No Brasil, Carajás e o Quadrilátero Ferrífero lideram a produção de ferro.</p>
             </div>
             <div className="pt-2">
-              <Link
-                href={`/assistente?pergunta=${encodeURIComponent(
-                  PERGUNTA_SEU_NONO[idioma]
-                )}`}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
-              >
-                <span>Perguntar ao Seu Nonô no Assistente Cívico</span>
-                <span>→</span>
-              </Link>
+              {/* `/assistente?pergunta=` não aciona o assistente; o evento
+                  global sim. Mantém a pergunta no idioma selecionado. */}
+              <BotaoPerguntarNono
+                pergunta={PERGUNTA_SEU_NONO[idioma]}
+                rotulo="Perguntar ao Seu Nonô no Assistente Cívico"
+                classeExtra="text-xs font-semibold"
+              />
             </div>
           </div>
         </div>

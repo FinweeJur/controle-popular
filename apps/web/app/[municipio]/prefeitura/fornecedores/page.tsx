@@ -64,7 +64,9 @@ export default async function FornecedoresPage({ params: rota }: FornecedoresPag
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Maiores fornecedores
       </h1>
-      <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
+      {/* Piso `text-sm` da regra § 5.10 (o antigo `text-[1.02em]` não tinha
+          piso garantido se o tamanho-base caísse). */}
+      <p className="mt-2 max-w-2xl text-sm sm:text-base text-text-soft">
         Ranking das empresas que mais receberam contratos da Prefeitura de{" "}
         {cidade.nome}, somando todos os anos coletados{periodo ? ` (${periodo})` : ""}.
         Dados do Portal Nacional de Contratações Públicas (PNCP), agregados por

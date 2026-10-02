@@ -56,6 +56,9 @@ import {
   type NdcSetorGlobal,
 } from "@/lib/clima/dados-crise-climatica";
 import { formatNumberBR } from "@/lib/betim/format";
+// Botão compartilhado que dispara o Seu Nonô via evento `abrir-seu-nono`;
+// as perguntas abaixo eram texto estático sem ação.
+import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
 
 type AbaAtiva = "paises" | "instalacoes" | "anomalias" | "ndcs";
 
@@ -1099,27 +1102,34 @@ export default function PainelCriseClimaticaClient() {
             </p>
             <div className="grid grid-cols-1 gap-2 pt-2 sm:grid-cols-3">
               <div className="rounded-xl border border-border bg-surface-1 p-3">
-                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 block mb-1">
-                  1. O Brasil polui como a China?
-                </span>
+                {/* Pergunta vira botão: abre o Seu Nonô já com a dúvida. */}
+                <BotaoPerguntarNono
+                  pergunta="O Brasil polui como a China?"
+                  rotulo="1. O Brasil polui como a China?"
+                  classeExtra="mb-1 w-full justify-start text-left"
+                />
                 <p className="text-[12px] text-muted leading-snug">
                   Não. O Brasil emite 6 vezes menos que a China. Quase metade vem do desmatamento.
                 </p>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-1 p-3">
-                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 block mb-1">
-                  2. A meta de 1,5°C ainda é viável?
-                </span>
+                <BotaoPerguntarNono
+                  pergunta="A meta de 1,5°C ainda é viável?"
+                  rotulo="2. A meta de 1,5°C ainda é viável?"
+                  classeExtra="mb-1 w-full justify-start text-left"
+                />
                 <p className="text-[12px] text-muted leading-snug">
                   O ano de 2024 ultrapassou 1,64°C. Exige reduzir 43% das emissões mundiais até 2030.
                 </p>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-1 p-3">
-                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 block mb-1">
-                  3. Quem paga a conta dos extremos?
-                </span>
+                <BotaoPerguntarNono
+                  pergunta="Quem paga a conta dos extremos?"
+                  rotulo="3. Quem paga a conta dos extremos?"
+                  classeExtra="mb-1 w-full justify-start text-left"
+                />
                 <p className="text-[12px] text-muted leading-snug">
                   As populações periféricas e ribeirinhas sofrem mais com secas, enchentes e ondas térmicas.
                 </p>

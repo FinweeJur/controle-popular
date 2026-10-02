@@ -98,7 +98,9 @@ export default function PaginaConglomerados() {
         />
 
         {/* Epígrafe Editorial */}
-        <p className="border-l-2 border-primary pl-4 text-xs sm:text-sm italic text-muted">
+        {/* Epígrafe descritiva sob o <h1>: mesma fonte mínima da descrição
+            (AGENTS.md § 5.10), nunca `text-xs` no celular. */}
+        <p className="border-l-2 border-primary pl-4 text-sm italic text-muted">
           &ldquo;A concorrência de mercado é uma ilusão quando os três maiores acionistas de empresas
           teoricamente rivais são exatamente as mesmas gestoras universais de fundos.
           O controle popular precisa auditar as holdings com o mesmo rigor dos órgãos antitruste.&rdquo;

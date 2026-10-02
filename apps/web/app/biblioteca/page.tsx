@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Sparkles, GraduationCap, ShieldCheck } from "lucide-react";
+import { BookOpen, GraduationCap } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+// Botão cliente que aciona o Seu Nonô; substitui o link morto
+// `/assistente?pergunta=`, que não disparava o assistente.
+import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
 import {
   listarDocumentosUnificados,
   METRICAS_BIBLIOTECA,
@@ -45,13 +48,11 @@ export default function BibliotecaGeralPage() {
             </span>
           </div>
 
-          <Link
-            href="/assistente?pergunta=O que o Controle Popular tem de documentos e teses acadêmicas na Biblioteca Geral?"
-            className="flex items-center gap-1.5 rounded-xl border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-primary hover:border-primary hover:bg-primary/5 transition shadow-2xs"
-          >
-            <Sparkles size={14} />
-            <span>Consultar Seu Nonô</span>
-          </Link>
+          <BotaoPerguntarNono
+            pergunta="O que o Controle Popular tem de documentos e teses acadêmicas na Biblioteca Geral?"
+            rotulo="Consultar Seu Nonô"
+            classeExtra="rounded-xl shadow-2xs"
+          />
         </div>
 
         <div>
