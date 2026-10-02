@@ -1,0 +1,274 @@
+{
+ "fonte": "Receita Federal — Gastos Tributários (Bases Efetivas), Quadro I",
+ "url_fonte": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/relatorios/renuncia/gastos-tributarios-bases-efetivas",
+ "url_arquivo": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/relatorios/renuncia/gastos-tributarios-bases-efetivas/dgt-bases-efetivas-2023-serie-2021-a-2026-quadros.xlsx",
+ "ano_base": 2023,
+ "serie": "2021 a 2026",
+ "atualizado_em": "2026-10-01",
+ "metodologia": "Estimativa de renúncia fiscal (gasto tributário) por função orçamentária e região, em valores nominais, no ano-base 2023. Gasto tributário é a desoneração que o governo concede fora do orçamento: isenção, redução de alíquota, regime especial. Não é irregularidade — é escolha de política pública que reduz a arrecadação; o dado permite perguntar quem se beneficia e a que custo. A linha TOTAL do quadro é conferida contra a soma das funções (2x verificação).",
+ "total_renuncia": 534030416744.7,
+ "total_arrecadacao": 2164777609237.29,
+ "renuncia_sobre_arrecadacao": 0.246691,
+ "total_por_regiao": {
+  "norte": 56326700151.19,
+  "nordeste": 73307794682.68,
+  "centro_oeste": 53601649471.82,
+  "sudeste": 264040834619.37,
+  "sul": 86753437819.64
+ },
+ "total_funcoes": 28,
+ "registros": [
+  {
+   "funcao": "Comércio e Serviço",
+   "norte": 5444811889.124968,
+   "nordeste": 16212126684.42338,
+   "centro_oeste": 9957056312.85955,
+   "sudeste": 60222743165.33281,
+   "sul": 23285651407.16703,
+   "total": 115122389458.90775
+  },
+  {
+   "funcao": "Saúde",
+   "norte": 2243646873.3793926,
+   "nordeste": 8441613635.191699,
+   "centro_oeste": 7924416061.096189,
+   "sudeste": 51390151002.55339,
+   "sul": 10684615864.855976,
+   "total": 80684443437.07664
+  },
+  {
+   "funcao": "Agricultura",
+   "norte": 5825259456.657698,
+   "nordeste": 8810511391.392176,
+   "centro_oeste": 15020335877.88609,
+   "sudeste": 30929466023.821083,
+   "sul": 17478564890.42647,
+   "total": 78064137640.18352
+  },
+  {
+   "funcao": "Indústria",
+   "norte": 32680257194.34311,
+   "nordeste": 14235317313.489706,
+   "centro_oeste": 3024223670.7337866,
+   "sudeste": 8972484002.393965,
+   "sul": 3983315748.1084914,
+   "total": 62895597929.06906
+  },
+  {
+   "funcao": "Trabalho",
+   "norte": 1752948698.1750126,
+   "nordeste": 7422601826.064088,
+   "centro_oeste": 5481390760.365471,
+   "sudeste": 34628134453.49549,
+   "sul": 10661175783.185846,
+   "total": 59946251521.28591
+  },
+  {
+   "funcao": "Energia",
+   "norte": 2705127398.6395245,
+   "nordeste": 5429215738.975339,
+   "centro_oeste": 3797578878.906407,
+   "sudeste": 14635830626.713058,
+   "sul": 5790513668.044574,
+   "total": 32358266311.278904
+  },
+  {
+   "funcao": "Assistência Social",
+   "norte": 972257736.185969,
+   "nordeste": 3564326546.973727,
+   "centro_oeste": 2908790294.0164576,
+   "sudeste": 16409729004.283642,
+   "sul": 5075451396.208006,
+   "total": 28930554977.6678
+  },
+  {
+   "funcao": "Educação",
+   "norte": 738535427.859599,
+   "nordeste": 2216267606.1377854,
+   "centro_oeste": 1245300991.014944,
+   "sudeste": 10720486882.498775,
+   "sul": 2430314078.8686824,
+   "total": 17350904986.379787
+  },
+  {
+   "funcao": "Habitação",
+   "norte": 1411885406.5530372,
+   "nordeste": 3606270346.4888153,
+   "centro_oeste": 2263656879.8801823,
+   "sudeste": 7983184697.904543,
+   "sul": 1544590674.3062797,
+   "total": 16809588005.132858
+  },
+  {
+   "funcao": "Ciência e Tecnologia",
+   "norte": 1558645403.6872237,
+   "nordeste": 436632258.07524943,
+   "centro_oeste": 378787309.9363667,
+   "sudeste": 9753388040.429445,
+   "sul": 3215952984.6355524,
+   "total": 15343405996.763836
+  },
+  {
+   "funcao": "Transporte",
+   "norte": 237096112.2299127,
+   "nordeste": 879740336.4975957,
+   "centro_oeste": 340348708.6221743,
+   "sudeste": 8702150628.157623,
+   "sul": 1053155724.0619419,
+   "total": 11212491509.569246
+  },
+  {
+   "funcao": "Não definida",
+   "norte": 613720699.6861889,
+   "nordeste": 1560842411.9825058,
+   "centro_oeste": 890644549.9480953,
+   "sudeste": 2829490649.582947,
+   "sul": 324196821.0447635,
+   "total": 6218895132.2445
+  },
+  {
+   "funcao": "Cultura",
+   "norte": 88062202.40245624,
+   "nordeste": 301961504.04265857,
+   "centro_oeste": 135082189.82445434,
+   "sudeste": 4226696554.093154,
+   "sul": 573812742.954232,
+   "total": 5325615193.316956
+  },
+  {
+   "funcao": "Desporto e Lazer",
+   "norte": 17491013.829692468,
+   "nordeste": 95820993.96693152,
+   "centro_oeste": 47855790.95932475,
+   "sudeste": 1198242282.934821,
+   "sul": 313787910.02384347,
+   "total": 1673197991.7146132
+  },
+  {
+   "funcao": "Direitos da Cidadania",
+   "norte": 31560875.67309823,
+   "nordeste": 78736775.88993803,
+   "centro_oeste": 99497909.75918758,
+   "sudeste": 1024286043.4068743,
+   "sul": 275782178.41770166,
+   "total": 1509863783.1467998
+  },
+  {
+   "funcao": "Administração",
+   "norte": 1568308.4298556952,
+   "nordeste": 5831937.8376185605,
+   "centro_oeste": 75204437.64010109,
+   "sudeste": 175419025.16871065,
+   "sul": 14788660.373714004,
+   "total": 272812369.45
+  },
+  {
+   "funcao": "Saneamento",
+   "norte": 0.0,
+   "nordeste": 269239.21338868205,
+   "centro_oeste": 1756221.7478160576,
+   "sudeste": 107205597.98880407,
+   "sul": 182967.66398529612,
+   "total": 109414026.6139941
+  },
+  {
+   "funcao": "Gestão Ambiental",
+   "norte": 1643293.9523745957,
+   "nordeste": 8865808.143110368,
+   "centro_oeste": 9074430.448254082,
+   "sudeste": 51590728.42324373,
+   "sul": 33971884.22164887,
+   "total": 105146145.18863165
+  },
+  {
+   "funcao": "Defesa Nacional",
+   "norte": 1547316.7159,
+   "nordeste": 222000.0,
+   "centro_oeste": 0.0,
+   "sudeste": 53964638.929199986,
+   "sul": 8823057.877920002,
+   "total": 64557013.523019984
+  },
+  {
+   "funcao": "Comunicações",
+   "norte": 0.0,
+   "nordeste": 59816.9993026558,
+   "centro_oeste": 390180.5897522286,
+   "sudeste": 23817697.081625834,
+   "sul": 40650.00967454577,
+   "total": 24308344.680355262
+  },
+  {
+   "funcao": "Organização Agrária",
+   "norte": 634843.6618230002,
+   "nordeste": 560510.893647,
+   "centro_oeste": 258015.58673160002,
+   "sudeste": 2372874.178807799,
+   "sul": 4748727.187413901,
+   "total": 8574971.5084233
+  },
+  {
+   "funcao": "Encargos Especiais",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Essencial à Justiça",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Judiciária",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Legislativa",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Relações Exteriores",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Segurança Pública",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  },
+  {
+   "funcao": "Urbanismo",
+   "norte": 0.0,
+   "nordeste": 0.0,
+   "centro_oeste": 0.0,
+   "sudeste": 0.0,
+   "sul": 0.0,
+   "total": 0.0
+  }
+ ]
+}

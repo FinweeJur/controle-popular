@@ -297,6 +297,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["orcamento", "icms", "ipva", "sef", "receitas mg", "loa", "divida publica"],
   },
   {
+    id: "estado-renuncia-fiscal",
+    titulo: "Renúncia Fiscal — o que o governo deixa de arrecadar",
+    descricao:
+      "Gastos tributários (isenções, reduções, regimes especiais) por função orçamentária e região, ano-base 2023. Fonte: Receita Federal.",
+    href: "/estado-e-economia/renuncia-fiscal",
+    frente: "geral",
+    rotulo: "Estado · Renúncia fiscal",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "renuncia fiscal", "gastos tributarios", "desoneracao", "isencao", "incentivo fiscal",
+      "receita federal", "dgt", "tributo", "renuncia", "carga tributaria",
+    ],
+  },
+  {
     id: "judiciario-fiscalizacao",
     titulo: "Quem Fiscaliza a Justiça — Mapa das Instituições",
     descricao: "Análise comparada dos órgãos de justiça: limites de fiscalização externa no CNJ, TST, STF e CNMP.",
