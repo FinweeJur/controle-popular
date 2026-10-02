@@ -97,7 +97,7 @@ export function CampfireColonyAnim() {
           transform-origin: 321px 288px;
         }
         .cp-campfire .cp-fumaca path {
-          animation: cp-fumaca-respira 4s ease-in-out infinite;
+          animation: cp-fumaca-sobe 6s ease-in-out infinite;
         }
         @keyframes cp-flicker {
           0%   { transform: rotate(-6deg); }
@@ -107,9 +107,9 @@ export function CampfireColonyAnim() {
           80%  { transform: rotate(-7deg) scale(1); }
           100% { transform: rotate(-4deg); }
         }
-        @keyframes cp-fumaca-respira {
-          0%, 100% { opacity: 1; }
-          50%      { opacity: 0.72; }
+        @keyframes cp-fumaca-sobe {
+          0%, 100% { opacity: 1;    transform: translateY(0); }
+          50%      { opacity: 0.72; transform: translateY(-16px); }
         }
         @media (prefers-reduced-motion: reduce) {
           .cp-campfire .cp-fogo,
@@ -184,7 +184,9 @@ export function CampfireColonyAnim() {
         ))}
 
         {/* ── Fumaça: o caminho exato do original, contínua (sem lacuna do
-            tracejado), some no topo pelo degradê e "respira" devagar ── */}
+            tracejado), sobe alguns pixels (translateY) enquanto "respira"
+            devagar e some no topo pelo degradê. O ciclo volta à origem em
+            vez de saltar, para não haver corte visível na repetição ── */}
         <g className="cp-fumaca">
           <path
             d="M 420 -316 Q 470 -216 370 -66 C 270 134 390 84 320 284"
