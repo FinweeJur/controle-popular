@@ -1,4 +1,5 @@
 import { slugsDasCidades } from "@/lib/db/queries/municipios";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 
 /**
  * `generateStaticParams` do segmento `[municipio]`, para ser RE-EXPORTADO por
@@ -56,5 +57,16 @@ import { slugsDasCidades } from "@/lib/db/queries/municipios";
  * local não provar nada sobre as páginas de cidade.
  */
 export async function paramsDasCidades(): Promise<{ municipio: string }[]> {
+  // ═══ ON-DEMAND NO GUARA/CLOUDFLARE ═══
+  //
+  // Devolver a lista completa pré-renderiza as 68 rotas da zona para as 12
+  // cidades (~816 páginas), cada uma lendo o banco no build. Depois da carga
+  // de 01/10, isso estourou o teto de 2100s do Guara em quatro deploys.
+  //
+  // Com runtime atrás (standalone/Cloudflare), lista vazia + `dynamicParams`
+  // ligado deixa o Next renderizar sob demanda COM cache: a 1ª visita grava,
+  // as seguintes servem pronto. Só `output: 'export'` precisa da lista
+  // inteira — lá não há sob demanda e o que faltar vira 404 permanente.
+  if (!exportandoEstatico) return [];
   return (await slugsDasCidades()).map((municipio) => ({ municipio }));
 }

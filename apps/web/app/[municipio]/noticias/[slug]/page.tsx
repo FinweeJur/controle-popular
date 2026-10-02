@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import { notFound } from "next/navigation";
 import { getNoticiaBySlug, getNoticias, CATEGORIA_LABELS } from "@/lib/betim/noticias";
 import { listarCidades } from "@/lib/db/queries/municipios";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
@@ -16,12 +17,14 @@ interface NoticiaPageProps {
  * `vereadores/[slug]`: `output: 'export'` recusa segmento dinâmico sem esta
  * função.
  *
- * Notícia nova só passa a existir como URL depois do próximo build — que é
- * a limitação real do alvo estático, não deste código: sem servidor não há
- * como gerar página sob demanda. O `rebuild.yml` semanal é o que fecha essa
- * janela hoje.
+ * No Guara/Cloudflare (runtime atrás) a lista fica VAZIA e a página vira
+ * on-demand com cache — a notícia nova passa a existir na 1ª visita, sem
+ * esperar build. No alvo `output: 'export'` (GitHub Pages) a limitação é
+ * real: sem servidor não há sob demanda, e o `rebuild.yml` semanal é o que
+ * fecha a janela.
  */
 export async function generateStaticParams() {
+  if (!exportandoEstatico) return [];
   const cidades = await listarCidades();
   const pares: { municipio: string; slug: string }[] = [];
   for (const cidade of cidades) {

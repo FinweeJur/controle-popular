@@ -4,6 +4,7 @@ import Header from "@/app/[municipio]/components/Header";
 import Footer from "@/app/[municipio]/components/Footer";
 import { obterCidadePorSlug, slugsDasCidades } from "@/lib/db/queries/municipios";
 import { CidadeProvider } from "@/lib/betim/cidade-cliente";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 
 /**
  * Zona do eixo Cidades, uma cidade por slug: `/betim`, `/bh`, `/sp`.
@@ -22,10 +23,31 @@ import { CidadeProvider } from "@/lib/betim/cidade-cliente";
  * caminho de um segmento (`/qualquercoisa`) entraria nesta zona e tentaria
  * renderizar uma cidade inexistente. Com ele, só os slugs devolvidos por
  * `generateStaticParams` existem; o resto é 404.
+ *
+ * ═══ MAS NO GUARA (STANDALONE) É ON-DEMAND ═══
+ *
+ * Medido em 01-02/10: a zona Cidades é 68 rotas × 12 cidades = ~816 páginas
+ * pré-renderizadas, cada uma lendo o banco. Depois que a carga de 01/10
+ * populou o Postgres do Guara, cada leitura ficou lenta e o build passou de
+ * ~1074s para o teto de 2100s — em quatro deploys seguidos. O volume de
+ * páginas não mudou (o build saudável de 01/10 00:30 fez 5.427 páginas em
+ * 1074s); o que mudou foi o custo por página.
+ *
+ * A saída é a MESMA já adotada em `3c529cc2` para as rotas de detalhe:
+ * devolver `[]` no `generateStaticParams` e renderizar sob demanda (com
+ * cache) no runtime. Só o alvo `output: 'export'` (GitHub Pages) continua
+ * precisando da lista inteira — lá não existe sob demanda.
+ *
+ * O 404 de cidade inexistente continua garantido sem `dynamicParams=false`:
+ * o próprio layout chama `obterCidadePorSlug()` e dispara `notFound()`.
+ * `dynamicParams` fica `false` apenas no export (exigência do Next), e
+ * `true` no Guara/Cloudflare.
  */
-export const dynamicParams = false;
+export const dynamicParams = !exportandoEstatico;
 
 export async function generateStaticParams() {
+  // No Guara/Cloudflare a lista fica vazia: a página vira on-demand.
+  if (!exportandoEstatico) return [];
   // Uma cidade nova é UMA LINHA em `municipios` — nenhum código de rota.
   return (await slugsDasCidades()).map((municipio) => ({ municipio }));
 }
