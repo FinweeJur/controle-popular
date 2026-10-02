@@ -341,6 +341,8 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **Windows: `UnicodeEncodeError` em scripts Python** | Console Windows em `cp1252` quebra ao imprimir emojis ou caracteres Unicode (`\u2550`). Todo script Python deve iniciar com `sys.stdout.reconfigure(encoding='utf-8', errors='replace')` e usar separadores ASCII padrão (`=` ou `-`) |
 | **APIs públicas com gzip silencioso (`0x8b`)** | APIs como IBGE ou PNCP retornam payload comprimido em gzip (`0x1f 0x8b`). `urllib.request` falha sem descompressão. O cliente HTTP deve testar `raw.startswith(b'\x1f\x8b')` e usar `gzip.decompress(raw)` |
 | **Automação de PR via GitHub CLI (`gh`)** | `gh pr create` requer branch remota prévia (`git push -u origin <branch>`) e título sem quebras de linha. Use `--body-file` com arquivo temporário para resumos longos e remova os arquivos temporários após o envio |
+| **Postgres 08P01 & SSG timeout (2100s)** | O driver `pg` negocia SSL por padrão. Hosts internos de cluster Kubernetes (`.svc.cluster.local`) falam TCP puro sem TLS; o Postgres aborta com `FATAL 08P01` (`protocol_violation`). Durante o build do Next.js (SSG), cada página aguarda o timeout de 10s do banco principal, multiplicando o tempo por centenas de rotas até estourar o limite de 2100s (35 min) do Guara Cloud e queimar cota. Use `ehHostInternoSemSsl()` em `client.ts` forçando `ssl: false` em hosts internos |
+| **Edge Runtime deprecado no Next 16** | `export const runtime = "edge"` emite warning no build standalone e exige emuladores de runtime. Use `runtime = "nodejs"` em todas as rotas do monorepo |
 
 ## 7. Regra editorial
 
