@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
+import { CATALOGO_EIXOS } from "@/lib/eixos/catalogo";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { obterEstatisticasPortal } from "@/lib/betim/estatisticas-portal";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -253,39 +253,52 @@ export default async function SobrePage() {
         </p>
       </section>
 
-      {/* ═══ 3. AS CINCO FRENTES ═══ (nome da seção fica — a CONTAGEM no
-          texto abaixo é que vem de `contagemZonasPublicadas()`, não mais
-          cravada à mão) */}
+      {/* ═══ 3. OS 4 EIXOS E AS SUBFRENTES ═══ (era "as 6 frentes") */}
       <section className="space-y-5">
         <h2 className="font-display text-2xl font-semibold">
-          As {contagemZonasPublicadas()} frentes
+          Os 4 Grandes Eixos e as subfrentes
         </h2>
         <p className="text-text-soft">
-          O portal se organiza em {contagemZonasPublicadas()} frentes, chamadas internamente de <em>zonas</em>. A
-          descrição de cada uma vive num arquivo único —{" "}
-          <code className="font-mono text-[.85em]">lib/zonas.ts</code> — lido tanto pela home
-          quanto pelo rodapé de cada zona, para que o mesmo texto exista num lugar só quando
-          algo muda.
+          O portal se organiza em <strong className="text-text">quatro grandes eixos
+          temáticos</strong> e mais de <strong className="text-text">36 subfrentes</strong>.
+          Cada subfrente é uma porta de entrada para dado concreto — clique para abrir. A
+          lista canônica vive em{" "}
+          <code className="font-mono text-[.85em]">lib/eixos/catalogo.ts</code>.
         </p>
 
-        <div className="space-y-4">
-          {ZONAS_PUBLICADAS.map((z) => (
-            <a
-              key={z.id}
-              href={z.href}
-              className="group block rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary"
-            >
-              <span
-                className="text-[11px] font-semibold uppercase tracking-wide"
-                style={{ color: z.cor }}
-              >
-                {z.etiqueta}
-              </span>
-              <h3 className="mt-1 font-display text-lg font-semibold group-hover:text-primary">
-                {z.titulo}
-              </h3>
-              <p className="mt-1 text-[.9em] text-text-soft">{z.resumo}</p>
-            </a>
+        <div className="space-y-6">
+          {Object.values(CATALOGO_EIXOS).map((eixo) => (
+            <div key={eixo.id}>
+              <h3 className="font-display text-lg font-semibold">{eixo.titulo}</h3>
+              <p className="text-[.9em] text-text-soft">{eixo.subtitulo}</p>
+              <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {eixo.subfrentes.map((sub) => {
+                  const href =
+                    sub.rotaLegada ??
+                    (eixo.id === "terra"
+                      ? `/terra-e-territorios/${sub.slug}`
+                      : eixo.id === "estado"
+                        ? `/estado-e-economia/${sub.slug}`
+                        : eixo.id === "central"
+                          ? `/central/${sub.slug}`
+                          : `/direitos-em-movimento/${sub.slug}`);
+                  return (
+                    <a
+                      key={sub.id}
+                      href={href}
+                      className="group rounded-lg border border-border bg-surface p-3 transition-colors hover:border-primary"
+                    >
+                      <span className="font-display text-[.95em] font-semibold group-hover:text-primary">
+                        {sub.titulo}
+                      </span>
+                      <span className="block text-[.82em] text-text-soft">
+                        {sub.descricao}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           ))}
         </div>
 
