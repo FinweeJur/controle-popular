@@ -10,6 +10,8 @@ import Epigrafe from "@/app/components/Epigrafe";
 import CardCarousel from "@/app/components/CarrosselEixos";
 import MisticaDoDia from "@/app/components/MisticaDoDia";
 import { citacaoPorId } from "@/lib/citacoes";
+import { formatNumberBR } from "@/lib/betim/format";
+import basesPortal from "@/data/bases-portal.json";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -185,6 +187,11 @@ export default async function Hub() {
             </p>
           </div>
         </div>
+        <p className="mt-5 border-t border-border pt-3 text-center text-xs text-muted">
+          Acervo reunido e medido: <strong className="text-foreground">{formatNumberBR(basesPortal.total_arquivos)} bases</strong>,{" "}
+          <strong className="text-foreground">{formatNumberBR(basesPortal.total_registros)} registros</strong> em{" "}
+          {basesPortal.temas.length} temas — cada um com link para a fonte oficial.
+        </p>
       </section>
 
       <header className="space-y-4">

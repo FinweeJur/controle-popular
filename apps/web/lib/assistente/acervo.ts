@@ -357,7 +357,8 @@ function deDadosMacro(): AcervoFonte[] {
         "Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + " +
         "Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + " +
         "Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). " +
-        "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas.",
+        "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas. " +
+        `O acervo reunido tem ${basesPortal.total_arquivos} bases com ${basesPortal.total_registros} registros medidos em ${basesPortal.temas.length} temas, cada um com link para a fonte oficial.`,
       links: [
         { href: "/", texto: "Painel Geral do Portal" },
         { href: "/ambiental/mariana", texto: "Acordo de Mariana" },

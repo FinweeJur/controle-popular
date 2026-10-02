@@ -94,11 +94,18 @@ já no ar:
   `/ambiental/ameacas-americas`, `/biblioteca`.
 - Companheiro: galinha do Petdex rodando sozinha (deploy `7e642a31`).
 
-## Código não commitado
+## Painel da home — números (02/10/2026)
 
-No checkout principal, ainda sem commit (validar antes de publicar):
+- **Volume de dado acrescentado** ao painel da home e ao acervo do Seu Nonô:
+  **274 bases, 46.273 registros, 22 temas** (medido de `data/bases-portal.json`,
+  não digitado).
+- **A soma em R$ 251 bi continua** com a composição nominal: Rio Doce (171) +
+  Brumadinho (37,7) + Justiça MG (20,1) + cidades (22,7). Cada parcela precisa de
+  **re-verificação na fonte** (valor do acordo/orçamento na data) — fica na fila,
+  sem trocar número sem medir.
 
-- `apps/web/app/components/CompanheiroFlutuante.tsx` (solta/voo/anel).
-- `apps/web/app/components/SeuNono.tsx` (tira o painel de código).
-- `apps/web/lib/globo/voo.ts` + `apps/web/lib/globo/voo.test.ts` (base
-  `index.html`).
+## Código que estava pendente — commitado
+
+- `CompanheiroFlutuante.tsx` (solta/voo/anel) → `0bf32436`.
+- `SeuNono.tsx` (tira o painel de código) → `0bf32436`.
+- `lib/globo/voo.ts` + `voo.test.ts` (base `index.html`) → `bef3b442`.
