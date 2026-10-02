@@ -164,7 +164,14 @@ async function ler(): Promise<LidoBiblioteca> {
     try {
       let texto: string;
       try {
-        const { env } = await getCloudflareContext({ async: true });
+        // Sync, e NÃO `{ async: true }`: a variante async chama o wrangler
+        // (sobe o workerd) durante o SSG. No Alpine do Guara o workerd não
+        // carrega ("Error relocating ... symbol not found") e a página trava
+        // até o teto de 60s do Next — foi o que derrubou o deploy de
+        // 02/10/2026. No Worker o contexto global já está posto, então o modo
+        // sync devolve o mesmo `env`; fora dele, lança na hora e cai no
+        // `catch` abaixo, lendo do disco.
+        const { env } = getCloudflareContext();
         if (!env.ASSETS) throw new Error("sem ASSETS");
         const resp = await env.ASSETS.fetch(
           new URL(`http://assets.local/data/${ARQUIVO_BIBLIOTECA}`)

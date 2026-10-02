@@ -75,7 +75,9 @@ async function ler(): Promise<Lido> {
     try {
       let texto: string;
       try {
-        const { env } = await getCloudflareContext({ async: true });
+        // Mesma razão de `biblioteca.ts`: sync evita subir o wrangler/workerd
+        // no SSG, que estoura o teto de 60s por página no build do Guara.
+        const { env } = getCloudflareContext();
         if (!env.ASSETS) throw new Error("sem ASSETS");
         const resp = await env.ASSETS.fetch(
           new URL(`http://assets.local/data/${ARQUIVO}`)

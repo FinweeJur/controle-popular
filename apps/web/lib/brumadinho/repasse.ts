@@ -449,7 +449,9 @@ export async function arquivoRepasse(): Promise<ArquivoRepasse | null> {
     let bruto: string;
     try {
       try {
-        const { env } = await getCloudflareContext({ async: true });
+        // Sync, não `{ async: true }`: evita subir wrangler/workerd no SSG
+        // (teto de 60s por página no build do Guara); cai no `catch` abaixo.
+        const { env } = getCloudflareContext();
         if (!env.ASSETS) throw new Error("sem ASSETS");
         const resp = await env.ASSETS.fetch(
           new URL(`http://assets.local/data/${ARQUIVO_REPASSE}`)

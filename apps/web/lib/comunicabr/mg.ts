@@ -161,7 +161,10 @@ let emVoo: Promise<Acervo | null> | null = null;
  */
 async function lerArquivoBruto(): Promise<ArquivoComunicaBR> {
   try {
-    const { env } = await getCloudflareContext({ async: true });
+    // Sync, não `{ async: true }`: a variante async sobe o wrangler/workerd
+    // no SSG e trava o build no Alpine do Guara (teto de 60s por página).
+    // No Worker o contexto global já está posto; fora dele cai no `catch`.
+    const { env } = getCloudflareContext();
     if (env.ASSETS) {
       const resp = await env.ASSETS.fetch(new URL(`http://assets.local/data/${ARQUIVO}`));
       if (resp.ok) return (await resp.json()) as ArquivoComunicaBR;
