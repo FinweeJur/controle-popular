@@ -122,6 +122,8 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47
               "88140000000", "52400000000", "33400000000",
               # falso positivo estrutural: parte inteira de valor monetario da renuncia fiscal (Receita/DGT, 2026-10-01) — dinheiro, nao CPF
               "23285651407",
+              # falso positivo estrutural: parte inteira do valor total de autos de infracao do IBAMA (2026-10-02) — dinheiro, nao CPF
+              "54852973564",
               "05042570640", "23010001762", "16201000968", "23010000103",
               "93015091999", "99059511999", "16201001425", "16153332668"}
 

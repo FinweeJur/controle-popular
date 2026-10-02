@@ -105,6 +105,9 @@ const SINTETICOS = new Set([
   // Falso positivo estrutural: parte inteira de valor monetario da renuncia
   // fiscal (Receita/DGT, 2026-10-01) capturada como 11 digitos — dinheiro, nao CPF.
   "23285651407",
+  // Falso positivo estrutural: parte inteira do valor total de autos de infracao
+  // do IBAMA (2026-10-02) — dinheiro, nao CPF.
+  "54852973564",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {

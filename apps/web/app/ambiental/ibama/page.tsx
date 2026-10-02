@@ -8,8 +8,10 @@ import {
   LICENCAS_IBAMA,
   INFRACOES_IBAMA,
 } from "@/lib/ambiental/ibama";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { formatCurrencyBRL } from "@/lib/betim/format";
 import TabelaIbamaClient from "./TabelaIbamaClient";
+import TabelaIbamaAutos from "./TabelaIbamaAutos";
+import { obterIbamaAutos } from "@/lib/server-only/dados-ibama-autos";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 
 export const metadata: Metadata = {
@@ -19,6 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default function IbamaIndexPage() {
+  const autos = obterIbamaAutos();
+  const autosMg = autos.registros.filter((r) => r.uf === "MG");
+  const fmtInt = (n: number) => n.toLocaleString("pt-BR");
+  const brl = (n: number) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
   const itensCartoes = [
     {
       rotulo: "Licenças Federais Monitoradas",
@@ -132,6 +138,69 @@ export default function IbamaIndexPage() {
           infracoes={INFRACOES_IBAMA}
         />
       </section>
+
+      {/* ═══ A FISCALIZAÇÃO NACIONAL, MUNICÍPIO A MUNICÍPIO (IBAMA) ═══ */}
+      {autos.total_autos > 0 ? (
+        <section aria-label="Autos de infração do IBAMA" className="mb-12 space-y-5">
+          <header>
+            <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+              Fiscalização federal · autos de infração
+            </p>
+            <h2 className="mt-1 font-display text-xl sm:text-2xl font-semibold text-text">
+              Além do empreendimento: a fiscalização do IBAMA, município a município
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
+              O bloco acima trata das licenças e dos processos de grandes empreendimentos em Minas. Este traz a
+              fiscalização inteira: os autos de infração lavrados pelo IBAMA no Brasil entre {autos.janela}, por
+              município — com a tabela recortada para Minas Gerais.{" "}
+              <strong className="text-text">Auto lavrado não é condenação:</strong> cabe defesa e recurso, e o
+              infrator não é publicado aqui — só o agregado por território.
+            </p>
+          </header>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-border bg-surface-2 p-5">
+              <p className="text-2xl font-semibold tabular-nums">{fmtInt(autos.total_autos)}</p>
+              <p className="mt-1 text-sm text-text-soft">autos no Brasil ({autos.janela})</p>
+              <p className="mt-2 text-xs text-text-soft">em {fmtInt(autos.total_municipios)} municípios</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface-2 p-5">
+              <p className="text-2xl font-semibold tabular-nums">{brl(autos.total_valor)}</p>
+              <p className="mt-1 text-sm text-text-soft">em multas autuadas</p>
+              <p className="mt-2 text-xs text-text-soft">valor da fonte, sem correção</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface-2 p-5">
+              <p className="text-2xl font-semibold tabular-nums">{fmtInt(autosMg.reduce((s, r) => s + r.autos, 0))}</p>
+              <p className="mt-1 text-sm text-text-soft">autos em Minas Gerais</p>
+              <p className="mt-2 text-xs text-text-soft">em {fmtInt(autosMg.length)} municípios mineiros</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface-2 p-5">
+              <p className="text-2xl font-semibold tabular-nums">
+                {fmtInt(autosMg.reduce((s, r) => s + r.com_embargo, 0))}
+              </p>
+              <p className="mt-1 text-sm text-text-soft">com termo de embargo em MG</p>
+              <p className="mt-2 text-xs text-text-soft">área/atividade embargada para paralisar a infração</p>
+            </div>
+          </div>
+
+          <p className="rounded-xl border border-alert/40 bg-alert/10 p-3 text-sm">
+            <strong>Ressalva.</strong> O IBAMA publica nome e CPF/CNPJ de cada autuado na base de dados; este
+            portal publica <strong>só o agregado por município</strong> — nada de infrator identificado. Os biomas
+            mais atingidos no país são Amazônia, Mata Atlântica e Cerrado; o número é do ato lavrado, não da
+            decisão final.
+          </p>
+
+          <TabelaIbamaAutos registros={autosMg} />
+
+          <p className="text-xs text-muted">
+            Fonte:{" "}
+            <a href={autos.url_fonte} target="_blank" rel="noopener noreferrer" className="underline">
+              IBAMA — Dados Abertos (auto de infração, SIFISC)
+            </a>
+            . Coletor: <code>scripts/etl/ibama/coletar-autos-infracao.py</code>. {autos.metodologia}
+          </p>
+        </section>
+      ) : null}
 
       <footer className="border-t border-border pt-8 text-sm text-text-soft">
         <p>
