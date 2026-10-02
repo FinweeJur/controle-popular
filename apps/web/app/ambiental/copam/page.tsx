@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { unstable_noStore as noStore } from "next/cache";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import Link from "next/link";
 import { sql } from "drizzle-orm";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -159,6 +161,10 @@ const HACHURA_SEM_INFO =
   "repeating-linear-gradient(45deg, var(--color-chart-track) 0 4px, var(--color-border) 4px 5px)";
 
 export default async function CopamIndex() {
+  // Leitura viva no alvo com runtime; ver a nota em
+  // `app/ambiental/licenciamento/page.tsx`. No export segue pré-renderizada.
+  if (!exportandoEstatico) noStore();
+
   const [
     { reunioes, itens, itensComMunicipio },
     todasReunioes,

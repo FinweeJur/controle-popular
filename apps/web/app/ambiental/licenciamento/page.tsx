@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { unstable_noStore as noStore } from "next/cache";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import Link from "next/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
@@ -45,6 +47,12 @@ export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
 const SETOR_ORDEM = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
 export default async function LicenciamentoIndex() {
+  // Com runtime atrás (Guara/standalone) a página lê o banco a cada request.
+  // Sem isto o build "assa" a consulta, e uma consulta que falhe no build vira
+  // página vazia permanente — foi o que aconteceu em 02/10/2026. No alvo
+  // estático (`output: 'export'`) nada muda: continua pré-renderizada.
+  if (!exportandoEstatico) noStore();
+
   const [contagem, municipios, porAnoData] = await Promise.all([
     contarLicenciamento(),
     listarMunicipiosComLicenciamento(),

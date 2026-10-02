@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { unstable_noStore as noStore } from "next/cache";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   contarCoberturaTemasLegislacaoAmbiental,
@@ -94,6 +96,10 @@ const JANELA_ANOS_GRAFICO = 12;
 const TOP_ORGAOS_GRAFICO = 8;
 
 export default async function LegislacaoAmbientalIndex() {
+  // Leitura viva no alvo com runtime; ver a nota em
+  // `app/ambiental/licenciamento/page.tsx`. No export segue pré-renderizada.
+  if (!exportandoEstatico) noStore();
+
   const [estaduais, criticas, precedentes, contagemEstadual, coberturaEstadual] = await Promise.all([
     listarLegislacaoAmbiental(),
     listarNormasDireitoCritico(),

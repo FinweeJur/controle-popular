@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { unstable_noStore as noStore } from "next/cache";
+import { exportandoEstatico } from "@/lib/alvo-de-build";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import Link from "@/lib/ambiental/link";
 import { COBERTURA_SIGBM } from "@/lib/ambiental/barragens-sigbm";
@@ -35,6 +37,10 @@ export const metadata: Metadata = metadataEditavel("/ambiental/barragens", {
  * reaproveitada pela rota `/barragens/municipio/[idIbge]`.
  */
 export default async function BarragensIndex() {
+  // Leitura viva no alvo com runtime; ver a nota em
+  // `app/ambiental/licenciamento/page.tsx`. No export segue pré-renderizada.
+  if (!exportandoEstatico) noStore();
+
   const [contagem, feam, municipios] = await Promise.all([
     contarBarragensMg(),
     listarBarragensFeamMg(),
