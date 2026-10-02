@@ -406,7 +406,7 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
             <div className="flex items-center gap-1">
               <select
                 value={ordem}
-                onChange={(e) => setOrdem(e.target.value as any)}
+                onChange={(e) => setOrdem(e.target.value as typeof ordem)}
                 className="w-full rounded-xl border border-border bg-surface-2 py-1.5 px-2 text-xs text-foreground focus:border-primary focus:outline-none"
               >
                 <option value="ano">Ano de publicação</option>
@@ -448,14 +448,14 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
           </div>
         ) : modoExibicao === "compacto" ? (
           /* ── MODO COMPACTO (VISÃO COMPRIMIDA) ── */
-          <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
+          <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
             <table className="w-full text-left text-xs border-collapse">
               <thead className="bg-surface-2 text-xs font-semibold text-muted uppercase border-b border-border">
                 <tr>
                   <th className="py-2.5 px-3">Ano</th>
                   <th className="py-2.5 px-3">Tipo / Categoria</th>
                   <th className="py-2.5 px-3">Título & Microresumo</th>
-                  <th className="py-2.5 px-3">Entidade / Autor</th>
+                  <th className="py-2.5 px-3 w-[180px] max-w-[180px]">Entidade / Autor</th>
                   <th className="py-2.5 px-3">Tema & Tags</th>
                   <th className="py-2.5 px-3 text-right">Links</th>
                 </tr>
@@ -479,8 +479,14 @@ export default function BibliotecaGeralClient({ documentos, metricas }: Props) {
                         {doc.microResumo}
                       </p>
                     </td>
-                    <td className="py-2.5 px-3 text-muted whitespace-nowrap">
-                      <span className="font-semibold text-foreground block">
+                    <td className="py-2.5 px-3 text-muted max-w-[180px]">
+                      {/* Coluna estreita de propósito: entidade longa não empurra
+                          a tabela para fora da tela — corta com `truncate` e o
+                          nome completo fica no `title`. */}
+                      <span
+                        className="font-semibold text-foreground block truncate"
+                        title={doc.entidade}
+                      >
                         {doc.entidade}
                       </span>
                       <span className="text-xs">{doc.estado}</span>
