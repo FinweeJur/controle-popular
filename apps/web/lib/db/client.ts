@@ -121,7 +121,9 @@ function criarLocal(url: string): DB {
   const semSsl = ehHostInternoSemSsl(url);
   const poolConfig: Record<string, unknown> = {
     connectionString: url,
-    connectionTimeoutMillis: 10000,
+    connectionTimeoutMillis: 5000,
+    max: 10,
+    idleTimeoutMillis: 30000,
   };
 
   if (semSsl) {
@@ -132,7 +134,13 @@ function criarLocal(url: string): DB {
     poolConfig.ssl = { rejectUnauthorized: false };
   }
 
-  return drizzlePg(new Pool(poolConfig), { schema }) as unknown as DB;
+  const pool = new Pool(poolConfig);
+  pool.on("error", (err: unknown) => {
+    // Evita queda de processo caso o cluster Kubernetes encerre uma conexao inativa
+    console.warn("[pg:pool] cliente inativo desconectado:", err instanceof Error ? err.message : err);
+  });
+
+  return drizzlePg(pool, { schema }) as unknown as DB;
 }
 
 function criar(url: string) {

@@ -120,7 +120,7 @@ export async function comBancoReserva<T>(
 
   for (const t of tentativas) {
     try {
-      const timeoutMs = t.nome === "guara" ? 10_000 : 5_000;
+      const timeoutMs = t.nome === "guara" ? 6_000 : 4_000;
       const r = await comTimeout(
         consulta(t.db),
         timeoutMs,
