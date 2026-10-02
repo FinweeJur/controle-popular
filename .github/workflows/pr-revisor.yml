@@ -47,7 +47,7 @@ jobs:
         run: npm run test:lib -w @cp/web
 
       - name: Typecheck
-        run: npx tsc --noEmit
+        run: npm run typecheck -w @cp/web
 
       - name: Validar camada de correções de links
         run: node apps/web/scripts/validar-link-correcoes.mjs

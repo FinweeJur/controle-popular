@@ -202,6 +202,21 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   /**
+   * ═══ TYPE-CHECK SAI DO BUILD PAGO (Guara cobra por minuto) ═══
+   *
+   * O `next build` roda o `tsc` inteiro antes de compilar. No alvo standalone
+   * (Docker/Guara) isso custa ~2,8 min de cota paga por build (medido
+   * 02/10/2026). A checagem passa a rodar no CI do GitHub, que e gratis:
+   * `guara-deploy.yml` (push/PR) e `pr-revisor.yml` (PR).
+   *
+   * Só o standalone pula. O alvo Cloudflare Workers e o `output: export`
+   * continuam checando tipos normalmente.
+   *
+   * ARMADILHA: sem o passo de typecheck no CI, um erro de tipo passa batido
+   * ate o deploy. O script `typecheck` de apps/web e a rede que cobre isso.
+   */
+  ...(standaloneBuild ? { typescript: { ignoreBuildErrors: true } } : {}),
+  /**
    * DATA_PUBLICACAO: a data da última publicação, congelada NO BUILD.
    *
    * A faixa global "site em desenvolvimento ... Última atualização: <data>"

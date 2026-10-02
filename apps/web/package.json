@@ -17,6 +17,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "//typecheck": "Checagem de tipos fora do `next build`. O alvo standalone (Docker/Guara) pula o `tsc` embutido no build por causa da cota (ver next.config.ts); esta e a rede que o substitui no CI. O tsconfig vive em apps/web, por isso rodar da raiz NAO funciona.",
+    "typecheck": "tsc --noEmit",
     "lint:textos": "tsx ../../scripts/verificar-e-corrigir-textos.mts --check",
     "fix:textos": "tsx ../../scripts/verificar-e-corrigir-textos.mts --fix",
     "//test": "Duas suites, dois executores, e nao e por gosto: `lib/` e TypeScript e roda no vitest; o globo 3D e ES modules puros servidos como estatico de `public/`, sem build, e seus testes usam `node:test`. O `include` do vitest.config.ts e `lib/**/*.test.ts`, entao os testes do globo NAO eram executados por ninguem — 300+ linhas passando por nunca terem rodado, entre elas as que garantem que a exportacao nao vaza dado pessoal e nao solta camada ficticia num arquivo. `npm test` agora roda as duas.",

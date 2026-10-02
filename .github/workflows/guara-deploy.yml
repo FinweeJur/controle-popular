@@ -4,7 +4,10 @@ name: Guara Cloud CI & Deploy
 #
 # Em cada push e pull_request para `main` (sempre):
 # 1. Testes unitários (vitest na pasta apps/web)
-# 2. Varredura estrita de privacidade (scripts/checar-dado-pessoal-em-dado.py)
+# 2. Typecheck (tsc --noEmit). O build standalone do Guara pula o tsc embutido
+#    do `next build` para não gastar cota (ver apps/web/next.config.ts); este
+#    passo é a rede que substitui aquela checagem.
+# 3. Varredura estrita de privacidade (scripts/checar-dado-pessoal-em-dado.py)
 #
 # Deploy NÃO roda em push (política do dono, OPERACAO.md §0, 19/09/2026):
 # um build gasta ~17 min dos 250 min do ciclo Starter, então o deploy é
@@ -46,6 +49,9 @@ jobs:
 
       - name: Executar testes unitários (apps/web)
         run: npm run test:lib -w @cp/web
+
+      - name: Typecheck (apps/web)
+        run: npm run typecheck -w @cp/web
 
       - name: Validar privacidade e ausência de CPF em dados ingeridos
         run: python scripts/checar-dado-pessoal-em-dado.py
