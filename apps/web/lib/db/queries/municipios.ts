@@ -145,14 +145,48 @@ function paraCidade(l: typeof municipios.$inferSelect): Cidade {
  * sem ninguém saber.
  */
 export async function listarCidades(): Promise<Cidade[]> {
-  try {
-    const linhas = await listarCidadesDoPostgres();
-    if (linhas.length > 0) return linhas;
-  } catch (e) {
-    console.error("[listarCidades] Postgres indisponível; usando a lista do build:", e);
+  // ═══ CACHE EM MEMÓRIA — NÃO DEPENDE DO NEXT ═══
+  //
+  // O comentário de `obterCidadePorId()` afirma que "dentro de um build, o
+  // Next a resolve uma vez só". Isso era verdade quando o banco era a Neon
+  // (driver HTTP): cada consulta é um `fetch`, e o Next cacheia o fetch no
+  // Data Cache — 110 chamadas viram 1 consulta.
+  //
+  // Desde a Fase 4 (Guara = Postgres interno, driver `pg`/TCP) NÃO há mais
+  // fetch, e portanto NÃO há cache. Medido no build de 01-02/10: cada
+  // `[municipio]/**` chama `obterCidadePorSlug()` no layout E no
+  // `generateMetadata` — ~3.200 consultas idênticas na tabela `municipios`
+  // num build, cada uma esperando a latência do host interno. Foi o que
+  // empurrou o build de ~1074s (baseline de 01/10 00:30) para o teto de
+  // 2100s do Guara.
+  //
+  // A memoização restaura o comportamento antigo por construção: uma
+  // promessa guardada, resolvida UMA vez por processo (build ou servidor).
+  // Cidade nova só entra no portal com build novo — é a mesma premissa de
+  // `CIDADES_DO_BUILD` e do `generateStaticParams`, então o cache não
+  // envelhece sozinho.
+  if (!cacheCidades) {
+    cacheCidades = (async () => {
+      try {
+        const linhas = await listarCidadesDoPostgres();
+        if (linhas.length > 0) return linhas;
+      } catch (e) {
+        console.error("[listarCidades] Postgres indisponível; usando a lista do build:", e);
+      }
+      return CIDADES_DO_BUILD;
+    })();
   }
-  return CIDADES_DO_BUILD;
+  return cacheCidades;
 }
+
+/**
+ * Cache do processo para `listarCidades()`.
+ *
+ * Guarda a PROMESSA (não o resultado) de propósito: chamadas concorrentes —
+ * e o build as faz às centenas — aguardam a MESMA ida ao banco em vez de
+ * abrirem uma consulta cada.
+ */
+let cacheCidades: Promise<Cidade[]> | null = null;
 
 /**
  * A consulta CRUA, sem plano B — lança se o Postgres não responder.

@@ -133,7 +133,14 @@ export async function comBancoReserva<T>(
         return r;
       }
       if (t.nome === "guara") {
-        console.warn(`[banco:${rotulo}] principal (Guara) vazio; tentando reserva`);
+        // Só diz "tentando reserva" quando HÁ reserva. No build do Guara,
+        // `bancosReserva()` volta vazio (só `DATABASE_URL` é marcada para o
+        // build) — o log antigo prometia uma segunda tentativa que nunca
+        // acontecia e mandou a investigação de 01/10 atrás de um fantasma.
+        const haReserva = tentativas.length > 1;
+        console.warn(
+          `[banco:${rotulo}] principal (Guara) vazio${haReserva ? "; tentando reserva" : ""}`
+        );
       } else {
         console.warn(`[banco:${rotulo}] reserva ${t.nome} vazia`);
       }
