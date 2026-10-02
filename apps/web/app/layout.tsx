@@ -41,7 +41,7 @@ import "./globals.css";
 const BASE_URL = "https://www.controlepopular.com.br";
 const SITE_NAME = "Controle Popular";
 const DEFAULT_DESCRIPTION =
-  "Mais de R$ 251 bilhões monitorados em dados públicos: 203 cidades estratégicas, acordos de Mariana e Brumadinho, 7 órgãos de Justiça de MG e diários oficiais com fontes e código aberto.";
+  "Quanto sua prefeitura gasta e com quem contrata, quais barragens e licenças existem perto de você, como votou seu parlamentar, o orçamento da Justiça e da saúde — com link para a fonte oficial.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
