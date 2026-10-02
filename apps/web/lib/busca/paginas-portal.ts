@@ -128,6 +128,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     ],
   },
   {
+    id: "seguranca-mortes-intervencao",
+    titulo: "Mortes por intervenção policial",
+    descricao:
+      "Mortes por intervenção de agente do Estado no Brasil, por UF e sexo, e a fatia sobre as mortes violentas intencionais. Fonte: Sinesp VDE / MJSP.",
+    href: "/direitos-em-movimento/seguranca-publica",
+    frente: "geral",
+    rotulo: "Segurança · Letalidade policial",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "violencia policial", "letalidade policial", "mortes por intervencao",
+      "agente do estado", "sinesp", "seguranca publica", "mvi",
+    ],
+  },
+  {
     id: "ambiental-legislacao",
     titulo: "Legislação Ambiental Unificada",
     descricao: "Acervo catalogado de leis, resoluções e decretos de proteção ambiental e climática de Minas Gerais.",
