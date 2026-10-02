@@ -1,0 +1,245 @@
+[
+  {
+    "uf": "AC",
+    "energia": { "concessionaria": "Energisa Acre", "site": "https://www.energisa.com.br/", "telefone": "0800 647 7196" },
+    "agua": { "companhia": "Concessionária Águas Acre / autarquias municipais", "site": "", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora",
+    "observacao": "Água: não há companhia estadual única confirmada em fonte oficial. Telefone da água não confirmado; confirmar no município. Energia: telefone central da Energisa Acre, listado pela ANEEL."
+  },
+  {
+    "uf": "AL",
+    "energia": { "concessionaria": "Equatorial Alagoas", "site": "https://al.equatorialenergia.com.br/", "telefone": "0800 082 0196" },
+    "agua": { "companhia": "CASAL (Tarifa Social)", "site": "https://www.casal.al.gov.br/", "telefone": "0800 082 0195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.casal.al.gov.br/",
+    "observacao": "Água: Fone Fácil CASAL 0800 082 0195 (site oficial). Energia: telefone central da Equatorial Alagoas, listado pela ANEEL."
+  },
+  {
+    "uf": "AP",
+    "energia": { "concessionaria": "CEA / Equatorial Amapá", "site": "https://cea.amapa.gov.br/", "telefone": "0800 096 1406" },
+    "agua": { "companhia": "CAESA (Companhia de Água e Esgoto do Amapá)", "site": "https://www.caesa.ap.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesa.ap.gov.br/",
+    "observacao": "Energia: a ANEEL lista a CEA (Companhia de Eletricidade do Amapá) e o número 0800 096 1406 como ouvidoria. Água: telefone não confirmado em fonte oficial; há serviços municipais."
+  },
+  {
+    "uf": "AM",
+    "energia": { "concessionaria": "Amazonas Energia", "site": "https://www.amazonasenergia.com/", "telefone": "0800 701 3001" },
+    "agua": { "companhia": "Águas de Manaus (capital) / Cosama (interior)", "site": "https://www.aguasdemanaus.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.aguasdemanaus.com.br/",
+    "observacao": "Água: capital sob concessão privada (Águas de Manaus); interior pela Cosama (estadual). Telefone da água não confirmado em fonte oficial."
+  },
+  {
+    "uf": "BA",
+    "energia": { "concessionaria": "Neoenergia Coelba", "site": "https://www.neoenergia.com/web/bahia", "telefone": "116" },
+    "agua": { "companhia": "Embasa (Tarifa Social)", "site": "https://www.embasa.ba.gov.br/", "telefone": "0800 0555 195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.embasa.ba.gov.br/",
+    "observacao": "Água: atendimento 0800 0555 195 (site oficial da Embasa). Energia: telefone central da Coelba, listado pela ANEEL."
+  },
+  {
+    "uf": "CE",
+    "energia": { "concessionaria": "Enel Distribuição Ceará", "site": "https://www.enel.com.br/pt-ceara", "telefone": "0800 285 0196" },
+    "agua": { "companhia": "Cagece (Tarifa Social)", "site": "https://www.cagece.com.br/", "telefone": "0800 275 0195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cagece.com.br/",
+    "observacao": "Água: Central de Atendimento 0800 275 0195 (site oficial da Cagece). Energia: telefone central da Enel Ceará, listado pela ANEEL."
+  },
+  {
+    "uf": "DF",
+    "energia": { "concessionaria": "Neoenergia Brasília", "site": "https://www.neoenergia.com/web/brasilia", "telefone": "0800 644 6116" },
+    "agua": { "companhia": "CAESB (Tarifa Social)", "site": "https://www.caesb.df.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesb.df.gov.br/",
+    "observacao": "Água: a CAESB atende todo o Distrito Federal, mas o telefone não foi confirmado em fonte oficial nesta sessão (site bloqueou a leitura)."
+  },
+  {
+    "uf": "ES",
+    "energia": { "concessionaria": "EDP Espírito Santo", "site": "https://www.edp.com.br/", "telefone": "0800 721 0707" },
+    "agua": { "companhia": "CESAN (Tarifa Social)", "site": "https://www.cesan.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cesan.com.br/",
+    "observacao": "Energia: EDP ES atende a maior parte; há a Empresa Luz e Força Santa Maria (Colatina). Água: CESAN atende a maior parte; telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "GO",
+    "energia": { "concessionaria": "Equatorial Goiás", "site": "https://go.equatorialenergia.com.br/", "telefone": "0800 062 0196" },
+    "agua": { "companhia": "Saneago (Tarifa Social)", "site": "https://www.saneago.com.br/", "telefone": "0800 645 0115" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.saneago.com.br/",
+    "observacao": "Energia: Equatorial Goiás (ex-Enel Goiás); número listado pela ANEEL. Água: Central de Atendimento Saneago 0800 645 0115 (site oficial)."
+  },
+  {
+    "uf": "MA",
+    "energia": { "concessionaria": "Equatorial Maranhão (Cemar)", "site": "https://ma.equatorialenergia.com.br/", "telefone": "116" },
+    "agua": { "companhia": "CAEMA (Companhia de Águas e Esgotos do Maranhão)", "site": "https://www.caema.ma.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caema.ma.gov.br/",
+    "observacao": "Água: CAEMA atende a maior parte; telefone não confirmado em fonte oficial (site indisponível na leitura). Verificar concessões municipais."
+  },
+  {
+    "uf": "MT",
+    "energia": { "concessionaria": "Energisa Mato Grosso", "site": "https://www.energisa.com.br/", "telefone": "0800 6464 196" },
+    "agua": { "companhia": "SANEMAT (interior) / Águas Cuiabá (capital)", "site": "http://www.sanemat.mt.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | http://www.sanemat.mt.gov.br/",
+    "observacao": "Água: capital (Cuiabá) sob concessão privada (Águas Cuiabá); SANEMAT no restante; há municípios com autarquia. Telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "MS",
+    "energia": { "concessionaria": "Energisa Mato Grosso do Sul", "site": "https://www.energisa.com.br/", "telefone": "0800 722 7272" },
+    "agua": { "companhia": "Sanesul (Empresa de Saneamento de MS)", "site": "https://www.sanesul.ms.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.sanesul.ms.gov.br/",
+    "observacao": "Água: Sanesul atende a maior parte; Campo Grande tem concessionária (Águas Guariroba). Telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "MG",
+    "energia": { "concessionaria": "Cemig Distribuição", "site": "https://www.cemig.com.br/", "telefone": "116" },
+    "agua": { "companhia": "COPASA (Tarifa Social)", "site": "https://www.copasa.com.br/", "telefone": "115" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.copasa.com.br/",
+    "observacao": "Energia: Cemig-D atende a maior parte; há cooperativas e a Energisa MG em parte do estado. Água: COPASA central 115 (site oficial); há municípios com serviço autônomo."
+  },
+  {
+    "uf": "PA",
+    "energia": { "concessionaria": "Equatorial Pará (Celpa)", "site": "https://pa.equatorialenergia.com.br/", "telefone": "0800 910 196" },
+    "agua": { "companhia": "COSANPA (Tarifa Social)", "site": "https://www.cosanpa.pa.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cosanpa.pa.gov.br/",
+    "observacao": "Água: COSANPA atende a maior parte; capital com concessão (Águas de Belém). Site oficial informa sede (91) 3251-7810 e WhatsApp (91) 98886-7456; central 0800 não confirmada."
+  },
+  {
+    "uf": "PB",
+    "energia": { "concessionaria": "Energisa Paraíba", "site": "https://www.energisa.com.br/", "telefone": "0800 083 0196" },
+    "agua": { "companhia": "CAGEPA (Tarifa Social)", "site": "https://www.cagepa.pb.gov.br/", "telefone": "115" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cagepa.pb.gov.br/",
+    "observacao": "Água: central 115 (site oficial da CAGEPA). Energia: Energisa Paraíba e Energisa Borborema atuam no estado."
+  },
+  {
+    "uf": "PR",
+    "energia": { "concessionaria": "Copel Distribuição", "site": "https://www.copel.com/", "telefone": "0800 510 0116" },
+    "agua": { "companhia": "Sanepar (Tarifa Social de Água e Esgoto)", "site": "https://www.sanepar.com.br/", "telefone": "0800 200 0115" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.sanepar.com.br/",
+    "observacao": "Energia: Copel-Dis atende a maior parte; há permissionárias (Cocel, Pacto Energia). Água: Central de atendimento Sanepar 0800 200 0115 (site oficial)."
+  },
+  {
+    "uf": "PE",
+    "energia": { "concessionaria": "Neoenergia Pernambuco (Celpe)", "site": "https://www.neoenergia.com/web/pernambuco", "telefone": "116" },
+    "agua": { "companhia": "Compesa (Tarifa Social)", "site": "https://www.compesa.com.br/", "telefone": "0800 081 0195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://servicos.compesa.com.br/",
+    "observacao": "Água: atendimento 24h 0800 081 0195 (site oficial da Compesa). Energia: telefone central da Celpe, listado pela ANEEL."
+  },
+  {
+    "uf": "PI",
+    "energia": { "concessionaria": "Equatorial Piauí (Cepisa)", "site": "https://pi.equatorialenergia.com.br/", "telefone": "0800 086 800" },
+    "agua": { "companhia": "Agespisa (interior) / Águas de Teresina (capital)", "site": "https://www.agespisa.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.agespisa.com.br/",
+    "observacao": "Água: capital sob concessão (Águas de Teresina); interior pela Agespisa (estadual). Telefone da água não confirmado em fonte oficial."
+  },
+  {
+    "uf": "RJ",
+    "energia": { "concessionaria": "Light (e Enel Rio)", "site": "https://www.light.com.br/", "telefone": "0800 2820 120" },
+    "agua": { "companhia": "CEDAE (Tarifa Social)", "site": "https://www.cedae.com.br/", "telefone": "0800 28 21 195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cedae.com.br/",
+    "observacao": "Energia: Light e Enel Rio dividem o estado; telefone é o da Light (Enel Rio: 0800 2800 120). Água: parte do estado com concessionárias (Águas do Rio, Iguá, Rio+Saneamento); SAC Cedae 0800 28 21 195 (site oficial)."
+  },
+  {
+    "uf": "RN",
+    "energia": { "concessionaria": "Neoenergia Cosern", "site": "https://www.neoenergia.com/web/rn", "telefone": "116" },
+    "agua": { "companhia": "CAERN (Companhia de Águas e Esgotos do RN)", "site": "https://www.caern.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caern.com.br/",
+    "observacao": "Água: CAERN atende a maior parte; há PPPs municipais. Telefone não confirmado em fonte oficial nesta sessão."
+  },
+  {
+    "uf": "RS",
+    "energia": { "concessionaria": "RGE (CPFL) e CEEE Equatorial", "site": "https://www.rge-rs.com.br/", "telefone": "0800 970 0900" },
+    "agua": { "companhia": "Corsan (Tarifa Residencial Subsidiada)", "site": "https://www.corsan.com.br/", "telefone": "0800 646 6444" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.corsan.com.br/",
+    "observacao": "Energia: RGE (CPFL) e CEEE Equatorial; telefone é o da RGE (CEEE Equatorial ouvidoria: 0800 642 4900). Água: Corsan 24h 0800 646 6444 (site oficial); Porto Alegre tem o DMAE municipal."
+  },
+  {
+    "uf": "RO",
+    "energia": { "concessionaria": "Energisa Rondônia", "site": "https://www.energisa.com.br/", "telefone": "0800 647 0120" },
+    "agua": { "companhia": "CAERD (Companhia de Águas e Esgotos de Rondônia)", "site": "https://www.caerd.ro.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caerd.ro.gov.br/",
+    "observacao": "Água: CAERD atende a maior parte; telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "RR",
+    "energia": { "concessionaria": "Roraima Energia", "site": "https://www.roraimaenergia.com.br/", "telefone": "0800 0701 9120" },
+    "agua": { "companhia": "CAER (Companhia de Águas e Esgotos de Roraima)", "site": "https://www.caer.rr.gov.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caer.rr.gov.br/",
+    "observacao": "Energia: sistema isolado. Água: CAER atende Boa Vista e parte do estado; telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "SC",
+    "energia": { "concessionaria": "Celesc Distribuição", "site": "https://www.celesc.com.br/", "telefone": "0800 048 3232" },
+    "agua": { "companhia": "CASAN (Tarifa Social)", "site": "https://www.casan.com.br/", "telefone": "0800 048 0115" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.casan.com.br/",
+    "observacao": "Energia: a ANEEL lista apenas a ouvidoria da Celesc (0800 048 3232); a central não estava na página. Água: CASAN atende 115 / 0800 048 0115 (site oficial)."
+  },
+  {
+    "uf": "SP",
+    "energia": { "concessionaria": "Enel Distribuição São Paulo (e CPFL, EDP SP)", "site": "https://www.enel.com.br/pt-saopaulo.html", "telefone": "0800 72 72 120" },
+    "agua": { "companhia": "Sabesp (Tarifa Social)", "site": "https://www.sabesp.com.br/", "telefone": "0800 055 0195" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.sabesp.com.br/",
+    "observacao": "Energia: estado tem Enel SP, CPFL Paulista, CPFL Piratininga, CPFL Santa Cruz, EDP SP e Elektro; telefone é o da Enel SP. Água: Central Sabesp 0800 055 0195 (site oficial); vários municípios têm serviço autônomo."
+  },
+  {
+    "uf": "SE",
+    "energia": { "concessionaria": "Energisa Sergipe", "site": "https://www.energisa.com.br/", "telefone": "0800 079 0196" },
+    "agua": { "companhia": "DESO (Companhia de Saneamento de Sergipe)", "site": "https://www.deso-se.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.deso-se.com.br/",
+    "observacao": "Água: DESO atende a maior parte; Aracaju tem serviços municipais. Telefone não confirmado em fonte oficial."
+  },
+  {
+    "uf": "TO",
+    "energia": { "concessionaria": "Energisa Tocantins", "site": "https://www.energisa.com.br/", "telefone": "0800 721 3330" },
+    "agua": { "companhia": "BRK Ambiental (concessionária) / ATS (agência estadual)", "site": "https://www.brkambiental.com.br/", "telefone": "" },
+    "descontoEnergia": "Federal (Lei 12.212/2010 + REN ANEEL 1.000/2021): 100% de desconto até 80 kWh/mês desde 05/07/2025 (MPV 1.300/2025); acima de 80 kWh, sem desconto.",
+    "descontoAgua": "varia por companhia",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.brkambiental.com.br/",
+    "observacao": "Água: serviço estadual (ATS) e concessão privada (BRK Ambiental); confirmar no município. Telefone não confirmado em fonte oficial."
+  }
+]

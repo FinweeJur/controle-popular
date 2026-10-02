@@ -10,6 +10,24 @@ export interface FonteOficialNoticia {
   url: string;
 }
 
+/**
+ * Tabela opcional dentro do corpo do artigo — usada quando a matéria precisa
+ * comparar dados por linha (ex.: tarifa social por estado). Renderizada como
+ * `<table>` acessível com rolagem própria; `fonte` é a URL oficial da tabela,
+ * exigida pela regra de fonte (§8 do AGENTS.md).
+ */
+export interface TabelaNoticia {
+  titulo: string;
+  /** Cabeçalhos, na ordem das colunas. */
+  colunas: string[];
+  /** Linhas; cada célula aceita markdown de link `[rótulo](url)`. */
+  linhas: string[][];
+  /** Ressalva curta abaixo da tabela (ex.: o que varia por município). */
+  nota?: string;
+  /** Fonte oficial da tabela. */
+  fonte?: FonteOficialNoticia;
+}
+
 export interface NoticiaPortal {
   slug: string;
   titulo: string;
@@ -30,6 +48,8 @@ export interface NoticiaPortal {
   metricas: MetricaNoticia[];
   recomendacaoVerificar?: string;
   paragrafos: string[];
+  /** Tabela comparativa opcional, exibida ao fim do corpo do artigo. */
+  tabela?: TabelaNoticia;
 }
 
 /**

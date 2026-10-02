@@ -251,6 +251,56 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
         ))}
       </article>
 
+      {/* TABELA COMPARATIVA (opcional) — ex.: tarifa social por estado */}
+      {noticia.tabela && (
+        <section aria-label={noticia.tabela.titulo} className="my-8">
+          <h3 className="font-display text-lg font-bold text-foreground mb-3">
+            {noticia.tabela.titulo}
+          </h3>
+          <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
+            <table className="w-full text-left text-sm border-collapse">
+              <caption className="sr-only">{noticia.tabela.titulo}</caption>
+              <thead className="bg-surface-2 text-xs font-semibold text-muted uppercase border-b border-border">
+                <tr>
+                  {noticia.tabela.colunas.map((c) => (
+                    <th key={c} scope="col" className="whitespace-nowrap px-3 py-2.5">
+                      {c}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/60">
+                {noticia.tabela.linhas.map((linha, i) => (
+                  <tr key={i} className="align-top transition hover:bg-surface-2/50">
+                    {linha.map((celula, j) => (
+                      <td key={j} className="px-3 py-2.5 text-foreground/90">
+                        {renderTextoComLinks(celula)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {noticia.tabela.nota && (
+            <p className="mt-2 text-xs text-muted">{renderTextoComLinks(noticia.tabela.nota)}</p>
+          )}
+          {noticia.tabela.fonte && (
+            <p className="mt-1 text-xs text-muted">
+              Fonte:{" "}
+              <a
+                href={noticia.tabela.fonte.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {noticia.tabela.fonte.nome} ↗
+              </a>
+            </p>
+          )}
+        </section>
+      )}
+
       {/* RECOMENDAÇÃO PARA VERIFICAR ESTE DADO */}
       {noticia.recomendacaoVerificar && (
         <section aria-label="Como verificar este dado" className="my-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 shadow-xs">
