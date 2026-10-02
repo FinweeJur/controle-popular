@@ -414,6 +414,11 @@ const nextConfig: NextConfig = {
             { source: "/3121605", destination: "/diamantina", permanent: true },
             { source: "/3134004", destination: "/itinga", permanent: true },
             { source: "/3550308", destination: "/sp", permanent: true },
+            // "Radar de Compras & Contratos" (menu, índice e hub de economia)
+            // apontava para `/ambiental/contratos`, rota que nunca existiu — o
+            // leitor via 404. Sem uma página própria de contratos hoje, o
+            // destino vivo mais próximo é o Radar Diário de Editais.
+            { source: "/ambiental/contratos", destination: "/editais", permanent: false },
             // Typo corrigido em 29/09/2026: a rota nasceu como `/mineraicao`
             // (erro de digitação no diretório). Agora é `/mineracao/cavas`.
             // O redirect preserva link salvo ou indexado na URL errada.
