@@ -40,10 +40,9 @@ describe("a contagem de frentes vive num lugar só", () => {
       arquivo: ["..", "app", "components", "FooterGlobal.tsx"],
       padroes: [/as cinco frentes/i],
     },
-    {
-      arquivo: ["..", "app", "sobre", "page.tsx"],
-      padroes: [/as cinco frentes/i, /organiza em cinco frentes/i],
-    },
+    // `/sobre` saiu desta lista em 02/10/2026: deixou de falar em "frentes" e
+    // passou a descrever os 4 eixos e as subfrentes a partir de
+    // `lib/eixos/catalogo.ts` — não há mais contagem de frentes para cravar.
   ];
 
   test.each(TELAS_QUE_JA_CRAVARAM)(
