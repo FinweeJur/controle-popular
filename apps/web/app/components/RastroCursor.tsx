@@ -21,12 +21,17 @@
  * Decisões técnicas:
  * - corrente de nós com suavização (lerp) em `requestAnimationFrame`, texto
  *   do DOM direto (sem re-render do React a cada quadro);
- * - a cabeça anda mais rápido (0,35) que a cauda (0,42 de perseguição ao
- *   nó anterior): dá o efeito de chicote/rastro da referência;
- * - o índice do texto avança por DISTÂNCIA percorrida (24 px por letra),
+ * - a cabeça anda mais rápido (0,26) que a cauda (0,22 de perseguição ao
+ *   nó anterior): dá o efeito de chicote/rastro da referência. Valores
+ *   baixos de propósito — pedido do dono (02/10/2026): trilha "um pouco
+ *   mais lenta", atrasada atrás do ponteiro, sem colar nele;
+ * - o índice do texto avança por DISTÂNCIA percorrida (26 px por letra),
  *   não por tempo: parado, o texto não troca sozinho; andando, rola;
  * - a opacidade cai ao longo da corrente (`--i`) e a camada some quando o
- *   mouse para (economiza bateria e evita a "bola" de letras sobrepostas);
+ *   mouse para (economiza bateria e evita a "bola" de letras sobrepostas).
+ *   O desaparecer é lento de propósito: 900 ms parado + fade de 0,6 s
+ *   mantêm o rastro legível um instante depois que o ponteiro pára
+ *   (mesmo pedido, 02/10/2026);
  * - é decorativo: `aria-hidden`, `pointer-events: none`, sem captura de
  *   clique; respeita `prefers-reduced-motion` e não liga em tela de toque.
  *
@@ -105,14 +110,26 @@ function montarTexto(): string {
 
 /** Quantos elos (letras) a corrente tem. */
 const ELOS = 48;
-/** Suavização da cabeça (persegue o mouse). */
-const SUAVE_CABECA = 0.38;
-/** Suavização da cauda (cada elo persegue o anterior). */
-const SUAVE_CAUDA = 0.34;
+/**
+ * Suavização da cabeça (persegue o mouse). Quanto menor, mais lenta ela
+ * anda e mais o rastro atrasa — 0,26 medido como "um pouco mais lenta"
+ * a pedido do dono (02/10/2026); era 0,38 e colava no ponteiro.
+ */
+const SUAVE_CABECA = 0.26;
+/**
+ * Suavização da cauda (cada elo persegue o anterior). Mantém a mesma
+ * proporção da cabeça (~85%) para o chicote não ficar duro nem elástico.
+ */
+const SUAVE_CAUDA = 0.22;
 /** Quantos pixels a cabeça anda para a corrente rolar UMA letra. */
 const PX_POR_LETRA = 26;
-/** Sem mover por este tempo, a corrente começa a sumir. */
-const OCIOSO_MS = 700; // 0,7 s (pedido do dono, 02/10/2026)
+/**
+ * Sem mover por este tempo, a corrente começa a sumir. 700 ms (era 260)
+ * para o rastro ficar visível por mais tempo depois que o mouse pára —
+ * pedido do dono (02/10/2026); valor medido e publicado pela sessão
+ * `4bc73262`, mantido aqui na junção dos dois trabalhos.
+ */
+const OCIOSO_MS = 700;
 
 export default function RastroCursor() {
   const camadaRef = useRef<HTMLDivElement | null>(null);
@@ -214,7 +231,8 @@ export default function RastroCursor() {
           pointer-events: none;
           overflow: hidden;
           opacity: 0;
-          /* Desaparecimento em 0,7 s (pedido do dono, 02/10/2026; era 0,25 s). */
+          /* Desaparecimento lento: 0,7 s (pedido do dono, 02/10/2026;
+             era 0,25 s — publicado pela sessão `4bc73262`). */
           transition: opacity 0.7s ease;
           contain: strict;
         }
