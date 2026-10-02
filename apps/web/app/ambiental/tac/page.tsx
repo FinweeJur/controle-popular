@@ -313,8 +313,7 @@ export default function TacAmbientalPage() {
                           })}
                         </div>
                         <span className="font-tabular text-[11px] font-medium text-text-soft">{a.ano}</span>
-                            <MeioAmbienteRelacionado />
-</div>
+                      </div>
                     );
                   })}
                 </div>

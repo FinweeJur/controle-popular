@@ -187,21 +187,24 @@ export default async function DireitosEmMovimentoHub() {
             </span>
           </a>
 
+          {/* Este card trata de Tarifa Social, que é uma notícia própria com o
+              passo a passo do desconto. A rede de proteção (Defensoria, CRAS,
+              MP) fica no PortaCard "Onde buscar ajuda" mais abaixo. */}
           <a
-            href="/direitos-em-movimento/ajuda"
+            href="/noticias/tarifa-social-energia-agua-como-acessar"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>
-              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Assistência</span>
+              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Conta de Luz e Água</span>
               <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
-                Onde Buscar Ajuda
+                Tarifa Social de Água & Luz
               </h3>
               <p className="text-xs text-text-soft mt-1 leading-relaxed">
-                Defensoria, assistência social, rede de proteção e tarifa social de água e luz.
+                Desconto de até 65% para famílias de baixa renda: quem tem direito e como pedir.
               </p>
             </div>
             <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-3 flex items-center justify-between">
-              <span>Buscar Ajuda</span>
+              <span>Ver passo a passo</span>
               <span>→</span>
             </span>
           </a>

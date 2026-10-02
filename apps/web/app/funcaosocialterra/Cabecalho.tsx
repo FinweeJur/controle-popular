@@ -29,13 +29,15 @@
  * troca aquele cabeçalho por um consistente com o resto da zona, mesma
  * altura de uma linha).
  *
- * `<a>` cru em vez do `<Link>` de zona: só 3 destinos, usados em 3 lugares —
- * criar `lib/terras/link.tsx` só para isso seria mecanismo novo para um
- * problema que já não tem duplicação (ver `outrasZonas()`/`lib/zonas.ts`
- * sobre NÃO reinventar). Mesmo padrão que as 3 páginas desta zona já usam
- * nos próprios links internos (ex.: os botões "Ver mapa completo (3D) →" do
- * hub).
+ * `next/link` cru em vez do `<Link>` de zona: só 3 destinos, usados em 3
+ * lugares — criar `lib/terras/link.tsx` só para isso seria mecanismo novo
+ * para um problema que já não tem duplicação (ver `outrasZonas()`/`lib/zonas.ts`
+ * sobre NÃO reinventar). Antes era `<a>` cru, mas ele recarregava a página a
+ * cada clique e desmontava o player de rádio do layout raiz; o `next/link`
+ * entrega a mesma navegação sem recarga e sem prefixo de zona.
  */
+import Link from "next/link";
+
 const NAV = [
   { href: "/funcaosocialterra", label: "Visão geral" },
   { href: "/funcaosocialterra/mapa", label: "Mapa 3D" },
@@ -50,14 +52,14 @@ export default function Cabecalho() {
             barra global (`TopNav.tsx`, layout raiz). Aqui fica só o nome da
             zona, para `/funcaosocialterra` — nunca `/` — porque é para lá
             que as outras duas rotas da zona devem levar de volta. */}
-        <a href="/funcaosocialterra" className="font-display text-lg font-bold">
+        <Link href="/funcaosocialterra" className="font-display text-lg font-bold">
           Função social da terra
-        </a>
+        </Link>
         <nav className="flex flex-1 flex-wrap gap-4 text-sm">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="hover:underline">
+            <Link key={item.href} href={item.href} className="hover:underline">
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

@@ -316,8 +316,13 @@ export default async function IndiceGlobal() {
                   <li className="font-medium text-amber-300">
                     <Link href="/direitos-em-movimento/saude-publica" className="hover:underline">✦ Saúde Pública & SUS</Link>
                   </li>
+                  {/* Tarifa Social aponta para a notícia (passo a passo do
+                      desconto); Ajuda continua na rede de proteção. */}
                   <li className="font-medium text-amber-300">
-                    <Link href="/direitos-em-movimento/ajuda" className="hover:underline">✦ Onde Buscar Ajuda & Tarifa Social</Link>
+                    <Link href="/noticias/tarifa-social-energia-agua-como-acessar" className="hover:underline">✦ Tarifa Social de Água & Luz</Link>
+                  </li>
+                  <li className="font-medium text-amber-300">
+                    <Link href="/direitos-em-movimento/ajuda" className="hover:underline">✦ Onde Buscar Ajuda</Link>
                   </li>
                 </ul>
               </div>
@@ -473,9 +478,9 @@ export default async function IndiceGlobal() {
         <h2 className="flex items-center gap-2 font-display text-xl font-semibold">
           <Sparkles size={20} className="text-primary" aria-hidden="true" />
           Novidades
-          <a href="/novidades" className="ml-auto text-[11px] font-medium text-text-soft hover:text-primary">
+          <Link href="/novidades" className="ml-auto text-[11px] font-medium text-text-soft hover:text-primary">
             ver tudo
-          </a>
+          </Link>
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {novidadesMescladas.map((item, i) => (

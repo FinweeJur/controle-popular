@@ -2,9 +2,17 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, GripVertical, ListMusic, Pause, Play, Radio } from "lucide-react";
 import {
-  bandeiraDe,
+  ChevronDown,
+  GripVertical,
+  ListMusic,
+  Pause,
+  Play,
+  Radio,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import {
   ESTACOES,
   estacaoPorId,
   ORDEM_TIPOS,
@@ -16,6 +24,7 @@ import {
   EVENTO_TOCAR,
   type EstadoRadio,
 } from "@/lib/radio/eventos";
+import Bandeira from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
 import { usarArrastavel } from "@/lib/usarArrastavel";
@@ -53,9 +62,23 @@ export default function PlayerRadio() {
   const [tocando, setTocando] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [indiceAberto, setIndiceAberto] = useState(false);
+  // Volume e mudo: pedido do dono (02/10/2026). O rádio toca em segundo
+  // plano; sem controle de volume o leitor só podia mutar o aparelho
+  // inteiro. O estado é do React e é espelhado no `<audio>` por efeito.
+  const [volume, setVolume] = useState(1);
+  const [mudo, setMudo] = useState(false);
   // Janela arrastável: o canto pode tapar o que a pessoa precisa ler; a
   // posição fica lembrada no `localStorage` (pedido do dono, 30/09/2026).
   const { estilo, arrastando, handlers, resetar } = usarArrastavel("cp_radio_pos");
+
+  // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
+  // na montagem, para o `<audio>` nascer com os valores do estado.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = volume;
+    audio.muted = mudo;
+  }, [volume, mudo]);
 
   // O índice abre no hover do botão. Ao sair, ele NÃO fecha na hora: há um
   // vão de alguns pixels entre o botão e o painel, e fechar na saída tornava
@@ -228,18 +251,129 @@ export default function PlayerRadio() {
 
       <div
         style={estilo}
-        className="fixed bottom-4 left-[4.75rem] z-40 flex flex-col items-start print:hidden"
-        onMouseEnter={() => setIndiceAberto(true)}
-        onMouseLeave={() => setIndiceAberto(false)}
+        // `group` revela o volume no hover/foco do player inteiro — inclusive
+        // quando o ponteiro está sobre o painel do índice (que é filho).
+        className="group fixed bottom-4 left-[4.75rem] z-40 flex flex-col items-start print:hidden"
+        // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
+        // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
+        onMouseEnter={abrirIndice}
+        onMouseLeave={agendarFecharIndice}
+        // Foco por teclado também abre (focus bubbling do React), para quem
+        // navega sem mouse alcançar os itens do índice.
+        onFocus={abrirIndice}
+        onBlur={agendarFecharIndice}
       >
         {/* Bolha de transcrição ao vivo (só nas federais de fala). */}
         {estacaoAtual?.transcrevivel && tocando && (
           <TranscricaoRadio key={estacaoAtual.id} estacao={estacaoAtual} />
         )}
 
+        {/* Controle único do player. Antes eram TRÊS botões soltos (arrastar,
+            play e chevron do índice); viraram uma pílula só: a pega de arrasto
+            à esquerda e o corpo clicável (play/pause + nome + indicador do
+            índice) à direita. O índice abre no hover/foco do conjunto — o
+            chevron é só o indicador visual, sem botão próprio. */}
+        <div className="flex items-center gap-1.5">
+          <div className="flex items-stretch overflow-hidden rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur">
+            {/* Pega de arrasto: move a janelinha; clique duplo volta ao canto.
+                `touch-none` impede a página de rolar em vez de arrastar. */}
+            <button
+              type="button"
+              {...handlers}
+              onDoubleClick={resetar}
+              aria-label="Arrastar o player de rádio"
+              title="Arraste para mover; clique duplo volta ao canto"
+              className={`touch-none inline-flex cursor-grab items-center justify-center border-r border-border px-1.5 text-text-soft transition-colors hover:bg-surface-2 hover:text-primary ${
+                arrastando ? "cursor-grabbing" : ""
+              }`}
+            >
+              <GripVertical size={14} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
+              aria-label={rotulo}
+              title={`${rotulo} — o índice de rádios abre aqui`}
+              aria-expanded={indiceAberto}
+              aria-controls="cp-radio-indice"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold text-text transition-colors hover:bg-surface-2 hover:text-primary"
+            >
+              <span className="relative flex h-4 w-4 items-center justify-center">
+                {tocando ? (
+                  <Pause size={16} aria-hidden="true" className="text-primary" />
+                ) : (
+                  <Radio size={16} aria-hidden="true" className="text-primary" />
+                )}
+              </span>
+              <span className="hidden sm:inline max-w-[12rem] truncate">
+                {carregando
+                  ? "Sintonizando…"
+                  : tocando
+                    ? estacaoAtual?.nome ?? "A rádio"
+                    : "Ouvir a rádio"}
+              </span>
+              {tocando && (
+                <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-primary" />
+              )}
+              <ChevronDown
+                size={14}
+                aria-hidden="true"
+                className={`shrink-0 text-text-soft transition-transform ${indiceAberto ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
+
+          {/* Volume: aparece no hover/foco do player inteiro (classe `group`)
+              e também enquanto `indiceAberto` — assim ele não pisca no vão
+              entre o botão e o painel, nem some ao passar o mouse sobre o
+              painel. O botão de mudo tem estado `aria-pressed`; o `range` usa
+              a mesma escala 0–1 de `audio.volume`. Enquanto invisível fica
+              `pointer-events-none`, para um clique às cegas não mexer no som;
+              o foco de teclado continua chegando nele. */}
+          <div
+            className={`flex items-center gap-1.5 rounded-full border border-border bg-surface/95 px-2 py-1.5 shadow-lg backdrop-blur transition-opacity ${
+              indiceAberto
+                ? "pointer-events-auto opacity-100"
+                : "pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100"
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setMudo((m) => !m)}
+              aria-label={mudo ? "Ativar som da rádio" : "Silenciar rádio"}
+              aria-pressed={mudo}
+              title={mudo ? "Ativar som" : "Silenciar"}
+              className="text-text-soft transition-colors hover:text-primary"
+            >
+              {mudo || volume === 0 ? (
+                <VolumeX size={16} aria-hidden="true" />
+              ) : (
+                <Volume2 size={16} aria-hidden="true" />
+              )}
+            </button>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.05}
+              value={mudo ? 0 : volume}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setVolume(v);
+                if (v > 0) setMudo(false);
+              }}
+              aria-label="Volume da rádio"
+              className="h-1 w-20 cursor-pointer accent-[var(--cp-primary)]"
+            />
+          </div>
+        </div>
+
         {/* Índice expansível: aparece ao passar o mouse/focar no botão. */}
         {indiceAberto && (
-          <div className="absolute bottom-full left-0 mb-2 w-[min(calc(100vw-2rem),21rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl">
+          <div
+            id="cp-radio-indice"
+            className="absolute bottom-full left-0 mb-2 w-[min(calc(100vw-2rem),21rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+          >
             <div className="flex items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
               <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
                 <ListMusic size={14} aria-hidden="true" />
@@ -248,7 +382,9 @@ export default function PlayerRadio() {
               <Link
                 href="/radio"
                 className="text-xs font-semibold text-primary hover:underline"
-                onClick={() => setIndiceAberto(false)}
+                // Navegação: fecha na hora, sem os 1,5 s do hover — a saída é
+                // intencional e o atraso só faria o índice piscar na transição.
+                onClick={fecharIndiceJa}
               >
                 Ver todas →
               </Link>
@@ -278,8 +414,8 @@ export default function PlayerRadio() {
                               <span className="min-w-0 flex-1 truncate text-xs text-text">
                                 {e.nome}
                               </span>
-                              <span aria-hidden="true" title={e.paisNome}>
-                                {bandeiraDe(e.pais)}
+                              <span title={e.paisNome} className="inline-flex">
+                                <Bandeira iso={e.pais} nome={e.paisNome} tamanho={12} />
                               </span>
                               {ativa && tocando ? (
                                 <Pause size={12} className="shrink-0 text-primary" aria-hidden="true" />
@@ -298,62 +434,6 @@ export default function PlayerRadio() {
           </div>
         )}
 
-        {/* Botão flutuante principal */}
-        <div className="flex items-stretch gap-1">
-          {/* Pega de arrasto: move a janelinha; clique duplo volta ao canto.
-              `touch-none` impede a página de rolar em vez de arrastar. */}
-          <button
-            type="button"
-            {...handlers}
-            onDoubleClick={resetar}
-            aria-label="Arrastar o player de rádio"
-            title="Arraste para mover; clique duplo volta ao canto"
-            className={`touch-none inline-flex cursor-grab items-center justify-center rounded-full border border-border bg-surface/95 px-1.5 text-text-soft shadow-lg backdrop-blur transition-colors hover:border-primary hover:text-primary ${
-              arrastando ? "cursor-grabbing" : ""
-            }`}
-          >
-            <GripVertical size={14} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
-            aria-label={rotulo}
-            title={rotulo}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/95 px-3 py-2 text-xs font-semibold text-text shadow-lg backdrop-blur transition-colors hover:border-primary hover:text-primary"
-          >
-            <span className="relative flex h-4 w-4 items-center justify-center">
-              {tocando ? (
-                <Pause size={16} aria-hidden="true" className="text-primary" />
-              ) : (
-                <Radio size={16} aria-hidden="true" className="text-primary" />
-              )}
-            </span>
-            <span className="hidden sm:inline max-w-[12rem] truncate">
-              {carregando
-                ? "Sintonizando…"
-                : tocando
-                  ? estacaoAtual?.nome ?? "A rádio"
-                  : "Ouvir a rádio"}
-            </span>
-            {tocando && (
-              <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={() => setIndiceAberto((v) => !v)}
-            aria-expanded={indiceAberto}
-            aria-label="Abrir índice de rádios"
-            title="Índice de rádios"
-            className="inline-flex items-center justify-center rounded-full border border-border bg-surface/95 px-2 text-text-soft shadow-lg backdrop-blur transition-colors hover:border-primary hover:text-primary"
-          >
-            <ChevronDown
-              size={15}
-              aria-hidden="true"
-              className={`transition-transform ${indiceAberto ? "rotate-180" : ""}`}
-            />
-          </button>
-        </div>
       </div>
     </>
   );

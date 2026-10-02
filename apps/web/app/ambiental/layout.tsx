@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/ambiental/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
@@ -38,11 +39,15 @@ export default function AmbientalLayout({
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-4">
           {/* Wordmark da MARCA, botões de zona irmã e controles de
               tema/tamanho/contraste agora moram na barra global (`TopNav.tsx`,
-              layout raiz). Aqui fica só o nome da zona como <a> cru: o <Link>
-              da zona prefixaria e geraria /ambiental/ambiental. */}
-          <a href="/ambiental" className="font-display text-lg font-bold">
+              layout raiz). Aqui fica só o nome da zona. Usa `next/link` cru
+              porque o destino é a PRÓPRIA raiz da zona (`/ambiental`): o
+              `<Link>` da zona só serve para prefixar hrefs relativos; já o
+              `<a>` cru recarregava a página inteira e cortava o áudio do player
+              persistente — o `next/link` navega pelo cliente sem desmontar o
+              layout raiz (dono, 02/10/2026). */}
+          <NextLink href="/ambiental" className="font-display text-lg font-bold">
             ONSA
-          </a>
+          </NextLink>
           <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
             <Link
               href="/indice"
@@ -114,7 +119,11 @@ export default function AmbientalLayout({
         </div>
       </header>
 
-      <main id="conteudo-principal" tabIndex={-1} className="flex-1">
+      {/* `min-w-0` + `w-full max-w-full`: itens de flex não encolhem abaixo
+          do próprio min-content por padrão. Páginas da zona com tabela larga
+          (ex.: /ambiental/ameacas-americas) estourariam a viewport; assim a
+          rolagem fica contida no card da própria tabela. */}
+      <main id="conteudo-principal" tabIndex={-1} className="w-full max-w-full min-w-0 flex-1">
         {children}
       </main>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Linha do Tempo — Desenvolvimento do Controle Popular",
@@ -88,9 +89,9 @@ export default function HistoricoPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl space-y-10 px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <Link href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </Link>{" "}
         · <span className="text-text">Linha do Tempo</span>
       </nav>
 

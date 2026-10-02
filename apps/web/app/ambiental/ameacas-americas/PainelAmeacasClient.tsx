@@ -137,8 +137,8 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
     const lista = [...registrosFiltrados];
 
     lista.sort((a, b) => {
-      let valorA: string | number = a[colunaOrdenacao];
-      let valorB: string | number = b[colunaOrdenacao];
+      const valorA: string | number = a[colunaOrdenacao];
+      const valorB: string | number = b[colunaOrdenacao];
 
       if (typeof valorA === "string" && typeof valorB === "string") {
         const comp = semAcento(valorA).localeCompare(semAcento(valorB));
@@ -598,7 +598,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SEÇÃO 4: TABELA E CARDS ORDENÁVEIS (QUALIDADES 1 E 3)              */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <section aria-label="Lista de Ameaças Ambientais nas Américas" className="space-y-4">
+      <section aria-label="Lista de Ameaças Ambientais nas Américas" className="w-full max-w-full min-w-0 space-y-4">
         <div className="flex items-center justify-between text-xs text-muted px-1">
           <span>
             Exibindo <strong>{registrosOrdenados.length}</strong> ameaças encontradas
@@ -623,9 +623,13 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
             </button>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse">
+          <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-sm">
+            {/* Tabela de 6 colunas: o próprio card é o invólucro de rolagem.
+                `w-full max-w-full min-w-0` impede que a largura mínima da
+                tabela estique o container pai (flex/grid) e crie scroll
+                horizontal na página inteira — a rolagem fica contida aqui.
+                Mesmo padrão de TabelaProposicoes.tsx e TabelaCidadesClient.tsx. */}
+            <table className="w-full text-left text-sm border-collapse">
                 <thead className="border-b border-border bg-surface-2 text-xs font-bold uppercase tracking-wider text-muted">
                   <tr>
                     <th scope="col" className="px-4 py-3.5">
@@ -797,7 +801,6 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
                   })}
                 </tbody>
               </table>
-            </div>
           </div>
         )}
       </section>

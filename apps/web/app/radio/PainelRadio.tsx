@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Pause, Play, Radio as IconeRadio, Search } from "lucide-react";
 import {
-  bandeiraDe,
   ORDEM_REGIOES,
   ORDEM_TIPOS,
   ROTULO_REGIAO,
@@ -12,6 +11,7 @@ import {
   type RegiaoRadio,
   type TipoRadio,
 } from "@/lib/radio/estacoes";
+import Bandeira from "@/app/components/Bandeira";
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import BotoesExportar from "@/app/components/BotoesExportar";
 import LogoRadio from "@/app/components/LogoRadio";
@@ -213,7 +213,20 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
             </label>
 
             <label className="text-xs font-medium text-text-soft">
-              País
+              {/* A bandeira do país selecionado aparece como imagem AQUI, e
+                  não dentro do `<option>`: `option` só aceita texto, então o
+                  emoji virava as letras "BR" no Windows sem conserto possível
+                  por imagem. O nome do país no `<option>` basta para escolher. */}
+              <span className="flex items-center gap-1">
+                País
+                {pais !== "todos" && (
+                  <Bandeira
+                    iso={pais}
+                    nome={paises.find((p) => p.codigo === pais)?.nome}
+                    tamanho={12}
+                  />
+                )}
+              </span>
               <select
                 value={pais}
                 onChange={(e) => setPais(e.target.value)}
@@ -222,7 +235,7 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
                 <option value="todos">Todos os países</option>
                 {paises.map((p) => (
                   <option key={p.codigo} value={p.codigo}>
-                    {bandeiraDe(p.codigo)} {p.nome} ({p.total})
+                    {p.nome} ({p.total})
                   </option>
                 ))}
               </select>
@@ -294,8 +307,8 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
                   <div className="min-w-0 flex-1">
                     <p className="flex flex-wrap items-center gap-1.5">
                       <span className="font-semibold leading-snug text-text">{e.nome}</span>
-                      <span title={e.paisNome} aria-label={`País: ${e.paisNome}`}>
-                        {bandeiraDe(e.pais)}
+                      <span title={e.paisNome} className="inline-flex">
+                        <Bandeira iso={e.pais} nome={e.paisNome} tamanho={14} />
                       </span>
                     </p>
                     <p className="mt-0.5 text-xs text-text-soft">

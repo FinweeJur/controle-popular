@@ -53,7 +53,7 @@ export default function PaginaAmeacasAmericas() {
     "vetores predatórios. Todos os dados são referenciados em atos de órgãos oficiais e relatórios científicos públicos.";
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
+    <div className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* BREADCRUMB ESTRUTURAL                                              */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
@@ -171,7 +171,10 @@ export default function PaginaAmeacasAmericas() {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* PAINEL CLIENT COM AS SEIS QUALIDADES INTEGRADAS                     */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <main>
+      {/* `min-w-0` + `max-w-full`: a lista tem tabela larga; sem isso o
+          min-content da tabela pode esticar este bloco e gerar scroll
+          horizontal na página inteira em vez de rolar só dentro do card. */}
+      <main className="w-full max-w-full min-w-0">
         <PainelAmeacasClient registrosIniciais={ameacas} />
       </main>
 

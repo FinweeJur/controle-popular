@@ -992,6 +992,26 @@ export function bandeiraDe(iso: string): string {
   );
 }
 
+/**
+ * URL da bandeira do país como IMAGEM SVG (flagcdn.com).
+ *
+ * Por que existe: o truque dos "regional indicator symbols" do `bandeiraDe`
+ * é texto Unicode, e o **Windows não desenha esse bloco** — a bandeira sai
+ * como as duas letras (`BR` em vez de 🇧🇷). O site é lido por muita gente
+ * nesse sistema, então a renderização passa a ser imagem.
+ *
+ * O `pais` (ISO-3166-1 alfa-2) já existe em cada estação; esta função só
+ * traduz para a URL. Devolve `null` quando o código é inválido, para o
+ * componente decidir se omite a imagem em vez de pedir um recurso quebrado.
+ * A bandeira continua sendo do país; a imagem é servida pelo `flagcdn.com`,
+ * um CDN público de bandeiras de domínio público.
+ */
+export function urlBandeira(iso: string): string | null {
+  const codigo = iso.trim().toLowerCase();
+  if (!/^[a-z]{2}$/.test(codigo)) return null;
+  return `https://flagcdn.com/${codigo}.svg`;
+}
+
 /** Busca uma estação pelo id (undefined se não existir). */
 export function estacaoPorId(id: string): EstacaoRadio | undefined {
   return ESTACOES.find((e) => e.id === id);

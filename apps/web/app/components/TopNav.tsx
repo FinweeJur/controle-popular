@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import {
   Menu,
   ChevronDown,
@@ -61,7 +62,7 @@ import OuvirNavbar from '@/app/components/OuvirNavbar';
 interface ItemMenuLink {
   label: string;
   href: string;
-  icone: any;
+  icone: LucideIcon;
   destaque?: boolean;
 }
 
@@ -70,7 +71,7 @@ interface SecaoMenu {
   badge: string;
   titulo: string;
   href: string;
-  icone: any;
+  icone: LucideIcon;
   cor: string;
   corClasse: string;
   badgeClasse: string;
@@ -120,7 +121,10 @@ const SECOES_MENU: SecaoMenu[] = [
       { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true },
       { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true },
       { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true },
-      { label: 'Onde Buscar Ajuda & Tarifa Social', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true },
+      // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
+      // com o passo a passo do desconto; a segunda é a rede de proteção.
+      { label: 'Tarifa Social (Água & Luz)', href: '/noticias/tarifa-social-energia-agua-como-acessar', icone: Newspaper, destaque: true },
+      { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true },
       { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap },
       { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase },
       { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users },
