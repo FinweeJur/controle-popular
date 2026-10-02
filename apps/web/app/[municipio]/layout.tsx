@@ -40,10 +40,18 @@ import { exportandoEstatico } from "@/lib/alvo-de-build";
  *
  * O 404 de cidade inexistente continua garantido sem `dynamicParams=false`:
  * o próprio layout chama `obterCidadePorSlug()` e dispara `notFound()`.
- * `dynamicParams` fica `false` apenas no export (exigência do Next), e
- * `true` no Guara/Cloudflare.
+ *
+ * ═══ POR QUE LITERAL, E NÃO `!exportandoEstatico` ═══
+ * O Next lê as configs de segmento ESTATICAMENTE, antes de executar o módulo:
+ * só aceita literal (`true`/`false`). `!exportandoEstatico` vira
+ * `Unsupported node type "UnaryExpression"` e derruba o build inteiro
+ * ("Invalid segment configuration export detected", medido 02/10/2026 no
+ * commit `d698994f`). Runtime (Guara/Cloudflare) quer `true`; só o
+ * `output: 'export'` do GitHub Pages quer `false` — alvo fora da fila desde
+ * 22/08. Por isso o literal `true`. Se o Pages voltar, esta rota precisa de
+ * um layout de export próprio (a extensão `*.din.ts` não cobre layout).
  */
-export const dynamicParams = !exportandoEstatico;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   // No Guara/Cloudflare a lista fica vazia: a página vira on-demand.
