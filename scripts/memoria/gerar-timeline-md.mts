@@ -21,6 +21,7 @@ import { fileURLToPath } from "node:url";
 
 import { CALENDARIO } from "../../apps/web/lib/memoria/correcoes";
 import { fonteCurta } from "../../apps/web/lib/memoria/mistica";
+import type { EntradaCalendario } from "../../apps/web/lib/memoria/tipos";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DESTINO = resolve(RAIZ, "docs", "relatorios-automacao", "linha-do-tempo-completa.md");
@@ -36,6 +37,16 @@ const ordenados = [...CALENDARIO].sort((a, b) => {
 
 const dias = new Set(ordenados.map((e) => e.diaMes)).size;
 const comTituloCurto = ordenados.filter((e) => e.tituloCurto).length;
+
+// UNIFICA DATAS REPETIDAS (dono, 03/10/2026): a mesma data pode ter mais de
+// um fato; aqui a data vira UMA seção e cada fato é um parágrafo. Assim a
+// leitura não repete o dia e o leitor segue o fio.
+const porDia = new Map<string, EntradaCalendario[]>();
+for (const e of ordenados) {
+  const lista = porDia.get(e.diaMes) ?? [];
+  lista.push(e);
+  porDia.set(e.diaMes, lista);
+}
 
 const linhas: string[] = [];
 linhas.push("# Linha do tempo completa — memória das lutas");
@@ -55,28 +66,34 @@ linhas.push(`- Gerado em: ${new Date().toISOString().slice(0, 10)}`);
 linhas.push("");
 linhas.push("---");
 
-ordenados.forEach((e, i) => {
-  const [mes, dia] = e.diaMes.split("-");
-  const titulo = e.tituloCurto ?? e.titulo;
+let numero = 0;
+for (const [diaMes, fatos] of porDia) {
+  const [mes, dia] = diaMes.split("-");
   linhas.push("");
-  linhas.push(`## ${i + 1} · ${dia}/${mes}${e.ano ? ` · ${e.ano}` : ""} — ${titulo}`);
-  linhas.push("");
-  if (e.resumo) {
-    for (const paragrafo of e.resumo.split(/\n{2,}/)) {
-      linhas.push(paragrafo.trim());
+  linhas.push(`## ${dia}/${mes} — ${fatos.length} fato${fatos.length > 1 ? "s" : ""}`);
+  for (const e of fatos) {
+    numero++;
+    const titulo = e.tituloCurto ?? e.titulo;
+    linhas.push("");
+    linhas.push(`**${numero}. ${titulo}**${e.ano ? ` · ${e.ano}` : ""}`);
+    linhas.push("");
+    if (e.resumo) {
+      for (const paragrafo of e.resumo.split(/\n{2,}/)) {
+        linhas.push(paragrafo.trim());
+        linhas.push("");
+      }
+    } else {
+      linhas.push("_(sem resumo — o título é o texto da fonte)_");
       linhas.push("");
     }
-  } else {
-    linhas.push("_(sem resumo — o título é o texto da fonte)_");
-    linhas.push("");
+    const partes = [`_${fonteCurta(e)}_`];
+    if (e.lugar) partes.push(e.lugar);
+    if (e.semData) partes.push("(data aproximada: a fonte não datou)");
+    linhas.push(partes.join(" · "));
   }
-  const partes = [`_${fonteCurta(e)}_`];
-  if (e.lugar) partes.push(e.lugar);
-  if (e.semData) partes.push("(data aproximada: a fonte não datou)");
-  linhas.push(partes.join(" · "));
   linhas.push("");
   linhas.push("---");
-});
+}
 
 writeFileSync(DESTINO, linhas.join("\n"), "utf8");
 console.log(`[timeline] ${ordenados.length} verbetes em ${dias} dias → ${DESTINO}`);

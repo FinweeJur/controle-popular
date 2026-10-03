@@ -21,6 +21,7 @@
 import { CALENDARIO_LUTAS } from "./calendario";
 import type { EntradaCalendario } from "./tipos";
 import { CORRECOES } from "./correcoes-mistica";
+import { COMPLEMENTOS } from "./complementos-mistica";
 
 /** Normaliza para a chave: sem acento, minúsculo, espaços colapsados. */
 function normalizar(texto: string): string {
@@ -52,8 +53,12 @@ export function aplicarCorrecao(e: EntradaCalendario): EntradaCalendario {
 }
 
 /**
- * O calendário como a tela deve ler: com os títulos curtos e os resumos
- * revisados aplicados. É esta lista que os consumidores usam — a crua
- * (`CALENDARIO_LUTAS`) fica para teste e geração.
+ * O calendário como a tela deve ler: o calendário gerado (com os títulos
+ * curtos e resumos revisados aplicados) + os COMPLEMENTOS versionados (fatos
+ * do acervo do MAB, terceira fonte). É esta lista que os consumidores usam — a
+ * crua (`CALENDARIO_LUTAS`) fica para teste e geração.
  */
-export const CALENDARIO: EntradaCalendario[] = CALENDARIO_LUTAS.map(aplicarCorrecao);
+export const CALENDARIO: EntradaCalendario[] = [
+  ...CALENDARIO_LUTAS.map(aplicarCorrecao),
+  ...COMPLEMENTOS,
+];

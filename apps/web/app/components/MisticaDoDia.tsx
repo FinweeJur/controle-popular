@@ -64,13 +64,14 @@ function TituloMistica({ item }: { item: ItemMistica }) {
   );
 }
 
-/** Resumo em até 2 parágrafos; um <p> por parágrafo (o gerador separa
- * com uma linha em branco). */
+// Resumo em até 2 parágrafos; um <p> por parágrafo (o gerador separa
+// com uma linha em branco). `leading-snug` aperta o entre-linhas para o
+// cartão da Mística ficar mais baixo (dono, 03/10/2026).
 function ResumoMistica({ resumo }: { resumo: string }) {
   return (
     <>
       {resumo.split(/\n{2,}/).map((paragrafo, i) => (
-        <p key={i} className="mt-1 text-[.95em] text-text-soft">
+        <p key={i} className="mt-0.5 leading-snug text-[.95em] text-text-soft">
           {paragrafo}
         </p>
       ))}
@@ -81,7 +82,7 @@ function ResumoMistica({ resumo }: { resumo: string }) {
 /** Citação curta da fonte, com link quando houver URL. */
 function FonteMistica({ item }: { item: ItemMistica }) {
   return (
-    <p className="mt-2 text-[.85em] text-muted">
+    <p className="mt-1 text-[.72em] text-muted">
       {item.entrada.url ? (
         <a
           href={item.entrada.url}
@@ -102,7 +103,7 @@ function OndeMistica({ item }: { item: ItemMistica }) {
   const { entrada, local } = item;
   if (!local) return null;
   return (
-    <p className="mt-1 text-[.85em] text-muted">
+    <p className="mt-0.5 text-[.72em] text-muted">
       <span className="font-semibold">Onde: </span>
       {local.nome}
       {local.uf ? `/${local.uf}` : ""} ·{" "}
@@ -153,7 +154,7 @@ export default function MisticaDoDia() {
   return (
     <aside
       aria-label="Mística do Dia"
-      className="mistica-asile mb-5 rounded-2xl border border-border bg-surface px-4 py-3 sm:px-6 sm:py-4 flex items-start gap-2 sm:gap-3"
+      className="mistica-asile mb-3 rounded-2xl border border-border bg-surface px-4 py-2 sm:px-6 sm:py-3 flex items-start gap-2 sm:gap-3"
     >
       {/* Fogueira decorativa à esquerda, encostada na borda interna
           (margem negativa) e menor no desktop (dono, 03/10/2026): quanto
@@ -169,7 +170,7 @@ export default function MisticaDoDia() {
         <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
           Mística do Dia
         </p>
-        <p className="mt-1 text-[1.02em] text-foreground">
+        <p className="mt-0.5 text-[0.92em] text-foreground">
           <TituloMistica item={principal} />
         </p>
         {principal.entrada.resumo ? (
