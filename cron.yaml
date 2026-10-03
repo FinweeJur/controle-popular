@@ -1,0 +1,28 @@
+# cron.yaml — cron workers do projeto (Guara Cloud)
+#
+# Versionado junto do serviço (recomendação da doc). Aplicar/atualizar:
+#   guara crons create -f cron.yaml -p controle-popular      # criar
+#   guara crons update saude-monitor -f cron.yaml -p controle-popular
+#
+# CONTEXTO (03/10/2026): no plano Starter o container do portal tem ~256 MiB e
+# o serviço "dorme" quando fica ocioso (scale-to-zero) — o primeiro acesso
+# depois disso paga cold start. Este worker bate de 10 em 10 minutos num
+# endpoint de saúde (POST — o cron HTTP do Guara só faz POST) para manter o
+# container acordado E servir de monitor de disponibilidade: cada execução fica
+# no histórico do Guara com status e motivo de falha (timeout, http_5xx,
+# connection, ssrf_blocked...). É a versão em nuvem do "vigia" — roda mesmo com
+# o home-pc desligado.
+#
+# Quota: Starter = 3 cron workers por projeto.
+name: saude-monitor
+schedule: "*/10 * * * *"
+timezone: America/Sao_Paulo
+destination_type: http
+destination_ref:
+  type: http
+  # Endpoint INTERNO do serviço controle-popular-web (guara services info --json).
+  serviceEndpointId: 54d61a44-1c8c-4105-8e1a-86f74c237200
+  path: /api/saude
+  headers: {}
+timeout_seconds: 30
+max_retries: 2
