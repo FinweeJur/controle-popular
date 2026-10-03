@@ -2,15 +2,16 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global (Controle Popular + Floresta de Apps)
-> **Última medição:** 2026-09-01
+> **Última medição:** 2026-10-02
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-SEO-VISIBILIDADE-BUSCADORES.md](PLANO-seo-visibilidade-buscadores.md), [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md)
-> **Palavras-chave:** plano, divulgacao, imprensa, email, whatsapp, instagram, video, zero-custo
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md), [RELEASES-TEMATICOS.md](RELEASES-TEMATICOS.md), [PLANO-SEO-VISIBILIDADE-BUSCADORES.md](PLANO-seo-visibilidade-buscadores.md), [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md)
+> **Palavras-chave:** plano, divulgacao, imprensa, email, whatsapp, instagram, video, zero-custo, eixos, publico-alvo, releases-tematicos
 
 ## Sumário
 
 - [Objetivo e princípios](#1-objetivo-e-princípios)
 - [Mensagem central](#2-mensagem-central)
+- [Releases por público-alvo](#releases-por-público-alvo)
 - [Prontidão — checklist antes do primeiro envio](#3-prontidão--checklist-antes-do-primeiro-envio)
 - [Imprensa — lista de veículos e a pauta](#4-imprensa--lista-de-veículos-e-a-pauta)
 - [Modelos de e-mail prontos](#5-modelos-de-e-mail-prontos)
@@ -47,18 +48,59 @@ Princípios que não se negociam (são o argumento do projeto):
 **Uma frase (elevator pitch):**
 
 > Um portal que junta o dinheiro público que já é seu — contratos, diários
-> oficiais, o que o Congresso faz com seus direitos, quem ocupa os tribunais, o
-> que a Vale paga e o que a reparação de Brumadinho ainda não fez — numa tela só,
-> com a fonte ao lado de cada número e a taxa de erro quando é estimativa.
+> oficiais, o que o Congresso faz com seus direitos, quem ocupa os tribunais,
+> o que a Vale paga e o que a reparação de Brumadinho ainda não fez — em
+> **quatro eixos e mais de 36 subfrentes**, com a fonte ao lado de cada número
+> e a taxa de erro quando é estimativa.
 
-**Três ângulos por audiência:**
+**Os dois números da vitrine — nesta ordem, cada um com sua data:**
+
+1. **274 bases, 46.273 registros, 22 temas** — medido em
+   `data/bases-portal.json` em 30/09/2026. É o volume de dado puro: a primeira
+   impressão de quem lê é "isso é real, foi contado".
+2. **R$ 251 bilhões sob fiscalização cidadã** — composição medida no painel
+   da home em 02/10/2026 (Mariana R$ 171 bi + Brumadinho R$ 37,7 bi +
+   Justiça de MG R$ 20,1 bi + contratos municipais R$ 22,7 bi). ⚠️ Cada
+   parcela está em **re-verificação na fonte** (fila em
+   [PENDENCIAS-02-10.md](PENDENCIAS-02-10.md)) — cite a soma com a data, e
+   nunca troque a parcela sem medir de novo.
+
+**Os quatro eixos** (PRODUTO.md, 01/10/2026): **Terra e Território**
+(203 cidades, bacias, barragens, mineração), **Direitos em Movimento**
+(SUS, IDEB, CAGED, conselhos, LAI), **Estado e Economia** (orçamento, PNCP,
+27 Assembleias, Congresso, Judiciário) e **Central ONSA e Ferramentas**
+(editais, biblioteca, laboratório, rádios, IA livre e Seu Nonô).
+
+**Ângulos por audiência:**
 
 | Audiência | Ângulo | Porta de entrada |
 |---|---|---|
-| Jornalista | Pauta pronta: "o dado que faltava para fiscalizar X" | /sobre, /paraopeba, /ambiental |
-| Movimento social | Ferramenta de pressão: ofício pronto, alerta de vaga em tribunal | /congresso, /judiciario |
-| Pesquisador / técnico | Dado aberto, API pública, método auditável | /api, /sobre#metodologia |
-| Cidadão comum | "Descubra o que sua prefeitura compra" | /betim, home |
+| Jornalista | Pauta pronta: "o dado que faltava para fiscalizar X" | /imprensa, /cidades, /ambiental |
+| Profissional do ambiental | Advogado, biólogo, engenheiro, atingido: o dado da sua prática | /ambiental, /paraopeba |
+| Movimento social | Ferramenta de pressão: ofício pronto, alerta de barragem | /congresso, /alertas |
+| Pesquisador / técnico | Dado aberto, API pública, método auditável, citação ABNT | /api, /noticias |
+| Cidadão comum | "Descubra o que sua prefeitura compra" | /cidades, home |
+
+## Releases por público-alvo
+
+Em vez de um e-mail igual para todos, **um release por público**, cada um
+com seu ângulo, sua porta de entrada e seu UTM (`utm_content=<segmento>`)
+para medir quem responde. São três peças:
+
+| Release | Público | Arquivo |
+|---|---|---|
+| **Geral** | Público amplo, cidadão comum | [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md) |
+| **A — Jornalistas** | Imprensa, um gancho por eixo | [RELEASES-TEMATICOS.md](RELEASES-TEMATICOS.md) |
+| **B — Ambiental** | Todas as profissões do tema: advogado ambiental, biólogo, engenheiro, jornalista ambiental, atingidos, pesquisador | [RELEASES-TEMATICOS.md](RELEASES-TEMATICOS.md) |
+
+**Análise acadêmica — IA aplicada à gestão pública:** todo release carrega o
+bloco do método ("o modelo extrai, o código calcula", lacuna declarada,
+CPF barreirado por mod-11 antes do commit). Ele é o gancho para artigo,
+monografia e congresso de administração pública: o portal não esconde o uso
+de IA — publica a régua dele. Citado em /sobre.
+
+**Regra de ouro:** número sem data não entra na peça. Toda peça cita a data
+da medição junto do número — é o que separa dado de marketing.
 
 ## 3. Prontidão — checklist ANTES do primeiro envio
 
@@ -72,7 +114,7 @@ Princípios que não se negociam (são o argumento do projeto):
       com UTM (`?utm_source=imprensa&utm_medium=email`).
 - [ ] Perfis públicos coerentes: GitHub (descrição dos repos), Instagram criado ou
       reativado, WhatsApp Business (ou número pessoal separado) com nome e foto.
-- [ ] Espelho no Gitee (ver [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md) — substituído por GitLab) —
+- [x] Espelho do código no GitLab (feito em 29/09/2026; ver [PLANO-ESPELHO-GITEE.md](../historico/planos/PLANO-ESPELHO-GITEE.md), substituído por GitLab) —
       é um gancho de pauta para público técnico ("código aberto, espelhado em 2
       plataformas").
 
@@ -80,17 +122,17 @@ Princípios que não se negociam (são o argumento do projeto):
 
 O domínio já é o link mais curto que existe; o UTM só diz de onde veio o
 visitante, para o log (DIVULGACAO-LOG.md) medir canal a canal. Usar estes
-links como estão — trocar `2026-09` quando a campanha mudar:
+links como estão — trocar `2026-10` quando a campanha mudar:
 
 | Canal | Link pronto |
 |---|---|
-| Imprensa (e-mail, modelo A) | `https://controlepopular.com.br/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-09` |
-| Organizações (e-mail, modelo B) | `https://controlepopular.com.br/?utm_source=organizacoes&utm_medium=email&utm_campaign=divulgacao-2026-09` |
-| WhatsApp status/grupos | `https://controlepopular.com.br/?utm_source=whatsapp&utm_medium=mensagem&utm_campaign=divulgacao-2026-09` |
-| Instagram (bio e link dos posts) | `https://controlepopular.com.br/?utm_source=instagram&utm_medium=perfil&utm_campaign=divulgacao-2026-09` |
-| Fóruns (Reddit, DEV, HN) | `https://controlepopular.com.br/?utm_source=forum&utm_medium=post&utm_campaign=divulgacao-2026-09` |
-| GitHub (README, issues, comentários) | `https://controlepopular.com.br/?utm_source=github&utm_medium=readme&utm_campaign=divulgacao-2026-09` |
-| Matéria específica (ex.: Betim) | `https://controlepopular.com.br/betim/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-09` |
+| Imprensa (e-mail, modelo A) | `https://controlepopular.com.br/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-10` |
+| Organizações (e-mail, modelo B) | `https://controlepopular.com.br/?utm_source=organizacoes&utm_medium=email&utm_campaign=divulgacao-2026-10` |
+| WhatsApp status/grupos | `https://controlepopular.com.br/?utm_source=whatsapp&utm_medium=mensagem&utm_campaign=divulgacao-2026-10` |
+| Instagram (bio e link dos posts) | `https://controlepopular.com.br/?utm_source=instagram&utm_medium=perfil&utm_campaign=divulgacao-2026-10` |
+| Fóruns (Reddit, DEV, HN) | `https://controlepopular.com.br/?utm_source=forum&utm_medium=post&utm_campaign=divulgacao-2026-10` |
+| GitHub (README, issues, comentários) | `https://controlepopular.com.br/?utm_source=github&utm_medium=readme&utm_campaign=divulgacao-2026-10` |
+| Matéria específica (ex.: Betim) | `https://controlepopular.com.br/betim/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-10` |
 
 Se preferir link encurtado (bit.ly/rel.ly gratuito), encurtar o link com UTM
 depois de montado — nunca encurtar o domínio puro, senão o UTM se perde.
@@ -99,16 +141,34 @@ depois de montado — nunca encurtar o domínio puro, senão o UTM se perde.
 
 #### 4.1. A pauta (o que oferecer)
 
-> **Assunto:** "Portal independente reúne R$ 251 bilhões em dados públicos, 199 cidades, tribunais de MG e Mariana/Brumadinho — com fonte em cada número"
+> **Assunto:** "Portal independente junta 46.273 registros de 274 bases
+> oficiais, 203 cidades e R$ 251 bilhões em recursos públicos numa tela só —
+> com fonte em cada número"
 
-Ganchos prontos para regionalizar:
+Ganchos prontos, um por eixo (números medidos, use a data):
 
-- **R$ 251 bilhões sob fiscalização popular**: Mariana (R$ 171 bi repactuado), Brumadinho (R$ 37,7 bi do acordo global), transferências federais do ComunicaBR (R$ 139 bi nos 853 municípios de MG), orçamento de Belo Horizonte (R$ 19,4 bi) e Justiça de MG (mais de R$ 20 bi).
-- **199 cidades estratégicas monitoradas**: painel nacional com contratos do PNCP, diários oficiais, compras emergenciais e dados fiscais.
-- **Transparência da Justiça em MG (7 instituições)**: fichas detalhadas de TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi), DPMG (R$ 1,1 bi), TRT-3, TRF-6, DPU e TCE-MG, com abertura de gastos em diárias, alimentação, penduricalhos indenizatórios e terceirizados.
-- **Central de Notícias & Relatórios Acadêmicos**: 18 matérias aprofundadas com citação pronta em normas ABNT e BibTeX para universitários e pesquisadores.
-- **Reparação socioambiental**: execução mês a mês de Brumadinho (26 municípios, R$ 5,48 bi, 73,8% pago) e Mariana (R$ 677 mi para MG), com 597 documentos de assessorias técnicas (ATIs) e dados de barragens da ANM.
-- **Tecnologia Livre & Seu Nonô**: assistente cívico inteligente com modelo nacional aberto (Sabiá 7B) e Kit Guias AppLivre (`applivre.pages.dev`).
+- **Terra e Território — 203 cidades e 853 de MG:** 40.016 registros
+  municipais com contratos do PNCP, diários oficiais e repasses do
+  ComunicaBR (R$ 139 bi em MG), medido em 30/09/2026. Cavas de mineração
+  mapeadas por satélite com a atividade sem cadastro na ANM apontada como
+  lacuna (`/mineracao/cavas`).
+- **Reparação socioambiental:** Mariana (repactuação de R$ 171 bi) e
+  Brumadinho (R$ 37,7 bi globais, R$ 5,48 bi em 26 municípios), com 597
+  relatórios de ATIs e execução mês a mês (`/ambiental/mariana`,
+  `/paraopeba/execucao`).
+- **Direitos em Movimento:** SUS, IDEB, CAGED, 710 conselhos, diretório de
+  445 portais de LAI com modelo de pedido pronto
+  (`/direitos-em-movimento`).
+- **Estado e Economia — Justiça de MG:** 7 instituições com orçamento
+  aberto, TJMG (R$ 14,96 bi/ano) e MPMG (R$ 4,09 bi/ano) em detalhe de
+  diárias, alimentação e penduricalhos; recomendações do CNJ
+  (`/judiciario/instituicoes`).
+- **Central ONSA e Ferramentas:** radar diário de editais do DO-MG,
+  biblioteca com mais de 24 mil documentos, 44 rádios cívicas, API aberta e
+  o assistente Seu Nonô com IA livre (`/central`, `/api`).
+- **Números da casa:** 47 páginas públicas de meio ambiente e 8.570 normas
+  federais do MMA no acervo (medido em 02/10/2026, via PRODUTO.md e
+  contagem de rotas).
 
 ### 4.2. Lista de contatos (verificar e-mail vigente antes de enviar)
 
@@ -171,23 +231,40 @@ Ganchos prontos para regionalizar:
 
 ### 5.1. Modelo A — imprensa (curto, pauta pronta)
 
-**Assunto:** Portal independente reúne R$ 251 bilhões em dados públicos, 199 cidades e tribunais de MG — fonte em cada número
+**Assunto:** Portal independente junta 46.273 registros de 274 bases oficiais, 203 cidades e R$ 251 bilhões — fonte em cada número
 
 Olá [Nome],
 
-Sou [nome], integro o projeto independente **controlepopular.com.br** — uma plataforma cidadã que reúne mais de **R$ 251 bilhões** em dados públicos oficiais que estavam dispersos em dezenas de sistemas governamentais, apresentados em linguagem comum com a fonte ao lado de cada número.
+Sou [nome], integro o projeto independente **controlepopular.com.br** — uma
+plataforma cidadã que reúne **274 bases com 46.273 registros** (medido em
+30/09/2026) em **quatro eixos temáticos**, apresentados em linguagem comum
+com a fonte ao lado de cada número.
 
 Quatro ganchos de pauta prontos para o [nome do veículo]:
 
-1. **Raio-x dos Tribunais de MG (7 órgãos):** apuração detalhada dos orçamentos de TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi) e DPMG (R$ 1,1 bi), com abertura de gastos em diárias, verbas de alimentação, penduricalhos indenizatórios e empresas terceirizadas: https://controlepopular.com.br/judiciario/instituicoes/tjmg
-2. **Reparação de Desastres (Mariana e Brumadinho):** o Acordo de Mariana (R$ 171 bi repactuado, R$ 677 mi em MG) e o Acordo de Brumadinho (R$ 37,7 bi total, R$ 5,48 bi nos 26 municípios), cruzando relatórios de 597 ATIs e perícia da UFMG: https://controlepopular.com.br/ambiental/mariana e https://controlepopular.com.br/paraopeba/execucao
-3. **199 Cidades & ComunicaBR:** contratos públicos (PNCP), diários oficiais minerados (16.601 atos em Betim) e R$ 139 bi em transferências federais para os 853 municípios de MG: https://controlepopular.com.br/cidades
-4. **Central de Notícias com Citação ABNT:** 18 reportagens investigativas completas, com metadados científicos e citação acadêmica em um clique: https://controlepopular.com.br/noticias
+1. **Terra e Território:** 203 cidades e os 853 municípios de MG com
+   contratos do PNCP, diários oficiais e R$ 139 bi de repasses federais em
+   40.016 registros municipais; cavas de mineração por satélite apontando
+   atividade sem cadastro na ANM: https://controlepopular.com.br/cidades
+   e https://controlepopular.com.br/mineracao/cavas
+2. **Reparação de desastres:** Acordo de Mariana (R$ 171 bi repactuado) e
+   Brumadinho (R$ 37,7 bi globais, R$ 5,48 bi em 26 municípios), com 597
+   relatórios de ATIs e execução mês a mês:
+   https://controlepopular.com.br/ambiental/mariana e
+   https://controlepopular.com.br/paraopeba/execucao
+3. **Estado e Economia:** as 7 instituições de Justiça de MG com orçamento
+   aberto — TJMG (R$ 14,96 bi/ano) e MPMG (R$ 4,09 bi/ano) em detalhe de
+   diárias e verbas indenizatórias — e o Congresso com ofício pronto:
+   https://controlepopular.com.br/judiciario/instituicoes
+4. **Central ONSA e Ferramentas:** editais do DO-MG todo dia, biblioteca
+   com mais de 24 mil documentos, API aberta sem chave e o assistente Seu
+   Nonô com IA livre: https://controlepopular.com.br/central
 
 Não é aplicativo governamental nem tem vínculo partidário — o código é aberto (AGPL) com metodologia 100% auditável: https://controlepopular.com.br/sobre
 
-Se fizer sentido, envio release completo, planilhas com as fontes ou roteiro de entrevista. Release pronto anexo:
-  [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md).
+Se fizer sentido, envio release completo, planilhas com as fontes ou roteiro de entrevista. Release geral pronto anexo:
+  [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md); recortes por
+  público em [RELEASES-TEMATICOS.md](RELEASES-TEMATICOS.md).
   Contato direto: contato@controlepopular.com.br.
 
 Abraço,
@@ -225,7 +302,7 @@ Abraço,
 Post em tom de "case": monorepo Next.js 16 + OpenNext no Cloudflare, ETL em
 Python, guarda de CPF por mod-11 antes do commit, API aberta sem chave, gráfico
 SVG acessível sem biblioteca, análise garantista onde "o modelo extrai, o código
-calcula". Encerrar com: "código aberto, espelhado no Gitee, review é bem-vinda:
+calcula". Encerrar com: "código aberto, espelhado no GitLab, review é bem-vinda:
 github.com/FinweeJur/controle-popular".
 
 ### 5.4. Modelo D — newsletter/agregador (curto)
@@ -239,12 +316,12 @@ print/figura da tela.
 
 ### 6.1. Status (story) — roteiro de 7 dias
 
-Dia 1 (texto): "Você sabe para onde vão os R$ 251 bilhões do dinheiro público? Agora dá para fiscalizar com a fonte oficial ao lado: controlepopular.com.br"
-Dia 2 (imagem): print da tela de Cidades (199 municípios e R$ 139 bi do ComunicaBR em MG) com link.
-Dia 3 (texto): "Quanto custa o Judiciário de MG? Diárias, alimentação e penduricalhos do TJMG, MPMG e Defensoria abertos ao público: controlepopular.com.br/judiciario"
-Dia 4 (imagem): card "R$ 171 bi em Mariana e R$ 37,7 bi em Brumadinho: acompanhe os acordos socioambientais mês a mês com documentos oficiais."
-Dia 5 (texto): "18 reportagens investigativas completas com citação ABNT pronta para trabalhos de faculdade e pesquisas: controlepopular.com.br/noticias"
-Dia 6 (imagem): card "Tire dúvidas sobre leis e orçamentos com o Seu Nonô, nosso assistente com IA livre e acolhimento mineiro."
+Dia 1 (texto): "274 bases e 46.273 registros do governo público reunidos numa tela só, com a fonte oficial ao lado: controlepopular.com.br"
+Dia 2 (imagem): print da tela de Cidades (203 cidades e 853 municípios de MG, 40.016 registros medidos em 30/09) com link — eixo Terra e Território.
+Dia 3 (texto): "SUS, IDEB, CAGED, 710 conselhos e um modelo pronto de pedido de LAI: descubra os direitos da sua cidade em controlepopular.com.br/direitos-em-movimento" — eixo Direitos em Movimento.
+Dia 4 (imagem): card "R$ 171 bi em Mariana e R$ 37,7 bi em Brumadinho: acompanhe a execução dos acordos socioambientais mês a mês com documentos oficiais."
+Dia 5 (texto): "Quanto custa a Justiça de MG? TJMG, MPMG e Defensoria com diárias e verbas indenizatórias abertas: controlepopular.com.br/judiciario" — eixo Estado e Economia.
+Dia 6 (imagem): card "Editais todo dia, biblioteca com 24 mil documentos e o Seu Nonô explicando lei e orçamento com IA livre." — eixo Central ONSA e Ferramentas.
 Dia 7 (texto): "Tudo 100% gratuito, sem cadastro e com código aberto. A transparência pertence ao povo. Espalhe."
 
 ### 6.2. Grupos — mensagens permitidas (nunca diário)
@@ -255,7 +332,7 @@ Dia 7 (texto): "Tudo 100% gratuito, sem cadastro e com código aberto. A transpa
 
 ### 6.3. Mensagem para grupos de moradores e comunidades (pronta)
 
-"Pessoal, conheçam o Controle Popular, uma ferramenta independente e gratuita que reúne mais de R$ 251 bilhões em recursos públicos, 199 cidades, acordos de Mariana e Brumadinho e gastos dos tribunais de MG, com o link do documento oficial do lado de cada número.
+"Pessoal, conheçam o Controle Popular, uma ferramenta independente e gratuita que reúne 274 bases e 46.273 registros do dinheiro público — 203 cidades, acordos de Mariana e Brumadinho e gastos dos tribunais de MG — com o link do documento oficial do lado de cada número.
 Dá pra tirar dúvidas com o Seu Nonô, nosso assistente com inteligência artificial livre.
 Não tem vínculo com governo nem partido: https://controlepopular.com.br
 Quem quiser ajuda para consultar sua cidade ou direitos, é só chamar!"
@@ -265,28 +342,28 @@ Quem quiser ajuda para consultar sua cidade ou direitos, é só chamar!"
 ### 7.1. Formato e identidade
 
 - Nome: @controlepopular ou @florestadeapps.
-- Bio: "Transparência cívica com prova documental. R$ 251 bi monitorados • 199 cidades • MG → Brasil. Código aberto."
+- Bio: "Transparência cívica com prova documental. 274 bases • 46.273 registros • 4 eixos • MG → Brasil. Código aberto."
 - Link na bio: `https://controlepopular.com.br/?utm_source=instagram&utm_medium=bio`
 - Artes: Canva gratuito, paleta oficial (tokens de cor pequi/verde), tipografia nítida e prints reais da plataforma.
 
 ### 7.2. Calendário 30 dias (3 posts/semana + 2 stories/dia)
 
-| Semana | Post 1 (carrossel) | Post 2 (reels) | Post 3 (carrossel) |
-|---|---|---|---|
-| 1 | "R$ 251 bilhões: o que o portal fiscaliza" (4 telas) | Vídeo 60s "Tour de 1 minuto pelo portal" | "199 Cidades: contratos e compras públicas" |
-| 2 | "Raio-x da Justiça em MG: salários e diárias" (4 telas) | Reels "Como achar contratos suspeitos" | "18 Investigações com citação ABNT" |
-| 3 | "Mariana (R$ 171 bi) e Brumadinho (R$ 37,7 bi)" (4 telas) | Reels "Ofício pronto ao deputado em 1 minuto" | "Seu Nonô: IA brasileira sem vigilância" |
-| 4 | "Kit Guias AppLivre: IA para o povo" (3 telas) | Reels "Mapa 3D da terra e barragens" | "Código aberto e API pública" |
+| Semana | Eixo da semana | Post 1 (carrossel) | Post 2 (reels) | Post 3 (carrossel) |
+|---|---|---|---|---|
+| 1 | Terra e Território | "Mariana (R$ 171 bi) e Brumadinho (R$ 37,7 bi)" (4 telas) | Reels "Mapa 3D da terra e barragens" | "203 cidades: contratos e compras públicas" |
+| 2 | Direitos em Movimento | "SUS, IDEB e 710 conselhos na sua cidade" (4 telas) | Reels "Como pedir informação pública em 1 minuto" | "Ofício pronto ao deputado em 1 minuto" |
+| 3 | Estado e Economia | "Raio-x da Justiça em MG: salários e diárias" (4 telas) | Reels "Como achar contratos suspeitos" | "27 Assembleias e o Congresso sob lupa" |
+| 4 | Central ONSA e Ferramentas | "46.273 registros: o que o portal fiscaliza" (4 telas) | Reels "Tour de 1 minuto pelo portal" | "Seu Nonô: IA brasileira sem vigilância" |
 
 ### 7.3. Legendas prontas
 
-**Carrossel 1 (R$ 251 bilhões sob a lupa popular):**
+**Carrossel 1 (46.273 registros sob a lupa popular):**
 "📌 Para onde vai o dinheiro público?
-São mais de R$ 251 bilhões em recursos do povo brasileiro agora reunidos numa única tela, em português simples e com link para a fonte oficial ao lado:
-✅ 199 cidades monitoradas em contratos e diários oficiais
+São 274 bases e 46.273 registros (medido em 30/09) do povo brasileiro agora reunidos numa única tela, em português simples e com link para a fonte oficial ao lado:
+✅ 203 cidades e 853 municípios de MG em contratos e diários oficiais
 ✅ R$ 171 bi da repactuação de Mariana e R$ 37,7 bi de Brumadinho
 ✅ Orçamento de 7 órgãos de Justiça de MG e gastos da cúpula
-✅ 18 matérias jornalísticas com citação acadêmica em ABNT
+✅ Radar de editais todo dia e biblioteca com 24 mil documentos
 Sem cadastro, sem mensalidades, sem vínculo com governos.
 👉 Deslize para o lado e veja como fiscalizar sua cidade e seus direitos em 1 minuto.
 Link na bio: controlepopular.com.br
@@ -303,12 +380,12 @@ Link na bio: controlepopular.com.br
 
 | Tempo | Cena / imagem | Fala (off ou locução) |
 |---|---|---|
-| 0–5 s | Capa com zoom na Home: "Para onde vão R$ 251 bilhões do dinheiro público?" | "Você sabe como o dinheiro público é gasto na sua cidade e no seu Estado? A resposta sempre foi pública, mas ficava escondida." |
-| 5–18 s | Navegação fluida pela Home, mostrando o cartão de R$ 251 bi e os 3 Eixos | "O Controle Popular junta mais de 251 bilhões de reais numa tela só. E a regra é rígida: cada número tem a fonte oficial do lado." |
+| 0–5 s | Capa com zoom na Home: "46.273 registros do dinheiro público — onde estão?" | "Você sabe como o dinheiro público é gasto na sua cidade e no seu Estado? A resposta sempre foi pública, mas ficava escondida." |
+| 5–18 s | Navegação fluida pela Home, mostrando os cartões de volume e os 4 Eixos | "O Controle Popular junta 274 bases e 46.273 registros do dinheiro público numa tela só — 251 bilhões de reais sob fiscalização, medido em 2 de outubro. E a regra é rígida: cada número tem a fonte oficial do lado." |
 | 18–32 s | Zoom na tela das 7 Instituições de Justiça (TJMG, MPMG, DPMG) mostrando diárias e alimentação | "Quer saber quanto os tribunais gastam em diárias, alimentação e terceirizados? Está tudo aberto e comparado." |
 | 32–45 s | Transição para os painéis de Mariana (R$ 171 bi) e Brumadinho (R$ 37,7 bi) | "Os acordos de Mariana e Brumadinho são acompanhados mês a mês, documento por documento, para o atingido não ser enganado." |
 | 45–60 s | Abertura do assistente Seu Nonô na tela respondendo uma dúvida em linguagem mineira acolhedora | "E se você tiver dúvida sobre uma lei ou contrato, o Seu Nonô explica tudo na hora com inteligência artificial brasileira e livre." |
-| 60–75 s | Demonstração da Central de Notícias com o botão copiador de citação ABNT e BibTeX | "Para quem estuda ou faz pesquisa, são 18 matérias completas com citação acadêmica pronta em um clique." |
+| 60–75 s | Demonstração da busca universal e da biblioteca com 24 mil documentos, com o botão de download CSV | "Para quem estuda ou faz pesquisa, tudo sai em planilha, na API aberta e com citação pronta de ABNT em um clique." |
 | 75–90 s | Tela final com o endereço `controlepopular.com.br` e logo AppLivre | "Tudo de graça, sem cadastro e 100% código aberto. Acesse agora: controlepopular.com.br. O link tá na bio!" |
 
 **Legenda do vídeo:** o texto do carrossel 1 + "Comece a fiscalizar agora mesmo: controlepopular.com.br".
@@ -327,6 +404,7 @@ Link na bio: controlepopular.com.br
 | Comunidade OKBR (Slack/Discord) | Pedir revisão de método + divulgar API | /sobre |
 | Fórum de jornalismo de dados (datajournalism.com) | "O que aprendemos cruzando AJRI e perícia da UFMG" | /paraopeba |
 | LinkedIn | Post técnico semanal (modelo C), tag de dados abertos | github |
+| Comunidades de IA aplicada à gestão pública (grupos de pesquisa, pós-graduação) | Estudo de caso: "o modelo extrai, o código calcula" — régua de IA declarada em portal cívico | /sobre |
 | Twitter/X | Thread de 5 tweets com prints + link | home |
 
 Regra: 1 post por comunidade, com valor real (dado, método, achado). Responder
@@ -337,8 +415,8 @@ todo comentário por 72 h.
 | Dias | Ação |
 |---|---|
 | 1–3 | Prontidão: página /imprensa, UTM, perfis, caixa de contato, logotipo |
-| 3–7 | Espelho Gitee dos repos prioritários (ver plano próprio) + badge no README |
-| 5–10 | Disparo personalizado: 10 veículos de MG (Modelo A) + 5 organizações (Modelo B) |
+| 3–7 | Espelho do código no GitLab (feito em 29/09, `OPERACAO.md` § 2) + badge no README |
+| 5–10 | Disparo personalizado por público: release geral (10 veículos de MG), release de jornalistas e release do ambiental (profissionais e comunidades) — ver [RELEASES-TEMATICOS.md](RELEASES-TEMATICOS.md) |
 | 8–14 | Conteúdo: gravar/editar vídeo 60 s; montar 4 carrosséis no Canva |
 | 10–20 | Instagram no ar: posts por calendário, stories diários (status do §6.1 adaptado) |
 | 12–18 | WhatsApp: status 7 dias + 3 grupos de moradores + 1 grupo de jornalistas |
@@ -351,16 +429,21 @@ todo comentário por 72 h.
 
 - **Tráfego:** o portal já registra pageviews (rota `/api/pageview`); conferir
   antes/depois de cada onda. Google Search Console já configurado no plano de SEO.
-- **E-mail:** taxa de resposta por veículo (planilha simples: enviado, respondeu,
-  publicou). Meta honesta: 10% de resposta, 2–3 publicações/menções no 1º mês.
+- **E-mail:** taxa de resposta por veículo e **por `utm_content`** (geral,
+  jornalista, ambiental-<profissao>) — é o que diz qual público responde.
+  Meta honesta: 10% de resposta, 2–3 publicações/menções no 1º mês.
 - **WhatsApp:** compartilhamentos e convites para grupos.
 - **Instagram:** alcance e salvamentos por post (não só likes).
 - **GitHub:** stars/forks como proxy de interesse técnico.
 - **Registro:** uma linha por ação em `docs/relatorios-automacao/DIVULGACAO-LOG.md`
-  (criar) para não repetir o mesmo veículo 3x e para medir o que funcionou.
+  (criado em 01/09/2026; ainda sem ações registradas) para não repetir o
+  mesmo veículo 3x e para medir o que funcionou.
 
 ## 12. Guarda-corpos
 
+- **Número sem data não entra na peça.** Toda peça cita a data da medição
+  junto do número. Soma em R$ só com a data e a ressalva de re-verificação
+  quando houver (regra do 02/10/2026).
 - **Não prometer o que o portal não faz.** Se um jornalista perguntar sobre dado
   que não existe, responder com a lacuna declarada (é o argumento do projeto).
 - **Não parecer oficial.** Nunca usar símbolo de órgão, nunca "em parceria com"
@@ -374,8 +457,9 @@ todo comentário por 72 h.
 
 ## 13. Critérios de conclusão da 1ª rodada (30 dias)
 
-- [ ] Página /imprensa no ar.
+- [x] Página /imprensa no ar (criada em 01/09/2026).
 - [ ] 15 disparos personalizados (10 imprensa MG + 5 orgs) com registro.
+- [ ] 3 releases no ar (geral, jornalistas, ambiental) com UTM por público.
 - [ ] ≥ 2 respostas de veículos/orgs.
 - [ ] Instagram com 12 posts + 20 stories publicados.
 - [ ] WhatsApp com 7 status + 3 grupos atingidos.
