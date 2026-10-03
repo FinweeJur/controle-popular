@@ -9,6 +9,7 @@ import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
 import CardCarousel from "@/app/components/CarrosselEixos";
 import MisticaDoDia from "@/app/components/MisticaDoDia";
+import DiasImportantes from "@/app/components/DiasImportantes";
 import { citacaoPorId } from "@/lib/citacoes";
 import { formatNumberBR } from "@/lib/betim/format";
 import basesPortal from "@/data/bases-portal.json";
@@ -69,6 +70,11 @@ export default async function Hub() {
       tabIndex={-1}
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
+      {/* ═══ DIAS IMPORTANTES DOS POVOS INDÍGENAS — antes da Mística, com o
+          nome da data, objetivo e contexto de criação (dono, 03/10/2026),
+          em no máximo duas linhas. Sem data no dia, não renderiza nada. */}
+      <DiasImportantes />
+
       {/* ═══ MÍSTICA DO DIA — luta popular ou fato de resistência do dia,
           com fonte ABNT. Pedido do dev (29/09/2026): fica abaixo da nav
           bar e do letreiro "✦ OLHO ABERTO ✦" (que vivem no TopNav/Marquee)
