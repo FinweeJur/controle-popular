@@ -152,5 +152,16 @@
   "orgao": "",
   "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-01",
   "criado_em": "2026-10-02T08:05:18.462Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-03",
+  "ato": "PORTARIA/SRE TEÓFILO OTONI Nº 278/2026",
+  "tipo": "OUTRO",
+  "pessoa": "SRE TEÓFILO OTONI",
+  "cargo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 278/2026",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-03",
+  "criado_em": "2026-10-03T08:05:15.320Z"
  }
 ]
