@@ -8,6 +8,7 @@ import {
   Play,
   Volume2,
   VolumeX,
+  X,
 } from "lucide-react";
 import {
   ESTACOES,
@@ -260,7 +261,7 @@ export default function PlayerRadio() {
         // desalinhar os três botões. `z-[45]`: por baixo da pata e do FAB
         // (z-50), por cima dos bichinhos (z-40) — um pet passando por trás
         // não pode cobrir o play.
-        className="group fixed bottom-[max(5.25rem,calc(env(safe-area-inset-bottom)_+_4.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
+        className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
         data-nao-plataforma
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
         // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
@@ -319,6 +320,15 @@ export default function PlayerRadio() {
               >
                 Ver todas →
               </Link>
+              <button
+                type="button"
+                onClick={fecharIndiceJa}
+                aria-label="Fechar o índice de rádios"
+                title="Fechar"
+                className="rounded-full p-0.5 text-text-soft hover:bg-surface-2 hover:text-primary"
+              >
+                <X size={14} aria-hidden="true" />
+              </button>
             </div>
             {/* Volume no cabeçalho do índice: o botão do canto virou só um
                 ícone (03/10/2026), então o controle de som mora aqui —

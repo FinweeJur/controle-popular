@@ -109,6 +109,8 @@ import {
   PET_PADRAO,
   type PetCompanheiro,
 } from "./companheiroPets";
+import { X } from "lucide-react";
+import { PetIcone } from "./PetIcone";
 import {
   BASE_BORDA,
   alvoDoSalto,
@@ -297,9 +299,11 @@ export function CompanheiroFlutuante() {
   /** Grava a lista no storage e sincroniza o cartão do Seu Nonô. */
   const persistir = useCallback((lista: PetCompanheiro[]) => {
     try {
+      // Lista vazia vira o sentinela "-" ("sem bichinhos"): string vazia some
+      // no `if (!salvo)` do carregador, então "não ter nenhum" precisa de marca.
       window.localStorage.setItem(
         CHAVE_PET,
-        lista.map((p) => p.slug).join(","),
+        lista.length ? lista.map((p) => p.slug).join(",") : "-",
       );
     } catch {
       // Armazenamento bloqueado (aba anônima): a escolha vale só nesta sessão.
@@ -338,6 +342,11 @@ export function CompanheiroFlutuante() {
     [aplicarLista],
   );
 
+  /** Tira TODOS os bichinhos (o companheiro some da tela). */
+  const limparPets = useCallback(() => {
+    aplicarLista([]);
+  }, [aplicarLista]);
+
   // Pets lembrados pelo leitor. `localStorage` só existe depois da
   // hidratação — no servidor e no primeiro render vale o qiaowei
   // (mesmo motivo da nuvem de boas-vindas do Seu Nonô). Valor antigo de
@@ -348,14 +357,18 @@ export function CompanheiroFlutuante() {
       if (!salvo) return;
       const vistos = new Set<string>();
       const lista: PetCompanheiro[] = [];
-      for (const bruto of salvo.split(",")) {
-        const slug = bruto.trim();
-        if (!slug || vistos.has(slug)) continue;
-        vistos.add(slug);
-        const achado = PETS_COMPANHEIRO.find((p) => p.slug === slug);
-        if (achado) lista.push(achado);
+      // "-" é o sentinela de "sem bichinhos" (dono, 03/10/2026): a lista fica
+      // vazia de propósito e o companheiro some da tela.
+      if (salvo !== "-") {
+        for (const bruto of salvo.split(",")) {
+          const slug = bruto.trim();
+          if (!slug || vistos.has(slug)) continue;
+          vistos.add(slug);
+          const achado = PETS_COMPANHEIRO.find((p) => p.slug === slug);
+          if (achado) lista.push(achado);
+        }
+        if (lista.length === 0) return;
       }
-      if (lista.length === 0) return;
       const atual = petsRef.current;
       const igual =
         atual.length === lista.length &&
@@ -383,6 +396,13 @@ export function CompanheiroFlutuante() {
     window.addEventListener("cp:companheiro-trocar-pet", aoTrocar);
     return () => window.removeEventListener("cp:companheiro-trocar-pet", aoTrocar);
   }, [alternarPet]);
+
+  // Cartão / índice pediu para tirar todos os bichinhos.
+  useEffect(() => {
+    const aoLimpar = () => limparPets();
+    window.addEventListener("cp:companheiro-limpar-pets", aoLimpar);
+    return () => window.removeEventListener("cp:companheiro-limpar-pets", aoLimpar);
+  }, [limparPets]);
 
   // ── Menu de troca (clique direito no bicho ou pata da pilha) ──────────────
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
@@ -895,9 +915,20 @@ export function CompanheiroFlutuante() {
               top: Math.max(8, Math.min(menu.y, window.innerHeight - 300)),
             }}
           >
-            <p className="px-2 pb-1 text-[0.7rem] font-medium text-text-soft">
-              Marque quem anda na tela (pode ser mais de um):
-            </p>
+            <div className="flex items-start justify-between gap-2 px-2 pb-1">
+              <p className="text-[0.7rem] font-medium text-text-soft">
+                Marque quem anda na tela (pode ser mais de um):
+              </p>
+              <button
+                type="button"
+                onClick={() => setMenu(null)}
+                aria-label="Fechar seletor de bichinhos"
+                title="Fechar"
+                className="-mr-1 -mt-0.5 shrink-0 rounded p-0.5 text-text-soft hover:bg-surface-2"
+              >
+                <X size={14} aria-hidden="true" />
+              </button>
+            </div>
             <ul className="space-y-0.5">
               {PETS_COMPANHEIRO.map((p) => {
                 const marcado = pets.some((q) => q.slug === p.slug);
@@ -913,13 +944,14 @@ export function CompanheiroFlutuante() {
                         marcado ? "font-semibold text-primary" : "text-text"
                       }`}
                     >
-                      <span className="flex items-baseline gap-1.5">
+                      <span className="flex items-center gap-1.5">
                         <span
                           aria-hidden="true"
                           className="inline-block w-3 shrink-0 text-center"
                         >
                           {marcado ? "✓" : ""}
                         </span>
+                        <PetIcone pet={p} altura={20} />
                         <span>{p.nome}</span>
                       </span>
                       <span className="truncate text-[0.65rem] font-normal text-text-soft">
@@ -930,6 +962,16 @@ export function CompanheiroFlutuante() {
                 );
               })}
             </ul>
+            <button
+              type="button"
+              onClick={() => {
+                limparPets();
+                setMenu(null);
+              }}
+              className="mt-1 w-full rounded-lg px-2 py-1.5 text-left text-xs font-medium text-text-soft hover:bg-surface-2"
+            >
+              Remover todos
+            </button>
             <button
               type="button"
               onClick={() => setMenu(null)}

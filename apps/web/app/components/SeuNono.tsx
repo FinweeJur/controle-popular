@@ -55,6 +55,7 @@ import {
   type SeuNonoPergunta,
 } from "./SeuNonoData";
 import { PETS_COMPANHEIRO, PET_PADRAO } from "./companheiroPets";
+import { PetIcone } from "./PetIcone";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
 import {
@@ -875,6 +876,7 @@ export function SeuNono() {
   function lePetSalvo(): string[] {
     try {
       const salvo = window.localStorage.getItem("cp_pet");
+      if (salvo === "-") return []; // "sem bichinhos" — escolha explícita do leitor
       if (!salvo) return [PET_PADRAO];
       const vistos = new Set<string>();
       const lista: string[] = [];
@@ -923,6 +925,13 @@ export function SeuNono() {
         : `Pronto: ${alvo.nome} entra na tela. Agora são ${nova.length} com você.`,
     );
     window.dispatchEvent(new CustomEvent("cp:companheiro-trocar-pet", { detail: { slug } }));
+  }
+
+  /** Tira TODOS os bichinhos da tela (some o companheiro flutuante). */
+  function limparPetsNoChat() {
+    setEscolhidosPet([]);
+    setConfirmaPet("Todos os bichinhos saíram da tela.");
+    window.dispatchEvent(new CustomEvent("cp:companheiro-limpar-pets"));
   }
 
   function voltar() {
@@ -1390,12 +1399,20 @@ export function SeuNono() {
                             onChange={() => alternarPetNoChat(p.slug)}
                             className="shrink-0 accent-primary"
                           />
+                          <PetIcone pet={p} altura={22} />
                           <span className="font-medium text-text">{p.nome}</span>
                           <span className="ml-auto text-[0.7rem] text-text-soft">por {p.autor}</span>
                         </label>
                       );
                     })}
                   </div>
+                  <button
+                    type="button"
+                    onClick={limparPetsNoChat}
+                    className="mt-2 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-text-soft hover:border-primary hover:text-primary"
+                  >
+                    Remover todos os bichinhos
+                  </button>
                 </fieldset>
                 <p role="status" aria-live="polite" className="text-xs font-medium text-primary">
                   {confirmaPet}
@@ -1944,7 +1961,7 @@ export function SeuNono() {
             }}
             title="Trocar o bichinho do companheiro"
             aria-label="Trocar o bichinho do companheiro"
-            className="-mb-4 flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="-mb-2 flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             <PawPrint size={20} className="text-primary" aria-hidden="true" />
           </button>
