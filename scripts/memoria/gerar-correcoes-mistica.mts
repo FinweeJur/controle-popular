@@ -55,6 +55,23 @@ const RESUMOS_RETIDOS = new Set<string>([
   "12-27|s/ano|depois de tres meses de greve, ocupando e sendo ",
 ]);
 
+/**
+ * Correções MANUAIS (decisão humana) — têm PRECEDÊNCIA sobre a proposta do
+ * modelo e não são sobrescritas numa nova rodada. Chave = `chaveCorrecao`.
+ */
+const MANUAIS: Record<string, { tituloCurto?: string; resumo?: string }> = {
+  // 12-22: o resumo do gerado colou uma expedição de 1873 em Sergipe (outro
+  // fato) depois do assassinato. O dono apontou que o sujeito é COLETIVO (os
+  // seringueiros / a Amazônia). Aqui ficam só as frases DO PRÓPRIO verbete e
+  // um título curto tirado delas — sem inventar o nome de ninguém.
+  "12-22|1988|foi assassinado na porta de sua casa em 22 de de": {
+    tituloCurto: "Amazônia em Chamas",
+    resumo:
+      "Foi assassinado na porta de sua casa em 22 de dezembro de 1988. " +
+      "Amazônia em chamas, de John Frankenheimer.",
+  },
+};
+
 const correcoes: Record<string, { tituloCurto?: string; resumo?: string }> = {};
 let comTitulo = 0;
 let comResumo = 0;
@@ -82,6 +99,11 @@ for (const r of relatorio.resultados) {
   }
 
   if (Object.keys(registro).length > 0) correcoes[chave] = registro;
+}
+
+// Correções manuais entram por último e vencem o modelo.
+for (const [chave, valor] of Object.entries(MANUAIS)) {
+  correcoes[chave] = { ...correcoes[chave], ...valor };
 }
 
 const chaves = Object.keys(correcoes).sort();

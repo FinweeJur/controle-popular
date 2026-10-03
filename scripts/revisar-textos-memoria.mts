@@ -184,7 +184,10 @@ async function verificarOllama(modelo: string): Promise<void> {
  */
 const CRITERIOS = [
   "Aponte se há frases soltas/desconexas — sem algum destes cinco elementos:",
-  "  1. sujeito — quem é o personagem individual ou coletivo principal;",
+  "  1. sujeito — quem é o personagem principal, individual OU coletivo",
+  "     (movimento, categoria, povo, região/povo como 'Amazônia' ou 'os",
+  "     seringueiros'). Sujeito COLETIVO conta: só marque falta de sujeito",
+  "     quando não houver nem pessoa nem coletivo;",
   "  2. acao — o que aconteceu;",
   "  3. vitima — quem foi vítima ou alvo;",
   "  4. lugar — onde aconteceu;",
