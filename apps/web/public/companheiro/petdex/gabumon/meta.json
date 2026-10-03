@@ -1,0 +1,32 @@
+{
+  "slug": "gabumon",
+  "nome": "Gabumon",
+  "autor": "Weizhong J.",
+  "fonte": "https://petdex.dev/pets/gabumon",
+  "licenca": "sem licenca por asset (arte de usuario Petdex) — ver PROVENIENCIA.md",
+  "medidoEm": "2026-10-02",
+  "celula": {
+    "w": 192,
+    "h": 208,
+    "cols": 8,
+    "linhas": 9
+  },
+  "bbox": {
+    "x": 5,
+    "y": 5,
+    "w": 182,
+    "h": 198
+  },
+  "quadros": [
+    6,
+    8,
+    8,
+    4,
+    5,
+    8,
+    6,
+    6,
+    6
+  ],
+  "reducao": 0.4
+}

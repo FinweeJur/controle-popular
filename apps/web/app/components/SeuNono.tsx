@@ -14,6 +14,9 @@
  * - Efeito Typewriter: animação de digitação progressiva suave (~16ms) com cursor pulsante ▋ e fases de status.
  * - Acessibilidade: botão 'Pular animação', clique no cartão para aceleração e atalhos de alto contraste e fontes.
  * - Citação direta e auditável: marcadores [n] com deep links para fontes oficiais primárias.
+ * - Seletor de pet (02/10/2026): o nível "pets" é um cartão de rádio-opções
+ *   que troca o bichinho do `CompanheiroFlutuante` via evento da janela
+ *   (`cp:companheiro-trocar-pet`) — o bicho mora em outro componente.
  */
 
 import { useState, useEffect, useMemo, useRef } from "react";
@@ -32,6 +35,7 @@ import {
   Minimize2,
   ArrowRight,
   GripVertical,
+  PawPrint,
 } from "lucide-react";
 import { usarArrastavel } from "@/lib/usarArrastavel";
 import Link from "next/link";
@@ -44,6 +48,7 @@ import {
   type SeuNonoCategoria,
   type SeuNonoPergunta,
 } from "./SeuNonoData";
+import { PETS_COMPANHEIRO, PET_PADRAO } from "./companheiroPets";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
 import {
@@ -500,7 +505,7 @@ function useAcoesRapidas(pathname: string | null): AcaoRapida[] {
   }, [pathname]);
 }
 
-type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia";
+type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia" | "pets";
 
 type ComandoAcessibilidade = {
   comando: string[];
@@ -554,11 +559,31 @@ export function SeuNono() {
 
   const [respostaComando, setRespostaComando] = useState<string | null>(null);
 
-  const [sugestoesContextuais, setSugestoesContextuais] = useState<SugestaoContextual[]>([]);
   const [respostaContexto, setRespostaContexto] = useState<SugestaoContextual | null>(null);
 
   const [termoBusca, setTermoBusca] = useState("");
   const [resultadosBusca, setResultadosBusca] = useState<{ pergunta: string; resposta: string; link?: string; linkTexto?: string; frente?: string }[]>([]);
+
+  // Seletor de pet do companheiro (checkboxes no chat — podem ser VÁRIOS
+  // na tela, pedido do dono em 02/10/2026). A lista salva só é lida em
+  // clique (`lePetSalvo`), nunca na renderização inicial — o servidor não
+  // tem `localStorage` e o padrão é o qiaowei (`PET_PADRAO`).
+  const [escolhidosPet, setEscolhidosPet] = useState<string[]>([PET_PADRAO]);
+  const [confirmaPet, setConfirmaPet] = useState<string | null>(null);
+
+  // O companheiro flutuante responde toda alternância com a lista completa
+  // (`cp:companheiro-pets`) — sincroniza o cartão quando a troca veio de
+  // fora (ex.: menu de clique direito no bicho). Só interessa com o
+  // cartão aberto.
+  useEffect(() => {
+    if (nivel !== "pets") return;
+    const aoMudar = (e: Event) => {
+      const slugs = (e as CustomEvent<{ slugs?: string[] }>).detail?.slugs;
+      if (Array.isArray(slugs) && slugs.length > 0) setEscolhidosPet(slugs);
+    };
+    window.addEventListener("cp:companheiro-pets", aoMudar);
+    return () => window.removeEventListener("cp:companheiro-pets", aoMudar);
+  }, [nivel]);
 
   const [dadosResumidos, setDadosResumidos] = useState<DadoResumido | null>(null);
   const [carregandoDados, setCarregandoDados] = useState(false);
@@ -600,18 +625,25 @@ export function SeuNono() {
     return () => window.removeEventListener("keydown", aoTeclar);
   }, [telaCheia]);
 
-  useEffect(() => {
-    if (pathname) {
-      const sugestoes = obterSugestoesContextuais(pathname);
-      const rotaLimpa = pathname.replace(/\/$/, "");
-      const filtradas = sugestoes.filter((s) => s.link.replace(/\/$/, "") !== rotaLimpa);
-      setSugestoesContextuais(filtradas);
-    }
+  // Sugestões da página atual: derivadas do caminho, sem estado próprio e
+  // sem efeito — o componente já re-renderiza a cada troca de rota, então
+  // guardar em estado só criava uma renderização extra (corrige o erro
+  // `react-hooks/set-state-in-effect` do eslint). A sugestão que aponta
+  // para a própria página é descartada: não sugiro ir para onde o leitor já está.
+  const sugestoesContextuais = useMemo<SugestaoContextual[]>(() => {
+    if (!pathname) return [];
+    const sugestoes = obterSugestoesContextuais(pathname);
+    const rotaLimpa = pathname.replace(/\/$/, "");
+    return sugestoes.filter((s) => s.link.replace(/\/$/, "") !== rotaLimpa);
   }, [pathname]);
 
   // A nuvem de boas-vindas aparece uma vez por visitante (flag no localStorage).
+  // `localStorage` só existe depois da hidratação: ler durante o render faria
+  // o cliente divergir do HTML do servidor (erro de hidratação). Por isso a
+  // leitura fica aqui no efeito, com a permissão documentada no portal.
   useEffect(() => {
     const jaViu = localStorage.getItem("cp_nono_seen") === "1";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de localStorage: no SSR o objeto nao existe e o HTML do servidor nao pode refletir a flag
     setMostrouBoasVindas(jaViu);
   }, []);
 
@@ -828,6 +860,65 @@ export function SeuNono() {
     setResultadosBusca([]);
   }
 
+  /**
+   * Lê a lista de pets gravada no `localStorage` (slugs separados por
+   * vírgula; um slug só, de antes da multipla escolha, também serve).
+   * Só roda dentro de clique — no servidor e no primeiro render o objeto
+   * não existe e o padrão é o qiaowei (`PET_PADRAO`).
+   */
+  function lePetSalvo(): string[] {
+    try {
+      const salvo = window.localStorage.getItem("cp_pet");
+      if (!salvo) return [PET_PADRAO];
+      const vistos = new Set<string>();
+      const lista: string[] = [];
+      for (const bruto of salvo.split(",")) {
+        const slug = bruto.trim();
+        if (!slug || vistos.has(slug)) continue;
+        vistos.add(slug);
+        if (PETS_COMPANHEIRO.some((p) => p.slug === slug)) lista.push(slug);
+      }
+      return lista.length > 0 ? lista : [PET_PADRAO];
+    } catch {
+      return [PET_PADRAO];
+    }
+  }
+
+  /** Abre o cartão de checkboxes já com os bichos atuais marcados. */
+  function abrirPets() {
+    setEscolhidosPet(lePetSalvo());
+    setConfirmaPet(null);
+    setNivel("pets");
+  }
+
+  /**
+   * Alterna o pet e avisa o companheiro flutuante.
+   * O bicho mora em outro componente (`CompanheiroFlutuante`), então a
+   * alternância viaja por evento da janela — mesmo caminho do menu de
+   * clique direito. Quem persiste no `localStorage` é ele (lista CSV em
+   * `cp_pet`) e responde com `cp:companheiro-pets`; este cartão só
+   * despacha e atualiza a marcação local. O último não sai da tela.
+   */
+  function alternarPetNoChat(slug: string) {
+    const alvo = PETS_COMPANHEIRO.find((p) => p.slug === slug);
+    if (!alvo) return;
+    const tem = escolhidosPet.includes(slug);
+    if (tem && escolhidosPet.length === 1) {
+      setConfirmaPet("Sem isso: fica sempre pelo menos um bichinho na tela.");
+      return;
+    }
+    const nova = tem
+      ? escolhidosPet.filter((s) => s !== slug)
+      : [...escolhidosPet, slug];
+    setEscolhidosPet(nova);
+    setConfirmaPet(
+      tem
+        ? `${alvo.nome} saiu da tela. Agora são ${nova.length} com você.`
+        : `Pronto: ${alvo.nome} entra na tela. Agora são ${nova.length} com você.`,
+    );
+    window.dispatchEvent(new CustomEvent("cp:companheiro-trocar-pet", { detail: { slug } }));
+  }
+
   function voltar() {
     if (nivel === "resposta") {
       setResposta(null);
@@ -838,6 +929,9 @@ export function SeuNono() {
     } else if (nivel === "busca") {
       setTermoBusca("");
       setResultadosBusca([]);
+      setNivel("frentes");
+    } else if (nivel === "pets") {
+      setConfirmaPet(null);
       setNivel("frentes");
     } else if (nivel === "perguntas") {
       setCategoria(null);
@@ -989,9 +1083,14 @@ export function SeuNono() {
     }
   }
 
-  // Listener para abertura remota a partir de botões na Home e tabelas
+  // Listener para abertura remota a partir de botões na Home e tabelas.
+  // O ref é atualizado num efeito (e não no render): ref durante o render
+  // é erro do eslint `react-hooks/refs` — e aqui não muda comportamento,
+  // porque o listener só lê o ref no clique, quando o efeito já rodou.
   const executarPerguntaIaRef = useRef(executarPerguntaIa);
-  executarPerguntaIaRef.current = executarPerguntaIa;
+  useEffect(() => {
+    executarPerguntaIaRef.current = executarPerguntaIa;
+  });
 
   useEffect(() => {
     const handleAbrir = (e: Event) => {
@@ -1105,7 +1204,7 @@ export function SeuNono() {
               <div className="space-y-3">
                 <div className="rounded-xl border border-primary/20 bg-primary/5 p-2.5 text-left">
                   <p className="text-xs font-semibold text-text">
-                    Olá! Sou o Seu Nonô, assistente cívico do Controle Popular.
+                    Opa! Bão? Sou Seu Nonô, Alceu Dispor. Soy el ajudante aqui do portal, que saiu diretin aqui de Beagá. BH é nois, sô! Como posso ajudar ocê?
                   </p>
                   <p className="mt-0.5 text-[0.75rem] leading-relaxed text-text-soft">
                     Ajudo a fiscalizar orçamentos, contratos, acordos e barragens com dados oficiais e sem cadastro. Escolha um tema abaixo ou digite sua pergunta:
@@ -1152,6 +1251,19 @@ export function SeuNono() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="border-t border-border pt-2">
+                  <button
+                    onClick={abrirPets}
+                    className="flex w-full items-center gap-2 rounded-lg border border-border bg-surface-2 px-3 py-2 text-left hover:border-primary"
+                  >
+                    <PawPrint size={14} className="shrink-0 text-primary" />
+                    <span className="flex-1">
+                      <span className="block text-sm font-medium text-text">Pet do companheiro</span>
+                      <span className="block text-xs text-text-soft">Escolha quem anda na tela com você</span>
+                    </span>
+                  </button>
+                </div>
 
                 <div className="border-t border-border pt-3">
                   <p className="mb-2 text-xs text-text-soft">
@@ -1222,6 +1334,54 @@ export function SeuNono() {
                     Nenhum resultado para &quot;{termoBusca}&quot;. Tente outra palavra ou use a IA.
                   </p>
                 )}
+              </div>
+            )}
+
+            {/* Seletor de pet: checkboxes, um bichinho por linha — os
+                marcados andam juntos na tela (pode marcar mais de um). */}
+            {nivel === "pets" && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar ao início
+                </button>
+                <fieldset>
+                  <legend className="text-sm font-semibold text-text">Pet do companheiro</legend>
+                  <p className="mt-1 text-xs leading-relaxed text-text-soft">
+                    Escolha quem anda na tela com você — pode marcar mais de um.
+                    A escolha fica salva neste navegador.
+                  </p>
+                  <div className="mt-2 space-y-1">
+                    {PETS_COMPANHEIRO.map((p) => {
+                      const marcado = escolhidosPet.includes(p.slug);
+                      return (
+                        <label
+                          key={p.slug}
+                          className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
+                            marcado
+                              ? "border-primary bg-primary/5"
+                              : "border-border bg-surface-2 hover:border-primary"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            value={p.slug}
+                            checked={marcado}
+                            onChange={() => alternarPetNoChat(p.slug)}
+                            className="shrink-0 accent-primary"
+                          />
+                          <span className="font-medium text-text">{p.nome}</span>
+                          <span className="ml-auto text-[0.7rem] text-text-soft">por {p.autor}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+                <p role="status" aria-live="polite" className="text-xs font-medium text-primary">
+                  {confirmaPet}
+                </p>
               </div>
             )}
 
@@ -1741,24 +1901,44 @@ export function SeuNono() {
         </div>
       )}
 
-      {/* Botão flutuante */}
+      {/* Botão flutuante + botão de trocar o bichinho, colados. */}
       {!aberto && (
-        <button
-          {...handlers}
-          onDoubleClick={resetar}
-          onClick={() => {
-            if (foiArrasto()) return; // gesto foi mover, não abrir
-            setAberto(true);
-            if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
-          }}
-          title="Arraste para mover; clique duplo volta ao canto"
-          className={`flex h-14 w-14 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-            arrastando ? "cursor-grabbing" : "cursor-grab"
-          }`}
-          aria-label="Abrir assistente Seu Nonô"
-        >
-          <AvatarSeuNono size={56} className="h-full w-full rounded-full" />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            {...handlers}
+            onDoubleClick={resetar}
+            onClick={() => {
+              if (foiArrasto()) return; // gesto foi mover, não abrir
+              setAberto(true);
+              if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
+            }}
+            title="Arraste para mover; clique duplo volta ao canto"
+            className={`flex h-14 w-14 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+              arrastando ? "cursor-grabbing" : "cursor-grab"
+            }`}
+            aria-label="Abrir assistente Seu Nonô"
+          >
+            <AvatarSeuNono size={56} className="h-full w-full rounded-full" />
+          </button>
+          {/* Porta nº 2 do seletor de pet: abre o menu do companheiro
+              embaixo deste botão, pelo evento da janela. */}
+          <button
+            type="button"
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              window.dispatchEvent(
+                new CustomEvent("cp:companheiro-menu-pet", {
+                  detail: { x: r.left, y: r.bottom + 8 },
+                }),
+              );
+            }}
+            title="Trocar o bichinho do companheiro"
+            aria-label="Trocar o bichinho do companheiro"
+            className="flex h-9 w-9 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            <PawPrint size={18} className="text-primary" aria-hidden="true" />
+          </button>
+        </div>
       )}
     </div>
   );
