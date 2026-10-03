@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/ambiental/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { COBERTURA_BARRAGENS_MPMG, agruparPorEmpreendedor } from "@/lib/ambiental/barragens-mpmg";
@@ -60,9 +61,9 @@ export default function BarragensDescaracterizacaoPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/ambiental" className="hover:text-primary">
+        <NextLink href="/ambiental" className="hover:text-primary">
           Ambiental
-        </a>{" "}
+        </NextLink>{" "}
         · <Link href="/barragens">Barragens</Link> ·{" "}
         <span className="text-text">Descaracterização (MPMG)</span>
       </nav>

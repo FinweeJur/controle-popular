@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import {
   listarNormasDireitoCritico,
   listarPrecedentesDireitoCritico,
@@ -97,9 +98,9 @@ export default async function DireitosEmMovimentoHub() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Direitos em Movimento</span>
       </nav>
 
@@ -130,7 +131,7 @@ export default async function DireitosEmMovimentoHub() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <a
+          <NextLink
             href="/memoria"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
@@ -147,9 +148,9 @@ export default async function DireitosEmMovimentoHub() {
               <span>Ver Linha do Tempo</span>
               <span>→</span>
             </span>
-          </a>
+          </NextLink>
 
-          <a
+          <NextLink
             href="/ambiental/legislacao"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
@@ -166,9 +167,9 @@ export default async function DireitosEmMovimentoHub() {
               <span>Consultar Leis</span>
               <span>→</span>
             </span>
-          </a>
+          </NextLink>
 
-          <a
+          <NextLink
             href="/direitos-em-movimento/saude-publica"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
@@ -185,12 +186,12 @@ export default async function DireitosEmMovimentoHub() {
               <span>Ver Painel SUS</span>
               <span>→</span>
             </span>
-          </a>
+          </NextLink>
 
           {/* Este card trata de Tarifa Social, que é uma notícia própria com o
               passo a passo do desconto. A rede de proteção (Defensoria, CRAS,
               MP) fica no PortaCard "Onde buscar ajuda" mais abaixo. */}
-          <a
+          <NextLink
             href="/noticias/tarifa-social-energia-agua-como-acessar"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
@@ -207,7 +208,7 @@ export default async function DireitosEmMovimentoHub() {
               <span>Ver passo a passo</span>
               <span>→</span>
             </span>
-          </a>
+          </NextLink>
         </div>
       </section>
 
@@ -268,13 +269,13 @@ export default async function DireitosEmMovimentoHub() {
               Catálogo de 990 unidades judiciárias com telefones com DDD, e-mails institucionais, endereços com CEP, juízes titulares e link direto para o Balcão Virtual em todas as 298 comarcas de MG e cidades do Brasil.
             </p>
           </div>
-          <a
+          <NextLink
             href="/judiciario/contatos"
             className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-primary/90"
           >
             <span>Consultar Guia de Varas</span>
             <span>→</span>
-          </a>
+          </NextLink>
         </div>
       </div>
 
@@ -300,9 +301,9 @@ export default async function DireitosEmMovimentoHub() {
             sem endereço atual, comissão de direitos humanos que bloqueou acesso automatizado.
             Mandar alguém em situação de urgência para um telefone não confirmado é pior que
             avisar. A lista completa, com o motivo de cada um, está na porta{" "}
-            <a href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
+            <NextLink href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
               Onde buscar ajuda
-            </a>
+            </NextLink>
             .
           </p>
         </div>
@@ -316,9 +317,9 @@ export default async function DireitosEmMovimentoHub() {
             Faiscadores, geraizeiros, apanhadoras de flores sempre-vivas, vazanteiros, povos de
             terreiro, pescadores artesanais: o acervo de LEI os alcança — o tema{" "}
             <em>povos_tradicionais</em> existe na porta{" "}
-            <a href="/ambiental/legislacao" className="font-medium text-primary hover:underline">
+            <NextLink href="/ambiental/legislacao" className="font-medium text-primary hover:underline">
               Que lei protege isso
-            </a>
+            </NextLink>
             . O MAPA de território não os representa — o mapa 3D da zona Terra e Território
             mostra terra indígena, mineração e barragem, não esse recorte. Não aparecer no mapa
             não é o mesmo que não existir ali.

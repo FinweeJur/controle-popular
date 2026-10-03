@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   ATORES_REPARACAO,
@@ -49,9 +50,9 @@ export default function QuemAtuaPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Quem atua na reparação</span>
       </nav>
 
@@ -158,12 +159,12 @@ export default function QuemAtuaPage() {
         <p className="mt-2">
           Para acompanhar os dados de mercado, relatórios protocolados na CVM (ITR, DFP, FRE),
           notícias e impacto financeiro da empresa causadora do desastre, acesse a página de{" "}
-          <a
+          <NextLink
             href="/paraopeba/vale"
             className="font-medium text-accent hover:underline"
           >
             Ações e Documentos da Vale na B3 ↗
-          </a>
+          </NextLink>
           .
         </p>
       </section>
@@ -176,12 +177,12 @@ export default function QuemAtuaPage() {
           Esta lista é quem atua no PROCESSO — instância judicial, procuradoria, gestora dos
           repasses. Para assistência jurídica gratuita, denúncia ou proteção de direitos fora
           do caso Brumadinho, veja a{" "}
-          <a
+          <NextLink
             href="/direitos-em-movimento"
             className="font-medium text-accent hover:underline"
           >
             rede de proteção do Controle Popular ↗
-          </a>
+          </NextLink>
           .
         </p>
       </section>

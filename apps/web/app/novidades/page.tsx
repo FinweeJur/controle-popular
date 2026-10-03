@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { Sparkles } from "lucide-react";
 import novidades from "@/data/novidades.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
@@ -74,9 +75,9 @@ export default function NovidadesPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Inicio
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Novidades</span>
       </nav>
 

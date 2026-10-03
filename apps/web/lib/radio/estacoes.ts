@@ -46,6 +46,17 @@
  * (bytes de áudio MP3/AAC, não só status 200); as da Venezuela e de Gurupá/
  * Voz Popular/Reggae saíram pelo agregador radio.garden. A data do acervo
  * subiu para 2026-10-03.
+ *
+ * Acrescento de 03/10/2026 (pedido do dono): entrou a Rádio Comunitária
+ * Aconchego, rádio livre do Engenho do Meio (Recife/PE), com stream HTTPS
+ * conferido (`audio/mpeg`) — comunicação popular e saúde, dentro da régua
+ * cívica. A pedido, procurou-se também a Rádio Amnésia 89,5 FM de Olinda/PE
+ * (rádio livre do Ponto de Cultura Coco de Umbigada, ligada a Mãe Beth de
+ * Oxum): é FM terrestre, SEM stream online verificável, então não entrou.
+ * Nenhuma estação de coco/maracatu de PE com stream apareceu no
+ * radio-browser.info nem no radio.garden (medido em 03/10/2026). Para dar ao
+ * menos uma FM pernambucana ao vivo, entrou a Rádio Clube de Pernambuco 99.1
+ * FM (Recife), com stream AAC conferido por requisição HTTP direta.
  */
 
 /** Categoria funcional da estação — é o filtro principal da página. */
@@ -1073,20 +1084,43 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
-    id: "portal-roots-reggae",
-    nome: "Portal Roots Reggae",
+    id: "radio-clube-fm-recife",
+    nome: "Rádio Clube de Pernambuco 99.1 FM",
     tipo: "popular",
     regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
-    uf: "MA",
-    cidade: "São Luís",
-    programacao: "Reggae, dancehall e cultura jamaicana",
-    descricao: "Rádio de reggae de São Luís (MA), capital do reggae brasileiro.",
-    stream: "https://radio.garden/api/ara/content/listen/xTBSA1nh/channel.mp3",
+    uf: "PE",
+    cidade: "Recife",
+    frequencia: "99.1 FM",
+    programacao: "Forró, brega e música regional pernambucana",
+    descricao:
+      "Emissora FM do Recife (PE) com música regional e programas de estúdio; publica o sinal ao vivo na internet.",
+    stream: "https://radio.saopaulo01.com.br/8016/stream",
+    formato: "aac",
+    site: "https://clubepe.fm/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-comunitaria-aconchego",
+    nome: "Rádio Comunitária Aconchego",
+    tipo: "comunitaria",
+    regiao: "Nordeste",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "PE",
+    cidade: "Recife",
+    programacao: "Comunicação comunitária, saúde integral e cultura local",
+    descricao:
+      "Rádio livre e comunitária do bairro do Engenho do Meio, no Recife (PE); pauta direitos, saúde integral e comunicação popular.",
+    stream: "https://fm.radioaconchego.org",
     formato: "mp3",
-    site: "https://portalradiorootsreggae.blogspot.com",
-    fonteAgregador: "radio.garden",
+    site: "https://radioaconchego.org/",
+    logo:
+      "https://radioaconchego.org/files/2015/03/cropped-cropped-5617042203_961643d1a0_o-180x180.jpg",
+    fonteAgregador: "radio-browser.info",
     transcrevivel: false,
     verificadoEm: RADIO_VERIFICADO_EM,
   },

@@ -1,0 +1,75 @@
+{
+  "rotulo": "baseline",
+  "base": "https://www.controlepopular.com.br",
+  "estacao": "radio-brasil-de-fato",
+  "gerado_em": "2026-10-03T15:45:20",
+  "total_alvos": 100,
+  "mortes": 1,
+  "primeiro_culpado": {
+    "origem": "/direitos-em-movimento/ajuda",
+    "alvo": "/ambiental",
+    "grupo": "subfrente",
+    "href": "/ambiental",
+    "resultado": "MORTA",
+    "detalhe": "novo <audio> nasceu pausado (reload)"
+  },
+  "passos": [
+    {
+      "origem": "/radio",
+      "alvo": "/terra-e-territorios",
+      "grupo": "eixo",
+      "href": "/terra-e-territorios",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/radio",
+      "alvo": "/direitos-em-movimento",
+      "grupo": "eixo",
+      "href": "/direitos-em-movimento",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/terra-e-territorios",
+      "alvo": "/estado-e-economia",
+      "grupo": "eixo",
+      "href": "/estado-e-economia",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/direitos-em-movimento",
+      "alvo": "/central",
+      "grupo": "eixo",
+      "href": "/central",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/estado-e-economia",
+      "alvo": "/direitos-em-movimento/ajuda",
+      "grupo": "subfrente",
+      "href": "/direitos-em-movimento/ajuda",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/central",
+      "alvo": "/cidades",
+      "grupo": "subfrente",
+      "href": "/cidades",
+      "resultado": "ERRO-NAV",
+      "detalhe": "a URL nao mudou"
+    },
+    {
+      "origem": "/direitos-em-movimento/ajuda",
+      "alvo": "/ambiental",
+      "grupo": "subfrente",
+      "href": "/ambiental",
+      "resultado": "MORTA",
+      "detalhe": "novo <audio> nasceu pausado (reload)"
+    }
+  ],
+  "sem_link": []
+}

@@ -1,5 +1,5 @@
 /**
- * usarArrastavel — hook que move um painel flutuante com o dedo/mouse e
+ * useArrastavel — hook que move um painel flutuante com o dedo/mouse e
  * grava a posição no `localStorage`.
  *
  * Papel no portal: o player de rádio (`PlayerRadio.tsx`) e o widget do Seu
@@ -23,13 +23,32 @@
  * - a posição é limitada à janela (com 8 px de folga) para o painel nunca
  *   sair da tela por completo.
  *
- * `limitarDeslocamento` é pura e testada (`usarArrastavel.test.ts`); o
+ * CAIXA DO CONTAINER, NÃO DA PEGA (conserto 03/10/2026) ─────────────────────
+ * O clamp precisa da caixa do elemento QUE SE MOVE. Antes ele media
+ * `e.currentTarget` (a pega), mas a pega costuma ser um filho bem menor que
+ * o painel — no Seu Nonô, o cabeçalho (40 px de altura) media o clamp de um
+ * painel de 619 px, e o painel deslizava para fora da tela por baixo. Quem
+ * sabe qual é o container é o consumidor: marque o DIV que recebe `estilo`
+ * com `data-arrastavel-caixa` e o hook acha a caixa por `closest`.
+ *
+ * A CAUSA-RAIZ DO "TRAVA APÓS POUCOS PIXELS" (medida com Playwright em
+ * 03/10/2026): quando a pega contém uma `<img>` (o avatar do Seu Nonô), o
+ * navegador inicia o arrasto NATIVO da imagem no primeiro `pointermove`. O
+ * Chrome dispara `pointercancel` no ponteiro, o arrasto morre e a posição
+ * trava no primeiro passo (medido: 10 px e nunca mais). `onDragStart` no
+ * handler cancela o arrasto nativo da imagem e o gesto segue inteiro.
+ *
+ * `limitarDeslocamento` é pura e testada (`useArrastavel.test.ts`); o
  * resto do hook toca `window`/`localStorage` e roda só no cliente.
  */
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
+import type {
+  CSSProperties,
+  DragEvent as ReactDragEvent,
+  PointerEvent as ReactPointerEvent,
+} from "react";
 
 /** Movimento mínimo (px) para o gesto contar como arrasto, não clique. */
 export const LIMITE_ARRASTO = 5;
@@ -75,6 +94,11 @@ export function limitarDeslocamento(
   };
 }
 
+/** Cancela o arrasto nativo de `<img>` na pega (ver docstring do arquivo). */
+function semArrastoNativo(e: ReactDragEvent<HTMLElement>): void {
+  e.preventDefault();
+}
+
 export interface UsarArrastavel {
   /** Estilo a espalhar no container flutuante (aplica o `translate`). */
   estilo: CSSProperties;
@@ -90,14 +114,21 @@ export interface UsarArrastavel {
     onPointerMove: (e: ReactPointerEvent<HTMLElement>) => void;
     onPointerUp: (e: ReactPointerEvent<HTMLElement>) => void;
     onPointerCancel: (e: ReactPointerEvent<HTMLElement>) => void;
+    /** Cancela o arrasto nativo de `<img>` dentro da pega: sem isto o
+     *  Chrome emite `pointercancel` no primeiro movimento e trava o gesto. */
+    onDragStart: (e: ReactDragEvent<HTMLElement>) => void;
   };
 }
 
 /**
  * Usa posição arrastável persistida. `chave` é o nome no `localStorage`
  * (ex.: `cp_radio_pos`).
+ *
+ * O CONTAINER que se move deve carregar o atributo `data-arrastavel-caixa`:
+ * o hook acha a caixa por `closest` a partir da pega. Sem ele, mede a própria
+ * pega (funciona quando pega e container são o mesmo elemento).
  */
-export function usarArrastavel(chave: string): UsarArrastavel {
+export function useArrastavel(chave: string): UsarArrastavel {
   const [desloc, setDesloc] = useState({ x: 0, y: 0 });
   const [arrastando, setArrastando] = useState(false);
   const atual = useRef({ x: 0, y: 0 });
@@ -128,7 +159,13 @@ export function usarArrastavel(chave: string): UsarArrastavel {
   }, [chave]);
 
   const onPointerDown = useCallback((e: ReactPointerEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
+    // A caixa medida é a do CONTAINER que se move (`data-arrastavel-caixa`),
+    // não a da pega: é o container que encosta nas bordas da tela. A pega
+    // costuma ser um filho bem menor (cabeçalho de 40 px num painel de 619).
+    const alvo =
+      e.currentTarget.closest<HTMLElement>("[data-arrastavel-caixa]") ??
+      e.currentTarget;
+    const r = alvo.getBoundingClientRect();
     gesto.current = {
       id: e.pointerId,
       px: e.clientX,
@@ -194,6 +231,9 @@ export function usarArrastavel(chave: string): UsarArrastavel {
       onPointerMove,
       onPointerUp: finalizar,
       onPointerCancel: finalizar,
+      // Cancela o arrasto nativo da imagem (o avatar do Seu Nonô) que, sem
+      // isto, emite `pointercancel` e congela o gesto no primeiro pixel.
+      onDragStart: semArrastoNativo,
     },
   };
 }

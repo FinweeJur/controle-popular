@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Moeda from "@/app/components/Moeda";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
@@ -361,9 +362,9 @@ export default function ValePage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Ações da Vale na B3</span>
       </nav>
 
@@ -378,37 +379,37 @@ export default function ValePage() {
 
       {/* Navegação integrada do monitoramento Vale no portal */}
       <div className="mt-5 flex flex-wrap gap-2 border-b border-border pb-4">
-        <a
+        <NextLink
           href="/paraopeba/vale"
           aria-current="page"
           className="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary"
         >
           📈 Cotações B3
-        </a>
-        <a
+        </NextLink>
+        <NextLink
           href="/paraopeba/vale/documentos"
           className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
         >
           📑 Documentos CVM (ITR, DFP, FRE)
-        </a>
-        <a
+        </NextLink>
+        <NextLink
           href="/paraopeba/noticias-vale"
           className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
         >
           📰 Radar de Notícias
-        </a>
-        <a
+        </NextLink>
+        <NextLink
           href="/paraopeba/correlacao"
           className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
         >
           ⚡ Preços × Notícias
-        </a>
-        <a
+        </NextLink>
+        <NextLink
           href="/paraopeba/linha-do-tempo"
           className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
         >
           ⏳ Linha do Tempo da Reparação
-        </a>
+        </NextLink>
       </div>
 
       {/* A ressalva vem ANTES do primeiro número: "fechamento ajustado?" é a

@@ -5,17 +5,20 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { CALENDARIO } from "@/lib/memoria/correcoes";
 import { fonteCurta } from "@/lib/memoria/mistica";
+import { agregarFontes } from "@/lib/memoria/fontes-agregadas";
 import { localDaEntrada } from "@/lib/memoria/locais";
 import { DATAS_REFERENCIA, citacaoCurtaData } from "@/lib/memoria/datas-referencia";
 import { ROTULO_TIPO } from "@/lib/memoria/rotulos";
-import LinhaDoTempo from "./LinhaDoTempo";
+import VisaoMemoria from "./VisaoMemoria";
 import type { VerbeteLinha } from "./LinhaDoTempo";
 import { metadataEditavel } from "@/lib/edicoes";
 
 export const metadata: Metadata = metadataEditavel("/memoria", {
   title: "Linha do Tempo das Lutas — Controle Popular",
+  // O total é contado do próprio acervo (nunca digitado à mão): a cada
+  // fonte nova em `correcoes.ts`, a descrição acompanha sozinha.
   description:
-    "Linha do tempo da história das lutas, revoltas e resistências, com todas as citações: 533 fatos do Calendário Histórico dos Trabalhadores e Trabalhadoras (MST, 2009) e do Calendário Insurgente (Blog Aos que Virão, 2020).",
+    `Linha do tempo da história das lutas, revoltas e resistências, com todas as citações: ${CALENDARIO.length} fatos do Calendário Histórico dos Trabalhadores e Trabalhadoras (MST), do Calendário Insurgente (Blog Aos que Virão), da linha do tempo do MAB e do Acampamento Terra Livre (APIB).`,
 });
 
 // Sem `searchParams`: força estática, como as demais páginas de lista (sem
@@ -32,7 +35,7 @@ const MESES = [
  * (regra do AGENTS §8.4: número na tela vem de constante medida com data).
  * Os totais abaixo, porém, são contados do próprio dado — nunca digitados.
  */
-const MEDIDO_EM = "30/09/2026";
+const MEDIDO_EM = "03/10/2026";
 
 export default function MemoriaPage() {
   const verbetes: VerbeteLinha[] = CALENDARIO.map((e) => {
@@ -69,10 +72,10 @@ export default function MemoriaPage() {
     .filter((n) => Number.isFinite(n) && n > 0);
   const primeiroAno = Math.min(...anos);
   const ultimoAno = Math.max(...anos);
-  const fontes = new Map<string, number>();
-  for (const v of verbetes) {
-    fontes.set(v.fonteCurta, (fontes.get(v.fonteCurta) ?? 0) + 1);
-  }
+  // Fontes agregadas por RÓTULO (dono, 03/10/2026): cinco rótulos, com a
+  // contagem somada do próprio dado — o total nunca é digitado à mão.
+  // A regra de classificação vive em `lib/memoria/fontes-agregadas.ts`.
+  const fontesAgregadas = agregarFontes(verbetes.map((v) => v.fonteCurta));
 
   return (
     <main
@@ -101,9 +104,10 @@ export default function MemoriaPage() {
             className="max-w-4xl text-muted"
             texto={
               "Cada fato da história das lutas populares, revoltas e resistências, com a citação da sua fonte. " +
-              "O acervo reúne o Calendário Histórico das Trabalhadoras/es (MST, 2009) e o Calendário Insurgente " +
-              "(Blog Aos que Virão, 2020). A linha do tempo é cronológica; use os filtros para recortar por tipo " +
-              "de luta, século ou fonte."
+              "O acervo reúne o Calendário Histórico das Trabalhadoras/es (MST), o Calendário Insurgente " +
+              "(Blog Aos que Virão), a linha do tempo do MAB e o Acampamento Terra Livre (APIB). " +
+              "Veja em linha do tempo ou no calendário por dia do ano (sem o ano); na linha do tempo, use os " +
+              "filtros para recortar por tipo de luta, século ou fonte."
             }
           />
         </div>
@@ -135,11 +139,20 @@ export default function MemoriaPage() {
           <span className="inline-flex items-center gap-1.5">
             <BookOpen size={13} aria-hidden="true" /> {comResumo} verbetes com resumo
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <CalendarDays size={13} aria-hidden="true" /> 2 fontes:{" "}
-            {[...fontes.entries()]
-              .map(([nome, n]) => `${nome} (${n})`)
-              .join(" · ")}
+          <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
+            <CalendarDays size={13} aria-hidden="true" /> Fontes:
+            {fontesAgregadas.map(({ definicao, total }) => (
+              <a
+                key={definicao.rotulo}
+                href={definicao.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${definicao.descricao} — ${definicao.obra}`}
+                className="underline hover:text-primary"
+              >
+                {definicao.rotulo} ({total})
+              </a>
+            ))}
           </span>
           <span>Números medidos do acervo em {MEDIDO_EM}.</span>
         </p>
@@ -227,7 +240,7 @@ export default function MemoriaPage() {
         </div>
       </section>
 
-      <LinhaDoTempo verbetes={verbetes} />
+      <VisaoMemoria verbetes={verbetes} />
 
       <p className="text-xs text-muted">
         Fontes primárias citadas em cada verbete. Fonte terciária (Wikipédia,
@@ -239,6 +252,15 @@ export default function MemoriaPage() {
           className="inline-flex items-center gap-1 underline hover:text-primary"
         >
           Ver o Calendário Insurgente <ExternalLink size={11} aria-hidden="true" />
+        </a>
+        {" · "}
+        <a
+          href="https://apiboficial.org/historicoatl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 underline hover:text-primary"
+        >
+          Histórico do ATL (APIB) <ExternalLink size={11} aria-hidden="true" />
         </a>
       </p>
 

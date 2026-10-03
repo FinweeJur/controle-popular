@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { CATALOGO_EIXOS } from "@/lib/eixos/catalogo";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { obterEstatisticasPortal } from "@/lib/betim/estatisticas-portal";
@@ -49,9 +50,9 @@ export default async function SobrePage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl space-y-14 px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Sobre</span>
       </nav>
 
@@ -106,30 +107,30 @@ export default async function SobrePage() {
         <p className="text-text-soft">
           Do MAB vem a postura da frente ambiental. Ele nos ensinou a cobrar
           reparação pelos{" "}
-          <a
+          <NextLink
             href="/ambiental/crimes-socioambientais"
             className="text-primary hover:text-accent"
           >
             crimes socioambientais
-          </a>
+          </NextLink>
           , reunidos num acervo aberto; a acompanhar as outorgas de água; a{" "}
-          <a href="/ambiental/barragens" className="text-primary hover:text-accent">
+          <NextLink href="/ambiental/barragens" className="text-primary hover:text-accent">
             fiscalizar as barragens
-          </a>{" "}
+          </NextLink>{" "}
           e a vigiar o{" "}
-          <a href="/ambiental/licenciamento" className="text-primary hover:text-accent">
+          <NextLink href="/ambiental/licenciamento" className="text-primary hover:text-accent">
             licenciamento ambiental
-          </a>
+          </NextLink>
           .
         </p>
         <p className="text-text-soft">
           A{" "}
-          <a
+          <NextLink
             href="/direitos-em-movimento/educacao"
             className="text-primary hover:text-accent"
           >
             página de educação
-          </a>
+          </NextLink>
           , entre outras, foi inspirada no{" "}
           <a
             href="https://levante.org.br/"
@@ -140,12 +141,12 @@ export default async function SobrePage() {
             Levante Popular da Juventude
           </a>
           . A{" "}
-          <a
+          <NextLink
             href="/direitos-em-movimento/saude-publica"
             className="text-primary hover:text-accent"
           >
             página de saúde
-          </a>
+          </NextLink>
           , entre outras, foi inspirada no{" "}
           <a
             href="https://brasilpopular.org/"
@@ -216,9 +217,9 @@ export default async function SobrePage() {
           não sai do modelo: é aritmética sobre esse formulário, feita por código
           determinístico e reexecutável. A mesma separação organiza a análise de vício
           legislativo e a atribuição de tema da legislação em{" "}
-          <a href="/ambiental/legislacao" className="text-primary hover:text-accent">
+          <NextLink href="/ambiental/legislacao" className="text-primary hover:text-accent">
             /ambiental/legislacao
-          </a>{" "}
+          </NextLink>{" "}
           (até 13/08/2026, <code className="text-[.85em]">/ambiental/direito-critico</code> — unificada
           com a legislação estadual num painel só, a URL antiga redireciona pra cá).
         </p>
@@ -237,9 +238,9 @@ export default async function SobrePage() {
         <p className="text-text-soft">
           A atribuição de tema da legislação é o exemplo do padrão que este projeto adota
           consigo mesmo: até 13/08/2026, a página de{" "}
-          <a href="/ambiental/legislacao" className="text-primary hover:text-accent">
+          <NextLink href="/ambiental/legislacao" className="text-primary hover:text-accent">
             legislação e precedentes por tema de direito
-          </a>{" "}
+          </NextLink>{" "}
           chamava a atribuição de tema de &ldquo;leitura humana&rdquo;; hoje a página diz o
           que é — leitura assistida por IA, registrada linha a linha com o trecho que
           sustenta cada tema — e declara que está em revisão. Quem cobra procedência dos
@@ -314,9 +315,9 @@ export default async function SobrePage() {
             O portal usa IA para <strong className="text-text">ler texto</strong> e extrair
             campos — nunca para escrever número nem opinar. A política completa, com onde a
             IA entra e onde ela não entra, está em{" "}
-            <a href="/politica-de-ia" className="text-primary hover:text-accent">
+            <NextLink href="/politica-de-ia" className="text-primary hover:text-accent">
               /politica-de-ia
-            </a>
+            </NextLink>
             .
           </p>
         </div>

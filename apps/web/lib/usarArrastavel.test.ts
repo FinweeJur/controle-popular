@@ -34,4 +34,24 @@ describe("limitarDeslocamento", () => {
       -caixa.esq + MARGEM_VISAO,
     );
   });
+
+  // Regressão de 03/10/2026 (Seu Nonô): o clamp tem de medir o CONTAINER que
+  // se move (painel de 619 px), não a pega (cabeçalho de 40 px). Medindo a
+  // pega, `alt` ficava pequeno e o painel descia até sair da tela por baixo.
+  it("usa a caixa do container alto, não a de uma pega pequena", () => {
+    const caixa = { esq: 18, topo: 172, larg: 422, alt: 619 };
+    const visao = { larg: 1280, alt: 800 };
+    expect(limitarDeslocamento(0, 9999, caixa, visao).y).toBe(
+      visao.alt - (caixa.topo + caixa.alt) - MARGEM_VISAO,
+    );
+    expect(limitarDeslocamento(0, -9999, caixa, visao).y).toBe(
+      -caixa.topo + MARGEM_VISAO,
+    );
+    // A mesma conta com a caixa de uma pega de 40 px daria outro teto — é o
+    // erro que o conserto evita.
+    const pega = { esq: 18, topo: 186, larg: 296, alt: 40 };
+    expect(limitarDeslocamento(0, 9999, pega, visao).y).not.toBe(
+      visao.alt - (caixa.topo + caixa.alt) - MARGEM_VISAO,
+    );
+  });
 });

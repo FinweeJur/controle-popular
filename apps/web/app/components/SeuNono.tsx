@@ -43,7 +43,7 @@ import {
   GripVertical,
   PawPrint,
 } from "lucide-react";
-import { usarArrastavel } from "@/lib/usarArrastavel";
+import { useArrastavel } from "@/lib/usarArrastavel";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -80,6 +80,11 @@ function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className
       alt="Seu Nonô"
       width={size}
       height={size}
+      // `draggable={false}`: sem isto o navegador inicia o arrasto NATIVO da
+      // imagem e emite `pointercancel`, travando o arrasto do widget no
+      // primeiro pixel (medido com Playwright em 03/10/2026). O hook também
+      // cancela o `dragstart`, mas aqui o próprio elemento já nasce imóvel.
+      draggable={false}
       className={`shrink-0 rounded-full object-cover ${className}`}
       style={className.includes("h-full") || className.includes("w-full") ? undefined : { width: size, height: size }}
     />
@@ -598,8 +603,13 @@ export function SeuNono() {
   // Widget arrastável: o canto pode tapar o conteúdo; a posição fica
   // lembrada no `localStorage` (pedido do dono, 30/09/2026). O botão do FAB
   // e o cabeçalho do painel servem de pega.
+  //
+  // O DIV que recebe o `translate` leva `data-arrastavel-caixa`: o hook mede
+  // a caixa DELE, não a da pega (cabeçalho/FAB, filhos menores). Sem isso, o
+  // clamp media o cabeçalho (40 px) e deixava o painel (619 px) deslizar
+  // para fora por baixo; conserto medido em 03/10/2026.
   const { estilo, arrastando, foiArrasto, handlers, resetar } =
-    usarArrastavel("cp_nono_pos");
+    useArrastavel("cp_nono_pos");
 
   const acoesRapidas = useAcoesRapidas(pathname);
 
@@ -1138,6 +1148,7 @@ export function SeuNono() {
       // (eles andam no conteúdo da página, não na nossa moldura).
       style={telaCheia ? undefined : estilo}
       className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 flex flex-col items-start"
+      data-arrastavel-caixa
       data-nao-plataforma
     >
       {aberto && (

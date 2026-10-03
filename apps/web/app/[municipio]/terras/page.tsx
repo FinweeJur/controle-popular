@@ -1,4 +1,5 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
+import NextLink from "next/link";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
@@ -38,12 +39,12 @@ export default async function TerrasPage({
           * fora da zona [municipio], e o wrapper prefixaria com o slug da
           * cidade. O globo cobre 76 municípios de Minas por camada, mesmo
           * sem página própria aqui — vale o link mesmo sem levantamento. */}
-        <a
+        <NextLink
           href="/funcaosocialterra/mapa"
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
         >
           Ver esta área no mapa (3D) →
-        </a>
+        </NextLink>
       </main>
     );
   }
@@ -67,20 +68,20 @@ export default async function TerrasPage({
             o teto de 33% funcionam está em `/sobre#metodologia`, e o
             bloco `TaxaDeErroTerras` logo abaixo já mostra o número ao
             vivo. */}
-        <a href="/sobre#metodologia" className="text-accent hover:underline">
+        <NextLink href="/sobre#metodologia" className="text-accent hover:underline">
           Como este número é calculado
-        </a>
+        </NextLink>
         .
       </p>
 
       {/* <a> puro, não o Link de zona: ver a nota acima, no branch sem
         * levantamento. */}
-      <a
+      <NextLink
         href="/funcaosocialterra/mapa"
         className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
       >
         Ver esta área no mapa (3D) →
-      </a>
+      </NextLink>
 
       {/* Sprint 3 do plano de revisão de dados — a lente cidade sobre as
         * camadas de alerta do globo. Link incondicional: a subpágina lida

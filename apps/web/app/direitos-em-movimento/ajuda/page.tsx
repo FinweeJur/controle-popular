@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import SeletorRedeGeral from "../components/SeletorRedeGeral";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -28,13 +29,13 @@ export default async function AjudaPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </NextLink>{" "}
         ·{" "}
-        <a href="/direitos-em-movimento" className="hover:text-primary">
+        <NextLink href="/direitos-em-movimento" className="hover:text-primary">
           Direitos em Movimento
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Onde buscar ajuda</span>
       </nav>
 
@@ -54,12 +55,12 @@ export default async function AjudaPage() {
           <span className="font-semibold text-text">Procurando a Vara Judicial ou Balcão Virtual da sua Comarca?</span>
           <p className="text-text-soft">Consulte e-mails, telefones com DDD, endereços com CEP e juízes titulares de 990 unidades em todas as 298 comarcas de MG e polos do Brasil.</p>
         </div>
-        <a
+        <NextLink
           href="/judiciario/contatos"
           className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-2 font-bold text-white hover:bg-primary/90 transition-colors"
         >
           Consultar Varas e Juizados →
-        </a>
+        </NextLink>
       </div>
 
       <section className="mt-8">

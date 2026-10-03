@@ -63,16 +63,6 @@ export default function PaginaConselhosDireitos() {
         <p className="text-base sm:text-lg text-muted leading-relaxed">
           Onde a população decide e fiscaliza diretamente os recursos públicos: conselhos de saúde (CMS/CES), meio ambiente (CODEMAs/COPAM), direitos humanos, conselhos tutelares, comitês de bacias e conselhos de direitos das mulheres em todo o Brasil.
         </p>
-
-        {/* EPÍGRAFE POÉTICA */}
-        <div className="rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-xs sm:text-sm italic text-muted">
-          <p>
-            &ldquo;O rio não corre sozinho: cada afluente, cada gota e cada voz ribeirinha fazem a força da correnteza.&rdquo;
-          </p>
-          <span className="block mt-1 not-italic font-medium text-text-soft">
-            — Provérbio Popular & Saberes Comunitários
-          </span>
-        </div>
       </header>
 
       {/* ═══ SUMÁRIO WIKI E NAVEGAÇÃO ═══ */}

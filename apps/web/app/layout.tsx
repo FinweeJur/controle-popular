@@ -20,6 +20,7 @@ import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
 import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
+import { InterceptadorLinks } from "@/app/components/InterceptadorLinks";
 import IndicePagina from "@/app/components/IndicePagina";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import DicaHover from "@/app/components/DicaHover";
@@ -228,6 +229,12 @@ export default function RootLayout({
               {children} porque precisa estar ACIMA dos headers de zona (que
               deixaram de ser fixos — ver `TopNav.tsx` e os layouts de zona). */}
           <TopNav />
+          {/* Rede de segurança da casca persistente: captura cliques em
+              qualquer `<a>` interno de PÁGINA (inclusive os de `href`
+              dinâmico que o ESLint não vê) e navega no cliente. Sem isto um
+              `<a>` cru faz reload e mata o áudio do `PlayerRadio` e o estado
+              do pet. Ver `InterceptadorLinks.tsx`. */}
+          <InterceptadorLinks />
           {/* Paleta de comandos global (Ctrl/Cmd+K): ir, perguntar e buscar
               num só atalho. Ver `PaletaComandos.tsx`. */}
           <PaletaComandos />

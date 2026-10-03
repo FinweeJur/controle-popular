@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { lerAcervoPericia, lerResultadosPericia, lerResumoDoAcervo } from "@/lib/paraopeba/acervos-dados";
 import {
@@ -62,9 +63,9 @@ export default function PericiaPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Perícia judicial da UFMG</span>
       </nav>
 
@@ -103,9 +104,9 @@ export default function PericiaPage() {
           <li>
             <strong className="text-text">Perícia não é peça de processo.</strong> Os autos —
             petição, decisão, laudo juntado — estão em{" "}
-            <a href="/paraopeba/documentos" className="text-primary hover:underline">
+            <NextLink href="/paraopeba/documentos" className="text-primary hover:underline">
               Documentos do processo
-            </a>
+            </NextLink>
             , que vem de outra fonte da própria UFMG. Aqui está o que os pesquisadores mediram.
           </li>
           <li>
@@ -133,9 +134,9 @@ export default function PericiaPage() {
               projetobrumadinho.ufmg.br
             </a>
             . Achou erro?{" "}
-            <a href="/termos" className="text-primary hover:underline">
+            <NextLink href="/termos" className="text-primary hover:underline">
               Como pedir correção
-            </a>
+            </NextLink>
             .
           </li>
         </ul>
@@ -243,12 +244,12 @@ export default function PericiaPage() {
           distintos sobre os mesmos eixos — água, solo, saúde, fauna, compensação. Cada eixo acima
           leva ao que a auditoria publicou sobre ele.
         </p>
-        <a
+        <NextLink
           href="/paraopeba/auditoria"
           className="mt-3 inline-block rounded-lg border border-primary px-4 py-2 text-[.9em] font-medium text-primary transition hover:bg-primary hover:text-white"
         >
           Ver a auditoria socioambiental →
-        </a>
+        </NextLink>
       </section>
 
       {/* ═══ O ACERVO INTEIRO, COM O QUE ELE É DITO NO RÓTULO ═══ */}

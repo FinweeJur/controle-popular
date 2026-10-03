@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/paraopeba/link";
 
 /**
@@ -75,11 +76,15 @@ export default function ParaopebaLayout({
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-4">
           {/* Wordmark da MARCA, botões de zona irmã e controles de
               tema/tamanho/contraste moram na barra global (`TopNav.tsx`,
-              layout raiz). Aqui fica só o nome da zona como <a> cru: o
-              <Link> da zona prefixaria e geraria /paraopeba/paraopeba. */}
-          <a href="/paraopeba" className="font-display text-lg font-bold">
+              layout raiz). Aqui o nome da zona usa `NextLink` (next/link puro):
+              o `<Link>` da zona prefixaria de novo e geraria
+              /paraopeba/paraopeba. Antes era `<a href>` cru, que forçava
+              reload e matava o áudio do player; o `NextLink` navega no
+              cliente sem passar pelo wrapper da zona (pedido do dono,
+              03/10/2026). */}
+          <NextLink href="/paraopeba" className="font-display text-lg font-bold">
             Paraopeba
-          </a>
+          </NextLink>
           <nav className="flex flex-1 flex-wrap gap-4 text-sm">
             {NAV.map((item) => (
               <Link key={item.href} href={item.href} className="hover:underline">

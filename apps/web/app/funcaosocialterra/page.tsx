@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Cabecalho from "./Cabecalho";
 import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -104,18 +105,18 @@ export default async function FuncaoSocialTerraPage() {
         <AvisoColetaEmCurso escopo="Nesta frente a cobertura varia muito de camada para camada: o vazio cadastral cobre duas regiões de estudo, a legislação municipal cobre 6 dos 854 municípios de Minas, e a mancha de inundação existe para 156 das 259 barragens." />
 
         <div className="mt-5 flex flex-wrap gap-3">
-          <a
+          <NextLink
             href="/funcaosocialterra/mapa"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink shadow-sm transition-colors hover:opacity-90"
           >
             Ver mapa completo (3D) →
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/funcaosocialterra/alertas"
             className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-text shadow-sm transition-colors hover:border-primary"
           >
             Ver alertas, um por um →
-          </a>
+          </NextLink>
         </div>
 
         <section className="mt-9">
@@ -205,12 +206,12 @@ export default async function FuncaoSocialTerraPage() {
               {formatNumberBR(alertaQuilombolaMancha.qtdFeaturesEncontradas)} interseções, em{" "}
               {formatNumberBR(alertaQuilombolaMancha.qtdTerritoriosAtingidos)} territórios.
             </p>
-            <a
+            <NextLink
               href="/funcaosocialterra/alertas"
               className="mt-2 inline-block font-medium text-primary underline underline-offset-2 hover:text-accent"
             >
               Conferir cada alerta, com processo e link para a fonte →
-            </a>
+            </NextLink>
           </div>
         </section>
 

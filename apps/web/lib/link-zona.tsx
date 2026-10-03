@@ -11,9 +11,10 @@ type LinkProps = ComponentProps<typeof NextLink>;
  *
  * O que o `basePath` fazia e agora é feito aqui: prefixar automaticamente
  * TODA navegação interna do `next/link` e do router. Ele nunca tocou em
- * `<a href>` cru — por isso as âncoras para a raiz do domínio e para as
- * zonas irmãs continuam sendo `<a>` e continuam corretas sem passar por
- * aqui.
+ * `NextLink` puro — por isso os links para a raiz do domínio e para as zonas
+ * irmãs continuam sem passar por aqui e continuam corretos. (Antes eram
+ * `<a href>` cru; viraram `NextLink` em 03/10/2026 para não recarregar a
+ * página e não matar o áudio do player de rádio.)
  *
  * Foi escrito como wrapper, e não como reescrita dos ~150 `href` no
  * código, de propósito: muitos ficam em JSX de várias linhas e outros são

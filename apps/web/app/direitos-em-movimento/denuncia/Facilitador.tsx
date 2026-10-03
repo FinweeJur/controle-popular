@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
+import NextLink from "next/link";
 import type { Cidade } from "@/lib/db/queries/municipios";
 import { montarItensPainel, itensSemCidade, NAO_VERIFICADO, type ItemPainel } from "@/lib/betim/redeProtecao";
 import {
@@ -685,9 +686,9 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
               comissão que bloqueou acesso automatizado. Mandar alguém em situação de urgência
               para um telefone não confirmado é pior que avisar — a lista completa, com o motivo
               de cada um, está em{" "}
-              <a href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
+              <NextLink href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
                 Onde buscar ajuda
-              </a>
+              </NextLink>
               .
             </p>
           </div>

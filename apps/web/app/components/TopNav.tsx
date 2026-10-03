@@ -43,6 +43,7 @@ import {
   Layers,
 } from 'lucide-react';
 import Link from 'next/link';
+import NextLink from 'next/link';
 import Image from 'next/image';
 
 import BuscaGlobal from '@/app/components/BuscaGlobal';
@@ -302,28 +303,28 @@ export default function TopNav() {
               {/* Header: atalhos globais */}
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
                 <div className="flex flex-wrap gap-2">
-                  <a
+                  <NextLink
                     href="/"
                     onClick={fechar}
                     className="rounded-lg border border-border px-3 py-1.5 text-xs font-semibold text-text transition-colors duration-150 hover:bg-surface-2"
                   >
                     Início
-                  </a>
-                  <a
+                  </NextLink>
+                  <NextLink
                     href="/indice"
                     onClick={fechar}
                     className="rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
                   >
                     Índice Geral do Portal
-                  </a>
-                  <a
+                  </NextLink>
+                  <NextLink
                     href="/central"
                     onClick={fechar}
                     className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
                   >
                     <Compass size={13} aria-hidden="true" />
                     <span>Eixo Central (ONSA)</span>
-                  </a>
+                  </NextLink>
                 </div>
                 <span className="text-xs font-semibold text-text-soft">
                   4 Eixos Temáticos • 36+ Subfrentes
@@ -403,14 +404,14 @@ export default function TopNav() {
                   <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
                   <span>Observatório Nacional Socioambiental e ferramentas integradas em um só lugar.</span>
                 </div>
-                <a
+                <NextLink
                   href="/central"
                   onClick={fechar}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
                 >
                   <span>Conhecer o Eixo Central (ONSA)</span>
                   <span aria-hidden="true">→</span>
-                </a>
+                </NextLink>
               </div>
             </div>
           </nav>

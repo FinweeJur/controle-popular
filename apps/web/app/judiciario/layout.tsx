@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/judiciario/link";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -40,9 +41,9 @@ export default function JudiciarioLayout({
               tema/tamanho/contraste agora moram na barra global (`TopNav.tsx`,
               layout raiz). Aqui fica só o nome da zona como <a> cru: o <Link>
               da zona prefixaria e geraria /judiciario/judiciario. */}
-          <a href="/judiciario" className="font-display text-lg font-bold">
+          <NextLink href="/judiciario" className="font-display text-lg font-bold">
             Judiciário
-          </a>
+          </NextLink>
           <nav className="flex flex-1 flex-wrap gap-4 text-sm">
             {NAV.map((item) => (
               <Link key={item.href} href={item.href} className="hover:underline">

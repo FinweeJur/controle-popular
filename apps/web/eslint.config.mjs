@@ -22,14 +22,15 @@ import nextPlugin from "@next/eslint-plugin-next";
  * descarta apenas mensagem repetida para o MESMO nó (linha:coluna|texto).
  * Resultado: uma mensagem por âncora de verdade.
  *
- * Severidade `warn`, deliberadamente: os ~70 `<a>` internos remanescentes
- * são majoritariamente INTENCIONAIS — o repositório documenta o padrão
- * "<a> puro, não o Link de zona" (ver `lib/betim/link.tsx`,
- * `lib/betim/basePath.ts` e os comentários nas telas): converter em massa
- * para `next/link` trocaria navegação client-side por reload e ignoraria o
- * prefixo de zona; converter para o Link de zona fora da zona Cidades
- * exigiria o wrapper certo de cada frente. É dívida real, sinalizada como
- * warning legítimo — errado seria esconder atrás de `off`.
+ * Severidade `warn`, deliberadamente. Até 02/10/2026 os ~70 `<a>` internos
+ * eram majoritariamente intencionais (links para a raiz do domínio e zonas
+ * irmãs que não passam pelo Link de zona). Em 03/10/2026 a medição mudou a
+ * conclusão: clicar em `<a>` interno força RELOAD de página inteira e mata o
+ * áudio do player de rádio persistente (o `<audio>` vive no layout raiz). Os
+ * links de PÁGINA foram convertidos para `NextLink` (`next/link` puro), que
+ * navega no cliente sem prefixar; `<a>` fica só para arquivo/API/externo.
+ * A regra segue em `warn` porque o falso positivo agora é o inverso: um
+ * `<a>` de página novo precisa ser pego, e um `<a>` de arquivo é legítimo.
  */
 const regraNoHtmlLinkDedup = (() => {
   const original = nextPlugin.rules["no-html-link-for-pages"];

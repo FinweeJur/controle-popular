@@ -1,4 +1,5 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
+import NextLink from "next/link";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
@@ -157,9 +158,9 @@ export default async function LegislacaoPage({ params: rotaParams }: LegislacaoP
                     rótulo garantista — apontava pro assunto errado. A régua
                     (e o aviso de que erro de extração vira erro de rótulo)
                     está em `/sobre#metodologia`. */}
-                <a href="/sobre#metodologia" className="text-accent hover:underline">
+                <NextLink href="/sobre#metodologia" className="text-accent hover:underline">
                   como o rótulo é calculado
-                </a>
+                </NextLink>
               </p>
             </section>
           )}

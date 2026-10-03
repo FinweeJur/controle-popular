@@ -28,6 +28,7 @@
  */
 
 import { CALENDARIO } from "./correcoes";
+import { compararNaMistica } from "./ordenacao";
 import type { EntradaCalendario } from "./tipos";
 
 /** Abreviação de mês da norma ABNT para a data de acesso. */
@@ -54,14 +55,9 @@ for (const entrada of CALENDARIO) {
   POR_DIA.set(entrada.diaMes, lista);
 }
 for (const lista of POR_DIA.values()) {
-  lista.sort((a, b) => {
-    const comLink = (e: EntradaCalendario) => (e.url ? 0 : 1);
-    if (comLink(a) !== comLink(b)) return comLink(a) - comLink(b);
-    const anoA = a.ano || "9999";
-    const anoB = b.ano || "9999";
-    if (anoA !== anoB) return anoA.localeCompare(anoB);
-    return a.titulo.localeCompare(b.titulo, "pt-BR");
-  });
+  // A ordem vive em `ordenacao.ts` para a visão calendário da `/memoria`
+  // usar exatamente a mesma (não pode haver duas regras de ordem).
+  lista.sort(compararNaMistica);
 }
 
 /**

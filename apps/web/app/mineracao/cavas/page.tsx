@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import serieDados from "@/data/cavas-serie-mineracao-mg.json";
 import estadosDados from "@/data/cavas-estados-mg.json";
 import {
@@ -316,7 +317,7 @@ export default function PaginaCavas() {
         </p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           <li>
-            <a
+            <NextLink
               href="/terras/globo/?camada=mineracao-sem-cadastro"
               className="block rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus"
             >
@@ -328,10 +329,10 @@ export default function PaginaCavas() {
                 {fmt(C.areaFora, 1)} hectares — camada “Mineração sem cadastro na ANM”
               </span>
               <span className="mt-2 block text-xs underline">Abrir no globo</span>
-            </a>
+            </NextLink>
           </li>
           <li>
-            <a
+            <NextLink
               href="/terras/globo/?camada=cavas-monitoradas"
               className="block rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus"
             >
@@ -344,7 +345,7 @@ export default function PaginaCavas() {
                 ativa ({C.ultimoAno})”
               </span>
               <span className="mt-2 block text-xs underline">Abrir no globo</span>
-            </a>
+            </NextLink>
           </li>
         </ul>
         <p className="mt-3 text-xs text-text-soft">

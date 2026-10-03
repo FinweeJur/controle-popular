@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import BuscaClient from "./BuscaClient";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -63,9 +64,9 @@ export default async function BuscaPage() {
     // fora do alcance dele.
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Busca</span>
       </nav>
 

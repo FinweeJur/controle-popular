@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-02
+> **Última medição:** 2026-10-03
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -174,6 +174,41 @@ Runbooks: [`planos/`](../planos/).
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
 
 ## Entregas recentes
+
+**03/10/2026 — rádio sobrevive à navegação, pet, arrasto, memória e fila Guara:**
+
+- **Rádio persistente:** o `<audio>` do player morria a cada clique em `<a>`
+  interno (reload de documento troca a página inteira). Causa medida com
+  `scripts/verificar-radio-navegacao.py` (Playwright): o baseline morreu no
+  salto `/direitos-em-movimento/ajuda` → `/ambiental` com "novo `<audio>`
+  nasceu pausado". Correção: links de página convertidos para `NextLink` e um
+  **`InterceptadorLinks`** global no layout raiz entrega ao router QUALQUER
+  `<a>` interno — inclusive os de `href` dinâmico (navbar e rodapé) que o
+  ESLint não vê. É o padrão do que permanece ativo: navbar, faixa, rodapé,
+  Seu Nonô, companheiro e rádio sobrevivem à navegação.
+- **Rastro do cursor** mais lento e visível (`SUAVE` 0,15/0,13, 36 px/letra,
+  ocioso 1600 ms, fade 1,6 s, fonte 0,95 rem, brilho 9 px) — pedido do dono.
+- **404** com a imagem do lobo-guará (reuso de
+  `terra-e-territorios-ipe-lobo.jpg`) e o pet em estado `failed` por 6 s via
+  evento `cp:companheiro-failed`.
+- **Pet:** `PetIcone` usava no `background-size` a medida de UMA célula, e
+  espremia a folha de 8×9 num ícone de ~20 px (borrão que parecia código);
+  agora usa a folha inteira, como o `CompanheiroFlutuante`.
+- **Arrasto dos flutuantes:** o `dragstart` nativo da `<img>` emitia
+  `pointercancel` e travava o gesto no 1º pixel; o clamp media a pega em vez
+  do container. `useArrastavel` cancela o arrasto nativo e acha a caixa por
+  `data-arrastavel-caixa`; o rádio voltou a arrastar com posição lembrada.
+- **`/memoria`:** fontes agregadas em 5 rótulos (MST, MAB, APIB, Aos que Virão,
+  Wikipédia), complementos do Calendário Histórico da APIB
+  (`apiboficial.org/historicoatl`) e visão **calendário** por data/mês
+  ignorando o ano, na ordem da mística do dia.
+- **Fila Guara (Fase 1):** tabela `fila_coleta` (migration `0090`), rota
+  autenticada `POST /api/fila/semear` (falha fechada + allowlist de hosts),
+  `cron-fila.yaml` (*/15) e puller Ollama local (`scripts/fila-coleta-puller.mts`).
+  A migration **ainda não foi aplicada** no Guara; o `FILA_SEGREDO` precisa ser
+  criado sem `-b`.
+- **`/direitos-em-movimento/conselhos`:** removida a epígrafe poética a pedido
+  do dono.
 
 **02/10/2026 — deploy do Guara volta a subir (healthy) e cursor temático:**
 

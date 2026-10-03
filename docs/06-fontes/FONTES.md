@@ -1314,7 +1314,7 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-C
 
 ## Rádios
 
-**Medido em 2026-10-02.** O diretório `/radio` publica estações de rádio com
+**Medido em 2026-10-03.** O diretório `/radio` publica estações de rádio com
 transmissão direta. O dado mora em `apps/web/lib/radio/estacoes.ts` (versionado)
 e a página é montada a partir dele. Recorte do dono: menos grande mídia
 comercial, mais rádio pública federal, universitária, comunitária e do Sul
@@ -1324,7 +1324,7 @@ Global, com programação musical.
 |---|---|
 | **Agregadores de partida** | `radio-browser.info` (API pública aberta) e `radio.garden` — sites de referência que conectam rádios do mundo |
 | **Organização (regra do dono, 02/10/2026)** | Brasil aberto nas cinco regiões do país — nacionais e universitárias listadas por região, ordem padrão da tela; categorias: pública federal, universitária, comunitária e popular ("independente" deixou de ser rótulo) |
-| **Abrangência** | 44 estações de 11 países; 21 universitárias brasileiras (UFVJM, UFOP, UFV, UFU, UFMG, UFES, UFG, UFAL, UFC, UFDPar, UFPB, UFPel, UFMS, UFSCar, UFCG, UFF, UFABC, UEL, UDESC, UFRJ, USP) |
+| **Abrangência** | **51 estações de 12 países** (medido 03/10/2026; eram 44/11 em 02/10); 21 universitárias brasileiras (UFVJM, UFOP, UFV, UFU, UFMG, UFES, UFG, UFAL, UFC, UFDPar, UFPB, UFPel, UFMS, UFSCar, UFCG, UFF, UFABC, UEL, UDESC, UFRJ, USP) |
 | **Stream das universitárias** | próprio da emissora quando disponível (UFU, UFES, UFG, UFAL); nas demais, o relay do `radio.garden` (`/api/ara/content/listen/<id>/channel.mp3`), que exige `User-Agent` de navegador |
 | **Fonte linkável** | o campo `site` de cada estação é a página oficial da emissora (AGENTS § 8.1) |
 | **Verificação** | cada `stream` foi conferido por requisição HTTP direta (`curl -sL --range 0-2000`), respondendo áudio ou playlist; status 200 sozinho não basta (AGENTS § 6) |
@@ -1333,6 +1333,8 @@ Global, com programação musical.
 | **Logo** | hotlink do ícone oficial, com monograma de reserva; a marca nunca é copiada para o repositório |
 | **Bandeira do estado** | ao lado da do país no card brasileiro — PNG 40 px do Wikimedia Commons (`Special:FilePath`), 27 títulos conferidos pela API em 02/10/2026 |
 | **Transcrição** | só nas federais de fala, no navegador (Whisper local, `transformers.js`); exige CORS no stream — medido: federais enviam `Access-Control-Allow-Origin`, as demais não |
+| **Ampliação (03/10/2026)** | comunitárias da Venezuela (rede Fe y Alegría), rádio de joropo/llanera, comunitárias do Norte/Nordeste, reggae de São Luís (MA) e duas de Pernambuco: **Rádio Comunitária Aconchego** (Recife, livre/comunitária, `https://fm.radioaconchego.org`, conferida `audio/mpeg`) e **Rádio Clube de Pernambuco 99.1 FM** (Recife, música regional, conferida `audio/aacp`) |
+| **Rádio Amnésia 89,5 (Olinda/PE)** | rádio livre do Ponto de Cultura Coco de Umbigada, ligada a Mãe Beth de Oxum; é FM terrestre e **não tem stream online verificável** (medido 03/10/2026: `radio-browser.info` não tem a estação; `radio.garden` lista 10 em Olinda e nenhuma é a Amnésia; a busca web não achou sinal). Por isso não entrou — nada de apontar para a "Rádio Amnésia" comercial de flashback, que é outra emissora |
 
 Decisão de licença: o portal **aponta** para o stream e para o site oficial, não
 redistribui o áudio nem hospeda a marca. A transcrição roda no aparelho do

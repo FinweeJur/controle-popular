@@ -23,6 +23,7 @@ import type { EntradaCalendario } from "./tipos";
 import { CORRECOES } from "./correcoes-mistica";
 import { COMPLEMENTOS } from "./complementos-mistica";
 import { COMPLEMENTOS_INDIGENAS } from "./complementos-indigenas";
+import { COMPLEMENTOS_APIB } from "./complementos-apib";
 import { REMOVIDOS } from "./remocoes-mistica";
 import { RECOLOCADOS } from "./recolocados-mistica";
 
@@ -65,5 +66,6 @@ export const CALENDARIO: EntradaCalendario[] = [
   ...CALENDARIO_LUTAS.map(aplicarCorrecao).filter((e) => !REMOVIDOS.has(chaveCorrecao(e))),
   ...COMPLEMENTOS,
   ...COMPLEMENTOS_INDIGENAS,
+  ...COMPLEMENTOS_APIB,
   ...RECOLOCADOS,
 ];

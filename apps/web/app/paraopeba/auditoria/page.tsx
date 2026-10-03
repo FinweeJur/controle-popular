@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   COBERTURA_AUDITORIA_AJRI,
@@ -98,9 +99,9 @@ export default function AuditoriaAjriPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Auditoria socioambiental</span>
       </nav>
 
@@ -213,9 +214,9 @@ export default function AuditoriaAjriPage() {
           <li>
             <strong className="text-text">Correção ou remoção:</strong> o caminho, as regras e o
             limite do que este portal pode tirar estão em{" "}
-            <a href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
+            <NextLink href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
               /termos
-            </a>{" "}
+            </NextLink>{" "}
             (seções 5 e 6). Para pedido que envolva dado pessoal, o canal reservado é{" "}
             <a
               href="mailto:contato@controlepopular.com.br"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "@/lib/paraopeba";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -99,9 +100,9 @@ export default function AuxilioPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Auxílio emergencial</span>
       </nav>
 
@@ -155,9 +156,9 @@ export default function AuxilioPage() {
         <p className="mt-2">
           A FGV é a gestora do programa de repasses — pagamentos até o 5º dia útil, cadastro e
           prestação de contas. Veja o contato dela em{" "}
-          <a href="/paraopeba/quem-atua" className="font-medium text-accent hover:underline">
+          <NextLink href="/paraopeba/quem-atua" className="font-medium text-accent hover:underline">
             Quem atua na reparação →
-          </a>
+          </NextLink>
           .
         </p>
       </section>

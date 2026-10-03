@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -79,9 +80,9 @@ export default async function AnaliseIntegradaPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/paraopeba" className="hover:text-primary">
+        <NextLink href="/paraopeba" className="hover:text-primary">
           Paraopeba
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Análise integrada</span>
       </nav>
 
@@ -428,9 +429,9 @@ export default async function AnaliseIntegradaPage() {
           <li>
             <strong className="text-text">Auditoria:</strong> síntese deste portal sobre os 337
             relatórios da AECOM — ver{" "}
-            <a href="/paraopeba/auditoria" className="text-primary underline underline-offset-2 hover:text-accent">
+            <NextLink href="/paraopeba/auditoria" className="text-primary underline underline-offset-2 hover:text-accent">
               /paraopeba/auditoria
-            </a>{" "}
+            </NextLink>{" "}
             para o eixo completo, com achados e evolução no tempo.
           </li>
           <li>
@@ -441,9 +442,9 @@ export default async function AnaliseIntegradaPage() {
           </li>
           <li>
             <strong className="text-text">ATIs:</strong> o que AEDAS e Guaicuy publicaram — ver{" "}
-            <a href="/paraopeba/biblioteca" className="text-primary underline underline-offset-2 hover:text-accent">
+            <NextLink href="/paraopeba/biblioteca" className="text-primary underline underline-offset-2 hover:text-accent">
               /paraopeba/biblioteca
-            </a>
+            </NextLink>
             . O NACAB tem itens prometidos que ainda não entraram no acervo (ver{" "}
             <code className="rounded bg-surface px-1 py-0.5 text-[.85em]">biblioteca-ati.json</code>).
           </li>

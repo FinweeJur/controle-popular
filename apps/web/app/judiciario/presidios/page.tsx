@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import {
@@ -83,9 +84,9 @@ export default function PresidiosPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/judiciario" className="hover:text-primary">
+        <NextLink href="/judiciario" className="hover:text-primary">
           Judiciário
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Fiscalização dos presídios</span>
       </nav>
 
@@ -337,9 +338,9 @@ export default function PresidiosPage() {
           <li>
             <strong className="text-text">Isto não é o relatório de inspeção do TJMG.</strong> A
             página{" "}
-            <a href="/judiciario/inspecoes" className="text-primary underline underline-offset-2 hover:text-accent">
+            <NextLink href="/judiciario/inspecoes" className="text-primary underline underline-offset-2 hover:text-accent">
               /judiciario/inspecoes
-            </a>{" "}
+            </NextLink>{" "}
             traz trecho do que a Corregedoria Nacional escreveu depois de entrar numa vara; esta
             página traz só a contagem de visitas do sistema Geopresídios a estabelecimentos
             penais — são fontes diferentes, com cobertura diferente.

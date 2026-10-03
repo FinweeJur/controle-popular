@@ -1,5 +1,6 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import Moeda from "@/app/components/Moeda";
 import { semAcento } from "@/lib/busca/normalizar";
@@ -349,13 +350,13 @@ export default function FiltroTAC() {
                   <span className="text-[.82em] text-text-soft">
                     {c.orgao}
                   </span>
-                  <a
+                  <NextLink
                     href="/termos"
                     className="text-[.82em] text-primary underline-offset-2 hover:underline"
                     title="Abrir fonte original do painel SEMAD/MG"
                   >
                     Verificar fonte
-                  </a>
+                  </NextLink>
                 </div>
 
                 {c.relato && (

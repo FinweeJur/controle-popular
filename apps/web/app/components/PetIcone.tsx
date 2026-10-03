@@ -8,6 +8,13 @@
  * (8×192 por linha, 9 linhas), então aqui recorta o quadro 0 da linha 0
  * ("idle") com `background-position`, na escala pedida.
  *
+ * Como o recorte funciona (mesma conta do `CompanheiroFlutuante`): o
+ * `background-size` é a FOLHA INTEIRA (8 colunas × 9 linhas) ampliada pela
+ * escala, não uma célula só. Se o tamanho for de uma célula, o navegador
+ * espreme as 72 células dentro de ~19 px e o ícone vira um borrão de pixels
+ * — o defeito relatado pelo dono em 03/10/2026. O `background-position`
+ * então desloca até a célula do pet e o quadro "idle".
+ *
  * Sem estado e sem efeito: é só um recorte. A folha vem de `p.caminho`.
  */
 
@@ -15,6 +22,8 @@ import type { PetCompanheiro } from "./companheiroPets";
 
 const CELL_W = 192;
 const CELL_H = 208;
+const SHEET_COLS = 8;
+const SHEET_ROWS = 9;
 
 export function PetIcone({
   pet,
@@ -35,7 +44,9 @@ export function PetIcone({
         width: largura,
         height: altura,
         backgroundImage: `url(${pet.caminho})`,
-        backgroundSize: `${CELL_W * escala}px ${CELL_H * escala}px`,
+        // Folha INTEIRA ampliada pela escala — recortar uma célula a partir
+        // dela é o que evita o borrão (ver cabeçalho).
+        backgroundSize: `${SHEET_COLS * CELL_W * escala}px ${SHEET_ROWS * CELL_H * escala}px`,
         // linha 0 = "idle", quadro 0 — o bichinho parado, virado para a frente.
         backgroundPosition: `${-pet.bbox.x * escala}px ${-pet.bbox.y * escala}px`,
       }}

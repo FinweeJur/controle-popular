@@ -25,6 +25,7 @@ import {
 import Bandeira from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
+import { useArrastavel } from "@/lib/usarArrastavel";
 
 /**
  * Player de rádio persistente e multi-estação.
@@ -52,8 +53,12 @@ import TranscricaoRadio from "@/app/components/TranscricaoRadio";
  * círculo da pilha da lateral esquerda (abaixo vem a pata do pet, embaixo o
  * FAB do Seu Nonô; régua em `SeuNono.tsx`). O índice de estações e o volume
  * abrem no hover/foco do conjunto (`group`); no celular o toque foca e abre.
- * A posição fixa acabou com o arrasto de 30/09 — os três botões têm lugar
- * desenhado; quem arrasta agora é só o Seu Nonô (leva a pata junto).
+ *
+ * ARRASTO DE VOLTA (conserto, 03/10/2026): a posição fixa tinha tirado o
+ * arrasto do rádio. O dono pediu os TRÊS arrastáveis e com posição lembrada
+ * — o rádio voltou a usar `useArrastavel` (chave `cp_radio_pos`). O clique
+ * de play/pause continua: o gesto só é arrasto depois de 5 px e o `onClick`
+ * consulta `foiArrasto()` para não tocar a estação ao mover.
  */
 
 /** Estação acionada pelo botão do rodapé quando nada está carregado. */
@@ -72,8 +77,13 @@ export default function PlayerRadio() {
   // inteiro. O estado é do React e é espelhado no `<audio>` por efeito.
   const [volume, setVolume] = useState(1);
   const [mudo, setMudo] = useState(false);
-  // Sem arrasto: o botão é o terceiro círculo da pilha fixa do canto
-  // esquerdo (pedido do dono, 03/10/2026) — mover um quebraria os três.
+
+  // Arrasto com posição lembrada (pedido do dono, 03/10/2026): o botão é o
+  // terceiro círculo da pilha, mas pode ser movido como o FAB do Seu Nonô.
+  // A posição persiste em `cp_radio_pos` e o clique continua separado do
+  // gesto pelo limiar de 5 px (`foiArrasto`).
+  const { estilo, arrastando, foiArrasto, handlers, resetar } =
+    useArrastavel("cp_radio_pos");
 
   // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
   // na montagem, para o `<audio>` nascer com os valores do estado.
@@ -261,7 +271,9 @@ export default function PlayerRadio() {
         // desalinhar os três botões. `z-[45]`: por baixo da pata e do FAB
         // (z-50), por cima dos bichinhos (z-40) — um pet passando por trás
         // não pode cobrir o play.
+        style={estilo}
         className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
+        data-arrastavel-caixa
         data-nao-plataforma
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
         // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
@@ -285,13 +297,22 @@ export default function PlayerRadio() {
             volume e lista vivem no índice, que abre no hover/foco. */}
         <button
           type="button"
-          onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
+          {...handlers}
+          onDoubleClick={resetar}
+          onClick={() => {
+            // Gesto foi mover: não tocar a estação por acidente (limiar de
+            // 5 px no hook). Sem isto, arrastar o rádio daria play/pause.
+            if (foiArrasto()) return;
+            void tocar(idAtual ?? ESTACAO_PADRAO);
+          }}
           aria-label={rotulo}
-          title={`${rotulo} — o índice de rádios abre ao passar o mouse`}
+          title={`${rotulo} — arraste para mover; clique duplo volta ao canto; o índice abre ao passar o mouse`}
           aria-expanded={indiceAberto}
           aria-controls="cp-radio-indice"
           aria-pressed={tocando}
-          className="flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            arrastando ? "cursor-grabbing" : "cursor-grab"
+          }`}
         >
           {tocando ? (
             <Pause size={20} aria-hidden="true" className="text-primary" />

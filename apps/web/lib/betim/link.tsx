@@ -23,8 +23,11 @@ type LinkProps = ComponentProps<typeof NextLink>;
  * `next/link` já é client por dentro, e `usePathname` funciona também
  * durante a renderização no servidor.
  *
- * `<a href>` cru continua fora daqui, de propósito — é o que aponta para a
- * raiz do domínio e para as zonas irmãs, e não deve ganhar prefixo.
+ * `NextLink` puro (`next/link`) continua fora daqui, de propósito — é o que
+ * aponta para a raiz do domínio e para as zonas irmãs, e não deve ganhar
+ * prefixo. Antes esse papel era de `<a href>` cru; a troca por `NextLink`
+ * (03/10/2026) evita o reload de página inteira que matava o áudio do player
+ * de rádio, mantendo o mesmo caminho absoluto.
  */
 export default function Link({ href, ...rest }: LinkProps) {
   const cidade = usePathname()?.split("/")[1] ?? "";

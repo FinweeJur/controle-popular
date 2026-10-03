@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 // Ações do rodapé padrão do portal: pedido de
 // dados por e-mail e mostrador público do contador de envios/downloads.
@@ -139,18 +140,18 @@ export default function FooterGlobal() {
           <ReportarErro />
           <CitarPagina />
           <BotaoRadio />
-          <a
+          <NextLink
             href="/radio"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
           >
             📻 Diretório de rádios
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/alertas"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
           >
             🔔 Central de Alertas e WhatsApp
-          </a>
+          </NextLink>
         </div>
         <p className="mt-1 text-text-soft">
           Receba o resumo, os dados em CSV ou o PDF desta página no seu e-mail. Sem cadastro; notificação só com o seu ok (LGPD).

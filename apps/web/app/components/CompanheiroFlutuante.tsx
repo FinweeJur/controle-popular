@@ -121,6 +121,7 @@ import {
   type Plataforma,
   type Ponto,
 } from "@/lib/companheiro/plataformas";
+import { DURACAO_FALHA_MS, EVENTO_COMPANHEIRO_FAILED } from "@/lib/companheiro/eventos";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
 const CELL_W = 192;
@@ -206,6 +207,47 @@ const DUR_VOO_MIN = 420; // ms
 const DUR_VOO_MAX = 900; // ms
 const ESPERA_NO_ALVO_MS = 2800;
 
+/**
+ * Chave do `localStorage` da posição de cada bicho (mapa `slug → {x,y}`).
+ * Cada bicho solto guarda a própria posição — a pilha de botões (rádio, pet,
+ * Seu Nonô) tem a chave dela, e aqui é uma por slug para os vários bichos.
+ */
+const CHAVE_POS_PET = "cp_companheiro_pos";
+
+/** Um valor lido do storage é um ponto válido (`x`/`y` numéricos)? */
+function ehPonto(v: unknown): v is Ponto {
+  if (!v || typeof v !== "object") return false;
+  const p = v as { x?: unknown; y?: unknown };
+  return typeof p.x === "number" && typeof p.y === "number";
+}
+
+/** Lê o mapa de posições salvas dos bichos; `{}` se o storage falhar. */
+function lerPosSalvas(): Record<string, Ponto> {
+  try {
+    const bruto = window.localStorage.getItem(CHAVE_POS_PET);
+    if (!bruto) return {};
+    const obj = JSON.parse(bruto) as Record<string, unknown>;
+    const saida: Record<string, Ponto> = {};
+    for (const [slug, v] of Object.entries(obj)) {
+      if (ehPonto(v)) saida[slug] = { x: v.x, y: v.y };
+    }
+    return saida;
+  } catch {
+    return {};
+  }
+}
+
+/** Grava a posição de UM bicho no mapa, preservando os outros. */
+function salvarPos(slug: string, pos: Ponto): void {
+  try {
+    const todas = lerPosSalvas();
+    todas[slug] = { x: Math.round(pos.x), y: Math.round(Math.max(0, pos.y)) };
+    window.localStorage.setItem(CHAVE_POS_PET, JSON.stringify(todas));
+  } catch {
+    // Storage bloqueado (aba anônima): a posição vale só nesta sessão.
+  }
+}
+
 /** Ponto de uma curva de Bézier quadrática (arco do voo, "teacher pace"). */
 function bezier(p0: Ponto, c: Ponto, p1: Ponto, t: number): Ponto {
   const u = 1 - t;
@@ -276,6 +318,12 @@ export function CompanheiroFlutuante() {
 
   const bichosRef = useRef(new Map<string, Bicho>());
   const platsRef = useRef<Plataforma[]>([]);
+  /**
+   * Instante (performance.now) até quando os bichos ficam "failed". Zero =
+   * comportamento normal. O laço lê este ref a cada quadro; o listener só
+   * escreve, então não há re-render nem dependência no efeito do laço.
+   */
+  const falhaAteRef = useRef(0);
 
   // ── Bichos escolhidos (podem ser VÁRIOS na tela) ──────────────────────────
   // Estado React = re-render da arte; ref = o laço lê na hora, sem esperar
@@ -285,14 +333,20 @@ export function CompanheiroFlutuante() {
 
   /** Cria o bicho de quem ainda não tem (o primeiro nasce em x=24). */
   const garantirBichos = useCallback((lista: PetCompanheiro[]) => {
+    const salvas = lerPosSalvas();
     lista.forEach((pet, idx) => {
       if (bichosRef.current.has(pet.slug)) return;
       const larg = larguraBotao(pet);
-      // O primeiro mantém o canto de sempre; quem entra depois nasce perto
-      // da borda direita, afastado da pilha de botões e dos vizinhos.
+      // Posição lembrada (pedido do dono, 03/10/2026): o bicho volta onde o
+      // leitor o soltou. Sem posição salva, o primeiro mantém o canto de
+      // sempre e quem entra depois nasce perto da borda direita.
+      const salva = salvas[pet.slug];
       const x =
-        idx === 0 ? 24 : Math.max(MARGEM, window.innerWidth - MARGEM - larg - idx * 64);
-      bichosRef.current.set(pet.slug, criarBicho(x));
+        salva?.x ??
+        (idx === 0 ? 24 : Math.max(MARGEM, window.innerWidth - MARGEM - larg - idx * 64));
+      const bicho = criarBicho(x);
+      if (salva) bicho.pos.y = Math.max(0, salva.y);
+      bichosRef.current.set(pet.slug, bicho);
     });
   }, []);
 
@@ -404,6 +458,17 @@ export function CompanheiroFlutuante() {
     return () => window.removeEventListener("cp:companheiro-limpar-pets", aoLimpar);
   }, [limparPets]);
 
+  // Página 404: o bicho entra em "failed" por alguns segundos (pedido do dono).
+  // A página de erro é de servidor e avisa por evento global (`SinalizarErro404`).
+  // Aqui só carimbamos o prazo; o laço de animação lê o ref e força o estado.
+  useEffect(() => {
+    const aoFalhar = () => {
+      falhaAteRef.current = performance.now() + DURACAO_FALHA_MS;
+    };
+    window.addEventListener(EVENTO_COMPANHEIRO_FAILED, aoFalhar);
+    return () => window.removeEventListener(EVENTO_COMPANHEIRO_FAILED, aoFalhar);
+  }, []);
+
   // ── Menu de troca (clique direito no bicho ou pata da pilha) ──────────────
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
 
@@ -498,7 +563,12 @@ export function CompanheiroFlutuante() {
         const larg = larguraBotao(pet);
         let estado: NomeEstado = "idle";
 
-        if (b.voo) {
+        // PRIORIDADE MÁXIMA: enquanto o prazo de "failed" não vence, o bicho
+        // congela no estado triste e ignora voo, queda e passeio. Quando vence,
+        // o bloco normal retoma sozinho (o ref aponta para um instante passado).
+        if (agora < falhaAteRef.current) {
+          estado = "failed";
+        } else if (b.voo) {
           const voo = b.voo;
           const t = Math.min(1, (agora - voo.inicio) / voo.dur);
           const destino =
@@ -510,7 +580,12 @@ export function CompanheiroFlutuante() {
           if (t >= 1) {
             b.voo = null;
             if (voo.fase === "ida") b.chegouEm = agora; // dwell no alvo
-            if (voo.fase === "pousar") b.pausaAte = agora + 600; // respira
+            if (voo.fase === "pousar") {
+              b.pausaAte = agora + 600; // respira
+              // Fim da descida do arrasto: agora sim a posição é a final —
+              // grava para o bicho voltar aqui no próximo acesso.
+              salvarPos(pet.slug, b.pos);
+            }
             if (voo.fase === "salto") b.pausaAte = agora + 120;
             if (voo.fase === "volta") {
               // Ciclo do alvo fechado: solta o alvo para a PRÓXIMA resposta
@@ -810,6 +885,10 @@ export function CompanheiroFlutuante() {
       b.pos.y = sob;
       b.queda = 0;
     }
+
+    // Sem voo (já pousou): grava agora. Com voo de "pousar", a gravação
+    // acontece quando o arco termina (no laço), já com a posição final.
+    if (g?.moveu && !b.voo) salvarPos(pet.slug, b.pos);
   }, []);
 
   /** Clique no bicho: abre o Seu Nonô — salvo se o gesto foi arrasto. */

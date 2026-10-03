@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -276,11 +277,11 @@ export default function AmbientalJudiciarioPage() {
           ))}
           <li>
             Recorte nacional desta mesma fonte:{" "}
-            <a href="/judiciario/sirenejud" className="underline">
+            <NextLink href="/judiciario/sirenejud" className="underline">
               /judiciario/sirenejud
-            </a>
+            </NextLink>
             . Esta página também é dataset da{" "}
-            <a href="/api" className="underline">API pública</a> (
+            <NextLink href="/api" className="underline">API pública</NextLink> (
             <code>sirenejud-mg</code>).
           </li>
         </ul>

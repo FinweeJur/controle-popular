@@ -1,4 +1,5 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
+import NextLink from "next/link";
 import Link from "@/lib/betim/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import PainelDialogo from "@/app/components/PainelDialogo";
@@ -599,12 +600,12 @@ export default async function HomePage({
                 resumo={`Indicadores consolidados de participação popular, ações ambientais no CNJ, monitoramento de risco CEMADEN e direitos humanos em ${cidade.nome}.`}
                 rotulo={`Alertas de ${cidade.nome}`}
               />
-              <a
+              <NextLink
                 href="/ambiental"
                 className="text-xs font-semibold text-primary hover:underline"
               >
                 Explorar ONSA Meio Ambiente →
-              </a>
+              </NextLink>
             </div>
           </div>
 
@@ -630,12 +631,12 @@ export default async function HomePage({
                   </p>
                 )}
               </div>
-              <a
+              <NextLink
                 href="/ambiental/conselhos"
                 className="mt-4 inline-block text-xs font-semibold text-teal-600 hover:underline dark:text-teal-400"
               >
                 Ver conselhos oficiais →
-              </a>
+              </NextLink>
             </div>
 
             {/* CARD 2: LITÍGIOS & CLIMA */}
@@ -664,12 +665,12 @@ export default async function HomePage({
                   </p>
                 )}
               </div>
-              <a
+              <NextLink
                 href="/ambiental/litigios-climaticos"
                 className="mt-4 inline-block text-xs font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
               >
                 Ver litígios climáticos →
-              </a>
+              </NextLink>
             </div>
 
             {/* CARD 3: DIREITOS HUMANOS */}
@@ -695,12 +696,12 @@ export default async function HomePage({
                   </p>
                 )}
               </div>
-              <a
+              <NextLink
                 href="/ambiental/direitos-humanos"
                 className="mt-4 inline-block text-xs font-semibold text-blue-600 hover:underline dark:text-blue-400"
               >
                 Ver relatórios oficiais →
-              </a>
+              </NextLink>
             </div>
 
             {/* CARD 4: VULNERABILIDADE & RISCO (BATER) */}
@@ -727,12 +728,12 @@ export default async function HomePage({
                   </p>
                 )}
               </div>
-              <a
+              <NextLink
                 href="/ambiental/clima-risco"
                 className="mt-4 inline-block text-xs font-semibold text-amber-600 hover:underline dark:text-amber-400"
               >
                 Ver bases de risco e clima →
-              </a>
+              </NextLink>
             </div>
           </div>
         </section>

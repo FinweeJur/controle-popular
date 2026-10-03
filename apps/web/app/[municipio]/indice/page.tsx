@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { notFound } from "next/navigation";
 import { obterCidadePorSlug, temFonte, type Cidade } from "@/lib/db/queries/municipios";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
@@ -201,9 +202,9 @@ export default async function ÍndiceDaCidade({
           Navegue por todos os tópicos disponiveis sobre {cidade.nome}-{cidade.uf}.
         </p>
         <p className="text-[.95em]">
-          <a href="/índice" className="font-medium text-primary hover:underline">
+          <NextLink href="/índice" className="font-medium text-primary hover:underline">
             Ver índice geral do portal →
-          </a>
+          </NextLink>
         </p>
       </header>
 
@@ -227,9 +228,9 @@ export default async function ÍndiceDaCidade({
           o meio ambiente de Minas, a reparação de Brumadinho e a função social da terra.
         </p>
         <p className="mt-3">
-          <a href="/índice" className="font-medium text-primary hover:underline">
+          <NextLink href="/índice" className="font-medium text-primary hover:underline">
             Ver índice geral →
-          </a>
+          </NextLink>
         </p>
       </section>
     </div>

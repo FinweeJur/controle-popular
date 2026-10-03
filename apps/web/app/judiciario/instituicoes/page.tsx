@@ -373,9 +373,9 @@ export default function InstituicoesPage() {
         <p>
           Achou erro factual? O caminho, as regras e o limite do que este portal pode corrigir ou
           remover estão em{" "}
-          <a href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
+          <Link href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
             /termos
-          </a>{" "}
+          </Link>{" "}
           (seções 5 e 6). Para pedido que envolva dado pessoal, o canal reservado é{" "}
           <a
             href="mailto:contato@controlepopular.com.br"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import { SERIE_JN_TJMG, JN_META, type AnoJusticaEmNumeros } from "@/lib/judiciario/justica-em-numeros";
@@ -98,9 +99,9 @@ export default function NumerosPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/judiciario" className="hover:text-primary">
+        <NextLink href="/judiciario" className="hover:text-primary">
           Judiciário
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Justiça em Números</span>
       </nav>
 

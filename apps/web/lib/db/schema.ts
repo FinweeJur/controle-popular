@@ -1,4 +1,4 @@
-import { pgTable, pgSchema, index, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView, doublePrecision, smallint, char } from "drizzle-orm/pg-core"
+import { pgTable, pgSchema, index, uniqueIndex, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView, doublePrecision, smallint, char } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const congresso = pgSchema("congresso");
@@ -3245,5 +3245,41 @@ export const condicionantes_evidencias = pgTable("condicionantes_evidencias", {
 			name: "condicionantes_evidencias_condicionante_id_fkey"
 		}).onDelete("cascade"),
 	check("condicionantes_evidencias_tipo_check", sql`tipo = ANY (ARRAY['dce'::text, 'pae'::text, 'auto'::text, 'relatorio'::text, 'ata'::text, 'outro'::text])`),
+]);
+
+/**
+ * Fila da Fase 1 "coletar na nuvem, digerir no PC" — migration
+ * `0090_fila_coleta.sql`. O cron worker do Guara semeia tarefas
+ * (`POST /api/fila/semear`) e o `home-pc` as puxa em
+ * `scripts/fila-coleta-puller.mts`, roda o Ollama LOCAL e grava o
+ * `resultado` de volta.
+ *
+ * O banco é só o quadro de recados: `payload` é o pedido e `resultado` é a
+ * resposta digerida — o dado bruto não mora aqui. `alvo` é texto livre
+ * (URL, código IBGE ou id de lote); a validação de host é feita na ROTA,
+ * contra `lib/fila/allowlist.ts`, nunca por esta tabela (nada de proxy
+ * SSRF genérico).
+ *
+ * `fila_coleta_pendente_unico_idx` é um índice único PARCIAL (só
+ * `pendente`/`processando`): torna o semeio idempotente — semear de novo
+ * um alvo já na fila cai no `ON CONFLICT DO NOTHING` — e permite recolar
+ * o mesmo alvo depois de processado.
+ */
+export const fila_coleta = pgTable("fila_coleta", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	tipo: text().notNull(),
+	alvo: text().notNull(),
+	payload: jsonb().default({}),
+	status: text().default('pendente').notNull(),
+	resultado: jsonb(),
+	tentativas: integer().default(0).notNull(),
+	criado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+	atualizado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+	index("fila_coleta_status_criado_idx").using("btree", table.status.asc().nullsLast().op("text_ops"), table.criado_em.asc().nullsLast().op("timestamptz_ops")),
+	index("fila_coleta_tipo_idx").using("btree", table.tipo.asc().nullsLast().op("text_ops")),
+	uniqueIndex("fila_coleta_pendente_unico_idx").on(table.tipo, table.alvo).where(sql`status = ANY (ARRAY['pendente'::text, 'processando'::text])`),
+	check("fila_coleta_tipo_check", sql`tipo = ANY (ARRAY['coletar'::text, 'resumir'::text, 'classificar'::text, 'extrair'::text, 'triar'::text])`),
+	check("fila_coleta_status_check", sql`status = ANY (ARRAY['pendente'::text, 'processando'::text, 'concluido'::text, 'erro'::text])`),
 ]);
 

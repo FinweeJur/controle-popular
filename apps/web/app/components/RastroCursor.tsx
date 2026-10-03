@@ -21,17 +21,20 @@
  * Decisões técnicas:
  * - corrente de nós com suavização (lerp) em `requestAnimationFrame`, texto
  *   do DOM direto (sem re-render do React a cada quadro);
- * - a cabeça anda mais rápido (0,26) que a cauda (0,22 de perseguição ao
+ * - a cabeça anda mais rápido (0,15) que a cauda (0,13 de perseguição ao
  *   nó anterior): dá o efeito de chicote/rastro da referência. Valores
- *   baixos de propósito — pedido do dono (02/10/2026): trilha "um pouco
- *   mais lenta", atrasada atrás do ponteiro, sem colar nele;
- * - o índice do texto avança por DISTÂNCIA percorrida (26 px por letra),
- *   não por tempo: parado, o texto não troca sozinho; andando, rola;
+ *   baixos de propósito — pedido do dono (03/10/2026): perseguição ainda
+ *   mais lenta, atrasada atrás do ponteiro, sem colar nele (era 0,26/0,22
+ *   desde 02/10/2026);
+ * - o índice do texto avança por DISTÂNCIA percorrida (36 px por letra),
+ *   não por tempo: parado, o texto não troca sozinho; andando, rola. São
+ *   36 px (era 26) para cada letra durar mais tempo na tela — pedido do
+ *   dono (03/10/2026);
  * - a opacidade cai ao longo da corrente (`--i`) e a camada some quando o
  *   mouse para (economiza bateria e evita a "bola" de letras sobrepostas).
- *   O desaparecer é lento de propósito: 900 ms parado + fade de 0,6 s
+ *   O desaparecer é lento de propósito: 1600 ms parado + fade de 1,6 s
  *   mantêm o rastro legível um instante depois que o ponteiro pára
- *   (mesmo pedido, 02/10/2026);
+ *   (pedido do dono, 03/10/2026; era 700 ms e 0,7 s);
  * - é decorativo: `aria-hidden`, `pointer-events: none`, sem captura de
  *   clique; respeita `prefers-reduced-motion` e não liga em tela de toque.
  *
@@ -112,24 +115,29 @@ function montarTexto(): string {
 const ELOS = 48;
 /**
  * Suavização da cabeça (persegue o mouse). Quanto menor, mais lenta ela
- * anda e mais o rastro atrasa — 0,26 medido como "um pouco mais lenta"
- * a pedido do dono (02/10/2026); era 0,38 e colava no ponteiro.
+ * anda e mais o rastro atrasa — 0,15 a pedido do dono (03/10/2026), para
+ * a perseguição ficar mais lenta ainda; era 0,26 desde 02/10/2026 e 0,38
+ * antes disso.
  */
-const SUAVE_CABECA = 0.26;
+const SUAVE_CABECA = 0.15;
 /**
  * Suavização da cauda (cada elo persegue o anterior). Mantém a mesma
- * proporção da cabeça (~85%) para o chicote não ficar duro nem elástico.
+ * proporção da cabeça (~85%) para o chicote não ficar duro nem elástico —
+ * 0,13 acompanha o novo 0,15 da cabeça (03/10/2026); era 0,22.
  */
-const SUAVE_CAUDA = 0.22;
-/** Quantos pixels a cabeça anda para a corrente rolar UMA letra. */
-const PX_POR_LETRA = 26;
+const SUAVE_CAUDA = 0.13;
 /**
- * Sem mover por este tempo, a corrente começa a sumir. 700 ms (era 260)
- * para o rastro ficar visível por mais tempo depois que o mouse pára —
- * pedido do dono (02/10/2026); valor medido e publicado pela sessão
- * `4bc73262`, mantido aqui na junção dos dois trabalhos.
+ * Quantos pixels a cabeça anda para a corrente rolar UMA letra. 36 px
+ * (era 26) para cada letra ficar mais tempo escrita na tela — pedido do
+ * dono (03/10/2026).
  */
-const OCIOSO_MS = 700;
+const PX_POR_LETRA = 36;
+/**
+ * Sem mover por este tempo, a corrente começa a sumir. 1600 ms (era 700)
+ * para o rastro ficar visível mais tempo depois que o mouse pára —
+ * pedido do dono (03/10/2026).
+ */
+const OCIOSO_MS = 1600;
 
 export default function RastroCursor() {
   const camadaRef = useRef<HTMLDivElement | null>(null);
@@ -231,9 +239,9 @@ export default function RastroCursor() {
           pointer-events: none;
           overflow: hidden;
           opacity: 0;
-          /* Desaparecimento lento: 0,7 s (pedido do dono, 02/10/2026;
-             era 0,25 s — publicado pelo commit 4bc73262). */
-          transition: opacity 0.7s ease;
+          /* Desaparecimento lento: 1,6 s (pedido do dono, 03/10/2026);
+             era 0,7 s desde 02/10/2026 e 0,25 s antes disso. */
+          transition: opacity 1.6s ease;
           contain: strict;
         }
         .cp-rastro-elo {
@@ -241,13 +249,13 @@ export default function RastroCursor() {
           left: 0;
           top: 0;
           font-family: var(--font-tabular-raw, var(--font-general-sans, monospace));
-          font-size: 0.8rem;
+          font-size: 0.95rem;
           font-weight: 600;
           text-transform: uppercase;
           white-space: pre;
           color: var(--cp-primary, var(--primary, #f2701d));
-          opacity: calc(1 - var(--i) * 0.02);
-          text-shadow: 0 0 6px color-mix(in srgb, var(--cp-primary, var(--primary, #f2701d)) 60%, transparent);
+          opacity: calc(1 - var(--i) * 0.012);
+          text-shadow: 0 0 9px color-mix(in srgb, var(--cp-primary, var(--primary, #f2701d)) 60%, transparent);
           will-change: transform;
           user-select: none;
         }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Cabecalho from "../Cabecalho";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
@@ -190,18 +191,18 @@ export default function AlertasPage() {
         <AvisoColetaEmCurso escopo="Aqui a cobertura pesa duas vezes: depende de quantos territórios já foram ingeridos E de para quantas barragens a FEAM publicou mancha — 156 das 259 de Minas." />
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <a
+          <NextLink
             href="/funcaosocialterra"
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-text hover:border-primary"
           >
             ← Função social da terra
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/funcaosocialterra/mapa"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-ink shadow-sm hover:opacity-90"
           >
             Ver mapa completo (3D) →
-          </a>
+          </NextLink>
         </div>
 
         <nav className="mt-8 flex flex-wrap gap-3 rounded-2xl border border-dashed border-border bg-surface-2 px-4 py-3 text-xs">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NextLink from "next/link";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -166,12 +167,12 @@ export default async function Hub() {
           mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto — aponte erro,
           lacuna ou dado faltante e o portal corrige na fonte oficial.
         </p>
-        <a
+        <NextLink
           href="/mineracao/ilegal"
           className="mt-3 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
         >
           Ver os dados →
-        </a>
+        </NextLink>
       </section>
 
       {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
@@ -231,18 +232,18 @@ export default async function Hub() {
           Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de contratos, convênios, licenciamentos ambientais, pesquisas e autorizações minerárias e de barragens, legislação ambiental e de direitos humanos unificada, e o orçamento detalhado das prefeituras, governo de Minas, Congresso Brasileiro e Instituições de Justiça.
         </p>
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
-          <a href="/busca" className="font-medium text-primary hover:underline">
+          <NextLink href="/busca" className="font-medium text-primary hover:underline">
             Busca por tema, palavra-chave e território →
-          </a>
-          <a href="/cidades" className="font-medium text-primary hover:underline">
+          </NextLink>
+          <NextLink href="/cidades" className="font-medium text-primary hover:underline">
             203 Cidades Estratégicas (Capitais & Polos) →
-          </a>
-          <a href="/alertas" className="font-medium text-primary hover:underline">
+          </NextLink>
+          <NextLink href="/alertas" className="font-medium text-primary hover:underline">
             Alertas & Notificações (Telegram, E-mail & WhatsApp) →
-          </a>
-          <a href="/dados/populares" className="font-medium text-primary hover:underline">
+          </NextLink>
+          <NextLink href="/dados/populares" className="font-medium text-primary hover:underline">
             Páginas mais vistas →
-          </a>
+          </NextLink>
         </p>
 
         {/* ═══ OS 4 EIXOS TEMÁTICOS (ARQUITETURA CÍVICA ATUAL) ═══ */}
@@ -256,7 +257,7 @@ export default async function Hub() {
             </span>
           </div>
           <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-            <a
+            <NextLink
               href="/terra-e-territorios"
               className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-emerald-500/40 hover:bg-surface-2"
             >
@@ -265,8 +266,8 @@ export default async function Hub() {
                 <div className="font-bold text-foreground">1. Terra e Território</div>
                 <div className="text-xs font-normal text-muted">203 Cidades, Bacias, Serras, Clima</div>
               </div>
-            </a>
-            <a
+            </NextLink>
+            <NextLink
               href="/direitos-em-movimento"
               className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-alert/40 hover:bg-surface-2"
             >
@@ -275,8 +276,8 @@ export default async function Hub() {
                 <div className="font-bold text-foreground">2. Direitos em Movimento</div>
                 <div className="text-xs font-normal text-muted">SUS, IDEB, Emprego, LAI, Ajuda</div>
               </div>
-            </a>
-            <a
+            </NextLink>
+            <NextLink
               href="/estado-e-economia"
               className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-sky-500/40 hover:bg-surface-2"
             >
@@ -285,8 +286,8 @@ export default async function Hub() {
                 <div className="font-bold text-foreground">3. Estado e Economia</div>
                 <div className="text-xs font-normal text-muted">Orçamento, 27 ALs, Judiciário, ESG</div>
               </div>
-            </a>
-            <a
+            </NextLink>
+            <NextLink
               href="/central"
               className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-primary/40 hover:bg-surface-2"
             >
@@ -295,7 +296,7 @@ export default async function Hub() {
                 <div className="font-bold text-foreground">4. Central ONSA e Ferramentas</div>
                 <div className="text-xs font-normal text-muted">Editais, 24k Docs, Rádios, Seu Nonô</div>
               </div>
-            </a>
+            </NextLink>
           </div>
         </div>
       </header>
@@ -358,13 +359,13 @@ export default async function Hub() {
               <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
               <ul className="mt-4 flex flex-col gap-2">
                 <li>
-                  <a
+                  <NextLink
                     href="/cidades"
                     className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
                   >
                     <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
                     <span aria-hidden="true">→</span>
-                  </a>
+                  </NextLink>
                 </li>
                 {cidades.map((c) => (
                   <li key={c.slug}>
@@ -451,38 +452,38 @@ export default async function Hub() {
           que frente do site cada resposta mora.
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-[.85em]">
-          <a
+          <NextLink
             href="/ambiental/legislacao"
             className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
           >
             Que lei protege isso
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/direitos-em-movimento/ajuda"
             className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
           >
             Onde buscar ajuda
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/direitos-em-movimento/informacao"
             className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
           >
             Como pedir informação
-          </a>
-          <a
+          </NextLink>
+          <NextLink
             href="/direitos-em-movimento/denuncia"
             className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
           >
             Como denunciar
-          </a>
+          </NextLink>
         </div>
-        <a
+        <NextLink
           href="/direitos-em-movimento"
           className="mt-4 inline-block font-medium"
           style={{ color: "var(--cp-alert)" }}
         >
           Entrar em Direitos em Movimento →
-        </a>
+        </NextLink>
       </section>
 
       {/* ⟲ 13/08: dizia "Por que TRÊS portais", e o texto contava três

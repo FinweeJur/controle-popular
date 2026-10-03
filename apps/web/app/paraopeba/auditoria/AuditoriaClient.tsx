@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import NextLink from "next/link";
 import {
   INSTRUMENTO_AJRI_LABEL,
   INSTRUMENTO_AJRI_ORDEM,
@@ -880,12 +881,12 @@ function RelacionadosDaFicha({
           <div>
             <p className="font-medium text-text">
               Perícia da UFMG ·{" "}
-              <a
+              <NextLink
                 href="/paraopeba/pericia"
                 className="font-normal text-primary underline underline-offset-2 hover:text-accent"
               >
                 ver a página da perícia
-              </a>
+              </NextLink>
             </p>
             <ul className="mt-1 space-y-1">
               {rel.estudosPericia.map((e) => (

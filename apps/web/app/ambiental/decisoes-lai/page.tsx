@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/ambiental/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { COBERTURA_DECISOES_CGE, DECISOES_CGE_POR_TIPO_ANO } from "@/lib/ambiental/decisoes-cge";
@@ -96,9 +97,9 @@ export default function DecisoesLaiPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/ambiental" className="hover:text-primary">
+        <NextLink href="/ambiental" className="hover:text-primary">
           Ambiental
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Decisões de recurso de LAI (CGE-MG)</span>
       </nav>
 

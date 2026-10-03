@@ -1,0 +1,40 @@
+# cron-fila.yaml — segundo cron worker do projeto (Guara Cloud).
+#
+# O `cron.yaml` versionado é um arquivo POR cron (a CLI faz
+# `guara crons create -f <arquivo>` e `update <nome> -f <arquivo>`), então
+# este arquivo é separado de propósito: subir a fila não pode derrubar nem
+# sobrescrever o `saude-monitor`.
+#
+# Aplicar/atualizar:
+#   guara crons create -f cron-fila.yaml -p controle-popular      # criar
+#   guara crons update fila-semear -f cron-fila.yaml -p controle-popular
+#
+# CONTEXTO (03/10/2026): Fase 1 "coletar na nuvem, digerir no PC". Este
+# worker NÃO coleta nada — ele só chama POST /api/fila/semear, que enfileira
+# os alvos em `fila_coleta`. O home-pc puxa depois e roda o Ollama local.
+# De 15 em 15 minutos, o mesmo intervalo do vigia, para manter o container
+# acordado e a fila sempre com trabalho fresco. Não é um serviço de coletor
+# novo (a cota de build do Guara está estourada): é um disparo HTTP.
+#
+# Quota: Starter = 3 cron workers por projeto. Hoje: saude-monitor (1) +
+# fila-semear (2). Ainda sobra 1.
+#
+# ⚠ O segredo vai por VARIÁVEL DE AMBIENTE, nunca literal neste arquivo
+# (AGENTS §5.8). O `${FILA_SEGREDO}` abaixo pressupõe que o Guara expande
+# env na interpolação do header — CONFIRMAR no painel/CLI antes de aplicar.
+# Se o Guara não expandir, o literal `${FILA_SEGREDO}` chega ao header e a
+# rota responde 401 (falha fechada, sem efeito colateral) — nesse caso,
+# preencher o valor pelo painel do Guara, sem passar pelo repositório.
+name: fila-semear
+schedule: "*/15 * * * *"
+timezone: America/Sao_Paulo
+destination_type: http
+destination_ref:
+  type: http
+  # Mesmo serviço do saude-monitor: controle-popular-web (guara services info --json).
+  serviceEndpointId: 54d61a44-1c8c-4105-8e1a-86f74c237200
+  path: /api/fila/semear
+  headers:
+    x-fila-segredo: "${FILA_SEGREDO}"
+timeout_seconds: 30
+max_retries: 2

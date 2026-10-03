@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import Facilitador from "./Facilitador";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -37,13 +38,13 @@ export default async function DenunciaPage() {
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <NextLink href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </NextLink>{" "}
         ·{" "}
-        <a href="/direitos-em-movimento" className="hover:text-primary">
+        <NextLink href="/direitos-em-movimento" className="hover:text-primary">
           Direitos em Movimento
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Como denunciar</span>
       </nav>
 
@@ -71,9 +72,9 @@ export default async function DenunciaPage() {
         <p className="mt-3 text-[.9em] text-text-soft">
           Para defesa jurídica gratuita, Ministério Público, delegacias especializadas e mais,
           veja{" "}
-          <a href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
+          <NextLink href="/direitos-em-movimento/ajuda" className="font-medium text-primary hover:underline">
             Onde buscar ajuda
-          </a>{" "}
+          </NextLink>{" "}
           — não depende deste facilitador.
         </p>
       </div>

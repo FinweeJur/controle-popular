@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import { ATAS_TRT3, COBERTURA_TRT3 } from "@/lib/judiciario/correicoes-trt3";
 import TabelaAtas from "./TabelaAtas";
@@ -68,9 +69,9 @@ export default function CorreicoesTrabalhistasPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/judiciario" className="hover:text-primary">
+        <NextLink href="/judiciario" className="hover:text-primary">
           Judiciário
-        </a>{" "}
+        </NextLink>{" "}
         · <span className="text-text">Correições no TRT-3</span>
       </nav>
 
@@ -144,9 +145,9 @@ export default function CorreicoesTrabalhistasPage() {
           </li>
           <li>
             <strong className="text-text">Não soma com o acervo de inspeções do CNJ</strong>, em{" "}
-            <a href="/judiciario/inspecoes" className="text-primary underline underline-offset-2 hover:text-accent">
+            <NextLink href="/judiciario/inspecoes" className="text-primary underline underline-offset-2 hover:text-accent">
               /judiciario/inspecoes
-            </a>
+            </NextLink>
             . São gêneros distintos — outro órgão, outro documento, outra estrutura — e o CNJ, por
             regulamento, não inspeciona tribunal superior nem os regionais que respondem a ele:
             quem correiciona TRT é a CGJT.
@@ -243,12 +244,12 @@ export default function CorreicoesTrabalhistasPage() {
         </h2>
         <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
           O portal também publica{" "}
-          <a
+          <NextLink
             href="/judiciario/inspecoes"
             className="text-primary underline underline-offset-2 hover:text-accent"
           >
             o que a Corregedoria Nacional de Justiça encontrou dentro do TJMG ↗
-          </a>
+          </NextLink>
           . São coisas diferentes, e os números não se somam: lá é o CNJ inspecionando um tribunal
           estadual, achado por achado; aqui é a CGJT correicionando um tribunal do trabalho,
           gestão por gestão. O regulamento da Corregedoria Nacional não alcança tribunal superior

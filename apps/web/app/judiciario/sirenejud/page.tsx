@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import Link from "@/lib/judiciario/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarSirenejudBrasil } from "@/lib/judiciario/sirenejud-brasil";
@@ -65,9 +66,9 @@ export default function JudiciarioSirenejudPage() {
         <p className="opacity-80">
           Cobertura da fonte: {d.cobertura}. O recorte de Minas Gerais, município a
           município, está em{" "}
-          <a href="/ambiental/judiciario" className="underline">
+          <NextLink href="/ambiental/judiciario" className="underline">
             /ambiental/judiciario
-          </a>
+          </NextLink>
           .
         </p>
       </header>
@@ -245,7 +246,7 @@ export default function JudiciarioSirenejudPage() {
         </h2>
         <p className="mt-2 text-[.9em] text-text-soft">
           Os agregados estão disponíveis na{" "}
-          <a href="/api" className="underline">API pública</a> (dataset{" "}
+          <NextLink href="/api" className="underline">API pública</NextLink> (dataset{" "}
           <code>sirenejud-brasil</code>). O arquivo em massa original do CNJ pesa
           ~273 MB e pode ser baixado diretamente do{" "}
           <a

@@ -525,6 +525,21 @@
         "3046"
       ],
       "port": 3046
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-radio) -- radio persistente, cursor, 404 e troca de <a> por Link. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-radio-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3047"
+      ],
+      "port": 3047
     }
   ]
 }

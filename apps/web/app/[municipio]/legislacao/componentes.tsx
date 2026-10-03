@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import Link from "@/lib/betim/link";
 import {
   percentualAnalisado,
@@ -144,9 +145,9 @@ export function CoberturaAviso({ cobertura }: { cobertura: CoberturaLegislacao }
         que citam, cada um, o dispositivo legal que fundamenta a leitura. Mas o modelo
         extrai os itens que entram nessa soma: se a extração erra, o rótulo calculado a
         partir dela também erra.{" "}
-        <a href="/sobre#metodologia" className="text-accent hover:underline">
+        <NextLink href="/sobre#metodologia" className="text-accent hover:underline">
           Ver a metodologia
-        </a>{" "}
+        </NextLink>{" "}
         ·{" "}
         <Link href="/camara/legislacao" className="text-accent hover:underline">
           ver todas as normas publicadas

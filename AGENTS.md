@@ -345,6 +345,24 @@ Vale para todo agente:
   `scripts/oficina/oficina.mts` (baixa modelo do perfil) e
   `scripts/revisar-textos-memoria.mts` (revisão da memória, criada 03/10/2026).
 
+### 5.13. Casca persistente: link interno navega no cliente, nunca recarrega
+
+**Regra do dono, 03/10/2026.** A barra superior, a faixa de desenvolvimento,
+o rodapé, o assistente Seu Nonô, o companheiro (pet) e o player de rádio
+moram no layout raiz e NÃO podem desmontar na navegação. O `<audio>` do
+rádio e o estado do pet só sobrevivem se a troca de página for client-side.
+
+- Todo link para PÁGINA interna usa `next/link` — inclusive os de `href`
+  dinâmico (navbar, rodapé, cartões), que a regra `no-html-link-for-pages`
+  do ESLint não enxerga;
+- `<a href>` cru fica só para externo, `mailto:`/`tel:`, âncora pura (`#`),
+  arquivo (`.pdf`, `.json`, imagens…) e `/api/...`;
+- A rede de segurança é o `InterceptadorLinks` (`app/components/`), montado
+  no layout raiz: captura o clique em qualquer `<a>` interno de página e o
+  entrega ao router;
+- Verificação: `scripts/verificar-radio-navegacao.py` (Playwright) percorre
+  eixos, subfrentes e o top-100 clicando e confere se o áudio segue vivo.
+
 ## 6. Armadilhas
 
 Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
@@ -385,6 +403,11 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **`dynamicParams` só aceita literal** | `export const dynamicParams = !algo` derruba o build com `Unsupported node type "UnaryExpression"` e `Invalid segment configuration export detected`. Config de segmento é lida estaticamente; use `true`/`false` literal |
 | **Página SSG que lê banco sem `comBancoReserva` derruba o build** | Um timeout de conexão durante a geração estática vira `Export encountered an error ... exiting the build`. Toda query de página pré-renderizada passa por `comBancoReserva` (pior caso devolve o `padrao`, o build termina). Medido em `/ambiental/copam`, 02/10/2026 |
 | **Teto de 60s por página no build do Next** | Cada página pré-renderizada tem 60s. Passou, o Next retenta (`staticGenerationRetryCount`) e, se falhar nas tentativas, aborta o build. Página que estoura de forma **consistente** precisa sair do build (render sob demanda) ou perder custo; a que estoura só na 1ª tentativa costuma recuperar no retry. Medido 02/10/2026 |
+| **`<a>` interno cru mata o áudio e a casca** | O `<audio>` do `PlayerRadio` e o estado do pet vivem no layout raiz; um `<a href="/pagina">` (mesmo vindo de `href` dinâmico, que o ESLint não vê) força reload de documento e troca a página inteira. Medido 03/10/2026: o teste Playwright morreu no salto `/direitos-em-movimento/ajuda`→`/ambiental`. Corrija com `next/link`; a rede de segurança é o `InterceptadorLinks` (§5.13) |
+| **Playwright sem binário baixado** | O pacote Python pode estar instalado sem o navegador (`Executable doesn't exist ... chrome-headless-shell`). Em vez de exigir `playwright install`, tente o Edge/Chrome do sistema (`channel="msedge"`/`"chrome"`) antes de desistir |
+| **Sprite sheet: `background-size` é a folha, não a célula** | `PetIcone` usava `background-size` de UMA célula e espremia as 72 células (8×9) num ícone de ~20 px — borrão que parecia código. Medido 03/10/2026. Use `COLUNAS*CELL_W × LINHAS*CELL_H`, como o `CompanheiroFlutuante` |
+| **`dragstart` nativo de `<img>` trava o arrasto** | Pega com `<img>` dentro: o Chrome inicia o arrasto nativo da imagem no 1º `pointermove` e emite `pointercancel`; medido 03/10/2026 no `SeuNono` (o painel travava em 10 px). Cancele com `onDragStart` (`preventDefault`) e meça a caixa do CONTAINER (`data-arrastavel-caixa`), não a da pega |
+| **`next build` local sem banco** | O `prebuild` roda `npm run cidades`, que consulta o Postgres e aborta com `ECONNREFUSED` sem banco. Para verificar UI sem banco: `npx next build --webpack` direto e `DATABASE_URL=""` (pula o prebuild e cai nos fallbacks) |
 
 ## 7. Regra editorial
 
