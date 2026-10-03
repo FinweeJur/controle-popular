@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -109,7 +110,16 @@ export default async function Hub() {
           O portal inteiro está lançado publicamente para acesso, colaboração e revisão.
         </p>
         <p className="mt-2 max-w-3xl text-xs leading-relaxed text-text-soft">
-          Até agora, a maior parte do trabalho foi feito por um desenvolvedor / Artur Colito - (Github:{" "}
+          Até agora, Desenvolvimento por:{" "}
+          <a
+            href="https://linktr.ee/arturcolito"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            Artur Colito
+          </a>{" "}
+          - (Github:{" "}
           <a
             href="https://github.com/FinweeJur"
             target="_blank"
@@ -118,8 +128,21 @@ export default async function Hub() {
           >
             FinweeJur
           </a>
-          ), advogado popular mestrando em Estudos Rurais na UFVJM em parceria com o Instituto Esperança
-          Maria.
+          ), advogado popular mestrando em Estudos Rurais na{" "}
+          <a
+            href="https://guiaufvjm.pages.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            UFVJM
+          </a>{" "}
+          em parceria com o Instituto Esperança Maria. Com inspiração em movimentos populares e
+          sociedade civil organizada — Veja mais em{" "}
+          <Link href="/sobre" className="underline underline-offset-2 hover:text-foreground">
+            Sobre o Portal
+          </Link>
+          .
         </p>
       </section>
 
