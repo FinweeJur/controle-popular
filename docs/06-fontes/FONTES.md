@@ -1314,7 +1314,7 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-C
 
 ## Rádios
 
-**Medido em 2026-09-30.** O diretório `/radio` publica estações de rádio com
+**Medido em 2026-10-02.** O diretório `/radio` publica estações de rádio com
 transmissão direta. O dado mora em `apps/web/lib/radio/estacoes.ts` (versionado)
 e a página é montada a partir dele. Recorte do dono: menos grande mídia
 comercial, mais rádio pública federal, universitária, comunitária e do Sul
@@ -1323,6 +1323,7 @@ Global, com programação musical.
 | Item | Registro |
 |---|---|
 | **Agregadores de partida** | `radio-browser.info` (API pública aberta) e `radio.garden` — sites de referência que conectam rádios do mundo |
+| **Organização (regra do dono, 02/10/2026)** | Brasil aberto nas cinco regiões do país — nacionais e universitárias listadas por região, ordem padrão da tela; categorias: pública federal, universitária, comunitária e popular ("independente" deixou de ser rótulo) |
 | **Abrangência** | 44 estações de 11 países; 21 universitárias brasileiras (UFVJM, UFOP, UFV, UFU, UFMG, UFES, UFG, UFAL, UFC, UFDPar, UFPB, UFPel, UFMS, UFSCar, UFCG, UFF, UFABC, UEL, UDESC, UFRJ, USP) |
 | **Stream das universitárias** | próprio da emissora quando disponível (UFU, UFES, UFG, UFAL); nas demais, o relay do `radio.garden` (`/api/ara/content/listen/<id>/channel.mp3`), que exige `User-Agent` de navegador |
 | **Fonte linkável** | o campo `site` de cada estação é a página oficial da emissora (AGENTS § 8.1) |
@@ -1330,6 +1331,7 @@ Global, com programação musical.
 | **Só HTTPS** | stream `http://` foi descartado: página HTTPS bloqueia áudio HTTP (conteúdo misto) |
 | **Formatos** | `mp3`/`aac` tocam nativos; `hls` (`.m3u8`, as federais EBC/Câmara/Senado) exige `hls.js`, importado sob demanda |
 | **Logo** | hotlink do ícone oficial, com monograma de reserva; a marca nunca é copiada para o repositório |
+| **Bandeira do estado** | ao lado da do país no card brasileiro — PNG 40 px do Wikimedia Commons (`Special:FilePath`), 27 títulos conferidos pela API em 02/10/2026 |
 | **Transcrição** | só nas federais de fala, no navegador (Whisper local, `transformers.js`); exige CORS no stream — medido: federais enviam `Access-Control-Allow-Origin`, as demais não |
 
 Decisão de licença: o portal **aponta** para o stream e para o site oficial, não

@@ -30,13 +30,35 @@
  *   demais não. Sem CORS, o Web Audio entrega silêncio: melhor não oferecer.
  * - A frequência e o país vêm da própria fonte; `verificadoEm` é a data da
  *   conferência. Mudou um stream? Remeça e atualize a data.
+ *
+ * Reorganização do dono (02/10/2026):
+ * - Região: o bloco único "Brasil" foi aberto nas cinco regiões do país —
+ *   nacionais e universitárias passam a ser listadas por região;
+ * - Categoria: "independente" deixou de ser rótulo — sobram comunitária e
+ *   popular (mais pública federal e universitária, que continuam);
+ * - Ordem padrão da tela: região (com categoria e nome dentro dela).
  */
 
 /** Categoria funcional da estação — é o filtro principal da página. */
 export type TipoRadio = "federal" | "universitaria" | "comunitaria" | "popular";
 
-/** Região do mundo — segundo eixo de filtro. */
-export type RegiaoRadio = "Brasil" | "America Latina" | "Africa" | "Asia e Caribe";
+/**
+ * Região de listagem — segundo eixo de filtro.
+ *
+ * O Brasil está subdividido nas cinco regiões do país (pedido do dono,
+ * 02/10/2026): as nacionais e as universitárias passam a ser lidas por
+ * região, não num bloco único "Brasil". O resto do mundo continua por
+ * macro-região. A ordem dos literais espelha o IBGE (ver `ORDEM_REGIOES`).
+ */
+export type RegiaoRadio =
+  | "Norte"
+  | "Nordeste"
+  | "Sudeste"
+  | "Sul"
+  | "Centro-Oeste"
+  | "America Latina"
+  | "Africa"
+  | "Asia e Caribe";
 
 /** Formato do stream, que decide como o player carrega o áudio. */
 export type FormatoRadio = "mp3" | "aac" | "ogg" | "hls";
@@ -95,7 +117,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-nacional-rio",
     nome: "Rádio Nacional do Rio de Janeiro",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RJ",
@@ -117,7 +139,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-nacional-amazonia",
     nome: "Rádio Nacional da Amazônia",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Norte",
     pais: "BR",
     paisNome: "Brasil",
     cidade: "Brasília",
@@ -138,7 +160,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-nacional-brasilia",
     nome: "Rádio Nacional de Brasília",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Centro-Oeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "DF",
@@ -159,7 +181,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-nacional-alto-solimoes",
     nome: "Rádio Nacional do Alto Solimões",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Norte",
     pais: "BR",
     paisNome: "Brasil",
     uf: "AM",
@@ -181,12 +203,14 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-mec-fm",
     nome: "Rádio MEC FM",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RJ",
     cidade: "Rio de Janeiro",
-    frequencia: "98.9 FM",
+    // 99,3 MHz no Rio (EBC, radiomec.ebc.com.br/sobre — conferido em
+    // 02/10/2026; a ficha trazia "98.9 FM", número errado corrigido).
+    frequencia: "99.3 FM",
     programacao: "Música clássica, instrumental e jazz",
     descricao:
       "Rádio pública da EBC dedicada à música de concerto e à cultura.",
@@ -203,7 +227,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-mec-am",
     nome: "Rádio MEC AM",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RJ",
@@ -224,7 +248,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-camara",
     nome: "Rádio Câmara",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Centro-Oeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "DF",
@@ -245,7 +269,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-senado",
     nome: "Rádio Senado",
     tipo: "federal",
-    regiao: "Brasil",
+    regiao: "Centro-Oeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "DF",
@@ -267,7 +291,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufmg-educativa",
     nome: "Rádio UFMG Educativa",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -288,7 +312,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufrj",
     nome: "Rádio UFRJ",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RJ",
@@ -306,7 +330,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-usp",
     nome: "Rádio USP",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "SP",
@@ -325,7 +349,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufvjm",
     nome: "Rádio Universitária 99.7 FM (UFVJM)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -345,7 +369,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufop",
     nome: "Rádio UFOP 103.5 FM",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -364,7 +388,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufv",
     nome: "Rádio Universitária 100.7 FM (UFV)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -383,7 +407,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufu",
     nome: "Rádio Universitária 107.5 FM (UFU)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -402,7 +426,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufes",
     nome: "Universitária 104.7 FM (UFES)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "ES",
@@ -421,7 +445,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufg",
     nome: "Rádio Universitária UFG",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Centro-Oeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "GO",
@@ -439,7 +463,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufal",
     nome: "Rádio UFAL",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "AL",
@@ -457,7 +481,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufc",
     nome: "Rádio Universitária 107.9 FM (UFC)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "CE",
@@ -476,7 +500,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufdpar",
     nome: "Rádio Universitária UFDPar",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "PI",
@@ -495,7 +519,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufpb",
     nome: "Universidade FM 105.1 (UFPB)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "PB",
@@ -514,7 +538,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufpel",
     nome: "Rádio Universidade AM 1160 (UFPel)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sul",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RS",
@@ -533,7 +557,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufms",
     nome: "Rádio Educativa UFMS",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Centro-Oeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MS",
@@ -551,7 +575,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufscar",
     nome: "Rádio UFSCar 95.3 FM",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "SP",
@@ -570,7 +594,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufcg",
     nome: "Web Rádio UFCG Conecta",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Nordeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "PB",
@@ -588,7 +612,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-uff",
     nome: "Rádio Pop Goiaba (UFF)",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "RJ",
@@ -606,7 +630,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-udesc",
     nome: "Rádio UDESC FM 100.1",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sul",
     pais: "BR",
     paisNome: "Brasil",
     uf: "SC",
@@ -625,7 +649,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-ufabc",
     nome: "Web Rádio UFABC",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "SP",
@@ -643,7 +667,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-uel",
     nome: "UEL FM 107.9",
     tipo: "universitaria",
-    regiao: "Brasil",
+    regiao: "Sul",
     pais: "BR",
     paisNome: "Brasil",
     uf: "PR",
@@ -664,7 +688,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-favela",
     nome: "Autêntica Favela FM (Rádio Favela)",
     tipo: "comunitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     uf: "MG",
@@ -685,7 +709,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     id: "radio-brasil-de-fato",
     nome: "Rádio Brasil de Fato",
     tipo: "comunitaria",
-    regiao: "Brasil",
+    regiao: "Sudeste",
     pais: "BR",
     paisNome: "Brasil",
     cidade: "Nacional",
@@ -947,12 +971,18 @@ export const ROTULO_TIPO: Record<TipoRadio, string> = {
   federal: "Pública federal",
   universitaria: "Universitária",
   comunitaria: "Comunitária",
-  popular: "Popular e independente",
+  // "Independente" virou adjetivo, não categoria (pedido do dono, 02/10/2026):
+  // sobram só comunitária e popular como tipos editoriais de fora do eixo público.
+  popular: "Popular",
 };
 
 /** Rótulos de exibição das regiões. */
 export const ROTULO_REGIAO: Record<RegiaoRadio, string> = {
-  Brasil: "Brasil",
+  Norte: "Norte",
+  Nordeste: "Nordeste",
+  Sudeste: "Sudeste",
+  Sul: "Sul",
+  "Centro-Oeste": "Centro-Oeste",
   "America Latina": "América Latina",
   Africa: "África",
   "Asia e Caribe": "Ásia e Caribe",
@@ -966,9 +996,18 @@ export const ORDEM_TIPOS: readonly TipoRadio[] = [
   "popular",
 ];
 
-/** Ordem canônica das regiões. */
+/** Regiões do Brasil, na ordem do IBGE — usado nos cartões de resumo. */
+export const REGIOES_BRASIL: readonly RegiaoRadio[] = [
+  "Norte",
+  "Nordeste",
+  "Sudeste",
+  "Sul",
+  "Centro-Oeste",
+];
+
+/** Ordem canônica das regiões (Brasil primeiro, depois o mundo). */
 export const ORDEM_REGIOES: readonly RegiaoRadio[] = [
-  "Brasil",
+  ...REGIOES_BRASIL,
   "America Latina",
   "Africa",
   "Asia e Caribe",
@@ -1012,6 +1051,98 @@ export function urlBandeira(iso: string): string | null {
   return `https://flagcdn.com/${codigo}.svg`;
 }
 
+/**
+ * Nome de cada estado brasileiro por UF — o `alt`/`title` da bandeira
+ * estadual e qualquer rótulo que precise do nome por extenso.
+ */
+export const NOME_ESTADO: Record<string, string> = {
+  AC: "Acre",
+  AL: "Alagoas",
+  AP: "Amapá",
+  AM: "Amazonas",
+  BA: "Bahia",
+  CE: "Ceará",
+  DF: "Distrito Federal",
+  ES: "Espírito Santo",
+  GO: "Goiás",
+  MA: "Maranhão",
+  MT: "Mato Grosso",
+  MS: "Mato Grosso do Sul",
+  MG: "Minas Gerais",
+  PA: "Pará",
+  PB: "Paraíba",
+  PR: "Paraná",
+  PE: "Pernambuco",
+  PI: "Piauí",
+  RJ: "Rio de Janeiro",
+  RN: "Rio Grande do Norte",
+  RS: "Rio Grande do Sul",
+  RO: "Rondônia",
+  RR: "Roraima",
+  SC: "Santa Catarina",
+  SP: "São Paulo",
+  SE: "Sergipe",
+  TO: "Tocantins",
+};
+
+/**
+ * Arquivo da bandeira de cada estado no Wikimedia Commons (underscore = espaço).
+ *
+ * Pedido do dono (02/10/2026): a bandeira do estado ao lado da do país no
+ * card de estação brasileira. Os 27 títulos foram conferidos um a um pela
+ * API do Commons em 02/10/2026 — os nomes são irregulares ("de Goiás",
+ * "do estado de São Paulo", "do Distrito Federal (Brasil)"), então o
+ * caminho é dado, nunca adivinhado: título errado vira 404 silencioso.
+ */
+export const BANDEIRA_ESTADO_ARQUIVO: Record<string, string> = {
+  AC: "Bandeira_do_Acre.svg",
+  AL: "Bandeira_de_Alagoas.svg",
+  AP: "Bandeira_do_Amapá.svg",
+  AM: "Bandeira_do_Amazonas.svg",
+  BA: "Bandeira_da_Bahia.svg",
+  CE: "Bandeira_do_Ceará.svg",
+  DF: "Bandeira_do_Distrito_Federal_(Brasil).svg",
+  ES: "Bandeira_do_Espírito_Santo.svg",
+  GO: "Bandeira_de_Goiás.svg",
+  MA: "Bandeira_do_Maranhão.svg",
+  MT: "Bandeira_de_Mato_Grosso.svg",
+  MS: "Bandeira_de_Mato_Grosso_do_Sul.svg",
+  MG: "Bandeira_de_Minas_Gerais.svg",
+  PA: "Bandeira_do_Pará.svg",
+  PB: "Bandeira_da_Paraíba.svg",
+  PR: "Bandeira_do_Paraná.svg",
+  PE: "Bandeira_de_Pernambuco.svg",
+  PI: "Bandeira_do_Piauí.svg",
+  RJ: "Bandeira_do_estado_do_Rio_de_Janeiro.svg",
+  RN: "Bandeira_do_Rio_Grande_do_Norte.svg",
+  RS: "Bandeira_do_Rio_Grande_do_Sul.svg",
+  RO: "Bandeira_de_Rondônia.svg",
+  RR: "Bandeira_de_Roraima.svg",
+  SC: "Bandeira_de_Santa_Catarina.svg",
+  SP: "Bandeira_do_estado_de_São_Paulo.svg",
+  SE: "Bandeira_de_Sergipe.svg",
+  TO: "Bandeira_do_Tocantins.svg",
+};
+
+/**
+ * URL da bandeira do ESTADO como imagem (Wikimedia Commons, PNG 40 px).
+ *
+ * `Special:FilePath/<arquivo>?width=` redireciona para o PNG renderizado do
+ * SVG — medido `200 image/png` em 02/10/2026 para Acre, São Paulo e Distrito
+ * Federal. O `?width` dá resolução para tela retina no card (14 px lógicos).
+ * Devolve `null` para UF desconhecida: o componente omite a imagem em vez
+ * de servir link quebrado (mesma disciplina do `urlBandeira`).
+ */
+export function urlBandeiraEstado(uf?: string): string | null {
+  const arquivo = uf
+    ? BANDEIRA_ESTADO_ARQUIVO[uf.trim().toUpperCase()]
+    : undefined;
+  if (!arquivo) return null;
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
+    arquivo,
+  )}?width=40`;
+}
+
 /** Busca uma estação pelo id (undefined se não existir). */
 export function estacaoPorId(id: string): EstacaoRadio | undefined {
   return ESTACOES.find((e) => e.id === id);
@@ -1021,6 +1152,8 @@ export function estacaoPorId(id: string): EstacaoRadio | undefined {
 export interface ResumoRadio {
   total: number;
   paises: number;
+  /** Estações sediadas no Brasil (soma das cinco regiões do país). */
+  brasil: number;
   federais: number;
   universitarias: number;
   comunitarias: number;
@@ -1047,6 +1180,9 @@ export function resumirEstacoes(
   return {
     total: estacoes.length,
     paises: contagemPais.size,
+    // Contado pelo `pais`, não pela soma das regiões: o número é o do país,
+    // independente de como o acervo vier a agrupar regiões no futuro.
+    brasil: estacoes.filter((e) => e.pais === "BR").length,
     federais: estacoes.filter((e) => e.tipo === "federal").length,
     universitarias: estacoes.filter((e) => e.tipo === "universitaria").length,
     comunitarias: estacoes.filter((e) => e.tipo === "comunitaria").length,

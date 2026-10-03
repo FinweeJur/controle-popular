@@ -69,7 +69,7 @@ export default function PaginaRadio() {
               valor: RESUMO.comunitarias,
               detalhe: "inclui Rádio Favela e Brasil de Fato",
             },
-            { rotulo: "Populares e independentes", valor: RESUMO.popularres },
+            { rotulo: "Populares", valor: RESUMO.popularres },
             {
               rotulo: "Com transcrição local",
               valor: RESUMO.transcreviveis,
@@ -77,7 +77,7 @@ export default function PaginaRadio() {
             },
             {
               rotulo: "Brasil × resto do mundo",
-              valor: `${RESUMO.porRegiao[0].total} × ${RESUMO.total - RESUMO.porRegiao[0].total}`,
+              valor: `${RESUMO.brasil} × ${RESUMO.total - RESUMO.brasil}`,
             },
           ]}
         />

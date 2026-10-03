@@ -11,7 +11,7 @@ import {
   type RegiaoRadio,
   type TipoRadio,
 } from "@/lib/radio/estacoes";
-import Bandeira from "@/app/components/Bandeira";
+import Bandeira, { BandeiraEstado } from "@/app/components/Bandeira";
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import BotoesExportar from "@/app/components/BotoesExportar";
 import LogoRadio from "@/app/components/LogoRadio";
@@ -77,7 +77,9 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
   const [tipo, setTipo] = useState<TipoRadio | "todos">("todos");
   const [regiao, setRegiao] = useState<RegiaoRadio | "todas">("todas");
   const [pais, setPais] = useState<string>("todos");
-  const [ordem, setOrdem] = useState<Ordem>("tipo");
+  // Ordem padrão por região (pedido do dono, 02/10/2026): as nacionais e as
+  // universitárias são lidas por região do país; categoria ordena dentro.
+  const [ordem, setOrdem] = useState<Ordem>("regiao");
   const [estado, setEstado] = useState<EstadoRadio>({
     id: null,
     tocando: false,
@@ -133,7 +135,11 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
         case "pais":
           return a.paisNome.localeCompare(b.paisNome, "pt-BR") || porTipo(a) - porTipo(b);
         case "regiao":
-          return porRegiao(a) - porRegiao(b) || porTipo(a) - porTipo(b);
+          return (
+            porRegiao(a) - porRegiao(b) ||
+            porTipo(a) - porTipo(b) ||
+            a.nome.localeCompare(b.nome, "pt-BR")
+          );
         case "frequencia":
           return (a.frequencia ?? "\uffff").localeCompare(b.frequencia ?? "\uffff", "pt-BR");
         case "tipo":
@@ -307,8 +313,11 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
                   <div className="min-w-0 flex-1">
                     <p className="flex flex-wrap items-center gap-1.5">
                       <span className="font-semibold leading-snug text-text">{e.nome}</span>
-                      <span title={e.paisNome} className="inline-flex">
+                      <span title={e.paisNome} className="inline-flex items-center gap-1">
                         <Bandeira iso={e.pais} nome={e.paisNome} tamanho={14} />
+                        {/* Estado ao lado do país só para estação brasileira;
+                            a componente some quando não há UF. */}
+                        <BandeiraEstado uf={e.uf} tamanho={14} />
                       </span>
                     </p>
                     <p className="mt-0.5 text-xs text-text-soft">

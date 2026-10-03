@@ -11,12 +11,34 @@
 import { describe, expect, it } from "vitest";
 import {
   bandeiraDe,
+  BANDEIRA_ESTADO_ARQUIVO,
   ESTACOES,
+  NOME_ESTADO,
   ORDEM_REGIOES,
   ORDEM_TIPOS,
   RADIO_VERIFICADO_EM,
+  REGIOES_BRASIL,
   resumirEstacoes,
+  urlBandeiraEstado,
+  type RegiaoRadio,
 } from "./estacoes";
+
+/**
+ * Régua UF → região, escrita à mão no teste de propósito: é a cópia
+ * independente que pega estação brasileira cadastrada na região errada
+ * (inclusive as duas sem `uf`, que só passam pela régua do país).
+ */
+const REGIAO_DA_UF: Record<string, RegiaoRadio> = {
+  AC: "Norte", AM: "Norte", AP: "Norte", PA: "Norte", RO: "Norte",
+  RR: "Norte", TO: "Norte",
+  AL: "Nordeste", BA: "Nordeste", CE: "Nordeste", MA: "Nordeste",
+  PB: "Nordeste", PE: "Nordeste", PI: "Nordeste", RN: "Nordeste",
+  SE: "Nordeste",
+  DF: "Centro-Oeste", GO: "Centro-Oeste", MT: "Centro-Oeste",
+  MS: "Centro-Oeste",
+  ES: "Sudeste", MG: "Sudeste", RJ: "Sudeste", SP: "Sudeste",
+  PR: "Sul", RS: "Sul", SC: "Sul",
+};
 
 describe("acervo de estações de rádio", () => {
   it("tem acervo não vazio", () => {
@@ -51,6 +73,15 @@ describe("acervo de estações de rádio", () => {
     for (const e of ESTACOES) {
       expect(ORDEM_TIPOS).toContain(e.tipo);
       expect(ORDEM_REGIOES).toContain(e.regiao);
+    }
+  });
+
+  it("estação brasileira fica na região do país da sua UF", () => {
+    for (const e of ESTACOES) {
+      if (e.pais !== "BR") continue;
+      expect(REGIOES_BRASIL.includes(e.regiao), e.id).toBe(true);
+      if (!e.uf) continue;
+      expect(e.regiao, `${e.id} (${e.uf})`).toBe(REGIAO_DA_UF[e.uf]);
     }
   });
 
@@ -89,6 +120,34 @@ describe("bandeiraDe", () => {
   it("usa bandeira neutra quando o código é inválido", () => {
     expect(bandeiraDe("")).toBe("🏳️");
     expect(bandeiraDe("XYZ")).toBe("🏳️");
+  });
+});
+
+describe("bandeira do estado brasileiro", () => {
+  it("cobre exatamente as 27 UFs, com nome e arquivo SVG do Commons", () => {
+    expect(Object.keys(BANDEIRA_ESTADO_ARQUIVO).sort()).toEqual(
+      Object.keys(REGIAO_DA_UF).sort(),
+    );
+    for (const [uf, arquivo] of Object.entries(BANDEIRA_ESTADO_ARQUIVO)) {
+      expect(arquivo.endsWith(".svg"), uf).toBe(true);
+      expect(NOME_ESTADO[uf], uf).toBeTruthy();
+      expect(urlBandeiraEstado(uf), uf).toMatch(
+        /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//,
+      );
+    }
+  });
+
+  it("toda estação brasileira com UF tem bandeira estadual", () => {
+    for (const e of ESTACOES) {
+      if (e.pais !== "BR" || !e.uf) continue;
+      expect(urlBandeiraEstado(e.uf), e.id).not.toBeNull();
+    }
+  });
+
+  it("UF desconhecida ou ausente devolve null (sem link quebrado)", () => {
+    expect(urlBandeiraEstado("XX")).toBeNull();
+    expect(urlBandeiraEstado(undefined)).toBeNull();
+    expect(urlBandeiraEstado("")).toBeNull();
   });
 });
 
