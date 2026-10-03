@@ -1226,10 +1226,17 @@ export function SeuNono() {
                 <div className="rounded-xl border border-primary/20 bg-primary/5 p-2.5 text-left">
                   {/* Foto do Seu Nonô ANTES da mensagem (dono, 03/10/2026):
                       o chat abre com a cara do assistente e só depois o
-                      recado. Reusa o AvatarSeuNono do resto do chat, então
-                      a imagem é sempre a oficial (avatar.webp) com o mesmo
-                      fallback — sem <img> novo para manter. */}
-                  <AvatarSeuNono size={40} className="mb-1.5 border border-primary/30" />
+                      recado. A foto é a HD (avatar-hd.webp, 1024×1024, gerada
+                      no Gemini a partir da avatar.webp) e ocupa a largura do
+                      chat; o avatar pequeno segue no resto do chat. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/seunono/avatar-hd.webp"
+                    alt="Seu Nonô, o assistente do portal"
+                    width={1024}
+                    height={1024}
+                    className="mb-2 w-full rounded-xl border border-primary/20 object-cover"
+                  />
                   <p className="text-xs font-semibold text-text">
                     Opa! Bão? Sou Seu Nonô, Alceu Dispor. Soy el ajudante aqui do portal, que saiu <em>diretin</em> aqui de Beagá, Minas Gerais, Brasil, LatinoAmérica, Sul Global, Planeta <s>Água</s> Terra. BH é nois, sô! Como posso ajudar ocê?
                   </p>

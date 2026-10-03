@@ -23,6 +23,8 @@ import type { EntradaCalendario } from "./tipos";
 import { CORRECOES } from "./correcoes-mistica";
 import { COMPLEMENTOS } from "./complementos-mistica";
 import { COMPLEMENTOS_INDIGENAS } from "./complementos-indigenas";
+import { REMOVIDOS } from "./remocoes-mistica";
+import { RECOLOCADOS } from "./recolocados-mistica";
 
 /** Normaliza para a chave: sem acento, minúsculo, espaços colapsados. */
 function normalizar(texto: string): string {
@@ -60,7 +62,8 @@ export function aplicarCorrecao(e: EntradaCalendario): EntradaCalendario {
  * crua (`CALENDARIO_LUTAS`) fica para teste e geração.
  */
 export const CALENDARIO: EntradaCalendario[] = [
-  ...CALENDARIO_LUTAS.map(aplicarCorrecao),
+  ...CALENDARIO_LUTAS.map(aplicarCorrecao).filter((e) => !REMOVIDOS.has(chaveCorrecao(e))),
   ...COMPLEMENTOS,
   ...COMPLEMENTOS_INDIGENAS,
+  ...RECOLOCADOS,
 ];
