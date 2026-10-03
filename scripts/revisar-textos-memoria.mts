@@ -32,7 +32,7 @@
  *   npx tsx scripts/revisar-textos-memoria.mts --limite=20
  *   npx tsx scripts/revisar-textos-memoria.mts --inicio=80 --limite=80   # 2o lote
  *   npx tsx scripts/revisar-textos-memoria.mts --modelo=qwen2.5:3b-instruct
- *   npx tsx scripts/revisar-textos-memoria.mts --provedor=api --limite=20   # DeepSeek
+ *   npx tsx scripts/revisar-textos-memoria.mts --provedor=api --lote=40   # DeepSeek, 40 por chamada
  *   npx tsx scripts/revisar-textos-memoria.mts            # todos os verbetes
  *
  * Como revisar os ~500 verbetes leva tempo, a revisão roda em LOTES
@@ -48,6 +48,10 @@
  * Nesse modo a chave vem do ambiente (`DEEPSEEK_API_KEY` ou
  * `AI_API_KEY_DEEPSEEK`) e NUNCA é impressa. Preço e conta do custo em yuan:
  * `api-docs.deepseek.com/quick_start/pricing`.
+ *
+ * LOTE (`--lote=N`): manda N verbetes numa chamada só — a resposta é
+ * `{"resultados":[...]}`, casada por índice. A rodada inteira cai de ~500
+ * chamadas para poucas dezenas, aproveitando o contexto de 1M do modelo.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -102,6 +106,8 @@ interface Analise {
   motivo: string;
   /** Texto reescrito SÓ com o que já existe no verbete ("" quando não dá). */
   sugestao: string;
+  /** Título curto proposto pelo modelo (até ~60 caracteres), no tom da fonte. */
+  tituloCurto: string;
   /** Título/resumo originais, para o relatório e o diff. */
   titulo: string;
   resumo: string;
@@ -128,6 +134,8 @@ interface Config {
   modelo: string;
   baseApi: string;
   apiKey?: string;
+  /** Quantos verbetes por chamada ao provedor (1 = um a um). */
+  lote: number;
 }
 
 /** Lê um argumento `--chave=valor`. */
@@ -170,7 +178,38 @@ async function verificarOllama(modelo: string): Promise<void> {
   }
 }
 
-/** Monta o prompt: os cinco critérios do dono + proibição de inventar. */
+/**
+ * Critérios do dono + proibição de inventar — miolo comum aos dois prompts
+ * (um verbete por chamada e lote). Fica num só lugar para não divergir.
+ */
+const CRITERIOS = [
+  "Aponte se há frases soltas/desconexas — sem algum destes cinco elementos:",
+  "  1. sujeito — quem é o personagem individual ou coletivo principal;",
+  "  2. acao — o que aconteceu;",
+  "  3. vitima — quem foi vítima ou alvo;",
+  "  4. lugar — onde aconteceu;",
+  "  5. periodo — em que período/século/ano se passa.",
+  "",
+  "COMO SUGERIR (importante): MANTENHA O TEXTO ORIGINAL sempre que possível —",
+  "aproveite as palavras e frases do próprio verbete; prefira reordenar e",
+  "encurtar a reescrever. Use FRASES CURTAS que resumam bem e mantenha o tom",
+  "dos documentos-base: NARRATIVO e INSPIRADOR, como o 'Calendário Insurgente'",
+  "(Aos que Virão) e o 'Calendário Histórico dos Trabalhadores e Trabalhadoras'",
+  "(MST). Nunca um resumo seco, burocrático ou de manual.",
+  "",
+  "REGRA ABSOLUTA: não invente fato, data, nome ou lugar que NÃO esteja no",
+  "verbete. Se faltar algo que não aparece, liste em \"faltando\" e deixe a",
+  "sugestão VAZIA — nunca preencha com suposição.",
+  "Marque solta=false quando título+resumo já deixam claro quem, o quê, quem foi",
+  "o alvo, onde e quando.",
+  "",
+  "Além da revisão, proponha para CADA verbete um TÍTULO CURTO (até ~60",
+  "caracteres) no estilo de NOME DE ACONTECIMENTO — como 'Revolta da Balaiada'",
+  "ou 'Massacre do Carandiru': poucas palavras, o tipo de fato + o nome ou o",
+  "lugar, sem repetir o ano e sem inventar nada; pode reorganizar o título atual.",
+].join("\n");
+
+/** Prompt para UMA chamada de um verbete. */
 function promptSistema(): string {
   return [
     "Você é revisor editorial de um portal cívico brasileiro de transparência.",
@@ -178,27 +217,29 @@ function promptSistema(): string {
     "resumo, com ano e lugar quando a fonte informa. Analise o CONJUNTO —",
     "título + resumo: se a informação já aparece no título, NÃO está faltando.",
     "",
-    "Aponte se há frases soltas/desconexas — sem algum destes cinco elementos:",
-    "  1. sujeito — quem é o personagem individual ou coletivo principal;",
-    "  2. acao — o que aconteceu;",
-    "  3. vitima — quem foi vítima ou alvo;",
-    "  4. lugar — onde aconteceu;",
-    "  5. periodo — em que período/século/ano se passa.",
+    CRITERIOS,
     "",
-    "COMO SUGERIR (importante): MANTENHA O TEXTO ORIGINAL sempre que possível —",
-    "aproveite as palavras e frases do próprio verbete; prefira reordenar e",
-    "encurtar a reescrever. Use FRASES CURTAS que resumam bem e mantenha o tom",
-    "dos documentos-base: NARRATIVO e INSPIRADOR, como o 'Calendário Insurgente'",
-    "(Aos que Virão) e o 'Calendário Histórico dos Trabalhadores e Trabalhadoras'",
-    "(MST). Nunca um resumo seco, burocrático ou de manual.",
+    'Responda SOMENTE com JSON: {"solta":true|false,"faltando":[],"motivo":"curto","sugestao":"texto final, ou vazio","titulo_curto":"título curto"}',
+  ].join("\n");
+}
+
+/**
+ * Prompt para LOTE: vários verbetes numa chamada só, cada um marcado com
+ * `indice=`. A resposta traz o array `resultados`, um item por índice — é
+ * assim que a rodada cai de ~500 chamadas para poucas dezenas.
+ */
+function promptSistemaLote(): string {
+  return [
+    "Você é revisor editorial de um portal cívico brasileiro de transparência.",
+    "Receberá VÁRIOS verbetes de memória (fatos históricos de luta popular), cada",
+    "um marcado com `indice=`. Analise cada verbete pelo CONJUNTO (título +",
+    "resumo): se a informação já aparece no título, NÃO está faltando.",
     "",
-    "REGRA ABSOLUTA: não invente fato, data, nome ou lugar que NÃO esteja no",
-    "verbete. Se faltar algo que não aparece, liste em \"faltando\" e deixe a",
-    "sugestão VAZIA — nunca preencha com suposição.",
-    "Marque solta=false quando título+resumo já deixam claro quem, o quê, quem foi",
-    "o alvo, onde e quando.",
+    CRITERIOS,
     "",
-    'Responda SOMENTE com JSON: {"solta":true|false,"faltando":[],"motivo":"curto","sugestao":"texto final, ou vazio"}',
+    "Responda SOMENTE com JSON, um item por verbete recebido, na MESMA ordem:",
+    '{"resultados":[{"indice": <n>, "solta": true|false, "faltando": [], "motivo": "curto", "sugestao": "texto final ou vazio", "titulo_curto": "título curto"}]}',
+    "Inclua TODOS os índices recebidos. Não escreva nada fora do JSON.",
   ].join("\n");
 }
 
@@ -216,6 +257,7 @@ function interpretar(
       faltando?: unknown;
       motivo?: unknown;
       sugestao?: unknown;
+      titulo_curto?: unknown;
     };
     const validos: Falta[] = ["sujeito", "acao", "vitima", "lugar", "periodo"];
     const faltando = Array.isArray(bruto.faltando)
@@ -228,6 +270,7 @@ function interpretar(
       faltando,
       motivo: typeof bruto.motivo === "string" ? bruto.motivo : "",
       sugestao: typeof bruto.sugestao === "string" ? bruto.sugestao.trim() : "",
+      tituloCurto: typeof bruto.titulo_curto === "string" ? bruto.titulo_curto.trim() : "",
       titulo: entrada.titulo,
       resumo: entrada.resumo ?? "",
       uso,
@@ -238,37 +281,38 @@ function interpretar(
   }
 }
 
+/** Bloco de um verbete como o modelo lê. */
+function corpoVerbete(e: EntradaCalendario): string {
+  return [
+    `ANO: ${e.ano || "(a fonte não datou)"}`,
+    `LUGAR: ${e.lugar || "(a fonte não diz)"}`,
+    `TÍTULO: ${e.titulo}`,
+    `RESUMO: ${e.resumo || "(sem resumo — o título é tudo)"}`,
+  ].join("\n");
+}
+
+/** Rótulo legível do verbete (dia/ano + título). */
+function rotuloDe(e: EntradaCalendario): string {
+  return `${e.diaMes}/${e.ano || "sem ano"} — ${e.titulo}`;
+}
+
 /**
- * Pede a análise de um verbete ao provedor configurado e devolve a leitura.
+ * Faz UMA chamada ao provedor e devolve o texto bruto e o consumo.
  *
  * Ollama: `/api/chat` com `format: "json"`. DeepSeek: `/chat/completions`
  * (formato OpenAI) com `response_format: json_object` e
  * `thinking: {type: "disabled"}` — sem raciocínio, que só encareceria uma
- * tarefa mecânica. A resposta do provedor API traz `usage`, que vira `uso`
- * (base do custo).
+ * tarefa mecânica. A resposta do provedor API traz `usage`, que vira `uso`.
  */
-async function analisar(
-  entrada: EntradaCalendario,
-  indice: number,
+async function pedirProvedor(
+  messages: { role: string; content: string }[],
   cfg: Config,
-): Promise<Analise | null> {
-  const rotulo = `${entrada.diaMes}/${entrada.ano || "sem ano"} — ${entrada.titulo}`;
-  const corpoVerbete = [
-    `ANO: ${entrada.ano || "(a fonte não datou)"}`,
-    `LUGAR: ${entrada.lugar || "(a fonte não diz)"}`,
-    `TÍTULO: ${entrada.titulo}`,
-    `RESUMO: ${entrada.resumo || "(sem resumo — o título é tudo)"}`,
-  ].join("\n");
-  const messages = [
-    { role: "system", content: promptSistema() },
-    { role: "user", content: corpoVerbete },
-  ];
-
+): Promise<{ texto: string; uso?: Uso }> {
   if (cfg.provedor === "ollama") {
     const resposta = await fetch(`${OLLAMA}/api/chat`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      signal: AbortSignal.timeout(180_000),
+      signal: AbortSignal.timeout(300_000),
       body: JSON.stringify({
         model: cfg.modelo,
         stream: false,
@@ -280,7 +324,7 @@ async function analisar(
     });
     if (!resposta.ok) throw new Error(`Ollama HTTP ${resposta.status}`);
     const dados = (await resposta.json()) as { message?: { content?: string } };
-    return interpretar(dados.message?.content ?? "", entrada, indice, rotulo);
+    return { texto: dados.message?.content ?? "" };
   }
 
   const resposta = await fetch(`${cfg.baseApi}/chat/completions`, {
@@ -289,7 +333,7 @@ async function analisar(
       "content-type": "application/json",
       authorization: `Bearer ${cfg.apiKey}`,
     },
-    signal: AbortSignal.timeout(180_000),
+    signal: AbortSignal.timeout(300_000),
     body: JSON.stringify({
       model: cfg.modelo,
       temperature: 0,
@@ -318,7 +362,80 @@ async function analisar(
     const miss = u.prompt_cache_miss_tokens ?? Math.max(0, (u.prompt_tokens ?? 0) - hit);
     uso = { hit, miss, saida: u.completion_tokens ?? 0 };
   }
-  return interpretar(dados.choices?.[0]?.message?.content ?? "", entrada, indice, rotulo, uso);
+  return { texto: dados.choices?.[0]?.message?.content ?? "", uso };
+}
+
+/** Um alvo da rodada: o verbete e o índice estável dele. */
+interface ItemAlvo {
+  indice: number;
+  entrada: EntradaCalendario;
+}
+
+/**
+ * Analisa um conjunto de verbetes. Com 1 item, usa o prompt de um verbete;
+ * com vários, faz UMA chamada em lote (prompt de lote) e casa cada resultado
+ * pelo `indice`. Devolve as análises e o consumo da chamada.
+ */
+async function analisarEntradas(
+  itens: ItemAlvo[],
+  cfg: Config,
+): Promise<{ analises: Analise[]; uso?: Uso }> {
+  if (itens.length === 1) {
+    const { indice, entrada } = itens[0];
+    const { texto, uso } = await pedirProvedor(
+      [
+        { role: "system", content: promptSistema() },
+        { role: "user", content: corpoVerbete(entrada) },
+      ],
+      cfg,
+    );
+    const a = interpretar(texto, entrada, indice, rotuloDe(entrada), uso);
+    return { analises: a ? [a] : [], uso };
+  }
+
+  const blocos = itens
+    .map((it) => `### VERBETE indice=${it.indice}\n${corpoVerbete(it.entrada)}`)
+    .join("\n\n");
+  const { texto, uso } = await pedirProvedor(
+    [
+      { role: "system", content: promptSistemaLote() },
+      { role: "user", content: blocos },
+    ],
+    cfg,
+  );
+
+  // A resposta do lote é {"resultados":[{indice,...}, ...]}. Casa por índice;
+  // o que faltar na resposta conta como não lido (o chamador soma).
+  let lista: unknown;
+  try {
+    lista = (JSON.parse(texto) as { resultados?: unknown }).resultados;
+  } catch {
+    console.warn(`[revisar] resposta de lote ilegível (${itens.length} verbetes)`);
+    return { analises: [], uso };
+  }
+  if (!Array.isArray(lista)) {
+    console.warn(`[revisar] lote sem o campo "resultados" (${itens.length} verbetes)`);
+    return { analises: [], uso };
+  }
+
+  const porIndice = new Map<number, Record<string, unknown>>();
+  for (const item of lista) {
+    if (item && typeof item === "object" && typeof (item as { indice?: unknown }).indice === "number") {
+      porIndice.set((item as { indice: number }).indice, item as Record<string, unknown>);
+    }
+  }
+
+  const analises: Analise[] = [];
+  for (const it of itens) {
+    const item = porIndice.get(it.indice);
+    if (!item) {
+      console.warn(`[revisar] lote não devolveu o índice #${it.indice}`);
+      continue;
+    }
+    const a = interpretar(JSON.stringify(item), it.entrada, it.indice, rotuloDe(it.entrada));
+    if (a) analises.push(a);
+  }
+  return { analises, uso };
 }
 
 /** Escapa barras verticais para não quebrar a tabela Markdown. */
@@ -330,6 +447,8 @@ async function main(): Promise<void> {
   const provedor = (arg("provedor") ?? "ollama") as Provedor;
   const modelo = arg("modelo") ?? (provedor === "api" ? MODELO_API : MODELO_OLLAMA);
   const baseApi = (arg("base") ?? API_PADRAO).replace(/\/+$/, "");
+  const loteArg = Number.parseInt(arg("lote") ?? "", 10);
+  const lote = Number.isFinite(loteArg) && loteArg > 0 ? loteArg : 1;
   const inicioArg = Number.parseInt(arg("inicio") ?? "", 10);
   const inicio = Number.isFinite(inicioArg) && inicioArg > 0 ? inicioArg : 0;
   const limiteArg = Number.parseInt(arg("limite") ?? "", 10);
@@ -345,11 +464,11 @@ async function main(): Promise<void> {
       );
       process.exit(2);
     }
-    cfg = { provedor, modelo, baseApi, apiKey };
+    cfg = { provedor, modelo, baseApi, apiKey, lote };
     console.log(`[revisar] provedor: API ${baseApi} — modelo ${modelo} (chave do ambiente, não impressa)`);
   } else {
     await verificarOllama(modelo);
-    cfg = { provedor, modelo, baseApi };
+    cfg = { provedor, modelo, baseApi, lote };
   }
 
   const todas = CALENDARIO_LUTAS;
@@ -358,6 +477,7 @@ async function main(): Promise<void> {
 
   console.log(`[revisar] modelo: ${modelo}`);
   console.log(`[revisar] verbetes: ${alvos.length} (índices ${inicio}..${fim - 1} de ${todas.length})`);
+  if (lote > 1) console.log(`[revisar] lote: ${lote} verbetes por chamada`);
   console.log(`[revisar] o modelo apenas SUGERE — o dado não é alterado.\n`);
 
   const analises: Analise[] = [];
@@ -365,31 +485,38 @@ async function main(): Promise<void> {
   let okSemProblema = 0;
   let ilegiveis = 0;
 
-  for (let i = 0; i < alvos.length; i++) {
-    const entrada = alvos[i];
-    const indice = inicio + i;
+  for (let i = 0; i < alvos.length; i += lote) {
+    const chunk: ItemAlvo[] = alvos
+      .slice(i, i + lote)
+      .map((entrada, j) => ({ indice: inicio + i + j, entrada }));
+    const fimBloco = Math.min(i + lote, alvos.length);
+    const etiqueta = `[${i + 1}-${fimBloco}/${alvos.length}]`;
     try {
-      const a = await analisar(entrada, indice, cfg);
-      if (!a) {
-        ilegiveis++;
-        continue;
+      const { analises: lidas, uso } = await analisarEntradas(chunk, cfg);
+      if (uso) {
+        usoTotal.hit += uso.hit;
+        usoTotal.miss += uso.miss;
+        usoTotal.saida += uso.saida;
       }
-      if (a.uso) {
-        usoTotal.hit += a.uso.hit;
-        usoTotal.miss += a.uso.miss;
-        usoTotal.saida += a.uso.saida;
+      for (const a of lidas) {
+        analises.push(a);
+        if (!a.solta) okSemProblema++;
+        else {
+          console.log(
+            `${etiqueta} SOLTA  ${a.rotulo}\n` +
+              `             falta: ${a.faltando.join(", ") || "(não listado)"} — ${a.motivo}`,
+          );
+        }
       }
-      analises.push(a);
-      if (!a.solta) okSemProblema++;
-      if (a.solta) {
-        console.log(
-          `[${i + 1}/${alvos.length}] SOLTA  ${a.rotulo}\n` +
-            `             falta: ${a.faltando.join(", ") || "(não listado)"} — ${a.motivo}`,
-        );
+      const faltaram = chunk.length - lidas.length;
+      if (faltaram > 0) {
+        ilegiveis += faltaram;
+        console.warn(`${etiqueta} ${faltaram} verbete(s) sem resposta no lote`);
       }
+      if (lote > 1) console.log(`${etiqueta} lote ok: ${lidas.length}/${chunk.length}`);
     } catch (e) {
-      ilegiveis++;
-      console.warn(`[${i + 1}/${alvos.length}] erro: ${e instanceof Error ? e.message : e}`);
+      ilegiveis += chunk.length;
+      console.warn(`${etiqueta} erro: ${e instanceof Error ? e.message : e}`);
     }
   }
 
@@ -445,6 +572,18 @@ async function main(): Promise<void> {
   linhas.push(`- Sinalizados como soltos: ${soltas.length}`);
   linhas.push(`- Sem problema: ${okSemProblema}`);
   if (ilegiveis) linhas.push(`- respostas ilegíveis: ${ilegiveis}`);
+  linhas.push("");
+  linhas.push("## Títulos curtos propostos (um por verbete)");
+  linhas.push("");
+  linhas.push("| # | dia/ano | título atual | título curto proposto |");
+  linhas.push("|---|---|---|---|");
+  for (const a of acumulado) {
+    linhas.push(
+      `| ${a.indice} | ${md(a.rotulo.split(" — ")[0])} | ${md(a.titulo)} | ${md(a.tituloCurto || "(vazio)")} |`,
+    );
+  }
+  linhas.push("");
+  linhas.push("## Frases soltas sinalizadas");
   linhas.push("");
   linhas.push("| # | dia/ano | falta | ANTES (título + resumo) | SUGESTÃO |");
   linhas.push("|---|---|---|---|---|");

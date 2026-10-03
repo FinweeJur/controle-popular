@@ -1,17 +1,18 @@
 {
-  "atualizadoEm": "2026-10-03T15:07:07.381Z",
-  "modelo": "qwen2.5:3b-instruct",
+  "atualizadoEm": "2026-10-03T15:13:39.430Z",
+  "modelo": "deepseek-flash",
   "totalCalendario": 494,
   "analisados": 30,
-  "soltas": 11,
+  "soltas": 13,
   "resultados": [
     {
       "indice": 0,
       "rotulo": "01-01/1849 — Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Os praieiros, em 1º de janeiro de 1849, apresentaram seu programa de sufrágio universal e liberdade de imprensa em Recife. A população urbana pobre, camponeses, negros e negras libertas aderiram à revolta em fevereiro de 1849, invadindo o Recife com cerca de 2.500 pessoas.",
+      "motivo": "Título e resumo trazem sujeito (praieiros), ação (apresentaram programa e aderiram à revolta), lugar (Recife) e período (1849); o resumo complementa com os grupos e o número de pessoas.",
+      "sugestao": "",
+      "tituloCurto": "Revolta Praieira",
       "titulo": "Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
       "resumo": "Aderiram à revolta a população urbana pobre, camponeses, negros e negras libertos. Em fevereiro de 1849, adentraram o Recife com cerca de 2.500 pessoas."
     },
@@ -19,11 +20,10 @@
       "indice": 1,
       "rotulo": "01-01/1959 — Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa.",
       "solta": false,
-      "faltando": [
-        "vitima"
-      ],
-      "motivo": "falta vitima",
-      "sugestao": "Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa. Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita, como foi o caso do regime ditatorial de Fulgêncio Batista, que impôs seu governo a Cuba entre 1933 e 1944, e novamente de 1952 a 1959. No final de 1958, as tropas rebeldes se acercam de Havana, a capital de Cuba, e é convocada uma greve geral.",
+      "faltando": [],
+      "motivo": "Título e resumo informam sujeito (Fulgêncio Batista e tropas rebeldes), ação (fuga e triunfo da revolução), lugar (Cuba/Havana) e período (1959).",
+      "sugestao": "",
+      "tituloCurto": "Triunfo da Revolução Cubana",
       "titulo": "Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa.",
       "resumo": "Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita, como foi o caso do regime ditatorial de Fulgêncio Batista, que impôs seu governo a Cuba entre 1933 e 1944, e novamente de 1952 a 1959.\n\nNo final de 1958, as tropas rebeldes se acercam de Havana, a capital de Cuba, e é convocada uma greve geral."
     },
@@ -32,21 +32,20 @@
       "rotulo": "01-01/1994 — Revolução Zapatista em Chiapas, México",
       "solta": false,
       "faltando": [],
-      "motivo": "",
+      "motivo": "Título e resumo apresentam sujeito (EZLN), ação (levante e tomada de cidade), lugar (Chiapas, México) e período (1994).",
       "sugestao": "",
+      "tituloCurto": "Revolta Zapatista em Chiapas",
       "titulo": "Revolução Zapatista em Chiapas, México",
       "resumo": "Não por coincidência, mas por apego simbólico às datas e à necessidade de suas disputas, no dia em que passou a vigorar o NAFTA – tratado que criava uma zona de livre comércio entre os países da América do Norte, que levaria ao aprofundamento da dependência mexicana para com os EUA e Canadá –, no ponto mais austral do subcontinente o Ejército Zapatista de Libéracion Nacional (EZLN) toma a cidade\n\nO levante comandado pelo Exército Zapatista de Libertação Nacional (EZLN) tomou todo o estado de Chiapas e algumas regiões próximas. A reação do governo foi de forte ofensiva militar, mas, mesmo recuando, o EZLN manteve o controle sobre a região."
     },
     {
       "indice": 3,
       "rotulo": "01-02/1975 — Assassinato sumário de Siraj Sikder pelo aparelho de repressão do Estado bengali",
-      "solta": false,
-      "faltando": [
-        "lugar",
-        "periodo"
-      ],
-      "motivo": "curto",
-      "sugestao": "O conturbado contexto asiático do início dos anos 1970 teve em Bangladesh um dos seus grandes epicentros. Siraj Sikder, um líder político bengali, foi assassinado sumariamente pelo aparelho de repressão do Estado em 1975.",
+      "solta": true,
+      "faltando": [],
+      "motivo": "O resumo é uma frase solta sobre o contexto asiático, sem sujeito, ação, vítima, lugar ou período; o título menciona o assassinato, mas o resumo não o desenvolve.",
+      "sugestao": "",
+      "tituloCurto": "Assassinato de Siraj Sikder",
       "titulo": "Assassinato sumário de Siraj Sikder pelo aparelho de repressão do Estado bengali",
       "resumo": "O conturbado contexto asiático do início dos anos 1970 teve em Bangladesh um dos seus grandes epicentros."
     },
@@ -55,8 +54,9 @@
       "rotulo": "01-03/1898 — 3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro.",
       "solta": false,
       "faltando": [],
-      "motivo": "",
+      "motivo": "Título e resumo trazem sujeito, ação, lugar e período; o título atual é longo e repetitivo, mas a informação está completa.",
       "sugestao": "",
+      "tituloCurto": "Nascimento de Luiz Carlos Prestes",
       "titulo": "3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro.",
       "resumo": "Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro. Cavaleiro da Esperança , como o chamou o escritor Jorge Amado, participou do Movimento Tenentista em 1922 e, em 1924, inicia em Santo Ângelo, no Rio Grande do Sul, a Coluna Prestes, que andou por quase todo o Brasil – mais de 35 mil quilômetros – a cavalo e a pé, durante dois anos."
     },
@@ -65,13 +65,11 @@
       "rotulo": "01-03/1959 — Chega à frente de sua coluna em 3 de janeiro de 1959.",
       "solta": true,
       "faltando": [
-        "sujeito",
-        "acao",
-        "vitima",
-        "periodo"
+        "sujeito"
       ],
-      "motivo": "faltam elementos essenciais para uma narração completa e clara.",
-      "sugestao": "Ao triunfo da revolução, por ordens de Fidel, parte a Havana para ocupar a Fortaleza de São Carlos de La Cabaña. Chega à frente de sua coluna em 3 de janeiro de 1959.",
+      "motivo": "O resumo não nomeia quem chega à frente da coluna; só se deduz pelo contexto externo.",
+      "sugestao": "",
+      "tituloCurto": "Chegada a Havana e ocupação da Cabaña",
       "titulo": "Chega à frente de sua coluna em 3 de janeiro de 1959.",
       "resumo": "Ao triunfo da revolução, por ordens de Fidel, parte a Havana para ocupar a Fortaleza de São Carlos de La Cabaña. Chega à frente de sua coluna em 3 de janeiro de 1959."
     },
@@ -79,11 +77,10 @@
       "indice": 6,
       "rotulo": "01-03/1961 — Início da revolta camponesa da Baixa de Cassange, em Angola",
       "solta": false,
-      "faltando": [
-        "periodo"
-      ],
-      "motivo": "falta o período em que se passa o evento",
+      "faltando": [],
+      "motivo": "Título e resumo identificam sujeito coletivo, ação, alvo, lugar e período.",
       "sugestao": "",
+      "tituloCurto": "Revolta Camponesa da Baixa de Cassange",
       "titulo": "Início da revolta camponesa da Baixa de Cassange, em Angola",
       "resumo": "Lutando por melhores condições de vida e trabalho, dadas as condições subhumanas a que se viam sujeitos e sujeitas na colheita do algodão pela COTONANG, dezenas de milhares de camponeses se colocaram em luta na região da Baixa de Cassanje, em Angola."
     },
@@ -92,8 +89,9 @@
       "rotulo": "01-04/1923 — Lenin registra que Stálin não deveria ser Secretário Geral do PCUS",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Marque solta=false pois o título e resumo já deixam claro quem (Lenin), o quê (sinaliza fissuras), quem foi o alvo (Stálin), onde (PCUS) e quando (dezembro de 1922).",
+      "motivo": "Título e resumo trazem sujeito, ação, alvo e período; o lugar não é essencial.",
+      "sugestao": "",
+      "tituloCurto": "Testamento político de Lenin",
       "titulo": "Lenin registra que Stálin não deveria ser Secretário Geral do PCUS",
       "resumo": "Em dezembro de 1922, Lenin elaborou uma carta ao Congresso que se tornou conhecida como seu testamento político. No texto, para além de outros tantos indicativos políticos – inclusive marcados pela necessidade de aprofundamento democrático da estrutura do PCUS –, sinaliza fissuras que poderiam levar à ruptura da organização política."
     },
@@ -102,134 +100,191 @@
       "rotulo": "01-04/1988 — Morreu em 4 de janeiro de 1988, vítima da Aids, doença que contraiu durante uma transfusão de sangue.",
       "solta": true,
       "faltando": [
-        "periodo"
+        "sujeito",
+        "lugar"
       ],
-      "motivo": "falta o período/século/ano se passa",
-      "sugestao": "Morreu em 4 de janeiro de 1988, vítima da AIDS, doença que contraiu durante uma transfusão de sangue.",
+      "motivo": "O título traz a data e a causa da morte, mas não nomeia quem morreu; o resumo é apenas a referência bibliográfica, sem sujeito, ação ou lugar.",
+      "sugestao": "",
       "titulo": "Morreu em 4 de janeiro de 1988, vítima da Aids, doença que contraiu durante uma transfusão de sangue.",
-      "resumo": "São Paulo: Expressão Popular, 2008."
+      "resumo": "São Paulo: Expressão Popular, 2008.",
+      "uso": {
+        "hit": 256,
+        "miss": 290,
+        "saida": 69
+      }
     },
     {
       "indice": 9,
       "rotulo": "01-05/1968 — Alexander Dubček chega ao poder na Tchecoslováquia e se inicia a Primavera de Praga",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Alexander Dubček chega ao poder na Tchecoslováquia em 1968, após anos de autoritarismo sob Antonin Novotny.",
+      "motivo": "Título e resumo trazem sujeito (Dubček, Novotny, mobilizações populares), ação (assume o poder, inicia a Primavera de Praga), alvo (regime autoritário de Novotny), lugar (Tchecoslováquia) e período (5 de janeiro de 1968).",
+      "sugestao": "",
       "titulo": "Alexander Dubček chega ao poder na Tchecoslováquia e se inicia a Primavera de Praga",
-      "resumo": "Após anos de mando sob batuta autoritária de Antonin Novotny – outrora Secretário Geral, e no momento Primeiro Secretário do Comitê Central do Partido Comunista da Tchecoslováquia –, vendo-se pressionado por mobilizações populares que reclamavam transformações radicais no regime então em voga no país, em 5 de janeiro de 1968 Alexander Dubček assume o mais alto posto político do país."
+      "resumo": "Após anos de mando sob batuta autoritária de Antonin Novotny – outrora Secretário Geral, e no momento Primeiro Secretário do Comitê Central do Partido Comunista da Tchecoslováquia –, vendo-se pressionado por mobilizações populares que reclamavam transformações radicais no regime então em voga no país, em 5 de janeiro de 1968 Alexander Dubček assume o mais alto posto político do país.",
+      "uso": {
+        "hit": 256,
+        "miss": 377,
+        "saida": 99
+      }
     },
     {
       "indice": 10,
       "rotulo": "01-06/1835 — Início da Revolta dos Cabanos",
       "solta": false,
       "faltando": [],
-      "motivo": "",
-      "sugestao": "Marque solta=false quando título+resumo já deixam claro quem, o quê, quem foi o alvo, onde e quando.",
+      "motivo": "Título e resumo deixam claro quem (população da Província do Grão-Pará/cabanos), o quê (levante e repressão), alvo (governo imperial), lugar (Grão-Pará/Belém) e período (1835).",
+      "sugestao": "",
       "titulo": "Início da Revolta dos Cabanos",
-      "resumo": "Nesta noite, 185 anos nos separarão do momento em que a população da Província do Grão-Pará se levantou em luta por melhores condições de vida. Os ecos das revoluções estadunidense, francesa e haitiana eram então audíveis.\n\nO governo imperial enviou tropas para derrotar os rebeldes, além de uma esquadra de navios de guerra, que bombardeou a capital. Com a cidade sitiada, a fome e a varíola se instalando, os cabanos foram expulsos de Belém."
+      "resumo": "Nesta noite, 185 anos nos separarão do momento em que a população da Província do Grão-Pará se levantou em luta por melhores condições de vida. Os ecos das revoluções estadunidense, francesa e haitiana eram então audíveis.\n\nO governo imperial enviou tropas para derrotar os rebeldes, além de uma esquadra de navios de guerra, que bombardeou a capital. Com a cidade sitiada, a fome e a varíola se instalando, os cabanos foram expulsos de Belém.",
+      "uso": {
+        "hit": 256,
+        "miss": 383,
+        "saida": 85
+      }
     },
     {
       "indice": 11,
       "rotulo": "01-07/1835 — A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início do movimento Cabano: A Cabanagem.",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início da Cabanagem, uma das mais violentas revoltas populares no Brasil. Seus antecedentes datam de 1823, após o Pará ter aderido à independência.",
+      "motivo": "Título e resumo já trazem sujeito (movimento Cabano/Cabanagem), ação (início da revolta), vítimas/alvo implícitos (revolta popular), lugar (Pará) e período (1835, antecedentes desde 1823).",
+      "sugestao": "",
       "titulo": "A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início do movimento Cabano: A Cabanagem.",
-      "resumo": "Esta foi uma das mais violentas revoltas populares no Brasil. Seus antecedentes foram vários a partir de 1823, após o Pará ter aderido à Independência – foi o último a aderir."
+      "resumo": "Esta foi uma das mais violentas revoltas populares no Brasil. Seus antecedentes foram vários a partir de 1823, após o Pará ter aderido à Independência – foi o último a aderir.",
+      "uso": {
+        "hit": 256,
+        "miss": 327,
+        "saida": 83
+      }
     },
     {
       "indice": 12,
       "rotulo": "01-07/1919 — Início da Semana Trágica, em Buenos Aires",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Início da Semana Trágica, em 1919, em Buenos Aires: Operários da Vesena, maior empresa metalúrgica da América do Sul, em greve por direitos trabalhistas, são atacados violentamente pela polícia.",
+      "motivo": "Título e resumo já trazem sujeito (operários da indústria Vesena), ação (greve e repressão), vítimas/alvo (os operários), lugar (Buenos Aires) e período (1919, greve desde dezembro de 1918).",
+      "sugestao": "",
       "titulo": "Início da Semana Trágica, em Buenos Aires",
-      "resumo": "Em greve desde dezembro de 1918 por melhores salários, redução de jornada de trabalho, pagamento de adicional de horas extras e outros direitos trabalhistas, os operários da indústria Vesena – a maior empresa metalúrgica da América do Sul – se viram alvo de um dos mais sangrentos episódios da autoritária história argentina."
+      "resumo": "Em greve desde dezembro de 1918 por melhores salários, redução de jornada de trabalho, pagamento de adicional de horas extras e outros direitos trabalhistas, os operários da indústria Vesena – a maior empresa metalúrgica da América do Sul – se viram alvo de um dos mais sangrentos episódios da autoritária história argentina.",
+      "uso": {
+        "hit": 256,
+        "miss": 342,
+        "saida": 86
+      }
     },
     {
       "indice": 13,
       "rotulo": "01-07/sem ano — Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro).",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "1809: Trabalhadores escravizados nagôs, haussás e jejes se insurgem no Recôncavo baiano. Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos em 7 de janeiro.",
+      "motivo": "Título e resumo trazem sujeito (trabalhadores escravizados nagôs, haussás e jejes), ação (insurreição, queima de canaviais, fuga, ataque), alvo (senhores/canaviais e a vila de Nazaré das Farinhas), lugar (Recôncavo baiano) e período (1809, 7 de janeiro).",
+      "sugestao": "",
       "titulo": "Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro).",
-      "resumo": "1809: Trabalhadores escravizados nagôs, haussás e jejes se insurgem no Recôncavo baiano. Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro)."
+      "resumo": "1809: Trabalhadores escravizados nagôs, haussás e jejes se insurgem no Recôncavo baiano. Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro).",
+      "uso": {
+        "hit": 256,
+        "miss": 351,
+        "saida": 116
+      }
     },
     {
       "indice": 14,
       "rotulo": "01-08/1959 — Fidel Castro entra em La Habana",
       "solta": false,
       "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Fidel Castro chega a La Habana sete dias após a Revolução Cubana. Em meio a greves e mobilizações, já se sente a convulsão social.",
+      "motivo": "Título e resumo trazem sujeito (Fidel Castro e guerrilheiros), ação (entrada em La Habana), lugar (capital cubana) e período (1959, sete dias após o trunfo da Revolução).",
+      "sugestao": "",
       "titulo": "Fidel Castro entra em La Habana",
-      "resumo": "Sete dias após o trunfo da Revolução Cubana, Fidel Castro e outros guerrilheiros chegam à capital cubana. Muito embora lida por muitos como a “consolidação” da tomada de poder pelos desembarcados do Granma , é certo que tanto neste centro urbano como em outros o processo de convulsão social já se dára, com profundas greves e mobilizações de massa."
+      "resumo": "Sete dias após o trunfo da Revolução Cubana, Fidel Castro e outros guerrilheiros chegam à capital cubana. Muito embora lida por muitos como a “consolidação” da tomada de poder pelos desembarcados do Granma , é certo que tanto neste centro urbano como em outros o processo de convulsão social já se dára, com profundas greves e mobilizações de massa.",
+      "uso": {
+        "hit": 256,
+        "miss": 350,
+        "saida": 75
+      }
     },
     {
       "indice": 15,
       "rotulo": "01-09/1920 — Nascimento de João Cabral de Melo Neto",
-      "solta": false,
-      "faltando": [],
-      "motivo": "curto",
-      "sugestao": "Nenhum texto sugerido, pois o título e resumo já deixam claro o contexto sem necessidade de adição.",
+      "solta": true,
+      "faltando": [
+        "lugar"
+      ],
+      "motivo": "O resumo é um trecho poético sem sujeito, ação, vítima ou lugar; o título informa o nascimento, mas o resumo não narra o fato.",
+      "sugestao": "Em 1920, nasce João Cabral de Melo Neto. O poeta pernambucano cantou a luta e a vida do povo. 'Um galo sozinho não tece uma manhã': a memória se tece entre todos.",
       "titulo": "Nascimento de João Cabral de Melo Neto",
-      "resumo": "Um galo sozinho não tece uma manhã: ele precisará sempre de outros galos. De um que apanhe esse grito que ele e o lance a outro; de um outro galo que apanhe o grito de um galo antes e o lance a outro; e de outros galos que com muitos outros galos se cruzem os fios de sol de seus gritos de galo, pata que a manhã, desde uma teia tênue, se vá tecendo, entre todos os galos."
+      "resumo": "Um galo sozinho não tece uma manhã: ele precisará sempre de outros galos. De um que apanhe esse grito que ele e o lance a outro; de um outro galo que apanhe o grito de um galo antes e o lance a outro; e de outros galos que com muitos outros galos se cruzem os fios de sol de seus gritos de galo, pata que a manhã, desde uma teia tênue, se vá tecendo, entre todos os galos.",
+      "uso": {
+        "hit": 256,
+        "miss": 375,
+        "saida": 124
+      }
     },
     {
       "indice": 16,
       "rotulo": "01-10/1981 — Início da Revolução Salvadorenha",
-      "solta": true,
-      "faltando": [
-        "sujeito",
-        "acao",
-        "vitima",
-        "periodo"
-      ],
-      "motivo": "falta de elementos essenciais",
+      "solta": false,
+      "faltando": [],
+      "motivo": "Título e resumo deixam claro o sujeito (povo de El Salvador), a ação (início da revolução/guerra civil), o lugar (El Salvador) e o período (virada dos anos 1980, 1981).",
       "sugestao": "",
       "titulo": "Início da Revolução Salvadorenha",
-      "resumo": "Na virada dos anos 1980, o epicentro da revolução internacional estava na América Central. Já irrompido o levante sandinista na Nicarágua, e às vésperas da intensificação da insurreição guatemalteca, o povo de El Salvador passa a viver sob guerra civil."
+      "resumo": "Na virada dos anos 1980, o epicentro da revolução internacional estava na América Central. Já irrompido o levante sandinista na Nicarágua, e às vésperas da intensificação da insurreição guatemalteca, o povo de El Salvador passa a viver sob guerra civil.",
+      "uso": {
+        "hit": 256,
+        "miss": 328,
+        "saida": 77
+      }
     },
     {
       "indice": 17,
       "rotulo": "01-11/1929 — Assassinato de Julio Antonio Mella, mártir da Revolução Latino-Americana",
-      "solta": false,
+      "solta": true,
       "faltando": [
-        "vitima"
+        "lugar"
       ],
-      "motivo": "falta vitima",
-      "sugestao": "Julio Antonio Mella, jovem militante e fundador do Partido Comunista Cubano, foi nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária.",
+      "motivo": "O resumo não diz onde ocorreu o assassinato; o título e o resumo não informam o lugar, e a fonte não o traz.",
+      "sugestao": "Fundador do Partido Comunista Cubano em 1925, Julio Antonio Mella foi o jovem militante – à época com 22 anos – nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária. Em 1929, foi assassinado, tornando-se mártir da Revolução Latino-Americana.",
       "titulo": "Assassinato de Julio Antonio Mella, mártir da Revolução Latino-Americana",
-      "resumo": "Fundador do Partido Comunista Cubano em 1925, foi o jovem militante – à época com 22 anos – Julio Antonio Mella nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária."
+      "resumo": "Fundador do Partido Comunista Cubano em 1925, foi o jovem militante – à época com 22 anos – Julio Antonio Mella nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária.",
+      "uso": {
+        "hit": 256,
+        "miss": 349,
+        "saida": 162
+      }
     },
     {
       "indice": 18,
       "rotulo": "01-12/1886 — Após a morte de Alexandre, a família, também já sem o pai (que havia falecido em 12 de janeiro de 1886), mudou-se para Kazan, onde Vladimir entrou para a faculdade de direito.",
       "solta": false,
       "faltando": [],
-      "motivo": "",
+      "motivo": "Título e resumo trazem sujeito (Vladimir, a família), ação (mudança para Kazan, entrada na faculdade, execução de Alexandre), vítima/alvo (Alexandre executado, atentado contra o tsar), lugar (Kazan) e período (1886, 1887).",
       "sugestao": "",
       "titulo": "Após a morte de Alexandre, a família, também já sem o pai (que havia falecido em 12 de janeiro de 1886), mudou-se para Kazan, onde Vladimir entrou para a faculdade de direito.",
-      "resumo": "Vladimir era o quarto filho de oito irmãos, dos quais dois morreram ainda pequenos. Alexandre, o mais velho, foi executado em 8 de maio de 1887, com 21 anos de idade, por ter participado de um atentado contra o tsar Alexandre III."
+      "resumo": "Vladimir era o quarto filho de oito irmãos, dos quais dois morreram ainda pequenos. Alexandre, o mais velho, foi executado em 8 de maio de 1887, com 21 anos de idade, por ter participado de um atentado contra o tsar Alexandre III.",
+      "uso": {
+        "hit": 256,
+        "miss": 365,
+        "saida": 97
+      }
     },
     {
       "indice": 19,
       "rotulo": "01-12/2010 — Perdemos Daniel Bensaïd",
       "solta": true,
       "faltando": [
-        "sujeito",
+        "lugar",
         "acao",
-        "vitima",
-        "periodo"
+        "vitima"
       ],
-      "motivo": "falta de elementos essenciais para uma narração completa",
-      "sugestao": "Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular. Este texto, escrito na primeira pessoa do singular, não menciona quem é o personagem principal, o que aconteceu, quem foi vítima ou alvo, nem em que período histórico se passa.",
+      "motivo": "O resumo é uma frase solta em primeira pessoa que não diz o que aconteceu, quem foi o alvo nem onde; o título apenas anuncia a perda de Daniel Bensaïd.",
+      "sugestao": "Perdemos Daniel Bensaïd. Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular.",
       "titulo": "Perdemos Daniel Bensaïd",
-      "resumo": "Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular."
+      "resumo": "Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular.",
+      "uso": {
+        "hit": 256,
+        "miss": 278,
+        "saida": 104
+      }
     },
     {
       "indice": 20,
