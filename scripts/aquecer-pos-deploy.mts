@@ -28,7 +28,8 @@
  * sequencial e espaçado — mesma razão do incêndio medido acima.
  *
  * Uso:
- *   npx tsx scripts/aquecer-pos-deploy.mts                  # produção, lista cheia
+ *   npx tsx scripts/aquecer-pos-deploy.mts                  # produção, 15 primeiras (padrão Starter)
+ *   npx tsx scripts/aquecer-pos-deploy.mts --tudo           # lista inteira (plano com folga)
  *   npx tsx scripts/aquecer-pos-deploy.mts --limite=5       # só as 5 primeiras
  *   npx tsx scripts/aquecer-pos-deploy.mts --base=http://localhost:3000
  *
@@ -56,6 +57,17 @@ const BASE_PADRAO = "https://www.controlepopular.com.br";
  */
 const USER_AGENT =
   "ControlePopular/1.0 (aquecimento pos-deploy; https://www.controlepopular.com.br)";
+
+/**
+ * Quantas páginas aquecer POR PADRÃO (quando não vem `--limite`).
+ *
+ * PORQUÊ (medido 03/10/2026): o plano Starter dá ~256 MiB por container e o
+ * app já vive colado no teto (~245 MiB em repouso). A lista completa (~124
+ * rotas) é uma rajada: a memória subiu a ~673 MB e o pod REINICIOU. Então o
+ * padrão aquece só as primeiras 15 rotas (home + topo da lista); a lista
+ * inteira só com `--tudo`, em plano com folga (Pro, 512 MiB).
+ */
+const LIMITE_PADRAO = 15;
 
 /**
  * Pausa entre uma requisição e a próxima, em ms.
@@ -257,8 +269,14 @@ function formatarBytes(bytes: number): string {
 
 async function main(): Promise<void> {
   const base = (arg("base") ?? BASE_PADRAO).replace(/\/+$/, "");
+  const tudo = process.argv.includes("--tudo");
   const limiteArg = Number.parseInt(arg("limite") ?? "", 10);
-  const limite = Number.isFinite(limiteArg) && limiteArg > 0 ? limiteArg : undefined;
+  // Padrão conservador (Starter): LIMITE_PADRAO rotas. `--tudo` libera a lista.
+  const limite = tudo
+    ? undefined
+    : Number.isFinite(limiteArg) && limiteArg > 0
+      ? limiteArg
+      : LIMITE_PADRAO;
 
   const alvosCompletos = carregarAlvos();
   const alvos = limite ? alvosCompletos.slice(0, limite) : alvosCompletos;
