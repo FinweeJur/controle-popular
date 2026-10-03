@@ -59,7 +59,7 @@ function TituloMistica({ item }: { item: ItemMistica }) {
       {item.seloAno ? (
         <span className="font-semibold">{item.entrada.ano}: </span>
       ) : null}
-      {item.entrada.titulo}
+      {item.entrada.tituloCurto ?? item.entrada.titulo}
     </>
   );
 }

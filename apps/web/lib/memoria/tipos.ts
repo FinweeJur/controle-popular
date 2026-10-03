@@ -125,6 +125,13 @@ export interface EntradaCalendario {
   ano: string;
   /** O fato em uma frase curta. */
   titulo: string;
+  /**
+   * Título CURTO (nome de acontecimento, ex.: "Revolta da Balaiada"),
+   * proposto na revisão assistida e aplicado pela curadoria
+   * (`lib/memoria/correcoes.ts`). A tela prefere este ao `titulo` longo;
+   * ausente = usa o `titulo`.
+   */
+  tituloCurto?: string;
   /** Contexto adicional, quando a fonte traz. */
   resumo?: string;
   /** Ao menos um tipo de luta. */

@@ -27,7 +27,7 @@
  *   ano do fato, o selo `ano:` some.
  */
 
-import { CALENDARIO_LUTAS } from "./calendario";
+import { CALENDARIO } from "./correcoes";
 import type { EntradaCalendario } from "./tipos";
 
 /** Abreviação de mês da norma ABNT para a data de acesso. */
@@ -48,7 +48,7 @@ export function chaveDiaMes(data: Date): string {
 
 /** Índice dia → entradas, montado uma vez na carga do módulo. */
 const POR_DIA: Map<string, EntradaCalendario[]> = new Map();
-for (const entrada of CALENDARIO_LUTAS) {
+for (const entrada of CALENDARIO) {
   const lista = POR_DIA.get(entrada.diaMes) ?? [];
   lista.push(entrada);
   POR_DIA.set(entrada.diaMes, lista);

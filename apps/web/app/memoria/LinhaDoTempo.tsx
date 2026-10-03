@@ -40,6 +40,8 @@ export interface VerbeteLinha {
   diaMes: string;
   ano: string;
   titulo: string;
+  /** Título curto (nome de acontecimento), quando a curadoria propôs. */
+  tituloCurto?: string;
   resumo?: string;
   tipo: TipoLuta[];
   fonteCurta: string;
@@ -94,7 +96,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
       if (tipos.size > 0 && !v.tipo.some((t) => tipos.has(t))) return false;
       if (alvo) {
         const texto = normalizar(
-          `${v.titulo} ${v.resumo ?? ""} ${v.lugar ?? ""} ${v.fonteCurta} ${v.dataLabel}`,
+          `${v.titulo} ${v.tituloCurto ?? ""} ${v.resumo ?? ""} ${v.lugar ?? ""} ${v.fonteCurta} ${v.dataLabel}`,
         );
         if (!texto.includes(alvo)) return false;
       }
@@ -267,7 +269,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                       </span>
                       <span className="text-xs text-muted">{v.dataLabel}</span>
                     </div>
-                    <h3 className="mt-0.5 font-semibold text-foreground">{v.titulo}</h3>
+                    <h3 className="mt-0.5 font-semibold text-foreground">{v.tituloCurto ?? v.titulo}</h3>
                     {v.resumo
                       ? v.resumo.split(/\n{2,}/).map((paragrafo, j) => (
                           <p
@@ -286,7 +288,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                         <BotaoVoarAte
                           lat={v.lat}
                           lon={v.lon}
-                          nome={`${v.titulo} — ${v.lugar}${v.uf ? `/${v.uf}` : ""}`}
+                          nome={`${v.tituloCurto ?? v.titulo} — ${v.lugar}${v.uf ? `/${v.uf}` : ""}`}
                           ctx={v.ctx}
                         />
                       </p>

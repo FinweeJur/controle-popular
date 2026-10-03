@@ -3,7 +3,7 @@ import Link from "next/link";
 import { History, ExternalLink } from "lucide-react";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { metadataEditavel } from "@/lib/edicoes";
-import { CALENDARIO_LUTAS } from "@/lib/memoria/calendario";
+import { CALENDARIO } from "@/lib/memoria/correcoes";
 import { localDaEntrada } from "@/lib/memoria/locais";
 import {
   bensTombadosRurais,
@@ -46,6 +46,20 @@ const Vazio = ({ children }: { children: string }) => (
   <p className="rounded-xl border border-border p-4 text-sm text-text-soft">{children}</p>
 );
 
+/**
+ * Cartão de número do resumo. Fica no MÓDULO, não dentro do `render` — a
+ * regra `react-hooks/static-components` proíbe criar componente durante o
+ * render (era o caso antes; nenhum estado/efeito mudou, só a posição).
+ */
+function Cartao({ valor, rotulo }: { valor: string; rotulo: string }) {
+  return (
+    <div className="rounded-2xl border border-border bg-surface-2 p-4">
+      <p className="text-2xl font-semibold tabular-nums">{valor}</p>
+      <p className="mt-1 text-sm text-text-soft">{rotulo}</p>
+    </div>
+  );
+}
+
 export default function PaginaHistoria() {
   const caps = capitanias();
   const fazendas = fazendasTombadas();
@@ -54,18 +68,18 @@ export default function PaginaHistoria() {
   const bensFederais = bensTombadosRurais();
   const protegidas = mineracaoProtegida();
 
-  const revoltas = CALENDARIO_LUTAS.flatMap((e) => {
+  const revoltas = CALENDARIO.flatMap((e) => {
     const local = localDaEntrada(e);
     if (!local) return [];
     return [{
       data: e.diaMes.split("-").reverse().join("/"),
       ano: e.ano,
-      titulo: e.titulo,
+      titulo: e.tituloCurto ?? e.titulo,
       lugar: local.nome,
       uf: local.uf,
       lat: local.lat,
       lon: local.lon,
-      nomeVoo: `${e.titulo} — ${local.nome}/${local.uf}`,
+      nomeVoo: `${e.tituloCurto ?? e.titulo} — ${local.nome}/${local.uf}`,
       ctx: local.ctx ?? null,
     }];
   });
@@ -137,13 +151,6 @@ export default function PaginaHistoria() {
 
   const totalUC = protegidas.find((p) => p.camada === "mineracao-em-uc")?.total ?? 0;
   const totalQuil = protegidas.find((p) => p.camada === "mineracao-em-quilombo")?.total ?? 0;
-
-  const Cartao = ({ valor, rotulo }: { valor: string; rotulo: string }) => (
-    <div className="rounded-2xl border border-border bg-surface-2 p-4">
-      <p className="text-2xl font-semibold tabular-nums">{valor}</p>
-      <p className="mt-1 text-sm text-text-soft">{rotulo}</p>
-    </div>
-  );
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
