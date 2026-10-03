@@ -82,6 +82,12 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_TELEMETRY_DISABLED=1
+# TETO DE MEMÓRIA DO CONTAINER (plano Starter): 64 MB de request / 256 MB de
+# burst (docs.guaracloud: "RAM por container 256 MB"). O Next standalone tenta
+# crescer até ~500 MB e o kernel mata o pod — foi o crash_loop de 03/10/2026.
+# Capar o heap do V8 ABAIXO do teto faz o GC recolher a tempo em vez de o
+# container ser morto pelo OOM. Se subir para o Pro (512 MB), suba para ~448.
+ENV NODE_OPTIONS="--max-old-space-size=192"
 
 # ⚠️ OBRIGATÓRIO: definir DATABASE_URL no dashboard do Guara Cloud — em runtime
 # E marcada como "Build" (a flag --build do `guara env set`). Em runtime,

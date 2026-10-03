@@ -122,7 +122,9 @@ function criarLocal(url: string): DB {
   const poolConfig: Record<string, unknown> = {
     connectionString: url,
     connectionTimeoutMillis: 5000,
-    max: 10,
+    // Container do Guara (Starter) tem 256 MB de burst: 3 conexões bastam e
+    // cada socket/pool custa memória. Era 10; medido 03/10/2026.
+    max: 3,
     idleTimeoutMillis: 30000,
   };
 

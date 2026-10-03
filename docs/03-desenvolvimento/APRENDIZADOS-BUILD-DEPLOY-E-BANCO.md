@@ -2,7 +2,7 @@
 
 > **Tipo:** DESENVOLVIMENTO
 > **Domínio:** global (build, deploy, banco de dados, ETL)
-> **Última medição:** 2026-10-02
+> **Última medição:** 2026-10-03
 > **Leitura estimada:** media
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [FONTES.md](../06-fontes/FONTES.md)
 > **Palavras-chave:** build, deploy, guara, docker, contexto, quota, postgres, etl, neon, reserva, ssl, pg_dump, cpf
@@ -27,6 +27,14 @@ em [OPERACAO.md](../05-operacao/OPERACAO.md); as armadilhas duráveis, na tabela
   (`guara deploy --project controle-popular`), ~17 min, e o plano Starter dá
   **250 min/ciclo**. Auto-deploy está desligado: push na `main` só testa
   (`vitest` + `typecheck`). Cadência do dono: no máximo 1 deploy a cada ~5 dias.
+- **Plano Starter (cotas medidas em 03/10/2026, docs.guaracloud.com):** RAM por
+  container **64 MB request / 256 MB burst** (o Pro dá 512 MB), build **250
+  min/mês** (R$0,10/min de excedente), **1 réplica**, logs **3 dias**. O
+  **teto de 256 MB é o limitante do RUNTIME**, não do contexto de build: o Next
+  standalone tenta ~500 MB e o kernel mata o pod (crash_loop de 03/10/2026).
+  Mitigação atual: `NODE_OPTIONS=--max-old-space-size=192` no estágio `runner`
+  (heap abaixo do teto, o GC recolhe antes do OOM) + pool `pg` em `max: 3`.
+  Folga real, porém, só com o Pro (512 MB).
 - **O contexto de build tem teto de 256 MB.** `docs/`, PDFs, dados brutos e
   `node_modules` saem pelo `.dockerignore`; JSON grande vira **amostra
   versionada** (F2 do [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md)).
