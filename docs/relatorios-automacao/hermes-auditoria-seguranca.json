@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-10-02T08:31:13.585Z",
+  "geradoEm": "2026-10-03T08:31:18.396Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 13,
-  "alertas": 1,
+  "aprovados": 12,
+  "alertas": 2,
   "falhas": 0,
   "itens": [
     {
@@ -39,8 +39,8 @@
     {
       "categoria": "seguranca",
       "item": "Produção: X-Frame-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: DENY"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
@@ -64,7 +64,7 @@
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 195 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 196 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",
