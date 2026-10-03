@@ -317,8 +317,15 @@ def esperar_destino(
 
 
 def carregar_indice(page: Page, base: str) -> bool:
-    """Carrega `/indice` numa navegacao completa e deixa o audio tocando."""
-    page.goto(base + "/indice", wait_until="domcontentloaded", timeout=120000)
+    """Carrega `/indice` numa navegacao completa e deixa o audio tocando.
+
+    Tolera falha de rede/timeout: o percurso continua (a pagina pode estar
+    lenta no servidor) em vez de derrubar o relatorio inteiro.
+    """
+    try:
+        page.goto(base + "/indice", wait_until="domcontentloaded", timeout=90000)
+    except Exception:
+        return False
     return garantir_audio(page)
 
 
@@ -526,7 +533,10 @@ def executar(args: argparse.Namespace) -> int:
             if href is None:
                 # Ultimo recurso: carrega o alvo direto, sem clique.
                 sem_link.append(alvo)
-                page.goto(args.base + alvo, wait_until="domcontentloaded", timeout=120000)
+                try:
+                    page.goto(args.base + alvo, wait_until="domcontentloaded", timeout=90000)
+                except Exception:
+                    pass
                 if not garantir_audio(page):
                     falha_global = True
                 passos.append(
