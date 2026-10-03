@@ -206,10 +206,13 @@ const CRITERIOS = [
   "Marque solta=false quando título+resumo já deixam claro quem, o quê, quem foi",
   "o alvo, onde e quando.",
   "",
-  "Além da revisão, proponha para CADA verbete um TÍTULO CURTO (até ~60",
-  "caracteres) no estilo de NOME DE ACONTECIMENTO — como 'Revolta da Balaiada'",
-  "ou 'Massacre do Carandiru': poucas palavras, o tipo de fato + o nome ou o",
-  "lugar, sem repetir o ano e sem inventar nada; pode reorganizar o título atual.",
+  "Além da revisão, proponha para CADA verbete um TÍTULO CURTO no estilo de",
+  "NOME DE ACONTECIMENTO — como 'Revolta da Balaiada' ou 'Massacre do Carandiru'.",
+  "Regras do título: (a) cabe em UMA linha — nunca uma frase de duas linhas;",
+  "(b) mantenha a descrição CURTA de contexto que o próprio verbete traz (ex.:",
+  "'Nasce Henfil, cartunista da esperança' — NÃO encurte para 'Nasce Henfil');",
+  "(c) não descarte o que dá sentido (se o fato foi 'vitorioso', diga);",
+  "(d) sem repetir o ano; (e) sem inventar. Use as palavras do próprio verbete.",
 ].join("\n");
 
 /** Prompt para UMA chamada de um verbete. */
