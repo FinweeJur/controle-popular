@@ -17,9 +17,8 @@
     "//aquecer": "Aquece o site em producao DEPOIS do deploy: build leve, servidor esquentado por ultimo (ver scripts/aquecer-pos-deploy.mts). Pausa de 1,3 s entre paginas (medido 03/10/2026: varredura continua reiniciou o container). Vale tambem como smoke pos-deploy (sai com erro se alguma pagina nao responder 200).",
     "aquecer": "tsx scripts/aquecer-pos-deploy.mts",
     "//revisar:memoria": "Revisao assistida por Ollama dos textos da Mistica do Dia e da Linha do tempo. So PROPOE correcoes; NUNCA altera o dado (ver scripts/revisar-textos-memoria.mts e AGENTS 5.12).",
-    "revisar:memoria": "tsx scripts/revisar-textos-memoria.mts"
-  },
-  "dependencies": {
-    "nodemailer": "^9.1.1"
+    "revisar:memoria": "tsx scripts/revisar-textos-memoria.mts",
+    "//audit": "Auditoria de dependencias de PRODUCAO (npm audit --omit=dev). Roda no CI/local, NUNCA no build pago; zero e o piso (ver docs/planos/PLANO-SEGURANCA-TRIVY-2026-10.md).",
+    "audit": "npm audit --omit=dev"
   }
 }

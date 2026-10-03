@@ -33,6 +33,13 @@ Primeiro scan do dia (imagem `deploy-acde2665`, `Scanned 13:18:18`):
 - **`next` 16.3.5 → 16.3.6** (GHSA-vcvr-r3jv-pc5j, CRÍTICO). Aplicado em
   `apps/web/package.json` (`^16.3.6`) + `package-lock.json` (commit junto).
   É a única CVE CRÍTICA e a única do código do próprio portal.
+- **`nodemailer` REMOVIDO** (era dependência de produção na raiz, mas **não é
+  importada em lugar nenhum** — o envio de e-mail é feito à mão, via
+  `node:net`/`node:tls` em `lib/email/enviar-smtp.ts`). Ela carregava 1 ALTO
+  (DoS/backtracking). Remover a dependência órfã é melhor que atualizá-la:
+  `npm audit --omit=dev` agora responde **0 vulnerabilidades**.
+- **Régua nova:** script `npm run audit` (`npm audit --omit=dev`) para rodar no
+  CI/local — auditoria de produção nunca vai para o build pago.
 
 ## Planejado
 
@@ -42,10 +49,11 @@ dentro da imagem, não do runtime do portal — de maior a menor alcance:
 - **`apk upgrade --no-cache`** já roda nos 3 estágios do `Dockerfile`; um novo
   deploy (imagem nova) tende a trocar pacotes do SO já corrigidos. **Re-scan
   após cada deploy** para confirmar.
-- **`brace-expansion`, `picomatch`** (transitivas de ferramentas de build):
-  correção via `overrides` no `package.json` da raiz é possível, mas exige
-  rodar a suíte depois — **avaliar antes**, porque override de transitiva
-  pode quebrar `minimatch`/`glob`.
+- **`brace-expansion`, `picomatch`** (transitivas de build): **não são nossas.**
+  A árvore do repo já está nas versões corrigidas (`brace-expansion`
+  2.1.7/5.0.12/1.1.21, `picomatch` 4.0.5/4.0.7). O Trivy aponta `2.0.2`/`4.0.3`
+  porque são as versões do **npm embutido na imagem `node:22-alpine`** — sai com
+  atualização da base, não por `overrides` no repo.
 - **`pacote`, `sigstore`, `ip-address`, `http-cache-semantics`:** vêm do npm
   embutido na imagem `node:22-alpine`, não de `dependencies` do repo — não se
   resolve por `overrides`; depende de **nova base Node** no `Dockerfile`.
