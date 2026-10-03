@@ -67,6 +67,27 @@ O plano Starter paga build por minutos: um build do portal gasta
   cadência de 5 dias sobra folga para emergência (rollback, hotfix)
   sem estourar.
 
+### 0.1. Depois do deploy: esquentar e conferir (03/10/2026)
+
+Deploy feito, o site serve devagar até as páginas serem pedidas de novo. Em
+vez de engordar o build, aqueça o servidor depois — e use o mesmo passo como
+smoke:
+
+```bash
+npm run aquecer                 # home + top-100 + rotas dos eixos
+npm run aquecer -- --limite=5   # amostra rápida
+```
+
+- o `scripts/aquecer-pos-deploy.mts` aciona as páginas **uma a uma**, com
+  pausa de ~1,3 s. Medido em 03/10/2026: varredura contínua reiniciou o
+  container 3×; aquecer não pode derrubar;
+- é também o **smoke pós-deploy**: sai com erro (`exit 1`) se alguma página
+  não responder 200 — não declare o deploy pronto antes disso;
+- o **vigia de páginas** (`scripts/agent-tools/vigia-paginas.mts`, encaixado
+  no `scripts/vigia-servidor.mts`) repete essa varredura de tempos em tempos
+  e avisa no Telegram quando alguma quebra. É o que evita o site passar horas
+  fora em silêncio (incidente de 03/10/2026, ~5 h sem aviso).
+
 ### 1. Estrutura do Deploy
 - **Dockerfile**: build multi-etapa em Node 22 Alpine, configurado para monorepo.
 - **Standalone**: `apps/web/next.config.ts` ativa `output: 'standalone'` em builds Docker/Node.
