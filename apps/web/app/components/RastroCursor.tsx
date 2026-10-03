@@ -232,7 +232,7 @@ export default function RastroCursor() {
           overflow: hidden;
           opacity: 0;
           /* Desaparecimento lento: 0,7 s (pedido do dono, 02/10/2026;
-             era 0,25 s — publicado pela sessão `4bc73262`). */
+             era 0,25 s — publicado pelo commit 4bc73262). */
           transition: opacity 0.7s ease;
           contain: strict;
         }
