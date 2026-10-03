@@ -401,6 +401,12 @@ const nextConfig: NextConfig = {
      */
     staticGenerationMaxConcurrency: standaloneBuild ? 16 : 3,
     staticGenerationRetryCount: standaloneBuild ? 1 : 3,
+    /**
+     * `lucide-react` é importado em dezenas de componentes; sem a lista de
+     * imports otimizados o bundler varre o pacote inteiro. Isto é só tempo de
+     * compilação (não muda o HTML). Medido 03/10/2026: build abaixo de 10 min.
+     */
+    optimizePackageImports: ["lucide-react"],
   },
   // `redirects()` consta da lista de recursos NÃO suportados por
   // `output: 'export'` — e o modo de falha é silencioso, porque não há
