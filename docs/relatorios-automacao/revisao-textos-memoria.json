@@ -1,0 +1,369 @@
+{
+  "atualizadoEm": "2026-10-03T13:41:41.950Z",
+  "modelo": "qwen2.5:3b-instruct",
+  "totalCalendario": 494,
+  "analisados": 30,
+  "soltas": 11,
+  "resultados": [
+    {
+      "indice": 0,
+      "rotulo": "01-01/1849 — Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
+      "solta": false,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "faltando periodo",
+      "sugestao": "ANO: 1849\nLUGAR: (a fonte não diz)\nTÍTULO: Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa\nRESUMO: Aderiram à revolta a população urbana pobre, camponeses, negros e negras libertas. Em fevereiro de 1849, adentraram o Recife com cerca de 2.500 pessoas.",
+      "titulo": "Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
+      "resumo": "Aderiram à revolta a população urbana pobre, camponeses, negros e negras libertos. Em fevereiro de 1849, adentraram o Recife com cerca de 2.500 pessoas."
+    },
+    {
+      "indice": 1,
+      "rotulo": "01-01/1959 — Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa.",
+      "solta": false,
+      "faltando": [
+        "vitima"
+      ],
+      "motivo": "falta vitima",
+      "sugestao": "Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa. Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita, como foi o caso do regime ditatorial de Fulgêncio Batista, que impôs seu governo a Cuba entre 1933 e 1944, e novamente de 1952 a 1959. No final de 1958, as tropas rebeldes se acercam de Havana, a capital de Cuba, e é convocada uma greve geral.",
+      "titulo": "Em 1º de janeiro de 1959, Fulgêncio Batista foge de Cuba e a revolução triunfa.",
+      "resumo": "Desde sua independência da Espanha, Cuba esteve sob domínio e influência política e econômica dos Estados Unidos, através de intervenções diretas ou de apoio a governos de extrema-direita, como foi o caso do regime ditatorial de Fulgêncio Batista, que impôs seu governo a Cuba entre 1933 e 1944, e novamente de 1952 a 1959.\n\nNo final de 1958, as tropas rebeldes se acercam de Havana, a capital de Cuba, e é convocada uma greve geral."
+    },
+    {
+      "indice": 2,
+      "rotulo": "01-01/1994 — Revolução Zapatista em Chiapas, México",
+      "solta": false,
+      "faltando": [],
+      "motivo": "",
+      "sugestao": "",
+      "titulo": "Revolução Zapatista em Chiapas, México",
+      "resumo": "Não por coincidência, mas por apego simbólico às datas e à necessidade de suas disputas, no dia em que passou a vigorar o NAFTA – tratado que criava uma zona de livre comércio entre os países da América do Norte, que levaria ao aprofundamento da dependência mexicana para com os EUA e Canadá –, no ponto mais austral do subcontinente o Ejército Zapatista de Libéracion Nacional (EZLN) toma a cidade\n\nO levante comandado pelo Exército Zapatista de Libertação Nacional (EZLN) tomou todo o estado de Chiapas e algumas regiões próximas. A reação do governo foi de forte ofensiva militar, mas, mesmo recuando, o EZLN manteve o controle sobre a região."
+    },
+    {
+      "indice": 3,
+      "rotulo": "01-02/1975 — Assassinato sumário de Siraj Sikder pelo aparelho de repressão do Estado bengali",
+      "solta": false,
+      "faltando": [
+        "lugar",
+        "periodo"
+      ],
+      "motivo": "curto",
+      "sugestao": "O conturbado contexto asiático do início dos anos 1970 teve em Bangladesh um dos seus grandes epicentros. Siraj Sikder, um líder político bengali, foi assassinado sumariamente pelo aparelho de repressão do Estado em 1975.",
+      "titulo": "Assassinato sumário de Siraj Sikder pelo aparelho de repressão do Estado bengali",
+      "resumo": "O conturbado contexto asiático do início dos anos 1970 teve em Bangladesh um dos seus grandes epicentros."
+    },
+    {
+      "indice": 4,
+      "rotulo": "01-03/1898 — 3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro.",
+      "solta": false,
+      "faltando": [],
+      "motivo": "",
+      "sugestao": "",
+      "titulo": "3 de janeiro: 1898: Nascimento de Luiz Carlos Prestes Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro.",
+      "resumo": "Luiz Carlos Prestes nasceu em Porto Alegre, no Rio Grande do Sul, e faleceu em 7 de março de 1990, no Rio de Janeiro. Cavaleiro da Esperança , como o chamou o escritor Jorge Amado, participou do Movimento Tenentista em 1922 e, em 1924, inicia em Santo Ângelo, no Rio Grande do Sul, a Coluna Prestes, que andou por quase todo o Brasil – mais de 35 mil quilômetros – a cavalo e a pé, durante dois anos."
+    },
+    {
+      "indice": 5,
+      "rotulo": "01-03/1959 — Chega à frente de sua coluna em 3 de janeiro de 1959.",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "faltam elementos essenciais para uma narração completa e clara.",
+      "sugestao": "Ao triunfo da revolução, por ordens de Fidel, parte a Havana para ocupar a Fortaleza de São Carlos de La Cabaña. Chega à frente de sua coluna em 3 de janeiro de 1959.",
+      "titulo": "Chega à frente de sua coluna em 3 de janeiro de 1959.",
+      "resumo": "Ao triunfo da revolução, por ordens de Fidel, parte a Havana para ocupar a Fortaleza de São Carlos de La Cabaña. Chega à frente de sua coluna em 3 de janeiro de 1959."
+    },
+    {
+      "indice": 6,
+      "rotulo": "01-03/1961 — Início da revolta camponesa da Baixa de Cassange, em Angola",
+      "solta": false,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "falta o período em que se passa o evento",
+      "sugestao": "",
+      "titulo": "Início da revolta camponesa da Baixa de Cassange, em Angola",
+      "resumo": "Lutando por melhores condições de vida e trabalho, dadas as condições subhumanas a que se viam sujeitos e sujeitas na colheita do algodão pela COTONANG, dezenas de milhares de camponeses se colocaram em luta na região da Baixa de Cassanje, em Angola."
+    },
+    {
+      "indice": 7,
+      "rotulo": "01-04/1923 — Lenin registra que Stálin não deveria ser Secretário Geral do PCUS",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Marque solta=false pois o título e resumo já deixam claro quem (Lenin), o quê (sinaliza fissuras), quem foi o alvo (Stálin), onde (PCUS) e quando (dezembro de 1922).",
+      "titulo": "Lenin registra que Stálin não deveria ser Secretário Geral do PCUS",
+      "resumo": "Em dezembro de 1922, Lenin elaborou uma carta ao Congresso que se tornou conhecida como seu testamento político. No texto, para além de outros tantos indicativos políticos – inclusive marcados pela necessidade de aprofundamento democrático da estrutura do PCUS –, sinaliza fissuras que poderiam levar à ruptura da organização política."
+    },
+    {
+      "indice": 8,
+      "rotulo": "01-04/1988 — Morreu em 4 de janeiro de 1988, vítima da Aids, doença que contraiu durante uma transfusão de sangue.",
+      "solta": true,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "falta o período/século/ano se passa",
+      "sugestao": "Morreu em 4 de janeiro de 1988, vítima da AIDS, doença que contraiu durante uma transfusão de sangue.",
+      "titulo": "Morreu em 4 de janeiro de 1988, vítima da Aids, doença que contraiu durante uma transfusão de sangue.",
+      "resumo": "São Paulo: Expressão Popular, 2008."
+    },
+    {
+      "indice": 9,
+      "rotulo": "01-05/1968 — Alexander Dubček chega ao poder na Tchecoslováquia e se inicia a Primavera de Praga",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Alexander Dubček chega ao poder na Tchecoslováquia em 1968, após anos de autoritarismo sob Antonin Novotny.",
+      "titulo": "Alexander Dubček chega ao poder na Tchecoslováquia e se inicia a Primavera de Praga",
+      "resumo": "Após anos de mando sob batuta autoritária de Antonin Novotny – outrora Secretário Geral, e no momento Primeiro Secretário do Comitê Central do Partido Comunista da Tchecoslováquia –, vendo-se pressionado por mobilizações populares que reclamavam transformações radicais no regime então em voga no país, em 5 de janeiro de 1968 Alexander Dubček assume o mais alto posto político do país."
+    },
+    {
+      "indice": 10,
+      "rotulo": "01-06/1835 — Início da Revolta dos Cabanos",
+      "solta": false,
+      "faltando": [],
+      "motivo": "",
+      "sugestao": "Marque solta=false quando título+resumo já deixam claro quem, o quê, quem foi o alvo, onde e quando.",
+      "titulo": "Início da Revolta dos Cabanos",
+      "resumo": "Nesta noite, 185 anos nos separarão do momento em que a população da Província do Grão-Pará se levantou em luta por melhores condições de vida. Os ecos das revoluções estadunidense, francesa e haitiana eram então audíveis.\n\nO governo imperial enviou tropas para derrotar os rebeldes, além de uma esquadra de navios de guerra, que bombardeou a capital. Com a cidade sitiada, a fome e a varíola se instalando, os cabanos foram expulsos de Belém."
+    },
+    {
+      "indice": 11,
+      "rotulo": "01-07/1835 — A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início do movimento Cabano: A Cabanagem.",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início da Cabanagem, uma das mais violentas revoltas populares no Brasil. Seus antecedentes datam de 1823, após o Pará ter aderido à independência.",
+      "titulo": "A data de 7 de janeiro de 1835 é considerada pela maioria dos historiadores como o início do movimento Cabano: A Cabanagem.",
+      "resumo": "Esta foi uma das mais violentas revoltas populares no Brasil. Seus antecedentes foram vários a partir de 1823, após o Pará ter aderido à Independência – foi o último a aderir."
+    },
+    {
+      "indice": 12,
+      "rotulo": "01-07/1919 — Início da Semana Trágica, em Buenos Aires",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Início da Semana Trágica, em 1919, em Buenos Aires: Operários da Vesena, maior empresa metalúrgica da América do Sul, em greve por direitos trabalhistas, são atacados violentamente pela polícia.",
+      "titulo": "Início da Semana Trágica, em Buenos Aires",
+      "resumo": "Em greve desde dezembro de 1918 por melhores salários, redução de jornada de trabalho, pagamento de adicional de horas extras e outros direitos trabalhistas, os operários da indústria Vesena – a maior empresa metalúrgica da América do Sul – se viram alvo de um dos mais sangrentos episódios da autoritária história argentina."
+    },
+    {
+      "indice": 13,
+      "rotulo": "01-07/sem ano — Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro).",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "1809: Trabalhadores escravizados nagôs, haussás e jejes se insurgem no Recôncavo baiano. Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos em 7 de janeiro.",
+      "titulo": "Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro).",
+      "resumo": "1809: Trabalhadores escravizados nagôs, haussás e jejes se insurgem no Recôncavo baiano. Queimam canaviais, fogem às centenas, atacam Nazaré das Farinhas, mas são batidos (em 7 de janeiro)."
+    },
+    {
+      "indice": 14,
+      "rotulo": "01-08/1959 — Fidel Castro entra em La Habana",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Fidel Castro chega a La Habana sete dias após a Revolução Cubana. Em meio a greves e mobilizações, já se sente a convulsão social.",
+      "titulo": "Fidel Castro entra em La Habana",
+      "resumo": "Sete dias após o trunfo da Revolução Cubana, Fidel Castro e outros guerrilheiros chegam à capital cubana. Muito embora lida por muitos como a “consolidação” da tomada de poder pelos desembarcados do Granma , é certo que tanto neste centro urbano como em outros o processo de convulsão social já se dára, com profundas greves e mobilizações de massa."
+    },
+    {
+      "indice": 15,
+      "rotulo": "01-09/1920 — Nascimento de João Cabral de Melo Neto",
+      "solta": false,
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Nenhum texto sugerido, pois o título e resumo já deixam claro o contexto sem necessidade de adição.",
+      "titulo": "Nascimento de João Cabral de Melo Neto",
+      "resumo": "Um galo sozinho não tece uma manhã: ele precisará sempre de outros galos. De um que apanhe esse grito que ele e o lance a outro; de um outro galo que apanhe o grito de um galo antes e o lance a outro; e de outros galos que com muitos outros galos se cruzem os fios de sol de seus gritos de galo, pata que a manhã, desde uma teia tênue, se vá tecendo, entre todos os galos."
+    },
+    {
+      "indice": 16,
+      "rotulo": "01-10/1981 — Início da Revolução Salvadorenha",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos essenciais",
+      "sugestao": "",
+      "titulo": "Início da Revolução Salvadorenha",
+      "resumo": "Na virada dos anos 1980, o epicentro da revolução internacional estava na América Central. Já irrompido o levante sandinista na Nicarágua, e às vésperas da intensificação da insurreição guatemalteca, o povo de El Salvador passa a viver sob guerra civil."
+    },
+    {
+      "indice": 17,
+      "rotulo": "01-11/1929 — Assassinato de Julio Antonio Mella, mártir da Revolução Latino-Americana",
+      "solta": false,
+      "faltando": [
+        "vitima"
+      ],
+      "motivo": "falta vitima",
+      "sugestao": "Julio Antonio Mella, jovem militante e fundador do Partido Comunista Cubano, foi nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária.",
+      "titulo": "Assassinato de Julio Antonio Mella, mártir da Revolução Latino-Americana",
+      "resumo": "Fundador do Partido Comunista Cubano em 1925, foi o jovem militante – à época com 22 anos – Julio Antonio Mella nomeado seu primeiro Secretário Geral. Experimentado no movimento estudantil, tendo comandado importantes greves de ocupação universitárias, cumpriu papel de suma relevância na articulação anti-imperialista na Cuba pré-revolucionária."
+    },
+    {
+      "indice": 18,
+      "rotulo": "01-12/1886 — Após a morte de Alexandre, a família, também já sem o pai (que havia falecido em 12 de janeiro de 1886), mudou-se para Kazan, onde Vladimir entrou para a faculdade de direito.",
+      "solta": false,
+      "faltando": [],
+      "motivo": "",
+      "sugestao": "",
+      "titulo": "Após a morte de Alexandre, a família, também já sem o pai (que havia falecido em 12 de janeiro de 1886), mudou-se para Kazan, onde Vladimir entrou para a faculdade de direito.",
+      "resumo": "Vladimir era o quarto filho de oito irmãos, dos quais dois morreram ainda pequenos. Alexandre, o mais velho, foi executado em 8 de maio de 1887, com 21 anos de idade, por ter participado de um atentado contra o tsar Alexandre III."
+    },
+    {
+      "indice": 19,
+      "rotulo": "01-12/2010 — Perdemos Daniel Bensaïd",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos essenciais para uma narração completa",
+      "sugestao": "Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular. Este texto, escrito na primeira pessoa do singular, não menciona quem é o personagem principal, o que aconteceu, quem foi vítima ou alvo, nem em que período histórico se passa.",
+      "titulo": "Perdemos Daniel Bensaïd",
+      "resumo": "Não há motivos para não escrever – ou ao menos iniciar – esse texto na primeira pessoa do singular."
+    },
+    {
+      "indice": 20,
+      "rotulo": "01-12/sem ano — Em 12 de janeiro, um cessar-fogo foi declarado e as negociações entre o governo e o EZLN foram iniciadas.",
+      "solta": true,
+      "faltando": [
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos cruciais para uma narração completa",
+      "sugestao": "ANO: (a fonte não datou)\nLUGAR: (a fonte não diz)\nTÍTULO: Em 12 de janeiro, um cessar-fogo foi declarado e as negociações entre o governo e o EZLN foram iniciadas. Os acordos de San Andrés, que trataram dos direitos e cultura indígenas, foram assinados. No entanto, os rebeldes suspenderam as negociações em seguida, por falta de cumprimento dos acordos por parte do governo federal.",
+      "titulo": "Em 12 de janeiro, um cessar-fogo foi declarado e as negociações entre o governo e o EZLN foram iniciadas.",
+      "resumo": "Acordos de San Andrés , que trataram dos direitos e cultura indígenas. Mas os rebeldes suspenderam as negociações em seguida, por falta de cumprimento dos acordos por parte do governo federal."
+    },
+    {
+      "indice": 21,
+      "rotulo": "01-13/1898 — Émile Zola publica “J’Accuse…!” e abre publicamente o “caso Dreyfus”",
+      "solta": true,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "falta periodo",
+      "sugestao": "ANO: 1898\nLUGAR: (a fonte não diz)\nTÍTULO: Émile Zola publica “J’Accuse…!” e abre publicamente o “caso Dreyfus”\nRESUMO: Foi Émile Zola, já então consagrado escritor socialista, o responsável por abrir na sociedade francesa uma das mais relevantes querelas públicas tidas não só na viradas do séc. XIX para o XX, mas em toda história do país.",
+      "titulo": "Émile Zola publica “J’Accuse…!” e abre publicamente o “caso Dreyfus”",
+      "resumo": "Foi Émile Zola, já então consagrado escritor socialista, o responsável por abrir na sociedade francesa uma das mais relevantes querelas públicas tidas não só na viradas do séc. XIX para o XX, mas em toda história do país."
+    },
+    {
+      "indice": 22,
+      "rotulo": "01-13/1999 — Faleceu em Itu (SP) em 13 de janeiro de 1999.",
+      "solta": true,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "falta periodo",
+      "sugestao": "ANO: 1999\nLUGAR: Itu (SP)\nTÍTULO: Faleceu em Itu (SP) em 13 de janeiro de 1999.\nRESUMO: Sodré teve contribuição importante na análise das classes sociais no Brasil e das possibilidades de existir um processo revolucionário.",
+      "titulo": "Faleceu em Itu (SP) em 13 de janeiro de 1999.",
+      "resumo": "Sodré teve contribuição importante na análise das classes sociais no Brasil e das possibilidades de existir um processo revolucionário. Faleceu em Itu (SP) em 13 de janeiro de 1999."
+    },
+    {
+      "indice": 23,
+      "rotulo": "01-14/sem ano — Após mas de 10 horas de batalha, com 300 mortos e 600 feridos, os praieiros sofrem sua maior derrota.",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos essenciais para uma narração completa",
+      "sugestao": "Forçados a deixar a cidade, os praieiros mantêm ainda por alguns meses a luta nas matas, lado a lado com índios e camponeses remanescentes da Guerra dos Cabanos que resistiam há mais de 15 anos no interior pernambucano. Foram 300 mortos e 600 feridos em uma batalha que durou mais de 10 horas.",
+      "titulo": "Após mas de 10 horas de batalha, com 300 mortos e 600 feridos, os praieiros sofrem sua maior derrota.",
+      "resumo": "Forçados a deixar a cidade, mantêm ainda por alguns meses a luta nas matas, lado a lado com índios e camponeses remanescentes da Guerra dos Cabanos que resistiam há mais de 15 anos no interior pernambucano. (Fonte: NPC – Livro Agenda 2013)"
+    },
+    {
+      "indice": 24,
+      "rotulo": "01-15/1919 — Durante o levante operário em Berlim, é presa junto com Karl Libknecht em 15 de janeiro de 1919.",
+      "solta": false,
+      "faltando": [],
+      "motivo": "",
+      "sugestao": "",
+      "titulo": "Durante o levante operário em Berlim, é presa junto com Karl Libknecht em 15 de janeiro de 1919.",
+      "resumo": "Principais dirigentes da Liga Spartacus e nomes fortes da Revolução Alemã, Rosa Luxemburgo e Karl Liebknecht foram capturados em Berlin pelas Freikorps – grupos paramilitares de extrema-direita que contaram com auxílio e informações do governo social-democrata alemão, sobretudo pela mão de Gustav Noske – e sumariamente assassinados.\n\nA burguesia, depois de esmagar a revolução proletária, para garantir seu domínio, convocou eleições e promulgou a Constituição de Weimar em 1919, em cuja sombra surge o hitlerismo, que mais tarde levou os nazistas ao poder. Teoria da organização política I – escritos de Engels, Marx, Lenin, Rosa e Mao."
+    },
+    {
+      "indice": 25,
+      "rotulo": "01-16/1976 — Operário metalúrgico e militante de base do Partido Comunista Brasileiro (PCB), Manoel Fiel Filho foi levado por agentes do DOI-Codi da fábrica Metal Arte, onde trabalhava, no dia 16 de janeiro de 1976.",
+      "solta": false,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "falta periodo",
+      "sugestao": "ANO: 1976\nLUGAR: (a fonte não diz)\nTÍTULO: Operário metalúrgico e militante de base do Partido Comunista Brasileiro (PCB), Manoel Fiel Filho foi levado por agentes do DOI-Codi da fábrica Metal Arte, onde trabalhava, no dia 16 de janeiro de 1976.\nRESUMO: Sua casa foi revistada no mesmo dia, sem que nada fosse encontrado. No DOI-Codi, o operário foi torturado barbaramente até a morte por estrangulamento pelos torturadores, no dia seguinte.",
+      "titulo": "Operário metalúrgico e militante de base do Partido Comunista Brasileiro (PCB), Manoel Fiel Filho foi levado por agentes do DOI-Codi da fábrica Metal Arte, onde trabalhava, no dia 16 de janeiro de 1976.",
+      "resumo": "Sua casa foi revistada no mesmo dia, sem que nada fosse encontrado. No DOI-Codi, o operário foi torturado barbaramente até a morte por estrangulamento pelos torturadores, no dia seguinte."
+    },
+    {
+      "indice": 26,
+      "rotulo": "01-16/1997 — Assassinato de José Alves dos Santos e Vanderlei das Neves, mártires da luta pela reforma agrária no Brasil",
+      "solta": false,
+      "faltando": [
+        "periodo"
+      ],
+      "motivo": "",
+      "sugestao": "ANO: 1997\nLUGAR: Rio Bonito do Iguaçú-PR\nTÍTULO: Assassinato de José Alves dos Santos e Vanderlei das Neves, mártires da luta pela reforma agrária no Brasil\nRESUMO: Há exatos vinte e três anos, uma dezena de trabalhadores sem-terra foram alvejados em uma lavoura de milho na Fazenda Pinhal Ralo, em Rio Bonito do Iguaçú-PR. Vítimas de uma emboscada, foram baleados no exato dia em que, por decreto, foram desapropriados 16mil dos 87mil hectares da madeireira Giacometti Marondin, atual Araupel.",
+      "titulo": "Assassinato de José Alves dos Santos e Vanderlei das Neves, mártires da luta pela reforma agrária no Brasil",
+      "resumo": "Há exatos vinte e três anos, uma dezena de trabalhadores sem-terra foram alvejados em uma lavoura de milho na Fazenda Pinhal Ralo, em Rio Bonito do Iguaçú-PR. Vítimas de uma emboscada, foram baleados no exato dia em que, por decreto, foram desapropriados 16mil dos 87mil hectares da madeireira Giacometti Marondin, atual Araupel."
+    },
+    {
+      "indice": 27,
+      "rotulo": "01-17/1976 — Assassinato de Manoel Fiel Filho pela Ditadura Empresarial-Militar",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "faltam elementos essenciais para uma narração completa e conectada",
+      "sugestao": "Alagoano, Manoel Fiel Filho, operário metalúrgico, foi preso por agentes do DOPS em 16 de janeiro de 1976, em sua indústria Metal Arte.",
+      "titulo": "Assassinato de Manoel Fiel Filho pela Ditadura Empresarial-Militar",
+      "resumo": "Alagoano, Fiel Filho fora operário metalúrgico por quase duas décadas, isso depois de chegar em São Paulo já maior de idade e ter trabalhado como padeiro e cobrador de ônibus. Foi preso por agentes do DOPS em 16 de janeiro de 1976 em seu local de trabalho, a indústria Metal Arte."
+    },
+    {
+      "indice": 28,
+      "rotulo": "01-18/1934 — Greves gerais insurrecionais formam o Soviete da Marinha Grande",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos essenciais para uma narração completa",
+      "sugestao": "",
+      "titulo": "Greves gerais insurrecionais formam o Soviete da Marinha Grande",
+      "resumo": "Ademais, expressa desde o solo português experiência em que as “afinidades revolucionárias” – para nos utilizarmos da expressão de Michael Löwy – entre anarquistas e comunistas se manifestaram em ações concretas e insurrecionais, muito embora embates quanto às construções de narrativas sobre o “18 de janeiro” intentam reputar protagonismos diversos ao processo."
+    },
+    {
+      "indice": 29,
+      "rotulo": "01-18/sem ano — Em 1961, o governo de Lumumba sofre um golpe militar, na passagem do dia 17 para o 18 de janeiro, organizado pelo serviço secreto dos Estados Unidos, no qual ele é assassinado.",
+      "solta": true,
+      "faltando": [
+        "sujeito",
+        "acao",
+        "vitima",
+        "periodo"
+      ],
+      "motivo": "falta de elementos essenciais para uma narração completa",
+      "sugestao": "Em 1961, em 17 de janeiro, o governo de Lumumba sofreu um golpe militar organizado pelo serviço secreto dos Estados Unidos, no qual ele foi assassinado.",
+      "titulo": "Em 1961, o governo de Lumumba sofre um golpe militar, na passagem do dia 17 para o 18 de janeiro, organizado pelo serviço secreto dos Estados Unidos, no qual ele é assassinado.",
+      "resumo": "Em 1960, após uma negociação de paz, Lumumba participa das eleições e o MNC sai vitorioso. Sua política foi de enfrentamento ao governo belga."
+    }
+  ]
+}

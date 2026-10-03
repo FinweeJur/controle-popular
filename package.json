@@ -13,7 +13,11 @@
     "lint": "npm run lint -w @cp/web",
     "lint:textos": "npm run lint:textos -w @cp/web",
     "fix:textos": "npm run fix:textos -w @cp/web",
-    "test": "npm run test -w @cp/web"
+    "test": "npm run test -w @cp/web",
+    "//aquecer": "Aquece o site em producao DEPOIS do deploy: build leve, servidor esquentado por ultimo (ver scripts/aquecer-pos-deploy.mts). Pausa de 1,3 s entre paginas (medido 03/10/2026: varredura continua reiniciou o container). Vale tambem como smoke pos-deploy (sai com erro se alguma pagina nao responder 200).",
+    "aquecer": "tsx scripts/aquecer-pos-deploy.mts",
+    "//revisar:memoria": "Revisao assistida por Ollama dos textos da Mistica do Dia e da Linha do tempo. So PROPOE correcoes; NUNCA altera o dado (ver scripts/revisar-textos-memoria.mts e AGENTS 5.12).",
+    "revisar:memoria": "tsx scripts/revisar-textos-memoria.mts"
   },
   "dependencies": {
     "nodemailer": "^9.1.1"

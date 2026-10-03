@@ -17,6 +17,12 @@
  * - Seletor de pet (02/10/2026): o nível "pets" é um cartão de rádio-opções
  *   que troca o bichinho do `CompanheiroFlutuante` via evento da janela
  *   (`cp:companheiro-trocar-pet`) — o bicho mora em outro componente.
+ * - Pilha da lateral esquerda (pedido do dono, 03/10/2026): TRÊS botões
+ *   redondos sobrepostos, de baixo para cima — FAB do Seu Nonô, pata do
+ *   pet e botão da rádio (em `PlayerRadio.tsx`). Sobreposição de 16 px em
+ *   cada emenda e alinhamento pelo centro de 56 px: as três geometrias são
+ *   combinadas entre este arquivo e o PlayerRadio; mudar uma exige mudar
+ *   as duas (o comentário de cada uma traz a régua em px).
  */
 
 import { useState, useEffect, useMemo, useRef } from "react";
@@ -1116,8 +1122,14 @@ export function SeuNono() {
     <div
       // Em tela cheia o painel usa `fixed inset-0`; um `transform` no
       // ancestral o prenderia à caixa arrastada, então a pega some ali.
+      // `safe-area`: a barra do sistema do iPhone cobre um `bottom-4` fixo;
+      // o max() sobe a pilha inteira quando há inset. O PlayerRadio repete
+      // a mesma conta para o botão de cima continuar alinhado.
+      // `data-nao-plataforma`: esta UI fixa não é "chão" dos bichinhos
+      // (eles andam no conteúdo da página, não na nossa moldura).
       style={telaCheia ? undefined : estilo}
-      className="fixed bottom-4 left-4 z-50 flex flex-col items-start"
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 flex flex-col items-start"
+      data-nao-plataforma
     >
       {aberto && (
         <div
@@ -1203,8 +1215,14 @@ export function SeuNono() {
             {nivel === "frentes" && (
               <div className="space-y-3">
                 <div className="rounded-xl border border-primary/20 bg-primary/5 p-2.5 text-left">
+                  {/* Foto do Seu Nonô ANTES da mensagem (dono, 03/10/2026):
+                      o chat abre com a cara do assistente e só depois o
+                      recado. Reusa o AvatarSeuNono do resto do chat, então
+                      a imagem é sempre a oficial (avatar.webp) com o mesmo
+                      fallback — sem <img> novo para manter. */}
+                  <AvatarSeuNono size={40} className="mb-1.5 border border-primary/30" />
                   <p className="text-xs font-semibold text-text">
-                    Opa! Bão? Sou Seu Nonô, Alceu Dispor. Soy el ajudante aqui do portal, que saiu diretin aqui de Beagá. BH é nois, sô! Como posso ajudar ocê?
+                    Opa! Bão? Sou Seu Nonô, Alceu Dispor. Soy el ajudante aqui do portal, que saiu <em>diretin</em> aqui de Beagá, Minas Gerais, Brasil, LatinoAmérica, Sul Global, Planeta <s>Água</s> Terra. BH é nois, sô! Como posso ajudar ocê?
                   </p>
                   <p className="mt-0.5 text-[0.75rem] leading-relaxed text-text-soft">
                     Ajudo a fiscalizar orçamentos, contratos, acordos e barragens com dados oficiais e sem cadastro. Escolha um tema abaixo ou digite sua pergunta:
@@ -1901,9 +1919,35 @@ export function SeuNono() {
         </div>
       )}
 
-      {/* Botão flutuante + botão de trocar o bichinho, colados. */}
+      {/* Três botões redondos sobrepostos na lateral esquerda, de baixo
+          para cima: Seu Nonô (FAB), pata do pet e rádio — pedido do dono
+          (03/10/2026), que a pata estava TAPANDO o botão da rádio.
+          Régua combinada com `PlayerRadio.tsx`: FAB 16..72 px da borda;
+          pata h-11 com margem negativa −16 px → 56..100; rádio h-12 em
+          `left-5` → 84..132. Sobra 16 px de sobreposição em cada emenda.
+          O FAB vem DEPOIS da pata no DOM: pinta por cima (a pata fica com
+          a coroa livre, o FAB com a cara inteira). A pata e o FAB somem
+          quando o painel abre (só o painel importa então); o rádio fica. */}
       {!aberto && (
-        <div className="flex items-center gap-2">
+        <div className="flex w-14 flex-col items-center">
+          {/* Porta nº 2 do seletor de pet: abre o menu do companheiro
+              embaixo desta pata, pelo evento da janela. */}
+          <button
+            type="button"
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              window.dispatchEvent(
+                new CustomEvent("cp:companheiro-menu-pet", {
+                  detail: { x: r.left, y: r.bottom + 8 },
+                }),
+              );
+            }}
+            title="Trocar o bichinho do companheiro"
+            aria-label="Trocar o bichinho do companheiro"
+            className="-mb-4 flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            <PawPrint size={20} className="text-primary" aria-hidden="true" />
+          </button>
           <button
             {...handlers}
             onDoubleClick={resetar}
@@ -1919,24 +1963,6 @@ export function SeuNono() {
             aria-label="Abrir assistente Seu Nonô"
           >
             <AvatarSeuNono size={56} className="h-full w-full rounded-full" />
-          </button>
-          {/* Porta nº 2 do seletor de pet: abre o menu do companheiro
-              embaixo deste botão, pelo evento da janela. */}
-          <button
-            type="button"
-            onClick={(e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              window.dispatchEvent(
-                new CustomEvent("cp:companheiro-menu-pet", {
-                  detail: { x: r.left, y: r.bottom + 8 },
-                }),
-              );
-            }}
-            title="Trocar o bichinho do companheiro"
-            aria-label="Trocar o bichinho do companheiro"
-            className="flex h-9 w-9 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          >
-            <PawPrint size={18} className="text-primary" aria-hidden="true" />
           </button>
         </div>
       )}

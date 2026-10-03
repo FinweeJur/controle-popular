@@ -2,10 +2,12 @@
 
 /**
  * @file CompanheiroFlutuante.tsx
- * @description O companheiro Seu Nonô no site: uma galinha SOLTA que anda pelo
- * chão da tela, sobre o conteúdo, e VOA em arco até o botão que a pessoa
- * precisa clicar quando o Seu Nonô encontra uma página. Roda sozinha — sem
- * código, sem app e sem pareamento (decisão do dono, 02/10/2026).
+ * @description O companheiro Seu Nonô no site: bichinhos SOLTOs que andam
+ * pelo conteúdo da tela — inclusive EM CIMA de imagem, texto, cartão e
+ * botão (física de plataforma em `lib/companheiro/plataformas.ts`) — e VOA
+ * em arco até o botão que a pessoa precisa clicar quando o Seu Nonô
+ * encontra uma página. Roda sozinho — sem código, sem app e sem
+ * pareamento (decisão do dono, 02/10/2026).
  *
  * MECÂNICA (adaptada do Clicky original) ────────────────────────────────────
  * O Clicky de desktop (farzaa/clicky, porta Bitshank-2338/clicky-windows,
@@ -20,11 +22,13 @@
  *
  * QUEM DIZ ONDE CLICAR: a resposta do Seu Nonô marca o botão "Abrir página"
  * com `data-companheiro-alvo="abrir-pagina"` (o mesmo atributo que a
- * `PonteCompanheiro` manda para o app local). A galinha observa o DOM, acha o
- * primeiro alvo visível e voa até ele. O Seu Nonô responde; a galinha guia.
+ * `PonteCompanheiro` manda para o app local). O PRIMEIRO pet da lista (o
+ * "líder") observa o DOM, acha o alvo visível e voa até ele. Os outros
+ * seguem passeando — um voo por vez, na tela inteira; foi decisão de
+ * projeto para não virar confusão aérea (03/10/2026).
  *
- * A galinha vive no layout RAIZ (`app/layout.tsx`): permanece de uma página
- * para outra.
+ * O companheiro vive no layout RAIZ (`app/layout.tsx`): permanece de uma
+ * página para outra.
  *
  * ARTE: folha do Petdex (8 colunas × 9 linhas de 192×208, um estado por
  * linha). Padrão o qiaowei (shamador, `qiaowei`); o leitor pode marcar
@@ -36,8 +40,8 @@
  * Três portas, todas apontando para o MESMO alternar (`alternarPet`):
  *
  *   1. **Clique direito** no bicho abre o menu na posição do mouse;
- *   2. **Botão pequeno** ao lado do FAB do Seu Nonô dispara
- *      `cp:companheiro-menu-pet` com a posição dele;
+ *   2. **Pata** na pilha do canto esquerdo (abaixo do rádio, acima do FAB)
+ *      dispara `cp:companheiro-menu-pet` com a posição dela;
  *   3. **Cartão de checkboxes no chat** do Seu Nonô (nível "pets")
  *      dispara `cp:companheiro-trocar-pet` com o slug.
  * Cada gatilho ALTERNA o pet no grupo: põe se não está, tira se está —
@@ -45,25 +49,38 @@
  * fica no `localStorage` (`cp_pet`, slugs separados por vírgula) e
  * sobrevive a recarregar; quem só tinha um slug antigo continua igual.
  *
- * VÁRIOS NA TELA (pedido do dono, 02/10/2026) ──────────────────────────────
- * Os pets escolhidos andam em GRUPO: uma caixa só, filas lado a lado,
- * mesmo passeio, mesmo voo até o alvo do Seu Nonô. Cada sprite anima no
- * seu próprio ritmo (quadros por linha variam por pet) a partir do mesmo
- * estado do grupo. O clique em qualquer um abre o Seu Nonô; o arrasto
- * move o grupo inteiro.
+ * VÁRIOS NA TELA, CADA UM DONO DO SEU CORPO (pedido do dono, 03/10/2026)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Cada pet é um BICHO próprio: posição, direção, pausa, voo, queda e
+ * estado animado independentes, cada um no seu `div` fixo. O que mudou em
+ * relação à "fila de bichos" de 02/10:
+ *
+ *   - **Arrasto por pet**: apertou um, move só ele; o clique que abre o
+ *     Seu Nonô é suprimido quando o gesto foi arrasto (`semCliqueAte`);
+ *   - **Física de plataforma**: a página é amostrada 1×/s (e em scroll,
+ *     resize e mutações) em `Plataforma[]` — topo de imagem, texto,
+ *     moldura de cartão e botão valem CHÃO. O bicho anda na superfície sob
+ *     os pés, SALTA até o degrau mais alto alcançável à frente, CAI com
+ *     gravidade quando a borda acaba e POUSA em arco ao ser solto no ar;
+ *   - **Posição lembrada por pet**: sair da lista e voltar retoma o bicho
+ *     onde ele estava (o mapa de bichos não perde entrada).
  *
  * DECISÕES TÉCNICAS
  * -----------------
- * - Um único `requestAnimationFrame` escreve `transform` da caixa e
- *   `background-position` de CADA sprite direto no DOM, SEM re-render por
- *   quadro. Passeio e voo são a mesma interpolação de posição.
- * - O alvo é relido a cada quadro (`getBoundingClientRect`), então o voo
- *   acompanha rolagem e mudança de layout sozinho.
- * - `prefers-reduced-motion`: fica parado no canto e não voa (acessibilidade).
+ * - Um único `requestAnimationFrame` percorre TODOS os bichos e escreve
+ *   `transform` da caixa de cada um e `background-position` do seu sprite
+ *   direto no DOM, SEM re-render por quadro. Passeio, salto, queda e voo
+ *   são a mesma interpolação de posição.
+ * - O alvo do líder é relido a cada quadro (`getBoundingClientRect`),
+ *   então o voo acompanha rolagem e mudança de layout sozinho.
+ * - `prefers-reduced-motion`: cada bicho fica parado onde está e não voa
+ *   (acessibilidade); o arrasto manual continua.
  * - Clique no bicho abre o Seu Nonô; arrastar move; clique direito troca.
  * - bbox e quadros POR PET vêm medidos do pixel pelo script
  *   `scripts/processar-pets-petdex.mts` — arte de terceiro varia, e a
  *   janela de desenho de um pet corta o outro se for chute.
+ * - A física de superfície é função PURA testada em
+ *   `lib/companheiro/plataformas.test.ts` (16 casos com conta à mão).
  *
  * ESTADOS DO ATLAS LIGADOS EM 02/10/2026 (pedido do dono)
  * --------------------------------------------------------
@@ -71,10 +88,15 @@
  *   antes, a pausa reutilizava o `idle`.
  * - `review` (linha 8): o segundo momento da parada no alvo — acena
  *   (`waving`) por 1,4 s e depois "revisa" o alvo com o anel pulsante.
- * - DESCIDA AO SOLTAR: arrastou pra cima e soltou? Ela não congela mais
+ * - DESCIDA AO SOLTAR: arrastou pra cima e soltou? Ele não congela mais
  *   flutuando: desce VOANDO em arco que mergulha, batendo asas (quadro
  *   `jumping`, a única linha aérea do atlas), em 400–800 ms conforme a
- *   altura, e pousa. Sem movimento reduzido, o pouso é instantâneo.
+ *   altura, e pousa na superfície de baixo (chão ou teto de cartão).
+ *   Sem movimento reduzido, o pouso é instantâneo.
+ * - SALTO EM CIMA (03/10/2026): o encontro com uma plataforma à frente
+ *   dentro do alcance vira arco curto (`jumping`); a queda livre da borda
+ *   também usa `jumping` — o atlas não tem quadro de "caindo", asas
+ *   batendo servem para os dois.
  */
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -87,6 +109,16 @@ import {
   PET_PADRAO,
   type PetCompanheiro,
 } from "./companheiroPets";
+import {
+  BASE_BORDA,
+  alvoDoSalto,
+  amostrarPlataformas,
+  passoQueda,
+  plataformaSalto,
+  superficieSob,
+  type Plataforma,
+  type Ponto,
+} from "@/lib/companheiro/plataformas";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
 const CELL_W = 192;
@@ -95,22 +127,39 @@ const SHEET_COLS = 8;
 const SHEET_ROWS = 9;
 /** Altura do bicho na tela, em px — igual para todo pet. */
 const ALTURA_TELA = 42;
-const PERIODO = 130; // ms por quadro
-/** Espaço entre vizinhos da fila do grupo, em px. */
-const ESPACO_GRUPO = 4;
 
 /** O pet padrão (qiaowei) — quem nunca escolheu começa com ele. */
 const PET_INICIAL: PetCompanheiro =
   PETS_COMPANHEIRO.find((p) => p.slug === PET_PADRAO) ?? PETS_COMPANHEIRO[0];
 
-/** Largura na tela do grupo inteiro (fileira de pets + espaços). */
-function larguraGrupo(lista: PetCompanheiro[]): number {
-  if (lista.length === 0) return larguraDe(PET_INICIAL);
-  const soma = lista.reduce((acc, p) => acc + larguraDe(p) + 8, 0);
-  return soma + ESPACO_GRUPO * (lista.length - 1);
-}
-
 type NomeEstado = (typeof LINHAS_ATLAS)[number];
+
+/**
+ * Ritmo dos quadros do atlas, em ms por quadro.
+ *
+ * O dono pediu (03/10/2026) para FREAR as animações: os quadros trocavam
+ * rápido demais. As regras que ele ditou:
+ *  - andar (`running-right`/`running-left`/`running`): só −20% de velocidade
+ *    → período ×1,25 (130 → 163 ms);
+ *  - `idle`: o alvo principal do nerf (animação fixa lateral que incomodava)
+ *    → período ×2,4;
+ *  - demais estados (aceno, pulo, espera, revisão): −50% → período ×2.
+ *
+ * Velocidade é 1/período: AUMENTAR o período FREIA o quadro. O valor base
+ * 130 ms é o original; ninguém mais troca número por estado sem passar aqui.
+ */
+const PERIODO_BASE = 130;
+const PERIODO_POR_ESTADO: Record<NomeEstado, number> = {
+  "running-right": Math.round(PERIODO_BASE * 1.25),
+  "running-left": Math.round(PERIODO_BASE * 1.25),
+  running: Math.round(PERIODO_BASE * 1.25),
+  idle: Math.round(PERIODO_BASE * 2.4),
+  waving: Math.round(PERIODO_BASE * 2),
+  jumping: Math.round(PERIODO_BASE * 2),
+  failed: Math.round(PERIODO_BASE * 2),
+  waiting: Math.round(PERIODO_BASE * 2),
+  review: Math.round(PERIODO_BASE * 2),
+};
 
 /** Escala do pet: bicho de 42 px de altura, seja qual for a arte. */
 function escalaDe(pet: PetCompanheiro): number {
@@ -125,6 +174,14 @@ function larguraDe(pet: PetCompanheiro): number {
 /** Altura na tela da janela de desenho do pet (≈ 42, arredondada). */
 function alturaDe(pet: PetCompanheiro): number {
   return Math.round(pet.bbox.h * escalaDe(pet));
+}
+
+/**
+ * Largura do BOTÃO do pet na tela (sprite + 8 px de respiro do `style`).
+ * É a caixa que encosta no chão — os pés da física ficam na metade dela.
+ */
+function larguraBotao(pet: PetCompanheiro): number {
+  return larguraDe(pet) + 8;
 }
 
 /** Quadros da linha do estado neste pet (medidos, podem ser 6 ou 7). */
@@ -147,11 +204,6 @@ const DUR_VOO_MIN = 420; // ms
 const DUR_VOO_MAX = 900; // ms
 const ESPERA_NO_ALVO_MS = 2800;
 
-interface Ponto {
-  x: number;
-  y: number;
-}
-
 /** Ponto de uma curva de Bézier quadrática (arco do voo, "teacher pace"). */
 function bezier(p0: Ponto, c: Ponto, p1: Ponto, t: number): Ponto {
   const u = 1 - t;
@@ -167,9 +219,10 @@ function suavizar(t: number): number {
 }
 
 interface Voo {
-  // "pousar" = descida ao soltar no ar (arrasto pra cima); ida/volta são
-  // os voos do alvo do Seu Nonô.
-  fase: "ida" | "volta" | "pousar";
+  // "pousar" = descida ao soltar no ar (arrasto pra cima); "salto" = a
+  // subida em degrau da física de plataforma; ida/volta são os voos do
+  // alvo do Seu Nonô.
+  fase: "ida" | "volta" | "pousar" | "salto";
   p0: Ponto;
   ctrl: Ponto;
   inicio: number;
@@ -177,27 +230,69 @@ interface Voo {
   destino: Ponto;
 }
 
+/**
+ * Um bicho: todo o corpo animado de um pet. O mapa `slug → Bicho` é a
+ * memória da tela — tirar um pet da lista NÃO apaga a entrada, então ele
+ * volta ao lugar de quando saiu.
+ */
+interface Bicho {
+  pos: Ponto; // x em px de viewport; y = altura acima do chão (bottom-2)
+  dir: 1 | -1;
+  pausaAte: number; // instante em que o passeio volta (pausa do waiting)
+  arrastando: boolean;
+  voo: Voo | null;
+  chegouEm: number | null; // início do dwell no alvo (só do líder)
+  alvoEl: HTMLElement | null; // alvo atual (só do líder)
+  estado: { nome: NomeEstado; inicio: number };
+  queda: number; // velocidade da queda livre px/s (0 = no chão/superfície)
+  semCliqueAte: number; // suppressor de clique pós-arrasto
+}
+
+/** Cria um bicho parado no chão na posição dada. */
+function criarBicho(x: number): Bicho {
+  return {
+    pos: { x, y: 0 },
+    dir: 1,
+    pausaAte: 0,
+    arrastando: false,
+    voo: null,
+    chegouEm: null,
+    alvoEl: null,
+    estado: { nome: "idle", inicio: 0 },
+    queda: 0,
+    semCliqueAte: 0,
+  };
+}
+
 export function CompanheiroFlutuante() {
   const pathname = usePathname();
-  const caixaRef = useRef<HTMLDivElement>(null);
-  /** Sprite vivo de cada pet do grupo — o laço escreve o quadro de cada um. */
+  /** Caixa (`div` fixo) de cada pet — o laço escreve o `transform`. */
+  const caixasRef = useRef(new Map<string, HTMLDivElement>());
+  /** Sprite vivo de cada pet — o laço escreve o quadro. */
   const spritesRef = useRef(new Map<string, HTMLSpanElement>());
   const anelRef = useRef<HTMLSpanElement>(null);
 
-  const posRef = useRef<Ponto>({ x: 24, y: 0 }); // y = o quanto subiu do chão
-  const direcaoRef = useRef(1);
-  const pausaAteRef = useRef(0);
-  const arrastandoRef = useRef(false);
-  const alvoElRef = useRef<HTMLElement | null>(null);
-  const vooRef = useRef<Voo | null>(null);
-  const chegouEmRef = useRef<number | null>(null);
-  const estadoRef = useRef<{ nome: NomeEstado; inicio: number }>({ nome: "idle", inicio: 0 });
+  const bichosRef = useRef(new Map<string, Bicho>());
+  const platsRef = useRef<Plataforma[]>([]);
 
   // ── Bichos escolhidos (podem ser VÁRIOS na tela) ──────────────────────────
   // Estado React = re-render da arte; ref = o laço lê na hora, sem esperar
   // re-render. Padrão (e primeiro render, inclusive o do servidor): qiaowei.
   const [pets, setPets] = useState<PetCompanheiro[]>([PET_INICIAL]);
   const petsRef = useRef<PetCompanheiro[]>([PET_INICIAL]);
+
+  /** Cria o bicho de quem ainda não tem (o primeiro nasce em x=24). */
+  const garantirBichos = useCallback((lista: PetCompanheiro[]) => {
+    lista.forEach((pet, idx) => {
+      if (bichosRef.current.has(pet.slug)) return;
+      const larg = larguraBotao(pet);
+      // O primeiro mantém o canto de sempre; quem entra depois nasce perto
+      // da borda direita, afastado da pilha de botões e dos vizinhos.
+      const x =
+        idx === 0 ? 24 : Math.max(MARGEM, window.innerWidth - MARGEM - larg - idx * 64);
+      bichosRef.current.set(pet.slug, criarBicho(x));
+    });
+  }, []);
 
   /** Grava a lista no storage e sincroniza o cartão do Seu Nonô. */
   const persistir = useCallback((lista: PetCompanheiro[]) => {
@@ -216,14 +311,15 @@ export function CompanheiroFlutuante() {
     );
   }, []);
 
-  /** Aplica a nova lista: ref + estado React + lembrança. */
+  /** Aplica a nova lista: bichos prontos + ref + estado React + lembrança. */
   const aplicarLista = useCallback(
     (lista: PetCompanheiro[]) => {
+      garantirBichos(lista);
       petsRef.current = lista;
       setPets(lista);
       persistir(lista);
     },
-    [persistir],
+    [garantirBichos, persistir],
   );
 
   /**
@@ -272,6 +368,11 @@ export function CompanheiroFlutuante() {
     }
   }, [aplicarLista]);
 
+  // Primeiro render: garante o bicho do qiaowei ANTES do laço rodar.
+  useLayoutEffect(() => {
+    garantirBichos(petsRef.current);
+  }, [garantirBichos]);
+
   // Cartão de checkboxes no chat do Seu Nonô: mesma alternância, outro gatilho.
   useEffect(() => {
     const aoTrocar = (e: Event) => {
@@ -283,10 +384,10 @@ export function CompanheiroFlutuante() {
     return () => window.removeEventListener("cp:companheiro-trocar-pet", aoTrocar);
   }, [alternarPet]);
 
-  // ── Menu de troca (clique direito no bicho ou botão perto do FAB) ─────────
+  // ── Menu de troca (clique direito no bicho ou pata da pilha) ──────────────
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
 
-  // O botão pequeno ao lado do FAB do Seu Nonô pede o menu na posição dele.
+  // A pata da pilha do canto pede o menu na posição dela.
   useEffect(() => {
     const abrir = (e: Event) => {
       const d = (e as CustomEvent<{ x?: number; y?: number }>).detail ?? {};
@@ -306,63 +407,58 @@ export function CompanheiroFlutuante() {
     return () => window.removeEventListener("keydown", aoTeclar);
   }, [menu]);
 
-  // Posição inicial antes da pintura (evita "pulo" no primeiro quadro).
-  useLayoutEffect(() => {
-    if (caixaRef.current) {
-      caixaRef.current.style.transform = `translate3d(${posRef.current.x}px, 0, 0)`;
-    }
-  }, []);
+  // ── Varredura de plataformas: o que da página vale como chão ──────────────
+  // 1×/s forçado + em scroll/resize (rAF) + em mutações do DOM (com o mesmo
+  // resfriamento) + na troca de rota. O resultado mora em `platsRef` e o
+  // laço lê sem re-render.
+  useEffect(() => {
+    let ultimo = 0;
+    let pendente = false;
+    const varrer = (forcar = false) => {
+      const agora = performance.now();
+      if (!forcar && agora - ultimo < 800) return;
+      ultimo = agora;
+      platsRef.current = amostrarPlataformas();
+    };
+    varrer(true);
+    const aoMexer = () => {
+      if (pendente) return;
+      pendente = true;
+      requestAnimationFrame(() => {
+        pendente = false;
+        varrer();
+      });
+    };
+    window.addEventListener("scroll", aoMexer, { passive: true });
+    window.addEventListener("resize", aoMexer);
+    const obs = new MutationObserver(() => varrer());
+    obs.observe(document.body, { childList: true, subtree: true });
+    const t = window.setInterval(() => varrer(true), 2000);
+    return () => {
+      window.removeEventListener("scroll", aoMexer);
+      window.removeEventListener("resize", aoMexer);
+      obs.disconnect();
+      window.clearInterval(t);
+    };
+  }, [pathname]);
 
-  /** Escreve posição, quadro e anel direto no DOM. */
-  const aplicar = useCallback((agora: number, estado: NomeEstado) => {
-    if (caixaRef.current) {
-      caixaRef.current.style.transform = `translate3d(${Math.round(posRef.current.x)}px, ${Math.round(-posRef.current.y)}px, 0)`;
-    }
-    // Cada sprite no seu ritmo (quadros por linha variam por pet) a partir
-    // do mesmo estado do grupo — escrita direta no DOM, sem re-render.
-    const base = Math.floor((agora - estadoRef.current.inicio) / PERIODO);
-    for (const petAtual of petsRef.current) {
-      const span = spritesRef.current.get(petAtual.slug);
-      if (!span) continue;
-      span.style.backgroundPosition = posicao(
-        petAtual,
-        estado,
-        base % quadrosDe(petAtual, estado),
-      );
-    }
-    // Anel pulsante sobre o alvo durante o "dwell". `display` (não `opacity`):
-    // a animação `animate-ping` mexe na opacidade e venceria o estilo inline.
-    const anel = anelRef.current;
-    if (anel) {
-      if (chegouEmRef.current !== null && alvoElRef.current) {
-        const r = alvoElRef.current.getBoundingClientRect();
-        anel.style.left = `${r.left - 6}px`;
-        anel.style.top = `${r.top - 6}px`;
-        anel.style.width = `${r.width + 12}px`;
-        anel.style.height = `${r.height + 12}px`;
-        anel.style.display = "block";
-      } else {
-        anel.style.display = "none";
-      }
-    }
-  }, []);
-
-  // ── Centro do alvo onde o bicho para (logo acima dele, sem cobrir) ────────
-  const pontoDoAlvo = useCallback((): Ponto | null => {
-    const el = alvoElRef.current;
+  // ── Centro do alvo onde o líder para (logo acima dele, sem cobrir) ────────
+  const pontoDoAlvo = useCallback((b: Bicho, larg: number): Ponto | null => {
+    const el = b.alvoEl;
     if (!el) return null;
     const r = el.getBoundingClientRect();
     if (r.bottom < 0 || r.top > window.innerHeight) return null;
-    const larg = larguraGrupo(petsRef.current);
     const x = Math.min(
       window.innerWidth - larg - MARGEM,
       Math.max(MARGEM, r.left + r.width / 2 - larg / 2),
     );
-    const y = Math.max(0, window.innerHeight - r.top - 2);
+    // pés do bicho = borda do container (BASE_BORDA) + altura; queremos os
+    // pés 2 px acima do topo do alvo → y = H − r.top − BASE + 2.
+    const y = Math.max(0, window.innerHeight - r.top - BASE_BORDA + 2);
     return { x, y };
   }, []);
 
-  // ── O laço: passeio, voo de ida, dwell e voo de volta ───────────────────
+  // ── O laço: percorre TODOS os bichos a cada quadro ────────────────────────
   useEffect(() => {
     const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
@@ -371,96 +467,224 @@ export function CompanheiroFlutuante() {
     const passo = (agora: number) => {
       const dt = Math.min(0.05, (agora - anterior) / 1000);
       anterior = agora;
-      let estado: NomeEstado = "idle";
-      const voo = vooRef.current;
-      const larg = larguraGrupo(petsRef.current);
+      const plataformas = platsRef.current;
+      // Alcance do salto cresce com a tela: dá para subir em cartão alto
+      // num monitor grande; no celular o pulo é mais curto (e honesto).
+      const alcance = Math.min(420, Math.max(200, window.innerHeight * 0.45));
 
-      if (voo) {
-        const t = Math.min(1, (agora - voo.inicio) / voo.dur);
-        const destino = voo.fase === "ida" ? pontoDoAlvo() ?? voo.destino : voo.destino;
-        posRef.current = bezier(voo.p0, voo.ctrl, destino, suavizar(t));
-        // Ida e pouso são voos no AR (jumping = batendo asas); a volta ao
-        // chão é corrida.
-        estado = voo.fase === "volta" ? "running" : "jumping";
-        if (t >= 1) {
-          vooRef.current = null;
-          if (voo.fase === "ida") chegouEmRef.current = agora; // dwell no alvo
-          if (voo.fase === "pousar") pausaAteRef.current = agora + 600; // pousou: respira antes de andar
-        }
-      } else if (chegouEmRef.current !== null) {
-        // Parada no alvo: acena (`waving`) por 1,4 s e depois "revisa" o
-        // alvo (`review`) enquanto o anel pulsa. Depois, voo de volta.
-        estado = agora - chegouEmRef.current <= 1400 ? "waving" : "review";
-        if (agora - chegouEmRef.current > ESPERA_NO_ALVO_MS) {
-          chegouEmRef.current = null;
-          const p0 = { ...posRef.current };
-          const destino: Ponto = { x: Math.max(MARGEM, Math.min(window.innerWidth - larg - MARGEM, p0.x)), y: 0 };
-          vooRef.current = {
-            fase: "volta",
-            p0,
-            ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 80 },
-            inicio: agora,
-            dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + Math.abs(p0.x - destino.x)),
-            destino,
-          };
-        }
-      } else if (!arrastandoRef.current && !semMovimento) {
-        // Passeio: anda, pausa de vez em quando, vira nas bordas.
-        if (agora >= pausaAteRef.current) {
-          posRef.current.x += direcaoRef.current * VELOCIDADE * dt;
-          const maxX = window.innerWidth - larg - MARGEM;
-          if (posRef.current.x <= MARGEM) {
-            posRef.current.x = MARGEM;
-            direcaoRef.current = 1;
-          } else if (posRef.current.x >= maxX) {
-            posRef.current.x = maxX;
-            direcaoRef.current = -1;
+      for (const pet of petsRef.current) {
+        const b = bichosRef.current.get(pet.slug);
+        if (!b) continue;
+        const larg = larguraBotao(pet);
+        let estado: NomeEstado = "idle";
+
+        if (b.voo) {
+          const voo = b.voo;
+          const t = Math.min(1, (agora - voo.inicio) / voo.dur);
+          const destino =
+            voo.fase === "ida" ? pontoDoAlvo(b, larg) ?? voo.destino : voo.destino;
+          b.pos = bezier(voo.p0, voo.ctrl, destino, suavizar(t));
+          // Ida, salto e pouso são voos no AR (jumping = batendo asas);
+          // a volta ao chão é corrida.
+          estado = voo.fase === "volta" ? "running" : "jumping";
+          if (t >= 1) {
+            b.voo = null;
+            if (voo.fase === "ida") b.chegouEm = agora; // dwell no alvo
+            if (voo.fase === "pousar") b.pausaAte = agora + 600; // respira
+            if (voo.fase === "salto") b.pausaAte = agora + 120;
+            if (voo.fase === "volta") {
+              // Ciclo do alvo fechado: solta o alvo para a PRÓXIMA resposta
+              // do Seu Nonô poder guiar de novo (sem isso, o observador de
+              // mutações ficaria bloqueado para sempre no antigo alvo).
+              b.alvoEl = null;
+              b.queda = 0;
+            }
           }
-          estado = direcaoRef.current > 0 ? "running-right" : "running-left";
-          if (Math.random() < 0.004) pausaAteRef.current = agora + 900 + Math.random() * 1800;
+        } else if (b.chegouEm !== null) {
+          // Parada no alvo: acena (`waving`) por 1,4 s e depois "revisa"
+          // o alvo (`review`) enquanto o anel pulsa. Depois, voo de volta.
+          estado = agora - b.chegouEm <= 1400 ? "waving" : "review";
+          if (agora - b.chegouEm > ESPERA_NO_ALVO_MS) {
+            b.chegouEm = null;
+            const p0 = { ...b.pos };
+            const largClamp = Math.max(MARGEM, window.innerWidth - larg - MARGEM);
+            const x = Math.max(MARGEM, Math.min(largClamp, p0.x));
+            // Volta pousa na superfície sob o x de destino (chão ou teto).
+            const destino: Ponto = {
+              x,
+              y: superficieSob(plataformas, x + larg / 2, p0.y),
+            };
+            b.voo = {
+              fase: "volta",
+              p0,
+              ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 80 },
+              inicio: agora,
+              dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + Math.abs(p0.x - destino.x)),
+              destino,
+            };
+          }
+        } else if (b.arrastando || semMovimento) {
+          // Arrastando o dedo nele (ou movimento reduzido): parado.
+          estado = "idle";
         } else {
-          // Pausa do passeio: `waiting` (olha em volta) — ligado em
-          // 02/10/2026; antes a pausa reutilizava o `idle`.
-          estado = "waiting";
+          const centro = b.pos.x + larg / 2;
+          const sob = superficieSob(plataformas, centro, b.pos.y);
+
+          if (b.pos.y > sob + 0.5) {
+            // No ar: saiu da borda de uma plataforma (ou do soltar sem arco).
+            // Gravidade até a primeira superfície sob os pés.
+            const q = passoQueda(b.pos.y, b.queda, dt, sob);
+            b.pos.y = q.y;
+            b.queda = q.vel;
+            estado = "jumping"; // asas batendo na descida
+            if (q.pousou) {
+              b.queda = 0;
+              b.pausaAte = agora + 250;
+              estado = "idle";
+            }
+          } else {
+            // No chão: cola na superfície e passeia (anda, pula, pausa).
+            b.queda = 0;
+            b.pos.y = sob;
+            if (agora >= b.pausaAte) {
+              b.pos.x += b.dir * VELOCIDADE * dt;
+              const maxX = window.innerWidth - larg - MARGEM;
+              if (b.pos.x <= MARGEM) {
+                b.pos.x = MARGEM;
+                b.dir = 1;
+              } else if (b.pos.x >= maxX) {
+                b.pos.x = maxX;
+                b.dir = -1;
+              }
+              // Encontro com degrau à frente dentro do alcance: salto.
+              const ponta = b.dir > 0 ? b.pos.x + larg : b.pos.x;
+              const degrau = plataformaSalto(plataformas, {
+                yAgora: b.pos.y,
+                xPonta: ponta,
+                alcance,
+              });
+              if (degrau) {
+                const p0 = { ...b.pos };
+                const destino = alvoDoSalto(degrau, b.dir, larg);
+                b.voo = {
+                  fase: "salto",
+                  p0,
+                  ctrl: {
+                    x: (p0.x + destino.x) / 2,
+                    y: Math.max(p0.y, destino.y) + 46,
+                  },
+                  inicio: agora,
+                  dur: Math.min(700, 320 + Math.abs(destino.y - p0.y) * 1.1),
+                  destino,
+                };
+                estado = "jumping";
+              } else {
+                estado = b.dir > 0 ? "running-right" : "running-left";
+                if (Math.random() < 0.004) {
+                  b.pausaAte = agora + 900 + Math.random() * 1800;
+                }
+              }
+            } else {
+              // Pausa do passeio: `waiting` (olha em volta).
+              estado = "waiting";
+            }
+          }
+        }
+
+        if (b.estado.nome !== estado) b.estado = { nome: estado, inicio: agora };
+
+        // Escrita direta no DOM: caixa (posição) e sprite (quadro).
+        const caixa = caixasRef.current.get(pet.slug);
+        if (caixa) {
+          caixa.style.transform = `translate3d(${Math.round(b.pos.x)}px, ${Math.round(-b.pos.y)}px, 0)`;
+        }
+        const span = spritesRef.current.get(pet.slug);
+        if (span) {
+          const base = Math.floor((agora - b.estado.inicio) / PERIODO_POR_ESTADO[estado]);
+          span.style.backgroundPosition = posicao(
+            pet,
+            estado,
+            base % quadrosDe(pet, estado),
+          );
         }
       }
 
-      if (estadoRef.current.nome !== estado) estadoRef.current = { nome: estado, inicio: agora };
-      aplicar(agora, estado);
+      // Anel pulsante sobre o alvo durante o "dwell" (só existe um alvo:
+      // só o líder voa). `display` (não `opacity`): a animação
+      // `animate-ping` mexe na opacidade e venceria o estilo inline.
+      const anel = anelRef.current;
+      if (anel) {
+        let ocupado: Bicho | null = null;
+        for (const pet of petsRef.current) {
+          const b = bichosRef.current.get(pet.slug);
+          if (b && b.chegouEm !== null && b.alvoEl) {
+            ocupado = b;
+            break;
+          }
+        }
+        if (ocupado && ocupado.alvoEl) {
+          const r = ocupado.alvoEl.getBoundingClientRect();
+          anel.style.left = `${r.left - 6}px`;
+          anel.style.top = `${r.top - 6}px`;
+          anel.style.width = `${r.width + 12}px`;
+          anel.style.height = `${r.height + 12}px`;
+          anel.style.display = "block";
+        } else {
+          anel.style.display = "none";
+        }
+      }
+
       raf = requestAnimationFrame(passo);
     };
 
     raf = requestAnimationFrame(passo);
     return () => cancelAnimationFrame(raf);
-  }, [aplicar, pontoDoAlvo]);
+  }, [pontoDoAlvo]);
 
-  // ── Voa em arco até um alvo ─────────────────────────────────────────────
+  // ── O líder voa em arco até um alvo ──────────────────────────────────────
   const voarPara = useCallback(
     (el: HTMLElement) => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const lider = petsRef.current[0];
+      if (!lider) return;
+      const b = bichosRef.current.get(lider.slug);
+      if (!b || b.arrastando) return;
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > window.innerHeight) return; // fora da tela
-      alvoElRef.current = el;
-      const p0 = { ...posRef.current };
+      const larg = larguraBotao(lider);
+      b.alvoEl = el;
+      const p0 = { ...b.pos };
       const destino: Ponto =
-        pontoDoAlvo() ?? { x: r.left, y: Math.max(0, window.innerHeight - r.top - 2) };
-      vooRef.current = {
+        pontoDoAlvo(b, larg) ??
+        { x: r.left, y: Math.max(0, window.innerHeight - r.top - BASE_BORDA + 2) };
+      b.voo = {
         fase: "ida",
         p0,
         ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 90 },
         inicio: performance.now(),
-        dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + (Math.abs(p0.x - destino.x) + Math.abs(p0.y - destino.y)) * 0.4),
+        dur: Math.min(
+          DUR_VOO_MAX,
+          DUR_VOO_MIN + (Math.abs(p0.x - destino.x) + Math.abs(p0.y - destino.y)) * 0.4,
+        ),
         destino,
       };
-      chegouEmRef.current = null;
+      b.chegouEm = null;
     },
     [pontoDoAlvo],
   );
 
+  /** O líder está no meio de um ciclo de alvo (voo, dwell ou alvo preso)? */
+  const liderOcupado = useCallback((): boolean => {
+    const lider = petsRef.current[0];
+    if (!lider) return false;
+    const b = bichosRef.current.get(lider.slug);
+    return !!b && (b.voo !== null || b.chegouEm !== null || b.alvoEl !== null);
+  }, []);
+
   // Nova resposta do Seu Nonô muda o DOM: procura um alvo e voa até ele.
   useEffect(() => {
     const procurar = () => {
-      if (vooRef.current || chegouEmRef.current !== null || alvoElRef.current) return;
+      if (liderOcupado()) return;
       const alvo = document.querySelector<HTMLElement>('[data-companheiro-alvo="abrir-pagina"]');
       if (alvo) voarPara(alvo);
     };
@@ -472,7 +696,7 @@ export function CompanheiroFlutuante() {
       obs.disconnect();
       window.clearTimeout(t);
     };
-  }, [pathname, voarPara]);
+  }, [pathname, voarPara, liderOcupado]);
 
   // Gatilho manual (outro componente pode pedir o voo).
   useEffect(() => {
@@ -487,45 +711,69 @@ export function CompanheiroFlutuante() {
     return () => window.removeEventListener("cp:companheiro-voar", aoPedir);
   }, [voarPara]);
 
-  const aoClicar = useCallback(() => {
-    if (arrastandoRef.current) return;
-    window.dispatchEvent(new CustomEvent("abrir-seu-nono"));
+  // ── Arrasto POR PET: apertou um, move só ele ──────────────────────────────
+  const pegas = useRef(
+    new Map<string, { px: number; py: number; x0: number; y0: number; moveu: boolean }>(),
+  );
+
+  const aoPegar = useCallback((e: ReactPointerEvent<HTMLElement>, pet: PetCompanheiro) => {
+    const b = bichosRef.current.get(pet.slug);
+    if (!b) return;
+    pegas.current.set(pet.slug, {
+      px: e.clientX,
+      py: e.clientY,
+      x0: b.pos.x,
+      y0: b.pos.y,
+      moveu: false,
+    });
+    b.arrastando = true;
+    b.alvoEl = null;
+    b.voo = null;
+    b.chegouEm = null;
+    b.queda = 0;
+    e.currentTarget.setPointerCapture?.(e.pointerId);
   }, []);
 
-  // Arrasto: tira do passeio; soltar retoma a partir dali.
-  const pega = useRef<{ px: number; py: number; x0: number; y0: number } | null>(null);
-  const onPointerDown = (e: ReactPointerEvent<HTMLElement>) => {
-    pega.current = { px: e.clientX, py: e.clientY, x0: posRef.current.x, y0: posRef.current.y };
-    arrastandoRef.current = true;
-    alvoElRef.current = null;
-    vooRef.current = null;
-    chegouEmRef.current = null;
-    e.currentTarget.setPointerCapture?.(e.pointerId);
-  };
-  const onPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
-    const g = pega.current;
-    if (!g) return;
-    const larg = larguraGrupo(petsRef.current);
-    posRef.current.x = Math.max(MARGEM, Math.min(window.innerWidth - larg - MARGEM, g.x0 + e.clientX - g.px));
-    posRef.current.y = Math.max(0, g.y0 - (e.clientY - g.py));
-  };
-  const onPointerUp = () => {
-    pega.current = null;
-    arrastandoRef.current = false;
-    pausaAteRef.current = performance.now() + 600;
-    // Soltou NO AR (arrastou pra cima e soltou)? Ele desce voando, batendo
-    // asas, em arco que MERGULHA abaixo da linha reta — pedido do dono
-    // (02/10/2026). Antes o bicho ficava flutuando preso na altura do soltar.
-    const altura = posRef.current.y;
+  const aoMover = useCallback((e: ReactPointerEvent<HTMLElement>, pet: PetCompanheiro) => {
+    const g = pegas.current.get(pet.slug);
+    const b = bichosRef.current.get(pet.slug);
+    if (!g || !b) return;
+    const dx = e.clientX - g.px;
+    const dy = e.clientY - g.py;
+    if (Math.abs(dx) + Math.abs(dy) > 4) g.moveu = true;
+    const larg = larguraBotao(pet);
+    b.pos.x = Math.max(
+      MARGEM,
+      Math.min(window.innerWidth - larg - MARGEM, g.x0 + dx),
+    );
+    b.pos.y = Math.max(0, g.y0 - dy);
+  }, []);
+
+  const aoSoltar = useCallback((pet: PetCompanheiro) => {
+    const g = pegas.current.get(pet.slug);
+    pegas.current.delete(pet.slug);
+    const b = bichosRef.current.get(pet.slug);
+    if (!b) return;
+    b.arrastando = false;
+    b.pausaAte = performance.now() + 600;
+    // Gesto foi mover: o clique que dispara logo em seguida NÃO abre o
+    // Seu Nonô (senão arrastar sempre abriria o painel por acidente).
+    if (g?.moveu) b.semCliqueAte = performance.now() + 350;
+
+    const larg = larguraBotao(pet);
+    const sob = superficieSob(platsRef.current, b.pos.x + larg / 2, b.pos.y);
+    const altura = b.pos.y - sob;
     const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (altura > 12 && !reduzido) {
-      const p0 = { ...posRef.current };
-      const larg = larguraGrupo(petsRef.current);
+      // Soltou NO AR? Desce voando em arco que MERGULHA abaixo da linha
+      // reta — pedido do dono (02/10/2026) — e pousa na superfície de baixo.
+      const p0 = { ...b.pos };
+      const largClamp = Math.max(MARGEM, window.innerWidth - larg - MARGEM);
       const destino: Ponto = {
-        x: Math.max(MARGEM, Math.min(window.innerWidth - larg - MARGEM, p0.x)),
-        y: 0,
+        x: Math.max(MARGEM, Math.min(largClamp, p0.x)),
+        y: sob,
       };
-      vooRef.current = {
+      b.voo = {
         fase: "pousar",
         p0,
         // Controle ABAIXO da linha reta (meia altura − 40 px): o arco
@@ -535,12 +783,21 @@ export function CompanheiroFlutuante() {
         dur: Math.min(800, Math.max(400, 400 + altura * 4)),
         destino,
       };
-      chegouEmRef.current = null;
-      alvoElRef.current = null;
-    } else if (reduzido && altura > 0) {
-      posRef.current.y = 0; // sem movimento reduzido: pousa na hora
+      b.chegouEm = null;
+      b.alvoEl = null;
+    } else if (altura > 0) {
+      // Rentes do chão (ou movimento reduzido): cola na hora.
+      b.pos.y = sob;
+      b.queda = 0;
     }
-  };
+  }, []);
+
+  /** Clique no bicho: abre o Seu Nonô — salvo se o gesto foi arrasto. */
+  const aoClicar = useCallback((pet: PetCompanheiro) => {
+    const b = bichosRef.current.get(pet.slug);
+    if (b && performance.now() < b.semCliqueAte) return;
+    window.dispatchEvent(new CustomEvent("abrir-seu-nono"));
+  }, []);
 
   // Clique direito no bicho: abre o menu de troca embaixo do mouse.
   const aoMenuDireito = (e: ReactMouseEvent<HTMLElement>) => {
@@ -558,27 +815,38 @@ export function CompanheiroFlutuante() {
         style={{ display: "none" }}
       />
 
-      {/* O grupo de bichinhos. O container é click-through; só os sprites
-          pegam o ponteiro. Andam e voam juntos: uma caixa, uma posição. */}
-      <div
-        ref={caixaRef}
-        className="pointer-events-none fixed bottom-2 left-0 z-40 flex items-end print:hidden"
-        style={{ willChange: "transform", gap: ESPACO_GRUPO }}
-      >
-        {pets.map((p) => {
-          const escala = escalaDe(p);
-          const larg = larguraDe(p);
-          const alt = alturaDe(p);
-          return (
+      {/* Um `div` fixo POR bicho: cada um tem posição, arrasto e queda
+          próprios. O container é click-through; só o sprite pega o
+          ponteiro. `data-nao-plataforma`: bichos não são chão uns dos
+          outros. */}
+      {pets.map((p) => {
+        const escala = escalaDe(p);
+        const larg = larguraDe(p);
+        const alt = alturaDe(p);
+        return (
+          <div
+            key={p.slug}
+            ref={(el) => {
+              if (el) {
+                caixasRef.current.set(p.slug, el);
+                const b = bichosRef.current.get(p.slug);
+                el.style.transform = `translate3d(${Math.round(b ? b.pos.x : 24)}px, ${Math.round(-(b ? b.pos.y : 0))}px, 0)`;
+              } else {
+                caixasRef.current.delete(p.slug);
+              }
+            }}
+            data-nao-plataforma
+            className="pointer-events-none fixed bottom-2 left-0 z-40 print:hidden"
+            style={{ willChange: "transform" }}
+          >
             <button
-              key={p.slug}
               type="button"
-              onClick={aoClicar}
+              onClick={() => aoClicar(p)}
               onContextMenu={aoMenuDireito}
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
+              onPointerDown={(e) => aoPegar(e, p)}
+              onPointerMove={(e) => aoMover(e, p)}
+              onPointerUp={() => aoSoltar(p)}
+              onPointerCancel={() => aoSoltar(p)}
               aria-label={`Abrir o Seu Nonô, o assistente do portal (${p.nome})`}
               title={`Pergunte ao Seu Nonô — ${p.nome}: arraste para mover, botão direito troca o bichinho`}
               className="pointer-events-auto block touch-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-grab active:cursor-grabbing"
@@ -602,22 +870,25 @@ export function CompanheiroFlutuante() {
                 }}
               />
             </button>
-          );
-        })}
-      </div>
+          </div>
+        );
+      })}
 
       {/* Menu de troca em checkboxes (vários na tela): fundo fecha no
-          clique fora; o menu fica por cima. */}
+          clique fora; o menu fica por cima. `data-nao-plataforma`: a UI
+          flutuante não é terreno dos bichos. */}
       {menu && (
         <>
           <div
             className="fixed inset-0 z-[60]"
+            data-nao-plataforma
             onPointerDown={() => setMenu(null)}
             aria-hidden="true"
           />
           <div
             role="menu"
             aria-label="Escolher os bichinhos do companheiro"
+            data-nao-plataforma
             className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto rounded-xl border border-border bg-surface p-2 shadow-lg"
             style={{
               left: Math.max(8, Math.min(menu.x, window.innerWidth - 256)),

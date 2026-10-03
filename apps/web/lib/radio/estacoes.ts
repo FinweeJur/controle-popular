@@ -37,6 +37,15 @@
  * - Categoria: "independente" deixou de ser rótulo — sobram comunitária e
  *   popular (mais pública federal e universitária, que continuam);
  * - Ordem padrão da tela: região (com categoria e nome dentro dela).
+ *
+ * Ampliação de 03/10/2026 (pedido do dono — rádios da Venezuela e de reggae):
+ * entraram duas emissoras comunitárias da Venezuela (rede Fe y Alegría, de
+ * educação popular), uma rádio de música venezuelana (joropo/llanera), duas
+ * comunitárias brasileiras do Norte/Nordeste e uma rádio de reggae de São Luís
+ * (MA). Cada stream foi conferido por requisição HTTP direta em 03/10/2026
+ * (bytes de áudio MP3/AAC, não só status 200); as da Venezuela e de Gurupá/
+ * Voz Popular/Reggae saíram pelo agregador radio.garden. A data do acervo
+ * subiu para 2026-10-03.
  */
 
 /** Categoria funcional da estação — é o filtro principal da página. */
@@ -103,8 +112,12 @@ export interface EstacaoRadio {
   verificadoEm: string;
 }
 
-/** Data única da última conferência do acervo inteiro. */
-export const RADIO_VERIFICADO_EM = "2026-09-30";
+/**
+ * Data única da última conferência do acervo inteiro. Subiu para 2026-10-03
+ * com a ampliação (Venezuela, Norte/Nordeste e reggae do Maranhão); é a data
+ * que a página exibe como "streams de ...".
+ */
+export const RADIO_VERIFICADO_EM = "2026-10-03";
 
 /**
  * Acervo curado. O recorte é deliberado: menos grande mídia comercial, mais
@@ -961,6 +974,119 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     site: "https://iriefm.net/",
     logo: "https://iriefm.net/favicon.ico",
     fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  // ─── Ampliação de 03/10/2026: Venezuela, Norte/Nordeste e reggae do MA ───
+  // Venezuela — rede Fe y Alegría (educação popular). A origem (ALER/Fe y
+  // Alegría) só fala HTTP e a página é HTTPS; por isso o stream sai pelo
+  // proxy do radio.garden, que também é HTTPS. Cada URL foi conferida por
+  // requisição direta em 03/10/2026 (bytes de áudio MP3, não só status 200).
+  {
+    id: "fe-y-alegria-puerto-la-cruz",
+    nome: "Fe y Alegría Puerto La Cruz 101.3 FM",
+    tipo: "comunitaria",
+    regiao: "America Latina",
+    pais: "VE",
+    paisNome: "Venezuela",
+    cidade: "Puerto La Cruz",
+    frequencia: "101.3 FM",
+    programacao: "Educação popular e programação comunitária",
+    descricao: "Emissora da rede Fe y Alegría, de educação popular na Venezuela.",
+    stream: "https://radio.garden/api/ara/content/listen/6L79J6xl/channel.mp3",
+    formato: "mp3",
+    site: "https://radios.feyalegrianoticias.com/puerto-la-cruz/",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "fe-y-alegria-maracaibo",
+    nome: "Fe y Alegría Maracaibo 88.1 FM",
+    tipo: "comunitaria",
+    regiao: "America Latina",
+    pais: "VE",
+    paisNome: "Venezuela",
+    cidade: "Maracaibo",
+    frequencia: "88.1 FM",
+    programacao: "Educação popular e programação comunitária",
+    descricao: "Emissora da rede Fe y Alegría, de educação popular na Venezuela.",
+    stream: "https://radio.garden/api/ara/content/listen/oynXOcov/channel.mp3",
+    formato: "mp3",
+    site: "https://radios.feyalegrianoticias.com/maracaibo-fm/",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-folclorllanero",
+    nome: "Radio Folclorllanero",
+    tipo: "popular",
+    regiao: "America Latina",
+    pais: "VE",
+    paisNome: "Venezuela",
+    programacao: "Joropo, música llanera e folclore venezuelano",
+    descricao: "Rádio dedicada ao joropo e à música llanera da Venezuela.",
+    stream: "https://stream.zeno.fm/hcvjvmprjveuv",
+    formato: "mp3",
+    site: "https://www.radiofolclorllanero.com/",
+    fonteAgregador: "radio-browser.info",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  // Brasil — duas comunitárias do Norte/Nordeste e o reggae de São Luís (MA).
+  {
+    id: "radio-comunitaria-gurupa",
+    nome: "Rádio Comunitária de Gurupá 87.9 FM",
+    tipo: "comunitaria",
+    regiao: "Norte",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "PA",
+    cidade: "Gurupá",
+    frequencia: "87.9 FM",
+    programacao: "Programação comunitária ribeirinha",
+    descricao: "Rádio comunitária de Gurupá, no Marajó (PA).",
+    stream: "https://radio.garden/api/ara/content/listen/BDGUBB5D/channel.mp3",
+    formato: "mp3",
+    site: "https://radiocomunitariagurupa87.minharadio.fm",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "radio-comunitaria-voz-popular",
+    nome: "Rádio Comunitária Voz Popular",
+    tipo: "comunitaria",
+    regiao: "Nordeste",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "PB",
+    cidade: "João Pessoa",
+    programacao: "Programação comunitária e popular",
+    descricao: "Rádio comunitária do Instituto Voz Popular, na Paraíba.",
+    stream: "https://radio.garden/api/ara/content/listen/19QyXe1G/channel.mp3",
+    formato: "mp3",
+    site: "https://institutovozpopular.webnode.page",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
+    id: "portal-roots-reggae",
+    nome: "Portal Roots Reggae",
+    tipo: "popular",
+    regiao: "Nordeste",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "MA",
+    cidade: "São Luís",
+    programacao: "Reggae, dancehall e cultura jamaicana",
+    descricao: "Rádio de reggae de São Luís (MA), capital do reggae brasileiro.",
+    stream: "https://radio.garden/api/ara/content/listen/xTBSA1nh/channel.mp3",
+    formato: "mp3",
+    site: "https://portalradiorootsreggae.blogspot.com",
+    fonteAgregador: "radio.garden",
     transcrevivel: false,
     verificadoEm: RADIO_VERIFICADO_EM,
   },

@@ -257,12 +257,43 @@ const nextConfig: NextConfig = {
    * medido 2026-09-20): `serverExternalPackages` impede o bundler de
    * deduplicar o pacote dentro dos chunks e
    * `outputFileTracingIncludes` o copia para o diretorio standalone.
+   *
+   * ═══ O `pg` NÃO É UM PACOTE SÓ — É UMA ÁRVORE DE 13 ═══
+   *
+   * Copiar só a pasta `pg` resolve o erro de 20/09 e derruba o seguinte:
+   * o `pg` importa `pg-types` (e ela importa `pg-int8`, `postgres-array`,
+   * `postgres-bytea`, `postgres-date`, `postgres-interval`...), e esses
+   * pacotes também moram fora do bundle por serem exigidos em runtime.
+   * Medido em 03/10/2026 em produção: `Cannot find module 'pg-types'` no
+   * log do container, banco primário (Postgres do Guara, host
+   * `.cluster.local`) morto em TODA consulta, e as páginas respondendo
+   * **200 sem dado nenhum** — o fallback da Neon veio vazio e o site
+   * seguiu de pé parecendo saudável, que é a pior forma de cair.
+   *
+   * A árvore abaixo foi medida com `node` em 03/10/2026 (fechamento de
+   * dependências do `pg@8.23.0`, 13 pacotes, todos no `node_modules` da
+   * raiz do monorepo). Tire uma linha daqui e o standalone volta a quebrar
+   * do mesmo jeito — a falha não aparece no build, só no container.
    */
   ...(standaloneBuild
     ? {
         serverExternalPackages: ["pg"],
         outputFileTracingIncludes: {
-          "*": ["../../node_modules/pg/**/*"],
+          "*": [
+            "../../node_modules/pg/**/*",
+            "../../node_modules/pg-connection-string/**/*",
+            "../../node_modules/pg-pool/**/*",
+            "../../node_modules/pg-protocol/**/*",
+            "../../node_modules/pg-types/**/*",
+            "../../node_modules/pgpass/**/*",
+            "../../node_modules/pg-int8/**/*",
+            "../../node_modules/postgres-array/**/*",
+            "../../node_modules/postgres-bytea/**/*",
+            "../../node_modules/postgres-date/**/*",
+            "../../node_modules/postgres-interval/**/*",
+            "../../node_modules/split2/**/*",
+            "../../node_modules/xtend/**/*",
+          ],
         },
       }
     : {}),

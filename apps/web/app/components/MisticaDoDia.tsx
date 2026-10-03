@@ -153,10 +153,16 @@ export default function MisticaDoDia() {
   return (
     <aside
       aria-label="Mística do Dia"
-      className="mistica-asile mb-8 rounded-2xl border border-border bg-surface px-4 py-3 sm:px-6 sm:py-4 flex items-start gap-3 sm:gap-4"
+      className="mistica-asile mb-5 rounded-2xl border border-border bg-surface px-4 py-3 sm:px-6 sm:py-4 flex items-start gap-2 sm:gap-3"
     >
-      {/* Fogueira decorativa à esquerda, alinhada à linha do título. */}
-      <CampfireColonyAnim />
+      {/* Fogueira decorativa à esquerda, encostada na borda interna
+          (margem negativa) e menor no desktop (dono, 03/10/2026): quanto
+          menos largura a peça reserva, menos linhas o texto da direita
+          quebra — e o bloco inteiro fica mais baixo antes da imagem. A
+          animação não muda; só a posição e o tamanho em quadro. */}
+      <div className="-ml-2 shrink-0 sm:-ml-3">
+        <CampfireColonyAnim />
+      </div>
 
       {/* Conteúdo da mística à direita, começando na mesma altura da peça. */}
       <div className="min-w-0 flex-1">

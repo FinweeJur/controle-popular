@@ -1,19 +1,39 @@
 "use client";
 
+/**
+ * WavePhysicsLoader — o loader GRANDE do portal: a bolinha quicando sobre as
+ * barras de navegação (transição de página, tabelas e gráficos).
+ *
+ * O QUE É: um modelo de física de onda — 15 barras cuja altura acompanha a
+ * passagem de uma bola que quica (parábola) — desenhado por keyframes do
+ * framer-motion, sem biblioteca nova (regra do dono, 19/09/2026).
+ *
+ * COR E CONTRASTE (correção do dono, 03/10/2026): no tema escuro, parte da
+ * animação "sumia" — a base das barras era `rgb(39,39,42)` sobre o cartão
+ * `bg-surface`, quase o mesmo tom, e a bolinha escura desaparecia. A correção
+ * NÃO escreve branco fixo: usa a cor de TEXTO do tema (`currentColor`, pela
+ * classe `text-text`) e joga a onda na OPACIDADE. Assim fica branco sobre
+ * fundo escuro e escuro sobre fundo claro — contraste garantido em TODOS os
+ * temas. Branco fixo resolveria só o tema escuro e desapareceria no claro;
+ * por isso a cor acompanha o tema em vez de ser constante.
+ *
+ * NÃO trocar por outro loader nem usar biblioteca nova (dono, 19/09/2026).
+ */
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import { useTheme } from "next-themes";
 
 export interface WavePhysicsLoaderProps {
+  /**
+   * Mantido por compatibilidade de API. A cor agora segue o tema do portal
+   * via `currentColor` (ver comentário do topo), então este campo não é mais
+   * lido — nenhum chamador o usa hoje.
+   */
   theme?: "light" | "dark";
   className?: string;
   legenda?: string;
 }
 
-export function WavePhysicsLoader({ theme: themeProp, className = "", legenda }: WavePhysicsLoaderProps) {
-  const { resolvedTheme } = useTheme();
-  const theme = themeProp ?? (resolvedTheme === "dark" ? "dark" : "light");
-
+export function WavePhysicsLoader({ className = "", legenda }: WavePhysicsLoaderProps) {
   const numBars = 15;
   const barWidth = 12;
   const barGap = 8;
@@ -28,7 +48,7 @@ export function WavePhysicsLoader({ theme: themeProp, className = "", legenda }:
   const { bars, ballX, ballY, ballScaleX, ballScaleY, times } = useMemo(() => {
     const barsData = Array.from({ length: numBars }).map(() => ({
       heights: [] as string[],
-      colors: [] as string[],
+      opacities: [] as number[],
     }));
     const bX: string[] = [];
     const bY: string[] = [];
@@ -76,44 +96,35 @@ export function WavePhysicsLoader({ theme: themeProp, className = "", legenda }:
         const bar_h = baseBarH + wave_val * wavePeakH - indent;
         barsData[i].heights.push(`${Math.max(4, bar_h)}px`);
 
-        // Colors for Light Theme: zinc-200 to zinc-800
-        const isDark = theme === "dark";
-        let r: number, g: number, b: number;
-        if (isDark) {
-          r = Math.round(39 + wave_val * (228 - 39));
-          g = Math.round(39 + wave_val * (228 - 39));
-          b = Math.round(42 + wave_val * (231 - 42));
-        } else {
-          r = Math.round(228 - wave_val * (228 - 39));
-          g = Math.round(228 - wave_val * (228 - 39));
-          b = Math.round(231 - wave_val * (231 - 42));
-        }
-        barsData[i].colors.push(`rgb(${r}, ${g}, ${b})`);
+        // A onda vira OPACIDADE, não cor: base apagada (0,28) e crista cheia
+        // (1,0). É o "acender" da barra quando a bola passa — e, por usar a
+        // cor de texto do tema, funciona no claro e no escuro sem código de
+        // tema aqui. (Antes eram cores fixas por tema: davam quase-preto sobre
+        // o cartão escuro e sumiam.)
+        const opacity = 0.28 + wave_val * 0.72;
+        barsData[i].opacities.push(opacity);
       }
     }
 
     return { bars: barsData, ballX: bX, ballY: bY, ballScaleX: bScaleX, ballScaleY: bScaleY, times: tArr };
-  }, [theme]);
+  }, [barTotalWidth]);
 
   return (
     <div
       role="status"
       aria-label={legenda || "Carregando dados..."}
-      className={`relative flex flex-col items-center justify-center w-full py-4 ${className}`}
+      className={`relative flex flex-col items-center justify-center w-full py-4 text-text ${className}`}
     >
       <div className="relative flex flex-col items-center justify-center scale-[0.6] sm:scale-75 md:scale-100">
         <div className="relative flex items-end justify-start h-48 space-x-2 w-[292px]">
           {bars.map((bar, i) => (
             <motion.div
               key={i}
-              className="w-3 rounded-full origin-bottom"
-              style={{
-                height: "16px",
-                backgroundColor: theme === "dark" ? "rgb(39, 39, 42)" : "rgb(228, 228, 231)",
-              }}
+              className="w-3 rounded-full origin-bottom bg-current"
+              style={{ height: "16px" }}
               animate={{
                 height: bar.heights,
-                backgroundColor: bar.colors,
+                opacity: bar.opacities,
               }}
               transition={{
                 duration: 4,
@@ -125,7 +136,7 @@ export function WavePhysicsLoader({ theme: themeProp, className = "", legenda }:
           ))}
 
           <motion.div
-            className="absolute w-3 h-3 bg-zinc-900 dark:bg-white rounded-full z-10 shadow-sm"
+            className="absolute w-3 h-3 bg-current rounded-full z-10 shadow-sm"
             style={{ bottom: 0, left: 0, transformOrigin: "bottom center" }}
             animate={{
               x: ballX,

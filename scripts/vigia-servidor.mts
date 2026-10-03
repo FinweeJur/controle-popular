@@ -9,6 +9,10 @@
  * 3. Orçamento de segurança: máx. 3 reinícios por hora para evitar loops.
  * 4. Notifica Telegram em incidentes e restaurações (silent watchdog quando 200).
  * 5. Registra telemetria contínua em docs/relatorios-automacao/vigia-servidor-status.json.
+ * 6. Varre as páginas nobres do portal (agent-tools/vigia-paginas.mts) e avisa
+ *    quando alguma quebra — um aviso agrupado por ciclo, nunca um por página.
+ *    Medido em 03/10/2026: o site ficou ~5 h respondendo 404 em tudo e
+ *    ninguém percebeu; checar só a home não bastava.
  */
 import https from "node:https";
 import http from "node:http";
@@ -18,6 +22,7 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { publicarTunel } from "./agent-tools/publicar-tunel.mts";
 import { vigiarSaudeBasesEEtl } from "./agent-tools/vigia-dados-etl.mts";
+import { executarChecagemPaginas, type ResumoVarredura } from "./agent-tools/vigia-paginas.mts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STATUS_FILE = path.join(RAIZ, "docs", "relatorios-automacao", "vigia-servidor-status.json");
@@ -55,7 +60,9 @@ async function checkHealth(url: string): Promise<{ ok: boolean; status: number; 
   });
 }
 
-async function checkLocal(): Promise<{ ok: boolean; error?: string }> {
+// `status` é opcional de propósito: erro de rede e timeout não têm código HTTP
+// (o chamador só lê `ok`, mas a tipagem precisa aceitar o 200 do caminho feliz).
+async function checkLocal(): Promise<{ ok: boolean; status?: number; error?: string }> {
   return new Promise((resolve) => {
     const req = http.get("http://127.0.0.1:3000", { timeout: 3000 }, (res) => {
       resolve({ ok: res.statusCode === 200, status: res.statusCode });
@@ -181,6 +188,21 @@ async function main() {
     console.error("Erro ao auditar bases e ETLs:", err);
   }
 
+  // 4. Saúde das páginas nobres (item 3 do vigia de páginas, 03/10/2026)
+  // Varre a cada 15 min (pulado nos ciclos entre), pausa de 1,2 s entre páginas
+  // e um único aviso agrupado por ciclo — ver agent-tools/vigia-paginas.mts.
+  let paginas: ResumoVarredura | null = null;
+  try {
+    const checagem = await executarChecagemPaginas({
+      log: (linha) => console.log(`[vigia-paginas] ${linha}`),
+    });
+    paginas = checagem.resumo;
+    if (checagem.pulado && checagem.motivoPulo) console.log(`[vigia-paginas] ${checagem.motivoPulo}`);
+    if (checagem.aviso) notifyTelegram(checagem.aviso);
+  } catch (err) {
+    console.error("Erro ao checar as páginas do portal:", err);
+  }
+
   // Persistir métricas de monitoramento
   try {
     fs.mkdirSync(path.dirname(STATUS_FILE), { recursive: true });
@@ -192,6 +214,7 @@ async function main() {
       latenciaMs,
       localOk: local.ok,
       saudeBasesETL: saudeBases ?? null,
+      paginas,
       erro: result.error ?? null,
     };
     fs.writeFileSync(STATUS_FILE, JSON.stringify(statusObj, null, 2), "utf-8");
@@ -199,7 +222,8 @@ async function main() {
   } catch {}
 
   // stdout vazio quando tudo ok (silent watchdog pattern)
-  if (result.ok && local.ok && (!saudeBases || saudeBases.statusGeral === "SAUDAVEL")) {
+  const paginasOk = !paginas || paginas.falhas.length === 0;
+  if (result.ok && local.ok && paginasOk && (!saudeBases || saudeBases.statusGeral === "SAUDAVEL")) {
     process.exit(0);
   }
 }

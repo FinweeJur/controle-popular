@@ -6,7 +6,7 @@
 > de estilo.** Histórico dos incidentes: [docs/historico/](docs/historico/).
 
 **Palavras-chave:** agente, worktree, commit, pathspec, dado pessoal, CPF,
-guara, neon, cloudflare, tunnel, deploy, loader, testes, idioma.
+guara, neon, cloudflare, tunnel, deploy, loader, testes, idioma, ollama, tokens.
 
 ## Sumário
 
@@ -310,6 +310,40 @@ Vale para todo agente, e não depende de boa vontade:
 - a régua automática é `scripts/checar-webhook-telegram.py`, no pre-push e na
   action `dado-pessoal.yml`; `scripts/telegram-set-webhook.mts --verificar`
   confere o endereço vivo na API do Telegram.
+
+### 5.12. Ollama local: confira hardware e modelos, delegue o repetitivo, poupe token
+
+**Regra do dono, 03/10/2026.** Antes de delegar trabalho, **verifique o
+hardware e quais modelos do Ollama estão de fato rodando no PC**. Avalie quais
+tarefas dá para entregar/automatizar pelo Ollama de forma rápida, sem atrasar a
+sessão, e com isso poupar tokens — criando e melhorando rotinas nativas.
+
+O que aconteceu, medido em 03/10/2026: subagentes de nuvem morreram por
+**esgotamento de tokens** no meio de tarefas e o trabalho só não se perdeu
+porque tinha ficado no disco. Tarefa mecânica e volumosa (triagem, resumo,
+classificação, revisão de milhares de linhas) não precisa queimar token de
+nuvem: o Ollama local roda sem custo e **sem mandar dado para fora da máquina**
+— o que casa com a §5.8.
+
+Vale para todo agente:
+
+- **confira o hardware e o modelo ANTES de usar**: `ollama list` mostra o que
+  existe e `curl -s http://127.0.0.1:11434/api/tags` confirma no servidor.
+  Lista não é prova: em 03/10/2026 o `qwen2.5:7b-instruct-q4_K_M` aparecia na
+  lista e o servidor respondia **404 `model not found`** na geração. Teste com
+  uma geração real (`/api/chat`) antes de confiar;
+- **delegue o repetitivo, não o julgamento**: vai para o Ollama o que é
+  volume + regra clara (triagem, resumo, casar texto, revisar consistência).
+  Fica com o agente o que exige decisão, commit, deploy ou auditoria (§5.5,
+  §5.7.1) — e NADA de segredo sai do disco, nem para o Ollama (§5.8);
+- **peça JSON** (`format: "json"`, `temperature: 0`) e valide o que volta;
+  modelo pequeno solta texto livre e inventa. Sugestão de texto **não substitui
+  o dado** — revisão assistida só propõe, o humano/agente aprova o diff
+  (regra do resumo nunca reescrito por máquina, `lib/memoria/calendario.ts`);
+- **rotinas nativas já prontas para reusar**: `scripts/analisar-dados-ollama.mts`,
+  `scripts/automacao/triagem-diarios-ollama.mts`,
+  `scripts/oficina/oficina.mts` (baixa modelo do perfil) e
+  `scripts/revisar-textos-memoria.mts` (revisão da memória, criada 03/10/2026).
 
 ## 6. Armadilhas
 

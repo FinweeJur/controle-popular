@@ -3,12 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
-  ChevronDown,
-  GripVertical,
   ListMusic,
   Pause,
   Play,
-  Radio,
   Volume2,
   VolumeX,
 } from "lucide-react";
@@ -27,7 +24,6 @@ import {
 import Bandeira from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
-import { usarArrastavel } from "@/lib/usarArrastavel";
 
 /**
  * Player de rádio persistente e multi-estação.
@@ -49,6 +45,14 @@ import { usarArrastavel } from "@/lib/usarArrastavel";
  *
  * Sem autoplay (o navegador bloqueia áudio com som sem gesto): todo play nasce
  * de um clique.
+ *
+ * CONTROLE VISUAL (pedido do dono, 03/10/2026): a pílula com nome, pega de
+ * arrasto e chevron virou UM botão redondo só com play/pause — o terceiro
+ * círculo da pilha da lateral esquerda (abaixo vem a pata do pet, embaixo o
+ * FAB do Seu Nonô; régua em `SeuNono.tsx`). O índice de estações e o volume
+ * abrem no hover/foco do conjunto (`group`); no celular o toque foca e abre.
+ * A posição fixa acabou com o arrasto de 30/09 — os três botões têm lugar
+ * desenhado; quem arrasta agora é só o Seu Nonô (leva a pata junto).
  */
 
 /** Estação acionada pelo botão do rodapé quando nada está carregado. */
@@ -67,9 +71,8 @@ export default function PlayerRadio() {
   // inteiro. O estado é do React e é espelhado no `<audio>` por efeito.
   const [volume, setVolume] = useState(1);
   const [mudo, setMudo] = useState(false);
-  // Janela arrastável: o canto pode tapar o que a pessoa precisa ler; a
-  // posição fica lembrada no `localStorage` (pedido do dono, 30/09/2026).
-  const { estilo, arrastando, handlers, resetar } = usarArrastavel("cp_radio_pos");
+  // Sem arrasto: o botão é o terceiro círculo da pilha fixa do canto
+  // esquerdo (pedido do dono, 03/10/2026) — mover um quebraria os três.
 
   // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
   // na montagem, para o `<audio>` nascer com os valores do estado.
@@ -250,16 +253,23 @@ export default function PlayerRadio() {
       />
 
       <div
-        style={estilo}
-        // `group` revela o volume no hover/foco do player inteiro — inclusive
-        // quando o ponteiro está sobre o painel do índice (que é filho).
-        className="group fixed bottom-4 left-[4.75rem] z-40 flex flex-col items-start print:hidden"
+        // Geometria da pilha da lateral esquerda (combinada com o
+        // `SeuNono.tsx`, 03/10/2026): h-12 em 84..132 px da borda de baixo,
+        // `left-5` → centro em x=44, o mesmo eixo de 56 px da pilha. O max()
+        // repete a conta do safe-area do Seu Nonô para o iPhone não
+        // desalinhar os três botões. `z-[45]`: por baixo da pata e do FAB
+        // (z-50), por cima dos bichinhos (z-40) — um pet passando por trás
+        // não pode cobrir o play.
+        className="group fixed bottom-[max(5.25rem,calc(env(safe-area-inset-bottom)_+_4.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
+        data-nao-plataforma
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
         // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
         onMouseEnter={abrirIndice}
         onMouseLeave={agendarFecharIndice}
         // Foco por teclado também abre (focus bubbling do React), para quem
-        // navega sem mouse alcançar os itens do índice.
+        // navega sem mouse alcançar os itens do índice. No celular o toque
+        // foca o botão — o índice abre junto com o play, é a porta de troca
+        // de estação em tela pequena.
         onFocus={abrirIndice}
         onBlur={agendarFecharIndice}
       >
@@ -268,105 +278,26 @@ export default function PlayerRadio() {
           <TranscricaoRadio key={estacaoAtual.id} estacao={estacaoAtual} />
         )}
 
-        {/* Controle único do player. Antes eram TRÊS botões soltos (arrastar,
-            play e chevron do índice); viraram uma pílula só: a pega de arrasto
-            à esquerda e o corpo clicável (play/pause + nome + indicador do
-            índice) à direita. O índice abre no hover/foco do conjunto — o
-            chevron é só o indicador visual, sem botão próprio. */}
-        <div className="flex items-center gap-1.5">
-          <div className="flex items-stretch overflow-hidden rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur">
-            {/* Pega de arrasto: move a janelinha; clique duplo volta ao canto.
-                `touch-none` impede a página de rolar em vez de arrastar. */}
-            <button
-              type="button"
-              {...handlers}
-              onDoubleClick={resetar}
-              aria-label="Arrastar o player de rádio"
-              title="Arraste para mover; clique duplo volta ao canto"
-              className={`touch-none inline-flex cursor-grab items-center justify-center border-r border-border px-1.5 text-text-soft transition-colors hover:bg-surface-2 hover:text-primary ${
-                arrastando ? "cursor-grabbing" : ""
-              }`}
-            >
-              <GripVertical size={14} aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
-              aria-label={rotulo}
-              title={`${rotulo} — o índice de rádios abre aqui`}
-              aria-expanded={indiceAberto}
-              aria-controls="cp-radio-indice"
-              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold text-text transition-colors hover:bg-surface-2 hover:text-primary"
-            >
-              <span className="relative flex h-4 w-4 items-center justify-center">
-                {tocando ? (
-                  <Pause size={16} aria-hidden="true" className="text-primary" />
-                ) : (
-                  <Radio size={16} aria-hidden="true" className="text-primary" />
-                )}
-              </span>
-              <span className="hidden sm:inline max-w-[12rem] truncate">
-                {carregando
-                  ? "Sintonizando…"
-                  : tocando
-                    ? estacaoAtual?.nome ?? "A rádio"
-                    : "Ouvir a rádio"}
-              </span>
-              {tocando && (
-                <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-              )}
-              <ChevronDown
-                size={14}
-                aria-hidden="true"
-                className={`shrink-0 text-text-soft transition-transform ${indiceAberto ? "rotate-180" : ""}`}
-              />
-            </button>
-          </div>
-
-          {/* Volume: aparece no hover/foco do player inteiro (classe `group`)
-              e também enquanto `indiceAberto` — assim ele não pisca no vão
-              entre o botão e o painel, nem some ao passar o mouse sobre o
-              painel. O botão de mudo tem estado `aria-pressed`; o `range` usa
-              a mesma escala 0–1 de `audio.volume`. Enquanto invisível fica
-              `pointer-events-none`, para um clique às cegas não mexer no som;
-              o foco de teclado continua chegando nele. */}
-          <div
-            className={`flex items-center gap-1.5 rounded-full border border-border bg-surface/95 px-2 py-1.5 shadow-lg backdrop-blur transition-opacity ${
-              indiceAberto
-                ? "pointer-events-auto opacity-100"
-                : "pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => setMudo((m) => !m)}
-              aria-label={mudo ? "Ativar som da rádio" : "Silenciar rádio"}
-              aria-pressed={mudo}
-              title={mudo ? "Ativar som" : "Silenciar"}
-              className="text-text-soft transition-colors hover:text-primary"
-            >
-              {mudo || volume === 0 ? (
-                <VolumeX size={16} aria-hidden="true" />
-              ) : (
-                <Volume2 size={16} aria-hidden="true" />
-              )}
-            </button>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.05}
-              value={mudo ? 0 : volume}
-              onChange={(e) => {
-                const v = Number(e.target.value);
-                setVolume(v);
-                if (v > 0) setMudo(false);
-              }}
-              aria-label="Volume da rádio"
-              className="h-1 w-20 cursor-pointer accent-[var(--cp-primary)]"
-            />
-          </div>
-        </div>
+        {/* Botão redondo só com play/pause (pedido do dono, 03/10/2026):
+            a pílula com nome, arrasto e chevron saiu. O que aparece é o
+            ícone do estado: Play parado, Pause tocando. Nome da estação,
+            volume e lista vivem no índice, que abre no hover/foco. */}
+        <button
+          type="button"
+          onClick={() => void tocar(idAtual ?? ESTACAO_PADRAO)}
+          aria-label={rotulo}
+          title={`${rotulo} — o índice de rádios abre ao passar o mouse`}
+          aria-expanded={indiceAberto}
+          aria-controls="cp-radio-indice"
+          aria-pressed={tocando}
+          className="flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          {tocando ? (
+            <Pause size={20} aria-hidden="true" className="text-primary" />
+          ) : (
+            <Play size={20} aria-hidden="true" className="text-primary" />
+          )}
+        </button>
 
         {/* Índice expansível: aparece ao passar o mouse/focar no botão. */}
         {indiceAberto && (
@@ -388,6 +319,46 @@ export default function PlayerRadio() {
               >
                 Ver todas →
               </Link>
+            </div>
+            {/* Volume no cabeçalho do índice: o botão do canto virou só um
+                ícone (03/10/2026), então o controle de som mora aqui —
+                visível sem rolar, em qualquer tela. O `range` usa a mesma
+                escala 0–1 de `audio.volume`; o mudo tem `aria-pressed`. */}
+            <div className="flex items-center gap-2 border-b border-border bg-surface-2/50 px-3 py-2">
+              <button
+                type="button"
+                onClick={() => setMudo((m) => !m)}
+                aria-label={mudo ? "Ativar som da rádio" : "Silenciar rádio"}
+                aria-pressed={mudo}
+                title={mudo ? "Ativar som" : "Silenciar"}
+                className="shrink-0 text-text-soft transition-colors hover:text-primary"
+              >
+                {mudo || volume === 0 ? (
+                  <VolumeX size={16} aria-hidden="true" />
+                ) : (
+                  <Volume2 size={16} aria-hidden="true" />
+                )}
+              </button>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.05}
+                value={mudo ? 0 : volume}
+                onChange={(e) => {
+                  const v = Number(e.target.value);
+                  setVolume(v);
+                  if (v > 0) setMudo(false);
+                }}
+                aria-label="Volume da rádio"
+                className="h-1 w-full min-w-0 cursor-pointer accent-[var(--cp-primary)]"
+              />
+              <span
+                aria-hidden="true"
+                className="w-8 shrink-0 text-right text-[0.65rem] tabular-nums text-text-soft"
+              >
+                {mudo || volume === 0 ? "mudo" : `${Math.round(volume * 100)}%`}
+              </span>
             </div>
             <div className="max-h-[min(70vh,26rem)] overflow-y-auto p-2">
               {ORDEM_TIPOS.map((tipo) => {
@@ -414,6 +385,11 @@ export default function PlayerRadio() {
                               <span className="min-w-0 flex-1 truncate text-xs text-text">
                                 {e.nome}
                               </span>
+                              {ativa && carregando && (
+                                <span className="shrink-0 text-[0.65rem] font-medium text-primary">
+                                  Sintonizando…
+                                </span>
+                              )}
                               <span title={e.paisNome} className="inline-flex">
                                 <Bandeira iso={e.pais} nome={e.paisNome} tamanho={12} />
                               </span>
