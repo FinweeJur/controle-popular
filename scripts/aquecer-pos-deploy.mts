@@ -31,7 +31,8 @@
  *   npx tsx scripts/aquecer-pos-deploy.mts                  # produção, 15 primeiras (padrão Starter)
  *   npx tsx scripts/aquecer-pos-deploy.mts --tudo           # lista inteira (plano com folga)
  *   npx tsx scripts/aquecer-pos-deploy.mts --limite=5       # só as 5 primeiras
- *   npx tsx scripts/aquecer-pos-deploy.mts --base=http://localhost:3000
+ *   npx tsx scripts/aquecer-pos-deploy.mts --gotejar         # lista toda, 1 páginas/min (contínuo)
+ *   npx tsx scripts/aquecer-pos-deploy.mts --gotejar --intervalo=120 --base=http://localhost:3000
  *
  * Este script NÃO lê variáveis de ambiente nem segredos: só faz HTTP público
  * contra o site. Nada aqui pode vazar credencial (AGENTS § 5.8).
@@ -68,6 +69,17 @@ const USER_AGENT =
  * inteira só com `--tudo`, em plano com folga (Pro, 512 MiB).
  */
 const LIMITE_PADRAO = 15;
+
+/**
+ * Ritmo do modo `--gotejar` (contínuo), em ms por página.
+ *
+ * PORQUÊ: o aquecimento rápido aquece 15 rotas e para. O `--gotejar` faz o
+ * contrário — abre a lista INTEIRA bem devagar, uma página por vez, com
+ * intervalo longo, para o servidor esquentar tudo sem rajada (o container do
+ * Starter tem ~256 MiB; rajada = OOM e restart). ~124 rotas × 60 s ≈ 2 h.
+ * Ajuste com `--intervalo=<segundos>`.
+ */
+const INTERVALO_GOTEJO_MS = 60_000;
 
 /**
  * Pausa entre uma requisição e a próxima, em ms.
@@ -270,16 +282,27 @@ function formatarBytes(bytes: number): string {
 async function main(): Promise<void> {
   const base = (arg("base") ?? BASE_PADRAO).replace(/\/+$/, "");
   const tudo = process.argv.includes("--tudo");
+  const gotejar = process.argv.includes("--gotejar");
+  const inicioArg = Number.parseInt(arg("inicio") ?? "", 10);
+  const inicio = Number.isFinite(inicioArg) && inicioArg > 0 ? inicioArg : 0;
+  const intervaloArg = Number.parseFloat(arg("intervalo") ?? "");
+  const intervaloMs =
+    Number.isFinite(intervaloArg) && intervaloArg > 0 ? intervaloArg * 1000 : INTERVALO_GOTEJO_MS;
   const limiteArg = Number.parseInt(arg("limite") ?? "", 10);
-  // Padrão conservador (Starter): LIMITE_PADRAO rotas. `--tudo` libera a lista.
-  const limite = tudo
-    ? undefined
-    : Number.isFinite(limiteArg) && limiteArg > 0
-      ? limiteArg
-      : LIMITE_PADRAO;
+  // Padrão conservador (Starter): LIMITE_PADRAO rotas. `--tudo` e `--gotejar`
+  // liberam a lista inteira (o gotejar abre devagar, 1 por `--intervalo`).
+  const limite =
+    tudo || gotejar
+      ? undefined
+      : Number.isFinite(limiteArg) && limiteArg > 0
+        ? limiteArg
+        : LIMITE_PADRAO;
+  const pausaMs = gotejar ? intervaloMs : PAUSA_MS;
 
   const alvosCompletos = carregarAlvos();
-  const alvos = limite ? alvosCompletos.slice(0, limite) : alvosCompletos;
+  const alvos = limite
+    ? alvosCompletos.slice(inicio, inicio + limite)
+    : alvosCompletos.slice(inicio);
 
   const porOrigem = new Map<string, number>();
   for (const a of alvosCompletos) {
@@ -293,10 +316,18 @@ async function main(): Promise<void> {
       (limite ? ` de ${alvosCompletos.length} (--limite=${limite})` : "") +
       ` — ${[...porOrigem].map(([o, n]) => `${o} ${n}`).join(", ")}`,
   );
-  console.log(
-    `[aquecer] Pausa de ${PAUSA_MS} ms entre as páginas (medido 03/10/2026: ` +
-      `varredura contínua reiniciou o container 3×)`,
-  );
+  if (gotejar) {
+    console.log(
+      `[aquecer] Modo GOTEJAR: lista completa, 1 página a cada ${pausaMs / 1000} s ` +
+        `(sem rajada — o container do Starter tem ~256 MiB).`,
+    );
+  } else {
+    console.log(
+      `[aquecer] Pausa de ${pausaMs} ms entre as páginas (medido 03/10/2026: ` +
+        `varredura contínua reiniciou o container 3×)`,
+    );
+  }
+  if (inicio > 0) console.log(`[aquecer] Começando do índice ${inicio} (--inicio).`);
   console.log("");
 
   const inicioTotal = Date.now();
@@ -366,7 +397,7 @@ async function main(): Promise<void> {
 
     // A pausa é sempre a última coisa do ciclo — inclusive depois do retry,
     // porque os 12 s do 5xx vêm em cima da pausa, nunca no lugar dela.
-    if (i < alvos.length - 1) await dormir(PAUSA_MS);
+    if (i < alvos.length - 1) await dormir(pausaMs);
   }
 
   // ── Resumo ──────────────────────────────────────────────────────────────
