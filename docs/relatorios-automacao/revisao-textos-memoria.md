@@ -7,7 +7,7 @@
 - Modelo: `qwen2.5:3b-instruct`
 - Verbetes analisados: 30 de 494
 - Sinalizados como soltos: 11
-- Sem problema: 9
+- Sem problema: 1
 
 | # | dia/ano | falta | ANTES (título + resumo) | SUGESTÃO |
 |---|---|---|---|---|

@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-10-03T13:41:41.950Z",
+  "atualizadoEm": "2026-10-03T15:07:07.381Z",
   "modelo": "qwen2.5:3b-instruct",
   "totalCalendario": 494,
   "analisados": 30,
@@ -9,11 +9,9 @@
       "indice": 0,
       "rotulo": "01-01/1849 — Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
       "solta": false,
-      "faltando": [
-        "periodo"
-      ],
-      "motivo": "faltando periodo",
-      "sugestao": "ANO: 1849\nLUGAR: (a fonte não diz)\nTÍTULO: Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa\nRESUMO: Aderiram à revolta a população urbana pobre, camponeses, negros e negras libertas. Em fevereiro de 1849, adentraram o Recife com cerca de 2.500 pessoas.",
+      "faltando": [],
+      "motivo": "curto",
+      "sugestao": "Os praieiros, em 1º de janeiro de 1849, apresentaram seu programa de sufrágio universal e liberdade de imprensa em Recife. A população urbana pobre, camponeses, negros e negras libertas aderiram à revolta em fevereiro de 1849, invadindo o Recife com cerca de 2.500 pessoas.",
       "titulo": "Os praieiros, assim conhecidos por se reunirem em torno do jornal Diário Novo, na Rua da Praia, Recife, apresentaram em 1º de janeiro de 1849 seu programa, que defendia, entre outros, o sufrágio universal, a liberdade de imprensa",
       "resumo": "Aderiram à revolta a população urbana pobre, camponeses, negros e negras libertos. Em fevereiro de 1849, adentraram o Recife com cerca de 2.500 pessoas."
     },

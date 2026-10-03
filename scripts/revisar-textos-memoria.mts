@@ -32,6 +32,7 @@
  *   npx tsx scripts/revisar-textos-memoria.mts --limite=20
  *   npx tsx scripts/revisar-textos-memoria.mts --inicio=80 --limite=80   # 2o lote
  *   npx tsx scripts/revisar-textos-memoria.mts --modelo=qwen2.5:3b-instruct
+ *   npx tsx scripts/revisar-textos-memoria.mts --provedor=api --limite=20   # DeepSeek
  *   npx tsx scripts/revisar-textos-memoria.mts            # todos os verbetes
  *
  * Como revisar os ~500 verbetes leva tempo, a revisão roda em LOTES
@@ -40,6 +41,13 @@
  *
  * Este script não lê segredos e não fala com a internet: só com o Ollama
  * local (AGENTS § 5.8).
+ *
+ * PROVEDOR: por padrão fala só com o Ollama local (grátis, nada sai da
+ * máquina). Com `--provedor=api` usa a API DeepSeek (`deepseek-flash`),
+ * desligando o modo "pensante" (tarefa mecânica: o raciocínio só encarece).
+ * Nesse modo a chave vem do ambiente (`DEEPSEEK_API_KEY` ou
+ * `AI_API_KEY_DEEPSEEK`) e NUNCA é impressa. Preço e conta do custo em yuan:
+ * `api-docs.deepseek.com/quick_start/pricing`.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -58,7 +66,24 @@ const OLLAMA = "http://127.0.0.1:11434";
  * found" na geração — medido 03/10/2026; por isso o padrão é o 3B, que gera de
  * verdade. Confira com uma geração real antes de trocar (AGENTS § 5.12).
  */
-const MODELO_PADRAO = "qwen2.5:3b-instruct";
+const MODELO_OLLAMA = "qwen2.5:3b-instruct";
+/** Base e modelo da API DeepSeek (formato OpenAI). */
+const API_PADRAO = "https://api.deepseek.com";
+const MODELO_API = "deepseek-flash";
+/**
+ * Preço do `deepseek-flash` (DeepSeek-V4.1-Flash), em YUAN por 1M tokens,
+ * lido da doc oficial em 03/10/2026 (`api-docs.deepseek.com/quick_start/pricing`).
+ * Off-peak é metade do pico; pico = seg-sex 01-04h e 06-10h UTC (em Brasília:
+ * 22-01h e 03-07h) — rodar de dia no Brasil sai mais barato.
+ */
+const PRECO_FLASH = {
+  hitOff: 0.02,
+  hitPico: 0.04,
+  missOff: 1,
+  missPico: 2,
+  saidaOff: 4,
+  saidaPico: 8,
+} as const;
 
 /** Um problema apontado pelo modelo, ancorado nos cinco critérios do dono. */
 type Falta = "sujeito" | "acao" | "vitima" | "lugar" | "periodo";
@@ -80,12 +105,48 @@ interface Analise {
   /** Título/resumo originais, para o relatório e o diff. */
   titulo: string;
   resumo: string;
+  /** Consumo medido (só no provedor API) — base do custo em yuan. */
+  uso?: Uso;
+}
+
+/** Tokens consumidos por uma chamada, quando o provedor informa. */
+interface Uso {
+  /** Entrada que casou no cache de contexto (barata). */
+  hit: number;
+  /** Entrada fora do cache. */
+  miss: number;
+  /** Saída gerada. */
+  saida: number;
+}
+
+/** Provedor de inferência: o Ollama local ou a API DeepSeek. */
+type Provedor = "ollama" | "api";
+
+/** Configuração resolvida da rodada. */
+interface Config {
+  provedor: Provedor;
+  modelo: string;
+  baseApi: string;
+  apiKey?: string;
 }
 
 /** Lê um argumento `--chave=valor`. */
 function arg(chave: string): string | undefined {
   const prefixo = `--${chave}=`;
   return process.argv.find((a) => a.startsWith(prefixo))?.slice(prefixo.length);
+}
+
+/** Chave da DeepSeek vinda do ambiente; NUNCA é impressa (AGENTS § 5.8). */
+function chaveDeepSeek(): string | undefined {
+  return process.env.DEEPSEEK_API_KEY || process.env.AI_API_KEY_DEEPSEEK;
+}
+
+/** Pico de preço da DeepSeek: seg-sex 01-04h e 06-10h UTC (fora disso, off-peak). */
+function ehPico(d: Date): boolean {
+  const dia = d.getUTCDay(); // 0 = domingo, 6 = sábado
+  if (dia === 0 || dia === 6) return false;
+  const h = d.getUTCHours();
+  return (h >= 1 && h < 4) || (h >= 6 && h < 10);
 }
 
 /** O Ollama está no ar e tem o modelo pedido? Falha cedo e com recado claro. */
@@ -141,40 +202,14 @@ function promptSistema(): string {
   ].join("\n");
 }
 
-/** Pede a análise de um verbete ao Ollama; devolve null quando a resposta é ilegível. */
-async function analisar(
+/** Extrai a análise do texto JSON devolvido pelo modelo; null se ilegível. */
+function interpretar(
+  texto: string,
   entrada: EntradaCalendario,
   indice: number,
-  modelo: string,
-): Promise<Analise | null> {
-  const rotulo = `${entrada.diaMes}/${entrada.ano || "sem ano"} — ${entrada.titulo}`;
-  const corpoVerbete = [
-    `ANO: ${entrada.ano || "(a fonte não datou)"}`,
-    `LUGAR: ${entrada.lugar || "(a fonte não diz)"}`,
-    `TÍTULO: ${entrada.titulo}`,
-    `RESUMO: ${entrada.resumo || "(sem resumo — o título é tudo)"}`,
-  ].join("\n");
-
-  const resposta = await fetch(`${OLLAMA}/api/chat`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    signal: AbortSignal.timeout(180_000),
-    body: JSON.stringify({
-      model: modelo,
-      stream: false,
-      // `format: "json"` obriga o modelo a devolver JSON puro (sem cercas).
-      format: "json",
-      options: { temperature: 0 },
-      messages: [
-        { role: "system", content: promptSistema() },
-        { role: "user", content: corpoVerbete },
-      ],
-    }),
-  });
-  if (!resposta.ok) throw new Error(`Ollama HTTP ${resposta.status}`);
-  const dados = (await resposta.json()) as { message?: { content?: string } };
-  const texto = dados.message?.content ?? "";
-
+  rotulo: string,
+  uso?: Uso,
+): Analise | null {
   try {
     const bruto = JSON.parse(texto) as {
       solta?: unknown;
@@ -195,11 +230,95 @@ async function analisar(
       sugestao: typeof bruto.sugestao === "string" ? bruto.sugestao.trim() : "",
       titulo: entrada.titulo,
       resumo: entrada.resumo ?? "",
+      uso,
     };
   } catch {
     console.warn(`[revisar] resposta ilegível em #${indice} (${rotulo})`);
     return null;
   }
+}
+
+/**
+ * Pede a análise de um verbete ao provedor configurado e devolve a leitura.
+ *
+ * Ollama: `/api/chat` com `format: "json"`. DeepSeek: `/chat/completions`
+ * (formato OpenAI) com `response_format: json_object` e
+ * `thinking: {type: "disabled"}` — sem raciocínio, que só encareceria uma
+ * tarefa mecânica. A resposta do provedor API traz `usage`, que vira `uso`
+ * (base do custo).
+ */
+async function analisar(
+  entrada: EntradaCalendario,
+  indice: number,
+  cfg: Config,
+): Promise<Analise | null> {
+  const rotulo = `${entrada.diaMes}/${entrada.ano || "sem ano"} — ${entrada.titulo}`;
+  const corpoVerbete = [
+    `ANO: ${entrada.ano || "(a fonte não datou)"}`,
+    `LUGAR: ${entrada.lugar || "(a fonte não diz)"}`,
+    `TÍTULO: ${entrada.titulo}`,
+    `RESUMO: ${entrada.resumo || "(sem resumo — o título é tudo)"}`,
+  ].join("\n");
+  const messages = [
+    { role: "system", content: promptSistema() },
+    { role: "user", content: corpoVerbete },
+  ];
+
+  if (cfg.provedor === "ollama") {
+    const resposta = await fetch(`${OLLAMA}/api/chat`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      signal: AbortSignal.timeout(180_000),
+      body: JSON.stringify({
+        model: cfg.modelo,
+        stream: false,
+        // `format: "json"` obriga o modelo a devolver JSON puro (sem cercas).
+        format: "json",
+        options: { temperature: 0 },
+        messages,
+      }),
+    });
+    if (!resposta.ok) throw new Error(`Ollama HTTP ${resposta.status}`);
+    const dados = (await resposta.json()) as { message?: { content?: string } };
+    return interpretar(dados.message?.content ?? "", entrada, indice, rotulo);
+  }
+
+  const resposta = await fetch(`${cfg.baseApi}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${cfg.apiKey}`,
+    },
+    signal: AbortSignal.timeout(180_000),
+    body: JSON.stringify({
+      model: cfg.modelo,
+      temperature: 0,
+      response_format: { type: "json_object" },
+      thinking: { type: "disabled" },
+      messages,
+    }),
+  });
+  if (!resposta.ok) {
+    const detalhe = await resposta.text().catch(() => "");
+    throw new Error(`API HTTP ${resposta.status}: ${detalhe.slice(0, 200)}`);
+  }
+  const dados = (await resposta.json()) as {
+    choices?: { message?: { content?: string } }[];
+    usage?: {
+      prompt_tokens?: number;
+      completion_tokens?: number;
+      prompt_cache_hit_tokens?: number;
+      prompt_cache_miss_tokens?: number;
+    };
+  };
+  const u = dados.usage;
+  let uso: Uso | undefined;
+  if (u) {
+    const hit = u.prompt_cache_hit_tokens ?? 0;
+    const miss = u.prompt_cache_miss_tokens ?? Math.max(0, (u.prompt_tokens ?? 0) - hit);
+    uso = { hit, miss, saida: u.completion_tokens ?? 0 };
+  }
+  return interpretar(dados.choices?.[0]?.message?.content ?? "", entrada, indice, rotulo, uso);
 }
 
 /** Escapa barras verticais para não quebrar a tabela Markdown. */
@@ -208,13 +327,30 @@ function md(texto: string): string {
 }
 
 async function main(): Promise<void> {
-  const modelo = arg("modelo") ?? MODELO_PADRAO;
+  const provedor = (arg("provedor") ?? "ollama") as Provedor;
+  const modelo = arg("modelo") ?? (provedor === "api" ? MODELO_API : MODELO_OLLAMA);
+  const baseApi = (arg("base") ?? API_PADRAO).replace(/\/+$/, "");
   const inicioArg = Number.parseInt(arg("inicio") ?? "", 10);
   const inicio = Number.isFinite(inicioArg) && inicioArg > 0 ? inicioArg : 0;
   const limiteArg = Number.parseInt(arg("limite") ?? "", 10);
   const limite = Number.isFinite(limiteArg) && limiteArg > 0 ? limiteArg : undefined;
 
-  await verificarOllama(modelo);
+  let cfg: Config;
+  if (provedor === "api") {
+    const apiKey = chaveDeepSeek();
+    if (!apiKey) {
+      console.error(
+        "[revisar] --provedor=api precisa de DEEPSEEK_API_KEY (ou AI_API_KEY_DEEPSEEK) no ambiente.\n" +
+          "[revisar] a chave não é lida de arquivo nem impressa (AGENTS § 5.8).",
+      );
+      process.exit(2);
+    }
+    cfg = { provedor, modelo, baseApi, apiKey };
+    console.log(`[revisar] provedor: API ${baseApi} — modelo ${modelo} (chave do ambiente, não impressa)`);
+  } else {
+    await verificarOllama(modelo);
+    cfg = { provedor, modelo, baseApi };
+  }
 
   const todas = CALENDARIO_LUTAS;
   const fim = limite ? Math.min(inicio + limite, todas.length) : todas.length;
@@ -225,6 +361,7 @@ async function main(): Promise<void> {
   console.log(`[revisar] o modelo apenas SUGERE — o dado não é alterado.\n`);
 
   const analises: Analise[] = [];
+  const usoTotal: Uso = { hit: 0, miss: 0, saida: 0 };
   let okSemProblema = 0;
   let ilegiveis = 0;
 
@@ -232,10 +369,15 @@ async function main(): Promise<void> {
     const entrada = alvos[i];
     const indice = inicio + i;
     try {
-      const a = await analisar(entrada, indice, modelo);
+      const a = await analisar(entrada, indice, cfg);
       if (!a) {
         ilegiveis++;
         continue;
+      }
+      if (a.uso) {
+        usoTotal.hit += a.uso.hit;
+        usoTotal.miss += a.uso.miss;
+        usoTotal.saida += a.uso.saida;
       }
       analises.push(a);
       if (!a.solta) okSemProblema++;
@@ -291,7 +433,7 @@ async function main(): Promise<void> {
   linhas.push("# Revisão de textos da memória (Mística do Dia e Linha do tempo)");
   linhas.push("");
   linhas.push(
-    "> Revisão assistida por Ollama local. O script **não** altera o dado — só lista",
+    `> Revisão assistida por ${provedor === "api" ? `API DeepSeek (\`${modelo}\`)` : "Ollama local"}. O script **não** altera o dado — só lista`,
   );
   linhas.push(
     "> os verbetes com frases soltas e propõe um texto usando APENAS o que já está no",
@@ -322,6 +464,17 @@ async function main(): Promise<void> {
   console.log(`Soltas ........... ${soltas.length}`);
   console.log(`Sem problema ..... ${okSemProblema}`);
   console.log(`Ilegíveis ........ ${ilegiveis}`);
+  if (provedor === "api") {
+    const pico = ehPico(new Date());
+    const custo =
+      (usoTotal.hit / 1e6) * (pico ? PRECO_FLASH.hitPico : PRECO_FLASH.hitOff) +
+      (usoTotal.miss / 1e6) * (pico ? PRECO_FLASH.missPico : PRECO_FLASH.missOff) +
+      (usoTotal.saida / 1e6) * (pico ? PRECO_FLASH.saidaPico : PRECO_FLASH.saidaOff);
+    console.log(
+      `Tokens ........... hit ${usoTotal.hit} / miss ${usoTotal.miss} / saída ${usoTotal.saida} (${pico ? "pico" : "off-peak"})`,
+    );
+    console.log(`Custo (yuan) ..... ¥${custo.toFixed(4)}  (deepseek-flash)`);
+  }
   console.log(`Relatório ........ ${caminhoMd}`);
   console.log(`JSON ............. ${caminhoJson}`);
   console.log("");
