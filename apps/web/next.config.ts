@@ -215,7 +215,16 @@ const nextConfig: NextConfig = {
    * ARMADILHA: sem o passo de typecheck no CI, um erro de tipo passa batido
    * ate o deploy. O script `typecheck` de apps/web e a rede que cobre isso.
    */
-  ...(standaloneBuild ? { typescript: { ignoreBuildErrors: true } } : {}),
+  ...(standaloneBuild
+    ? {
+        // Type-check e lint rodam no CI (`typecheck`/`lint`) e na suíte local;
+        // no build do Docker só gastariam minutos pagos. Sem `eslint`, o
+        // `next build` roda o ESLint quando existe config — mesma razão do
+        // `typescript`. Medido 03/10/2026: build abaixo de 10 min.
+        typescript: { ignoreBuildErrors: true },
+        eslint: { ignoreDuringBuilds: true },
+      }
+    : {}),
   /**
    * DATA_PUBLICACAO: a data da última publicação, congelada NO BUILD.
    *
@@ -383,12 +392,14 @@ const nextConfig: NextConfig = {
     /**
      * Otimização de concorrência por alvo:
      * - No alvo `standalone` (Docker / Guara Cloud), o banco e a CPU executam
-     *   localmente/privado, permitindo concorrência 8 com retry 1 para acelerar
-     *   o build drasticamente e economizar minutos pagos.
+     *   localmente/privado; concorrência 16 gera as páginas pré-renderizadas em
+     *   paralelo para economizar minutos pagos. Subiu de 8 para 16 em
+     *   03/10/2026 (o build já vinha abaixo de 10 min); se o runner reclamar de
+     *   memória, é esta linha a voltar para 8.
      * - No alvo Cloudflare Workers (`output: export`), mantém concorrência 3 e
      *   retry 3 para não estourar subrequests e rate-limit do endpoint HTTP da Neon.
      */
-    staticGenerationMaxConcurrency: standaloneBuild ? 8 : 3,
+    staticGenerationMaxConcurrency: standaloneBuild ? 16 : 3,
     staticGenerationRetryCount: standaloneBuild ? 1 : 3,
   },
   // `redirects()` consta da lista de recursos NÃO suportados por
