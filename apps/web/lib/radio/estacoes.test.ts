@@ -151,6 +151,21 @@ describe("bandeira do estado brasileiro", () => {
   });
 });
 
+describe("ordem de exibição das regiões", () => {
+  it("segue a ordem do dono: Brasil (Norte a Sudeste) e depois o mundo", () => {
+    expect(ORDEM_REGIOES).toEqual([
+      "Norte",
+      "Nordeste",
+      "Centro-Oeste",
+      "Sul",
+      "Sudeste",
+      "America Latina",
+      "Africa",
+      "Asia e Caribe",
+    ]);
+  });
+});
+
 describe("resumirEstacoes", () => {
   const r = resumirEstacoes();
 

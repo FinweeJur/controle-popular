@@ -23,9 +23,13 @@
  *   cada emenda e alinhamento pelo centro de 56 px: as três geometrias são
  *   combinadas entre este arquivo e o PlayerRadio; mudar uma exige mudar
  *   as duas (o comentário de cada uma traz a régua em px).
+ * - Barra de busca fixa (pedido do dono, 03/10/2026): a janelinha abre com
+ *   `SeuNonoBusca` no rodapé, não com o botão "Perguntar à IA". Digitar sugere
+ *   páginas do portal e respostas pré-curadas (expandindo para cima); só o
+ *   Enter SEM correspondência aciona a IA. Os níveis por baixo não mudaram.
  */
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import {
   X,
   Sparkles,
@@ -44,6 +48,7 @@ import {
   PawPrint,
 } from "lucide-react";
 import { useArrastavel } from "@/lib/usarArrastavel";
+import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -58,6 +63,7 @@ import { PETS_COMPANHEIRO, PET_PADRAO } from "./companheiroPets";
 import { PetIcone } from "./PetIcone";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
+import { SeuNonoBusca } from "./SeuNonoBusca";
 import {
   useTypewriter,
   IndicadorStatusChat,
@@ -90,6 +96,9 @@ function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className
     />
   );
 }
+
+/** Lado do FAB do Seu Nonô (`h-14 w-14`), a âncora do reposicionamento. */
+const LADO_FAB = 56;
 
 interface DadoResumido {
   total?: number;
@@ -556,7 +565,6 @@ export function SeuNono() {
   const [categoria, setCategoria] = useState<SeuNonoCategoria | null>(null);
   const [resposta, setResposta] = useState<SeuNonoPergunta | null>(null);
 
-  const [perguntaLivre, setPerguntaLivre] = useState("");
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
@@ -610,6 +618,30 @@ export function SeuNono() {
   // para fora por baixo; conserto medido em 03/10/2026.
   const { estilo, arrastando, foiArrasto, handlers, resetar } =
     useArrastavel("cp_nono_pos");
+
+  // Reposicionamento da janelinha (pedido do dono, 03/10/2026): arrastada para
+  // a direita, ela ainda EXPANDIA para a direita e saía da tela. Aqui a base do
+  // FAB é a âncora; o utilitário vira o painel para a esquerda quando falta
+  // espaço à direita e limita a altura para o topo não passar da borda. O
+  // painel continua no fluxo (o arrasto move o conjunto por `transform`), então
+  // o resultado vira `marginLeft`; `maxHeight` faz o miolo rolar.
+  const nonoRef = useRef<HTMLDivElement | null>(null);
+  const painelNonoRef = useRef<HTMLDivElement | null>(null);
+  const medirAncoraNono = useCallback((): CaixaAncora | null => {
+    const el = nonoRef.current;
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    // Âncora sintética: a base do FAB (canto inferior esquerdo do conjunto).
+    // `alt: 0` porque o painel ocupa o espaço ACIMA dessa base.
+    return { esq: r.left, topo: r.bottom, larg: LADO_FAB, alt: 0 };
+  }, []);
+  // A tela cheia usa `fixed inset-0`: não há o que reposicionar ali.
+  const posNono = usePosicaoPainel({
+    aberto: aberto && !telaCheia,
+    painelRef: painelNonoRef,
+    medirAncora: medirAncoraNono,
+    opcoes: { verticalPreferida: "acima", forcarVertical: true },
+  });
 
   const acoesRapidas = useAcoesRapidas(pathname);
 
@@ -679,7 +711,6 @@ export function SeuNono() {
         setStatusChat("pronto");
         setDetalheIa(null);
         setErro(null);
-        setPerguntaLivre("");
         setRespostaComando(null);
         setRespostaContexto(null);
       }, 200);
@@ -973,10 +1004,6 @@ export function SeuNono() {
     }
   }
 
-  function abrirIa() {
-    setNivel("ia");
-  }
-
   function voltarAoInicio() {
     setNivel("frentes");
     setFrente(null);
@@ -987,7 +1014,6 @@ export function SeuNono() {
     setStatusChat("pronto");
     setDetalheIa(null);
     setErro(null);
-    setPerguntaLivre("");
     setRespostaContexto(null);
   }
 
@@ -1032,7 +1058,6 @@ export function SeuNono() {
       setRespostaIa(null);
       setResultadoEscada(null);
       setErro(null);
-      setPerguntaLivre("");
       setStatusChat("pronto");
       return;
     }
@@ -1060,7 +1085,6 @@ export function SeuNono() {
           escada: degrau,
         },
       ]);
-      setPerguntaLivre("");
       return;
     }
 
@@ -1104,8 +1128,29 @@ export function SeuNono() {
       setStatusChat("pronto");
     } finally {
       setCarregando(false);
-      setPerguntaLivre("");
     }
+  }
+
+  /**
+   * Mostra a resposta pré-curada escolhida na barra do Seu Nonô.
+   *
+   * Reusa o cartão determinístico (`BlocoRespostaEscadaSeuNono`) e registra a
+   * escolha como um turno — assim a resposta sobrevive quando a pessoa expande
+   * o widget para tela cheia. O nível vira "ia" para o cartão renderizar; como
+   * a curadoria já é resposta pronta, a IA não é acionada.
+   */
+  function aoEscolherCuradoria(resultado: ResultadoEscada, termo: string) {
+    setRespostaIa(null);
+    setDetalheIa(null);
+    setErro(null);
+    setRespostaComando(null);
+    setResultadoEscada(resultado);
+    setStatusChat("pronto");
+    setNivel("ia");
+    setTurnosIa((turnos) => [
+      ...turnos,
+      { pergunta: termo, resposta: resultado.texto, fontes: [], escada: resultado },
+    ]);
   }
 
   // Listener para abertura remota a partir de botões na Home e tabelas.
@@ -1123,19 +1168,12 @@ export function SeuNono() {
       setAberto(true);
       if (detail?.pergunta) {
         const p = detail.pergunta.trim();
-        setPerguntaLivre(p);
         executarPerguntaIaRef.current(p);
       }
     };
     window.addEventListener("abrir-seu-nono", handleAbrir);
     return () => window.removeEventListener("abrir-seu-nono", handleAbrir);
   }, []);
-
-  async function enviarPerguntaLivre(e: React.FormEvent) {
-    e.preventDefault();
-    if (!perguntaLivre.trim()) return;
-    await executarPerguntaIa(perguntaLivre);
-  }
 
   return (
     <div
@@ -1146,6 +1184,7 @@ export function SeuNono() {
       // a mesma conta para o botão de cima continuar alinhado.
       // `data-nao-plataforma`: esta UI fixa não é "chão" dos bichinhos
       // (eles andam no conteúdo da página, não na nossa moldura).
+      ref={nonoRef}
       style={telaCheia ? undefined : estilo}
       className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 flex flex-col items-start"
       data-arrastavel-caixa
@@ -1153,17 +1192,36 @@ export function SeuNono() {
     >
       {aberto && (
         <div
+          ref={painelNonoRef}
           role={telaCheia ? "dialog" : undefined}
           aria-modal={telaCheia ? true : undefined}
           aria-label={telaCheia ? "Seu Nonô — assistente em tela cheia" : undefined}
+          // `data-arrastavel-caixa` no painel: aberto, é ELE que se move e
+          // encosta nas bordas — o `closest` do arrasto acha este nó antes do
+          // conjunto (o conjunto fica do tamanho do painel no modo flutuante).
+          data-arrastavel-caixa={telaCheia ? undefined : true}
           className={
             telaCheia
               ? "fixed inset-0 z-[60] flex flex-col bg-surface"
-              : "mb-3 w-[min(calc(100vw-2rem),24rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-lg"
+              : "flex w-[min(calc(100vw-2rem),24rem)] flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-lg"
+          }
+          style={
+            telaCheia
+              ? undefined
+              : {
+                  // Vira para a esquerda quando falta espaço à direita.
+                  marginLeft: posNono
+                    ? Math.round(posNono.posicao.x - posNono.ancora.esq)
+                    : undefined,
+                  // Limita a altura para o topo não passar da borda de cima.
+                  maxHeight: posNono
+                    ? Math.round(posNono.posicao.altura)
+                    : undefined,
+                }
           }
         >
           {/* Cabeçalho */}
-          <div className="flex items-center justify-between border-b border-border bg-primary/10 px-4 py-3">
+          <div className="flex shrink-0 items-center justify-between border-b border-border bg-primary/10 px-4 py-3">
             <div
               {...handlers}
               onDoubleClick={resetar}
@@ -1223,12 +1281,18 @@ export function SeuNono() {
           {/* Área de mensagens — em tela cheia, conversa à esquerda e o
               painel de fontes à direita (padrão NotebookLM); no widget,
               a rolagem alta fica dentro do card. */}
-          <div className={telaCheia ? "flex min-h-0 flex-1 flex-col lg:flex-row" : undefined}>
+          <div
+            className={
+              telaCheia
+                ? "flex min-h-0 flex-1 flex-col lg:flex-row"
+                : "min-h-0 flex-1 overflow-hidden"
+            }
+          >
             <div
               className={
                 telaCheia
                   ? "min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-8"
-                  : "max-h-[min(60vh,28rem)] overflow-y-auto px-4 py-3"
+                  : "h-full overflow-y-auto px-4 py-3"
               }
             >
             {/* Nível 1: escolha da frente */}
@@ -1310,19 +1374,14 @@ export function SeuNono() {
                   </button>
                 </div>
 
+                {/* A entrada do chatbot deixou de ser o botão "Perguntar à IA":
+                    agora é a barra fixa do rodapé, que sugere páginas e
+                    respostas prontas enquanto se digita. Este aviso só explica
+                    o novo caminho (pedido do dono, 03/10/2026). */}
                 <div className="border-t border-border pt-3">
-                  <p className="mb-2 text-xs text-text-soft">
-                    Não encontrou o que procura?
-                  </p>
-                  <button
-                    onClick={abrirIa}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
-                  >
-                    <Sparkles size={14} /> Perguntar à IA
-                  </button>
-                  <p className="mt-2 rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
-                    A IA responde com base nas páginas do portal e cita a fonte.
-                    Confira sempre antes de decidir.
+                  <p className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
+                    Não encontrou? Digite na barra abaixo — ela sugere páginas do
+                    portal e, se nada casar, o Enter chama a IA com fonte.
                   </p>
                 </div>
               </div>
@@ -1493,12 +1552,10 @@ export function SeuNono() {
                 </ul>
 
                 <div className="border-t border-border pt-3">
-                  <button
-                    onClick={abrirIa}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
-                  >
-                    <Sparkles size={14} /> Sua pergunta não está na lista? Perguntar à IA
-                  </button>
+                  <p className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
+                    Sua pergunta não está na lista? Digite na barra abaixo — o
+                    Enter aciona a IA com fonte.
+                  </p>
                 </div>
               </div>
             )}
@@ -1725,33 +1782,10 @@ export function SeuNono() {
                   <ChevronLeft size={14} /> Voltar
                 </button>
 
-                {/* A caixa de pergunta fica sempre visível na tela cheia —
-                    a conversa continua; no modo widget, só antes da resposta. */}
-                {((!respostaIa && !resultadoEscada && !erro) || (telaCheia && !carregando)) && (
-                  <>
-                    <p className="text-sm text-text-soft">
-                      Descreva o que você quer saber. O assistente prioriza dados oficiais diretos e cita fontes auditáveis.
-                    </p>
-                    <form onSubmit={enviarPerguntaLivre} className="flex gap-2">
-                      <input
-                        ref={inputIaRef}
-                        type="text"
-                        value={perguntaLivre}
-                        onChange={(e) => setPerguntaLivre(e.target.value)}
-                        placeholder="Ex: laboratorio, betim, vale, acordo de mariana"
-                        className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-primary"
-                        disabled={carregando}
-                      />
-                      <button
-                        type="submit"
-                        disabled={carregando || !perguntaLivre.trim()}
-                        className="rounded-lg bg-primary px-3 py-2 text-primary-ink hover:bg-primary/90 disabled:opacity-50 transition-opacity"
-                      >
-                        <Sparkles size={16} />
-                      </button>
-                    </form>
-                  </>
-                )}
+                {/* A entrada de texto agora é a barra FIXA do rodapé
+                    (`SeuNonoBusca`): em vez de uma caixa que aparece e some no
+                    nível "ia", a barra fica sempre visível e sugere páginas e
+                    respostas prontas enquanto se digita. */}
 
                 {/* Indicador de status em fases de busca/geração */}
                 <IndicadorStatusChat status={statusChat} />
@@ -1862,7 +1896,9 @@ export function SeuNono() {
                         <button
                           key={cmd}
                           onClick={() => {
-                            setPerguntaLivre(cmd);
+                            // Sem caixa de texto neste nível: o comando roda
+                            // direto pelo mesmo caminho de pergunta.
+                            void executarPerguntaIa(cmd);
                           }}
                           className="rounded-md border border-border bg-surface px-2 py-0.5 text-[.7rem] text-text-soft hover:border-primary hover:text-primary"
                         >
@@ -1908,26 +1944,28 @@ export function SeuNono() {
             )}
           </div>
 
-          {/* Rodapé */}
-          <div className="border-t border-border bg-surface-2 px-4 py-2">
-            {nivel === "frentes" ? (
-              <p className="text-[.7rem] text-text-soft">
-                Respostas prontas das páginas do site; a IA cita a fonte de cada
-                resposta. Confira sempre antes de decidir.
-              </p>
-            ) : (
-              <div className="flex items-center gap-2 text-[.7rem] text-text-soft">
-                <Search size={12} />
-                <span>
-                  {nivel === "categorias" && "Passo 2: tema"}
-                  {nivel === "perguntas" && "Passo 3: pergunta"}
-                  {nivel === "resposta" && "Resposta pré-curada"}
-                  {nivel === "resposta-contexto" && "Sugestão da página"}
-                  {nivel === "busca" && "Buscando..."}
-                  {nivel === "ia" && "Pergunta livre com IA"}
-                </span>
-              </div>
-            )}
+          {/* Rodapé: barra de busca FIXA do Seu Nonô (pedido do dono,
+              03/10/2026). É o novo degrau de entrada — enquanto a pessoa
+              digita, as sugestões sobem acima da barra (páginas do portal e
+              respostas pré-curadas); Enter sem correspondência aciona a IA. */}
+          <div className="shrink-0 border-t border-border bg-surface-2 px-3 py-2">
+            <SeuNonoBusca
+              pathname={pathname}
+              inputRef={inputIaRef}
+              desabilitado={carregando}
+              aoEnviarIa={executarPerguntaIa}
+              aoEscolherCuradoria={aoEscolherCuradoria}
+            />
+            <p className="mt-1 text-center text-[.65rem] text-text-soft">
+              {nivel === "frentes" && "Digite para navegar no portal ou perguntar à IA"}
+              {nivel === "categorias" && "Passo 2: tema"}
+              {nivel === "perguntas" && "Passo 3: pergunta"}
+              {nivel === "resposta" && "Resposta pré-curada"}
+              {nivel === "resposta-contexto" && "Sugestão da página"}
+              {nivel === "busca" && "Busca nas respostas do portal"}
+              {nivel === "ia" && "Pergunta livre com IA"}
+              {nivel === "pets" && "Pet do companheiro"}
+            </p>
           </div>
         </div>
       )}

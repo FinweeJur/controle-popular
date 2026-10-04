@@ -156,8 +156,18 @@ export default async function SobrePage() {
           >
             Movimento Brasil Popular
           </a>
-          . E a inspiração tecnológica hacker pra criar redes mais justas e
-          tecnologia mais acessível veio da{" "}
+          . E a inspiração{" "}
+          <NextLink href="/tecnologia" className="text-primary hover:text-accent">
+            tecnológica
+          </NextLink>{" "}
+          hacker pra criar redes mais justas e{" "}
+          <NextLink
+            href="/tecnologia#catalogo-titulo"
+            className="text-primary hover:text-accent"
+          >
+            software livre
+          </NextLink>{" "}
+          mais acessível veio da{" "}
           <a
             href="https://codigonaobinario.org/"
             target="_blank"
@@ -170,11 +180,11 @@ export default async function SobrePage() {
           IA.
         </p>
         <p className="text-text-soft">
-          Sem essas organizações cobrando por justiça e direitos nas florestas,
-          nas águas, no campo, na cidade e nas redes, esse portal não existiria.
           E ao <strong className="text-text">Instituto Esperança Maria</strong>, pelas
           experiências em educação ambiental de direitos humanos, que agora dão luz
-          a esse portal.
+          a esse portal. Sem essas organizações cobrando por justiça e direitos nas
+          florestas, nas águas, no campo, na cidade e nas redes, esse portal não
+          existiria.
         </p>
       </section>
 

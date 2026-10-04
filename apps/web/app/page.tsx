@@ -67,10 +67,15 @@ export default async function Hub() {
     // nenhum outro `<main>` por perto para salvar a leitura. Mesmo padrão
     // que `funcaosocialterra/page.tsx` já usa: `<main>` envolvendo
     // `<header>` e `<footer>` próprios da página.
+    // O `py-12 sm:py-16` original abria 48–64 px entre o letreiro
+    // ("✦ OLHO ABERTO ✦", dentro do TopNav) e o primeiro bloco da home. O
+    // dono pediu (04/10/2026) que o letreiro e o cartão "Mística do Dia"
+    // ficassem próximos: o topo vira um respiro fino (`pt-2`, 8 px) e o
+    // rodapé da página mantém o espaço de sempre.
     <main
       id="conteudo-principal"
       tabIndex={-1}
-      className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
+      className="mx-auto max-w-4xl px-4 pt-2 pb-12 sm:pb-16"
     >
       {/* ═══ DIAS IMPORTANTES DOS POVOS INDÍGENAS — antes da Mística, com o
           nome da data, objetivo e contexto de criação (dono, 03/10/2026),

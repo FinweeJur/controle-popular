@@ -11,6 +11,12 @@
  * perder o resto sem ocupar a tela. Citação CURTA da fonte no formato do
  * dev `(Obra, Autor, Data)`, com link quando houver.
  *
+ * TÍTULO COM DATA E DIA MARCADO (dono, 04/10/2026): o rótulo fixo "Mística
+ * do Dia" ganha a data local do visitante — "Mística do Dia 4 de outubro" —
+ * e, quando a data é um dia de referência, o nome dele: "Mística do Dia 7 de
+ * setembro - Dia da Independência do Brasil". O mapa de dias é o MESMO da
+ * `/memoria` (`lib/memoria/datas-referencia`), sem duplicata.
+ *
  * UNIFICAÇÃO DAS DATAS (dev, 30/09/2026): o selo de ano só aparece
  * quando o título NÃO traz o ano; e a citação é curta, para a data não
  * sair duas vezes na tela.
@@ -50,6 +56,13 @@ interface ItemMistica {
 interface MisticaCarregada {
   principal: ItemMistica;
   outros: ItemMistica[];
+  /**
+   * Título com a data local do visitante e, quando houver, o dia marcante:
+   * "Mística do Dia 4 de outubro" ou
+   * "Mística do Dia 7 de setembro - Dia da Independência do Brasil".
+   * Montado em `tituloMisticaDoDia` (`lib/memoria/datas-referencia`).
+   */
+  titulo: string;
 }
 
 /** Rótulo do ano + título, sem repetir a data (selo só quando cabe). */
@@ -122,21 +135,39 @@ export default function MisticaDoDia() {
 
   useEffect(() => {
     let vivo = true;
-    // Os dois módulos entram juntos no chunk da Mística: o gazetteer de lugares
-    // é leve (coordenadas embutidas) e não pesa na home.
-    Promise.all([import("@/lib/memoria/mistica"), import("@/lib/memoria/locais")])
-      .then(([{ entradasDoDia, fonteCurta, mostrarAnoSelo }, { localDaEntrada }]) => {
-        if (!vivo) return;
-        const entradas = entradasDoDia(new Date());
-        if (entradas.length === 0) return;
-        const monta = (entrada: EntradaCalendario): ItemMistica => ({
-          entrada,
-          fonte: fonteCurta(entrada),
-          seloAno: mostrarAnoSelo(entrada),
-          local: localDaEntrada(entrada),
-        });
-        setMistica({ principal: monta(entradas[0]), outros: entradas.slice(1).map(monta) });
-      })
+    // Os três módulos entram juntos no chunk da Mística: o gazetteer de
+    // lugares e o mapa de efemérides são leves (dado embutido) e não pesam
+    // na home.
+    Promise.all([
+      import("@/lib/memoria/mistica"),
+      import("@/lib/memoria/locais"),
+      import("@/lib/memoria/datas-referencia"),
+    ])
+      .then(
+        ([
+          { entradasDoDia, fonteCurta, mostrarAnoSelo, chaveDiaMes },
+          { localDaEntrada },
+          { referenciaDoDia, tituloMisticaDoDia },
+        ]) => {
+          if (!vivo) return;
+          // O dia é o do VISITANTE (fuso local), nunca o do build.
+          const hoje = new Date();
+          const entradas = entradasDoDia(hoje);
+          if (entradas.length === 0) return;
+          const monta = (entrada: EntradaCalendario): ItemMistica => ({
+            entrada,
+            fonte: fonteCurta(entrada),
+            seloAno: mostrarAnoSelo(entrada),
+            local: localDaEntrada(entrada),
+          });
+          const referencia = referenciaDoDia(chaveDiaMes(hoje));
+          setMistica({
+            principal: monta(entradas[0]),
+            outros: entradas.slice(1).map(monta),
+            titulo: tituloMisticaDoDia(hoje, referencia),
+          });
+        },
+      )
       .catch(() => {
         // Bloco de memória é enfeite cívico: falha aqui não pode derrubar
         // a home. Silêncio é a degradação correta (e é o que a lacuna já
@@ -149,7 +180,7 @@ export default function MisticaDoDia() {
 
   if (!mistica) return null;
 
-  const { principal, outros } = mistica;
+  const { principal, outros, titulo } = mistica;
 
   return (
     <aside
@@ -167,8 +198,11 @@ export default function MisticaDoDia() {
 
       {/* Conteúdo da mística à direita, começando na mesma altura da peça. */}
       <div className="min-w-0 flex-1">
+        {/* Título = rótulo + data local do visitante (+ dia marcante). O
+            texto sai do dado (`tituloMisticaDoDia`); o `uppercase` é só
+            visual e não esconde a data de leitor de tela. */}
         <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
-          Mística do Dia
+          {titulo}
         </p>
         <p className="mt-0.5 text-[0.92em] text-foreground">
           <TituloMistica item={principal} />

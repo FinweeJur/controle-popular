@@ -122,6 +122,7 @@ import {
   type Ponto,
 } from "@/lib/companheiro/plataformas";
 import { DURACAO_FALHA_MS, EVENTO_COMPANHEIRO_FAILED } from "@/lib/companheiro/eventos";
+import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
 const CELL_W = 192;
@@ -206,6 +207,97 @@ const MARGEM = 12;
 const DUR_VOO_MIN = 420; // ms
 const DUR_VOO_MAX = 900; // ms
 const ESPERA_NO_ALVO_MS = 2800;
+
+/**
+ * Balõezinhos de permanência no site (pedidos do dono, 04/10/2026).
+ *
+ * O companheiro fala com quem fica lendo: três balões, um por faixa de tempo.
+ *
+ *   1. **1 minuto** — convite para trocar ou tirar os bichinhos. É um botão de
+ *      verdade: clicar abre o menu de troca. (Padrão que já existia.)
+ *   2. **5 minutos** — o PÁSSARO PADRÃO (qiaowei, o Oriental Magpie-Robin, o
+ *      "pássaro" do Petdex) cita Frida Kahlo. A arte mostrada é SEMPRE a do
+ *      pássaro padrão, mesmo que o leitor tenha escolhido outro bicho — a fala
+ *      é dele (decisão do dono).
+ *   3. **50 minutos** — o companheiro ativo lembra de alongar.
+ *
+ * Regras comuns: cada um aparece UMA vez por sessão (marca em
+ * `sessionStorage`, não em `localStorage`: recarregar a aba não repete, abrir
+ * outra janela sim), some sozinho (WCAG: conteúdo temporizado) e NUNCA
+ * sobrepõe outro balão nem cobre o chat do Seu Nonô: se houver um balão aberto
+ * ou a conversa aberta, a vez é adiada.
+ *
+ * TEMPO NA TELA DIFERENTE POR BALÃO (pedido do dono, 04/10/2026): o balão de
+ * troca é um BOTÃO — a pessoa precisa lê-lo, decidir e clicar para abrir o
+ * menu de bichos. Com os 10 s dos avisos, ele sumia antes da decisão. Por isso
+ * ele ganha `DICA_TROCA_VISIVEL_MS` (45 s), enquanto o pássaro (5 min) e o
+ * lembrete de alongar (50 min) são só avisos, sem ação, e seguem no
+ * `DICA_VISIVEL_MS` curto. O prazo maior segue a WCAG 2.2.1 (tempo ajustável):
+ * conteúdo que exige interação recebe mais tempo para não punir quem lê devagar.
+ *
+ * O acesso a `process.env.NEXT_PUBLIC_*` precisa ser ESTÁTICO (ponto, não
+ * índice): só assim o Next substitui o valor no bundle do cliente. Os tempos
+ * aceitam override por variável de ambiente para o teste Playwright não esperar
+ * 50 min reais — a produção não define nada e cai nos valores de sempre.
+ */
+
+/** Cada balão tem gatilho, texto e aparência próprios. */
+type TipoDica = "troca" | "frida" | "alongar";
+
+/** Um balão agendado: tipo, chave de sessão e quando aparece. */
+interface AgendaDica {
+  tipo: TipoDica;
+  chave: string;
+  apareceMs: number;
+}
+
+const CHAVE_DICA_SESSAO = "cp_dica_companheiro_vista";
+const CHAVE_DICA_5MIN = "cp_dica_5min_vista";
+const CHAVE_DICA_50MIN = "cp_dica_50min_vista";
+
+const DICA_APARECE_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_COMPANHEIRO_MS);
+  return Number.isFinite(n) && n > 0 ? n : 60_000;
+})();
+const DICA_5MIN_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_5MIN_MS);
+  return Number.isFinite(n) && n > 0 ? n : 5 * 60_000;
+})();
+const DICA_50MIN_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_50MIN_MS);
+  return Number.isFinite(n) && n > 0 ? n : 50 * 60_000;
+})();
+const DICA_VISIVEL_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_VISIVEL_MS);
+  return Number.isFinite(n) && n > 0 ? n : 10_000;
+})();
+/**
+ * Quanto tempo a dica de TROCA fica na tela antes de sumir sozinha, em ms
+ * (default 45 s — pedido do dono, 04/10/2026).
+ *
+ * Diferente dos outros dois balões, este é um controle de verdade: abrir o
+ * menu para tirar o pássaro ou somar companheiros. Os 10 s dos avisos eram
+ * curtos demais para ler e decidir; 45 s cobrem a leitura sem virar ruído
+ * permanente. O override por env existe só para o teste Playwright.
+ */
+const DICA_TROCA_VISIVEL_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_TROCA_VISIVEL_MS);
+  return Number.isFinite(n) && n > 0 ? n : 45_000;
+})();
+
+/** Os três balões, na ordem dos tempos (1 min, 5 min, 50 min). */
+const AGENDA_DICAS: AgendaDica[] = [
+  { tipo: "troca", chave: CHAVE_DICA_SESSAO, apareceMs: DICA_APARECE_MS },
+  { tipo: "frida", chave: CHAVE_DICA_5MIN, apareceMs: DICA_5MIN_MS },
+  { tipo: "alongar", chave: CHAVE_DICA_50MIN, apareceMs: DICA_50MIN_MS },
+];
+
+/** Fala exata do pássaro aos 5 minutos (citação de Frida Kahlo). */
+const TEXTO_DICA_FRIDA =
+  "Pés, para que os quero, se tenho asas para voar? - Frida Kahlo";
+
+/** Texto exato do balão do companheiro aos 50 minutos. */
+const TEXTO_DICA_ALONGAR = "É tão bom se movimentar! Vamos se alongar um minuto?";
 
 /**
  * Chave do `localStorage` da posição de cada bicho (mapa `slug → {x,y}`).
@@ -472,6 +564,23 @@ export function CompanheiroFlutuante() {
   // ── Menu de troca (clique direito no bicho ou pata da pilha) ──────────────
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
 
+  // Posição do menu (pedido do dono, 03/10/2026): ele nasce no ponto do mouse
+  // ou embaixo da pata e precisa caber na tela. O utilitário mede o menu e
+  // vira para cima/esquerda quando falta espaço; a âncora é um ponto (caixa de
+  // tamanho zero) no local onde o menu foi pedido.
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const medirAncoraMenu = useCallback(
+    (): CaixaAncora | null =>
+      menu ? { esq: menu.x, topo: menu.y, larg: 0, alt: 0 } : null,
+    [menu],
+  );
+  const posMenu = usePosicaoPainel({
+    aberto: menu !== null,
+    painelRef: menuRef,
+    medirAncora: medirAncoraMenu,
+    opcoes: { verticalPreferida: "abaixo", horizontalPreferida: "direita" },
+  });
+
   // A pata da pilha do canto pede o menu na posição dela.
   useEffect(() => {
     const abrir = (e: Event) => {
@@ -480,6 +589,108 @@ export function CompanheiroFlutuante() {
     };
     window.addEventListener("cp:companheiro-menu-pet", abrir);
     return () => window.removeEventListener("cp:companheiro-menu-pet", abrir);
+  }, []);
+
+  // ── Balõezinhos de permanência (1, 5 e 50 min no site) ────────────────────
+  // `dicaAtiva` diz QUAL balão está aberto (nunca mais de um); `dicaRef` dá a
+  // posição dele para o menu abrir no lugar certo quando alguém clica;
+  // `dicaBase` guarda o quanto ele sobe do rodapé (px) para ficar ACIMA da
+  // pilha da esquerda sem cobrir o rádio nem o chat.
+  const [dicaAtiva, setDicaAtiva] = useState<TipoDica | null>(null);
+  const [dicaBase, setDicaBase] = useState<number | null>(null);
+  const dicaRef = useRef<HTMLButtonElement | null>(null);
+  // Espelho da dica ativa em ref: o agendador lê aqui sem depender do estado
+  // (o `setTimeout` fecharia sobre um valor velho de `dicaAtiva`).
+  const dicaAtivaRef = useRef<TipoDica | null>(null);
+
+  /**
+   * Altura (px do rodapé) para o balão ficar acima de tudo que já mora no
+   * canto esquerdo: o FAB/chat do Seu Nonô, a pata, a nuvem de boas-vindas e o
+   * botão do rádio. Medir na hora evita cobrir um vizinho que só aparece em
+   * certas situações (a nuvem, por exemplo, existe só na primeira visita).
+   * Devolve `null` se nenhum vizinho for achado — aí o CSS de reserva manda.
+   */
+  const calcularBaseDica = useCallback((): number | null => {
+    const topoDe = (seletor: string): number | null => {
+      const el = document
+        .querySelector<HTMLElement>(seletor)
+        ?.closest<HTMLElement>("[data-arrastavel-caixa]");
+      return el ? el.getBoundingClientRect().top : null;
+    };
+    const topos = [
+      topoDe('[aria-label="Abrir assistente Seu Nonô"]'),
+      topoDe('button[aria-controls="cp-radio-indice"]'),
+    ].filter((t): t is number => t !== null);
+    if (!topos.length) return null;
+    return Math.max(8, window.innerHeight - Math.min(...topos) + 8);
+  }, []);
+
+  // Agenda CADA balão para o seu tempo, uma vez por sessão. Antes de aparecer:
+  //  - se o painel do Seu Nonô estiver ABERTO (o FAB some do DOM quando abre,
+  //    contrato do `SeuNono.tsx`), o balão cobriria a conversa;
+  //  - se outro balão já estiver na tela.
+  // Nos dois casos adia a vez e tenta de novo adiante, SEM gastar a marca da
+  // sessão. A marca mora no `sessionStorage`; se o storage estiver bloqueado
+  // (aba anônima), mostra mesmo assim — o pior caso é repetir, nunca omitir.
+  useEffect(() => {
+    const timers: number[] = [];
+    const controle = { cancelado: false };
+
+    const tentar = (d: AgendaDica) => {
+      if (controle.cancelado) return;
+      let visto = false;
+      try {
+        visto = window.sessionStorage.getItem(d.chave) === "1";
+      } catch {
+        // Sem storage: segue e mostra.
+      }
+      if (visto) return;
+      const chatAberto =
+        document.querySelector('[aria-label="Abrir assistente Seu Nonô"]') === null;
+      if (chatAberto || dicaAtivaRef.current !== null) {
+        timers.push(window.setTimeout(() => tentar(d), 3000));
+        return;
+      }
+      try {
+        window.sessionStorage.setItem(d.chave, "1");
+      } catch {
+        // Sem storage: a dica ainda aparece nesta visita.
+      }
+      dicaAtivaRef.current = d.tipo;
+      setDicaBase(calcularBaseDica());
+      setDicaAtiva(d.tipo);
+    };
+
+    for (const d of AGENDA_DICAS) {
+      timers.push(window.setTimeout(() => tentar(d), d.apareceMs));
+    }
+    return () => {
+      controle.cancelado = true;
+      for (const t of timers) window.clearTimeout(t);
+    };
+  }, [calcularBaseDica]);
+
+  // Some sozinho (WCAG: conteúdo temporizado) e libera a vez do próximo balão.
+  // A dica de troca (o único botão) fica o prazo maior; os avisos, o curto.
+  useEffect(() => {
+    if (!dicaAtiva) return;
+    const duracao = dicaAtiva === "troca" ? DICA_TROCA_VISIVEL_MS : DICA_VISIVEL_MS;
+    const esconder = window.setTimeout(() => {
+      dicaAtivaRef.current = null;
+      setDicaAtiva(null);
+    }, duracao);
+    return () => window.clearTimeout(esconder);
+  }, [dicaAtiva]);
+
+  /**
+   * Clique no balão de troca (1 min): fecha a dica e abre o menu de troca
+   * ancorado na posição do balão.
+   */
+  const abrirMenuPeloBalao = useCallback(() => {
+    dicaAtivaRef.current = null;
+    setDicaAtiva(null);
+    const r = dicaRef.current?.getBoundingClientRect();
+    setMenu(r ? { x: r.left, y: r.top } : { x: 24, y: 40 });
   }, []);
 
   // Esc fecha o menu — contrato de diálogo do resto do portal.
@@ -973,6 +1184,69 @@ export function CompanheiroFlutuante() {
         );
       })}
 
+      {/* Balõezinhos de permanência (1, 5 e 50 min; dono, 04/10/2026): todos no
+          mesmo lugar, ACIMA da pilha do canto esquerdo (FAB, pata e rádio) para
+          não cobrir o rádio nem o botão do chat. Só UM aparece por vez — o
+          agendador adia a vez se houver outro aberto. `data-nao-plataforma`: a
+          UI flutuante não é chão dos bichos.
+
+          - 1 min (`troca`): botão que abre o menu de troca/tirar bichinhos;
+          - 5 min (`frida`): o PÁSSARO PADRÃO cita Frida Kahlo. A arte é sempre
+            a do pássaro padrão, mesmo com outro bicho ativo (a fala é dele);
+          - 50 min (`alongar`): o companheiro ativo lembra de alongar.
+
+          Os dois últimos são avisos temporizados (`role="status"` +
+          `aria-live="polite"`), sem ação no clique — somem sozinhos. */}
+      {dicaAtiva === "troca" && (
+        <button
+          ref={dicaRef}
+          type="button"
+          onClick={abrirMenuPeloBalao}
+          data-cp-dica-companheiro=""
+          data-nao-plataforma
+          aria-label="Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui"
+          style={dicaBase !== null ? { bottom: dicaBase } : undefined}
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),16rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg transition-colors hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          {pets[0] ? <PetIcone pet={pets[0]} altura={20} /> : null}
+          <span className="text-sm font-medium leading-snug text-text">
+            Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui
+          </span>
+        </button>
+      )}
+
+      {dicaAtiva === "frida" && (
+        <div
+          data-cp-dica-frida=""
+          data-nao-plataforma
+          role="status"
+          aria-live="polite"
+          style={dicaBase !== null ? { bottom: dicaBase } : undefined}
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),18rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg"
+        >
+          <PetIcone pet={PET_INICIAL} altura={20} />
+          <span className="text-sm font-medium leading-snug text-text">
+            {TEXTO_DICA_FRIDA}
+          </span>
+        </div>
+      )}
+
+      {dicaAtiva === "alongar" && (
+        <div
+          data-cp-dica-alongar=""
+          data-nao-plataforma
+          role="status"
+          aria-live="polite"
+          style={dicaBase !== null ? { bottom: dicaBase } : undefined}
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),18rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg"
+        >
+          {pets[0] ? <PetIcone pet={pets[0]} altura={20} /> : null}
+          <span className="text-sm font-medium leading-snug text-text">
+            {TEXTO_DICA_ALONGAR}
+          </span>
+        </div>
+      )}
+
       {/* Menu de troca em checkboxes (vários na tela): fundo fecha no
           clique fora; o menu fica por cima. `data-nao-plataforma`: a UI
           flutuante não é terreno dos bichos. */}
@@ -985,13 +1259,15 @@ export function CompanheiroFlutuante() {
             aria-hidden="true"
           />
           <div
+            ref={menuRef}
             role="menu"
             aria-label="Escolher os bichinhos do companheiro"
             data-nao-plataforma
             className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto rounded-xl border border-border bg-surface p-2 shadow-lg"
             style={{
-              left: Math.max(8, Math.min(menu.x, window.innerWidth - 256)),
-              top: Math.max(8, Math.min(menu.y, window.innerHeight - 300)),
+              left: posMenu ? Math.round(posMenu.posicao.x) : menu.x,
+              top: posMenu ? Math.round(posMenu.posicao.y) : menu.y,
+              maxHeight: posMenu ? Math.round(posMenu.posicao.altura) : undefined,
             }}
           >
             <div className="flex items-start justify-between gap-2 px-2 pb-1">
@@ -1008,6 +1284,20 @@ export function CompanheiroFlutuante() {
                 <X size={14} aria-hidden="true" />
               </button>
             </div>
+            {/* "Remover todos" vem PRIMEIRO, antes dos bichinhos (pedido do
+                dono, 04/10/2026): é a ação de limpar a tela, não uma escolha
+                de pet — por isso abre a lista e não mistura com ela. */}
+            <button
+              type="button"
+              onClick={() => {
+                limparPets();
+                setMenu(null);
+              }}
+              className="w-full rounded-lg px-2 py-1.5 text-left text-xs font-medium text-text-soft hover:bg-surface-2"
+            >
+              Remover todos
+            </button>
+            <div className="my-1 border-t border-border" role="separator" />
             <ul className="space-y-0.5">
               {PETS_COMPANHEIRO.map((p) => {
                 const marcado = pets.some((q) => q.slug === p.slug);
@@ -1041,16 +1331,6 @@ export function CompanheiroFlutuante() {
                 );
               })}
             </ul>
-            <button
-              type="button"
-              onClick={() => {
-                limparPets();
-                setMenu(null);
-              }}
-              className="mt-1 w-full rounded-lg px-2 py-1.5 text-left text-xs font-medium text-text-soft hover:bg-surface-2"
-            >
-              Remover todos
-            </button>
             <button
               type="button"
               onClick={() => setMenu(null)}

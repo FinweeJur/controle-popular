@@ -22,10 +22,11 @@ import {
   EVENTO_TOCAR,
   type EstadoRadio,
 } from "@/lib/radio/eventos";
-import Bandeira from "@/app/components/Bandeira";
+import Bandeira, { BandeiraEstado } from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
 import { useArrastavel } from "@/lib/usarArrastavel";
+import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
 
 /**
  * Player de rádio persistente e multi-estação.
@@ -84,6 +85,27 @@ export default function PlayerRadio() {
   // gesto pelo limiar de 5 px (`foiArrasto`).
   const { estilo, arrastando, foiArrasto, handlers, resetar } =
     useArrastavel("cp_radio_pos");
+
+  // Posicionamento do índice (pedido do dono, 03/10/2026): o painel abria
+  // ACIMA com `bottom-full` e, em tela baixa, o topo (com o volume) saía pela
+  // borda de cima. Agora a caixa do conjunto é a âncora e o utilitário decide
+  // abrir para cima ou para baixo, mantendo o volume visível e o painel
+  // inteiro na tela. O índice é `position: absolute` dentro do conjunto
+  // (que é `fixed` e tem `transform` do arrasto) — por isso as coordenadas de
+  // viewport viram deslocamento relativo subtraindo a caixa da âncora.
+  const grupoRef = useRef<HTMLDivElement | null>(null);
+  const indiceRef = useRef<HTMLDivElement | null>(null);
+  const medirAncoraIndice = useCallback((): CaixaAncora | null => {
+    const el = grupoRef.current;
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { esq: r.left, topo: r.top, larg: r.width, alt: r.height };
+  }, []);
+  const posIndice = usePosicaoPainel({
+    aberto: indiceAberto,
+    painelRef: indiceRef,
+    medirAncora: medirAncoraIndice,
+  });
 
   // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
   // na montagem, para o `<audio>` nascer com os valores do estado.
@@ -271,6 +293,7 @@ export default function PlayerRadio() {
         // desalinhar os três botões. `z-[45]`: por baixo da pata e do FAB
         // (z-50), por cima dos bichinhos (z-40) — um pet passando por trás
         // não pode cobrir o play.
+        ref={grupoRef}
         style={estilo}
         className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
         data-arrastavel-caixa
@@ -324,10 +347,23 @@ export default function PlayerRadio() {
         {/* Índice expansível: aparece ao passar o mouse/focar no botão. */}
         {indiceAberto && (
           <div
+            ref={indiceRef}
             id="cp-radio-indice"
-            className="absolute bottom-full left-0 mb-2 w-[min(calc(100vw-2rem),21rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+            // Posição vinda do utilitário; `visibility` só evita um flash na
+            // primeira pintura, enquanto o `useLayoutEffect` ainda não mediu.
+            style={{
+              left: posIndice
+                ? Math.round(posIndice.posicao.x - posIndice.ancora.esq)
+                : 0,
+              top: posIndice
+                ? Math.round(posIndice.posicao.y - posIndice.ancora.topo)
+                : 0,
+              maxHeight: posIndice ? Math.round(posIndice.posicao.altura) : undefined,
+              visibility: posIndice ? "visible" : "hidden",
+            }}
+            className="absolute z-50 flex w-[min(calc(100vw-2rem),21rem)] flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
+            <div className="flex shrink-0 items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
               <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
                 <ListMusic size={14} aria-hidden="true" />
                 Índice de rádios
@@ -355,7 +391,7 @@ export default function PlayerRadio() {
                 ícone (03/10/2026), então o controle de som mora aqui —
                 visível sem rolar, em qualquer tela. O `range` usa a mesma
                 escala 0–1 de `audio.volume`; o mudo tem `aria-pressed`. */}
-            <div className="flex items-center gap-2 border-b border-border bg-surface-2/50 px-3 py-2">
+            <div className="flex shrink-0 items-center gap-2 border-b border-border bg-surface-2/50 px-3 py-2">
               <button
                 type="button"
                 onClick={() => setMudo((m) => !m)}
@@ -391,7 +427,10 @@ export default function PlayerRadio() {
                 {mudo || volume === 0 ? "mudo" : `${Math.round(volume * 100)}%`}
               </span>
             </div>
-            <div className="max-h-[min(70vh,26rem)] overflow-y-auto p-2">
+            {/* A lista é o pedaço que rola quando o utilitário corta a
+                altura: `flex-1 min-h-0` deixa o teto do painel vencer e o
+                cabeçalho (com o volume) fica sempre visível. */}
+            <div className="min-h-0 flex-1 overflow-y-auto p-2">
               {ORDEM_TIPOS.map((tipo) => {
                 const grupo = ESTACOES.filter((e) => e.tipo === tipo);
                 if (grupo.length === 0) return null;
@@ -421,8 +460,14 @@ export default function PlayerRadio() {
                                   Sintonizando…
                                 </span>
                               )}
-                              <span title={e.paisNome} className="inline-flex">
+                              <span
+                                title={e.paisNome}
+                                className="inline-flex items-center gap-1"
+                              >
                                 <Bandeira iso={e.pais} nome={e.paisNome} tamanho={12} />
+                                {/* Estado ao lado do país só na estação
+                                    brasileira; a componente some sem UF. */}
+                                <BandeiraEstado uf={e.uf} tamanho={12} />
                               </span>
                               {ativa && tocando ? (
                                 <Pause size={12} className="shrink-0 text-primary" aria-hidden="true" />

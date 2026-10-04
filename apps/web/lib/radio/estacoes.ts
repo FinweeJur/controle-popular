@@ -68,14 +68,16 @@ export type TipoRadio = "federal" | "universitaria" | "comunitaria" | "popular";
  * O Brasil está subdividido nas cinco regiões do país (pedido do dono,
  * 02/10/2026): as nacionais e as universitárias passam a ser lidas por
  * região, não num bloco único "Brasil". O resto do mundo continua por
- * macro-região. A ordem dos literais espelha o IBGE (ver `ORDEM_REGIOES`).
+ * macro-região. A ordem de exibição é a do dono (04/10/2026), não a do
+ * IBGE: Norte → Nordeste → Centro-Oeste → Sul → Sudeste, depois o mundo.
+ * Ver `ORDEM_REGIOES`.
  */
 export type RegiaoRadio =
   | "Norte"
   | "Nordeste"
-  | "Sudeste"
-  | "Sul"
   | "Centro-Oeste"
+  | "Sul"
+  | "Sudeste"
   | "America Latina"
   | "Africa"
   | "Asia e Caribe";
@@ -1084,6 +1086,28 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
+    // Restaurada em 03/10/2026: entrou na ampliacao do dia e foi removida por
+    // engano ao inserir as radios de Pernambuco (o dono notou a ausencia).
+    // A entrada original e' esta: reggae de Sao Luis (MA), capital do reggae
+    // brasileiro, stream pelo relay do radio.garden.
+    id: "portal-roots-reggae",
+    nome: "Portal Roots Reggae",
+    tipo: "popular",
+    regiao: "Nordeste",
+    pais: "BR",
+    paisNome: "Brasil",
+    uf: "MA",
+    cidade: "São Luís",
+    programacao: "Reggae, dancehall e cultura jamaicana",
+    descricao: "Rádio de reggae de São Luís (MA), capital do reggae brasileiro.",
+    stream: "https://radio.garden/api/ara/content/listen/xTBSA1nh/channel.mp3",
+    formato: "mp3",
+    site: "https://portalradiorootsreggae.blogspot.com",
+    fonteAgregador: "radio.garden",
+    transcrevivel: false,
+    verificadoEm: RADIO_VERIFICADO_EM,
+  },
+  {
     id: "radio-clube-fm-recife",
     nome: "Rádio Clube de Pernambuco 99.1 FM",
     tipo: "popular",
@@ -1156,16 +1180,20 @@ export const ORDEM_TIPOS: readonly TipoRadio[] = [
   "popular",
 ];
 
-/** Regiões do Brasil, na ordem do IBGE — usado nos cartões de resumo. */
+/**
+ * Regiões do Brasil, na ordem de exibição pedida pelo dono (04/10/2026):
+ * Norte → Nordeste → Centro-Oeste → Sul → Sudeste. Não é a ordem do IBGE —
+ * vale para os cartões de resumo, os filtros e a ordenação da tela.
+ */
 export const REGIOES_BRASIL: readonly RegiaoRadio[] = [
   "Norte",
   "Nordeste",
-  "Sudeste",
-  "Sul",
   "Centro-Oeste",
+  "Sul",
+  "Sudeste",
 ];
 
-/** Ordem canônica das regiões (Brasil primeiro, depois o mundo). */
+/** Ordem canônica das regiões (Brasil na ordem do dono, depois o mundo). */
 export const ORDEM_REGIOES: readonly RegiaoRadio[] = [
   ...REGIOES_BRASIL,
   "America Latina",
