@@ -1,0 +1,90 @@
+# Espelho do portal no Azure Container Apps (oferta GitHub Student Pack).
+#
+# O QUE FAZ: constroi a imagem Docker do portal no GitHub Actions, publica no
+# ACR e cria/atualiza o Container App. Ter o portal tambem no Azure da a ele
+# um host INDEPENDENTE da Guara: se a Guara cair, o espelho continua no ar.
+#
+# POR QUE O BUILD RODA AQUI (e nao na home-pc nem no proxy do Guara):
+# o build pre-renderiza as paginas e PRECISA ler o banco (SSG). O Postgres do
+# Guara e privado (`.svc.cluster.local`) — o CI nao o alcanca. O caminho que
+# funciona e o `secrets.DATABASE_URL` (banco publico), o mesmo que o
+# `pages.yml` ja usa. O proxy `guara proxy` foi testado e NAO serve: a sessao
+# expira no meio do build (`4002 Invalid token`, medido 04/10/2026).
+#
+# SEM BANCO NO RUNTIME (decisao do dono, 04/10/2026): o app roda no Azure sem
+# `DATABASE_URL`. O HTML das paginas ja sai pronto do build; as rotas
+# dinamicas (busca, chat, APIs) ficam degradadas ate existir um Postgres no
+# Azure. Este e o "espelho por enquanto".
+#
+# AUTH: OIDC (sem segredo de longa duracao). Variaveis do repositorio:
+#   AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+# O app de servico tem AcrPush no ACR e Contributor no grupo `cp-app`.
+#
+# Regiao: northcentralus. O Brasil NAO esta entre as regioes que a politica da
+# assinatura de estudante libera (medido 04/10/2026) — o dado fica fora do pais.
+
+name: Espelho no Azure (Container Apps)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: azure-mirror
+  cancel-in-progress: true
+
+env:
+  ACR: cpwebacr3pdo
+  GRUPO: cp-app
+  APP: cp-web
+  IMAGEM: cpwebacr3pdo.azurecr.io/cp-web:latest
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      # O build le o banco pelo `secrets.DATABASE_URL` (mesmo do pages.yml).
+      # Sem o segredo, as paginas saem vazias — e o site sobe parecendo certo.
+      - name: Construir e publicar a imagem
+        run: |
+          az acr login -n "$ACR"
+          docker build -t "$IMAGEM" \
+            --build-arg DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            .
+          docker push "$IMAGEM"
+
+      - name: Criar ou atualizar o Container App
+        run: |
+          USUARIO=$(az acr credential show -n "$ACR" --query username -o tsv)
+          SENHA=$(az acr credential show -n "$ACR" --query "passwords[0].value" -o tsv)
+          if az containerapp show -g "$GRUPO" -n "$APP" -o none 2>/dev/null; then
+            echo "Atualizando app existente"
+            az containerapp update -g "$GRUPO" -n "$APP" --image "$IMAGEM" -o none
+          else
+            echo "Criando app"
+            az containerapp create -g "$GRUPO" -n "$APP" \
+              --environment cp-env \
+              --image "$IMAGEM" \
+              --target-port 3000 --ingress external \
+              --min-replicas 0 --max-replicas 1 \
+              --cpu 0.5 --memory 1.0Gi \
+              --registry-server "${ACR}.azurecr.io" \
+              --registry-username "$USUARIO" --registry-password "$SENHA" \
+              -o none
+          fi
+          FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
+            --query properties.configuration.ingress.fqdn -o tsv)
+          echo "Espelho no ar em: https://$FQDN"
