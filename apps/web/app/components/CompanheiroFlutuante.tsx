@@ -102,6 +102,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import {
   PETS_COMPANHEIRO,
   CHAVE_PET,
@@ -122,6 +123,8 @@ import {
   type Ponto,
 } from "@/lib/companheiro/plataformas";
 import { DURACAO_FALHA_MS, EVENTO_COMPANHEIRO_FAILED } from "@/lib/companheiro/eventos";
+import { escolherFala } from "@/lib/companheiro/falas";
+import { dicaParaRota, type DicaPagina } from "@/lib/companheiro/dicas-pagina";
 import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
@@ -241,8 +244,16 @@ const ESPERA_NO_ALVO_MS = 2800;
  * 50 min reais — a produção não define nada e cai nos valores de sempre.
  */
 
-/** Cada balão tem gatilho, texto e aparência próprios. */
-type TipoDica = "troca" | "frida" | "alongar";
+/**
+ * Cada balão tem gatilho, texto e aparência próprios. São cinco:
+ *   - "troca"   (1 min): botão que abre o menu de bichinhos;
+ *   - "fala"    (~2 min): fala aleatória do PET ATIVO (`pets[0]`);
+ *   - "frida"   (5 min): o pássaro padrão cita Frida Kahlo;
+ *   - "alongar" (50 min): o companheiro ativo lembra de alongar;
+ *   - "pagina"  (ao mudar de rota): dica educativa da página, uma vez por
+ *     sessão e por prefixo. Não é agendada por tempo — nasce do `usePathname`.
+ */
+type TipoDica = "troca" | "fala" | "frida" | "alongar" | "pagina";
 
 /** Um balão agendado: tipo, chave de sessão e quando aparece. */
 interface AgendaDica {
@@ -252,12 +263,39 @@ interface AgendaDica {
 }
 
 const CHAVE_DICA_SESSAO = "cp_dica_companheiro_vista";
+const CHAVE_DICA_FALA = "cp_dica_fala_vista";
 const CHAVE_DICA_5MIN = "cp_dica_5min_vista";
 const CHAVE_DICA_50MIN = "cp_dica_50min_vista";
+/**
+ * Prefixo da chave de sessão de cada dica de página. A chave final é
+ * `cp_dica_pagina_vista:<prefixo>` — uma por rota educativa, para o aviso não
+ * repetir na mesma sessão e ainda assim aparecer em outra rota depois.
+ */
+const CHAVE_DICA_PAGINA = "cp_dica_pagina_vista:";
 
 const DICA_APARECE_MS = (() => {
   const n = Number(process.env.NEXT_PUBLIC_CP_DICA_COMPANHEIRO_MS);
   return Number.isFinite(n) && n > 0 ? n : 60_000;
+})();
+/**
+ * Quando a fala aleatória do pet ativo aparece, em ms (default 2 min).
+ *
+ * Fica entre o convite de troca (1 min) e a citação da Frida (5 min): dá tempo
+ * de a pessoa conhecer o bicho antes de ele puxar conversa. O override por env
+ * existe só para o teste Playwright não esperar 2 min reais.
+ */
+const DICA_FALA_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_FALA_MS);
+  return Number.isFinite(n) && n > 0 ? n : 2 * 60_000;
+})();
+/**
+ * Atraso entre a troca de rota e a tentativa de mostrar a dica educativa, em
+ * ms (default 1,5 s). Evita que o balão dispute o primeiro paint da página.
+ * Override por env para o teste Playwright.
+ */
+const DICA_PAGINA_ATRASO_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_DICA_PAGINA_ATRASO_MS);
+  return Number.isFinite(n) && n > 0 ? n : 1_500;
 })();
 const DICA_5MIN_MS = (() => {
   const n = Number(process.env.NEXT_PUBLIC_CP_DICA_5MIN_MS);
@@ -269,25 +307,29 @@ const DICA_50MIN_MS = (() => {
 })();
 const DICA_VISIVEL_MS = (() => {
   const n = Number(process.env.NEXT_PUBLIC_CP_DICA_VISIVEL_MS);
-  return Number.isFinite(n) && n > 0 ? n : 10_000;
+  return Number.isFinite(n) && n > 0 ? n : 15_000;
 })();
 /**
  * Quanto tempo a dica de TROCA fica na tela antes de sumir sozinha, em ms
- * (default 45 s — pedido do dono, 04/10/2026).
+ * (default 15 s — pedido do dono, 04/10/2026).
  *
- * Diferente dos outros dois balões, este é um controle de verdade: abrir o
- * menu para tirar o pássaro ou somar companheiros. Os 10 s dos avisos eram
- * curtos demais para ler e decidir; 45 s cobrem a leitura sem virar ruído
- * permanente. O override por env existe só para o teste Playwright.
+ * O dono uniformizou TODOS os balões em 15 s: leitura rápida e sem virar
+ * ruído permanente. Este é um controle (abre o menu), mas com o mesmo prazo
+ * dos avisos. O override por env existe só para o teste Playwright.
  */
 const DICA_TROCA_VISIVEL_MS = (() => {
   const n = Number(process.env.NEXT_PUBLIC_CP_DICA_TROCA_VISIVEL_MS);
-  return Number.isFinite(n) && n > 0 ? n : 45_000;
+  return Number.isFinite(n) && n > 0 ? n : 15_000;
 })();
 
-/** Os três balões, na ordem dos tempos (1 min, 5 min, 50 min). */
+/**
+ * Os balões TEMPORIZADOS, na ordem dos tempos (1 min, 2 min, 5 min, 50 min).
+ * A dica de página NÃO entra aqui: o gatilho dela é a troca de rota
+ * (`usePathname`), não um relógio — ver o efeito dedicado mais abaixo.
+ */
 const AGENDA_DICAS: AgendaDica[] = [
   { tipo: "troca", chave: CHAVE_DICA_SESSAO, apareceMs: DICA_APARECE_MS },
+  { tipo: "fala", chave: CHAVE_DICA_FALA, apareceMs: DICA_FALA_MS },
   { tipo: "frida", chave: CHAVE_DICA_5MIN, apareceMs: DICA_5MIN_MS },
   { tipo: "alongar", chave: CHAVE_DICA_50MIN, apareceMs: DICA_50MIN_MS },
 ];
@@ -598,6 +640,17 @@ export function CompanheiroFlutuante() {
   // pilha da esquerda sem cobrir o rádio nem o chat.
   const [dicaAtiva, setDicaAtiva] = useState<TipoDica | null>(null);
   const [dicaBase, setDicaBase] = useState<number | null>(null);
+  /**
+   * Texto sorteado do balão "fala" (o pet ativo fala). Guardado em estado —
+   * não no ref — porque o JSX precisa do valor para renderizar. Só existe
+   * enquanto `dicaAtiva === "fala"`.
+   */
+  const [dicaFala, setDicaFala] = useState<string | null>(null);
+  /**
+   * Dica educativa casada com a rota atual. Só existe enquanto
+   * `dicaAtiva === "pagina"`.
+   */
+  const [dicaPagina, setDicaPagina] = useState<DicaPagina | null>(null);
   const dicaRef = useRef<HTMLButtonElement | null>(null);
   // Espelho da dica ativa em ref: o agendador lê aqui sem depender do estado
   // (o `setTimeout` fecharia sobre um valor velho de `dicaAtiva`).
@@ -645,6 +698,12 @@ export function CompanheiroFlutuante() {
         // Sem storage: segue e mostra.
       }
       if (visto) return;
+      // Sem bicho na tela não há fala: adia sem gastar a marca da sessão,
+      // porque o leitor pode voltar a marcar um pet e merecer a fala depois.
+      if (d.tipo === "fala" && petsRef.current.length === 0) {
+        timers.push(window.setTimeout(() => tentar(d), 3000));
+        return;
+      }
       const chatAberto =
         document.querySelector('[aria-label="Abrir assistente Seu Nonô"]') === null;
       if (chatAberto || dicaAtivaRef.current !== null) {
@@ -656,8 +715,16 @@ export function CompanheiroFlutuante() {
       } catch {
         // Sem storage: a dica ainda aparece nesta visita.
       }
+      // Sorteia a fala do PET ATIVO no instante do gatilho — o mesmo `pets[0]`
+      // que o JSX usa para mostrar a arte; assim bicho e fala nunca divergem.
+      const fala =
+        d.tipo === "fala"
+          ? escolherFala(petsRef.current[0] ? petsRef.current[0].slug : "")
+          : null;
       dicaAtivaRef.current = d.tipo;
       setDicaBase(calcularBaseDica());
+      setDicaPagina(null);
+      setDicaFala(fala);
       setDicaAtiva(d.tipo);
     };
 
@@ -678,9 +745,69 @@ export function CompanheiroFlutuante() {
     const esconder = window.setTimeout(() => {
       dicaAtivaRef.current = null;
       setDicaAtiva(null);
+      // Limpa o conteúdo dos balões de fala e de página junto com o tipo:
+      // sem isso, o próximo balão reabriria com texto do anterior no primeiro
+      // quadro (o estado do texto é separado do tipo).
+      setDicaFala(null);
+      setDicaPagina(null);
     }, duracao);
     return () => window.clearTimeout(esconder);
   }, [dicaAtiva]);
+
+  /**
+   * Dica EDUCATIVA da página (balão "pagina"). Diferente dos outros quatro,
+   * o gatilho é a ROTA, não o relógio: a cada troca de `pathname`, procuramos
+   * uma dica cujo prefixo case. Só mostra se:
+   *   - a rota ainda não teve a dica vista NESTA sessão (`sessionStorage` por
+   *     prefixo, para não repetir nem em navegação de ida e volta);
+   *   - nenhum outro balão está aberto e o chat do Seu Nonô está fechado (a
+   *     mesma regra de "um por vez" do agendador temporal — por isso lê
+   *     `dicaAtivaRef` e adia com `setTimeout` em vez de furar a fila).
+   * O atraso inicial (curto) evita disputar o primeiro paint da página.
+   *
+   * Se o storage estiver bloqueado (aba anônima), mostra mesmo assim: o pior
+   * caso é repetir, nunca omitir — mesma escolha do agendador temporal.
+   */
+  useEffect(() => {
+    if (!pathname) return;
+    const dica = dicaParaRota(pathname);
+    if (!dica) return;
+    const chave = `${CHAVE_DICA_PAGINA}${dica.prefixo}`;
+    const controle = { cancelado: false, timer: 0 };
+
+    const tentar = () => {
+      if (controle.cancelado) return;
+      let visto = false;
+      try {
+        visto = window.sessionStorage.getItem(chave) === "1";
+      } catch {
+        // Sem storage: segue e mostra.
+      }
+      if (visto) return;
+      const chatAberto =
+        document.querySelector('[aria-label="Abrir assistente Seu Nonô"]') === null;
+      if (chatAberto || dicaAtivaRef.current !== null) {
+        controle.timer = window.setTimeout(tentar, 3000);
+        return;
+      }
+      try {
+        window.sessionStorage.setItem(chave, "1");
+      } catch {
+        // Sem storage: a dica ainda aparece nesta visita.
+      }
+      dicaAtivaRef.current = "pagina";
+      setDicaBase(calcularBaseDica());
+      setDicaFala(null);
+      setDicaPagina(dica);
+      setDicaAtiva("pagina");
+    };
+
+    controle.timer = window.setTimeout(tentar, DICA_PAGINA_ATRASO_MS);
+    return () => {
+      controle.cancelado = true;
+      window.clearTimeout(controle.timer);
+    };
+  }, [pathname, calcularBaseDica]);
 
   /**
    * Clique no balão de troca (1 min): fecha a dica e abre o menu de troca
@@ -1206,10 +1333,10 @@ export function CompanheiroFlutuante() {
           data-nao-plataforma
           aria-label="Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui"
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
-          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),16rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg transition-colors hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),13rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm transition-colors hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          {pets[0] ? <PetIcone pet={pets[0]} altura={20} /> : null}
-          <span className="text-sm font-medium leading-snug text-text">
+          {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+          <span className="text-xs font-medium leading-snug text-text">
             Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui
           </span>
         </button>
@@ -1222,10 +1349,10 @@ export function CompanheiroFlutuante() {
           role="status"
           aria-live="polite"
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
-          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),18rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg"
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),14rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
         >
-          <PetIcone pet={PET_INICIAL} altura={20} />
-          <span className="text-sm font-medium leading-snug text-text">
+          <PetIcone pet={PET_INICIAL} altura={16} />
+          <span className="text-xs font-medium leading-snug text-text">
             {TEXTO_DICA_FRIDA}
           </span>
         </div>
@@ -1238,12 +1365,66 @@ export function CompanheiroFlutuante() {
           role="status"
           aria-live="polite"
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
-          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),18rem)] items-start gap-2 rounded-2xl border border-border bg-surface p-4 text-left shadow-lg"
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),14rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
         >
-          {pets[0] ? <PetIcone pet={pets[0]} altura={20} /> : null}
-          <span className="text-sm font-medium leading-snug text-text">
+          {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+          <span className="text-xs font-medium leading-snug text-text">
             {TEXTO_DICA_ALONGAR}
           </span>
+        </div>
+      )}
+
+      {/* Fala aleatória do pet ATIVO (`pets[0]`), sorteada em `lib/companheiro/falas.ts`
+          e mostrada uma vez por sessão. A arte é a do próprio pet que fala. */}
+      {dicaAtiva === "fala" && dicaFala && (
+        <div
+          data-cp-dica-fala=""
+          data-nao-plataforma
+          role="status"
+          aria-live="polite"
+          style={dicaBase !== null ? { bottom: dicaBase } : undefined}
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),14rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
+        >
+          {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+          <span className="text-xs font-medium leading-snug text-text">{dicaFala}</span>
+        </div>
+      )}
+
+      {/* Dica educativa da página (`lib/companheiro/dicas-pagina.ts`), uma vez
+          por sessão e por prefixo de rota. Com `fonte`, o conteúdo é um
+          `next/link` para a página oficial; sem fonte, é aviso simples. O
+          `role="status"`/`aria-live` fica no container para todo balão ser
+          anunciado pelo leitor de tela. */}
+      {dicaAtiva === "pagina" && dicaPagina && (
+        <div
+          data-cp-dica-pagina=""
+          data-nao-plataforma
+          role="status"
+          aria-live="polite"
+          style={dicaBase !== null ? { bottom: dicaBase } : undefined}
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] w-[min(calc(100vw-2rem),16rem)] rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
+        >
+          {dicaPagina.fonte ? (
+            <Link
+              href={dicaPagina.fonte.url}
+              className="flex items-start gap-1.5 rounded-lg text-left hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+              <span className="text-xs font-medium leading-snug text-text">
+                {dicaPagina.texto}{" "}
+                <span className="whitespace-nowrap text-primary underline">
+                  {dicaPagina.fonte.label}
+                </span>
+              </span>
+            </Link>
+          ) : (
+            <div className="flex items-start gap-1.5">
+              {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+              <span className="text-xs font-medium leading-snug text-text">
+                {dicaPagina.texto}
+              </span>
+            </div>
+          )}
         </div>
       )}
 
@@ -1320,7 +1501,7 @@ export function CompanheiroFlutuante() {
                         >
                           {marcado ? "✓" : ""}
                         </span>
-                        <PetIcone pet={p} altura={20} />
+                        <PetIcone pet={p} altura={16} />
                         <span>{p.nome}</span>
                       </span>
                       <span className="truncate text-[0.65rem] font-normal text-text-soft">
