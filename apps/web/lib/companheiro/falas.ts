@@ -64,7 +64,6 @@ export const FALAS: Record<string, string[]> = {
   wangcai: [
     "Au Au!",
     "Fogo nos Racistas - Djonga",
-    "Au au! Já abanei o rabo de alegria.",
     "Amigo é coisa de cachorro.",
   ],
   bolt: ["Corri atrás do carteiro. Ele que começou."],
