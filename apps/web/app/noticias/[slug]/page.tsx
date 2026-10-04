@@ -10,7 +10,6 @@ import {
   Building,
   CheckCircle2,
   Sparkles,
-  ShieldCheck,
 } from "lucide-react";
 import {
   listarNoticiasPortal,
@@ -84,6 +83,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * Renderiza texto com hiperlinks em sintaxe markdown `[rotulo](url)`.
  * Garante que links internos naveguem pelo Next.js e links externos abram em nova aba com rel de segurança.
+ *
+ * Link interno vai em `<Link>`, não em `<a>` (regra do dono 03/10/2026,
+ * AGENTS 5.13): `<a>` cru força reload do documento e desmonta a casca —
+ * o áudio do rádio e o estado do pet morrem no meio da leitura. Medido em
+ * 03/10/2026 no teste Playwright. O `InterceptadorLinks` é a rede de
+ * segurança, mas a regra vale desde a origem.
  */
 function renderTextoComLinks(texto: string) {
   const partes = [];
@@ -100,16 +105,26 @@ function renderTextoComLinks(texto: string) {
     const isExterno = url.startsWith("http");
 
     partes.push(
-      <a
-        key={`${match.index}-${url}`}
-        href={url}
-        target={isExterno ? "_blank" : undefined}
-        rel={isExterno ? "noopener noreferrer" : undefined}
-        className="font-medium text-primary hover:underline underline-offset-2"
-      >
-        {rotulo}
-        {isExterno && <span className="text-xs ml-0.5">↗</span>}
-      </a>
+      isExterno ? (
+        <a
+          key={`${match.index}-${url}`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline underline-offset-2"
+        >
+          {rotulo}
+          <span className="text-xs ml-0.5">↗</span>
+        </a>
+      ) : (
+        <Link
+          key={`${match.index}-${url}`}
+          href={url}
+          className="font-medium text-primary hover:underline underline-offset-2"
+        >
+          {rotulo}
+        </Link>
+      )
     );
     lastIndex = regex.lastIndex;
   }

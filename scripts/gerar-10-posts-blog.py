@@ -407,7 +407,7 @@ POSTS = [
         "paragrafos": [
             "Os municípios de [Araçuaí](/aracuai) e [Itinga](/itinga), no Vale do Jequitinhonha, lideram a mineração de lítio. As jazidas representam 85% das reservas economicamente viáveis conhecidas no Brasil. O mineral é matéria-prima fundamental para fabricação de baterias de veículos elétricos e eletrônicos. Os registros de concessão de lavra foram validados na [Agência Nacional de Mineração (ANM)](https://www.gov.br/anm/pt-br).",
             "Em Goiás, o município de Minaçu recebeu R$ 1,5 bilhão em terras raras. A mineradora [Serra Verde](https://www.serraverde.com) opera o projeto com apoio financeiro de fundos dos Estados Unidos. O [Ministério de Minas e Energia](https://www.gov.br/mme/pt-br) determinou exigências rígidas de refino e processamento químico local. A norma veda a exportação exclusiva de minério bruto sem agregação de valor.",
-            "O observatório socioambiental fiscaliza o cumprimento das normas de sustentabilidade e proteção dos recursos hídricos. Acompanhe os indicadores das cidades produtoras na área de [Função Social da Terra](/terras)."
+            "O observatório socioambiental fiscaliza o cumprimento das normas de sustentabilidade e proteção dos recursos hídricos. Acompanhe os indicadores das cidades produtoras na área de [Função Social da Terra](/aracuai/terras)."
         ]
     },
 
