@@ -14,6 +14,7 @@
  *   /offline — casco offline, sem conteudo proprio
  *   /notificacoes — redirect para /alertas
  *   /assistente-ia-lab — laboratorio interno, nao publicado
+ *   /status — pagina de servico, noindex
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token

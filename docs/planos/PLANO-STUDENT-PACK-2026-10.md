@@ -75,6 +75,21 @@ commit `2f6a6ba3`; esta rodada o liga de verdade.
 **Simple Analytics.** Script + pixel `noscript` no `app/layout.tsx`. Sem chave:
 o domínio identifica a conta. Sem cookie, sem fingerprint, respeita DNT.
 
+**Status page no GitHub Pages (04/10/2026).** A rota `/status` mostra, ao vivo,
+se o portal está no ar — a medição roda no navegador de quem abre, para a página
+continuar útil quando o portal cai. Arquivos:
+
+- `apps/web/app/status/page.tsx` — casca estática (`force-static`), `noindex`,
+  fora do sitemap.
+- `apps/web/app/status/StatusAoVivo.tsx` — checagem no navegador, duas
+  tentativas por alvo (leitura normal quando é o mesmo domínio; requisição
+  opaca quando é outro, caso do Pages).
+
+A cópia independente sai no export estático que o workflow "Publicar no GitHub
+Pages" já publica — em `finweejur.github.io/controle-popular/status/`. Ela
+sobrevive à queda da Guara porque é outro provedor. Limitação honesta: essa
+cópia só existe depois que alguém roda aquele workflow (é manual e pesado).
+
 ## Como ligar/desligar o New Relic
 
 1. Criar a conta no painel do New Relic e copiar a **license key**.
@@ -103,8 +118,10 @@ válida. Anotar no calendário e **revalidar antes de vencer**:
   `next.config.ts` do checkout principal tinha alteração não commitada de outra
   sessão; o ajuste foi feito num worktree limpo a partir do `origin/main`
   (§5.4), sem tocar no trabalho alheio.
-- **Termius, GitHub Pages e Azure:** adoção fora do código (conta/host), ainda
-  não executada.
+- ✅ **Status page (04/10/2026):** rota `/status` feita. Falta a decisão de
+  rodar o workflow "Publicar no GitHub Pages" (manual e pesado) para existir a
+  cópia independente; até lá, `/status` funciona só dentro do portal.
+- **Termius e Azure:** adoção fora do código (conta/host), ainda não executada.
 - **Re-scan de segurança** após o deploy (ver `PLANO-SEGURANCA-TRIVY-2026-10.md`).
 
 ## Régua

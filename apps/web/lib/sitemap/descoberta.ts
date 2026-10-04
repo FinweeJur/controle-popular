@@ -48,6 +48,9 @@ export const EXCLUIR: Record<string, string> = {
   // Laboratorio do pipeline RAG. O proprio cabecalho do arquivo diz que
   // "nao e uma rota publicada do portal".
   "/assistente-ia-lab": "laboratorio interno, nao publicado",
+  // Painel de status do portal (oferta GitHub Pages). E pagina de SERVICO,
+  // marcada `noindex` no proprio metadata — nao e conteudo para o buscador.
+  "/status": "pagina de servico, noindex",
 };
 
 /**
