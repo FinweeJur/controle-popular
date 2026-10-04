@@ -200,8 +200,34 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: CVD_NO_FLASH_SCRIPT }}
         />
+        {/* Simple Analytics — analytics sem cookie, sem fingerprint e sem
+            dado pessoal; respeita Do-Not-Track. Oferta do GitHub Student
+            Pack; preenche a lacuna de analytics do portal (hoje so ha a
+            contagem de page_views no D1, sem leitura de trafego).
+            `afterInteractive` para nao competir com o conteudo critico.
+            ⚠️ O CSP do portal ainda e Report-Only: ao promove-lo a
+            bloqueante, liberar scripts.simpleanalyticscdn.com (script) e
+            queue.simpleanalyticscdn.com (pixel). Ver
+            docs/planos/PLANO-STUDENT-PACK-2026-10.md. */}
+        <Script
+          id="simple-analytics"
+          strategy="afterInteractive"
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+        />
       </head>
       <body className="flex min-h-full flex-col antialiased">
+        {/* Pixel do Simple Analytics para quem navega com JavaScript
+            desligado. `alt=""` porque e decorativo; `no-referrer` para nao
+            mandar a URL de origem. */}
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element -- pixel de
+              rastreio 1x1 dentro de <noscript>; next/image depende de JS. */}
+          <img
+            src="https://queue.simpleanalyticscdn.com/noscript.gif"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="pequi"

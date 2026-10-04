@@ -140,6 +140,7 @@ memória e não depende de pgvector — ver
 | C3 | Informar `AJRI_COOKIE` (fases 2 e 3 do PDFs da AJRI) | valor expira |
 | C4 | ~~Abrir conta no Gitee e espelhar o código~~ | ✅ feito no GitLab (29/09), `OPERACAO.md` § 2 |
 | C5 | Aceitar convite do GitBook | espelho de docs |
+| C6 | Criar conta New Relic e definir `NEW_RELIC_LICENSE_KEY` no Guara (runtime, **sem** `-b`) | habilita o APM; sem a chave o portal sobe normal e sem rastreio — ver [PLANO-STUDENT-PACK](../planos/PLANO-STUDENT-PACK-2026-10.md) |
 
 ### Bloco D — destrava com a Fase 4
 

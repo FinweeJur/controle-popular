@@ -89,6 +89,15 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # container ser morto pelo OOM. Se subir para o Pro (512 MB), suba para ~448.
 ENV NODE_OPTIONS="--max-old-space-size=192"
 
+# APM New Relic (oferta do GitHub Student Pack). O agente so carrega quando
+# NEW_RELIC_LICENSE_KEY existe no runtime — variavel do painel do Guara, SEM a
+# flag `-b` (agente e de runtime, nao de build). Sem a chave, o portal sobe
+# normal e sem APM: e o desligador, sem redeploy.
+# ⚠️ MEMORIA: o agente soma memoria ao container (teto de 256 MB do Starter,
+# heap capado em 192). Medir `guara logs` apos ligar; se houver OOM/crash_loop,
+# basta remover a chave no painel — desliga na hora. Ver newrelic.cjs.
+ENV NEW_RELIC_CONFIG_FILENAME=/app/apps/web/newrelic.cjs
+
 # ⚠️ OBRIGATÓRIO: definir DATABASE_URL no dashboard do Guara Cloud — em runtime
 # E marcada como "Build" (a flag --build do `guara env set`). Em runtime,
 # getDb() retorna null sem ela e as rotas dinâmicas que leem o banco respondem
@@ -110,6 +119,11 @@ RUN mkdir -p /app/apps/web/.next && \
 # Copia build standalone e assets estáticos
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+
+# Config do agente APM. NAO entra no standalone pelo `@vercel/nft` (e lida em
+# runtime pelo pacote `newrelic`, nao importada pelo codigo), entao precisa
+# desta copia explicita. Apontada por NEW_RELIC_CONFIG_FILENAME acima.
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/newrelic.cjs ./apps/web/newrelic.cjs
 
 USER nextjs
 
