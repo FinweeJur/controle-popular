@@ -34,7 +34,7 @@ export interface NoticiaPortal {
   subtitulo: string;
   resumo: string;
   categoria: "Relatório Técnico" | "Investigação Cívica" | "Explicador" | "Divulgação Científica";
-  frente: "terra" | "estado" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "cidades";
+  frente: "terra" | "estado" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "cidades" | "direitos" | "geral";
   subfrente: string;
   autor: string;
   declaracaoIa: string;

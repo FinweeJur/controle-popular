@@ -36,6 +36,8 @@ const FRENTES_NOMES: Record<string, string> = {
   ambiental: "Meio Ambiente & ONSA",
   paraopeba: "Paraopeba & Brumadinho",
   cidades: "Cidades Monitoradas",
+  direitos: "Direitos em Movimento",
+  geral: "Ferramentas & Acervo",
 };
 
 const PERIODOS: { valor: string; rotulo: string; dias: number | null }[] = [
