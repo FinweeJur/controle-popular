@@ -134,9 +134,12 @@ const extensoesDoPainel = painelLocalLigado ? ["local.tsx", "local.ts"] : [];
  * `X-Frame-Options: SAMEORIGIN` abaixo fica como reforço pra navegador que
  * ainda não lê `frame-ancestors`.
  *
- * `connect-src 'self'`: toda chamada `fetch()` client-side no app
- * (busca, chat, classificados, admin, ofício) é pra rota relativa do próprio
- * domínio — conferido, não tem `fetch()` client-side pra host de fora.
+ * `connect-src 'self'` (com UMA exceção de terceiro): toda chamada `fetch()`
+ * client-side do app (busca, chat, classificados, admin, ofício) é pra rota
+ * relativa do próprio domínio — conferido. A exceção é
+ * `queue.simpleanalyticscdn.com`: é para lá que o SCRIPT do Simple Analytics
+ * (carregado no layout raiz) envia o evento. Não é `fetch()` nosso; é o
+ * script de terceiro que o contêiner de `connect-src` também governa.
  *
  * Nada de `unsafe-eval`: nem o bundle do Next nem o Three.js vendorizado
  * usam `eval`/`new Function` (conferido no vendor de `public/terras/globo`).
@@ -147,7 +150,11 @@ const CSP_REPORT_ONLY = [
   // `blob:` entram para a transcrição LOCAL de rádio: a bolha carrega o
   // `transformers.js` (WebAssembly) e o Whisper roda no navegador, sem API.
   // A importação vem de `cdn.jsdelivr.net` (origem de script, não de dados).
-  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net",
+  // `scripts.simpleanalyticscdn.com` e o Simple Analytics (oferta do GitHub
+  // Student Pack): o script e servido pelo CDN deles. Ele nao usa cookie,
+  // respeita Do-Not-Track e nao faz fingerprint. Sem esta origem, o script
+  // seria bloqueado no dia em que o CSP deixar de ser Report-Only.
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://scripts.simpleanalyticscdn.com",
   "worker-src 'self' blob:",
   // ⟲ `api.fontshare.com` entrou depois: a revisao abriu o mapa com o console
   // e viu violacao de style-src A CADA CARREGAMENTO, vinda de
@@ -170,7 +177,7 @@ const CSP_REPORT_ONLY = [
   "media-src 'self' https:",
   // `data`/`blob` não entram aqui. `huggingface.co` e o CDN sustêm o download
   // do modelo Whisper da transcrição local — o áudio NÃO sai do aparelho.
-  "connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co https://cloudflareinsights.com https://static.cloudflareinsights.com",
+  "connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co https://cloudflareinsights.com https://static.cloudflareinsights.com https://queue.simpleanalyticscdn.com",
   "frame-src 'self'",
   "frame-ancestors 'self'",
   "object-src 'none'",

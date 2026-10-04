@@ -97,11 +97,12 @@ válida. Anotar no calendário e **revalidar antes de vencer**:
 
 ## Pendências
 
-- **CSP:** liberar `scripts.simpleanalyticscdn.com` (script) e
-  `queue.simpleanalyticscdn.com` (pixel) no CSP quando ele sair de
-  Report-Only. O CSP vive em `apps/web/next.config.ts` — na data desta medição
-  o arquivo tinha alteração não commitada de outra sessão; o ajuste entra
-  junto, para não misturar trabalho (§5.4).
+- ✅ **CSP resolvido (04/10/2026):** `scripts.simpleanalyticscdn.com` entrou em
+  `script-src` e `queue.simpleanalyticscdn.com` em `connect-src` (o pixel
+  `noscript` já era coberto por `img-src 'self' data: https:`). O
+  `next.config.ts` do checkout principal tinha alteração não commitada de outra
+  sessão; o ajuste foi feito num worktree limpo a partir do `origin/main`
+  (§5.4), sem tocar no trabalho alheio.
 - **Termius, GitHub Pages e Azure:** adoção fora do código (conta/host), ainda
   não executada.
 - **Re-scan de segurança** após o deploy (ver `PLANO-SEGURANCA-TRIVY-2026-10.md`).
