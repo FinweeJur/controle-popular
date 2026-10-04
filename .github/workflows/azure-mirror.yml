@@ -85,6 +85,22 @@ jobs:
               --registry-username "$USUARIO" --registry-password "$SENHA" \
               -o none
           fi
+          # New Relic (APM). So liga se a chave existir como secret do repo.
+          # Fica guardada como SEGREDO do Container App e referenciada por
+          # `secretref:` — nao vai em texto claro na configuracao do app. O
+          # nome separado ("Azure") distingue este host do Guara no painel.
+          if [ -n "${{ secrets.NEW_RELIC_LICENSE_KEY }}" ]; then
+            echo "Ligando New Relic no espelho"
+            az containerapp secret set -g "$GRUPO" -n "$APP" \
+              --secrets "newrelic-key=${{ secrets.NEW_RELIC_LICENSE_KEY }}" -o none
+            az containerapp update -g "$GRUPO" -n "$APP" \
+              --set-env-vars \
+                "NEW_RELIC_LICENSE_KEY=secretref:newrelic-key" \
+                "NEW_RELIC_APP_NAME=Controle Popular (Azure)" \
+              -o none
+          else
+            echo "NEW_RELIC_LICENSE_KEY ausente nos secrets — APM fica desligado."
+          fi
           FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
             --query properties.configuration.ingress.fqdn -o tsv)
           echo "Espelho no ar em: https://$FQDN"
