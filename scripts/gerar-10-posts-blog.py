@@ -22,7 +22,7 @@ POSTS = [
     # ─── POST 1: FORNECEDORES MULTINACIONAIS ───
     {
         "slug": "fornecedores-multinacionais-brasil-ti-infraestrutura",
-        "titulo": "Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil",
+        "titulo": "Contratos públicos com multinacionais de tecnologia e infraestrutura somam bilhões no Brasil",
         "subtitulo": "Erário contrata gigantes dos Estados Unidos, Europa e Ásia para serviços essenciais do Estado.",
         "resumo": "Levantamento revela contratos bilionários da administração pública com multinacionais de tecnologia e transporte. Dados apontam dependência de softwares estrangeiros e infraestrutura crítica.",
         "categoria": "Investigação Cívica",
@@ -40,8 +40,8 @@ POSTS = [
             "comprasnet",
             "transparencia-publica"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026fornecedoresmultinacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/fornecedores-multinacionais-brasil-ti-infraestrutura}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Contratos públicos com multinacionais de tecnologia e infraestrutura somam bilhões no Brasil. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026fornecedoresmultinacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Contratos públicos com multinacionais de tecnologia e infraestrutura somam bilhões no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/fornecedores-multinacionais-brasil-ti-infraestrutura}\n}",
         "fontesOficiais": [
             {
                 "nome": "Portal de Compras do Governo Federal (Compras.gov.br)",
@@ -73,7 +73,7 @@ POSTS = [
     # ─── POST 2: PREÇO DA GASOLINA NAS CAPITAIS E CIDADES ───
     {
         "slug": "preco-gasolina-capitais-cidades-estrategicas-anp",
-        "titulo": "Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais",
+        "titulo": "Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais",
         "subtitulo": "Rio Branco e Porto Velho registram combustíveis mais caros, enquanto São Paulo tem menor média.",
         "resumo": "Levantamento semanal da ANP revela disparidade acentuada nos preços da gasolina pelo país. Custo do transporte e alíquotas estaduais explicam diferenças de até 30% nos postos.",
         "categoria": "Explicador",
@@ -91,8 +91,8 @@ POSTS = [
             "inflacao",
             "transporte"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026precogasolina,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/preco-gasolina-capitais-cidades-estrategicas-anp}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026precogasolina,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/preco-gasolina-capitais-cidades-estrategicas-anp}\n}",
         "fontesOficiais": [
             {
                 "nome": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP)",
@@ -120,7 +120,7 @@ POSTS = [
     # ─── POST 3: INVESTIMENTOS CHINESES EM ENERGIA E MOBILIDADE ───
     {
         "slug": "investimentos-chineses-transmissao-mobilidade-eletrica",
-        "titulo": "Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil",
+        "titulo": "Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil",
         "subtitulo": "State Grid e BYD consolidam presença com leilões históricos e fábricas no Nordeste e Sudeste.",
         "resumo": "Empresas da China expandem atuação no setor elétrico e no transporte público brasileiro. Investimentos da State Grid e BYD ultrapassam quarenta bilhões de reais.",
         "categoria": "Investigação Cívica",
@@ -138,8 +138,8 @@ POSTS = [
             "aneel",
             "energia-limpa"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026investimentoschineses,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/investimentos-chineses-transmissao-mobilidade-eletrica}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026investimentoschineses,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/investimentos-chineses-transmissao-mobilidade-eletrica}\n}",
         "fontesOficiais": [
             {
                 "nome": "Agência Nacional de Energia Elétrica (ANEEL - Leilões)",
@@ -171,7 +171,7 @@ POSTS = [
     # ─── POST 4: GASTOS E SALÁRIOS DAS ASSEMBLEIAS LEGISLATIVAS ───
     {
         "slug": "gastos-salarios-parlamentares-assembleias-estaduais",
-        "titulo": "Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias",
+        "titulo": "Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias",
         "subtitulo": "ALMG e Alesp reúnem centenas de deputados com benefícios mensais acima do teto constitucional.",
         "resumo": "Mapeamento inédito consolida gastos dos legislativos estaduais em Minas Gerais e São Paulo. Cada deputado dispõe de dezenas de assessores e recursos para despesas de mandato.",
         "categoria": "Investigação Cívica",
@@ -189,8 +189,8 @@ POSTS = [
             "gastos-parlamentares",
             "transparencia"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026assembleiasestaduais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/gastos-salarios-parlamentares-assembleias-estaduais}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026assembleiasestaduais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/gastos-salarios-parlamentares-assembleias-estaduais}\n}",
         "fontesOficiais": [
             {
                 "nome": "Assembleia Legislativa do Estado de Minas Gerais (ALMG - Prestação de Contas)",
@@ -218,7 +218,7 @@ POSTS = [
     # ─── POST 5: MONITORAMENTO DE BARRAGENS E ÁREAS DE RISCO ───
     {
         "slug": "monitoramento-barragens-sigbm-risco-minas-gerais",
-        "titulo": "Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM",
+        "titulo": "Minas Gerais concentra 38 barragens em nível de emergência segundo dados da ANM",
         "subtitulo": "Estruturas de rejeitos mantêm comunidades sob monitoramento e exigem descaracterização urgente.",
         "resumo": "Inventário do SIGBM mapeia 455 barragens de mineração em território mineiro. Três estruturas permanecem em nível máximo de alerta com risco de colapso.",
         "categoria": "Relatório Técnico",
@@ -236,8 +236,8 @@ POSTS = [
             "brumadinho",
             "seguranca-ambiental"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026monitoramentobarragens,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/monitoramento-barragens-sigbm-risco-minas-gerais}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Minas Gerais concentra 38 barragens em nível de emergência segundo dados da ANM. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026monitoramentobarragens,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Minas Gerais concentra 38 barragens em nível de emergência segundo dados da ANM},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/monitoramento-barragens-sigbm-risco-minas-gerais}\n}",
         "fontesOficiais": [
             {
                 "nome": "Sistema Integrado de Gestão de Segurança de Barragens de Mineração (SIGBM/ANM)",
@@ -269,7 +269,7 @@ POSTS = [
     # ─── POST 6: DESERTOS DIGITAIS E COBERTURA CELULAR ───
     {
         "slug": "cobertura-celular-anatel-desertos-digitais-brasil",
-        "titulo": "Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País",
+        "titulo": "Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país",
         "subtitulo": "Desertos digitais isolam populações no interior do Norte e Nordeste da rede 4G e 5G.",
         "resumo": "Mapeamento das antenas de telefonia móvel revela exclusão digital em centenas de municípios. Populações rurais enfrentam barreiras de acesso a serviços públicos e bancos digitais.",
         "categoria": "Explicador",
@@ -287,8 +287,8 @@ POSTS = [
             "fust",
             "conectividade"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026coberturacelular,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/cobertura-celular-anatel-desertos-digitais-brasil}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026coberturacelular,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/cobertura-celular-anatel-desertos-digitais-brasil}\n}",
         "fontesOficiais": [
             {
                 "nome": "Agência Nacional de Telecomunicações (Anatel - Dados Abertos)",
@@ -316,7 +316,7 @@ POSTS = [
     # ─── POST 7: ACORDOS INTERNACIONAIS NOS 7 SETORES ───
     {
         "slug": "acordos-internacionais-sete-setores-estrategicos",
-        "titulo": "Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos",
+        "titulo": "Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos",
         "subtitulo": "Mapeamento reúne acordos com Estados Unidos, Europa e China em transição verde e infraestrutura.",
         "resumo": "Novo painel cívico acompanha negociações bilaterais em mineração, hidrogênio verde, ferrovias e tecnologia. Aportes previstos ultrapassam duzentos bilhões de reais.",
         "categoria": "Relatório Técnico",
@@ -334,8 +334,8 @@ POSTS = [
             "bndes",
             "ppi"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026acordosinternacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/acordos-internacionais-sete-setores-estrategicos}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026acordosinternacionais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/acordos-internacionais-sete-setores-estrategicos}\n}",
         "fontesOficiais": [
             {
                 "nome": "Hub de Projetos do BNDES",
@@ -367,7 +367,7 @@ POSTS = [
     # ─── POST 8: MINERAIS CRÍTICOS E LÍTIO NO VALE DO JEQUITINHONHA ───
     {
         "slug": "minerais-criticos-litio-jequitinhonha-soberania",
-        "titulo": "Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional",
+        "titulo": "Vale do Jequitinhonha atrai corrida global pelo lítio com exigência de refino nacional",
         "subtitulo": "Minas Gerais concentra 85% das reservas brasileiras do mineral essencial para baterias elétricas.",
         "resumo": "Exploração de lítio e terras raras atrai investimentos estrangeiros para municípios do semiárido mineiro. Nova regulação prioriza industrialização local e veta barragens a montante.",
         "categoria": "Divulgação Científica",
@@ -385,8 +385,8 @@ POSTS = [
             "aracuai",
             "atinga"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026litiovalejequitinhonha,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/minerais-criticos-litio-jequitinhonha-soberania}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Vale do Jequitinhonha atrai corrida global pelo lítio com exigência de refino nacional. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026litiovalejequitinhonha,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Vale do Jequitinhonha atrai corrida global pelo lítio com exigência de refino nacional},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/minerais-criticos-litio-jequitinhonha-soberania}\n}",
         "fontesOficiais": [
             {
                 "nome": "Ministério de Minas e Energia (MME - Minerais Estratégicos)",
@@ -414,7 +414,7 @@ POSTS = [
     # ─── POST 9: INDICADORES ECONÔMICOS E CRÉDITO BANCÁRIO ───
     {
         "slug": "indicadores-economicos-banco-central-credito-inflacao",
-        "titulo": "Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano",
+        "titulo": "Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano",
         "subtitulo": "Séries temporais do BCB mostram impacto da Selic sobre juros ao consumidor e dívida pública.",
         "resumo": "Atualização das séries econômicas do Banco Central reúne taxas de juros, inflação e endividamento. Crédito rotativo permanece elevado enquanto dívida líquida atinge 61% do PIB.",
         "categoria": "Relatório Técnico",
@@ -432,8 +432,8 @@ POSTS = [
             "ipca",
             "cheque-especial"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026indicadoreseconomicos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/indicadores-economicos-banco-central-credito-inflacao}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026indicadoreseconomicos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/indicadores-economicos-banco-central-credito-inflacao}\n}",
         "fontesOficiais": [
             {
                 "nome": "Banco Central do Brasil (SGS - Sistema Gerenciador de Séries Temporais)",
@@ -461,7 +461,7 @@ POSTS = [
     # ─── POST 10: SATÉLITE CBERS-6 E COOPERAÇÃO ESPACIAL ───
     {
         "slug": "satelite-cbers-6-cooperacao-espacial-amazonia",
-        "titulo": "Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas",
+        "titulo": "Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas",
         "subtitulo": "Cooperação com a China investe US$ 51 milhões em radar SAR para flagrar desmatamento noturno.",
         "resumo": "Brasil e China aprovam cronograma de desenvolvimento do satélite ambiental CBERS-6. Novo sensor de radar óptico superará limitações climáticas na fiscalização florestal.",
         "categoria": "Divulgação Científica",
@@ -479,8 +479,8 @@ POSTS = [
             "desmatamento",
             "cooperacao-espacial"
         ],
-        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas. Controle Popular, Brasília, set. 2026.",
-        "citacaoBibtex": "@article{onsa2026satelitecbers6,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/satelite-cbers-6-cooperacao-espacial-amazonia}\n}",
+        "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas. Controle Popular, Brasília, set. 2026.",
+        "citacaoBibtex": "@article{onsa2026satelitecbers6,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/satelite-cbers-6-cooperacao-espacial-amazonia}\n}",
         "fontesOficiais": [
             {
                 "nome": "Instituto Nacional de Pesquisas Espaciais (INPE - Programa CBERS)",
