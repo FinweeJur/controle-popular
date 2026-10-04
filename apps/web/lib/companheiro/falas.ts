@@ -62,6 +62,8 @@ export const FALAS: Record<string, string[]> = {
   "bubu-3": ["Miau. Cadê meu petisco?"],
   chompers: ["Nom nom nom. Você trouxe comida?"],
   wangcai: [
+    "Au Au!",
+    "Fogo nos Racistas - Djonga",
     "Au au! Já abanei o rabo de alegria.",
     "Amigo é coisa de cachorro.",
   ],
