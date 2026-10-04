@@ -283,6 +283,25 @@ const nextConfig: NextConfig = {
    * dependências do `pg@8.23.0`, 13 pacotes, todos no `node_modules` da
    * raiz do monorepo). Tire uma linha daqui e o standalone volta a quebrar
    * do mesmo jeito — a falha não aparece no build, só no container.
+   *
+   * ═══ O `drizzle-orm/node-postgres` TAMBÉM VEM POR `createRequire` ═══
+   *
+   * `lib/db/client.ts` carrega `drizzle-orm/node-postgres` pelo mesmo
+   * `createRequire` do `pg` (é o driver TCP). O `@vercel/nft` só segue os
+   * subcaminhos importados ESTATICAMENTE — o app usa `drizzle-orm/neon-http`
+   * e `drizzle-orm/pg-core` no topo dos arquivos —, então a pasta
+   * `node_modules/drizzle-orm/node-postgres/` ficava fora do standalone.
+   * Medido em 04/10/2026: o log do container mostrou
+   * `Cannot find module 'drizzle-orm/node-postgres'`, o banco primário
+   * (Postgres do Guara) morria em TODA consulta e o fallback da Neon
+   * veio vazio — `/ambiental/licenciamento` no ar com **0 linhas**.
+   *
+   * O pacote é autossuficiente: não declara `dependencies`, e o único
+   * `require` externo da cadeia alcançada por `node-postgres` é o próprio
+   * `pg` (já copiado acima; os demais, como `@neondatabase/serverless` e
+   * `mysql2`, só aparecem em dialetos que não são carregados). Por isso
+   * aqui basta COPIAR a pasta — não entra em `serverExternalPackages`, que
+   * mudaria o bundle de todo o app sem necessidade.
    */
   ...(standaloneBuild
     ? {
@@ -302,6 +321,7 @@ const nextConfig: NextConfig = {
             "../../node_modules/postgres-interval/**/*",
             "../../node_modules/split2/**/*",
             "../../node_modules/xtend/**/*",
+            "../../node_modules/drizzle-orm/**/*",
           ],
         },
       }

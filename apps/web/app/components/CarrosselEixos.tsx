@@ -1,8 +1,26 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+
+/**
+ * Um chip de "base monitorada" do cartão de eixo — e o destino dele.
+ *
+ * Cada rótulo é a MENÇÃO de uma página real do portal (licenciamento,
+ * barragens, orçamento...). Antes viravam `<span>` morto: o leitor lia
+ * "942 Barragens SIGBM" sem conseguir abrir a base. Agora cada chip é um
+ * botão que leva direto à página que sustenta o número (pedido do dono,
+ * 04/10/2026). Só entra aqui rota que EXISTE — link para rota inexistente
+ * é 404 no ar, como aconteceu com `/ambiental/contratos`.
+ */
+export interface DestaqueEixo {
+  /** Texto do chip, exatamente como aparece no cartão. */
+  rotulo: string;
+  /** Rota interna já verificada (precisa ter `page.tsx`). */
+  href: string;
+}
 
 export interface EixoAsset {
   src: string;
@@ -13,7 +31,7 @@ export interface EixoAsset {
   corVar: string;
   corBg: string;
   legenda: string;
-  destaques: string[];
+  destaques: DestaqueEixo[];
 }
 
 export const DEFAULT_EIXOS: EixoAsset[] = [
@@ -27,7 +45,13 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
     corBg: 'rgba(192, 57, 43, 0.1)',
     legenda:
       'Reúne dados de saúde pública (capacidade SUS e estabelecimentos CNES), educação básica (censo escolar e IDEB), emprego formal (admissões CAGED e estoque RAIS), déficit habitacional, segurança alimentar e canais populares de denúncia e assistência jurídica.',
-    destaques: ['SUS & CNES', 'IDEB & Escolas', 'CAGED & Emprego', 'Canais de Denúncia', 'Moradia & Direitos'],
+    destaques: [
+      { rotulo: 'SUS & CNES', href: '/direitos-em-movimento/saude-publica' },
+      { rotulo: 'IDEB & Escolas', href: '/direitos-em-movimento/educacao' },
+      { rotulo: 'CAGED & Emprego', href: '/direitos-em-movimento/trabalho-e-renda' },
+      { rotulo: 'Canais de Denúncia', href: '/direitos-em-movimento/denuncia' },
+      { rotulo: 'Moradia & Direitos', href: '/direitos-em-movimento/ajuda' },
+    ],
   },
   {
     src: '/capas/terras-arara.webp',
@@ -39,7 +63,13 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
     corBg: 'rgba(27, 99, 72, 0.1)',
     legenda:
       'Reúne dados de 203 cidades estratégicas no radar, licenciamento ambiental do ONSA em 11 estados, 942 barragens de mineração (SIGBM), Cadastro Ambiental Rural (CAR), demarcação de terras indígenas e quilombolas, poligonais minerárias e bacias hidrográficas.',
-    destaques: ['203 Cidades Estratégicas', 'Licenças Ambientais (11 Estados)', '942 Barragens SIGBM', 'CAR & Terras Indígenas', 'Rios & Bacias'],
+    destaques: [
+      { rotulo: '203 Cidades Estratégicas', href: '/terra-e-territorios/cidades' },
+      { rotulo: 'Licenças Ambientais (11 Estados)', href: '/ambiental/licenciamento' },
+      { rotulo: '942 Barragens SIGBM', href: '/ambiental/barragens' },
+      { rotulo: 'CAR & Terras Indígenas', href: '/ambiental/car' },
+      { rotulo: 'Rios & Bacias', href: '/ambiental/nossos-rios' },
+    ],
   },
   {
     src: '/capas/ambiente-rios.webp',
@@ -51,7 +81,13 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
     corBg: 'rgba(30, 58, 138, 0.1)',
     legenda:
       'Reúne dados de contratos e compras públicas (PNCP), execução do orçamento das capitais, composição e aposentadoria de magistrados nos tribunais superiores (STF, STJ, TST, TSE, STM), tramitações no Congresso Nacional e fiscalização de concessões e grandes grupos econômicos.',
-    destaques: ['Contratos PNCP', 'Orçamento das Capitais', 'Tribunais Superiores', 'Congresso Nacional', 'Empresas & Concessões'],
+    destaques: [
+      { rotulo: 'Contratos PNCP', href: '/indicadores' },
+      { rotulo: 'Orçamento das Capitais', href: '/estado-e-economia/orcamento' },
+      { rotulo: 'Tribunais Superiores', href: '/judiciario/instituicoes' },
+      { rotulo: 'Congresso Nacional', href: '/congresso' },
+      { rotulo: 'Empresas & Concessões', href: '/empresas' },
+    ],
   },
 ];
 
@@ -337,13 +373,15 @@ export function CardCarousel({
             </span>
             <div className="flex flex-wrap items-center gap-2">
               {activeEixo.destaques.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 text-xs font-semibold text-foreground border border-border shadow-2xs"
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  title={`Abrir ${item.rotulo}`}
+                  className="group inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 text-xs font-semibold text-foreground border border-border shadow-2xs transition-colors hover:border-primary hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
-                  <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
-                  <span>{item}</span>
-                </span>
+                  <CheckCircle2 className="w-3 h-3 text-primary shrink-0 transition-transform group-hover:scale-110" />
+                  <span className="group-hover:underline">{item.rotulo}</span>
+                </Link>
               ))}
             </div>
           </div>
