@@ -329,6 +329,15 @@ const nextConfig: NextConfig = {
             "../../node_modules/split2/**/*",
             "../../node_modules/xtend/**/*",
             "../../node_modules/drizzle-orm/**/*",
+            // `newrelic` (APM): o pacote carrega arquivos internos de forma
+            // DINAMICA (ex.: `lib/message-broker-description.js`), que o
+            // `@vercel/nft` nao segue. Sem copiar a pasta inteira, o agente
+            // subia pela metade — "Cannot find module
+            // .../newrelic/lib/message-broker-description.js" nos logs e o
+            // portal seguia SEM APM, sem quebrar. Medido 04/10/2026 no espelho
+            // do Azure. O `newrelic` ja e externo por padrao no Next, entao
+            // basta o COPY aqui.
+            "../../node_modules/newrelic/**/*",
           ],
         },
       }
