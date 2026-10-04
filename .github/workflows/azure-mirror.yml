@@ -40,7 +40,12 @@ env:
   ACR: cpwebacr3pdo
   GRUPO: cp-app
   APP: cp-web
-  IMAGEM: cpwebacr3pdo.azurecr.io/cp-web:latest
+  # Tag UNICA por build (SHA do commit). Com tag fixa (`:latest`), o
+  # `az containerapp update --image` ve a MESMA string, nao cria revisao nova
+  # e o container continua na imagem velha — foi o que escondeu o conserto do
+  # New Relic por duas rodadas (medido 04/10/2026). Com SHA, toda rodada sobe
+  # uma imagem distinta e o Container App repuxa.
+  IMAGEM: cpwebacr3pdo.azurecr.io/cp-web:${{ github.sha }}
 
 jobs:
   build-deploy:
