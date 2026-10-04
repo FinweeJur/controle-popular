@@ -408,6 +408,7 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **Sprite sheet: `background-size` é a folha, não a célula** | `PetIcone` usava `background-size` de UMA célula e espremia as 72 células (8×9) num ícone de ~20 px — borrão que parecia código. Medido 03/10/2026. Use `COLUNAS*CELL_W × LINHAS*CELL_H`, como o `CompanheiroFlutuante` |
 | **`dragstart` nativo de `<img>` trava o arrasto** | Pega com `<img>` dentro: o Chrome inicia o arrasto nativo da imagem no 1º `pointermove` e emite `pointercancel`; medido 03/10/2026 no `SeuNono` (o painel travava em 10 px). Cancele com `onDragStart` (`preventDefault`) e meça a caixa do CONTAINER (`data-arrastavel-caixa`), não a da pega |
 | **`next build` local sem banco** | O `prebuild` roda `npm run cidades`, que consulta o Postgres e aborta com `ECONNREFUSED` sem banco. Para verificar UI sem banco: `npx next build --webpack` direto e `DATABASE_URL=""` (pula o prebuild e cai nos fallbacks) |
+| **Standalone sobe sem `drizzle-orm`** | O `@vercel/nft` não segue o `createRequire(`${process.cwd()}/`)` de `apps/web/lib/db/client.ts`: a imagem sobe sem o driver e TODA página que lê banco cai vazia, com `Cannot find module 'drizzle-orm/node-postgres'` no log. Medido 04/10/2026: `/ambiental/licenciamento` no ar com 0 das 8.612 linhas. `outputFileTracingIncludes` em `next.config.ts` precisa listar `../../node_modules/drizzle-orm/**/*`; até o deploy, o paliativo é copiar o pacote para dentro do container (some no restart) |
 
 ## 7. Regra editorial
 

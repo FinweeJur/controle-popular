@@ -176,6 +176,31 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**04/10/2026 — imagem sem `drizzle-orm` derrubou a leitura do banco; migration 0011 e caminho do servidor 2:**
+
+- **Incidente medido:** o container no ar não levava o driver `drizzle-orm`.
+  Toda página que lê do banco caía no vazio — log
+  `Cannot find module 'drizzle-orm/node-postgres'` desde 14:40Z, com o
+  `getDb()` falhando em cada request. `/ambiental/licenciamento` no ar com
+  **0 das 8.612 linhas** da tabela `public.ambiental_licenciamento`.
+- **Conserto quente (temporário):** `drizzle-orm@0.45.2` copiado à mão para
+  dentro do container (`/app/apps/web/node_modules/drizzle-orm`). A página
+  voltou a mostrar **8.612 licenças**; sem erro de banco no log. O pacote vive
+  só no container — **some no próximo reinício** e volta o sintoma.
+- **Conserto definitivo (no repo, commit `2b6dcd8a`):**
+  `outputFileTracingIncludes` em `apps/web/next.config.ts` passou a incluir
+  `../../node_modules/drizzle-orm/**/*` — o `@vercel/nft` não enxergava o
+  `createRequire` de `apps/web/lib/db/client.ts`. Sobe no próximo deploy.
+- **Migration `0011_vicio_legislativo.sql` aplicada no Guara:** criadas
+  `congresso.vicios_legislativos` e `congresso.vicio_itens` (0 linhas — o ETL
+  ainda não rodou). Os erros `banco:congresso ... falhou` pararam.
+- **Banco conferido:** conecta em `controle_popular`, **134 tabelas**; nenhuma
+  tabela do eixo betim vazia. `public.fila_coleta` existe com 0 linhas — a
+  migration `0090` **está** aplicada (o texto de 03/10 dizia o contrário).
+- **Bloqueio:** `guara deploy` devolve `Build minutes quota exceeded`. Enquanto
+  a cota não libera, o caminho combinado é publicar o **servidor 2** (túnel do
+  `home-pc`, peer Tailscale `100.91.10.1`) e manter o conserto quente de pé.
+
 **03/10/2026 — rádio sobrevive à navegação, pet, arrasto, memória e fila Guara:**
 
 - **Rádio persistente:** o `<audio>` do player morria a cada clique em `<a>`
