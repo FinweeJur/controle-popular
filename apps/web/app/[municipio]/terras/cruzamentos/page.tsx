@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Territórios tradicionais × empreendimentos em ${c.nome} — ${nomePortal(c)}`,
   (c) =>
-    `Sobreposições de terras indígenas, quilombolas, mineração (SIGMINE/ANM) e barragens (FEAM/SNISB) em ${c.nome}, com fonte e mapa.`
+    `Sobreposições de terras indígenas, quilombolas, mineração (SIGMINE/ANM) e barragens (FEAM/SNISB) em ${c.nome}, com fonte e mapa.`,
+  "/terras/cruzamentos"
 );
 
 interface CruzamentosPageProps {

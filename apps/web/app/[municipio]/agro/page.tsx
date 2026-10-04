@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Agro — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Produção agropecuária de ${c.nome}-${c.uf}.`
+  (c) => `Produção agropecuária de ${c.nome}-${c.uf}.`,
+  "/agro"
 );
 
 export default async function AgroPage({

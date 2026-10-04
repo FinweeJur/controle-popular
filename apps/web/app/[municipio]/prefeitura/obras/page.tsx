@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Obras públicas de ${c.nome}: andamento e valores — ${nomePortal(c)}`,
   (c) =>
-    `Obras da Prefeitura de ${c.nome}: objeto, situação, valor previsto e percentual de execução. Dados oficiais.`
+    `Obras da Prefeitura de ${c.nome}: objeto, situação, valor previsto e percentual de execução. Dados oficiais.`,
+  "/prefeitura/obras"
 );
 
 interface ObrasPageProps {

@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Plano de Governo e Promessas de ${c.nome} — Prometeu? Cumpriu? | ${nomePortal(c)}`,
   (c) =>
-    `Acompanhamento das propostas de governo registradas na Justiça Eleitoral (TSE) para a Prefeitura de ${c.nome} cruzadas com as secretarias municipais e contratos.`
+    `Acompanhamento das propostas de governo registradas na Justiça Eleitoral (TSE) para a Prefeitura de ${c.nome} cruzadas com as secretarias municipais e contratos.`,
+  "/gestao"
 );
 
 export default async function GestaoMunicipalPage({

@@ -37,7 +37,8 @@ export async function generateStaticParams() {
  */
 export const generateMetadata = metadataDaCidade(
   (c) => `Legislação — ${nomePortal(c)}`,
-  () => "Esta página mudou de endereço."
+  () => "Esta página mudou de endereço.",
+  "/camara/legislacao"
 );
 
 export default async function LegislacaoMudouDeEndereco({

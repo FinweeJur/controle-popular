@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Proposições da Câmara — ${nomePortal(c)}`,
-  (c) => `Todos os projetos de lei, requerimentos, indicações e emendas apresentados na Câmara Municipal de ${c.nome}, com busca e filtro.`
+  (c) => `Todos os projetos de lei, requerimentos, indicações e emendas apresentados na Câmara Municipal de ${c.nome}, com busca e filtro.`,
+  "/camara/proposicoes"
 );
 
 interface ProposicoesPageProps {

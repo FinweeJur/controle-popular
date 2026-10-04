@@ -18,7 +18,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Compra e Venda — Classificados de ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Classificados gratuitos de ${c.nome}-${c.uf}: imóveis, veículos, eletrônicos, agro e serviços — contato direto por WhatsApp.`
+  (c) => `Classificados gratuitos de ${c.nome}-${c.uf}: imóveis, veículos, eletrônicos, agro e serviços — contato direto por WhatsApp.`,
+  "/compra-e-venda"
 );
 
 export default async function CompraEVendaPage({

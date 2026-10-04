@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Diárias e viagens oficiais — ${c.nome} — ${nomePortal(c)}`,
   (c) =>
-    `Diárias e passagens aéreas pagas pelo poder público de ${c.nome}: quem viajou, para onde, por quê e quanto custou.`
+    `Diárias e passagens aéreas pagas pelo poder público de ${c.nome}: quem viajou, para onde, por quê e quanto custou.`,
+  "/prefeitura/diarias"
 );
 
 export default async function DiariasPage({

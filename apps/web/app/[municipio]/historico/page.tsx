@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `História de ${c.nome} — memória das lutas — ${nomePortal(c)}`,
   (c) =>
-    `Linha do tempo da memória de ${c.nome}-${c.uf}: marcos do município, do estado, da região e do país, cada um com a fonte.`
+    `Linha do tempo da memória de ${c.nome}-${c.uf}: marcos do município, do estado, da região e do país, cada um com a fonte.`,
+  "/historico"
 );
 
 /** Ano inicial do período do verbete, para ordenar ("1983-1984" → 1983). */

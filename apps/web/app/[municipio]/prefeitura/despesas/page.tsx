@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Despesas da Prefeitura de ${c.nome} por área — ${nomePortal(c)}`,
   (c) =>
-    `Quanto a Prefeitura de ${c.nome} gastou em saúde, educação, urbanismo e outras funções. Valores e fatia do total.`
+    `Quanto a Prefeitura de ${c.nome} gastou em saúde, educação, urbanismo e outras funções. Valores e fatia do total.`,
+  "/prefeitura/despesas"
 );
 
 interface DespesasPageProps {

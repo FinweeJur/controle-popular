@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Onde Pedir Informação e Onde Buscar Ajuda — ${c.nome} | ${nomePortal(c)}`,
   (c) =>
-    `LAI municipal, estadual e federal, e a rede de proteção de direitos de ${c.nome}-${c.uf}: Defensoria, Ministério Público, delegacias, assistência social e clínicas jurídicas gratuitas.`
+    `LAI municipal, estadual e federal, e a rede de proteção de direitos de ${c.nome}-${c.uf}: Defensoria, Ministério Público, delegacias, assistência social e clínicas jurídicas gratuitas.`,
+  "/rede-de-protecao"
 );
 
 export default async function RedeDeProtecaoPage({

@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Vazio cadastral e terras públicas em ${c.nome} — ${nomePortal(c)}`,
   (c) =>
-    `Território de ${c.nome}-${c.uf} sem imóvel rural declarado no CAR. Metodologia aberta e denominador explícito.`
+    `Território de ${c.nome}-${c.uf} sem imóvel rural declarado no CAR. Metodologia aberta e denominador explícito.`,
+  "/terras"
 );
 
 export default async function TerrasPage({

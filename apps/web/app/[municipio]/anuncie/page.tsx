@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Anuncie — ${nomePortal(c)}`,
-  (c) => `Anuncie seu negócio local no ${nomePortal(c)} — divulgação única a partir de R$ 200, sem mensalidade.`
+  (c) => `Anuncie seu negócio local no ${nomePortal(c)} — divulgação única a partir de R$ 200, sem mensalidade.`,
+  "/anuncie"
 );
 
 // Número comercial confirmado pelo dev em 2026-08-17.

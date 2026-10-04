@@ -9,7 +9,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Política de Privacidade — ${nomePortal(c)}`,
-  (c) => `Como o ${nomePortal(c)} trata dados pessoais, em conformidade com a LGPD (Lei 13.709/2018).`
+  (c) => `Como o ${nomePortal(c)} trata dados pessoais, em conformidade com a LGPD (Lei 13.709/2018).`,
+  "/privacidade"
 );
 
 export default async function PrivacidadePage({

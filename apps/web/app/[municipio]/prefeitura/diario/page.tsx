@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Diário Oficial de ${c.nome} — ${nomePortal(c)}`,
   (c) =>
-    `Atos oficiais, extratos de contratos, editais de licitação, decretos e convênios publicados na imprensa oficial da Prefeitura de ${c.nome}.`
+    `Atos oficiais, extratos de contratos, editais de licitação, decretos e convênios publicados na imprensa oficial da Prefeitura de ${c.nome}.`,
+  "/prefeitura/diario"
 );
 
 interface DiarioPageProps {

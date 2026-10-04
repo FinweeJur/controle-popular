@@ -20,7 +20,8 @@ function fonteDaCamara(cidade: Cidade) {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Votações da Câmara — ${nomePortal(c)}`,
-  (c) => `Como cada vereador de ${c.nome}-${c.uf} votou, votação por votação.`
+  (c) => `Como cada vereador de ${c.nome}-${c.uf} votou, votação por votação.`,
+  "/camara/votacoes"
 );
 
 interface VotacoesPageProps {

@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Emendas Parlamentares / Repasses Federais — ${nomePortal(c)}`,
-  (c) => `Convênios e repasses federais recebidos por ${c.nome}, com órgão de origem, valor e situação, via Portal da Transparência.`
+  (c) => `Convênios e repasses federais recebidos por ${c.nome}, com órgão de origem, valor e situação, via Portal da Transparência.`,
+  "/emendas"
 );
 
 export default async function EmendasPage({

@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Contratos públicos de ${c.nome} — ${nomePortal(c)}`,
-  (c) => `Veja os contratos administrativos da Prefeitura de ${c.nome}: fornecedores, valores, alertas e links oficiais no Portal Nacional de Contratações Públicas (PNCP).`
+  (c) => `Veja os contratos administrativos da Prefeitura de ${c.nome}: fornecedores, valores, alertas e links oficiais no Portal Nacional de Contratações Públicas (PNCP).`,
+  "/prefeitura/contratos"
 );
 
 interface ContratosPageProps {

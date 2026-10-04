@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 /** URL antiga de `/zap`, preservada só para Betim. Ver `PaginaPonte`. */
 export const generateMetadata = metadataDaCidade(
   (c) => `Zap ${c.nome} mudou de endereço | ${nomePortal(c)}`,
-  (c) => `A página de negócios locais de ${c.nome} agora fica em /zap.`
+  (c) => `A página de negócios locais de ${c.nome} agora fica em /zap.`,
+  "/zap"
 );
 
 export default async function ZapBetimLegado({

@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Assistência Social — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Benefícios sociais (Bolsa Família, BPC) pagos a moradores de ${c.nome}-${c.uf}.`
+  (c) => `Benefícios sociais (Bolsa Família, BPC) pagos a moradores de ${c.nome}-${c.uf}.`,
+  "/social"
 );
 
 export default async function SocialPage({

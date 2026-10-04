@@ -9,14 +9,18 @@ import { listarProposicoes } from "@/lib/congresso/proposicoes";
 import { listarTribunais } from "@/lib/judiciario/tribunais";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
+import { ROTAS_GLOBAIS, SUFIXOS_CIDADE } from "@/lib/sitemap/rotas-descobertas";
 
 /**
- * Domínio de produção: `apps/web/wrangler.jsonc` liga `controlepopular.com.br`
- * (e o `www`) ao Worker via `custom_domain`. Não é o `.br` que aparece como
- * marca no rodapé — esse é só o rótulo visual, o domínio registrado é o
- * `.com.br`.
+ * Domínio de produção — o `www` é o site canônico.
+ *
+ * Medido em 04/10/2026: a raiz `controlepopular.com.br` já devolve 301 para
+ * o `www` (redirect no Cloudflare), então anunciar a URL sem `www` mandava
+ * o buscador de uma URL que redireciona. O mesmo ajuste foi aplicado em
+ * `public/robots.txt` (`Sitemap:`/`Host:`) — as três fontes (canonical do
+ * `layout.tsx`, sitemap e robots) precisam falar a mesma URL.
  */
-const BASE_URL = "https://controlepopular.com.br";
+const BASE_URL = "https://www.controlepopular.com.br";
 
 type ChangeFreq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
@@ -46,30 +50,39 @@ function item(
 }
 
 /**
- * As 50 páginas fixas da zona Cidades (uma por sufixo × cidade), na MESMA
- * enumeração que `app/[municipio]/**\/page.tsx` usa via `paramsDasCidades()`
- * — ver `lib/betim/staticParams.ts`. Não é uma lista paralela inventada: é o
- * inventário de `find app/[municipio] -name page.tsx`, menos as quatro que
- * NÃO viram URL pública real (abaixo).
+ * Sufixos da zona Cidades com AJUSTE manual: fonte que condiciona a
+ * existência da página, `changeFrequency` ou `priority` diferentes do
+ * padrão. Um por sufixo × cidade, na MESMA enumeração que
+ * `app/[municipio]/**\/page.tsx` usa via `paramsDasCidades()` — ver
+ * `lib/betim/staticParams.ts`.
  *
- * FORA DAQUI, DE PROPÓSITO:
- *  - `/admin`: painel de moderação protegido por token
- *    (`PainelAdmin.tsx`) — ferramenta interna, não conteúdo.
- *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`: páginas-ponte
- *    (`components/PaginaPonte.tsx`), servidas com
+ * **Desde 04/10/2026 esta lista não é mais o inventário.** O inventário é
+ * `SUFIXOS_CIDADE` (`lib/sitemap/rotas-descobertas.ts`), varrido do disco
+ * no build por `scripts/gerar-rotas-sitemap.mts`: 9 sufixos existiam como
+ * `page.tsx` e faltavam aqui (`/gestao`, `/historico`, `/indice`,
+ * `/interesses`, `/legislacao`, `/painel-do-cidadao`,
+ * `/prefeitura/diario`, `/prefeitura/fornecedores`,
+ * `/terras/cruzamentos`). O que sobrou nesta lista é só o que o
+ * varredor não tem como saber sozinho:
+ *
+ *  - `fonte`: replica o `temFonte(cidade, fonte)` que a própria página
+ *    chama antes de `notFound()` — sem isso o sitemap listaria uma URL
+ *    que o build nem gera pra aquela cidade (`citrolandia`,
+ *    `camara/proposicoes`, `links-uteis-mg`, `meio-ambiente/paraopeba`);
+ *  - `changeFrequency`/`priority` divergentes do padrão (0.5/monthly).
+ *
+ * FORA DO SITEMAP, DE PROPÓSITO (motivos em `lib/sitemap/descoberta.ts`):
+ *  - `/admin`: painel de moderação protegido por token (`PainelAdmin.tsx`);
+ *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`, `/convenios`:
+ *    páginas-ponte (`components/PaginaPonte.tsx`) com
  *    `<meta name="robots" content="noindex, follow">` e `canonical`
- *    apontando pro destino novo. Indexar a ponte duplicaria o conteúdo que o
- *    canonical já resolve.
+ *    apontando pro destino novo. Indexar a ponte duplicaria o conteúdo que
+ *    o canonical já resolve;
  *  - `noticias/[slug]` e `vereadores/[slug]`: entram abaixo, por cidade, a
  *    partir do banco — não são um sufixo fixo.
  *
- * `fonte`, quando presente, replica o `temFonte(cidade, fonte)` que a
- * própria página chama antes de `notFound()` — sem isso o sitemap listaria
- * uma URL que o build nem gera pra aquela cidade (`citrolandia`,
- * `camara/proposicoes`, `links-uteis-mg`, `meio-ambiente/paraopeba`; ver os
- * respectivos `page.tsx`). Rotas com estado vazio em vez de 404 (ex.
- * `/terras`) NÃO entram aqui — a página existe e responde 200 pra toda
- * cidade, só o conteúdo muda.
+ * Rotas com estado vazio em vez de 404 (ex. `/terras`) NÃO são excluídas —
+ * a página existe e responde 200 pra toda cidade, só o conteúdo muda.
  */
 const ROTAS_CIDADE: {
   sufixo: string;
@@ -134,6 +147,21 @@ const ROTAS_CIDADE: {
   { sufixo: "/zap", changeFrequency: "daily" },
 ];
 
+/**
+ * Sufixos efetivos: a lista manual (com seus ajustes) completada pelos
+ * descobertos no build, deduplicando pelo sufixo.
+ *
+ * Um sufixo novo que só existe no disco entra aqui sozinho, com o padrão
+ * `monthly`/`0.5` — pior que prioridade baixa é a URL nem aparecer.
+ */
+const SUFIXOS_EFETIVOS: typeof ROTAS_CIDADE = (() => {
+  const naManual = new Set(ROTAS_CIDADE.map((r) => r.sufixo));
+  const descobertos = SUFIXOS_CIDADE.filter((s) => !naManual.has(s)).map(
+    (sufixo) => ({ sufixo })
+  );
+  return [...ROTAS_CIDADE, ...descobertos];
+})();
+
 async function rotasDeCidade(cidade: Cidade): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [];
 
@@ -144,7 +172,7 @@ async function rotasDeCidade(cidade: Cidade): Promise<MetadataRoute.Sitemap> {
     .map((n) => paraData(n.publicadoEm))
     .sort((a, b) => b.getTime() - a.getTime())[0];
 
-  for (const rota of ROTAS_CIDADE) {
+  for (const rota of SUFIXOS_EFETIVOS) {
     if (rota.fonte && !temFonte(cidade, rota.fonte)) continue;
     const lastModified =
       (rota.sufixo === "" || rota.sufixo === "/noticias") && noticiaMaisRecente
@@ -367,6 +395,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/judiciario/inspecoes", { changeFrequency: "weekly", priority: 0.8 }),
     item("/judiciario/recomendacoes", { changeFrequency: "weekly", priority: 0.8 }),
   ];
+
+  // ═══ Descoberta automática (04/10/2026) ═══
+  //
+  // As rotas fixas do disco que NÃO estão nas listas manuais acima entram
+  // aqui com o padrão (`monthly`/0.5). Medido no ar: eram 147 páginas sem
+  // anúncio — `/ambiental/car`, as 27 páginas `/cidades/<uf>`,
+  // `/internacional`, `/assembleias`... A lista acima mantém seus
+  // ajustes de prioridade; esta só preenche o buraco, deduplicando por URL.
+  const jaAnunciadas = new Set(urls.map((u) => u.url));
+  for (const rota of ROTAS_GLOBAIS) {
+    const url = `${BASE_URL}${rota}`;
+    if (jaAnunciadas.has(url)) continue;
+    urls.push(item(rota));
+  }
 
   const cidades = await listarCidades();
   const porCidade = await Promise.all(cidades.map(rotasDeCidade));

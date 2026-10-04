@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Bons exemplos — normas que ampliam direitos — ${nomePortal(c)}`,
   (c) =>
-    `Leis e projetos de lei de ${c.nome} que ampliam direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.`
+    `Leis e projetos de lei de ${c.nome} que ampliam direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.`,
+  "/legislacao/bons-exemplos"
 );
 
 export default async function BonsExemplosLegislacao({

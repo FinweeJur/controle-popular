@@ -28,7 +28,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Legislação — ${orgaoDoAcervoNormativo(c).orgao} — ${nomePortal(c)}`,
   (c) =>
-    `Leis, decretos, resoluções e instruções normativas da ${orgaoDoAcervoNormativo(c).orgao}, com filtro por categoria, ano e área temática.`
+    `Leis, decretos, resoluções e instruções normativas da ${orgaoDoAcervoNormativo(c).orgao}, com filtro por categoria, ano e área temática.`,
+  "/camara/legislacao"
 );
 
 interface LegislacaoPageProps {

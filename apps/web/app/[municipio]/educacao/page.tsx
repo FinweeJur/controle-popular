@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Educação — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Escolas, matrículas e IDEB de ${c.nome}-${c.uf}, direto do Censo Escolar (INEP).`
+  (c) => `Escolas, matrículas e IDEB de ${c.nome}-${c.uf}, direto do Censo Escolar (INEP).`,
+  "/educacao"
 );
 
 export default async function EducacaoPage({

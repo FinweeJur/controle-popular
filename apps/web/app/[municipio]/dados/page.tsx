@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `${c.nome} em Dados: saúde, educação, economia e mais — ${nomePortal(c)}`,
   (c) =>
-    `${c.nome}-${c.uf} em números: saúde, educação, economia, segurança e outros dados públicos com fonte oficial.`
+    `${c.nome}-${c.uf} em números: saúde, educação, economia, segurança e outros dados públicos com fonte oficial.`,
+  "/dados"
 );
 
 export default async function DadosPage({

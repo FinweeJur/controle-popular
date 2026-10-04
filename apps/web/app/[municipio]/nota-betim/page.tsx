@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 /** URL antiga de `/nota-transparencia`, preservada só para Betim. */
 export const generateMetadata = metadataDaCidade(
   (c) => `Nota ${c.nome} mudou de endereço | ${nomePortal(c)}`,
-  (c) => `A nota de transparência de ${c.nome} agora fica em /nota-transparencia.`
+  (c) => `A nota de transparência de ${c.nome} agora fica em /nota-transparencia.`,
+  "/nota-transparencia"
 );
 
 export default async function NotaBetimLegado({

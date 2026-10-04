@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Farmácias de Plantão — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Farmácias de plantão da semana em ${c.nome}-${c.uf}, com telefone e rota no Waze.`
+  (c) => `Farmácias de plantão da semana em ${c.nome}-${c.uf}, com telefone e rota no Waze.`,
+  "/plantao-farmacias"
 );
 
 export default async function PlantaoFarmaciasPage({

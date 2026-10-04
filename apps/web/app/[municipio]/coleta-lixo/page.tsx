@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Coleta de Lixo — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Dias e horários de coleta de lixo comum e seletiva por bairro em ${c.nome}-${c.uf}.`
+  (c) => `Dias e horários de coleta de lixo comum e seletiva por bairro em ${c.nome}-${c.uf}.`,
+  "/coleta-lixo"
 );
 
 export default async function ColetaLixoPage({

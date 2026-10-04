@@ -99,12 +99,26 @@ export function aplicarEdicao<T extends { title: string }>(
  * A rota é escrita à mão porque o Next não expõe a própria rota a um objeto
  * `metadata` estático. Uma rota errada aqui não quebra nada: a edição
  * simplesmente não encontra a página, e o texto do código continua valendo.
+ *
+ * **Canonical automático (04/10/2026).** Se a página não trouxer
+ * `alternates`, este helper declara `canonical` igual à rota — resolvido
+ * contra o `metadataBase` da raiz (`www`). Antes a raiz declarava
+ * `canonical: "/"` e o merge raso do Next passava aquele "/" pra página
+ * inteira: o Google lia `/ambiental/car` e via "duplicata da home". Página
+ * sem canonical o buscador resolve sozinho; página com canonical ERRADO o
+ * buscador acredita e derruba a original do índice.
  */
 export function metadataEditavel<T extends { title: string }>(
   rota: string,
   base: T
-): T & { description?: string } {
-  return aplicarEdicao(rota, base);
+): T & { description?: string; alternates?: { canonical: string } } {
+  const editado = aplicarEdicao(rota, base);
+  // O genérico `T` só promete `title`, então o `alternates` que a página
+  // trouxe é lido por asserção de forma — o valor em runtime é o mesmo.
+  const proprio = (editado as { alternates?: { canonical?: string } })
+    .alternates?.canonical;
+  if (proprio) return editado;
+  return { ...editado, alternates: { canonical: normalizar(rota) } };
 }
 
 /** Todas as edições, para o script de listagem e para uma futura tela. */

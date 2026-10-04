@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Mineração — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Royalties da mineração (CFEM) arrecadados sobre a produção mineral de ${c.nome}-${c.uf}.`
+  (c) => `Royalties da mineração (CFEM) arrecadados sobre a produção mineral de ${c.nome}-${c.uf}.`,
+  "/mineracao"
 );
 
 const FONTE_ANM = {

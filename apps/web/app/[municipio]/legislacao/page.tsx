@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Legislação municipal de ${c.nome} — Lei Orgânica, Plano Diretor — ${nomePortal(c)}`,
   (c) =>
-    `Lei Orgânica, Plano Diretor, zoneamento, Código Tributário e Obras/Posturas de ${c.nome}: status, links oficiais e onde procurar cada um.`
+    `Lei Orgânica, Plano Diretor, zoneamento, Código Tributário e Obras/Posturas de ${c.nome}: status, links oficiais e onde procurar cada um.`,
+  "/legislacao"
 );
 
 interface LegislacaoPageProps {

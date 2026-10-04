@@ -27,7 +27,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Serviços ao Cidadão — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Zap ${c.nome}, Compra e Venda, coleta de lixo, farmácias de plantão, postos de combustível e clima.`
+  (c) => `Zap ${c.nome}, Compra e Venda, coleta de lixo, farmácias de plantão, postos de combustível e clima.`,
+  "/servicos"
 );
 
 /**

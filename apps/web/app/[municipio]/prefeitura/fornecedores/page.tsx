@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Maiores fornecedores da Prefeitura — ${nomePortal(c)}`,
-  (c) => `Ranking de fornecedores da Prefeitura de ${c.nome} por valor total contratado, número de contratos e órgãos atendidos — dados públicos via PNCP.`
+  (c) => `Ranking de fornecedores da Prefeitura de ${c.nome} por valor total contratado, número de contratos e órgãos atendidos — dados públicos via PNCP.`,
+  "/prefeitura/fornecedores"
 );
 
 interface FornecedoresPageProps {

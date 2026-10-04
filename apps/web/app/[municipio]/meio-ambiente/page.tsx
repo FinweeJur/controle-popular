@@ -12,7 +12,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Meio Ambiente — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `O que existe de fonte pública sobre meio ambiente na região de ${c.nome}-${c.uf}: barragens de mineração, compensação ambiental e TACs.`
+  (c) => `O que existe de fonte pública sobre meio ambiente na região de ${c.nome}-${c.uf}: barragens de mineração, compensação ambiental e TACs.`,
+  "/meio-ambiente"
 );
 
 // FONTES DE MINAS GERAIS. Todas as três são estaduais (MPMG, SEMAD/MG).

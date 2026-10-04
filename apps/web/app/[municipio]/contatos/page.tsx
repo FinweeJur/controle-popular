@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Contatos Úteis — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Telefones úteis de ${c.nome}-${c.uf}: emergência, Prefeitura, Câmara Municipal e serviços.`
+  (c) => `Telefones úteis de ${c.nome}-${c.uf}: emergência, Prefeitura, Câmara Municipal e serviços.`,
+  "/contatos"
 );
 
 export default async function ContatosPage({

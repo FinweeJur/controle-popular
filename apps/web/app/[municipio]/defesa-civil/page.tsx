@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Defesa Civil de ${c.nome} — Alertas | ${nomePortal(c)}`,
-  (c) => `Como receber alertas da Defesa Civil de ${c.nome}-${c.uf}: aplicativo oficial, canal de WhatsApp e telefone de emergência.`
+  (c) => `Como receber alertas da Defesa Civil de ${c.nome}-${c.uf}: aplicativo oficial, canal de WhatsApp e telefone de emergência.`,
+  "/defesa-civil"
 );
 
 // Nenhuma dessas fontes tem API pública — confirmado em pesquisa 2026-07-21

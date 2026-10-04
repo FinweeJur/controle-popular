@@ -1,7 +1,13 @@
 # ==============================================================================
 # Controle Popular -- Politica de Rastreamento e Coleta Civica (PT-BR)
 # controlepopular.com.br
-# Atualizado em: 2026-09-16
+# Atualizado em: 2026-10-04
+#
+# FONTE UNICA da politica de crawling (medido 04/10/2026): este arquivo era
+# o unico realmente servido em /robots.txt; existia um app/robots.ts que o
+# espelhava pior (11 blocos contra 24) e NUNCA chegou ao ar. A sombra foi
+# apagada -- duas fontes de regra igual a webhook de bot: quem edita a
+# errada fica com a impressao de ter consertado (AGENTS 5.11).
 #
 # Este portal republica dados publicos oficiais para fins de transparencia civica.
 # A coleta automatizada e bem-vinda para pesquisa sem fins comerciais e academica,
@@ -14,7 +20,7 @@
 #
 # Crawl-delay recomendado: 2 segundos entre requisicoes.
 # API publica JSON (gratuita, sem chave): https://controlepopular.com.br/api/v1/
-# Sitemap: https://controlepopular.com.br/sitemap.xml
+# Sitemap: https://www.controlepopular.com.br/sitemap.xml
 # ==============================================================================
 #
 # ==============================================================================
@@ -46,7 +52,7 @@
 #
 # 建议抓取延迟：每次请求间隔 2 秒 (Crawl-delay: 2)。
 # 开放公共 JSON API (无需认证/无密钥)：https://controlepopular.com.br/api/v1/
-# 站点地图 (Sitemap)：https://controlepopular.com.br/sitemap.xml
+# 站点地图 (Sitemap)：https://www.controlepopular.com.br/sitemap.xml
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -185,5 +191,5 @@ Disallow: /painel/
 Disallow: /api/painel/
 Crawl-delay: 2
 
-Sitemap: https://controlepopular.com.br/sitemap.xml
-Host: https://controlepopular.com.br
+Sitemap: https://www.controlepopular.com.br/sitemap.xml
+Host: https://www.controlepopular.com.br

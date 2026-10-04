@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Barragens — ${c.nome} em Dados | ${nomePortal(c)}`,
   (c) =>
-    `Barragens em ${c.nome}-${c.uf}: quantas, de quem, condição de estabilidade, nível de emergência e quais foram erguidas a montante — o método de Mariana e Brumadinho.`
+    `Barragens em ${c.nome}-${c.uf}: quantas, de quem, condição de estabilidade, nível de emergência e quais foram erguidas a montante — o método de Mariana e Brumadinho.`,
+  "/meio-ambiente/barragens"
 );
 
 /**

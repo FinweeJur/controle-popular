@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Postos de Combustível — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Postos de combustível de ${c.nome}-${c.uf} cadastrados na ANP, com bandeira, produtos e nota de conformidade (PMQC).`
+  (c) => `Postos de combustível de ${c.nome}-${c.uf} cadastrados na ANP, com bandeira, produtos e nota de conformidade (PMQC).`,
+  "/postos-combustivel"
 );
 
 export default async function PostosCombustivelPage({

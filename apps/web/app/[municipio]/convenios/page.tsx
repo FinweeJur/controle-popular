@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Convênios e Repasses de ${c.nome} — ${nomePortal(c)}`,
   (c) => `Convênios, repasses e emendas federais recebidos por ${c.nome}.`,
-  "/convenios"
+  "/emendas"
 );
 
 export default async function ConveniosPage({

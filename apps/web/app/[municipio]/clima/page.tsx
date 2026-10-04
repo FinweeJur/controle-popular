@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Clima — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Previsão do tempo e histórico de chuva dos últimos 7 dias em ${c.nome}-${c.uf}.`
+  (c) => `Previsão do tempo e histórico de chuva dos últimos 7 dias em ${c.nome}-${c.uf}.`,
+  "/clima"
 );
 
 const WEATHER_LABELS: Record<number, string> = {

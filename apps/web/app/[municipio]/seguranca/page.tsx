@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Segurança Pública — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Estatísticas de criminalidade em ${c.nome}-${c.uf}.`
+  (c) => `Estatísticas de criminalidade em ${c.nome}-${c.uf}.`,
+  "/seguranca"
 );
 
 export default async function SegurancaPage({

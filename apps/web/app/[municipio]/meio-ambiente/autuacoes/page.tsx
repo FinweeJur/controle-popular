@@ -24,7 +24,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Autuações ambientais — ${c.nome} em Dados | ${nomePortal(c)}`,
   (c) =>
-    `Autos de infração ambiental do estado em ${c.nome}-${c.uf}: quantos, de que órgão, quanto foi multado e quanto continua em aberto — com a situação de cada processo.`
+    `Autos de infração ambiental do estado em ${c.nome}-${c.uf}: quantos, de que órgão, quanto foi multado e quanto continua em aberto — com a situação de cada processo.`,
+  "/meio-ambiente/autuacoes"
 );
 
 /**

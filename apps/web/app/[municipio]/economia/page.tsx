@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Economia — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `PIB, salário médio e saldo de empregos de ${c.nome}-${c.uf}.`
+  (c) => `PIB, salário médio e saldo de empregos de ${c.nome}-${c.uf}.`,
+  "/economia"
 );
 
 export default async function EconomiaPage({

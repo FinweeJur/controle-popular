@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Citrolândia — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Bairros da Regional Citrolândia em ${c.nome}-${c.uf} e negócios locais cadastrados no Zap ${c.nome}.`
+  (c) => `Bairros da Regional Citrolândia em ${c.nome}-${c.uf} e negócios locais cadastrados no Zap ${c.nome}.`,
+  "/citrolandia"
 );
 
 // Lista completa (44/44) confirmada ao vivo na página oficial da

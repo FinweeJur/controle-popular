@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Painel do cidadão de ${c.nome} — dinheiro público, território e leis — ${nomePortal(c)}`,
   (c) =>
-    `Resumo em uma tela: maiores contratos e fornecedores de ${c.nome}, contratos em alerta, sobreposições territoriais e legislação principal, com links para o detalhe.`
+    `Resumo em uma tela: maiores contratos e fornecedores de ${c.nome}, contratos em alerta, sobreposições territoriais e legislação principal, com links para o detalhe.`,
+  "/painel-do-cidadao"
 );
 
 interface PainelPageProps {

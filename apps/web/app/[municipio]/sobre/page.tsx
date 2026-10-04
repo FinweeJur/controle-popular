@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Sobre — ${nomePortal(c)}`,
-  (c) => `O que e o ${nomePortal(c)}, de onde vem os dados, quem mantem o projeto e como ele se relaciona (ou nao) com o poder publico.`
+  (c) => `O que e o ${nomePortal(c)}, de onde vem os dados, quem mantem o projeto e como ele se relaciona (ou nao) com o poder publico.`,
+  "/sobre"
 );
 
 export default async function SobrePage({

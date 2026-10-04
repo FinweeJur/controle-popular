@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Grupos econômicos — ${nomePortal(c)}`,
-  (c) => `Fornecedores da Prefeitura de ${c.nome} que compartilham sócios entre si, detectados a partir do quadro societário da Receita Federal.`
+  (c) => `Fornecedores da Prefeitura de ${c.nome} que compartilham sócios entre si, detectados a partir do quadro societário da Receita Federal.`,
+  "/grupos-economicos"
 );
 
 export default async function GruposEconomicosPage({

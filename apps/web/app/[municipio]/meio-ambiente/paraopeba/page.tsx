@@ -24,7 +24,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Reparação do Rio Paraopeba — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Projetos de reparação socioeconômica em ${c.nome} ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho, auditados pela FGV.`
+  (c) => `Projetos de reparação socioeconômica em ${c.nome} ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho, auditados pela FGV.`,
+  "/meio-ambiente/paraopeba"
 );
 
 function referenciaLabel(referencia: string): string {

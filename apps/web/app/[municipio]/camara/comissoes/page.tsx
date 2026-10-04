@@ -21,7 +21,8 @@ function fonteDaCamara(cidade: Cidade) {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Comissões — Câmara Municipal de ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Composição atual das comissões permanentes da Câmara Municipal de ${c.nome}.`
+  (c) => `Composição atual das comissões permanentes da Câmara Municipal de ${c.nome}.`,
+  "/camara/comissoes"
 );
 
 export default async function ComissoesPage({

@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Prefeitura de ${c.nome}: contratos, despesas e servidores — ${nomePortal(c)}`,
   (c) =>
-    `Dados públicos da Prefeitura de ${c.nome}: contratos, despesas por área, servidores, obras e licitações.`
+    `Dados públicos da Prefeitura de ${c.nome}: contratos, despesas por área, servidores, obras e licitações.`,
+  "/prefeitura"
 );
 
 // Tab list per plan §7. `href: null` renders as an inert "em breve" pill —

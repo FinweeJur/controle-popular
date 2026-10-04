@@ -37,7 +37,8 @@ export const generateMetadata = metadataDaCidade(
   (c) =>
     exportandoEstatico
       ? `Esta cópia estática do ${nomePortal(c)} não publica o assistente por IA. Use a busca do portal e o assistente de navegação.`
-      : `Assistente do ${nomePortal(c)}: pergunte em linguagem natural sobre contratos, gastos, vereadores e dados de ${c.nome}.`
+      : `Assistente do ${nomePortal(c)}: pergunte em linguagem natural sobre contratos, gastos, vereadores e dados de ${c.nome}.`,
+  "/assistente"
 );
 
 export default async function AssistentePage({

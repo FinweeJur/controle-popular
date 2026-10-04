@@ -12,7 +12,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Teia de Interesses — ${c.nome} | ${nomePortal(c)}`,
   (c) =>
-    `Como o portal cruza mandato político, contratos, empresas e território em ${c.nome}-${c.uf}: metodologia, fontes previstas e lacunas declaradas.`
+    `Como o portal cruza mandato político, contratos, empresas e território em ${c.nome}-${c.uf}: metodologia, fontes previstas e lacunas declaradas.`,
+  "/interesses"
 );
 
 /** Páginas que já têm dado coletado de verdade — o relatório só aponta para elas. */

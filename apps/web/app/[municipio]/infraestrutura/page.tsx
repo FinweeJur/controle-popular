@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Infraestrutura — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Cobertura de água e esgoto em ${c.nome}-${c.uf}, dados do SNIS.`
+  (c) => `Cobertura de água e esgoto em ${c.nome}-${c.uf}, dados do SNIS.`,
+  "/infraestrutura"
 );
 
 export default async function InfraestruturaPage({

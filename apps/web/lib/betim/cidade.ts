@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { obterCidadePorSlug, nomePortal, type Cidade } from "@/lib/db/queries/municipios";
 import { aplicarEdicao } from "@/lib/edicoes";
+import { CAPA_PADRAO, comImagemOg } from "@/lib/seo/og";
 
 export type { Cidade };
 export { nomePortal };
@@ -55,14 +56,21 @@ export async function cidadeDaRota(
  *     (c) => `Benefícios sociais pagos a moradores de ${c.nome}-${c.uf}.`
  *   );
  *
- * O terceiro argumento — a sub-rota, `"/saude"` — só existe para a
- * sobreposição de `lib/edicoes.ts` saber QUAL página é esta. Sem ele, o
- * arquivo de edições não teria como distinguir `/bh/saude` de `/bh/educacao`:
- * as duas chegam aqui pelo mesmo helper, e o `params` só carrega a cidade.
- * Omiti-lo não quebra nada; apenas deixa a página fora do alcance da edição
- * manual, que é o comportamento certo para quem ainda não precisou dela.
+ * O terceiro argumento — a sub-rota, `"/saude"` — é o CAMINHO REAL da
+ * página dentro da cidade, e serve para DUAS coisas:
+ *
+ *  1. o canonical (`/bh/saude`, nunca só `/bh`) — sem ele o Google era
+ *     informado de que `/bh/saude` era uma duplicata da home da cidade e
+ *     tirava a página do índice (medido no ar em 04/10/2026, em
+ *     `/betim/emendas`, cujo canonical apontava para `/betim`);
+ *  2. a sobreposição de `lib/edicoes.ts` saber QUAL página é esta — as duas
+ *     chegam aqui pelo mesmo helper e o `params` só carrega a cidade.
+ *
+ * Omiti-lo não quebra o build; apenas deixa a página com canonical errado e
+ * fora do alcance da edição manual. `cidade.test.ts` é a régua: falha quando
+ * algum `page.tsx` chama o helper sem o terceiro argumento.
  */
-const BASE_URL = "https://controlepopular.com.br";
+const BASE_URL = "https://www.controlepopular.com.br";
 
 export function metadataDaCidade(
   titulo: (cidade: Cidade) => string,
@@ -83,18 +91,25 @@ export function metadataDaCidade(
       title,
       description,
       metadataBase: new URL(BASE_URL),
-      openGraph: {
-        type: "website",
-        locale: "pt_BR",
-        url: canonical,
-        siteName: "Controle Popular",
-        title,
-        description,
-      },
+      // `images` explícito: o merge de metadata do Next é raso, e um
+      // `openGraph` declarado sem `images` apaga o que a raiz trouxesse —
+      // o cartão saía sem foto (medido em /betim/emendas, 04/10/2026).
+      openGraph: comImagemOg(
+        {
+          type: "website",
+          locale: "pt_BR",
+          url: canonical,
+          siteName: "Controle Popular",
+          title,
+          description,
+        },
+        title
+      ),
       twitter: {
         card: "summary_large_image",
         title,
         description,
+        images: [CAPA_PADRAO],
       },
       alternates: {
         canonical,

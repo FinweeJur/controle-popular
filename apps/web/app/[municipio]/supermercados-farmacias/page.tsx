@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Supermercados e Farmácias — ${c.nome} | ${nomePortal(c)}`,
-  (c) => `Supermercados e farmácias de ${c.nome}-${c.uf}, com Centro e Citrolândia em destaque — dado público (OpenStreetMap), publicidade gratuita.`
+  (c) => `Supermercados e farmácias de ${c.nome}-${c.uf}, com Centro e Citrolândia em destaque — dado público (OpenStreetMap), publicidade gratuita.`,
+  "/supermercados-farmacias"
 );
 
 const TIPO_LABEL: Record<string, string> = {

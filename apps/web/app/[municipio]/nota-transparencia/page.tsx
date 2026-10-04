@@ -25,7 +25,8 @@ const UF_POR_EXTENSO: Record<string, string> = {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Nota ${c.nome} (PNTP) — ${nomePortal(c)}`,
-  (c) => `Nota de transparência de ${c.nome} no ranking estadual (PNTP/ATRICON).`
+  (c) => `Nota de transparência de ${c.nome} no ranking estadual (PNTP/ATRICON).`,
+  "/nota-transparencia"
 );
 
 const NIVEL_COR: Record<string, string> = {

@@ -33,7 +33,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Vereadores de ${c.nome}: gastos de gabinete e atuação — ${nomePortal(c)}`,
   (c) =>
-    `Vereadores da ${rotuloLegislatura(c)} de ${c.nome}-${c.uf}: composição, gastos de gabinete, verbas indenizatórias e ranking de atuação.`
+    `Vereadores da ${rotuloLegislatura(c)} de ${c.nome}-${c.uf}: composição, gastos de gabinete, verbas indenizatórias e ranking de atuação.`,
+  "/camara"
 );
 
 /**

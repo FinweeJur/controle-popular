@@ -18,7 +18,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Cultura — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
-  (c) => `Quanto a Prefeitura de ${c.nome} gastou em Cultura, e os contratos de cultura, esporte e lazer firmados via PNCP.`
+  (c) => `Quanto a Prefeitura de ${c.nome} gastou em Cultura, e os contratos de cultura, esporte e lazer firmados via PNCP.`,
+  "/prefeitura/cultura"
 );
 
 interface CulturaPageProps {

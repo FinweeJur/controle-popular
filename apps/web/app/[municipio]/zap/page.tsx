@@ -18,7 +18,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Zap ${c.nome} — Cadastro de negócios no WhatsApp | ${nomePortal(c)}`,
-  (c) => `Encontre e divulgue negócios locais de ${c.nome}-${c.uf} direto pelo WhatsApp — cadastro gratuito e independente.`
+  (c) => `Encontre e divulgue negócios locais de ${c.nome}-${c.uf} direto pelo WhatsApp — cadastro gratuito e independente.`,
+  "/zap"
 );
 
 export default async function ZapBetimPage({

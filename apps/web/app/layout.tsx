@@ -73,9 +73,14 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: ["/capas/home-page.webp"],
   },
-  alternates: {
-    canonical: "/",
-  },
+  // SEM `alternates.canonical` aqui. O merge de metadata do Next é raso: o
+  // canonical "/" declarado na raiz era herdado por TODA rota sem
+  // `alternates` próprio — medido no ar em 04/10/2026: /ambiental/car,
+  // /cidades e /congresso devolviam <link rel="canonical" href=".../">,
+  // ou seja, diziam ao Google que eram a home. Canonical errado derruba a
+  // página do índice; canonical ausente não (o buscador escolhe sozinho).
+  // Cada rota declara a sua: `metadataEditavel()` (maioria), o
+  // `metadataDaCidade()` das páginas municipais e a home, abaixo.
   // PWA: permite instalar o portal como app e abrir o casco sem rede.
   // O service worker (`public/sw.js`) faz network-first para HTML — dado
   // velho é dano. Ver `RegistrarServiceWorker.tsx`.

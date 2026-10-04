@@ -19,7 +19,8 @@ const PREVENCAO_DENGUE_URL = "https://www.gov.br/saude/pt-br/assuntos/saude-de-a
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Saúde — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Internações hospitalares, arboviroses e principais causas de óbito em ${c.nome}-${c.uf}.`
+  (c) => `Internações hospitalares, arboviroses e principais causas de óbito em ${c.nome}-${c.uf}.`,
+  "/saude"
 );
 
 const DOENCA_LABELS: Record<string, string> = {

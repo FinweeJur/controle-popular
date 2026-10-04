@@ -23,7 +23,8 @@ export async function generateStaticParams() {
 export const generateMetadata = metadataDaCidade(
   (c) => `Alertas — normas que restringem direitos — ${nomePortal(c)}`,
   (c) =>
-    `Leis e projetos de lei de ${c.nome} que restringem direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.`
+    `Leis e projetos de lei de ${c.nome} que restringem direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.`,
+  "/legislacao/alertas"
 );
 
 export default async function AlertasLegislacao({
