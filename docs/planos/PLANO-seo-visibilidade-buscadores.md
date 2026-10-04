@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-10-04
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [TODO-PROXIMAS-RODADAS.md](../historico/planos/TODO-PROXIMAS-RODADAS.md)
 > **Palavras-chave:** SEO, Google, indexacao, sitemap, structured data, Core Web Vitals, palavras-chave locais, transparencia municipal, transparencia MG
@@ -14,6 +14,7 @@
 - [Eixos de trabalho](#eixos-de-trabalho)
 - [Palavras-chave por frente e por público](#palavras-chave-por-frente-e-por-público)
 - [Entregáveis e ordem de execução](#entregáveis-e-ordem-de-execução)
+- [Execução (04/10/2026)](#execução-04102026)
 - [Riscos e armadilhas](#riscos-e-armadilhas)
 - [Decisões registradas](#decisões-registradas)
 
@@ -161,6 +162,25 @@ Antes de começar, coletar a baseline. Sem medição não dá para saber se o pl
 12. Criar dashboard mensal de SEO.
 13. Revisar meta descriptions e títulos com baixo CTR.
 14. Planejar próximas notas técnicas com base nas palavras-chave que subiram.
+
+## Execução (04/10/2026)
+
+Sessão que executou a fundação técnica (Sprint 1) e o primeiro lote de
+conteúdo (Sprint 3), tudo medido no ar antes e depois:
+
+| Fase | O que entrou | Medição que motivou |
+|---|---|---|
+| 1. Canonical | `metadataDaCidade(titulo, descricao, subrota)` com subrota em 65 páginas de `[municipio]`; canonical da raiz removido do `layout.tsx` | medido no ar: `/ambiental/car`, `/cidades` e `/congresso` devolviam `canonical` da home (merge raso do Next) |
+| 2. Sitemap | descoberta automática no build (`scripts/gerar-rotas-sitemap.mts` → `lib/sitemap/rotas-descobertas.ts`), 216 globais + 60 sufixos, guardião em teste | **147 páginas** existiam e não estavam no sitemap (1.837 URLs congeladas desde 20/09) |
+| 3. Robots | `public/robots.txt` como fonte única; sombra `app/robots.ts` (11 blocos, nunca servida) apagada; `Sitemap:`/`Host:` para o `www` | no ar: o servido tinha 24 blocos e anunciava o apex, que dá 301 |
+| 4. Auditoria | `npm run auditar:seo` — roda nas top-100 e grava relatório datado | baseline: 80 erros de canonical (somem com o deploy), 42 páginas sem `og:image`, 34 sem `<h1>` |
+| 5. Conteúdo | 10 posts já no ar; link morto consertado (`/diamantina/diario-oficial`), `<Link>` no render do post, guarda de links nos 193 posts | varredura: 1 link morto em 193 posts |
+
+**Pendência única:** o código está em `main`, mas o site no ar roda o
+build antigo — **deploy manual** (`guara deploy`, política de ~5 dias,
+[OPERACAO.md § 0](../05-operacao/OPERACAO.md#0-cadência-de-deploy-política-do-dono-19092026)).
+Rerodar `npm run auditar:seo` depois do deploy para ver os erros de
+canonical sumirem.
 
 ## Riscos e armadilhas
 

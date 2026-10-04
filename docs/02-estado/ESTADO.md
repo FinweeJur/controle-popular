@@ -38,7 +38,7 @@ Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy
 | **principal** | `www.controlepopular.com.br` → Guara Cloud | ✅ 19/09 |
 | servidor 2 | Cloudflare Tunnel do `home-pc` com `next start -p 3000` | ✅ de pé, monitorado |
 | fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
-| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ⛔ pendente do dev |
+| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ✅ medido 04/10 (301 responde) |
 
 **Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
 A raiz nunca mora no Guara.
@@ -101,9 +101,10 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 |---|---|---|---|
 | A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dev 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
 | A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | ✅ | deploy `278e6430` **healthy** (02/10); o build travava por teto de 60s/página — ver [PLANO-REDUCAO-BUILD](../planos/PLANO-REDUCAO-BUILD.md) |
-| A2 | Redirect 301 no Cloudflare: raiz → www | ⛔ | ação do dev, 2 minutos |
+| A2 | Redirect 301 no Cloudflare: raiz → www | ✅ | **medido 04/10/2026:** a raiz devolve 301 para o `www` — tarefa aberta desde a fila antiga está resolvida |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
+| A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** para o canonical e o sitemap novo chegarem ao ar — baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
 
 **Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
 28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
@@ -134,7 +135,7 @@ memória e não depende de pgvector — ver
 
 | # | Tarefa | Nota |
 |---|---|---|
-| C1 | Redirect da raiz no Cloudflare (A2) | dashboard do Cloudflare |
+| C1 | Redirect da raiz no Cloudflare (A2) | ✅ medido 04/10 — 301 no ar |
 | C2 | Anotar protocolo da LAI no `docs/LAI-PROTOCOLOS.json` | CI vigia o prazo sozinha |
 | C3 | Informar `AJRI_COOKIE` (fases 2 e 3 do PDFs da AJRI) | valor expira |
 | C4 | ~~Abrir conta no Gitee e espelhar o código~~ | ✅ feito no GitLab (29/09), `OPERACAO.md` § 2 |
@@ -158,7 +159,7 @@ Runbooks: [`planos/`](../planos/).
 | Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
 | Neon em 94% storage | ✅ app já no Guara (29/09) — sobra cancelar a conta Neon |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
-| Raiz do domínio com 403 | redirect rule no Cloudflare (A2) |
+| Raiz do domínio com 403 | ✅ redirect 301 medido no ar (04/10) |
 | `guara security findings` quebrado | usar `guara services vulnerabilities` |
 | PDFs da AJRI parados | `AJRI_COOKIE` (dev) |
 | `AI_API_KEY` nunca vai para o repo | fica em `.env.local`, fora do Git |
