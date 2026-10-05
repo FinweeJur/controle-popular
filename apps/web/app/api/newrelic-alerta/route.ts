@@ -129,6 +129,10 @@ export async function GET() {
     status: "online",
     descricao: "Rele de alertas do New Relic para o Telegram — Controle Popular",
     autenticacao: process.env.NEWRELIC_RELAY_SECRET ? "x-relay-secret" : "aberta (defina NEWRELIC_RELAY_SECRET)",
+    // Diagnostico: apenas TAMANHOS, nunca o valor.
+    telegram_bot_len: (process.env.TELEGRAM_BOT_TOKEN || "").length,
+    telegram_chat_len: (process.env.TELEGRAM_CHAT_ID || "").length,
+    newrelic_app: process.env.NEW_RELIC_APP_NAME || null,
     atualizado: new Date().toISOString(),
   });
 }
