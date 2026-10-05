@@ -76,6 +76,51 @@ function montarMensagem(a: ReturnType<typeof resumoAlerta>): string {
   return linhas.join("\n");
 }
 
+/**
+ * Abre uma Issue no GitHub com o alerta, se `GITHUB_ISSUES_TOKEN` existir.
+ *
+ * POR QUE: transforma o alerta do New Relic num item de trabalho rastreavel
+ * (o passo 3 — um agente propoe o PR). Sem token, nao faz nada (o rele segue
+ * so avisando no Telegram). `GITHUB_REPO` sobrepoe o repositorio padrao.
+ */
+async function abrirIssue(corpo: Record<string, unknown>): Promise<boolean> {
+  const token = process.env.GITHUB_ISSUES_TOKEN;
+  if (!token) return false;
+  const repo = process.env.GITHUB_REPO || "FinweeJur/controle-popular";
+  const a = resumoAlerta(corpo);
+  const titulo = `[New Relic] ${a.titulo}`.slice(0, 120);
+  const texto = [
+    "**Alerta do New Relic** (aberto automaticamente pelo rele `/api/newrelic-alerta`).",
+    "",
+    `- Estado: ${a.estado || "?"}`,
+    `- Prioridade: ${a.prioridade || "?"}`,
+    `- Política: ${a.politica || "?"}`,
+    `- Condição: ${a.condicao || "?"}`,
+    a.url ? `- Painel: ${a.url}` : "",
+    "",
+    a.detalhes ? "```\n" + a.detalhes + "\n```" : "",
+    "",
+    "_Investigar, propor correção em PR e rodar a suíte — sem merge automático._",
+  ].join("\n");
+  try {
+    const r = await fetch(`https://api.github.com/repos/${repo}/issues`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "controle-popular-relay",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: titulo, body: texto }),
+      signal: AbortSignal.timeout(15000),
+    });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
   const secret = process.env.NEWRELIC_RELAY_SECRET;
   if (secret) {
@@ -121,7 +166,8 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  const issue = await abrirIssue(corpo);
+  return NextResponse.json({ ok: true, telegram: true, issue });
 }
 
 export async function GET() {

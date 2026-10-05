@@ -116,6 +116,11 @@ jobs:
             if [ -n "${{ secrets.NEWRELIC_RELAY_SECRET }}" ]; then
               ARGS+=("NEWRELIC_RELAY_SECRET=${{ secrets.NEWRELIC_RELAY_SECRET }}")
             fi
+            # Token de Issues (PAT): com ele o rele tambem abre uma Issue no
+            # GitHub. Sem o secret, so o Telegram avisa.
+            if [ -n "${{ secrets.GITHUB_ISSUES_TOKEN }}" ]; then
+              ARGS+=("GITHUB_ISSUES_TOKEN=${{ secrets.GITHUB_ISSUES_TOKEN }}")
+            fi
             az containerapp update -g "$GRUPO" -n "$APP" --set-env-vars "${ARGS[@]}" -o none
           else
             echo "TELEGRAM_BOT_TOKEN/CHAT_ID ausentes nos secrets — preserva o env do app."
