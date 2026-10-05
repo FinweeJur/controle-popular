@@ -139,7 +139,9 @@ ociosas **não** aceleram — paralelizar dividiria o mesmo cano e arriscaria OO
 (RAM livre 1,2 GB, consumida por apps e outras sessões). Decisão: a **geração
 pesada de rede migra para a VM** (sessão do Azure); aqui fica a **GPU**
 (treino/gate). Ganho local restante seria cache da cena (18,7 recortes/cena
-reusam a mesma imagem). Estado no fecho: **3.111/5.120** recortes (~6/min).
+reusam a mesma imagem). Estado 05/10: a geração **passou de 95%** e o **treino
+v6 iniciou** (GPU 43%, 3.150 MiB). O gate só sai se o PC ficar ligado ~1 h; se
+desligar, re-rodar `fecha-v6.ps1` retoma e vai direto ao treino.
 
 ### Bloco C — ação externa do dev
 
@@ -160,6 +162,17 @@ reusam a mesma imagem). Estado no fecho: **3.111/5.120** recortes (~6/min).
   [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
 - Coleta nova volta ao Postger (hoje vai para D1 por causa do storage).
 - Índice de busca pode voltar a crescer sem estourar o teto da Neon.
+
+**Nota — Camber (GitHub Student Pack): tarefa pesada pública fora daqui (proposta 04/10).**
+Camber oferece **200 h CPU, 75 GB e 200 chamadas de LLM/mês**. Candidato:
+reprocessar cavas/ETL e classificar base grande em lote. ⚠️ AGENTS §5.8: é
+**nuvem de terceiro** — só **dado público**; nunca dado pessoal nem segredo.
+**Passo 1 (medir o tempo local antes de migrar):** para o candidato principal
+(a geração 2 m do v6), o número já existe — **~5,2 recortes/min** no `home-pc`,
+**limitado pela rede (~8 Mbps)**, não pela CPU (0,35 de 16 núcleos). Leitura:
+no caso das cavas o gargalo é **banda**, então Camber só ganha se a rede de lá
+for maior; CPU sozinha não resolve. Próximo: escolher a tarefa candidata e medir
+o tempo local dela.
 
 Runbooks: [`planos/`](../planos/).
 
