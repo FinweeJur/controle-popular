@@ -27,6 +27,7 @@ import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
+import RolagemSuave from "@/app/components/rolagem/RolagemSuave";
 import "./globals.css";
 
 /**
@@ -269,7 +270,12 @@ export default function RootLayout({
           {/* Paleta de comandos global (Ctrl/Cmd+K): ir, perguntar e buscar
               num só atalho. Ver `PaletaComandos.tsx`. */}
           <PaletaComandos />
-          {children}
+          {/* Rolagem suave (Lenis) — envolve o CONTEÚDO das páginas no
+              modo raiz do Lenis: a rolagem é do documento inteiro, e a
+              raiz não desmonta na navegação, então sobe uma vez e fica.
+              reduced-motion e o toggle do rodapé desligam de verdade
+              (children volta cru, scroll nativo). Ver `RolagemSuave.tsx`. */}
+          <RolagemSuave>{children}</RolagemSuave>
           {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
               <main> (inclusive /busca e /funcaosocialterra, que não usam o
               Header/layout de nenhuma das quatro zonas) com um só

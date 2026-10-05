@@ -4,6 +4,7 @@ import Image from 'next/image';
 import type { EixoId, SubfrenteId } from '@/lib/eixos/types';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import EixoHeaderNav from './EixoHeaderNav';
+import AberturaHero from '@/app/components/abertura/AberturaHero';
 import FooterGlobal from '@/app/components/FooterGlobal';
 
 interface Props {
@@ -12,6 +13,14 @@ interface Props {
   heroImageSrc?: string;
   heroImageAlt?: string;
   heroCaption?: string;
+  /**
+   * Abertura viva (05/10/2026): tela cheia com o NOME do eixo sobre o
+   * fundo Vanta, entre a navegação e o header de conteúdo. Só os HUBS dos
+   * 4 eixos passam `abertura` — as subfrentes continuam com o header de
+   * sempre, com `<h1>` próprio, para não multiplicar a abertura em 36+
+   * páginas nem quebrar a semântica de um h1 por página.
+   */
+  abertura?: boolean;
   children: React.ReactNode;
 }
 
@@ -21,6 +30,7 @@ export default function EixoLayout({
   heroImageSrc,
   heroImageAlt,
   heroCaption,
+  abertura = false,
   children,
 }: Props) {
   const eixo = CATALOGO_EIXOS[eixoId];
@@ -28,6 +38,10 @@ export default function EixoLayout({
 
   const corVar = eixo.corVar;
   const corInkVar = eixo.corInkVar;
+
+  // Com abertura, o h1 da página mora lá (AberturaHero); o título do
+  // header desce para h2. Sem abertura (subfrentes), h1 como sempre.
+  const TagTitulo = abertura ? 'h2' : 'h1';
 
   return (
     <div
@@ -42,8 +56,14 @@ export default function EixoLayout({
       {/* NAVEGAÇÃO DOS 3 EIXOS */}
       <EixoHeaderNav eixoAtivo={eixoId} subfrenteAtiva={subfrenteId} />
 
+      {/* ABERTURA VIVA — só nos hubs (dono, 05/10/2026). O título do eixo
+          vem do catálogo (`lib/eixos/catalogo.ts`), fonte única — nunca
+          reescrito aqui. A cor do efeito lê `--eixo-ativo-cor`, definida
+          neste wrapper, e por isso acompanha o tema do eixo. */}
+      {abertura && <AberturaHero paginaId={eixoId} titulo={eixo.titulo} />}
+
       {/* CONTAINER PRINCIPAL */}
-      <main className="flex-1">
+      <main id="conteudo-principal" className="flex-1">
         {/* HERO SECTION DO EIXO */}
         <header className="border-b border-border bg-surface-2/30 relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -78,9 +98,12 @@ export default function EixoLayout({
                   )}
                 </div>
 
-                <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
+                {/* Título — h1 nas subfrentes; h2 nos hubs com abertura
+                    (o h1 da página mora no AberturaHero). Mesmas classes:
+                    só a semântica muda. */}
+                <TagTitulo className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
                   {subfrente ? subfrente.titulo : eixo.titulo}
-                </h1>
+                </TagTitulo>
 
                 <p className="mt-3 text-base sm:text-lg text-muted max-w-3xl leading-relaxed">
                   {subfrente ? subfrente.descricao : eixo.descricao}

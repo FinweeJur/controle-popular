@@ -310,9 +310,26 @@ const nextConfig: NextConfig = {
    * aqui basta COPIAR a pasta — não entra em `serverExternalPackages`, que
    * mudaria o bundle de todo o app sem necessidade.
    */
+  /**
+   * `serverExternalPackages` vale para TODOS os alvos agora, não só para o
+   * standalone (medido 05/10/2026, dev frio nesta máquina): o Next compila
+   * `instrumentation.ts` no boot do dev, e o `import("newrelic")` dinâmico
+   * puxava o pacote PARA DENTRO do bundle de servidor — o `shimmer.js` do
+   * newrelic usa um contexto `require("./subscribers/")` que arrasta o
+   * README.md, o webpack não tem loader para `.md`, e o `ModuleParseError`
+   * virava **500 em toda rota** (inclusive 404). A `main` não sentia porque
+   * o cache do dev (`\.next/dev`) estava quente de compilações antigas;
+   * qualquer dev frio (clone novo, cache limpo) rebentava igual.
+   *
+   * - `pg`: motivação original (ver comentário do standalone abaixo) —
+   *   carregado por `createRequire` em `lib/db/client.ts`;
+   * - `newrelic` + `@newrelic/security-agent`: APM de servidor, nunca deve
+   *   ser empacotado; no standalone já era externo por padrão, aqui a
+   *   lista explícita cobre também o dev.
+   */
+  serverExternalPackages: ["pg", "newrelic", "@newrelic/security-agent"],
   ...(standaloneBuild
     ? {
-        serverExternalPackages: ["pg"],
         outputFileTracingIncludes: {
           "*": [
             "../../node_modules/pg/**/*",
@@ -537,9 +554,26 @@ const nextConfig: NextConfig = {
    * Como o contêiner de build é efêmero, desativar o cache de filesystem faz o
    * Webpack processar diretamente na memória RAM, poupando gigabytes de I/O em disco.
    */
-  webpack: (config, { dev }) => {
+  webpack: (config, { dev, isServer }) => {
     if (!dev && standaloneBuild) {
       config.cache = false;
+    }
+    if (isServer) {
+      // ═══ NEWRELIC NUNCA ENTRA NO BUNDLE DE SERVIDOR ═══
+      // O APM é carregado em runtime por `instrumentation.ts`
+      // (`await import("newrelic")`) — Node resolve o pacote sozinho, que
+      // é exatamente o comportamento certo para código só-de-servidor.
+      // Sem a marcação, o webpack EMPACOTA o pacote na compilação da
+      // instrumentation: o `shimmer.js` do newrelic abre um contexto
+      // `require("./subscribers/")` que arrasta o README.md, o webpack
+      // não tem loader para `.md`, e o ModuleParseError vira **500 em
+      // toda rota** no dev frio (medido 05/10/2026: qualquer clone novo
+      // ou `.next` limpo rebenta; a `main` só não sentia porque o cache
+      // do dev estava quente). Alternativas descartadas:
+      // `serverExternalPackages` não se aplica à compilação da
+      // instrumentation, e o webpack compilado do Next não exporta
+      // `ContextReplacementPlugin`.
+      config.externals.push(/^newrelic($|[\\/])/, /^@newrelic($|[\\/])/);
     }
     return config;
   },

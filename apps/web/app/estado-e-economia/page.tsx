@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
+import SpotlightCard from '@/app/components/react-bits/SpotlightCard';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
@@ -28,14 +29,17 @@ export default function EstadoEEconomiaHub() {
   return (
     <EixoLayout
       eixoId="estado"
+      abertura
       heroImageSrc="/images/eixos/direitos-em-movimento-arara.jpg"
       heroImageAlt="Vista aérea sobre os territórios e instituições"
       heroCaption="O poder público e o fluxo do dinheiro — o Eixo Estado e Economia fiscaliza contratos, orçamentos, tribunais e leis."
     >
-        {/* 1. CARTÕES DE STATUS INSTITUCIONAIS */}
+        {/* 1. CARTÕES DE STATUS INSTITUCIONAIS — SpotlightCard (React Bits,
+            vendor): luz que segue o cursor; some em reduced-motion/alto
+            contraste, cartão fica normal. */}
         <section aria-label="Indicadores institucionais e financeiros" className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-12">
           {indicadoresEstado.map((item) => (
-            <div key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+            <SpotlightCard key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider block mb-1">
                 {item.rotulo}
               </span>
@@ -45,7 +49,7 @@ export default function EstadoEEconomiaHub() {
               <span className="text-xs text-muted block mt-1">
                 {item.obs}
               </span>
-            </div>
+            </SpotlightCard>
           ))}
         </section>
 

@@ -6,6 +6,7 @@ import PedirDadosEmail from "@/app/components/PedirDadosEmail";
 import ContadorPublico from "@/app/components/ContadorPublico";
 import BotoesNotificacao from "@/app/components/BotoesNotificacao";
 import BotaoRadio from "@/app/components/BotaoRadio";
+import BotaoRolagemSuave from "@/app/components/rolagem/BotaoRolagemSuave";
 import ReportarErro from "@/app/components/ReportarErro";
 import CitarPagina from "@/app/components/CitarPagina";
 
@@ -140,6 +141,10 @@ export default function FooterGlobal() {
           <ReportarErro />
           <CitarPagina />
           <BotaoRadio />
+          {/* Ligar/desligar a rolagem suave (Lenis) — controle do usuário,
+              persistido em localStorage; o provedor no layout raiz relê no
+              evento `cp-rolagem-suave`. Ver `rolagem/RolagemSuave.tsx`. */}
+          <BotaoRolagemSuave />
           <NextLink
             href="/radio"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"

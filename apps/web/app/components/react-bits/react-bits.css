@@ -1,0 +1,102 @@
+/*
+ * Estilos dos componentes vendoriados do React Bits (ShinyText e
+ * SpotlightCard) — um arquivo só para os dois, porque nenhum tem JS
+ * suficiente para justificar CSS próprio e assim a importação é única.
+ *
+ * REGRA DE CONTRASTE (AGENTS.md): o brilho e o spotlight são DECORATIVOS.
+ * O texto continua legível com a cor herdada; no tema alto contraste os
+ * dois efeitos desaparecem; em prefers-reduced-motion as animações param.
+ * Paleta em OKLCH no portal — nada aqui mede cor, só referencia tokens.
+ */
+
+/* ── ShinyText: brilho que desliza sobre o texto ───────────────────── */
+
+.cp-shiny {
+  /* Base translúcida para o gradiente aparecer DENTRO dos glifos
+     (background-clip: text). A caixa de leitura fica por conta do
+     contorno (text-shadow) aplicado pelo h1 pai — mesma técnica da
+     CapaFrente. @supports: sem color-mix, base opaca (brilho desliga). */
+  color: inherit;
+}
+
+@supports (color: color-mix(in srgb, red 50%, transparent)) {
+  .cp-shiny {
+    color: color-mix(in srgb, currentColor 62%, transparent);
+    background-image: linear-gradient(
+      120deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.85) 50%,
+      transparent 60%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: cp-brilho-desliza 4s linear infinite;
+  }
+}
+
+@keyframes cp-brilho-desliza {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-shiny {
+    animation: none;
+    background-image: none;
+  }
+  /* Sem animação, o texto volta a ser opaco e plenamente legível. */
+  .cp-shiny {
+    color: inherit;
+  }
+}
+
+/* Alto contraste: nenhum efeito decorativo — só texto com os tokens. */
+[data-theme="high-contrast"] .cp-shiny {
+  animation: none;
+  background-image: none;
+  color: inherit;
+}
+
+/* ── SpotlightCard: luz radial que segue o cursor no cartão ────────── */
+
+.cp-spotlight {
+  position: relative;
+}
+
+.cp-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  /* A cor vem do token --cp-glow do tema (rgba da primária) — o tema
+     alto contraste já o define como transparente, e o display:none
+     abaixo é a segunda trava. */
+  background: radial-gradient(
+    240px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    var(--cp-spot-cor, var(--cp-glow)),
+    transparent 65%
+  );
+}
+
+.cp-spotlight:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-spotlight::after {
+    display: none;
+  }
+}
+
+[data-theme="high-contrast"] .cp-spotlight::after {
+  display: none;
+}

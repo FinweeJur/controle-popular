@@ -8,6 +8,7 @@ import { REDE_ITENS, LAI_ESTADUAL, LAI_FEDERAL, NAO_VERIFICADO } from "@/lib/bet
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import AberturaHero from "@/app/components/abertura/AberturaHero";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
 import VitrineLutas from "./VitrineLutas";
 import type { VerbeteVitrine } from "./VitrineLutas";
@@ -96,6 +97,13 @@ export default async function DireitosEmMovimentoHub() {
   ];
 
   return (
+    // ⟲ 05/10, hero vivo: a abertura (tela cheia, só o nome, fundo Vanta)
+    // fica FORA e ACIMA do <main> — o <h1> da página mora lá agora, então
+    // o título do header abaixo desceu para <h2>. Este hub é standalone
+    // (não usa EixoLayout), por isso a abertura entra direto aqui — o
+    // efeito e o token de cor vêm de `lib/hero-vivo.ts` ("birds").
+    <>
+      <AberturaHero paginaId="direitos" titulo="Direitos em Movimento" />
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
         <NextLink href="/" className="hover:text-primary">
@@ -111,7 +119,8 @@ export default async function DireitosEmMovimentoHub() {
         >
           Eixo 2: Direitos em Movimento · Para quem sofreu ou viu uma violação
         </p>
-        <h1 className="font-display text-3xl font-bold sm:text-4xl">Direitos em Movimento</h1>
+        {/* h2, não h1: o h1 único da página vive na abertura viva acima. */}
+        <h2 className="font-display text-3xl font-bold sm:text-4xl">Direitos em Movimento</h2>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Quatro perguntas, quatro portas: que lei protege isso, onde buscar ajuda, como pedir
           informação e como denunciar. Você não precisa saber em que parte do site está — só o
@@ -350,6 +359,7 @@ export default async function DireitosEmMovimentoHub() {
       </footer>
       <FooterGlobal />
     </main>
+    </>
   );
 }
 

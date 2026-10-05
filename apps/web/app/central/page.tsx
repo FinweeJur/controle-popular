@@ -51,6 +51,7 @@ import {
   Globe2,
 } from "lucide-react";
 import EixoLayout from "@/app/components/eixos/EixoLayout";
+import SpotlightCard from "@/app/components/react-bits/SpotlightCard";
 import { CATALOGO_EIXOS } from "@/lib/eixos/catalogo";
 
 export const metadata: Metadata = {
@@ -103,6 +104,7 @@ export default function EixoCentralPage() {
   return (
     <EixoLayout
       eixoId="central"
+      abertura
       heroImageSrc="/capas/home-page.webp"
       heroImageAlt="Eixo Central — Inteligência Cívica e Ferramentas do Controle Popular"
       heroCaption="Eixo Central: O hub técnico, metodológico e de inteligência cidadã que conecta os eixos de fiscalização do Controle Popular."
@@ -113,7 +115,9 @@ export default function EixoCentralPage() {
         className="mb-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
       >
         {indicadoresCentrais.map((item) => (
-          <div
+          // SpotlightCard (React Bits, vendor): luz que segue o cursor;
+          // reduced-motion e alto contraste ficam sem o efeito.
+          <SpotlightCard
             key={item.rotulo}
             className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs"
           >
@@ -126,7 +130,7 @@ export default function EixoCentralPage() {
             <span className="mt-1 block text-xs text-muted">
               {item.obs}
             </span>
-          </div>
+          </SpotlightCard>
         ))}
       </section>
 

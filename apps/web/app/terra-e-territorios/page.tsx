@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
+import SpotlightCard from '@/app/components/react-bits/SpotlightCard';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
@@ -29,14 +30,17 @@ export default function TerraETerritoriosHub() {
   return (
     <EixoLayout
       eixoId="terra"
+      abertura
       heroImageSrc="/images/eixos/terra-e-territorios-ipe-lobo.jpg"
       heroImageAlt="Lobo-guará caminhando ao lado de um ipê amarelo florido em escarpa rochosa do Cerrado"
       heroCaption="O lobo-guará e o ipê-amarelo no alto da serra — o Eixo Terra e Territórios vigia a soberania do solo, as águas e a integridade socioambiental do Brasil."
     >
-        {/* 1. CARTÕES DE STATUS DO EIXO */}
+        {/* 1. CARTÕES DE STATUS DO EIXO — SpotlightCard (React Bits, vendor
+            em app/components/react-bits/): mesma caixa, com luz que segue o
+            cursor; reduced-motion e alto contraste ficam sem o efeito. */}
         <section aria-label="Estatísticas territoriais" className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-12">
           {indicadoresTerritorio.map((item) => (
-            <div key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+            <SpotlightCard key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider block mb-1">
                 {item.rotulo}
               </span>
@@ -46,7 +50,7 @@ export default function TerraETerritoriosHub() {
               <span className="text-xs text-muted block mt-1">
                 {item.obs}
               </span>
-            </div>
+            </SpotlightCard>
           ))}
         </section>
 
