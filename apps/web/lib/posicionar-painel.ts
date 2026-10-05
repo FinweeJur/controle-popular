@@ -269,10 +269,20 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
     // `scrollHeight` devolveria o valor já cortado e o painel nunca voltaria a
     // crescer quando a tela aumentasse. Limpar e restaurar na mesma batida de
     // layout não pisca (roda antes da pintura) e é o preço de ter o teto.
+    //
+    // PRESERVAR A ROLAGEM (conserto 05/10/2026): com o teto removido o painel
+    // cresce até o conteúdo inteiro, o navegador zera o `scrollTop` e restaurar
+    // o teto NÃO devolve a posição. Sem guardar e recolocar o `scrollTop`, toda
+    // medição jogava o leitor de volta ao topo. Pior: `recalcular` roda no
+    // evento de `scroll` do próprio painel — a roda do mouse rolava, o evento
+    // pedia nova medição e a lista pulava para o começo. Efeito medido com
+    // Playwright em 05/10/2026 nos três painéis (rádio, bichinhos e Seu Nonô).
+    const scrollTopAnterior = painel.scrollTop;
     const maxAnterior = painel.style.maxHeight;
     painel.style.maxHeight = "none";
     const alturaNatural = painel.scrollHeight;
     painel.style.maxHeight = maxAnterior;
+    if (painel.scrollTop !== scrollTopAnterior) painel.scrollTop = scrollTopAnterior;
 
     const larguraNatural = painel.offsetWidth;
     const largura = o.larguraMaxima
@@ -314,8 +324,18 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
   useEffect(() => {
     if (!aberto) return;
     const aoMudar = () => recalcular();
+    // Rolar DENTRO do painel não pode reposicioná-lo nem remedi-lo: o próprio
+    // `recalcular` mexe no teto e zeraria a rolagem do leitor (ver o conserto
+    // de 05/10/2026 em `recalcular`). Só interessa a rolagem de FORA — a
+    // página ou um contêiner que desloca a âncora. O listener roda em captura,
+    // então o `target` é o próprio elemento que rolou.
+    const aoRolar = (e: Event) => {
+      const alvo = e.target;
+      if (alvo instanceof Node && painelRef.current?.contains(alvo)) return;
+      recalcular();
+    };
     window.addEventListener("resize", aoMudar);
-    window.addEventListener("scroll", aoMudar, true);
+    window.addEventListener("scroll", aoRolar, true);
     const vv = window.visualViewport;
     vv?.addEventListener("resize", aoMudar);
     vv?.addEventListener("scroll", aoMudar);
@@ -324,7 +344,7 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
     if (observador && painelRef.current) observador.observe(painelRef.current);
     return () => {
       window.removeEventListener("resize", aoMudar);
-      window.removeEventListener("scroll", aoMudar, true);
+      window.removeEventListener("scroll", aoRolar, true);
       vv?.removeEventListener("resize", aoMudar);
       vv?.removeEventListener("scroll", aoMudar);
       observador?.disconnect();
