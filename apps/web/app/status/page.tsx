@@ -58,8 +58,10 @@ export default function StatusPage() {
       </h1>
 
       <p className="mt-3 max-w-2xl text-[1.02em] leading-relaxed text-text-soft">
-        Esta página mostra, na hora, se o portal está no ar. A medição é feita
-        pelo seu próprio navegador — nada passa por um servidor nosso.
+        Esta página mostra, na hora, se os <strong className="text-text">três
+        servidores</strong> do portal estão no ar: o site oficial (Guara), o
+        servidor 2 (o PC de casa) e o espelho no Azure. A medição é feita pelo
+        seu próprio navegador — nada passa por um servidor nosso.
       </p>
 
       <StatusAoVivo />
@@ -86,9 +88,9 @@ export default function StatusPage() {
         </h2>
         <p>
           Lacuna declarada, não escondida: esta página <strong>não</strong>{" "}
-          verifica o banco de dados por trás do portal nem o servidor 2 (túnel
-          do PC de casa). O <code>/api/saude</code> é leve de propósito — medir
-          o banco a cada batida viraria carga sem necessidade.
+          verifica o banco de dados por trás do portal. O <code>/api/saude</code>{" "}
+          é leve de propósito — medir o banco a cada batida viraria carga sem
+          necessidade.
         </p>
 
         <h2 className="font-display text-lg font-semibold text-text">
@@ -106,8 +108,8 @@ export default function StatusPage() {
         </p>
         <p>
           Enquanto o portal estiver de pé, você pode usar as duas: a do Pages é
-          o alarme; esta, a de dentro. As duas medem o mesmo endereço de fora
-          para dentro.
+          o alarme; esta, a de dentro. As duas medem os mesmos três servidores
+          de fora para dentro.
         </p>
       </section>
 

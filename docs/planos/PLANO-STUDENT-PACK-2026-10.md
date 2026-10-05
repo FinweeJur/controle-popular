@@ -196,11 +196,10 @@ O que ela **não** mede (lacuna declarada no próprio código): o banco por trá
 do portal; o **servidor 2** (túnel do `home-pc`), sem endereço fixo; e o
 **espelho Azure** (`www.controlepopular.tech`).
 
-A ideia do dono (mostrar os três servidores) é viável em duas partes:
-
-1. **Agora:** acrescentar o espelho `www.controlepopular.tech` como 3º alvo —
-   tem endereço fixo e detecta uma queda só do Guara;
-2. **Depois:** incluir o `home-pc` quando o túnel tiver endereço estável.
+O dono informou o endereço fixo do servidor 2 (`backup.controlepopular.com.br`,
+05/10/2026). Com isso, a `/status` passou a medir os **três servidores** —
+Guara, home-pc e Azure —, cada um com as páginas e o `/api/saude`. Os dois
+endereços novos respondem 200 com `/api/saude` (medido 05/10/2026).
 
 A cópia no GitHub Pages é o que faz a página sobreviver à queda de QUALQUER um
 dos servidores, porque ela mesma mora em outro provedor.

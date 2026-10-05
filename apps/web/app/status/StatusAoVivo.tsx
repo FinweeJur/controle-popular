@@ -22,10 +22,15 @@
  *    deixa saber que a RESPOSTA CHEGOU. Chegar já prova que o host responde.
  *    Por isso o rótulo honesto "alcançável; não deu para ler o corpo".
  *
- * O QUE ESTA PÁGINA NÃO MEDE (lacuna declarada, não escondida):
- * - o banco de dados por trás do portal (o /api/saude é leve de propósito);
- * - o servidor 2 (túnel do home-pc), cujo endereço não é fixo.
- * Se um dia precisar, é rota separada — não inventar "ok" sem medir.
+ * O QUE ESTA PÁGINA MEDE (05/10/2026): os TRÊS servidores do portal, cada um
+ * com as páginas e o /api/saude:
+ * - Guara Cloud (site oficial, www.controlepopular.com.br);
+ * - home-pc (servidor 2, túnel em backup.controlepopular.com.br);
+ * - Azure (espelho, www.controlepopular.tech).
+ *
+ * O QUE AINDA NÃO MEDE (lacuna declarada, não escondida): o banco de dados
+ * por trás do portal — o /api/saude é leve de propósito. Se um dia precisar,
+ * é rota separada; não inventar "ok" sem medir.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -49,19 +54,47 @@ interface Resultado {
 /**
  * Endereços oficiais vigiados. São ABSOLUTOS de propósito: a cópia no GitHub
  * Pages está em outro domínio e precisa saber onde fica o portal de verdade.
+ * Cada servidor entra com DOIS alvos: as páginas e o /api/saude.
  */
 const ALVOS: Alvo[] = [
+  // Servidor 1 — Guara Cloud (site oficial).
   {
-    id: "portal",
-    nome: "Portal — páginas",
+    id: "guara-paginas",
+    nome: "Guara — páginas",
     descricao: "A home do site oficial, www.controlepopular.com.br.",
     url: "https://www.controlepopular.com.br/",
   },
   {
-    id: "saude",
-    nome: "Aplicação — /api/saude",
-    descricao: "Endpoint leve que confirma que o servidor do portal está de pé.",
+    id: "guara-saude",
+    nome: "Guara — aplicação",
+    descricao: "O /api/saude confirma que o servidor do site oficial está de pé.",
     url: "https://www.controlepopular.com.br/api/saude",
+  },
+  // Servidor 2 — home-pc (túnel fixo em backup.controlepopular.com.br).
+  {
+    id: "homepc-paginas",
+    nome: "Casa (home-pc) — páginas",
+    descricao: "O servidor 2, no PC de casa, exposto pelo túnel backup.controlepopular.com.br.",
+    url: "https://backup.controlepopular.com.br/",
+  },
+  {
+    id: "homepc-saude",
+    nome: "Casa (home-pc) — aplicação",
+    descricao: "O /api/saude confirma que o servidor 2 (home-pc) está de pé.",
+    url: "https://backup.controlepopular.com.br/api/saude",
+  },
+  // Servidor 3 — espelho no Azure Container Apps.
+  {
+    id: "azure-paginas",
+    nome: "Azure (espelho) — páginas",
+    descricao: "O espelho no Azure Container Apps, www.controlepopular.tech.",
+    url: "https://www.controlepopular.tech/",
+  },
+  {
+    id: "azure-saude",
+    nome: "Azure (espelho) — aplicação",
+    descricao: "O /api/saude confirma que o espelho no Azure (.tech) está de pé.",
+    url: "https://www.controlepopular.tech/api/saude",
   },
 ];
 
@@ -104,7 +137,7 @@ async function verificar(alvo: Alvo): Promise<Resultado> {
       const resp = await fetch(alvo.url, { cache: "no-store", signal });
       const ms = Math.round(performance.now() - inicio);
       let detalhe = `respondeu HTTP ${resp.status}`;
-      if (alvo.id === "saude") {
+      if (alvo.id.endsWith("saude")) {
         try {
           const corpo = (await resp.json()) as { t?: string };
           if (corpo?.t) {
