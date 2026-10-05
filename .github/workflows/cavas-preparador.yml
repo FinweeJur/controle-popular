@@ -65,10 +65,11 @@ jobs:
       - name: Rodar o preparador (Fase 1) dentro da VM
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
+          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && LIM_POS=$LIM LIM_NEG=$LIM bash /tmp/prep.sh"
           az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
-            --scripts "LIM_POS=$LIM LIM_NEG=$LIM bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh)\"" \
-            --output json | grep -i '"message"' || true
+            --scripts "$CMD" \
+            --query "value[0].message" -o tsv | tail -30
 
       - name: Desligar a VM (sempre)
         if: always()
