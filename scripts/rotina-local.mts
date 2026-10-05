@@ -91,10 +91,16 @@ const ORDEM = [
 // Piso de páginas abaixo do qual o deploy é abortado.
 //
 // 21 é o número medido de um build SEM banco (só as rotas que não consultam
-// nada). 1.471 é o número com o banco local. O piso fica bem acima de 21 e
-// bem abaixo de 1.471 de propósito: ele existe para pegar "o Postgres não
-// subiu", não para vigiar crescimento de conteúdo.
-const PISO_PAGINAS = 1000;
+// nada). O saudável, medido em 05/10/2026 no worktree pub-tunel com banco
+// local de pé e 12 cidades ativas, é 621 rotas prerenderizadas (611 com 6
+// cidades — mesma medição nos logs de 03, 04, 05 e 10/10). O piso era 1000,
+// calibrado no regime antigo em que a zona [municipio] era pré-renderizada no
+// build (1.471 com banco); desde a troca para on-demand (paramsDasCidades
+// devolve [] fora do alvo export) TODO build saudável fica abaixo dele e a
+// rotina abortava em toda rodada. 300 fica 14× acima do build sem banco e 2×
+// abaixo do saudável: ainda pega "o Postgres não subiu", sem abortar build
+// bom. A erosão entre rodadas continua sendo vigiada por QUEDA_MAXIMA.
+const PISO_PAGINAS = 300;
 
 // Queda relativa que exige confirmação. O piso pega o desastre; isto pega a
 // erosão — uma tabela que esvaziou derruba centenas de páginas sem chegar
