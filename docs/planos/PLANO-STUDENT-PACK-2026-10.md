@@ -121,7 +121,20 @@ válida. Anotar no calendário e **revalidar antes de vencer**:
 - ✅ **Status page (04/10/2026):** rota `/status` feita. Falta a decisão de
   rodar o workflow "Publicar no GitHub Pages" (manual e pesado) para existir a
   cópia independente; até lá, `/status` funciona só dentro do portal.
-- **Termius e Azure:** adoção fora do código (conta/host), ainda não executada.
+- ✅ **Termius e SSH (04/10/2026):** OpenSSH Server ligado no `home-pc` com login
+  por **chave** (`administrators_authorized_keys`); Tailscale já ativo
+  (`100.126.160.109`). A mesma chave (`~/.ssh/id_rsa`) serve o `home-pc` e a VM.
+- ✅ **Azure montado (04/10/2026):** espelho no **Container Apps**
+  (`northcentralus` — a Student bloqueia o Brasil), **New Relic** conectado
+  ("Controle Popular (Azure)"), **VM** `cp-vm` (B2ats_v2, desligada por padrão)
+  e **Blob** `cpdados4751` para o preparador das cavas. Ver
+  [HANDOFF-2026-10-04](../historico/entregas/HANDOFF-2026-10-04-AZURE-CAVAS.md).
+- ⏳ **Azure Speech (voz do portal):** oferta "sempre grátis" (0,5 mi
+  caracteres/mês). Ainda **não** integrado — o "Ouvir Página" hoje usa o
+  `speechSynthesis` do navegador (`app/components/OuvirPagina.tsx`).
+- ⏸️ **Adiado/sem uso:** Codespaces e alternativas (GitLab/chinês) — o par
+  `home-pc` + VM cobre; `controlepopular.com` (livre, mas registrar é pago
+  ~US$ 10/ano); as ofertas condicionais (MongoDB, Astra, CARTO, Camber, Visme).
 - **Re-scan de segurança** após o deploy (ver `PLANO-SEGURANCA-TRIVY-2026-10.md`).
 
 ## Régua
