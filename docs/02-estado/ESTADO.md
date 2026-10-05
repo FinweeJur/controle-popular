@@ -132,7 +132,7 @@ memória e não depende de pgvector — ver
 | B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Gate v5 PASSOU (01/10); lote v6 (recortes 2 m, pan-sharpen) em geração — ver **Nota B4**. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
-| B7 | **Turbopack no build (decisão do dono 05/10: manter se melhor)** | 🚧 | Home PC ✅ medido 05/10: 338s vs 369–398s webpack, pico 3.886 MB vs 5.392 MB, `.next` 754 MB vs 1.501 MB, 621 rotas iguais, Drizzle 73 KB gzip vs 60 KB, server 32,0 vs 32,2 MB gzip, type-check roda no turbo (Next 16.3.5). Teste Linux/standalone (proxy do Guara) = build podman `cp-turbo-test`; deploy real Guara = próxima janela de cota (~08/10). Azure pulado (ordem do dono 05/10). Worktree `med-turbo` guarda as medições — não apagar |
+| B7 | **Turbopack no build (decisão do dono 05/10: manter se melhor)** | ✅ | Home PC ✅ medido 05/10: 338s vs 369–398s webpack, pico 3.886 MB vs 5.392 MB, `.next` 754 MB vs 1.501 MB, 621 rotas iguais, Drizzle 73 KB gzip vs 60 KB, server 32,0 vs 32,2 MB gzip, type-check roda no turbo (Next 16.3.5). Guara-proxy ✅ verde: imagem podman `cp-turbo-test` (Linux/standalone, 1,12 GB, build frio ~46 min) construída e servidor servindo páginas reais (delta 543 vs 621 rotas = ausência de `DATABASE_URL` no container, não do bundler). **Adotado:** `apps/web/package.json` `build` → `--turbopack`. Deploy real na próxima janela de cota (~08/10); `cf:build` herda a flag — fumaça antes de usar o fallback Cloudflare. Azure pulado (ordem do dono 05/10). Worktree `med-turbo` guarda as medições — não apagar |
 
 **Nota B4 — geração de imagem vai para a VM; a rede local é o teto (04/10).**
 O lote v6 (recortes 2 m) roda no `home-pc`, mas é **limitado pela rede**, não
@@ -222,9 +222,10 @@ Runbooks: [`planos/`](../planos/).
 - **Comentários do `apps/web/package.json` sobre Turbopack estavam
   desatualizados** (medido 05/10): Drizzle 626 KiB → 73 KB gzip, e o
   type-check RODA no `next build --turbopack` (Next 16.3.5,
-  "Finished TypeScript in 97s"). O motivo histórico (teto de 3 MiB do
-  Worker Cloudflare) continua válido como cuidado na troca — medir o
-  bundle do Worker antes de trocar o alvo `cf:build`.
+  "Finished TypeScript in 97s"). `build` trocado para `--turbopack`
+  (B7). O `cf:build` do OpenNext dispara o mesmo script e **herda a
+  flag** — rodar um `cf:build` de fumaça e conferir o bundle do Worker
+  contra os 3 MiB antes de depender do fallback Cloudflare.
 
 ## Entregas recentes
 
