@@ -141,7 +141,11 @@ pesada de rede migra para a VM** (sessão do Azure); aqui fica a **GPU**
 (treino/gate). Ganho local restante seria cache da cena (18,7 recortes/cena
 reusam a mesma imagem). Estado 05/10: a geração **passou de 95%** e o **treino
 v6 iniciou** (GPU 43%, 3.150 MiB). O gate só sai se o PC ficar ligado ~1 h; se
-desligar, re-rodar `fecha-v6.ps1` retoma e vai direto ao treino.
+desligar, re-rodar `fecha-v6.ps1` retoma e vai direto ao treino. **Veredito v6
+(05/10): PASSOU, mas o 2 m NÃO superou o v5** — sobreamostragem, holdout 1.043,
+limiar 0,33: precisão 0,782 / recall 0,888 / acurácia bal. 0,799, contra
+0,811 / 0,886 / 0,823 do v5 (8 m). Decisão: **seguir no 8 m**; não gastar banda
+gerando 2 m para o restante.
 
 ### Bloco C — ação externa do dev
 
@@ -173,6 +177,10 @@ reprocessar cavas/ETL e classificar base grande em lote. ⚠️ AGENTS §5.8: é
 no caso das cavas o gargalo é **banda**, então Camber só ganha se a rede de lá
 for maior; CPU sozinha não resolve. Próximo: escolher a tarefa candidata e medir
 o tempo local dela.
+**Decisão 05/10:** o **Camber não tem GPU** → o papel dele é **gerar recortes 8 m**
+(CPU/rede), não classificar. O modelo treinado fica no `home-pc`. Ordem dos
+estados: **MG → PA → GO → BA → AM**. Entrega dos recortes pela mesma via do
+preparador (Blob/rsync). Passo 1: um lote de 100 recortes e medir tempo/banda.
 
 Runbooks: [`planos/`](../planos/).
 
