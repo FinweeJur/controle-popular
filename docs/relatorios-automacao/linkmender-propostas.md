@@ -1,18 +1,18 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-04T06:41:28.740Z
-- Duracao total: 8.4 min
+- Gerado em: 2026-10-05T06:44:06.197Z
+- Duracao total: 10.0 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 411
-- OK: 342
+- OK: 337
 - QUEBRADOS: 9
-- REDIRECTS: 26
-- INCONSISTENTES: 34
+- REDIRECTS: 25
+- INCONSISTENTES: 40
 - Propostas geradas: 14
-- Links sem proposta: 21
+- Links sem proposta: 20
 
 ## Links quebrados e redirecionados
 
@@ -52,7 +52,6 @@
 | https://www.revistas.usp.br/revhistoria/article/view/89008 | REDIRECT | 200 | https://revistas.usp.br/revhistoria/pt_BR/article/view/89008 |
 | https://www.tjmg.jus.br | REDIRECT | 200 | https://www.tjmg.jus.br/portal-tjmg/ |
 | https://www.trf6.jus.br | REDIRECT | 200 | https://portal.trf6.jus.br/ |
-| https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia | REDIRECT | 200 | https://www2.camara.leg.br/acl_users/credentials_cookie_auth/require_login?came_from=https%3A//www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia |
 
 ## Propostas com diff
 
@@ -225,7 +224,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://exemplo.org/a (404) — dominio nao governamental — correcao manual
 - https://www.cptnacional.org.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 (200) — dominio nao governamental — correcao manual
-- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia (200) — dominio nao governamental — correcao manual
 - https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ (200) — dominio nao governamental — correcao manual
 - https://www.revistas.usp.br/revhistoria/article/view/89008 (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
@@ -251,6 +249,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://www.diariomunicipal.com.br/amm-mg/ (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
@@ -268,6 +267,11 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
 - https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/25-anos-da-constituicao-de-1988/constituinte-1987-1988 (rede) — erro de rede: This operation was aborted
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia (rede) — erro de rede: This operation was aborted
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/lei-da-anistia (rede) — erro de rede: This operation was aborted
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/diretas-ja (rede) — erro de rede: This operation was aborted
+- https://www2.camara.leg.br/legin/fed/lei/1900-1909/lei-1261-31-outubro-1904-584180-publicacaooriginal-106938-pl.html (rede) — erro de rede: This operation was aborted
 - https://x (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
