@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global (infraestrutura, observabilidade, custo)
-> **Última medição:** 2026-10-04
+> **Última medição:** 2026-10-05
 > **Leitura estimada:** média (5–10 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** student pack, new relic, sentry, simple analytics, observabilidade, analytics, guara, cota, deploy, dados pessoais, expiracao
@@ -16,6 +16,9 @@
 - [Como ligar/desligar o New Relic](#como-ligardesligar-o-new-relic)
 - [Datas de expiração e renovação](#datas-de-expiração-e-renovação)
 - [Pendências](#pendências)
+- [Limites e custo do Azure](#limites-e-custo-do-azure)
+- [Camber, CodeScene e Polypane](#camber-codescene-e-polypane)
+- [O que a página de status mede](#o-que-a-página-de-status-mede)
 - [Régua](#régua)
 
 ## Propósito
@@ -45,12 +48,12 @@ Medidas no repositório (fonte entre parênteses):
 | **Simple Analytics** | plano do pack; sem cookie e sem DNT | ✅ **integrado** — lacuna de analytics |
 | **Termius** | Pro grátis enquanto estudante | ✅ adotar — SSH no `home-pc` |
 | **GitHub Pages** | grátis para todos | ✅ adotar — status page/docs estáticos |
-| **Azure** | US$ 100 + 25 serviços (18+, sem cartão) | 🟡 staging/TTS — planejar consumo |
-| **CodeScene** | conta grátis (repo público já é grátis) | 🟡 análise pontual de dívida |
+| **Azure** | US$ 100 + 25 serviços (18+, sem cartão) | ✅ espelho (Container Apps) + leitura traduzida (Speech/Translator F0) |
+| **CodeScene** | conta grátis (repo público já é grátis) | 🟡 plano abaixo — análise de dívida |
 | **IMG Bot** | otimiza imagem no repo | 🟡 só se houver imagem pesada |
 | **MongoDB / Astra** | créditos Atlas / DataStax | 🟡 só se o RAG sair da memória |
 | **CARTO** | upgrade espacial por 2 anos | 🟡 futuro do eixo Terra |
-| **Camber** | 200 h CPU, 75 GB, 200 LLM/mês | 🟡 análise pesada — adiar |
+| **Camber** | 200 h CPU, 75 GB, 200 LLM/mês | 🟡 plano abaixo — só dado público (§5.8) |
 | **Visme** | 3 meses Starter | 🟡 divulgação, sem número digitado (AGENTS §7) |
 | **AstraSecurity** | firewall 6 meses | ❌ redundante com Cloudflare |
 | **Pageclip** | forms hospedados | ❌ dado de cidadão a terceiro (§5.8) |
@@ -141,6 +144,66 @@ válida. Anotar no calendário e **revalidar antes de vencer**:
   `home-pc` + VM cobre; `controlepopular.com` (livre, mas registrar é pago
   ~US$ 10/ano); as ofertas condicionais (MongoDB, Astra, CARTO, Camber, Visme).
 - **Re-scan de segurança** após o deploy (ver `PLANO-SEGURANCA-TRIVY-2026-10.md`).
+
+## Limites e custo do Azure
+
+Medido em 05/10/2026:
+
+- **O build NÃO gasta crédito Azure.** A imagem Docker do espelho é construída
+  no **GitHub Actions** (`ubuntu-latest`), grátis em repositório público. O
+  Azure só RECEBE a imagem pronta (GHCR) e roda o contêiner.
+- **Container Apps (`cp-web`):** 0,5 vCPU + 1 GiB, **máximo 1 réplica e mínimo
+  0** — escala a zero quando ninguém acessa. Há franquia mensal gratuita; acima
+  dela, cobra por segundo de uso (só enquanto a página está servindo).
+- **Cognitivo F0 (`cp-onsa-traduz`, `cp-onsa-voz`):** grátis dentro do limite
+  (Translator 2 mi e Speech 0,5 mi de caracteres/mês); sem cobrança na faixa.
+- **VM `cp-vm`:** gasta crédito **só ligada**; está **deallocated** (medido
+  05/10/2026) e tem auto-shutdown às 16:00 UTC. Parada, sobra só o disco.
+- **Storage (`cpdados4751`) e Log Analytics:** centavos ao mês.
+- **Teto real:** o crédito de **US$ 100 / 12 meses** do Azure for Students. Não
+  há cartão cadastrado: quando o crédito acaba, os recursos param — não vira
+  dívida. Não existe limite de "horas" separado do crédito.
+
+## Camber, CodeScene e Polypane
+
+Três ofertas que cabem e ainda não foram usadas, cada uma com o primeiro passo
+e o cuidado:
+
+- **CodeScene (dívida técnica).** Lê o histórico do Git e aponta os "hotspots"
+  — arquivos que mais mudam e mais concentram risco — para priorizar
+  refatoração sem achismo. Primeiro passo: entrar em codescene.io com o GitHub
+  e conectar o repo `FinweeJur/controle-popular`. Cuidado: nenhum (repo público).
+- **Polypane (responsivo + acessibilidade).** Navegador que abre a mesma página
+  em vários tamanhos e inspeciona contraste, foco e árvore de acessibilidade.
+  Serve às páginas das Seis Qualidades e aos painéis flutuantes contra a regra
+  §5.10 (contraste AA ≥ 4,5:1). Primeiro passo: instalar no `home-pc` e abrir o
+  espelho `.tech` nos painéis de contraste e leitor de tela. Cuidado: é
+  ferramenta local — nada sai da máquina.
+- **Camber (computação + LLM na nuvem).** 200 h de CPU, 75 GB e 200 chamadas de
+  LLM/mês. Serve para tarefa pesada e PÚBLICA: reprocessar cavas/ETL ou
+  classificar base grande em lote. **Cuidado §5.8:** é nuvem de terceiro — só
+  dado público entra; nada de dado pessoal nem de segredo. Primeiro passo:
+  escolher UMA tarefa candidata (ex.: gerar os recortes das cavas) e medir o
+  tempo local antes de migrar.
+
+## O que a página de status mede
+
+Hoje a `/status` (no portal e na cópia do GitHub Pages) mede **2 alvos, os dois
+do site oficial**: a home `www.controlepopular.com.br` e `/api/saude`. Roda no
+navegador de quem abre, de 60 em 60 s, e não grava nada.
+
+O que ela **não** mede (lacuna declarada no próprio código): o banco por trás
+do portal; o **servidor 2** (túnel do `home-pc`), sem endereço fixo; e o
+**espelho Azure** (`www.controlepopular.tech`).
+
+A ideia do dono (mostrar os três servidores) é viável em duas partes:
+
+1. **Agora:** acrescentar o espelho `www.controlepopular.tech` como 3º alvo —
+   tem endereço fixo e detecta uma queda só do Guara;
+2. **Depois:** incluir o `home-pc` quando o túnel tiver endereço estável.
+
+A cópia no GitHub Pages é o que faz a página sobreviver à queda de QUALQUER um
+dos servidores, porque ela mesma mora em outro provedor.
 
 ## Régua
 
