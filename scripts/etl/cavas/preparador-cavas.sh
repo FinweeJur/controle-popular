@@ -61,5 +61,29 @@ python3 scripts/coletar-cavas-calibracao.py --tipo negativo --limite "$LIM_NEG"
 echo "[preparador] reexportando o manifesto"
 python3 scripts/coletar-cavas-calibracao.py --exporta
 
+# 4) Envia os recortes (um tar por rodada) e o manifesto para o Blob do Azure,
+#    se o workflow passou BLOB_ACCOUNT + BLOB_SAS. Sem isso, so coleta local
+#    (util para rodar na mao). O SAS e curto (3 h) e so escreve neste container.
+if [ -n "${BLOB_ACCOUNT:-}" ] && [ -n "${BLOB_SAS:-}" ]; then
+  BLOB_CONTAINER="${BLOB_CONTAINER:-cavas}"
+  BASE="$REPO/scripts/.cache/cavas-calibracao"
+  STAMP=$(date -u +%Y%m%d-%H%M)
+  URL="https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}"
+  if [ -d "$BASE/recortes" ]; then
+    tar czf /tmp/recortes.tgz -C "$BASE" recortes
+    curl -fsS -X PUT -H "x-ms-blob-type: BlockBlob" --upload-file /tmp/recortes.tgz \
+      "${URL}/recortes-${STAMP}.tgz?${BLOB_SAS}" \
+      && echo "[preparador] Blob: recortes-${STAMP}.tgz enviado"
+  fi
+  if [ -f "$REPO/apps/web/data/cavas-calibracao-manifesto.json" ]; then
+    curl -fsS -X PUT -H "x-ms-blob-type: BlockBlob" \
+      --upload-file "$REPO/apps/web/data/cavas-calibracao-manifesto.json" \
+      "${URL}/manifesto-${STAMP}.json?${BLOB_SAS}" \
+      && echo "[preparador] Blob: manifesto-${STAMP}.json enviado"
+  fi
+else
+  echo "[preparador] BLOB_ACCOUNT/BLOB_SAS ausentes — recortes ficam so na VM"
+fi
+
 N=$(find "$REPO/scripts/.cache/cavas-calibracao/recortes" -type f 2>/dev/null | wc -l)
 echo "[preparador] fim $(date -u +%FT%TZ) — recortes no cache: $N"

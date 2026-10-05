@@ -13,8 +13,9 @@
 # A VM usa a chave SSH ja provisionada; aqui nao precisamos de SSH porque o
 # `az vm run-command` executa dentro do guest agent.
 #
-# ⚠️ Os recortes ficam no disco da VM. O tutorial de treino no home-pc puxa
-# os recortes por Tailscale/rsync (proximo passo, decisao do dono).
+# TRANSFERENCIA: os recortes (um tar por rodada) e o manifesto sobem para o
+# Azure Blob (conta cpdados4751, container cavas) por um SAS de 3 h de escrita.
+# O home-pc baixa quando quiser (ver `scripts/etl/cavas/baixar-recortes-blob.md`).
 
 name: Preparador de cavas (VM Azure)
 
@@ -41,6 +42,9 @@ concurrency:
 env:
   GRUPO: cp-app
   VM: cp-vm
+  # Blob que recebe os recortes (ver a doc de download no home-pc).
+  BLOB_ACCOUNT: cpdados4751
+  BLOB_CONTAINER: cavas
 
 jobs:
   preparar:
@@ -62,10 +66,28 @@ jobs:
       - name: Esperar o guest agent
         run: sleep 45
 
+      - name: Garantir a conta e o container de Blob
+        run: |
+          az storage account show -g "$GRUPO" -n "$BLOB_ACCOUNT" -o none 2>/dev/null \
+            || az storage account create -g "$GRUPO" -n "$BLOB_ACCOUNT" -l northcentralus --sku Standard_LRS -o none
+          KEY=$(az storage account keys list -g "$GRUPO" -n "$BLOB_ACCOUNT" --query "[0].value" -o tsv)
+          az storage container create --account-name "$BLOB_ACCOUNT" -n "$BLOB_CONTAINER" --account-key "$KEY" -o none
+
+      # SAS curto (3 h) so com create/write no container — a VM nao guarda a
+      # chave da conta; recebe so este token efemero.
+      - name: Gerar SAS de escrita
+        id: sas
+        run: |
+          KEY=$(az storage account keys list -g "$GRUPO" -n "$BLOB_ACCOUNT" --query "[0].value" -o tsv)
+          EXP=$(date -u -d '+3 hours' +%Y-%m-%dT%H:%MZ)
+          SAS=$(az storage container generate-sas --account-name "$BLOB_ACCOUNT" \
+            --name "$BLOB_CONTAINER" --permissions cw --expiry "$EXP" --account-key "$KEY" -o tsv)
+          echo "sas=$SAS" >> "$GITHUB_OUTPUT"
+
       - name: Rodar o preparador (Fase 1) dentro da VM
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
-          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && LIM_POS=$LIM LIM_NEG=$LIM bash /tmp/prep.sh"
+          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_ACCOUNT=$BLOB_ACCOUNT BLOB_CONTAINER=$BLOB_CONTAINER BLOB_SAS='${{ steps.sas.outputs.sas }}' LIM_POS=$LIM LIM_NEG=$LIM bash /tmp/prep.sh"
           az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
             --scripts "$CMD" \
