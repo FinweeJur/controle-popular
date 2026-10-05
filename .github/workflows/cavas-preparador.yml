@@ -84,16 +84,16 @@ jobs:
             --name "$BLOB_CONTAINER" --permissions cw --expiry "$EXP" --account-key "$KEY" -o tsv)
           echo "sas=$SAS" >> "$GITHUB_OUTPUT"
 
-      # Dispara DESTACADO (nohup): o run-command volta em segundos, entao o job
-      # NAO fica preso 50+ min e nao esbarra no token OIDC (que expira em ~5 min
-      # — foi o que derrubou o run de 04/10 e deixou a VM ligada). O log fica em
-      # /var/log/preparador-cavas.log na VM. A VM desliga sozinha no
-      # auto-shutdown (16:00 UTC) — nao dependemos de um deallocate no fim.
+      # Dispara DESTACADO de verdade com `systemd-run` (unidade transiente): o
+      # `nohup ... &` NAO basta — o agente da VM ainda espera o processo e o
+      # run-command fica preso (medido 05/10). O systemd assume o processo e o
+      # run-command volta em segundos. O log vai para /var/log/preparador-cavas.log.
+      # O SAS vai em base64 para o `&`/`%` nao quebrarem o shell da VM.
       - name: Disparar o preparador (destacado na VM)
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
-          SAS='${{ steps.sas.outputs.sas }}'
-          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && nohup env BLOB_ACCOUNT=$BLOB_ACCOUNT BLOB_CONTAINER=$BLOB_CONTAINER BLOB_SAS='$SAS' LIM_POS=$LIM LIM_NEG=$LIM bash /tmp/prep.sh >/var/log/preparador-cavas.log 2>&1 & echo preparador_iniciado"
+          B64=$(printf '%s' '${{ steps.sas.outputs.sas }}' | base64 -w0)
+          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
           az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
             --scripts "$CMD" \
