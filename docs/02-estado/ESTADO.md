@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-03
+> **Última medição:** 2026-10-04
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -127,9 +127,19 @@ memória e não depende de pgvector — ver
 | B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
-| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
+| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Gate v5 PASSOU (01/10); lote v6 (recortes 2 m, pan-sharpen) em geração — ver **Nota B4**. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
+
+**Nota B4 — geração de imagem vai para a VM; a rede local é o teto (04/10).**
+O lote v6 (recortes 2 m) roda no `home-pc`, mas é **limitado pela rede**, não
+pela máquina. Medido em 04/10: o gerador usa **35% de 1 núcleo** (de 16), a
+GPU fica em **0%** e o **link entrega ~8 Mbps** (2 medições). CPU/GPU/RAM
+ociosas **não** aceleram — paralelizar dividiria o mesmo cano e arriscaria OOM
+(RAM livre 1,2 GB, consumida por apps e outras sessões). Decisão: a **geração
+pesada de rede migra para a VM** (sessão do Azure); aqui fica a **GPU**
+(treino/gate). Ganho local restante seria cache da cena (18,7 recortes/cena
+reusam a mesma imagem). Estado no fecho: **3.111/5.120** recortes (~6/min).
 
 ### Bloco C — ação externa do dev
 
