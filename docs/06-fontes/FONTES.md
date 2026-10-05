@@ -2,7 +2,7 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-09-30 (Fase B do mapeamento de mineração: IBAMA, ICMBio, FEAM, IDE-MG, ANM/DOU, FUNAI e INCRA medidos)
+> **Última medição:** 2026-10-04 (DOU federal: busca sem chave em `/consulta/` e coletor `scripts/coletar-dou.py`). Base anterior — 2026-09-30, Fase B do mapeamento de mineração: IBAMA, ICMBio, FEAM, IDE-MG, ANM/DOU, FUNAI e INCRA
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim, mapbiomas, monitor-mineracao, wfs, cbers, sentinel-2, planetary-computer, esri, cavas, mineração
@@ -1087,7 +1087,7 @@ contagem local do xlsx (openpyxl, linhas não vazias):
 - Armadilha: `Invoke-WebRequest -Method Head` nesta página devolve **403**
   (Akamai); GET normal responde 200 — meça por GET.
 
-### ANM — portarias de suspensão de lavra (item 3, fechado com motivo 30/09)
+### ANM — portarias de suspensão de lavra (item 3 — destravado sem chave em 04/10)
 
 - **`dadosabertos.anm.gov.br` é índice estático de IIS com 15 diretórios**
   (AMB, CFEM, DIPEM, PARTICIPA-ANM, PD, REPEM, SAD, SCM, SDA, SICOP,
@@ -1102,7 +1102,7 @@ contagem local do xlsx (openpyxl, linhas não vazias):
   ANM com interdição/suspensão de lavra — exemplo medido: despacho de
   02/09/2026 da ANM/DIVFIS-MG com Termo de Interdição
   103/2026/ANM/DIVFIS-MG ([DOU](https://www.in.gov.br/web/dou/-/despacho-735414485)).
-- **Contagem automatizada hoje: bloqueada — e o bloqueio está medido:**
+- **Contagem automatizada em 30/09: bloqueada — e o bloqueio estava medido:**
 
 | Caminho | Resultado 30/09 |
 |---|---|
@@ -1111,9 +1111,29 @@ contagem local do xlsx (openpyxl, linhas não vazias):
 | `www.in.gov.br/robots.txt` | **403** |
 | `pesquisa.in.gov.br` (página antiga de PDF) | **200**, mas só `frameset` de PDF do dia — entrega página, não busca |
 
-Caminho viável: **chave da API da Imprensa Nacional** (cadastro humano,
-gratuito) — decisão do dev. Raspagem de frameset PDF seria pesada e
-frágil; não recomenda-se sem a chave.
+- **Revisão de 04/10/2026 — destravado sem chave.** O 403 de 30/09 estava no
+  caminho ERRADO: `/busca/-/buscar/dou`. O correto é
+  **`/consulta/-/buscar/dou`**, que responde **200 sem chave** e devolve o
+  mesmo resultado do buscador oficial (`in.gov.br/consulta/`). O total real
+  vem no HTML ("N resultado"); os 20 itens da página vêm no `<script id=
+  "_br_com_seatecnologia_in_buscadou_BuscaDouPortlet_params">` (chave
+  `jsonArray`); a paginação usa `id` + `displayDate` do último item da página
+  anterior + `newPage`/`currentPage`. ⚠️ O `robots.txt` do host é
+  **`Disallow: /`** (medido 04/10): a coleta é a pedido do dono, com
+  **escopo reduzido** — poucos termos exatos, pausa de 2 s, UA honesto,
+  fora da CI — na mesma régua do caso `www18.fgv.br`.
+- **Coletor:** `scripts/coletar-dou.py` → `apps/web/data/dou-mineracao.json`.
+  Busca por frase exata; medido na janela 04/09→04/10/2026, seções DO1+DO3:
+  `título minerário` 206 · `lavra garimpeira` 66 · `concessão de lavra` 86 ·
+  `direitos minerários` 11 · `suspensão de lavra` **0**. Resultado: **349
+  atos únicos** (274 KB), **213** da Superintendência de Outorga de Títulos
+  Minerários; varredura de CPF verde. **A lacuna fica visível:** "suspensão
+  de lavra" não é o vocabulário da ANM — o ato aparece como *despacho* de
+  interdição, não como a frase do plano.
+- A `api.in.gov.br/dou` (dump em massa) **continua exigindo**
+  `chave-api-dados-abertos` (cadastro humano); esta busca **não**. Raspagem
+  de frameset PDF segue pesada e frágil — não usar.
+
 
 ### Autos de infração do Sisema (SEMAD, FEAM e IEF) — Power BI público (item 1, coletado 30/09)
 
