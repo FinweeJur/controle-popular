@@ -1285,14 +1285,22 @@ export function SeuNono() {
             className={
               telaCheia
                 ? "flex min-h-0 flex-1 flex-col lg:flex-row"
-                : "min-h-0 flex-1 overflow-hidden"
+                : // No modo flutuante o painel só tem `max-height` (altura
+                  // indefinida). Antes, um wrapper `overflow-hidden` segurava o
+                  // miolo com `h-full`: `height: 100%` não resolve contra
+                  // altura indefinida, o conteúdo esticava até o `scrollHeight`
+                  // e o `overflow` cortava o fim SEM barra de rolagem. Agora a
+                  // rolagem vive no próprio filho `flex-1 min-h-0` (padrão que
+                  // funciona com teto de `max-height` — medido em 05/10/2026,
+                  // mesmo com o player de rádio e o seletor de pet).
+                  "min-h-0 flex-1 overflow-y-auto overscroll-contain"
             }
           >
             <div
               className={
                 telaCheia
-                  ? "min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-8"
-                  : "h-full overflow-y-auto px-4 py-3"
+                  ? "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-8"
+                  : "px-4 py-3"
               }
             >
             {/* Nível 1: escolha da frente */}

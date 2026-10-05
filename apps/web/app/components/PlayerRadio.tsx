@@ -429,8 +429,11 @@ export default function PlayerRadio() {
             </div>
             {/* A lista é o pedaço que rola quando o utilitário corta a
                 altura: `flex-1 min-h-0` deixa o teto do painel vencer e o
-                cabeçalho (com o volume) fica sempre visível. */}
-            <div className="min-h-0 flex-1 overflow-y-auto p-2">
+                cabeçalho (com o volume) fica sempre visível. O
+                `overscroll-contain` segura a roda do mouse aqui dentro: sem
+                ele, chegar ao fim da lista arrastava a rolagem para a página
+                atrás do painel. */}
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2">
               {ORDEM_TIPOS.map((tipo) => {
                 const grupo = ESTACOES.filter((e) => e.tipo === tipo);
                 if (grupo.length === 0) return null;

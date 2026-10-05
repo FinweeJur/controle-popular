@@ -114,30 +114,28 @@ function montarTexto(): string {
 /** Quantos elos (letras) a corrente tem. */
 const ELOS = 48;
 /**
- * Suavização da cabeça (persegue o mouse). Quanto menor, mais lenta ela
- * anda e mais o rastro atrasa — 0,15 a pedido do dono (03/10/2026), para
- * a perseguição ficar mais lenta ainda; era 0,26 desde 02/10/2026 e 0,38
- * antes disso.
+ * Suavização da cabeça (persegue o mouse). Quanto maior, mais rápido ela
+ * acompanha e menos o rastro atrasa. NOVA ORDEM do dono (05/10/2026): o
+ * rastro estava lento e atrasado demais a pedido anterior (0,15 em 03/10);
+ * subiu para 0,32. Era 0,15 (03/10), 0,26 (02/10) e 0,38 antes disso.
  */
-const SUAVE_CABECA = 0.15;
+const SUAVE_CABECA = 0.32;
 /**
- * Suavização da cauda (cada elo persegue o anterior). Mantém a mesma
- * proporção da cabeça (~85%) para o chicote não ficar duro nem elástico —
- * 0,13 acompanha o novo 0,15 da cabeça (03/10/2026); era 0,22.
+ * Suavização da cauda (cada elo persegue o anterior). Mantém ~85% da cabeça
+ * para o chicote não ficar duro nem elástico — 0,27 acompanha o 0,32 (05/10).
  */
-const SUAVE_CAUDA = 0.13;
+const SUAVE_CAUDA = 0.27;
 /**
- * Quantos pixels a cabeça anda para a corrente rolar UMA letra. 36 px
- * (era 26) para cada letra ficar mais tempo escrita na tela — pedido do
- * dono (03/10/2026).
+ * Quantos pixels a cabeça anda para a corrente rolar UMA letra. 24 px (era
+ * 36 em 03/10) para as letras correrem mais rápido, acompanhando a nova
+ * velocidade pedida pelo dono (05/10/2026).
  */
-const PX_POR_LETRA = 36;
+const PX_POR_LETRA = 24;
 /**
- * Sem mover por este tempo, a corrente começa a sumir. 1600 ms (era 700)
- * para o rastro ficar visível mais tempo depois que o mouse pára —
- * pedido do dono (03/10/2026).
+ * Sem mover por este tempo, a corrente começa a sumir. 1000 ms (era 1600 em
+ * 03/10) — o dono achou o rastro longo demais parado (05/10/2026).
  */
-const OCIOSO_MS = 1600;
+const OCIOSO_MS = 1000;
 
 export default function RastroCursor() {
   const camadaRef = useRef<HTMLDivElement | null>(null);

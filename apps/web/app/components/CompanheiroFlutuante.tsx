@@ -737,22 +737,30 @@ export function CompanheiroFlutuante() {
     };
   }, [calcularBaseDica]);
 
+  /**
+   * Fecha o balão aberto: libera a vez do próximo e limpa o texto. Usado pelo
+   * prazo automático (WCAG: conteúdo temporizado) e pelo dismiss manual — o
+   * balão de fala do pet aceita clique/toque e Enter/Espaço para sumir (pedido
+   * do dono, 05/10/2026).
+   */
+  const fecharDica = useCallback(() => {
+    dicaAtivaRef.current = null;
+    setDicaAtiva(null);
+    // Limpa o conteúdo dos balões de fala e de página junto com o tipo: sem
+    // isso, o próximo balão reabriria com texto do anterior no primeiro
+    // quadro (o estado do texto é separado do tipo).
+    setDicaFala(null);
+    setDicaPagina(null);
+  }, []);
+
   // Some sozinho (WCAG: conteúdo temporizado) e libera a vez do próximo balão.
   // A dica de troca (o único botão) fica o prazo maior; os avisos, o curto.
   useEffect(() => {
     if (!dicaAtiva) return;
     const duracao = dicaAtiva === "troca" ? DICA_TROCA_VISIVEL_MS : DICA_VISIVEL_MS;
-    const esconder = window.setTimeout(() => {
-      dicaAtivaRef.current = null;
-      setDicaAtiva(null);
-      // Limpa o conteúdo dos balões de fala e de página junto com o tipo:
-      // sem isso, o próximo balão reabriria com texto do anterior no primeiro
-      // quadro (o estado do texto é separado do tipo).
-      setDicaFala(null);
-      setDicaPagina(null);
-    }, duracao);
+    const esconder = window.setTimeout(fecharDica, duracao);
     return () => window.clearTimeout(esconder);
-  }, [dicaAtiva]);
+  }, [dicaAtiva, fecharDica]);
 
   /**
    * Dica EDUCATIVA da página (balão "pagina"). Diferente dos outros quatro,
@@ -1375,18 +1383,31 @@ export function CompanheiroFlutuante() {
       )}
 
       {/* Fala aleatória do pet ATIVO (`pets[0]`), sorteada em `lib/companheiro/falas.ts`
-          e mostrada uma vez por sessão. A arte é a do próprio pet que fala. */}
+          e mostrada uma vez por sessão. A arte é a do próprio pet que fala.
+          O balão é INTERATIVO: um clique/toque (ou Enter/Espaço, porque é um
+          `<button>`) fecha na hora, sem esperar o prazo automático. O
+          `role="status"`/`aria-live` fica no wrapper para o leitor de tela
+          anunciar a fala e depois o próprio botão anuncia a ação. */}
       {dicaAtiva === "fala" && dicaFala && (
         <div
-          data-cp-dica-fala=""
-          data-nao-plataforma
           role="status"
           aria-live="polite"
+          data-cp-dica-fala=""
+          data-nao-plataforma
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
-          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),14rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
+          className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] w-[min(calc(100vw-2rem),14rem)]"
         >
-          {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
-          <span className="text-xs font-medium leading-snug text-text">{dicaFala}</span>
+          <button
+            type="button"
+            onClick={fecharDica}
+            aria-label={`${dicaFala} — toque para fechar o recado`}
+            title="Toque para fechar"
+            className="flex w-full cursor-pointer items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm transition-colors hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
+            <span className="text-xs font-medium leading-snug text-text">{dicaFala}</span>
+            <X size={12} aria-hidden="true" className="mt-0.5 shrink-0 text-text-soft" />
+          </button>
         </div>
       )}
 
@@ -1444,7 +1465,9 @@ export function CompanheiroFlutuante() {
             role="menu"
             aria-label="Escolher os bichinhos do companheiro"
             data-nao-plataforma
-            className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto rounded-xl border border-border bg-surface p-2 shadow-lg"
+            // `overscroll-contain`: a roda do mouse rola a lista de bichinhos
+            // e não vaza para a página quando chega ao fim (05/10/2026).
+            className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
             style={{
               left: posMenu ? Math.round(posMenu.posicao.x) : menu.x,
               top: posMenu ? Math.round(posMenu.posicao.y) : menu.y,
