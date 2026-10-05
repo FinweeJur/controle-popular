@@ -1,0 +1,75 @@
+# Preparador de dados das cavas (Fase 1) rodando na VM do Azure.
+#
+# O QUE FAZ: liga a VM, roda o `preparador-cavas.sh` (baixa janelas de satelite
+# e recorta positivos/negativos) e DESLIGA a VM no fim. Concentra tudo numa
+# janela diaria para a VM ficar ligada poucos minutos — politica do dono
+# (04/10/2026): "preservar as horas, ativar so na hora dos bots".
+#
+# POR QUE NA VM: o "lado CPU" (fase 1-3) desafoga a RTX 3050 do home-pc, que
+# fica para os embeddings e o treino (fase 2+). A imagem de satelite e publica;
+# o MODELO continua local.
+#
+# AUTH: OIDC (sem segredo). Vars AZURE_CLIENT_ID/TENANT_ID/SUBSCRIPTION_ID.
+# A VM usa a chave SSH ja provisionada; aqui nao precisamos de SSH porque o
+# `az vm run-command` executa dentro do guest agent.
+#
+# ⚠️ Os recortes ficam no disco da VM. O tutorial de treino no home-pc puxa
+# os recortes por Tailscale/rsync (proximo passo, decisao do dono).
+
+name: Preparador de cavas (VM Azure)
+
+on:
+  schedule:
+    # Concentrado: uma vez por dia, logo apos a janela dos demais bots
+    # (os ETLs rodam ~08:00-12:00 UTC). GitHub cron e SEMPRE em UTC.
+    - cron: "30 12 * * *"
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: "Limite por classe (positivos e negativos)"
+        required: false
+        default: "500"
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: cavas-preparador
+  cancel-in-progress: false
+
+env:
+  GRUPO: cp-app
+  VM: cp-vm
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Ligar a VM
+        run: az vm start -g "$GRUPO" -n "$VM"
+
+      # O guest agent demora alguns segundos apos o boot; esperar evita o
+      # run-command falhar com "agent not ready".
+      - name: Esperar o guest agent
+        run: sleep 45
+
+      - name: Rodar o preparador (Fase 1) dentro da VM
+        run: |
+          LIM="${{ github.event.inputs.limite || '500' }}"
+          az vm run-command invoke -g "$GRUPO" -n "$VM" \
+            --command-id RunShellScript \
+            --scripts "LIM_POS=$LIM LIM_NEG=$LIM bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh)\"" \
+            --output json | grep -i '"message"' || true
+
+      - name: Desligar a VM (sempre)
+        if: always()
+        run: az vm deallocate -g "$GRUPO" -n "$VM" --no-wait
