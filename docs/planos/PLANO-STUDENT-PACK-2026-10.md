@@ -129,9 +129,14 @@ válida. Anotar no calendário e **revalidar antes de vencer**:
   ("Controle Popular (Azure)"), **VM** `cp-vm` (B2ats_v2, desligada por padrão)
   e **Blob** `cpdados4751` para o preparador das cavas. Ver
   [HANDOFF-2026-10-04](../historico/entregas/HANDOFF-2026-10-04-AZURE-CAVAS.md).
-- ⏳ **Azure Speech (voz do portal):** oferta "sempre grátis" (0,5 mi
-  caracteres/mês). Ainda **não** integrado — o "Ouvir Página" hoje usa o
-  `speechSynthesis` do navegador (`app/components/OuvirPagina.tsx`).
+- ✅ **Azure Speech + Translator — leitura traduzida (05/10/2026):** o "Ouvir"
+  agora TRADUZ a página e fala no idioma escolhido (147 idiomas, inclui
+  mandarim e italiano), com voz fixa do Azure em qualquer aparelho. Recursos
+  `cp-onsa-traduz` (Translator F0) e `cp-onsa-voz` (Speech F0) em
+  `northcentralus`; chaves como segredo do Container App do espelho. Rota
+  `POST /api/ouvir` (`app/api/ouvir/route.ts`), lista gerada em
+  `lib/ouvir/idiomas.ts`, player compartilhado em `lib/ouvir/leitor.ts`.
+  Sem credencial, cai na voz do navegador (degradação honesta).
 - ⏸️ **Adiado/sem uso:** Codespaces e alternativas (GitLab/chinês) — o par
   `home-pc` + VM cobre; `controlepopular.com` (livre, mas registrar é pago
   ~US$ 10/ano); as ofertas condicionais (MongoDB, Astra, CARTO, Camber, Visme).

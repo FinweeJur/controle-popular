@@ -1,11 +1,20 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
-import { Volume2, Pause, Play, Square } from "lucide-react";
+import { Volume2, Pause, Play, Square, Loader2, Globe } from "lucide-react";
 import { RESUMOS_TOP100 } from "@/lib/resumos-top100";
-
-type Estado = "idle" | "falando" | "pausado";
+import { IDIOMAS_VOZ } from "@/lib/ouvir/idiomas";
+import {
+  useLeitor,
+  iniciarIdioma,
+  definirIdioma,
+  ouvir,
+  pausar,
+  retomar,
+  parar,
+  extrairTextoPrincipal,
+} from "@/lib/ouvir/leitor";
 
 const emptySubscribe = () => () => {};
 
@@ -17,111 +26,126 @@ function useHasMounted() {
   );
 }
 
-const SELETOR_IGNORAR = "script, style, noscript, [aria-hidden='true']";
+/**
+ * Rotas onde a leitura traduzida fica de fora: a busca ECOA o que a pessoa
+ * digitou. Enviar esse termo a um servico externo (Azure) poderia expor nome
+ * ou CPF (§5.8) — melhor nao ler nessas paginas.
+ */
+const ROTAS_SEM_TRADUCAO = ["/busca"];
 
-function coletarTexto(no: Node): string {
-  if (no.nodeType === Node.TEXT_NODE) return no.textContent ?? "";
-  if (no.nodeType !== Node.ELEMENT_NODE) return "";
-  const el = no as Element;
-  if (el.matches?.(SELETOR_IGNORAR)) return "";
-  const estilo = window.getComputedStyle(el);
-  if (estilo.display === "none" || estilo.visibility === "hidden") return "";
-  let texto = "";
-  el.childNodes.forEach((filho) => { texto += coletarTexto(filho); });
-  return estilo.display === "inline" || estilo.display === "inline-block" ? texto : `${texto} `;
-}
-
-function extrairTextoPrincipal(): string {
-  const main = document.querySelector("main");
-  if (!main) return "";
-  return coletarTexto(main).replace(/\s+/g, " ").trim();
-}
-
-function obterVozes(): Promise<SpeechSynthesisVoice[]> {
-  return new Promise((resolve) => {
-    const vozes = window.speechSynthesis.getVoices();
-    if (vozes.length > 0) { resolve(vozes); return; }
-    const aoCarregar = () => {
-      window.speechSynthesis.removeEventListener("voiceschanged", aoCarregar);
-      resolve(window.speechSynthesis.getVoices());
-    };
-    window.speechSynthesis.addEventListener("voiceschanged", aoCarregar);
-    setTimeout(() => {
-      window.speechSynthesis.removeEventListener("voiceschanged", aoCarregar);
-      resolve(window.speechSynthesis.getVoices());
-    }, 1000);
-  });
-}
-
-function escolherIdioma(vozes: SpeechSynthesisVoice[]): string {
-  const tem = (p: string) => vozes.some((v) => v.lang?.toLowerCase().startsWith(p));
-  if (tem("pt-br")) return "pt-BR";
-  if (tem("pt-pt")) return "pt-PT";
-  return "pt-BR";
+/** Nome do idioma em portugues a partir do locale (ex.: "en-US" -> "inglês"). */
+function rotuloIdioma(codigo: string): string {
+  try {
+    const nomes = new Intl.DisplayNames(["pt"], { type: "language" });
+    return nomes.of(codigo) ?? codigo;
+  } catch {
+    return codigo;
+  }
 }
 
 /**
- * Botao "Ouvir" compacto para a TopNav.
- * Icone de amplificador + texto "Ouvir" no idle.
- * Durante leitura: Pausar/Retomar + Parar (icones, inline na navbar).
+ * Botao "Ouvir" compacto para a TopNav, com seletor de idioma.
+ * Idle: escolhe o idioma + "Ouvir". Lendo: Pausar/Retomar + Parar.
+ * O audio e o estado vem de `lib/ouvir/leitor` (compartilhado com o
+ * controle flutuante `OuvirPagina`).
  */
 export default function OuvirNavbar() {
   const mounted = useHasMounted();
   const pathname = usePathname();
-  const [estado, setEstado] = useState<Estado>("idle");
-  const [suportado, setSuportado] = useState(false);
+  const leitor = useLeitor();
   const [temTexto, setTemTexto] = useState(false);
+
+  const opcoes = useMemo(() => {
+    const lista = IDIOMAS_VOZ.map((i) => ({
+      codigo: i.codigo,
+      rotulo: rotuloIdioma(i.codigo),
+    }));
+    lista.sort((a, b) => a.rotulo.localeCompare(b.rotulo, "pt"));
+    return lista;
+  }, []);
+
+  useEffect(() => {
+    if (mounted) iniciarIdioma();
+  }, [mounted]);
 
   useEffect(() => {
     if (!mounted) return;
-    const ok = "speechSynthesis" in window;
-    setSuportado(ok);
-    if (!ok) return;
-    window.speechSynthesis.cancel();
-    setEstado("idle");
-    setTemTexto(extrairTextoPrincipal().length > 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    parar();
+    // Mede o `<main>` depois da pintura (nao durante o render/efeito direto):
+    // assim nao ha setState sincrono no efeito e o valor enxerga a pagina ja
+    // montada. "Ouvir" so aparece quando ha o que ler.
+    const id = requestAnimationFrame(() =>
+      setTemTexto(extrairTextoPrincipal().length > 0)
+    );
+    return () => cancelAnimationFrame(id);
   }, [mounted, pathname]);
 
-  useEffect(() => {
-    return () => { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); };
-  }, []);
+  if (!mounted || !temTexto) return null;
+  if (ROTAS_SEM_TRADUCAO.some((r) => pathname.startsWith(r))) return null;
 
-  if (!mounted || !suportado || !temTexto) return null;
-
-  async function iniciar() {
+  function iniciar() {
     const textoPagina = extrairTextoPrincipal();
     if (!textoPagina) return;
-    const resumo = RESUMOS_TOP100[pathname] ?? RESUMOS_TOP100[pathname.replace(/\/$/, "")];
-    const texto = resumo ? `${resumo}. ${textoPagina}` : textoPagina;
-    const vozes = await obterVozes();
-    const idioma = escolherIdioma(vozes);
-    const voz = vozes.find((v) => v.lang?.toLowerCase() === idioma.toLowerCase());
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = idioma;
-    if (voz) utterance.voice = voz;
-    utterance.onend = () => setEstado("idle");
-    utterance.onerror = () => setEstado("idle");
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-    setEstado("falando");
+    const resumo =
+      RESUMOS_TOP100[pathname] ?? RESUMOS_TOP100[pathname.replace(/\/$/, "")];
+    void ouvir(resumo ? `${resumo}. ${textoPagina}` : textoPagina, leitor.idioma);
   }
 
-  function pausar() { window.speechSynthesis.pause(); setEstado("pausado"); }
-  function retomar() { window.speechSynthesis.resume(); setEstado("falando"); }
-  function parar() { window.speechSynthesis.cancel(); setEstado("idle"); }
-
-  if (estado === "idle") {
+  if (leitor.estado === "idle") {
     return (
-      <button
-        type="button"
-        onClick={iniciar}
-        aria-label="Ouvir esta pagina em voz alta"
-        className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-      >
-        <Volume2 size={13} aria-hidden="true" className="shrink-0" />
-        <span className="hidden sm:inline">Ouvir</span>
-      </button>
+      <div className="flex items-center gap-1">
+        <label
+          className="relative hidden items-center sm:flex"
+          title="Idioma da leitura em voz alta"
+        >
+          <span className="sr-only">Idioma da leitura</span>
+          <Globe
+            size={13}
+            aria-hidden="true"
+            className="pointer-events-none absolute left-2 text-text-soft"
+          />
+          <select
+            value={leitor.idioma}
+            onChange={(e) => definirIdioma(e.target.value)}
+            className="max-w-[8.5rem] appearance-none truncate rounded-md border border-border bg-surface py-1 pl-6 pr-2 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            {opcoes.map((o) => (
+              <option key={o.codigo} value={o.codigo}>
+                {o.rotulo}
+              </option>
+            ))}
+          </select>
+        </label>
+        <button
+          type="button"
+          onClick={iniciar}
+          aria-label="Ouvir esta pagina em voz alta, no idioma escolhido"
+          className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+        >
+          <Volume2 size={13} aria-hidden="true" className="shrink-0" />
+          <span className="hidden sm:inline">Ouvir</span>
+        </button>
+      </div>
+    );
+  }
+
+  if (leitor.estado === "carregando") {
+    return (
+      <div className="flex items-center gap-1" role="status" aria-live="polite">
+        <span className="flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+          <Loader2 size={13} aria-hidden="true" className="animate-spin" />
+          <span className="hidden sm:inline">Preparando...</span>
+          <span className="sr-only">Preparando a leitura.</span>
+        </span>
+        <button
+          type="button"
+          onClick={parar}
+          aria-label="Cancelar leitura"
+          className="cp-btn-anim flex items-center justify-center rounded-md border border-border px-2 py-1 text-[11px] text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+        >
+          <Square size={12} aria-hidden="true" />
+        </button>
+      </div>
     );
   }
 
@@ -129,13 +153,19 @@ export default function OuvirNavbar() {
     <div className="flex items-center gap-1">
       <button
         type="button"
-        onClick={estado === "falando" ? pausar : retomar}
-        aria-pressed={estado === "falando"}
-        aria-label={estado === "falando" ? "Pausar leitura" : "Retomar leitura"}
+        onClick={leitor.estado === "falando" ? pausar : retomar}
+        aria-pressed={leitor.estado === "falando"}
+        aria-label={leitor.estado === "falando" ? "Pausar leitura" : "Retomar leitura"}
         className="cp-btn-anim flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary transition-colors duration-150 hover:bg-primary/20"
       >
-        {estado === "falando" ? <Pause size={13} aria-hidden="true" /> : <Play size={13} aria-hidden="true" />}
-        <span className="hidden sm:inline">{estado === "falando" ? "Pausar" : "Retomar"}</span>
+        {leitor.estado === "falando" ? (
+          <Pause size={13} aria-hidden="true" />
+        ) : (
+          <Play size={13} aria-hidden="true" />
+        )}
+        <span className="hidden sm:inline">
+          {leitor.estado === "falando" ? "Pausar" : "Retomar"}
+        </span>
       </button>
       <button
         type="button"
@@ -146,8 +176,9 @@ export default function OuvirNavbar() {
         <Square size={12} aria-hidden="true" />
       </button>
       <span role="status" className="sr-only">
-        {estado === "falando" && "Lendo a pagina em voz alta."}
-        {estado === "pausado" && "Leitura pausada."}
+        {leitor.estado === "falando" && "Lendo a pagina em voz alta."}
+        {leitor.estado === "pausado" && "Leitura pausada."}
+        {leitor.aviso}
       </span>
     </div>
   );

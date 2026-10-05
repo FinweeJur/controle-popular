@@ -125,6 +125,27 @@ jobs:
           else
             echo "TELEGRAM_BOT_TOKEN/CHAT_ID ausentes nos secrets — preserva o env do app."
           fi
+          # Leitura traduzida ("Ouvir" em outro idioma): Azure AI Translator +
+          # Azure AI Speech. As chaves ficam como SEGREDOS do Container App
+          # (secretref), nunca em texto claro. So liga se os secrets existirem
+          # no repo; senao PRESERVA o env ja configurado e o cliente cai na voz
+          # do navegador (degradacao honesta, /api/ouvir devolve 503).
+          if [ -n "${{ secrets.AZURE_TRANSLATOR_KEY }}" ] && [ -n "${{ secrets.AZURE_SPEECH_KEY }}" ]; then
+            echo "Ligando a leitura traduzida (Translator + Speech)"
+            az containerapp secret set -g "$GRUPO" -n "$APP" \
+              --secrets \
+                "translator-key=${{ secrets.AZURE_TRANSLATOR_KEY }}" \
+                "speech-key=${{ secrets.AZURE_SPEECH_KEY }}" -o none
+            az containerapp update -g "$GRUPO" -n "$APP" \
+              --set-env-vars \
+                "AZURE_TRANSLATOR_KEY=secretref:translator-key" \
+                "AZURE_TRANSLATOR_REGION=northcentralus" \
+                "AZURE_SPEECH_KEY=secretref:speech-key" \
+                "AZURE_SPEECH_REGION=northcentralus" \
+              -o none
+          else
+            echo "Chaves de traducao/voz ausentes — leitura traduzida no fallback (voz do navegador)."
+          fi
           FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
             --query properties.configuration.ingress.fqdn -o tsv)
           echo "Espelho no ar em: https://$FQDN"
