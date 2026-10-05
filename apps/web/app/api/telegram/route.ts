@@ -9,7 +9,7 @@ import { timingSafeEqual } from "node:crypto";
  * GET serve para verificação rápida do endpoint.
  *
  * Configurar com:
- *   setWebhook("https://controlepopular.com.br/api/telegram", {secret_token: "..."})
+ *   setWebhook("https://www.controlepopular.com.br/api/telegram", {secret_token: "..."})
  */
 
 // ── FRONTES PRÉ-CONFIGURADAS ──────────────────────────────────────────────────
@@ -18,40 +18,39 @@ const FRONTES = {
   ambiental: {
     label: "🌍 Meio Ambiente (ONSA)",
     desc: "Monitoramento ambiental: licenciamento, barragens, COPAM, crimes socioambientais. Dados públicos de MG, MT e federais.",
-    link: "https://controlepopular.com.br/ambiental",
+    link: "https://www.controlepopular.com.br/ambiental",
     subfrentes: [
-      { label: "📋 Licenciamento Ambiental", link: "https://controlepopular.com.br/ambiental/licenciamento", desc: "Licenciamento SIGBM/ANM, fiscalização IBAMA-MG, SEMA-MT, outorgas IGAM-MG." },
-      { label: "🏗️ Barragens", link: "https://controlepopular.com.br/ambiental/barragens", desc: "Inventário SIGBM/ANM de barragens de Minas Gerais com classificação de risco." },
-      { label: "📖 COPAM", link: "https://controlepopular.com.br/ambiental/copam", desc: "Atas, reuniões e processos de licenciamento da COPAM-MG." },
-      { label: "🔍 Crimes Socioambientais", link: "https://controlepopular.com.br/ambiental/crimes-socioambientais", desc: "Casos de danos ambientais: Brumadinho, Mariana, negligência, desmatamento." },
+      { label: "📋 Licenciamento Ambiental", link: "https://www.controlepopular.com.br/ambiental/licenciamento", desc: "Licenciamento SIGBM/ANM, fiscalização IBAMA-MG, SEMA-MT, outorgas IGAM-MG." },
+      { label: "🏗️ Barragens", link: "https://www.controlepopular.com.br/ambiental/barragens", desc: "Inventário SIGBM/ANM de barragens de Minas Gerais com classificação de risco." },
+      { label: "📖 COPAM", link: "https://www.controlepopular.com.br/ambiental/copam", desc: "Atas, reuniões e processos de licenciamento da COPAM-MG." },
+      { label: "🔍 Crimes Socioambientais", link: "https://www.controlepopular.com.br/ambiental/crimes-socioambientais", desc: "Casos de danos ambientais: Brumadinho, Mariana, negligência, desmatamento." },
     ],
   },
   cidades: {
     label: "🏙️ Cidades",
-    desc: "Dados de 5.571 municípios brasileiros (IBGE/Censo). Ranking, microresumos e indicadores sociais.",
-    link: "https://controlepopular.com.br/cidades",
+    desc: "Dados de 5.571 municípios brasileiros (IBGE/Censo). Microresumos e indicadores sociais.",
+    link: "https://www.controlepopular.com.br/cidades",
     subfrentes: [
-      { label: "📊 Ranking Nacional", link: "https://controlepopular.com.br/cidades/ranking", desc: "Ranking de todos os municípios brasileiros por população, PIB, área, IDH." },
-      { label: "🔍 Pesquisar Município", link: "https://controlepopular.com.br/cidades/pesquisar", desc: "Busca por nome ou código IBGE de qualquer município brasileiro." },
+      { label: "🔍 Pesquisar Município", link: "https://www.controlepopular.com.br/cidades", desc: "Busca por nome ou código IBGE na página de cidades." },
     ],
   },
   congresso: {
     label: "🏛️ Congresso",
     desc: "Proposições federais, parlamentares, orçamento público, Lei Rouanet, PPP e licitações.",
-    link: "https://controlepopular.com.br/congresso",
+    link: "https://www.controlepopular.com.br/congresso",
     subfrentes: [
-      { label: "📜 Proposições", link: "https://controlepopular.com.br/congresso/proposicoes", desc: "PL, PLP, PEC, MP, PUC em tramitação. Autor, sumaário e andamento." },
-      { label: "💰 Orçamento", link: "https://controlepopular.com.br/congresso/orcamento", desc: "Emendas parlamentares, dotações e execução por ministério." },
-      { label: "🤝 Lei Rouanet", link: "https://controlepopular.com.br/congresso/rouanet", desc: "Contratos, repasses, incentivadores e fornecedores do programa." },
+      { label: "📜 Proposições", link: "https://www.controlepopular.com.br/congresso/proposicoes", desc: "PL, PLP, PEC, MP, PUC em tramitação. Autor, sumaário e andamento." },
+      { label: "💰 Orçamento", link: "https://www.controlepopular.com.br/congresso/orcamento", desc: "Emendas parlamentares, dotações e execução por ministério." },
+      { label: "🤝 Lei Rouanet", link: "https://www.controlepopular.com.br/congresso/rouanet", desc: "Contratos, repasses, incentivadores e fornecedores do programa." },
     ],
   },
   judiciario: {
     label: "⚖️ Judiciário",
     desc: "Decisões judiciais, processos, tribunais. TJ-MG, CNJ, STF, ADPF e consultas públicas.",
-    link: "https://controlepopular.com.br/judiciario",
+    link: "https://www.controlepopular.com.br/judiciario",
     subfrentes: [
-      { label: "⚖️ Decisões", link: "https://controlepopular.com.br/judiciario/decisoes", desc: "Decisões públicas: TJ-MG, CNJ, STF. Texto, data, órgão, relator." },
-      { label: "📋 Processos", link: "https://controlepopular.com.br/judiciario/processos", desc: "Ações, denúncias e consultas públicas em tramitação." },
+      { label: "⚖️ Tribunais", link: "https://www.controlepopular.com.br/judiciario/tribunais", desc: "Composição das cortes: TJ-MG, TRFs, STF e demais tribunais." },
+      { label: "⏱️ Processos e prazos", link: "https://www.controlepopular.com.br/judiciario/numeros", desc: "Quanto tempo demora um processo no TJMG: prazos e números da Justiça." },
     ],
   },
   internacional: {
@@ -93,40 +92,38 @@ const FRONTES = {
   terra: {
     label: "🌄 Terra e Territórios",
     desc: "Soberania socioambiental: 203 cidades estratégicas, bacias, terras indígenas, serras e biomas.",
-    link: "https://controlepopular.com.br/terra-e-territorios",
+    link: "https://www.controlepopular.com.br/terra-e-territorios",
     subfrentes: [
-      { label: "🏙️ 199 Cidades Estratégicas", link: "https://controlepopular.com.br/terra-e-territorios/cidades", desc: "27 capitais e 172 polos regionais. Saúde, educação e finanças de cada município." },
-      { label: "🌍 Meio Ambiente (ONSA)", link: "https://controlepopular.com.br/ambiental", desc: "Licenciamento, COPAM, TACs e barragens SIGBM." },
-      { label: "🛡️ Terras Indígenas e Quilombolas", link: "https://controlepopular.com.br/funcaosocialterra", desc: "Demarcações, sobreposições de mineração e defesa de povos originários." },
-      { label: "⛰️ Nossas Serras", link: "https://controlepopular.com.br/nossas-serras", desc: "Preservação de topos de morro e contenção da expansão minerária predatória." },
-      { label: "🌊 Nossos Rios e Bacias", link: "https://controlepopular.com.br/nossos-rios", desc: "Qualidade das águas, desastres (Rio Doce, Paraopeba) e saneamento." },
-      { label: "🧭 Biomas e Biodiversidade", link: "https://controlepopular.com.br/biomas", desc: "Cerrado, Mata Atlântica, Caatinga e Amazônia: risco climático e preservação." },
+      { label: "🏙️ 199 Cidades Estratégicas", link: "https://www.controlepopular.com.br/terra-e-territorios/cidades", desc: "27 capitais e 172 polos regionais. Saúde, educação e finanças de cada município." },
+      { label: "🌍 Meio Ambiente (ONSA)", link: "https://www.controlepopular.com.br/ambiental", desc: "Licenciamento, COPAM, TACs e barragens SIGBM." },
+      { label: "🛡️ Terras Indígenas e Quilombolas", link: "https://www.controlepopular.com.br/funcaosocialterra", desc: "Demarcações, sobreposições de mineração e defesa de povos originários." },
+      { label: "⛰️ Nossas Serras", link: "https://www.controlepopular.com.br/terra-e-territorios/nossas-serras", desc: "Preservação de topos de morro e contenção da expansão minerária predatória." },
+      { label: "🌊 Nossos Rios e Bacias", link: "https://www.controlepopular.com.br/terra-e-territorios/nossos-rios", desc: "Qualidade das águas, desastres (Rio Doce, Paraopeba) e saneamento." },
     ],
   },
   estado: {
     label: "🏛️ Estado e Economia",
     desc: "Transparência institucional, orçamento público, contratos, Judiciário e poder econômico.",
-    link: "https://controlepopular.com.br/estado-e-economia",
+    link: "https://www.controlepopular.com.br/estado-e-economia",
     subfrentes: [
-      { label: "⚖️ Judiciário e Justiça", link: "https://controlepopular.com.br/estado-e-economia/judiciario", desc: "Composição de tribunais, vagas, remunerações e inspeções do CNJ." },
-      { label: "📜 Congresso e Legislação", link: "https://controlepopular.com.br/estado-e-economia/congresso", desc: "Proposições, votações nominais, comissões temáticas e bancadas estaduais." },
-      { label: "📋 Executivo e Políticas", link: "https://controlepopular.com.br/estado-e-economia/executivo", desc: "Atos oficiais, diários municipais, nomeações e programas de governo." },
-      { label: "🏢 Empresas e Mercado", link: "https://controlepopular.com.br/estado-e-economia/empresas", desc: "Sócios, conglomerados, concentração de fornecedores e mineradoras." },
-      { label: "💰 Orçamento Público", link: "https://controlepopular.com.br/estado-e-economia/orcamento", desc: "Dotação vs. execução financeira, transferências e indicadores BCB." },
-      { label: "🔍 Transparência e Controle Social", link: "https://controlepopular.com.br/estado-e-economia/transparencia", desc: "LAI, alertas do TCU e fiscalização cidadã." },
+      { label: "⚖️ Judiciário e Justiça", link: "https://www.controlepopular.com.br/estado-e-economia/judiciario", desc: "Composição de tribunais, vagas, remunerações e inspeções do CNJ." },
+      { label: "📜 Congresso e Legislação", link: "https://www.controlepopular.com.br/congresso", desc: "Proposições, votações nominais, comissões temáticas e bancadas estaduais." },
+      { label: "📋 Executivo e Políticas", link: "https://www.controlepopular.com.br/governo", desc: "Governos e planos de campanha: o que prometeram e o que cumpriram." },
+      { label: "🏢 Empresas e Mercado", link: "https://www.controlepopular.com.br/empresas", desc: "Sócios, conglomerados, concentração de fornecedores e mineradoras." },
+      { label: "💰 Orçamento Público", link: "https://www.controlepopular.com.br/estado-e-economia/orcamento", desc: "Dotação vs. execução financeira, transferências e indicadores BCB." },
+      { label: "🔍 Transparência e Controle Social", link: "https://www.controlepopular.com.br/direitos-em-movimento/informacao", desc: "Canais de Acesso à Informação (LAI): prefeituras, câmaras, órgãos e concessionárias." },
     ],
   },
   direitos: {
     label: "❤️ Direitos em Movimento",
     desc: "Saúde pública, educação, trabalho e renda, segurança alimentar, moradia e acesso à justiça.",
-    link: "https://controlepopular.com.br/direitos-em-movimento",
+    link: "https://www.controlepopular.com.br/direitos-em-movimento",
     subfrentes: [
-      { label: "💼 Trabalho e Renda", link: "https://controlepopular.com.br/direitos-em-movimento/trabalho-e-renda", desc: "Emprego formal, admissões CAGED, estoques RAIS e impacto de contratos públicos." },
-      { label: "🏥 Saúde Pública", link: "https://controlepopular.com.br/direitos-em-movimento/saude-publica", desc: "SUS, estabelecimentos CNES, leitos e internações SIH." },
-      { label: "📚 Educação", link: "https://controlepopular.com.br/direitos-em-movimento/educacao", desc: "Infraestrutura escolar, matrículas do Censo Escolar e IDEB por município." },
-      { label: "🍎 Segurança Alimentar", link: "https://controlepopular.com.br/direitos-em-movimento/seguranca-alimentar", desc: "Programas de transferência, vulnerabilidade nutricional e agricultura familiar." },
-      { label: "🏠 Moradia e Habitação", link: "https://controlepopular.com.br/direitos-em-movimento/moradia", desc: "Déficit habitacional, regularização fundiária urbana e prevenção de remoções." },
-      { label: "⚖️ Acesso à Justiça e Denúncias", link: "https://controlepopular.com.br/direitos-em-movimento/acesso-a-justica", desc: "Defensoria Pública, canais de denúncia e assistência jurídica comunitária." },
+      { label: "💼 Trabalho e Renda", link: "https://www.controlepopular.com.br/direitos-em-movimento/trabalho-e-renda", desc: "Emprego formal, admissões CAGED, estoques RAIS e impacto de contratos públicos." },
+      { label: "🏥 Saúde Pública", link: "https://www.controlepopular.com.br/direitos-em-movimento/saude-publica", desc: "SUS, estabelecimentos CNES, leitos e internações SIH." },
+      { label: "📚 Educação", link: "https://www.controlepopular.com.br/direitos-em-movimento/educacao", desc: "Infraestrutura escolar, matrículas do Censo Escolar e IDEB por município." },
+      { label: "⚖️ Acesso à Justiça e Denúncias", link: "https://www.controlepopular.com.br/direitos-em-movimento/denuncia", desc: "Como denunciar: canais oficiais e onde buscar ajuda." },
+      { label: "🛡️ Defensoria Pública", link: "https://www.controlepopular.com.br/judiciario/defensoria", desc: "Tem Defensoria na sua comarca? Atendimento e cobertura." },
     ],
   },
 };
