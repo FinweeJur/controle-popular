@@ -177,10 +177,12 @@ reprocessar cavas/ETL e classificar base grande em lote. ⚠️ AGENTS §5.8: é
 no caso das cavas o gargalo é **banda**, então Camber só ganha se a rede de lá
 for maior; CPU sozinha não resolve. Próximo: escolher a tarefa candidata e medir
 o tempo local dela.
-**Decisão 05/10:** o **Camber não tem GPU** → o papel dele é **gerar recortes 8 m**
-(CPU/rede), não classificar. O modelo treinado fica no `home-pc`. Ordem dos
-estados: **MG → PA → GO → BA → AM**. Entrega dos recortes pela mesma via do
-preparador (Blob/rsync). Passo 1: um lote de 100 recortes e medir tempo/banda.
+**Decisão 05/10 (revisada):** o **Camber tem GPU pequena** — pod `GPU · Xsmall`
+(8 CPU / 32 GB RAM / 1 GPU; o `Medium` PRO traz 4 GPU). Papel: **gerar recortes
+8 m _e_ rodar os embeddings/classificação**, não só baixar imagem. Ordem dos
+estados: **MG → PA → GO → BA → AM**. O modelo treinado vai por Blob. O treino
+fino fica no `home-pc` até medir a VRAM de lá. Passo 1: lote de 100 (recortes +
+embeddings) e medir tempo e banda.
 
 Runbooks: [`planos/`](../planos/).
 
