@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-04
+> **Última medição:** 2026-10-05
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
@@ -101,10 +101,12 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 |---|---|---|---|
 | A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dev 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
 | A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | ✅ | deploy `278e6430` **healthy** (02/10); o build travava por teto de 60s/página — ver [PLANO-REDUCAO-BUILD](../planos/PLANO-REDUCAO-BUILD.md) |
-| A2 | Redirect 301 no Cloudflare: raiz → www | ✅ | **medido 04/10/2026:** a raiz devolve 301 para o `www` — tarefa aberta desde a fila antiga está resolvida |
+| A2 | Redirect 301 no Cloudflare: raiz → www | ✅ | **medido 04/10/2026:** a raiz devolve 301 para o `www` — tarefa aberta desde a fila antiga está resolvida; conferido de novo em 05/10: `controlepopular.com.br` → `https://www.controlepopular.com.br/` em 301 limpo |
 | A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
 | A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** para o canonical e o sitemap novo chegarem ao ar — baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
+| A6 | **Bot Telegram com 14 links quebrados** | 🚧 | mapeados e corrigidos em `b9a84e7f` (05/10); publica no próximo `guara deploy` (cota ⛔ até ~08/10). Espelho local `scripts/escuta-telegram-correcao.mts` corrigido no disco mas **sem track** (arquivo de outra sessão) |
+| A7 | **Piso da rotina local em 1000 abortava toda rodada boa** | ✅ | `PISO_PAGINAS` 1000 → 300 (`df61439a`); medido 05/10: saudável = 621 rotas prerenderizadas (12 cidades ativas), sem banco = 21, regime antigo = 1.471 |
 
 **Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
 28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
@@ -130,6 +132,7 @@ memória e não depende de pgvector — ver
 | B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Gate v5 PASSOU (01/10); lote v6 (recortes 2 m, pan-sharpen) em geração — ver **Nota B4**. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
+| B7 | **Turbopack no build (decisão do dono 05/10: manter se melhor)** | 🚧 | Home PC ✅ medido 05/10: 338s vs 369–398s webpack, pico 3.886 MB vs 5.392 MB, `.next` 754 MB vs 1.501 MB, 621 rotas iguais, Drizzle 73 KB gzip vs 60 KB, server 32,0 vs 32,2 MB gzip, type-check roda no turbo (Next 16.3.5). Teste Linux/standalone (proxy do Guara) = build podman `cp-turbo-test`; deploy real Guara = próxima janela de cota (~08/10). Azure pulado (ordem do dono 05/10). Worktree `med-turbo` guarda as medições — não apagar |
 
 **Nota B4 — geração de imagem vai para a VM; a rede local é o teto (04/10).**
 O lote v6 (recortes 2 m) roda no `home-pc`, mas é **limitado pela rede**, não
@@ -191,6 +194,8 @@ Runbooks: [`planos/`](../planos/).
 
 | Bloqueio | Quem desbloqueia |
 |---|---|
+| **Cota de build do Guara** (`Build minutes quota exceeded`, medido 05/10) — `guara deploy` recusa; site atual segue saudável | janela abre ~08/10 (política de deploy a cada ~5 dias, OPERACAO § 0) |
+| **Push da `main` segurado** — 5 commits de outra sessão + `df61439a`/`b9a84e7f` locais; rebase exige árvore limpa (§ 5.4) | árvore limpa → `git fetch && git rebase origin/main && git push origin HEAD:main` (§ 5.7) |
 | Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
 | Neon em 94% storage | ✅ app já no Guara (29/09) — sobra cancelar a conta Neon |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
@@ -208,8 +213,36 @@ Runbooks: [`planos/`](../planos/).
   o maior é `sigmine-interesse.geojson.gz` (6,06 MB).
 - **Auditoria dos 25.729 links** pendente
   ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
+- **Soft-404: rota inexistente devolve HTTP 200.** Medido 05/10: corpo
+  ~106,7 KB, título genérico "Portal Independente de Fiscalização Cidadã".
+  Status sozinho NÃO detecta 404; a string "Página não encontrada" aparece
+  até em página real (chunk inline). Detector validado: título genérico +
+  tamanho, conferido contra páginas reais. 14 dos 43 links do menu do bot
+  estavam quebrados (12 hard + 3 soft).
+- **Comentários do `apps/web/package.json` sobre Turbopack estavam
+  desatualizados** (medido 05/10): Drizzle 626 KiB → 73 KB gzip, e o
+  type-check RODA no `next build --turbopack` (Next 16.3.5,
+  "Finished TypeScript in 97s"). O motivo histórico (teto de 3 MiB do
+  Worker Cloudflare) continua válido como cuidado na troca — medir o
+  bundle do Worker antes de trocar o alvo `cf:build`.
 
 ## Entregas recentes
+
+**05/10/2026 — servidor 2 publicado, piso consertado, links do bot e medição Turbopack:**
+
+- **Servidor 2 (túnel) no build de 05/10:** worktree `pub-tunel` (origin/main),
+  build 640/640 em 117 s, 621 rotas, `backup.controlepopular.com.br` serve
+  05/10; a raiz do domínio agora é 301 → www (A2 ✅).
+- **Banco local reparado:** 12 cidades ativas repostas (idênticas ao Neon),
+  `DATABASE_URL` restaurada no `.env` da raiz, schema `terras` criado na
+  Neon. Piso da rotina corrigido (A7).
+- **Bot do Telegram:** 43 links mapeados contra o servidor local, 14
+  quebrados corrigidos (A6), 38/38 e 30/30 verdes em `route.ts` e no
+  espelho local. Publicação = próximo deploy.
+- **Turbopack medido (B7):** Home PC ganha nos três eixos (tempo, pico de
+  RAM, tamanho do `.next`) com as mesmas 621 rotas. Teste Linux/standalone
+  (proxy do Guara) verde via podman: imagem `cp-turbo-test` e servidor
+  servindo páginas reais.
 
 **04/10/2026 — imagem sem `drizzle-orm` derrubou a leitura do banco; migration 0011 e caminho do servidor 2:**
 
