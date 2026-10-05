@@ -107,6 +107,25 @@ jobs:
           else
             echo "NEW_RELIC_LICENSE_KEY ausente nos secrets — APM fica desligado."
           fi
+          # Rele New Relic -> Telegram (/api/newrelic-alerta): bot e chat vem dos
+          # secrets do repo; o segredo opcional do rele (header x-relay-secret)
+          # idem. Sem ele, o endpoint aceita mas avisa no log.
+          if [ -n "${{ secrets.TELEGRAM_BOT_TOKEN }}" ] && [ -n "${{ secrets.TELEGRAM_CHAT_ID }}" ]; then
+            echo "Ligando o rele de alertas (Telegram)"
+            az containerapp secret set -g "$GRUPO" -n "$APP" \
+              --secrets \
+                "tg-token=${{ secrets.TELEGRAM_BOT_TOKEN }}" \
+                "tg-chat=${{ secrets.TELEGRAM_CHAT_ID }}" -o none
+            ENVS=("TELEGRAM_BOT_TOKEN=secretref:tg-token" "TELEGRAM_CHAT_ID=secretref:tg-chat")
+            if [ -n "${{ secrets.NEWRELIC_RELAY_SECRET }}" ]; then
+              az containerapp secret set -g "$GRUPO" -n "$APP" \
+                --secrets "relay-secret=${{ secrets.NEWRELIC_RELAY_SECRET }}" -o none
+              ENVS+=("NEWRELIC_RELAY_SECRET=secretref:relay-secret")
+            fi
+            az containerapp update -g "$GRUPO" -n "$APP" --set-env-vars "${ENVS[@]}" -o none
+          else
+            echo "TELEGRAM_BOT_TOKEN/CHAT_ID ausentes — rele fica desligado."
+          fi
           FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
             --query properties.configuration.ingress.fqdn -o tsv)
           echo "Espelho no ar em: https://$FQDN"
