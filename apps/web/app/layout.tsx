@@ -5,7 +5,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
 };
-import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { clashDisplay, generalSans, tabular } from "@/app/fonts";
 import OuvirPagina from "@/app/components/OuvirPagina";
@@ -181,39 +180,57 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <Script
+        {/* ═══ SCRIPTS DO CASCO: <script> CRU DE SERVIDOR, NUNCA `next/script` ═══
+            Medido em 06/10/2026 (o dono viu o erro no overlay do Next):
+            "Encountered a script tag while rendering React component" apontando
+            para as linhas de `<Script strategy="beforeInteractive">` daqui.
+
+            O `next/script` é componente de CLIENTE. Em qualquer posição ele
+            renderiza um `<script>` de bootstrap (`self.__next_s.push(...)`) na
+            hidratação, e o React 19 recusa `<script>` como filho de componente
+            no cliente — o erro aparecia em TODA página, com quatro avisos por
+            carga (um por script abaixo).
+
+            A prova foi um par de páginas de teste: com `next/script` o erro
+            aparece; com `<script>` cru (componente de SERVIDOR) não aparece
+            nenhum. E o `<script>` cru é MELHOR aqui: ele nasce no HTML servido,
+            roda durante a leitura do documento (antes da primeira pintura, que
+            é a razão de existir do anti-flash) e o crawler o vê sem executar JS.
+
+            As três armadilhas do id: ele fica só para leitura do HTML (nada
+            depende dele). O anti-flash de tema precisa vir PRIMEIRO — é ele que
+            escolhe a paleta antes de qualquer pixel. */}
+        <script
           id="cp-theme-no-flash"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: THEME_NO_FLASH_SCRIPT }}
         />
-        <Script
+        <script
           id="structured-data"
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
         />
-        <Script
+        <script
           id="cp-font-size-no-flash"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: FONT_SIZE_NO_FLASH_SCRIPT }}
         />
-        <Script
+        <script
           id="cp-cvd-no-flash"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: CVD_NO_FLASH_SCRIPT }}
         />
         {/* Simple Analytics — analytics sem cookie, sem fingerprint e sem
             dado pessoal; respeita Do-Not-Track. Oferta do GitHub Student
             Pack; preenche a lacuna de analytics do portal (hoje so ha a
             contagem de page_views no D1, sem leitura de trafego).
-            `afterInteractive` para nao competir com o conteudo critico.
+            `async` (e não `next/script`): carrega sem bloquear a leitura do
+            documento e sem passar pelo render do React — era o último
+            `next/script` do casco, e a causa raiz do erro do overlay.
             ⚠️ O CSP do portal ainda e Report-Only: ao promove-lo a
             bloqueante, liberar scripts.simpleanalyticscdn.com (script) e
             queue.simpleanalyticscdn.com (pixel). Ver
             docs/planos/PLANO-STUDENT-PACK-2026-10.md. */}
-        <Script
+        <script
           id="simple-analytics"
-          strategy="afterInteractive"
+          async
           src="https://scripts.simpleanalyticscdn.com/latest.js"
         />
       </head>
