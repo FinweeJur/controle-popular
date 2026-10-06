@@ -72,9 +72,11 @@ export default function StatusPage() {
         </h2>
         <p>
           <strong className="text-text">No ar</strong> quer dizer que o endereço
-          respondeu dentro de 8 segundos. A marca &ldquo;(CORS)&rdquo; aparece
-          quando o navegador não deixou ler o corpo da resposta — o que prova
-          que o site atendeu, mas impede confirmar o conteúdo. Não é erro.
+          respondeu dentro de 20 segundos — o teto é folgado de propósito: o
+          espelho no Azure “dorme” e o primeiro acesso o acorda. A marca
+          &ldquo;(CORS)&rdquo; aparece quando o navegador não deixou ler o corpo
+          da resposta — o que prova que o site atendeu, mas impede confirmar o
+          conteúdo. Não é erro.
         </p>
         <p>
           <strong className="text-text">Fora do ar</strong> quer dizer que o

@@ -98,8 +98,14 @@ const ALVOS: Alvo[] = [
   },
 ];
 
-/** Acima disso a checagem é dada como sem resposta (evita travar a tela). */
-const TIMEOUT_MS = 8000;
+/**
+ * Acima disso a checagem é dada como sem resposta (evita travar a tela).
+ * 20 s e não 8: o espelho no Azure (`.tech`) escala a zero, e o cold start
+ * passa de 8 s — com o teto antigo ele aparecia "Fora do ar" enquanto dormia,
+ * que é alarme falso. As checagens correm em paralelo, então o teto é por
+ * alvo, não somado.
+ */
+const TIMEOUT_MS = 20000;
 
 const ROTULO: Record<Estado, string> = {
   verificando: "Verificando…",
@@ -166,7 +172,7 @@ async function verificar(alvo: Alvo): Promise<Resultado> {
         detalhe: "alcançável; o navegador não deixou ler o corpo (CORS)",
       };
     } catch {
-      return { estado: "fora", ms: null, detalhe: "sem resposta em até 8 s" };
+      return { estado: "fora", ms: null, detalhe: "sem resposta em até 20 s" };
     } finally {
       cancelar();
     }

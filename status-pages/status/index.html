@@ -114,7 +114,9 @@
     }
   ];
 
-  var TIMEOUT_MS = 8000;
+  // 20 s por tentativa: o espelho no Azure escala a zero e um cold start passa
+  // de 8 s — com o teto antigo ele aparecia "Fora do ar" dormindo, que é falso.
+  var TIMEOUT_MS = 20000;
 
   function comTimeout(ms) {
     var ctrl = new AbortController();
@@ -154,7 +156,7 @@
           })
           .catch(function () {
             t2.cancelar();
-            return { estado: "fora", ms: null, detalhe: "sem resposta em até 8 s" };
+            return { estado: "fora", ms: null, detalhe: "sem resposta em até 20 s" };
           });
       });
   }
