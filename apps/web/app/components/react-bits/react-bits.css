@@ -155,48 +155,39 @@
   transform: none;
 }
 
-/* ── Fundo de Cubes do site (dono, 06/10/2026) ────────────────────────
-   Grade 3D presa ao viewport, atrás de tudo, translúcida: os cubos são
-   textura de fundo, nunca informação — o conteúdo continua o dono do
-   contraste (AA ≥ 4,5:1). `z-index: -1` só funciona porque o fundo da
-   página passou a ser pintado no `html` (ver `globals.css`): assim a camada
-   fica ACIMA da cor de fundo e ABAIXO de todo o conteúdo, sem criar contexto
-   de empilhamento para o conteúdo (o que caparia modais das páginas abaixo
-   da navbar). A opacidade baixa é a trava final de legibilidade. */
-.cp-fundo-cubos {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: none;
-  /* Bem apagado (dono, 06/10/2026: "mais translúcido"): o cubo é textura de
-     fundo, não desenho — texto e cartão seguem mandando no contraste. */
-  opacity: 0.09;
+/* ── Botão com brilho (hover glow) dos eixos (dono, 06/10/2026) ───────
+   Ver `BotaoBrilho.tsx`: um anel + halo com a cor primária do tema. Fica aqui
+   (e não no `BorderGlow`) porque o alvo é pequeno: o cone direcional do mesh
+   não teria área para aparecer, e o `color-mix` é mais leve. */
+
+.cp-botao-brilho {
+  --cp-brilho-raio: 12px;
+
+  position: relative;
+  border-radius: var(--cp-brilho-raio);
+  transition:
+    box-shadow 0.25s ease-out,
+    border-color 0.25s ease-out;
 }
 
-/* A cena ignora o `width: 50%`/`aspect-ratio: 1` do bloco original e vira um
-   quadrado maior que o viewport — cobre a tela em pé e deitado, e o excesso é
-   recortado pelo `overflow: hidden` da camada. Quadrado menor que antes
-   (95vw/100vh): com a grade 12 o cubo fica em ~100 px, e não nos ~176 px que
-   o dono viu como "gigantes" (06/10/2026). */
-.cp-fundo-cubos .cp-cubos {
-  width: max(95vw, 100vh);
-  height: max(95vw, 100vh);
-  aspect-ratio: auto;
-  --cp-cubos-col-gap: 2%;
-  --cp-cubos-row-gap: 2%;
+.cp-botao-brilho:hover,
+.cp-botao-brilho:focus-within {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--cp-primary) 55%, transparent),
+    0 0 16px 2px color-mix(in srgb, var(--cp-primary) 28%, transparent);
 }
 
-/* Sem movimento ou em alto contraste o componente já devolve `null`; esta é a
-   segunda trava, para o caso de o CSS carregar antes da hidratação. */
 @media (prefers-reduced-motion: reduce) {
-  .cp-fundo-cubos {
-    display: none;
+  .cp-botao-brilho {
+    transition: none;
   }
 }
 
-[data-theme="high-contrast"] .cp-fundo-cubos {
-  display: none;
+[data-theme="high-contrast"] .cp-botao-brilho:hover,
+[data-theme="high-contrast"] .cp-botao-brilho:focus-within {
+  box-shadow: none;
 }
+
+/* O fundo de Cubes saiu do portal em 06/10/2026 (substituído pelo fundo de
+   ondas, `OndaCursor.css`). Este arquivo segue com o ShinyText, o
+   SpotlightCard e o bloco de proximidade das listas. */

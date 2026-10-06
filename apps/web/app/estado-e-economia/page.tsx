@@ -4,6 +4,9 @@ import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
 import SpotlightCard from '@/app/components/react-bits/SpotlightCard';
+import BorderGlow from '@/app/components/react-bits/BorderGlow';
+import Magnet from '@/app/components/react-bits/Magnet';
+import BotaoBrilho from '@/app/components/react-bits/BotaoBrilho';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
@@ -14,6 +17,52 @@ export const metadata: Metadata = {
   description:
     'Transparência institucional, orçamento público, compras no PNCP, controle de gastos do Judiciário e votações no Congresso.',
 };
+
+/**
+ * Cartão de destaque do eixo Estado e Economia: brilho de borda + ímã.
+ * Mesmo papel do `CartaoDestaque` de `/terra-e-territorios`: os quatro cartões
+ * das "Portas Prioritárias" têm a mesma anatomia, e repetir o invólucro (agora
+ * com dois efeitos) garantiria deriva entre eles.
+ */
+function CartaoDestaque({
+  href,
+  etiqueta,
+  titulo,
+  descricao,
+  acao,
+}: {
+  href: string;
+  etiqueta: string;
+  titulo: string;
+  descricao: string;
+  acao: string;
+}) {
+  return (
+    <Magnet forca={0.06} afastamento={44} className="h-full">
+      <BorderGlow
+        className="h-full rounded-xl border border-blue-500/40 bg-surface p-4 shadow-xs transition-all hover:border-blue-500 hover:bg-blue-500/10"
+        corFundo="var(--cp-surface)"
+        raio={12}
+      >
+        <Link href={href} className="group flex h-full flex-col justify-between">
+          <div>
+            <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">
+              {etiqueta}
+            </span>
+            <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
+              {titulo}
+            </h3>
+            <p className="text-xs text-muted mt-1 leading-relaxed">{descricao}</p>
+          </div>
+          <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
+            <span>{acao}</span>
+            <span>→</span>
+          </span>
+        </Link>
+      </BorderGlow>
+    </Magnet>
+  );
+}
 
 export default function EstadoEEconomiaHub() {
   const subfrentes = CATALOGO_EIXOS.estado.subfrentes;
@@ -65,81 +114,37 @@ export default function EstadoEEconomiaHub() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
+            <CartaoDestaque
               href="/estado-e-economia/orcamento"
-              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Contas Públicas</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
-                  Orçamento de MG
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Receitas, despesas, transferências e séries macroeconômicas do BCB.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
-                <span>Ver Orçamento</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Contas Públicas"
+              titulo="Orçamento de MG"
+              descricao="Receitas, despesas, transferências e séries macroeconômicas do BCB."
+              acao="Ver Orçamento"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/judiciario/instituicoes"
-              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Controle Social</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
-                  Quem Fiscaliza a Justiça
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  CNJ, CNMP, corregedorias, tribunais de contas e balcão virtual de 990 varas.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
-                <span>Ver Órgãos</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Controle Social"
+              titulo="Quem Fiscaliza a Justiça"
+              descricao="CNJ, CNMP, corregedorias, tribunais de contas e balcão virtual de 990 varas."
+              acao="Ver Órgãos"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/assembleias"
-              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ Legislativo</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
-                  27 Assembleias Estaduais
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Deputados, gastos de gabinete, tramitações e comissões parlamentares.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
-                <span>Vigiar Assembleias</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Legislativo"
+              titulo="27 Assembleias Estaduais"
+              descricao="Deputados, gastos de gabinete, tramitações e comissões parlamentares."
+              acao="Vigiar Assembleias"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/ambiental/contratos"
-              className="group flex flex-col justify-between rounded-xl border border-blue-500/40 bg-surface p-4 hover:border-blue-500 hover:bg-blue-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-blue-600 dark:text-blue-400">✦ PNCP & Licitações</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-blue-500 mt-1">
-                  Radar de Compras & Contratos
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Contratações públicas federais e municipais, fornecedores e atas de registro de preço.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-3 flex items-center justify-between">
-                <span>Ver Contratos</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ PNCP & Licitações"
+              titulo="Radar de Compras & Contratos"
+              descricao="Contratações públicas federais e municipais, fornecedores e atas de registro de preço."
+              acao="Ver Contratos"
+            />
           </div>
         </section>
 
@@ -217,31 +222,39 @@ export default function EstadoEEconomiaHub() {
                 O portal unifica dados de compras públicas do Portal Nacional de Contratações Públicas (PNCP), transferências do Transferegov e séries macroeconômicas do Banco Central (BCB Olinda).
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/estado-e-economia/orcamento"
-                  className="rounded-xl bg-blue-700 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-blue-800 transition-colors"
-                >
-                  Explorar Painel Orçamentário →
-                </Link>
-                <Link
-                  href="/congresso"
-                  className="rounded-xl border border-border bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors"
-                >
-                  Acompanhar o Congresso 🏛️
-                </Link>
-                <Link
-                  href="/judiciario/contatos"
-                  className="rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 hover:bg-blue-500/20 transition-colors"
-                >
-                  Varas e Balcão Virtual ⚖️
-                </Link>
-                <Link
-                  href="/ambiental"
-                  className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
-                >
-                  <span>Ver o Observatório Meio Ambiente</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/estado-e-economia/orcamento"
+                    className="rounded-xl bg-blue-700 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-blue-800 transition-colors"
+                  >
+                    Explorar Painel Orçamentário →
+                  </Link>
+                </BotaoBrilho>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/congresso"
+                    className="rounded-xl border border-border bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors"
+                  >
+                    Acompanhar o Congresso 🏛️
+                  </Link>
+                </BotaoBrilho>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/judiciario/contatos"
+                    className="rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 hover:bg-blue-500/20 transition-colors"
+                  >
+                    Varas e Balcão Virtual ⚖️
+                  </Link>
+                </BotaoBrilho>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/ambiental"
+                    className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <span>Ver o Observatório Meio Ambiente</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </BotaoBrilho>
               </div>
             </div>
 

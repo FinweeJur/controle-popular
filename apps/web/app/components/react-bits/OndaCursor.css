@@ -1,0 +1,77 @@
+/*
+ * Estilos do OndaCursor (grade de formas que responde ao cursor e ao clique).
+ * Equivalente próprio do "Cursor Wave" (React Bits Pro) — sem WebGL, em
+ * DOM+CSS. Cada célula lê `--cp-onda` (0..1), escrito por quadro pelo
+ * componente: opacidade e escala saem da MESMA variável, então acendem e
+ * crescem juntas, sem `transition` para defasar.
+ *
+ * Cores: `--cp-onda-cor` recebe token do tema no JSX. Sem JS (movimento
+ * reduzido, toque) a variável fica 0: a grade aparece só como textura
+ * apagada — ou nem monta, conforme o componente.
+ */
+
+.cp-onda {
+  --cp-onda-cor: var(--cp-primary, #f2701d);
+  --cp-onda-raio: 4px;
+  --cp-onda-vao: 10px;
+
+  position: relative;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+.cp-onda__grade {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  gap: var(--cp-onda-vao);
+}
+
+.cp-onda__celula {
+  --cp-onda: 0;
+
+  border-radius: var(--cp-onda-raio);
+  border: 1px solid var(--cp-border, rgb(255 255 255 / 12%));
+  background: var(--cp-onda-cor);
+  /* Repouso quase invisível; aceso, quase cheio. A escala acompanha. */
+  opacity: calc(0.05 + var(--cp-onda) * 0.9);
+  transform: scale(calc(0.82 + var(--cp-onda) * 0.18));
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+/* Guardas (AGENTS): decoração desliga em movimento reduzido e alto contraste.
+   O componente já devolve `null` nesses casos; esta é a segunda trava, para o
+   intervalo entre a pintura do HTML e a hidratação. */
+@media (prefers-reduced-motion: reduce) {
+  .cp-onda {
+    display: none;
+  }
+}
+
+[data-theme="high-contrast"] .cp-onda {
+  display: none;
+}
+
+/* ── Camada de fundo do site ─────────────────────────────────────────── */
+
+.cp-fundo-onda {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  /* Translúcido: a grade é textura de fundo, o conteúdo manda no contraste. */
+  opacity: 0.5;
+}
+
+/* Cobre o viewport (quadrado maior que a tela, recortado pela camada). */
+.cp-fundo-onda .cp-onda {
+  width: max(95vw, 100vh);
+  height: max(95vw, 100vh);
+  aspect-ratio: auto;
+  --cp-onda-vao: 14px;
+}

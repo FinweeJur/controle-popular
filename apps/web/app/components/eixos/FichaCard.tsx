@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import type { Ficha } from '@/lib/eixos/types';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
+import BorderGlow from '@/app/components/react-bits/BorderGlow';
+import Magnet from '@/app/components/react-bits/Magnet';
 
 interface Props {
   ficha: Ficha;
@@ -99,7 +101,13 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
   }
 
   return (
-    <article className="group rounded-2xl border border-border bg-surface p-5 sm:p-6 transition-all duration-200 hover:border-primary/40 hover:shadow-md">
+    <Magnet forca={0.05} afastamento={40} className="h-full">
+      <BorderGlow
+        className="h-full rounded-2xl border border-border bg-surface p-5 sm:p-6 transition-all duration-200 hover:border-primary/40 hover:shadow-md"
+        corFundo="var(--cp-surface)"
+        raio={16}
+      >
+      <article className="group flex h-full flex-col">
       {/* CABEÇALHO DO CARD */}
       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
         <div className="flex flex-wrap items-center gap-2">
@@ -191,6 +199,8 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
           ))}
         </div>
       </div>
-    </article>
+      </article>
+      </BorderGlow>
+    </Magnet>
   );
 }

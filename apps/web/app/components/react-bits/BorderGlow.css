@@ -1,0 +1,188 @@
+/*
+ * Estilos do BorderGlow (brilho de borda que segue o cursor).
+ * Origem: React Bits "BorderGlow" (MIT), recebido em 06/10/2026 e renomeado
+ * de `.border-glow-card`/`.edge-light` para `cp-borda-glow*` — no portal nada
+ * carrega nome genérico de biblioteca (padrão dos vendoriados).
+ *
+ * Cores: TODAS as camadas saem de `--cp-borda-cor*` e `--cp-grad-*`, montadas
+ * no TSX a partir dos tokens do tema — trocar de tema repinta o brilho.
+ *
+ * O que NÃO ficou aqui (e por quê): borda, fundo e sombra do cartão. No portal
+ * quem manda nisso são as classes do próprio cartão (`border-border`,
+ * `bg-surface`, `shadow-xs`); CSS sem camada venceria o Tailwind e o cartão
+ * perderia a identidade. O efeito só acrescenta as camadas de brilho.
+ *
+ * Guardas na base: movimento reduzido e alto contraste desligam as três
+ * camadas (efeito decorativo nunca é informação).
+ */
+
+.cp-borda-glow {
+  --cp-borda-prox: 0;
+  --cp-borda-angulo: 45deg;
+  --cp-borda-sens: 30;
+  --cp-borda-sens-cor: 50;
+  --cp-borda-raio: 24px;
+  --cp-borda-luz-pad: 32px;
+  --cp-borda-cone: 25;
+  --cp-borda-fundo: var(--cp-surface, #120f17);
+  --cp-borda-preench: 0.45;
+
+  position: relative;
+  border-radius: var(--cp-borda-raio);
+  /* `isolate` cria o contexto de empilhamento: as camadas de brilho usam
+     `z-index: -1` e precisam ficar atrás do conteúdo, nunca atrás da página. */
+  isolation: isolate;
+  transform: translate3d(0, 0, 0.01px);
+  /* Sem `display` aqui de propósito: CSS sem camada vence o Tailwind, e fixar
+     `grid`/`block` impediria quem usa de escolher `inline-block` (botão) ou
+     `flex`. O padrão do `<div>` já serve para o cartão. */
+}
+
+/* ── As três camadas (atrás do conteúdo) ─────────────────────────────── */
+
+.cp-borda-glow::before,
+.cp-borda-glow::after,
+.cp-borda-glow > .cp-borda-glow__luz {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity 0.25s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Repouso: some suave (o brilho só existe no hover). */
+.cp-borda-glow:not(:hover):not(.sweep-active)::before,
+.cp-borda-glow:not(:hover):not(.sweep-active)::after,
+.cp-borda-glow:not(:hover):not(.sweep-active) > .cp-borda-glow__luz {
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+}
+
+/* Anel com o mesh de cores, recortado pelo cone que aponta para o cursor. */
+.cp-borda-glow::before {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--cp-borda-fundo) 0 100%) padding-box,
+    linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+    var(--cp-grad-1) border-box,
+    var(--cp-grad-2) border-box,
+    var(--cp-grad-3) border-box,
+    var(--cp-grad-4) border-box,
+    var(--cp-grad-5) border-box,
+    var(--cp-grad-6) border-box,
+    var(--cp-grad-7) border-box,
+    var(--cp-grad-base) border-box;
+  opacity: calc(
+    (var(--cp-borda-prox) - var(--cp-borda-sens-cor)) /
+      (100 - var(--cp-borda-sens-cor))
+  );
+  mask-image: conic-gradient(
+    from var(--cp-borda-angulo) at center,
+    black calc(var(--cp-borda-cone) * 1%),
+    transparent calc((var(--cp-borda-cone) + 15) * 1%),
+    transparent calc((100 - var(--cp-borda-cone) - 15) * 1%),
+    black calc((100 - var(--cp-borda-cone)) * 1%)
+  );
+}
+
+/* Preenchimento perto da borda: dá corpo ao brilho (blend suave). */
+.cp-borda-glow::after {
+  border: 1px solid transparent;
+  background:
+    var(--cp-grad-1) padding-box,
+    var(--cp-grad-2) padding-box,
+    var(--cp-grad-3) padding-box,
+    var(--cp-grad-4) padding-box,
+    var(--cp-grad-5) padding-box,
+    var(--cp-grad-6) padding-box,
+    var(--cp-grad-7) padding-box;
+  mask-image:
+    linear-gradient(to bottom, black, black),
+    radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+    radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+    conic-gradient(from var(--cp-borda-angulo) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+  mask-composite: subtract, add, add, add, add, add;
+  opacity: calc(
+    var(--cp-borda-preench) *
+      (var(--cp-borda-prox) - var(--cp-borda-sens-cor)) /
+      (100 - var(--cp-borda-sens-cor))
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Luminância externa: o "vazamento" de luz além da borda. */
+.cp-borda-glow > .cp-borda-glow__luz {
+  inset: calc(var(--cp-borda-luz-pad) * -1);
+  z-index: 1;
+  mask-image: conic-gradient(
+    from var(--cp-borda-angulo) at center,
+    black 2.5%,
+    transparent 10%,
+    transparent 90%,
+    black 97.5%
+  );
+  opacity: calc(
+    (var(--cp-borda-prox) - var(--cp-borda-sens)) /
+      (100 - var(--cp-borda-sens))
+  );
+  mix-blend-mode: plus-lighter;
+}
+
+.cp-borda-glow > .cp-borda-glow__luz::before {
+  content: "";
+  position: absolute;
+  inset: var(--cp-borda-luz-pad);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--cp-borda-cor),
+    inset 0 0 1px 0 var(--cp-borda-cor-60),
+    inset 0 0 3px 0 var(--cp-borda-cor-50),
+    inset 0 0 6px 0 var(--cp-borda-cor-40),
+    inset 0 0 15px 0 var(--cp-borda-cor-30),
+    inset 0 0 25px 2px var(--cp-borda-cor-20),
+    inset 0 0 50px 2px var(--cp-borda-cor-10),
+    0 0 1px 0 var(--cp-borda-cor-60),
+    0 0 3px 0 var(--cp-borda-cor-50),
+    0 0 6px 0 var(--cp-borda-cor-40),
+    0 0 15px 0 var(--cp-borda-cor-30),
+    0 0 25px 2px var(--cp-borda-cor-20),
+    0 0 50px 2px var(--cp-borda-cor-10);
+}
+
+/* Superfície clara: o blend escurece em vez de clarear. */
+.cp-borda-glow--claro::after,
+.cp-borda-glow--claro > .cp-borda-glow__luz {
+  mix-blend-mode: normal;
+}
+
+/* ── Conteúdo: fica ACIMA das camadas ────────────────────────────────── */
+
+.cp-borda-glow__interno {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  /* Preenche a altura quando o invólucro estica (item de grade, por ex.). */
+  height: 100%;
+}
+
+/* ── Guardas (AGENTS): decoração desliga ─────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-borda-glow::before,
+  .cp-borda-glow::after,
+  .cp-borda-glow > .cp-borda-glow__luz {
+    display: none;
+  }
+}
+
+[data-theme="high-contrast"] .cp-borda-glow::before,
+[data-theme="high-contrast"] .cp-borda-glow::after,
+[data-theme="high-contrast"] .cp-borda-glow > .cp-borda-glow__luz {
+  display: none;
+}

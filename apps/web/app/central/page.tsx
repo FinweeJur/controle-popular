@@ -52,6 +52,9 @@ import {
 } from "lucide-react";
 import EixoLayout from "@/app/components/eixos/EixoLayout";
 import SpotlightCard from "@/app/components/react-bits/SpotlightCard";
+import BorderGlow from "@/app/components/react-bits/BorderGlow";
+import Magnet from "@/app/components/react-bits/Magnet";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 import { CATALOGO_EIXOS } from "@/lib/eixos/catalogo";
 
 export const metadata: Metadata = {
@@ -164,13 +167,15 @@ export default function EixoCentralPage() {
           </div>
 
           <div className="shrink-0">
-            <Link
-              href="/funcaosocialterra/mapa"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-ink shadow-sm transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              <span>Abrir Mapa 3D Interativo</span>
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+            <BotaoBrilho raio={12}>
+              <Link
+                href="/funcaosocialterra/mapa"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-ink shadow-sm transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <span>Abrir Mapa 3D Interativo</span>
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </BotaoBrilho>
           </div>
         </div>
       </section>
@@ -187,81 +192,101 @@ export default function EixoCentralPage() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Link
-            href="/editais"
-            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
-          >
-            <div>
-              <span className="text-[10px] font-bold uppercase text-primary">✦ Diário Oficial</span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
-                Radar de Editais (DO-MG)
-              </h3>
-              <p className="text-xs text-muted mt-1 leading-relaxed">
-                Chamamentos públicos, editais de fomento e licitações de interesse social.
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
-              <span>Abrir Radar</span>
-              <span>→</span>
-            </span>
-          </Link>
+          <Magnet forca={0.06} afastamento={44} className="h-full">
+            <BorderGlow
+              className="h-full rounded-xl border border-primary/40 bg-surface p-4 shadow-xs transition-all hover:border-primary hover:bg-primary/10"
+              corFundo="var(--cp-surface)"
+              raio={12}
+            >
+              <Link href="/editais" className="group flex h-full flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold uppercase text-primary">✦ Diário Oficial</span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                    Radar de Editais (DO-MG)
+                  </h3>
+                  <p className="text-xs text-muted mt-1 leading-relaxed">
+                    Chamamentos públicos, editais de fomento e licitações de interesse social.
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+                  <span>Abrir Radar</span>
+                  <span>→</span>
+                </span>
+              </Link>
+            </BorderGlow>
+          </Magnet>
 
-          <Link
-            href="/biblioteca"
-            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
-          >
-            <div>
-              <span className="text-[10px] font-bold uppercase text-primary">✦ Acervo Público</span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
-                Biblioteca Digital (24k+)
-              </h3>
-              <p className="text-xs text-muted mt-1 leading-relaxed">
-                24 mil laudos periciais, relatórios de ATIs, TACs e estudos de impacto.
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
-              <span>Pesquisar Acervo</span>
-              <span>→</span>
-            </span>
-          </Link>
+          <Magnet forca={0.06} afastamento={44} className="h-full">
+            <BorderGlow
+              className="h-full rounded-xl border border-primary/40 bg-surface p-4 shadow-xs transition-all hover:border-primary hover:bg-primary/10"
+              corFundo="var(--cp-surface)"
+              raio={12}
+            >
+              <Link href="/biblioteca" className="group flex h-full flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold uppercase text-primary">✦ Acervo Público</span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                    Biblioteca Digital (24k+)
+                  </h3>
+                  <p className="text-xs text-muted mt-1 leading-relaxed">
+                    24 mil laudos periciais, relatórios de ATIs, TACs e estudos de impacto.
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+                  <span>Pesquisar Acervo</span>
+                  <span>→</span>
+                </span>
+              </Link>
+            </BorderGlow>
+          </Magnet>
 
-          <Link
-            href="/laboratorio/arvore"
-            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
-          >
-            <div>
-              <span className="text-[10px] font-bold uppercase text-primary">✦ Grafo Interativo</span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
-                Árvore de Conexões (3D)
-              </h3>
-              <p className="text-xs text-muted mt-1 leading-relaxed">
-                Visualização estilo Obsidian em grafo conectando 4 eixos e 38 nós cívicos.
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
-              <span>Explorar Grafo</span>
-              <span>→</span>
-            </span>
-          </Link>
+          <Magnet forca={0.06} afastamento={44} className="h-full">
+            <BorderGlow
+              className="h-full rounded-xl border border-primary/40 bg-surface p-4 shadow-xs transition-all hover:border-primary hover:bg-primary/10"
+              corFundo="var(--cp-surface)"
+              raio={12}
+            >
+              <Link href="/laboratorio/arvore" className="group flex h-full flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold uppercase text-primary">✦ Grafo Interativo</span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                    Árvore de Conexões (3D)
+                  </h3>
+                  <p className="text-xs text-muted mt-1 leading-relaxed">
+                    Visualização estilo Obsidian em grafo conectando 4 eixos e 38 nós cívicos.
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+                  <span>Explorar Grafo</span>
+                  <span>→</span>
+                </span>
+              </Link>
+            </BorderGlow>
+          </Magnet>
 
-          <Link
-            href="/assistente"
-            className="group flex flex-col justify-between rounded-xl border border-primary/40 bg-surface p-4 hover:border-primary hover:bg-primary/10 transition-all shadow-xs"
-          >
-            <div>
-              <span className="text-[10px] font-bold uppercase text-primary">✦ IA Cívica</span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
-                Assistente Seu Nonô
-              </h3>
-              <p className="text-xs text-muted mt-1 leading-relaxed">
-                Perguntas e respostas com síntese de voz, contexto de fontes e frases curtas.
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
-              <span>Falar com Seu Nonô</span>
-              <span>→</span>
-            </span>
-          </Link>
+          <Magnet forca={0.06} afastamento={44} className="h-full">
+            <BorderGlow
+              className="h-full rounded-xl border border-primary/40 bg-surface p-4 shadow-xs transition-all hover:border-primary hover:bg-primary/10"
+              corFundo="var(--cp-surface)"
+              raio={12}
+            >
+              <Link href="/assistente" className="group flex h-full flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold uppercase text-primary">✦ IA Cívica</span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
+                    Assistente Seu Nonô
+                  </h3>
+                  <p className="text-xs text-muted mt-1 leading-relaxed">
+                    Perguntas e respostas com síntese de voz, contexto de fontes e frases curtas.
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-primary mt-3 flex items-center justify-between">
+                  <span>Falar com Seu Nonô</span>
+                  <span>→</span>
+                </span>
+              </Link>
+            </BorderGlow>
+          </Magnet>
         </div>
       </section>
 

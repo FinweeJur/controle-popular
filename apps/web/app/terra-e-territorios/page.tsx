@@ -4,6 +4,9 @@ import Link from 'next/link';
 import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
 import SpotlightCard from '@/app/components/react-bits/SpotlightCard';
+import BorderGlow from '@/app/components/react-bits/BorderGlow';
+import BotaoBrilho from '@/app/components/react-bits/BotaoBrilho';
+import Magnet from '@/app/components/react-bits/Magnet';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
@@ -14,6 +17,56 @@ export const metadata: Metadata = {
   description:
     'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e defesa dos biomas.',
 };
+
+/**
+ * Cartão de destaque dos eixos, com brilho de borda e ímã.
+ *
+ * Existe como componente local porque os quatro cartões das "Portas
+ * Prioritárias" têm a MESMA anatomia (etiqueta, título, descrição e rodapé com
+ * a ação). Repetir o invólucro quatro vezes garantiria deriva entre eles — e o
+ * invólucro agora carrega dois efeitos (BorderGlow + Magnet), que precisam ser
+ * idênticos para o comportamento parecer um só.
+ */
+function CartaoDestaque({
+  href,
+  etiqueta,
+  titulo,
+  descricao,
+  acao,
+}: {
+  href: string;
+  etiqueta: string;
+  titulo: string;
+  descricao: string;
+  acao: string;
+}) {
+  return (
+    <Magnet forca={0.06} afastamento={44} className="h-full">
+      <BorderGlow
+        className="h-full rounded-xl border border-emerald-500/40 bg-surface p-4 shadow-xs transition-all hover:border-emerald-500 hover:bg-emerald-500/10"
+        corFundo="var(--cp-surface)"
+        raio={12}
+        intensidade={1}
+      >
+        <Link href={href} className="group flex h-full flex-col justify-between">
+          <div>
+            <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">
+              {etiqueta}
+            </span>
+            <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
+              {titulo}
+            </h3>
+            <p className="text-xs text-muted mt-1 leading-relaxed">{descricao}</p>
+          </div>
+          <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
+            <span>{acao}</span>
+            <span>→</span>
+          </span>
+        </Link>
+      </BorderGlow>
+    </Magnet>
+  );
+}
 
 export default function TerraETerritoriosHub() {
   const subfrentes = CATALOGO_EIXOS.terra.subfrentes;
@@ -66,81 +119,37 @@ export default function TerraETerritoriosHub() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
+            <CartaoDestaque
               href="/funcaosocialterra/mapa"
-              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Cartografia 3D</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
-                  Função Social & Globo 3D
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Camadas de mineração, CAR, UCs e territórios tradicionais renderizados em 3D.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
-                <span>Abrir Globo 3D</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Cartografia 3D"
+              titulo="Função Social & Globo 3D"
+              descricao="Camadas de mineração, CAR, UCs e territórios tradicionais renderizados em 3D."
+              acao="Abrir Globo 3D"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/ambiental/mariana"
-              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Repactuação</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
-                  Rio Doce (Mariana)
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Acompanhamento dos R$ 171 bi repactuados, perícias e cronogramas de obras.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
-                <span>Ver Repactuação</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Repactuação"
+              titulo="Rio Doce (Mariana)"
+              descricao="Acompanhamento dos R$ 171 bi repactuados, perícias e cronogramas de obras."
+              acao="Ver Repactuação"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/paraopeba"
-              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Bacia Atingida</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
-                  Paraopeba (Brumadinho)
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  Acordo judicial de R$ 37,7 bi, perícias da UFMG e projetos nos 26 municípios.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
-                <span>Painel Paraopeba</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Bacia Atingida"
+              titulo="Paraopeba (Brumadinho)"
+              descricao="Acordo judicial de R$ 37,7 bi, perícias da UFMG e projetos nos 26 municípios."
+              acao="Painel Paraopeba"
+            />
 
-            <Link
+            <CartaoDestaque
               href="/ambiental/licenciamento"
-              className="group flex flex-col justify-between rounded-xl border border-emerald-500/40 bg-surface p-4 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">✦ Licenciamento</span>
-                <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">
-                  Licenciamento (11 UFs)
-                </h3>
-                <p className="text-xs text-muted mt-1 leading-relaxed">
-                  8.600+ processos e pautas do COPAM/SEMAD, supressão vegetal e TACs.
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-3 flex items-center justify-between">
-                <span>Ver Licenciamentos</span>
-                <span>→</span>
-              </span>
-            </Link>
+              etiqueta="✦ Licenciamento"
+              titulo="Licenciamento (11 UFs)"
+              descricao="8.600+ processos e pautas do COPAM/SEMAD, supressão vegetal e TACs."
+              acao="Ver Licenciamentos"
+            />
           </div>
         </section>
 
@@ -172,35 +181,39 @@ export default function TerraETerritoriosHub() {
                       : sub.rotaLegada ?? `/terra-e-territorios/${sub.slug}`;
 
               return (
-                <Link
-                  key={sub.id}
-                  href={href}
-                  className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:border-emerald-500/40 hover:shadow-md"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-muted">
-                        Subfrente
-                      </span>
-                      <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
-                        Acessar →
-                      </span>
-                    </div>
-                    <h3 className="font-display text-lg font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {sub.titulo}
-                    </h3>
-                    <p className="mt-2 text-xs text-muted leading-relaxed">
-                      {sub.descricao}
-                    </p>
-                  </div>
-                  <div className="mt-4 flex flex-wrap gap-1 pt-3 border-t border-border/50">
-                    {sub.tagsRelacionadas.slice(0, 3).map((t) => (
-                      <span key={t} className="rounded bg-surface-2 px-2 py-0.5 text-xs text-muted">
-                        #{t}
-                      </span>
-                    ))}
-                  </div>
-                </Link>
+                <Magnet key={sub.id} forca={0.05} afastamento={40} className="h-full">
+                  <BorderGlow
+                    className="h-full rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:border-emerald-500/40 hover:shadow-md"
+                    corFundo="var(--cp-surface)"
+                    raio={16}
+                  >
+                    <Link href={href} className="group flex h-full flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-xs font-bold uppercase tracking-wider text-muted">
+                            Subfrente
+                          </span>
+                          <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
+                            Acessar →
+                          </span>
+                        </div>
+                        <h3 className="font-display text-lg font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                          {sub.titulo}
+                        </h3>
+                        <p className="mt-2 text-xs text-muted leading-relaxed">
+                          {sub.descricao}
+                        </p>
+                      </div>
+                      <div className="mt-4 flex flex-wrap gap-1 pt-3 border-t border-border/50">
+                        {sub.tagsRelacionadas.slice(0, 3).map((t) => (
+                          <span key={t} className="rounded bg-surface-2 px-2 py-0.5 text-xs text-muted">
+                            #{t}
+                          </span>
+                        ))}
+                      </div>
+                    </Link>
+                  </BorderGlow>
+                </Magnet>
               );
             })}
           </div>
@@ -220,82 +233,106 @@ export default function TerraETerritoriosHub() {
                 Fiscalização cidadã do Acordo Judicial de R$ 37,7 bilhões, perícias judiciais da UFMG, auditoria independente AECOM e atuação das Assessorias Técnicas Independentes (ATIs).
               </p>
             </div>
-            <Link
-              href="/paraopeba"
-              className="rounded-xl bg-amber-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-amber-700 transition-colors inline-flex items-center gap-1.5"
-            >
-              <span>Acessar Painel do Paraopeba</span>
-              <span aria-hidden="true">→</span>
-            </Link>
-            <Link
-              href="/ambiental"
-              className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
-            >
-              <span>Ver o Observatório Meio Ambiente</span>
-              <span aria-hidden="true">→</span>
-            </Link>
+            <BotaoBrilho raio={12}>
+              <Link
+                href="/paraopeba"
+                className="rounded-xl bg-amber-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-amber-700 transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Acessar Painel do Paraopeba</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </BotaoBrilho>
+            <BotaoBrilho raio={12}>
+              <Link
+                href="/ambiental"
+                className="rounded-xl border border-current bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Ver o Observatório Meio Ambiente</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </BotaoBrilho>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
-              href="/paraopeba/analise"
-              className="group rounded-xl border border-border bg-surface-2/40 p-4 transition-all hover:border-amber-500/40 hover:bg-surface-2/80"
-            >
-              <span className="text-xs font-bold text-amber-600 dark:text-amber-400 block mb-1">
-                Síntese Tripartite
-              </span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-600 transition-colors">
-                Análise Integrada →
-              </h3>
-              <p className="mt-1.5 text-xs text-muted leading-relaxed">
-                Os 16 eixos da AECOM cruzados com o que a UFMG mediu e o que as ATIs publicaram sobre o mesmo assunto.
-              </p>
-            </Link>
+            <Magnet forca={0.05} afastamento={40} className="h-full">
+              <BorderGlow
+                className="h-full rounded-xl border border-border bg-surface-2 p-4 transition-all hover:border-amber-500/40"
+                corFundo="var(--cp-surface-2)"
+                raio={12}
+              >
+                <Link href="/paraopeba/analise" className="group flex h-full flex-col">
+                  <span className="text-xs font-bold text-amber-600 dark:text-amber-400 block mb-1">
+                    Síntese Tripartite
+                  </span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-600 transition-colors">
+                    Análise Integrada →
+                  </h3>
+                  <p className="mt-1.5 text-xs text-muted leading-relaxed">
+                    Os 16 eixos da AECOM cruzados com o que a UFMG mediu e o que as ATIs publicaram sobre o mesmo assunto.
+                  </p>
+                </Link>
+              </BorderGlow>
+            </Magnet>
 
-            <Link
-              href="/paraopeba/execucao"
-              className="group rounded-xl border border-border bg-surface-2/40 p-4 transition-all hover:border-amber-500/40 hover:bg-surface-2/80"
-            >
-              <span className="text-xs font-bold text-amber-600 dark:text-amber-400 block mb-1">
-                R$ 5,48 bi municipais
-              </span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-600 transition-colors">
-                Execução por Município →
-              </h3>
-              <p className="mt-1.5 text-xs text-muted leading-relaxed">
-                Acompanhamento de repasses e projetos de saneamento e infraestrutura nos 26 municípios atingidos.
-              </p>
-            </Link>
+            <Magnet forca={0.05} afastamento={40} className="h-full">
+              <BorderGlow
+                className="h-full rounded-xl border border-border bg-surface-2 p-4 transition-all hover:border-amber-500/40"
+                corFundo="var(--cp-surface-2)"
+                raio={12}
+              >
+                <Link href="/paraopeba/execucao" className="group flex h-full flex-col">
+                  <span className="text-xs font-bold text-amber-600 dark:text-amber-400 block mb-1">
+                    R$ 5,48 bi municipais
+                  </span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-600 transition-colors">
+                    Execução por Município →
+                  </h3>
+                  <p className="mt-1.5 text-xs text-muted leading-relaxed">
+                    Acompanhamento de repasses e projetos de saneamento e infraestrutura nos 26 municípios atingidos.
+                  </p>
+                </Link>
+              </BorderGlow>
+            </Magnet>
 
-            <Link
-              href="/ambiental/crimes-socioambientais"
-              className="group rounded-xl border border-border bg-surface-2/40 p-4 transition-all hover:border-indigo-500/40 hover:bg-surface-2/80"
-            >
-              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 block mb-1">
-                936 Documentos
-              </span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-indigo-600 transition-colors">
-                Biblioteca de Desastres →
-              </h3>
-              <p className="mt-1.5 text-xs text-muted leading-relaxed">
-                Acervo com micro-resumos de todos os laudos periciais, termos de ajustamento e estudos de saúde.
-              </p>
-            </Link>
+            <Magnet forca={0.05} afastamento={40} className="h-full">
+              <BorderGlow
+                className="h-full rounded-xl border border-border bg-surface-2 p-4 transition-all hover:border-indigo-500/40"
+                corFundo="var(--cp-surface-2)"
+                raio={12}
+              >
+                <Link href="/ambiental/crimes-socioambientais" className="group flex h-full flex-col">
+                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 block mb-1">
+                    936 Documentos
+                  </span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-indigo-600 transition-colors">
+                    Biblioteca de Desastres →
+                  </h3>
+                  <p className="mt-1.5 text-xs text-muted leading-relaxed">
+                    Acervo com micro-resumos de todos os laudos periciais, termos de ajustamento e estudos de saúde.
+                  </p>
+                </Link>
+              </BorderGlow>
+            </Magnet>
 
-            <Link
-              href="/ambiental/mariana"
-              className="group rounded-xl border border-border bg-surface-2/40 p-4 transition-all hover:border-cyan-500/40 hover:bg-surface-2/80"
-            >
-              <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 block mb-1">
-                Rio Doce · R$ 171 bi
-              </span>
-              <h3 className="font-display text-base font-bold text-foreground group-hover:text-cyan-600 transition-colors">
-                Repactuação de Mariana →
-              </h3>
-              <p className="mt-1.5 text-xs text-muted leading-relaxed">
-                Repasses aos municípios da calha do Rio Doce, recuperação ambiental e indenizações individuais.
-              </p>
-            </Link>
+            <Magnet forca={0.05} afastamento={40} className="h-full">
+              <BorderGlow
+                className="h-full rounded-xl border border-border bg-surface-2 p-4 transition-all hover:border-cyan-500/40"
+                corFundo="var(--cp-surface-2)"
+                raio={12}
+              >
+                <Link href="/ambiental/mariana" className="group flex h-full flex-col">
+                  <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 block mb-1">
+                    Rio Doce · R$ 171 bi
+                  </span>
+                  <h3 className="font-display text-base font-bold text-foreground group-hover:text-cyan-600 transition-colors">
+                    Repactuação de Mariana →
+                  </h3>
+                  <p className="mt-1.5 text-xs text-muted leading-relaxed">
+                    Repasses aos municípios da calha do Rio Doce, recuperação ambiental e indenizações individuais.
+                  </p>
+                </Link>
+              </BorderGlow>
+            </Magnet>
           </div>
         </section>
 
@@ -313,24 +350,30 @@ export default function TerraETerritoriosHub() {
                 O portal fiscaliza as 27 Capitais e 176 Polos do Interior em todas as Unidades Federativas. Cada município conta com perfil de saúde (CNES/SUS), educação (INEP/IDEB), finanças públicas e cruzamentos do Data Ocean.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/terra-e-territorios/cidades"
-                  className="rounded-xl bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-emerald-700 transition-colors"
-                >
-                  Explorar as 203 Cidades →
-                </Link>
-                <Link
-                  href="/funcaosocialterra/mapa"
-                  className="rounded-xl border border-border bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors"
-                >
-                  Abrir Globo 3D de Camadas 🌐
-                </Link>
-                <Link
-                  href="/judiciario/contatos"
-                  className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors"
-                >
-                  Varas Agrárias & Ambientais ⚖️
-                </Link>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/terra-e-territorios/cidades"
+                    className="rounded-xl bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-emerald-700 transition-colors"
+                  >
+                    Explorar as 203 Cidades →
+                  </Link>
+                </BotaoBrilho>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/funcaosocialterra/mapa"
+                    className="rounded-xl border border-border bg-surface px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-surface-2 transition-colors"
+                  >
+                    Abrir Globo 3D de Camadas 🌐
+                  </Link>
+                </BotaoBrilho>
+                <BotaoBrilho raio={12}>
+                  <Link
+                    href="/judiciario/contatos"
+                    className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors"
+                  >
+                    Varas Agrárias & Ambientais ⚖️
+                  </Link>
+                </BotaoBrilho>
               </div>
             </div>
 

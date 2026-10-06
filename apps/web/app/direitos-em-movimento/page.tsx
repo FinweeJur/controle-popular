@@ -9,6 +9,8 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import AberturaHero from "@/app/components/abertura/AberturaHero";
+import BorderGlow from "@/app/components/react-bits/BorderGlow";
+import Magnet from "@/app/components/react-bits/Magnet";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
 import VitrineLutas from "./VitrineLutas";
 import type { VerbeteVitrine } from "./VitrineLutas";
@@ -383,22 +385,27 @@ function PortaCard({
     // há `<Link>` de zona pra usar aqui, e não existe risco de basePath
     // (nenhuma destas rotas mora sob /ambiental, /congresso etc., exceto a
     // primeira, que é justamente outra zona e por isso também é <a> cru).
-    <a
-      href={href}
-      className="group flex flex-col rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
-    >
-      <span
-        className="text-[.82em] font-semibold uppercase tracking-wide"
-        style={{ color: CARD_COR }}
+    <Magnet forca={0.06} afastamento={44} className="h-full">
+      <BorderGlow
+        className="h-full rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
+        corFundo="var(--cp-surface)"
+        raio={10}
       >
-        {etiqueta}
-      </span>
-      <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
-        {titulo}
-      </h2>
-      <p className="mt-2 text-[.95em] text-text-soft">{descricao}</p>
-      <p className="mt-3 text-[11px] font-medium text-text-soft">{numero}</p>
-      <span className="mt-5 font-medium text-primary">{cta}</span>
-    </a>
+        <a href={href} className="group flex h-full flex-col">
+          <span
+            className="text-[.82em] font-semibold uppercase tracking-wide"
+            style={{ color: CARD_COR }}
+          >
+            {etiqueta}
+          </span>
+          <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
+            {titulo}
+          </h2>
+          <p className="mt-2 text-[.95em] text-text-soft">{descricao}</p>
+          <p className="mt-3 text-[11px] font-medium text-text-soft">{numero}</p>
+          <span className="mt-5 font-medium text-primary">{cta}</span>
+        </a>
+      </BorderGlow>
+    </Magnet>
   );
 }
