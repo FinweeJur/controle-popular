@@ -92,7 +92,7 @@ export interface CoresAbertura {
 
 /**
  * Opções de cor por efeito. Cada efeito do Vanta aceita nomes distintos:
- * `birds` só tem fundo (a cor do bando é de shader); `cells` usa `color`
+ * `birds` pinta o bando interpolando `color1`×`color2`; `cells` usa `color`
  * e `color2`; `globe` brilha com `glowColor`. Montado aqui para ser
  * testável sem DOM — o componente só injeta o resultado.
  */
@@ -103,7 +103,16 @@ export function opcoesDeCores(
   const opcoes: Record<string, unknown> = {
     backgroundColor: cores.fundo,
   };
-  if (efeito !== "birds") {
+  if (efeito === "birds") {
+    // O bando recebe color1 e color2 e o Vanta interpola entre as duas
+    // por vértice (colorMode `varianceGradient`). Sem as duas chaves ele
+    // cai nos defaults do pacote (vermelho × ciano) — medido 06/10/2026:
+    // os pássaros saíam rosa fosse qual fosse o tema. As duas recebem a
+    // cor primária: o bando inteiro na cor do tema, e o fragment shader
+    // ainda varia o brilho pela profundidade (z), dando volume ao enxame.
+    opcoes.color1 = cores.cor;
+    opcoes.color2 = cores.cor;
+  } else {
     opcoes.color = cores.cor;
   }
   if (efeito === "globe") {

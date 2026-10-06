@@ -113,11 +113,13 @@ describe("opcoesDeCores — cada efeito recebe as chaves que aceita", () => {
     }
   });
 
-  test("birds só tem fundo — a cor do bando é de shader", () => {
+  test("birds recebe color1 e color2 da cor primária (bando do tema)", () => {
     const opcoes = opcoesDeCores("birds", cores);
+    expect(opcoes.color1).toBe(cores.cor);
+    expect(opcoes.color2).toBe(cores.cor);
+    // birds não usa as chaves simples dos outros efeitos
     expect(opcoes.color).toBeUndefined();
     expect(opcoes.glowColor).toBeUndefined();
-    expect(opcoes.color2).toBeUndefined();
   });
 
   test("globe ganha glowColor acompanhando a cor primária", () => {
