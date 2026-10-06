@@ -1,0 +1,124 @@
+{
+  "rotulo": "hero-vivo-fase4c",
+  "base": "http://localhost:3048",
+  "estacao": "radio-brasil-de-fato",
+  "gerado_em": "2026-10-05T21:50:14",
+  "total_alvos": 14,
+  "mortes": 0,
+  "primeiro_culpado": null,
+  "passos": [
+    {
+      "origem": "/radio",
+      "alvo": "/terra-e-territorios",
+      "grupo": "eixo",
+      "href": "/terra-e-territorios",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/terra-e-territorios",
+      "alvo": "/direitos-em-movimento",
+      "grupo": "eixo",
+      "href": "/direitos-em-movimento",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/direitos-em-movimento",
+      "alvo": "/estado-e-economia",
+      "grupo": "eixo",
+      "href": "/estado-e-economia",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/estado-e-economia",
+      "alvo": "/central",
+      "grupo": "eixo",
+      "href": "/central",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/central",
+      "alvo": "/direitos-em-movimento/ajuda",
+      "grupo": "subfrente",
+      "href": "/direitos-em-movimento/ajuda",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/direitos-em-movimento/ajuda",
+      "alvo": "/cidades",
+      "grupo": "subfrente",
+      "href": "/cidades",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/cidades",
+      "alvo": "/ambiental",
+      "grupo": "subfrente",
+      "href": "/ambiental",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/ambiental",
+      "alvo": "/funcaosocialterra",
+      "grupo": "subfrente",
+      "href": "/funcaosocialterra",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/funcaosocialterra",
+      "alvo": "/paraopeba",
+      "grupo": "subfrente",
+      "href": "/paraopeba",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/paraopeba",
+      "alvo": "/ambiental/clima-risco",
+      "grupo": "subfrente",
+      "href": "/ambiental/clima-risco",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/ambiental/clima-risco",
+      "alvo": "/judiciario",
+      "grupo": "subfrente",
+      "href": "/judiciario",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/judiciario",
+      "alvo": "/congresso",
+      "grupo": "subfrente",
+      "href": "/congresso",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/congresso",
+      "alvo": "/governo",
+      "grupo": "subfrente",
+      "href": "/governo",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    },
+    {
+      "origem": "/governo",
+      "alvo": "/empresas",
+      "grupo": "subfrente",
+      "href": "/empresas",
+      "resultado": "VIVA",
+      "detalhe": "URL nao mudou no prazo, mas o audio seguiu vivo"
+    }
+  ],
+  "sem_link": []
+}
