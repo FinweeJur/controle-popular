@@ -68,21 +68,33 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
       gradeEl.querySelectorAll<HTMLElement>(".cp-onda__celula"),
     );
     const n = celulas.length;
-    const centros = new Float32Array(n * 2);
+    // Centros por COLUNA e por LINHA (a grade é uniforme): com 1.600 células,
+    // medir cada uma com getBoundingClientRect a cada quadro seria caro — aqui
+    // a conta é aritmética e roda uma vez por medição.
+    const colX = new Float32Array(grade);
+    const rowY = new Float32Array(grade);
     const atuais = new Float32Array(n);
     let passoPx = 1;
+    let precisaMedir = true;
 
-    /** Recalcula centros e o tamanho da célula (muda em resize/rolagem). */
+    /** Recalcula as colunas/linhas a partir da caixa da grade (sem tocar nas células). */
     const medir = () => {
       const caixa = gradeEl.getBoundingClientRect();
-      passoPx = caixa.width / grade || 1;
-      for (let i = 0; i < n; i += 1) {
-        const r = celulas[i].getBoundingClientRect();
-        centros[i * 2] = r.left + r.width / 2;
-        centros[i * 2 + 1] = r.top + r.height / 2;
+      const estilo = getComputedStyle(gradeEl);
+      const gapCol = parseFloat(estilo.columnGap) || 0;
+      const gapLin = parseFloat(estilo.rowGap) || 0;
+      const largCel = (caixa.width - gapCol * (grade - 1)) / grade;
+      const altCel = (caixa.height - gapLin * (grade - 1)) / grade;
+      passoPx = largCel + gapCol || 1;
+      for (let c = 0; c < grade; c += 1) {
+        colX[c] = caixa.left + c * (largCel + gapCol) + largCel / 2;
+      }
+      for (let r = 0; r < grade; r += 1) {
+        rowY[r] = caixa.top + r * (altCel + gapLin) + altCel / 2;
       }
     };
     medir();
+    precisaMedir = false;
 
     let ponteiro: { x: number; y: number } | null = null;
     let onda: { x: number; y: number; inicio: number } | null = null;
@@ -93,6 +105,10 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
     const passo = (agora: number) => {
       quadro = 0;
       if (!vivo) return;
+      if (precisaMedir) {
+        medir();
+        precisaMedir = false;
+      }
       const dt = ultimo ? Math.min((agora - ultimo) / 1000, 0.05) : TAU;
       ultimo = agora;
       const k = 1 - Math.exp(-dt / TAU);
@@ -105,8 +121,8 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
 
       let mudou = false;
       for (let i = 0; i < n; i += 1) {
-        const cx = centros[i * 2];
-        const cy = centros[i * 2 + 1];
+        const cx = colX[i % grade];
+        const cy = rowY[(i / grade) | 0];
         let alvo = 0;
 
         if (ponteiro) {
@@ -133,7 +149,7 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
 
       if (onda !== null && !ondaAtiva) onda = null;
       // Dorme quando nada muda e não há onda: zero custo ocioso.
-      if (mudou || ondaAtiva) quadro = requestAnimationFrame(passo);
+      if (mudou || ondaAtiva || precisaMedir) quadro = requestAnimationFrame(passo);
     };
 
     const acordar = () => {
@@ -155,8 +171,10 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
       onda = { x: e.clientX, y: e.clientY, inicio: performance.now() };
       acordar();
     };
-    const aoRedimensionar = () => {
-      medir();
+    // Remarcar (e remedir no quadro) em vez de medir no evento: com 1.600
+    // células, medir dentro do `scroll` engasgaria a rolagem.
+    const apontarMedida = () => {
+      precisaMedir = true;
       acordar();
     };
 
@@ -164,8 +182,8 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
     document.addEventListener("pointerleave", aoSair);
     document.addEventListener("click", aoClicar);
     window.addEventListener("blur", aoSair);
-    window.addEventListener("resize", aoRedimensionar);
-    window.addEventListener("scroll", aoRedimensionar, { passive: true });
+    window.addEventListener("resize", apontarMedida);
+    window.addEventListener("scroll", apontarMedida, { passive: true });
 
     return () => {
       vivo = false;
@@ -174,8 +192,8 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
       document.removeEventListener("pointerleave", aoSair);
       document.removeEventListener("click", aoClicar);
       window.removeEventListener("blur", aoSair);
-      window.removeEventListener("resize", aoRedimensionar);
-      window.removeEventListener("scroll", aoRedimensionar);
+      window.removeEventListener("resize", apontarMedida);
+      window.removeEventListener("scroll", apontarMedida);
       for (const c of celulas) c.style.setProperty("--cp-onda", "0");
     };
   }, [permitido, grade, raio, anel, duracaoOnda]);

@@ -68,7 +68,9 @@
   opacity: 0.5;
 }
 
-/* Cobre o viewport (quadrado maior que a tela, recortado pela camada). */
+/* Cobre o viewport (quadrado maior que a tela, recortado pela camada). O vão
+   de 14 px sobre um passo de ~30 px (grade 40) deixa o quadrado visível em
+   ~16 px — a malha fina pedida pelo dono em 06/10/2026. */
 .cp-fundo-onda .cp-onda {
   width: max(95vw, 100vh);
   height: max(95vw, 100vh);

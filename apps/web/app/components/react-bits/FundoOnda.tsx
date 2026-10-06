@@ -8,9 +8,10 @@
  * `pointer-events: none` e `aria-hidden`, cores do tema, e desligada em
  * movimento reduzido, alto contraste e tela de toque.
  *
- * `grade` 12 dá ~100 px por célula em tela de 1280 (o Cubes chegava a 176 px
- * nos 8×8 anteriores e o dono achou gigante); `--cp-onda-vao` no CSS abre o
- * respiro entre as formas para a grade não virar um bloco sólido.
+ * `grade` 40 dá ~30 px de passo e ~16 px de quadrado visível numa tela de
+ * 1280 (o dono pediu, em 06/10/2026, "10× mais quadrados e 5× menores": eram
+ * 144 células de ~87 px, viraram 1.600 de ~16 px). `--cp-onda-vao` no CSS
+ * abre o respiro entre as formas.
  */
 import OndaCursor from "./OndaCursor";
 import { useEfeitoPermitido } from "./useEfeitoPermitido";
@@ -22,7 +23,18 @@ export default function FundoOnda() {
 
   return (
     <div className="cp-fundo-onda" aria-hidden="true">
-      <OndaCursor grade={12} raio={3.2} cor="var(--cp-primary)" />
+      {/* Grade 40 (dono, 06/10/2026: "10× mais quadrados e 5× menores"): eram
+          144 células de ~87 px; aqui são 1.600 de ~18 px, com os mesmos
+          ~93 px de raio de acendimento no ponteiro (por isso `raio` subiu de
+          3,2 para 10 células — em px, o valor é o mesmo). O motor mede a grade
+          por coluna/linha, então a densidade não vira 1.600 leituras de layout. */}
+      <OndaCursor
+        grade={40}
+        raio={9}
+        anel={3}
+        raioCelula={2}
+        cor="var(--cp-primary)"
+      />
     </div>
   );
 }
