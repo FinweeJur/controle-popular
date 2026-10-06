@@ -413,6 +413,19 @@ export default function TopNav() {
                   <span aria-hidden="true">→</span>
                 </NextLink>
               </div>
+
+              {/* ═══ PREFERÊNCIAS NO CELULAR ═══
+                  A barra esconde tema, tamanho de fonte e paleta daltônica
+                  abaixo de `md` (não cabem: medido em 06/10/2026, logo +
+                  "Índice" + Blog + Alertas + Ouvir já ocupam a linha de 390 px).
+                  Sem isto, quem está no celular só mudava isso pelo assistente.
+                  De `md` para cima a própria barra já mostra as três. */}
+              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/70 pt-3 md:hidden">
+                <span className="text-xs font-semibold text-text-soft">Preferências:</span>
+                <ThemeSwitcher />
+                <FontSizeControl />
+                <CvdToggle />
+              </div>
             </div>
           </nav>
         </div>

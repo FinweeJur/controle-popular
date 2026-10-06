@@ -173,6 +173,18 @@
 
 /* ── Guardas (AGENTS): decoração desliga ─────────────────────────────── */
 
+/* Sem hover (celular/tablet) ou em janela estreita, o brilho externo não
+   aparece — e ele é o ÚNICO que transborda (o `inset` negativo de
+   `--cp-borda-luz-pad`), o que criava rolagem lateral falsa de ~13 px
+   (medido 06/10/2026, 390 px). O corte por LARGURA cobre também a janela
+   estreita do desktop, onde `(hover: none)` não casa. Nada se perde: sem
+   hover de mouse não há brilho. */
+@media (hover: none), (max-width: 640px) {
+  .cp-borda-glow > .cp-borda-glow__luz {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cp-borda-glow::before,
   .cp-borda-glow::after,

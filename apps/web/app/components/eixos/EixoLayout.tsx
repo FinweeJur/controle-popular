@@ -148,11 +148,14 @@ export default function EixoLayout({
         {/* CONTEÚDO DA PÁGINA */}
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           {children}
+
+          {/* RODAPÉ GLOBAL — DENTRO do contêiner com padding. Fora dele, o
+              texto do rodapé começava no x=0 da tela (medido em 06/10/2026),
+              desalinhado do resto da página; a home já faz o certo, com o
+              rodapé dentro do `main` que tem `px-4`. */}
+          <FooterGlobal />
         </div>
       </main>
-
-      {/* RODAPÉ GLOBAL */}
-      <FooterGlobal />
     </div>
   );
 }

@@ -36,7 +36,17 @@ export default function Bandeira({
     <img
       src={url}
       alt={nome ? `Bandeira de ${nome}` : "Bandeira do país"}
-      style={{ height: tamanho, width: "auto" }}
+      style={{
+        height: tamanho,
+        width: "auto",
+        // Contorno fino e escuro (dono, 06/10/2026): bandeira clara (Brasil,
+        // Japão) encostava no fundo e "sumia" na borda; o traço separa a
+        // imagem do que está atrás. `outline` (e não `border`) porque não muda
+        // o tamanho da caixa — a lista do índice não dança. Em `style` inline
+        // de propósito: o utilitário do Tailwind não gerou a regra (medido:
+        // `outline-width` ficava no padrão `medium`, e nada aparecia).
+        outline: "1px solid rgba(0, 0, 0, 0.55)",
+      }}
       loading="lazy"
       decoding="async"
       className="inline-block shrink-0 rounded-[2px] align-[-0.15em]"
@@ -71,7 +81,7 @@ export function BandeiraEstado({
       src={url}
       alt={`Bandeira de ${nome}`}
       title={`Bandeira de ${nome}`}
-      style={{ height: tamanho, width: "auto" }}
+      style={{ height: tamanho, width: "auto", outline: "1px solid rgba(0, 0, 0, 0.55)" }}
       loading="lazy"
       decoding="async"
       className="inline-block shrink-0 rounded-[2px] align-[-0.15em]"
