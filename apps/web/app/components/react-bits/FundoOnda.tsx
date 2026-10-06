@@ -25,12 +25,13 @@ export default function FundoOnda() {
     <div className="cp-fundo-onda" aria-hidden="true">
       {/* Malha fina e OCA (dono, 06/10/2026: "bem mais quadrados, 2× menores e
           só o contorno"): passo de 10 px com linha de 1 px — ~9 px de quadrado
-          vazio, contra os ~16 px preenchidos de antes — e o brilho do cursor
-          caiu de ~93 px para 24 px de raio (4× menor, como pedido). */}
+          vazio, contra os ~16 px preenchidos de antes. O brilho do cursor foi
+          a 24 px (4× menor) e o dono achou pequeno demais: ficou em 55 px, o
+          meio do caminho entre os ~93 px originais e os 24 px. */}
       <OndaCursor
         passo={10}
         espessura={1}
-        raio={24}
+        raio={55}
         anel={16}
         cor="var(--cp-primary)"
         corBorda="var(--cp-border)"
