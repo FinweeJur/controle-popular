@@ -16,6 +16,11 @@
  * 3. se ainda não couber, tem a altura reduzida (scroll interno) e a posição
  *    limitada à margem de segurança — nunca transborda.
  *
+ * Correção de 06/10/2026 (pedido do dono — "volume cortando no topo"):
+ * `margemTopo` segura a casca sticky (navbar `z-50`) no cálculo do topo.
+ * O índice do rádio mora num grupo `z-[45]` — abaixo da navbar por regra
+ * de camadas — então ele não sobe por cima: abre ABAIXO, sem perder linha.
+ *
  * Duas partes:
  * - `posicionarPainel` é PURA (sem DOM) e testada em `posicionar-painel.test.ts`;
  * - `usePosicaoPainel` é o hook de cliente que mede os elementos e recalcula em
@@ -95,6 +100,17 @@ export interface PosicaoPainel {
 /** Opções do cálculo puro. */
 export interface OpcoesPosicionamento {
   margem?: number;
+  /**
+   * Folga extra no TOPO da viewport (px), além da `margem` — vence quando
+   * for maior. Ex.: a navbar `sticky z-50` encobre o topo; um painel abaixo
+   * dela no empilhamento (o índice do rádio vive dentro do grupo `z-[45]`)
+   * não pode passar por cima: se abrir para cima sem esta folga, a PRIMEIRA
+   * linha some atrás da barra (medido 06/10/2026 — pedido do dono, "volume
+   * cortando no topo atrás da navbar"). Aceita função para a margem seguir a
+   * altura real da casca a cada cálculo (faixa de desenvolvimento muda o
+   * topo sem mudar o componente).
+   */
+  margemTopo?: number | (() => number);
   espaco?: number;
   /** Direção vertical preferida em caso de empate. Padrão: `"acima"`. */
   verticalPreferida?: LadoVertical;
@@ -127,6 +143,12 @@ export function posicionarPainel(
 ): PosicaoPainel {
   const margem = Math.max(0, opcoes.margem ?? MARGEM_PAINEL);
   const espaco = Math.max(0, opcoes.espaco ?? ESPACO_PAINEL);
+  // Folga do topo: a casca sticky (navbar) vence a margem comum quando for
+  // maior — o painel abre ABAIXO dela, nunca por trás. Função é resolvida
+  // aqui, dentro do cálculo, para a altura seguir a casca quadro a quadro.
+  const brutoTopo =
+    typeof opcoes.margemTopo === "function" ? opcoes.margemTopo() : opcoes.margemTopo;
+  const margemTopo = Math.max(margem, Math.max(0, brutoTopo ?? 0));
 
   // Largura: nunca maior que a viewport útil (senão encolhe e a margem vale).
   const larguraMaxima = Math.max(1, visao.larg - 2 * margem);
@@ -134,7 +156,7 @@ export function posicionarPainel(
   const limitadoLargura = largura < painel.larg;
 
   // Espaço vertical livre de cada lado da âncora, descontados margem e vão.
-  const livreAcima = ancora.topo - margem - espaco;
+  const livreAcima = ancora.topo - margemTopo - espaco;
   const livreAbaixo = visao.alt - (ancora.topo + ancora.alt) - margem - espaco;
 
   let vertical: LadoVertical;
@@ -160,7 +182,7 @@ export function posicionarPainel(
     vertical === "acima"
       ? ancora.topo - espaco - altura
       : ancora.topo + ancora.alt + espaco;
-  const y = limitar(yBruto, margem, visao.alt - altura - margem);
+  const y = limitar(yBruto, margemTopo, visao.alt - altura - margem);
 
   // Horizontal: cresce para a direita se couber; senão vira para a esquerda,
   // ancorando a borda direita do painel na borda direita da âncora.
@@ -353,4 +375,28 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
 
   // Fechado, devolve `null` mesmo que a última medição siga na memória.
   return aberto ? resultado : null;
+}
+
+/**
+ * Mede a casca no topo da tela: a borda de baixo do cabeçalho sticky/fixed
+ * mais baixo (px de viewport). É o valor pronto para `margemTopo`.
+ *
+ * Por que só `header` sticky/fixed: cabeçalho de conteúdo é estático — o
+ * painel passa POR CIMA dele sem prejuízo (empilhamento do grupo `z-[45]`).
+ * Só a casca (`TopNav`, `sticky z-50`) fica acima do painel e precisa ser
+ * descontada. Medido em 06/10/2026: sem isto, a primeira linha do índice
+ * do rádio sumia atrás da navbar.
+ *
+ * @returns Y até a borda de baixo da casca; 0 quando não há casca.
+ */
+export function medirTopoUtil(): number {
+  if (typeof document === "undefined") return 0;
+  let topo = 0;
+  for (const el of document.querySelectorAll<HTMLElement>("header")) {
+    const css = getComputedStyle(el);
+    if (css.position === "sticky" || css.position === "fixed") {
+      topo = Math.max(topo, el.getBoundingClientRect().bottom);
+    }
+  }
+  return Math.round(topo);
 }

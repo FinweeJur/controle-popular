@@ -125,7 +125,8 @@ import {
 import { DURACAO_FALHA_MS, EVENTO_COMPANHEIRO_FAILED } from "@/lib/companheiro/eventos";
 import { escolherFala } from "@/lib/companheiro/falas";
 import { dicaParaRota, type DicaPagina } from "@/lib/companheiro/dicas-pagina";
-import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
+import { usePosicaoPainel, medirTopoUtil, type CaixaAncora } from "@/lib/posicionar-painel";
+import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
 const CELL_W = 192;
@@ -611,6 +612,12 @@ export function CompanheiroFlutuante() {
   // vira para cima/esquerda quando falta espaço; a âncora é um ponto (caixa de
   // tamanho zero) no local onde o menu foi pedido.
   const menuRef = useRef<HTMLDivElement | null>(null);
+  // Contêiner da lista de bichinhos para o efeito de proximidade
+  // (LineSidebar, pedido do dono 06/10/2026): o item mais perto do ponteiro
+  // ganha barra de acento e desliza. A ref é estável; o hook resolve o `<ul>`
+  // a cada quadro — ele nasce e morre com o menu.
+  const listaMenuRef = useRef<HTMLUListElement | null>(null);
+  useProximidadeLinha(listaMenuRef);
   const medirAncoraMenu = useCallback(
     (): CaixaAncora | null =>
       menu ? { esq: menu.x, topo: menu.y, larg: 0, alt: 0 } : null,
@@ -620,7 +627,13 @@ export function CompanheiroFlutuante() {
     aberto: menu !== null,
     painelRef: menuRef,
     medirAncora: medirAncoraMenu,
-    opcoes: { verticalPreferida: "abaixo", horizontalPreferida: "direita" },
+    opcoes: {
+      verticalPreferida: "abaixo",
+      horizontalPreferida: "direita",
+      // Casca sticky (navbar `z-50`) descontada: o menu pedido perto do topo
+      // não pode nascer atrás da barra — mesma régua do índice do rádio.
+      margemTopo: medirTopoUtil,
+    },
   });
 
   // A pata da pilha do canto pede o menu na posição dela.
@@ -1502,11 +1515,11 @@ export function CompanheiroFlutuante() {
               Remover todos
             </button>
             <div className="my-1 border-t border-border" role="separator" />
-            <ul className="space-y-0.5">
+            <ul ref={listaMenuRef} className="space-y-0.5">
               {PETS_COMPANHEIRO.map((p) => {
                 const marcado = pets.some((q) => q.slug === p.slug);
                 return (
-                  <li key={p.slug}>
+                  <li key={p.slug} data-cp-prox>
                     {/* O último não sai: `alternarPet` recusa a remoção. */}
                     <button
                       type="button"

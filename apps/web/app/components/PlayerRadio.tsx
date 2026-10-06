@@ -25,8 +25,14 @@ import {
 import Bandeira, { BandeiraEstado } from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
+import MedidorLiquido from "@/app/components/react-bits/SloshGauge";
+import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
 import { useArrastavel } from "@/lib/usarArrastavel";
-import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
+import {
+  medirTopoUtil,
+  usePosicaoPainel,
+  type CaixaAncora,
+} from "@/lib/posicionar-painel";
 
 /**
  * Player de rádio persistente e multi-estação.
@@ -51,9 +57,20 @@ import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
  *
  * CONTROLE VISUAL (pedido do dono, 03/10/2026): a pílula com nome, pega de
  * arrasto e chevron virou UM botão redondo só com play/pause — o terceiro
- * círculo da pilha da lateral esquerda (abaixo vem a pata do pet, embaixo o
+ * círculo da pilha da lateral esquerdo (abaixo vem a pata do pet, embaixo o
  * FAB do Seu Nonô; régua em `SeuNono.tsx`). O índice de estações e o volume
  * abrem no hover/foco do conjunto (`group`); no celular o toque foca e abre.
+ *
+ * VOLUME À DIREITA + CASCA (pedido do dono, 06/10/2026): o volume era uma
+ * linha no cabeçalho do índice e, com o painel abrindo para cima, o topo
+ * passava por trás da navbar (`TopNav` `z-50` fica ACIMA do grupo `z-[45]`)
+ * — "cortando no topo". Duas correções juntas: (1) o painel virou duas
+ * colunas — esquerda com título e lista, direita com o medidor de líquido
+ * (SloshGauge, pedido "com essa animação") e o botão de mudo; (2) o
+ * `margemTopo` do posicionador desconta a casca (`medirTopoUtil`), então o
+ * painel abre abaixo da navbar sem burlar a ordem de camadas. A lista
+ * também ganhou o efeito de proximidade LineSidebar: barra de acento no
+ * item mais perto do ponteiro (`useProximidadeLinha`).
  *
  * ARRASTO DE VOLTA (conserto, 03/10/2026): a posição fixa tinha tirado o
  * arrasto do rádio. O dono pediu os TRÊS arrastáveis e com posição lembrada
@@ -95,6 +112,11 @@ export default function PlayerRadio() {
   // viewport viram deslocamento relativo subtraindo a caixa da âncora.
   const grupoRef = useRef<HTMLDivElement | null>(null);
   const indiceRef = useRef<HTMLDivElement | null>(null);
+  // Contêiner da lista para o efeito de proximidade (LineSidebar): os itens
+  // `[data-cp-prox]` acendem conforme o ponteiro passa. A ref é estável e o
+  // hook resolve o elemento a cada quadro — o índice nasce no hover.
+  const listaRef = useRef<HTMLDivElement | null>(null);
+  useProximidadeLinha(listaRef);
   const medirAncoraIndice = useCallback((): CaixaAncora | null => {
     const el = grupoRef.current;
     if (!el) return null;
@@ -105,6 +127,11 @@ export default function PlayerRadio() {
     aberto: indiceAberto,
     painelRef: indiceRef,
     medirAncora: medirAncoraIndice,
+    // Casca sticky (navbar `z-50`) descontada do topo: o painel fica num
+    // grupo `z-[45]` — abaixo dela por regra de camadas — então ele NÃO
+    // sobe por cima: abre abaixo, sem perder a primeira linha atrás da barra
+    // (medido 06/10/2026, "volume cortando no topo").
+    opcoes: { margemTopo: medirTopoUtil },
   });
 
   // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
@@ -361,79 +388,48 @@ export default function PlayerRadio() {
               maxHeight: posIndice ? Math.round(posIndice.posicao.altura) : undefined,
               visibility: posIndice ? "visible" : "hidden",
             }}
-            className="absolute z-50 flex w-[min(calc(100vw-2rem),21rem)] flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+            // Duas colunas (06/10/2026): esquerda título+lista, direita o
+            // volume. `flex-row` + `overflow-hidden` mantêm o corte da rolagem
+            // só na lista.
+            className="absolute z-50 flex w-[min(calc(100vw-2rem),23rem)] flex-row overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
           >
-            <div className="flex shrink-0 items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
-              <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
-                <ListMusic size={14} aria-hidden="true" />
-                Índice de rádios
-              </p>
-              <Link
-                href="/radio"
-                className="text-xs font-semibold text-primary hover:underline"
-                // Navegação: fecha na hora, sem os 1,5 s do hover — a saída é
-                // intencional e o atraso só faria o índice piscar na transição.
-                onClick={fecharIndiceJa}
+            {/* Coluna esquerda: o título fixo e a lista que rola sozinha. */}
+            <div className="flex min-w-0 flex-1 flex-col">
+              <div className="flex shrink-0 items-center justify-between border-b border-border bg-primary/10 px-3 py-2">
+                <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
+                  <ListMusic size={14} aria-hidden="true" />
+                  Índice de rádios
+                </p>
+                <Link
+                  href="/radio"
+                  className="text-xs font-semibold text-primary hover:underline"
+                  // Navegação: fecha na hora, sem os 1,5 s do hover — a saída é
+                  // intencional e o atraso só faria o índice piscar na transição.
+                  onClick={fecharIndiceJa}
+                >
+                  Ver todas →
+                </Link>
+                <button
+                  type="button"
+                  onClick={fecharIndiceJa}
+                  aria-label="Fechar o índice de rádios"
+                  title="Fechar"
+                  className="rounded-full p-0.5 text-text-soft hover:bg-surface-2 hover:text-primary"
+                >
+                  <X size={14} aria-hidden="true" />
+                </button>
+              </div>
+              {/* A lista é o pedaço que rola quando o utilitário corta a
+                  altura: `flex-1 min-h-0` deixa o teto do painel vencer e o
+                  título fica sempre visível. O `overscroll-contain` segura a
+                  roda do mouse aqui dentro: sem ele, chegar ao fim da lista
+                  arrastava a rolagem para a página atrás do painel.
+                  `listaRef` é o contêiner do efeito de proximidade — os
+                  itens `[data-cp-prox]` acendem perto do ponteiro. */}
+              <div
+                ref={listaRef}
+                className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2"
               >
-                Ver todas →
-              </Link>
-              <button
-                type="button"
-                onClick={fecharIndiceJa}
-                aria-label="Fechar o índice de rádios"
-                title="Fechar"
-                className="rounded-full p-0.5 text-text-soft hover:bg-surface-2 hover:text-primary"
-              >
-                <X size={14} aria-hidden="true" />
-              </button>
-            </div>
-            {/* Volume no cabeçalho do índice: o botão do canto virou só um
-                ícone (03/10/2026), então o controle de som mora aqui —
-                visível sem rolar, em qualquer tela. O `range` usa a mesma
-                escala 0–1 de `audio.volume`; o mudo tem `aria-pressed`. */}
-            <div className="flex shrink-0 items-center gap-2 border-b border-border bg-surface-2/50 px-3 py-2">
-              <button
-                type="button"
-                onClick={() => setMudo((m) => !m)}
-                aria-label={mudo ? "Ativar som da rádio" : "Silenciar rádio"}
-                aria-pressed={mudo}
-                title={mudo ? "Ativar som" : "Silenciar"}
-                className="shrink-0 text-text-soft transition-colors hover:text-primary"
-              >
-                {mudo || volume === 0 ? (
-                  <VolumeX size={16} aria-hidden="true" />
-                ) : (
-                  <Volume2 size={16} aria-hidden="true" />
-                )}
-              </button>
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.05}
-                value={mudo ? 0 : volume}
-                onChange={(e) => {
-                  const v = Number(e.target.value);
-                  setVolume(v);
-                  if (v > 0) setMudo(false);
-                }}
-                aria-label="Volume da rádio"
-                className="h-1 w-full min-w-0 cursor-pointer accent-[var(--cp-primary)]"
-              />
-              <span
-                aria-hidden="true"
-                className="w-8 shrink-0 text-right text-[0.65rem] tabular-nums text-text-soft"
-              >
-                {mudo || volume === 0 ? "mudo" : `${Math.round(volume * 100)}%`}
-              </span>
-            </div>
-            {/* A lista é o pedaço que rola quando o utilitário corta a
-                altura: `flex-1 min-h-0` deixa o teto do painel vencer e o
-                cabeçalho (com o volume) fica sempre visível. O
-                `overscroll-contain` segura a roda do mouse aqui dentro: sem
-                ele, chegar ao fim da lista arrastava a rolagem para a página
-                atrás do painel. */}
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2">
               {ORDEM_TIPOS.map((tipo) => {
                 const grupo = ESTACOES.filter((e) => e.tipo === tipo);
                 if (grupo.length === 0) return null;
@@ -446,7 +442,7 @@ export default function PlayerRadio() {
                       {grupo.map((e) => {
                         const ativa = e.id === idAtual;
                         return (
-                          <li key={e.id}>
+                          <li key={e.id} data-cp-prox>
                             <button
                               type="button"
                               onClick={() => void tocar(e.id)}
@@ -485,6 +481,50 @@ export default function PlayerRadio() {
                   </div>
                 );
               })}
+              </div>
+            </div>
+
+            {/* Coluna direita: volume à direita (pedido do dono, 06/10/2026
+                — "barra de volume para a direita com essa animação"). O
+                medidor de líquido (SloshGauge) ondula ao mudar de nível;
+                arrastar ou usar as setas do teclado muda o volume
+                (`role="slider"` liga no `interativo`). O mudo mantém o
+                `aria-pressed` de antes; as cores vêm dos tokens do tema. */}
+            <div className="flex shrink-0 flex-col items-center gap-2 border-l border-border bg-surface px-2 py-2">
+              <button
+                type="button"
+                onClick={() => setMudo((m) => !m)}
+                aria-label={mudo ? "Ativar som da rádio" : "Silenciar rádio"}
+                aria-pressed={mudo}
+                title={mudo ? "Ativar som" : "Silenciar"}
+                className="shrink-0 text-text-soft transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                {mudo || volume === 0 ? (
+                  <VolumeX size={16} aria-hidden="true" />
+                ) : (
+                  <Volume2 size={16} aria-hidden="true" />
+                )}
+              </button>
+              <MedidorLiquido
+                interativo
+                valor={mudo ? 0 : Math.round(volume * 100)}
+                aoMudar={(n) => {
+                  setVolume(n / 100);
+                  if (n > 0) setMudo(false);
+                }}
+                corLiquido="var(--cp-primary)"
+                corVidro="var(--cp-surface-2)"
+                largura={56}
+                altura={150}
+                raio={14}
+                rotuloAria="Volume da rádio"
+              />
+              <span
+                aria-hidden="true"
+                className="text-[0.65rem] font-medium tabular-nums text-text-soft"
+              >
+                {mudo || volume === 0 ? "mudo" : `${Math.round(volume * 100)}%`}
+              </span>
             </div>
           </div>
         )}

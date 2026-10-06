@@ -1,0 +1,94 @@
+/*
+ * Estilos do grade de cubos 3D (Cubes) da home.
+ * Origem: React Bits "Cubes" (MIT + Commons Clause), copiado em 06/10/2026
+ * e renomeado de `.default-animation`/`.cube` para `cp-cubos`/`cp-cubo` —
+ * nomes genéricos como `.cube` colidiriam com qualquer CSS futuro.
+ *
+ * Variáveis `--cp-cubo-*` são preenchidas no JSX (borda/fundo/sombra vêm
+ * das props, que no protótipo recebem tokens do tema). `:root` genérico do
+ * original vira `.cp-cubos` — nada de variável global solta.
+ */
+
+.cp-cubos {
+  --cp-cubos-col-gap: 5%;
+  --cp-cubos-row-gap: 5%;
+  --cp-cubos-perspectiva: 99999999px;
+  --cp-cubo-face-borda: 1px solid #fff;
+  --cp-cubo-face-fundo: #120f17;
+
+  position: relative;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+.cp-cubos--cena {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  column-gap: var(--cp-cubos-col-gap);
+  row-gap: var(--cp-cubos-row-gap);
+  perspective: var(--cp-cubos-perspectiva);
+  grid-auto-rows: 1fr;
+}
+
+.cp-cubo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  transform-style: preserve-3d;
+}
+
+/* Alvo de toque maior que a célula (os cubos se tocam pelo vão): o ponteiro
+   inclina "cedo", sem precisar acertar o miolo. */
+.cp-cubo::before {
+  content: "";
+  position: absolute;
+  top: -36px;
+  right: -36px;
+  bottom: -36px;
+  left: -36px;
+}
+
+.cp-cubos .cp-cubo-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cp-cubo-face-fundo);
+  border: var(--cp-cubo-face-borda);
+  /* A prop `sombra` preenche esta variável no JSX; `none` (padrão) mantém
+     o original pixel a pixel. */
+  box-shadow: var(--cp-cubo-face-sombra, none);
+  opacity: 1;
+}
+
+.cp-cubos .cp-cubo-face--topo {
+  transform: translateY(-50%) rotateX(90deg);
+}
+
+.cp-cubos .cp-cubo-face--baixo {
+  transform: translateY(50%) rotateX(-90deg);
+}
+
+.cp-cubos .cp-cubo-face--esquerda {
+  transform: translateX(-50%) rotateY(-90deg);
+}
+
+.cp-cubos .cp-cubo-face--direita {
+  transform: translateX(50%) rotateY(90deg);
+}
+
+.cp-cubos .cp-cubo-face--tras,
+.cp-cubos .cp-cubo-face--frente {
+  transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
+}
+
+@media (max-width: 768px) {
+  .cp-cubos {
+    width: 90%;
+  }
+}

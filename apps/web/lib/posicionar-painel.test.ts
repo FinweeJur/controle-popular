@@ -72,6 +72,57 @@ describe("posicionarPainel", () => {
     // O conteúdo passa a rolar: a base fica a um vão da âncora.
     expect(r.y + r.altura).toBe(ancora.topo - ESPACO_PAINEL);
   });
+
+  // margemTopo (correção de 06/10/2026 — "volume cortando no topo atrás
+  // da navbar"): a casca sticky desconta do topo e o painel não passa por trás.
+  describe("margemTopo", () => {
+    const NAVBAR = 56;
+
+    it("empate: sem a folga abre acima (cortado), com a folga abre abaixo", () => {
+      const ancora = { esq: 100, topo: 250, larg: 48, alt: 48 };
+      const painel = { larg: 320, alt: 200 };
+      // Sem folga: acima sobra 250-8-8 = 234 ≥ 200 → acima.
+      expect(posicionarPainel(ancora, painel, VISAO).vertical).toBe("acima");
+      // Com folga: acima sobra 250-56-8 = 186 < 200; abaixo sobra 486 → abaixo.
+      const r = posicionarPainel(ancora, painel, VISAO, { margemTopo: NAVBAR });
+      expect(r.vertical).toBe("abaixo");
+      expect(r.y).toBe(ancora.topo + ancora.alt + ESPACO_PAINEL); // 306, na frente
+      expect(r.y).toBeGreaterThanOrEqual(NAVBAR);
+      expect(r.limitadoAltura).toBe(false);
+    });
+
+    it("aceita função: resolvida dentro do cálculo (casca mede ao vivo)", () => {
+      const ancora = { esq: 100, topo: 250, larg: 48, alt: 48 };
+      const painel = { larg: 320, alt: 200 };
+      const r = posicionarPainel(ancora, painel, VISAO, {
+        margemTopo: () => NAVBAR,
+      });
+      expect(r.vertical).toBe("abaixo");
+      expect(r.y).toBe(306);
+    });
+
+    it("menor que a margem comum: a margem comum vence (nunca encolhe o topo)", () => {
+      const ancora = { esq: 100, topo: 300, larg: 48, alt: 48 };
+      const painel = { larg: 320, alt: 280 };
+      const base = posicionarPainel(ancora, painel, VISAO);
+      const comFolga = posicionarPainel(ancora, painel, VISAO, { margemTopo: 4 });
+      expect(comFolga).toEqual(base);
+      expect(comFolga.vertical).toBe("acima");
+    });
+
+    it("altura limitada: o clamp de cima usa a folga da casca", () => {
+      const visao = { larg: 400, alt: 300 };
+      const ancora = { esq: 40, topo: 100, larg: 48, alt: 48 };
+      const painel = { larg: 320, alt: 500 };
+      const r = posicionarPainel(ancora, painel, visao, { margemTopo: NAVBAR });
+      // Acima sobra 36, abaixo 136 → abaixo; clamp nunca cruza a casca.
+      expect(r.vertical).toBe("abaixo");
+      expect(r.limitadoAltura).toBe(true);
+      expect(r.y).toBe(ancora.topo + ancora.alt + ESPACO_PAINEL); // 156
+      expect(r.y).toBeGreaterThanOrEqual(NAVBAR);
+      expect(r.y + r.altura).toBeLessThanOrEqual(visao.alt - MARGEM_PAINEL);
+    });
+  });
 });
 
 /** Espaço livre acima da âncora (mesma conta do utilitário), didático no teste. */

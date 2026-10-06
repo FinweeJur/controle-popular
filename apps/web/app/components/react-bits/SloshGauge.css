@@ -1,0 +1,112 @@
+/*
+ * Estilos do medidor de nível com líquido (Slosh Gauge) da rádio.
+ * Origem: React Bits "Slosh Gauge" (MIT + Commons Clause), copiado em
+ * 06/10/2026 e prefixado com `cp-slosh-` — no portal nada carrega nome
+ * genérico de biblioteca (padrão dos vendoriados em react-bits.css).
+ *
+ * Cores: só tokens do tema (`--sg-*` recebem `var(--cp-*)` no JSX), então
+ * a troca de tema repinta o medidor sem CSS por tema. `color-mix` atrás
+ * dos traços tem @supports-free fallback: sem color-mix o gradiente não
+ * existe e a escala some — o valor continua legível pelo texto.
+ */
+
+.cp-slosh {
+  --sg-w: 88px;
+  --sg-h: 180px;
+  --sg-r: 20px;
+  --sg-glass: #27272a;
+  --sg-liquid: #f5f5f5;
+  --sg-on-liquid: #111111;
+  --sg-ticks: 4;
+  --sg-font: 14px;
+
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: var(--sg-w);
+  height: var(--sg-h);
+  border-radius: var(--sg-r);
+  overflow: clip;
+  isolation: isolate;
+  background: var(--sg-glass);
+  font-size: var(--sg-font);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cp-slosh[data-interactive='true'] {
+  cursor: ns-resize;
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+
+/* Foco visível para o teclado (a11y AA): quem entra por Tab precisa ver. */
+.cp-slosh:focus-visible {
+  outline: 2px solid var(--cp-primary, currentColor);
+  outline-offset: 2px;
+}
+
+.cp-slosh[data-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cp-slosh__valor {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, currentColor 65%, transparent);
+  pointer-events: none;
+}
+
+.cp-slosh__liquido {
+  position: absolute;
+  inset: 0;
+  background: var(--sg-liquid);
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+.cp-slosh__liquido .cp-slosh__valor {
+  color: var(--sg-on-liquid);
+}
+
+.cp-slosh__marcas {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    color-mix(in srgb, currentColor 22%, transparent) 0 1px,
+    transparent 1px
+  );
+  background-size: 100% calc(100% / var(--sg-ticks));
+  background-repeat: repeat-y;
+  background-position: bottom;
+  pointer-events: none;
+}
+
+.cp-slosh__marca {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  left: 10%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 1px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+
+.cp-slosh[data-held='true'] .cp-slosh__marca {
+  opacity: 1;
+}
