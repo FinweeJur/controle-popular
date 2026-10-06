@@ -619,6 +619,19 @@ export function SeuNono() {
   const { estilo, arrastando, foiArrasto, handlers, resetar } =
     useArrastavel("cp_nono_pos");
 
+  // A PATA tem arrasto PRÓPRIO (dono, 06/10/2026: "quando arrasta o Seu Nonô
+  // arrasta o pet junto; deixar cada um separado"). Antes ela dividia a MESMA
+  // caixa arrastável do FAB (medido: `data-arrastavel-caixa` de 282×351 px com
+  // os dois dentro), então mover o assistente levava a porta do pet junto.
+  // Agora cada um tem posição e caixa próprias (`cp_pata_pos`).
+  const {
+    estilo: estiloPata,
+    arrastando: arrastandoPata,
+    foiArrasto: foiArrastoPata,
+    handlers: handlersPata,
+    resetar: resetarPata,
+  } = useArrastavel("cp_pata_pos");
+
   // Reposicionamento da janelinha (pedido do dono, 03/10/2026): arrastada para
   // a direita, ela ainda EXPANDIA para a direita e saía da tela. Aqui a base do
   // FAB é a âncora; o utilitário vira o painel para a esquerda quando falta
@@ -1176,6 +1189,7 @@ export function SeuNono() {
   }, []);
 
   return (
+    <>
     <div
       // Em tela cheia o painel usa `fixed inset-0`; um `transform` no
       // ancestral o prenderia à caixa arrastada, então a pega some ali.
@@ -1282,6 +1296,11 @@ export function SeuNono() {
               painel de fontes à direita (padrão NotebookLM); no widget,
               a rolagem alta fica dentro do card. */}
           <div
+            // `data-lenis-prevent`: a rolagem suave da página (Lenis) engole a
+            // roda do mouse e só devolve o controle a quem se marca com este
+            // atributo. Sem ele, a conversa do Seu Nonô NÃO rolava (dono,
+            // 06/10/2026) — mesmo caso do índice do rádio e do menu de pets.
+            data-lenis-prevent
             className={
               telaCheia
                 ? "flex min-h-0 flex-1 flex-col lg:flex-row"
@@ -1297,6 +1316,9 @@ export function SeuNono() {
             }
           >
             <div
+              // Mesma trava do contêiner acima (modo tela cheia tem o próprio
+              // `overflow-y-auto`).
+              data-lenis-prevent
               className={
                 telaCheia
                   ? "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-8"
@@ -2011,24 +2033,8 @@ export function SeuNono() {
           quando o painel abre (só o painel importa então); o rádio fica. */}
       {!aberto && (
         <div className="flex w-14 flex-col items-center">
-          {/* Porta nº 2 do seletor de pet: abre o menu do companheiro
-              embaixo desta pata, pelo evento da janela. */}
-          <button
-            type="button"
-            onClick={(e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              window.dispatchEvent(
-                new CustomEvent("cp:companheiro-menu-pet", {
-                  detail: { x: r.left, y: r.bottom + 8 },
-                }),
-              );
-            }}
-            title="Trocar o bichinho do companheiro"
-            aria-label="Trocar o bichinho do companheiro"
-            className="-mb-2 flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          >
-            <PawPrint size={20} className="text-primary" aria-hidden="true" />
-          </button>
+          {/* A pata do pet morava AQUI e saiu: ganhou caixa arrastável própria
+              logo abaixo do invólucro (ver o bloco "PATA DO PET"). */}
           <button
             {...handlers}
             onDoubleClick={resetar}
@@ -2048,5 +2054,46 @@ export function SeuNono() {
         </div>
       )}
     </div>
+
+    {/* ═══ PATA DO PET — caixa arrastável PRÓPRIA ═══
+        Fica FORA do invólucro do assistente de propósito: dentro dele, o
+        `transform` de arrasto do Seu Nonô levava a pata junto (dono,
+        06/10/2026: "deixar cada um separado"). A posição reproduz o lugar de
+        antes na pilha — FAB em 16..72 px da borda de baixo, pata em 56..100 —
+        então o visual não muda; só o arrasto é que é independente.
+        O `closest` do `useArrastavel` acha esta caixa pelo próprio evento, não
+        por busca global, então as duas convivem sem confusão. */}
+    {!aberto && (
+      <div
+        style={telaCheia ? undefined : estiloPata}
+        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_2.5rem)] left-[1.375rem] z-50"
+        data-arrastavel-caixa
+        data-nao-plataforma
+      >
+        <button
+          {...handlersPata}
+          onDoubleClick={resetarPata}
+          type="button"
+          onClick={(e) => {
+            // Gesto foi arrasto: não abre o menu por acidente.
+            if (foiArrastoPata()) return;
+            const r = e.currentTarget.getBoundingClientRect();
+            window.dispatchEvent(
+              new CustomEvent("cp:companheiro-menu-pet", {
+                detail: { x: r.left, y: r.bottom + 8 },
+              }),
+            );
+          }}
+          title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
+          aria-label="Trocar o bichinho do companheiro"
+          className={`flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            arrastandoPata ? "cursor-grabbing" : "cursor-grab"
+          }`}
+        >
+          <PawPrint size={20} className="text-primary" aria-hidden="true" />
+        </button>
+      </div>
+    )}
+    </>
   );
 }

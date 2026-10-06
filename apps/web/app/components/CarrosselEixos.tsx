@@ -219,6 +219,34 @@ export function CardCarousel({
               opacityVal = 0.7;
             }
 
+            // Conteúdo do card, o mesmo para o centro (link) e as laterais.
+            const conteudoCartao = (
+              <>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  referrerPolicy="no-referrer"
+                  className="w-[280px] h-[280px] sm:w-[310px] sm:h-[310px] max-w-[calc(100vw-3rem)] max-h-[calc(100vw-3rem)] object-cover rounded-xl shadow-lg border border-border"
+                />
+                {/* Overlay escuro na base do card */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                {/* Nome do eixo sobreposto na base do card */}
+                <span
+                  className="absolute bottom-3 left-3 right-3 text-sm sm:text-base font-extrabold uppercase tracking-wide text-white text-center drop-shadow-md"
+                  style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
+                >
+                  {item.title.replace(/^\d+\.\s*/, '')}
+                </span>
+                {/* Badge do número no canto superior esquerdo */}
+                <span
+                  className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-extrabold text-white shadow-md"
+                  style={{ backgroundColor: item.corVar }}
+                >
+                  {item.title.split('.')[0]}.
+                </span>
+              </>
+            );
+
             return (
               <motion.div
                 key={item.href}
@@ -241,37 +269,25 @@ export function CardCarousel({
                 }}
                 onClick={() => toSlide(i)}
               >
-                {/* Card com a arte gráfica e nome sobreposto */}
-                <div
-                  className={`relative rounded-2xl p-1.5 transition-all duration-300 ${
-                    isCenter
-                      ? 'ring-4 ring-primary shadow-2xl ring-offset-2 ring-offset-surface'
-                      : 'hover:opacity-90 hover:scale-105'
-                  }`}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    referrerPolicy="no-referrer"
-                    className="w-[280px] h-[280px] sm:w-[310px] sm:h-[310px] max-w-[calc(100vw-3rem)] max-h-[calc(100vw-3rem)] object-cover rounded-xl shadow-lg border border-border"
-                  />
-                  {/* Overlay escuro na base do card */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-                  {/* Nome do eixo sobreposto na base do card */}
-                  <span
-                    className="absolute bottom-3 left-3 right-3 text-sm sm:text-base font-extrabold uppercase tracking-wide text-white text-center drop-shadow-md"
-                    style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
+                {/* Card com a arte gráfica e nome sobreposto.
+                    O card do CENTRO é um LINK para o eixo: o dono reclamou
+                    (06/10/2026) que clicar na imagem não levava a página
+                    nenhuma — o card só chamava `toSlide`. Os cards das
+                    laterais seguem como botão: clicar neles traz o eixo para
+                    o centro, que é o gesto esperado de carrossel. */}
+                {isCenter ? (
+                  <Link
+                    href={item.href}
+                    title={`Abrir ${item.title}`}
+                    className="relative block rounded-2xl p-1.5 transition-all duration-300 ring-4 ring-primary shadow-2xl ring-offset-2 ring-offset-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
-                    {item.title.replace(/^\d+\.\s*/, '')}
-                  </span>
-                  {/* Badge do número no canto superior esquerdo */}
-                  <span
-                    className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-extrabold text-white shadow-md"
-                    style={{ backgroundColor: item.corVar }}
-                  >
-                    {item.title.split('.')[0]}.
-                  </span>
-                </div>
+                    {conteudoCartao}
+                  </Link>
+                ) : (
+                  <div className="relative rounded-2xl p-1.5 transition-all duration-300 hover:opacity-90 hover:scale-105">
+                    {conteudoCartao}
+                  </div>
+                )}
               </motion.div>
             );
           })}
