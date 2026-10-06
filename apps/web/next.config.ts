@@ -209,6 +209,32 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   /**
+   * ═══ O DEV SERVER SÓ HIDRATA SE O HMR CONECTAR — E SÓ CONECTA VINDO DE
+   * ORIGEM PERMITIDA ═══
+   *
+   * Medido em 06/10/2026, ao mostrar o protótipo da home ao dono pelo túnel
+   * rápido do Cloudflare (`*.trycloudflare.com`): a página abria com o HTML
+   * inteiro e parecia saudável, mas NADA respondia — botão de variante mudo,
+   * índice de rádio não abria, menu do pet não abria, ShapeBlur sem canvas.
+   *
+   * A causa não era o efeito nem o painel: era hidratação. O Next recusa o
+   * WebSocket do HMR (`/_next/hmr`) quando a origem não é `localhost` (proteção
+   * de DNS rebinding). Confere no handshake cru: com `Origin: http://localhost`
+   * o dev server responde `101 Switching Protocols`; com `Origin: https://<túnel>`
+   * ele DROPA a conexão, o Cloudflare devolve 502, o HMR nunca conecta — e o
+   * runtime do Next só hidrata depois do HMR. Provado por controle: sabotar o
+   * WebSocket no localhost reproduz a falha byte a byte (canvas 0, `__reactProps`
+   * ausente).
+   *
+   * `allowedDevOrigins` libera a origem do túnel para pedir o dev server. O
+   * curinga `*.trycloudflare.com` existe porque a URL do túnel rápido MUDA a
+   * cada reinício — fixar um host obrigaria a editar este arquivo toda vez.
+   * Só vale em `next dev`; o `next build` ignora a chave. Ver
+   * `node_modules/next/dist/docs` → `allowedDevOrigins.md` (o próprio exemplo
+   * da doc é "a tunnel used for remote development").
+   */
+  allowedDevOrigins: ["*.trycloudflare.com"],
+  /**
    * ═══ TYPE-CHECK SAI DO BUILD PAGO (Guara cobra por minuto) ═══
    *
    * O `next build` roda o `tsc` inteiro antes de compilar. No alvo standalone
