@@ -196,6 +196,33 @@ extra evitada).
    chunks chegando (5-15s no dev frio; instantâneo em produção) nunca
    deixam a abertura crua.
 
+7. **`PlaneBufferGeometry` não existe mais no three 0.156.** O
+   `GPUComputationRenderer` embutido do vanta.birds (vendor para o three
+   r134) destrutura o THREE exigindo essa classe; no three novo ela virou
+   `PlaneGeometry`. O destructuring deixava `v = undefined` e o init
+   quebrava com `TypeError: v is not a constructor` — e o catch do birds
+   seguia em frente sem avisar, com o erro seguinte ("reading 'time'")
+   repetindo a cada frame. Conserto: alias `PlaneBufferGeometry =
+   PlaneGeometry` no objeto publicado (06/10/2026).
+
+8. **`DataTexture` do vendor nasce sem `needsUpdate` — e em three
+   moderno isso zera o efeito.** O vendor cria a textura de posição com
+   `new DataTexture(data, ...)` e nunca sinaliza o upload. Sem o sinal,
+   o three não sobe o array pra GPU; o passThru do init copia preto, os
+   render targets ficam zerados e TODOS os pássaros nascem em (0,0,0):
+   o efeito roda (draw call ok, `time` avançando, zero erros de console)
+   e desenha nada. Bisseção com three 0.156 × vanta.birds puro provou a
+   causa (isolado sem patch: PARADO; com patch: 42k pixels animando).
+   Conserto: subclasse `DataTextureComUpload` (com `needsUpdate = true`)
+   só no CLONE publicado ao Vanta — o three do app não muda (06/10/2026).
+
+9. **Medir movimento de efeito na região errada dá falso "PARADO".** O
+   enxame do BIRDS se concentra no centro-direita da dobra; meu script
+   media o canto superior esquerdo e via 0 pixels mudando com o efeito
+   vivo na tela (prova: esconder o canvas muda 49k pixels). Regra: medir
+   a região onde o efeito DEVE aparecer, ou isolar com o diferencial
+   canvas visível × escondido — esse diferencial não mente (06/10/2026).
+
 ## Como verificar
 
 ```bash

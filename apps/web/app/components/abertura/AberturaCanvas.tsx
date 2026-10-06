@@ -136,11 +136,51 @@ export function bibliotecaThree(): Promise<Record<string, unknown>> {
   if (!promessaBiblioteca) {
     promessaBiblioteca = (async () => {
       const modulo = await import("three");
-      const biblioteca = Object.assign(Object.create(null), modulo);
+      const biblioteca = Object.assign(Object.create(null), modulo) as Record<
+        string,
+        unknown
+      >;
       const gpgpu = await import(
         "three/examples/jsm/misc/GPUComputationRenderer.js"
       );
       biblioteca.GPUComputationRenderer = gpgpu.GPUComputationRenderer;
+      // Compatibilidade de API antiga para o Vanta (medido 06/10/2026):
+      // o `GPUComputationRenderer` embutido do vanta.birds (vendor escrito
+      // para o three r134) DESTRUTURA o THREE recebido exigindo
+      // `PlaneBufferGeometry`; no three 0.156 essa classe virou
+      // `PlaneGeometry` — o destructuring deixa `v = undefined` e o init
+      // quebra com "v is not a constructor", derrubando o efeito inteiro
+      // (o erro seguinte "reading 'time'" é consequência). Anexamos o
+      // alias no objeto publicado; é o único nome renomeado que o vendor
+      // pede (os outros — Camera, DataTexture, FloatType, Mesh,
+      // NearestFilter, RGBAFormat, Scene, ShaderMaterial,
+      // WebGLRenderTarget — continuam existindo em 0.156).
+      if (
+        !biblioteca.PlaneBufferGeometry &&
+        typeof biblioteca.PlaneGeometry === "function"
+      ) {
+        biblioteca.PlaneBufferGeometry = biblioteca.PlaneGeometry;
+      }
+      // Compatibilidade 2 — DataTexture que JÁ NASCE com `needsUpdate`
+      // (medido 06/10/2026, bisseção com three 0.156 × vanta.birds puro):
+      // o `GPUComputationRenderer` embutido do Vanta cria a textura de
+      // posição inicial com `new DataTexture(data, ...)` e NUNCA seta
+      // `needsUpdate`. Sem esse sinal, o three moderno não sobe o array
+      // pra GPU; o passThru do init copia preto, os render targets ficam
+      // zerados e TODOS os pássaros nascem em (0,0,0) — o efeito roda
+      // (draw call ok, sem erro de console) mas desenha nada. No three
+      // r134 isso passava; em 0.156 derruba o birds inteiro. Só a
+      // classe do CLONE publicado é trocada — o three do app não muda.
+      const DataTextureOriginal = modulo.DataTexture;
+      class DataTextureComUpload extends DataTextureOriginal {
+        constructor(
+          ...argumentos: ConstructorParameters<typeof DataTextureOriginal>
+        ) {
+          super(...argumentos);
+          this.needsUpdate = true;
+        }
+      }
+      biblioteca.DataTexture = DataTextureComUpload;
       return biblioteca;
     })();
   }
