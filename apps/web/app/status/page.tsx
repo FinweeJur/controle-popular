@@ -98,9 +98,9 @@ export default function StatusPage() {
         </h2>
         <p>
           A versão do portal que você está lendo mora no mesmo servidor do
-          site. Existe uma cópia publicada no GitHub Pages, em outro provedor,
-          que continua no ar quando o portal cai. Ela nasce do workflow
-          &ldquo;Publicar no GitHub Pages&rdquo; e fica em{" "}
+          site. Existe uma cópia independente, publicada no GitHub Pages (outro
+          provedor), que continua no ar quando o portal cai. Ela nasce do
+          workflow &ldquo;Status no GitHub Pages&rdquo; e fica em{" "}
           <span className="break-all text-text">
             finweejur.github.io/controle-popular/status/
           </span>

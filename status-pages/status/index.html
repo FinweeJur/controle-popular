@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, follow" />
+<title>Status do Controle Popular</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --fundo: #f6f7f4;
+    --frente: #fdfdfb;
+    --texto: #1c2118;
+    --texto-suave: #4d5648;
+    --borda: #d7dbd0;
+    --ok: #16794a;
+    --fora: #b3261e;
+    --neutro: #8a7a2e;
+    --primaria: #2f6b3f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #14170f;
+      --frente: #1e2318;
+      --texto: #eef1e8;
+      --texto-suave: #b9c0ad;
+      --borda: #363d2c;
+      --ok: #6fd39a;
+      --fora: #ff9c93;
+      --neutro: #d9c76a;
+      --primaria: #8fd6a4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    padding: 1.5rem;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: clamp(1.4rem, 4vw, 2rem); margin: 0 0 .25rem; }
+  .sub { color: var(--texto-suave); margin: 0 0 1.25rem; }
+  .topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin: 1.25rem 0 .75rem; }
+  h2 { font-size: 1.1rem; margin: 0; }
+  button {
+    font: inherit; font-weight: 600; color: var(--texto); background: var(--frente);
+    border: 1px solid var(--borda); border-radius: .6rem; padding: .5rem .9rem; cursor: pointer;
+  }
+  button:hover { border-color: var(--primaria); color: var(--primaria); }
+  .servidor { border: 1px solid var(--borda); background: var(--frente); border-radius: .9rem; padding: .9rem 1rem; margin-bottom: .75rem; }
+  .servidor > h3 { font-size: 1rem; margin: 0 0 .5rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; gap: .6rem; align-items: flex-start; padding: .35rem 0; }
+  .glifo { flex: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; font-weight: 700; margin-top: .1rem; }
+  .glifo.ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 16%, transparent); }
+  .glifo.fora { color: var(--fora); background: color-mix(in srgb, var(--fora) 16%, transparent); }
+  .glifo.verificando { color: var(--neutro); background: color-mix(in srgb, var(--neutro) 16%, transparent); }
+  .nome { font-weight: 600; }
+  .detalhe { color: var(--texto-suave); font-size: .9rem; }
+  .rodape { color: var(--texto-suave); font-size: .9rem; margin-top: 1rem; }
+  a { color: var(--primaria); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Status do Controle Popular</h1>
+  <p class="sub">
+    Esta página mede, na hora, os <strong>três servidores</strong> do portal —
+    cada um com as páginas e o <code>/api/saude</code>. A checagem roda no
+    <strong>seu navegador</strong>, de 60 em 60 segundos, e nada é gravado.
+  </p>
+
+  <div class="topo">
+    <h2>Verificação ao vivo</h2>
+    <button type="button" id="botao">Verificar de novo</button>
+  </div>
+
+  <div id="saida" aria-live="polite"></div>
+
+  <p class="rodape" id="ultima"></p>
+  <p class="rodape">
+    Esta cópia mora no <a href="https://pages.github.com/">GitHub Pages</a> —
+    outro provedor — para continuar respondendo mesmo quando o portal cai.
+    <a href="https://www.controlepopular.com.br/status">Versão dentro do portal</a>.
+  </p>
+</main>
+
+<script>
+  // Os TRÊS servidores do portal, cada um com as páginas e o /api/saude.
+  // Endereços ABSOLUTOS de propósito: esta página mora em outro domínio.
+  var SERVIDORES = [
+    {
+      nome: "Guara (site oficial)",
+      alvos: [
+        { rotulo: "Páginas", url: "https://www.controlepopular.com.br/" },
+        { rotulo: "Aplicação (/api/saude)", url: "https://www.controlepopular.com.br/api/saude" }
+      ]
+    },
+    {
+      nome: "Casa (home-pc)",
+      alvos: [
+        { rotulo: "Páginas", url: "https://backup.controlepopular.com.br/" },
+        { rotulo: "Aplicação (/api/saude)", url: "https://backup.controlepopular.com.br/api/saude" }
+      ]
+    },
+    {
+      nome: "Azure (espelho)",
+      alvos: [
+        { rotulo: "Páginas", url: "https://www.controlepopular.tech/" },
+        { rotulo: "Aplicação (/api/saude)", url: "https://www.controlepopular.tech/api/saude" }
+      ]
+    }
+  ];
+
+  var TIMEOUT_MS = 8000;
+
+  function comTimeout(ms) {
+    var ctrl = new AbortController();
+    var id = setTimeout(function () { ctrl.abort(); }, ms);
+    return { signal: ctrl.signal, cancelar: function () { clearTimeout(id); } };
+  }
+
+  // Duas tentativas: leitura normal (quando o CORS deixa) e, se falhar,
+  // requisição opaca (`no-cors`) — o navegador não deixa ler o corpo, mas
+  // saber que a RESPOSTA CHEGOU já prova que o host respondeu.
+  function verificar(alvo) {
+    var inicio = performance.now();
+    var t1 = comTimeout(TIMEOUT_MS);
+    return fetch(alvo.url, { cache: "no-store", signal: t1.signal })
+      .then(function (r) {
+        var ms = Math.round(performance.now() - inicio);
+        t1.cancelar();
+        var detalhe = "respondeu HTTP " + r.status;
+        if (alvo.url.indexOf("/api/saude") >= 0) {
+          return r.json().then(function (c) {
+            if (c && c.t) detalhe = "aplicação confirmou às " + new Date(c.t).toLocaleTimeString("pt-BR");
+            return { estado: r.ok ? "ok" : "fora", ms: ms, detalhe: detalhe };
+          }).catch(function () {
+            return { estado: r.ok ? "ok" : "fora", ms: ms, detalhe: detalhe };
+          });
+        }
+        return { estado: r.ok ? "ok" : "fora", ms: ms, detalhe: detalhe };
+      })
+      .catch(function () {
+        t1.cancelar();
+        var t2 = comTimeout(TIMEOUT_MS);
+        return fetch(alvo.url, { mode: "no-cors", cache: "no-store", signal: t2.signal })
+          .then(function () {
+            var ms = Math.round(performance.now() - inicio);
+            t2.cancelar();
+            return { estado: "ok", ms: ms, detalhe: "alcançável; o navegador não deixou ler o corpo (CORS)" };
+          })
+          .catch(function () {
+            t2.cancelar();
+            return { estado: "fora", ms: null, detalhe: "sem resposta em até 8 s" };
+          });
+      });
+  }
+
+  var GLIFO = { ok: "✓", fora: "✕", verificando: "…" };
+  var ROTULO = { ok: "No ar", fora: "Fora do ar", verificando: "Verificando…" };
+
+  function linha(alvo, r) {
+    var estado = r ? r.estado : "verificando";
+    var ms = r && r.ms != null ? " (" + r.ms + " ms)" : "";
+    return '<li><span class="glifo ' + estado + '" aria-hidden="true">' + GLIFO[estado] + '</span>' +
+      '<span><span class="nome">' + alvo.rotulo + " — " + ROTULO[estado] + ms + '</span>' +
+      '<br><span class="detalhe">' + (r ? r.detalhe : "") + "</span></span></li>";
+  }
+
+  function desenhar(resultados) {
+    var html = "";
+    SERVIDORES.forEach(function (s) {
+      html += '<section class="servidor"><h3>' + s.nome + "</h3><ul>";
+      s.alvos.forEach(function (a) {
+        html += linha(a, resultados[a.url]);
+      });
+      html += "</ul></section>";
+    });
+    document.getElementById("saida").innerHTML = html;
+  }
+
+  function comecar() {
+    var pendentes = {};
+    var espera = [];
+    SERVIDORES.forEach(function (s) {
+      s.alvos.forEach(function (a) {
+        pendentes[a.url] = { estado: "verificando", ms: null, detalhe: "" };
+        espera.push(verificar(a).then(function (r) { pendentes[a.url] = r; return r; }));
+      });
+    });
+    desenhar(pendentes);
+    Promise.all(espera).then(function () {
+      desenhar(pendentes);
+      document.getElementById("ultima").textContent =
+        "Última verificação: " + new Date().toLocaleTimeString("pt-BR") + ".";
+    });
+  }
+
+  document.getElementById("botao").addEventListener("click", comecar);
+  comecar();
+  setInterval(comecar, 60000);
+</script>
+</body>
+</html>

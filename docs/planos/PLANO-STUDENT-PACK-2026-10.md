@@ -201,8 +201,15 @@ O dono informou o endereço fixo do servidor 2 (`backup.controlepopular.com.br`,
 Guara, home-pc e Azure —, cada um com as páginas e o `/api/saude`. Os dois
 endereços novos respondem 200 com `/api/saude` (medido 05/10/2026).
 
-A cópia no GitHub Pages é o que faz a página sobreviver à queda de QUALQUER um
-dos servidores, porque ela mesma mora em outro provedor.
+**Cópia independente (GitHub Pages).** O workflow antigo tentava exportar o
+portal INTEIRO (`output: export`), que está quebrado no Next 16 e foi
+aposentado em 22/08 (o runtime quer `dynamicParams = true`, o export quer
+`false`, e a mesma rota serve os dois). Em 06/10/2026 a decisão do dono foi
+trocar por uma **página de status estática**: o workflow "Status no GitHub
+Pages" publica a pasta `status-pages/` (HTML puro, sem build, ~1 min) em
+`finweejur.github.io/controle-popular/status/`. Ela mede os três servidores no
+navegador e sobrevive à queda de qualquer um deles, porque mora em outro
+provedor.
 
 ## Régua
 
