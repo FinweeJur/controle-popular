@@ -1,56 +1,119 @@
 /*
- * Estilos do OndaCursor (grade de formas que responde ao cursor e ao clique).
- * Equivalente próprio do "Cursor Wave" (React Bits Pro) — sem WebGL, em
- * DOM+CSS. Cada célula lê `--cp-onda` (0..1), escrito por quadro pelo
- * componente: opacidade e escala saem da MESMA variável, então acendem e
- * crescem juntas, sem `transition` para defasar.
+ * Estilos do OndaCursor — malha quadriculada que acende no cursor e ondula no
+ * clique (equivalente próprio do "Cursor Wave" do React Bits Pro).
  *
- * Cores: `--cp-onda-cor` recebe token do tema no JSX. Sem JS (movimento
- * reduzido, toque) a variável fica 0: a grade aparece só como textura
- * apagada — ou nem monta, conforme o componente.
+ * ═══ POR QUE MALHA DE CSS, E NÃO UM `<div>` POR QUADRADO ═══
+ *
+ * O dono pediu (06/10/2026) "bem mais quadrados, 2× menores, só o contorno".
+ * Com milhares de células, cada uma num `<div>`: (a) o DOM cresce sem limite;
+ * (b) `will-change` em milhares de nós estoura o compositor. Aqui as linhas
+ * nascem de DOIS `repeating-linear-gradient` num único elemento, e a luz é um
+ * gradiente radial por cima recortado pela MESMA malha (`mask-image`) — a luz
+ * só acende nas linhas, e os quadrados ficam OVOS de verdade. Três elementos
+ * no total, em qualquer densidade.
+ *
+ * Cores: `--cp-onda-cor` (luz) e `--cp-onda-borda` (linhas) recebem tokens do
+ * tema no JSX.
  */
 
 .cp-onda {
+  --cp-onda-passo: 12px;
+  --cp-onda-esp: 1px;
+  --cp-onda-raio: 24px;
+  --cp-onda-anel: 18px;
   --cp-onda-cor: var(--cp-primary, #f2701d);
-  --cp-onda-raio: 4px;
-  --cp-onda-vao: 10px;
+  --cp-onda-borda: var(--cp-border, rgb(255 255 255 / 12%));
+  --cp-onda-x: 50%;
+  --cp-onda-y: 50%;
+  --cp-onda-on: 0;
+  --cp-onda-ox: 50%;
+  --cp-onda-oy: 50%;
+  --cp-onda-onda-r: 0px;
+  --cp-onda-onda-a: 0;
+
+  /* O par de gradientes da malha, em duas versões: colorida (desenho) e preta
+     (máscara — em máscara, o preto opaco é o que deixa passar). */
+  --cp-onda-malha-visivel:
+    repeating-linear-gradient(
+      to right,
+      var(--cp-onda-borda) 0 var(--cp-onda-esp),
+      transparent var(--cp-onda-esp) var(--cp-onda-passo)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--cp-onda-borda) 0 var(--cp-onda-esp),
+      transparent var(--cp-onda-esp) var(--cp-onda-passo)
+    );
+  --cp-onda-malha-mascara:
+    repeating-linear-gradient(
+      to right,
+      #000 0 var(--cp-onda-esp),
+      transparent var(--cp-onda-esp) var(--cp-onda-passo)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #000 0 var(--cp-onda-esp),
+      transparent var(--cp-onda-esp) var(--cp-onda-passo)
+    );
 
   position: relative;
   width: 50%;
   aspect-ratio: 1 / 1;
-  height: auto;
+  overflow: hidden;
 }
 
-.cp-onda__grade {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  gap: var(--cp-onda-vao);
+/* Repouso: só as linhas, bem apagadas. */
+.cp-onda__malha {
+  position: absolute;
+  inset: 0;
+  background-image: var(--cp-onda-malha-visivel);
+  opacity: 0.45;
 }
 
-.cp-onda__celula {
-  --cp-onda: 0;
+/* Luz do cursor: radial, recortada pela malha (acende as LINHAS). */
+.cp-onda__brilho {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle var(--cp-onda-raio) at var(--cp-onda-x) var(--cp-onda-y),
+    var(--cp-onda-cor) 0%,
+    transparent 70%
+  );
+  -webkit-mask-image: var(--cp-onda-malha-mascara);
+  mask-image: var(--cp-onda-malha-mascara);
+  opacity: calc(var(--cp-onda-on) * 0.95);
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+}
 
-  border-radius: var(--cp-onda-raio);
-  border: 1px solid var(--cp-border, rgb(255 255 255 / 12%));
-  background: var(--cp-onda-cor);
-  /* Repouso quase invisível; aceso, quase cheio. A escala acompanha. */
-  opacity: calc(0.05 + var(--cp-onda) * 0.9);
-  transform: scale(calc(0.82 + var(--cp-onda) * 0.18));
-  will-change: opacity, transform;
+/* Onda do clique: anel que abre a partir do ponto tocado. */
+.cp-onda__onda {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--cp-onda-ox) var(--cp-onda-oy),
+    transparent calc(var(--cp-onda-onda-r) - var(--cp-onda-anel)),
+    var(--cp-onda-cor) var(--cp-onda-onda-r),
+    transparent calc(var(--cp-onda-onda-r) + var(--cp-onda-anel))
+  );
+  -webkit-mask-image: var(--cp-onda-malha-mascara);
+  mask-image: var(--cp-onda-malha-mascara);
+  opacity: var(--cp-onda-onda-a);
   pointer-events: none;
 }
 
 /* Guardas (AGENTS): decoração desliga em movimento reduzido e alto contraste.
-   O componente já devolve `null` nesses casos; esta é a segunda trava, para o
-   intervalo entre a pintura do HTML e a hidratação. */
+   O componente já devolve o fundo sem efeito nesses casos; esta é a segunda
+   trava, para o intervalo entre a pintura do HTML e a hidratação. */
 @media (prefers-reduced-motion: reduce) {
-  .cp-onda {
+  .cp-onda__brilho,
+  .cp-onda__onda {
     display: none;
   }
 }
 
-[data-theme="high-contrast"] .cp-onda {
+[data-theme="high-contrast"] .cp-onda__brilho,
+[data-theme="high-contrast"] .cp-onda__onda {
   display: none;
 }
 
@@ -64,16 +127,13 @@
   place-items: center;
   overflow: hidden;
   pointer-events: none;
-  /* Translúcido: a grade é textura de fundo, o conteúdo manda no contraste. */
-  opacity: 0.5;
+  /* Translúcido: a malha é textura de fundo, o conteúdo manda no contraste. */
+  opacity: 0.55;
 }
 
-/* Cobre o viewport (quadrado maior que a tela, recortado pela camada). O vão
-   de 14 px sobre um passo de ~30 px (grade 40) deixa o quadrado visível em
-   ~16 px — a malha fina pedida pelo dono em 06/10/2026. */
+/* Cobre o viewport (quadrado maior que a tela, recortado pela camada). */
 .cp-fundo-onda .cp-onda {
   width: max(95vw, 100vh);
   height: max(95vw, 100vh);
   aspect-ratio: auto;
-  --cp-onda-vao: 14px;
 }

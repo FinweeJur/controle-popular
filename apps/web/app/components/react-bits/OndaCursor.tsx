@@ -1,189 +1,106 @@
 "use client";
 
 /**
- * OndaCursor — grade de formas que responde ao cursor e ao clique.
+ * OndaCursor — malha quadriculada que acende no cursor e ondula no clique.
  *
- * Equivalente próprio, sem licença, do "Cursor Wave" (React Bits Pro). O dono
- * pediu para trocar o fundo de Cubes por ele (06/10/2026). Feito em DOM+CSS,
- * sem WebGL: uma grade de células que ACENDE perto do ponteiro e, no clique,
- * uma ONDA percorre a grade de dentro para fora.
+ * Equivalente próprio, sem licença, do "Cursor Wave" (React Bits Pro). Mas a
+ * implementação mudou de ideia em 06/10/2026, a pedido do dono: ele quis
+ * "bem mais quadrados, 2× menores e só o contorno (oco)". Um `<div>` por
+ * célula não escala para milhares — e `will-change` em milhares de nós derruba
+ * o compositor.
  *
- * Herda do antigo `Cubes` tudo o que foi medido como necessário:
- * - ouve o `document` (a camada é `pointer-events: none`, então não recebe
- *   ponteiro por conta própria) e NUNCA chama `preventDefault` — rolagem e
- *   clique seguem da página;
- * - dorme no repouso (o laço para quando nada muda) e acorda no movimento;
- * - `prefers-reduced-motion` e alto contraste desligam (efeito decorativo
- *   nunca é informação).
+ * A solução é MALHA DE CSS: as linhas do quadriculado saem de dois
+ * `repeating-linear-gradient` num único elemento, e o brilho do cursor é um
+ * gradiente radial por cima, RECORTADO pela mesma malha (`mask-image`) — então
+ * a luz só aparece nas linhas, e os quadrados ficam ocos de verdade. São TRÊS
+ * elementos no total, qualquer que seja a densidade.
  *
- * O que mudou em relação ao Cubes, além do desenho:
- * - 1 `<div>` por célula em vez de 7 (o cubo tinha 6 faces): a grade ficou
- *   ~3× mais leve em DOM sem perder a cara;
- * - sem `gsap`: o valor de cada célula (`--cp-onda`, 0..1) é suavizado por
- *   quadro e lido pelo CSS — cor, opacidade e escala andam juntas.
+ * Guardas de sempre: ouve o `document` (é fundo, `pointer-events: none`), não
+ * chama `preventDefault`, e desliga em movimento reduzido, alto contraste e
+ * tela de toque (ver `FundoOnda.tsx` e `useEfeitoPermitido`).
  */
 import { useEffect, useRef, type CSSProperties } from "react";
 import { useEfeitoPermitido } from "./useEfeitoPermitido";
 import "./OndaCursor.css";
 
 export interface OndaCursorProps {
-  /** Células por lado (grade 12 = 144 células). Padrão 12. */
-  grade?: number;
-  /** Raio do acendimento no ponteiro, em células. Padrão 3,2. */
+  /** Passo da malha (distância entre linhas), em px. Padrão 12. */
+  passo?: number;
+  /** Espessura da linha, em px. Padrão 1. */
+  espessura?: number;
+  /** Raio do brilho que segue o cursor, em px. Padrão 24. */
   raio?: number;
-  /** Largura do anel da onda do clique, em células. Padrão 2,2. */
+  /** Largura do anel da onda do clique, em px. Padrão 18. */
   anel?: number;
   /** Duração da onda do clique, em ms. Padrão 900. */
   duracaoOnda?: number;
-  /** Cor de repouso/acesa das células (token do tema). */
+  /** Cor da luz (token do tema). */
   cor?: string;
+  /** Cor das linhas da malha em repouso (token do tema). */
+  corBorda?: string;
   /** Largura do bloco (vence o `width: 50%` do CSS). */
   largura?: number | string;
-  /** Estreitar as células arredondadas (px). Padrão 4. */
-  raioCelula?: number;
   className?: string;
 }
 
-/** Suavização do acendimento (constante de tempo em segundos). */
-const TAU = 0.09;
-
 const OndaCursor: React.FC<OndaCursorProps> = ({
-  grade = 12,
-  raio = 3.2,
-  anel = 2.2,
+  passo = 12,
+  espessura = 1,
+  raio = 24,
+  anel = 18,
   duracaoOnda = 900,
   cor = "var(--cp-primary)",
+  corBorda = "var(--cp-border)",
   largura,
-  raioCelula = 4,
   className = "",
 }) => {
-  const gradeRef = useRef<HTMLDivElement | null>(null);
+  const raiz = useRef<HTMLDivElement | null>(null);
   const permitido = useEfeitoPermitido();
 
   useEffect(() => {
-    const gradeEl = gradeRef.current;
-    if (!gradeEl || !permitido) return;
+    const el = raiz.current;
+    if (!el || !permitido) return;
 
-    const celulas = Array.from(
-      gradeEl.querySelectorAll<HTMLElement>(".cp-onda__celula"),
-    );
-    const n = celulas.length;
-    // Centros por COLUNA e por LINHA (a grade é uniforme): com 1.600 células,
-    // medir cada uma com getBoundingClientRect a cada quadro seria caro — aqui
-    // a conta é aritmética e roda uma vez por medição.
-    const colX = new Float32Array(grade);
-    const rowY = new Float32Array(grade);
-    const atuais = new Float32Array(n);
-    let passoPx = 1;
-    let precisaMedir = true;
-
-    /** Recalcula as colunas/linhas a partir da caixa da grade (sem tocar nas células). */
-    const medir = () => {
-      const caixa = gradeEl.getBoundingClientRect();
-      const estilo = getComputedStyle(gradeEl);
-      const gapCol = parseFloat(estilo.columnGap) || 0;
-      const gapLin = parseFloat(estilo.rowGap) || 0;
-      const largCel = (caixa.width - gapCol * (grade - 1)) / grade;
-      const altCel = (caixa.height - gapLin * (grade - 1)) / grade;
-      passoPx = largCel + gapCol || 1;
-      for (let c = 0; c < grade; c += 1) {
-        colX[c] = caixa.left + c * (largCel + gapCol) + largCel / 2;
-      }
-      for (let r = 0; r < grade; r += 1) {
-        rowY[r] = caixa.top + r * (altCel + gapLin) + altCel / 2;
-      }
-    };
-    medir();
-    precisaMedir = false;
-
-    let ponteiro: { x: number; y: number } | null = null;
-    let onda: { x: number; y: number; inicio: number } | null = null;
     let quadro = 0;
-    let ultimo = 0;
     let vivo = true;
+    let inicioOnda = 0;
 
-    const passo = (agora: number) => {
-      quadro = 0;
-      if (!vivo) return;
-      if (precisaMedir) {
-        medir();
-        precisaMedir = false;
-      }
-      const dt = ultimo ? Math.min((agora - ultimo) / 1000, 0.05) : TAU;
-      ultimo = agora;
-      const k = 1 - Math.exp(-dt / TAU);
-
-      const ondaAtiva = onda !== null && agora - onda.inicio < duracaoOnda;
-      const progresso = onda && ondaAtiva ? (agora - onda.inicio) / duracaoOnda : 1;
-      const raioOnda = progresso * grade * 1.3;
-      const ox = onda?.x ?? 0;
-      const oy = onda?.y ?? 0;
-
-      let mudou = false;
-      for (let i = 0; i < n; i += 1) {
-        const cx = colX[i % grade];
-        const cy = rowY[(i / grade) | 0];
-        let alvo = 0;
-
-        if (ponteiro) {
-          const d = Math.hypot((cx - ponteiro.x) / passoPx, (cy - ponteiro.y) / passoPx);
-          if (d < raio) {
-            const t = 1 - d / raio;
-            alvo = t * t * (3 - 2 * t); // suaviza a queda (smoothstep)
-          }
-        }
-        if (ondaAtiva) {
-          const d = Math.hypot((cx - ox) / passoPx, (cy - oy) / passoPx);
-          const anelVal = Math.max(0, 1 - Math.abs(d - raioOnda) / anel);
-          const comFade = anelVal * (1 - progresso);
-          if (comFade > alvo) alvo = comFade;
-        }
-
-        const atual = atuais[i] + (alvo - atuais[i]) * k;
-        if (Math.abs(atual - atuais[i]) > 0.004) {
-          atuais[i] = atual;
-          celulas[i].style.setProperty("--cp-onda", atual.toFixed(3));
-          mudou = true;
-        }
-      }
-
-      if (onda !== null && !ondaAtiva) onda = null;
-      // Dorme quando nada muda e não há onda: zero custo ocioso.
-      if (mudou || ondaAtiva || precisaMedir) quadro = requestAnimationFrame(passo);
-    };
-
-    const acordar = () => {
-      if (!quadro) {
-        ultimo = 0;
-        quadro = requestAnimationFrame(passo);
-      }
+    /** Guarda o ponto do ponteiro em coordenadas do bloco. */
+    const ponto = (e: { clientX: number; clientY: number }) => {
+      const caixa = el.getBoundingClientRect();
+      return { x: e.clientX - caixa.left, y: e.clientY - caixa.top, w: caixa.width, h: caixa.height };
     };
 
     const aoMover = (e: PointerEvent) => {
-      ponteiro = { x: e.clientX, y: e.clientY };
-      acordar();
+      if (e.pointerType !== "mouse") return;
+      const p = ponto(e);
+      el.style.setProperty("--cp-onda-x", `${p.x.toFixed(1)}px`);
+      el.style.setProperty("--cp-onda-y", `${p.y.toFixed(1)}px`);
+      el.style.setProperty("--cp-onda-on", "1");
     };
-    const aoSair = () => {
-      ponteiro = null;
-      acordar();
+    const aoSair = () => el.style.setProperty("--cp-onda-on", "0");
+
+    const passo_onda = (agora: number) => {
+      quadro = 0;
+      if (!vivo) return;
+      const t = Math.min((agora - inicioOnda) / duracaoOnda, 1);
+      const max = Math.hypot(el.clientWidth, el.clientHeight);
+      el.style.setProperty("--cp-onda-onda-r", `${(t * max).toFixed(1)}px`);
+      el.style.setProperty("--cp-onda-onda-a", `${(1 - t).toFixed(3)}`);
+      if (t < 1) quadro = requestAnimationFrame(passo_onda);
     };
     const aoClicar = (e: MouseEvent) => {
-      onda = { x: e.clientX, y: e.clientY, inicio: performance.now() };
-      acordar();
-    };
-    // Remarcar (e remedir no quadro) em vez de medir no evento: com 1.600
-    // células, medir dentro do `scroll` engasgaria a rolagem.
-    const apontarMedida = () => {
-      precisaMedir = true;
-      acordar();
+      const p = ponto(e);
+      el.style.setProperty("--cp-onda-ox", `${p.x.toFixed(1)}px`);
+      el.style.setProperty("--cp-onda-oy", `${p.y.toFixed(1)}px`);
+      inicioOnda = performance.now();
+      if (!quadro) quadro = requestAnimationFrame(passo_onda);
     };
 
     document.addEventListener("pointermove", aoMover, { passive: true });
     document.addEventListener("pointerleave", aoSair);
     document.addEventListener("click", aoClicar);
     window.addEventListener("blur", aoSair);
-    window.addEventListener("resize", apontarMedida);
-    window.addEventListener("scroll", apontarMedida, { passive: true });
 
     return () => {
       vivo = false;
@@ -192,37 +109,31 @@ const OndaCursor: React.FC<OndaCursorProps> = ({
       document.removeEventListener("pointerleave", aoSair);
       document.removeEventListener("click", aoClicar);
       window.removeEventListener("blur", aoSair);
-      window.removeEventListener("resize", apontarMedida);
-      window.removeEventListener("scroll", apontarMedida);
-      for (const c of celulas) c.style.setProperty("--cp-onda", "0");
     };
-  }, [permitido, grade, raio, anel, duracaoOnda]);
-
-  const celulasIdx = Array.from({ length: grade * grade });
+  }, [permitido, duracaoOnda]);
 
   return (
     <div
+      ref={raiz}
       className={`cp-onda ${className}`}
+      aria-hidden="true"
       style={
         {
           ...(largura !== undefined
             ? { width: typeof largura === "number" ? `${largura}px` : largura }
             : {}),
+          "--cp-onda-passo": `${passo}px`,
+          "--cp-onda-esp": `${espessura}px`,
+          "--cp-onda-raio": `${raio}px`,
+          "--cp-onda-anel": `${anel}px`,
           "--cp-onda-cor": cor,
-          "--cp-onda-raio": `${raioCelula}px`,
+          "--cp-onda-borda": corBorda,
         } as CSSProperties
       }
     >
-      <div
-        ref={gradeRef}
-        className="cp-onda__grade"
-        style={{ gridTemplateColumns: `repeat(${grade}, 1fr)` }}
-        aria-hidden="true"
-      >
-        {celulasIdx.map((_, i) => (
-          <span key={i} className="cp-onda__celula" />
-        ))}
-      </div>
+      <div className="cp-onda__malha" />
+      <div className="cp-onda__brilho" />
+      <div className="cp-onda__onda" />
     </div>
   );
 };

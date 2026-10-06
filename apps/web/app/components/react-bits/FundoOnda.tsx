@@ -8,10 +8,10 @@
  * `pointer-events: none` e `aria-hidden`, cores do tema, e desligada em
  * movimento reduzido, alto contraste e tela de toque.
  *
- * `grade` 40 dá ~30 px de passo e ~16 px de quadrado visível numa tela de
- * 1280 (o dono pediu, em 06/10/2026, "10× mais quadrados e 5× menores": eram
- * 144 células de ~87 px, viraram 1.600 de ~16 px). `--cp-onda-vao` no CSS
- * abre o respiro entre as formas.
+ * A malha é desenhada em CSS (dois gradientes num elemento) e o brilho é
+ * recortado por ela — então a densidade não custa DOM nem `will-change` em
+ * milhares de nós. Ajuste pelo `passo` (px entre linhas) e pelo `raio` (px do
+ * brilho do cursor).
  */
 import OndaCursor from "./OndaCursor";
 import { useEfeitoPermitido } from "./useEfeitoPermitido";
@@ -23,17 +23,17 @@ export default function FundoOnda() {
 
   return (
     <div className="cp-fundo-onda" aria-hidden="true">
-      {/* Grade 40 (dono, 06/10/2026: "10× mais quadrados e 5× menores"): eram
-          144 células de ~87 px; aqui são 1.600 de ~18 px, com os mesmos
-          ~93 px de raio de acendimento no ponteiro (por isso `raio` subiu de
-          3,2 para 10 células — em px, o valor é o mesmo). O motor mede a grade
-          por coluna/linha, então a densidade não vira 1.600 leituras de layout. */}
+      {/* Malha fina e OCA (dono, 06/10/2026: "bem mais quadrados, 2× menores e
+          só o contorno"): passo de 10 px com linha de 1 px — ~9 px de quadrado
+          vazio, contra os ~16 px preenchidos de antes — e o brilho do cursor
+          caiu de ~93 px para 24 px de raio (4× menor, como pedido). */}
       <OndaCursor
-        grade={40}
-        raio={9}
-        anel={3}
-        raioCelula={2}
+        passo={10}
+        espessura={1}
+        raio={24}
+        anel={16}
         cor="var(--cp-primary)"
+        corBorda="var(--cp-border)"
       />
     </div>
   );
