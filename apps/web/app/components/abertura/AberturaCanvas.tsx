@@ -32,7 +32,6 @@
  */
 
 import { useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
 import {
   COR_TOKEN_POR_PAGINA,
   EFEITO_POR_PAGINA,
@@ -40,6 +39,7 @@ import {
   opcoesDeCores,
   type PaginaAbertura,
 } from "@/lib/hero-vivo";
+import { useTemaPortal } from "./useTemaPortal";
 
 interface InstanciaVanta {
   destroy: () => void;
@@ -104,10 +104,57 @@ function temWebgl(): boolean {
   }
 }
 
+/**
+ * Biblioteca three "pronta para o Vanta", carregada UMA vez por sessão.
+ *
+ * ═══ ORDEM IMPORTA: three PRIMEIRO, depois o efeito do Vanta ═══
+ * Os arquivos de efeito do Vanta (dots, birds, net, cells) capturam
+ * `window.THREE` na AVALIAÇÃO do módulo — a opção `THREE:` que a base
+ * aceita é ignorada por eles (medido 05/10/2026: "Init error ... reading
+ * 'PerspectiveCamera'" nos 4 eixos, com o GLOBE funcionando por ler a
+ * opção). Publicamos então window.THREE antes do import do efeito.
+ *
+ * ⚠️ O objeto publicado NÃO pode ser o namespace do módulo: namespace
+ * ES/webpack ignora atribuição de propriedade nova (medido: `t.x = 1`
+ * não lança erro e o valor continua undefined). Clonamos os exports para
+ * um objeto simples e é nele que classes extras são anexadas.
+ *
+ * A GPGPU (`GPUComputationRenderer`) vai sempre junto: o BIRDS lê a classe
+ * do `window.THREE` capturado, e ela NÃO existe no core do three moderno —
+ * mora em examples/jsm (medido 05/10/2026: `node -e "import('three')..."`
+ * devolve false). Sem anexar, o init do birds quebra a cada frame
+ * ("reading 'time'"). São ~10 KB e a classe é inofensiva para os efeitos
+ * que não a usam.
+ *
+ * A promessa memoizada permite PRÉ-AQUECER os chunks (600 KB do three)
+ * no mount da abertura, em paralelo com tudo o mais — quem chamar depois
+ * recebe a promessa já em andamento/resolvida.
+ */
+let promessaBiblioteca: Promise<Record<string, unknown>> | null = null;
+
+export function bibliotecaThree(): Promise<Record<string, unknown>> {
+  if (!promessaBiblioteca) {
+    promessaBiblioteca = (async () => {
+      const modulo = await import("three");
+      const biblioteca = Object.assign(Object.create(null), modulo);
+      const gpgpu = await import(
+        "three/examples/jsm/misc/GPUComputationRenderer.js"
+      );
+      biblioteca.GPUComputationRenderer = gpgpu.GPUComputationRenderer;
+      return biblioteca;
+    })();
+  }
+  return promessaBiblioteca;
+}
+
 export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const efeitoRef = useRef<InstanciaVanta | null>(null);
-  const { resolvedTheme } = useTheme();
+  // Tema via atributo `data-theme` (MutationObserver), NÃO via next-themes:
+  // a troca de tema do portal escreve o atributo, e o fundo WebGL precisa
+  // recriar-se com as cores novas na hora — sem observer, o efeito nascia
+  // com a cor do tema do carregamento e nunca mais mudava (dono, 05/10).
+  const { tema } = useTemaPortal();
 
   useEffect(() => {
     let cancelado = false;
@@ -146,20 +193,25 @@ export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps)
       const fundo = normalizarCor(fundoBruto);
       if (!cor || !fundo) return;
 
-      const [{ default: criar }, THREE] = await Promise.all([
-        MODULOS[efeito](),
-        import("three"),
-      ]);
+      // Pega a biblioteca three (pré-aquecida pelo AberturaHero na
+      // montagem) e publica em window antes do import do efeito — a
+      // razão da ordem está no comentário de `bibliotecaThree`.
+      const biblioteca = await bibliotecaThree();
+      (window as unknown as { THREE: unknown }).THREE = biblioteca;
+      const { default: criar } = await MODULOS[efeito]();
       if (cancelado || !ref.current) return;
 
       slot = document.createElement("div");
       slot.style.cssText = "position:absolute;inset:0;pointer-events:none;";
       slot.className = "cp-slot-vanta";
+      // Marca de verificação: mostra com QUE tema este efeito foi criado
+      // (usado pelo teste de troca de tema; sem custo de runtime).
+      slot.dataset.tema = tema;
       ref.current.appendChild(slot);
 
       efeitoRef.current = criar({
         el: slot,
-        THREE, // three.js do npm — NÃO a cópia r134 embutida do vanta
+        THREE: biblioteca, // three.js do npm — NÃO a cópia r134 embutida do vanta
         mouseControls: true,
         touchControls: false,
         gyroControls: false,
@@ -200,9 +252,9 @@ export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps)
         }
       }
     };
-    // `resolvedTheme` na dependência: troca de tema destrói e recria o
-    // efeito com as cores novas (mais confiável que setOptions parcial).
-  }, [ativo, paginaId, resolvedTheme]);
+    // `tema` na dependência: troca de tema (observada pelo MutationObserver)
+    // destrói e recria o efeito com as cores novas do tema ativo.
+  }, [ativo, paginaId, tema]);
 
   return (
     <div

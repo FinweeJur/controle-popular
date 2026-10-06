@@ -163,6 +163,39 @@ extra evitada).
    runtime, que é o correto. O `ContextReplacementPlugin` não serviu: o
    webpack compilado do Next não o exporta.
 
+3. **`window.THREE` precisa existir ANTES do import do efeito do Vanta.**
+   Os arquivos `dots`, `birds`, `net` e `cells` capturam `window.THREE`
+   na AVALIAÇÃO do módulo (`let l = window.THREE`) — a opção `THREE:` da
+   base é ignorada por eles. Era o motivo de os 4 eixos nascerem no
+   fallback estático ("Init error ... reading 'PerspectiveCamera'")
+   enquanto o GLOBE funcionava. Corrigido: a biblioteca three é
+   preparada (com a GPGPU abaixo) e publicada em `window.THREE` ANTES do
+   import do efeito — helper memoizado `bibliotecaThree()`, pré-aquecido
+   no mount da abertura para o carregamento não ficar em cascata.
+
+4. **`GPUComputationRenderer` não existe no core do three moderno.** O
+   efeito BIRDS usa GPGPU e lê a classe do three capturado; no three
+   0.156 ela mora em `three/examples/jsm/misc/` (medido: `import('three')`
+   devolve `false` para a classe). Sem anexar, o init do birds falhava a
+   cada frame ("reading 'time'"). O helper anexa a classe ao objeto
+   publicado em `window.THREE`.
+
+5. **Namespace do three ignora atribuição de propriedade — em silêncio.**
+   `t.GPUComputationRenderer = x` num namespace ES/webpack NÃO lança erro
+   e o valor continua `undefined` (medido em node). Por isso a biblioteca
+   publicada é um clone simples (`Object.assign(Object.create(null),
+   modulo)`), não o namespace direto.
+
+6. **Cores por tema: o seletor do portal escreve `data-theme` no `<html>`**
+   — componentes que precisam reagir à troca observam o atributo com
+   MutationObserver (precedente: `CursorTema.tsx`). O fundo WebGL era
+   pintado com a cor do carregamento e nunca mais mudava. Conserto: hook
+   `useTemaPortal` (observer) recria o efeito na troca; tema alto
+   contraste também ficou reativo (entra/sai do HC monta/desmonta o
+   canvas na hora). A seção da abertura pinta `--cp-bg` própria — os
+   chunks chegando (5-15s no dev frio; instantâneo em produção) nunca
+   deixam a abertura crua.
+
 ## Como verificar
 
 ```bash
@@ -194,6 +227,11 @@ visível.
   áudio da casca vivo (script oficial: 0 mortes).
 - 05/10/2026 — `newrelic` como external do servidor no hook `webpack`
   (ver "Armadilhas descobertas"): dev frio volta a funcionar.
+- 05/10/2026 — rodada 2 da verificação: dono reportou eixos sem animação,
+  cores presas ao tema do carregamento e pediu o ScrollTrigger de descida.
+  Consertos: `window.THREE` antes do import do efeito + GPGPU anexada +
+  `useTemaPortal` (MutationObserver) + seção pinta `--cp-bg` própria +
+  ScrollTrigger de descida no conteúdo (`scrub: true`, sem `pin`).
 
 ## Origem / Histórico
 

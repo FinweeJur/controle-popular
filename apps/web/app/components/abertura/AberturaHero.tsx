@@ -30,6 +30,8 @@ import dynamic from "next/dynamic";
 import ShinyText from "@/app/components/react-bits/ShinyText";
 import Magnet from "@/app/components/react-bits/Magnet";
 import { deveRenderCanvas, type PaginaAbertura } from "@/lib/hero-vivo";
+import { bibliotecaThree } from "./AberturaCanvas";
+import { useTemaPortal } from "./useTemaPortal";
 
 // O canvas é exclusivamente client (WebGL + window), carregado só quando
 // o componente existe — e `ssr: false` impede o Next de tentar renderizá-lo
@@ -37,7 +39,6 @@ import { deveRenderCanvas, type PaginaAbertura } from "@/lib/hero-vivo";
 const AberturaCanvasDinamico = dynamic(() => import("./AberturaCanvas"), {
   ssr: false,
 });
-
 /** Contorno preto do texto sobre qualquer fundo — igual ao da CapaFrente. */
 const CONTORNO_TEXTO =
   "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)";
@@ -51,9 +52,14 @@ export interface AberturaHeroProps {
 
 export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const conteudoRef = useRef<HTMLDivElement | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [pointerCoarse, setPointerCoarse] = useState(false);
   const [visivel, setVisivel] = useState(false);
+  // Tema reativo (MutationObserver no data-theme): sem isso, quem entrasse
+  // no tema alto contraste e trocasse para outro — ou o contrário — ficava
+  // com a decisão de montar/não montar o canvas tomada no primeiro render.
+  const { altoContraste } = useTemaPortal();
 
   // ── Preferências do usuário (mesmo padrão do HeroNarrative):
   // lidas uma vez + listener, porque o usuário pode trocar a opção com a
@@ -87,15 +93,70 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
     return () => observer.disconnect();
   }, []);
 
-  // Alto contraste via atributo do tema (a trava fina do --cp-glow fica
-  // no AberturaCanvas, que já lê computed style).
-  const temaAltoContraste =
-    typeof document !== "undefined" &&
-    document.documentElement.dataset.theme === "high-contrast";
+  // ── ScrollTrigger "pra baixo" (pedido do dono, 05/10/2026): ao rolar
+  // para baixo a partir da abertura, o conteúdo (nome + CTA) sobe e some
+  // em velocidade presa ao scroll (scrub: true, sem pin — quem quer dado
+  // não fica preso no hero; regra do plano de identidade visual). O GSAP
+  // entra por import dinâmico: só as 5 páginas com abertura pagam o chunk.
+  // Lenis no modo raiz rola a janela de verdade, então o ScrollTrigger
+  // acompanha o scroll nativo sem precisar de ponte.
+  useEffect(() => {
+    if (reducedMotion) return;
+    let cancelado = false;
+    let revert: (() => void) | undefined;
+    (async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
+      if (cancelado || !sectionRef.current) return;
+      gsap.registerPlugin(ScrollTrigger);
+      const ctx = gsap.context(() => {
+        gsap.to(conteudoRef.current, {
+          y: -90,
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom 25%",
+            scrub: true,
+          },
+        });
+      }, sectionRef);
+      revert = () => ctx.revert();
+    })();
+    return () => {
+      cancelado = true;
+      revert?.();
+    };
+  }, [reducedMotion]);
+
+  // ── Pré-aquecimento da biblioteca three (~600 KB): começa a carregar
+  // NA MONTAGEM, em paralelo com a hidratação e com os chunks do GSAP —
+  // sem isso, o carregamento ficava em CASCATA (canvas → three → efeito)
+  // e o fundo demorava segundos para nascer no dev (medido 05/10/2026).
+  // A promessa é memoizada: o `ligar` do canvas recebe o mesmo objeto já
+  // em andamento. Reduced-motion/coarse/alto contraste: não carrega nada.
+  useEffect(() => {
+    if (
+      deveRenderCanvas({
+        reducedMotion,
+        pointerCoarse,
+        temaAltoContraste: altoContraste,
+      })
+    ) {
+      bibliotecaThree();
+    }
+  }, [reducedMotion, pointerCoarse, altoContraste]);
 
   const podeCanvas =
     visivel &&
-    deveRenderCanvas({ reducedMotion, pointerCoarse, temaAltoContraste });
+    deveRenderCanvas({
+      reducedMotion,
+      pointerCoarse,
+      temaAltoContraste: altoContraste,
+    });
 
   return (
     <section
@@ -105,7 +166,13 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
       // Tela cheia MENOS a navbar (~4rem) que fica acima — decisão do
       // dono: "acima navbar e letreiro". `svh` evita o salto do footer
       // do navegador no celular; o min-h é a rede para navegadores velhos.
-      style={{ minHeight: "max(560px, calc(100svh - 4rem))" }}
+      // ⚠️ A cor de fundo é DA SEÇÃO (não só do canvas): enquanto os
+      // chunks do three/vanta chegam (5-15s no dev frio; instantâneo em
+      // produção), a abertura já tem a cor do tema — nunca fica crua.
+      style={{
+        minHeight: "max(560px, calc(100svh - 4rem))",
+        backgroundColor: "var(--cp-bg)",
+      }}
     >
       {/* Fundo vivo — só existe quando pode. O div do canvas pinta
           `--cp-bg` por conta própria, então a abertura nunca fica crua. */}
@@ -114,8 +181,9 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
       )}
 
       {/* Nome da página — o <h1> único, com brilho ShinyText. O contorno
-          preto garante leitura sobre qualquer fundo de tema. */}
-      <div className="relative z-10 px-4 text-center">
+          preto garante leitura sobre qualquer fundo de tema. O wrapper é
+          o alvo do ScrollTrigger de descida (sobe e some ao rolar). */}
+      <div ref={conteudoRef} className="relative z-10 px-4 text-center">
         <h1
           className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-6xl lg:text-7xl"
           style={{
