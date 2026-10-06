@@ -33,9 +33,10 @@
 
 import { useEffect, useRef } from "react";
 import {
-  COR_TOKEN_POR_PAGINA,
   EFEITO_POR_PAGINA,
   FUNDO_TOKEN,
+  TOKEN_COR_PRIMARIA,
+  TOKEN_COR_SECUNDARIA,
   opcoesDeCores,
   type PaginaAbertura,
 } from "@/lib/hero-vivo";
@@ -54,7 +55,6 @@ const MODULOS: Record<string, () => Promise<{ default: CriadorVanta }>> = {
   dots: () => import("vanta/dist/vanta.dots.min.js"),
   birds: () => import("vanta/dist/vanta.birds.min.js"),
   net: () => import("vanta/dist/vanta.net.min.js"),
-  cells: () => import("vanta/dist/vanta.cells.min.js"),
 };
 
 /** Converte `color(srgb r g b)` (serialização de cores amplas) em hex. */
@@ -223,15 +223,23 @@ export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps)
       if (estilo.getPropertyValue("--cp-glow").trim() === "transparent") return;
 
       const efeito = EFEITO_POR_PAGINA[paginaId];
-      const corToken = COR_TOKEN_POR_PAGINA[paginaId];
+      // `null` = página sem canvas (home, decisão do dono 06/10/2026).
+      // O AberturaHero já não monta este componente, mas a guarda fica
+      // aqui também — a fonte única é o mapa, não o caller.
+      if (!efeito) return;
 
-      // Cores do TEMA ATIVO, resolvidas agora. O elemento da seção herda
-      // --eixo-ativo-cor do EixoLayout (eixos) e --cp-primary do :root (home).
-      const corBruta = estilo.getPropertyValue(corToken).trim();
+      // Cores do TEMA ATIVO, resolvidas agora: primária e secundária
+      // (pedido do dono 06/10/2026 — os dois tokens existem em todos os
+      // 8 temas). Fundo continua sendo o `--cp-bg` do tema.
+      const corBruta = estilo.getPropertyValue(TOKEN_COR_PRIMARIA).trim();
+      const corSecundariaBruta = estilo
+        .getPropertyValue(TOKEN_COR_SECUNDARIA)
+        .trim();
       const fundoBruto = estilo.getPropertyValue(FUNDO_TOKEN).trim();
       const cor = normalizarCor(corBruta);
+      const corSecundaria = normalizarCor(corSecundariaBruta);
       const fundo = normalizarCor(fundoBruto);
-      if (!cor || !fundo) return;
+      if (!cor || !corSecundaria || !fundo) return;
 
       // Pega a biblioteca three (pré-aquecida pelo AberturaHero na
       // montagem) e publica em window antes do import do efeito — a
@@ -244,9 +252,10 @@ export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps)
       slot = document.createElement("div");
       slot.style.cssText = "position:absolute;inset:0;pointer-events:none;";
       slot.className = "cp-slot-vanta";
-      // Marca de verificação: mostra com QUE tema este efeito foi criado
-      // (usado pelo teste de troca de tema; sem custo de runtime).
+      // Marca de verificação: mostra com QUE tema e QUAL efeito este slot
+      // foi criado (usado pelos testes Playwright; sem custo de runtime).
       slot.dataset.tema = tema;
+      slot.dataset.efeito = efeito;
       ref.current.appendChild(slot);
 
       efeitoRef.current = criar({
@@ -257,7 +266,7 @@ export default function AberturaCanvas({ paginaId, ativo }: AberturaCanvasProps)
         gyroControls: false,
         minHeight: 200,
         minWidth: 200,
-        ...opcoesDeCores(efeito, { fundo, cor }),
+        ...opcoesDeCores(efeito, { fundo, cor, corSecundaria }),
       });
     }
 

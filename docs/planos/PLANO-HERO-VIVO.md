@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global (home + 4 eixos)
-> **Última medição:** 2026-10-05
+> **Última medição:** 2026-10-06
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md](PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md), [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** hero, abertura, vanta, three.js, lenis, react-bits, shiny-text, spotlight-card, magnet, webgl, reduced-motion, acessibilidade
@@ -33,7 +33,7 @@ obstáculo.
 
 | Decisão | Escolha |
 |---|---|
-| Efeito Vanta | Um por página: GLOBE (home), DOTS (Terra), BIRDS (Direitos), NET (Estado), CELLS (Central) |
+| Efeito Vanta | Um por página (dono, 06/10): SEM efeito na home, DOTS (Terra), BIRDS (Direitos), GLOBE (Estado), NET (Central). CELLS abandonado |
 | Abertura | Tela cheia, só o nome da página; texto/foto vêm depois |
 | Split Text | DESCARTADO (nome entra de peça única, com brilho Shiny Text) |
 | ScrollTrigger | ADIADO (reavaliar depois) |
@@ -90,8 +90,10 @@ abertura 100vh (nome + fundo) → breadcrumb (eixos) → header de conteúdo
 
 ## Cores por tema
 
-- Fonte única: tokens CSS (`--cp-primary`, `--eixo-ativo-cor`, `--cp-bg`,
-  `--cp-glow`), lidos com `getComputedStyle` no elemento da seção.
+- Fonte única: tokens CSS (`--cp-primary`, `--cp-secondary`, `--cp-bg`),
+  lidos com `getComputedStyle` no elemento da seção. Pedido do dono
+  (06/10/2026): o efeito usa as DUAS cores do tema — os dois tokens
+  existem em todos os 8 temas; o antigo `--eixo-ativo-cor` saiu de cena.
 - A paleta do portal está em OKLCH (armadilha do AGENTS): o valor resolvido
   é normalizado por canvas 2D (`fillStyle` serializa para `#rrggbb`),
   com fallback para `color(srgb …)` e `rgb(a)`.
@@ -120,10 +122,10 @@ abertura 100vh (nome + fundo) → breadcrumb (eixos) → header de conteúdo
 | `lenis` | 1.x | rolagem suave | ~5 KB |
 | `@types/three` (dev) | 0.156.0 | tipos do three | 0 no bundle |
 
-Carregamento: só as 5 páginas com abertura baixam Vanta/three, via
-`next/dynamic` + import dinâmico por efeito. As demais rotas não pagam
-nada. CELLS no lugar de TOPOLOGY (Topology exigiria p5.js — dependência
-extra evitada).
+Carregamento: só as páginas COM efeito baixam Vanta/three, via
+`next/dynamic` + import dinâmico por efeito (a home tem hero sem canvas —
+nem three ela carrega, dono 06/10). As demais rotas não pagam nada.
+TOPOLOGY/TRUNK ficaram de fora (exigiriam p5.js — dependência extra).
 
 ## Riscos e mitigações
 
@@ -164,7 +166,7 @@ extra evitada).
    webpack compilado do Next não o exporta.
 
 3. **`window.THREE` precisa existir ANTES do import do efeito do Vanta.**
-   Os arquivos `dots`, `birds`, `net` e `cells` capturam `window.THREE`
+   Os arquivos `dots`, `birds` e `net` capturam `window.THREE`
    na AVALIAÇÃO do módulo (`let l = window.THREE`) — a opção `THREE:` da
    base é ignorada por eles. Era o motivo de os 4 eixos nascerem no
    fallback estático ("Init error ... reading 'PerspectiveCamera'")
@@ -259,6 +261,16 @@ visível.
   Consertos: `window.THREE` antes do import do efeito + GPGPU anexada +
   `useTemaPortal` (MutationObserver) + seção pinta `--cp-bg` própria +
   ScrollTrigger de descida no conteúdo (`scrub: true`, sem `pin`).
+- 06/10/2026 — rodada 3 do dono (5 pedidos): (1) todo efeito usa a
+  primária E a secundária do tema (tokens `--cp-primary`/`--cp-secondary`,
+  os dois existem nos 8 temas; saiu o `--eixo-ativo-cor`); (2) home sem
+  efeito (hero fica, canvas e pré-aquecimento do three somem); (3) GLOBE
+  da home foi para o Estado; (4) NET do Estado foi para a Central;
+  (5) CELLS abandonado. Verificado Playwright em pequi e pantanal:
+  4 efeitos com as 2 cores certas, home sem slot.
+- 06/10/2026 — `glowColor` era chave morta: não existe na fonte do
+  vanta 0.5.24 (só no demo antigo). Removida; o globe usa `color` e
+  `color2` (medido em `node_modules/vanta/src/vanta.globe.js`).
 
 ## Origem / Histórico
 
@@ -266,3 +278,6 @@ visível.
   porta 3048), a partir do pedido do dono de melhorar as hero sections com
   Vanta, GSAP, Lenis e React Bits. GSAP já instalado e `HeroNarrative`
   permanece como precedente de padrões (reduced-motion, sem `pin`).
+- 2026-10-06: rodada 3 do dono — novo mapa de efeitos (home sem efeito,
+  globe→Estado, net→Central, cells fora) e as duas cores do tema em todo
+  efeito. Verificação Playwright 5 páginas × 2 temas: 10/10 OK.

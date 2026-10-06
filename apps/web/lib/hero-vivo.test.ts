@@ -9,10 +9,12 @@
  */
 import { describe, expect, test } from "vitest";
 import {
-  COR_TOKEN_POR_PAGINA,
   EFEITO_POR_PAGINA,
+  TOKEN_COR_PRIMARIA,
+  TOKEN_COR_SECUNDARIA,
   deveRenderCanvas,
   opcoesDeCores,
+  type EfeitoVanta,
   type PaginaAbertura,
 } from "./hero-vivo";
 
@@ -31,39 +33,40 @@ describe("EFEITO_POR_PAGINA — um efeito por página (dono, 05/10/2026)", () =>
     );
   });
 
-  test("efeitos são todos do Vanta com three.js (sem p5)", () => {
-    // TOPOLOGY/TRUNK exigiriam p5.js — decisão: CELLS na Central.
-    const permitidos = new Set(["globe", "dots", "birds", "net", "cells"]);
+  test("efeitos são todos do Vanta com three.js (sem p5, sem cells)", () => {
+    // TOPOLOGY/TRUNK exigiriam p5.js — ficaram de fora. CELLS foi
+    // abandonado pelo dono em 06/10/2026 junto com a home sem efeito.
+    const permitidos = new Set(["globe", "dots", "birds", "net"]);
     for (const efeito of Object.values(EFEITO_POR_PAGINA)) {
+      if (efeito === null) continue;
       expect(permitidos.has(efeito)).toBe(true);
     }
   });
 
   test("efeitos não se repetem — cada página tem identidade própria", () => {
-    const valores = Object.values(EFEITO_POR_PAGINA);
+    const valores = Object.values(EFEITO_POR_PAGINA).filter(
+      (efeito): efeito is EfeitoVanta => efeito !== null,
+    );
     expect(new Set(valores).size).toBe(valores.length);
   });
 
-  test("home usa globo; cada eixo usa o efeito decidido", () => {
-    expect(EFEITO_POR_PAGINA.home).toBe("globe");
+  test("home sem efeito; cada eixo com o efeito decidido (06/10/2026)", () => {
+    expect(EFEITO_POR_PAGINA.home).toBeNull();
     expect(EFEITO_POR_PAGINA.terra).toBe("dots");
     expect(EFEITO_POR_PAGINA.direitos).toBe("birds");
-    expect(EFEITO_POR_PAGINA.estado).toBe("net");
-    expect(EFEITO_POR_PAGINA.central).toBe("cells");
+    expect(EFEITO_POR_PAGINA.estado).toBe("globe");
+    expect(EFEITO_POR_PAGINA.central).toBe("net");
   });
 });
 
-describe("COR_TOKEN_POR_PAGINA — cor vem do tema, nunca de hex cravado", () => {
-  test("home lê --cp-primary; eixos leem --eixo-ativo-cor", () => {
-    expect(COR_TOKEN_POR_PAGINA.home).toBe("--cp-primary");
-    expect(COR_TOKEN_POR_PAGINA.terra).toBe("--eixo-ativo-cor");
-    expect(COR_TOKEN_POR_PAGINA.direitos).toBe("--eixo-ativo-cor");
-    expect(COR_TOKEN_POR_PAGINA.estado).toBe("--eixo-ativo-cor");
-    expect(COR_TOKEN_POR_PAGINA.central).toBe("--eixo-ativo-cor");
+describe("tokens de cor — primária e secundária do tema, nunca hex", () => {
+  test("valem para qualquer página: os dois tokens globais do tema", () => {
+    expect(TOKEN_COR_PRIMARIA).toBe("--cp-primary");
+    expect(TOKEN_COR_SECUNDARIA).toBe("--cp-secondary");
   });
 
   test("nenhum token é hex literal — a paleta vive no globals.css", () => {
-    for (const token of Object.values(COR_TOKEN_POR_PAGINA)) {
+    for (const token of [TOKEN_COR_PRIMARIA, TOKEN_COR_SECUNDARIA]) {
       expect(token.startsWith("--")).toBe(true);
     }
   });
@@ -104,42 +107,47 @@ describe("deveRenderCanvas — reduced-motion é lei, não enfeite", () => {
 });
 
 describe("opcoesDeCores — cada efeito recebe as chaves que aceita", () => {
-  const cores = { fundo: "#0b1220", cor: "#12467b" };
+  const cores = {
+    fundo: "#0b1220",
+    cor: "#12467b",
+    corSecundaria: "#6d28d9",
+  };
+  const efeitos = ["dots", "birds", "globe", "net"] as const;
 
   test("base comum: backgroundColor sempre presente", () => {
-    for (const efeito of Object.values(EFEITO_POR_PAGINA)) {
+    for (const efeito of efeitos) {
       const opcoes = opcoesDeCores(efeito, cores);
       expect(opcoes.backgroundColor).toBe(cores.fundo);
     }
   });
 
-  test("birds recebe color1 e color2 da cor primária (bando do tema)", () => {
+  test("birds recebe color1 primária e color2 secundária (gradiente do tema)", () => {
     const opcoes = opcoesDeCores("birds", cores);
     expect(opcoes.color1).toBe(cores.cor);
-    expect(opcoes.color2).toBe(cores.cor);
+    expect(opcoes.color2).toBe(cores.corSecundaria);
     // birds não usa as chaves simples dos outros efeitos
     expect(opcoes.color).toBeUndefined();
     expect(opcoes.glowColor).toBeUndefined();
   });
 
-  test("globe ganha glowColor acompanhando a cor primária", () => {
+  test("globe ganha color primária e color2 secundária, sem glowColor", () => {
+    // glowColor é chave morta: não existe na fonte do vanta 0.5.24.
     const opcoes = opcoesDeCores("globe", cores);
     expect(opcoes.color).toBe(cores.cor);
-    expect(opcoes.glowColor).toBe(cores.cor);
+    expect(opcoes.color2).toBe(cores.corSecundaria);
+    expect(opcoes.glowColor).toBeUndefined();
   });
 
-  test("cells usa color e color2", () => {
-    const opcoes = opcoesDeCores("cells", cores);
+  test("dots pinta pontos com primária e linhas com secundária", () => {
+    const opcoes = opcoesDeCores("dots", cores);
     expect(opcoes.color).toBe(cores.cor);
-    expect(opcoes.color2).toBe(cores.cor);
+    expect(opcoes.color2).toBe(cores.corSecundaria);
   });
 
-  test("dots e net recebem color simples, sem glow", () => {
-    for (const efeito of ["dots", "net"] as const) {
-      const opcoes = opcoesDeCores(efeito, cores);
-      expect(opcoes.color).toBe(cores.cor);
-      expect(opcoes.glowColor).toBeUndefined();
-      expect(opcoes.color2).toBeUndefined();
-    }
+  test("net tem slot único: só a primária, sem color2", () => {
+    const opcoes = opcoesDeCores("net", cores);
+    expect(opcoes.color).toBe(cores.cor);
+    expect(opcoes.color2).toBeUndefined();
+    expect(opcoes.glowColor).toBeUndefined();
   });
 });

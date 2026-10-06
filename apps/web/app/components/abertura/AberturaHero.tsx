@@ -29,7 +29,7 @@ import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import ShinyText from "@/app/components/react-bits/ShinyText";
 import Magnet from "@/app/components/react-bits/Magnet";
-import { deveRenderCanvas, type PaginaAbertura } from "@/lib/hero-vivo";
+import { deveRenderCanvas, EFEITO_POR_PAGINA, type PaginaAbertura } from "@/lib/hero-vivo";
 import { bibliotecaThree } from "./AberturaCanvas";
 import { useTemaPortal } from "./useTemaPortal";
 
@@ -138,8 +138,12 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
   // e o fundo demorava segundos para nascer no dev (medido 05/10/2026).
   // A promessa é memoizada: o `ligar` do canvas recebe o mesmo objeto já
   // em andamento. Reduced-motion/coarse/alto contraste: não carrega nada.
+  // `semEfeito` (home, dono 06/10/2026): sem canvas não há three a
+  // aquecer — poupamos os 600 KB da home.
+  const semEfeito = EFEITO_POR_PAGINA[paginaId] == null;
   useEffect(() => {
     if (
+      !semEfeito &&
       deveRenderCanvas({
         reducedMotion,
         pointerCoarse,
@@ -148,9 +152,10 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
     ) {
       bibliotecaThree();
     }
-  }, [reducedMotion, pointerCoarse, altoContraste]);
+  }, [semEfeito, reducedMotion, pointerCoarse, altoContraste]);
 
   const podeCanvas =
+    !semEfeito &&
     visivel &&
     deveRenderCanvas({
       reducedMotion,

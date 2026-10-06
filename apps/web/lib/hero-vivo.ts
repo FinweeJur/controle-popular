@@ -16,49 +16,49 @@
 import type { EixoId } from "@/lib/eixos/types";
 
 /**
- * Efeitos Vanta usados, um por página (decisão do dono: "um efeito por
- * eixo"). Todos são renderizados por three.js — TOPOLOGY/TRUNK exigiriam
- * p5.js (dependência extra), então a Central usa CELLS, também de malha
- * orgânica conectada, sem adicionar pacote.
+ * Efeitos Vanta usados. Todos renderizados por three.js — TOPOLOGY/TRUNK
+ * exigiriam p5.js (dependência extra), então ficam de fora.
+ *
+ * Decisão do dono (06/10/2026), 2ª rodada de ajustes:
+ * - a home NÃO tem efeito (só o hero estático);
+ * - `globe` saiu da home e foi para o Estado e Economia;
+ * - `net` saiu do Estado e foi para a Central ONSA;
+ * - `cells` foi abandonado (sobrava um efeito sem uso).
  *
  * Papel de cada efeito (decorativo — NÃO representa dado georreferenciado,
  * regra editorial do AGENTS.md):
- * - `globe`  (home): rede global de fiscalização — conversa com o Globo 3D;
  * - `dots`   (terra): malha pontilhada tipo azulejaria Athos Bulcão;
  * - `birds`  (direitos): bando em voo — a arara é o símbolo do eixo;
- * - `net`    (estado): rede de conexões — o fluxo do dinheiro público;
- * - `cells`  (central): células conectadas — ferramentas e inteligência.
+ * - `globe`  (estado): rede global de fiscalização — conversa com o Globo 3D;
+ * - `net`    (central): rede de conexões — o fluxo do dinheiro público.
  */
-export type EfeitoVanta = "globe" | "dots" | "birds" | "net" | "cells";
+export type EfeitoVanta = "globe" | "dots" | "birds" | "net";
 
-/** Páginas que têm abertura viva: a home da marca + os 4 eixos. */
+/** Páginas com abertura viva: a home da marca + os 4 eixos. */
 export type PaginaAbertura = "home" | EixoId;
 
 /**
  * Efeito de cada página. Fonte única — `AberturaHero` e `AberturaCanvas`
- * leem daqui, nunca de mapa próprio, para não divergirem.
+ * leem daqui, nunca de mapa próprio, para não divergirem. `null` = a
+ * página tem hero mas SEM canvas (dono, 06/10/2026: "home sem efeito").
  */
-export const EFEITO_POR_PAGINA: Record<PaginaAbertura, EfeitoVanta> = {
-  home: "globe",
+export const EFEITO_POR_PAGINA: Record<PaginaAbertura, EfeitoVanta | null> = {
+  home: null,
   terra: "dots",
   direitos: "birds",
-  estado: "net",
-  central: "cells",
+  estado: "globe",
+  central: "net",
 };
 
 /**
- * Token CSS que resolve a COR DO EFEITO em cada página. Os eixos leem
- * `--eixo-ativo-cor` (definida por `EixoLayout` a partir do catálogo,
- * `lib/eixos/catalogo.ts`), então a cor acompanha o tema ativo sem código
- * por tema. A home não tem layout de eixo: lê `--cp-primary` direto.
+ * Tokens CSS das CORES DO EFEITO. Pedido do dono (06/10/2026): "todos os
+ * efeitos mudam de cor para primária E secundária do tema" — os dois
+ * tokens existem em TODOS os 8 temas (`globals.css`), então a troca de
+ * tema chega ao canvas sem código por tema. Substituem o antigo
+ * `--eixo-ativo-cor`, que dependia do `EixoLayout` estar acima na árvore.
  */
-export const COR_TOKEN_POR_PAGINA: Record<PaginaAbertura, string> = {
-  home: "--cp-primary",
-  terra: "--eixo-ativo-cor",
-  direitos: "--eixo-ativo-cor",
-  estado: "--eixo-ativo-cor",
-  central: "--eixo-ativo-cor",
-};
+export const TOKEN_COR_PRIMARIA = "--cp-primary";
+export const TOKEN_COR_SECUNDARIA = "--cp-secondary";
 
 /** Token CSS do FUNDO do canvas — o `--cp-bg` de cada tema. */
 export const FUNDO_TOKEN = "--cp-bg";
@@ -86,15 +86,29 @@ export function deveRenderCanvas(c: CondicoesAbertura): boolean {
 export interface CoresAbertura {
   /** Fundo do canvas (token `--cp-bg` do tema ativo). */
   fundo: string;
-  /** Cor das partículas/linhas (token primário do tema/eixo). */
+  /** Cor primária do tema (token `--cp-primary`). */
   cor: string;
+  /** Cor secundária do tema (token `--cp-secondary`). */
+  corSecundaria: string;
 }
 
 /**
- * Opções de cor por efeito. Cada efeito do Vanta aceita nomes distintos:
- * `birds` pinta o bando interpolando `color1`×`color2`; `cells` usa `color`
- * e `color2`; `globe` brilha com `glowColor`. Montado aqui para ser
- * testável sem DOM — o componente só injeta o resultado.
+ * Opções de cor por efeito. Cada efeito do Vanta aceita chaves DISTINTAS
+ * (medido na fonte `node_modules/vanta/src/vanta.*.js`, 06/10/2026):
+ *
+ * | efeito | slots            | uso                                      |
+ * |--------|------------------|------------------------------------------|
+ * | dots   | `color`/`color2` | pontos / linhas do segmento              |
+ * | globe  | `color`/`color2` | esfera / linhas secundárias              |
+ * | birds  | `color1`/`color2`| gradientes do bando (`varianceGradient`) |
+ * | net    | SÓ `color`       | pontos e linhas juntos (um slot só)      |
+ *
+ * `glowColor` (antigo no globe) NÃO existe na fonte do vanta 0.5.24 — era
+ * chave morta, removida. O `net` recebe só a primária porque não tem o
+ * segundo slot: não dá para injetar a secundária sem inventar chave que o
+ * efeito ignora.
+ *
+ * Montado aqui (puro) para ser testável sem DOM — o componente só injeta.
  */
 export function opcoesDeCores(
   efeito: EfeitoVanta,
@@ -104,24 +118,20 @@ export function opcoesDeCores(
     backgroundColor: cores.fundo,
   };
   if (efeito === "birds") {
-    // O bando recebe color1 e color2 e o Vanta interpola entre as duas
-    // por vértice (colorMode `varianceGradient`). Sem as duas chaves ele
-    // cai nos defaults do pacote (vermelho × ciano) — medido 06/10/2026:
-    // os pássaros saíam rosa fosse qual fosse o tema. As duas recebem a
-    // cor primária: o bando inteiro na cor do tema, e o fragment shader
-    // ainda varia o brilho pela profundidade (z), dando volume ao enxame.
+    // O bando interpola color1×color2 por vértice (colorMode
+    // `varianceGradient`): sem as duas chaves o Vanta cai nos defaults
+    // (vermelho × ciano) — medido 06/10/2026, pássaros rosa em qualquer
+    // tema. Primária × secundária dá o gradiente do tema no enxame.
     opcoes.color1 = cores.cor;
-    opcoes.color2 = cores.cor;
-  } else {
-    opcoes.color = cores.cor;
+    opcoes.color2 = cores.corSecundaria;
+    return opcoes;
   }
-  if (efeito === "globe") {
-    // O brilho do globo acompanha a cor primária — token `--cp-glow`
-    // é rgba fraco e sumiria; usa a cor cheia para o halo ficar visível.
-    opcoes.glowColor = cores.cor;
-  }
-  if (efeito === "cells") {
-    opcoes.color2 = cores.cor;
+  // dots, globe e net: `color` pinta o elemento principal (pontos/esfera).
+  opcoes.color = cores.cor;
+  // `color2` é o slot secundário (linhas do dots, linhas do globe). O net
+  // tem UM slot só (medido na fonte): nele a secundária não existe.
+  if (efeito !== "net") {
+    opcoes.color2 = cores.corSecundaria;
   }
   return opcoes;
 }
