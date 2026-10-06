@@ -12,6 +12,14 @@ import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { ROTAS_GLOBAIS, SUFIXOS_CIDADE } from "@/lib/sitemap/rotas-descobertas";
 
 /**
+ * ESTÁTICO DE PROPÓSITO: o sitemap é gerado no BUILD (lê o banco para listar
+ * cidade, notícia, parlamentar e tribunal). No alvo `output: export` o Next 16
+ * exige `force-static` em metadata route; sem ele o export aborta em
+ * "not configured on route /sitemap.xml".
+ */
+export const dynamic = "force-static";
+
+/**
  * Domínio de produção — o `www` é o site canônico.
  *
  * Medido em 04/10/2026: a raiz `controlepopular.com.br` já devolve 301 para

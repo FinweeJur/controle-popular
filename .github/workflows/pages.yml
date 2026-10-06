@@ -64,7 +64,12 @@ jobs:
 
       - name: Build estático
         working-directory: apps/web
-        run: npx next build
+        # `--webpack` explícito: no Next 16 o Turbopack é o padrão, e a
+        # `next.config.ts` tem um `webpack` (o `config.cache = false` do alvo
+        # standalone). Sem a flag, o build morre com "This build is using
+        # Turbopack, with a `webpack` config and no `turbopack` config".
+        # É o mesmo comando do script `build` de apps/web.
+        run: npx next build --webpack
         env:
           # A presença desta variável é o que liga `output: 'export'` no
           # next.config.ts. O valor é `/<repo>` num repositório comum e
