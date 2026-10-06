@@ -278,6 +278,9 @@ const MedidorLiquido: React.FC<MedidorLiquidoProps> = ({
       s.v = 0;
     }
     anunciar();
+    // Pinta já: o número e o nível não podem divergir nem por um quadro,
+    // mesmo no caminho `instantaneo` (teclado) em que o laço se encerra.
+    pintar();
     acordar();
   };
 
@@ -299,11 +302,23 @@ const MedidorLiquido: React.FC<MedidorLiquidoProps> = ({
     mq.addEventListener("change", sincronizar);
     anunciar();
     pintar();
+    // Reaquece o laço no mount. No StrictMode do dev o React monta,
+    // desmonta e monta de novo: o cleanup abaixo zera o `raf`, e sem este
+    // `acordar()` o líquido ficaria congelado no primeiro quadro — foi o
+    // bug medido em 06/10/2026 (número mudava, o nível não).
+    acordar();
     const s = sim.current;
     return () => {
       mq.removeEventListener("change", sincronizar);
       cancelAnimationFrame(s.raf);
+      // Sem zerar, o id já cancelado continua "verdadeiro" e o próximo
+      // `acordar()` acha que há um laço vivo — e nunca agenda outro.
+      s.raf = 0;
     };
+    // `acordar`/`pintar`/`anunciar` são recriados a cada render: pendurá-los
+    // aqui desligaria e religaria o efeito a toda mudança de prop. O efeito
+    // é de montagem — mesma razão do `[valor]` acima.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

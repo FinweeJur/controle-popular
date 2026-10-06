@@ -1480,6 +1480,10 @@ export function CompanheiroFlutuante() {
             data-nao-plataforma
             // `overscroll-contain`: a roda do mouse rola a lista de bichinhos
             // e não vaza para a página quando chega ao fim (05/10/2026).
+            // `data-lenis-prevent`: a rolagem suave da página (Lenis) só
+            // respeita contêineres marcados — sem isto, a roda não rola a
+            // lista (mesmo caso do índice do rádio, 06/10/2026).
+            data-lenis-prevent
             className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
             style={{
               left: posMenu ? Math.round(posMenu.posicao.x) : menu.x,

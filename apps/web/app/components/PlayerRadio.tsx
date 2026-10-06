@@ -428,6 +428,12 @@ export default function PlayerRadio() {
                   itens `[data-cp-prox]` acendem perto do ponteiro. */}
               <div
                 ref={listaRef}
+                // `data-lenis-prevent`: a rolagem suave da página (Lenis) engole
+                // a roda do mouse e só devolve o controle a quem se marca com
+                // este atributo. Sem ele, esta lista fica parada — medido em
+                // 06/10/2026 (`scrollH` 1976 > `clientH` 457 e `scrollTop` 0
+                // depois da roda).
+                data-lenis-prevent
                 className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2"
               >
               {ORDEM_TIPOS.map((tipo) => {
@@ -490,7 +496,7 @@ export default function PlayerRadio() {
                 arrastar ou usar as setas do teclado muda o volume
                 (`role="slider"` liga no `interativo`). O mudo mantém o
                 `aria-pressed` de antes; as cores vêm dos tokens do tema. */}
-            <div className="flex shrink-0 flex-col items-center gap-2 border-l border-border bg-surface px-2 py-2">
+            <div className="flex shrink-0 flex-col items-center justify-center gap-3 border-l border-border bg-surface px-2 py-2">
               <button
                 type="button"
                 onClick={() => setMudo((m) => !m)}
