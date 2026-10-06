@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import BotaoBrilho from '@/app/components/react-bits/BotaoBrilho';
 
 /**
  * Um chip de "base monitorada" do cartão de eixo — e o destino dele.
@@ -373,15 +374,16 @@ export function CardCarousel({
             </span>
             <div className="flex flex-wrap items-center gap-2">
               {activeEixo.destaques.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  title={`Abrir ${item.rotulo}`}
-                  className="group inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 text-xs font-semibold text-foreground border border-border shadow-2xs transition-colors hover:border-primary hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                >
-                  <CheckCircle2 className="w-3 h-3 text-primary shrink-0 transition-transform group-hover:scale-110" />
-                  <span className="group-hover:underline">{item.rotulo}</span>
-                </Link>
+                <BotaoBrilho key={item.href} raio={8} forca={0.16} afastamento={28}>
+                  <Link
+                    href={item.href}
+                    title={`Abrir ${item.rotulo}`}
+                    className="group inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 text-xs font-semibold text-foreground border border-border shadow-2xs transition-colors hover:border-primary hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    <CheckCircle2 className="w-3 h-3 text-primary shrink-0 transition-transform group-hover:scale-110" />
+                    <span className="group-hover:underline">{item.rotulo}</span>
+                  </Link>
+                </BotaoBrilho>
               ))}
             </div>
           </div>

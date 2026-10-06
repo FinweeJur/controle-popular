@@ -8,6 +8,8 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import CapaFrente from "@/app/components/CapaFrente";
 import ShapeBlur from "@/app/components/react-bits/ShapeBlur";
 import Magnet from "@/app/components/react-bits/Magnet";
+import BorderGlow from "@/app/components/react-bits/BorderGlow";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
@@ -257,20 +259,34 @@ export default async function Hub() {
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de contratos, convênios, licenciamentos ambientais, pesquisas e autorizações minerárias e de barragens, legislação ambiental e de direitos humanos unificada, e o orçamento detalhado das prefeituras, governo de Minas, Congresso Brasileiro e Instituições de Justiça.
         </p>
-        <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
-          <NextLink href="/busca" className="font-medium text-primary hover:underline">
-            Busca por tema, palavra-chave e território →
-          </NextLink>
-          <NextLink href="/cidades" className="font-medium text-primary hover:underline">
-            203 Cidades Estratégicas (Capitais & Polos) →
-          </NextLink>
-          <NextLink href="/alertas" className="font-medium text-primary hover:underline">
-            Alertas & Notificações (Telegram, E-mail & WhatsApp) →
-          </NextLink>
-          <NextLink href="/dados/populares" className="font-medium text-primary hover:underline">
-            Páginas mais vistas →
-          </NextLink>
-        </p>
+        {/* `<div>`, não `<p>`: o Magnet embrulha cada atalho num `div`, e `div`
+            dentro de `p` é HTML inválido — o navegador "conserta" fechando o
+            parágrafo e a hidratação acusa divergência (regra dura do App
+            Router). O estilo é o mesmo. */}
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
+          {/* Atalhos de texto: só o ímã, sem anel de brilho — moldura em texto
+              corrido vira ruído (mesma régua dos créditos e do rodapé). */}
+          <Magnet forca={0.2}>
+            <NextLink href="/busca" className="font-medium text-primary hover:underline">
+              Busca por tema, palavra-chave e território →
+            </NextLink>
+          </Magnet>
+          <Magnet forca={0.2}>
+            <NextLink href="/cidades" className="font-medium text-primary hover:underline">
+              203 Cidades Estratégicas (Capitais & Polos) →
+            </NextLink>
+          </Magnet>
+          <Magnet forca={0.2}>
+            <NextLink href="/alertas" className="font-medium text-primary hover:underline">
+              Alertas & Notificações (Telegram, E-mail & WhatsApp) →
+            </NextLink>
+          </Magnet>
+          <Magnet forca={0.2}>
+            <NextLink href="/dados/populares" className="font-medium text-primary hover:underline">
+              Páginas mais vistas →
+            </NextLink>
+          </Magnet>
+        </div>
 
         {/* ═══ OS 4 EIXOS TEMÁTICOS (ARQUITETURA CÍVICA ATUAL) ═══ */}
         <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
@@ -379,10 +395,13 @@ export default async function Hub() {
             // Aninhar <a> dentro de <a> é HTML inválido e o navegador
             // "conserta" fechando o de fora — o que quebraria os links das
             // cidades em vez de dar erro visível.
-            <div
-              key={s.id}
-              className="flex flex-col rounded-lg border border-border bg-surface p-6"
+            <Magnet key={s.id} forca={0.05} afastamento={40} className="h-full">
+            <BorderGlow
+              className="h-full rounded-lg border border-border bg-surface p-6"
+              corFundo="var(--cp-surface)"
+              raio={12}
             >
+            <div className="flex h-full flex-col">
               <span
                 className="text-[.88em] font-semibold uppercase tracking-wide"
                 style={{ color: s.cor }}
@@ -405,52 +424,60 @@ export default async function Hub() {
                 </li>
                 {cidades.map((c) => (
                   <li key={c.slug}>
-                    <a
-                      href={`/${c.slug}`}
-                      className="flex items-baseline justify-between gap-2 rounded-md border border-border px-3 py-2 text-[.95em] font-medium transition-colors hover:border-primary hover:text-primary"
-                    >
-                      <span>
-                        {c.nome}
-                        <span className="text-text-soft"> · {c.uf}</span>
-                      </span>
-                      <span aria-hidden="true">→</span>
-                    </a>
+                    <BotaoBrilho bloco raio={6} forca={0.14} afastamento={30}>
+                      <a
+                        href={`/${c.slug}`}
+                        className="flex items-baseline justify-between gap-2 rounded-md border border-border px-3 py-2 text-[.95em] font-medium transition-colors hover:border-primary hover:text-primary"
+                      >
+                        <span>
+                          {c.nome}
+                          <span className="text-text-soft"> · {c.uf}</span>
+                        </span>
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    </BotaoBrilho>
                   </li>
                 ))}
               </ul>
             </div>
+            </BorderGlow>
+            </Magnet>
           ) : (
           // <a> puro, não next/link: estes caminhos estão FORA do basePath
           // deste app (`/betim`), e o next/link prefixaria, gerando
           // `/betim/congresso`. É a mesma classe de bug que os comentários
           // do `next.config.ts` registram já ter acontecido três vezes.
-          <a
-            key={s.href}
-            href={s.href}
-            className="group flex flex-col rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
-          >
-            <span
-              className="text-[.88em] font-semibold uppercase tracking-wide"
-              style={{ color: s.cor }}
+          <Magnet key={s.href} forca={0.05} afastamento={40} className="h-full">
+            <BorderGlow
+              className="h-full rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
+              corFundo="var(--cp-surface)"
+              raio={12}
             >
-              {s.etiqueta}
-            </span>
-            <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
-              {s.titulo}
-            </h2>
-            <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
-            <ul className="mt-4 space-y-1.5 text-[.9em] text-text-soft">
-              {s.itens.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span aria-hidden="true" style={{ color: s.cor }}>
-                    ·
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <span className="mt-5 font-medium text-primary">Entrar →</span>
-          </a>
+              <a href={s.href} className="group flex h-full flex-col">
+                <span
+                  className="text-[.88em] font-semibold uppercase tracking-wide"
+                  style={{ color: s.cor }}
+                >
+                  {s.etiqueta}
+                </span>
+                <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
+                  {s.titulo}
+                </h2>
+                <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
+                <ul className="mt-4 space-y-1.5 text-[.9em] text-text-soft">
+                  {s.itens.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span aria-hidden="true" style={{ color: s.cor }}>
+                        ·
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="mt-5 font-medium text-primary">Entrar →</span>
+              </a>
+            </BorderGlow>
+          </Magnet>
           )
         )}
       </div>
@@ -488,30 +515,38 @@ export default async function Hub() {
           que frente do site cada resposta mora.
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-[.85em]">
-          <NextLink
-            href="/ambiental/legislacao"
-            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
-          >
-            Que lei protege isso
-          </NextLink>
-          <NextLink
-            href="/direitos-em-movimento/ajuda"
-            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
-          >
-            Onde buscar ajuda
-          </NextLink>
-          <NextLink
-            href="/direitos-em-movimento/informacao"
-            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
-          >
-            Como pedir informação
-          </NextLink>
-          <NextLink
-            href="/direitos-em-movimento/denuncia"
-            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
-          >
-            Como denunciar
-          </NextLink>
+          <BotaoBrilho raio={999} forca={0.16} afastamento={28}>
+            <NextLink
+              href="/ambiental/legislacao"
+              className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary inline-block"
+            >
+              Que lei protege isso
+            </NextLink>
+          </BotaoBrilho>
+          <BotaoBrilho raio={999} forca={0.16} afastamento={28}>
+            <NextLink
+              href="/direitos-em-movimento/ajuda"
+              className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary inline-block"
+            >
+              Onde buscar ajuda
+            </NextLink>
+          </BotaoBrilho>
+          <BotaoBrilho raio={999} forca={0.16} afastamento={28}>
+            <NextLink
+              href="/direitos-em-movimento/informacao"
+              className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary inline-block"
+            >
+              Como pedir informação
+            </NextLink>
+          </BotaoBrilho>
+          <BotaoBrilho raio={999} forca={0.16} afastamento={28}>
+            <NextLink
+              href="/direitos-em-movimento/denuncia"
+              className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary inline-block"
+            >
+              Como denunciar
+            </NextLink>
+          </BotaoBrilho>
         </div>
         <Magnet forca={0.15} className="mt-4 inline-block">
           <NextLink

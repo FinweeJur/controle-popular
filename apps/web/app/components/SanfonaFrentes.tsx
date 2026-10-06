@@ -16,6 +16,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ZONAS_PUBLICADAS, type Zona } from "@/lib/zonas";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 
 const TEMPO_MS = 4500;
 
@@ -159,10 +160,15 @@ export default function SanfonaFrentes() {
         <h2 className="snf-titulo">{ativa.nomeCurto}</h2>
         <p className="snf-resumo">{ativa.resumo}</p>
         {/* <a> cru: estes caminhos convivem com o mesmo aviso do grid antigo
-            (a rota pode cair fora do basePath; next/link prefixaria). */}
-        <a className="snf-link" href={ativa.href}>
-          Abrir a frente →
-        </a>
+            (a rota pode cair fora do basePath; next/link prefixaria).
+            As ABAS acima ficam sem brilho de propósito: elas moram num
+            `role="tablist"` com CSS próprio (`snf-botoes`) e o estado
+            selecionado já é o destaque; acender as seis competiria com isso. */}
+        <BotaoBrilho raio={12} forca={0.18} afastamento={30}>
+          <a className="snf-link" href={ativa.href}>
+            Abrir a frente →
+          </a>
+        </BotaoBrilho>
       </div>
     </section>
   );

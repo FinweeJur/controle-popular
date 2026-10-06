@@ -16,6 +16,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MessageSquare, Sparkles, ArrowRight, CornerDownLeft } from "lucide-react";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 
 const PERGUNTAS_RAPIDAS = [
   {
@@ -100,13 +101,15 @@ export default function CartaoChatbotHome() {
           </div>
         </div>
 
-        <Link
-          href="/assistente"
-          className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1 shrink-0 self-start sm:self-auto"
-        >
-          <span>Abrir painel completo</span>
-          <ArrowRight className="h-3 w-3" />
-        </Link>
+        <BotaoBrilho raio={999} forca={0.18} afastamento={30}>
+          <Link
+            href="/assistente"
+            className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1 shrink-0 self-start sm:self-auto"
+          >
+            <span>Abrir painel completo</span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        </BotaoBrilho>
       </div>
 
       {/* Formulário de pergunta rápida */}
@@ -120,14 +123,16 @@ export default function CartaoChatbotHome() {
             className="w-full rounded-xl border border-border bg-surface-2/60 px-3.5 py-2.5 text-xs text-foreground placeholder:text-muted focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all"
           />
         </div>
-        <button
-          type="submit"
-          disabled={!texto.trim()}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-40 cursor-pointer shrink-0"
-        >
-          <span>Perguntar</span>
-          <CornerDownLeft className="h-3.5 w-3.5" />
-        </button>
+          <BotaoBrilho raio={12} forca={0.14} afastamento={26}>
+            <button
+              type="submit"
+              disabled={!texto.trim()}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-40 cursor-pointer shrink-0"
+            >
+              <span>Perguntar</span>
+              <CornerDownLeft className="h-3.5 w-3.5" />
+            </button>
+          </BotaoBrilho>
       </form>
 
       {/* Chips de perguntas sugeridas */}
@@ -138,15 +143,16 @@ export default function CartaoChatbotHome() {
         </div>
         <div className="flex flex-wrap gap-1.5">
           {PERGUNTAS_RAPIDAS.map((item) => (
-            <button
-              key={item.rotulo}
-              type="button"
-              onClick={() => dispararPergunta(item.pergunta)}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2/70 hover:bg-surface-2 hover:border-amber-500/40 px-2.5 py-1.5 text-xs text-foreground font-medium transition-colors cursor-pointer text-left"
-            >
-              <span aria-hidden="true">{item.icone}</span>
-              <span>{item.rotulo}</span>
-            </button>
+            <BotaoBrilho key={item.rotulo} raio={8} forca={0.16} afastamento={26}>
+              <button
+                type="button"
+                onClick={() => dispararPergunta(item.pergunta)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2/70 hover:bg-surface-2 hover:border-amber-500/40 px-2.5 py-1.5 text-xs text-foreground font-medium transition-colors cursor-pointer text-left"
+              >
+                <span aria-hidden="true">{item.icone}</span>
+                <span>{item.rotulo}</span>
+              </button>
+            </BotaoBrilho>
           ))}
         </div>
       </div>
