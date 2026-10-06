@@ -79,5 +79,148 @@
   "315f40338dbbb1826813e2ec.jpg",
   "69ba659079ba0ae8f24b28bf.jpg",
   "757163a508894c11a6c31920.jpg"
- ]
+ ],
+ "segunda_revisao_2026-10-06": {
+  "data": "2026-10-06",
+  "fonte": "folha lista-curta-rotulos.html (VLM>=80) + olho do dev",
+  "decididos": 60,
+  "contagem": {
+   "cava": 22,
+   "nao": 38
+  },
+  "flips": [
+   {
+    "arquivo": "ce82c2e9887eb90fd9c8b227.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "abe42a47923f5f925f4aacb1.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "63e70feaf62312e7bf6e3636.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "f433b5e789ae5109cbc8c3ee.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "2c09d033b299343496bdcc5b.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "9975e6c6ef671c3cc42428ef.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "15a3593c98a3dc4fcd50a1ef.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "4c298c279fd131022ab79513.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "58dbfb1c800a87dba7dfe3a0.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "9e7dc886c0cf77ba762c85aa.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "c6cd204e366fdaf70ebb206b.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "4c9a4c90cce5acbf5a098fd5.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "13a16a7bd26de3fdd7a13fa9.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "1d200b5a7f85dea6315ac375.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "beae32fb734bb436bb755a80.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "24a2d8f53bae7fe89396df5f.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "348f5d7309715cb8798e50ee.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "31950882b51e3b4a5b14a8fa.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "1eafe633f0b3bc66176bfbcd.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "9fb59aa14fde637bb5a1d605.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "25316faa036e16251553f376.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   },
+   {
+    "arquivo": "07ef7bfef7067500f7388911.jpg",
+    "de": "negativo",
+    "para": "positivo",
+    "motivo": "revisao humana do dev 2026-10-06 (folha VLM>=80)"
+   }
+  ]
+ }
 }
