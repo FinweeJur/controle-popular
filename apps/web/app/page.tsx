@@ -6,7 +6,6 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import CapaFrente from "@/app/components/CapaFrente";
-import AberturaHero from "@/app/components/abertura/AberturaHero";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
@@ -61,22 +60,26 @@ export default async function Hub() {
   const citacaoBirri = citacaoPorId("birri-utopia");
   const citacaoGuimaraes = citacaoPorId("guimaraes-rosa-coragem");
   return (
-    // ⟲ 05/10, hero vivo: a ABERTURA (tela cheia, só o nome, fundo Vanta)
-    // fica FORA e ACIMA do <main> — ela tem o <h1> único da página agora.
-    // A decisão e as regras de acessibilidade vivem no componente
-    // (`AberturaHero`) e no plano (`docs/planos/PLANO-HERO-VIVO.md`).
-    <>
-      <AberturaHero paginaId="home" titulo="CONTROLE POPULAR" />
+    // ⟲ 13/08, revisão de onboarding: era `<div>`, e `OuvirPagina.tsx` só
+    // lê `document.querySelector("main")` — sem a tag, o botão "Ouvir esta
+    // página" não tinha texto para achar e se ESCONDIA (`!temTexto` ⇒
+    // `return null`) bem na página mais visitada do portal, a única sem
+    // nenhum outro `<main>` por perto para salvar a leitura. Mesmo padrão
+    // que `funcaosocialterra/page.tsx` já usa: `<main>` envolvendo
+    // `<header>` e `<footer>` próprios da página.
+    // O `py-12 sm:py-16` original abria 48–64 px entre o letreiro
+    // ("✦ OLHO ABERTO ✦", dentro do TopNav) e o primeiro bloco da home. O
+    // dono pediu (04/10/2026) que o letreiro e o cartão "Mística do Dia"
+    // ficassem próximos: o topo vira um respiro fino (`pt-2`, 8 px) e o
+    // rodapé da página mantém o espaço de sempre.
+    // ⟲ 06/10, dono: a home VOLTOU ao que era antes da abertura viva —
+    // título "CONTROLE POPULAR" em cima da foto da onça, entre as
+    // citações. Sem AberturaHero aqui; os 4 eixos seguem com a abertura.
     <main
       id="conteudo-principal"
       tabIndex={-1}
       className="mx-auto max-w-4xl px-4 pt-2 pb-12 sm:pb-16"
     >
-      {/* ⟲ 13/08, revisão de onboarding: este bloco era `<div>`, e
-          `OuvirPagina.tsx` só lê `document.querySelector("main")` — sem a
-          tag, o botão "Ouvir esta página" não tinha texto para achar e se
-          ESCONDIA bem na página mais visitada do portal. A tag e o
-          tabIndex ficam; a abertura animada de 05/10 entrou FORA dela. */}
       {/* ═══ DIAS IMPORTANTES DOS POVOS INDÍGENAS — antes da Mística, com o
           nome da data, objetivo e contexto de criação (dono, 03/10/2026),
           em no máximo duas linhas. Sem data no dia, não renderiza nada. */}
@@ -89,16 +92,15 @@ export default async function Hub() {
       <MisticaDoDia />
 
       {/* ═══ CAPA HOME — foto com overlay + texto (rebrand visual).
-          `mostrarTitulo={false}`: com a abertura viva (05/10), o <h1>
-          "CONTROLE POPULAR" mora lá em cima; aqui fica epígrafe, resumo e
-          foto — repetir o título seria duas vezes a mesma palavra na
-          dobra, e dois <h1> na página quebram a semântica. */}
+          ⟲ 06/10, dono: o <h1> "CONTROLE POPULAR" voltou para CIMA da
+          foto da onça, entre as citações — a abertura viva saiu da home
+          (continua nos 4 eixos). Dois <h1> não existem mais aqui: o
+          título é só este. */}
       <CapaFrente
         imagem="capas/home-page.webp"
         alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
         titulo="CONTROLE POPULAR"
         layout="home"
-        mostrarTitulo={false}
         epigrafes={[
           {
             texto:
@@ -552,6 +554,5 @@ export default async function Hub() {
 
       <FooterGlobal />
     </main>
-    </>
   );
 }

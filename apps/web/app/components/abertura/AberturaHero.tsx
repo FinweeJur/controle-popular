@@ -1,17 +1,20 @@
 "use client";
 
 /**
- * AberturaHero — primeira dobra das 5 páginas nobres (home + 4 eixos):
- * TELA CHEIA com apenas o NOME da página sobre o fundo vivo (Vanta), e o
- * CTA "role para explorar" levando ao conteúdo. Decisão do dono em
- * 05/10/2026 — navbar e letreiro ficam ACIMA (nada aqui os cobre); o
- * texto/foto de sempre vêm logo depois.
+ * AberturaHero — primeira dobra dos 4 eixos (Terra, Direitos, Estado,
+ * Central): TELA CHEIA com apenas o NOME da página sobre o fundo vivo
+ * (Vanta), e o CTA "role para explorar" levando ao conteúdo. Decisão do
+ * dono em 05/10/2026 — navbar e letreiro ficam ACIMA (nada aqui os
+ * cobre); o texto/foto de sempre vêm logo depois.
+ *
+ * A HOME SAIU em 06/10/2026 (dono): o título "CONTROLE POPULAR" voltou
+ * para cima da capa da onça, em `app/page.tsx` — quem montar de novo
+ * aqui ganha hero estático (mapa `home: null`), sem canvas.
  *
  * Regras duras que este componente executa:
  *
  * - H1 ÚNICO: o <h1> da página mora AQUI. Quem monta a abertura tira o
- *   h1 de baixo (home: CapaFrente `mostrarTitulo={false}`; eixos:
- *   EixoLayout rebaixa o título do header para h2).
+ *   h1 de baixo (eixos: EixoLayout rebaixa o título do header para h2).
  * - NADA DE TEXTO INVISÍVEL: o nome é HTML do servidor, visível sem JS.
  *   Sem `opacity: 0` pré-hidratação — se o JS falhar, a página inteira
  *   continua legível (mesma regra do HeroNarrative).
@@ -97,7 +100,7 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
   // para baixo a partir da abertura, o conteúdo (nome + CTA) sobe e some
   // em velocidade presa ao scroll (scrub: true, sem pin — quem quer dado
   // não fica preso no hero; regra do plano de identidade visual). O GSAP
-  // entra por import dinâmico: só as 5 páginas com abertura pagam o chunk.
+  // entra por import dinâmico: só as páginas com abertura pagam o chunk.
   // Lenis no modo raiz rola a janela de verdade, então o ScrollTrigger
   // acompanha o scroll nativo sem precisar de ponte.
   useEffect(() => {
@@ -138,8 +141,9 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
   // e o fundo demorava segundos para nascer no dev (medido 05/10/2026).
   // A promessa é memoizada: o `ligar` do canvas recebe o mesmo objeto já
   // em andamento. Reduced-motion/coarse/alto contraste: não carrega nada.
-  // `semEfeito` (home, dono 06/10/2026): sem canvas não há three a
-  // aquecer — poupamos os 600 KB da home.
+  // `semEfeito` (mapa `home: null`, dono 06/10/2026): sem canvas não há
+  // three a aquecer — se algum dia a home montar hero de novo, ela não
+  // paga os 600 KB. Hoje a home nem monta este componente.
   const semEfeito = EFEITO_POR_PAGINA[paginaId] == null;
   useEffect(() => {
     if (

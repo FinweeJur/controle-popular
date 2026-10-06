@@ -38,13 +38,6 @@ export interface CapaFrenteProps {
   alturaMinima?: string;
   /** Layout visual: padrão (alinhado na base) ou home (poemas no topo esquerdo, texto no canto inferior direito) */
   layout?: "padrao" | "home";
-  /**
-   * Renderiza o `<h1>` do título. Padrão `true` — todas as frentes que
-   * usam a capa têm aqui o h1 da página. `false` existe para a HOME:
-   * com a abertura viva (05/10/2026), o h1 "CONTROLE POPULAR" mora no
-   * `AberturaHero` e um segundo h1 quebraria a semântica da página.
-   */
-  mostrarTitulo?: boolean;
   /** Classe extra para sobrescrever o container */
   className?: string;
 }
@@ -59,7 +52,6 @@ export default function CapaFrente({
   resumo,
   alturaMinima,
   layout = "padrao",
-  mostrarTitulo = true,
   className = "",
 }: CapaFrenteProps) {
   const listaEpigrafes: EpigrafeItem[] = epigrafes
@@ -110,21 +102,18 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* MEIO: Título — mais abaixo na imagem. Condicional: na home
-              o h1 vive na abertura viva, então aqui entra só o respiro. */}
+          {/* MEIO: Título — mais abaixo na imagem */}
           <div className="w-full pt-16 sm:pt-24 md:pt-32 pb-4 text-center">
-            {mostrarTitulo && (
-              <h1
-                className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-sm"
-                style={{
-                  color: "var(--cp-primary)",
-                  textShadow:
-                    "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
-                }}
-              >
-                {titulo}
-              </h1>
-            )}
+            <h1
+              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-sm"
+              style={{
+                color: "var(--cp-primary)",
+                textShadow:
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
+              }}
+            >
+              {titulo}
+            </h1>
           </div>
 
           {/* BASE: Texto descritivo — metade direita, justificado */}
@@ -167,22 +156,17 @@ export default function CapaFrente({
               </div>
             )}
 
-            {/* H1 Principal com cor que muda com o tema e alto contraste garantido.
-                Condicional pela mesma razão do layout "home": se a página
-                já tem abertura viva, o h1 mora lá. Hoje só a home usa
-                `mostrarTitulo={false}`, mas a prop serve às duas variantes. */}
-            {mostrarTitulo && (
-              <h1
-                className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-6xl drop-shadow-md"
-                style={{
-                  color: "var(--cp-primary)",
-                  textShadow:
-                    "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
-                }}
-              >
-                {titulo}
-              </h1>
-            )}
+            {/* H1 Principal com cor que muda com o tema e alto contraste garantido */}
+            <h1
+              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-6xl drop-shadow-md"
+              style={{
+                color: "var(--cp-primary)",
+                textShadow:
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
+              }}
+            >
+              {titulo}
+            </h1>
 
             {/* Micro resumo da frente */}
             <p

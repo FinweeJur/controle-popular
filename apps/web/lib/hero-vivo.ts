@@ -1,7 +1,9 @@
 /**
- * Lógica pura da abertura viva ("hero vivo") das 5 páginas nobres do
- * portal: home + 4 eixos (Terra e Territórios, Direitos em Movimento,
- * Estado e Economia, Central ONSA).
+ * Lógica pura da abertura viva ("hero vivo") dos 4 eixos do portal
+ * (Terra e Territórios, Direitos em Movimento, Estado e Economia,
+ * Central ONSA). A home ENTROU em 05/10/2026 e SAIU em 06/10/2026:
+ * o dono devolveu a capa com o título "CONTROLE POPULAR" em cima da
+ * foto da onça, entre as citações — ver `docs/planos/PLANO-HERO-VIVO.md`.
  *
  * O que a abertura é: primeira dobra de tela cheia com o NOME da página
  * sobre um fundo animado (Vanta.js / three.js via WebGL), seguida do
@@ -19,8 +21,9 @@ import type { EixoId } from "@/lib/eixos/types";
  * Efeitos Vanta usados. Todos renderizados por three.js — TOPOLOGY/TRUNK
  * exigiriam p5.js (dependência extra), então ficam de fora.
  *
- * Decisão do dono (06/10/2026), 2ª rodada de ajustes:
- * - a home NÃO tem efeito (só o hero estático);
+ * Decisões do dono (06/10/2026), duas rodadas de ajustes:
+ * - a home NÃO tem efeito (só o hero estático) e, na 3ª rodada do mesmo
+ *   dia, saiu da abertura de vez — a chave `home: null` fica como guarda;
  * - `globe` saiu da home e foi para o Estado e Economia;
  * - `net` saiu do Estado e foi para a Central ONSA;
  * - `cells` foi abandonado (sobrava um efeito sem uso).
@@ -34,13 +37,18 @@ import type { EixoId } from "@/lib/eixos/types";
  */
 export type EfeitoVanta = "globe" | "dots" | "birds" | "net";
 
-/** Páginas com abertura viva: a home da marca + os 4 eixos. */
+/**
+ * Páginas que podem montar a abertura: os 4 eixos + `"home"` (guarda —
+ * a home saiu da abertura em 06/10/2026, mas o tipo e o mapa seguem
+ * cobrindo a chave para quem montar de novo não ter canvas por acidente).
+ */
 export type PaginaAbertura = "home" | EixoId;
 
 /**
  * Efeito de cada página. Fonte única — `AberturaHero` e `AberturaCanvas`
- * leem daqui, nunca de mapa próprio, para não divergirem. `null` = a
- * página tem hero mas SEM canvas (dono, 06/10/2026: "home sem efeito").
+ * leem daqui, nunca de mapa próprio, para não divergirem. `null` = sem
+ * canvas mesmo que o hero monte (dono, 06/10/2026: "home sem efeito";
+ * a home hoje nem monta mais o hero — ver cabeçalho deste arquivo).
  */
 export const EFEITO_POR_PAGINA: Record<PaginaAbertura, EfeitoVanta | null> = {
   home: null,

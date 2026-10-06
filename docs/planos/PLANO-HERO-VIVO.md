@@ -1,7 +1,7 @@
-# Plano — Hero vivo: abertura animada nas 5 páginas nobres
+# Plano — Hero vivo: abertura animada nos 4 eixos (home revertida)
 
 > **Tipo:** PLANO
-> **Domínio:** global (home + 4 eixos)
+> **Domínio:** global (4 eixos; home revertida à capa em 06/10/2026)
 > **Última medição:** 2026-10-06
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md](PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md), [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
@@ -23,17 +23,22 @@
 
 ## Propósito
 
-Primeira dobra viva nas 5 páginas nobres do portal: tela cheia com apenas o
+Primeira dobra viva nos 4 eixos do portal: tela cheia com apenas o
 NOME da página sobre fundo animado (WebGL), seguida do conteúdo de sempre.
 Navbar e letreiro ficam ACIMA da abertura. O leitor sob estresse continua
 chegando ao dado com o mesmo número de cliques — a abertura é seção, não
 obstáculo.
 
+A home entrou em 05/10/2026 e SAIU em 06/10/2026: o dono pediu a volta ao
+que era antes — título "CONTROLE POPULAR" em cima da capa da onça, entre
+as citações (`app/page.tsx` sem `AberturaHero`, `CapaFrente` com `<h1>`
+próprio de sempre). A chave `home: null` permanece no mapa como guarda.
+
 ## Decisões do dono (05/10/2026)
 
 | Decisão | Escolha |
 |---|---|
-| Efeito Vanta | Um por página (dono, 06/10): SEM efeito na home, DOTS (Terra), BIRDS (Direitos), GLOBE (Estado), NET (Central). CELLS abandonado |
+| Efeito Vanta | Um por página (dono, 06/10): SEM efeito na home (que depois SAÍU da abertura), DOTS (Terra), BIRDS (Direitos), GLOBE (Estado), NET (Central). CELLS abandonado |
 | Abertura | Tela cheia, só o nome da página; texto/foto vêm depois |
 | Split Text | DESCARTADO (nome entra de peça única, com brilho Shiny Text) |
 | ScrollTrigger | ADIADO (reavaliar depois) |
@@ -59,18 +64,19 @@ obstáculo.
 - `app/components/rolagem/RolagemSuave.tsx` + `BotaoRolagemSuave.tsx` —
   Lenis raiz, `anchors: true`, toggle no rodapé, localStorage
   `cp_rolagem_suave`, desliga em reduced-motion.
-- Integração: `app/page.tsx` (home, `CapaFrente.mostrarTitulo={false}`),
-  `EixoLayout.tsx` (prop `abertura`, h1→h2 nos hubs, `main` ganha
-  `id="conteudo-principal"`), `direitos-em-movimento/page.tsx`
-  (standalone, recebe a abertura direto), SpotlightCard nos grids de
-  indicadores de Terra/Estado/Central.
+- Integração: `app/page.tsx` (home — ENTROU em 05/10 com
+  `CapaFrente.mostrarTitulo={false}` e SAIU em 06/10, revertida à capa
+  com `<h1>` na foto da onça), `EixoLayout.tsx` (prop `abertura`, h1→h2
+  nos hubs, `main` ganha `id="conteudo-principal"`),
+  `direitos-em-movimento/page.tsx` (standalone, recebe a abertura
+  direto), SpotlightCard nos grids de indicadores de Terra/Estado/Central.
 
 ## Arquitetura de código
 
 ```text
 apps/web/
 ├── app/
-│   ├── page.tsx                              # home: <AberturaHero> antes do <main>
+│   ├── page.tsx                              # home SEM abertura (revertida 06/10)
 │   ├── components/
 │   │   ├── abertura/AberturaHero.tsx          # "use client", dynamic ssr:false
 │   │   ├── abertura/AberturaCanvas.tsx        # Vanta + three do npm
@@ -111,7 +117,7 @@ abertura 100vh (nome + fundo) → breadcrumb (eixos) → header de conteúdo
 | Sem WebGL / JS falhou | Fundo `--cp-bg` + nome em HTML do servidor; nada de `opacity: 0` pré-JS |
 | Leitor de tela | Canvas `aria-hidden`; `<h1>` real com o nome; CTA é âncora focável |
 | Casca persistente (§5.13) | Lenis e abertura não desmontam na navegação; âncoras seguem funcionando |
-| H1 único | Home: `CapaFrente.mostrarTitulo={false}`; hubs: h1→h2 no header |
+| H1 único | Hubs com abertura: h1→h2 no header; home (sem abertura): `<h1>` na `CapaFrente`, como antes |
 
 ## Dependências e peso
 
@@ -123,9 +129,9 @@ abertura 100vh (nome + fundo) → breadcrumb (eixos) → header de conteúdo
 | `@types/three` (dev) | 0.156.0 | tipos do three | 0 no bundle |
 
 Carregamento: só as páginas COM efeito baixam Vanta/three, via
-`next/dynamic` + import dinâmico por efeito (a home tem hero sem canvas —
-nem three ela carrega, dono 06/10). As demais rotas não pagam nada.
-TOPOLOGY/TRUNK ficaram de fora (exigiriam p5.js — dependência extra).
+`next/dynamic` + import dinâmico por efeito (a home nem monta mais o
+hero, dono 06/10 — nem three ela carrega). As demais rotas não pagam
+nada. TOPOLOGY/TRUNK ficaram de fora (exigiriam p5.js — dependência extra).
 
 ## Riscos e mitigações
 
@@ -271,6 +277,12 @@ visível.
 - 06/10/2026 — `glowColor` era chave morta: não existe na fonte do
   vanta 0.5.24 (só no demo antigo). Removida; o globe usa `color` e
   `color2` (medido em `node_modules/vanta/src/vanta.globe.js`).
+- 06/10/2026 — rodada 4 do dono: a home SAIU da abertura, volta ao que
+  era antes (título em cima da capa da onça, entre as citações).
+  Revertidos `app/page.tsx` (sem `AberturaHero`, sem fragmento) e
+  `CapaFrente.tsx` (prop `mostrarTitulo` removida, `<h1>` incondicional
+  de novo). Os 4 eixos seguem com a abertura; a chave `home: null` fica
+  no mapa como guarda.
 
 ## Origem / Histórico
 
@@ -281,3 +293,7 @@ visível.
 - 2026-10-06: rodada 3 do dono — novo mapa de efeitos (home sem efeito,
   globe→Estado, net→Central, cells fora) e as duas cores do tema em todo
   efeito. Verificação Playwright 5 páginas × 2 temas: 10/10 OK.
+- 2026-10-06: rodada 4 do dono — home devolvida ao que era antes da
+  abertura (título em cima da foto da onça, entre as citações); a
+  abertura vive só nos 4 eixos. `CapaFrente` volta ao `<h1>`
+  incondicional, sem a prop `mostrarTitulo`.
