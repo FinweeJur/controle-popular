@@ -115,9 +115,11 @@
   position: relative;
 }
 
-/* O deslize vai no botão (primeiro filho das duas listas): o fundo
-   hover/ativo viaja junto, sem sobra de fundo no canto. */
-[data-cp-prox] > button {
+/* O deslize vai no botão/link (primeiro filho das listas): o fundo
+   hover/ativo viaja junto, sem sobra de fundo no canto. `> a` entrou depois
+   por causa do índice da navbar, cujos itens são links, não botões. */
+[data-cp-prox] > button,
+[data-cp-prox] > a {
   transform: translateX(calc(var(--cp-prox) * 4px));
 }
 
@@ -142,7 +144,8 @@
   [data-cp-prox]::after {
     display: none;
   }
-  [data-cp-prox] > button {
+  [data-cp-prox] > button,
+[data-cp-prox] > a {
     transform: none;
   }
 }
@@ -151,7 +154,8 @@
   display: none;
 }
 
-[data-theme="high-contrast"] [data-cp-prox] > button {
+[data-theme="high-contrast"] [data-cp-prox] > button,
+[data-theme="high-contrast"] [data-cp-prox] > a {
   transform: none;
 }
 

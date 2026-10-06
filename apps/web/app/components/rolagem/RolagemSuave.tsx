@@ -27,8 +27,8 @@
  * o HTML pré-renderizado nunca carrega Lenis — ele entra na hidratação.
  */
 
-import { useSyncExternalStore, type ReactNode } from "react";
-import { ReactLenis } from "lenis/react";
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { ReactLenis, type LenisRef } from "lenis/react";
 
 /** Chave de localStorage — "off" desliga; ausente/qualquer outro = ligado. */
 export const CHAVE_ROLAGEM_SUAVE = "cp_rolagem_suave";
@@ -72,6 +72,62 @@ export default function RolagemSuave({ children }: { children: ReactNode }) {
   // cru). O React re-renderiza com o snapshot do cliente em seguida —
   // sem divergência de hidratação, sem setState em efeito.
   const ativo = useSyncExternalStore(subscrever, lerAtivo, () => false);
+  const lenisRef = useRef<LenisRef | null>(null);
+
+  /**
+   * ═══ POR QUE ESTE EFEITO EXISTE: A RODA QUE "NÃO DESCE MAIS" ═══
+   *
+   * O Lenis mantém um alvo INTERNO (`targetScroll`) e anima a página até ele.
+   * Quando a posição real foge desse alvo — alguém CLICOU NA BARRA LATERAL do
+   * navegador, um `scrollIntoView`/âncora rolou por fora, ou a ALTURA da
+   * página mudou (painel que abre, aba que carrega) — o alvo fica velho e a
+   * roda seguinte "não desce": ela mira num ponto que a página já passou. O
+   * destravador que o dono descobriu sozinho (clicar na barra do navegador)
+   * funciona porque o arrasto NATIVO reposiciona a página por fora — medido em
+   * 06/10/2026 em vários eixos.
+   *
+   * Aqui o Lenis é avisado das duas coisas:
+   * 1. `ResizeObserver` na raiz: altura mudou → `resize()` (o limite de
+   *    rolagem é recalculado);
+   * 2. `scroll` nativo: se a posição real divergir do alvo com o Lenis
+   *    parado, ele se realinha na hora (`scrollTo` imediato e forçado), sem
+   *    pulo visível — o que destrava a roda sem precisar da barra.
+   */
+  useEffect(() => {
+    const lenis = lenisRef.current?.lenis;
+    if (!lenis) return;
+
+    const observador = new ResizeObserver(() => lenis.resize());
+    observador.observe(document.documentElement);
+    observador.observe(document.body);
+
+    const realinhar = () => {
+      if (lenis.isScrolling) return;
+      const real = window.scrollY;
+      if (Math.abs(real - lenis.targetScroll) > 2) {
+        lenis.scrollTo(real, { immediate: true, force: true });
+      }
+    };
+
+    const aoVoltar = () => {
+      if (!document.hidden) {
+        lenis.resize();
+        realinhar();
+      }
+    };
+
+    window.addEventListener("scroll", realinhar, { passive: true });
+    document.addEventListener("visibilitychange", aoVoltar);
+    window.addEventListener("focus", aoVoltar);
+    lenis.resize();
+
+    return () => {
+      observador.disconnect();
+      window.removeEventListener("scroll", realinhar);
+      document.removeEventListener("visibilitychange", aoVoltar);
+      window.removeEventListener("focus", aoVoltar);
+    };
+  }, [ativo]);
 
   // Sem Lenis (snapshot do servidor, reduced-motion ou toggle off):
   // devolve o children cru — a página rola como sempre rolou.
@@ -81,6 +137,7 @@ export default function RolagemSuave({ children }: { children: ReactNode }) {
 
   return (
     <ReactLenis
+      ref={lenisRef}
       root
       options={{
         // Suavização: 1 = sem suavização, 0 = lentíssimo. 0.12 é o

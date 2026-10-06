@@ -41,6 +41,7 @@ import {
   FileSpreadsheet,
   Radio,
   Layers,
+  X,
 } from 'lucide-react';
 import Link from 'next/link';
 import NextLink from 'next/link';
@@ -52,6 +53,7 @@ import FontSizeControl from '@/app/[municipio]/components/FontSizeControl';
 import ThemeSwitcher from '@/app/[municipio]/components/ThemeSwitcher';
 import Marquee from '@/app/components/Marquee';
 import OuvirNavbar from '@/app/components/OuvirNavbar';
+import { useProximidadeLinha } from '@/app/components/react-bits/useProximidadeLinha';
 
 /**
  * Estrutura do menu do portal organizada nos 4 Grandes Eixos Temáticos e Central:
@@ -195,6 +197,12 @@ export default function TopNav() {
   const [hoverAberto, setHoverAberto] = useState(false);
   const caixaRef = useRef<HTMLDivElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Lista de links do índice: o mesmo efeito de proximidade das rádios e do
+  // menu de bichinhos ("LineSidebar de leve", dono 06/10/2026) — o item perto
+  // do ponteiro acende uma barrinha de acento e desliza poucos pixels. O hook
+  // resolve o contêiner a cada quadro, então o índice pode abrir e fechar.
+  const indiceRef = useRef<HTMLDivElement>(null);
+  useProximidadeLinha(indiceRef, { raio: 110, suavizacao: 90 });
 
   useEffect(() => {
     function fecharFora(ev: MouseEvent) {
@@ -299,7 +307,22 @@ export default function TopNav() {
               aberto ? 'block' : 'hidden'
             }`}
           >
-            <div className="rounded-2xl border border-border bg-surface p-3 sm:p-5 shadow-2xl">
+            <div
+              ref={indiceRef}
+              className="relative rounded-2xl border border-border bg-surface p-3 sm:p-5 shadow-2xl"
+            >
+              {/* Fechar o índice: o painel é grande e, no celular, o toque em
+                  fora pode não acontecer (a página atrás rola). O "X" é a
+                  saída explícita (dono, 06/10/2026). */}
+              <button
+                type="button"
+                onClick={fechar}
+                aria-label="Fechar o índice"
+                title="Fechar"
+                className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-text-soft transition-colors hover:bg-surface-2 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <X size={16} aria-hidden="true" />
+              </button>
               {/* Header: atalhos globais */}
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
                 <div className="flex flex-wrap gap-2">
@@ -364,7 +387,7 @@ export default function TopNav() {
                       {secao.links.map((link) => {
                         const IconeLink = link.icone;
                         return (
-                          <li key={link.href + link.label}>
+                          <li key={link.href + link.label} data-cp-prox>
                             <a
                               href={link.href}
                               onClick={fechar}
