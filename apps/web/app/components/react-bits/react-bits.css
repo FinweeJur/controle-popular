@@ -154,3 +154,45 @@
 [data-theme="high-contrast"] [data-cp-prox] > button {
   transform: none;
 }
+
+/* ── Fundo de Cubes do site (dono, 06/10/2026) ────────────────────────
+   Grade 3D presa ao viewport, atrás de tudo, translúcida: os cubos são
+   textura de fundo, nunca informação — o conteúdo continua o dono do
+   contraste (AA ≥ 4,5:1). `z-index: -1` só funciona porque o fundo da
+   página passou a ser pintado no `html` (ver `globals.css`): assim a camada
+   fica ACIMA da cor de fundo e ABAIXO de todo o conteúdo, sem criar contexto
+   de empilhamento para o conteúdo (o que caparia modais das páginas abaixo
+   da navbar). A opacidade baixa é a trava final de legibilidade. */
+.cp-fundo-cubos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.16;
+}
+
+/* A cena ignora o `width: 50%`/`aspect-ratio: 1` do bloco original e vira um
+   quadrado maior que o viewport — cobre a tela em pé e deitado, e o excesso é
+   recortado pelo `overflow: hidden` da camada. */
+.cp-fundo-cubos .cp-cubos {
+  width: max(110vw, 120vh);
+  height: max(110vw, 120vh);
+  aspect-ratio: auto;
+  --cp-cubos-col-gap: 2%;
+  --cp-cubos-row-gap: 2%;
+}
+
+/* Sem movimento ou em alto contraste o componente já devolve `null`; esta é a
+   segunda trava, para o caso de o CSS carregar antes da hidratação. */
+@media (prefers-reduced-motion: reduce) {
+  .cp-fundo-cubos {
+    display: none;
+  }
+}
+
+[data-theme="high-contrast"] .cp-fundo-cubos {
+  display: none;
+}

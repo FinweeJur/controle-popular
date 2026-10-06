@@ -28,6 +28,7 @@ import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
 import RolagemSuave from "@/app/components/rolagem/RolagemSuave";
+import FundoCubos from "@/app/components/react-bits/FundoCubos";
 import "./globals.css";
 
 /**
@@ -217,6 +218,12 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-full flex-col antialiased">
+        {/* Fundo de Cubes (dono, 06/10/2026): grade 3D translúcida presa ao
+            viewport, atrás de TUDO. `pointer-events: none` e `aria-hidden`;
+            desliga em movimento reduzido, alto contraste e tela de toque (ver
+            `FundoCubos.tsx`). Fica no layout raiz para não desmontar na
+            navegação (casca persistente, AGENTS §5.13). */}
+        <FundoCubos />
         {/* Pixel do Simple Analytics para quem navega com JavaScript
             desligado. `alt=""` porque e decorativo; `no-referrer` para nao
             mandar a URL de origem. */}

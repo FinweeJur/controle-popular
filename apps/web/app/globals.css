@@ -705,16 +705,21 @@ html .cursor-wait {
 html {
   /* A-/A/A+ control scales this; every rem-based size in the app follows. */
   font-size: calc(100% * var(--cp-tscale));
+  /* O fundo pinta no `html` (canvas), NÃO no `body`: assim a camada de Cubes
+     do site (`position: fixed; z-index: -1`, ver react-bits.css) fica acima
+     da cor de fundo e abaixo de todo o conteúdo, sem precisar empilhar o
+     conteúdo num contexto próprio (o que caparia modais das páginas abaixo
+     da navbar). Medido 06/10/2026. */
+  background: var(--color-bg);
+  transition: background 0.3s ease;
 }
 
 body {
-  background: var(--color-bg);
+  /* Transparente de propósito: quem pinta o fundo é o `html` acima. */
   color: var(--color-text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 ::selection {

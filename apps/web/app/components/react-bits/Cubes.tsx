@@ -76,6 +76,14 @@ export interface CubesProps {
    * o original não tinha como sobrescrever sem briga de cascata).
    */
   largura?: number | string;
+  /**
+   * Ouve o `document` em vez do próprio elemento — modo FUNDO DE SITE
+   * (06/10/2026). Necessário porque a camada de fundo é
+   * `pointer-events: none`: sem isto a grade nunca receberia o ponteiro.
+   * Neste modo os listeners de toque NÃO entram (um `preventDefault` no
+   * documento travaria a rolagem da página).
+   */
+  ouvirDocumento?: boolean;
 }
 
 const Cubes: React.FC<CubesProps> = ({
@@ -94,6 +102,7 @@ const Cubes: React.FC<CubesProps> = ({
   corOndulacao = "#fff",
   velocidadeOndulacao = 2,
   largura,
+  ouvirDocumento = false,
 }) => {
   const cenaRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -323,6 +332,23 @@ const Cubes: React.FC<CubesProps> = ({
   useEffect(() => {
     const el = cenaRef.current;
     if (!el) return;
+
+    if (ouvirDocumento) {
+      // Modo FUNDO: a camada é `pointer-events: none`, então o ponteiro é
+      // lido no documento e mapeado pela caixa da cena. Toque fica de fora
+      // de propósito (ver o comentário da prop).
+      const aoMoverDoc = (e: Event) => aoMover(e as PointerEvent);
+      const aoClicarDoc = (e: Event) => aoClicar(e as MouseEvent);
+      document.addEventListener("pointermove", aoMoverDoc, { passive: true });
+      document.addEventListener("click", aoClicarDoc);
+      return () => {
+        document.removeEventListener("pointermove", aoMoverDoc);
+        document.removeEventListener("click", aoClicarDoc);
+        if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+        if (ociosoRef.current) clearTimeout(ociosoRef.current);
+      };
+    }
+
     el.addEventListener("pointermove", aoMover);
     el.addEventListener("pointerleave", voltarRepouso);
     el.addEventListener("click", aoClicar);
@@ -340,7 +366,15 @@ const Cubes: React.FC<CubesProps> = ({
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
       if (ociosoRef.current) clearTimeout(ociosoRef.current);
     };
-  }, [aoMover, voltarRepouso, aoClicar, aoTocarMover, aoTocarIniciar, aoTocarTerminar]);
+  }, [
+    ouvirDocumento,
+    aoMover,
+    voltarRepouso,
+    aoClicar,
+    aoTocarMover,
+    aoTocarIniciar,
+    aoTocarTerminar,
+  ]);
 
   const celulas = Array.from({ length: grade });
   const estiloCena: React.CSSProperties = {

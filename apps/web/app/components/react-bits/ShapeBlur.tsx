@@ -34,6 +34,7 @@
  */
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useEfeitoPermitido } from "./useEfeitoPermitido";
 
 /** Shader de vértice: só repassa UV — a forma inteira nasce no fragmento. */
 const vertexShader = /* glsl */ `
@@ -201,12 +202,14 @@ const ShapeBlur: React.FC<FormaDesfocadaProps> = ({
 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
+  // Movimento reduzido E alto contraste: sem efeito. O hook reage ao vivo à
+  // troca de tema e de preferência (ver `useEfeitoPermitido.ts`).
+  const permitido = useEfeitoPermitido();
 
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
-    // Movimento reduzido: não monta WebGL nenhum (capa estática, ver cabeçalho).
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!permitido) return;
 
     let active = true;
     let animationFrameId = 0;
@@ -320,8 +323,10 @@ const ShapeBlur: React.FC<FormaDesfocadaProps> = ({
       renderer.forceContextLoss();
     };
     // `variacao` troca o `define` do shader: exige remontar o material.
+    // `permitido` entra para desmontar o WebGL quando o usuário pede menos
+    // movimento ou entra no alto contraste.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variacao]);
+  }, [variacao, permitido]);
 
   // Segundo efeito: as demais props só atualizam uniforms — sem remontar.
   useEffect(() => {
@@ -335,6 +340,8 @@ const ShapeBlur: React.FC<FormaDesfocadaProps> = ({
     mat.uniforms.u_circleEdge.value = bordaCirculo;
   }, [proporcaoPixel, tamanhoForma, arredondamento, larguraBorda, tamanhoCirculo, bordaCirculo]);
 
+  // Sem efeito permitido, nada é renderizado (nem o contêiner vazio).
+  if (!permitido) return null;
   return <div className={className} ref={mountRef} style={{ width: "100%", height: "100%" }} />;
 };
 

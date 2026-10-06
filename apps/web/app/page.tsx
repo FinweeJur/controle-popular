@@ -6,6 +6,8 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import CapaFrente from "@/app/components/CapaFrente";
+import ShapeBlur from "@/app/components/react-bits/ShapeBlur";
+import Magnet from "@/app/components/react-bits/Magnet";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
@@ -95,21 +97,31 @@ export default async function Hub() {
           ⟲ 06/10, dono: o <h1> "CONTROLE POPULAR" voltou para CIMA da
           foto da onça, entre as citações — a abertura viva saiu da home
           (continua nos 4 eixos). Dois <h1> não existem mais aqui: o
-          título é só este. */}
-      <CapaFrente
-        imagem="capas/home-page.webp"
-        alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
-        titulo="CONTROLE POPULAR"
-        layout="home"
-        epigrafes={[
-          {
-            texto:
-              "Ela deita sementes para morrerem ou brotarem.\nEla semeia sonhos pra ver germinar sobrevivência.",
-            atribuicao: "Itamar Vieira Junior, Coração Sem Medo, 2025",
-          },
-        ]}
-        resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
-      />
+          título é só este.
+          ⟲ 06/10, dono (rodada 7): a forma "anel" do ShapeBlur entra por
+          cima da foto — luz que segue o cursor. É decoração: camada
+          `pointer-events: none`, `aria-hidden` por natureza (canvas), e o
+          componente NEM MONTA sob movimento reduzido ou alto contraste
+          (`useEfeitoPermitido` no próprio `ShapeBlur.tsx`). */}
+      <section className="relative">
+        <CapaFrente
+          imagem="capas/home-page.webp"
+          alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
+          titulo="CONTROLE POPULAR"
+          layout="home"
+          epigrafes={[
+            {
+              texto:
+                "Ela deita sementes para morrerem ou brotarem.\nEla semeia sonhos pra ver germinar sobrevivência.",
+              atribuicao: "Itamar Vieira Junior, Coração Sem Medo, 2025",
+            },
+          ]}
+          resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
+        />
+        <div className="pointer-events-none absolute inset-0">
+          <ShapeBlur variacao={2} />
+        </div>
+      </section>
 
       {/* ═══ AVISO — O PORTAL INTEIRO LANÇADO — pedido do dono, 01/10/2026:
           o card de baixo dava a entender que só aquele cruzamento estava em
@@ -179,12 +191,14 @@ export default async function Hub() {
           mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto — aponte erro,
           lacuna ou dado faltante e o portal corrige na fonte oficial.
         </p>
-        <NextLink
-          href="/mineracao/ilegal"
-          className="mt-3 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
-        >
-          Ver os dados →
-        </NextLink>
+        <Magnet forca={0.15} className="mt-3 inline-block">
+          <NextLink
+            href="/mineracao/ilegal"
+            className="inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
+          >
+            Ver os dados →
+          </NextLink>
+        </Magnet>
       </section>
 
       {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
