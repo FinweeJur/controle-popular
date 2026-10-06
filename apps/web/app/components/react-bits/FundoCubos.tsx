@@ -38,8 +38,15 @@ export default function FundoCubos() {
 
   return (
     <div className="cp-fundo-cubos" aria-hidden="true">
+      {/* `grade` 12 e só 3 faces (dono, 06/10/2026: "os cubos estão gigantes,
+          diminuir e otimizar"): em grade 8 o cubo saía com ~176 px; com 12 cai
+          para ~100 px e a contagem de elementos fica próxima da anterior — o
+          Cubes ainda pula o tween de quem já está no alvo, que era o custo
+          real. `raio` 2,5 deixa a resposta ao ponteiro mais local. */}
       <Cubes
-        grade={8}
+        grade={12}
+        faces={3}
+        raio={2.5}
         ouvirDocumento
         animarSozinho={false}
         sombra={false}

@@ -283,9 +283,10 @@ export default async function Hub() {
             </span>
           </div>
           <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+            <Magnet forca={0.08} className="h-full">
             <NextLink
               href="/terra-e-territorios"
-              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-emerald-500/40 hover:bg-surface-2"
+              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-emerald-500/40 hover:bg-surface-2"
             >
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-terra, #1b6348)' }} />
               <div>
@@ -293,9 +294,11 @@ export default async function Hub() {
                 <div className="text-xs font-normal text-muted">203 Cidades, Bacias, Serras, Clima</div>
               </div>
             </NextLink>
+            </Magnet>
+            <Magnet forca={0.08} className="h-full">
             <NextLink
               href="/direitos-em-movimento"
-              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-alert/40 hover:bg-surface-2"
+              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-alert/40 hover:bg-surface-2"
             >
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-direitos, #c0392b)' }} />
               <div>
@@ -303,9 +306,11 @@ export default async function Hub() {
                 <div className="text-xs font-normal text-muted">SUS, IDEB, Emprego, LAI, Ajuda</div>
               </div>
             </NextLink>
+            </Magnet>
+            <Magnet forca={0.08} className="h-full">
             <NextLink
               href="/estado-e-economia"
-              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-sky-500/40 hover:bg-surface-2"
+              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-sky-500/40 hover:bg-surface-2"
             >
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-estado, #1e3a8a)' }} />
               <div>
@@ -313,9 +318,11 @@ export default async function Hub() {
                 <div className="text-xs font-normal text-muted">Orçamento, 27 ALs, Judiciário, ESG</div>
               </div>
             </NextLink>
+            </Magnet>
+            <Magnet forca={0.08} className="h-full">
             <NextLink
               href="/central"
-              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-primary/40 hover:bg-surface-2"
+              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-primary/40 hover:bg-surface-2"
             >
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-primary, #b45309)' }} />
               <div>
@@ -323,6 +330,7 @@ export default async function Hub() {
                 <div className="text-xs font-normal text-muted">Editais, 24k Docs, Rádios, Seu Nonô</div>
               </div>
             </NextLink>
+            </Magnet>
           </div>
         </div>
       </header>
@@ -385,13 +393,15 @@ export default async function Hub() {
               <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
               <ul className="mt-4 flex flex-col gap-2">
                 <li>
-                  <NextLink
-                    href="/cidades"
-                    className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
-                  >
-                    <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
-                    <span aria-hidden="true">→</span>
-                  </NextLink>
+                  <Magnet forca={0.12}>
+                    <NextLink
+                      href="/cidades"
+                      className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
+                    >
+                      <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
+                      <span aria-hidden="true">→</span>
+                    </NextLink>
+                  </Magnet>
                 </li>
                 {cidades.map((c) => (
                   <li key={c.slug}>
@@ -503,13 +513,15 @@ export default async function Hub() {
             Como denunciar
           </NextLink>
         </div>
-        <NextLink
-          href="/direitos-em-movimento"
-          className="mt-4 inline-block font-medium"
-          style={{ color: "var(--cp-alert)" }}
-        >
-          Entrar em Direitos em Movimento →
-        </NextLink>
+        <Magnet forca={0.15} className="mt-4 inline-block">
+          <NextLink
+            href="/direitos-em-movimento"
+            className="inline-block font-medium"
+            style={{ color: "var(--cp-alert)" }}
+          >
+            Entrar em Direitos em Movimento →
+          </NextLink>
+        </Magnet>
       </section>
 
       {/* ⟲ 13/08: dizia "Por que TRÊS portais", e o texto contava três

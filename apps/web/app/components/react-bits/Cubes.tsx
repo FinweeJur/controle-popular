@@ -84,6 +84,12 @@ export interface CubesProps {
    * documento travaria a rolagem da página).
    */
   ouvirDocumento?: boolean;
+  /**
+   * Quantas faces cada cubo desenha: 6 (padrão, cubo fechado) ou 3
+   * (fundo de site — metade do DOM e da pintura; a grade é translúcida,
+   * ninguém percebe a face que falta).
+   */
+  faces?: 3 | 6;
 }
 
 const Cubes: React.FC<CubesProps> = ({
@@ -103,6 +109,7 @@ const Cubes: React.FC<CubesProps> = ({
   velocidadeOndulacao = 2,
   largura,
   ouvirDocumento = false,
+  faces = 6,
 }) => {
   const cenaRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -146,25 +153,22 @@ const Cubes: React.FC<CubesProps> = ({
         const r = +(cubo.dataset.row ?? 0);
         const c = +(cubo.dataset.col ?? 0);
         const dist = Math.hypot(r - linhaCentro, c - colCentro);
-        if (dist <= raio) {
-          const pct = 1 - dist / raio;
-          const angulo = pct * anguloMax;
-          gsap.to(cubo, {
-            duration: entrarSair,
-            ease: curva,
-            overwrite: true,
-            rotateX: -angulo,
-            rotateY: angulo,
-          });
-        } else {
-          gsap.to(cubo, {
-            duration: sairSair,
-            ease: "power3.out",
-            overwrite: true,
-            rotateX: 0,
-            rotateY: 0,
-          });
-        }
+        const angulo = dist <= raio ? (1 - dist / raio) * anguloMax : 0;
+        // PULA o cubo que já está no alvo. Antes, TODO movimento de ponteiro
+        // disparava um tween por cubo — inclusive para "voltar ao repouso" de
+        // quem já estava parado — e era esse o custo que pesava no fundo do
+        // site (medido 06/10/2026). O ângulo vai no `dataset` para comparar
+        // sem guardar estado por cubo em React.
+        const chave = angulo.toFixed(1);
+        if (cubo.dataset.angulo === chave) return;
+        cubo.dataset.angulo = chave;
+        gsap.to(cubo, {
+          duration: angulo === 0 ? sairSair : entrarSair,
+          ease: angulo === 0 ? "power3.out" : curva,
+          overwrite: true,
+          rotateX: -angulo,
+          rotateY: angulo,
+        });
       });
     },
     [raio, anguloMax, entrarSair, sairSair, curva],
@@ -194,14 +198,17 @@ const Cubes: React.FC<CubesProps> = ({
 
   const voltarRepouso = useCallback(() => {
     if (semMovimentoRef.current || !cenaRef.current) return;
-    cenaRef.current.querySelectorAll<HTMLDivElement>(".cp-cubo").forEach((cubo) =>
+    cenaRef.current.querySelectorAll<HTMLDivElement>(".cp-cubo").forEach((cubo) => {
+      // Marca o alvo atingido: sem isto, o próximo movimento de ponteiro
+      // acharia que ainda havia de onde sair e repetiria o tween.
+      cubo.dataset.angulo = "0.0";
       gsap.to(cubo, {
         duration: sairSair,
         rotateX: 0,
         rotateY: 0,
         ease: "power3.out",
-      }),
-    );
+      });
+    });
   }, [sairSair]);
 
   const aoTocarMover = useCallback(
@@ -377,6 +384,12 @@ const Cubes: React.FC<CubesProps> = ({
   ]);
 
   const celulas = Array.from({ length: grade });
+  // Quais faces cada cubo monta. Três bastam no fundo de site (é translúcido e
+  // a economia é metade do DOM, que pesa porque a grade vive em TODA página).
+  const nomesFaces =
+    faces === 3
+      ? (["topo", "esquerda", "frente"] as const)
+      : (["topo", "baixo", "esquerda", "direita", "frente", "tras"] as const);
   const estiloCena: React.CSSProperties = {
     gridTemplateColumns: tamanhoCubo
       ? `repeat(${grade}, ${tamanhoCubo}px)`
@@ -406,12 +419,9 @@ const Cubes: React.FC<CubesProps> = ({
         {celulas.map((_, r) =>
           celulas.map((__, c) => (
             <div key={`${r}-${c}`} className="cp-cubo" data-row={r} data-col={c}>
-              <div className="cp-cubo-face cp-cubo-face--topo" />
-              <div className="cp-cubo-face cp-cubo-face--baixo" />
-              <div className="cp-cubo-face cp-cubo-face--esquerda" />
-              <div className="cp-cubo-face cp-cubo-face--direita" />
-              <div className="cp-cubo-face cp-cubo-face--frente" />
-              <div className="cp-cubo-face cp-cubo-face--tras" />
+              {nomesFaces.map((face) => (
+                <div key={face} className={`cp-cubo-face cp-cubo-face--${face}`} />
+              ))}
             </div>
           )),
         )}

@@ -1,5 +1,6 @@
 import { asc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
+import { registrarFalhaDeBanco } from "@/lib/db/erro-conexao";
 import { municipios } from "@/lib/db/schema";
 import { CIDADES_DO_BUILD } from "@/lib/db/cidades-do-build";
 
@@ -171,7 +172,11 @@ export async function listarCidades(): Promise<Cidade[]> {
         const linhas = await listarCidadesDoPostgres();
         if (linhas.length > 0) return linhas;
       } catch (e) {
-        console.error("[listarCidades] Postgres indisponível; usando a lista do build:", e);
+        // Em dev sem Postgres o caso é esperado e o fallback é o plano B:
+        // `registrarFalhaDeBanco` rebaixa para `info` (o overlay do Next não
+        // abre um "Server Console Error" por carga) e mantém `error` para
+        // falha de verdade ou fora de produção.
+        registrarFalhaDeBanco("cidades", e, "Postgres indisponível; usando a lista do build:");
       }
       return CIDADES_DO_BUILD;
     })();

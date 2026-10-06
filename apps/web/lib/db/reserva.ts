@@ -32,6 +32,7 @@
  */
 
 import { criarConexao, getDb, type DB } from "./client";
+import { registrarFalhaDeBanco } from "./erro-conexao";
 
 /** Um banco de reserva, pelo nome (para o log) e a URL. */
 export interface BancoReserva {
@@ -111,9 +112,12 @@ export async function comBancoReserva<T>(
     try {
       tentativas.push({ nome: b.nome, db: conexaoDe(b.url) });
     } catch (e) {
-      console.error(
-        `[banco:${rotulo}] reserva ${b.nome} não conectou:`,
-        e instanceof Error ? e.message : e
+      // Mesma régua do `catch` de baixo: conexão que não abre, em dev, é
+      // ambiente (não defeito) e não deve virar erro no overlay do Next.
+      registrarFalhaDeBanco(
+        `${rotulo} · reserva ${b.nome}`,
+        e,
+        `reserva ${b.nome} não conectou:`
       );
     }
   }
@@ -145,10 +149,10 @@ export async function comBancoReserva<T>(
         console.warn(`[banco:${rotulo}] reserva ${t.nome} vazia`);
       }
     } catch (e) {
-      console.error(
-        `[banco:${rotulo}] ${t.nome} falhou:`,
-        e instanceof Error ? e.message : e
-      );
+      // Sem Postgres local a consulta falha com ECONNREFUSED: em dev isso é
+      // esperado (o `padrao` cobre a página) e vira `info`; erro de verdade —
+      // ou qualquer falha em produção — continua `error`.
+      registrarFalhaDeBanco(`${rotulo} · ${t.nome}`, e, "falhou:");
     }
   }
 

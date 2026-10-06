@@ -171,15 +171,19 @@
   place-items: center;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.16;
+  /* Bem apagado (dono, 06/10/2026: "mais translúcido"): o cubo é textura de
+     fundo, não desenho — texto e cartão seguem mandando no contraste. */
+  opacity: 0.09;
 }
 
 /* A cena ignora o `width: 50%`/`aspect-ratio: 1` do bloco original e vira um
    quadrado maior que o viewport — cobre a tela em pé e deitado, e o excesso é
-   recortado pelo `overflow: hidden` da camada. */
+   recortado pelo `overflow: hidden` da camada. Quadrado menor que antes
+   (95vw/100vh): com a grade 12 o cubo fica em ~100 px, e não nos ~176 px que
+   o dono viu como "gigantes" (06/10/2026). */
 .cp-fundo-cubos .cp-cubos {
-  width: max(110vw, 120vh);
-  height: max(110vw, 120vh);
+  width: max(95vw, 100vh);
+  height: max(95vw, 100vh);
   aspect-ratio: auto;
   --cp-cubos-col-gap: 2%;
   --cp-cubos-row-gap: 2%;
