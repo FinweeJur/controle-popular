@@ -17,12 +17,16 @@
  * - Seletor de pet (02/10/2026): o nível "pets" é um cartão de rádio-opções
  *   que troca o bichinho do `CompanheiroFlutuante` via evento da janela
  *   (`cp:companheiro-trocar-pet`) — o bicho mora em outro componente.
- * - Pilha da lateral esquerda (pedido do dono, 03/10/2026): TRÊS botões
- *   redondos sobrepostos, de baixo para cima — FAB do Seu Nonô, pata do
- *   pet e botão da rádio (em `PlayerRadio.tsx`). Sobreposição de 16 px em
- *   cada emenda e alinhamento pelo centro de 56 px: as três geometrias são
- *   combinadas entre este arquivo e o PlayerRadio; mudar uma exige mudar
- *   as duas (o comentário de cada uma traz a régua em px).
+ * - Pilha da lateral esquerda (pedido do dono, 03/10/2026; ajuste em
+ *   07/10/2026): TRÊS botões redondos em coluna, de baixo para cima — FAB
+ *   do Seu Nonô (`z-50`), pata do pet (`z-[46]`) e botão da rádio
+ *   (`z-[45]`, em `PlayerRadio.tsx`), todos centrados no eixo x=44 px.
+ *   O dono pediu em 07/10/2026: "o Seu Nonô tem que ficar por cima, com
+ *   pouca sobreposição". Antes a pata também valia `z-50` e vinha DEPOIS
+ *   no DOM — então pinta por cima do FAB (bug medido: a cara do assistente
+ *   ficava tapada). A pata baixou para `z-[46]` (acima do rádio, abaixo do
+ *   FAB) e a emenda encolheu de 16 px para 8 px. Mudar uma geometria
+ *   exige conferir as três (o comentário de cada uma traz a régua em px).
  * - Barra de busca fixa (pedido do dono, 03/10/2026): a janelinha abre com
  *   `SeuNonoBusca` no rodapé, não com o botão "Perguntar à IA". Digitar sugere
  *   páginas do portal e respostas pré-curadas (expandindo para cima); só o
@@ -52,6 +56,15 @@ import { usePosicaoPainel, type CaixaAncora } from "@/lib/posicionar-painel";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
+// Controles de acessibilidade REUTILIZADOS da navbar (regra: reutilizar, não
+// recriar): o chat passou a expor tema, tamanho de fonte e paleta daltônica
+// para quem usa o assistente como porta de entrada do portal (dono,
+// 07/10/2026). São os mesmos componentes de `TopNav.tsx` — mesma gravação
+// em `localStorage`, mesmo atributo em `<html>`, então valem para o site
+// inteiro e não brigam com a barra superior.
+import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
+import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
+import CvdToggle from "@/app/components/CvdToggle";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -526,7 +539,7 @@ function useAcoesRapidas(pathname: string | null): AcaoRapida[] {
   }, [pathname]);
 }
 
-type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia" | "pets";
+type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia" | "pets" | "acessibilidade";
 
 type ComandoAcessibilidade = {
   comando: string[];
@@ -988,6 +1001,30 @@ export function SeuNono() {
     window.dispatchEvent(new CustomEvent("cp:companheiro-limpar-pets"));
   }
 
+  /**
+   * Aumenta o texto do site UM degrau (sm → md → lg → xl) — o mesmo
+   * mecanismo da navbar (`FontSizeControl`): grava `data-fs` em `<html>` e
+   * `cp_fs` no `localStorage`, então vale para o portal inteiro e a escolha
+   * sobrevive a recarga. É a ação do botão "A+" do cabeçalho (dono,
+   * 07/10/2026: "um botão de aumentar texto dentro do Seu Nonô"); o degrau
+   * inverso e os demais recursos ficam no cartão "Acessibilidade".
+   * O índice inválido cai em 0 (nunca encolhe o texto por acidente) e no
+   * topo da escala (xl) o botão não faz nada — sem estado furado.
+   */
+  function aumentarTextoUmPasso() {
+    const atual = document.documentElement.getAttribute("data-fs") || "md";
+    const indice = Math.max(0, FS_STEPS.indexOf(atual as (typeof FS_STEPS)[number]));
+    const proximo = FS_STEPS[Math.min(indice + 1, FS_STEPS.length - 1)];
+    document.documentElement.setAttribute("data-fs", proximo);
+    try {
+      localStorage.setItem("cp_fs", proximo);
+    } catch {
+      // localStorage indisponível (modo privado, desabilitado): a escolha
+      // só não persiste entre recargas — mesma degradação inofensiva dos
+      // controles da navbar (`FontSizeControl.tsx`).
+    }
+  }
+
   function voltar() {
     if (nivel === "resposta") {
       setResposta(null);
@@ -1001,6 +1038,8 @@ export function SeuNono() {
       setNivel("frentes");
     } else if (nivel === "pets") {
       setConfirmaPet(null);
+      setNivel("frentes");
+    } else if (nivel === "acessibilidade") {
       setNivel("frentes");
     } else if (nivel === "perguntas") {
       setCategoria(null);
@@ -1254,6 +1293,23 @@ export function SeuNono() {
               </div>
             </div>
             <div className="flex items-center gap-1">
+              {/* A+ — aumenta o texto do portal inteiro UM degrau (dono,
+                  07/10/2026: "um botão de aumentar texto dentro do seu
+                  nono"). Ação direta, sem passar por menu: quem lê mal muda
+                  o texto num toque e já vê o efeito na própria conversa.
+                  Grava o mesmo `data-fs` da navbar, então o A−/A/A+ de lá e
+                  o cartão "Acessibilidade" continuam valendo o que já estava
+                  escolhido. */}
+              <button
+                onClick={aumentarTextoUmPasso}
+                className="rounded-full p-1 text-text-soft hover:bg-surface-2"
+                aria-label="Aumentar o texto do site"
+                title="Aumentar texto"
+              >
+                <span className="block font-display text-[15px] font-semibold leading-[18px]">
+                  A+
+                </span>
+              </button>
               {nivel !== "busca" && (
                 <button
                   onClick={abrirBusca}
@@ -1404,6 +1460,26 @@ export function SeuNono() {
                   </button>
                 </div>
 
+                {/* Acessibilidade à mão (dono, 07/10/2026): tema, tamanho de
+                    fonte e paleta daltônica — os mesmos ajustes que a barra
+                    superior só mostra em telas grandes. Mesmo formato do
+                    cartão "Pet do companheiro" acima, que o dono citou como
+                    exemplo de recurso fácil de configurar. */}
+                <div className="border-t border-border pt-2">
+                  <button
+                    onClick={() => setNivel("acessibilidade")}
+                    className="flex w-full items-center gap-2 rounded-lg border border-border bg-surface-2 px-3 py-2 text-left hover:border-primary"
+                  >
+                    <Accessibility size={14} className="shrink-0 text-primary" />
+                    <span className="flex-1">
+                      <span className="block text-sm font-medium text-text">Acessibilidade</span>
+                      <span className="block text-xs text-text-soft">
+                        Texto maior, tema e cores para daltonismo
+                      </span>
+                    </span>
+                  </button>
+                </div>
+
                 {/* A entrada do chatbot deixou de ser o botão "Perguntar à IA":
                     agora é a barra fixa do rodapé, que sugere páginas e
                     respostas prontas enquanto se digita. Este aviso só explica
@@ -1523,6 +1599,57 @@ export function SeuNono() {
                 </fieldset>
                 <p role="status" aria-live="polite" className="text-xs font-medium text-primary">
                   {confirmaPet}
+                </p>
+              </div>
+            )}
+
+            {/* Cartão de acessibilidade (dono, 07/10/2026: "recursos de
+                acessibilidade mais fáceis de configurar e utilizar dentro
+                do chatbot"). Os três controles são os MESMOS da barra
+                superior (`ThemeSwitcher`, `FontSizeControl`, `CvdToggle`):
+                reutilizados, não reimplementados — mesma gravação em
+                `localStorage`, mesmos atributos em `<html>` (`data-fs`,
+                `data-cvd`, `data-theme`), então o que a pessoa escolhe aqui
+                vale para o site inteiro e vice-versa. */}
+            {nivel === "acessibilidade" && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar ao início
+                </button>
+                <fieldset>
+                  <legend className="text-sm font-semibold text-text">Acessibilidade</legend>
+                  <p className="mt-1 text-xs leading-relaxed text-text-soft">
+                    Ajuste como o portal aparece para você. Vale para o site
+                    inteiro e fica salvo neste navegador.
+                  </p>
+                  <div className="mt-3 space-y-2.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold text-text-soft">
+                        Tamanho do texto:
+                      </span>
+                      <FontSizeControl />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold text-text-soft">Tema:</span>
+                      <ThemeSwitcher />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold text-text-soft">Cores:</span>
+                      <CvdToggle />
+                    </div>
+                  </div>
+                </fieldset>
+                {/* Descoberta: os comandos por TEXTO já existiam e ninguém
+                    via (só quem digitava sabia). Aqui viram dica visível. */}
+                <p className="text-xs leading-relaxed text-text-soft">
+                  Também dá para digitar na barra do chat:{" "}
+                  <strong className="font-medium text-text">aumentar texto</strong>,{" "}
+                  <strong className="font-medium text-text">alto contraste</strong> ou{" "}
+                  <strong className="font-medium text-text">cores daltônicas</strong>.
+                  O Seu Nonô entende e aplica na hora.
                 </p>
               </div>
             )}
@@ -1995,6 +2122,7 @@ export function SeuNono() {
               {nivel === "busca" && "Busca nas respostas do portal"}
               {nivel === "ia" && "Pergunta livre com IA"}
               {nivel === "pets" && "Pet do companheiro"}
+              {nivel === "acessibilidade" && "Acessibilidade"}
             </p>
           </div>
         </div>
@@ -2022,15 +2150,16 @@ export function SeuNono() {
         </div>
       )}
 
-      {/* Três botões redondos sobrepostos na lateral esquerda, de baixo
-          para cima: Seu Nonô (FAB), pata do pet e rádio — pedido do dono
+      {/* Três botões redondos em coluna na lateral esquerda, de baixo para
+          cima: Seu Nonô (FAB), pata do pet e rádio — pedido do dono
           (03/10/2026), que a pata estava TAPANDO o botão da rádio.
           Régua combinada com `PlayerRadio.tsx`: FAB 16..72 px da borda;
-          pata h-11 com margem negativa −16 px → 56..100; rádio h-12 em
-          `left-5` → 84..132. Sobra 16 px de sobreposição em cada emenda.
-          O FAB vem DEPOIS da pata no DOM: pinta por cima (a pata fica com
-          a coroa livre, o FAB com a cara inteira). A pata e o FAB somem
-          quando o painel abre (só o painel importa então); o rádio fica. */}
+          pata 64..108; rádio 100..148. Emenda de 8 px em cima e embaixo
+          (07/10/2026: era 16 px, dono pediu "pouca sobreposição").
+          Quem pinta por cima é o `z-index`, não a ordem do DOM: pata
+          `z-[46]` < FAB `z-50` — o FAB fica com a cara inteira por cima
+          (07/10/2026). A pata e o FAB somem quando o painel abre (só o
+          painel importa então); o rádio fica. */}
       {!aberto && (
         <div className="flex w-14 flex-col items-center">
           {/* A pata do pet morava AQUI e saiu: ganhou caixa arrastável própria
@@ -2059,14 +2188,19 @@ export function SeuNono() {
         Fica FORA do invólucro do assistente de propósito: dentro dele, o
         `transform` de arrasto do Seu Nonô levava a pata junto (dono,
         06/10/2026: "deixar cada um separado"). A posição reproduz o lugar de
-        antes na pilha — FAB em 16..72 px da borda de baixo, pata em 56..100 —
+        antes na pilha — FAB em 16..72 px da borda de baixo, pata em 64..108 —
         então o visual não muda; só o arrasto é que é independente.
-        O `closest` do `useArrastavel` acha esta caixa pelo próprio evento, não
-        por busca global, então as duas convivem sem confusão. */}
+        `z-[46]` (07/10/2026): a pata saiu de `z-50` — com o mesmo valor do
+        FAB e vindo DEPOIS no DOM, ela pinta por cima da cara do assistente
+        (dono: "o Seu Nonô tem que ficar por cima"). O novo degrau fica entre
+        o rádio (`z-[45]`) e o FAB (`z-50`): acima do play, abaixo do
+        assistente. O `closest` do `useArrastavel` acha esta caixa pelo
+        próprio evento, não por busca global, então as duas convivem sem
+        confusão. */}
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_2.5rem)] left-[1.375rem] z-50"
+        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_3rem)] left-[1.375rem] z-[46]"
         data-arrastavel-caixa
         data-nao-plataforma
       >

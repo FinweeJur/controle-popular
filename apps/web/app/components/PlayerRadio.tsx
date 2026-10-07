@@ -314,12 +314,14 @@ export default function PlayerRadio() {
 
       <div
         // Geometria da pilha da lateral esquerda (combinada com o
-        // `SeuNono.tsx`, 03/10/2026): h-12 em 84..132 px da borda de baixo,
-        // `left-5` → centro em x=44, o mesmo eixo de 56 px da pilha. O max()
-        // repete a conta do safe-area do Seu Nonô para o iPhone não
-        // desalinhar os três botões. `z-[45]`: por baixo da pata e do FAB
-        // (z-50), por cima dos bichinhos (z-40) — um pet passando por trás
-        // não pode cobrir o play.
+        // `SeuNono.tsx`, 03/10/2026; régua conferida em 07/10/2026): h-12
+        // em 100..148 px da borda de baixo, `left-5` → centro em x=44, o
+        // mesmo eixo de 56 px da pilha. O max() repete a conta do safe-area
+        // do Seu Nonô para o iPhone não desalinhar os três botões.
+        // `z-[45]`: por baixo da pata (`z-[46]`) e do FAB (`z-50`), por
+        // cima dos bichinhos (z-40) — um pet passando por trás não pode
+        // cobrir o play. A pata encosta no play com 8 px de emenda (dono,
+        // 07/10/2026, pediu sobreposição pequena na pilha).
         ref={grupoRef}
         style={estilo}
         className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
