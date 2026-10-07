@@ -208,12 +208,12 @@ jobs:
             if [ -n "$TOKEN" ]; then
               az containerapp hostname bind -g "$GRUPO" -n "$APP" \
                 --hostname "$DOMINIO_EXTRA" --environment cp-env \
-                --validation-method TXT --certificate managed -o none \
+                --validation-method TXT -o none \
                 || echo "AVISO: bind por TXT nao concluiu (tenta de novo na proxima rodada)."
             else
               az containerapp hostname bind -g "$GRUPO" -n "$APP" \
                 --hostname "$DOMINIO_EXTRA" --environment cp-env \
-                --validation-method CNAME --certificate managed -o none \
+                --validation-method CNAME -o none \
                 || echo "AVISO: certificado ainda nao emitido (o DNS precisa apontar para este app)."
             fi
           fi

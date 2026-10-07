@@ -55,7 +55,7 @@ jobs:
             # Fallback: o proprio erro do bind revela o valor esperado
             # ("A TXT record pointing from asuid.<host> to <TOKEN>").
             TOKEN=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method TXT --certificate managed -o none 2>&1 \
+              --environment cp-env --validation-method TXT -o none 2>&1 \
               | grep -oE 'to [A-Fa-f0-9]{8,}' | awk '{print $2}' | head -1 || true)
           fi
           echo "token de validacao: ${TOKEN:-(nao encontrado)}"
@@ -87,10 +87,10 @@ jobs:
           # (erro 10405), entao ali o dono publica pelo painel.
           echo "=== emitindo o certificado gerenciado (validacao CNAME) ==="
           if ! az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method CNAME --certificate managed -o none; then
+              --environment cp-env --validation-method CNAME -o none; then
             echo "CNAME nao validou — tentando por TXT (precisa do asuid.$DOMINIO_EXTRA no DNS)"
             az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method TXT --certificate managed -o none \
+              --environment cp-env --validation-method TXT -o none \
               || echo "AVISO: certificado ainda nao emitido; rodar de novo depois do DNS."
           fi
 
