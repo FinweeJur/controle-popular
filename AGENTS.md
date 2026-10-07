@@ -86,10 +86,12 @@ A CI roda o mesmo script (`.github/workflows/docs.yml`).
    - **Guara Cloud — secundário:** `www.controlepopular.tech`. O serviço está
      `stopped` (ciclo/cota) e volta com `guara deploy` quando o dono puder.
    - Push na `main` → CI roda testes. **Deploy é manual nos dois** (§5.7.1).
-3. **⚠️ A troca de DNS ficou pela metade:** o CNAME de
-   `www.controlepopular.com.br` acabou apontado para o **Guara** e precisa
-   voltar para `cp-web.yellowsmoke-cc226486.spaincentral.azurecontainerapps.io`
-   (no painel da Cloudflare — o token do repo não faz `PATCH`, erro 10405).
+3. **Troca de casas CONCLUÍDA em 07/10/2026:** `www.controlepopular.com.br`
+   serve do **Azure** (CNAME com proxy + certificado gerenciado gerenciado pelo
+   próprio Container App) e `www.controlepopular.tech` aponta para o **Guara**,
+   que segue `stopped` com health `crash_loop` até o dono conseguir o redeploy
+   (o CLI do Guara não tem comando de start). Os dois apex vivem de redirect
+   301 no Cloudflare.
 4. **Raiz do domínio:** os dois apex vivem de redirect 301 no Cloudflare (o
    Guara não aceita "apex"; no Azure apex exigiria `A` + `TXT asuid`).
 5. **Quem publica é este PC (`home-pc`)**: builda, testa, pusha. O túnel do

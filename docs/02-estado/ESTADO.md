@@ -33,12 +33,12 @@ quando o dono puder; enquanto isso o **Azure Container Apps** é o principal.
 
 | Papel | Modo | Estado |
 |---|---|---|
-| **principal** | `www.controlepopular.com.br` → Azure Container Apps | 🚧 06/10 — **falta o CNAME voltar para o Azure** (a troca de DNS pôs os dois no Guara) |
-| secundário | `www.controlepopular.tech` → Guara Cloud | ⛔ serviço `stopped` (404) até o redeploy |
+| **principal** | `www.controlepopular.com.br` → Azure Container Apps | ✅ 07/10 — CNAME com proxy + certificado gerenciado; home e `/ambiental/licenciamento` (19.704 / 145 licenças) conferidos |
+| secundário | `www.controlepopular.tech` → Guara Cloud | ⛔ serviço `stopped` (`crash_loop`) até o redeploy; 404 no ar |
 | banco | Postgres do Guara (`cp-postgres-597bd0`) | ✅ usado pelos dois (o Azure ganhou a env em runtime em 06/10) |
 | servidor de teste | Cloudflare Tunnel do `home-pc` (`next dev`) | ✅ de pé |
 | fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
-| raiz `controlepopular.com.br` e `.tech` | redirect 301 no Cloudflare → www | ✅ medido 07/10 |
+| raízes `.com.br` e `.tech` | redirect 301 no Cloudflare → www | ✅ medido 07/10 |
 
 **Como publicar:** Azure → `gh workflow run azure-mirror.yml --ref main`
 (~6 min, sem gastar cota do Guara); Guara → `guara deploy` (~17 min, a cada
@@ -104,8 +104,8 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| A1 | **CNAME do `www.controlepopular.com.br` voltar para o Azure** | ⛔ | a troca de 06/10 pôs os DOIS hosts no Guara; apontar para `cp-web.yellowsmoke-cc226486.spaincentral.azurecontainerapps.io` (painel da Cloudflare — o token do repo não faz `PATCH`, erro 10405). O certificado gerenciado já está `SniEnabled` no Azure |
-| A2 | **Redeploy do Guara (`guara deploy`) para o `.tech` voltar** | ⛔ | serviço `stopped` desde o estouro de ciclo/cota; o domínio `www.controlepopular.tech` já está cadastrado lá (`pending_dns` → valida quando o CNAME chegou) |
+| A1 | **Troca de casas dos domínios** | ✅ | `www.controlepopular.com.br` no Azure (certificado gerenciado + proxy) e `.tech` no Guara; concluída em 07/10 depois do TXT `asuid.www` correto |
+| A2 | **Redeploy do Guara (`guara deploy`) para o `.tech` voltar** | ⛔ | serviço `stopped` com health `crash_loop`; o CLI não tem comando de start — depende do ciclo/cota do plano |
 | A3 | **Ligar o banco em runtime no Azure** | ✅ | `azure-mirror.yml` publica `DATABASE_URL` (Postgres do Guara) como segredo+env; medido 06/10: `/ambiental/licenciamento` voltou a mostrar 2.094 licenças (era 0) |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
 | A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** para o canonical e o sitemap novo chegarem ao ar — baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
