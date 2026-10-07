@@ -210,6 +210,21 @@ jobs:
 
           echo "=== estado DEPOIS ==="
           az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
+
+          # ═══ REVERTE O ALÍVIO: origem só em HTTPS ═══
+          # O `--allow-insecure` existe só para o período sem certificado. Com
+          # um certificado do host em Succeeded, o TLS já fecha e o HTTP na
+          # origem vira superfície desnecessária — desliga de volta.
+          CERT_OK=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA' && properties.provisioningState=='Succeeded'].name | [0]" \
+            -o tsv 2>/dev/null || true)
+          if [ -n "$CERT_OK" ]; then
+            echo "certificado do host OK ($CERT_OK) — fechando o HTTP na origem"
+            az containerapp ingress update -g "$GRUPO" -n "$APP" --allow-insecure false -o none \
+              || echo "AVISO: nao consegui fechar o HTTP na origem."
+          else
+            echo "sem certificado ainda — mantendo o HTTP liberado para nao derrubar o site"
+          fi
           az containerapp show -g "$GRUPO" -n "$APP" \
             --query "properties.customDomains[?name=='$DOMINIO_EXTRA'].{nome:name,laco:bindingType,cert:certificateId}" \
             -o json || true
