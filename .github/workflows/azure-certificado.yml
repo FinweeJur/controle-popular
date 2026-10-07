@@ -85,25 +85,25 @@ jobs:
           # este app (o caso depois da troca). TXT como plano B — depende do
           # registro `asuid` publicado, que o token do repo NAO consegue criar
           # (erro 10405), entao ali o dono publica pelo painel.
-          # Duas etapas (mais previsível que o bind direto, que ficou pendurado
-          # ~12 min em 07/10): CRIA o certificado gerenciado no ambiente e só
-          # depois o VINCULA ao app pelo nome. `--certificate` espera NOME —
-          # passar a palavra "managed" devolve "does not exist in environment".
-          NOME_CERT="cert-$(echo "$DOMINIO_EXTRA" | tr '.' '-')"
-          echo "=== criando o certificado gerenciado ($NOME_CERT) ==="
-          if az containerapp env certificate create -g "$GRUPO" --environment cp-env \
-               --name "$NOME_CERT" --hostname "$DOMINIO_EXTRA" \
-               --validation-method CNAME -o none; then
-            echo "certificado criado — vinculando ao app"
-            az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --certificate "$NOME_CERT" -o none \
-              || echo "AVISO: o bind do certificado nao concluiu."
-          else
-            echo "AVISO: nao consegui criar o certificado gerenciado — tentando o bind direto"
-            az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method CNAME -o none \
-              || echo "AVISO: certificado ainda nao emitido; rodar de novo depois do DNS."
-          fi
+          # O `hostname bind` dispara o certificado gerenciado SOZINHO (o nome
+          # sai no formato `mc-<env>-<host>-<hash>`), mas ele nasce em
+          # provisionamento e o bind imediato falha com
+          # "Certificate ... is not in success state". Aqui a gente ESPERA o
+          # estado virar `Succeeded` e só então vincula.
+          echo "=== aguardando o certificado gerenciado de $DOMINIO_EXTRA ==="
+          for i in $(seq 1 20); do
+            ESTADO=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+              --query "[?properties.subjectName=='$DOMINIO_EXTRA'].properties.provisioningState | [0]" \
+              -o tsv 2>/dev/null || true)
+            echo "  tentativa $i/20: estado=${ESTADO:-?}"
+            [ "$ESTADO" = "Succeeded" ] && break
+            sleep 30
+          done
+
+          echo "=== vinculando o certificado ao app ==="
+          az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+            --environment cp-env --validation-method CNAME -o none \
+            || echo "AVISO: o bind ainda nao concluiu; rodar de novo em alguns minutos."
 
           echo "=== estado DEPOIS ==="
           az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
