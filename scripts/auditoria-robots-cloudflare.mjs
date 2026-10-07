@@ -242,6 +242,35 @@ function csvCelula(v) {
   return `"${s.replace(/"/g, '""')}"`;
 }
 
+/**
+ * Auto-diagnóstico: quando a API reclama de "unknown field", pergunta ao
+ * schema quais dimensões EXISTEM e imprime a lista — a próxima execução sai
+ * corrigida em vez de adivinhando nomes entre as 83 dimensões do dataset.
+ */
+async function introspecionarDimensoes() {
+  for (const tipo of [
+    "ZoneHttpRequestsAdaptiveGroupsDimensions",
+    "ZoneHttpRequestsAdaptiveDimensions",
+  ]) {
+    try {
+      const d = await graphql(`{ __type(name: "${tipo}") { fields { name } } }`, {});
+      const campos = d?.__type?.fields?.map((f) => f.name) ?? [];
+      if (!campos.length) continue;
+      console.error(`CAMPOS DE ${tipo} (${campos.length}):`);
+      for (const c of campos) console.error(`  - ${c}`);
+      const agentes = campos.filter((c) => /agent/i.test(c));
+      console.error(
+        agentes.length
+          ? `CANDIDATOS A USER-AGENT: ${agentes.join(", ")}`
+          : `NENHUM campo com "agent" em ${tipo}.`
+      );
+      return;
+    } catch (e) {
+      console.error(`introspecao de ${tipo} falhou: ${e.message}`);
+    }
+  }
+}
+
 async function principal() {
   const texto = readFileSync(ROBOTS, "utf-8");
   const grupos = parseRobots(texto);
@@ -256,7 +285,13 @@ async function principal() {
   for (let d = DIAS; d >= 1; d--) {
     const de = agora - d * 86400000;
     const ate = agora - (d - 1) * 86400000;
-    const lote = await buscarJanela(zoneTag, de, ate);
+    let lote;
+    try {
+      lote = await buscarJanela(zoneTag, de, ate);
+    } catch (e) {
+      if (/unknown field/i.test(e.message)) await introspecionarDimensoes();
+      throw e;
+    }
     if (lote.length === 0) diasVazios.push(new Date(ate).toISOString().slice(0, 10));
     pedidos.push(...lote);
     console.log(
