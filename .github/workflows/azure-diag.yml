@@ -35,3 +35,8 @@ jobs:
           az containerapp hostname bind --help
           echo "###### certificados no ambiente ######"
           az containerapp env certificate list -g cp-app -n cp-env -o table || true
+          echo "###### propriedades do certificado do host ######"
+          az containerapp env certificate list -g cp-app -n cp-env \
+            --query "[?properties.subjectName=='www.controlepopular.com.br'].properties" -o json || true
+          echo "###### customDomains do app ######"
+          az containerapp show -g cp-app -n cp-web --query "properties.customDomains" -o json || true
