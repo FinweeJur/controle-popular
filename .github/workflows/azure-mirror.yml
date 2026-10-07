@@ -91,6 +91,15 @@ jobs:
               --cpu 0.5 --memory 1.0Gi \
               -o none
           fi
+          # TETO DE HEAP DO V8 (07/10/2026): a imagem traz 192 MB — valor do
+          # Guara Starter (256 MB de RAM). O Azure tem 1 Gi e o Next 16 +
+          # New Relic passam de 192 MB em ~15 min: o Node aborta com
+          # "Reached heap limit" e o contêiner reinicia (medido: 13 reinícios
+          # em 3h30; cada um é uma janela de 503 do Envoy). Env de runtime
+          # sobrescreve o ENV da imagem, sem rebuild. Chama própria (fora do
+          # `if` do New Relic) para valer também numa criação do zero.
+          az containerapp update -g "$GRUPO" -n "$APP" \
+            --set-env-vars "NODE_OPTIONS=--max-old-space-size=768" -o none
           # New Relic (APM). So liga se a chave existir como secret do repo.
           # Fica guardada como SEGREDO do Container App e referenciada por
           # `secretref:` — nao vai em texto claro na configuracao do app. O

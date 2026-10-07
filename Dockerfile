@@ -82,11 +82,17 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_TELEMETRY_DISABLED=1
-# TETO DE MEMÓRIA DO CONTAINER (plano Starter): 64 MB de request / 256 MB de
-# burst (docs.guaracloud: "RAM por container 256 MB"). O Next standalone tenta
-# crescer até ~500 MB e o kernel mata o pod — foi o crash_loop de 03/10/2026.
-# Capar o heap do V8 ABAIXO do teto faz o GC recolher a tempo em vez de o
-# container ser morto pelo OOM. Se subir para o Pro (512 MB), suba para ~448.
+# TETO DE HEAP DO V8: 192 MB E DO GUARA, NAO DO AZURE (medido 07/10/2026).
+# Guara Starter: 64 MB de request / 256 MB de burst (docs.guaracloud). O Next
+# standalone tenta crescer ate ~500 MB e o kernel mata o pod — foi o
+# crash_loop de 03/10/2026; capar o heap ABAIXO do teto faz o GC recolher a
+# tempo em vez de o container ser morto pelo OOM.
+# Azure Container Apps (1 Gi): este mesmo 192 ESTRANGULA. Next 16 + New Relic
+# passam de 192 MB em ~15 min e o Node aborta ("Reached heap limit") — 13
+# reinicios em 3h30 e o 503 do Envoy reportado pelo dono. La o teto vive no
+# env de runtime NODE_OPTIONS=--max-old-space-size=768, que sobrescreve este
+# ENV sem rebuild e e garantido pelo azure-mirror.yml. Se subir o Guara para
+# Pro (512 MB), troque aqui para ~448.
 ENV NODE_OPTIONS="--max-old-space-size=192"
 
 # APM New Relic (oferta do GitHub Student Pack). O agente so carrega quando
