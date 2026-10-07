@@ -138,8 +138,21 @@ jobs:
           done
 
           echo "=== vinculando o certificado ao app ==="
+          # Certificado em `Failed` nao serve para bind e ainda confunde a
+          # escolha: apaga antes, para o caminho por TXT criar/validar um novo
+          # com o token certo.
+          FALHOS=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA' && properties.provisioningState=='Failed'].name" \
+            -o tsv 2>/dev/null || true)
+          for c in $FALHOS; do
+            echo "  removendo certificado falho $c"
+            az containerapp env certificate delete -g "$GRUPO" -n cp-env --certificate "$c" -y -o none \
+              || echo "  (nao consegui remover $c)"
+          done
+
           ALVO_CERT=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
-            --query "[?properties.subjectName=='$DOMINIO_EXTRA'].name | [0]" -o tsv 2>/dev/null || true)
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA' && properties.provisioningState=='Succeeded'].name | [0]" \
+            -o tsv 2>/dev/null || true)
           if [ -n "$ALVO_CERT" ]; then
             az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
               --hostname "$DOMINIO_EXTRA" --certificate "$ALVO_CERT" -o none \
