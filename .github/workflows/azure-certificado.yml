@@ -38,6 +38,18 @@ jobs:
           ZONA_EXTRA="${DOMINIO_EXTRA#*.}"
           echo "dominio: $DOMINIO_EXTRA (zona $ZONA_EXTRA)"
 
+          # ═══ ALÍVIO: ORIGEM ACEITA HTTP (temporário) ═══
+          # Com o certificado ainda pendente, o caminho para o site voltar hoje é
+          # a Cloudflare em modo "Flexible" falando HTTP com a origem. O
+          # Container App recusa HTTP por padrão; esta linha libera. REVERTER
+          # (`--allow-insecure false`) quando o certificado gerenciado entrar e a
+          # Cloudflare voltar para Full (strict). Medido 07/10/2026.
+          az containerapp ingress update -g "$GRUPO" -n "$APP" --allow-insecure -o none \
+            || echo "AVISO: nao consegui liberar HTTP na origem."
+          echo "origem aceitando HTTP (temporario): $(az containerapp show -g "$GRUPO" -n "$APP" \
+            --query 'properties.configuration.ingress.allowInsecure' -o tsv 2>/dev/null || echo '?')"
+
+
           # Ajuda do CLI: a sintaxe de `env certificate create` muda entre
           # versões (`--environment` foi recusado em 07/10) e é ela que decide
           # como pedir o certificado com validação TXT.
