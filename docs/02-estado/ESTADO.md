@@ -2,10 +2,10 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-05
+> **Última medição:** 2026-10-07
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
-> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, neon, tunnel, deploy, tts, shield, postgres, etl, coleta
+> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
 
 ## Sumário
 
@@ -27,21 +27,26 @@ Aqui vai ponteiro, não cópia. Mudou algo? Atualize aqui no mesmo commit.
 
 ## No ar agora
 
-**Publicação (desde 19/09):** o site principal é servido pela **Guara Cloud**.
-Guara é a PaaS (plataforma que hospeda seu código) brasileira que roda
-o portal em container Docker, datacenter em São Paulo.
-Endereço em produção: `www.controlepopular.com.br`.
-Ciclo: push na `main` → CI testa → deploy automático. Manual: `guara deploy`.
+**Publicação em duas casas (troca de 06/10/2026, pedido do dono).** O Guara
+está com o serviço `stopped` (ciclo/cota) e só volta com `guara deploy`
+quando o dono puder; enquanto isso o **Azure Container Apps** é o principal.
 
 | Papel | Modo | Estado |
 |---|---|---|
-| **principal** | `www.controlepopular.com.br` → Guara Cloud | ✅ 19/09 |
-| servidor 2 | Cloudflare Tunnel do `home-pc` com `next start -p 3000` | ✅ de pé, monitorado |
+| **principal** | `www.controlepopular.com.br` → Azure Container Apps | 🚧 06/10 — **falta o CNAME voltar para o Azure** (a troca de DNS pôs os dois no Guara) |
+| secundário | `www.controlepopular.tech` → Guara Cloud | ⛔ serviço `stopped` (404) até o redeploy |
+| banco | Postgres do Guara (`cp-postgres-597bd0`) | ✅ usado pelos dois (o Azure ganhou a env em runtime em 06/10) |
+| servidor de teste | Cloudflare Tunnel do `home-pc` (`next dev`) | ✅ de pé |
 | fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
-| raiz `controlepopular.com.br` | redirect 301 no Cloudflare → www | ✅ medido 04/10 (301 responde) |
+| raiz `controlepopular.com.br` e `.tech` | redirect 301 no Cloudflare → www | ✅ medido 07/10 |
 
-**Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09).
-A raiz nunca mora no Guara.
+**Como publicar:** Azure → `gh workflow run azure-mirror.yml --ref main`
+(~6 min, sem gastar cota do Guara); Guara → `guara deploy` (~17 min, a cada
+~5 dias). Só certificado do domínio: `azure-certificado.yml`.
+
+**Domínio:** o Guara devolve `APEX_DOMAIN_NOT_SUPPORTED` na raiz (medido 19/09);
+no Azure, o apex exigiria `A` + `TXT asuid`. Por isso as duas raízes vivem de
+redirect 301 no Cloudflare.
 
 **Novos Hubs e Módulos Ativos (29/09):**
 - `/internacional`: Hub multilateral (ONU/PNUD, UNESCO, OMS, OMC, commodities e povos originários) com modo trilíngue e 6 Qualidades.
@@ -99,10 +104,9 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
-| A0 | **Fim das coletas Betim no Guara antes de deploy** (ordem do dev 22/09) | ✅ | fechadas 22/09 21:30; contagem em [HANDOFF](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md) |
-| A1 | Validar banco no site: `/ambiental/licenciamento`, `/betim/emendas`, `/ambiental/copam` | ✅ | deploy `278e6430` **healthy** (02/10); o build travava por teto de 60s/página — ver [PLANO-REDUCAO-BUILD](../planos/PLANO-REDUCAO-BUILD.md) |
-| A2 | Redirect 301 no Cloudflare: raiz → www | ✅ | **medido 04/10/2026:** a raiz devolve 301 para o `www` — tarefa aberta desde a fila antiga está resolvida; conferido de novo em 05/10: `controlepopular.com.br` → `https://www.controlepopular.com.br/` em 301 limpo |
-| A3 | Corrigir vulnerabilidades do container (Guara Shield) | 🚧 | ver nota abaixo |
+| A1 | **CNAME do `www.controlepopular.com.br` voltar para o Azure** | ⛔ | a troca de 06/10 pôs os DOIS hosts no Guara; apontar para `cp-web.yellowsmoke-cc226486.spaincentral.azurecontainerapps.io` (painel da Cloudflare — o token do repo não faz `PATCH`, erro 10405). O certificado gerenciado já está `SniEnabled` no Azure |
+| A2 | **Redeploy do Guara (`guara deploy`) para o `.tech` voltar** | ⛔ | serviço `stopped` desde o estouro de ciclo/cota; o domínio `www.controlepopular.tech` já está cadastrado lá (`pending_dns` → valida quando o CNAME chegou) |
+| A3 | **Ligar o banco em runtime no Azure** | ✅ | `azure-mirror.yml` publica `DATABASE_URL` (Postgres do Guara) como segredo+env; medido 06/10: `/ambiental/licenciamento` voltou a mostrar 2.094 licenças (era 0) |
 | A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
 | A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** para o canonical e o sitemap novo chegarem ao ar — baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
 | A6 | **Bot Telegram com 14 links quebrados** | 🚧 | mapeados e corrigidos em `b9a84e7f` (05/10); publica no próximo `guara deploy` (cota ⛔ até ~08/10). Espelho local `scripts/escuta-telegram-correcao.mts` corrigido no disco mas **sem track** (arquivo de outra sessão) |

@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-10-02 (deploy `278e6430` healthy; diagnóstico de build e teto de 60s por página documentados)
+> **Última medição:** 2026-10-07 (troca de casas dos domínios: `.com.br` no Azure e `.tech` no Guara; seção nova de domínios por CLI)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc, guara, docker, duplo deploy
@@ -179,6 +179,48 @@ Start-Process -FilePath "C:\DevCoder\controle-popular\apps\web\node_modules\.bin
 # Reiniciar túnel (se mudar config.yml)
 & 'C:\DevCoder\tools\cloudflared.exe' --config 'C:\Users\Home\.cloudflared\config.yml' tunnel service restart
 ```
+
+### Domínios: Azure (principal) e Guara (secundário) — troca de 06/10/2026
+
+O dono dividiu as casas: **`www.controlepopular.com.br` no Azure Container
+Apps** e **`www.controlepopular.tech` no Guara Cloud**. Tudo por CLI:
+
+```bash
+# Azure: publicar (build da imagem no CI -> GHCR -> Container App, ~6 min)
+gh workflow run azure-mirror.yml --ref main
+
+# Azure: apenas o certificado do domínio (sem build, ~1 min)
+gh workflow run azure-certificado.yml --ref main
+
+# Trocar os CNAMEs entre as duas casas (pede confirmacao "TROCAR")
+gh workflow run trocar-dominios.yml -f confirmar=TROCAR
+
+# Guara: cadastrar um domínio custom (devolve o CNAME alvo)
+guara domains add --domain www.controlepopular.tech \
+  --project controle-popular --service controle-popular-web-0b4895 -y
+```
+
+Pontos que já custaram tempo:
+
+- **CNAME fica COM proxy** (nuvem laranja): o certificado gerenciado do Azure
+  já está vinculado (`SniEnabled`), então a Cloudflare fala com a origem em
+  HTTPS. Confirme **SSL/TLS = Full (strict)**; em "Flexible" a origem do Azure
+  recusa HTTP e o site devolve 502. O `TXT asuid.<host>` (validação) é sempre
+  sem proxy.
+- **Certificado antes do DNS.** A ordem que evita janela sem HTTPS é:
+  `hostname add` → publicar o `TXT asuid` → `bind --certificate managed` com
+  validação TXT (o site segue no ar no lado antigo) → só então trocar o CNAME.
+- **Apex:** o Azure aceita, mas exige `A` para o IP estático do ambiente + `TXT
+  asuid`; o Guara não aceita. Por isso as duas raízes vivem de redirect 301 no
+  Cloudflare.
+- **O token `CLOUDFLARE_API_TOKEN` do repo não faz `PATCH` de DNS** (erro 10405
+  — esquema de autenticação). Troca de CNAME hoje é pelo painel, ou criando um
+  token Zone→DNS→Edit.
+- **`gh workflow run` roda o workflow do REF remoto**: editar o `.yml` local e
+  disparar antes do `git push` usa a versão antiga, sem aviso.
+- **Página dinâmica no Azure precisa de `DATABASE_URL` em runtime** (o
+  `azure-mirror.yml` publica como segredo+env); sem ela, o que usa
+  `unstable_noStore` responde vazio.
 
 ### Migrar domínio para Guara Cloud (controlepopular.com.br)
 

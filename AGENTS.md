@@ -73,21 +73,27 @@ A CI roda o mesmo script (`.github/workflows/docs.yml`).
 
 ## 3. Estado vivo
 
-1. **Banco: Postgres do Guara (`cp-postgres-597bd0`) — Fase 4 concluída
-   (confirmada pelo dono em 29/09).** A aplicação já aponta para lá. A
-   Neon antiga está em 94% (470/500 MB), **sem uso**, e não recebe coleta
-   nova — sobra decidir o desligamento. Ver
-   [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
-2. **`DATABASE_URL` configurada no Guara em runtime e build** (19/09).
-   Página que lê do banco no build só sai com dado quando a variável existe
-   no build — ver armadilha na [tabela §6](#6-armadilhas).
-3. **Publicação:** push na `main` → CI roda testes. **Deploy é manual**
-   (auto-deploy desligado, cota de build, ver § 5.7.1): `guara deploy`.
-4. **Domínio:** `www.controlepopular.com.br` é o site. A raiz
-   `controlepopular.com.br` **não existe no Guara** (não aceita domínio
-   "apex", ver §6) e depende de redirect 301 no Cloudflare — pendência do dono.
+1. **Banco: Postgres do Guara (`cp-postgres-597bd0`).** A aplicação aponta
+   para ele — e é ele que o **Azure** usa em runtime também (desde 06/10). A
+   Neon antiga está em 94% (470/500 MB), **sem uso**: sobra decidir o
+   desligamento. Ver [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
+2. **Publicação em duas casas (troca de 06/10/2026).**
+   - **Azure Container Apps — principal:** `www.controlepopular.com.br`.
+     Publica por `gh workflow run azure-mirror.yml --ref main` (~6 min: build
+     da imagem no CI → GHCR → Container App). Só o certificado do domínio:
+     `azure-certificado.yml` (~1 min, sem build). Trocar os CNAMEs:
+     `trocar-dominios.yml -f confirmar=TROCAR`.
+   - **Guara Cloud — secundário:** `www.controlepopular.tech`. O serviço está
+     `stopped` (ciclo/cota) e volta com `guara deploy` quando o dono puder.
+   - Push na `main` → CI roda testes. **Deploy é manual nos dois** (§5.7.1).
+3. **⚠️ A troca de DNS ficou pela metade:** o CNAME de
+   `www.controlepopular.com.br` acabou apontado para o **Guara** e precisa
+   voltar para `cp-web.yellowsmoke-cc226486.spaincentral.azurecontainerapps.io`
+   (no painel da Cloudflare — o token do repo não faz `PATCH`, erro 10405).
+4. **Raiz do domínio:** os dois apex vivem de redirect 301 no Cloudflare (o
+   Guara não aceita "apex"; no Azure apex exigiria `A` + `TXT asuid`).
 5. **Quem publica é este PC (`home-pc`)**: builda, testa, pusha. O túnel do
-   `home-pc` continua de pé como servidor 2.
+   `home-pc` segue de pé como servidor de teste.
 
 Tato é melhor que suposição: além de estimar tamanho ou estado, **remeça**.
 
@@ -236,6 +242,11 @@ plano Starter tem teto de 250 min/ciclo.
 
 - **Deploy no Guara só a cada ~5 dias** (política do dono) — detalhe e
   ritual em [OPERACAO.md § 0](docs/05-operacao/OPERACAO.md#0-cadência-de-deploy-política-do-dono-19092026).
+- **Publicar no Azure é o caminho principal desde 06/10/2026** e não gasta
+  cota do Guara: `gh workflow run azure-mirror.yml --ref main` (build da
+  imagem no CI, ~6 min, → GHCR → Container App). Só o certificado do domínio:
+  `gh workflow run azure-certificado.yml` (~1 min). Trocar os CNAMEs entre as
+  duas casas: `gh workflow run trocar-dominios.yml -f confirmar=TROCAR`.
 - Commit muitas vezes, deploy uma (o último commit).
 - Teste diário no **servidor 2** (túnel do `home-pc`) e localhost —
   não gasta cota.
@@ -409,6 +420,19 @@ Cada linha já custou tempo real. A tabela vive aqui — única, sem duplicata.
 | **`dragstart` nativo de `<img>` trava o arrasto** | Pega com `<img>` dentro: o Chrome inicia o arrasto nativo da imagem no 1º `pointermove` e emite `pointercancel`; medido 03/10/2026 no `SeuNono` (o painel travava em 10 px). Cancele com `onDragStart` (`preventDefault`) e meça a caixa do CONTAINER (`data-arrastavel-caixa`), não a da pega |
 | **`next build` local sem banco** | O `prebuild` roda `npm run cidades`, que consulta o Postgres e aborta com `ECONNREFUSED` sem banco. Para verificar UI sem banco: `npx next build --webpack` direto e `DATABASE_URL=""` (pula o prebuild e cai nos fallbacks) |
 | **Standalone sobe sem `drizzle-orm`** | O `@vercel/nft` não segue o `createRequire(`${process.cwd()}/`)` de `apps/web/lib/db/client.ts`: a imagem sobe sem o driver e TODA página que lê banco cai vazia, com `Cannot find module 'drizzle-orm/node-postgres'` no log. Medido 04/10/2026: `/ambiental/licenciamento` no ar com 0 das 8.612 linhas. `outputFileTracingIncludes` em `next.config.ts` precisa listar `../../node_modules/drizzle-orm/**/*`; até o deploy, o paliativo é copiar o pacote para dentro do container (some no restart) |
+| **`next/script` em página → erro do React 19** | `next/script` é componente de CLIENTE: em página (fora do layout raiz) ele renderiza um `<script>` de bootstrap na hidratação e o React 19 recusa — `Encountered a script tag while rendering React component`. Prova com páginas gêmeas: com `next/script` acusa; com `<script>` cru de componente de SERVIDOR, nenhum aviso. O casco (anti-flash + JSON-LD) e os JSON-LD de página usam `<script>` cru. Medido 06/10/2026 |
+| **Service worker em dev serve build antigo** | O `sw.js` (modo offline) era registrado também em `next dev` e servia casco/estáticos velhos: o overlay acusava erro no código ATUAL e um navegador novo não reproduzia — "bug fantasma" que custou horas. `RegistrarServiceWorker.tsx` agora só registra em produção; em dev ele desregistra o worker e apaga os caches, então a recarga se cura sozinha. Medido 06/10/2026 |
+| **Lenis: a roda "não desce mais"** | O Lenis guarda um `targetScroll` interno; quando a posição real foge dele (clique na BARRA do navegador, `scrollIntoView`, âncora, ou a altura da página mudando), a roda seguinte mira num ponto já passado e a página trava até alguém arrastar a barra. `RolagemSuave.tsx` realinha: `ResizeObserver` na raiz chama `lenis.resize()` e um listener de `scroll` nativo faz `lenis.scrollTo(window.scrollY, { immediate, force })`. Medido 06/10/2026 |
+| **Contêiner aninhado que rola precisa de `data-lenis-prevent`** | A rolagem suave engole a roda do mouse e só devolve o controle a quem se marca com o atributo. Faltava no chat do Seu Nonô (sintoma: "o chat não rola"), no índice do rádio e no menu de pets — os três corrigidos, e qualquer lista nova entra na régua. Medido 06/10/2026 |
+| **CSS sem camada vence o Tailwind** | A folha dos vendoriados não está em `@layer`: `display`, `border`, `background` e `box-shadow` escritos ali ganham das classes utilitárias. Por isso o `BorderGlow` não fixa borda/fundo/sombra nem `display` — quem manda no cartão é o Tailwind de quem usa. Medido 06/10/2026 |
+| **Brilho com `inset` negativo cria rolagem lateral no celular** | O `BorderGlow` desenha a luz externa com `inset: -raioBrilho`; no celular isso soma ~13 px ao `scrollWidth` (rolagem lateral falsa). Escondido em `(hover: none)` e telas ≤ 640 px — sem mouse não há hover, nada se perde. Medido 06/10/2026 |
+| **`min-w-max` sem `min-w-0` no ancestral** | A `SubNavEua` tem `div.flex.min-w-max`; o container não conseguia encolher e a página ia a 1140 px numa tela de 390 (`/eua` não responsiva). Conserto: `w-full min-w-0` no container da página. Medido 06/10/2026 |
+| **Página dinâmica no Azure sem `DATABASE_URL` em runtime** | Páginas com `unstable_noStore` leem o Postgres a cada request; no espelho sem a env respondiam VAZIAS (0 linhas contra 2.094 no Guara). `azure-mirror.yml` passou a publicar `DATABASE_URL` como segredo+env do Container App. Medido 06/10/2026 |
+| **`gh workflow run` usa o workflow do REF do remoto** | Editar o `.yml` local e disparar antes do `git push` faz a rodada usar a versão antiga, sem aviso: o passo novo simplesmente não aparece no log. Medido 06/10/2026 |
+| **Token da Cloudflare não faz `PATCH` de DNS (10405)** | O `CLOUDFLARE_API_TOKEN` do repo devolve `erro 10405: Method not allowed for this authentication scheme` no `PATCH /zones/:id/dns_records/:id` — indício de chave global, que exige `X-Auth-Email`+`X-Auth-Key`. Trocar CNAME hoje é pelo painel, ou criando um token Zone→DNS→Edit. Medido 06/10/2026 |
+| **Casamento do Seu Nonô por palavra de função** | A pontuação do `buscarRespostaCurada` contava "o", "e", "a", "entre": a pergunta do orçamento do TJMG/MPMG/DPMG recebia a resposta de ENERGIA (7 de 13 palavras iguais). Agora só palavras de ASSUNTO pontuam (`PALAVRAS_FUNCIONAIS`), o degrau de notícias exige 2 palavras-chave e duas ou mais siglas caem na regra de comparativo. Regressão em `escada-determinista.test.ts`. Medido 06/10/2026 |
+| **Caixa arrastável compartilhada leva o vizinho junto** | A pata do pet e o FAB do Seu Nonô dividiam a MESMA `data-arrastavel-caixa` (282×312 px): arrastar o assistente levava a pata. Cada um ganhou caixa e posição próprias (`cp_nono_pos` / `cp_pata_pos`), com a posição reproduzida para o visual não mudar. Medido 06/10/2026 |
+| **Lista grande com efeito por item** | O efeito de proximidade pontuava só a distância VERTICAL: numa grade, todos os itens da mesma linha acendiam juntos. Agora quem está SOB o ponteiro acende sozinho e os demais ficam em zero; fora de um item, a queda usa a distância até a BORDA da caixa. Medido 06/10/2026 no índice da navbar (1 aceso de 58) |
 
 ## 7. Regra editorial
 
