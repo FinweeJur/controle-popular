@@ -101,29 +101,54 @@ jobs:
           # Cloudflare: o Azure não enxerga a cadeia e o certificado fica
           # `Pending` para sempre (medido: 10 min sem sair de Pending).
           NOME_CERT="cert-www-controlepopular-com-br"
+
+          echo "=== certificados no ambiente (antes) ==="
+          az containerapp env certificate list -g "$GRUPO" -n cp-env -o table || true
+
+          # O `hostname bind` cria um gerenciado por CNAME (`mc-...`) que fica
+          # `Pending` para sempre quando o registro esta proxied — a Cloudflare
+          # esconde a cadeia e o Azure nao valida. E, enquanto ele existir, o
+          # Azure RECUSA criar outro certificado para o mesmo host. Entao:
+          # apaga o preso e cria por TXT (o `asuid.<host>` ja esta publicado).
+          echo "=== removendo certificado preso do host, se houver ==="
+          PRESOS=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA'].name" -o tsv 2>/dev/null || true)
+          for c in $PRESOS; do
+            echo "  removendo $c"
+            az containerapp env certificate delete -g "$GRUPO" -n cp-env --certificate "$c" -y -o none \
+              || echo "  (nao consegui remover $c; sigo assim mesmo)"
+          done
+
           echo "=== criando o certificado gerenciado por TXT ($NOME_CERT) ==="
-          az containerapp env certificate create -g "$GRUPO" --name cp-env \
+          az containerapp env certificate create -g "$GRUPO" -n cp-env \
             --certificate-name "$NOME_CERT" --hostname "$DOMINIO_EXTRA" \
-            --validation-method TXT -o none \
-            || echo "AVISO: create devolveu erro (pode já existir)."
+            --validation-method TXT \
+            || echo "AVISO: create devolveu erro (ver a mensagem acima)."
 
           echo "=== aguardando o certificado ficar pronto ==="
-          for i in $(seq 1 12); do
+          for i in $(seq 1 15); do
             ESTADO=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
               --query "[?properties.subjectName=='$DOMINIO_EXTRA'].properties.provisioningState | [0]" \
               -o tsv 2>/dev/null || true)
-            echo "  tentativa $i/12: estado=${ESTADO:-?}"
+            NOMES=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+              --query "[?properties.subjectName=='$DOMINIO_EXTRA'].name" -o tsv 2>/dev/null || true)
+            echo "  tentativa $i/15: estado=${ESTADO:-?} nome=${NOMES:-?}"
             [ "$ESTADO" = "Succeeded" ] && break
             sleep 20
           done
 
           echo "=== vinculando o certificado ao app ==="
-          az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
-            --hostname "$DOMINIO_EXTRA" --certificate "$NOME_CERT" \
-            --validation-method TXT -o none \
-            || az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
-                 --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none \
-            || echo "AVISO: o bind ainda nao concluiu; rodar de novo em alguns minutos."
+          ALVO_CERT=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA'].name | [0]" -o tsv 2>/dev/null || true)
+          if [ -n "$ALVO_CERT" ]; then
+            az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
+              --hostname "$DOMINIO_EXTRA" --certificate "$ALVO_CERT" -o none \
+              || echo "AVISO: o bind com $ALVO_CERT nao concluiu."
+          else
+            az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
+              --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none \
+              || echo "AVISO: o bind ainda nao concluiu."
+          fi
 
           echo "=== estado DEPOIS ==="
           az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
