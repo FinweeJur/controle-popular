@@ -210,6 +210,16 @@ Pontos que já custaram tempo:
 - **Certificado antes do DNS.** A ordem que evita janela sem HTTPS é:
   `hostname add` → publicar o `TXT asuid` → `bind --certificate managed` com
   validação TXT (o site segue no ar no lado antigo) → só então trocar o CNAME.
+  O valor do `TXT` sai daqui (não é segredo — é prova de posse do domínio):
+
+  ```bash
+  az containerapp show -g cp-app -n cp-web --query properties.customDomains -o json \
+    | jq -r '.[] | "\(.name)  token=\(.validationToken)"'
+  ```
+
+  Se o `TXT` não puder ser publicado, o caminho é o CNAME apontando para o app
+  e `--validation-method CNAME` — mas aí o site fica sem HTTPS até o
+  certificado sair (erro 525 na Cloudflare).
 - **Apex:** o Azure aceita, mas exige `A` para o IP estático do ambiente + `TXT
   asuid`; o Guara não aceita. Por isso as duas raízes vivem de redirect 301 no
   Cloudflare.
