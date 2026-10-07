@@ -99,6 +99,8 @@ async function buscarZona() {
  * Consulta de pedidos brutos de uma janela [deMs, ateMs).
  * Se lotar o limite de 10.000 linhas, divide a janela ao meio até caber
  * (divisão recursiva — sem cursor, que varia entre planos da CF).
+ * O UA se chama `userAgent` no schema (confirmado por introspecção em
+ * 07/10/2026; `clientRequestUserAgent` só existe no Logpush, não no GraphQL).
  */
 async function buscarJanela(zoneTag, deMs, ateMs, nivel = 0) {
   const consulta = `
@@ -113,7 +115,7 @@ async function buscarJanela(zoneTag, deMs, ateMs, nivel = 0) {
             count
             dimensions {
               datetime
-              clientRequestUserAgent
+              userAgent
               clientRequestPath
               edgeResponseStatus
             }
@@ -137,7 +139,7 @@ async function buscarJanela(zoneTag, deMs, ateMs, nivel = 0) {
   }
   return grupos.map((g) => ({
     t: g.dimensions?.datetime ?? "",
-    ua: g.dimensions?.clientRequestUserAgent ?? "",
+    ua: g.dimensions?.userAgent ?? "",
     caminho: g.dimensions?.clientRequestPath ?? "/",
     status: Number(g.dimensions?.edgeResponseStatus ?? 0),
     n: Number(g.count ?? 1),
