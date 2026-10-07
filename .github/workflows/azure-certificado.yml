@@ -1,0 +1,79 @@
+# Certificado do dominio no Azure — SEM build (dono, 06/10/2026).
+#
+# POR QUE SEPARADO: o `azure-mirror.yml` gasta ~6 min no build da imagem antes
+# de chegar no dominio. Quando o que falta e so emitir/renovar o certificado,
+# esperar o build abre uma janela sem HTTPS depois da troca de DNS. Este
+# workflow faz so a parte do dominio (hostname + TXT de validacao + bind do
+# certificado gerenciado), em ~1 minuto.
+name: Azure certificado do dominio
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  certificado:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GRUPO: cp-app
+      APP: cp-web
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Hostname, TXT de validacao e certificado
+        env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          DOMINIO_EXTRA="${{ vars.AZURE_CUSTOM_DOMAIN || 'www.controlepopular.com.br' }}"
+          ZONA_EXTRA="${DOMINIO_EXTRA#*.}"
+          echo "dominio: $DOMINIO_EXTRA (zona $ZONA_EXTRA)"
+
+          echo "=== estado ANTES ==="
+          az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
+
+          az containerapp hostname add -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" -o none 2>/dev/null || true
+
+          TOKEN=$(az containerapp show -g "$GRUPO" -n "$APP" \
+            --query "properties.customDomains[?name=='$DOMINIO_EXTRA'].validationToken | [0]" -o tsv 2>/dev/null || true)
+          echo "token de validacao presente: $([ -n "$TOKEN" ] && echo sim || echo nao)"
+
+          if [ -n "$TOKEN" ] && [ -n "$CF" ]; then
+            api="https://api.cloudflare.com/client/v4"
+            ZID=$(curl -s -H "Authorization: Bearer $CF" "$api/zones?name=$ZONA_EXTRA" | jq -r '.result[0].id // empty')
+            if [ -n "$ZID" ]; then
+              NOME_TXT="asuid.$DOMINIO_EXTRA"
+              RID=$(curl -s -H "Authorization: Bearer $CF" "$api/zones/$ZID/dns_records?name=$NOME_TXT" | jq -r '.result[0].id // empty')
+              CORPO="{\"type\":\"TXT\",\"name\":\"$NOME_TXT\",\"content\":\"$TOKEN\",\"ttl\":120}"
+              if [ -n "$RID" ]; then
+                curl -s -X PATCH -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
+                  "$api/zones/$ZID/dns_records/$RID" --data "$CORPO" > /dev/null
+              else
+                curl -s -X POST -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
+                  "$api/zones/$ZID/dns_records" --data "$CORPO" > /dev/null
+              fi
+              echo "TXT $NOME_TXT publicado na Cloudflare"
+            else
+              echo "zona $ZONA_EXTRA nao encontrada na Cloudflare"
+            fi
+          fi
+
+          echo "=== emitindo o certificado gerenciado (validacao TXT) ==="
+          az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+            --environment cp-env --validation-method TXT --certificate managed -o none \
+            || echo "AVISO: o bind por TXT nao concluiu; tentar de novo em alguns minutos."
+
+          echo "=== estado DEPOIS ==="
+          az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
+          az containerapp show -g "$GRUPO" -n "$APP" \
+            --query "properties.customDomains[?name=='$DOMINIO_EXTRA'].{nome:name,laco:bindingType,cert:certificateId}" \
+            -o json || true
