@@ -1,0 +1,82 @@
+# Troca os dominios entre Guara e Azure (dono, 06/10/2026).
+#
+# ESTADO ANTES:  www.controlepopular.com.br -> Guara Cloud
+#                www.controlepopular.tech    -> Azure
+# ESTADO DEPOIS: www.controlepopular.com.br -> Azure
+#                www.controlepopular.tech    -> Guara Cloud
+#
+# POR QUE AQUI e nao na home-pc: o token da Cloudflare vive como SEGREDO do
+# repositorio (`CLOUDFLARE_API_TOKEN`); nao existe copia local e nao deve
+# existir. Este workflow e a unica via de CLI para mexer no DNS sem espalhar a
+# credencial.
+#
+# O QUE ESTE WORKFLOW NAO FAZ: certificado. Cada lado emite o do seu host —
+# o Azure pelo `azure-mirror.yml` (`hostname bind --certificate managed`,
+# precisa do CNAME apontando para ele) e o Guara na validacao do proprio
+# dominio (`pending_dns` -> active quando o CNAME chega). Ordem recomendada:
+#   1. `azure-mirror.yml` (liga o banco em runtime e cria o hostname);
+#   2. este workflow (troca os CNAMEs);
+#   3. `azure-mirror.yml` de novo (agora o bind do certificado passa).
+name: Trocar dominios (Guara <-> Azure)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: "Digite TROCAR para confirmar a troca"
+        required: true
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  trocar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ZONA_COM: controlepopular.com.br
+      ZONA_TECH: controlepopular.tech
+      # Destino de cada host depois da troca.
+      ALVO_GUARA: controle-popular-web-0b4895-controle-popular.guaracloud.com
+      ALVO_AZURE: cp-web.yellowsmoke-cc226486.spaincentral.azurecontainerapps.io
+    steps:
+      - name: Conferir a confirmacao
+        run: |
+          if [ "${{ inputs.confirmar }}" != "TROCAR" ]; then
+            echo "::error::Confirmacao ausente. Rode de novo com -f confirmar=TROCAR."
+            exit 1
+          fi
+
+      - name: Trocar os CNAMEs na Cloudflare
+        env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4"
+          zona_id() {
+            curl -s -H "Authorization: Bearer $CF" "$api/zones?name=$1" \
+              | jq -r '.result[0].id // empty'
+          }
+          registro_id() {
+            curl -s -H "Authorization: Bearer $CF" "$api/zones/$1/dns_records?name=$2" \
+              | jq -r '.result[0].id // empty'
+          }
+          atualizar() { # zona_id, registro_id, alvo
+            curl -s -X PATCH -H "Authorization: Bearer $CF" \
+              -H "Content-Type: application/json" \
+              "$api/zones/$1/dns_records/$2" --data "{\"content\":\"$3\"}" \
+              | jq -r '"  " + (.result.name // "?") + " -> " + (.result.content // "?")
+                         + " (proxied=" + ((.result.proxied // false) | tostring) + ")"'
+          }
+
+          zc=$(zona_id "$ZONA_COM")
+          zt=$(zona_id "$ZONA_TECH")
+          [ -n "$zc" ] && [ -n "$zt" ] || { echo "::error::zona nao encontrada"; exit 1; }
+
+          echo "www.$ZONA_COM passa para o AZURE:"
+          atualizar "$zc" "$(registro_id "$zc" "www.$ZONA_COM")" "$ALVO_AZURE"
+          echo "www.$ZONA_TECH passa para o GUARA:"
+          atualizar "$zt" "$(registro_id "$zt" "www.$ZONA_TECH")" "$ALVO_GUARA"
+
+          echo "OK. A Cloudflare propaga em segundos; o certificado do Azure sai na proxima rodada do azure-mirror.yml."

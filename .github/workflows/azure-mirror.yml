@@ -146,6 +146,45 @@ jobs:
           else
             echo "Chaves de traducao/voz ausentes — leitura traduzida no fallback (voz do navegador)."
           fi
+
+          # ═══ BANCO EM RUNTIME (dono, 06/10/2026) ═══
+          # O espelho subia SEM `DATABASE_URL` e as paginas dinamicas — as que
+          # chamam `unstable_noStore` e leem o Postgres a cada request, como
+          # /ambiental/licenciamento — respondiam VAZIAS: medido naquele dia,
+          # 0 linhas na pagina do espelho contra 2.094 no Guara. O banco
+          # continua sendo o MESMO Postgres do Guara (`secrets.DATABASE_URL`, o
+          # mesmo do build); o Azure so passa a alcancar o host publico.
+          if [ -n "${{ secrets.DATABASE_URL }}" ]; then
+            echo "Ligando o banco em runtime (Postgres do Guara)"
+            az containerapp secret set -g "$GRUPO" -n "$APP" \
+              --secrets "db-url=${{ secrets.DATABASE_URL }}" -o none
+            az containerapp update -g "$GRUPO" -n "$APP" \
+              --set-env-vars "DATABASE_URL=secretref:db-url" -o none
+          else
+            echo "DATABASE_URL ausente nos secrets — paginas dinamicas ficam vazias."
+          fi
+
+          # ═══ DOMINIO PRINCIPAL NO AZURE (dono, 06/10/2026) ═══
+          # O `www.controlepopular.com.br` passa a ser servido aqui, e o
+          # `.tech` vai para o Guara (troca pedida pelo dono). O
+          # `hostname add` devolve o TXT de validacao (`asuid.<host>`) e o
+          # `bind --certificate managed` emite o certificado — os dois exigem o
+          # DNS apontado para este app. Antes disso, o bind falha de proposito:
+          # o `|| echo` avisa e a rodada seguinte (depois do DNS) emite o
+          # certificado. Enquanto o DNS nao troca, nada muda para o visitante.
+          DOMINIO_EXTRA="${{ vars.AZURE_CUSTOM_DOMAIN || 'www.controlepopular.com.br' }}"
+          if [ -n "$DOMINIO_EXTRA" ]; then
+            echo "Preparando o dominio $DOMINIO_EXTRA neste app"
+            az containerapp hostname add -g "$GRUPO" -n "$APP" \
+              --hostname "$DOMINIO_EXTRA" -o none 2>/dev/null || true
+            az containerapp hostname bind -g "$GRUPO" -n "$APP" \
+              --hostname "$DOMINIO_EXTRA" \
+              --environment cp-env \
+              --validation-method CNAME \
+              --certificate managed -o none \
+              || echo "AVISO: certificado ainda nao emitido (o DNS precisa apontar para este app)."
+          fi
+
           FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
             --query properties.configuration.ingress.fqdn -o tsv)
           echo "Espelho no ar em: https://$FQDN"
