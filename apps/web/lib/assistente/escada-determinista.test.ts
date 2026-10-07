@@ -200,5 +200,30 @@ describe("avaliarEscadaDeterminista", () => {
     const res = avaliarEscadaDeterminista("qual foi o total gasto em combustivel no contrato xyz em 2023?");
     expect(res).toBeNull();
   });
+
+  /**
+   * Regressão do achado de 06/10/2026: o cartão da home "Orçamento TJMG, MPMG e
+   * DPMG" devolvia a resposta de ENERGIA (assimetria tarifária). O casamento
+   * pontuava palavras de função ("o", "e", "entre") e a pergunta atravessava a
+   * escada até o degrau de notícias, que casava pela palavra "orçamento" no
+   * título de uma reportagem sobre IPCA/Selic.
+   */
+  it("orçamento das instituições de justiça responde sobre justiça, não energia", () => {
+    const res = avaliarEscadaDeterminista(
+      "Qual o orçamento anual do TJMG, MPMG e DPMG e a disparidade entre eles?"
+    );
+    expect(res).not.toBeNull();
+    expect(res?.titulo).toMatch(/Instituições de Justiça/i);
+    expect(res?.atalhos.some((a) => a.href === "/judiciario/instituicoes")).toBe(true);
+    expect(`${res?.titulo} ${res?.texto}`).not.toMatch(/kwh|energia|tarifa/i);
+  });
+
+  it("pergunta de energia continua recebendo a resposta de energia", () => {
+    const res = avaliarEscadaDeterminista(
+      "O que é a assimetria tarifária entre o cidadão e a grande indústria?"
+    );
+    expect(res?.texto).toMatch(/kWh/);
+    expect(res?.atalhos.some((a) => a.href === "/recursos/estados")).toBe(true);
+  });
 });
 

@@ -504,8 +504,31 @@ function avaliarEscadaBruta(
   }
 
   // ─── 3.5. DEGRAU: INSTITUIÇÕES DE JUSTIÇA & ÓRGÃOS DE CONTROLE ────────
+  // Comparativo ANTES das fichas: o cartão da home pergunta pelo orçamento do
+  // TJMG, MPMG e DPMG JUNTOS ("…e a disparidade entre eles"). Sem esta regra,
+  // a pergunta atravessava a escada e caía no degrau de notícias, devolvendo
+  // uma reportagem sobre IPCA/Selic (medido em 06/10/2026). Duas ou mais
+  // siglas juntas = pergunta comparativa.
+  const siglasJustica = ["tjmg", "mpmg", "dpmg"].filter((s) => normalizada.includes(s));
+  if (siglasJustica.length >= 2) {
+    return {
+      tipo: "ferramenta",
+      titulo: "Instituições de Justiça de Minas Gerais",
+      subtitulo: "TJMG · MPMG · DPMG — orçamento, folha e penduricalhos",
+      texto:
+        "Painel comparativo das instituições de justiça de Minas Gerais: orçamento anual de cada uma, folha de pagamento, auxílios e verbas indenizatórias, com limite constitucional e fonte oficial em cada ficha.",
+      categoria: "Poder Judiciário",
+      atalhos: [
+        { rotulo: "Ver as Instituições de Justiça", href: "/judiciario/instituicoes", principal: true },
+        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg" },
+        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg" },
+        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg" },
+      ],
+    };
+  }
+
   if (
-    normalizada === "tjmg" ||
+    normalizada.includes("tjmg") ||
     normalizada.includes("tribunal de justica de minas") ||
     normalizada.includes("desembargadores tjmg")
   ) {
@@ -526,7 +549,7 @@ function avaliarEscadaBruta(
   }
 
   if (
-    normalizada === "mpmg" ||
+    normalizada.includes("mpmg") ||
     normalizada.includes("ministerio publico de minas") ||
     normalizada.includes("promotores mpmg")
   ) {
@@ -546,7 +569,7 @@ function avaliarEscadaBruta(
   }
 
   if (
-    normalizada === "dpmg" ||
+    normalizada.includes("dpmg") ||
     normalizada.includes("defensoria publica de minas") ||
     normalizada.includes("defensores publicos")
   ) {
@@ -1029,7 +1052,10 @@ function avaliarEscadaBruta(
     return (
       titNorm.includes(normalizada) ||
       normalizada.includes(slugNorm) ||
-      chavesNorm.some((k) => k === normalizada || (k.length > 4 && normalizada.includes(k)))
+      // DUAS palavras-chave, não uma: com um só acerto, qualquer pergunta que
+      // mencione "orçamento" caía na reportagem do IPCA/Selic em vez da
+      // resposta do assunto (medido 06/10/2026).
+      chavesNorm.filter((k) => k.length > 4 && normalizada.includes(k)).length >= 2
     );
   });
 

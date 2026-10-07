@@ -32,6 +32,40 @@
 import { FRENTES } from "@/lib/assistente/seu-nono-dados";
 import { semAcento, separarPalavras } from "@/lib/busca/normalizar";
 
+/**
+ * Palavras de função (artigos, preposições, pronomes, verbos de ligação).
+ *
+ * Por que existem (medido em 06/10/2026): a pontuação da base do Seu Nonô
+ * media só a GRAMÁTICA. O cartão da home "Orçamento TJMG, MPMG e DPMG"
+ * ("Qual o orçamento anual do TJMG… e a disparidade entre eles?") casava com
+ * a resposta de ENERGIA porque "o", "e", "a" e "entre" apareciam nos dois
+ * lados — 7 de 13 palavras eram funcionais. Regra do portal: resposta errada
+ * é dano (§7); melhor devolver o próximo degrau do que uma resposta vizinha.
+ */
+const PALAVRAS_FUNCIONAIS = new Set([
+  "a", "as", "o", "os", "um", "uma", "uns", "umas",
+  "de", "da", "das", "do", "dos", "em", "no", "na", "nos", "nas",
+  "ao", "aos", "pelo", "pela", "pelos", "pelas", "por",
+  "e", "ou", "mas", "que", "qual", "quais", "quando", "onde", "como", "porque",
+  "para", "com", "sem", "sob", "sobre", "entre", "ate", "desde", "apos",
+  "se", "sua", "suas", "seu", "seus", "meu", "minha", "meus", "minhas",
+  "ele", "ela", "eles", "elas", "isso", "isto", "aquilo", "este", "esta",
+  "esse", "essa", "todos", "toda", "todas", "todo", "mais", "menos", "muito",
+  "pouco", "ja", "nao", "sim", "tambem", "tem", "ha", "ser", "sao", "foi",
+  "sendo", "ter", "vai", "vem", "esta", "estao", "the", "and", "of", "to",
+]);
+
+/**
+ * Só as palavras que carregam ASSUNTO: sem palavras de função e sem as muito
+ * curtas (siglas úteis como "mg", "sp" e "stf" têm 2–3 letras, então o corte
+ * é em 2; "de", "da" já caíram pela lista acima).
+ */
+function palavrasDeAssunto(texto: string): string[] {
+  return separarPalavras(texto).filter(
+    (w) => w.length >= 2 && !PALAVRAS_FUNCIONAIS.has(w),
+  );
+}
+
 export interface LinkResposta {
   href: string;
   texto: string;
@@ -566,8 +600,10 @@ export function buscarRespostaCurada(
     }
   }
 
-  // 2. Tenta casar com a base do Seu Nonô (todas as frentes e categorias)
-  const palavrasPergunta = new Set(separarPalavras(normalizada));
+  // 2. Tenta casar com a base do Seu Nonô (todas as frentes e categorias).
+  // Só palavras de ASSUNTO contam (ver `PALAVRAS_FUNCIONAIS`): casar por
+  // artigo/preposição fazia orçamento receber resposta de energia.
+  const palavrasPergunta = new Set(palavrasDeAssunto(normalizada));
   let melhorCorrespondencia: {
     pergunta: string;
     resposta: string;
@@ -579,13 +615,18 @@ export function buscarRespostaCurada(
     for (const cat of f.categorias) {
       for (const p of cat.perguntas) {
         const pNorm = semAcento(p.pergunta.toLowerCase());
-        const palavrasP = separarPalavras(pNorm);
+        const palavrasP = palavrasDeAssunto(pNorm);
+        if (palavrasP.length === 0) continue;
         let intersecao = 0;
         for (const w of palavrasP) {
           if (palavrasPergunta.has(w)) intersecao++;
         }
-        const pontuacao = intersecao / Math.max(palavrasP.length, 1);
+        const pontuacao = intersecao / palavrasP.length;
+        // Exige ao menos UMA palavra de assunto em comum: a fração sozinha
+        // deixava uma pergunta de outra fronteira entrar por empate de
+        // palavras de função.
         if (
+          intersecao >= 1 &&
           pontuacao >= 0.45 &&
           (!melhorCorrespondencia || pontuacao > melhorCorrespondencia.pontuacao)
         ) {
