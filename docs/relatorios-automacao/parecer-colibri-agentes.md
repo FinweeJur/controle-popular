@@ -1,6 +1,6 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
-**Data da Execução:** 05/10/2026, 05:31:23  
+**Data da Execução:** 07/10/2026, 05:31:32  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Motor Determinístico Offline
 
@@ -8,8 +8,8 @@
 
 ## 1. Síntese Executiva
 
-- **Disponibilidade das Fontes Públicas (PicoClaw):** 90.5% (38 de 42 fontes operacionais).
-- **Postura de Segurança & Conformidade (Hermes Agent):** 12 itens aprovados, 2 alertas, 0 falhas críticas.
+- **Disponibilidade das Fontes Públicas (PicoClaw):** 95.2% (40 de 42 fontes operacionais).
+- **Postura de Segurança & Conformidade (Hermes Agent):** 11 itens aprovados, 3 alertas, 0 falhas críticas.
 - **Proteção de Dados Pessoais (LGPD / Mod-11):** 100% de conformidade, zero CPFs identificados nos acervos publicados.
 - **Limites de Infraestrutura (Cloudflare Workers):** Nenhum arquivo excede o teto de 25 MiB.
 
@@ -23,12 +23,12 @@
 | SEGURANCA | Headers de Proteção Básica (HSTS/Nosniff/Frame) | **APROVADO** | HSTS, X-Content-Type-Options e X-Frame-Options devidamente declarados. |
 | SEGURANCA | Espelhamento public/_headers | **APROVADO** | public/_headers configurado para garantir proteção nos Static Assets do Worker. |
 | SEGURANCA | Produção: Content-Security-Policy | **ALERTA** | Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado. |
-| SEGURANCA | Produção: Strict-Transport-Security | **APROVADO** | Header retornado por https://controlepopular.com.br: max-age=15552000; includeSubDomains; preload |
-| SEGURANCA | Produção: X-Frame-Options | **ALERTA** | Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado. |
-| SEGURANCA | Produção: X-Content-Type-Options | **APROVADO** | Header retornado por https://controlepopular.com.br: nosniff |
+| SEGURANCA | Produção: Strict-Transport-Security | **ALERTA** | Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado. |
+| SEGURANCA | Produção: X-Frame-Options | **APROVADO** | Header retornado por https://controlepopular.com.br: SAMEORIGIN |
+| SEGURANCA | Produção: X-Content-Type-Options | **ALERTA** | Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado. |
 | SEGURANCA | Varredura Estática de Segredos | **APROVADO** | Nenhum token ou chave de credencial identificado nos arquivos críticos. |
 | SEGURANCA | Supply Chain & Modelos de IA | **APROVADO** | Zero formatos binários (.pickle/.joblib) e zero tokens expostos nos arquivos auditados. |
-| CLOUDFLARE | Teto de 25 MiB do Cloudflare Workers | **APROVADO** | Todos os 196 arquivos de dados em data/ e public/data/ estão dentro do limite. |
+| CLOUDFLARE | Teto de 25 MiB do Cloudflare Workers | **APROVADO** | Todos os 197 arquivos de dados em data/ e public/data/ estão dentro do limite. |
 | PRIVACIDADE | Varredura Mod-11 de CPF nos Acervos | **APROVADO** | Todos os arquivos de dados foram escaneados com ZERO CPFs de pessoas físicas encontrados. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: sigbm | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: ibama | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |

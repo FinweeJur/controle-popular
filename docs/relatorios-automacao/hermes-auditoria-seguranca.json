@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-10-05T08:31:23.549Z",
+  "geradoEm": "2026-10-07T08:31:32.190Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 12,
-  "alertas": 2,
+  "aprovados": 11,
+  "alertas": 3,
   "falhas": 0,
   "itens": [
     {
@@ -33,20 +33,20 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=15552000; includeSubDomains; preload"
-    },
-    {
-      "categoria": "seguranca",
-      "item": "Produção: X-Frame-Options",
       "status": "ALERTA",
       "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
-      "item": "Produção: X-Content-Type-Options",
+      "item": "Produção: X-Frame-Options",
       "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
+      "detalhes": "Header retornado por https://controlepopular.com.br: SAMEORIGIN"
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Produção: X-Content-Type-Options",
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
@@ -64,7 +64,7 @@
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 196 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 197 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",

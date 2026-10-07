@@ -1,13 +1,13 @@
 {
-  "atualizadoEm": "2026-10-05T18:45:07.961Z",
+  "atualizadoEm": "2026-10-07T18:53:24.219Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 601,
+  "latenciaMs": 442,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-05T18:45:07.959Z",
-    "totalBasesVerificadas": 577,
+    "atualizadoEm": "2026-10-07T18:50:06.712Z",
+    "totalBasesVerificadas": 610,
     "basesVazias": [],
     "basesCorrompidas": [],
     "basesEstagnadas": [],
@@ -15,12 +15,39 @@
     "etlsPendentes": [],
     "statusGeral": "SAUDAVEL",
     "resumoLinhas": [
-      "Bases verificadas: 577 arquivos JSON",
+      "Bases verificadas: 610 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
       "Bases com estagnação (>60d): 0",
       "Fontes/ETLs com status adverso: 0"
     ]
+  },
+  "paginas": {
+    "base": "https://www.controlepopular.com.br",
+    "total": 100,
+    "ok": 96,
+    "falhas": [
+      {
+        "rota": "/direitos-em-movimento/saude-publica",
+        "status": 503
+      },
+      {
+        "rota": "/direitos-em-movimento/educacao",
+        "status": 503
+      },
+      {
+        "rota": "/direitos-em-movimento/trabalho-e-renda",
+        "status": 503
+      },
+      {
+        "rota": "/direitos-em-movimento/conselhos",
+        "status": 0
+      }
+    ],
+    "siteInteiroFora": false,
+    "inicioEm": "2026-10-07T18:50:06.719Z",
+    "terminoEm": "2026-10-07T18:53:24.170Z",
+    "duracaoMs": 197451
   },
   "erro": null
 }
