@@ -105,11 +105,23 @@ jobs:
           echo "=== certificados no ambiente (antes) ==="
           az containerapp env certificate list -g "$GRUPO" -n cp-env -o table || true
 
-          # NÃO recriar quando já existe certificado para o host: recriar GERA UM
-          # TOKEN NOVO e invalida o TXT que o dono acabou de publicar — foi o que
-          # travou em 07/10 (o token virou `_urwtg...` e o TXT ainda tinha o
-          # antigo). Só cria quando não há nenhum; existindo, apenas espera e
-          # vincula.
+          # ═══ ORDEM IMPORTA: limpar o FALHO antes de decidir criar ═══
+          # Em 07/10 o `Failed` do certificado anterior barrava a criação de um
+          # novo (o Azure recusa dois para o mesmo host) e a limpeza só vinha
+          # depois do bind — resultado: nenhum certificado e a validação jamais
+          # refeita com o TXT já correto.
+          FALHOS_INICIAIS=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
+            --query "[?properties.subjectName=='$DOMINIO_EXTRA' && properties.provisioningState=='Failed'].name" \
+            -o tsv 2>/dev/null || true)
+          for c in $FALHOS_INICIAIS; do
+            echo "  removendo certificado em Failed: $c"
+            az containerapp env certificate delete -g "$GRUPO" -n cp-env --certificate "$c" -y -o none \
+              || echo "  (nao consegui remover $c)"
+          done
+
+          # Só cria quando não sobra certificado para o host; existindo (Pending
+          # ou Succeeded), apenas espera e vincula — recriar GERA TOKEN NOVO e
+          # invalida o TXT publicado.
           EXISTENTES=$(az containerapp env certificate list -g "$GRUPO" -n cp-env \
             --query "[?properties.subjectName=='$DOMINIO_EXTRA'].name" -o tsv 2>/dev/null || true)
           if [ -z "$EXISTENTES" ]; then
