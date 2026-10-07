@@ -158,21 +158,30 @@ jobs:
               --hostname "$DOMINIO_EXTRA" --certificate "$ALVO_CERT" -o none \
               || echo "AVISO: o bind com $ALVO_CERT nao concluiu."
           else
-            # Laço: cada `bind` dispara uma NOVA checagem do TXT. Quando o DNS
-            # esteve errado e voltou, o Azure costuma segurar o valor antigo por
-            # alguns minutos — tentar de novo e esperar resolve.
-            for tentativa in $(seq 1 8); do
-              SAIDA_BIND=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
-                --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none 2>&1) || true
-              echo "  bind $tentativa/8: $(echo "$SAIDA_BIND" | head -1 | cut -c1-120)"
-              if [ -z "$SAIDA_BIND" ]; then
-                echo "  bind OK"
-                break
-              fi
-              ESPERADO=$(echo "$SAIDA_BIND" | grep -oE 'to [A-Fa-f0-9]{16,}' | awk '{print $2}' | head -1 || true)
-              [ -n "$ESPERADO" ] && echo "  ### TXT ESPERADO PELO AZURE: asuid.$DOMINIO_EXTRA = $ESPERADO"
-              sleep 60
-            done
+            # CNAME primeiro: funciona quando o registro esta (temporariamente)
+            # SEM proxy — o Azure enxerga a cadeia inteira. O caminho por TXT
+            # vem depois, porque em 07/10 o Azure insistiu que não via um TXT
+            # publicado e exato (provavel cache da validacao anterior).
+            echo "=== tentando validacao por CNAME (registro sem proxy) ==="
+            SAIDA_CNAME=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
+              --hostname "$DOMINIO_EXTRA" --validation-method CNAME -o none 2>&1) || true
+            echo "  cname: $(echo "$SAIDA_CNAME" | head -1 | cut -c1-120)"
+
+            if [ -n "$SAIDA_CNAME" ]; then
+              # Laço: cada `bind` dispara uma NOVA checagem do TXT.
+              for tentativa in $(seq 1 6); do
+                SAIDA_BIND=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
+                  --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none 2>&1) || true
+                echo "  bind txt $tentativa/6: $(echo "$SAIDA_BIND" | head -1 | cut -c1-110)"
+                if [ -z "$SAIDA_BIND" ]; then
+                  echo "  bind OK"
+                  break
+                fi
+                ESPERADO=$(echo "$SAIDA_BIND" | grep -oE 'to [A-Fa-f0-9]{16,}' | awk '{print $2}' | head -1 || true)
+                [ -n "$ESPERADO" ] && echo "  ### TXT ESPERADO: asuid.$DOMINIO_EXTRA = $ESPERADO"
+                sleep 45
+              done
+            fi
           fi
 
           echo "=== estado DEPOIS ==="
