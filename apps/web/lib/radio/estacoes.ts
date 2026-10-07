@@ -1181,16 +1181,20 @@ export const ORDEM_TIPOS: readonly TipoRadio[] = [
 ];
 
 /**
- * Regiões do Brasil, na ordem de exibição pedida pelo dono (04/10/2026):
- * Norte → Nordeste → Centro-Oeste → Sul → Sudeste. Não é a ordem do IBGE —
- * vale para os cartões de resumo, os filtros e a ordenação da tela.
+ * Regiões do Brasil, na ordem de exibição pedida pelo dono.
+ *
+ * ⟲ 07/10/2026: o dono inverteu os dois últimos — Sudeste ANTES de Sul
+ * ("norte primeiro, depois nordeste, depois centro oeste, depois sudeste,
+ * depois sul"). A ordem anterior (04/10) tinha Sul antes de Sudeste.
+ * Não é a ordem do IBGE: vale para os cartões de resumo, os filtros, a página
+ * `/radio` e o índice do player.
  */
 export const REGIOES_BRASIL: readonly RegiaoRadio[] = [
   "Norte",
   "Nordeste",
   "Centro-Oeste",
-  "Sul",
   "Sudeste",
+  "Sul",
 ];
 
 /** Ordem canônica das regiões (Brasil na ordem do dono, depois o mundo). */
@@ -1200,6 +1204,53 @@ export const ORDEM_REGIOES: readonly RegiaoRadio[] = [
   "Africa",
   "Asia e Caribe",
 ];
+
+/**
+ * Régua ÚNICA de ordenação do acervo de rádio (dono, 07/10/2026).
+ *
+ * A página `/radio` já agrupava por eixo e ordenava por região, mas o ÍNDICE do
+ * player (o painelzinho do canto) saía na ordem do arquivo: estados espalhados
+ * e nenhuma leitura por região. Aqui a régua vale para os dois lados:
+ *
+ * 1. **Brasil primeiro**, nas regiões na ordem do dono (Norte → Nordeste →
+ *    Centro-Oeste → Sudeste → Sul) — `ORDEM_REGIOES` já põe o mundo depois;
+ * 2. dentro da região, **o mesmo estado junto**, pelo NOME do estado (Minas
+ *    Gerais antes de São Paulo, sem depender da sigla); emissora nacional sem
+ *    UF vai por último no seu grupo;
+ * 3. dentro do estado — e dentro do país estrangeiro — pelo **nome** da
+ *    emissora;
+ * 4. o mundo por macro-região, depois por país e emissora.
+ *
+ * O eixo (`tipo`) NÃO entra aqui: quem agrupa por eixo é quem chama (o índice
+ * mostra Pública federal, Universitária, Comunitária e Popular; a página usa o
+ * mesmo). Esta função ordena DENTRO de qualquer recorte.
+ */
+export function compararEstacoes(a: EstacaoRadio, b: EstacaoRadio): number {
+  const regiaoA = ORDEM_REGIOES.indexOf(a.regiao);
+  const regiaoB = ORDEM_REGIOES.indexOf(b.regiao);
+  if (regiaoA !== regiaoB) return regiaoA - regiaoB;
+
+  const nomeEstado = (e: EstacaoRadio): string =>
+    e.uf ? (NOME_ESTADO[e.uf.trim().toUpperCase()] ?? e.uf) : "\uffff";
+
+  if (a.pais === "BR" && b.pais === "BR") {
+    const estadoA = nomeEstado(a);
+    const estadoB = nomeEstado(b);
+    if (estadoA !== estadoB) return estadoA.localeCompare(estadoB, "pt-BR");
+  } else if (a.pais !== b.pais) {
+    return a.paisNome.localeCompare(b.paisNome, "pt-BR");
+  }
+
+  return a.nome.localeCompare(b.nome, "pt-BR");
+}
+
+/**
+ * Nome do estado a partir da sigla, com a mesma régua do comparador.
+ */
+export function nomeDoEstado(uf?: string): string | null {
+  if (!uf) return null;
+  return NOME_ESTADO[uf.trim().toUpperCase()] ?? null;
+}
 
 /**
  * Bandeira do país a partir do código ISO-3166-1 alfa-2.
@@ -1272,6 +1323,19 @@ export const NOME_ESTADO: Record<string, string> = {
   SE: "Sergipe",
   TO: "Tocantins",
 };
+
+/**
+ * Índice pronto para consumo: o acervo inteiro na régua de `compararEstacoes`.
+ *
+ * Fica AQUI (depois de `NOME_ESTADO`) de propósito: esta constante ordena no
+ * carregamento do módulo e o comparador lê `NOME_ESTADO` — declarada depois,
+ * ela cairia em zona morta (`ReferenceError`). Quem agrupa por eixo faz
+ * `ESTACOES_ORDENADAS.filter(...)` e o recorte já sai ordenado (o `filter`
+ * preserva a ordem).
+ */
+export const ESTACOES_ORDENADAS: readonly EstacaoRadio[] = [...ESTACOES].sort(
+  compararEstacoes,
+);
 
 /**
  * Arquivo da bandeira de cada estado no Wikimedia Commons (underscore = espaço).

@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 import {
-  ESTACOES,
+  ESTACOES_ORDENADAS,
   estacaoPorId,
   ORDEM_TIPOS,
   ROTULO_TIPO,
@@ -437,7 +437,10 @@ export default function PlayerRadio() {
                 className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2"
               >
               {ORDEM_TIPOS.map((tipo) => {
-                const grupo = ESTACOES.filter((e) => e.tipo === tipo);
+                // `ESTACOES_ORDENADAS` (e não `ESTACOES`): o eixo agrupa, mas
+                // dentro dele a lista segue a régua do dono — Brasil primeiro,
+                // regiões na ordem dele e o MESMO estado junto (07/10/2026).
+                const grupo = ESTACOES_ORDENADAS.filter((e) => e.tipo === tipo);
                 if (grupo.length === 0) return null;
                 return (
                   <div key={tipo} className="mb-1.5 last:mb-0">

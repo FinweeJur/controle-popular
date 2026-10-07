@@ -12,7 +12,9 @@ import { describe, expect, it } from "vitest";
 import {
   bandeiraDe,
   BANDEIRA_ESTADO_ARQUIVO,
+  compararEstacoes,
   ESTACOES,
+  ESTACOES_ORDENADAS,
   NOME_ESTADO,
   ORDEM_REGIOES,
   ORDEM_TIPOS,
@@ -152,17 +154,60 @@ describe("bandeira do estado brasileiro", () => {
 });
 
 describe("ordem de exibição das regiões", () => {
-  it("segue a ordem do dono: Brasil (Norte a Sudeste) e depois o mundo", () => {
+  it("segue a ordem do dono: Brasil (Norte, Nordeste, Centro-Oeste, Sudeste, Sul) e depois o mundo", () => {
+    // ⟲ 07/10/2026: o dono inverteu os dois últimos (Sudeste antes de Sul).
     expect(ORDEM_REGIOES).toEqual([
       "Norte",
       "Nordeste",
       "Centro-Oeste",
-      "Sul",
       "Sudeste",
+      "Sul",
       "America Latina",
       "Africa",
       "Asia e Caribe",
     ]);
+  });
+});
+
+describe("compararEstacoes (régua do índice do player)", () => {
+  it("Brasil antes do mundo", () => {
+    const primeiroMundo = ESTACOES_ORDENADAS.findIndex((e) => e.pais !== "BR");
+    const ultimoBrasil = ESTACOES_ORDENADAS.reduce(
+      (acc, e, i) => (e.pais === "BR" ? i : acc),
+      -1,
+    );
+    expect(primeiroMundo).toBeGreaterThanOrEqual(0);
+    expect(ultimoBrasil).toBeLessThan(primeiroMundo);
+  });
+
+  it("as regiões do Brasil não decrescem na ordem canônica", () => {
+    const posicoes = ESTACOES_ORDENADAS.filter((e) => e.pais === "BR").map((e) =>
+      ORDEM_REGIOES.indexOf(e.regiao),
+    );
+    expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
+  });
+
+  it("dentro de cada eixo, o MESMO estado fica em bloco contínuo", () => {
+    for (const tipo of ORDEM_TIPOS) {
+      const doTipo = ESTACOES_ORDENADAS.filter(
+        (e) => e.tipo === tipo && e.pais === "BR" && e.uf,
+      );
+      const vistos = new Set<string>();
+      let anterior: string | undefined;
+      for (const e of doTipo) {
+        const uf = e.uf as string;
+        if (uf !== anterior) {
+          expect(vistos.has(uf), `${tipo}: ${uf} aparece fora do bloco`).toBe(false);
+          vistos.add(uf);
+          anterior = uf;
+        }
+      }
+    }
+  });
+
+  it("a régua é estável: partir do acervo invertido dá o mesmo índice", () => {
+    const invertido = [...ESTACOES].reverse().sort(compararEstacoes);
+    expect(invertido.map((e) => e.id)).toEqual(ESTACOES_ORDENADAS.map((e) => e.id));
   });
 });
 

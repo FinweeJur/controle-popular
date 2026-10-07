@@ -6,6 +6,7 @@ import {
   ORDEM_REGIOES,
   ORDEM_TIPOS,
   ROTULO_REGIAO,
+  compararEstacoes,
   ROTULO_TIPO,
   type EstacaoRadio,
   type RegiaoRadio,
@@ -144,11 +145,10 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
           return (a.frequencia ?? "\uffff").localeCompare(b.frequencia ?? "\uffff", "pt-BR");
         case "tipo":
         default:
-          return (
-            porTipo(a) - porTipo(b) ||
-            porRegiao(a) - porRegiao(b) ||
-            a.nome.localeCompare(b.nome, "pt-BR")
-          );
+          // Mesma régua do índice do player (dono, 07/10/2026): eixo primeiro e,
+          // dentro dele, a ordem por região/estado/nome de `compararEstacoes` —
+          // o MESMO estado fica em bloco contínuo também na página.
+          return porTipo(a) - porTipo(b) || compararEstacoes(a, b);
       }
     });
     return lista;
