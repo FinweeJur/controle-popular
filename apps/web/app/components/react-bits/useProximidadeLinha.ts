@@ -19,6 +19,10 @@
  *   com suavização exponencial independente de taxa de quadros — cor e
  *   deslocamento leem a MESMA variável e andam juntos, sem `transition`
  *   de CSS para defasar;
+ * - UM item aceso por vez: quem está SOB o ponteiro leva o efeito inteiro e
+ *   os demais ficam zerados; fora de um item, a queda usa a distância até a
+ *   BORDA da caixa (não do centro). Sem isso, a distância só vertical acendia
+ *   a fileira inteira nas grades — medido 06/10/2026 no índice da navbar;
  * - o contêiner chega por REF e é resolvido preguiçosamente dentro do
  *   quadro: as duas listas montam e desmontam (painel abre no hover, menu
  *   abre no clique) e um listener preso num elemento condicional morreria
@@ -126,15 +130,37 @@ export function useProximidadeLinha(
         const dentro = !!ponteiro &&
           ponteiro.x >= r.left && ponteiro.x <= r.right &&
           ponteiro.y >= r.top && ponteiro.y <= r.bottom;
-        for (let i = 0; i < itens.length; i += 1) {
-          if (!dentro || !ponteiro) {
-            alvos[i] = 0;
-            continue;
+        if (!dentro || !ponteiro) {
+          for (let i = 0; i < itens.length; i += 1) alvos[i] = 0;
+        } else {
+          // ═══ UM SÓ ACENDE (dono, 06/10/2026) ═══
+          // Antes a distância era só VERTICAL (`|y − centro|`): numa grade,
+          // TODOS os itens da mesma linha acendiam juntos. Agora quem está SOB
+          // o ponteiro leva o efeito inteiro e sozinho; fora dele, os vizinhos
+          // entram apenas pela distância até a BORDA da caixa (não do centro),
+          // que é o que dá o "de leve" sem acender a fileira.
+          let sob = -1;
+          for (let i = 0; i < itens.length; i += 1) {
+            const ri = itens[i].getBoundingClientRect();
+            if (
+              ponteiro.x >= ri.left && ponteiro.x <= ri.right &&
+              ponteiro.y >= ri.top && ponteiro.y <= ri.bottom
+            ) {
+              sob = i;
+              break;
+            }
           }
-          const ri = itens[i].getBoundingClientRect();
-          const centro = ri.top + ri.height / 2;
-          const dist = Math.abs(ponteiro.y - centro);
-          alvos[i] = curva(Math.max(0, 1 - dist / raio));
+          for (let i = 0; i < itens.length; i += 1) {
+            if (sob >= 0) {
+              alvos[i] = i === sob ? 1 : 0;
+              continue;
+            }
+            const ri = itens[i].getBoundingClientRect();
+            const dx = Math.max(ri.left - ponteiro.x, 0, ponteiro.x - ri.right);
+            const dy = Math.max(ri.top - ponteiro.y, 0, ponteiro.y - ri.bottom);
+            const dist = Math.hypot(dx, dy);
+            alvos[i] = curva(Math.max(0, 1 - dist / raio));
+          }
         }
       }
 

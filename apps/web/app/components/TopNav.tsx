@@ -311,19 +311,10 @@ export default function TopNav() {
               ref={indiceRef}
               className="relative rounded-2xl border border-border bg-surface p-3 sm:p-5 shadow-2xl"
             >
-              {/* Fechar o índice: o painel é grande e, no celular, o toque em
-                  fora pode não acontecer (a página atrás rola). O "X" é a
-                  saída explícita (dono, 06/10/2026). */}
-              <button
-                type="button"
-                onClick={fechar}
-                aria-label="Fechar o índice"
-                title="Fechar"
-                className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-text-soft transition-colors hover:bg-surface-2 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                <X size={16} aria-hidden="true" />
-              </button>
-              {/* Header: atalhos globais */}
+              {/* Header: atalhos globais. O "X" de fechar vive DENTRO desta
+                  linha (era `absolute right-3 top-3` e caía em cima do texto
+                  "…36+ Subfrentes", medido em 06/10/2026): como item do flex,
+                  ele reserva o próprio espaço em qualquer largura. */}
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
                 <div className="flex flex-wrap gap-2">
                   <NextLink
@@ -349,9 +340,20 @@ export default function TopNav() {
                     <span>Eixo Central (ONSA)</span>
                   </NextLink>
                 </div>
-                <span className="text-xs font-semibold text-text-soft">
-                  4 Eixos Temáticos • 36+ Subfrentes
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-text-soft">
+                    4 Eixos Temáticos • 36+ Subfrentes
+                  </span>
+                  <button
+                    type="button"
+                    onClick={fechar}
+                    aria-label="Fechar o índice"
+                    title="Fechar o índice"
+                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-text-soft transition-colors hover:bg-surface-2 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    <X size={16} aria-hidden="true" />
+                  </button>
+                </div>
               </div>
 
               {/* Grade de seções pelos 3 Eixos Temáticos + Central */}
