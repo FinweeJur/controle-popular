@@ -158,17 +158,21 @@ jobs:
               --hostname "$DOMINIO_EXTRA" --certificate "$ALVO_CERT" -o none \
               || echo "AVISO: o bind com $ALVO_CERT nao concluiu."
           else
-            SAIDA_BIND=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
-              --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none 2>&1) || true
-            echo "$SAIDA_BIND"
-            # A mensagem do bind é AUTORIDADE sobre o token: ela diz exatamente
-            # qual TXT o Azure espera. Em 07/10 o token do certificado avulso
-            # (`_urwtg...`) era DIFERENTE do token do hostname (`06C48CD2...`)
-            # e seguir o primeiro travou o processo — o que vale é este.
-            ESPERADO=$(echo "$SAIDA_BIND" | grep -oE 'to [A-Fa-f0-9]{16,}' | awk '{print $2}' | head -1 || true)
-            if [ -n "$ESPERADO" ]; then
-              echo "### TXT ESPERADO PELO AZURE: asuid.$DOMINIO_EXTRA = $ESPERADO"
-            fi
+            # Laço: cada `bind` dispara uma NOVA checagem do TXT. Quando o DNS
+            # esteve errado e voltou, o Azure costuma segurar o valor antigo por
+            # alguns minutos — tentar de novo e esperar resolve.
+            for tentativa in $(seq 1 8); do
+              SAIDA_BIND=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" -e cp-env \
+                --hostname "$DOMINIO_EXTRA" --validation-method TXT -o none 2>&1) || true
+              echo "  bind $tentativa/8: $(echo "$SAIDA_BIND" | head -1 | cut -c1-120)"
+              if [ -z "$SAIDA_BIND" ]; then
+                echo "  bind OK"
+                break
+              fi
+              ESPERADO=$(echo "$SAIDA_BIND" | grep -oE 'to [A-Fa-f0-9]{16,}' | awk '{print $2}' | head -1 || true)
+              [ -n "$ESPERADO" ] && echo "  ### TXT ESPERADO PELO AZURE: asuid.$DOMINIO_EXTRA = $ESPERADO"
+              sleep 60
+            done
           fi
 
           echo "=== estado DEPOIS ==="
