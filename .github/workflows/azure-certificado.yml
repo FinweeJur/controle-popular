@@ -85,12 +85,23 @@ jobs:
           # este app (o caso depois da troca). TXT como plano B — depende do
           # registro `asuid` publicado, que o token do repo NAO consegue criar
           # (erro 10405), entao ali o dono publica pelo painel.
-          echo "=== emitindo o certificado gerenciado (validacao CNAME) ==="
-          if ! az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method CNAME -o none; then
-            echo "CNAME nao validou — tentando por TXT (precisa do asuid.$DOMINIO_EXTRA no DNS)"
+          # Duas etapas (mais previsível que o bind direto, que ficou pendurado
+          # ~12 min em 07/10): CRIA o certificado gerenciado no ambiente e só
+          # depois o VINCULA ao app pelo nome. `--certificate` espera NOME —
+          # passar a palavra "managed" devolve "does not exist in environment".
+          NOME_CERT="cert-$(echo "$DOMINIO_EXTRA" | tr '.' '-')"
+          echo "=== criando o certificado gerenciado ($NOME_CERT) ==="
+          if az containerapp env certificate create -g "$GRUPO" --environment cp-env \
+               --name "$NOME_CERT" --hostname "$DOMINIO_EXTRA" \
+               --validation-method CNAME -o none; then
+            echo "certificado criado — vinculando ao app"
             az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-              --environment cp-env --validation-method TXT -o none \
+              --environment cp-env --certificate "$NOME_CERT" -o none \
+              || echo "AVISO: o bind do certificado nao concluiu."
+          else
+            echo "AVISO: nao consegui criar o certificado gerenciado — tentando o bind direto"
+            az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+              --environment cp-env --validation-method CNAME -o none \
               || echo "AVISO: certificado ainda nao emitido; rodar de novo depois do DNS."
           fi
 
