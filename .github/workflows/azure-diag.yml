@@ -1,0 +1,37 @@
+# TEMPORÁRIO — diagnóstico do CLI do Azure (apagar depois).
+# Imprime a ajuda de `env certificate create` e `hostname bind` para acertar a
+# sintaxe do certificado gerenciado com validação TXT. Manual: workflow_dispatch.
+name: Azure diag certificado (temporario)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Ajuda do CLI
+        run: |
+          set -uo pipefail
+          echo "###### versao ######"
+          az version
+          echo "###### env certificate create ######"
+          az containerapp env certificate create --help
+          echo "###### env certificate list ######"
+          az containerapp env certificate list --help
+          echo "###### hostname bind ######"
+          az containerapp hostname bind --help
+          echo "###### certificados no ambiente ######"
+          az containerapp env certificate list -g cp-app -n cp-env -o table || true
