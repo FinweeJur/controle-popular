@@ -43,9 +43,23 @@ jobs:
 
           az containerapp hostname add -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" -o none 2>/dev/null || true
 
-          TOKEN=$(az containerapp show -g "$GRUPO" -n "$APP" \
-            --query "properties.customDomains[?name=='$DOMINIO_EXTRA'].validationToken | [0]" -o tsv 2>/dev/null || true)
-          echo "token de validacao presente: $([ -n "$TOKEN" ] && echo sim || echo nao)"
+          # O token de validação vive em `properties.customDomains[]`. Ler por
+          # jq (e não por JMESPath) porque o campo varia de forma entre versões
+          # do CLI — foi o que devolveu vazio em 06/10 e deixou o bind sem TXT.
+          CADASTRO=$(az containerapp show -g "$GRUPO" -n "$APP" \
+            --query "properties.customDomains" -o json 2>/dev/null || echo '[]')
+          echo "=== customDomains ==="
+          echo "$CADASTRO" | jq -r '.[] | "nome=" + .name + " binding=" + (.bindingType // "-") + " token=" + (.validationToken // "-")'
+          TOKEN=$(echo "$CADASTRO" | jq -r --arg d "$DOMINIO_EXTRA" '.[] | select(.name==$d) | .validationToken // empty')
+          if [ -z "$TOKEN" ]; then
+            # Fallback: o proprio erro do bind revela o valor esperado
+            # ("A TXT record pointing from asuid.<host> to <TOKEN>").
+            TOKEN=$(az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+              --environment cp-env --validation-method TXT --certificate managed -o none 2>&1 \
+              | grep -oE 'to [A-Fa-f0-9]{8,}' | awk '{print $2}' | head -1 || true)
+          fi
+          echo "token de validacao: ${TOKEN:-(nao encontrado)}"
+          echo "TXT a publicar: asuid.$DOMINIO_EXTRA = ${TOKEN:-?}"
 
           if [ -n "$TOKEN" ] && [ -n "$CF" ]; then
             api="https://api.cloudflare.com/client/v4"
@@ -55,22 +69,30 @@ jobs:
               RID=$(curl -s -H "Authorization: Bearer $CF" "$api/zones/$ZID/dns_records?name=$NOME_TXT" | jq -r '.result[0].id // empty')
               CORPO="{\"type\":\"TXT\",\"name\":\"$NOME_TXT\",\"content\":\"$TOKEN\",\"ttl\":120}"
               if [ -n "$RID" ]; then
-                curl -s -X PATCH -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
-                  "$api/zones/$ZID/dns_records/$RID" --data "$CORPO" > /dev/null
+                RESP=$(curl -s -X PATCH -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
+                  "$api/zones/$ZID/dns_records/$RID" --data "$CORPO")
               else
-                curl -s -X POST -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
-                  "$api/zones/$ZID/dns_records" --data "$CORPO" > /dev/null
+                RESP=$(curl -s -X POST -H "Authorization: Bearer $CF" -H "Content-Type: application/json" \
+                  "$api/zones/$ZID/dns_records" --data "$CORPO")
               fi
-              echo "TXT $NOME_TXT publicado na Cloudflare"
+              echo "Cloudflare respondeu: $(echo "$RESP" | jq -r '.success|tostring') $(echo "$RESP" | jq -r '.errors[0].message // ""')"
             else
               echo "zona $ZONA_EXTRA nao encontrada na Cloudflare"
             fi
           fi
 
-          echo "=== emitindo o certificado gerenciado (validacao TXT) ==="
-          az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
-            --environment cp-env --validation-method TXT --certificate managed -o none \
-            || echo "AVISO: o bind por TXT nao concluiu; tentar de novo em alguns minutos."
+          # CNAME primeiro: e o caminho que funciona quando o DNS ja aponta para
+          # este app (o caso depois da troca). TXT como plano B — depende do
+          # registro `asuid` publicado, que o token do repo NAO consegue criar
+          # (erro 10405), entao ali o dono publica pelo painel.
+          echo "=== emitindo o certificado gerenciado (validacao CNAME) ==="
+          if ! az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+              --environment cp-env --validation-method CNAME --certificate managed -o none; then
+            echo "CNAME nao validou — tentando por TXT (precisa do asuid.$DOMINIO_EXTRA no DNS)"
+            az containerapp hostname bind -g "$GRUPO" -n "$APP" --hostname "$DOMINIO_EXTRA" \
+              --environment cp-env --validation-method TXT --certificate managed -o none \
+              || echo "AVISO: certificado ainda nao emitido; rodar de novo depois do DNS."
+          fi
 
           echo "=== estado DEPOIS ==="
           az containerapp hostname list -g "$GRUPO" -n "$APP" -o table || true
