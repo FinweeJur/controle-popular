@@ -254,3 +254,8 @@ etl/betim/.fila-pncp.lock
 apps/web/AGENTS.md
 apps/web/CLAUDE.md
 
+# Relatorios de auditoria locais (07/10/2026): artefato de MAQUINA, nao
+# fonte. Contem log de acesso (User-Agent e caminho de terceiros) — fica so
+# nesta maquina; o resultado publico vive no artefato do run do GitHub.
+relatorios/
+

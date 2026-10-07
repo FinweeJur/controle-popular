@@ -1,0 +1,61 @@
+# Auditoria de robots.txt contra os logs REAIS da Cloudflare (disparo manual).
+#
+# O QUE FAZ: roda scripts/auditoria-robots-cloudflare.mjs — busca os pedidos
+# HTTP da zona (GraphQL httpRequestsAdaptiveGroups), casa cada User-Agent com
+# apps/web/public/robots.txt e devolve: bots bloqueados que vieram assim mesmo,
+# rotas vedadas acessadas, quedas de Crawl-delay e inventário de robôs.
+#
+# POR QUE AQUI: o token da CF só existe como segredo do GitHub (nunca sai da
+# CI — AGENTS 5.8) e o Azure não guarda User-Agent (medido 07/10/2026).
+#
+# SAÍDA: resumo no job (GITHUB_STEP_SUMMARY) + artefato "relatorio-robots"
+# com o .md e o CSV bruto (sem IP). Relatório local também fica em
+# relatorios/ (gitignored — artefato de máquina, não fonte).
+
+name: Auditoria de robots (Cloudflare)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Dias de histórico (respeitar a retenção da CF)"
+        required: false
+        default: "7"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: robots-auditoria
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Buscar o código
+        uses: actions/checkout@v4
+
+      - name: Rodar a auditoria
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/auditoria-robots-cloudflare.mjs --dias "${{ inputs.dias || '7' }}" --saida relatorios
+
+      - name: Publicar resumo no job
+        if: always()
+        run: |
+          shopt -s nullglob
+          for f in relatorios/relatorio-robots-*.md; do
+            cat "$f" >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - name: Guardar evidência como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-robots
+          path: relatorios/
+          if-no-files-found: error
+          retention-days: 90
