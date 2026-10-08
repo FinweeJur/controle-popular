@@ -366,7 +366,10 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     descricao: "Emissora da Universidade de São Paulo.",
     stream: "https://flow.emm.usp.br:8008/radiousp-128.mp3",
     formato: "mp3",
-    site: "https://www.radio.usp.br/",
+    // O domínio antigo (www.radio.usp.br) ficou com certificado expirado em
+    // 16/09/2026 e redireciona 301 para jornal.usp.br/radio/ (medido 07/10).
+    // Apontar direto para a nova URL evita o cert morto e o redirect extra.
+    site: "https://jornal.usp.br/radio/",
     fonteAgregador: "radio-browser.info",
     transcrevivel: false,
     verificadoEm: RADIO_VERIFICADO_EM,
