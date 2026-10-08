@@ -274,20 +274,22 @@ class _QueryBuilder:
             return self._executar()
 
     def _executar(self) -> _Response:
+        """Orquestrador: delega à operação certa (refatoração 08/10/2026,
+        hotspots CodeScene — saúde 6,87). O método era um bloco único de 95
+        linhas com cc=43; virou este despachante + 4 métodos por operação.
+        Mesma ordem, mesma lógica, mesma validação de filtro."""
         from psycopg.errors import UndefinedColumn, UndefinedTable
-        from psycopg.rows import dict_row
 
         qualified = f'"{self._schema}"."{self._table}"'
         try:
-            with self._conn.cursor(row_factory=dict_row) as cur:
-                if self._op in (None, "select"):
-                    return self._executar_select(cur, qualified)
-                if self._op == "delete":
-                    return self._executar_delete(cur, qualified)
-                if self._op == "update":
-                    return self._executar_update(cur, qualified)
-                if self._op in ("insert", "upsert"):
-                    return self._executar_insert(cur, qualified)
+            if self._op in (None, "select"):
+                return self._executar_select(qualified)
+            if self._op == "delete":
+                return self._executar_delete(qualified)
+            if self._op == "update":
+                return self._executar_update(qualified)
+            if self._op in ("insert", "upsert"):
+                return self._executar_insert(qualified)
         except UndefinedColumn as e:
             raise PgAPIError("42703", str(e)) from e
         except UndefinedTable as e:
@@ -295,45 +297,56 @@ class _QueryBuilder:
 
         raise RuntimeError(f"operação não suportada: {self._op}")
 
-    def _executar_select(self, cur, qualified: str) -> _Response:
-        params: list = []
-        sql = f"SELECT {self._cols} FROM {qualified}"
-        sql += self._where_sql(params)
-        if self._order:
-            col, desc = self._order
-            sql += f' ORDER BY "{col}" {"DESC" if desc else "ASC"}'
-        if self._range:
-            start, end = self._range
-            sql += f" LIMIT {end - start + 1} OFFSET {start}"
-        elif self._limit is not None:
-            sql += f" LIMIT {self._limit}"
-        cur.execute(sql, params)
-        rows = _rows_out(cur.fetchall())
-        total = None
-        if self._count_mode:
-            # `count="exact"` do PostgREST conta a query SEM
-            # limit/offset — é assim que `etl/apis/crimes_mg.py`
-            # confere se o upsert realmente gravou tudo. Uma
-            # segunda query é o equivalente honesto; devolver
-            # len(rows) mentiria sempre que houvesse paginação.
-            cparams: list = []
-            csql = f"SELECT count(*) AS c FROM {qualified}" + self._where_sql(cparams)
-            cur.execute(csql, cparams)
-            total = cur.fetchone()["c"]
-        return _Response(rows, total)
+    def _executar_select(self, qualified: str) -> _Response:
+        """SELECT com WHERE, ORDER BY, LIMIT/OFFSET e contagem opcional."""
+        from psycopg.rows import dict_row
 
-    def _executar_delete(self, cur, qualified: str) -> _Response:
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            params: list = []
+            sql = f"SELECT {self._cols} FROM {qualified}"
+            sql += self._where_sql(params)
+            if self._order:
+                col, desc = self._order
+                sql += f' ORDER BY "{col}" {"DESC" if desc else "ASC"}'
+            if self._range:
+                start, end = self._range
+                sql += f" LIMIT {end - start + 1} OFFSET {start}"
+            elif self._limit is not None:
+                sql += f" LIMIT {self._limit}"
+            cur.execute(sql, params)
+            rows = _rows_out(cur.fetchall())
+            total = None
+            if self._count_mode:
+                # `count="exact"` do PostgREST conta a query SEM
+                # limit/offset — é assim que `etl/apis/crimes_mg.py`
+                # confere se o upsert realmente gravou tudo. Uma
+                # segunda query é o equivalente honesto; devolver
+                # len(rows) mentiria sempre que houvesse paginação.
+                cparams: list = []
+                csql = f"SELECT count(*) AS c FROM {qualified}" + self._where_sql(cparams)
+                cur.execute(csql, cparams)
+                total = cur.fetchone()["c"]
+            return _Response(rows, total)
+
+    def _executar_delete(self, qualified: str) -> _Response:
+        """DELETE — exige filtro ativo para não apagar a tabela inteira."""
+        from psycopg.rows import dict_row
+
         if not self._filters:
             raise RuntimeError(
                 f"DELETE sem filtro em {qualified} — apagaria a tabela inteira. "
                 "Chame .eq()/.in_() antes de .execute()."
             )
-        params: list = []
-        sql = f"DELETE FROM {qualified}" + self._where_sql(params)
-        cur.execute(sql, params)
-        return _Response([])
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            params: list = []
+            sql = f"DELETE FROM {qualified}" + self._where_sql(params)
+            cur.execute(sql, params)
+            return _Response([])
 
-    def _executar_update(self, cur, qualified: str) -> _Response:
+    def _executar_update(self, qualified: str) -> _Response:
+        """UPDATE de uma linha (a primeira de `self._rows`), com RETURNING."""
+        from psycopg.rows import dict_row
+
         if not self._filters:
             raise RuntimeError(
                 f"UPDATE sem filtro em {qualified} — reescreveria a tabela inteira. "
@@ -342,15 +355,19 @@ class _QueryBuilder:
         row = (self._rows or [{}])[0]
         if not row:
             return _Response([])
-        cols = sorted(row.keys())
-        set_sql = ", ".join(f'"{c}" = %s' for c in cols)
-        params = [_adapt(row[c]) for c in cols]
-        sql = f"UPDATE {qualified} SET {set_sql}" + self._where_sql(params)
-        sql += " RETURNING *"
-        cur.execute(sql, params)
-        return _Response(_rows_out(cur.fetchall()))
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            cols = sorted(row.keys())
+            set_sql = ", ".join(f'"{c}" = %s' for c in cols)
+            params = [_adapt(row[c]) for c in cols]
+            sql = f"UPDATE {qualified} SET {set_sql}" + self._where_sql(params)
+            sql += " RETURNING *"
+            cur.execute(sql, params)
+            return _Response(_rows_out(cur.fetchall()))
 
-    def _executar_insert(self, cur, qualified: str) -> _Response:
+    def _executar_insert(self, qualified: str) -> _Response:
+        """INSERT ou UPSET com dedup e fatiamento automático de lotes."""
+        from psycopg.rows import dict_row
+
         rows = self._rows or []
         if not rows:
             return _Response([])
@@ -396,20 +413,21 @@ class _QueryBuilder:
         # garante que o próximo a crescer descubra do mesmo jeito.
         # O teto por lote sai do número real de colunas, então
         # tabela larga fatia mais fino sozinha.
-        por_lote = max(1, _TETO_PLACEHOLDERS // max(1, len(cols)))
-        saida: list[dict] = []
-        for i in range(0, len(rows), por_lote):
-            fatia = rows[i : i + por_lote]
-            values_sql = ", ".join([placeholder_row] * len(fatia))
-            params = [_adapt(r.get(c)) for r in fatia for c in cols]
-            sql = (
-                f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
-                + sufixo
-                + " RETURNING *"
-            )
-            cur.execute(sql, params)
-            saida.extend(_rows_out(cur.fetchall()))
-        return _Response(saida)
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            por_lote = max(1, _TETO_PLACEHOLDERS // max(1, len(cols)))
+            saida: list[dict] = []
+            for i in range(0, len(rows), por_lote):
+                fatia = rows[i : i + por_lote]
+                values_sql = ", ".join([placeholder_row] * len(fatia))
+                params = [_adapt(r.get(c)) for r in fatia for c in cols]
+                sql = (
+                    f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
+                    + sufixo
+                    + " RETURNING *"
+                )
+                cur.execute(sql, params)
+                saida.extend(_rows_out(cur.fetchall()))
+            return _Response(saida)
 
 
 class PgClient:

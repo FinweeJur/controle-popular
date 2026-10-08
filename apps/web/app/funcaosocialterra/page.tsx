@@ -93,8 +93,8 @@ export default async function FuncaoSocialTerraPage() {
           imagem="capas/terras-arara.webp"
           alt="Função Social da Terra — Controle Popular"
           titulo={ZONA.titulo}
-          epigrafe="A terra é de quem nela trabalha e dela vive com respeito."
-          atribuicao="Tradição Popular e Territorial"
+          epigrafe="Terra para quem nela trabalha"
+          atribuicao="Emiliano Zapata"
           resumo="Terra sem titular declarado não é terra sem função. O Cadastro Ambiental Rural, terras indígenas, territórios quilombolas e sobreposições de mineração no mapa interativo."
           className="mb-8 rounded-2xl border border-border shadow-sm"
         />

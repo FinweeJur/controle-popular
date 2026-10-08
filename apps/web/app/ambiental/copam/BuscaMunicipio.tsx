@@ -18,24 +18,33 @@ export default function BuscaMunicipio({
   municipios: MunicipioComItensCopam[];
 }) {
   const [termo, setTermo] = useState("");
+  // Limite inicial; o botão "Ver +" acrescenta de 48 em 48 até mostrar tudo.
+  const [visiveis, setVisiveis] = useState(24);
+  const PASSO = 48;
+  // Mudou a busca? Volta ao corte inicial.
+  const [termoAnterior, setTermoAnterior] = useState(termo);
+  if (termo !== termoAnterior) {
+    setTermoAnterior(termo);
+    setVisiveis(24);
+  }
 
-  const filtrados = useMemo(() => {
+  const correspondentes = useMemo(() => {
     const alvo = termo
       .normalize("NFD")
       .replace(/[̀-ͯ]/g, "")
       .toLowerCase()
       .trim();
-    if (!alvo) return municipios.slice(0, 24);
-    return municipios
-      .filter((m) =>
-        m.nome
-          .normalize("NFD")
-          .replace(/[̀-ͯ]/g, "")
-          .toLowerCase()
-          .includes(alvo)
-      )
-      .slice(0, 40);
+    if (!alvo) return municipios;
+    return municipios.filter((m) =>
+      m.nome
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .includes(alvo)
+    );
   }, [termo, municipios]);
+
+  const filtrados = correspondentes.slice(0, visiveis);
 
   return (
     <div>
@@ -72,10 +81,20 @@ export default function BuscaMunicipio({
           ))}
         </ul>
       )}
-      {!termo && municipios.length > filtrados.length ? (
-        <p className="mt-3 text-xs opacity-60">
-          Mostrando os {filtrados.length} municípios com mais itens, de {formatNumberBR(municipios.length)} no total. Digite para buscar outro.
-        </p>
+      {filtrados.length < correspondentes.length ? (
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setVisiveis((v) => v + PASSO)}
+            className="rounded-lg border border-[var(--cp-border)] bg-surface px-5 py-2.5 text-sm font-medium hover:border-[var(--cp-primary)] transition-colors"
+          >
+            Ver + ({formatNumberBR(correspondentes.length - filtrados.length)} restantes)
+          </button>
+          <p className="text-xs opacity-60">
+            Mostrando {formatNumberBR(filtrados.length)} de {formatNumberBR(correspondentes.length)}
+            {termo ? " que batem com a busca" : ""}.
+          </p>
+        </div>
       ) : null}
     </div>
   );

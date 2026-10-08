@@ -1,14 +1,3 @@
-/**
- * Página do vereador (/vereadores/[slug]): retrato individual com mandato,
- * custo do gabinete, doações de campanha, atuação legislativa, presença,
- * áreas, proposições, diárias, verbas e comissões.
- *
- * Os dados vêm de carregarVereador() — as nove consultas da página em uma
- * chamada só, com os mesmos fallbacks de banco vazio de antes. O método
- * VereadorPage tinha ~600 linhas (hotspot CodeScene, saúde 7,31, registrado
- * em docs/planos/PENDENCIAS-07-10.md) e virou componentes de seção no
- * mesmo arquivo, cada um com seu bloco de JSX, sem reescrever o JSX.
- */
 import { Suspense } from "react";
 import Link from "@/lib/betim/link";
 import ProposicoesDoVereador, {
@@ -39,6 +28,9 @@ import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
 import Moeda from "@/app/components/Moeda";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
+import { SecaoCusto } from "./components/SecaoCusto";
+import { SecaoDoacoes } from "./components/SecaoDoacoes";
+import { SecaoComissoes } from "./components/SecaoComissoes";
 
 interface VereadorPageProps {
   /** A rota é `/[municipio]/vereadores/[slug]` — os dois segmentos chegam
@@ -99,17 +91,9 @@ export async function generateMetadata({ params }: VereadorPageProps) {
   };
 }
 
-
-/**
- * Carrega vereador + as nove consultas da pagina em UMA chamada, com os
- * mesmos fallbacks de banco vazio de antes, e devolve os valores derivados
- * (fonteCamara, mailtoCobrar, anoParcial...) junto.
- *
- * Saiu de VereadorPage porque o metodo tinha ~600 linhas — hotspot
- * CodeScene, saude 7,31 (PENDENCIAS-07-10.md). Componentes de secao leem
- * o retorno via type Dados e nao recalculam nada.
- */
-async function carregarVereador(cidade: Cidade, slug: string) {
+export default async function VereadorPage({ params }: VereadorPageProps) {
+  const cidade = await cidadeDaRota(params);
+  const { slug } = await params;
   const { row, ok } = await getVereadorBySlug(cidade.id_municipio, slug);
 
   if (ok && !row) notFound();
@@ -207,36 +191,6 @@ async function carregarVereador(cidade: Cidade, slug: string) {
           "Atenciosamente,"
       )}`
     : null;
-  return {
-    cidade,
-    slug,
-    row,
-    proposicoes,
-    diarias,
-    doacoes,
-    bens,
-    verbas,
-    ranking,
-    temasVereador,
-    comissoes,
-    custo,
-    fonteCamara,
-    vereadoresDaCasa,
-    esteNoRanking,
-    gastosDele,
-    anoParcial,
-    mailtoCobrar,
-  };
-}
-
-/** Tudo que a pagina renderiza, tipado pelo retorno de carregarVereador. */
-type Dados = Awaited<ReturnType<typeof carregarVereador>>;
-
-export default async function VereadorPage({ params }: VereadorPageProps) {
-  const cidade = await cidadeDaRota(params);
-  const { slug } = await params;
-  const dados = await carregarVereador(cidade, slug);
-  const { row } = dados;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
@@ -256,621 +210,289 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
         </div>
       ) : (
         <>
-          <Cabecalho d={dados} />
-          <GradeCards d={dados} />
-          <SecaoDoacoes d={dados} />
-          <SecaoPontuacao d={dados} />
-          <SecaoPresenca d={dados} />
-          <SecaoAreas d={dados} />
-          <SecaoProposicoes d={dados} />
-          <SecaoDiarias d={dados} />
-          <SecaoVerbas d={dados} />
-          <SecaoComissoes d={dados} />
+          {/* A foto estava no banco e em lugar nenhum da tela.
+            *
+            * `foto_url` está preenchida para 87 dos 99 vereadores (Betim
+            * 23/23, BH 41/41, Itinga 11/11, Araçuaí 11/11, Diamantina 1/13) e
+            * era até selecionada pela query — mas nenhum `.tsx` a usava.
+            * Coletar, guardar, consultar e não mostrar é o pior dos mundos:
+            * paga o custo inteiro e não entrega nada.
+            *
+            * `<img>` cru e não `next/image`, seguindo o que a página de
+            * parlamentar do Congresso já faz: as fotos vêm de host externo
+            * (SAPL, portais das câmaras) e no export estático o otimizador de
+            * imagem não existe.
+            *
+            * `alt=""` de propósito: o nome está escrito ao lado, em texto. Um
+            * `alt` com o nome faria o leitor de tela repetir. */}
+          <div className="flex flex-wrap items-center gap-4">
+            {row.foto_url ? (
+              <img
+                src={row.foto_url}
+                alt=""
+                width={84}
+                height={112}
+                loading="lazy"
+                className="h-28 w-[84px] shrink-0 rounded-lg border border-border object-cover"
+              />
+            ) : null}
+            <div>
+              <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
+                {row.nome_urna ?? row.nome}
+              </h1>
+              <p className="mt-1 text-text-soft">{row.nome}</p>
+            </div>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {row.partido && (
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+                {row.partido}
+              </span>
+            )}
+            {row.cargo_mesa && (
+              <span className="rounded-full bg-accent/10 px-3 py-1 text-sm font-semibold text-accent">
+                {row.cargo_mesa}
+              </span>
+            )}
+            {row.profissao && (
+              <span className="rounded-full bg-surface-2 px-3 py-1 text-sm font-medium text-text-soft">
+                {row.profissao}
+              </span>
+            )}
+          </div>
+
+          {row.biografia && (
+            <p className="mt-4 max-w-2xl text-sm text-text-soft">
+              {row.biografia}
+              {row.aniversario_dia_mes && (
+                <span className="ml-1 text-xs">— aniversário em {row.aniversario_dia_mes}</span>
+              )}
+            </p>
+          )}
+
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <DataCard
+              title="Mandato atual"
+              source={fonteCamara}
+            >
+              <p className="text-text">
+                {formatDateBR(row.mandato_inicio)} – {formatDateBR(row.mandato_fim)}
+              </p>
+            </DataCard>
+            <DataCard
+              title="Contato"
+              source={fonteCamara}
+            >
+              <p className="text-text">
+                {row.email ?? "E-mail individual não divulgado pela Câmara"}
+              </p>
+              {mailtoCobrar ? (
+                <>
+                  <a
+                    href={mailtoCobrar}
+                    className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
+                  >
+                    Perguntar sobre a atuação ✉
+                  </a>
+                  <p className="mt-2 text-[11px] text-text-soft">
+                    Abre um e-mail já endereçado ao vereador, com um rascunho que
+                    cita a área de atuação dele — é só escrever sua pergunta.
+                  </p>
+                </>
+              ) : (
+                fonteCamara.url && (
+                  <p className="mt-2 text-[11px] text-text-soft">
+                    Sem e-mail individual cadastrado nesta fonte — fale com a{" "}
+                    <a href={fonteCamara.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+                      {fonteCamara.label} ↗
+                    </a>{" "}
+                    para chegar até ele(a).
+                  </p>
+                )
+              )}
+            </DataCard>
+            <SecaoCusto
+              cidade={cidade}
+              custo={custo}
+              fonteCamara={fonteCamara}
+              vereadoresDaCasa={vereadoresDaCasa}
+              anoParcial={anoParcial}
+            />
+            {row.votos_eleicao != null && (
+              <DataCard
+                title={`Votos na eleição de ${row.ano_eleicao ?? ""}`}
+                source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
+              >
+                <p className="font-tabular text-text">{formatNumberBR(row.votos_eleicao)}</p>
+              </DataCard>
+            )}
+            {bens.ok && bens.total > 0 && (
+              <DataCard
+                title="Patrimônio declarado na campanha (2024)"
+                source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
+              >
+                <p className="mb-2 text-text">
+                  {formatNumberBR(bens.total)} {bens.total === 1 ? "bem" : "bens"}, total{" "}
+                  <strong><Moeda value={bens.soma} /></strong>
+                </p>
+                <ul className="divide-y divide-border/60">
+                  {bens.rows.map((b, i) => (
+                    <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-xs">
+                      <span className="text-text-soft">
+                        {b.tipo_item ?? "—"}
+                        {b.descricao_item ? ` — ${b.descricao_item}` : ""}
+                      </span>
+                      <span className="font-tabular shrink-0 text-text">
+                        {b.valor != null ? <Moeda value={Number(b.valor)} /> : "—"}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-[.85em] text-text-soft">
+                  Autodeclarado à Justiça Eleitoral no registro da candidatura — não é uma
+                  avaliação independente do valor de mercado atual.
+                </p>
+              </DataCard>
+            )}
+          </div>
+
+          <SecaoDoacoes doacoes={doacoes} />
+
+          {ranking.ok && (
+            <div className="mt-8">
+              <DataCard
+                title="Atuação legislativa — de onde vem a pontuação"
+                source={fonteCamara}
+              >
+                <div className="mb-3">
+                  <OrdinalLegend />
+                </div>
+                <AtuacaoVereador ranking={ranking.rows} vereadorId={row.id} />
+              </DataCard>
+            </div>
+          )}
+
+          {/* Presença, coerência e gasto atípico. Fica LOGO ABAIXO da
+              composição da pontuação de propósito: é ali que o leitor vê o
+              número final e pergunta por que ele é menor que a soma das
+              fatias. A resposta tem de estar na altura da pergunta. */}
+          {esteNoRanking && (
+            <div className="mt-8">
+              <DataCard
+                title="Presença, coerência e uso da verba"
+                source={fonteCamara}
+              >
+                <PainelAtuacao vereador={esteNoRanking} gastos={gastosDele} />
+              </DataCard>
+            </div>
+          )}
+
+          {temasVereador.ok && temasVereador.temas.length > 0 && (
+            <div className="mt-8">
+              <DataCard
+                title="Áreas de atuação — sobre o que ele legisla"
+                source={fonteCamara}
+              >
+                <p className="mb-3 text-sm">
+                  Em quantas proposições cada área aparece (uma proposição
+                  pode tocar mais de uma área). Clique numa área pra
+                  filtrar a lista abaixo.
+                </p>
+                <AreasAtuacao
+                  temas={temasVereador.temas}
+                  unidade="proposições"
+                  unidadeSingular="proposição"
+                  hrefFiltro={`/vereadores/${row.slug}`}
+                />
+              </DataCard>
+            </div>
+          )}
+          {/* O filtro por tema saiu do servidor. Ler `?tema=` aqui tornava a
+              rota dinâmica (`ƒ`), e dinâmica consulta o banco A CADA visita —
+              o que em produção dava 500, porque o banco é o desta casa e não é
+              alcançável do Cloudflare. Medido em 2026-08-09. */}
+          <Suspense
+            fallback={
+              <ProposicoesDoVereadorCompletas
+                rows={proposicoes.rows}
+                ok={proposicoes.ok}
+                slug={row.slug}
+                legislatura={rotuloLegislatura(cidade)}
+                rotulosTipo={TIPO_PROPOSICAO_LABELS}
+                rotulosTema={TEMA_LABELS}
+              />
+            }
+          >
+            <ProposicoesDoVereador
+              rows={proposicoes.rows}
+              ok={proposicoes.ok}
+              slug={row.slug}
+              legislatura={rotuloLegislatura(cidade)}
+              rotulosTipo={TIPO_PROPOSICAO_LABELS}
+              rotulosTema={TEMA_LABELS}
+            />
+          </Suspense>
+
+          {diarias.ok && diarias.rows.length > 0 && (
+            <div className="mt-8">
+              <h2 className="mb-3 font-display text-lg font-bold text-text">
+                Viagens e diárias
+              </h2>
+              <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
+                <ul className="divide-y divide-border bg-surface">
+                  {diarias.rows.map((d, i) => (
+                    <li key={i} className="p-4 text-sm">
+                      <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
+                        <span className="font-tabular text-text-soft">
+                          {formatDateBR(d.data_inicio)} – {formatDateBR(d.data_fim)}
+                        </span>
+                        <strong className="font-tabular text-text">
+                          {d.valor != null ? <Moeda value={d.valor} /> : "—"}
+                        </strong>
+                      </div>
+                      <p className="text-text-soft">{d.destino}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {verbas.ok && verbas.totalRegistros > 0 && (
+            <div className="mt-8">
+              <h2 className="mb-1 font-display text-lg font-bold text-text">
+                Verbas indenizatórias
+              </h2>
+              <p className="mb-3 text-sm text-text-soft">
+                {formatNumberBR(verbas.totalRegistros)} reembolsos, total{" "}
+                <strong className="font-tabular text-text">
+                  <Moeda value={verbas.total} />
+                </strong>
+              </p>
+              <DataCard
+                title="Gastos por tema"
+                source={fonteCamara}
+              >
+                <ul className="divide-y divide-border/60">
+                  {verbas.gastosPorTema.map((item) => (
+                    <li key={item.tema} className="flex items-center justify-between py-2">
+                      <span className="text-text">
+                        {item.tema}{" "}
+                        <span className="text-text-soft">({formatNumberBR(item.qtd)})</span>
+                      </span>
+                      <strong className="font-tabular text-text">
+                        <Moeda value={item.valor} />
+                      </strong>
+                    </li>
+                  ))}
+                </ul>
+              </DataCard>
+            </div>
+          )}
+
+          <SecaoComissoes comissoes={comissoes} cidade={cidade} fonteCamara={fonteCamara} />
         </>
       )}
     </div>
-  );
-}
-
-/**
- * Cabecalho: foto, nome, chips de partido/cargo/profissao e biografia.
- */
-function Cabecalho({ d }: { d: Dados }) {
-  const { row } = d;
-  if (!row) return null;
-  return (
-    <>
-      {/* A foto estava no banco e em lugar nenhum da tela.
-        *
-        * `foto_url` está preenchida para 87 dos 99 vereadores (Betim
-        * 23/23, BH 41/41, Itinga 11/11, Araçuaí 11/11, Diamantina 1/13) e
-        * era até selecionada pela query — mas nenhum `.tsx` a usava.
-        * Coletar, guardar, consultar e não mostrar é o pior dos mundos:
-        * paga o custo inteiro e não entrega nada.
-        *
-        * `<img>` cru e não `next/image`, seguindo o que a página de
-        * parlamentar do Congresso já faz: as fotos vêm de host externo
-        * (SAPL, portais das câmaras) e no export estático o otimizador de
-        * imagem não existe.
-        *
-        * `alt=""` de propósito: o nome está escrito ao lado, em texto. Um
-        * `alt` com o nome faria o leitor de tela repetir. */}
-      <div className="flex flex-wrap items-center gap-4">
-        {row.foto_url ? (
-          <img
-            src={row.foto_url}
-            alt=""
-            width={84}
-            height={112}
-            loading="lazy"
-            className="h-28 w-[84px] shrink-0 rounded-lg border border-border object-cover"
-          />
-        ) : null}
-        <div>
-          <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-            {row.nome_urna ?? row.nome}
-          </h1>
-          <p className="mt-1 text-text-soft">{row.nome}</p>
-        </div>
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {row.partido && (
-          <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
-            {row.partido}
-          </span>
-        )}
-        {row.cargo_mesa && (
-          <span className="rounded-full bg-accent/10 px-3 py-1 text-sm font-semibold text-accent">
-            {row.cargo_mesa}
-          </span>
-        )}
-        {row.profissao && (
-          <span className="rounded-full bg-surface-2 px-3 py-1 text-sm font-medium text-text-soft">
-            {row.profissao}
-          </span>
-        )}
-      </div>
-
-      {row.biografia && (
-        <p className="mt-4 max-w-2xl text-sm text-text-soft">
-          {row.biografia}
-          {row.aniversario_dia_mes && (
-            <span className="ml-1 text-xs">— aniversário em {row.aniversario_dia_mes}</span>
-          )}
-        </p>
-      )}
-    </>
-  );
-}
-
-/**
- * Grade de cards: mandato, contato, custo, votos e patrimonio.
- * Separa em CardContato/CardCusto/CardBens porque o bloco de custo so tem
- * ~80 linhas de JSX condicional — o mesmo motivo do resto do arquivo.
- */
-function GradeCards({ d }: { d: Dados }) {
-  const { row, fonteCamara } = d;
-  if (!row) return null;
-  return (
-    <>
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <DataCard
-          title="Mandato atual"
-          source={fonteCamara}
-        >
-          <p className="text-text">
-            {formatDateBR(row.mandato_inicio)} – {formatDateBR(row.mandato_fim)}
-          </p>
-        </DataCard>
-      <CardContato d={d} />
-      <CardCusto d={d} />
-      {row.votos_eleicao != null && (
-        <DataCard
-          title={`Votos na eleição de ${row.ano_eleicao ?? ""}`}
-          source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
-        >
-          <p className="font-tabular text-text">{formatNumberBR(row.votos_eleicao)}</p>
-        </DataCard>
-      )}
-      <CardBens d={d} />
-      </div>
-    </>
-  );
-}
-
-/** Card: contato + mailto "perguntar sobre a atuacao" ou link da camara. */
-function CardContato({ d }: { d: Dados }) {
-  const { row, fonteCamara, mailtoCobrar } = d;
-  if (!row) return null;
-  return (
-    <>
-      <DataCard
-        title="Contato"
-        source={fonteCamara}
-      >
-        <p className="text-text">
-          {row.email ?? "E-mail individual não divulgado pela Câmara"}
-        </p>
-        {mailtoCobrar ? (
-          <>
-            <a
-              href={mailtoCobrar}
-              className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
-            >
-              Perguntar sobre a atuação ✉
-            </a>
-            <p className="mt-2 text-[11px] text-text-soft">
-              Abre um e-mail já endereçado ao vereador, com um rascunho que
-              cita a área de atuação dele — é só escrever sua pergunta.
-            </p>
-          </>
-        ) : (
-          fonteCamara.url && (
-            <p className="mt-2 text-[11px] text-text-soft">
-              Sem e-mail individual cadastrado nesta fonte — fale com a{" "}
-              <a href={fonteCamara.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
-                {fonteCamara.label} ↗
-              </a>{" "}
-              para chegar até ele(a).
-            </p>
-          )
-        )}
-      </DataCard>
-    </>
-  );
-}
-
-/** Card: subsidio mensal x custeio do gabinete por ano. */
-function CardCusto({ d }: { d: Dados }) {
-  const { custo, cidade, fonteCamara, vereadoresDaCasa, anoParcial } = d;
-  return (
-    <>
-      {(custo.mensalBruto != null || custo.gastoPorAno.length > 0) && (
-        <DataCard
-          title="Quanto custa este mandato"
-          className="sm:col-span-2"
-          source={
-            custo.fonteSubsidio
-              ? { label: `Câmara de ${cidade.nome}`, url: custo.fonteSubsidio }
-              : fonteCamara
-          }
-        >
-          {/* Duas naturezas, dois blocos. O subsídio é remuneração
-              pessoal fixada em lei e IGUAL para todos os vereadores da
-              casa — comparar parlamentares por ele não diz nada. O
-              custeio é despesa do gabinete e varia muito entre eles: é
-              ali que a comparação tem sentido. Somar os dois num
-              "custo total" esconderia justamente a parte que
-              distingue um vereador do outro. */}
-          <div className="grid gap-5 sm:grid-cols-2">
-            {custo.mensalBruto != null && (
-              <div>
-                <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
-                  Recebe por mês
-                </p>
-                <p className="font-tabular text-2xl font-bold text-text">
-                  <Moeda value={custo.mensalBruto} />
-                </p>
-                <p className="text-xs text-text-soft">
-                  subsídio bruto, antes dos descontos
-                </p>
-                {custo.mensalExtras != null && custo.mensalExtras > 0 && (
-                  <p className="mt-1.5 text-xs text-text-soft">
-                    + <Moeda value={custo.mensalExtras} /> de verbas
-                    fixas (auxílio-alimentação)
-                  </p>
-                )}
-                {custo.competencia && (
-                  <p className="mt-1.5 text-[11px] text-text-soft">
-                    Valor vigente em {formatDateBR(custo.competencia).slice(3)}. É
-                    o mesmo para todos os {vereadoresDaCasa} vereadores — fixado
-                    por lei, não por desempenho.
-                  </p>
-                )}
-              </div>
-            )}
-
-            {custo.gastoPorAno.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
-                  Gabinete gastou
-                </p>
-                <ul className="mt-1 flex flex-col gap-2">
-                  {custo.gastoPorAno.map((a) => (
-                    <li key={a.ano} className="flex items-baseline justify-between gap-3">
-                      <span className="font-tabular text-sm text-text-soft">{a.ano}</span>
-                      <span className="flex-1 border-b border-dotted border-border" />
-                      <span className="font-tabular text-base font-semibold text-text">
-                        <Moeda value={a.total} />
-                      </span>
-                      <span className="text-[11px] text-text-soft">
-                        {formatNumberBR(a.qtd)} desp.
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-2 text-[11px] text-text-soft">
-                  Custeio do gabinete: material de escritório, serviços
-                  postais, gráfica e afins.{" "}
-                  {anoParcial != null && (
-                    <>O ano de {anoParcial} ainda está em curso.</>
-                  )}
-                </p>
-                <Link
-                  href="/camara#gastos-gabinete"
-                  className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
-                >
-                  Comparar com os outros vereadores →
-                </Link>
-              </div>
-            )}
-          </div>
-        </DataCard>
-      )}
-    </>
-  );
-}
-
-/** Card: patrimonio declarado no TSE. */
-function CardBens({ d }: { d: Dados }) {
-  const { bens } = d;
-  return (
-    <>
-      {bens.ok && bens.total > 0 && (
-        <DataCard
-          title="Patrimônio declarado na campanha (2024)"
-          source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
-        >
-          <p className="mb-2 text-text">
-            {formatNumberBR(bens.total)} {bens.total === 1 ? "bem" : "bens"}, total{" "}
-            <strong><Moeda value={bens.soma} /></strong>
-          </p>
-          <ul className="divide-y divide-border/60">
-            {bens.rows.map((b, i) => (
-              <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-xs">
-                <span className="text-text-soft">
-                  {b.tipo_item ?? "—"}
-                  {b.descricao_item ? ` — ${b.descricao_item}` : ""}
-                </span>
-                <span className="font-tabular shrink-0 text-text">
-                  {b.valor != null ? <Moeda value={Number(b.valor)} /> : "—"}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-2 text-[.85em] text-text-soft">
-            Autodeclarado à Justiça Eleitoral no registro da candidatura — não é uma
-            avaliação independente do valor de mercado atual.
-          </p>
-        </DataCard>
-      )}
-    </>
-  );
-}
-
-/** Secao: doacoes de campanha 2024 — quem financiou. */
-function SecaoDoacoes({ d }: { d: Dados }) {
-  const { doacoes } = d;
-  return (
-    <>
-      {doacoes.ok && doacoes.total > 0 && (
-        <div className="mt-8">
-          <DataCard
-            title="Doações de campanha (2024) — quem financiou"
-            source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
-          >
-            <p className="mb-3 text-text">
-              {formatNumberBR(doacoes.total)}{" "}
-              {doacoes.total === 1 ? "doação" : "doações"}, total{" "}
-              <strong className="font-tabular"><Moeda value={doacoes.soma} /></strong>
-            </p>
-            <ul className="divide-y divide-border/60">
-              {doacoes.rows.slice(0, 8).map((d, i) => (
-                <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-sm">
-                  <span className="text-text-soft">
-                    {d.doador_nome ?? "—"}
-                    {d.doador_tipo && (
-                      <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                        {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
-                      </span>
-                    )}
-                  </span>
-                  <span className="font-tabular shrink-0 text-text">
-                    {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {doacoes.rows.length > 8 && (
-              <details className="mt-2">
-                <summary className="cursor-pointer text-sm font-medium text-accent hover:underline">
-                  Ver todos os {formatNumberBR(doacoes.rows.length)} doadores
-                </summary>
-                <ul className="mt-2 divide-y divide-border/60">
-                  {doacoes.rows.slice(8).map((d, i) => (
-                    <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-sm">
-                      <span className="text-text-soft">
-                        {d.doador_nome ?? "—"}
-                        {d.doador_tipo && (
-                          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                            {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
-                          </span>
-                        )}
-                      </span>
-                      <span className="font-tabular shrink-0 text-text">
-                        {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            )}
-            <p className="mt-3 text-[.85em] text-text-soft">
-              O nome de quem doou para campanha é público por lei (Lei
-              9.504/97) — a divulgação do financiamento eleitoral é
-              obrigatória. Valores prestados à Justiça Eleitoral em 2024.
-            </p>
-          </DataCard>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: atuacao legislativa — barra de pontuacao contra o 1o colocado. */
-function SecaoPontuacao({ d }: { d: Dados }) {
-  const { row, ranking, fonteCamara } = d;
-  if (!row) return null;
-  return (
-    <>
-      {ranking.ok && (
-        <div className="mt-8">
-          <DataCard
-            title="Atuação legislativa — de onde vem a pontuação"
-            source={fonteCamara}
-          >
-            <div className="mb-3">
-              <OrdinalLegend />
-            </div>
-            <AtuacaoVereador ranking={ranking.rows} vereadorId={row.id} />
-          </DataCard>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: presenca, coerencia e gasto atipico desta pessoa. */
-function SecaoPresenca({ d }: { d: Dados }) {
-  const { esteNoRanking, gastosDele, fonteCamara } = d;
-  return (
-    <>
-      {/* Presença, coerência e gasto atípico. Fica LOGO ABAIXO da
-          composição da pontuação de propósito: é ali que o leitor vê o
-          número final e pergunta por que ele é menor que a soma das
-          fatias. A resposta tem de estar na altura da pergunta. */}
-      {esteNoRanking && (
-        <div className="mt-8">
-          <DataCard
-            title="Presença, coerência e uso da verba"
-            source={fonteCamara}
-          >
-            <PainelAtuacao vereador={esteNoRanking} gastos={gastosDele} />
-          </DataCard>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: areas de atuacao (grafico de temas). */
-function SecaoAreas({ d }: { d: Dados }) {
-  const { row, temasVereador, fonteCamara } = d;
-  if (!row) return null;
-  return (
-    <>
-      {temasVereador.ok && temasVereador.temas.length > 0 && (
-        <div className="mt-8">
-          <DataCard
-            title="Áreas de atuação — sobre o que ele legisla"
-            source={fonteCamara}
-          >
-            <p className="mb-3 text-sm">
-              Em quantas proposições cada área aparece (uma proposição
-              pode tocar mais de uma área). Clique numa área pra
-              filtrar a lista abaixo.
-            </p>
-            <AreasAtuacao
-              temas={temasVereador.temas}
-              unidade="proposições"
-              unidadeSingular="proposição"
-              hrefFiltro={`/vereadores/${row.slug}`}
-            />
-          </DataCard>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: proposicoes dentro do Suspense (o filtro de tema roda no cliente). */
-function SecaoProposicoes({ d }: { d: Dados }) {
-  const { row, proposicoes, cidade } = d;
-  if (!row) return null;
-  return (
-    <>
-      {/* O filtro por tema saiu do servidor. Ler `?tema=` aqui tornava a
-          rota dinâmica (`ƒ`), e dinâmica consulta o banco A CADA visita —
-          o que em produção dava 500, porque o banco é o desta casa e não é
-          alcançável do Cloudflare. Medido em 2026-08-09. */}
-      <Suspense
-        fallback={
-          <ProposicoesDoVereadorCompletas
-            rows={proposicoes.rows}
-            ok={proposicoes.ok}
-            slug={row.slug}
-            legislatura={rotuloLegislatura(cidade)}
-            rotulosTipo={TIPO_PROPOSICAO_LABELS}
-            rotulosTema={TEMA_LABELS}
-          />
-        }
-      >
-        <ProposicoesDoVereador
-          rows={proposicoes.rows}
-          ok={proposicoes.ok}
-          slug={row.slug}
-          legislatura={rotuloLegislatura(cidade)}
-          rotulosTipo={TIPO_PROPOSICAO_LABELS}
-          rotulosTema={TEMA_LABELS}
-        />
-      </Suspense>
-    </>
-  );
-}
-
-/** Secao: viagens e diarias. */
-function SecaoDiarias({ d }: { d: Dados }) {
-  const { diarias } = d;
-  return (
-    <>
-      {diarias.ok && diarias.rows.length > 0 && (
-        <div className="mt-8">
-          <h2 className="mb-3 font-display text-lg font-bold text-text">
-            Viagens e diárias
-          </h2>
-          <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
-            <ul className="divide-y divide-border bg-surface">
-              {diarias.rows.map((d, i) => (
-                <li key={i} className="p-4 text-sm">
-                  <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-tabular text-text-soft">
-                      {formatDateBR(d.data_inicio)} – {formatDateBR(d.data_fim)}
-                    </span>
-                    <strong className="font-tabular text-text">
-                      {d.valor != null ? <Moeda value={d.valor} /> : "—"}
-                    </strong>
-                  </div>
-                  <p className="text-text-soft">{d.destino}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: verbas indemnizatorias e gastos por tema. */
-function SecaoVerbas({ d }: { d: Dados }) {
-  const { verbas, fonteCamara } = d;
-  return (
-    <>
-      {verbas.ok && verbas.totalRegistros > 0 && (
-        <div className="mt-8">
-          <h2 className="mb-1 font-display text-lg font-bold text-text">
-            Verbas indenizatórias
-          </h2>
-          <p className="mb-3 text-sm text-text-soft">
-            {formatNumberBR(verbas.totalRegistros)} reembolsos, total{" "}
-            <strong className="font-tabular text-text">
-              <Moeda value={verbas.total} />
-            </strong>
-          </p>
-          <DataCard
-            title="Gastos por tema"
-            source={fonteCamara}
-          >
-            <ul className="divide-y divide-border/60">
-              {verbas.gastosPorTema.map((item) => (
-                <li key={item.tema} className="flex items-center justify-between py-2">
-                  <span className="text-text">
-                    {item.tema}{" "}
-                    <span className="text-text-soft">({formatNumberBR(item.qtd)})</span>
-                  </span>
-                  <strong className="font-tabular text-text">
-                    <Moeda value={item.valor} />
-                  </strong>
-                </li>
-              ))}
-            </ul>
-          </DataCard>
-        </div>
-      )}
-    </>
-  );
-}
-
-/** Secao: participacao em comissoes (ativas e historico). */
-function SecaoComissoes({ d }: { d: Dados }) {
-  const { comissoes, fonteCamara, cidade } = d;
-  return (
-    <>
-      {comissoes.ok && (comissoes.andamento.length > 0 || comissoes.finalizadas.length > 0) ? (
-        <div className="mt-8">
-          <h2 className="mb-3 font-display text-lg font-bold text-text">
-            Participação em comissões
-          </h2>
-          {comissoes.andamento.length > 0 && (
-            <div className="mb-4">
-              <p className="mb-2 text-xs font-semibold tracking-wide text-text-soft uppercase">
-                Atualmente
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {comissoes.andamento.map((p, i) => (
-                  <li
-                    key={i}
-                    className="rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
-                  >
-                    {p.nomeComissao}{" "}
-                    <span className="font-semibold">— {p.papel}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {comissoes.finalizadas.length > 0 && (
-            <details className="rounded-2xl border border-border bg-surface p-4 text-sm">
-              <summary className="cursor-pointer font-medium text-text-soft">
-                Histórico ({formatNumberBR(comissoes.finalizadas.length)} participações
-                encerradas desde 2018)
-              </summary>
-              <ul className="mt-3 divide-y divide-border/60">
-                {comissoes.finalizadas.map((p, i) => (
-                  <li key={i} className="flex items-center justify-between gap-3 py-1.5">
-                    <span className="text-text-soft">
-                      {p.nomeComissao} — <span className="text-text">{p.papel}</span>
-                    </span>
-                    <span className="font-tabular shrink-0 text-xs text-text-soft">
-                      {formatDateBR(p.dataInicio)} – {formatDateBR(p.dataFim)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
-          <p className="mt-2 text-xs text-text-soft">
-            Fonte:{" "}
-            <a
-              href={fonteCamara.url ?? "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              Câmara de {cidade.nome} ↗
-            </a>
-            . Nomes de comissão são exatamente os registrados pela Câmara em
-            cada período — algumas foram renomeadas ao longo das
-            legislaturas, e o histórico mantém o nome de cada época.
-          </p>
-        </div>
-      ) : (
-        comissoes.ok && (
-          <div className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
-            Não participa de nenhuma comissão no momento.
-          </div>
-        )
-      )}
-    </>
   );
 }
