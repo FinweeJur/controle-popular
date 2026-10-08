@@ -4,7 +4,6 @@ import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import CapaFrente from "@/app/components/CapaFrente";
-import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
@@ -46,7 +45,23 @@ export const metadata: Metadata = {
     "O Observatório Nacional Socioambiental: COPAM e licenciamento de Minas, barragens do país inteiro, normas federais, processos ambientais na Justiça, o Acordo do Rio Doce e a Vale.",
 };
 
-export default async function AmbientalHome() {
+
+/** Um bloco do grid de frentes da zona ambiental. */
+type Bloco = {
+  titulo: string;
+  linha: string;
+  texto: string;
+  fase: string;
+  href: string;
+  pronta: boolean;
+  linkTexto: string;
+};
+
+/** Tudo que o grid de blocos precisa, em uma chamada so. */
+/**
+ * Busca as seis contagens do banco e os dados locais (CAR, SIRENEJud, estudos). Mesmos fallbacks de antes — a pagina nao inventa numero: o que nao veio do banco mostra a frase de 'coleta ainda nao rodou'.
+ */
+async function carregarAmbiental() {
   const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico, totalPatrimonio] =
     await Promise.all([
       contarReunioesCopam(),
@@ -60,8 +75,29 @@ export default async function AmbientalHome() {
   const { resumo: resumoEstudos } = lerEstudos();
   const sirenejud = carregarSirenejudMg();
   const estatisticasCar = obterEstatisticasCar();
+  return {
+    reunioes,
+    itens,
+    barragens,
+    totalLicencas,
+    legislacao,
+    direitoCritico,
+    totalPatrimonio,
+    temBarragens,
+    resumoEstudos,
+    sirenejud,
+    estatisticasCar,
+  };
+}
 
-  const BLOCOS = [
+type DadosAmbiental = Awaited<ReturnType<typeof carregarAmbiental>>;
+
+/**
+ * Primeira metade dos blocos (CAR ate Licenças), na ordem exata da tela. Separada da segunda so para nenhum metodo passar de 150 linhas — a juntao [...inicio, ...fim] reproduz o array BLOCOS antigo por completo.
+ */
+function montarBlocosInicio(dados: DadosAmbiental): Bloco[] {
+  const { estatisticasCar, sirenejud } = dados;
+  return [
     {
       titulo: "Cadastro Ambiental Rural (CAR / IEF MG)",
       linha: `${formatNumberBR(estatisticasCar.totalImoveis)} imóveis nas 14 URFBios — tempo médio de espera de ${formatNumberBR(estatisticasCar.tempoMedioAnaliseDias)} dias`,
@@ -164,6 +200,25 @@ export default async function AmbientalHome() {
       pronta: LICENCAS_COBERTURA.total > 0,
       linkTexto: "Ver o feed unificado →",
     },
+  ];
+}
+
+/**
+ * Segunda metade dos bloco (COPAM ate Recursos dos 27 estados), na ordem exata da tela. Mesmo corte posicional do montarBlocosInicio.
+ */
+function montarBlocosFim(dados: DadosAmbiental): Bloco[] {
+  const {
+    reunioes,
+    itens,
+    totalLicencas,
+    barragens,
+    temBarragens,
+    legislacao,
+    direitoCritico,
+    totalPatrimonio,
+    resumoEstudos,
+  } = dados;
+  return [
     {
       titulo: "Reuniões do COPAM",
       linha:
@@ -335,20 +390,14 @@ export default async function AmbientalHome() {
       linkTexto: "Ver recursos dos 27 estados →",
     },
   ];
+}
 
+/**
+ * Guia rapido: as oito portas do dado ambiental estadual em um clique (pedido do dono, 08/10/2026).
+ */
+function GuiaRapido() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
-      {/* Desenho grande de abertura do eixo Ambiental com título dinâmico de alto contraste */}
-      <CapaFrente
-        imagem="capas/ambiente-rios.webp"
-        alt="Meio Ambiente — Observatório Nacional Socioambiental"
-        titulo={ZONA.titulo}
-        epigrafe="Tudo o que a terra produz, tudo o que o homem fabrica, tudo o que o homem sonha, tudo vem da água."
-        atribuicao="João Guimarães Rosa"
-        resumo={ZONA.descricao}
-        className="mb-8 rounded-2xl shadow-sm border border-border"
-      />
-
+    <>
       {/* ═══ GUIA RÁPIDO — as frentes ambientais em um clique ═══ */}
       <nav
         aria-label="Guia rápido da área ambiental"
@@ -383,9 +432,18 @@ export default async function AmbientalHome() {
           ))}
         </div>
       </nav>
+    </>
+  );
+}
 
+/**
+ * Grade dos blocos de frente: link quando a tela existe, section quando ainda e promessa (pronta=false).
+ */
+function BlocosAmbiental({ blocos }: { blocos: Bloco[] }) {
+  return (
+    <>
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        {BLOCOS.map((b) => {
+        {blocos.map((b) => {
           const conteudo = (
             <>
               <div className="flex items-baseline justify-between gap-3">
@@ -423,6 +481,33 @@ export default async function AmbientalHome() {
           );
         })}
       </div>
+    </>
+  );
+}
+
+/**
+ * Home da zona /ambiental: capa, guia rapido, grid de frentes, passarela de legislacao e remissao as outras frentes.
+ */
+export default async function AmbientalHome() {
+  const dados = await carregarAmbiental();
+  const blocos: Bloco[] = [...montarBlocosInicio(dados), ...montarBlocosFim(dados)];
+
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
+      {/* Desenho grande de abertura do eixo Ambiental com título dinâmico de alto contraste */}
+      <CapaFrente
+        imagem="capas/ambiente-rios.webp"
+        alt="Meio Ambiente — Observatório Nacional Socioambiental"
+        titulo={ZONA.titulo}
+        epigrafe="Tudo o que a terra produz, tudo o que o homem fabrica, tudo o que o homem sonha, tudo vem da água."
+        atribuicao="João Guimarães Rosa"
+        resumo={ZONA.descricao}
+        className="mb-8 rounded-2xl shadow-sm border border-border"
+      />
+
+      <GuiaRapido />
+
+      <BlocosAmbiental blocos={blocos} />
 
       {/* Passarela de Legislação e Projetos de Lei */}
       <PassarelaLegislativa tema="ambiental" />
@@ -447,6 +532,6 @@ export default async function AmbientalHome() {
       {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
       <CenasDoBrasil fotos={["00483", "00500", "00503", "00517"]} />
           <MeioAmbienteRelacionado />
-</div>
+    </div>
   );
 }
