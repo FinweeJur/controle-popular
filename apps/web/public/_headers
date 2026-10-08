@@ -56,8 +56,19 @@
 # (`rotulos.js`/`layerspanel.js`/`listapanel.js`). `server.arcgisonline.com`
 # e `tile.openstreetmap.org` são os tiles de satélite/OSM que
 # `terras/globo/detalhe.html` carrega.
+#
+# SINCRONIZADO em 08/10/2026 com o `CSP_REPORT_ONLY` do `next.config.ts` —
+# até aqui esta cópia estava defasada (sem `wasm-unsafe-eval`, sem as origens
+# do Simple Analytics/Cloudflare/jsDelivr e sem as exceções de connect-src),
+# o que quebraria a transcrição de rádio e as métricas no dia da virada para
+# CSP bloqueante. Os dois arquivos mudam juntos; esta linha abaixo é uma
+# cópia byte a byte da política de lá (comentários do array não entram).
+# `report-uri`/`report-to` mandam as violações para `/api/csp-report` (mesma
+# origem) — interpretação em `lib/csp/reportes.ts`, decisão em
+# `docs/planos/PENDENCIAS-07-10.md`.
 /*
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; font-src 'self' https://cdn.fontshare.com; media-src 'self' https://s09.hstbr.net:8238; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://scripts.simpleanalyticscdn.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https:; font-src 'self' https://cdn.fontshare.com; media-src 'self' https:; connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co https://cloudflareinsights.com https://static.cloudflareinsights.com https://queue.simpleanalyticscdn.com; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; report-uri /api/csp-report; report-to csp-endpoint
+  Reporting-Endpoints: csp-endpoint="/api/csp-report"
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin

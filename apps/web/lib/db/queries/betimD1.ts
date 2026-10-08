@@ -96,6 +96,46 @@ export async function incrementarContador(tipo: string) {
   return null;
 }
 
+/**
+ * Soma `quantidade` a um contador de uma vez, criando a linha se não existir.
+ *
+ * Mesmo caminho do `incrementarContador` (D1 primeiro, Postgres depois), com
+ * um upsert só em vez de N — o coletor de violações de CSP chega com várias
+ * ocorrências da mesma chave no mesmo corpo de relatório, e N upserts por
+ * requisição gastaria conexão à toa.
+ *
+ * @param tipo Chave do contador (ex.: `csp:script-src:exemplo.test`).
+ * @param quantidade Quanto somar; valores < 1 viram 1 (nunca nega histórico).
+ * @returns `true` gravou, `null` nenhum banco disponível (degrada, não quebra).
+ */
+export async function somarContador(tipo: string, quantidade: number) {
+  const incremento = Number.isFinite(quantidade) && quantidade > 0 ? Math.floor(quantidade) : 1;
+  const agora = new Date().toISOString();
+  const db = await getD1();
+  if (db) {
+    await db
+      .insert(contadores)
+      .values({ tipo, contagem: incremento, atualizado_em: agora })
+      .onConflictDoUpdate({
+        target: contadores.tipo,
+        set: { contagem: sql`${contadores.contagem} + ${incremento}`, atualizado_em: agora },
+      });
+    return true;
+  }
+  const pgDb = getDb();
+  if (pgDb) {
+    await pgDb
+      .insert(schemaPg.contadores)
+      .values({ tipo, contagem: incremento, atualizado_em: agora })
+      .onConflictDoUpdate({
+        target: schemaPg.contadores.tipo,
+        set: { contagem: sql`${schemaPg.contadores.contagem} + ${incremento}`, atualizado_em: agora },
+      });
+    return true;
+  }
+  return null;
+}
+
 export type LinhaContadorD1 = { tipo: string; contagem: number };
 
 export async function totaisContadores(): Promise<LinhaContadorD1[] | null> {

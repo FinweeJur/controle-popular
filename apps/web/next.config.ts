@@ -143,6 +143,24 @@ const extensoesDoPainel = painelLocalLigado ? ["local.tsx", "local.ts"] : [];
  *
  * Nada de `unsafe-eval`: nem o bundle do Next nem o Three.js vendorizado
  * usam `eval`/`new Function` (conferido no vendor de `public/terras/globo`).
+ *
+ * ═══ RELATÓRIO DE VIOLAÇÃO (medido, não adivinhado) ═══
+ *
+ * Report-Only sem coletor é mudo: o navegador cumpre a política e guarda o
+ * aviso pra si. Por isso a política termina com `report-uri` (formato legado,
+ * quase todo navegador) e `report-to` (Reporting API, navegadores novos), e o
+ * cabeçalho `Reporting-Endpoints` abaixo declara o destino dos dois.
+ *
+ * O destino é `POST /api/csp-report` — mesma origem, então `connect-src
+ * 'self'` já o cobre. A rota normaliza para (diretiva, host) e soma na tabela
+ * `contadores` (`csp:<diretiva>:<origem>`, `csp:disposicao:*`, `csp:total`).
+ * A URL da página NÃO é guardada: pode trazer `?q=` com busca pessoal
+ * (AGENTS §5.8). Interpretação em `lib/csp/reportes.ts`.
+ *
+ * Virar `Content-Security-Policy` (bloqueante) é passo SEPARADO e do dono:
+ * só depois de ~24 h de contagem em Report-Only sem violação inesperada
+ * (PENDENCIAS-07-10.md). Enquanto houver contagem, o `disposition` dos
+ * relatórios é `report`; na virada, passa a chegar `enforce`.
  */
 const CSP_REPORT_ONLY = [
   "default-src 'self'",
@@ -183,6 +201,13 @@ const CSP_REPORT_ONLY = [
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  // Destino das violações (leia o bloco "RELATÓRIO DE VIOLAÇÃO" acima).
+  // `report-uri` é o formato legado e ainda o que a maioria dos navegadores
+  // envia; `report-to` é o Reporting API, que exige o cabeçalho
+  // `Reporting-Endpoints` em SECURITY_HEADERS — os dois juntos cobrem velho
+  // e novo. Reportado, não bloqueado: isto está dentro do CSP Report-Only.
+  "report-uri /api/csp-report",
+  "report-to csp-endpoint",
 ].join("; ");
 
 /**
@@ -193,6 +218,10 @@ const CSP_REPORT_ONLY = [
  */
 const SECURITY_HEADERS = [
   { key: "Content-Security-Policy-Report-Only", value: CSP_REPORT_ONLY },
+  // Declara o endpoint nomeado que o `report-to` da política acima usa.
+  // Sem esta linha, `report-to` não tem destino e o Reporting API cai no
+  // silêncio (o `report-uri` legado continua funcionando sozinho).
+  { key: "Reporting-Endpoints", value: 'csp-endpoint="/api/csp-report"' },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
