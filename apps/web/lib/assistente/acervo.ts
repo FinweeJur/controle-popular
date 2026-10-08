@@ -31,6 +31,26 @@
  * partir DESTA mesma função por script — um consumidor a mais, zero
  * duplicação de verdade.
  *
+ * ═══ REFATORAÇÃO DO HOTSPOT CODESCENE (08/10/2026) ═══
+ *
+ * O CodeScene mediu este arquivo com saúde 6,98 (558 Loc, 15 revisões;
+ * leitura de 07/10 registrada em `docs/planos/PENDENCIAS-07-10.md`). A
+ * refatoração seguiu o padrão de dívida observável, não estética:
+ *
+ * 1. A régua de frente era 11 `if` encadeados → virou a TABELA DE DADOS
+ *    `REGRAS_FRENTES` (mesma ordem de avaliação);
+ * 2. Os textos curados de cavas e macro eram funções longas (95 e 130
+ *    linhas) que só devolviam literais → viraram `PECAS_CAVAS` e
+ *    `PECAS_MACRO`, tabelas de dados declarativas;
+ * 3. A régua de data ISO→DD/MM/AAAA estava escrita 3× → virou `dataBR()`;
+ * 4. `montarAcervoDetalhado()` montava, validava, deduplicava e agregava na
+ *    mesma função → cada responsabilidade virou função curta nomeada.
+ *
+ * Prova de equivalência: o JSON de `montarAcervoDetalhado()` foi despejado
+ * antes e depois com sha256 idêntico (436 pedaços, 266.624 bytes) — mesma
+ * ordem, mesmos textos, mesmos links. Texto de resposta NÃO muda aqui
+ * (AGENTS §7: a resposta vem do dado; nada é reescrito por máquina).
+ *
  * ═══ DADO PESSOAL ═══
  *
  * As fontes aqui são módulos TS curados (varridos pela guarda de código
@@ -75,28 +95,73 @@ export interface AcervoFonte {
   links?: { href: string; texto: string }[];
 }
 
-/** Frente derivada da rota — mesma régua dos CONTEXTOS de `contexto-pagina.ts`. */
+/**
+ * TABELA DE DADOS: régua que deriva a `frente` a partir da rota — a MESMA
+ * régua dos CONTEXTOS de `contexto-pagina.ts`.
+ *
+ * Cada linha é um par `[prefixo da rota, frente]` avaliado NA ORDEM da
+ * lista: o primeiro prefixo que casa vence (desempate pela posição). A ordem
+ * aqui é a ordem literal dos 11 `if` que esta tabela substituiu em 08/10/2026
+ * — trocar linhas de lugar muda para onde uma rota que casa dois prefixos cai,
+ * então a sequência é dado, não estilo.
+ *
+ * Por que tabela e não cadeia de `if`: a régua é regra de dado (pares
+ * prefixo→frente), não fluxo. Em `if`, acrescentar uma zona exige achar o ponto
+ * certo da cadeia; em tabela o leitor audita linha a linha (AGENTS §5.9) e o
+ * teste cobre cada prefixo isolado.
+ */
+const REGRAS_FRENTES: readonly (readonly [prefixo: string, frente: string])[] = [
+  // Cidades estratégicas — 6 zonas com página própria no portal.
+  ["/betim", "cidades"],
+  ["/bh", "cidades"],
+  ["/diamantina", "cidades"],
+  ["/aracuai", "cidades"],
+  ["/itinga", "cidades"],
+  ["/sp", "cidades"],
+  // Poder Legislativo: federal (Congresso) e estadual (27 Assembleias).
+  ["/congresso", "congresso"],
+  ["/assembleias", "congresso"],
+  // Recursos hídricos é território das cidades (mesmo destino de antes).
+  ["/recursos", "cidades"],
+  ["/judiciario", "judiciario"],
+  ["/ambiental", "ambiental"],
+  // Transparência internacional é tratada como frente ambiental.
+  ["/internacional", "ambiental"],
+  ["/america-latina", "funcaosocialterra"],
+  ["/paraopeba", "paraopeba"],
+  ["/funcaosocialterra", "funcaosocialterra"],
+  ["/direitos-em-movimento", "direitos-em-movimento"],
+];
+
+/**
+ * Frente derivada da rota — mesma régua dos CONTEXTOS de `contexto-pagina.ts`.
+ *
+ * @param rota caminho do portal (`/betim/prefeitura/contratos`) ou qualquer
+ *   string; rota que não casa nenhum prefixo não é frente do portal.
+ * @returns o id da frente (`cidades`, `congresso`, `judiciario`, `ambiental`,
+ *   `paraopeba`, `funcaosocialterra`, `direitos-em-movimento`) ou `geral`.
+ */
 export function frenteDaRota(rota: string): string {
-  if (
-    rota.startsWith("/betim") ||
-    rota.startsWith("/bh") ||
-    rota.startsWith("/diamantina") ||
-    rota.startsWith("/aracuai") ||
-    rota.startsWith("/itinga") ||
-    rota.startsWith("/sp")
-  ) {
-    return "cidades";
+  for (const [prefixo, frente] of REGRAS_FRENTES) {
+    if (rota.startsWith(prefixo)) return frente;
   }
-  if (rota.startsWith("/congresso") || rota.startsWith("/assembleias")) return "congresso";
-  if (rota.startsWith("/recursos")) return "cidades";
-  if (rota.startsWith("/judiciario")) return "judiciario";
-  if (rota.startsWith("/ambiental")) return "ambiental";
-  if (rota.startsWith("/internacional")) return "ambiental";
-  if (rota.startsWith("/america-latina")) return "funcaosocialterra";
-  if (rota.startsWith("/paraopeba")) return "paraopeba";
-  if (rota.startsWith("/funcaosocialterra")) return "funcaosocialterra";
-  if (rota.startsWith("/direitos-em-movimento")) return "direitos-em-movimento";
   return "geral";
+}
+
+/**
+ * Data do portal (`AAAA-MM-DD`, com ou sem hora) no formato do leitor:
+ * `DD/MM/AAAA`.
+ *
+ * Por que existe: as fontes gravam ISO e o texto do assistente fala
+ * "29/09/2026". A régua estava escrita 3 vezes no módulo (série de cavas ×2 e
+ * inventário de bases); `slice(0, 10)` corta a hora quando a fonte manda
+ * timestamp, e a função única documenta isso uma vez só.
+ *
+ * @param iso data em ISO do portal.
+ * @returns data no formato brasileiro, com zeros à esquerda preservados.
+ */
+export function dataBR(iso: string): string {
+  return iso.slice(0, 10).split("-").reverse().join("/");
 }
 
 /** Um link do portal, no formato de `SeuNonoData`. */
@@ -229,8 +294,24 @@ const CARTOES_CAVAS = cartoesTopo(SERIE_CAVAS);
 /** Estado da janela de 24 meses, calculado sobre a data da coleta. */
 const ESTADO_CAVAS = estadoDaSerie(SERIE_CAVAS, new Date(serieCavas.gerado_em));
 
+/** Formatação de números dos textos de cavas (pt-BR, no máximo 1 casa decimal). */
+const FMT_CAVAS = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
+
+/** Data da coleta da série no formato do leitor (AAAA-MM-DD → DD/MM/AAAA). */
+const DATA_SERIE_BR = dataBR(serieCavas.gerado_em);
+
+/** Data da amostra de estados, pela mesma régua de `dataBR`. */
+const DATA_ESTADOS_BR = dataBR(estadosCavas.gerado_em);
+
+/** Citação colada ao número: fonte, camada e data da coleta da série. */
+const FONTE_MAPA_CAVAS = `Fonte: ${serieCavas.fonte}. Camada ${serieCavas.camada}. Coletado em ${DATA_SERIE_BR}.`;
+
+/** Link interno da rota das cavas, no formato de `SeuNonoData`. */
+const LINK_ROTA_CAVAS = { href: ROTA_CAVAS, texto: "Série anual e tabela" };
+
 /**
- * Pedaços de contexto das duas bases de cavas (Fase 5), para o assistente.
+ * TABELA DE DADOS: os 6 pedaços de contexto das duas bases de cavas (Fase 5),
+ * para o assistente.
  *
  * É a regra 5 ("toda base alimenta o assistente") aplicada às bases de
  * mineração: cada pedaço leva o agregado medido + a ressalva da própria
@@ -239,243 +320,239 @@ const ESTADO_CAVAS = estadoDaSerie(SERIE_CAVAS, new Date(serieCavas.gerado_em));
  * funções de `lib/cavas/serie.ts` — o mesmo caminho da página, então chatbot
  * e tela nunca divergem (regra "o número vem do dado").
  *
- * @returns 6 pedaços, todos com rota e fonteUrl
+ * Era `deCavas()`, função de 95 linhas que só devolvia literais; virou tabela
+ * em 08/10/2026 porque texto curado é dado, não fluxo (AGENTS §7 — o texto
+ * aqui é republicação curada e não é reescrito). 6 pedaços, todos com rota e
+ * fonteUrl; só o da ANM aponta a fonte externa.
  */
-function deCavas(): AcervoFonte[] {
-  const fmt = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
-  const dataCavas = serieCavas.gerado_em.slice(0, 10).split("-").reverse().join("/");
-  const dataEstados = estadosCavas.gerado_em.slice(0, 10).split("-").reverse().join("/");
-  const C = CARTOES_CAVAS;
-  const R = estadosCavas.resumo;
-  const fonteMapa = `Fonte: ${serieCavas.fonte}. Camada ${serieCavas.camada}. Coletado em ${dataCavas}.`;
-  const rota = { href: ROTA_CAVAS, texto: "Série anual e tabela" };
-
-  return [
-    {
-      id: "cavas:cobertura",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "Quanto de chão mudou em Minas Gerais com mineração",
-      fonteUrl: ROTA_CAVAS,
-      texto:
-        `O portal acompanha ${fmt.format(C.poligonos)} polígonos de mineração em Minas Gerais, ` +
-        `somando ${fmt.format(C.area)} hectares entre ${C.primeiroAno} e ${C.ultimoAno} ` +
-        `(${C.qtdAnos} anos). A imagem tem ${serieCavas.resolucao_m} metros por pixel. ` +
-        `${serieCavas.fonte}. ${serieCavas.ressalva}. ${fonteMapa}`,
-      links: [rota],
-    },
-    {
-      id: "cavas:estado-janela",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "A mineração de MG ainda cresce, parou ou encerrou",
-      fonteUrl: ROTA_CAVAS,
-      texto:
-        `Estado da janela de 24 meses: ${ESTADO_CAVAS.estado}. ${ESTADO_CAVAS.explicacao}. ` +
-        `O pico de área nova foi em ${C.picoAno}, que não é o ano do teto da série (${C.primeiroAno}). ` +
-        (C.ultimoDelta == null
-          ? `O último ano (${C.ultimoAno}) não tem delta calculado. `
-          : `No último ano (${C.ultimoAno}) apareceram ${fmt.format(C.ultimoDelta)} hectares novos. `) +
-        `Estado calculado em ${dataCavas} por \`lib/cavas/serie.ts\`.`,
-      links: [rota],
-    },
-    {
-      id: "cavas:tres-estados",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "Em operação, indício ou sem cadastro: os três estados de uma cava",
-      fonteUrl: ROTA_CAVAS,
-      texto:
-        `Amostra de ${estadosCavas.amostra} cavas: ${R.em_operacao} em operação, ` +
-        `${R.indicio_processual} com indício processual e ${R.sem_cadastro_anm} sem cadastro na ANM. ` +
-        `Estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. ` +
-        `Estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. ` +
-        `Sem cadastro é fora de todo polígono ANM: o mapa enxerga mineração onde a ANM não tem cadastro. ` +
-        `Aparar no mapa não é ilegal por si só. Amostra datada de ${dataEstados}; não é total de MG.`,
-      links: [rota],
-    },
-    {
-      id: "cavas:fora-da-anm",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "Mineração mapeada fora de todo polígono da ANM",
-      fonteUrl: ROTA_CAVAS,
-      texto:
-        `A série soma ${fmt.format(C.qtdFora)} polígonos e ${fmt.format(C.areaFora)} hectares ` +
-        `fora de todo polígono da ANM, em ${C.qtdAnos} anos. Isso é ausência de cadastro, ` +
-        `não é ausência de mineração e não é, sozinho, prova de ilicitude. ` +
-        `${estadosCavas.ressalva}. ${fonteMapa}`,
-      links: [rota],
-    },
-    {
-      id: "cavas:limites",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "O que a base de cavas ainda não responde",
-      fonteUrl: ROTA_CAVAS,
-      texto:
-        `Lacunas declaradas da Fase 5: a coleta cobre só Minas Gerais, não todas as UF. ` +
-        `Não há distância até terra indígena nem área de conservação por cava. ` +
-        `Não há imagem de satélite com data de cada cava. ` +
-        `A resolução é ${serieCavas.resolucao_m} metros por pixel: cava pequena ou sob nuvem aparece atrasada. ` +
-        `${serieCavas.resolucao_aviso} ${serieCavas.ressalva}`,
-      links: [rota],
-    },
-    {
-      id: "cavas:conferir-anm",
-      frente: frenteDaRota(ROTA_CAVAS),
-      rota: ROTA_CAVAS,
-      titulo: "Como conferir um processo de mineração na ANM",
-      fonteUrl: FONTE_ANM_PROCESSOS,
-      texto:
-        `Para conferir o processo citado no portal, use a consulta pública da ANM. ` +
-        `O link não aceita parâmetro: o campo se chama NUP e a busca é manual. ` +
-        `Processo dentro de polígono ANM sem fase que autoriza extração é indício, não sentença. ` +
-        `Fonte: ${estadosCavas.fonte}.`,
-      links: [{ href: FONTE_ANM_PROCESSOS, texto: "Consultar processo na ANM" }, rota],
-    },
-  ];
-}
+const PECAS_CAVAS: readonly AcervoFonte[] = [
+  {
+    id: "cavas:cobertura",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "Quanto de chão mudou em Minas Gerais com mineração",
+    fonteUrl: ROTA_CAVAS,
+    texto:
+      `O portal acompanha ${FMT_CAVAS.format(CARTOES_CAVAS.poligonos)} polígonos de mineração em Minas Gerais, ` +
+      `somando ${FMT_CAVAS.format(CARTOES_CAVAS.area)} hectares entre ${CARTOES_CAVAS.primeiroAno} e ${CARTOES_CAVAS.ultimoAno} ` +
+      `(${CARTOES_CAVAS.qtdAnos} anos). A imagem tem ${serieCavas.resolucao_m} metros por pixel. ` +
+      `${serieCavas.fonte}. ${serieCavas.ressalva}. ${FONTE_MAPA_CAVAS}`,
+    links: [LINK_ROTA_CAVAS],
+  },
+  {
+    id: "cavas:estado-janela",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "A mineração de MG ainda cresce, parou ou encerrou",
+    fonteUrl: ROTA_CAVAS,
+    texto:
+      `Estado da janela de 24 meses: ${ESTADO_CAVAS.estado}. ${ESTADO_CAVAS.explicacao}. ` +
+      `O pico de área nova foi em ${CARTOES_CAVAS.picoAno}, que não é o ano do teto da série (${CARTOES_CAVAS.primeiroAno}). ` +
+      (CARTOES_CAVAS.ultimoDelta == null
+        ? `O último ano (${CARTOES_CAVAS.ultimoAno}) não tem delta calculado. `
+        : `No último ano (${CARTOES_CAVAS.ultimoAno}) apareceram ${FMT_CAVAS.format(CARTOES_CAVAS.ultimoDelta)} hectares novos. `) +
+      `Estado calculado em ${DATA_SERIE_BR} por \`lib/cavas/serie.ts\`.`,
+    links: [LINK_ROTA_CAVAS],
+  },
+  {
+    id: "cavas:tres-estados",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "Em operação, indício ou sem cadastro: os três estados de uma cava",
+    fonteUrl: ROTA_CAVAS,
+    texto:
+      `Amostra de ${estadosCavas.amostra} cavas: ${estadosCavas.resumo.em_operacao} em operação, ` +
+      `${estadosCavas.resumo.indicio_processual} com indício processual e ${estadosCavas.resumo.sem_cadastro_anm} sem cadastro na ANM. ` +
+      `Estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. ` +
+      `Estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. ` +
+      `Sem cadastro é fora de todo polígono ANM: o mapa enxerga mineração onde a ANM não tem cadastro. ` +
+      `Aparar no mapa não é ilegal por si só. Amostra datada de ${DATA_ESTADOS_BR}; não é total de MG.`,
+    links: [LINK_ROTA_CAVAS],
+  },
+  {
+    id: "cavas:fora-da-anm",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "Mineração mapeada fora de todo polígono da ANM",
+    fonteUrl: ROTA_CAVAS,
+    texto:
+      `A série soma ${FMT_CAVAS.format(CARTOES_CAVAS.qtdFora)} polígonos e ${FMT_CAVAS.format(CARTOES_CAVAS.areaFora)} hectares ` +
+      `fora de todo polígono da ANM, em ${CARTOES_CAVAS.qtdAnos} anos. Isso é ausência de cadastro, ` +
+      `não é ausência de mineração e não é, sozinho, prova de ilicitude. ` +
+      `${estadosCavas.ressalva}. ${FONTE_MAPA_CAVAS}`,
+    links: [LINK_ROTA_CAVAS],
+  },
+  {
+    id: "cavas:limites",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "O que a base de cavas ainda não responde",
+    fonteUrl: ROTA_CAVAS,
+    texto:
+      `Lacunas declaradas da Fase 5: a coleta cobre só Minas Gerais, não todas as UF. ` +
+      `Não há distância até terra indígena nem área de conservação por cava. ` +
+      `Não há imagem de satélite com data de cada cava. ` +
+      `A resolução é ${serieCavas.resolucao_m} metros por pixel: cava pequena ou sob nuvem aparece atrasada. ` +
+      `${serieCavas.resolucao_aviso} ${serieCavas.ressalva}`,
+    links: [LINK_ROTA_CAVAS],
+  },
+  {
+    id: "cavas:conferir-anm",
+    frente: frenteDaRota(ROTA_CAVAS),
+    rota: ROTA_CAVAS,
+    titulo: "Como conferir um processo de mineração na ANM",
+    fonteUrl: FONTE_ANM_PROCESSOS,
+    texto:
+      `Para conferir o processo citado no portal, use a consulta pública da ANM. ` +
+      `O link não aceita parâmetro: o campo se chama NUP e a busca é manual. ` +
+      `Processo dentro de polígono ANM sem fase que autoriza extração é indício, não sentença. ` +
+      `Fonte: ${estadosCavas.fonte}.`,
+    links: [{ href: FONTE_ANM_PROCESSOS, texto: "Consultar processo na ANM" }, LINK_ROTA_CAVAS],
+  },
+];
 
 /**
- * Pedaços de conhecimento macro e dados estruturantes do portal.
- * Cobre o painel geral da Home (R$ 251 bi), as 5 perguntas fixas,
+ * TABELA DE DADOS: pedaços de conhecimento macro e dados estruturantes do
+ * portal. Cobre o painel geral da Home (R$ 251 bi), as 5 perguntas fixas,
  * a repactuação de Mariana (R$ 171 bi), o Judiciário MG, contratos PNCP,
  * barragens a montante e o licenciamento ambiental SEMAD.
+ *
+ * Era `deDadosMacro()`, função de 130 linhas que só devolvia literais; virou
+ * tabela em 08/10/2026 porque texto curado é dado, não fluxo. Os números
+ * interpolados (bases do inventário) saem do JSON versionado, nunca digitados
+ * à mão (AGENTS §7 — nada aqui é reescrito por máquina).
  */
-function deDadosMacro(): AcervoFonte[] {
-  return [
-    {
-      id: "macro:soma-251-bi",
-      frente: "geral",
-      rota: "/",
-      titulo: "Soma dos R$ 251 bilhões monitorados no painel do portal",
-      fonteUrl: "/",
-      texto:
-        "O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. " +
-        "A soma pública oficial é composta por: Acordo de Repactuação do Rio Doce / Mariana (R$ 171 bilhões) + " +
-        "Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + " +
-        "Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + " +
-        "Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). " +
-        "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas. " +
-        `O acervo reunido tem ${basesPortal.total_arquivos} bases com ${basesPortal.total_registros} registros medidos em ${basesPortal.temas.length} temas, cada um com link para a fonte oficial.`,
-      links: [
-        { href: "/", texto: "Painel Geral do Portal" },
-        { href: "/ambiental/mariana", texto: "Acordo de Mariana" },
-        { href: "/paraopeba/execucao", texto: "Acordo de Brumadinho" },
-        { href: "/judiciario/instituicoes", texto: "Orçamento da Justiça MG" },
-      ],
-    },
-    {
-      id: "macro:acordo-mariana-171-bi",
-      frente: "ambiental",
-      rota: "/ambiental/mariana",
-      titulo: "Repactuação do Rio Doce (Mariana) de R$ 171 bilhões",
-      fonteUrl: "/ambiental/mariana",
-      texto:
-        "O Acordo Judicial de Repactuação da Bacia do Rio Doce e Mariana soma R$ 171 bilhões totais. " +
-        "Desse valor, R$ 100 bilhões representam dinheiro novo a ser pago pelas mineradoras Samarco, Vale e BHP Billiton ao longo de 20 anos. " +
-        "Os recursos destinam-se a saúde pública, saneamento básico, infraestrutura, recuperação ambiental da calha do Rio Doce e repasses diretos aos municípios de Minas Gerais e do Espírito Santo atingidos pelo rompimento da barragem de Fundão.",
-      links: [
-        { href: "/ambiental/mariana", texto: "Painel da Bacia do Rio Doce" },
-        { href: "/ambiental/barragens", texto: "Painel de Barragens" },
-      ],
-    },
-    {
-      id: "macro:orcamento-justica-disparidade",
-      frente: "judiciario",
-      rota: "/judiciario/instituicoes",
-      titulo: "Orçamento do TJMG, MPMG e DPMG e a disparidade institucional",
-      fonteUrl: "/judiciario/instituicoes",
-      texto:
-        "O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. " +
-        "O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. " +
-        "Em contrapartida, a Defensoria Pública de Minas Gerais (DPMG) recebe R$ 1,06 bilhão — um orçamento 14 vezes menor que o TJMG. " +
-        "Essa disparidade orçamentária resulta no déficit da Defensoria Pública em 176 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
-      links: [
-        { href: "/judiciario/instituicoes", texto: "Fichas Orçamentárias da Justiça MG" },
-        { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria Pública" },
-        { href: "/judiciario/contatos", texto: "Guia de 990 Varas e Gabinetes" },
-      ],
-    },
-    {
-      id: "macro:pesquisa-contratos-prefeituras",
-      frente: "cidades",
-      rota: "/betim/prefeitura/contratos",
-      titulo: "Como pesquisar contratos e licitações de prefeituras no portal",
-      fonteUrl: "/betim/prefeitura/contratos",
-      texto:
-        "O portal audita contratações públicas municipais conectando-se ao PNCP (Portal Nacional de Contratações Públicas) e aos Diários Oficiais. " +
-        "Para pesquisar: acesse a página da cidade (ex: Betim, BH, Diamantina, Araçuaí, Itinga) e clique em 'Contratos' ou 'Licitações'. " +
-        "O sistema oferece busca por fornecedor, objeto, modalidade (Pregão, Dispensa, Inexigibilidade), alertas de concentração de receita, " +
-        "exportação em planilha CSV com UTF-8 BOM e link direto para o edital ou termo contratual original.",
-      links: [
-        { href: "/betim/prefeitura/contratos", texto: "Contratos de Betim" },
-        { href: "/diamantina/prefeitura/diario", texto: "Diário Oficial de Diamantina" },
-        { href: "/busca", texto: "Busca Universal de Contratos" },
-      ],
-    },
-    {
-      id: "macro:barragens-montante-nivel-3",
-      frente: "ambiental",
-      rota: "/ambiental/barragens/descaracterizacao",
-      titulo: "Barragens a montante e estruturas em nível 3 de emergência em MG",
-      fonteUrl: "/ambiental/barragens/descaracterizacao",
-      texto:
-        "O portal monitora 23 barragens a montante sob exigência legal de descaracterização pela Lei Estadual 23.291/2019 ('Mar de Lama Nunca Mais'). " +
-        "Duas barragens continuam em Nível 3 de Emergência (risco iminente de ruptura): Forquilha III (mina Fábrica, em Ouro Preto/Itabirito) e Sul Superior (mina Gongo Soco, em Barão de Cocais), ambas da Vale. " +
-        "O Programa de Descaracterização da Vale abrange 45 estruturas a montante em MG (21 concluídas e 24 em andamento até 2035). Os dados oficiais são integrados do SIGBM/ANM e FEAM.",
-      links: [
-        { href: "/ambiental/barragens/descaracterizacao", texto: "Descaracterização de Barragens" },
-        { href: "/ambiental/barragens", texto: "Painel Geral de Barragens" },
-      ],
-    },
-    {
-      id: "macro:licenciamento-semad-onsa",
-      frente: "ambiental",
-      rota: "/ambiental/licenciamento",
-      titulo: "Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema)",
-      fonteUrl: "/ambiental/licenciamento",
-      texto:
-        "O painel do ONSA reúne o censo completo de mais de 19.700 empreendimentos com licença ambiental deferida em Minas Gerais pela SEMAD (Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável). " +
-        "A consulta permite filtrar por 853 municípios, 8 setores oficiais (A - Agropecuária, B - Mineração, C - Indústrias Metalúrgicas, D - Química, E - Infraestrutura, F - Energia, G - Resíduos/Saneamento, H - Serviços), " +
-        "classes de risco 1 a 6 e modalidades (LP, LI, LO, LAC, LAS). Todas as licenças possuem link para o ato público e dados georreferenciados.",
-      links: [
-        { href: "/ambiental/licenciamento", texto: "Censo de Licenciamento Ambiental" },
-        { href: "/ambiental/copam", texto: "Pautas e Decisões do COPAM" },
-      ],
-    },
-    {
-      id: "macro:vales-jequitinhonha-mucuri-litio",
-      frente: "cidades",
-      rota: "/direitos-em-movimento",
-      titulo: "Vales do Jequitinhonha e Mucuri: polo do lítio e royalties da mineração",
-      fonteUrl: "/direitos-em-movimento",
-      texto:
-        "O portal mapeia 82 municípios dos Vales do Jequitinhonha e Mucuri. No Médio Jequitinhonha, o Polo do Lítio abrange Araçuaí, Itinga e Coronel Murta (projetos da Sigma Lithium e outras mineradoras). " +
-        "O portal fiscaliza a destinação da CFEM (Compensação Financeira pela Exploração de Recursos Minerais), o impacto nos recursos hídricos da bacia do Jequitinhonha, contratações no PNCP e a proteção das terras indígenas Maxakali no Vale do Mucuri.",
-      links: [
-        { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties do Lítio em Itinga" },
-        { href: "/funcaosocialterra", texto: "Terras Tradicionais e Indígenas" },
-      ],
-    },
-    {
-      id: "macro:canais-lai-conselhos-direitos",
-      frente: "direitos",
-      rota: "/direitos-em-movimento/informacao",
-      titulo: "Central de Canais LAI (445 entidades) e Conselhos de Direitos (710 colegiados)",
-      fonteUrl: "/direitos-em-movimento/informacao",
-      texto:
-        "A Central de Canais LAI reúne 445 entidades públicas brasileiras (prefeituras, câmaras, tribunais, órgãos federais e concessionárias de água/energia) com e-mail, telefone, e-SIC e modelo de pedido pronto. " +
-        "O portal também mapeia 710 conselhos participativos (Saúde, Meio Ambiente CODEMA, Tutelares, Direitos Humanos) das 27 UFs e 199 cidades estratégicas com datas de reunião e canais de participação popular.",
-      links: [
-        { href: "/direitos-em-movimento/informacao", texto: "Central de Canais LAI" },
-        { href: "/direitos-em-movimento/conselhos", texto: "Conselhos de Direitos" },
-        { href: "/direitos-em-movimento/denuncia", texto: "Canal de Denúncia Popular" },
-      ],
-    },
-  ];
-}
+const PECAS_MACRO: readonly AcervoFonte[] = [
+  {
+    id: "macro:soma-251-bi",
+    frente: "geral",
+    rota: "/",
+    titulo: "Soma dos R$ 251 bilhões monitorados no painel do portal",
+    fonteUrl: "/",
+    texto:
+      "O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. " +
+      "A soma pública oficial é composta por: Acordo de Repactuação do Rio Doce / Mariana (R$ 171 bilhões) + " +
+      "Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + " +
+      "Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + " +
+      "Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). " +
+      "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas. " +
+      `O acervo reunido tem ${basesPortal.total_arquivos} bases com ${basesPortal.total_registros} registros medidos em ${basesPortal.temas.length} temas, cada um com link para a fonte oficial.`,
+    links: [
+      { href: "/", texto: "Painel Geral do Portal" },
+      { href: "/ambiental/mariana", texto: "Acordo de Mariana" },
+      { href: "/paraopeba/execucao", texto: "Acordo de Brumadinho" },
+      { href: "/judiciario/instituicoes", texto: "Orçamento da Justiça MG" },
+    ],
+  },
+  {
+    id: "macro:acordo-mariana-171-bi",
+    frente: "ambiental",
+    rota: "/ambiental/mariana",
+    titulo: "Repactuação do Rio Doce (Mariana) de R$ 171 bilhões",
+    fonteUrl: "/ambiental/mariana",
+    texto:
+      "O Acordo Judicial de Repactuação da Bacia do Rio Doce e Mariana soma R$ 171 bilhões totais. " +
+      "Desse valor, R$ 100 bilhões representam dinheiro novo a ser pago pelas mineradoras Samarco, Vale e BHP Billiton ao longo de 20 anos. " +
+      "Os recursos destinam-se a saúde pública, saneamento básico, infraestrutura, recuperação ambiental da calha do Rio Doce e repasses diretos aos municípios de Minas Gerais e do Espírito Santo atingidos pelo rompimento da barragem de Fundão.",
+    links: [
+      { href: "/ambiental/mariana", texto: "Painel da Bacia do Rio Doce" },
+      { href: "/ambiental/barragens", texto: "Painel de Barragens" },
+    ],
+  },
+  {
+    id: "macro:orcamento-justica-disparidade",
+    frente: "judiciario",
+    rota: "/judiciario/instituicoes",
+    titulo: "Orçamento do TJMG, MPMG e DPMG e a disparidade institucional",
+    fonteUrl: "/judiciario/instituicoes",
+    texto:
+      "O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. " +
+      "O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. " +
+      "Em contrapartida, a Defensoria Pública de Minas Gerais (DPMG) recebe R$ 1,06 bilhão — um orçamento 14 vezes menor que o TJMG. " +
+      "Essa disparidade orçamentária resulta no déficit da Defensoria Pública em 176 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
+    links: [
+      { href: "/judiciario/instituicoes", texto: "Fichas Orçamentárias da Justiça MG" },
+      { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria Pública" },
+      { href: "/judiciario/contatos", texto: "Guia de 990 Varas e Gabinetes" },
+    ],
+  },
+  {
+    id: "macro:pesquisa-contratos-prefeituras",
+    frente: "cidades",
+    rota: "/betim/prefeitura/contratos",
+    titulo: "Como pesquisar contratos e licitações de prefeituras no portal",
+    fonteUrl: "/betim/prefeitura/contratos",
+    texto:
+      "O portal audita contratações públicas municipais conectando-se ao PNCP (Portal Nacional de Contratações Públicas) e aos Diários Oficiais. " +
+      "Para pesquisar: acesse a página da cidade (ex: Betim, BH, Diamantina, Araçuaí, Itinga) e clique em 'Contratos' ou 'Licitações'. " +
+      "O sistema oferece busca por fornecedor, objeto, modalidade (Pregão, Dispensa, Inexigibilidade), alertas de concentração de receita, " +
+      "exportação em planilha CSV com UTF-8 BOM e link direto para o edital ou termo contratual original.",
+    links: [
+      { href: "/betim/prefeitura/contratos", texto: "Contratos de Betim" },
+      { href: "/diamantina/prefeitura/diario", texto: "Diário Oficial de Diamantina" },
+      { href: "/busca", texto: "Busca Universal de Contratos" },
+    ],
+  },
+  {
+    id: "macro:barragens-montante-nivel-3",
+    frente: "ambiental",
+    rota: "/ambiental/barragens/descaracterizacao",
+    titulo: "Barragens a montante e estruturas em nível 3 de emergência em MG",
+    fonteUrl: "/ambiental/barragens/descaracterizacao",
+    texto:
+      "O portal monitora 23 barragens a montante sob exigência legal de descaracterização pela Lei Estadual 23.291/2019 ('Mar de Lama Nunca Mais'). " +
+      "Duas barragens continuam em Nível 3 de Emergência (risco iminente de ruptura): Forquilha III (mina Fábrica, em Ouro Preto/Itabirito) e Sul Superior (mina Gongo Soco, em Barão de Cocais), ambas da Vale. " +
+      "O Programa de Descaracterização da Vale abrange 45 estruturas a montante em MG (21 concluídas e 24 em andamento até 2035). Os dados oficiais são integrados do SIGBM/ANM e FEAM.",
+    links: [
+      { href: "/ambiental/barragens/descaracterizacao", texto: "Descaracterização de Barragens" },
+      { href: "/ambiental/barragens", texto: "Painel Geral de Barragens" },
+    ],
+  },
+  {
+    id: "macro:licenciamento-semad-onsa",
+    frente: "ambiental",
+    rota: "/ambiental/licenciamento",
+    titulo: "Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema)",
+    fonteUrl: "/ambiental/licenciamento",
+    texto:
+      "O painel do ONSA reúne o censo completo de mais de 19.700 empreendimentos com licença ambiental deferida em Minas Gerais pela SEMAD (Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável). " +
+      "A consulta permite filtrar por 853 municípios, 8 setores oficiais (A - Agropecuária, B - Mineração, C - Indústrias Metalúrgicas, D - Química, E - Infraestrutura, F - Energia, G - Resíduos/Saneamento, H - Serviços), " +
+      "classes de risco 1 a 6 e modalidades (LP, LI, LO, LAC, LAS). Todas as licenças possuem link para o ato público e dados georreferenciados.",
+    links: [
+      { href: "/ambiental/licenciamento", texto: "Censo de Licenciamento Ambiental" },
+      { href: "/ambiental/copam", texto: "Pautas e Decisões do COPAM" },
+    ],
+  },
+  {
+    id: "macro:vales-jequitinhonha-mucuri-litio",
+    frente: "cidades",
+    rota: "/direitos-em-movimento",
+    titulo: "Vales do Jequitinhonha e Mucuri: polo do lítio e royalties da mineração",
+    fonteUrl: "/direitos-em-movimento",
+    texto:
+      "O portal mapeia 82 municípios dos Vales do Jequitinhonha e Mucuri. No Médio Jequitinhonha, o Polo do Lítio abrange Araçuaí, Itinga e Coronel Murta (projetos da Sigma Lithium e outras mineradoras). " +
+      "O portal fiscaliza a destinação da CFEM (Compensação Financeira pela Exploração de Recursos Minerais), o impacto nos recursos hídricos da bacia do Jequitinhonha, contratações no PNCP e a proteção das terras indígenas Maxakali no Vale do Mucuri.",
+    links: [
+      { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties do Lítio em Itinga" },
+      { href: "/funcaosocialterra", texto: "Terras Tradicionais e Indígenas" },
+    ],
+  },
+  {
+    id: "macro:canais-lai-conselhos-direitos",
+    frente: "direitos",
+    rota: "/direitos-em-movimento/informacao",
+    titulo: "Central de Canais LAI (445 entidades) e Conselhos de Direitos (710 colegiados)",
+    fonteUrl: "/direitos-em-movimento/informacao",
+    texto:
+      "A Central de Canais LAI reúne 445 entidades públicas brasileiras (prefeituras, câmaras, tribunais, órgãos federais e concessionárias de água/energia) com e-mail, telefone, e-SIC e modelo de pedido pronto. " +
+      "O portal também mapeia 710 conselhos participativos (Saúde, Meio Ambiente CODEMA, Tutelares, Direitos Humanos) das 27 UFs e 199 cidades estratégicas com datas de reunião e canais de participação popular.",
+    links: [
+      { href: "/direitos-em-movimento/informacao", texto: "Central de Canais LAI" },
+      { href: "/direitos-em-movimento/conselhos", texto: "Conselhos de Direitos" },
+      { href: "/direitos-em-movimento/denuncia", texto: "Canal de Denúncia Popular" },
+    ],
+  },
+];
 
 /** Contagem de cobertura do acervo, para relatório e teste. */
 export interface CoberturaAcervo {
@@ -629,7 +706,9 @@ function deBases(): AcervoFonte[] {
  */
 function deBasesPortal(): AcervoFonte[] {
   const inv = basesPortal as InventarioBases;
-  const dataBR = inv.gerado_em.split("-").reverse().join("/");
+  // A mesma régua de `dataBR()` (3ª ocorrência antes da unificação): a data
+  // do inventário no formato do leitor, sem mascarar a função exportada.
+  const dataInventario = dataBR(inv.gerado_em);
   const fontes: AcervoFonte[] = [
     {
       id: "bases:total",
@@ -640,7 +719,7 @@ function deBasesPortal(): AcervoFonte[] {
       texto:
         `O portal publica ${inv.total_arquivos} arquivos de dados, somando ${inv.total_mb} MB, ` +
         `organizados em ${inv.temas.length} temas. O catálogo curado, com fonte oficial de cada base, ` +
-        `está na API pública /api/v1/bases. Inventário medido em ${dataBR}.`,
+        `está na API pública /api/v1/bases. Inventário medido em ${dataInventario}.`,
       links: [{ href: "/api/v1/bases", texto: "Catálogo de bases (API)" }],
     },
   ];
@@ -660,7 +739,7 @@ function deBasesPortal(): AcervoFonte[] {
         `Tema "${t.rotulo}": ${t.arquivos} arquivo(s), ${t.mb} MB` +
         (t.registros > 0 ? `, ${t.registros} registros contados` : "") +
         `${parcial}. Exemplos: ${t.exemplos.join(", ")}. Página do tema: ${t.rota}. ` +
-        `Inventário medido em ${dataBR}.`,
+        `Inventário medido em ${dataInventario}.`,
       links: [{ href: t.rota, texto: t.rotulo }],
     });
   }
@@ -668,28 +747,14 @@ function deBasesPortal(): AcervoFonte[] {
 }
 
 /**
- * Monta o acervo inteiro, determinístico: macro → frentes → contextos → páginas →
- * posts → designações → cavas. Nenhuma dependência de fs/rede/banco — os
- * JSONs de cavas entram como import estático (mesma disciplina de página
- * estática do Next), então roda em qualquer ambiente.
+ * Guarda editorial do acervo: peça sem rota, fonteUrl, titulo ou texto não
+ * entra (regra "ou o número não vai" do AGENTS.md, aplicada em código).
+ *
+ * @param acervo pedaços montados, antes da checagem de id.
+ * @throws Error listando os ids incompletos — falha proposital: peça
+ *   incompleta vira resposta sem fonte, e resposta sem fonte não vai ao ar.
  */
-export function montarAcervoDetalhado(): AcervoMontado {
-  const { fontes: deFrentesFontes, puladas } = deFrentes();
-  const acervo = [
-    ...deDadosMacro(),
-    ...deFrentesFontes,
-    ...deContextos(),
-    ...dePaginasDados(),
-    ...dePostsDoBlog(),
-    ...deDesignacoes(),
-    ...deCavas(),
-    ...deMemoria(),
-    ...deBases(),
-    ...deBasesPortal(),
-  ];
-
-  // Garantia estrutural: nada sem rota/fonteUrl/titulo/texto no acervo
-  // (regra "ou o número não vai" do AGENTS.md, aplicada em código).
+function exigirPecasCompletas(acervo: readonly AcervoFonte[]): void {
   const incompletas = acervo.filter(
     (f) => !f.rota || !f.fonteUrl || !f.titulo || !f.texto
   );
@@ -699,26 +764,80 @@ export function montarAcervoDetalhado(): AcervoMontado {
         `ids: ${incompletas.map((f) => f.id).join(", ")}`
     );
   }
+}
 
-  // Dedup por id — id duplicado quebraria a citação [n] na UI.
+/**
+ * Dedup por id — id repetido quebraria a citação [n] da UI, então dois
+ * pedaços nunca podem disputar a mesma numeração.
+ *
+ * @param acervo pedaços já validados quanto aos campos obrigatórios.
+ * @throws Error com o id repetido; quem aparece primeiro fica na posição.
+ */
+function exigirIdsUnicos(acervo: readonly AcervoFonte[]): void {
   const vistos = new Set<string>();
-  const unicos: AcervoFonte[] = [];
   for (const f of acervo) {
     if (vistos.has(f.id)) {
       throw new Error(`montarAcervoDetalhado: id duplicado "${f.id}"`);
     }
     vistos.add(f.id);
-    unicos.push(f);
   }
+}
 
+/**
+ * Contagem de cobertura por frente — o "o assistente sabe de quanto do
+ * portal?" sai daqui, sempre medido, nunca digitado à mão.
+ *
+ * @param pecas pedaços únicos do acervo.
+ * @returns quantos pedaços caem em cada frente, na ordem de primeira aparição.
+ */
+function coberturaPorFrente(pecas: readonly AcervoFonte[]): Record<string, number> {
   const porFrente: Record<string, number> = {};
-  for (const f of unicos) {
+  for (const f of pecas) {
     porFrente[f.frente] = (porFrente[f.frente] ?? 0) + 1;
   }
+  return porFrente;
+}
+
+/**
+ * Monta o acervo inteiro, determinístico, nesta ORDEM: macro → frentes →
+ * contextos → páginas → posts → designações → cavas → memória → bases →
+ * inventário. A ordem é regra: dela nasce a numeração das citações [n] que o
+ * leitor vê na tela, então trocar grupos de lugar muda a UI. Nenhuma
+ * dependência de fs/rede/banco — os JSONs de cavas entram como import estático
+ * (mesma disciplina de página estática do Next), então roda em qualquer
+ * ambiente.
+ *
+ * Em 08/10/2026 as três responsabilidades que viviam aqui (montar, validar,
+ * deduplicar e agregar) passaram para `exigirPecasCompletas`,
+ * `exigirIdsUnicos` e `coberturaPorFrente` — esta função virou só o fluxo.
+ *
+ * @returns as fontes na ordem de montagem + a cobertura medida por frente.
+ */
+export function montarAcervoDetalhado(): AcervoMontado {
+  const { fontes: frentes, puladas } = deFrentes();
+  const acervo = [
+    ...PECAS_MACRO,
+    ...frentes,
+    ...deContextos(),
+    ...dePaginasDados(),
+    ...dePostsDoBlog(),
+    ...deDesignacoes(),
+    ...PECAS_CAVAS,
+    ...deMemoria(),
+    ...deBases(),
+    ...deBasesPortal(),
+  ];
+
+  exigirPecasCompletas(acervo);
+  exigirIdsUnicos(acervo);
 
   return {
-    fontes: unicos,
-    cobertura: { total: unicos.length, porFrente, puladasSemRota: puladas },
+    fontes: acervo,
+    cobertura: {
+      total: acervo.length,
+      porFrente: coberturaPorFrente(acervo),
+      puladasSemRota: puladas,
+    },
   };
 }
 

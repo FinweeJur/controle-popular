@@ -3,10 +3,13 @@ import {
   montarAcervo,
   montarAcervoDetalhado,
   frenteDaRota,
+  dataBR,
   type AcervoFonte,
 } from "./acervo";
 import serieCavas from "@/data/cavas-serie-mineracao-mg.json";
 import estadosCavas from "@/data/cavas-estados-mg.json";
+import catalogoBases from "@/data/catalogo-bases-dados.json";
+import basesPortal from "@/data/bases-portal.json";
 import { FONTE_ANM_PROCESSOS } from "@/lib/cavas/serie";
 
 /**
@@ -204,5 +207,127 @@ describe("frenteDaRota -- régua de derivação", () => {
   it("cai em 'geral' para rota desconhecida", () => {
     expect(frenteDaRota("/nao-existe")).toBe("geral");
     expect(frenteDaRota("/")).toBe("geral");
+  });
+});
+
+/**
+ * Casos-limite da régua `REGRAS_FRENTES` (tabela de dados que substituiu 11
+ * `if` encadeados em 08/10/2026) e as regras que a refatoração tornou
+ * declarativas. Aqui o teste cobre a REGRA, não o dado de ontem: se alguém
+ * trocar a ordem da tabela ou reaproveitar `dataBR`, quebra aqui.
+ */
+describe("frenteDaRota -- casos-limite da tabela REGRAS_FRENTES", () => {
+  it("rota vazia, rota sem barra e prefixo parcial caem em 'geral'", () => {
+    expect(frenteDaRota("")).toBe("geral");
+    expect(frenteDaRota("betim/prefeitura/contratos")).toBe("geral");
+    expect(frenteDaRota("/beti")).toBe("geral");
+    expect(frenteDaRota("/congress")).toBe("geral");
+  });
+
+  it("rota com acento ou caractere fora do padrão não quebra a régua", () => {
+    expect(frenteDaRota("/olá-mundo")).toBe("geral");
+    expect(frenteDaRota("/saúde")).toBe("geral");
+  });
+
+  it("cobre as zonas que só uma linha da tabela atende", () => {
+    expect(frenteDaRota("/recursos")).toBe("cidades");
+    expect(frenteDaRota("/sp/capitais")).toBe("cidades");
+    expect(frenteDaRota("/assembleias/mg")).toBe("congresso");
+    expect(frenteDaRota("/internacional/eua")).toBe("ambiental");
+    expect(frenteDaRota("/america-latina")).toBe("funcaosocialterra");
+    expect(frenteDaRota("/internacional")).toBe("ambiental");
+  });
+
+  it("casa por prefixo COMPLETO e na ordem da tabela (desempate)", () => {
+    // A régua usa `startsWith`, então "/ambi" não é "/ambiental": pedaço de
+    // prefixo não vale. E o desempate É a ordem: os prefixos atuais não se
+    // sobrepõem, mas se um dia sobreporem, vence o que estiver primeiro na
+    // `REGRAS_FRENTES` — reescrever a ordem muda a frente, e este teste pega.
+    expect(frenteDaRota("/ambiental")).toBe("ambiental");
+    expect(frenteDaRota("/ambi")).toBe("geral");
+    expect(frenteDaRota("/recursos/hidricos")).toBe("cidades");
+  });
+});
+
+describe("dataBR -- data ISO do portal no formato do leitor", () => {
+  it("converte AAAA-MM-DD para DD/MM/AAAA preservando o zero à esquerda", () => {
+    expect(dataBR("2026-09-30")).toBe("30/09/2026");
+    expect(dataBR("2026-01-05")).toBe("05/01/2026");
+  });
+
+  it("corta a hora quando a fonte manda timestamp completo", () => {
+    expect(dataBR("2026-09-29T03:21:51+00:00")).toBe("29/09/2026");
+    expect(dataBR(serieCavas.gerado_em)).toBe("29/09/2026");
+    expect(dataBR(basesPortal.gerado_em)).toMatch(/^\d{2}\/\d{2}\/\d{4}$/);
+  });
+
+  it("é a mesma data impressa nos textos de cavas e de inventário", () => {
+    const acervo = montarAcervo();
+    const cobertura = acervo.find((f) => f.id === "cavas:cobertura")!;
+    expect(cobertura.texto).toContain(dataBR(serieCavas.gerado_em));
+    const total = acervo.find((f) => f.id === "bases:total")!;
+    expect(total.texto).toContain(dataBR(basesPortal.gerado_em));
+  });
+});
+
+describe("ordem de montagem -- a citação [n] da UI depende dela", () => {
+  it("mantém os dez grupos na ordem documentada em montarAcervoDetalhado", () => {
+    const acervo = montarAcervo();
+    const grupos = [
+      "macro:",
+      "pergunta:",
+      "contexto:",
+      "pagina:",
+      "blog:",
+      "designacao:",
+      "cavas:",
+      "memoria:",
+      "base:",
+      "bases:",
+    ];
+    let anterior = -1;
+    for (const grupo of grupos) {
+      const primeiro = acervo.findIndex((f) => f.id.startsWith(grupo));
+      expect(primeiro, `grupo ${grupo} ausente do acervo`).toBeGreaterThanOrEqual(0);
+      expect(primeiro, `grupo ${grupo} saiu da ordem`).toBeGreaterThan(anterior);
+      anterior = primeiro;
+    }
+  });
+
+  it("a soma das frentes da cobertura fecha com o total medido", () => {
+    const { fontes, cobertura } = montarAcervoDetalhado();
+    const soma = Object.values(cobertura.porFrente).reduce((a, b) => a + b, 0);
+    expect(soma).toBe(cobertura.total);
+    expect(cobertura.total).toBe(fontes.length);
+  });
+});
+
+describe("bases do catálogo -- desempate pela primeira página usável", () => {
+  it("cada base publicada aponta a primeira página que não é rota dinâmica", () => {
+    const acervo = montarAcervo();
+    let dinamicaIgnorada = 0;
+    for (const b of catalogoBases as {
+      id: string;
+      paginasConsumidoras?: string[];
+    }[]) {
+      const usaveis = (b.paginasConsumidoras ?? []).filter(
+        (r) => r.startsWith("/") && !r.includes("[")
+      );
+      if (usaveis.length === 0) continue;
+      if ((b.paginasConsumidoras ?? [])[0] !== usaveis[0]) dinamicaIgnorada++;
+      const peca = acervo.find((f) => f.id === `base:${b.id}`);
+      expect(peca, `base ${b.id} publicada sumiu do acervo`).toBeDefined();
+      expect(peca!.rota, `base ${b.id} não aponta a primeira página usável`).toBe(
+        usaveis[0]
+      );
+    }
+    // O desempate só é exercitado se existir base cuja 1ª página é dinâmica.
+    expect(dinamicaIgnorada, "nenhuma base cobre o desempate de rota").toBeGreaterThan(0);
+  });
+
+  it("nenhuma peça de base aponta rota dinâmica '[municipio]'", () => {
+    for (const f of montarAcervo().filter((x) => x.id.startsWith("base:"))) {
+      expect(f.rota.includes("["), `rota dinâmica em ${f.id}: ${f.rota}`).toBe(false);
+    }
   });
 });
