@@ -822,10 +822,10 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "O que revelam os relatórios desclassificados da CIA, FBI e NSA?",
             resposta:
               "O portal audita 84 relatórios da CIA, FBI, NSA e serviços globais. Os documentos revelam espionagem, acordos nucleares e impactos na soberania do Brasil. Cada registro traz link oficial de custódia e download do PDF.",
-            link: { href: "/internacional/desclassificados", texto: "Dossiês Desclassificados de Inteligência" },
+            link: { href: "/internacional/inteligencia", texto: "Central de Inteligência & Desclassificados" },
             links: [
-              { href: "/internacional/desclassificados/mapa", texto: "Mapa Mundial de Inteligência" },
-              { href: "/inteligencia", texto: "Central de Inteligência Global" },
+              { href: "/internacional/inteligencia/mapa", texto: "Mapa Mundial de Inteligência" },
+              { href: "/inteligencia", texto: "Atalho Inteligência Global" },
               { href: "https://www.cia.gov/readingroom/", texto: "CIA FOIA Electronic Reading Room" },
               { href: "https://vault.fbi.gov/", texto: "The FBI Vault (Registros FOIA)" },
             ],
@@ -835,9 +835,9 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Como funcionam as alianças Five Eyes, Nine Eyes e Twelve Eyes?",
             resposta:
               "São alianças internacionais de compartilhamento de inteligência de sinais e cibersegurança. Reúnem agências dos Estados Unidos, Reino Unido, Canadá e parceiros da Europa. O acervo disponibiliza relatórios de espionagem e ciberdefesa de cada integrante.",
-            link: { href: "/internacional/desclassificados", texto: "Filtro por Aliança de Inteligência" },
+            link: { href: "/internacional/inteligencia", texto: "Filtro por Aliança de Inteligência" },
             links: [
-              { href: "/internacional/desclassificados/mapa", texto: "Mapa de Órgãos e Alianças" },
+              { href: "/internacional/inteligencia/mapa", texto: "Mapa de Órgãos e Alianças" },
               { href: "https://www.nsa.gov", texto: "National Security Agency (NSA)" },
               { href: "https://www.gchq.gov.uk", texto: "GCHQ (Reino Unido)" },
             ],
@@ -847,7 +847,7 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Onde consultar relatórios atuais e públicos do FBI e da NSA?",
             resposta:
               "O portal cataloga relatórios públicos de crimes cibernéticos IC3 do FBI. Também audita diretrizes da NSA para proteção de redes e água potável. Todos os documentos possuem hiperlinks diretos para os domínios do governo americano.",
-            link: { href: "/internacional/desclassificados", texto: "Relatórios Públicos Contemporâneos" },
+            link: { href: "/internacional/inteligencia", texto: "Relatórios Públicos Contemporâneos" },
             links: [
               { href: "https://www.ic3.gov/Media/PDF/AnnualReport/2024_IC3Report.pdf", texto: "FBI IC3 Cyber Threat Report" },
               { href: "https://www.nsa.gov/Press-Room/Cybersecurity-Advisories-Guidance/", texto: "Diretrizes de Cibersegurança NSA" },
@@ -1852,8 +1852,8 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       "100% dos documentos geolocalizados com links diretos para PDF e custódia",
     ],
     links: [
-      { href: "/internacional/desclassificados", texto: "Acervo de Desclassificados" },
-      { href: "/internacional/desclassificados/mapa", texto: "Mapa Mundial de Inteligência" },
+      { href: "/internacional/inteligencia", texto: "Central de Inteligência" },
+      { href: "/internacional/inteligencia/mapa", texto: "Mapa Mundial de Inteligência" },
       { href: "/inteligencia", texto: "Atalho Central de Inteligência" },
     ],
   },

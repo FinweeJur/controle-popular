@@ -7,4 +7,4 @@
  * reexportando o acervo completo de relatórios oficiais da CIA, FBI, MI5, BND, DGSE, CSIS e G20.
  */
 
-export { default, metadata } from "@/app/internacional/desclassificados/page";
+export { default, metadata } from "@/app/internacional/inteligencia/page";

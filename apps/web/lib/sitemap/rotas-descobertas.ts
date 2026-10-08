@@ -180,6 +180,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/internacional",
   "/internacional/desclassificados",
   "/internacional/desclassificados/mapa",
+  "/internacional/inteligencia",
+  "/internacional/inteligencia/mapa",
   "/internacional/europa",
   "/internacional/operacoes-militares",
   "/internacional/operacoes-militares/mapa",

@@ -152,12 +152,12 @@ export default function PaginaHubInternacional() {
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
         <Link
-          href="/internacional/desclassificados"
+          href="/internacional/inteligencia"
           className="flex items-center justify-between p-3.5 rounded-xl border border-primary/30 bg-primary/5 hover:border-primary transition-colors group"
         >
           <div>
-            <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Arquivos Desclassificados</div>
-            <div className="text-[11px] text-text-soft">Inteligência do G20 (CIA, FBI, SNI, MI5)</div>
+            <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Central de Inteligência & Desclassificados</div>
+            <div className="text-[11px] text-text-soft">EUA, FBI, NSA, CIA e Twelve Eyes</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>

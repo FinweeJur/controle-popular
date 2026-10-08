@@ -8,4 +8,4 @@
  * /internacional/desclassificados no padrão das Seis Qualidades (AGENTS.md §8).
  */
 
-export { default, metadata } from "@/app/internacional/desclassificados/page";
+export { default, metadata } from "@/app/internacional/inteligencia/page";
