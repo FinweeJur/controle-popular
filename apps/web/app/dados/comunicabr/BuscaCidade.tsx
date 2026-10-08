@@ -40,12 +40,23 @@ function semAcento(s: string): string {
 
 export default function BuscaCidade({ cidades }: { cidades: CidadeCompacta[] }) {
   const [termo, setTermo] = useState("");
+  // Limite inicial; o botão "Ver +" acrescenta de 48 em 48 até mostrar tudo.
+  const [visiveis, setVisiveis] = useState(24);
+  const PASSO = 48;
+  // Mudou a busca? Volta ao corte inicial.
+  const [termoAnterior, setTermoAnterior] = useState(termo);
+  if (termo !== termoAnterior) {
+    setTermoAnterior(termo);
+    setVisiveis(24);
+  }
 
-  const filtradas = useMemo(() => {
+  const correspondentes = useMemo(() => {
     const alvo = semAcento(termo);
-    if (!alvo) return cidades.slice(0, 24);
-    return cidades.filter(([, nome]) => semAcento(nome).includes(alvo)).slice(0, 60);
+    if (!alvo) return cidades;
+    return cidades.filter(([, nome]) => semAcento(nome).includes(alvo));
   }, [termo, cidades]);
+
+  const filtradas = correspondentes.slice(0, visiveis);
 
   return (
     <div>
@@ -87,11 +98,20 @@ export default function BuscaCidade({ cidades }: { cidades: CidadeCompacta[] }) 
         </ul>
       )}
 
-      {!termo && cidades.length > filtradas.length ? (
-        <p className="mt-3 text-xs text-text-soft">
-          Mostrando as {filtradas.length} primeiras, em ordem alfabética, de {cidades.length}. Digite
-          para achar a sua.
-        </p>
+      {filtradas.length < correspondentes.length ? (
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setVisiveis((v) => v + PASSO)}
+            className="rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-text hover:border-primary transition-colors"
+          >
+            Ver + ({correspondentes.length - filtradas.length} restantes)
+          </button>
+          <p className="text-xs text-text-soft">
+            Mostrando {filtradas.length} de {correspondentes.length}
+            {termo ? " que batem com a busca" : ""}.
+          </p>
+        </div>
       ) : null}
     </div>
   );

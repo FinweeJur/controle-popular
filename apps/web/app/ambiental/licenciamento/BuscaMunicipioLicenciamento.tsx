@@ -70,11 +70,20 @@ export default function BuscaMunicipioLicenciamento({
     return baseOrdenada.filter((m) => normalizar(m.nome).includes(alvo));
   }, [termo, baseOrdenada]);
 
-  const LIMITE_SEM_BUSCA = 24;
-  const LIMITE_COM_BUSCA = 40;
-  const filtrados = termo
-    ? correspondentes.slice(0, LIMITE_COM_BUSCA)
-    : correspondentes.slice(0, LIMITE_SEM_BUSCA);
+  // Limite inicial da lista; o botão "Ver +" acrescenta de 48 em 48 até
+  // mostrar tudo. Sem busca, o corte padrão era 24 — mantido no primeiro
+  // carregamento para não pesar no render inicial de quem só quer achar
+  // um município.
+  const [visiveis, setVisiveis] = useState(24);
+  const PASSO = 48;
+  const filtrados = correspondentes.slice(0, visiveis);
+  // Mudou a busca? Volta ao corte inicial — o usuário pediu itens novos,
+  // não os antigos da busca anterior.
+  const [termoAnterior, setTermoAnterior] = useState(termo);
+  if (termo !== termoAnterior) {
+    setTermoAnterior(termo);
+    setVisiveis(24);
+  }
 
   function exportar() {
     const hoje = new Date().toISOString().slice(0, 10);
@@ -147,11 +156,19 @@ export default function BuscaMunicipioLicenciamento({
         </ul>
       )}
       {filtrados.length < correspondentes.length ? (
-        <p className="mt-3 text-xs opacity-60">
-          Mostrando {formatNumberBR(filtrados.length)} de {formatNumberBR(correspondentes.length)}
-          {termo ? " que batem com a busca" : ""}. O CSV acima baixa a lista inteira, não só os
-          mostrados aqui.
-        </p>
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setVisiveis((v) => v + PASSO)}
+            className="rounded-lg border border-[var(--cp-border)] bg-surface px-5 py-2.5 text-sm font-medium hover:border-[var(--cp-tertiary)] transition-colors"
+          >
+            Ver + ({formatNumberBR(correspondentes.length - filtrados.length)} restantes)
+          </button>
+          <p className="text-xs opacity-60">
+            Mostrando {formatNumberBR(filtrados.length)} de {formatNumberBR(correspondentes.length)}
+            {termo ? " que batem com a busca" : ""}. O CSV acima baixa a lista inteira.
+          </p>
+        </div>
       ) : null}
     </div>
   );

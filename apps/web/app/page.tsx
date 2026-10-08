@@ -125,84 +125,6 @@ export default async function Hub() {
         </div>
       </section>
 
-      {/* ═══ AVISO — O PORTAL INTEIRO LANÇADO — pedido do dono, 01/10/2026:
-          o card de baixo dava a entender que só aquele cruzamento estava em
-          revisão. A correção é esta frase, num card próprio, acima do card do
-          cruzamento. O crédito vem em fonte menor, como pedido. ═══ */}
-      <section
-        aria-label="Portal lançado publicamente"
-        className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-xs"
-      >
-        <p className="max-w-3xl text-base leading-relaxed">
-          O portal inteiro está lançado publicamente para acesso, colaboração e revisão.
-        </p>
-        <p className="mt-2 max-w-3xl text-xs leading-relaxed text-text-soft">
-          Até agora, Desenvolvimento por:{" "}
-          <a
-            href="https://linktr.ee/arturcolito"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-foreground"
-          >
-            Artur Colito
-          </a>{" "}
-          - (Github:{" "}
-          <a
-            href="https://github.com/FinweeJur"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-foreground"
-          >
-            FinweeJur
-          </a>
-          ), advogado popular mestrando em Estudos Rurais na{" "}
-          <a
-            href="https://guiaufvjm.pages.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-foreground"
-          >
-            UFVJM
-          </a>{" "}
-          em parceria com o Instituto Esperança Maria. Com inspiração em movimentos populares e
-          sociedade civil organizada — Veja mais em{" "}
-          <Link href="/sobre" className="underline underline-offset-2 hover:text-foreground">
-            Sobre o Portal
-          </Link>
-          .
-        </p>
-      </section>
-
-      {/* ═══ CRUZAMENTO DE TERRITÓRIOS E MINERAÇÃO — pedido do dono,
-          01/10/2026: este card fica abaixo do aviso e não fala mais de
-          revisão (a revisão agora é do portal inteiro, no card de cima).
-          O destino não muda: /mineracao/ilegal é a página que faz o
-          cruzamento. ═══ */}
-      <section
-        aria-label="Territórios e mineração em Minas Gerais"
-        className="mt-4 rounded-2xl border border-alert/40 bg-alert/10 p-5"
-      >
-        <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
-          Territórios e mineração
-        </p>
-        <h2 className="mt-1 text-xl font-semibold">
-          Mineração e comunidades tradicionais em Minas Gerais
-        </h2>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
-          Publicamos o cruzamento das terras indígenas e dos territórios quilombolas de Minas Gerais com a
-          mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto — aponte erro,
-          lacuna ou dado faltante e o portal corrige na fonte oficial.
-        </p>
-        <Magnet forca={0.15} className="mt-3 inline-block">
-          <NextLink
-            href="/mineracao/ilegal"
-            className="inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
-          >
-            Ver os dados →
-          </NextLink>
-        </Magnet>
-      </section>
-
       {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
       <CardCarousel />
 
@@ -360,6 +282,85 @@ export default async function Hub() {
 
       {/* ═══ CARTÃO INTERATIVO DO SEU NONÔ — IA CIDADÃ COM ATALHOS DIRETOS ═══ */}
       <CartaoChatbotHome />
+
+      {/* ═══ AVISO — O PORTAL INTEIRO LANÇADO — pedido do dono, 01/10/2026:
+          o card de baixo dava a entender que só aquele cruzamento estava em
+          revisão. A correção é esta frase, num card próprio. O crédito vem em
+          fonte menor, como pedido. ⟲ 08/10: movido para baixo do Seu Nonô
+          (pedido do dono). ═══ */}
+      <section
+        aria-label="Portal lançado publicamente"
+        className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-xs"
+      >
+        <p className="max-w-3xl text-base leading-relaxed">
+          O portal inteiro está lançado publicamente para acesso, colaboração e revisão.
+        </p>
+        <p className="mt-2 max-w-3xl text-xs leading-relaxed text-text-soft">
+          Até agora, Desenvolvimento por:{" "}
+          <a
+            href="https://linktr.ee/arturcolito"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            Artur Colito
+          </a>{" "}
+          - (Github:{" "}
+          <a
+            href="https://github.com/FinweeJur"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            FinweeJur
+          </a>
+          ), advogado popular mestrando em Estudos Rurais na{" "}
+          <a
+            href="https://guiaufvjm.pages.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            UFVJM
+          </a>{" "}
+          em parceria com o Instituto Esperança Maria. Com inspiração em movimentos populares e
+          sociedade civil organizada — Veja mais em{" "}
+          <Link href="/sobre" className="underline underline-offset-2 hover:text-foreground">
+            Sobre o Portal
+          </Link>
+          .
+        </p>
+      </section>
+
+      {/* ═══ CRUZAMENTO DE TERRITÓRIOS E MINERAÇÃO — pedido do dono,
+          01/10/2026: este card fica abaixo do aviso e não fala mais de
+          revisão (a revisão agora é do portal inteiro, no card de cima).
+          O destino não muda: /mineracao/ilegal é a página que faz o
+          cruzamento. ⟲ 08/10: movido para baixo do Seu Nonô (pedido do dono). ═══ */}
+      <section
+        aria-label="Territórios e mineração em Minas Gerais"
+        className="mt-4 rounded-2xl border border-alert/40 bg-alert/10 p-5"
+      >
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+          Territórios e mineração
+        </p>
+        <h2 className="mt-1 text-xl font-semibold">
+          Mineração e comunidades tradicionais em Minas Gerais
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
+          Publicamos o cruzamento das terras indígenas e dos territórios quilombolas de Minas Gerais com a
+          mineração detectada por satélite e com a bacia do rio Paraopeba. É material aberto — aponte erro,
+          lacuna ou dado faltante e o portal corrige na fonte oficial.
+        </p>
+        <Magnet forca={0.15} className="mt-3 inline-block">
+          <NextLink
+            href="/mineracao/ilegal"
+            className="inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-ink"
+          >
+            Ver os dados →
+          </NextLink>
+        </Magnet>
+      </section>
 
       {/* Linha de orientação -- decisão do dev, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em
