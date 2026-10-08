@@ -18,6 +18,7 @@ import {
   type SQL,
 } from "drizzle-orm";
 import { comBancoReserva } from "@/lib/db/reserva";
+import type { DB } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
 import { ptBr } from "@/lib/db/ordem";
 import { STATUS_CONTRATO_ATIVO } from "@/lib/betim/statusContrato";
@@ -79,6 +80,26 @@ import {
   zap_estabelecimentos,
 } from "@/lib/db/schema";
 
+
+/**
+ * `comBancoReserva` com as opcoes padrao do eixo Cidades: vazio = nulo ou
+ * array sem linhas, sem fallback (padrao null), rotulo `betim`.
+ *
+ * 72 das ~99 chamadas do arquivo repetiam este MESMO objeto literal — a
+ * refatoracao de hotspots CodeScene de 08/10/2026 (saude 7,09) centralizou
+ * aqui. `T` infere SO da consulta (primeiro argumento), nunca das opcoes:
+ * inferir das options travava o tipo em `{}/any` e derrubava os callers
+ * (medido no `tsc` de 08/10). Quem precisa de `vazio`/`padrao`
+ * diferentes continua chamando `comBancoReserva` direto.
+ */
+function emBetim<T>(consulta: (db: DB) => Promise<T>): Promise<T | null> {
+  return comBancoReserva<T | null>(consulta, {
+    vazio: (r) => r === null || (Array.isArray(r) && r.length === 0),
+    padrao: null,
+    rotulo: "betim",
+  });
+}
+
 /**
  * Queries do eixo Cidades.
  *
@@ -103,7 +124,7 @@ import {
  */
 
 export async function caixaDisponivel(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({ ano: caixa_disponivel.ano, valor: num(caixa_disponivel.valor) })
@@ -111,13 +132,12 @@ export async function caixaDisponivel(idMunicipio: IdMunicipio) {
         .where(eq(caixa_disponivel.id_municipio, idMunicipio))
         .orderBy(desc(caixa_disponivel.ano))
         .limit(2);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function listarIndicadores(idMunicipio: IdMunicipio, nomes?: string[]) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [eq(indicadores.id_municipio, idMunicipio)];
       if (nomes?.length) cond.push(inArray(indicadores.nome, nomes));
@@ -138,13 +158,12 @@ export async function listarIndicadores(idMunicipio: IdMunicipio, nomes?: string
         .from(indicadores)
         .where(and(...cond))
         .orderBy(desc(indicadores.ano_referencia));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function listarObras(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -157,13 +176,12 @@ export async function listarObras(idMunicipio: IdMunicipio) {
         .where(eq(obras.id_municipio, idMunicipio))
         // `nullsFirst: false` do PostgREST equivale a NULLS LAST no SQL.
         .orderBy(sql`${obras.valor} desc nulls last`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function listarPostos(idMunicipio: IdMunicipio, bandeira?: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [eq(postos_anp.id_municipio, idMunicipio)];
       if (bandeira) cond.push(eq(postos_anp.bandeira, bandeira));
@@ -183,13 +201,12 @@ export async function listarPostos(idMunicipio: IdMunicipio, bandeira?: string) 
         .from(postos_anp)
         .where(and(...cond))
         .orderBy(ptBr(postos_anp.razao_social));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -200,8 +217,7 @@ export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
         })
         .from(seguranca_ocorrencias)
         .where(eq(seguranca_ocorrencias.id_municipio, idMunicipio));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -243,7 +259,7 @@ export async function listarServidores(
     porPagina?: number;
   } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const porPagina = opts.porPagina ?? 50;
       const pagina = Math.max(1, opts.pagina ?? 1);
@@ -302,13 +318,12 @@ export async function listarServidores(
         .orderBy(ptBr(servidores.nome), ptBr(servidores.cargo))
         .limit(porPagina)
         .offset((pagina - 1) * porPagina);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function beneficiosSociais(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -320,13 +335,12 @@ export async function beneficiosSociais(idMunicipio: IdMunicipio) {
         .from(beneficios_sociais)
         .where(eq(beneficios_sociais.id_municipio, idMunicipio))
         .orderBy(asc(beneficios_sociais.competencia));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [eq(verbas_indenizatorias.id_municipio, idMunicipio)];
       if (vereadorId) cond.push(eq(verbas_indenizatorias.vereador_id, vereadorId));
@@ -338,8 +352,7 @@ export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?
         })
         .from(verbas_indenizatorias)
         .where(and(...cond));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -384,7 +397,7 @@ export async function subsidioAtual(idMunicipio: IdMunicipio, vereadorId: string
  * tipo que o driver escolhe.
  */
 export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -402,8 +415,7 @@ export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string)
         )
         .groupBy(sql`extract(year from ${verbas_indenizatorias.data})`)
         .orderBy(sql`extract(year from ${verbas_indenizatorias.data}) desc`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -415,7 +427,7 @@ export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string)
  * cinco consultas antes desta.
  */
 export async function verbasPorVereadorPorAno(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -441,26 +453,24 @@ export async function verbasPorVereadorPorAno(idMunicipio: IdMunicipio) {
           vereadores.partido,
           sql`extract(year from ${verbas_indenizatorias.data})`
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function notaTransparencia(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select()
         .from(nota_transparencia)
         .where(eq(nota_transparencia.id_municipio, idMunicipio))
         .orderBy(desc(nota_transparencia.ano));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -475,8 +485,7 @@ export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
         })
         .from(comercios_essenciais)
         .where(eq(comercios_essenciais.id_municipio, idMunicipio));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -493,7 +502,7 @@ export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
  * A contagem passou a vir de `resumoEscolas`, que já a calcula de graça.
  */
 export async function listarEscolas(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -505,8 +514,7 @@ export async function listarEscolas(idMunicipio: IdMunicipio) {
         .from(escolas)
         .where(eq(escolas.id_municipio, idMunicipio))
         .orderBy(ptBr(escolas.nome));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -527,7 +535,7 @@ export async function listarEscolas(idMunicipio: IdMunicipio) {
  * conjunto 2.000× menor.
  */
 export async function resumoEscolas(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -538,8 +546,7 @@ export async function resumoEscolas(idMunicipio: IdMunicipio) {
         .from(escolas)
         .where(eq(escolas.id_municipio, idMunicipio))
         .groupBy(escolas.rede);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -548,7 +555,7 @@ export async function classificadosVigentes(
   idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const hoje = new Date().toISOString().slice(0, 10);
       const cond = [
@@ -573,8 +580,7 @@ export async function classificadosVigentes(
         // Desempate por id: dois anúncios criados no mesmo instante sairiam em
         // ordem indefinida, e com SSG isso vira HTML diferente a cada build.
         .orderBy(desc(classificados.created_at), asc(classificados.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -583,7 +589,7 @@ export async function zapEstabelecimentos(
   idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string; bairros?: string[] } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [
         eq(zap_estabelecimentos.id_municipio, idMunicipio),
@@ -605,8 +611,7 @@ export async function zapEstabelecimentos(
         .from(zap_estabelecimentos)
         .where(and(...cond))
         .orderBy(ptBr(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -622,7 +627,7 @@ export async function zapEstabelecimentos(
  * Agora é SQL, com desempate por id.
  */
 export async function anunciosAtivos(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const hoje = new Date().toISOString().slice(0, 10);
       return db
@@ -646,14 +651,13 @@ export async function anunciosAtivos(idMunicipio: IdMunicipio) {
         // plano nulo, e DESC no Postgres é NULLS FIRST — os sem plano viriam
         // na frente dos premium.
         .orderBy(sql`case when ${anuncios.plano} = 'premium' then 0 else 1 end`, asc(anuncios.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Convênios e repasses federais, maior valor primeiro. */
 export async function conveniosFederais(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -676,8 +680,7 @@ export async function conveniosFederais(idMunicipio: IdMunicipio) {
         .from(convenios_federais)
         .where(eq(convenios_federais.id_municipio, idMunicipio))
         .orderBy(desc(convenios_federais.valor), asc(convenios_federais.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -693,7 +696,7 @@ export async function conveniosFederais(idMunicipio: IdMunicipio) {
  * crédito sem assunto identificável (esperado, ver a docstring do ETL).
  */
 export async function atosOficiais(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -722,14 +725,13 @@ export async function atosOficiais(idMunicipio: IdMunicipio) {
           sql`${atos_oficiais.data_publicacao} desc nulls last`,
           asc(atos_oficiais.id)
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Anos com "Despesas Pagas" lançadas, mais recente primeiro. */
 export async function anosDeDespesas(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .selectDistinct({ ano: despesas.ano })
@@ -742,8 +744,7 @@ export async function anosDeDespesas(idMunicipio: IdMunicipio) {
           )
         )
         .orderBy(desc(despesas.ano));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -760,7 +761,7 @@ export async function despesasPorFuncao(
   ano: number,
   funcoes: string[]
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -780,13 +781,12 @@ export async function despesasPorFuncao(
         // Desempate por nome: sem ele duas funções de mesmo valor sairiam em
         // ordem indefinida, e com SSG o gráfico mudaria a cada build.
         .orderBy(sql`sum(${despesas.valor}) desc`, ptBr(despesas.conta));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function contatosUteis(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -798,13 +798,12 @@ export async function contatosUteis(idMunicipio: IdMunicipio) {
         .from(contatos_uteis)
         .where(eq(contatos_uteis.id_municipio, idMunicipio))
         .orderBy(asc(contatos_uteis.ordem), asc(contatos_uteis.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function coletaLixo(idMunicipio: IdMunicipio, bairro?: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [eq(coleta_lixo.id_municipio, idMunicipio)];
       if (bairro) cond.push(ilike(coleta_lixo.bairro, `%${bairro}%`));
@@ -818,14 +817,13 @@ export async function coletaLixo(idMunicipio: IdMunicipio, bairro?: string) {
         .from(coleta_lixo)
         .where(and(...cond))
         .orderBy(ptBr(coleta_lixo.bairro), asc(coleta_lixo.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Farmácias de plantão hoje: as 24h sempre, mais as que estão na escala. */
 export async function farmaciasPlantao(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const hoje = new Date().toISOString().slice(0, 10);
       return db
@@ -854,8 +852,7 @@ export async function farmaciasPlantao(idMunicipio: IdMunicipio) {
           )
         )
         .orderBy(ptBr(farmacias_plantao.nome), asc(farmacias_plantao.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -882,7 +879,7 @@ export async function proposicoesPaginadas(
     porPagina?: number;
   } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const porPagina = filtros.porPagina ?? 30;
       const pagina = Math.max(1, filtros.pagina ?? 1);
@@ -914,8 +911,7 @@ export async function proposicoesPaginadas(
         .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
         .limit(porPagina)
         .offset((pagina - 1) * porPagina);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -929,7 +925,7 @@ export async function proposicoesPaginadas(
  * `getSituacoesDisponiveis`.
  */
 export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .selectDistinct({ situacao: proposicoes.situacao })
@@ -937,8 +933,7 @@ export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
         .where(
           and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.situacao))
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -956,7 +951,7 @@ export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
  * das linhas, que é indefinida sem `order by`.
  */
 export async function temasDeProposicoes(idMunicipio: IdMunicipio, vereadorId?: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [eq(proposicoes.id_municipio, idMunicipio)];
       if (vereadorId) cond.push(eq(proposicoes.vereador_id, vereadorId));
@@ -969,14 +964,13 @@ export async function temasDeProposicoes(idMunicipio: IdMunicipio, vereadorId?: 
         .where(and(...cond))
         .groupBy(sql`1`)
         .orderBy(sql`2 desc`, sql`1 asc`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Áreas de atuação da Prefeitura — os temas dos contratos. */
 export async function temasDeContratos(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -987,14 +981,13 @@ export async function temasDeContratos(idMunicipio: IdMunicipio) {
         .where(eq(contratos.id_municipio, idMunicipio))
         .groupBy(sql`1`)
         .orderBy(sql`2 desc`, sql`1 asc`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Grupos econômicos entre fornecedores, maior valor contratado primeiro. */
 export async function gruposEconomicos(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1009,8 +1002,7 @@ export async function gruposEconomicos(idMunicipio: IdMunicipio) {
         .from(grupos_economicos)
         .where(eq(grupos_economicos.id_municipio, idMunicipio))
         .orderBy(desc(grupos_economicos.valor_total_contratos), asc(grupos_economicos.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1025,7 +1017,7 @@ export async function gruposEconomicos(idMunicipio: IdMunicipio) {
  */
 export async function fornecedoresPorCnpj(cnpjs: string[]) {
   if (cnpjs.length === 0) return null;
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1038,8 +1030,7 @@ export async function fornecedoresPorCnpj(cnpjs: string[]) {
         })
         .from(fornecedores)
         .where(inArray(fornecedores.cnpj, cnpjs));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1094,15 +1085,14 @@ export async function resumoContratosAtivos(idMunicipio: IdMunicipio) {
 
 /** Comissões do catálogo, em ordem de nome. */
 export async function listarComissoes(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({ id: comissoes.id, nome: comissoes.nome, especial: comissoes.especial })
         .from(comissoes)
         .where(eq(comissoes.id_municipio, idMunicipio))
         .orderBy(ptBr(comissoes.nome), asc(comissoes.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1115,7 +1105,7 @@ export async function listarComissoes(idMunicipio: IdMunicipio) {
  * o app fazia depois.
  */
 export async function membrosDeComissoes(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1134,8 +1124,7 @@ export async function membrosDeComissoes(idMunicipio: IdMunicipio) {
           )
         )
         .orderBy(ptBr(vereadores.nome_urna), asc(comissao_membros.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1150,7 +1139,7 @@ export async function participacoesEmComissoes(
   idMunicipio: IdMunicipio,
   vereadorId: string
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1171,14 +1160,13 @@ export async function participacoesEmComissoes(
           sql`${comissao_membros.data_fim} desc nulls last`,
           asc(comissao_membros.id)
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Produção agropecuária (IBGE PAM/PPM). */
 export async function producaoAgropecuaria(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1193,8 +1181,7 @@ export async function producaoAgropecuaria(idMunicipio: IdMunicipio) {
         .from(producao_agropecuaria)
         .where(eq(producao_agropecuaria.id_municipio, idMunicipio))
         .orderBy(asc(producao_agropecuaria.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1219,15 +1206,14 @@ const COLUNAS_NOTICIA = {
  * migration rodar; hoje ela já rodou e o fallback é código morto.
  */
 export async function listarNoticias(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_NOTICIA)
         .from(noticias)
         .where(eq(noticias.id_municipio, idMunicipio))
         .orderBy(desc(noticias.publicado_em), asc(noticias.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1309,15 +1295,14 @@ const COLUNAS_INICIATIVA = {
  * da planilha da FGV: das 19 iniciativas de Betim, 5 estão atrasadas.
  */
 export async function iniciativasParaopeba(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_INICIATIVA)
         .from(paraopeba_iniciativas)
         .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
         .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1326,7 +1311,7 @@ export async function iniciativasParaopebaMenosConcluidas(
   idMunicipio: IdMunicipio,
   limite = 5
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_INICIATIVA)
@@ -1340,8 +1325,7 @@ export async function iniciativasParaopebaMenosConcluidas(
         )
         .orderBy(asc(paraopeba_iniciativas.percentual_realizado), asc(paraopeba_iniciativas.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1369,7 +1353,7 @@ export async function contratosPorTermos(
   limite: number
 ) {
   if (termos.length === 0) return null;
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const alternativas = termos.flatMap((t) => [
         ilike(contratos.objeto, `%${t}%`),
@@ -1387,8 +1371,7 @@ export async function contratosPorTermos(
         .where(and(eq(contratos.id_municipio, idMunicipio), or(...alternativas)))
         .orderBy(sql`${contratos.valor_global} desc nulls last`, asc(contratos.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1406,7 +1389,7 @@ export async function proposicoesPorTermos(
   limite: number
 ) {
   if (termos.length === 0) return null;
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1425,8 +1408,7 @@ export async function proposicoesPorTermos(
         )
         .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1457,7 +1439,7 @@ export async function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
  * `lib/betim/prefeitura.ts`, que precisa dos dois.
  */
 export async function despesasAgrupadasPorFuncao(idMunicipio: IdMunicipio, ano: number) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1474,8 +1456,7 @@ export async function despesasAgrupadasPorFuncao(idMunicipio: IdMunicipio, ano: 
         )
         .groupBy(sql`1`)
         .orderBy(sql`2 desc`, sql`1 asc`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1522,7 +1503,7 @@ export async function receitaTotalDoAno(idMunicipio: IdMunicipio, ano: number) {
  * motivo.
  */
 export async function maioresFornecedores(idMunicipio: IdMunicipio, limite = 5) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
       return db
@@ -1537,8 +1518,7 @@ export async function maioresFornecedores(idMunicipio: IdMunicipio, limite = 5) 
         .groupBy(chave, contratos.fornecedor_cnpj)
         .orderBy(sql`4 desc`, sql`1 asc`)
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1664,7 +1644,7 @@ export async function contratosPaginados(
     porPagina?: number;
   } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const porPagina = filtros.porPagina ?? 25;
       const pagina = Math.max(1, filtros.pagina ?? 1);
@@ -1682,8 +1662,7 @@ export async function contratosPaginados(
         .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
         .limit(porPagina)
         .offset((pagina - 1) * porPagina);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1741,7 +1720,7 @@ export async function contratosParaExport(
   },
   limite: number
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_CONTRATO)
@@ -1749,8 +1728,7 @@ export async function contratosParaExport(
         .where(condicoesDeContratos(idMunicipio, filtros))
         .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1760,7 +1738,7 @@ export async function contratosParaExport(
  * AGENTS.md). Agregado no banco; sem linha nenhuma devolve lista vazia.
  */
 export async function contratosPorAno(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1773,8 +1751,7 @@ export async function contratosPorAno(idMunicipio: IdMunicipio) {
         .where(eq(contratos.id_municipio, idMunicipio))
         .groupBy(contratos.ano)
         .orderBy(sql`${contratos.ano} asc nulls last`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1806,7 +1783,7 @@ export async function fornecedoresRanking(
   filtros: FiltrosFornecedoresRanking = {},
   limite = 5000
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
       const conds = [eq(contratos.id_municipio, idMunicipio)];
@@ -1838,8 +1815,7 @@ export async function fornecedoresRanking(
         .having(tendo.length > 0 ? and(...tendo) : undefined)
         .orderBy(sql`4 desc`, sql`1 asc`)
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1851,14 +1827,13 @@ export async function fornecedoresRanking(
  */
 export async function sancoesCeisPorCnpj(cnpjs: string[]) {
   if (cnpjs.length === 0) return null;
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({ cnpj: fornecedores.cnpj, ceis_detalhes: fornecedores.ceis_detalhes })
         .from(fornecedores)
         .where(inArray(fornecedores.cnpj, cnpjs));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1880,7 +1855,7 @@ export async function resumoEstabelecimentosSaude(idMunicipio: IdMunicipio) {
 }
 
 export async function internacoesSaude(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1897,14 +1872,13 @@ export async function internacoesSaude(idMunicipio: IdMunicipio) {
           asc(saude_internacoes.carater),
           asc(saude_internacoes.id)
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Internações de urgência (caráter "2") a partir de um ano. */
 export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({ ano: saude_internacoes.ano, qtd: saude_internacoes.qtd })
@@ -1916,8 +1890,7 @@ export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMini
             gte(saude_internacoes.ano, anoMinimo)
           )
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -1926,7 +1899,7 @@ export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMini
  * diagnóstico mais frequente para o menos, do ano mais recente para o
  * mais antigo. */
 export async function rankingCidsMunicipio(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1945,13 +1918,12 @@ export async function rankingCidsMunicipio(idMunicipio: IdMunicipio) {
           desc(saude_internacoes_cid.internacoes_total),
           asc(saude_internacoes_cid.cid_codigo)
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function arbovirosesDoMunicipio(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1963,14 +1935,13 @@ export async function arbovirosesDoMunicipio(idMunicipio: IdMunicipio) {
         .from(arboviroses)
         .where(eq(arboviroses.id_municipio, idMunicipio))
         .orderBy(desc(arboviroses.ano), asc(arboviroses.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Últimas semanas de dengue — janela curta, é o que o InfoDengue devolve. */
 export async function ultimasSemanasDeDengue(idMunicipio: IdMunicipio, limite: number) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -1986,8 +1957,7 @@ export async function ultimasSemanasDeDengue(idMunicipio: IdMunicipio, limite: n
           asc(arboviroses.id)
         )
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2011,7 +1981,7 @@ export async function topCausasDeMortalidade(
   ano: number,
   limite: number
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({ grupo_causa: mortalidade.grupo_causa, obitos: mortalidade.obitos })
@@ -2019,14 +1989,13 @@ export async function topCausasDeMortalidade(
         .where(and(eq(mortalidade.id_municipio, idMunicipio), eq(mortalidade.ano, ano)))
         .orderBy(desc(mortalidade.obitos), asc(mortalidade.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Óbitos por grupo de causa a partir de um ano — base do cálculo de tendência. */
 export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2036,8 +2005,7 @@ export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: numb
         })
         .from(mortalidade)
         .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2068,15 +2036,14 @@ const COLUNAS_VEREADOR = {
  * as protegia nunca chegou a usar o fallback.
  */
 export async function listarVereadores(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_VEREADOR)
         .from(vereadores)
         .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
         .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2093,7 +2060,7 @@ export async function listarVereadores(idMunicipio: IdMunicipio) {
  * vice-presidencia da CCJ vazia na tela.
  */
 export async function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select(COLUNAS_VEREADOR)
@@ -2105,8 +2072,7 @@ export async function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) 
           )
         )
         .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2138,7 +2104,7 @@ export async function proposicoesDeVereador(
   tema?: string,
   limite = 10
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const cond = [
         eq(proposicoes.id_municipio, idMunicipio),
@@ -2160,13 +2126,12 @@ export async function proposicoesDeVereador(
         .where(and(...cond))
         .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
         .limit(limite);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2179,8 +2144,7 @@ export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: st
         .from(diarias)
         .where(and(eq(diarias.id_municipio, idMunicipio), eq(diarias.vereador_id, vereadorId)))
         .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2199,7 +2163,7 @@ export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: st
  * é esse.
  */
 export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2222,8 +2186,7 @@ export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
         .from(diarias)
         .where(eq(diarias.id_municipio, idMunicipio))
         .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2234,7 +2197,7 @@ export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
  * financiamento e o NOME é público, mas o documento não precisa aparecer.
  */
 export async function doacoesDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2253,14 +2216,13 @@ export async function doacoesDeVereador(idMunicipio: IdMunicipio, vereadorId: st
           )
         )
         .orderBy(sql`${doacoes_campanha.valor} desc nulls last`, asc(doacoes_campanha.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Patrimônio declarado na campanha (TSE), maior valor primeiro. */
 export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2278,8 +2240,7 @@ export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: strin
           )
         )
         .orderBy(sql`${bens_candidato.valor} desc nulls last`, asc(bens_candidato.id));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2314,7 +2275,7 @@ export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: strin
  * trata os dois casos separadamente.
  */
 export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2336,8 +2297,7 @@ export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio)
           proposicoes.classe_teor,
           analises.rotulo
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2438,7 +2398,7 @@ export async function analisesDoMunicipio(
   idMunicipio: IdMunicipio,
   rotulos?: string[]
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       if (rotulos && rotulos.length === 0) return [];
 
@@ -2483,8 +2443,7 @@ export async function analisesDoMunicipio(
         .leftJoin(atos_oficiais, eq(atos_oficiais.id, analises.ato_id))
         .leftJoin(proposicoes, eq(proposicoes.id, analises.proposicao_id))
         .where(and(...cond));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2680,7 +2639,7 @@ export async function viciosDeObjetos(
  * `id_municipio` para a tabela de itens.
  */
 export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2692,8 +2651,7 @@ export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
         .innerJoin(analises, eq(analises.id, analise_itens.analise_id))
         .where(and(eq(analise_itens.id_municipio, idMunicipio), eq(analises.status, "ok")))
         .groupBy(analise_itens.direito, sql`2`);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2730,7 +2688,7 @@ export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
  * porque a ata anotou o voto contrário dele confundiria as duas coisas.
  */
 export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2747,8 +2705,7 @@ export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
           )
         )
         .groupBy(votos_camara.vereador_id, votos_camara.voto, votos_camara.origem);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2775,7 +2732,7 @@ export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
  * publica.
  */
 export async function votosPorRotuloDeDireito(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2811,8 +2768,7 @@ export async function votosPorRotuloDeDireito(idMunicipio: IdMunicipio) {
           votos_camara.voto,
           proposicoes.vereador_id
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -2922,7 +2878,7 @@ export async function gastosAtipicos(
  * municípios não é — por isso esta função não aceita lista de cidades.
  */
 export async function royaltiesCfemPorSubstancia(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2934,14 +2890,13 @@ export async function royaltiesCfemPorSubstancia(idMunicipio: IdMunicipio) {
         .from(royalties_cfem)
         .where(eq(royalties_cfem.id_municipio, idMunicipio))
         .orderBy(desc(royalties_cfem.ano), desc(royalties_cfem.mes));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Quem pagou CFEM, por ano — bruto; ver `royaltiesCfemPorSubstancia`. */
 export async function royaltiesCfemPorEmpresa(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -2955,8 +2910,7 @@ export async function royaltiesCfemPorEmpresa(idMunicipio: IdMunicipio) {
         .from(royalties_cfem_empresas)
         .where(eq(royalties_cfem_empresas.id_municipio, idMunicipio))
         .orderBy(desc(royalties_cfem_empresas.ano), desc(royalties_cfem_empresas.valor_cfem));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -3011,7 +2965,7 @@ export async function licitacoesPaginadas(
     porPagina?: number;
   } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const porPagina = filtros.porPagina ?? 25;
       const pagina = Math.max(1, filtros.pagina ?? 1);
@@ -3028,8 +2982,7 @@ export async function licitacoesPaginadas(
         .orderBy(sql`${licitacoes.data_publicacao_pncp} desc nulls last`, asc(licitacoes.id))
         .limit(porPagina)
         .offset((pagina - 1) * porPagina);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -3104,7 +3057,7 @@ export async function votacoesPaginadas(
   idMunicipio: IdMunicipio,
   filtros: { ano?: number; q?: string; pagina?: number; porPagina?: number } = {}
 ) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       const porPagina = filtros.porPagina ?? 25;
       const pagina = Math.max(1, filtros.pagina ?? 1);
@@ -3130,8 +3083,7 @@ export async function votacoesPaginadas(
         .orderBy(sql`${votacoes_camara.data} desc nulls last`, asc(votacoes_camara.id))
         .limit(porPagina)
         .offset((pagina - 1) * porPagina);
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -3171,7 +3123,7 @@ export async function totaisDeVotacoes(
  */
 export async function votosDeVotacoes(idMunicipio: IdMunicipio, votacaoIds: string[]) {
   if (votacaoIds.length === 0) return null;
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -3192,8 +3144,7 @@ export async function votosDeVotacoes(idMunicipio: IdMunicipio, votacaoIds: stri
             inArray(votos_camara.votacao_id, votacaoIds)
           )
         );
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
@@ -3402,7 +3353,7 @@ export async function capAutosRecentes(
  * onde agregar no banco é obrigatório.
  */
 export async function barragensFeam(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -3425,14 +3376,13 @@ export async function barragensFeam(idMunicipio: IdMunicipio) {
         .from(feam_barragens)
         .where(eq(feam_barragens.id_municipio, idMunicipio))
         .orderBy(desc(feam_barragens.nivel_emergencia), asc(feam_barragens.nome));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
 
 /** Ver `barragensFeam` — mesma razão para não fazer join no banco. */
 export async function barragensSnisb(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
+  return emBetim(
     async (db) => {
       return db
         .select({
@@ -3451,7 +3401,6 @@ export async function barragensSnisb(idMunicipio: IdMunicipio) {
         .from(snisb_barragens)
         .where(eq(snisb_barragens.id_municipio, idMunicipio))
         .orderBy(asc(snisb_barragens.nome));
-    },
-    { vazio: (r) => r === null || r.length === 0, padrao: null, rotulo: "betim" }
+    }
   );
 }
