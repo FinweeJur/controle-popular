@@ -152,7 +152,7 @@ mexer):
 
 | O quê | Caminho | Commitado? |
 |---|---|---|
-| Wrapper que injeta o token no MCP | `scripts/mcp-codescene.ps1` | ✅ nesta rodada |
+| Wrapper que injeta o token no MCP | `scripts/mcp-codescene.ps1` | ✅ commitado em 08/10 nesta branch — estava **untracked** no checkout principal desde 07/10, embora o doc marcasse ✅ |
 | PAT do CodeScene | `scripts/.env` (`CS_ACCESS_TOKEN`) | 🚫 gitignorado; nunca imprimir |
 | Config do MCP do opencode | `C:\Users\teste\.config\opencode\opencode.json` (`mcp.codescene`) | 🚫 fora do repo; exige restart |
 | Binário do MCP | `%LOCALAPPDATA%\npm-cache\_npx\85498f9af683b8f2\node_modules\@codescene\codehealth-mcp\.cache\1.5.8\cs-mcp.exe` | 🚫 cache do npx |

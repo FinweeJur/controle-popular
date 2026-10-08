@@ -1,4 +1,4 @@
-﻿<#
+<#
   scripts/mcp-codescene.ps1 — wrapper do servidor MCP do CodeScene para o opencode.
 
   O que é: ponte entre o opencode e o `@codescene/codehealth-mcp` (analisador de
