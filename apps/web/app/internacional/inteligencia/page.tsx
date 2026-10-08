@@ -24,6 +24,9 @@ import {
 } from "@/lib/internacional/dados-desclassificados";
 import PainelInteligencia from "./PainelInteligencia";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import SecaoPaginasRelacionadas, {
+  type ItemPaginaRelacionada,
+} from "@/app/components/SecaoPaginasRelacionadas";
 import { Shield, FileText, Globe2, Eye, LockOpen, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -31,6 +34,51 @@ export const metadata: Metadata = {
   description:
     "Acervo cívico unificado de relatórios de inteligência, segurança cibernética e dossiês desclassificados do G20, FBI, NSA, CIA e Twelve Eyes: busca, temas, pessoas, datas e links oficiais canônicos.",
 };
+
+const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
+  {
+    href: "/internacional/inteligencia/mapa",
+    titulo: "Mapa Global de Inteligência",
+    descricao: "Visualização geoespacial das agências secretas, tratados Five Eyes e operações.",
+    badge: "Mapa 3D",
+    icone: "globo",
+  },
+  {
+    href: "/internacional/orcamentos",
+    titulo: "7 Orçamentos Estratégicos Globais",
+    descricao: "Dotações orçamentárias de defesa, inteligência, clima e energia de potências.",
+    badge: "Orçamentos",
+    icone: "dinheiro",
+  },
+  {
+    href: "/internacional/operacoes-militares",
+    titulo: "Operações Militares & PMCs",
+    descricao: "Intervenções, deposições de regimes, mercenários e contratos bélicos mundiais.",
+    badge: "Militar",
+    icone: "justica",
+  },
+  {
+    href: "/internacional",
+    titulo: "Hub Internacional & Multilateral",
+    descricao: "Auditoria de dados da ONU, UNESCO, OMS e comércio exterior de commodities.",
+    badge: "Multilateral",
+    icone: "globo",
+  },
+  {
+    href: "/eua",
+    titulo: "Observatório dos Estados Unidos",
+    descricao: "Grandes fundos de investimento, SEC EDGAR, dados da EPA e comércio bilateral.",
+    badge: "EUA",
+    icone: "empresa",
+  },
+  {
+    href: "/europa",
+    titulo: "Conexões Europeias e Transnacionais",
+    descricao: "Ações judiciais de Mariana em Londres, Maceió em Roterdã e diretivas da UE.",
+    badge: "Europa",
+    icone: "justica",
+  },
+];
 
 export default function PaginaInteligenciaG20() {
   const documentos = obterDocumentosDesclassificados();
@@ -163,8 +211,16 @@ export default function PaginaInteligenciaG20() {
         </Suspense>
       </main>
 
+      {/* SEÇÃO DE PÁGINAS RELACIONADAS */}
+      <SecaoPaginasRelacionadas
+        titulo="Explorar Conexões Cívicas e Geopolíticas"
+        subtitulo="Navegue entre mapas geoespaciais, orçamentos secretos, operações militares e relações exteriores."
+        paginas={PAGINAS_RELACIONADAS}
+        className="mt-12 mb-8"
+      />
+
       {/* RODAPÉ GLOBAL */}
-      <div className="mt-16">
+      <div className="mt-8">
         <FooterGlobal />
       </div>
     </div>

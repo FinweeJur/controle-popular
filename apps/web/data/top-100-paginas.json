@@ -936,15 +936,15 @@
     "numero": 78
   },
   {
-    "id": "desclassificados",
-    "titulo": "Documentos Desclassificados & Diplomacia",
-    "href": "/desclassificados",
+    "id": "inteligencia",
+    "titulo": "Central de Inteligência & Documentos Desclassificados",
+    "href": "/internacional/inteligencia",
     "eixo": "Eixo 3: Estado e Economia",
     "subfrenteId": "transparencia-internacional",
     "subfrente": "Transparência Internacional",
     "badge": "Internacional",
-    "destaque": false,
-    "resumo": "Acervo de arquivos diplomáticos e militares desclassificados sobre soberania nacional, acordos bilaterais e inteligência.",
+    "destaque": true,
+    "resumo": "Acervo de relatórios de inteligência da CIA, FBI, NSA e Twelve Eyes com custódia oficial direta e soberania.",
     "numero": 79
   },
   {

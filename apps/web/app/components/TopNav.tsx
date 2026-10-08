@@ -160,6 +160,8 @@ const SECOES_MENU: SecaoMenu[] = [
       { label: '1.000 Maiores Fortunas Mundiais', href: '/empresas/fortunas', icone: Building2 },
       { label: 'EUA: SEC, Fundos & Comércio', href: '/eua', icone: Building2 },
       { label: 'Europa: Litígios Transnacionais', href: '/europa', icone: Globe },
+      { label: 'Central de Inteligência (12 Eyes)', href: '/internacional/inteligencia', icone: ShieldCheck, destaque: true },
+      { label: 'Mapa Global de Inteligência', href: '/internacional/inteligencia/mapa', icone: MapPin },
       { label: 'Repasses Federais ComunicaBR', href: '/dados/comunicabr', icone: MapPin },
       { label: 'Concessões & PPP de MG', href: '/ambiental/ppp', icone: Building2 },
     ],

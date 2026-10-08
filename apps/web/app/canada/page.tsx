@@ -10,12 +10,53 @@ import {
 import PainelCanada from "./PainelCanada";
 import NavegacaoAbasCanada from "./NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import SecaoPaginasRelacionadas, {
+  type ItemPaginaRelacionada,
+} from "@/app/components/SecaoPaginasRelacionadas";
 
 export const metadata: Metadata = {
   title: "Canadá: Transparência Pública, Mineradoras TSX & Conexões com o Brasil | Controle Popular",
   description:
     "Acervo oficial de transparência do Canadá e conexão transnacional com o Brasil: 12 mineradoras na Bolsa de Toronto (TSX), inventário de emissões NPRI, compras públicas e territórios das Primeiras Nações.",
 };
+
+const PAGINAS_RELACIONADAS_CANADA: ItemPaginaRelacionada[] = [
+  {
+    href: "/internacional/inteligencia",
+    titulo: "Central de Inteligência (Five Eyes & CSIS)",
+    descricao: "Dossiês de inteligência, segurança cibernética e acordos da aliança Five Eyes.",
+    badge: "Inteligência",
+    icone: "justica",
+  },
+  {
+    href: "/internacional/inteligencia/mapa",
+    titulo: "Mapa Global de Inteligência",
+    descricao: "Visualização geoespacial das agências e alianças de espionagem ao redor do globo.",
+    badge: "Mapa 3D",
+    icone: "globo",
+  },
+  {
+    href: "/internacional/orcamentos",
+    titulo: "Orçamentos Estratégicos do Canadá",
+    descricao: "Auditoria comparada de orçamentos de defesa, inteligência e combate à crise climática.",
+    badge: "Orçamentos",
+    icone: "dinheiro",
+  },
+  {
+    href: "/internacional",
+    titulo: "Hub Multilateral Internacional",
+    descricao: "Comparativo de indicadores de IDH, desigualdade e rotas comerciais de minérios.",
+    badge: "Multilateral",
+    icone: "globo",
+  },
+  {
+    href: "/eua",
+    titulo: "Observatório dos Estados Unidos",
+    descricao: "Grandes fundos de investimento, SEC EDGAR, dados da EPA e comércio bilateral.",
+    badge: "EUA",
+    icone: "empresa",
+  },
+];
 
 export default function PaginaHubCanada() {
   const mineradoras = obterMineradorasCanada();
@@ -121,6 +162,14 @@ export default function PaginaHubCanada() {
           institucional={institucional}
         />
       </main>
+
+      {/* SEÇÃO DE PÁGINAS RELACIONADAS */}
+      <SecaoPaginasRelacionadas
+        titulo="Explorar Conexões Transnacionais e Cívicas"
+        subtitulo="Navegue entre dossiês da aliança Five Eyes, orçamentos estratégicos e observatórios globais."
+        paginas={PAGINAS_RELACIONADAS_CANADA}
+        className="mt-12 mb-8"
+      />
 
       <FooterGlobal />
     </div>

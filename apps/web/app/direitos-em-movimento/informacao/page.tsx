@@ -45,6 +45,11 @@ const LINKS_RELACIONADOS = [
     titulo: "203 Cidades Estratégicas do Brasil",
     descricao: "Painel com todas as 27 capitais e 176 polos do interior com dados municipais integrados.",
   },
+  {
+    href: "/internacional/inteligencia",
+    titulo: "Central de Inteligência & Desclassificados (FOIA)",
+    descricao: "Dossiês de transparência governamental internacional, pedidos FOIA e segredo de Estado.",
+  },
 ];
 
 export default function InformacaoPage() {

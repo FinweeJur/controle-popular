@@ -24,6 +24,9 @@ import {
 } from "@/lib/internacional/dados-operacoes-militares";
 import PainelOperacoesMilitares from "./PainelOperacoesMilitares";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import SecaoPaginasRelacionadas, {
+  type ItemPaginaRelacionada,
+} from "@/app/components/SecaoPaginasRelacionadas";
 import {
   Crosshair,
   Shield,
@@ -39,6 +42,37 @@ export const metadata: Metadata = {
   description:
     "Acervo cívico unificado de intervenções armadas, deposições de regimes, mercenários (Blackwater, Wagner) e mega-contratos bélicos de potências globais com geolocalização e fontes oficiais.",
 };
+
+const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
+  {
+    href: "/internacional/inteligencia",
+    titulo: "Central de Inteligência & Desclassificados",
+    descricao: "Dossiês da CIA, FBI, NSA e Twelve Eyes articulados com intervenções militares.",
+    badge: "Inteligência",
+    icone: "justica",
+  },
+  {
+    href: "/internacional/orcamentos",
+    titulo: "7 Orçamentos Estratégicos Globais",
+    descricao: "Dotações orçamentárias de defesa, inteligência, clima e energia de potências.",
+    badge: "Orçamentos",
+    icone: "dinheiro",
+  },
+  {
+    href: "/internacional",
+    titulo: "Hub Internacional & Multilateral",
+    descricao: "Auditoria de dados da ONU, UNESCO, OMS e comércio exterior de commodities.",
+    badge: "Multilateral",
+    icone: "globo",
+  },
+  {
+    href: "/eua",
+    titulo: "Observatório dos Estados Unidos",
+    descricao: "Grandes fundos de investimento, SEC EDGAR, dados da EPA e comércio bilateral.",
+    badge: "EUA",
+    icone: "empresa",
+  },
+];
 
 export default function PaginaOperacoesMilitares() {
   const operacoes = obterOperacoesMilitares();
@@ -171,8 +205,16 @@ export default function PaginaOperacoesMilitares() {
         </Suspense>
       </main>
 
+      {/* SEÇÃO DE PÁGINAS RELACIONADAS */}
+      <SecaoPaginasRelacionadas
+        titulo="Explorar Conexões Cívicas e Transnacionais"
+        subtitulo="Navegue entre dossiês de inteligência, orçamentos estratégicos e relações exteriores."
+        paginas={PAGINAS_RELACIONADAS}
+        className="mt-12 mb-8"
+      />
+
       {/* RODAPÉ GLOBAL */}
-      <div className="mt-16">
+      <div className="mt-8">
         <FooterGlobal />
       </div>
     </div>

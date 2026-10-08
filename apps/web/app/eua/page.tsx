@@ -10,12 +10,60 @@ import {
 import PainelEua from "./PainelEua";
 import SubNavEua from "./components/SubNavEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import SecaoPaginasRelacionadas, {
+  type ItemPaginaRelacionada,
+} from "@/app/components/SecaoPaginasRelacionadas";
 
 export const metadata: Metadata = {
   title: "Estados Unidos: SEC EDGAR, Fundos, Barragens NID & Comércio com o Brasil | Controle Popular",
   description:
     "Acervo oficial de transparência dos EUA e conexões com o Brasil: balanços na SEC EDGAR (BlackRock, Vanguard, Vale ADR), inventário de barragens NID (USACE), contratos federais no USAspending e ações judiciais em Nova York.",
 };
+
+const PAGINAS_RELACIONADAS_EUA: ItemPaginaRelacionada[] = [
+  {
+    href: "/internacional/inteligencia",
+    titulo: "Central de Inteligência (CIA, FBI, NSA)",
+    descricao: "Dossiês de inteligência desclassificados e relatórios contemporâneos das agências federais dos EUA.",
+    badge: "Inteligência",
+    icone: "justica",
+  },
+  {
+    href: "/internacional/inteligencia/mapa",
+    titulo: "Mapa Global de Inteligência",
+    descricao: "Visualização geoespacial das agências e alianças de espionagem ao redor do globo.",
+    badge: "Mapa 3D",
+    icone: "globo",
+  },
+  {
+    href: "/internacional/orcamentos",
+    titulo: "Orçamentos Estratégicos dos EUA",
+    descricao: "Auditoria comparada de US$ 842 bi militares versus US$ 46 bi de combate ao clima.",
+    badge: "Orçamentos",
+    icone: "dinheiro",
+  },
+  {
+    href: "/internacional/operacoes-militares",
+    titulo: "Operações Militares e Contratos",
+    descricao: "Intervenções globais, compras bélicas e empresas militares privadas norte-americanas.",
+    badge: "Militar",
+    icone: "justica",
+  },
+  {
+    href: "/internacional",
+    titulo: "Hub Multilateral Internacional",
+    descricao: "Comparativo de indicadores de IDH, desigualdade e comércio multilateral de minérios.",
+    badge: "Multilateral",
+    icone: "globo",
+  },
+  {
+    href: "/europa",
+    titulo: "Observatório da Europa",
+    descricao: "Litígios corporativos transnacionais, mineração e devida diligência na União Europeia.",
+    badge: "Europa",
+    icone: "empresa",
+  },
+];
 
 export default function PaginaHubEua() {
   const empresas = obterEmpresasSecEua();
@@ -122,6 +170,14 @@ export default function PaginaHubEua() {
           institucional={institucional}
         />
       </main>
+
+      {/* SEÇÃO DE PÁGINAS RELACIONADAS */}
+      <SecaoPaginasRelacionadas
+        titulo="Explorar Conexões Transnacionais e Cívicas"
+        subtitulo="Navegue entre dossiês de inteligência, orçamentos estratégicos e intervenções globais."
+        paginas={PAGINAS_RELACIONADAS_EUA}
+        className="mt-12 mb-8"
+      />
 
       <FooterGlobal />
     </div>

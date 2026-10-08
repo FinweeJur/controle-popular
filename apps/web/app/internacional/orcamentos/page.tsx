@@ -55,6 +55,13 @@ const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
     icone: "globo",
   },
   {
+    href: "/internacional/inteligencia",
+    titulo: "Central de Inteligência & Desclassificados",
+    descricao: "Dossiês da CIA, FBI, NSA e Twelve Eyes custeados pelos orçamentos estratégicos.",
+    badge: "Inteligência",
+    icone: "justica",
+  },
+  {
     href: "/eua",
     titulo: "Observatório dos Estados Unidos",
     descricao: "Contratos federais, compras governamentais, SEC EDGAR e fundos de investimento.",
