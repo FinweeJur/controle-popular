@@ -21,6 +21,12 @@
  * - Reduz latência a zero para termos frequentes e economiza chamadas de IA.
  * - Fornece botões de navegação direta com deep links auditáveis.
  * - Respeita a Regra de Escada cívica: navegação determinística antes da geração probabilística.
+ * - Cada degrau mora na SUA função privada (`degrau1Laboratorio` ... `degrau7Paginas`),
+ *   encadeada em `??` pelo `avaliarEscadaBruta`: mesma condição, mesma ordem,
+ *   só sem a função gigante de 1.115 linhas que valia saúde 1,45 no CodeScene
+ *   (hotspot medido em 07/10/2026, PENDENCIAS-07-10.md). A quebra é mecânica:
+ *   nenhum texto, atalho ou condição mudou — quem prova é
+ *   `escada-determinista.test.ts`.
  */
 
 import { buscarRespostaCurada } from "../busca/resposta-curada";
@@ -50,6 +56,11 @@ export interface ResultadoEscada {
 /**
  * Avalia se a entrada do usuário corresponde a um degrau determinístico antes de invocar a IA.
  * Executa a lógica bruta de casamento por regras, com correção tolerante a erros de digitação.
+ *
+ * ORQUESTRAÇÃO: cada degrau é uma função privada própria encadeada em `??`,
+ * na MESMA ordem em que os `if`s eram testados no bloco único anterior a
+ * 08/10/2026. `null` de um degrau passa a palavra ao seguinte — resultado
+ * idêntico ao anterior, função só deixa de ser um arquivo dentro de arquivo.
  */
 function avaliarEscadaBruta(
   prompt: string,
@@ -61,6 +72,28 @@ function avaliarEscadaBruta(
   // Aplica correção tolerante a erros ortográficos e de digitação
   const normalizada = corrigirDigitacaoFrase(bruta);
 
+  return (
+    degrau1Laboratorio(normalizada) ??
+    degrau15Tabelas(normalizada) ??
+    degrau2Cidades(normalizada) ??
+    degrau3Empresas(normalizada) ??
+    degrau35Justica(normalizada) ??
+    degrau4Ferramentas(normalizada) ??
+    degrau45Bases(normalizada) ??
+    degrau5Curada(prompt, slugCidadeOuZona) ??
+    degrau6Noticias(normalizada) ??
+    degrau65Internacional(normalizada) ??
+    degrau7Paginas(prompt, normalizada)
+  );
+}
+
+/**
+ * Degrau 1 — Laboratório, PowerBI, cruzamentos e a Árvore Obsidian.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão do laboratório, ou `null` para o degrau seguinte.
+ */
+function degrau1Laboratorio(normalizada: string): ResultadoEscada | null {
   // ─── 1. DEGRAU: LABORATÓRIO / POWERBI / ARVORE OBSIDIAN / CRUZAMENTOS ─
   const regexArvore = /\b(arvore|grafo|obsidian|rede de conexoes|arvore de links|mapa mental)\b/i;
   if (regexArvore.test(normalizada)) {
@@ -98,6 +131,17 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 1.5 — Comandos diretos de tabelas e bases: licenciamento, convênios,
+ * legislação ambiental e condicionantes de barragens.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da base, ou `null` para o degrau seguinte.
+ */
+function degrau15Tabelas(normalizada: string): ResultadoEscada | null {
   // ─── 1.5. DEGRAU: COMANDOS DIRETOS DE TABELAS & BASES (LICENÇAS, CONVÊNIOS, LEIS, TAC) ─
   if (
     normalizada.startsWith("licenciamento") ||
@@ -193,6 +237,17 @@ function avaliarEscadaBruta(
   }
 
 
+  return null;
+}
+
+/**
+ * Degrau 2 — Cidades estratégicas: Betim, BH, Diamantina, Araçuaí, Itinga,
+ * São Paulo e o catálogo das 199 cidades.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da cidade, ou `null` para o degrau seguinte.
+ */
+function degrau2Cidades(normalizada: string): ResultadoEscada | null {
   // ─── 2. DEGRAU: CIDADES ESPECÍFICAS ────────────────────────────────────
   if (
     normalizada === "betim" ||
@@ -339,6 +394,17 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 3 — Empresas e mineradoras: Vale, Sigma Lithium, CSN, CEMIG,
+ * COPASA, o painel geral e os hubs do Canadá e dos EUA.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da empresa, ou `null` para o degrau seguinte.
+ */
+function degrau3Empresas(normalizada: string): ResultadoEscada | null {
   // ─── 3. DEGRAU: EMPRESAS E MINERADORAS ────────────────────────────────
   if (
     normalizada === "vale" ||
@@ -503,6 +569,18 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 3.5 — Instituições de Justiça e órgãos de controle (TJMG, MPMG,
+ * DPMG, TCEMG). O comparativo de DUAS siglas juntas vem primeiro: o cartão
+ * da home pergunta pelo orçamento das três de uma vez.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da instituição, ou `null` para o degrau seguinte.
+ */
+function degrau35Justica(normalizada: string): ResultadoEscada | null {
   // ─── 3.5. DEGRAU: INSTITUIÇÕES DE JUSTIÇA & ÓRGÃOS DE CONTROLE ────────
   // Comparativo ANTES das fichas: o cartão da home pergunta pelo orçamento do
   // TJMG, MPMG e DPMG JUNTOS ("…e a disparidade entre eles"). Sem esta regra,
@@ -631,6 +709,17 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 4 — Central e ferramentas do portal: busca, editais, biblioteca,
+ * imprensa, índice, documentação, fontes, sobre, governo e ComunicaBR.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da ferramenta, ou `null` para o degrau seguinte.
+ */
+function degrau4Ferramentas(normalizada: string): ResultadoEscada | null {
   // ─── 4. DEGRAU: CENTRAL E FERRAMENTAS DO PORTAL ───────────────────────
   if (
     normalizada === "busca" ||
@@ -855,6 +944,18 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 4.5 — Novas bases e hubs da rodada de 29/09/2026: imóveis da União,
+ * concessões e PPPs, municípios do IBGE, cavas por satélite, assembleias e
+ * o hub multilateral.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da base, ou `null` para o degrau seguinte.
+ */
+function degrau45Bases(normalizada: string): ResultadoEscada | null {
   // ─── 4.5. DEGRAU: NOVAS BASES E HUBS (RODADA 29/09/2026) ───────────────
   if (
     normalizada.includes("imoveis da uniao") ||
@@ -984,6 +1085,20 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 5 — Respostas pré-curadas da base oficial do portal.
+ *
+ * Recebe o prompt ORIGINAL (não o normalizado): o `buscarRespostaCurada`
+ * faz a sua própria normalização interna e casa por assunto, não por literal.
+ *
+ * @param prompt Texto digitado pelo visitante, como veio.
+ * @param slugCidadeOuZona Município/zona da conversa, quando houver.
+ * @returns Cartão da resposta curada, ou `null` para o degrau seguinte.
+ */
+function degrau5Curada(prompt: string, slugCidadeOuZona?: string): ResultadoEscada | null {
   // ─── 5. DEGRAU: RESPOSTAS CURADAS DA BASE OFICIAL ──────────────────────
   const curada = buscarRespostaCurada(prompt, slugCidadeOuZona);
   if (curada && curada.resposta) {
@@ -1014,6 +1129,19 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 6 — Blog e reportagens investigativas do ONSA: o cartão da central
+ * de notícias e a busca por reportagem conhecida (título, slug ou DUAS
+ * palavras-chave — de uma só, qualquer pergunta sobre orçamento caía na
+ * reportagem do IPCA/Selic, medido em 06/10/2026).
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da notícia, ou `null` para o degrau seguinte.
+ */
+function degrau6Noticias(normalizada: string): ResultadoEscada | null {
   // ─── 6. DEGRAU: BLOG E REPORTAGENS INVESTIGATIVAS ────────────────────
   if (
     normalizada === "blog" ||
@@ -1077,6 +1205,18 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 6.5 — Expansão internacional (EUA e Canadá) e pedido trilíngue.
+ * O nó dos EUA só responde se NÃO for assunto do Canadá (o Canadá tem
+ * regex própria logo abaixo, que fica sempre à espera).
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão do hub internacional, ou `null` para o degrau seguinte.
+ */
+function degrau65Internacional(normalizada: string): ResultadoEscada | null {
   // ─── 6.5. DEGRAU: EXPANSÃO INTERNACIONAL (EUA & CANADÁ) E TRILÍNGUE ────
   if (
     /\b(explain in plain english|explica en espanol|explique em portugues simples)\b/i.test(normalizada) ||
@@ -1148,6 +1288,22 @@ function avaliarEscadaBruta(
     };
   }
 
+  return null;
+}
+
+/**
+ * Degrau 7 — Busca nas ~100 páginas estruturais do portal, com corte de
+ * correspondência FORTE: título, rota ou palavra-chave inteira têm que casar,
+ * senão a escada devolve `null` e a pergunta segue para o RAG / IA.
+ *
+ * Recebe o prompt ORIGINAL para o `buscarPaginasPortal` (que tem a sua
+ * própria tolerância) e a versão normalizada para os testes de corte.
+ *
+ * @param prompt Texto digitado pelo visitante, como veio.
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão da página, ou `null` — fim da escada, segue para a IA.
+ */
+function degrau7Paginas(prompt: string, normalizada: string): ResultadoEscada | null {
   // ─── 7. DEGRAU: BUSCA EM PÁGINAS ESTRUTURAIS DO PORTAL (~100 PÁGINAS) ──
   const paginasEncontradas = buscarPaginasPortal(prompt, 3);
   if (paginasEncontradas.length > 0) {
