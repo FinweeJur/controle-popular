@@ -152,7 +152,7 @@ mexer):
 
 | O quê | Caminho | Commitado? |
 |---|---|---|
-| Wrapper que injeta o token no MCP | `scripts/mcp-codescene.ps1` | ✅ commitado em 08/10 nesta branch — estava **untracked** no checkout principal desde 07/10, embora o doc marcasse ✅ |
+| Wrapper que injeta o token no MCP | `scripts/mcp-codescene.ps1` | ✅ já em `origin/main` desde 07/10 — o `??` no checkout principal é o local **95 atrás**, não falta de commit (medido 08/10) |
 | PAT do CodeScene | `scripts/.env` (`CS_ACCESS_TOKEN`) | 🚫 gitignorado; nunca imprimir |
 | Config do MCP do opencode | `C:\Users\teste\.config\opencode\opencode.json` (`mcp.codescene`) | 🚫 fora do repo; exige restart |
 | Binário do MCP | `%LOCALAPPDATA%\npm-cache\_npx\85498f9af683b8f2\node_modules\@codescene\codehealth-mcp\.cache\1.5.8\cs-mcp.exe` | 🚫 cache do npx |
@@ -166,3 +166,18 @@ mexer):
 
 O wrapper lê só a chave `CS_ACCESS_TOKEN` do `.env`, tolera BOM e CRLF, e
 nunca imprime valor nenhum — mesma régua da [AGENTS.md §5.8](/AGENTS.md).
+
+**Duas armadilhas medidas em 08/10**, as duas custaram uma conclusão errada:
+
+- **`git cat-file -e <ref>` responde vazio no SUCESSO.** Checar presença de
+  arquivo pela saída do comando em PowerShell faz `if (...)` cair no falso:
+  parecia que o wrapper não estava em `origin/main`, e estava. O que vale é
+  `$LASTEXITCODE`.
+- **`??` no checkout local não é "nunca commitado".** O checkout principal
+  está 95 atrás de `origin/main`: arquivo commitado no remoto em 07/10
+  aparece como não rastreado aqui. Confira com
+  `git cat-file -e origin/main:<caminho>` (ou `git ls-tree origin/main`).
+- **Copiar arquivo `.ps1` sem o BOM muda a leitura.** O commit `808150cb`
+  entrou com a cópia sem BOM e foi revertido em seguida: o PowerShell 5.1
+  lê `.ps1` sem BOM como ANSI e quebra os acentos dos textos. Byte a byte
+  igual ao do remoto é o estado certo para arquivo que não mudou.
