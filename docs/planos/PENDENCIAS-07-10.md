@@ -12,6 +12,7 @@
 - [Propósito](#propósito)
 - [Achados medidos](#achados-medidos)
 - [Pendências abertas](#pendências-abertas)
+- [Primeira leitura de dívida](#primeira-leitura-de-dívida)
 - [Próximos passos, em ordem](#próximos-passos-em-ordem)
 - [Onde mora o quê](#onde-mora-o-quê)
 
@@ -58,8 +59,8 @@ GuaraCloud API` em parte das chamadas; os logs que passaram mostram
 | # | Pendência | Onde | Estado |
 |---|---|---|---|
 | 1 | **Reiniciar o opencode** para carregar o MCP `codescene` (config não é recarregada) | `C:\Users\teste\.config\opencode\opencode.json` | ⛔ dono |
-| 2 | **Primeira consulta real** de dívida: `select_project` → id → `list_technical_debt_hotspots_for_project` | MCP CodeScene | ⛔ próxima sessão |
-| 3 | **AGENTS.md sem seção do CodeScene** — é o único check 6/6 que falha | `AGENTS.md` | 🚧 aberto |
+| 2 | **Primeira consulta real** de dívida no MCP | MCP CodeScene (projeto 85760) | ✅ feito — ver [leitura](#primeira-leitura-de-dívida) |
+| 3 | **AGENTS.md sem seção do CodeScene** — era o único check 6/6 que falhava | `AGENTS.md` §10 | ✅ feito nesta rodada |
 | 4 | **CSP de `Report-Only` para bloqueante** (só depois de existir `report-uri`/`report-to`) | `apps/web/next.config.ts` | ⛔ decisão do dono |
 | 5 | **Conferir se os dados chegam** no painel do Simple Analytics | painel Simple Analytics | ⛔ dono |
 | 6 | **Deploy no Guara** — imagem nova com `drizzle-orm` para sair do `crash_loop` | `guara deploy --project controle-popular` | ⛔ aguarda dono |
@@ -67,14 +68,61 @@ GuaraCloud API` em parte das chamadas; os logs que passaram mostram
 | 8 | **Token Name.com exposto** (rotacionar), secret `GITHUB_ISSUES_TOKEN`, alerta de orçamento Azure | Name.com / GitHub / Azure | ⛔ dono |
 | 9 | **Economia de token** do MCP: `CS_DEFAULT_PROJECT_ID` e `CS_ENABLED_TOOLS` (AGENTS §5.12) | config do opencode | 💡 opcional |
 
+## Primeira leitura de dívida
+
+Consulta ao MCP do CodeScene em 07/10/2026, projeto `controle-popular` (id
+**85760**). Os números são de máquina e datados — dizem o que a análise mediu
+naquele instante, não julgamento de autor (AGENTS §7).
+
+**Estado do projeto:** saúde geral **8,69** (mês **−0,34**); saúde dos pontos
+quentes **8,36** (mês **−0,55**); análise `ok`; **18 arquivos** marcados
+`recommended-refactoring-target`. Mapa:
+[codescene.io/projects/85760](https://codescene.io/projects/85760).
+
+**Piores em saúde de código** (saúde de 0 a 10; quanto menor, mais caro de
+mexer):
+
+| Saúde | Arquivo | Loc | Revisões |
+|---|---|---|---|
+| **1,45** | `apps/web/lib/assistente/escada-determinista.ts` | 1.088 | 7 |
+| **2,17** | `apps/web/app/indice/Catalogo100PaginasClient.tsx` | 466 | 4 |
+| **5,73** | `apps/web/lib/ambiental/licencas-unificada.ts` | 620 | 8 |
+| 6,46 | `apps/web/public/terras/globo/js/ui/rotulos.js` | 514 | 16 |
+| 6,87 | `etl/betim/etl/common.py` | 647 | 10 |
+| 6,98 | `apps/web/lib/assistente/acervo.ts` | 558 | 15 |
+| 7,09 | `apps/web/lib/db/queries/betim.ts` | 2.558 | 32 |
+| 7,27 | `apps/web/app/sobre/page.tsx` | 613 | 19 |
+| 7,31 | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 617 | 17 |
+| 7,49 | `apps/web/app/page.tsx` | 543 | 51 |
+
+**Mais mexidos** (revisões — onde o código muda mais):
+
+| Revisões | Arquivo | Saúde | Loc |
+|---|---|---|---|
+| 51 | `apps/web/app/page.tsx` | 7,49 | 543 |
+| 40 | `apps/web/app/components/TopNav.tsx` | 8,46 | 474 |
+| 38 | `apps/web/app/layout.tsx` | 8,98 | 323 |
+| 36 | `apps/web/app/components/SeuNono.tsx` | 7,95 | 1.909 |
+| 34 | `apps/web/app/ambiental/page.tsx` | 8,06 | 410 |
+| 32 | `apps/web/lib/db/queries/betim.ts` | 7,09 | 2.558 |
+
+**O que os dois cortes mostram, lidos juntos:**
+
+- `escada-determinista.ts` (1,45) e `Catalogo100PaginasClient.tsx` (2,17)
+  têm **poucas revisões** e saúde ruim: dívida velha, acumulada — não efeito
+  de edição recente.
+- `betim.ts` e `app/page.tsx` têm **saúde mediana e atrito subindo no mês**
+  (0,20 e 0,26): aqui o custo está crescendo agora.
+- `layout.tsx` e `TopNav.tsx` são os mais editados e **ainda saudáveis**
+  (8,98 e 8,46): mexer neles hoje é barato; deixar de mexer é o que encarece.
+
 ## Próximos passos, em ordem
 
-1. **Reiniciar o opencode** e chamar `verify_installation` com
-   `git_repository_path`. Deve fechar **6/6** quando o AGENTS.md ganhar a
-   orientação do CodeScene (item 3 da fila).
-2. **Listar os pontos quentes de verdade**: `select_project` (guardar o id),
-   depois `list_technical_debt_hotspots_for_project`. Registrar o resultado em
-   um doc antes de qualquer refatoração.
+1. ✅ **Seção do CodeScene no AGENTS.md** (§10) — era o único check 6/6
+   que faltava. Falta só o **restart do opencode** para o MCP carregar e a
+   conferência `verify_installation` fechar 6/6.
+2. ✅ **Primeira leitura de dívida** feita e registrada na seção acima
+   (projeto 85760, 18 hotspots). Refatoração só a partir daqui.
 3. **Perguntar ao dono** (neste exato pedido): deploy no Guara e virada da CSP
    para bloqueante com `report-uri`.
 4. **Ligar o `report-uri`** e só então promover a CSP; medir violações por 24 h.

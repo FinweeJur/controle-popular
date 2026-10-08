@@ -555,6 +555,7 @@ CLI desta máquina, medido em 19/09:
 | `guara` 0.3.0 | CLI do Guara Cloud: deploy, env, domains, logs | `guara env set -b KEY=valor` |
 | `neonctl` 5.0.0 | CLI da Neon: connection string, branches | `neonctl cs` |
 | `gh` 2.96 | CLI do GitHub: secrets, workflows | `gh secret set KEY --body "..."` |
+| `cs` 1.0.49 | CLI do CodeScene: análise de dívida local | `cs version` |
 
 Anotações:
 
@@ -565,6 +566,27 @@ Anotações:
 - `DATABASE_URL` vive no painel do Guara (runtime **e** build, flag `-b`).
   A string da Neon se recupera com `neonctl connection-string`.
 - Segredos nunca vão para o repositório nem para prints. Deny rules ativas.
+
+### CodeScene MCP (medido em 07/10/2026)
+
+- **O que é:** o servidor MCP `@codescene/codehealth-mcp` entrega a análise
+  de saúde do código do CodeScene (offer do GitHub Student Pack): pontos
+  quentes (hotspots), saúde por arquivo e guarda antes de commit.
+- **Como chamar:** o opencode registra o MCP `codescene`, que roda
+  `scripts/mcp-codescene.ps1`. O wrapper lê `CS_ACCESS_TOKEN` de
+  `scripts/.env` (gitignorado) e **nunca imprime o valor** (§5.8). A config
+  mora em `C:\Users\teste\.config\opencode\opencode.json` e **só recarrega
+  com restart do opencode**.
+- **Projeto:** `controle-popular`, id **85760**.
+- **`verify_installation` exige `git_repository_path`:** sem o parâmetro ele
+  responde `missing field git_repository_path`; passe a raiz do git.
+- **Refatorar por dado, não por intuição:** leia
+  `list_technical_debt_hotspots_for_project` (projeto 85760) e
+  `code_health_score` antes de escolher o que mexer, e registre a leitura em
+  um doc. A primeira leitura está em
+  [PENDENCIAS-07-10.md](docs/planos/PENDENCIAS-07-10.md).
+- **Economia de token (§5.12):** `CS_DEFAULT_PROJECT_ID=85760` e
+  `CS_ENABLED_TOOLS` na config abrem só o que a sessão usa.
 
 ## 11. Coleta
 
