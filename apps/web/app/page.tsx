@@ -59,10 +59,14 @@ export const metadata: Metadata = metadataEditavel("/", {
 // alcançável por URL direta, mas não se anuncia na home antes de ter dado.
 const SECOES = ZONAS_PUBLICADAS;
 
+/** Item de zona publicada (o tipo de SECOES/ZONAS_PUBLICADAS). */
+type ZonaItem = (typeof SECOES)[number];
+
+/** Cidades listadas no build (mesmo tipo que listarCidades() devolve). */
+type Cidades = Awaited<ReturnType<typeof listarCidades>>;
+
 export default async function Hub() {
   const cidades = await listarCidades();
-  const citacaoBirri = citacaoPorId("birri-utopia");
-  const citacaoGuimaraes = citacaoPorId("guimaraes-rosa-coragem");
   return (
     // ⟲ 13/08, revisão de onboarding: era `<div>`, e `OuvirPagina.tsx` só
     // lê `document.querySelector("main")` — sem a tag, o botão "Ouvir esta
@@ -95,6 +99,54 @@ export default async function Hub() {
           e acima da capa-hero. Sem entrada do dia, não renderiza nada. */}
       <MisticaDoDia />
 
+      <CapaHome />
+
+      <AvisoPortal />
+
+      <CardMineracao />
+
+      {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
+      <CardCarousel />
+
+      <PainelDados />
+
+      <header className="space-y-4">
+        <AtalhosHome />
+        <EixosTematicos />
+      </header>
+
+      {/* Sanfona das frentes (etapa 4 PLANO-TEMA-PEQUI, previa v7.1):
+          escolha rapida — um painel por vez, rotacao 4,5s, pausa em
+          hover/foco, setas do teclado navegam, reduced-motion so manual.
+          O grid de seis cards continua abaixo para quem quer tudo de
+          uma vez: a sanfona nao substitui, apresenta. */}
+      <SanfonaFrentes />
+
+      {/* ═══ CARTÃO INTERATIVO DO SEU NONÔ — IA CIDADÃ COM ATALHOS DIRETOS ═══ */}
+      <CartaoChatbotHome />
+
+      <GridFrentes cidades={cidades} />
+
+      <BannerDireitos />
+
+      <SecaoMultiportal />
+
+      <Manifesto />
+
+      <FechoHome />
+
+      <FooterGlobal />
+    </main>
+  );
+}
+
+/**
+ * Capa hero da home: foto da onca + ShapeBlur (anel de luz que segue o cursor).
+ */
+function CapaHome({ }) {
+  return (
+    <>
+
       {/* ═══ CAPA HOME — foto com overlay + texto (rebrand visual).
           ⟲ 06/10, dono: o <h1> "CONTROLE POPULAR" voltou para CIMA da
           foto da onça, entre as citações — a abertura viva saiu da home
@@ -124,6 +176,16 @@ export default async function Hub() {
           <ShapeBlur variacao={2} />
         </div>
       </section>
+    </>
+  );
+}
+
+/**
+ * Aviso de que o portal inteiro esta lancado, com creditos (pedido do dono, 01/10/2026).
+ */
+function AvisoPortal({ }) {
+  return (
+    <>
 
       {/* ═══ AVISO — O PORTAL INTEIRO LANÇADO — pedido do dono, 01/10/2026:
           o card de baixo dava a entender que só aquele cruzamento estava em
@@ -172,6 +234,16 @@ export default async function Hub() {
           .
         </p>
       </section>
+    </>
+  );
+}
+
+/**
+ * Card do cruzamento territorios x mineracao em MG (pedido do dono, 01/10/2026).
+ */
+function CardMineracao({ }) {
+  return (
+    <>
 
       {/* ═══ CRUZAMENTO DE TERRITÓRIOS E MINERAÇÃO — pedido do dono,
           01/10/2026: este card fica abaixo do aviso e não fala mais de
@@ -202,9 +274,16 @@ export default async function Hub() {
           </NextLink>
         </Magnet>
       </section>
+    </>
+  );
+}
 
-      {/* ═══ CARROSSEL 3D INTERATIVO DOS 3 EIXOS TEMÁTICOS (ABAIXO DA HERO) ═══ */}
-      <CardCarousel />
+/**
+ * Painel de impacto: totais medidos (R$ monitorados, cidades, proposicoes) + acervo do bases-portal.json.
+ */
+function PainelDados({ }) {
+  return (
+    <>
 
       {/* ═══ RESUMO DE DADOS GERAIS (PAINEL DE IMPACTO POPULAR) ═══ */}
       <section aria-label="Painel de dados gerais monitorados" className="my-8 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
@@ -251,8 +330,17 @@ export default async function Hub() {
           {basesPortal.temas.length} temas — cada um com link para a fonte oficial.
         </p>
       </section>
+    </>
+  );
+}
 
-      <header className="space-y-4">
+/**
+ * Paragrafo de abertura + atalhos magneticos (busca, cidades, alertas, paginas vistas).
+ */
+function AtalhosHome({ }) {
+  return (
+    <>
+
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
             desta página — e o `<h1>` da página vive dentro do hero
             narrativo, logo acima deste bloco. */}
@@ -287,6 +375,16 @@ export default async function Hub() {
             </NextLink>
           </Magnet>
         </div>
+    </>
+  );
+}
+
+/**
+ * Grade dos 4 eixos tematicos — a arquitetura civica atual do portal.
+ */
+function EixosTematicos({ }) {
+  return (
+    <>
 
         {/* ═══ OS 4 EIXOS TEMÁTICOS (ARQUITETURA CÍVICA ATUAL) ═══ */}
         <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
@@ -349,17 +447,16 @@ export default async function Hub() {
             </Magnet>
           </div>
         </div>
-      </header>
+    </>
+  );
+}
 
-      {/* Sanfona das frentes (etapa 4 PLANO-TEMA-PEQUI, previa v7.1):
-          escolha rapida — um painel por vez, rotacao 4,5s, pausa em
-          hover/foco, setas do teclado navegam, reduced-motion so manual.
-          O grid de seis cards continua abaixo para quem quer tudo de
-          uma vez: a sanfona nao substitui, apresenta. */}
-      <SanfonaFrentes />
-
-      {/* ═══ CARTÃO INTERATIVO DO SEU NONÔ — IA CIDADÃ COM ATALHOS DIRETOS ═══ */}
-      <CartaoChatbotHome />
+/**
+ * Sanfona nao entra aqui: e o grid das frentes (id=frentes, alvo da ancora do hero) + o paragrafo de orientacao acima dele. O card de cidades vira CardCidades, os demais CardZona.
+ */
+function GridFrentes({ cidades }: { cidades: Cidades }) {
+  return (
+    <>
 
       {/* Linha de orientação -- decisão do dev, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em
@@ -391,96 +488,130 @@ export default async function Hub() {
       >
         {SECOES.map((s) =>
           s.id === "cidades" ? (
-            // O card de cidades não é UM link: é um cartão com N destinos.
-            // Aninhar <a> dentro de <a> é HTML inválido e o navegador
-            // "conserta" fechando o de fora — o que quebraria os links das
-            // cidades em vez de dar erro visível.
-            <Magnet key={s.id} forca={0.05} afastamento={40} className="h-full">
-            <BorderGlow
-              className="h-full rounded-lg border border-border bg-surface p-6"
-              corFundo="var(--cp-surface)"
-              raio={12}
-            >
-            <div className="flex h-full flex-col">
-              <span
-                className="text-[.88em] font-semibold uppercase tracking-wide"
-                style={{ color: s.cor }}
-              >
-                {s.etiqueta}
-              </span>
-              <h2 className="mt-2 font-display text-xl font-semibold">{s.titulo}</h2>
-              <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
-              <ul className="mt-4 flex flex-col gap-2">
-                <li>
-                  <Magnet forca={0.12}>
-                    <NextLink
-                      href="/cidades"
-                      className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
-                    >
-                      <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
-                      <span aria-hidden="true">→</span>
-                    </NextLink>
-                  </Magnet>
-                </li>
-                {cidades.map((c) => (
-                  <li key={c.slug}>
-                    <BotaoBrilho bloco raio={6} forca={0.14} afastamento={30}>
-                      <a
-                        href={`/${c.slug}`}
-                        className="flex items-baseline justify-between gap-2 rounded-md border border-border px-3 py-2 text-[.95em] font-medium transition-colors hover:border-primary hover:text-primary"
-                      >
-                        <span>
-                          {c.nome}
-                          <span className="text-text-soft"> · {c.uf}</span>
-                        </span>
-                        <span aria-hidden="true">→</span>
-                      </a>
-                    </BotaoBrilho>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            </BorderGlow>
-            </Magnet>
+            <CardCidades key={s.id} s={s} cidades={cidades} />
           ) : (
-          // <a> puro, não next/link: estes caminhos estão FORA do basePath
-          // deste app (`/betim`), e o next/link prefixaria, gerando
-          // `/betim/congresso`. É a mesma classe de bug que os comentários
-          // do `next.config.ts` registram já ter acontecido três vezes.
-          <Magnet key={s.href} forca={0.05} afastamento={40} className="h-full">
-            <BorderGlow
-              className="h-full rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
-              corFundo="var(--cp-surface)"
-              raio={12}
-            >
-              <a href={s.href} className="group flex h-full flex-col">
-                <span
-                  className="text-[.88em] font-semibold uppercase tracking-wide"
-                  style={{ color: s.cor }}
-                >
-                  {s.etiqueta}
-                </span>
-                <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
-                  {s.titulo}
-                </h2>
-                <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
-                <ul className="mt-4 space-y-1.5 text-[.9em] text-text-soft">
-                  {s.itens.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span aria-hidden="true" style={{ color: s.cor }}>
-                        ·
-                      </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="mt-5 font-medium text-primary">Entrar →</span>
-              </a>
-            </BorderGlow>
-          </Magnet>
+            <CardZona key={s.href} s={s} />
           )
         )}
       </div>
+    </>
+  );
+}
+
+/**
+ * O card de cidades nao e UM link: e um cartao com N destinos — aninhar <a> dentro de <a> e HTML invalido.
+ */
+function CardCidades({ s, cidades }: { s: ZonaItem; cidades: Cidades }) {
+  // O card de cidades não é UM link: é um cartão com N destinos.
+  // Aninhar <a> dentro de <a> é HTML inválido e o navegador
+  // "conserta" fechando o de fora — o que quebraria os links das
+  // cidades em vez de dar erro visível.
+  return (
+    <>
+
+      <Magnet key={s.id} forca={0.05} afastamento={40} className="h-full">
+      <BorderGlow
+        className="h-full rounded-lg border border-border bg-surface p-6"
+        corFundo="var(--cp-surface)"
+        raio={12}
+      >
+      <div className="flex h-full flex-col">
+        <span
+          className="text-[.88em] font-semibold uppercase tracking-wide"
+          style={{ color: s.cor }}
+        >
+          {s.etiqueta}
+        </span>
+        <h2 className="mt-2 font-display text-xl font-semibold">{s.titulo}</h2>
+        <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
+        <ul className="mt-4 flex flex-col gap-2">
+          <li>
+            <Magnet forca={0.12}>
+              <NextLink
+                href="/cidades"
+                className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
+              >
+                <span>Ver todas as 203 Cidades Estratégicas (Capitais & Polos)</span>
+                <span aria-hidden="true">→</span>
+              </NextLink>
+            </Magnet>
+          </li>
+          {cidades.map((c) => (
+            <li key={c.slug}>
+              <BotaoBrilho bloco raio={6} forca={0.14} afastamento={30}>
+                <a
+                  href={`/${c.slug}`}
+                  className="flex items-baseline justify-between gap-2 rounded-md border border-border px-3 py-2 text-[.95em] font-medium transition-colors hover:border-primary hover:text-primary"
+                >
+                  <span>
+                    {c.nome}
+                    <span className="text-text-soft"> · {c.uf}</span>
+                  </span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </BotaoBrilho>
+            </li>
+          ))}
+        </ul>
+      </div>
+      </BorderGlow>
+      </Magnet>
+    </>
+  );
+}
+
+/**
+ * Card generico de zona. <a> cru, nao next/link: estes caminhos estao FORA do basePath deste app e o next/link prefixaria (bug ja acontecido 3x, ver next.config.ts).
+ */
+function CardZona({ s }: { s: ZonaItem }) {
+  // <a> puro, não next/link: estes caminhos estão FORA do basePath
+  // deste app (`/betim`), e o next/link prefixaria, gerando
+  // `/betim/congresso`. É a mesma classe de bug que os comentários
+  // do `next.config.ts` registram já ter acontecido três vezes.
+  return (
+    <>
+
+    <Magnet key={s.href} forca={0.05} afastamento={40} className="h-full">
+      <BorderGlow
+        className="h-full rounded-lg border border-border bg-surface p-6 transition-colors hover:border-primary"
+        corFundo="var(--cp-surface)"
+        raio={12}
+      >
+        <a href={s.href} className="group flex h-full flex-col">
+          <span
+            className="text-[.88em] font-semibold uppercase tracking-wide"
+            style={{ color: s.cor }}
+          >
+            {s.etiqueta}
+          </span>
+          <h2 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">
+            {s.titulo}
+          </h2>
+          <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
+          <ul className="mt-4 space-y-1.5 text-[.9em] text-text-soft">
+            {s.itens.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span aria-hidden="true" style={{ color: s.cor }}>
+                  ·
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <span className="mt-5 font-medium text-primary">Entrar →</span>
+        </a>
+      </BorderGlow>
+    </Magnet>
+    </>
+  );
+}
+
+/**
+ * Banner transversal de Direitos em Movimento — nao e uma frente do grid (decisao do dev, 13/08; ver lib/zonas.ts).
+ */
+function BannerDireitos({ }) {
+  return (
+    <>
 
       {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO É UMA FRENTE ═══
           Decisão do dev (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
@@ -558,6 +689,16 @@ export default async function Hub() {
           </NextLink>
         </Magnet>
       </section>
+    </>
+  );
+}
+
+/**
+ * Por que mais de um portal: separa Poder de frente do portal; a contagem sai de lib/zonas.ts.
+ */
+function SecaoMultiportal({ }) {
+  return (
+    <>
 
       {/* ⟲ 13/08: dizia "Por que TRÊS portais", e o texto contava três
           frentes — a herança dos três sites que foram unificados num só.
@@ -582,6 +723,17 @@ export default async function Hub() {
           acompanhar só uma deixa boa parte da história de fora.
         </p>
       </section>
+    </>
+  );
+}
+
+/**
+ * Manifesto final (copy v6, PLANO-COPY-VOZ.md) com epigrafe de abertura.
+ */
+function Manifesto({ }) {
+  const citacaoBirri = citacaoPorId("birri-utopia");
+  return (
+    <>
 
       {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md,
           seção "Manifesto final"). */}
@@ -598,6 +750,17 @@ export default async function Hub() {
           sendo seu.
         </p>
       </section>
+    </>
+  );
+}
+
+/**
+ * Rodape de fontes oficiais + fecho literario (epigrafe Guimaraes Rosa).
+ */
+function FechoHome({ }) {
+  const citacaoGuimaraes = citacaoPorId("guimaraes-rosa-coragem");
+  return (
+    <>
 
       <footer className="mt-10 space-y-2 text-[.85em] text-text-soft">
         <p>
@@ -612,8 +775,6 @@ export default async function Hub() {
           <Epigrafe citacao={citacaoGuimaraes} variante="fecho" />
         </section>
       )}
-
-      <FooterGlobal />
-    </main>
+    </>
   );
 }
