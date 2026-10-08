@@ -78,7 +78,7 @@ GuaraCloud API` em parte das chamadas; os logs que passaram mostram
 | 7 | **Rebase do checkout principal** (7 commits locais sem push, 93 atrás) | `main` local | ⚠️ sessão outra |
 | 8 | **Token Name.com exposto** (rotacionar), secret `GITHUB_ISSUES_TOKEN`, alerta de orçamento Azure | Name.com / GitHub / Azure | ⛔ dono |
 | 9 | **Economia de token** do MCP: `CS_DEFAULT_PROJECT_ID` e `CS_ENABLED_TOOLS` (AGENTS §5.12) | config do opencode | 💡 opcional |
-| 10 | **Refatoração dos hotspots** — só os do doc, nunca por intuição | `escada-determinista.ts` (saúde 1,45) | ✅ feito em 08/10 (`cad5f8fa`) — 11 funções, 12 testes verdes; próximo candidato: `Catalogo100PaginasClient.tsx` (2,17) |
+| 10 | **Refatoração dos hotspots** — só os do doc, nunca por intuição | 4 dos 18 | 🚧 **4 feitos em 08/10:** escada (`cad5f8fa`), licenças (`6788cc43`), acervo (`7ba60b26`), catálogo (`a4a7f213`) — cada um com prova de equivalência e testes; saúde a recalcular na próxima análise do CodeScene |
 
 ## Primeira leitura de dívida
 
@@ -97,11 +97,11 @@ mexer):
 | Saúde | Arquivo | Loc | Revisões |
 |---|---|---|---|
 | **1,45** | `apps/web/lib/assistente/escada-determinista.ts` — **refatorada em 08/10** (`cad5f8fa`, 11 funções por degrau); saúde a recalcular na próxima análise | 1.088 | 7 |
-| **2,17** | `apps/web/app/indice/Catalogo100PaginasClient.tsx` | 466 | 4 |
-| **5,73** | `apps/web/lib/ambiental/licencas-unificada.ts` | 620 | 8 |
+| **2,17** | `apps/web/app/indice/Catalogo100PaginasClient.tsx` — **refatorado em 08/10** (`a4a7f213`: .tsx 505→92 linhas, tabela de 21 regras de ícone em `lib/indice/`, cartão e controles em componentes próprios, 43 testes novos); saúde a recalcular | 466 | 4 |
+| **5,73** | `apps/web/lib/ambiental/licencas-unificada.ts` — **refatorada em 08/10** (`6788cc43`: link oficial 123→18 linhas via tabela de 22 regras, cobertura unificada, dump idêntico); saúde a recalcular | 620 | 8 |
 | 6,46 | `apps/web/public/terras/globo/js/ui/rotulos.js` | 514 | 16 |
 | 6,87 | `etl/betim/etl/common.py` | 647 | 10 |
-| 6,98 | `apps/web/lib/assistente/acervo.ts` | 558 | 15 |
+| 6,98 | `apps/web/lib/assistente/acervo.ts` — **refatorada em 08/10** (`7ba60b26`: `frenteDaRota` 11 if → tabela de 17, peças de cavas/macros em constantes, dump sha256 igual, 30 testes); saúde a recalcular | 558 | 15 |
 | 7,09 | `apps/web/lib/db/queries/betim.ts` | 2.558 | 32 |
 | 7,27 | `apps/web/app/sobre/page.tsx` | 613 | 19 |
 | 7,31 | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 617 | 17 |
@@ -140,13 +140,20 @@ mexer):
    deploy **não agora**; Simple Analytics o dono confere; refatoração
    começa pelo pior hotspot (`escada-determinista.ts`).
 4. ✅ **`report-uri` ligado** nos dois arquivos (`341f38ab`) e **escada
-   quebrada** em 11 funções (`cad5f8fa`) — ambos ainda **sem push**.
-5. 🚧 **Depois do deploy** (decisão do dono): medir violações por 24 h em
-   `csp:*` da tabela `contadores`; só então promover a CSP para bloqueante.
-6. **Fechar a conta Simple Analytics** lendo o painel (o script e o pixel já
+   quebrada** em 11 funções (`cad5f8fa`).
+5. ✅ **Três hotspots a mais fechados em 08/10** por subagentes paralelos
+   (arquivos disjuntos, um por agente): licenças (`6788cc43`), acervo
+   (`7ba60b26`), catálogo (`a4a7f213`). Suíte completa verde no fim.
+6. 🚧 **Push + deploy Azure** desta leva (escada, CSP, licenças, acervo,
+   catálogo) — depois **medir violações de CSP por 24 h** e só então
+   promover a CSP para bloqueante.
+7. **Fechar a conta Simple Analytics** lendo o painel (o script e o pixel já
    estão no ar; falta confirmar o número de visitas lá).
-7. **Próximo hotspot do doc**, quando houver sessão: `Catalogo100PaginasClient.tsx`
-   (saúde 2,17) — nunca refatorar por intuição.
+8. **Próximos hotspots**, quando houver sessão: `rotulos.js` (6,46, JS
+   estático sem testes — avaliar harness antes) e `common.py` (6,87, ETL
+   Python fora da suíte vitest); depois `betim.ts` (7,09, 2.558 linhas,
+   32 revisões). Saúde dos 4 refatorados renasce na próxima leitura —
+   nunca refatorar por intuição.
 
 ## Onde mora o quê
 
@@ -162,6 +169,9 @@ mexer):
 | Interpretador dos relatórios (+ teste) | `apps/web/lib/csp/reportes.ts` / `reportes.test.ts` | ✅ `341f38ab` |
 | Onde a contagem mora | tabela `contadores`, chaves `csp:<diretiva>:<origem>`, `csp:disposicao:*`, `csp:total` | ✅ sem migration |
 | Escada refatorada em 11 degraus | `apps/web/lib/assistente/escada-determinista.ts` | ✅ `cad5f8fa` |
+| Licenças: tabela de links e cobertura unificada | `apps/web/lib/ambiental/licencas-unificada.ts` (+ teste) | ✅ `6788cc43` |
+| Acervo do Nonô: tabela de frentes e peças | `apps/web/lib/assistente/acervo.ts` (+ teste) | ✅ `7ba60b26` |
+| Catálogo 100: regras de ícone/estilo/filtro + cartão e controles | `apps/web/lib/indice/catalogo.ts` + `app/indice/Catalogo*.tsx` (+ teste) | ✅ `a4a7f213` |
 | Trabalho da sessão de 08/10 | worktree `.claude/worktrees/cp-pend-0710`, branch `pend-0710` | 🚧 local, **sem push** (decisão do dono) |
 
 O wrapper lê só a chave `CS_ACCESS_TOKEN` do `.env`, tolera BOM e CRLF, e
