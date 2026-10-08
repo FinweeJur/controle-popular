@@ -1,24 +1,26 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-07T06:43:10.226Z
+- Gerado em: 2026-10-08T06:45:56.845Z
 - Duracao total: 8.3 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 465
-- OK: 384
+- OK: 389
 - QUEBRADOS: 9
-- REDIRECTS: 27
-- INCONSISTENTES: 45
-- Propostas geradas: 13
-- Links sem proposta: 23
+- REDIRECTS: 30
+- INCONSISTENTES: 37
+- Propostas geradas: 14
+- Links sem proposta: 25
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
 | https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
+| https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
+| https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
 | https://dadosabertos.almg.gov.br | REDIRECT | 200 | http://dadosabertos.almg.gov.br/documentacao/index |
 | https://drive.google.com/exemplo | QUEBRADO | 404 | https://drive.google.com/exemplo |
@@ -30,6 +32,7 @@
 | https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
 | https://museudainconfidencia.museus.gov.br/ | REDIRECT | 403 | https://www.gov.br/museus/pt-br/museus-ibram/museu-da-inconfidencia |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://pt.wikipedia.org/ | REDIRECT | 200 | https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal |
@@ -90,7 +93,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 
-### 4. https://falabr.cgu.gov.br
+### 4. https://pncp.gov.br/
+
+```diff
+- href="https://pncp.gov.br/"
++ href="https://www.gov.br/pncp/pt-br"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/[municipio]/interesses/page.tsx
+
+### 5. https://falabr.cgu.gov.br
 
 ```diff
 - href="https://falabr.cgu.gov.br"
@@ -101,7 +115,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 5. https://www.cnmp.mp.br
+### 6. https://www.cnmp.mp.br
 
 ```diff
 - href="https://www.cnmp.mp.br"
@@ -112,7 +126,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 6. https://www.tjmg.jus.br
+### 7. https://www.tjmg.jus.br
 
 ```diff
 - href="https://www.tjmg.jus.br"
@@ -123,7 +137,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 7. https://www.mpmg.mp.br
+### 8. https://www.mpmg.mp.br
 
 ```diff
 - href="https://www.mpmg.mp.br"
@@ -134,7 +148,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 8. https://portal.trt3.jus.br
+### 9. https://portal.trt3.jus.br
 
 ```diff
 - href="https://portal.trt3.jus.br"
@@ -145,7 +159,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 9. https://www.trf6.jus.br
+### 10. https://www.trf6.jus.br
 
 ```diff
 - href="https://www.trf6.jus.br"
@@ -156,7 +170,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 10. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 11. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
@@ -167,7 +181,7 @@ Confianca: media
 Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
 Origem: apps/web/lib/linkmender/busca.test.ts
 
-### 11. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 12. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -178,7 +192,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 12. https://museudainconfidencia.museus.gov.br/
+### 13. https://museudainconfidencia.museus.gov.br/
 
 ```diff
 - href="https://museudainconfidencia.museus.gov.br/"
@@ -189,7 +203,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 13. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+### 14. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
 
 ```diff
 - href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
@@ -204,6 +218,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 
 - https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng (200) — dominio nao governamental — correcao manual
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
+- https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
 - https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
@@ -224,6 +239,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
 - https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
+- https://controlepopular.com.br/ambiental/crimes-socioambientais (200) — dominio nao governamental — correcao manual
 - https://news.google.com/ (200) — dominio nao governamental — correcao manual
 
 ## Inconsistentes (nao verificados, sem proposta)
@@ -231,26 +247,18 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
-- https://controlepopular.com.br (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
-- https://controlepopular.com.br/ambiental/crimes-socioambientais (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.com.br (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.com.br/ (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.com.br/api/saude (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.com.br/betim (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.com.br/empresas/fortunas (525) — status HTTP 525 (nem ok, nem quebrado, nem redirect)
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed

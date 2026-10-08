@@ -1,3453 +1,3453 @@
 {
-  "geradoEm": "2026-10-07T06:34:52.675Z",
+  "geradoEm": "2026-10-08T06:37:38.079Z",
   "agente": "Argus Page Checker",
   "total": 313,
-  "ok": 0,
+  "ok": 313,
   "okComLacuna": 0,
-  "falhas": 313,
+  "falhas": 0,
   "resultados": [
     {
       "rota": "/",
       "url": "https://www.controlepopular.com.br/",
-      "status": 525,
-      "tempoMs": 599,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 904,
+      "titulo": "Controle Popular — Observatório Nacional Socioambiental (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]",
       "url": "https://www.controlepopular.com.br/betim",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 698,
+      "titulo": "Controle Popular Betim — Portal independente de transparência de Betim-MG — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/admin",
       "url": "https://www.controlepopular.com.br/betim/admin",
-      "status": 525,
-      "tempoMs": 393,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 849,
+      "titulo": "Painel administrativo — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/agro",
       "url": "https://www.controlepopular.com.br/betim/agro",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1637,
+      "titulo": "Agro — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/anuncie",
       "url": "https://www.controlepopular.com.br/betim/anuncie",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 551,
+      "titulo": "Anuncie — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/assistente",
       "url": "https://www.controlepopular.com.br/betim/assistente",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 515,
+      "titulo": "Pergunte ao portal — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/camara",
       "url": "https://www.controlepopular.com.br/betim/camara",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 3180,
+      "titulo": "Vereadores de Betim: gastos de gabinete e atuação — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/camara/comissoes",
       "url": "https://www.controlepopular.com.br/betim/camara/comissoes",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 956,
+      "titulo": "Comissões — Câmara Municipal de Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/camara/legislacao",
       "url": "https://www.controlepopular.com.br/betim/camara/legislacao",
-      "status": 525,
-      "tempoMs": 389,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2403,
+      "titulo": "Legislação — Prefeitura de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/camara/proposicoes",
       "url": "https://www.controlepopular.com.br/betim/camara/proposicoes",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 822,
+      "titulo": "Proposições da Câmara — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/camara/votacoes",
       "url": "https://www.controlepopular.com.br/betim/camara/votacoes",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 591,
+      "titulo": "Votações da Câmara — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/citrolandia",
       "url": "https://www.controlepopular.com.br/betim/citrolandia",
-      "status": 525,
-      "tempoMs": 391,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1085,
+      "titulo": "Citrolândia — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/clima",
       "url": "https://www.controlepopular.com.br/betim/clima",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 851,
+      "titulo": "Clima — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/coleta-lixo",
       "url": "https://www.controlepopular.com.br/betim/coleta-lixo",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1330,
+      "titulo": "Coleta de Lixo — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/compra-e-venda",
       "url": "https://www.controlepopular.com.br/betim/compra-e-venda",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 739,
+      "titulo": "Compra e Venda — Classificados de Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/contatos",
       "url": "https://www.controlepopular.com.br/betim/contatos",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 944,
+      "titulo": "Contatos Úteis — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/convenios",
       "url": "https://www.controlepopular.com.br/betim/convenios",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 544,
+      "titulo": "Convênios e Repasses de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/dados",
       "url": "https://www.controlepopular.com.br/betim/dados",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 541,
+      "titulo": "Betim em Dados: saúde, educação, economia e mais — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/defesa-civil",
       "url": "https://www.controlepopular.com.br/betim/defesa-civil",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 454,
+      "titulo": "Defesa Civil de Betim — Alertas | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/economia",
       "url": "https://www.controlepopular.com.br/betim/economia",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 765,
+      "titulo": "Economia — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/educacao",
       "url": "https://www.controlepopular.com.br/betim/educacao",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1257,
+      "titulo": "Educação — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/emendas",
       "url": "https://www.controlepopular.com.br/betim/emendas",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1169,
+      "titulo": "Emendas Parlamentares / Repasses Federais — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/gestao",
       "url": "https://www.controlepopular.com.br/betim/gestao",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 548,
+      "titulo": "Plano de Governo e Promessas de Betim — Prometeu? Cumpriu? | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/grupos-economicos",
       "url": "https://www.controlepopular.com.br/betim/grupos-economicos",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1816,
+      "titulo": "Grupos econômicos — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/historico",
       "url": "https://www.controlepopular.com.br/betim/historico",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 478,
+      "titulo": "História de Betim — memória das lutas — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/indice",
       "url": "https://www.controlepopular.com.br/betim/indice",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 622,
+      "titulo": "Índice — Betim-MG",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/infraestrutura",
       "url": "https://www.controlepopular.com.br/betim/infraestrutura",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 714,
+      "titulo": "Infraestrutura — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/interesses",
       "url": "https://www.controlepopular.com.br/betim/interesses",
-      "status": 525,
-      "tempoMs": 390,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 668,
+      "titulo": "Teia de Interesses — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/legislacao",
       "url": "https://www.controlepopular.com.br/betim/legislacao",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 552,
+      "titulo": "Legislação municipal de Betim — Lei Orgânica, Plano Diretor — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/legislacao/alertas",
       "url": "https://www.controlepopular.com.br/betim/legislacao/alertas",
-      "status": 525,
-      "tempoMs": 402,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1371,
+      "titulo": "Alertas — normas que restringem direitos — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/legislacao/bons-exemplos",
       "url": "https://www.controlepopular.com.br/betim/legislacao/bons-exemplos",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2172,
+      "titulo": "Bons exemplos — normas que ampliam direitos — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/links-uteis-mg",
       "url": "https://www.controlepopular.com.br/betim/links-uteis-mg",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 567,
+      "titulo": "Links Úteis do Estado — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/meio-ambiente",
       "url": "https://www.controlepopular.com.br/betim/meio-ambiente",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 480,
+      "titulo": "Meio Ambiente — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/meio-ambiente/autuacoes",
       "url": "https://www.controlepopular.com.br/betim/meio-ambiente/autuacoes",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1314,
+      "titulo": "Autuações ambientais — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/meio-ambiente/barragens",
       "url": "https://www.controlepopular.com.br/betim/meio-ambiente/barragens",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 722,
+      "titulo": "Barragens — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/meio-ambiente/paraopeba",
       "url": "https://www.controlepopular.com.br/betim/meio-ambiente/paraopeba",
-      "status": 525,
-      "tempoMs": 454,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 782,
+      "titulo": "Reparação do Rio Paraopeba — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/metodologia",
       "url": "https://www.controlepopular.com.br/betim/metodologia",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 472,
+      "titulo": "Metodologia dos alertas de contrato — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/mineracao",
       "url": "https://www.controlepopular.com.br/betim/mineracao",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1081,
+      "titulo": "Mineração — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/nota-betim",
       "url": "https://www.controlepopular.com.br/betim/nota-betim",
-      "status": 525,
-      "tempoMs": 402,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 517,
+      "titulo": "Nota Betim mudou de endereço | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/nota-transparencia",
       "url": "https://www.controlepopular.com.br/betim/nota-transparencia",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 738,
+      "titulo": "Nota Betim (PNTP) — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/noticias",
       "url": "https://www.controlepopular.com.br/betim/noticias",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 831,
+      "titulo": "Notícias e investigações sobre Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/noticias/[slug]",
       "url": "https://www.controlepopular.com.br/betim/noticias/satelite-cbers-6-cooperacao-espacial-amazonia",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1076,
+      "titulo": "Notícia não encontrada — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/painel-do-cidadao",
       "url": "https://www.controlepopular.com.br/betim/painel-do-cidadao",
-      "status": 525,
-      "tempoMs": 402,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 12021,
+      "titulo": "Painel do cidadão de Betim — dinheiro público, território e leis — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/plantao-farmacias",
       "url": "https://www.controlepopular.com.br/betim/plantao-farmacias",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1239,
+      "titulo": "Farmácias de Plantão — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/postos-combustivel",
       "url": "https://www.controlepopular.com.br/betim/postos-combustivel",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1188,
+      "titulo": "Postos de Combustível — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura",
       "url": "https://www.controlepopular.com.br/betim/prefeitura",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1627,
+      "titulo": "Prefeitura de Betim: contratos, despesas e servidores — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/contratos",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/contratos",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 865,
+      "titulo": "Contratos públicos de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/cultura",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/cultura",
-      "status": 525,
-      "tempoMs": 390,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1904,
+      "titulo": "Cultura — Prefeitura de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/despesas",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/despesas",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2049,
+      "titulo": "Despesas da Prefeitura de Betim por área — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/diarias",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/diarias",
-      "status": 525,
-      "tempoMs": 389,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 743,
+      "titulo": "Diárias e viagens oficiais — Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/diario",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/diario",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 626,
+      "titulo": "Diário Oficial de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/fornecedores",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/fornecedores",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1574,
+      "titulo": "Maiores fornecedores da Prefeitura — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/legislacao",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/legislacao",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 823,
+      "titulo": "Legislação — Prefeitura de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/licitacoes",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/licitacoes",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1123,
+      "titulo": "Licitações abertas da Prefeitura de Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/obras",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/obras",
-      "status": 525,
-      "tempoMs": 387,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1085,
+      "titulo": "Obras públicas de Betim: andamento e valores — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/prefeitura/servidores",
       "url": "https://www.controlepopular.com.br/betim/prefeitura/servidores",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 489,
+      "titulo": "Servidores públicos de Betim: nome, cargo e lotação — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/privacidade",
       "url": "https://www.controlepopular.com.br/betim/privacidade",
-      "status": 525,
-      "tempoMs": 389,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 456,
+      "titulo": "Política de Privacidade — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/rede-de-protecao",
       "url": "https://www.controlepopular.com.br/betim/rede-de-protecao",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 587,
+      "titulo": "Onde Pedir Informação e Onde Buscar Ajuda — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/saude",
       "url": "https://www.controlepopular.com.br/betim/saude",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 3219,
+      "titulo": "Saúde — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/seguranca",
       "url": "https://www.controlepopular.com.br/betim/seguranca",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1249,
+      "titulo": "Segurança Pública — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/servicos",
       "url": "https://www.controlepopular.com.br/betim/servicos",
-      "status": 525,
-      "tempoMs": 402,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 533,
+      "titulo": "Serviços ao Cidadão — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/sobre",
       "url": "https://www.controlepopular.com.br/betim/sobre",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 569,
+      "titulo": "Sobre — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/social",
       "url": "https://www.controlepopular.com.br/betim/social",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 866,
+      "titulo": "Assistência Social — Betim em Dados | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/supermercados-farmacias",
       "url": "https://www.controlepopular.com.br/betim/supermercados-farmacias",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 741,
+      "titulo": "Supermercados e Farmácias — Betim | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/terras",
       "url": "https://www.controlepopular.com.br/betim/terras",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 729,
+      "titulo": "Vazio cadastral e terras públicas em Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/terras/cruzamentos",
       "url": "https://www.controlepopular.com.br/betim/terras/cruzamentos",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 4909,
+      "titulo": "Territórios tradicionais × empreendimentos em Betim — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/vereadores/[slug]",
       "url": "https://www.controlepopular.com.br/betim/vereadores/alexandre-da-paz",
-      "status": 525,
-      "tempoMs": 389,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2504,
+      "titulo": "Alexandre da Paz — Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/zap",
       "url": "https://www.controlepopular.com.br/betim/zap",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 698,
+      "titulo": "Zap Betim — Cadastro de negócios no WhatsApp | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/[municipio]/zap-betim",
       "url": "https://www.controlepopular.com.br/betim/zap-betim",
-      "status": 525,
-      "tempoMs": 389,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 477,
+      "titulo": "Zap Betim mudou de endereço | Controle Popular Betim",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/alertas",
       "url": "https://www.controlepopular.com.br/alertas",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 430,
+      "titulo": "Central de Alertas e Notificações Cidadãs | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental",
       "url": "https://www.controlepopular.com.br/ambiental",
-      "status": 525,
-      "tempoMs": 388,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 550,
+      "titulo": "Meio Ambiente — Observatório Nacional Socioambiental (ONSA) — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/ameacas-americas",
       "url": "https://www.controlepopular.com.br/ambiental/ameacas-americas",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 671,
+      "titulo": "Ameaças Ambientais nas Américas — Espécies, Rios, Serras e Povos | Controle Popular · ONSA",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/autorizacoes",
       "url": "https://www.controlepopular.com.br/ambiental/autorizacoes",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 945,
+      "titulo": "Destinações de Imóveis da União em MG | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/barragens",
       "url": "https://www.controlepopular.com.br/ambiental/barragens",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2319,
+      "titulo": "Barragens em Minas Gerais — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/barragens-globais",
       "url": "https://www.controlepopular.com.br/ambiental/barragens-globais",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 727,
+      "titulo": "Grandes Barragens Mundiais (Água, Energia, Mineração) | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/barragens/descaracterizacao",
       "url": "https://www.controlepopular.com.br/ambiental/barragens/descaracterizacao",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 585,
+      "titulo": "Barragens em descaracterização (MPMG) — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/barragens/municipio/[idIbge]",
       "url": "https://www.controlepopular.com.br/ambiental/barragens/municipio/3106200",
-      "status": 525,
-      "tempoMs": 390,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1506,
+      "titulo": "Barragens em Belo Horizonte — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/barragens/sigbm",
       "url": "https://www.controlepopular.com.br/ambiental/barragens/sigbm",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 799,
+      "titulo": "Monitor Nacional de Barragens (SIGBM / ANM) — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/capacidade-institucional",
       "url": "https://www.controlepopular.com.br/ambiental/capacidade-institucional",
-      "status": 525,
-      "tempoMs": 399,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 535,
+      "titulo": "Capacidade Institucional, Servidores e Orçamento Ambiental — IEF, IGAM, FEAM, IEPHA, IPHAN, ANA, ANEEL, IBAMA | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/car",
       "url": "https://www.controlepopular.com.br/ambiental/car",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 558,
+      "titulo": "Cadastro Ambiental Rural (CAR) em Minas Gerais — IEF e CAR 2.0 | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/clima-risco",
       "url": "https://www.controlepopular.com.br/ambiental/clima-risco",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 916,
+      "titulo": "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/condicionantes",
       "url": "https://www.controlepopular.com.br/ambiental/condicionantes",
-      "status": 525,
-      "tempoMs": 464,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 483,
+      "titulo": "Condicionantes ambientais de barragens — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/conflitos-globais",
       "url": "https://www.controlepopular.com.br/ambiental/conflitos-globais",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 783,
+      "titulo": "Conflitos Socioambientais Globais — Atlas de Justiça e Litígios | ONSA",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/conselhos",
       "url": "https://www.controlepopular.com.br/ambiental/conselhos",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 3469,
+      "titulo": "Conselhos Sociais, Bacias e Meio Ambiente | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/convenios",
       "url": "https://www.controlepopular.com.br/ambiental/convenios",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 629,
+      "titulo": "Convênios ambientais de Minas Gerais — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/copam",
       "url": "https://www.controlepopular.com.br/ambiental/copam",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2400,
+      "titulo": "Reuniões do COPAM — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/copam/municipio/[idIbge]",
       "url": "https://www.controlepopular.com.br/ambiental/copam/municipio/3106200",
-      "status": 525,
-      "tempoMs": 403,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1317,
+      "titulo": "COPAM em Belo Horizonte — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/copam/reuniao/[idFonte]",
       "url": "https://www.controlepopular.com.br/ambiental/copam/reuniao/2008",
-      "status": 525,
-      "tempoMs": 404,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 909,
+      "titulo": "145ª Reunião Ordinária da URC Jequitinhonha — COPAM · Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/crimes-socioambientais",
       "url": "https://www.controlepopular.com.br/ambiental/crimes-socioambientais",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2896,
+      "titulo": "Biblioteca Unificada de Crimes Socioambientais — Mariana &amp; Brumadinho | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/crise-climatica",
       "url": "https://www.controlepopular.com.br/ambiental/crise-climatica",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 529,
+      "titulo": "Crise Climática Global — Emissões do G20, Superpoluidores, Copernicus e Metas NDCs | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/decisoes",
       "url": "https://www.controlepopular.com.br/ambiental/decisoes",
-      "status": 525,
-      "tempoMs": 423,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 504,
+      "titulo": "Decisões de licenciamento ambiental — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/decisoes-lai",
       "url": "https://www.controlepopular.com.br/ambiental/decisoes-lai",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 416,
+      "titulo": "Decisões de recurso de LAI (CGE-MG) — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/direito-critico",
       "url": "https://www.controlepopular.com.br/ambiental/direito-critico",
-      "status": 525,
-      "tempoMs": 764,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 8026,
+      "titulo": "Legislação e precedentes por tema — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/direitos-humanos",
       "url": "https://www.controlepopular.com.br/ambiental/direitos-humanos",
-      "status": 525,
-      "tempoMs": 511,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1145,
+      "titulo": "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/ecossistema",
       "url": "https://www.controlepopular.com.br/ambiental/ecossistema",
-      "status": 525,
-      "tempoMs": 568,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1022,
+      "titulo": "Ecossistema Regulatório, Ambiental e Concessionárias do Brasil — 27 Estados, Ministérios e Autarquias | ONSA",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/estudos",
       "url": "https://www.controlepopular.com.br/ambiental/estudos",
-      "status": 525,
-      "tempoMs": 1725,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 517,
+      "titulo": "Estudos de impacto ambiental — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/ibama",
       "url": "https://www.controlepopular.com.br/ambiental/ibama",
-      "status": 525,
-      "tempoMs": 541,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 780,
+      "titulo": "Licenciamento e Fiscalização Federal (IBAMA em MG) — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/indice",
       "url": "https://www.controlepopular.com.br/ambiental/indice",
-      "status": 525,
-      "tempoMs": 640,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 479,
+      "titulo": "Índice — Meio Ambiente (ONSA) · Observatório Nacional Socioambiental — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/judiciario",
       "url": "https://www.controlepopular.com.br/ambiental/judiciario",
-      "status": 525,
-      "tempoMs": 931,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Processos ambientais na Justiça — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/legislacao",
       "url": "https://www.controlepopular.com.br/ambiental/legislacao",
-      "status": 525,
-      "tempoMs": 666,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 6273,
+      "titulo": "Legislação e precedentes por tema — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/licencas",
       "url": "https://www.controlepopular.com.br/ambiental/licencas",
-      "status": 525,
-      "tempoMs": 2080,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 5407,
+      "titulo": "Licenças, outorgas e infrações ambientais — Brasil e 15 estados | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/licenciamento",
       "url": "https://www.controlepopular.com.br/ambiental/licenciamento",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2262,
+      "titulo": "Licenciamento ambiental — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/licenciamento/municipio/[idIbge]",
       "url": "https://www.controlepopular.com.br/ambiental/licenciamento/municipio/3106200",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 934,
+      "titulo": "Licenciamento ambiental em Belo Horizonte — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/litigios-climaticos",
       "url": "https://www.controlepopular.com.br/ambiental/litigios-climaticos",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 979,
+      "titulo": "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/mariana",
       "url": "https://www.controlepopular.com.br/ambiental/mariana",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1049,
+      "titulo": "Acordo do Rio Doce (Mariana) — Execução em MG | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossa-gente",
       "url": "https://www.controlepopular.com.br/ambiental/nossa-gente",
-      "status": 525,
-      "tempoMs": 483,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 737,
+      "titulo": "Nossa Gente — Povos Tradicionais, Pescadores e Atingidos | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossas-serras",
       "url": "https://www.controlepopular.com.br/ambiental/nossas-serras",
-      "status": 525,
-      "tempoMs": 637,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 684,
+      "titulo": "Nossas Serras — Meio Ambiente (ONSA) · Meio Ambiente &amp; Terras",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossas-serras/[slug]",
       "url": "https://www.controlepopular.com.br/ambiental/nossas-serras/1",
-      "status": 525,
-      "tempoMs": 4430,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 638,
+      "titulo": "Serra não encontrada",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos",
       "url": "https://www.controlepopular.com.br/ambiental/nossos",
-      "status": 525,
-      "tempoMs": 773,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 769,
+      "titulo": "Nossos Rios, Serras, Territórios e Gente — Meio Ambiente (ONSA) · Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos-animais",
       "url": "https://www.controlepopular.com.br/ambiental/nossos-animais",
-      "status": 525,
-      "tempoMs": 539,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 672,
+      "titulo": "Nossos Animais — Fauna, Corredores Ecológicos e Proteção da Vida Silvestre | Meio Ambiente (ONSA)",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos-rios",
       "url": "https://www.controlepopular.com.br/ambiental/nossos-rios",
-      "status": 525,
-      "tempoMs": 697,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 644,
+      "titulo": "Nossos Rios — Meio Ambiente (ONSA) · Meio Ambiente &amp; Terras",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos-rios/[slug]",
       "url": "https://www.controlepopular.com.br/ambiental/nossos-rios/1",
-      "status": 525,
-      "tempoMs": 1549,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 483,
+      "titulo": "Rio não encontrado",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos-territorios",
       "url": "https://www.controlepopular.com.br/ambiental/nossos-territorios",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 781,
+      "titulo": "Nossos Territórios — Meio Ambiente (ONSA) · Meio Ambiente &amp; Terras",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/nossos-territorios/[slug]",
       "url": "https://www.controlepopular.com.br/ambiental/nossos-territorios/1",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 556,
+      "titulo": "Território não encontrado",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/patrimonio-cultural",
       "url": "https://www.controlepopular.com.br/ambiental/patrimonio-cultural",
-      "status": 525,
-      "tempoMs": 430,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 920,
+      "titulo": "Patrimônio cultural tombado — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/ppp",
       "url": "https://www.controlepopular.com.br/ambiental/ppp",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 708,
+      "titulo": "Concessões e PPPs de Minas Gerais — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/ambiental/tac",
       "url": "https://www.controlepopular.com.br/ambiental/tac",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 777,
+      "titulo": "Projetos de TAC ambiental — Controle Popular · Ambiental",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/america-latina",
       "url": "https://www.controlepopular.com.br/america-latina",
-      "status": 525,
-      "tempoMs": 393,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 731,
+      "titulo": "América Latina &amp; Mineração Transnacional: Sedes, Megaminas &amp; Lítio | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/api",
       "url": "https://www.controlepopular.com.br/api",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 514,
+      "titulo": "API pública · Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/aprender",
       "url": "https://www.controlepopular.com.br/aprender",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 673,
+      "titulo": "Aprender — micro-lições de cidadania e dinheiro público | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/assembleias",
       "url": "https://www.controlepopular.com.br/assembleias",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 938,
+      "titulo": "Assembleias Legislativas dos Estados | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/assembleias/[uf]",
       "url": "https://www.controlepopular.com.br/assembleias/1",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 637,
+      "titulo": "Assembleia Legislativa não localizada | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/assistente",
       "url": "https://www.controlepopular.com.br/assistente",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 647,
+      "titulo": "Assistente de navegação — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/assistente-ia-lab",
       "url": "https://www.controlepopular.com.br/assistente-ia-lab",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 643,
+      "titulo": "Assistente IA — laboratorio | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/biblioteca",
       "url": "https://www.controlepopular.com.br/biblioteca",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1130,
+      "titulo": "Biblioteca Geral e Acervo Acadêmico — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/busca",
       "url": "https://www.controlepopular.com.br/busca",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 465,
+      "titulo": "Busca — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/canada",
       "url": "https://www.controlepopular.com.br/canada",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 692,
+      "titulo": "Canadá: Transparência Pública, Mineradoras TSX &amp; Conexões com o Brasil | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/canada/ambiental",
       "url": "https://www.controlepopular.com.br/canada/ambiental",
-      "status": 525,
-      "tempoMs": 392,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 665,
+      "titulo": "Meio Ambiente Canadá: Emissões NPRI, Desastre de Mount Polley &amp; Clima | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/canada/contratos",
       "url": "https://www.controlepopular.com.br/canada/contratos",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 545,
+      "titulo": "Contratos Federais no Canadá &amp; Financiamentos EDC para o Brasil | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/canada/institucional",
       "url": "https://www.controlepopular.com.br/canada/institucional",
-      "status": 525,
-      "tempoMs": 397,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 659,
+      "titulo": "Institucional Canadá: Cidades SGC, Parlamento, CanLII &amp; Ouvidoria CORE | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/canada/mineracao",
       "url": "https://www.controlepopular.com.br/canada/mineracao",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 764,
+      "titulo": "Mineradoras Canadenses no Brasil (TSX/TSX-V) &amp; Barragens ANM | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/central",
       "url": "https://www.controlepopular.com.br/central",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1526,
+      "titulo": "Eixo Central: Inteligência Cívica &amp; Ferramentas — ONSA | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades",
       "url": "https://www.controlepopular.com.br/cidades",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 911,
+      "titulo": "Plano de Expansão Nacional — 203 Cidades Estratégicas | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ac",
       "url": "https://www.controlepopular.com.br/cidades/ac",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 663,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/al",
       "url": "https://www.controlepopular.com.br/cidades/al",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 645,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/am",
       "url": "https://www.controlepopular.com.br/cidades/am",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 641,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ap",
       "url": "https://www.controlepopular.com.br/cidades/ap",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 581,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ba",
       "url": "https://www.controlepopular.com.br/cidades/ba",
-      "status": 525,
-      "tempoMs": 423,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 650,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ce",
       "url": "https://www.controlepopular.com.br/cidades/ce",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 465,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/df",
       "url": "https://www.controlepopular.com.br/cidades/df",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 484,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/es",
       "url": "https://www.controlepopular.com.br/cidades/es",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 520,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/go",
       "url": "https://www.controlepopular.com.br/cidades/go",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 453,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ma",
       "url": "https://www.controlepopular.com.br/cidades/ma",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 462,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/mg",
       "url": "https://www.controlepopular.com.br/cidades/mg",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 654,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ms",
       "url": "https://www.controlepopular.com.br/cidades/ms",
-      "status": 525,
-      "tempoMs": 396,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 502,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/mt",
       "url": "https://www.controlepopular.com.br/cidades/mt",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 550,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/pa",
       "url": "https://www.controlepopular.com.br/cidades/pa",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 472,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/pb",
       "url": "https://www.controlepopular.com.br/cidades/pb",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 716,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/pe",
       "url": "https://www.controlepopular.com.br/cidades/pe",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 674,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/pi",
       "url": "https://www.controlepopular.com.br/cidades/pi",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 652,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/pr",
       "url": "https://www.controlepopular.com.br/cidades/pr",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 659,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/rj",
       "url": "https://www.controlepopular.com.br/cidades/rj",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 642,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/rn",
       "url": "https://www.controlepopular.com.br/cidades/rn",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 653,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/ro",
       "url": "https://www.controlepopular.com.br/cidades/ro",
-      "status": 525,
-      "tempoMs": 398,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 650,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/rr",
       "url": "https://www.controlepopular.com.br/cidades/rr",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 649,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/rs",
       "url": "https://www.controlepopular.com.br/cidades/rs",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 656,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/sc",
       "url": "https://www.controlepopular.com.br/cidades/sc",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 607,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/se",
       "url": "https://www.controlepopular.com.br/cidades/se",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 674,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/sp",
       "url": "https://www.controlepopular.com.br/cidades/sp",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 665,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/cidades/to",
       "url": "https://www.controlepopular.com.br/cidades/to",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 654,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/comparar",
       "url": "https://www.controlepopular.com.br/comparar",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 749,
+      "titulo": "Comparar cidades — população, PIB e repasses lado a lado | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso",
       "url": "https://www.controlepopular.com.br/congresso",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 512,
+      "titulo": "O que o Congresso Nacional está decidindo — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/[uf]",
       "url": "https://www.controlepopular.com.br/congresso/1",
-      "status": 525,
-      "tempoMs": 457,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 657,
+      "titulo": "Controle Popular — Congresso · Monitoramento legislativo federal — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/agenda",
       "url": "https://www.controlepopular.com.br/congresso/agenda",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2784,
+      "titulo": "Agenda legislativa — audiências públicas e reuniões — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/alertas",
       "url": "https://www.controlepopular.com.br/congresso/alertas",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 735,
+      "titulo": "Alertas — projetos que retiram direitos — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/almg",
       "url": "https://www.controlepopular.com.br/congresso/almg",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 485,
+      "titulo": "Assembleia Legislativa de MG — Proposições Estaduais | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/almg/proposicoes",
       "url": "https://www.controlepopular.com.br/congresso/almg/proposicoes",
-      "status": 525,
-      "tempoMs": 394,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 663,
+      "titulo": "Proposições Estaduais ALMG — Assembleia de MG | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/bancadas",
       "url": "https://www.controlepopular.com.br/congresso/bancadas",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 824,
+      "titulo": "Bancadas — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/bancadas/[id]",
       "url": "https://www.controlepopular.com.br/congresso/bancadas/601921",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1350,
+      "titulo": "Bancada — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/bons-exemplos",
       "url": "https://www.controlepopular.com.br/congresso/bons-exemplos",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 695,
+      "titulo": "Bons exemplos — projetos que ampliam direitos — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/comissoes",
       "url": "https://www.controlepopular.com.br/congresso/comissoes",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 715,
+      "titulo": "Comissões — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/comissoes/[sigla]",
       "url": "https://www.controlepopular.com.br/congresso/comissoes/CCJC",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 777,
+      "titulo": "CCJC — Comissões — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/cota-parlamentar",
       "url": "https://www.controlepopular.com.br/congresso/cota-parlamentar",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2943,
+      "titulo": "Cota Parlamentar (CEAP) — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/financiamento-eleitoral",
       "url": "https://www.controlepopular.com.br/congresso/financiamento-eleitoral",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1713,
+      "titulo": "Fornecedores de Campanha 2022 (MG) — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/indice",
       "url": "https://www.controlepopular.com.br/congresso/indice",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 522,
+      "titulo": "Índice — Congresso Nacional — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/metodologia",
       "url": "https://www.controlepopular.com.br/congresso/metodologia",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1027,
+      "titulo": "Metodologia — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/parlamentares",
       "url": "https://www.controlepopular.com.br/congresso/parlamentares",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1091,
+      "titulo": "Parlamentares — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/parlamentares/[id]",
       "url": "https://www.controlepopular.com.br/congresso/parlamentares/204560",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1044,
+      "titulo": "Parlamentar — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/proposicoes",
       "url": "https://www.controlepopular.com.br/congresso/proposicoes",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 661,
+      "titulo": "Proposições — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/proposicoes/[id]",
       "url": "https://www.controlepopular.com.br/congresso/proposicoes/2661827",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 984,
+      "titulo": "Proposição — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/proposicoes/[id]/oficio",
       "url": "https://www.controlepopular.com.br/congresso/proposicoes/2661827/oficio",
-      "status": 525,
-      "tempoMs": 394,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 914,
+      "titulo": "Ofício sobre proposição — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/congresso/votacoes",
       "url": "https://www.controlepopular.com.br/congresso/votacoes",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 698,
+      "titulo": "Votações — Controle Popular · Congresso",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/consumo-corporativo",
       "url": "https://www.controlepopular.com.br/consumo-corporativo",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 808,
+      "titulo": "Maiores Consumidores de Água, Energia, Combustível, Empregos e Capital (MG e G20) — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/dados/comunicabr",
       "url": "https://www.controlepopular.com.br/dados/comunicabr",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 640,
+      "titulo": "ComunicaBR nas 853 cidades de Minas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/dados/comunicabr/[codigo]",
       "url": "https://www.controlepopular.com.br/dados/comunicabr/3106705",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 2320,
+      "titulo": "Cidade não encontrada — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/dados/populares",
       "url": "https://www.controlepopular.com.br/dados/populares",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 660,
+      "titulo": "Páginas mais vistas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/desclassificados",
       "url": "https://www.controlepopular.com.br/desclassificados",
-      "status": 525,
-      "tempoMs": 397,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 748,
+      "titulo": "Documentos Desclassificados de Inteligência do G20 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Direitos em Movimento — Eixo 2 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/ajuda",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/ajuda",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 487,
+      "titulo": "Onde buscar ajuda — Direitos em Movimento | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/conselhos",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/conselhos",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 3946,
+      "titulo": "Conselhos de Direitos e Colegiados Participativos — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/denuncia",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/denuncia",
-      "status": 525,
-      "tempoMs": 395,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 657,
+      "titulo": "Como denunciar — Direitos em Movimento | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/educacao",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/educacao",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 751,
+      "titulo": "Educação Pública — Eixo Direitos em Movimento | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/informacao",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/informacao",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1039,
+      "titulo": "Canais de Acesso à Informação Pública — Prefeituras, Câmaras, Órgãos e Concessionárias — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/saude-publica",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/saude-publica",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 806,
+      "titulo": "Saúde Pública — Eixo Direitos em Movimento | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/seguranca-publica",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/seguranca-publica",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 578,
+      "titulo": "Mortes por intervenção policial — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/trabalho-e-renda",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/trabalho-e-renda",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 644,
+      "titulo": "Trabalho e Renda — Eixo Direitos em Movimento | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
       "url": "https://www.controlepopular.com.br/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 732,
+      "titulo": "Cadastro de Empregadores (trabalho escravo) — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/documentacao",
       "url": "https://www.controlepopular.com.br/documentacao",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 468,
+      "titulo": "Documentação Técnica — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/documentacao/api-publica",
       "url": "https://www.controlepopular.com.br/documentacao/api-publica",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 463,
+      "titulo": "API Publica — Documentacao Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/documentacao/arquitetura",
       "url": "https://www.controlepopular.com.br/documentacao/arquitetura",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 640,
+      "titulo": "Arquitetura — Documentação — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/documentacao/editorial",
       "url": "https://www.controlepopular.com.br/documentacao/editorial",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 695,
+      "titulo": "Principios Editoriais — Documentacao Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/documentacao/fontes-e-coletas",
       "url": "https://www.controlepopular.com.br/documentacao/fontes-e-coletas",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 654,
+      "titulo": "Fontes e Coletas — Documentacao Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/editais",
       "url": "https://www.controlepopular.com.br/editais",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 690,
+      "titulo": "Editais e Chamamentos Públicos de Minas Gerais — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas",
       "url": "https://www.controlepopular.com.br/empresas",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1036,
+      "titulo": "Observatório de Grandes Empresas &amp; Fundos de Investimento — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas/[slug]",
       "url": "https://www.controlepopular.com.br/empresas/sigma-lithium",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1249,
+      "titulo": "Sigma Lithium — Ações, ESG, Contratos e Fiscalização Cívica — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas/conglomerados",
       "url": "https://www.controlepopular.com.br/empresas/conglomerados",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 918,
+      "titulo": "Redes de Monopólios, Holdings e Cartéis no Brasil | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas/documentos",
       "url": "https://www.controlepopular.com.br/empresas/documentos",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 813,
+      "titulo": "Biblioteca de Documentos Estratégicos, Relatórios ESG e Prestação de Contas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas/executivos",
       "url": "https://www.controlepopular.com.br/empresas/executivos",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1953,
+      "titulo": "Diretores, CEOs e Conselheiros das Grandes Empresas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/empresas/fortunas",
       "url": "https://www.controlepopular.com.br/empresas/fortunas",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1382,
+      "titulo": "1.000 Maiores Fortunas Mundiais — Concentração de Riqueza e Equivalência Social — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia",
       "url": "https://www.controlepopular.com.br/estado-e-economia",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 498,
+      "titulo": "Estado e Economia — Eixo 3 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia/acordos-e-licitacoes-internacionais",
       "url": "https://www.controlepopular.com.br/estado-e-economia/acordos-e-licitacoes-internacionais",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 466,
+      "titulo": "Acordos, Parcerias e Licitações Internacionais (Brasil, EUA e Europa) | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia/fornecedores-multinacionais",
       "url": "https://www.controlepopular.com.br/estado-e-economia/fornecedores-multinacionais",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 659,
+      "titulo": "Fornecedores Multinacionais dos Órgãos Públicos (EUA e Europa) | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia/judiciario",
       "url": "https://www.controlepopular.com.br/estado-e-economia/judiciario",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 500,
+      "titulo": "Judiciário e Justiça — Eixo Estado e Economia | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia/orcamento",
       "url": "https://www.controlepopular.com.br/estado-e-economia/orcamento",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 703,
+      "titulo": "Orçamento Público — Eixo Estado e Economia | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estado-e-economia/renuncia-fiscal",
       "url": "https://www.controlepopular.com.br/estado-e-economia/renuncia-fiscal",
-      "status": 525,
-      "tempoMs": 416,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 544,
+      "titulo": "Renúncia Fiscal (Gastos Tributários) — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/estudos-rurais",
       "url": "https://www.controlepopular.com.br/estudos-rurais",
-      "status": 525,
-      "tempoMs": 393,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 901,
+      "titulo": "Estudos Rurais — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/eua",
       "url": "https://www.controlepopular.com.br/eua",
-      "status": 525,
-      "tempoMs": 396,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 484,
+      "titulo": "Estados Unidos: SEC EDGAR, Fundos, Barragens NID &amp; Comércio com o Brasil | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/eua/ambiental",
       "url": "https://www.controlepopular.com.br/eua/ambiental",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 478,
+      "titulo": "Meio Ambiente nos EUA: Barragens NID, EPA ECHO e Superfund | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/eua/contratos",
       "url": "https://www.controlepopular.com.br/eua/contratos",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 474,
+      "titulo": "Compras Federais USAspending e Balança Comercial EUA-Brasil | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/eua/empresas",
       "url": "https://www.controlepopular.com.br/eua/empresas",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 660,
+      "titulo": "Empresas e Fundos dos EUA na SEC EDGAR | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/eua/institucional",
       "url": "https://www.controlepopular.com.br/eua/institucional",
-      "status": 525,
-      "tempoMs": 401,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 647,
+      "titulo": "Institucional dos EUA: Cidades FIPS, Congresso, Corte de NY e FOIA | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/europa",
       "url": "https://www.controlepopular.com.br/europa",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 723,
+      "titulo": "Europa &amp; Conexões Transnacionais: Litígios, Devida Diligência &amp; Concessões | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/funcaosocialterra",
       "url": "https://www.controlepopular.com.br/funcaosocialterra",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 476,
+      "titulo": "Função social da terra — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/funcaosocialterra/alertas",
       "url": "https://www.controlepopular.com.br/funcaosocialterra/alertas",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1250,
+      "titulo": "Alertas — Função social da terra | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/funcaosocialterra/indice",
       "url": "https://www.controlepopular.com.br/funcaosocialterra/indice",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 435,
+      "titulo": "Índice — Função social da terra — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/funcaosocialterra/mapa",
       "url": "https://www.controlepopular.com.br/funcaosocialterra/mapa",
-      "status": 525,
-      "tempoMs": 395,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 454,
+      "titulo": "Mapa 3D — Função social da terra | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/glossario",
       "url": "https://www.controlepopular.com.br/glossario",
-      "status": 525,
-      "tempoMs": 391,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 832,
+      "titulo": "Glossário cívico — os termos do dinheiro público explicados | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/governo",
       "url": "https://www.controlepopular.com.br/governo",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1631,
+      "titulo": "Governos e Planos de Campanha — Prometeu? Cumpriu? | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/governo/[uf]",
       "url": "https://www.controlepopular.com.br/governo/1",
-      "status": 525,
-      "tempoMs": 393,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 754,
+      "titulo": "Governo não localizado | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/governo/[uf]/legislativo",
       "url": "https://www.controlepopular.com.br/governo/1/legislativo",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 676,
+      "titulo": "Assembleia Legislativa não localizada | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/grafo",
       "url": "https://www.controlepopular.com.br/grafo",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Mapa de conexões — explore as ligações entre as páginas | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/guia",
       "url": "https://www.controlepopular.com.br/guia",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 3160,
+      "titulo": "Guia de contatos públicos — órgãos, ouvidorias e Justiça | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/historia",
       "url": "https://www.controlepopular.com.br/historia",
-      "status": 525,
-      "tempoMs": 393,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1116,
+      "titulo": "História — capitanias, revoltas e terras de Minas - Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/historico",
       "url": "https://www.controlepopular.com.br/historico",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 557,
+      "titulo": "Linha do Tempo — Desenvolvimento do Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/imprensa",
       "url": "https://www.controlepopular.com.br/imprensa",
-      "status": 525,
-      "tempoMs": 394,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Sala de Imprensa &amp; Dados Consolidados — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/indicadores",
       "url": "https://www.controlepopular.com.br/indicadores",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 589,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/indice",
       "url": "https://www.controlepopular.com.br/indice",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1153,
+      "titulo": "Índice — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/instituicoes",
       "url": "https://www.controlepopular.com.br/instituicoes",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 694,
+      "titulo": "Instituições e Secretarias de Todas as Esferas — Organograma, Contatos e Ouvidoria | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/instituicoes/[sigla]",
       "url": "https://www.controlepopular.com.br/instituicoes/stf",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 546,
+      "titulo": "Supremo Tribunal Federal (STF) — Organograma, Funções e Contatos | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional",
       "url": "https://www.controlepopular.com.br/internacional",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 651,
+      "titulo": "Transparência Multilateral &amp; Internacional: ONU, UNESCO, OMS, OMC, G8 e G20 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/desclassificados",
       "url": "https://www.controlepopular.com.br/internacional/desclassificados",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1036,
+      "titulo": "Documentos Desclassificados de Inteligência do G20 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/desclassificados/mapa",
       "url": "https://www.controlepopular.com.br/internacional/desclassificados/mapa",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 950,
+      "titulo": "Mapa Global de Inteligência Desclassificada do G20 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/europa",
       "url": "https://www.controlepopular.com.br/internacional/europa",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 757,
+      "titulo": "Europa &amp; Conexões Transnacionais: Litígios, Devida Diligência &amp; Concessões | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/operacoes-militares",
       "url": "https://www.controlepopular.com.br/internacional/operacoes-militares",
-      "status": 525,
-      "tempoMs": 396,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 660,
+      "titulo": "Operações Militares, Golpes de Estado, PMCs e Contratos de Defesa | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/operacoes-militares/mapa",
       "url": "https://www.controlepopular.com.br/internacional/operacoes-militares/mapa",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 665,
+      "titulo": "Mapa Global de Operações Militares, Golpes e PMCs | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/internacional/orcamentos",
       "url": "https://www.controlepopular.com.br/internacional/orcamentos",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 634,
+      "titulo": "Orçamentos de EUA, Canadá e Europa: Militar, Inteligência, Economia, Tecnologia, Água, Energia e Clima | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario",
       "url": "https://www.controlepopular.com.br/judiciario",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 483,
+      "titulo": "Judiciário brasileiro: ministros, indicações e próximas vagas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/contatos",
       "url": "https://www.controlepopular.com.br/judiciario/contatos",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 665,
+      "titulo": "Varas, Gabinetes e Balcão Virtual — Guia Nacional · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/correicoes-trabalhistas",
       "url": "https://www.controlepopular.com.br/judiciario/correicoes-trabalhistas",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 666,
+      "titulo": "Quem fiscaliza a Justiça do Trabalho em Minas — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/defensoria",
       "url": "https://www.controlepopular.com.br/judiciario/defensoria",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 596,
+      "titulo": "Tem Defensoria na sua comarca? — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/indicacoes",
       "url": "https://www.controlepopular.com.br/judiciario/indicacoes",
-      "status": 525,
-      "tempoMs": 424,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1070,
+      "titulo": "Indicações — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/indice",
       "url": "https://www.controlepopular.com.br/judiciario/indice",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 463,
+      "titulo": "Índice — Judiciario — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/inspecoes",
       "url": "https://www.controlepopular.com.br/judiciario/inspecoes",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Inspeções do CNJ e Cobertura da Defensoria Pública | Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/instituicoes",
       "url": "https://www.controlepopular.com.br/judiciario/instituicoes",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1141,
+      "titulo": "Quem fiscaliza a Justiça — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/instituicoes/[sigla]",
       "url": "https://www.controlepopular.com.br/judiciario/instituicoes/stf",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 597,
+      "titulo": "STF — Organograma, Orçamento e Ouvidoria | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/metodologia",
       "url": "https://www.controlepopular.com.br/judiciario/metodologia",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 481,
+      "titulo": "Metodologia · Controle Popular — Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/numeros",
       "url": "https://www.controlepopular.com.br/judiciario/numeros",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 664,
+      "titulo": "Quanto tempo demora um processo no TJMG — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/presidios",
       "url": "https://www.controlepopular.com.br/judiciario/presidios",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 657,
+      "titulo": "Quem fiscaliza a prisão em Minas Gerais — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/privacidade",
       "url": "https://www.controlepopular.com.br/judiciario/privacidade",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 613,
+      "titulo": "Privacidade · Controle Popular — Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/recomendacoes",
       "url": "https://www.controlepopular.com.br/judiciario/recomendacoes",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 689,
+      "titulo": "Recomendações e Cobranças do CNJ e CNMP | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/sirenejud",
       "url": "https://www.controlepopular.com.br/judiciario/sirenejud",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 726,
+      "titulo": "Processos ambientais no Brasil (SIRENEJud) — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/sobre",
       "url": "https://www.controlepopular.com.br/judiciario/sobre",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 497,
+      "titulo": "Sobre · Controle Popular — Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/tribunais",
       "url": "https://www.controlepopular.com.br/judiciario/tribunais",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 487,
+      "titulo": "Tribunais — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/tribunais/[sigla]",
       "url": "https://www.controlepopular.com.br/judiciario/tribunais/stf",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 674,
+      "titulo": "STF — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/vagas",
       "url": "https://www.controlepopular.com.br/judiciario/vagas",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 531,
+      "titulo": "Vagas — Controle Popular · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/judiciario/varas",
       "url": "https://www.controlepopular.com.br/judiciario/varas",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 681,
+      "titulo": "Varas e Juizados — Guia Nacional · Judiciário",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/laboratorio",
       "url": "https://www.controlepopular.com.br/laboratorio",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 537,
+      "titulo": "Laboratório de Dados — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/laboratorio/arvore",
       "url": "https://www.controlepopular.com.br/laboratorio/arvore",
-      "status": 525,
-      "tempoMs": 414,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 472,
+      "titulo": "Árvore de Conexões Cívicas — Laboratório de Dados — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/memoria",
       "url": "https://www.controlepopular.com.br/memoria",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1632,
+      "titulo": "Linha do Tempo das Lutas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/meus-dados",
       "url": "https://www.controlepopular.com.br/meus-dados",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 438,
+      "titulo": "Meus dados — exportar, importar e apagar | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/mineracao/cavas",
       "url": "https://www.controlepopular.com.br/mineracao/cavas",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 773,
+      "titulo": "Onde a mineração cresceu em Minas Gerais - Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/mineracao/ilegal",
       "url": "https://www.controlepopular.com.br/mineracao/ilegal",
-      "status": 525,
-      "tempoMs": 415,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 497,
+      "titulo": "Mineração e comunidades tradicionais em Minas Gerais - Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/modelos",
       "url": "https://www.controlepopular.com.br/modelos",
-      "status": 525,
-      "tempoMs": 419,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 528,
+      "titulo": "Modelos prontos para pedir informação e defender direitos | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/noticias",
       "url": "https://www.controlepopular.com.br/noticias",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1019,
+      "titulo": "Blog &amp; Relatórios Técnicos — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/noticias/[slug]",
       "url": "https://www.controlepopular.com.br/noticias/satelite-cbers-6-cooperacao-espacial-amazonia",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 516,
+      "titulo": "Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/notificacoes",
       "url": "https://www.controlepopular.com.br/notificacoes",
-      "status": 525,
-      "tempoMs": 425,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 433,
+      "titulo": "Controle Popular — Portal Independente de Fiscalização Cidadã",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/novidades",
       "url": "https://www.controlepopular.com.br/novidades",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 939,
+      "titulo": "Novidades — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/offline",
       "url": "https://www.controlepopular.com.br/offline",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 568,
+      "titulo": "Sem conexão — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba",
       "url": "https://www.controlepopular.com.br/paraopeba",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 711,
+      "titulo": "Paraopeba — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/analise",
       "url": "https://www.controlepopular.com.br/paraopeba/analise",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1007,
+      "titulo": "Análise integrada — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/auditoria",
       "url": "https://www.controlepopular.com.br/paraopeba/auditoria",
-      "status": 525,
-      "tempoMs": 394,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 899,
+      "titulo": "Auditoria socioambiental — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/auxilio",
       "url": "https://www.controlepopular.com.br/paraopeba/auxilio",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 455,
+      "titulo": "Auxílio emergencial — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/biblioteca",
       "url": "https://www.controlepopular.com.br/paraopeba/biblioteca",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1123,
+      "titulo": "Biblioteca do Paraopeba — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/clipping",
       "url": "https://www.controlepopular.com.br/paraopeba/clipping",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 473,
+      "titulo": "Clipping — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/correlacao",
       "url": "https://www.controlepopular.com.br/paraopeba/correlacao",
-      "status": 525,
-      "tempoMs": 411,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1302,
+      "titulo": "Precos x Noticias — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/documentos",
       "url": "https://www.controlepopular.com.br/paraopeba/documentos",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 551,
+      "titulo": "Documentos do processo — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/entenda",
       "url": "https://www.controlepopular.com.br/paraopeba/entenda",
-      "status": 525,
-      "tempoMs": 418,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 666,
+      "titulo": "Entenda o caso — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/execucao",
       "url": "https://www.controlepopular.com.br/paraopeba/execucao",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 1212,
+      "titulo": "Execução do Acordo por município — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/indice",
       "url": "https://www.controlepopular.com.br/paraopeba/indice",
-      "status": 525,
-      "tempoMs": 392,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 567,
+      "titulo": "Índice — Reparação de Brumadinho — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/linha-do-tempo",
       "url": "https://www.controlepopular.com.br/paraopeba/linha-do-tempo",
-      "status": 525,
-      "tempoMs": 431,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 665,
+      "titulo": "Linha do tempo — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/noticias",
       "url": "https://www.controlepopular.com.br/paraopeba/noticias",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 683,
+      "titulo": "Radar de Notícias — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/noticias-vale",
       "url": "https://www.controlepopular.com.br/paraopeba/noticias-vale",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 719,
+      "titulo": "Notícias sobre a Vale — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/pericia",
       "url": "https://www.controlepopular.com.br/paraopeba/pericia",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 752,
+      "titulo": "Perícia judicial da UFMG — Brumadinho | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/quem-atua",
       "url": "https://www.controlepopular.com.br/paraopeba/quem-atua",
-      "status": 525,
-      "tempoMs": 422,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 493,
+      "titulo": "Quem atua na reparação — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/vale",
       "url": "https://www.controlepopular.com.br/paraopeba/vale",
-      "status": 525,
-      "tempoMs": 406,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 677,
+      "titulo": "Ações da Vale na B3 — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/paraopeba/vale/documentos",
       "url": "https://www.controlepopular.com.br/paraopeba/vale/documentos",
-      "status": 525,
-      "tempoMs": 413,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 525,
+      "titulo": "Documentos da Vale na CVM — Paraopeba | Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/pasta",
       "url": "https://www.controlepopular.com.br/pasta",
-      "status": 525,
-      "tempoMs": 421,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 459,
+      "titulo": "Minha pasta de dossiê | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/politica-de-ia",
       "url": "https://www.controlepopular.com.br/politica-de-ia",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 659,
+      "titulo": "Política de uso de IA — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/radio",
       "url": "https://www.controlepopular.com.br/radio",
-      "status": 525,
-      "tempoMs": 405,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 868,
+      "titulo": "Rádios do Brasil e do mundo (públicas, universitárias e comunitárias) - Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/recapitular",
       "url": "https://www.controlepopular.com.br/recapitular",
-      "status": 525,
-      "tempoMs": 392,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 693,
+      "titulo": "Recapitular uma cidade — números para compartilhar | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/recursos/estados",
       "url": "https://www.controlepopular.com.br/recursos/estados",
-      "status": 525,
-      "tempoMs": 445,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 937,
+      "titulo": "Recursos Públicos dos 27 Estados: Água, Energia, Combustível, PPPs e Emendas — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/sobre",
       "url": "https://www.controlepopular.com.br/sobre",
-      "status": 525,
-      "tempoMs": 395,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 739,
+      "titulo": "Sobre o Controle Popular — o que é, de onde vem o dado, e o papel da IA — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/status",
       "url": "https://www.controlepopular.com.br/status",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 497,
+      "titulo": "Status do portal — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/tecnologia",
       "url": "https://www.controlepopular.com.br/tecnologia",
-      "status": 525,
-      "tempoMs": 407,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 745,
+      "titulo": "Tecnologia &amp; IA Livre — Kit Guias AppLivre e Software Aberto | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/temas",
       "url": "https://www.controlepopular.com.br/temas",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 493,
+      "titulo": "Acompanhar temas — guarde seus assuntos | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/termos",
       "url": "https://www.controlepopular.com.br/termos",
-      "status": 525,
-      "tempoMs": 410,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 674,
+      "titulo": "Termo de uso e origem dos dados — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios",
       "url": "https://www.controlepopular.com.br/terra-e-territorios",
-      "status": 525,
-      "tempoMs": 412,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 752,
+      "titulo": "Terra e Territórios — Eixo 1 | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios/cidades",
       "url": "https://www.controlepopular.com.br/terra-e-territorios/cidades",
-      "status": 525,
-      "tempoMs": 409,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 897,
+      "titulo": "203 Cidades Estratégicas — Eixo Terra e Territórios | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios/cidades/[slug]",
       "url": "https://www.controlepopular.com.br/terra-e-territorios/cidades/1",
-      "status": 525,
-      "tempoMs": 398,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 600,
+      "titulo": "Cidade não encontrada | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios/nossas-serras",
       "url": "https://www.controlepopular.com.br/terra-e-territorios/nossas-serras",
-      "status": 525,
-      "tempoMs": 420,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 702,
+      "titulo": "Nossas Serras — Eixo Terra e Territórios | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios/nossos-rios",
       "url": "https://www.controlepopular.com.br/terra-e-territorios/nossos-rios",
-      "status": 525,
-      "tempoMs": 408,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 712,
+      "titulo": "Nossos Rios e Bacias — Eixo Terra e Territórios | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/terra-e-territorios/vales",
       "url": "https://www.controlepopular.com.br/terra-e-territorios/vales",
-      "status": 525,
-      "tempoMs": 394,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 662,
+      "titulo": "Vales do Jequitinhonha e do Mucuri — 82 municípios | Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     },
     {
       "rota": "/transparencia-internacional",
       "url": "https://www.controlepopular.com.br/transparencia-internacional",
-      "status": 525,
-      "tempoMs": 417,
-      "titulo": "controlepopular.com.br | 525: SSL handshake failed",
+      "status": 200,
+      "tempoMs": 480,
+      "titulo": "Transparência Internacional &amp; Investimentos EUA-Brasil — Controle Popular — Controle Popular",
       "indicioErroHidratacao": false,
       "semConteudo": false,
       "erroDeRede": null,
-      "veredito": "FALHA"
+      "veredito": "OK"
     }
   ]
 }
