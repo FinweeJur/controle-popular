@@ -1,3 +1,20 @@
+/**
+ * licencas-unificada.test.ts — guarda do feed único de licenças/outorgas/autos
+ * (`lib/ambiental/licencas-unificada.ts`), lido no build por
+ * `/ambiental/licencas`.
+ *
+ * O que este arquivo protege:
+ *  - a tabela declarativa `REGRAS_LINK_OFICIAL` (link por órgão): um órgão
+ *    sem regra NÃO pode ganhar link inventado, e a ordem das regras desempata
+ *    casos como IBAMA × IBAMA (autos) e SEMAD (MG) × SEMAD (GO);
+ *  - a lista única `FONTES` da cobertura: ressalva de fonte não some nem vira
+ *    string vazia (§7 AGENTS.md), e total/truncado saem do MESMO índice;
+ *  - as fontes estaduais simples (BA, MA, PA, GO): UF, lado da data, valor e
+ *    reclassificação de categoria saem da configuração, não de função nova.
+ *
+ * Os testes leem a AMOSTRA versionada em `data/amostras/` — se a coleta mudar
+ * a amostra, os números acompanham e o teste diz o que divergiu.
+ */
 import { describe, it, expect } from "vitest";
 import {
   construirLinkOficial,
@@ -86,5 +103,117 @@ describe("REGISTROS_LICENCAS e integridade da Cobertura", () => {
   it("cobertura contém os órgãos da expansão sem violar regra editorial", () => {
     expect(LICENCAS_COBERTURA.total).toBeGreaterThan(0);
     expect(Object.keys(LICENCAS_COBERTURA.por_orgao).length).toBeGreaterThanOrEqual(15);
+  });
+});
+
+describe("REGRAS_LINK_OFICIAL — tabela declarativa por órgão", () => {
+  it("desempata o IBAMA: nome exato vai para o SEI, autos vão para o CTF", () => {
+    // A ordem da tabela é a regra: "IBAMA" puro NÃO vira link de auto mesmo
+    // quando a categoria diz auto_infracao (comportamento do `if` original).
+    expect(construirLinkOficial("IBAMA", "02001.002739/2004-11", "auto_infracao")).toContain("sei.ibama.gov.br");
+    expect(construirLinkOficial("IBAMA", "02001.002739/2004-11", "licenca")).toContain("sei.ibama.gov.br");
+    expect(construirLinkOficial("IBAMA (autos)", "UNT9FZQK", "licenca")).toContain("ConsultaInfracoes.php");
+    expect(construirLinkOficial("IBAMA", "UNT9FZQK", "auto_infracao")).toContain("sei.ibama.gov.br");
+  });
+
+  it("separa SEMAD de MG (SIAM) de SEMAD de GO (SGA)", () => {
+    const siam = "siam.mg.gov.br/siam/processo/consulta_processo.jsp?num=";
+    expect(construirLinkOficial("SEMAD (MG)", "12345")).toContain(siam);
+    expect(construirLinkOficial("FEAM", "12345")).toContain(siam);
+    expect(construirLinkOficial("IEF", "12345")).toContain(siam);
+    expect(construirLinkOficial("SEMAD (GO)", "12345")).toContain("sga.meioambiente.go.gov.br");
+    expect(construirLinkOficial("SEMAD-GO", "12345")).toContain("sga.meioambiente.go.gov.br");
+    // O IGAM usa o MESMO SIAM, mas a página de portarias, não a de processos.
+    expect(construirLinkOficial("IGAM (MG)", "1800001/2018")).toContain("consulta_portarias.jsp?num=");
+  });
+
+  it("cada tabela limpa o processo do jeito que a fonte consulta", () => {
+    expect(construirLinkOficial("IGAM (MG)", "Portaria 1800001/2018")).toContain("num=1800001%2F2018");
+    expect(construirLinkOficial("FEPAM (RS)", "AI 4 (Proc. 001374-0567/17-1)")).toContain(
+      "termo=001374-0567%2F17-1"
+    );
+    expect(construirLinkOficial("IAT (PR)", "Protocolo 176488697 (Doc. 35146)")).toContain("numero=176488697");
+    expect(construirLinkOficial("IMA (SC)", "Licença 8103/2021 (Proc. DIV/22065/CAV)")).toContain(
+      "codigo=DIV%2F22065%2FCAV"
+    );
+  });
+
+  it("órgão sem regra na tabela não ganha link inventado", () => {
+    expect(construirLinkOficial("SECRETARIA INEXISTENTE", "12345")).toBeNull();
+    expect(construirLinkOficial("ANA", "s/n")).toBeNull();
+    expect(construirLinkOficial("IBAMA", "—")).toBeNull();
+  });
+});
+
+describe("FONTES — índice único da cobertura (antes: 3 listas iguais)", () => {
+  it("ressalvas seguem a ordem da coleta e nenhuma sai vazia", () => {
+    const { ressalvas } = LICENCAS_COBERTURA;
+    expect(ressalvas.length).toBeGreaterThanOrEqual(17);
+    expect(ressalvas.every((r) => r.trim().length > 0)).toBe(true);
+    // Ordem da lista FONTES: ANA (outorgas federais) e depois IBAMA (autos).
+    expect(ressalvas[0]).toContain("outorga");
+    expect(ressalvas[1]).toContain("IBAMA");
+  });
+
+  it("total e truncado saem do mesmo índice de 18 fontes", () => {
+    // `total` é o acervo real coletado; a janela do cliente é menor.
+    expect(LICENCAS_COBERTURA.total).toBeGreaterThan(REGISTROS_LICENCAS.length);
+    // Alguma fonte da amostra está truncada (ANA, FEPAM, IAT, IMASUL, IMA...).
+    expect(LICENCAS_COBERTURA.truncado).toBe(true);
+  });
+});
+
+describe("Fontes estaduais simples (BA, MA, PA, GO) — configuração declarativa", () => {
+  const fontes = [
+    { orgao: "INEMA (BA)", uf: "BA", lado: "inicio" },
+    { orgao: "SEMA (MA)", uf: "MA", lado: "inicio" },
+    { orgao: "SEMAS (PA)", uf: "PA", lado: "fim" },
+    { orgao: "SEMAD (GO)", uf: "GO", lado: "inicio" },
+  ] as const;
+
+  it("cada fonte usa a UF e o lado da data da sua configuração", () => {
+    for (const f of fontes) {
+      const linhas = REGISTROS_LICENCAS.filter((l) => l.orgao === f.orgao);
+      expect(linhas.length, f.orgao).toBeGreaterThan(0);
+      expect(
+        linhas.every((l) => l.uf === f.uf),
+        `${f.orgao}: uf divergente`
+      ).toBe(true);
+      // O outro lado da data fica null: a publicação vira início OU fim, nunca os dois.
+      if (f.lado === "inicio") {
+        expect(linhas.every((l) => l.data_fim === null), `${f.orgao}: data_fim devia ser null`).toBe(true);
+      } else {
+        expect(linhas.every((l) => l.data_inicio === null), `${f.orgao}: data_inicio devia ser null`).toBe(true);
+      }
+    }
+  });
+
+  it("só BA e MA extraem valor do resumo; PA e GO não têm o campo", () => {
+    const temValor = (orgao: string) =>
+      REGISTROS_LICENCAS.filter((l) => l.orgao === orgao).some((l) => "valor_investimento" in l);
+    expect(temValor("INEMA (BA)")).toBe(true);
+    expect(temValor("SEMA (MA)")).toBe(true);
+    // Sem a chave (não com `undefined`): é o formato que a fonte publica.
+    expect(temValor("SEMAS (PA)")).toBe(false);
+    expect(temValor("SEMAD (GO)")).toBe(false);
+  });
+
+  it("PA reclassifica outorga e auto de infração pelo tipo do ato", () => {
+    const pa = REGISTROS_LICENCAS.filter((l) => l.orgao === "SEMAS (PA)");
+    const comOutorga = pa.filter((l) => /outorga/i.test(l.tipo));
+    const comAuto = pa.filter((l) => /infrac|auto/i.test(l.tipo));
+    // A amostra versionada traz 5 outorgas e 1 auto ("Processo Administrativo Infracional").
+    expect(comOutorga.length).toBeGreaterThan(0);
+    expect(comAuto.length).toBeGreaterThan(0);
+    expect(comOutorga.every((l) => l.categoria === "outorga")).toBe(true);
+    expect(comAuto.every((l) => l.categoria === "auto_infracao")).toBe(true);
+    expect(pa.some((l) => l.categoria === "licenca")).toBe(true);
+  });
+
+  it("BA não promove sigla a categoria: EDITAL (NOT) segue como licença", () => {
+    const ba = REGISTROS_LICENCAS.filter((l) => l.orgao === "INEMA (BA)");
+    expect(ba.length).toBeGreaterThan(0);
+    expect(ba.some((l) => l.tipo.includes("NOT")), "amostra sem EDITAL (NOT)").toBe(true);
+    expect(ba.every((l) => l.categoria === "licenca")).toBe(true);
   });
 });
