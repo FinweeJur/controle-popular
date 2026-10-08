@@ -28,6 +28,9 @@ import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
 import Moeda from "@/app/components/Moeda";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
+import { SecaoCusto } from "./components/SecaoCusto";
+import { SecaoDoacoes } from "./components/SecaoDoacoes";
+import { SecaoComissoes } from "./components/SecaoComissoes";
 
 interface VereadorPageProps {
   /** A rota é `/[municipio]/vereadores/[slug]` — os dois segmentos chegam
@@ -308,88 +311,13 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                 )
               )}
             </DataCard>
-            {(custo.mensalBruto != null || custo.gastoPorAno.length > 0) && (
-              <DataCard
-                title="Quanto custa este mandato"
-                className="sm:col-span-2"
-                source={
-                  custo.fonteSubsidio
-                    ? { label: `Câmara de ${cidade.nome}`, url: custo.fonteSubsidio }
-                    : fonteCamara
-                }
-              >
-                {/* Duas naturezas, dois blocos. O subsídio é remuneração
-                    pessoal fixada em lei e IGUAL para todos os vereadores da
-                    casa — comparar parlamentares por ele não diz nada. O
-                    custeio é despesa do gabinete e varia muito entre eles: é
-                    ali que a comparação tem sentido. Somar os dois num
-                    "custo total" esconderia justamente a parte que
-                    distingue um vereador do outro. */}
-                <div className="grid gap-5 sm:grid-cols-2">
-                  {custo.mensalBruto != null && (
-                    <div>
-                      <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
-                        Recebe por mês
-                      </p>
-                      <p className="font-tabular text-2xl font-bold text-text">
-                        <Moeda value={custo.mensalBruto} />
-                      </p>
-                      <p className="text-xs text-text-soft">
-                        subsídio bruto, antes dos descontos
-                      </p>
-                      {custo.mensalExtras != null && custo.mensalExtras > 0 && (
-                        <p className="mt-1.5 text-xs text-text-soft">
-                          + <Moeda value={custo.mensalExtras} /> de verbas
-                          fixas (auxílio-alimentação)
-                        </p>
-                      )}
-                      {custo.competencia && (
-                        <p className="mt-1.5 text-[11px] text-text-soft">
-                          Valor vigente em {formatDateBR(custo.competencia).slice(3)}. É
-                          o mesmo para todos os {vereadoresDaCasa} vereadores — fixado
-                          por lei, não por desempenho.
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  {custo.gastoPorAno.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
-                        Gabinete gastou
-                      </p>
-                      <ul className="mt-1 flex flex-col gap-2">
-                        {custo.gastoPorAno.map((a) => (
-                          <li key={a.ano} className="flex items-baseline justify-between gap-3">
-                            <span className="font-tabular text-sm text-text-soft">{a.ano}</span>
-                            <span className="flex-1 border-b border-dotted border-border" />
-                            <span className="font-tabular text-base font-semibold text-text">
-                              <Moeda value={a.total} />
-                            </span>
-                            <span className="text-[11px] text-text-soft">
-                              {formatNumberBR(a.qtd)} desp.
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="mt-2 text-[11px] text-text-soft">
-                        Custeio do gabinete: material de escritório, serviços
-                        postais, gráfica e afins.{" "}
-                        {anoParcial != null && (
-                          <>O ano de {anoParcial} ainda está em curso.</>
-                        )}
-                      </p>
-                      <Link
-                        href="/camara#gastos-gabinete"
-                        className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
-                      >
-                        Comparar com os outros vereadores →
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </DataCard>
-            )}
+            <SecaoCusto
+              cidade={cidade}
+              custo={custo}
+              fonteCamara={fonteCamara}
+              vereadoresDaCasa={vereadoresDaCasa}
+              anoParcial={anoParcial}
+            />
             {row.votos_eleicao != null && (
               <DataCard
                 title={`Votos na eleição de ${row.ano_eleicao ?? ""}`}
@@ -428,66 +356,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
             )}
           </div>
 
-          {doacoes.ok && doacoes.total > 0 && (
-            <div className="mt-8">
-              <DataCard
-                title="Doações de campanha (2024) — quem financiou"
-                source={{ label: "TSE / Base dos Dados", url: "https://www.tse.jus.br/" }}
-              >
-                <p className="mb-3 text-text">
-                  {formatNumberBR(doacoes.total)}{" "}
-                  {doacoes.total === 1 ? "doação" : "doações"}, total{" "}
-                  <strong className="font-tabular"><Moeda value={doacoes.soma} /></strong>
-                </p>
-                <ul className="divide-y divide-border/60">
-                  {doacoes.rows.slice(0, 8).map((d, i) => (
-                    <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-sm">
-                      <span className="text-text-soft">
-                        {d.doador_nome ?? "—"}
-                        {d.doador_tipo && (
-                          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                            {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
-                          </span>
-                        )}
-                      </span>
-                      <span className="font-tabular shrink-0 text-text">
-                        {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                {doacoes.rows.length > 8 && (
-                  <details className="mt-2">
-                    <summary className="cursor-pointer text-sm font-medium text-accent hover:underline">
-                      Ver todos os {formatNumberBR(doacoes.rows.length)} doadores
-                    </summary>
-                    <ul className="mt-2 divide-y divide-border/60">
-                      {doacoes.rows.slice(8).map((d, i) => (
-                        <li key={i} className="flex items-center justify-between gap-3 py-1.5 text-sm">
-                          <span className="text-text-soft">
-                            {d.doador_nome ?? "—"}
-                            {d.doador_tipo && (
-                              <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                                {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
-                              </span>
-                            )}
-                          </span>
-                          <span className="font-tabular shrink-0 text-text">
-                            {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                )}
-                <p className="mt-3 text-[.85em] text-text-soft">
-                  O nome de quem doou para campanha é público por lei (Lei
-                  9.504/97) — a divulgação do financiamento eleitoral é
-                  obrigatória. Valores prestados à Justiça Eleitoral em 2024.
-                </p>
-              </DataCard>
-            </div>
-          )}
+          <SecaoDoacoes doacoes={doacoes} />
 
           {ranking.ok && (
             <div className="mt-8">
@@ -621,71 +490,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
             </div>
           )}
 
-          {comissoes.ok && (comissoes.andamento.length > 0 || comissoes.finalizadas.length > 0) ? (
-            <div className="mt-8">
-              <h2 className="mb-3 font-display text-lg font-bold text-text">
-                Participação em comissões
-              </h2>
-              {comissoes.andamento.length > 0 && (
-                <div className="mb-4">
-                  <p className="mb-2 text-xs font-semibold tracking-wide text-text-soft uppercase">
-                    Atualmente
-                  </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {comissoes.andamento.map((p, i) => (
-                      <li
-                        key={i}
-                        className="rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
-                      >
-                        {p.nomeComissao}{" "}
-                        <span className="font-semibold">— {p.papel}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {comissoes.finalizadas.length > 0 && (
-                <details className="rounded-2xl border border-border bg-surface p-4 text-sm">
-                  <summary className="cursor-pointer font-medium text-text-soft">
-                    Histórico ({formatNumberBR(comissoes.finalizadas.length)} participações
-                    encerradas desde 2018)
-                  </summary>
-                  <ul className="mt-3 divide-y divide-border/60">
-                    {comissoes.finalizadas.map((p, i) => (
-                      <li key={i} className="flex items-center justify-between gap-3 py-1.5">
-                        <span className="text-text-soft">
-                          {p.nomeComissao} — <span className="text-text">{p.papel}</span>
-                        </span>
-                        <span className="font-tabular shrink-0 text-xs text-text-soft">
-                          {formatDateBR(p.dataInicio)} – {formatDateBR(p.dataFim)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              )}
-              <p className="mt-2 text-xs text-text-soft">
-                Fonte:{" "}
-                <a
-                  href={fonteCamara.url ?? "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent hover:underline"
-                >
-                  Câmara de {cidade.nome} ↗
-                </a>
-                . Nomes de comissão são exatamente os registrados pela Câmara em
-                cada período — algumas foram renomeadas ao longo das
-                legislaturas, e o histórico mantém o nome de cada época.
-              </p>
-            </div>
-          ) : (
-            comissoes.ok && (
-              <div className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
-                Não participa de nenhuma comissão no momento.
-              </div>
-            )
-          )}
+          <SecaoComissoes comissoes={comissoes} cidade={cidade} fonteCamara={fonteCamara} />
         </>
       )}
     </div>

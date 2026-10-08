@@ -274,133 +274,160 @@ class _QueryBuilder:
             return self._executar()
 
     def _executar(self) -> _Response:
+        """Orquestrador: delega à operação certa (refatoração 08/10/2026,
+        hotspots CodeScene — saúde 6,87). O método era um bloco único de 95
+        linhas com cc=43; virou este despachante + 4 métodos por operação.
+        Mesma ordem, mesma lógica, mesma validação de filtro."""
         from psycopg.errors import UndefinedColumn, UndefinedTable
-        from psycopg.rows import dict_row
 
         qualified = f'"{self._schema}"."{self._table}"'
         try:
-            with self._conn.cursor(row_factory=dict_row) as cur:
-                if self._op in (None, "select"):
-                    params: list = []
-                    sql = f"SELECT {self._cols} FROM {qualified}"
-                    sql += self._where_sql(params)
-                    if self._order:
-                        col, desc = self._order
-                        sql += f' ORDER BY "{col}" {"DESC" if desc else "ASC"}'
-                    if self._range:
-                        start, end = self._range
-                        sql += f" LIMIT {end - start + 1} OFFSET {start}"
-                    elif self._limit is not None:
-                        sql += f" LIMIT {self._limit}"
-                    cur.execute(sql, params)
-                    rows = _rows_out(cur.fetchall())
-                    total = None
-                    if self._count_mode:
-                        # `count="exact"` do PostgREST conta a query SEM
-                        # limit/offset — é assim que `etl/apis/crimes_mg.py`
-                        # confere se o upsert realmente gravou tudo. Uma
-                        # segunda query é o equivalente honesto; devolver
-                        # len(rows) mentiria sempre que houvesse paginação.
-                        cparams: list = []
-                        csql = f"SELECT count(*) AS c FROM {qualified}" + self._where_sql(cparams)
-                        cur.execute(csql, cparams)
-                        total = cur.fetchone()["c"]
-                    return _Response(rows, total)
-
-                if self._op == "delete":
-                    if not self._filters:
-                        raise RuntimeError(
-                            f"DELETE sem filtro em {qualified} — apagaria a tabela inteira. "
-                            "Chame .eq()/.in_() antes de .execute()."
-                        )
-                    params: list = []
-                    sql = f"DELETE FROM {qualified}" + self._where_sql(params)
-                    cur.execute(sql, params)
-                    return _Response([])
-
-                if self._op == "update":
-                    if not self._filters:
-                        raise RuntimeError(
-                            f"UPDATE sem filtro em {qualified} — reescreveria a tabela inteira. "
-                            "Chame .eq()/.in_() antes de .execute()."
-                        )
-                    row = (self._rows or [{}])[0]
-                    if not row:
-                        return _Response([])
-                    cols = sorted(row.keys())
-                    set_sql = ", ".join(f'"{c}" = %s' for c in cols)
-                    params = [_adapt(row[c]) for c in cols]
-                    sql = f"UPDATE {qualified} SET {set_sql}" + self._where_sql(params)
-                    sql += " RETURNING *"
-                    cur.execute(sql, params)
-                    return _Response(_rows_out(cur.fetchall()))
-
-                if self._op in ("insert", "upsert"):
-                    rows = self._rows or []
-                    if not rows:
-                        return _Response([])
-                    sufixo = ""
-                    if self._op == "upsert" and self._on_conflict:
-                        # DEDUP antes do lote. O Postgres recusa ON CONFLICT DO
-                        # UPDATE se a MESMA chave aparece duas vezes no mesmo
-                        # comando (21000 CardinalityViolation) — medido no
-                        # cache TCE de Diamantina (2026-09-22): o ZIP traz
-                        # seq_contrato repetido e o Araçuaí passou (sem
-                        # colisão) enquanto o Diamantina morria no meio.
-                        chaves_d = [c.strip() for c in self._on_conflict.split(",")]
-                        vistos: dict[tuple, dict] = {}
-                        for row in rows:
-                            vistos[tuple(row.get(c) for c in chaves_d)] = row
-                        rows = list(vistos.values())
-                    cols = sorted({k for r in rows for k in r.keys()})
-                    col_list = ", ".join(f'"{c}"' for c in cols)
-                    placeholder_row = "(" + ", ".join(["%s"] * len(cols)) + ")"
-
-                    if self._op == "upsert" and self._on_conflict:
-                        conflito_cols = [c.strip() for c in self._on_conflict.split(",")]
-                        conflito_sql = ", ".join(f'"{c}"' for c in conflito_cols)
-                        update_cols = [c for c in cols if c not in conflito_cols]
-                        if update_cols:
-                            set_sql = ", ".join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
-                            sufixo = f" ON CONFLICT ({conflito_sql}) DO UPDATE SET {set_sql}"
-                        else:
-                            sufixo = f" ON CONFLICT ({conflito_sql}) DO NOTHING"
-
-                    # FATIAMENTO AUTOMÁTICO. Um INSERT do Postgres aceita no
-                    # máximo 65.535 placeholders, e o adapter montava uma
-                    # instrução só com todas as linhas — o que funcionava
-                    # enquanto as tabelas tinham o tamanho de Betim e passou a
-                    # estourar em São Paulo: `bd.inep` (escolas) e `bd.cnes`
-                    # (estabelecimentos de saúde) morreram com "number of
-                    # parameters must be between 0 and 65535" e não gravaram
-                    # NADA — nem as primeiras 65 mil.
-                    #
-                    # Cada módulo poderia fatiar por conta própria (alguns já
-                    # fazem), mas isso é conhecimento sobre o TRANSPORTE, não
-                    # sobre a fonte de dado: espalhá-lo por ~30 módulos
-                    # garante que o próximo a crescer descubra do mesmo jeito.
-                    # O teto por lote sai do número real de colunas, então
-                    # tabela larga fatia mais fino sozinha.
-                    por_lote = max(1, _TETO_PLACEHOLDERS // max(1, len(cols)))
-                    saida: list[dict] = []
-                    for i in range(0, len(rows), por_lote):
-                        fatia = rows[i : i + por_lote]
-                        values_sql = ", ".join([placeholder_row] * len(fatia))
-                        params = [_adapt(r.get(c)) for r in fatia for c in cols]
-                        sql = (
-                            f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
-                            + sufixo
-                            + " RETURNING *"
-                        )
-                        cur.execute(sql, params)
-                        saida.extend(_rows_out(cur.fetchall()))
-                    return _Response(saida)
+            if self._op in (None, "select"):
+                return self._executar_select(qualified)
+            if self._op == "delete":
+                return self._executar_delete(qualified)
+            if self._op == "update":
+                return self._executar_update(qualified)
+            if self._op in ("insert", "upsert"):
+                return self._executar_insert(qualified)
         except UndefinedColumn as e:
             raise PgAPIError("42703", str(e)) from e
         except UndefinedTable as e:
             raise PgAPIError("42P01", str(e)) from e
 
         raise RuntimeError(f"operação não suportada: {self._op}")
+
+    def _executar_select(self, qualified: str) -> _Response:
+        """SELECT com WHERE, ORDER BY, LIMIT/OFFSET e contagem opcional."""
+        from psycopg.rows import dict_row
+
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            params: list = []
+            sql = f"SELECT {self._cols} FROM {qualified}"
+            sql += self._where_sql(params)
+            if self._order:
+                col, desc = self._order
+                sql += f' ORDER BY "{col}" {"DESC" if desc else "ASC"}'
+            if self._range:
+                start, end = self._range
+                sql += f" LIMIT {end - start + 1} OFFSET {start}"
+            elif self._limit is not None:
+                sql += f" LIMIT {self._limit}"
+            cur.execute(sql, params)
+            rows = _rows_out(cur.fetchall())
+            total = None
+            if self._count_mode:
+                # `count="exact"` do PostgREST conta a query SEM
+                # limit/offset — é assim que `etl/apis/crimes_mg.py`
+                # confere se o upsert realmente gravou tudo. Uma
+                # segunda query é o equivalente honesto; devolver
+                # len(rows) mentiria sempre que houvesse paginação.
+                cparams: list = []
+                csql = f"SELECT count(*) AS c FROM {qualified}" + self._where_sql(cparams)
+                cur.execute(csql, cparams)
+                total = cur.fetchone()["c"]
+            return _Response(rows, total)
+
+    def _executar_delete(self, qualified: str) -> _Response:
+        """DELETE — exige filtro ativo para não apagar a tabela inteira."""
+        from psycopg.rows import dict_row
+
+        if not self._filters:
+            raise RuntimeError(
+                f"DELETE sem filtro em {qualified} — apagaria a tabela inteira. "
+                "Chame .eq()/.in_() antes de .execute()."
+            )
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            params: list = []
+            sql = f"DELETE FROM {qualified}" + self._where_sql(params)
+            cur.execute(sql, params)
+            return _Response([])
+
+    def _executar_update(self, qualified: str) -> _Response:
+        """UPDATE de uma linha (a primeira de `self._rows`), com RETURNING."""
+        from psycopg.rows import dict_row
+
+        if not self._filters:
+            raise RuntimeError(
+                f"UPDATE sem filtro em {qualified} — reescreveria a tabela inteira. "
+                "Chame .eq()/.in_() antes de .execute()."
+            )
+        row = (self._rows or [{}])[0]
+        if not row:
+            return _Response([])
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            cols = sorted(row.keys())
+            set_sql = ", ".join(f'"{c}" = %s' for c in cols)
+            params = [_adapt(row[c]) for c in cols]
+            sql = f"UPDATE {qualified} SET {set_sql}" + self._where_sql(params)
+            sql += " RETURNING *"
+            cur.execute(sql, params)
+            return _Response(_rows_out(cur.fetchall()))
+
+    def _executar_insert(self, qualified: str) -> _Response:
+        """INSERT ou UPSET com dedup e fatiamento automático de lotes."""
+        from psycopg.rows import dict_row
+
+        rows = self._rows or []
+        if not rows:
+            return _Response([])
+        sufixo = ""
+        if self._op == "upsert" and self._on_conflict:
+            # DEDUP antes do lote. O Postgres recusa ON CONFLICT DO
+            # UPDATE se a MESMA chave aparece duas vezes no mesmo
+            # comando (21000 CardinalityViolation) — medido no
+            # cache TCE de Diamantina (2026-09-22): o ZIP traz
+            # seq_contrato repetido e o Araçuaí passou (sem
+            # colisão) enquanto o Diamantina morria no meio.
+            chaves_d = [c.strip() for c in self._on_conflict.split(",")]
+            vistos: dict[tuple, dict] = {}
+            for row in rows:
+                vistos[tuple(row.get(c) for c in chaves_d)] = row
+            rows = list(vistos.values())
+        cols = sorted({k for r in rows for k in r.keys()})
+        col_list = ", ".join(f'"{c}"' for c in cols)
+        placeholder_row = "(" + ", ".join(["%s"] * len(cols)) + ")"
+
+        if self._op == "upsert" and self._on_conflict:
+            conflito_cols = [c.strip() for c in self._on_conflict.split(",")]
+            conflito_sql = ", ".join(f'"{c}"' for c in conflito_cols)
+            update_cols = [c for c in cols if c not in conflito_cols]
+            if update_cols:
+                set_sql = ", ".join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
+                sufixo = f" ON CONFLICT ({conflito_sql}) DO UPDATE SET {set_sql}"
+            else:
+                sufixo = f" ON CONFLICT ({conflito_sql}) DO NOTHING"
+
+        # FATIAMENTO AUTOMÁTICO. Um INSERT do Postgres aceita no
+        # máximo 65.535 placeholders, e o adapter montava uma
+        # instrução só com todas as linhas — o que funcionava
+        # enquanto as tabelas tinham o tamanho de Betim e passou a
+        # estourar em São Paulo: `bd.inep` (escolas) e `bd.cnes`
+        # (estabelecimentos de saúde) morreram com "number of
+        # parameters must be between 0 and 65535" e não gravaram
+        # NADA — nem as primeiras 65 mil.
+        #
+        # Cada módulo poderia fatiar por conta própria (alguns já
+        # fazem), mas isso é conhecimento sobre o TRANSPORTE, não
+        # sobre a fonte de dado: espalhá-lo por ~30 módulos
+        # garante que o próximo a crescer descubra do mesmo jeito.
+        # O teto por lote sai do número real de colunas, então
+        # tabela larga fatia mais fino sozinha.
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            por_lote = max(1, _TETO_PLACEHOLDERS // max(1, len(cols)))
+            saida: list[dict] = []
+            for i in range(0, len(rows), por_lote):
+                fatia = rows[i : i + por_lote]
+                values_sql = ", ".join([placeholder_row] * len(fatia))
+                params = [_adapt(r.get(c)) for r in fatia for c in cols]
+                sql = (
+                    f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
+                    + sufixo
+                    + " RETURNING *"
+                )
+                cur.execute(sql, params)
+                saida.extend(_rows_out(cur.fetchall()))
+            return _Response(saida)
 
 
 class PgClient:

@@ -393,133 +393,179 @@ function descreverFormato(c) {
   return 'mancha compacta';
 }
 
-/** Valor de uma propriedade, já formatado para leitura. */
-export function formatarValor(chave, valor) {
-  if (chave === 'area_ha' && Number.isFinite(Number(valor))) {
-    return descreverArea(valor);
-  }
+/**
+ * FORMATADORES POR CHAVE (refatoração de 08/10/2026, hotspots CodeScene —
+ * saúde 6,46, o pior do repo). O `formatarValor` era um único `if` de 101
+ * linhas com cc=59; virou um orquestrador que consulta a tabela
+ * `FORMATADORES` na MESMA ordem dos `if`s originais. Cada linha é
+ * `[chave, formatador]` — regra de dado, não fluxo (AGENTS §5.9).
+ *
+ * Ordem preservada: o `_pct` genérico vem DEPOIS dos `_pct` específicos
+ * (`uso_antropico_pct`, `supressao_ha`), e os links vêm antes do fallback.
+ */
+const FORMATADORES = [
+  ['area_ha', (v) => (Number.isFinite(Number(v)) ? descreverArea(v) : undefined)],
   // Fase 5 do plano de cavas — série `mining_age` do MapBiomas. O estado sai
   // em frase: `sem_cadastro_anm` na tela seria a chave crua de novo, que é o
   // defeito que este arquivo existe para impedir.
-  if (chave === 'estado' && valor) {
+  ['estado', (v) => {
+    if (!v) return undefined;
     const frases = {
       sem_cadastro_anm: 'fora de todo polígono da ANM — sem cadastro na área',
       ativa: 'primeira detecção na janela ativa de 24 meses',
       em_operacao: 'dentro de polígono da ANM em fase que autoriza extrair',
       indicio_processual: 'dentro de polígono da ANM sem autorização de extração',
     };
-    return frases[valor] ?? String(valor);
-  }
+    return frases[v] ?? String(v);
+  }],
   // A resolução vem SEMPRE escrita: número sem método não vai na tela
   // (AGENTS § 8), e esta camada é um raster de 30 m, não levantamento de campo.
-  if (chave === 'resolucao_m' && Number.isFinite(Number(valor))) {
-    return `${formatarNumero(Number(valor), 0)} metros por pixel — a fonte é um raster; cava menor pode não aparecer`;
-  }
-  if (chave === 'dentro_sigmine') {
-    return valor ? 'sim' : 'não — fora de todo polígono da ANM';
-  }
+  ['resolucao_m', (v) => (Number.isFinite(Number(v))
+    ? `${formatarNumero(Number(v), 0)} metros por pixel — a fonte é um raster; cava menor pode não aparecer`
+    : undefined)],
+  ['dentro_sigmine', (v) => (v ? 'sim' : 'não — fora de todo polígono da ANM')],
   // Áreas do par processo×faixa: mesma régua de `area_ha` (de 420 m² a
   // milhares de hectares, o descreverArea é a única régua que atravessa).
-  if ((chave === 'area_processo_ha' || chave === 'area_dentro_da_faixa_ha')) {
-    const n = numeroOuNada(valor);
-    return n === null ? '' : descreverArea(n);
-  }
+  ['area_processo_ha', (v) => { const n = numeroOuNada(v); return n === null ? '' : descreverArea(n); }],
+  ['area_dentro_da_faixa_ha', (v) => { const n = numeroOuNada(v); return n === null ? '' : descreverArea(n); }],
   // Distâncias da faixa de 8 km. Metros com régua de rua: abaixo de 1 km
   // fica em m (72,9 m tem de sair como "73 m", não "0,1 km"), acima vira km.
   // Ausência é caso REAL medido (13 pares sem distância, todos do território
   // "FAMILIA TEODORO DE OLIVEIRA E VENTURA") — e não pode sair como zero.
-  if (chave === 'distancia_ao_territorio_m' || chave === 'faixa_dist_m') {
-    const n = numeroOuNada(valor);
-    if (n === null) return chave === 'distancia_ao_territorio_m' ? 'não medida' : '';
-    return n < 1000
-      ? `${formatarNumero(n, 0)} m`
-      : `${formatarNumero(n / 1000)} km`;
-  }
-  if (chave === 'ja_sobrepoe_territorio_publicado') {
-    return valor
-      ? 'sim — a poligonal encosta no território'
-      : 'não — só dentro da faixa';
-  }
-  if (chave === 'largura_media_m' && Number.isFinite(Number(valor))) {
-    const m = Number(valor);
+  ['distancia_ao_territorio_m', (v) => {
+    const n = numeroOuNada(v);
+    if (n === null) return 'não medida';
+    return n < 1000 ? `${formatarNumero(n, 0)} m` : `${formatarNumero(n / 1000)} km`;
+  }],
+  ['faixa_dist_m', (v) => {
+    const n = numeroOuNada(v);
+    if (n === null) return '';
+    return n < 1000 ? `${formatarNumero(n, 0)} m` : `${formatarNumero(n / 1000)} km`;
+  }],
+  ['ja_sobrepoe_territorio_publicado', (v) => (v
+    ? 'sim — a poligonal encosta no território'
+    : 'não — só dentro da faixa')],
+  ['largura_media_m', (v) => {
+    if (!Number.isFinite(Number(v))) return undefined;
+    const m = Number(v);
     const quadras = Math.max(1, Math.round(m / 100));
     return `${formatarNumero(m, 0)} m — a largura de umas ${quadras} quadras de rua`;
-  }
-  if (chave === 'compacidade' && Number.isFinite(Number(valor))) {
-    const c = Number(valor);
+  }],
+  ['compacidade', (v) => {
+    if (!Number.isFinite(Number(v))) return undefined;
+    const c = Number(v);
     return `${descreverFormato(c)} (${formatarNumero(c, 2)} numa escala em que o círculo é 1)`;
-  }
-  if (chave === 'uso_antropico_pct' && Number.isFinite(Number(valor))) {
-    const pct = Number(valor);
+  }],
+  ['uso_antropico_pct', (v) => {
+    if (!Number.isFinite(Number(v))) return undefined;
+    const pct = Number(v);
     const [ini, fim] = ANOS_COBERTURA;
     if (pct === 0) return `nada — nem em ${ini}, nem em ${fim}`;
     // Os dois anos entram na frase de propósito: sem eles, "44% em uso" parece
     // uma foto de hoje, e é uma medida de permanência — terra que já estava em
     // uso e continua. É essa permanência que sustenta a leitura.
     return `${formatarNumero(pct)}% da área — em uso tanto em ${ini} quanto em ${fim}`;
-  }
-  if ((chave === 'supressao_ha' || chave === 'regeneracao_ha') && Number.isFinite(Number(valor))) {
-    const ha = Number(valor);
+  }],
+  ['supressao_ha', (v) => {
+    if (!Number.isFinite(Number(v))) return undefined;
+    const ha = Number(v);
     const [ini, fim] = ANOS_COBERTURA;
     if (ha === 0) return `nada, entre ${ini} e ${fim}`;
     // Mesma régua da área: estes números vão de fração de hectare a centenas, e
     // "26.902,4 hectares" de supressão sem km² ao lado é tão ilegível quanto a
     // área que o gerou.
     return `${descreverArea(ha)}, entre ${ini} e ${fim}`;
-  }
-  if (chave.endsWith('_pct') && Number.isFinite(Number(valor))) {
-    const pct = Number(valor);
-    if (pct === 0) return 'nenhuma';
-    return `${formatarNumero(pct)}% da área`;
-  }
+  }],
+  ['regeneracao_ha', (v) => {
+    if (!Number.isFinite(Number(v))) return undefined;
+    const ha = Number(v);
+    const [ini, fim] = ANOS_COBERTURA;
+    if (ha === 0) return `nada, entre ${ini} e ${fim}`;
+    return `${descreverArea(ha)}, entre ${ini} e ${fim}`;
+  }],
   // Normas geolocalizadas: link para a fonte, confiança em português, data
   // no formato brasileiro. `link_fonte` sai como <a> -- as outras camadas
   // não têm campo de URL, então este é o primeiro caso desse tipo aqui.
-  // Mesma doutrina de `link_fonte` logo abaixo: valida o esquema antes de virar
+  // Mesma doutrina de `link_fonte`: valida o esquema antes de virar
   // href, escapa antes de entrar no atributo, e quando a URL não passa mostra o
   // texto cru em vez de link morto. O rótulo diz o DESTINO, nunca "clique aqui".
-  if ((chave === 'link_estudos' || chave === 'link_fonte_oficial') && valor) {
-    const destino = urlSegura(valor);
-    if (!destino) return escapar(valor);
-    const rotulo = chave === 'link_estudos'
-      ? 'Ver os estudos deste município ↗'
-      : 'Abrir a consulta de audiências da Semad ↗';
-    return `<a href="${escapar(destino)}" target="_blank" rel="noopener">${rotulo}</a>`;
-  }
-  if (chave === 'link_fonte' && valor) {
+  ['link_estudos', (v) => {
+    if (!v) return undefined;
+    const destino = urlSegura(v);
+    if (!destino) return escapar(v);
+    return `<a href="${escapar(destino)}" target="_blank" rel="noopener">Ver os estudos deste município ↗</a>`;
+  }],
+  ['link_fonte_oficial', (v) => {
+    if (!v) return undefined;
+    const destino = urlSegura(v);
+    if (!destino) return escapar(v);
+    return `<a href="${escapar(destino)}" target="_blank" rel="noopener">Abrir a consulta de audiências da Semad ↗</a>`;
+  }],
+  ['link_fonte', (v) => {
+    if (!v) return undefined;
     // A URL vem RASPADA de portal municipal: valida o esquema antes de virar
     // `href` e escapa antes de entrar no atributo. Sem as duas coisas, um
     // `javascript:` executa no clique e uma aspa fecha o atributo e injeta
     // HTML. Quando a URL não passa, mostra o texto cru em vez de link morto —
     // sumir com o campo esconderia da pessoa que a fonte veio torta.
-    const href = urlSegura(valor);
+    const href = urlSegura(v);
     return href
       ? `<a href="${escapar(href)}" target="_blank" rel="noopener">Ver norma original ↗</a>`
-      : escapar(valor);
-  }
-  if (chave === 'link_oficial' && valor) {
-    const destino = urlSegura(valor);
-    if (!destino) return escapar(valor);
+      : escapar(v);
+  }],
+  ['link_oficial', (v) => {
+    if (!v) return undefined;
+    const destino = urlSegura(v);
+    if (!destino) return escapar(v);
     return `<a href="${escapar(destino)}" target="_blank" rel="noopener" class="btn-fonte-oficial" style="color:var(--accent-text,var(--cp-primary,#38bdf8));font-weight:600;text-decoration:underline;">Abrir processo na fonte oficial ↗</a>`;
-  }
-  if (chave === 'valor' && valor !== null && valor !== undefined) {
-    const num = Number(valor);
+  }],
+  ['valor', (v) => {
+    if (v === null || v === undefined) return undefined;
+    const num = Number(v);
     if (Number.isFinite(num) && num > 0) {
       return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
-  }
-  if (chave === 'aprox') {
-    return valor ? 'Aproximada (centroide municipal)' : 'Coordenada nativa oficial';
-  }
-  if (chave === 'confianca') {
-    if (valor === 'alta') return 'Alta — rua, avenida ou praça citada por nome';
-    if (valor === 'media') return 'Média — só bairro ou distrito (ponto aproximado)';
-    return String(valor);
-  }
-  if (chave === 'data_publicacao' && valor) {
-    const [ano, mes, dia] = String(valor).split('-');
+    return undefined;
+  }],
+  ['aprox', (v) => (v ? 'Aproximada (centroide municipal)' : 'Coordenada nativa oficial')],
+  ['confianca', (v) => {
+    if (v === 'alta') return 'Alta — rua, avenida ou praça citada por nome';
+    if (v === 'media') return 'Média — só bairro ou distrito (ponto aproximado)';
+    return String(v);
+  }],
+  ['data_publicacao', (v) => {
+    if (!v) return undefined;
+    const [ano, mes, dia] = String(v).split('-');
     if (ano && mes && dia) return `${dia}/${mes}/${ano}`;
+    return undefined;
+  }],
+];
+
+/** Último coringa: `_pct` genérico, antes do fallback de texto puro. */
+function formatadorPctGenerico(chave, valor) {
+  if (!chave.endsWith('_pct') || !Number.isFinite(Number(valor))) return undefined;
+  const pct = Number(valor);
+  if (pct === 0) return 'nenhuma';
+  return `${formatarNumero(pct)}% da área`;
+}
+
+/**
+ * Valor de uma propriedade, já formatado para leitura.
+ *
+ * ORQUESTRAÇÃO: consulta `FORMATADORES` na mesma ordem dos `if`s originais;
+ * `undefined` de um formatador passa a palavra ao seguinte. Se nenhum casar,
+ * cai no `_pct` genérico e depois no mapa `VALORES`.
+ */
+export function formatarValor(chave, valor) {
+  for (const [chaveTabela, formatador] of FORMATADORES) {
+    if (chave === chaveTabela) {
+      const r = formatador(valor);
+      if (r !== undefined) return r;
+      break; // chave casou mas formatador devolveu undefined → cai no fallback
+    }
   }
+  const pct = formatadorPctGenerico(chave, valor);
+  if (pct !== undefined) return pct;
   const texto = String(valor);
   return VALORES[texto] ?? texto;
 }
