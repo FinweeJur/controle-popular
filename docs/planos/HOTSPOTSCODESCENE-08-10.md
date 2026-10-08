@@ -10,13 +10,13 @@
 ## Sumário
 
 - [Fila (pior primeiro)](#fila-pior-primeiro)
-- [Já fechados (11 de 18)](#já-fechados-11-de-18)
+- [Já fechados (12 de 18)](#já-fechados-12-de-18)
 - [Regras](#regras)
 
 ## Fila (pior primeiro)
 
 Leitura de 07/10/2026 (projeto 85760). Saúde de 0 a 10; quanto menor,
-mais caro de mexer. **11 dos 18 já fechados** em 08/10 — este doc lista
+mais caro de mexer. **12 dos 18 já fechados** em 08/10 — este doc lista
 só o que falta. Nunca refatorar por intuição: sempre a partir daqui
 (AGENTS §7 e pendência 10 de PENDENCIAS-07-10.md).
 
@@ -28,13 +28,14 @@ só o que falta. Nunca refatorar por intuição: sempre a partir daqui
 | 4 | ~~7,26~~ **10,00** | `apps/web/app/sobre/page.tsx` | 613 | 19 | ✅ 6 seções → `app/sobre/components/`; nota perfeita; commit `23b37453` |
 | 5 | ~~7,31~~ **8,15** | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 617 | 17 | ✅ 3 seções → `components/`; cc=64→39; commit `23b37453` |
 | 6 | ~~7,49~~ | `apps/web/app/page.tsx` | 543 | 51 | ✅ Hub ~550→48 linhas, 13 seções no mesmo arquivo; commit `cafcb712` |
-| 7 | **7,95** | `apps/web/app/components/SeuNono.tsx` | 1.909 | 36 | nesting=4, 2 métodos cc=10 |
+| 7 | ~~7,94~~ **10,00** | `apps/web/app/components/SeuNono.tsx` | 1.909 | 36 | ✅ nesting=4 eliminado, 2 métodos cc=10 quebrados, 6 avisos→0; commit `e9431edd` |
 | 8 | ~~8,05~~ | `apps/web/app/ambiental/page.tsx` | 410 | 34 | ✅ AmbientalHome 400→48, BLOCOS partido em 2; commit `4c7cf656` |
 
-Só resta a linha 7. Saúde dos refatorados sem número: **recalcular na
-próxima análise do CodeScene** (nunca presumir — medir).
+Todos os 8 hotspots da fila original foram fechados. Saúde dos
+refatorados sem número: **recalcular na próxima análise do CodeScene**
+(nunca presumir — medir).
 
-## Já fechados (11 de 18)
+## Já fechados (12 de 18)
 
 | Saúde original | Arquivo | Commit | Prova |
 |---|---|---|---|
@@ -49,6 +50,7 @@ próxima análise do CodeScene** (nunca presumir — medir).
 | 7,31 | `app/[municipio]/vereadores/[slug]/page.tsx` | `23b37453` | 3 seções → components/, cc=64→39 |
 | 7,49 | `app/page.tsx` | `cafcb712` | Hub ~550→48, 13 seções no mesmo arquivo |
 | 8,05 | `app/ambiental/page.tsx` | `4c7cf656` | AmbientalHome 400→48, BLOCOS em 2 funções |
+| 7,94 | `app/components/SeuNono.tsx` | `e9431edd` | nesting=4 eliminado, 2 métodos cc=10, 6 avisos→0, nota 10,00 |
 
 Saúde dos refatorados: **recalcular na próxima análise do CodeScene**
 (nunca presumir que melhorou — medir).
