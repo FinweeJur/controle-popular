@@ -517,6 +517,32 @@ npx eslint <arquivos do diff>                 # só o que mudou
 python scripts/validar-documentacao.py        # se mexeu em docs/
 ```
 
+**CodeScene no pré-commit (automático, 08/10/2026).** O hook
+`.githooks/pre-commit` roda sozinho a cada `git commit`. Ele mede a "saúde
+do código" (nota de 0 a 10; menor = mais caro de mexer) **só no que está no
+commit** — código antigo que você nem tocou não conta.
+
+```bash
+cs delta --git-hook --staged
+```
+
+- **Barra o commit** (código 1) quando a mudança introduz problema novo, e
+  mostra a lista. Para ignorar de propósito (raro): `git commit --no-verify`.
+- **Pula sozinho** se o `cs` não estiver instalado, ou se faltar
+  `CS_ACCESS_TOKEN` — não trava clone sem a ferramenta (§5.8: o token sai de
+  `scripts/.env`, nunca é impresso).
+- **Regras próprias** em [.codescene/code-health-rules.json](.codescene/code-health-rules.json):
+  as regras estruturais (Complex Method, aninhamento, nº de argumentos,
+  duplicação, Large Method) ficam **desligadas em arquivo de teste** — teste
+  repete setup de propósito. Aplicação usa o padrão do CodeScene.
+- **Revisar um arquivo à mão:** `cs review <arquivo>` (aceita
+  `--output-format json`); `cs check <arquivo>` é o apelido do mesmo exame.
+  O `cs` exige `CS_ACCESS_TOKEN` no ambiente.
+- Ativa junto com o pre-push — mesma chave `core.hooksPath .githooks` (§5.2).
+- **Ainda não ligado no CI:** `cs delta <base> <head> --error-on-warnings`
+  é a régua equivalente para o GitHub Actions (falha o build em vez do
+  commit). Só entra com decisão do dono.
+
 **Se o diff toca `lib/`:** rode o escopo do diff. O vitest usa o grafo de
 módulos e roda só os testes ligados ao que mudou:
 

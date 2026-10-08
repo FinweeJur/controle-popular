@@ -1,0 +1,82 @@
+{
+  "usage": "Regras customizadas do CodeScene para o controle-popular. Uso: diferenciar CODIGO DE TESTE do codigo de aplicacao. Teste repete setup, cria aninhamento e passa muitos parametros de proposito -- cobrar dele a mesma saude do codigo de produto gera falso positivo e empurra o agente a 'refatorar' teste so para calar a ferramenta (o oposto do que o AGENTS §7 quer). Aqui as regras estruturais caem para peso 0.0 (desligadas) so no caminho de teste; o codigo de aplicacao usa o padrao do CodeScene. Regra do dono (08/10/2026).",
+  "rule_sets": [
+    {
+      "matching_content_path": "**/*.test.ts",
+      "matching_content_path_doc": "Testes TypeScript com vitest (apps/web/lib/**/*.test.ts).",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/*.test.tsx",
+      "matching_content_path_doc": "Testes de componente React.",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/*.test.mts",
+      "matching_content_path_doc": "Testes de scripts em TypeScript ESM.",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/__tests__/**",
+      "matching_content_path_doc": "Testes em pasta __tests__ (JS/TS).",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/test_*.py",
+      "matching_content_path_doc": "Testes Python (padrao pytest).",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/*_test.py",
+      "matching_content_path_doc": "Testes Python (padrao sufixo _test).",
+      "rules": [
+        { "name": "Bumpy Road Ahead", "weight": 0.0 },
+        { "name": "Code Duplication", "weight": 0.0 },
+        { "name": "Complex Method", "weight": 0.0 },
+        { "name": "Deep, Nested Complexity", "weight": 0.0 },
+        { "name": "Excess Number of Function Arguments", "weight": 0.0 },
+        { "name": "Large Method", "weight": 0.0 }
+      ]
+    },
+    {
+      "matching_content_path": "**/*",
+      "matching_content_path_doc": "Catch-all: codigo de aplicacao usa os padroes do CodeScene. Precisa ser o ULTIMO (o primeiro que casa vence).",
+      "rules": []
+    }
+  ]
+}

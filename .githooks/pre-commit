@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# pre-commit -- barra o commit quando a mudanca PIORA a saude do codigo.
+#
+# POR QUE ESTE HOOK EXISTE
+#
+# O CodeScene mede a "saude do codigo" de 0 a 10. Codigo com nota baixa e
+# caro de mexer: quem chega depois demora mais e erra mais. O dono pediu
+# (08/10/2026) que essa regua valha ANTES do push, junto com o pre-push que
+# ja barra CPF e segredo.
+#
+# `cs delta --staged` compara o que esta no commit com o estado anterior e
+# aponta SO o que mudou -- nao reclama de codigo antigo que voce nem tocou.
+# `--git-hook` faz ele sair com codigo 1 quando encontra problema, o que
+# aborta o commit e mostra a lista. Sem problema, ele fica calado.
+#
+# IMPORTANTE: este hook e uma conveniencia, nao uma sentenca. Ele PULA
+# sozinho quando o CodeScene nao esta instalado ou quando falta o token.
+# Para ignorar de proposito: `git commit --no-verify`.
+
+# 1. Achar o binario. No PATH ou na instalacao padrao do Windows.
+CS_BIN=""
+if command -v cs >/dev/null 2>&1; then
+  CS_BIN="cs"
+elif [ -x "$HOME/AppData/Local/Programs/CodeScene/cs.exe" ]; then
+  CS_BIN="$HOME/AppData/Local/Programs/CodeScene/cs.exe"
+fi
+
+# Sem a ferramenta instalada, o commit segue normalmente.
+if [ -z "$CS_BIN" ]; then
+  exit 0
+fi
+
+# 2. Carregar o CS_ACCESS_TOKEN do scripts/.env -- nunca imprimindo o segredo.
+#    Em worktree o .env fica no checkout principal (git-common-dir), por isso
+#    a busca extra quando o arquivo local nao existe.
+if [ -z "$CS_ACCESS_TOKEN" ]; then
+  cs_env_file="scripts/.env"
+  if [ ! -f "$cs_env_file" ]; then
+    main_wt=$(git worktree list --porcelain 2>/dev/null | sed -n '1s/^worktree //p')
+    if [ -n "$main_wt" ] && [ -f "$main_wt/scripts/.env" ]; then
+      cs_env_file="$main_wt/scripts/.env"
+    fi
+  fi
+  if [ -f "$cs_env_file" ]; then
+    CS_ACCESS_TOKEN=$(sed -n 's/^[[:space:]]*CS_ACCESS_TOKEN[[:space:]]*=[[:space:]]*//p' "$cs_env_file" | head -n1 | tr -d '\r' | tr -d '"' | tr -d "'")
+    export CS_ACCESS_TOKEN
+  fi
+fi
+
+# 3. Sem token nao ha o que medir: avisa e deixa o commit passar.
+if [ -z "$CS_ACCESS_TOKEN" ]; then
+  echo "CodeScene: CS_ACCESS_TOKEN ausente - pulando analise de saude do codigo."
+  exit 0
+fi
+
+# O check de versao faz uma chamada de rede a cada commit -- desligado.
+export CS_DISABLE_VERSION_CHECK=1
+
+# 4. Delta: examina so o que esta no commit e barra se a saude cair.
+"$CS_BIN" delta --git-hook --staged
+status=$?
+if [ "$status" -ne 0 ]; then
+  echo ""
+  echo "CodeScene barrou o commit: a mudanca piora a saude do codigo."
+  echo "Leia a lista acima, refatore o que foi apontado e tente de novo."
+  echo "Para ignorar de proposito (raro): git commit --no-verify"
+fi
+exit "$status"
