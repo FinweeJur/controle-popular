@@ -22,23 +22,27 @@ só o que falta. Nunca refatorar por intuição: sempre a partir daqui
 
 | # | Saúde | Arquivo | Loc | Rev. | Observação |
 |---|---|---|---|---|---|
-| 1 | **6,46** | `apps/web/public/terras/globo/js/ui/rotulos.js` | 514 | 16 | JS estático do globo 3D, **fora do vitest** — avaliar harness de teste antes de mexer |
-| 2 | **6,87** | `etl/betim/etl/common.py` | 647 | 10 | ETL Python, **fora da suíte vitest** — testar com `pytest` ou harness próprio |
-| 3 | **7,09** | `apps/web/lib/db/queries/betim.ts` | 2.558 | 32 | Maior arquivo do repo; queries Drizzle; atrito subindo (0,20/mês) |
-| 4 | **7,27** | `apps/web/app/sobre/page.tsx` | 613 | 19 | Página estática longa; extrair lógica para `lib/` |
-| 5 | **7,31** | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 617 | 17 | Página dinâmica; extrair lógica para `lib/` |
-| 6 | **7,49** | `apps/web/app/page.tsx` | 543 | 51 | Home; 51 revisões; atrito subindo (0,26/mês) |
-| 7 | **7,95** | `apps/web/app/components/SeuNono.tsx` | 1.909 | 36 | Componente gigante; quebrar em sub-componentes |
-| 8 | **8,06** | `apps/web/app/ambiental/page.tsx` | 410 | 34 | Página ambiental; extrair lógica para `lib/` |
+| 1 | ~~6,46~~ **8,45** | `apps/web/public/terras/globo/js/ui/rotulos.js` | 514 | 16 | ✅ `formatarValor` (cc=59) → tabela `FORMATADORES`; commit `23b37453` |
+| 2 | ~~6,87~~ **6,97** | `etl/betim/etl/common.py` | 647 | 10 | ✅ `_executar` (cc=43) → 4 métodos por operação; commit `23b37453` |
+| 3 | **7,09** | `apps/web/lib/db/queries/betim.ts` | 2.558 | 32 | 17 blocos de duplicação, muitas funções no módulo |
+| 4 | ~~7,26~~ **10,00** | `apps/web/app/sobre/page.tsx` | 613 | 19 | ✅ 6 seções → `app/sobre/components/`; nota perfeita; commit `23b37453` |
+| 5 | ~~7,31~~ **8,15** | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 617 | 17 | ✅ 3 seções → `components/`; cc=64→39; commit `23b37453` |
+| 6 | **7,49** | `apps/web/app/page.tsx` | 543 | 51 | ⛔ outra sessão no home-pc |
+| 7 | **7,95** | `apps/web/app/components/SeuNono.tsx` | 1.909 | 36 | nesting=4, 2 métodos cc=10 |
+| 8 | **8,05** | `apps/web/app/ambiental/page.tsx` | 410 | 34 | 1 método de 383 linhas (cc=13) |
 
-## Já fechados (4 de 18)
+## Já fechados (8 de 18)
 
 | Saúde original | Arquivo | Commit | Prova |
 |---|---|---|---|
 | 1,45 | `lib/assistente/escada-determinista.ts` | `cad5f8fa` | 11 funções, 156 ins/0 del, 12 testes |
 | 2,17 | `app/indice/Catalogo100PaginasClient.tsx` | `a4a7f213` | .tsx 505→92, 21 regras em lib/, 43 testes |
 | 5,73 | `lib/ambiental/licencas-unificada.ts` | `6788cc43` | 18 if → tabela, 18 testes |
+| 6,46 | `public/terras/globo/js/ui/rotulos.js` | `23b37453` | cc=59 → tabela FORMATADORES |
+| 6,87 | `etl/betim/etl/common.py` | `23b37453` | cc=43 → 4 métodos por operação |
 | 6,98 | `lib/assistente/acervo.ts` | `7ba60b26` | 11 if → tabela, sha256 igual, 30 testes |
+| 7,26 | `app/sobre/page.tsx` | `23b37453` | 6 seções → components/, nota 10,00 |
+| 7,31 | `app/[municipio]/vereadores/[slug]/page.tsx` | `23b37453` | 3 seções → components/, cc=64→39 |
 
 Saúde dos 4 refatorados: **recalcular na próxima análise do CodeScene**
 (nunca presumir que melhorou — medir).
