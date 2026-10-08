@@ -108,9 +108,9 @@ describe("dados-desclassificados", () => {
     expect(portugalDoc?.assuntos).toContain("DOPS");
   });
 
-  it("verifica que todos os 56 documentos estao geolocalizados com latitude, longitude e localidade", () => {
+  it("verifica que todos os documentos estao geolocalizados com coordenadas e alianças validas", () => {
     const docs = obterDocumentosDesclassificados();
-    expect(docs).toHaveLength(56);
+    expect(docs.length).toBeGreaterThanOrEqual(80);
 
     for (const doc of docs) {
       expect(typeof doc.latitude).toBe("number");
@@ -121,6 +121,83 @@ describe("dados-desclassificados", () => {
       expect(doc.longitude).toBeGreaterThanOrEqual(-180);
       expect(doc.longitude).toBeLessThanOrEqual(180);
       expect(doc.localidadeFoco?.length).toBeGreaterThan(3);
+      expect(doc.aliancaInteligencia).toBeDefined();
+      expect(["Five Eyes", "Nine Eyes", "Twelve Eyes", "Fourteen Eyes", "G20 Soberano"]).toContain(
+        doc.aliancaInteligencia
+      );
+      expect(doc.naturezaDocumento).toBeDefined();
+      expect(["Desclassificado Histórico", "Relatório Público Contemporâneo"]).toContain(
+        doc.naturezaDocumento
+      );
     }
+  });
+
+  it("verifica relatorios historicos e contemporaneos do FBI e da NSA dos EUA", () => {
+    const docs = obterDocumentosDesclassificados();
+
+    const fbiCointelpro = docs.find((d) => d.id === "DOC-FBI-COINTELPRO-CONE-SUL");
+    expect(fbiCointelpro).toBeDefined();
+    expect(fbiCointelpro?.orgaoInteligencia).toBe("FBI");
+    expect(fbiCointelpro?.aliancaInteligencia).toBe("Five Eyes");
+    expect(fbiCointelpro?.naturezaDocumento).toBe("Desclassificado Histórico");
+
+    const fbiCyber = docs.find((d) => d.id === "DOC-FBI-IC3-CYBER-THREATS-2024");
+    expect(fbiCyber).toBeDefined();
+    expect(fbiCyber?.naturezaDocumento).toBe("Relatório Público Contemporâneo");
+    expect(fbiCyber?.nivelClassificacaoOriginal).toBe("Público / Ostensivo");
+
+    const nsaEchelon = docs.find((d) => d.id === "DOC-NSA-ECHELON-SYSTEM");
+    expect(nsaEchelon).toBeDefined();
+    expect(nsaEchelon?.orgaoInteligencia).toBe("NSA");
+    expect(nsaEchelon?.assuntos).toContain("ECHELON");
+
+    const nsaMalvinas = docs.find((d) => d.id === "DOC-NSA-FALKLANDS-SIGINT-1982");
+    expect(nsaMalvinas).toBeDefined();
+    expect(nsaMalvinas?.assuntos).toContain("Guerra das Malvinas");
+
+    const nsaFisa = docs.find((d) => d.id === "DOC-NSA-FISA-702-TRANSPARENCY");
+    expect(nsaFisa).toBeDefined();
+    expect(nsaFisa?.naturezaDocumento).toBe("Relatório Público Contemporâneo");
+  });
+
+  it("verifica documentos dos paises Five Eyes, Nine Eyes e Twelve Eyes", () => {
+    const docs = obterDocumentosDesclassificados();
+
+    // Five Eyes: Reino Unido GCHQ e Nova Zelândia
+    const gchqDoc = docs.find((d) => d.id === "DOC-GCHQ-UK-ANNUAL-CYBER-REVIEW");
+    expect(gchqDoc).toBeDefined();
+    expect(gchqDoc?.orgaoInteligencia).toBe("GCHQ");
+    expect(gchqDoc?.aliancaInteligencia).toBe("Five Eyes");
+
+    const nzDoc = docs.find((d) => d.id === "DOC-NZSIS-NZ-SECURITY-THREAT-ENV");
+    expect(nzDoc).toBeDefined();
+    expect(nzDoc?.paisOrigem).toBe("Nova Zelândia");
+
+    // Nine Eyes: Dinamarca FE e Noruega NIS
+    const dnkDoc = docs.find((d) => d.id === "DOC-FE-DNK-UDSYN-INTELLIGENCE");
+    expect(dnkDoc).toBeDefined();
+    expect(dnkDoc?.aliancaInteligencia).toBe("Nine Eyes");
+
+    const norDoc = docs.find((d) => d.id === "DOC-NIS-NOR-FOKUS-ARCTIC-RESOURCES");
+    expect(norDoc).toBeDefined();
+    expect(norDoc?.aliancaInteligencia).toBe("Nine Eyes");
+
+    // Twelve Eyes: Alemanha BND Crypto AG, Itália AISE, Espanha CNI e Suécia MUST
+    const bndCrypto = docs.find((d) => d.id === "DOC-BND-DEU-RUBICON-CRYPTO-AG");
+    expect(bndCrypto).toBeDefined();
+    expect(bndCrypto?.assuntos).toContain("Crypto AG");
+    expect(bndCrypto?.aliancaInteligencia).toBe("Twelve Eyes");
+
+    const itaDoc = docs.find((d) => d.id === "DOC-AISE-ITA-MEDITERRANEAN-SECURITY");
+    expect(itaDoc).toBeDefined();
+    expect(itaDoc?.paisOrigem).toBe("Itália");
+
+    const espDoc = docs.find((d) => d.id === "DOC-CNI-ESP-CCN-CERT-CYBERTHREATS");
+    expect(espDoc).toBeDefined();
+    expect(espDoc?.paisOrigem).toBe("Espanha");
+
+    const sweDoc = docs.find((d) => d.id === "DOC-MUST-SWE-ARSOVERSIKT-BALTIC");
+    expect(sweDoc).toBeDefined();
+    expect(sweDoc?.paisOrigem).toBe("Suécia");
   });
 });

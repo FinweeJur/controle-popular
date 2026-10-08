@@ -817,6 +817,42 @@ export const FRENTES: SeuNonoFrente[] = [
               { href: "https://climate.copernicus.eu", texto: "Copernicus Climate Change Service" },
             ],
           },
+          {
+            id: "relatorios-inteligencia-desclassificados-cia-fbi-nsa",
+            pergunta: "O que revelam os relatórios desclassificados da CIA, FBI e NSA?",
+            resposta:
+              "O portal audita 84 relatórios da CIA, FBI, NSA e serviços globais. Os documentos revelam espionagem, acordos nucleares e impactos na soberania do Brasil. Cada registro traz link oficial de custódia e download do PDF.",
+            link: { href: "/internacional/desclassificados", texto: "Dossiês Desclassificados de Inteligência" },
+            links: [
+              { href: "/internacional/desclassificados/mapa", texto: "Mapa Mundial de Inteligência" },
+              { href: "/inteligencia", texto: "Central de Inteligência Global" },
+              { href: "https://www.cia.gov/readingroom/", texto: "CIA FOIA Electronic Reading Room" },
+              { href: "https://vault.fbi.gov/", texto: "The FBI Vault (Registros FOIA)" },
+            ],
+          },
+          {
+            id: "aliancas-five-eyes-twelve-eyes-vigilancia",
+            pergunta: "Como funcionam as alianças Five Eyes, Nine Eyes e Twelve Eyes?",
+            resposta:
+              "São alianças internacionais de compartilhamento de inteligência de sinais e cibersegurança. Reúnem agências dos Estados Unidos, Reino Unido, Canadá e parceiros da Europa. O acervo disponibiliza relatórios de espionagem e ciberdefesa de cada integrante.",
+            link: { href: "/internacional/desclassificados", texto: "Filtro por Aliança de Inteligência" },
+            links: [
+              { href: "/internacional/desclassificados/mapa", texto: "Mapa de Órgãos e Alianças" },
+              { href: "https://www.nsa.gov", texto: "National Security Agency (NSA)" },
+              { href: "https://www.gchq.gov.uk", texto: "GCHQ (Reino Unido)" },
+            ],
+          },
+          {
+            id: "relatorios-atuais-fbi-nsa-ciberseguranca",
+            pergunta: "Onde consultar relatórios atuais e públicos do FBI e da NSA?",
+            resposta:
+              "O portal cataloga relatórios públicos de crimes cibernéticos IC3 do FBI. Também audita diretrizes da NSA para proteção de redes e água potável. Todos os documentos possuem hiperlinks diretos para os domínios do governo americano.",
+            link: { href: "/internacional/desclassificados", texto: "Relatórios Públicos Contemporâneos" },
+            links: [
+              { href: "https://www.ic3.gov/Media/PDF/AnnualReport/2024_IC3Report.pdf", texto: "FBI IC3 Cyber Threat Report" },
+              { href: "https://www.nsa.gov/Press-Room/Cybersecurity-Advisories-Guidance/", texto: "Diretrizes de Cibersegurança NSA" },
+            ],
+          },
         ],
       },
       {
@@ -1802,6 +1838,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/america-latina", texto: "Mineração na América Latina" },
       { href: "/funcaosocialterra/mapa", texto: "Globo 3D Terras" },
       { href: "/empresas", texto: "Grandes Empresas e Mineradoras" },
+    ],
+  },
+  {
+    id: "desclassificados-inteligencia",
+    titulo: "Dossiês Desclassificados de Inteligência & Twelve Eyes",
+    resumo: "Auditoria cívica de 84 relatórios da CIA, FBI, NSA, SNI e alianças Five Eyes, Nine Eyes e Twelve Eyes.",
+    dados: [
+      "84 relatórios de inteligência desclassificados e relatórios públicos contemporâneos",
+      "Cobertura dos EUA (CIA, FBI, NSA) e potências da aliança Twelve Eyes",
+      "Impactos na soberania nacional: Operação Condor, Amazônia e vigilância de sinais",
+      "Metadados arquivísticos completos: código oficial, carimbos, páginas e data original",
+      "100% dos documentos geolocalizados com links diretos para PDF e custódia",
+    ],
+    links: [
+      { href: "/internacional/desclassificados", texto: "Acervo de Desclassificados" },
+      { href: "/internacional/desclassificados/mapa", texto: "Mapa Mundial de Inteligência" },
+      { href: "/inteligencia", texto: "Atalho Central de Inteligência" },
     ],
   },
 ];

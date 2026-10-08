@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { compactar } from "../../../apps/web/lib/estatico/compactar.js";
 import { sanitizarDadoPessoalInternacional } from "../../../apps/web/lib/internacional/privacidade-internacional.js";
+import { NOVOS_DOCUMENTOS_INTELIGENCIA } from "./dados-novos-inteligencia.mjs";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const DIR_OUT = path.join(RAIZ, "apps", "web", "data", "internacional");
@@ -1494,6 +1495,54 @@ const DOCUMENTOS_DESCLASSIFICADOS = [
 ];
 
 /**
+ * Infere a aliança de inteligência caso não tenha sido explicitamente declarada.
+ */
+function inferirAliancaInteligencia(doc: {
+  paisOrigem: string;
+  aliancaInteligencia?: string;
+}): "Five Eyes" | "Nine Eyes" | "Twelve Eyes" | "Fourteen Eyes" | "G20 Soberano" {
+  if (doc.aliancaInteligencia) {
+    return doc.aliancaInteligencia as "Five Eyes" | "Nine Eyes" | "Twelve Eyes" | "Fourteen Eyes" | "G20 Soberano";
+  }
+  const p = doc.paisOrigem;
+  if (["Estados Unidos", "Reino Unido", "Canadá", "Austrália", "Nova Zelândia"].includes(p)) {
+    return "Five Eyes";
+  }
+  if (["Dinamarca", "Noruega", "França", "Holanda"].includes(p)) {
+    return "Nine Eyes";
+  }
+  if (["Alemanha", "Bélgica", "Itália", "Espanha"].includes(p)) {
+    return "Twelve Eyes";
+  }
+  if (["Suécia"].includes(p)) {
+    return "Fourteen Eyes";
+  }
+  return "G20 Soberano";
+}
+
+/**
+ * Infere a natureza documental (histórico desclassificado vs. relatório público contemporâneo).
+ */
+function inferirNaturezaDocumento(doc: {
+  nivelClassificacaoOriginal: string;
+  dataPublicacao: string;
+  dataDesclassificacao: string;
+  naturezaDocumento?: string;
+}): "Desclassificado Histórico" | "Relatório Público Contemporâneo" {
+  if (doc.naturezaDocumento) {
+    return doc.naturezaDocumento as "Desclassificado Histórico" | "Relatório Público Contemporâneo";
+  }
+  if (doc.nivelClassificacaoOriginal === "Público / Ostensivo") {
+    return "Relatório Público Contemporâneo";
+  }
+  const ano = parseInt(String(doc.dataPublicacao || "").substring(0, 4), 10);
+  if (ano >= 2020 && doc.dataPublicacao === doc.dataDesclassificacao) {
+    return "Relatório Público Contemporâneo";
+  }
+  return "Desclassificado Histórico";
+}
+
+/**
  * Função executiva principal que sanitiza, compacta e salva o arquivo de dados.
  */
 function main(): void {
@@ -1503,20 +1552,25 @@ function main(): void {
     fs.mkdirSync(DIR_OUT, { recursive: true });
   }
 
-  // 1. Sanitização estrita contra dados pessoais
-  const documentosSanitizados = DOCUMENTOS_DESCLASSIFICADOS.map((doc) => {
+  // 1. Unificação do acervo histórico com novos documentos (FBI, NSA, Twelve Eyes)
+  const todosDocumentos = [...DOCUMENTOS_DESCLASSIFICADOS, ...NOVOS_DOCUMENTOS_INTELIGENCIA];
+
+  // 2. Sanitização estrita contra dados pessoais e enriquecimento com alianças
+  const documentosSanitizados = todosDocumentos.map((doc) => {
     return {
       ...doc,
       titulo: sanitizarDadoPessoalInternacional(doc.titulo),
       resumo: sanitizarDadoPessoalInternacional(doc.resumo),
       contextoBrasil: sanitizarDadoPessoalInternacional(doc.contextoBrasil),
+      aliancaInteligencia: inferirAliancaInteligencia(doc),
+      naturezaDocumento: inferirNaturezaDocumento(doc),
     };
   });
 
-  // 2. Compactação via lib/estatico/compactar.ts
+  // 3. Compactação via lib/estatico/compactar.ts
   const dadosCompactados = compactar(documentosSanitizados);
 
-  // 3. Gravação em apps/web/data/internacional/desclassificados-g20.compact.json
+  // 4. Gravação em apps/web/data/internacional/desclassificados-g20.compact.json
   const caminhoSaida = path.join(DIR_OUT, "desclassificados-g20.compact.json");
   fs.writeFileSync(caminhoSaida, JSON.stringify(dadosCompactados, null, 2), "utf-8");
 

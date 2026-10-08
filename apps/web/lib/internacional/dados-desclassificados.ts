@@ -40,7 +40,12 @@ export interface DocumentoDesclassificadoG20 {
   continente: "América do Norte" | "América do Sul" | "Europa" | "Oceania" | "Eurásia" | "África" | "Ásia";
   dataPublicacao: string; // Formato YYYY-MM-DD
   dataDesclassificacao: string; // Formato YYYY-MM-DD
-  nivelClassificacaoOriginal: "Ultrassecreto" | "Secreto" | "Confidencial" | "Reservado";
+  nivelClassificacaoOriginal:
+    | "Ultrassecreto"
+    | "Secreto"
+    | "Confidencial"
+    | "Reservado"
+    | "Público / Ostensivo";
   temas: string[];
   assuntos: string[];
   paisesMencionados: string[];
@@ -53,6 +58,8 @@ export interface DocumentoDesclassificadoG20 {
   latitude?: number;
   longitude?: number;
   localidadeFoco?: string;
+  aliancaInteligencia?: "Five Eyes" | "Nine Eyes" | "Twelve Eyes" | "Fourteen Eyes" | "G20 Soberano";
+  naturezaDocumento?: "Desclassificado Histórico" | "Relatório Público Contemporâneo";
 }
 
 /** Cache em memoria para evitar expansao repetida */
@@ -135,12 +142,22 @@ export const COBERTURA_DESCLASSIFICADOS = {
   totalOrgaos: orgaosSet.size,
   totalPaisesOrigem: paisesOrigemSet.size,
   totalDocsMencionamBrasil: docsCalculo.filter((d) => d.paisesMencionados.includes("Brasil")).length,
+  totalFiveEyes: docsCalculo.filter((d) => d.aliancaInteligencia === "Five Eyes").length,
+  totalTwelveEyes: docsCalculo.filter((d) =>
+    ["Five Eyes", "Nine Eyes", "Twelve Eyes", "Fourteen Eyes"].includes(d.aliancaInteligencia || "")
+  ).length,
+  totalPublicosContemporaneos: docsCalculo.filter(
+    (d) => d.naturezaDocumento === "Relatório Público Contemporâneo"
+  ).length,
+  totalHistoricosDesclassificados: docsCalculo.filter(
+    (d) => d.naturezaDocumento === "Desclassificado Histórico"
+  ).length,
   paisesOrigem: Array.from(paisesOrigemSet).sort(),
   orgaosInteligencia: Array.from(orgaosSet).sort(),
   continentes: Array.from(continentesSet).sort(),
   temasPrincipais: Array.from(temasSet).sort(),
-  anoDocumentoMaisAntigo: anosOriginais.length > 0 ? Math.min(...anosOriginais) : 1964,
-  anoDesclassificacaoMaisRecente: anosDesclassificacao.length > 0 ? Math.max(...anosDesclassificacao) : 2021,
+  anoDocumentoMaisAntigo: anosOriginais.length > 0 ? Math.min(...anosOriginais) : 1963,
+  anoDesclassificacaoMaisRecente: anosDesclassificacao.length > 0 ? Math.max(...anosDesclassificacao) : 2024,
   mediaAnosEmSegredo: mediaAnosCalculada,
-  dataMedicao: "2026-09-30",
+  dataMedicao: "2026-10-08",
 } as const;

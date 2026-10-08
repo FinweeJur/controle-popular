@@ -105,6 +105,10 @@ const DICIONARIOS_UI: Record<
     detalheNumeroRegistro: string;
     btnVerNoMapa: string;
     btnExplorarMapa: string;
+    filtroAlianca: string;
+    todasAliancas: string;
+    filtroNatureza: string;
+    todasNaturezas: string;
   }
 > = {
   pt: {
@@ -152,6 +156,10 @@ const DICIONARIOS_UI: Record<
     detalheSujeitos: "Sujeitos e Figuras Mencionadas:",
     detalheContextoBrasil: "Importância e Contexto para o Brasil:",
     detalheNumeroRegistro: "Código Canônico de Arquivo:",
+    filtroAlianca: "Aliança de Inteligência",
+    todasAliancas: "Todas as alianças",
+    filtroNatureza: "Formato do Registro",
+    todasNaturezas: "Todos os formatos",
   },
   en: {
     tituloAcervo: "G20 Declassified Intelligence Records",
@@ -198,6 +206,10 @@ const DICIONARIOS_UI: Record<
     detalheSujeitos: "Mentioned Figures & Entities:",
     detalheContextoBrasil: "Relevance & Context for Brazil:",
     detalheNumeroRegistro: "Canonical Archival Code:",
+    filtroAlianca: "Intelligence Alliance",
+    todasAliancas: "All alliances",
+    filtroNatureza: "Record Format",
+    todasNaturezas: "All formats",
   },
   es: {
     tituloAcervo: "Archivo de Inteligencia Desclasificada del G20",
@@ -244,6 +256,10 @@ const DICIONARIOS_UI: Record<
     detalheSujeitos: "Sujetos y Figuras Mencionadas:",
     detalheContextoBrasil: "Relevancia y Contexto para Brasil:",
     detalheNumeroRegistro: "Código Canónico de Archivo:",
+    filtroAlianca: "Alianza de Inteligencia",
+    todasAliancas: "Todas las alianzas",
+    filtroNatureza: "Formato del Registro",
+    todasNaturezas: "Todos los formatos",
   },
 };
 
@@ -266,6 +282,8 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
   const [filtroPais, setFiltroPais] = useState<string>("__todos__");
   const [filtroTema, setFiltroTema] = useState<string>("__todos__");
   const [filtroSujeito, setFiltroSujeito] = useState<string>("__todos__");
+  const [filtroAlianca, setFiltroAlianca] = useState<string>("__todas__");
+  const [filtroNatureza, setFiltroNatureza] = useState<string>("__todas__");
   const [filtroEscopo, setFiltroEscopo] = useState<"todos" | "brasil" | "global">("todos");
 
   // Totais por escopo
@@ -317,6 +335,18 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
     return Array.from(new Set(documentos.flatMap((d) => d.sujeitosMencionados))).sort();
   }, [documentos]);
 
+  const aliancasUnicas = useMemo(() => {
+    return Array.from(
+      new Set(documentos.map((d) => d.aliancaInteligencia).filter(Boolean) as string[])
+    ).sort();
+  }, [documentos]);
+
+  const naturezasUnicas = useMemo(() => {
+    return Array.from(
+      new Set(documentos.map((d) => d.naturezaDocumento).filter(Boolean) as string[])
+    ).sort();
+  }, [documentos]);
+
   // Filtro e Ordenação combinados
   const documentosFiltrados = useMemo(() => {
     const q = semAcento(busca.trim().toLowerCase());
@@ -327,6 +357,8 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
         if (filtroPais !== "__todos__" && doc.paisOrigem !== filtroPais) return false;
         if (filtroTema !== "__todos__" && !doc.temas.includes(filtroTema)) return false;
         if (filtroSujeito !== "__todos__" && !doc.sujeitosMencionados.includes(filtroSujeito)) return false;
+        if (filtroAlianca !== "__todas__" && doc.aliancaInteligencia !== filtroAlianca) return false;
+        if (filtroNatureza !== "__todas__" && doc.naturezaDocumento !== filtroNatureza) return false;
         if (filtroEscopo === "brasil" && !doc.paisesMencionados.includes("Brasil")) return false;
         if (filtroEscopo === "global" && doc.paisesMencionados.includes("Brasil")) return false;
 
@@ -350,7 +382,19 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
         const strB = String(valB || "").toLowerCase();
         return ordemDesc ? strB.localeCompare(strA) : strA.localeCompare(strB);
       });
-  }, [documentos, busca, filtroOrgao, filtroPais, filtroTema, filtroSujeito, filtroEscopo, colunaOrd, ordemDesc]);
+  }, [
+    documentos,
+    busca,
+    filtroOrgao,
+    filtroPais,
+    filtroTema,
+    filtroSujeito,
+    filtroAlianca,
+    filtroNatureza,
+    filtroEscopo,
+    colunaOrd,
+    ordemDesc,
+  ]);
 
   // Alternador de ordenação
   const alternarOrdenacao = useCallback((coluna: ColunaOrdenacao) => {
@@ -368,13 +412,13 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
   const exportarCsv = useCallback(() => {
     const cabecalho =
       idioma === "en"
-        ? "ID;Title;Intelligence Agency;Origin Country;Continent;Original Date;Declassified Date;Original Classification;Themes;Keywords;Mentioned Countries;Mentioned Subjects;Official Archival Code;Pages;Custody URL;Original PDF URL"
+        ? "ID;Title;Intelligence Agency;Origin Country;Continent;Intelligence Alliance;Document Format;Original Date;Declassified Date;Original Classification;Themes;Keywords;Mentioned Countries;Mentioned Subjects;Official Archival Code;Pages;Custody URL;Original PDF URL"
         : idioma === "es"
-        ? "ID;Título;Agencia Inteligencia;País Origen;Continente;Fecha Original;Fecha Desclasificación;Clasificación Original;Temas;Palabras Clave;Países Mencionados;Sujetos Mencionados;Código Archivístico Oficial;Páginas;URL Custodia;URL PDF Original"
-        : "ID;Título;Órgão Inteligência;País Origem;Continente;Data Publicação Original;Data Desclassificação;Grau Sigilo Original;Temas;Assuntos;Países Mencionados;Sujeitos Mencionados;Número Registro Oficial;Páginas;URL Custódia Oficial;URL PDF Original";
+        ? "ID;Título;Agencia Inteligencia;País Origen;Continente;Alianza Inteligencia;Formato Registro;Fecha Original;Fecha Desclasificación;Clasificación Original;Temas;Palabras Clave;Países Mencionados;Sujetos Mencionados;Código Archivístico Oficial;Páginas;URL Custodia;URL PDF Original"
+        : "ID;Título;Órgão Inteligência;País Origem;Continente;Aliança Inteligência;Formato Registro;Data Publicação Original;Data Desclassificação;Grau Sigilo Original;Temas;Assuntos;Países Mencionados;Sujeitos Mencionados;Número Registro Oficial;Páginas;URL Custódia Oficial;URL PDF Original";
 
     const linhas = documentosFiltrados.map((doc) =>
-      `"${doc.id}";"${doc.titulo.replace(/"/g, '""')}";"${doc.orgaoInteligencia}";"${doc.paisOrigem}";"${doc.continente}";"${doc.dataPublicacao}";"${doc.dataDesclassificacao}";"${doc.nivelClassificacaoOriginal}";"${doc.temas.join(", ")}";"${doc.assuntos.join(", ")}";"${doc.paisesMencionados.join(", ")}";"${doc.sujeitosMencionados.join(", ")}";"${doc.numeroRegistroOficial}";${doc.quantidadePaginas};"${doc.urlOficialCustodia}";"${doc.urlPdfOriginal}"`
+      `"${doc.id}";"${doc.titulo.replace(/"/g, '""')}";"${doc.orgaoInteligencia}";"${doc.paisOrigem}";"${doc.continente}";"${doc.aliancaInteligencia || ""}";"${doc.naturezaDocumento || ""}";"${doc.dataPublicacao}";"${doc.dataDesclassificacao}";"${doc.nivelClassificacaoOriginal}";"${doc.temas.join(", ")}";"${doc.assuntos.join(", ")}";"${doc.paisesMencionados.join(", ")}";"${doc.sujeitosMencionados.join(", ")}";"${doc.numeroRegistroOficial}";${doc.quantidadePaginas};"${doc.urlOficialCustodia}";"${doc.urlPdfOriginal}"`
     );
 
     const csvConteudo = "\uFEFF" + [cabecalho, ...linhas].join("\n");
@@ -395,6 +439,8 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
     setFiltroPais("__todos__");
     setFiltroTema("__todos__");
     setFiltroSujeito("__todos__");
+    setFiltroAlianca("__todas__");
+    setFiltroNatureza("__todas__");
     setFiltroEscopo("todos");
   };
 
@@ -547,7 +593,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
         </div>
 
         {/* FILTROS FACETADOS MULTIDIMENSIONAIS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 pt-2 border-t border-border/60 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 pt-2 border-t border-border/60 text-xs">
           {/* Órgão */}
           <div>
             <select
@@ -575,6 +621,38 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
               {paisesUnicos.map((p) => (
                 <option key={p} value={p}>
                   {p}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Aliança de Inteligência */}
+          <div>
+            <select
+              value={filtroAlianca}
+              onChange={(e) => setFiltroAlianca(e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface-2 px-2.5 py-1.5 text-xs text-text focus:outline-none focus:ring-1 focus:ring-primary font-medium"
+            >
+              <option value="__todas__">👁️ {ui.todasAliancas} ({aliancasUnicas.length})</option>
+              {aliancasUnicas.map((a) => (
+                <option key={a} value={a}>
+                  {a}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Formato / Natureza */}
+          <div>
+            <select
+              value={filtroNatureza}
+              onChange={(e) => setFiltroNatureza(e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface-2 px-2.5 py-1.5 text-xs text-text focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+              <option value="__todas__">📄 {ui.todasNaturezas} ({naturezasUnicas.length})</option>
+              {naturezasUnicas.map((n) => (
+                <option key={n} value={n}>
+                  {n}
                 </option>
               ))}
             </select>
@@ -626,8 +704,101 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           </div>
         </div>
 
+        {/* PÍLULAS DE ACESSO RÁPIDO: ALIANÇAS E ÓRGÃOS DE DESTAQUE */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+          <span className="text-[11px] text-text-soft font-semibold mr-1">Filtro rápido:</span>
+          <button
+            type="button"
+            onClick={() => {
+              setFiltroAlianca("__todas__");
+              setFiltroOrgao("__todos__");
+            }}
+            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+              filtroAlianca === "__todas__" && filtroOrgao === "__todos__"
+                ? "bg-primary text-white"
+                : "bg-surface-2 text-text-soft hover:text-text"
+            }`}
+          >
+            Todos ({documentos.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltroAlianca(filtroAlianca === "Five Eyes" ? "__todas__" : "Five Eyes")}
+            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+              filtroAlianca === "Five Eyes"
+                ? "bg-sky-600 text-white font-bold"
+                : "bg-sky-500/10 text-sky-700 dark:text-sky-300 hover:bg-sky-500/20"
+            }`}
+          >
+            👁️ Five Eyes
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltroAlianca(filtroAlianca === "Nine Eyes" ? "__todas__" : "Nine Eyes")}
+            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+              filtroAlianca === "Nine Eyes"
+                ? "bg-indigo-600 text-white font-bold"
+                : "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20"
+            }`}
+          >
+            👁️ Nine Eyes
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltroAlianca(filtroAlianca === "Twelve Eyes" ? "__todas__" : "Twelve Eyes")}
+            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+              filtroAlianca === "Twelve Eyes"
+                ? "bg-purple-600 text-white font-bold"
+                : "bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-500/20"
+            }`}
+          >
+            👁️ Twelve Eyes
+          </button>
+          <span className="text-text-soft/40 px-1">|</span>
+          <button
+            type="button"
+            onClick={() => setFiltroOrgao(filtroOrgao === "FBI" ? "__todos__" : "FBI")}
+            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+              filtroOrgao === "FBI"
+                ? "bg-primary text-white font-bold"
+                : "bg-surface-2 text-text-soft hover:text-text"
+            }`}
+          >
+            🇺🇸 FBI
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltroOrgao(filtroOrgao === "NSA" ? "__todos__" : "NSA")}
+            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+              filtroOrgao === "NSA"
+                ? "bg-primary text-white font-bold"
+                : "bg-surface-2 text-text-soft hover:text-text"
+            }`}
+          >
+            🇺🇸 NSA
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltroOrgao(filtroOrgao === "CIA" ? "__todos__" : "CIA")}
+            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+              filtroOrgao === "CIA"
+                ? "bg-primary text-white font-bold"
+                : "bg-surface-2 text-text-soft hover:text-text"
+            }`}
+          >
+            🇺🇸 CIA
+          </button>
+        </div>
+
         {/* CONTADOR DE RESULTADOS E BOTÃO DE LIMPEZA */}
-        {(busca || filtroOrgao !== "__todos__" || filtroPais !== "__todos__" || filtroTema !== "__todos__" || filtroSujeito !== "__todos__" || filtroEscopo !== "todos") && (
+        {(busca ||
+          filtroOrgao !== "__todos__" ||
+          filtroPais !== "__todos__" ||
+          filtroTema !== "__todos__" ||
+          filtroSujeito !== "__todos__" ||
+          filtroAlianca !== "__todas__" ||
+          filtroNatureza !== "__todas__" ||
+          filtroEscopo !== "todos") && (
           <div className="flex items-center justify-between text-[11px] text-text-soft pt-1">
             <span>
               Exibindo <strong>{documentosFiltrados.length}</strong> de {documentos.length} documentos
@@ -672,6 +843,22 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                       </span>
                     </div>
                   </div>
+
+                  {/* Badges de Aliança e Formato */}
+                  {(doc.aliancaInteligencia || doc.naturezaDocumento) && (
+                    <div className="flex flex-wrap items-center gap-1">
+                      {doc.aliancaInteligencia && (
+                        <span className="rounded-md bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.5 text-[9px]">
+                          👁️ {doc.aliancaInteligencia}
+                        </span>
+                      )}
+                      {doc.naturezaDocumento && (
+                        <span className="rounded-md bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.5 text-[9px]">
+                          {doc.naturezaDocumento}
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   <h3 className="font-bold text-xs leading-snug text-text line-clamp-2">
                     {doc.titulo}
@@ -842,11 +1029,21 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                       <div className="text-[10px] text-text-soft">{doc.codigoIsoPais}</div>
                     </td>
                     <td className="p-3">
-                      <div className="font-bold text-text flex items-center gap-1.5">
+                      <div className="font-bold text-text flex items-center gap-1.5 flex-wrap">
                         <span>{doc.titulo}</span>
                         {citaBrasil && (
                           <span className="rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-1 py-0.2 text-[9px] uppercase">
                             🇧🇷 Brasil
+                          </span>
+                        )}
+                        {doc.aliancaInteligencia && (
+                          <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[9px]">
+                            👁️ {doc.aliancaInteligencia}
+                          </span>
+                        )}
+                        {doc.naturezaDocumento && (
+                          <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[9px]">
+                            {doc.naturezaDocumento}
                           </span>
                         )}
                       </div>
@@ -930,12 +1127,22 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <div className="relative w-full max-w-2xl rounded-3xl border border-border bg-surface p-6 shadow-2xl space-y-4 my-8">
             <div className="flex items-start justify-between gap-4 border-b border-border pb-3">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold text-primary mb-1">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-primary mb-1">
                   <span>{documentoSelecionado.bandeiraPais}</span>
                   <span>{documentoSelecionado.nomeCompletoOrgao}</span>
                   <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[10px] text-text-soft">
                     {documentoSelecionado.continente}
                   </span>
+                  {documentoSelecionado.aliancaInteligencia && (
+                    <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[10px]">
+                      👁️ {documentoSelecionado.aliancaInteligencia}
+                    </span>
+                  )}
+                  {documentoSelecionado.naturezaDocumento && (
+                    <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[10px]">
+                      {documentoSelecionado.naturezaDocumento}
+                    </span>
+                  )}
                 </div>
                 <h3 className="text-base font-bold text-text leading-snug">
                   {documentoSelecionado.titulo}
