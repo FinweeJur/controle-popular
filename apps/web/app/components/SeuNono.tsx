@@ -156,7 +156,11 @@ interface TurnoIa {
 /** Resolve a URL da fonte: interna vira URL absoluta, externa fica como está. */
 function urlDaFonte(f: FonteIa): string {
   const href = f.url ?? f.rota ?? "#";
-  if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")) {
+  // Variável nomeada no lugar do `||` comprido dentro do `if`: o CodeScene
+  // marcava a condição como Complex Conditional (08/10/2026) e a intenção
+  // ("este href já é externo?") fica dita uma vez, com o mesmo resultado.
+  const hrefEhExterno = href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//");
+  if (hrefEhExterno) {
     return href;
   }
   return typeof window !== "undefined" ? `${window.location.origin}${href}` : href;
@@ -246,6 +250,120 @@ function CardFonte({
 }
 
 /**
+ * Lista compacta das fontes citadas na resposta — uma linha por fonte, com
+ * índice, título e botões de abrir/copiar.
+ *
+ * Extraída de `BlocoRespostaIaSeuNono` (CodeScene 08/10/2026: método com
+ * cc=10 e 131 linhas). Os botões param a propagação do clique porque o
+ * cartão pai acelera a animação do typewriter ao ser clicado — quem abre
+ * fonte não pode pular o texto no mesmo gesto.
+ */
+function ListaFontesResposta({
+  fontes,
+  copiado,
+  aoAbrir,
+  aoCopiar,
+}: {
+  fontes: FonteIa[];
+  copiado: string | null;
+  aoAbrir: (url: string) => void;
+  aoCopiar: (url: string) => Promise<boolean>;
+}) {
+  if (fontes.length === 0) return null;
+  return (
+    <ul className="mt-3 space-y-1.5 border-t border-border pt-2.5">
+      {fontes.map((f) => (
+        <li
+          key={f.indice}
+          className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2.5 py-1.5 text-xs"
+        >
+          <span className="truncate text-text-soft">
+            <span className="mr-1 rounded bg-primary/10 px-1 py-0.5 text-[0.68rem] font-bold text-primary">
+              {f.indice}
+            </span>
+            {f.titulo ?? f.rota}
+          </span>
+          <span className="flex shrink-0 items-center gap-1">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                aoAbrir(urlDaFonte(f));
+              }}
+              className="rounded p-1 text-text-soft hover:bg-surface-2"
+              aria-label={`Abrir fonte ${f.indice}`}
+            >
+              <ExternalLink size={12} />
+            </button>
+            <button
+              type="button"
+              onClick={async (e) => {
+                e.stopPropagation();
+                await aoCopiar(urlDaFonte(f));
+              }}
+              className="rounded p-1 text-text-soft hover:bg-surface-2"
+              aria-label={`Copiar link da fonte ${f.indice}`}
+            >
+              {copiado === urlDaFonte(f) ? (
+                <Check size={12} className="text-primary" />
+              ) : (
+                <Copy size={12} />
+              )}
+            </button>
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * "Páginas no mesmo eixo" — links irmãos da primeira fonte na árvore do
+ * portal, com atalho para a árvore completa.
+ *
+ * Extraída do IIFE que vivia dentro de `BlocoRespostaIaSeuNono` (CodeScene
+ * 08/10/2026). Sem rota base, sem galho ou sem links, não renderiza nada —
+ * mesma degradação vazia de antes. Os links param a propagação para não
+ * acelerar o typewriter do cartão pai.
+ */
+function SecaoGalhoRelacionado({ rotaBase }: { rotaBase: string }) {
+  const galho = rotaBase ? obterLinksRelacionadosGalho(rotaBase, 3) : null;
+  if (!galho || galho.links.length === 0) return null;
+  return (
+    <div className="mt-3 pt-2.5 border-t border-border">
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
+          <span>🌿</span>
+          <span>Páginas no mesmo eixo:</span>
+          <span className="font-bold text-foreground">{galho.eixoNome}</span>
+        </span>
+        <Link
+          href="/laboratorio/arvore"
+          onClick={(e) => e.stopPropagation()}
+          className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
+        >
+          <span>Árvore de links</span>
+          <ExternalLink size={10} />
+        </Link>
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {galho.links.map((link, idx) => (
+          <Link
+            key={idx}
+            href={link.href}
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
+          >
+            <span>{link.rotulo}</span>
+            <ArrowRight size={10} className="opacity-60" />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * Renderizador de resposta IA com digitação progressiva e citações interativas.
  */
 function BlocoRespostaIaSeuNono({
@@ -289,89 +407,14 @@ function BlocoRespostaIaSeuNono({
 
         <BotaoPularAnimacao aoPular={pular} concluido={concluido} />
 
-        {fontes.length > 0 && (
-          <ul className="mt-3 space-y-1.5 border-t border-border pt-2.5">
-            {fontes.map((f) => (
-              <li
-                key={f.indice}
-                className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2.5 py-1.5 text-xs"
-              >
-                <span className="truncate text-text-soft">
-                  <span className="mr-1 rounded bg-primary/10 px-1 py-0.5 text-[0.68rem] font-bold text-primary">
-                    {f.indice}
-                  </span>
-                  {f.titulo ?? f.rota}
-                </span>
-                <span className="flex shrink-0 items-center gap-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      aoAbrir(urlDaFonte(f));
-                    }}
-                    className="rounded p-1 text-text-soft hover:bg-surface-2"
-                    aria-label={`Abrir fonte ${f.indice}`}
-                  >
-                    <ExternalLink size={12} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={async (e) => {
-                      e.stopPropagation();
-                      await aoCopiar(urlDaFonte(f));
-                    }}
-                    className="rounded p-1 text-text-soft hover:bg-surface-2"
-                    aria-label={`Copiar link da fonte ${f.indice}`}
-                  >
-                    {copiado === urlDaFonte(f) ? (
-                      <Check size={12} className="text-primary" />
-                    ) : (
-                      <Copy size={12} />
-                    )}
-                  </button>
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ListaFontesResposta
+          fontes={fontes}
+          copiado={copiado}
+          aoAbrir={aoAbrir}
+          aoCopiar={aoCopiar}
+        />
 
-        {(() => {
-          const rotaBase = fontes[0]?.rota || "";
-          const galho = rotaBase ? obterLinksRelacionadosGalho(rotaBase, 3) : null;
-          if (!galho || galho.links.length === 0) return null;
-          return (
-            <div className="mt-3 pt-2.5 border-t border-border">
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
-                  <span>🌿</span>
-                  <span>Páginas no mesmo eixo:</span>
-                  <span className="font-bold text-foreground">{galho.eixoNome}</span>
-                </span>
-                <Link
-                  href="/laboratorio/arvore"
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
-                >
-                  <span>Árvore de links</span>
-                  <ExternalLink size={10} />
-                </Link>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {galho.links.map((link, idx) => (
-                  <Link
-                    key={idx}
-                    href={link.href}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
-                  >
-                    <span>{link.rotulo}</span>
-                    <ArrowRight size={10} className="opacity-60" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
+        <SecaoGalhoRelacionado rotaBase={fontes[0]?.rota || ""} />
 
         <div className="mt-3">
           <RessalvaIa
@@ -504,6 +547,39 @@ interface AcaoRapida {
   acao: () => void;
 }
 
+/**
+ * Varre as respostas pré-curadas procurando o termo já normalizado
+ * (minúsculas e sem acento) na PERGUNTA ou na RESPOSTA.
+ *
+ * Extraído de `buscarPerguntas` (CodeScene 08/10/2026: Deep, Nested
+ * Complexity com profundidade 4 — três laços de FRENTES aninhados com um
+ * `if` no fundo). A planificação com `flatMap` percorre a MESMA árvore na
+ * MESMA ordem (frente → categoria → pergunta) e devolve os mesmos campos;
+ * só a forma mudou, para caber em aninhamento raso.
+ *
+ * @param lower termo já normalizado com `toLowerCase` + remoção de acento
+ * @returns resultados na ordem natural da árvore, sem limite (o chamador corta)
+ */
+function buscarNasRespostasCuradas(lower: string): ResultadoBusca[] {
+  return FRENTES.flatMap((frente) =>
+    frente.categorias.flatMap((categoria) =>
+      categoria.perguntas
+        .filter((pergunta) => {
+          const texto = pergunta.pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          const resposta = pergunta.resposta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          return texto.includes(lower) || resposta.includes(lower);
+        })
+        .map((pergunta) => ({
+          pergunta: pergunta.pergunta,
+          resposta: pergunta.resposta,
+          link: pergunta.link?.href,
+          linkTexto: pergunta.link?.texto,
+          frente: frente.titulo,
+        })),
+    ),
+  );
+}
+
 function useAcoesRapidas(pathname: string | null): AcaoRapida[] {
   return useMemo(() => {
     if (!pathname) return [];
@@ -540,6 +616,15 @@ function useAcoesRapidas(pathname: string | null): AcaoRapida[] {
 }
 
 type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia" | "pets" | "acessibilidade";
+
+/** Um resultado da busca textual entre as respostas pré-curadas. */
+interface ResultadoBusca {
+  pergunta: string;
+  resposta: string;
+  link?: string;
+  linkTexto?: string;
+  frente?: string;
+}
 
 type ComandoAcessibilidade = {
   comando: string[];
@@ -595,7 +680,7 @@ export function SeuNono() {
   const [respostaContexto, setRespostaContexto] = useState<SugestaoContextual | null>(null);
 
   const [termoBusca, setTermoBusca] = useState("");
-  const [resultadosBusca, setResultadosBusca] = useState<{ pergunta: string; resposta: string; link?: string; linkTexto?: string; frente?: string }[]>([]);
+  const [resultadosBusca, setResultadosBusca] = useState<ResultadoBusca[]>([]);
 
   // Seletor de pet do companheiro (checkboxes no chat — podem ser VÁRIOS
   // na tela, pedido do dono em 02/10/2026). A lista salva só é lida em
@@ -905,27 +990,7 @@ export function SeuNono() {
     }
 
     const lower = termo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const resultados: typeof resultadosBusca = [];
-
-    for (const frente of FRENTES) {
-      for (const cat of frente.categorias) {
-        for (const pergunta of cat.perguntas) {
-          const texto = pergunta.pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const resposta = pergunta.resposta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          if (texto.includes(lower) || resposta.includes(lower)) {
-            resultados.push({
-              pergunta: pergunta.pergunta,
-              resposta: pergunta.resposta,
-              link: pergunta.link?.href,
-              linkTexto: pergunta.link?.texto,
-              frente: frente.titulo,
-            });
-          }
-        }
-      }
-    }
-
-    setResultadosBusca(resultados.slice(0, 5));
+    setResultadosBusca(buscarNasRespostasCuradas(lower).slice(0, 5));
   }
 
   function abrirBusca() {
@@ -1025,11 +1090,29 @@ export function SeuNono() {
     }
   }
 
-  function voltar() {
-    if (nivel === "resposta") {
-      setResposta(null);
-      setNivel("perguntas");
-    } else if (nivel === "resposta-contexto") {
+  /**
+   * Recuo do nível "ia": limpa o estado da conversa com a IA e devolve a
+   * pessoa ao degrau de onde ela veio (perguntas se escolheu categoria,
+   * categorias se escolheu frente, o topo se veio de sugestão ou busca).
+   *
+   * Extraído de `voltar` (CodeScene 08/10/2026: Complex Method cc=11 — a
+   * cadeia de níveis com o ternário duplo aqui dentro estourava 10).
+   */
+  function voltarDeIa() {
+    setErro(null);
+    setRespostaIa(null);
+    setResultadoEscada(null);
+    setStatusChat("pronto");
+    setNivel(categoria ? "perguntas" : frente ? "categorias" : "frentes");
+  }
+
+  /**
+   * Recuo dos níveis que vão direto ao menu inicial (`frentes`), cada um
+   * com a limpeza do que deixou na tela. Nível que não está na lista (o
+   * próprio `frentes`) não faz nada — igual ao `else if` final de antes.
+   */
+  function voltarAoMenu() {
+    if (nivel === "resposta-contexto") {
       setRespostaContexto(null);
       setNivel("frentes");
     } else if (nivel === "busca") {
@@ -1041,19 +1124,37 @@ export function SeuNono() {
       setNivel("frentes");
     } else if (nivel === "acessibilidade") {
       setNivel("frentes");
-    } else if (nivel === "perguntas") {
-      setCategoria(null);
-      setNivel("categorias");
     } else if (nivel === "categorias") {
       setFrente(null);
       setNivel("frentes");
-    } else if (nivel === "ia") {
-      setErro(null);
-      setRespostaIa(null);
-      setResultadoEscada(null);
-      setStatusChat("pronto");
-      setNivel(categoria ? "perguntas" : frente ? "categorias" : "frentes");
     }
+  }
+
+  /**
+   * Volta UM degrau na escada de navegação do chat.
+   *
+   * A cadeia única de oito `else if` virou três funções pequenas — recuo
+   * da resposta curada, recuo da IA e recuo ao menu — porque o CodeScene
+   * marcava o método com cc=11 (08/10/2026). A ordem das checagens não
+   * importa: `nivel` tem um valor por vez, então cada recuo continua
+   * acontecendo exatamente no nível que o chamador pediu.
+   */
+  function voltar() {
+    if (nivel === "resposta") {
+      setResposta(null);
+      setNivel("perguntas");
+      return;
+    }
+    if (nivel === "perguntas") {
+      setCategoria(null);
+      setNivel("categorias");
+      return;
+    }
+    if (nivel === "ia") {
+      voltarDeIa();
+      return;
+    }
+    voltarAoMenu();
   }
 
   function voltarAoInicio() {
@@ -1071,7 +1172,10 @@ export function SeuNono() {
 
   function abrirPagina(href: string) {
     if (typeof window === "undefined") return;
-    if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")) {
+    // Mesma variável nomeada de `urlDaFonte`: endereço externo abre em aba
+    // nova; rota interna navega na própria aba (CodeScene 08/10/2026).
+    const hrefEhExterno = href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//");
+    if (hrefEhExterno) {
       window.open(href, "_blank", "noopener,noreferrer");
     } else {
       window.location.href = href;
@@ -1080,10 +1184,8 @@ export function SeuNono() {
 
   async function copiarLink(href: string): Promise<boolean> {
     if (typeof window === "undefined") return false;
-    const url =
-      href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")
-        ? href
-        : `${window.location.origin}${href}`;
+    const hrefEhExterno = href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//");
+    const url = hrefEhExterno ? href : `${window.location.origin}${href}`;
     try {
       await navigator.clipboard.writeText(url);
       return true;
