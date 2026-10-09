@@ -81,6 +81,10 @@
  *   janela de desenho de um pet corta o outro se for chute.
  * - A física de superfície é função PURA testada em
  *   `lib/companheiro/plataformas.test.ts` (16 casos com conta à mão).
+ * - A máquina de estados do laço (falha/voo/dwell/terra) foi extraída em
+ *   09/10/2026 para `lib/companheiro/passo.ts` (função `passoBicho`), com
+ *   prova de equivalência diferencial em `passo.test.ts` — o `passo` daqui
+ *   virou orquestrador fino: lê refs, chama a máquina, escreve no DOM.
  *
  * ESTADOS DO ATLAS LIGADOS EM 02/10/2026 (pedido do dono)
  * --------------------------------------------------------
@@ -114,10 +118,7 @@ import { X } from "lucide-react";
 import { PetIcone } from "./PetIcone";
 import {
   BASE_BORDA,
-  alvoDoSalto,
   amostrarPlataformas,
-  passoQueda,
-  plataformaSalto,
   superficieSob,
   type Plataforma,
   type Ponto,
@@ -127,6 +128,20 @@ import { escolherFala } from "@/lib/companheiro/falas";
 import { dicaParaRota, type DicaPagina } from "@/lib/companheiro/dicas-pagina";
 import { usePosicaoPainel, medirTopoUtil, type CaixaAncora } from "@/lib/posicionar-painel";
 import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
+import {
+  DUR_VOO_MAX,
+  DUR_VOO_MIN,
+  MARGEM,
+  acharBichoNoAlvo,
+  alcanceSalto,
+  criarBicho,
+  listasIguais,
+  parsearPetsSalvos,
+  passoBicho,
+  xNascimento,
+  type Bicho,
+  type NomeEstado,
+} from "@/lib/companheiro/passo";
 
 // ── Geometria do atlas (padrão Petdex; medidas por PET em companheiroPets.ts)
 const CELL_W = 192;
@@ -139,8 +154,6 @@ const ALTURA_TELA = 42;
 /** O pet padrão (qiaowei) — quem nunca escolheu começa com ele. */
 const PET_INICIAL: PetCompanheiro =
   PETS_COMPANHEIRO.find((p) => p.slug === PET_PADRAO) ?? PETS_COMPANHEIRO[0];
-
-type NomeEstado = (typeof LINHAS_ATLAS)[number];
 
 /**
  * Ritmo dos quadros do atlas, em ms por quadro.
@@ -205,12 +218,9 @@ function posicao(pet: PetCompanheiro, nome: NomeEstado, frame: number): string {
   return `${x}px ${y}px`;
 }
 
-// ── Física do passeio/voo ─────────────────────────────────────────────────
-const VELOCIDADE = 34; // px por segundo andando
-const MARGEM = 12;
-const DUR_VOO_MIN = 420; // ms
-const DUR_VOO_MAX = 900; // ms
-const ESPERA_NO_ALVO_MS = 2800;
+// ── Física do passeio/voo: constantes e máquina de estados moram em
+// `lib/companheiro/passo.ts` (MARGEM, VELOCIDADE, durações de voo,
+// `passoBicho`) — extraído em 09/10/2026 com prova de equivalência.
 
 /**
  * Balõezinhos de permanência no site (pedidos do dono, 04/10/2026).
@@ -383,65 +393,9 @@ function salvarPos(slug: string, pos: Ponto): void {
   }
 }
 
-/** Ponto de uma curva de Bézier quadrática (arco do voo, "teacher pace"). */
-function bezier(p0: Ponto, c: Ponto, p1: Ponto, t: number): Ponto {
-  const u = 1 - t;
-  return {
-    x: u * u * p0.x + 2 * u * t * c.x + t * t * p1.x,
-    y: u * u * p0.y + 2 * u * t * c.y + t * t * p1.y,
-  };
-}
-
-/** Suaviza a velocidade do voo (parte devagar, chega devagar). */
-function suavizar(t: number): number {
-  return t * t * (3 - 2 * t);
-}
-
-interface Voo {
-  // "pousar" = descida ao soltar no ar (arrasto pra cima); "salto" = a
-  // subida em degrau da física de plataforma; ida/volta são os voos do
-  // alvo do Seu Nonô.
-  fase: "ida" | "volta" | "pousar" | "salto";
-  p0: Ponto;
-  ctrl: Ponto;
-  inicio: number;
-  dur: number;
-  destino: Ponto;
-}
-
-/**
- * Um bicho: todo o corpo animado de um pet. O mapa `slug → Bicho` é a
- * memória da tela — tirar um pet da lista NÃO apaga a entrada, então ele
- * volta ao lugar de quando saiu.
- */
-interface Bicho {
-  pos: Ponto; // x em px de viewport; y = altura acima do chão (bottom-2)
-  dir: 1 | -1;
-  pausaAte: number; // instante em que o passeio volta (pausa do waiting)
-  arrastando: boolean;
-  voo: Voo | null;
-  chegouEm: number | null; // início do dwell no alvo (só do líder)
-  alvoEl: HTMLElement | null; // alvo atual (só do líder)
-  estado: { nome: NomeEstado; inicio: number };
-  queda: number; // velocidade da queda livre px/s (0 = no chão/superfície)
-  semCliqueAte: number; // suppressor de clique pós-arrasto
-}
-
-/** Cria um bicho parado no chão na posição dada. */
-function criarBicho(x: number): Bicho {
-  return {
-    pos: { x, y: 0 },
-    dir: 1,
-    pausaAte: 0,
-    arrastando: false,
-    voo: null,
-    chegouEm: null,
-    alvoEl: null,
-    estado: { nome: "idle", inicio: 0 },
-    queda: 0,
-    semCliqueAte: 0,
-  };
-}
+// `bezier`, `suavizar`, `Voo`, `Bicho` e `criarBicho` moram em
+// `lib/companheiro/passo.ts` desde 09/10/2026 (extração com prova de
+// equivalência — ver cabeçalho).
 
 export function CompanheiroFlutuante() {
   const pathname = usePathname();
@@ -474,12 +428,10 @@ export function CompanheiroFlutuante() {
       const larg = larguraBotao(pet);
       // Posição lembrada (pedido do dono, 03/10/2026): o bicho volta onde o
       // leitor o soltou. Sem posição salva, o primeiro mantém o canto de
-      // sempre e quem entra depois nasce perto da borda direita.
+      // sempre e quem entra depois nasce perto da borda direita. A regra de
+      // x é pura e testada em `lib/companheiro/passo.ts` (`xNascimento`).
       const salva = salvas[pet.slug];
-      const x =
-        salva?.x ??
-        (idx === 0 ? 24 : Math.max(MARGEM, window.innerWidth - MARGEM - larg - idx * 64));
-      const bicho = criarBicho(x);
+      const bicho = criarBicho(xNascimento(salva, idx, larg, window.innerWidth));
       if (salva) bicho.pos.y = Math.max(0, salva.y);
       bichosRef.current.set(pet.slug, bicho);
     });
@@ -539,30 +491,19 @@ export function CompanheiroFlutuante() {
   // Pets lembrados pelo leitor. `localStorage` só existe depois da
   // hidratação — no servidor e no primeiro render vale o qiaowei
   // (mesmo motivo da nuvem de boas-vindas do Seu Nonô). Valor antigo de
-  // um slug só continua funcionando: `split(",")` aceita um ou muitos.
+  // um slug só continua funcionando: o parser (`parsearPetsSalvos`)
+  // aceita um ou muitos, deduplica e descarta desconhecido. O parser é
+  // puro e testado; a leitura do storage e a aplicação ficam aqui.
   useEffect(() => {
     try {
       const salvo = window.localStorage.getItem(CHAVE_PET);
       if (!salvo) return;
-      const vistos = new Set<string>();
-      const lista: PetCompanheiro[] = [];
-      // "-" é o sentinela de "sem bichinhos" (dono, 03/10/2026): a lista fica
-      // vazia de propósito e o companheiro some da tela.
-      if (salvo !== "-") {
-        for (const bruto of salvo.split(",")) {
-          const slug = bruto.trim();
-          if (!slug || vistos.has(slug)) continue;
-          vistos.add(slug);
-          const achado = PETS_COMPANHEIRO.find((p) => p.slug === slug);
-          if (achado) lista.push(achado);
-        }
-        if (lista.length === 0) return;
-      }
-      const atual = petsRef.current;
-      const igual =
-        atual.length === lista.length &&
-        atual.every((p, i) => p.slug === lista[i].slug);
-      if (igual) return;
+      // "-" é o sentinela de "sem bichinhos" (dono, 03/10/2026): a lista
+      // fica vazia de propósito e o companheiro some da tela. `null` do
+      // parser = nada válido salvo: mantém o que está na tela.
+      const lista = parsearPetsSalvos(salvo, PETS_COMPANHEIRO);
+      if (!lista) return;
+      if (listasIguais(petsRef.current, lista)) return;
       // eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de localStorage: no SSR o objeto nao existe
       aplicarLista(lista);
     } catch {
@@ -912,153 +853,56 @@ export function CompanheiroFlutuante() {
       const dt = Math.min(0.05, (agora - anterior) / 1000);
       anterior = agora;
       const plataformas = platsRef.current;
-      // Alcance do salto cresce com a tela: dá para subir em cartão alto
-      // num monitor grande; no celular o pulo é mais curto (e honesto).
-      const alcance = Math.min(420, Math.max(200, window.innerHeight * 0.45));
+      // Alcance do salto cresce com a tela (fórmula em `alcanceSalto`).
+      const alcance = alcanceSalto(window.innerHeight);
+      const largJanela = window.innerWidth;
 
       for (const pet of petsRef.current) {
         const b = bichosRef.current.get(pet.slug);
         if (!b) continue;
         const larg = larguraBotao(pet);
-        let estado: NomeEstado = "idle";
-
-        // PRIORIDADE MÁXIMA: enquanto o prazo de "failed" não vence, o bicho
-        // congela no estado triste e ignora voo, queda e passeio. Quando vence,
-        // o bloco normal retoma sozinho (o ref aponta para um instante passado).
-        if (agora < falhaAteRef.current) {
-          estado = "failed";
-        } else if (b.voo) {
-          const voo = b.voo;
-          const t = Math.min(1, (agora - voo.inicio) / voo.dur);
-          const destino =
-            voo.fase === "ida" ? pontoDoAlvo(b, larg) ?? voo.destino : voo.destino;
-          b.pos = bezier(voo.p0, voo.ctrl, destino, suavizar(t));
-          // Ida, salto e pouso são voos no AR (jumping = batendo asas);
-          // a volta ao chão é corrida.
-          estado = voo.fase === "volta" ? "running" : "jumping";
-          if (t >= 1) {
-            b.voo = null;
-            if (voo.fase === "ida") b.chegouEm = agora; // dwell no alvo
-            if (voo.fase === "pousar") {
-              b.pausaAte = agora + 600; // respira
-              // Fim da descida do arrasto: agora sim a posição é a final —
-              // grava para o bicho voltar aqui no próximo acesso.
-              salvarPos(pet.slug, b.pos);
-            }
-            if (voo.fase === "salto") b.pausaAte = agora + 120;
-            if (voo.fase === "volta") {
-              // Ciclo do alvo fechado: solta o alvo para a PRÓXIMA resposta
-              // do Seu Nonô poder guiar de novo (sem isso, o observador de
-              // mutações ficaria bloqueado para sempre no antigo alvo).
-              b.alvoEl = null;
-              b.queda = 0;
-            }
-          }
-        } else if (b.chegouEm !== null) {
-          // Parada no alvo: acena (`waving`) por 1,4 s e depois "revisa"
-          // o alvo (`review`) enquanto o anel pulsa. Depois, voo de volta.
-          estado = agora - b.chegouEm <= 1400 ? "waving" : "review";
-          if (agora - b.chegouEm > ESPERA_NO_ALVO_MS) {
-            b.chegouEm = null;
-            const p0 = { ...b.pos };
-            const largClamp = Math.max(MARGEM, window.innerWidth - larg - MARGEM);
-            const x = Math.max(MARGEM, Math.min(largClamp, p0.x));
-            // Volta pousa na superfície sob o x de destino (chão ou teto).
-            const destino: Ponto = {
-              x,
-              y: superficieSob(plataformas, x + larg / 2, p0.y),
-            };
-            b.voo = {
-              fase: "volta",
-              p0,
-              ctrl: { x: (p0.x + destino.x) / 2, y: Math.max(p0.y, destino.y) + 80 },
-              inicio: agora,
-              dur: Math.min(DUR_VOO_MAX, DUR_VOO_MIN + Math.abs(p0.x - destino.x)),
-              destino,
-            };
-          }
-        } else if (b.arrastando || semMovimento) {
-          // Arrastando o dedo nele (ou movimento reduzido): parado.
-          estado = "idle";
-        } else {
-          const centro = b.pos.x + larg / 2;
-          const sob = superficieSob(plataformas, centro, b.pos.y);
-
-          if (b.pos.y > sob + 0.5) {
-            // No ar: saiu da borda de uma plataforma (ou do soltar sem arco).
-            // Gravidade até a primeira superfície sob os pés.
-            const q = passoQueda(b.pos.y, b.queda, dt, sob);
-            b.pos.y = q.y;
-            b.queda = q.vel;
-            estado = "jumping"; // asas batendo na descida
-            if (q.pousou) {
-              b.queda = 0;
-              b.pausaAte = agora + 250;
-              estado = "idle";
-            }
-          } else {
-            // No chão: cola na superfície e passeia (anda, pula, pausa).
-            b.queda = 0;
-            b.pos.y = sob;
-            if (agora >= b.pausaAte) {
-              b.pos.x += b.dir * VELOCIDADE * dt;
-              const maxX = window.innerWidth - larg - MARGEM;
-              if (b.pos.x <= MARGEM) {
-                b.pos.x = MARGEM;
-                b.dir = 1;
-              } else if (b.pos.x >= maxX) {
-                b.pos.x = maxX;
-                b.dir = -1;
-              }
-              // Encontro com degrau à frente dentro do alcance: salto.
-              const ponta = b.dir > 0 ? b.pos.x + larg : b.pos.x;
-              const degrau = plataformaSalto(plataformas, {
-                yAgora: b.pos.y,
-                xPonta: ponta,
-                alcance,
-              });
-              if (degrau) {
-                const p0 = { ...b.pos };
-                const destino = alvoDoSalto(degrau, b.dir, larg);
-                b.voo = {
-                  fase: "salto",
-                  p0,
-                  ctrl: {
-                    x: (p0.x + destino.x) / 2,
-                    y: Math.max(p0.y, destino.y) + 46,
-                  },
-                  inicio: agora,
-                  dur: Math.min(700, 320 + Math.abs(destino.y - p0.y) * 1.1),
-                  destino,
-                };
-                estado = "jumping";
-              } else {
-                estado = b.dir > 0 ? "running-right" : "running-left";
-                if (Math.random() < 0.004) {
-                  b.pausaAte = agora + 900 + Math.random() * 1800;
-                }
-              }
-            } else {
-              // Pausa do passeio: `waiting` (olha em volta).
-              estado = "waiting";
-            }
-          }
+        // Destino "ida" relido a cada quadro (o alvo do Seu Nonô segue a
+        // rolagem e o layout); só a fase "ida" precisa — mesma precedência
+        // do `?? voo.destino` do código anterior à extração.
+        const destinoIda = b.voo?.fase === "ida" ? pontoDoAlvo(b, larg) : null;
+        // A máquina de estados (falha/voo/dwell/terra) é PURA e testada em
+        // `lib/companheiro/passo.ts` — aqui só orquestramos e escrevemos DOM.
+        const r = passoBicho(b, {
+          agora,
+          dt,
+          plataformas,
+          larg,
+          alcance,
+          semMovimento,
+          emFalha: agora < falhaAteRef.current,
+          largJanela,
+          destinoIda,
+          aleatorio: Math.random,
+        });
+        // Fim da descida do arrasto ("pousar"): a posição do quadro final é
+        // a definitiva — grava para o bicho voltar aqui no próximo acesso.
+        if (r.gravarPosicao) salvarPos(pet.slug, b.pos);
+        if (b.estado.nome !== r.estado) {
+          b.estado = { nome: r.estado, inicio: agora };
         }
 
-        if (b.estado.nome !== estado) b.estado = { nome: estado, inicio: agora };
-
         // Escrita direta no DOM: caixa (posição) e sprite (quadro).
+        // Mantida DENTRO do passo de propósito: extrair para helper module-
+        // level fez o CodeScene parar de separar o Brain Method e engolir o
+        // componente inteiro num cc=107 (medido 09/10/2026 — 9,24 → 6,17).
         const caixa = caixasRef.current.get(pet.slug);
         if (caixa) {
           caixa.style.transform = `translate3d(${Math.round(b.pos.x)}px, ${Math.round(-b.pos.y)}px, 0)`;
         }
         const span = spritesRef.current.get(pet.slug);
         if (span) {
-          const base = Math.floor((agora - b.estado.inicio) / PERIODO_POR_ESTADO[estado]);
+          const base = Math.floor(
+            (agora - b.estado.inicio) / PERIODO_POR_ESTADO[r.estado],
+          );
           span.style.backgroundPosition = posicao(
             pet,
-            estado,
-            base % quadrosDe(pet, estado),
+            r.estado,
+            base % quadrosDe(pet, r.estado),
           );
         }
       }
@@ -1066,18 +910,18 @@ export function CompanheiroFlutuante() {
       // Anel pulsante sobre o alvo durante o "dwell" (só existe um alvo:
       // só o líder voa). `display` (não `opacity`): a animação
       // `animate-ping` mexe na opacidade e venceria o estilo inline.
+      // Quem está no alvo vem da achação pura `acharBichoNoAlvo` — os `&&`s
+      // da condição antiga viraram predicado próprio (Complex Conditional
+      // medido pelo CodeScene em 09/10/2026).
       const anel = anelRef.current;
       if (anel) {
-        let ocupado: Bicho | null = null;
-        for (const pet of petsRef.current) {
-          const b = bichosRef.current.get(pet.slug);
-          if (b && b.chegouEm !== null && b.alvoEl) {
-            ocupado = b;
-            break;
-          }
-        }
-        if (ocupado && ocupado.alvoEl) {
-          const r = ocupado.alvoEl.getBoundingClientRect();
+        const ocupado = acharBichoNoAlvo(
+          petsRef.current,
+          (slug) => bichosRef.current.get(slug),
+        );
+        const alvoEl = ocupado?.alvoEl;
+        if (alvoEl) {
+          const r = alvoEl.getBoundingClientRect();
           anel.style.left = `${r.left - 6}px`;
           anel.style.top = `${r.top - 6}px`;
           anel.style.width = `${r.width + 12}px`;
