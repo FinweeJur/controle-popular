@@ -1,0 +1,37 @@
+# CODEOWNERS — quem o GitHub pede para revisar cada parte do repositório.
+#
+# ESTADO HOJE (09/10/2026): existe UMA conta (@FinweeJur). Por isso todas as
+# linhas apontam para ela e este arquivo funciona, por ora, como MAPA DE
+# DOMÍNIOS — não como roteador de revisão de verdade. Quando uma SEGUNDA pessoa
+# entrar, troque as linhas de domínio pelo @ dela: é isso que faz o bus factor
+# do CodeScene medir algo. Hoje o "bus factor 1" de todo arquivo é artefato da
+# conta única, não fragilidade — ver docs/planos/HOTSPOTSCODESCENE-08-10.md.
+#
+# Sintaxe: o ÚLTIMO padrão que casa vence. Por isso `*` vem PRIMEIRO (default)
+# e as linhas de domínio depois, cada uma sobrepondo o default no seu caminho.
+
+# Default: qualquer arquivo não listado abaixo.
+*                       @FinweeJur
+
+# ── Portal (Next.js / App Router) ────────────────────────────────────────
+# Rotas, lógica pura e dado versionado lido no build.
+/apps/web/app/          @FinweeJur
+/apps/web/lib/          @FinweeJur
+/apps/web/data/         @FinweeJur
+
+# ── Banco (Drizzle/Postgres): schema e queries ───────────────────────────
+/apps/web/lib/db/       @FinweeJur
+
+# ── Coleta, ETL e automação ──────────────────────────────────────────────
+# ⚠️ Aqui mora o risco de dado pessoal (CPF): quem revisar, leia AGENTS §5.2.
+/etl/                   @FinweeJur
+/scripts/               @FinweeJur
+/bots/                  @FinweeJur
+
+# ── Regras, documentação e infraestrutura ────────────────────────────────
+/AGENTS.md              @FinweeJur
+/CONTRIBUTING.md        @FinweeJur
+/docs/                  @FinweeJur
+/.github/               @FinweeJur
+/.githooks/             @FinweeJur
+/Dockerfile             @FinweeJur

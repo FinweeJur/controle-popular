@@ -351,9 +351,11 @@ FALTA, medido hoje — cada item reduz atrito para quem chega:
    `postinstall` do `package.json` roda `scripts/configurar-hooks.mjs`: liga
    sozinho no `npm install`/`npm ci` e nunca derruba a instalação. `npm run
    setup` re-liga à mão quando preciso.
-2. **Não existe `CODEOWNERS`.** Nem em `.github/`, nem na raiz. Com a conta
-   única de hoje é inócuo, mas é o mecanismo que roteia revisão e faz o bus
-   factor virar AÇÃO no dia em que a segunda pessoa entrar.
+2. **`CODEOWNERS`. ✅ RESOLVIDO (09/10/2026).** Criado `.github/CODEOWNERS`
+   com o mapa de domínios (portal, banco, coleta/ETL, scripts, docs/infra).
+   Hoje aponta para a conta única (é mapa, não roteador); quando a segunda
+   pessoa entrar, troca-se a linha do domínio dela e o roteamento de revisão
+   passa a valer — é o que faz o bus factor virar ação.
 3. **Não existe glossário de siglas.** O portal usa ETL, RAG, CAR, CEIS/CNEP,
    IDEB, CAGED, CDP, TCE, LAI, ONSA... Sem uma página que os defina, quem chega
    trava na primeira leitura. Um glossário de uma página baixa a barreira.
