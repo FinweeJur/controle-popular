@@ -1,0 +1,272 @@
+[
+ {
+  "partido": "PL",
+  "contratado": 1029930318.01,
+  "pago": 1021223796.89,
+  "receita": 1034125001.17,
+  "digital": 104000.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO LIBERAL"
+ },
+ {
+  "partido": "UNIÃO",
+  "contratado": 615035772.9,
+  "pago": 596131918.11,
+  "receita": 626312757.7,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "UNIÃO BRASIL"
+ },
+ {
+  "partido": "REPUBLICANOS",
+  "contratado": 591734605.87,
+  "pago": 585209884.64,
+  "receita": 615281624.28,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "REPUBLICANOS"
+ },
+ {
+  "partido": "PT",
+  "contratado": 529728355.18,
+  "pago": 520090317.08,
+  "receita": 631970277.33,
+  "digital": 30000.0,
+  "bigtech": 30000.0,
+  "nome": "PARTIDO DOS TRABALHADORES"
+ },
+ {
+  "partido": "PSD",
+  "contratado": 505426443.27,
+  "pago": 497573383.55,
+  "receita": 516765816.66,
+  "digital": 320.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO SOCIAL DEMOCRÁTICO"
+ },
+ {
+  "partido": "PP",
+  "contratado": 467289996.69,
+  "pago": 465608470.04,
+  "receita": 514895239.53,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PROGRESSISTAS"
+ },
+ {
+  "partido": "MDB",
+  "contratado": 427305264.65,
+  "pago": 421596030.71,
+  "receita": 446174130.17,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "MOVIMENTO DEMOCRÁTICO BRASILEIRO"
+ },
+ {
+  "partido": "PODE",
+  "contratado": 269163779.16,
+  "pago": 260470497.5,
+  "receita": 269228266.61,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PODEMOS"
+ },
+ {
+  "partido": "PDT",
+  "contratado": 217356971.6,
+  "pago": 213096696.99,
+  "receita": 230888123.3,
+  "digital": 60006.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO DEMOCRÁTICO TRABALHISTA"
+ },
+ {
+  "partido": "PSB",
+  "contratado": 171624784.6,
+  "pago": 161114700.75,
+  "receita": 200987183.43,
+  "digital": 45259.99,
+  "bigtech": 19999.99,
+  "nome": "PARTIDO SOCIALISTA BRASILEIRO"
+ },
+ {
+  "partido": "PSDB",
+  "contratado": 167452619.15,
+  "pago": 161812086.74,
+  "receita": 167783234.72,
+  "digital": 250000.0,
+  "bigtech": 250000.0,
+  "nome": "PARTIDO DA SOCIAL DEMOCRACIA BRASILEIRA"
+ },
+ {
+  "partido": "PSOL",
+  "contratado": 132018394.55,
+  "pago": 128437750.9,
+  "receita": 141954541.35,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO SOCIALISMO E LIBERDADE"
+ },
+ {
+  "partido": "PRD",
+  "contratado": 97034395.96,
+  "pago": 95567715.76,
+  "receita": 114831083.29,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO RENOVACAO DEMOCRATICA"
+ },
+ {
+  "partido": "SOLIDARIEDADE",
+  "contratado": 96986096.51,
+  "pago": 96804962.77,
+  "receita": 109035121.53,
+  "digital": 70000.0,
+  "bigtech": 0.0,
+  "nome": "SOLIDARIEDADE"
+ },
+ {
+  "partido": "NOVO",
+  "contratado": 83203179.24,
+  "pago": 81097689.2,
+  "receita": 113326579.58,
+  "digital": 59264.33,
+  "bigtech": 12000.0,
+  "nome": "PARTIDO NOVO"
+ },
+ {
+  "partido": "AVANTE",
+  "contratado": 82557941.5,
+  "pago": 79573584.28,
+  "receita": 95165873.89,
+  "digital": 70000.0,
+  "bigtech": 70000.0,
+  "nome": "AVANTE"
+ },
+ {
+  "partido": "PCDOB",
+  "contratado": 66510652.2,
+  "pago": 66275843.9,
+  "receita": 67094470.24,
+  "digital": 264000.0,
+  "bigtech": 264000.0,
+  "nome": "PARTIDO COMUNISTA DO BRASIL"
+ },
+ {
+  "partido": "PV",
+  "contratado": 47185283.68,
+  "pago": 46907862.68,
+  "receita": 47967997.16,
+  "digital": 5250.0,
+  "bigtech": 1000.0,
+  "nome": "PARTIDO VERDE"
+ },
+ {
+  "partido": "CIDADANIA",
+  "contratado": 41192362.77,
+  "pago": 34643773.76,
+  "receita": 60990807.11,
+  "digital": 200000.0,
+  "bigtech": 200000.0,
+  "nome": "CIDADANIA"
+ },
+ {
+  "partido": "REDE",
+  "contratado": 39561092.43,
+  "pago": 38441389.1,
+  "receita": 40401859.49,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "REDE SUSTENTABILIDADE"
+ },
+ {
+  "partido": "AGIR",
+  "contratado": 4567066.09,
+  "pago": 4462438.59,
+  "receita": 5538692.11,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "AGIR"
+ },
+ {
+  "partido": "PSTU",
+  "contratado": 3347761.5,
+  "pago": 3159761.5,
+  "receita": 3307679.85,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO SOCIALISTA  DOS TRABALHADORES UNIFICADO"
+ },
+ {
+  "partido": "DC",
+  "contratado": 3347595.02,
+  "pago": 3232115.02,
+  "receita": 3351199.35,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "DEMOCRACIA CRISTÃ"
+ },
+ {
+  "partido": "MISSÃO",
+  "contratado": 3329969.1,
+  "pago": 3329969.1,
+  "receita": 3532679.85,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO MISSÃO"
+ },
+ {
+  "partido": "UP",
+  "contratado": 2780236.62,
+  "pago": 1937679.25,
+  "receita": 4427866.51,
+  "digital": 2700.0,
+  "bigtech": 1200.0,
+  "nome": "UNIDADE POPULAR"
+ },
+ {
+  "partido": "PRTB",
+  "contratado": 2521097.96,
+  "pago": 2306097.96,
+  "receita": 3352679.85,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO"
+ },
+ {
+  "partido": "MOBILIZA",
+  "contratado": 1649000.0,
+  "pago": 1405000.0,
+  "receita": 3632679.85,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "MOBILIZAÇÃO NACIONAL"
+ },
+ {
+  "partido": "DEMOCRATA",
+  "contratado": 319450.0,
+  "pago": 0.0,
+  "receita": 2200.0,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "DEMOCRATA"
+ },
+ {
+  "partido": "PCB",
+  "contratado": 1000.0,
+  "pago": 0.0,
+  "receita": 1000.0,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO COMUNISTA BRASILEIRO"
+ },
+ {
+  "partido": "PCO",
+  "contratado": 0.0,
+  "pago": 0.0,
+  "receita": 0.0,
+  "digital": 0.0,
+  "bigtech": 0.0,
+  "nome": "PARTIDO DA CAUSA OPERÁRIA"
+ }
+]

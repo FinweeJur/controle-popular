@@ -1,0 +1,765 @@
+{
+ "fonte": {
+  "nome": "TSE — Dados Abertos",
+  "url_prestacao": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
+  "url_resultados": "https://dadosabertos.tse.jus.br/dataset/resultados-2026",
+  "url_zip_candidatos": "https://cdn.tse.jus.br/estatistica/sead/odsele/prestacao_contas/prestacao_de_contas_eleitorais_candidatos_2026.zip",
+  "url_zip_partidos": "https://cdn.tse.jus.br/estatistica/sead/odsele/prestacao_contas/prestacao_de_contas_eleitorais_orgaos_partidarios_2026.zip",
+  "url_zip_votacao": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2026.zip"
+ },
+ "coleta": {
+  "em": "2026-10-09",
+  "parcial": true,
+  "motivo_parcial": "Contas de campanha com prestação 'Parcial'/'Relatorio Financeiro' (contas definitivas valem até 03/11/2026, art. 49 da Res. 23.752/2026) e resultado do 1º turno de 04/10/2026 (2º turno em 25/10/2026).",
+  "recoleta": "Após 03/11/2026 (contas definitivas) e 25/10/2026 (2º turno)."
+ },
+ "totais": {
+  "receita": 6514401473.04,
+  "contratado": 4483484742.74,
+  "pago": 3121925405.73,
+  "candidaturas": 19724,
+  "eleitos1Turno": 1646,
+  "pendentes2Turno": 16,
+  "linhasTabela": 1823
+ },
+ "grupos": {
+  "materiais": {
+   "contratado": 1076282904.7,
+   "pago": 850268399.74
+  },
+  "digital": {
+   "contratado": 405018325.54,
+   "pago": 390320801.23
+  },
+  "rua": {
+   "contratado": 575528761.45,
+   "pago": 281125981.62
+  },
+  "imprensa": {
+   "contratado": 10841429.12,
+   "pago": 8867460.09
+  },
+  "audiovisual": {
+   "contratado": 240860444.83,
+   "pago": 180700287.93
+  },
+  "outros": {
+   "contratado": 2174952877.1,
+   "pago": 1410642475.12
+  }
+ },
+ "receitaPorFonte": [
+  {
+   "fonte": "FUNDO ESPECIAL",
+   "total": 4919561499.94
+  },
+  {
+   "fonte": "OUTROS RECURSOS",
+   "total": 1044784440.87
+  },
+  {
+   "fonte": "FUNDO PARTIDARIO",
+   "total": 550055532.23
+  },
+  {
+   "fonte": "sem rótulo",
+   "total": 0.0
+  }
+ ],
+ "naturezas": [
+  {
+   "cd": "20140000",
+   "ds": "Publicidade por materiais impressos",
+   "contratado": 803825434.2,
+   "pago": 643069235.9,
+   "linhas": 150310
+  },
+  {
+   "cd": "20120000",
+   "ds": "Serviços prestados por terceiros",
+   "contratado": 669129662.49,
+   "pago": 458964558.76,
+   "linhas": 38374
+  },
+  {
+   "cd": "20800000",
+   "ds": "Atividades de militância e mobilização de rua",
+   "contratado": 575528761.45,
+   "pago": 281125981.62,
+   "linhas": 309494
+  },
+  {
+   "cd": "20010000",
+   "ds": "Despesas com pessoal",
+   "contratado": 480618531.63,
+   "pago": 264035112.64,
+   "linhas": 157807
+  },
+  {
+   "cd": "20420000",
+   "ds": "Despesa com Impulsionamento de Conteúdos",
+   "contratado": 391977840.7,
+   "pago": 380306259.53,
+   "linhas": 29671
+  },
+  {
+   "cd": "20110000",
+   "ds": "Publicidade por adesivos",
+   "contratado": 240912442.12,
+   "pago": 189053366.81,
+   "linhas": 54843
+  },
+  {
+   "cd": "20360001",
+   "ds": "Serviços advocatícios",
+   "contratado": 237075642.17,
+   "pago": 135964004.19,
+   "linhas": 7033
+  },
+  {
+   "cd": "20220000",
+   "ds": "Produção de programas de rádio, televisão ou vídeo",
+   "contratado": 217665394.79,
+   "pago": 163584522.35,
+   "linhas": 4017
+  },
+  {
+   "cd": "20600000",
+   "ds": "Cessão ou locação de veículos",
+   "contratado": 164046744.68,
+   "pago": 96799900.39,
+   "linhas": 22003
+  },
+  {
+   "cd": "20360002",
+   "ds": "Serviços contábeis",
+   "contratado": 132108294.28,
+   "pago": 74741649.72,
+   "linhas": 7144
+  },
+  {
+   "cd": "20270000",
+   "ds": "Diversas a especificar",
+   "contratado": 86445488.15,
+   "pago": 62235951.49,
+   "linhas": 13201
+  },
+  {
+   "cd": "20240000",
+   "ds": "Doações financeiras a outros candidatos/partidos",
+   "contratado": 71749935.37,
+   "pago": 71749935.37,
+   "linhas": 1831
+  },
+  {
+   "cd": "20040000",
+   "ds": "Locação/cessão de bens imóveis",
+   "contratado": 71164618.26,
+   "pago": 52073578.21,
+   "linhas": 8512
+  },
+  {
+   "cd": "20050000",
+   "ds": "Despesas com transporte ou deslocamento",
+   "contratado": 58266317.97,
+   "pago": 39998135.71,
+   "linhas": 3969
+  },
+  {
+   "cd": "20100000",
+   "ds": "Combustíveis e lubrificantes",
+   "contratado": 44921911.66,
+   "pago": 35713445.17,
+   "linhas": 44173
+  },
+  {
+   "cd": "20200000",
+   "ds": "Eventos de promoção da candidatura",
+   "contratado": 36901405.64,
+   "pago": 26422141.39,
+   "linhas": 2809
+  },
+  {
+   "cd": "20060000",
+   "ds": "Publicidade por carros de som",
+   "contratado": 31545028.38,
+   "pago": 18145797.03,
+   "linhas": 1767
+  },
+  {
+   "cd": "20310000",
+   "ds": "Produção de jingles, vinhetas e slogans",
+   "contratado": 23195050.04,
+   "pago": 17115765.58,
+   "linhas": 3075
+  },
+  {
+   "cd": "20070000",
+   "ds": "Locação/cessão de bens móveis (exceto veículos)",
+   "contratado": 22610502.27,
+   "pago": 15458161.38,
+   "linhas": 3531
+  },
+  {
+   "cd": "20190000",
+   "ds": "Pesquisas ou testes eleitorais",
+   "contratado": 21306755.15,
+   "pago": 15595931.4,
+   "linhas": 350
+  },
+  {
+   "cd": "20360000",
+   "ds": "Serviços próprios prestados por terceiros",
+   "contratado": 21173729.82,
+   "pago": 13203563.88,
+   "linhas": 2589
+  },
+  {
+   "cd": "20080000",
+   "ds": "Correspondências e despesas postais",
+   "contratado": 19742252.93,
+   "pago": 19231603.82,
+   "linhas": 5558
+  },
+  {
+   "cd": "20260000",
+   "ds": "Criação e inclusão de páginas na internet",
+   "contratado": 13040484.84,
+   "pago": 10014541.7,
+   "linhas": 1742
+  },
+  {
+   "cd": "20150000",
+   "ds": "Alimentação",
+   "contratado": 12980820.98,
+   "pago": 9272557.51,
+   "linhas": 15074
+  },
+  {
+   "cd": "20130000",
+   "ds": "Publicidade por jornais e revistas",
+   "contratado": 10841429.12,
+   "pago": 8867460.09,
+   "linhas": 2338
+  },
+  {
+   "cd": "20180000",
+   "ds": "Comícios",
+   "contratado": 5586648.56,
+   "pago": 3166326.62,
+   "linhas": 377
+  },
+  {
+   "cd": "20400000",
+   "ds": "Pré-instalação física de comitê de campanha",
+   "contratado": 5394695.14,
+   "pago": 4278674.53,
+   "linhas": 1334
+  },
+  {
+   "cd": "20090000",
+   "ds": "Materiais de expediente",
+   "contratado": 4318957.0,
+   "pago": 3812517.37,
+   "linhas": 15960
+  },
+  {
+   "cd": "20160000",
+   "ds": "Água",
+   "contratado": 2298074.06,
+   "pago": 1905891.96,
+   "linhas": 1461
+  },
+  {
+   "cd": "20350000",
+   "ds": "Despesas com Hospedagem",
+   "contratado": 1879388.0,
+   "pago": 1616538.7,
+   "linhas": 1547
+  },
+  {
+   "cd": "20450000",
+   "ds": "Segurança e prevenção, repressão e combate à violência política",
+   "contratado": 1585548.0,
+   "pago": 1088712.37,
+   "linhas": 126
+  },
+  {
+   "cd": "20900000",
+   "ds": "Passagem Aérea",
+   "contratado": 1193239.41,
+   "pago": 1173595.41,
+   "linhas": 349
+  },
+  {
+   "cd": "20280000",
+   "ds": "Aquisição/Doação de bens móveis ou imóveis",
+   "contratado": 783214.81,
+   "pago": 585633.81,
+   "linhas": 147
+  },
+  {
+   "cd": "20210000",
+   "ds": "Encargos financeiros, taxas bancárias e/ou op. cartão de crédito",
+   "contratado": 547570.07,
+   "pago": 540902.98,
+   "linhas": 66849
+  },
+  {
+   "cd": "20410000",
+   "ds": "Taxa de Administração de Financiamento Coletivo",
+   "contratado": 384009.83,
+   "pago": 384009.83,
+   "linhas": 2677
+  },
+  {
+   "cd": "20430000",
+   "ds": "Despesa com geradores de energia",
+   "contratado": 202022.71,
+   "pago": 153484.25,
+   "linhas": 59
+  },
+  {
+   "cd": "20250000",
+   "ds": "Reembolsos de gastos realizados por eleitores",
+   "contratado": 184428.11,
+   "pago": 180357.11,
+   "linhas": 33
+  },
+  {
+   "cd": "20030000",
+   "ds": "Impostos, contribuições e taxas",
+   "contratado": 139307.3,
+   "pago": 128190.96,
+   "linhas": 684
+  },
+  {
+   "cd": "20170000",
+   "ds": "Energia elétrica",
+   "contratado": 88871.57,
+   "pago": 77254.62,
+   "linhas": 151
+  },
+  {
+   "cd": "20300000",
+   "ds": "Telefone",
+   "contratado": 65752.83,
+   "pago": 31617.82,
+   "linhas": 113
+  },
+  {
+   "cd": "20230000",
+   "ds": "Multas eleitorais",
+   "contratado": 48600.0,
+   "pago": 48600.0,
+   "linhas": 8
+  },
+  {
+   "cd": "20020000",
+   "ds": "Encargos sociais",
+   "contratado": 9936.25,
+   "pago": 9935.75,
+   "linhas": 31
+  },
+  {
+   "cd": "-1",
+   "ds": "",
+   "contratado": 0.0,
+   "pago": 0.0,
+   "linhas": 4507
+  }
+ ],
+ "porCargo": [
+  {
+   "cargo": "Presidente",
+   "candidaturas": 13,
+   "eleitos": 0,
+   "receita": 187525522.68,
+   "contratado": 164366234.86,
+   "pago": 123247375.31,
+   "digital": 14283200.0,
+   "materiais": 11600949.25,
+   "votos": 119300788
+  },
+  {
+   "cargo": "Governador",
+   "candidaturas": 198,
+   "eleitos": 20,
+   "receita": 590669062.51,
+   "contratado": 473197459.29,
+   "pago": 332809302.33,
+   "digital": 44880131.75,
+   "materiais": 68072446.61,
+   "votos": 112129455,
+   "custoVotoMedianoEleitos": 2.29
+  },
+  {
+   "cargo": "Senador",
+   "candidaturas": 314,
+   "eleitos": 54,
+   "receita": 517658937.19,
+   "contratado": 386139164.45,
+   "pago": 283698991.19,
+   "digital": 51545891.03,
+   "materiais": 70391208.58,
+   "votos": 207428348,
+   "custoVotoMedianoEleitos": 1.39
+  },
+  {
+   "cargo": "Deputado Federal",
+   "candidaturas": 7650,
+   "eleitos": 513,
+   "receita": 3393590543.44,
+   "contratado": 2260223604.13,
+   "pago": 1590980514.95,
+   "digital": 178959836.19,
+   "materiais": 603794492.62,
+   "votos": 110621804,
+   "custoVotoMedianoEleitos": 9.61
+  },
+  {
+   "cargo": "Deputado Estadual",
+   "candidaturas": 11120,
+   "eleitos": 1035,
+   "receita": 1777374091.67,
+   "contratado": 1168200609.16,
+   "pago": 769252541.06,
+   "digital": 110287468.23,
+   "materiais": 315824754.16,
+   "votos": 104448267,
+   "custoVotoMedianoEleitos": 4.52
+  },
+  {
+   "cargo": "Deputado Distrital",
+   "candidaturas": 429,
+   "eleitos": 24,
+   "receita": 47583315.55,
+   "contratado": 31357670.85,
+   "pago": 21936680.89,
+   "digital": 5061798.34,
+   "materiais": 6599053.48,
+   "votos": 1627913,
+   "custoVotoMedianoEleitos": 8.59
+  }
+ ],
+ "porUf": [
+  {
+   "uf": "SP",
+   "candidaturas": 2548,
+   "eleitos": 167,
+   "receita": 936919682.97,
+   "contratado": 629049576.99,
+   "pago": 457835127.55,
+   "digital": 96750483.8,
+   "votos": 111366322
+  },
+  {
+   "uf": "RJ",
+   "candidaturas": 1989,
+   "eleitos": 118,
+   "receita": 500585904.47,
+   "contratado": 346314545.68,
+   "pago": 228044400.34,
+   "digital": 34698767.02,
+   "votos": 41461770
+  },
+  {
+   "uf": "MG",
+   "candidaturas": 1749,
+   "eleitos": 133,
+   "receita": 537442966.99,
+   "contratado": 335819722.05,
+   "pago": 237479369.12,
+   "digital": 29291475.77,
+   "votos": 53605231
+  },
+  {
+   "uf": "BA",
+   "candidaturas": 1173,
+   "eleitos": 105,
+   "receita": 346543085.6,
+   "contratado": 262755646.43,
+   "pago": 209816308.33,
+   "digital": 9567851.61,
+   "votos": 38117532
+  },
+  {
+   "uf": "PR",
+   "candidaturas": 1044,
+   "eleitos": 87,
+   "receita": 346016801.61,
+   "contratado": 213484120.39,
+   "pago": 132242842.96,
+   "digital": 24761720.87,
+   "votos": 29674742
+  },
+  {
+   "uf": "RS",
+   "candidaturas": 1013,
+   "eleitos": 89,
+   "receita": 319025875.49,
+   "contratado": 202674861.66,
+   "pago": 163386859.46,
+   "digital": 16219758.18,
+   "votos": 29232092
+  },
+  {
+   "uf": "PE",
+   "candidaturas": 903,
+   "eleitos": 77,
+   "receita": 260307452.89,
+   "contratado": 201837589.49,
+   "pago": 148058618.08,
+   "digital": 21641525.78,
+   "votos": 24575823
+  },
+  {
+   "uf": "CE",
+   "candidaturas": 678,
+   "eleitos": 71,
+   "receita": 247970964.0,
+   "contratado": 171900093.05,
+   "pago": 128539036.88,
+   "digital": 19057548.85,
+   "votos": 25560572
+  },
+  {
+   "uf": "BR",
+   "candidaturas": 13,
+   "eleitos": 0,
+   "receita": 187525522.68,
+   "contratado": 164366234.86,
+   "pago": 123247375.31,
+   "digital": 14283200.0,
+   "votos": 119300788
+  },
+  {
+   "uf": "GO",
+   "candidaturas": 858,
+   "eleitos": 61,
+   "receita": 231521015.11,
+   "contratado": 161949926.05,
+   "pago": 115038530.44,
+   "digital": 13747280.3,
+   "votos": 17211488
+  },
+  {
+   "uf": "SC",
+   "candidaturas": 661,
+   "eleitos": 59,
+   "receita": 214563038.42,
+   "contratado": 158443621.18,
+   "pago": 117888234.61,
+   "digital": 15640913.03,
+   "votos": 20528802
+  },
+  {
+   "uf": "MA",
+   "candidaturas": 571,
+   "eleitos": 63,
+   "receita": 222808386.63,
+   "contratado": 155884534.4,
+   "pago": 108802976.28,
+   "digital": 9254190.15,
+   "votos": 18548092
+  },
+  {
+   "uf": "MT",
+   "candidaturas": 420,
+   "eleitos": 35,
+   "receita": 161529050.76,
+   "contratado": 123572985.59,
+   "pago": 72448931.25,
+   "digital": 12708899.22,
+   "votos": 9101351
+  },
+  {
+   "uf": "PB",
+   "candidaturas": 408,
+   "eleitos": 51,
+   "receita": 149350586.97,
+   "contratado": 121542930.16,
+   "pago": 91911715.21,
+   "digital": 7941509.68,
+   "votos": 11177058
+  },
+  {
+   "uf": "PA",
+   "candidaturas": 686,
+   "eleitos": 61,
+   "receita": 191210667.05,
+   "contratado": 110298822.89,
+   "pago": 78163819.24,
+   "digital": 9945370.2,
+   "votos": 22761342
+  },
+  {
+   "uf": "DF",
+   "candidaturas": 623,
+   "eleitos": 34,
+   "receita": 165125867.65,
+   "contratado": 109940044.84,
+   "pago": 69713209.95,
+   "digital": 14351688.38,
+   "votos": 8127341
+  },
+  {
+   "uf": "RO",
+   "candidaturas": 404,
+   "eleitos": 35,
+   "receita": 146264467.78,
+   "contratado": 106325908.81,
+   "pago": 59099639.76,
+   "digital": 6217667.36,
+   "votos": 4535114
+  },
+  {
+   "uf": "PI",
+   "candidaturas": 340,
+   "eleitos": 43,
+   "receita": 145098928.3,
+   "contratado": 102232819.63,
+   "pago": 79208695.39,
+   "digital": 4500208.1,
+   "votos": 9668820
+  },
+  {
+   "uf": "AM",
+   "candidaturas": 446,
+   "eleitos": 34,
+   "receita": 154449742.09,
+   "contratado": 98069656.57,
+   "pago": 54673388.85,
+   "digital": 9176353.01,
+   "votos": 10011667
+  },
+  {
+   "uf": "SE",
+   "candidaturas": 374,
+   "eleitos": 35,
+   "receita": 122464826.8,
+   "contratado": 96131101.86,
+   "pago": 44997574.32,
+   "digital": 2402487.45,
+   "votos": 6034924
+  },
+  {
+   "uf": "ES",
+   "candidaturas": 560,
+   "eleitos": 42,
+   "receita": 141609035.02,
+   "contratado": 93142924.42,
+   "pago": 62077827.0,
+   "digital": 7901714.18,
+   "votos": 10257277
+  },
+  {
+   "uf": "RN",
+   "candidaturas": 283,
+   "eleitos": 34,
+   "receita": 104560152.87,
+   "contratado": 88982677.02,
+   "pago": 54728570.93,
+   "digital": 4498961.47,
+   "votos": 9354061
+  },
+  {
+   "uf": "MS",
+   "candidaturas": 392,
+   "eleitos": 35,
+   "receita": 117989279.13,
+   "contratado": 82519686.25,
+   "pago": 52051518.9,
+   "digital": 6448535.89,
+   "votos": 6679269
+  },
+  {
+   "uf": "TO",
+   "candidaturas": 326,
+   "eleitos": 34,
+   "receita": 118727000.65,
+   "contratado": 82119495.85,
+   "pago": 63308472.91,
+   "digital": 4709385.05,
+   "votos": 4240480
+  },
+  {
+   "uf": "AP",
+   "candidaturas": 296,
+   "eleitos": 35,
+   "receita": 115979377.26,
+   "contratado": 73506623.49,
+   "pago": 52037545.51,
+   "digital": 1946224.82,
+   "votos": 2226614
+  },
+  {
+   "uf": "AL",
+   "candidaturas": 249,
+   "eleitos": 39,
+   "receita": 115928772.61,
+   "contratado": 71790081.47,
+   "pago": 41349550.38,
+   "digital": 4235080.96,
+   "votos": 8429987
+  },
+  {
+   "uf": "RR",
+   "candidaturas": 369,
+   "eleitos": 35,
+   "receita": 105860219.13,
+   "contratado": 71775769.11,
+   "pago": 46032544.73,
+   "digital": 1587034.62,
+   "votos": 1551837
+  },
+  {
+   "uf": "AC",
+   "candidaturas": 348,
+   "eleitos": 34,
+   "receita": 107022802.11,
+   "contratado": 47052742.55,
+   "pago": 29742722.04,
+   "digital": 1532489.79,
+   "votos": 2216179
+  }
+ ],
+ "mencaoPlataformas": {
+  "FACEBOOK": {
+   "linhas": 7958,
+   "total": 93452103.43
+  },
+  "WHATSAPP": {
+   "linhas": 105,
+   "total": 1091645.64
+  },
+  "INSTAGRAM": {
+   "linhas": 170,
+   "total": 698935.51
+  },
+  "KWAI": {
+   "linhas": 9,
+   "total": 260060.0
+  },
+  "GOOGLE": {
+   "linhas": 30,
+   "total": 114408.46
+  },
+  "YOUTUBE": {
+   "linhas": 8,
+   "total": 93121.67
+  },
+  "TIKTOK": {
+   "linhas": 6,
+   "total": 27607.64
+  }
+ },
+ "lacunas": [
+  "Sem fornecedor no arquivo de despesas pagas: 'contratado' vem de despesas_contratadas e 'pago' de despesas_pagas; os dois números não se somam.",
+  "0 linhas pagas não acharam prestador no mapa (R$ 0,00 fora do total por candidato).",
+  "0 linhas pagas de partido sem mapa de prestador (fora do pago por partido).",
+  "X Corp (Twitter), Kwai, LinkedIn/Microsoft, Amazon Web Services, Apple e Snap não aparecem entre os fornecedores (medido em 09/10/2026).",
+  "Amostra manual da Meta Ads Library (top 10 campanhas) ainda não foi feita — fase 2 da coleta."
+ ],
+ "metodologia": "Votos somados de votacao_candidato_munzona_2026_BRASIL; receita, contratado e natureza de despesa de prestacao_de_contas_eleitorais_candidatos_2026_BRASIL; partidos de prestacao_de_contas_eleitorais_orgaos_partidarios_2026_BRASIL. Tabela pública = todos os eleitos no 1º turno + pendentes de 2º turno + top 50 por contratado e por receita em cada cargo. Big tech = CNPJ curado na fonte (medição 09/10/2026) + nome fechado como fallback; Meta por plataforma = palavra na descrição da despesa (WhatsApp antes de Instagram antes de Facebook; sem palavra = sem plataforma declarada). Custo por voto = pago / votos nominais. Candidaturas sem votação (vedada/retirada) entram nos totais de dinheiro e de candidaturas, e ficam fora de votos e de custo por voto. Agregados por partido e por UF, do universo completo, saem em por-partido.json e por-uf.json. Nenhum CPF é gravado."
+}

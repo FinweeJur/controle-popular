@@ -12108,5 +12108,76 @@
    "**Como consultar o edital na íntegra:** O texto completo, com todas as regras, anexos, minutas e prazos recursais, pode ser acessado diretamente na [edição digital do Diário Oficial](https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-01) ou pelo portal eletrônico de contratações públicas de Minas Gerais. Participantes e entidades civis interessadas devem acompanhar diariamente o diário oficial para conferir eventuais retificações ou comunicados complementares.",
    "*Declaração de Transparência:* Síntese estruturada pelo radar de editais do Controle Popular a partir de dados públicos oficiais do Diário Oficial de Minas Gerais, sob a metodologia de monitoramento cívico do ONSA (Observatório Nacional Socioambiental).*"
   ]
+ },
+ {
+  "slug": "gastos-campanha-2026-publicidade-big-tech",
+  "titulo": "Gastos de campanha 2026: publicidade, big tech e custo por voto",
+  "subtitulo": "O TSE reúne receita, despesa e votos das campanhas, com dado parcial.",
+  "resumo": "A eleição de 2026 já tem R$ 3,1 bilhões em despesas pagas. A publicidade digital contratada soma R$ 405,0 milhões. As big techs receberam R$ 272,4 milhões, quase tudo da Meta. As contas fecham em 03/11/2026, e a página reúne filtros.",
+  "categoria": "Relatório Técnico",
+  "frente": "congresso",
+  "subfrente": "Eleições 2026",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de dados abertos do TSE, auditado pelo ONSA.",
+  "publicadoEm": "2026-10-09T16:03:38Z",
+  "atualizadoEm": "2026-10-09T16:03:38Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "eleicoes",
+   "campanha",
+   "gastos",
+   "tse",
+   "publicidade",
+   "big-tech",
+   "meta",
+   "custo-por-voto",
+   "prestacao-de-contas",
+   "2026"
+  ],
+  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Gastos de campanha 2026: publicidade, big tech e custo por voto. Controle Popular, Belo Horizonte, out. 2026.",
+  "citacaoBibtex": "@article{onsa2026gastoscampanha2026,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Gastos de campanha 2026: publicidade, big tech e custo por voto},\n  journal = {Controle Popular},\n  year = {2026},\n  month = {10},\n  url = {https://controlepopular.com.br/noticias/gastos-campanha-2026-publicidade-big-tech}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "TSE — Dados Abertos: prestação de contas eleitorais 2026",
+    "url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026"
+   },
+   {
+    "nome": "TSE — Dados Abertos: resultados 2026",
+    "url": "https://dadosabertos.tse.jus.br/dataset/resultados-2026"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Receita declarada",
+    "valor": "R$ 6,5 bilhões"
+   },
+   {
+    "rotulo": "Despesa paga",
+    "valor": "R$ 3,1 bilhões"
+   },
+   {
+    "rotulo": "Publicidade digital (contratada)",
+    "valor": "R$ 405,0 milhões"
+   },
+   {
+    "rotulo": "Big tech (Meta, Google, ByteDance)",
+    "valor": "R$ 272,4 milhões"
+   },
+    {
+     "rotulo": "Candidaturas analisadas",
+     "valor": "19.724"
+    }
+  ],
+   "recomendacaoVerificar": "Veja tabelas, análises por partido e por estado, filtros e CSV na [página de gastos de campanha](/eleicoes/2026/gastos-campanha). Os dados vêm do [TSE — Dados Abertos](https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026).",
+  "paragrafos": [
+    "O dinheiro da eleição de 2026 aparece em um só lugar. A prestação de contas ao TSE soma R$ 6,5 bilhões em receita. São 19.724 candidaturas nos seis cargos disputados. Desses, 18.851 tiveram voto contado e 873 são vedadas ou retiradas.",
+   "O dado é parcial, com selo na página. As contas definitivas valem até 03/11/2026. O segundo turno de 25/10 ainda muda votos.",
+   "A publicidade digital contratada soma R$ 405,0 milhões. Os materiais impressos somam R$ 1,08 bilhão contratado. A mobilização de rua chega a R$ 575,5 milhões.",
+    "Meta, Google e ByteDance recebem R$ 272,4 milhões no total. Quase todo o valor vai para a Meta. O Google não anuncia conteúdo político no Brasil desde 01/05/2024.",
+    "O desdobramento da Meta por plataforma vem da descrição da despesa. Ele separa Facebook, Instagram e WhatsApp. X e Kwai não aparecem nesta coleta.",
+   "O custo por voto usa a mediana entre os eleitos. No Senado, a mediana é de R$ 1,39 por voto. Para deputado federal, a mediana chega a R$ 9,61.",
+   "Cada linha leva de volta à fonte oficial do TSE. Baixe em CSV o que estiver filtrado na tela. Veja também os fornecedores de 2022 em [fornecedores de campanha](/congresso/financiamento-eleitoral).",
+    "Nova leitura chega após 03/11/2026, quando as contas fecham. A página [de gastos de campanha](/eleicoes/2026/gastos-campanha) reúne tabelas, gráficos e filtros. Filtre por cargo, UF (MG inclusive) ou partido. Veja também as análises por partido e por estado."
+  ]
  }
 ]

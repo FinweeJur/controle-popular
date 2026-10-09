@@ -145,6 +145,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/documentacao/editorial",
   "/documentacao/fontes-e-coletas",
   "/editais",
+  "/eleicoes/2026/gastos-campanha",
   "/empresas",
   "/empresas/conglomerados",
   "/empresas/documentos",

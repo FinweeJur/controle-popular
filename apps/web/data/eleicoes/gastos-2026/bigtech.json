@@ -1,0 +1,640 @@
+{
+ "total": 272411753.94,
+ "empresas": [
+  {
+   "grupo": "meta",
+   "empresa": "Facebook Serviços Online do Brasil",
+   "cnpj": "13.347.016/0001-17",
+   "total": 271714826.33,
+   "linhas": 22929,
+   "candidatos": 5937,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 270599542.79
+    },
+    {
+     "despesa": "Criação e inclusão de páginas na internet",
+     "total": 491068.38
+    },
+    {
+     "despesa": "Publicidade por materiais impressos",
+     "total": 297222.59
+    },
+    {
+     "despesa": "Diversas a especificar",
+     "total": 106522.53
+    },
+    {
+     "despesa": "Despesas com transporte ou deslocamento",
+     "total": 93234.61
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-01",
+     "total": 2000.0
+    },
+    {
+     "mes": "2026-02",
+     "total": 2000.0
+    },
+    {
+     "mes": "2026-06",
+     "total": 109113.82
+    },
+    {
+     "mes": "2026-08",
+     "total": 74851865.98
+    },
+    {
+     "mes": "2026-09",
+     "total": 194911649.3
+    },
+    {
+     "mes": "2026-10",
+     "total": 1836197.23
+    },
+    {
+     "mes": "2028-08",
+     "total": 2000.0
+    }
+   ]
+  },
+  {
+   "grupo": "meta",
+   "empresa": "Facebook Serviços Online do Brasil (filial)",
+   "cnpj": "13.347.016/0003-89",
+   "total": 647201.16,
+   "linhas": 34,
+   "candidatos": 16,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 647201.16
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 185727.66
+    },
+    {
+     "mes": "2026-09",
+     "total": 461473.5
+    }
+   ]
+  },
+  {
+   "grupo": "google",
+   "empresa": "Google Brasil Internet",
+   "cnpj": "06.990.590/0001-23",
+   "total": 40790.0,
+   "linhas": 18,
+   "candidatos": 16,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 39790.0
+    },
+    {
+     "despesa": "Criação e inclusão de páginas na internet",
+     "total": 1000.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 15540.0
+    },
+    {
+     "mes": "2026-09",
+     "total": 25250.0
+    }
+   ]
+  },
+  {
+   "grupo": "meta",
+   "empresa": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA.",
+   "cnpj": "",
+   "total": 3000.0,
+   "linhas": 1,
+   "candidatos": 1,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 3000.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 3000.0
+    }
+   ]
+  },
+  {
+   "grupo": "bytedance",
+   "empresa": "ByteDance Brasil (TikTok)",
+   "cnpj": "27.415.911/0001-36",
+   "total": 2550.0,
+   "linhas": 4,
+   "candidatos": 4,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 2100.0
+    },
+    {
+     "despesa": "Diversas a especificar",
+     "total": 450.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 1450.0
+    },
+    {
+     "mes": "2026-09",
+     "total": 1100.0
+    }
+   ]
+  },
+  {
+   "grupo": "google",
+   "empresa": "Google Cloud Brasil",
+   "cnpj": "25.012.398/0001-07",
+   "total": 2049.46,
+   "linhas": 20,
+   "candidatos": 18,
+   "naturezas": [
+    {
+     "despesa": "Criação e inclusão de páginas na internet",
+     "total": 742.64
+    },
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 739.86
+    },
+    {
+     "despesa": "Serviços prestados por terceiros",
+     "total": 416.96
+    },
+    {
+     "despesa": "Diversas a especificar",
+     "total": 100.0
+    },
+    {
+     "despesa": "Serviços próprios prestados por terceiros",
+     "total": 50.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 1413.6
+    },
+    {
+     "mes": "2026-09",
+     "total": 635.86
+    }
+   ]
+  },
+  {
+   "grupo": "meta",
+   "empresa": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA",
+   "cnpj": "",
+   "total": 569.0,
+   "linhas": 1,
+   "candidatos": 1,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 569.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-09",
+     "total": 569.0
+    }
+   ]
+  },
+  {
+   "grupo": "meta",
+   "empresa": "Meta Platforms Technologies, LLC",
+   "cnpj": "63.063.151/0001-09",
+   "total": 500.0,
+   "linhas": 1,
+   "candidatos": 1,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 500.0
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-09",
+     "total": 500.0
+    }
+   ]
+  },
+  {
+   "grupo": "google",
+   "empresa": "Google Brasil Pagamentos",
+   "cnpj": "13.382.906/0001-60",
+   "total": 267.99,
+   "linhas": 4,
+   "candidatos": 4,
+   "naturezas": [
+    {
+     "despesa": "Despesa com Impulsionamento de Conteúdos",
+     "total": 205.5
+    },
+    {
+     "despesa": "Criação e inclusão de páginas na internet",
+     "total": 49.99
+    },
+    {
+     "despesa": "Diversas a especificar",
+     "total": 12.5
+    }
+   ],
+   "mensal": [
+    {
+     "mes": "2026-08",
+     "total": 19.0
+    },
+    {
+     "mes": "2026-09",
+     "total": 248.99
+    }
+   ]
+  }
+ ],
+ "topCandidatos": [
+  {
+   "nome": "FLAVIO NANTES BOLSONARO",
+   "urna": "FLAVIO BOLSONARO",
+   "cargo": "Presidente",
+   "uf": "BR",
+   "partido": "PL",
+   "bigtech": 7450000.0,
+   "digital": 9000000.0
+  },
+  {
+   "nome": "LUIZ INÁCIO LULA DA SILVA",
+   "urna": "LULA",
+   "cargo": "Presidente",
+   "uf": "BR",
+   "partido": "PT",
+   "bigtech": 2590000.0,
+   "digital": 2690000.0
+  },
+  {
+   "nome": "FERNANDO HADDAD",
+   "urna": "FERNANDO HADDAD",
+   "cargo": "Governador",
+   "uf": "SP",
+   "partido": "PT",
+   "bigtech": 2539890.0,
+   "digital": 2539890.0
+  },
+  {
+   "nome": "CELIO STUDART BARBOSA",
+   "urna": "CÉLIO STUDART",
+   "cargo": "Deputado Federal",
+   "uf": "CE",
+   "partido": "PSD",
+   "bigtech": 2401700.0,
+   "digital": 2401700.0
+  },
+  {
+   "nome": "CIRO FERREIRA GOMES",
+   "urna": "CIRO GOMES",
+   "cargo": "Governador",
+   "uf": "CE",
+   "partido": "PSDB",
+   "bigtech": 2399999.99,
+   "digital": 2600000.0
+  },
+  {
+   "nome": "AÉCIO NEVES DA CUNHA",
+   "urna": "AÉCIO NEVES",
+   "cargo": "Senador",
+   "uf": "MG",
+   "partido": "PSDB",
+   "bigtech": 2070000.0,
+   "digital": 2070000.0
+  },
+  {
+   "nome": "LUIZ LINDBERGH FARIAS FILHO",
+   "urna": "LINDBERGH",
+   "cargo": "Deputado Federal",
+   "uf": "RJ",
+   "partido": "PT",
+   "bigtech": 1660000.0,
+   "digital": 1665000.0
+  },
+  {
+   "nome": "CAROLINE RODRIGUES DE TONI",
+   "urna": "CAROL DE TONI",
+   "cargo": "Senador",
+   "uf": "SC",
+   "partido": "PL",
+   "bigtech": 1647000.0,
+   "digital": 1647000.0
+  },
+  {
+   "nome": "ALEXANDRE MARANHAO KHURY",
+   "urna": "ALEXANDRE CURI",
+   "cargo": "Senador",
+   "uf": "PR",
+   "partido": "REPUBLICANOS",
+   "bigtech": 1400000.0,
+   "digital": 1400000.0
+  },
+  {
+   "nome": "RUBENS ALBERTO GATTI NUNES",
+   "urna": "RUBINHO NUNES",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "UNIÃO",
+   "bigtech": 1225000.0,
+   "digital": 1225000.0
+  },
+  {
+   "nome": "CRISTINA REIS GRAEML",
+   "urna": "CRISTINA GRAEML",
+   "cargo": "Senador",
+   "uf": "PR",
+   "partido": "PSD",
+   "bigtech": 1163950.0,
+   "digital": 1163950.0
+  },
+  {
+   "nome": "JOÃO HENRIQUE DE ANDRADE LIMA CAMPOS",
+   "urna": "JOÃO CAMPOS",
+   "cargo": "Governador",
+   "uf": "PE",
+   "partido": "PSB",
+   "bigtech": 1145000.0,
+   "digital": 2000661.49
+  },
+  {
+   "nome": "PATRUS ANANIAS DE SOUSA",
+   "urna": "PATRUS ANANIAS",
+   "cargo": "Governador",
+   "uf": "MG",
+   "partido": "PT",
+   "bigtech": 1085120.0,
+   "digital": 1087620.0
+  },
+  {
+   "nome": "MARILIA APARECIDA CAMPOS",
+   "urna": "MARÍLIA CAMPOS",
+   "cargo": "Senador",
+   "uf": "MG",
+   "partido": "PT",
+   "bigtech": 1085000.0,
+   "digital": 1085000.0
+  },
+  {
+   "nome": "MOISES SELERGES JUNIOR",
+   "urna": "MOISES SELERGES",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "PT",
+   "bigtech": 1073000.0,
+   "digital": 1073000.0
+  },
+  {
+   "nome": "ANA CAROLINA CUNHA DE OLIVEIRA FRANCOMANO",
+   "urna": "ANA CAROLINA OLIVEIRA",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "PODE",
+   "bigtech": 1060000.0,
+   "digital": 1230000.0
+  },
+  {
+   "nome": "MARCONI FERREIRA PERILLO JUNIOR",
+   "urna": "MARCONI PERILLO",
+   "cargo": "Governador",
+   "uf": "GO",
+   "partido": "PSDB",
+   "bigtech": 1060000.0,
+   "digital": 1060000.0
+  },
+  {
+   "nome": "CRISTINA PEREIRA MONTEIRO",
+   "urna": "CRIS MONTEIRO",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "NOVO",
+   "bigtech": 1023000.0,
+   "digital": 1023000.0
+  },
+  {
+   "nome": "GUILHERME MURARO DERRITE",
+   "urna": "GUILHERME DERRITE",
+   "cargo": "Senador",
+   "uf": "SP",
+   "partido": "PP",
+   "bigtech": 1020000.0,
+   "digital": 1020000.0
+  },
+  {
+   "nome": "ANDREZA BANDEIRA FERREIRA DE OLIVEIRA MELO ALBUQUERQUE",
+   "urna": "ANDREZA ROMERO",
+   "cargo": "Deputado Federal",
+   "uf": "PE",
+   "partido": "PSB",
+   "bigtech": 1012504.7,
+   "digital": 1012504.7
+  },
+  {
+   "nome": "JOSE ANTONIO DOS SANTOS MEDEIROS",
+   "urna": "ZÉ MEDEIROS",
+   "cargo": "Senador",
+   "uf": "MT",
+   "partido": "PL",
+   "bigtech": 1000000.0,
+   "digital": 1000000.0
+  },
+  {
+   "nome": "LUIZIANNE DE OLIVEIRA LINS",
+   "urna": "LUIZIANNE",
+   "cargo": "Senador",
+   "uf": "CE",
+   "partido": "REDE",
+   "bigtech": 1000000.0,
+   "digital": 1000000.0
+  },
+  {
+   "nome": "HUGO ROGERIO SARMANHO BARRA",
+   "urna": "ROGERIO BARRA",
+   "cargo": "Deputado Federal",
+   "uf": "PA",
+   "partido": "PL",
+   "bigtech": 1000000.0,
+   "digital": 1000000.0
+  },
+  {
+   "nome": "GUSTAVO GAYER MACHADO DE ARAUJO",
+   "urna": "GUSTAVO GAYER",
+   "cargo": "Senador",
+   "uf": "GO",
+   "partido": "PL",
+   "bigtech": 965000.0,
+   "digital": 1065000.0
+  },
+  {
+   "nome": "SANDRO ALEX CRUZ DE OLIVEIRA",
+   "urna": "SANDRO ALEX",
+   "cargo": "Governador",
+   "uf": "PR",
+   "partido": "PSD",
+   "bigtech": 964850.0,
+   "digital": 964850.0
+  },
+  {
+   "nome": "FLAVIO FERNANDO PRADO",
+   "urna": "FLÁVIO GANEM",
+   "cargo": "Deputado Federal",
+   "uf": "RJ",
+   "partido": "UNIÃO",
+   "bigtech": 933000.0,
+   "digital": 963000.0
+  },
+  {
+   "nome": "ANTONIO CARLOS PEIXOTO DE MAGALHÃES NETO",
+   "urna": "ACM NETO",
+   "cargo": "Governador",
+   "uf": "BA",
+   "partido": "UNIÃO",
+   "bigtech": 905000.0,
+   "digital": 925000.0
+  },
+  {
+   "nome": "MATHEUS ARAUJO LAIOLA",
+   "urna": "DELEGADO MATHEUS LAIOLA",
+   "cargo": "Deputado Federal",
+   "uf": "PR",
+   "partido": "UNIÃO",
+   "bigtech": 894200.0,
+   "digital": 945200.0
+  },
+  {
+   "nome": "BRUNO MARCELLO DE OLIVEIRA LIMA",
+   "urna": "DELEGADO BRUNO LIMA",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "PODE",
+   "bigtech": 852000.0,
+   "digital": 852000.0
+  },
+  {
+   "nome": "WELLINGTON ANTONIO FAGUNDES",
+   "urna": "WELLINGTON FAGUNDES",
+   "cargo": "Governador",
+   "uf": "MT",
+   "partido": "PL",
+   "bigtech": 848000.0,
+   "digital": 848000.0
+  }
+ ],
+ "partidos": [
+  {
+   "partido": "PL",
+   "total": 60409050.15
+  },
+  {
+   "partido": "PT",
+   "total": 35662256.67
+  },
+  {
+   "partido": "PSD",
+   "total": 28946458.33
+  },
+  {
+   "partido": "UNIÃO",
+   "total": 22333500.47
+  },
+  {
+   "partido": "REPUBLICANOS",
+   "total": 18011418.21
+  },
+  {
+   "partido": "PP",
+   "total": 13820871.75
+  },
+  {
+   "partido": "PODE",
+   "total": 13763051.3
+  },
+  {
+   "partido": "MDB",
+   "total": 13511263.67
+  },
+  {
+   "partido": "NOVO",
+   "total": 12331909.79
+  },
+  {
+   "partido": "PSB",
+   "total": 12288880.56
+  },
+  {
+   "partido": "PSDB",
+   "total": 10751403.26
+  },
+  {
+   "partido": "PSOL",
+   "total": 6079186.73
+  },
+  {
+   "partido": "PDT",
+   "total": 5030178.24
+  },
+  {
+   "partido": "AVANTE",
+   "total": 4695262.59
+  },
+  {
+   "partido": "PRD",
+   "total": 2664990.59
+  }
+ ],
+ "metaPlataformas": [
+  {
+   "plataforma": "sem plataforma declarada",
+   "total": 209380524.18,
+   "linhas": 16541
+  },
+  {
+   "plataforma": "Facebook",
+   "total": 60754404.24,
+   "linhas": 6154
+  },
+  {
+   "plataforma": "Instagram",
+   "total": 2231168.07,
+   "linhas": 271
+  }
+ ],
+ "match": {
+  "cnpj": 23010,
+  "nome": 2
+ },
+ "naoLocalizadas": [
+  "X Corp (Twitter)",
+  "Kwai",
+  "LinkedIn / Microsoft",
+  "Amazon Web Services (AWS)",
+  "Apple",
+  "Snap"
+ ]
+}

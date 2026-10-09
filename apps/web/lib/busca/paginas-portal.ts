@@ -429,6 +429,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     ],
   },
   {
+    id: "eleicoes-gastos-campanha-2026",
+    titulo: "Gastos de campanha 2026 — publicidade, big tech e custo por voto",
+    descricao:
+      "Receita, despesa contratada e paga, publicidade digital e valor por voto nas Eleições de 2026, em 1.823 candidaturas, com link para a fonte oficial do TSE. Dado parcial medido em 09/10/2026.",
+    href: "/eleicoes/2026/gastos-campanha",
+    frente: "congresso",
+    rotulo: "Eleições · Gastos",
+    badgeCor: "var(--cp-eixo-estado)",
+    palavrasChave: [
+      "eleicoes", "gastos", "campanha", "despesa", "publicidade", "big tech",
+      "meta", "custo por voto", "tse", "prestacao de contas", "2026", "urna",
+    ],
+  },
+  {
     id: "comunicabr-hub",
     titulo: "ComunicaBR — R$ 139 Bi do Governo Federal em Minas Gerais",
     descricao: "Painel unificado dos repasses federais nos 853 municípios mineiros: Bolsa Família, SUS, Fundeb e BPC.",
