@@ -98,6 +98,22 @@ export default function PaginaFinanciamentoEleitoral() {
       </div>
 
       <section
+        aria-label="Eleições de 2026"
+        className="mt-6 rounded-2xl border border-primary/40 bg-primary/5 p-5 text-sm leading-relaxed"
+      >
+        <h2 className="text-xl font-semibold">Eleições de 2026: os números já estão no ar</h2>
+        <p className="mt-2">
+          Esta página olha 2022. Para as eleições de 2026 há um painel completo: receita
+          declarada, publicidade digital, pagamentos a big tech (Meta, Google, TikTok, X e
+          Kwai) e custo por voto, com dado parcial do TSE e link para a fonte oficial. Veja{" "}
+          <Link href="/eleicoes/2026/gastos-campanha" className="font-semibold underline">
+            gastos de campanha 2026
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section
         aria-label="Fonte e método"
         className="mt-6 rounded-2xl border border-border bg-surface-2 p-5 text-sm leading-relaxed"
       >

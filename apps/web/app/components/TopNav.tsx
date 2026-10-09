@@ -154,6 +154,7 @@ const SECOES_MENU: SecaoMenu[] = [
       { label: 'Assembleias Legislativas (27 UFs)', href: '/assembleias', icone: Landmark, destaque: true },
       { label: 'Radar de Compras & Contratos', href: '/ambiental/contratos', icone: ShoppingBag, destaque: true },
       { label: 'Congresso Nacional & Gastos', href: '/congresso', icone: Landmark },
+      { label: 'Gastos de Campanha 2026', href: '/eleicoes/2026/gastos-campanha', icone: BarChart3, destaque: true },
       { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users },
       { label: 'Governos: Prometeu? Cumpriu?', href: '/governo', icone: Landmark },
       { label: 'Grandes Empresas & Fundos ESG', href: '/empresas', icone: Building2 },
