@@ -2,15 +2,16 @@
 
 > **Tipo:** PLANO
 > **Domínio:** global (CodeScene, refatoração de hotspots)
-> **Última medição:** 2026-10-08
+> **Última medição:** 2026-10-09
 > **Leitura estimada:** media
 > **Relacionados:** [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** codescene, hotspots, refatoracao, saude, divida
+> **Palavras-chave:** codescene, hotspots, refatoracao, saude, divida, bus factor
 
 ## Sumário
 
 - [Fila (pior primeiro)](#fila-pior-primeiro)
 - [Já fechados (12 de 18)](#já-fechados-12-de-18)
+- [Bus factor / knowledge maps](#bus-factor--knowledge-maps)
 - [Regras](#regras)
 
 ## Fila (pior primeiro)
@@ -54,6 +55,40 @@ refatorados sem número: **recalcular na próxima análise do CodeScene**
 
 Saúde dos refatorados: **recalcular na próxima análise do CodeScene**
 (nunca presumir que melhorou — medir).
+
+## Bus factor / knowledge maps
+
+**O que é.** Bus factor é o risco de uma pessoa só ser dona de um pedaço do
+código: se ela sair, ninguém mais entende aquilo (o nome vem do "motorista
+do ônibus"). No CodeScene isso vira o mapa de conhecimento — quanto mais
+diferentes forem os donos de um arquivo, mais seguro ele está.
+
+**Medição de 09/10/2026** (`code_ownership_for_path`, projeto 85760):
+
+| Arquivo | Saúde | Revisões | Donos | Bus factor |
+|---|---|---|---|---|
+| `apps/web/app/page.tsx` | 7,49 | 51 | `FinweeJur` | **1** |
+| `apps/web/app/components/TopNav.tsx` | 8,46 | 40 | `FinweeJur` | **1** |
+| `apps/web/app/layout.tsx` | 8,98 | 38 | `FinweeJur` | **1** |
+| `apps/web/app/components/SeuNono.tsx` | 7,95 | 36 | `FinweeJur` | **1** |
+| `apps/web/lib/db/queries/betim.ts` | 7,09 | 32 | `FinweeJur` | **1** |
+| `apps/web/public/terras/globo/js/ui/rotulos.js` | 6,46 | 16 | `FinweeJur` | **1** |
+| `etl/betim/etl/common.py` | 6,87 | 10 | `FinweeJur` | **1** |
+
+**Leitura — e o cuidado para não alarmar.** Todo arquivo medido tem bus
+factor 1, mas aqui **1 não é fragilidade**: o repo é do dono, e todas as
+sessões de agente empurram para o MESMO `FinweeJur` — vale a conta do
+GitHub, não a pessoa. O que isso de fato mede é: **um único ponto de
+entrada** para o histórico do projeto.
+
+Onde o número passa a valer de verdade: se um dia entrar outra conta
+(terceiro, robô dedicado), aí sim uma diferença de donos passa a mostrar
+quem entende o quê. Recalcular nessa hora.
+
+**Dashboard (knowledge maps):**
+[hotspots](https://codescene.io/projects/85760/jobs/7854262/results/code/technical-debt/system-map?max-code-health=10.00&min-change-freq=0&showHotspotsOnly=true&min-coverage=0.00&max-coverage=100.00#hotspots)
+e
+[biomarkers](https://codescene.io/projects/85760/jobs/7854262/results/code/biomarkers).
 
 ## Regras
 

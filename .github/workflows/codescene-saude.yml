@@ -1,0 +1,79 @@
+# Rede de segurança do CodeScene no CI.
+#
+# O que faz: instala o CLI do CodeScene, compara o commit com o que existia
+# ANTES dele e falha a ação quando a mudança introduz problema novo de saúde
+# do código. É a mesma régua do pré-commit (`.githooks/pre-commit`), repetida
+# na nuvem para quem não clonou com os hooks ligados.
+#
+# POR QUE TAMBÉM AQUI, se o hook local já barra: o pré-commit depende de cada
+# clone ter rodado `git config core.hooksPath .githooks` (AGENTS §5.2). Sem
+# esse comando o hook mora no repo e não executa — falha silenciosa, do mesmo
+# jeito que a action `dado-pessoal.yml` cobre o pre-push de CPF.
+#
+# POR QUE NÃO DISPARA DEPLOY: deploy é manual e só por `workflow_dispatch`
+# (AGENTS §5.7.1, cota de build da Guara). Esta action só aponta problema.
+
+name: Saúde do código (CodeScene)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  saude:
+    name: Delta de saúde
+    runs-on: ubuntu-latest
+    steps:
+      # O delta compara dois commits, então precisa do histórico — sem
+      # fetch-depth 0 não há commit base para comparar.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Instalação oficial (documentada em codescene.io/docs/cli). O script
+      # baixa o binário para ~/.local/bin; GITHUB_PATH deixa o diretório
+      # visível aos próximos passos, que são passos separados.
+      - name: Instalar o CLI do CodeScene
+        run: |
+          curl -fsSL https://downloads.codescene.io/enterprise/cli/install-cs-tool.sh | sh -s -- -y
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Escolher o commit de comparação
+        id: base
+        run: |
+          # Em PR, a base é o ramo de origem. Em push, é o commit anterior.
+          # Commit novo (zeros) ou ausência de base não têm contra o que
+          # comparar — avisamos e seguimos, sem travar o fluxo.
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "base=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            echo "base=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=" >> "$GITHUB_OUTPUT"
+            echo "head=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verificar saúde do código no diff
+        env:
+          # Segredo do repo (AGENTS §10): o token nunca aparece no log.
+          CS_ACCESS_TOKEN: ${{ secrets.CS_ACCESS_TOKEN }}
+          # Sem rede de checagem de versão a cada execução: gasta tempo e
+          # nada de ganho aqui.
+          CS_DISABLE_VERSION_CHECK: "1"
+        run: |
+          if [ -z "${{ steps.base.outputs.base }}" ]; then
+            echo "::notice::Sem commit anterior para comparar; delta pulado."
+            exit 0
+          fi
+          echo "Comparando ${{ steps.base.outputs.base }} -> ${{ steps.base.outputs.head }}"
+          cs delta "${{ steps.base.outputs.base }}" "${{ steps.base.outputs.head }}" --error-on-warnings
+
+      - name: Dica quando falha
+        if: failure()
+        run: |
+          echo "A mudança piorou a saúde do código (CodeScene)."
+          echo "Rode localmente: cs delta ${{ steps.base.outputs.base }} ${{ steps.base.outputs.head }}"
+          echo "Regra própria de teste: .codescene/code-health-rules.json"

@@ -1,0 +1,16 @@
+{
+  "usage": "Quality gates do CodeScene para o controle-popular. Uso: quando o repositorio estiver conectado ao CodeScene pelo GitHub (pull request integration), o CodeScene avalia cada PR contra estes portoes e posta um check nele. A REGRA DAQUI e o lado do REPOSITORIO; ligar a integracao de PR no painel codescene.io e passo manual do dono (nem MCP nem CLI expoem essa chave). Portoes escolhidos: (1) new_code_health - PR que INTRODUZ problema novo falha, igual ao pre-commit; (2) hotspot_decline - PR que PIORA um hotspot da fila falha; (3) critical_health_rules - regras criticas em si; (4) advisory_health_rules - as demais sao so aviso, nao barram. Fora da lista de proposito: refactoring_goals e supervise_goals (o projeto ainda nao tem metas de divida registradas no CodeScene, o gate rodaria sem dado) e tag_codeowners_for_critical_code (nao existe CODEOWNERS no repo). Regra do dono (08/10/2026).",
+  "rule_sets": [
+    {
+      "quality_gates": {
+        "new_code_health": true,
+        "hotspot_decline": true,
+        "advisory_health_rules": true,
+        "critical_health_rules": true
+      },
+      "quality_gates_doc": "Pega tudo que e codigo do portal. Precisa ser o ultimo se houver outros (o primeiro que casa vence).",
+      "matching_content_path": "**/*",
+      "matching_content_path_doc": "**/* = todo codigo. Regras sao testadas em ordem e o primeiro matching aplica."
+    }
+  ]
+}

@@ -539,9 +539,25 @@ cs delta --git-hook --staged
   `--output-format json`); `cs check <arquivo>` é o apelido do mesmo exame.
   O `cs` exige `CS_ACCESS_TOKEN` no ambiente.
 - Ativa junto com o pre-push — mesma chave `core.hooksPath .githooks` (§5.2).
-- **Ainda não ligado no CI:** `cs delta <base> <head> --error-on-warnings`
-  é a régua equivalente para o GitHub Actions (falha o build em vez do
-  commit). Só entra com decisão do dono.
+- **O mesmo exame roda também na nuvem** (ligado em 09/10/2026): a action
+  [.github/workflows/codescene-saude.yml](.github/workflows/codescene-saude.yml)
+  instala o CLI e compara `cs delta <base> <head> --error-on-warnings`
+  no push da `main` e em cada PR. Falha a ação em vez do commit — cobre clone
+  sem hook, do mesmo jeito que `dado-pessoal.yml` cobre o pre-push de CPF.
+  Precisa do secret **`CS_ACCESS_TOKEN`**. **Não dispara deploy** (§5.7.1).
+- **O PR também tem portão no lado do CodeScene:**
+  [.codescene/custom-quality-gates.json](.codescene/custom-quality-gates.json)
+  (`new_code_health`, `hotspot_decline`, regras críticas; aviso só de
+  `advisory_health_rules`). Esse só passa a valer quando a integração de PR
+  estiver ligada **no painel codescene.io** — nem CLI nem MCP expõem essa
+  chave, é clique do dono.
+- **Meta de saúde: 10,00.** O CodeScene trata 10 como o padrão de código
+  legível por máquina — "9 e pouco" não é suficiente. Se a saúde regredir,
+  **refatore, não declare pronto**.
+- **Salvaguarda pelo MCP (fluxo recomendado):** `pre_commit_code_health_safeguard`
+  no que está na mão **antes** de cada commit, e `analyze_change_set`
+  (branch contra a base) **antes** de abrir PR. Deram regressão?
+  `code_health_review` diz o quê, e refatora em passos de 3 a 5.
 
 **Se o diff toca `lib/`:** rode o escopo do diff. O vitest usa o grafo de
 módulos e roda só os testes ligados ao que mudou:
@@ -583,6 +599,22 @@ CLI desta máquina, medido em 19/09:
 | `gh` 2.96 | CLI do GitHub: secrets, workflows | `gh secret set KEY --body "..."` |
 | `cs` 1.0.49 | CLI do CodeScene: análise de dívida local | `cs version` |
 
+**`cs docs <tópico>` — a ajuda embutida do CodeScene** (medido 09/10/2026;
+não exige rede):
+
+```bash
+cs docs git-hooks                        # o hook de pré-commit, com exemplo
+cs docs interactive                      # hook que pergunta antes de bloquear
+cs docs pre-commit-hook-example          # imprime o hook pronto pra copiar
+cs docs code-health-rules                # como ajustar as regras de saúde
+cs docs code-health-rules-template       # imprime o .codescene a completar
+cs docs custom-quality-gates-template    # imprime os portões de PR
+cs docs file-name                        # linguagens que o `cs` entende
+cs docs license                          # onde o token vive
+```
+
+Tópicos com `cs docs <t> --help` não existem — `--help` é só nos comandos.
+
 Anotações:
 
 - `guara security findings` está quebrado (pacote faltando no CLI). O scan
@@ -593,26 +625,36 @@ Anotações:
   A string da Neon se recupera com `neonctl connection-string`.
 - Segredos nunca vão para o repositório nem para prints. Deny rules ativas.
 
-### CodeScene MCP (medido em 07/10/2026)
+### CodeScene MCP (medido em 09/10/2026)
 
 - **O que é:** o servidor MCP `@codescene/codehealth-mcp` entrega a análise
   de saúde do código do CodeScene (offer do GitHub Student Pack): pontos
-  quentes (hotspots), saúde por arquivo e guarda antes de commit.
+  quentes (hotspots), saúde por arquivo e guarda antes de commit. Sobe com
+  `npx -y @codescene/codehealth-mcp`; **a primeira chamada baixa um binário
+  de ~83 MB** e por isso pode demorar ou falhar uma vez (`spawn UNKNOWN`) —
+  a segunda já sai na hora.
 - **Como chamar:** o opencode registra o MCP `codescene`, que roda
   `scripts/mcp-codescene.ps1`. O wrapper lê `CS_ACCESS_TOKEN` de
   `scripts/.env` (gitignorado) e **nunca imprime o valor** (§5.8). A config
   mora em `C:\Users\teste\.config\opencode\opencode.json` e **só recarrega
   com restart do opencode**.
-- **Projeto:** `controle-popular`, id **85760**.
-- **`verify_installation` exige `git_repository_path`:** sem o parâmetro ele
-  responde `missing field git_repository_path`; passe a raiz do git.
-- **Refatorar por dado, não por intuição:** leia
-  `list_technical_debt_hotspots_for_project` (projeto 85760) e
-  `code_health_score` antes de escolher o que mexer, e registre a leitura em
-  um doc. A primeira leitura está em
-  [PENDENCIAS-07-10.md](docs/planos/PENDENCIAS-07-10.md).
-- **Economia de token (§5.12):** `CS_DEFAULT_PROJECT_ID=85760` e
+- **Ferramentas que a sessão deve usar antes de refatorar:**
+  `verify_installation` (passe **sempre** `git_repository_path`, senão ele
+  responde `missing field git_repository_path`),
+  `list_technical_debt_hotspots_for_project` (projeto **85760**),
+  `code_health_score`, `code_health_review`, `code_ownership_for_path`
+  (dono/bus factor), `analyze_change_set` (saúde do diff da branch),
+  `pre_commit_code_health_safeguard` (guarda antes do commit),
+  `list_technical_debt_goals_for_project`.
+  Economia de token (§5.12): `CS_DEFAULT_PROJECT_ID=85760` e
   `CS_ENABLED_TOOLS` na config abrem só o que a sessão usa.
+- **Projeto:** `controle-popular`, id **85760**. Sessão autenticada por PAT
+  (`CS_ACCESS_TOKEN`, na lista de `env_var` do `get_config`).
+- **Refatorar por dado, não por intuição:** leia os hotspots e a saúde do
+  arquivo antes de escolher o que mexer, e registre a leitura em um doc.
+  Duas leituras já registradas:
+  [PENDENCIAS-07-10.md](docs/planos/PENDENCIAS-07-10.md) e
+  [HOTSPOTSCODESCENE-08-10.md](docs/planos/HOTSPOTSCODESCENE-08-10.md).
 
 ## 11. Coleta
 
