@@ -841,7 +841,7 @@ def main() -> int:
             f"{nao_mapeadas} linhas pagas não acharam prestador no mapa ({moeda(pago_nao_mapeado)} fora do total por candidato).",
             f"{pagas_partido_sem_mapa} linhas pagas de partido sem mapa de prestador (fora do pago por partido).",
             "X Corp (Twitter), Kwai, LinkedIn/Microsoft, Amazon Web Services, Apple e Snap não aparecem entre os fornecedores (medido em 09/10/2026).",
-            "Amostra manual da Meta Ads Library (top 10 campanhas) ainda não foi feita — fase 2 da coleta.",
+            "A verificação cruzada na Biblioteca de Anúncios da Meta é uma AMOSTRA (top 10 campanhas), não inventário — ver meta-ads-amostra.json; a Meta não publica API para este recorte.",
         ],
         "metodologia": (
             "Votos somados de votacao_candidato_munzona_2026_BRASIL; receita, "
@@ -855,7 +855,7 @@ def main() -> int:
             "Candidaturas sem votação (vedada/retirada) entram nos totais de dinheiro e de "
             "candidaturas, e ficam fora de votos e de custo por voto. "
             "Agregados por partido e por UF, do universo completo, saem em por-partido.json e por-uf.json. "
-            "Nenhum CPF é gravado."
+            "A amostra da Biblioteca de Anúncios da Meta (meta-ads-amostra.json) é coleta manual separada, por palavra-chave e patrocinador, sem API pública. Nenhum CPF é gravado."
         ),
     }
     (saida / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")

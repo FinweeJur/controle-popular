@@ -1,11 +1,12 @@
 /**
  * Tipos dos dados publicados em `/eleicoes/2026/gastos-campanha`.
  *
- * O que é: interfaces que espelham, campo a campo, os sete JSONs gerados por
+ * O que é: interfaces que espelham, campo a campo, os oito JSONs gerados por
  * `scripts/etl/eleicoes/gastos-campanha-2026.py` em
- * `apps/web/data/eleicoes/gastos-2026/`. A página, a rota de fatias e o
- * teste-guarda importam estes tipos para que uma mudança no ETL sem mudança
- * aqui (ou o contrário) quebre o `tsc` na hora, não em produção.
+ * `apps/web/data/eleicoes/gastos-2026/` (o oitavo, `meta-ads-amostra.json`,
+ * vem de `scripts/etl/eleicoes/meta-ads-library-amostra.py`). A página, a rota
+ * de fatias e o teste-guarda importam estes tipos para que uma mudança no ETL
+ * sem mudança aqui (ou o contrário) quebre o `tsc` na hora, não em produção.
  *
  * Fonte oficial dos dados: Tribunal Superior Eleitoral (TSE) — Dados Abertos,
  * conjuntos "Prestação de contas eleitorais 2026" e "Resultados 2026"
@@ -199,4 +200,46 @@ export interface UfAnalise {
   votos: number;
   custoVotoMedianoEleitos?: number;
   partidos: PartidoAnalise[];
+}
+
+/**
+ * Um anúncio da AMOSTRA da Biblioteca de Anúncios da Meta (Meta Ads Library),
+ * coletada por `scripts/etl/eleicoes/meta-ads-library-amostra.py`.
+ *
+ * Fonte oficial: https://www.facebook.com/ads/library/ — sem API pública para
+ * este recorte; é amostra manual aprovada pelo dono (09/10/2026). `faixaGastoBRL`
+ * é a faixa que a própria Meta exibe ("R$150 mil a R$175 mil"), nunca convertida
+ * em número exato; ausente = não exibida na captura. `id` é a identificação da
+ * biblioteca.
+ */
+export interface MetaAnuncioAmostra {
+  id: string;
+  patrocinador: string;
+  periodo: string | null;
+  anunciosMesmoCriativo: number;
+  faixaGastoBRL: string | null;
+  impressoes: string | null;
+  publicoEstimado: string | null;
+}
+
+/** A amostra de um candidato: os anúncios e, às vezes, uma nota de contexto. */
+export interface MetaAmostraCandidato {
+  urna: string;
+  nome: string;
+  cargo: string;
+  uf: string;
+  partido: string;
+  /** Total que o candidato declarou ao TSE em big tech (o que a amostra ilustra). */
+  bigtechTSE: number;
+  anuncios: MetaAnuncioAmostra[];
+  /** Contexto honesto: busca dominada por outras páginas ou anúncios antigos descartados. */
+  nota?: string;
+}
+
+/** O arquivo `meta-ads-amostra.json`: método, fonte e a amostra por candidato. */
+export interface MetaAmostraDados {
+  geradoEm: string;
+  metodo: string;
+  fonte: string;
+  candidatos: MetaAmostraCandidato[];
 }

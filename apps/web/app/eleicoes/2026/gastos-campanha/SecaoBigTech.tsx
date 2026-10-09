@@ -93,8 +93,8 @@ export default function SecaoBigTech(): ReactElement {
       />
       <p className="text-xs opacity-70">
         Não aparecem entre os fornecedores: {bigtech.naoLocalizadas.join(", ")} (medido em{" "}
-        {dataColeta}). A amostra manual da Meta Ads Library (top 10 campanhas) ainda não foi
-        feita — fica registrada como lacuna.
+        {dataColeta}). A verificação cruzada do gasto declarado contra os anúncios que a
+        própria Meta exibe está na seção seguinte (Biblioteca de Anúncios da Meta).
       </p>
     </section>
   );

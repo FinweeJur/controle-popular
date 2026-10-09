@@ -18,10 +18,12 @@ import fornecedoresJson from "@/data/eleicoes/gastos-2026/fornecedores.json";
 import partidosJson from "@/data/eleicoes/gastos-2026/partidos.json";
 import porPartidoJson from "@/data/eleicoes/gastos-2026/por-partido.json";
 import porUfJson from "@/data/eleicoes/gastos-2026/por-uf.json";
+import metaAmostraJson from "@/data/eleicoes/gastos-2026/meta-ads-amostra.json";
 import { formatDateBR } from "@/lib/betim/format";
 import type {
   BigTechDados,
   FornecedorGasto,
+  MetaAmostraDados,
   MetaGastos,
   PartidoAnalise,
   PartidoGasto,
@@ -34,6 +36,7 @@ export const fornecedores: FornecedorGasto[] = fornecedoresJson;
 export const partidos: PartidoGasto[] = partidosJson;
 export const porPartido = porPartidoJson as unknown as PartidoAnalise[];
 export const porUfAnalise = porUfJson as unknown as UfAnalise[];
+export const metaAmostra = metaAmostraJson as unknown as MetaAmostraDados;
 
 /** Data da coleta já em dd/mm/aaaa, para texto do leitor. */
 export const dataColeta = formatDateBR(meta.coleta.em);

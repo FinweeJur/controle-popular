@@ -1,0 +1,1239 @@
+{
+ "geradoEm": "2026-10-09T19:40:34+00:00",
+ "metodo": "Amostra manual na Meta Ads Library: busca por palavra-chave (nome de urna), Brasil, anuncios politicos, pagina1 por impressoes; blocos filtrados pelo patrocinador do candidato; faixas de valor gasto como a Meta exibe. Nao e inventario completo nem total de gasto.",
+ "fonte": "https://www.facebook.com/ads/library/",
+ "candidatos": [
+  {
+   "urna": "FLAVIO BOLSONARO",
+   "nome": "FLAVIO NANTES BOLSONARO",
+   "cargo": "Presidente",
+   "uf": "BR",
+   "partido": "PL",
+   "bigtechTSE": 7450000.0,
+   "anuncios": [
+    {
+     "id": "1847382772917932",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$700 mil a R$800 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1487899266498615",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$150 mil a R$175 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1123487330012998",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1594493465389810",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "30 de set de 2026 - 3 de out de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1616614439866805",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "1 de out de 2026 - 3 de out de 2026",
+     "anunciosMesmoCriativo": 7,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "29081991684719794",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$60 mil a R$70 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1786163472416486",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$80 mil a R$90 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "28533464433007318",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "7 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$100 mil a R$125 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1088595177113416",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "29 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 10,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1078915721396432",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "13 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 4,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1735314334299270",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "7 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$70 mil a R$80 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "38921084917536641",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "1 de out de 2026 - 3 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$100 mil a R$125 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1614499623058425",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "1 de out de 2026 - 3 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$25 mil a R$30 mil",
+     "impressoes": "300 mil a 350 mil",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "28514447968211381",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "1 de out de 2026 - 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "<R$100",
+     "impressoes": "<100",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1106524671898281",
+     "patrocinador": "Flavio Bolsonaro",
+     "periodo": "1 de out de 2026 - 3 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$40 mil a R$45 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    }
+   ]
+  },
+  {
+   "urna": "LULA",
+   "nome": "LUIZ INÁCIO LULA DA SILVA",
+   "cargo": "Presidente",
+   "uf": "BR",
+   "partido": "PT",
+   "bigtechTSE": 2590000.0,
+   "anuncios": [
+    {
+     "id": "1629692951947757",
+     "patrocinador": "Lula",
+     "periodo": "28 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1386612720297114",
+     "patrocinador": "Lula",
+     "periodo": "18 de set de 2026 a 27 de set de 2026",
+     "anunciosMesmoCriativo": 20,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    }
+   ],
+   "nota": "A busca deste nome e dominada por outras paginas: PT - Partido dos Trabalhadores (9); Ciro Nogueira (3); Nilto Tatto (3)."
+  },
+  {
+   "urna": "FERNANDO HADDAD",
+   "nome": "FERNANDO HADDAD",
+   "cargo": "Governador",
+   "uf": "SP",
+   "partido": "PT",
+   "bigtechTSE": 2539890.0,
+   "anuncios": [
+    {
+     "id": "1593850445864456",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "27 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$45 mil a R$50 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1071708192072715",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "27 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "28875165212105051",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "27 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1543069267021613",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "27 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1349013357275526",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "28 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1399345988284466",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "16 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$30 mil a R$35 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "2504839353366324",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "27 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$80 mil a R$90 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1013193708403500",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "16 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "2471420350326831",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "16 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1653457746371447",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "21 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$25 mil a R$30 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1542657370946654",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "20 de set de 2026 a 26 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1112924897970579",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "16 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1789084642215805",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "16 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1375772111384285",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "25 de set de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1618688929980132",
+     "patrocinador": "Fernando Haddad",
+     "periodo": "25 de set de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    }
+   ]
+  },
+  {
+   "urna": "CÉLIO STUDART",
+   "nome": "CELIO STUDART BARBOSA",
+   "cargo": "Deputado Federal",
+   "uf": "CE",
+   "partido": "PSD",
+   "bigtechTSE": 2401700.0,
+   "anuncios": [
+    {
+     "id": "1084293190641755",
+     "patrocinador": "Célio Studart",
+     "periodo": "1 de set de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$40 mil a R$45 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "3545312872270646",
+     "patrocinador": "Célio Studart",
+     "periodo": "11 de set de 2025 a 9 de mai de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$7 mil a R$8 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1056090680509769",
+     "patrocinador": "Célio Studart",
+     "periodo": "17 de ago de 2026 a 15 de set de 2026",
+     "anunciosMesmoCriativo": 11,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1485788612710623",
+     "patrocinador": "Célio Studart",
+     "periodo": "18 de set de 2025 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 7,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "901887089323778",
+     "patrocinador": "Célio Studart",
+     "periodo": "30 de ago de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$10 mil a R$15 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "2110030692926938",
+     "patrocinador": "Célio Studart",
+     "periodo": "1 de set de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1644230923958170",
+     "patrocinador": "Célio Studart",
+     "periodo": "11 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$35 mil a R$40 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "4381012575549980",
+     "patrocinador": "Célio Studart",
+     "periodo": "14 de jul de 2026 a 9 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "870206942101977",
+     "patrocinador": "Célio Studart",
+     "periodo": "21 de nov de 2025 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 5,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "922479393556878",
+     "patrocinador": "Célio Studart",
+     "periodo": "3 de ago de 2026 a 14 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1684109948956055",
+     "patrocinador": "Célio Studart",
+     "periodo": "11 de ago de 2025 a 7 de ago de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$10 mil a R$15 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1515489966393258",
+     "patrocinador": "Célio Studart",
+     "periodo": "21 de nov de 2025 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "924578797375958",
+     "patrocinador": "Célio Studart",
+     "periodo": "24 de jul de 2026 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$4,5 mil a R$5 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "2379628639227662",
+     "patrocinador": "Célio Studart",
+     "periodo": "20 de ago de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$20 mil a R$25 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "834708432971325",
+     "patrocinador": "Célio Studart",
+     "periodo": "19 de ago de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    }
+   ],
+   "nota": "2 anuncio(s) de anos anteriores foram descartados."
+  },
+  {
+   "urna": "CIRO GOMES",
+   "nome": "CIRO FERREIRA GOMES",
+   "cargo": "Governador",
+   "uf": "CE",
+   "partido": "PSDB",
+   "bigtechTSE": 2399999.99,
+   "anuncios": [
+    {
+     "id": "1067552169578197",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "27 de ago de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$70 mil a R$80 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1671640440568614",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "19 de ago de 2026 a 28 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1699727817765586",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "29 de ago de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$125 mil a R$150 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1778129833636603",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "22 de ago de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1377911104455637",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "12 de set de 2026 a 24 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$90 mil a R$100 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "4363866147209964",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "25 de ago de 2026 a 29 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$50 mil a R$60 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1524200352840540",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "30 de ago de 2026 a 24 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$60 mil a R$70 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1500241085608973",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "29 de ago de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1630199252146941",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "22 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "2634925760357088",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "6 de set de 2026 a 21 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$60 mil a R$70 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1072602325632029",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "13 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$60 mil a R$70 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1385520653533181",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "18 de ago de 2026 a 13 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$35 mil a R$40 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "28110689605255544",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "6 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$50 mil a R$60 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "3076763665988243",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "18 de ago de 2026 a 14 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$40 mil a R$45 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1635054364935019",
+     "patrocinador": "Ciro Gomes",
+     "periodo": "22 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    }
+   ],
+   "nota": "10 anuncio(s) de anos anteriores foram descartados."
+  },
+  {
+   "urna": "AÉCIO NEVES",
+   "nome": "AÉCIO NEVES DA CUNHA",
+   "cargo": "Senador",
+   "uf": "MG",
+   "partido": "PSDB",
+   "bigtechTSE": 2070000.0,
+   "anuncios": [
+    {
+     "id": "2547161322465147",
+     "patrocinador": "Aécio Neves",
+     "periodo": "15 de set de 2026 a 18 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$25 mil a R$30 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1088213577205048",
+     "patrocinador": "Aécio Neves com PSDB",
+     "periodo": "12 de ago de 2026 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2453899601804420",
+     "patrocinador": "Aécio Neves",
+     "periodo": "27 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1770347600907477",
+     "patrocinador": "Aécio Neves",
+     "periodo": "27 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2143972869838729",
+     "patrocinador": "Aécio Neves",
+     "periodo": "24 de set de 2026 a 27 de set de 2026",
+     "anunciosMesmoCriativo": 12,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1029095266825548",
+     "patrocinador": "Aécio Neves",
+     "periodo": "26 de set de 2026 a 28 de set de 2026",
+     "anunciosMesmoCriativo": 20,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1974790999867005",
+     "patrocinador": "Aécio Neves",
+     "periodo": "10 de set de 2026 a 15 de set de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1020937487659905",
+     "patrocinador": "Aécio Neves",
+     "periodo": "28 de ago de 2026 a 31 de ago de 2026",
+     "anunciosMesmoCriativo": 10,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "4439004899687137",
+     "patrocinador": "Aécio Neves",
+     "periodo": "9 de set de 2026 a 15 de set de 2026",
+     "anunciosMesmoCriativo": 21,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1661679878648364",
+     "patrocinador": "PSDB com Aécio Neves",
+     "periodo": "14 de ago de 2026 a 16 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1543831200387805",
+     "patrocinador": "Aécio Neves",
+     "periodo": "9 de set de 2026 a 14 de set de 2026",
+     "anunciosMesmoCriativo": 8,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1467509518533223",
+     "patrocinador": "Aécio Neves",
+     "periodo": "11 de set de 2026 a 15 de set de 2026",
+     "anunciosMesmoCriativo": 24,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1805847750549240",
+     "patrocinador": "Aécio Neves",
+     "periodo": "10 de set de 2026 a 15 de set de 2026",
+     "anunciosMesmoCriativo": 5,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1580239893223097",
+     "patrocinador": "Aécio Neves",
+     "periodo": "7 de set de 2026 a 12 de set de 2026",
+     "anunciosMesmoCriativo": 15,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2228697461860531",
+     "patrocinador": "Aécio Neves",
+     "periodo": "29 de set de 2026 a 3 de out de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    }
+   ],
+   "nota": "4 anuncio(s) de anos anteriores foram descartados."
+  },
+  {
+   "urna": "LINDBERGH",
+   "nome": "LUIZ LINDBERGH FARIAS FILHO",
+   "cargo": "Deputado Federal",
+   "uf": "RJ",
+   "partido": "PT",
+   "bigtechTSE": 1660000.0,
+   "anuncios": [
+    {
+     "id": "2950125342009509",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "26 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1083089934187615",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "3 de set de 2026 a 27 de set de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2678389392594735",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "19 de ago de 2026 a 24 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "1586899009636151",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "9 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 6,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1650214786824833",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "26 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$10 mil a R$15 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1542075221054866",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "3 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 9,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1010451781546796",
+     "patrocinador": "Lindbergh Farias com Gleisi Hoffmann",
+     "periodo": "22 de mai de 2026 a 7 de ago de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1439040481482483",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "4 de set de 2026 a 30 de set de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1067210682951219",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "16 de set de 2026 a 26 de set de 2026",
+     "anunciosMesmoCriativo": 4,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1319979996350246",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "15 de jun de 2026 a 7 de ago de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$3,5 mil a R$4 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1444272207459257",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "9 de jun de 2026 a 1 de jul de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$3,5 mil a R$4 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1555985876214751",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "26 de set de 2026 a 2 de out de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "4291775410954213",
+     "patrocinador": "Lindbergh Farias",
+     "periodo": "26 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$8 mil a R$9 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    }
+   ],
+   "nota": "1 anuncio(s) de anos anteriores foram descartados."
+  },
+  {
+   "urna": "CAROL DE TONI",
+   "nome": "CAROLINE RODRIGUES DE TONI",
+   "cargo": "Senador",
+   "uf": "SC",
+   "partido": "PL",
+   "bigtechTSE": 1647000.0,
+   "anuncios": [
+    {
+     "id": "1436453121294753",
+     "patrocinador": "Carol De Toni",
+     "periodo": "11 de mar de 2026 a 4 de jun de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$4 mil a R$4,5 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1081608267696242",
+     "patrocinador": "Carol De Toni",
+     "periodo": "20 de set de 2026 a 22 de set de 2026",
+     "anunciosMesmoCriativo": 66,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2607399083027617",
+     "patrocinador": "Carol De Toni",
+     "periodo": "17 de set de 2026 a 20 de set de 2026",
+     "anunciosMesmoCriativo": 67,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1584991699841504",
+     "patrocinador": "Carol De Toni",
+     "periodo": "14 de set de 2026 a 16 de set de 2026",
+     "anunciosMesmoCriativo": 68,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1097240032777345",
+     "patrocinador": "Carol De Toni",
+     "periodo": "14 de set de 2026 a 17 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$7 mil a R$8 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "912233068155942",
+     "patrocinador": "Carol De Toni",
+     "periodo": "20 de jan de 2026 a 28 de mar de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$2 mil a R$2,5 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "28370734432611477",
+     "patrocinador": "Carol De Toni",
+     "periodo": "20 de set de 2026 a 23 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1665111905048467",
+     "patrocinador": "Carol De Toni",
+     "periodo": "7 de set de 2026 a 9 de set de 2026",
+     "anunciosMesmoCriativo": 67,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2068350207201155",
+     "patrocinador": "Carol De Toni",
+     "periodo": "22 de set de 2026 a 24 de set de 2026",
+     "anunciosMesmoCriativo": 66,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1384506537139742",
+     "patrocinador": "Carol De Toni",
+     "periodo": "8 de set de 2026 a 12 de set de 2026",
+     "anunciosMesmoCriativo": 67,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1429360579380281",
+     "patrocinador": "Carol De Toni",
+     "periodo": "28 de set de 2026 - 30 de set de 2026",
+     "anunciosMesmoCriativo": 77,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1074527085072977",
+     "patrocinador": "Carol De Toni",
+     "periodo": "31 de ago de 2026 a 2 de set de 2026",
+     "anunciosMesmoCriativo": 73,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "4616532778631655",
+     "patrocinador": "Carol De Toni",
+     "periodo": "11 de set de 2026 a 13 de set de 2026",
+     "anunciosMesmoCriativo": 68,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1120725110308745",
+     "patrocinador": "Carol De Toni",
+     "periodo": "9 de set de 2026 a 11 de set de 2026",
+     "anunciosMesmoCriativo": 67,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1581674982948935",
+     "patrocinador": "Carol De Toni",
+     "periodo": "12 de mar de 2026 a 4 de jun de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    }
+   ]
+  },
+  {
+   "urna": "ALEXANDRE CURI",
+   "nome": "ALEXANDRE MARANHAO KHURY",
+   "cargo": "Senador",
+   "uf": "PR",
+   "partido": "REPUBLICANOS",
+   "bigtechTSE": 1400000.0,
+   "anuncios": [
+    {
+     "id": "1537129107624089",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "25 de ago de 2026 a 7 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$15 mil a R$20 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "2291739418321743",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "27 de ago de 2026 a 11 de set de 2026",
+     "anunciosMesmoCriativo": 24,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "4170859576380993",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "29 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 3,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1455754156608174",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "5 de set de 2026 a 11 de set de 2026",
+     "anunciosMesmoCriativo": 20,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1993166911653511",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "25 de ago de 2026 a 16 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$8 mil a R$9 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": "500 mil a 1 mi"
+    },
+    {
+     "id": "1768298771123776",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "25 de ago de 2026 a 3 de set de 2026",
+     "anunciosMesmoCriativo": 5,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1071693685510550",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "25 de ago de 2026 a 4 de set de 2026",
+     "anunciosMesmoCriativo": 10,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1107265652166682",
+     "patrocinador": "Alexandre Curi",
+     "periodo": "29 de set de 2026 a 1 de out de 2026",
+     "anunciosMesmoCriativo": 6,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    }
+   ],
+   "nota": "1 anuncio(s) de anos anteriores foram descartados."
+  },
+  {
+   "urna": "RUBINHO NUNES",
+   "nome": "RUBENS ALBERTO GATTI NUNES",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "partido": "UNIÃO",
+   "bigtechTSE": 1225000.0,
+   "anuncios": [
+    {
+     "id": "2235670013865246",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "6 de jul de 2026 a 14 de jul de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$10 mil a R$15 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1788617262145981",
+     "patrocinador": "Rubinho Nunes com Douglas Garcia",
+     "periodo": "26 de set de 2026 - 28 de set de 2026",
+     "anunciosMesmoCriativo": 2,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1752462656167083",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "24 de jun de 2026 a 1 de jul de 2026",
+     "anunciosMesmoCriativo": 10,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1617968629958060",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "12 de set de 2026 a 20 de set de 2026",
+     "anunciosMesmoCriativo": 4,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "28449744211330517",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "16 de set de 2026 a 23 de set de 2026",
+     "anunciosMesmoCriativo": 6,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "2957676034590531",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "28 de ago de 2026 a 11 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$7 mil a R$8 mil",
+     "impressoes": "800 mil a 900 mil",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1572949317400660",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "8 de set de 2026 a 16 de set de 2026",
+     "anunciosMesmoCriativo": 36,
+     "faixaGastoBRL": null,
+     "impressoes": null,
+     "publicoEstimado": null
+    },
+    {
+     "id": "1366712825665352",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "27 de ago de 2026 a 2 de set de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$2,5 mil a R$3 mil",
+     "impressoes": "600 mil a 700 mil",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1638748420532834",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "6 de jul de 2026 a 13 de jul de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$10 mil a R$15 mil",
+     "impressoes": ">1 mi",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "1684852012956906",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "21 de mar de 2026 a 20 de abr de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$4 mil a R$4,5 mil",
+     "impressoes": "250 mil a 300 mil",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "971059605490573",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "19 de mar de 2026 a 22 de mar de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$300 a R$399",
+     "impressoes": "60 mil a 70 mil",
+     "publicoEstimado": ">1 mi"
+    },
+    {
+     "id": "746889141693462",
+     "patrocinador": "Rubinho Nunes",
+     "periodo": "19 de mar de 2026 a 19 de abr de 2026",
+     "anunciosMesmoCriativo": 1,
+     "faixaGastoBRL": "R$4,5 mil a R$5 mil",
+     "impressoes": "500 mil a 600 mil",
+     "publicoEstimado": ">1 mi"
+    }
+   ],
+   "nota": "11 anuncio(s) de anos anteriores foram descartados."
+  }
+ ]
+}

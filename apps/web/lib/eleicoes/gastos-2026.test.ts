@@ -2,7 +2,14 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, it, expect } from "vitest";
-import type { BigTechDados, LinhaGasto, MetaGastos, PartidoAnalise, UfAnalise } from "./gastos-2026";
+import type {
+  BigTechDados,
+  LinhaGasto,
+  MetaAmostraDados,
+  MetaGastos,
+  PartidoAnalise,
+  UfAnalise,
+} from "./gastos-2026";
 
 /**
  * Teste-guarda dos dados de gastos de campanha 2026.
@@ -35,6 +42,7 @@ const bigtech = lerJson<BigTechDados>("bigtech.json");
 const linhas = lerJson<LinhaGasto[]>("linhas.json");
 const porPartido = lerJson<PartidoAnalise[]>("por-partido.json");
 const porUf = lerJson<UfAnalise[]>("por-uf.json");
+const metaAmostra = lerJson<MetaAmostraDados>("meta-ads-amostra.json");
 
 const arquivos = [
   "linhas.json",
@@ -44,6 +52,7 @@ const arquivos = [
   "partidos.json",
   "por-partido.json",
   "por-uf.json",
+  "meta-ads-amostra.json",
 ];
 
 /** Tolerância de soma em float (os valores saem arredondados a 2 casas). */
@@ -158,6 +167,28 @@ describe("gastos de campanha 2026 — coerência entre os JSONs do ETL", () => {
       const contratado = u.partidos.reduce((s, p) => s + p.contratado, 0);
       expect(Math.abs(contratado - u.contratado), `UF ${u.uf}`).toBeLessThan(TOLERANCIA);
     }
+  });
+
+  it("a amostra da Meta Ads Library é do top 10 big tech e só de 2026", () => {
+    expect(metaAmostra.candidatos.length).toBe(10);
+    expect(metaAmostra.fonte).toContain("facebook.com/ads/library");
+    expect(metaAmostra.metodo.length).toBeGreaterThan(0);
+    // Os candidatos amostrados são exatamente os 10 do topo de big tech do TSE
+    // (a seção declara isso; se o ETL mudar o ranking, este teste avisa).
+    const topo = bigtech.topCandidatos.slice(0, 10).map((c) => c.urna);
+    expect(metaAmostra.candidatos.map((c) => c.urna).sort()).toEqual([...topo].sort());
+    let total = 0;
+    for (const c of metaAmostra.candidatos) {
+      expect(c.anuncios.length).toBeGreaterThan(0);
+      for (const a of c.anuncios) {
+        expect(a.id.length).toBeGreaterThan(0);
+        expect(a.patrocinador.length).toBeGreaterThan(0);
+        // recorte da eleição de 2026: período datado nunca é de outro ano
+        if (a.periodo) expect(a.periodo, `${c.urna}/${a.id}`).toContain("2026");
+        total += 1;
+      }
+    }
+    expect(total).toBeGreaterThan(0);
   });
 
   it("nenhum CPF nem sequencial de 11 dígitos nos JSONs versionados", () => {

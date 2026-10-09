@@ -4,6 +4,8 @@ import type { ColunaResumo } from "./TabelaResumo";
 import type {
   BigTechDados,
   FornecedorGasto,
+  MetaAmostraCandidato,
+  MetaAnuncioAmostra,
   MetaGastos,
   PartidoAnalise,
   PartidoGasto,
@@ -173,4 +175,51 @@ export const COLUNAS_MENCAO: ColunaResumo<MencaoPlataforma>[] = [
   { rotulo: "Rede citada na despesa", valor: ([nome]) => nome },
   { rotulo: "Despesas", numerica: true, valor: ([, v]) => formatarNumeroBR(v.linhas, 0) },
   { rotulo: "Contratado", numerica: true, valor: ([, v]) => <Moeda value={v.total} /> },
+];
+
+/** Linha achatada da amostra da Meta: um anúncio + de quem ele é. */
+export type AnuncioMetaAmostra = MetaAnuncioAmostra & {
+  candidato: string;
+  cargo: string;
+  uf: string;
+};
+
+/** Resumo da amostra por candidato: quantos anúncios e quantos com faixa. */
+export type ResumoMetaAmostra = MetaAmostraCandidato & { comFaixa: number };
+
+export const COLUNAS_META_AMOSTRA_RESUMO: ColunaResumo<ResumoMetaAmostra>[] = [
+  {
+    rotulo: "Candidato",
+    valor: (c) => (
+      <span className="flex flex-col gap-0.5">
+        <span className="font-medium">{c.urna}</span>
+        <span className="text-xs opacity-70">{c.nome}</span>
+      </span>
+    ),
+  },
+  { rotulo: "Cargo/UF", valor: (c) => `${c.cargo}/${c.uf}` },
+  { rotulo: "Partido", valor: (c) => c.partido },
+  { rotulo: "Big tech no TSE", numerica: true, valor: (c) => <Moeda value={c.bigtechTSE} /> },
+  { rotulo: "Anúncios na amostra", numerica: true, valor: (c) => formatarNumeroBR(c.anuncios.length, 0) },
+  { rotulo: "Com faixa de gasto", numerica: true, valor: (c) => formatarNumeroBR(c.comFaixa, 0) },
+];
+
+export const COLUNAS_META_ANUNCIO: ColunaResumo<AnuncioMetaAmostra>[] = [
+  {
+    rotulo: "Candidato / página do anúncio",
+    valor: (a) => (
+      <span className="flex flex-col gap-0.5">
+        <span className="font-medium">{a.candidato}</span>
+        <span className="text-xs opacity-70">{a.patrocinador}</span>
+      </span>
+    ),
+  },
+  { rotulo: "Cargo/UF", valor: (a) => `${a.cargo}/${a.uf}` },
+  { rotulo: "Período exibido", valor: (a) => a.periodo ?? "—" },
+  {
+    rotulo: "Gasto (faixa da Meta)",
+    numerica: true,
+    valor: (a) => a.faixaGastoBRL ?? "não divulgado",
+  },
+  { rotulo: "Impressões", numerica: true, valor: (a) => a.impressoes ?? "—" },
 ];
