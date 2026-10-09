@@ -41,7 +41,7 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 
 | Saúde | Arquivo | Nuvem (velha) | Δ | Situação |
 |---|---|---|---|---|
-| **1,36** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **−0,09** | 🔴 vermelho, e piorou |
+| **2,51** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+1,15** | 🔴 vermelho, subiu de 1,36 |
 | 6,64 | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | +0,91 | 🟡 melhorou, ainda amarelo |
 | 6,97 | `etl/betim/etl/common.py` | 6,870 | +0,10 | 🟡 |
 | 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 não tocado |
@@ -63,15 +63,46 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 ## Declínio medido
 
 **Só um arquivo regrediu de verdade: `escada-determinista.ts`.**
-Passou de 1,454 para **1,36**, e continua no vermelho com **9 problemas**:
+Passou de 1,454 para **1,36**, e estava no vermelho com **9 problemas**.
 
-- **6 métodos complexos** — o pior é `degrau4Ferramentas` com
-  **complexidade 54 e 216 linhas**; depois `degrau3Empresas` (cc 31),
-  `degrau2Cidades` (cc 27), `degrau45Bases` (cc 26);
-- **34 condicionais complexas** espalhadas em 9 funções;
-- **6 métodos grandes** (o maior com 216 linhas);
-- arquivo único passando de mil linhas, obsessão por primitivo e
-  argumentos em string.
+### Primeiro remendo: os dois piores degraus (09/10/2026)
+
+Os dois métodos mais caros do projeto saíram do arquivo e viraram **tabela
+de dados** casada por `primeiroCartao()`:
+
+| Arquivo novo | Saúde | O que saiu do arquivo |
+|---|---|---|
+| `lib/assistente/escada-empresas.ts` | **10,00** | `degrau3Empresas` — cc 31, 158 linhas |
+| `lib/assistente/escada-ferramentas.ts` | **10,00** | `degrau4Ferramentas` — cc 54, 216 linhas (o pior do repo) |
+| `lib/assistente/escada-base.ts` | **10,00** | tipos `AtalhoAcao`/`ResultadoEscada` + casador |
+
+Medido na hora com `cs review`: o orquestrador subiu de **1,36 para 2,51**
+e o arquivo caiu de 1.373 para **960 linhas** — abaixo do aviso de
+*Lines of Code in a Single File* (piso de 1.000). Os três arquivos novos
+fecharam em **10,00**.
+
+**Prova de equivalência (obrigatória, regra 2).** O módulo decide a resposta
+do assistente — erro aqui é resposta errada para o cidadão. Script mecânico
+leu os `if`s do commit anterior via `git show` e comparou com as tabelas:
+**8 blocos/30 termos (empresas) e 10 blocos/53 termos (ferramentas)
+idênticos, na mesma ordem**, `tsc` 0, `eslint` 0 e os 12 testes de
+`escada-determinista.test.ts` verdes.
+
+### O que ainda pesa (mesma leitura, depois do remendo)
+
+Ainda no vermelho (**2,51**), com os degraus que sobraram:
+
+- **6 métodos complexos** — agora o pior é `degrau2Cidades` (**cc 27**,
+  141 linhas); depois `degrau45Bases` (cc 26), `degrau65Internacional`
+  (cc 24), `degrau15Tabelas` (cc 19), `degrau35Justica` (cc 18);
+- **19 condicionais complexas** espalhadas em 5 funções;
+- **4 métodos grandes** (o maior com 141 linhas);
+- obsessão por primitivo, argumentos em string e um *bumpy road* em
+  `degrau5Curada` (2 aninhamentos).
+
+O padrão que resolveu vale para todos eles: **if-chain → tabela**, com
+`exatos` (igualdade) e `contem` (substring) separados, ordem preservada e
+a mesma prova de equivalência.
 
 **Por que a refatoração anterior não subiu a nota.** O commit `cad5f8fa`
 fez "156 inserções, 0 deleções". As regras que derrubam a nota aqui são
@@ -90,11 +121,14 @@ O declínio é de arquivo velho, não de commit recente.
 
 ## Próximos passos
 
-1. **🔴 Partir `degrau4Ferramentas` (cc 54, 216 linhas)** e depois
-   `degrau3Empresas` (cc 31). É o único vermelho do projeto e o único em
-   declínio. Prova de equivalência obrigatória (regra 2), porque este é o
-   módulo que decide a resposta do assistente — erro aqui é resposta errada
-   para o cidadão.
+1. **🔴 Fechado:** `degrau4Ferramentas` (cc 54) e `degrau3Empresas`
+   (cc 31) saíram do arquivo em 09/10 e viraram tabela (10,00 cada).
+   **Ainda faltam**, na mesma ordem de peso e com a MESMA receita:
+   `degrau2Cidades` (cc 27), `degrau45Bases` (cc 26),
+   `degrau65Internacional` (cc 24), `degrau15Tabelas` (cc 19) e
+   `degrau35Justica` (cc 18). Prova de equivalência obrigatória (regra 2),
+   porque este é o módulo que decide a resposta do assistente — erro aqui é
+   resposta errada para o cidadão.
 2. **🔁 Disparar re-análise na nuvem.** Enquanto o job `7854262` não
    atualizar, o dashboard e os portões de PR avaliam dado de antes da
    refatoração. Vale conferir depois em codescene.io.
@@ -125,7 +159,10 @@ fechado*:
 | 7,30 | `lib/db/queries/betim.ts` | `bb6387d1` | 🟡 melhorou pouco (7,09 → 7,30) |
 | 6,97 | `etl/betim/etl/common.py` | `23b37453` | 🟡 melhorou pouco (6,87 → 6,97) |
 | 6,64 | `lib/ambiental/licencas-unificada.ts` | `6788cc43` | 🟡 melhorou (5,73 → 6,64) |
-| **1,36** | `lib/assistente/escada-determinista.ts` | `cad5f8fa` | 🔴 **não fechou, piorou** |
+| **2,51** | `lib/assistente/escada-determinista.ts` | `cad5f8fa` | 🔴 **subiu (1,36 → 2,51), ainda vermelho** |
+| 10,00 | `lib/assistente/escada-empresas.ts` | (novo, 09/10) | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-ferramentas.ts` | (novo, 09/10) | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-base.ts` | (novo, 09/10) | ✅ nota perfeita |
 
 ## Bus factor / knowledge maps
 
