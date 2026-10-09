@@ -206,12 +206,24 @@ O que **não** está no repo e precisa ir por fora, por ser segredo:
 | `apps/web/.env.local` | `DATABASE_URL` (Heroku), `HEROKU_API_KEY`, chaves de IA, `CLOUDFLARE_*`, `R2_*` |
 | `C:\Users\<user>\.config\opencode\opencode.json` | registro do MCP `codescene` (fora do repo, por máquina) |
 
-**Como enviar** (canal cifrado do Tailscale — a rede privada entre os PCs):
+**Como enviar — o caminho pronto:**
+
+```powershell
+powershell -File scripts\enviar-continuidade-homepc.ps1
+```
+
+O script varre os três arquivos, acha os `.env` no **checkout principal**
+(eles são gitignorados e não existem em todo worktree — medido 09/10),
+confere se o par está de pé e envia um por vez. Códigos de saída:
+`0` tudo entregue, `2` destino offline (rode de novo depois), `3` arquivo
+faltando. **Nunca imprime valor nenhum** — só nome e tamanho.
+
+À mão, o mesmo efeito:
 
 ```powershell
 tailscale file cp <arquivo> Home-PC:<nome-de-destino>
 # exemplo:
-tailscale file cp scripts\.env Home-PC:scripts\.env
+tailscale file cp scripts\.env Home-PC:controle-popular-scripts.env
 ```
 
 O destinatário retira com `tailscale file get <pasta>`.
