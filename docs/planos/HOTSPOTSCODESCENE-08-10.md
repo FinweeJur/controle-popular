@@ -41,7 +41,7 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 
 | Saúde | Arquivo | Nuvem (velha) | Δ | Situação |
 |---|---|---|---|---|
-| **2,51** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+1,15** | 🔴 vermelho, subiu de 1,36 |
+| **8,81** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+7,36** | 🟢 saiu do vermelho (1,36 → 8,81) |
 | 6,64 | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | +0,91 | 🟡 melhorou, ainda amarelo |
 | 6,97 | `etl/betim/etl/common.py` | 6,870 | +0,10 | 🟡 |
 | 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 não tocado |
@@ -88,21 +88,51 @@ leu os `if`s do commit anterior via `git show` e comparou com as tabelas:
 idênticos, na mesma ordem**, `tsc` 0, `eslint` 0 e os 12 testes de
 `escada-determinista.test.ts` verdes.
 
-### O que ainda pesa (mesma leitura, depois do remendo)
+### O resto da rodada, no mesmo dia (09/10/2026)
 
-Ainda no vermelho (**2,51**), com os degraus que sobraram:
+A mesma receita repetida quatro vezes, **um commit por etapa**, cada um
+com a sua prova e o portão do CodeScene verde antes de subir:
 
-- **6 métodos complexos** — agora o pior é `degrau2Cidades` (**cc 27**,
-  141 linhas); depois `degrau45Bases` (cc 26), `degrau65Internacional`
-  (cc 24), `degrau15Tabelas` (cc 19), `degrau35Justica` (cc 18);
-- **19 condicionais complexas** espalhadas em 5 funções;
-- **4 métodos grandes** (o maior com 141 linhas);
-- obsessão por primitivo, argumentos em string e um *bumpy road* em
-  `degrau5Curada` (2 aninhamentos).
+| Commit | Arquivo novo | Saúde | O que saiu do orquestrador |
+|---|---|---|---|
+| `9365c658` | `escada-empresas.ts`, `escada-ferramentas.ts` | **10,00** | cc 31 e cc 54 (o pior do repo) |
+| `aee8076c` | `escada-cidades.ts` | **10,00** | `degrau2Cidades` — cc 27 |
+| `a286de10` | `escada-bases.ts` | **10,00** | `degrau45Bases` — cc 26 |
+| `a32a08f9` | `escada-tabelas.ts`, `escada-justica.ts` | **10,00** | cc 19 (90 linhas) e cc 18 (119 linhas) |
+| `37fe6b1b` | `escada-internacional.ts` | **10,00** | `degrau65Internacional` — cc 24 |
+
+**Trajetória medida com `cs review`, arquivo a arquivo:**
+**1,36 → 2,51 → 3,44 → 4,69 → 7,55 → 8,81**.
+O orquestrador caiu de 1.373 para **343 linhas**.
+
+**Três provas diferentes, porque os degraus são diferentes:**
+
+1. **Termos dos `if`s** (`prova-escada.mts`): lê o original via `git show`
+   e compara bloco a bloco os conjuntos `exatos`/`contem`/`comecaCom`/
+   `terminaCom`/`regex`. Tabelas simples.
+2. **Conteúdo dos cartões** (`prova-cartoes.mts`): extrai todos os objetos
+   `return {` do commit `1e2decfa` e confere que cada um dos 40 cartões
+   novos existe lá. Pega texto trocado por engano, que a prova de termos
+   não vê.
+3. **Diferencial** (`prova-internacional.mts`): o degrau de internacional
+   não cabe em tabela (o cartão muda de idioma dentro do objeto), então a
+   função ANTIGA foi extraída de `a32a08f9` e as duas rodaram a MESMA
+   matriz de 45 perguntas — **0 divergências, campo a campo**.
+
+### O que ainda pesa (depois de toda a rodada)
+
+O arquivo saiu do vermelho e chegou a **8,81**, com três avisos:
+
+- **1 método complexo:** `degrau6Noticias` (**cc 12**) — busca por
+  reportagem conhecida, com a regra de "duas palavras-chave" de 06/10;
+- `avaliarEscadaDeterminista` em **cc 9**, na fronteira exata do aviso;
+- *bumpy road* em `degrau5Curada` (2 aninhamentos) e 5 condicionais
+  complexas em `degrau6Noticias`.
 
 O padrão que resolveu vale para todos eles: **if-chain → tabela**, com
 `exatos` (igualdade) e `contem` (substring) separados, ordem preservada e
-a mesma prova de equivalência.
+prova de equivalência. O que não cabe em tabela (idioma, busca) vira
+**registro por variação + função que escolhe** — e a prova é diferencial.
 
 **Por que a refatoração anterior não subiu a nota.** O commit `cad5f8fa`
 fez "156 inserções, 0 deleções". As regras que derrubam a nota aqui são
@@ -121,14 +151,14 @@ O declínio é de arquivo velho, não de commit recente.
 
 ## Próximos passos
 
-1. **🔴 Fechado:** `degrau4Ferramentas` (cc 54) e `degrau3Empresas`
-   (cc 31) saíram do arquivo em 09/10 e viraram tabela (10,00 cada).
-   **Ainda faltam**, na mesma ordem de peso e com a MESMA receita:
-   `degrau2Cidades` (cc 27), `degrau45Bases` (cc 26),
-   `degrau65Internacional` (cc 24), `degrau15Tabelas` (cc 19) e
-   `degrau35Justica` (cc 18). Prova de equivalência obrigatória (regra 2),
-   porque este é o módulo que decide a resposta do assistente — erro aqui é
-   resposta errada para o cidadão.
+1. **🟢 Fechado:** todos os degraus grandes saíram do arquivo em 09/10 —
+   empresas, ferramentas, cidades, bases, tabelas, justica e
+   internacional, todos em módulos de **10,00**. O orquestrador está em
+   **8,81**. **Ainda falta** o `degrau6Noticias` (cc 12, o único método
+   complexo restante) e o `avaliarEscadaDeterminista` (cc 9, fronteira).
+   A receita para notícias não é tabela pura — o bloco tem busca por
+   reportagem com a regra de duas palavras-chave; provavelmente sai em
+   duas funções (a tabela de termos e a busca) com prova diferencial.
 2. **🔁 Disparar re-análise na nuvem.** Enquanto o job `7854262` não
    atualizar, o dashboard e os portões de PR avaliam dado de antes da
    refatoração. Vale conferir depois em codescene.io.
@@ -159,10 +189,15 @@ fechado*:
 | 7,30 | `lib/db/queries/betim.ts` | `bb6387d1` | 🟡 melhorou pouco (7,09 → 7,30) |
 | 6,97 | `etl/betim/etl/common.py` | `23b37453` | 🟡 melhorou pouco (6,87 → 6,97) |
 | 6,64 | `lib/ambiental/licencas-unificada.ts` | `6788cc43` | 🟡 melhorou (5,73 → 6,64) |
-| **2,51** | `lib/assistente/escada-determinista.ts` | `cad5f8fa` | 🔴 **subiu (1,36 → 2,51), ainda vermelho** |
-| 10,00 | `lib/assistente/escada-empresas.ts` | (novo, 09/10) | ✅ nota perfeita |
-| 10,00 | `lib/assistente/escada-ferramentas.ts` | (novo, 09/10) | ✅ nota perfeita |
-| 10,00 | `lib/assistente/escada-base.ts` | (novo, 09/10) | ✅ nota perfeita |
+| **8,81** | `lib/assistente/escada-determinista.ts` | `37fe6b1b` | 🟢 **saiu do vermelho (1,36 → 8,81)** |
+| 10,00 | `lib/assistente/escada-empresas.ts` | `9365c658` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-ferramentas.ts` | `9365c658` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-base.ts` | `9365c658` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-cidades.ts` | `aee8076c` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-bases.ts` | `a286de10` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-tabelas.ts` | `a32a08f9` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-justica.ts` | `a32a08f9` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-internacional.ts` | `37fe6b1b` | ✅ nota perfeita |
 
 ## Bus factor / knowledge maps
 
