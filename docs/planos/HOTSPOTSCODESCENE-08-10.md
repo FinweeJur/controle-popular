@@ -41,12 +41,13 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 
 | Saúde | Arquivo | Nuvem (velha) | Δ | Situação |
 |---|---|---|---|---|
-| **9,53** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+8,08** | 🟢 **verde** (1,36 → 9,53; piso de verde = 9,00) |
-| **9,68** | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | **+3,95** | 🟢 **VERDE** (6,64 → 9,68 em 4 commits) |
-| 6,97 | `etl/betim/etl/common.py` | 6,870 | +0,10 | 🟡 |
-| 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 não tocado |
+| 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 **pior amarelo que resta** |
 | 7,30 | `apps/web/lib/db/queries/betim.ts` | 7,090 | +0,21 | 🟡 |
 | 7,96 | `apps/web/app/indice/page.tsx` | 7,982 | −0,02 | 🟡 micro-queda |
+| **9,09** | `etl/betim/etl/common.py` | 6,870 | **+2,22** | 🟢 **VERDE** (6,97 → 9,09) |
+| **9,53** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+8,08** | 🟢 **verde** (1,36 → 9,53; piso de verde = 9,00) |
+| **9,68** | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | **+3,95** | 🟢 **VERDE** (6,64 → 9,68 em 4 commits) |
+| **10,00** | `etl/betim/etl/pg_adapter.py` *(novo em 09/10)* | — | — | ✅ nota perfeita |
 | 8,01 | `apps/web/app/components/PlayerRadio.tsx` | 8,014 | 0,00 | 🟢 |
 | 8,15 | `apps/web/app/[municipio]/vereadores/[slug]/page.tsx` | 7,312 | +0,84 | 🟢 |
 | 8,32 | `apps/web/app/funcaosocialterra/page.tsx` | 8,327 | −0,01 | 🟢 micro-queda |
@@ -198,6 +199,44 @@ trocar a assinatura e reescrever o teste que a cobre, e o ganho seria
 estético. Registrado de propósito, para a próxima sessão não tentar de
 novo achando que é pendência.
 
+### Terceiro alvo: `etl/betim/etl/common.py` — 6,97 → **9,09, VERDE**
+
+O portão de pré-commit (`cs delta --staged --error-on-warnings`) **barrou
+a primeira tentativa**, e o motivo é o achado do dia: o arquivo já estava
+**acima do teto de 600 linhas** do CodeScene (619 medidos), e qualquer
+commit que o aumentasse falhava. Refatorar `common.py` no lugar não é
+possível — é preciso **diminuí-lo**.
+
+A saída foi partir por **coesão, não por número** (commit `df7dbaf5`):
+
+| Arquivo | Saúde | O que mora lá |
+|---|---|---|
+| `etl/pg_adapter.py` *(novo)* | **10,00** | só o que fala com o banco: `PgAPIError`, `_Response`, `_adapt`, `_row_out`, `_rows_out`, `_colunas_de`, `_inserir_lotes`, `_QueryBuilder` |
+| `etl/common.py` | **9,09** | `PgClient` e as funções de negócio (`get_db`, `carregar_municipio`, `resolver_municipio_mg`, `fetch_all`, `refresh_completo_seguro`, `upsert_com_colunas_opcionais`) |
+
+**Nenhum chamador mudou.** `common.py` re-exporta tudo — inclusive os
+nomes com `_` — porque `common_test.py` importa `_QueryBuilder` de lá, e
+uns ~30 módulos do ETL fazem `from etl.common import ...`. A separação é
+interna; a superfície pública é a mesma.
+
+**Achado: o teste de `common.py` estava MORTO desde 08/10.** Os três
+testes de `_executar_*` passavam o cursor na mão
+(`q._executar_delete(cursor, tabela)`), mas o refator daquela data mudou a
+assinatura para `q._executar_delete(tabela)` — o método abre o cursor
+sozinho. Ninguém atualizou, e o arquivo ficou sem rede de segurança.
+
+Foram consertados e **ganharam mais 10 testes de INSERT/UPSERT** (18 no
+total). O cursor falso grava `(sql, params)`, então o que se confere é o
+**SQL exato** que o adapter mandaria ao banco, sem banco nenhum. A prova
+diferencial temporária da extração virou teste permanente — que é o
+destino certo de prova.
+
+⚠️ **Armadilha nova, medida:** depois do split, o teste de fatiamento
+patcheava `etl.common._TETO_PLACEHOLDERS` e **parou de funcionar** — a
+constante mora agora em `etl.pg_adapter`, e cada módulo tem seu próprio
+*namespace*. `rebinding` em um não muda o outro. O teste passou a
+patchear o módulo dono.
+
 
 ## Próximos passos
 
@@ -220,13 +259,17 @@ novo achando que é pendência.
    sozinho. Sugerida: nenhum hotspot abaixo de 7,00, e
    `escada-determinista.ts` **nunca abaixo de 9,00** (o verde, que custou
    sete etapas para conquistar).
-4. **🟡 Amarelos que sobraram** (medidos 09/10, pior primeiro):
-   `common.py` (`etl/betim/etl`, 6,97), `CompanheiroFlutuante.tsx` (7,03),
-   `betim.ts` (`lib/db/queries`, 7,30), `indice/page.tsx` (7,96).
-   `licencas-unificada.ts` saiu da lista — virou **9,68, verde**.
-   ⚠️ `common.py` é **Python** e está fora de `apps/web`: o `tsc` não o
-   cobre, então a verificação é `python -m py_compile` + os testes de
-   `etl/betim`, se existirem.
+4. **🟡 Amarelos que sobraram** — **só três**, todos medidos 09/10:
+   `CompanheiroFlutuante.tsx` (7,03, o pior), `betim.ts` (`lib/db/queries`,
+   7,30), `indice/page.tsx` (7,96). `licencas-unificada.ts` (9,68) e
+   `common.py` (9,09) saíram da lista — os dois viraram **verde**.
+   `pg_adapter.py` nasceu em **10,00** e entra na régua como arquivo novo.
+5. **📝 `common.py` ainda tem três avisos, e os três são escolha, não
+   dívida:** `refresh_completo_seguro` está cc 11 e tem **9 argumentos** —
+   é API pública chamada por ~30 módulos, e agrupar num objeto de opções
+   trocaria a legibilidade de todo *call site* por um ponto de saúde; e
+   `upsert_com_colunas_opcionais` tem 5. Registrar evita que a próxima
+   sessão repita o trabalho.
 
 ## Já fechados — o que o número confirma
 
@@ -245,7 +288,8 @@ fechado*:
 | 8,45 | `public/terras/globo/js/ui/rotulos.js` | `23b37453` | 🟢 melhorou (6,46 → 8,45) |
 | 8,15 | `app/[municipio]/vereadores/[slug]/page.tsx` | `23b37453` | 🟢 melhorou (7,31 → 8,15) |
 | 7,30 | `lib/db/queries/betim.ts` | `bb6387d1` | 🟡 melhorou pouco (7,09 → 7,30) |
-| 6,97 | `etl/betim/etl/common.py` | `23b37453` | 🟡 melhorou pouco (6,87 → 6,97) |
+| **9,09** | `etl/betim/etl/common.py` | `df7dbaf5` | 🟢 **VERDE (6,97 → 9,09)** |
+| **10,00** | `etl/betim/etl/pg_adapter.py` *(novo)* | `df7dbaf5` | ✅ nota perfeita |
 | **9,68** | `lib/ambiental/licencas-unificada.ts` | `23b8d4cb` | 🟢 **VERDE (6,64 → 9,68)** |
 | **9,53** | `lib/assistente/escada-determinista.ts` | `9fb128ff` | 🟢 **VERDE (1,36 → 9,53)** |
 | 10,00 | `lib/assistente/escada-empresas.ts` | `9365c658` | ✅ nota perfeita |
@@ -275,7 +319,8 @@ diferentes forem os donos de um arquivo, mais seguro ele está.
 | `apps/web/app/components/SeuNono.tsx` | 10,00 | 36 | `FinweeJur` | **1** |
 | `apps/web/lib/db/queries/betim.ts` | 7,30 | 32 | `FinweeJur` | **1** |
 | `apps/web/public/terras/globo/js/ui/rotulos.js` | 8,45 | 16 | `FinweeJur` | **1** |
-| `etl/betim/etl/common.py` | 6,97 | 10 | `FinweeJur` | **1** |
+| `etl/betim/etl/common.py` | 9,09 | 10 | `FinweeJur` | **1** |
+| `etl/betim/etl/pg_adapter.py` | 10,00 | 10 | `FinweeJur` | **1** |
 
 **Leitura — e o cuidado para não alarmar.** Todo arquivo medido tem bus
 factor 1, mas aqui **1 não é fragilidade**: o repo é do dono, e todas as
