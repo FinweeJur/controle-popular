@@ -36,16 +36,16 @@
  * - Seguiu a mesma receita em 09/10/2026: `degrau2Cidades` →
  *   `escada-cidades.ts`, `degrau45Bases` → `escada-bases.ts`,
  *   `degrau15Tabelas` → `escada-tabelas.ts`, `degrau35Justica` →
- *   `escada-justica.ts` e `degrau65Internacional` (o pior que restava,
- *   complexidade 24) → `escada-internacional.ts`. Sobra aqui o que ainda
- *   depende de lógica própria: o degrau de notícias, as respostas curadas,
- *   a busca em páginas e o `degrau1Laboratorio`.
+ *   `escada-justica.ts`, `degrau65Internacional` (complexidade 24) →
+ *   `escada-internacional.ts` e `degrau6Noticias` (complexidade 12, o
+ *   último método complexo) → `escada-noticias.ts`. Sobra aqui o que ainda
+ *   depende de lógica própria: as respostas curadas, a busca em páginas e
+ *   o `degrau1Laboratorio`.
  */
 
 import { buscarRespostaCurada } from "../busca/resposta-curada";
 import { semAcento } from "../busca/normalizar";
 import { buscarPaginasPortal } from "../busca/paginas-portal";
-import { listarNoticiasPortal } from "../noticias/portal";
 import { obterLinksRelacionadosGalho } from "./arvore-galhos";
 import { corrigirDigitacaoFrase } from "./corretor-digitacao";
 import { degrau45Bases } from "./escada-bases";
@@ -54,6 +54,7 @@ import { degrau3Empresas } from "./escada-empresas";
 import { degrau4Ferramentas } from "./escada-ferramentas";
 import { degrau65Internacional } from "./escada-internacional";
 import { degrau35Justica } from "./escada-justica";
+import { degrau6Noticias } from "./escada-noticias";
 import { degrau15Tabelas } from "./escada-tabelas";
 
 // Os tipos da escada vivem em `escada-base.ts` para que os degraus novos os
@@ -181,82 +182,6 @@ function degrau5Curada(prompt: string, slugCidadeOuZona?: string): ResultadoEsca
       texto: curada.resposta,
       categoria: "Acervo Oficial",
       atalhos,
-    };
-  }
-
-  return null;
-}
-
-/**
- * Degrau 6 — Blog e reportagens investigativas do ONSA: o cartão da central
- * de notícias e a busca por reportagem conhecida (título, slug ou DUAS
- * palavras-chave — de uma só, qualquer pergunta sobre orçamento caía na
- * reportagem do IPCA/Selic, medido em 06/10/2026).
- *
- * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
- * @returns Cartão da notícia, ou `null` para o degrau seguinte.
- */
-function degrau6Noticias(normalizada: string): ResultadoEscada | null {
-  // ─── 6. DEGRAU: BLOG E REPORTAGENS INVESTIGATIVAS ────────────────────
-  if (
-    normalizada === "blog" ||
-    normalizada === "noticias" ||
-    normalizada === "reportagens" ||
-    normalizada === "investigacoes" ||
-    normalizada.includes("central de noticias") ||
-    normalizada.includes("ultimas noticias")
-  ) {
-    const noticias = listarNoticiasPortal();
-    const topNoticias = noticias.slice(0, 4);
-    return {
-      tipo: "noticia",
-      titulo: "Central de Notícias & Investigações Cívicas",
-      subtitulo: "Jornalismo de Dados e Relatórios Técnicos do ONSA",
-      texto:
-        "Acompanhe reportagens exclusivas sobre royalties do lítio, tarifa social, desastres da mineração, orçamentos da justiça e direitos fundamentais.",
-      categoria: "Blog & Notícias",
-      atalhos: [
-        { rotulo: "Ver Todas as Notícias", href: "/noticias", principal: true },
-        ...topNoticias.map((n) => ({
-          rotulo: n.titulo.length > 38 ? n.titulo.slice(0, 35) + "..." : n.titulo,
-          href: `/noticias/${n.slug}`,
-        })),
-      ],
-    };
-  }
-
-  // Busca específica por reportagem conhecida do blog
-  const noticiasAcervo = listarNoticiasPortal();
-  const noticiaCorrespondente = noticiasAcervo.find((n) => {
-    const titNorm = semAcento(n.titulo.toLowerCase());
-    const slugNorm = semAcento(n.slug.toLowerCase());
-    const chavesNorm = n.palavrasChave.map((k) => semAcento(k.toLowerCase()));
-
-    return (
-      titNorm.includes(normalizada) ||
-      normalizada.includes(slugNorm) ||
-      // DUAS palavras-chave, não uma: com um só acerto, qualquer pergunta que
-      // mencione "orçamento" caía na reportagem do IPCA/Selic em vez da
-      // resposta do assunto (medido 06/10/2026).
-      chavesNorm.filter((k) => k.length > 4 && normalizada.includes(k)).length >= 2
-    );
-  });
-
-  if (noticiaCorrespondente) {
-    return {
-      tipo: "noticia",
-      titulo: noticiaCorrespondente.titulo,
-      subtitulo: `${noticiaCorrespondente.categoria} · ${new Date(noticiaCorrespondente.publicadoEm).toLocaleDateString("pt-BR")}`,
-      texto: noticiaCorrespondente.resumo,
-      categoria: "Reportagem Investigativa",
-      atalhos: [
-        { rotulo: "Ler Reportagem Completa", href: `/noticias/${noticiaCorrespondente.slug}`, principal: true },
-        { rotulo: "Central de Notícias", href: "/noticias" },
-        ...noticiaCorrespondente.fontesOficiais.slice(0, 2).map((f) => ({
-          rotulo: `Fonte: ${f.nome}`,
-          href: f.url,
-        })),
-      ],
     };
   }
 
