@@ -73,10 +73,16 @@ A CI roda o mesmo script (`.github/workflows/docs.yml`).
 
 ## 3. Estado vivo
 
-1. **Banco: Postgres do Guara (`cp-postgres-597bd0`).** A aplicação aponta
-   para ele — e é ele que o **Azure** usa em runtime também (desde 06/10). A
-   Neon antiga está em 94% (470/500 MB), **sem uso**: sobra decidir o
-   desligamento. Ver [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
+1. **Banco: Heroku Postgres (medido 09/10, troca de 08/10).** O
+   `DATABASE_URL` do `apps/web/.env.local` resolve para
+   `cdltk6ok0evgo7.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com` — o
+   add-on `postgresql-rectangular-44619` da app `controle-popular` (plano
+   `heroku-postgresql:essential-0`), e o secret `DATABASE_URL` do GitHub foi
+   atualizado em 08/10 15:16 UTC. O Postgres do Guara (`cp-postgres-597bd0`)
+   **não é mais o que o app lê**; a Neon antiga continua em 94% (470/500 MB)
+   e **sem uso**. ⚠️ RDS em `us-east-1` — dado hospedado fora do Brasil,
+   decisão do dono. Ver
+   [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
 2. **Publicação em duas casas (troca de 06/10/2026).**
    - **Azure Container Apps — principal:** `www.controlepopular.com.br`.
      Publica por `gh workflow run azure-mirror.yml --ref main` (~6 min: build
