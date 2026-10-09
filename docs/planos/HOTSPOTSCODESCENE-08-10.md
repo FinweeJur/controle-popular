@@ -42,7 +42,7 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 | Saúde | Arquivo | Nuvem (velha) | Δ | Situação |
 |---|---|---|---|---|
 | **9,53** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+8,08** | 🟢 **verde** (1,36 → 9,53; piso de verde = 9,00) |
-| 6,64 | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | +0,91 | 🟡 melhorou, ainda amarelo |
+| **9,68** | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | **+3,95** | 🟢 **VERDE** (6,64 → 9,68 em 4 commits) |
 | 6,97 | `etl/betim/etl/common.py` | 6,870 | +0,10 | 🟡 |
 | 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 não tocado |
 | 7,30 | `apps/web/lib/db/queries/betim.ts` | 7,090 | +0,21 | 🟡 |
@@ -164,6 +164,41 @@ merecem fila própria.
 respondeu **"No issues found"**: nenhum commit introduziu problema novo.
 O declínio é de arquivo velho, não de commit recente.
 
+### Segundo alvo: `licencas-unificada.ts` — 6,64 → **9,68, VERDE**
+
+Era o **pior amarelo** da fila (5,73 → 6,64 no commit antigo `6788cc43`,
+ainda amarelo). Foram **4 commits em 09/10**, todos verificados por prova
+de equivalência antes de ir para o ar, e o arquivo saiu de amarelo a
+verde. A trajetória medida com `cs review`:
+
+| Saída | O que mudou | Commit |
+|---|---|---|
+| 6,89 | `casaNaRegra` (cc 11) e `construirLinkOficial` (cc 9) viraram `condicoesDeOrgao()` + `condicaoDeCategoria()` + `processoUtil()`; os `PROCESSO_SEM_CONSULTA` viraram `Set` (evita aviso de *Complex Conditional*) | `6075e8fb` |
+| 7,21 | `extrairValor` (cc 14, *Bumpy Road*) virou `valorDeNumero()` → `valorDeTexto()` → `valorDeBusca()`, encadeadas com `??` — fiel porque **cada uma devolve `null`, nunca `0`** | `fc21c6fa` |
+| 8,67 | `normalizarBaciaIgam` (cc 18, o **último Complex Method**) virou a tabela `BACIAS_IGAM` casada por `find` | `bcbfdf65` |
+| **9,68** | `texto`, `ehPac` e `extrairTamanho` saíram do aviso de *Complex Conditional*: `||`/`&&` encadeados na mesma linha viraram guardas em linhas separadas + `Set` | `23b8d4cb` |
+
+**A ordem da tabela `BACIAS_IGAM` é regra, não detalhe.** `find` devolve
+o primeiro que casa, então trocar duas linhas de lugar muda a resposta
+(`"SM DOCE"` cairia em Doce em vez de Mucuri; `PARANAIBA` perderia para
+`PARAIBA`). Por isso a prova cobre **todos os pares ordenados** de termos.
+
+**Prova de equivalência em duas etapas.** Esta função não tem teste
+próprio em `licencas-unificada.test.ts`, então a prova é **diferencial**:
+a versão antiga foi extraída de `git show HEAD:<arquivo>` para um módulo
+temporário, e as duas rodaram a mesma matriz — **615 entradas, 0
+divergências** (`prova-bacia.mts`, copiada para `apps/web/` só para rodar,
+porque o import relativo precisa do `cwd` certo). Para a prova alcancar o
+código de verdade a função precisou ser **`export`**: sem `export`, o
+script só leria o texto, não conseguiria roda-la.
+
+**O único aviso que sobrou é escolha, não dívida.** `inferirPorte` tem 5
+argumentos (`clas`, `pac`, `tipo`, `microresumo`, `tags`). Reduzir exigiria
+trocar a assinatura e reescrever o teste que a cobre, e o ganho seria
+estético. Registrado de propósito, para a próxima sessão não tentar de
+novo achando que é pendência.
+
+
 ## Próximos passos
 
 1. **🟢 Fechado:** todos os oito degraus saíram do arquivo em 09/10 —
@@ -185,9 +220,13 @@ O declínio é de arquivo velho, não de commit recente.
    sozinho. Sugerida: nenhum hotspot abaixo de 7,00, e
    `escada-determinista.ts` **nunca abaixo de 9,00** (o verde, que custou
    sete etapas para conquistar).
-4. **🟡 Amarelos que sobraram:** `licencas-unificada.ts` (6,64, 5 avisos),
-   `common.py` (6,97), `CompanheiroFlutuante.tsx` (7,03),
-   `betim.ts` (7,30). Depois do vermelho.
+4. **🟡 Amarelos que sobraram** (medidos 09/10, pior primeiro):
+   `common.py` (`etl/betim/etl`, 6,97), `CompanheiroFlutuante.tsx` (7,03),
+   `betim.ts` (`lib/db/queries`, 7,30), `indice/page.tsx` (7,96).
+   `licencas-unificada.ts` saiu da lista — virou **9,68, verde**.
+   ⚠️ `common.py` é **Python** e está fora de `apps/web`: o `tsc` não o
+   cobre, então a verificação é `python -m py_compile` + os testes de
+   `etl/betim`, se existirem.
 
 ## Já fechados — o que o número confirma
 
@@ -207,7 +246,7 @@ fechado*:
 | 8,15 | `app/[municipio]/vereadores/[slug]/page.tsx` | `23b37453` | 🟢 melhorou (7,31 → 8,15) |
 | 7,30 | `lib/db/queries/betim.ts` | `bb6387d1` | 🟡 melhorou pouco (7,09 → 7,30) |
 | 6,97 | `etl/betim/etl/common.py` | `23b37453` | 🟡 melhorou pouco (6,87 → 6,97) |
-| 6,64 | `lib/ambiental/licencas-unificada.ts` | `6788cc43` | 🟡 melhorou (5,73 → 6,64) |
+| **9,68** | `lib/ambiental/licencas-unificada.ts` | `23b8d4cb` | 🟢 **VERDE (6,64 → 9,68)** |
 | **9,53** | `lib/assistente/escada-determinista.ts` | `9fb128ff` | 🟢 **VERDE (1,36 → 9,53)** |
 | 10,00 | `lib/assistente/escada-empresas.ts` | `9365c658` | ✅ nota perfeita |
 | 10,00 | `lib/assistente/escada-ferramentas.ts` | `9365c658` | ✅ nota perfeita |
