@@ -70,6 +70,17 @@ export interface EntradaCartao {
   /** Sem flag `g`: com `g`, `lastIndex` faria o teste falhar em rodadas alternadas. */
   regex?: RegExp[];
   cartao: ResultadoEscada;
+  /**
+   * Quando o cartão VARIA com a pergunta — título e link levam o termo que
+   * o cidadão digitou ("Licenciamento Ambiental: rios"). Recebe a pergunta e
+   * o cartão-base já escrito; devolve a versão ajustada. Ausente = devolve
+   * `cartao` como está.
+   *
+   * Existe para não esconder lógica fora da tabela: os termos de casamento
+   * continuam todos em `exatos`/`contem`/…, então a prova de equivalência
+   * contra o `if` original continua cobrindo tudo.
+   */
+  montar?: (normalizada: string, base: ResultadoEscada) => ResultadoEscada;
 }
 
 /**
@@ -138,7 +149,9 @@ export function primeiroCartao(
   entradas: EntradaCartao[]
 ): ResultadoEscada | null {
   for (const entrada of entradas) {
-    if (casarTermos(normalizada, entrada)) return entrada.cartao;
+    if (!casarTermos(normalizada, entrada)) continue;
+    if (entrada.montar) return entrada.montar(normalizada, entrada.cartao);
+    return entrada.cartao;
   }
   return null;
 }

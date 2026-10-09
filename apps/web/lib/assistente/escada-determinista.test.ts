@@ -42,6 +42,33 @@ describe("avaliarEscadaDeterminista", () => {
     expect(cond?.atalhos.some((a) => a.href === "/ambiental/condicionantes")).toBe(true);
   });
 
+  it("o termo depois de 'licenciamento' vira busca dentro da tabela", () => {
+    // O cartão de licenciamento é o único da escada que VARIA com a pergunta:
+    // o que vem depois da palavra vira `?q=` na URL. Caso trave aqui, a
+    // comparação com o `if` original (provada em 09/10/2026) deixa de valer.
+    const comTermo = avaliarEscadaDeterminista("licenciamento de rios");
+    expect(comTermo?.titulo).toBe("Licenciamento Ambiental: rios");
+    expect(comTermo?.atalhos[0].href).toBe("/ambiental/licenciamento?q=rios");
+
+    const semTermo = avaliarEscadaDeterminista("licenciamento ambiental");
+    expect(semTermo?.titulo).toBe("Licenciamento Ambiental de Minas Gerais");
+    expect(semTermo?.atalhos[0].href).toBe("/ambiental/licenciamento");
+  });
+
+  it("duas siglas de justiça juntas = comparativo; uma sigla = ficha", () => {
+    // Regressão de 06/10/2026: a pergunta do comparativo atravessava a escada
+    // e caía no degrau de notícias. A regra mora ANTES da tabela em
+    // `escada-justica.ts` — se alguém puder a ordem, este teste falha.
+    const comparativo = avaliarEscadaDeterminista(
+      "orcamento do tjmg do mpmg e do dpmg e a disparidade entre eles"
+    );
+    expect(comparativo?.titulo).toBe("Instituições de Justiça de Minas Gerais");
+    expect(comparativo?.atalhos.some((a) => a.href === "/judiciario/instituicoes/tjmg")).toBe(true);
+
+    const ficha = avaliarEscadaDeterminista("tjmg");
+    expect(ficha?.titulo).toBe("TJMG — Tribunal de Justiça de Minas Gerais");
+  });
+
   it("retorna cartão de cidade para cidades específicas", () => {
     const betim = avaliarEscadaDeterminista("betim");
     expect(betim?.tipo).toBe("cidade");

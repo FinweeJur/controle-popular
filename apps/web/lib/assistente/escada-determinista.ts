@@ -33,6 +33,11 @@
  *   Ambos deixaram a sequência de `if`s e viraram TABELA de dados, casada
  *   por `primeiroCartao()` de `escada-base.ts`. O arquivo caiu de 1.373 para
  *   963 linhas — abaixo do aviso de "Lines of Code" do CodeScene.
+ * - Seguiu a mesma receita em 09/10/2026: `degrau2Cidades` →
+ *   `escada-cidades.ts`, `degrau45Bases` → `escada-bases.ts`,
+ *   `degrau15Tabelas` → `escada-tabelas.ts` e `degrau35Justica` →
+ *   `escada-justica.ts`. Sobra aqui o que ainda depende de lógica própria
+ *   (curadas, notícias, páginas) e o `degrau1Laboratorio`.
  */
 
 import { buscarRespostaCurada } from "../busca/resposta-curada";
@@ -45,6 +50,8 @@ import { degrau45Bases } from "./escada-bases";
 import { degrau2Cidades } from "./escada-cidades";
 import { degrau3Empresas } from "./escada-empresas";
 import { degrau4Ferramentas } from "./escada-ferramentas";
+import { degrau35Justica } from "./escada-justica";
+import { degrau15Tabelas } from "./escada-tabelas";
 
 // Os tipos da escada vivem em `escada-base.ts` para que os degraus novos os
 // importem sem depender deste arquivo (isso fecharia um ciclo de import).
@@ -126,252 +133,6 @@ function degrau1Laboratorio(normalizada: string): ResultadoEscada | null {
         { rotulo: "Comparador de Cidades", href: "/laboratorio/comparador" },
         { rotulo: "Séries Históricas & Gráficos", href: "/laboratorio/graficos" },
         { rotulo: "Orçamento de Minas Gerais", href: "/estado-e-economia/orcamento" },
-      ],
-    };
-  }
-
-  return null;
-}
-
-/**
- * Degrau 1.5 — Comandos diretos de tabelas e bases: licenciamento, convênios,
- * legislação ambiental e condicionantes de barragens.
- *
- * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
- * @returns Cartão da base, ou `null` para o degrau seguinte.
- */
-function degrau15Tabelas(normalizada: string): ResultadoEscada | null {
-  // ─── 1.5. DEGRAU: COMANDOS DIRETOS DE TABELAS & BASES (LICENÇAS, CONVÊNIOS, LEIS, TAC) ─
-  if (
-    normalizada.startsWith("licenciamento") ||
-    normalizada.startsWith("licenca") ||
-    normalizada.startsWith("licencas") ||
-    normalizada.includes("painel de licenciamento") ||
-    normalizada.includes("licenciamento ambiental")
-  ) {
-    const termoBusca = normalizada
-      .replace(/^licenciamento\s*(de\s*)?/i, "")
-      .replace(/^licencas?\s*(de\s*)?/i, "")
-      .replace(/ambiental/i, "")
-      .trim();
-
-    const linkHref = termoBusca ? `/ambiental/licenciamento?q=${encodeURIComponent(termoBusca)}` : "/ambiental/licenciamento";
-
-    return {
-      tipo: "pagina",
-      titulo: termoBusca ? `Licenciamento Ambiental: ${termoBusca}` : "Licenciamento Ambiental de Minas Gerais",
-      subtitulo: "19.713 Empreendimentos Catalogados · SEMAD / COPAM",
-      texto:
-        "Consulte processos de licença prévia (LP), instalação (LI) e operação (LO) deferidas pela SEMAD e pelo COPAM com filtros por município, setor e classe de impacto.",
-      categoria: "Licenciamento",
-      atalhos: [
-        { rotulo: "Abrir Tabela de Licenciamento", href: linkHref, principal: true },
-        { rotulo: "Pautas do COPAM", href: "/ambiental/copam" },
-        { rotulo: "Condicionantes de Barragens", href: "/ambiental/condicionantes" },
-        { rotulo: "Termos de Ajustamento (TACs)", href: "/ambiental/tac" },
-      ],
-    };
-  }
-
-  if (
-    normalizada.startsWith("convenio") ||
-    normalizada.startsWith("convenios") ||
-    normalizada.includes("painel de convenios")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "Convênios & Estudos Ambientais",
-      subtitulo: "3.000+ Parcerias Oficiais de Órgãos Estaduais",
-      texto:
-        "Tabela de convênios firmados pela SEMAD, IEF, IGAM e FEAM com prefeituras, universidades e entidades civis com valores, vigência e prestação de contas.",
-      categoria: "Convênios",
-      atalhos: [
-        { rotulo: "Tabela de Convênios", href: "/ambiental/convenios", principal: true },
-        { rotulo: "Compras no PNCP", href: "/estado-e-economia/compras" },
-        { rotulo: "Repasses ComunicaBR", href: "/dados/comunicabr" },
-      ],
-    };
-  }
-
-  if (
-    normalizada.startsWith("lei ") ||
-    normalizada.startsWith("leis ") ||
-    normalizada.startsWith("decreto ") ||
-    normalizada === "legislacao" ||
-    normalizada.includes("legislacao ambiental")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "Legislação Ambiental Unificada",
-      subtitulo: "20.000+ Normas com URN Canônica LexML",
-      texto:
-        "Acervo completo de leis, decretos e resoluções ambientais federais e estaduais com identificadores persistentes e texto integral.",
-      categoria: "Legislação",
-      atalhos: [
-        { rotulo: "Acervo de Legislação Ambiental", href: "/ambiental/legislacao", principal: true },
-        { rotulo: "Pautas do COPAM", href: "/ambiental/copam" },
-        { rotulo: "Termos de Ajustamento (TACs)", href: "/ambiental/tac" },
-      ],
-    };
-  }
-
-  if (
-    normalizada === "condicionantes" ||
-    normalizada.includes("condicionantes ambientais") ||
-    normalizada.includes("condicionantes de barragens")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "Condicionantes Ambientais de Barragens",
-      subtitulo: "Piloto Irapé e Setúbal · Evidências e Cumprimento",
-      texto:
-        "Auditoria pública de condicionantes de licenças e TACs: reassentamentos, monitoramento sísmico e proteção biológica com links auditáveis à fonte oficial.",
-      categoria: "Meio Ambiente",
-      atalhos: [
-        { rotulo: "Painel de Condicionantes", href: "/ambiental/condicionantes", principal: true },
-        { rotulo: "Painel de Barragens", href: "/ambiental/barragens" },
-        { rotulo: "Descaracterização", href: "/ambiental/barragens/descaracterizacao" },
-      ],
-    };
-  }
-
-
-  return null;
-}
-
-/**
- * Degrau 3.5 — Instituições de Justiça e órgãos de controle (TJMG, MPMG,
- * DPMG, TCEMG). O comparativo de DUAS siglas juntas vem primeiro: o cartão
- * da home pergunta pelo orçamento das três de uma vez.
- *
- * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
- * @returns Cartão da instituição, ou `null` para o degrau seguinte.
- */
-function degrau35Justica(normalizada: string): ResultadoEscada | null {
-  // ─── 3.5. DEGRAU: INSTITUIÇÕES DE JUSTIÇA & ÓRGÃOS DE CONTROLE ────────
-  // Comparativo ANTES das fichas: o cartão da home pergunta pelo orçamento do
-  // TJMG, MPMG e DPMG JUNTOS ("…e a disparidade entre eles"). Sem esta regra,
-  // a pergunta atravessava a escada e caía no degrau de notícias, devolvendo
-  // uma reportagem sobre IPCA/Selic (medido em 06/10/2026). Duas ou mais
-  // siglas juntas = pergunta comparativa.
-  const siglasJustica = ["tjmg", "mpmg", "dpmg"].filter((s) => normalizada.includes(s));
-  if (siglasJustica.length >= 2) {
-    return {
-      tipo: "ferramenta",
-      titulo: "Instituições de Justiça de Minas Gerais",
-      subtitulo: "TJMG · MPMG · DPMG — orçamento, folha e penduricalhos",
-      texto:
-        "Painel comparativo das instituições de justiça de Minas Gerais: orçamento anual de cada uma, folha de pagamento, auxílios e verbas indenizatórias, com limite constitucional e fonte oficial em cada ficha.",
-      categoria: "Poder Judiciário",
-      atalhos: [
-        { rotulo: "Ver as Instituições de Justiça", href: "/judiciario/instituicoes", principal: true },
-        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg" },
-        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg" },
-        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg" },
-      ],
-    };
-  }
-
-  if (
-    normalizada.includes("tjmg") ||
-    normalizada.includes("tribunal de justica de minas") ||
-    normalizada.includes("desembargadores tjmg")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "TJMG — Tribunal de Justiça de Minas Gerais",
-      subtitulo: "Orçamento de R$ 14,96 Bi · Despesas e Folha de Pagamento",
-      texto:
-        "Ficha analítica do TJMG: orçamento anual, auxílio-alimentação (R$ 380 mi), diárias (R$ 48 mi), estrutura de comarcas e produtividade judiciária.",
-      categoria: "Poder Judiciário",
-      atalhos: [
-        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg", principal: true },
-        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
-        { rotulo: "Balcão Virtual e Varas", href: "/judiciario/contatos" },
-        { rotulo: "Recomendações CNJ", href: "/noticias/recomendacoes-cnj-cnmp-e-inspecoes-da-justica" },
-      ],
-    };
-  }
-
-  if (
-    normalizada.includes("mpmg") ||
-    normalizada.includes("ministerio publico de minas") ||
-    normalizada.includes("promotores mpmg")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "MPMG — Ministério Público de Minas Gerais",
-      subtitulo: "Orçamento de R$ 4,09 Bi · CAOMA e Verbas Indenizatórias",
-      texto:
-        "Ficha institucional do MPMG: promotorias especializadas, verbas indenizatórias (R$ 684 mi), ouvidoria pública e atuação ambiental.",
-      categoria: "Poder Judiciário",
-      atalhos: [
-        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg", principal: true },
-        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
-        { rotulo: "Canal de Denúncias", href: "/direitos-em-movimento/denuncia" },
-      ],
-    };
-  }
-
-  if (
-    normalizada.includes("dpmg") ||
-    normalizada.includes("defensoria publica de minas") ||
-    normalizada.includes("defensores publicos")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "DPMG — Defensoria Pública de Minas Gerais",
-      subtitulo: "Orçamento de R$ 1,10 Bi · Assistência Jurídica Gratuita",
-      texto:
-        "Ficha da DPMG: mapa de comarcas atendidas, déficit de defensores públicos perante a demanda e canais para atendimento gratuito ao cidadão.",
-      categoria: "Poder Judiciário",
-      atalhos: [
-        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg", principal: true },
-        { rotulo: "Onde Buscar Ajuda Jurídica", href: "/direitos-em-movimento/ajuda" },
-        { rotulo: "Quem Fiscaliza a Justiça", href: "/judiciario/instituicoes" },
-      ],
-    };
-  }
-
-  if (
-    normalizada === "tcemg" ||
-    normalizada === "tce" ||
-    normalizada.includes("tribunal de contas do estado")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "TCEMG — Tribunal de Contas do Estado de MG",
-      subtitulo: "Orçamento de R$ 1,15 Bi · Controle Externo das Contas",
-      texto:
-        "Ficha do TCEMG: fiscalização de contas dos 853 municípios mineiros, rejeição de contas de prefeitos e auditorias do estado.",
-      categoria: "Órgãos de Controle",
-      atalhos: [
-        { rotulo: "Ficha do TCEMG", href: "/judiciario/instituicoes/tcemg", principal: true },
-        { rotulo: "Orçamento de MG", href: "/estado-e-economia/orcamento" },
-        { rotulo: "199 Cidades Monitoradas", href: "/cidades" },
-      ],
-    };
-  }
-
-  if (
-    normalizada === "judiciario" ||
-    normalizada.includes("poder judiciario") ||
-    normalizada.includes("instituicoes de justica") ||
-    normalizada.includes("quem fiscaliza a justica")
-  ) {
-    return {
-      tipo: "pagina",
-      titulo: "Quem Fiscaliza a Justiça — Mapa das Instituições",
-      subtitulo: "TJMG, MPMG, DPMG, TRT-3, TRF-6, TCEMG, DPU e Conselhos",
-      texto:
-        "Painel comparativo das instituições de justiça em Minas Gerais: orçamentos, penduricalhos, folhas de pagamento e limites do controle externo no CNJ e CNMP.",
-      categoria: "Poder Judiciário",
-      atalhos: [
-        { rotulo: "Painel das Instituições de Justiça", href: "/judiciario/instituicoes", principal: true },
-        { rotulo: "Ficha do TJMG", href: "/judiciario/instituicoes/tjmg" },
-        { rotulo: "Ficha do MPMG", href: "/judiciario/instituicoes/mpmg" },
-        { rotulo: "Ficha da DPMG", href: "/judiciario/instituicoes/dpmg" },
-        { rotulo: "Balcão Virtual e Varas", href: "/judiciario/contatos" },
       ],
     };
   }
