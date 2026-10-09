@@ -35,9 +35,11 @@
  *   963 linhas — abaixo do aviso de "Lines of Code" do CodeScene.
  * - Seguiu a mesma receita em 09/10/2026: `degrau2Cidades` →
  *   `escada-cidades.ts`, `degrau45Bases` → `escada-bases.ts`,
- *   `degrau15Tabelas` → `escada-tabelas.ts` e `degrau35Justica` →
- *   `escada-justica.ts`. Sobra aqui o que ainda depende de lógica própria
- *   (curadas, notícias, páginas) e o `degrau1Laboratorio`.
+ *   `degrau15Tabelas` → `escada-tabelas.ts`, `degrau35Justica` →
+ *   `escada-justica.ts` e `degrau65Internacional` (o pior que restava,
+ *   complexidade 24) → `escada-internacional.ts`. Sobra aqui o que ainda
+ *   depende de lógica própria: o degrau de notícias, as respostas curadas,
+ *   a busca em páginas e o `degrau1Laboratorio`.
  */
 
 import { buscarRespostaCurada } from "../busca/resposta-curada";
@@ -50,6 +52,7 @@ import { degrau45Bases } from "./escada-bases";
 import { degrau2Cidades } from "./escada-cidades";
 import { degrau3Empresas } from "./escada-empresas";
 import { degrau4Ferramentas } from "./escada-ferramentas";
+import { degrau65Internacional } from "./escada-internacional";
 import { degrau35Justica } from "./escada-justica";
 import { degrau15Tabelas } from "./escada-tabelas";
 
@@ -253,89 +256,6 @@ function degrau6Noticias(normalizada: string): ResultadoEscada | null {
           rotulo: `Fonte: ${f.nome}`,
           href: f.url,
         })),
-      ],
-    };
-  }
-
-  return null;
-}
-
-/**
- * Degrau 6.5 — Expansão internacional (EUA e Canadá) e pedido trilíngue.
- * O nó dos EUA só responde se NÃO for assunto do Canadá (o Canadá tem
- * regex própria logo abaixo, que fica sempre à espera).
- *
- * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
- * @returns Cartão do hub internacional, ou `null` para o degrau seguinte.
- */
-function degrau65Internacional(normalizada: string): ResultadoEscada | null {
-  // ─── 6.5. DEGRAU: EXPANSÃO INTERNACIONAL (EUA & CANADÁ) E TRILÍNGUE ────
-  if (
-    /\b(explain in plain english|explica en espanol|explique em portugues simples)\b/i.test(normalizada) ||
-    /\b(eua|estados unidos|united states|sec edgar|usaspending|superfund|epa echo|nid dams|foia)\b/i.test(normalizada)
-  ) {
-    const isEn = normalizada.includes("english") || normalizada.includes("united states");
-    const isEs = normalizada.includes("espanol") || normalizada.includes("estados unidos de america");
-    const isCanada = normalizada.includes("canada") || normalizada.includes("tsx") || normalizada.includes("mount polley");
-
-    if (!isCanada) {
-      return {
-        tipo: "pagina",
-        titulo: isEn
-          ? "United States Civic Observatory (/eua)"
-          : isEs
-          ? "Observatorio Cívico de EE. UU. (/eua)"
-          : "Observatório Cívico dos Estados Unidos (/eua)",
-        subtitulo: isEn
-          ? "SEC EDGAR · USAspending · EPA ECHO · NID · OpenAlex · GBIF"
-          : isEs
-          ? "SEC EDGAR · USAspending · EPA ECHO · NID · OpenAlex · GBIF"
-          : "SEC EDGAR · USAspending · EPA ECHO · NID · OpenAlex · GBIF",
-        texto: isEn
-          ? "We audit US public contracts, SEC corporate filings, EPA penalties, 91,000 dams, and scientific data."
-          : isEs
-          ? "Auditamos contratos públicos de EE. UU., balances en la SEC, multas de la EPA y represas."
-          : "Monitoramos contratos federais nos EUA, balanços na SEC, multas da EPA, barragens no NID e biodiversidade.",
-        categoria: "Internacional · EUA",
-        atalhos: [
-          { rotulo: isEn ? "Open US Hub (/eua)" : isEs ? "Abrir Hub EE. UU. (/eua)" : "Painel Geral dos EUA (/eua)", href: "/eua", principal: true },
-          { rotulo: "SEC EDGAR & Fundos (/eua/empresas)", href: "/eua/empresas" },
-          { rotulo: "EPA, Barragens & Natureza (/eua/ambiental)", href: "/eua/ambiental" },
-          { rotulo: "USAspending & Comércio (/eua/contratos)", href: "/eua/contratos" },
-          { rotulo: "Congresso, SCOTUS & Terras (/eua/institucional)", href: "/eua/institucional" },
-        ],
-      };
-    }
-  }
-
-  if (
-    /\b(canada|canadian|tsx|sedar|mount polley|npri|eccc|first nations|primeiras nacoes|openparliament|core ombuds|sudbury)\b/i.test(
-      normalizada
-    )
-  ) {
-    const isEn = normalizada.includes("english") || normalizada.includes("canadian");
-    const isEs = normalizada.includes("espanol");
-
-    return {
-      tipo: "pagina",
-      titulo: isEn
-        ? "Canada Civic & Mining Observatory (/canada)"
-        : isEs
-        ? "Observatorio Cívico y Minero de Canadá (/canada)"
-        : "Observatório Cívico e Minerário do Canadá (/canada)",
-      subtitulo: "TSX/SEDAR+ · Open Canada · ECCC NPRI · Mount Polley · First Nations",
-      texto: isEn
-        ? "We track Canadian miners operating in Brazil, NPRI tailings emissions, Mount Polley, and First Nations treaties."
-        : isEs
-        ? "Rastreamos mineras canadienses en Brasil, emisiones NPRI, Mount Polley y tierras de las Primeras Naciones."
-        : "Cruzamos mineradoras canadenses na TSX que atuam no Brasil, emissões NPRI, Mount Polley e Primeiras Nações.",
-      categoria: "Internacional · Canadá",
-      atalhos: [
-        { rotulo: isEn ? "Open Canada Hub (/canada)" : isEs ? "Abrir Hub Canadá (/canada)" : "Painel Geral do Canadá (/canada)", href: "/canada", principal: true },
-        { rotulo: "Mineradoras TSX no Brasil (/canada/mineracao)", href: "/canada/mineracao" },
-        { rotulo: "NPRI, Água & Mount Polley (/canada/ambiental)", href: "/canada/ambiental" },
-        { rotulo: "Compras & Subsídios (/canada/contratos)", href: "/canada/contratos" },
-        { rotulo: "Parlamento, Corte & Indígenas (/canada/institucional)", href: "/canada/institucional" },
       ],
     };
   }
