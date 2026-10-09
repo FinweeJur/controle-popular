@@ -755,17 +755,54 @@ const linhasAna: LinhaLicencaUnificada[] = unificar("ANA", "outorga", (linha) =>
   };
 }, linhasBrutas(ana));
 
-function normalizarBaciaIgam(urga: string | null): string | null {
+/**
+ * Regionais da IGAM por bacia canônica, na MESMA ordem do `if` que
+ * existia aqui até 09/10/2026. `contem` é substring em maiúsculas — é
+ * por isso que "SM" e "SF" podem ser siglas curtas e ainda assim casarem
+ * nomes longos.
+ *
+ * A ordem das LINHAS e a ordem dos termos DENTRO de cada linha são as do
+ * código original. `find` devolve o primeiro que casa, então trocar duas
+ * linhas de lugar muda a resposta (ex.: "SM DOCE" cairia em Doce em vez
+ * de Mucuri). Ver `normalizarBaciaIgam` logo abaixo.
+ */
+const BACIAS_IGAM: { contem: string[]; nome: string }[] = [
+  { contem: ["SM", "MUCURI", "MATEUS"], nome: "Rio Mucuri / São Mateus" },
+  { contem: ["DOCE"], nome: "Rio Doce" },
+  { contem: ["GRANDE"], nome: "Rio Grande" },
+  { contem: ["PARANAÍBA", "PARANAIBA"], nome: "Rio Paranaíba" },
+  { contem: ["PARAÍBA", "PARAIBA"], nome: "Rio Paraíba do Sul" },
+  { contem: ["JEQUITINHONHA", "PARDO"], nome: "Rio Jequitinhonha" },
+  { contem: ["SF", "CENTRAL", "VELHAS", "PARAOPEBA", "FRANCISCO"], nome: "Rio São Francisco" },
+];
+
+/**
+ * Normaliza a regional da IGAM para o nome canônico da bacia.
+ *
+ * A fonte traz a regional no MEU formato ("SM", "Alto São Francisco",
+ * "Paranaíba"), e a tela precisa de um nome só — senão o mesmo rio vira
+ * três filtros diferentes. A comparação é por SUBSTRING em maiúsculas:
+ * "SM" casa "Região Mucuri", "SF" casa "Alto São Francisco".
+ *
+ * **A ORDEM É REGRA.** `SM` vem antes de `DOCE` porque "SM DOCE" tem que
+ * cair em Mucuri; `PARANAÍBA` vem antes de `PARAÍBA` porque o mais
+ * específico precisa vencer. Inverter a ordem muda a resposta do filtro —
+ * e filtro que muda é dado errado na tela (AGENTS §7).
+ *
+ * Exportada em 09/10/2026 para a prova diferencial `prova-bacia.mts`:
+ * esta função não tem teste próprio, então a prova roda a ANTIGA (lida do
+ * `git show`) e a NOVA na mesma matriz de entradas e compara campo a
+ * campo. Sem export, a prova não alcança o código de verdade.
+ *
+ * @param urga nome da regional como veio da IGAM, ou `null`.
+ * @returns nome canônico da bacia, o valor de entrada quando nenhuma
+ *          regra casou, ou `null`.
+ */
+export function normalizarBaciaIgam(urga: string | null): string | null {
   if (!urga) return null;
   const u = urga.toUpperCase();
-  if (u.includes("SM") || u.includes("MUCURI") || u.includes("MATEUS")) return "Rio Mucuri / São Mateus";
-  if (u.includes("DOCE")) return "Rio Doce";
-  if (u.includes("GRANDE")) return "Rio Grande";
-  if (u.includes("PARANAÍBA") || u.includes("PARANAIBA")) return "Rio Paranaíba";
-  if (u.includes("PARAÍBA") || u.includes("PARAIBA")) return "Rio Paraíba do Sul";
-  if (u.includes("JEQUITINHONHA") || u.includes("PARDO")) return "Rio Jequitinhonha";
-  if (u.includes("SF") || u.includes("CENTRAL") || u.includes("VELHAS") || u.includes("PARAOPEBA") || u.includes("FRANCISCO")) return "Rio São Francisco";
-  return urga;
+  const bacia = BACIAS_IGAM.find((b) => b.contem.some((termo) => u.includes(termo)));
+  return bacia ? bacia.nome : urga;
 }
 
 const igamRaw = igam as unknown as { colunas?: string[]; linhas?: (LinhaBruta | (string | number | null)[])[] };
