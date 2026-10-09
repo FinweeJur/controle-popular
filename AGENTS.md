@@ -153,12 +153,13 @@ Lições, todas com código no repo:
 - `scripts/checar-dado-pessoal-em-dado.py` varre o **dado ingerido** — os JSON
   dos diretórios listados em `DIRETORIOS_DADO` (topo do script). Roda na
   suíte e na CI, e no pre-push **quando o hook está ligado**.
-- **O pre-push precisa ser ligado uma vez por clone:**
-  `git config core.hooksPath .githooks`. Sem esse comando o hook mora no repo
-  e não executa — e essa é a única camada que barra **antes** de o dado ir ao
-  ar; a CI só pega depois do push. Confira com
-  `git config --get core.hooksPath` (medido vazio em 01/10/2026 nesta
-  máquina, quando a instrução só existia em `DESENVOLVIMENTO.md`, não aqui).
+- **O pre-push é ligado SOZINHO no `npm install`** (o `postinstall` roda
+  `scripts/configurar-hooks.mjs`, criado em 09/10/2026). Antes o comando era
+  manual — `git config core.hooksPath .githooks` — e já foi medido vazio nesta
+  máquina em 01/10/2026: o hook morava no repo e não executava. Sem ele o dado
+  só é barrado pela CI, **depois** do push. Confira com
+  `git config --get core.hooksPath` (deve dizer `.githooks`); se estiver vazio,
+  `npm run setup` re-liga à mão.
 - A régua de dado tem **duas etapas**: mod-11 (sempre roda) e `validate-docbr`
   (confirma o CPF e derruba falso positivo). Sem a biblioteca instalada a
   segunda vira aviso no stderr — o CI instala, o clone nem sempre.

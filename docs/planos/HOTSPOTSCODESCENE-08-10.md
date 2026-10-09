@@ -345,11 +345,12 @@ O projeto já tem [CONTRIBUTING.md](/CONTRIBUTING.md),
 [docs/LEIA-PRIMEIRO.md](../LEIA-PRIMEIRO.md) e [AGENTS.md](/AGENTS.md). O que
 FALTA, medido hoje — cada item reduz atrito para quem chega:
 
-1. **Ligar o hook é manual e é esquecido.** `git config core.hooksPath .githooks`
-   já foi medido VAZIO nesta máquina (01/10/2026) e é a única camada que barra
-   CPF antes do push. Não existe `npm run setup` nem `postinstall` no
-   `package.json` raiz. Um script que rode o `git config` no `npm install`
-   elimina o passo esquecido.
+1. **Ligar o hook era manual e era esquecido. ✅ RESOLVIDO (09/10/2026).**
+   `git config core.hooksPath .githooks` já foi medido VAZIO nesta máquina
+   (01/10/2026) e é a única camada que barra CPF antes do push. Agora o
+   `postinstall` do `package.json` roda `scripts/configurar-hooks.mjs`: liga
+   sozinho no `npm install`/`npm ci` e nunca derruba a instalação. `npm run
+   setup` re-liga à mão quando preciso.
 2. **Não existe `CODEOWNERS`.** Nem em `.github/`, nem na raiz. Com a conta
    única de hoje é inócuo, mas é o mecanismo que roteia revisão e faz o bus
    factor virar AÇÃO no dia em que a segunda pessoa entrar.

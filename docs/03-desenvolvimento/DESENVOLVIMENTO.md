@@ -110,7 +110,7 @@ git commit --only <caminho> -F <arquivo-da-mensagem>
 |---|---|---|
 | 1 | Testes | `npm test` (da raiz) |
 | 2 | Tipos | `npx tsc --noEmit` |
-| 3 | Dado pessoal | roda na suíte; hook pre-push e CI rechecam — ligue o hook: `git config core.hooksPath .githooks` |
+| 3 | Dado pessoal | roda na suíte; hook pre-push e CI rechecam — o hook é ligado sozinho no `npm install` (`npm run setup` re-liga à mão) |
 | 4 | Atualizar | `git fetch origin && git rebase origin/main` |
 | 5 | Publicar o próprio trabalho | `git push origin HEAD:main` |
 | 6 | Segurar o push durante build/deploy da máquina que publica | commit local, espera |
