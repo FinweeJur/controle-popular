@@ -26,6 +26,13 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY apps/web/package.json ./apps/web/
 
+# O `postinstall` da raiz roda `node scripts/configurar-hooks.mjs` (liga os
+# hooks de Git no clone). No estagio de deps esse script precisa EXISTIR, senao
+# o `npm ci` morre com MODULE_NOT_FOUND antes de instalar qualquer coisa
+# (medido 09/10/2026: o deploy do Azure falhou 1 vez por isso). Sem `.git` no
+# container, o proprio script sai em silencio.
+COPY scripts/configurar-hooks.mjs ./scripts/configurar-hooks.mjs
+
 RUN npm ci --no-audit --no-fund && npm cache clean --force
 
 # ---- Estágio 2: Build ----
