@@ -14,6 +14,7 @@ porque a chave estava errada é pior que não ter canário (a mesma lição do
 verificador de alucinação do Congresso: falso alarme, ou falsa calma,
 ensina a ignorar a métrica).
 """
+from datetime import datetime, timedelta, timezone
 import json
 import os
 import sys
@@ -99,6 +100,90 @@ def checar_neon(a: Achados) -> None:
         a.sem_dado("Neon egress", "campo data_transfer_bytes ausente")
 
 
+def _cf_workers(token: str, conta: str, consulta: str, desde: str) -> list:
+    """Roda uma consulta de invocações de Worker e devolve as linhas.
+
+    Levanta em qualquer falha (rede, 401, erro de GraphQL, campo ausente) —
+    quem chama decide se cai no fallback ou marca o canário como cego.
+    """
+    r = requests.post(
+        "https://api.cloudflare.com/client/v4/graphql",
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        json={"query": consulta, "variables": {"conta": conta, "desde": desde}},
+        timeout=TIMEOUT,
+    )
+    r.raise_for_status()
+    corpo = r.json()
+    if corpo.get("errors"):
+        raise RuntimeError(f"GraphQL: {json.dumps(corpo['errors'])[:200]}")
+    contas = corpo["data"]["viewer"]["accounts"]
+    if not contas:
+        raise RuntimeError("conta não retornada (token sem escopo de analytics?)")
+    return contas[0]["workersInvocationsAdaptive"]
+
+
+# DUAS consultas. A detalhada traz `dimensions { scriptName status }`, que é o
+# que permite dizer ONDE erra (qual Worker, qual HTTP). A simples é o fallback:
+# se a Cloudflare renomear a dimensão, a detalhada falha e o canário ainda mede
+# o TOTAL em vez de ficar cego (falso alarme é pior que não ter canário — ver o
+# cabeçalho do arquivo).
+CONSULTA_CF_DETALHADA = """
+query($conta: String!, $desde: Time!) {
+  viewer {
+    accounts(filter: {accountTag: $conta}) {
+      workersInvocationsAdaptive(limit: 10000, filter: {datetime_geq: $desde}) {
+        dimensions { scriptName status }
+        sum { requests errors }
+      }
+    }
+  }
+}
+"""
+CONSULTA_CF_SIMPLES = """
+query($conta: String!, $desde: Time!) {
+  viewer {
+    accounts(filter: {accountTag: $conta}) {
+      workersInvocationsAdaptive(limit: 10000, filter: {datetime_geq: $desde}) {
+        sum { requests errors }
+      }
+    }
+  }
+}
+"""
+
+
+def _workers_24h(token: str, conta: str) -> tuple[list, bool]:
+    """Invocação de Worker nas últimas 24h e se o dado veio com dimensão.
+
+    Tenta a consulta detalhada (`scriptName`+`status`); se ela falhar, cai na
+    simples e devolve `tem_dimensao=False`. Se as DUAS falharem, levanta — o
+    chamador marca o canário como cego, nunca reporta "tudo bem" sem dado.
+    """
+    desde = (datetime.now(timezone.utc) - timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:
+        return _cf_workers(token, conta, CONSULTA_CF_DETALHADA, desde), True
+    except Exception:
+        return _cf_workers(token, conta, CONSULTA_CF_SIMPLES, desde), False
+
+
+def _onde_erra(linhas: list) -> str:
+    """Concentração dos erros por (Worker, status HTTP): os 5 maiores.
+
+    É o que transforma o alerta de "N erros" em "N erros, e são AQUI" — sem
+    isso, descobrir o caminho exige abrir o painel da Cloudflare.
+    """
+    por_chave: dict[tuple[str, str], int] = {}
+    for linha in linhas:
+        n = linha["sum"]["errors"]
+        if not n:
+            continue
+        dim = linha.get("dimensions") or {}
+        chave = (dim.get("scriptName") or "?", dim.get("status") or "?")
+        por_chave[chave] = por_chave.get(chave, 0) + n
+    maiores = sorted(por_chave.items(), key=lambda kv: kv[1], reverse=True)[:5]
+    return "; ".join(f"{nome} status {st}: {n}" for (nome, st), n in maiores)
+
+
 def checar_cloudflare(a: Achados) -> None:
     token = os.environ.get("CLOUDFLARE_API_TOKEN")
     conta = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
@@ -106,38 +191,8 @@ def checar_cloudflare(a: Achados) -> None:
         a.sem_dado("Cloudflare", "CLOUDFLARE_API_TOKEN/ACCOUNT_ID ausentes")
         return
 
-    # GraphQL Analytics: requisições do Worker nas últimas 24h.
-    consulta = """
-    query($conta: String!, $desde: Time!) {
-      viewer {
-        accounts(filter: {accountTag: $conta}) {
-          workersInvocationsAdaptive(limit: 10000, filter: {datetime_geq: $desde}) {
-            sum { requests errors }
-          }
-        }
-      }
-    }
-    """
-    from datetime import datetime, timedelta, timezone
-
-    desde = (datetime.now(timezone.utc) - timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
     try:
-        r = requests.post(
-            "https://api.cloudflare.com/client/v4/graphql",
-            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-            json={"query": consulta, "variables": {"conta": conta, "desde": desde}},
-            timeout=TIMEOUT,
-        )
-        r.raise_for_status()
-        corpo = r.json()
-        if corpo.get("errors"):
-            a.sem_dado("Cloudflare", f"GraphQL: {json.dumps(corpo['errors'])[:200]}")
-            return
-        contas = corpo["data"]["viewer"]["accounts"]
-        if not contas:
-            a.sem_dado("Cloudflare", "conta não retornada (token sem escopo de analytics?)")
-            return
-        linhas = contas[0]["workersInvocationsAdaptive"]
+        linhas, tem_dimensao = _workers_24h(token, conta)
     except Exception as e:
         a.sem_dado("Cloudflare", f"{type(e).__name__}: {e}")
         return
@@ -145,8 +200,14 @@ def checar_cloudflare(a: Achados) -> None:
     requisicoes = sum(l["sum"]["requests"] for l in linhas)
     erros = sum(l["sum"]["errors"] for l in linhas)
     a.medir("Cloudflare req/24h", float(requisicoes), float(CF_REQ_DIA), "req")
-    if erros:
-        a.alertas.append(f"Cloudflare: {erros} invocações com erro nas últimas 24h")
+    if not erros:
+        return
+    alerta = f"Cloudflare: {erros} invocações com erro nas últimas 24h"
+    if tem_dimensao:
+        onde = _onde_erra(linhas)
+        if onde:
+            alerta += f" — onde: {onde}"
+    a.alertas.append(alerta)
 
 
 def sondar_urls(a: Achados) -> None:

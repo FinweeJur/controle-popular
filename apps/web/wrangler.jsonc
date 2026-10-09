@@ -9,16 +9,18 @@
   // descontinuado. Decisão já registrada no plano da migração.
   "name": "controlepopular",
   "main": ".open-next/worker.js",
-  // Fase 7 (domínio próprio): NS de controlepopular.com.br já aponta pra
-  // Cloudflare (conferido em 2026-08-11 via 8.8.8.8/1.1.1.1 — jose.ns/maya.ns),
-  // mas a zona não tinha NENHUM registro apontando pra este Worker. Rota com
-  // `custom_domain: true` é o caminho que o próprio Cloudflare recomenda pra
-  // domínio cuja zona já é deles: ele mesmo provisiona o certificado TLS no
-  // próximo deploy, sem precisar criar CNAME/A manualmente no painel.
-  "routes": [
-    { "pattern": "controlepopular.com.br", "custom_domain": true },
-    { "pattern": "www.controlepopular.com.br", "custom_domain": true }
-  ],
+  // SEM `routes` — e é de propósito (mudança de 09/10/2026).
+  //
+  // Em 13/08/2026 este Worker tinha `custom_domain` para
+  // `controlepopular.com.br` e `www.controlepopular.com.br`. Em 06–07/10 o
+  // site mudou para o Azure Container Apps: hoje o `www` é um CNAME para o
+  // Azure e o apex vive de redirect 301 no Cloudflare. O Worker ficou só como
+  // FALLBACK TÉCNICO, alcançável apenas pelo `workers_dev` abaixo.
+  //
+  // ⚠️ NÃO readicione `routes` com `custom_domain` aqui: um `wrangler deploy`
+  // tentaria RETOMAR os dois domínios do Azure e derrubaria a produção. A
+  // armadilha foi medida em 09/10/2026 — o arquivo estava defasado desde 13/08
+  // e ainda pedia os domínios que já eram do Azure.
   // `workers_dev: true` EXPLÍCITO: sem isto, adicionar `routes` desliga o
   // endereço controlepopular.finweejur.workers.dev por padrão (comportamento
   // do Wrangler 4, medido ao vivo em 2026-08-11 — o deploy anterior devolveu
