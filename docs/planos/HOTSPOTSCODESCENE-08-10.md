@@ -41,7 +41,7 @@ quanto menor, mais caro de mexer. Ordenado do pior para o melhor.
 
 | Saúde | Arquivo | Nuvem (velha) | Δ | Situação |
 |---|---|---|---|---|
-| **8,81** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+7,36** | 🟢 saiu do vermelho (1,36 → 8,81) |
+| **9,53** | `apps/web/lib/assistente/escada-determinista.ts` | 1,454 | **+8,08** | 🟢 **verde** (1,36 → 9,53; piso de verde = 9,00) |
 | 6,64 | `apps/web/lib/ambiental/licencas-unificada.ts` | 5,729 | +0,91 | 🟡 melhorou, ainda amarelo |
 | 6,97 | `etl/betim/etl/common.py` | 6,870 | +0,10 | 🟡 |
 | 7,03 | `apps/web/app/components/CompanheiroFlutuante.tsx` | 7,038 | 0,00 | 🟡 não tocado |
@@ -90,7 +90,7 @@ idênticos, na mesma ordem**, `tsc` 0, `eslint` 0 e os 12 testes de
 
 ### O resto da rodada, no mesmo dia (09/10/2026)
 
-A mesma receita repetida quatro vezes, **um commit por etapa**, cada um
+A mesma receita repetida **seis vezes, um commit por etapa**, cada um
 com a sua prova e o portão do CodeScene verde antes de subir:
 
 | Commit | Arquivo novo | Saúde | O que saiu do orquestrador |
@@ -100,10 +100,12 @@ com a sua prova e o portão do CodeScene verde antes de subir:
 | `a286de10` | `escada-bases.ts` | **10,00** | `degrau45Bases` — cc 26 |
 | `a32a08f9` | `escada-tabelas.ts`, `escada-justica.ts` | **10,00** | cc 19 (90 linhas) e cc 18 (119 linhas) |
 | `37fe6b1b` | `escada-internacional.ts` | **10,00** | `degrau65Internacional` — cc 24 |
+| `9fb128ff` | `escada-noticias.ts` | **10,00** | `degrau6Noticias` — cc 12, o último |
 
 **Trajetória medida com `cs review`, arquivo a arquivo:**
-**1,36 → 2,51 → 3,44 → 4,69 → 7,55 → 8,81**.
-O orquestrador caiu de 1.373 para **343 linhas**.
+**1,36 → 2,51 → 3,44 → 4,69 → 7,55 → 8,81 → 9,53**.
+O orquestrador caiu de 1.373 para **270 linhas** e **entrou no verde** —
+o piso de verde é 9,00.
 
 **Três provas diferentes, porque os degraus são diferentes:**
 
@@ -111,9 +113,11 @@ O orquestrador caiu de 1.373 para **343 linhas**.
    e compara bloco a bloco os conjuntos `exatos`/`contem`/`comecaCom`/
    `terminaCom`/`regex`. Tabelas simples.
 2. **Conteúdo dos cartões** (`prova-cartoes.mts`): extrai todos os objetos
-   `return {` do commit `1e2decfa` e confere que cada um dos 40 cartões
+   `return {` do commit `1e2decfa` e confere que cada um dos 42 cartões
    novos existe lá. Pega texto trocado por engano, que a prova de termos
-   não vê.
+   não vê — e pegou: ela **barrou** a primeira versão do degrau de
+   notícias, porque eu renomeei uma variável e o texto do cartão deixou de
+   bater byte a byte (ver abaixo).
 3. **Diferencial** (`prova-internacional.mts`): o degrau de internacional
    não cabe em tabela (o cartão muda de idioma dentro do objeto), então a
    função ANTIGA foi extraída de `a32a08f9` e as duas rodaram a MESMA
@@ -121,18 +125,29 @@ O orquestrador caiu de 1.373 para **343 linhas**.
 
 ### O que ainda pesa (depois de toda a rodada)
 
-O arquivo saiu do vermelho e chegou a **8,81**, com três avisos:
+O arquivo está em **9,53 — verde**, com **dois avisos** e nenhum
+método complexo:
 
-- **1 método complexo:** `degrau6Noticias` (**cc 12**) — busca por
-  reportagem conhecida, com a regra de "duas palavras-chave" de 06/10;
-- `avaliarEscadaDeterminista` em **cc 9**, na fronteira exata do aviso;
-- *bumpy road* em `degrau5Curada` (2 aninhamentos) e 5 condicionais
-  complexas em `degrau6Noticias`.
+- **`avaliarEscadaDeterminista` em cc 9**, na fronteira exata do aviso;
+- ***bumpy road* em `degrau5Curada`** (2 aninhamentos).
+
+Os dois avisos são da MESMA cadeia: `avaliarEscadaDeterminista` chama os
+oito degraus em `??` e ainda tem a lógica de correção ortográfica. Não há
+mais nenhum `Complex Method` — o último (`degrau6Noticias`, cc 12) saiu
+em `9fb128ff`.
 
 O padrão que resolveu vale para todos eles: **if-chain → tabela**, com
 `exatos` (igualdade) e `contem` (substring) separados, ordem preservada e
-prova de equivalência. O que não cabe em tabela (idioma, busca) vira
-**registro por variação + função que escolhe** — e a prova é diferencial.
+prova de equivalência. O que não cabe em tabela vira **função própria** —
+o que não cabia em tabela, no degrau de internacional, virou **registro
+por variação + função que escolhe**.
+
+**A prova de conteúdo é o que impede texto errado no ar.** No degrau de
+notícias (`9fb128ff`) eu escrevi o cartão com a variável `noticia` em vez
+de `noticiaCorrespondente` — mesma resposta para o cidadão, texto
+diferente. A prova falhou, eu voltei o nome original e documentei no
+cabeçalho por que ele fica. **Prova quebrada por estilo é prova que
+ninguém conserta.**
 
 **Por que a refatoração anterior não subiu a nota.** O commit `cad5f8fa`
 fez "156 inserções, 0 deleções". As regras que derrubam a nota aqui são
@@ -151,21 +166,25 @@ O declínio é de arquivo velho, não de commit recente.
 
 ## Próximos passos
 
-1. **🟢 Fechado:** todos os degraus grandes saíram do arquivo em 09/10 —
-   empresas, ferramentas, cidades, bases, tabelas, justica e
-   internacional, todos em módulos de **10,00**. O orquestrador está em
-   **8,81**. **Ainda falta** o `degrau6Noticias` (cc 12, o único método
-   complexo restante) e o `avaliarEscadaDeterminista` (cc 9, fronteira).
-   A receita para notícias não é tabela pura — o bloco tem busca por
-   reportagem com a regra de duas palavras-chave; provavelmente sai em
-   duas funções (a tabela de termos e a busca) com prova diferencial.
+1. **🟢 Fechado:** todos os oito degraus saíram do arquivo em 09/10 —
+   empresas, ferramentas, cidades, bases, tabelas, justica, internacional
+   e notícias —, cada um num módulo de **10,00**. O orquestrador está em
+   **9,53, verde**, com **nenhum método complexo**.
+   **Só restam dois avisos**, e os dois são da mesma cadeia:
+   `avaliarEscadaDeterminista` (cc 9, a fronteira exata) e o *bumpy road*
+   de `degrau5Curada` (2 aninhamentos). Tira-los deve subir a nota para
+   9,6+; mas **9,53 já é verde** — a régua do projeto é 10,00, e a diferença
+   entre 9,53 e 10 aqui é regra de gosto, não dívida.
+   O próximo esforço rende mais nos **amarelos do item 4**.
 2. **🔁 Disparar re-análise na nuvem.** Enquanto o job `7854262` não
    atualizar, o dashboard e os portões de PR avaliam dado de antes da
-   refatoração. Vale conferir depois em codescene.io.
+   refatoração — hoje eles ainda mostram **1,36**. Vale conferir depois em
+   codescene.io.
 3. **🎯 Registrar metas de dívida técnica** — o CodeScene mostra
    `technical debt goals` **vazio**. Sem meta, ele não avisa declínio
    sozinho. Sugerida: nenhum hotspot abaixo de 7,00, e
-   `escada-determinista.ts` acima de 6,00.
+   `escada-determinista.ts` **nunca abaixo de 9,00** (o verde, que custou
+   sete etapas para conquistar).
 4. **🟡 Amarelos que sobraram:** `licencas-unificada.ts` (6,64, 5 avisos),
    `common.py` (6,97), `CompanheiroFlutuante.tsx` (7,03),
    `betim.ts` (7,30). Depois do vermelho.
@@ -189,7 +208,7 @@ fechado*:
 | 7,30 | `lib/db/queries/betim.ts` | `bb6387d1` | 🟡 melhorou pouco (7,09 → 7,30) |
 | 6,97 | `etl/betim/etl/common.py` | `23b37453` | 🟡 melhorou pouco (6,87 → 6,97) |
 | 6,64 | `lib/ambiental/licencas-unificada.ts` | `6788cc43` | 🟡 melhorou (5,73 → 6,64) |
-| **8,81** | `lib/assistente/escada-determinista.ts` | `37fe6b1b` | 🟢 **saiu do vermelho (1,36 → 8,81)** |
+| **9,53** | `lib/assistente/escada-determinista.ts` | `9fb128ff` | 🟢 **VERDE (1,36 → 9,53)** |
 | 10,00 | `lib/assistente/escada-empresas.ts` | `9365c658` | ✅ nota perfeita |
 | 10,00 | `lib/assistente/escada-ferramentas.ts` | `9365c658` | ✅ nota perfeita |
 | 10,00 | `lib/assistente/escada-base.ts` | `9365c658` | ✅ nota perfeita |
@@ -198,6 +217,7 @@ fechado*:
 | 10,00 | `lib/assistente/escada-tabelas.ts` | `a32a08f9` | ✅ nota perfeita |
 | 10,00 | `lib/assistente/escada-justica.ts` | `a32a08f9` | ✅ nota perfeita |
 | 10,00 | `lib/assistente/escada-internacional.ts` | `37fe6b1b` | ✅ nota perfeita |
+| 10,00 | `lib/assistente/escada-noticias.ts` | `9fb128ff` | ✅ nota perfeita |
 
 ## Bus factor / knowledge maps
 
