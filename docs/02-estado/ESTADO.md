@@ -2,10 +2,10 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-07
+> **Última medição:** 2026-10-09
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
-> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
+> **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, heroku, codescene, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
 
 ## Sumário
 
@@ -27,16 +27,16 @@ Aqui vai ponteiro, não cópia. Mudou algo? Atualize aqui no mesmo commit.
 
 ## No ar agora
 
-**Publicação em duas casas (troca de 06/10/2026, pedido do dono).** O Guara
-está com o serviço `stopped` (ciclo/cota) e só volta com `guara deploy`
-quando o dono puder; enquanto isso o **Azure Container Apps** é o principal.
+**Publicação em duas casas (troca de 06/10/2026, pedido do dono).** Enquanto
+o **Azure Container Apps** é o principal, o Guara virou secundário — e está
+⛔ **com a cota do plano Starter estourada** (aviso do dono em 09/10).
 
 | Papel | Modo | Estado |
 |---|---|---|
 | **principal** | `www.controlepopular.com.br` → Azure Container Apps | ✅ 07/10 — CNAME com proxy + certificado gerenciado; home e `/ambiental/licenciamento` (19.704 / 145 licenças) conferidos |
-| secundário | `www.controlepopular.tech` → Guara Cloud | ⛔ serviço `stopped` (`crash_loop`) até o redeploy; 404 no ar |
-| banco | Postgres do Guara (`cp-postgres-597bd0`) | ✅ usado pelos dois (o Azure ganhou a env em runtime em 06/10) |
-| servidor de teste | Cloudflare Tunnel do `home-pc` (`next dev`) | ✅ de pé |
+| secundário | `www.controlepopular.tech` → Guara Cloud | ⛔ serviço `stopped` (`crash_loop`), **cota Starter estourada**; endpoint público inacessível; 404 no ar |
+| banco | **Heroku Postgres** — app `controle-popular`, add-on `postgresql-rectangular-44619`, plano `heroku-postgresql:essential-0` | ✅ medido 09/10 — host do `apps/web/.env.local` **idêntico** ao do app Heroku; secret `DATABASE_URL` atualizado 08/10 15:16 UTC |
+| servidor de teste | Cloudflare Tunnel do `home-pc` (`next dev`) | ⚠️ máquina `Home-PC` (`100.91.10.1`) **OFFLINE desde 08/10 23:38 UTC** |
 | fallback técnico | Worker Cloudflare (OpenNext), sem custom domains | ✅ deployado |
 | raízes `.com.br` e `.tech` | redirect 301 no Cloudflare → www | ✅ medido 07/10 |
 
@@ -58,11 +58,17 @@ redirect 301 no Cloudflare.
 - Assistente Seu Nonô: escada determinística para 100 páginas, tolerância a digitação, grafo de conhecimento e leitura por voz (TTS).
 - Infraestrutura Cívica: Vigia ETL de 397 bases, motor de fact-checking e espelho do código no GitLab e Hugging Face.
 
-**Banco — Fase 4 concluída (confirmada pelo dev em 29/09):** a aplicação
-aponta para o **Postgres do Guara** (`cp-postgres-597bd0`, Postgres 17),
-com `DATABASE_URL` **runtime e build = Yes** e carga validada igual à da
-Neon, menos as 2 tabelas `embeddings`. A Neon continua na conta em 94%
-(470/500 MB) **sem uso** — sobra decidir o desligamento, que é do dev.
+**Banco — agora é o Heroku Postgres (medido 09/10).** A história em três
+etapas, para ninguém decidir com número velho:
+
+1. **Neon** até 06/10 — a conta continua lá em 94% (470/500 MB) **sem uso**;
+   sobra decidir o desligamento, que é do dono.
+2. **Postgres do Guara** (`cp-postgres-597bd0`, Postgres 17) de 06/10 a 08/10.
+3. **Heroku Postgres** desde 08/10 — app `controle-popular`, add-on
+   `postgresql-rectangular-44619`, plano `essential-0`. O secret
+   `DATABASE_URL` foi atualizado em 08/10 15:16 UTC, e o host gravado em
+   `apps/web/.env.local` é **idêntico** ao do app Heroku (mesmo banco).
+   O Guara estourou a cota do Starter em 09/10 e saiu de cena.
 
 **Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
 `convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
@@ -105,26 +111,37 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 | # | Tarefa | Estado | Nota |
 |---|---|---|---|
 | A1 | **Troca de casas dos domínios** | ✅ | `www.controlepopular.com.br` no Azure (certificado gerenciado + proxy) e `.tech` no Guara; concluída em 07/10 depois do TXT `asuid.www` correto |
-| A2 | **Redeploy do Guara (`guara deploy`) para o `.tech` voltar** | ⛔ | serviço `stopped` com health `crash_loop`; o CLI não tem comando de start — depende do ciclo/cota do plano |
-| A3 | **Ligar o banco em runtime no Azure** | ✅ | `azure-mirror.yml` publica `DATABASE_URL` (Postgres do Guara) como segredo+env; medido 06/10: `/ambiental/licenciamento` voltou a mostrar 2.094 licenças (era 0) |
-| A4 | **Fase 4: migrar app Neon → Postgres do Guara** | ✅ | app no Guara desde 29/09; sobra desligar a conta Neon |
-| A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** para o canonical e o sitemap novo chegarem ao ar — baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
-| A6 | **Bot Telegram com 14 links quebrados** | 🚧 | mapeados e corrigidos em `b9a84e7f` (05/10); publica no próximo `guara deploy` (cota ⛔ até ~08/10). Espelho local `scripts/escuta-telegram-correcao.mts` corrigido no disco mas **sem track** (arquivo de outra sessão) |
+| A2 | **Redeploy do Guara (`guara deploy`) para o `.tech` voltar** | ⛔ | serviço `stopped` com health `crash_loop`; o CLI não tem comando de start. **Agravado em 09/10: cota do plano Starter ESTOURADA** (aviso do dono) — endpoint público inacessível e qualquer `guara deploy` bloqueado. Desativa A5, A6 e B3 junto |
+| A3 | **Ligar o banco em runtime no Azure** | ✅ | `azure-mirror.yml` publica `DATABASE_URL` como segredo+env; medido 06/10: `/ambiental/licenciamento` voltou a mostrar 2.094 licenças (era 0). **O secret aponta para o Heroku desde 08/10** |
+| A4 | **Fase 4: migrar app Neon → banco novo** | ✅ | migração feita (Heroku desde 08/10); sobra **desligar a conta Neon** — ação do dono, fora do terminal |
+| A5 | **SEO Fases 1–3 (canonical, sitemap, robots) + Fases 4–5** | 🚧 | código em `main` em 04/10; **falta `guara deploy`** — e o deploy está ⛔ pela cota (A2). Baseline em [auditoria-seo-2026-10-04](../relatorios-automacao/auditoria-seo-2026-10-04.md) |
+| A6 | **Bot Telegram com 14 links quebrados** | 🚧 | mapeados e corrigidos em `b9a84e7f` (05/10); publica no próximo `guara deploy` — ⛔ pela cota (A2). ⚠️ a nota antiga citava `scripts/escuta-telegram-correcao.mts` "no disco sem track"; **medido 09/10: o arquivo não existe** em nenhum checkout |
 | A7 | **Piso da rotina local em 1000 abortava toda rodada boa** | ✅ | `PISO_PAGINAS` 1000 → 300 (`df61439a`); medido 05/10: saudável = 621 rotas prerenderizadas (12 cidades ativas), sem banco = 21, regime antigo = 1.471 |
+| A8 | **Ligar a integração de PR do CodeScene** | ⛔ | os arquivos estão no repo (`.codescene/custom-quality-gates.json`, `0d862fdb`), mas o portão só passa a valer quando o dono ligar "automated pull request integration" em **codescene.io → projeto 85760**. Nem CLI nem MCP abrem essa chave |
 
 **Nota A3:** scan `guara services vulnerabilities` (19/09) achou 3 CRITICAL,
 28 HIGH, 22 MEDIUM. Os críticos: `next` 16.2.12 (fix em 16.3.x) e `tar`
 6.2.1 (fix em 7.5.x). `npm audit fix` aplicado; sobem os transitivos.
 `guara security findings` está com bug no CLI — use `services vulnerabilities`.
 
-**Nota A4:** o Postgres do Guara tem 1 GiB incluso (2 GiB máximo), snapshot
-diário e endpoint privado (a rede particular da Guara, mais rápida e mais
-fechada que a internet). O catálogo **não tem variante pgvector** (medido
-30/09/2026): a extensão `vector` não existe no banco. PostGIS está
-disponível (consultas de mapa no servidor). O RAG do assistente roda em
-memória e não depende de pgvector — ver
-[PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md). Migração:
-`pg_dump` da Neon, carga no Guara, troca de `DATABASE_URL`, `guara deploy`.
+**Nota A4 — o banco mudou de casa em 08/10 e ainda não foi re-caracterizado.**
+
+| Fato | Valor | Quando medido |
+|---|---|---|
+| Banco atual | Heroku Postgres, add-on `postgresql-rectangular-44619` | 09/10/2026, via API do Heroku |
+| Plano | `heroku-postgresql:essential-0` | 09/10/2026 |
+| Host e nome do banco | idênticos aos de `apps/web/.env.local` — mesmo banco | 09/10/2026 |
+| `DATABASE_URL` no GitHub | atualizado em 08/10/2026 15:16 UTC | `gh secret list` |
+| pgvector / PostGIS | ⚠️ **não medido no Heroku**. O "catálogo sem pgvector" era do **Guara** (medido 30/09) e não vale mais como resposta | pendente |
+
+O RAG do assistente roda em memória (397 pedaços) e **não depende de
+pgvector** — ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+O que sobra da Fase 4 é **desligar a conta Neon** (ação do dono).
+
+⚠️ **`scripts/rotina-local.mts` recusa host que não seja `127.0.0.1`**
+(`exigirBancoLocal()`): a rotina local não aponta para o Heroku. A guarda
+existe porque um build local já bateu na Neon e levou HTTP 402. Mudar isso
+exige decisão explícita do dono.
 
 ### Bloco B — destravadas, aguardando ordem
 
@@ -198,15 +215,18 @@ Runbooks: [`planos/`](../planos/).
 
 | Bloqueio | Quem desbloqueia |
 |---|---|
-| **Cota de build do Guara** (`Build minutes quota exceeded`, medido 05/10) — `guara deploy` recusa; site atual segue saudável | janela abre ~08/10 (política de deploy a cada ~5 dias, OPERACAO § 0) |
-| **Push da `main` segurado** — 5 commits de outra sessão + `df61439a`/`b9a84e7f` locais; rebase exige árvore limpa (§ 5.4) | árvore limpa → `git fetch && git rebase origin/main && git push origin HEAD:main` (§ 5.7) |
+| **⛔ Cota do Guara ESTOURADA** (aviso do dono 09/10) — serviço `stopped`/`crash_loop`, endpoint público inacessível, `guara deploy` recusa | ciclo do plano Starter reiniciar. Enquanto isso: A2, A5, A6 e B3 ficam travados. Publicar é pelo **Azure** (`azure-mirror.yml`) |
+| **⛔ `Home-PC` OFFLINE** (medido 09/10: visto por último 08/10 23:38 UTC) — `tailscale file cp` não entrega | ligar a máquina; confira antes com `tailscale status` |
+| **⛔ Integração de PR do CodeScene não ligada** — os arquivos estão no repo, o painel é que não está ligado | clique do dono em codescene.io → projeto 85760 |
+| **Checkout principal com trabalho não commitado** (medido 09/10: 9 arquivos modificados + `main` atrás de `origin/main`) | dono/sessão responsável commitar com pathspec explícito (§ 5.5) |
 | Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
-| Neon em 94% storage | ✅ app já no Guara (29/09) — sobra cancelar a conta Neon |
+| Neon em 94% storage | ⏳ app já no Heroku (08/10) — sobra **cancelar a conta Neon**, ação do dono |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
 | Raiz do domínio com 403 | ✅ redirect 301 medido no ar (04/10) |
 | `guara security findings` quebrado | usar `guara services vulnerabilities` |
 | PDFs da AJRI parados | `AJRI_COOKIE` (dev) |
 | `AI_API_KEY` nunca vai para o repo | fica em `.env.local`, fora do Git |
+| `escuta-telegram-correcao.mts` sumiu | ✅ medido 09/10: **o arquivo não existe** — a nota antiga de "no disco sem track" está errada; a correção está no commit `b9a84e7f` |
 
 ## Dívida técnica registrada
 
