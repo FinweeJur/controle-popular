@@ -1,0 +1,584 @@
+[
+  {
+    "caso": "listarNoticias",
+    "consultas": [
+      {
+        "sql": "select \"slug\", \"titulo\", \"resumo\", \"categoria\", \"temas\", \"autor\", \"publicado_em\", \"fonte_externa_nome\", \"fonte_externa_url\" from \"noticias\" where \"noticias\".\"id_municipio\" = $1 order by \"noticias\".\"publicado_em\" desc, \"noticias\".\"id\" asc",
+        "params": "[\"3106705\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "noticiaPorSlug/encontrado",
+    "consultas": [
+      {
+        "sql": "select \"slug\", \"titulo\", \"resumo\", \"categoria\", \"temas\", \"autor\", \"publicado_em\", \"fonte_externa_nome\", \"fonte_externa_url\", \"conteudo_html\" from \"noticias\" where (\"noticias\".\"id_municipio\" = $1 and \"noticias\".\"slug\" = $2) limit $3",
+        "params": "[\"3106705\",\"obra-da-ponte\",1]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "noticiaPorSlug/sem-cadastro",
+    "consultas": [
+      {
+        "sql": "select \"slug\", \"titulo\", \"resumo\", \"categoria\", \"temas\", \"autor\", \"publicado_em\", \"fonte_externa_nome\", \"fonte_externa_url\", \"conteudo_html\" from \"noticias\" where (\"noticias\".\"id_municipio\" = $1 and \"noticias\".\"slug\" = $2) limit $3",
+        "params": "[\"3106705\",\"nao-existe\",1]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "iniciativasParaopeba",
+    "consultas": [
+      {
+        "sql": "select \"id_fdi\", \"titulo\", \"municipios_envolvidos\", \"grupo_iniciativas\", \"tipo_obrigacao\", \"area_tematica\", \"sub_area_tematica\", \"status\", (\"investimento\")::double precision, (\"valor_total\")::double precision, (\"percentual_realizado\")::double precision, (\"percentual_planejado\")::double precision, \"produtos_previstos\", \"produtos_entregues\", \"produtos_em_atraso\", \"link_publico\", \"link_termo_compromisso\" from \"paraopeba_iniciativas\" where \"paraopeba_iniciativas\".\"id_municipio\" = $1 order by \"paraopeba_iniciativas\".\"valor_total\" desc, \"paraopeba_iniciativas\".\"id\" asc",
+        "params": "[\"3106705\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "anoMaisRecenteDeDespesas",
+    "consultas": [
+      {
+        "sql": "select \"ano\" from \"despesas\" where (\"despesas\".\"id_municipio\" = $1 and \"despesas\".\"ano\" is not null) order by \"despesas\".\"ano\" desc limit $2",
+        "params": "[\"3106705\",1]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "anoMaisRecenteDeMortalidade",
+    "consultas": [
+      {
+        "sql": "select \"ano\" from \"mortalidade\" where (\"mortalidade\".\"id_municipio\" = $1 and \"mortalidade\".\"ano\" is not null) order by \"mortalidade\".\"ano\" desc limit $2",
+        "params": "[\"3106705\",1]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "listarVereadores",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"slug\", \"nome\", \"nome_urna\", \"partido\", \"email\", \"cargo_mesa\", \"foto_url\", \"mandato_inicio\", \"mandato_fim\", \"votos_eleicao\", \"ano_eleicao\", \"biografia\", \"profissao\", \"aniversario_dia_mes\", \"situacao_mandato\" from \"vereadores\" where (\"vereadores\".\"id_municipio\" = $1 and \"vereadores\".\"ativo\" = $2) order by \"vereadores\".\"nome_urna\" collate \"pt-BR-x-icu\", \"vereadores\".\"id\" asc",
+        "params": "[\"3106705\",true]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "listarVereadoresForaDeExercicio",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"slug\", \"nome\", \"nome_urna\", \"partido\", \"email\", \"cargo_mesa\", \"foto_url\", \"mandato_inicio\", \"mandato_fim\", \"votos_eleicao\", \"ano_eleicao\", \"biografia\", \"profissao\", \"aniversario_dia_mes\", \"situacao_mandato\" from \"vereadores\" where (\"vereadores\".\"id_municipio\" = $1 and \"vereadores\".\"situacao_mandato\" <> $2) order by \"vereadores\".\"nome_urna\" collate \"pt-BR-x-icu\", \"vereadores\".\"id\" asc",
+        "params": "[\"3106705\",\"em_exercicio\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "vereadorPorSlug",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"slug\", \"nome\", \"nome_urna\", \"partido\", \"email\", \"cargo_mesa\", \"foto_url\", \"mandato_inicio\", \"mandato_fim\", \"votos_eleicao\", \"ano_eleicao\", \"biografia\", \"profissao\", \"aniversario_dia_mes\", \"situacao_mandato\" from \"vereadores\" where (\"vereadores\".\"id_municipio\" = $1 and \"vereadores\".\"slug\" = $2) limit $3",
+        "params": "[\"3106705\",\"maria-silva\",1]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "analisesDeObjetos/sem-objeto",
+    "consultas": [],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.linhas.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "analisesDeObjetos/atos",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"ato_id\", \"proposicao_id\", (\"score\")::double precision, \"rotulo\", \"status\", \"clausula_petrea\", \"vedacao_retrocesso\", \"resumo_neutro\", \"modelo\", \"versao_rubrica\" from \"analises\" where (\"analises\".\"id_municipio\" = $1 and \"analises\".\"ato_id\" in ($2, $3))",
+        "params": "[\"3106705\",\"a1\",\"a2\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.linhas.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "analisesDeObjetos/ambos",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"ato_id\", \"proposicao_id\", (\"score\")::double precision, \"rotulo\", \"status\", \"clausula_petrea\", \"vedacao_retrocesso\", \"resumo_neutro\", \"modelo\", \"versao_rubrica\" from \"analises\" where (\"analises\".\"id_municipio\" = $1 and (\"analises\".\"ato_id\" in ($2) or \"analises\".\"proposicao_id\" in ($3)))",
+        "params": "[\"3106705\",\"a1\",\"p1\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.linhas.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "viciosDeObjetos/sem-objeto",
+    "consultas": [],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.linhas.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "viciosDeObjetos/proposicoes",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"ato_id\", \"proposicao_id\", \"nivel_gravidade\", \"status\", \"resumo\", \"modelo\", \"versao_rubrica\" from \"vicios_legislativos\" where (\"vicios_legislativos\".\"id_municipio\" = $1 and \"vicios_legislativos\".\"proposicao_id\" in ($2))",
+        "params": "[\"3106705\",\"p1\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.linhas.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "situacoesDeLicitacoesDisponiveis",
+    "consultas": [
+      {
+        "sql": "select distinct \"situacao\" from \"licitacoes\" where (\"licitacoes\".\"id_municipio\" = $1 and \"licitacoes\".\"situacao\" is not null)",
+        "params": "[\"3106705\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r.length === 0",
+      "padrao": "[]",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "[]"
+  },
+  {
+    "caso": "modalidadesDeLicitacoesDisponiveis",
+    "consultas": [
+      {
+        "sql": "select distinct \"modalidade_nome\" from \"licitacoes\" where (\"licitacoes\".\"id_municipio\" = $1 and \"licitacoes\".\"modalidade_nome\" is not null)",
+        "params": "[\"3106705\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r.length === 0",
+      "padrao": "[]",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "[]"
+  },
+  {
+    "caso": "contratosPaginados/sem-filtro",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1 order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $2",
+        "params": "[\"3106705\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/ano",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"ano\" = $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",2024,25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/ano-zero",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1 order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $2",
+        "params": "[\"3106705\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/status-ativo",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"status\" in ($2, $3, $4)) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $5",
+        "params": "[\"3106705\",\"ativo\",\"EM EXECUÇÃO\",\"PRÉ-EXECUÇÃO\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/status-encerrado",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"status\" not in ($2, $3, $4)) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $5",
+        "params": "[\"3106705\",\"ativo\",\"EM EXECUÇÃO\",\"PRÉ-EXECUÇÃO\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/status-vocabulario-livre",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"status\" = $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",\"EM EXECUCAO\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/status-vazio",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1 order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $2",
+        "params": "[\"3106705\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/alerta",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"alerta\" = $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",true,25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/alerta-falso",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1 order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $2",
+        "params": "[\"3106705\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/motivo",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"motivos_alerta\" @> $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",\"{\\\"atraso\\\"}\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/tema",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"temas\" @> $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",\"{\\\"agua\\\"}\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/busca",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and (\"contratos\".\"objeto\" ilike $2 or \"contratos\".\"fornecedor_nome\" ilike $3)) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $4",
+        "params": "[\"3106705\",\"%ponte%\",\"%ponte%\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/busca-vazia",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1 order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $2",
+        "params": "[\"3106705\",25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/valorMin",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"valor_global\" >= $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",1000,25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/valorMax",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"valor_global\" <= $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",50000,25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/valorMin-zero",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"valor_global\" >= $2) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $3",
+        "params": "[\"3106705\",0,25]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosPaginados/tudo-junto",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\"), (count(*) over ())::int, (coalesce(sum(\"valor_global\") over (), 0))::double precision, (count(*) filter (where \"alerta\") over ())::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"ano\" = $2 and \"contratos\".\"status\" in ($3, $4, $5) and \"contratos\".\"alerta\" = $6 and \"contratos\".\"motivos_alerta\" @> $7 and \"contratos\".\"temas\" @> $8 and (\"contratos\".\"objeto\" ilike $9 or \"contratos\".\"fornecedor_nome\" ilike $10) and \"contratos\".\"valor_global\" >= $11 and \"contratos\".\"valor_global\" <= $12 and \"contratos\".\"tipo\" = $13) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $14 offset $15",
+        "params": "[\"3106705\",2024,\"ativo\",\"EM EXECUÇÃO\",\"PRÉ-EXECUÇÃO\",true,\"{\\\"atraso\\\"}\",\"{\\\"agua\\\"}\",\"%obra%\",\"%obra%\",1,999999,\"Contrato\",50,100]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "totaisDeContratos/sem-filtro",
+    "consultas": [
+      {
+        "sql": "select count(*)::int, coalesce(sum(\"valor_global\"), 0)::double precision, (count(*) filter (where \"alerta\"))::int from \"contratos\" where \"contratos\".\"id_municipio\" = $1",
+        "params": "[\"3106705\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.total === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "totaisDeContratos/status-ativo",
+    "consultas": [
+      {
+        "sql": "select count(*)::int, coalesce(sum(\"valor_global\"), 0)::double precision, (count(*) filter (where \"alerta\"))::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"status\" in ($2, $3, $4))",
+        "params": "[\"3106705\",\"ativo\",\"EM EXECUÇÃO\",\"PRÉ-EXECUÇÃO\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.total === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "totaisDeContratos/busca",
+    "consultas": [
+      {
+        "sql": "select count(*)::int, coalesce(sum(\"valor_global\"), 0)::double precision, (count(*) filter (where \"alerta\"))::int from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and (\"contratos\".\"objeto\" ilike $2 or \"contratos\".\"fornecedor_nome\" ilike $3))",
+        "params": "[\"3106705\",\"%escola%\",\"%escola%\"]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || r.total === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  },
+  {
+    "caso": "contratosParaExport/limitado",
+    "consultas": [
+      {
+        "sql": "select \"id\", \"fornecedor_nome\", \"fornecedor_cnpj\", \"objeto\", (\"valor_global\")::double precision, \"status\", \"data_assinatura\", \"vigencia_inicio\", \"vigencia_fim\", \"ano\", \"alerta\", \"motivos_alerta\", \"temas\", \"orgao_nome\", \"categoria\", \"tipo\", \"link_fonte\", \"numero_contrato\", (select f.data_abertura::text from \"fornecedores\" f where f.cnpj = \"fornecedor_cnpj\") from \"contratos\" where (\"contratos\".\"id_municipio\" = $1 and \"contratos\".\"ano\" = $2 and (\"contratos\".\"objeto\" ilike $3 or \"contratos\".\"fornecedor_nome\" ilike $4)) order by \"contratos\".\"data_assinatura\" desc nulls last, \"contratos\".\"id\" asc limit $5",
+        "params": "[\"3106705\",2024,\"%escola%\",\"%escola%\",200]"
+      }
+    ],
+    "opcoes": {
+      "vazio": "(r) => r === null || Array.isArray(r) && r.length === 0",
+      "padrao": "null",
+      "rotulo": "betim"
+    },
+    "vazio": true,
+    "resultado": "null"
+  }
+]

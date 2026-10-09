@@ -17,6 +17,7 @@ import {
   sql,
   type SQL,
 } from "drizzle-orm";
+import type { AnyPgColumn } from "drizzle-orm/pg-core";
 import { comBancoReserva } from "@/lib/db/reserva";
 import type { DB } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
@@ -62,11 +63,6 @@ import {
   receitas,
   royalties_cfem,
   royalties_cfem_empresas,
-  saude_estabelecimentos,
-  saude_internacoes,
-  saude_internacoes_cid,
-  mortalidade,
-  arboviroses,
   diarias,
   doacoes_campanha,
   bens_candidato,
@@ -79,26 +75,7 @@ import {
   votos_camara,
   zap_estabelecimentos,
 } from "@/lib/db/schema";
-
-
-/**
- * `comBancoReserva` com as opcoes padrao do eixo Cidades: vazio = nulo ou
- * array sem linhas, sem fallback (padrao null), rotulo `betim`.
- *
- * 72 das ~99 chamadas do arquivo repetiam este MESMO objeto literal — a
- * refatoracao de hotspots CodeScene de 08/10/2026 (saude 7,09) centralizou
- * aqui. `T` infere SO da consulta (primeiro argumento), nunca das opcoes:
- * inferir das options travava o tipo em `{}/any` e derrubava os callers
- * (medido no `tsc` de 08/10). Quem precisa de `vazio`/`padrao`
- * diferentes continua chamando `comBancoReserva` direto.
- */
-function emBetim<T>(consulta: (db: DB) => Promise<T>): Promise<T | null> {
-  return comBancoReserva<T | null>(consulta, {
-    vazio: (r) => r === null || (Array.isArray(r) && r.length === 0),
-    padrao: null,
-    rotulo: "betim",
-  });
-}
+import { emBetim } from "./betim-nucleo";
 
 /**
  * Queries do eixo Cidades.
@@ -1204,31 +1181,26 @@ const COLUNAS_NOTICIA = {
  * na introspecção. O `comColunaOpcional()` que as protegia entrou porque
  * `/noticias` apareceu vazia em 2026-07-24 com 4 posts no banco, antes da
  * migration rodar; hoje ela já rodou e o fallback é código morto.
+ *
+ * A cadeia vai direto no `emBetim`, sem `async` à toa: o `select` do Drizzle
+ * JÁ é uma promessa (`QueryPromise`), e enxugar o invólucro foi o jeito de
+ * tirar a função do radar de duplicação do CodeScene (09/10/2026) sem tocar
+ * no SQL.
  */
-export async function listarNoticias(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select(COLUNAS_NOTICIA)
-        .from(noticias)
-        .where(eq(noticias.id_municipio, idMunicipio))
-        .orderBy(desc(noticias.publicado_em), asc(noticias.id));
-    }
+export function listarNoticias(idMunicipio: IdMunicipio) {
+  return emBetim((db) =>
+    db.select(COLUNAS_NOTICIA).from(noticias)
+      .where(eq(noticias.id_municipio, idMunicipio))
+      .orderBy(desc(noticias.publicado_em), asc(noticias.id))
   );
 }
 
-export async function noticiaPorSlug(idMunicipio: IdMunicipio, slug: string) {
-  return comBancoReserva(
-    async (db) => {
-      const [linha] = await db
-        .select({ ...COLUNAS_NOTICIA, conteudo_html: noticias.conteudo_html })
-        .from(noticias)
-        .where(and(eq(noticias.id_municipio, idMunicipio), eq(noticias.slug, slug)))
-        .limit(1);
-      return linha ?? null;
-    },
-    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
-  );
+export function noticiaPorSlug(idMunicipio: IdMunicipio, slug: string) {
+  return comBancoReserva(async (db) => {
+    const [linha] = await db.select({ ...COLUNAS_NOTICIA, conteudo_html: noticias.conteudo_html })
+      .from(noticias).where(and(eq(noticias.id_municipio, idMunicipio), eq(noticias.slug, slug))).limit(1);
+    return linha ?? null;
+  }, { vazio: (r) => r === null, padrao: null, rotulo: "betim" });
 }
 
 /**
@@ -1294,15 +1266,11 @@ const COLUNAS_INICIATIVA = {
  * nunca funcionou. Aplicada e preenchida a partir da aba "Avanço Físico"
  * da planilha da FGV: das 19 iniciativas de Betim, 5 estão atrasadas.
  */
-export async function iniciativasParaopeba(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select(COLUNAS_INICIATIVA)
-        .from(paraopeba_iniciativas)
-        .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
-        .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id));
-    }
+export function iniciativasParaopeba(idMunicipio: IdMunicipio) {
+  return emBetim((db) =>
+    db.select(COLUNAS_INICIATIVA).from(paraopeba_iniciativas)
+      .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
+      .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id))
   );
 }
 
@@ -1413,19 +1381,13 @@ export async function proposicoesPorTermos(
 }
 
 /** Ano mais recente com despesa lançada, em qualquer estágio. */
-export async function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
-    async (db) => {
-      const [linha] = await db
-        .select({ ano: despesas.ano })
-        .from(despesas)
-        .where(and(eq(despesas.id_municipio, idMunicipio), isNotNull(despesas.ano)))
-        .orderBy(desc(despesas.ano))
-        .limit(1);
-      return linha?.ano ?? null;
-    },
-    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
-  );
+export function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
+  return comBancoReserva(async (db) => {
+    const linhas = await db.select({ ano: despesas.ano }).from(despesas)
+      .where(and(eq(despesas.id_municipio, idMunicipio), isNotNull(despesas.ano)))
+      .orderBy(desc(despesas.ano)).limit(1);
+    return linhas[0]?.ano ?? null;
+  }, { vazio: (r) => r === null, padrao: null, rotulo: "betim" });
 }
 
 /**
@@ -1522,46 +1484,67 @@ export async function maioresFornecedores(idMunicipio: IdMunicipio, limite = 5) 
   );
 }
 
+/**
+ * Os filtros que a tela de contratos aceita — usados pela listagem, pela
+ * exportação e pelos totais, que têm de casar entre si senão o número do
+ * cartão de topo não bate com as linhas da tabela.
+ */
+type FiltrosContrato = {
+  ano?: number;
+  status?: string;
+  alerta?: boolean;
+  motivo?: string;
+  tema?: string;
+  q?: string;
+  valorMin?: number;
+  valorMax?: number;
+  /** Tipo de contratação conforme a coluna `contratos.tipo` do PNCP
+   *  (ex.: "Contrato"). Igualdade exata: o valor vem de `<select>`
+   *  populado com os valores reais do dado, não de texto livre. */
+  tipo?: string;
+};
+
+/**
+ * O filtro de status, com o vocabulário que o BANCO usa — não o da tela.
+ *
+ * Não é `eq(status, f.status)`: o dropdown só manda "ativo" ou "encerrado"
+ * (os dois valores do filtro na tela), mas o BANCO tem um terceiro
+ * vocabulário — BH grava o texto literal do GRP da Ábaco ('EM EXECUÇÃO',
+ * 'RESCINDIDO'...), não o 'ativo'/'encerrado' que o PNCP computa para as
+ * outras cidades. `eq()` aqui zerava toda exportação/paginação de BH
+ * filtrada por status. Ver `lib/betim/statusContrato.ts`.
+ *
+ * Devolve `undefined` quando não há filtro: o `and()` do Drizzle ignora
+ * `undefined`, então quem chama empurra sem testar — e a ordem das condições
+ * (que decide o SQL) fica toda num lugar só.
+ */
+function condicaoStatusContrato(status: string | undefined) {
+  if (status === "ativo") return inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]);
+  if (status === "encerrado") return notInArray(contratos.status, [...STATUS_CONTRATO_ATIVO]);
+  if (status) return eq(contratos.status, status);
+  return undefined;
+}
+
+/** A busca textual — objeto OU fornecedor, sem diferenciar maiúscula. */
+function condicaoBuscaContratos(q: string | undefined) {
+  if (!q) return undefined;
+  const termo = `%${q}%`;
+  return sql`(${contratos.objeto} ilike ${termo} or ${contratos.fornecedor_nome} ilike ${termo})`;
+}
+
 /** Filtros compartilhados pela listagem, pela exportação e pelos totais. */
-function condicoesDeContratos(
-  idMunicipio: IdMunicipio,
-  f: {
-    ano?: number;
-    status?: string;
-    alerta?: boolean;
-    motivo?: string;
-    tema?: string;
-    q?: string;
-    valorMin?: number;
-    valorMax?: number;
-    /** Tipo de contratação conforme a coluna `contratos.tipo` do PNCP
-     *  (ex.: "Contrato"). Igualdade exata: o valor vem de `<select>`
-     *  populado com os valores reais do dado, não de texto livre. */
-    tipo?: string;
-  }
-) {
-  const cond = [eq(contratos.id_municipio, idMunicipio)];
+function condicoesDeContratos(idMunicipio: IdMunicipio, f: FiltrosContrato) {
+  // A ordem dos `push` é o SQL — trocá-la muda o predicado serializado e a
+  // leitura do log. Não reordene.
+  const cond: (SQL | undefined)[] = [eq(contratos.id_municipio, idMunicipio)];
   if (f.ano) cond.push(eq(contratos.ano, f.ano));
-  // Não é `eq(status, f.status)`: o dropdown só manda "ativo" ou "encerrado"
-  // (os dois valores do filtro na tela), mas o BANCO tem um terceiro
-  // vocabulário — BH grava o texto literal do GRP da Ábaco ('EM EXECUÇÃO',
-  // 'RESCINDIDO'...), não o 'ativo'/'encerrado' que o PNCP computa para as
-  // outras cidades. `eq()` aqui zerava toda exportação/paginação de BH
-  // filtrada por status. Ver `lib/betim/statusContrato.ts`.
-  if (f.status === "ativo") cond.push(inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]));
-  else if (f.status === "encerrado") cond.push(notInArray(contratos.status, [...STATUS_CONTRATO_ATIVO]));
-  else if (f.status) cond.push(eq(contratos.status, f.status));
+  cond.push(condicaoStatusContrato(f.status));
   if (f.alerta) cond.push(eq(contratos.alerta, true));
   // Um motivo específico já implica alerta=true: `motivos_alerta` só tem
   // item quando o alerta disparou.
   if (f.motivo) cond.push(arrayContains(contratos.motivos_alerta, [f.motivo]));
   if (f.tema) cond.push(arrayContains(contratos.temas, [f.tema]));
-  if (f.q) {
-    const termo = `%${f.q}%`;
-    cond.push(
-      sql`(${contratos.objeto} ilike ${termo} or ${contratos.fornecedor_nome} ilike ${termo})`
-    );
-  }
+  cond.push(condicaoBuscaContratos(f.q));
   /**
    * Faixa de valor sobre `valor_global`.
    *
@@ -1630,19 +1613,7 @@ const COLUNAS_CONTRATO = {
  */
 export async function contratosPaginados(
   idMunicipio: IdMunicipio,
-  filtros: {
-    ano?: number;
-    status?: string;
-    alerta?: boolean;
-    motivo?: string;
-    tema?: string;
-    q?: string;
-    valorMin?: number;
-    valorMax?: number;
-    tipo?: string;
-    pagina?: number;
-    porPagina?: number;
-  } = {}
+  filtros: FiltrosContrato & { pagina?: number; porPagina?: number } = {}
 ) {
   return emBetim(
     async (db) => {
@@ -1676,17 +1647,7 @@ export async function contratosPaginados(
  */
 export async function totaisDeContratos(
   idMunicipio: IdMunicipio,
-  filtros: {
-    ano?: number;
-    status?: string;
-    alerta?: boolean;
-    motivo?: string;
-    tema?: string;
-    q?: string;
-    valorMin?: number;
-    valorMax?: number;
-    tipo?: string;
-  } = {}
+  filtros: FiltrosContrato = {}
 ) {
   return comBancoReserva(
     async (db) => {
@@ -1707,17 +1668,7 @@ export async function totaisDeContratos(
 /** Contratos para a exportação em CSV — sem paginação, com teto. */
 export async function contratosParaExport(
   idMunicipio: IdMunicipio,
-  filtros: {
-    ano?: number;
-    status?: string;
-    alerta?: boolean;
-    motivo?: string;
-    tema?: string;
-    q?: string;
-    valorMin?: number;
-    valorMax?: number;
-    tipo?: string;
-  },
+  filtros: FiltrosContrato,
   limite: number
 ) {
   return emBetim(
@@ -1837,177 +1788,6 @@ export async function sancoesCeisPorCnpj(cnpjs: string[]) {
   );
 }
 
-/** Quantos estabelecimentos de saúde e a soma dos profissionais. */
-export async function resumoEstabelecimentosSaude(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
-    async (db) => {
-      const [linha] = await db
-        .select({
-          qtd: sql<number>`count(*)::int`,
-          profissionais: sql<number>`coalesce(sum(${saude_estabelecimentos.profissionais_count}), 0)::int`,
-        })
-        .from(saude_estabelecimentos)
-        .where(eq(saude_estabelecimentos.id_municipio, idMunicipio));
-      return linha ?? { qtd: 0, profissionais: 0 };
-    },
-    { vazio: (r) => r === null || r.qtd === 0, padrao: null, rotulo: "betim" }
-  );
-}
-
-export async function internacoesSaude(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({
-          ano: saude_internacoes.ano,
-          carater: saude_internacoes.carater,
-          qtd: saude_internacoes.qtd,
-          obitos: saude_internacoes.obitos,
-          permanencia_media: num(saude_internacoes.permanencia_media),
-        })
-        .from(saude_internacoes)
-        .where(eq(saude_internacoes.id_municipio, idMunicipio))
-        .orderBy(
-          desc(saude_internacoes.ano),
-          asc(saude_internacoes.carater),
-          asc(saude_internacoes.id)
-        );
-    }
-  );
-}
-
-/** Internações de urgência (caráter "2") a partir de um ano. */
-export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({ ano: saude_internacoes.ano, qtd: saude_internacoes.qtd })
-        .from(saude_internacoes)
-        .where(
-          and(
-            eq(saude_internacoes.id_municipio, idMunicipio),
-            eq(saude_internacoes.carater, "2"),
-            gte(saude_internacoes.ano, anoMinimo)
-          )
-        );
-    }
-  );
-}
-
-/** Ranking das internações por CID-10 (tabela `saude_internacoes_cid`,
- * alimentada pelo coletor `etl/betim/etl/bd/sih_cid.py`). Ordenado do
- * diagnóstico mais frequente para o menos, do ano mais recente para o
- * mais antigo. */
-export async function rankingCidsMunicipio(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({
-          ano: saude_internacoes_cid.ano,
-          cid_codigo: saude_internacoes_cid.cid_codigo,
-          capitulo: saude_internacoes_cid.capitulo,
-          internacoes_total: saude_internacoes_cid.internacoes_total,
-          obitos_total: saude_internacoes_cid.obitos_total,
-          dias_permanencia_total: num(saude_internacoes_cid.dias_permanencia_total),
-          valor_total: num(saude_internacoes_cid.valor_total),
-        })
-        .from(saude_internacoes_cid)
-        .where(eq(saude_internacoes_cid.id_municipio, idMunicipio))
-        .orderBy(
-          desc(saude_internacoes_cid.ano),
-          desc(saude_internacoes_cid.internacoes_total),
-          asc(saude_internacoes_cid.cid_codigo)
-        );
-    }
-  );
-}
-
-export async function arbovirosesDoMunicipio(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({
-          doenca: arboviroses.doenca,
-          ano: arboviroses.ano,
-          casos: arboviroses.casos,
-          nivel_alerta: arboviroses.nivel_alerta,
-        })
-        .from(arboviroses)
-        .where(eq(arboviroses.id_municipio, idMunicipio))
-        .orderBy(desc(arboviroses.ano), asc(arboviroses.id));
-    }
-  );
-}
-
-/** Últimas semanas de dengue — janela curta, é o que o InfoDengue devolve. */
-export async function ultimasSemanasDeDengue(idMunicipio: IdMunicipio, limite: number) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({
-          semana_epidemiologica: arboviroses.semana_epidemiologica,
-          casos: arboviroses.casos,
-          ano: arboviroses.ano,
-        })
-        .from(arboviroses)
-        .where(and(eq(arboviroses.id_municipio, idMunicipio), eq(arboviroses.doenca, "dengue")))
-        .orderBy(
-          desc(arboviroses.ano),
-          desc(arboviroses.semana_epidemiologica),
-          asc(arboviroses.id)
-        )
-        .limit(limite);
-    }
-  );
-}
-
-export async function anoMaisRecenteDeMortalidade(idMunicipio: IdMunicipio) {
-  return comBancoReserva(
-    async (db) => {
-      const [linha] = await db
-        .select({ ano: mortalidade.ano })
-        .from(mortalidade)
-        .where(and(eq(mortalidade.id_municipio, idMunicipio), isNotNull(mortalidade.ano)))
-        .orderBy(desc(mortalidade.ano))
-        .limit(1);
-      return linha?.ano ?? null;
-    },
-    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
-  );
-}
-
-export async function topCausasDeMortalidade(
-  idMunicipio: IdMunicipio,
-  ano: number,
-  limite: number
-) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({ grupo_causa: mortalidade.grupo_causa, obitos: mortalidade.obitos })
-        .from(mortalidade)
-        .where(and(eq(mortalidade.id_municipio, idMunicipio), eq(mortalidade.ano, ano)))
-        .orderBy(desc(mortalidade.obitos), asc(mortalidade.id))
-        .limit(limite);
-    }
-  );
-}
-
-/** Óbitos por grupo de causa a partir de um ano — base do cálculo de tendência. */
-export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select({
-          ano: mortalidade.ano,
-          grupo_causa: mortalidade.grupo_causa,
-          obitos: mortalidade.obitos,
-        })
-        .from(mortalidade)
-        .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
-    }
-  );
-}
 
 const COLUNAS_VEREADOR = {
   id: vereadores.id,
@@ -2029,22 +1809,27 @@ const COLUNAS_VEREADOR = {
 };
 
 /**
+ * O esqueleto das duas listas de vereadores — só a condição de situação
+ * muda. Manter as DUAS consultas é de propósito (o JSDoc de cada uma explica
+ * por que juntar mostraria 59 vereadores para 55 cadeiras); o que se unifica
+ * é o invólucro, que o CodeScene marcou como duplicação (09/10/2026).
+ */
+function consultaDeVereadores(idMunicipio: IdMunicipio, situacao: SQL) {
+  return (db: DB) =>
+    db.select(COLUNAS_VEREADOR).from(vereadores)
+      .where(and(eq(vereadores.id_municipio, idMunicipio), situacao))
+      .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+}
+
+/**
  * Vereadores ativos.
  *
  * `biografia`, `profissao` e `aniversario_dia_mes` (migration 0017) são
  * selecionadas direto: existem no banco, então o `comColunaOpcional()` que
  * as protegia nunca chegou a usar o fallback.
  */
-export async function listarVereadores(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select(COLUNAS_VEREADOR)
-        .from(vereadores)
-        .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
-        .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
-    }
-  );
+export function listarVereadores(idMunicipio: IdMunicipio) {
+  return emBetim(consultaDeVereadores(idMunicipio, eq(vereadores.ativo, true)));
 }
 
 /**
@@ -2059,35 +1844,16 @@ export async function listarVereadores(idMunicipio: IdMunicipio) {
  * eles 8 participacoes de comissao em vigor nao eram gravaveis, deixando a
  * vice-presidencia da CCJ vazia na tela.
  */
-export async function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) {
-  return emBetim(
-    async (db) => {
-      return db
-        .select(COLUNAS_VEREADOR)
-        .from(vereadores)
-        .where(
-          and(
-            eq(vereadores.id_municipio, idMunicipio),
-            ne(vereadores.situacao_mandato, "em_exercicio")
-          )
-        )
-        .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
-    }
-  );
+export function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) {
+  return emBetim(consultaDeVereadores(idMunicipio, ne(vereadores.situacao_mandato, "em_exercicio")));
 }
 
-export async function vereadorPorSlug(idMunicipio: IdMunicipio, slug: string) {
-  return comBancoReserva(
-    async (db) => {
-      const [linha] = await db
-        .select(COLUNAS_VEREADOR)
-        .from(vereadores)
-        .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.slug, slug)))
-        .limit(1);
-      return linha ?? null;
-    },
-    { vazio: (r) => r === null, padrao: null, rotulo: "betim" }
-  );
+export function vereadorPorSlug(idMunicipio: IdMunicipio, slug: string) {
+  return comBancoReserva(async (db) => {
+    const [linha] = await db.select(COLUNAS_VEREADOR).from(vereadores)
+      .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.slug, slug))).limit(1);
+    return linha ?? null;
+  }, { vazio: (r) => r === null, padrao: null, rotulo: "betim" });
 }
 
 /**
@@ -2518,6 +2284,42 @@ export async function coberturaAnaliseMunicipio(idMunicipio: IdMunicipio) {
   );
 }
 
+/** Os ids que uma página vai renderizar: atos oficiais e/ou proposições. */
+type IdsObjetos = { atos?: string[]; proposicoes?: string[] };
+
+/**
+ * "Este objeto está na lista que a página vai renderizar" — o filtro comum
+ * às duas tabelas de leitura (análise de ato e vício legislativo), que só
+ * mudam de nome de coluna. Lista vazia = a página não tem objeto nenhum, e
+ * quem chama corta antes de ir ao banco.
+ */
+function condicaoPorObjeto(ids: IdsObjetos, idAto: AnyPgColumn, idProposicao: AnyPgColumn) {
+  const cond: SQL[] = [];
+  if (ids.atos?.length) cond.push(inArray(idAto, ids.atos));
+  if (ids.proposicoes?.length) cond.push(inArray(idProposicao, ids.proposicoes));
+  return cond;
+}
+
+/**
+ * As colunas de uma análise, tiradas do corpo da consulta para o `select`
+ * caber numa linha. Sem anotação de tipo de propósito: o Drizzle infere o
+ * tipo exato de cada linha a partir do objeto, e anular isso viraria
+ * `any` no lugar do rótulo, do score e do modelo.
+ */
+const COLUNAS_ANALISE_OBJETO = {
+  id: analises.id,
+  ato_id: analises.ato_id,
+  proposicao_id: analises.proposicao_id,
+  score: num(analises.score),
+  rotulo: analises.rotulo,
+  status: analises.status,
+  clausula_petrea: analises.clausula_petrea,
+  vedacao_retrocesso: analises.vedacao_retrocesso,
+  resumo_neutro: analises.resumo_neutro,
+  modelo: analises.modelo,
+  versao_rubrica: analises.versao_rubrica,
+};
+
 /**
  * Análises dos objetos que uma página já vai renderizar.
  *
@@ -2526,44 +2328,14 @@ export async function coberturaAnaliseMunicipio(idMunicipio: IdMunicipio) {
  * ausente do retorno é objeto SEM ANÁLISE — diferente de análise com
  * resultado neutro, e a UI tem de distinguir os dois.
  */
-export async function analisesDeObjetos(
-  idMunicipio: IdMunicipio,
-  ids: { atos?: string[]; proposicoes?: string[] }
-) {
-  return comBancoReserva(
-    async (db) => {
-
-      const porObjeto = [];
-      if (ids.atos?.length) porObjeto.push(inArray(analises.ato_id, ids.atos));
-      if (ids.proposicoes?.length)
-        porObjeto.push(inArray(analises.proposicao_id, ids.proposicoes));
-      if (porObjeto.length === 0) return { linhas: [], itens: [] };
-
-      const linhas = await db
-        .select({
-          id: analises.id,
-          ato_id: analises.ato_id,
-          proposicao_id: analises.proposicao_id,
-          score: num(analises.score),
-          rotulo: analises.rotulo,
-          status: analises.status,
-          clausula_petrea: analises.clausula_petrea,
-          vedacao_retrocesso: analises.vedacao_retrocesso,
-          resumo_neutro: analises.resumo_neutro,
-          modelo: analises.modelo,
-          versao_rubrica: analises.versao_rubrica,
-        })
-        .from(analises)
-        .where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
-
-      const itens = await itensDeAnalises(
-        idMunicipio,
-        linhas.map((l) => l.id)
-      );
-      return { linhas, itens };
-    },
-    { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" }
-  );
+export function analisesDeObjetos(idMunicipio: IdMunicipio, ids: IdsObjetos) {
+  return comBancoReserva(async (db) => {
+    const porObjeto = condicaoPorObjeto(ids, analises.ato_id, analises.proposicao_id);
+    if (porObjeto.length === 0) return { linhas: [], itens: [] };
+    const linhas = await db.select(COLUNAS_ANALISE_OBJETO).from(analises).where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
+    const itens = await itensDeAnalises(idMunicipio, linhas.map((l) => l.id));
+    return { linhas, itens };
+  }, { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" });
 }
 
 /** Itens (categorias de indício) de um conjunto de vícios da MESMA cidade. */
@@ -2594,41 +2366,26 @@ export async function itensDeVicios(idMunicipio: IdMunicipio, vicioIds: string[]
  * indício — as duas coisas renderizam a mesma coisa: nada, ver
  * `VicioBadge`/`VicioAuditavel`).
  */
-export async function viciosDeObjetos(
-  idMunicipio: IdMunicipio,
-  ids: { atos?: string[]; proposicoes?: string[] }
-) {
-  return comBancoReserva(
-    async (db) => {
+/** Espelho de `COLUNAS_ANALISE_OBJETO` para a tabela de vícios. */
+const COLUNAS_VICIO_OBJETO = {
+  id: vicios_legislativos.id,
+  ato_id: vicios_legislativos.ato_id,
+  proposicao_id: vicios_legislativos.proposicao_id,
+  nivel_gravidade: vicios_legislativos.nivel_gravidade,
+  status: vicios_legislativos.status,
+  resumo: vicios_legislativos.resumo,
+  modelo: vicios_legislativos.modelo,
+  versao_rubrica: vicios_legislativos.versao_rubrica,
+};
 
-      const porObjeto = [];
-      if (ids.atos?.length) porObjeto.push(inArray(vicios_legislativos.ato_id, ids.atos));
-      if (ids.proposicoes?.length)
-        porObjeto.push(inArray(vicios_legislativos.proposicao_id, ids.proposicoes));
-      if (porObjeto.length === 0) return { linhas: [], itens: [] };
-
-      const linhas = await db
-        .select({
-          id: vicios_legislativos.id,
-          ato_id: vicios_legislativos.ato_id,
-          proposicao_id: vicios_legislativos.proposicao_id,
-          nivel_gravidade: vicios_legislativos.nivel_gravidade,
-          status: vicios_legislativos.status,
-          resumo: vicios_legislativos.resumo,
-          modelo: vicios_legislativos.modelo,
-          versao_rubrica: vicios_legislativos.versao_rubrica,
-        })
-        .from(vicios_legislativos)
-        .where(and(eq(vicios_legislativos.id_municipio, idMunicipio), or(...porObjeto)));
-
-      const itens = await itensDeVicios(
-        idMunicipio,
-        linhas.map((l) => l.id)
-      );
-      return { linhas, itens };
-    },
-    { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" }
-  );
+export function viciosDeObjetos(idMunicipio: IdMunicipio, ids: IdsObjetos) {
+  return comBancoReserva(async (db) => {
+    const porObjeto = condicaoPorObjeto(ids, vicios_legislativos.ato_id, vicios_legislativos.proposicao_id);
+    if (porObjeto.length === 0) return { linhas: [], itens: [] };
+    const linhas = await db.select(COLUNAS_VICIO_OBJETO).from(vicios_legislativos).where(and(eq(vicios_legislativos.id_municipio, idMunicipio), or(...porObjeto)));
+    const itens = await itensDeVicios(idMunicipio, linhas.map((l) => l.id));
+    return { linhas, itens };
+  }, { vazio: (r) => r === null || r.linhas.length === 0, padrao: null, rotulo: "betim" });
 }
 
 /**
@@ -3006,32 +2763,34 @@ export async function totaisDeLicitacoes(
   );
 }
 
+/**
+ * Os valores distintos de uma coluna de `licitacoes`, em ordem pt-BR — o
+ * motor dos dois dropdowns da tela de compras (situação e modalidade).
+ *
+ * Um ponto de verdade só: os dois filtros têm de se comportar igual, e
+ * ter cópia um do outro foi o que o CodeScene apontou (09/10/2026). O
+ * objeto do `select distinct` usa a chave `valor` de propósito: o SQL sai
+ * do schema (`"licitacoes"."situacao"`, e não o nome da propriedade), e a
+ * chave é só o nome do campo no retorno — que a função mapeia na hora.
+ */
+function valoresDisponiveisDe(idMunicipio: IdMunicipio, coluna: AnyPgColumn) {
+  return async (db: DB) => {
+    const linhas = await db.selectDistinct({ valor: coluna }).from(licitacoes)
+      .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(coluna)));
+    return linhas.map((l) => l.valor as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+  };
+}
+
 /** Situações distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
-export async function situacoesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
-  return comBancoReserva(
-    async (db) => {
-      const linhas = await db
-        .selectDistinct({ situacao: licitacoes.situacao })
-        .from(licitacoes)
-        .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.situacao)));
-      return linhas.map((l) => l.situacao as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
-    },
-    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
-  );
+export function situacoesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
+  return comBancoReserva(valoresDisponiveisDe(idMunicipio, licitacoes.situacao),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" });
 }
 
 /** Modalidades distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
-export async function modalidadesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
-  return comBancoReserva(
-    async (db) => {
-      const linhas = await db
-        .selectDistinct({ modalidade: licitacoes.modalidade_nome })
-        .from(licitacoes)
-        .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.modalidade_nome)));
-      return linhas.map((l) => l.modalidade as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
-    },
-    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" }
-  );
+export function modalidadesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
+  return comBancoReserva(valoresDisponiveisDe(idMunicipio, licitacoes.modalidade_nome),
+    { vazio: (r) => r.length === 0, padrao: [], rotulo: "betim" });
 }
 
 function condicoesDeVotacoes(idMunicipio: IdMunicipio, f: { ano?: number; q?: string }) {
@@ -3404,3 +3163,8 @@ export async function barragensSnisb(idMunicipio: IdMunicipio) {
     }
   );
 }
+
+// A saúde e a mortalidade do eixo Cidades moraram neste arquivo até
+// 09/10/2026; saíram na divisão de módulos (CodeScene: número de funções
+// por módulo) e são re-exportadas aqui para os importadores não mudarem.
+export * from "./betim-saude";
