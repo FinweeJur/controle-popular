@@ -502,33 +502,86 @@ export function inferirPorte(
   return "Não classificado";
 }
 
-/** Extrai valor numérico monetário em R$ se presente no registro ou texto. */
+/**
+ * Primeira tentativa de `extrairValor`: o campo JÁ veio numérico.
+ *
+ * Saiu de `extrairValor` em 09/10/2026 — a função somava três caminhos e
+ * chegava a complexidade 14, com *bumpy road* (mudança de profundidade de
+ * aninhamento no meio). Cada caminho virou função, e o encaixe é `??`.
+ *
+ * As duas guardas estão separadas de propósito: `typeof` numa linha e o
+ * teste de faixa em outra. Juntas (`typeof === "number" && !isNaN && > 0`)
+ * já seriam o aviso de *Complex Conditional*, que conta `&&` na mesma linha.
+ *
+ * @param valorDireto valor direto do registro, se houver.
+ * @returns o número, ou `null` quando não é número positivo.
+ */
+function valorDeNumero(valorDireto?: number | string | null): number | null {
+  if (typeof valorDireto !== "number") return null;
+  if (isNaN(valorDireto) || valorDireto <= 0) return null;
+  return valorDireto;
+}
+
+/**
+ * Segunda tentativa de `extrairValor`: o campo veio como TEXTO ("R$ 1.234,56").
+ *
+ * A troca de separadores é a regra brasileira: vírgula é decimal, ponto é
+ * milhar. Quando os DOIS aparecem, o ponto sai primeiro e a vírgula vira
+ * ponto; havendo só vírgula, ela vira ponto. `parseFloat` só entende ponto.
+ *
+ * @param valorDireto valor direto do registro, se houver.
+ * @returns o número, ou `null` quando o texto não tem número positivo.
+ */
+function valorDeTexto(valorDireto?: number | string | null): number | null {
+  if (typeof valorDireto !== "string") return null;
+  let limpo = valorDireto.replace(/[^\d.,]/g, "").trim();
+  if (limpo.includes(",") && limpo.includes(".")) {
+    limpo = limpo.replace(/\./g, "").replace(",", ".");
+  } else if (limpo.includes(",")) {
+    limpo = limpo.replace(",", ".");
+  }
+  const num = parseFloat(limpo);
+  if (!isNaN(num) && num > 0) return num;
+  return null;
+}
+
+/**
+ * Terceira tentativa de `extrairValor`: procurar um valor em R$ no texto
+ * livre do registro (resumo, parâmetros).
+ *
+ * @param textoBusca texto onde procurar, se houver.
+ * @returns o número, ou `null` quando o texto não traz valor em R$.
+ */
+function valorDeBusca(textoBusca?: string | null): number | null {
+  if (!textoBusca) return null;
+  const m = /R\$\s*([\d.]+,\d{2}|\d+[\.,]\d+|\d+)/i.exec(textoBusca);
+  if (!m) return null;
+  const limpo = m[1].replace(/\./g, "").replace(",", ".");
+  const v = parseFloat(limpo);
+  if (!isNaN(v) && v > 0) return v;
+  return null;
+}
+
+/**
+ * Extrai valor numérico monetário em R$ se presente no registro ou texto.
+ *
+ * Três caminhos, nesta ordem e nenhum outro: número pronto no campo, texto
+ * no campo, valor em R$ no texto livre. O `??` encaixa os três porque
+ * cada um devolve `null` — e não `0` — quando não é o seu caso: `0` seria
+ * achado legítimo e cortaria a busca no caminho seguinte.
+ *
+ * Em 09/10/2026 os três caminhos saíram daqui para as funções acima;
+ * a função caiu de complexidade 14 para 3.
+ *
+ * @param valorDireto valor direto do registro (número ou string).
+ * @param textoBusca texto livre onde procurar "R$ ...".
+ * @returns o valor encontrado, ou `null`.
+ */
 export function extrairValor(
   valorDireto?: number | string | null,
   textoBusca?: string | null
 ): number | null {
-  if (typeof valorDireto === "number" && !isNaN(valorDireto) && valorDireto > 0) {
-    return valorDireto;
-  }
-  if (typeof valorDireto === "string") {
-    let limpo = valorDireto.replace(/[^\d.,]/g, "").trim();
-    if (limpo.includes(",") && limpo.includes(".")) {
-      limpo = limpo.replace(/\./g, "").replace(",", ".");
-    } else if (limpo.includes(",")) {
-      limpo = limpo.replace(",", ".");
-    }
-    const num = parseFloat(limpo);
-    if (!isNaN(num) && num > 0) return num;
-  }
-  if (textoBusca) {
-    const m = /R\$\s*([\d.]+,\d{2}|\d+[\.,]\d+|\d+)/i.exec(textoBusca);
-    if (m) {
-      const limpo = m[1].replace(/\./g, "").replace(",", ".");
-      const v = parseFloat(limpo);
-      if (!isNaN(v) && v > 0) return v;
-    }
-  }
-  return null;
+  return valorDeNumero(valorDireto) ?? valorDeTexto(valorDireto) ?? valorDeBusca(textoBusca);
 }
 
 /** Extrai detalhes de tamanho (área, vazão, classe, etc.). */
