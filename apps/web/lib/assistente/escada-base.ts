@@ -50,26 +50,41 @@ export interface ResultadoEscada {
 /**
  * Uma entrada de degrau: o que casar e o que responder.
  *
- * `exatos` casa só com a pergunta inteira (sem acento, em minúsculo).
- * `contem` casa quando o termo aparece em qualquer lugar da pergunta.
- * `cartao` é devolvido na íntegra — nenhum texto é montado em tempo de execução.
+ * Quatro testes, cada um no seu campo, porque não são o mesmo teste:
+ * - `exatos` — a pergunta inteira tem de ser IGUAL ao termo;
+ * - `contem` — o termo aparece em QUALQUER lugar da pergunta;
+ * - `comecaCom` — a pergunta COMEÇA com o termo (ex.: "betim prefeitura");
+ * - `terminaCom` — a pergunta TERMINA com o termo (ex.: "contratos de betim").
+ * Misturar os quatro numa lista só mudaria a resposta — e resposta errada
+ * para o cidadão é dano (AGENTS §7).
+ * `cartao` é devolvido na íntegra — nenhum texto é montado em tempo de
+ * execução.
  */
 export interface EntradaCartao {
   exatos: string[];
   contem: string[];
+  comecaCom?: string[];
+  terminaCom?: string[];
   cartao: ResultadoEscada;
 }
 
 /**
  * Testa se a pergunta normalizada casa com a entrada.
  *
+ * Os quatro testes são ligados por OU, na mesma ordem em que os `||`
+ * existiam no `if` original — a ordem dentro do bloco não muda nada,
+ * porque era disjunção lá também.
+ *
  * @param normalizada prompt sem acento, em minúsculo, já corrigido.
- * @param entrada termos exatos + termos desubstring + cartão.
+ * @param entrada termos + cartão.
  * @returns `true` se algum termo casou.
  */
 export function casarTermos(normalizada: string, entrada: EntradaCartao): boolean {
   if (entrada.exatos.includes(normalizada)) return true;
-  return entrada.contem.some((termo) => normalizada.includes(termo));
+  if (entrada.contem.some((termo) => normalizada.includes(termo))) return true;
+  if (entrada.comecaCom?.some((termo) => normalizada.startsWith(termo))) return true;
+  if (entrada.terminaCom?.some((termo) => normalizada.endsWith(termo))) return true;
+  return false;
 }
 
 /**
