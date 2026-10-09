@@ -197,16 +197,86 @@ const REGRAS_LINK_OFICIAL: RegraLinkOficial[] = [
  * construção). Uma regra sem condição positiva (`igual`/`contem`) não casa
  * nada: seria erro de configuração, e errar para "sem link" é o erro seguro.
  */
+/**
+ * Conferência de TEXTO da regra: `igual`, `contem` e `evita` contra o
+ * nome do órgão (em maiúsculas).
+ *
+ * Saiu de `casaNaRegra` em 09/10/2026 porque as três guardas encadeadas
+ * levavam a função a complexidade 11 — o aviso do CodeScene. Aqui a ordem
+ * das três é a MESMA do `if` original, com o mesmo encurtamento: falhou
+ * `igual`, já responde `false` sem olhar o resto.
+ *
+ * @param regra regra declarativa da tabela.
+ * @param orgao nome do órgão em MAIÚSCULAS.
+ * @returns `true` quando o texto do órgão satisfaz a regra.
+ */
+function condicoesDeOrgao(regra: RegraLinkOficial, orgao: string): boolean {
+  if (regra.igual !== undefined && orgao !== regra.igual) return false;
+  if (regra.contem && !regra.contem.some((pedaco) => orgao.includes(pedaco))) return false;
+  if (regra.evita && regra.evita.some((pedaco) => orgao.includes(pedaco))) return false;
+  return true;
+}
+
+/**
+ * Conferência de CATEGORIA da regra, se ela fixar uma.
+ *
+ * Desempata o IBAMA (`Regras-de-link`): o mesmo nome vai para o SEI quando
+ * é licença, e para o CTF quando é auto de infração. Sem categoria fixada,
+ * a regra serve para qualquer uma.
+ *
+ * @param regra regra declarativa da tabela.
+ * @param categoria licenca | outorga | auto_infracao | embargo.
+ * @returns `true` quando a categoria casa.
+ */
+function condicaoDeCategoria(
+  regra: RegraLinkOficial,
+  categoria: string | null | undefined,
+): boolean {
+  if (regra.categoria !== undefined && categoria !== regra.categoria) return false;
+  return true;
+}
+
+/**
+ * Confere se uma regra de link vale para o órgão/categoria informados.
+ * `orgao` chega em MAIÚSCULAS (a comparação é sem distinção de caixa por
+ * construção). Uma regra sem condição positiva (`igual`/`contem`) não casa
+ * nada: seria erro de configuração, e errar para "sem link" é o erro seguro.
+ *
+ * Em 09/10/2026 virou composição das duas conferências acima — a ordem
+ * (texto, depois categoria) é a do `if` original, e o `Boolean(...)` do
+ * fim continua só sendo avaliado quando as duas passaram.
+ */
 function casaNaRegra(
   regra: RegraLinkOficial,
   orgao: string,
   categoria: string | null | undefined,
 ): boolean {
-  if (regra.igual !== undefined && orgao !== regra.igual) return false;
-  if (regra.contem && !regra.contem.some((pedaco) => orgao.includes(pedaco))) return false;
-  if (regra.evita && regra.evita.some((pedaco) => orgao.includes(pedaco))) return false;
-  if (regra.categoria !== undefined && categoria !== regra.categoria) return false;
+  if (!condicoesDeOrgao(regra, orgao)) return false;
+  if (!condicaoDeCategoria(regra, categoria)) return false;
   return Boolean(regra.igual || regra.contem?.length);
+}
+
+/** Processos que a fonte grava e que NÃO designam nada consultável. */
+const PROCESSO_SEM_CONSULTA = new Set(["s/n", "—"]);
+
+/**
+ * Guarda do número de processo: vazio, `s/n` ou o travessão da fonte não
+ * viram link — não há o que consultar.
+ *
+ * Saiu de `construirLinkOficial` em 09/10/2026 pela mesma razão de
+ * `condicoesDeOrgao`: três comparações encadeadas na mesma função inflavam
+ * a complexidade. Os dois valores inválidos viraram `Set`, e não `||`
+ * encadeado, porque dois `||` numa linha só já é o aviso de
+ * *Complex Conditional* do CodeScene — a mesma troca de forma, sem mudar
+ * o resultado.
+ *
+ * @param processo número do processo/ato tal como veio da fonte.
+ * @returns o processo limpo, ou `null` quando não dá para consultar.
+ */
+function processoUtil(processo?: string | null): string | null {
+  const proc = (processo ?? "").trim();
+  if (!proc || PROCESSO_SEM_CONSULTA.has(proc)) return null;
+  return proc;
 }
 
 /**
@@ -230,8 +300,8 @@ export function construirLinkOficial(
   if (urlDireta && /^https?:\/\//i.test(urlDireta.trim())) {
     return urlDireta.trim();
   }
-  const proc = (processo ?? "").trim();
-  if (!proc || proc === "s/n" || proc === "—") return null;
+  const proc = processoUtil(processo);
+  if (!proc) return null;
 
   const orgUpper = orgao.toUpperCase();
   const regra = REGRAS_LINK_OFICIAL.find((r) => casaNaRegra(r, orgUpper, categoria));
