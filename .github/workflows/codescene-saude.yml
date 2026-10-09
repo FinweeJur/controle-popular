@@ -64,6 +64,14 @@ jobs:
           # nada de ganho aqui.
           CS_DISABLE_VERSION_CHECK: "1"
         run: |
+          # PR vindo de um FORK não recebe segredo do repositório. Sem token
+          # o `cs` responde cobrindo a instalação e a ação ficaria vermelha
+          # por algo que quem abriu o PR não tem como consertar — avisamos
+          # e seguimos, do mesmo jeito que o pré-commit pula sozinho.
+          if [ -z "$CS_ACCESS_TOKEN" ]; then
+            echo "::notice::CS_ACCESS_TOKEN indisponível (PR de fork); delta pulado."
+            exit 0
+          fi
           if [ -z "${{ steps.base.outputs.base }}" ]; then
             echo "::notice::Sem commit anterior para comparar; delta pulado."
             exit 0
