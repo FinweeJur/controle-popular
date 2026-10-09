@@ -436,8 +436,23 @@ const { linhas: linhasImaSc, meta: metaImaSc } = carregarLinhasNormalizadas("ima
  * ---------------------------------------------------------------------------
  */
 
+/** Marcas que a fonte grava no campo e que significam "sem valor". */
+const TEXTO_VAZIO = new Set(["", "xxxxx"]);
+
+/**
+ * Lê um campo vindo da fonte como TEXTO, ou devolve `null`.
+ *
+ * As guardas estão em linhas separadas de propósito: o `||` de quatro
+ * comparações numa linha só já era o aviso de *Complex Conditional* do
+ * CodeScene (medido 09/10/2026). `null` e `undefined` são duas linhas —
+ * a fonte grava os dois, e são as duas únicas entradas fora de `string`,
+ * `number` e `boolean`; o resto vira string e é conferido contra o `Set`
+ * das marcas vazias.
+ */
 function texto(valor: string | number | boolean | null | undefined): string | null {
-  if (valor === null || valor === undefined || valor === "" || valor === "xxxxx") return null;
+  if (valor === null) return null;
+  if (valor === undefined) return null;
+  if (TEXTO_VAZIO.has(valor as string)) return null;
   return String(valor);
 }
 
@@ -475,6 +490,28 @@ function primeiroTexto(linha: LinhaBruta, campos: string[]): string | null {
  * ---------------------------------------------------------------------------
  */
 
+/**
+ * Confere se a linha é do PAC (Programa de Aceleração do Crescimento), que
+ * é o empreendimento de porte EXCEPCIONAL.
+ *
+ * Saiu de `inferirPorte` em 09/10/2026: as três comparações encadeadas
+ * (`=== "1" || === "SIM" || /pac/i.test`) eram o aviso de *Complex
+ * Conditional* ali. Em linhas separadas, cada `if` conta zero.
+ *
+ * O teste de regex vem por último de propósito: é o mais lento e o mais
+ * largo (casa "PAC" dentro de qualquer palavra), então só roda quando os
+ * dois iguais já falharam — mesma ordem do `||` original.
+ *
+ * @param pac valor do campo PAC, se houver.
+ * `null`/`undefined` passam pelo `?? ""` e a regex não casa — como antes.
+ * @returns `true` quando a linha é PAC.
+ */
+function ehPac(pac?: string | null): boolean {
+  if (pac === "1") return true;
+  if (pac === "SIM") return true;
+  return /pac/i.test(pac ?? "");
+}
+
 /** Extrai ou infere o porte do empreendimento a partir de classe, PAC, tipo ou texto. */
 export function inferirPorte(
   clas?: string | null,
@@ -483,7 +520,7 @@ export function inferirPorte(
   microresumo?: string | null,
   tags?: string[]
 ): string {
-  if (pac === "1" || pac === "SIM" || /pac/i.test(pac ?? "")) return "Excepcional / PAC";
+  if (ehPac(pac)) return "Excepcional / PAC";
 
   const textoComb = `${clas ?? ""} ${tipo ?? ""} ${microresumo ?? ""} ${(tags ?? []).join(" ")}`.toLowerCase();
 
@@ -591,7 +628,8 @@ export function extrairTamanho(
   tipo?: string | null,
   microresumo?: string | null
 ): string | null {
-  if (parametros && parametros.trim() && parametros.trim() !== "—") return parametros.trim();
+  const p = parametros?.trim();
+  if (p && p !== "—") return p;
   if (clas && /classe/i.test(clas)) return clas.trim();
 
   const m = /(\d+(?:[.,]\d+)?\s*(?:ha|m[²2]|m[³3]\/h|m[³3]\/dia|l\/s|cab|km|MW))/i.exec(`${tipo ?? ""} ${microresumo ?? ""}`);
