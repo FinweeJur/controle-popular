@@ -55,6 +55,8 @@ export interface ResultadoEscada {
  * - `contem` — o termo aparece em QUALQUER lugar da pergunta;
  * - `comecaCom` — a pergunta COMEÇA com o termo (ex.: "betim prefeitura");
  * - `terminaCom` — a pergunta TERMINA com o termo (ex.: "contratos de betim").
+ * E um quinto, `regex`, para o caso em que só expressão regular resolve:
+ * palavra inteira marcada com `\b`, para "onu" não casar dentro de "nenhum".
  * Misturar os quatro numa lista só mudaria a resposta — e resposta errada
  * para o cidadão é dano (AGENTS §7).
  * `cartao` é devolvido na íntegra — nenhum texto é montado em tempo de
@@ -65,26 +67,62 @@ export interface EntradaCartao {
   contem: string[];
   comecaCom?: string[];
   terminaCom?: string[];
+  /** Sem flag `g`: com `g`, `lastIndex` faria o teste falhar em rodadas alternadas. */
+  regex?: RegExp[];
   cartao: ResultadoEscada;
+}
+
+/**
+ * Testa os quatro testos de TEXTO da entrada, em ordem.
+ *
+ * A ordem dentro do bloco não muda nada, porque lá era disjunção (`||`)
+ * — mas mantê-la deixa o diff contra o `if` original legível.
+ *
+ * Existe separado de `casarTermos` por um motivo medido: junto com a regex
+ * a função chegava a complexidade ciclomática 9, que é o aviso do
+ * CodeScene (`cs delta` barrou o commit em 09/10/2026). A costura é
+ * natural — texto vira string, regex vira padrão — e as duas metades
+ * ficam bem abaixo do limite.
+ *
+ * @param normalizada prompt sem acento, em minúsculo, já corrigido.
+ * @param entrada termos de texto.
+ * @returns `true` se algum termo de texto casou.
+ */
+function casaPorTexto(normalizada: string, entrada: EntradaCartao): boolean {
+  if (entrada.exatos.includes(normalizada)) return true;
+  if (entrada.contem.some((termo) => normalizada.includes(termo))) return true;
+  if (entrada.comecaCom?.some((termo) => normalizada.startsWith(termo))) return true;
+  if (entrada.terminaCom?.some((termo) => normalizada.endsWith(termo))) return true;
+  return false;
+}
+
+/**
+ * Testa os padrões de REGEX da entrada, se houver.
+ *
+ * Sem flag `g` (documentado em `EntradaCartao.regex`): com `g`, o
+ * `lastIndex` avança a cada chamada e o mesmo padrão falharia na rodada
+ * seguinte.
+ *
+ * @param normalizada prompt sem acento, em minúsculo, já corrigido.
+ * @param padroes padrões da entrada; `undefined` não casa nada.
+ * @returns `true` se algum padrão casou.
+ */
+function casaPorRegex(normalizada: string, padroes?: RegExp[]): boolean {
+  return padroes?.some((padrao) => padrao.test(normalizada)) ?? false;
 }
 
 /**
  * Testa se a pergunta normalizada casa com a entrada.
  *
- * Os quatro testes são ligados por OU, na mesma ordem em que os `||`
- * existiam no `if` original — a ordem dentro do bloco não muda nada,
- * porque era disjunção lá também.
+ * Os cinco testos são ligados por OU, na mesma ordem em que os `||`
+ * existiam no `if` original.
  *
  * @param normalizada prompt sem acento, em minúsculo, já corrigido.
  * @param entrada termos + cartão.
  * @returns `true` se algum termo casou.
  */
 export function casarTermos(normalizada: string, entrada: EntradaCartao): boolean {
-  if (entrada.exatos.includes(normalizada)) return true;
-  if (entrada.contem.some((termo) => normalizada.includes(termo))) return true;
-  if (entrada.comecaCom?.some((termo) => normalizada.startsWith(termo))) return true;
-  if (entrada.terminaCom?.some((termo) => normalizada.endsWith(termo))) return true;
-  return false;
+  return casaPorTexto(normalizada, entrada) || casaPorRegex(normalizada, entrada.regex);
 }
 
 /**
