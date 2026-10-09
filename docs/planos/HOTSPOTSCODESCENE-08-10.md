@@ -356,9 +356,12 @@ FALTA, medido hoje — cada item reduz atrito para quem chega:
    Hoje aponta para a conta única (é mapa, não roteador); quando a segunda
    pessoa entrar, troca-se a linha do domínio dela e o roteamento de revisão
    passa a valer — é o que faz o bus factor virar ação.
-3. **Não existe glossário de siglas.** O portal usa ETL, RAG, CAR, CEIS/CNEP,
-   IDEB, CAGED, CDP, TCE, LAI, ONSA... Sem uma página que os defina, quem chega
-   trava na primeira leitura. Um glossário de uma página baixa a barreira.
+3. **Glossário de siglas. ✅ RESOLVIDO (09/10/2026).** Criado
+   `docs/03-desenvolvimento/GLOSSARIO-DEV.md` com os termos **técnicos**
+   (worktree, pathspec, SSG, BOM, CRLF, CI, cc, hotspot, bus factor...). As
+   siglas de **domínio** (CAR, TAC, TCE, CEIS/CNEP, COPAM...) já têm o glossário
+   cívico em `/glossario` (`lib/glossario/termos.ts`) — o novo documento aponta
+   para lá em vez de duplicar a lista.
 4. **Identidade por pessoa.** Enquanto todo commit é `FinweeJur`, o mapa de
    conhecimento não distingue quem entende o quê — o bus factor 1 é artefato da
    conta, não medição. Dar identidade Git própria a cada contribuidor é o que

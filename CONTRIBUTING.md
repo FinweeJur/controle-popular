@@ -41,6 +41,9 @@ Monorepo com npm workspaces — tudo mora em [`apps/web`](apps/web).
    grande. Assim ninguém faz duas vezes.
 3. Issues com o rótulo `boa-primeira-issue` foram escolhidas para quem
    está chegando.
+4. Travou numa sigla ou termo técnico? O
+   [`GLOSSARIO-DEV`](docs/03-desenvolvimento/GLOSSARIO-DEV.md) define tudo em
+   uma página (worktree, SSG, BOM, CI, cc, hotspot...).
 
 ## 3. Rodar o projeto
 

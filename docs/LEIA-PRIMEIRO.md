@@ -43,6 +43,7 @@ Orientar qualquer pessoa que chegue em `docs/` a encontrar o documento certo em 
 | Gatilho remoto de publicação | GATILHO-REMOTO | [`05-operacao/GATILHO-REMOTO.md`](05-operacao/GATILHO-REMOTO.md) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
 | Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
+| Travou numa sigla ou termo técnico | GLOSSARIO-DEV | [`03-desenvolvimento/GLOSSARIO-DEV.md`](03-desenvolvimento/GLOSSARIO-DEV.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 
 ## Planos ativos
