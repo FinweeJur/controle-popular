@@ -317,10 +317,17 @@ diferentes forem os donos de um arquivo, mais seguro ele está.
 | `apps/web/app/components/TopNav.tsx` | 8,46 | 40 | `FinweeJur` | **1** |
 | `apps/web/app/layout.tsx` | 8,98 | 38 | `FinweeJur` | **1** |
 | `apps/web/app/components/SeuNono.tsx` | 10,00 | 36 | `FinweeJur` | **1** |
-| `apps/web/lib/db/queries/betim.ts` | 7,30 | 32 | `FinweeJur` | **1** |
+| `apps/web/lib/db/queries/betim.ts` | 9,09 | 32 | `FinweeJur` | **1** |
 | `apps/web/public/terras/globo/js/ui/rotulos.js` | 8,45 | 16 | `FinweeJur` | **1** |
 | `etl/betim/etl/common.py` | 9,09 | 10 | `FinweeJur` | **1** |
 | `etl/betim/etl/pg_adapter.py` | 10,00 | 10 | `FinweeJur` | **1** |
+| `apps/web/lib/companheiro/passo.ts` | 10,00 | 1 (novo\*) | `FinweeJur` | **1** |
+| `apps/web/lib/db/queries/betim-saude.ts` | 10,00 | 1 (novo\*) | `FinweeJur` | **1** |
+| `apps/web/lib/db/queries/betim-nucleo.ts` | 10,00 | 1 (novo\*) | `FinweeJur` | **1** |
+
+\* Criados na refatoração de 09/10/2026. A nuvem ainda NÃO os indexou (o job
+`7854262` está parado): a saúde acima é a medição LOCAL (`cs review`) e o dono
+é dedução da conta única, não leitura do mapa de conhecimento.
 
 **Leitura — e o cuidado para não alarmar.** Todo arquivo medido tem bus
 factor 1, mas aqui **1 não é fragilidade**: o repo é do dono, e todas as
@@ -331,6 +338,28 @@ entrada** para o histórico do projeto.
 Onde o número passa a valer de verdade: se um dia entrar outra conta
 (terceiro, robô dedicado), aí sim uma diferença de donos passa a mostrar
 quem entende o quê. Recalcular nessa hora.
+
+### Onboarding de uma pessoa nova — lacunas medidas (09/10/2026)
+
+O projeto já tem [CONTRIBUTING.md](/CONTRIBUTING.md),
+[docs/LEIA-PRIMEIRO.md](../LEIA-PRIMEIRO.md) e [AGENTS.md](/AGENTS.md). O que
+FALTA, medido hoje — cada item reduz atrito para quem chega:
+
+1. **Ligar o hook é manual e é esquecido.** `git config core.hooksPath .githooks`
+   já foi medido VAZIO nesta máquina (01/10/2026) e é a única camada que barra
+   CPF antes do push. Não existe `npm run setup` nem `postinstall` no
+   `package.json` raiz. Um script que rode o `git config` no `npm install`
+   elimina o passo esquecido.
+2. **Não existe `CODEOWNERS`.** Nem em `.github/`, nem na raiz. Com a conta
+   única de hoje é inócuo, mas é o mecanismo que roteia revisão e faz o bus
+   factor virar AÇÃO no dia em que a segunda pessoa entrar.
+3. **Não existe glossário de siglas.** O portal usa ETL, RAG, CAR, CEIS/CNEP,
+   IDEB, CAGED, CDP, TCE, LAI, ONSA... Sem uma página que os defina, quem chega
+   trava na primeira leitura. Um glossário de uma página baixa a barreira.
+4. **Identidade por pessoa.** Enquanto todo commit é `FinweeJur`, o mapa de
+   conhecimento não distingue quem entende o quê — o bus factor 1 é artefato da
+   conta, não medição. Dar identidade Git própria a cada contribuidor é o que
+   faz o número medir algo real.
 
 **Dashboard (knowledge maps):**
 [hotspots](https://codescene.io/projects/85760/jobs/7854262/results/code/technical-debt/system-map?max-code-health=10.00&min-change-freq=0&showHotspotsOnly=true&min-coverage=0.00&max-coverage=100.00#hotspots)
