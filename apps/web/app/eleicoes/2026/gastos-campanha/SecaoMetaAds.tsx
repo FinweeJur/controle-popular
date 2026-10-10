@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
-import TabelaResumo from "./TabelaResumo";
-import { COLUNAS_META_AMOSTRA_RESUMO, COLUNAS_META_ANUNCIO } from "./colunas";
+import TabelaOrdenavel from "./TabelaOrdenavel";
+import { COLUNAS_META_AMOSTRA_RESUMO, COLUNAS_META_ANUNCIO } from "./tabelas";
 import { metaAmostra } from "./dados";
 import { formatarNumeroBR } from "@/lib/utilitarios/calculos";
 
@@ -22,6 +22,7 @@ import { formatarNumeroBR } from "@/lib/utilitarios/calculos";
 export default function SecaoMetaAds(): ReactElement {
   const resumo = metaAmostra.candidatos.map((c) => ({
     ...c,
+    qAnuncios: c.anuncios.length,
     comFaixa: c.anuncios.filter((a) => a.faixaGastoBRL).length,
   }));
   const anuncios = metaAmostra.candidatos.flatMap((c) =>
@@ -41,11 +42,12 @@ export default function SecaoMetaAds(): ReactElement {
         texto={`O TSE diz quanto cada campanha declarou pagar; a Biblioteca de Anúncios da Meta mostra o anúncio de fato. Esta é uma AMOSTRA de ${formatarNumeroBR(anuncios.length, 0)} anúncios dos ${metaAmostra.candidatos.length} candidatos que mais receberam de big tech, capturada em ${capturadoEm}. Em ${formatarNumeroBR(totalFaixas, 0)} deles a Meta exibiu a faixa de valor gasto. A faixa não é o total da campanha: é o recorte do anúncio, como a própria plataforma publica.`}
       />
       <p className="max-w-3xl text-sm opacity-80">{metaAmostra.metodo}</p>
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_META_AMOSTRA_RESUMO}
         linhas={resumo}
-        chave={(c) => c.urna}
-        legenda="Os 10 candidatos que mais contrataram big tech no TSE, com o tamanho da amostra recolhida na Meta Ads Library"
+        campoChave="urna"
+        legenda="Os 10 candidatos que mais contrataram big tech no TSE, com o tamanho da amostra recolhida na Meta Ads Library — ordene e filtre por partido ou cargo"
+        nomeArquivo="gastos-2026-meta-amostra-resumo"
       />
       {notas.length > 0 && (
         <ul className="list-disc space-y-1 pl-6 text-xs opacity-70">
@@ -56,11 +58,12 @@ export default function SecaoMetaAds(): ReactElement {
           ))}
         </ul>
       )}
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_META_ANUNCIO}
         linhas={anuncios}
-        chave={(a) => `${a.candidato}-${a.id}`}
+        campoChave="id"
         legenda="Cada anúncio da amostra; “não divulgado” é faixa que a Meta não exibiu nesta captura, não valor zero"
+        nomeArquivo="gastos-2026-meta-anuncios"
       />
       <p className="text-xs opacity-70">
         Fonte: <a

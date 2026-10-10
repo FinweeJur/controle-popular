@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import Moeda from "@/app/components/Moeda";
-import TabelaResumo from "./TabelaResumo";
+import TabelaOrdenavel from "./TabelaOrdenavel";
 import { GraficoMensalBigTech } from "./GraficosGastos";
 import { Cartao, serieMensal, totaisPorGrupo } from "./comum";
 import {
@@ -10,7 +10,7 @@ import {
   COLUNAS_MENCAO,
   COLUNAS_META_PLATAFORMA,
   COLUNAS_PARTIDO_BIGTECH,
-} from "./colunas";
+} from "./tabelas";
 import { bigtech, dataColeta, meta } from "./dados";
 import { formatCurrencyCompactaBR } from "@/lib/betim/format";
 import { formatarNumeroBR } from "@/lib/utilitarios/calculos";
@@ -24,6 +24,9 @@ import { formatarNumeroBR } from "@/lib/utilitarios/calculos";
  * único com ressalva editorial própria (AGENTS.md § 7 — cruzamento de dois
  * dados verdadeiros não é achado; o leitor precisa ler isso ao lado do
  * número, não num rodapé).
+ *
+ * As tabelas usam `TabelaOrdenavel`: todo cabeçalho ordena e a de empresas
+ * tem filtro por grupo ("tipo" de big tech), pedido do dono em 10/10/2026.
  */
 export default function SecaoBigTech(): ReactElement {
   const grupos = totaisPorGrupo(bigtech.empresas);
@@ -34,7 +37,9 @@ export default function SecaoBigTech(): ReactElement {
     0
   );
   const pctImpulsionamento = bigtech.total > 0 ? (impulsionamento / bigtech.total) * 100 : 0;
-  const mencao = Object.entries(meta.mencaoPlataformas).sort((a, b) => b[1].total - a[1].total);
+  const mencao = Object.entries(meta.mencaoPlataformas)
+    .map(([rede, v]) => ({ rede, linhas: v.linhas, total: v.total }))
+    .sort((a, b) => b.total - a.total);
 
   return (
     <section aria-labelledby="bigtech" className="space-y-4">
@@ -58,37 +63,39 @@ export default function SecaoBigTech(): ReactElement {
       {bigtech.metaPlataformas.length > 0 && (
         <div className="space-y-2">
           <h3 className="font-display text-xl font-bold">Meta por plataforma</h3>
-          <TabelaResumo
+          <TabelaOrdenavel
             colunas={COLUNAS_META_PLATAFORMA}
             linhas={bigtech.metaPlataformas}
-            chave={(p) => p.plataforma}
+            campoChave="plataforma"
             legenda="Classificado pela palavra na descrição da despesa — heurística do portal, o TSE não informa a plataforma. Linha da Meta sem nome de rede na descrição vira “sem plataforma declarada”"
           />
         </div>
       )}
       <GraficoMensalBigTech serie={mensal} />
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_EMPRESA_BIGTECH}
         linhas={bigtech.empresas}
-        chave={(e) => `${e.cnpj}-${e.empresa}`}
-        legenda="Empresas de big tech contratadas pelas campanhas, com CNPJ como vem na fonte"
+        campoChave="empresa"
+        legenda="Empresas de big tech contratadas pelas campanhas — ordene por qualquer coluna e filtre por grupo (o tipo de big tech). CNPJ como vem na fonte"
+        nomeArquivo="gastos-2026-bigtech-empresas"
       />
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_CANDIDATO_BIGTECH}
         linhas={bigtech.topCandidatos}
-        chave={(c) => `${c.cargo}-${c.uf}-${c.urna}`}
-        legenda="Os 30 candidatos que mais contrataram com big tech — recorte completo está na tabela de candidaturas"
+        campoChave="urna"
+        legenda="Os 30 candidatos que mais contrataram com big tech — ordene por qualquer coluna e filtre por cargo ou partido"
+        nomeArquivo="gastos-2026-bigtech-candidatos"
       />
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_PARTIDO_BIGTECH}
         linhas={bigtech.partidos}
-        chave={(p) => p.partido}
+        campoChave="partido"
         legenda="Gasto em big tech por partido — soma dos candidatos de cada partido"
       />
-      <TabelaResumo
+      <TabelaOrdenavel
         colunas={COLUNAS_MENCAO}
         linhas={mencao}
-        chave={([nome]) => nome}
+        campoChave="rede"
         legenda="Menção textual do nome da rede no texto da despesa — pista, não pagamento direto: o valor pode ser a uma agência que citou a rede"
       />
       <p className="text-xs opacity-70">

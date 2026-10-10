@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
-import Moeda from "@/app/components/Moeda";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
-import TabelaResumo from "./TabelaResumo";
+import { IndiceWiki, MiniSumarioLateral } from "@/app/components/wiki";
+import TabelaOrdenavel from "./TabelaOrdenavel";
 import { GraficoGrupos } from "./GraficosGastos";
-import { Cartao, totaisPorGrupo } from "./comum";
+import { totaisPorGrupo } from "./comum";
+import SecaoNumeros from "./SecaoNumeros";
 import SecaoBigTech from "./SecaoBigTech";
 import SecaoMetaAds from "./SecaoMetaAds";
 import SecaoLacunas from "./SecaoLacunas";
@@ -14,13 +15,13 @@ import ListaGastos from "./ListaGastos";
 import AnaliseUf from "./AnaliseUf";
 import {
   COLUNAS_CARGO,
-  COLUNAS_FONECEDOR,
+  COLUNAS_FORNECEDOR,
   COLUNAS_NATUREZA,
   COLUNAS_PARTIDO,
   COLUNAS_PARTIDO_ANALISE,
   COLUNAS_RECEITA,
   COLUNAS_UF,
-} from "./colunas";
+} from "./tabelas";
 import { bigtech, dataColeta, fornecedores, meta, partidos, porPartido, porUfAnalise } from "./dados";
 import { formatCurrencyCompactaBR } from "@/lib/betim/format";
 import { formatarMoedaBR, formatarNumeroBR } from "@/lib/utilitarios/calculos";
@@ -35,12 +36,30 @@ import { formatarMoedaBR, formatarNumeroBR } from "@/lib/utilitarios/calculos";
  * definitivas valem até 03/11/2026 e o 2º turno é em 25/10/2026 — número
  * parcial publicado sem selo é número errado (AGENTS.md § 7).
  *
- * Arquitetura da página (pedido do dono, 09/10/2026: arquivo curto):
- * `dados.ts` traz os JSONs tipados, `colunas.tsx` as colunas das tabelas,
- * `comum.tsx` cartões e agregadores, `SecaoBigTech.tsx` a seção maior, e
- * aqui só a composição. A tabela grande (1.823 linhas) não vem por import:
- * é fatiada em `dados/[arquivo]/route.ts` e carregada no navegador.
+ * Arquitetura da página (pedido do dono: arquivo curto):
+ * `dados.ts` traz os JSONs tipados, `tabelas.ts` os descritores de coluna,
+ * `TabelaOrdenavel.tsx` a tabela de agregado ordenável/filtrável, as `Secao*`
+ * as seções e aqui só a composição. A tabela grande (1.823 linhas) não vem por
+ * import: é fatiada em `dados/[arquivo]/route.ts` e carregada no navegador.
+ *
+ * Sumário (pedido do dono, 10/10/2026): `IndiceWiki` no topo (na tela toda) e
+ * `MiniSumarioLateral` fixo à direita (topo-direita) para a página longa.
  */
+
+/** Seções do sumário — os `id` casam com os `h2` de cada seção. */
+const SECOES_GASTOS = [
+  { id: "cartoes", titulo: "1. Os números da eleição, de relance" },
+  { id: "entrou-saiu", titulo: "2. Como o dinheiro entrou e saiu" },
+  { id: "cargos", titulo: "3. Quanto cada cargo gastou" },
+  { id: "por-partido", titulo: "4. Análise por partido" },
+  { id: "bigtech", titulo: "5. Big tech: Meta, Google, TikTok, X e Kwai" },
+  { id: "meta-ads", titulo: "6. Biblioteca de Anúncios da Meta" },
+  { id: "por-estado", titulo: "7. Análise por estado" },
+  { id: "partidos", titulo: "8. Órgãos partidários" },
+  { id: "fornecedores", titulo: "9. Maiores fornecedores" },
+  { id: "candidaturas", titulo: "10. Candidatura por candidatura" },
+  { id: "lacunas", titulo: "11. Lacunas e metodologia" },
+];
 
 export const metadata: Metadata = metadataEditavel("/eleicoes/2026/gastos-campanha", {
   title: "Gastos de campanha 2026 — publicidade, big tech e custo por voto | Controle Popular",
@@ -62,6 +81,7 @@ export default function GastosCampanha2026(): ReactElement {
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto w-full max-w-5xl space-y-8 px-4 py-10">
+      <MiniSumarioLateral itens={SECOES_GASTOS} />
       <header className="space-y-3">
         <p className="text-xs opacity-70">
           <Link href="/" className="underline-offset-2 hover:underline">
@@ -90,70 +110,26 @@ export default function GastosCampanha2026(): ReactElement {
         </div>
       </header>
 
-      <section aria-labelledby="cartoes" className="space-y-3">
-        <h2 id="cartoes" className="font-display text-2xl font-bold">
-          Os números da eleição, de relance
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Cartao
-            titulo="Receita declarada"
-            valor={<Moeda value={meta.totais.receita} />}
-            detalhe={`${formatarNumeroBR(meta.totais.candidaturas, 0)} candidaturas · fundo especial, fundo partidário e doações`}
-          />
-          <Cartao
-            titulo="Despesa contratada"
-            valor={<Moeda value={meta.totais.contratado} />}
-            detalhe="prometido em contrato — não se soma ao pago"
-          />
-          <Cartao
-            titulo="Despesa paga"
-            valor={<Moeda value={meta.totais.pago} />}
-            detalhe={`parcela liquidada até ${dataColeta}`}
-          />
-          <Cartao
-            titulo="Eleitos no 1º turno"
-            valor={formatarNumeroBR(meta.totais.eleitos1Turno, 0)}
-            detalhe={`${meta.totais.pendentes2Turno} cargos pendentes no 2º turno de 25/10`}
-          />
-          <Cartao
-            titulo="Publicidade digital contratada"
-            valor={<Moeda value={meta.grupos.digital.contratado} />}
-            detalhe={`já pago: ${formatCurrencyCompactaBR(meta.grupos.digital.pago)} — impulsionamento, anúncio e página`}
-          />
-          <Cartao
-            titulo="Materiais impressos"
-            valor={<Moeda value={meta.grupos.materiais.contratado} />}
-            detalhe={`já pago: ${formatCurrencyCompactaBR(meta.grupos.materiais.pago)} — santinho, adesivo, panfleto`}
-          />
-          <Cartao
-            titulo="Mobilização de rua"
-            valor={<Moeda value={meta.grupos.rua.contratado} />}
-            detalhe={`já pago: ${formatCurrencyCompactaBR(meta.grupos.rua.pago)} — comitê, carro de som, militância`}
-          />
-          <Cartao
-            titulo="Big tech"
-            valor={<Moeda value={bigtech.total} />}
-            detalhe={gruposBigTech.map((g) => `${g.rotulo.split(" ")[0]} ${formatCurrencyCompactaBR(g.total)}`).join(" · ")}
-          />
-        </div>
-      </section>
+      <IndiceWiki itens={SECOES_GASTOS} />
+
+      <SecaoNumeros />
 
       <section aria-labelledby="entrou-saiu" className="space-y-4">
         <h2 id="entrou-saiu" className="font-display text-2xl font-bold">
           Como o dinheiro entrou e em que saiu
         </h2>
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_RECEITA}
           linhas={meta.receitaPorFonte}
-          chave={(r) => r.fonte}
+          campoChave="fonte"
           legenda={`Receita por origem, somando as ${formatarNumeroBR(meta.totais.candidaturas, 0)} candidaturas — a soma bate com o total de ${formatarMoedaBR(meta.totais.receita)}`}
         />
         <GraficoGrupos grupos={meta.grupos} />
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_NATUREZA}
           linhas={topNaturezas}
-          chave={(n) => n.cd}
-          legenda={`As ${topNaturezas.length} maiores naturezas de despesa de ${naturezasComValor.length} com valor registrado — ordenadas por valor contratado`}
+          campoChave="cd"
+          legenda={`As ${topNaturezas.length} maiores naturezas de despesa de ${naturezasComValor.length} com valor registrado — ordene por qualquer coluna`}
         />
         <p className="text-xs opacity-70">
           As duas medidas não se somam: “contratado” vem do arquivo de despesas contratadas e
@@ -165,20 +141,20 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="cargos" className="font-display text-2xl font-bold">
           Quanto cada cargo gastou e quanto custou cada voto
         </h2>
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_CARGO}
           linhas={meta.porCargo}
-          chave={(c) => c.cargo}
+          campoChave="cargo"
           legenda="Por cargo, no país inteiro — o custo por voto é a mediana entre os eleitos: metade gastou menos, metade mais"
         />
         <p className="text-xs opacity-70">
           Presidente não tem custo mediano: nenhum foi eleito no 1º turno, e o par a 25/10 ainda
           não tem despesa definitiva. Custo por voto da linha = despesa paga ÷ votos nominais.
         </p>
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_UF}
           linhas={meta.porUf}
-          chave={(u) => u.uf}
+          campoChave="uf"
           legenda={'Por unidade da federação — "BR" é a eleição presidencial, com os votos de todo o país'}
         />
       </section>
@@ -193,11 +169,11 @@ export default function GastosCampanha2026(): ReactElement {
           big tech por partido daqui bate com a seção Big tech, e o custo por voto é a mediana entre
           os eleitos de cada legenda.
         </p>
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_PARTIDO_ANALISE}
           linhas={porPartido}
-          chave={(p) => p.partido}
-          legenda="Por partido, no país inteiro — candidaturas, eleitos, valores e custo por voto mediano entre os eleitos da legenda"
+          campoChave="partido"
+          legenda="Por partido, no país inteiro — ordene por qualquer coluna (gastos, votos, big tech)"
         />
       </section>
 
@@ -222,10 +198,10 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="partidos" className="font-display text-2xl font-bold">
           Órgãos partidários: o partido como instituição
         </h2>
-        <TabelaResumo
+        <TabelaOrdenavel
           colunas={COLUNAS_PARTIDO}
           linhas={partidos}
-          chave={(p) => p.partido}
+          campoChave="partido"
           legenda={`Os ${partidos.length} partidos com movimentação declarada — a prestação própria dos órgãos partidários, NÃO é a soma dos candidatos da análise por partido (universos diferentes, não somáveis entre si)`}
         />
       </section>
@@ -234,11 +210,12 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="fornecedores" className="font-display text-2xl font-bold">
           Quem recebeu: os maiores fornecedores de campanha
         </h2>
-        <TabelaResumo
-          colunas={COLUNAS_FONECEDOR}
+        <TabelaOrdenavel
+          colunas={COLUNAS_FORNECEDOR}
           linhas={fornecedores}
-          chave={(f) => `${f.cnpj}-${f.nome}`}
-          legenda="Top 40 por valor contratado, com o CNPJ que a campanha declarou"
+          campoChave="nome"
+          legenda="Top 40 por valor contratado, com o CNPJ que a campanha declarou — ordene e baixe o CSV do que está na tela"
+          nomeArquivo="gastos-2026-fornecedores"
         />
         <p className="text-xs opacity-70">
           Aparecer aqui é fato declarado ao TSE, não julgamento: gráfica, agência e plataforma
