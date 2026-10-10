@@ -61,7 +61,7 @@ export default function GastosCampanha2026(): ReactElement {
   const siglasPartido = porPartido.map((p) => p.partido).sort((a, b) => a.localeCompare(b, "pt-BR"));
 
   return (
-    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-5xl space-y-8 px-4 py-10">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto w-full max-w-5xl space-y-8 px-4 py-10">
       <header className="space-y-3">
         <p className="text-xs opacity-70">
           <Link href="/" className="underline-offset-2 hover:underline">

@@ -66,6 +66,9 @@ export function GraficoGrupos({
   const larguraGrupo = 96;
   const largura = Math.max(320, entradas.length * larguraGrupo);
   const base = 96;
+  // Espaco para o rotulo do grupo ABAIXO das barras: a altura do viewBox inclui
+  // a faixa do rotulo, senao ele fica cortado (medido 09/10/2026).
+  const alturaSvg = base + 26;
   const alturaBarra = (v: number) => Math.max(v > 0 ? 2 : 0, (v / max) * 80);
 
   return (
@@ -77,31 +80,34 @@ export function GraficoGrupos({
         </span>
       </figcaption>
       <Legenda />
-      <svg
-        viewBox={`0 0 ${largura} 116`}
-        role="img"
-        aria-label="Gráfico de barras: despesa contratada e paga em cada grupo de publicidade de campanha"
-        className="w-full"
-      >
-        {entradas.map((e, i) => {
-          const x = i * larguraGrupo;
-          const hC = alturaBarra(e.contratado);
-          const hP = alturaBarra(e.pago);
-          return (
-            <g key={e.chave}>
-              <rect x={x + 14} y={base - hC} width={32} height={hC} fill={COR_CONTRATADO} opacity={0.85}>
-                <title>{`${e.rotulo} contratado: ${formatCurrencyCompactaBR(e.contratado)}`}</title>
-              </rect>
-              <rect x={x + 50} y={base - hP} width={32} height={hP} fill={COR_PAGO} opacity={0.9}>
-                <title>{`${e.rotulo} pago: ${formatCurrencyCompactaBR(e.pago)}`}</title>
-              </rect>
-              <text x={x + 48} y={base + 14} textAnchor="middle" fontSize="10" opacity={0.75}>
-                {e.rotulo}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
+      <div className="overflow-x-auto">
+        <svg
+          viewBox={`0 0 ${largura} ${alturaSvg}`}
+          role="img"
+          aria-label="Gráfico de barras: despesa contratada e paga em cada grupo de publicidade de campanha"
+          className="h-auto w-full"
+          style={{ minWidth: largura }}
+        >
+          {entradas.map((e, i) => {
+            const x = i * larguraGrupo;
+            const hC = alturaBarra(e.contratado);
+            const hP = alturaBarra(e.pago);
+            return (
+              <g key={e.chave}>
+                <rect x={x + 14} y={base - hC} width={32} height={hC} fill={COR_CONTRATADO} opacity={0.85}>
+                  <title>{`${e.rotulo} contratado: ${formatCurrencyCompactaBR(e.contratado)}`}</title>
+                </rect>
+                <rect x={x + 50} y={base - hP} width={32} height={hP} fill={COR_PAGO} opacity={0.9}>
+                  <title>{`${e.rotulo} pago: ${formatCurrencyCompactaBR(e.pago)}`}</title>
+                </rect>
+                <text x={x + 48} y={base + 17} textAnchor="middle" fontSize="11" opacity={0.8}>
+                  {e.rotulo}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
       <p className="mt-2 text-xs opacity-70">
         Barras descritas:{" "}
         {entradas
@@ -142,30 +148,33 @@ export function GraficoMensalBigTech({
           soma das empresas na coleta de 09/10/2026
         </span>
       </figcaption>
-      <svg
-        viewBox={`0 0 ${largura} 112`}
-        role="img"
-        aria-label="Gráfico de barras mensal: quanto as campanhas pagaram a big techs a cada mês"
-        className="w-full"
-      >
-        {ordenada.map((m, i) => {
-          const x = i * larguraGrupo;
-          const h = alturaBarra(m.total);
-          return (
-            <g key={m.mes}>
-              <rect x={x + 14} y={base - h} width={36} height={h} fill={COR_PAGO} opacity={0.9}>
-                <title>{`${rotuloMes(m.mes)}: ${formatCurrencyCompactaBR(m.total)}`}</title>
-              </rect>
-              <text x={x + 32} y={base - h - 4} textAnchor="middle" fontSize="8" opacity={0.8}>
-                {formatCurrencyCompactaBR(m.total).replace("R$ ", "")}
-              </text>
-              <text x={x + 32} y={base + 13} textAnchor="middle" fontSize="9" opacity={0.75}>
-                {rotuloMes(m.mes)}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
+      <div className="overflow-x-auto">
+        <svg
+          viewBox={`0 0 ${largura} 112`}
+          role="img"
+          aria-label="Gráfico de barras mensal: quanto as campanhas pagaram a big techs a cada mês"
+          className="h-auto w-full"
+          style={{ minWidth: largura }}
+        >
+          {ordenada.map((m, i) => {
+            const x = i * larguraGrupo;
+            const h = alturaBarra(m.total);
+            return (
+              <g key={m.mes}>
+                <rect x={x + 14} y={base - h} width={36} height={h} fill={COR_PAGO} opacity={0.9}>
+                  <title>{`${rotuloMes(m.mes)}: ${formatCurrencyCompactaBR(m.total)}`}</title>
+                </rect>
+                <text x={x + 32} y={base - h - 4} textAnchor="middle" fontSize="8" opacity={0.8}>
+                  {formatCurrencyCompactaBR(m.total).replace("R$ ", "")}
+                </text>
+                <text x={x + 32} y={base + 13} textAnchor="middle" fontSize="9" opacity={0.75}>
+                  {rotuloMes(m.mes)}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
       <p className="mt-2 text-xs opacity-70">
         Barras descritas:{" "}
         {ordenada.map((m) => `${rotuloMes(m.mes)} ${formatCurrencyCompactaBR(m.total)}`).join(" · ")}
