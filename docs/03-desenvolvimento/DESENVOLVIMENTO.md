@@ -15,7 +15,7 @@
 - [Antes do push — checklist](#antes-do-push-checklist)
 - [Trabalhar com IA](#trabalhar-com-IA)
 - [Grafo de código](#grafo-de-código)
-- [Padrão das Seis Qualidades da Informação Cívica](#padrão-das-seis-qualidades-da-informação-cívica)
+- [Padrão das Qualidades da Informação Cívica](#padrão-das-qualidades-da-informação-cívica)
 - [Padrão de Código e Comentários Explicativos](#padrão-de-código-e-comentários-explicativos)
 - [Verificação](#verificação)
 - [Origem](#origem)
@@ -155,9 +155,9 @@ cgr start --repo-path X:\DevCoder\controle-popular --update-graph
 
 Snapshot 22/08/2026: 799 módulos, 3.684 arquivos, 8.412 funções;
 `lib/db/queries/municipios.ts` mais central (111 imports).
-## Padrão das Seis Qualidades da Informação Cívica
+## Padrão das Qualidades da Informação Cívica
 
-Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, listas, contratos, compras, licenças, territórios) segue rigorosamente a **Regra das Seis Qualidades** (consolidada no [AGENTS.md § 8](/AGENTS.md#8-padrão-de-dados-a-regra-das-seis-qualidades) e exemplificada em `apps/web/app/[municipio]/components/TabelaEstatica.tsx`):
+Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, listas, contratos, compras, licenças, territórios) segue rigorosamente a **Regra das Qualidades da Informação** (consolidada no [AGENTS.md § 8](/AGENTS.md#8-padrão-de-dados-a-regra-das-qualidades-da-informação) e exemplificada em `apps/web/app/[municipio]/components/TabelaEstatica.tsx`):
 
 1. **Dados Sempre Linkáveis e Verificados:** Todo registro visível ao usuário (contrato, convênio, lei, processo, órgão, edital, parlamentar, fornecedor) deve possuir hiperlink direto e específico para a fonte oficial pública (aberto e testado pelo agente no momento da coleta). É expressamente vedado link genérico para a página inicial de um ministério ou portal quando o ato possui URL canônica própria ou protocolo oficial de busca.
 2. **Buscável e Filtrável com Tags Reais:** Busca textual em tempo real no cliente (tolerante a acentos) e filtros por facetas reais (status, UF, ano, categoria, tags). Filtro vazio é expressamente proibido.
@@ -169,6 +169,11 @@ Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, l
    - **PDF / Imprimir**: Dispara `window.print()` estilizado via regras CSS `@media print`, gerando PDF vetorial de alta legibilidade através do próprio navegador (sem bibliotecas externas pesadas no cliente).
    - **Copiar Texto**: Botão rápido utilizando `navigator.clipboard.writeText` para área de transferência.
    - **Gráficos Nativos**: Gráficos inline em SVG ou CSS sem dependências pesadas de terceiros.
+7. **Responsiva — celular, tablet e desktop (acrescida em 10/10/2026):**
+   - **390 px, 768 px e desktop**: a mesma página se abre legível nos três, sem rolagem lateral falsa e sem coluna cortada.
+   - **Conteúdo largo rola, não estoura**: tabela, gráfico e mapa ficam em `overflow-x-auto`; gráfico SVG com `h-auto` e faixa de `viewBox` reservada para o rótulo.
+   - **Conferência**: em viewport de 390 px, `document.documentElement.scrollWidth === window.innerWidth`.
+   - Detalhe de implementação e o defeito medido em 10/10/2026: [AGENTS.md § 5.14](/AGENTS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado).
 
 ## Acessibilidade tipográfica das descrições
 

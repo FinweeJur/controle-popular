@@ -17,7 +17,7 @@ guara, neon, cloudflare, tunnel, deploy, loader, testes, idioma, ollama, tokens.
 - [5. Regras que não se negociam](#5-regras-que-não-se-negociam)
 - [6. Armadilhas que já custaram tempo](#6-armadilhas)
 - [7. Regra editorial](#7-regra-editorial)
-- [8. Padrão de dados: a regra das seis qualidades](#8-padrão-de-dados-a-regra-das-seis-qualidades)
+- [8. Padrão de dados: a regra das qualidades da informação](#8-padrão-de-dados-a-regra-das-qualidades-da-informação)
 - [9. Como verificar](#9-como-verificar)
 - [10. Ferramentas de CLI desta máquina](#10-ferramentas)
 - [11. Coleta de dado de fonte pública](#11-coleta-de-dado)
@@ -407,13 +407,16 @@ Vale para toda página nova:
   gráfico em SVG com `h-auto` e faixa do `viewBox` reservada para o rótulo;
 - **a descrição sob o título nunca é menor que `text-sm`** (§5.10) e o
   contraste AA se mantém no tamanho de celular;
+- **tablet conta:** 768 px abre na faixa média; o mesmo `overflow-x-auto` e a
+  mesma faixa de `viewBox` valem, porque rótulo cortado também é dado ilegível;
 - **verificação de camada**: abrir a página em viewport de **390 px** e
   conferir `document.documentElement.scrollWidth === window.innerWidth` —
   rolagem lateral falsa é a assinatura do defeito. Playwright com o Edge do
   sistema (`channel="msedge"`) basta, no molde de `scripts/verificar-*.py`.
 
-Amarração com a §8: as seis qualidades (ordenar, filtrar, exportar…) **não
-valem** se a coluna não é legível no celular — a régua móvel vem antes.
+Amarração com a §8: responsividade virou a **sétima qualidade** da informação
+(10/10/2026) — as outras seis (ordenar, filtrar, exportar…) **não valem** se a
+coluna não é legível no celular. A régua móvel vem antes.
 
 ## 6. Armadilhas
 
@@ -441,9 +444,10 @@ Casos reais do repo:
 Resumo: **o número vem do dado; o modelo, se houver, só embrulha.**
 Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
 
-## 8. Padrão de dados: a regra das seis qualidades
+## 8. Padrão de dados: a regra das qualidades da informação
 
-**Regra do dono, 21/08/2026 (consolidada e expandida em 25/09/2026).**
+**Regra do dono, 21/08/2026 (consolidada e expandida em 25/09/2026;
+sétima qualidade acrescentada em 10/10/2026).**
 Vale para toda página que publica acervo ou lista de dados — licenciamento,
 TACs, convênios, decisões, barragens, estudos, contratos, compras e territórios:
 
@@ -470,6 +474,12 @@ TACs, convênios, decisões, barragens, estudos, contratos, compras e territóri
    BOM UTF-8 (`\uFEFF`) para compatibilidade perfeita com o Excel brasileiro, além
    de gráfico SVG nativo acessível (sem bibliotecas externas pesadas) e layout de
    impressão vetorial via CSS `@media print`.
+7. **Responsiva — celular, tablet e desktop:** a mesma página se abre legível
+   em 390 px (celular), 768 px (tablet) e desktop, sem rolagem lateral falsa,
+   sem coluna cortada e sem rótulo escondido. Conteúdo largo (tabela, gráfico,
+   mapa) **rola dentro do quadro**, nunca estoura a tela. Conferência em 390 px:
+   `document.documentElement.scrollWidth === window.innerWidth`. Detalhe de
+   implementação e o defeito medido em 10/10/2026 na §5.14.
 
 Essa regra não dispensa:
 
@@ -478,10 +488,10 @@ Essa regra não dispensa:
   (`TS2590: union type too complex` foi o aviso do TypeScript);
 - gráfico com alternativa em texto ou tabela; cor nunca é o único canal;
 - número na tela vem de constante medida com data — não digite total à mão;
-- **página que lê do banco só mostra as seis qualidades quando o banco responde.**
+- **página que lê do banco só mostra as sete qualidades quando o banco responde.**
   Conferir `/ambiental/licenciamento` e `/ambiental/copam` exige HTML
   pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
-- **a régua do celular precede as demais (§5.14):** nenhuma das seis qualidades
+- **a régua do celular precede as demais (§5.14):** nenhuma das sete qualidades
   vale se a coluna não é legível e a página não cabe numa tela de 390 px.
 
 ## 9. Como verificar
