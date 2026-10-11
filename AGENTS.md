@@ -249,6 +249,12 @@ Ninguém integra o trabalho de ninguém. Durante build/deploy nesta máquina,
 Auto-deploy desligado no Guara (19/09). Um build gasta ~17 min e o
 plano Starter tem teto de 250 min/ciclo.
 
+**Regra do dono, 11/10/2026: NÃO dispare deploy sem pedir antes.**
+Commit e push seguem livres — o auto-deploy está desligado, então o push
+não publica sozinho. Publicar (Azure ou Guara) só depois de o dono dizer
+que pode. Na dúvida, pergunta: o build roda ~6 min e entrega a página
+para todo mundo na hora, e o dono quer conferir antes.
+
 - **Deploy no Guara só a cada ~5 dias** (política do dono) — detalhe e
   ritual em [OPERACAO.md § 0](docs/05-operacao/OPERACAO.md#0-cadência-de-deploy-política-do-dono-19092026).
 - **Publicar no Azure é o caminho principal desde 06/10/2026** e não gasta
