@@ -9,7 +9,7 @@
  *
  * Regras e decisões:
  * - 100% aberto e auditável: padrão aberto compatível com Markdown, Obsidian e Logseq.
- * - Regra das Seis Qualidades: links canônicos oficiais em todos os registros citados.
+ * - Regra das Qualidades da Informação: links canônicos oficiais em todos os registros citados.
  * - Proteção de dados pessoais: varredura estrita de CPF (Mod-11), SSN e SIN antes de formatar.
  * - Frases curtas e objetivas: adequadas à escada determinística e ao RAG citado.
  */
@@ -153,7 +153,7 @@ export function gerarDossieNotebookLmAberto(
 
   linhas.push("");
   linhas.push("---");
-  linhas.push(`*Dossiê compilado em ${agora} sob o Padrão das Seis Qualidades do Controle Popular.*`);
+  linhas.push(`*Dossiê compilado em ${agora} sob o Padrão das Qualidades da Informação do Controle Popular.*`);
 
   return linhas.join("\n");
 }

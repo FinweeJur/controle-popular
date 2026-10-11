@@ -96,7 +96,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/documentacao": "Manuais de arquitetura, governança dos 4 Eixos Temáticos, diagramas de dados e rotinas operacionais.",
   "/api": "Endpoints públicos em JSON aberto sem necessidade de chave de autenticação para pesquisadores e auditores.",
   "/estudos-rurais": "Estudos acadêmicos e populares sobre cartografia social, agroecologia e agricultura camponesa (UFVJM/PPGER).",
-  "/sobre": "Histórico do Observatório Nacional Socioambiental, Regra das Seis Qualidades e garantia de dupla checagem.",
+  "/sobre": "Histórico do Observatório Nacional Socioambiental, Regra das Qualidades da Informação e garantia de dupla checagem.",
   "/imprensa": "Informações estruturadas para jornalistas e comunicadores populares com números auditados e contatos.",
   "/termos": "Blindagem contra dados pessoais (CPF), conformidade rigorosa com a LGPD e termos de licença de dados públicos.",
   "/dados/populares": "Acesso a planilhas CSV com BOM UTF-8 e arquivos compactados gerados pelos coletores do portal.",

@@ -338,7 +338,7 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         id: 'sobre',
         eixoId: 'central',
         titulo: 'Sobre o ONSA e Método',
-        descricao: 'Princípios da auditoria cívica popular, regra das seis qualidades e compromisso social.',
+        descricao: 'Princípios da auditoria cívica popular, regra das qualidades da informação e compromisso social.',
         slug: 'sobre',
         icone: 'Info',
         tagsRelacionadas: ['sobre', 'metodo', 'auditoria', 'principios'],

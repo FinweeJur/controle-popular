@@ -361,7 +361,7 @@ export default function EixoCentralPage() {
       >
         <h3 className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
           <Sparkles size={16} className="text-primary" aria-hidden="true" />
-          <span>O Compromisso Metodológico do Eixo Central (Regra das Seis Qualidades)</span>
+          <span>O Compromisso Metodológico do Eixo Central (Regra das Qualidades da Informação)</span>
         </h3>
         <p className="mb-3">
           O Controle Popular é mantido para garantir ao cidadão informação oficial verificada,
