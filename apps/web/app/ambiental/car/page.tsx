@@ -19,6 +19,15 @@
  * ═══ DIRETRIZES DE PRIVACIDADE ═══
  * Conforme AGENTS.md §5.2, nenhum CPF ou dado privado de pessoas físicas é exposto.
  * Disponibilizam-se apenas os códigos públicos de recibo CAR e atributos fundiários.
+ *
+ * ═══ LIMITE DA PUBLICAÇÃO (decisão técnica, 10/10/2026) ═══
+ * Os cartões e gráficos vêm do AGREGADO oficial das 14 URFBios (1.164.209
+ * imóveis, extração 20/08/2026). A tabela abaixo é UMA AMOSTRA AUDITÁVEL
+ * (56 imóveis em 45 municípios) — não a base linha a linha: 1,16 milhão de
+ * linhas serializaria 3× (HTML, RSC, props) e estouraria os 25 MiB do §5.1.
+ * Caminho para cobertura municipal completa: coleta da base cheia em ETL,
+ * agregado por município (total, área, status) em JSON pequeno no servidor
+ * e detalhe com paginação server-side — registrado na fila como B8.
  */
 
 import type { Metadata } from "next";
@@ -38,6 +47,40 @@ export const metadata: Metadata = {
   description:
     "Radiografia dos 1,16 milhão de imóveis do CAR em Minas Gerais sob gestão do IEF/MG nas 14 URFBios: tempo médio de espera de 1.564 dias (~4,3 anos), análise por setor, porte e consulta oficial auditada.",
 };
+
+/**
+ * Ordena as URFBios por tempo de análise decrescente — helper de módulo
+ * para manter `PaginaCarAmbiental` estável em tamanho (CodeScene, §9).
+ */
+function ordenarUrfbiosPorTempo(urfbios: ReturnType<typeof obterUrfbiosCar>) {
+  return [...urfbios].sort((a, b) => b.tempoMedioAnaliseDias - a.tempoMedioAnaliseDias);
+}
+
+/**
+ * 4ª ressalva do CAR (amostra ≠ base) — extraída do componente grande para
+ * manter `PaginaCarAmbiental` estável em tamanho (CodeScene, §9).
+ *
+ * Cartões e gráficos somam o agregado oficial das 14 URFBios; a tabela é
+ * amostra auditável (56 imóveis). O nº de municípios da amostra é medido
+ * aqui no render (AGENTS §8: número medido, nunca digitado à mão).
+ */
+function RessalvaAmostraCar({
+  totalImoveis,
+  registros,
+}: {
+  totalImoveis: number;
+  registros: Array<{ codigoIbge: number }>;
+}) {
+  const municipiosAmostra = new Set(registros.map((r) => r.codigoIbge)).size;
+  return (
+    <li>
+      <strong>Amostra, não a base inteira:</strong> Cartões e gráficos somam os {formatNumberBR(totalImoveis)} imóveis
+      do agregado oficial das 14 URFBios (extraído em 20/08/2026). A tabela abaixo é uma amostra auditável de{" "}
+      {registros.length} imóveis em {municipiosAmostra} municípios — serve para conferir método e fonte,
+      não representa todos os imóveis de um município.
+    </li>
+  );
+}
 
 export default function PaginaCarAmbiental() {
   const urfbios = obterUrfbiosCar();
@@ -64,9 +107,7 @@ export default function PaginaCarAmbiental() {
   }));
 
   // Ordenação das URFBios por tempo de análise decrescente para o gráfico comparativo
-  const urfbiosPorTempo = [...urfbios].sort(
-    (a, b) => b.tempoMedioAnaliseDias - a.tempoMedioAnaliseDias
-  );
+  const urfbiosPorTempo = ordenarUrfbiosPorTempo(urfbios);
   const maxTempoDias = Math.max(...urfbios.map((u) => u.tempoMedioAnaliseDias), 1800);
 
   return (
@@ -144,7 +185,7 @@ export default function PaginaCarAmbiental() {
             {formatNumberBR(estatisticas.totalImoveis)}
           </p>
           <span className="mt-1 block text-xs text-muted">
-            100% dos 853 municípios mineiros mapeados
+            Soma oficial das 14 URFBios — fonte IEF/Sisema, extraída em 20/08/2026
           </span>
         </div>
 
@@ -305,7 +346,7 @@ export default function PaginaCarAmbiental() {
       {/* ═══ AS TRÊS RESSALVAS DO DADO (CONFORMIDADE AGENTS.MD §7) ═══ */}
       <section aria-label="Ressalvas institucionais do acervo CAR" className="mb-10 rounded-2xl border border-dashed border-border bg-surface-1 p-5 text-xs text-muted leading-relaxed">
         <h3 className="font-semibold text-foreground mb-2 text-sm flex items-center gap-1.5">
-          <span>⚠️</span> Três ressalvas essenciais que acompanham este dado público:
+          <span>⚠️</span> Quatro ressalvas essenciais que acompanham este dado público:
         </h3>
         <ul className="space-y-1.5 list-disc pl-4">
           <li>
@@ -320,6 +361,7 @@ export default function PaginaCarAmbiental() {
             <strong>Proteção de dados e links oficiais:</strong> Este portal não armazena nem expõe nomes ou CPFs de pessoas físicas.
             Cada linha disponibiliza hiperlink direto para a consulta oficial auditada no SICAR federal e na plataforma CAR 2.0 MG (CSR/UFMG).
           </li>
+          <RessalvaAmostraCar totalImoveis={estatisticas.totalImoveis} registros={registrosBrutos} />
         </ul>
       </section>
 

@@ -6,16 +6,29 @@ import { formatNumberBR } from "@/lib/betim/format";
 import type { MunicipioComLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 
 /**
- * Filtro em memória sobre a lista de municípios com licença — mesmo padrão
- * de `app/ambiental/copam/BuscaMunicipio.tsx` (algumas centenas de linhas
- * de id+nome+contagem cabem inteiras no cliente; gerar 1 página estática
+ * Filtro em memória sobre a lista de municípios — mesmo padrão
+ * de `app/ambiental/copam/BuscaMunicipio.tsx` (id+nome+contagem de 853
+ * cidades cabem inteiras no cliente; gerar 1 página estática
  * por município é o que resolve a navegação, isto aqui só ajuda a achar
  * qual).
+ *
+ * A lista vem com os 853 (LEFT JOIN em `listarMunicipiosComLicenciamento`,
+ * 10/10/2026). `total === 0` = município SEM registro na fonte (IDE-Sisema):
+ * aparece na busca com a marca "sem registro na fonte" e SEM link — cidade
+ * sem dado não tem página própria (`municipio/[idIbge]` chamaria
+ * `notFound()`). A lacuna é informação (AGENTS §7), não erro de render.
+ *
+ * O `href` dos cards é RELATIVO à zona: o `Link` de `@/lib/ambiental/link`
+ * prefixa `/ambiental` sozinho (`criarLinkDaZona(BASE_PATH)`,
+ * `lib/link-zona.tsx`) — o "link quebrado" de `/licenciamento/...` NÃO
+ * existe; conferido no código em 10/10/2026. Não "consertar" para o
+ * caminho completo: manter o costume da zona.
  *
  * Também é o "filtro" e a "ordenação por coluna" das cinco coisas
  * (`AGENTS.md`) desta página, e o CSV exporta exatamente o que está
  * FILTRADO na tela — o conjunto inteiro que bate com a busca, não só os
- * 24/40 primeiros que aparecem antes de rolar.
+ * 24/40 primeiros que aparecem antes de rolar. O CSV dos municípios sem
+ * dado sai com `licencas_deferidas = 0` (medido, não preenchido à mão).
  */
 type Ordem = "total" | "nome";
 
@@ -49,6 +62,44 @@ function baixarCsv(conteudo: string, nomeArquivo: string) {
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
+}
+
+/**
+ * Card de um município na busca — extraído do componente grande para manter
+ * `BuscaMunicipioLicenciamento` em complexidade estável (CodeScene, §9).
+ *
+ * `total === 0` = SEM registro na fonte (IDE-Sisema): aparece com a marca
+ * "sem registro na fonte" e SEM link — cidade sem dado não tem página
+ * própria (`municipio/[idIbge]` chamaria `notFound()`). A lacuna é
+ * informação (AGENTS §7), não erro de render.
+ */
+function CardMunicipioLicenciamento({ m }: { m: MunicipioComLicenciamento }) {
+  if (m.total === 0) {
+    return (
+      <li>
+        <span
+          className="flex items-center justify-between gap-2 rounded-lg border border-dashed border-[var(--cp-border)] px-3 py-2 text-sm opacity-65"
+          title="A fonte da Semad (IDE-Sisema) ainda não publicou licença deferida para este município — lacuna do dado, não do site."
+        >
+          <span>{m.nome}</span>
+          <span className="shrink-0 text-xs italic">sem registro na fonte</span>
+        </span>
+      </li>
+    );
+  }
+  return (
+    <li>
+      <Link
+        href={`/licenciamento/municipio/${m.idIbge}`}
+        className="flex items-center justify-between gap-2 rounded-lg border border-[var(--cp-border)] px-3 py-2 text-sm hover:border-[var(--cp-tertiary)]"
+      >
+        <span>{m.nome}</span>
+        <span className="shrink-0 font-tabular text-xs opacity-60">
+          {formatNumberBR(m.total)} {m.total === 1 ? "licença" : "licenças"}
+        </span>
+      </Link>
+    </li>
+  );
 }
 
 export default function BuscaMunicipioLicenciamento({
@@ -136,22 +187,12 @@ export default function BuscaMunicipioLicenciamento({
 
       {filtrados.length === 0 ? (
         <p className="mt-4 text-sm opacity-70">
-          Nenhum município com licença ambiental coletada bate com &quot;{termo}&quot;.
+          Nenhum município de Minas Gerais bate com &quot;{termo}&quot;.
         </p>
       ) : (
         <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {filtrados.map((m) => (
-            <li key={m.idIbge}>
-              <Link
-                href={`/licenciamento/municipio/${m.idIbge}`}
-                className="flex items-center justify-between gap-2 rounded-lg border border-[var(--cp-border)] px-3 py-2 text-sm hover:border-[var(--cp-tertiary)]"
-              >
-                <span>{m.nome}</span>
-                <span className="shrink-0 font-tabular text-xs opacity-60">
-                  {formatNumberBR(m.total)} {m.total === 1 ? "licença" : "licenças"}
-                </span>
-              </Link>
-            </li>
+            <CardMunicipioLicenciamento key={m.idIbge} m={m} />
           ))}
         </ul>
       )}

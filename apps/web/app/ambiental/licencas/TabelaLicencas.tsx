@@ -96,6 +96,30 @@ function formatarValor(v?: number | null): string {
   return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+/**
+ * Célula "Município" da tabela — extraída do componente grande para manter
+ * `TabelaLicencas` estável em tamanho e complexidade (CodeScene, §9).
+ *
+ * IGAM: a grade pública não tem coluna Município (verificado ao vivo,
+ * reconfirmado 10/10/2026 — `scripts/coletar-igam-outorgas.py`). Dizer a
+ * lacuna é melhor que "—": o leitor precisa saber que a fonte não publica,
+ * não que o dado foi perdido (AGENTS §7: lacuna é informação).
+ */
+function celulaMunicipio(l: LinhaLicencaUnificada) {
+  if (l.municipio) return l.municipio;
+  if (l.orgao === "IGAM (MG)") {
+    return (
+      <span
+        className="italic opacity-60"
+        title="A grade pública do IGAM/SISEMA não expõe o município — só Regional (URGA). Coleta: scripts/coletar-igam-outorgas.py."
+      >
+        não exposto pela fonte
+      </span>
+    );
+  }
+  return "—";
+}
+
 export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnificada[] }) {
   const [filtro, setFiltro] = useState<Filtro>(VAZIO);
   const [ordem, setOrdem] = useState<{ chave: ChaveColuna; desc: boolean }>({ chave: "ano", desc: true });
@@ -750,7 +774,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                         {l.empresa ?? "—"}
                       </td>
                       <td className="px-2 py-2 w-[95px] whitespace-normal break-words leading-tight">
-                        {l.municipio ?? "—"}
+                        {celulaMunicipio(l)}
                       </td>
                       <td className="px-2 py-2 w-[90px] whitespace-normal break-words opacity-80 leading-tight">
                         {l.bacia ?? "—"}

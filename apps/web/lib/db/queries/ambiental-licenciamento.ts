@@ -191,27 +191,55 @@ export async function contarLicenciamentoPorAno(): Promise<ContagemLicenciamento
 export interface MunicipioComLicenciamento {
   idIbge: string;
   nome: string;
+  /** 0 = município sem licença na fonte. A lacuna é informação (AGENTS §7):
+   *  a busca mostra o município com a marca "sem registro na fonte" em vez
+   *  de escondê-lo. */
   total: number;
 }
 
 /**
- * Municípios com pelo menos 1 licença, do mais licenciado ao menos —
- * alimenta a busca de `/ambiental/licenciamento` e o
- * `generateStaticParams` de `/ambiental/licenciamento/municipio/[idIbge]`.
+ * Todos os 853 municípios de MG, do mais licenciado ao menos — alimenta a
+ * busca de `/ambiental/licenciamento` e o `generateStaticParams` de
+ * `/ambiental/licenciamento/municipio/[idIbge]` (esse filtra `total > 0`;
+ * cidade sem dado não tem página própria — a rota chama `notFound()`).
+ *
+ * Mudança de 10/10/2026: a query era um `INNER JOIN` partindo da tabela de
+ * licenças, que só devolvia os municípios COM dado — a tela dizia "853"
+ * mas a lista trazia só 145 (medido no banco de produção: 8.612 licenças
+ * em 145 municípios). Agora a base é `ref_municipios_mg` com `LEFT JOIN`
+ * das licenças: saem os 853, e os 708 sem dado vêm com `total: 0`.
+ *
+ * Dois detalhes que mudam o SQL e não são gosto:
+ * - `count(ambiental_licenciamento.id_fonte)`, nunca `count(*)`: com
+ *   `LEFT JOIN`, município sem dado vira UMA linha só de NULL e `count(*)`
+ *   devolveria 1 — mentiria "1 licença" para 0;
+ * - `ref_municipios_mg` tem 854 linhas: as 853 de MG + o grandfather de
+ *   cidade fora de MG (São Paulo, 3550308, migration 0057). O
+ *   `like '31%'` (dígito de estado no código IBGE de MG) corta a linha de
+ *   fora — mesma técnica de `lib/ambiental/barragens.ts`.
  */
 export async function listarMunicipiosComLicenciamento(): Promise<MunicipioComLicenciamento[]> {
   return comBancoReserva(
     async (db) =>
       db
         .select({
-          idIbge: ambiental_licenciamento.id_municipio,
+          idIbge: ref_municipios_mg.id_ibge,
           nome: ref_municipios_mg.nome,
-          total: sql<number>`count(*)::int`,
+          total: sql<number>`count(${ambiental_licenciamento.id_fonte})::int`,
         })
-        .from(ambiental_licenciamento)
-        .innerJoin(ref_municipios_mg, eq(ambiental_licenciamento.id_municipio, ref_municipios_mg.id_ibge))
-        .groupBy(ambiental_licenciamento.id_municipio, ref_municipios_mg.nome)
-        .orderBy(desc(sql`count(*)`)),
+        .from(ref_municipios_mg)
+        .leftJoin(
+          ambiental_licenciamento,
+          eq(ambiental_licenciamento.id_municipio, ref_municipios_mg.id_ibge)
+        )
+        .where(sql`${ref_municipios_mg.id_ibge} like '31%'`)
+        .groupBy(ref_municipios_mg.id_ibge, ref_municipios_mg.nome)
+        // Desempate por nome: os 708 zeros ficam em ordem alfabética e
+        // estável — sem isso a lista "pula" entre renders.
+        .orderBy(
+          desc(sql`count(${ambiental_licenciamento.id_fonte})`),
+          asc(ref_municipios_mg.nome)
+        ),
     { vazio: (r) => r.length === 0, padrao: [], rotulo: "licenciamento" }
   );
 }

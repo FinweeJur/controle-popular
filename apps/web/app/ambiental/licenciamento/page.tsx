@@ -46,6 +46,27 @@ export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
  */
 const SETOR_ORDEM = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
+/**
+ * Parágrafo introdutório da busca por município — extraído do componente
+ * grande para manter `LicenciamentoIndex` estável em tamanho (CodeScene, §9).
+ *
+ * A busca traz os 853 (LEFT JOIN de `listarMunicipiosComLicenciamento`);
+ * os sem dado aparecem marcados "sem registro na fonte", sem link
+ * (medido 10/10/2026: 145 com dado, 708 sem — lacuna da fonte
+ * IDE-Sisema, não página quebrada; AGENTS §7: lacuna é informação).
+ */
+function ParagrafoBuscaMunicipios({ comDado }: { comDado: number }) {
+  return (
+    <p className="mt-1 text-sm opacity-75">
+      A busca traz os 853 municípios de Minas Gerais.{" "}
+      {formatNumberBR(comDado)} têm pelo menos uma licença ambiental
+      deferida coletada; os demais aparecem marcados &quot;sem registro na fonte&quot; — é
+      a ausência de dado do lado da Semad (IDE-Sisema), não página quebrada. Dentro de
+      cada município com dado dá para filtrar por setor, modalidade e classe.
+    </p>
+  );
+}
+
 export default async function LicenciamentoIndex() {
   // Com runtime atrás (Guara/standalone) a página lê o banco a cada request.
   // Sem isto o build "assa" a consulta, e uma consulta que falhe no build vira
@@ -58,6 +79,12 @@ export default async function LicenciamentoIndex() {
     listarMunicipiosComLicenciamento(),
     contarLicenciamentoPorAno(),
   ]);
+
+  // A lista vem com os 853 (LEFT JOIN): cabeçalho e cartões falam do
+  // ALCANCE real, então contam só quem tem dado; o 853 fica na busca,
+  // onde a lacuna aparece honestamente como "sem registro na fonte"
+  // (medido 10/10/2026: 145 com dado, 708 sem).
+  const municipiosComDado = municipios.filter((m) => m.total > 0);
 
   const porSetor = [...contagem.porSetor].sort(
     (a, b) => SETOR_ORDEM.indexOf(a.letra) - SETOR_ORDEM.indexOf(b.letra)
@@ -120,7 +147,7 @@ export default async function LicenciamentoIndex() {
           >
             <strong className="font-tabular">{formatNumberBR(contagem.total)}</strong> licenças
             deferidas coletadas, em{" "}
-            <strong className="font-tabular">{formatNumberBR(municipios.length)}</strong>{" "}
+            <strong className="font-tabular">{formatNumberBR(municipiosComDado.length)}</strong>{" "}
             municípios de Minas Gerais. É o registro do que já foi decidido — não a fila em
             análise, que a fonte publica em outro sistema (o método está no rodapé desta página).
           </p>
@@ -148,7 +175,7 @@ export default async function LicenciamentoIndex() {
                   Municípios alcançados
                 </p>
                 <p className="mt-1 font-display text-2xl font-bold">
-                  {formatNumberBR(municipios.length)}
+                  {formatNumberBR(municipiosComDado.length)}
                 </p>
                 <p className="mt-1 text-[11px] opacity-70">de 853 em Minas Gerais</p>
               </div>
@@ -270,11 +297,7 @@ export default async function LicenciamentoIndex() {
 
           <section className="mt-12">
             <h2 className="font-display text-xl font-semibold">Ver licenças por município</h2>
-            <p className="mt-1 text-sm opacity-75">
-              {formatNumberBR(municipios.length)} municípios de Minas Gerais têm pelo menos uma
-              licença ambiental deferida coletada. Dentro de cada município dá para filtrar por
-              setor, modalidade e classe.
-            </p>
+            <ParagrafoBuscaMunicipios comDado={municipiosComDado.length} />
             <div className="mt-4">
               <BuscaMunicipioLicenciamento municipios={municipios} />
             </div>

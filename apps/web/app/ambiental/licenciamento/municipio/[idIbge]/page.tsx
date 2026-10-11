@@ -21,13 +21,19 @@ type Params = Promise<{ idIbge: string }>;
  * usa).
  */
 export async function generateStaticParams() {
-  // ~830 municípios com licença: pré-render total é uma leitura no banco por
-  // página durante o build. Com runtime atrás (Guara/Cloudflare), devolver
-  // vazio deixa o Next renderizar sob demanda COM cache. Só o alvo
-  // `output: 'export'` precisa da lista inteira.
+  // A lista do servidor tem os 853 (LEFT JOIN, ver
+  // `listarMunicipiosComLicenciamento`): página própria SÓ para cidade com
+  // dado — `total > 0` filtra, e a rota abaixo chama `notFound()` para o
+  // resto. Sem o filtro o build pré-renderizaria 708 páginas vazias
+  // (medido 10/10/2026: 145/853 com dado) só para o Next descartá-las.
+  // Com runtime atrás (Guara/Cloudflare), devolver vazio deixa o Next
+  // renderizar sob demanda COM cache. Só o alvo `output: 'export'`
+  // precisa da lista filtrada.
   if (!exportandoEstatico) return [];
 
-  return (await listarMunicipiosComLicenciamento()).map((m) => ({ idIbge: m.idIbge }));
+  return (await listarMunicipiosComLicenciamento())
+    .filter((m) => m.total > 0)
+    .map((m) => ({ idIbge: m.idIbge }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {

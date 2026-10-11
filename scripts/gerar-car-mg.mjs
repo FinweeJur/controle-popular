@@ -12,6 +12,12 @@
  * - Nenhum CPF real (apenas identificadores públicos do CAR e siglas).
  * - Soma dos imóveis das 14 URFBios bate exatamente 1.164.209 imóveis (base Sisema/SEMAD 2026-08-20).
  * - Códigos IBGE válidos conferidos contra `municipios-mg.json`.
+ *
+ * LIMITE DO ACERVO (decisão registrada em 10/10/2026): a amostragem abaixo
+ * é uma FATIA AUDITÁVEL (56 imóveis em 45 municípios), não a base inteira —
+ * 1.164.209 linhas iriam para o bundle do cliente e estourariam o teto de
+ * 25 MiB do AGENTS §5.1. Cobertura municipal completa exige coleta em ETL
+ * + agregado por município no servidor (fila B8 do docs/02-estado/ESTADO.md).
  */
 
 import fs from "node:fs";

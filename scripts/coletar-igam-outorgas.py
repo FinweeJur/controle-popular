@@ -20,13 +20,20 @@ Rodar:
 - robots.txt do host: 404 (sem restrição). Paginação GET com pausa 2s,
   UA honesto. Sondagem ficou dentro de 4 GETs.
 
-## O que a fonte NÃO expõe (verificado ao vivo)
+## O que a fonte NÃO expõe (verificado ao vivo; estado reconfirmado em 10/10/2026)
 
 - A grade HTML mostra 9 colunas: Portaria, Data de Publicação, Mês, Ano,
   Regional (URGA), Empreendimento, CPF/CNPJ, Modo de Uso, Decisão.
 - Processo/Validade/Município/Bacia (estadual)/UPGRH/Curso d'água existem no
   seletor do botão "Exportar resultados" (xlsx), mas o export é POST com
   CSRF/kartik e não é cabível aqui — campos ficam null até haver rota melhor.
+  Situação em 10/10/2026: `municipio: null` em TODA linha (medido: a grade
+  continua sem a coluna). Duas rotas possíveis, nenhuma implementada —
+  decidiu-se não sair do escopo sem ordem do dono: (1) raspar o diálogo de
+  export com sessão CSRF, que devolve Município/Bacia/UPGRH; (2) raspar a
+  página de detalhe de cada portaria. Até lá a UI de `/ambiental/licencas`
+  escreve "não exposto pela fonte" na coluna Município das linhas IGAM —
+  nunca um "—" vazio (§7: lacuna é informação, dizer é obrigação).
 - CPF e nome já vêm mascarados na fonte ("463.20******", "José******",
   efeito da LGPD anunciada no portal). Regra do coletor: mantém doc só se
   14 dígitos completos (CNPJ); qualquer máscara/vírgula CPF vai null.

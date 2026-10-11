@@ -35,6 +35,15 @@
  *   o cálculo ponderado sobre a totalidade dos 1.164.209 imóveis cadastrados no estado.
  * - Suporte a Slugs e Nomes Canônicos: Métodos de busca de regionais aceitam tanto o slug
  *   normalizado (ex: "alto-paranaiba") quanto a nomenclatura de exibição (ex: "Alto Paranaíba").
+ * - COBERTURA MUNICIPAL COMPLETA (pendência registrada em 10/10/2026, fila B8 do
+ *   ESTADO.md): a base cheia do SICAR tem 1.164.209 linhas e NUNCA deve virar
+ *   array no cliente — serializa 3× (HTML, RSC, props) e estoura os 25 MiB do
+ *   AGENTS §5.1. O caminho é: coleta da base inteira em ETL/server-side →
+ *   agregado por município (total de imóveis, área, status) em JSON pequeno ou
+ *   tabela Postgres → a página lê o agregado e publica o detalhe com paginação
+ *   server-side. Enquanto isso, a página publica agregado estadual + amostra
+ *   auditável de 56 imóveis/45 municípios, com a ressalva na própria tela.
+ *   O mesmo limite vale para o corte por município em `listarRegistrosCar`.
  */
 
 import carDataBruto from "../../data/car-mg.json";
