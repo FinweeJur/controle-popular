@@ -233,10 +233,8 @@ export default function TopNav() {
   function fechar() {
     setMenuAberto(false);
     setHoverAberto(false);
-    if (hoverTimer.current) {
-      clearTimeout(hoverTimer.current);
-      hoverTimer.current = null;
-    }
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = null;
   }
 
   function onMouseEnter() {
@@ -306,6 +304,13 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
+            // `data-lenis-prevent`: a rolagem suave da página (Lenis) engole
+            // a roda do mouse e só devolve o controle aos contêineres mar-
+            // cados com este atributo. Sem ele, o índice com `overflow-y-auto`
+            // NÃO rolava pela roda — só clicando e arrastando a barra
+            // (bug do dono, 10/10/2026; mesmo conserto do chat do Seu Nonô,
+            // do índice do rádio e do menu de pets).
+            data-lenis-prevent
             className={`absolute top-full left-0 z-[60] w-[min(72rem,calc(100vw-1.5rem))] max-h-[calc(100vh-4.5rem)] overflow-y-auto ${
               aberto ? 'block' : 'hidden'
             }`}
