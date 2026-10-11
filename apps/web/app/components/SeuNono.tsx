@@ -65,6 +65,11 @@ import { useTheme } from "next-themes";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import CvdToggle from "@/app/components/CvdToggle";
+// Trilha do cursor: botão do cartão de acessibilidade + a mesma gravação
+// que os comandos de texto usam (dono, 10/10/2026 — o visitante precisa
+// poder desligar o efeito pedindo por aqui).
+import RastroCursorToggle from "@/app/components/RastroCursorToggle";
+import { definirRastroCursor } from "@/app/components/RastroCursor";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -629,6 +634,12 @@ interface ResultadoBusca {
 type ComandoAcessibilidade = {
   comando: string[];
   label: string;
+  /**
+   * Mensagem própria quando o resultado NÃO é "ativado" (ex.: desligar a
+   * trilha). Sem isto, o `detectarComandoAcessibilidade` responderia
+   * "…ativado" até para um comando de desligar (10/10/2026).
+   */
+  mensagem?: string;
   acao: () => void;
   icone: React.ReactNode;
 };
@@ -917,6 +928,38 @@ export function SeuNono() {
         },
         icone: <span className="text-base">🎨</span>,
       },
+      {
+        // ORDEM CRÍTICA: este comando vem ANTES do de "ativar", porque a
+        // detecção é `includes` — "desativar a trilha" CONTÉM "ativar a
+        // trilha" e, na ordem errada, o pedido de desligar ligava (ou
+        // vice-versa). Mesmo motivo dos artigos ("a trilha") repetidos
+        // aqui: a frase digitada costuma trazê-los.
+        comando: [
+          "desativar trilha", "desativar a trilha", "desligar trilha", "desligar a trilha",
+          "desative a trilha", "desligue a trilha", "tirar a trilha", "tire a trilha",
+          "desativar rastro", "desativar o rastro", "desligar rastro", "desligar o rastro",
+          "desative o rastro", "desligue o rastro", "tirar o rastro", "tire o rastro",
+        ],
+        label: "Trilha do cursor",
+        mensagem: "Pronto! Trilha do cursor desativada.",
+        acao: () => definirRastroCursor(false),
+        icone: <span className="text-base">✨</span>,
+      },
+      {
+        // Só chega aqui quem NÃO pediu para desativar (o comando acima
+        // respondeu primeiro) — por isso "ativar a trilha" pode casar
+        // sem medo, inclusive com "desativar" meio cortado na digitação.
+        comando: [
+          "ativar trilha", "ativar a trilha", "ligar trilha", "ligar a trilha",
+          "ative a trilha", "ligue a trilha", "trilha do cursor", "rastro do cursor",
+          "ativar rastro", "ativar o rastro", "ligar rastro", "ligar o rastro",
+          "ative o rastro", "ligue o rastro", "mostrar a trilha", "voltar a trilha",
+        ],
+        label: "Trilha do cursor",
+        mensagem: "Pronto! Trilha do cursor ativada.",
+        acao: () => definirRastroCursor(true),
+        icone: <span className="text-base">✨</span>,
+      },
     ],
     [setTheme]
   );
@@ -928,7 +971,7 @@ export function SeuNono() {
         const pLower = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         if (lower.includes(pLower)) {
           cmd.acao();
-          return `Pronto! ${cmd.label} ativado.`;
+          return cmd.mensagem ?? `Pronto! ${cmd.label} ativado.`;
         }
       }
     }
@@ -1707,12 +1750,16 @@ export function SeuNono() {
 
             {/* Cartão de acessibilidade (dono, 07/10/2026: "recursos de
                 acessibilidade mais fáceis de configurar e utilizar dentro
-                do chatbot"). Os três controles são os MESMOS da barra
-                superior (`ThemeSwitcher`, `FontSizeControl`, `CvdToggle`):
-                reutilizados, não reimplementados — mesma gravação em
+                do chatbot"). Os quatro controles: os três da barra
+                superior (`ThemeSwitcher`, `FontSizeControl`, `CvdToggle`)
+                REUTILIZADOS, não reimplementados — mesma gravação em
                 `localStorage`, mesmos atributos em `<html>` (`data-fs`,
                 `data-cvd`, `data-theme`), então o que a pessoa escolhe aqui
-                vale para o site inteiro e vice-versa. */}
+                vale para o site inteiro e vice-versa. O quarto
+                (`RastroCursorToggle`, dono 10/10/2026) liga e desliga a
+                trilha do cursor pelo mesmo contrato: chave
+                `cp_rastro_cursor` + evento `cp:rastro-cursor`, lidos pelo
+                `RastroCursor` do layout raiz. */}
             {nivel === "acessibilidade" && (
               <div className="space-y-3">
                 <button
@@ -1742,6 +1789,12 @@ export function SeuNono() {
                       <span className="text-xs font-semibold text-text-soft">Cores:</span>
                       <CvdToggle />
                     </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold text-text-soft">
+                        Trilha do cursor:
+                      </span>
+                      <RastroCursorToggle />
+                    </div>
                   </div>
                 </fieldset>
                 {/* Descoberta: os comandos por TEXTO já existiam e ninguém
@@ -1749,8 +1802,9 @@ export function SeuNono() {
                 <p className="text-xs leading-relaxed text-text-soft">
                   Também dá para digitar na barra do chat:{" "}
                   <strong className="font-medium text-text">aumentar texto</strong>,{" "}
-                  <strong className="font-medium text-text">alto contraste</strong> ou{" "}
-                  <strong className="font-medium text-text">cores daltônicas</strong>.
+                  <strong className="font-medium text-text">alto contraste</strong>,{" "}
+                  <strong className="font-medium text-text">cores daltônicas</strong> ou{" "}
+                  <strong className="font-medium text-text">desativar trilha do cursor</strong>.
                   O Seu Nonô entende e aplica na hora.
                 </p>
               </div>
