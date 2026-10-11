@@ -163,7 +163,7 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="por-partido" className="font-display text-2xl font-bold">
           Análise por partido: quanto cada legenda arrecadou e gastou
         </h2>
-        <p className="max-w-3xl text-sm opacity-80">
+        <p className="max-w-3xl text-sm opacity-80 break-words">
           As {porPartido.length} legendas com candidatura em 2026, somando o universo completo das{" "}
           {formatarNumeroBR(meta.totais.candidaturas, 0)} candidaturas — não só a tabela de 1.823. O
           big tech por partido daqui bate com a seção Big tech, e o custo por voto é a mediana entre
@@ -185,7 +185,7 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="por-estado" className="font-display text-2xl font-bold">
           Análise por estado: escolha o estado e veja os partidos por dentro
         </h2>
-        <p className="max-w-3xl text-sm opacity-80">
+        <p className="max-w-3xl text-sm opacity-80 break-words">
           Os 27 estados e o Distrito Federal, com totais do estado e o detalhe por legenda — abre
           em MG por padrão. A presidência fica fora desta visão: o voto é nacional e já aparece na
           tabela por cargo. Clique no título da coluna para ordenar e baixe o CSV do estado na
@@ -227,7 +227,7 @@ export default function GastosCampanha2026(): ReactElement {
         <h2 id="candidaturas" className="font-display text-2xl font-bold">
           Candidatura por candidatura
         </h2>
-        <p className="max-w-3xl text-sm opacity-80">
+        <p className="max-w-3xl text-sm opacity-80 break-words">
           {formatarNumeroBR(meta.totais.linhasTabela, 0)} linhas: todos os{" "}
           {formatarNumeroBR(meta.totais.eleitos1Turno, 0)} eleitos no 1º turno, os{" "}
           {meta.totais.pendentes2Turno} pendentes de 2º turno e os 50 que mais contrataram e

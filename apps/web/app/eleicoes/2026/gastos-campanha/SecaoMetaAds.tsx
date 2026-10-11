@@ -41,7 +41,7 @@ export default function SecaoMetaAds(): ReactElement {
         className="max-w-3xl opacity-80"
         texto={`O TSE diz quanto cada campanha declarou pagar; a Biblioteca de Anúncios da Meta mostra o anúncio de fato. Esta é uma AMOSTRA de ${formatarNumeroBR(anuncios.length, 0)} anúncios dos ${metaAmostra.candidatos.length} candidatos que mais receberam de big tech, capturada em ${capturadoEm}. Em ${formatarNumeroBR(totalFaixas, 0)} deles a Meta exibiu a faixa de valor gasto. A faixa não é o total da campanha: é o recorte do anúncio, como a própria plataforma publica.`}
       />
-      <p className="max-w-3xl text-sm opacity-80">{metaAmostra.metodo}</p>
+      <p className="max-w-3xl text-sm opacity-80 break-words">{metaAmostra.metodo}</p>
       <TabelaOrdenavel
         colunas={COLUNAS_META_AMOSTRA_RESUMO}
         linhas={resumo}

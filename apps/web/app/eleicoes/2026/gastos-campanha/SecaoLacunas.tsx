@@ -23,9 +23,9 @@ export default function SecaoLacunas(): ReactElement {
         ))}
       </ul>
       <h3 className="font-display text-xl font-bold">Metodologia</h3>
-      <p className="max-w-3xl text-sm opacity-80">{meta.metodologia}</p>
+      <p className="max-w-3xl text-sm opacity-80 break-words">{meta.metodologia}</p>
       <h3 className="font-display text-xl font-bold">Fonte</h3>
-      <p className="max-w-3xl text-sm opacity-80">
+      <p className="max-w-3xl text-sm opacity-80 break-words">
         {meta.fonte.nome}:{" "}
         <a
           href={meta.fonte.url_prestacao}

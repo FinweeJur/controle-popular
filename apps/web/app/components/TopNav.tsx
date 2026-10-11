@@ -256,7 +256,7 @@ export default function TopNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-x-3 gap-y-2 px-3 sm:px-6 py-2">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-3 sm:px-6 py-2">
         {/* Bloco do Logo + Botão de Índice com Menu Suspenso via Hover/Clique */}
         <div
           ref={caixaRef}
