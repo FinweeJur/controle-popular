@@ -313,7 +313,7 @@ rodada: os arquivos-fonte já estão versionados no repo e os geradores são
 `https://pncp.gov.br/api/search/?q=…&tipos_documento=contrato&uf=MG` devolve
 **HTTP 200 e o Brasil inteiro** — o parâmetro `uf` é ignorado em silêncio
 (medido 29/09/2026). Mesma família da armadilha de `/contratacoes/publicacao`
-em [AGENTS.md §6](/AGENTS.md): API que responde 200 e mente. Filtro de UF só
+em [ARMADILHAS.md](/ARMADILHAS.md): API que responde 200 e mente. Filtro de UF só
 vale se feito no cliente, pelo campo `uf` de cada registro.
 
 **Registro do incidente que originou tudo:** a primeira versão dos Planos 3 e 4

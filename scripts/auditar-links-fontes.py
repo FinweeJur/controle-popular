@@ -22,7 +22,7 @@ quando um leitor sob estresse clica e nao chega a lugar nenhum.
   generica quando existe URL canonica e considerado defeito.
 - AGENTS.md secao 11 (Coleta): pausa por host e User-Agent honesto. Este
   auditor nao e um navegador; o UA diz quem ele e.
-- AGENTS.md secao 6 (Armadilhas): APIs publicas respondem gzip silencioso
+- ARMADILHAS.md (antes AGENTS.md secao 6): APIs publicas respondem gzip silencioso
   (`0x1f 0x8b`); o cliente HTTP precisa descomprimir. E "API responde 200
   e mente" — aqui checamos o status de verdade, mas o leitor deve saber
   que 2xx nao prova conteudo.

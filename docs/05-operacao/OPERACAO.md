@@ -152,7 +152,7 @@ servidor. Notas medidas:
 - O container de build do Guara tem **3 CPUs** → 3 workers no SSG.
 
 O log de 02/10 mostrou o que derrubava o build, e cada um tem sua armadilha
-no [AGENTS.md §6](/AGENTS.md):
+no [ARMADILHAS.md](/ARMADILHAS.md):
 
 - **Teto de 60s por página**: `/paraopeba/biblioteca` falhou nas 3 tentativas.
 - Causa: `getCloudflareContext({ async: true })` no SSG subia wrangler/workerd.
