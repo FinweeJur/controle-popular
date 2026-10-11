@@ -67,6 +67,13 @@ HOSTS_DO_PORTAL = ("controlepopular.com.br", "www.controlepopular.com.br")
 # Host de API do Telegram: é o mensageiro, não o destino do webhook.
 HOSTS_PERMITIDOS = HOSTS_DO_PORTAL + ("api.telegram.org",)
 
+# Loopback é a PRÓPRIA máquina, não um terceiro. O `gatilho-remoto.mts` lê
+# `http://127.0.0.1:3000/` para conferir que o `next start` local subiu antes
+# de dizer "reiniciado" — health-check, não destino de mensagem. Nenhum
+# pacote sai desta máquina por aqui: não há domínio alheio para onde ir.
+# Medido em 11/10/2026, quando a R5 reprovou esse health-check.
+HOSTS_LOOPBACK = ("127.0.0.1", "localhost")
+
 # Arquivos que REGISTRAM o incidente — mencionam o nome de propósito, para quem
 # vier depois entender o que aconteceu. Nome novo fora desta lista reprova: é o
 # caso do agente que inventa outro relay.
@@ -118,6 +125,9 @@ def _hosts_da_linha(conteudo: str) -> list[str]:
 
 
 def _oficial(host: str) -> bool:
+    """Este host pode aparecer em linha de webhook, ou é terceiro?"""
+    if host in HOSTS_LOOPBACK:
+        return True
     return any(host == h or host.endswith("." + h) for h in HOSTS_PERMITIDOS)
 
 
@@ -215,6 +225,29 @@ def achar(staged: bool) -> list[str]:
     return list(achados)
 
 
+# A R5 roda por ARQUIVO, então o self-test de linha não a alcança. O coração
+# da regra é `_oficial` — ele decide o que é terceiro. Prova-lo por host é o
+# que cobre a R5 sem precisar gravar arquivo de mentira só para o teste.
+CASOS_OFICIAL = (
+    ("www.controlepopular.com.br", True),
+    ("controlepopular.com.br", True),
+    ("api.telegram.org", True),
+    ("127.0.0.1", True),  # loopback: a própria máquina, não terceiro
+    ("localhost", True),
+    ("tele.goldenherd.com", False),
+    ("evil.example", False),
+)
+
+
+def self_test_oficial() -> list[str]:
+    """Mensagens de erro do teste de `_oficial`. Lista vazia = tudo certo."""
+    return [
+        f"self-test _oficial: {host} -> deveria ser aceito={aceito}"
+        for host, aceito in CASOS_OFICIAL
+        if _oficial(host) != aceito
+    ]
+
+
 def self_test() -> int:
     """Prova que a régua VÊ (e não é cega), e que não reprova o que é certo."""
     casos = [
@@ -232,6 +265,10 @@ def self_test() -> int:
         ('scripts/x.mts', 'log(`HTTP escutando em http://${ip}:${PORTA}/sincronizar`);', False),
         # Apex é o mesmo dono (301 para o www), não é terceiro.
         ('scripts/x.mts', 'const url = "https://controlepopular.com.br/api/telegram";', False),
+        # Loopback é a própria máquina: health-check do `next start` local,
+        # não destino de mensagem de cidadão (AGENTS §5.11 fala em domínio
+        # de terceiro; 127.0.0.1 não é de ninguém além desta máquina).
+        ('scripts/x.mts', 'await fetch("http://127.0.0.1:3000/", { method: "HEAD" });', False),
         ('docs/nota.md', 'o relay goldenherd foi removido', True),
         ('AGENTS.md', 'o endereço goldenherd foi enviado a terceiro', False),
     ]
@@ -241,6 +278,11 @@ def self_test() -> int:
         if achou != deve_reprovar:
             falhou += 1
             print(f"✖ self-test: {caminho} | esperado {'reprovar' if deve_reprovar else 'passar'} | {linha}")
+
+    erros = self_test_oficial()
+    falhou += len(erros)
+    for erro in erros:
+        print(f"✖ {erro}")
     if falhou:
         print(f"✖ self-test falhou em {falhou} caso(s).")
         return 1
