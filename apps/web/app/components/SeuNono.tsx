@@ -1783,7 +1783,7 @@ export function SeuNono() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-xs font-semibold text-text-soft">Tema:</span>
-                      <ThemeSwitcher />
+                      <ThemeSwitcher inline />
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-xs font-semibold text-text-soft">Cores:</span>

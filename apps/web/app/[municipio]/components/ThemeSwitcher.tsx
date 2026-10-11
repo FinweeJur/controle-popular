@@ -17,6 +17,52 @@ export const THEMES = [
 
 const emptySubscribe = () => () => {};
 
+/**
+ * Os 8 temas como chips no fluxo — modo `inline` do seletor, extraído do
+ * componente grande para manter `ThemeSwitcher` no limite de 120 linhas
+ * do CodeScene (§9). Sem popper absoluto: serve ao cartão de
+ * acessibilidade do Seu Nonô, cujo painel tem 384px com `overflow-hidden`
+ * e área rolável (bug do dono no PC, 11/10/2026 — o dropdown da navbar
+ * era cortado no limite visível e a rolagem não chegava até ele).
+ */
+function TemasInline({
+  atual,
+  aoEscolher,
+}: {
+  atual?: string;
+  aoEscolher: (valor: string) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-1.5" role="group" aria-label="Escolher tema e bioma">
+      {THEMES.map((t) => {
+        const ativo = atual === t.value;
+        return (
+          <button
+            key={t.value}
+            type="button"
+            aria-pressed={ativo}
+            onClick={() => aoEscolher(t.value)}
+            title={t.desc}
+            className={`flex items-center gap-1.5 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+              ativo
+                ? "border-primary bg-primary/15 font-semibold text-primary"
+                : "border-border bg-surface text-text hover:border-primary hover:text-primary"
+            }`}
+          >
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full border border-black/20 shrink-0"
+              style={{ backgroundColor: t.cor }}
+              aria-hidden="true"
+            />
+            <span aria-hidden="true">{t.emoji}</span>
+            {t.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /** True only after the client has hydrated. */
 function useHasMounted() {
   return useSyncExternalStore(
@@ -31,8 +77,14 @@ function useHasMounted() {
  * Permite alternar instantaneamente entre Pequi (padrão), Cerrado, Mata Atlântica,
  * Caatinga, Pantanal, Claro, Escuro e Alto contraste.
  * Design compacto que não transborda na TopNav em telas menores.
+ *
+ * `inline` (11/10/2026): renderiza os temas como chips no FLUXO, sem o
+ * dropdown `absolute` — para uso dentro do cartão de acessibilidade do
+ * Seu Nonô, cujo painel tem 384px com `overflow-hidden` e área rolável:
+ * o popper era cortado no limite visível e nem a rolagem o alcançava
+ * (bug do dono no PC). Na TopNav, o modo padrão (dropdown) continua.
  */
-export default function ThemeSwitcher() {
+export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) {
   const { theme, setTheme } = useTheme();
   const mounted = useHasMounted();
   const [aberto, setAberto] = useState(false);
@@ -64,6 +116,10 @@ export default function ThemeSwitcher() {
   }
 
   const temaAtual = THEMES.find((t) => t.value === theme) || THEMES[0];
+
+  if (inline) {
+    return <TemasInline atual={theme} aoEscolher={setTheme} />;
+  }
 
   return (
     <div ref={containerRef} className="relative inline-block text-left">
