@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-10-11
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [OPERACAO.md](OPERACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** gatilho remoto, tailscale, telegram, sincronizacao, publicacao
@@ -62,13 +62,19 @@
 2. **Token próprio** (`GATILHO_TOKEN`), comparado por hash com
    `crypto.timingSafeEqual` — nunca `PAINEL_TOKEN` nem `ADMIN_TOKEN` (cada um
    já tem seu raio de vazamento, ver `docs/_historico/PAINEL-EDICAO-COMO-USAR.md`).
-3. **Telegram só aceita o `TELEGRAM_CHAT_ID` já configurado** — mensagem de
-   qualquer outro chat é registrada em log e ignorada. Achar o bot no
-   Telegram não basta.
-4. **Fail-closed**: sem `GATILHO_TOKEN` o canal HTTP não sobe; sem
-   `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` o canal Telegram não sobe. Nunca
-   "libera tudo porque não configuraram".
-5. **Não é SSH do Tailscale.** `tailscale up --ssh` resolveria isto num
+3. **Telegram só aceita chat na lista autorizada** — o `TELEGRAM_CHAT_ID` e,
+   se existir, quem estiver em `TELEGRAM_ADMINS`. Mensagem de qualquer outro
+   chat é registrada em log e ignorada. Achar o bot no Telegram não basta.
+4. **Publicar é uma segunda trava por cima.** `/deploy`, `/sincronizar`,
+   `/reiniciar`, `/rodar` e `/webhook` exigem estar em `TELEGRAM_ADMINS`
+   (ou ser o `TELEGRAM_CHAT_ID`, que é admin por padrão). Os de leitura
+   (`/status`, `/logs`, `/fila`…) valem para qualquer chat autorizado.
+   Regra do dono, 11/10/2026.
+5. **Fail-closed**: sem `GATILHO_TOKEN` o canal HTTP não sobe; sem
+   `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` o canal Telegram não sobe; sem
+   `GATILHO_TELEGRAM_POLL=true` o long-poll não sobe. Nunca "libera tudo
+   porque não configuraram".
+6. **Não é SSH do Tailscale.** `tailscale up --ssh` resolveria isto num
    comando, mas é mudança de configuração de segurança da máquina — decisão
    de quem senta na frente dela, não deste documento. Se um dia for essa a
    escolha:
@@ -89,6 +95,13 @@
    - `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`: os mesmos já usados em
      `.github/workflows/canario-limites.yml` (secrets do GitHub) — copie de
      lá, ou do chat que já recebe os alertas do canário.
+   - `TELEGRAM_ADMINS`: quem pode dar `/deploy` e rodar comando de
+     desenvolvimento. Lista separada por vírgula, com os MESMOS chat_id do
+     Telegram (não é `@usuário`). Deixe vazio para o dono ser o único admin —
+     é o padrão.
+   - `GATILHO_TELEGRAM_POLL=true`: obrigatório. Sem isto o long-poll **não
+     sobe** e nenhum comando de Telegram funciona (fica desligado de propósito
+     para não brigar com o Hermes, conflito 409 do Telegram).
 
    `scripts/.env` é gitignored pelo padrão `.env` do `.gitignore` raiz — não
    precisa (e não deve) ser commitado.
@@ -140,6 +153,22 @@ Mande `/sincronizar` para o bot, do chat já configurado em
 `TELEGRAM_CHAT_ID`. Ele responde "sincronizando..." na hora e manda o
 resultado (✅ ou ❌, com o motivo se abortou) quando termina. `/status` diz
 se há uma sincronização em andamento.
+
+### Publicar no Azure: `/deploy` em duas etapas
+
+`/sincronizar` publica no **servidor 2** (o túnel do `home-pc`). Para o site
+oficial, `www.controlepopular.com.br`, o caminho é o Azure — e ele tem um
+comando próprio desde 11/10/2026:
+
+1. `/deploy` — o bot **não publica nada ainda**. Só avisa o que vai acontecer
+   e arma um pedido que expira em 2 minutos.
+2. `/confirmar deploy` — dispara `gh workflow run azure-mirror.yml --ref main`
+   e devolve o link da execução no Actions. O build leva ~6 min.
+
+Duas etapas de propósito: o build entrega a página para todo mundo na hora,
+então um comando sozinho não pode ser o gatilho (AGENTS §5.7.1). Quem pode
+usar é só quem está em `TELEGRAM_ADMINS` — para qualquer outro chat o bot
+nem responde.
 
 ## Checagem periódica (06:10 e 20:00)
 

@@ -51,7 +51,7 @@
  *   TELEGRAM_CHAT_ID=<o mesmo do canÃ¡rio>
  */
 import { createHash, timingSafeEqual } from "node:crypto";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
@@ -62,6 +62,21 @@ import { enfileirar, resumoFila, type Fila, type TipoTarefa } from "../apps/web/
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LOGS = path.join(RAIZ, "logs");
+/**
+ * Caminhos do app e do binário do Next, derivados da RAIZ.
+ *
+ * Antes estavam escritos à mão (`C:\DevCoder\controle-popular\...`) — eram da
+ * máquina antiga. Nesta (`X:\DevCoder\OpenCode\controle-popular`) não existem,
+ * então o `/reiniciar` falhava na hora do build (medido 11/10/2026). Derivar
+ * do `RAIZ` é o que faz o comando funcionar em qualquer checkout.
+ */
+const WEB = path.join(RAIZ, "apps", "web");
+const NEXT_BIN = path.join(RAIZ, "node_modules", "next", "dist", "bin", "next");
+/**
+ * Node que está executando este script. `process.execPath` é a única forma
+ * portátil: gravar o caminho do node à mão quebra em outra máquina.
+ */
+const NODE_BIN = process.execPath;
 const OPENCODE_BIN =
   "C:/Users/Home/AppData/Local/hermes/node/node_modules/opencode-ai/bin/opencode.exe";
 const ARQUIVO_OFFSET = path.join(RAIZ, "scripts", ".gatilho-offset");
@@ -107,8 +122,39 @@ const TELEGRAM_BOT_TOKEN = ENV.TELEGRAM_BOT_TOKEN || "";
  */
 const TELEGRAM_BOT_TOKEN_PUBLICO = ENV.TELEGRAM_BOT_TOKEN_PUBLICO || "";
 const TELEGRAM_CHAT_ID = ENV.TELEGRAM_CHAT_ID || "";
+/**
+ * Quem pode dar DEPLOY e rodar comando de desenvolvimento — lista separada
+ * por vírgula (`TELEGRAM_ADMINS=7250703518,-10017250703518`).
+ *
+ * Ficou separada do `TELEGRAM_CHAT_ID` de propósito: o chat que recebe alerta
+ * do canário não precisa ser o mesmo que autoriza publicar o portal para todo
+ * mundo. Sem esta variável o admin continua sendo só o `TELEGRAM_CHAT_ID`
+ * (regra do dono, 11/10/2026) — quem já usa o bot não muda nada para
+ * continuar mandando. Fail-closed: lista vazia não libera ninguém.
+ */
+const TELEGRAM_ADMINS = (ENV.TELEGRAM_ADMINS || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 const GATILHO_TELEGRAM_POLL = ENV.GATILHO_TELEGRAM_POLL === "true";
 const PORTA = Number(ENV.GATILHO_PORTA || 3029);
+
+/** Todos os chats que o bot ouve: o dono + a lista de admins. Nada fora daqui. */
+const CHATS_AUTORIZADOS = new Set(
+  [TELEGRAM_CHAT_ID, ...TELEGRAM_ADMINS].filter(Boolean).map(String)
+);
+
+/**
+ * Este chat pode publicar? O dono (`TELEGRAM_CHAT_ID`) ou um da lista
+ * `TELEGRAM_ADMINS`. Compara por string porque o Telegram devolve chat de
+ * grupo como número negativo e o `.env` chega como texto.
+ */
+function ehAdmin(chatId: string | number): boolean {
+  const id = String(chatId ?? "").trim();
+  if (!id) return false;
+  if (TELEGRAM_CHAT_ID && id === String(TELEGRAM_CHAT_ID)) return true;
+  return TELEGRAM_ADMINS.some((a) => String(a) === id);
+}
 
 if (!GATILHO_TOKEN) log("AVISO: GATILHO_TOKEN ausente â€” o canal HTTP fica DESLIGADO.");
 if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID)
@@ -200,7 +246,21 @@ const COMANDOS: Record<string, string> = {
   "/fila": "fila",
   "/rodar": "rodar",
   "/webhook": "webhook",
+  "/deploy": "deploy",
+  "/confirmar": "confirmar",
 };
+
+/**
+ * Comandos que mexem em publicação ou em código — só o admin pode.
+ *
+ * Os de leitura (`/status`, `/logs`, `/fila`…) continuam valendo para qualquer
+ * chat autorizado. Motivo: publicar entrega a página para todo mundo na hora
+ * (AGENTS §5.7.1), então quem aperta o botão tem de ser o dono.
+ */
+const COMANDOS_ADMIN = new Set(["deploy", "confirmar", "sincronizar", "reiniciar", "rodar", "webhook"]);
+
+/** Botões do menu que disparam publicação — a mesma régua dos comandos. */
+const CALLBACKS_ADMIN = new Set(["cmd_sincronizar", "cmd_reiniciar"]);
 
 /** Tipos válidos para `/rodar <tipo>` — espelha `lib/fila/tipos`. */
 const TIPOS_RODAR: TipoTarefa[] = [
@@ -241,7 +301,9 @@ async function cmdMenu(chatId: string) {
     "🔍 /tunel — Mostra estado do Cloudflare Tunnel e do next start\n" +
     "🖥️ /sessao — Detalhes da sessão: PID, memória, uptime, reinícios\n" +
     "📋 /logs — Status de todos os bots: Farol, Radar, Escudo, Olho\n" +
-    "🔄 /sincronizar — Git pull + build + deploy (publica alterações)\n" +
+    "🚀 /deploy — Publica o portal no Azure (www.controlepopular.com.br)\n" +
+    "    · só admin · pede confirmação: /confirmar deploy\n" +
+    "🔄 /sincronizar — Git pull + build + publica no servidor 2 (túnel)\n" +
     "♻️ /reiniciar — Reinicia o servidor do zero (build completo)\n" +
     "🤖 /code — Status do portal: banco, R2, fontes capturadas\n" +
     "📋 /andamento — Lista do que já foi implementado\n" +
@@ -249,6 +311,8 @@ async function cmdMenu(chatId: string) {
     "🗂️ /fila — Estado da fila distribuída (o que cada PC pegou)\n" +
     "▶️ /rodar <tipo> — Enfileira uma tarefa (fonte, dado, teste, security, rag…)\n" +
     "🔗 /webhook — Conserta o webhook do bot público (registra no www)\n\n" +
+    "🔒 Publicar (/deploy, /sincronizar, /reiniciar, /rodar, /webhook)\n" +
+    "    só funciona para o dono do bot — a lista é TELEGRAM_ADMINS.\n\n" +
     "Ou clique num botão abaixo 👇";
 
   const botoes = [
@@ -433,12 +497,52 @@ async function cmdReiniciar(chatId: string) {
     text: "reiniciando next start (build + start)...",
   });
   try {
-    execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Stop-Process -Force"], { encoding: "utf-8" });
-    execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; & 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next' build --webpack"], { encoding: "utf-8", timeout: 900000, cwd: "C:\\DevCoder\\controle-popular\\apps\\web" });
-    execFileSync("powershell", ["-Command", "Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next','start','-p','3000' -WorkingDirectory 'C:\\DevCoder\\controle-popular\\apps\\web' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
+    // Mata só o `next dev|start` — nunca o vigia nem este próprio gatilho.
+    // A seleção por CommandLine é a mesma de `publicar-tunel.mts`.
+    execFileSync(
+      "powershell",
+      [
+        "-Command",
+        "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Stop-Process -Force",
+      ],
+      { encoding: "utf-8" }
+    );
+    // Build síncrono: só depois dele o site volta. Se o start subisse antes,
+    // a porta 3000 responderia o build velho — verificação enganosa.
+    execFileSync(NODE_BIN, [NEXT_BIN, "build", "--webpack"], {
+      cwd: WEB,
+      encoding: "utf-8",
+      timeout: 900_000,
+    });
+    // Start em segundo plano: `execFileSync` ficaria esperando o processo
+    // viver para sempre. detached + unref é o molde de publicar-tunel.mts.
+    const filho = spawn(NODE_BIN, [NEXT_BIN, "start", "-p", "3000"], {
+      cwd: WEB,
+      detached: true,
+      stdio: "ignore",
+      windowsHide: true,
+    });
+    filho.unref();
+    // Confere que o site respondeu antes de dizer "pronto" — mandar ✅ no
+    // escuro já derrubou verificação (AGENTS: número/afirmação sem medição
+    // é dano).
+    let subiu = false;
+    for (let i = 0; i < 45 && !subiu; i++) {
+      await esperar(2_000);
+      try {
+        const r = await fetch("http://127.0.0.1:3000/", {
+          signal: AbortSignal.timeout(5_000),
+        });
+        if (r.ok) subiu = true;
+      } catch {
+        /* ainda subindo */
+      }
+    }
     await telegramApi("sendMessage", {
       chat_id: chatId,
-      text: "✅ next start reiniciado (porta 3000)",
+      text: subiu
+        ? "✅ next start reiniciado — http://127.0.0.1:3000 respondeu 200"
+        : "⚠️ build terminou mas a porta 3000 não respondeu em 90s — veja /tunel",
     });
   } catch (e) {
     await telegramApi("sendMessage", {
@@ -457,6 +561,90 @@ async function cmdSincronizar(chatId: string) {
   await telegramApi("sendMessage", {
     chat_id: chatId,
     text: `${ok ? "✅" : "❌"} ${resumo}`,
+  });
+}
+
+/**
+ * Workflow do Azure que publica `www.controlepopular.com.br` — é a casa
+ * principal desde 06/10/2026 (AGENTS §5.7.1). O Guara é o secundário e tem
+ * teto de cota; por isso o `/deploy` aponta para o Azure e não para lá.
+ */
+const WORKFLOW_AZURE = "azure-mirror.yml";
+
+/**
+ * Pendência do `/deploy` em duas etapas, em millisegundos absolutos.
+ *
+ * Um comando só não publica: o build do Azure entrega a página para todo
+ * mundo em ~6 min e é o único passo que gasta crédito. O pedido expira em
+ * 2 minutos para não ficar um "sim" eterno pendurado no bot.
+ */
+let deployPendenteAte = 0;
+
+/** `/deploy` — só arma a confirmação. Não dispara build nenhum sozinho. */
+async function cmdDeploy(chatId: string) {
+  deployPendenteAte = Date.now() + 120_000;
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text:
+      "⚠️ Vou disparar o *build e deploy no Azure* (`azure-mirror.yml`).\n" +
+      "Isso publica o portal em `www.controlepopular.com.br` para todo mundo,\n" +
+      "em ~6 min, a partir do último commit da `main`.\n\n" +
+      "Para confirmar, responda:\n" +
+      "`/confirmar deploy`\n\n" +
+      "O pedido expira em 2 minutos.",
+    parse_mode: "Markdown",
+  });
+}
+
+/** `/confirmar deploy` — dispara o workflow e devolve o link da execução. */
+async function cmdConfirmarDeploy(chatId: string) {
+  if (!deployPendenteAte || Date.now() > deployPendenteAte) {
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text: "⌛ não há /deploy pendente — o pedido expirou ou nunca existiu.",
+    });
+    return;
+  }
+  deployPendenteAte = 0;
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: "🚀 disparando o build no Azure…",
+  });
+  try {
+    execFileSync("gh", ["workflow", "run", WORKFLOW_AZURE, "--ref", "main"], {
+      cwd: RAIZ,
+      encoding: "utf-8",
+      timeout: 60_000,
+    });
+  } catch (e) {
+    await telegramApi("sendMessage", {
+      chat_id: chatId,
+      text: `❌ o gh falhou ao disparar: ${(e as Error).message.slice(0, 200)}`,
+    });
+    return;
+  }
+  // `gh workflow run` devolve vazio porque o run ainda está sendo criado.
+  // Espera e lê o último run: sem o link, o dono não tem onde acompanhar.
+  let url = "";
+  for (let i = 0; i < 12 && !url; i++) {
+    await esperar(5_000);
+    try {
+      const out = execFileSync(
+        "gh",
+        ["run", "list", "--workflow", WORKFLOW_AZURE, "--limit", "1", "--json", "url,status"],
+        { cwd: RAIZ, encoding: "utf-8", timeout: 30_000 }
+      );
+      const runs = JSON.parse(out) as Array<{ url?: string }>;
+      if (runs[0]?.url) url = runs[0].url;
+    } catch {
+      /* o gh ainda não listou o run */
+    }
+  }
+  await telegramApi("sendMessage", {
+    chat_id: chatId,
+    text: url
+      ? `✅ build disparado no Azure.\nacompanhe: ${url}\n\nDemora ~6 min; confira o site depois.`
+      : "✅ build disparado no Azure, mas o `gh run list` não devolveu o link — olhe o Actions do GitHub.",
   });
 }
 
@@ -591,7 +779,9 @@ async function loopTelegram() {
         if (upd.callback_query) {
           const cq = upd.callback_query;
           const chatId = String(cq.message?.chat?.id ?? "");
-          if (chatId !== String(TELEGRAM_CHAT_ID)) continue;
+          // Só quem está na lista é ouvido — e botão que publica ainda pede
+          // admin por cima (o callbackMap abaixo separa os dois).
+          if (!CHATS_AUTORIZADOS.has(chatId)) continue;
           const dadosBtn = (cq.data ?? "").trim().toLowerCase();
           log(`Telegram: callback data=${dadosBtn}`);
           const callbackMap: Record<string, () => Promise<unknown>> = {
@@ -606,7 +796,12 @@ async function loopTelegram() {
             "cmd_logs": () => cmdLogs(chatId),
           };
           if (callbackMap[dadosBtn]) {
-            await callbackMap[dadosBtn]();
+            // Botão que publica tem a mesma régua do comando de texto.
+            if (CALLBACKS_ADMIN.has(dadosBtn) && !ehAdmin(chatId)) {
+              log(`Telegram: callback "${dadosBtn}" recusado — chat ${chatId} nao esta em TELEGRAM_ADMINS`);
+            } else {
+              await callbackMap[dadosBtn]();
+            }
           }
           await telegramApi("answerCallbackQuery", { callback_query_id: cq.id, show_alert: false }).catch(() => {});
           continue;
@@ -614,7 +809,7 @@ async function loopTelegram() {
 
         const msg = upd.message;
         if (!msg?.text) continue;
-        if (String(msg.chat.id) !== String(TELEGRAM_CHAT_ID)) {
+        if (!CHATS_AUTORIZADOS.has(String(msg.chat.id))) {
           log(`Telegram: mensagem de chat_id nÃ£o autorizado (${msg.chat.id}), ignorada`);
           continue;
         }
@@ -669,6 +864,30 @@ async function loopTelegram() {
               text: `Erro no opencode: ${(e as Error).message.slice(0, 200)}`,
             });
           }
+          continue;
+        }
+        // Comandos que publicam ou mexem em código: só o admin (o dono do
+        // TELEGRAM_CHAT_ID ou quem estiver em TELEGRAM_ADMINS). A recusa é
+        // silenciosa, igual à de um chat não autorizado — anunciar que o
+        // comando existe já é informação demais para quem não é o dono.
+        if (COMANDOS_ADMIN.has(comando) && !ehAdmin(msg.chat.id)) {
+          log(`Telegram: "${comando}" recusado — chat ${msg.chat.id} nao esta em TELEGRAM_ADMINS`);
+          continue;
+        }
+        if (comando === "deploy") {
+          await cmdDeploy(String(msg.chat.id));
+          continue;
+        }
+        if (comando === "confirmar") {
+          const arg = textoNormalizado.split(/\s+/)[1] ?? "";
+          if (arg !== "deploy") {
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: "Uso: /confirmar deploy",
+            });
+            continue;
+          }
+          await cmdConfirmarDeploy(String(msg.chat.id));
           continue;
         }
         if (comando === "menu") {
