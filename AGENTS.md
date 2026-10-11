@@ -235,14 +235,25 @@ Trocar de modelo ou de plataforma = trocar as duas linhas; nunca deixar só
 uma. Modelo e plataforma são a procedência do commit — quem audita precisa
 saber os dois.
 
-### 5.7. Publique o próprio trabalho
+### 5.7. Commit e push: sempre, na hora
+
+**Regra do dono, 11/10/2026: todo trabalho terminado vira commit e vai
+para o GitHub na hora.** Trabalho que existe só no PC não existe — some
+em travamento, em disco cheio, em sessão fechada por engano. Ninguém
+integra o trabalho de ninguém, e ninguém tem obrigação de adivinhar o
+que você deixou no meio.
 
 ```bash
 git fetch origin && git rebase origin/main && git push origin HEAD:main
 ```
 
-Ninguém integra o trabalho de ninguém. Durante build/deploy nesta máquina,
-**segure o push**.
+**O push não publica.** O auto-deploy está desligado (§5.7.1), então
+empurrar é livre e não entrega página a ninguém. O que exige permissão
+é o build — e só ele.
+
+Única espera: enquanto um build ou deploy roda **nesta máquina**, segure
+o push até ele terminar. Dois `next build` brigando no mesmo `.next`
+já custaram uma verificação errada (ver [ARMADILHAS.md](ARMADILHAS.md)).
 
 ### 5.7.1. Push = deploy manual (cota de build do Guara)
 
