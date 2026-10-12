@@ -29,6 +29,7 @@ plano; a data de cada medição está no título.
   - [Pan-sharpen 2 m e gate v6 — 01/10/2026 (medido)](#pan-sharpen-2-m-e-gate-v6--01102026-medido)
   - [Veredito das 15 dúvidas `revisado` — 01/10/2026 (análise da máquina)](#veredito-das-15-dúvidas-revisado--01102026-análise-da-máquina)
   - [Gate v7 com os 31 flips na pasta certa — 11/10/2026 (medido)](#gate-v7-com-os-31-flips-na-pasta-certa--11102026-medido)
+  - [Revisão do filtro de negativos — 11/10/2026 (medido)](#revisão-do-filtro-de-negativos--11102026-medido)
 - [Medições da Fase 3 — 29/09/2026](#medições-da-fase-3--29092026)
 - [Medições da Fase 5 — 29/09/2026](#medições-da-fase-5--29092026)
 - [Origem](#origem)
@@ -52,7 +53,9 @@ piloto de `scripts/coletar-cavas-calibracao.py`. Nada é estimativa.
 tentativas produziram 18 negativos: o critério "fora de todo polígono e fora
 da classe mineração" gasta candidatos mais rápido do que a grade encontra
 ponto limpo. Antes do lote de 5 mil, o filtro é revisto — não basta
-aumentar `--limite`, o rendimento cai junto.
+aumentar `--limite`, o rendimento cai junto. **A revisão foi feita em
+11/10 e o veredito foi o contrário do susto:**
+[Revisão do filtro de negativos — 11/10/2026](#revisão-do-filtro-de-negativos--11102026-medido).
 
 **4 dos 30 positivos não têm cena CBERS em 18 meses.** Ficam reservados para
 Sentinel-2 (10 m); a regra de fallback "CBERS primeiro, Sentinel-2 onde não
@@ -535,6 +538,45 @@ do v6 e `31` no do v7. Em 11/10 os 31 arquivos foram movidos
   `Temp\opencode\cavas\treino-v7.log`.
 - **Regra dos 5 mil negativos para o gate definitivo segue em pé** —
   hoje 3.095; faltam ~1.900.
+
+### Revisão do filtro de negativos — 11/10/2026 (medido)
+
+**Pendência cumprida.** A Fase 1 dizia "antes do lote de 5 mil, o filtro é
+revisto", com base em 18 aceitos em 39 tentativas. A revisão roda com
+`python scripts/medir-filtro-negativos-cavas.py`: sorteia pontos com a
+mesma semente 42 e chama o **mesmo** `rejeitado_indice` do coletor — mesma
+grade, mesmo código, sem rede e sem baixar recorte.
+
+| O que medir | Valor (11/10) |
+|---|---|
+| Pontos sorteados | **20.000** (4,3 s, semente 42) |
+| Aceitos pelo filtro | **6.797 = 33,98%** |
+| Mortos pela exclusão (SIGMINE + classe mineração MapBiomas) | 10.470 = 52,35% |
+| Mortos por janela já coletada | 2.067 = 10,33% |
+| Mortos pelos dois | 666 = 3,33% |
+| Exclusão (cache) | 101.919 bboxes em 462 células de 0,5° |
+| Janelas já coletadas | 5.120 em **43.698** células de 0,02° |
+| Histórico nos logs de 28/09 | 44,39% (2.700/6.083) e 43,64% (5.970/13.681) |
+| Candidato → arquivo salvo | **33,33%** (900 salvos / 2.700 candidatos) |
+
+- **Veredito: o filtro NÃO esgotou.** A leitura do piloto ("esgotou" com
+  18 em 39) era uma amostra de 39 pontos; 46% de aceitação não é
+  esgotamento.
+- **Dupla verificação da queda, por duas contas independentes:** 44,39%
+  (28/09) − 33,98% (hoje) = 10,41 pp, e a medição de hoje diz que janela
+  já coletada mata 10,33%. As duas contas fecham em 0,08 pp — a exclusão
+  continua mortendo os mesmos ~56% e **toda a queda é custo de crescer**.
+- **Cabe o lote (conta fechada):** para os 1.900 negativos que faltam
+  são ~5.700 candidatos e ~16.800 tentativas contra o teto de 2.004.000
+  do coletor — **folga de 120×**. Para `--limite 5000` (reserva de
+  15.000 candidatos): 44.137 tentativas, folga de 45×.
+- **O gargalo medido é a salvagem, não a sorte de ponto:** 2 de cada 3
+  candidatos morrem em nuvem, hash repetido ou falha de cena. Subir
+  `--limite` custa leitura de cena, não candidato.
+- **Quando mexer de novo (regra gravada):** quando "mortos por janela já
+  coletada" passar de ~30% (hoje 10,33%), reduzir `CELULA_COLETADOS`
+  (0,02° ≈ 2,2 km) vale mais que mexer na exclusão. Não refazer a
+  discussão por intuição.
 
 ## Medições da Fase 3 — 29/09/2026
 
