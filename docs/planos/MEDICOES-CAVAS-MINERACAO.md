@@ -500,7 +500,7 @@ do v6 e `31` no do v7. Em 11/10 os 31 arquivos foram movidos
 | Treino | 4.076 imgs / 244 cenas (1.457 pos / 2.619 neg) |
 | Holdout | **1.039** imgs / 30 cenas (563 pos / 476 neg) |
 | Coleta nova | 26 recortes entram no **treino** (23 pos / 3 neg); 5 cenas do holdout vetadas |
-| AVISO do loader | 5 arquivos do holdout sumiram do snapshot — o holdout encolheu de 1.044 (v5) para 1.039; causa não apurada |
+| AVISO do loader | 5 arquivos do holdout "sumiram" — **causa apurada em 11/10**: são flips de 06/10 que passaram de `negativo/` para `positivo/`; nada se perdeu. Holdout encolheu de 1.044 (v5) para **1.039** (481 → 476 negativos) |
 | Custo | 155,9 s/época em 4.076 imgs; early stop na época 8 (paciência 3); 1.475 s no total; VRAM máx. 2,39 GiB |
 
 | Modelo | Limiar | Precisão | Recall | F1 | tp / fp / fn / tn |
@@ -514,6 +514,12 @@ do v6 e `31` no do v7. Em 11/10 os 31 arquivos foram movidos
   a maior acurácia balanceada, 0,795, entre os que cumprem a régua de
   0,70). No limiar fixo 0,50 o F1 é maior (0,834) e a precisão ainda
   passa (0,766).
+- **Os 22 flips de 06/10 conferidos um a um (11/10):** as 22 chaves que o
+  split de 01/10 ainda chama de `negativo/` (5 no holdout, 17 no treino)
+  existem **todas** em `positivo/` — nada sumiu. Conta fechada: 17 entraram
+  no treino como positivo, 5 ficaram de fora pela vedação de cena (cenas do
+  holdout), e os 26 novos do treino são 17 flips + 9 da coleta nova (6 pos /
+  3 neg).
 - **Comparação v5 × v7 é indicativa, não pareada:** o holdout mudou
   (1.044 → 1.039) e 31 arquivos trocaram de classe no meio. v5 ficou em
   0,811 / 0,886 no limiar 0,64; v7 em 0,794 / 0,851 no 0,65.

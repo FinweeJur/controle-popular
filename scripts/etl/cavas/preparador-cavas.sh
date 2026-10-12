@@ -69,14 +69,21 @@ if [ -n "${BLOB_ACCOUNT:-}" ] && [ -n "${BLOB_SAS:-}" ]; then
   BASE="$REPO/scripts/.cache/cavas-calibracao"
   STAMP=$(date -u +%Y%m%d-%H%M)
   URL="https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}"
+  # Prazos nos curls de upload: sem limite, um PUT travado segura o script
+  # ate o desligamento da VM e o manifesto nunca chega (o workflow so sabe
+  # que a coleta acabou quando o manifesto sobe). Tar pode ter ~360 MB,
+  # por isso 1 h; manifesto e minusculo, 10 min bastam. Retry cobre
+  # queda de rede transitoria no meio do envio.
   if [ -d "$BASE/recortes" ]; then
     tar czf /tmp/recortes.tgz -C "$BASE" recortes
-    curl -fsS -X PUT -H "x-ms-blob-type: BlockBlob" --upload-file /tmp/recortes.tgz \
+    curl -fsS --connect-timeout 15 --max-time 3600 --retry 3 --retry-delay 15 \
+      -X PUT -H "x-ms-blob-type: BlockBlob" --upload-file /tmp/recortes.tgz \
       "${URL}/recortes-${STAMP}.tgz?${BLOB_SAS}" \
       && echo "[preparador] Blob: recortes-${STAMP}.tgz enviado"
   fi
   if [ -f "$REPO/apps/web/data/cavas-calibracao-manifesto.json" ]; then
-    curl -fsS -X PUT -H "x-ms-blob-type: BlockBlob" \
+    curl -fsS --connect-timeout 15 --max-time 600 --retry 3 --retry-delay 15 \
+      -X PUT -H "x-ms-blob-type: BlockBlob" \
       --upload-file "$REPO/apps/web/data/cavas-calibracao-manifesto.json" \
       "${URL}/manifesto-${STAMP}.json?${BLOB_SAS}" \
       && echo "[preparador] Blob: manifesto-${STAMP}.json enviado"
