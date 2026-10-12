@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO (diário de medições da frente B4)
 > **Domínio:** global
-> **Última medição:** 2026-10-11
+> **Última medição:** 2026-10-12
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md), [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** mineracao, cava, gate, holdout, treino, chinese-clip, pan-sharpen, revisao-humana, flips-de-rotulo, medicao, satelite, sentinel, cbers
@@ -32,6 +32,7 @@ plano; a data de cada medição está no título.
   - [Revisão do filtro de negativos — 11/10/2026 (medido)](#revisão-do-filtro-de-negativos--11102026-medido)
 - [Medições da Fase 3 — 29/09/2026](#medições-da-fase-3--29092026)
 - [Medições da Fase 5 — 29/09/2026](#medições-da-fase-5--29092026)
+- [Medições do preparador da VM (Azure) — 12/10/2026 (medido)](#medições-do-preparador-da-vm-azure--12102026-medido)
 - [Origem](#origem)
 
 ## Medições da Fase 1 — 25/09 (piloto)
@@ -671,6 +672,90 @@ grade, mesmo código, sem rede e sem baixar recorte.
   bloco do Sentinel em [FONTES.md](../06-fontes/FONTES.md)).
 - **Filtro por UF e por distância de TI/UC** — fora do escopo desta leva;
   a série cobre só MG e a distância não foi coletada.
+
+## Medições do preparador da VM (Azure) — 12/10/2026 (medido)
+
+Rodada de validação do workflow `cavas-preparador.yml` (input `limite`),
+disparada na tarde de 12/10 com os três commits do dia: `04efcac5`,
+`6541c7af` e `f1807af7`. **Três runs e nenhum fechou coleta** — mas a
+rodada achou as causas-raiz e provou o canal de log por Blob. Todos os
+horários abaixo são UTC.
+
+**Os três runs do dia:**
+
+- **3º run — id 38251362873, `04efcac5`, dispatch 12:48.** `preparar`
+  success (o `confirm` respondeu Conflict às 12:52:41), `vigiar` failure,
+  `desligar` success; VM desligada às 14:13. A VM executou duas vezes
+  (12:49 e 13:22) e **as duas morreram**; o heartbeat congelou em
+  `progresso-20261012-1322.json`, fase `negativos`, 13:22:10.
+- **4º run — id 38262303250, `6541c7af`, dispatch 14:21.** O CMD foi
+  entregue à VM (rede +3,6 KB em 14:24) mas **nunca executou**: 72 min sem
+  heartbeat; o `confirm` entrou em Conflict às 14:25:40 e ficou 75 min
+  nesse estado; o diagnóstico do `desligar` também respondeu Conflict
+  (15:38:18); `vigiar` failure; VM desligada 15:50:26; **0 heartbeat novo**.
+- **5º run — id 38273534881, `f1807af7`, dispatch 15:53.** Este commit
+  introduziu o passo "Reboot de limpeza" e o `confirm` em 3 tentativas;
+  `preparar` success. Duas execuções: 15:54:41 (comando residual do run
+  anterior) morreu em 7 s com `abortado-rc1`; 16:23:24 (comando do run 5)
+  morreu em `abortado-rc128`. **O `enviar_log` novo validou:** nos dois
+  casos ele mandou `log-...-inicio.txt` e `log-...-abortado-rc*.txt` para o
+  Blob. Canal de log por Blob **funciona** — era o canal que faltava, porque
+  o run-command dá Conflict durante toda a coleta.
+
+**Causas-raiz (lidas nos logs do Blob):**
+
+1. `ModuleNotFoundError: No module named 'rasterio'` — **todo** preparador
+   desde ao menos 11/10 18:05 morre no 1º candidato negativo, dentro de
+   `ler_janela` do coletor (import lazy de `rasterio`). A VM nunca teve
+   `rasterio` instalado.
+2. `shallow.lock` travado em `/opt/controle-popular/.git` — um fetch
+   interrompido (reboot no meio) deixa o lock no lugar, e todo fetch
+   seguinte sai com rc128.
+3. A fase de positivos saía sempre com `alvos: 0` — **causa achada e
+   corrigida no mesmo dia**: a VM gravou um cache `[]` em 11/10 (o WFS
+   respondeu sem features uma vez) e o código lia lista vazia como
+   resposta válida para sempre. O WFS hoje volta **7.667 poligonais** com
+   a mesma CQL (cache local do PC: 7.656). Correção em
+   `carregar_positivos`: cache vazio vale como ausente, e resposta vazia
+   não sobrescreve cache bom.
+
+**O que a documentação da Azure diz** (learn.microsoft.com, página "Run
+scripts in a Linux VM in Azure using action Run Commands", lida em 12/10):
+
+- Um script pode rodar no máximo **90 minutos**; depois disso dá timeout —
+  a coleta longa com `limite=500` corria risco.
+- O log do handler fica em `/var/log/azure/run-command/handler.log`, dentro
+  da própria VM.
+- A saída no status blob é limitada a **4 KB** — por isso o preparador
+  envia heartbeat e log pelo Blob próprio (SAS de 3 h, só escrita). O SAS
+  foi validado hoje: 98 caracteres, começa com `se=`, sem `?` inicial, então
+  a URL `...arquivo.json?${SAS}` está correta.
+- Estado travado ("Run command extension execution is in progress") tem
+  remédio oficial: `az vm run-command invoke --command-id
+  RemoveRunCommandLinuxExtension` (a extensão se reinstala sozinha na
+  próxima chamada); o workaround comunitário é desligar e ligar a VM.
+- O Run Command exige conectividade de saída na porta **443** para
+  endereços Azure (tag `AzureCloud`); sem ela o script roda mas não devolve
+  resultado.
+- Existe a variante **managed run command** (`az vm run-command create`):
+  assíncrona, com progresso reportado e saída para blob — candidata a
+  evolução futura do workflow. **Decisão do dono; não implementar.**
+
+**Operação medida (rodada de 12/10):**
+
+- **Sonda local durante o run: evitar.** Chamar `az vm run-command` ou
+  consultar a extensão **durante** o run correlaciona-se com tempestades de
+  conexão 10054 e com operações órfãs — observação operacional, não
+  causalidade comprovada. Por isso o monitoramento passou a ser **só pelo
+  Blob**.
+- O `az` local oscila com `ConnectionResetError` 10054 em rajadas → repetir
+  com espera longa. Logs de job só via `gh api .../jobs/<id>/logs`, e só
+  para jobs completos.
+- Guardas sujas fora do escopo desta rodada (**não mexer**):
+  `.claude/launch.json` e `package-lock.json`.
+- Pendências aguardando decisão do dono: os 16 itens da lista curta, os 15
+  `revisado`, a regra dos 5 mil negativos e a cadência de deploy (só com
+  permissão).
 
 ## Origem
 

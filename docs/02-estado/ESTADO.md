@@ -182,9 +182,17 @@ Medido antes do conserto: o `az vm run-command` segurava até **53 min** e o
 o run de 11/10 aparecia verde só por ter iniciado o disparo. O job `vigiar`
 agora falha quando nenhum `manifesto-*.json` novo aparece (o preparador só
 envia no fim da coleta) e o `desligar` puxa o fim do
-`/var/log/preparador-cavas.log` antes de desligar. ⏳ **Falta validar com
-uma rodada manual** (`gh workflow run cavas-preparador.yml`) — custa ~1 h de
-VM, então combinar com o dono antes.
+`/var/log/preparador-cavas.log` antes de desligar. ⏳ **Validação feita em
+12/10 — 3 runs do `cavas-preparador.yml` e nenhum fechou coleta.** Achados:
+a VM nunca teve `rasterio` (o preparador morre no 1º candidato negativo),
+`shallow.lock` travado no `.git` derruba todo fetch com rc128, e o canal
+novo de log por Blob **funcionou** nos dois casos. Os três defeitos
+ganharam correção no mesmo dia (rasterio no apt, limpeza de lock, cache
+vazio de positivos). Medição completa (runs, ids, horários e a
+documentação da Azure) em
+[MEDICOES-CAVAS-MINERACAO.md](../planos/MEDICOES-CAVAS-MINERACAO.md).
+Próxima rodada segue a validação que o dono aprovou em 12/10 (limite=10,
+~1 h de VM).
 
 ### Bloco C — ação externa do dev
 
