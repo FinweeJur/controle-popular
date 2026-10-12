@@ -71,8 +71,11 @@ env:
 
 jobs:
   # ------------------------------------------------------------------
-  # 1) Liga e dispara. Unico job que segura uma chamada `az` longa, e
-  #    mesmo assim limitada a 30 min pelo `timeout` do shell.
+  # 1) Liga e dispara. Nenhuma chamada `az` aqui segura espera longa:
+  #    o invoke vai com `--no-wait` e a evidencia de fim e o manifesto
+  #    no Blob (job 2). Esperar o retorno do invoke mediu 19 min no run
+  #    bom (11/10 17:46) e morreu em 30 min com exit 124 no run das
+  #    01:21 (11/10) - o az trava no polling, nao o CMD da VM.
   # ------------------------------------------------------------------
   preparar:
     runs-on: ubuntu-latest
@@ -128,19 +131,34 @@ jobs:
       # run-command fica preso (medido 05/10). O log vai para
       # /var/log/preparador-cavas.log.
       # O SAS vai em base64 para o `&`/`%` nao quebrarem o shell da VM.
-      # DOIS limites, pelos dois motivos medidos:
-      #   - `--connect-timeout/--max-time` no curl: sem eles um download
-      #     travado segurava o comando inteiro (19 min em 11/10);
-      #   - `timeout 1800` no az: passou de ~55 min o az reautentica com o
-      #     assertion de 5 min e morre (10/10).
+      # `--no-wait` (medido 11/10): esperar o retorno do invoke era o ultimo
+      # cuelgo — 19 min no run bom e 30 min (exit 124) no de 01:21, mesmo
+      # com curl e az com teto. Com `--no-wait` o az devolve na hora; a prova
+      # de fim vira o manifesto no Blob, que nao depende do az nem do
+      # assertion de 5 min. Se o CMD nao subir, quem denuncia e o passo
+      # "Confirmar disparo" e, no fim, o diagnostico do `desligar`.
       - name: Disparar o preparador (destacado na VM)
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
           B64=$(printf '%s' '${{ steps.sas.outputs.sas }}' | base64 -w0)
           CMD="curl -fsSL --connect-timeout 15 --max-time 120 https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
-          timeout 1800 az vm run-command invoke -g "$GRUPO" -n "$VM" \
+          timeout 300 az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
             --scripts "$CMD" \
+            --no-wait
+
+      # Evidencia best-effort: `--no-wait` nao devolve a saida do CMD, entao
+      # um segundo invoke (curto) le o processo e o log da VM 150 s depois.
+      # Se o agente ainda estiver com o lease do comando anterior, o invoke
+      # falha — por isso `continue-on-error`: este passo acusa, nao barra.
+      # 150 s cobre o curl de teto 120 s; depois disso o prep ja existe.
+      - name: Confirmar disparo na VM (best-effort)
+        continue-on-error: true
+        run: |
+          sleep 150
+          timeout 420 az vm run-command invoke -g "$GRUPO" -n "$VM" \
+            --command-id RunShellScript \
+            --scripts 'echo "== processo =="; pgrep -af prep.sh || echo sem-processo; echo "== log =="; tail -n 12 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente' \
             --query "value[0].message" -o tsv
 
   # ------------------------------------------------------------------
