@@ -104,6 +104,19 @@ jobs:
       - name: Esperar o guest agent
         run: sleep 45
 
+      # REBOOT DE LIMPEZA — estado travado da extensao run-command sobrevive a
+      # deallocate/start (a extensao mora no disco da VM). Medido 12/10/2026:
+      # no run das 14:23 o CMD foi entregue (rede subiu 3,6 KB) mas NUNCA
+      # executou — zero heartbeat por 72 min — e a extensao respondeu
+      # "Conflict" por 75 min, trancando o confirm e o diagnostico. No run das
+      # 12:50 o reboot de 13:11 devolveu execucao: prep novo 11 min depois
+      # (13:22). Reboot antes de disparar = agente novo e fila nova.
+      - name: Reboot de limpeza (estado travado da extensao)
+        run: |
+          echo "reiniciando para limpar o estado da extensao run-command"
+          az vm restart -g "$GRUPO" -n "$VM"
+          sleep 90
+
       - name: Garantir a conta e o container de Blob
         run: |
           az storage account show -g "$GRUPO" -n "$BLOB_ACCOUNT" -o none 2>/dev/null \
@@ -153,20 +166,29 @@ jobs:
             --no-wait
 
       # Evidencia best-effort: `--no-wait` nao devolve a saida do CMD, entao
-      # um segundo invoke (curto) le o processo e o log da VM 150 s depois.
-      # Se o agente ainda estiver com o lease do comando anterior, o invoke
-      # falha — por isso `continue-on-error`: este passo acusa, nao barra.
-      # 150 s cobre o curl de teto 120 s; depois disso o prep ja existe.
-      # 80 linhas, nao 12: com 12 so cabia o comeco do run ATUAL, e a pergunta
-      # util na falha e "onde parou o run ANTERIOR" (o log e em append).
+      # um segundo invoke (curto) le o processo e o log da VM.
+      # TRES tentativas: logo apos o boot a extensao ainda esta sendo criada e
+      # a primeira tentativa quase sempre cai em "Conflict" (medido 12/10, run
+      # das 14:25). Se o agente estiver com o lease do comando anterior, o
+      # invoke falha — por isso `continue-on-error`: este passo acusa, nao
+      # barra. 80 linhas de log, nao 12: o run ANTERIOR se explica no fim do
+      # arquivo, que e em append.
       - name: Confirmar disparo na VM (best-effort)
         continue-on-error: true
         run: |
-          sleep 150
-          timeout 420 az vm run-command invoke -g "$GRUPO" -n "$VM" \
-            --command-id RunShellScript \
-            --scripts 'echo "== processo =="; pgrep -af prep.sh || echo sem-processo; echo "== log =="; tail -n 80 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente' \
-            --query "value[0].message" -o tsv
+          for i in 1 2 3; do
+            sleep 90
+            echo "== tentativa $i de 3 =="
+            if timeout 300 az vm run-command invoke -g "$GRUPO" -n "$VM" \
+              --command-id RunShellScript \
+              --scripts 'echo "== processo =="; pgrep -af prep.sh || echo sem-processo; echo "== log =="; tail -n 80 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente' \
+              --query "value[0].message" -o tsv; then
+              echo "log da VM lido na tentativa $i"
+              exit 0
+            fi
+            echo "tentativa $i falhou (Conflict ou 10054); nova em 90 s"
+          done
+          echo "::warning::nao consegui ler a VM em 3 tentativas — confie no heartbeat e no log que o proprio preparador manda para o Blob"
 
   # ------------------------------------------------------------------
   # 2) Espera a prova: um manifesto NOVO no Blob. Só curl aqui — nenhum

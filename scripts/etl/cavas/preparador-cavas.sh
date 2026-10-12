@@ -61,7 +61,27 @@ if [ -n "${BLOB_ACCOUNT:-}" ] && [ -n "${BLOB_SAS:-}" ]; then
       --upload-file "$PROGRESSO" \
       "${URL_BLOB}/progresso-${STAMP}.json?${BLOB_SAS}" >/dev/null 2>&1 || true
   }
+  # LOG VIA BLOB: a extensao run-command fica OCUPADA enquanto o preparador
+  # roda (Conflict medido por 75 min) e, no run de 14:23 (12/10), o CMD nem
+  # chegou a executar — nos dois casos /var/log/... fica ilegivel de fora.
+  # Cada execucao despeja a cauda do log no Blob: no inicio leva a do run
+  # anterior, e no fim/abort leva a propria. E o diagnostico que nao depende
+  # do az.
+  enviar_log() {
+    local nome="$1"
+    tail -n 150 /var/log/preparador-cavas.log > "/tmp/log-${STAMP}-${nome}.txt" 2>/dev/null || true
+    curl -fsS --connect-timeout 10 --max-time 60 -X PUT -H "x-ms-blob-type: BlockBlob" \
+      --upload-file "/tmp/log-${STAMP}-${nome}.txt" \
+      "${URL_BLOB}/log-${STAMP}-${nome}.txt?${BLOB_SAS}" >/dev/null 2>&1 || true
+  }
+else
+  enviar_log() { :; }
 fi
+
+# A cauda do log de JA RODADAS e a primeira coisa que sai — se este run
+# morrer antes de qualquer outra coisa, ainda assim ficamos com o fim do
+# anterior no Blob.
+enviar_log "inicio"
 
 # Se o script MORRE no meio (set -e), o EXIT trap grava "abortado-rc<N>" no
 # proprio heartbeat antes de matar o loop: o Blob passa a dizer ONDE e POR QUE
@@ -70,7 +90,7 @@ fi
 # "fim" e marca FINALIZOU, para o trap nao sobrescrever.
 FINALIZOU=0
 WATCH=""
-trap 'rc=$?; if [ "$FINALIZOU" -ne 1 ]; then ping "abortado-rc${rc}" || true; fi; if [ -n "$WATCH" ]; then kill "$WATCH" 2>/dev/null || true; fi' EXIT
+trap 'rc=$?; if [ "$FINALIZOU" -ne 1 ]; then ping "abortado-rc${rc}" || true; enviar_log "abortado-rc${rc}" || true; fi; if [ -n "$WATCH" ]; then kill "$WATCH" 2>/dev/null || true; fi' EXIT
 
 # O loop comeca AQUI, antes do apt e do repo: a maioria das mortes antigas
 # acontecia antes de qualquer recorte existir, e sem heartbeat nenhuma fase
@@ -154,6 +174,7 @@ else
 fi
 
 ping fim
+enviar_log "fim"
 FINALIZOU=1
 if [ -n "$WATCH" ]; then kill "$WATCH" 2>/dev/null || true; fi
 
