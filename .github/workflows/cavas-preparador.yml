@@ -211,6 +211,9 @@ jobs:
           N0: ${{ steps.antes.outputs.n }}
         run: |
           BASE="https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}?restype=container&comp=list"
+          # SAS pode vir com ou sem "?" na frente; normaliza para montar URL de
+          # blob simples (GET do heartbeat) sem depender da sorte.
+          SASQ="${SAS#\?}"
           for i in $(seq 1 18); do
             sleep 240
             XML=$(curl -fsS --connect-timeout 15 --max-time 60 "${BASE}&${SAS}" || true)
@@ -222,6 +225,19 @@ jobs:
             NM=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>manifesto-/,"")} END{print n+0}')
             NR=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>recortes-/,"")} END{print n+0}')
             echo "[$(date -u +%FT%TZ)] manifestos=$NM (antes=$N0) recortes=$NR"
+            # HEARTBEAT do preparador: ele regrava progresso-<STAMP>.json a cada
+            # 60 s com fase e contagem. E o unico jeito de ver a coleta de fora:
+            # enquanto ela roda o run-command da VM fica ocupado e todo `az`
+            # responde "Conflict: execution is in progress" (75 min medidos em
+            # 12/10/2026) — sem isto, um run que nunca termina era indistinguivel
+            # de um run que nunca comecou.
+            NP=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>progresso-/,"")} END{print n+0}')
+            if [ "${NP:-0}" -gt 0 ]; then
+              NOME=$(printf '%s' "$XML" | grep -o '<Name>progresso-[^<]*' | head -n1 | sed 's|<Name>||')
+              CONTEUDO=$(curl -fsS --connect-timeout 15 --max-time 30 \
+                "https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}/${NOME}?${SASQ}" || true)
+              echo "[$(date -u +%FT%TZ)] heartbeat ${NOME}: ${CONTEUDO:-indisponivel}"
+            fi
             if [ "${NM:-0}" -gt "${N0:-0}" ]; then
               printf '%s' "$XML" | grep -o '<Name>manifesto-[^<]*' | sed 's|<Name>|manifesto novo: |'
               echo "Coleta comprovada: manifesto novo no Blob."
