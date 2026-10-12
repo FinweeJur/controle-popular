@@ -28,6 +28,7 @@ plano; a data de cada medição está no título.
   - [Handoff — como retomar (01/10/2026, sessão fechando)](#handoff--como-retomar-01102026-sessão-fechando)
   - [Pan-sharpen 2 m e gate v6 — 01/10/2026 (medido)](#pan-sharpen-2-m-e-gate-v6--01102026-medido)
   - [Veredito das 15 dúvidas `revisado` — 01/10/2026 (análise da máquina)](#veredito-das-15-dúvidas-revisado--01102026-análise-da-máquina)
+  - [Gate v7 com os 31 flips na pasta certa — 11/10/2026 (medido)](#gate-v7-com-os-31-flips-na-pasta-certa--11102026-medido)
 - [Medições da Fase 3 — 29/09/2026](#medições-da-fase-3--29092026)
 - [Medições da Fase 5 — 29/09/2026](#medições-da-fase-5--29092026)
 - [Origem](#origem)
@@ -482,6 +483,52 @@ propostos, 1 exclusão sugerida.** Nenhuma "cava escondida" nos
 negativos em dúvida — os 4 falsos negativos que o dev achou antes não
 estão neste conjunto. O ganho real está nos positivos fantasma: tirá-los
 do treino ensina o modelo que fazenda não é cava.
+
+### Gate v7 com os 31 flips na pasta certa — 11/10/2026 (medido)
+
+**O bug dos flips, medido e corrigido.** Os flips de 01/10 (9) e de
+06/10 (22) mudavam o rótulo no `checkpoint.jsonl` mas **não moviam o
+JPEG** para a pasta nova; o loader decide pelo nome da pasta e descartava
+o arquivo — `descartados por JPG ausente: 9` no fechador do v5, `42` no
+do v6 e `31` no do v7. Em 11/10 os 31 arquivos foram movidos
+(`Temp\opencode\cavas\mudanca-pasta-20261011.json` lista os 31 caminhos,
+0 achados faltando) e o v7 rodou com **5.120/5.120 na pasta certa**.
+
+| O que medir | Valor (11/10) |
+|---|---|
+| Snapshot | **5.120/5.120 JPGs decodificados** (2.025 pos / 3.095 neg), **0 descartados** |
+| Treino | 4.076 imgs / 244 cenas (1.457 pos / 2.619 neg) |
+| Holdout | **1.039** imgs / 30 cenas (563 pos / 476 neg) |
+| Coleta nova | 26 recortes entram no **treino** (23 pos / 3 neg); 5 cenas do holdout vetadas |
+| AVISO do loader | 5 arquivos do holdout sumiram do snapshot — o holdout encolheu de 1.044 (v5) para 1.039; causa não apurada |
+| Custo | 155,9 s/época em 4.076 imgs; early stop na época 8 (paciência 3); 1.475 s no total; VRAM máx. 2,39 GiB |
+
+| Modelo | Limiar | Precisão | Recall | F1 | tp / fp / fn / tn |
+|---|---|---|---|---|---|
+| Zero-shot B (baseline) | 0,50 | 0,542 | 1,000 | 0,703 | 563 / 475 / 0 / 1 |
+| Zero-shot com limiar na margem | +0,0546 | 0,712 | 0,066 | 0,120 | — |
+| Fine-tune `sobreamostragem` | 0,65 | **0,794** | 0,851 | 0,822 | 479 / 124 / 84 / 352 |
+| Fine-tune `sobreamostragem` | 0,50 | 0,766 | 0,917 | 0,834 | 516 / 158 / 47 / 318 |
+
+- **Gate v7: PASSOU** — precisão 0,794 no limiar 0,65 (escolhido por ser
+  a maior acurácia balanceada, 0,795, entre os que cumprem a régua de
+  0,70). No limiar fixo 0,50 o F1 é maior (0,834) e a precisão ainda
+  passa (0,766).
+- **Comparação v5 × v7 é indicativa, não pareada:** o holdout mudou
+  (1.044 → 1.039) e 31 arquivos trocaram de classe no meio. v5 ficou em
+  0,811 / 0,886 no limiar 0,64; v7 em 0,794 / 0,851 no 0,65.
+- **⚠️ O v5 não treinou nos 9 flips de 01/10:** o fechador do v5 descartou
+  9 por `JPG ausente` — exatamente os arquivos cujo rótulo a revisão
+  trocou. A leitura "o ganho dos 6 FN corrigidos apareceu no v5" não se
+  sustenta no log dele; o que subiu de v4 para v5 veio de outra causa
+  (amostra diferente). Registro para não repetir a leitura.
+- Zero-shot continua não servindo (0,542 = taxa de positivos); com limiar
+  na margem sobe a precisão e despenca o recall (0,066).
+- Artefatos: `Temp\opencode\cavas\treino-v7\` (`metricas.json` 58,5 KB,
+  `melhor.pt` 753 MB, `ultimo.pt` 1,44 GB), log em
+  `Temp\opencode\cavas\treino-v7.log`.
+- **Regra dos 5 mil negativos para o gate definitivo segue em pé** —
+  hoje 3.095; faltam ~1.900.
 
 ## Medições da Fase 3 — 29/09/2026
 

@@ -437,9 +437,13 @@ Leitura curta. O número medido completo está no
 - **Gate vigente: v5 (01/10) PASSOU** — `sobreamostragem`, precisão
   0,811 e recall 0,886 no limiar 0,64. O v6 (05/10, recortes 2 m) passou
   mas não venceu o v5: a decisão é seguir com 8 m.
-- **Gate v7 em treino (11/10):** primeiro treino que recebe os 22 flips
-  de 06/10. Antes os flips mudavam o rótulo mas não moviam o arquivo, e o
-  treino descartava os 31 corrigidos (medido no log do v5 e do v7).
+- **Gate v7 PASSOU (11/10):** precisão **0,794** e recall 0,851 no
+  limiar 0,65, holdout de 1.039 — números na
+  [medição do v7](MEDICOES-CAVAS-MINERACAO.md#gate-v7-com-os-31-flips-na-pasta-certa--11102026-medido).
+  Primeiro treino com os **31 flips na pasta certa**: antes o rótulo
+  mudava e o JPEG ficava onde estava, e o loader descartava (medido: 9
+  descartados no v5, 42 no v6, 31 no v7). ⚠️ Por isso o v5 nunca treinou
+  nos 9 flips de 01/10.
 - **Aguardando decisão do dev:** 16 itens da lista curta; 15 casos
   `revisado` com significado por fechar; ~1.900 negativos para a regra
   dos 5 mil.
