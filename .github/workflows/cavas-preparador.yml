@@ -1,21 +1,44 @@
 # Preparador de dados das cavas (Fase 1) rodando na VM do Azure.
 #
 # O QUE FAZ: liga a VM, roda o `preparador-cavas.sh` (baixa janelas de satelite
-# e recorta positivos/negativos) e DESLIGA a VM no fim. Concentra tudo numa
-# janela diaria para a VM ficar ligada poucos minutos — politica do dono
-# (04/10/2026): "preservar as horas, ativar so na hora dos bots".
+# e recorta positivos/negativos), VIGIA o Azure Blob ate o manifesto aparecer —
+# unica prova de que a coleta terminou — e DESLIGA a VM no fim, SEMPRE.
+# Politica do dono (04/10/2026): "preservar as horas, ativar so na hora dos bots".
 #
 # POR QUE NA VM: o "lado CPU" (fase 1-3) desafoga a RTX 3050 do home-pc, que
 # fica para os embeddings e o treino (fase 2+). A imagem de satelite e publica;
 # o MODELO continua local.
 #
-# AUTH: OIDC (sem segredo). Vars AZURE_CLIENT_ID/TENANT_ID/SUBSCRIPTION_ID.
-# A VM usa a chave SSH ja provisionada; aqui nao precisamos de SSH porque o
-# `az vm run-command` executa dentro do guest agent.
+# AUTH — OIDC (sem segredo). Vars AZURE_CLIENT_ID/TENANT_ID/SUBSCRIPTION_ID.
+# O assertion do GitHub vale SO 5 MINUTOS: medido 10/10/2026, o `az` tentou
+# reautenticar 53 min depois do login e o AAD recusou (AADSTS700024, assertion
+# de 17:25:24 a 17:30:24). Isso derrubou 6 execucoes seguidas (05 a 10/10).
+# A regra que o arquivo inteiro obedece: NENHUM passo segura uma chamada `az`
+# por mais de 30 min, e cada job faz login PROPRIO — assertion novo, token novo.
+# A vigencia do token nao entra na conta porque a espera e so `curl` no Blob,
+# que nao passa pelo `az`.
 #
-# TRANSFERENCIA: os recortes (um tar por rodada) e o manifesto sobem para o
-# Azure Blob (conta cpdados4751, container cavas) por um SAS de 3 h de escrita.
-# O home-pc baixa quando quiser (ver `scripts/etl/cavas/baixar-recortes-blob.md`).
+# PROVA DE FIM: o preparador so envia `manifesto-<STAMP>.json` DEPOIS de toda
+# a coleta. Em 12/10/2026 o container `cavas` tinha 0 blobs depois de 7
+# execucoes — nenhum run tinha terminado, mas o de 11/10 aparecia "success"
+# porque so provava o "preparador_iniciado". Por isso existe o job `vigiar`:
+# ele conta manifestos e FALHA quando nenhum novo aparece, em vez de vender
+# sucesso.
+#
+# DESLIGAMENTO: o job `desligar` roda sempre (`if: always()`), com login
+# proprio, mesmo quando os outros falham ou estouram o tempo. Ele ainda puxa
+# o fim do `/var/log/preparador-cavas.log` antes de desligar, para o proximo
+# run ja nascer com o diagnostico. A auto-shutdown da VM (16:00 UTC, criada
+# 05/10) NAO cobre esta janela: o cron pede 12:30 UTC mas o GitHub executou
+# sempre entre 17:25 e 20:38 UTC (medido 05 a 11/10).
+#
+# TRANSFERENCIA: os recortes (um tar) e o manifesto sobem para o Azure Blob
+# (conta cpdados4751, container cavas) por um SAS de 3 h de escrita. O home-pc
+# baixa quando quiser (ver `scripts/etl/cavas/baixar-recortes-blob.md`).
+#
+# DESPESA: a VM so fica de pé do "Ligar" ao "Desligar" — em torno de 1 h por
+# dia quando a coleta termina. Sem desligamento, uma execucao falhada deixava
+# a VM ligada ate as 16:00 UTC do dia seguinte (ate 22 h).
 
 name: Preparador de cavas (VM Azure)
 
@@ -47,9 +70,13 @@ env:
   BLOB_CONTAINER: cavas
 
 jobs:
+  # ------------------------------------------------------------------
+  # 1) Liga e dispara. Unico job que segura uma chamada `az` longa, e
+  #    mesmo assim limitada a 30 min pelo `timeout` do shell.
+  # ------------------------------------------------------------------
   preparar:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 45
     steps:
       - name: Entrar no Azure (OIDC)
         uses: azure/login@v2
@@ -58,8 +85,16 @@ jobs:
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
+      # Estado antes de ligar: `az vm start` falha se a VM ja estiver de pé
+      # (o auto-shutdown as 16:00 UTC so desliga quando alcanca a hora).
       - name: Ligar a VM
-        run: az vm start -g "$GRUPO" -n "$VM"
+        run: |
+          ESTADO=$(az vm get-instance-view -g "$GRUPO" -n "$VM" \
+            --query "instanceView.statuses[?starts_with(code,'PowerState/')].displayStatus | [0]" -o tsv)
+          case "$ESTADO" in
+            *running*|*starting*) echo "VM ja esta ligada: $ESTADO" ;;
+            *) echo "estado anterior: $ESTADO"; az vm start -g "$GRUPO" -n "$VM" ;;
+          esac
 
       # O guest agent demora alguns segundos apos o boot; esperar evita o
       # run-command falhar com "agent not ready".
@@ -82,19 +117,143 @@ jobs:
           EXP=$(date -u -d '+3 hours' +%Y-%m-%dT%H:%MZ)
           SAS=$(az storage container generate-sas --account-name "$BLOB_ACCOUNT" \
             --name "$BLOB_CONTAINER" --permissions cw --expiry "$EXP" --account-key "$KEY" -o tsv)
+          # Mascara ANTES de qualquer uso: o runner imprime o texto do passo
+          # seguinte no log, e ali dentro o SAS aparece interpolado (vazou no
+          # log de 10/10). Repo publico, token de escrita de 3 h.
+          echo "::add-mask::$SAS"
           echo "sas=$SAS" >> "$GITHUB_OUTPUT"
 
       # Dispara DESTACADO de verdade com `systemd-run` (unidade transiente): o
       # `nohup ... &` NAO basta — o agente da VM ainda espera o processo e o
-      # run-command fica preso (medido 05/10). O systemd assume o processo e o
-      # run-command volta em segundos. O log vai para /var/log/preparador-cavas.log.
+      # run-command fica preso (medido 05/10). O log vai para
+      # /var/log/preparador-cavas.log.
       # O SAS vai em base64 para o `&`/`%` nao quebrarem o shell da VM.
+      # DOIS limites, pelos dois motivos medidos:
+      #   - `--connect-timeout/--max-time` no curl: sem eles um download
+      #     travado segurava o comando inteiro (19 min em 11/10);
+      #   - `timeout 1800` no az: passou de ~55 min o az reautentica com o
+      #     assertion de 5 min e morre (10/10).
       - name: Disparar o preparador (destacado na VM)
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
           B64=$(printf '%s' '${{ steps.sas.outputs.sas }}' | base64 -w0)
-          CMD="curl -fsSL https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
-          az vm run-command invoke -g "$GRUPO" -n "$VM" \
+          CMD="curl -fsSL --connect-timeout 15 --max-time 120 https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
+          timeout 1800 az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
             --scripts "$CMD" \
             --query "value[0].message" -o tsv
+
+  # ------------------------------------------------------------------
+  # 2) Espera a prova: um manifesto NOVO no Blob. Só curl aqui — nenhum
+  #    `az`, logo o assertion de 5 min nao entra na conta da espera.
+  # ------------------------------------------------------------------
+  vigiar:
+    needs: preparar
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Gerar SAS de leitura (3 h)
+        id: sasro
+        run: |
+          KEY=$(az storage account keys list -g "$GRUPO" -n "$BLOB_ACCOUNT" --query "[0].value" -o tsv)
+          EXP=$(date -u -d '+3 hours' +%Y-%m-%dT%H:%MZ)
+          SAS=$(az storage container generate-sas --account-name "$BLOB_ACCOUNT" \
+            --name "$BLOB_CONTAINER" --permissions rl --expiry "$EXP" --account-key "$KEY" -o tsv)
+          echo "::add-mask::$SAS"
+          echo "sas=$SAS" >> "$GITHUB_OUTPUT"
+
+      # Conta os manifestos ANTES de esperar: so um numero maior depois e
+      # prova de fim. Se a contagem falhar, o passo falha e o `desligar`
+      # continua de qualquer jeito.
+      - name: Contar os manifestos atuais
+        id: antes
+        run: |
+          KEY=$(az storage account keys list -g "$GRUPO" -n "$BLOB_ACCOUNT" --query "[0].value" -o tsv)
+          N=$(az storage blob list --account-name "$BLOB_ACCOUNT" --container-name "$BLOB_CONTAINER" \
+            --account-key "$KEY" --query "length([?contains(name,'manifesto-')])" -o tsv)
+          N=${N:-0}
+          echo "manifestos antes: $N"
+          echo "n=$N" >> "$GITHUB_OUTPUT"
+
+      # Janela de 72 min (18 x 4 min): a coleta tem 1000 cenas com 2 s de
+      # cortesia cada = 33 min SO de pausa, mais download do STAC. O manifesto
+      # e o ultimo arquivo enviado, entao a espera acaba no instante exato em
+      # que a coleta termina — nao precisa esperar a janela inteira.
+      - name: Esperar o manifesto novo (ate 72 min)
+        env:
+          SAS: ${{ steps.sasro.outputs.sas }}
+          N0: ${{ steps.antes.outputs.n }}
+        run: |
+          BASE="https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}?restype=container&comp=list"
+          for i in $(seq 1 18); do
+            sleep 240
+            XML=$(curl -fsS --connect-timeout 15 --max-time 60 "${BASE}&${SAS}" || true)
+            if [ -z "$XML" ]; then
+              echo "[$(date -u +%FT%TZ)] listagem vazia — curl falhou (SAS ou rede)"
+            fi
+            # awk, nao grep|wc: com `set -e` do runner, grep sem match sai 1 e
+            # derrubaria o passo no primeiro ciclo (quando nao ha manifesto).
+            NM=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>manifesto-/,"")} END{print n+0}')
+            NR=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>recortes-/,"")} END{print n+0}')
+            echo "[$(date -u +%FT%TZ)] manifestos=$NM (antes=$N0) recortes=$NR"
+            if [ "${NM:-0}" -gt "${N0:-0}" ]; then
+              printf '%s' "$XML" | grep -o '<Name>manifesto-[^<]*' | sed 's|<Name>|manifesto novo: |'
+              echo "Coleta comprovada: manifesto novo no Blob."
+              exit 0
+            fi
+          done
+          echo "::warning::Nenhum manifesto novo em 72 min — a coleta nao terminou. O job 'desligar' puxa o log da VM antes de desligar."
+          exit 1
+
+  # ------------------------------------------------------------------
+  # 3) Diagnostico + desligamento. Sempre roda, com login proprio, e o
+  #    desligamento e a ultima acao do workflow — nao ha caminho que
+  #    deixe a VM ligada quando este job executa.
+  # ------------------------------------------------------------------
+  desligar:
+    needs: [preparar, vigiar]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      # Le o fim do log e o processo antes de apagar a luz: e o unico lugar
+      # onde da para ver POR QUE a coleta nao subiu o manifesto. Nao pode
+      # impedir o desligamento, por isso `continue-on-error`.
+      - name: Puxar o log do preparador (diagnostico)
+        continue-on-error: true
+        run: |
+          timeout 600 az vm run-command invoke -g "$GRUPO" -n "$VM" \
+            --command-id RunShellScript \
+            --scripts "tail -n 80 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente; echo '--- processo ---'; pgrep -af preparador || echo sem-processo" \
+            --query "value[0].message" -o tsv
+
+      - name: Desligar a VM
+        if: always()
+        run: |
+          ESTADO=$(az vm get-instance-view -g "$GRUPO" -n "$VM" \
+            --query "instanceView.statuses[?starts_with(code,'PowerState/')].displayStatus | [0]" -o tsv)
+          case "$ESTADO" in
+            *running*|*starting*)
+              echo "desligando: $ESTADO"
+              az vm deallocate -g "$GRUPO" -n "$VM"
+              ;;
+            *) echo "nada a desligar: $ESTADO" ;;
+          esac
+          NOVO=$(az vm get-instance-view -g "$GRUPO" -n "$VM" \
+            --query "instanceView.statuses[?starts_with(code,'PowerState/')].displayStatus | [0]" -o tsv)
+          echo "estado final: $NOVO"
