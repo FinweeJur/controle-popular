@@ -54,6 +54,7 @@ Tabela de navegação — âncora direta para cada catálogo:
 | Paraopeba — ATIs | AEDAS, Guaicuy, ADAI, NACAB | [§](#biblioteca-das-atis-do-paraopeba) |
 | Brumadinho — auditoria | AJRI/AECOM | [§](#auditoria-ajri-brumadinho) |
 | Desastres unificados | Mariana + Brumadinho | [§](#crimes-socioambientais--biblioteca-unificada-mariana-e-brumadinho) |
+| Plataforma Rio Doce | DataJud, SEMAD WFS, Renova, CKAN MG | [`FONTES-RIO-DOCE.md`](FONTES-RIO-DOCE.md) |
 | Rouanet / SALIC | API MinC | [§](#lei-rouanet--salic--e-os-três-jeitos-que-a-api-mente) |
 | Território e mineração | FUNAI, SIGMINE, SIGBM, FEAM, INCRA | [§](#território-e-mineração) |
 | Fluxo financeiro | PNCP, SICOM, CFEM, QSA, Repasse | [§](#fluxo-financeiro--dinheiro-ligado-ao-mapa) |
@@ -686,6 +687,7 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 | [`FONTES-FLUXO-FINANCEIRO.md`](FONTES-FLUXO-FINANCEIRO.md) | quem recebe dinheiro público, CFEM e quem controla quem |
 | [`FONTES-TERRITORIO-E-MINERACAO.md`](FONTES-TERRITORIO-E-MINERACAO.md) | FUNAI, INCRA, CNUC, ANM/SIGMINE |
 | [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
+| [`FONTES-RIO-DOCE.md`](FONTES-RIO-DOCE.md) | Plataforma Rio Doce: DataJud, WFS da SEMAD, Fundação Renova e CKAN MG (Fase 0, 12/10/2026) |
 
 ## Condicionantes — piloto Irapé e Setúbal (descoberta 23/09 + downloads)
 
