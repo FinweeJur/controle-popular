@@ -716,8 +716,9 @@ horários abaixo são UTC.
    respondeu sem features uma vez) e o código lia lista vazia como
    resposta válida para sempre. O WFS hoje volta **7.667 poligonais** com
    a mesma CQL (cache local do PC: 7.656). Correção em
-   `carregar_positivos`: cache vazio vale como ausente, e resposta vazia
-   não sobrescreve cache bom.
+   `carregar_positivos` (função nova `ler_cache_positivos`): cache vazio
+   vale como ausente e refaz a consulta; a gravação segue incondicional —
+   um `[]` novo é ignorado na próxima leitura e o cache se cura sozinho.
 
 **O que a documentação da Azure diz** (learn.microsoft.com, página "Run
 scripts in a Linux VM in Azure using action Run Commands", lida em 12/10):
