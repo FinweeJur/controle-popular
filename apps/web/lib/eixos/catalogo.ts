@@ -128,10 +128,15 @@ export const CATALOGO_EIXOS: Record<EixoId, Eixo> = {
         id: 'nossos-rios',
         eixoId: 'terra',
         titulo: 'Nossos Rios e Bacias',
+        // A subfrente é guarda-chuva dos rios; desde 12/10 o caso do Rio Doce
+        // também tem zona própria (`/riodoce`), e as tags abaixo são o que
+        // faz a busca e o Seu Nonô levarem o leitor do termo "Rio Doce" para
+        // a Plataforma — sem trocar a `rotaLegada` (que continua apontando
+        // para /paraopeba, o hub do caso vizinho).
         descricao: 'Qualidade das águas, monitoramento de desastres (Rio Doce, Paraopeba) e saneamento básico.',
         slug: 'nossos-rios',
         icone: 'Waves',
-        tagsRelacionadas: ['rios', 'bacias', 'paraopeba', 'mariana', 'saneamento', 'agua'],
+        tagsRelacionadas: ['rios', 'bacias', 'paraopeba', 'mariana', 'saneamento', 'agua', 'riodoce', 'rio doce', 'fundao', 'samarco'],
         rotaLegada: '/paraopeba',
       },
       {

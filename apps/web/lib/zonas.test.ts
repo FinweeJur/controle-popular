@@ -27,12 +27,12 @@ describe("a contagem de frentes vive num lugar só", () => {
 
   test("contagemZonasPublicadas() bate com o tamanho real da lista", () => {
     expect(contagemZonasPublicadas()).toBe(numeralPorExtenso(ZONAS_PUBLICADAS.length));
-    // Medido agora: 6 frentes publicadas (a sexta, Paraopeba, entrou em
-    // 13/08). Se este teste falhar por causa desta linha, é porque a
-    // contagem mudou — atualize aqui a propósito, não porque a função
-    // quebrou.
-    expect(ZONAS_PUBLICADAS.length).toBe(6);
-    expect(contagemZonasPublicadas()).toBe("seis");
+    // Medido agora: 7 frentes publicadas (a sétima, Rio Doce, entrou em
+    // 12/10 — PLANO-PLATAFORMA-RIO-DOCE, decisão 1 do dono). Se este teste
+    // falhar por causa desta linha, é porque a contagem mudou — atualize
+    // aqui a propósito, não porque a função quebrou.
+    expect(ZONAS_PUBLICADAS.length).toBe(7);
+    expect(contagemZonasPublicadas()).toBe("sete");
   });
 
   const TELAS_QUE_JA_CRAVARAM: Array<{ arquivo: string[]; padroes: RegExp[] }> = [

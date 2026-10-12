@@ -94,6 +94,10 @@ const SECOES_MENU: SecaoMenu[] = [
     links: [
       { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe },
       { label: 'Função Social & Globo 3D', href: '/funcaosocialterra/mapa', icone: Globe, destaque: true },
+      // Os dois desastres grandes têm zona própria (dono, 12/10): o Rio Doce
+      // (/riodoce) é o hub do caso; a execução financeira do Acordo em MG
+      // continua em /ambiental/mariana e é linkada de dentro do hub.
+      { label: 'Plataforma Rio Doce (/riodoce)', href: '/riodoce', icone: Waves, destaque: true },
       { label: 'Repactuação Rio Doce (Mariana)', href: '/ambiental/mariana', icone: Waves, destaque: true },
       { label: 'Reparação Paraopeba (Brumadinho)', href: '/paraopeba', icone: ShieldCheck, destaque: true },
       { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet, destaque: true },

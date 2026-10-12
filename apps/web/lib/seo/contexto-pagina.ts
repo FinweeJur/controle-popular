@@ -973,6 +973,44 @@ export const CONTEXTOS: ContextoPagina[] = [
       },
     ],
   },
+  // ─── PLATAFORMA RIO DOCE (zona nova, 12/10/2026) ───
+  // Sugestões para quem está no /riodoce: sempre apontam para OUTRAS páginas
+  // (execução em MG, Paraopeba, Judiciário) — `obterSugestoesContextuais`
+  // filtra a própria rota, mas a régua editorial é não repetir a página em
+  // que o leitor já está.
+  {
+    padrao: "^/riodoce",
+    sugestoes: [
+      {
+        pergunta: "Como está a execução do Acordo do Rio Doce em MG?",
+        resposta:
+          "O painel de Mariana abre a execução orçamentária em MG: empenho por empenho, do órgão e da iniciativa.",
+        link: "/ambiental/mariana",
+        linkTexto: "Execução do Acordo em MG",
+      },
+      {
+        pergunta: "Como funciona a reparação de Brumadinho?",
+        resposta:
+          "A Plataforma Paraopeba acompanha o outro caso grande: clipping, linha do tempo, auxílio e execução em 26 municípios.",
+        link: "/paraopeba",
+        linkTexto: "Plataforma Paraopeba",
+      },
+      {
+        pergunta: "Onde fiscalizar o Judiciário de Minas?",
+        resposta:
+          "A zona Judiciário mostra composição dos tribunais, vagas, inspeções do CNJ e varas com contato por comarca.",
+        link: "/judiciario",
+        linkTexto: "Zona Judiciário",
+      },
+      {
+        pergunta: "Onde ver barragens de mineração em risco?",
+        resposta:
+          "O painel de barragens reúne as estruturas cadastradas da ANM e a descaracterização exigida pela Lei Mar de Lama.",
+        link: "/ambiental/barragens",
+        linkTexto: "Painel de Barragens",
+      },
+    ],
+  },
 ];
 
 /**

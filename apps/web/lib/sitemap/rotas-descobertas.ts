@@ -238,6 +238,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/radio",
   "/recapitular",
   "/recursos/estados",
+  "/riodoce",
+  "/riodoce/processos",
   "/sobre",
   "/tecnologia",
   "/temas",

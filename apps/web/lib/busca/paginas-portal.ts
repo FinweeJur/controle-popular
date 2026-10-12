@@ -19,7 +19,7 @@ export interface PaginaPortalIndexada {
   titulo: string;
   descricao: string;
   href: string;
-  frente: "cidades" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "terras" | "estudos-rurais" | "geral";
+  frente: "cidades" | "congresso" | "judiciario" | "ambiental" | "paraopeba" | "riodoce" | "terras" | "estudos-rurais" | "geral";
   rotulo: string;
   badgeCor: string;
   palavrasChave: string[];
@@ -197,6 +197,42 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     rotulo: "Mariana · R$ 171 Bi",
     badgeCor: "var(--cp-eixo-terra)",
     palavrasChave: ["mariana", "rio doce", "samarco", "renova", "repactuacao", "171 bi", "acordo mariana"],
+  },
+  // ═══ PLATAFORMA RIO DOCE (zona nova, 12/10/2026) ═══
+  // As duas entradas abaixo são o hub da zona e a tela de processos. O
+  // título do HUB evita de propósito a palavra "mariana": o teste de
+  // `paginas-portal.test.ts` trava que a busca por "mariana" devolva
+  // PRIMEIRO /ambiental/mariana, e um título novo contendo o termo empataria
+  // o score da entrada antiga. Quem busca "mariana" quer o painel de
+  // execução; quem busca "rio doce" ou "riodoce" cai no hub.
+  {
+    id: "riodoce-hub",
+    titulo: "Plataforma Rio Doce — reparação, processos e dados da bacia",
+    descricao:
+      "Hub do caso do Rio Doce: o que já está no ar (execução em MG, processos do DataJud) e o que está em construção (dados espaciais, linha do tempo), com a fonte ao lado de cada número.",
+    href: "/riodoce",
+    frente: "riodoce",
+    rotulo: "Rio Doce · Plataforma",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "riodoce", "rio doce", "plataforma rio doce", "fundao", "samarco",
+      "bhp", "repactuacao", "renova", "acordo rio doce", "bacia do doce",
+      "reparacao rio doce", "desastre mariana",
+    ],
+  },
+  {
+    id: "riodoce-processos",
+    titulo: "Processos do caso Rio Doce — consulta ao vivo no DataJud",
+    descricao:
+      "Os processos-chave da reparação, com a movimentação consultada ao vivo na API pública do DataJud (CNJ). O portal não arquiva nem republica autos.",
+    href: "/riodoce/processos",
+    frente: "riodoce",
+    rotulo: "Rio Doce · Processos",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "processos", "datajud", "cnj", "ttac", "acordo", "autos",
+      "justica", "riodoce", "processos rio doce", "movimentacao", "vara",
+    ],
   },
   {
     id: "ambiental-condicionantes",

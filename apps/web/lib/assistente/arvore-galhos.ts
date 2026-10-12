@@ -315,6 +315,20 @@ export const NOS_ARVORE: NoArvore[] = [
     tamanho: 14,
   },
   {
+    // Hub da zona nova (12/10). Fica AO LADO do painel de Mariana, não no
+    // lugar dele: o painel continua sendo o destino de quem quer o número
+    // da execução; o hub é a porta de quem quer o caso inteiro (processos,
+    // dados espaciais, linha do tempo).
+    id: "ter-riodoce",
+    titulo: "Plataforma Rio Doce",
+    href: "/riodoce",
+    eixoId: "territorios",
+    subgalho: "Grandes Repactuações",
+    rotuloCurto: "Plataforma Rio Doce",
+    cor: "#047857",
+    tamanho: 12,
+  },
+  {
     id: "ter-globo",
     titulo: "Globo 3D do Território",
     href: "/funcaosocialterra/mapa",
@@ -837,6 +851,7 @@ export const ARESTAS_ARVORE: ArestaArvore[] = [
   { fonte: "eixo-territorios", alvo: "ter-barragens", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-brumadinho", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-mariana", tipo: "hierarquia" },
+  { fonte: "eixo-territorios", alvo: "ter-riodoce", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-globo", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-cidades-mg", tipo: "hierarquia" },
   { fonte: "eixo-territorios", alvo: "ter-cavas", tipo: "hierarquia" },
@@ -858,6 +873,10 @@ export const ARESTAS_ARVORE: ArestaArvore[] = [
   // Cruzamentos temáticos do Eixo 2
   { fonte: "ter-barragens", alvo: "ter-brumadinho", tipo: "relacionado", descricao: "Desastres e Barragens" },
   { fonte: "ter-barragens", alvo: "ter-mariana", tipo: "relacionado", descricao: "Rompimento do Fundão" },
+  // O hub da Plataforma Rio Doce aponta para o painel de execução em MG:
+  // leitor que cai no hub e quer o número da repactuação vai direto ao
+  // painel, sem passar por busca.
+  { fonte: "ter-riodoce", alvo: "ter-mariana", tipo: "relacionado", descricao: "Execução do Acordo em MG" },
   { fonte: "ter-barragens", alvo: "est-empresas", tipo: "relacionado", descricao: "Mineradoras e Proprietárias" },
   { fonte: "ter-brumadinho", alvo: "ter-betim", tipo: "relacionado", descricao: "Município da Bacia do Paraopeba" },
   { fonte: "ter-jequitinhonha", alvo: "cen-estudos-rurais", tipo: "relacionado", descricao: "Pesquisas no Jequitinhonha" },

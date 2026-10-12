@@ -67,6 +67,11 @@ const LINKS_PORTAL = [
   { label: "Instituições & Secretarias", href: "/instituicoes" },
   { label: "Guia de contatos", href: "/guia" },
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
+  // Os dois desastres com zona própria (Rio Doce e Paraopeba) ficam juntos
+  // no rodapé — mesma lógica do TopNav: quem procura a reparação acha as
+  // duas portas lado a lado, sem precisar saber o nome de uma para achar a
+  // outra.
+  { label: "Plataforma Rio Doce", href: "/riodoce" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Aprender", href: "/aprender" },

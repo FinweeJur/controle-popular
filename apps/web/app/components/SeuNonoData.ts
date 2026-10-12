@@ -345,6 +345,15 @@ export const FRENTES: SeuNonoFrente[] = [
               "Consulte a tabela de repasses diretos aos municípios de Minas Gerais e do Espírito Santo afetados pelo desastre da Samarco/Vale.",
             link: { href: "/ambiental/mariana", texto: "Repasses Municipais Mariana" },
           },
+          {
+            // Pergunta da zona nova (12/10). Frase ≤13 palavras — o teste
+            // `seu-nono-data.test.ts` trava o comprimento (regra do dono §12).
+            id: "plataforma-riodoce",
+            pergunta: "Onde ver o caso Rio Doce reunido em um só lugar?",
+            resposta:
+              "A Plataforma Rio Doce reúne execução do Acordo em MG, processos do DataJud e dados da bacia, com fonte ao lado de cada número.",
+            link: { href: "/riodoce", texto: "Plataforma Rio Doce" },
+          },
         ],
       },
       {
@@ -1587,6 +1596,26 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/ambiental/mariana", texto: "Painel de Mariana" },
       { href: "/paraopeba/vale", texto: "Observatório Vale" },
+    ],
+  },
+  {
+    // Ficha da zona nova (12/10/2026). Ela APONTA para o painel de Mariana
+    // e para /riodoce/processos em vez de repetir os totais: "um número,
+    // uma fonte" — o R$ 171 bi continua morando no cartão de Mariana acima.
+    id: "riodoce-hub",
+    titulo: "Plataforma Rio Doce",
+    resumo:
+      "Hub do caso do Rio Doce: execução do Acordo em MG, processos consultados ao vivo no DataJud e dados espaciais da bacia.",
+    dados: [
+      "Execução do Acordo de Mariana em MG (CKAN oficial do Governo de MG)",
+      "Processos-chave consultados ao vivo no DataJud (CNJ), sem arquivamento",
+      "Camadas da bacia no WFS da SEMAD — mancha do Fundão medida em 12/10/2026",
+      "Linha do tempo e biblioteca do caso, em construção (Fases 3 e 4)",
+    ],
+    links: [
+      { href: "/riodoce", texto: "Plataforma Rio Doce" },
+      { href: "/riodoce/processos", texto: "Processos (DataJud)" },
+      { href: "/ambiental/mariana", texto: "Execução do Acordo (MG)" },
     ],
   },
   {

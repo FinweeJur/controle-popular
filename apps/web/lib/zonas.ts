@@ -38,7 +38,13 @@ export type ZonaId =
   | "judiciario"
   | "ambiental"
   | "terras"
-  | "paraopeba";
+  | "paraopeba"
+  // Sétima frente, decidida pelo dono em 12/10/2026 (PLANO-PLATAFORMA-RIO-DOCE):
+  // cada desastre grande vira uma zona própria — o Rio Doce é a irmã do
+  // Paraopeba. `publicada: true` desde o esqueleto porque o hub já entrega
+  // conteúdo de verdade (execução em MG via link, processos e a declaração
+  // das lacunas); as fases seguintes (F2–F5) acrescentam rotas, não a zona.
+  | "riodoce";
 
 export interface Zona {
   id: ZonaId;
@@ -298,6 +304,37 @@ export const ZONAS: Zona[] = [
       "Linha do tempo com os 23 marcos do processo, do rompimento em 25/01/2019 à ADPF no STF",
       "18 órgãos e organizações que atuam na reparação — 16 sem entrada em outro lugar do portal",
       "9 pagamentos do Novo Auxílio Emergencial e os documentos do processo que citam cada município, com link e citação",
+    ],
+    cor: "var(--cp-secondary)",
+    publicada: true,
+  },
+  {
+    id: "riodoce",
+    // Sétima frente (dono, 12/10/2026). Irmã do /paraopeba: cada um dos dois
+    // maiores desastres ambientais do país tem a sua zona. O /riodoce nasce
+    // COMPLETO (cabeçalho com BuscaUniversal + FooterGlobal, molde do
+    // /judiciario), ao contrário do /paraopeba que é enxuto por decisão de
+    // 22/08 — ver o cabeçalho de `app/riodoce/layout.tsx`. Os números do
+    // acervo (empenhos do Acordo em MG) não vivem aqui: a execução financeira
+    // continua em `/ambiental/mariana`, e este card só aponta para o hub que
+    // reúne as frentes ("um número, uma fonte").
+    href: "/riodoce",
+    etiqueta: "Plataforma Rio Doce · Mariana, Fundão e a repactuação",
+    nomeCurto: "Rio Doce",
+    titulo: "O caso do Rio Doce, de ponta a ponta",
+    // ⟲ 12/10, copy inicial: mesma voz das zonas de reparação — registro
+    // sóbrio, sem insinuação, e a lacuna dita como lacuna (a lista de
+    // processos-chave ainda está em levantamento na Fase 0). Nenhum número
+    // aqui é digitado à mão: o hub lê a constante do CKAN MG.
+    descricao:
+      "A Plataforma Rio Doce reúne o que se sabe medido sobre o rompimento da barragem de Fundão (Samarco, Vale e BHP, 2015) e o Acordo de Reparação: a execução pelos órgãos de MG, os processos consultados ao vivo no DataJud do CNJ e os dados espaciais da bacia. Cada número aponta a fonte oficial — e o que ainda não foi levantado está dito como lacuna, não escondido.",
+    resumo:
+      "Execução do Acordo em MG, processos do DataJud e dados da bacia — o caso do Rio Doce reunido, com a fonte ao lado de cada número.",
+    itens: [
+      "Execução do Acordo de Mariana em MG (CKAN oficial, 532 empenhos)",
+      "Processos-chave consultados ao vivo no DataJud (CNJ), sem arquivamento",
+      "Camadas da bacia no WFS da SEMAD (mancha do Fundão medida em 12/10)",
+      "Linha do tempo do caso, do rompimento em 2015 ao Novo Acordo (em construção)",
     ],
     cor: "var(--cp-secondary)",
     publicada: true,
