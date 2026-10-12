@@ -171,6 +171,20 @@ def wfs_paginas(cql: str, max_features: int = 2500, so_geom: bool = False) -> li
     return features
 
 
+# Cache de positivos: medido 12/10/2026, a VM gravou "[]" em 11/10 (WFS
+# respondeu sem features uma vez) e todo run seguinte leu 0 alvos para
+# sempre — mesmo o WFS voltando 7.667 poligonais com a MESMA CQL (cache do
+# PC: 7.656 itens). Lista vazia vale como arquivo ausente: refaz a
+# consulta. A gravacao segue incondicional e a leitura descarta um "[]"
+# novo, entao o cache se cura sozinho na proxima rodada. A regra mora
+# aqui fora de carregar_positivos para a funcao principal nao ganhar
+# complexidade (regua do CodeScene, pre-commit).
+def ler_cache_positivos(arq: Path) -> list[dict] | None:
+    if not arq.exists():
+        return None
+    return json.loads(arq.read_text(encoding="utf-8")) or None
+
+
 def carregar_positivos(alvos: Path | None = None) -> list[dict]:
     """Alvos positivos: poligonais MG das fases extrativas (cache local
     por página) ou arquivo pronto da 2ª UF (`--alvos`, ex. o
@@ -178,8 +192,8 @@ def carregar_positivos(alvos: Path | None = None) -> list[dict]:
     if alvos is not None:
         return json.loads(Path(alvos).read_text(encoding="utf-8"))
     arq = CACHE / "positivos-mg.json"
-    if arq.exists():
-        return json.loads(arq.read_text(encoding="utf-8"))
+    if (dados := ler_cache_positivos(arq)) is not None:
+        return dados
     cql = ("fase IN (%s) AND BBOX(geom,%s)"
            % (",".join("'%s'" % f for f in FASES_EXTRATIVAS),
               ",".join(str(v) for v in MG_BBOX)))
@@ -191,13 +205,9 @@ def carregar_positivos(alvos: Path | None = None) -> list[dict]:
         pts = _primeiro_anel(g)
         if not pts:
             continue
-        out.append({
-            "processo": pr.get("processo"),
-            "fase": pr.get("fase"),
-            "area_ha": pr.get("area_ha"),
-            "bbox": _bbox_anel(pts),
-            "centroide": _centroide(pts),
-        })
+        out.append({"processo": pr.get("processo"), "fase": pr.get("fase"),
+                    "area_ha": pr.get("area_ha"), "bbox": _bbox_anel(pts),
+                    "centroide": _centroide(pts)})
     arq.parent.mkdir(parents=True, exist_ok=True)
     arq.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     return out
