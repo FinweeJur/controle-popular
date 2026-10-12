@@ -137,11 +137,16 @@ jobs:
       # de fim vira o manifesto no Blob, que nao depende do az nem do
       # assertion de 5 min. Se o CMD nao subir, quem denuncia e o passo
       # "Confirmar disparo" e, no fim, o diagnostico do `desligar`.
+      # `--no-block` (medido 12/10): sem ele, a extensao run-command ficou
+      # OCUPADA do dispatch ate o fim (Conflict por 75 min no run das 03:19 e
+      # por 19 min no das 12:50) — nem o confirm nem o diagnostico do
+      # `desligar` conseguiam ler a log. O CMD tem de devolver rapido para o
+      # canal de diagnostico ficar livre DURANTE a coleta.
       - name: Disparar o preparador (destacado na VM)
         run: |
           LIM="${{ github.event.inputs.limite || '500' }}"
           B64=$(printf '%s' '${{ steps.sas.outputs.sas }}' | base64 -w0)
-          CMD="curl -fsSL --connect-timeout 15 --max-time 120 https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
+          CMD="curl -fsSL --connect-timeout 15 --max-time 120 https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --no-block --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
           timeout 300 az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
             --scripts "$CMD" \
@@ -152,13 +157,15 @@ jobs:
       # Se o agente ainda estiver com o lease do comando anterior, o invoke
       # falha — por isso `continue-on-error`: este passo acusa, nao barra.
       # 150 s cobre o curl de teto 120 s; depois disso o prep ja existe.
+      # 80 linhas, nao 12: com 12 so cabia o comeco do run ATUAL, e a pergunta
+      # util na falha e "onde parou o run ANTERIOR" (o log e em append).
       - name: Confirmar disparo na VM (best-effort)
         continue-on-error: true
         run: |
           sleep 150
           timeout 420 az vm run-command invoke -g "$GRUPO" -n "$VM" \
             --command-id RunShellScript \
-            --scripts 'echo "== processo =="; pgrep -af prep.sh || echo sem-processo; echo "== log =="; tail -n 12 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente' \
+            --scripts 'echo "== processo =="; pgrep -af prep.sh || echo sem-processo; echo "== log =="; tail -n 80 /var/log/preparador-cavas.log 2>/dev/null || echo log-ausente' \
             --query "value[0].message" -o tsv
 
   # ------------------------------------------------------------------

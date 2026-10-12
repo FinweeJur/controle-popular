@@ -63,44 +63,60 @@ if [ -n "${BLOB_ACCOUNT:-}" ] && [ -n "${BLOB_SAS:-}" ]; then
   }
 fi
 
+# Se o script MORRE no meio (set -e), o EXIT trap grava "abortado-rc<N>" no
+# proprio heartbeat antes de matar o loop: o Blob passa a dizer ONDE e POR QUE
+# parou. Medido 12/10/2026 no run das 13:22 — o arquivo congelou em
+# "negativos" sem codigo, e sem codigo a causa fica no escuro. Sucesso grava
+# "fim" e marca FINALIZOU, para o trap nao sobrescrever.
+FINALIZOU=0
+WATCH=""
+trap 'rc=$?; if [ "$FINALIZOU" -ne 1 ]; then ping "abortado-rc${rc}" || true; fi; if [ -n "$WATCH" ]; then kill "$WATCH" 2>/dev/null || true; fi' EXIT
+
+# O loop comeca AQUI, antes do apt e do repo: a maioria das mortes antigas
+# acontecia antes de qualquer recorte existir, e sem heartbeat nenhuma fase
+# de preparacao aparecia. Dorme antes de gravar para nao apagar o marcador
+# da fase atual.
+if [ -n "$PROGRESSO" ]; then
+  ping preparando
+  ( set +e; while :; do sleep 60; ping coletando || true; done ) &
+  WATCH=$!
+fi
+
 # 1) Dependencias: Python + numpy + Pillow vem do apt (evita pip/PEP 668).
 if ! command -v python3 >/dev/null 2>&1 || ! python3 -c "import numpy, PIL" >/dev/null 2>&1; then
   echo "[preparador] instalando python3/numpy/pillow/git via apt"
+  ping apt
   export DEBIAN_FRONTEND=noninteractive
   apt-get update -y
   apt-get install -y python3 python3-numpy python3-pil git ca-certificates
 fi
+ping deps-ok
 
 # 2) Repo (publico, sem credencial). Depth 1 basta; o dado vem do STAC/WFS.
 if [ -d "$REPO/.git" ]; then
   echo "[preparador] atualizando o repo"
+  ping repo
   git -C "$REPO" fetch --depth 1 origin main
   git -C "$REPO" reset --hard origin/main
 else
   echo "[preparador] clonando o repo"
+  ping clone
   git clone --depth 1 "$URL_REPO" "$REPO"
 fi
+ping repo-ok
 
 cd "$REPO"
 
 # 3) Coleta sequencial: UM escritor por checkpoint (positivo, depois negativo).
-# O heartbeat comeca AQUI: e daqui em diante que o run-command da VM fica
-# ocupado e nenhum `az` de fora entra.
-WATCH=""
-if [ -n "$PROGRESSO" ]; then
-  ping inicio
-  ( while :; do ping coletando; sleep 60; done ) &
-  WATCH=$!
-  trap 'kill $WATCH 2>/dev/null || true' EXIT
-fi
-
 echo "[preparador] positivos (limite=$LIM_POS)"
 ping positivos
 python3 scripts/coletar-cavas-calibracao.py --tipo positivo --limite "$LIM_POS"
+ping positivos-feitos
 
 echo "[preparador] negativos (limite=$LIM_NEG)"
 ping negativos
 python3 scripts/coletar-cavas-calibracao.py --tipo negativo --limite "$LIM_NEG"
+ping negativos-feitos
 
 echo "[preparador] reexportando o manifesto"
 ping manifesto
@@ -138,7 +154,8 @@ else
 fi
 
 ping fim
-[ -n "$WATCH" ] && kill $WATCH 2>/dev/null || true
+FINALIZOU=1
+if [ -n "$WATCH" ]; then kill "$WATCH" 2>/dev/null || true; fi
 
 N=$(find "$REPO/scripts/.cache/cavas-calibracao/recortes" -type f 2>/dev/null | wc -l)
 echo "[preparador] fim $(date -u +%FT%TZ) — recortes no cache: $N"
