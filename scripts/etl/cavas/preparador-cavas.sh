@@ -102,18 +102,48 @@ if [ -n "$PROGRESSO" ]; then
   WATCH=$!
 fi
 
-# 1) Dependencias: Python + numpy + Pillow vem do apt (evita pip/PEP 668).
-if ! command -v python3 >/dev/null 2>&1 || ! python3 -c "import numpy, PIL" >/dev/null 2>&1; then
-  echo "[preparador] instalando python3/numpy/pillow/git via apt"
+# 1) Dependencias: Python + numpy + Pillow + rasterio vem do apt (evita pip/PEP 668).
+# O rasterio entrou na condicao por MEDICAO em 12/10/2026: todo run da VM desde
+# 11/10 morria no primeiro negativo com ModuleNotFoundError no import lazy de
+# rasterio dentro de ler_janela (scripts/coletar-cavas-calibracao.py:417).
+# Testar os quatro juntos e instalar o que faltar ANTES de qualquer coleta.
+if ! command -v python3 >/dev/null 2>&1 || ! python3 -c "import numpy, PIL, rasterio" >/dev/null 2>&1; then
+  echo "[preparador] instalando python3/numpy/pillow/rasterio/git via apt"
   ping apt
   export DEBIAN_FRONTEND=noninteractive
   apt-get update -y
-  apt-get install -y python3 python3-numpy python3-pil git ca-certificates
+  apt-get install -y python3 python3-numpy python3-pil python3-rasterio git ca-certificates
+fi
+
+# MUNCHA DE SEGURANCA do rasterio: nem toda imagem traz python3-rasterio, e
+# falhar AQUI e melhor do que morrer 10 linhas adiante no meio do coletor,
+# com o heartbeat ja batendo e o checkpoint pela metade. O Ubuntu 24.04 bloqueia
+# pip no sistema (PEP 668), entao a primeira tentativa carrega
+# --break-system-packages; se nem isso colar, tenta o pip normal. Depois de
+# tudo, se o import ainda falha: mensagem clara e exit 4 — codigo distinto de
+# rc1. O EXIT trap (instalado la em cima, antes deste bloco) grava
+# "abortado-rc4" no heartbeat e despeja o log no Blob.
+if ! python3 -c "import rasterio" >/dev/null 2>&1; then
+  echo "[preparador] rasterio ausente apos o apt — tentando pip3"
+  pip3 install rasterio --break-system-packages \
+    || pip3 install rasterio \
+    || true
+fi
+if ! python3 -c "import rasterio" >/dev/null 2>&1; then
+  echo "[preparador] ERRO: rasterio nao importa nem depois do apt e do pip3." >&2
+  echo "[preparador] ERRO: abortando antes do coletor (exit 4), para nao morrer no meio da coleta." >&2
+  exit 4
 fi
 ping deps-ok
 
 # 2) Repo (publico, sem credencial). Depth 1 basta; o dado vem do STAC/WFS.
 if [ -d "$REPO/.git" ]; then
+  # Um fetch morto no meio (reboot ou desligamento da VM) deixa shallow.lock
+  # (ou index.lock) para tras, e o git recusa TODO fetch seguinte com rc128
+  # "Unable to create '.git/shallow.lock': File exists" — medido 12/10/2026.
+  # O lock e so um marcador de trabalho interrompido: apaga-lo aqui e seguro
+  # porque nenhum outro git roda nesta VM durante o preparador.
+  rm -f "$REPO/.git/shallow.lock" "$REPO/.git/index.lock"
   echo "[preparador] atualizando o repo"
   ping repo
   git -C "$REPO" fetch --depth 1 origin main

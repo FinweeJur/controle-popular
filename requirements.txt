@@ -17,6 +17,13 @@ openpyxl>=3.1
 # Coletor Congresso MG (scripts/coletar-congresso-mg.py)
 DadosAbertosBrasil>=2.1
 
+# Coletor de cavas (scripts/coletar-cavas-calibracao.py)
+# rasterio recorta a janela de satelite; numpy/Pillow abrem e gravam o recorte.
+# Sem rasterio o coletor morre no import lazy de ler_janela (medido 12/10/2026).
+rasterio>=1.3
+numpy>=1.24
+Pillow>=9.0
+
 # ETLs gerais
 python-dotenv>=1.0
 psycopg[binary]>=3.1
