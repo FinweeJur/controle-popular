@@ -835,6 +835,46 @@ runs das 19:21 e 22:05 existia no Blob e ninguém leu.
   mostra a conversão exata — pela ordem de grandeza, R$ 43,37 fica perto de
   **US$ 8 dos US$ 100**.
 
+## Rodada de 13/10/2026 — VM reprovada, coleta no PC local (medido)
+
+Três medições do mesmo dia, todas no `home-pc` e na VM `cp-vm`:
+
+### A VM não coletou nada (run 38426396287)
+
+- `az vm run-command` com `--no-wait` **nunca executou** em 80+ minutos:
+  `vigiar` completou `completed/failure` ~17:28 UTC, `desligar` desligou a
+  VM, o run fechou `completed/failure` às 17:41 UTC;
+- os `##[warning] preador abortou` do vigia eram **heartbeat antigo**
+  (`progresso-20261012-2205.json`, abortado-rc100 de 12/10) — o run-command
+  nem tinha chegado para regravar;
+- leitura: sem causa confirmada do atraso do run-command. Enquanto não houver
+  causa, **coleta grande roda no PC local**; VM só para teste de caminho.
+
+### Fila de positivos corrigida e coleta local completa (+10)
+
+- causa medida do "0 recortes em 40 minutos": a fila era ordenada por id de
+  cena **crescente** e abria em dez/2025–jan/2026 (época de chuva); as 8
+  primeiras candidatas foram rejeitadas por nuvem;
+- dois consertos em `coletar-cavas-calibracao.py`: ordem **decrescente** e
+  salto dos **1.998 alvos já coletados** (antes cada um custava ~45 s de
+  leitura para o hash descartar);
+- rodada local (`--tipo positivo --limite 10`): **+10 recortes** gravados em
+  ~15 minutos, nuvem 7%, cena `CBERS_4A_WPM_20260924_206_141_L2` — os
+  primeiros positivos novos desde a coleta de 02/10;
+- manifesto: positivo 2.035 · negativo 3.095.
+
+### Negativos: 0 por régua de nuvem, não por bug (diagnóstico)
+
+- rodada `--tipo negativo --limite 10`: 30 candidatos, **0 aceitos**;
+- diagnóstico com a mesma semente (`diagnosticar-negativos.py`): das 90
+  janelas testadas, **77 rejeitadas por nuvem >20%**, 7 leituras falharam,
+  **0 hash duplicado** — a régua funcionou; a amostra estava nublada;
+- conserto: reserva de candidatos **×3 → ×10** (100 pontos, baratos em
+  memória; a leitura de cena só acontece na aceitação) e ordenação
+  decrescente como nos positivos;
+- rodada de verificação com o conserto: 100 candidatos sorteados,
+  em andamento no fecho desta sessão.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md)

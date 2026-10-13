@@ -87,6 +87,34 @@ dados abertos do IBAMA):
   [FONTES.md](../06-fontes/FONTES.md);
 - varredura de dado pessoal verde (`checar-dado-pessoal-em-dado.py`).
 
+### Medições de 13/10/2026 (coletor pronto)
+
+Coletor `scripts/coletar-ibama-coordenadas.py` executado no mesmo dia:
+
+| Medida | Valor |
+|---|---:|
+| Autos no acervo do IBAMA | 711.986 |
+| Autos de MG | 113.329 |
+| Autos MG com coordenada válida | 14.751 (13%) |
+| Autos MG com termo de mineração | 3.891 |
+| Desses, com coordenada dentro do bbox de MG | **232** |
+| Municípios cobertos | 74 (Mariana 20 · Itabirito 17 · Francisco Dumont 12) |
+| JSON gerado | `scripts/.cache/cavas-calibracao/multas-ibama-mg.json` (232 linhas, 81 KB) |
+
+Três fatos que mudam o uso:
+
+- **94% dos MG+mineração não têm coordenada na fonte** (3.656 de 3.891) —
+  é lacuna do IBAMA, não do filtro;
+- 6 linhas da primeira versão tinham `SEQ_AUTO_INFRACAO` vazio (auto com
+  número legado tipo `96DPWQ6C`): sem a chave não há junção, então o
+  coletor as descarta — a contagem caiu de 238 para 232 por isso;
+- a chave de junção é `SEQ_AUTO_INFRACAO` (o número do auto não casa entre
+  os dois CSVs);
+- o filtro de termo é largo (`mineral` sozinho casa 2.369) — o campo
+  `termo_mineracao` ficou gravado em cada linha para calibrar sem
+  reprocessar.
+
+
 ## Fase 2 — prior geológico e geográfico
 
 ### Ideia
@@ -153,6 +181,15 @@ Diagnóstico medido em 13/10/2026, durante a rodada local de `--limite 10`:
 
 - Rodada local de `--limite 10` grava os 10 recortes em menos de 1 hora;
 - medição anotada em [MEDICOES-CAVAS-MINERACAO.md](MEDICOES-CAVAS-MINERACAO.md).
+
+### Medições de 13/10/2026 (conserto aplicado)
+
+- Fila reordenada: os 6 primeiros alvos passaram a apontar para a cena
+  `CBERS_4A_WPM_20260924` (estiagem), antes eram cenas de dez/2025;
+- alvos já coletados pulados na montagem da fila: **1.998**;
+- primeira rodada depois do conserto: **+7 recortes em ~10 minutos**
+  (checkpoint 5.120 → 5.127), contra 0 recortes em 40 minutos antes.
+
 
 ## Regras editoriais e de dado
 
