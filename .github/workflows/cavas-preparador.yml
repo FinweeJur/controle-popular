@@ -262,10 +262,22 @@ jobs:
             # de um run que nunca comecou.
             NP=$(printf '%s' "$XML" | awk '{n+=gsub(/<Name>progresso-/,"")} END{print n+0}')
             if [ "${NP:-0}" -gt 0 ]; then
-              NOME=$(printf '%s' "$XML" | grep -o '<Name>progresso-[^<]*' | head -n1 | sed 's|<Name>||')
+              # O MAIS NOVO, nao o primeiro: a listagem sai em ordem
+              # lexografica e o nome carrega o carimbo de tempo
+              # (progresso-AAAAMMDD-HHMM.json), entao `tail` pega o run atual
+              # e `head` pega sempre o ANTIGO. Medido 12/10/2026: com `head`
+              # a leitura fixou em progresso-20261012-1322 e escondeu o
+              # "abortado-rc100" dos runs das 19:21 e 22:05 — o veiculo certo
+              # mostrava um coracao queimado de um dia anterior.
+              NOME=$(printf '%s' "$XML" | grep -o '<Name>progresso-[^<]*' | tail -n1 | sed 's|<Name>||')
               CONTEUDO=$(curl -fsS --connect-timeout 15 --max-time 30 \
                 "https://${BLOB_ACCOUNT}.blob.core.windows.net/${BLOB_CONTAINER}/${NOME}?${SASQ}" || true)
               echo "[$(date -u +%FT%TZ)] heartbeat ${NOME}: ${CONTEUDO:-indisponivel}"
+              # Um heartbeat dizendo "abortado" e a causa dita em voz alta:
+              # avisa na hora, sem esperar os 72 min de janela acabarem.
+              case "$CONTEUDO" in
+                *abortado*) echo "::warning::preparador abortou — ${CONTEUDO}" ;;
+              esac
             fi
             if [ "${NM:-0}" -gt "${N0:-0}" ]; then
               printf '%s' "$XML" | grep -o '<Name>manifesto-[^<]*' | sed 's|<Name>|manifesto novo: |'

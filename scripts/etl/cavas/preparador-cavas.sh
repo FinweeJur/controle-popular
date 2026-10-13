@@ -111,6 +111,16 @@ if ! command -v python3 >/dev/null 2>&1 || ! python3 -c "import numpy, PIL, rast
   echo "[preparador] instalando python3/numpy/pillow/rasterio/git via apt"
   ping apt
   export DEBIAN_FRONTEND=noninteractive
+  # DPKG INTERROMPIDO: um apt anterior morto no meio (reboot, auto-shutdown ou
+  # desligamento da VM) deixa o banco do dpkg com pacote pendente, e TODO
+  # apt-get seguinte recusa com rc100 "dpkg was interrupted, you must manually
+  # run 'dpkg --configure -a'". Medido 12/10/2026 nos runs das 19:21 e 22:05:
+  # os dois morreram em 10-18 s, antes de instalar qualquer coisa, e o
+  # heartbeat gravava "abortado-rc100". Consertar o banco ANTES do update e a
+  # cura exata que o proprio erro pede. `|| true` porque quem relata o estado
+  # final do pacote e o apt-get logo abaixo — aqui so desfaz o que ficou pela
+  # metade.
+  dpkg --configure -a || true
   apt-get update -y
   apt-get install -y python3 python3-numpy python3-pil python3-rasterio git ca-certificates
 fi
