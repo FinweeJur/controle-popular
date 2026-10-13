@@ -28,9 +28,10 @@
 # DESLIGAMENTO: o job `desligar` roda sempre (`if: always()`), com login
 # proprio, mesmo quando os outros falham ou estouram o tempo. Ele ainda puxa
 # o fim do `/var/log/preparador-cavas.log` antes de desligar, para o proximo
-# run ja nascer com o diagnostico. A auto-shutdown da VM (16:00 UTC, criada
-# 05/10) NAO cobre esta janela: o cron pede 12:30 UTC mas o GitHub executou
-# sempre entre 17:25 e 20:38 UTC (medido 05 a 11/10).
+# run ja nascer com o diagnostico. A auto-shutdown da VM esta em 23:00 UTC
+# (recurso shutdown-computevm-cp-vm, medido na API em 13/10; o texto antigo
+# dizia 16:00 e estava errado): o cron 12:30 e os runs de 17:25-20:38 UTC
+# ficam todos dentro da janela, mesmo que o `desligar` nao dependa dela.
 #
 # TRANSFERENCIA: os recortes (um tar) e o manifesto sobem para o Azure Blob
 # (conta cpdados4751, container cavas) por um SAS de 3 h de escrita. O home-pc
