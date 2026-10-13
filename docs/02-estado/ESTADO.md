@@ -192,8 +192,19 @@ ganharam correção no mesmo dia (rasterio no apt, limpeza de lock, cache
 vazio de positivos). Medição completa (runs, ids, horários e a
 documentação da Azure) em
 [MEDICOES-CAVAS-MINERACAO.md](../planos/MEDICOES-CAVAS-MINERACAO.md).
+**Segunda leitura em 13/10 — os runs 6 e 7 de 12/10 também não fecharam:**
+ambos morreram em 10–18 s com `dpkg was interrupted` (rc100), o apt morto no
+meio do reboot de limpeza deixou o dpkg com pacote pendente; e o `vigiar` lia
+o heartbeat **antigo** (`head -n1` na listagem ordenada pelo carimbo do
+nome), então o `abortado-rc100` existia no Blob e ninguém leu. Os dois
+consertos saíram em 13/10 (`dpkg --configure -a` antes do `apt-get update`;
+`tail -n1` + warning imediato quando o heartbeat diz `abortado`). A mesma
+medição responde o crédito: **US$ 100 AzureForStudents, de 04/10/2026 a
+04/10/2027**, com **R$ 43,37 cobrados entre 04/10 e 13/10** — a VM somou
+R$ 12,69 (disco + IP, ≈ R$ 1,27/dia enquanto existir) e o processamento
+mediu **zero**; o consumo maior é o portal no Container Apps.
 Próxima rodada segue a validação que o dono aprovou em 12/10 (limite=10,
-~1 h de VM).
+~1 h de VM) — ⏳ **disparar só com o dono**, porque o run liga a VM.
 
 ### Bloco C — ação externa do dev
 

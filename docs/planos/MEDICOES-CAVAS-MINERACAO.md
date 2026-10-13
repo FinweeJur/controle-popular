@@ -33,6 +33,7 @@ plano; a data de cada medição está no título.
 - [Medições da Fase 3 — 29/09/2026](#medições-da-fase-3--29092026)
 - [Medições da Fase 5 — 29/09/2026](#medições-da-fase-5--29092026)
 - [Medições do preparador da VM (Azure) — 12/10/2026 (medido)](#medições-do-preparador-da-vm-azure--12102026-medido)
+- [Rodada de 12/10 fechada e crédito Azure — 13/10/2026 (medido)](#rodada-de-1210-fechada-e-crédito-azure--13102026-medido)
 - [Origem](#origem)
 
 ## Medições da Fase 1 — 25/09 (piloto)
@@ -757,6 +758,82 @@ scripts in a Linux VM in Azure using action Run Commands", lida em 12/10):
 - Pendências aguardando decisão do dono: os 16 itens da lista curta, os 15
   `revisado`, a regra dos 5 mil negativos e a cadência de deploy (só com
   permissão).
+
+## Rodada de 12/10 fechada e crédito Azure — 13/10/2026 (medido)
+
+Fecha os dois runs de 12/10 que ficaram de fora do balanço anterior, registra
+os dois consertos que saíram da leitura deles e responde, com número da API,
+quanto as tentativas gastaram do crédito da Azure. Horários em UTC.
+
+**Os dois runs restantes de 12/10:**
+
+- **6º run — id 38287381314, `fd01a3fe` (dispatch manual).** `preparar`
+  success, `vigiar` falhou após os 72 min, `desligar` cancelou mas a VM
+  terminou desligada. A VM executou o preparador às **19:21:35** e morreu em
+  ~10 s.
+- **7º run — id 38310116776, `62c75454` (cron 12:30).** Mesmo desenho:
+  execução às **22:05:47**, morte em ~18 s, `vigiar` esgotou a janela,
+  `desligar` encerrou a VM.
+- Nos dois o heartbeat ficou `abortado-rc100`, e nos dois o `vigiar` **não
+  mostrou esse aborto** (bug 2 abaixo).
+
+**Causa-raiz 4 — dpkg interrompido (a do rc100):**
+
+```
+E: dpkg was interrupted, you must manually run 'dpkg --configure -a'
+E: Sub-process /usr/bin/dpkg returned an error code (100)
+```
+
+O `apt-get install` do bloco de dependências recusou com **rc100** antes de
+instalar qualquer coisa. A origem é um apt morto no meio (reboot de limpeza
+ou desligamento da VM) deixando o banco do dpkg com pacote pendente — e todo
+apt seguinte passa a recusar. A cura é a que o próprio erro pede.
+
+**Causa-raiz 5 — o `vigiar` lia o heartbeat errado:**
+
+`grep -o '<Name>progresso-...' | head -n1` pega o **primeiro** da listagem, e
+a listagem sai em ordem lexicográfica com o carimbo de tempo no nome — ou
+sempre o **antigo** `progresso-20261012-1322.json`. O `abortado-rc100` dos
+runs das 19:21 e 22:05 existia no Blob e ninguém leu.
+
+**Consertos aplicados em 13/10/2026:**
+
+1. `scripts/etl/cavas/preparador-cavas.sh` — `dpkg --configure -a || true`
+   antes do `apt-get update` (a receita do próprio erro; quem relata o estado
+   final é o apt logo abaixo).
+2. `.github/workflows/cavas-preparador.yml` — `tail -n1` no lugar de
+   `head -n1`, mais `::warning::` imediato quando o heartbeat diz
+   `abortado`, para a causa aparecer na hora em vez de ao fim dos 72 min.
+
+**Crédito Azure e gasto medido (13/10/2026, API do Azure):**
+
+- Conta de cobrança **`Artur Colito`** (MCA Direct, criada **04/10/2026
+  20:15**), perfil **`TEKD-AO7U-BG7-PGB`**, moeda **BRL**, dia da fatura 9.
+- Crédito, lido em `billingProfiles → spendingLimitDetails`: **US$ 100,00**,
+  tipo **`AzureForStudents`**, de **04/10/2026 a 04/10/2027**, status
+  `Active`, `spendingLimit: On`.
+- Gasto (Cost Management, `ActualCost`, moeda da assinatura): **R$ 43,37 no
+  total de 04/10 a 13/10** — nada em agosto ou setembro, porque a conta
+  nasceu em 04/10.
+  - por dia: 04/10 0,24 · 05/10 2,11 · 06 a 09/10 2,14 cada · 10/10 6,73 ·
+    11/10 11,55 · 12/10 10,71 · 13/10 3,46 (dia parcial);
+  - por serviço: Azure Container Apps **25,65** · Virtual Network **10,07** ·
+    Storage **7,44** · Container Registry 0,18 · Container Instances 0,02 ·
+    Load Balancer e banda ≈ 0 · **Virtual Machines 0,00**;
+  - por grupo: `cp-app` 38,54 · `me_cp-env_cp-app_spaincentral` 4,80 ·
+    `me_cp-env2_cp-app_northcentralus` 0,03.
+- **A VM das cavas (`cp-vm`) custou R$ 12,69** — disco P4 LRS **R$ 7,44** +
+  IP público estático **R$ 5,24**, cobrados por dia desde 05/10 (primeira
+  cobrança) **enquanto a VM existir**: ≈ **R$ 1,27/dia**, ligada ou não.
+  O processamento mediu **R$ 0,0000** em todos os dias (medidor
+  `B2ats v2 - Free`).
+- Leitura: **a coleta em si está saindo de graça.** O que consome o crédito é
+  o portal no Container Apps e a mera existência da VM (disco + IP). Rodar
+  `limite=10` ou `limite=500` não muda a conta — e apagar a VM quando a fase
+  terminar é o único corte relevante (R$ 1,27/dia).
+- A API devolve em BRL; o crédito é em USD. O portal (Azure → créditos)
+  mostra a conversão exata — pela ordem de grandeza, R$ 43,37 fica perto de
+  **US$ 8 dos US$ 100**.
 
 ## Origem
 
