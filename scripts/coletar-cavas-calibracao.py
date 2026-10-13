@@ -86,6 +86,29 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # console Windows = 
 import numpy as np
 from PIL import Image
 
+# Geometria pura (stdlib) vive no módulo irmão: o hook do CodeScene barre
+# commit de arquivo que passa de 600 linhas, e tirar a geometria devolveu
+# o coletor abaixo do teto sem perder nada (13/10/2026). Reexportamos os
+# nomes para os diagnosticos locais que importam este arquivo por nome.
+from cavas_calibracao_fila import (  # noqa: F401
+    CELULA_COLETADOS,
+    MARGEM_EXCLUSAO,
+    bbox_anel,
+    centroide,
+    montar_indice,
+    ponto_dentro,
+    primeiro_anel,
+    rejeitado,
+    rejeitado_indice,
+)
+
+# alias com underscore: os call sites do coletor ja usam esse nome, e os
+# diagnosticos locais importam este arquivo por nome — manter os dois nomes
+# evita quebrar quem importa o coletor sem ter que renomear tudo de uma vez.
+_primeiro_anel = primeiro_anel
+_bbox_anel = bbox_anel
+_centroide = centroide
+
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = Path(__file__).resolve().parent / ".cache" / "cavas-calibracao"
 RECORTES = CACHE / "recortes"
@@ -118,13 +141,7 @@ TEX_LIM = 0.02  # textura media (|diff|/mediana) abaixo disso = superficie lisa
 TEX_ACROM_LIM = 0.45  # fracao acromatica minima para a regra de textura valer
 AMOSTRAS_CENA = ((0.12, 0.15), (0.55, 0.45), (0.85, 0.80))  # frac. de linha/coluna
 AMOSTRA_PX = 256  # cenas WPM ~14k px sem overviews: janela pequena (medido 25/09)
-MARGEM_EXCLUSAO = 0.006  # ~600 m de folga na exclusao de negativos
-# Celula da grade de janelas JA coletadas (~2,2 km). Serve para pular
-# candidato dentro de area ja coletada ANTES de compor a imagem: a rodada
-# de 29/09/2026 gastou ~30 s por candidato para o teste de hash descartar
-# depois (mesma semente 42 redesenhava os pontos da rodada v1; 2 h = zero
-# recorte novo). Menor que a janela (4,3 km) sobra pouca recusa indevida.
-CELULA_COLETADOS = 0.02
+# MARGEM_EXCLUSAO e CELULA_COLETADOS vem de cavas_calibracao_fila (acima)
 
 
 def _get(url: str, timeout: int = 120, headers: dict | None = None) -> bytes:
@@ -258,80 +275,6 @@ def carregar_exclusao(exclusao: Path | None = None) -> list[tuple[float, float, 
     print(f"  exclusao mining_age fora_sigmine: {m} poligonais", flush=True)
     arq.write_text(json.dumps(bboxes), encoding="utf-8")
     return [tuple(b) for b in bboxes]
-
-
-# ---------------------------------------------------------------- geometria
-
-def _primeiro_anel(geom: dict) -> list[list[float]] | None:
-    if not geom:
-        return None
-    if geom.get("type") == "Polygon":
-        rings = geom.get("coordinates") or []
-        return rings[0] if rings else None
-    if geom.get("type") == "MultiPolygon":
-        polys = geom.get("coordinates") or []
-        if polys and polys[0]:
-            return polys[0][0]
-    return None
-
-
-def _bbox_anel(pts) -> tuple[float, float, float, float]:
-    xs = [p[0] for p in pts]
-    ys = [p[1] for p in pts]
-    return (min(xs), min(ys), max(xs), max(ys))
-
-
-def _centroide(pts) -> tuple[float, float]:
-    xs = [p[0] for p in pts]
-    ys = [p[1] for p in pts]
-    return (sum(xs) / len(xs), sum(ys) / len(ys))
-
-
-def ponto_dentro(pt, pts) -> bool:
-    """Ray casting (stdlib; sem shapely no repo)."""
-    x, y = pt
-    dentro = False
-    j = len(pts) - 1
-    for i in range(len(pts)):
-        xi, yi = pts[i][0], pts[i][1]
-        xj, yj = pts[j][0], pts[j][1]
-        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi + 1e-15) + xi):
-            dentro = not dentro
-        j = i
-    return dentro
-
-
-def rejeitado(pt, exclusao) -> bool:
-    x, y = pt
-    for (x0, y0, x1, y1) in exclusao:
-        if x0 - MARGEM_EXCLUSAO <= x <= x1 + MARGEM_EXCLUSAO and \
-           y0 - MARGEM_EXCLUSAO <= y <= y1 + MARGEM_EXCLUSAO:
-            return True
-    return False
-
-
-def montar_indice(exclusao, celula: float = 0.5) -> dict:
-    """Grade geográfica: cada bbox entra nas células que cobre (rejeição O(1))."""
-    idx: dict = {}
-    for b in exclusao:
-        x0, y0, x1, y1 = b[0] - MARGEM_EXCLUSAO, b[1] - MARGEM_EXCLUSAO, \
-            b[2] + MARGEM_EXCLUSAO, b[3] + MARGEM_EXCLUSAO
-        for cx in range(int(math.floor(x0 / celula)), int(math.floor(x1 / celula)) + 1):
-            for cy in range(int(math.floor(y0 / celula)), int(math.floor(y1 / celula)) + 1):
-                idx.setdefault((cx, cy), []).append((x0, y0, x1, y1))
-    return idx
-
-
-def rejeitado_indice(pt, idx: dict, celula: float = 0.5) -> bool:
-    x, y = pt
-    cx = int(math.floor(x / celula))
-    cy = int(math.floor(y / celula))
-    for ddx in (-1, 0, 1):
-        for ddy in (-1, 0, 1):
-            for (x0, y0, x1, y1) in idx.get((cx + ddx, cy + ddy), ()):
-                if x0 <= x <= x1 and y0 <= y <= y1:
-                    return True
-    return False
 
 
 # ---------------------------------------------------------------- STAC / cenas
@@ -682,6 +625,46 @@ def escolher_recorte(tipo: str, alvo, cenas, cands: list[dict], max_nuvem: float
     return None
 
 
+def _alvos_ja_coletados(itens: list[dict]) -> set:
+    """(processo, fase) dos positivos que já estão no checkpoint."""
+    return {(i.get("processo"), i.get("fase")) for i in itens
+            if i["tipo"] == "positivo"}
+
+
+def _sem_cena(marcados: list) -> int:
+    """Quantos alvos não caem em nenhuma cena CBERS de 18 meses."""
+    return sum(1 for sid, _ in marcados if sid == "")
+
+
+def montar_fila_positivos(pos: list[dict], cenas: list[dict],
+                          itens: list[dict]) -> list[dict]:
+    """Filtra e ordena os alvos positivos da rodada.
+
+    Ordem DECRESCENTE por id de cena: em 13/10/2026 a fila crescente
+    abria em dez/2025 (chuva) e 8 candidatas seguidas caíram no corte de
+    nuvem — 0 recortes em 40 minutos. Descrescente abre na estiagem.
+    """
+    cenas_bboxes = [(c, _primeiro_anel(c.get("geom") or {})) for c in cenas]
+
+    def cena_primaria(p):
+        for c, pts in cenas_bboxes:
+            if pts and ponto_dentro(p["centroide"], pts):
+                return c["id"]
+        return ""
+
+    marcados = [(cena_primaria(p), p) for p in pos]
+    marcados.sort(key=lambda t: t[0], reverse=True)
+    ja_alvo = _alvos_ja_coletados(itens)
+    # Pula alvos já coletados: 1.998 de 7.656 em 13/10/2026, cada um
+    # custando até 3 leituras (~45 s) que o hash descartaria no fim.
+    fila = [p for _, p in marcados
+            if (p.get("processo"), p.get("fase")) not in ja_alvo]
+    print(f"  sem cena CBERS em 18 meses: {_sem_cena(marcados)}", flush=True)
+    print(f"  alvos ja coletados pulados: {len(marcados) - len(fila)}",
+          flush=True)
+    return fila
+
+
 def principal() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--limite", type=int, default=60, help="recortes a gerar nesta rodada")
@@ -729,21 +712,7 @@ def principal() -> int:
         pos = carregar_positivos(args.alvos)
         print(f"  alvos: {len(pos)} | ja no checkpoint: {ja_pos}", flush=True)
         rng.shuffle(pos)
-        # agrupa por cena: reaproveita os 3 arquivos abertos (cache) por cena
-        cenas_bboxes = [(c, _primeiro_anel(c.get("geom") or {})) for c in cenas]
-
-        def cena_primaria(p):
-            for c, pts in cenas_bboxes:
-                if pts and ponto_dentro(p["centroide"], pts):
-                    return c["id"]
-            return ""
-
-        marcados = [(cena_primaria(p), p) for p in pos]
-        sem_cena = sum(1 for sid, _ in marcados if sid == "")
-        marcados.sort(key=lambda t: t[0])
-        pos = [p for _, p in marcados]
-        print(f"  sem cena CBERS em 18 meses: {sem_cena}", flush=True)
-        pendentes_pos = pos
+        pendentes_pos = montar_fila_positivos(pos, cenas, itens)
     if args.tipo in ("ambos", "negativo"):
         print("carregando exclusao para negativos...", flush=True)
         exclusao = carregar_exclusao(args.exclusao)
@@ -758,7 +727,11 @@ def principal() -> int:
             celula=CELULA_COLETADOS,
         )
         alvo_total = args.limite if args.tipo == "negativo" else max(0, args.limite - ja_neg)
-        reserva = max(alvo_total * 3, alvo_total + 20)
+        # Reserva x10 (antes x3): em 13/10/2026 os 30 candidatos da rodada
+        # foram rejeitados pela régua de nuvem (77 janelas >20%, 0 hash
+        # duplicado). Candidato é barato; a leitura de cena só acontece
+        # na aceitação.
+        reserva = max(alvo_total * 10, alvo_total + 20)
         n = 0
         tent = 0
         ext = {"minlon": args.ext[0], "minlat": args.ext[1],
@@ -778,6 +751,9 @@ def principal() -> int:
         # positivos ja fazem desde a Fase 1. Sem a ordem, cada candidato
         # abria cena fria e a leitura custava 10-20 s (medido 29/09/2026).
         # As cenas de cada ponto sao calculadas UMA vez e o laco reaproveita.
+        # Descrescente como nos positivos (13/10/2026): o id da cena abre
+        # pela data, entao ordem alfabetica agrupa por cena recente, que
+        # tem mais chance de passar no corte de nuvem.
         print("  ordenando candidatos por cena primaria...", flush=True)
         com_cenas: list[tuple[str, list, tuple[float, float]]] = []
         for i, pt in enumerate(pendentes_neg, 1):
@@ -785,7 +761,7 @@ def principal() -> int:
             com_cenas.append((lista[0]["id"] if lista else "", lista, pt))
             if i % 500 == 0:
                 print(f"    {i}/{len(pendentes_neg)}", flush=True)
-        com_cenas.sort(key=lambda t: t[0])
+        com_cenas.sort(key=lambda t: t[0], reverse=True)
         pendentes_neg = [(pt, lista) for _, lista, pt in com_cenas]
 
     feitos = {"positivo": 0, "negativo": 0}
