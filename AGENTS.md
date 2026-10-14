@@ -63,6 +63,7 @@ Guia de escrita e template: [`docs/GUIA-DE-DOCUMENTACAO.md`](docs/GUIA-DE-DOCUME
 | Sempre, antes de qualquer tarefa | [`01-produto/PRODUTO.md`](docs/01-produto/PRODUTO.md) |
 | Saber o que fazer agora: fila, fila bloqueada, dívida | [`02-estado/ESTADO.md`](docs/02-estado/ESTADO.md) |
 | Antes do primeiro commit | [`03-desenvolvimento/DESENVOLVIMENTO.md`](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Criar página nova ou revisar padrão | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | Mexer em rota, payload ou banco | [`04-arquitetura/ARQUITETURA.md`](docs/04-arquitetura/ARQUITETURA.md) |
 | Publicar, coletar, buildar | [`05-operacao/OPERACAO.md`](docs/05-operacao/OPERACAO.md) |
 | Mexer em fonte ou dado coletado | [`06-fontes/FONTES.md`](docs/06-fontes/FONTES.md) |

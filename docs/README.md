@@ -37,6 +37,7 @@ automáticamente pelos agentes de código.
 | Sempre — o que é o portal, frentes e regras editoriais | **PRODUTO** | [`01-produto/PRODUTO.md`](01-produto/PRODUTO.md) |
 | Decidir o que fazer agora — fila, bloqueios, dívida | **ESTADO** | [`02-estado/ESTADO.md`](02-estado/ESTADO.md) |
 | Antes do primeiro commit — worktree, commit, push | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Criar página nova ou revisar o padrão wiki | **PADRAO-PAGINA-WIKI** | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | Regras duras do repo (lido por agentes) | AGENTS | [`/AGENTS.md`](/AGENTS.md) |
 
 ## Documentos por área
