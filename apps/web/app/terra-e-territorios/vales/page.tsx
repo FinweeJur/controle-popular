@@ -6,6 +6,8 @@ import {
 } from "@/lib/cidades/vales-jequitinhonha";
 import { obterCatalogoMucuri, obterEstatisticasMucuri } from "@/lib/cidades/vales-mucuri";
 import TabelaMunicipiosVales, { type LinhaVale } from "./TabelaMunicipiosVales";
+import TesesSanfona from "@/app/components/TesesSanfona";
+import { tesesPorDestino } from "@/lib/biblioteca/teses";
 
 /**
  * `/terra-e-territorios/vales` — catálogo territorial dos Vales do Jequitinhonha
@@ -179,6 +181,15 @@ export default function PaginaVales() {
 
       <section aria-label="Tabela dos municípios" className="mt-6">
         <TabelaMunicipiosVales linhas={LINHAS} />
+      </section>
+
+      {/* Página própria do Vale do Jequitinhonha — teses suas (dono, 14/10/2026):
+          Irapé, Setúbal e Itapebi, fatia `jequitinhonha` do levantamento BibELO. */}
+      <section aria-label="Teses sobre barragens do Vale do Jequitinhonha" className="mt-6">
+        <TesesSanfona
+          teses={tesesPorDestino("jequitinhonha")}
+          tituloSessao="Teses e dissertações do Vale do Jequitinhonha"
+        />
       </section>
 
       <section

@@ -13,6 +13,8 @@ import { IndiceWiki } from "@/app/components/wiki";
 import PainelMariana from "./PainelMariana";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import TesesSanfona from "@/app/components/TesesSanfona";
+import { tesesPorDestino } from "@/lib/biblioteca/teses";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/mariana", {
   title: "Acordo do Rio Doce (Mariana) — Execução em MG | Controle Popular",
@@ -23,12 +25,69 @@ const SECOES = [
   { id: "resumo", titulo: "Visão Geral dos Gastos" },
   { id: "grafico-orgaos", titulo: "Execução por Órgão" },
   { id: "iniciativas", titulo: "Iniciativas e Cláusulas" },
+  { id: "teses", titulo: "Teses e dissertações" },
   { id: "fontes", titulo: "De Onde Vem o Dado" },
 ];
 
+/** Seção Teses — fatia `riodoce` do levantamento acadêmico (dono, 14/10/2026):
+    pesquisas que citam o caso Mariana/Fundão, com TAG MAB e resumo em sanfona.
+    Função própria para a página principal ficar sob o teto de método grande. */
+function SecaoTesesMariana() {
+  return (
+    <section id="teses" className="mt-12 border-t border-border pt-8">
+      <h2 className="font-display text-xl font-semibold text-text">Teses e dissertações</h2>
+      <p className="mt-1 text-sm text-text-soft">
+        Pesquisa acadêmica que cita o caso — fatia do levantamento BibELO marcada
+        `destino: riodoce` pelo gerador versionado; resumo abre inline.
+      </p>
+      <div className="mt-4 rounded-2xl border border-border bg-surface p-4 sm:p-6">
+        <TesesSanfona teses={tesesPorDestino("riodoce")} tituloSessao="Teses do caso Mariana / Fundão" />
+      </div>
+    </section>
+  );
+}
+
+/** Seção "Execução por Órgão Executor" — gráfico de barras simples, vetorial
+    (AGENTS §8.6), em função própria: a página principal fica sob o teto de
+    método grande do CodeScene e o gráfico fica testável isolado. */
+function SecaoOrgaosMariana() {
+  const maxEmpenhado = Math.max(...RIO_DOCE_POR_ORGAO.map((o) => o.valorEmpenhado));
+  return (
+    <section id="grafico-orgaos" className="mt-12 border-t border-border pt-8">
+      <h2 className="font-display text-xl font-semibold text-text">Execução por Órgão Executor</h2>
+      <p className="mt-1 text-sm text-text-soft">
+        Distribuição dos valores empenhados e pagos entre secretarias e fundos públicos estaduais.
+      </p>
+
+      <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-6">
+        <div className="space-y-4">
+          {RIO_DOCE_POR_ORGAO.slice(0, 8).map((org) => {
+            const pct = Math.round((org.valorEmpenhado / maxEmpenhado) * 100);
+            return (
+              <div key={org.orgao}>
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <span className="font-medium text-text">{org.orgao}</span>
+                  <span className="font-tabular font-bold text-primary">
+                    R$ {formatCurrencyCompactaBR(org.valorEmpenhado)}
+                  </span>
+                </div>
+                <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-surface-2">
+                  <div
+                    className="h-full rounded-full bg-primary"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AcordoMarianaPage() {
   const C = COBERTURA_ACORDO_RIO_DOCE;
-  const maxEmpenhado = Math.max(...RIO_DOCE_POR_ORGAO.map((o) => o.valorEmpenhado));
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
@@ -97,36 +156,7 @@ export default function AcordoMarianaPage() {
       </section>
 
       {/* Seção 2: Execução por Órgão (Gráfico SVG) */}
-      <section id="grafico-orgaos" className="mt-12 border-t border-border pt-8">
-        <h2 className="font-display text-xl font-semibold text-text">Execução por Órgão Executor</h2>
-        <p className="mt-1 text-sm text-text-soft">
-          Distribuição dos valores empenhados e pagos entre secretarias e fundos públicos estaduais.
-        </p>
-
-        <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-6">
-          <div className="space-y-4">
-            {RIO_DOCE_POR_ORGAO.slice(0, 8).map((org) => {
-              const pct = Math.round((org.valorEmpenhado / maxEmpenhado) * 100);
-              return (
-                <div key={org.orgao}>
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                    <span className="font-medium text-text">{org.orgao}</span>
-                    <span className="font-tabular font-bold text-primary">
-                      R$ {formatCurrencyCompactaBR(org.valorEmpenhado)}
-                    </span>
-                  </div>
-                  <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-surface-2">
-                    <div
-                      className="h-full rounded-full bg-primary"
-                      style={{ width: `${pct}%` }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <SecaoOrgaosMariana />
 
       {/* Seção 3: Iniciativas Detalhadas */}
       <section id="iniciativas" className="mt-12 border-t border-border pt-8">
@@ -137,6 +167,7 @@ export default function AcordoMarianaPage() {
         <PainelMariana iniciativas={RIO_DOCE_POR_INICIATIVA} />
       </section>
 
+      <SecaoTesesMariana />
       {/* Passarela Legislativa e Projetos de Lei */}
       <PassarelaLegislativa tema="mariana" />
 

@@ -20,6 +20,8 @@ import {
   fontesProBrumadinho,
 } from "@/lib/paraopeba/biblioteca-probrumadinho";
 import BibliotecaClient from "./BibliotecaClient";
+import TesesSanfona from "@/app/components/TesesSanfona";
+import { tesesPorDestino } from "@/lib/biblioteca/teses";
 import { metadataEditavel } from "@/lib/edicoes";
 
 /**
@@ -46,6 +48,86 @@ export const metadata: Metadata = metadataEditavel("/paraopeba/biblioteca", {
   description:
     "Publicações das assessorias técnicas independentes da bacia do Paraopeba e documentos oficiais do Acordo Judicial de Reparação (portal Pró-Brumadinho, Governo de MG) — com link para a fonte original de cada item.",
 });
+
+/** Teses do caso Brumadinho — fatia `brumadinho` (dono, 14/10/2026): pesquisas
+    que citam B1/Córrego do Feijão/Paraopeba pelo nome. Função própria para a
+    página principal ficar sob o teto de método grande do CodeScene. */
+function SecaoTesesBrumadinho() {
+  return (
+    <section className="mt-10 border-t border-border pt-6" aria-labelledby="titulo-teses-pb">
+      <h3 id="titulo-teses-pb" className="font-display text-[clamp(1em,2vw,1.25em)] font-bold tracking-tight">
+        Teses e dissertações do caso
+      </h3>
+      <p className="mt-1 text-sm text-text-soft">
+        Fatia acadêmica do levantamento BibELO marcada `destino: brumadinho`; resumo
+        abre inline e a TAG <strong>MAB</strong> marca quem cita o Movimento.
+      </p>
+      <div className="mt-4">
+        <TesesSanfona
+          teses={tesesPorDestino("brumadinho")}
+          tituloSessao="Teses do caso B1 / Paraopeba"
+        />
+      </div>
+    </section>
+  );
+}
+
+/** Seção "Fonte e método" das fontes Pro-Brumadinho — extraída em função
+    própria: a página principal fica sob o teto de método grande do CodeScene
+    e o bloco de fonte/licença fica auditável isolado. */
+function SecaoFonteEeMetodoPB({
+  fontesPB,
+  coberturaPB,
+}: {
+  fontesPB: Awaited<ReturnType<typeof fontesProBrumadinho>>;
+  coberturaPB: Awaited<ReturnType<typeof coberturaProBrumadinho>>;
+}) {
+  return (
+    <section className="mt-10 border-t border-border pt-6" aria-labelledby="titulo-fontes-pb">
+      <h3
+        id="titulo-fontes-pb"
+        className="font-display text-[clamp(1em,2vw,1.25em)] font-bold tracking-tight"
+      >
+        Fonte e método
+      </h3>
+      <ul className="mt-4 flex flex-col gap-3">
+        {fontesPB.map((f) => (
+          <li key={f.id} className="rounded-2xl border border-border bg-surface p-5 text-sm">
+            <p className="font-display font-semibold text-text">
+              {f.nome}{" "}
+              <span className="font-normal text-text-soft">
+                — {formatNumberBR(f.itens)} itens
+              </span>
+            </p>
+            <p className="mt-1 text-xs text-text-soft">{f.regioes}</p>
+            <p className="mt-2 text-text-soft">
+              <strong className="text-text">Licença:</strong> {f.licenca}
+            </p>
+            <p className="mt-1 text-text-soft">
+              <strong className="text-text">Coleta:</strong> {f.metodo}
+            </p>
+            <a
+              href={f.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-xs font-medium text-primary underline underline-offset-2 hover:text-accent"
+            >
+              {f.site} ↗
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
+        <strong className="text-text">Fora do acervo:</strong>{" "}
+        {coberturaPB.ficouDeFora}
+      </p>
+      <p className="mt-3 text-xs text-text-soft">
+        Coleta de {formatDateBR(coberturaPB.geradoEm.slice(0, 10))}. O acervo não se
+        atualiza sozinho: ele muda quando o coletor roda e o site é reconstruído.
+      </p>
+    </section>
+  );
+}
 
 export default async function BibliotecaPage() {
   const [itens, cobertura, fontes, itensPB, coberturaPB, fontesPB] = await Promise.all([
@@ -253,49 +335,8 @@ export default async function BibliotecaPage() {
             atiLabel={ATI_BIBLIOTECA_LABEL}
           />
 
-          <section className="mt-10 border-t border-border pt-6" aria-labelledby="titulo-fontes-pb">
-            <h3
-              id="titulo-fontes-pb"
-              className="font-display text-[clamp(1em,2vw,1.25em)] font-bold tracking-tight"
-            >
-              Fonte e método
-            </h3>
-            <ul className="mt-4 flex flex-col gap-3">
-              {fontesPB.map((f) => (
-                <li key={f.id} className="rounded-2xl border border-border bg-surface p-5 text-sm">
-                  <p className="font-display font-semibold text-text">
-                    {f.nome}{" "}
-                    <span className="font-normal text-text-soft">
-                      — {formatNumberBR(f.itens)} itens
-                    </span>
-                  </p>
-                  <p className="mt-1 text-xs text-text-soft">{f.regioes}</p>
-                  <p className="mt-2 text-text-soft">
-                    <strong className="text-text">Licença:</strong> {f.licenca}
-                  </p>
-                  <p className="mt-1 text-text-soft">
-                    <strong className="text-text">Coleta:</strong> {f.metodo}
-                  </p>
-                  <a
-                    href={f.site}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-block text-xs font-medium text-primary underline underline-offset-2 hover:text-accent"
-                  >
-                    {f.site} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
-              <strong className="text-text">Fora do acervo:</strong>{" "}
-              {coberturaPB.ficouDeFora}
-            </p>
-            <p className="mt-3 text-xs text-text-soft">
-              Coleta de {formatDateBR(coberturaPB.geradoEm.slice(0, 10))}. O acervo não se
-              atualiza sozinho: ele muda quando o coletor roda e o site é reconstruído.
-            </p>
-          </section>
+          <SecaoTesesBrumadinho />
+          <SecaoFonteEeMetodoPB fontesPB={fontesPB} coberturaPB={coberturaPB} />
         </section>
       )}
 

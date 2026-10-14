@@ -10,12 +10,39 @@ import {
   METRICAS_BIBLIOTECA,
 } from "@/lib/biblioteca/unificada";
 import BibliotecaGeralClient from "./BibliotecaGeralClient";
+import TesesSanfona from "@/app/components/TesesSanfona";
+import { tesesPorDestino } from "@/lib/biblioteca/teses";
 
 export const metadata: Metadata = {
   title: "Biblioteca Geral e Acervo Acadêmico — Controle Popular",
   description:
     "Acervo unificado de documentos públicos, relatórios corporativos ESG, atas de órgãos de justiça dos 27 estados e produção acadêmica (artigos SciELO, teses de doutorado e dissertações) sobre Vale, Sigma Lithium, consulta prévia, barragens e transparência.",
 };
+
+/** Fatia `unificada` das teses (dono, 14/10/2026): o que não tem caso próprio
+    (nem Mariana/Fundão, nem Brumadinho/B1, nem Jequitinhonha) mora AQUI — nada é
+    excluído. Itens que comparam os DOIS desastres trazem rótulo "Mariana +
+    Brumadinho". Função própria para a página principal ficar sob o teto. */
+function SecaoTesesUnificada() {
+  return (
+    <section className="rounded-3xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+      <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+        Teses de Atingidos por Barragens — contexto nacional
+      </h2>
+      <p className="mt-2 text-sm text-muted leading-relaxed max-w-4xl">
+        A fatia `destino: unificada` do levantamento BibELO (título e resumo sem caso
+        nomeado) fica aqui, sem exclusão nenhuma — a TAG <strong>MAB</strong> marca quem cita o
+        Movimento dos Atingidos por Barragens, e o resumo abre na própria página.
+      </p>
+      <div className="mt-4">
+        <TesesSanfona
+          teses={tesesPorDestino("unificada")}
+          tituloSessao="Teses sem caso nomeado e estudos comparados"
+        />
+      </div>
+    </section>
+  );
+}
 
 export default function BibliotecaGeralPage() {
   const documentos = listarDocumentosUnificados();
@@ -98,6 +125,8 @@ export default function BibliotecaGeralPage() {
         documentos={documentos}
         metricas={METRICAS_BIBLIOTECA}
       />
+
+      <SecaoTesesUnificada />
 
       <FooterGlobal />
     </main>
