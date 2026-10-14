@@ -4,3 +4,4 @@ export { default as LinksRelacionados, type LinkRelacionado } from "./LinksRelac
 export { default as CartaoTopico, type Topico } from "./CartaoTopico";
 export { default as SecaoWiki } from "./SecaoWiki";
 export { MiniSumarioLateral } from "./MiniSumarioLateral";
+export { CapitulosFlutuantes } from "./CapitulosFlutuantes";

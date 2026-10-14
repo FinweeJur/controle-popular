@@ -21,6 +21,7 @@ import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import { InterceptadorLinks } from "@/app/components/InterceptadorLinks";
 import IndicePagina from "@/app/components/IndicePagina";
+import { CapitulosFlutuantes } from "@/app/components/wiki";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
@@ -342,6 +343,11 @@ export default function RootLayout({
               cada clique. Ver `PlayerRadio.tsx`. */}
           <PlayerRadio />
         <IndicePagina />
+        {/* Capítulos da página (wiki lateral / scroll-spy): montado aqui
+            para valer nas 100 rotas do catálogo sem editar página a página.
+            Coleta os h2 do `main`; página com menos de 2 headings não ganha
+            widget. Só aparece em tela grande (xl), como sempre. */}
+        <CapitulosFlutuantes />
         <BeaconDownloadsGlobal />
           {/* Dica no hover: janelinha explicativa depois de 2 s parado
               sobre um botão ou link. Um componente aqui cobre as ~100

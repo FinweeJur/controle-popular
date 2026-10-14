@@ -1,14 +1,28 @@
 "use client";
 
+/**
+ * Sumário do RODAPÉ da página ("Sumário desta página").
+ *
+ * Montado no layout raiz (`app/layout.tsx`), então aparece no pé de TODA
+ * página do portal sem a página precisar declarar nada. Varre os h2/h3 do
+ * `main` no cliente e gera âncora para quem ainda não tiver id (mesma
+ * receita do widget lateral de Capítulos — a coleta mora em
+ * `lib/navegacao/indice-pagina.ts` para os dois usarem os MESMOS ids).
+ *
+ * Decisão do dono em 13/10/2026: o sumário nasce FECHADO e, fechado, é
+ * visualmente MENOR que aberto — uma linha enxuta clicável. Motivo: no pé
+ * da página a caixa aberta empurrava o rodapé e poluía a leitura; quem
+ * quer o índice clica e abre. O "Nesta página" do topo (IndiceWiki) segue
+ * aberto por decisão do dono — os dois papéis são diferentes.
+ */
+
 import { useEffect, useState } from "react";
 import { List, ChevronDown } from "lucide-react";
-import { slugDeTitulo } from "@/lib/navegacao/indice-pagina";
+import { coletarSecoes, type SecaoIndice } from "@/lib/navegacao/indice-pagina";
 
-export interface SecaoIndice {
-  id: string;
-  titulo: string;
-  nivel: 2 | 3;
-}
+// Re-export para compatibilidade: o tipo vivia aqui antes da extração
+// (13/10/2026) para a coleta ser compartilhável com o widget de Capítulos.
+export type { SecaoIndice };
 
 interface Props {
   seletorConteudo?: string;
@@ -21,40 +35,15 @@ export default function IndicePagina({
 }: Props) {
   const [secoes, setSecoes] = useState<SecaoIndice[]>([]);
   const [secaoAtiva, setSecaoAtiva] = useState<string>("");
-  const [aberto, setAberto] = useState(true);
+  // Fechado por padrão (regra do dono, 13/10/2026): caixa compacta no rodapé.
+  const [aberto, setAberto] = useState(false);
 
   useEffect(() => {
-    // Busca todos os H2 e H3 dentro do conteúdo principal
     const container = document.querySelector(seletorConteudo);
     if (!container) return;
 
-    const headings = Array.from(
-      container.querySelectorAll("h2, h3")
-    ) as HTMLElement[];
-
-    const itens: SecaoIndice[] = [];
-
-    headings.forEach((heading, idx) => {
-      // Ignora headings do próprio índice ou modais
-      if (heading.closest("[aria-label='Sumário desta página']")) return;
-      if (heading.closest("header") && idx === 0) return;
-
-      const texto = heading.textContent?.trim() || "";
-      if (!texto) return;
-
-      let id = heading.id;
-      if (!id) {
-        id = slugDeTitulo(texto, idx);
-        heading.id = id;
-      }
-
-      itens.push({
-        id,
-        titulo: texto,
-        nivel: heading.tagName.toLowerCase() === "h3" ? 3 : 2,
-      });
-    });
-
+    const itens = coletarSecoes(container);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- headings so existem no cliente pos-hidratacao (padrao do repo, ver BuscaClient)
     setSecoes(itens);
 
     // Observador para destacar seção visível
@@ -69,7 +58,10 @@ export default function IndicePagina({
       { rootMargin: "-20% 0px -70% 0px" }
     );
 
-    headings.forEach((h) => observer.observe(h));
+    itens.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
 
     return () => observer.disconnect();
   }, [seletorConteudo]);
@@ -80,13 +72,19 @@ export default function IndicePagina({
     <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 my-8">
       <nav
         aria-label={titulo}
-        className="rounded-2xl border border-border bg-surface-2/80 p-5 sm:p-6 shadow-sm backdrop-blur transition-all"
+        className={`rounded-2xl border border-border bg-surface-2/80 shadow-sm backdrop-blur transition-all ${
+          aberto ? "p-5 sm:p-6" : "p-2.5 sm:p-3"
+        }`}
       >
         <div className="flex items-center justify-between">
           <button
             type="button"
             onClick={() => setAberto(!aberto)}
-            className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground focus:outline-none cursor-pointer"
+            className={`flex items-center gap-2 focus:outline-none cursor-pointer ${
+              aberto
+                ? "text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground"
+                : "text-sm font-semibold text-foreground hover:text-primary"
+            }`}
             aria-expanded={aberto}
           >
             <List className="h-4 w-4 text-primary" />
