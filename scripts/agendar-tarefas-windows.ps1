@@ -44,7 +44,13 @@ foreach ($T in $Tarefas) {
 # Cada 5 minutos. Os incidentes de 01/09 e 08/09/2026: next start morreu e
 # ninguem viu. O vigia reinicia (cap de 3/hora) e avisa o Telegram.
 Write-Host "`nRegistrando VIGIA do servidor (cada 5 min)..." -ForegroundColor Cyan
-$VigiaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/vigia-servidor.mts"
+# Corrigido em 13/10/2026: era `cmd.exe /c ...` cru, e o schtasks abria uma
+# JANELA DE CONSOLE em primeiro plano no PC do dono a cada 5 minutos,
+# tapando a tela do trabalho dele. Agora o wrapper executar-ts-oculto.ps1
+# envolve tudo em powershell.exe -WindowStyle Hidden: sem janela visível,
+# igual ao resto da esteira. O schtasks quebra com aspas aninhadas no /TR,
+# por isso o wrapper e -File em vez de -Command.
+$VigiaCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File $P\executar-ts-oculto.ps1 -Script vigia-servidor.mts"
 & schtasks.exe /Create /TN "ControlePopular_VigiaServidor_5min" /TR $VigiaCmd /SC MINUTE /MO 5 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
@@ -54,7 +60,8 @@ if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Wri
 # Log: docs/relatorios-automacao/logs/rotina-radar-editais.log.
 # Registrado pela primeira vez em 10/09/2026 (a task ja existe na maquina).
 Write-Host "Registrando RADAR DE EDITAIS (diario, 04:20)..." -ForegroundColor Cyan
-$RadarCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/radar-editais-diarios.mts >> docs\relatorios-automacao\logs\rotina-radar-editais.log 2>&1"
+# Mesmo conserto de janela do vigia (13/10/2026): wrapper oculto.
+$RadarCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File $P\executar-ts-oculto.ps1 -Script radar-editais-diarios.mts -LogRelativo rotina-radar-editais.log"
 & schtasks.exe /Create /TN "ControlePopular_RadarEditais" /TR $RadarCmd /SC DAILY /ST 04:20 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
@@ -64,7 +71,8 @@ if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Wri
 # autodeploy das 05:50). Publicacao automatica por decisao do dono (10/09/2026).
 # Log: docs/relatorios-automacao/logs/rotina-radar-publicacao.log.
 Write-Host "Registrando PUBLICACAO DO RADAR (diario, 04:50)..." -ForegroundColor Cyan
-$PublicaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/publicar-radar-editais.mts >> docs\relatorios-automacao\logs\rotina-radar-publicacao.log 2>&1"
+# Mesmo conserto de janela do vigia (13/10/2026): wrapper oculto.
+$PublicaCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File $P\executar-ts-oculto.ps1 -Script publicar-radar-editais.mts -LogRelativo rotina-radar-publicacao.log"
 & schtasks.exe /Create /TN "ControlePopular_RadarPublicacao" /TR $PublicaCmd /SC DAILY /ST 04:50 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
@@ -74,7 +82,8 @@ if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Wri
 # autodeploy das 05:50 levar ao ar. Fonte B (DJE/TJMG e MPMG) pendente de
 # engenharia reversa — ver cabecalho do coletor. Registrado em 10/09/2026.
 Write-Host "Registrando ATOS DE PESSOAL (diario, 05:05)..." -ForegroundColor Cyan
-$AtosCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/coletar-atos-pessoal-judiciario.mts >> docs\relatorios-automacao\logs\rotina-atos-pessoal.log 2>&1"
+# Mesmo conserto de janela do vigia (13/10/2026): wrapper oculto.
+$AtosCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File $P\executar-ts-oculto.ps1 -Script coletar-atos-pessoal-judiciario.mts -LogRelativo rotina-atos-pessoal.log"
 & schtasks.exe /Create /TN "ControlePopular_AtosPessoal" /TR $AtosCmd /SC DAILY /ST 05:05 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 

@@ -1,0 +1,26 @@
+name: Padrao pagina
+
+# Confere o padrao wiki das 100 rotas do catalogo (top-100-paginas.json).
+# Checker estatico em Python puro: le arquivo do disco, sem browser e sem
+# banco. Falha (exit 1) so quando existe rota do catalogo sem pagina.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/web/**"
+      - "scripts/verificar-padrao-pagina.py"
+      - ".github/workflows/padrao-pagina.yml"
+  workflow_dispatch:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar padrao das paginas do top 100
+        run: python scripts/verificar-padrao-pagina.py
