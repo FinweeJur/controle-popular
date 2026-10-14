@@ -75,10 +75,42 @@ def _estilizar_recortes(layer: QgsVectorLayer) -> None:
     layer.setRenderer(QgsSingleSymbolRenderer(simb))
 
 
+def _estilizar_score(layer: QgsVectorLayer) -> None:
+    """Recortes com score_cava: categorizado por faixa.
+
+    Verde = alta confianca (>=0.65), amarelo = incerto (0.45-0.65),
+    vermelho = baixa (<0.45). Cor por categoria e mais simples que
+    renderer graduado no PyQGIS 3.44.
+    """
+    from qgis.core import (
+        QgsCategorizedSymbolRenderer,
+        QgsRendererCategory,
+    )
+    categories = [
+        QgsRendererCategory(
+            "positivo-alta", QgsMarkerSymbol.createSimple({
+                "name": "circle", "color": "34,139,34,200",
+                "outline_color": "0,80,0,220", "outline_width": "0.3", "size": "2.5",
+            }), "Alta confianca (>=0.65)"),
+        QgsRendererCategory(
+            "incerto", QgsMarkerSymbol.createSimple({
+                "name": "circle", "color": "255,193,7,200",
+                "outline_color": "180,130,0,220", "outline_width": "0.3", "size": "2",
+            }), "Incerto (0.45-0.65)"),
+        QgsRendererCategory(
+            "negativo-baixa", QgsMarkerSymbol.createSimple({
+                "name": "circle", "color": "211,47,47,160",
+                "outline_color": "150,0,0,200", "outline_width": "0.2", "size": "1.5",
+            }), "Baixa (<0.45)"),
+    ]
+    rend = QgsCategorizedSymbolRenderer("faixa_score", categories)
+    layer.setRenderer(rend)
+
+
 _ESTILOS = {
     "Cenas CBERS-4A": _estilizar_cenas,
     "Autuados IBAMA MG": _estilizar_ibama,
-    "Recortes cavas": _estilizar_recortes,
+    "Recortes score": _estilizar_score,
 }
 
 
@@ -110,11 +142,11 @@ def _carregar_basemaps(projeto: QgsProject) -> None:
 
 
 def _carregar_vetores(projeto: QgsProject) -> None:
-    """Carrega os 3 GeoJSONs gerados, aplicando o estilo de cada um."""
+    """Carrega os GeoJSONs gerados, aplicando o estilo de cada um."""
     camadas = [
         (_SAIDA / "cenas-cbers.geojson", "Cenas CBERS-4A"),
         (_SAIDA / "positivos-ibama.geojson", "Autuados IBAMA MG"),
-        (_SAIDA / "recortes-cavas.geojson", "Recortes cavas"),
+        (_SAIDA / "recortes-score.geojson", "Recortes score"),
     ]
     for caminho, nome in camadas:
         if not caminho.exists():
