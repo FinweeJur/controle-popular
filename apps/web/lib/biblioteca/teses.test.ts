@@ -25,18 +25,30 @@ describe("acervo de teses sobre Atingidos por Barragens", () => {
     expect(soma).toBe(COBERTURA_TESES.total);
   });
 
-  it("36 + 1 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
+  it("36 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
     const semLink = TODAS_TESES.filter((t) => t.links.length === 0);
     for (const t of semLink) {
       expect(t.titulo.trim().length, `título ${t.id}`).toBeGreaterThan(0);
     }
-    // Medido 14/10/2026: 37 dos 424 itens têm o campo 'Link de acesso' preenchido
-    // com "Não informado pela instituição" no próprio levantamento (36 do geral +
-    // 1 do levantamento das ATIs, a de USP sobre participação no processo coletivo).
-    // Não se inventa URL para fechar a lacuna (regra §6 — URL adivinhada não
-    // existe). Se o número passar disto, o gerador mudou: medir de novo antes de
-    // mexer na constante.
-    expect(semLink.length).toBe(37);
+    // Medido 14/10/2026: 36 dos 424 itens têm o campo 'Link de acesso' do
+    // levantamento vazio. A 37ª (Garcia 2021, do levantamento das ATIs) saiu
+    // da lacuna: handle da USP conferido à mão pelo dono na fonte oficial
+    // (bem abaixo, no teste do link completado). Não se inventa URL para
+    // fechar a lacuna (regra §6 — URL adivinhada não existe). Se o número
+    // mudar, o gerador mudou: medir de novo antes de mexer na constante.
+    expect(semLink.length).toBe(36);
+  });
+
+  it("a única ATI sem link na fonte foi completada à mão com o handle da USP", () => {
+    // O CSV do levantamento veio sem 'Link de acesso' para Garcia 2021.
+    // O dono navegou em teses.usp.br e confirmou o URL oficial (14/10/2026);
+    // o gerador aplica em LINKS_COMPLETADOS com quem conferiu e quando.
+    const garcia = TODAS_TESES.find((t) => t.autor.includes("Garcia, Carolina") && t.ano === 2021);
+    expect(garcia).toBeDefined();
+    expect(garcia!.links).toContain(
+      "https://www.teses.usp.br/teses/disponiveis/107/107131/tde-09082022-144422/",
+    );
+    expect(garcia!.fonteDoLink).toContain("14/10/2026");
   });
 
   it("nenhuma tese tem link inventado — todo link começa com https://", () => {

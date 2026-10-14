@@ -41,6 +41,9 @@ export interface Tese {
   acesso: string | null;
   resumo: string | null;
   links: string[];
+  /** Quando o link não veio na fonte e foi conferido à mão na página oficial:
+      quem conferiu e quando. Veio do CSV → ausente. */
+  fonteDoLink?: string;
   /** Por qual levantamento chegou: `geral` (bibelo, 420) ou `ati` (4). */
   levantamento: "geral" | "ati";
   destino: DestinoTese;

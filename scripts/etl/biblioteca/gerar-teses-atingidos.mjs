@@ -349,6 +349,26 @@ const CONTEXTO_ACERVO = {
 };
 for (const entrada of entradasCsv) carregarAcervoCsv(entrada, CONTEXTO_ACERVO);
 
+/** Links completados à mão, fora do CSV. Chave: achado por "sobrenome ano".
+    Vale SÓ quando o link veio ausente na fonte e alguém conferiu o handle
+    NAVEGANDO na página oficial da tese — nunca URL adivinhada (AGENTS §6).
+    Cada entrada grava quem conferiu e quando. */
+const LINKS_COMPLETADOS = {
+  "Garcia 2021": {
+    links: ["https://www.teses.usp.br/teses/disponiveis/107/107131/tde-09082022-144422/"],
+    fonte: "teses.usp.br — handle conferido pelo dono em 14/10/2026",
+  },
+};
+let quantosCompletados = 0;
+for (const item of itens) {
+  const achado = LINKS_COMPLETADOS[`${item.autor.split(/[,|]/)[0].trim().split(" ").at(-1)} ${item.ano}`];
+  if (achado && item.links.length === 0) {
+    item.links = [...achado.links];
+    item.fonteDoLink = achado.fonte;
+    quantosCompletados += 1;
+  }
+}
+
 itens.sort((a, b) => (a.destino === b.destino ? (b.ano ?? 0) - (a.ano ?? 0) : a.destino.localeCompare(b.destino)));
 fs.writeFileSync(ROTA_SAIDA, JSON.stringify({ total: itens.length, itens }, null, 2), "utf8");
 
@@ -358,5 +378,6 @@ console.log(`[teses] Únicas gravadas: ${itens.length} (${duplicatasDescartadas.
 console.log(`[teses] Levantamento: ${JSON.stringify(contagemPorLevantamento)}`);
 console.log(`[teses] Destino: ${JSON.stringify(contagemPorDestino)}`);
 console.log(`[teses] TAG MAB: ${comMab} · com resumo: ${comResumo} · sem resumo: ${itens.length - comResumo}`);
+console.log(`[teses] Links completados à mão: ${quantosCompletados}`);
 console.log(`[teses] Arquivo: ${ROTA_SAIDA}`);
 for (const d of duplicatasDescartadas.slice(0, 8)) console.log(`  [dup] ${d}`);
