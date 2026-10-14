@@ -23,7 +23,7 @@ export default function OutrasFrentes({ atual }: { atual: ZonaId }) {
   const outras = outrasZonas(atual);
 
   return (
-    <section className="mt-16 border-t border-border pt-8">
+    <section data-ignorar-indice className="mt-16 border-t border-border pt-8">
       <h2 className="font-display text-xl font-semibold">As outras frentes</h2>
       <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
         O poder público decide em {contagemZonasPublicadas()}{" "}

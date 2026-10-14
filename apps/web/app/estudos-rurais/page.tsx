@@ -268,7 +268,7 @@ export default function EstudosRuraisPage() {
       </section>
 
       {/* ─── PÁGINAS RELACIONADAS ────────────────────────────────────── */}
-      <nav aria-label="Páginas relacionadas" className="mt-8 border-t border-border pt-6">
+      <nav data-ignorar-indice aria-label="Páginas relacionadas" className="mt-8 border-t border-border pt-6">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-soft">
           Páginas relacionadas
         </h2>

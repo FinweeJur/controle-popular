@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
+import { listarNoticiasPortal, listarNoticiasPorFrente } from "@/lib/noticias/portal";
 
 /**
  * Webhook do Telegram — controlepopular.com.br/api/telegram
@@ -170,9 +171,68 @@ function menuTexto(): string {
     "<b>Eixos Temáticos:</b>\n" +
     "🌄 Terra e Territórios — 203 cidades, bacias, terras indígenas, biomas\n" +
     "🏛️ Estado e Economia — transparência, contratos, Judiciário, orçamento\n" +
-    "❤️ Direitos em Movimento — saúde, educação, trabalho, moradia, justiça\n\n" +
+    "❤️ Direitos em Movimento — saúde, educação, trabalho, moradia, justiça\n" +
+    panoramaGeral() + "\n\n" +
     "Clique em uma opção ou use os comandos:\n" +
     "/ambiental, /cidades, /congresso, /judiciario, /internacional, /assembleias, /mineracao, /laboratorio, /terra, /estado, /direitos";
+}
+
+// ── Panorama contextual (pedido do dono, 14/10/2026) ─────────────────────────
+//
+// Além dos links, o bot entrega o que acabou de sair no portal: as últimas
+// 3 matérias da frente respondida. O dado vem do MESMO acervo do site
+// (`lib/noticias/portal.ts`, com o filtro de editais) — nada digitado à mão
+// (§8 do AGENTS.md: número vem do dado). Só as frentes com acervo próprio
+// ganham o bloco; sem matéria, sem bloco (lacuna é informação, §7).
+
+const BASE = "https://www.controlepopular.com.br";
+
+/** Escapa o texto para o HTML do Telegram (`parse_mode: "HTML"`). */
+function esc(t: string): string {
+  return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Slug da rota → `frente` do acervo de notícias. Só o que casa de verdade. */
+const FRENTE_NOTICIAS: Record<string, string> = {
+  ambiental: "ambiental",
+  cidades: "cidades",
+  congresso: "congresso",
+  judiciario: "judiciario",
+  terra: "terra",
+  estado: "estado",
+  direitos: "direitos",
+};
+
+/** Bloco "📰 No portal agora" com as 3 matérias mais recentes da frente. */
+function panoramaFrente(slug: string): string {
+  const frente = FRENTE_NOTICIAS[slug];
+  if (!frente) return "";
+  const ultimas = listarNoticiasPorFrente(frente)
+    .slice()
+    .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
+    .slice(0, 3);
+  if (ultimas.length === 0) return "";
+  return (
+    "\n\n📰 <b>No portal agora</b>\n" +
+    ultimas
+      .map((n) => `• <a href="${BASE}/noticias/${n.slug}">${esc(n.titulo)}</a>`)
+      .join("\n")
+  );
+}
+
+/** Bloco "📰 Últimas do portal" para o /menu (3 matérias de qualquer frente). */
+function panoramaGeral(): string {
+  const ultimas = listarNoticiasPortal()
+    .slice()
+    .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
+    .slice(0, 3);
+  if (ultimas.length === 0) return "";
+  return (
+    "\n\n📰 <b>Últimas do portal</b>\n" +
+    ultimas
+      .map((n) => `• <a href="${BASE}/noticias/${n.slug}">${esc(n.titulo)}</a>`)
+      .join("\n")
+  );
 }
 
 function subfrenteResposta(slug: keyof typeof FRONTES): { text: string; reply_markup: { inline_keyboard: Array<Array<{ text: string; url: string }>> } } | null {
@@ -180,7 +240,7 @@ function subfrenteResposta(slug: keyof typeof FRONTES): { text: string; reply_ma
   if (!f) return null;
 
   return {
-    text: `🔍 <b>${f.label}</b>\n\n${f.desc}\n\n` +
+    text: `🔍 <b>${f.label}</b>\n\n${f.desc}${panoramaFrente(slug)}\n\n` +
       f.subfrentes.map(s => `• <a href="${s.link}">${s.label}</a> — ${s.desc}`).join("\n\n") +
       `\n\n🔗 <a href="${f.link}">Ver ${f.label}</a>`,
     reply_markup: { inline_keyboard: f.subfrentes.map(s => [{ text: s.label, url: s.link }]) },

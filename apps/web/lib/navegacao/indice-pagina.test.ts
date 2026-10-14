@@ -36,7 +36,7 @@ describe("slugDeTitulo — âncora do sumário de página", () => {
 function falsoHeading(
   tag: "h2" | "h3",
   texto: string,
-  opcoes: { id?: string; noSumario?: boolean; noHeader?: boolean } = {}
+  opcoes: { id?: string; noSumario?: boolean; noHeader?: boolean; noBoilerplate?: boolean } = {}
 ) {
   return {
     tagName: tag.toUpperCase(),
@@ -47,6 +47,9 @@ function falsoHeading(
         return {};
       }
       if (seletor === "header" && opcoes.noHeader) {
+        return {};
+      }
+      if (seletor.includes("data-ignorar-indice") && opcoes.noBoilerplate) {
         return {};
       }
       return null;
@@ -97,6 +100,23 @@ describe("coletarSecoes — coleta compartilhada do sumário e dos Capítulos", 
     const itens = coletarSecoes(c);
     expect(itens).toEqual([
       { id: "conteudo-de-verdade", titulo: "Conteúdo de verdade", nivel: 2 },
+    ]);
+  });
+
+  it("ignora heading de seção marcada com data-ignorar-indice (boilerplate)", () => {
+    // Defeito medido 14/10/2026: "As outras frentes"/"Contatos úteis"/
+    // "Explore o portal" (títulos iguais em 10–15 páginas) entravam nos
+    // capítulos e viravam "capítulo genérico".
+    const c = falsoContainer([
+      falsoHeading("h2", "Conteúdo desta página"),
+      falsoHeading("h2", "As outras frentes", { noBoilerplate: true }),
+      falsoHeading("h3", "Quem ocupa, quem indicou", { noBoilerplate: true }),
+      falsoHeading("h2", "Conteúdo específico"),
+    ]);
+    const itens = coletarSecoes(c);
+    expect(itens).toEqual([
+      { id: "conteudo-desta-pagina", titulo: "Conteúdo desta página", nivel: 2 },
+      { id: "conteudo-especifico", titulo: "Conteúdo específico", nivel: 2 },
     ]);
   });
 });

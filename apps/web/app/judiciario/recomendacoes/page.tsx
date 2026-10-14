@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
 import { obterRecomendacoes } from "@/lib/judiciario/recomendacoes";
 
@@ -54,7 +54,6 @@ export default function PaginaRecomendacoesJudiciario() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_RECOMENDACOES} />
 
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
         {/* Breadcrumb Visual */}

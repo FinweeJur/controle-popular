@@ -157,7 +157,12 @@ export default function SanfonaFrentes() {
         aria-labelledby={`snf-btn-${ativa.id}`}
         className={`snf-panel${ativa.id === "paraopeba" ? " sober" : ""}`}
       >
-        <h2 className="snf-titulo">{ativa.nomeCurto}</h2>
+        {/* Título rotativo da aba ativa (muda a cada 4,5 s): não é seção da
+            página — fora do índice (medido 14/10: 'Cidades' entrava e saía
+            do sumário da home no meio da rotação). */}
+        <h2 className="snf-titulo" data-ignorar-indice>
+          {ativa.nomeCurto}
+        </h2>
         <p className="snf-resumo">{ativa.resumo}</p>
         {/* <a> cru: estes caminhos convivem com o mesmo aviso do grid antigo
             (a rota pode cair fora do basePath; next/link prefixaria).

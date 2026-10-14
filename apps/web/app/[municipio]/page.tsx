@@ -995,7 +995,7 @@ export default async function HomePage({
         )}
 
         {/* EXPLORE O PORTAL */}
-        <section>
+        <section data-ignorar-indice>
           <h2 className="mb-5 font-display text-[1.7em] font-semibold tracking-tight">
             Explore o portal
           </h2>
@@ -1021,7 +1021,7 @@ export default async function HomePage({
         </section>
 
         {/* CONTATOS ÚTEIS */}
-        <section>
+        <section data-ignorar-indice>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <h2 className="font-display text-[1.7em] font-semibold tracking-tight">
               Contatos úteis
@@ -1104,7 +1104,7 @@ export default async function HomePage({
         )}
 
         {/* SOBRE TEASER */}
-        <section className="rounded-2xl border border-border bg-surface-2 p-6">
+        <section data-ignorar-indice className="rounded-2xl border border-border bg-surface-2 p-6">
           <h2 className="mb-2 font-display text-lg font-semibold">Sobre o projeto</h2>
           <p className="mb-3 max-w-2xl text-sm text-text-soft">
             O {nomePortal(cidade)} é um projeto independente. Ele reúne,

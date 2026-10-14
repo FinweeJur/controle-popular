@@ -5,7 +5,6 @@ import { listarConselhos, contagemConselhosPorCategoria } from "@/lib/conselhos/
 import PainelConselhosClient from "./PainelConselhosClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
-  MiniSumarioLateral,
   LinksRelacionados,
 } from "@/app/components/wiki";
 
@@ -69,13 +68,6 @@ export default function PaginaConselhosDireitos() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         <aside className="lg:col-span-1">
           <div className="sticky top-20 space-y-6">
-            <MiniSumarioLateral
-              itens={[
-                { id: "painel-conselhos", titulo: "Catálogo de Colegiados" },
-                { id: "como-participar", titulo: "Como Participar" },
-                { id: "links-relacionados", titulo: "Páginas Relacionadas" },
-              ]}
-            />
           </div>
         </aside>
 

@@ -15,7 +15,7 @@ import Link from "next/link";
 import CapaFrente from "@/app/components/CapaFrente";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import {
   listarCidadesEstrategicas,
   obterEstatisticasExpansao,
@@ -96,7 +96,6 @@ export default function PaginaCidadesEstrategicas() {
   return (
     <div className="min-h-screen bg-surface-0 text-foreground">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_CIDADES} />
 
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
         {/* BREADCRUMB */}

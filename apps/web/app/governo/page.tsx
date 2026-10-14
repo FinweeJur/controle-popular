@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import { listarMandatos } from "@/lib/gestao/dados";
 import PainelGovernoHubClient from "./PainelGovernoHubClient";
 
@@ -54,7 +54,6 @@ export default function HubGovernoPage() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_GOVERNO} />
 
       <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         {/* Breadcrumb Visual */}

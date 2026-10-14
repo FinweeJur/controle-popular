@@ -9,7 +9,7 @@ import {
   RIO_DOCE_POR_ANO,
 } from "@/lib/ambiental/ckan-mg-mariana";
 import { metadataEditavel } from "@/lib/edicoes";
-import { IndiceWiki, MiniSumarioLateral } from "@/app/components/wiki";
+import { IndiceWiki } from "@/app/components/wiki";
 import PainelMariana from "./PainelMariana";
 import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
@@ -32,7 +32,6 @@ export default function AcordoMarianaPage() {
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
-      <MiniSumarioLateral itens={SECOES} />
 
       <nav className="mb-4 text-[.82em] text-text-soft">
         <Link href="/ambiental" className="hover:text-primary">

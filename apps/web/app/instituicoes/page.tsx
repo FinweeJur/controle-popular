@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import PainelInstituicoesClient from "./PainelInstituicoesClient";
 
@@ -53,7 +53,6 @@ export default function InstituicoesHubPage() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_INSTITUICOES} />
 
       <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         {/* Breadcrumb */}

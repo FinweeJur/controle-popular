@@ -7,10 +7,12 @@ import { COBERTURA_TRT3 } from "@/lib/judiciario/correicoes-trt3";
 import { COBERTURA_CNIEP } from "@/lib/judiciario/presidios-cniep";
 import { COBERTURA_DEFENSORIA } from "@/lib/judiciario/defensoria-mg";
 import instituicoesData from "@/data/judiciario-instituicoes-detalhe.json";
-import DiretorioInstituicoesClient from "./DiretorioInstituicoesClient";
+import DiretorioInstituicoesClient, {
+  type InstituicaoSumario,
+} from "./DiretorioInstituicoesClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 
 const SECOES_PAGINA = [
   { id: "fichas-instituicoes", titulo: "1. Diretório de Instituições" },
@@ -199,7 +201,6 @@ export default function InstituicoesPage() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_PAGINA} />
 
       <main className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
         <nav aria-label="Navegação estrutural" className="mb-4 flex items-center gap-2 text-xs text-text-soft">
@@ -263,7 +264,9 @@ export default function InstituicoesPage() {
         </div>
 
         <div className="mt-6">
-          <DiretorioInstituicoesClient instituicoes={instituicoesData as any} />
+          <DiretorioInstituicoesClient
+            instituicoes={instituicoesData as InstituicaoSumario[]}
+          />
         </div>
       </section>
 

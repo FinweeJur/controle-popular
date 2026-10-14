@@ -8,7 +8,7 @@ import {
 import PainelInformacaoClient from "./PainelInformacaoClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 
 export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/informacao", {
   title: "Canais de Acesso à Informação Pública — Prefeituras, Câmaras, Órgãos e Concessionárias",
@@ -65,7 +65,6 @@ export default function InformacaoPage() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_PAGINA} />
 
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         {/* Breadcrumb Visual */}

@@ -6,6 +6,7 @@ import {
   ListMusic,
   Pause,
   Play,
+  Radio,
   Volume2,
   VolumeX,
   X,
@@ -88,6 +89,10 @@ export default function PlayerRadio() {
   const hlsRef = useRef<{ destroy: () => void } | null>(null);
   const [idAtual, setIdAtual] = useState<string | null>(null);
   const [tocando, setTocando] = useState(false);
+  // Ícone do botão (pedido do dono, 14/10/2026): antes de tocar a rádio o
+  // círculo mostra o aparelho (Radio) — Play só depois que o leitor já
+  // ouviu alguma vez, para o "aperte aqui" inicial ser óbvio.
+  const [jaTocou, setJaTocou] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [indiceAberto, setIndiceAberto] = useState(false);
   // Volume e mudo: pedido do dono (02/10/2026). O rádio toca em segundo
@@ -301,6 +306,7 @@ export default function PlayerRadio() {
         preload="none"
         onPlay={() => {
           setTocando(true);
+          setJaTocou(true);
           setCarregando(false);
         }}
         onPause={() => setTocando(false)}
@@ -344,9 +350,10 @@ export default function PlayerRadio() {
         )}
 
         {/* Botão redondo só com play/pause (pedido do dono, 03/10/2026):
-            a pílula com nome, arrasto e chevron saiu. O que aparece é o
-            ícone do estado: Play parado, Pause tocando. Nome da estação,
-            volume e lista vivem no índice, que abre no hover/foco. */}
+            a pílula com nome, arrasto e chevron saiu. Ícone do estado
+            (pedido do dono, 14/10/2026): Radio antes da primeira vez,
+            Pause tocando, Play pausado depois que já tocou. Nome da
+            estação, volume e lista vivem no índice. */}
         <button
           type="button"
           {...handlers}
@@ -368,8 +375,10 @@ export default function PlayerRadio() {
         >
           {tocando ? (
             <Pause size={20} aria-hidden="true" className="text-primary" />
-          ) : (
+          ) : jaTocou ? (
             <Play size={20} aria-hidden="true" className="text-primary" />
+          ) : (
+            <Radio size={20} aria-hidden="true" className="text-primary" />
           )}
         </button>
 
@@ -526,7 +535,10 @@ export default function PlayerRadio() {
                 corLiquido="var(--cp-primary)"
                 corVidro="var(--cp-surface-2)"
                 largura={56}
-                altura={150}
+                // 300 (de 150), pedido do dono 14/10/2026: medidor dobro
+                // para o volume ler melhor. A coluna direita é `shrink-0` e
+                // a lista à esquerda encolhe antes (flex-1 min-h-0).
+                altura={300}
                 raio={14}
                 rotuloAria="Volume da rádio"
               />

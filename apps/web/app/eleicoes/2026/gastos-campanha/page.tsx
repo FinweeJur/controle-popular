@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
-import { IndiceWiki, MiniSumarioLateral } from "@/app/components/wiki";
+import { IndiceWiki } from "@/app/components/wiki";
 import TabelaOrdenavel from "./TabelaOrdenavel";
 import { GraficoGrupos } from "./GraficosGastos";
 import { totaisPorGrupo } from "./comum";
@@ -42,8 +42,9 @@ import { formatarMoedaBR, formatarNumeroBR } from "@/lib/utilitarios/calculos";
  * as seções e aqui só a composição. A tabela grande (1.823 linhas) não vem por
  * import: é fatiada em `dados/[arquivo]/route.ts` e carregada no navegador.
  *
- * Sumário (pedido do dono, 10/10/2026): `IndiceWiki` no topo (na tela toda) e
- * `MiniSumarioLateral` fixo à direita (topo-direita) para a página longa.
+ * Sumário (pedido do dono, 10/10/2026): `IndiceWiki` no topo (na tela toda).
+ * O widget lateral fixo à direita vem do layout raiz (`CapitulosFlutuantes`,
+ * 14/10/2026) — montá-lo aqui duplicava a pilha na lateral.
  */
 
 /** Seções do sumário — os `id` casam com os `h2` de cada seção. */
@@ -81,7 +82,6 @@ export default function GastosCampanha2026(): ReactElement {
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto w-full max-w-5xl space-y-8 px-4 py-10">
-      <MiniSumarioLateral itens={SECOES_GASTOS} />
       <header className="space-y-3">
         <p className="text-xs opacity-70">
           <Link href="/" className="underline-offset-2 hover:underline">

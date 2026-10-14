@@ -18,7 +18,8 @@
 
 import { useEffect, useState } from "react";
 import { List, ChevronDown } from "lucide-react";
-import { coletarSecoes, type SecaoIndice } from "@/lib/navegacao/indice-pagina";
+import { type SecaoIndice } from "@/lib/navegacao/indice-pagina";
+import { useColetaSecoes } from "@/lib/navegacao/use-coleta-secoes";
 
 // Re-export para compatibilidade: o tipo vivia aqui antes da extração
 // (13/10/2026) para a coleta ser compartilhável com o widget de Capítulos.
@@ -33,20 +34,19 @@ export default function IndicePagina({
   seletorConteudo = "main",
   titulo = "Sumário desta página",
 }: Props) {
-  const [secoes, setSecoes] = useState<SecaoIndice[]>([]);
+  // Re-coleta a cada navegação e quando o conteúdo chega tarde do cliente
+  // (mesma peça dos Capítulos — defeito medido 14/10/2026: o sumário da
+  // primeira página visitada sobrevivia às demais).
+  const secoes = useColetaSecoes(seletorConteudo);
   const [secaoAtiva, setSecaoAtiva] = useState<string>("");
   // Fechado por padrão (regra do dono, 13/10/2026): caixa compacta no rodapé.
   const [aberto, setAberto] = useState(false);
 
+  // Observador para destacar a seção visível — religa quando a lista muda
+  // (navegação troca os headings; o observer antigo apontava para nós mortos).
   useEffect(() => {
-    const container = document.querySelector(seletorConteudo);
-    if (!container) return;
+    if (secoes.length === 0) return;
 
-    const itens = coletarSecoes(container);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- headings so existem no cliente pos-hidratacao (padrao do repo, ver BuscaClient)
-    setSecoes(itens);
-
-    // Observador para destacar seção visível
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -58,13 +58,13 @@ export default function IndicePagina({
       { rootMargin: "-20% 0px -70% 0px" }
     );
 
-    itens.forEach((item) => {
+    secoes.forEach((item) => {
       const el = document.getElementById(item.id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [seletorConteudo]);
+  }, [secoes]);
 
   if (secoes.length < 2) return null;
 

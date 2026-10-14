@@ -42,8 +42,13 @@ export interface SecaoIndice {
  * porque o vitest roda testes de `lib/` e DOM puro de componente não tem
  * teste (mesmo motivo da extração do `slugDeTitulo`, 30/09/2026).
  *
- * Regras: ignora headings dentro do próprio sumário ou de <header> inicial;
- * texto vazio não vira item; título só de símbolos cai no fallback
+ * Regras: ignora headings do próprio sumário ou de <header> inicial;
+ * ignora headings dentro de seções marcadas com `data-ignorar-indice`
+ * (componentes boilerplate montados em toda página — "As outras frentes",
+ * "Também acontece por aqui", "Paginas relacionadas", "Explore o portal",
+ * "Contatos úteis", "Sobre o projeto" — medidos em 14/10/2026 poluindo o
+ * índice de 7 a 15 páginas do top-100 com títulos que não dizem nada da
+ * página); texto vazio não vira item; título só de símbolos cai no fallback
  * `secao-<idx>` do slug. O chamador observa os ids para scroll-spy.
  *
  * @param container nó raiz da varredura (normalmente `main`)
@@ -59,6 +64,7 @@ export function coletarSecoes(container: ParentNode): SecaoIndice[] {
   headings.forEach((heading, idx) => {
     // Ignora headings do próprio índice ou modais
     if (heading.closest("[aria-label='Sumário desta página']")) return;
+    if (heading.closest("[data-ignorar-indice]")) return;
     if (heading.closest("header") && idx === 0) return;
 
     const texto = heading.textContent?.trim() || "";

@@ -5,7 +5,7 @@ import { obterEstatisticasContatos } from "@/lib/judiciario/contatos-estatistica
 import PainelVarasContatosClient from "./PainelVarasContatosClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
-import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 
 export const metadata: Metadata = metadataEditavel("/judiciario/contatos", {
   title: "Varas, Gabinetes e Balcão Virtual — Guia Nacional · Judiciário",
@@ -55,7 +55,6 @@ export default function PaginaContatosJudiciario() {
   return (
     <div className="min-h-screen bg-surface-0 text-text">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <MiniSumarioLateral itens={SECOES_PAGINA} />
 
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         {/* Breadcrumb Visual */}

@@ -26,6 +26,7 @@ export default function CenasDoBrasil({
   if (fotos.length === 0) return null;
   return (
     <section
+      data-ignorar-indice
       className={`${className} border-t border-border pt-8`}
       aria-label="Fotografia do acervo Brasil com S"
     >
