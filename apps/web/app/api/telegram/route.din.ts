@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
 import { listarNoticiasPortal, listarNoticiasPorFrente } from "@/lib/noticias/portal";
+import { responderComRag } from "@/lib/assistente/embeddings/rag";
+import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
+import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
+import { formatarRespostaNono } from "@/lib/telegram/formatar-nono";
 
 /**
  * Webhook do Telegram — controlepopular.com.br/api/telegram
@@ -174,7 +178,8 @@ function menuTexto(): string {
     "❤️ Direitos em Movimento — saúde, educação, trabalho, moradia, justiça\n" +
     panoramaGeral() + "\n\n" +
     "Clique em uma opção ou use os comandos:\n" +
-    "/ambiental, /cidades, /congresso, /judiciario, /internacional, /assembleias, /mineracao, /laboratorio, /terra, /estado, /direitos";
+    "/ambiental, /cidades, /congresso, /judiciario, /internacional, /assembleias, /mineracao, /laboratorio, /terra, /estado, /direitos\n\n" +
+    "💬 Ou <b>escreva sua pergunta</b> — o Seu Nonô responde do acervo do portal, com as fontes.";
 }
 
 // ── Panorama contextual (pedido do dono, 14/10/2026) ─────────────────────────
@@ -315,9 +320,16 @@ export async function POST(req: Request) {
   // ── Mensagem de texto ──────────────────────────────────────────────────────
   const msg = update.message as { text?: string; chat?: { id?: number } } | undefined;
   if (msg?.text) {
-    const cmd = msg.text.trim().split(/\s+/)[0].toLowerCase();
-    const resposta = comandoParaResposta(cmd);
-    await sendTelegram(chatId, resposta);
+    const texto = msg.text.trim();
+    if (texto.startsWith("/")) {
+      const cmd = texto.split(/\s+/)[0].toLowerCase();
+      await sendTelegram(chatId, comandoParaResposta(cmd));
+    } else {
+      // Pergunta livre vira pergunta ao Seu Nonô (pedido do dono, 14/10/2026):
+      // o mesmo RAG do widget do site, com blindagem de prompt e limite por
+      // chat. Sem IA disponível, o bot cai no menu — nunca responde vazio.
+      await responderPerguntaNono(chatId, texto);
+    }
   }
 
   return NextResponse.json({});
@@ -331,7 +343,7 @@ export async function GET() {
     // SEMPRE `www`: o apex devolve 301 e o Telegram NÃO segue redirect no
     // webhook — registrar no apex deixa o bot mudo (ver docs/OPERACAO).
     endpoint: "https://www.controlepopular.com.br/api/telegram",
-    descricao: "Webhook do Telegram Bot — Controle Popular",
+    descricao: "Webhook do Telegram Bot — Controle Popular (pergunta livre vai ao RAG do Seu Nonô)",
     comandos: [
       "/menu", "/ambiental", "/cidades", "/congresso", "/judiciario",
       "/internacional", "/assembleias", "/mineracao", "/laboratorio",
@@ -390,7 +402,62 @@ function comandoParaResposta(cmd: string) {
   return map[cmd] ?? menu;
 }
 
-async function sendTelegram(chatId: string, resposta: { text: string; reply_markup: Record<string, unknown> }) {
+// ── Pergunta livre → Seu Nonô (RAG do portal) ────────────────────────────────
+
+/** Limite por chat, no molde do rate-limit do /api/chatbot: 10 perguntas/min.
+ *  Sem isso, um spam de perguntas no bot derruba a chave de geração remota. */
+const PERGUNTAS_POR_MINUTO = 10;
+const PERGUNTAS_POR_CHAT = new Map<string, { n: number; resetEm: number }>();
+
+function permitePergunta(chatId: string): boolean {
+  const agora = Date.now();
+  if (PERGUNTAS_POR_CHAT.size > 1000) {
+    for (const [k, v] of PERGUNTAS_POR_CHAT.entries()) if (agora > v.resetEm) PERGUNTAS_POR_CHAT.delete(k);
+  }
+  const reg = PERGUNTAS_POR_CHAT.get(chatId);
+  if (!reg || agora > reg.resetEm) {
+    PERGUNTAS_POR_CHAT.set(chatId, { n: 1, resetEm: agora + 60_000 });
+    return true;
+  }
+  if (reg.n >= PERGUNTAS_POR_MINUTO) return false;
+  reg.n += 1;
+  return true;
+}
+
+/**
+ * Responde pergunta livre com o RAG do site (montarAcervo + embeddings).
+ * A geração remota leva alguns segundos — o webhook aguarda antes de
+ * devolver 200; o Telegram tolera até ~60 s e duplicata de update é
+ * improvável nesse intervalo.
+ */
+async function responderPerguntaNono(chatId: string, texto: string) {
+  const menu = { text: menuTexto(), reply_markup: { inline_keyboard: menuBotões() } };
+  if (texto.length < 3) {
+    await sendTelegram(chatId, menu);
+    return;
+  }
+  if (!permitePergunta(chatId)) {
+    await sendTelegram(chatId, { text: "⏳ Muitas perguntas seguidas. Aguarde 1 minuto e tente de novo." });
+    return;
+  }
+  const d = sanitizarEntradaUsuario(texto);
+  if (!d.seguro) {
+    await sendTelegram(chatId, { text: `⚠️ ${esc(d.textoSanitizado)}` });
+    return;
+  }
+  try {
+    const r = await responderComRag(d.textoSanitizado);
+    await sendTelegram(chatId, { text: formatarRespostaNono(r) });
+  } catch (e) {
+    if (e instanceof OllamaIndisponivel) {
+      await sendTelegram(chatId, { text: "🤖 O assistente está indisponível agora. Use os menus: /menu" });
+    } else {
+      await sendTelegram(chatId, { text: "🤖 Não consegui responder agora. Tente de novo ou use /menu." });
+    }
+  }
+}
+
+async function sendTelegram(chatId: string, resposta: { text: string; reply_markup?: Record<string, unknown> }) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return;
   await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -401,7 +468,7 @@ async function sendTelegram(chatId: string, resposta: { text: string; reply_mark
       text: resposta.text,
       parse_mode: "HTML",
       disable_web_page_preview: false,
-      reply_markup: JSON.stringify(resposta.reply_markup),
+      ...(resposta.reply_markup ? { reply_markup: JSON.stringify(resposta.reply_markup) } : {}),
     }),
   }).catch(() => {});
 }

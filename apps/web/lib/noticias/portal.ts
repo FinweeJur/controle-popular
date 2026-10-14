@@ -60,7 +60,12 @@ export interface NoticiaPortal {
 const NOTICIAS: NoticiaPortal[] = (noticiasRaw as NoticiaPortal[]).filter(
   (n) =>
     !n.slug.startsWith("radar-editais") &&
-    n.categoria !== ("Edital" as any) &&
+    // Matéria das cavas por satélite RETIRADA em 14/10/2026 a pedido do dono:
+    // o modelo de classificação ainda está em treinamento e tem muitos
+    // falsos positivos. O dado continua no JSON; some do blog, do sitemap e
+    // do RAG do Seu Nonô (todos leem esta lista) até a revalidação.
+    n.slug !== "cavas-mineracao-sem-cadastro-satelite-mg" &&
+    n.categoria !== ("Edital" as string) &&
     !(n.palavrasChave || []).some((k) => k.toLowerCase().includes("radar-editais"))
 );
 
