@@ -122,6 +122,13 @@ jobs:
           if [ -n "${{ secrets.TELEGRAM_BOT_TOKEN }}" ] && [ -n "${{ secrets.TELEGRAM_CHAT_ID }}" ]; then
             echo "Configurando o rele de alertas (Telegram)"
             ARGS=("TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}")
+            # Senha do webhook: com ela a rota fecha para updates forjados
+            # (qualquer um podia fingir ser o Telegram — medido 14/10/2026).
+            # O registro no Telegram e feito pelo workflow telegram-webhook.yml
+            # DEPOIS deste aplicar a env.
+            if [ -n "${{ secrets.TELEGRAM_WEBHOOK_SECRET }}" ]; then
+              ARGS+=("TELEGRAM_WEBHOOK_SECRET=${{ secrets.TELEGRAM_WEBHOOK_SECRET }}")
+            fi
             if [ -n "${{ secrets.NEWRELIC_RELAY_SECRET }}" ]; then
               ARGS+=("NEWRELIC_RELAY_SECRET=${{ secrets.NEWRELIC_RELAY_SECRET }}")
             fi

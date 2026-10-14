@@ -1,0 +1,42 @@
+# Registra (ou corrige) o webhook do bot do Telegram apontando para o portal.
+#
+# Papel: fechar o buraco da porta aberta — sem `secret_token`, qualquer um
+# pode fingir ser o Telegram e mandar updates falsos ao /api/telegram
+# (medido 14/10/2026: um POST nosso sem credencial foi aceito). O Telegram
+# passa a senha recebida aqui no header `x-telegram-bot-api-secret-token`
+# em CADA entrega, e a rota do portal já confere (`TELEGRAM_WEBHOOK_SECRET`).
+#
+# Regra §5.11: o endereço só pode ser www.controlepopular.com.br — o apex
+# devolve 301 e o Telegram não segue redirect (bot mudo).
+#
+# Ordem correta: rodar DEPOIS do azure-mirror ter injetado a env no
+# container — senão o container antigo responde 403 e o Telegram pode
+# desativar o webhook por erro persistente.
+#
+# Disparar: gh workflow run telegram-webhook.yml --ref main
+name: Registrar webhook do Telegram
+on:
+  workflow_dispatch:
+
+run-name: Set webhook do bot com secret
+
+jobs:
+  registrar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: setWebhook
+        run: |
+          R=$(curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/setWebhook" \
+            -d "url=https://www.controlepopular.com.br/api/telegram" \
+            --data-urlencode "secret_token=${{ secrets.TELEGRAM_WEBHOOK_SECRET }}" \
+            -d "drop_pending_updates=false")
+          echo "setWebhook -> $R"
+          echo "$R" | grep -q '"ok":true' || exit 1
+      - name: confirmar endereco
+        run: |
+          I=$(curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/getWebhookInfo")
+          echo "webhook atual -> $I"
+          # O token do bot nunca é impresso; getWebhookInfo não o devolve.
+          echo "$I" | grep -q "www.controlepopular.com.br/api/telegram" || exit 1
+          echo "webhook registrado no portal com secret — porta fechada."
