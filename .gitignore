@@ -259,3 +259,11 @@ apps/web/CLAUDE.md
 # nesta maquina; o resultado publico vive no artefato do run do GitHub.
 relatorios/
 
+# Corpses congelados pelo Bitdefender (13/10/2026): os 5 .py antigos em
+# scripts/oficina/ foram comidos pela quarentena e restaurados, mas o AV
+# ainda bloqueia escrita/move/overwrite nesses caminhos exatos. O codigo
+# vive agora em scripts/oficina-cavas/ (rename por colisao com oficina.mts).
+# Ignorar os corpses para nao poluir o git status com arquivos untracked.
+scripts/oficina/*.py
+scripts/oficina/__pycache__/
+

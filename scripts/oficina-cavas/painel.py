@@ -16,8 +16,8 @@ houver uma oficina rodando, o disparo é recusado com mensagem clara, nunca
 derruba a coleta em andamento.
 
 Uso:
-    python scripts/oficina/painel.py            # servidor + bandeja
-    python scripts/oficina/painel.py --so-web   # só o servidor (sem bandeja)
+    python scripts/oficina-cavas/painel.py            # servidor + bandeja
+    python scripts/oficina-cavas/painel.py --so-web   # só o servidor (sem bandeja)
 """
 from __future__ import annotations
 
