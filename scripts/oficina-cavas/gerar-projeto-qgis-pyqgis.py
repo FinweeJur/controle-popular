@@ -82,34 +82,43 @@ _ESTILOS = {
 }
 
 
-def main() -> int:
-    # QgsApplication precisa de prefixo do QGIS pra achar providers.
-    qgs_prefix = r"C:\Program Files\QGIS 3.44.15"
-    QgsApplication.setPrefixPath(qgs_prefix, True)
-    app = QgsApplication([], False)
-    app.initQgis()
+def _carregar_basemaps(projeto: QgsProject) -> None:
+    """Carrega OSM (ruas, embaixo) e Esri World Imagery (satélite, por cima).
 
-    projeto = QgsProject.instance()
-    projeto.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
+    Ordem importa: OSM primeiro, Esri depois — o Esri fica por cima e
+    não deixa o OSM cobrir o satélite (medido 14/10: OSM por cima
+    'flashing' sobre o Esri).
+    """
+    crs_3857 = QgsCoordinateReferenceSystem("EPSG:3857")
 
-    # ─── 1. Basemap OSM (XYZ tile) ────────────────────────────────────────
-    url = "type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png&zmin=0&zmax=19"
-    basemap = QgsRasterLayer(url, "Basemap OSM", "wms")
+    url_osm = "type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png&zmin=0&zmax=19"
+    basemap = QgsRasterLayer(url_osm, "Ruas OSM", "wms")
     if basemap.isValid():
+        basemap.setCrs(crs_3857)
         projeto.addMapLayer(basemap)
-        print("basemap OSM: OK")
-    else:
-        print("basemap OSM: FALHOU (rede?); seguindo sem ele")
+        print("ruas OSM: OK")
 
-    # ─── 2. Camadas vetoriais dos GeoJSONs, com estilo proprio ────────────
+    url_sat = ("type=xyz&url=https://server.arcgisonline.com/ArcGIS/rest/"
+               "services/World_Imagery/MapServer/tile/{z}/{y}/{x}&zmin=0&zmax=19")
+    satelite = QgsRasterLayer(url_sat, "Satélite (Esri)", "wms")
+    if satelite.isValid():
+        satelite.setCrs(crs_3857)
+        projeto.addMapLayer(satelite)
+        print("satélite Esri: OK")
+    else:
+        print("satélite Esri: FALHOU (rede?)")
+
+
+def _carregar_vetores(projeto: QgsProject) -> None:
+    """Carrega os 3 GeoJSONs gerados, aplicando o estilo de cada um."""
     camadas = [
-        (_SAIDA / "cenas-cbers.geojson", "Cenas CBERS-4A", "Polygon"),
-        (_SAIDA / "positivos-ibama.geojson", "Autuados IBAMA MG", "Point"),
-        (_SAIDA / "recortes-cavas.geojson", "Recortes cavas", "Point"),
+        (_SAIDA / "cenas-cbers.geojson", "Cenas CBERS-4A"),
+        (_SAIDA / "positivos-ibama.geojson", "Autuados IBAMA MG"),
+        (_SAIDA / "recortes-cavas.geojson", "Recortes cavas"),
     ]
-    for caminho, nome, geom in camadas:
+    for caminho, nome in camadas:
         if not caminho.exists():
-            print(f"{nome}: arquivo nao encontrado ({caminho}); pulando")
+            print(f"{nome}: arquivo nao encontrado; pulando")
             continue
         uri = f"{caminho}|layername={caminho.stem}"
         layer = QgsVectorLayer(uri, nome, "ogr")
@@ -122,18 +131,48 @@ def main() -> int:
         if estilo:
             estilo(layer)
         projeto.addMapLayer(layer)
-        print(f"{nome}: OK ({layer.featureCount()} feats, estilo aplicado)")
+        print(f"{nome}: OK ({layer.featureCount()} feats)")
 
-    # ─── 3. Extent do mapa (MG) ───────────────────────────────────────────
-    canvas = app.mapCanvas() if hasattr(app, "mapCanvas") else None
-    # QGIS desktop salva extent via projeto; aqui fixamos o extent global.
-    from qgis.PyQt.QtCore import QRectF  # noqa: E402
+
+def _carregar_vrt(projeto: QgsProject) -> None:
+    """Carrega o VRT dos 5.133 recortes CBERS com visibilidade por escala.
+
+    Aparece so quando o dono aproxima o zoom (escala max 1:50000),
+    igual ao site que carrega a camada conforme o zoom.
+    """
+    vrt = _SAIDA / "recortes-cbers.vrt"
+    if not vrt.exists():
+        print("VRT CBERS: nao encontrado")
+        return
+    r_vrt = QgsRasterLayer(str(vrt), "CBERS recortes (foto)", "gdal")
+    if not r_vrt.isValid():
+        print("VRT CBERS: FALHOU ao carregar")
+        return
+    r_vrt.setScaleBasedVisibility(True)
+    r_vrt.setMaximumScale(50000)
+    projeto.addMapLayer(r_vrt)
+    print(f"VRT CBERS: OK ({r_vrt.width()}x{r_vrt.height()} px)")
+
+
+def main() -> int:
+    qgs_prefix = r"C:\Program Files\QGIS 3.44.15"
+    QgsApplication.setPrefixPath(qgs_prefix, True)
+    app = QgsApplication([], False)
+    app.initQgis()
+
+    projeto = QgsProject.instance()
+    # EPSG:3857 (Web Mercator) e o padrao de tiles XYZ (Esri, OSM).
+    # Recortes CBERS em 4326 sao reprojetados on-the-fly pelo QGIS.
+    projeto.setCrs(QgsCoordinateReferenceSystem("EPSG:3857"))
+
+    _carregar_basemaps(projeto)
+    _carregar_vetores(projeto)
+    _carregar_vrt(projeto)
+
     projeto.writeEntry("SpatialRefSys", "/ProjectionsEnabled", 1)
-
     destino = _SAIDA / "oficina-cavas.qgs"
     ok = projeto.write(str(destino))
     print(f"projeto salvo: {ok} -> {destino}")
-
     app.exitQgis()
     return 0 if ok else 1
 
