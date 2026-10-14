@@ -768,19 +768,24 @@ function exigirPecasCompletas(acervo: readonly AcervoFonte[]): void {
 
 /**
  * Dedup por id — id repetido quebraria a citação [n] da UI, então dois
- * pedaços nunca podem disputar a mesma numeração.
+ * pedaços nunca podem disputar a mesma numeração: o primeiro fica, o
+ * repetido sai.
  *
- * @param acervo pedaços já validados quanto aos campos obrigatórios.
- * @throws Error com o id repetido; quem aparece primeiro fica na posição.
+ * NÃO lança em duplicata (mudado 14/10/2026): o colecionador do Diário
+ * re-publica atos (retificação, duplicação de caderno) e o acervo é montado
+ * na hora do pedido — derrubar o assistente inteiro por um decreto
+ * repetido deixou o Seu Nonô mudo em produção com os dados de 14/10.
+ * A invariantes de campos (exigirPecasCompletas) continua rígida.
  */
-function exigirIdsUnicos(acervo: readonly AcervoFonte[]): void {
+function dedupPorId(acervo: readonly AcervoFonte[]): AcervoFonte[] {
   const vistos = new Set<string>();
+  const unicos: AcervoFonte[] = [];
   for (const f of acervo) {
-    if (vistos.has(f.id)) {
-      throw new Error(`montarAcervoDetalhado: id duplicado "${f.id}"`);
-    }
+    if (vistos.has(f.id)) continue;
     vistos.add(f.id);
+    unicos.push(f);
   }
+  return unicos;
 }
 
 /**
@@ -809,7 +814,7 @@ function coberturaPorFrente(pecas: readonly AcervoFonte[]): Record<string, numbe
  *
  * Em 08/10/2026 as três responsabilidades que viviam aqui (montar, validar,
  * deduplicar e agregar) passaram para `exigirPecasCompletas`,
- * `exigirIdsUnicos` e `coberturaPorFrente` — esta função virou só o fluxo.
+ * `dedupPorId` e `coberturaPorFrente` — esta função virou só o fluxo.
  *
  * @returns as fontes na ordem de montagem + a cobertura medida por frente.
  */
@@ -829,13 +834,13 @@ export function montarAcervoDetalhado(): AcervoMontado {
   ];
 
   exigirPecasCompletas(acervo);
-  exigirIdsUnicos(acervo);
+  const unicas = dedupPorId(acervo);
 
   return {
-    fontes: acervo,
+    fontes: unicas,
     cobertura: {
-      total: acervo.length,
-      porFrente: coberturaPorFrente(acervo),
+      total: unicas.length,
+      porFrente: coberturaPorFrente(unicas),
       puladasSemRota: puladas,
     },
   };

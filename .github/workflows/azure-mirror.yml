@@ -134,6 +134,27 @@ jobs:
           else
             echo "TELEGRAM_BOT_TOKEN/CHAT_ID ausentes nos secrets — preserva o env do app."
           fi
+          # Seu Nonô (assistente cívico): o RAG do site só gera resposta com
+          # chave remota — AI_* para gerar, EMBED_API_KEY para vetorizar.
+          # Sem isso o /api/chatbot devolve 503 sempre e o widget cai nas
+          # respostas pré-curadas (medido na produção em 14/10/2026). O que
+          # existir como secret entra no env; o resto é preservado no app.
+          IA_ARGS=()
+          if [ -n "${{ secrets.AI_API_KEY_DEEPSEEK }}" ]; then
+            IA_ARGS+=("AI_API_KEY_DEEPSEEK=${{ secrets.AI_API_KEY_DEEPSEEK }}")
+          fi
+          if [ -n "${{ secrets.AI_API_KEY_MARITACA }}" ]; then
+            IA_ARGS+=("AI_API_KEY_MARITACA=${{ secrets.AI_API_KEY_MARITACA }}")
+          fi
+          if [ -n "${{ secrets.EMBED_API_KEY }}" ]; then
+            IA_ARGS+=("EMBED_API_KEY=${{ secrets.EMBED_API_KEY }}")
+          fi
+          if [ ${#IA_ARGS[@]} -gt 0 ]; then
+            echo "Ligando a IA do Seu Nonô (${#IA_ARGS[@]} chave(s) de runtime)"
+            az containerapp update -g "$GRUPO" -n "$APP" --set-env-vars "${IA_ARGS[@]}" -o none
+          else
+            echo "sem chaves de IA/EMBED nos secrets — chatbot preserva o env do app."
+          fi
           # Leitura traduzida ("Ouvir" em outro idioma): Azure AI Translator +
           # Azure AI Speech. As chaves ficam como SEGREDOS do Container App
           # (secretref), nunca em texto claro. So liga se os secrets existirem
