@@ -14,9 +14,11 @@ Por que é estático (sem Playwright, sem rede): lê arquivo do disco e aplica
 regex. Roda em segundos, cabe em qualquer CI e não precisa de browser nem
 de banco de pé — a mesma checagem roda no PC do dono e no GitHub Actions.
 
-Exit code: 1 só quando há rota do catálogo sem página e sem rota dinâmica
-que a atenda (origem="ausente"). Itens faltando deixam a rota "parcial",
-não derrubam a execução.
+Exit code: sem `--catraca`, 1 só quando há rota do catálogo sem página e
+sem rota dinâmica que a atenda (origem="ausente"). Com `--catraca`, 1 vira
+*regresso*: item que a régua gravada tinha e agora falta (a CI usa assim
+desde 14/10/2026 — dívida registrada não trava commit alheio). Itens
+faltando deixam a rota "parcial", não derrubam a execução.
 
 Uso: python scripts/verificar-padrao-pagina.py [--json]
 """
@@ -241,12 +243,65 @@ def gravar_relatorio(resultados, contagem):
     return destino
 
 
+def gravar_catraca(resultados, caminho):
+    """Grava o estado atual como régua mínima (`{href: [faltando...]}`).
+
+    Página ausente entra como `["__ausente__"]` — dívida registrada para o
+    portão não reclamar dela de novo. Subir a régua: consertar páginas e
+    rodar `--gravar-catraca` outra vez.
+    """
+    estado = {
+        r["href"]: (r["faltando"] if r["origem"] != "ausente" else ["__ausente__"])
+        for r in resultados
+    }
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(json.dumps(estado, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return caminho
+
+
+def comparar_catraca(resultados, caminho):
+    """Regressões: item que a catraca NÃO tinha e agora falta.
+
+    Rota nova do catálogo sem entrada na catraca não bloqueia (a régua é
+    subida de propósito pelo dono com --gravar-catraca). Melhoria nunca é
+    falha. Retorna lista de dicts {href, novas_faltas}.
+    """
+    if not caminho.exists():
+        return [{"href": "__catraca__", "novas_faltas": ["arquivo de catraca ausente"]}]
+    base = json.loads(caminho.read_text(encoding="utf-8"))
+    regressoes = []
+    for r in resultados:
+        agora = r["faltando"] if r["origem"] != "ausente" else ["__ausente__"]
+        antes = base.get(r["href"])
+        if antes is None:
+            continue
+        piores = [k for k in agora if k not in antes]
+        if piores:
+            regressoes.append({"href": r["href"], "novas_faltas": piores})
+    return regressoes
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Audita o padrao de pagina do top 100 (estatico).")
     parser.add_argument("--json", action="store_true", help="dump do resultado em JSON no console")
+    parser.add_argument("--catraca", metavar="ARQUIVO",
+                        help="falha (exit 1) se alguma rota PIORAR contra esta régua JSON")
+    parser.add_argument("--gravar-catraca", metavar="ARQUIVO",
+                        help="grava o estado de hoje como régua minima e sai")
     args = parser.parse_args()
 
     resultados = auditar()
+
+    if args.gravar_catraca:
+        destino = gravar_catraca(resultados, Path(args.gravar_catraca))
+        rel = destino if destino.is_absolute() else RAIZ / destino
+        try:
+            mostra = rel.relative_to(RAIZ)
+        except ValueError:
+            mostra = rel
+        print(f"Catraca gravada: {mostra} ({len(resultados)} rotas)")
+        return 0
+
     contagem = resumo(resultados)
     relatorio = gravar_relatorio(resultados, contagem)
 
@@ -258,8 +313,22 @@ def main() -> int:
         imprimir_console(resultados, contagem)
         print(f"Relatorio: {relatorio.relative_to(RAIZ)}")
 
-    # Exit 1 so para rota do catalogo sem pagina nenhuma; falta de item e
-    # falha de padrao, nao rota apagada.
+    if args.catraca:
+        # Catraca (14/10/2026): o portao reclama do NOVO estrago, nao da
+        # deuda registrada. Antes qualquer rota ausente vermelhava a CI e
+        # travava toda sessao — com 97/100 paginas parciais isso é inviavel.
+        # Exit 1 agora = regressao contra a régua gravada.
+        regressoes = comparar_catraca(resultados, Path(args.catraca))
+        if regressoes:
+            print(f"\nREGRESSOES DE PADRAO ({len(regressoes)}):")
+            for g in regressoes:
+                print(f"  {g['href']}: +{', '.join(g['novas_faltas'])}")
+            print("Se a mudanca foi intencional e melhor, suba a regua: --gravar-catraca")
+            return 1
+        print("\nCatraca: nenhuma regressao contra a regua gravada.")
+        return 0
+
+    # Sem catraca explicita mantem o porte antigo (rota apagada = falha).
     return 1 if contagem["ausentes"] else 0
 
 

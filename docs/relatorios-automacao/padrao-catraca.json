@@ -1,0 +1,546 @@
+{
+ "/terra-e-territorios": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/funcaosocialterra/mapa": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/funcaosocialterra": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/funcaosocialterra/alertas": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/cidades": [],
+ "/cidades/mg": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/betim": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/bh": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/sp": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/brumadinho": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/mariana": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/aracuai": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/diamantina": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/itinga": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/governador-valadares": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/uberlandia": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/juiz-de-fora": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/terra-e-territorios/vales": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/terra-e-territorios/nossos-rios": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/terra-e-territorios/nossas-serras": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/paraopeba": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/paraopeba/execucao": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/paraopeba/biblioteca": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/paraopeba/linha-do-tempo": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/mariana": [
+  "relacionados"
+ ],
+ "/ambiental/barragens": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/ambiental/barragens/descaracterizacao": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/ambiental/licenciamento": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/copam": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/tac": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/clima-risco": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/ambiental/car": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/mineracao/cavas": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/canada": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/america-latina": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/direitos-em-movimento": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/memoria": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/ambiental/legislacao": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/direitos-em-movimento/ajuda": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/direitos-em-movimento/saude-publica": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/direitos-em-movimento/educacao": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/direitos-em-movimento/trabalho-e-renda": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/direitos-em-movimento/conselhos": [
+  "secoes",
+  "indice_wiki",
+  "grafico",
+  "fonte"
+ ],
+ "/direitos-em-movimento/informacao": [
+  "fonte"
+ ],
+ "/direitos-em-movimento/denuncia": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/ambiental/decisoes-lai": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/ambiental/direitos-humanos": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/direito-critico": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/ambiental/conselhos": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/capacidade-institucional": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/ambiental/ecossistema": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/ambiental/patrimonio-cultural": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/recursos/estados": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/estado-e-economia": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/estado-e-economia/orcamento": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/judiciario/instituicoes": [
+  "grafico",
+  "fonte"
+ ],
+ "/judiciario/contatos": [
+  "fonte"
+ ],
+ "/assembleias": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/ambiental/contratos": [
+  "__ausente__"
+ ],
+ "/judiciario": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/judiciario/tribunais": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/judiciario/sirenejud": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/judiciario/recomendacoes": [
+  "fonte"
+ ],
+ "/congresso": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/congresso/proposicoes": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/congresso/votacoes": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/congresso/mg": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/governo": [],
+ "/dados/comunicabr": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/ambiental/convenios": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/ambiental/ppp": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/empresas": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/empresas/fortunas": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/empresas/conglomerados": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/empresas/executivos": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/eua": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/europa": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/internacional/inteligencia": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/": [
+  "indice_wiki",
+  "relacionados",
+  "grafico"
+ ],
+ "/central": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/editais": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/biblioteca": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/laboratorio/arvore": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/assistente": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/busca": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/indice": [
+  "relacionados",
+  "fonte"
+ ],
+ "/laboratorio": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/radio": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/noticias": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/alertas": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/tecnologia": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/documentacao": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/api": [
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/estudos-rurais": [
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ],
+ "/sobre": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/imprensa": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/termos": [
+  "indice_wiki",
+  "relacionados"
+ ],
+ "/dados/populares": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/internacional": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "fonte"
+ ]
+}

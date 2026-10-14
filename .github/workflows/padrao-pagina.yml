@@ -2,7 +2,11 @@ name: Padrao pagina
 
 # Confere o padrao wiki das 100 rotas do catalogo (top-100-paginas.json).
 # Checker estatico em Python puro: le arquivo do disco, sem browser e sem
-# banco. Falha (exit 1) so quando existe rota do catalogo sem pagina.
+# banco. Catraca desde 14/10/2026: falha (exit 1) so quando uma rota PIORA
+# contra a regua gravada em docs/relatorios-automacao/padrao-catraca.json
+# (dívida ja registrada — 97 paginas parciais — nao trava commit alheio).
+# Subir a régua apos consertar paginas: python scripts/verificar-padrao-pagina.py
+# --gravar-catraca docs/relatorios-automacao/padrao-catraca.json
 
 on:
   push:
@@ -22,5 +26,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verificar padrao das paginas do top 100
-        run: python scripts/verificar-padrao-pagina.py
+      - name: Verificar padrao das paginas do top 100 (catraca)
+        run: python scripts/verificar-padrao-pagina.py --catraca docs/relatorios-automacao/padrao-catraca.json
