@@ -25,17 +25,18 @@ describe("acervo de teses sobre Atingidos por Barragens", () => {
     expect(soma).toBe(COBERTURA_TESES.total);
   });
 
-  it("36 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
+  it("36 + 1 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
     const semLink = TODAS_TESES.filter((t) => t.links.length === 0);
     for (const t of semLink) {
       expect(t.titulo.trim().length, `título ${t.id}`).toBeGreaterThan(0);
     }
-    // Medido 14/10/2026: 36 dos 420 itens têm o campo 'Link de acesso'
-    // preenchido com "Não informado pela instituição" no próprio levantamento.
+    // Medido 14/10/2026: 37 dos 424 itens têm o campo 'Link de acesso' preenchido
+    // com "Não informado pela instituição" no próprio levantamento (36 do geral +
+    // 1 do levantamento das ATIs, a de USP sobre participação no processo coletivo).
     // Não se inventa URL para fechar a lacuna (regra §6 — URL adivinhada não
-    // existe). Se o número passar disto, o gerador mudou: medir de novo antes
-    // de mexer na constante.
-    expect(semLink.length).toBe(36);
+    // existe). Se o número passar disto, o gerador mudou: medir de novo antes de
+    // mexer na constante.
+    expect(semLink.length).toBe(37);
   });
 
   it("nenhuma tese tem link inventado — todo link começa com https://", () => {
@@ -85,5 +86,25 @@ describe("acervo de teses sobre Atingidos por Barragens", () => {
 
   it("destinos são estritamente o conjunto acordado", () => {
     for (const t of TODAS_TESES) expect(DESTINOS_VALIDOS).toContain(t.destino);
+  });
+
+  it("o levantamento dos dois CSVs muda pouco e a proveniência não se perde", () => {
+    // Medido 14/10/2026: 4 do levantamento ATIs (Faria 2024, Julião 2023,
+    // Reis 2023 e Garcia 2021); os otros 2 já vinham no geral (Lara 2022 e
+    // Prado 2023) e a dedup global ficou com a mais antiga.
+    const ati = TODAS_TESES.filter((t) => t.levantamento === "ati");
+    const geral = TODAS_TESES.filter((t) => t.levantamento === "geral");
+    expect(ati.length).toBe(4);
+    expect(geral.length).toBe(420);
+    expect(ati.length + geral.length).toBe(COBERTURA_TESES.total);
+    for (const t of TODAS_TESES) expect(["geral", "ati"], t.id).toContain(t.levantamento);
+  });
+
+  it("as 2 novidades do levantamento ATI sobre o caso Rio Doce caem na fatia riodoce", () => {
+    const atiRiodoce = tesesPorDestino("riodoce").filter((t) => t.levantamento === "ati");
+    expect(atiRiodoce.length).toBe(2);
+    for (const t of atiRiodoce) {
+      expect(/rio doce|fund[aã]o|barra longa/i.test(`${t.titulo} ${t.resumo ?? ""}`), t.id).toBe(true);
+    }
   });
 });

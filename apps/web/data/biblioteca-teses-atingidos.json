@@ -1,5 +1,5 @@
 {
-  "total": 420,
+  "total": 424,
   "itens": [
     {
       "id": "tese-2026-rompimento-rejeito-e-resistencia-monitoramento-p",
@@ -16,6 +16,7 @@
       "links": [
         "https://locus.ufv.br/handle/123456789/35796"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -36,6 +37,7 @@
       "links": [
         "https://hdl.handle.net/1843/81959"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -54,6 +56,7 @@
       "acesso": "openAccess",
       "resumo": "A mineração é uma das atividades econômicas mais tradicionais exercida no Brasil. O ferro (Fe) tem uma contribuição equivalente a 80,1% do valor total da produção mineral brasileira, sendo a empresa VALE S.A. a maior produtora mundial do mineral, com um total de 99 barragens de rejeitos, sendo 83 delas, localizadas no estado de MG. No dia 25 de janeiro de 2019 houve o rompimento de uma das barragens de rejeitos de minério (B1), pertencente à Mina de Córrego do Feijão em Brumadinho - MG, o que resultou em 272 óbitos. A lama atingiu diversas áreas da empresa, comunidades próximas e também a confluência do Ribeirão Ferro - Carvão com o rio Paraopeba. Portanto, o objetivo desse projeto foi avaliar os efeitos toxicologicos da exposição de Caenorhabditis elegans (C. elegans) à água do rio Paraopeba contaminada, bem como a distribuição de elementos químicos na amostra antes e após a remediação, além de avaliar o melhor adsorvente no processo. Foram selecionados 17 pontos para a coleta de água do rio, com pH, temperatura, condutividade elétrica e oxigênio dissolvido avaliados in loco. Tanto a determinação dos elementos químicos por meio da técnica de espectrometria de massas com plasma acoplado indutivamente, quanto os experimentos com C. elegans - a fim de avaliar a geração de espécies reativas de oxigênio (EROs), taxa de letalidade, sobrevivência e quantidade de ovos - foram avaliados com as amostras contaminadas, bem como com as amostras após passar pelo processo de remediação. Os resultados obtidos mostraram que, em média, os elementos predominantemente encontrados nas amostras de água foram: Prata (Ag), Alumínio (Al), Bário (Ba), Berílio (Be), Bismuto (Bi), Cálcio (Ca), Cromo (Cr), Cobre (Cu), Ferro (Fe), Magnésio (Mg), Manganês (Mn), Níquel (Ni) e Zinco (Zn), em que todos os elementos analisados, se encontram acima dos parâmetros considerados seguros estabelecidos pelo CONAMA, de acordo com a resolução 357/2005. Dentre os adsorventes avaliados, os melhores resultados foram obtidos no que concerne à sua capacidade e eficiência de remoção de elementos químicos das amostras foi obtido com o Adsorvente de biomassa aminofuncionalizada de Ayous + APTES. Os testes de toxicidade utilizando C. elegans identificaram o aumento da sobrevivência, do número de ovos e da probabilidade de sobrevivência, bem como diminuição da geração de EROs dos animais nas amostras pós-remediação, mostrando a eficiência do processo e do adsorvente em eliminar os efeitos tóxicos da água contaminada. Com os resultados do presente estudo, pode-se concluir que elementos como Al, As, Fe, Ni e Pb demonstraram consistentemente valores elevados em todas as amostras de água coletadas ao longo do rio excedendo os limites estabelecidos pela Resolução CONAMA 357 de 2005 para rios classificados como classe 2. A remediação que utilizou o adsorvente de biomassa aminofuncionalizada de Ayous + APTES apresentou a melhor eficiência na remoção da maioria dos elementos analisados e reduziu os efeitos tóxicos associados à exposição à água contaminada, evidenciada pelo aumento da sobrevivência e reprodução, bem como a diminuição na letalidade e na taxa de produção de EROs de C. elegans.",
       "links": [],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -74,6 +77,7 @@
       "links": [
         "https://locus.ufv.br//handle/123456789/31940"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -94,6 +98,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/20753"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -114,6 +119,7 @@
       "links": [
         "http://bdtd.uftm.edu.br/handle/123456789/1548"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -134,6 +140,7 @@
       "links": [
         "https://repositorio.unifei.edu.br/jspui/handle/123456789/4059"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -154,6 +161,7 @@
       "links": [
         "https://hdl.handle.net/1843/75914"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -174,6 +182,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/63459"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -194,6 +203,7 @@
       "links": [
         "https://tede.unisantos.br/handle/tede/7916"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -214,6 +224,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/59863"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -234,6 +245,7 @@
       "links": [
         "https://hdl.handle.net/1843/41399"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -254,6 +266,7 @@
       "links": [
         "https://hdl.handle.net/1843/43274"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -274,6 +287,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/11745"
       ],
+      "levantamento": "geral",
       "destino": "brumadinho",
       "desastre": "brumadinho",
       "tags": [],
@@ -294,6 +308,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/65681"
       ],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [],
@@ -314,6 +329,7 @@
       "links": [
         "https://acervo.ufvjm.edu.br/items/4e8cb9dc-1a24-474f-a070-56a68ddd0a5f"
       ],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [
@@ -336,6 +352,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/10350"
       ],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [
@@ -358,6 +375,7 @@
       "links": [
         "https://acervo.ufvjm.edu.br/items/2c78b783-82d8-4b6f-b4f7-e949f0afe5eb"
       ],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [],
@@ -378,6 +396,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/4213"
       ],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [],
@@ -396,6 +415,7 @@
       "acesso": "openAccess",
       "resumo": "As características colapsíveis dos solos coluvionares de sete barragens localizadas na região do Vale do Jequitinhonha, !JO nordeste do Esta4o de Minas Gerais são identificadas, neste estudo, através dos ensaios de caracterização e edométricos. A camada de colúvio é constituída por uma argila arenosa de baixa plasticidade (CL), com porosidade em tomo de 45% e baixo grau de saturação. Verificou-se um aumento das deformações por colapso com as sobrecargas, até atingir um valor máximo que, a partir daí, tendem a diminuir. Também foi observado que, para uma mesma sobrecarga, as deformações por colapso são maiores para amostras mais secas. Através de ensaios de porosimetria, microscopia eletrônica de · varredura, químicos e difração de raios-x, verificou-se que estes solos possuem estrutura macroporosa, constituída por grãos maiores (quartzo e/ou torrões de argila), ligados entre si por vínculos de argila, reforçados nos contatos por cimentação de compostos de ferro e alumínio. O colapso ocorre, provavelmente, pela eliminação da sucção e pelo enfraquecimento da cimentação, provocado pelo aumento do grau de saturação do solo.",
       "links": [],
+      "levantamento": "geral",
       "destino": "jequitinhonha",
       "desastre": null,
       "tags": [],
@@ -416,6 +436,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/21510"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -436,6 +457,7 @@
       "links": [
         "https://locus.ufv.br/handle/123456789/34369"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -456,6 +478,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/20262"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -478,6 +501,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/18201"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -498,6 +522,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/18682"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -516,6 +541,7 @@
       "acesso": "openAccess",
       "resumo": "O caso do rompimento da Barragem do Fundão, MG, é considerado um dos piores desastres socioambientais do Brasil e um dos maiores do mundo, envolvendo barragens de rejeitos de minérios, considerando tanto o volume de material liberado quanto os danos causados. A barragem pertencia à Samarco, joint venture das mineradoras Vale e BHP. Esta tese foca na análise das pessoas atingidas pelo desastre criminoso e as violações de direitos humanos, identificando como o conceito de atingido impacta na reparação e responsabilização das empresas. São feitos levantamentos dos fatos que antecederam e sucederam ao desastre, a partir da análise das narrativas dos atores envolvidos, tanto sobre os impactos do rompimento quanto à identificação e qualificação de atingidos pela ruptura da barragem. Os atores e narrativas sob análise são: pessoas e comunidades atingidas; empresas; Estado e suas autoridades. Partindo do campo de direitos humanos e empresas, a abordagem considera marcos econômicos relativos à globalização e neoextrativismo. Neste contexto, são determinantes a queda dos preços do minério de ferro, a decisão de manutenção pelas empresas (e seus acionistas) dos níveis de lucro e a não adoção integral de medidas de segurança necessárias. Os fatos deixam nítida a relação complexa entre empresas e Estado, resultando num licenciamento ambiental irresponsável que teve como desfecho o desastre. O conceito de atingido e sua evolução no Brasil foi analisado, bem como a importância da definição de quem é atingido para entender a dimensão de justiça e de proteção de direitos humanos. Desigualdades históricas como o racismo estrutural, a discriminação de gênero e classe impactaram na reparação das pessoas atingidas. Essa população afetada é formada principalmente por mulheres e pessoas negras, com média de rendimento de, no máximo, dois salários mínimos, vivendo em territórios moldados pela indústria da mineração por séculos. Apesar dessas características das pessoas atingidas suscetíveis a violações de direitos humanos decorrentes do desastre de forma desproporcional, sua resistência contribuiu para o pouco de reparação obtida, bem como para o fortalecimento do sistema internacional de proteção de direitos humanos. A análise considera a teoria de Delmas-Marty, que trata da globalização e da necessidade de impor limites às empresas, e a urgência de se construir um direito comum, global, um direito internacional dos direitos humanos mais fortalecido, com instrumentos efetivos, que leve em consideração o aspecto racial, de gênero e de classe, fundamentais na especificação do sujeito de direito em casos de violações de direitos humanos por empresas. A categoria pessoa atingida por operações empresariais deve ter assegurada a proteção de seus direitos, inclusive com mecanismos e procedimentos para acesso à justiça.",
       "links": [],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -536,6 +562,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/20064"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -556,6 +583,7 @@
       "links": [
         "https://locus.ufv.br/handle/123456789/33017"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -576,6 +604,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/50566"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -596,6 +625,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/16793"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -618,6 +648,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/18020"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -638,6 +669,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/16643"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -658,6 +690,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/12385"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -678,6 +711,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/12417"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -700,6 +734,28 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/20888"
       ],
+      "levantamento": "geral",
+      "destino": "riodoce",
+      "desastre": "mariana",
+      "tags": [],
+      "motivo": "Caso Mariana/Fundão (título ou resumo) — biblioteca Rio Doce."
+    },
+    {
+      "id": "tese-2023-entre-o-mar-de-lama-e-a-luta-por-direitos-o-serv",
+      "titulo": "Entre o Mar de Lama e a Luta por Direitos: o Serviço Social nas Assessorias Técnicas Independentes na Bacia do Rio Doce",
+      "autor": "Reis, Marina Rodrigues Corrêa dos||",
+      "tipo": "Tese",
+      "ano": 2023,
+      "instituicao": "Universidade do Estado do Rio de Janeiro (UERJ)",
+      "sigla": "UERJ",
+      "pais": "Brasil",
+      "idioma": "por",
+      "acesso": "openAccess",
+      "resumo": "The socio-environmental “disaster” in the Rio Doce basin, caused by the collapse of the mining tailings dam, articulates a mode of social (re)production, state (de)regulation and the struggle for reparation of rights in a national and Latin American scenario, historically marked by the violent expropriation of territories, environment and human lives! Given the context of environmental crime, among the professions required to intervene in the rights reparation process is Social Service. From this perspective, based on the concrete case of the socio-environmental “disaster” in the Rio Doce basin, we researched a specific socio-productive chain – from the production of iron ore to the violation-reparation of rights – the role of Social Services in this context. The objective was to analyze the professional practice of social workers included in the Independent Technical Advisory (ATI) teams of the population affected in the area adjacent to the collapse of the Fundão dam, in the municipalities of Mariana-MG and Barra Longa-MG, to identify the process of work, the demands and requests that arise for Social Service, the trends in professional practice. With this objective, we carried out bibliographical, documentary and empirical research, through the production of interviews with Social Workers inserted in the ATI and under the foundation of critical theory, the Marxist theory of dependence, we held the debate on central categories in the socio-environmental, a field under construction and competing in the category. The research hypothesis is that Social Workers included in ATI teams have the potential to break with the immediate, punctual and fragmented bias of Social Service interventions in the context of disasters. We assume that the Independent Technical Advice for the affected population is a space that enhances the professional practice of social workers aligned with the Social Service Political Ethical Project. This assumption was ratified in the research, in which the methodology used was content analysis, which allowed, from data analysis, to identify four fields of mediation: 1) Socio-educational dimension; 2) Investigative dimension; 3) Professional autonomy; and 4) Profile of the affected population. The results indicate that professional practice based on popular education, in collective spaces of construction and participation in the repair process, in articulation with social movements stand out as enhancing the performance of social workers aligned with the Social Service Political Ethical Project.",
+      "links": [
+        "http://www.bdtd.uerj.br/handle/1/23999"
+      ],
+      "levantamento": "ati",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -720,6 +776,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/15667"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -740,6 +797,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/15468"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -760,6 +818,7 @@
       "links": [
         "https://locus.ufv.br//handle/123456789/30667"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -780,6 +839,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/57478"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -800,6 +860,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/15496"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -820,6 +881,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/15410"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -840,6 +902,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/14700"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -860,6 +923,7 @@
       "links": [
         "https://hdl.handle.net/1884/81856"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -880,6 +944,7 @@
       "links": [
         "https://repositorio.pucsp.br/jspui/handle/handle/30837"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -900,6 +965,7 @@
       "links": [
         "https://hdl.handle.net/1843/50335"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -920,6 +986,7 @@
       "links": [
         "https://hdl.handle.net/1843/60221"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -941,6 +1008,7 @@
         "https://repositorio.ufu.br/handle/123456789/36351",
         "http://doi.org/10.14393/ufu.di.2022.298"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -961,6 +1029,7 @@
       "links": [
         "https://hdl.handle.net/1843/49483"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -981,6 +1050,7 @@
       "links": [
         "http://repositorio.utfpr.edu.br/jspui/handle/1/30338"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1001,6 +1071,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/16170"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1019,6 +1090,7 @@
       "acesso": "openAccess",
       "resumo": "A mineração, intensa atividade no Brasil, gera impactos ambientais, graças aos subprodutos do processo, sendo que os rejeitos são dispostos em barragens construídas para conter durante anos este material. A barragem do Fundão (MG) que se rompeu em 2015, era operada pela empresa Samarco e liberou 32 milhões de metros cúbicos de rejeito na bacia do Rio Doce, causando enorme impacto socioambiental, atingindo uma área de cerca de 1176 ha. Medidas vem sendo tomadas para restauração baseado na implantação de gramíneas e leguminosas, com o intuito de reabilitar as áreas afetadas, resultando na formação de Tecnossolos, a partir dos depósitos dos sedimentos, e particularmente pela ação das raízes e restos orgânicos deixados pela vegetação em crescimento. Dessa forma, o objetivo desse trabalho é avaliar a contribuição de diferentes plantas no incremento de matéria orgânica e melhorias estruturais nestes Tecnossolos. As amostras de Tecnossolo foram coletadas às margens do rio Gualáxo do Norte no município de Mariana -MG, cujo rejeito de mineração formou camada superior a 1 metro, e foi revegetado em uma das áreas com um mix de gramíneas, em maior parte constituído de Paspalumnotatum, e outra área de Tecnossolo revegetado com gramínea Cynodondactylon. Outro estudo foi realizado em amostras advindas de pesquisa prévia por Zanchi et al., 2020, cujo material passou por tratamentos em casa de vegetação, em 4 tratamentos com herbáceas, são elas: Urochloaruziziensis; U. ruziziensisem consorciação com a Crotalária spectabilis; U. ruziziensisem consorciação com a Guizotiaabyssinica; U. ruziziensisem consorciação com a C. spectabilise G. abyssinicae como referência o rejeito sem cultivo. Posteriormente foi incorporada a essas amostras uma espécie arbórea (Enterolobiumcontortisiliquum). Foram realizadas avaliações de indicadores de qualidade física do Tecnossolo, são eles: análises físico-hídricas (retenção de água, densidade de solo, capacidade de água disponível, capacidade de aeração, índice S, porosidade total, distribuição de poros e resistência a penetração); avaliação granulométrica com fracionamento de areia; densidade de partículas; índice de estabilidade de agregados; e, avaliação do conteúdo de carbono orgânico. Foram efetuadas análises de variância nos dados e a comparação de médias pelo teste Scott-Knott (p ≤ 0,05). Percebe-se diferença no comportamento da CRA e da modelagem do gráfico de IHO. Para os indicadores derivados da CRA encontrou-se menores valores de índice S, CA, PT, IEA e CO para o rejeito em comparação aos tratamentos cultivados, além disso esse apresentou menor conteúdo de macroporos e mesoporos grandes e médios e maiores valores de microporos, associados ao maior valor de DS, ainda comparando aos tratamentos. Observou-se também pelo gráfico de modelagem do IHO, que o CAD para as plantas foi mais expressivamente restringido pela porosidade de aeração e pela resistência a penetração pelas raízes, comparado aos tratamentos cultivados. Dessa forma, foram observadas, por meio dos indicadores, melhorias na qualidade física do Tecnossolo após processo de reabilitação da área recoberta por rejeito da barragem, usando plantas com potencial.",
       "links": [],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1039,6 +1111,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/13952"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1059,6 +1132,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/14931"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -1079,6 +1153,7 @@
       "acesso": "openAccess",
       "resumo": "Diversos são os impactos causados pelas operações de mineração. Oriundo dessa atividade, o rompimento da barragem de Fundão é considerado o maior desastre ambiental do Brasil e um dos maiores desastres ambientais do planeta. Desde seu rompimento, diversas foram as medidas adotadas para reparação dos danos nos ecossistemas, havendo uma grande preocupação sobre as áreas atingidas e o processo de restauração dessas. Assim, as práticas que visam avaliar e monitorar a restauração tornam-se essenciais, cujo intuito é verificar o progresso deste processo, reforçando a necessidade de estudos como este, que tem por objetivo avaliar a restauração de áreas atingidas pelo rompimento da barragem. Este trabalho está dividido em capítulos, contendo uma revisão geral do tema abordado (Capítulo 1), e a seleção de indicadores ecológicos e ajuste de uma equação para avaliar a restauração de áreas atingidas pelo rejeito na bacia do rio Doce (Capítulo 2). Foram avaliadas áreas em processo de restauração ao longo da bacia do Rio Doce, nos municípios de Barra Longa e Mariana, Minas Gerais, as quais foram atingidas pela onda de rejeito no rompimento da barragem de Fundão em 2015. Para coleta de dados, foram utilizados transectos com 10 metros de largura e comprimento variável a depender da área em restauração. Em cada transecto foram alocadas quatro parcelas de 2 x 10 metros para avaliação da regeneração natural e coleta de outros indicadores. O número de transectos foi estipulado de acordo com o tamanho da área e a extensão da área à margem do curso d’água. Para comparar as áreas de referência e as áreas em processo de restauração, selecionar indicadores que melhor explicam a trajetória da restauração e modelar uma equação para quantificar a restauração, foram utilizados dados dos seguintes indicadores ecológicos: densidade de indivíduos no estrato arbóreo e na regeneração natural, diversidade de ambos os estratos utilizando o índice de Shannon, altura média e área basal do estrato arbóreo, cobertura de dossel, quantidade de biomassa, atributos de cobertura do solo e atributos químicos do solo. Pela análise descritiva e comparação de média de todos os indicadores ecológicos avaliados, as áreas referência apresentaram superioridade quando comparadas as áreas em restauração. Utilizando um modelo linear generalizado misto ajustado por máxima verossimilhança, foi possível selecionar cinco indicadores ecológicos (diversidade pelo índice de Shannon do estrato arbóreo, altura média do estrato arbóreo, percentagem de cobertura de dossel e de cobertura do solo por serrapilheira, e pH do solo), que apresentaram significância (p-valor) inferior a 0.001, e geraram uma equação com pseudo-R² de aproximadamente 98%. A equação gerada se mostrou eficiente e adequada para avaliar o progresso do processo de restauração de áreas afetadas pelo rejeito de minério de ferro, a com grande capacidade de aplicação por ser parcimoniosa.",
       "links": [],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1099,6 +1174,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/14703"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1119,6 +1195,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/13468"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1139,6 +1216,7 @@
       "links": [
         "https://tede2.pucsp.br/handle/handle/23675"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1159,11 +1237,31 @@
       "links": [
         "https://repositorio.pucsp.br/jspui/handle/handle/24390"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
         "MAB"
       ],
+      "motivo": "Caso Mariana/Fundão (título ou resumo) — biblioteca Rio Doce."
+    },
+    {
+      "id": "tese-2021-estudo-das-assessorias-tecnicas-independentes-co",
+      "titulo": "Estudo das assessorias técnicas independentes como ferramenta de garantia da participação direta, informada e instrumental dos titulares do direito material, no processo coletivo",
+      "autor": "Garcia, Carolina Trevilini",
+      "tipo": "Dissertação",
+      "ano": 2021,
+      "instituicao": "Universidade de São Paulo (USP)",
+      "sigla": "USP",
+      "pais": "Não informado pela instituição",
+      "idioma": "por",
+      "acesso": "openAccess",
+      "resumo": "A falta de efetividade da tutela jurisdicional coletiva tem sido preocupação recorrente dentre os estudiosos do acesso à justiça, sobretudo por conta de duas situações: a) a impropriedade da estrutura da relação jurídica processual coletiva, baseada no modelo de processo tradicional, bilateral, patrimonial, retrospectivo, construído em torno da lide carneluttiana e b) o tipo de legitimidade coletiva adotada no Brasil, institucional e ope legis, que ignora uma análise profunda e permanente de representatividade adequada e exclui os titulares do direito material da discussão. Com isso, necessária a reflexão sobre representatividade adequada e participação direta. A representatividade, por mais adequada que seja, no sistema de legitimados extraordinários ope legis, não é suficiente para a construção de uma tutela coletiva que corresponda às necessidades dos substituídos, sobretudo em casos complexos. Diante desse impasse, a pesquisa pretende compreender se é possível falar em participação direta informada e instrumental de membro de grupo ou de grupo substituído, nos processos coletivos, e se as assessorias técnicas independentes podem ser consideradas uma ferramenta para viabilizar esta participação direta judicial e extrajudicialmente? A hipótese do trabalho é de que a assessoria técnica independente é ferramenta essencial para a garantia da participação informada de grupos e indivíduos vulnerabilizados, em processos coletivos complexos, na arena extrajudicial e judicial. A metodologia utilizada é a pesquisa teórica de doutrina e análise crítica de documentos e conversas informais. Ao final, a pesquisa considera que, à luz do paradigma do acesso à justiça redistributiva e consoante o exemplo de atuação da assessoria técnica independente em exercício em Barra Longa-MG, no contexto do caso Rio Doce, é possível confirmar a hipótese, no sentido de que as assessorias técnicas independentes são alternativas processuais efetivas aos dilemas da participação direta, no processo coletivo brasileiro, com o fim de auxiliar a construção conjunta de uma tutela coletiva adequada.",
+      "links": [],
+      "levantamento": "ati",
+      "destino": "riodoce",
+      "desastre": "mariana",
+      "tags": [],
       "motivo": "Caso Mariana/Fundão (título ou resumo) — biblioteca Rio Doce."
     },
     {
@@ -1181,6 +1279,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/13172"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1201,6 +1300,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1639578"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1221,6 +1321,7 @@
       "links": [
         "https://hdl.handle.net/1843/36565"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1241,6 +1342,7 @@
       "links": [
         "https://repositorio.cefetmg.br//handle/123456789/1557"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1261,6 +1363,7 @@
       "links": [
         "https://hdl.handle.net/1843/34445"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1281,6 +1384,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/13018"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1301,6 +1405,7 @@
       "links": [
         "https://hdl.handle.net/1843/35270"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1321,6 +1426,7 @@
       "links": [
         "https://hdl.handle.net/1843/39518"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1341,6 +1447,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/13295"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1361,6 +1468,7 @@
       "links": [
         "https://locus.ufv.br//handle/123456789/28360"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1381,6 +1489,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/54720"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1399,6 +1508,7 @@
       "acesso": "openAccess",
       "resumo": "A construção de barragens é uma parte vital na história das civilizações e, atualmente, desempenha um papel estratégico no desenvolvimento humano. Essas estruturas contribuem para o abastecimento de água à população, recreação, dessedentação de animais, geração de energia, controle de enchentes, controle da qualidade das águas e controle de sedimentos. Mas, os efeitos adversos da construção de barragens também podem atingir grandes proporções de ecossistemas, onde o ser humano é parte integrante. A drenagem ácida de mina é um dos impactos relacionados às barragens de rejeito, que contribui para a biodisponibilidade de elementos traço-tóxico nos ecossistemas. Contudo, a taxa de rompimento de barragens de rejeito é bem maior que a taxa de rompimento de barragens convencionais, o que amplifica os impactos ecológicos e sociais. O Estado de Minas Gerais é uma das unidades da federação com o maior número de barragens de rejeito, bem como o estado que possui a maioria dos registros de rompimento dessas estruturas. O rompimento da barragem do Fundão, por exemplo, é considerado o maior desastre socioecológico da história recente do Brasil. Além de degradar centenas de quilômetros de ecossistemas aquáticos e zonas ripárias adjacentes, também afeta a população humana. A partir de análises das bases de dados do Zoneamento Ecológico Econômico de Minas Gerais (ZEE-MG) e do Instituto Brasileiro de Geografia e Estatísticas (IBGE), o objetivo do presente estudo foi caracterizar a Vulnerabilidade Ripária Socioecológica à jusante de barragens de rejeito, gerando informações importantes para tomadores de decisão para atendimento ao princípio da precaução. Informações ecológicas e sociais foram agregadas em um único Índice de Vulnerabilidade Ripária Socioecológico (IVRSE). Os valores encontrados no centro dos rios apresentaram valores mais elevados no IVRSE em relação às zonas ripárias. Áreas no entorno dos rios a jusante de barragens de rejeito, onde se concentram um maior número de pessoas, também contribuíram com os valores mais elevados nos IVRSE. Esses índices forneceram uma descrição geral das condições de vulnerabilidade dos ecossistemas a jusante das barragens. A apresentação dos IVRSE na mesma escala de representação espacial da rede hidrográfica oficial de Minas Gerais facilita a implementação e aplicação de medidas para gestão de riscos, observando o princípio da precaução.",
       "links": [],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1419,6 +1529,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/34236"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1439,6 +1550,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/10634"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1459,6 +1571,7 @@
       "links": [
         "https://hdl.handle.net/1843/MMMD-B9KGLU"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1479,6 +1592,7 @@
       "links": [
         "https://repositorio.metodista.br/handle/123456789/576"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1499,6 +1613,7 @@
       "links": [
         "https://tede2.pucsp.br/handle/handle/19882"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -1521,6 +1636,7 @@
       "links": [
         "http://www.locus.ufv.br/handle/123456789/19822"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1542,6 +1658,7 @@
         "https://repositorio.ufu.br/handle/123456789/21083",
         "http://dx.doi.org/10.14393/ufu.di.2018.232"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1562,6 +1679,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/31199"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1582,6 +1700,7 @@
       "links": [
         "https://hdl.handle.net/1843/BUOS-AV3MTA"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1602,6 +1721,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/11302"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1622,6 +1742,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/18004"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1642,6 +1763,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/4085"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [
@@ -1664,6 +1786,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/3311"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1684,6 +1807,7 @@
       "links": [
         "https://hdl.handle.net/1843/MAPO-7RCJDB"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1704,6 +1828,7 @@
       "links": [
         "http://www.locus.ufv.br/handle/123456789/9975"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1724,6 +1849,7 @@
       "links": [
         "http://www.locus.ufv.br/handle/123456789/9974"
       ],
+      "levantamento": "geral",
       "destino": "riodoce",
       "desastre": "mariana",
       "tags": [],
@@ -1744,6 +1870,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/47697"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1764,6 +1891,7 @@
       "links": [
         "http://hdl.handle.net/10183/307232"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1784,6 +1912,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/21426"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1804,6 +1933,7 @@
       "links": [
         "http://hdl.handle.net/10183/307104"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -1826,6 +1956,7 @@
       "links": [
         "https://tede.unioeste.br/handle/tede/8456"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -1848,6 +1979,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/54747"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1868,6 +2000,7 @@
       "links": [
         "https://repositorio.ufrn.br/handle/123456789/70100"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1888,6 +2021,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/70038"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1908,6 +2042,7 @@
       "links": [
         "https://repositorio.ufsc.br/handle/123456789/265128"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1928,6 +2063,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/53056"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1948,6 +2084,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/21098"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -1968,6 +2105,7 @@
       "links": [
         "https://repositorio.ufrn.br/handle/123456789/65323"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -1990,6 +2128,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/41557"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2010,6 +2149,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/18006"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2030,6 +2170,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/24560"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2050,6 +2191,7 @@
       "links": [
         "http://hdl.handle.net/10183/309040"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2070,6 +2212,7 @@
       "links": [
         "https://locus.ufv.br/handle/123456789/34757"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2092,6 +2235,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=72451&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.72451"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -2110,6 +2254,7 @@
       "acesso": "openAccess",
       "resumo": "O desenvolvimento de um país depende de uma infraestrutura construída que dá suporte às atividades humanas, como prédios, viadutos, barragens, linhas de transmissão, etc. Nos últimos anos, houve um crescente interesse na sustentabilidade das estruturas, uma vez que a construção civil é um dos grandes responsáveis pela emissão de gases de efeito estufa no planeta. Estima- se que 37% de todo CO2 emitido no planeta anualmente seja resultante da atividade de construção e operação de edificações. Assim, é de extrema importância que a engenharia civil crie padrões mais sustentáveis, com o uso de recursos naturais de forma eficiente. No entanto, a realidade brasileira não reflete essa preocupação, com normas técnicas desatualizadas e potencialmente mais conservadoras do que o necessário. A teoria de confiabilidade permite a calibração dos coeficientes parciais de segurança das normas técnicas, de forma a atingir confiabilidade mais uniforme para as diferentes estruturas projetadas, bem como reduzir ações de projeto, em média. Com isso, é possível realizar o uso consciente dos recursos naturais e reduzir a enorme pegada de carbono da construção civil. Neste estudo, verificou-se que a calibração baseada em confiabilidade dos coeficientes parciais de segurança pode reduzir a emissão de CO2 em 6,61%, em média, para o prédio padrão estudado, bem como reduzir o custo dos materiais de construção em aproximadamente 7,21%. É válido ressaltar que o estudo foi realizado para edifícios de concreto armado, pois é o sistema construtivo mais utilizado no Brasil. Além disso, o estudo teve como base o Sistema de Informação de Desempenho Ambiental da Construção (Sidac) para verificar a emissão de CO2 do ambiente construído e o SINAPI para verificar os custos dos materiais.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2130,6 +2275,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/18156"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -2152,6 +2298,7 @@
       "links": [
         "http://hdl.handle.net/10183/294778"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2172,6 +2319,7 @@
       "links": [
         "http://hdl.handle.net/10183/291719"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2192,6 +2340,7 @@
       "links": [
         "https://dspace.sti.ufcg.edu.br/handle/riufcg/41676"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2212,6 +2361,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/53046"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2232,6 +2382,7 @@
       "links": [
         "https://repositorio.uel.br/handle/123456789/10302"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2252,6 +2403,7 @@
       "links": [
         "https://repositorio.uern.br/handle/123456789/712"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2272,6 +2424,7 @@
       "links": [
         "https://repositorio.uern.br/handle/123456789/766"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -2294,6 +2447,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/17601"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2314,6 +2468,7 @@
       "links": [
         "https://hdl.handle.net/1843/81422"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2334,6 +2489,7 @@
       "links": [
         "https://repositorio.ufsc.br/handle/123456789/259594"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2354,6 +2510,7 @@
       "links": [
         "https://hdl.handle.net/1843/77588"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2372,6 +2529,7 @@
       "acesso": "openAccess",
       "resumo": "Regiões com infraestrutura precária e populações de baixa renda são frequentemente as mais impactadas por desastres envolvendo barragens de rejeito de mineração. Na Amazônia brasileira, sobretudo em áreas intensamente exploradas pela mineração, esses problemas são recorrentes. Nessa conjuntura, o objetivo deste trabalho é analisar como a percepção de risco das populações que vivem próximas à mineração industrial pode contribuir na redução de danos decorrentes do risco de acidentes com barragens de mineração, prioritariamente na Amazônia paraense, onde a mineração tem se expandido nas últimas décadas. Analisou-se 10 barragens de rejeito de caulim, localizadas em Barcarena, Nordeste do Pará. Para isso, em um contexto mais amplo, examinou-se eventos de falhas em barragens e as subsequentes mudanças nas legislações de segurança no Brasil e em outros países. Analisou-se também os efeitos da mineração industrial na Amazônia e no estado do Pará, com foco na condição das barragens de caulim em Barcarena e nas contradições na segurança dessas estruturas. Verificou-se a adequação dos Planos de Ação Emergencial (PAE) das barragens estudadas, as novas regulamentações da Lei n° 14.066/2020 e o papel das populações atingidas na elaboração desses planos. E por fim, foram identificados padrões de percepção determinados a partir de 10 variáveis. Os dados foram coletados por meio de entrevistas semidirigidas com as populações residentes próximas às barragens de caulim em Barcarena. Os resultados da pesquisa mostram que o histórico de regulamentação e segurança das barragens em países com forte tradição mineira construíram um panorama global de reações e adaptações frente a desastres e falhas. O caso brasileiro, ilustra uma trajetória de avanços e desafios na regulamentação de barragens, marcada por um atraso em comparação com outras nações mineradoras, carecendo de reformas na gestão, para garantir maior participação das populações atingidas na elaboração do PAE, atualmente limitada a receber informações e seguir orientações pré-estabelecidas. Os recorrentes acidentes revelam insuficiências na gestão e segurança das barragens de caulim que, apesar da classificação de risco baixo, apresenta dano potencial associado alto, o que sugere impactos socioambientais severos, em caso de ruptura. Situação agravada pelo complexo quadro de desenvolvimento industrial e portuário de Barcarena que, desde sua fundação, tem sido marcado por profundos impactos socioambientais. Os Planos de Contingência das Zonas de Autossalvamento; os mecanismos de participação social utilizados na construção desses Planos e os fatores indicativos de vulnerabilidade das populações residentes a jusante das barragens, destacam-se como mudanças expressivas no PAE das barragens, frente às novas regulamentações. Nesse contexto, 3 padrões de percepção de risco foram identificados, sendo eles fortemente influenciados pela relação de pertencimento com o lugar de vivência e por experiências de remanejamento. Os entrevistados que se sentem mais vulneráveis aos riscos associados às barragens e percebem mais prejuízos do que ganhos com a atividade mineral são mais sensíveis a esses riscos. Os moradores das comunidades rurais, cuja subsistência depende da natureza, como pesca e agricultura, sentem-se particularmente vulneráveis devido à sua forte identidade cultural e ao temor de perder sua história e conexões ancestrais caso precisem mudar.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2392,6 +2550,7 @@
       "links": [
         "https://hdl.handle.net/11449/256968"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -2414,6 +2573,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/19677"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2434,6 +2594,7 @@
       "links": [
         "https://hdl.handle.net/1884/94389"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2454,6 +2615,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/18462"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2474,6 +2636,7 @@
       "links": [
         "https://hdl.handle.net/1843/80053"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -2494,6 +2657,7 @@
       "links": [
         "https://hdl.handle.net/1843/76483"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2514,6 +2678,7 @@
       "links": [
         "http://repositorio.utfpr.edu.br/jspui/handle/1/33776"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2534,6 +2699,7 @@
       "links": [
         "https://repositorio.furg.br/handle/123456789/11392"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2554,6 +2720,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/36285"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -2576,6 +2743,7 @@
       "links": [
         "https://tede.ufam.edu.br/handle/tede/10806"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2594,6 +2762,7 @@
       "acesso": "openAccess",
       "resumo": "Tanto o setor mineral quanto o de infraestrutura tiveram desenvolvimento exponencial ao longo dos anos, com avanço da tecnologia e uso de materiais inovadores, entretanto, ambas as atividades causam impactos ambientais consideráveis. Os resíduos gerados na mineração têm descarte em regiões próximas às minas, em barragens (com alto teor de umidade) ou pilhas (se o teor de umidade permitir). Ambas as soluções impactam negativamente a paisagem local e, se não construídas de maneira adequada, podem vir a causar acidentes drásticos. A exemplo da brita graduada reciclada advinda da demolição de estruturas de concreto e da escória de ferro, já largamente utilizadas como substitutas da brita graduada em pavimentação, outros materiais, como estéreis e rejeitos de mineração, também estão sendo estudados seguindo a tendência de recirculação na engenharia civil. Este trabalho estudou as características do estéril de mineração de manganês, proveniente da Mina Cajengá, em São Thiago / MG, com a finalidade de avaliar sua aplicabilidade em camadas de pavimentação. Para isso, inicialmente foram realizados ensaios de caracterização geotécnica, compactação, CBR, expansão e módulo de resiliência para entender o comportamento físico e mecânico do material. O estéril é classificado como silte-argiloso (classificação textural) ou silte elástico (Sistema Unificado de Classificação de Solos), com CBR=4%, expansão de 3,29% e módulo resiliente de 76 MPa. Os ensaios mecânicos com estéril melhorado com 3% e 4% de cal (com tempos de cura de 7, 14 e 90 dias) mostraram aumento de CBR, diminuição da expansão e aumento do resiliente com o teor de cal e tempo de cura, atingindo aceitáveis para a aplicação em camada de sub-base de pavimentos flexíveis. Os resultados dos ensaios foram aplicados em análise de tensões para dimensionamento de pavimento flexível utilizando o software MeDiNa, variando-se a espessura da camada de sub-base, bem como os materiais utilizados. Comparando-se a sub-base de estéril melhorado com 3% de cal e de materiais naturais, as tensões verticais no topo do subleito foram muito próximas. Comparando-se ainda base de estéril melhorado com 3% de cal com base de brita graduada simples nas mesmas espessuras, o número de passagens do eixo padrão rodoviário N variou entre 4x106 e 6x106, portanto, com a mesma ordem grandeza. Assim, o uso de estéril melhorado com cal se mostra uma alternativa viável para pavimentação.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2614,6 +2783,7 @@
       "links": [
         "https://repositorio.upf.br/handle/123456789/10289"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2634,6 +2804,7 @@
       "links": [
         "http://tede2.unicap.br:8080/handle/tede/1862"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2654,6 +2825,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/66144"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2672,6 +2844,7 @@
       "acesso": "openAccess",
       "resumo": "The high volume of waste generated by iron ore processing represents a major environmental challenge. The collapse of the tailings dams in Mariana-MG and Brumadinho-MG highlighted the risks involved in this waste storage model. This study evaluated the physical, mechanical, and thermal performance of wood-cement panels produced with Pinus oocarpa particles, Portland cement CPV-ARI, calcium chloride as an additive, and varying proportions of iron ore tailings (IOT) as a partial replacement for cement (0%, 10%, 20%, and 30% by weight). The effect of accelerated carbonation curing (AC) was investigated by exposing all treatments to a concentrated CO₂ atmosphere at a pressure of 1.5 kgf/cm² and room temperature for 24 hours. The pine particles were characterized by their chemical composition and morphology. The pozzolanic activity of the IOT was assessed according to standards NBR 15895 and NBR 5752. The results of the physical and mechanical properties of the panels were compared with BISON process specifications. The chemical composition of the panels was determined through thermogravimetric analysis and energy-dispersive X-ray spectroscopy (EDS). The results demonstrated that the partial replacement of cement by IOT and the use of AC had a significant effect on most of the studied properties (p&lt;0.05). For the carbonated panels, a reduction in thickness swelling (–15%) and water absorption (–10%) was observed, along with a significant improvement in mechanical properties (~+40%). The interaction between IOT content and ACC was significant only for the mechanical properties (p&lt;0.05). The data indicates a trend of increased strength with the application of AC, a more pronounced effect in panels with higher IOT content. All treatments met the commercial requirements for thickness swelling after 2 h and 24 h, and achieved satisfactory values for the modulus of elasticity (MOE) after AC. For the modulus of rupture (MOR), only the treatment with 30% IOT subjected to AC reached a value above 9 MPa, the minimum requirement defined by BISON. The results suggest the feasibility of using IOT in combination with cement to produce wood- cement panels. On a large scale, the use of IOT in civil construction promotes safer waste disposal, adds value, and reduces production costs.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -2692,6 +2865,7 @@
       "links": [
         "https://ri.ufs.br/jspui/handle/riufs/19497"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2712,6 +2886,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/34087"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2732,6 +2907,7 @@
       "links": [
         "https://www.repositorio.ufop.br/handle/123456789/18965"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2752,6 +2928,7 @@
       "links": [
         "https://hdl.handle.net/1843/78004"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2772,6 +2949,7 @@
       "links": [
         "https://locus.ufv.br/handle/123456789/33916"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2792,6 +2970,7 @@
       "links": [
         "https://hdl.handle.net/1843/79789"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2812,6 +2991,28 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/23273"
       ],
+      "levantamento": "geral",
+      "destino": "unificada",
+      "desastre": null,
+      "tags": [],
+      "motivo": "Sem caso nomeado — fica na biblioteca unificada, nada é excluído (dono, 14/10/2026)."
+    },
+    {
+      "id": "tese-2024-assessoria-tecnica-independente-educacao-popular",
+      "titulo": "Assessoria Técnica Independente, Educação Popular e a luta dos atingido(as) pela mineração em Itatiaiuçu - MG",
+      "autor": "Faria, Janaina de Mattos",
+      "tipo": "Dissertação",
+      "ano": 2024,
+      "instituicao": "Universidade Federal Rural do Rio de Janeiro (UFRRJ)",
+      "sigla": "UFRRJ",
+      "pais": "Brasil",
+      "idioma": "por",
+      "acesso": "openAccess",
+      "resumo": "O presente trabalho teve como objetivo analisar a experiência da Assessoria Técnica Independente aos atingidos pela Barragem Mina de Serra Azul no Município de Itatiaiuçu no Estado de Minas Gerais. Buscou-se compreender como a Assessoria Técnica, e a metodologia da Educação Popular utilizada por ela, contribuiu no território e na vida dos atingidos (as), para construção de uma reparação, que seja justa e integral. A exploração mineral desde seus primórdios é a causa de muitos conflitos no Brasil. É uma atividade que se baseia em um modelo social, político e econômico que favorece as elites desestruturando vidas, comunidades, sonhos e histórias por onde passa. Itatiaiuçu está localizada no Quadrilátero Ferrífero, e é alvo de exploração e desestruturação das famílias que viviam e vivem ao redor da mina ali presente. Algumas famílias tiveram que sair de suas casas e largar seus modos de vida por conta do iminente rompimento da barragem de rejeitos desta mina, e as que permanecem vivem angustiadamente, com medo do que lhes pode acontecer. Como procedimentos metodológicos da presente pesquisa, foram realizadas entrevistas com pessoas atingidas, bem como, e pesquisa bibliográfica e documental em fontes públicas. Essa pesquisa foi importante para evidenciar os avanços que os atingidos tiveram com ATI em campo.",
+      "links": [
+        "https://rima.ufrrj.br/jspui/handle/20.500.14407/21688"
+      ],
+      "levantamento": "ati",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2832,6 +3033,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/34979"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -2854,6 +3056,7 @@
       "links": [
         "http://repositorio.ufc.br/handle/riufc/75657"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2874,6 +3077,7 @@
       "links": [
         "http://repositorio.ufc.br/handle/riufc/76089"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2892,6 +3096,7 @@
       "acesso": "openAccess",
       "resumo": "A maneira convencional de se realizar a disposição de rejeitos é em barragens com polpas diluídas. Os sucessivos acidentes ocorridos nos últimos anos mostraram as dificuldades desta prática. Além disto, nestas condições a tendência é que ocorra a segregação de tamanho das partículas, situação em que as partículas mais grossas e densas tendem a sedimentar próximo ao ponto de lançamento, enquanto as mais finas ou com menores densidades são carreadas pelos fluxos de água para pontos mais distantes do local de lançamento. Além de levar à ocorrência de regiões com características geotécnicas distintas dentro do depósito, a segregação provoca perda de capacidade do reservatório devido aos espaços vazios entre as partículas grossas. Uma alternativa é a utilização de polpas de alta densidade, que apresenta como vantagens: redução ou eliminação da segregação granulométrica no depósito; ganho de vida útil da barragem; maior recuperação de água, por reduzir a evaporação e, possíveis ganhos de segurança, já que a presença de água está relacionada a alguns modos de falha de barragens. Tendo em vista tal cenário, este trabalho teve o objetivo de verificar a possibilidade de se atingir o nível de polpa de alta densidade, com rejeito de flotação do minério de nióbio, de modo que não ocorra tal segregação. Foi feita uma caracterização física, química e mineralógica do sólido. Para obtenção da polpa de alta densidade, foram feitos ensaios de espessamento em bancada e contínuos com espessador semi-piloto. A polpa gerada foi caracterizada por meio de: determinação de percentual de sólidos, tensão de escoamento, abatimento, segregação de partículas, ângulo de disposição e liberação de água. Os ensaios de espessamento em bancada indicaram parâmetros otimizados de sedimentação, que foram utilizados para os ensaios contínuos. Os ensaios contínuos foram feitos alterando taxa de alimentação unitária e a altura de camada. Foi verificado maior efeito da taxa de alimentação nas características do underflow do que da altura de camada. Foi possível atingir a consistência de polpa de alta densidade não segregável, atingindo a densidade de 1,96 t/m³, correspondente ao underflow com 66,8% de sólidos em massa, 43,9 Pa de tensão de escoamento nas taxas de 0,5 (t/h)/m² e 0,50 m de altura de camada.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2912,6 +3117,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/49223"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2932,6 +3138,7 @@
       "links": [
         "https://hdl.handle.net/10438/34627"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -2952,6 +3159,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/16579"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2972,6 +3180,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/16526"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -2992,6 +3201,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/15223"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3012,6 +3222,7 @@
       "links": [
         "https://hdl.handle.net/1884/84962"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3032,6 +3243,7 @@
       "links": [
         "http://hdl.handle.net/10183/268155"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3054,6 +3266,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tede/14114"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3074,6 +3287,7 @@
       "links": [
         "http://repositorio.uem.br:8080/jspui/handle/1/7242"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3094,6 +3308,7 @@
       "links": [
         "http://repositorio.ufc.br/handle/riufc/75135"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3114,6 +3329,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/14173"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3134,6 +3350,7 @@
       "links": [
         "https://saberaberto.uneb.br/handle/20.500.11896/5245"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3154,6 +3371,7 @@
       "links": [
         "https://repositorio.bc.ufg.br/tede/handle/tede/14594"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3176,6 +3394,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/16954"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3194,6 +3413,7 @@
       "acesso": "openAccess",
       "resumo": "Com os desafios enfrentados pela mineração, especialmente em questões relacionadas à redução de consumo e recuperação de água, disposição de rejeitos e gerenciamento ambiental, é de suma importância o estudo de métodos de desaguamento que reforcem a sustentabilidade da atividade mineral. Dependendo da qualidade do minério durante o beneficiamento de bauxita, toneladas de rejeito são geradas e dispostas principalmente em barragens. Estas frações têm alta umidade e grandes quantidades de caulinita, mineral muito fino e de difícil sedimentação, o que dificulta ainda mais o desaguamento deste material. Neste cenário enquadra-se este trabalho, que visa analisar a opção de desaguamento do rejeito do beneficiamento de bauxita da Zona da Mata mineira utilizando centrífugas do tipo decanter, possibilitando um maior entendimento sobre o comportamento desse material durante o desaguamento e a investigação dos efeitos de vários parâmetros do processo na recuperação de sólidos e concentração de sólidos nos fluxos, com base em ensaio de laboratório e ensaio em escala piloto utilizando três diferentes equipamentos. Os resultados indicaram que centrífugas decanter podem ser utilizadas para atingir alta concentração de sólidos na fase sólida (torta) para o material estudado, com valores variando de 60% a 80% de sólidos por massa, e uma ótima clarificação na fase líquida (clarificado) de 0 a 6% de sólidos por massa, valores que tornam possível o reaproveitamento dessa fase no circuito de processamento. Adicionalmente, o presente trabalho proporciona uma melhor compreensão de como diferentes concentrações de sólidos na alimentação podem afetar o comportamento do equipamento.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3214,6 +3434,7 @@
       "links": [
         "https://repositorio.unifei.edu.br/jspui/handle/123456789/3907"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3234,6 +3455,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/15706"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3254,6 +3476,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/16372"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3274,6 +3497,7 @@
       "links": [
         "https://hdl.handle.net/1843/79320"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3294,6 +3518,28 @@
       "links": [
         "https://tede.unioeste.br/handle/tede/7084"
       ],
+      "levantamento": "geral",
+      "destino": "unificada",
+      "desastre": null,
+      "tags": [],
+      "motivo": "Sem caso nomeado — fica na biblioteca unificada, nada é excluído (dono, 14/10/2026)."
+    },
+    {
+      "id": "tese-2023-o-direito-a-assessoria-tecnica-independente-em-m",
+      "titulo": "O direito à assessoria técnica independente em Minas Gerais (2016 – 2023) : entre consensos e dissenso.",
+      "autor": "Julião, Janaína Aparecida",
+      "tipo": "Dissertação",
+      "ano": 2023,
+      "instituicao": "Universidade Federal de Ouro Preto (UFOP)",
+      "sigla": "UFOP",
+      "pais": "Não informado pela instituição",
+      "idioma": "por",
+      "acesso": "openAccess",
+      "resumo": "Programa de Pós-Graduação em Direito. Departamento de Direito, Escola de Direito, Turismo e Museologia, Universidade Federal de Ouro Preto.",
+      "links": [
+        "http://www.repositorio.ufop.br/jspui/handle/123456789/16935"
+      ],
+      "levantamento": "ati",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3315,6 +3561,7 @@
         "https://riunbtainacan.unb.br/teses-e-dissertacoes/divida-social-e-atingidos-por-barragens-reconhecimento-e-reparacao/",
         "https://repositorio.unb.br/handle/10482/42805"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3335,6 +3582,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/19295"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3355,6 +3603,7 @@
       "links": [
         "https://repositorio.ufrn.br/handle/123456789/49962"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3375,6 +3624,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/50022"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3397,6 +3647,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/59544"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3417,6 +3668,7 @@
       "links": [
         "https://repositorio.unifei.edu.br/jspui/handle/123456789/3415"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3437,6 +3689,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/49249"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3457,6 +3710,7 @@
       "links": [
         "https://tede.unioeste.br/handle/tede/6333"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3477,6 +3731,7 @@
       "links": [
         "https://hdl.handle.net/1843/48215"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -3497,6 +3752,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/4416"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3517,6 +3773,7 @@
       "links": [
         "https://repositorio.udesc.br/handle/UDESC/17433"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -3537,6 +3794,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/15899"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3557,6 +3815,7 @@
       "links": [
         "https://hdl.handle.net/1843/83113"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3577,6 +3836,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/20132"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3597,6 +3857,7 @@
       "links": [
         "http://hdl.handle.net/10183/274018"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3617,6 +3878,7 @@
       "links": [
         "http://hdl.handle.net/10183/248672"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3637,6 +3899,7 @@
       "links": [
         "https://hdl.handle.net/1843/51192"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3657,6 +3920,7 @@
       "links": [
         "http://hdl.handle.net/10183/239735"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3677,6 +3941,7 @@
       "links": [
         "https://repositorio.pucsp.br/jspui/handle/handle/27253"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -3697,6 +3962,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/32123"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3717,6 +3983,7 @@
       "links": [
         "http://hdl.handle.net/10183/241887"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3737,6 +4004,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/15129"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3757,6 +4025,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/17657"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3777,6 +4046,7 @@
       "links": [
         "https://dspace.sti.ufcg.edu.br/handle/riufcg/42295"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3799,6 +4069,7 @@
       "links": [
         "https://ri.unir.br/jspui/handle/123456789/3932"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3821,6 +4092,7 @@
       "links": [
         "http://www.repositorio.jesuita.org.br/handle/UNISINOS/9886"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -3841,6 +4113,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/54"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3861,6 +4134,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/25270"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3883,6 +4157,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/15364"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3905,6 +4180,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/14366"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -3927,6 +4203,7 @@
       "links": [
         "https://repositorio.ufsc.br/handle/123456789/229822"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3947,6 +4224,7 @@
       "links": [
         "http://repositorio.ifpb.edu.br/jspui/handle/177683/1297"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -3967,6 +4245,7 @@
       "links": [
         "http://repositorio.ufes.br/handle/10/15054"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -3987,6 +4266,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/65702"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -4007,6 +4287,7 @@
       "links": [
         "https://ri.ufs.br/jspui/handle/riufs/17997"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4027,6 +4308,7 @@
       "links": [
         "https://repositorio.unb.br/handle/10482/41293"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4047,6 +4329,7 @@
       "links": [
         "http://repositorio.ufba.br/ri/handle/ri/34233"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4067,6 +4350,7 @@
       "links": [
         "https://hdl.handle.net/1843/39206"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -4087,6 +4371,7 @@
       "links": [
         "https://hdl.handle.net/1843/50254"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [],
@@ -4107,6 +4392,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/17862"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4127,6 +4413,7 @@
       "acesso": "openAccess",
       "resumo": "Escândio é um dos elementos presentes na lista de metais terras raras, sendo o mais valioso entre eles. O elemento é amplamente utilizado em ligas leves de alumínio, aparelhos eletrônicos, lasers, iluminação e células de combustível de óxido sólido (SOFCs). Escândio e todos os elementos terras raras são considerados críticos pela União Europeia, Brasil e pelos EUA devido aos riscos de interrupção na cadeia de fornecimento, importância econômica, reservas limitadas, baixa taxa de reciclagem e praticamente insubstituível na aplicação de tecnologias verdes. Por esta razão, é essencial o estudo de rotas extrativas de escândio a partir de novas reservas para desenvolver um processo economicamente e tecnicamente viável. Assim, a demanda atual e crescente de um elemento crucial para o desenvolvimento de uma sociedade sustentável pode ser atendida. Bauxitas são consideradas a principal fonte de escândio no mundo, o qual é a matéria-prima para produção de alumina pelo processo Bayer. Após a extração da alumina, praticamente todo o escândio vai para o resíduo gerado no processo conhecido como resíduo de bauxita (ou lama vermelha). Estimase que pelo menos 4 bilhões de toneladas do resíduo estão armazenados em barragens no mundo, contendo 30-100mg/kg de escândio, o que pode valer entre US$400 4,500 bilhões. O elemento representa 95% do valor econômico do resíduo. Zircônio é reportado como o segundo mais valioso. A literatura tem mostrado que fontes contento acima de 20mg/kg merecem exploração devido a viabilidade econômica. Ainda, a descoberta de novas reservas primárias é crucial para atender a demanda de escândio. Entre as técnicas de extração, a rota hidrometalúrgica atinge as maiores taxas de extração principalmente em concentrações traço. Por outro lado, há dois problemas principais: a síntese de sílica gel que reduz a extração de escândio e aumenta o consumo de ácido, e a separação de escândio dos contaminantes. Por esta razão, o objetivo desta tese foi estudar a extração de escândio de duas reservas não exploradas: resíduo de bauxita de um processo Brasileiro e do minério silicatado de uma fonte Canadense. Técnicas de lixiviação e de separação foram estudadas. A caracterização dos materiais foi realizada por difração de raios-X, fluorescência de raios-X por energia dispersiva, distribuição granulométrica, microscopia eletrônica de varredura acoplado com energia dispersiva, perda ao fogo, carbono orgânico total, e espectrometria de emissão ótica com plasma indutivamente acoplado. Experimentos de lixiviação do resíduo de bauxita foram realizados usando H2SO4 e H3PO4, onde o efeito da relação sólido-líquido, tempo, temperatura, dosagem de H2O2, e concentração de ácido foram avaliados. Lixiviação direta e digestão à seco/sulfatação seguido por lixiviação com água foram estudados para extração de escândio do minério a base de silicato usando H2SO4. O efeito da dosagem de ácido e da temperatura de calcinação também foram estudados. A técnica de extração por solventes foi estudada para separação de escândio usando Alamine 336, D2EHPA, e Cyanex 923. O efeito do pH, temperatura, concentração de extratante, mistura com TBP e relação A/O foram explorados. Resultados mostraram que a concentração de escândio e zircônio foi de 43.5mg/kg e 1329.8mg/kg, respectivamente, e 36.4% de Fe2O3, 23.3% de Al2O3 21.6% de SiO2. As principais fases minerais foram quartzo, sodalita, gibbsita, goetita, hematita, boehmita e gibbsita. Teores de escândio e zircônio minério à base de sílica foi 191mg/kg e 8,090mg/kg, respectivamente. O material continha 36.3% de Fe2O3, 4.61% de Al2O3, e 39.4% de SiO2. As principais fases minerais era dickite, ferrohornblende, fayalite, hedenbergite e albite. A extração de escândio resíduo de bauxita atingiu 92% usando H2SO4 20%, relação sólido-líquido igual a 1/10 for 8h e 90°C. Houve praticamente 0% de lixiviação de silício. O H2O2 teve pouca contribuição na formação de dióxido de silício durante a lixiviação ácida do resíduo de bauxita. As taxas extração na lixiviação com H3PO4 foram similares à lixiviação com H2SO4, onde a eficiência de lixiviação de escândio, alumínio, e ferro atingiu 90%, enquanto que silício foi de 13%. A extração de metais valiosos do minério a base de silicato por lixiviação direta aumentou de 40% (25°C) para 80% (90°C). A extração de escândio por lixiviação direta e por sulfatação seguido por lixiviação com água foi de 13,5% e 5,6%, respectivamente. Todo zircônio foi separado da solução usando Alamine 336 10% em querosene, relação A/O igual a 1:1, pH 1.0 por 15min a 25°C. Não foi observado efeito sinérgico entre o extratante amina e o TBP. Cyanex 923 foi mais seletivo para escândio do que para D2EHPA, onde o fator de separação para Sc/Fe foi de 288 e 99, e Sc/Ti foi de 98 e 21.5, respectivamente. A eficiência de reextração do zircônio foi de 92% usando Na2CO3 para concentração acima de 0.25mol/L. A etapa de lavagem pode ser realizada por HCl 5mol/L com perda de escândio de 0.1%. Todo o escândio foi extraído da fase orgânica usando H3PO4 5mol/L. A extração de escândio e zircônio (como coproduto) atingiu 92% e 25%, respectivamente. De acordo com o fluxograma proposto, seria possível obter 4kg de escândio e 31.9kg de zircônio a partir de 100 toneladas de resíduo de bauxita. O processo poderia gerar cerca de US$ 46.626 de óxido de escândio ou US$ 1.940.980.00 de fluoreto de escândio. O processo desenvolvido e a presente tese estão estritamente ligados aos objetivos para o desenvolvimento sustentável número 7 (7.2, 7a), 8 (8.2, 8.4), 9 (9.2, 9.4, 9.5, 9b), e 12 (12.2, 12.4, 12.5, 12.6, 12a).",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4147,6 +4434,7 @@
       "links": [
         "http://www.repositorio.ufop.br/jspui/handle/123456789/14688"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4167,6 +4455,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/64118"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4185,6 +4474,7 @@
       "acesso": "openAccess",
       "resumo": "This master&apos;s dissertation analyzes the repertoires of action of subjects involved in the construction of a suicide prevention policy in the county Santa Cruz do Sul/RS. Having as theorical reference the concept of Charles Tilly&apos;s Repertoire of Collective Action and the historical analysis regarding political construction surrounding suicide prevention in Brazil, the study highlights opportunities and political threats present in the process of developing a public policy. It also brings a discussion about the phenomenon of suicide in contemporary world, defending a relational approach between the material conditions of life and sociability in the context of neoliberalism and the increase of self-provoked deaths in the territory observed by this study. The research that empirically supports this discussion is based on four guiding questions. The first one, questions how the changes in the political conjuncture of the territory have impacted/reverberate in the construction of suicide prevention policies. The second aims at understanding the political importance of the Santa Cruz do Sul Municipal Committee on Suicide Prevention and its subjects in the current context of social movements focused on building a political agenda around the issue of suicide. The third refers to the trajectory of this Municipal Committee until its constitution, seeking to identify the repertoires perceived in the collective action of the subjects that compose this place. Finally, the fourth evaluates how the opportunities and political threats define/redefine the subjects forms of action involved in the construction of a municipal suicide prevention policy. Both the research questions and the theoretical arguments of the dissertation are based on the materialistic-historical method, congregating the scientific criteria of work to a critical position on the investigated phenomena. Thus, it is revealed that the subjects&apos; repertories of action have a historical connection with the repertories used by the Antimanicomial Struggle movements and the Psychiatric Reform in Brazil. In addition, it is revealed that the political arrangements that manage the State, in its different instances, influence the choice of repertories of action, as well as highlight threats and political opportunities for building public policies. Finally, it unveiled that the search for institutionality and the involvement of civil society in suicide prevention campaigns in the territory are innovative repertories in the context of the 21st century, even if its effectiveness in implementing public policies has not been confirmed.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4205,6 +4495,7 @@
       "links": [
         "https://rd.uffs.edu.br/handle/prefix/3819"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4225,6 +4516,7 @@
       "acesso": "openAccess",
       "resumo": "Introdução: Apesar da mineração existir no Brasil há mais de 300 anos, marcando principalmente a história do estado de Minas Gerais, muitas pessoas souberam que este tipo de atividade é comum em território nacional somente a partir do rompimento de barragens nas cidades de Mariana e Brumadinho, respectivamente nos anos de 2015 e 2019. Objetivo: Compreender o processo pelo qual os ribeirinhos atingidos por tragédias da mineração no Brasil entre os anos de 2015 a 2019 recompõem suas vidas, com uma contribuição etnográfica em uma cidade capixaba. Além disso, pretende-se também compreender como, no período do estudo, o Movimento dos Atingidos por Barragens (MAB) fortalece seu protagonismo e militância atuando junto aos moradores, seja por meio da mídia, registros visuais, narrativas ou construção da memória social do movimento. Método: revisão bibliográfica, pesquisa documental, observação, realização de entrevistas com militantes do Movimento dos Atingidos por Barragens (MAB), registros visuais e registros etnográficos. Resultados: A economia mineral do Estado de Minas Gerais conta com os altos lucros gerados nos últimos anos devido às atividades do setor na exportação de matéria prima. Entre as quinze cidades mineiras que receberam maior CFEM no ano de 2017, Mariana e Brumadinho, terras onde as maiores tragédias ambientais ocorreram nos últimos anos, ocupam respectivamente, a 5ª e a 8ª colocação. Enquanto Minas Gerais recebe grandes compensações financeiras pela exploração de seus recursos, muitos outros municípios de seu estado vizinho, o Espírito Santo, que viram as águas do rio Doce serem cobertas por lama devido ao desastre de Mariana, continuam esquecidos e buscando soluções aos diversos problemas causados à população ribeirinha. Considerações finais: Todas as promessas de revisão de barragens, novas tecnologias, promessas do ponto de vista legal, de política pública, continuam no papel, sem solução para os afetados pelas tragédias. As empresas no entanto, continuaram a crescer do ponto de vista econômico e a criar novas parcerias no mercado nacional e internacional. O dinheiro recebido como recurso da CFEM precisa libertar os municípios da extração de minério. Se sabemos todos os malefícios trazidos por esta atividade, precisamos considerar as circunstâncias e buscar o que cada região apresenta por vocação. Cada local tem suas especificidades, seus modos de vida.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": "ambos",
       "tags": [
@@ -4245,6 +4537,7 @@
       "acesso": "openAccess",
       "resumo": "Dentre as inúmeras questões no contexto brasileiro que demandam a elaboração e formulação de políticas públicas, destaca-se a problemática enfrentada pelos atingidos por mineração e barragens, devido aos impactos causados por grandes empreendimentos econômicos sejam esses minerários ou hidrelétricos. Esses atingidos organizam-se em movimentos sociais, tendo como foco dessa pesquisa o Movimento dos Atingidos por Barragens (MAB) e o Movimento Nacional Pela Soberania Popular Frente à Mineração (MAM), que buscam diminuir esses impactos e lutar pelos seus direitos. Dessa maneira, essa pesquisa tem como objetivo analisar as ações que o MAB e o MAM têm adotado para influenciar na formação da agenda pública em prol da população atingida por grandes empreendimentos econômicos. A fundamentação teórica deste projeto se respalda em conceitos sobre processo de políticas públicas como foco na teoria de agenda pública, movimentos sociais e seus repertórios de ação coletiva. É apresentada também uma discussão sobre os grandes empreendimentos econômicos, atingidos por mineração e barragens e os movimentos que serão estudados. Os procedimentos metodológicos se baseiam em uma pesquisa qualitativa, com a utilização de entrevistas com lideranças desses movimentos, que foram transcritas, categorizadas e analisadas por meio do método análise de conteúdo. Por meio das entrevistas, foi evidenciado que ambos movimentos reconheceram a importância da criação de um movimento a nível nacional, tendo como precursores os atingidos, assim como outras parcerias, pois como argumentado teoricamente os movimentos precisam de trabalhar em coletividade e buscar caminhos participativos para alcançar seus objetivos. Além disso, a criação desses movimentos são advindas das inúmeras externalidades geradas pelos empreendimentos minerários e hidrelétricos como: invasão da fauna e flora, saúde do trabalhador, deterioração dos termos de troca, inchaço urbano, favelização, rastro de pobreza, impactos imateriais, relações de trabalhos cessadas, aumento da violência contra as mulheres, entre outros pontos exposto no referencial e nos resultados. Em prol da mitigação desses impactos e da inserção de suas pautas na agenda, os movimentos têm demandado questões como diminuição dos conflitos sociais, expansão da terminologia atingidos e do movimento, nova legislação, novo modelo energético e minerário, atenuação dos impactos elevados as mulheres, soberania popular e participação, diálogo e conscientização, a criação de políticas públicas que abordem esses temas. Os repertórios de ação coletiva são meios que os movimentos têm buscado para inserção de suas pautas na agenda pública, assim como validar suas pautas socialmente, os principais repertórios dessa pesquisa são: formação, mobilização, participação, projetos, interação social entre outros. Foi observado na pesquisa que a complexidade social e estrutural faz com que os caminhos percorridos pelos movimentos sejam oscilantes, voláteis o que dificulta a inserção pautas na agenda pública. Dentre os resultados alcançados pelos movimentos para influenciar na agenda pública, pode-se identificar elementos de visibilidade, credibilidade e relevância nos problemas públicos debatidos pelos movimentos. No entanto, suas trajetórias ainda demandam o desenvolvimento e o aperfeiçoamento de muitos repertórios de ação, visto que a formulação de políticas públicas para atingidos por empreendimentos minerários e hidrelétricos no Brasil, é marcada por relações desiguais entre Estado, o mercado e a sociedade.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4267,6 +4560,7 @@
       "links": [
         "http://tede.unioeste.br/handle/tede/4851"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4287,6 +4581,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1640306"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4307,6 +4602,7 @@
       "links": [
         "http://hdl.handle.net/10183/211245"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4327,6 +4623,7 @@
       "links": [
         "https://locus.ufv.br//handle/123456789/27867"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4347,6 +4644,7 @@
       "links": [
         "http://hdl.handle.net/10183/217076"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4368,6 +4666,7 @@
         "https://repositorio.ufu.br/handle/123456789/29210",
         "http://doi.org/10.14393/ufu.te.2020.391"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4388,6 +4687,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/11941"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4408,6 +4708,7 @@
       "links": [
         "https://hdl.handle.net/1884/75749"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4426,6 +4727,7 @@
       "acesso": "openAccess",
       "resumo": "Os tecnógenos, objetos centrais de estudo desta pesquisa, são modificações causadas pelas atividades antrópicas nos meios geológico e geomorfológico, como: barragens, aterros e escavações que, a partir de um determinado momento, começaram a se replicar de maneira extremamente rápida e em escala global. Sendo assim, estas modificações podem se tornar assinaturas estratigráficas de um novo tempo geológico, o Antropoceno (Quinário/Tecnógeno), ainda não formalizado. As relações entre estes elementos, as diferentes atividades antrópicas, os riscos e os conflitos socioambientais expõem o viés sociológico deste estudo. E, este viés \\\"desgeologiza\\\" o tecnógeno, e o coloca, também, como objeto de estudo das ciências humanas. A partir desta perspectiva, se definiu o seguinte objetivo geral de pesquisa: propor uma classificação socioambiental para os tecnógenos, associando-os ao risco e à capacidade de suporte ambiental. E, para que este objetivo central fosse atingido foram traçados três objetivos específicos: 1) caracterizar um novo tempo geológico, que se apresenta intrinsecamente relacionado ao risco ambiental: o Antropo(?)ceno. Trazer algumas reflexões: sua formalização é mesmo necessária? Com qual suporte? 2) contextualizar as principais atividades antrópicas que geram tecnógenos associados ao risco, dentro do processo de globalização; e 3) discutir o risco, a injustiça ambiental e intergeracional associados a estes tecnógenos, com foco na Amazônia do Antropoceno sob o guarda-chuva da globalização. O delineamento geral, com relação aos procedimentos adotados para a coleta de dados e proposição da metodologia de classificação, foi dividido nas seguintes etapas: (i) pesquisa bibliográfica sobre: classificações existentes para os tecnógenos; classificações para solos antrópicos, tecnosolos, solos urbanos e antropossolos; trabalhos aplicados; e métodos de interpretação utilizados para analisar os tecnógenos; (ii) a partir da primeira etapa, indicação de base conceitual e proposição de método para a classificação socioambiental destes tecnógenos; (iii) levantamento de imagens e estudo de campo (coleta de dados e testagem do método). Os resultados apresentados por esta pesquisa são: 1) um método para a classificação socioambiental dos tecnógenos, associando-os ao risco e à capacidade de suporte ambiental; e 2) reflexões sobre os desafios e caminhos para a Amazônia do Antropoceno: com quais ferramentas seria possível reverter os impactos socioambientais já causados?",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4446,6 +4748,7 @@
       "links": [
         "http://hdl.handle.net/10183/232669"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4466,6 +4769,7 @@
       "links": [
         "http://hdl.handle.net/10183/219875"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4486,6 +4790,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/11890"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4506,6 +4811,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/18542"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4526,6 +4832,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/12696"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4546,6 +4853,7 @@
       "links": [
         "http://hdl.handle.net/11449/192337"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4566,6 +4874,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1638334"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4586,6 +4895,7 @@
       "links": [
         "https://repositorio.ufscar.br/handle/20.500.14289/12773"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4606,6 +4916,7 @@
       "links": [
         "http://hdl.handle.net/11612/1711"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4626,6 +4937,7 @@
       "links": [
         "https://bibliodigital.unijui.edu.br/items/6ce092b0-5da3-4c88-b73c-010456e22936"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4646,6 +4958,7 @@
       "links": [
         "https://repositorio.unb.br/handle/10482/36816"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4666,6 +4979,7 @@
       "links": [
         "http://hdl.handle.net/11612/1744"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4688,6 +5002,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/49955"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4708,6 +5023,7 @@
       "links": [
         "http://hdl.handle.net/10183/200961"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4728,6 +5044,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/14477"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4750,6 +5067,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=36968&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.36968"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4768,6 +5086,7 @@
       "acesso": "openAccess",
       "resumo": "Nesta tese estudam-se processos de Aprendizagem Social ocorridos na comunidade ribeirinha de São Carlos do Jamari, localizada às margens do rio Madeira em Rondônia, desencadeados pela situação de desastre ocorrida na inundação total da comunidade durante cerca de quatro meses no ano de 2014. O contexto histórico é concomitante com a implantação de duas grandes usinas hidrelétricas no leito do Madeira: Santo Antônio e Jirau. A hipótese utilizada é a de que ocorreram e ocorrem processos de Aprendizagem Social na comunidade de São Carlos do Jamari decorrentes do desastre socioambiental vivido, mas que não são potencializados pelo poder público e, consequentemente, não influenciam os processos de tomada de decisão da gestão ambiental. O objetivo geral da pesquisa foi de compreender processos de Aprendizagem Social em São Carlos do Jamari decorrentes da inundação da comunidade em 2014. E os objetivos específicos foram: analisar qual a leitura dos principais atores sociais sobre o desastre causado pela inundação e de qual forma o poder público lida com isso; analisar o que e como os habitantes da comunidade de São Carlos do Jamari aprenderam e aprendem com a ocorrência do desastre; sistematizar os conhecimentos e práticas que os atores envolvidos consideram necessários para lidar com a nova situação de vulnerabilidade em que se encontram. A metodologia de pesquisa pautou-se no Estudo de Caso, com a realização de três idas a campo 2015, 2016 e 2017 , trabalhando-se com três atores sociais envolvidos no caso: moradores da comunidade, lideranças do Movimento dos Atingidos por Barragens (MAB) e trabalhadores da Defesa Civil municipal de Porto Velho. Os instrumentos de coleta de dados utilizados foram entrevistas, grupos focais, conversas informais e observação direta. As entrevistas e grupos focais foram gravados e transcritos, e as observações diretas e conversas informais registradas em diário de campo. Por meio da Análise de Conteúdo dos dados, foi revelado que os comunitários manifestaram uma leitura do desastre associando suas causas ao barramento contemporâneo do rio Madeira. As lideranças do MAB expressam uma leitura do desastre complexa, articulando elementos da natureza maior precipitação com causas humanas, a instalação das usinas e sua operação orientada por interesses de maiores lucros. Já os trabalhadores da Defesa Civil têm uma leitura naturalizada da catástrofe, escamoteando as variáveis humanas que possam ter influenciado no fenômeno, e assumindo uma postura tecnicista de relação com a natureza. No tocante aos processos de aprendizagem estabelecidos na comunidade no contexto estudado, os dados revelaram três dimensões da aprendizagem que permeiam os momentos do desastre: a relação Comunidade-Comunidade, a relação Comunidade-Território e a relação ComunidadeEstado. Nesse contexto, os participantes da pesquisa elencam como conhecimentos e práticas necessárias para lidar com essa nova situação de vulnerabilidade que se encontram: a ampliação da democracia participativa, um novo modo de organização social, e meio suporte do poder público. Os achados são amplamente dialogados com a visão sociológica da Sociedade de Risco e a literatura científica do referencial da Aprendizagem Social. Confirmase a hipótese inicial de pesquisa, e apontam-se possibilidade de superação da situação atual, por meio da implantação de plataformas multiatores de processos de Aprendizagem Social.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4790,6 +5109,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/48547"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4810,6 +5130,7 @@
       "links": [
         "https://repositorio.ifpe.edu.br/xmlui/handle/123456789/74"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4830,6 +5151,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tede/10171"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4852,6 +5174,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=39463&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.39463"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4872,6 +5195,7 @@
       "links": [
         "http://repositorio.furg.br/handle/1/8485"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4892,6 +5216,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/18565"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4912,6 +5237,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/9053"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4932,6 +5258,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/73791"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4954,6 +5281,7 @@
       "links": [
         "https://hdl.handle.net/1884/60380"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -4972,6 +5300,7 @@
       "acesso": "openAccess",
       "resumo": "Os movimentos de participação popular sempre tiveram relevante papel, como agentes de pressão e interferência política, na conquista de melhores condições de vida, compreendendo a luta por direitos, igualdade, proteção, etc. No Brasil, sobretudo, após o período de redemocratização, com o advento da Constituição Federal, vários direitos foram alcançados, os movimentos sociais ganharam ainda mais espaço de atuação e, também, novas configurações. A elaboração de políticas públicas que materializem os direitos consagrados e que possam ser efetivas na melhoria das condições de vida da população ainda é tarefa premente dos grupos sociais organizados. Com o desenvolvimento econômico das últimas décadas ampliaram-se a implementação de grandes empreendimentos econômicos que atingem inúmeras populações. As mineradoras e as barragens de produção de energia têm gerado grandes impactos para as comunidades locais. Dessa forma, destacam-se o Movimento dos Atingidos por Barragens (MAB) e o Movimento pela Soberania Popular na Mineração (MAM) na luta pelos direitos das populações atingidas e como principais movimentos de articulação e influência política para a formulação de políticas públicas que possam atender as demandas dos atingidos. Nesse sentido, o presente trabalho tem por proposta compreender, ainda que sem a pretensão de esgotar o tema, as ações adotadas pelo Movimento de Atingidos por Barragens (MAB) e o Movimento Nacional pela Soberania Popular na Mineração (MAM) para influenciar no processo de formulação de políticas públicas para atingidos por barragens e mineradoras, a partir de uma análise fundamentada no modelo de Kingdon. Para o desenvolvimento desse tema, foram realizados três estudos, o primeiro com o objetivo de descrever o papel dos movimentos sociais na formulação de políticas públicas, o segundo objetivando compreender os fluxos de problemas e soluções do modelo de Kingdon por meio das pautas e reivindicações do MAB e do MAM para as populações atingidas por barragens e atividades de mineração e o terceiro com o objetivo de compreender o fluxo político do modelo de Kingdon a partir das ações adotadas pelo MAB e pelo MAM. Ambos os artigos foram elaborados a partir do modelo de análise de múltiplos fluxos proposto por Kingdon (1984) que orienta a formação da agenda governamental a partir da confluência dos fluxos de problemas, soluções e político. Com base nesses estudos, observou-se que existem correspondências entre as ações desenvolvidas pelos dois movimentos com os fluxos propostos por Kingdon, e que essa atuação permite influenciar a formação da agenda governamental, apesar de não se constituir em um processo linear e com resultados certos, já que existem outros interesses disputando espaço na agenda.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -4994,6 +5323,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/10689"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5014,6 +5344,7 @@
       "links": [
         "http://hdl.handle.net/10183/180112"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5034,6 +5365,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/28375"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5056,6 +5388,7 @@
       "links": [
         "http://hdl.handle.net/10183/193234"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5076,6 +5409,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/11144"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5098,6 +5432,7 @@
       "links": [
         "https://tedebc.ufma.br/jspui/handle/tede/2268"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5118,6 +5453,7 @@
       "links": [
         "https://repositorio.metodista.br/handle/123456789/593"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5140,6 +5476,7 @@
       "links": [
         "https://repositorio.ifpa.edu.br/jspui/handle/prefix/213"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5160,6 +5497,7 @@
       "links": [
         "http://hdl.handle.net/11422/9425"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5182,6 +5520,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=34814&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.34814"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5202,6 +5541,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/385"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5222,6 +5562,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/3641"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5242,6 +5583,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/10447"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5262,6 +5604,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/11795"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5282,6 +5625,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tede/8627"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5302,6 +5646,7 @@
       "links": [
         "https://archivum.grupomarista.org.br/pergamumweb/vinculos//000060/0000608f.pdf"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5322,6 +5667,7 @@
       "links": [
         "http://hdl.handle.net/11449/152175"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5344,6 +5690,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/123456789/11746"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5364,6 +5711,7 @@
       "links": [
         "http://www.repositorio.ufal.br/handle/riufal/2006"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5384,6 +5732,7 @@
       "links": [
         "http://hdl.handle.net/11612/361"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5404,6 +5753,7 @@
       "acesso": "openAccess",
       "resumo": "A construção pesada brasileira, setor produtor das rodovias, túneis, aeroportos, portos, ferrovias, metrovias, barragens, usinas hidrelétricas e obras de arte, pontes e viadutos - bens que compõem a infraestrutura nacional - além de dinamizar diretamente as demais indústrias, contribuir para ocupação da mão de obra e absorver conhecimento tecnológico, é também formadora de uma engenharia nacional de alta especialidade técnica, reconhecida e respeitada no mundo todo. Para se entender a pujança desta atividade industrial, parte-se da gênese histórica da construção pesada nacional e das grandes firmas. Verifica-se o funcionamento do setor, aspectos técnicos, jurídicos, econômicos, políticas, materiais, máquinas, pessoal e demanda. E, por fim, a distribuição espacial, localização de obras e empresas. A estruturação da construção pesada acompanha o processo da industrialização nacional, dinamizado, sobretudo, a partir dos anos 1930. De 1960 a 1970 o setor montado vive a expansão interna com o aumento da demanda e início da inserção no mercado regional. Após a desaceleração da demanda interna a partir dos anos 1980, as construtoras partem para concessões de serviços públicos e demanda externa de construção de obras pesadas. Mantém-se pela expansão via diversificação de atuação e multinacionalização, as quais tomam força a partir da década 1990. Com as políticas nacionais de privatizações passam a atuar as firmas em saneamento, telecomunicações, energia, petroquímicos, transportes, defesa, mineração, óleo e gás, bioenergia, mobilidade urbana, empreendimentos imobiliários, têxtil, naval. Nos anos 2000 consolidam-se como grandes grupos empresariais atuantes nos mais diversos setores econômicos e retomam com força às atividades de construção de infraestruturas internas estimuladas por novas demandas públicas. A partir dos anos 2010 inicia-se o reajuste do setor. O objetivo principal deste trabalho é o de compreender o setor da construção pesada brasileira sua consolidação, expansão e multinacionalização, a partir da combinação de aspectos naturais e sociais. Um setor complexo que atingiu preponderância regional e consagrado destaque mundial associado ao protagonismo de empresas, que começaram pequenas, cresceram, disputaram e ganharam mercados internacionais, demonstrando excelência.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5424,6 +5774,7 @@
       "links": [
         "https://rd.uffs.edu.br/handle/prefix/601"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5446,6 +5797,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/31371"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5466,6 +5818,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/26787"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5486,6 +5839,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tede/8037"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5506,6 +5860,7 @@
       "links": [
         "http://hdl.handle.net/10183/144105"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5528,6 +5883,7 @@
       "links": [
         "https://repositorio.ufsc.br/xmlui/handle/123456789/167704"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5548,6 +5904,7 @@
       "links": [
         "http://dspace.est.edu.br:8080/jspui/handle/BR-SlFE/724"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5568,6 +5925,7 @@
       "links": [
         "http://tede2.uepg.br/jspui/handle/prefix/385"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5590,6 +5948,7 @@
       "links": [
         "http://repositorio.ufba.br/ri/handle/ri/20703"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5610,6 +5969,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/19077"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5630,6 +5990,7 @@
       "links": [
         "http://www.locus.ufv.br/handle/123456789/21289"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5652,6 +6013,7 @@
       "links": [
         "https://hdl.handle.net/1843/BUOS-ATQNCR"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5672,6 +6034,7 @@
       "links": [
         "http://hdl.handle.net/11449/137887"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5694,6 +6057,7 @@
       "links": [
         "https://ri.uea.edu.br/handle/riuea/2496"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5714,6 +6078,7 @@
       "links": [
         "http://hdl.handle.net/11449/148815"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5734,6 +6099,7 @@
       "links": [
         "https://repositorio.ufscar.br/handle/20.500.14289/8875"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5754,6 +6120,7 @@
       "links": [
         "http://www.repositorio.ufop.br/handle/123456789/7185"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5774,6 +6141,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/985"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5794,6 +6162,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/12943"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5814,6 +6183,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/15611"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5834,6 +6204,7 @@
       "links": [
         "https://repositorio.ufjf.br/jspui/handle/ufjf/411"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5856,6 +6227,7 @@
       "links": [
         "https://hdl.handle.net/1884/41887"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5876,6 +6248,7 @@
       "links": [
         "http://guaiaca.ufpel.edu.br/handle/prefix/5265"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5896,6 +6269,7 @@
       "links": [
         "http://tede.unioeste.br:8080/tede/handle/tede/1136"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -5916,6 +6290,7 @@
       "acesso": "openAccess",
       "resumo": "The objective of this study was to identify the favorable or limiting factors to the development of communities affected by dams, and used these factors in public policy proposals destined to communities affected by dams. Therefore, this study used the procedural model of public policies proposed by Ferreira, Alencar and Pereira (2011). The methodology of this work is guided by the empirical application of phases 1, 3 and partially phase 4, respectively, the interpretation general, factors categorization in favorable and or limiting and favorable and or limiting factors as propositions for public policy formulation. In the data collection, it used semi-structured scripts of interviews based on Alencar`s et al. (2005) scripts, adapted to the specificities of this study. The interviewees were selected by the temporal dimension, by the criterion convenience and/or accessibility, totaling fifty-seven interviewees. To collect and systematize the data, it used the following steps of grounded theory: i) transcription of the interviews, ii) interaction with the data, iii) open coding, iv) axial coding, v) selective coding. The favorable and limiting factors were arranged in categories: infrastructure, access to social policies, cultural, symbolic impacts, social impacts, environmental impacts, employment, economic reactivation, association, public power, tourism and economic impacts. It used the analysis of meanings to bring the senses of these factors, exploring how they could be used for public policy proposals. It was found that implantation of UHE Funil didn`t promote the development by the alternative way in the communities affects by dams neither promoted the development as synonymous of economic growth as advocates the official discourse of the State. In general, a public policy that protects the interests of those affected by dams, and therefore promote the development of communities by the alternative way, should define who is the affected people, and shoud insert the affected by dams in all phases of implementation of a dam, since its idea until to the evaluation of the commitments given. Moreover, this public policy shall provide for measures to mitigate the damage and promote the development of the a communities affected by dams, in order to engage the enterprising of dams, public power, the affecys by dams and the Movement of Affects by Dams.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5934,6 +6309,7 @@
       "acesso": "openAccess",
       "resumo": "Dissertação (mestrado)—Universidade de Brasília, Centro de Excelência em Turismo, Programa de Pós-Graduação em Turismo, Mestrado Professional em Turismo, 2015.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5954,6 +6330,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/11593"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5972,6 +6349,7 @@
       "acesso": "openAccess",
       "resumo": "Dissertação apresentada à Universidade Federal de Lavras, como parte das exigências do Programa de Pós-graduação em Administração, área de concentração em Organizações, Gestão e Sociedade, para obtenção do título de Mestre.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -5992,6 +6370,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/16911"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6010,6 +6389,7 @@
       "acesso": "openAccess",
       "resumo": "Ações antrópicas, como a construção de reservatórios, alteraram a migração de peixes que afeta a função normal do eixo hipotalamo-hipófise-gônadas. Para atenuar o impacto ambiental sobre a biota, existem programas de repovoamento com objetivo de reproduzir as espécies de peixes atingidas pelas barragens. Na piscicultura de Ponte Nova, na Bacia do Alto Tietê, o peixe migratório Astyanax fasciatus é rotineiramente produzido para o repovoamento com protocolos de reprodução artificial convencionais, mas o seu sucesso varia entre as fêmeas. Um estudo de citogenética detectou que o número de cromossomos foi diferente entre os reprodutores, uma característica comum em A. fasciatus. O objetivo do presente estudo foi estudar a fisiologia reprodutiva de Astyanax fasciatus com diferentes números de cromossomos, em ambiente natural (AN) e em cativeiro (Cat) e as possíveis alterações que possam explicar diferentes resultados de resposta à reprodução induzida em cativeiro. Fêmeas adultas de cada grupo experimental (G1-46 cromossomos; com baixa resposta à reprodução induzida; e G2 - 48 cromossomos; com boa resposta à reprodução induzida) foram coletadas em Cat e em AN ao longo de um ano. Amostras de sangue foram retiradas para análise plasmática de estradiol (E2), e os ovários para o cálculo da fecundidade relativa (FR), diâmetro oocitários, Índice Gonadossomático (IGS) e análises histológicas para identificação do estágio de maturação. As fêmeas do G1 nos dois ambientes iniciaram a fase vitelogênica do ciclo reprodutivo no inverno com o aumento da concentração de E2 plasmático. Nas fêmeas de AN, neste mesmo grupo, a maior porcentagem de oócitos vitelogênicos foi mantida nos ovários desde a primavera até o verão, período no qual a concentração de E2 continuou elevada no plasma. Por outro lado, no Cat, as concentrações de E2 não se mantiveram elevadas nas demais estações do ano, limitando-se apenas ao pico do inverno. Mesmo assim, as fêmeas confinadas mantiveram a FR significativamente mais elevada quando comparadas àquelas de AN, assim como maiores porcentagens de oócitos vitelogênicos, evidenciando a ausência de desova e lentidão no processo de reabsorção do vitelo. Já as fêmeas do G2, em AN iniciaram a fase vitelogênica do seu ciclo reprodutivo no outono, com o aumento progressivo dos níveis de E2 que atingiram seu pico na primavera, com a desova ocorrendo no verão. Por outro lado, a permanência no Cat, de alguma forma, alterou a sensibilidade às dicas ambientais do ciclo sazonal, e os níveis de E2 e a FR se mantiveram altos praticamente o ano todo. Estes dados sugerem que A. fasciatus com números diferentes de cromossomos têm padrões reprodutivos diferentes tanto em Cat como em AN e que em cativeiro fêmeas do G1 terão maior sucesso na indução quando manipuladas logo após o inverno, já fêmeas do G2 em Cat parecem ter sucesso na indução praticamente o ano todo",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6030,6 +6410,7 @@
       "links": [
         "http://tede.ufam.edu.br/handle/tede/4050"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6050,6 +6431,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/18272"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6070,6 +6452,7 @@
       "links": [
         "https://hdl.handle.net/1884/37372"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6090,6 +6473,7 @@
       "links": [
         "http://hdl.handle.net/10183/87987"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6110,6 +6494,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/5932"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6130,6 +6515,7 @@
       "links": [
         "https://repositorio.unifesp.br/handle/11600/48290"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6150,6 +6536,7 @@
       "links": [
         "http://repositorio.uem.br:8080/jspui/handle/1/5092"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6170,6 +6557,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/11338"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6191,6 +6579,7 @@
         "http://biblioteca.ufabc.edu.br/index.php?codigo_sophia=48471&midiaext=43740",
         "http://biblioteca.ufabc.edu.br/index.php?codigo_sophia=48471&midiaext=43740/index.php?codigo_sophia=48471&midiaext=43739"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6211,6 +6600,7 @@
       "links": [
         "https://tede2.pucsp.br/handle/handle/17001"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6231,6 +6621,7 @@
       "links": [
         "http://hdl.handle.net/10183/79053"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6254,6 +6645,7 @@
         "https://repositorio.ufu.br/handle/123456789/16160",
         "https://doi.org/10.14393/ufu.di.2013.112"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6274,6 +6666,7 @@
       "links": [
         "https://arca.fiocruz.br/handle/icict/24514"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6294,6 +6687,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/17761"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6316,6 +6710,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tede/3278"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6336,6 +6731,7 @@
       "links": [
         "http://hdl.handle.net/11612/233"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6358,6 +6754,7 @@
       "links": [
         "https://hdl.handle.net/1884/29825"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6378,6 +6775,7 @@
       "links": [
         "http://hdl.handle.net/11449/111148"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6398,6 +6796,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/20798"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6418,6 +6817,7 @@
       "links": [
         "https://repositorio.ufsc.br/handle/123456789/200396"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6440,6 +6840,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/4190"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6460,6 +6861,7 @@
       "links": [
         "https://repositorio.ufsc.br/handle/123456789/107462"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6480,6 +6882,7 @@
       "links": [
         "http://tede.ufam.edu.br/handle/tede/4214"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6500,6 +6903,7 @@
       "links": [
         "https://repositorio.upf.br/handle/123456789/2800"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6520,6 +6924,7 @@
       "links": [
         "https://hdl.handle.net/1884/35723"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6540,6 +6945,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/11638"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6560,6 +6966,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/10644"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6580,6 +6987,7 @@
       "links": [
         "http://tede.unioeste.br:8080/tede/handle/tede/1786"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6600,6 +7008,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/4167"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6622,6 +7031,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/2041"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6642,6 +7052,7 @@
       "links": [
         "https://biblioteca.sophia.com.br/terminalri/9575/acervo/detalhe/98589"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6662,6 +7073,7 @@
       "links": [
         "https://hdl.handle.net/10438/10963"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6682,6 +7094,7 @@
       "links": [
         "http://repositorio.ufba.br/ri/handle/ri/13618"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6700,6 +7113,7 @@
       "acesso": "openAccess",
       "resumo": "Vivemos numa sociedade onde os riscos e as ameaças atingiram elevados níveis de abrangência, assim como de ineditismo, através do surgimento de novos riscos sinérgicos. Para corresponder a essa situação, emergiu uma cultura de segurança, caracterizada pela crença na racionalidade técnica, de base científica. Esta cultura apresenta, como atores reguladores, os chamados sistemas peritos, que gabam de grande confiança por parte expressiva da sociedade, e da autoridade de discursos institucionais com status de inquestionabilidade e infalibilidade. Uma produção social de risco, no Brasil, é a construção de barragens, ilustrado, dentre outros, pelo elevado número de acidentes envolvendo estes empreendimentos. No caso da UHE de Itaipu Binacional, foram analisadas algumas variáveis de risco de colapso da barragem, dentre elas: as de caráter ecossistêmico, considerando, principalmente, a presença e reprodução do mexilhão dourado no lago da UHE; as relacionadas a eventos climáticos críticos, uma vez que os cálculos estruturais das obras civis foram baseados em séries históricas que desconsideraram as mudanças no clima; e, as associados ao terrorismo, considerando a presença de uma comunidade local tida como suspeita, no imaginário social, na região da tríplice fronteira. A partir da síntese do estado da arte no debate das ciências sociais e humanas, analisou-se, as similaridades, diferenças e conflitos entre o discurso institucional de segurança da UHE Itaipu Binacional e o das autoridades públicas, com as representações dos grupos sociais inseridos imediatamente à jusante do empreendimento.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6722,6 +7136,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=20720&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.20720"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6742,6 +7157,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/3365"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6762,6 +7178,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/18913"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6782,6 +7199,7 @@
       "links": [
         "https://repositorio.ufrn.br/jspui/handle/123456789/16969"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6803,6 +7221,7 @@
         "https://repositorio.ufu.br/handle/123456789/13266",
         "https://doi.org/10.14393/ufu.te.2012.22"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6823,6 +7242,7 @@
       "links": [
         "https://biblioteca.sophia.com.br/terminalri/9566/acervo/detalhe/155076"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6843,6 +7263,7 @@
       "links": [
         "https://hdl.handle.net/1843/CMBC-8UHPME"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6863,6 +7284,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1617824"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6883,6 +7305,7 @@
       "links": [
         "https://hdl.handle.net/1884/28040"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6903,6 +7326,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tde/2025"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -6925,6 +7349,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/11617"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6945,6 +7370,7 @@
       "links": [
         "https://hdl.handle.net/1843/MPBB-955NLA"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6966,6 +7392,7 @@
         "https://repositorio.ufu.br/handle/123456789/16137",
         "https://doi.org/10.14393/ufu.di.2012.188"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -6986,6 +7413,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/22145"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7006,6 +7434,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/9448"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7026,6 +7455,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/22124"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7044,6 +7474,7 @@
       "acesso": "openAccess",
       "resumo": "Este trabalho apresenta resultados de análises de estabilidade por métodos de equilíbrio limite e análises tensão-deformação para um aterro sanitário de grande porte reforçado com geossintéticos e alteado com diques periféricos sucessivos segundo o método de montante de barragens de rejeitos, visando a aumentar sua capacidade de armazenamento. Os valores dos parâmetros de resistência elásticos e elasto-plásticos dos materiais foram definidos com base na bibliografia, privilegiando-se os obtidos em campo. Os parâmetros dos reforços geossintéticos (geogrelhas) foram obtidos dos catálogos técnicos de empresa fabricante de geogrelhas. Nas análises equilíbrio-limite verificou-se também a influência das pressões neutras nos fatores de segurança por meio da variação do parâmetro de pressão ru de 0 a 0,3. Os resultados dos métodos de equilíbrio limite mostraram que a construção de diques periféricos sucessivos não aumenta significativamente o fator de segurança do aterro para qualquer altura e a de diques reforçados aumenta-o para alturas até 30m. Por outro lado, o reforço dentro do maciço aumenta consideravelmente o fator de segurança para qualquer altura do aterro. As pressões neutras no maciço podem reduzir significativamente o fator de segurança, em até 25% para as configurações propostas. O fator de segurança 1,5 é atingido para ru = 0,2, para as alturas de até 30m nas configurações com reforço no interior do maciço sanitário. As análises tensão-deformação mostraram que as deformações são principalmente verticais, sendo que as horizontais representam até 30% das totais. As deformações verticais máximas foram de 4%, valor muito inferior aos encontrados na bibliografia em aterros monitorados (10 a 40%), provavelmente porque as contribuições da decomposição da matéria orgânica e do creep ao longo do tempo superam o efeito do peso próprio do maciço. A análise conjunta das duas metodologias mostra que os fatores de segurança obtidos nas análises tensão-deformação são muito próximos aos obtidos nas análises equilíbrio-limite para ru =0,1; que o uso de reforços no interior do maciço sanitário proporciona um aumento no fator de segurança da ordem de 30%, o que justifica a continuação deste estudo focalizando aspectos práticos construtivos e operacionais; e que a configuração em diques sucessivos e maciço sanitário reforçado mostrou-se, dentre as alternativas estudadas, a mais eficiente e eficaz para a configuração de aterro estudada, uma vez que permitiu obter o fator de segurança desejado sem a necessidade de reforço dos diques de solos.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7064,6 +7495,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/11251"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7084,6 +7516,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/10535"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7104,6 +7537,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/10870"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7124,6 +7558,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/6850"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7144,6 +7579,7 @@
       "links": [
         "https://repositorio.upf.br/handle/123456789/3519"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7164,6 +7600,7 @@
       "links": [
         "http://hdl.handle.net/10183/37464"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7186,6 +7623,7 @@
       "links": [
         "https://ri.ufs.br/handle/riufs/5631"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7208,6 +7646,7 @@
       "links": [
         "https://repositorio.idp.edu.br/123456789/233"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7228,6 +7667,7 @@
       "links": [
         "http://hdl.handle.net/11449/96680"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7248,6 +7688,7 @@
       "links": [
         "http://www.bdtd.uerj.br/handle/1/10321"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7268,6 +7709,7 @@
       "links": [
         "https://tede2.pucgoias.edu.br/handle/tede/2139"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7288,6 +7730,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1616597"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7308,6 +7751,7 @@
       "links": [
         "https://ri.ufs.br/handle/riufs/5490"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7328,6 +7772,7 @@
       "links": [
         "https://rima.ufrrj.br/jspui/handle/20.500.14407/20989"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7348,6 +7793,7 @@
       "links": [
         "https://tede2.pucsp.br/handle/handle/3238"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7370,6 +7816,7 @@
       "links": [
         "https://repositorio.ufrn.br/jspui/handle/123456789/14315"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7393,6 +7840,7 @@
         "https://riunbtainacan.unb.br/teses-e-dissertacoes/criterios-socioambientais-de-reposicao-de-perdas-e-relocalizacao-para-atingidos-por-barragens-um-estudo-sobre-o-povoado-de-palmatuba-to/",
         "http://repositorio.unb.br/handle/10482/3942"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7413,6 +7861,7 @@
       "links": [
         "http://hdl.handle.net/11449/105035"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7435,6 +7884,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/7175"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7455,6 +7905,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tde/652"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7473,6 +7924,7 @@
       "acesso": "openAccess",
       "resumo": "O objetivo do trabalho foi compreender as representações sobre o ensino de História de alunos do curso de Pedagogia para Educadores do Campo da Universidade Estadual do Oeste do Paraná (UNIOESTE), campus da cidade de Francisco Beltrão. Trata-se da primeira experiência, no Paraná, de formação de professores, que funcionou em turma única, entre 2004 a 2008. O curso foi oferecido para integrantes de Movimentos Sociais do campo, como: Casas Familiares Rurais (CFRs), Movimento dos Atingidos por Barragens (MAB), Associação Estudos, Orientação e Assistência Rural (ASSESOAR), Comunidade Pastoral da Terra (CPT) e o Movimento dos Trabalhadores Rurais Sem Terra (MST). A proposta pedagógica pretendia formar profissionais que dominassem o conhecimento pedagógico e os conteúdos das disciplinas específicas, tendo como eixo teórico o materialismo histórico-dialético. Apresenta, ainda, como princípio de formação a Pedagogia do Movimento, na qual a Pedagogia da História considera a memória coletiva parte do processo educativo e da construção da identidade dos Sem Terra. Ao considerar estes aspectos, nos parece pertinente investigar: 1) Quais são as representações de História e do ensino de história de alunos do curso? 2) Como o curso foi estruturado e construído na UNIOESTE? O corpus documental da pesquisa se constitui em entrevistas, produzidas na perspectiva das fontes orais, com 10 alunos e 03 professoras universitárias, gravadas em janeiro de 2008. Foi elaborado um roteiro de perguntas que versavam sobre as suas experiências de escolarização no ensino de História, a atuação nos Movimentos Sociais, sua vivência no curso de formação superior e nos estágios supervisionados. Realizamos a observação das aulas da disciplina de Educação e Trabalho, sobre a qual escrevemos um diário de campo, relatando o espaço em que as aulas aconteciam e a organização dos alunos. Aplicamos um questionário para identificar o perfil sócio-cultural dos entrevistados. Realizamos, ainda, a coleta do projeto pedagógico do curso, da documentação que o oficializou e de um Dossiê, contendo alguns Boletins de Educação publicados pelo MST entre os anos de 1991 a 2001. Destacamos a produção escrita sobre educação do referido Movimento Social, por identificarmos aspectos de sua proposta educacional no projeto pedagógico do curso, em específico ao ensino de História. Nosso referencial teórico consiste na leitura de Chartier (1990), que elaborou estudos sobre a produção de representações entendendo-as como práticas sociais. Le Goff (1996), Pollak (1989) e Halbwachs (2006) subsidiaram reflexões sobre a utilização da memória coletiva como instrumento de luta de poder na sociedade e sobre seu processo de funcionamento pelos grupos sociais para a construção da identidade. Nora (1983) e Meneses (1992) nos forneceram reflexões quanto às diferenças entre História e memória. Há entre os alunos, a compreensão de que a história é um processo de luta entre classes e de que a finalidade do seu ensino é o processo de humanização dos indivíduos. Em suas lembranças emergem representações que constroem uma visão idealizada do campo, de um ensino tradicional em oposição às experiências anteriores à sua entrada nos Movimentos Sociais. São representações que correspondem às expectativas de construção da memória coletiva, visando à identificação dos trabalhadores rurais com os grupos em que estão inseridos e à formação do professor militante.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7495,6 +7947,7 @@
       "links": [
         "https://hdl.handle.net/1884/24921"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7515,6 +7968,7 @@
       "links": [
         "https://repositorio.ufpa.br/handle/2011/14643"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7535,6 +7989,7 @@
       "links": [
         "http://repositorio.ufsm.br/handle/1/8843"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7557,6 +8012,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/17052"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7577,6 +8033,7 @@
       "links": [
         "http://repositorio.ufsc.br/xmlui/handle/123456789/92558"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7595,6 +8052,7 @@
       "acesso": "openAccess",
       "resumo": "O processo de formação do território gera conflitos entre os atores sociais presentes em cada região. No Brasil, tanto o mercado de terras quanto a cobrança do uso da água são criações estatais que respondem a diferentes demandas sociais e criam marcações temporais que permitem analisar o processo de dominação e apropriação de um território em que classes sociais e atores sociais evidenciam o controle social que visa influenciar, atingir ou controlar relacionamentos e pessoas exercido sobre os recursos terra e água ao longo do tempo. O objetivo deste trabalho é descrever e analisar como Estado e sociedade exercem, em um processo histórico, o controle sobre os recursos terra e água. Para realizar esse objetivo, realiza-se um estudo de caso dos processos históricos de territorialização envolvendo terra e água no município de Pereira Barreto/SP, interior do Estado de São Paulo. Desde a constituição do mercado de terras, os recursos hídricos são fundamentais para potencializar estratégias de privadas de valorização do solo, tentando auferir ganhos monetários por meio da posse da água. A propriedade da terra se mistura à propriedade da água. A imbricação entre terra e água coloca a gestão dos recursos hídricos sob os cuidados dos proprietários de terra. Com a construção e enchimento dos reservatórios da Usinas Hidroelétricas (UHEs) Jupiá, Ilha Solteira e, principalmente, Três Irmãos, a dinâmica territorial e a gestão dos recursos hídricos no município de Pereira Barreto e na região experimentam profundas alterações na estrutura fundiária, alagando terras produtivas e partes da área urbana municipal. O controle social da terra e da água é, então, exercido pela UHE Três Irmãos no território do município de Pereira Barreto. Os Comitês de Bacia Hidrográfica do Estado de São Paulo surgem como atores sociais com o controle social da água que buscam, pela gestão dos recursos hídricos, controle sobre a terra, revertendo em parte o quadro inicial apontado. Por fim, discutimos a perspectiva de descontrole social da água advindo da interpretação das barragens como um risco socialmente fabricado",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7615,6 +8073,7 @@
       "links": [
         "http://repositorio.bc.ufg.br/tede/handle/tde/1350"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7635,6 +8094,7 @@
       "links": [
         "http://repositorio.ufsm.br/handle/1/6281"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7655,6 +8115,7 @@
       "acesso": "openAccess",
       "resumo": "Esta Dissertação de Mestrado apresenta os resultados de uma pesquisa que investigou o impacto de um projeto audiovisual de educação popular na elevação da consciência política e social de quatro militantes do Movimento dos Atingidos por Barragens da região de Chapada dos Guimarães. Revelo que as oficinas do projeto Cinema Circulante disponibilizaram aos seus alunos os conhecimentos e as ferramentas para transpor o status de sujeito puramente receptor de produtos audiovisuais, para um status de ator/ realizador de produtos audiovisuais, potenciando sua capacidade de atuação política através de um procedimento de alfabetização audiovisual. Dentro da perspectiva fenomenológica, realizei entrevistas em profundidade com os alunos e o coordenador do projeto, com intuito de desvendar as conexões espaciais, temporais, sociais, culturais e econômicas que os levaram a integrar o movimento social do qual fazem parte e o projeto de educação popular Cinema Circulante, estabelecendo um processo educacional com vinculo na interculturalidade. Tomando como pontos de referência e observação quatro sujeitos participantes do curso e que também participaram da produção do vídeo documentário que foi o produto final do projeto naquela comunidade, pretendi compreender as possíveis contribuições da iniciativa de educação popular do projeto Cinema Circulante, averiguando a sua contribuição para o aprimoramento da capacidade de organização daquela comunidade, bem como o tributo do projeto a tomada de consciência dos participantes e por extensão a comunidade.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7675,6 +8136,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1608269"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7695,6 +8157,7 @@
       "links": [
         "https://ri.ufs.br/handle/riufs/5479"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7717,6 +8180,7 @@
       "links": [
         "http://repositorio.uem.br:8080/jspui/handle/1/4910"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7737,6 +8201,7 @@
       "links": [
         "http://locus.ufv.br/handle/123456789/648"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7757,6 +8222,7 @@
       "links": [
         "http://www.repositorio.ufba.br/ri/handle/ri/10167"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7777,6 +8243,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/2379"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7797,6 +8264,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/1619"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7817,6 +8285,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1614083"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7837,6 +8306,7 @@
       "links": [
         "http://repositorio.ufba.br/ri/handle/ri/19365"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7857,6 +8327,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1604232"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7877,6 +8348,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/7487"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7897,6 +8369,7 @@
       "links": [
         "http://tede.unioeste.br:8080/tede/handle/tede/2157"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7917,6 +8390,7 @@
       "links": [
         "https://repositorio.upf.br/handle/123456789/3343"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7937,6 +8411,7 @@
       "links": [
         "https://repositorio.upf.br/handle/123456789/2451"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -7961,6 +8436,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=9532&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.9532"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -7981,6 +8457,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/17756"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8001,6 +8478,7 @@
       "links": [
         "https://hdl.handle.net/1843/MAPO-7REJ88"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8019,6 +8497,7 @@
       "acesso": "openAccess",
       "resumo": "A tabarana Salminus hilarii (Characiformes) é uma espécie reofílica de grande importância ecológica na Bacia do Alto Tietê (São Paulo/SP, Brasil). Atualmente esta espécie sofre com a poluição (industrial e doméstica) e a construção de barragens na região, o que pode prejudicar o comportamento migratório reprodutivo das espécies reofílicas, bloqueando a reprodução. O presente estudo tem como objetivo analisar os mecanismos fisiológicos envolvidos no controle endógeno da reprodução Salminus hilarii, analisando-se o eixo hipófise-gônadas. Adicionalmente, buscou-se avaliar se o bloqueio da migração reprodutiva (parcial ou total) altera o funcionamento deste eixo. Os animais foram coletados no ambiente natural (Bacia do Alto Tietê), na saída da Barragem da Barragem de Ponte Nova e na Piscicultura de Ponte Nova (Salesópolis/SP) durante o período de abril de 2004 e agosto de 2006. As análises macro e microscópicas das gônadas e os valores de IGS mostraram que o período reprodutivo da tabarana ocorreu entre os meses de outubro a fevereiro. As análises macroscópicas e microscópicas dos ovários e dos testículos permitiram classificar o desenvolvimento ovariano em 4 estádios: repouso, maturação inicial, maturação avançada (cativeiro), maduro (ambiente natural) e regressão/esgotado e o desenvolvimento testicular em 3 estádio: repouso, maduro e regressão. O desenvolvimento oocitário da tabarana é do tipo sincrônico em grupo e a desova é total; os testículos são do tipo tubular anastomosado e espermatogonial irrestrito. Foram identificados 5 tipos celulares no interior dos ovários: oogônias, oócito perinucleolar, oócito cortical-alveolar, oócito vitelogênico e oócito maduro, além de estruturas derivadas desse desenvolvimento, os folículos pós-ovulatórios e os oócitos atrésicos. Identificou-se também 6 tipos celulares no interior dos testículos: espermatogônias, espermatócitos, espermátides, espermatozóides, células de Sertoli e células de Leydig. A hipófise de S. hilarii é composta de dois tecidos: a adeno-hipófise (tecido glandular endócrino) e a neuro-hipófise (origem nervosa). Adicionalmente, foi verificado que a adeno-hipófise é subdividida em: rostral pars distalis\" (RPD), proximal pars distalis\" (PPD) e pars intermedia\" (PI). Seis tipos celulares foram identificados na adeno-hipófise: as células produtoras de prolactina (PRL) e as células produtoras de hormônio adrenocorticotrópico (ACTH) foram identificadas na região da RPD; as células produtoras de hormônio de crescimento (GH) e as células produtoras de gonadotropinas (GtHs) estão situadas na região da PPD; as células produtoras de melanotropina (MSH) e as células produtoras de somatolactina (SL) estão presentes na PI. As células PRL não apresentam variações ao longo do ciclo reprodutivo da tabarana, no entanto, as células produtoras de GH diminuem a porcentagem de imunomarcação com o avanço do ciclo reprodutivo. Já as células produtoras de SL aumentam a porcentagem de imunomarcação com o desenvolvimento das gônadas. Adicionalmente, foi verificada a presença de duas gonadotropinas na região da adeno-hipófise, o hormônio folículo estimulante (FSH) e o hormônio luteinizante (LH). Em relação ao perfil plasmático dos esteróides gonadais, foi verificado que o estradiol aumenta com o avanço do ciclo reprodutivo, diminuindo do estádio maduro para o estádio regressão/esgotado (ambiente natural). No cativeiro ocorreu um aumento da concentração de estradiol do estádio repouso até o estádio maturação média, diminuindo logo em seguida nos estádios maturação avançada e regressão/esgotado. A concentração de testosterona eleva-se com o avanço da maturação gonadal, atingindo os valores máximos no estádio maduro (ambiente natural) e maturação avançada (cativeiro). Paralelamente, o estradiol apresentou-se alto somente na maturação média (cativeiro) e maduro (ambiente natural), evidenciando uma relação entre esses dois hormônios. Valores mais elevados de 17&#945;-hidroxiprogesterona no cativeiro sugerem uma deficiência na conversão deste esteróide para17&#945;, 20&#946;-dihidroxy-4-pregnen-3-one, considerado como o hormônio indutor da maturação final e ovulação na maioria dos teleósteos. Os resultados encontrados evidenciam que o bloqueio da migração altera a fisiologia do eixo hipófise-gônadas em Salminus hilarii.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8039,6 +8518,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/3065"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8059,6 +8539,7 @@
       "links": [
         "http://www.repositorio.ufc.br/handle/riufc/16420"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -8079,6 +8560,7 @@
       "acesso": "openAccess",
       "resumo": "Esta dissertação desenvolve a idéia de um processo de \\\"destituição da fala\\\" de grupos sociais, indígenas, camponeses, ribeirinhos, ameaçados e atingidos por barragens e grupos da sociedade organizada como os sindicatos que representam os trabalhadores das empresas elétricas e organizações não governamentais que discordam da maneira como vem se conduzindo o processo de expansão da oferta de eletricidade através da construção de hidrelétricas. Fazemos dois retrospectos. O primeiro, das lutas sociais por democracia nos últimos 30 anos. O segundo, um histórico da consolidação das empresas elétricas, relacionando-o com a história política brasileira e as relações entre interesses privados e ações de governo. Revela-se uma relação autoritária, pouca participação pública, centralismo decisório e fundamentalmente a prevalência dos interesses capitalistas nos projetos hidrelétricos. O viés autoritário, sendo herança histórica, molda a maneira como até hoje a discussão sobre como a oferta de eletricidade se desenvolve. Os resultados da pesquisa de campo e análise de entrevistas com dirigentes do movimento social organizado, sindicalistas e integrantes da coordenação nacional do Movimento dos Atingidos por Barragens (MAB) revelam a grande distância entre a produção de diagnósticos, reflexões, expectativas das organizações sociais, organizações não governamentais e uma efetiva incorporação desta produção na discussão sobre novos, antigos e futuros projetos hidrelétricos. Há pouco reconhecimento público e institucional das entidades e movimentos sociais que, a despeito de terem propostas e acúmulo de experiências sobre empreendimentos mal sucedidos, reivindicações sobre o passivo social e ambiental das obras já instaladas, não tomam parte dos processos de discussão e decisão. Esta ausência do processo se materializa como elemento de não-reconhecimento e comprometedor da dignidade de ação política destes agrupamentos sociais. A ampliação de espaços de discussão é tratada ao nível teórico e prático a partir da voz dos entrevistados e nos servindo dos estudos das ciências políticas sobre a constituição de esferas públicas, sobre ação comunicativa e sobre a teoria dos movimentos sociais. Dois exemplos internacionais são trazidos para reflexão: o debate público sobre energia no Quebec e o gerenciamento da utilização dos cursos d\\'água e das margens dos rios na Holanda. O processo de criminalização dos movimentos sociais é identificado como um obstáculo à idéia de que se crie, na opinião pública, espaço para se discutir de maneira ampla o uso dos rios, das águas e terras ribeirinhas. Conclui-se este trabalho de dissertação apontando algumas oportunidades políticas e frentes de atuação através das quais os movimentos sociais, sindicatos, organizações não governamentais, podem ampliar o espaço de discussão. A participação nos comitês de bacias, exploração das heterogeneidades nos espaços de governo, alianças entre movimento sindical, movimentos sociais e ONGs e a importância dos ciclos de protesto diante de um cenário de criminalização dos movimentos sociais podem, concomitantemente, ampliar espaço e juntar forças para denunciar e se contrapor ao esgotamento dos recursos naturais e à expropriação autoritária e acelerada das terras dos pequenos proprietários, pescadores e moradores ribeirinhos que a instalação de uma quantidade enorme de empreendimentos hidrelétricos vem consolidando.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [
@@ -8101,6 +8583,7 @@
       "links": [
         "http://repositorio.unb.br/handle/10482/3136"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8121,6 +8604,7 @@
       "links": [
         "http://repositorio.ufsc.br/xmlui/handle/123456789/88733"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8141,6 +8625,7 @@
       "links": [
         "https://repositorio.ufpb.br/jspui/handle/tede/5569"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8161,6 +8646,7 @@
       "links": [
         "http://repositorio.ufsm.br/handle/1/18598"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8181,6 +8667,7 @@
       "links": [
         "http://repositorio.ufsm.br/handle/1/27363"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8201,6 +8688,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/5862"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8223,6 +8711,7 @@
         "https://www.maxwell.vrac.puc-rio.br/colecao.php?strSecao=resultado&nrSeq=5729&idi=2",
         "http://doi.org/10.17771/PUCRio.acad.5729"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8241,6 +8730,7 @@
       "acesso": "openAccess",
       "resumo": "O crescente volume de resíduos sólidos e líquidos gerados pela indústria mineira tem despertado a atenção da sociedade, governo e organismos ambientais quanto à segurança de seu armazenamento em barragens de contenção de rejeitos. Historicamente, as empresas mineradoras tem demonstrado pouco interesse em dispor recursos para projetos envolvendo barragens, concorrendo para o grande número de acidentes, em sua maioria, resultando em danos irreparáveis ao meio ambiente. Estatisticamente, dentre as principais causas responsáveis por estes acidentes está a liquefação, fenômeno este que provoca a ruptura do corpo da barragem devido à presença de água no corpo do maciço. Considerando estas premissas, o presente trabalho reúne elementos gerais para a compreensão e formulação de critérios sobre os principais aspectos que precisam ser adequadamente caracterizados, no sentido de que as barragens de contenção de rejeitos, dentro de suas funções operativas, possam atingir o maior nível de desempenho e segurança. Dentro do estudo de caso específico, concernente à Barragem Morro do Ouro, no Estado de Minas Gerais, o texto está centrado em critérios técnicos necessários ao acompanhamento do desenvolvimento das pressões neutras no corpo da barragem e seu comportamento diante de uma eventual ocorrência de agentes, como os sismos, que possam provocar a sua ruptura por liquefação.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8261,6 +8751,7 @@
       "links": [
         "http://repositorio.ufsc.br/xmlui/handle/123456789/86339"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8281,6 +8772,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1591610"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8301,6 +8793,7 @@
       "links": [
         "http://www.locus.ufv.br/handle/123456789/10868"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8321,6 +8814,7 @@
       "links": [
         "http://hdl.handle.net/10183/256384"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8339,6 +8833,7 @@
       "acesso": "openAccess",
       "resumo": "No Brasil existem aproximadamente 700 barragens com altura superior a 15 metros, a grande maioria construída em maciço de terra e com mais de 20 anos de idade em operação. Pouco se tem publicado e discutido sobre a manutenção desses estruturas.Fica evidente a importância de se avaliar o desempenho e as deteriorações surgidas ao longo do tempo, e suas interferências na segurança das barragens. Esta dissertação teve como premissa levantar e entender os principais casos de deterioração, que atingem as barragens de terra após a construção procurando estabelecer a importância da manutenção preventiva no processo de degradação. Os trabalhos foram desenvolvidos através de levantamento das principais anomalias, medidas de prevenção e reparos, técnicas de identificação e monitoramento, legislação e programas de inspeção e manutenção: e levantamento dos locais onde ocorrem com maior freqüência: maciços, taludes, fundações, estruturas hidráulicas e reservatórios. Ao final faz-se uma exposição do histórico do comportamento da Barragem do Jaguari que teve início de operação em 1977 e está localizada a montante do núcleo urbano do município de Bragança Paulista - SP. Construída em maciço de terra com 62 metros de altura é de vital relevância ao sistema integrado de reservação de água para abastecimento, representando 40% da demanda do consumo da Região Metropolitana de São Paulo. Dada à essa importância foi escolhida como objetivo de estudo de caso destadissertação. Acessível tecnicamente, pelas próprias condições da área de trabalho do autor, a Barragem do Jaguari apresenta elementos de observação e análise, no histórico de sua operação, que demonstram a necessidade da contínua aplicação de manutenções preventivas em função da preservação de sua segurança.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8357,6 +8852,7 @@
       "acesso": "openAccess",
       "resumo": "Historicamente, os esforços do homem em dispor os resíduos mineiros eram levados a cabo com o menor esforço e com o mínimo custo possível, porque não haviam normas ou leis que controlavam estas atividades e os danos ambientais resultantes. Naatualidade, quando as leis são cada vez mais rígidas, deve-se mencionar que a indústria mineira gera grande quantidade de resíduos sólidos e líquidos, cuja disposição nas barragens de contenção de rejeitos requer controle adequado, uma vez queenvolve aspectos de interesse público. Considerando estas premissas, a presente pesquisa tenta contribuir com sugestões de formulação de critérios sobre os principais aspectos que precisam ser adequadamente caracterizados para que as barragensde contenção de rejeitos, dentro de suas funções operativas, possam atingir o maior nível de desempenho e segurança. Busca ainda este trabalho fornecer subsídios e diretrizes para que as empresas mineradoras participem de maneira significativana preservação do meio ambiente, visto que na maioria das vezes, quando do acidente com barragens de contenção de rejeitos as conseqüências ambientais são irreparáveis, além da interrupção do processo produtivo da mina. É feita também aavaliação das principais causas de acidentes em barragens de contenção de rejeitos devido a fatores geológicos e geotécnicos, obtidos de um universo de dados selecionados estatisticamente. Posteriormente, as causas mais freqüentes nodesencadeamento dos acidentes (liquefação e \\\"piping\\\") são analisadas tecnicamente e sugeridas possíveis soluções. Finalmente, são descritas rupturas de barragens de contenção de rejeitos e os impactos ambientais: apresentando como exemplos, asconseqüências causadas pela ruptura de barragem Los Frailes na Espanha, da mina Porco da Bolívia e da mina do Fernandinho do Brasil.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8377,6 +8873,7 @@
       "links": [
         "http://hdl.handle.net/10183/181025"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8397,6 +8894,7 @@
       "links": [
         "https://hdl.handle.net/20.500.12733/1582507"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8417,6 +8915,7 @@
       "links": [
         "https://repositorio.ufpe.br/handle/123456789/16978"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8437,6 +8936,7 @@
       "links": [
         "http://dspace.sti.ufcg.edu.br:8080/jspui/handle/riufcg/2130"
       ],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8455,6 +8955,7 @@
       "acesso": "openAccess",
       "resumo": "Em 1976, a companhia hidro elétrica do sao francisco - chesf - iniciou a construção da usina hidro elétrica de itaparica, pe/ba. Como previsto nos planos técnicos, em 1988 foram inundadas 834.000 ha de terras férteis. Desapareceram as cidades de petrolandia e itacuruba (pe); rodelas e vila barra do tarrachil (ba) e mais de duas dezenas de nucleos rurais e todas as ilhas localizadas na cota de 304 metros. Cerca de 120 mil pessoas foram atingidas, sendo 40.055 diretamente. Resistindo a pratica dos órgãos governamentais, de pressões e expulsões de pequenos agricultores, os trabalhadores rurais iniciaram um movimento para conquistar condições dignas de reassentamento. Reivindicavam: construção de vilas, indenizações justas pelas benfeitorias, desapropriação por interesse social, projetos de irrigação. Em dezembro de 1986, o canteiro de obras da barragem e ocupado pelos trabalhadores rurais, que resulta em acordo com a chesf. Ate a presente data (jun/1991) não foram construídos os canais de irrigação",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],
@@ -8473,6 +8974,7 @@
       "acesso": "openAccess",
       "resumo": "Pretende-se no presente trabalho efetuar uma análise quantitativa da propagação das ondas de cheia nos reservatórios existentes ou projetados. Para atingir este escopo, foram elaborados estudos com os hidrogramas de ondas de cheia afluentes aos reservatórios formados pelas barragens dos rios Piraquara, Capivara, Paraitinga e Taiaçupeba. Também foi considerado o hidrograma de onda de cheia conforme os estudos da entidade Soil Conservation Service.",
       "links": [],
+      "levantamento": "geral",
       "destino": "unificada",
       "desastre": null,
       "tags": [],

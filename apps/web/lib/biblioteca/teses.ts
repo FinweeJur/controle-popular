@@ -41,6 +41,8 @@ export interface Tese {
   acesso: string | null;
   resumo: string | null;
   links: string[];
+  /** Por qual levantamento chegou: `geral` (bibelo, 420) ou `ati` (4). */
+  levantamento: "geral" | "ati";
   destino: DestinoTese;
   desastre: "mariana" | "brumadinho" | "ambos" | null;
   tags: string[];

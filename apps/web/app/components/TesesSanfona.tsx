@@ -33,6 +33,26 @@ function hostnameDiscreto(url: string): string {
   }
 }
 
+/** TAGs do item: MAB (regra do dono) e "Mariana + Brumadinho" quando o item
+    compara os DOIS desastres. Função própria para o cartão ficar enxuto. */
+function BlocoTags({ tese }: { tese: Tese }) {
+  const temBloco = tese.tags.length > 0 || tese.desastre === "ambos";
+  return (
+    <div hidden={!temBloco} className="mt-2 flex flex-wrap items-center gap-1.5">
+      {tese.tags.map((tag) => (
+        <span key={tag} className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+          TAG {tag}
+        </span>
+      ))}
+      {tese.desastre === "ambos" && (
+        <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[11px] font-bold text-accent">
+          Mariana + Brumadinho
+        </span>
+      )}
+    </div>
+  );
+}
+
 /** Cartão de uma tese: título, metadado, TAGs, sanfona do resumo e o LINK
     OFICIAL de acesso (36 teses vêm sem link e a lacuna fica ditada). Função
     própria para a listagem ficar sob o teto de método grande do CodeScene. */
@@ -44,25 +64,10 @@ function CartaoTese({ tese }: { tese: Tese }) {
         {tese.autor} · {tese.tipo} ({tese.ano ?? "s/data"}) · {tese.instituicao}
         {tese.sigla ? ` (${tese.sigla})` : ""} · idioma {tese.idioma?.toUpperCase() ?? "não declarado"}
         {tese.acesso === "embargoedAccess" ? " · acesso embargado pela fonte" : ""}
+        {tese.levantamento === "ati" ? " · acervo das ATIs" : ""}
       </p>
 
-      {(tese.tags.length > 0 || tese.desastre === "ambos") && (
-        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-          {tese.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary"
-            >
-              TAG {tag}
-            </span>
-          ))}
-          {tese.desastre === "ambos" && (
-            <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[11px] font-bold text-accent">
-              Mariana + Brumadinho
-            </span>
-          )}
-        </div>
-      )}
+      <BlocoTags tese={tese} />
 
       {tese.resumo ? (
         <div className="mt-2">
