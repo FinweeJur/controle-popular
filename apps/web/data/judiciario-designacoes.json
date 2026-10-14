@@ -163,5 +163,71 @@
   "orgao": "",
   "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-03",
   "criado_em": "2026-10-03T08:05:15.320Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA M",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA PATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA PATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA M",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA ",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-10-14",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA ",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
+  "criado_em": "2026-10-14T08:05:23.295Z"
  }
 ]
